@@ -1,16 +1,17 @@
 {
-  "name": "@ovh-api/me",
+  "private": true,
+  "name": "@ovh-api/sample",
   "version": "0.0.1",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
-  "dependencies": {
-    "@ovh-api/common": "^0.0.1"
-  },
   "scripts": {
-    "run": "ts-node src/index.ts",
     "build": "tsc",
     "build:watch": "tsc --watch"
   },
-  "gitHead": "9e97f634666d9959514bf17dc9eb33a87be18782"
+  "dependencies": {
+    "@ovh-api/domain": "^0.0.1",
+    "@ovh-api/me": "^0.0.1",
+    "ovh": "^2.0.2"
+  }
 }

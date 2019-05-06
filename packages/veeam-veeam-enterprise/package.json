@@ -11,5 +11,6 @@
     "run": "ts-node src/index.ts",
     "build": "tsc",
     "build:watch": "tsc --watch"
-  }
+  },
+  "gitHead": "9e97f634666d9959514bf17dc9eb33a87be18782"
 }
