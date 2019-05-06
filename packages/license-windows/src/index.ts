@@ -283,25 +283,15 @@ export class ApiLicenseWindows extends ApiCommon {
   **/
   public get(path: '/license/windows'): Promise<string[]>;
   /**
+  Get the orderable Windows versions
+  Get the orderable Windows versions
+  **/
+  public get(path: '/license/windows/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseWindowsOrderConfiguration[]>;
+  /**
   Your Windows license
   Get this object properties
   **/
   public get(path: '/license/windows/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseWindowsWindows>;
-  /**
-  List the license.Task objects
-  tasks linked to this license
-  **/
-  public get(path: '/license/windows/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
-  /**
-  licenses Todos
-  Get this object properties
-  **/
-  public get(path: '/license/windows/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/license/windows/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   List the license.Option objects
   options attached to this license
@@ -313,10 +303,20 @@ export class ApiLicenseWindows extends ApiCommon {
   **/
   public get(path: '/license/windows/{serviceName}/option/{label}', pathParams: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseOption>;
   /**
-  Get the orderable Windows versions
-  Get the orderable Windows versions
+  Details about a Service
+  Get this object properties
   **/
-  public get(path: '/license/windows/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseWindowsOrderConfiguration[]>;
+  public get(path: '/license/windows/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  List the license.Task objects
+  tasks linked to this license
+  **/
+  public get(path: '/license/windows/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
+  /**
+  licenses Todos
+  Get this object properties
+  **/
+  public get(path: '/license/windows/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
   public get(path: PathsLicenseWindowsGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Your Windows license
@@ -330,11 +330,6 @@ export class ApiLicenseWindows extends ApiCommon {
   public put(path: '/license/windows/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsLicenseWindowsPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  Terminate your service
-  Terminate your service
-  **/
-  public post(path: '/license/windows/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
-  /**
   Confirm termination of your service
   Confirm termination of your service
   **/
@@ -344,6 +339,11 @@ export class ApiLicenseWindows extends ApiCommon {
   Link your own sql server license to this Windows license
   **/
   public post(path: '/license/windows/{serviceName}/sqlServer', pathParams: {serviceName: string}): Promise<LicenseTask>;
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/license/windows/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
   public post(path: PathsLicenseWindowsPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Your License options

@@ -458,15 +458,15 @@ export class ApiDbaasTimeseries extends ApiCommon {
   **/
   public get(path: '/dbaas/timeseries/region'): Promise<PaasTimeseriesRegion[]>;
   /**
+  Timeseries project
+  Get this object properties
+  **/
+  public get(path: '/dbaas/timeseries/{serviceName}', pathParams: {serviceName: string}): Promise<TimeseriesProject>;
+  /**
   Consumption
   Get consumption
   **/
   public get(path: '/dbaas/timeseries/{serviceName}/consumption', pathParams: {serviceName: string}): Promise<PaasTimeseriesConsumption[]>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/dbaas/timeseries/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Keys
   Get keys for a project
@@ -478,6 +478,16 @@ export class ApiDbaasTimeseries extends ApiCommon {
   **/
   public get(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', pathParams: {serviceName: string, keyId: string}): Promise<PaasTimeseriesKey>;
   /**
+  Quotas
+  Get quotas
+  **/
+  public get(path: '/dbaas/timeseries/{serviceName}/quota', pathParams: {serviceName: string}): Promise<PaasTimeseriesQuota[]>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/dbaas/timeseries/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
   OpenTSDBTokens
   Get OpenTSDB tokens
   **/
@@ -487,53 +497,43 @@ export class ApiDbaasTimeseries extends ApiCommon {
   Get a OpenTSDB token
   **/
   public get(path: '/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<PaasTimeseriesOpenTSDBToken>;
-  /**
-  Timeseries project
-  Get this object properties
-  **/
-  public get(path: '/dbaas/timeseries/{serviceName}', pathParams: {serviceName: string}): Promise<TimeseriesProject>;
-  /**
-  Quotas
-  Get quotas
-  **/
-  public get(path: '/dbaas/timeseries/{serviceName}/quota', pathParams: {serviceName: string}): Promise<PaasTimeseriesQuota[]>;
   public get(path: PathsDbaasTimeseriesGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
-  Details about a Service
+  Timeseries project
   Alter this object properties
   **/
-  public put(path: '/dbaas/timeseries/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/dbaas/timeseries/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
   /**
   Key
   Create a key
   **/
   public put(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', pathParams: {serviceName: string, keyId: string}): Promise<PaasTimeseriesKey>;
   /**
-  Timeseries project
+  Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dbaas/timeseries/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/dbaas/timeseries/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsDbaasTimeseriesPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  Setup your project on our platform
-  Setup a project
+  Change the contacts of this service
+  Launch a contact change procedure
   **/
-  public post(path: '/dbaas/timeseries/{serviceName}/setup', pathParams: {serviceName: string}): Promise<PaasTimeseriesProject>;
+  public post(path: '/dbaas/timeseries/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
   Keys
   Create a key for a project
   **/
   public post(path: '/dbaas/timeseries/{serviceName}/key', pathParams: {serviceName: string}): Promise<PaasTimeseriesKey>;
   /**
+  Setup your project on our platform
+  Setup a project
+  **/
+  public post(path: '/dbaas/timeseries/{serviceName}/setup', pathParams: {serviceName: string}): Promise<PaasTimeseriesProject>;
+  /**
   OpenTSDBTokens
   Create a OpenTSDB token
   **/
   public post(path: '/dbaas/timeseries/{serviceName}/token/opentsdb', pathParams: {serviceName: string}): Promise<PaasTimeseriesOpenTSDBToken>;
-  /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
-  public post(path: '/dbaas/timeseries/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
   public post(path: PathsDbaasTimeseriesPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Key

@@ -356,55 +356,55 @@ export class ApiLicensePlesk extends ApiCommon {
     super(config);
   }
   /**
-  allowedDestinationIp operations
-  Returns an array of ips where the license can be moved to
+  Operations about the LICENSE service
+  List available services
   **/
-  public get(path: '/license/plesk/{serviceName}/allowedDestinationIp', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  licenses Todos
-  Get this object properties
-  **/
-  public get(path: '/license/plesk/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
-  /**
-  List the license.Task objects
-  tasks linked to this license
-  **/
-  public get(path: '/license/plesk/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
-  /**
-  Your License options
-  Get this object properties
-  **/
-  public get(path: '/license/plesk/{serviceName}/option/{label}', pathParams: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseOption>;
-  /**
-  List the license.Option objects
-  options attached to this license
-  **/
-  public get(path: '/license/plesk/{serviceName}/option', pathParams: {serviceName: string}): Promise<LicenseOptionLabel[]>;
-  /**
-  Your Plesk license
-  Get this object properties
-  **/
-  public get(path: '/license/plesk/{serviceName}', pathParams: {serviceName: string}): Promise<LicensePleskPlesk>;
-  /**
-  canLicenseBeMovedTo operations
-  Will tell if the ip can accept the license
-  **/
-  public get(path: '/license/plesk/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/license/plesk/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/license/plesk'): Promise<string[]>;
   /**
   Get the orderable Plesk versions and their associated compatibilities
   Get the orderable Plesk versions and their associated compatibilities
   **/
   public get(path: '/license/plesk/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicensePleskOrderConfiguration[]>;
   /**
-  Operations about the LICENSE service
-  List available services
+  Your Plesk license
+  Get this object properties
   **/
-  public get(path: '/license/plesk'): Promise<string[]>;
+  public get(path: '/license/plesk/{serviceName}', pathParams: {serviceName: string}): Promise<LicensePleskPlesk>;
+  /**
+  allowedDestinationIp operations
+  Returns an array of ips where the license can be moved to
+  **/
+  public get(path: '/license/plesk/{serviceName}/allowedDestinationIp', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  canLicenseBeMovedTo operations
+  Will tell if the ip can accept the license
+  **/
+  public get(path: '/license/plesk/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  /**
+  List the license.Option objects
+  options attached to this license
+  **/
+  public get(path: '/license/plesk/{serviceName}/option', pathParams: {serviceName: string}): Promise<LicenseOptionLabel[]>;
+  /**
+  Your License options
+  Get this object properties
+  **/
+  public get(path: '/license/plesk/{serviceName}/option/{label}', pathParams: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseOption>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/license/plesk/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  List the license.Task objects
+  tasks linked to this license
+  **/
+  public get(path: '/license/plesk/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  /**
+  licenses Todos
+  Get this object properties
+  **/
+  public get(path: '/license/plesk/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
   public get(path: PathsLicensePleskGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Your Plesk license
@@ -418,20 +418,20 @@ export class ApiLicensePlesk extends ApiCommon {
   public put(path: '/license/plesk/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsLicensePleskPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  Terminate your service
-  Terminate your service
+  changeIp operations
+  Move this license to another Ip
   **/
-  public post(path: '/license/plesk/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/license/plesk/{serviceName}/changeIp', pathParams: {serviceName: string}): Promise<LicenseTask>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
   public post(path: '/license/plesk/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
-  changeIp operations
-  Move this license to another Ip
+  Terminate your service
+  Terminate your service
   **/
-  public post(path: '/license/plesk/{serviceName}/changeIp', pathParams: {serviceName: string}): Promise<LicenseTask>;
+  public post(path: '/license/plesk/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
   public post(path: PathsLicensePleskPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Your License options

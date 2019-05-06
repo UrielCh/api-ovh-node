@@ -936,35 +936,70 @@ export class ApiMsServices extends ApiCommon {
     super(config);
   }
   /**
-  Exchange mailbox information
-  Get this object properties
+  Operations about the MSSERVICES service
+  List available services
   **/
-  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesExchangeInformation>;
+  public get(path: '/msServices'): Promise<string[]>;
   /**
-  Sharepoint account information
+  Operations about the SHAREPOINT service
+  List available services
+  **/
+  public get(path: '/msServices/sharepoint'): Promise<string[]>;
+  /**
+  Sharepoint service
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesSharepointInformation>;
+  public get(path: '/msServices/sharepoint/{domain}', pathParams: {domain: string}): Promise<MsServicesSharepointServiceInfo>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/msServices/sharepoint/{domain}/serviceInfos', pathParams: {domain: string}): Promise<ServicesService>;
+  /**
+  Active Directory organizational unit
+  Get this object properties
+  **/
+  public get(path: '/msServices/{serviceName}', pathParams: {serviceName: string}): Promise<MsServicesActiveDirectoryOrganizationalUnit>;
+  /**
+  List the msServices.Account objects
+  Accounts associated to this Active Directory service
+  **/
+  public get(path: '/msServices/{serviceName}/account', pathParams: {serviceName: string}, queryParams: {id?: Number, userPrincipalName?: string}): Promise<string[]>;
   /**
   Active Directory Account
   Get this object properties
   **/
   public get(path: '/msServices/{serviceName}/account/{userPrincipalName}', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesAccount>;
   /**
+  Exchange mailbox information
+  Get this object properties
+  **/
+  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesExchangeInformation>;
+  /**
   Multi Factor Authentication informations
   Get this object properties
   **/
   public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesMfaInformation>;
+  /**
+  Sharepoint account information
+  Get this object properties
+  **/
+  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesSharepointInformation>;
   /**
   Sync account information
   Get this object properties
   **/
   public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesSyncInformation>;
   /**
-  List the msServices.Account objects
-  Accounts associated to this Active Directory service
+  Exchange service
+  Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/account', pathParams: {serviceName: string}, queryParams: {id?: Number, userPrincipalName?: string}): Promise<string[]>;
+  public get(path: '/msServices/{serviceName}/exchange', pathParams: {serviceName: string}): Promise<MsServicesExchangeService>;
+  /**
+  billingMigrated operations
+  Detects billing transition status for the service
+  **/
+  public get(path: '/msServices/{serviceName}/exchange/billingMigrated', pathParams: {serviceName: string}): Promise<boolean>;
   /**
   List the msServices.exchangeTask objects
   Pending actions
@@ -975,16 +1010,6 @@ export class ApiMsServices extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/msServices/{serviceName}/exchange/task/{id}', pathParams: {serviceName: string, id: Number}): Promise<MsServicesExchangeTask>;
-  /**
-  billingMigrated operations
-  Detects billing transition status for the service
-  **/
-  public get(path: '/msServices/{serviceName}/exchange/billingMigrated', pathParams: {serviceName: string}): Promise<boolean>;
-  /**
-  Exchange service
-  Get this object properties
-  **/
-  public get(path: '/msServices/{serviceName}/exchange', pathParams: {serviceName: string}): Promise<MsServicesExchangeService>;
   /**
   Sharepoint service
   Get this object properties
@@ -1001,30 +1026,30 @@ export class ApiMsServices extends ApiCommon {
   **/
   public get(path: '/msServices/{serviceName}/sharepoint/license', pathParams: {serviceName: string}, queryParams: {period?: MsServicesLicensePeriodEnum, license?: MsServicesSharepointLicenseEnum}): Promise<MsServicesSharepointDailyLicense[]>;
   /**
-  Sharepoint task details
-  Get this object properties
-  **/
-  public get(path: '/msServices/{serviceName}/sharepoint/task/{id}', pathParams: {serviceName: string, id: Number}): Promise<MsServicesSharepointTask>;
-  /**
   List the msServices.sharepointTask objects
   Pending actions
   **/
   public get(path: '/msServices/{serviceName}/sharepoint/task', pathParams: {serviceName: string}, queryParams: {function?: string, status?: MsServicesTaskStatusEnum}): Promise<Number[]>;
   /**
-  List the msServices.upnSuffix objects
-  active directory UPN suffix
-  **/
-  public get(path: '/msServices/{serviceName}/upnSuffix', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Active Directory UPN Suffix
+  Sharepoint task details
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/upnSuffix/{suffix}', pathParams: {serviceName: string, suffix: string}): Promise<MsServicesUpnSuffix>;
+  public get(path: '/msServices/{serviceName}/sharepoint/task/{id}', pathParams: {serviceName: string, id: Number}): Promise<MsServicesSharepointTask>;
   /**
-  Active Directory organizational unit
+  Sync service
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}', pathParams: {serviceName: string}): Promise<MsServicesActiveDirectoryOrganizationalUnit>;
+  public get(path: '/msServices/{serviceName}/sync', pathParams: {serviceName: string}): Promise<MsServicesSyncService>;
+  /**
+  Temporary link to ADSync software executable
+  Get this object properties
+  **/
+  public get(path: '/msServices/{serviceName}/sync/clientSoftwareURL', pathParams: {serviceName: string}): Promise<MsServicesActiveDirectorySyncClientUrl>;
+  /**
+  license operations
+  Get active licenses for specific period of time
+  **/
+  public get(path: '/msServices/{serviceName}/sync/license', pathParams: {serviceName: string}, queryParams: {license?: MsServicesSyncLicenseEnum, period?: MsServicesLicensePeriodEnum}): Promise<MsServicesSyncDailyLicense[]>;
   /**
   List the msServices.Task objects
   Pending actions
@@ -1036,41 +1061,31 @@ export class ApiMsServices extends ApiCommon {
   **/
   public get(path: '/msServices/{serviceName}/task/{id}', pathParams: {serviceName: string, id: Number}): Promise<MsServicesTask>;
   /**
-  license operations
-  Get active licenses for specific period of time
+  List the msServices.upnSuffix objects
+  active directory UPN suffix
   **/
-  public get(path: '/msServices/{serviceName}/sync/license', pathParams: {serviceName: string}, queryParams: {license?: MsServicesSyncLicenseEnum, period?: MsServicesLicensePeriodEnum}): Promise<MsServicesSyncDailyLicense[]>;
+  public get(path: '/msServices/{serviceName}/upnSuffix', pathParams: {serviceName: string}): Promise<string[]>;
   /**
-  Temporary link to ADSync software executable
+  Active Directory UPN Suffix
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/sync/clientSoftwareURL', pathParams: {serviceName: string}): Promise<MsServicesActiveDirectorySyncClientUrl>;
-  /**
-  Sync service
-  Get this object properties
-  **/
-  public get(path: '/msServices/{serviceName}/sync', pathParams: {serviceName: string}): Promise<MsServicesSyncService>;
-  /**
-  Operations about the SHAREPOINT service
-  List available services
-  **/
-  public get(path: '/msServices/sharepoint'): Promise<string[]>;
+  public get(path: '/msServices/{serviceName}/upnSuffix/{suffix}', pathParams: {serviceName: string, suffix: string}): Promise<MsServicesUpnSuffix>;
+  public get(path: PathsMsServicesGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
-  Get this object properties
+  Alter this object properties
   **/
-  public get(path: '/msServices/sharepoint/{domain}/serviceInfos', pathParams: {domain: string}): Promise<ServicesService>;
+  public put(path: '/msServices/sharepoint/{domain}/serviceInfos', pathParams: {domain: string}): Promise<void>;
   /**
-  Sharepoint service
-  Get this object properties
+  Active Directory organizational unit
+  Alter this object properties
   **/
-  public get(path: '/msServices/sharepoint/{domain}', pathParams: {domain: string}): Promise<MsServicesSharepointServiceInfo>;
+  public put(path: '/msServices/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
   /**
-  Operations about the MSSERVICES service
-  List available services
+  Active Directory Account
+  Alter this object properties
   **/
-  public get(path: '/msServices'): Promise<string[]>;
-  public get(path: PathsMsServicesGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}', pathParams: {serviceName: string, userPrincipalName: string}): Promise<void>;
   /**
   Exchange mailbox information
   Alter this object properties
@@ -1082,11 +1097,6 @@ export class ApiMsServices extends ApiCommon {
   **/
   public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint', pathParams: {serviceName: string, userPrincipalName: string}): Promise<void>;
   /**
-  Active Directory Account
-  Alter this object properties
-  **/
-  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}', pathParams: {serviceName: string, userPrincipalName: string}): Promise<void>;
-  /**
   Exchange service
   Alter this object properties
   **/
@@ -1096,22 +1106,37 @@ export class ApiMsServices extends ApiCommon {
   Alter this object properties
   **/
   public put(path: '/msServices/{serviceName}/sharepoint', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  Active Directory organizational unit
-  Alter this object properties
-  **/
-  public put(path: '/msServices/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  Details about a Service
-  Alter this object properties
-  **/
-  public put(path: '/msServices/sharepoint/{domain}/serviceInfos', pathParams: {domain: string}): Promise<void>;
   public put(path: PathsMsServicesPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  /**
+  changePassword operations
+  Change account password
+  **/
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/changePassword', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
   /**
   configure operations
   Configure mailbox to be operational
   **/
   public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange/configure', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesExchangeTask>;
+  /**
+  Multi Factor Authentication informations
+  Create Multi Factor Authentication for this account
+  **/
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  /**
+  disable operations
+  Disable Multi Factor Authentication for a period of time
+  **/
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/disable', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  /**
+  enable operations
+  Enable Mfa (enabled by default when created)
+  **/
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/enable', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  /**
+  reset operations
+  Reset Multi Factor Authentication status for this account
+  **/
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/reset', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
   /**
   clearSpace operations
   On-demand MySite clearance
@@ -1122,31 +1147,6 @@ export class ApiMsServices extends ApiCommon {
   Configure sharepoint account to be operational
   **/
   public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/configure', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesSharepointTask>;
-  /**
-  changePassword operations
-  Change account password
-  **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/changePassword', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
-  /**
-  enable operations
-  Enable Mfa (enabled by default when created)
-  **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/enable', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
-  /**
-  disable operations
-  Disable Multi Factor Authentication for a period of time
-  **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/disable', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
-  /**
-  reset operations
-  Reset Multi Factor Authentication status for this account
-  **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/reset', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
-  /**
-  Multi Factor Authentication informations
-  Create Multi Factor Authentication for this account
-  **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
   /**
   Sync account information
   Create new sync account
@@ -1163,20 +1163,20 @@ export class ApiMsServices extends ApiCommon {
   **/
   public post(path: '/msServices/{serviceName}/sharepoint/restoreAdminRights', pathParams: {serviceName: string}): Promise<MsServicesSharepointTask>;
   /**
-  List the msServices.upnSuffix objects
-  Create new UPN suffix
+  changePassword operations
+  Change account password
   **/
-  public post(path: '/msServices/{serviceName}/upnSuffix', pathParams: {serviceName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/sync/changePassword', pathParams: {serviceName: string}): Promise<MsServicesTask>;
   /**
   Temporary link to ADSync software executable
   Generate temporary link to ADSync software executable
   **/
   public post(path: '/msServices/{serviceName}/sync/clientSoftwareURL', pathParams: {serviceName: string}): Promise<MsServicesTask>;
   /**
-  changePassword operations
-  Change account password
+  List the msServices.upnSuffix objects
+  Create new UPN suffix
   **/
-  public post(path: '/msServices/{serviceName}/sync/changePassword', pathParams: {serviceName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/upnSuffix', pathParams: {serviceName: string}): Promise<MsServicesTask>;
   public post(path: PathsMsServicesPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Multi Factor Authentication informations
@@ -1189,14 +1189,14 @@ export class ApiMsServices extends ApiCommon {
   **/
   public delete(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
   /**
-  Active Directory UPN Suffix
-  Delete existing UPN suffix
-  **/
-  public delete(path: '/msServices/{serviceName}/upnSuffix/{suffix}', pathParams: {serviceName: string, suffix: string}): Promise<MsServicesTask>;
-  /**
   Sync service
   Delete sync service
   **/
   public delete(path: '/msServices/{serviceName}/sync', pathParams: {serviceName: string}): Promise<MsServicesTask>;
+  /**
+  Active Directory UPN Suffix
+  Delete existing UPN suffix
+  **/
+  public delete(path: '/msServices/{serviceName}/upnSuffix/{suffix}', pathParams: {serviceName: string, suffix: string}): Promise<MsServicesTask>;
   public delete(path: PathsMsServicesDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

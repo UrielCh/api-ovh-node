@@ -169,36 +169,41 @@ export class ApiSupport extends ApiCommon {
     super(config);
   }
   /**
-  Get ticket messages
-  Get ticket messages
+  List support tickets identifiers for this service
+  List support tickets identifiers for this service
   **/
-  public get(path: '/support/tickets/{ticketId}/messages', pathParams: {ticketId: Number}): Promise<SupportMessage[]>;
-  /**
-  Check whether ticket can be scored
-  Checks whether ticket can be scored
-  **/
-  public get(path: '/support/tickets/{ticketId}/canBeScored', pathParams: {ticketId: Number}): Promise<boolean>;
+  public get(path: '/support/tickets', pathParams: undefined, queryParams: {status?: SupportTicketStatusEnum, product?: SupportTicketProductEnum, maxCreationDate?: string, category?: SupportTicketCategoryEnum, serviceName?: string, ticketNumber?: string, minCreationDate?: string, archived?: boolean, subject?: string}): Promise<Number[]>;
   /**
   Get ticket
   Get ticket
   **/
   public get(path: '/support/tickets/{ticketId}', pathParams: {ticketId: Number}): Promise<SupportTicket>;
   /**
-  List support tickets identifiers for this service
-  List support tickets identifiers for this service
+  Check whether ticket can be scored
+  Checks whether ticket can be scored
   **/
-  public get(path: '/support/tickets', pathParams: undefined, queryParams: {status?: SupportTicketStatusEnum, product?: SupportTicketProductEnum, maxCreationDate?: string, category?: SupportTicketCategoryEnum, serviceName?: string, ticketNumber?: string, minCreationDate?: string, archived?: boolean, subject?: string}): Promise<Number[]>;
+  public get(path: '/support/tickets/{ticketId}/canBeScored', pathParams: {ticketId: Number}): Promise<boolean>;
+  /**
+  Get ticket messages
+  Get ticket messages
+  **/
+  public get(path: '/support/tickets/{ticketId}/messages', pathParams: {ticketId: Number}): Promise<SupportMessage[]>;
   public get(path: PathsSupportGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
-  Reopen a ticket
-  Reopen a ticket
+  Create a new ticket
+  Create a new ticket
   **/
-  public post(path: '/support/tickets/{ticketId}/reopen', pathParams: {ticketId: Number}): Promise<void>;
+  public post(path: '/support/tickets/create'): Promise<SupportNewMessageInfo>;
   /**
   Close ticket
   Close ticket
   **/
   public post(path: '/support/tickets/{ticketId}/close', pathParams: {ticketId: Number}): Promise<void>;
+  /**
+  Reopen a ticket
+  Reopen a ticket
+  **/
+  public post(path: '/support/tickets/{ticketId}/reopen', pathParams: {ticketId: Number}): Promise<void>;
   /**
   Reply to ticket
   Reply to ticket
@@ -209,10 +214,5 @@ export class ApiSupport extends ApiCommon {
   Set ticket score
   **/
   public post(path: '/support/tickets/{ticketId}/score', pathParams: {ticketId: Number}): Promise<void>;
-  /**
-  Create a new ticket
-  Create a new ticket
-  **/
-  public post(path: '/support/tickets/create'): Promise<SupportNewMessageInfo>;
   public post(path: PathsSupportPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

@@ -281,15 +281,20 @@ export class ApiDedicatedInstallationTemplate extends ApiCommon {
     super(config);
   }
   /**
-   Partitions defined in this partitioning scheme
+  List the dedicated.installationTemplate.Templates objects
+  OVH operating system installation templates
+  **/
+  public get(path: '/dedicated/installationTemplate'): Promise<string[]>;
+  /**
+  Available installation templates
   Get this object properties
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', pathParams: {templateName: string, schemeName: string, mountpoint: string}): Promise<DedicatedInstallationTemplateTemplatePartitions>;
+  public get(path: '/dedicated/installationTemplate/{templateName}', pathParams: {templateName: string}): Promise<DedicatedInstallationTemplateTemplates>;
   /**
-  List the dedicated.installationTemplate.templatePartitions objects
-  Partitions defined in this partitioning scheme
+  List the dedicated.installationTemplate.templatePartitioningSchemes objects
+  Partitioning schemes available on this template
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', pathParams: {templateName: string, schemeName: string}): Promise<string[]>;
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme', pathParams: {templateName: string}): Promise<string[]>;
   /**
   Partitioning schemes available on this template
   Get this object properties
@@ -306,19 +311,14 @@ export class ApiDedicatedInstallationTemplate extends ApiCommon {
   **/
   public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', pathParams: {templateName: string, schemeName: string, name: string}): Promise<DedicatedInstallationTemplateHardwareRaid>;
   /**
-  List the dedicated.installationTemplate.templatePartitioningSchemes objects
-  Partitioning schemes available on this template
+  List the dedicated.installationTemplate.templatePartitions objects
+  Partitions defined in this partitioning scheme
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme', pathParams: {templateName: string}): Promise<string[]>;
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', pathParams: {templateName: string, schemeName: string}): Promise<string[]>;
   /**
-  Available installation templates
+   Partitions defined in this partitioning scheme
   Get this object properties
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}', pathParams: {templateName: string}): Promise<DedicatedInstallationTemplateTemplates>;
-  /**
-  List the dedicated.installationTemplate.Templates objects
-  OVH operating system installation templates
-  **/
-  public get(path: '/dedicated/installationTemplate'): Promise<string[]>;
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', pathParams: {templateName: string, schemeName: string, mountpoint: string}): Promise<DedicatedInstallationTemplateTemplatePartitions>;
   public get(path: PathsDedicatedInstallationTemplateGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
 }

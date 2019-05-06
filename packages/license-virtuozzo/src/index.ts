@@ -325,55 +325,55 @@ export class ApiLicenseVirtuozzo extends ApiCommon {
     super(config);
   }
   /**
-  canLicenseBeMovedTo operations
-  Will tell if the ip can accept the license
+  Operations about the LICENSE service
+  List available services
   **/
-  public get(path: '/license/virtuozzo/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
-  /**
-  Your License options
-  Get this object properties
-  **/
-  public get(path: '/license/virtuozzo/{serviceName}/option/{label}', pathParams: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseOption>;
-  /**
-  List the license.Option objects
-  Options linked to this license
-  **/
-  public get(path: '/license/virtuozzo/{serviceName}/option', pathParams: {serviceName: string}, queryParams: {label?: LicenseOptionLabel}): Promise<LicenseOptionLabel[]>;
-  /**
-  allowedDestinationIp operations
-  Returns an array of ips where the license can be moved to
-  **/
-  public get(path: '/license/virtuozzo/{serviceName}/allowedDestinationIp', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  licenses Todos
-  Get this object properties
-  **/
-  public get(path: '/license/virtuozzo/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
-  /**
-  List the license.Task objects
-  tasks linked to this license
-  **/
-  public get(path: '/license/virtuozzo/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
-  /**
-  Your Virtuozzo license
-  Get this object properties
-  **/
-  public get(path: '/license/virtuozzo/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseVirtuozzoVirtuozzo>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/license/virtuozzo/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/license/virtuozzo'): Promise<string[]>;
   /**
   Get the orderable Virtuozzo versions
   Get the orderable Virtuozzo versions
   **/
   public get(path: '/license/virtuozzo/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseVirtuozzoOrderConfiguration[]>;
   /**
-  Operations about the LICENSE service
-  List available services
+  Your Virtuozzo license
+  Get this object properties
   **/
-  public get(path: '/license/virtuozzo'): Promise<string[]>;
+  public get(path: '/license/virtuozzo/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseVirtuozzoVirtuozzo>;
+  /**
+  allowedDestinationIp operations
+  Returns an array of ips where the license can be moved to
+  **/
+  public get(path: '/license/virtuozzo/{serviceName}/allowedDestinationIp', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  canLicenseBeMovedTo operations
+  Will tell if the ip can accept the license
+  **/
+  public get(path: '/license/virtuozzo/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  /**
+  List the license.Option objects
+  Options linked to this license
+  **/
+  public get(path: '/license/virtuozzo/{serviceName}/option', pathParams: {serviceName: string}, queryParams: {label?: LicenseOptionLabel}): Promise<LicenseOptionLabel[]>;
+  /**
+  Your License options
+  Get this object properties
+  **/
+  public get(path: '/license/virtuozzo/{serviceName}/option/{label}', pathParams: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseOption>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/license/virtuozzo/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  List the license.Task objects
+  tasks linked to this license
+  **/
+  public get(path: '/license/virtuozzo/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
+  /**
+  licenses Todos
+  Get this object properties
+  **/
+  public get(path: '/license/virtuozzo/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
   public get(path: PathsLicenseVirtuozzoGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Your Virtuozzo license
@@ -387,20 +387,20 @@ export class ApiLicenseVirtuozzo extends ApiCommon {
   public put(path: '/license/virtuozzo/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsLicenseVirtuozzoPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  Terminate your service
-  Terminate your service
+  changeIp operations
+  Move this license to another Ip
   **/
-  public post(path: '/license/virtuozzo/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/license/virtuozzo/{serviceName}/changeIp', pathParams: {serviceName: string}): Promise<LicenseTask>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
   public post(path: '/license/virtuozzo/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
-  changeIp operations
-  Move this license to another Ip
+  Terminate your service
+  Terminate your service
   **/
-  public post(path: '/license/virtuozzo/{serviceName}/changeIp', pathParams: {serviceName: string}): Promise<LicenseTask>;
+  public post(path: '/license/virtuozzo/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
   public post(path: PathsLicenseVirtuozzoPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Your License options

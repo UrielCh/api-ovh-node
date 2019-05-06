@@ -1172,240 +1172,20 @@ export class ApiIp extends ApiCommon {
   **/
   public get(path: '/ip', pathParams: undefined, queryParams: {'routedTo.serviceName'?: string, description?: string, type?: IpIpTypeEnum, ip?: string}): Promise<string[]>;
   /**
-  Your IP
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}', pathParams: {ip: string}): Promise<IpIp>;
-  /**
-  List the ip.ReverseDelegation objects
-  Reverse delegation on IPv6 subnet
-  **/
-  public get(path: '/ip/{ip}/delegation', pathParams: {ip: string}): Promise<string[]>;
-  /**
-  Your reverse delegations on IPv6 subnet
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/delegation/{target}', pathParams: {ip: string, target: string}): Promise<IpReverseDelegation>;
-  /**
-  List the ip.MitigationIp objects
-  Ip under mitigation
-  **/
-  public get(path: '/ip/{ip}/mitigation', pathParams: {ip: string}, queryParams: {auto?: boolean, state?: IpMitigationStateEnum}): Promise<string[]>;
-  /**
-  stats operations
-  AntiDDOS option. Get statistics about your traffic in and out during this mitigation
-  **/
-  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/stats', pathParams: {ip: string, ipOnMitigation: string}, queryParams: {from?: string, scale?: IpMitigationStatsScaleEnum, to?: string}): Promise<IpMitigationStats[]>;
-  /**
-  Your IP on mitigation
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}', pathParams: {ip: string, ipOnMitigation: string}): Promise<IpMitigationIp>;
-  /**
-  topStream operations
-  AntiDDOS option. Get top stream on your ip on a specific timestamp
-  **/
-  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/topStream', pathParams: {ip: string, ipOnMitigation: string}, queryParams: {scale?: IpMitigationStatsScaleEnum, date?: string}): Promise<IpMitigationDetailedStats[]>;
-  /**
-  List the ip.ReverseIp objects
-  Reverse on your ip
-  **/
-  public get(path: '/ip/{ip}/reverse', pathParams: {ip: string}): Promise<string[]>;
-  /**
-  Your reverse records on IP
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/reverse/{ipReverse}', pathParams: {ip: string, ipReverse: string}): Promise<IpReverseIp>;
-  /**
-  Your IP on firewall
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/firewall/{ipOnFirewall}', pathParams: {ip: string, ipOnFirewall: string}): Promise<IpFirewallIp>;
-  /**
-  List the ip.FirewallNetworkRule objects
-  Rules for this IP
-  **/
-  public get(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule', pathParams: {ip: string, ipOnFirewall: string}, queryParams: {state?: IpFirewallRuleStateEnum}): Promise<Number[]>;
-  /**
-  Rule on ip
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}', pathParams: {ip: string, ipOnFirewall: string, sequence: Number}): Promise<IpFirewallNetworkRule>;
-  /**
-  List the ip.FirewallIp objects
-  Ip under firewall
-  **/
-  public get(path: '/ip/{ip}/firewall', pathParams: {ip: string}, queryParams: {enabled?: boolean, state?: IpFirewallStateEnum}): Promise<string[]>;
-  /**
-  List the ip.SpamIp objects
-  Ip spamming
-  **/
-  public get(path: '/ip/{ip}/spam', pathParams: {ip: string}, queryParams: {state?: IpSpamStateEnum}): Promise<string[]>;
-  /**
-  stats operations
-  Get statistics about the email traffic
-  **/
-  public get(path: '/ip/{ip}/spam/{ipSpamming}/stats', pathParams: {ip: string, ipSpamming: string}, queryParams: {from?: string, to?: string}): Promise<IpSpamStats[]>;
-  /**
-  Your IP spam stats
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/spam/{ipSpamming}', pathParams: {ip: string, ipSpamming: string}): Promise<IpSpamIp>;
-  /**
-  List the ip.ArpBlockedIp objects
-  ARP blocked IP
-  **/
-  public get(path: '/ip/{ip}/arp', pathParams: {ip: string}, queryParams: {state?: IpArpStateEnum}): Promise<string[]>;
-  /**
-  ARP blocked IP information
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/arp/{ipBlocked}', pathParams: {ip: string, ipBlocked: string}): Promise<IpArpBlockedIp>;
-  /**
-  IP tasks
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/task/{taskId}', pathParams: {ip: string, taskId: Number}): Promise<IpIpTask>;
-  /**
-  List the ip.IpTask objects
-  IP tasks
-  **/
-  public get(path: '/ip/{ip}/task', pathParams: {ip: string}, queryParams: {status?: IpTaskStatusEnum, function?: IpTaskFunctionEnum}): Promise<Number[]>;
-  /**
-  Phishing URLs hosted on your IP
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/phishing/{id}', pathParams: {ip: string, id: Number}): Promise<IpAntiphishing>;
-  /**
-  List the ip.Antiphishing objects
-  Ip under anti-phishing
-  **/
-  public get(path: '/ip/{ip}/phishing', pathParams: {ip: string}, queryParams: {state?: IpAntiphishingStateEnum, ipOnAntiphishing?: string}): Promise<Number[]>;
-  /**
-  List the ip.GameMitigation objects
-  Ip under game anti-ddos
-  **/
-  public get(path: '/ip/{ip}/game', pathParams: {ip: string}): Promise<string[]>;
-  /**
-  Rule on ip:ports
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/game/{ipOnGame}/rule/{id}', pathParams: {ip: string, ipOnGame: string, id: Number}): Promise<IpGameMitigationRule>;
-  /**
-  List the ip.GameMitigationRule objects
-  IDs of rules configured for this IP
-  **/
-  public get(path: '/ip/{ip}/game/{ipOnGame}/rule', pathParams: {ip: string, ipOnGame: string}): Promise<Number[]>;
-  /**
-  GAME Anti-DDoS
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/game/{ipOnGame}', pathParams: {ip: string, ipOnGame: string}): Promise<IpGameMitigation>;
-  /**
-  IP migration to OVH
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/migrationToken', pathParams: {ip: string}): Promise<IpIpMigrationToken>;
-  /**
-  List the ip.MitigationProfile objects
-  Manage mitigation profile on your IPs
-  **/
-  public get(path: '/ip/{ip}/mitigationProfiles', pathParams: {ip: string}): Promise<string[]>;
-  /**
-  Mitigation profile for your ip
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}', pathParams: {ip: string, ipMitigationProfile: string}): Promise<IpMitigationProfile>;
-  /**
-  List the license.virtuozzo.Virtuozzo objects
-  Virtuozzo licenses associated to this IP
-  **/
-  public get(path: '/ip/{ip}/license/virtuozzo', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
-  /**
-  List the license.cpanel.Cpanel objects
-  Cpanel licenses associated to this IP
-  **/
-  public get(path: '/ip/{ip}/license/cpanel', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
-  /**
-  List the license.plesk.Plesk objects
-  Plesk licenses associated to this IP
-  **/
-  public get(path: '/ip/{ip}/license/plesk', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
-  /**
-  List the license.worklight.WorkLight objects
-  WorkLight licenses associated to this IP
-  **/
-  public get(path: '/ip/{ip}/license/worklight', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
-  /**
-  List the license.sqlserver.SqlServer objects
-  SQL Server licenses associated to this IP
-  **/
-  public get(path: '/ip/{ip}/license/sqlserver', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
-  /**
-  List the license.directadmin.DirectAdmin objects
-  DirectAdmin licenses associated to this IP
-  **/
-  public get(path: '/ip/{ip}/license/directadmin', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
-  /**
-  List the license.cloudLinux.CloudLinux objects
-  Cloud Linux licenses associated to this IP
-  **/
-  public get(path: '/ip/{ip}/license/cloudLinux', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
-  /**
-  List the license.windows.Windows objects
-  Windows licenses associated to this IP
-  **/
-  public get(path: '/ip/{ip}/license/windows', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
-  /**
-  move operations
-  List services available as a destination
-  **/
-  public get(path: '/ip/{ip}/move', pathParams: {ip: string}): Promise<IpDestinations>;
-  /**
-  IP block RIPE informations
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/ripe', pathParams: {ip: string}): Promise<IpRipeInfos>;
-  /**
-  Blocked IP information
-  Get this object properties
-  **/
-  public get(path: '/ip/{ip}/antihack/{ipBlocked}', pathParams: {ip: string, ipBlocked: string}): Promise<IpBlockedIp>;
-  /**
-  List the ip.BlockedIp objects
-  Anti-Hack blocked IP
-  **/
-  public get(path: '/ip/{ip}/antihack', pathParams: {ip: string}, queryParams: {state?: IpBlockedIpStateEnum}): Promise<string[]>;
-  /**
   Operations about the IP service
   List available services
   **/
-  public get(path: '/ip/service'): Promise<string[]>;
-  /**
-  Details about a non-expiring Service
-  Get this object properties
-  **/
-  public get(path: '/ip/service/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesNonExpiringService>;
-  /**
-  Your IP linked to service
-  Get this object properties
-  **/
-  public get(path: '/ip/service/{serviceName}', pathParams: {serviceName: string}): Promise<IpServiceIp>;
-  /**
-  probeIp operations
-  Ip subnet used to send probes to your backends
-  **/
-  public get(path: '/ip/loadBalancing/{serviceName}/probeIp', pathParams: {serviceName: string}, queryParams: {zone?: IpLoadBalancingZoneEnum}): Promise<string[]>;
-  /**
-  allowedBackends operations
-  List of backends you can attach to your IP
-  **/
-  public get(path: '/ip/loadBalancing/{serviceName}/allowedBackends', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/ip/loadBalancing'): Promise<string[]>;
   /**
   Your load balancing IP
   Get this object properties
   **/
   public get(path: '/ip/loadBalancing/{serviceName}', pathParams: {serviceName: string}): Promise<IpLoadBalancingIp>;
+  /**
+  allowedBackends operations
+  List of backends you can attach to your IP
+  **/
+  public get(path: '/ip/loadBalancing/{serviceName}/allowedBackends', pathParams: {serviceName: string}): Promise<string[]>;
   /**
   List the ip.LoadBalancingBackendIp objects
   Backends for this IP load balancing
@@ -1416,11 +1196,6 @@ export class ApiIp extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', pathParams: {serviceName: string, backend: string}): Promise<IpLoadBalancingBackendIp>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/ip/loadBalancing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   internalNatIp operations
   Ip subnet used by OVH to nat requests on your ip lb to your backends. You must ensure that your backends are not part of a network that overlap with this one.
@@ -1437,31 +1212,266 @@ export class ApiIp extends ApiCommon {
   **/
   public get(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}', pathParams: {serviceName: string, srcPort: IpLoadBalancingAdditionalPortEnum}): Promise<IpLoadBalancingIpLoadBalancingPort>;
   /**
-  List of tasks associated with your IP load balancing
+  probeIp operations
+  Ip subnet used to send probes to your backends
+  **/
+  public get(path: '/ip/loadBalancing/{serviceName}/probeIp', pathParams: {serviceName: string}, queryParams: {zone?: IpLoadBalancingZoneEnum}): Promise<string[]>;
+  /**
+  Details about a Service
   Get this object properties
   **/
-  public get(path: '/ip/loadBalancing/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<IpLoadBalancingTask>;
+  public get(path: '/ip/loadBalancing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   List the ip.LoadBalancingTask objects
   Task list associated with this IP
   **/
   public get(path: '/ip/loadBalancing/{serviceName}/task', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
+  List of tasks associated with your IP load balancing
+  Get this object properties
+  **/
+  public get(path: '/ip/loadBalancing/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<IpLoadBalancingTask>;
+  /**
   Operations about the IP service
   List available services
   **/
-  public get(path: '/ip/loadBalancing'): Promise<string[]>;
+  public get(path: '/ip/service'): Promise<string[]>;
+  /**
+  Your IP linked to service
+  Get this object properties
+  **/
+  public get(path: '/ip/service/{serviceName}', pathParams: {serviceName: string}): Promise<IpServiceIp>;
+  /**
+  Details about a non-expiring Service
+  Get this object properties
+  **/
+  public get(path: '/ip/service/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesNonExpiringService>;
+  /**
+  Your IP
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}', pathParams: {ip: string}): Promise<IpIp>;
+  /**
+  List the ip.BlockedIp objects
+  Anti-Hack blocked IP
+  **/
+  public get(path: '/ip/{ip}/antihack', pathParams: {ip: string}, queryParams: {state?: IpBlockedIpStateEnum}): Promise<string[]>;
+  /**
+  Blocked IP information
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/antihack/{ipBlocked}', pathParams: {ip: string, ipBlocked: string}): Promise<IpBlockedIp>;
+  /**
+  List the ip.ArpBlockedIp objects
+  ARP blocked IP
+  **/
+  public get(path: '/ip/{ip}/arp', pathParams: {ip: string}, queryParams: {state?: IpArpStateEnum}): Promise<string[]>;
+  /**
+  ARP blocked IP information
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/arp/{ipBlocked}', pathParams: {ip: string, ipBlocked: string}): Promise<IpArpBlockedIp>;
+  /**
+  List the ip.ReverseDelegation objects
+  Reverse delegation on IPv6 subnet
+  **/
+  public get(path: '/ip/{ip}/delegation', pathParams: {ip: string}): Promise<string[]>;
+  /**
+  Your reverse delegations on IPv6 subnet
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/delegation/{target}', pathParams: {ip: string, target: string}): Promise<IpReverseDelegation>;
+  /**
+  List the ip.FirewallIp objects
+  Ip under firewall
+  **/
+  public get(path: '/ip/{ip}/firewall', pathParams: {ip: string}, queryParams: {enabled?: boolean, state?: IpFirewallStateEnum}): Promise<string[]>;
+  /**
+  Your IP on firewall
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/firewall/{ipOnFirewall}', pathParams: {ip: string, ipOnFirewall: string}): Promise<IpFirewallIp>;
+  /**
+  List the ip.FirewallNetworkRule objects
+  Rules for this IP
+  **/
+  public get(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule', pathParams: {ip: string, ipOnFirewall: string}, queryParams: {state?: IpFirewallRuleStateEnum}): Promise<Number[]>;
+  /**
+  Rule on ip
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}', pathParams: {ip: string, ipOnFirewall: string, sequence: Number}): Promise<IpFirewallNetworkRule>;
+  /**
+  List the ip.GameMitigation objects
+  Ip under game anti-ddos
+  **/
+  public get(path: '/ip/{ip}/game', pathParams: {ip: string}): Promise<string[]>;
+  /**
+  GAME Anti-DDoS
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/game/{ipOnGame}', pathParams: {ip: string, ipOnGame: string}): Promise<IpGameMitigation>;
+  /**
+  List the ip.GameMitigationRule objects
+  IDs of rules configured for this IP
+  **/
+  public get(path: '/ip/{ip}/game/{ipOnGame}/rule', pathParams: {ip: string, ipOnGame: string}): Promise<Number[]>;
+  /**
+  Rule on ip:ports
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/game/{ipOnGame}/rule/{id}', pathParams: {ip: string, ipOnGame: string, id: Number}): Promise<IpGameMitigationRule>;
+  /**
+  List the license.cloudLinux.CloudLinux objects
+  Cloud Linux licenses associated to this IP
+  **/
+  public get(path: '/ip/{ip}/license/cloudLinux', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  /**
+  List the license.cpanel.Cpanel objects
+  Cpanel licenses associated to this IP
+  **/
+  public get(path: '/ip/{ip}/license/cpanel', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  /**
+  List the license.directadmin.DirectAdmin objects
+  DirectAdmin licenses associated to this IP
+  **/
+  public get(path: '/ip/{ip}/license/directadmin', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  /**
+  List the license.plesk.Plesk objects
+  Plesk licenses associated to this IP
+  **/
+  public get(path: '/ip/{ip}/license/plesk', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  /**
+  List the license.sqlserver.SqlServer objects
+  SQL Server licenses associated to this IP
+  **/
+  public get(path: '/ip/{ip}/license/sqlserver', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  /**
+  List the license.virtuozzo.Virtuozzo objects
+  Virtuozzo licenses associated to this IP
+  **/
+  public get(path: '/ip/{ip}/license/virtuozzo', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  /**
+  List the license.windows.Windows objects
+  Windows licenses associated to this IP
+  **/
+  public get(path: '/ip/{ip}/license/windows', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  /**
+  List the license.worklight.WorkLight objects
+  WorkLight licenses associated to this IP
+  **/
+  public get(path: '/ip/{ip}/license/worklight', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  /**
+  IP migration to OVH
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/migrationToken', pathParams: {ip: string}): Promise<IpIpMigrationToken>;
+  /**
+  List the ip.MitigationIp objects
+  Ip under mitigation
+  **/
+  public get(path: '/ip/{ip}/mitigation', pathParams: {ip: string}, queryParams: {auto?: boolean, state?: IpMitigationStateEnum}): Promise<string[]>;
+  /**
+  Your IP on mitigation
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}', pathParams: {ip: string, ipOnMitigation: string}): Promise<IpMitigationIp>;
+  /**
+  stats operations
+  AntiDDOS option. Get statistics about your traffic in and out during this mitigation
+  **/
+  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/stats', pathParams: {ip: string, ipOnMitigation: string}, queryParams: {from?: string, scale?: IpMitigationStatsScaleEnum, to?: string}): Promise<IpMitigationStats[]>;
+  /**
+  topStream operations
+  AntiDDOS option. Get top stream on your ip on a specific timestamp
+  **/
+  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/topStream', pathParams: {ip: string, ipOnMitigation: string}, queryParams: {scale?: IpMitigationStatsScaleEnum, date?: string}): Promise<IpMitigationDetailedStats[]>;
+  /**
+  List the ip.MitigationProfile objects
+  Manage mitigation profile on your IPs
+  **/
+  public get(path: '/ip/{ip}/mitigationProfiles', pathParams: {ip: string}): Promise<string[]>;
+  /**
+  Mitigation profile for your ip
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}', pathParams: {ip: string, ipMitigationProfile: string}): Promise<IpMitigationProfile>;
+  /**
+  move operations
+  List services available as a destination
+  **/
+  public get(path: '/ip/{ip}/move', pathParams: {ip: string}): Promise<IpDestinations>;
+  /**
+  List the ip.Antiphishing objects
+  Ip under anti-phishing
+  **/
+  public get(path: '/ip/{ip}/phishing', pathParams: {ip: string}, queryParams: {state?: IpAntiphishingStateEnum, ipOnAntiphishing?: string}): Promise<Number[]>;
+  /**
+  Phishing URLs hosted on your IP
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/phishing/{id}', pathParams: {ip: string, id: Number}): Promise<IpAntiphishing>;
+  /**
+  List the ip.ReverseIp objects
+  Reverse on your ip
+  **/
+  public get(path: '/ip/{ip}/reverse', pathParams: {ip: string}): Promise<string[]>;
+  /**
+  Your reverse records on IP
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/reverse/{ipReverse}', pathParams: {ip: string, ipReverse: string}): Promise<IpReverseIp>;
+  /**
+  IP block RIPE informations
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/ripe', pathParams: {ip: string}): Promise<IpRipeInfos>;
+  /**
+  List the ip.SpamIp objects
+  Ip spamming
+  **/
+  public get(path: '/ip/{ip}/spam', pathParams: {ip: string}, queryParams: {state?: IpSpamStateEnum}): Promise<string[]>;
+  /**
+  Your IP spam stats
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/spam/{ipSpamming}', pathParams: {ip: string, ipSpamming: string}): Promise<IpSpamIp>;
+  /**
+  stats operations
+  Get statistics about the email traffic
+  **/
+  public get(path: '/ip/{ip}/spam/{ipSpamming}/stats', pathParams: {ip: string, ipSpamming: string}, queryParams: {from?: string, to?: string}): Promise<IpSpamStats[]>;
+  /**
+  List the ip.IpTask objects
+  IP tasks
+  **/
+  public get(path: '/ip/{ip}/task', pathParams: {ip: string}, queryParams: {status?: IpTaskStatusEnum, function?: IpTaskFunctionEnum}): Promise<Number[]>;
+  /**
+  IP tasks
+  Get this object properties
+  **/
+  public get(path: '/ip/{ip}/task/{taskId}', pathParams: {ip: string, taskId: Number}): Promise<IpIpTask>;
   public get(path: PathsIpGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  /**
+  Backends attached to your IP load balancing
+  Alter this object properties
+  **/
+  public put(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', pathParams: {serviceName: string, backend: string}): Promise<void>;
+  /**
+  Details about a Service
+  Alter this object properties
+  **/
+  public put(path: '/ip/loadBalancing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  Your IP linked to service
+  Alter this object properties
+  **/
+  public put(path: '/ip/service/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
   /**
   Your IP
   Alter this object properties
   **/
   public put(path: '/ip/{ip}', pathParams: {ip: string}): Promise<void>;
-  /**
-  Your IP on mitigation
-  Alter this object properties
-  **/
-  public put(path: '/ip/{ip}/mitigation/{ipOnMitigation}', pathParams: {ip: string, ipOnMitigation: string}): Promise<void>;
   /**
   Your IP on firewall
   Alter this object properties
@@ -1473,6 +1483,11 @@ export class ApiIp extends ApiCommon {
   **/
   public put(path: '/ip/{ip}/game/{ipOnGame}', pathParams: {ip: string, ipOnGame: string}): Promise<void>;
   /**
+  Your IP on mitigation
+  Alter this object properties
+  **/
+  public put(path: '/ip/{ip}/mitigation/{ipOnMitigation}', pathParams: {ip: string, ipOnMitigation: string}): Promise<void>;
+  /**
   Mitigation profile for your ip
   Alter this object properties
   **/
@@ -1482,67 +1497,92 @@ export class ApiIp extends ApiCommon {
   Alter this object properties
   **/
   public put(path: '/ip/{ip}/ripe', pathParams: {ip: string}): Promise<void>;
-  /**
-  Your IP linked to service
-  Alter this object properties
-  **/
-  public put(path: '/ip/service/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  Backends attached to your IP load balancing
-  Alter this object properties
-  **/
-  public put(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', pathParams: {serviceName: string, backend: string}): Promise<void>;
-  /**
-  Details about a Service
-  Alter this object properties
-  **/
-  public put(path: '/ip/loadBalancing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsIpPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  List the ip.ReverseDelegation objects
-  Add target for reverse delegation on IPv6 subnet
+  List the ip.LoadBalancingBackendIp objects
+  Add a new backend on your IP load balancing
   **/
-  public post(path: '/ip/{ip}/delegation', pathParams: {ip: string}): Promise<IpReverseDelegation>;
+  public post(path: '/ip/loadBalancing/{serviceName}/backend', pathParams: {serviceName: string}): Promise<IpLoadBalancingTask>;
+  /**
+  backupState operations
+  Set or unset the backend as a backup of another backend. Requests will be directed to the backup only if the main backend is in probe fail
+  **/
+  public post(path: '/ip/loadBalancing/{serviceName}/backend/{backend}/backupState', pathParams: {serviceName: string, backend: string}): Promise<IpLoadBalancingTask>;
+  /**
+  setWeight operations
+  Set the weight of a backend. For instance, if backend A has a weight of 8 and backup B was a weight of 16, backend B will receive twice more connections as backend A. Backends must be on the same POP for the weight parameter to take effect between them.
+  **/
+  public post(path: '/ip/loadBalancing/{serviceName}/backend/{backend}/setWeight', pathParams: {serviceName: string, backend: string}): Promise<IpLoadBalancingTask>;
+  /**
+  importCustomSsl operations
+  Import your own ssl certificate on your IP load balancing. Ssl option is needed to use this url.
+  **/
+  public post(path: '/ip/loadBalancing/{serviceName}/importCustomSsl', pathParams: {serviceName: string}): Promise<IpLoadBalancingTask>;
+  /**
+  List the portsRedirection objects
+  Add a new port redirection
+  **/
+  public post(path: '/ip/loadBalancing/{serviceName}/portsRedirection', pathParams: {serviceName: string}): Promise<IpLoadBalancingTask>;
+  /**
+  restoreSsl operations
+  Restore OVH' ssl certificate on your IP load balancing. Ssl option is needed to use this url. (A DCV mail will be sent to postmaster@your-domain.abc)
+  **/
+  public post(path: '/ip/loadBalancing/{serviceName}/restoreSsl', pathParams: {serviceName: string}): Promise<IpLoadBalancingTask>;
+  /**
+  stickiness operations
+  Set Stickiness type. 'ipSource' will stick clients to a backend by their source ip, 'cookie' will stick them by inserting a cookie, 'none' is to set no stickiness
+  **/
+  public post(path: '/ip/loadBalancing/{serviceName}/stickiness', pathParams: {serviceName: string}): Promise<IpLoadBalancingTask>;
+  /**
+  switchToIplbNextGenerationApi operations
+  Switch to ipLoadbalancing next-gen API. Benefits : additionnals probes, DDOS protection.
+  **/
+  public post(path: '/ip/loadBalancing/{serviceName}/switchToIplbNextGenerationApi', pathParams: {serviceName: string}): Promise<IpLoadbalancingTaskTask>;
+  /**
+  Change the contacts of this service
+  Launch a contact change procedure
+  **/
+  public post(path: '/ip/service/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Confirm termination of your service
+  Confirm termination of your service
+  **/
+  public post(path: '/ip/service/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/ip/service/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  unblock operations
+  Unblock this IP
+  **/
+  public post(path: '/ip/{ip}/antihack/{ipBlocked}/unblock', pathParams: {ip: string, ipBlocked: string}): Promise<void>;
+  /**
+  unblock operations
+  Unblock this IP
+  **/
+  public post(path: '/ip/{ip}/arp/{ipBlocked}/unblock', pathParams: {ip: string, ipBlocked: string}): Promise<void>;
   /**
   changeOrg operations
   Change organisation of this IP
   **/
   public post(path: '/ip/{ip}/changeOrg', pathParams: {ip: string}): Promise<IpIpTask>;
   /**
-  List the ip.MitigationIp objects
-  AntiDDOS option. Add new IP on permanent mitigation
+  List the ip.ReverseDelegation objects
+  Add target for reverse delegation on IPv6 subnet
   **/
-  public post(path: '/ip/{ip}/mitigation', pathParams: {ip: string}): Promise<IpMitigationIp>;
-  /**
-  List the ip.ReverseIp objects
-  Add reverse on an ip
-  **/
-  public post(path: '/ip/{ip}/reverse', pathParams: {ip: string}): Promise<IpReverseIp>;
-  /**
-  park operations
-  Park this IP
-  **/
-  public post(path: '/ip/{ip}/park', pathParams: {ip: string}): Promise<IpIpTask>;
-  /**
-  List the ip.FirewallNetworkRule objects
-  AntiDDOS option. Add new rule on your IP
-  **/
-  public post(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule', pathParams: {ip: string, ipOnFirewall: string}): Promise<IpFirewallNetworkRule>;
+  public post(path: '/ip/{ip}/delegation', pathParams: {ip: string}): Promise<IpReverseDelegation>;
   /**
   List the ip.FirewallIp objects
   AntiDDOS option. Add new IP on firewall
   **/
   public post(path: '/ip/{ip}/firewall', pathParams: {ip: string}): Promise<IpFirewallIp>;
   /**
-  unblock operations
-  Release the ip from anti-spam system
+  List the ip.FirewallNetworkRule objects
+  AntiDDOS option. Add new rule on your IP
   **/
-  public post(path: '/ip/{ip}/spam/{ipSpamming}/unblock', pathParams: {ip: string, ipSpamming: string}): Promise<IpSpamIp>;
-  /**
-  unblock operations
-  Unblock this IP
-  **/
-  public post(path: '/ip/{ip}/arp/{ipBlocked}/unblock', pathParams: {ip: string, ipBlocked: string}): Promise<void>;
+  public post(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule', pathParams: {ip: string, ipOnFirewall: string}): Promise<IpFirewallNetworkRule>;
   /**
   List the ip.GameMitigationRule objects
   Add new rule on your IP
@@ -1554,10 +1594,10 @@ export class ApiIp extends ApiCommon {
   **/
   public post(path: '/ip/{ip}/migrationToken', pathParams: {ip: string}): Promise<IpIpMigrationToken>;
   /**
-  terminate operations
-  Delete a failover IP
+  List the ip.MitigationIp objects
+  AntiDDOS option. Add new IP on permanent mitigation
   **/
-  public post(path: '/ip/{ip}/terminate', pathParams: {ip: string}): Promise<IpIpTask>;
+  public post(path: '/ip/{ip}/mitigation', pathParams: {ip: string}): Promise<IpMitigationIp>;
   /**
   List the ip.MitigationProfile objects
   Create new profile for one of your ip
@@ -1569,81 +1609,41 @@ export class ApiIp extends ApiCommon {
   **/
   public post(path: '/ip/{ip}/move', pathParams: {ip: string}): Promise<IpIpTask>;
   /**
+  park operations
+  Park this IP
+  **/
+  public post(path: '/ip/{ip}/park', pathParams: {ip: string}): Promise<IpIpTask>;
+  /**
+  List the ip.ReverseIp objects
+  Add reverse on an ip
+  **/
+  public post(path: '/ip/{ip}/reverse', pathParams: {ip: string}): Promise<IpReverseIp>;
+  /**
   unblock operations
-  Unblock this IP
+  Release the ip from anti-spam system
   **/
-  public post(path: '/ip/{ip}/antihack/{ipBlocked}/unblock', pathParams: {ip: string, ipBlocked: string}): Promise<void>;
+  public post(path: '/ip/{ip}/spam/{ipSpamming}/unblock', pathParams: {ip: string, ipSpamming: string}): Promise<IpSpamIp>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
+  terminate operations
+  Delete a failover IP
   **/
-  public post(path: '/ip/service/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
-  public post(path: '/ip/service/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  Terminate your service
-  Terminate your service
-  **/
-  public post(path: '/ip/service/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  switchToIplbNextGenerationApi operations
-  Switch to ipLoadbalancing next-gen API. Benefits : additionnals probes, DDOS protection.
-  **/
-  public post(path: '/ip/loadBalancing/{serviceName}/switchToIplbNextGenerationApi', pathParams: {serviceName: string}): Promise<IpLoadbalancingTaskTask>;
-  /**
-  List the ip.LoadBalancingBackendIp objects
-  Add a new backend on your IP load balancing
-  **/
-  public post(path: '/ip/loadBalancing/{serviceName}/backend', pathParams: {serviceName: string}): Promise<IpLoadBalancingTask>;
-  /**
-  setWeight operations
-  Set the weight of a backend. For instance, if backend A has a weight of 8 and backup B was a weight of 16, backend B will receive twice more connections as backend A. Backends must be on the same POP for the weight parameter to take effect between them.
-  **/
-  public post(path: '/ip/loadBalancing/{serviceName}/backend/{backend}/setWeight', pathParams: {serviceName: string, backend: string}): Promise<IpLoadBalancingTask>;
-  /**
-  backupState operations
-  Set or unset the backend as a backup of another backend. Requests will be directed to the backup only if the main backend is in probe fail
-  **/
-  public post(path: '/ip/loadBalancing/{serviceName}/backend/{backend}/backupState', pathParams: {serviceName: string, backend: string}): Promise<IpLoadBalancingTask>;
-  /**
-  stickiness operations
-  Set Stickiness type. 'ipSource' will stick clients to a backend by their source ip, 'cookie' will stick them by inserting a cookie, 'none' is to set no stickiness
-  **/
-  public post(path: '/ip/loadBalancing/{serviceName}/stickiness', pathParams: {serviceName: string}): Promise<IpLoadBalancingTask>;
-  /**
-  restoreSsl operations
-  Restore OVH' ssl certificate on your IP load balancing. Ssl option is needed to use this url. (A DCV mail will be sent to postmaster@your-domain.abc)
-  **/
-  public post(path: '/ip/loadBalancing/{serviceName}/restoreSsl', pathParams: {serviceName: string}): Promise<IpLoadBalancingTask>;
-  /**
-  importCustomSsl operations
-  Import your own ssl certificate on your IP load balancing. Ssl option is needed to use this url.
-  **/
-  public post(path: '/ip/loadBalancing/{serviceName}/importCustomSsl', pathParams: {serviceName: string}): Promise<IpLoadBalancingTask>;
-  /**
-  List the portsRedirection objects
-  Add a new port redirection
-  **/
-  public post(path: '/ip/loadBalancing/{serviceName}/portsRedirection', pathParams: {serviceName: string}): Promise<IpLoadBalancingTask>;
+  public post(path: '/ip/{ip}/terminate', pathParams: {ip: string}): Promise<IpIpTask>;
   public post(path: PathsIpPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  /**
+  Backends attached to your IP load balancing
+  Remove a backend IP
+  **/
+  public delete(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', pathParams: {serviceName: string, backend: string}): Promise<IpLoadBalancingTask>;
+  /**
+  Port redirections
+  Delete a port redirection
+  **/
+  public delete(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}', pathParams: {serviceName: string, srcPort: IpLoadBalancingAdditionalPortEnum}): Promise<IpLoadBalancingTask>;
   /**
   Your reverse delegations on IPv6 subnet
   Delete a target for reverse delegation on IPv6 subnet
   **/
   public delete(path: '/ip/{ip}/delegation/{target}', pathParams: {ip: string, target: string}): Promise<void>;
-  /**
-  Your IP on mitigation
-  AntiDDOS option. Delete IP from mitigation
-  **/
-  public delete(path: '/ip/{ip}/mitigation/{ipOnMitigation}', pathParams: {ip: string, ipOnMitigation: string}): Promise<IpMitigationIp>;
-  /**
-  Your reverse records on IP
-  Delete a reverse on one IP
-  **/
-  public delete(path: '/ip/{ip}/reverse/{ipReverse}', pathParams: {ip: string, ipReverse: string}): Promise<void>;
   /**
   Your IP on firewall
   AntiDDOS option. Delete IP and rules from firewall
@@ -1660,19 +1660,19 @@ export class ApiIp extends ApiCommon {
   **/
   public delete(path: '/ip/{ip}/game/{ipOnGame}/rule/{id}', pathParams: {ip: string, ipOnGame: string, id: Number}): Promise<IpGameMitigationRule>;
   /**
+  Your IP on mitigation
+  AntiDDOS option. Delete IP from mitigation
+  **/
+  public delete(path: '/ip/{ip}/mitigation/{ipOnMitigation}', pathParams: {ip: string, ipOnMitigation: string}): Promise<IpMitigationIp>;
+  /**
   Mitigation profile for your ip
   Delete mitigation profile
   **/
   public delete(path: '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}', pathParams: {ip: string, ipMitigationProfile: string}): Promise<void>;
   /**
-  Backends attached to your IP load balancing
-  Remove a backend IP
+  Your reverse records on IP
+  Delete a reverse on one IP
   **/
-  public delete(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', pathParams: {serviceName: string, backend: string}): Promise<IpLoadBalancingTask>;
-  /**
-  Port redirections
-  Delete a port redirection
-  **/
-  public delete(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}', pathParams: {serviceName: string, srcPort: IpLoadBalancingAdditionalPortEnum}): Promise<IpLoadBalancingTask>;
+  public delete(path: '/ip/{ip}/reverse/{ipReverse}', pathParams: {ip: string, ipReverse: string}): Promise<void>;
   public delete(path: PathsIpDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

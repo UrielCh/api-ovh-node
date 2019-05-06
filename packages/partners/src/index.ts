@@ -877,6 +877,11 @@ export class ApiPartners extends ApiCommon {
     super(config);
   }
   /**
+  Company.list
+  List created companies
+  **/
+  public get(path: '/partners/register/company'): Promise<string[]>;
+  /**
   Company.get
   Get information on a created company
   **/
@@ -887,20 +892,15 @@ export class ApiPartners extends ApiCommon {
   **/
   public get(path: '/partners/register/company/{companyId}/application', pathParams: {companyId: string}): Promise<PartnerApplication>;
   /**
-  Contact.get
-  Get information on a created contact
-  **/
-  public get(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<PartnerContact>;
-  /**
   Contact.list
   List created contacts
   **/
   public get(path: '/partners/register/company/{companyId}/contact', pathParams: {companyId: string}): Promise<string[]>;
   /**
-  Company.list
-  List created companies
+  Contact.get
+  Get information on a created contact
   **/
-  public get(path: '/partners/register/company'): Promise<string[]>;
+  public get(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<PartnerContact>;
   public get(path: PathsPartnersGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Company.get
@@ -914,6 +914,11 @@ export class ApiPartners extends ApiCommon {
   public put(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<PartnerContact>;
   public put(path: PathsPartnersPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
+  Company.list
+  Created a new company for the inscription
+  **/
+  public post(path: '/partners/register/company'): Promise<PartnerCompany>;
+  /**
   Application.create
   Submit application information for validation
   **/
@@ -923,11 +928,6 @@ export class ApiPartners extends ApiCommon {
   Created a new contact for the inscription
   **/
   public post(path: '/partners/register/company/{companyId}/contact', pathParams: {companyId: string}): Promise<PartnerContact>;
-  /**
-  Company.list
-  Created a new company for the inscription
-  **/
-  public post(path: '/partners/register/company'): Promise<PartnerCompany>;
   public post(path: PathsPartnersPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Company.get

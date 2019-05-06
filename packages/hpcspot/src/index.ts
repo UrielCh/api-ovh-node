@@ -179,30 +179,30 @@ export class ApiHpcspot extends ApiCommon {
     super(config);
   }
   /**
+  Operations about the HPCSPOT service
+  List available services
+  **/
+  public get(path: '/hpcspot'): Promise<string[]>;
+  /**
   Account HPC Spot
   Get this object properties
   **/
   public get(path: '/hpcspot/{serviceName}', pathParams: {serviceName: string}): Promise<HpcspotAccount>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/hpcspot/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  Detail of a HPC Spot consumtion
-  Get this object properties
-  **/
-  public get(path: '/hpcspot/{serviceName}/consumption/{id}', pathParams: {serviceName: string, id: Number}): Promise<HpcspotConsumption>;
   /**
   List the hpcspot.Consumption objects
   Details of the consumption of your account
   **/
   public get(path: '/hpcspot/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams: {orderId?: Number, 'hpcspotItemEndDate.to'?: string, hpcspotItemId?: Number, 'hpcspotItemEndDate.from'?: string, type?: HpcspotConsumptionTypeEnum}): Promise<Number[]>;
   /**
-  Operations about the HPCSPOT service
-  List available services
+  Detail of a HPC Spot consumtion
+  Get this object properties
   **/
-  public get(path: '/hpcspot'): Promise<string[]>;
+  public get(path: '/hpcspot/{serviceName}/consumption/{id}', pathParams: {serviceName: string, id: Number}): Promise<HpcspotConsumption>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/hpcspot/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   public get(path: PathsHpcspotGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service

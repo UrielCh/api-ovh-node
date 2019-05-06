@@ -377,6 +377,31 @@ export class ApiSaasCsp2 extends ApiCommon {
   **/
   public get(path: '/saas/csp2'): Promise<string[]>;
   /**
+  Office tenant
+  Get this object properties
+  **/
+  public get(path: '/saas/csp2/{serviceName}', pathParams: {serviceName: string}): Promise<SaasCsp2OfficeTenant>;
+  /**
+  billingPeriodPeaks operations
+  Get the curren billing period's usage peak for each subscription
+  **/
+  public get(path: '/saas/csp2/{serviceName}/billingPeriodPeaks', pathParams: {serviceName: string}): Promise<SaasCsp2BillingStatistics>;
+  /**
+  List the saas.csp2.OfficeLicence objects
+  Licenses available for order
+  **/
+  public get(path: '/saas/csp2/{serviceName}/orderableLicenses', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Office licence
+  Get this object properties
+  **/
+  public get(path: '/saas/csp2/{serviceName}/orderableLicenses/{id}', pathParams: {serviceName: string, id: Number}): Promise<SaasCsp2OfficeLicence>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/saas/csp2/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
   List the saas.csp2.OfficeSubscription objects
   Subscriptions associated to this office tenant
   **/
@@ -397,45 +422,20 @@ export class ApiSaasCsp2 extends ApiCommon {
   **/
   public get(path: '/saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses', pathParams: {serviceName: string, id: Number}): Promise<Number[]>;
   /**
-  Office tenant
-  Get this object properties
+  List the saas.csp2.OfficeTask objects
+  Pending tasks of this tenant
   **/
-  public get(path: '/saas/csp2/{serviceName}', pathParams: {serviceName: string}): Promise<SaasCsp2OfficeTenant>;
+  public get(path: '/saas/csp2/{serviceName}/task', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
   Office task
   Get this object properties
   **/
   public get(path: '/saas/csp2/{serviceName}/task/{id}', pathParams: {serviceName: string, id: Number}): Promise<SaasCsp2OfficeTask>;
   /**
-  List the saas.csp2.OfficeTask objects
-  Pending tasks of this tenant
-  **/
-  public get(path: '/saas/csp2/{serviceName}/task', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  billingPeriodPeaks operations
-  Get the curren billing period's usage peak for each subscription
-  **/
-  public get(path: '/saas/csp2/{serviceName}/billingPeriodPeaks', pathParams: {serviceName: string}): Promise<SaasCsp2BillingStatistics>;
-  /**
   usageStatistics operations
   Get the usage statistics over the chose period
   **/
   public get(path: '/saas/csp2/{serviceName}/usageStatistics', pathParams: {serviceName: string}, queryParams: {timePeriod?: MsServicesLicensePeriodEnum}): Promise<SaasCsp2Statistics[]>;
-  /**
-  Office licence
-  Get this object properties
-  **/
-  public get(path: '/saas/csp2/{serviceName}/orderableLicenses/{id}', pathParams: {serviceName: string, id: Number}): Promise<SaasCsp2OfficeLicence>;
-  /**
-  List the saas.csp2.OfficeLicence objects
-  Licenses available for order
-  **/
-  public get(path: '/saas/csp2/{serviceName}/orderableLicenses', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/saas/csp2/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   public get(path: PathsSaasCsp2GET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Office tenant
@@ -449,30 +449,30 @@ export class ApiSaasCsp2 extends ApiCommon {
   public put(path: '/saas/csp2/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsSaasCsp2PUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  List the saas.csp2.OfficeSubscription objects
-  Add a subscription to this tenant
+  changeAdministratorPassword operations
+  Changes the tenant administrator's password
   **/
-  public post(path: '/saas/csp2/{serviceName}/subscription', pathParams: {serviceName: string}): Promise<SaasCsp2OfficeTask>;
-  /**
-  orderAddon operations
-  Creates a new subscription as an addon for this subscription
-  **/
-  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/orderAddon', pathParams: {serviceName: string, id: Number}): Promise<SaasCsp2OfficeTask>;
-  /**
-  changeQuantity operations
-  Change the quantity of seats in the subscription
-  **/
-  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/changeQuantity', pathParams: {serviceName: string, id: Number}): Promise<SaasCsp2OfficeTask>;
+  public post(path: '/saas/csp2/{serviceName}/changeAdministratorPassword', pathParams: {serviceName: string}): Promise<SaasCsp2OfficeTask>;
   /**
   configureDomain operations
   Automatically sets up an OVH-hosted domain of yours for your office365 services. Note, this requires the domain to not have any interfering MX/SRV/TXT records
   **/
   public post(path: '/saas/csp2/{serviceName}/configureDomain', pathParams: {serviceName: string}): Promise<SaasCsp2OfficeTask>;
   /**
-  changeAdministratorPassword operations
-  Changes the tenant administrator's password
+  List the saas.csp2.OfficeSubscription objects
+  Add a subscription to this tenant
   **/
-  public post(path: '/saas/csp2/{serviceName}/changeAdministratorPassword', pathParams: {serviceName: string}): Promise<SaasCsp2OfficeTask>;
+  public post(path: '/saas/csp2/{serviceName}/subscription', pathParams: {serviceName: string}): Promise<SaasCsp2OfficeTask>;
+  /**
+  changeQuantity operations
+  Change the quantity of seats in the subscription
+  **/
+  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/changeQuantity', pathParams: {serviceName: string, id: Number}): Promise<SaasCsp2OfficeTask>;
+  /**
+  orderAddon operations
+  Creates a new subscription as an addon for this subscription
+  **/
+  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/orderAddon', pathParams: {serviceName: string, id: Number}): Promise<SaasCsp2OfficeTask>;
   public post(path: PathsSaasCsp2POST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Office subscription

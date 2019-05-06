@@ -452,15 +452,20 @@ export class ApiHorizonView extends ApiCommon {
     super(config);
   }
   /**
-  Details about a Service
-  Get this object properties
+  Operations about the HORIZONVIEW service
+  List available services
   **/
-  public get(path: '/horizonView/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/horizonView'): Promise<string[]>;
   /**
   Cloud Desktop Infrastructure Datacenter
   Get this object properties
   **/
   public get(path: '/horizonView/{serviceName}', pathParams: {serviceName: string}): Promise<HorizonViewDatacenter>;
+  /**
+  List the horizonView.Pool objects
+  Pool associated with this Datacenter
+  **/
+  public get(path: '/horizonView/{serviceName}/accessPoint', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
   All informations about access point
   Get this object properties
@@ -477,25 +482,20 @@ export class ApiHorizonView extends ApiCommon {
   **/
   public get(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}', pathParams: {serviceName: string, accessPointId: Number, customerNetworkId: Number}): Promise<HorizonViewCustomerNetworkPool>;
   /**
-  List the horizonView.Pool objects
-  Pool associated with this Datacenter
+  List the horizonView.CustomerNetwork objects
+  You can reach from the Desktops your private network
   **/
-  public get(path: '/horizonView/{serviceName}/accessPoint', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/horizonView/{serviceName}/customerNetwork', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
-  List all Active Directories linked to your CDI Active Directory
+  You can reach from your virtual desktops, your customer network 
   Get this object properties
   **/
-  public get(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}', pathParams: {serviceName: string, domainTrustId: Number}): Promise<HorizonViewDomainTrust>;
+  public get(path: '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}', pathParams: {serviceName: string, customerNetworkId: Number}): Promise<HorizonViewCustomerNetwork>;
   /**
-  List the horizonView.DomainTrust objects
-  List all Active Directories linked to your CDI Active Directory
-  **/
-  public get(path: '/horizonView/{serviceName}/domainTrust', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  Horizon As A Service User
+  Horizon View as a Service
   Get this object properties
   **/
-  public get(path: '/horizonView/{serviceName}/dedicatedHorizon/user', pathParams: {serviceName: string}): Promise<HorizonViewUser>;
+  public get(path: '/horizonView/{serviceName}/dedicatedHorizon', pathParams: {serviceName: string}): Promise<HorizonViewDedicatedHorizon>;
   /**
   List the horizonView.CustomerUser objects
   Account to access to your pool
@@ -517,25 +517,25 @@ export class ApiHorizonView extends ApiCommon {
   **/
   public get(path: '/horizonView/{serviceName}/dedicatedHorizon/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<HorizonViewTask>;
   /**
-  Horizon View as a Service
+  Horizon As A Service User
   Get this object properties
   **/
-  public get(path: '/horizonView/{serviceName}/dedicatedHorizon', pathParams: {serviceName: string}): Promise<HorizonViewDedicatedHorizon>;
+  public get(path: '/horizonView/{serviceName}/dedicatedHorizon/user', pathParams: {serviceName: string}): Promise<HorizonViewUser>;
   /**
-  You can reach from your virtual desktops, your customer network 
+  List the horizonView.DomainTrust objects
+  List all Active Directories linked to your CDI Active Directory
+  **/
+  public get(path: '/horizonView/{serviceName}/domainTrust', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  List all Active Directories linked to your CDI Active Directory
   Get this object properties
   **/
-  public get(path: '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}', pathParams: {serviceName: string, customerNetworkId: Number}): Promise<HorizonViewCustomerNetwork>;
+  public get(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}', pathParams: {serviceName: string, domainTrustId: Number}): Promise<HorizonViewDomainTrust>;
   /**
-  List the horizonView.CustomerNetwork objects
-  You can reach from the Desktops your private network
+  Details about a Service
+  Get this object properties
   **/
-  public get(path: '/horizonView/{serviceName}/customerNetwork', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  Operations about the HORIZONVIEW service
-  List available services
-  **/
-  public get(path: '/horizonView'): Promise<string[]>;
+  public get(path: '/horizonView/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   public get(path: PathsHorizonViewGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
@@ -544,75 +544,60 @@ export class ApiHorizonView extends ApiCommon {
   public put(path: '/horizonView/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsHorizonViewPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  Terminate your service
-  Terminate your service
+  List the horizonView.Pool objects
+  Add new access point to create a new network
   **/
-  public post(path: '/horizonView/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
-  public post(path: '/horizonView/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  disableTwoFA operations
-  Disable two factor authentication on your pool
-  **/
-  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA', pathParams: {serviceName: string, accessPointId: Number}): Promise<HorizonViewTask>;
-  /**
-  enableWindowsUsernameOption operations
-  Enable windows Username option on Unified Access Gateway
-  **/
-  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption', pathParams: {serviceName: string, accessPointId: Number}): Promise<HorizonViewTask>;
+  public post(path: '/horizonView/{serviceName}/accessPoint', pathParams: {serviceName: string}): Promise<HorizonViewTask[]>;
   /**
   changeSessionTimeout operations
   Manage your session Timeout on Unified Access Gateway
   **/
   public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout', pathParams: {serviceName: string, accessPointId: Number}): Promise<HorizonViewTask>;
   /**
-  enableTwoFA operations
-  Enable two factor authentication on your pool
-  **/
-  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA', pathParams: {serviceName: string, accessPointId: Number}): Promise<HorizonViewTask>;
-  /**
   List the horizonView.CustomerNetworkPool objects
   Add a new network 
   **/
   public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork', pathParams: {serviceName: string, accessPointId: Number}): Promise<HorizonViewTask[]>;
+  /**
+  disableTwoFA operations
+  Disable two factor authentication on your pool
+  **/
+  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA', pathParams: {serviceName: string, accessPointId: Number}): Promise<HorizonViewTask>;
   /**
   disableWindowsUsernameOption operations
   Disable windows Username option on Unified Access Gateway
   **/
   public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption', pathParams: {serviceName: string, accessPointId: Number}): Promise<HorizonViewTask>;
   /**
-  List the horizonView.Pool objects
-  Add new access point to create a new network
+  enableTwoFA operations
+  Enable two factor authentication on your pool
   **/
-  public post(path: '/horizonView/{serviceName}/accessPoint', pathParams: {serviceName: string}): Promise<HorizonViewTask[]>;
+  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA', pathParams: {serviceName: string, accessPointId: Number}): Promise<HorizonViewTask>;
   /**
-  createTrust operations
-  Change Horizon View user password
+  enableWindowsUsernameOption operations
+  Enable windows Username option on Unified Access Gateway
   **/
-  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust', pathParams: {serviceName: string, domainTrustId: Number}): Promise<HorizonViewTask>;
+  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption', pathParams: {serviceName: string, accessPointId: Number}): Promise<HorizonViewTask>;
   /**
-  addChildDomain operations
-  Add a child domain for this domain.
+  Confirm termination of your service
+  Confirm termination of your service
   **/
-  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain', pathParams: {serviceName: string, domainTrustId: Number}): Promise<HorizonViewTask>;
+  public post(path: '/horizonView/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
-  addDomainController operations
-  Add a Domain Controller for this domain.
+  List the horizonView.CustomerNetwork objects
+  Add a new network 
   **/
-  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController', pathParams: {serviceName: string, domainTrustId: Number}): Promise<HorizonViewTask>;
+  public post(path: '/horizonView/{serviceName}/customerNetwork', pathParams: {serviceName: string}): Promise<HorizonViewTask[]>;
   /**
-  addDomainUserOnComposer operations
-  Add a domain user to add your desktop in your Active Directory
+  List the horizonView.CustomerUser objects
+  Create a new customer user 
   **/
-  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer', pathParams: {serviceName: string, domainTrustId: Number}): Promise<HorizonViewTask>;
+  public post(path: '/horizonView/{serviceName}/dedicatedHorizon/customerUser', pathParams: {serviceName: string}): Promise<HorizonViewTask[]>;
   /**
-  List the horizonView.DomainTrust objects
-  Link your Active Directory to your CDI Active Directory
+  changePassword operations
+  Change Horizon View Customer  user password
   **/
-  public post(path: '/horizonView/{serviceName}/domainTrust', pathParams: {serviceName: string}): Promise<HorizonViewTask[]>;
+  public post(path: '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword', pathParams: {serviceName: string, username: string}): Promise<HorizonViewTask>;
   /**
   disableStorageAccelerator operations
   Disable the View Storage Accelerator option on VCenter
@@ -634,20 +619,35 @@ export class ApiHorizonView extends ApiCommon {
   **/
   public post(path: '/horizonView/{serviceName}/dedicatedHorizon/user/changeProperties', pathParams: {serviceName: string}): Promise<HorizonViewTask>;
   /**
-  List the horizonView.CustomerUser objects
-  Create a new customer user 
+  List the horizonView.DomainTrust objects
+  Link your Active Directory to your CDI Active Directory
   **/
-  public post(path: '/horizonView/{serviceName}/dedicatedHorizon/customerUser', pathParams: {serviceName: string}): Promise<HorizonViewTask[]>;
+  public post(path: '/horizonView/{serviceName}/domainTrust', pathParams: {serviceName: string}): Promise<HorizonViewTask[]>;
   /**
-  changePassword operations
-  Change Horizon View Customer  user password
+  addChildDomain operations
+  Add a child domain for this domain.
   **/
-  public post(path: '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword', pathParams: {serviceName: string, username: string}): Promise<HorizonViewTask>;
+  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain', pathParams: {serviceName: string, domainTrustId: Number}): Promise<HorizonViewTask>;
   /**
-  List the horizonView.CustomerNetwork objects
-  Add a new network 
+  addDomainController operations
+  Add a Domain Controller for this domain.
   **/
-  public post(path: '/horizonView/{serviceName}/customerNetwork', pathParams: {serviceName: string}): Promise<HorizonViewTask[]>;
+  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController', pathParams: {serviceName: string, domainTrustId: Number}): Promise<HorizonViewTask>;
+  /**
+  addDomainUserOnComposer operations
+  Add a domain user to add your desktop in your Active Directory
+  **/
+  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer', pathParams: {serviceName: string, domainTrustId: Number}): Promise<HorizonViewTask>;
+  /**
+  createTrust operations
+  Change Horizon View user password
+  **/
+  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust', pathParams: {serviceName: string, domainTrustId: Number}): Promise<HorizonViewTask>;
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/horizonView/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
   public post(path: PathsHorizonViewPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   All informations about access point
@@ -660,14 +660,14 @@ export class ApiHorizonView extends ApiCommon {
   **/
   public delete(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}', pathParams: {serviceName: string, accessPointId: Number, customerNetworkId: Number}): Promise<HorizonViewTask[]>;
   /**
-  Horizon As A Service Customer  User
-  Delete this Customer User
-  **/
-  public delete(path: '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}', pathParams: {serviceName: string, username: string}): Promise<HorizonViewTask[]>;
-  /**
   You can reach from your virtual desktops, your customer network 
   Delete this Customer Network
   **/
   public delete(path: '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}', pathParams: {serviceName: string, customerNetworkId: Number}): Promise<HorizonViewTask[]>;
+  /**
+  Horizon As A Service Customer  User
+  Delete this Customer User
+  **/
+  public delete(path: '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}', pathParams: {serviceName: string, username: string}): Promise<HorizonViewTask[]>;
   public delete(path: PathsHorizonViewDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

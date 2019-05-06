@@ -415,10 +415,10 @@ export class ApiCaasRegistry extends ApiCommon {
   **/
   public get(path: '/caas/registry'): Promise<string[]>;
   /**
-  Details about a Service
-  Get this object properties
+  Missing description
+  Inspect service.
   **/
-  public get(path: '/caas/registry/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/caas/registry/{serviceName}', pathParams: {serviceName: string}): Promise<RegistryService>;
   /**
   Missing description
   List namespace
@@ -426,9 +426,19 @@ export class ApiCaasRegistry extends ApiCommon {
   public get(path: '/caas/registry/{serviceName}/namespaces', pathParams: {serviceName: string}): Promise<string[]>;
   /**
   Missing description
-  Inspect image permissions
+  Inspect namespace
   **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}', pathParams: {imageId: string, namespaceId: string, permissionId: string, serviceName: string}): Promise<RegistryPermissions>;
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}', pathParams: {namespaceId: string, serviceName: string}): Promise<RegistryNamespace>;
+  /**
+  Missing description
+  List all images in namespace
+  **/
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images', pathParams: {namespaceId: string, serviceName: string}): Promise<string[]>;
+  /**
+  Missing description
+  Inspect image
+  **/
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}', pathParams: {imageId: string, namespaceId: string, serviceName: string}): Promise<RegistryImage>;
   /**
   Missing description
   List image permissions
@@ -436,9 +446,9 @@ export class ApiCaasRegistry extends ApiCommon {
   public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions', pathParams: {imageId: string, namespaceId: string, serviceName: string}): Promise<string[]>;
   /**
   Missing description
-  Inspect image
+  Inspect image permissions
   **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}', pathParams: {imageId: string, namespaceId: string, serviceName: string}): Promise<RegistryImage>;
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}', pathParams: {imageId: string, namespaceId: string, permissionId: string, serviceName: string}): Promise<RegistryPermissions>;
   /**
   Missing description
   List image tags
@@ -451,24 +461,19 @@ export class ApiCaasRegistry extends ApiCommon {
   public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags/{tagId}', pathParams: {imageId: string, namespaceId: string, serviceName: string, tagId: string}): Promise<RegistryTag>;
   /**
   Missing description
-  List all images in namespace
+  List namespace permissions
   **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images', pathParams: {namespaceId: string, serviceName: string}): Promise<string[]>;
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions', pathParams: {namespaceId: string, serviceName: string}): Promise<string[]>;
   /**
   Missing description
   Inspect permission
   **/
   public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}', pathParams: {namespaceId: string, permissionId: string, serviceName: string}): Promise<RegistryPermissions>;
   /**
-  Missing description
-  List namespace permissions
+  Details about a Service
+  Get this object properties
   **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions', pathParams: {namespaceId: string, serviceName: string}): Promise<string[]>;
-  /**
-  Missing description
-  Inspect namespace
-  **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}', pathParams: {namespaceId: string, serviceName: string}): Promise<RegistryNamespace>;
+  public get(path: '/caas/registry/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Missing description
   List users
@@ -479,22 +484,17 @@ export class ApiCaasRegistry extends ApiCommon {
   Inspect user
   **/
   public get(path: '/caas/registry/{serviceName}/users/{userId}', pathParams: {serviceName: string, userId: string}): Promise<RegistryUser>;
-  /**
-  Missing description
-  Inspect service.
-  **/
-  public get(path: '/caas/registry/{serviceName}', pathParams: {serviceName: string}): Promise<RegistryService>;
   public get(path: PathsCaasRegistryGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
-  /**
-  Details about a Service
-  Alter this object properties
-  **/
-  public put(path: '/caas/registry/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
   Missing description
   Update image
   **/
   public put(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}', pathParams: {imageId: string, namespaceId: string, serviceName: string}): Promise<RegistryImage>;
+  /**
+  Details about a Service
+  Alter this object properties
+  **/
+  public put(path: '/caas/registry/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsCaasRegistryPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Change the contacts of this service
@@ -529,9 +529,9 @@ export class ApiCaasRegistry extends ApiCommon {
   public post(path: PathsCaasRegistryPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Missing description
-  Delete image permissions.
+  Delete namespace
   **/
-  public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}', pathParams: {imageId: string, namespaceId: string, permissionId: string, serviceName: string}): Promise<void>;
+  public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}', pathParams: {namespaceId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Delete image
@@ -539,14 +539,14 @@ export class ApiCaasRegistry extends ApiCommon {
   public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}', pathParams: {imageId: string, namespaceId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
+  Delete image permissions.
+  **/
+  public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}', pathParams: {imageId: string, namespaceId: string, permissionId: string, serviceName: string}): Promise<void>;
+  /**
+  Missing description
   Delete namespace permissions
   **/
   public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}', pathParams: {namespaceId: string, permissionId: string, serviceName: string}): Promise<void>;
-  /**
-  Missing description
-  Delete namespace
-  **/
-  public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}', pathParams: {namespaceId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Delete user

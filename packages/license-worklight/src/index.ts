@@ -250,10 +250,15 @@ export class ApiLicenseWorklight extends ApiCommon {
     super(config);
   }
   /**
-  canLicenseBeMovedTo operations
-  Will tell if the ip can accept the license
+  Operations about the LICENSE service
+  List available services
   **/
-  public get(path: '/license/worklight/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  public get(path: '/license/worklight'): Promise<string[]>;
+  /**
+  Get the orderable WorkLight versions
+  Get the orderable WorkLight versions
+  **/
+  public get(path: '/license/worklight/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseWorkLightOrderConfiguration[]>;
   /**
   Your WorkLight license
   Get this object properties
@@ -265,6 +270,16 @@ export class ApiLicenseWorklight extends ApiCommon {
   **/
   public get(path: '/license/worklight/{serviceName}/allowedDestinationIp', pathParams: {serviceName: string}): Promise<string[]>;
   /**
+  canLicenseBeMovedTo operations
+  Will tell if the ip can accept the license
+  **/
+  public get(path: '/license/worklight/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/license/worklight/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
   List the license.Task objects
   Tasks linked to this license
   **/
@@ -274,21 +289,6 @@ export class ApiLicenseWorklight extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/license/worklight/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/license/worklight/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  Get the orderable WorkLight versions
-  Get the orderable WorkLight versions
-  **/
-  public get(path: '/license/worklight/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseWorkLightOrderConfiguration[]>;
-  /**
-  Operations about the LICENSE service
-  List available services
-  **/
-  public get(path: '/license/worklight'): Promise<string[]>;
   public get(path: PathsLicenseWorklightGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Your WorkLight license
@@ -302,19 +302,19 @@ export class ApiLicenseWorklight extends ApiCommon {
   public put(path: '/license/worklight/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsLicenseWorklightPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  Terminate your service
-  Terminate your service
+  changeIp operations
+  Move this license to another Ip
   **/
-  public post(path: '/license/worklight/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/license/worklight/{serviceName}/changeIp', pathParams: {serviceName: string}): Promise<LicenseTask>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
   public post(path: '/license/worklight/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
-  changeIp operations
-  Move this license to another Ip
+  Terminate your service
+  Terminate your service
   **/
-  public post(path: '/license/worklight/{serviceName}/changeIp', pathParams: {serviceName: string}): Promise<LicenseTask>;
+  public post(path: '/license/worklight/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
   public post(path: PathsLicenseWorklightPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

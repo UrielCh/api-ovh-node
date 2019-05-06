@@ -566,50 +566,40 @@ export class ApiOverTheBox extends ApiCommon {
     super(config);
   }
   /**
-  Task
+  Operations about the OVERTHEBOX service
+  List available services
+  **/
+  public get(path: '/overTheBox'): Promise<string[]>;
+  /**
+  List the available offers for the new call
+  List the available offers for the new call
+  **/
+  public get(path: '/overTheBox/availableOffers'): Promise<PriceOverTheBoxOfferEnum[]>;
+  /**
+  Service
   Get this object properties
   **/
-  public get(path: '/overTheBox/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: string}): Promise<OverTheBoxTask>;
-  /**
-  List the overTheBox.Task objects
-  List of tasks scheduled for this service
-  **/
-  public get(path: '/overTheBox/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {name?: string, status?: OverTheBoxTaskStatusEnum}): Promise<string[]>;
-  /**
-  If authorized, a remote access will expose a port, allowing an access to the device remotely
-  Get this object properties
-  **/
-  public get(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}', pathParams: {serviceName: string, remoteAccessId: string}): Promise<OverTheBoxRemoteAccess>;
-  /**
-  List the overTheBox.RemoteAccess objects
-  List of remote accesses for the service
-  **/
-  public get(path: '/overTheBox/{serviceName}/remoteAccesses', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/overTheBox/{serviceName}', pathParams: {serviceName: string}): Promise<OverTheBoxService>;
   /**
   availableReleaseChannels operations
   List available release channels for this service
   **/
   public get(path: '/overTheBox/{serviceName}/availableReleaseChannels', pathParams: {serviceName: string}): Promise<string[]>;
   /**
-  Backup
-  Get this object properties
-  **/
-  public get(path: '/overTheBox/{serviceName}/backups/{backupId}', pathParams: {serviceName: string, backupId: string}): Promise<OverTheBoxBackup>;
-  /**
   List the overTheBox.Backup objects
   List of backups for this service
   **/
   public get(path: '/overTheBox/{serviceName}/backups', pathParams: {serviceName: string}): Promise<string[]>;
   /**
-  offers operations
-  List all available offers one can migrate to
-  **/
-  public get(path: '/overTheBox/{serviceName}/migration/offers', pathParams: {serviceName: string}): Promise<OverTheBoxAvailableMigrationOffer[]>;
-  /**
-  Details about a Service
+  Backup
   Get this object properties
   **/
-  public get(path: '/overTheBox/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/overTheBox/{serviceName}/backups/{backupId}', pathParams: {serviceName: string, backupId: string}): Promise<OverTheBoxBackup>;
+  /**
+  Device
+  Get this object properties
+  **/
+  public get(path: '/overTheBox/{serviceName}/device', pathParams: {serviceName: string}): Promise<OverTheBoxDevice>;
   /**
   List the overTheBox.DeviceAction objects
   List of actions scheduled for this device
@@ -626,36 +616,46 @@ export class ApiOverTheBox extends ApiCommon {
   **/
   public get(path: '/overTheBox/{serviceName}/device/availableActions', pathParams: {serviceName: string}): Promise<OverTheBoxAvailableDeviceAction[]>;
   /**
-  Device
+  offers operations
+  List all available offers one can migrate to
+  **/
+  public get(path: '/overTheBox/{serviceName}/migration/offers', pathParams: {serviceName: string}): Promise<OverTheBoxAvailableMigrationOffer[]>;
+  /**
+  List the overTheBox.RemoteAccess objects
+  List of remote accesses for the service
+  **/
+  public get(path: '/overTheBox/{serviceName}/remoteAccesses', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  If authorized, a remote access will expose a port, allowing an access to the device remotely
   Get this object properties
   **/
-  public get(path: '/overTheBox/{serviceName}/device', pathParams: {serviceName: string}): Promise<OverTheBoxDevice>;
-  /**
-  Service
-  Get this object properties
-  **/
-  public get(path: '/overTheBox/{serviceName}', pathParams: {serviceName: string}): Promise<OverTheBoxService>;
-  /**
-  List the available offers for the new call
-  List the available offers for the new call
-  **/
-  public get(path: '/overTheBox/availableOffers'): Promise<PriceOverTheBoxOfferEnum[]>;
-  /**
-  Operations about the OVERTHEBOX service
-  List available services
-  **/
-  public get(path: '/overTheBox'): Promise<string[]>;
-  public get(path: PathsOverTheBoxGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}', pathParams: {serviceName: string, remoteAccessId: string}): Promise<OverTheBoxRemoteAccess>;
   /**
   Details about a Service
-  Alter this object properties
+  Get this object properties
   **/
-  public put(path: '/overTheBox/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public get(path: '/overTheBox/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  List the overTheBox.Task objects
+  List of tasks scheduled for this service
+  **/
+  public get(path: '/overTheBox/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {name?: string, status?: OverTheBoxTaskStatusEnum}): Promise<string[]>;
+  /**
+  Task
+  Get this object properties
+  **/
+  public get(path: '/overTheBox/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: string}): Promise<OverTheBoxTask>;
+  public get(path: PathsOverTheBoxGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Service
   Alter this object properties
   **/
   public put(path: '/overTheBox/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  Details about a Service
+  Alter this object properties
+  **/
+  public put(path: '/overTheBox/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsOverTheBoxPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Get the list of devices connected from the same IP address
@@ -663,30 +663,15 @@ export class ApiOverTheBox extends ApiCommon {
   **/
   public post(path: '/overTheBox/devices'): Promise<OverTheBoxDeviceForRegistration[]>;
   /**
-  authorize operations
-  Authorize the remote access
-  **/
-  public post(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize', pathParams: {serviceName: string, remoteAccessId: string}): Promise<void>;
-  /**
-  List the overTheBox.RemoteAccess objects
-  Create a new remote access for the service
-  **/
-  public post(path: '/overTheBox/{serviceName}/remoteAccesses', pathParams: {serviceName: string}): Promise<OverTheBoxRemoteAccess>;
-  /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
-  public post(path: '/overTheBox/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
   cancelResiliation operations
   Cancel the resiliation of the Service
   **/
   public post(path: '/overTheBox/{serviceName}/cancelResiliation', pathParams: {serviceName: string}): Promise<void>;
   /**
-  restoreBackup operations
-  Create a group of actions to restore a given backup
+  Change the contacts of this service
+  Launch a contact change procedure
   **/
-  public post(path: '/overTheBox/{serviceName}/device/restoreBackup', pathParams: {serviceName: string}): Promise<OverTheBoxDeviceAction[]>;
+  public post(path: '/overTheBox/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
   List the overTheBox.DeviceAction objects
   Create a device action on the device
@@ -703,25 +688,40 @@ export class ApiOverTheBox extends ApiCommon {
   **/
   public post(path: '/overTheBox/{serviceName}/device/logs', pathParams: {serviceName: string}): Promise<OverTheBoxTemporaryLogsLink>;
   /**
+  restoreBackup operations
+  Create a group of actions to restore a given backup
+  **/
+  public post(path: '/overTheBox/{serviceName}/device/restoreBackup', pathParams: {serviceName: string}): Promise<OverTheBoxDeviceAction[]>;
+  /**
   linkDevice operations
   Link a device to this service
   **/
   public post(path: '/overTheBox/{serviceName}/linkDevice', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  List the overTheBox.RemoteAccess objects
+  Create a new remote access for the service
+  **/
+  public post(path: '/overTheBox/{serviceName}/remoteAccesses', pathParams: {serviceName: string}): Promise<OverTheBoxRemoteAccess>;
+  /**
+  authorize operations
+  Authorize the remote access
+  **/
+  public post(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize', pathParams: {serviceName: string, remoteAccessId: string}): Promise<void>;
   public post(path: PathsOverTheBoxPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
-  If authorized, a remote access will expose a port, allowing an access to the device remotely
-  Delete a remote access
+  Service
+  Resiliate a service
   **/
-  public delete(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}', pathParams: {serviceName: string, remoteAccessId: string}): Promise<void>;
+  public delete(path: '/overTheBox/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
   /**
   Device
   Unlink a device from a service
   **/
   public delete(path: '/overTheBox/{serviceName}/device', pathParams: {serviceName: string}): Promise<void>;
   /**
-  Service
-  Resiliate a service
+  If authorized, a remote access will expose a port, allowing an access to the device remotely
+  Delete a remote access
   **/
-  public delete(path: '/overTheBox/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public delete(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}', pathParams: {serviceName: string, remoteAccessId: string}): Promise<void>;
   public delete(path: PathsOverTheBoxDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

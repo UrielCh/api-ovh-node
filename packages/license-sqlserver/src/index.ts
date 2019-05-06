@@ -236,25 +236,25 @@ export class ApiLicenseSqlserver extends ApiCommon {
   **/
   public get(path: '/license/sqlserver/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseSqlServerOrderConfiguration[]>;
   /**
-  licenses Todos
+  Your SQL Server license
   Get this object properties
   **/
-  public get(path: '/license/sqlserver/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
-  /**
-  List the license.Task objects
-  Tasks linked to this license
-  **/
-  public get(path: '/license/sqlserver/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/license/sqlserver/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseSqlserverSqlServer>;
   /**
   Details about a Service
   Get this object properties
   **/
   public get(path: '/license/sqlserver/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
-  Your SQL Server license
+  List the license.Task objects
+  Tasks linked to this license
+  **/
+  public get(path: '/license/sqlserver/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  /**
+  licenses Todos
   Get this object properties
   **/
-  public get(path: '/license/sqlserver/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseSqlserverSqlServer>;
+  public get(path: '/license/sqlserver/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
   public get(path: PathsLicenseSqlserverGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service

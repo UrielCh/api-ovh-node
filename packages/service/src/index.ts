@@ -502,6 +502,11 @@ export class ApiService extends ApiCommon {
   public put(path: '/service/{serviceId}', pathParams: {serviceId: Number}): Promise<void>;
   public put(path: PathsServicePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
+  Missing description
+  Create a renew order
+  **/
+  public post(path: '/service/{serviceId}/renew', pathParams: {serviceId: string}): Promise<ServiceRenewRenewOrder>;
+  /**
   reopen operations
   Reopen a suspended service
   **/
@@ -516,10 +521,5 @@ export class ApiService extends ApiCommon {
   Terminates a suspended service
   **/
   public post(path: '/service/{serviceId}/terminate', pathParams: {serviceId: Number}): Promise<void>;
-  /**
-  Missing description
-  Create a renew order
-  **/
-  public post(path: '/service/{serviceId}/renew', pathParams: {serviceId: string}): Promise<ServiceRenewRenewOrder>;
   public post(path: PathsServicePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

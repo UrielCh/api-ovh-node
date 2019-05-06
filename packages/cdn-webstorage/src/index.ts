@@ -157,30 +157,30 @@ export class ApiCdnWebstorage extends ApiCommon {
     super(config);
   }
   /**
+  Operations about the CDNSTATIC service
+  List available services
+  **/
+  public get(path: '/cdn/webstorage'): Promise<string[]>;
+  /**
   Static CDN
   Get this object properties
   **/
   public get(path: '/cdn/webstorage/{serviceName}', pathParams: {serviceName: string}): Promise<CdnWebstorageAccount>;
-  /**
-  statistics operations
-  Return stats about bandwidth consumption
-  **/
-  public get(path: '/cdn/webstorage/{serviceName}/statistics', pathParams: {serviceName: string}, queryParams: {period?: CdnWebstorageStatsPeriodEnum, type?: CdnWebstorageStatsTypeEnum}): Promise<CdnWebstorageStatsDataType[]>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/cdn/webstorage/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   credentials operations
   Gives for customer credentials to accesss swift account
   **/
   public get(path: '/cdn/webstorage/{serviceName}/credentials', pathParams: {serviceName: string}): Promise<CdnWebstorageAccountCredentials>;
   /**
-  Operations about the CDNSTATIC service
-  List available services
+  Details about a Service
+  Get this object properties
   **/
-  public get(path: '/cdn/webstorage'): Promise<string[]>;
+  public get(path: '/cdn/webstorage/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  statistics operations
+  Return stats about bandwidth consumption
+  **/
+  public get(path: '/cdn/webstorage/{serviceName}/statistics', pathParams: {serviceName: string}, queryParams: {period?: CdnWebstorageStatsPeriodEnum, type?: CdnWebstorageStatsTypeEnum}): Promise<CdnWebstorageStatsDataType[]>;
   public get(path: PathsCdnWebstorageGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service

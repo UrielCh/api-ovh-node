@@ -117,6 +117,11 @@ export class ApiStackMis extends ApiCommon {
     super(config);
   }
   /**
+  Operations about the GS service
+  List available services
+  **/
+  public get(path: '/stack/mis'): Promise<string[]>;
+  /**
   Stack MIS
   Get this object properties
   **/
@@ -126,11 +131,6 @@ export class ApiStackMis extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/stack/mis/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  Operations about the GS service
-  List available services
-  **/
-  public get(path: '/stack/mis'): Promise<string[]>;
   public get(path: PathsStackMisGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service

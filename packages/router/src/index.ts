@@ -377,6 +377,56 @@ export class ApiRouter extends ApiCommon {
     super(config);
   }
   /**
+  Operations about the ROUTER service
+  List available services
+  **/
+  public get(path: '/router'): Promise<string[]>;
+  /**
+  Router
+  Get this object properties
+  **/
+  public get(path: '/router/{serviceName}', pathParams: {serviceName: string}): Promise<RouterRouter>;
+  /**
+  List the router.Network objects
+  Networks mounted on this Router
+  **/
+  public get(path: '/router/{serviceName}/network', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Network
+  Get this object properties
+  **/
+  public get(path: '/router/{serviceName}/network/{ipNet}', pathParams: {serviceName: string, ipNet: string}): Promise<RouterNetwork>;
+  /**
+  List the router.PrivateLink objects
+  Private links set up on this router
+  **/
+  public get(path: '/router/{serviceName}/privateLink', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Private Link to another service
+  Get this object properties
+  **/
+  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}', pathParams: {serviceName: string, peerServiceName: string}): Promise<RouterPrivateLink>;
+  /**
+  Received Private Link requests
+  Get this object properties
+  **/
+  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/request', pathParams: {serviceName: string, peerServiceName: string}): Promise<RouterPrivateLinkRequest>;
+  /**
+  List the router.PrivateLinkRoute objects
+  Routes set up in a Private Link
+  **/
+  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/route', pathParams: {serviceName: string, peerServiceName: string}): Promise<string[]>;
+  /**
+  Outgoing routes configured inside a Private Link
+  Get this object properties
+  **/
+  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/route/{network}', pathParams: {serviceName: string, peerServiceName: string, network: string}): Promise<RouterPrivateLinkRoute>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/router/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
   List the router.Task objects
   Tasks for this Router
   **/
@@ -387,51 +437,6 @@ export class ApiRouter extends ApiCommon {
   **/
   public get(path: '/router/{serviceName}/task/{id}', pathParams: {serviceName: string, id: Number}): Promise<RouterTask>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/router/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  Router
-  Get this object properties
-  **/
-  public get(path: '/router/{serviceName}', pathParams: {serviceName: string}): Promise<RouterRouter>;
-  /**
-  Network
-  Get this object properties
-  **/
-  public get(path: '/router/{serviceName}/network/{ipNet}', pathParams: {serviceName: string, ipNet: string}): Promise<RouterNetwork>;
-  /**
-  List the router.Network objects
-  Networks mounted on this Router
-  **/
-  public get(path: '/router/{serviceName}/network', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Private Link to another service
-  Get this object properties
-  **/
-  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}', pathParams: {serviceName: string, peerServiceName: string}): Promise<RouterPrivateLink>;
-  /**
-  Outgoing routes configured inside a Private Link
-  Get this object properties
-  **/
-  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/route/{network}', pathParams: {serviceName: string, peerServiceName: string, network: string}): Promise<RouterPrivateLinkRoute>;
-  /**
-  List the router.PrivateLinkRoute objects
-  Routes set up in a Private Link
-  **/
-  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/route', pathParams: {serviceName: string, peerServiceName: string}): Promise<string[]>;
-  /**
-  Received Private Link requests
-  Get this object properties
-  **/
-  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/request', pathParams: {serviceName: string, peerServiceName: string}): Promise<RouterPrivateLinkRequest>;
-  /**
-  List the router.PrivateLink objects
-  Private links set up on this router
-  **/
-  public get(path: '/router/{serviceName}/privateLink', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
   List the router.Vpn objects
   VPN associated with this Router
   **/
@@ -441,17 +446,7 @@ export class ApiRouter extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/router/{serviceName}/vpn/{id}', pathParams: {serviceName: string, id: Number}): Promise<RouterVpn>;
-  /**
-  Operations about the ROUTER service
-  List available services
-  **/
-  public get(path: '/router'): Promise<string[]>;
   public get(path: PathsRouterGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
-  /**
-  Details about a Service
-  Alter this object properties
-  **/
-  public put(path: '/router/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
   Network
   Alter this object properties
@@ -462,6 +457,11 @@ export class ApiRouter extends ApiCommon {
   Alter this object properties
   **/
   public put(path: '/router/{serviceName}/privateLink/{peerServiceName}', pathParams: {serviceName: string, peerServiceName: string}): Promise<void>;
+  /**
+  Details about a Service
+  Alter this object properties
+  **/
+  public put(path: '/router/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
   Virtual Private Network
   Alter this object properties
@@ -474,30 +474,30 @@ export class ApiRouter extends ApiCommon {
   **/
   public post(path: '/router/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
-  public post(path: '/router/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
-  /**
   List the router.Network objects
   Add a network to your router
   **/
   public post(path: '/router/{serviceName}/network', pathParams: {serviceName: string}): Promise<RouterTask>;
   /**
-  List the router.PrivateLinkRoute objects
-  Add a new outgoing route to your router
+  List the router.PrivateLink objects
+  Add a new Private Link to your Router service
   **/
-  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/route', pathParams: {serviceName: string, peerServiceName: string}): Promise<RouterTask>;
+  public post(path: '/router/{serviceName}/privateLink', pathParams: {serviceName: string}): Promise<string>;
   /**
   manage operations
   Accept, reject or cancel a pending request
   **/
   public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/request/manage', pathParams: {serviceName: string, peerServiceName: string}): Promise<string>;
   /**
-  List the router.PrivateLink objects
-  Add a new Private Link to your Router service
+  List the router.PrivateLinkRoute objects
+  Add a new outgoing route to your router
   **/
-  public post(path: '/router/{serviceName}/privateLink', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/route', pathParams: {serviceName: string, peerServiceName: string}): Promise<RouterTask>;
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/router/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
   /**
   List the router.Vpn objects
   Add a VPN to your router

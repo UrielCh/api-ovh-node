@@ -71,13 +71,13 @@ export class ApiDistributionImage extends ApiCommon {
   }
   /**
   Missing description
-  Show image details
-  **/
-  public get(path: '/distribution/image/{serviceType}/{imageName}', pathParams: {serviceType: DistributionImageService, imageName: string}): Promise<DistributionImage>;
-  /**
-  Missing description
   List images for a service
   **/
   public get(path: '/distribution/image/{serviceType}', pathParams: {serviceType: DistributionImageService}): Promise<string[]>;
+  /**
+  Missing description
+  Show image details
+  **/
+  public get(path: '/distribution/image/{serviceType}/{imageName}', pathParams: {serviceType: DistributionImageService, imageName: string}): Promise<DistributionImage>;
   public get(path: PathsDistributionImageGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
 }

@@ -294,61 +294,61 @@ export class ApiFreefax extends ApiCommon {
     super(config);
   }
   /**
-  mainService operations
-  Main service attached to freefax
+  Operations about the VOIP service
+  List available services
   **/
-  public get(path: '/freefax/{serviceName}/mainService', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  routing operations
-  Get the status of the voicemail. Available only if the line has fax capabilities
-  **/
-  public get(path: '/freefax/{serviceName}/voicemail/routing', pathParams: {serviceName: string}): Promise<TelephonyVoicefaxRoutingEnum>;
-  /**
-  Voicemail Properties
-  Get this object properties
-  **/
-  public get(path: '/freefax/{serviceName}/voicemail', pathParams: {serviceName: string}): Promise<TelephonyVoicemailProperties>;
-  /**
-  voicemailNumbers operations
-  Get number for internal and external voicemail
-  **/
-  public get(path: '/freefax/{serviceName}/voicemail/voicemailNumbers', pathParams: {serviceName: string}): Promise<TelephonyVoicemailNumbers>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/freefax/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  Freefax properties
-  Get this object properties
-  **/
-  public get(path: '/freefax/{serviceName}', pathParams: {serviceName: string}): Promise<FreefaxFreefaxProperties>;
+  public get(path: '/freefax'): Promise<string[]>;
   /**
   Get the credit balance and the remaining pages available for all our freefax
   Get the credit balance and the remaining pages available for all our freefax
   **/
   public get(path: '/freefax/credits'): Promise<FreefaxBalanceInformations>;
   /**
-  Operations about the VOIP service
-  List available services
+  Freefax properties
+  Get this object properties
   **/
-  public get(path: '/freefax'): Promise<string[]>;
-  public get(path: PathsFreefaxGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/freefax/{serviceName}', pathParams: {serviceName: string}): Promise<FreefaxFreefaxProperties>;
+  /**
+  mainService operations
+  Main service attached to freefax
+  **/
+  public get(path: '/freefax/{serviceName}/mainService', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/freefax/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Voicemail Properties
+  Get this object properties
+  **/
+  public get(path: '/freefax/{serviceName}/voicemail', pathParams: {serviceName: string}): Promise<TelephonyVoicemailProperties>;
+  /**
+  routing operations
+  Get the status of the voicemail. Available only if the line has fax capabilities
+  **/
+  public get(path: '/freefax/{serviceName}/voicemail/routing', pathParams: {serviceName: string}): Promise<TelephonyVoicefaxRoutingEnum>;
+  /**
+  voicemailNumbers operations
+  Get number for internal and external voicemail
+  **/
+  public get(path: '/freefax/{serviceName}/voicemail/voicemailNumbers', pathParams: {serviceName: string}): Promise<TelephonyVoicemailNumbers>;
+  public get(path: PathsFreefaxGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  /**
+  Freefax properties
   Alter this object properties
   **/
-  public put(path: '/freefax/{serviceName}/voicemail', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/freefax/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
   public put(path: '/freefax/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
-  Freefax properties
+  Voicemail Properties
   Alter this object properties
   **/
-  public put(path: '/freefax/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/freefax/{serviceName}/voicemail', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsFreefaxPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   changePassword operations

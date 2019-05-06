@@ -122,15 +122,15 @@ export class ApiVip extends ApiCommon {
   **/
   public get(path: '/vip'): Promise<string[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/vip/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
   Vip Service
   Get this object properties
   **/
   public get(path: '/vip/{serviceName}', pathParams: {serviceName: string}): Promise<VipSupportVip>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/vip/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   public get(path: PathsVipGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service

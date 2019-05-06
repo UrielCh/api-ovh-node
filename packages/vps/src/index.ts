@@ -923,55 +923,10 @@ export class ApiVps extends ApiCommon {
   **/
   public get(path: '/vps/{serviceName}', pathParams: {serviceName: string}): Promise<VpsVPS>;
   /**
-  models operations
-  Return all models for the range of the virtual server
+  activeOptions operations
+  Return all active options for the virtual server
   **/
-  public get(path: '/vps/{serviceName}/models', pathParams: {serviceName: string}): Promise<VpsModel[]>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/vps/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  List the vps.Option objects
-  List of VPS options
-  **/
-  public get(path: '/vps/{serviceName}/option', pathParams: {serviceName: string}): Promise<VpsVpsOptionEnum[]>;
-  /**
-  Information about the options of a VPS Virtual Machine
-  Get this object properties
-  **/
-  public get(path: '/vps/{serviceName}/option/{option}', pathParams: {serviceName: string, option: VpsVpsOptionEnum}): Promise<VpsOption>;
-  /**
-  Informations about a VPS Veeam backups
-  Get this object properties
-  **/
-  public get(path: '/vps/{serviceName}/veeam', pathParams: {serviceName: string}): Promise<VpsVeeam>;
-  /**
-  Currently restored backup
-  Get this object properties
-  **/
-  public get(path: '/vps/{serviceName}/veeam/restoredBackup', pathParams: {serviceName: string}): Promise<VpsVeeamRestoredBackup>;
-  /**
-  Informations about a VPS Veeam restore points
-  Get this object properties
-  **/
-  public get(path: '/vps/{serviceName}/veeam/restorePoints/{id}', pathParams: {serviceName: string, id: Number}): Promise<VpsVeeamRestorePoint>;
-  /**
-  List the vps.veeam.RestorePoint objects
-  Veeam restore points for the VPS
-  **/
-  public get(path: '/vps/{serviceName}/veeam/restorePoints', pathParams: {serviceName: string}, queryParams: {creationTime?: string}): Promise<Number[]>;
-  /**
-  Information about the snapshot of a VPS Virtual Machine
-  Get this object properties
-  **/
-  public get(path: '/vps/{serviceName}/snapshot', pathParams: {serviceName: string}): Promise<VpsSnapshot>;
-  /**
-  restorePoints operations
-  Get available Restore Points
-  **/
-  public get(path: '/vps/{serviceName}/automatedBackup/restorePoints', pathParams: {serviceName: string}, queryParams: {state?: VpsRestoreStateEnum}): Promise<string[]>;
+  public get(path: '/vps/{serviceName}/activeOptions', pathParams: {serviceName: string}): Promise<VpsVpsOptionEnum[]>;
   /**
   Backup your VPS
   Get this object properties
@@ -983,130 +938,115 @@ export class ApiVps extends ApiCommon {
   **/
   public get(path: '/vps/{serviceName}/automatedBackup/attachedBackup', pathParams: {serviceName: string}): Promise<VpsAutomatedBackupAttached[]>;
   /**
-  ipCountryAvailable operations
-  Get the countries you can select for your IPs geolocation
+  restorePoints operations
+  Get available Restore Points
   **/
-  public get(path: '/vps/{serviceName}/ipCountryAvailable', pathParams: {serviceName: string}): Promise<VpsIpGeolocationEnum[]>;
-  /**
-  monitoring operations
-  Return many statistics about the virtual machine for a given period
-  **/
-  public get(path: '/vps/{serviceName}/monitoring', pathParams: {serviceName: string}, queryParams: {period?: VpsVpsMonitoringPeriodEnum, type?: VpsVpsStatisticTypeEnum}): Promise<ComplexTypeUnitAndValues<VpsVpsTimestampValue>>;
-  /**
-  authorizableBlocks operations
-  Get all IP blocks that can be used in the ACL
-  **/
-  public get(path: '/vps/{serviceName}/backupftp/authorizableBlocks', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Backup Ftp ACL for this server and Backup Ftp
-  Get this object properties
-  **/
-  public get(path: '/vps/{serviceName}/backupftp/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<DedicatedServerBackupFtpAcl>;
-  /**
-  List the dedicated.server.BackupFtpAcl objects
-  List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
-  **/
-  public get(path: '/vps/{serviceName}/backupftp/access', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Backup Ftp assigned to this VPS
-  Get this object properties
-  **/
-  public get(path: '/vps/{serviceName}/backupftp', pathParams: {serviceName: string}): Promise<VpsBackupFtp>;
-  /**
-  use operations
-  Return many statistics about the virtual machine at that time
-  **/
-  public get(path: '/vps/{serviceName}/use', pathParams: {serviceName: string}, queryParams: {type?: VpsVpsStatisticTypeEnum}): Promise<ComplexTypeUnitAndValue<Number>>;
-  /**
-  secondaryDnsNameServerAvailable operations
-  Secondary nameServer available for your Server
-  **/
-  public get(path: '/vps/{serviceName}/secondaryDnsNameServerAvailable', pathParams: {serviceName: string}): Promise<SecondaryDnsSecondaryDNSNameServer>;
-  /**
-  List the vps.Disk objects
-  Disks associated to this virtual server
-  **/
-  public get(path: '/vps/{serviceName}/disks', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  use operations
-  Return many statistics about the disk at that time
-  **/
-  public get(path: '/vps/{serviceName}/disks/{id}/use', pathParams: {serviceName: string, id: Number}, queryParams: {type?: VpsDiskStatisticTypeEnum}): Promise<ComplexTypeUnitAndValue<Number>>;
-  /**
-  monitoring operations
-  Return many statistics about the disk for a given period
-  **/
-  public get(path: '/vps/{serviceName}/disks/{id}/monitoring', pathParams: {serviceName: string, id: Number}, queryParams: {period?: VpsVpsMonitoringPeriodEnum, type?: VpsDiskStatisticTypeEnum}): Promise<ComplexTypeUnitAndValues<VpsVpsTimestampValue>>;
-  /**
-  Information about a disk of a VPS Virtual Machine
-  Get this object properties
-  **/
-  public get(path: '/vps/{serviceName}/disks/{id}', pathParams: {serviceName: string, id: Number}): Promise<VpsDisk>;
-  /**
-  List the vps.Template objects
-  Templates available for this virtual server
-  **/
-  public get(path: '/vps/{serviceName}/templates', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  Installation template for a VPS Virtual Machine
-  Get this object properties
-  **/
-  public get(path: '/vps/{serviceName}/templates/{id}', pathParams: {serviceName: string, id: Number}): Promise<VpsTemplate>;
-  /**
-  Available softwares on a Template
-  Get this object properties
-  **/
-  public get(path: '/vps/{serviceName}/templates/{id}/software/{softwareId}', pathParams: {serviceName: string, id: Number, softwareId: Number}): Promise<VpsSoftware>;
-  /**
-  List the vps.Software objects
-  List available softwares for this template Id
-  **/
-  public get(path: '/vps/{serviceName}/templates/{id}/software', pathParams: {serviceName: string, id: Number}): Promise<Number[]>;
-  /**
-  Available softwares on a Template
-  Get this object properties
-  **/
-  public get(path: '/vps/{serviceName}/distribution/software/{softwareId}', pathParams: {serviceName: string, softwareId: Number}): Promise<VpsSoftware>;
-  /**
-  List the vps.Software objects
-  List available softwares for this template Id
-  **/
-  public get(path: '/vps/{serviceName}/distribution/software', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  Installation template for a VPS Virtual Machine
-  Get this object properties
-  **/
-  public get(path: '/vps/{serviceName}/distribution', pathParams: {serviceName: string}): Promise<VpsTemplate>;
-  /**
-  status operations
-  Give the status of the services of the main IP
-  **/
-  public get(path: '/vps/{serviceName}/status', pathParams: {serviceName: string}): Promise<VpsIpServiceStatus>;
+  public get(path: '/vps/{serviceName}/automatedBackup/restorePoints', pathParams: {serviceName: string}, queryParams: {state?: VpsRestoreStateEnum}): Promise<string[]>;
   /**
   availableUpgrade operations
   Return all models the virtual server can be upgraded to
   **/
   public get(path: '/vps/{serviceName}/availableUpgrade', pathParams: {serviceName: string}): Promise<VpsModel[]>;
   /**
-  activeOptions operations
-  Return all active options for the virtual server
-  **/
-  public get(path: '/vps/{serviceName}/activeOptions', pathParams: {serviceName: string}): Promise<VpsVpsOptionEnum[]>;
-  /**
-  List the vps.Task objects
-  Tasks associated to this virtual server
-  **/
-  public get(path: '/vps/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {type?: VpsTaskTypeEnum, state?: VpsTaskStateEnum}): Promise<Number[]>;
-  /**
-  Operation on a VPS Virtual Machine
+  Backup Ftp assigned to this VPS
   Get this object properties
   **/
-  public get(path: '/vps/{serviceName}/tasks/{id}', pathParams: {serviceName: string, id: Number}): Promise<VpsTask>;
+  public get(path: '/vps/{serviceName}/backupftp', pathParams: {serviceName: string}): Promise<VpsBackupFtp>;
+  /**
+  List the dedicated.server.BackupFtpAcl objects
+  List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
+  **/
+  public get(path: '/vps/{serviceName}/backupftp/access', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Backup Ftp ACL for this server and Backup Ftp
+  Get this object properties
+  **/
+  public get(path: '/vps/{serviceName}/backupftp/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<DedicatedServerBackupFtpAcl>;
+  /**
+  authorizableBlocks operations
+  Get all IP blocks that can be used in the ACL
+  **/
+  public get(path: '/vps/{serviceName}/backupftp/authorizableBlocks', pathParams: {serviceName: string}): Promise<string[]>;
   /**
   Information about a datacenter of a VPS Virtual Machine
   Get this object properties
   **/
   public get(path: '/vps/{serviceName}/datacenter', pathParams: {serviceName: string}): Promise<VpsDatacenter>;
+  /**
+  List the vps.Disk objects
+  Disks associated to this virtual server
+  **/
+  public get(path: '/vps/{serviceName}/disks', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Information about a disk of a VPS Virtual Machine
+  Get this object properties
+  **/
+  public get(path: '/vps/{serviceName}/disks/{id}', pathParams: {serviceName: string, id: Number}): Promise<VpsDisk>;
+  /**
+  monitoring operations
+  Return many statistics about the disk for a given period
+  **/
+  public get(path: '/vps/{serviceName}/disks/{id}/monitoring', pathParams: {serviceName: string, id: Number}, queryParams: {period?: VpsVpsMonitoringPeriodEnum, type?: VpsDiskStatisticTypeEnum}): Promise<ComplexTypeUnitAndValues<VpsVpsTimestampValue>>;
+  /**
+  use operations
+  Return many statistics about the disk at that time
+  **/
+  public get(path: '/vps/{serviceName}/disks/{id}/use', pathParams: {serviceName: string, id: Number}, queryParams: {type?: VpsDiskStatisticTypeEnum}): Promise<ComplexTypeUnitAndValue<Number>>;
+  /**
+  Installation template for a VPS Virtual Machine
+  Get this object properties
+  **/
+  public get(path: '/vps/{serviceName}/distribution', pathParams: {serviceName: string}): Promise<VpsTemplate>;
+  /**
+  List the vps.Software objects
+  List available softwares for this template Id
+  **/
+  public get(path: '/vps/{serviceName}/distribution/software', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Available softwares on a Template
+  Get this object properties
+  **/
+  public get(path: '/vps/{serviceName}/distribution/software/{softwareId}', pathParams: {serviceName: string, softwareId: Number}): Promise<VpsSoftware>;
+  /**
+  ipCountryAvailable operations
+  Get the countries you can select for your IPs geolocation
+  **/
+  public get(path: '/vps/{serviceName}/ipCountryAvailable', pathParams: {serviceName: string}): Promise<VpsIpGeolocationEnum[]>;
+  /**
+  List the vps.Ip objects
+  Ips associated to this virtual server
+  **/
+  public get(path: '/vps/{serviceName}/ips', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Information about an IP address for a VPS Virtual Machine
+  Get this object properties
+  **/
+  public get(path: '/vps/{serviceName}/ips/{ipAddress}', pathParams: {serviceName: string, ipAddress: string}): Promise<VpsIp>;
+  /**
+  models operations
+  Return all models for the range of the virtual server
+  **/
+  public get(path: '/vps/{serviceName}/models', pathParams: {serviceName: string}): Promise<VpsModel[]>;
+  /**
+  monitoring operations
+  Return many statistics about the virtual machine for a given period
+  **/
+  public get(path: '/vps/{serviceName}/monitoring', pathParams: {serviceName: string}, queryParams: {period?: VpsVpsMonitoringPeriodEnum, type?: VpsVpsStatisticTypeEnum}): Promise<ComplexTypeUnitAndValues<VpsVpsTimestampValue>>;
+  /**
+  List the vps.Option objects
+  List of VPS options
+  **/
+  public get(path: '/vps/{serviceName}/option', pathParams: {serviceName: string}): Promise<VpsVpsOptionEnum[]>;
+  /**
+  Information about the options of a VPS Virtual Machine
+  Get this object properties
+  **/
+  public get(path: '/vps/{serviceName}/option/{option}', pathParams: {serviceName: string, option: VpsVpsOptionEnum}): Promise<VpsOption>;
+  /**
+  List the secondaryDns.SecondaryDNS objects
+  List of secondary dns domain name
+  **/
+  public get(path: '/vps/{serviceName}/secondaryDnsDomains', pathParams: {serviceName: string}): Promise<string[]>;
   /**
   Secondary dns infos
   Get this object properties
@@ -1118,36 +1058,86 @@ export class ApiVps extends ApiCommon {
   **/
   public get(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer', pathParams: {serviceName: string, domain: string}): Promise<SecondaryDnsSecondaryDNSNameServer>;
   /**
-  List the secondaryDns.SecondaryDNS objects
-  List of secondary dns domain name
+  secondaryDnsNameServerAvailable operations
+  Secondary nameServer available for your Server
   **/
-  public get(path: '/vps/{serviceName}/secondaryDnsDomains', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/vps/{serviceName}/secondaryDnsNameServerAvailable', pathParams: {serviceName: string}): Promise<SecondaryDnsSecondaryDNSNameServer>;
   /**
-  Information about an IP address for a VPS Virtual Machine
+  Details about a Service
   Get this object properties
   **/
-  public get(path: '/vps/{serviceName}/ips/{ipAddress}', pathParams: {serviceName: string, ipAddress: string}): Promise<VpsIp>;
+  public get(path: '/vps/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the vps.Ip objects
-  Ips associated to this virtual server
+  Information about the snapshot of a VPS Virtual Machine
+  Get this object properties
   **/
-  public get(path: '/vps/{serviceName}/ips', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/vps/{serviceName}/snapshot', pathParams: {serviceName: string}): Promise<VpsSnapshot>;
+  /**
+  status operations
+  Give the status of the services of the main IP
+  **/
+  public get(path: '/vps/{serviceName}/status', pathParams: {serviceName: string}): Promise<VpsIpServiceStatus>;
+  /**
+  List the vps.Task objects
+  Tasks associated to this virtual server
+  **/
+  public get(path: '/vps/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {type?: VpsTaskTypeEnum, state?: VpsTaskStateEnum}): Promise<Number[]>;
+  /**
+  Operation on a VPS Virtual Machine
+  Get this object properties
+  **/
+  public get(path: '/vps/{serviceName}/tasks/{id}', pathParams: {serviceName: string, id: Number}): Promise<VpsTask>;
+  /**
+  List the vps.Template objects
+  Templates available for this virtual server
+  **/
+  public get(path: '/vps/{serviceName}/templates', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Installation template for a VPS Virtual Machine
+  Get this object properties
+  **/
+  public get(path: '/vps/{serviceName}/templates/{id}', pathParams: {serviceName: string, id: Number}): Promise<VpsTemplate>;
+  /**
+  List the vps.Software objects
+  List available softwares for this template Id
+  **/
+  public get(path: '/vps/{serviceName}/templates/{id}/software', pathParams: {serviceName: string, id: Number}): Promise<Number[]>;
+  /**
+  Available softwares on a Template
+  Get this object properties
+  **/
+  public get(path: '/vps/{serviceName}/templates/{id}/software/{softwareId}', pathParams: {serviceName: string, id: Number, softwareId: Number}): Promise<VpsSoftware>;
+  /**
+  use operations
+  Return many statistics about the virtual machine at that time
+  **/
+  public get(path: '/vps/{serviceName}/use', pathParams: {serviceName: string}, queryParams: {type?: VpsVpsStatisticTypeEnum}): Promise<ComplexTypeUnitAndValue<Number>>;
+  /**
+  Informations about a VPS Veeam backups
+  Get this object properties
+  **/
+  public get(path: '/vps/{serviceName}/veeam', pathParams: {serviceName: string}): Promise<VpsVeeam>;
+  /**
+  List the vps.veeam.RestorePoint objects
+  Veeam restore points for the VPS
+  **/
+  public get(path: '/vps/{serviceName}/veeam/restorePoints', pathParams: {serviceName: string}, queryParams: {creationTime?: string}): Promise<Number[]>;
+  /**
+  Informations about a VPS Veeam restore points
+  Get this object properties
+  **/
+  public get(path: '/vps/{serviceName}/veeam/restorePoints/{id}', pathParams: {serviceName: string, id: Number}): Promise<VpsVeeamRestorePoint>;
+  /**
+  Currently restored backup
+  Get this object properties
+  **/
+  public get(path: '/vps/{serviceName}/veeam/restoredBackup', pathParams: {serviceName: string}): Promise<VpsVeeamRestoredBackup>;
   public get(path: PathsVpsGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   VPS Virtual Machine
   Alter this object properties
   **/
   public put(path: '/vps/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  Details about a Service
-  Alter this object properties
-  **/
-  public put(path: '/vps/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  Information about the snapshot of a VPS Virtual Machine
-  Alter this object properties
-  **/
-  public put(path: '/vps/{serviceName}/snapshot', pathParams: {serviceName: string}): Promise<void>;
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Alter this object properties
@@ -1159,41 +1149,26 @@ export class ApiVps extends ApiCommon {
   **/
   public put(path: '/vps/{serviceName}/disks/{id}', pathParams: {serviceName: string, id: Number}): Promise<void>;
   /**
+  Information about an IP address for a VPS Virtual Machine
+  Alter this object properties
+  **/
+  public put(path: '/vps/{serviceName}/ips/{ipAddress}', pathParams: {serviceName: string, ipAddress: string}): Promise<void>;
+  /**
   Secondary dns infos
   Alter this object properties
   **/
   public put(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}', pathParams: {serviceName: string, domain: string}): Promise<void>;
   /**
-  Information about an IP address for a VPS Virtual Machine
+  Details about a Service
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}/ips/{ipAddress}', pathParams: {serviceName: string, ipAddress: string}): Promise<void>;
+  public put(path: '/vps/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  Information about the snapshot of a VPS Virtual Machine
+  Alter this object properties
+  **/
+  public put(path: '/vps/{serviceName}/snapshot', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsVpsPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
-  /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
-  public post(path: '/vps/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  start operations
-  Request the machine to start
-  **/
-  public post(path: '/vps/{serviceName}/start', pathParams: {serviceName: string}): Promise<VpsTask>;
-  /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
-  public post(path: '/vps/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  restore operations
-  Creates a VPS.Task that will restore the given restorePoint
-  **/
-  public post(path: '/vps/{serviceName}/veeam/restorePoints/{id}/restore', pathParams: {serviceName: string, id: Number}): Promise<VpsTask>;
-  /**
-  revert operations
-  Revert the Virtual Server to this snapshot
-  **/
-  public post(path: '/vps/{serviceName}/snapshot/revert', pathParams: {serviceName: string}): Promise<VpsTask>;
   /**
   detachBackup operations
   Create a VPS.Task that will umount a restored backup on your VPS
@@ -1205,90 +1180,115 @@ export class ApiVps extends ApiCommon {
   **/
   public post(path: '/vps/{serviceName}/automatedBackup/restore', pathParams: {serviceName: string}): Promise<VpsTask>;
   /**
-  stop operations
-  Request the machine to stop
+  List the dedicated.server.BackupFtpAcl objects
+  Create a new Backup FTP ACL
   **/
-  public post(path: '/vps/{serviceName}/stop', pathParams: {serviceName: string}): Promise<VpsTask>;
+  public post(path: '/vps/{serviceName}/backupftp/access', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
   password operations
   Change your Backup FTP password
   **/
   public post(path: '/vps/{serviceName}/backupftp/password', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
-  List the dedicated.server.BackupFtpAcl objects
-  Create a new Backup FTP ACL
+  Change the contacts of this service
+  Launch a contact change procedure
   **/
-  public post(path: '/vps/{serviceName}/backupftp/access', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/vps/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
-  setPassword operations
-  Start the process in order to set the root password of the virtual machine. Be careful, in case of Cloud model, a reboot is mandatory.
+  Confirm termination of your service
+  Confirm termination of your service
   **/
-  public post(path: '/vps/{serviceName}/setPassword', pathParams: {serviceName: string}): Promise<VpsTask>;
-  /**
-  reinstall operations
-  Reinstall the virtual server
-  **/
-  public post(path: '/vps/{serviceName}/reinstall', pathParams: {serviceName: string}): Promise<VpsTask>;
-  /**
-  Terminate your service
-  Terminate your service
-  **/
-  public post(path: '/vps/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  getConsoleUrl operations
-  Return the VPS console URL
-  **/
-  public post(path: '/vps/{serviceName}/getConsoleUrl', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  reboot operations
-  Request a reboot of the machine
-  **/
-  public post(path: '/vps/{serviceName}/reboot', pathParams: {serviceName: string}): Promise<VpsTask>;
+  public post(path: '/vps/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
   createSnapshot operations
   Create a snapshot of the Virtual Server if the snapshot option is enabled and if there is no existing snapshot
   **/
   public post(path: '/vps/{serviceName}/createSnapshot', pathParams: {serviceName: string}): Promise<VpsTask>;
   /**
-  List the secondaryDns.SecondaryDNS objects
-  add a domain on secondary dns
+  getConsoleUrl operations
+  Return the VPS console URL
   **/
-  public post(path: '/vps/{serviceName}/secondaryDnsDomains', pathParams: {serviceName: string}): Promise<void>;
+  public post(path: '/vps/{serviceName}/getConsoleUrl', pathParams: {serviceName: string}): Promise<string>;
   /**
   openConsoleAccess operations
   Return the necessary informations to open a VNC connection to your VPS
   **/
   public post(path: '/vps/{serviceName}/openConsoleAccess', pathParams: {serviceName: string}): Promise<VpsVnc>;
+  /**
+  reboot operations
+  Request a reboot of the machine
+  **/
+  public post(path: '/vps/{serviceName}/reboot', pathParams: {serviceName: string}): Promise<VpsTask>;
+  /**
+  reinstall operations
+  Reinstall the virtual server
+  **/
+  public post(path: '/vps/{serviceName}/reinstall', pathParams: {serviceName: string}): Promise<VpsTask>;
+  /**
+  List the secondaryDns.SecondaryDNS objects
+  add a domain on secondary dns
+  **/
+  public post(path: '/vps/{serviceName}/secondaryDnsDomains', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  setPassword operations
+  Start the process in order to set the root password of the virtual machine. Be careful, in case of Cloud model, a reboot is mandatory.
+  **/
+  public post(path: '/vps/{serviceName}/setPassword', pathParams: {serviceName: string}): Promise<VpsTask>;
+  /**
+  revert operations
+  Revert the Virtual Server to this snapshot
+  **/
+  public post(path: '/vps/{serviceName}/snapshot/revert', pathParams: {serviceName: string}): Promise<VpsTask>;
+  /**
+  start operations
+  Request the machine to start
+  **/
+  public post(path: '/vps/{serviceName}/start', pathParams: {serviceName: string}): Promise<VpsTask>;
+  /**
+  stop operations
+  Request the machine to stop
+  **/
+  public post(path: '/vps/{serviceName}/stop', pathParams: {serviceName: string}): Promise<VpsTask>;
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/vps/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  restore operations
+  Creates a VPS.Task that will restore the given restorePoint
+  **/
+  public post(path: '/vps/{serviceName}/veeam/restorePoints/{id}/restore', pathParams: {serviceName: string, id: Number}): Promise<VpsTask>;
   public post(path: PathsVpsPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
-  /**
-  Information about the options of a VPS Virtual Machine
-  Release a given option
-  **/
-  public delete(path: '/vps/{serviceName}/option/{option}', pathParams: {serviceName: string, option: VpsVpsOptionEnum}): Promise<void>;
-  /**
-  Currently restored backup
-  Creates a VPS.Task that will unmount the backup
-  **/
-  public delete(path: '/vps/{serviceName}/veeam/restoredBackup', pathParams: {serviceName: string}): Promise<VpsTask>;
-  /**
-  Information about the snapshot of a VPS Virtual Machine
-  Creates a vps.Task that will delete the Snapshot
-  **/
-  public delete(path: '/vps/{serviceName}/snapshot', pathParams: {serviceName: string}): Promise<VpsTask>;
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Revoke this ACL
   **/
   public delete(path: '/vps/{serviceName}/backupftp/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<DedicatedServerTask>;
   /**
+  Information about an IP address for a VPS Virtual Machine
+  Release a given Ip (Additional Ip)
+  **/
+  public delete(path: '/vps/{serviceName}/ips/{ipAddress}', pathParams: {serviceName: string, ipAddress: string}): Promise<void>;
+  /**
+  Information about the options of a VPS Virtual Machine
+  Release a given option
+  **/
+  public delete(path: '/vps/{serviceName}/option/{option}', pathParams: {serviceName: string, option: VpsVpsOptionEnum}): Promise<void>;
+  /**
   Secondary dns infos
   remove this domain
   **/
   public delete(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}', pathParams: {serviceName: string, domain: string}): Promise<void>;
   /**
-  Information about an IP address for a VPS Virtual Machine
-  Release a given Ip (Additional Ip)
+  Information about the snapshot of a VPS Virtual Machine
+  Creates a vps.Task that will delete the Snapshot
   **/
-  public delete(path: '/vps/{serviceName}/ips/{ipAddress}', pathParams: {serviceName: string, ipAddress: string}): Promise<void>;
+  public delete(path: '/vps/{serviceName}/snapshot', pathParams: {serviceName: string}): Promise<VpsTask>;
+  /**
+  Currently restored backup
+  Creates a VPS.Task that will unmount the backup
+  **/
+  public delete(path: '/vps/{serviceName}/veeam/restoredBackup', pathParams: {serviceName: string}): Promise<VpsTask>;
   public delete(path: PathsVpsDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

@@ -1356,105 +1356,10 @@ export class ApiDomain extends ApiCommon {
     super(config);
   }
   /**
-  ukRegistrars operations
-  Return the list of all .uk registrars
-  **/
-  public get(path: '/domain/{serviceName}/ukRegistrars', pathParams: {serviceName: string}): Promise<DomainUkRegistrar[]>;
-  /**
-  authInfo operations
-  Return authInfo code if the domain is unlocked
-  **/
-  public get(path: '/domain/{serviceName}/authInfo', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  List the domain.DnssecKey objects
-  List of domain's DS Records
-  **/
-  public get(path: '/domain/{serviceName}/dsRecord', pathParams: {serviceName: string}, queryParams: {flags?: DnssecKeyFlagEnum, status?: DnssecKeyStatusEnum}): Promise<Number[]>;
-  /**
-  Domain's DNSSEC Key
-  Get this object properties
-  **/
-  public get(path: '/domain/{serviceName}/dsRecord/{id}', pathParams: {serviceName: string, id: Number}): Promise<DomainDnssecKey>;
-  /**
-  Missing description
-  Retrieve emails obfuscation rule
-  **/
-  public get(path: '/domain/{serviceName}/rules/emailsObfuscation', pathParams: {serviceName: string}): Promise<DomainContactAllTypesEnum[]>;
-  /**
-  Missing description
-  Retrieve optin rule
-  **/
-  public get(path: '/domain/{serviceName}/rules/optin', pathParams: {serviceName: string}): Promise<DomainRulesOptin[]>;
-  /**
-  List the domain.Owo objects
-  List of whois obfuscators
-  **/
-  public get(path: '/domain/{serviceName}/owo', pathParams: {serviceName: string}, queryParams: {field?: DomainWhoisObfuscatorFieldsEnum}): Promise<DomainWhoisObfuscatorFieldsEnum[]>;
-  /**
-  Obfuscate whois
-  Get this object properties
-  **/
-  public get(path: '/domain/{serviceName}/owo/{field}', pathParams: {serviceName: string, field: DomainWhoisObfuscatorFieldsEnum}): Promise<DomainOwo>;
-  /**
-  Domain name administration
-  Get this object properties
-  **/
-  public get(path: '/domain/{serviceName}', pathParams: {serviceName: string}): Promise<DomainDomain>;
-  /**
-  Glue record
-  Get this object properties
-  **/
-  public get(path: '/domain/{serviceName}/glueRecord/{host}', pathParams: {serviceName: string, host: string}): Promise<DomainGlueRecord>;
-  /**
-  List the domain.GlueRecord objects
-  List of glue record
-  **/
-  public get(path: '/domain/{serviceName}/glueRecord', pathParams: {serviceName: string}, queryParams: {host?: string}): Promise<string[]>;
-  /**
-  Tasks associated to domain
-  Get this object properties
-  **/
-  public get(path: '/domain/{serviceName}/task/{id}', pathParams: {serviceName: string, id: Number}): Promise<DomainTask>;
-  /**
-  List the domain.Task objects
-  Domain pending tasks
-  **/
-  public get(path: '/domain/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {function?: string, status?: DomainOperationStatusEnum}): Promise<Number[]>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/domain/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  CurrentNameServer
-  Get this object properties
-  **/
-  public get(path: '/domain/{serviceName}/nameServer/{id}', pathParams: {serviceName: string, id: Number}): Promise<DomainCurrentNameServer>;
-  /**
-  List the domain.CurrentNameServer objects
-  List of current name servers
-  **/
-  public get(path: '/domain/{serviceName}/nameServer', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  Missing description
-  Retrieve optin configuration
-  **/
-  public get(path: '/domain/{serviceName}/configurations/optin', pathParams: {serviceName: string}): Promise<DomainConfigurationsOptin[]>;
-  /**
-  Missing description
-  Retrieve obfuscated emails configuration
-  **/
-  public get(path: '/domain/{serviceName}/configurations/obfuscatedEmails', pathParams: {serviceName: string}): Promise<DomainConfigurationsObfuscatedEmail[]>;
-  /**
   Operations about the DOMAIN service
   List available services
   **/
   public get(path: '/domain', pathParams: undefined, queryParams: {whoisOwner?: string}): Promise<string[]>;
-  /**
-  Missing description
-  Retrieve an association information according to Afnic
-  **/
-  public get(path: '/domain/data/afnicAssociationInformation/{associationInformationId}', pathParams: {associationInformationId: Number}): Promise<DomainDataAssociationContact>;
   /**
   Missing description
   Retrieve all association information according to Afnic
@@ -1462,14 +1367,24 @@ export class ApiDomain extends ApiCommon {
   public get(path: '/domain/data/afnicAssociationInformation'): Promise<Number[]>;
   /**
   Missing description
-  Retrieve a corporation trademark information according to Afnic
+  Retrieve an association information according to Afnic
   **/
-  public get(path: '/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}', pathParams: {afnicCorporationTrademarkId: Number}): Promise<DomainDataAfnicCorporationTrademarkContact>;
+  public get(path: '/domain/data/afnicAssociationInformation/{associationInformationId}', pathParams: {associationInformationId: Number}): Promise<DomainDataAssociationContact>;
   /**
   Missing description
   Retrieve all corporation trademark information according to Afnic
   **/
   public get(path: '/domain/data/afnicCorporationTrademarkInformation'): Promise<Number[]>;
+  /**
+  Missing description
+  Retrieve a corporation trademark information according to Afnic
+  **/
+  public get(path: '/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}', pathParams: {afnicCorporationTrademarkId: Number}): Promise<DomainDataAfnicCorporationTrademarkContact>;
+  /**
+  Missing description
+  Retrieve claim notices associated to a domain
+  **/
+  public get(path: '/domain/data/claimNotice', pathParams: undefined, queryParams: {domain?: string}): Promise<DomainDataClaimNoticeClaimNotice>;
   /**
   Missing description
   List all the extensions for a specific country
@@ -1496,11 +1411,6 @@ export class ApiDomain extends ApiCommon {
   **/
   public get(path: '/domain/data/smd/{smdId}', pathParams: {smdId: Number}): Promise<DomainDataSmd>;
   /**
-  Missing description
-  Retrieve claim notices associated to a domain
-  **/
-  public get(path: '/domain/data/claimNotice', pathParams: undefined, queryParams: {domain?: string}): Promise<DomainDataClaimNoticeClaimNotice>;
-  /**
   Rules for creating a domain
   List all the rules for a specific cartId/itemId
   **/
@@ -1511,65 +1421,25 @@ export class ApiDomain extends ApiCommon {
   **/
   public get(path: '/domain/zone'): Promise<string[]>;
   /**
-  Zone restore point
-  Get this object properties
-  **/
-  public get(path: '/domain/zone/{zoneName}/history/{creationDate}', pathParams: {zoneName: string, creationDate: string}): Promise<DomainZoneZoneRestorePoint>;
-  /**
-  List the domain.zone.ZoneRestorePoint objects
-  Zone restore points
-  **/
-  public get(path: '/domain/zone/{zoneName}/history', pathParams: {zoneName: string}, queryParams: {'creationDate.to'?: string, 'creationDate.from'?: string}): Promise<string[]>;
-  /**
-  Zone resource records
-  Get this object properties
-  **/
-  public get(path: '/domain/zone/{zoneName}/record/{id}', pathParams: {zoneName: string, id: Number}): Promise<DomainZoneRecord>;
-  /**
-  List the domain.zone.Record objects
-  Records of the zone
-  **/
-  public get(path: '/domain/zone/{zoneName}/record', pathParams: {zoneName: string}, queryParams: {fieldType?: ZoneNamedResolutionFieldTypeEnum, subDomain?: string}): Promise<Number[]>;
-  /**
-  Tasks associated to a zone
-  Get this object properties
-  **/
-  public get(path: '/domain/zone/{zoneName}/task/{id}', pathParams: {zoneName: string, id: Number}): Promise<DomainZoneTask>;
-  /**
-  List the domain.zone.Task objects
-  Domain pending tasks
-  **/
-  public get(path: '/domain/zone/{zoneName}/task', pathParams: {zoneName: string}, queryParams: {status?: DomainOperationStatusEnum, function?: string}): Promise<Number[]>;
-  /**
   Zone dns Management
   Get this object properties
   **/
   public get(path: '/domain/zone/{zoneName}', pathParams: {zoneName: string}): Promise<DomainZoneZone>;
-  /**
-  status operations
-  Zone status
-  **/
-  public get(path: '/domain/zone/{zoneName}/status', pathParams: {zoneName: string}): Promise<ZoneStatus>;
-  /**
-  export operations
-  Export zone
-  **/
-  public get(path: '/domain/zone/{zoneName}/export', pathParams: {zoneName: string}): Promise<string>;
   /**
   Manage Dnssec for this zone
   Get this object properties
   **/
   public get(path: '/domain/zone/{zoneName}/dnssec', pathParams: {zoneName: string}): Promise<DomainZoneDnssec>;
   /**
-  Redirection
+  List the domain.zone.DynHostLogin objects
+  DynHost' logins
+  **/
+  public get(path: '/domain/zone/{zoneName}/dynHost/login', pathParams: {zoneName: string}, queryParams: {subDomain?: string, login?: string}): Promise<string[]>;
+  /**
+  Manage DynHost login
   Get this object properties
   **/
-  public get(path: '/domain/zone/{zoneName}/redirection/{id}', pathParams: {zoneName: string, id: Number}): Promise<DomainZoneRedirection>;
-  /**
-  List the domain.zone.Redirection objects
-  Redirections
-  **/
-  public get(path: '/domain/zone/{zoneName}/redirection', pathParams: {zoneName: string}, queryParams: {subDomain?: string}): Promise<Number[]>;
+  public get(path: '/domain/zone/{zoneName}/dynHost/login/{login}', pathParams: {zoneName: string, login: string}): Promise<DomainZoneDynHostLogin>;
   /**
   List the domain.zone.DynHostRecord objects
   DynHost' records
@@ -1581,15 +1451,40 @@ export class ApiDomain extends ApiCommon {
   **/
   public get(path: '/domain/zone/{zoneName}/dynHost/record/{id}', pathParams: {zoneName: string, id: Number}): Promise<DomainZoneDynHostRecord>;
   /**
-  Manage DynHost login
+  export operations
+  Export zone
+  **/
+  public get(path: '/domain/zone/{zoneName}/export', pathParams: {zoneName: string}): Promise<string>;
+  /**
+  List the domain.zone.ZoneRestorePoint objects
+  Zone restore points
+  **/
+  public get(path: '/domain/zone/{zoneName}/history', pathParams: {zoneName: string}, queryParams: {'creationDate.to'?: string, 'creationDate.from'?: string}): Promise<string[]>;
+  /**
+  Zone restore point
   Get this object properties
   **/
-  public get(path: '/domain/zone/{zoneName}/dynHost/login/{login}', pathParams: {zoneName: string, login: string}): Promise<DomainZoneDynHostLogin>;
+  public get(path: '/domain/zone/{zoneName}/history/{creationDate}', pathParams: {zoneName: string, creationDate: string}): Promise<DomainZoneZoneRestorePoint>;
   /**
-  List the domain.zone.DynHostLogin objects
-  DynHost' logins
+  List the domain.zone.Record objects
+  Records of the zone
   **/
-  public get(path: '/domain/zone/{zoneName}/dynHost/login', pathParams: {zoneName: string}, queryParams: {subDomain?: string, login?: string}): Promise<string[]>;
+  public get(path: '/domain/zone/{zoneName}/record', pathParams: {zoneName: string}, queryParams: {fieldType?: ZoneNamedResolutionFieldTypeEnum, subDomain?: string}): Promise<Number[]>;
+  /**
+  Zone resource records
+  Get this object properties
+  **/
+  public get(path: '/domain/zone/{zoneName}/record/{id}', pathParams: {zoneName: string, id: Number}): Promise<DomainZoneRecord>;
+  /**
+  List the domain.zone.Redirection objects
+  Redirections
+  **/
+  public get(path: '/domain/zone/{zoneName}/redirection', pathParams: {zoneName: string}, queryParams: {subDomain?: string}): Promise<Number[]>;
+  /**
+  Redirection
+  Get this object properties
+  **/
+  public get(path: '/domain/zone/{zoneName}/redirection/{id}', pathParams: {zoneName: string, id: Number}): Promise<DomainZoneRedirection>;
   /**
   Details about a Service
   Get this object properties
@@ -1600,32 +1495,127 @@ export class ApiDomain extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/domain/zone/{zoneName}/soa', pathParams: {zoneName: string}): Promise<DomainZoneSoa>;
-  public get(path: PathsDomainGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  /**
+  status operations
+  Zone status
+  **/
+  public get(path: '/domain/zone/{zoneName}/status', pathParams: {zoneName: string}): Promise<ZoneStatus>;
+  /**
+  List the domain.zone.Task objects
+  Domain pending tasks
+  **/
+  public get(path: '/domain/zone/{zoneName}/task', pathParams: {zoneName: string}, queryParams: {status?: DomainOperationStatusEnum, function?: string}): Promise<Number[]>;
+  /**
+  Tasks associated to a zone
+  Get this object properties
+  **/
+  public get(path: '/domain/zone/{zoneName}/task/{id}', pathParams: {zoneName: string, id: Number}): Promise<DomainZoneTask>;
   /**
   Domain name administration
-  Alter this object properties
+  Get this object properties
   **/
-  public put(path: '/domain/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public get(path: '/domain/{serviceName}', pathParams: {serviceName: string}): Promise<DomainDomain>;
+  /**
+  authInfo operations
+  Return authInfo code if the domain is unlocked
+  **/
+  public get(path: '/domain/{serviceName}/authInfo', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  Missing description
+  Retrieve obfuscated emails configuration
+  **/
+  public get(path: '/domain/{serviceName}/configurations/obfuscatedEmails', pathParams: {serviceName: string}): Promise<DomainConfigurationsObfuscatedEmail[]>;
+  /**
+  Missing description
+  Retrieve optin configuration
+  **/
+  public get(path: '/domain/{serviceName}/configurations/optin', pathParams: {serviceName: string}): Promise<DomainConfigurationsOptin[]>;
+  /**
+  List the domain.DnssecKey objects
+  List of domain's DS Records
+  **/
+  public get(path: '/domain/{serviceName}/dsRecord', pathParams: {serviceName: string}, queryParams: {flags?: DnssecKeyFlagEnum, status?: DnssecKeyStatusEnum}): Promise<Number[]>;
+  /**
+  Domain's DNSSEC Key
+  Get this object properties
+  **/
+  public get(path: '/domain/{serviceName}/dsRecord/{id}', pathParams: {serviceName: string, id: Number}): Promise<DomainDnssecKey>;
+  /**
+  List the domain.GlueRecord objects
+  List of glue record
+  **/
+  public get(path: '/domain/{serviceName}/glueRecord', pathParams: {serviceName: string}, queryParams: {host?: string}): Promise<string[]>;
+  /**
+  Glue record
+  Get this object properties
+  **/
+  public get(path: '/domain/{serviceName}/glueRecord/{host}', pathParams: {serviceName: string, host: string}): Promise<DomainGlueRecord>;
+  /**
+  List the domain.CurrentNameServer objects
+  List of current name servers
+  **/
+  public get(path: '/domain/{serviceName}/nameServer', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  CurrentNameServer
+  Get this object properties
+  **/
+  public get(path: '/domain/{serviceName}/nameServer/{id}', pathParams: {serviceName: string, id: Number}): Promise<DomainCurrentNameServer>;
+  /**
+  List the domain.Owo objects
+  List of whois obfuscators
+  **/
+  public get(path: '/domain/{serviceName}/owo', pathParams: {serviceName: string}, queryParams: {field?: DomainWhoisObfuscatorFieldsEnum}): Promise<DomainWhoisObfuscatorFieldsEnum[]>;
+  /**
+  Obfuscate whois
+  Get this object properties
+  **/
+  public get(path: '/domain/{serviceName}/owo/{field}', pathParams: {serviceName: string, field: DomainWhoisObfuscatorFieldsEnum}): Promise<DomainOwo>;
+  /**
+  Missing description
+  Retrieve emails obfuscation rule
+  **/
+  public get(path: '/domain/{serviceName}/rules/emailsObfuscation', pathParams: {serviceName: string}): Promise<DomainContactAllTypesEnum[]>;
+  /**
+  Missing description
+  Retrieve optin rule
+  **/
+  public get(path: '/domain/{serviceName}/rules/optin', pathParams: {serviceName: string}): Promise<DomainRulesOptin[]>;
   /**
   Details about a Service
-  Alter this object properties
+  Get this object properties
   **/
-  public put(path: '/domain/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public get(path: '/domain/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
-  Missing description
-  Save a new optin configuration
+  List the domain.Task objects
+  Domain pending tasks
   **/
-  public put(path: '/domain/{serviceName}/configurations/optin', pathParams: {serviceName: string}): Promise<DomainConfigurationsOptin[]>;
+  public get(path: '/domain/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {function?: string, status?: DomainOperationStatusEnum}): Promise<Number[]>;
   /**
-  Missing description
-  Save a new obfuscated emails configuration
+  Tasks associated to domain
+  Get this object properties
   **/
-  public put(path: '/domain/{serviceName}/configurations/obfuscatedEmails', pathParams: {serviceName: string}): Promise<DomainConfigurationsObfuscatedEmail[]>;
+  public get(path: '/domain/{serviceName}/task/{id}', pathParams: {serviceName: string, id: Number}): Promise<DomainTask>;
+  /**
+  ukRegistrars operations
+  Return the list of all .uk registrars
+  **/
+  public get(path: '/domain/{serviceName}/ukRegistrars', pathParams: {serviceName: string}): Promise<DomainUkRegistrar[]>;
+  public get(path: PathsDomainGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Missing description
   Modify an existing SMD file
   **/
   public put(path: '/domain/data/smd/{smdId}', pathParams: {smdId: Number}): Promise<DomainDataSmd>;
+  /**
+  Manage DynHost login
+  Alter this object properties
+  **/
+  public put(path: '/domain/zone/{zoneName}/dynHost/login/{login}', pathParams: {zoneName: string, login: string}): Promise<void>;
+  /**
+  DynHost record
+  Alter this object properties
+  **/
+  public put(path: '/domain/zone/{zoneName}/dynHost/record/{id}', pathParams: {zoneName: string, id: Number}): Promise<void>;
   /**
   Zone resource records
   Alter this object properties
@@ -1637,16 +1627,6 @@ export class ApiDomain extends ApiCommon {
   **/
   public put(path: '/domain/zone/{zoneName}/redirection/{id}', pathParams: {zoneName: string, id: Number}): Promise<void>;
   /**
-  DynHost record
-  Alter this object properties
-  **/
-  public put(path: '/domain/zone/{zoneName}/dynHost/record/{id}', pathParams: {zoneName: string, id: Number}): Promise<void>;
-  /**
-  Manage DynHost login
-  Alter this object properties
-  **/
-  public put(path: '/domain/zone/{zoneName}/dynHost/login/{login}', pathParams: {zoneName: string, login: string}): Promise<void>;
-  /**
   Details about a Service
   Alter this object properties
   **/
@@ -1656,82 +1636,27 @@ export class ApiDomain extends ApiCommon {
   Alter this object properties
   **/
   public put(path: '/domain/zone/{zoneName}/soa', pathParams: {zoneName: string}): Promise<void>;
-  public put(path: PathsDomainPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  activateZone operations
-  Activate the DNS zone for this domain
+  Domain name administration
+  Alter this object properties
   **/
-  public post(path: '/domain/{serviceName}/activateZone', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  refresh operations
-  Regenerate the obfuscated email address
-  **/
-  public post(path: '/domain/{serviceName}/email/obfuscated/refresh', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  List the domain.DnssecKey objects
-  Update DS records
-  **/
-  public post(path: '/domain/{serviceName}/dsRecord', pathParams: {serviceName: string}): Promise<DomainTask>;
-  /**
-  List the domain.Owo objects
-  Add whois obfuscators
-  **/
-  public post(path: '/domain/{serviceName}/owo', pathParams: {serviceName: string}): Promise<DomainWhoisObfuscatorFieldsEnum[]>;
-  /**
-  update operations
-  Update the glue record
-  **/
-  public post(path: '/domain/{serviceName}/glueRecord/{host}/update', pathParams: {serviceName: string, host: string}): Promise<DomainTask>;
-  /**
-  List the domain.GlueRecord objects
-  Create a glue record
-  **/
-  public post(path: '/domain/{serviceName}/glueRecord', pathParams: {serviceName: string}): Promise<DomainTask>;
-  /**
-  relaunch operations
-  Relaunch the task
-  **/
-  public post(path: '/domain/{serviceName}/task/{id}/relaunch', pathParams: {serviceName: string, id: Number}): Promise<void>;
-  /**
-  cancel operations
-  Cancel the task
-  **/
-  public post(path: '/domain/{serviceName}/task/{id}/cancel', pathParams: {serviceName: string, id: Number}): Promise<void>;
-  /**
-  accelerate operations
-  Accelerate the task
-  **/
-  public post(path: '/domain/{serviceName}/task/{id}/accelerate', pathParams: {serviceName: string, id: Number}): Promise<void>;
-  /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
-  public post(path: '/domain/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  status operations
-  Get name server status
-  **/
-  public post(path: '/domain/{serviceName}/nameServer/{id}/status', pathParams: {serviceName: string, id: Number}): Promise<DomainDomainNsStatus>;
-  /**
-  List the domain.CurrentNameServer objects
-  Add new name server
-  **/
-  public post(path: '/domain/{serviceName}/nameServer', pathParams: {serviceName: string}): Promise<DomainTask>;
-  /**
-  ukOutgoingTransfer operations
-  Schedule an outgoing transfer task for this domain (.uk only)
-  **/
-  public post(path: '/domain/{serviceName}/ukOutgoingTransfer', pathParams: {serviceName: string}): Promise<DomainTask>;
-  /**
-  update operations
-  Update DNS servers
-  **/
-  public post(path: '/domain/{serviceName}/nameServers/update', pathParams: {serviceName: string}): Promise<DomainTask>;
+  public put(path: '/domain/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
   /**
   Missing description
-  Refresh an obfuscated emails configuration
+  Save a new obfuscated emails configuration
   **/
-  public post(path: '/domain/{serviceName}/configurations/obfuscatedEmails/refresh', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/domain/{serviceName}/configurations/obfuscatedEmails', pathParams: {serviceName: string}): Promise<DomainConfigurationsObfuscatedEmail[]>;
+  /**
+  Missing description
+  Save a new optin configuration
+  **/
+  public put(path: '/domain/{serviceName}/configurations/optin', pathParams: {serviceName: string}): Promise<DomainConfigurationsOptin[]>;
+  /**
+  Details about a Service
+  Alter this object properties
+  **/
+  public put(path: '/domain/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsDomainPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Missing description
   Post a new association information according to Afnic
@@ -1753,20 +1678,55 @@ export class ApiDomain extends ApiCommon {
   **/
   public post(path: '/domain/data/smd'): Promise<DomainDataSmd>;
   /**
-  restore operations
-  Restore the DNS zone
+  Change the contacts of this service
+  Launch a contact change procedure
   **/
-  public post(path: '/domain/zone/{zoneName}/history/{creationDate}/restore', pathParams: {zoneName: string, creationDate: string}): Promise<DomainZoneTask>;
+  public post(path: '/domain/zone/{zoneName}/changeContact', pathParams: {zoneName: string}): Promise<Number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
   public post(path: '/domain/zone/{zoneName}/confirmTermination', pathParams: {zoneName: string}): Promise<string>;
   /**
+  Manage Dnssec for this zone
+  Enable Dnssec
+  **/
+  public post(path: '/domain/zone/{zoneName}/dnssec', pathParams: {zoneName: string}): Promise<void>;
+  /**
+  List the domain.zone.DynHostLogin objects
+  Create a new DynHost login
+  **/
+  public post(path: '/domain/zone/{zoneName}/dynHost/login', pathParams: {zoneName: string}): Promise<DomainZoneDynHostLogin>;
+  /**
+  changePassword operations
+  Change password of the DynHost login
+  **/
+  public post(path: '/domain/zone/{zoneName}/dynHost/login/{login}/changePassword', pathParams: {zoneName: string, login: string}): Promise<void>;
+  /**
+  List the domain.zone.DynHostRecord objects
+  Create a new DynHost record (Don't forget to refresh the zone)
+  **/
+  public post(path: '/domain/zone/{zoneName}/dynHost/record', pathParams: {zoneName: string}): Promise<DomainZoneDynHostRecord>;
+  /**
+  restore operations
+  Restore the DNS zone
+  **/
+  public post(path: '/domain/zone/{zoneName}/history/{creationDate}/restore', pathParams: {zoneName: string, creationDate: string}): Promise<DomainZoneTask>;
+  /**
+  import operations
+  Import zone
+  **/
+  public post(path: '/domain/zone/{zoneName}/import', pathParams: {zoneName: string}): Promise<DomainZoneTask>;
+  /**
   List the domain.zone.Record objects
   Create a new DNS record (Don't forget to refresh the zone)
   **/
   public post(path: '/domain/zone/{zoneName}/record', pathParams: {zoneName: string}): Promise<DomainZoneRecord>;
+  /**
+  List the domain.zone.Redirection objects
+  Create a new redirection (Don't forget to refresh the zone)
+  **/
+  public post(path: '/domain/zone/{zoneName}/redirection', pathParams: {zoneName: string}): Promise<DomainZoneRedirection>;
   /**
   refresh operations
   Apply zone modification on DNS servers
@@ -1783,61 +1743,126 @@ export class ApiDomain extends ApiCommon {
   **/
   public post(path: '/domain/zone/{zoneName}/task/{id}/accelerate', pathParams: {zoneName: string, id: Number}): Promise<void>;
   /**
-  relaunch operations
-  Relaunch the task
-  **/
-  public post(path: '/domain/zone/{zoneName}/task/{id}/relaunch', pathParams: {zoneName: string, id: Number}): Promise<void>;
-  /**
   cancel operations
   Cancel the task
   **/
   public post(path: '/domain/zone/{zoneName}/task/{id}/cancel', pathParams: {zoneName: string, id: Number}): Promise<void>;
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
+  relaunch operations
+  Relaunch the task
   **/
-  public post(path: '/domain/zone/{zoneName}/changeContact', pathParams: {zoneName: string}): Promise<Number[]>;
-  /**
-  import operations
-  Import zone
-  **/
-  public post(path: '/domain/zone/{zoneName}/import', pathParams: {zoneName: string}): Promise<DomainZoneTask>;
-  /**
-  Manage Dnssec for this zone
-  Enable Dnssec
-  **/
-  public post(path: '/domain/zone/{zoneName}/dnssec', pathParams: {zoneName: string}): Promise<void>;
-  /**
-  List the domain.zone.Redirection objects
-  Create a new redirection (Don't forget to refresh the zone)
-  **/
-  public post(path: '/domain/zone/{zoneName}/redirection', pathParams: {zoneName: string}): Promise<DomainZoneRedirection>;
-  /**
-  List the domain.zone.DynHostRecord objects
-  Create a new DynHost record (Don't forget to refresh the zone)
-  **/
-  public post(path: '/domain/zone/{zoneName}/dynHost/record', pathParams: {zoneName: string}): Promise<DomainZoneDynHostRecord>;
-  /**
-  changePassword operations
-  Change password of the DynHost login
-  **/
-  public post(path: '/domain/zone/{zoneName}/dynHost/login/{login}/changePassword', pathParams: {zoneName: string, login: string}): Promise<void>;
-  /**
-  List the domain.zone.DynHostLogin objects
-  Create a new DynHost login
-  **/
-  public post(path: '/domain/zone/{zoneName}/dynHost/login', pathParams: {zoneName: string}): Promise<DomainZoneDynHostLogin>;
+  public post(path: '/domain/zone/{zoneName}/task/{id}/relaunch', pathParams: {zoneName: string, id: Number}): Promise<void>;
   /**
   Terminate your service
   Terminate your service
   **/
   public post(path: '/domain/zone/{zoneName}/terminate', pathParams: {zoneName: string}): Promise<string>;
+  /**
+  activateZone operations
+  Activate the DNS zone for this domain
+  **/
+  public post(path: '/domain/{serviceName}/activateZone', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  Change the contacts of this service
+  Launch a contact change procedure
+  **/
+  public post(path: '/domain/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Missing description
+  Refresh an obfuscated emails configuration
+  **/
+  public post(path: '/domain/{serviceName}/configurations/obfuscatedEmails/refresh', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  List the domain.DnssecKey objects
+  Update DS records
+  **/
+  public post(path: '/domain/{serviceName}/dsRecord', pathParams: {serviceName: string}): Promise<DomainTask>;
+  /**
+  refresh operations
+  Regenerate the obfuscated email address
+  **/
+  public post(path: '/domain/{serviceName}/email/obfuscated/refresh', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  List the domain.GlueRecord objects
+  Create a glue record
+  **/
+  public post(path: '/domain/{serviceName}/glueRecord', pathParams: {serviceName: string}): Promise<DomainTask>;
+  /**
+  update operations
+  Update the glue record
+  **/
+  public post(path: '/domain/{serviceName}/glueRecord/{host}/update', pathParams: {serviceName: string, host: string}): Promise<DomainTask>;
+  /**
+  List the domain.CurrentNameServer objects
+  Add new name server
+  **/
+  public post(path: '/domain/{serviceName}/nameServer', pathParams: {serviceName: string}): Promise<DomainTask>;
+  /**
+  status operations
+  Get name server status
+  **/
+  public post(path: '/domain/{serviceName}/nameServer/{id}/status', pathParams: {serviceName: string, id: Number}): Promise<DomainDomainNsStatus>;
+  /**
+  update operations
+  Update DNS servers
+  **/
+  public post(path: '/domain/{serviceName}/nameServers/update', pathParams: {serviceName: string}): Promise<DomainTask>;
+  /**
+  List the domain.Owo objects
+  Add whois obfuscators
+  **/
+  public post(path: '/domain/{serviceName}/owo', pathParams: {serviceName: string}): Promise<DomainWhoisObfuscatorFieldsEnum[]>;
+  /**
+  accelerate operations
+  Accelerate the task
+  **/
+  public post(path: '/domain/{serviceName}/task/{id}/accelerate', pathParams: {serviceName: string, id: Number}): Promise<void>;
+  /**
+  cancel operations
+  Cancel the task
+  **/
+  public post(path: '/domain/{serviceName}/task/{id}/cancel', pathParams: {serviceName: string, id: Number}): Promise<void>;
+  /**
+  relaunch operations
+  Relaunch the task
+  **/
+  public post(path: '/domain/{serviceName}/task/{id}/relaunch', pathParams: {serviceName: string, id: Number}): Promise<void>;
+  /**
+  ukOutgoingTransfer operations
+  Schedule an outgoing transfer task for this domain (.uk only)
+  **/
+  public post(path: '/domain/{serviceName}/ukOutgoingTransfer', pathParams: {serviceName: string}): Promise<DomainTask>;
   public post(path: PathsDomainPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
-  Obfuscate whois
-  Delete a whois obfuscator
+  Missing description
+  Delete a SMD file
   **/
-  public delete(path: '/domain/{serviceName}/owo/{field}', pathParams: {serviceName: string, field: DomainWhoisObfuscatorFieldsEnum}): Promise<void>;
+  public delete(path: '/domain/data/smd/{smdId}', pathParams: {smdId: Number}): Promise<void>;
+  /**
+  Manage Dnssec for this zone
+  Disable Dnssec
+  **/
+  public delete(path: '/domain/zone/{zoneName}/dnssec', pathParams: {zoneName: string}): Promise<void>;
+  /**
+  Manage DynHost login
+  Delete a DynHost login
+  **/
+  public delete(path: '/domain/zone/{zoneName}/dynHost/login/{login}', pathParams: {zoneName: string, login: string}): Promise<void>;
+  /**
+  DynHost record
+  Delete a DynHost record (Don't forget to refresh the zone)
+  **/
+  public delete(path: '/domain/zone/{zoneName}/dynHost/record/{id}', pathParams: {zoneName: string, id: Number}): Promise<void>;
+  /**
+  Zone resource records
+  Delete a DNS record (Don't forget to refresh the zone)
+  **/
+  public delete(path: '/domain/zone/{zoneName}/record/{id}', pathParams: {zoneName: string, id: Number}): Promise<void>;
+  /**
+  Redirection
+  Delete a redirection (Don't forget to refresh the zone)
+  **/
+  public delete(path: '/domain/zone/{zoneName}/redirection/{id}', pathParams: {zoneName: string, id: Number}): Promise<void>;
   /**
   Glue record
   Delete the glue record
@@ -1849,34 +1874,9 @@ export class ApiDomain extends ApiCommon {
   **/
   public delete(path: '/domain/{serviceName}/nameServer/{id}', pathParams: {serviceName: string, id: Number}): Promise<DomainTask>;
   /**
-  Missing description
-  Delete a SMD file
+  Obfuscate whois
+  Delete a whois obfuscator
   **/
-  public delete(path: '/domain/data/smd/{smdId}', pathParams: {smdId: Number}): Promise<void>;
-  /**
-  Zone resource records
-  Delete a DNS record (Don't forget to refresh the zone)
-  **/
-  public delete(path: '/domain/zone/{zoneName}/record/{id}', pathParams: {zoneName: string, id: Number}): Promise<void>;
-  /**
-  Manage Dnssec for this zone
-  Disable Dnssec
-  **/
-  public delete(path: '/domain/zone/{zoneName}/dnssec', pathParams: {zoneName: string}): Promise<void>;
-  /**
-  Redirection
-  Delete a redirection (Don't forget to refresh the zone)
-  **/
-  public delete(path: '/domain/zone/{zoneName}/redirection/{id}', pathParams: {zoneName: string, id: Number}): Promise<void>;
-  /**
-  DynHost record
-  Delete a DynHost record (Don't forget to refresh the zone)
-  **/
-  public delete(path: '/domain/zone/{zoneName}/dynHost/record/{id}', pathParams: {zoneName: string, id: Number}): Promise<void>;
-  /**
-  Manage DynHost login
-  Delete a DynHost login
-  **/
-  public delete(path: '/domain/zone/{zoneName}/dynHost/login/{login}', pathParams: {zoneName: string, login: string}): Promise<void>;
+  public delete(path: '/domain/{serviceName}/owo/{field}', pathParams: {serviceName: string, field: DomainWhoisObfuscatorFieldsEnum}): Promise<void>;
   public delete(path: PathsDomainDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

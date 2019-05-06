@@ -356,15 +356,25 @@ export class ApiPaasTimeseries extends ApiCommon {
     super(config);
   }
   /**
-  Consumption
-  Get consumption
+  Operations about the PAAS_TIMESERIES service
+  List available services
   **/
-  public get(path: '/paas/timeseries/{serviceName}/consumption', pathParams: {serviceName: string}): Promise<PaasTimeseriesConsumption[]>;
+  public get(path: '/paas/timeseries'): Promise<string[]>;
+  /**
+  Regions
+  Get available regions
+  **/
+  public get(path: '/paas/timeseries/region'): Promise<PaasTimeseriesRegion[]>;
   /**
   Timeseries project
   Get this object properties
   **/
   public get(path: '/paas/timeseries/{serviceName}', pathParams: {serviceName: string}): Promise<TimeseriesProject>;
+  /**
+  Consumption
+  Get consumption
+  **/
+  public get(path: '/paas/timeseries/{serviceName}/consumption', pathParams: {serviceName: string}): Promise<PaasTimeseriesConsumption[]>;
   /**
   Keys
   Get keys for a project
@@ -385,16 +395,6 @@ export class ApiPaasTimeseries extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/paas/timeseries/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  Operations about the PAAS_TIMESERIES service
-  List available services
-  **/
-  public get(path: '/paas/timeseries'): Promise<string[]>;
-  /**
-  Regions
-  Get available regions
-  **/
-  public get(path: '/paas/timeseries/region'): Promise<PaasTimeseriesRegion[]>;
   public get(path: PathsPaasTimeseriesGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Timeseries project
@@ -413,6 +413,11 @@ export class ApiPaasTimeseries extends ApiCommon {
   public put(path: '/paas/timeseries/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsPaasTimeseriesPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
+  Change the contacts of this service
+  Launch a contact change procedure
+  **/
+  public post(path: '/paas/timeseries/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
   Keys
   Create a key for a project
   **/
@@ -422,11 +427,6 @@ export class ApiPaasTimeseries extends ApiCommon {
   Setup a project
   **/
   public post(path: '/paas/timeseries/{serviceName}/setup', pathParams: {serviceName: string}): Promise<PaasTimeseriesProject>;
-  /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
-  public post(path: '/paas/timeseries/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
   public post(path: PathsPaasTimeseriesPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Key

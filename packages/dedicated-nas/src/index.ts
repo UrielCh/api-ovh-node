@@ -269,20 +269,10 @@ export class ApiDedicatedNas extends ApiCommon {
     super(config);
   }
   /**
-  Details about a Service
-  Get this object properties
+  Operations about the STORAGE service
+  List available services
   **/
-  public get(path: '/dedicated/nas/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  Storage task
-  Get this object properties
-  **/
-  public get(path: '/dedicated/nas/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DedicatedNasTaskTask>;
-  /**
-  List the dedicated.nasTask.Task objects
-  View task list
-  **/
-  public get(path: '/dedicated/nas/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {operation?: DedicatedStorageTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/dedicated/nas'): Promise<string[]>;
   /**
   Storage nas
   Get this object properties
@@ -294,46 +284,51 @@ export class ApiDedicatedNas extends ApiCommon {
   **/
   public get(path: '/dedicated/nas/{serviceName}/partition', pathParams: {serviceName: string}): Promise<string[]>;
   /**
-  Partition Quota
-  Get this object properties
-  **/
-  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}', pathParams: {serviceName: string, partitionName: string, uid: Number}): Promise<DedicatedNasQuota>;
-  /**
-  List the dedicated.nas.Quota objects
-  Get quota for this partition
-  **/
-  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota', pathParams: {serviceName: string, partitionName: string}): Promise<Number[]>;
-  /**
-  authorizableIps operations
-  Get all IPs that can be used in the ACL
-  **/
-  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps', pathParams: {serviceName: string, partitionName: string}): Promise<string[]>;
-  /**
   Storage partition
   Get this object properties
   **/
   public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', pathParams: {serviceName: string, partitionName: string}): Promise<DedicatedNasPartition>;
-  /**
-  Define Acl for partition
-  Get this object properties
-  **/
-  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}', pathParams: {serviceName: string, partitionName: string, ip: string}): Promise<DedicatedNasAccess>;
   /**
   List the dedicated.nas.Access objects
   get ACL for this partition
   **/
   public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access', pathParams: {serviceName: string, partitionName: string}): Promise<string[]>;
   /**
-  Operations about the STORAGE service
-  List available services
+  Define Acl for partition
+  Get this object properties
   **/
-  public get(path: '/dedicated/nas'): Promise<string[]>;
-  public get(path: PathsDedicatedNasGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}', pathParams: {serviceName: string, partitionName: string, ip: string}): Promise<DedicatedNasAccess>;
+  /**
+  authorizableIps operations
+  Get all IPs that can be used in the ACL
+  **/
+  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps', pathParams: {serviceName: string, partitionName: string}): Promise<string[]>;
+  /**
+  List the dedicated.nas.Quota objects
+  Get quota for this partition
+  **/
+  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota', pathParams: {serviceName: string, partitionName: string}): Promise<Number[]>;
+  /**
+  Partition Quota
+  Get this object properties
+  **/
+  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}', pathParams: {serviceName: string, partitionName: string, uid: Number}): Promise<DedicatedNasQuota>;
   /**
   Details about a Service
-  Alter this object properties
+  Get this object properties
   **/
-  public put(path: '/dedicated/nas/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public get(path: '/dedicated/nas/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  List the dedicated.nasTask.Task objects
+  View task list
+  **/
+  public get(path: '/dedicated/nas/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {operation?: DedicatedStorageTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<Number[]>;
+  /**
+  Storage task
+  Get this object properties
+  **/
+  public get(path: '/dedicated/nas/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DedicatedNasTaskTask>;
+  public get(path: PathsDedicatedNasGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Storage nas
   Alter this object properties
@@ -344,6 +339,11 @@ export class ApiDedicatedNas extends ApiCommon {
   Alter this object properties
   **/
   public put(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', pathParams: {serviceName: string, partitionName: string}): Promise<void>;
+  /**
+  Details about a Service
+  Alter this object properties
+  **/
+  public put(path: '/dedicated/nas/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsDedicatedNasPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   List the dedicated.nas.Partition objects
@@ -351,21 +351,16 @@ export class ApiDedicatedNas extends ApiCommon {
   **/
   public post(path: '/dedicated/nas/{serviceName}/partition', pathParams: {serviceName: string}): Promise<DedicatedNasTaskTask>;
   /**
-  List the dedicated.nas.Quota objects
-  Set a new quota
-  **/
-  public post(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota', pathParams: {serviceName: string, partitionName: string}): Promise<DedicatedNasTaskTask>;
-  /**
   List the dedicated.nas.Access objects
   Add an Acl to this  partition
   **/
   public post(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access', pathParams: {serviceName: string, partitionName: string}): Promise<DedicatedNasTaskTask>;
-  public post(path: PathsDedicatedNasPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
-  Partition Quota
-  Delete a given quota
+  List the dedicated.nas.Quota objects
+  Set a new quota
   **/
-  public delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}', pathParams: {serviceName: string, partitionName: string, uid: Number}): Promise<DedicatedNasTaskTask>;
+  public post(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota', pathParams: {serviceName: string, partitionName: string}): Promise<DedicatedNasTaskTask>;
+  public post(path: PathsDedicatedNasPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Storage partition
   Delete this partition
@@ -376,5 +371,10 @@ export class ApiDedicatedNas extends ApiCommon {
   Delete a given snapshot
   **/
   public delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}', pathParams: {serviceName: string, partitionName: string, ip: string}): Promise<DedicatedNasTaskTask>;
+  /**
+  Partition Quota
+  Delete a given quota
+  **/
+  public delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}', pathParams: {serviceName: string, partitionName: string, uid: Number}): Promise<DedicatedNasTaskTask>;
   public delete(path: PathsDedicatedNasDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

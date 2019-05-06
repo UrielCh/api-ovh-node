@@ -354,11 +354,6 @@ export class ApiDbaasQueue extends ApiCommon {
   **/
   public get(path: '/dbaas/queue/{serviceName}', pathParams: {serviceName: string}): Promise<DbaasQueueApp>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/dbaas/queue/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
   Key
   List all keys of the application
   **/
@@ -368,6 +363,21 @@ export class ApiDbaasQueue extends ApiCommon {
   Get a key
   **/
   public get(path: '/dbaas/queue/{serviceName}/key/{keyId}', pathParams: {serviceName: string, keyId: string}): Promise<DbaasQueueKey>;
+  /**
+  Metrics
+  Get metrics account
+  **/
+  public get(path: '/dbaas/queue/{serviceName}/metrics/account', pathParams: {serviceName: string}): Promise<DbaasQueueMetricsAccount>;
+  /**
+  Region
+  List all regions ID
+  **/
+  public get(path: '/dbaas/queue/{serviceName}/region', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Region
+  Get one region
+  **/
+  public get(path: '/dbaas/queue/{serviceName}/region/{regionId}', pathParams: {serviceName: string, regionId: string}): Promise<DbaasQueueRegion>;
   /**
   Role
   List all roles of the application
@@ -379,45 +389,35 @@ export class ApiDbaasQueue extends ApiCommon {
   **/
   public get(path: '/dbaas/queue/{serviceName}/role/{roleName}', pathParams: {serviceName: string, roleName: string}): Promise<DbaasQueueRole>;
   /**
-  Topic
-  Get a topic
+  Details about a Service
+  Get this object properties
   **/
-  public get(path: '/dbaas/queue/{serviceName}/topic/{topicId}', pathParams: {serviceName: string, topicId: string}): Promise<DbaasQueueTopic>;
+  public get(path: '/dbaas/queue/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Topic
   List all topics of the application
   **/
   public get(path: '/dbaas/queue/{serviceName}/topic', pathParams: {serviceName: string}): Promise<string[]>;
   /**
-  Region
-  Get one region
+  Topic
+  Get a topic
   **/
-  public get(path: '/dbaas/queue/{serviceName}/region/{regionId}', pathParams: {serviceName: string, regionId: string}): Promise<DbaasQueueRegion>;
-  /**
-  Region
-  List all regions ID
-  **/
-  public get(path: '/dbaas/queue/{serviceName}/region', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Metrics
-  Get metrics account
-  **/
-  public get(path: '/dbaas/queue/{serviceName}/metrics/account', pathParams: {serviceName: string}): Promise<DbaasQueueMetricsAccount>;
+  public get(path: '/dbaas/queue/{serviceName}/topic/{topicId}', pathParams: {serviceName: string, topicId: string}): Promise<DbaasQueueTopic>;
   /**
   User
   List all users of the application
   **/
   public get(path: '/dbaas/queue/{serviceName}/user', pathParams: {serviceName: string}): Promise<string[]>;
   /**
-  User roles
-  Get user roles
-  **/
-  public get(path: '/dbaas/queue/{serviceName}/user/{userId}/roles', pathParams: {serviceName: string, userId: string}): Promise<string[]>;
-  /**
   User
   Get a user
   **/
   public get(path: '/dbaas/queue/{serviceName}/user/{userId}', pathParams: {serviceName: string, userId: string}): Promise<DbaasQueueUser>;
+  /**
+  User roles
+  Get user roles
+  **/
+  public get(path: '/dbaas/queue/{serviceName}/user/{userId}/roles', pathParams: {serviceName: string, userId: string}): Promise<string[]>;
   public get(path: PathsDbaasQueueGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   App

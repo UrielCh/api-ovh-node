@@ -138,6 +138,16 @@ export class ApiAllDom extends ApiCommon {
     super(config);
   }
   /**
+  Operations about the ALLDOM service
+  List available services
+  **/
+  public get(path: '/allDom'): Promise<string[]>;
+  /**
+  AllDom administration
+  Get this object properties
+  **/
+  public get(path: '/allDom/{serviceName}', pathParams: {serviceName: string}): Promise<AllDomAllDom>;
+  /**
   List the allDom.AllDomDomain objects
   Domains attached to this allDom
   **/
@@ -148,20 +158,10 @@ export class ApiAllDom extends ApiCommon {
   **/
   public get(path: '/allDom/{serviceName}/domain/{domain}', pathParams: {serviceName: string, domain: string}): Promise<AllDomAllDomDomain>;
   /**
-  AllDom administration
-  Get this object properties
-  **/
-  public get(path: '/allDom/{serviceName}', pathParams: {serviceName: string}): Promise<AllDomAllDom>;
-  /**
   Details about a Service
   Get this object properties
   **/
   public get(path: '/allDom/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  Operations about the ALLDOM service
-  List available services
-  **/
-  public get(path: '/allDom'): Promise<string[]>;
   public get(path: PathsAllDomGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service

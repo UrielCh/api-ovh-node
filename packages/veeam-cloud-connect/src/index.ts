@@ -274,6 +274,16 @@ export class ApiVeeamCloudConnect extends ApiCommon {
     super(config);
   }
   /**
+  Operations about the VEEAMCC service
+  List available services
+  **/
+  public get(path: '/veeamCloudConnect'): Promise<string[]>;
+  /**
+  Veeam Cloud Connect account
+  Get this object properties
+  **/
+  public get(path: '/veeamCloudConnect/{serviceName}', pathParams: {serviceName: string}): Promise<VeeamCloudConnectAccount>;
+  /**
   List the veeamCloudConnect.BackupRepository objects
   Veeam Backup Repository linked to this Veeam Cloud Connect account
   **/
@@ -284,40 +294,30 @@ export class ApiVeeamCloudConnect extends ApiCommon {
   **/
   public get(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}', pathParams: {serviceName: string, inventoryName: string}): Promise<VeeamCloudConnectBackupRepository>;
   /**
-  Operation with the Cloud Tenant Account
-  Get this object properties
+  capabilities operations
+  Show capabilities of your current offer
   **/
-  public get(path: '/veeamCloudConnect/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<VeeamCloudConnectTask>;
-  /**
-  List the veeamCloudConnect.Task objects
-  Tasks associated with Cloud Tenant
-  **/
-  public get(path: '/veeamCloudConnect/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {name?: string, state?: VeeamCloudConnectTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/veeamCloudConnect/{serviceName}/capabilities', pathParams: {serviceName: string}): Promise<VeeamCloudConnectOfferCapabilities>;
   /**
   orderableUpgrade operations
   List the possible upgrades on your Veeam Cloud Connect account
   **/
   public get(path: '/veeamCloudConnect/{serviceName}/orderableUpgrade', pathParams: {serviceName: string}): Promise<VeeamCloudConnectOffer[]>;
   /**
-  capabilities operations
-  Show capabilities of your current offer
-  **/
-  public get(path: '/veeamCloudConnect/{serviceName}/capabilities', pathParams: {serviceName: string}): Promise<VeeamCloudConnectOfferCapabilities>;
-  /**
-  Veeam Cloud Connect account
-  Get this object properties
-  **/
-  public get(path: '/veeamCloudConnect/{serviceName}', pathParams: {serviceName: string}): Promise<VeeamCloudConnectAccount>;
-  /**
   Details about a Service
   Get this object properties
   **/
   public get(path: '/veeamCloudConnect/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
-  Operations about the VEEAMCC service
-  List available services
+  List the veeamCloudConnect.Task objects
+  Tasks associated with Cloud Tenant
   **/
-  public get(path: '/veeamCloudConnect'): Promise<string[]>;
+  public get(path: '/veeamCloudConnect/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {name?: string, state?: VeeamCloudConnectTaskStateEnum}): Promise<Number[]>;
+  /**
+  Operation with the Cloud Tenant Account
+  Get this object properties
+  **/
+  public get(path: '/veeamCloudConnect/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<VeeamCloudConnectTask>;
   public get(path: PathsVeeamCloudConnectGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service

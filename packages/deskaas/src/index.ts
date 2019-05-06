@@ -310,10 +310,25 @@ export class ApiDeskaas extends ApiCommon {
     super(config);
   }
   /**
-  Operation on a Desktop As A Service component
+  Operations about the DESKAAS service
+  List available services
+  **/
+  public get(path: '/deskaas'): Promise<string[]>;
+  /**
+  Desktop As A Service
   Get this object properties
   **/
-  public get(path: '/deskaas/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DeskaasTask>;
+  public get(path: '/deskaas/{serviceName}', pathParams: {serviceName: string}): Promise<DeskaasDeskaas>;
+  /**
+  passwordPolicy operations
+  Get the current password policy for your Desktop As A Service
+  **/
+  public get(path: '/deskaas/{serviceName}/passwordPolicy', pathParams: {serviceName: string}): Promise<DeskaasPasswordPolicy>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/deskaas/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   List the deskaas.Task objects
   Tasks associated with this Desktop As A Service
@@ -323,37 +338,22 @@ export class ApiDeskaas extends ApiCommon {
   Operation on a Desktop As A Service component
   Get this object properties
   **/
-  public get(path: '/deskaas/{serviceName}/user/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DeskaasTask>;
-  /**
-  List the deskaas.Task objects
-  Tasks associated with this User
-  **/
-  public get(path: '/deskaas/{serviceName}/user/task', pathParams: {serviceName: string}, queryParams: {state?: DeskaasTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/deskaas/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DeskaasTask>;
   /**
   Desktop As A Service User
   Get this object properties
   **/
   public get(path: '/deskaas/{serviceName}/user', pathParams: {serviceName: string}): Promise<DeskaasUser>;
   /**
-  passwordPolicy operations
-  Get the current password policy for your Desktop As A Service
+  List the deskaas.Task objects
+  Tasks associated with this User
   **/
-  public get(path: '/deskaas/{serviceName}/passwordPolicy', pathParams: {serviceName: string}): Promise<DeskaasPasswordPolicy>;
+  public get(path: '/deskaas/{serviceName}/user/task', pathParams: {serviceName: string}, queryParams: {state?: DeskaasTaskStateEnum}): Promise<Number[]>;
   /**
-  Desktop As A Service
+  Operation on a Desktop As A Service component
   Get this object properties
   **/
-  public get(path: '/deskaas/{serviceName}', pathParams: {serviceName: string}): Promise<DeskaasDeskaas>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/deskaas/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  Operations about the DESKAAS service
-  List available services
-  **/
-  public get(path: '/deskaas'): Promise<string[]>;
+  public get(path: '/deskaas/{serviceName}/user/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DeskaasTask>;
   public get(path: PathsDeskaasGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
@@ -362,54 +362,54 @@ export class ApiDeskaas extends ApiCommon {
   public put(path: '/deskaas/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsDeskaasPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  upgrade operations
-  Upgrading the Desktop As A Service to another profile. The Virtual Desktop will not be available during upgrade and has to be restarted. You cannot downgrade a Virtual Desktop
+  changeAlias operations
+  Change the Virtual Desktop alias
   **/
-  public post(path: '/deskaas/{serviceName}/upgrade', pathParams: {serviceName: string}): Promise<DeskaasTask>;
-  /**
-  refresh operations
-  Refresh the Operating system of the Desktop As A Service. All your personnal data are kept.
-  **/
-  public post(path: '/deskaas/{serviceName}/refresh', pathParams: {serviceName: string}): Promise<DeskaasTask>;
-  /**
-  console operations
-  New console access
-  **/
-  public post(path: '/deskaas/{serviceName}/console', pathParams: {serviceName: string}): Promise<DeskaasTask>;
-  /**
-  changeProperties operations
-  Change Desktop As A Service user properties
-  **/
-  public post(path: '/deskaas/{serviceName}/user/changeProperties', pathParams: {serviceName: string}): Promise<DeskaasTask>;
-  /**
-  changePassword operations
-  Change Desktop As A Service user password
-  **/
-  public post(path: '/deskaas/{serviceName}/user/changePassword', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: '/deskaas/{serviceName}/changeAlias', pathParams: {serviceName: string}): Promise<DeskaasTask>;
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
   public post(path: '/deskaas/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
-  Terminate your service
-  Terminate your service
+  Confirm termination of your service
+  Confirm termination of your service
   **/
-  public post(path: '/deskaas/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/deskaas/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
-  changeAlias operations
-  Change the Virtual Desktop alias
+  console operations
+  New console access
   **/
-  public post(path: '/deskaas/{serviceName}/changeAlias', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: '/deskaas/{serviceName}/console', pathParams: {serviceName: string}): Promise<DeskaasTask>;
   /**
   reboot operations
   Reboot the Operating system of the Cloud Desktop.
   **/
   public post(path: '/deskaas/{serviceName}/reboot', pathParams: {serviceName: string}): Promise<DeskaasTask>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
+  refresh operations
+  Refresh the Operating system of the Desktop As A Service. All your personnal data are kept.
   **/
-  public post(path: '/deskaas/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/deskaas/{serviceName}/refresh', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/deskaas/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  upgrade operations
+  Upgrading the Desktop As A Service to another profile. The Virtual Desktop will not be available during upgrade and has to be restarted. You cannot downgrade a Virtual Desktop
+  **/
+  public post(path: '/deskaas/{serviceName}/upgrade', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  /**
+  changePassword operations
+  Change Desktop As A Service user password
+  **/
+  public post(path: '/deskaas/{serviceName}/user/changePassword', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  /**
+  changeProperties operations
+  Change Desktop As A Service user properties
+  **/
+  public post(path: '/deskaas/{serviceName}/user/changeProperties', pathParams: {serviceName: string}): Promise<DeskaasTask>;
   public post(path: PathsDeskaasPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

@@ -434,82 +434,82 @@ export class ApiDedicatedHousing extends ApiCommon {
     super(config);
   }
   /**
-  Details about a Service
-  Get this object properties
+  Operations about the HOUSING service
+  List available services
   **/
-  public get(path: '/dedicated/housing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  authorizableBlocks operations
-  Get all IP blocks that can be used in the ACL
-  **/
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Backup Ftp ACL for this server and Backup Ftp
-  Get this object properties
-  **/
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<DedicatedServerBackupFtpAcl>;
-  /**
-  List the dedicated.server.BackupFtpAcl objects
-  List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
-  **/
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Backup Ftp assigned to this server
-  Get this object properties
-  **/
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerBackupFtp>;
+  public get(path: '/dedicated/housing'): Promise<string[]>;
   /**
   Housing bay
   Get this object properties
   **/
   public get(path: '/dedicated/housing/{serviceName}', pathParams: {serviceName: string}): Promise<DedicatedHousingHousing>;
   /**
-  Housing tasks
+  Backup Ftp assigned to this server
   Get this object properties
   **/
-  public get(path: '/dedicated/housing/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DedicatedHousingTask>;
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerBackupFtp>;
   /**
-  List the dedicated.housing.Task objects
-  View task list
+  List the dedicated.server.BackupFtpAcl objects
+  List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
   **/
-  public get(path: '/dedicated/housing/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {status?: DedicatedTaskStatusEnum, function?: DedicatedHousingTaskFunctionEnum}): Promise<Number[]>;
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Backup Ftp ACL for this server and Backup Ftp
+  Get this object properties
+  **/
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<DedicatedServerBackupFtpAcl>;
+  /**
+  authorizableBlocks operations
+  Get all IP blocks that can be used in the ACL
+  **/
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks', pathParams: {serviceName: string}): Promise<string[]>;
   /**
   APC operations
   Is an APC orderable for this housing bay
   **/
   public get(path: '/dedicated/housing/{serviceName}/orderable/APC', pathParams: {serviceName: string}): Promise<DedicatedHousingApcOrderable>;
   /**
-  Operations about the HOUSING service
-  List available services
-  **/
-  public get(path: '/dedicated/housing'): Promise<string[]>;
-  public get(path: PathsDedicatedHousingGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
-  /**
   Details about a Service
-  Alter this object properties
+  Get this object properties
   **/
-  public put(path: '/dedicated/housing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public get(path: '/dedicated/housing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  List the dedicated.housing.Task objects
+  View task list
+  **/
+  public get(path: '/dedicated/housing/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {status?: DedicatedTaskStatusEnum, function?: DedicatedHousingTaskFunctionEnum}): Promise<Number[]>;
+  /**
+  Housing tasks
+  Get this object properties
+  **/
+  public get(path: '/dedicated/housing/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DedicatedHousingTask>;
+  public get(path: PathsDedicatedHousingGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Alter this object properties
   **/
   public put(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<void>;
+  /**
+  Details about a Service
+  Alter this object properties
+  **/
+  public put(path: '/dedicated/housing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsDedicatedHousingPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  password operations
-  Change your Backup FTP password
+  Backup Ftp assigned to this server
+  Create a new Backup FTP space
   **/
-  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/password', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
   List the dedicated.server.BackupFtpAcl objects
   Create a new Backup FTP ACL
   **/
   public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
-  Backup Ftp assigned to this server
-  Create a new Backup FTP space
+  password operations
+  Change your Backup FTP password
   **/
-  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/password', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
   cancel operations
   this action stop the task progression if it's possible
@@ -517,14 +517,14 @@ export class ApiDedicatedHousing extends ApiCommon {
   public post(path: '/dedicated/housing/{serviceName}/task/{taskId}/cancel', pathParams: {serviceName: string, taskId: Number}): Promise<void>;
   public post(path: PathsDedicatedHousingPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
-  Backup Ftp ACL for this server and Backup Ftp
-  Revoke this ACL
-  **/
-  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<DedicatedServerTask>;
-  /**
   Backup Ftp assigned to this server
   Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED
   **/
   public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  /**
+  Backup Ftp ACL for this server and Backup Ftp
+  Revoke this ACL
+  **/
+  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<DedicatedServerTask>;
   public delete(path: PathsDedicatedHousingDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

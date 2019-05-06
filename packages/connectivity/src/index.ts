@@ -683,15 +683,20 @@ export class ApiConnectivity extends ApiCommon {
   public get(path: '/connectivity/monitoring/genericIncident/public', pathParams: undefined, queryParams: {status?: ConnectivityMonitoringGenericIncidentStatusEnum, creationDate?: string, endDate?: string}): Promise<ConnectivityMonitoringGenericIncident[]>;
   public get(path: PathsConnectivityGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
-  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
-  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
+  Get the details for a building
+  Get the details for a building
   **/
-  public post(path: '/connectivity/eligibility/search/streetNumbers'): Promise<XdslAsyncTaskArray<string>>;
+  public post(path: '/connectivity/eligibility/search/buildingDetails'): Promise<XdslAsyncTask<ConnectivityEligibilityBuilding>>;
   /**
-  Search for available line creation meeting time slots, for copper only
-  Search for available line creation meeting time slots, for copper only
+  Get all buildings for a specific address
+  Get all buildings for a specific address
   **/
-  public post(path: '/connectivity/eligibility/search/meetings'): Promise<XdslAsyncTask<ConnectivityEligibilityMeetings>>;
+  public post(path: '/connectivity/eligibility/search/buildings'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityBuilding>>;
+  /**
+  Get building references from a given line number
+  Get building references from a given line number
+  **/
+  public post(path: '/connectivity/eligibility/search/buildingsByLine'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityBuilding>>;
   /**
   Get all localities linked to a zip code
   Get all localities linked to a zip code
@@ -703,30 +708,20 @@ export class ApiConnectivity extends ApiCommon {
   **/
   public post(path: '/connectivity/eligibility/search/lines'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityLine>>;
   /**
-  Get building references from a given line number
-  Get building references from a given line number
+  Search for available line creation meeting time slots, for copper only
+  Search for available line creation meeting time slots, for copper only
   **/
-  public post(path: '/connectivity/eligibility/search/buildingsByLine'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityBuilding>>;
+  public post(path: '/connectivity/eligibility/search/meetings'): Promise<XdslAsyncTask<ConnectivityEligibilityMeetings>>;
   /**
-  Get all buildings for a specific address
-  Get all buildings for a specific address
+  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
+  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
   **/
-  public post(path: '/connectivity/eligibility/search/buildings'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityBuilding>>;
-  /**
-  Get the details for a building
-  Get the details for a building
-  **/
-  public post(path: '/connectivity/eligibility/search/buildingDetails'): Promise<XdslAsyncTask<ConnectivityEligibilityBuilding>>;
+  public post(path: '/connectivity/eligibility/search/streetNumbers'): Promise<XdslAsyncTaskArray<string>>;
   /**
   Get all street linked to a locality
   Get all street linked to a locality
   **/
   public post(path: '/connectivity/eligibility/search/streets'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityStreet>>;
-  /**
-  Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
-  Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
-  **/
-  public post(path: '/connectivity/eligibility/test/otp'): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
   /**
   Do an eligibility for an address, if no line exist
   Do an eligibility for an address, if no line exist
@@ -752,5 +747,10 @@ export class ApiConnectivity extends ApiCommon {
   Do an eligibility test on a line number, for copper only. Partners only.
   **/
   public post(path: '/connectivity/eligibility/test/line/partners'): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
+  /**
+  Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
+  Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
+  **/
+  public post(path: '/connectivity/eligibility/test/otp'): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
   public post(path: PathsConnectivityPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

@@ -1494,227 +1494,20 @@ export class ApiDbaasLogs extends ApiCommon {
   **/
   public get(path: '/dbaas/logs'): Promise<string[]>;
   /**
-  Engine
-  Returns details of specified input engine
-  **/
-  public get(path: '/dbaas/logs/input/engine/{engineId}', pathParams: {engineId: string}): Promise<DbaasLogsEngine>;
-  /**
   Engines
   Returns the list of available input engines
   **/
   public get(path: '/dbaas/logs/input/engine'): Promise<string[]>;
   /**
-  Token
-  Returns the specified token
+  Engine
+  Returns details of specified input engine
   **/
-  public get(path: '/dbaas/logs/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<DbaasLogsToken>;
+  public get(path: '/dbaas/logs/input/engine/{engineId}', pathParams: {engineId: string}): Promise<DbaasLogsEngine>;
   /**
-  Tokens
-  Returns the list of service tokens
+  Offer
+  Display specified offer
   **/
-  public get(path: '/dbaas/logs/{serviceName}/token', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  ServiceUrls
-  Returns platform useful urls.
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/url', pathParams: {serviceName: string}): Promise<DbaasLogsUrl[]>;
-  /**
-  Roles
-  Returns the list of roles
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/role', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Role
-  Returns details of specified role
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}', pathParams: {serviceName: string, roleId: string}): Promise<DbaasLogsRole>;
-  /**
-  RoleMember
-  Returns the member metadata
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', pathParams: {serviceName: string, roleId: string, username: string}): Promise<DbaasLogsMember>;
-  /**
-  RoleMembers
-  Returns the member list of specified role
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/member', pathParams: {serviceName: string, roleId: string}): Promise<string[]>;
-  /**
-  RolePermissions
-  Returns the list of permissions of specified role
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission', pathParams: {serviceName: string, roleId: string}): Promise<string[]>;
-  /**
-  RolePermission
-  Returns details of specified permission
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}', pathParams: {serviceName: string, roleId: string, permissionId: string}): Promise<DbaasLogsPermission[]>;
-  /**
-  Service Metrics
-  Returns Metrics credentials
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/metrics', pathParams: {serviceName: string}): Promise<DbaasLogsServiceMetric>;
-  /**
-  ServiceQuota
-  Returns the overall quota limits
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/quota', pathParams: {serviceName: string}): Promise<DbaasLogsQuota>;
-  /**
-  Operation
-  Returns details of specified operation
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/operation/{operationId}', pathParams: {serviceName: string, operationId: string}): Promise<DbaasLogsOperation>;
-  /**
-  Operations
-  Latest operations
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/operation', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  StreamUrls
-  Returns the list of urls of specified graylog stream
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url', pathParams: {serviceName: string, indexId: string}): Promise<DbaasLogsUrl[]>;
-  /**
-  Index
-  Returns specified elasticsearch index
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}', pathParams: {serviceName: string, indexId: string}): Promise<DbaasLogsIndex>;
-  /**
-  Indexes
-  Returns the list of elasticsearch indexes
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Aliases
-  Returns the list of alias for connected user
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Alias
-  Returns specified elasticsearch alias
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', pathParams: {serviceName: string, aliasId: string}): Promise<DbaasLogsAlias>;
-  /**
-  StreamUrls
-  Returns the list of urls of specified graylog stream
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/url', pathParams: {serviceName: string, aliasId: string}): Promise<DbaasLogsUrl[]>;
-  /**
-  AliasStreams
-  Returns the list of graylog streams attached to specified
-        elasticsearch alias
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', pathParams: {serviceName: string, aliasId: string}): Promise<string[]>;
-  /**
-  AliasStreams
-  Returns the list of elasticsearch indexes attached to specified
-        elasticsearch alias
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', pathParams: {serviceName: string, aliasId: string}): Promise<string[]>;
-  /**
-  Stream
-  Returns details of specified graylog stream
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}', pathParams: {serviceName: string, streamId: string}): Promise<DbaasLogsStream>;
-  /**
-  Streams
-  Returns the list of archives
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive', pathParams: {serviceName: string, streamId: string}): Promise<string[]>;
-  /**
-  Streams
-  Returns details of specified archive
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}', pathParams: {serviceName: string, streamId: string, archiveId: string}): Promise<DbaasLogsArchive>;
-  /**
-  StreamRules
-  Returns the list of rules of specified graylog stream
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', pathParams: {serviceName: string, streamId: string}): Promise<string[]>;
-  /**
-  StreamRule
-  Returns details of specified graylog stream rule
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', pathParams: {serviceName: string, streamId: string, ruleId: string}): Promise<DbaasLogsStreamRule[]>;
-  /**
-  StreamUrls
-  Returns the list of urls of specified graylog stream
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/url', pathParams: {serviceName: string, streamId: string}): Promise<DbaasLogsUrl[]>;
-  /**
-  StreamAlerts
-  Returns the list of configured alerts of specified graylog stream
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert', pathParams: {serviceName: string, streamId: string}): Promise<string[]>;
-  /**
-  StreamAlert
-  Returns details of specified graylog stream alert
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', pathParams: {serviceName: string, streamId: string, alertId: string}): Promise<DbaasLogsStreamAlertCondition>;
-  /**
-  Streams
-  Returns the list of graylog streams
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Dashboards
-  Returns the list of graylog dashboards
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  DashboardUrls
-  Returns the list of urls of specified graylog dashboard
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/url', pathParams: {serviceName: string, dashboardId: string}): Promise<DbaasLogsUrl[]>;
-  /**
-  Dashboard
-  Returns details of specified graylog dashboard
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}', pathParams: {serviceName: string, dashboardId: string}): Promise<DbaasLogsDashboard>;
-  /**
-  FlowggerConfiguration
-  Returns the flowgger configuration
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsFlowggerConfiguration>;
-  /**
-  LogstashConfiguration
-  Returns the logstash configuration
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsLogstashConfiguration>;
-  /**
-  Input
-  Returns details of specified input
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsInput>;
-  /**
-  InputConfigtestResult
-  Returns the config test operation result
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/configtest/result', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsTestResult>;
-  /**
-  InputAllowedNetworkDetails
-  List all network UUID allowed to join input
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', pathParams: {serviceName: string, inputId: string, allowedNetworkId: string}): Promise<DbaasLogsAllowedNetwork>;
-  /**
-  InputAllowedNetworks
-  List all network UUID allowed to join input
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', pathParams: {serviceName: string, inputId: string}): Promise<string[]>;
-  /**
-  InputUrls
-  Returns the list of urls of specified input
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/url', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsUrl[]>;
-  /**
-  InputActions
-  Returns actions of specified input
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/action', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsInputAction[]>;
-  /**
-  Inputs
-  Returns the list of registered input attached to the logged user
-  **/
-  public get(path: '/dbaas/logs/{serviceName}/input', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/offer/{reference}', pathParams: {reference: string}): Promise<DbaasLogsPublicOffer>;
   /**
   Service
   Returns the service object of connected identity.
@@ -1741,6 +1534,71 @@ export class ApiDbaasLogs extends ApiCommon {
   **/
   public get(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}', pathParams: {serviceName: string, clusterId: string, allowedNetworkId: string}): Promise<DbaasLogsClusterAllowedNetwork>;
   /**
+  Inputs
+  Returns the list of registered input attached to the logged user
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/input', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Input
+  Returns details of specified input
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsInput>;
+  /**
+  InputActions
+  Returns actions of specified input
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/action', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsInputAction[]>;
+  /**
+  InputAllowedNetworks
+  List all network UUID allowed to join input
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', pathParams: {serviceName: string, inputId: string}): Promise<string[]>;
+  /**
+  InputAllowedNetworkDetails
+  List all network UUID allowed to join input
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', pathParams: {serviceName: string, inputId: string, allowedNetworkId: string}): Promise<DbaasLogsAllowedNetwork>;
+  /**
+  InputConfigtestResult
+  Returns the config test operation result
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/configtest/result', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsTestResult>;
+  /**
+  FlowggerConfiguration
+  Returns the flowgger configuration
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsFlowggerConfiguration>;
+  /**
+  LogstashConfiguration
+  Returns the logstash configuration
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsLogstashConfiguration>;
+  /**
+  InputUrls
+  Returns the list of urls of specified input
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/url', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsUrl[]>;
+  /**
+  Service Metrics
+  Returns Metrics credentials
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/metrics', pathParams: {serviceName: string}): Promise<DbaasLogsServiceMetric>;
+  /**
+  ServiceOffer
+  Returns the subscribed offer
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/offer', pathParams: {serviceName: string}): Promise<DbaasLogsOffer>;
+  /**
+  Operations
+  Latest operations
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/operation', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Operation
+  Returns details of specified operation
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/operation/{operationId}', pathParams: {serviceName: string, operationId: string}): Promise<DbaasLogsOperation>;
+  /**
   ServiceOptions
   Returns the subscribed additional options
   **/
@@ -1751,56 +1609,173 @@ export class ApiDbaasLogs extends ApiCommon {
   **/
   public get(path: '/dbaas/logs/{serviceName}/option/{optionId}', pathParams: {serviceName: string, optionId: string}): Promise<DbaasLogsOption>;
   /**
+  Aliases
+  Returns the list of alias for connected user
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Alias
+  Returns specified elasticsearch alias
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', pathParams: {serviceName: string, aliasId: string}): Promise<DbaasLogsAlias>;
+  /**
+  AliasStreams
+  Returns the list of elasticsearch indexes attached to specified
+        elasticsearch alias
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', pathParams: {serviceName: string, aliasId: string}): Promise<string[]>;
+  /**
+  AliasStreams
+  Returns the list of graylog streams attached to specified
+        elasticsearch alias
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', pathParams: {serviceName: string, aliasId: string}): Promise<string[]>;
+  /**
+  StreamUrls
+  Returns the list of urls of specified graylog stream
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/url', pathParams: {serviceName: string, aliasId: string}): Promise<DbaasLogsUrl[]>;
+  /**
+  Indexes
+  Returns the list of elasticsearch indexes
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Index
+  Returns specified elasticsearch index
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}', pathParams: {serviceName: string, indexId: string}): Promise<DbaasLogsIndex>;
+  /**
+  StreamUrls
+  Returns the list of urls of specified graylog stream
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url', pathParams: {serviceName: string, indexId: string}): Promise<DbaasLogsUrl[]>;
+  /**
+  Dashboards
+  Returns the list of graylog dashboards
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Dashboard
+  Returns details of specified graylog dashboard
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}', pathParams: {serviceName: string, dashboardId: string}): Promise<DbaasLogsDashboard>;
+  /**
+  DashboardUrls
+  Returns the list of urls of specified graylog dashboard
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/url', pathParams: {serviceName: string, dashboardId: string}): Promise<DbaasLogsUrl[]>;
+  /**
+  Streams
+  Returns the list of graylog streams
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Stream
+  Returns details of specified graylog stream
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}', pathParams: {serviceName: string, streamId: string}): Promise<DbaasLogsStream>;
+  /**
+  StreamAlerts
+  Returns the list of configured alerts of specified graylog stream
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert', pathParams: {serviceName: string, streamId: string}): Promise<string[]>;
+  /**
+  StreamAlert
+  Returns details of specified graylog stream alert
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', pathParams: {serviceName: string, streamId: string, alertId: string}): Promise<DbaasLogsStreamAlertCondition>;
+  /**
+  Streams
+  Returns the list of archives
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive', pathParams: {serviceName: string, streamId: string}): Promise<string[]>;
+  /**
+  Streams
+  Returns details of specified archive
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}', pathParams: {serviceName: string, streamId: string, archiveId: string}): Promise<DbaasLogsArchive>;
+  /**
+  StreamRules
+  Returns the list of rules of specified graylog stream
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', pathParams: {serviceName: string, streamId: string}): Promise<string[]>;
+  /**
+  StreamRule
+  Returns details of specified graylog stream rule
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', pathParams: {serviceName: string, streamId: string, ruleId: string}): Promise<DbaasLogsStreamRule[]>;
+  /**
+  StreamUrls
+  Returns the list of urls of specified graylog stream
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/url', pathParams: {serviceName: string, streamId: string}): Promise<DbaasLogsUrl[]>;
+  /**
+  ServiceQuota
+  Returns the overall quota limits
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/quota', pathParams: {serviceName: string}): Promise<DbaasLogsQuota>;
+  /**
+  Roles
+  Returns the list of roles
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/role', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Role
+  Returns details of specified role
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}', pathParams: {serviceName: string, roleId: string}): Promise<DbaasLogsRole>;
+  /**
+  RoleMembers
+  Returns the member list of specified role
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/member', pathParams: {serviceName: string, roleId: string}): Promise<string[]>;
+  /**
+  RoleMember
+  Returns the member metadata
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', pathParams: {serviceName: string, roleId: string, username: string}): Promise<DbaasLogsMember>;
+  /**
+  RolePermissions
+  Returns the list of permissions of specified role
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission', pathParams: {serviceName: string, roleId: string}): Promise<string[]>;
+  /**
+  RolePermission
+  Returns details of specified permission
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}', pathParams: {serviceName: string, roleId: string, permissionId: string}): Promise<DbaasLogsPermission[]>;
+  /**
   Details about a Service
   Get this object properties
   **/
   public get(path: '/dbaas/logs/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
-  ServiceOffer
-  Returns the subscribed offer
+  Tokens
+  Returns the list of service tokens
   **/
-  public get(path: '/dbaas/logs/{serviceName}/offer', pathParams: {serviceName: string}): Promise<DbaasLogsOffer>;
+  public get(path: '/dbaas/logs/{serviceName}/token', pathParams: {serviceName: string}): Promise<string[]>;
   /**
-  Offer
-  Display specified offer
+  Token
+  Returns the specified token
   **/
-  public get(path: '/dbaas/logs/offer/{reference}', pathParams: {reference: string}): Promise<DbaasLogsPublicOffer>;
+  public get(path: '/dbaas/logs/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<DbaasLogsToken>;
+  /**
+  ServiceUrls
+  Returns platform useful urls.
+  **/
+  public get(path: '/dbaas/logs/{serviceName}/url', pathParams: {serviceName: string}): Promise<DbaasLogsUrl[]>;
   public get(path: PathsDbaasLogsGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
-  Role
-  Update information of specified role
+  Service
+  Update the service properties
   **/
-  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}', pathParams: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
   /**
-  RoleMember
-  Update the member metadata
+  Input
+  Update information of specified input object
   **/
-  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', pathParams: {serviceName: string, roleId: string, username: string}): Promise<DbaasLogsOperation>;
-  /**
-  Index
-  Update specified elasticsearch index
-  **/
-  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}', pathParams: {serviceName: string, indexId: string}): Promise<DbaasLogsOperation>;
-  /**
-  Alias
-  Update specified elasticsearch alias
-  **/
-  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', pathParams: {serviceName: string, aliasId: string}): Promise<DbaasLogsOperation>;
-  /**
-  Stream
-  Update information of specified graylog stream
-  **/
-  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}', pathParams: {serviceName: string, streamId: string}): Promise<DbaasLogsOperation>;
-  /**
-  StreamAlert
-  Update alert information of specified graylog stream
-  **/
-  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', pathParams: {serviceName: string, streamId: string, alertId: string}): Promise<DbaasLogsOperation>;
-  /**
-  Dashboard
-  Update information of specified graylog dashboard
-  **/
-  public put(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}', pathParams: {serviceName: string, dashboardId: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
   /**
   FlowggerConfiguration
   Update the flowgger configuration
@@ -1812,15 +1787,40 @@ export class ApiDbaasLogs extends ApiCommon {
   **/
   public put(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
   /**
-  Input
-  Update information of specified input object
+  Alias
+  Update specified elasticsearch alias
   **/
-  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', pathParams: {serviceName: string, aliasId: string}): Promise<DbaasLogsOperation>;
   /**
-  Service
-  Update the service properties
+  Index
+  Update specified elasticsearch index
   **/
-  public put(path: '/dbaas/logs/{serviceName}', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}', pathParams: {serviceName: string, indexId: string}): Promise<DbaasLogsOperation>;
+  /**
+  Dashboard
+  Update information of specified graylog dashboard
+  **/
+  public put(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}', pathParams: {serviceName: string, dashboardId: string}): Promise<DbaasLogsOperation>;
+  /**
+  Stream
+  Update information of specified graylog stream
+  **/
+  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}', pathParams: {serviceName: string, streamId: string}): Promise<DbaasLogsOperation>;
+  /**
+  StreamAlert
+  Update alert information of specified graylog stream
+  **/
+  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', pathParams: {serviceName: string, streamId: string, alertId: string}): Promise<DbaasLogsOperation>;
+  /**
+  Role
+  Update information of specified role
+  **/
+  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}', pathParams: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
+  /**
+  RoleMember
+  Update the member metadata
+  **/
+  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', pathParams: {serviceName: string, roleId: string, username: string}): Promise<DbaasLogsOperation>;
   /**
   Details about a Service
   Alter this object properties
@@ -1828,15 +1828,105 @@ export class ApiDbaasLogs extends ApiCommon {
   public put(path: '/dbaas/logs/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsDbaasLogsPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  Tokens
-  Add a new token
+  Change the contacts of this service
+  Launch a contact change procedure
   **/
-  public post(path: '/dbaas/logs/{serviceName}/token', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
-  ServiceChangePassword
-  Initiate a password change procedure.
+  Cluster allowed networks
+  Allow an IP to contact cluster
   **/
-  public post(path: '/dbaas/logs/{serviceName}/user/changePassword', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork', pathParams: {serviceName: string, clusterId: string}): Promise<DbaasLogsOperation>;
+  /**
+  Inputs
+  Register a new input object
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/input', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
+  /**
+  InputAllowedNetworks
+  Allow an ip to join input
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
+  /**
+  InputConfigtest
+  Validate configuration of specified input
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/configtest', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
+  /**
+  InputEnd
+  Schedule the end of specified input
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/end', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
+  /**
+  InputLogs
+  Generate a temporary url to retrieve input logs
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/logs/url', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsTemporaryLogsLink>;
+  /**
+  InputRestart
+  Schedule the restart of specified input
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/restart', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
+  /**
+  InputStart
+  Schedule the start of specified input
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/start', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
+  /**
+  ServiceOption
+  Remove the specified subscribed option
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/option/{optionId}/terminate', pathParams: {serviceName: string, optionId: string}): Promise<DbaasLogsOperation>;
+  /**
+  Aliases
+  Register a new elasticsearch alias
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
+  /**
+  AliasStreams
+  Attach a elasticsearch index to specified elasticsearch alias
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', pathParams: {serviceName: string, aliasId: string}): Promise<DbaasLogsOperation>;
+  /**
+  AliasStreams
+  Attach a graylog stream to specified elasticsearch alias
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', pathParams: {serviceName: string, aliasId: string}): Promise<DbaasLogsOperation>;
+  /**
+  Indexes
+  Register a new elasticsearch index
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
+  /**
+  Dashboards
+  Register a new graylog dashboard
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
+  /**
+  DashboardClone
+  Copy all widgets from specified dashboard to a new one
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate', pathParams: {serviceName: string, dashboardId: string}): Promise<DbaasLogsOperation>;
+  /**
+  Streams
+  Register a new graylog stream
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
+  /**
+  StreamAlerts
+  Register a new alert on specified graylog stream
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert', pathParams: {serviceName: string, streamId: string}): Promise<DbaasLogsOperation>;
+  /**
+  Streams
+  Get a public temporary URL to access the archive
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/url', pathParams: {serviceName: string, streamId: string, archiveId: string}): Promise<DbaasLogsArchiveUrl>;
+  /**
+  StreamRules
+  Register a new rule on specified graylog stream
+  **/
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', pathParams: {serviceName: string, streamId: string}): Promise<DbaasLogsOperation>;
   /**
   Roles
   Register a new role
@@ -1854,9 +1944,9 @@ export class ApiDbaasLogs extends ApiCommon {
   public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/alias', pathParams: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
   /**
   RolePermissionIndex
-  Append a graylog stream permission to role
+  Append a graylog dashboard permission to role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/stream', pathParams: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard', pathParams: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
   /**
   RolePermissionIndex
   Append a elasticsearch index permission to role
@@ -1864,115 +1954,75 @@ export class ApiDbaasLogs extends ApiCommon {
   public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/index', pathParams: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
   /**
   RolePermissionIndex
-  Append a graylog dashboard permission to role
+  Append a graylog stream permission to role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard', pathParams: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/stream', pathParams: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
   /**
-  Indexes
-  Register a new elasticsearch index
+  Tokens
+  Add a new token
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/token', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
   /**
-  Aliases
-  Register a new elasticsearch alias
+  ServiceChangePassword
+  Initiate a password change procedure.
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
-  /**
-  AliasStreams
-  Attach a graylog stream to specified elasticsearch alias
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', pathParams: {serviceName: string, aliasId: string}): Promise<DbaasLogsOperation>;
-  /**
-  AliasStreams
-  Attach a elasticsearch index to specified elasticsearch alias
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', pathParams: {serviceName: string, aliasId: string}): Promise<DbaasLogsOperation>;
-  /**
-  Streams
-  Get a public temporary URL to access the archive
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/url', pathParams: {serviceName: string, streamId: string, archiveId: string}): Promise<DbaasLogsArchiveUrl>;
-  /**
-  StreamRules
-  Register a new rule on specified graylog stream
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', pathParams: {serviceName: string, streamId: string}): Promise<DbaasLogsOperation>;
-  /**
-  StreamAlerts
-  Register a new alert on specified graylog stream
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert', pathParams: {serviceName: string, streamId: string}): Promise<DbaasLogsOperation>;
-  /**
-  Streams
-  Register a new graylog stream
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
-  /**
-  Dashboards
-  Register a new graylog dashboard
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
-  /**
-  DashboardClone
-  Copy all widgets from specified dashboard to a new one
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate', pathParams: {serviceName: string, dashboardId: string}): Promise<DbaasLogsOperation>;
-  /**
-  InputConfigtest
-  Validate configuration of specified input
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/configtest', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
-  /**
-  InputStart
-  Schedule the start of specified input
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/start', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
-  /**
-  InputAllowedNetworks
-  Allow an ip to join input
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
-  /**
-  InputEnd
-  Schedule the end of specified input
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/end', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
-  /**
-  InputRestart
-  Schedule the restart of specified input
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/restart', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
-  /**
-  InputLogs
-  Generate a temporary url to retrieve input logs
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/logs/url', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsTemporaryLogsLink>;
-  /**
-  Inputs
-  Register a new input object
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/input', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
-  /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  Cluster allowed networks
-  Allow an IP to contact cluster
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork', pathParams: {serviceName: string, clusterId: string}): Promise<DbaasLogsOperation>;
-  /**
-  ServiceOption
-  Remove the specified subscribed option
-  **/
-  public post(path: '/dbaas/logs/{serviceName}/option/{optionId}/terminate', pathParams: {serviceName: string, optionId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/user/changePassword', pathParams: {serviceName: string}): Promise<DbaasLogsOperation>;
   public post(path: PathsDbaasLogsPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
-  Token
-  Delete the specified token
+  Cluster allowed networks
+  Remove the specified IP from the list of allowed networks
   **/
-  public delete(path: '/dbaas/logs/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<DbaasLogsOperation>;
+  public delete(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}', pathParams: {serviceName: string, clusterId: string, allowedNetworkId: string}): Promise<DbaasLogsOperation>;
+  /**
+  Input
+  Remove the specified input object
+  **/
+  public delete(path: '/dbaas/logs/{serviceName}/input/{inputId}', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
+  /**
+  InputAllowedNetworkDetails
+  Remove the specified IP from the list of allowed networks
+  **/
+  public delete(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', pathParams: {serviceName: string, inputId: string, allowedNetworkId: string}): Promise<DbaasLogsOperation>;
+  /**
+  Alias
+  Remove specified elasticsearch alias
+  **/
+  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', pathParams: {serviceName: string, aliasId: string}): Promise<DbaasLogsOperation>;
+  /**
+  AliasStream
+  Detach a elasticsearch index from specified elasticsearch alias
+  **/
+  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}', pathParams: {serviceName: string, aliasId: string, indexId: string}): Promise<DbaasLogsOperation>;
+  /**
+  AliasStream
+  Detach a graylog stream from specified elasticsearch alias
+  **/
+  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}', pathParams: {serviceName: string, aliasId: string, streamId: string}): Promise<DbaasLogsOperation>;
+  /**
+  Index
+  Remove specified elasticsearch index
+  **/
+  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}', pathParams: {serviceName: string, indexId: string}): Promise<DbaasLogsOperation>;
+  /**
+  Dashboard
+  Remove specified graylog dashboard
+  **/
+  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}', pathParams: {serviceName: string, dashboardId: string}): Promise<DbaasLogsOperation>;
+  /**
+  Stream
+  Remove specified graylog stream
+  **/
+  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}', pathParams: {serviceName: string, streamId: string}): Promise<DbaasLogsOperation>;
+  /**
+  StreamAlert
+  Remove alert from specified graylog stream
+  **/
+  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', pathParams: {serviceName: string, streamId: string, alertId: string}): Promise<DbaasLogsOperation>;
+  /**
+  StreamRule
+  Remove specified graylog stream rule
+  **/
+  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', pathParams: {serviceName: string, streamId: string, ruleId: string}): Promise<DbaasLogsOperation>;
   /**
   Role
   Remove specified role
@@ -1989,59 +2039,9 @@ export class ApiDbaasLogs extends ApiCommon {
   **/
   public delete(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}', pathParams: {serviceName: string, roleId: string, permissionId: string}): Promise<DbaasLogsOperation>;
   /**
-  Index
-  Remove specified elasticsearch index
+  Token
+  Delete the specified token
   **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}', pathParams: {serviceName: string, indexId: string}): Promise<DbaasLogsOperation>;
-  /**
-  Alias
-  Remove specified elasticsearch alias
-  **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', pathParams: {serviceName: string, aliasId: string}): Promise<DbaasLogsOperation>;
-  /**
-  AliasStream
-  Detach a graylog stream from specified elasticsearch alias
-  **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}', pathParams: {serviceName: string, aliasId: string, streamId: string}): Promise<DbaasLogsOperation>;
-  /**
-  AliasStream
-  Detach a elasticsearch index from specified elasticsearch alias
-  **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}', pathParams: {serviceName: string, aliasId: string, indexId: string}): Promise<DbaasLogsOperation>;
-  /**
-  Stream
-  Remove specified graylog stream
-  **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}', pathParams: {serviceName: string, streamId: string}): Promise<DbaasLogsOperation>;
-  /**
-  StreamRule
-  Remove specified graylog stream rule
-  **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', pathParams: {serviceName: string, streamId: string, ruleId: string}): Promise<DbaasLogsOperation>;
-  /**
-  StreamAlert
-  Remove alert from specified graylog stream
-  **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', pathParams: {serviceName: string, streamId: string, alertId: string}): Promise<DbaasLogsOperation>;
-  /**
-  Dashboard
-  Remove specified graylog dashboard
-  **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}', pathParams: {serviceName: string, dashboardId: string}): Promise<DbaasLogsOperation>;
-  /**
-  Input
-  Remove the specified input object
-  **/
-  public delete(path: '/dbaas/logs/{serviceName}/input/{inputId}', pathParams: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
-  /**
-  InputAllowedNetworkDetails
-  Remove the specified IP from the list of allowed networks
-  **/
-  public delete(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', pathParams: {serviceName: string, inputId: string, allowedNetworkId: string}): Promise<DbaasLogsOperation>;
-  /**
-  Cluster allowed networks
-  Remove the specified IP from the list of allowed networks
-  **/
-  public delete(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}', pathParams: {serviceName: string, clusterId: string, allowedNetworkId: string}): Promise<DbaasLogsOperation>;
+  public delete(path: '/dbaas/logs/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<DbaasLogsOperation>;
   public delete(path: PathsDbaasLogsDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

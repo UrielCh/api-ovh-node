@@ -379,35 +379,25 @@ export class ApiLicenseOffice extends ApiCommon {
     super(config);
   }
   /**
-  usageStatistics operations
-  Shows the subscriptions' usage statistics for the given time period
+  Operations about the OFFICE service
+  List available services
   **/
-  public get(path: '/license/office/{serviceName}/usageStatistics', pathParams: {serviceName: string}, queryParams: {to?: string, from?: string}): Promise<LicenseOfficeStatistics[]>;
+  public get(path: '/license/office'): Promise<string[]>;
   /**
   Office tenant
   Get this object properties
   **/
   public get(path: '/license/office/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseOfficeOfficeTenant>;
   /**
-  Office domain
-  Get this object properties
-  **/
-  public get(path: '/license/office/{serviceName}/domain/{domainName}', pathParams: {serviceName: string, domainName: string}): Promise<LicenseOfficeOfficeDomain>;
-  /**
   List the license.office.OfficeDomain objects
   Domain associated to this office tenant
   **/
   public get(path: '/license/office/{serviceName}/domain', pathParams: {serviceName: string}): Promise<string[]>;
   /**
-  List the license.office.OfficeUser objects
-  Accounts associated to this office tenant
-  **/
-  public get(path: '/license/office/{serviceName}/user', pathParams: {serviceName: string}, queryParams: {licences?: LicenseOfficeLicenceEnum[], activationEmail?: string, lastName?: string, firstName?: string}): Promise<string[]>;
-  /**
-  Office user
+  Office domain
   Get this object properties
   **/
-  public get(path: '/license/office/{serviceName}/user/{activationEmail}', pathParams: {serviceName: string, activationEmail: string}): Promise<LicenseOfficeOfficeUser>;
+  public get(path: '/license/office/{serviceName}/domain/{domainName}', pathParams: {serviceName: string, domainName: string}): Promise<LicenseOfficeOfficeDomain>;
   /**
   List the license.office.OfficeTask objects
   Tasks associated to this office tenant
@@ -424,10 +414,20 @@ export class ApiLicenseOffice extends ApiCommon {
   **/
   public get(path: '/license/office/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
-  Operations about the OFFICE service
-  List available services
+  usageStatistics operations
+  Shows the subscriptions' usage statistics for the given time period
   **/
-  public get(path: '/license/office'): Promise<string[]>;
+  public get(path: '/license/office/{serviceName}/usageStatistics', pathParams: {serviceName: string}, queryParams: {to?: string, from?: string}): Promise<LicenseOfficeStatistics[]>;
+  /**
+  List the license.office.OfficeUser objects
+  Accounts associated to this office tenant
+  **/
+  public get(path: '/license/office/{serviceName}/user', pathParams: {serviceName: string}, queryParams: {licences?: LicenseOfficeLicenceEnum[], activationEmail?: string, lastName?: string, firstName?: string}): Promise<string[]>;
+  /**
+  Office user
+  Get this object properties
+  **/
+  public get(path: '/license/office/{serviceName}/user/{activationEmail}', pathParams: {serviceName: string, activationEmail: string}): Promise<LicenseOfficeOfficeUser>;
   public get(path: PathsLicenseOfficeGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Office tenant
@@ -435,15 +435,15 @@ export class ApiLicenseOffice extends ApiCommon {
   **/
   public put(path: '/license/office/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
   /**
-  Office user
-  Alter this object properties
-  **/
-  public put(path: '/license/office/{serviceName}/user/{activationEmail}', pathParams: {serviceName: string, activationEmail: string}): Promise<void>;
-  /**
   Details about a Service
   Alter this object properties
   **/
   public put(path: '/license/office/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  Office user
+  Alter this object properties
+  **/
+  public put(path: '/license/office/{serviceName}/user/{activationEmail}', pathParams: {serviceName: string, activationEmail: string}): Promise<void>;
   public put(path: PathsLicenseOfficePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   List the license.office.OfficeUser objects

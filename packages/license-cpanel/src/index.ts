@@ -254,6 +254,16 @@ export class ApiLicenseCpanel extends ApiCommon {
     super(config);
   }
   /**
+  Operations about the LICENSE service
+  List available services
+  **/
+  public get(path: '/license/cpanel'): Promise<string[]>;
+  /**
+  Get the orderable CPanel versions
+  Get the orderable CPanel versions
+  **/
+  public get(path: '/license/cpanel/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseCpanelOrderConfiguration[]>;
+  /**
   Your Cpanel license
   Get this object properties
   **/
@@ -264,15 +274,15 @@ export class ApiLicenseCpanel extends ApiCommon {
   **/
   public get(path: '/license/cpanel/{serviceName}/allowedDestinationIp', pathParams: {serviceName: string}): Promise<string[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/license/cpanel/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
   canLicenseBeMovedTo operations
   Will tell if the ip can accept the license
   **/
   public get(path: '/license/cpanel/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/license/cpanel/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   List the license.Task objects
   tasks linked to this license
@@ -283,16 +293,6 @@ export class ApiLicenseCpanel extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/license/cpanel/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
-  /**
-  Operations about the LICENSE service
-  List available services
-  **/
-  public get(path: '/license/cpanel'): Promise<string[]>;
-  /**
-  Get the orderable CPanel versions
-  Get the orderable CPanel versions
-  **/
-  public get(path: '/license/cpanel/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseCpanelOrderConfiguration[]>;
   public get(path: PathsLicenseCpanelGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Your Cpanel license
@@ -306,6 +306,11 @@ export class ApiLicenseCpanel extends ApiCommon {
   public put(path: '/license/cpanel/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsLicenseCpanelPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
+  changeIp operations
+  Move this license to another Ip
+  **/
+  public post(path: '/license/cpanel/{serviceName}/changeIp', pathParams: {serviceName: string}): Promise<LicenseTask>;
+  /**
   Confirm termination of your service
   Confirm termination of your service
   **/
@@ -315,10 +320,5 @@ export class ApiLicenseCpanel extends ApiCommon {
   Terminate your service
   **/
   public post(path: '/license/cpanel/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  changeIp operations
-  Move this license to another Ip
-  **/
-  public post(path: '/license/cpanel/{serviceName}/changeIp', pathParams: {serviceName: string}): Promise<LicenseTask>;
   public post(path: PathsLicenseCpanelPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

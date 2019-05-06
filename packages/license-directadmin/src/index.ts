@@ -274,20 +274,25 @@ export class ApiLicenseDirectadmin extends ApiCommon {
   **/
   public get(path: '/license/directadmin'): Promise<string[]>;
   /**
-  canLicenseBeMovedTo operations
-  Will tell if the ip can accept the license
+  Get the orderable DirectAdmin versions
+  Get the orderable DirectAdmin versions
   **/
-  public get(path: '/license/directadmin/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  public get(path: '/license/directadmin/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseDirectAdminOrderConfiguration[]>;
+  /**
+  Your DirectAdmin license
+  Get this object properties
+  **/
+  public get(path: '/license/directadmin/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseDirectadminDirectAdmin>;
   /**
   allowedDestinationIp operations
   Returns an array of ips where the license can be moved to
   **/
   public get(path: '/license/directadmin/{serviceName}/allowedDestinationIp', pathParams: {serviceName: string}): Promise<string[]>;
   /**
-  Your DirectAdmin license
-  Get this object properties
+  canLicenseBeMovedTo operations
+  Will tell if the ip can accept the license
   **/
-  public get(path: '/license/directadmin/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseDirectadminDirectAdmin>;
+  public get(path: '/license/directadmin/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
   /**
   Details about a Service
   Get this object properties
@@ -303,11 +308,6 @@ export class ApiLicenseDirectadmin extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/license/directadmin/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
-  /**
-  Get the orderable DirectAdmin versions
-  Get the orderable DirectAdmin versions
-  **/
-  public get(path: '/license/directadmin/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseDirectAdminOrderConfiguration[]>;
   public get(path: PathsLicenseDirectadminGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Your DirectAdmin license
@@ -320,11 +320,6 @@ export class ApiLicenseDirectadmin extends ApiCommon {
   **/
   public put(path: '/license/directadmin/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsLicenseDirectadminPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
-  /**
-  Terminate your service
-  Terminate your service
-  **/
-  public post(path: '/license/directadmin/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
   /**
   changeIp operations
   Move this license to another Ip
@@ -340,5 +335,10 @@ export class ApiLicenseDirectadmin extends ApiCommon {
   Confirm termination of your service
   **/
   public post(path: '/license/directadmin/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/license/directadmin/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
   public post(path: PathsLicenseDirectadminPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

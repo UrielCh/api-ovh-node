@@ -115,15 +115,15 @@ export class ApiPackSiptrunk extends ApiCommon {
   **/
   public get(path: '/pack/siptrunk'): Promise<string[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/pack/siptrunk/{packName}/serviceInfos', pathParams: {packName: string}): Promise<ServicesService>;
-  /**
   Pack of SIP trunk services
   Get this object properties
   **/
   public get(path: '/pack/siptrunk/{packName}', pathParams: {packName: string}): Promise<PackSiptrunkPackSipTrunk>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/pack/siptrunk/{packName}/serviceInfos', pathParams: {packName: string}): Promise<ServicesService>;
   public get(path: PathsPackSiptrunkGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service

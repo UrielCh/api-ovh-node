@@ -522,10 +522,35 @@ export class ApiCaasContainers extends ApiCommon {
     super(config);
   }
   /**
+  Operations about the DOCKER service
+  List available services
+  **/
+  public get(path: '/caas/containers'): Promise<string[]>;
+  /**
+  Missing description
+  List the /cloud flavors available for the Docker PaaS slaves
+  **/
+  public get(path: '/caas/containers/slaves/flavors'): Promise<string[]>;
+  /**
+  Missing description
+  Inspect the argument slave flavor
+  **/
+  public get(path: '/caas/containers/slaves/flavors/{flavorId}', pathParams: {flavorId: string}): Promise<DockerSlaveFlavor>;
+  /**
+  Missing description
+  Inspect the argument stack
+  **/
+  public get(path: '/caas/containers/{serviceName}', pathParams: {serviceName: string}): Promise<DockerStack>;
+  /**
   Missing description
   List all the installable Mesos frameworks
   **/
   public get(path: '/caas/containers/{serviceName}/availableFrameworks', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Missing description
+  List the frameworks installed on the argument stack
+  **/
+  public get(path: '/caas/containers/{serviceName}/frameworks', pathParams: {serviceName: string}): Promise<string[]>;
   /**
   Missing description
   Inspect the stack framework
@@ -538,34 +563,19 @@ export class ApiCaasContainers extends ApiCommon {
   public get(path: '/caas/containers/{serviceName}/frameworks/{frameworkId}/apps', pathParams: {frameworkId: string, serviceName: string}): Promise<StackFrameworkApplication>;
   /**
   Missing description
-  List the frameworks installed on the argument stack
+  List the registry credentials associated to the stack.
   **/
-  public get(path: '/caas/containers/{serviceName}/frameworks', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/caas/containers/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/caas/containers/{serviceName}/registry/credentials', pathParams: {serviceName: string}): Promise<string[]>;
   /**
   Missing description
   Inspect the image registry credentials associated to the stack
   **/
   public get(path: '/caas/containers/{serviceName}/registry/credentials/{credentialsId}', pathParams: {credentialsId: string, serviceName: string}): Promise<DockerStackRegistryCredentials>;
   /**
-  Missing description
-  List the registry credentials associated to the stack.
+  Details about a Service
+  Get this object properties
   **/
-  public get(path: '/caas/containers/{serviceName}/registry/credentials', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Missing description
-  Inspect the custom SSL certificate and private
-  **/
-  public get(path: '/caas/containers/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<DockerStackCustomSsl>;
-  /**
-  Missing description
-  Inspect the argument stack
-  **/
-  public get(path: '/caas/containers/{serviceName}', pathParams: {serviceName: string}): Promise<DockerStack>;
+  public get(path: '/caas/containers/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Missing description
   List the id of the registered slave instances
@@ -577,20 +587,10 @@ export class ApiCaasContainers extends ApiCommon {
   **/
   public get(path: '/caas/containers/{serviceName}/slaves/{slaveId}', pathParams: {slaveId: string, serviceName: string}): Promise<DockerSlave>;
   /**
-  Operations about the DOCKER service
-  List available services
-  **/
-  public get(path: '/caas/containers'): Promise<string[]>;
-  /**
   Missing description
-  Inspect the argument slave flavor
+  Inspect the custom SSL certificate and private
   **/
-  public get(path: '/caas/containers/slaves/flavors/{flavorId}', pathParams: {flavorId: string}): Promise<DockerSlaveFlavor>;
-  /**
-  Missing description
-  List the /cloud flavors available for the Docker PaaS slaves
-  **/
-  public get(path: '/caas/containers/slaves/flavors'): Promise<string[]>;
+  public get(path: '/caas/containers/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<DockerStackCustomSsl>;
   public get(path: PathsCaasContainersGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Missing description
@@ -598,15 +598,15 @@ export class ApiCaasContainers extends ApiCommon {
   **/
   public put(path: '/caas/containers/{serviceName}/frameworks/{frameworkId}/password', pathParams: {frameworkId: string, serviceName: string}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
-  public put(path: '/caas/containers/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  /**
   Missing description
   Update the registry credentials.
   **/
   public put(path: '/caas/containers/{serviceName}/registry/credentials/{credentialsId}', pathParams: {credentialsId: string, serviceName: string}): Promise<DockerStackRegistryCredentials>;
+  /**
+  Details about a Service
+  Alter this object properties
+  **/
+  public put(path: '/caas/containers/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
   Missing description
   Update the custom SSL certificate and private
@@ -614,15 +614,15 @@ export class ApiCaasContainers extends ApiCommon {
   public put(path: '/caas/containers/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<DockerStackCustomSslMessage>;
   public put(path: PathsCaasContainersPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  Missing description
-  Associate the stack with some credentials to an authenticated registry.
-  **/
-  public post(path: '/caas/containers/{serviceName}/registry/credentials', pathParams: {serviceName: string}): Promise<DockerStackRegistryCredentials>;
-  /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
   public post(path: '/caas/containers/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Missing description
+  Associate the stack with some credentials to an authenticated registry.
+  **/
+  public post(path: '/caas/containers/{serviceName}/registry/credentials', pathParams: {serviceName: string}): Promise<DockerStackRegistryCredentials>;
   public post(path: PathsCaasContainersPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Missing description

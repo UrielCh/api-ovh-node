@@ -236,25 +236,25 @@ export class ApiLicenseCloudLinux extends ApiCommon {
   **/
   public get(path: '/license/cloudLinux/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseCloudLinuxOrderConfiguration[]>;
   /**
-  licenses Todos
+  Your CloudLinux license
   Get this object properties
   **/
-  public get(path: '/license/cloudLinux/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
-  /**
-  List the license.Task objects
-  Tasks linked to this license
-  **/
-  public get(path: '/license/cloudLinux/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
+  public get(path: '/license/cloudLinux/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseCloudLinuxCloudLinux>;
   /**
   Details about a Service
   Get this object properties
   **/
   public get(path: '/license/cloudLinux/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
-  Your CloudLinux license
+  List the license.Task objects
+  Tasks linked to this license
+  **/
+  public get(path: '/license/cloudLinux/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
+  /**
+  licenses Todos
   Get this object properties
   **/
-  public get(path: '/license/cloudLinux/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseCloudLinuxCloudLinux>;
+  public get(path: '/license/cloudLinux/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
   public get(path: PathsLicenseCloudLinuxGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service

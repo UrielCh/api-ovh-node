@@ -843,10 +843,35 @@ export class ApiEmailPro extends ApiCommon {
     super(config);
   }
   /**
+  Operations about the PROEMAIL service
+  List available services
+  **/
+  public get(path: '/email/pro'): Promise<string[]>;
+  /**
+  Email pro service
+  Get this object properties
+  **/
+  public get(path: '/email/pro/{service}', pathParams: {service: string}): Promise<EmailProService>;
+  /**
   List the email.pro.Account objects
   Accounts associated to this pro service
   **/
   public get(path: '/email/pro/{service}/account', pathParams: {service: string}, queryParams: {id?: Number, primaryEmailAddress?: string}): Promise<string[]>;
+  /**
+  Mailbox
+  Get this object properties
+  **/
+  public get(path: '/email/pro/{service}/account/{email}', pathParams: {service: string, email: string}): Promise<EmailProAccount>;
+  /**
+  List the email.pro.AccountAlias objects
+  Aliases associated to this mailbox
+  **/
+  public get(path: '/email/pro/{service}/account/{email}/alias', pathParams: {service: string, email: string}): Promise<string[]>;
+  /**
+  Aliases on this mailbox
+  Get this object properties
+  **/
+  public get(path: '/email/pro/{service}/account/{email}/alias/{alias}', pathParams: {service: string, email: string, alias: string}): Promise<EmailProAccountAlias>;
   /**
   Account Diagnosis
   Get this object properties
@@ -862,21 +887,6 @@ export class ApiEmailPro extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProAccountFullAccess>;
-  /**
-  Organization task details
-  Get this object properties
-  **/
-  public get(path: '/email/pro/{service}/account/{email}/tasks/{id}', pathParams: {service: string, email: string, id: Number}): Promise<EmailProTask>;
-  /**
-  List the email.pro.Task objects
-  Pending task for this mailbox
-  **/
-  public get(path: '/email/pro/{service}/account/{email}/tasks', pathParams: {service: string, email: string}): Promise<Number[]>;
-  /**
-  Mailbox
-  Get this object properties
-  **/
-  public get(path: '/email/pro/{service}/account/{email}', pathParams: {service: string, email: string}): Promise<EmailProAccount>;
   /**
   List the email.pro.AccountSendAs objects
   Send as granted users for this mailbox
@@ -898,30 +908,30 @@ export class ApiEmailPro extends ApiCommon {
   **/
   public get(path: '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProAccountSendOnBehalfTo>;
   /**
-  Aliases on this mailbox
+  List the email.pro.Task objects
+  Pending task for this mailbox
+  **/
+  public get(path: '/email/pro/{service}/account/{email}/tasks', pathParams: {service: string, email: string}): Promise<Number[]>;
+  /**
+  Organization task details
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/account/{email}/alias/{alias}', pathParams: {service: string, email: string, alias: string}): Promise<EmailProAccountAlias>;
+  public get(path: '/email/pro/{service}/account/{email}/tasks/{id}', pathParams: {service: string, email: string, id: Number}): Promise<EmailProTask>;
   /**
-  List the email.pro.AccountAlias objects
-  Aliases associated to this mailbox
+  billingMigrated operations
+  Detects billing transition status for the service
   **/
-  public get(path: '/email/pro/{service}/account/{email}/alias', pathParams: {service: string, email: string}): Promise<string[]>;
+  public get(path: '/email/pro/{service}/billingMigrated', pathParams: {service: string}): Promise<boolean>;
   /**
-  Email pro service
-  Get this object properties
+  billingPlan operations
+  Emailpro billing plan
   **/
-  public get(path: '/email/pro/{service}', pathParams: {service: string}): Promise<EmailProService>;
+  public get(path: '/email/pro/{service}/billingPlan', pathParams: {service: string}): Promise<string>;
   /**
   List the email.pro.Domain objects
   Domains associated to this service
   **/
   public get(path: '/email/pro/{service}/domain', pathParams: {service: string}, queryParams: {state?: EmailProObjectStateEnum}): Promise<string[]>;
-  /**
-  disclaimerAttribute operations
-  Get diclaimer attributes to substitute with Active Directory properties
-  **/
-  public get(path: '/email/pro/{service}/domain/{domainName}/disclaimerAttribute', pathParams: {service: string, domainName: string}): Promise<EmailProDisclaimerAttributeEnum[]>;
   /**
   Domain
   Get this object properties
@@ -933,61 +943,51 @@ export class ApiEmailPro extends ApiCommon {
   **/
   public get(path: '/email/pro/{service}/domain/{domainName}/disclaimer', pathParams: {service: string, domainName: string}): Promise<EmailProDisclaimer>;
   /**
-  Organization task details
-  Get this object properties
+  disclaimerAttribute operations
+  Get diclaimer attributes to substitute with Active Directory properties
   **/
-  public get(path: '/email/pro/{service}/task/{id}', pathParams: {service: string, id: Number}): Promise<EmailProTask>;
-  /**
-  List the email.pro.Task objects
-  Pending actions
-  **/
-  public get(path: '/email/pro/{service}/task', pathParams: {service: string}): Promise<Number[]>;
-  /**
-  billingMigrated operations
-  Detects billing transition status for the service
-  **/
-  public get(path: '/email/pro/{service}/billingMigrated', pathParams: {service: string}): Promise<boolean>;
-  /**
-  Server
-  Get this object properties
-  **/
-  public get(path: '/email/pro/{service}/server', pathParams: {service: string}): Promise<EmailProServer>;
-  /**
-  billingPlan operations
-  Emailpro billing plan
-  **/
-  public get(path: '/email/pro/{service}/billingPlan', pathParams: {service: string}): Promise<string>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/email/pro/{service}/serviceInfos', pathParams: {service: string}): Promise<ServicesService>;
-  /**
-  External contact for this pro service
-  Get this object properties
-  **/
-  public get(path: '/email/pro/{service}/externalContact/{externalEmailAddress}', pathParams: {service: string, externalEmailAddress: string}): Promise<EmailProExternalContact>;
+  public get(path: '/email/pro/{service}/domain/{domainName}/disclaimerAttribute', pathParams: {service: string, domainName: string}): Promise<EmailProDisclaimerAttributeEnum[]>;
   /**
   List the email.pro.ExternalContact objects
   External contacts for this service
   **/
   public get(path: '/email/pro/{service}/externalContact', pathParams: {service: string}, queryParams: {displayName?: string, lastName?: string, externalEmailAddress?: string, firstName?: string, id?: Number}): Promise<string[]>;
   /**
-  Operations about the PROEMAIL service
-  List available services
+  External contact for this pro service
+  Get this object properties
   **/
-  public get(path: '/email/pro'): Promise<string[]>;
-  public get(path: PathsEmailProGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/email/pro/{service}/externalContact/{externalEmailAddress}', pathParams: {service: string, externalEmailAddress: string}): Promise<EmailProExternalContact>;
   /**
-  Mailbox
-  Alter this object properties
+  Server
+  Get this object properties
   **/
-  public put(path: '/email/pro/{service}/account/{email}', pathParams: {service: string, email: string}): Promise<void>;
+  public get(path: '/email/pro/{service}/server', pathParams: {service: string}): Promise<EmailProServer>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/email/pro/{service}/serviceInfos', pathParams: {service: string}): Promise<ServicesService>;
+  /**
+  List the email.pro.Task objects
+  Pending actions
+  **/
+  public get(path: '/email/pro/{service}/task', pathParams: {service: string}): Promise<Number[]>;
+  /**
+  Organization task details
+  Get this object properties
+  **/
+  public get(path: '/email/pro/{service}/task/{id}', pathParams: {service: string, id: Number}): Promise<EmailProTask>;
+  public get(path: PathsEmailProGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Email pro service
   Alter this object properties
   **/
   public put(path: '/email/pro/{service}', pathParams: {service: string}): Promise<void>;
+  /**
+  Mailbox
+  Alter this object properties
+  **/
+  public put(path: '/email/pro/{service}/account/{email}', pathParams: {service: string, email: string}): Promise<void>;
   /**
   Domain
   Alter this object properties
@@ -999,16 +999,26 @@ export class ApiEmailPro extends ApiCommon {
   **/
   public put(path: '/email/pro/{service}/domain/{domainName}/disclaimer', pathParams: {service: string, domainName: string}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
-  public put(path: '/email/pro/{service}/serviceInfos', pathParams: {service: string}): Promise<void>;
-  /**
   External contact for this pro service
   Alter this object properties
   **/
   public put(path: '/email/pro/{service}/externalContact/{externalEmailAddress}', pathParams: {service: string, externalEmailAddress: string}): Promise<void>;
+  /**
+  Details about a Service
+  Alter this object properties
+  **/
+  public put(path: '/email/pro/{service}/serviceInfos', pathParams: {service: string}): Promise<void>;
   public put(path: PathsEmailProPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  /**
+  List the email.pro.AccountAlias objects
+  Create new alias
+  **/
+  public post(path: '/email/pro/{service}/account/{email}/alias', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  /**
+  changePassword operations
+  Change mailbox password
+  **/
+  public post(path: '/email/pro/{service}/account/{email}/changePassword', pathParams: {service: string, email: string}): Promise<EmailProTask>;
   /**
   Account Diagnosis
   Create new diagnosis request
@@ -1030,25 +1040,10 @@ export class ApiEmailPro extends ApiCommon {
   **/
   public post(path: '/email/pro/{service}/account/{email}/sendOnBehalfTo', pathParams: {service: string, email: string}): Promise<EmailProTask>;
   /**
-  changePassword operations
-  Change mailbox password
-  **/
-  public post(path: '/email/pro/{service}/account/{email}/changePassword', pathParams: {service: string, email: string}): Promise<EmailProTask>;
-  /**
   terminate operations
   Terminate account at expiration date
   **/
   public post(path: '/email/pro/{service}/account/{email}/terminate', pathParams: {service: string, email: string}): Promise<string>;
-  /**
-  List the email.pro.AccountAlias objects
-  Create new alias
-  **/
-  public post(path: '/email/pro/{service}/account/{email}/alias', pathParams: {service: string, email: string}): Promise<EmailProTask>;
-  /**
-  updateFlagsOnAllAccounts operations
-  Update spam and virus flags on all active accounts
-  **/
-  public post(path: '/email/pro/{service}/updateFlagsOnAllAccounts', pathParams: {service: string}): Promise<void>;
   /**
   List the email.pro.Domain objects
   Create new domain in pro services
@@ -1064,17 +1059,27 @@ export class ApiEmailPro extends ApiCommon {
   create new external contact
   **/
   public post(path: '/email/pro/{service}/externalContact', pathParams: {service: string}): Promise<EmailProTask>;
-  public post(path: PathsEmailProPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
-  Users having full access on this mailbox
-  Revoke full access
+  updateFlagsOnAllAccounts operations
+  Update spam and virus flags on all active accounts
   **/
-  public delete(path: '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/updateFlagsOnAllAccounts', pathParams: {service: string}): Promise<void>;
+  public post(path: PathsEmailProPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Mailbox
   Delete existing mailbox in pro server
   **/
   public delete(path: '/email/pro/{service}/account/{email}', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  /**
+  Aliases on this mailbox
+  Delete existing alias
+  **/
+  public delete(path: '/email/pro/{service}/account/{email}/alias/{alias}', pathParams: {service: string, email: string, alias: string}): Promise<EmailProTask>;
+  /**
+  Users having full access on this mailbox
+  Revoke full access
+  **/
+  public delete(path: '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProTask>;
   /**
   Users authorized to send mails from this mailbox
   Delete allowed user for sendAs
@@ -1085,11 +1090,6 @@ export class ApiEmailPro extends ApiCommon {
   Delete allowed user for SendOnBehalfTo
   **/
   public delete(path: '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProTask>;
-  /**
-  Aliases on this mailbox
-  Delete existing alias
-  **/
-  public delete(path: '/email/pro/{service}/account/{email}/alias/{alias}', pathParams: {service: string, email: string, alias: string}): Promise<EmailProTask>;
   /**
   Domain
   Delete existing domain in pro services

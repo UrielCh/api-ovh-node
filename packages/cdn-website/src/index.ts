@@ -231,6 +231,21 @@ export class ApiCdnWebsite extends ApiCommon {
   **/
   public get(path: '/cdn/website'): Promise<string[]>;
   /**
+  Website CDN
+  Get this object properties
+  **/
+  public get(path: '/cdn/website/{serviceName}', pathParams: {serviceName: string}): Promise<CdnWebsiteWebsite>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/cdn/website/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  Zone on CDN
+  Get this object properties
+  **/
+  public get(path: '/cdn/website/{serviceName}/zone', pathParams: {serviceName: string}): Promise<CdnWebsiteZone>;
+  /**
   List the cdn.website.Backend objects
   Backend associated to this zone
   **/
@@ -241,40 +256,20 @@ export class ApiCdnWebsite extends ApiCommon {
   **/
   public get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}', pathParams: {serviceName: string, ipv4: string}): Promise<CdnWebsiteBackend>;
   /**
-  Task on CDN
-  Get this object properties
-  **/
-  public get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}', pathParams: {serviceName: string, ipv4: string, taskId: Number}): Promise<CdnWebsiteTask>;
-  /**
   List the cdn.website.Task objects
   Task associated to this backend
   **/
   public get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks', pathParams: {serviceName: string, ipv4: string}): Promise<Number[]>;
   /**
-  List the cdn.website.Task objects
-  Task associated to this zone
-  **/
-  public get(path: '/cdn/website/{serviceName}/zone/tasks', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
   Task on CDN
   Get this object properties
   **/
-  public get(path: '/cdn/website/{serviceName}/zone/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<CdnWebsiteTask>;
+  public get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}', pathParams: {serviceName: string, ipv4: string, taskId: Number}): Promise<CdnWebsiteTask>;
   /**
   List the cdn.website.Domain objects
   Domain associated to this zone
   **/
   public get(path: '/cdn/website/{serviceName}/zone/domains', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  List the cdn.website.Task objects
-  Task associated to this domain
-  **/
-  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/tasks', pathParams: {serviceName: string, domain: string}): Promise<Number[]>;
-  /**
-  Task on CDN
-  Get this object properties
-  **/
-  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}', pathParams: {serviceName: string, domain: string, taskId: Number}): Promise<CdnWebsiteTask>;
   /**
   Domain on CDN
   Get this object properties
@@ -286,20 +281,25 @@ export class ApiCdnWebsite extends ApiCommon {
   **/
   public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/statistics', pathParams: {serviceName: string, domain: string}, queryParams: {value?: CdnWebsiteStatsValueEnum, period?: CdnWebsiteStatsPeriodEnum, type?: CdnWebsiteStatsTypeEnum}): Promise<CdnWebsiteStatsDataType[]>;
   /**
-  Zone on CDN
-  Get this object properties
+  List the cdn.website.Task objects
+  Task associated to this domain
   **/
-  public get(path: '/cdn/website/{serviceName}/zone', pathParams: {serviceName: string}): Promise<CdnWebsiteZone>;
+  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/tasks', pathParams: {serviceName: string, domain: string}): Promise<Number[]>;
   /**
-  Details about a Service
+  Task on CDN
   Get this object properties
   **/
-  public get(path: '/cdn/website/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}', pathParams: {serviceName: string, domain: string, taskId: Number}): Promise<CdnWebsiteTask>;
   /**
-  Website CDN
+  List the cdn.website.Task objects
+  Task associated to this zone
+  **/
+  public get(path: '/cdn/website/{serviceName}/zone/tasks', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Task on CDN
   Get this object properties
   **/
-  public get(path: '/cdn/website/{serviceName}', pathParams: {serviceName: string}): Promise<CdnWebsiteWebsite>;
+  public get(path: '/cdn/website/{serviceName}/zone/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<CdnWebsiteTask>;
   public get(path: PathsCdnWebsiteGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
@@ -307,6 +307,11 @@ export class ApiCdnWebsite extends ApiCommon {
   **/
   public put(path: '/cdn/website/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsCdnWebsitePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  /**
+  Zone on CDN
+  Configure a zone on CDN
+  **/
+  public post(path: '/cdn/website/{serviceName}/zone', pathParams: {serviceName: string}): Promise<CdnWebsiteZone>;
   /**
   List the cdn.website.Backend objects
   Configure a backend on the zone
@@ -322,12 +327,12 @@ export class ApiCdnWebsite extends ApiCommon {
   Flush all cache
   **/
   public post(path: '/cdn/website/{serviceName}/zone/domains/{domain}/flush', pathParams: {serviceName: string, domain: string}): Promise<CdnWebsiteTask>;
+  public post(path: PathsCdnWebsitePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Zone on CDN
-  Configure a zone on CDN
+  Remove a zone from the CDN
   **/
-  public post(path: '/cdn/website/{serviceName}/zone', pathParams: {serviceName: string}): Promise<CdnWebsiteZone>;
-  public post(path: PathsCdnWebsitePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public delete(path: '/cdn/website/{serviceName}/zone', pathParams: {serviceName: string}): Promise<CdnWebsiteTask>;
   /**
   Backend on zone
   Remove a backend from the zone
@@ -338,10 +343,5 @@ export class ApiCdnWebsite extends ApiCommon {
   Remove a domain from the CDN
   **/
   public delete(path: '/cdn/website/{serviceName}/zone/domains/{domain}', pathParams: {serviceName: string, domain: string}): Promise<CdnWebsiteTask>;
-  /**
-  Zone on CDN
-  Remove a zone from the CDN
-  **/
-  public delete(path: '/cdn/website/{serviceName}/zone', pathParams: {serviceName: string}): Promise<CdnWebsiteTask>;
   public delete(path: PathsCdnWebsiteDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

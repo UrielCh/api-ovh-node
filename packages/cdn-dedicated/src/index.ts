@@ -362,6 +362,11 @@ export class ApiCdnDedicated extends ApiCommon {
     super(config);
   }
   /**
+  Operations about the CDNANYCAST service
+  List available services
+  **/
+  public get(path: '/cdn/dedicated'): Promise<string[]>;
+  /**
   List the cdnanycast.Pop objects
   List of CDN Pops
   **/
@@ -372,40 +377,30 @@ export class ApiCdnDedicated extends ApiCommon {
   **/
   public get(path: '/cdn/dedicated/pops/{name}', pathParams: {name: string}): Promise<CdnanycastPop>;
   /**
-  Operations about the CDNANYCAST service
-  List available services
-  **/
-  public get(path: '/cdn/dedicated'): Promise<string[]>;
-  /**
   Anycast IP of a CDN customer
   Get this object properties
   **/
   public get(path: '/cdn/dedicated/{serviceName}', pathParams: {serviceName: string}): Promise<CdnanycastAnycast>;
   /**
-  List the cdnanycast.Task objects
-  Task associated to the ssl
+  List the cdnanycast.Domain objects
+  Domains associated to this anycast
   **/
-  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks', pathParams: {serviceName: string}, queryParams: {function?: CdnanycastTaskFunctionEnum, status?: CdnanycastTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains', pathParams: {serviceName: string}): Promise<string[]>;
   /**
-  Task on a CDN
+  Domain on CDN
   Get this object properties
   **/
-  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<CdnanycastTask>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}', pathParams: {serviceName: string, domain: string}): Promise<CdnanycastDomain>;
   /**
-  CDN Ssl
+  List the cdnanycast.Backend objects
+  Backend associated to the domain
+  **/
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', pathParams: {serviceName: string, domain: string}): Promise<string[]>;
+  /**
+  Backend for a domain
   Get this object properties
   **/
-  public get(path: '/cdn/dedicated/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<CdnanycastSsl>;
-  /**
-  quota operations
-  Return quota history
-  **/
-  public get(path: '/cdn/dedicated/{serviceName}/quota', pathParams: {serviceName: string}, queryParams: {period?: CdnanycastStatsPeriodEnum}): Promise<CdnanycastStatsDataType[]>;
-  /**
-  statistics operations
-  Return stats about a domain
-  **/
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/statistics', pathParams: {serviceName: string, domain: string}, queryParams: {period?: CdnanycastStatsPeriodEnum, value?: CdnanycastStatsValueEnum, type?: CdnanycastStatsTypeEnum}): Promise<CdnanycastStatsDataType[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}', pathParams: {serviceName: string, domain: string, ip: string}): Promise<CdnanycastBackend>;
   /**
   List the cdnanycast.CacheRule objects
   Cache rules associated to the domain
@@ -427,20 +422,10 @@ export class ApiCdnDedicated extends ApiCommon {
   **/
   public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}', pathParams: {serviceName: string, domain: string, cacheRuleId: Number, taskId: Number}): Promise<CdnanycastTask>;
   /**
-  List the cdnanycast.Backend objects
-  Backend associated to the domain
+  statistics operations
+  Return stats about a domain
   **/
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', pathParams: {serviceName: string, domain: string}): Promise<string[]>;
-  /**
-  Backend for a domain
-  Get this object properties
-  **/
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}', pathParams: {serviceName: string, domain: string, ip: string}): Promise<CdnanycastBackend>;
-  /**
-  Domain on CDN
-  Get this object properties
-  **/
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}', pathParams: {serviceName: string, domain: string}): Promise<CdnanycastDomain>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/statistics', pathParams: {serviceName: string, domain: string}, queryParams: {period?: CdnanycastStatsPeriodEnum, value?: CdnanycastStatsValueEnum, type?: CdnanycastStatsTypeEnum}): Promise<CdnanycastStatsDataType[]>;
   /**
   List the cdnanycast.Task objects
   Task associated to the domain
@@ -452,26 +437,41 @@ export class ApiCdnDedicated extends ApiCommon {
   **/
   public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}', pathParams: {serviceName: string, domain: string, taskId: Number}): Promise<CdnanycastTask>;
   /**
-  List the cdnanycast.Domain objects
-  Domains associated to this anycast
+  quota operations
+  Return quota history
   **/
-  public get(path: '/cdn/dedicated/{serviceName}/domains', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/quota', pathParams: {serviceName: string}, queryParams: {period?: CdnanycastStatsPeriodEnum}): Promise<CdnanycastStatsDataType[]>;
   /**
   Details about a Service
   Get this object properties
   **/
   public get(path: '/cdn/dedicated/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsCdnDedicatedGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
-  CacheRules for a domain
-  Alter this object properties
+  CDN Ssl
+  Get this object properties
   **/
-  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', pathParams: {serviceName: string, domain: string, cacheRuleId: Number}): Promise<void>;
+  public get(path: '/cdn/dedicated/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<CdnanycastSsl>;
+  /**
+  List the cdnanycast.Task objects
+  Task associated to the ssl
+  **/
+  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks', pathParams: {serviceName: string}, queryParams: {function?: CdnanycastTaskFunctionEnum, status?: CdnanycastTaskStateEnum}): Promise<Number[]>;
+  /**
+  Task on a CDN
+  Get this object properties
+  **/
+  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<CdnanycastTask>;
+  public get(path: PathsCdnDedicatedGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Domain on CDN
   Alter this object properties
   **/
   public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}', pathParams: {serviceName: string, domain: string}): Promise<void>;
+  /**
+  CacheRules for a domain
+  Alter this object properties
+  **/
+  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', pathParams: {serviceName: string, domain: string, cacheRuleId: Number}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
@@ -479,25 +479,20 @@ export class ApiCdnDedicated extends ApiCommon {
   public put(path: '/cdn/dedicated/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsCdnDedicatedPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  update operations
-  Update an existing SSL with a custom certificate
-  **/
-  public post(path: '/cdn/dedicated/{serviceName}/ssl/update', pathParams: {serviceName: string}): Promise<CdnanycastTask>;
-  /**
-  CDN Ssl
-  Add a SSL on CDN or Generate a Lets Encrypt certificate
-  **/
-  public post(path: '/cdn/dedicated/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<CdnanycastSsl>;
-  /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
   public post(path: '/cdn/dedicated/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
-  logs operations
-  Generate URL to real time logs
+  List the cdnanycast.Domain objects
+  Add a domain on CDN
   **/
-  public post(path: '/cdn/dedicated/{serviceName}/logs', pathParams: {serviceName: string}): Promise<CdnanycastLogsURL>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains', pathParams: {serviceName: string}): Promise<CdnanycastDomain>;
+  /**
+  List the cdnanycast.Backend objects
+  Add a backend IP
+  **/
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', pathParams: {serviceName: string, domain: string}): Promise<CdnanycastBackend>;
   /**
   List the cdnanycast.CacheRule objects
   Add a cache rule to a domain
@@ -509,45 +504,50 @@ export class ApiCdnDedicated extends ApiCommon {
   **/
   public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush', pathParams: {serviceName: string, domain: string, cacheRuleId: Number}): Promise<CdnanycastTask>;
   /**
-  logs operations
-  Generate URL to real time logs
-  **/
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/logs', pathParams: {serviceName: string, domain: string}): Promise<CdnanycastLogsURL>;
-  /**
-  List the cdnanycast.Backend objects
-  Add a backend IP
-  **/
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', pathParams: {serviceName: string, domain: string}): Promise<CdnanycastBackend>;
-  /**
   flush operations
   Flush all cache
   **/
   public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/flush', pathParams: {serviceName: string, domain: string}): Promise<CdnanycastTask>;
   /**
-  List the cdnanycast.Domain objects
-  Add a domain on CDN
+  logs operations
+  Generate URL to real time logs
   **/
-  public post(path: '/cdn/dedicated/{serviceName}/domains', pathParams: {serviceName: string}): Promise<CdnanycastDomain>;
-  public post(path: PathsCdnDedicatedPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/logs', pathParams: {serviceName: string, domain: string}): Promise<CdnanycastLogsURL>;
+  /**
+  logs operations
+  Generate URL to real time logs
+  **/
+  public post(path: '/cdn/dedicated/{serviceName}/logs', pathParams: {serviceName: string}): Promise<CdnanycastLogsURL>;
   /**
   CDN Ssl
-  Remove SSL of the CDN
+  Add a SSL on CDN or Generate a Lets Encrypt certificate
   **/
-  public delete(path: '/cdn/dedicated/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<CdnanycastTask>;
+  public post(path: '/cdn/dedicated/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<CdnanycastSsl>;
   /**
-  CacheRules for a domain
-  Remove cache rule
+  update operations
+  Update an existing SSL with a custom certificate
   **/
-  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', pathParams: {serviceName: string, domain: string, cacheRuleId: Number}): Promise<CdnanycastTask>;
+  public post(path: '/cdn/dedicated/{serviceName}/ssl/update', pathParams: {serviceName: string}): Promise<CdnanycastTask>;
+  public post(path: PathsCdnDedicatedPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  /**
+  Domain on CDN
+  Remove a domain from the CDN
+  **/
+  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}', pathParams: {serviceName: string, domain: string}): Promise<CdnanycastTask>;
   /**
   Backend for a domain
   Remove a backend IP
   **/
   public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}', pathParams: {serviceName: string, domain: string, ip: string}): Promise<string>;
   /**
-  Domain on CDN
-  Remove a domain from the CDN
+  CacheRules for a domain
+  Remove cache rule
   **/
-  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}', pathParams: {serviceName: string, domain: string}): Promise<CdnanycastTask>;
+  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', pathParams: {serviceName: string, domain: string, cacheRuleId: Number}): Promise<CdnanycastTask>;
+  /**
+  CDN Ssl
+  Remove SSL of the CDN
+  **/
+  public delete(path: '/cdn/dedicated/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<CdnanycastTask>;
   public delete(path: PathsCdnDedicatedDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

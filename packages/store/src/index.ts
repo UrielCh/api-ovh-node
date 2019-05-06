@@ -258,15 +258,10 @@ export class ApiStore extends ApiCommon {
     super(config);
   }
   /**
-  MarketPlaceDocument.documentId
-  Get document info
+  MarketPlaceContact
+  List current customer contacts
   **/
-  public get(path: '/store/document/{documentId}', pathParams: {documentId: string}): Promise<MarketPlaceDocument>;
-  /**
-  MarketPlaceDocument
-  List current customer documents
-  **/
-  public get(path: '/store/document'): Promise<MarketPlaceDocument[]>;
+  public get(path: '/store/contact'): Promise<MarketPlaceContact[]>;
   /**
   MarketPlaceContact.contactId
   Get contact details
@@ -278,40 +273,45 @@ export class ApiStore extends ApiCommon {
   **/
   public get(path: '/store/contact/{contactId}/document', pathParams: {contactId: string}): Promise<string[]>;
   /**
-  MarketPlaceContact
-  List current customer contacts
+  MarketPlaceDocument
+  List current customer documents
   **/
-  public get(path: '/store/contact'): Promise<MarketPlaceContact[]>;
+  public get(path: '/store/document'): Promise<MarketPlaceDocument[]>;
+  /**
+  MarketPlaceDocument.documentId
+  Get document info
+  **/
+  public get(path: '/store/document/{documentId}', pathParams: {documentId: string}): Promise<MarketPlaceDocument>;
   /**
   MarketPlacePartner.search
   List current customer partners
   **/
   public get(path: '/store/partner'): Promise<MarketPlacePartner[]>;
   /**
-  MarketPlacePartner.doc
-  List document associated with partner
-  **/
-  public get(path: '/store/partner/{partnerId}/document', pathParams: {partnerId: string}): Promise<string[]>;
-  /**
   MarketPlacePartner.get
   Get partner info
   **/
   public get(path: '/store/partner/{partnerId}', pathParams: {partnerId: string}): Promise<MarketPlacePartner>;
   /**
-  MarketPlacePartnerProduct.doc
-  List document associated with product
+  MarketPlacePartner.doc
+  List document associated with partner
   **/
-  public get(path: '/store/partner/{partnerId}/product/{productId}/document', pathParams: {partnerId: string, productId: string}): Promise<string[]>;
+  public get(path: '/store/partner/{partnerId}/document', pathParams: {partnerId: string}): Promise<string[]>;
+  /**
+  MarketPlacePartnerProduct.search
+  List partner's products
+  **/
+  public get(path: '/store/partner/{partnerId}/product', pathParams: {partnerId: string}): Promise<MarketPlacePartnerProduct[]>;
   /**
   MarketPlacePartnerProduct.get
   Get partner info
   **/
   public get(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId: string, productId: string}): Promise<MarketPlacePartnerProduct>;
   /**
-  MarketPlacePartnerProduct.search
-  List partner's products
+  MarketPlacePartnerProduct.doc
+  List document associated with product
   **/
-  public get(path: '/store/partner/{partnerId}/product', pathParams: {partnerId: string}): Promise<MarketPlacePartnerProduct[]>;
+  public get(path: '/store/partner/{partnerId}/product/{productId}/document', pathParams: {partnerId: string, productId: string}): Promise<string[]>;
   public get(path: PathsStoreGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   MarketPlaceContact.contactId
@@ -330,25 +330,25 @@ export class ApiStore extends ApiCommon {
   public put(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId: string, productId: string}): Promise<MarketPlacePartnerProduct>;
   public put(path: PathsStorePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  MarketPlaceDocument
-  Add CORS support on your container
+  MarketPlaceContact
+  Create a 'marketplace' contact for current nic
   **/
-  public post(path: '/store/document/cors'): Promise<void>;
-  /**
-  MarketPlaceDocument
-  Create a document
-  **/
-  public post(path: '/store/document'): Promise<MarketPlaceDocument>;
+  public post(path: '/store/contact'): Promise<MarketPlaceContact>;
   /**
   MarketPlaceContact.doc
   Add a document to a contact
   **/
   public post(path: '/store/contact/{contactId}/document', pathParams: {contactId: string}): Promise<string[]>;
   /**
-  MarketPlaceContact
-  Create a 'marketplace' contact for current nic
+  MarketPlaceDocument
+  Create a document
   **/
-  public post(path: '/store/contact'): Promise<MarketPlaceContact>;
+  public post(path: '/store/document'): Promise<MarketPlaceDocument>;
+  /**
+  MarketPlaceDocument
+  Add CORS support on your container
+  **/
+  public post(path: '/store/document/cors'): Promise<void>;
   /**
   MarketPlacePartner.search
   Create a 'marketplace' partner for current nic
@@ -360,21 +360,16 @@ export class ApiStore extends ApiCommon {
   **/
   public post(path: '/store/partner/{partnerId}/document', pathParams: {partnerId: string}): Promise<string[]>;
   /**
-  MarketPlacePartnerProduct.doc
-  Add a document to a product
-  **/
-  public post(path: '/store/partner/{partnerId}/product/{productId}/document', pathParams: {partnerId: string, productId: string}): Promise<string[]>;
-  /**
   MarketPlacePartnerProduct.search
   Create a new product for partner
   **/
   public post(path: '/store/partner/{partnerId}/product', pathParams: {partnerId: string}): Promise<MarketPlacePartnerProduct>;
-  public post(path: PathsStorePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
-  MarketPlaceDocument.documentId
-  Delete document
+  MarketPlacePartnerProduct.doc
+  Add a document to a product
   **/
-  public delete(path: '/store/document/{documentId}', pathParams: {documentId: string}): Promise<string>;
+  public post(path: '/store/partner/{partnerId}/product/{productId}/document', pathParams: {partnerId: string, productId: string}): Promise<string[]>;
+  public post(path: PathsStorePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   MarketPlaceContact.contactId
   Remove an existing contact
@@ -386,24 +381,29 @@ export class ApiStore extends ApiCommon {
   **/
   public delete(path: '/store/contact/{contactId}/document/{documentId}', pathParams: {contactId: string, documentId: string}): Promise<string[]>;
   /**
-  MarketPlacePartner.doc_id
-  Unlink a document from a partner
+  MarketPlaceDocument.documentId
+  Delete document
   **/
-  public delete(path: '/store/partner/{partnerId}/document/{documentId}', pathParams: {partnerId: string, documentId: string}): Promise<string[]>;
+  public delete(path: '/store/document/{documentId}', pathParams: {documentId: string}): Promise<string>;
   /**
   MarketPlacePartner.get
   Delete partner
   **/
   public delete(path: '/store/partner/{partnerId}', pathParams: {partnerId: string}): Promise<string>;
   /**
-  MarketPlacePartnerProduct.doc_id
-  Unlink a document from a product
+  MarketPlacePartner.doc_id
+  Unlink a document from a partner
   **/
-  public delete(path: '/store/partner/{partnerId}/product/{productId}/document/{documentId}', pathParams: {partnerId: string, productId: string, documentId: string}): Promise<string[]>;
+  public delete(path: '/store/partner/{partnerId}/document/{documentId}', pathParams: {partnerId: string, documentId: string}): Promise<string[]>;
   /**
   MarketPlacePartnerProduct.get
   Delete product
   **/
   public delete(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId: string, productId: string}): Promise<string>;
+  /**
+  MarketPlacePartnerProduct.doc_id
+  Unlink a document from a product
+  **/
+  public delete(path: '/store/partner/{partnerId}/product/{productId}/document/{documentId}', pathParams: {partnerId: string, productId: string, documentId: string}): Promise<string[]>;
   public delete(path: PathsStoreDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

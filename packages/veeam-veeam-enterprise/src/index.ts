@@ -182,25 +182,25 @@ export class ApiVeeamVeeamEnterprise extends ApiCommon {
   **/
   public get(path: '/veeam/veeamEnterprise'): Promise<string[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
   Veeeam Enterprise offer
   Get this object properties
   **/
   public get(path: '/veeam/veeamEnterprise/{serviceName}', pathParams: {serviceName: string}): Promise<VeeamVeeamEnterpriseAccount>;
   /**
-  Operation with the Enterprise Account
+  Details about a Service
   Get this object properties
   **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<VeeamVeeamEnterpriseTask>;
+  public get(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   List the veeam.veeamEnterprise.Task objects
   Tasks associated with Veeam Enterprise
   **/
   public get(path: '/veeam/veeamEnterprise/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {state?: VeeamEnterpriseTaskStateEnum, name?: string}): Promise<Number[]>;
+  /**
+  Operation with the Enterprise Account
+  Get this object properties
+  **/
+  public get(path: '/veeam/veeamEnterprise/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<VeeamVeeamEnterpriseTask>;
   public get(path: PathsVeeamVeeamEnterpriseGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
@@ -209,24 +209,24 @@ export class ApiVeeamVeeamEnterprise extends ApiCommon {
   public put(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsVeeamVeeamEnterprisePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
+  Confirm termination of your service
+  Confirm termination of your service
+  **/
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  /**
   register operations
   Register Veeam Backup Server to Veeam Enterprise
   **/
   public post(path: '/veeam/veeamEnterprise/{serviceName}/register', pathParams: {serviceName: string}): Promise<VeeamVeeamEnterpriseTask[]>;
-  /**
-  update operations
-  Update Veeam enterprise configuration
-  **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/update', pathParams: {serviceName: string}): Promise<VeeamVeeamEnterpriseTask[]>;
   /**
   Terminate your service
   Terminate your service
   **/
   public post(path: '/veeam/veeamEnterprise/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
+  update operations
+  Update Veeam enterprise configuration
   **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/update', pathParams: {serviceName: string}): Promise<VeeamVeeamEnterpriseTask[]>;
   public post(path: PathsVeeamVeeamEnterprisePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

@@ -293,16 +293,6 @@ export class ApiMetrics extends ApiCommon {
   public get(path: '/metrics'): Promise<string[]>;
   /**
   Missing description
-  Get a specific token
-  **/
-  public get(path: '/metrics/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<MetricsApiToken>;
-  /**
-  Missing description
-  Get list of tokens
-  **/
-  public get(path: '/metrics/{serviceName}/token', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Missing description
   Get service
   **/
   public get(path: '/metrics/{serviceName}', pathParams: {serviceName: string}): Promise<MetricsApiService>;
@@ -316,12 +306,17 @@ export class ApiMetrics extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/metrics/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsMetricsGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Missing description
-  Modify a token
+  Get list of tokens
   **/
-  public put(path: '/metrics/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<MetricsApiToken>;
+  public get(path: '/metrics/{serviceName}/token', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Missing description
+  Get a specific token
+  **/
+  public get(path: '/metrics/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<MetricsApiToken>;
+  public get(path: PathsMetricsGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Missing description
   Modify service
@@ -337,22 +332,22 @@ export class ApiMetrics extends ApiCommon {
   Alter this object properties
   **/
   public put(path: '/metrics/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsMetricsPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
-  /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
-  public post(path: '/metrics/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
   Missing description
-  Create a token
+  Modify a token
   **/
-  public post(path: '/metrics/{serviceName}/token', pathParams: {serviceName: string}): Promise<MetricsApiToken>;
+  public put(path: '/metrics/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<MetricsApiToken>;
+  public put(path: PathsMetricsPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
   public post(path: '/metrics/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Confirm termination of your service
+  Confirm termination of your service
+  **/
+  public post(path: '/metrics/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
   Missing description
   Find TokenID for a specific token
@@ -363,6 +358,11 @@ export class ApiMetrics extends ApiCommon {
   Terminate your service
   **/
   public post(path: '/metrics/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  Missing description
+  Create a token
+  **/
+  public post(path: '/metrics/{serviceName}/token', pathParams: {serviceName: string}): Promise<MetricsApiToken>;
   public post(path: PathsMetricsPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Missing description

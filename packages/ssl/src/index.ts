@@ -213,15 +213,10 @@ export class ApiSsl extends ApiCommon {
     super(config);
   }
   /**
-  Task on a SSL
-  Get this object properties
+  Operations about the SSL service
+  List available services
   **/
-  public get(path: '/ssl/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<SslOperation>;
-  /**
-  List the ssl.Operation objects
-  Tasks associated to this ssl
-  **/
-  public get(path: '/ssl/{serviceName}/tasks', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/ssl'): Promise<string[]>;
   /**
   Certificate of an SSL customer
   Get this object properties
@@ -233,10 +228,15 @@ export class ApiSsl extends ApiCommon {
   **/
   public get(path: '/ssl/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
-  Operations about the SSL service
-  List available services
+  List the ssl.Operation objects
+  Tasks associated to this ssl
   **/
-  public get(path: '/ssl'): Promise<string[]>;
+  public get(path: '/ssl/{serviceName}/tasks', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Task on a SSL
+  Get this object properties
+  **/
+  public get(path: '/ssl/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<SslOperation>;
   public get(path: PathsSslGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service

@@ -85,14 +85,14 @@ export class ApiAuth extends ApiCommon {
   public get(path: '/auth/time'): Promise<Number>;
   public get(path: PathsAuthGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
-  Expire current credential
-  Expire current credential
-  **/
-  public post(path: '/auth/logout'): Promise<void>;
-  /**
   Operations with credentials
   Request a new credential for your application
   **/
   public post(path: '/auth/credential'): Promise<AuthCredential>;
+  /**
+  Expire current credential
+  Expire current credential
+  **/
+  public post(path: '/auth/logout'): Promise<void>;
   public post(path: PathsAuthPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

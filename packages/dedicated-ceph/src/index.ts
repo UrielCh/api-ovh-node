@@ -572,6 +572,11 @@ export class ApiDedicatedCeph extends ApiCommon {
   **/
   public get(path: '/dedicated/ceph'): Promise<string[]>;
   /**
+  dedicated.ceph.clusterGet
+  Get cluster details
+  **/
+  public get(path: '/dedicated/ceph/{serviceName}', pathParams: {serviceName: string}): Promise<DedicatedCephClusterGetResponse>;
+  /**
   dedicated.ceph.aclCreate
   Get list of all IP ACLs in a cluster
   **/
@@ -582,15 +587,35 @@ export class ApiDedicatedCeph extends ApiCommon {
   **/
   public get(path: '/dedicated/ceph/{serviceName}/acl/{aclId}', pathParams: {serviceName: string, aclId: string}): Promise<DedicatedCephAclGetResponse>;
   /**
-  dedicated.ceph.taskGet
-  Get task details
+  dedicated.ceph.clusterHealth
+  Get cluster health
   **/
-  public get(path: '/dedicated/ceph/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: string}): Promise<DedicatedCephTaskGetResponse[]>;
+  public get(path: '/dedicated/ceph/{serviceName}/health', pathParams: {serviceName: string}): Promise<DedicatedCephClusterHealthResponse>;
+  /**
+  dedicated.ceph.poolCreate
+  Get list of all pools in a cluster
+  **/
+  public get(path: '/dedicated/ceph/{serviceName}/pool', pathParams: {serviceName: string}): Promise<DedicatedCephPoolListResponse[]>;
+  /**
+  dedicated.ceph.poolDelete
+  Get details about an existing ceph pool
+  **/
+  public get(path: '/dedicated/ceph/{serviceName}/pool/{poolName}', pathParams: {serviceName: string, poolName: string}): Promise<DedicatedCephPoolGetResponse>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/dedicated/ceph/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   dedicated.ceph.taskList
   List tasks in progress
   **/
   public get(path: '/dedicated/ceph/{serviceName}/task', pathParams: {serviceName: string}): Promise<DedicatedCephTaskListResponse[]>;
+  /**
+  dedicated.ceph.taskGet
+  Get task details
+  **/
+  public get(path: '/dedicated/ceph/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: string}): Promise<DedicatedCephTaskGetResponse[]>;
   /**
   dedicated.ceph.userCreate
   Get list of all users in a cluster
@@ -606,37 +631,7 @@ export class ApiDedicatedCeph extends ApiCommon {
   List user-pool permissions
   **/
   public get(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool', pathParams: {userName: string, serviceName: string}): Promise<DedicatedCephUserPoolPermListResponse[]>;
-  /**
-  dedicated.ceph.clusterHealth
-  Get cluster health
-  **/
-  public get(path: '/dedicated/ceph/{serviceName}/health', pathParams: {serviceName: string}): Promise<DedicatedCephClusterHealthResponse>;
-  /**
-  dedicated.ceph.clusterGet
-  Get cluster details
-  **/
-  public get(path: '/dedicated/ceph/{serviceName}', pathParams: {serviceName: string}): Promise<DedicatedCephClusterGetResponse>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/dedicated/ceph/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  dedicated.ceph.poolCreate
-  Get list of all pools in a cluster
-  **/
-  public get(path: '/dedicated/ceph/{serviceName}/pool', pathParams: {serviceName: string}): Promise<DedicatedCephPoolListResponse[]>;
-  /**
-  dedicated.ceph.poolDelete
-  Get details about an existing ceph pool
-  **/
-  public get(path: '/dedicated/ceph/{serviceName}/pool/{poolName}', pathParams: {serviceName: string, poolName: string}): Promise<DedicatedCephPoolGetResponse>;
   public get(path: PathsDedicatedCephGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
-  /**
-  dedicated.ceph.userPoolPermList
-  Update user-pool permission for single pool
-  **/
-  public put(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool', pathParams: {userName: string, serviceName: string}): Promise<string>;
   /**
   dedicated.ceph.clusterGet
   Update cluster details
@@ -647,6 +642,11 @@ export class ApiDedicatedCeph extends ApiCommon {
   Alter this object properties
   **/
   public put(path: '/dedicated/ceph/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  dedicated.ceph.userPoolPermList
+  Update user-pool permission for single pool
+  **/
+  public put(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool', pathParams: {userName: string, serviceName: string}): Promise<string>;
   public put(path: PathsDedicatedCephPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   dedicated.ceph.aclCreate
@@ -659,6 +659,21 @@ export class ApiDedicatedCeph extends ApiCommon {
   **/
   public post(path: '/dedicated/ceph/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
+  Confirm termination of your service
+  Confirm termination of your service
+  **/
+  public post(path: '/dedicated/ceph/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  dedicated.ceph.poolCreate
+  Create a new ceph pool
+  **/
+  public post(path: '/dedicated/ceph/{serviceName}/pool', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/dedicated/ceph/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  /**
   dedicated.ceph.userCreate
   Create a new ceph user
   **/
@@ -668,27 +683,17 @@ export class ApiDedicatedCeph extends ApiCommon {
   Create new user-pool permissions. All old permissions will be cleared
   **/
   public post(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool', pathParams: {userName: string, serviceName: string}): Promise<string>;
-  /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
-  public post(path: '/dedicated/ceph/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  Terminate your service
-  Terminate your service
-  **/
-  public post(path: '/dedicated/ceph/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  dedicated.ceph.poolCreate
-  Create a new ceph pool
-  **/
-  public post(path: '/dedicated/ceph/{serviceName}/pool', pathParams: {serviceName: string}): Promise<string>;
   public post(path: PathsDedicatedCephPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   dedicated.ceph.aclDeleteSingle
   Delete single IP ACL
   **/
   public delete(path: '/dedicated/ceph/{serviceName}/acl/{aclId}', pathParams: {serviceName: string, aclId: string}): Promise<string>;
+  /**
+  dedicated.ceph.poolDelete
+  Delete a single ceph pool
+  **/
+  public delete(path: '/dedicated/ceph/{serviceName}/pool/{poolName}', pathParams: {serviceName: string, poolName: string}): Promise<string>;
   /**
   dedicated.ceph.userDelete
   Delete an existing single ceph user
@@ -699,10 +704,5 @@ export class ApiDedicatedCeph extends ApiCommon {
   Clear user-pool permission for single pool
   **/
   public delete(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}', pathParams: {userName: string, serviceName: string, poolName: string}): Promise<string>;
-  /**
-  dedicated.ceph.poolDelete
-  Delete a single ceph pool
-  **/
-  public delete(path: '/dedicated/ceph/{serviceName}/pool/{poolName}', pathParams: {serviceName: string, poolName: string}): Promise<string>;
   public delete(path: PathsDedicatedCephDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }
