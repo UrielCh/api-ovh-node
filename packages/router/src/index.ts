@@ -338,32 +338,32 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsRouterGET = '/router/{serviceName}/task' | 
-'/router/{serviceName}/task/{id}' | 
-'/router/{serviceName}/serviceInfos' | 
+type PathsRouterGET = '/router' | 
 '/router/{serviceName}' | 
-'/router/{serviceName}/network/{ipNet}' | 
 '/router/{serviceName}/network' | 
-'/router/{serviceName}/privateLink/{peerServiceName}' | 
-'/router/{serviceName}/privateLink/{peerServiceName}/route/{network}' | 
-'/router/{serviceName}/privateLink/{peerServiceName}/route' | 
-'/router/{serviceName}/privateLink/{peerServiceName}/request' | 
-'/router/{serviceName}/privateLink' | 
-'/router/{serviceName}/vpn' | 
-'/router/{serviceName}/vpn/{id}' | 
-'/router';
-
-type PathsRouterPUT = '/router/{serviceName}/serviceInfos' | 
 '/router/{serviceName}/network/{ipNet}' | 
+'/router/{serviceName}/privateLink' | 
 '/router/{serviceName}/privateLink/{peerServiceName}' | 
+'/router/{serviceName}/privateLink/{peerServiceName}/request' | 
+'/router/{serviceName}/privateLink/{peerServiceName}/route' | 
+'/router/{serviceName}/privateLink/{peerServiceName}/route/{network}' | 
+'/router/{serviceName}/serviceInfos' | 
+'/router/{serviceName}/task' | 
+'/router/{serviceName}/task/{id}' | 
+'/router/{serviceName}/vpn' | 
+'/router/{serviceName}/vpn/{id}';
+
+type PathsRouterPUT = '/router/{serviceName}/network/{ipNet}' | 
+'/router/{serviceName}/privateLink/{peerServiceName}' | 
+'/router/{serviceName}/serviceInfos' | 
 '/router/{serviceName}/vpn/{id}';
 
 type PathsRouterPOST = '/router/{serviceName}/confirmTermination' | 
-'/router/{serviceName}/terminate' | 
 '/router/{serviceName}/network' | 
-'/router/{serviceName}/privateLink/{peerServiceName}/route' | 
-'/router/{serviceName}/privateLink/{peerServiceName}/request/manage' | 
 '/router/{serviceName}/privateLink' | 
+'/router/{serviceName}/privateLink/{peerServiceName}/request/manage' | 
+'/router/{serviceName}/privateLink/{peerServiceName}/route' | 
+'/router/{serviceName}/terminate' | 
 '/router/{serviceName}/vpn' | 
 '/router/{serviceName}/vpn/{id}/setPsk';
 

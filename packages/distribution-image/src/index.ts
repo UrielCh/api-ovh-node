@@ -62,8 +62,8 @@ export type DistributionImagePropertiesCategory = 'bare' | 'cms' | 'desktop' | '
  * Description not available
  */
 export type DistributionImageService = 'cloud' | 'dedicated' | 'dedicatedCloud' | 'vps';
-type PathsDistributionImageGET = '/distribution/image/{serviceType}/{imageName}' | 
-'/distribution/image/{serviceType}';
+type PathsDistributionImageGET = '/distribution/image/{serviceType}' | 
+'/distribution/image/{serviceType}/{imageName}';
 
 export class ApiDistributionImage extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

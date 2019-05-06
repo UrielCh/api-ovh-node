@@ -300,23 +300,23 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsLicenseVirtuozzoGET = '/license/virtuozzo/{serviceName}/canLicenseBeMovedTo' | 
-'/license/virtuozzo/{serviceName}/option/{label}' | 
-'/license/virtuozzo/{serviceName}/option' | 
-'/license/virtuozzo/{serviceName}/allowedDestinationIp' | 
-'/license/virtuozzo/{serviceName}/tasks/{taskId}' | 
-'/license/virtuozzo/{serviceName}/tasks' | 
-'/license/virtuozzo/{serviceName}' | 
-'/license/virtuozzo/{serviceName}/serviceInfos' | 
+type PathsLicenseVirtuozzoGET = '/license/virtuozzo' | 
 '/license/virtuozzo/orderableVersions' | 
-'/license/virtuozzo';
+'/license/virtuozzo/{serviceName}' | 
+'/license/virtuozzo/{serviceName}/allowedDestinationIp' | 
+'/license/virtuozzo/{serviceName}/canLicenseBeMovedTo' | 
+'/license/virtuozzo/{serviceName}/option' | 
+'/license/virtuozzo/{serviceName}/option/{label}' | 
+'/license/virtuozzo/{serviceName}/serviceInfos' | 
+'/license/virtuozzo/{serviceName}/tasks' | 
+'/license/virtuozzo/{serviceName}/tasks/{taskId}';
 
 type PathsLicenseVirtuozzoPUT = '/license/virtuozzo/{serviceName}' | 
 '/license/virtuozzo/{serviceName}/serviceInfos';
 
-type PathsLicenseVirtuozzoPOST = '/license/virtuozzo/{serviceName}/terminate' | 
+type PathsLicenseVirtuozzoPOST = '/license/virtuozzo/{serviceName}/changeIp' | 
 '/license/virtuozzo/{serviceName}/confirmTermination' | 
-'/license/virtuozzo/{serviceName}/changeIp';
+'/license/virtuozzo/{serviceName}/terminate';
 
 type PathsLicenseVirtuozzoDELETE = '/license/virtuozzo/{serviceName}/option/{label}';
 

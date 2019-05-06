@@ -332,22 +332,22 @@ export interface TimeseriesProject {
  * The current status for the project
  */
 export type TimeseriesStatusTypeEnum = 'ACTIVE' | 'CREATION' | 'DELETED' | 'UNCONFIGURED';
-type PathsPaasTimeseriesGET = '/paas/timeseries/{serviceName}/consumption' | 
+type PathsPaasTimeseriesGET = '/paas/timeseries' | 
+'/paas/timeseries/region' | 
 '/paas/timeseries/{serviceName}' | 
+'/paas/timeseries/{serviceName}/consumption' | 
 '/paas/timeseries/{serviceName}/key' | 
 '/paas/timeseries/{serviceName}/key/{keyId}' | 
 '/paas/timeseries/{serviceName}/quota' | 
-'/paas/timeseries/{serviceName}/serviceInfos' | 
-'/paas/timeseries' | 
-'/paas/timeseries/region';
+'/paas/timeseries/{serviceName}/serviceInfos';
 
 type PathsPaasTimeseriesPUT = '/paas/timeseries/{serviceName}' | 
 '/paas/timeseries/{serviceName}/key/{keyId}' | 
 '/paas/timeseries/{serviceName}/serviceInfos';
 
-type PathsPaasTimeseriesPOST = '/paas/timeseries/{serviceName}/key' | 
-'/paas/timeseries/{serviceName}/setup' | 
-'/paas/timeseries/{serviceName}/changeContact';
+type PathsPaasTimeseriesPOST = '/paas/timeseries/{serviceName}/changeContact' | 
+'/paas/timeseries/{serviceName}/key' | 
+'/paas/timeseries/{serviceName}/setup';
 
 type PathsPaasTimeseriesDELETE = '/paas/timeseries/{serviceName}/key/{keyId}';
 

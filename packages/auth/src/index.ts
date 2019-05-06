@@ -66,8 +66,8 @@ export type AuthMethodEnum = 'DELETE' | 'GET' | 'POST' | 'PUT';
 type PathsAuthGET = '/auth/currentCredential' | 
 '/auth/time';
 
-type PathsAuthPOST = '/auth/logout' | 
-'/auth/credential';
+type PathsAuthPOST = '/auth/credential' | 
+'/auth/logout';
 
 export class ApiAuth extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

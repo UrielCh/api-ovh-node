@@ -491,28 +491,28 @@ export interface StackFrameworkApplication {
    */
   apps?: DockerSlaveFrameworkApp[];
 }
-type PathsCaasContainersGET = '/caas/containers/{serviceName}/availableFrameworks' | 
+type PathsCaasContainersGET = '/caas/containers' | 
+'/caas/containers/slaves/flavors' | 
+'/caas/containers/slaves/flavors/{flavorId}' | 
+'/caas/containers/{serviceName}' | 
+'/caas/containers/{serviceName}/availableFrameworks' | 
+'/caas/containers/{serviceName}/frameworks' | 
 '/caas/containers/{serviceName}/frameworks/{frameworkId}' | 
 '/caas/containers/{serviceName}/frameworks/{frameworkId}/apps' | 
-'/caas/containers/{serviceName}/frameworks' | 
-'/caas/containers/{serviceName}/serviceInfos' | 
-'/caas/containers/{serviceName}/registry/credentials/{credentialsId}' | 
 '/caas/containers/{serviceName}/registry/credentials' | 
-'/caas/containers/{serviceName}/ssl' | 
-'/caas/containers/{serviceName}' | 
+'/caas/containers/{serviceName}/registry/credentials/{credentialsId}' | 
+'/caas/containers/{serviceName}/serviceInfos' | 
 '/caas/containers/{serviceName}/slaves' | 
 '/caas/containers/{serviceName}/slaves/{slaveId}' | 
-'/caas/containers' | 
-'/caas/containers/slaves/flavors/{flavorId}' | 
-'/caas/containers/slaves/flavors';
-
-type PathsCaasContainersPUT = '/caas/containers/{serviceName}/frameworks/{frameworkId}/password' | 
-'/caas/containers/{serviceName}/serviceInfos' | 
-'/caas/containers/{serviceName}/registry/credentials/{credentialsId}' | 
 '/caas/containers/{serviceName}/ssl';
 
-type PathsCaasContainersPOST = '/caas/containers/{serviceName}/registry/credentials' | 
-'/caas/containers/{serviceName}/changeContact';
+type PathsCaasContainersPUT = '/caas/containers/{serviceName}/frameworks/{frameworkId}/password' | 
+'/caas/containers/{serviceName}/registry/credentials/{credentialsId}' | 
+'/caas/containers/{serviceName}/serviceInfos' | 
+'/caas/containers/{serviceName}/ssl';
+
+type PathsCaasContainersPOST = '/caas/containers/{serviceName}/changeContact' | 
+'/caas/containers/{serviceName}/registry/credentials';
 
 type PathsCaasContainersDELETE = '/caas/containers/{serviceName}/registry/credentials/{credentialsId}' | 
 '/caas/containers/{serviceName}/ssl';

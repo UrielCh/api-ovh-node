@@ -1371,118 +1371,118 @@ export interface ServicesService {
   status?: ServiceStateEnum;
 }
 type PathsDbaasLogsGET = '/dbaas/logs' | 
-'/dbaas/logs/input/engine/{engineId}' | 
 '/dbaas/logs/input/engine' | 
-'/dbaas/logs/{serviceName}/token/{tokenId}' | 
-'/dbaas/logs/{serviceName}/token' | 
-'/dbaas/logs/{serviceName}/url' | 
-'/dbaas/logs/{serviceName}/role' | 
-'/dbaas/logs/{serviceName}/role/{roleId}' | 
-'/dbaas/logs/{serviceName}/role/{roleId}/member/{username}' | 
-'/dbaas/logs/{serviceName}/role/{roleId}/member' | 
-'/dbaas/logs/{serviceName}/role/{roleId}/permission' | 
-'/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}' | 
-'/dbaas/logs/{serviceName}/metrics' | 
-'/dbaas/logs/{serviceName}/quota' | 
-'/dbaas/logs/{serviceName}/operation/{operationId}' | 
-'/dbaas/logs/{serviceName}/operation' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/index' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/alias' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/url' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/url' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream' | 
-'/dbaas/logs/{serviceName}/output/graylog/dashboard' | 
-'/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/url' | 
-'/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash' | 
-'/dbaas/logs/{serviceName}/input/{inputId}' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/configtest/result' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/url' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/action' | 
-'/dbaas/logs/{serviceName}/input' | 
+'/dbaas/logs/input/engine/{engineId}' | 
+'/dbaas/logs/offer/{reference}' | 
 '/dbaas/logs/{serviceName}' | 
 '/dbaas/logs/{serviceName}/cluster' | 
 '/dbaas/logs/{serviceName}/cluster/{clusterId}' | 
 '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork' | 
 '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}' | 
-'/dbaas/logs/{serviceName}/option' | 
-'/dbaas/logs/{serviceName}/option/{optionId}' | 
-'/dbaas/logs/{serviceName}/serviceInfos' | 
-'/dbaas/logs/{serviceName}/offer' | 
-'/dbaas/logs/offer/{reference}';
-
-type PathsDbaasLogsPUT = '/dbaas/logs/{serviceName}/role/{roleId}' | 
-'/dbaas/logs/{serviceName}/role/{roleId}/member/{username}' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}' | 
-'/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}' | 
+'/dbaas/logs/{serviceName}/input' | 
+'/dbaas/logs/{serviceName}/input/{inputId}' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/action' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/configtest/result' | 
 '/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger' | 
 '/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/url' | 
+'/dbaas/logs/{serviceName}/metrics' | 
+'/dbaas/logs/{serviceName}/offer' | 
+'/dbaas/logs/{serviceName}/operation' | 
+'/dbaas/logs/{serviceName}/operation/{operationId}' | 
+'/dbaas/logs/{serviceName}/option' | 
+'/dbaas/logs/{serviceName}/option/{optionId}' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/alias' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/url' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/index' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url' | 
+'/dbaas/logs/{serviceName}/output/graylog/dashboard' | 
+'/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}' | 
+'/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/url' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/url' | 
+'/dbaas/logs/{serviceName}/quota' | 
+'/dbaas/logs/{serviceName}/role' | 
+'/dbaas/logs/{serviceName}/role/{roleId}' | 
+'/dbaas/logs/{serviceName}/role/{roleId}/member' | 
+'/dbaas/logs/{serviceName}/role/{roleId}/member/{username}' | 
+'/dbaas/logs/{serviceName}/role/{roleId}/permission' | 
+'/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}' | 
+'/dbaas/logs/{serviceName}/serviceInfos' | 
+'/dbaas/logs/{serviceName}/token' | 
+'/dbaas/logs/{serviceName}/token/{tokenId}' | 
+'/dbaas/logs/{serviceName}/url';
+
+type PathsDbaasLogsPUT = '/dbaas/logs/{serviceName}' | 
 '/dbaas/logs/{serviceName}/input/{inputId}' | 
-'/dbaas/logs/{serviceName}' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}' | 
+'/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}' | 
+'/dbaas/logs/{serviceName}/role/{roleId}' | 
+'/dbaas/logs/{serviceName}/role/{roleId}/member/{username}' | 
 '/dbaas/logs/{serviceName}/serviceInfos';
 
-type PathsDbaasLogsPOST = '/dbaas/logs/{serviceName}/token' | 
-'/dbaas/logs/{serviceName}/user/changePassword' | 
+type PathsDbaasLogsPOST = '/dbaas/logs/{serviceName}/changeContact' | 
+'/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork' | 
+'/dbaas/logs/{serviceName}/input' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/configtest' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/end' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/logs/url' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/restart' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/start' | 
+'/dbaas/logs/{serviceName}/option/{optionId}/terminate' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/alias' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/index' | 
+'/dbaas/logs/{serviceName}/output/graylog/dashboard' | 
+'/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/url' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule' | 
 '/dbaas/logs/{serviceName}/role' | 
 '/dbaas/logs/{serviceName}/role/{roleId}/member' | 
 '/dbaas/logs/{serviceName}/role/{roleId}/permission/alias' | 
-'/dbaas/logs/{serviceName}/role/{roleId}/permission/stream' | 
-'/dbaas/logs/{serviceName}/role/{roleId}/permission/index' | 
 '/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/index' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/alias' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/url' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream' | 
-'/dbaas/logs/{serviceName}/output/graylog/dashboard' | 
-'/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/configtest' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/start' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/end' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/restart' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/logs/url' | 
-'/dbaas/logs/{serviceName}/input' | 
-'/dbaas/logs/{serviceName}/changeContact' | 
-'/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork' | 
-'/dbaas/logs/{serviceName}/option/{optionId}/terminate';
+'/dbaas/logs/{serviceName}/role/{roleId}/permission/index' | 
+'/dbaas/logs/{serviceName}/role/{roleId}/permission/stream' | 
+'/dbaas/logs/{serviceName}/token' | 
+'/dbaas/logs/{serviceName}/user/changePassword';
 
-type PathsDbaasLogsDELETE = '/dbaas/logs/{serviceName}/token/{tokenId}' | 
+type PathsDbaasLogsDELETE = '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}' | 
+'/dbaas/logs/{serviceName}/input/{inputId}' | 
+'/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}' | 
+'/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}' | 
+'/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}' | 
+'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}' | 
 '/dbaas/logs/{serviceName}/role/{roleId}' | 
 '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}' | 
 '/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}' | 
-'/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}' | 
-'/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}' | 
-'/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}' | 
-'/dbaas/logs/{serviceName}/input/{inputId}' | 
-'/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}' | 
-'/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}';
+'/dbaas/logs/{serviceName}/token/{tokenId}';
 
 export class ApiDbaasLogs extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

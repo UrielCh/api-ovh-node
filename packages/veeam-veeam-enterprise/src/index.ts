@@ -159,17 +159,17 @@ export interface VeeamVeeamEnterpriseTask {
  * All possible states for a Veeam Enterprise Task
  */
 export type VeeamEnterpriseTaskStateEnum = 'canceled' | 'doing' | 'done' | 'error' | 'toCreate' | 'todo' | 'unfixed' | 'waiting' | 'waitingForChilds';
-type PathsVeeamVeeamEnterpriseGET = '/veeam/veeamEnterprise/{serviceName}/task' | 
-'/veeam/veeamEnterprise/{serviceName}/task/{taskId}' | 
+type PathsVeeamVeeamEnterpriseGET = '/veeam/veeamEnterprise' | 
 '/veeam/veeamEnterprise/{serviceName}' | 
 '/veeam/veeamEnterprise/{serviceName}/serviceInfos' | 
-'/veeam/veeamEnterprise';
+'/veeam/veeamEnterprise/{serviceName}/task' | 
+'/veeam/veeamEnterprise/{serviceName}/task/{taskId}';
 
 type PathsVeeamVeeamEnterprisePUT = '/veeam/veeamEnterprise/{serviceName}/serviceInfos';
 
-type PathsVeeamVeeamEnterprisePOST = '/veeam/veeamEnterprise/{serviceName}/terminate' | 
-'/veeam/veeamEnterprise/{serviceName}/confirmTermination' | 
+type PathsVeeamVeeamEnterprisePOST = '/veeam/veeamEnterprise/{serviceName}/confirmTermination' | 
 '/veeam/veeamEnterprise/{serviceName}/register' | 
+'/veeam/veeamEnterprise/{serviceName}/terminate' | 
 '/veeam/veeamEnterprise/{serviceName}/update';
 
 export class ApiVeeamVeeamEnterprise extends ApiCommon {
@@ -177,30 +177,30 @@ export class ApiVeeamVeeamEnterprise extends ApiCommon {
     super(config);
   }
   /**
-  List the veeam.veeamEnterprise.Task objects
-  Tasks associated with Veeam Enterprise
+  Operations about the VEEAMENTERPRISE service
+  List available services
   **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {name?: string, state?: VeeamEnterpriseTaskStateEnum}): Promise<Number[]>;
-  /**
-  Operation with the Enterprise Account
-  Get this object properties
-  **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<VeeamVeeamEnterpriseTask>;
-  /**
-  Veeeam Enterprise offer
-  Get this object properties
-  **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}', pathParams: {serviceName: string}): Promise<VeeamVeeamEnterpriseAccount>;
+  public get(path: '/veeam/veeamEnterprise'): Promise<string[]>;
   /**
   Details about a Service
   Get this object properties
   **/
   public get(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
-  Operations about the VEEAMENTERPRISE service
-  List available services
+  Veeeam Enterprise offer
+  Get this object properties
   **/
-  public get(path: '/veeam/veeamEnterprise'): Promise<string[]>;
+  public get(path: '/veeam/veeamEnterprise/{serviceName}', pathParams: {serviceName: string}): Promise<VeeamVeeamEnterpriseAccount>;
+  /**
+  Operation with the Enterprise Account
+  Get this object properties
+  **/
+  public get(path: '/veeam/veeamEnterprise/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<VeeamVeeamEnterpriseTask>;
+  /**
+  List the veeam.veeamEnterprise.Task objects
+  Tasks associated with Veeam Enterprise
+  **/
+  public get(path: '/veeam/veeamEnterprise/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {state?: VeeamEnterpriseTaskStateEnum, name?: string}): Promise<Number[]>;
   public get(path: PathsVeeamVeeamEnterpriseGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
@@ -208,16 +208,6 @@ export class ApiVeeamVeeamEnterprise extends ApiCommon {
   **/
   public put(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   public put(path: PathsVeeamVeeamEnterprisePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
-  /**
-  Terminate your service
-  Terminate your service
-  **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
   register operations
   Register Veeam Backup Server to Veeam Enterprise
@@ -228,5 +218,15 @@ export class ApiVeeamVeeamEnterprise extends ApiCommon {
   Update Veeam enterprise configuration
   **/
   public post(path: '/veeam/veeamEnterprise/{serviceName}/update', pathParams: {serviceName: string}): Promise<VeeamVeeamEnterpriseTask[]>;
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  Confirm termination of your service
+  Confirm termination of your service
+  **/
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   public post(path: PathsVeeamVeeamEnterprisePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

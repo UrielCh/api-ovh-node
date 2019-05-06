@@ -211,10 +211,10 @@ export interface ServicesService {
 }
 type PathsLicenseSqlserverGET = '/license/sqlserver' | 
 '/license/sqlserver/orderableVersions' | 
-'/license/sqlserver/{serviceName}/tasks/{taskId}' | 
-'/license/sqlserver/{serviceName}/tasks' | 
+'/license/sqlserver/{serviceName}' | 
 '/license/sqlserver/{serviceName}/serviceInfos' | 
-'/license/sqlserver/{serviceName}';
+'/license/sqlserver/{serviceName}/tasks' | 
+'/license/sqlserver/{serviceName}/tasks/{taskId}';
 
 type PathsLicenseSqlserverPUT = '/license/sqlserver/{serviceName}/serviceInfos';
 

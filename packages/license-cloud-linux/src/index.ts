@@ -211,10 +211,10 @@ export interface ServicesService {
 }
 type PathsLicenseCloudLinuxGET = '/license/cloudLinux' | 
 '/license/cloudLinux/orderableVersions' | 
-'/license/cloudLinux/{serviceName}/tasks/{taskId}' | 
-'/license/cloudLinux/{serviceName}/tasks' | 
+'/license/cloudLinux/{serviceName}' | 
 '/license/cloudLinux/{serviceName}/serviceInfos' | 
-'/license/cloudLinux/{serviceName}';
+'/license/cloudLinux/{serviceName}/tasks' | 
+'/license/cloudLinux/{serviceName}/tasks/{taskId}';
 
 type PathsLicenseCloudLinuxPUT = '/license/cloudLinux/{serviceName}/serviceInfos';
 

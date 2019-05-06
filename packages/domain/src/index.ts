@@ -1243,113 +1243,113 @@ export interface ZoneStatus {
    */
   warnings?: string[];
 }
-type PathsDomainGET = '/domain/{serviceName}/ukRegistrars' | 
-'/domain/{serviceName}/authInfo' | 
-'/domain/{serviceName}/dsRecord' | 
-'/domain/{serviceName}/dsRecord/{id}' | 
-'/domain/{serviceName}/rules/emailsObfuscation' | 
-'/domain/{serviceName}/rules/optin' | 
-'/domain/{serviceName}/owo' | 
-'/domain/{serviceName}/owo/{field}' | 
-'/domain/{serviceName}' | 
-'/domain/{serviceName}/glueRecord/{host}' | 
-'/domain/{serviceName}/glueRecord' | 
-'/domain/{serviceName}/task/{id}' | 
-'/domain/{serviceName}/task' | 
-'/domain/{serviceName}/serviceInfos' | 
-'/domain/{serviceName}/nameServer/{id}' | 
-'/domain/{serviceName}/nameServer' | 
-'/domain/{serviceName}/configurations/optin' | 
-'/domain/{serviceName}/configurations/obfuscatedEmails' | 
-'/domain' | 
-'/domain/data/afnicAssociationInformation/{associationInformationId}' | 
+type PathsDomainGET = '/domain' | 
 '/domain/data/afnicAssociationInformation' | 
-'/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}' | 
+'/domain/data/afnicAssociationInformation/{associationInformationId}' | 
 '/domain/data/afnicCorporationTrademarkInformation' | 
+'/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}' | 
+'/domain/data/claimNotice' | 
 '/domain/data/extension' | 
 '/domain/data/proContact' | 
 '/domain/data/proContact/{proContactId}' | 
 '/domain/data/smd' | 
 '/domain/data/smd/{smdId}' | 
-'/domain/data/claimNotice' | 
 '/domain/rules' | 
 '/domain/zone' | 
-'/domain/zone/{zoneName}/history/{creationDate}' | 
-'/domain/zone/{zoneName}/history' | 
-'/domain/zone/{zoneName}/record/{id}' | 
-'/domain/zone/{zoneName}/record' | 
-'/domain/zone/{zoneName}/task/{id}' | 
-'/domain/zone/{zoneName}/task' | 
 '/domain/zone/{zoneName}' | 
-'/domain/zone/{zoneName}/status' | 
-'/domain/zone/{zoneName}/export' | 
 '/domain/zone/{zoneName}/dnssec' | 
-'/domain/zone/{zoneName}/redirection/{id}' | 
-'/domain/zone/{zoneName}/redirection' | 
+'/domain/zone/{zoneName}/dynHost/login' | 
+'/domain/zone/{zoneName}/dynHost/login/{login}' | 
 '/domain/zone/{zoneName}/dynHost/record' | 
 '/domain/zone/{zoneName}/dynHost/record/{id}' | 
-'/domain/zone/{zoneName}/dynHost/login/{login}' | 
-'/domain/zone/{zoneName}/dynHost/login' | 
+'/domain/zone/{zoneName}/export' | 
+'/domain/zone/{zoneName}/history' | 
+'/domain/zone/{zoneName}/history/{creationDate}' | 
+'/domain/zone/{zoneName}/record' | 
+'/domain/zone/{zoneName}/record/{id}' | 
+'/domain/zone/{zoneName}/redirection' | 
+'/domain/zone/{zoneName}/redirection/{id}' | 
 '/domain/zone/{zoneName}/serviceInfos' | 
-'/domain/zone/{zoneName}/soa';
-
-type PathsDomainPUT = '/domain/{serviceName}' | 
-'/domain/{serviceName}/serviceInfos' | 
-'/domain/{serviceName}/configurations/optin' | 
+'/domain/zone/{zoneName}/soa' | 
+'/domain/zone/{zoneName}/status' | 
+'/domain/zone/{zoneName}/task' | 
+'/domain/zone/{zoneName}/task/{id}' | 
+'/domain/{serviceName}' | 
+'/domain/{serviceName}/authInfo' | 
 '/domain/{serviceName}/configurations/obfuscatedEmails' | 
-'/domain/data/smd/{smdId}' | 
+'/domain/{serviceName}/configurations/optin' | 
+'/domain/{serviceName}/dsRecord' | 
+'/domain/{serviceName}/dsRecord/{id}' | 
+'/domain/{serviceName}/glueRecord' | 
+'/domain/{serviceName}/glueRecord/{host}' | 
+'/domain/{serviceName}/nameServer' | 
+'/domain/{serviceName}/nameServer/{id}' | 
+'/domain/{serviceName}/owo' | 
+'/domain/{serviceName}/owo/{field}' | 
+'/domain/{serviceName}/rules/emailsObfuscation' | 
+'/domain/{serviceName}/rules/optin' | 
+'/domain/{serviceName}/serviceInfos' | 
+'/domain/{serviceName}/task' | 
+'/domain/{serviceName}/task/{id}' | 
+'/domain/{serviceName}/ukRegistrars';
+
+type PathsDomainPUT = '/domain/data/smd/{smdId}' | 
+'/domain/zone/{zoneName}/dynHost/login/{login}' | 
+'/domain/zone/{zoneName}/dynHost/record/{id}' | 
 '/domain/zone/{zoneName}/record/{id}' | 
 '/domain/zone/{zoneName}/redirection/{id}' | 
-'/domain/zone/{zoneName}/dynHost/record/{id}' | 
-'/domain/zone/{zoneName}/dynHost/login/{login}' | 
 '/domain/zone/{zoneName}/serviceInfos' | 
-'/domain/zone/{zoneName}/soa';
+'/domain/zone/{zoneName}/soa' | 
+'/domain/{serviceName}' | 
+'/domain/{serviceName}/configurations/obfuscatedEmails' | 
+'/domain/{serviceName}/configurations/optin' | 
+'/domain/{serviceName}/serviceInfos';
 
-type PathsDomainPOST = '/domain/{serviceName}/activateZone' | 
-'/domain/{serviceName}/email/obfuscated/refresh' | 
-'/domain/{serviceName}/dsRecord' | 
-'/domain/{serviceName}/owo' | 
-'/domain/{serviceName}/glueRecord/{host}/update' | 
-'/domain/{serviceName}/glueRecord' | 
-'/domain/{serviceName}/task/{id}/relaunch' | 
-'/domain/{serviceName}/task/{id}/cancel' | 
-'/domain/{serviceName}/task/{id}/accelerate' | 
-'/domain/{serviceName}/changeContact' | 
-'/domain/{serviceName}/nameServer/{id}/status' | 
-'/domain/{serviceName}/nameServer' | 
-'/domain/{serviceName}/ukOutgoingTransfer' | 
-'/domain/{serviceName}/nameServers/update' | 
-'/domain/{serviceName}/configurations/obfuscatedEmails/refresh' | 
-'/domain/data/afnicAssociationInformation' | 
+type PathsDomainPOST = '/domain/data/afnicAssociationInformation' | 
 '/domain/data/afnicCorporationTrademarkInformation' | 
 '/domain/data/proContact' | 
 '/domain/data/smd' | 
-'/domain/zone/{zoneName}/history/{creationDate}/restore' | 
+'/domain/zone/{zoneName}/changeContact' | 
 '/domain/zone/{zoneName}/confirmTermination' | 
+'/domain/zone/{zoneName}/dnssec' | 
+'/domain/zone/{zoneName}/dynHost/login' | 
+'/domain/zone/{zoneName}/dynHost/login/{login}/changePassword' | 
+'/domain/zone/{zoneName}/dynHost/record' | 
+'/domain/zone/{zoneName}/history/{creationDate}/restore' | 
+'/domain/zone/{zoneName}/import' | 
 '/domain/zone/{zoneName}/record' | 
+'/domain/zone/{zoneName}/redirection' | 
 '/domain/zone/{zoneName}/refresh' | 
 '/domain/zone/{zoneName}/reset' | 
 '/domain/zone/{zoneName}/task/{id}/accelerate' | 
-'/domain/zone/{zoneName}/task/{id}/relaunch' | 
 '/domain/zone/{zoneName}/task/{id}/cancel' | 
-'/domain/zone/{zoneName}/changeContact' | 
-'/domain/zone/{zoneName}/import' | 
-'/domain/zone/{zoneName}/dnssec' | 
-'/domain/zone/{zoneName}/redirection' | 
-'/domain/zone/{zoneName}/dynHost/record' | 
-'/domain/zone/{zoneName}/dynHost/login/{login}/changePassword' | 
-'/domain/zone/{zoneName}/dynHost/login' | 
-'/domain/zone/{zoneName}/terminate';
+'/domain/zone/{zoneName}/task/{id}/relaunch' | 
+'/domain/zone/{zoneName}/terminate' | 
+'/domain/{serviceName}/activateZone' | 
+'/domain/{serviceName}/changeContact' | 
+'/domain/{serviceName}/configurations/obfuscatedEmails/refresh' | 
+'/domain/{serviceName}/dsRecord' | 
+'/domain/{serviceName}/email/obfuscated/refresh' | 
+'/domain/{serviceName}/glueRecord' | 
+'/domain/{serviceName}/glueRecord/{host}/update' | 
+'/domain/{serviceName}/nameServer' | 
+'/domain/{serviceName}/nameServer/{id}/status' | 
+'/domain/{serviceName}/nameServers/update' | 
+'/domain/{serviceName}/owo' | 
+'/domain/{serviceName}/task/{id}/accelerate' | 
+'/domain/{serviceName}/task/{id}/cancel' | 
+'/domain/{serviceName}/task/{id}/relaunch' | 
+'/domain/{serviceName}/ukOutgoingTransfer';
 
-type PathsDomainDELETE = '/domain/{serviceName}/owo/{field}' | 
+type PathsDomainDELETE = '/domain/data/smd/{smdId}' | 
+'/domain/zone/{zoneName}/dnssec' | 
+'/domain/zone/{zoneName}/dynHost/login/{login}' | 
+'/domain/zone/{zoneName}/dynHost/record/{id}' | 
+'/domain/zone/{zoneName}/record/{id}' | 
+'/domain/zone/{zoneName}/redirection/{id}' | 
 '/domain/{serviceName}/glueRecord/{host}' | 
 '/domain/{serviceName}/nameServer/{id}' | 
-'/domain/data/smd/{smdId}' | 
-'/domain/zone/{zoneName}/record/{id}' | 
-'/domain/zone/{zoneName}/dnssec' | 
-'/domain/zone/{zoneName}/redirection/{id}' | 
-'/domain/zone/{zoneName}/dynHost/record/{id}' | 
-'/domain/zone/{zoneName}/dynHost/login/{login}';
+'/domain/{serviceName}/owo/{field}';
 
 export class ApiDomain extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

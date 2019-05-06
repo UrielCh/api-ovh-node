@@ -875,61 +875,61 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsMsServicesGET = '/msServices/{serviceName}/account/{userPrincipalName}/exchange' | 
-'/msServices/{serviceName}/account/{userPrincipalName}/sharepoint' | 
-'/msServices/{serviceName}/account/{userPrincipalName}' | 
-'/msServices/{serviceName}/account/{userPrincipalName}/mfa' | 
-'/msServices/{serviceName}/account/{userPrincipalName}/sync' | 
+type PathsMsServicesGET = '/msServices' | 
+'/msServices/sharepoint' | 
+'/msServices/sharepoint/{domain}' | 
+'/msServices/sharepoint/{domain}/serviceInfos' | 
+'/msServices/{serviceName}' | 
 '/msServices/{serviceName}/account' | 
+'/msServices/{serviceName}/account/{userPrincipalName}' | 
+'/msServices/{serviceName}/account/{userPrincipalName}/exchange' | 
+'/msServices/{serviceName}/account/{userPrincipalName}/mfa' | 
+'/msServices/{serviceName}/account/{userPrincipalName}/sharepoint' | 
+'/msServices/{serviceName}/account/{userPrincipalName}/sync' | 
+'/msServices/{serviceName}/exchange' | 
+'/msServices/{serviceName}/exchange/billingMigrated' | 
 '/msServices/{serviceName}/exchange/task' | 
 '/msServices/{serviceName}/exchange/task/{id}' | 
-'/msServices/{serviceName}/exchange/billingMigrated' | 
-'/msServices/{serviceName}/exchange' | 
 '/msServices/{serviceName}/sharepoint' | 
 '/msServices/{serviceName}/sharepoint/billingMigrated' | 
 '/msServices/{serviceName}/sharepoint/license' | 
-'/msServices/{serviceName}/sharepoint/task/{id}' | 
 '/msServices/{serviceName}/sharepoint/task' | 
-'/msServices/{serviceName}/upnSuffix' | 
-'/msServices/{serviceName}/upnSuffix/{suffix}' | 
-'/msServices/{serviceName}' | 
+'/msServices/{serviceName}/sharepoint/task/{id}' | 
+'/msServices/{serviceName}/sync' | 
+'/msServices/{serviceName}/sync/clientSoftwareURL' | 
+'/msServices/{serviceName}/sync/license' | 
 '/msServices/{serviceName}/task' | 
 '/msServices/{serviceName}/task/{id}' | 
-'/msServices/{serviceName}/sync/license' | 
-'/msServices/{serviceName}/sync/clientSoftwareURL' | 
-'/msServices/{serviceName}/sync' | 
-'/msServices/sharepoint' | 
-'/msServices/sharepoint/{domain}/serviceInfos' | 
-'/msServices/sharepoint/{domain}' | 
-'/msServices';
+'/msServices/{serviceName}/upnSuffix' | 
+'/msServices/{serviceName}/upnSuffix/{suffix}';
 
-type PathsMsServicesPUT = '/msServices/{serviceName}/account/{userPrincipalName}/exchange' | 
-'/msServices/{serviceName}/account/{userPrincipalName}/sharepoint' | 
-'/msServices/{serviceName}/account/{userPrincipalName}' | 
-'/msServices/{serviceName}/exchange' | 
-'/msServices/{serviceName}/sharepoint' | 
+type PathsMsServicesPUT = '/msServices/sharepoint/{domain}/serviceInfos' | 
 '/msServices/{serviceName}' | 
-'/msServices/sharepoint/{domain}/serviceInfos';
+'/msServices/{serviceName}/account/{userPrincipalName}' | 
+'/msServices/{serviceName}/account/{userPrincipalName}/exchange' | 
+'/msServices/{serviceName}/account/{userPrincipalName}/sharepoint' | 
+'/msServices/{serviceName}/exchange' | 
+'/msServices/{serviceName}/sharepoint';
 
-type PathsMsServicesPOST = '/msServices/{serviceName}/account/{userPrincipalName}/exchange/configure' | 
+type PathsMsServicesPOST = '/msServices/{serviceName}/account/{userPrincipalName}/changePassword' | 
+'/msServices/{serviceName}/account/{userPrincipalName}/exchange/configure' | 
+'/msServices/{serviceName}/account/{userPrincipalName}/mfa' | 
+'/msServices/{serviceName}/account/{userPrincipalName}/mfa/disable' | 
+'/msServices/{serviceName}/account/{userPrincipalName}/mfa/enable' | 
+'/msServices/{serviceName}/account/{userPrincipalName}/mfa/reset' | 
 '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/clearSpace' | 
 '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/configure' | 
-'/msServices/{serviceName}/account/{userPrincipalName}/changePassword' | 
-'/msServices/{serviceName}/account/{userPrincipalName}/mfa/enable' | 
-'/msServices/{serviceName}/account/{userPrincipalName}/mfa/disable' | 
-'/msServices/{serviceName}/account/{userPrincipalName}/mfa/reset' | 
-'/msServices/{serviceName}/account/{userPrincipalName}/mfa' | 
 '/msServices/{serviceName}/account/{userPrincipalName}/sync' | 
 '/msServices/{serviceName}/account/{userPrincipalName}/sync/configure' | 
 '/msServices/{serviceName}/sharepoint/restoreAdminRights' | 
-'/msServices/{serviceName}/upnSuffix' | 
+'/msServices/{serviceName}/sync/changePassword' | 
 '/msServices/{serviceName}/sync/clientSoftwareURL' | 
-'/msServices/{serviceName}/sync/changePassword';
+'/msServices/{serviceName}/upnSuffix';
 
 type PathsMsServicesDELETE = '/msServices/{serviceName}/account/{userPrincipalName}/mfa' | 
 '/msServices/{serviceName}/account/{userPrincipalName}/sync' | 
-'/msServices/{serviceName}/upnSuffix/{suffix}' | 
-'/msServices/{serviceName}/sync';
+'/msServices/{serviceName}/sync' | 
+'/msServices/{serviceName}/upnSuffix/{suffix}';
 
 export class ApiMsServices extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

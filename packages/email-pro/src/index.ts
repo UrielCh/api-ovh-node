@@ -782,58 +782,58 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsEmailProGET = '/email/pro/{service}/account' | 
+type PathsEmailProGET = '/email/pro' | 
+'/email/pro/{service}' | 
+'/email/pro/{service}/account' | 
+'/email/pro/{service}/account/{email}' | 
+'/email/pro/{service}/account/{email}/alias' | 
+'/email/pro/{service}/account/{email}/alias/{alias}' | 
 '/email/pro/{service}/account/{email}/diagnostics' | 
 '/email/pro/{service}/account/{email}/fullAccess' | 
 '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}' | 
-'/email/pro/{service}/account/{email}/tasks/{id}' | 
-'/email/pro/{service}/account/{email}/tasks' | 
-'/email/pro/{service}/account/{email}' | 
 '/email/pro/{service}/account/{email}/sendAs' | 
 '/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}' | 
 '/email/pro/{service}/account/{email}/sendOnBehalfTo' | 
 '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' | 
-'/email/pro/{service}/account/{email}/alias/{alias}' | 
-'/email/pro/{service}/account/{email}/alias' | 
-'/email/pro/{service}' | 
-'/email/pro/{service}/domain' | 
-'/email/pro/{service}/domain/{domainName}/disclaimerAttribute' | 
-'/email/pro/{service}/domain/{domainName}' | 
-'/email/pro/{service}/domain/{domainName}/disclaimer' | 
-'/email/pro/{service}/task/{id}' | 
-'/email/pro/{service}/task' | 
+'/email/pro/{service}/account/{email}/tasks' | 
+'/email/pro/{service}/account/{email}/tasks/{id}' | 
 '/email/pro/{service}/billingMigrated' | 
-'/email/pro/{service}/server' | 
 '/email/pro/{service}/billingPlan' | 
-'/email/pro/{service}/serviceInfos' | 
-'/email/pro/{service}/externalContact/{externalEmailAddress}' | 
-'/email/pro/{service}/externalContact' | 
-'/email/pro';
-
-type PathsEmailProPUT = '/email/pro/{service}/account/{email}' | 
-'/email/pro/{service}' | 
+'/email/pro/{service}/domain' | 
 '/email/pro/{service}/domain/{domainName}' | 
 '/email/pro/{service}/domain/{domainName}/disclaimer' | 
+'/email/pro/{service}/domain/{domainName}/disclaimerAttribute' | 
+'/email/pro/{service}/externalContact' | 
+'/email/pro/{service}/externalContact/{externalEmailAddress}' | 
+'/email/pro/{service}/server' | 
 '/email/pro/{service}/serviceInfos' | 
-'/email/pro/{service}/externalContact/{externalEmailAddress}';
+'/email/pro/{service}/task' | 
+'/email/pro/{service}/task/{id}';
 
-type PathsEmailProPOST = '/email/pro/{service}/account/{email}/diagnostics' | 
+type PathsEmailProPUT = '/email/pro/{service}' | 
+'/email/pro/{service}/account/{email}' | 
+'/email/pro/{service}/domain/{domainName}' | 
+'/email/pro/{service}/domain/{domainName}/disclaimer' | 
+'/email/pro/{service}/externalContact/{externalEmailAddress}' | 
+'/email/pro/{service}/serviceInfos';
+
+type PathsEmailProPOST = '/email/pro/{service}/account/{email}/alias' | 
+'/email/pro/{service}/account/{email}/changePassword' | 
+'/email/pro/{service}/account/{email}/diagnostics' | 
 '/email/pro/{service}/account/{email}/fullAccess' | 
 '/email/pro/{service}/account/{email}/sendAs' | 
 '/email/pro/{service}/account/{email}/sendOnBehalfTo' | 
-'/email/pro/{service}/account/{email}/changePassword' | 
 '/email/pro/{service}/account/{email}/terminate' | 
-'/email/pro/{service}/account/{email}/alias' | 
-'/email/pro/{service}/updateFlagsOnAllAccounts' | 
 '/email/pro/{service}/domain' | 
 '/email/pro/{service}/domain/{domainName}/disclaimer' | 
-'/email/pro/{service}/externalContact';
+'/email/pro/{service}/externalContact' | 
+'/email/pro/{service}/updateFlagsOnAllAccounts';
 
-type PathsEmailProDELETE = '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}' | 
-'/email/pro/{service}/account/{email}' | 
+type PathsEmailProDELETE = '/email/pro/{service}/account/{email}' | 
+'/email/pro/{service}/account/{email}/alias/{alias}' | 
+'/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}' | 
 '/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}' | 
 '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' | 
-'/email/pro/{service}/account/{email}/alias/{alias}' | 
 '/email/pro/{service}/domain/{domainName}' | 
 '/email/pro/{service}/domain/{domainName}/disclaimer' | 
 '/email/pro/{service}/externalContact/{externalEmailAddress}';

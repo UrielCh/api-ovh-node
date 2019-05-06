@@ -166,11 +166,11 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsHpcspotGET = '/hpcspot/{serviceName}' | 
-'/hpcspot/{serviceName}/serviceInfos' | 
-'/hpcspot/{serviceName}/consumption/{id}' | 
+type PathsHpcspotGET = '/hpcspot' | 
+'/hpcspot/{serviceName}' | 
 '/hpcspot/{serviceName}/consumption' | 
-'/hpcspot';
+'/hpcspot/{serviceName}/consumption/{id}' | 
+'/hpcspot/{serviceName}/serviceInfos';
 
 type PathsHpcspotPUT = '/hpcspot/{serviceName}/serviceInfos';
 

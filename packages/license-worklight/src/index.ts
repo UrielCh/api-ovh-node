@@ -229,21 +229,21 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsLicenseWorklightGET = '/license/worklight/{serviceName}/canLicenseBeMovedTo' | 
+type PathsLicenseWorklightGET = '/license/worklight' | 
+'/license/worklight/orderableVersions' | 
 '/license/worklight/{serviceName}' | 
 '/license/worklight/{serviceName}/allowedDestinationIp' | 
-'/license/worklight/{serviceName}/tasks' | 
-'/license/worklight/{serviceName}/tasks/{taskId}' | 
+'/license/worklight/{serviceName}/canLicenseBeMovedTo' | 
 '/license/worklight/{serviceName}/serviceInfos' | 
-'/license/worklight/orderableVersions' | 
-'/license/worklight';
+'/license/worklight/{serviceName}/tasks' | 
+'/license/worklight/{serviceName}/tasks/{taskId}';
 
 type PathsLicenseWorklightPUT = '/license/worklight/{serviceName}' | 
 '/license/worklight/{serviceName}/serviceInfos';
 
-type PathsLicenseWorklightPOST = '/license/worklight/{serviceName}/terminate' | 
+type PathsLicenseWorklightPOST = '/license/worklight/{serviceName}/changeIp' | 
 '/license/worklight/{serviceName}/confirmTermination' | 
-'/license/worklight/{serviceName}/changeIp';
+'/license/worklight/{serviceName}/terminate';
 
 export class ApiLicenseWorklight extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

@@ -647,20 +647,20 @@ type PathsConnectivityGET = '/connectivity/eligibility/test' |
 '/connectivity/monitoring/genericIncident/partners' | 
 '/connectivity/monitoring/genericIncident/public';
 
-type PathsConnectivityPOST = '/connectivity/eligibility/search/streetNumbers' | 
-'/connectivity/eligibility/search/meetings' | 
+type PathsConnectivityPOST = '/connectivity/eligibility/search/buildingDetails' | 
+'/connectivity/eligibility/search/buildings' | 
+'/connectivity/eligibility/search/buildingsByLine' | 
 '/connectivity/eligibility/search/cities' | 
 '/connectivity/eligibility/search/lines' | 
-'/connectivity/eligibility/search/buildingsByLine' | 
-'/connectivity/eligibility/search/buildings' | 
-'/connectivity/eligibility/search/buildingDetails' | 
+'/connectivity/eligibility/search/meetings' | 
+'/connectivity/eligibility/search/streetNumbers' | 
 '/connectivity/eligibility/search/streets' | 
-'/connectivity/eligibility/test/otp' | 
 '/connectivity/eligibility/test/address' | 
 '/connectivity/eligibility/test/address/partners' | 
 '/connectivity/eligibility/test/building' | 
 '/connectivity/eligibility/test/line' | 
-'/connectivity/eligibility/test/line/partners';
+'/connectivity/eligibility/test/line/partners' | 
+'/connectivity/eligibility/test/otp';
 
 export class ApiConnectivity extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

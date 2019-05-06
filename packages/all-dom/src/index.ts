@@ -125,11 +125,11 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsAllDomGET = '/allDom/{serviceName}/domain' | 
-'/allDom/{serviceName}/domain/{domain}' | 
+type PathsAllDomGET = '/allDom' | 
 '/allDom/{serviceName}' | 
-'/allDom/{serviceName}/serviceInfos' | 
-'/allDom';
+'/allDom/{serviceName}/domain' | 
+'/allDom/{serviceName}/domain/{domain}' | 
+'/allDom/{serviceName}/serviceInfos';
 
 type PathsAllDomPUT = '/allDom/{serviceName}/serviceInfos';
 

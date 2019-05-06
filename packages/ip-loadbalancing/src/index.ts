@@ -1541,122 +1541,122 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsIpLoadbalancingGET = '/ipLoadbalancing/{serviceName}/availableFarmType' | 
-'/ipLoadbalancing/{serviceName}/task' | 
-'/ipLoadbalancing/{serviceName}/task/{id}' | 
-'/ipLoadbalancing/{serviceName}/availableRouteRules' | 
-'/ipLoadbalancing/{serviceName}/quota' | 
-'/ipLoadbalancing/{serviceName}/quota/{zone}' | 
-'/ipLoadbalancing/{serviceName}/failover' | 
-'/ipLoadbalancing/{serviceName}/zone/{name}' | 
-'/ipLoadbalancing/{serviceName}/zone' | 
-'/ipLoadbalancing/{serviceName}/serviceInfos' | 
-'/ipLoadbalancing/{serviceName}/availableRouteActions' | 
-'/ipLoadbalancing/{serviceName}/ssl' | 
-'/ipLoadbalancing/{serviceName}/ssl/{id}' | 
-'/ipLoadbalancing/{serviceName}/vrack/status' | 
-'/ipLoadbalancing/{serviceName}/vrack/networkCreationRules' | 
-'/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}' | 
-'/ipLoadbalancing/{serviceName}/vrack/network' | 
-'/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}' | 
-'/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server' | 
-'/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}' | 
-'/ipLoadbalancing/{serviceName}/tcp/farm' | 
-'/ipLoadbalancing/{serviceName}/tcp/route' | 
-'/ipLoadbalancing/{serviceName}/tcp/route/{routeId}' | 
-'/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule' | 
-'/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}' | 
-'/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}' | 
-'/ipLoadbalancing/{serviceName}/tcp/frontend' | 
-'/ipLoadbalancing/{serviceName}/quotaHistory' | 
-'/ipLoadbalancing/{serviceName}/quotaHistory/{id}' | 
-'/ipLoadbalancing/{serviceName}/instancesState' | 
-'/ipLoadbalancing/{serviceName}/definedFarms' | 
-'/ipLoadbalancing/{serviceName}/availableFrontendType' | 
-'/ipLoadbalancing/{serviceName}/definedFrontends' | 
-'/ipLoadbalancing/{serviceName}/status' | 
-'/ipLoadbalancing/{serviceName}/pendingChanges' | 
+type PathsIpLoadbalancingGET = '/ipLoadbalancing' | 
+'/ipLoadbalancing/availableZones' | 
 '/ipLoadbalancing/{serviceName}' | 
 '/ipLoadbalancing/{serviceName}/availableFarmProbes' | 
-'/ipLoadbalancing/{serviceName}/natIp' | 
+'/ipLoadbalancing/{serviceName}/availableFarmType' | 
+'/ipLoadbalancing/{serviceName}/availableFrontendType' | 
+'/ipLoadbalancing/{serviceName}/availableRouteActions' | 
+'/ipLoadbalancing/{serviceName}/availableRouteRules' | 
+'/ipLoadbalancing/{serviceName}/definedFarms' | 
+'/ipLoadbalancing/{serviceName}/definedFrontends' | 
 '/ipLoadbalancing/{serviceName}/definedRoutes' | 
-'/ipLoadbalancing/{serviceName}/udp/farm/{farmId}' | 
-'/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}' | 
-'/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server' | 
-'/ipLoadbalancing/{serviceName}/udp/farm' | 
-'/ipLoadbalancing/{serviceName}/udp/frontend' | 
-'/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}' | 
+'/ipLoadbalancing/{serviceName}/failover' | 
 '/ipLoadbalancing/{serviceName}/http/farm' | 
 '/ipLoadbalancing/{serviceName}/http/farm/{farmId}' | 
 '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server' | 
 '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}' | 
-'/ipLoadbalancing/{serviceName}/http/route' | 
-'/ipLoadbalancing/{serviceName}/http/route/{routeId}' | 
-'/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}' | 
-'/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule' | 
 '/ipLoadbalancing/{serviceName}/http/frontend' | 
 '/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}' | 
-'/ipLoadbalancing' | 
-'/ipLoadbalancing/availableZones';
+'/ipLoadbalancing/{serviceName}/http/route' | 
+'/ipLoadbalancing/{serviceName}/http/route/{routeId}' | 
+'/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule' | 
+'/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}' | 
+'/ipLoadbalancing/{serviceName}/instancesState' | 
+'/ipLoadbalancing/{serviceName}/natIp' | 
+'/ipLoadbalancing/{serviceName}/pendingChanges' | 
+'/ipLoadbalancing/{serviceName}/quota' | 
+'/ipLoadbalancing/{serviceName}/quota/{zone}' | 
+'/ipLoadbalancing/{serviceName}/quotaHistory' | 
+'/ipLoadbalancing/{serviceName}/quotaHistory/{id}' | 
+'/ipLoadbalancing/{serviceName}/serviceInfos' | 
+'/ipLoadbalancing/{serviceName}/ssl' | 
+'/ipLoadbalancing/{serviceName}/ssl/{id}' | 
+'/ipLoadbalancing/{serviceName}/status' | 
+'/ipLoadbalancing/{serviceName}/task' | 
+'/ipLoadbalancing/{serviceName}/task/{id}' | 
+'/ipLoadbalancing/{serviceName}/tcp/farm' | 
+'/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}' | 
+'/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server' | 
+'/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}' | 
+'/ipLoadbalancing/{serviceName}/tcp/frontend' | 
+'/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}' | 
+'/ipLoadbalancing/{serviceName}/tcp/route' | 
+'/ipLoadbalancing/{serviceName}/tcp/route/{routeId}' | 
+'/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule' | 
+'/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}' | 
+'/ipLoadbalancing/{serviceName}/udp/farm' | 
+'/ipLoadbalancing/{serviceName}/udp/farm/{farmId}' | 
+'/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server' | 
+'/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}' | 
+'/ipLoadbalancing/{serviceName}/udp/frontend' | 
+'/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}' | 
+'/ipLoadbalancing/{serviceName}/vrack/network' | 
+'/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}' | 
+'/ipLoadbalancing/{serviceName}/vrack/networkCreationRules' | 
+'/ipLoadbalancing/{serviceName}/vrack/status' | 
+'/ipLoadbalancing/{serviceName}/zone' | 
+'/ipLoadbalancing/{serviceName}/zone/{name}';
 
-type PathsIpLoadbalancingPUT = '/ipLoadbalancing/{serviceName}/quota/{zone}' | 
+type PathsIpLoadbalancingPUT = '/ipLoadbalancing/{serviceName}' | 
+'/ipLoadbalancing/{serviceName}/http/farm/{farmId}' | 
+'/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}' | 
+'/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}' | 
+'/ipLoadbalancing/{serviceName}/http/route/{routeId}' | 
+'/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}' | 
+'/ipLoadbalancing/{serviceName}/quota/{zone}' | 
 '/ipLoadbalancing/{serviceName}/serviceInfos' | 
 '/ipLoadbalancing/{serviceName}/ssl/{id}' | 
-'/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}' | 
-'/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}' | 
 '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}' | 
+'/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}' | 
+'/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}' | 
 '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}' | 
 '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}' | 
-'/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}' | 
-'/ipLoadbalancing/{serviceName}' | 
 '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}' | 
 '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}' | 
 '/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}' | 
-'/ipLoadbalancing/{serviceName}/http/farm/{farmId}' | 
-'/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}' | 
-'/ipLoadbalancing/{serviceName}/http/route/{routeId}' | 
-'/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}' | 
-'/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}';
+'/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}';
 
 type PathsIpLoadbalancingPOST = '/ipLoadbalancing/{serviceName}/changeContact' | 
 '/ipLoadbalancing/{serviceName}/confirmTermination' | 
-'/ipLoadbalancing/{serviceName}/zone/{name}/terminate' | 
-'/ipLoadbalancing/{serviceName}/zone/{name}/cancelTermination' | 
-'/ipLoadbalancing/{serviceName}/refresh' | 
-'/ipLoadbalancing/{serviceName}/ssl' | 
-'/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}/updateFarmId' | 
-'/ipLoadbalancing/{serviceName}/vrack/network' | 
-'/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server' | 
-'/ipLoadbalancing/{serviceName}/tcp/farm' | 
-'/ipLoadbalancing/{serviceName}/tcp/route' | 
-'/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule' | 
-'/ipLoadbalancing/{serviceName}/tcp/frontend' | 
 '/ipLoadbalancing/{serviceName}/freeCertificate' | 
-'/ipLoadbalancing/{serviceName}/terminate' | 
-'/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server' | 
-'/ipLoadbalancing/{serviceName}/udp/farm' | 
-'/ipLoadbalancing/{serviceName}/udp/frontend' | 
 '/ipLoadbalancing/{serviceName}/http/farm' | 
 '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server' | 
+'/ipLoadbalancing/{serviceName}/http/frontend' | 
 '/ipLoadbalancing/{serviceName}/http/route' | 
 '/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule' | 
-'/ipLoadbalancing/{serviceName}/http/frontend';
+'/ipLoadbalancing/{serviceName}/refresh' | 
+'/ipLoadbalancing/{serviceName}/ssl' | 
+'/ipLoadbalancing/{serviceName}/tcp/farm' | 
+'/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server' | 
+'/ipLoadbalancing/{serviceName}/tcp/frontend' | 
+'/ipLoadbalancing/{serviceName}/tcp/route' | 
+'/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule' | 
+'/ipLoadbalancing/{serviceName}/terminate' | 
+'/ipLoadbalancing/{serviceName}/udp/farm' | 
+'/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server' | 
+'/ipLoadbalancing/{serviceName}/udp/frontend' | 
+'/ipLoadbalancing/{serviceName}/vrack/network' | 
+'/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}/updateFarmId' | 
+'/ipLoadbalancing/{serviceName}/zone/{name}/cancelTermination' | 
+'/ipLoadbalancing/{serviceName}/zone/{name}/terminate';
 
-type PathsIpLoadbalancingDELETE = '/ipLoadbalancing/{serviceName}/ssl/{id}' | 
-'/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}' | 
-'/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}' | 
+type PathsIpLoadbalancingDELETE = '/ipLoadbalancing/{serviceName}/http/farm/{farmId}' | 
+'/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}' | 
+'/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}' | 
+'/ipLoadbalancing/{serviceName}/http/route/{routeId}' | 
+'/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}' | 
+'/ipLoadbalancing/{serviceName}/ssl/{id}' | 
 '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}' | 
+'/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}' | 
+'/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}' | 
 '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}' | 
 '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}' | 
-'/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}' | 
 '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}' | 
 '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}' | 
 '/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}' | 
-'/ipLoadbalancing/{serviceName}/http/farm/{farmId}' | 
-'/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}' | 
-'/ipLoadbalancing/{serviceName}/http/route/{routeId}' | 
-'/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}' | 
-'/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}';
+'/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}';
 
 export class ApiIpLoadbalancing extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

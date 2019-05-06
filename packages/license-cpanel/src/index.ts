@@ -233,21 +233,21 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsLicenseCpanelGET = '/license/cpanel/{serviceName}' | 
+type PathsLicenseCpanelGET = '/license/cpanel' | 
+'/license/cpanel/orderableVersions' | 
+'/license/cpanel/{serviceName}' | 
 '/license/cpanel/{serviceName}/allowedDestinationIp' | 
-'/license/cpanel/{serviceName}/serviceInfos' | 
 '/license/cpanel/{serviceName}/canLicenseBeMovedTo' | 
+'/license/cpanel/{serviceName}/serviceInfos' | 
 '/license/cpanel/{serviceName}/tasks' | 
-'/license/cpanel/{serviceName}/tasks/{taskId}' | 
-'/license/cpanel' | 
-'/license/cpanel/orderableVersions';
+'/license/cpanel/{serviceName}/tasks/{taskId}';
 
 type PathsLicenseCpanelPUT = '/license/cpanel/{serviceName}' | 
 '/license/cpanel/{serviceName}/serviceInfos';
 
-type PathsLicenseCpanelPOST = '/license/cpanel/{serviceName}/confirmTermination' | 
-'/license/cpanel/{serviceName}/terminate' | 
-'/license/cpanel/{serviceName}/changeIp';
+type PathsLicenseCpanelPOST = '/license/cpanel/{serviceName}/changeIp' | 
+'/license/cpanel/{serviceName}/confirmTermination' | 
+'/license/cpanel/{serviceName}/terminate';
 
 export class ApiLicenseCpanel extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

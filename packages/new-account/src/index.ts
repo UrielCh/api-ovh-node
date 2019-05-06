@@ -169,12 +169,12 @@ export interface OrderContract {
    */
   url?: string;
 }
-type PathsNewAccountGET = '/newAccount/contracts' | 
-'/newAccount/area' | 
-'/newAccount/countries' | 
+type PathsNewAccountGET = '/newAccount/area' | 
+'/newAccount/contracts' | 
 '/newAccount/corporationType' | 
-'/newAccount/legalform' | 
-'/newAccount/creationRules';
+'/newAccount/countries' | 
+'/newAccount/creationRules' | 
+'/newAccount/legalform';
 
 type PathsNewAccountPOST = '/newAccount' | 
 '/newAccount/rules';

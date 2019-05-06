@@ -263,22 +263,22 @@ export interface ServicesService {
   status?: ServiceStateEnum;
 }
 type PathsMetricsGET = '/metrics' | 
-'/metrics/{serviceName}/token/{tokenId}' | 
-'/metrics/{serviceName}/token' | 
 '/metrics/{serviceName}' | 
 '/metrics/{serviceName}/consumption' | 
-'/metrics/{serviceName}/serviceInfos';
-
-type PathsMetricsPUT = '/metrics/{serviceName}/token/{tokenId}' | 
-'/metrics/{serviceName}' | 
-'/metrics/{serviceName}/quota' | 
-'/metrics/{serviceName}/serviceInfos';
-
-type PathsMetricsPOST = '/metrics/{serviceName}/confirmTermination' | 
+'/metrics/{serviceName}/serviceInfos' | 
 '/metrics/{serviceName}/token' | 
-'/metrics/{serviceName}/changeContact' | 
+'/metrics/{serviceName}/token/{tokenId}';
+
+type PathsMetricsPUT = '/metrics/{serviceName}' | 
+'/metrics/{serviceName}/quota' | 
+'/metrics/{serviceName}/serviceInfos' | 
+'/metrics/{serviceName}/token/{tokenId}';
+
+type PathsMetricsPOST = '/metrics/{serviceName}/changeContact' | 
+'/metrics/{serviceName}/confirmTermination' | 
 '/metrics/{serviceName}/lookup/token' | 
-'/metrics/{serviceName}/terminate';
+'/metrics/{serviceName}/terminate' | 
+'/metrics/{serviceName}/token';
 
 type PathsMetricsDELETE = '/metrics/{serviceName}/token/{tokenId}';
 

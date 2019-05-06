@@ -316,46 +316,46 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsCdnDedicatedGET = '/cdn/dedicated/pops' | 
+type PathsCdnDedicatedGET = '/cdn/dedicated' | 
+'/cdn/dedicated/pops' | 
 '/cdn/dedicated/pops/{name}' | 
-'/cdn/dedicated' | 
 '/cdn/dedicated/{serviceName}' | 
-'/cdn/dedicated/{serviceName}/ssl/tasks' | 
-'/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}' | 
-'/cdn/dedicated/{serviceName}/ssl' | 
-'/cdn/dedicated/{serviceName}/quota' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/statistics' | 
+'/cdn/dedicated/{serviceName}/domains' | 
+'/cdn/dedicated/{serviceName}/domains/{domain}' | 
+'/cdn/dedicated/{serviceName}/domains/{domain}/backends' | 
+'/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}' | 
 '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules' | 
 '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}' | 
 '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks' | 
 '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/backends' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}' | 
+'/cdn/dedicated/{serviceName}/domains/{domain}/statistics' | 
 '/cdn/dedicated/{serviceName}/domains/{domain}/tasks' | 
 '/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}' | 
-'/cdn/dedicated/{serviceName}/domains' | 
-'/cdn/dedicated/{serviceName}/serviceInfos';
-
-type PathsCdnDedicatedPUT = '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}' | 
-'/cdn/dedicated/{serviceName}/serviceInfos';
-
-type PathsCdnDedicatedPOST = '/cdn/dedicated/{serviceName}/ssl/update' | 
+'/cdn/dedicated/{serviceName}/quota' | 
+'/cdn/dedicated/{serviceName}/serviceInfos' | 
 '/cdn/dedicated/{serviceName}/ssl' | 
-'/cdn/dedicated/{serviceName}/changeContact' | 
-'/cdn/dedicated/{serviceName}/logs' | 
+'/cdn/dedicated/{serviceName}/ssl/tasks' | 
+'/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}';
+
+type PathsCdnDedicatedPUT = '/cdn/dedicated/{serviceName}/domains/{domain}' | 
+'/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}' | 
+'/cdn/dedicated/{serviceName}/serviceInfos';
+
+type PathsCdnDedicatedPOST = '/cdn/dedicated/{serviceName}/changeContact' | 
+'/cdn/dedicated/{serviceName}/domains' | 
+'/cdn/dedicated/{serviceName}/domains/{domain}/backends' | 
 '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules' | 
 '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/logs' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/backends' | 
 '/cdn/dedicated/{serviceName}/domains/{domain}/flush' | 
-'/cdn/dedicated/{serviceName}/domains';
+'/cdn/dedicated/{serviceName}/domains/{domain}/logs' | 
+'/cdn/dedicated/{serviceName}/logs' | 
+'/cdn/dedicated/{serviceName}/ssl' | 
+'/cdn/dedicated/{serviceName}/ssl/update';
 
-type PathsCdnDedicatedDELETE = '/cdn/dedicated/{serviceName}/ssl' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}' | 
+type PathsCdnDedicatedDELETE = '/cdn/dedicated/{serviceName}/domains/{domain}' | 
 '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}';
+'/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}' | 
+'/cdn/dedicated/{serviceName}/ssl';
 
 export class ApiCdnDedicated extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

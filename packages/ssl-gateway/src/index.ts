@@ -309,32 +309,32 @@ export type SslGatewayTaskActionEnum = 'addDomain' | 'addPaidCertificate' | 'add
  * Possible task status
  */
 export type SslGatewayTaskStatusEnum = 'blocked' | 'cancelled' | 'doing' | 'done' | 'error' | 'paused' | 'todo';
-type PathsSslGatewayGET = '/sslGateway/{serviceName}/server/{id}' | 
-'/sslGateway/{serviceName}/server' | 
-'/sslGateway/{serviceName}/task' | 
-'/sslGateway/{serviceName}/task/{id}' | 
-'/sslGateway/{serviceName}/natIp' | 
+type PathsSslGatewayGET = '/sslGateway' | 
+'/sslGateway/availableZones' | 
+'/sslGateway/eligibility' | 
+'/sslGateway/{serviceName}' | 
 '/sslGateway/{serviceName}/domain' | 
 '/sslGateway/{serviceName}/domain/{id}' | 
-'/sslGateway/{serviceName}' | 
+'/sslGateway/{serviceName}/natIp' | 
+'/sslGateway/{serviceName}/server' | 
+'/sslGateway/{serviceName}/server/{id}' | 
 '/sslGateway/{serviceName}/serviceInfos' | 
-'/sslGateway/availableZones' | 
-'/sslGateway' | 
-'/sslGateway/eligibility';
+'/sslGateway/{serviceName}/task' | 
+'/sslGateway/{serviceName}/task/{id}';
 
-type PathsSslGatewayPUT = '/sslGateway/{serviceName}/server/{id}' | 
-'/sslGateway/{serviceName}' | 
+type PathsSslGatewayPUT = '/sslGateway/{serviceName}' | 
+'/sslGateway/{serviceName}/server/{id}' | 
 '/sslGateway/{serviceName}/serviceInfos';
 
-type PathsSslGatewayPOST = '/sslGateway/{serviceName}/server' | 
-'/sslGateway/{serviceName}/changeContact' | 
-'/sslGateway/{serviceName}/terminate' | 
-'/sslGateway/{serviceName}/domain' | 
+type PathsSslGatewayPOST = '/sslGateway/{serviceName}/changeContact' | 
 '/sslGateway/{serviceName}/confirmTermination' | 
-'/sslGateway/{serviceName}/renewCertificate';
+'/sslGateway/{serviceName}/domain' | 
+'/sslGateway/{serviceName}/renewCertificate' | 
+'/sslGateway/{serviceName}/server' | 
+'/sslGateway/{serviceName}/terminate';
 
-type PathsSslGatewayDELETE = '/sslGateway/{serviceName}/server/{id}' | 
-'/sslGateway/{serviceName}/domain/{id}';
+type PathsSslGatewayDELETE = '/sslGateway/{serviceName}/domain/{id}' | 
+'/sslGateway/{serviceName}/server/{id}';
 
 export class ApiSslGateway extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

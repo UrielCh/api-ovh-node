@@ -256,20 +256,20 @@ export interface ServicesService {
   status?: ServiceStateEnum;
 }
 type PathsLicenseWindowsGET = '/license/windows' | 
+'/license/windows/orderableVersions' | 
 '/license/windows/{serviceName}' | 
-'/license/windows/{serviceName}/tasks' | 
-'/license/windows/{serviceName}/tasks/{taskId}' | 
-'/license/windows/{serviceName}/serviceInfos' | 
 '/license/windows/{serviceName}/option' | 
 '/license/windows/{serviceName}/option/{label}' | 
-'/license/windows/orderableVersions';
+'/license/windows/{serviceName}/serviceInfos' | 
+'/license/windows/{serviceName}/tasks' | 
+'/license/windows/{serviceName}/tasks/{taskId}';
 
 type PathsLicenseWindowsPUT = '/license/windows/{serviceName}' | 
 '/license/windows/{serviceName}/serviceInfos';
 
-type PathsLicenseWindowsPOST = '/license/windows/{serviceName}/terminate' | 
-'/license/windows/{serviceName}/confirmTermination' | 
-'/license/windows/{serviceName}/sqlServer';
+type PathsLicenseWindowsPOST = '/license/windows/{serviceName}/confirmTermination' | 
+'/license/windows/{serviceName}/sqlServer' | 
+'/license/windows/{serviceName}/terminate';
 
 type PathsLicenseWindowsDELETE = '/license/windows/{serviceName}/option/{label}';
 

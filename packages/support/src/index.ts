@@ -153,16 +153,16 @@ export type SupportTicketSubCategoryEnum = 'alerts' | 'autorenew' | 'bill' | 'do
  * Ticket type (criticalIntervention requires VIP support level)
  */
 export type SupportTicketTypeEnum = 'criticalIntervention' | 'genericRequest';
-type PathsSupportGET = '/support/tickets/{ticketId}/messages' | 
-'/support/tickets/{ticketId}/canBeScored' | 
+type PathsSupportGET = '/support/tickets' | 
 '/support/tickets/{ticketId}' | 
-'/support/tickets';
+'/support/tickets/{ticketId}/canBeScored' | 
+'/support/tickets/{ticketId}/messages';
 
-type PathsSupportPOST = '/support/tickets/{ticketId}/reopen' | 
+type PathsSupportPOST = '/support/tickets/create' | 
 '/support/tickets/{ticketId}/close' | 
+'/support/tickets/{ticketId}/reopen' | 
 '/support/tickets/{ticketId}/reply' | 
-'/support/tickets/{ticketId}/score' | 
-'/support/tickets/create';
+'/support/tickets/{ticketId}/score';
 
 export class ApiSupport extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

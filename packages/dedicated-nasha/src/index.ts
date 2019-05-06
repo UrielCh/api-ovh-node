@@ -423,48 +423,48 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsDedicatedNashaGET = '/dedicated/nasha/availabilities' | 
-'/dedicated/nasha' | 
-'/dedicated/nasha/{serviceName}/serviceInfos' | 
-'/dedicated/nasha/{serviceName}/use' | 
+type PathsDedicatedNashaGET = '/dedicated/nasha' | 
+'/dedicated/nasha/availabilities' | 
+'/dedicated/nasha/{serviceName}' | 
+'/dedicated/nasha/{serviceName}/partition' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}' | 
 '/dedicated/nasha/{serviceName}/partition/{partitionName}/access' | 
 '/dedicated/nasha/{serviceName}/partition/{partitionName}/access/{ip}' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot' | 
 '/dedicated/nasha/{serviceName}/partition/{partitionName}/authorizableBlocks' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/use' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/quota' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/quota/{uid}' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/options' | 
 '/dedicated/nasha/{serviceName}/partition/{partitionName}/authorizableIps' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot' | 
 '/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot/{name}' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot' | 
-'/dedicated/nasha/{serviceName}/partition' | 
-'/dedicated/nasha/{serviceName}/task/{taskId}' | 
-'/dedicated/nasha/{serviceName}/task' | 
-'/dedicated/nasha/{serviceName}';
-
-type PathsDedicatedNashaPUT = '/dedicated/nasha/{serviceName}/serviceInfos' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}' | 
-'/dedicated/nasha/{serviceName}';
-
-type PathsDedicatedNashaPOST = '/dedicated/nasha/{serviceName}/terminate' | 
-'/dedicated/nasha/{serviceName}/confirmTermination' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/access' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/quota' | 
 '/dedicated/nasha/{serviceName}/partition/{partitionName}/options' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot' | 
-'/dedicated/nasha/{serviceName}/partition' | 
-'/dedicated/nasha/{serviceName}/changeContact';
-
-type PathsDedicatedNashaDELETE = '/dedicated/nasha/{serviceName}/vrack' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/access/{ip}' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/quota' | 
 '/dedicated/nasha/{serviceName}/partition/{partitionName}/quota/{uid}' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/use' | 
+'/dedicated/nasha/{serviceName}/serviceInfos' | 
+'/dedicated/nasha/{serviceName}/task' | 
+'/dedicated/nasha/{serviceName}/task/{taskId}' | 
+'/dedicated/nasha/{serviceName}/use';
+
+type PathsDedicatedNashaPUT = '/dedicated/nasha/{serviceName}' | 
 '/dedicated/nasha/{serviceName}/partition/{partitionName}' | 
-'/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot/{name}';
+'/dedicated/nasha/{serviceName}/serviceInfos';
+
+type PathsDedicatedNashaPOST = '/dedicated/nasha/{serviceName}/changeContact' | 
+'/dedicated/nasha/{serviceName}/confirmTermination' | 
+'/dedicated/nasha/{serviceName}/partition' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/access' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/options' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/quota' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot' | 
+'/dedicated/nasha/{serviceName}/terminate';
+
+type PathsDedicatedNashaDELETE = '/dedicated/nasha/{serviceName}/partition/{partitionName}' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/access/{ip}' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot/{name}' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/quota/{uid}' | 
+'/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}' | 
+'/dedicated/nasha/{serviceName}/vrack';
 
 export class ApiDedicatedNasha extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

@@ -200,11 +200,11 @@ export type SslOperationFunctionEnum = 'createCertificate';
  * All status a SSL operation can be in
  */
 export type SslOperationStatusEnum = 'cancelled' | 'doing' | 'done' | 'error' | 'todo';
-type PathsSslGET = '/ssl/{serviceName}/tasks/{taskId}' | 
-'/ssl/{serviceName}/tasks' | 
+type PathsSslGET = '/ssl' | 
 '/ssl/{serviceName}' | 
 '/ssl/{serviceName}/serviceInfos' | 
-'/ssl';
+'/ssl/{serviceName}/tasks' | 
+'/ssl/{serviceName}/tasks/{taskId}';
 
 type PathsSslPUT = '/ssl/{serviceName}/serviceInfos';
 

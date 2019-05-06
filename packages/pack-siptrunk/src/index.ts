@@ -98,8 +98,8 @@ export interface ServicesService {
   status?: ServiceStateEnum;
 }
 type PathsPackSiptrunkGET = '/pack/siptrunk' | 
-'/pack/siptrunk/{packName}/serviceInfos' | 
-'/pack/siptrunk/{packName}';
+'/pack/siptrunk/{packName}' | 
+'/pack/siptrunk/{packName}/serviceInfos';
 
 type PathsPackSiptrunkPUT = '/pack/siptrunk/{packName}/serviceInfos';
 

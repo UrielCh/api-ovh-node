@@ -532,35 +532,35 @@ export interface ServicesService {
   status?: ServiceStateEnum;
 }
 type PathsDedicatedCephGET = '/dedicated/ceph' | 
+'/dedicated/ceph/{serviceName}' | 
 '/dedicated/ceph/{serviceName}/acl' | 
 '/dedicated/ceph/{serviceName}/acl/{aclId}' | 
-'/dedicated/ceph/{serviceName}/task/{taskId}' | 
+'/dedicated/ceph/{serviceName}/health' | 
+'/dedicated/ceph/{serviceName}/pool' | 
+'/dedicated/ceph/{serviceName}/pool/{poolName}' | 
+'/dedicated/ceph/{serviceName}/serviceInfos' | 
 '/dedicated/ceph/{serviceName}/task' | 
+'/dedicated/ceph/{serviceName}/task/{taskId}' | 
 '/dedicated/ceph/{serviceName}/user' | 
 '/dedicated/ceph/{serviceName}/user/{userName}' | 
-'/dedicated/ceph/{serviceName}/user/{userName}/pool' | 
-'/dedicated/ceph/{serviceName}/health' | 
-'/dedicated/ceph/{serviceName}' | 
-'/dedicated/ceph/{serviceName}/serviceInfos' | 
-'/dedicated/ceph/{serviceName}/pool' | 
-'/dedicated/ceph/{serviceName}/pool/{poolName}';
+'/dedicated/ceph/{serviceName}/user/{userName}/pool';
 
-type PathsDedicatedCephPUT = '/dedicated/ceph/{serviceName}/user/{userName}/pool' | 
-'/dedicated/ceph/{serviceName}' | 
-'/dedicated/ceph/{serviceName}/serviceInfos';
+type PathsDedicatedCephPUT = '/dedicated/ceph/{serviceName}' | 
+'/dedicated/ceph/{serviceName}/serviceInfos' | 
+'/dedicated/ceph/{serviceName}/user/{userName}/pool';
 
 type PathsDedicatedCephPOST = '/dedicated/ceph/{serviceName}/acl' | 
 '/dedicated/ceph/{serviceName}/changeContact' | 
-'/dedicated/ceph/{serviceName}/user' | 
-'/dedicated/ceph/{serviceName}/user/{userName}/pool' | 
 '/dedicated/ceph/{serviceName}/confirmTermination' | 
+'/dedicated/ceph/{serviceName}/pool' | 
 '/dedicated/ceph/{serviceName}/terminate' | 
-'/dedicated/ceph/{serviceName}/pool';
+'/dedicated/ceph/{serviceName}/user' | 
+'/dedicated/ceph/{serviceName}/user/{userName}/pool';
 
 type PathsDedicatedCephDELETE = '/dedicated/ceph/{serviceName}/acl/{aclId}' | 
+'/dedicated/ceph/{serviceName}/pool/{poolName}' | 
 '/dedicated/ceph/{serviceName}/user/{userName}' | 
-'/dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}' | 
-'/dedicated/ceph/{serviceName}/pool/{poolName}';
+'/dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}';
 
 export class ApiDedicatedCeph extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

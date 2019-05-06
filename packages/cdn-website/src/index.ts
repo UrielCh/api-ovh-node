@@ -195,31 +195,31 @@ export interface ServicesService {
   status?: ServiceStateEnum;
 }
 type PathsCdnWebsiteGET = '/cdn/website' | 
+'/cdn/website/{serviceName}' | 
+'/cdn/website/{serviceName}/serviceInfos' | 
+'/cdn/website/{serviceName}/zone' | 
 '/cdn/website/{serviceName}/zone/backends' | 
 '/cdn/website/{serviceName}/zone/backends/{ipv4}' | 
-'/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}' | 
 '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks' | 
-'/cdn/website/{serviceName}/zone/tasks' | 
-'/cdn/website/{serviceName}/zone/tasks/{taskId}' | 
+'/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}' | 
 '/cdn/website/{serviceName}/zone/domains' | 
-'/cdn/website/{serviceName}/zone/domains/{domain}/tasks' | 
-'/cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}' | 
 '/cdn/website/{serviceName}/zone/domains/{domain}' | 
 '/cdn/website/{serviceName}/zone/domains/{domain}/statistics' | 
-'/cdn/website/{serviceName}/zone' | 
-'/cdn/website/{serviceName}/serviceInfos' | 
-'/cdn/website/{serviceName}';
+'/cdn/website/{serviceName}/zone/domains/{domain}/tasks' | 
+'/cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}' | 
+'/cdn/website/{serviceName}/zone/tasks' | 
+'/cdn/website/{serviceName}/zone/tasks/{taskId}';
 
 type PathsCdnWebsitePUT = '/cdn/website/{serviceName}/serviceInfos';
 
-type PathsCdnWebsitePOST = '/cdn/website/{serviceName}/zone/backends' | 
+type PathsCdnWebsitePOST = '/cdn/website/{serviceName}/zone' | 
+'/cdn/website/{serviceName}/zone/backends' | 
 '/cdn/website/{serviceName}/zone/domains' | 
-'/cdn/website/{serviceName}/zone/domains/{domain}/flush' | 
-'/cdn/website/{serviceName}/zone';
+'/cdn/website/{serviceName}/zone/domains/{domain}/flush';
 
-type PathsCdnWebsiteDELETE = '/cdn/website/{serviceName}/zone/backends/{ipv4}' | 
-'/cdn/website/{serviceName}/zone/domains/{domain}' | 
-'/cdn/website/{serviceName}/zone';
+type PathsCdnWebsiteDELETE = '/cdn/website/{serviceName}/zone' | 
+'/cdn/website/{serviceName}/zone/backends/{ipv4}' | 
+'/cdn/website/{serviceName}/zone/domains/{domain}';
 
 export class ApiCdnWebsite extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

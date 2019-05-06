@@ -248,21 +248,21 @@ export interface ServicesService {
   status?: ServiceStateEnum;
 }
 type PathsLicenseDirectadminGET = '/license/directadmin' | 
-'/license/directadmin/{serviceName}/canLicenseBeMovedTo' | 
-'/license/directadmin/{serviceName}/allowedDestinationIp' | 
+'/license/directadmin/orderableVersions' | 
 '/license/directadmin/{serviceName}' | 
+'/license/directadmin/{serviceName}/allowedDestinationIp' | 
+'/license/directadmin/{serviceName}/canLicenseBeMovedTo' | 
 '/license/directadmin/{serviceName}/serviceInfos' | 
 '/license/directadmin/{serviceName}/tasks' | 
-'/license/directadmin/{serviceName}/tasks/{taskId}' | 
-'/license/directadmin/orderableVersions';
+'/license/directadmin/{serviceName}/tasks/{taskId}';
 
 type PathsLicenseDirectadminPUT = '/license/directadmin/{serviceName}' | 
 '/license/directadmin/{serviceName}/serviceInfos';
 
-type PathsLicenseDirectadminPOST = '/license/directadmin/{serviceName}/terminate' | 
-'/license/directadmin/{serviceName}/changeIp' | 
+type PathsLicenseDirectadminPOST = '/license/directadmin/{serviceName}/changeIp' | 
 '/license/directadmin/{serviceName}/changeOs' | 
-'/license/directadmin/{serviceName}/confirmTermination';
+'/license/directadmin/{serviceName}/confirmTermination' | 
+'/license/directadmin/{serviceName}/terminate';
 
 export class ApiLicenseDirectadmin extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

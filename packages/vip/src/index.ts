@@ -106,9 +106,9 @@ export interface VipSupportVip {
  * Available universe for VIP service
  */
 export type VipUniverseEnum = 'cloud' | 'dedicated' | 'telecom' | 'web';
-type PathsVipGET = '/vip/{serviceName}/serviceInfos' | 
+type PathsVipGET = '/vip' | 
 '/vip/{serviceName}' | 
-'/vip';
+'/vip/{serviceName}/serviceInfos';
 
 type PathsVipPUT = '/vip/{serviceName}/serviceInfos';
 
@@ -116,6 +116,11 @@ export class ApiVip extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
     super(config);
   }
+  /**
+  Operations about the SUPPORT_PLUS service
+  List available services
+  **/
+  public get(path: '/vip'): Promise<string[]>;
   /**
   Details about a Service
   Get this object properties
@@ -126,11 +131,6 @@ export class ApiVip extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/vip/{serviceName}', pathParams: {serviceName: string}): Promise<VipSupportVip>;
-  /**
-  Operations about the SUPPORT_PLUS service
-  List available services
-  **/
-  public get(path: '/vip'): Promise<string[]>;
   public get(path: PathsVipGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service

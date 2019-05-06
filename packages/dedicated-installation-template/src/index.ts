@@ -267,14 +267,14 @@ export type DedicatedServerPartitionRaidEnum = '0' | '1' | '10' | '5' | '6';
  * supports UEFI setup
  */
 export type DedicatedServerSupportsUEFIEnum = 'no' | 'only' | 'yes';
-type PathsDedicatedInstallationTemplateGET = '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}' | 
-'/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition' | 
+type PathsDedicatedInstallationTemplateGET = '/dedicated/installationTemplate' | 
+'/dedicated/installationTemplate/{templateName}' | 
+'/dedicated/installationTemplate/{templateName}/partitionScheme' | 
 '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}' | 
 '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid' | 
 '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}' | 
-'/dedicated/installationTemplate/{templateName}/partitionScheme' | 
-'/dedicated/installationTemplate/{templateName}' | 
-'/dedicated/installationTemplate';
+'/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition' | 
+'/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}';
 
 export class ApiDedicatedInstallationTemplate extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

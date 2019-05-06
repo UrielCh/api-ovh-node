@@ -256,23 +256,23 @@ export interface ServicesService {
   status?: ServiceStateEnum;
 }
 type PathsKubeGET = '/kube' | 
-'/kube/{serviceName}/serviceInfos' | 
+'/kube/{serviceName}' | 
 '/kube/{serviceName}/kubeconfig' | 
-'/kube/{serviceName}/publiccloud/node/{nodeId}' | 
 '/kube/{serviceName}/publiccloud/node' | 
+'/kube/{serviceName}/publiccloud/node/{nodeId}' | 
 '/kube/{serviceName}/publiccloud/project' | 
-'/kube/{serviceName}';
+'/kube/{serviceName}/serviceInfos';
 
-type PathsKubePUT = '/kube/{serviceName}/serviceInfos' | 
-'/kube/{serviceName}/updatePolicy' | 
-'/kube/{serviceName}';
+type PathsKubePUT = '/kube/{serviceName}' | 
+'/kube/{serviceName}/serviceInfos' | 
+'/kube/{serviceName}/updatePolicy';
 
-type PathsKubePOST = '/kube/{serviceName}/update' | 
+type PathsKubePOST = '/kube/{serviceName}/changeContact' | 
+'/kube/{serviceName}/confirmTermination' | 
+'/kube/{serviceName}/publiccloud/node' | 
 '/kube/{serviceName}/reset' | 
 '/kube/{serviceName}/terminate' | 
-'/kube/{serviceName}/confirmTermination' | 
-'/kube/{serviceName}/changeContact' | 
-'/kube/{serviceName}/publiccloud/node';
+'/kube/{serviceName}/update';
 
 type PathsKubeDELETE = '/kube/{serviceName}/publiccloud/node/{nodeId}';
 

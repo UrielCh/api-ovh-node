@@ -470,10 +470,10 @@ type PathsServiceGET = '/service' |
 
 type PathsServicePUT = '/service/{serviceId}';
 
-type PathsServicePOST = '/service/{serviceId}/reopen' | 
+type PathsServicePOST = '/service/{serviceId}/renew' | 
+'/service/{serviceId}/reopen' | 
 '/service/{serviceId}/suspend' | 
-'/service/{serviceId}/terminate' | 
-'/service/{serviceId}/renew';
+'/service/{serviceId}/terminate';
 
 export class ApiService extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

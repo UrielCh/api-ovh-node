@@ -407,27 +407,27 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsDedicatedHousingGET = '/dedicated/housing/{serviceName}/serviceInfos' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/access' | 
-'/dedicated/housing/{serviceName}/features/backupFTP' | 
+type PathsDedicatedHousingGET = '/dedicated/housing' | 
 '/dedicated/housing/{serviceName}' | 
-'/dedicated/housing/{serviceName}/task/{taskId}' | 
-'/dedicated/housing/{serviceName}/task' | 
-'/dedicated/housing/{serviceName}/orderable/APC' | 
-'/dedicated/housing';
-
-type PathsDedicatedHousingPUT = '/dedicated/housing/{serviceName}/serviceInfos' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}';
-
-type PathsDedicatedHousingPOST = '/dedicated/housing/{serviceName}/features/backupFTP/password' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/access' | 
 '/dedicated/housing/{serviceName}/features/backupFTP' | 
+'/dedicated/housing/{serviceName}/features/backupFTP/access' | 
+'/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}' | 
+'/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks' | 
+'/dedicated/housing/{serviceName}/orderable/APC' | 
+'/dedicated/housing/{serviceName}/serviceInfos' | 
+'/dedicated/housing/{serviceName}/task' | 
+'/dedicated/housing/{serviceName}/task/{taskId}';
+
+type PathsDedicatedHousingPUT = '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}' | 
+'/dedicated/housing/{serviceName}/serviceInfos';
+
+type PathsDedicatedHousingPOST = '/dedicated/housing/{serviceName}/features/backupFTP' | 
+'/dedicated/housing/{serviceName}/features/backupFTP/access' | 
+'/dedicated/housing/{serviceName}/features/backupFTP/password' | 
 '/dedicated/housing/{serviceName}/task/{taskId}/cancel';
 
-type PathsDedicatedHousingDELETE = '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}' | 
-'/dedicated/housing/{serviceName}/features/backupFTP';
+type PathsDedicatedHousingDELETE = '/dedicated/housing/{serviceName}/features/backupFTP' | 
+'/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}';
 
 export class ApiDedicatedHousing extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

@@ -759,65 +759,65 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsHostingPrivateDatabaseGET = '/hosting/privateDatabase/availableOrderCapacities' | 
-'/hosting/privateDatabase' | 
-'/hosting/privateDatabase/{serviceName}/availableVersions' | 
-'/hosting/privateDatabase/{serviceName}/dump/{dumpId}' | 
-'/hosting/privateDatabase/{serviceName}/dump' | 
+type PathsHostingPrivateDatabaseGET = '/hosting/privateDatabase' | 
+'/hosting/privateDatabase/availableOrderCapacities' | 
 '/hosting/privateDatabase/{serviceName}' | 
-'/hosting/privateDatabase/{serviceName}/serviceInfos' | 
-'/hosting/privateDatabase/{serviceName}/oom' | 
+'/hosting/privateDatabase/{serviceName}/availableVersions' | 
+'/hosting/privateDatabase/{serviceName}/config' | 
 '/hosting/privateDatabase/{serviceName}/database' | 
-'/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}' | 
+'/hosting/privateDatabase/{serviceName}/database/{databaseName}' | 
 '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump' | 
+'/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}' | 
 '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension' | 
 '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}' | 
-'/hosting/privateDatabase/{serviceName}/database/{databaseName}' | 
+'/hosting/privateDatabase/{serviceName}/dump' | 
+'/hosting/privateDatabase/{serviceName}/dump/{dumpId}' | 
+'/hosting/privateDatabase/{serviceName}/oom' | 
+'/hosting/privateDatabase/{serviceName}/serviceInfos' | 
 '/hosting/privateDatabase/{serviceName}/tasks' | 
 '/hosting/privateDatabase/{serviceName}/tasks/{id}' | 
 '/hosting/privateDatabase/{serviceName}/user' | 
-'/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}' | 
-'/hosting/privateDatabase/{serviceName}/user/{userName}/grant' | 
 '/hosting/privateDatabase/{serviceName}/user/{userName}' | 
-'/hosting/privateDatabase/{serviceName}/config' | 
+'/hosting/privateDatabase/{serviceName}/user/{userName}/grant' | 
+'/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}' | 
+'/hosting/privateDatabase/{serviceName}/webs' | 
 '/hosting/privateDatabase/{serviceName}/whitelist' | 
-'/hosting/privateDatabase/{serviceName}/whitelist/{ip}' | 
-'/hosting/privateDatabase/{serviceName}/webs';
+'/hosting/privateDatabase/{serviceName}/whitelist/{ip}';
 
 type PathsHostingPrivateDatabasePUT = '/hosting/privateDatabase/{serviceName}' | 
 '/hosting/privateDatabase/{serviceName}/serviceInfos' | 
 '/hosting/privateDatabase/{serviceName}/whitelist/{ip}';
 
-type PathsHostingPrivateDatabasePOST = '/hosting/privateDatabase/{serviceName}/databaseWizard' | 
-'/hosting/privateDatabase/{serviceName}/changeContact' | 
-'/hosting/privateDatabase/{serviceName}/refresh' | 
-'/hosting/privateDatabase/{serviceName}/terminate' | 
-'/hosting/privateDatabase/{serviceName}/stop' | 
-'/hosting/privateDatabase/{serviceName}/start' | 
-'/hosting/privateDatabase/{serviceName}/confirmTermination' | 
-'/hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore' | 
-'/hosting/privateDatabase/{serviceName}/generateTemporaryLogsLink' | 
+type PathsHostingPrivateDatabasePOST = '/hosting/privateDatabase/{serviceName}/changeContact' | 
 '/hosting/privateDatabase/{serviceName}/changeFtpPassword' | 
+'/hosting/privateDatabase/{serviceName}/changeVersion' | 
+'/hosting/privateDatabase/{serviceName}/config/update' | 
+'/hosting/privateDatabase/{serviceName}/confirmTermination' | 
 '/hosting/privateDatabase/{serviceName}/database' | 
-'/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore' | 
 '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump' | 
+'/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore' | 
 '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/disable' | 
 '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/enable' | 
 '/hosting/privateDatabase/{serviceName}/database/{databaseName}/import' | 
-'/hosting/privateDatabase/{serviceName}/user' | 
-'/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update' | 
-'/hosting/privateDatabase/{serviceName}/user/{userName}/grant' | 
-'/hosting/privateDatabase/{serviceName}/user/{userName}/changePassword' | 
+'/hosting/privateDatabase/{serviceName}/databaseWizard' | 
+'/hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore' | 
+'/hosting/privateDatabase/{serviceName}/generateTemporaryLogsLink' | 
+'/hosting/privateDatabase/{serviceName}/refresh' | 
 '/hosting/privateDatabase/{serviceName}/restart' | 
-'/hosting/privateDatabase/{serviceName}/config/update' | 
-'/hosting/privateDatabase/{serviceName}/whitelist' | 
-'/hosting/privateDatabase/{serviceName}/changeVersion';
+'/hosting/privateDatabase/{serviceName}/start' | 
+'/hosting/privateDatabase/{serviceName}/stop' | 
+'/hosting/privateDatabase/{serviceName}/terminate' | 
+'/hosting/privateDatabase/{serviceName}/user' | 
+'/hosting/privateDatabase/{serviceName}/user/{userName}/changePassword' | 
+'/hosting/privateDatabase/{serviceName}/user/{userName}/grant' | 
+'/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update' | 
+'/hosting/privateDatabase/{serviceName}/whitelist';
 
-type PathsHostingPrivateDatabaseDELETE = '/hosting/privateDatabase/{serviceName}/dump/{dumpId}' | 
+type PathsHostingPrivateDatabaseDELETE = '/hosting/privateDatabase/{serviceName}/database/{databaseName}' | 
 '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}' | 
-'/hosting/privateDatabase/{serviceName}/database/{databaseName}' | 
-'/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}' | 
+'/hosting/privateDatabase/{serviceName}/dump/{dumpId}' | 
 '/hosting/privateDatabase/{serviceName}/user/{userName}' | 
+'/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}' | 
 '/hosting/privateDatabase/{serviceName}/whitelist/{ip}';
 
 export class ApiHostingPrivateDatabase extends ApiCommon {

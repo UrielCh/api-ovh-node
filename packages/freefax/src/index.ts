@@ -272,18 +272,18 @@ export interface TelephonyVoicemailProperties {
    */
   unreadMessages?: Number;
 }
-type PathsFreefaxGET = '/freefax/{serviceName}/mainService' | 
-'/freefax/{serviceName}/voicemail/routing' | 
-'/freefax/{serviceName}/voicemail' | 
-'/freefax/{serviceName}/voicemail/voicemailNumbers' | 
-'/freefax/{serviceName}/serviceInfos' | 
-'/freefax/{serviceName}' | 
+type PathsFreefaxGET = '/freefax' | 
 '/freefax/credits' | 
-'/freefax';
-
-type PathsFreefaxPUT = '/freefax/{serviceName}/voicemail' | 
+'/freefax/{serviceName}' | 
+'/freefax/{serviceName}/mainService' | 
 '/freefax/{serviceName}/serviceInfos' | 
-'/freefax/{serviceName}';
+'/freefax/{serviceName}/voicemail' | 
+'/freefax/{serviceName}/voicemail/routing' | 
+'/freefax/{serviceName}/voicemail/voicemailNumbers';
+
+type PathsFreefaxPUT = '/freefax/{serviceName}' | 
+'/freefax/{serviceName}/serviceInfos' | 
+'/freefax/{serviceName}/voicemail';
 
 type PathsFreefaxPOST = '/freefax/{serviceName}/changePassword' | 
 '/freefax/{serviceName}/voicemail/changePassword' | 

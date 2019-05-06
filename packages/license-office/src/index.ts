@@ -354,20 +354,20 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsLicenseOfficeGET = '/license/office/{serviceName}/usageStatistics' | 
+type PathsLicenseOfficeGET = '/license/office' | 
 '/license/office/{serviceName}' | 
-'/license/office/{serviceName}/domain/{domainName}' | 
 '/license/office/{serviceName}/domain' | 
-'/license/office/{serviceName}/user' | 
-'/license/office/{serviceName}/user/{activationEmail}' | 
+'/license/office/{serviceName}/domain/{domainName}' | 
 '/license/office/{serviceName}/pendingTask' | 
 '/license/office/{serviceName}/pendingTask/{id}' | 
 '/license/office/{serviceName}/serviceInfos' | 
-'/license/office';
+'/license/office/{serviceName}/usageStatistics' | 
+'/license/office/{serviceName}/user' | 
+'/license/office/{serviceName}/user/{activationEmail}';
 
 type PathsLicenseOfficePUT = '/license/office/{serviceName}' | 
-'/license/office/{serviceName}/user/{activationEmail}' | 
-'/license/office/{serviceName}/serviceInfos';
+'/license/office/{serviceName}/serviceInfos' | 
+'/license/office/{serviceName}/user/{activationEmail}';
 
 type PathsLicenseOfficePOST = '/license/office/{serviceName}/user' | 
 '/license/office/{serviceName}/user/{activationEmail}/changePassword';

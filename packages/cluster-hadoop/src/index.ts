@@ -355,50 +355,50 @@ export interface ServicesService {
 }
 type PathsClusterHadoopGET = '/cluster/hadoop' | 
 '/cluster/hadoop/orderInformations' | 
-'/cluster/hadoop/{serviceName}/user/{username}' | 
-'/cluster/hadoop/{serviceName}/user' | 
-'/cluster/hadoop/{serviceName}/nodeConsumptions' | 
-'/cluster/hadoop/{serviceName}/serviceInfos' | 
-'/cluster/hadoop/{serviceName}/orderableNodeProfiles' | 
+'/cluster/hadoop/orderableNodeProfiles' | 
+'/cluster/hadoop/{serviceName}' | 
+'/cluster/hadoop/{serviceName}/consumptions' | 
+'/cluster/hadoop/{serviceName}/networkAcl' | 
+'/cluster/hadoop/{serviceName}/networkAcl/{block}' | 
+'/cluster/hadoop/{serviceName}/node' | 
+'/cluster/hadoop/{serviceName}/node/{hostname}' | 
+'/cluster/hadoop/{serviceName}/node/{hostname}/role' | 
+'/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}' | 
 '/cluster/hadoop/{serviceName}/nodeBillingProfiles' | 
+'/cluster/hadoop/{serviceName}/nodeConsumptions' | 
+'/cluster/hadoop/{serviceName}/orderableNodeProfiles' | 
+'/cluster/hadoop/{serviceName}/serviceInfos' | 
 '/cluster/hadoop/{serviceName}/task' | 
 '/cluster/hadoop/{serviceName}/task/{taskId}' | 
-'/cluster/hadoop/{serviceName}' | 
-'/cluster/hadoop/{serviceName}/node/{hostname}' | 
-'/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}' | 
-'/cluster/hadoop/{serviceName}/node/{hostname}/role' | 
-'/cluster/hadoop/{serviceName}/node' | 
-'/cluster/hadoop/{serviceName}/networkAcl/{block}' | 
-'/cluster/hadoop/{serviceName}/networkAcl' | 
-'/cluster/hadoop/{serviceName}/consumptions' | 
-'/cluster/hadoop/orderableNodeProfiles';
-
-type PathsClusterHadoopPUT = '/cluster/hadoop/{serviceName}/user/{username}' | 
-'/cluster/hadoop/{serviceName}/serviceInfos' | 
-'/cluster/hadoop/{serviceName}/networkAcl/{block}';
-
-type PathsClusterHadoopPOST = '/cluster/hadoop/{serviceName}/terminate' | 
-'/cluster/hadoop/{serviceName}/start' | 
-'/cluster/hadoop/{serviceName}/user/{username}/resetPassword' | 
 '/cluster/hadoop/{serviceName}/user' | 
-'/cluster/hadoop/{serviceName}/restart' | 
-'/cluster/hadoop/{serviceName}/orderNewNodeHourly' | 
-'/cluster/hadoop/{serviceName}/stop' | 
-'/cluster/hadoop/{serviceName}/node/{hostname}/recommission' | 
+'/cluster/hadoop/{serviceName}/user/{username}';
+
+type PathsClusterHadoopPUT = '/cluster/hadoop/{serviceName}/networkAcl/{block}' | 
+'/cluster/hadoop/{serviceName}/serviceInfos' | 
+'/cluster/hadoop/{serviceName}/user/{username}';
+
+type PathsClusterHadoopPOST = '/cluster/hadoop/{serviceName}/networkAcl' | 
 '/cluster/hadoop/{serviceName}/node/{hostname}/decommission' | 
+'/cluster/hadoop/{serviceName}/node/{hostname}/recommission' | 
+'/cluster/hadoop/{serviceName}/node/{hostname}/role' | 
+'/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart' | 
 '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start' | 
 '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop' | 
-'/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart' | 
-'/cluster/hadoop/{serviceName}/node/{hostname}/role' | 
-'/cluster/hadoop/{serviceName}/networkAcl' | 
-'/cluster/hadoop/{serviceName}/service/start' | 
+'/cluster/hadoop/{serviceName}/orderNewNodeHourly' | 
+'/cluster/hadoop/{serviceName}/restart' | 
 '/cluster/hadoop/{serviceName}/service/restart' | 
-'/cluster/hadoop/{serviceName}/service/stop';
+'/cluster/hadoop/{serviceName}/service/start' | 
+'/cluster/hadoop/{serviceName}/service/stop' | 
+'/cluster/hadoop/{serviceName}/start' | 
+'/cluster/hadoop/{serviceName}/stop' | 
+'/cluster/hadoop/{serviceName}/terminate' | 
+'/cluster/hadoop/{serviceName}/user' | 
+'/cluster/hadoop/{serviceName}/user/{username}/resetPassword';
 
-type PathsClusterHadoopDELETE = '/cluster/hadoop/{serviceName}/user/{username}' | 
+type PathsClusterHadoopDELETE = '/cluster/hadoop/{serviceName}/networkAcl/{block}' | 
 '/cluster/hadoop/{serviceName}/node/{hostname}' | 
 '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}' | 
-'/cluster/hadoop/{serviceName}/networkAcl/{block}';
+'/cluster/hadoop/{serviceName}/user/{username}';
 
 export class ApiClusterHadoop extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

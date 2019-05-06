@@ -374,23 +374,23 @@ export interface ServicesService {
   status?: ServiceStateEnum;
 }
 type PathsCaasRegistryGET = '/caas/registry' | 
-'/caas/registry/{serviceName}/serviceInfos' | 
+'/caas/registry/{serviceName}' | 
 '/caas/registry/{serviceName}/namespaces' | 
-'/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}' | 
-'/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions' | 
+'/caas/registry/{serviceName}/namespaces/{namespaceId}' | 
+'/caas/registry/{serviceName}/namespaces/{namespaceId}/images' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}' | 
+'/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions' | 
+'/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags/{tagId}' | 
-'/caas/registry/{serviceName}/namespaces/{namespaceId}/images' | 
-'/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions' | 
-'/caas/registry/{serviceName}/namespaces/{namespaceId}' | 
+'/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}' | 
+'/caas/registry/{serviceName}/serviceInfos' | 
 '/caas/registry/{serviceName}/users' | 
-'/caas/registry/{serviceName}/users/{userId}' | 
-'/caas/registry/{serviceName}';
+'/caas/registry/{serviceName}/users/{userId}';
 
-type PathsCaasRegistryPUT = '/caas/registry/{serviceName}/serviceInfos' | 
-'/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}';
+type PathsCaasRegistryPUT = '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}' | 
+'/caas/registry/{serviceName}/serviceInfos';
 
 type PathsCaasRegistryPOST = '/caas/registry/{serviceName}/changeContact' | 
 '/caas/registry/{serviceName}/namespaces' | 
@@ -399,10 +399,10 @@ type PathsCaasRegistryPOST = '/caas/registry/{serviceName}/changeContact' |
 '/caas/registry/{serviceName}/users' | 
 '/caas/registry/{serviceName}/users/{userId}/changePassword';
 
-type PathsCaasRegistryDELETE = '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}' | 
+type PathsCaasRegistryDELETE = '/caas/registry/{serviceName}/namespaces/{namespaceId}' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}' | 
+'/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}' | 
-'/caas/registry/{serviceName}/namespaces/{namespaceId}' | 
 '/caas/registry/{serviceName}/users/{userId}';
 
 export class ApiCaasRegistry extends ApiCommon {

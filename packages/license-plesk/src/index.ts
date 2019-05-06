@@ -331,23 +331,23 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsLicensePleskGET = '/license/plesk/{serviceName}/allowedDestinationIp' | 
-'/license/plesk/{serviceName}/tasks/{taskId}' | 
-'/license/plesk/{serviceName}/tasks' | 
-'/license/plesk/{serviceName}/option/{label}' | 
-'/license/plesk/{serviceName}/option' | 
-'/license/plesk/{serviceName}' | 
-'/license/plesk/{serviceName}/canLicenseBeMovedTo' | 
-'/license/plesk/{serviceName}/serviceInfos' | 
+type PathsLicensePleskGET = '/license/plesk' | 
 '/license/plesk/orderableVersions' | 
-'/license/plesk';
+'/license/plesk/{serviceName}' | 
+'/license/plesk/{serviceName}/allowedDestinationIp' | 
+'/license/plesk/{serviceName}/canLicenseBeMovedTo' | 
+'/license/plesk/{serviceName}/option' | 
+'/license/plesk/{serviceName}/option/{label}' | 
+'/license/plesk/{serviceName}/serviceInfos' | 
+'/license/plesk/{serviceName}/tasks' | 
+'/license/plesk/{serviceName}/tasks/{taskId}';
 
 type PathsLicensePleskPUT = '/license/plesk/{serviceName}' | 
 '/license/plesk/{serviceName}/serviceInfos';
 
-type PathsLicensePleskPOST = '/license/plesk/{serviceName}/terminate' | 
+type PathsLicensePleskPOST = '/license/plesk/{serviceName}/changeIp' | 
 '/license/plesk/{serviceName}/confirmTermination' | 
-'/license/plesk/{serviceName}/changeIp';
+'/license/plesk/{serviceName}/terminate';
 
 type PathsLicensePleskDELETE = '/license/plesk/{serviceName}/option/{label}';
 

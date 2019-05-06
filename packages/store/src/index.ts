@@ -220,38 +220,38 @@ export interface ComplexTypeSafeKeyValue<T> {
    */
   value?: T;
 }
-type PathsStoreGET = '/store/document/{documentId}' | 
-'/store/document' | 
+type PathsStoreGET = '/store/contact' | 
 '/store/contact/{contactId}' | 
 '/store/contact/{contactId}/document' | 
-'/store/contact' | 
+'/store/document' | 
+'/store/document/{documentId}' | 
 '/store/partner' | 
-'/store/partner/{partnerId}/document' | 
 '/store/partner/{partnerId}' | 
-'/store/partner/{partnerId}/product/{productId}/document' | 
+'/store/partner/{partnerId}/document' | 
+'/store/partner/{partnerId}/product' | 
 '/store/partner/{partnerId}/product/{productId}' | 
-'/store/partner/{partnerId}/product';
+'/store/partner/{partnerId}/product/{productId}/document';
 
 type PathsStorePUT = '/store/contact/{contactId}' | 
 '/store/partner/{partnerId}' | 
 '/store/partner/{partnerId}/product/{productId}';
 
-type PathsStorePOST = '/store/document/cors' | 
-'/store/document' | 
+type PathsStorePOST = '/store/contact' | 
 '/store/contact/{contactId}/document' | 
-'/store/contact' | 
+'/store/document' | 
+'/store/document/cors' | 
 '/store/partner' | 
 '/store/partner/{partnerId}/document' | 
-'/store/partner/{partnerId}/product/{productId}/document' | 
-'/store/partner/{partnerId}/product';
+'/store/partner/{partnerId}/product' | 
+'/store/partner/{partnerId}/product/{productId}/document';
 
-type PathsStoreDELETE = '/store/document/{documentId}' | 
-'/store/contact/{contactId}' | 
+type PathsStoreDELETE = '/store/contact/{contactId}' | 
 '/store/contact/{contactId}/document/{documentId}' | 
-'/store/partner/{partnerId}/document/{documentId}' | 
+'/store/document/{documentId}' | 
 '/store/partner/{partnerId}' | 
-'/store/partner/{partnerId}/product/{productId}/document/{documentId}' | 
-'/store/partner/{partnerId}/product/{productId}';
+'/store/partner/{partnerId}/document/{documentId}' | 
+'/store/partner/{partnerId}/product/{productId}' | 
+'/store/partner/{partnerId}/product/{productId}/document/{documentId}';
 
 export class ApiStore extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

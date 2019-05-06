@@ -343,27 +343,27 @@ export interface ServicesService {
   status?: ServiceStateEnum;
 }
 type PathsSaasCsp2GET = '/saas/csp2' | 
+'/saas/csp2/{serviceName}' | 
+'/saas/csp2/{serviceName}/billingPeriodPeaks' | 
+'/saas/csp2/{serviceName}/orderableLicenses' | 
+'/saas/csp2/{serviceName}/orderableLicenses/{id}' | 
+'/saas/csp2/{serviceName}/serviceInfos' | 
 '/saas/csp2/{serviceName}/subscription' | 
 '/saas/csp2/{serviceName}/subscription/{id}' | 
 '/saas/csp2/{serviceName}/subscription/{id}/addonsSubscriptionIds' | 
 '/saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses' | 
-'/saas/csp2/{serviceName}' | 
-'/saas/csp2/{serviceName}/task/{id}' | 
 '/saas/csp2/{serviceName}/task' | 
-'/saas/csp2/{serviceName}/billingPeriodPeaks' | 
-'/saas/csp2/{serviceName}/usageStatistics' | 
-'/saas/csp2/{serviceName}/orderableLicenses/{id}' | 
-'/saas/csp2/{serviceName}/orderableLicenses' | 
-'/saas/csp2/{serviceName}/serviceInfos';
+'/saas/csp2/{serviceName}/task/{id}' | 
+'/saas/csp2/{serviceName}/usageStatistics';
 
 type PathsSaasCsp2PUT = '/saas/csp2/{serviceName}' | 
 '/saas/csp2/{serviceName}/serviceInfos';
 
-type PathsSaasCsp2POST = '/saas/csp2/{serviceName}/subscription' | 
-'/saas/csp2/{serviceName}/subscription/{id}/orderAddon' | 
-'/saas/csp2/{serviceName}/subscription/{id}/changeQuantity' | 
+type PathsSaasCsp2POST = '/saas/csp2/{serviceName}/changeAdministratorPassword' | 
 '/saas/csp2/{serviceName}/configureDomain' | 
-'/saas/csp2/{serviceName}/changeAdministratorPassword';
+'/saas/csp2/{serviceName}/subscription' | 
+'/saas/csp2/{serviceName}/subscription/{id}/changeQuantity' | 
+'/saas/csp2/{serviceName}/subscription/{id}/orderAddon';
 
 type PathsSaasCsp2DELETE = '/saas/csp2/{serviceName}/subscription/{id}';
 

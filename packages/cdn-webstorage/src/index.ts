@@ -144,11 +144,11 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsCdnWebstorageGET = '/cdn/webstorage/{serviceName}' | 
-'/cdn/webstorage/{serviceName}/statistics' | 
-'/cdn/webstorage/{serviceName}/serviceInfos' | 
+type PathsCdnWebstorageGET = '/cdn/webstorage' | 
+'/cdn/webstorage/{serviceName}' | 
 '/cdn/webstorage/{serviceName}/credentials' | 
-'/cdn/webstorage';
+'/cdn/webstorage/{serviceName}/serviceInfos' | 
+'/cdn/webstorage/{serviceName}/statistics';
 
 type PathsCdnWebstoragePUT = '/cdn/webstorage/{serviceName}/serviceInfos';
 

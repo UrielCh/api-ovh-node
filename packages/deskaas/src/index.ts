@@ -282,28 +282,28 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsDeskaasGET = '/deskaas/{serviceName}/task/{taskId}' | 
-'/deskaas/{serviceName}/task' | 
-'/deskaas/{serviceName}/user/task/{taskId}' | 
-'/deskaas/{serviceName}/user/task' | 
-'/deskaas/{serviceName}/user' | 
-'/deskaas/{serviceName}/passwordPolicy' | 
+type PathsDeskaasGET = '/deskaas' | 
 '/deskaas/{serviceName}' | 
+'/deskaas/{serviceName}/passwordPolicy' | 
 '/deskaas/{serviceName}/serviceInfos' | 
-'/deskaas';
+'/deskaas/{serviceName}/task' | 
+'/deskaas/{serviceName}/task/{taskId}' | 
+'/deskaas/{serviceName}/user' | 
+'/deskaas/{serviceName}/user/task' | 
+'/deskaas/{serviceName}/user/task/{taskId}';
 
 type PathsDeskaasPUT = '/deskaas/{serviceName}/serviceInfos';
 
-type PathsDeskaasPOST = '/deskaas/{serviceName}/upgrade' | 
-'/deskaas/{serviceName}/refresh' | 
-'/deskaas/{serviceName}/console' | 
-'/deskaas/{serviceName}/user/changeProperties' | 
-'/deskaas/{serviceName}/user/changePassword' | 
+type PathsDeskaasPOST = '/deskaas/{serviceName}/changeAlias' | 
 '/deskaas/{serviceName}/changeContact' | 
-'/deskaas/{serviceName}/terminate' | 
-'/deskaas/{serviceName}/changeAlias' | 
+'/deskaas/{serviceName}/confirmTermination' | 
+'/deskaas/{serviceName}/console' | 
 '/deskaas/{serviceName}/reboot' | 
-'/deskaas/{serviceName}/confirmTermination';
+'/deskaas/{serviceName}/refresh' | 
+'/deskaas/{serviceName}/terminate' | 
+'/deskaas/{serviceName}/upgrade' | 
+'/deskaas/{serviceName}/user/changePassword' | 
+'/deskaas/{serviceName}/user/changeProperties';
 
 export class ApiDeskaas extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

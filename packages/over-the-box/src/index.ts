@@ -526,40 +526,40 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsOverTheBoxGET = '/overTheBox/{serviceName}/tasks/{taskId}' | 
-'/overTheBox/{serviceName}/tasks' | 
-'/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}' | 
-'/overTheBox/{serviceName}/remoteAccesses' | 
+type PathsOverTheBoxGET = '/overTheBox' | 
+'/overTheBox/availableOffers' | 
+'/overTheBox/{serviceName}' | 
 '/overTheBox/{serviceName}/availableReleaseChannels' | 
-'/overTheBox/{serviceName}/backups/{backupId}' | 
 '/overTheBox/{serviceName}/backups' | 
-'/overTheBox/{serviceName}/migration/offers' | 
-'/overTheBox/{serviceName}/serviceInfos' | 
+'/overTheBox/{serviceName}/backups/{backupId}' | 
+'/overTheBox/{serviceName}/device' | 
 '/overTheBox/{serviceName}/device/actions' | 
 '/overTheBox/{serviceName}/device/actions/{actionId}' | 
 '/overTheBox/{serviceName}/device/availableActions' | 
-'/overTheBox/{serviceName}/device' | 
-'/overTheBox/{serviceName}' | 
-'/overTheBox/availableOffers' | 
-'/overTheBox';
+'/overTheBox/{serviceName}/migration/offers' | 
+'/overTheBox/{serviceName}/remoteAccesses' | 
+'/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}' | 
+'/overTheBox/{serviceName}/serviceInfos' | 
+'/overTheBox/{serviceName}/tasks' | 
+'/overTheBox/{serviceName}/tasks/{taskId}';
 
-type PathsOverTheBoxPUT = '/overTheBox/{serviceName}/serviceInfos' | 
-'/overTheBox/{serviceName}';
+type PathsOverTheBoxPUT = '/overTheBox/{serviceName}' | 
+'/overTheBox/{serviceName}/serviceInfos';
 
 type PathsOverTheBoxPOST = '/overTheBox/devices' | 
-'/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize' | 
-'/overTheBox/{serviceName}/remoteAccesses' | 
-'/overTheBox/{serviceName}/changeContact' | 
 '/overTheBox/{serviceName}/cancelResiliation' | 
-'/overTheBox/{serviceName}/device/restoreBackup' | 
+'/overTheBox/{serviceName}/changeContact' | 
 '/overTheBox/{serviceName}/device/actions' | 
 '/overTheBox/{serviceName}/device/backup' | 
 '/overTheBox/{serviceName}/device/logs' | 
-'/overTheBox/{serviceName}/linkDevice';
+'/overTheBox/{serviceName}/device/restoreBackup' | 
+'/overTheBox/{serviceName}/linkDevice' | 
+'/overTheBox/{serviceName}/remoteAccesses' | 
+'/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize';
 
-type PathsOverTheBoxDELETE = '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}' | 
+type PathsOverTheBoxDELETE = '/overTheBox/{serviceName}' | 
 '/overTheBox/{serviceName}/device' | 
-'/overTheBox/{serviceName}';
+'/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}';
 
 export class ApiOverTheBox extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {

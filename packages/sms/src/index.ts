@@ -1013,115 +1013,115 @@ export interface TelephonyTask {
  * Task status
  */
 export type TelephonyTaskStatusEnum = 'doing' | 'done' | 'error' | 'pause' | 'todo';
-type PathsSmsGET = '/sms/virtualNumbers' | 
+type PathsSmsGET = '/sms' | 
+'/sms/ptts' | 
+'/sms/virtualNumbers' | 
 '/sms/virtualNumbers/{number}' | 
 '/sms/virtualNumbers/{number}/serviceInfos' | 
-'/sms/ptts' | 
-'/sms' | 
-'/sms/{serviceName}/users/{login}/outgoing/{id}' | 
-'/sms/{serviceName}/users/{login}/outgoing/{id}/hlr' | 
-'/sms/{serviceName}/users/{login}/outgoing' | 
-'/sms/{serviceName}/users/{login}' | 
-'/sms/{serviceName}/users/{login}/document' | 
-'/sms/{serviceName}/users/{login}/receivers/{slotId}' | 
-'/sms/{serviceName}/users/{login}/receivers/{slotId}/csv' | 
-'/sms/{serviceName}/users/{login}/receivers' | 
-'/sms/{serviceName}/users/{login}/jobs' | 
-'/sms/{serviceName}/users/{login}/jobs/{id}' | 
-'/sms/{serviceName}/users/{login}/incoming' | 
-'/sms/{serviceName}/users/{login}/incoming/{id}' | 
-'/sms/{serviceName}/users' | 
-'/sms/{serviceName}/sendersAvailableForValidation' | 
-'/sms/{serviceName}/task' | 
-'/sms/{serviceName}/task/{taskId}' | 
-'/sms/{serviceName}/templatesControl/{name}' | 
-'/sms/{serviceName}/templatesControl' | 
-'/sms/{serviceName}/serviceInfos' | 
+'/sms/{serviceName}' | 
+'/sms/{serviceName}/blacklists' | 
+'/sms/{serviceName}/blacklists/{number}' | 
+'/sms/{serviceName}/document' | 
+'/sms/{serviceName}/exceptions' | 
+'/sms/{serviceName}/hlr' | 
 '/sms/{serviceName}/hlr/{id}' | 
 '/sms/{serviceName}/hlr/{id}/operator' | 
-'/sms/{serviceName}/hlr' | 
-'/sms/{serviceName}/receivers' | 
-'/sms/{serviceName}/receivers/{slotId}/csv' | 
-'/sms/{serviceName}/receivers/{slotId}' | 
+'/sms/{serviceName}/incoming' | 
+'/sms/{serviceName}/incoming/{id}' | 
 '/sms/{serviceName}/jobs' | 
 '/sms/{serviceName}/jobs/{id}' | 
-'/sms/{serviceName}/incoming/{id}' | 
-'/sms/{serviceName}/incoming' | 
-'/sms/{serviceName}/exceptions' | 
+'/sms/{serviceName}/outgoing' | 
+'/sms/{serviceName}/outgoing/{id}' | 
+'/sms/{serviceName}/outgoing/{id}/hlr' | 
+'/sms/{serviceName}/phonebooks' | 
+'/sms/{serviceName}/phonebooks/{bookKey}' | 
+'/sms/{serviceName}/phonebooks/{bookKey}/export' | 
+'/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact' | 
+'/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}' | 
+'/sms/{serviceName}/receivers' | 
+'/sms/{serviceName}/receivers/{slotId}' | 
+'/sms/{serviceName}/receivers/{slotId}/csv' | 
+'/sms/{serviceName}/seeOffers' | 
 '/sms/{serviceName}/senders' | 
 '/sms/{serviceName}/senders/{sender}' | 
-'/sms/{serviceName}' | 
-'/sms/{serviceName}/seeOffers' | 
-'/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}' | 
-'/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}/hlr' | 
-'/sms/{serviceName}/virtualNumbers/{number}/outgoing' | 
+'/sms/{serviceName}/sendersAvailableForValidation' | 
+'/sms/{serviceName}/serviceInfos' | 
+'/sms/{serviceName}/task' | 
+'/sms/{serviceName}/task/{taskId}' | 
+'/sms/{serviceName}/templatesControl' | 
+'/sms/{serviceName}/templatesControl/{name}' | 
+'/sms/{serviceName}/users' | 
+'/sms/{serviceName}/users/{login}' | 
+'/sms/{serviceName}/users/{login}/document' | 
+'/sms/{serviceName}/users/{login}/incoming' | 
+'/sms/{serviceName}/users/{login}/incoming/{id}' | 
+'/sms/{serviceName}/users/{login}/jobs' | 
+'/sms/{serviceName}/users/{login}/jobs/{id}' | 
+'/sms/{serviceName}/users/{login}/outgoing' | 
+'/sms/{serviceName}/users/{login}/outgoing/{id}' | 
+'/sms/{serviceName}/users/{login}/outgoing/{id}/hlr' | 
+'/sms/{serviceName}/users/{login}/receivers' | 
+'/sms/{serviceName}/users/{login}/receivers/{slotId}' | 
+'/sms/{serviceName}/users/{login}/receivers/{slotId}/csv' | 
+'/sms/{serviceName}/virtualNumbers' | 
 '/sms/{serviceName}/virtualNumbers/{number}' | 
 '/sms/{serviceName}/virtualNumbers/{number}/chatAccess' | 
 '/sms/{serviceName}/virtualNumbers/{number}/incoming' | 
 '/sms/{serviceName}/virtualNumbers/{number}/incoming/{id}' | 
 '/sms/{serviceName}/virtualNumbers/{number}/jobs' | 
 '/sms/{serviceName}/virtualNumbers/{number}/jobs/{id}' | 
-'/sms/{serviceName}/virtualNumbers' | 
-'/sms/{serviceName}/blacklists' | 
-'/sms/{serviceName}/blacklists/{number}' | 
-'/sms/{serviceName}/outgoing' | 
-'/sms/{serviceName}/outgoing/{id}/hlr' | 
-'/sms/{serviceName}/outgoing/{id}' | 
-'/sms/{serviceName}/phonebooks' | 
-'/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}' | 
-'/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact' | 
-'/sms/{serviceName}/phonebooks/{bookKey}/export' | 
-'/sms/{serviceName}/phonebooks/{bookKey}' | 
-'/sms/{serviceName}/document';
+'/sms/{serviceName}/virtualNumbers/{number}/outgoing' | 
+'/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}' | 
+'/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}/hlr';
 
 type PathsSmsPUT = '/sms/virtualNumbers/{number}/serviceInfos' | 
-'/sms/{serviceName}/users/{login}' | 
-'/sms/{serviceName}/users/{login}/receivers/{slotId}' | 
-'/sms/{serviceName}/templatesControl/{name}' | 
-'/sms/{serviceName}/serviceInfos' | 
+'/sms/{serviceName}' | 
+'/sms/{serviceName}/phonebooks/{bookKey}' | 
+'/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}' | 
 '/sms/{serviceName}/receivers/{slotId}' | 
 '/sms/{serviceName}/senders/{sender}' | 
-'/sms/{serviceName}' | 
-'/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}' | 
-'/sms/{serviceName}/phonebooks/{bookKey}';
+'/sms/{serviceName}/serviceInfos' | 
+'/sms/{serviceName}/templatesControl/{name}' | 
+'/sms/{serviceName}/users/{login}' | 
+'/sms/{serviceName}/users/{login}/receivers/{slotId}';
 
-type PathsSmsPOST = '/sms/{serviceName}/users/{login}/receivers/{slotId}/clean' | 
-'/sms/{serviceName}/users/{login}/receivers' | 
-'/sms/{serviceName}/users/{login}/jobs' | 
-'/sms/{serviceName}/users' | 
-'/sms/{serviceName}/templatesControl/{name}/relaunchValidation' | 
-'/sms/{serviceName}/templatesControl' | 
-'/sms/{serviceName}/transferCredits' | 
-'/sms/{serviceName}/hlr' | 
+type PathsSmsPOST = '/sms/{serviceName}/hlr' | 
+'/sms/{serviceName}/jobs' | 
+'/sms/{serviceName}/phonebooks' | 
+'/sms/{serviceName}/phonebooks/{bookKey}/import' | 
+'/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact' | 
 '/sms/{serviceName}/receivers' | 
 '/sms/{serviceName}/receivers/{slotId}/clean' | 
-'/sms/{serviceName}/jobs' | 
 '/sms/{serviceName}/senders' | 
 '/sms/{serviceName}/senders/{sender}/validate' | 
+'/sms/{serviceName}/templatesControl' | 
+'/sms/{serviceName}/templatesControl/{name}/relaunchValidation' | 
+'/sms/{serviceName}/transferCredits' | 
+'/sms/{serviceName}/users' | 
+'/sms/{serviceName}/users/{login}/jobs' | 
+'/sms/{serviceName}/users/{login}/receivers' | 
+'/sms/{serviceName}/users/{login}/receivers/{slotId}/clean' | 
 '/sms/{serviceName}/virtualNumbers/{number}/chatAccess' | 
-'/sms/{serviceName}/virtualNumbers/{number}/jobs' | 
-'/sms/{serviceName}/phonebooks' | 
-'/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact' | 
-'/sms/{serviceName}/phonebooks/{bookKey}/import';
+'/sms/{serviceName}/virtualNumbers/{number}/jobs';
 
-type PathsSmsDELETE = '/sms/{serviceName}/users/{login}/outgoing/{id}' | 
-'/sms/{serviceName}/users/{login}' | 
-'/sms/{serviceName}/users/{login}/receivers/{slotId}' | 
-'/sms/{serviceName}/users/{login}/jobs/{id}' | 
-'/sms/{serviceName}/users/{login}/incoming/{id}' | 
-'/sms/{serviceName}/templatesControl/{name}' | 
-'/sms/{serviceName}/receivers/{slotId}' | 
-'/sms/{serviceName}/jobs/{id}' | 
+type PathsSmsDELETE = '/sms/{serviceName}/blacklists/{number}' | 
 '/sms/{serviceName}/incoming/{id}' | 
+'/sms/{serviceName}/jobs/{id}' | 
+'/sms/{serviceName}/outgoing/{id}' | 
+'/sms/{serviceName}/phonebooks/{bookKey}' | 
+'/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}' | 
+'/sms/{serviceName}/receivers/{slotId}' | 
 '/sms/{serviceName}/senders/{sender}' | 
-'/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}' | 
+'/sms/{serviceName}/templatesControl/{name}' | 
+'/sms/{serviceName}/users/{login}' | 
+'/sms/{serviceName}/users/{login}/incoming/{id}' | 
+'/sms/{serviceName}/users/{login}/jobs/{id}' | 
+'/sms/{serviceName}/users/{login}/outgoing/{id}' | 
+'/sms/{serviceName}/users/{login}/receivers/{slotId}' | 
 '/sms/{serviceName}/virtualNumbers/{number}/chatAccess' | 
 '/sms/{serviceName}/virtualNumbers/{number}/incoming/{id}' | 
 '/sms/{serviceName}/virtualNumbers/{number}/jobs/{id}' | 
-'/sms/{serviceName}/blacklists/{number}' | 
-'/sms/{serviceName}/outgoing/{id}' | 
-'/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}' | 
-'/sms/{serviceName}/phonebooks/{bookKey}';
+'/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}';
 
 export class ApiSms extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
