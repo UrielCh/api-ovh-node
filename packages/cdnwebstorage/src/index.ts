@@ -1,8 +1,42 @@
 import { ApiCommon } from '@ovh-api/common';
 /**
- * Detailed renewal type of a service
+ * Static CDN
  */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
+export interface CdnWebstorageAccount {
+  /**
+   */
+  server?: string;
+  /**
+   * value in Bytes
+   *
+   */
+  storageUsage?: Number;
+  /**
+   */
+  domain?: string;
+  /**
+   * value in Bytes
+   *
+   */
+  storageLimit?: Number;
+}
+/**
+ * A structure with credentials for using openstack account
+ */
+export interface CdnWebstorageAccountCredentials {
+  /**
+   */
+  password?: string;
+  /**
+   */
+  endpoint?: string;
+  /**
+   */
+  login?: string;
+  /**
+   */
+  tenant?: string;
+}
 /**
  * A structure describing type of a stats hash
  */
@@ -15,26 +49,13 @@ export interface CdnWebstorageStatsDataType {
   value?: Number;
 }
 /**
+ * Period of the statistics
+ */
+export type CdnWebstorageStatsPeriodEnum = 'day' | 'month' | 'week';
+/**
  * Type of statistics related to cache
  */
 export type CdnWebstorageStatsTypeEnum = 'backend' | 'cdn' | 'quota';
-/**
- * A structure with credentials for using openstack account
- */
-export interface CdnWebstorageAccountCredentials {
-  /**
-   */
-  endpoint?: string;
-  /**
-   */
-  password?: string;
-  /**
-   */
-  login?: string;
-  /**
-   */
-  tenant?: string;
-}
 /**
  * Map a possible renew for a specific service
  */
@@ -66,34 +87,13 @@ export interface ServiceRenewType {
   automatic?: boolean;
 }
 /**
+ * Detailed renewal type of a service
+ */
+export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
+/**
  * 
  */
 export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Period of the statistics
- */
-export type CdnWebstorageStatsPeriodEnum = 'day' | 'month' | 'week';
-/**
- * Static CDN
- */
-export interface CdnWebstorageAccount {
-  /**
-   */
-  server?: string;
-  /**
-   * value in Bytes
-   *
-   */
-  storageUsage?: Number;
-  /**
-   */
-  domain?: string;
-  /**
-   * value in Bytes
-   *
-   */
-  storageLimit?: Number;
-}
 /**
  * Details about a Service
  */
@@ -103,10 +103,10 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  engagedUpTo?: Date;
+  contactBilling?: string;
   /**
    */
-  contactBilling?: string;
+  engagedUpTo?: Date;
   /**
    */
   contactAdmin?: string;
@@ -144,20 +144,15 @@ export interface ServicesService {
    */
   canDeleteAtExpiration?: boolean;
 }
-type PathscdnwebstorageGET = '/cdn/webstorage' | 
-'/cdn/webstorage/{serviceName}' | 
+type PathscdnwebstorageGET = '/cdn/webstorage/{serviceName}' | 
 '/cdn/webstorage/{serviceName}/serviceInfos' | 
 '/cdn/webstorage/{serviceName}/credentials' | 
-'/cdn/webstorage/{serviceName}/statistics';
+'/cdn/webstorage/{serviceName}/statistics' | 
+'/cdn/webstorage';
 
 type PathscdnwebstoragePUT = '/cdn/webstorage/{serviceName}/serviceInfos';
 
 class Apicdnwebstorage extends ApiCommon {
-  /**
-  Operations about the CDNSTATIC service
-  List available services
-  **/
-  public get(path: '/cdn/webstorage', pathParams: null, queryParams: null): Promise<string[]>;
   /**
   Static CDN
   Get this object properties
@@ -177,12 +172,17 @@ class Apicdnwebstorage extends ApiCommon {
   statistics operations
   Return stats about bandwidth consumption
   **/
-  public get(path: '/cdn/webstorage/{serviceName}/statistics', pathParams: {serviceName?: string}, queryParams: {period?: CdnWebstorageStatsPeriodEnum, type?: CdnWebstorageStatsTypeEnum}): Promise<CdnWebstorageStatsDataType[]>;
+  public get(path: '/cdn/webstorage/{serviceName}/statistics', pathParams: {serviceName?: string}, queryParams: {type?: CdnWebstorageStatsTypeEnum, period?: CdnWebstorageStatsPeriodEnum}): Promise<CdnWebstorageStatsDataType[]>;
+  /**
+  Operations about the CDNSTATIC service
+  List available services
+  **/
+  public get(path: '/cdn/webstorage', pathParams: null, queryParams: null): Promise<string[]>;
   public get(path: PathscdnwebstorageGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cdn/webstorage/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null, bodyParams: null): Promise<void>;
-  public put(path: PathscdnwebstoragePUT, pathParams?: any, queryParams?: any, bodyParams?:any) : Promise<any> {return super.put(path, pathParams, queryParams, bodyParams);}
+  public put(path: '/cdn/webstorage/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public put(path: PathscdnwebstoragePUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
 }

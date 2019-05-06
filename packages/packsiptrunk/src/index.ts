@@ -1,9 +1,5 @@
 import { ApiCommon } from '@ovh-api/common';
 /**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
  * Pack of SIP trunk services
  */
 export interface PackSiptrunkPackSipTrunk {
@@ -14,10 +10,6 @@ export interface PackSiptrunkPackSipTrunk {
   packName?: string;
 }
 /**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
  * Map a possible renew for a specific service
  */
 export interface ServiceRenewType {
@@ -27,15 +19,15 @@ export interface ServiceRenewType {
    */
   manualPayment?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
   /**
    * The service forced to be renewed
    *
@@ -48,6 +40,14 @@ export interface ServiceRenewType {
   automatic?: boolean;
 }
 /**
+ * Detailed renewal type of a service
+ */
+export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
+/**
+ * 
+ */
+export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
+/**
  * Details about a Service
  */
 export interface ServicesService {
@@ -56,10 +56,10 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  engagedUpTo?: Date;
+  contactBilling?: string;
   /**
    */
-  contactBilling?: string;
+  engagedUpTo?: Date;
   /**
    */
   contactAdmin?: string;
@@ -89,13 +89,13 @@ export interface ServicesService {
    */
   creation?: Date;
   /**
-   */
-  status?: ServiceStateEnum;
-  /**
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
   canDeleteAtExpiration?: boolean;
+  /**
+   */
+  status?: ServiceStateEnum;
 }
 type PathspacksiptrunkGET = '/pack/siptrunk' | 
 '/pack/siptrunk/{packName}' | 
@@ -126,12 +126,12 @@ class Apipacksiptrunk extends ApiCommon {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/pack/siptrunk/{packName}/serviceInfos', pathParams: {packName?: string}, queryParams: null, bodyParams: null): Promise<void>;
-  public put(path: PathspacksiptrunkPUT, pathParams?: any, queryParams?: any, bodyParams?:any) : Promise<any> {return super.put(path, pathParams, queryParams, bodyParams);}
+  public put(path: '/pack/siptrunk/{packName}/serviceInfos', pathParams: {packName?: string}, bodyParams: null): Promise<void>;
+  public put(path: PathspacksiptrunkPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/pack/siptrunk/{packName}/changeContact', pathParams: {packName?: string}, queryParams: null, bodyParams: null): Promise<Number[]>;
-  public post(path: PathspacksiptrunkPOST, pathParams?: any, queryParams?: any, bodyParams?:any) : Promise<any> {return super.post(path, pathParams, queryParams, bodyParams);}
+  public post(path: '/pack/siptrunk/{packName}/changeContact', pathParams: {packName?: string}, bodyParams: null): Promise<Number[]>;
+  public post(path: PathspacksiptrunkPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

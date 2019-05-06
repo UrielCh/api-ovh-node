@@ -1,32 +1,51 @@
 import { ApiCommon } from '@ovh-api/common';
 /**
- * Mode enum informations
+ * Key and value, with proper key strings
  */
-export type ServiceRenewMode = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'deleteAtEndEngagement' | 'deleteAtExpiration' | 'manual' | 'oneShot' | 'option';
+export interface ComplexTypeSafeKeyValue<T> {
+  /**
+   */
+  value?: T;
+  /**
+   */
+  key?: string;
+}
 /**
- * Element of consumption for resource
+ * 
  */
-export interface ServiceConsumptionTransactionElement {
+export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL' | 'MAD' | 'N/A' | 'PLN' | 'SGD' | 'TND' | 'USD' | 'XOF' | 'points';
+/**
+ * Price with it's currency and textual representation
+ */
+export interface OrderPrice {
   /**
-   * Consumption quantity
+   */
+  text?: string;
+  /**
+   */
+  currencyCode?: OrderCurrencyCodeEnum;
+  /**
+   */
+  value?: Number;
+}
+/**
+ * Possible billing states
+ */
+export type ServiceBillingStateEnum = 'expired' | 'ok' | 'pending' | 'unpaid';
+/**
+ * Plan information
+ */
+export interface ServicePlan {
+  /**
+   * Product plan information
    *
    */
-  quantity?: Number;
+  product?: ServicePlanProduct;
   /**
-   * Consumption amount price
+   * Product code
    *
    */
-  price?: OrderPrice;
-  /**
-   * List of consumption details for this planCode
-   *
-   */
-  details?: ServiceConsumptionTransactionElementDetail[];
-  /**
-   * Identifier of the offer
-   *
-   */
-  planCode?: string;
+  code?: string;
 }
 /**
  * Renew information
@@ -59,6 +78,30 @@ export interface ServiceRenew {
   possibleModes?: ServiceRenewMode[];
 }
 /**
+ * Resource service informations
+ */
+export interface ServiceResource {
+  /**
+   * Custom display name of the service
+   *
+   */
+  displayName?: string;
+  /**
+   * Name of the service
+   *
+   */
+  name?: string;
+  /**
+   * Resource state
+   *
+   */
+  state?: ServiceResourceStateEnum;
+}
+/**
+ * Possible resource states
+ */
+export type ServiceResourceStateEnum = 'deleted' | 'deleting' | 'ok' | 'opening' | 'suspended' | 'suspending' | 'toDelete' | 'toOpen' | 'toSuspend';
+/**
  * route of this service
  */
 export interface ServiceRoute {
@@ -79,29 +122,188 @@ export interface ServiceRoute {
   url?: string;
 }
 /**
- * Description of a service
+ * List of consumptions recorded in a range
  */
-export interface ServiceRenewService {
+export interface ServiceConsumptionTransaction {
   /**
-   * Type of the service
+   * Begin date
    *
    */
-  serviceType?: string;
+  beginDate?: Date;
   /**
-   * ID of the service
+   * End date
+   *
+   */
+  endDate?: Date;
+  /**
+   * Consumption amount price
+   *
+   */
+  price?: OrderPrice;
+  /**
+   * Last update
+   *
+   */
+  lastUpdate?: Date;
+  /**
+   * List of product plan code consumption
+   *
+   */
+  elements?: ServiceConsumptionTransactionElement[];
+  /**
+   * Transaction ID
+   *
+   */
+  id?: Number;
+  /**
+   * Service ID
    *
    */
   serviceId?: Number;
   /**
-   * Name of the service
+   * Creation date
    *
    */
-  serviceName?: string;
+  creationDate?: Date;
+}
+/**
+ * Element of consumption for resource
+ */
+export interface ServiceConsumptionTransactionElement {
+  /**
+   * Consumption quantity
+   *
+   */
+  quantity?: Number;
+  /**
+   * Consumption amount price
+   *
+   */
+  price?: OrderPrice;
+  /**
+   * List of consumption details for this planCode
+   *
+   */
+  details?: ServiceConsumptionTransactionElementDetail[];
+  /**
+   * Identifier of the offer
+   *
+   */
+  planCode?: string;
+}
+/**
+ * Element of consumption for resource
+ */
+export interface ServiceConsumptionTransactionElementDetail {
+  /**
+   * Unique ID associated to one service element
+   *
+   */
+  unique_id?: string;
+  /**
+   * Consumption quantity
+   *
+   */
+  quantity?: Number;
+}
+/**
+ * Product plan information
+ */
+export interface ServicePlanProduct {
+  /**
+   * Product name
+   *
+   */
+  name?: string;
 }
 /**
  * Interval enum information
  */
 export type ServiceRenewInterval = 'P1M' | 'P1Y' | 'P2Y' | 'P3M' | 'P3Y' | 'P6M';
+/**
+ * Mode enum informations
+ */
+export type ServiceRenewMode = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'deleteAtEndEngagement' | 'deleteAtExpiration' | 'manual' | 'oneShot' | 'option';
+/**
+ * List possible renews for service
+ */
+export interface ServiceRenewRenewDescription {
+  /**
+   * ISO8601 formatted renewal duration
+   *
+   */
+  renewPeriod?: duration:string;
+  /**
+   * List possible strategies
+   *
+   */
+  strategies?: ServiceRenewRenewStrategy[];
+}
+/**
+ * Representation of service's renew forecasting
+ */
+export interface ServiceRenewRenewForecast {
+  /**
+   * Forecast details
+   *
+   */
+  details?: ServiceRenewRenewForecastDetail[];
+  /**
+   * Prices for renew forecasting
+   *
+   */
+  prices?: ServiceRenewRenewForecastPrices;
+}
+/**
+ * Representation of a product renew pricing
+ */
+export interface ServiceRenewRenewForecastDetail {
+  /**
+   * Price for one unit
+   *
+   */
+  unitPrice?: OrderPrice;
+  /**
+   * Quantity
+   *
+   */
+  quantity?: Number;
+  /**
+   * Total price
+   *
+   */
+  totalPrice?: OrderPrice;
+  /**
+   * Detail description
+   *
+   */
+  description?: string;
+  /**
+   * Associated service name
+   *
+   */
+  serviceName?: string;
+}
+/**
+ * Prices for renew forecasting
+ */
+export interface ServiceRenewRenewForecastPrices {
+  /**
+   * Total price with tax
+   *
+   */
+  withTax?: OrderPrice;
+  /**
+   * Total price without tax
+   *
+   */
+  withoutTax?: OrderPrice;
+  /**
+   * Tax
+   *
+   */
+  tax?: OrderPrice;
+}
 /**
  * Details about a renew Order
  */
@@ -117,15 +319,15 @@ export interface ServiceRenewRenewOrder {
    */
   retractionDate?: Date;
   /**
-   * Public pdf URL of the generated renew Order
-   *
-   */
-  pdfUrl?: string;
-  /**
    * Password
    *
    */
   password?: string;
+  /**
+   * Public pdf URL of the generated renew Order
+   *
+   */
+  pdfUrl?: string;
   /**
    * ID of the renew Order
    *
@@ -158,54 +360,49 @@ export interface ServiceRenewRenewOrder {
   expirationDate?: Date;
 }
 /**
- * Prices for renew forecasting
+ * Representation of a product renew pricing
  */
-export interface ServiceRenewRenewForecastPrices {
+export interface ServiceRenewRenewStrategy {
   /**
-   * Total price with tax
+   * Price of the product in micro-centims
    *
    */
-  withTax?: OrderPrice;
+  priceInUcents?: Number;
   /**
-   * Total price without tax
+   * Price of the product
    *
    */
-  withoutTax?: OrderPrice;
+  price?: OrderPrice;
   /**
-   * Tax
+   * Services renewed by strategy
    *
    */
-  tax?: OrderPrice;
+  services?: Number[][];
+  /**
+   * Details of services renewed by strategy
+   *
+   */
+  servicesDetails?: ServiceRenewService[];
 }
 /**
- * Element of consumption for resource
+ * Description of a service
  */
-export interface ServiceConsumptionTransactionElementDetail {
+export interface ServiceRenewService {
   /**
-   * Unique ID associated to one service element
+   * Type of the service
    *
    */
-  unique_id?: string;
+  serviceType?: string;
   /**
-   * Consumption quantity
+   * Name of the service
    *
    */
-  quantity?: Number;
-}
-/**
- * Plan information
- */
-export interface ServicePlan {
+  serviceName?: string;
   /**
-   * Product plan information
+   * ID of the service
    *
    */
-  product?: ServicePlanProduct;
-  /**
-   * Product code
-   *
-   */
-  code?: string;
+  serviceId?: Number;
 }
 /**
  * Details about a Service
@@ -242,15 +439,15 @@ export interface ServiceListService {
    */
   details?: ComplexTypeSafeKeyValue<string>[];
   /**
-   * Renew service description
-   *
-   */
-  renew?: ServiceRenew;
-  /**
    * Billing state of your service
    *
    */
   state?: ServiceBillingStateEnum;
+  /**
+   * Renew service description
+   *
+   */
+  renew?: ServiceRenew;
   /**
    * Creation date
    *
@@ -267,225 +464,28 @@ export interface ServiceListService {
    */
   expirationDate?: Date;
 }
-/**
- * Possible billing states
- */
-export type ServiceBillingStateEnum = 'expired' | 'ok' | 'pending' | 'unpaid';
-/**
- * Representation of a product renew pricing
- */
-export interface ServiceRenewRenewStrategy {
-  /**
-   * Price of the product in micro-centims
-   *
-   */
-  priceInUcents?: Number;
-  /**
-   * Price of the product
-   *
-   */
-  price?: OrderPrice;
-  /**
-   * Services renewed by strategy
-   *
-   */
-  services?: Number[][];
-  /**
-   * Details of services renewed by strategy
-   *
-   */
-  servicesDetails?: ServiceRenewService[];
-}
-/**
- * List possible renews for service
- */
-export interface ServiceRenewRenewDescription {
-  /**
-   * ISO8601 formatted renewal duration
-   *
-   */
-  renewPeriod?: duration:string;
-  /**
-   * List possible strategies
-   *
-   */
-  strategies?: ServiceRenewRenewStrategy[];
-}
-/**
- * Representation of a product renew pricing
- */
-export interface ServiceRenewRenewForecastDetail {
-  /**
-   * Price for one unit
-   *
-   */
-  unitPrice?: OrderPrice;
-  /**
-   * Quantity
-   *
-   */
-  quantity?: Number;
-  /**
-   * Total price
-   *
-   */
-  totalPrice?: OrderPrice;
-  /**
-   * Detail description
-   *
-   */
-  description?: string;
-  /**
-   * Associated service name
-   *
-   */
-  serviceName?: string;
-}
-/**
- * 
- */
-export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL' | 'MAD' | 'N/A' | 'PLN' | 'SGD' | 'TND' | 'USD' | 'XOF' | 'points';
-/**
- * Product plan information
- */
-export interface ServicePlanProduct {
-  /**
-   * Product name
-   *
-   */
-  name?: string;
-}
-/**
- * Possible resource states
- */
-export type ServiceResourceStateEnum = 'deleted' | 'deleting' | 'ok' | 'opening' | 'suspended' | 'suspending' | 'toDelete' | 'toOpen' | 'toSuspend';
-/**
- * Representation of service's renew forecasting
- */
-export interface ServiceRenewRenewForecast {
-  /**
-   * Forecast details
-   *
-   */
-  details?: ServiceRenewRenewForecastDetail[];
-  /**
-   * Prices for renew forecasting
-   *
-   */
-  prices?: ServiceRenewRenewForecastPrices;
-}
-/**
- * List of consumptions recorded in a range
- */
-export interface ServiceConsumptionTransaction {
-  /**
-   * Begin date
-   *
-   */
-  beginDate?: Date;
-  /**
-   * End date
-   *
-   */
-  endDate?: Date;
-  /**
-   * Consumption amount price
-   *
-   */
-  price?: OrderPrice;
-  /**
-   * List of product plan code consumption
-   *
-   */
-  elements?: ServiceConsumptionTransactionElement[];
-  /**
-   * Last update
-   *
-   */
-  lastUpdate?: Date;
-  /**
-   * Transaction ID
-   *
-   */
-  id?: Number;
-  /**
-   * Service ID
-   *
-   */
-  serviceId?: Number;
-  /**
-   * Creation date
-   *
-   */
-  creationDate?: Date;
-}
-/**
- * Price with it's currency and textual representation
- */
-export interface OrderPrice {
-  /**
-   */
-  text?: string;
-  /**
-   */
-  currencyCode?: OrderCurrencyCodeEnum;
-  /**
-   */
-  value?: Number;
-}
-/**
- * Resource service informations
- */
-export interface ServiceResource {
-  /**
-   * Custom display name of the service
-   *
-   */
-  displayName?: string;
-  /**
-   * Name of the service
-   *
-   */
-  name?: string;
-  /**
-   * Resource state
-   *
-   */
-  state?: ServiceResourceStateEnum;
-}
-/**
- * Key and value, with proper key strings
- */
-export interface ComplexTypeSafeKeyValue<T> {
-  /**
-   */
-  value?: T;
-  /**
-   */
-  key?: string;
-}
-type PathsserviceGET = '/service/{serviceId}/renew' | 
-'/service/{serviceId}' | 
+type PathsserviceGET = '/service/{serviceId}' | 
+'/service/{serviceId}/renew' | 
 '/service';
 
 type PathsservicePUT = '/service/{serviceId}';
 
 type PathsservicePOST = '/service/{serviceId}/terminate' | 
+'/service/{serviceId}/suspend' | 
 '/service/{serviceId}/renew' | 
-'/service/{serviceId}/reopen' | 
-'/service/{serviceId}/suspend';
+'/service/{serviceId}/reopen';
 
 class Apiservice extends ApiCommon {
-  /**
-  Missing description
-  List possible renews for this service
-  **/
-  public get(path: '/service/{serviceId}/renew', pathParams: {serviceId?: string}, queryParams: {includeOptions?: boolean}): Promise<ServiceRenewRenewDescription[]>;
   /**
   Details about a Service
   Get this object properties
   **/
   public get(path: '/service/{serviceId}', pathParams: {serviceId?: Number}, queryParams: null): Promise<ServiceListService>;
+  /**
+  Missing description
+  List possible renews for this service
+  **/
+  public get(path: '/service/{serviceId}/renew', pathParams: {serviceId?: string}, queryParams: {includeOptions?: boolean}): Promise<ServiceRenewRenewDescription[]>;
   /**
   Operations about the services
   List available services
@@ -496,27 +496,27 @@ class Apiservice extends ApiCommon {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/service/{serviceId}', pathParams: {serviceId?: Number}, queryParams: null, bodyParams: null): Promise<void>;
-  public put(path: PathsservicePUT, pathParams?: any, queryParams?: any, bodyParams?:any) : Promise<any> {return super.put(path, pathParams, queryParams, bodyParams);}
+  public put(path: '/service/{serviceId}', pathParams: {serviceId?: Number}, bodyParams: null): Promise<void>;
+  public put(path: PathsservicePUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   terminate operations
   Terminates a suspended service
   **/
-  public post(path: '/service/{serviceId}/terminate', pathParams: {serviceId?: Number}, queryParams: null, bodyParams: null): Promise<void>;
-  /**
-  Missing description
-  Create a renew order
-  **/
-  public post(path: '/service/{serviceId}/renew', pathParams: {serviceId?: string}, queryParams: null, bodyParams: null): Promise<ServiceRenewRenewOrder>;
-  /**
-  reopen operations
-  Reopen a suspended service
-  **/
-  public post(path: '/service/{serviceId}/reopen', pathParams: {serviceId?: Number}, queryParams: null, bodyParams: null): Promise<void>;
+  public post(path: '/service/{serviceId}/terminate', pathParams: {serviceId?: Number}, bodyParams: null): Promise<void>;
   /**
   suspend operations
   Suspend the service. The service won't be accessible, but you will still be charged for it
   **/
-  public post(path: '/service/{serviceId}/suspend', pathParams: {serviceId?: Number}, queryParams: null, bodyParams: null): Promise<void>;
-  public post(path: PathsservicePOST, pathParams?: any, queryParams?: any, bodyParams?:any) : Promise<any> {return super.post(path, pathParams, queryParams, bodyParams);}
+  public post(path: '/service/{serviceId}/suspend', pathParams: {serviceId?: Number}, bodyParams: null): Promise<void>;
+  /**
+  Missing description
+  Create a renew order
+  **/
+  public post(path: '/service/{serviceId}/renew', pathParams: {serviceId?: string}, bodyParams: null): Promise<ServiceRenewRenewOrder>;
+  /**
+  reopen operations
+  Reopen a suspended service
+  **/
+  public post(path: '/service/{serviceId}/reopen', pathParams: {serviceId?: Number}, bodyParams: null): Promise<void>;
+  public post(path: PathsservicePOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

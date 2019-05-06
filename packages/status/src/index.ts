@@ -1,5 +1,32 @@
 import { ApiCommon } from '@ovh-api/common';
 /**
+ * Description not available
+ */
+export type OvhstatusTaskTaskImpactEnum = 'partialUnavailability' | 'fullUnavailability' | 'downtime' | 'none' | 'unknown';
+/**
+ * Description not available
+ */
+export type OvhstatusTaskTaskStatusEnum = 'planned' | 'inProgress' | 'finished';
+/**
+ * Description not available
+ */
+export type OvhstatusTaskTaskTypeEnum = 'incident' | 'maintenance' | 'upgrade';
+/**
+ * A reply is useful to know the progress of a task
+ */
+export interface StatusReply {
+  /**
+   * The date of the reply
+   *
+   */
+  date?: Date;
+  /**
+   * The comment of the reply
+   *
+   */
+  comment?: string;
+}
+/**
  * A task linked to one of your services
  */
 export interface StatusTask {
@@ -69,33 +96,6 @@ export interface StatusTask {
    */
   status?: OvhstatusTaskTaskStatusEnum;
 }
-/**
- * A reply is useful to know the progress of a task
- */
-export interface StatusReply {
-  /**
-   * The date of the reply
-   *
-   */
-  date?: Date;
-  /**
-   * The comment of the reply
-   *
-   */
-  comment?: string;
-}
-/**
- * Description not available
- */
-export type OvhstatusTaskTaskImpactEnum = 'partialUnavailability' | 'fullUnavailability' | 'downtime' | 'none' | 'unknown';
-/**
- * Description not available
- */
-export type OvhstatusTaskTaskTypeEnum = 'incident' | 'maintenance' | 'upgrade';
-/**
- * Description not available
- */
-export type OvhstatusTaskTaskStatusEnum = 'planned' | 'inProgress' | 'finished';
 type PathsstatusGET = '/status/task';
 
 class Apistatus extends ApiCommon {

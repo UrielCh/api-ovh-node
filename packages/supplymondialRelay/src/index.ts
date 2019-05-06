@@ -53,15 +53,15 @@ export interface SupplyMondialRelay {
    */
   closing?: SupplyMondialRelayClosingPeriod[];
   /**
-   * Relay point name
-   *
-   */
-  name?: string;
-  /**
    * URL of short map
    *
    */
   mapUrl?: string;
+  /**
+   * Relay point name
+   *
+   */
+  name?: string;
   /**
    * Mondial Relay point ID
    *
@@ -74,24 +74,20 @@ export interface SupplyMondialRelay {
   lat?: Number;
 }
 /**
- * Status and Mondial Relay Point Details
+ * Closing period for mondial relay point
  */
-export interface SupplyMondialRelayResult {
+export interface SupplyMondialRelayClosingPeriod {
   /**
-   * Array of relay points
+   * Beginning of closing period
    *
    */
-  relayPoints?: SupplyMondialRelay[];
+  start?: Date;
   /**
-   * Reference address for finding RelayPoints
+   * Ending of closing period
    *
    */
-  referenceAddress?: string;
+  end?: Date;
 }
-/**
- * Request status
- */
-export type SupplyStatus = 'error' | 'ok' | 'pending';
 /**
  * Opening range for mondial relay point
  */
@@ -148,19 +144,19 @@ export interface SupplyMondialRelayOpening {
   monday?: SupplyMondialRelayDayPeriod[];
 }
 /**
- * Closing period for mondial relay point
+ * Status and Mondial Relay Point Details
  */
-export interface SupplyMondialRelayClosingPeriod {
+export interface SupplyMondialRelayResult {
   /**
-   * Beginning of closing period
+   * Array of relay points
    *
    */
-  start?: Date;
+  relayPoints?: SupplyMondialRelay[];
   /**
-   * Ending of closing period
+   * Reference address for finding RelayPoints
    *
    */
-  end?: Date;
+  referenceAddress?: string;
 }
 /**
  * Status and Mondial Relay Point Details
@@ -182,6 +178,10 @@ export interface SupplyMondialRelayReturn {
    */
   status?: SupplyStatus;
 }
+/**
+ * Request status
+ */
+export type SupplyStatus = 'error' | 'ok' | 'pending';
 type PathssupplymondialRelayPOST = '/supply/mondialRelay';
 
 class ApisupplymondialRelay extends ApiCommon {
@@ -189,6 +189,6 @@ class ApisupplymondialRelay extends ApiCommon {
   Find the 10 nearest MondialRelay points from address or city.
   Find the 10 nearest MondialRelay points from address or city.
   **/
-  public post(path: '/supply/mondialRelay', pathParams: null, queryParams: null, bodyParams: null): Promise<SupplyMondialRelayReturn>;
-  public post(path: PathssupplymondialRelayPOST, pathParams?: any, queryParams?: any, bodyParams?:any) : Promise<any> {return super.post(path, pathParams, queryParams, bodyParams);}
+  public post(path: '/supply/mondialRelay', pathParams: null, bodyParams: null): Promise<SupplyMondialRelayReturn>;
+  public post(path: PathssupplymondialRelayPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

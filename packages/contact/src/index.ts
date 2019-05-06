@@ -1,5 +1,16 @@
 import { ApiCommon } from '@ovh-api/common';
 /**
+ * Key and value, with proper key strings
+ */
+export interface ComplexTypeSafeKeyValue<T> {
+  /**
+   */
+  value?: T;
+  /**
+   */
+  key?: string;
+}
+/**
  * Form characteristics
  */
 export interface ContactFormCharacteristic {
@@ -19,24 +30,13 @@ export interface ContactFormCharacteristic {
  */
 export interface ContactKeyFormCharacteristic {
   /**
-   * Key name
-   *
-   */
-  key?: string;
-  /**
    * Key required or not
    *
    */
   required?: boolean;
-}
-/**
- * Key and value, with proper key strings
- */
-export interface ComplexTypeSafeKeyValue<T> {
   /**
-   */
-  value?: T;
-  /**
+   * Key name
+   *
    */
   key?: string;
 }
@@ -55,6 +55,6 @@ class Apicontact extends ApiCommon {
   Send form following characteristics of /contact/form
   Send form following characteristics of /contact/form
   **/
-  public post(path: '/contact/form/send', pathParams: null, queryParams: null, bodyParams: null): Promise<void>;
-  public post(path: PathscontactPOST, pathParams?: any, queryParams?: any, bodyParams?:any) : Promise<any> {return super.post(path, pathParams, queryParams, bodyParams);}
+  public post(path: '/contact/form/send', pathParams: null, bodyParams: null): Promise<void>;
+  public post(path: PathscontactPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

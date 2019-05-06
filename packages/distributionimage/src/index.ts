@@ -1,9 +1,5 @@
 import { ApiCommon } from '@ovh-api/common';
 /**
- * Description not available
- */
-export type DistributionImagePropertiesCategory = 'none' | 'bare' | 'panel' | 'cms' | 'development' | 'desktop';
-/**
  * Information about installed package for a given image
  */
 export interface DistributionImage {
@@ -29,20 +25,6 @@ export interface DistributionImage {
   properties?: DistributionImageProperties;
 }
 /**
- * Description not available
- */
-export interface DistributionImageProperties {
-  /**
-   * The image category
-   *
-   */
-  category?: DistributionImagePropertiesCategory;
-}
-/**
- * Description not available
- */
-export type DistributionImageService = 'vps' | 'dedicated' | 'cloud' | 'dedicatedCloud';
-/**
  * An image package description
  */
 export interface DistributionImagePackage {
@@ -62,6 +44,24 @@ export interface DistributionImagePackage {
    */
   version?: string;
 }
+/**
+ * Description not available
+ */
+export interface DistributionImageProperties {
+  /**
+   * The image category
+   *
+   */
+  category?: DistributionImagePropertiesCategory;
+}
+/**
+ * Description not available
+ */
+export type DistributionImagePropertiesCategory = 'none' | 'bare' | 'panel' | 'cms' | 'development' | 'desktop';
+/**
+ * Description not available
+ */
+export type DistributionImageService = 'vps' | 'dedicated' | 'cloud' | 'dedicatedCloud';
 type PathsdistributionimageGET = '/distribution/image/{serviceType}/{imageName}' | 
 '/distribution/image/{serviceType}';
 

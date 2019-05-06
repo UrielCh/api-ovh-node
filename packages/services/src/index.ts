@@ -1,148 +1,14 @@
 import { ApiCommon } from '@ovh-api/common';
 /**
- * Resource of the service
+ * Key and value, with proper key strings
  */
-export interface ServicesExpandedResource {
+export interface ComplexTypeSafeKeyValue {
   /**
-   * Product
-   *
    */
-  product?: ServicesExpandedProduct;
+  value?: T;
   /**
-   * Display name of the resource
-   *
    */
-  displayName?: string;
-  /**
-   * Name of the resource
-   *
-   */
-  name?: string;
-}
-/**
- * Description of an invoice
- */
-export interface ServicesBillingInvoice {
-  /**
-   * Invoice date
-   *
-   */
-  date?: Date;
-  /**
-   * Invoice reference
-   *
-   */
-  id?: string;
-  /**
-   * Invoice details
-   *
-   */
-  lines?: ServicesBillingInvoiceLine[];
-}
-/**
- * Billing informations of the service
- */
-export interface ServicesExpandedBilling {
-  /**
-   * Next billing date
-   *
-   */
-  nextBillingDate?: Date;
-  /**
-   * Service Plan
-   *
-   */
-  plan?: ServicesExpandedPlan;
-  /**
-   * Expiration date
-   *
-   */
-  expirationDate?: Date;
-}
-/**
- * Plan of the service
- */
-export interface ServicesExpandedPlan {
-  /**
-   * Plan code
-   *
-   */
-  code?: string;
-  /**
-   * Invoice Name
-   *
-   */
-  invoiceName?: string;
-}
-/**
- * Period of Engagement
- */
-export interface ServicesBillingEngagementEngagementPeriod {
-  /**
-   * End of the period
-   *
-   */
-  endDate?: Date;
-  /**
-   * Beginning of the period
-   *
-   */
-  startDate?: Date;
-}
-/**
- * Route of the service
- */
-export interface ServicesExpandedRoute {
-  /**
-   * Path to use in API
-   *
-   */
-  path?: string;
-  /**
-   * Variables to use in the path
-   *
-   */
-  vars?: ComplexTypeSafeKeyValue<string>[];
-  /**
-   * Path with variables applied
-   *
-   */
-  url?: string;
-}
-/**
- * Description of an Engagement
- */
-export interface ServicesBillingEngagementEngagement {
-  /**
-   * Current engagement period
-   *
-   */
-  currentPeriod?: ServicesBillingEngagementEngagementPeriod;
-}
-/**
- * Description of a service
- */
-export interface ServicesExpandedService {
-  /**
-   * Route
-   *
-   */
-  route?: ServicesExpandedRoute;
-  /**
-   * Resource
-   *
-   */
-  resource?: ServicesExpandedResource;
-  /**
-   * Service ID
-   *
-   */
-  serviceId: Number;
-  /**
-   * Billing information
-   *
-   */
-  billing?: ServicesExpandedBilling;
+  key?: string;
 }
 /**
  * Price with it's currency and textual representation
@@ -169,30 +35,24 @@ export interface OrderPrice {
  */
 export type PriceCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL' | 'MAD' | 'N/A' | 'PLN' | 'SGD' | 'TND' | 'USD' | 'XOF' | 'points';
 /**
- * Product of the service
+ * Description of an invoice
  */
-export interface ServicesExpandedProduct {
+export interface ServicesBillingInvoice {
   /**
-   * Product name
+   * Invoice date
    *
    */
-  name?: string;
+  date?: Date;
   /**
-   * Product description
+   * Invoice reference
    *
    */
-  description?: string;
-}
-/**
- * Key and value, with proper key strings
- */
-export interface ComplexTypeSafeKeyValue {
+  id?: string;
   /**
+   * Invoice details
+   *
    */
-  value?: T;
-  /**
-   */
-  key?: string;
+  lines?: ServicesBillingInvoiceLine[];
 }
 /**
  * Description of an invoice line
@@ -243,6 +103,146 @@ export interface ServicesBillingInvoiceLine {
  * Type of item
  */
 export type ServicesBillingInvoiceLineTypeEnum = 'accessory' | 'consumption' | 'creation' | 'deposit' | 'duration' | 'gift' | 'installation' | 'misc' | 'other' | 'outplan' | 'quantity' | 'special' | 'voucher';
+/**
+ * Description of an Engagement
+ */
+export interface ServicesBillingEngagementEngagement {
+  /**
+   * Current engagement period
+   *
+   */
+  currentPeriod?: ServicesBillingEngagementEngagementPeriod;
+}
+/**
+ * Period of Engagement
+ */
+export interface ServicesBillingEngagementEngagementPeriod {
+  /**
+   * End of the period
+   *
+   */
+  endDate?: Date;
+  /**
+   * Beginning of the period
+   *
+   */
+  startDate?: Date;
+}
+/**
+ * Billing informations of the service
+ */
+export interface ServicesExpandedBilling {
+  /**
+   * Next billing date
+   *
+   */
+  nextBillingDate?: Date;
+  /**
+   * Service Plan
+   *
+   */
+  plan?: ServicesExpandedPlan;
+  /**
+   * Expiration date
+   *
+   */
+  expirationDate?: Date;
+}
+/**
+ * Plan of the service
+ */
+export interface ServicesExpandedPlan {
+  /**
+   * Plan code
+   *
+   */
+  code?: string;
+  /**
+   * Invoice Name
+   *
+   */
+  invoiceName?: string;
+}
+/**
+ * Product of the service
+ */
+export interface ServicesExpandedProduct {
+  /**
+   * Product name
+   *
+   */
+  name?: string;
+  /**
+   * Product description
+   *
+   */
+  description?: string;
+}
+/**
+ * Resource of the service
+ */
+export interface ServicesExpandedResource {
+  /**
+   * Product
+   *
+   */
+  product?: ServicesExpandedProduct;
+  /**
+   * Display name of the resource
+   *
+   */
+  displayName?: string;
+  /**
+   * Name of the resource
+   *
+   */
+  name?: string;
+}
+/**
+ * Route of the service
+ */
+export interface ServicesExpandedRoute {
+  /**
+   * Path to use in API
+   *
+   */
+  path?: string;
+  /**
+   * Variables to use in the path
+   *
+   */
+  vars?: ComplexTypeSafeKeyValue<string>[];
+  /**
+   * Path with variables applied
+   *
+   */
+  url?: string;
+}
+/**
+ * Description of a service
+ */
+export interface ServicesExpandedService {
+  /**
+   * Route
+   *
+   */
+  route?: ServicesExpandedRoute;
+  /**
+   * Resource
+   *
+   */
+  resource?: ServicesExpandedResource;
+  /**
+   * Service ID
+   *
+   */
+  serviceId: Number;
+  /**
+   * Billing information
+   *
+   */
+  billing?: ServicesExpandedBilling;
+}
 type PathsservicesGET = '/services' | 
 '/services/{serviceId}' | 
 '/services/{serviceId}/billing/engagement';

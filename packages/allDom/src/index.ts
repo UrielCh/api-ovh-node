@@ -34,9 +34,9 @@ export interface AllDomAllDomDomain {
  */
 export type AllDomTypeEnum = 'french' | 'french+international' | 'international';
 /**
- * Detailed renewal type of a service
+ * Offer
  */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
+export type DomainOfferEnum = 'diamond' | 'gold' | 'platinum';
 /**
  * Map a possible renew for a specific service
  */
@@ -68,13 +68,13 @@ export interface ServiceRenewType {
   automatic?: boolean;
 }
 /**
+ * Detailed renewal type of a service
+ */
+export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
+/**
  * 
  */
 export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Offer
- */
-export type DomainOfferEnum = 'diamond' | 'gold' | 'platinum';
 /**
  * Details about a Service
  */
@@ -84,10 +84,10 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  contactBilling?: string;
+  engagedUpTo?: Date;
   /**
    */
-  engagedUpTo?: Date;
+  contactBilling?: string;
   /**
    */
   contactAdmin?: string;
@@ -125,15 +125,20 @@ export interface ServicesService {
    */
   canDeleteAtExpiration?: boolean;
 }
-type PathsallDomGET = '/allDom/{serviceName}' | 
+type PathsallDomGET = '/allDom/{serviceName}/serviceInfos' | 
+'/allDom/{serviceName}' | 
 '/allDom/{serviceName}/domain/{domain}' | 
 '/allDom/{serviceName}/domain' | 
-'/allDom/{serviceName}/serviceInfos' | 
 '/allDom';
 
 type PathsallDomPUT = '/allDom/{serviceName}/serviceInfos';
 
 class ApiallDom extends ApiCommon {
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/allDom/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
   /**
   AllDom administration
   Get this object properties
@@ -150,11 +155,6 @@ class ApiallDom extends ApiCommon {
   **/
   public get(path: '/allDom/{serviceName}/domain', pathParams: {serviceName?: string}, queryParams: {domain?: string}): Promise<string[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/allDom/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
   Operations about the ALLDOM service
   List available services
   **/
@@ -164,6 +164,6 @@ class ApiallDom extends ApiCommon {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/allDom/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null, bodyParams: null): Promise<void>;
-  public put(path: PathsallDomPUT, pathParams?: any, queryParams?: any, bodyParams?:any) : Promise<any> {return super.put(path, pathParams, queryParams, bodyParams);}
+  public put(path: '/allDom/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public put(path: PathsallDomPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
 }

@@ -1,149 +1,5 @@
 import { ApiCommon } from '@ovh-api/common';
 /**
- * Region
- */
-export interface DbaasQueueRegion {
-  /**
-   * Region name
-   *
-   */
-  name?: string;
-  /**
-   * Region ID
-   *
-   */
-  id?: string;
-  /**
-   * Region URL
-   *
-   */
-  url?: string;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * KeyWithSecret
- */
-export interface DbaasQueueKeyWithSecret {
-  /**
-   * Key name
-   *
-   */
-  name?: string;
-  /**
-   * Human ID of the key's application
-   *
-   */
-  humanAppId?: string;
-  /**
-   * Key secret
-   *
-   */
-  secret?: string;
-  /**
-   * Key ID
-   *
-   */
-  id?: string;
-}
-/**
- * Topic
- */
-export interface DbaasQueueTopic {
-  /**
-   * Number of partitions
-   *
-   */
-  partitions?: Number;
-  /**
-   * Replication factor
-   *
-   */
-  replicationFactor?: Number;
-  /**
-   * Topic ID
-   *
-   */
-  id?: string;
-}
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced?: boolean;
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic?: boolean;
-}
-/**
- * Key
- */
-export interface DbaasQueueKey {
-  /**
-   * Key name
-   *
-   */
-  name?: string;
-  /**
-   * Human ID of the key's application
-   *
-   */
-  humanAppId?: string;
-  /**
-   * Key ID
-   *
-   */
-  id?: string;
-}
-/**
- * UserWithPassword
- */
-export interface DbaasQueueUserWithPassword {
-  /**
-   * User password
-   *
-   */
-  password?: string;
-  /**
-   * List of roles this user belongs to
-   *
-   */
-  roles?: string[];
-  /**
-   * User name
-   *
-   */
-  name?: string;
-  /**
-   * User ID
-   *
-   */
-  id?: string;
-}
-/**
  * App
  */
 export interface DbaasQueueApp {
@@ -174,6 +30,80 @@ export interface DbaasQueueApp {
   status?: DbaasQueueAppStatus;
 }
 /**
+ * AppConfiguration
+ */
+export interface DbaasQueueAppConfiguration {
+  /**
+   * Application
+   *
+   */
+  app?: DbaasQueueApp;
+  /**
+   * List of created roles
+   *
+   */
+  roles?: DbaasQueueRole[];
+  /**
+   * Metrics account
+   *
+   */
+  metricsAccount?: DbaasQueueMetricsAccount;
+  /**
+   * List of created users
+   *
+   */
+  users?: DbaasQueueUserWithPassword[];
+}
+/**
+ * AppStatus
+ */
+export type DbaasQueueAppStatus = 'not_configured' | 'active' | 'deleted';
+/**
+ * Key
+ */
+export interface DbaasQueueKey {
+  /**
+   * Key name
+   *
+   */
+  name?: string;
+  /**
+   * Human ID of the key's application
+   *
+   */
+  humanAppId?: string;
+  /**
+   * Key ID
+   *
+   */
+  id?: string;
+}
+/**
+ * KeyWithSecret
+ */
+export interface DbaasQueueKeyWithSecret {
+  /**
+   * Key name
+   *
+   */
+  name?: string;
+  /**
+   * Human ID of the key's application
+   *
+   */
+  humanAppId?: string;
+  /**
+   * Key secret
+   *
+   */
+  secret?: string;
+  /**
+   * Key ID
+   *
+   */
+  id?: string;
+}
+/**
  * MetricsAccount
  */
 export interface DbaasQueueMetricsAccount {
@@ -189,33 +119,25 @@ export interface DbaasQueueMetricsAccount {
   token?: string;
 }
 /**
- * User
+ * Region
  */
-export interface DbaasQueueUser {
+export interface DbaasQueueRegion {
   /**
-   * List of roles this user belongs to
-   *
-   */
-  roles?: string[];
-  /**
-   * User name
+   * Region name
    *
    */
   name?: string;
   /**
-   * User ID
+   * Region ID
    *
    */
   id?: string;
+  /**
+   * Region URL
+   *
+   */
+  url?: string;
 }
-/**
- * AppStatus
- */
-export type DbaasQueueAppStatus = 'not_configured' | 'active' | 'deleted';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
 /**
  * Role
  */
@@ -242,30 +164,108 @@ export interface DbaasQueueRole {
   writeAcl?: string[];
 }
 /**
- * AppConfiguration
+ * Topic
  */
-export interface DbaasQueueAppConfiguration {
+export interface DbaasQueueTopic {
   /**
-   * Application
+   * Number of partitions
    *
    */
-  app?: DbaasQueueApp;
+  partitions?: Number;
   /**
-   * List of created roles
+   * Replication factor
    *
    */
-  roles?: DbaasQueueRole[];
+  replicationFactor?: Number;
   /**
-   * Metrics account
+   * Topic ID
    *
    */
-  metricsAccount?: DbaasQueueMetricsAccount;
-  /**
-   * List of created users
-   *
-   */
-  users?: DbaasQueueUserWithPassword[];
+  id?: string;
 }
+/**
+ * User
+ */
+export interface DbaasQueueUser {
+  /**
+   * List of roles this user belongs to
+   *
+   */
+  roles?: string[];
+  /**
+   * User name
+   *
+   */
+  name?: string;
+  /**
+   * User ID
+   *
+   */
+  id?: string;
+}
+/**
+ * UserWithPassword
+ */
+export interface DbaasQueueUserWithPassword {
+  /**
+   * User password
+   *
+   */
+  password?: string;
+  /**
+   * List of roles this user belongs to
+   *
+   */
+  roles?: string[];
+  /**
+   * User name
+   *
+   */
+  name?: string;
+  /**
+   * User ID
+   *
+   */
+  id?: string;
+}
+/**
+ * Map a possible renew for a specific service
+ */
+export interface ServiceRenewType {
+  /**
+   * The service needs to be manually renewed and paid
+   *
+   */
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
+  /**
+   * The service will be deleted at expiration
+   *
+   */
+  deleteAtExpiration?: boolean;
+  /**
+   * The service forced to be renewed
+   *
+   */
+  forced?: boolean;
+  /**
+   * The service is automatically renewed
+   *
+   */
+  automatic?: boolean;
+}
+/**
+ * Detailed renewal type of a service
+ */
+export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
+/**
+ * 
+ */
+export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
 /**
  * Details about a Service
  */
@@ -275,10 +275,10 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  contactBilling?: string;
+  engagedUpTo?: Date;
   /**
    */
-  engagedUpTo?: Date;
+  contactBilling?: string;
   /**
    */
   contactAdmin?: string;
@@ -308,29 +308,29 @@ export interface ServicesService {
    */
   creation?: Date;
   /**
+   */
+  status?: ServiceStateEnum;
+  /**
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
   canDeleteAtExpiration?: boolean;
-  /**
-   */
-  status?: ServiceStateEnum;
 }
 type PathsdbaasqueueGET = '/dbaas/queue' | 
-'/dbaas/queue/{serviceName}/key/{keyId}' | 
-'/dbaas/queue/{serviceName}/key' | 
-'/dbaas/queue/{serviceName}/metrics/account' | 
-'/dbaas/queue/{serviceName}/region' | 
-'/dbaas/queue/{serviceName}/region/{regionId}' | 
-'/dbaas/queue/{serviceName}/serviceInfos' | 
+'/dbaas/queue/{serviceName}/user' | 
+'/dbaas/queue/{serviceName}/user/{userId}/roles' | 
+'/dbaas/queue/{serviceName}/user/{userId}' | 
 '/dbaas/queue/{serviceName}/role/{roleName}' | 
 '/dbaas/queue/{serviceName}/role' | 
-'/dbaas/queue/{serviceName}/user/{userId}' | 
-'/dbaas/queue/{serviceName}/user/{userId}/roles' | 
-'/dbaas/queue/{serviceName}/user' | 
+'/dbaas/queue/{serviceName}/key' | 
+'/dbaas/queue/{serviceName}/key/{keyId}' | 
+'/dbaas/queue/{serviceName}/serviceInfos' | 
 '/dbaas/queue/{serviceName}' | 
+'/dbaas/queue/{serviceName}/topic' | 
 '/dbaas/queue/{serviceName}/topic/{topicId}' | 
-'/dbaas/queue/{serviceName}/topic';
+'/dbaas/queue/{serviceName}/metrics/account' | 
+'/dbaas/queue/{serviceName}/region/{regionId}' | 
+'/dbaas/queue/{serviceName}/region';
 
 type PathsdbaasqueuePUT = '/dbaas/queue/{serviceName}/serviceInfos' | 
 '/dbaas/queue/{serviceName}';
@@ -346,35 +346,20 @@ class Apidbaasqueue extends ApiCommon {
   **/
   public get(path: '/dbaas/queue', pathParams: null, queryParams: null): Promise<string[]>;
   /**
-  Key
-  Get a key
+  User
+  List all users of the application
   **/
-  public get(path: '/dbaas/queue/{serviceName}/key/{keyId}', pathParams: {serviceName?: string, keyId?: string}, queryParams: null): Promise<DbaasQueueKey>;
+  public get(path: '/dbaas/queue/{serviceName}/user', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
   /**
-  Key
-  List all keys of the application
+  User roles
+  Get user roles
   **/
-  public get(path: '/dbaas/queue/{serviceName}/key', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
+  public get(path: '/dbaas/queue/{serviceName}/user/{userId}/roles', pathParams: {serviceName?: string, userId?: string}, queryParams: null): Promise<string[]>;
   /**
-  Metrics
-  Get metrics account
+  User
+  Get a user
   **/
-  public get(path: '/dbaas/queue/{serviceName}/metrics/account', pathParams: {serviceName?: string}, queryParams: null): Promise<DbaasQueueMetricsAccount>;
-  /**
-  Region
-  List all regions ID
-  **/
-  public get(path: '/dbaas/queue/{serviceName}/region', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Region
-  Get one region
-  **/
-  public get(path: '/dbaas/queue/{serviceName}/region/{regionId}', pathParams: {serviceName?: string, regionId?: string}, queryParams: null): Promise<DbaasQueueRegion>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/dbaas/queue/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
+  public get(path: '/dbaas/queue/{serviceName}/user/{userId}', pathParams: {serviceName?: string, userId?: string}, queryParams: null): Promise<DbaasQueueUser>;
   /**
   Role
   Get a role
@@ -386,20 +371,20 @@ class Apidbaasqueue extends ApiCommon {
   **/
   public get(path: '/dbaas/queue/{serviceName}/role', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
   /**
-  User
-  Get a user
+  Key
+  List all keys of the application
   **/
-  public get(path: '/dbaas/queue/{serviceName}/user/{userId}', pathParams: {serviceName?: string, userId?: string}, queryParams: null): Promise<DbaasQueueUser>;
+  public get(path: '/dbaas/queue/{serviceName}/key', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
   /**
-  User roles
-  Get user roles
+  Key
+  Get a key
   **/
-  public get(path: '/dbaas/queue/{serviceName}/user/{userId}/roles', pathParams: {serviceName?: string, userId?: string}, queryParams: null): Promise<string[]>;
+  public get(path: '/dbaas/queue/{serviceName}/key/{keyId}', pathParams: {serviceName?: string, keyId?: string}, queryParams: null): Promise<DbaasQueueKey>;
   /**
-  User
-  List all users of the application
+  Details about a Service
+  Get this object properties
   **/
-  public get(path: '/dbaas/queue/{serviceName}/user', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
+  public get(path: '/dbaas/queue/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
   /**
   App
   Get an application
@@ -407,36 +392,51 @@ class Apidbaasqueue extends ApiCommon {
   public get(path: '/dbaas/queue/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<DbaasQueueApp>;
   /**
   Topic
+  List all topics of the application
+  **/
+  public get(path: '/dbaas/queue/{serviceName}/topic', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
+  /**
+  Topic
   Get a topic
   **/
   public get(path: '/dbaas/queue/{serviceName}/topic/{topicId}', pathParams: {serviceName?: string, topicId?: string}, queryParams: null): Promise<DbaasQueueTopic>;
   /**
-  Topic
-  List all topics of the application
+  Metrics
+  Get metrics account
   **/
-  public get(path: '/dbaas/queue/{serviceName}/topic', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
+  public get(path: '/dbaas/queue/{serviceName}/metrics/account', pathParams: {serviceName?: string}, queryParams: null): Promise<DbaasQueueMetricsAccount>;
+  /**
+  Region
+  Get one region
+  **/
+  public get(path: '/dbaas/queue/{serviceName}/region/{regionId}', pathParams: {serviceName?: string, regionId?: string}, queryParams: null): Promise<DbaasQueueRegion>;
+  /**
+  Region
+  List all regions ID
+  **/
+  public get(path: '/dbaas/queue/{serviceName}/region', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
   public get(path: PathsdbaasqueueGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dbaas/queue/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null, bodyParams: null): Promise<void>;
+  public put(path: '/dbaas/queue/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
   /**
   App
   Update an application
   **/
-  public put(path: '/dbaas/queue/{serviceName}', pathParams: {serviceName?: string}, queryParams: null, bodyParams: null): Promise<DbaasQueueApp>;
-  public put(path: PathsdbaasqueuePUT, pathParams?: any, queryParams?: any, bodyParams?:any) : Promise<any> {return super.put(path, pathParams, queryParams, bodyParams);}
+  public put(path: '/dbaas/queue/{serviceName}', pathParams: {serviceName?: string}, bodyParams: null): Promise<DbaasQueueApp>;
+  public put(path: PathsdbaasqueuePUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   User
   Generate a new user password
   **/
-  public post(path: '/dbaas/queue/{serviceName}/user/{userId}/changePassword', pathParams: {serviceName?: string, userId?: string}, queryParams: null, bodyParams: null): Promise<DbaasQueueUserWithPassword>;
-  public post(path: PathsdbaasqueuePOST, pathParams?: any, queryParams?: any, bodyParams?:any) : Promise<any> {return super.post(path, pathParams, queryParams, bodyParams);}
+  public post(path: '/dbaas/queue/{serviceName}/user/{userId}/changePassword', pathParams: {serviceName?: string, userId?: string}, bodyParams: null): Promise<DbaasQueueUserWithPassword>;
+  public post(path: PathsdbaasqueuePOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Topic
   Delete a topic
   **/
-  public delete(path: '/dbaas/queue/{serviceName}/topic/{topicId}', pathParams: {serviceName?: string, topicId?: string}, queryParams: null, bodyParams: null): Promise<void>;
-  public delete(path: PathsdbaasqueueDELETE, pathParams?: any, queryParams?: any, bodyParams?:any) : Promise<any> {return super.delete(path, pathParams, queryParams, bodyParams);}
+  public delete(path: '/dbaas/queue/{serviceName}/topic/{topicId}', pathParams: {serviceName?: string, topicId?: string}, bodyParams: null): Promise<void>;
+  public delete(path: PathsdbaasqueueDELETE, pathParams?: any, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

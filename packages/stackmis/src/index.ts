@@ -1,24 +1,5 @@
 import { ApiCommon } from '@ovh-api/common';
 /**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * Stack MIS
- */
-export interface StackMisProduct {
-  /**
-   * Domain of the service
-   *
-   */
-  domain?: string;
-  /**
-   * Type of the infrastructure
-   *
-   */
-  type?: StackStackTypeEnum;
-}
-/**
  * Map a possible renew for a specific service
  */
 export interface ServiceRenewType {
@@ -49,13 +30,13 @@ export interface ServiceRenewType {
   automatic?: boolean;
 }
 /**
+ * Detailed renewal type of a service
+ */
+export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
+/**
  * 
  */
 export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Stack type
- */
-export type StackStackTypeEnum = 'MDS' | 'MIS' | 'MOS';
 /**
  * Details about a Service
  */
@@ -106,13 +87,37 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsstackmisGET = '/stack/mis/{serviceName}/serviceInfos' | 
-'/stack/mis/{serviceName}' | 
-'/stack/mis';
+/**
+ * Stack type
+ */
+export type StackStackTypeEnum = 'MDS' | 'MIS' | 'MOS';
+/**
+ * Stack MIS
+ */
+export interface StackMisProduct {
+  /**
+   * Domain of the service
+   *
+   */
+  domain?: string;
+  /**
+   * Type of the infrastructure
+   *
+   */
+  type?: StackStackTypeEnum;
+}
+type PathsstackmisGET = '/stack/mis' | 
+'/stack/mis/{serviceName}/serviceInfos' | 
+'/stack/mis/{serviceName}';
 
 type PathsstackmisPUT = '/stack/mis/{serviceName}/serviceInfos';
 
 class Apistackmis extends ApiCommon {
+  /**
+  Operations about the GS service
+  List available services
+  **/
+  public get(path: '/stack/mis', pathParams: null, queryParams: null): Promise<string[]>;
   /**
   Details about a Service
   Get this object properties
@@ -123,16 +128,11 @@ class Apistackmis extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/stack/mis/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<StackMisProduct>;
-  /**
-  Operations about the GS service
-  List available services
-  **/
-  public get(path: '/stack/mis', pathParams: null, queryParams: null): Promise<string[]>;
   public get(path: PathsstackmisGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/stack/mis/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null, bodyParams: null): Promise<void>;
-  public put(path: PathsstackmisPUT, pathParams?: any, queryParams?: any, bodyParams?:any) : Promise<any> {return super.put(path, pathParams, queryParams, bodyParams);}
+  public put(path: '/stack/mis/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public put(path: PathsstackmisPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
 }
