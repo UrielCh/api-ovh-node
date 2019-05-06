@@ -27,7 +27,7 @@ export interface DeskaasTask {
    * Task last modification date
    *
    */
-  lastModificationDate?: Date;
+  lastModificationDate?: string;
   /**
    * Task name
    *
@@ -252,16 +252,16 @@ export interface ServicesService {
   contactTech?: string;
   /**
    */
-  creation?: Date;
+  creation?: string;
   /**
    */
   domain?: string;
   /**
    */
-  engagedUpTo?: Date;
+  engagedUpTo?: string;
   /**
    */
-  expiration?: Date;
+  expiration?: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -284,26 +284,26 @@ export interface ServicesService {
 }
 type PathsDeskaasGET = '/deskaas/{serviceName}/task/{taskId}' | 
 '/deskaas/{serviceName}/task' | 
-'/deskaas/{serviceName}/serviceInfos' | 
-'/deskaas/{serviceName}/passwordPolicy' | 
 '/deskaas/{serviceName}/user/task/{taskId}' | 
 '/deskaas/{serviceName}/user/task' | 
 '/deskaas/{serviceName}/user' | 
+'/deskaas/{serviceName}/passwordPolicy' | 
 '/deskaas/{serviceName}' | 
+'/deskaas/{serviceName}/serviceInfos' | 
 '/deskaas';
 
 type PathsDeskaasPUT = '/deskaas/{serviceName}/serviceInfos';
 
-type PathsDeskaasPOST = '/deskaas/{serviceName}/changeAlias' | 
+type PathsDeskaasPOST = '/deskaas/{serviceName}/upgrade' | 
 '/deskaas/{serviceName}/refresh' | 
-'/deskaas/{serviceName}/terminate' | 
-'/deskaas/{serviceName}/confirmTermination' | 
 '/deskaas/{serviceName}/console' | 
-'/deskaas/{serviceName}/reboot' | 
-'/deskaas/{serviceName}/changeContact' | 
-'/deskaas/{serviceName}/user/changePassword' | 
 '/deskaas/{serviceName}/user/changeProperties' | 
-'/deskaas/{serviceName}/upgrade';
+'/deskaas/{serviceName}/user/changePassword' | 
+'/deskaas/{serviceName}/changeContact' | 
+'/deskaas/{serviceName}/terminate' | 
+'/deskaas/{serviceName}/changeAlias' | 
+'/deskaas/{serviceName}/reboot' | 
+'/deskaas/{serviceName}/confirmTermination';
 
 export class ApiDeskaas extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
@@ -320,16 +320,6 @@ export class ApiDeskaas extends ApiCommon {
   **/
   public get(path: '/deskaas/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {state?: DeskaasTaskStateEnum}): Promise<Number[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/deskaas/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  passwordPolicy operations
-  Get the current password policy for your Desktop As A Service
-  **/
-  public get(path: '/deskaas/{serviceName}/passwordPolicy', pathParams: {serviceName: string}): Promise<DeskaasPasswordPolicy>;
-  /**
   Operation on a Desktop As A Service component
   Get this object properties
   **/
@@ -345,71 +335,81 @@ export class ApiDeskaas extends ApiCommon {
   **/
   public get(path: '/deskaas/{serviceName}/user', pathParams: {serviceName: string}): Promise<DeskaasUser>;
   /**
+  passwordPolicy operations
+  Get the current password policy for your Desktop As A Service
+  **/
+  public get(path: '/deskaas/{serviceName}/passwordPolicy', pathParams: {serviceName: string}): Promise<DeskaasPasswordPolicy>;
+  /**
   Desktop As A Service
   Get this object properties
   **/
   public get(path: '/deskaas/{serviceName}', pathParams: {serviceName: string}): Promise<DeskaasDeskaas>;
   /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/deskaas/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
   Operations about the DESKAAS service
   List available services
   **/
   public get(path: '/deskaas'): Promise<string[]>;
-  public get(path: PathsDeskaasGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: PathsDeskaasGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
   public put(path: '/deskaas/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsDeskaasPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: PathsDeskaasPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  changeAlias operations
-  Change the Virtual Desktop alias
+  upgrade operations
+  Upgrading the Desktop As A Service to another profile. The Virtual Desktop will not be available during upgrade and has to be restarted. You cannot downgrade a Virtual Desktop
   **/
-  public post(path: '/deskaas/{serviceName}/changeAlias', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: '/deskaas/{serviceName}/upgrade', pathParams: {serviceName: string}): Promise<DeskaasTask>;
   /**
   refresh operations
   Refresh the Operating system of the Desktop As A Service. All your personnal data are kept.
   **/
   public post(path: '/deskaas/{serviceName}/refresh', pathParams: {serviceName: string}): Promise<DeskaasTask>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
-  public post(path: '/deskaas/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
-  public post(path: '/deskaas/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
-  /**
   console operations
   New console access
   **/
   public post(path: '/deskaas/{serviceName}/console', pathParams: {serviceName: string}): Promise<DeskaasTask>;
-  /**
-  reboot operations
-  Reboot the Operating system of the Cloud Desktop.
-  **/
-  public post(path: '/deskaas/{serviceName}/reboot', pathParams: {serviceName: string}): Promise<DeskaasTask>;
-  /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
-  public post(path: '/deskaas/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  changePassword operations
-  Change Desktop As A Service user password
-  **/
-  public post(path: '/deskaas/{serviceName}/user/changePassword', pathParams: {serviceName: string}): Promise<DeskaasTask>;
   /**
   changeProperties operations
   Change Desktop As A Service user properties
   **/
   public post(path: '/deskaas/{serviceName}/user/changeProperties', pathParams: {serviceName: string}): Promise<DeskaasTask>;
   /**
-  upgrade operations
-  Upgrading the Desktop As A Service to another profile. The Virtual Desktop will not be available during upgrade and has to be restarted. You cannot downgrade a Virtual Desktop
+  changePassword operations
+  Change Desktop As A Service user password
   **/
-  public post(path: '/deskaas/{serviceName}/upgrade', pathParams: {serviceName: string}): Promise<DeskaasTask>;
-  public post(path: PathsDeskaasPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/deskaas/{serviceName}/user/changePassword', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  /**
+  Change the contacts of this service
+  Launch a contact change procedure
+  **/
+  public post(path: '/deskaas/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/deskaas/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  changeAlias operations
+  Change the Virtual Desktop alias
+  **/
+  public post(path: '/deskaas/{serviceName}/changeAlias', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  /**
+  reboot operations
+  Reboot the Operating system of the Cloud Desktop.
+  **/
+  public post(path: '/deskaas/{serviceName}/reboot', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  /**
+  Confirm termination of your service
+  Confirm termination of your service
+  **/
+  public post(path: '/deskaas/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: PathsDeskaasPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

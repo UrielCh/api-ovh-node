@@ -220,58 +220,43 @@ export interface ComplexTypeSafeKeyValue<T> {
    */
   value?: T;
 }
-type PathsStoreGET = '/store/contact' | 
+type PathsStoreGET = '/store/document/{documentId}' | 
+'/store/document' | 
 '/store/contact/{contactId}' | 
 '/store/contact/{contactId}/document' | 
-'/store/document/{documentId}' | 
-'/store/document' | 
-'/store/partner/{partnerId}/product' | 
-'/store/partner/{partnerId}/product/{productId}/document' | 
-'/store/partner/{partnerId}/product/{productId}' | 
+'/store/contact' | 
+'/store/partner' | 
 '/store/partner/{partnerId}/document' | 
 '/store/partner/{partnerId}' | 
-'/store/partner';
+'/store/partner/{partnerId}/product/{productId}/document' | 
+'/store/partner/{partnerId}/product/{productId}' | 
+'/store/partner/{partnerId}/product';
 
 type PathsStorePUT = '/store/contact/{contactId}' | 
-'/store/partner/{partnerId}/product/{productId}' | 
-'/store/partner/{partnerId}';
+'/store/partner/{partnerId}' | 
+'/store/partner/{partnerId}/product/{productId}';
 
-type PathsStorePOST = '/store/contact' | 
-'/store/contact/{contactId}/document' | 
-'/store/document/cors' | 
+type PathsStorePOST = '/store/document/cors' | 
 '/store/document' | 
-'/store/partner/{partnerId}/product' | 
-'/store/partner/{partnerId}/product/{productId}/document' | 
+'/store/contact/{contactId}/document' | 
+'/store/contact' | 
+'/store/partner' | 
 '/store/partner/{partnerId}/document' | 
-'/store/partner';
+'/store/partner/{partnerId}/product/{productId}/document' | 
+'/store/partner/{partnerId}/product';
 
-type PathsStoreDELETE = '/store/contact/{contactId}' | 
+type PathsStoreDELETE = '/store/document/{documentId}' | 
+'/store/contact/{contactId}' | 
 '/store/contact/{contactId}/document/{documentId}' | 
-'/store/document/{documentId}' | 
-'/store/partner/{partnerId}/product/{productId}/document/{documentId}' | 
-'/store/partner/{partnerId}/product/{productId}' | 
 '/store/partner/{partnerId}/document/{documentId}' | 
-'/store/partner/{partnerId}';
+'/store/partner/{partnerId}' | 
+'/store/partner/{partnerId}/product/{productId}/document/{documentId}' | 
+'/store/partner/{partnerId}/product/{productId}';
 
 export class ApiStore extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
     super(config);
   }
-  /**
-  MarketPlaceContact
-  List current customer contacts
-  **/
-  public get(path: '/store/contact'): Promise<MarketPlaceContact[]>;
-  /**
-  MarketPlaceContact.contactId
-  Get contact details
-  **/
-  public get(path: '/store/contact/{contactId}', pathParams: {contactId: string}): Promise<MarketPlaceContact>;
-  /**
-  MarketPlaceContact.doc
-  List document associated with contact
-  **/
-  public get(path: '/store/contact/{contactId}/document', pathParams: {contactId: string}): Promise<string[]>;
   /**
   MarketPlaceDocument.documentId
   Get document info
@@ -283,20 +268,25 @@ export class ApiStore extends ApiCommon {
   **/
   public get(path: '/store/document'): Promise<MarketPlaceDocument[]>;
   /**
-  MarketPlacePartnerProduct.search
-  List partner's products
+  MarketPlaceContact.contactId
+  Get contact details
   **/
-  public get(path: '/store/partner/{partnerId}/product', pathParams: {partnerId: string}): Promise<MarketPlacePartnerProduct[]>;
+  public get(path: '/store/contact/{contactId}', pathParams: {contactId: string}): Promise<MarketPlaceContact>;
   /**
-  MarketPlacePartnerProduct.doc
-  List document associated with product
+  MarketPlaceContact.doc
+  List document associated with contact
   **/
-  public get(path: '/store/partner/{partnerId}/product/{productId}/document', pathParams: {partnerId: string, productId: string}): Promise<string[]>;
+  public get(path: '/store/contact/{contactId}/document', pathParams: {contactId: string}): Promise<string[]>;
   /**
-  MarketPlacePartnerProduct.get
-  Get partner info
+  MarketPlaceContact
+  List current customer contacts
   **/
-  public get(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId: string, productId: string}): Promise<MarketPlacePartnerProduct>;
+  public get(path: '/store/contact'): Promise<MarketPlaceContact[]>;
+  /**
+  MarketPlacePartner.search
+  List current customer partners
+  **/
+  public get(path: '/store/partner'): Promise<MarketPlacePartner[]>;
   /**
   MarketPlacePartner.doc
   List document associated with partner
@@ -308,37 +298,37 @@ export class ApiStore extends ApiCommon {
   **/
   public get(path: '/store/partner/{partnerId}', pathParams: {partnerId: string}): Promise<MarketPlacePartner>;
   /**
-  MarketPlacePartner.search
-  List current customer partners
+  MarketPlacePartnerProduct.doc
+  List document associated with product
   **/
-  public get(path: '/store/partner'): Promise<MarketPlacePartner[]>;
-  public get(path: PathsStoreGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/store/partner/{partnerId}/product/{productId}/document', pathParams: {partnerId: string, productId: string}): Promise<string[]>;
+  /**
+  MarketPlacePartnerProduct.get
+  Get partner info
+  **/
+  public get(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId: string, productId: string}): Promise<MarketPlacePartnerProduct>;
+  /**
+  MarketPlacePartnerProduct.search
+  List partner's products
+  **/
+  public get(path: '/store/partner/{partnerId}/product', pathParams: {partnerId: string}): Promise<MarketPlacePartnerProduct[]>;
+  public get(path: PathsStoreGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   MarketPlaceContact.contactId
   Edit contact information
   **/
   public put(path: '/store/contact/{contactId}', pathParams: {contactId: string}): Promise<MarketPlaceContact>;
   /**
-  MarketPlacePartnerProduct.get
-  Edit product info
-  **/
-  public put(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId: string, productId: string}): Promise<MarketPlacePartnerProduct>;
-  /**
   MarketPlacePartner.get
   Edit partner info
   **/
   public put(path: '/store/partner/{partnerId}', pathParams: {partnerId: string}): Promise<MarketPlacePartner>;
-  public put(path: PathsStorePUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  MarketPlaceContact
-  Create a 'marketplace' contact for current nic
+  MarketPlacePartnerProduct.get
+  Edit product info
   **/
-  public post(path: '/store/contact'): Promise<MarketPlaceContact>;
-  /**
-  MarketPlaceContact.doc
-  Add a document to a contact
-  **/
-  public post(path: '/store/contact/{contactId}/document', pathParams: {contactId: string}): Promise<string[]>;
+  public put(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId: string, productId: string}): Promise<MarketPlacePartnerProduct>;
+  public put(path: PathsStorePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   MarketPlaceDocument
   Add CORS support on your container
@@ -350,26 +340,41 @@ export class ApiStore extends ApiCommon {
   **/
   public post(path: '/store/document'): Promise<MarketPlaceDocument>;
   /**
-  MarketPlacePartnerProduct.search
-  Create a new product for partner
+  MarketPlaceContact.doc
+  Add a document to a contact
   **/
-  public post(path: '/store/partner/{partnerId}/product', pathParams: {partnerId: string}): Promise<MarketPlacePartnerProduct>;
+  public post(path: '/store/contact/{contactId}/document', pathParams: {contactId: string}): Promise<string[]>;
   /**
-  MarketPlacePartnerProduct.doc
-  Add a document to a product
+  MarketPlaceContact
+  Create a 'marketplace' contact for current nic
   **/
-  public post(path: '/store/partner/{partnerId}/product/{productId}/document', pathParams: {partnerId: string, productId: string}): Promise<string[]>;
+  public post(path: '/store/contact'): Promise<MarketPlaceContact>;
+  /**
+  MarketPlacePartner.search
+  Create a 'marketplace' partner for current nic
+  **/
+  public post(path: '/store/partner'): Promise<MarketPlacePartner>;
   /**
   MarketPlacePartner.doc
   Add a document to a partner
   **/
   public post(path: '/store/partner/{partnerId}/document', pathParams: {partnerId: string}): Promise<string[]>;
   /**
-  MarketPlacePartner.search
-  Create a 'marketplace' partner for current nic
+  MarketPlacePartnerProduct.doc
+  Add a document to a product
   **/
-  public post(path: '/store/partner'): Promise<MarketPlacePartner>;
-  public post(path: PathsStorePOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/store/partner/{partnerId}/product/{productId}/document', pathParams: {partnerId: string, productId: string}): Promise<string[]>;
+  /**
+  MarketPlacePartnerProduct.search
+  Create a new product for partner
+  **/
+  public post(path: '/store/partner/{partnerId}/product', pathParams: {partnerId: string}): Promise<MarketPlacePartnerProduct>;
+  public post(path: PathsStorePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  /**
+  MarketPlaceDocument.documentId
+  Delete document
+  **/
+  public delete(path: '/store/document/{documentId}', pathParams: {documentId: string}): Promise<string>;
   /**
   MarketPlaceContact.contactId
   Remove an existing contact
@@ -381,10 +386,15 @@ export class ApiStore extends ApiCommon {
   **/
   public delete(path: '/store/contact/{contactId}/document/{documentId}', pathParams: {contactId: string, documentId: string}): Promise<string[]>;
   /**
-  MarketPlaceDocument.documentId
-  Delete document
+  MarketPlacePartner.doc_id
+  Unlink a document from a partner
   **/
-  public delete(path: '/store/document/{documentId}', pathParams: {documentId: string}): Promise<string>;
+  public delete(path: '/store/partner/{partnerId}/document/{documentId}', pathParams: {partnerId: string, documentId: string}): Promise<string[]>;
+  /**
+  MarketPlacePartner.get
+  Delete partner
+  **/
+  public delete(path: '/store/partner/{partnerId}', pathParams: {partnerId: string}): Promise<string>;
   /**
   MarketPlacePartnerProduct.doc_id
   Unlink a document from a product
@@ -395,15 +405,5 @@ export class ApiStore extends ApiCommon {
   Delete product
   **/
   public delete(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId: string, productId: string}): Promise<string>;
-  /**
-  MarketPlacePartner.doc_id
-  Unlink a document from a partner
-  **/
-  public delete(path: '/store/partner/{partnerId}/document/{documentId}', pathParams: {partnerId: string, documentId: string}): Promise<string[]>;
-  /**
-  MarketPlacePartner.get
-  Delete partner
-  **/
-  public delete(path: '/store/partner/{partnerId}', pathParams: {partnerId: string}): Promise<string>;
-  public delete(path: PathsStoreDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: PathsStoreDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

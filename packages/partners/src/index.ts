@@ -252,7 +252,7 @@ export interface PartnerOVHCertifications {
 /**
  * Possible choices for OVHCustomersAdvisedEnum
  */
-export type PartnerOVHCustomersAdvisedEnum = 'none' | 'one' | 'from2To3' | 'from4To5' | 'moreThan5';
+export type PartnerOVHCustomersAdvisedEnum = 'from2To3' | 'from4To5' | 'moreThan5' | 'none' | 'one';
 /**
  * Possible choices for OVHProductsUsed
  */
@@ -526,11 +526,11 @@ export interface PartnerClientKinds {
 /**
  * Possible choices for companyStatusEnum
  */
-export type PartnerCompanyStatusEnum = 'draft' | 'submitted' | 'validated' | 'rejected';
+export type PartnerCompanyStatusEnum = 'draft' | 'rejected' | 'submitted' | 'validated';
 /**
  * Possible ranges for company employees number
  */
-export type PartnerEmployeesNumberEnum = 'from1To10' | 'from11To50' | 'from51To100' | 'from101To500' | 'moreThan500';
+export type PartnerEmployeesNumberEnum = 'from101To500' | 'from11To50' | 'from1To10' | 'from51To100' | 'moreThan500';
 /**
  * Possible choices for expertises
  */
@@ -694,7 +694,7 @@ export interface PartnerExternalCertifications {
 /**
  * Possible ranges for knowledgeResources
  */
-export type PartnerKnowledgeResourcesRangeEnum = 'none' | 'from1To3' | 'from4To10' | 'moreThan10';
+export type PartnerKnowledgeResourcesRangeEnum = 'from1To3' | 'from4To10' | 'moreThan10' | 'none';
 /**
  * Possible choices for partnerKnowledges
  */
@@ -843,54 +843,39 @@ export interface PartnerProductCountries {
 /**
  * Possible ranges for revenue
  */
-export type PartnerRevenueRangeEnum = 'lessThan50000Euros' | 'from50000To500000Euros' | 'from500000To5000000Euros' | 'moreThan5000000Euros' | 'IDoNotWishToDiscloseThisInformation';
+export type PartnerRevenueRangeEnum = 'IDoNotWishToDiscloseThisInformation' | 'from500000To5000000Euros' | 'from50000To500000Euros' | 'lessThan50000Euros' | 'moreThan5000000Euros';
 /**
  * Possible ranges for AdvancedResources
  */
-export type PartnerTechnicalAdvancedResourcesRangeEnum = 'none' | 'from1To3' | 'from4To10' | 'moreThan10';
+export type PartnerTechnicalAdvancedResourcesRangeEnum = 'from1To3' | 'from4To10' | 'moreThan10' | 'none';
 /**
  * Possible ranges for revenue
  */
-export type PartnerTechnicalExpertResourcesRangeEnum = 'none' | 'from1To3' | 'from4To10' | 'moreThan10';
+export type PartnerTechnicalExpertResourcesRangeEnum = 'from1To3' | 'from4To10' | 'moreThan10' | 'none';
 /**
  * Countries a nichandle can choose
  */
 export type NichandleCountryEnum = 'AC' | 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL' | 'AM' | 'AO' | 'AQ' | 'AR' | 'AS' | 'AT' | 'AU' | 'AW' | 'AX' | 'AZ' | 'BA' | 'BB' | 'BD' | 'BE' | 'BF' | 'BG' | 'BH' | 'BI' | 'BJ' | 'BL' | 'BM' | 'BN' | 'BO' | 'BQ' | 'BR' | 'BS' | 'BT' | 'BW' | 'BY' | 'BZ' | 'CA' | 'CC' | 'CD' | 'CF' | 'CG' | 'CH' | 'CI' | 'CK' | 'CL' | 'CM' | 'CN' | 'CO' | 'CR' | 'CU' | 'CV' | 'CW' | 'CX' | 'CY' | 'CZ' | 'DE' | 'DG' | 'DJ' | 'DK' | 'DM' | 'DO' | 'DZ' | 'EA' | 'EC' | 'EE' | 'EG' | 'EH' | 'ER' | 'ES' | 'ET' | 'FI' | 'FJ' | 'FK' | 'FM' | 'FO' | 'FR' | 'GA' | 'GB' | 'GD' | 'GE' | 'GF' | 'GG' | 'GH' | 'GI' | 'GL' | 'GM' | 'GN' | 'GP' | 'GQ' | 'GR' | 'GS' | 'GT' | 'GU' | 'GW' | 'GY' | 'HK' | 'HN' | 'HR' | 'HT' | 'HU' | 'IC' | 'ID' | 'IE' | 'IL' | 'IM' | 'IN' | 'IO' | 'IQ' | 'IR' | 'IS' | 'IT' | 'JE' | 'JM' | 'JO' | 'JP' | 'KE' | 'KG' | 'KH' | 'KI' | 'KM' | 'KN' | 'KP' | 'KR' | 'KW' | 'KY' | 'KZ' | 'LA' | 'LB' | 'LC' | 'LI' | 'LK' | 'LR' | 'LS' | 'LT' | 'LU' | 'LV' | 'LY' | 'MA' | 'MC' | 'MD' | 'ME' | 'MF' | 'MG' | 'MH' | 'MK' | 'ML' | 'MM' | 'MN' | 'MO' | 'MP' | 'MQ' | 'MR' | 'MS' | 'MT' | 'MU' | 'MV' | 'MW' | 'MX' | 'MY' | 'MZ' | 'NA' | 'NC' | 'NE' | 'NF' | 'NG' | 'NI' | 'NL' | 'NO' | 'NP' | 'NR' | 'NU' | 'NZ' | 'OM' | 'PA' | 'PE' | 'PF' | 'PG' | 'PH' | 'PK' | 'PL' | 'PM' | 'PN' | 'PR' | 'PS' | 'PT' | 'PW' | 'PY' | 'QA' | 'RE' | 'RO' | 'RS' | 'RU' | 'RW' | 'SA' | 'SB' | 'SC' | 'SD' | 'SE' | 'SG' | 'SH' | 'SI' | 'SJ' | 'SK' | 'SL' | 'SM' | 'SN' | 'SO' | 'SR' | 'SS' | 'ST' | 'SV' | 'SX' | 'SY' | 'SZ' | 'TA' | 'TC' | 'TD' | 'TF' | 'TG' | 'TH' | 'TJ' | 'TK' | 'TL' | 'TM' | 'TN' | 'TO' | 'TR' | 'TT' | 'TV' | 'TW' | 'TZ' | 'UA' | 'UG' | 'UM' | 'UNKNOWN' | 'US' | 'UY' | 'UZ' | 'VA' | 'VC' | 'VE' | 'VG' | 'VI' | 'VN' | 'VU' | 'WF' | 'WS' | 'XK' | 'YE' | 'YT' | 'ZA' | 'ZM' | 'ZW';
-type PathsPartnersGET = '/partners/register/company' | 
-'/partners/register/company/{companyId}/contact' | 
+type PathsPartnersGET = '/partners/register/company/{companyId}' | 
+'/partners/register/company/{companyId}/application' | 
 '/partners/register/company/{companyId}/contact/{contactId}' | 
-'/partners/register/company/{companyId}' | 
-'/partners/register/company/{companyId}/application';
-
-type PathsPartnersPUT = '/partners/register/company/{companyId}/contact/{contactId}' | 
-'/partners/register/company/{companyId}';
-
-type PathsPartnersPOST = '/partners/register/company' | 
 '/partners/register/company/{companyId}/contact' | 
-'/partners/register/company/{companyId}/application';
+'/partners/register/company';
 
-type PathsPartnersDELETE = '/partners/register/company/{companyId}/contact/{contactId}' | 
-'/partners/register/company/{companyId}';
+type PathsPartnersPUT = '/partners/register/company/{companyId}' | 
+'/partners/register/company/{companyId}/contact/{contactId}';
+
+type PathsPartnersPOST = '/partners/register/company/{companyId}/application' | 
+'/partners/register/company/{companyId}/contact' | 
+'/partners/register/company';
+
+type PathsPartnersDELETE = '/partners/register/company/{companyId}' | 
+'/partners/register/company/{companyId}/contact/{contactId}';
 
 export class ApiPartners extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
     super(config);
   }
-  /**
-  Company.list
-  List created companies
-  **/
-  public get(path: '/partners/register/company'): Promise<string[]>;
-  /**
-  Contact.list
-  List created contacts
-  **/
-  public get(path: '/partners/register/company/{companyId}/contact', pathParams: {companyId: string}): Promise<string[]>;
-  /**
-  Contact.get
-  Get information on a created contact
-  **/
-  public get(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<PartnerContact>;
   /**
   Company.get
   Get information on a created company
@@ -901,43 +886,58 @@ export class ApiPartners extends ApiCommon {
   Compute scoring score without submitting application
   **/
   public get(path: '/partners/register/company/{companyId}/application', pathParams: {companyId: string}): Promise<PartnerApplication>;
-  public get(path: PathsPartnersGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Contact.get
-  Update some fields on a created contact
+  Get information on a created contact
   **/
-  public put(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<PartnerContact>;
+  public get(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<PartnerContact>;
+  /**
+  Contact.list
+  List created contacts
+  **/
+  public get(path: '/partners/register/company/{companyId}/contact', pathParams: {companyId: string}): Promise<string[]>;
+  /**
+  Company.list
+  List created companies
+  **/
+  public get(path: '/partners/register/company'): Promise<string[]>;
+  public get(path: PathsPartnersGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Company.get
   Update some fields on a created company
   **/
   public put(path: '/partners/register/company/{companyId}', pathParams: {companyId: string}): Promise<PartnerCompany>;
-  public put(path: PathsPartnersPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  Company.list
-  Created a new company for the inscription
+  Contact.get
+  Update some fields on a created contact
   **/
-  public post(path: '/partners/register/company'): Promise<PartnerCompany>;
+  public put(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<PartnerContact>;
+  public put(path: PathsPartnersPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  /**
+  Application.create
+  Submit application information for validation
+  **/
+  public post(path: '/partners/register/company/{companyId}/application', pathParams: {companyId: string}): Promise<PartnerApplication>;
   /**
   Contact.list
   Created a new contact for the inscription
   **/
   public post(path: '/partners/register/company/{companyId}/contact', pathParams: {companyId: string}): Promise<PartnerContact>;
   /**
-  Application.create
-  Submit application information for validation
+  Company.list
+  Created a new company for the inscription
   **/
-  public post(path: '/partners/register/company/{companyId}/application', pathParams: {companyId: string}): Promise<PartnerApplication>;
-  public post(path: PathsPartnersPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
-  /**
-  Contact.get
-  Remove a contact
-  **/
-  public delete(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<string>;
+  public post(path: '/partners/register/company'): Promise<PartnerCompany>;
+  public post(path: PathsPartnersPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Company.get
   Remove a company
   **/
   public delete(path: '/partners/register/company/{companyId}', pathParams: {companyId: string}): Promise<string>;
-  public delete(path: PathsPartnersDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  /**
+  Contact.get
+  Remove a contact
+  **/
+  public delete(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<string>;
+  public delete(path: PathsPartnersDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

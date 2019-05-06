@@ -109,16 +109,16 @@ export interface ServicesService {
   contactTech?: string;
   /**
    */
-  creation?: Date;
+  creation?: string;
   /**
    */
   domain?: string;
   /**
    */
-  engagedUpTo?: Date;
+  engagedUpTo?: string;
   /**
    */
-  expiration?: Date;
+  expiration?: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -215,7 +215,7 @@ export interface TelephonyRma {
    * Creation datetime of the return merchandise authorisation ticket
    *
    */
-  creationDatetime?: Date;
+  creationDatetime?: string;
   /**
    * Merchandise reference
    *
@@ -250,7 +250,7 @@ export interface TelephonyRma {
    * Reception datetime of the return merchandise authorisation ticket
    *
    */
-  receptionDatetime?: Date;
+  receptionDatetime?: string;
   /**
    * Contact information related to the delivery shipping in case of exchange
    *
@@ -270,7 +270,7 @@ export interface TelephonyRma {
    * Termination datetime of the return merchandise authorisation ticket
    *
    */
-  terminationDatetime?: Date;
+  terminationDatetime?: string;
   /**
    * Typology process of merchandise return
    *
@@ -302,7 +302,7 @@ export interface TelephonyRmaStep {
    * The date when this step was done
    *
    */
-  doneDate?: Date;
+  doneDate?: string;
   /**
    * Additional informations about the step
    *
@@ -412,7 +412,7 @@ export interface XdslAccessDiagnostic {
    * Datime of the diagnostic
    *
    */
-  diagnosticTime?: Date;
+  diagnosticTime?: string;
   /**
    * Is there an ongoing genericIncident on the access ?
    *
@@ -538,7 +538,7 @@ export interface XdslAntiSpam {
    * Detection date
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * IP which spam
    *
@@ -548,7 +548,7 @@ export interface XdslAntiSpam {
    * Last spam detection date
    *
    */
-  lastSpamDetected?: Date;
+  lastSpamDetected?: string;
   /**
    * AntiSpam status
    *
@@ -726,7 +726,7 @@ export interface XdslDeviceModemInfo {
    * Time of last information refresh
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * Modem mac address
    *
@@ -789,12 +789,12 @@ export interface XdslDslamPort {
    * Last time the port lost the synchronization
    *
    */
-  lastDesyncDate?: Date;
+  lastDesyncDate?: string;
   /**
    * Last time the port synchronized
    *
    */
-  lastSyncDate?: Date;
+  lastSyncDate?: string;
   /**
    */
   profile?: XdslDslamLineProfile;
@@ -808,12 +808,12 @@ export interface XdslDslamPort {
 export interface XdslDslamPortLog {
   /**
    */
-  date?: Date;
+  date?: string;
   /**
    * The last time this message occured
    *
    */
-  lastOccurrenceDate?: Date;
+  lastOccurrenceDate?: string;
   /**
    */
   message?: string;
@@ -835,7 +835,7 @@ export interface XdslExtraIpRangeMove {
    * Date of the migration
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * IP range to migrate
    *
@@ -890,7 +890,7 @@ export interface XdslIncident {
    * Estimated start date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Department list
    *
@@ -900,7 +900,7 @@ export interface XdslIncident {
    * Estimated end date
    *
    */
-  endDate?: Date;
+  endDate?: string;
   /**
    * ID of the incident
    *
@@ -1046,7 +1046,7 @@ export interface XdslLineDiagnostic {
   lineTest?: XdslLineTestEnum;
   /**
    */
-  lineTestTime?: Date;
+  lineTestTime?: string;
   /**
    */
   number?: string;
@@ -1114,7 +1114,7 @@ export interface XdslModem {
    * Last time the modem made a CWMP request to the Auto Configuration Server
    *
    */
-  lastCwmpRequestDate?: Date;
+  lastCwmpRequestDate?: string;
   /**
    */
   macAddress?: string;
@@ -1251,7 +1251,7 @@ export interface XdslPendingAction {
   action?: string;
   /**
    */
-  dateTodo?: Date;
+  dateTodo?: string;
 }
 /**
  * Port Mappings
@@ -1314,7 +1314,7 @@ export interface XdslPortMapping {
 export interface XdslRadiusConnectionLog {
   /**
    */
-  date?: Date;
+  date?: string;
   /**
    */
   login?: string;
@@ -1333,7 +1333,7 @@ export interface XdslResiliationFollowUpDetail {
    * Date when the resiliation will take effect
    *
    */
-  dateTodo?: Date;
+  dateTodo?: string;
   /**
    * If the customer needs to return his modem
    *
@@ -1343,7 +1343,7 @@ export interface XdslResiliationFollowUpDetail {
    * Date when the resiliation was done
    *
    */
-  registrationDate?: Date;
+  registrationDate?: string;
   /**
    * Status of the resiliation
    *
@@ -1382,17 +1382,17 @@ export interface XdslResiliationTerms {
    * Date until which the customer is engaged
    *
    */
-  engageDate?: Date;
+  engageDate?: string;
   /**
    * Minumum resiliationDate
    *
    */
-  minResiliationDate?: Date;
+  minResiliationDate?: string;
   /**
    * Date at which the access will be resiliated
    *
    */
-  resiliationDate?: Date;
+  resiliationDate?: string;
   /**
    * List of available resiliation reasons
    *
@@ -1445,7 +1445,7 @@ export interface XdslStatsModemInfo {
    * Time of last refresh
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * Line modulation used
    *
@@ -1494,10 +1494,10 @@ export interface XdslTask {
    * Date when the action will start
    *
    */
-  todoDate?: Date;
+  todoDate?: string;
   /**
    */
-  updateDate?: Date;
+  updateDate?: string;
 }
 /**
  * Status of a task.
@@ -1531,7 +1531,7 @@ export interface XdslTemplateModem {
    * Template creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * IP Address of the DMZ
    *
@@ -1670,7 +1670,7 @@ export interface XdslAntiSpamEvidencesInfoDetail {
    * File date on the PCS
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * File name on the PCS
    *
@@ -1709,7 +1709,7 @@ export interface XdslConnectedDevice {
    * The date time of the last update of thoses informations
    *
    */
-  informationDate?: Date;
+  informationDate?: string;
   /**
    * On which interface is connected the device
    *
@@ -1918,7 +1918,7 @@ export interface XdslEligibilityFiberOffer {
    * The availibility date if the fiber is planned but not available yet
    *
    */
-  availibilityDate?: Date;
+  availibilityDate?: string;
   /**
    * Estimated or guaranteed download rate in Mbit/s, if applicable
    *
@@ -2096,12 +2096,12 @@ export interface XdslEligibilityMeetingSlot {
    * The end of the time slot
    *
    */
-  endDate?: Date;
+  endDate?: string;
   /**
    * The beginning of the time slot
    *
    */
-  startDate?: Date;
+  startDate?: string;
   /**
    * An opaque string that represents an intervention unit
    *
@@ -2235,7 +2235,7 @@ export interface XdslEmailProTask {
    * Finished date of the task
    *
    */
-  finishDate?: Date;
+  finishDate?: string;
   /**
    * Function of the task
    *
@@ -2250,7 +2250,7 @@ export interface XdslEmailProTask {
    * Todo date of the task
    *
    */
-  todoDate?: Date;
+  todoDate?: string;
 }
 /**
  * Status of an Email Pro task.
@@ -2284,7 +2284,7 @@ export interface XdslLineDiagnosticAnswers {
    * approximative datetime of problem happening
    *
    */
-  datetimeOfAppearance?: Date;
+  datetimeOfAppearance?: string;
   /**
    * bandwidth download value on proof.ovh.net test
    *
@@ -2522,12 +2522,12 @@ export interface XdslLineDiagnosticDiagnosticData {
    * Diagnostic creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * End of diagnostic date. Will be null until problem totally identified
    *
    */
-  diagnosticDoneDate?: Date;
+  diagnosticDoneDate?: string;
   /**
    * Error message
    *
@@ -2537,7 +2537,7 @@ export interface XdslLineDiagnosticDiagnosticData {
    * Last diagnostic update date
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * Informations about line
    *
@@ -2780,7 +2780,7 @@ export interface XdslLineDiagnosticSeltResult {
    * SELT test running date
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * Distance of the problem identified on the line (by SELT test), from NRA to customer
    *
@@ -2831,7 +2831,7 @@ export interface XdslOrderFollowupStep {
   comments?: string[];
   /**
    */
-  doneDate?: Date;
+  doneDate?: string;
   /**
    */
   durationUnit?: XdslOrderFollowupDurationUnitEnum;
@@ -3110,12 +3110,12 @@ export interface XdslXdslEmailPro {
    * Last logoff
    *
    */
-  lastLogoffDate?: Date;
+  lastLogoffDate?: string;
   /**
    * Last logon
    *
    */
-  lastLogonDate?: Date;
+  lastLogonDate?: string;
   /**
    * Account last name
    *
@@ -3130,7 +3130,7 @@ export interface XdslXdslEmailPro {
    * Time of account's password last update
    *
    */
-  passwordLastUpdate?: Date;
+  passwordLastUpdate?: string;
   /**
    * Default email for this mailbox
    *
@@ -3184,471 +3184,166 @@ export type XdslXdslModemConfigProtocolTypeEnum = 'TCP' | 'UDP';
  * Type of WLAN security protection
  */
 export type XdslXdslModemConfigSecurityTypeEnum = 'None' | 'WEP' | 'WPA' | 'WPA2' | 'WPAandWPA2';
-type PathsXdslGET = '/xdsl' | 
-'/xdsl/{serviceName}/statistics' | 
-'/xdsl/{serviceName}/totalDeconsolidationTerms' | 
-'/xdsl/{serviceName}/resiliationTerms' | 
-'/xdsl/{serviceName}/lines' | 
-'/xdsl/{serviceName}/lines/{number}' | 
-'/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles' | 
-'/xdsl/{serviceName}/lines/{number}/dslamPort' | 
-'/xdsl/{serviceName}/lines/{number}/dslamPort/logs' | 
-'/xdsl/{serviceName}/lines/{number}/statistics' | 
-'/xdsl/{serviceName}/diagnostic' | 
-'/xdsl/{serviceName}/pendingAction' | 
-'/xdsl/{serviceName}/ips/{ip}' | 
-'/xdsl/{serviceName}/ips' | 
-'/xdsl/{serviceName}/orderFollowup' | 
-'/xdsl/{serviceName}/monitoringNotifications/{id}' | 
-'/xdsl/{serviceName}/monitoringNotifications' | 
-'/xdsl/{serviceName}/canCancelResiliation' | 
-'/xdsl/{serviceName}/addressMove/extraIpRange' | 
-'/xdsl/{serviceName}/rma' | 
-'/xdsl/{serviceName}/rma/{id}' | 
-'/xdsl/{serviceName}/incident' | 
-'/xdsl/{serviceName}/radiusConnectionLogs' | 
-'/xdsl/{serviceName}/serviceInfos' | 
-'/xdsl/{serviceName}/modem/availableWLANChannel' | 
-'/xdsl/{serviceName}/modem/connectedDevices/{macAddress}' | 
-'/xdsl/{serviceName}/modem/connectedDevices' | 
-'/xdsl/{serviceName}/modem/sipAlg' | 
-'/xdsl/{serviceName}/modem/ftp' | 
-'/xdsl/{serviceName}/modem/firmwareAvailable' | 
-'/xdsl/{serviceName}/modem/upnp' | 
-'/xdsl/{serviceName}/modem/blocIp' | 
-'/xdsl/{serviceName}/modem/contentSharing' | 
-'/xdsl/{serviceName}/modem/wifi' | 
-'/xdsl/{serviceName}/modem/wifi/{wifiName}' | 
-'/xdsl/{serviceName}/modem/ipsecAlg' | 
-'/xdsl/{serviceName}/modem' | 
-'/xdsl/{serviceName}/modem/callWaiting' | 
-'/xdsl/{serviceName}/modem/lan' | 
-'/xdsl/{serviceName}/modem/lan/{lanName}' | 
-'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp' | 
-'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses' | 
-'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' | 
-'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}' | 
-'/xdsl/{serviceName}/modem/firmware' | 
-'/xdsl/{serviceName}/modem/portMappings/{name}' | 
-'/xdsl/{serviceName}/modem/portMappings' | 
-'/xdsl/{serviceName}' | 
-'/xdsl/{serviceName}/tasks/{id}' | 
-'/xdsl/{serviceName}/tasks' | 
-'/xdsl/{serviceName}/antiSpams/{ip}/evidences' | 
-'/xdsl/{serviceName}/antiSpams/{ip}' | 
-'/xdsl/{serviceName}/antiSpams' | 
-'/xdsl/{serviceName}/resiliationFollowup' | 
-'/xdsl/incidents' | 
-'/xdsl/incidents/{id}' | 
-'/xdsl/email/pro' | 
-'/xdsl/email/pro/{email}' | 
-'/xdsl/templateModem/{name}' | 
-'/xdsl/templateModem' | 
-'/xdsl/eligibility/meetings' | 
-'/xdsl/eligibility/cities' | 
-'/xdsl/eligibility/test' | 
-'/xdsl/eligibility/streets' | 
+type PathsXdslGET = '/xdsl/spare/{spare}/compatibleReplacement' | 
+'/xdsl/spare/{spare}' | 
+'/xdsl/spare/{spare}/serviceInfos' | 
 '/xdsl/spare' | 
 '/xdsl/spare/brands' | 
-'/xdsl/spare/{spare}/compatibleReplacement' | 
-'/xdsl/spare/{spare}/serviceInfos' | 
-'/xdsl/spare/{spare}';
-
-type PathsXdslPUT = '/xdsl/{serviceName}/monitoringNotifications/{id}' | 
-'/xdsl/{serviceName}/rma/{id}' | 
-'/xdsl/{serviceName}/serviceInfos' | 
-'/xdsl/{serviceName}/modem/wifi/{wifiName}' | 
-'/xdsl/{serviceName}/modem' | 
-'/xdsl/{serviceName}/modem/lan/{lanName}' | 
-'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' | 
-'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}' | 
-'/xdsl/{serviceName}/modem/portMappings/{name}' | 
-'/xdsl/{serviceName}' | 
-'/xdsl/email/pro/{email}' | 
+'/xdsl/eligibility/cities' | 
+'/xdsl/eligibility/streets' | 
+'/xdsl/eligibility/test' | 
+'/xdsl/eligibility/meetings' | 
+'/xdsl/incidents' | 
+'/xdsl/incidents/{id}' | 
 '/xdsl/templateModem/{name}' | 
-'/xdsl/spare/{spare}/serviceInfos';
-
-type PathsXdslPOST = '/xdsl/{serviceName}/changeContact' | 
-'/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile' | 
-'/xdsl/{serviceName}/lines/{number}/dslamPort/reset' | 
-'/xdsl/{serviceName}/lines/{number}/diagnostic/run' | 
-'/xdsl/{serviceName}/lines/{number}/diagnostic/cancel' | 
-'/xdsl/{serviceName}/requestTotalDeconsolidation' | 
-'/xdsl/{serviceName}/cancelResiliation' | 
-'/xdsl/{serviceName}/diagnostic' | 
-'/xdsl/{serviceName}/ips' | 
-'/xdsl/{serviceName}/monitoringNotifications' | 
-'/xdsl/{serviceName}/sendOrderToProvider' | 
-'/xdsl/{serviceName}/requestPPPLoginMail' | 
-'/xdsl/{serviceName}/applyTemplateToModem' | 
-'/xdsl/{serviceName}/resiliate' | 
-'/xdsl/{serviceName}/addressMove/extraIpRangeMove' | 
-'/xdsl/{serviceName}/modem/retrieveInfo' | 
-'/xdsl/{serviceName}/modem/reset' | 
-'/xdsl/{serviceName}/modem/sipAlg' | 
-'/xdsl/{serviceName}/modem/duplicatePortMappingConfig' | 
-'/xdsl/{serviceName}/modem/reboot' | 
-'/xdsl/{serviceName}/modem/ftp' | 
-'/xdsl/{serviceName}/modem/upnp' | 
-'/xdsl/{serviceName}/modem/blocIp' | 
-'/xdsl/{serviceName}/modem/resetPortMappingConfig' | 
-'/xdsl/{serviceName}/modem/contentSharing' | 
-'/xdsl/{serviceName}/modem/ipsecAlg' | 
-'/xdsl/{serviceName}/modem/callWaiting' | 
-'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses' | 
-'/xdsl/{serviceName}/modem/refreshConnectedDevices' | 
-'/xdsl/{serviceName}/modem/firmware' | 
-'/xdsl/{serviceName}/modem/portMappings' | 
-'/xdsl/{serviceName}/ipv6' | 
-'/xdsl/{serviceName}/tasks/{id}/archive' | 
-'/xdsl/{serviceName}/updateInvalidOrMissingRio' | 
-'/xdsl/email/pro/{email}/changePassword' | 
 '/xdsl/templateModem' | 
-'/xdsl/eligibility/lines/active' | 
+'/xdsl/email/pro' | 
+'/xdsl/email/pro/{email}' | 
+'/xdsl/{serviceName}/serviceInfos' | 
+'/xdsl/{serviceName}/canCancelResiliation' | 
+'/xdsl/{serviceName}/tasks' | 
+'/xdsl/{serviceName}/tasks/{id}' | 
+'/xdsl/{serviceName}/orderFollowup' | 
+'/xdsl/{serviceName}/lines/{number}' | 
+'/xdsl/{serviceName}/lines/{number}/statistics' | 
+'/xdsl/{serviceName}/lines/{number}/dslamPort/logs' | 
+'/xdsl/{serviceName}/lines/{number}/dslamPort' | 
+'/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles' | 
+'/xdsl/{serviceName}/lines' | 
+'/xdsl/{serviceName}/radiusConnectionLogs' | 
+'/xdsl/{serviceName}/pendingAction' | 
+'/xdsl/{serviceName}/rma/{id}' | 
+'/xdsl/{serviceName}/rma' | 
+'/xdsl/{serviceName}/monitoringNotifications' | 
+'/xdsl/{serviceName}/monitoringNotifications/{id}' | 
+'/xdsl/{serviceName}/resiliationFollowup' | 
+'/xdsl/{serviceName}' | 
+'/xdsl/{serviceName}/statistics' | 
+'/xdsl/{serviceName}/ips/{ip}' | 
+'/xdsl/{serviceName}/ips' | 
+'/xdsl/{serviceName}/resiliationTerms' | 
+'/xdsl/{serviceName}/totalDeconsolidationTerms' | 
+'/xdsl/{serviceName}/addressMove/extraIpRange' | 
+'/xdsl/{serviceName}/antiSpams' | 
+'/xdsl/{serviceName}/antiSpams/{ip}/evidences' | 
+'/xdsl/{serviceName}/antiSpams/{ip}' | 
+'/xdsl/{serviceName}/modem/lan' | 
+'/xdsl/{serviceName}/modem/lan/{lanName}' | 
+'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}' | 
+'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses' | 
+'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' | 
+'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp' | 
+'/xdsl/{serviceName}/modem/callWaiting' | 
+'/xdsl/{serviceName}/modem/upnp' | 
+'/xdsl/{serviceName}/modem' | 
+'/xdsl/{serviceName}/modem/connectedDevices' | 
+'/xdsl/{serviceName}/modem/connectedDevices/{macAddress}' | 
+'/xdsl/{serviceName}/modem/firmwareAvailable' | 
+'/xdsl/{serviceName}/modem/contentSharing' | 
+'/xdsl/{serviceName}/modem/portMappings/{name}' | 
+'/xdsl/{serviceName}/modem/portMappings' | 
+'/xdsl/{serviceName}/modem/ftp' | 
+'/xdsl/{serviceName}/modem/firmware' | 
+'/xdsl/{serviceName}/modem/ipsecAlg' | 
+'/xdsl/{serviceName}/modem/availableWLANChannel' | 
+'/xdsl/{serviceName}/modem/blocIp' | 
+'/xdsl/{serviceName}/modem/sipAlg' | 
+'/xdsl/{serviceName}/modem/wifi' | 
+'/xdsl/{serviceName}/modem/wifi/{wifiName}' | 
+'/xdsl/{serviceName}/incident' | 
+'/xdsl/{serviceName}/diagnostic' | 
+'/xdsl';
+
+type PathsXdslPUT = '/xdsl/spare/{spare}/serviceInfos' | 
+'/xdsl/templateModem/{name}' | 
+'/xdsl/email/pro/{email}' | 
+'/xdsl/{serviceName}/serviceInfos' | 
+'/xdsl/{serviceName}/rma/{id}' | 
+'/xdsl/{serviceName}/monitoringNotifications/{id}' | 
+'/xdsl/{serviceName}' | 
+'/xdsl/{serviceName}/modem/lan/{lanName}' | 
+'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}' | 
+'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' | 
+'/xdsl/{serviceName}/modem' | 
+'/xdsl/{serviceName}/modem/portMappings/{name}' | 
+'/xdsl/{serviceName}/modem/wifi/{wifiName}';
+
+type PathsXdslPOST = '/xdsl/spare/{spare}/returnMerchandise' | 
+'/xdsl/spare/{spare}/replace' | 
 '/xdsl/eligibility/lines/inactive' | 
-'/xdsl/eligibility/search/fiberStreets' | 
-'/xdsl/eligibility/search/cities' | 
-'/xdsl/eligibility/search/buildings' | 
+'/xdsl/eligibility/lines/active' | 
 '/xdsl/eligibility/search/streetNumbers' | 
+'/xdsl/eligibility/search/fiberStreets' | 
+'/xdsl/eligibility/search/buildings' | 
+'/xdsl/eligibility/search/cities' | 
+'/xdsl/eligibility/test/fiber/building' | 
 '/xdsl/eligibility/test/address' | 
 '/xdsl/eligibility/test/line' | 
-'/xdsl/eligibility/test/fiber/building' | 
-'/xdsl/spare/{spare}/returnMerchandise' | 
-'/xdsl/spare/{spare}/replace';
+'/xdsl/templateModem' | 
+'/xdsl/email/pro/{email}/changePassword' | 
+'/xdsl/{serviceName}/updateInvalidOrMissingRio' | 
+'/xdsl/{serviceName}/tasks/{id}/archive' | 
+'/xdsl/{serviceName}/changeContact' | 
+'/xdsl/{serviceName}/lines/{number}/diagnostic/run' | 
+'/xdsl/{serviceName}/lines/{number}/diagnostic/cancel' | 
+'/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile' | 
+'/xdsl/{serviceName}/lines/{number}/dslamPort/reset' | 
+'/xdsl/{serviceName}/monitoringNotifications' | 
+'/xdsl/{serviceName}/cancelResiliation' | 
+'/xdsl/{serviceName}/ips' | 
+'/xdsl/{serviceName}/addressMove/extraIpRangeMove' | 
+'/xdsl/{serviceName}/requestTotalDeconsolidation' | 
+'/xdsl/{serviceName}/applyTemplateToModem' | 
+'/xdsl/{serviceName}/ipv6' | 
+'/xdsl/{serviceName}/requestPPPLoginMail' | 
+'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses' | 
+'/xdsl/{serviceName}/modem/reboot' | 
+'/xdsl/{serviceName}/modem/callWaiting' | 
+'/xdsl/{serviceName}/modem/upnp' | 
+'/xdsl/{serviceName}/modem/refreshConnectedDevices' | 
+'/xdsl/{serviceName}/modem/reset' | 
+'/xdsl/{serviceName}/modem/contentSharing' | 
+'/xdsl/{serviceName}/modem/portMappings' | 
+'/xdsl/{serviceName}/modem/ftp' | 
+'/xdsl/{serviceName}/modem/duplicatePortMappingConfig' | 
+'/xdsl/{serviceName}/modem/firmware' | 
+'/xdsl/{serviceName}/modem/ipsecAlg' | 
+'/xdsl/{serviceName}/modem/resetPortMappingConfig' | 
+'/xdsl/{serviceName}/modem/retrieveInfo' | 
+'/xdsl/{serviceName}/modem/blocIp' | 
+'/xdsl/{serviceName}/modem/sipAlg' | 
+'/xdsl/{serviceName}/resiliate' | 
+'/xdsl/{serviceName}/diagnostic' | 
+'/xdsl/{serviceName}/sendOrderToProvider';
 
-type PathsXdslDELETE = '/xdsl/{serviceName}/ips/{ip}' | 
-'/xdsl/{serviceName}/monitoringNotifications/{id}' | 
-'/xdsl/{serviceName}/rma/{id}' | 
-'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' | 
-'/xdsl/{serviceName}/modem/portMappings/{name}' | 
-'/xdsl/email/pro/{email}' | 
+type PathsXdslDELETE = '/xdsl/spare/{spare}' | 
 '/xdsl/templateModem/{name}' | 
-'/xdsl/spare/{spare}';
+'/xdsl/email/pro/{email}' | 
+'/xdsl/{serviceName}/rma/{id}' | 
+'/xdsl/{serviceName}/monitoringNotifications/{id}' | 
+'/xdsl/{serviceName}/ips/{ip}' | 
+'/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' | 
+'/xdsl/{serviceName}/modem/portMappings/{name}';
 
 export class ApiXdsl extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
     super(config);
   }
   /**
-  Operations about the XDSL service
-  List available services
+  compatibleReplacement operations
+  Return the list of brand compatible to be replaced
   **/
-  public get(path: '/xdsl'): Promise<string[]>;
+  public get(path: '/xdsl/spare/{spare}/compatibleReplacement', pathParams: {spare: string}): Promise<string[]>;
   /**
-  statistics operations
-  Get various statistics about this access
-  **/
-  public get(path: '/xdsl/{serviceName}/statistics', pathParams: {serviceName: string}, queryParams: {type?: XdslAccessStatisticsTypeEnum, period?: XdslStatisticsPeriodEnum}): Promise<ComplexTypeUnitAndValues<XdslTimestampAndValue>>;
-  /**
-  totalDeconsolidationTerms operations
-  Give the price to requestTotalDeconsolidation on the access
-  **/
-  public get(path: '/xdsl/{serviceName}/totalDeconsolidationTerms', pathParams: {serviceName: string}): Promise<XdslDeconsolidationTerms>;
-  /**
-  resiliationTerms operations
-  Get resiliation terms
-  **/
-  public get(path: '/xdsl/{serviceName}/resiliationTerms', pathParams: {serviceName: string}, queryParams: {resiliationDate?: Date}): Promise<XdslResiliationTerms>;
-  /**
-  List the xdsl.Line objects
-  The lines of the access
-  **/
-  public get(path: '/xdsl/{serviceName}/lines', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Information about the physical copper line
+  Spare properties
   Get this object properties
   **/
-  public get(path: '/xdsl/{serviceName}/lines/{number}', pathParams: {serviceName: string, number: string}): Promise<XdslLine>;
-  /**
-  availableProfiles operations
-  List all availables profiles for this port
-  **/
-  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles', pathParams: {serviceName: string, number: string}): Promise<XdslDslamLineProfile[]>;
-  /**
-  Information about the port on the DSLAM
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort', pathParams: {serviceName: string, number: string}): Promise<XdslDslamPort>;
-  /**
-  logs operations
-  Get the logs emitted by the DSLAM for this port
-  **/
-  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/logs', pathParams: {serviceName: string, number: string}, queryParams: {limit?: Number}): Promise<XdslDslamPortLog[]>;
-  /**
-  statistics operations
-  Get various statistics about the line
-  **/
-  public get(path: '/xdsl/{serviceName}/lines/{number}/statistics', pathParams: {serviceName: string, number: string}, queryParams: {period?: XdslStatisticsPeriodEnum, type?: XdslLineStatisticsTypeEnum}): Promise<ComplexTypeUnitAndValues<XdslTimestampAndValue>>;
-  /**
-  Diagnostic of the access
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/diagnostic', pathParams: {serviceName: string}): Promise<XdslAccessDiagnostic>;
-  /**
-  Scheduled action before the next renewal of the service
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/pendingAction', pathParams: {serviceName: string}): Promise<XdslPendingAction>;
-  /**
-  Informations about an IP address
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/ips/{ip}', pathParams: {serviceName: string, ip: string}): Promise<XdslIP>;
-  /**
-  List the xdsl.IP objects
-  List of IPs addresses for this access
-  **/
-  public get(path: '/xdsl/{serviceName}/ips', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  orderFollowup operations
-  Get the status of the order
-  **/
-  public get(path: '/xdsl/{serviceName}/orderFollowup', pathParams: {serviceName: string}): Promise<XdslOrderFollowupStep[]>;
-  /**
-  Defines where and how the notifications will be sent
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', pathParams: {serviceName: string, id: Number}): Promise<XdslMonitoringNotification>;
-  /**
-  List the xdsl.MonitoringNotification objects
-  List the notifications for this access
-  **/
-  public get(path: '/xdsl/{serviceName}/monitoringNotifications', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  canCancelResiliation operations
-  Get information about the ongoing resiliation
-  **/
-  public get(path: '/xdsl/{serviceName}/canCancelResiliation', pathParams: {serviceName: string}): Promise<boolean>;
-  /**
-  extraIpRange operations
-  Informations about the extra IP range during address move
-  **/
-  public get(path: '/xdsl/{serviceName}/addressMove/extraIpRange', pathParams: {serviceName: string}): Promise<XdslExtraIpRangeMove>;
-  /**
-  List the telephony.Rma objects
-  Return Merchandise Authorisation associated
-  **/
-  public get(path: '/xdsl/{serviceName}/rma', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  Current Return Merchandise Authorisation
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/rma/{id}', pathParams: {serviceName: string, id: string}): Promise<TelephonyRma>;
-  /**
-  Detected incident
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/incident', pathParams: {serviceName: string}): Promise<XdslIncident>;
-  /**
-  radiusConnectionLogs operations
-  List the radius connection logs
-  **/
-  public get(path: '/xdsl/{serviceName}/radiusConnectionLogs', pathParams: {serviceName: string}): Promise<XdslRadiusConnectionLog[]>;
+  public get(path: '/xdsl/spare/{spare}', pathParams: {spare: string}): Promise<SpareXdslXdslSpare>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/xdsl/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  availableWLANChannel operations
-  List available WLAN channel for this modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/availableWLANChannel', pathParams: {serviceName: string}, queryParams: {frequency?: XdslWLANFrequencyEnum}): Promise<Number[]>;
-  /**
-  Connected Device
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/connectedDevices/{macAddress}', pathParams: {serviceName: string, macAddress: string}): Promise<XdslConnectedDevice>;
-  /**
-  List the xdsl.connectedDevice objects
-  List of devices connected on this modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/connectedDevices', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  sipAlg operations
-  Get the status of sip alg service on modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/sipAlg', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
-  /**
-  ftp operations
-  Get the status of ftp service on modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/ftp', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
-  /**
-  firmwareAvailable operations
-  List available firmware for this modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/firmwareAvailable', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  upnp operations
-  Get the status of the Upnp on modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/upnp', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
-  /**
-  blocIp operations
-  Get the status of the Bloc IP on modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/blocIp', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
-  /**
-  contentSharing operations
-  Get the status of contentSharing on modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/contentSharing', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
-  /**
-  List the xdsl.WLAN objects
-  List of WLANs on this modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/wifi', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  WLAN Configuration of the Modem
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/wifi/{wifiName}', pathParams: {serviceName: string, wifiName: string}): Promise<XdslWLAN>;
-  /**
-  ipsecAlg operations
-  Get the status of ipsec alg service on modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/ipsecAlg', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
-  /**
-  Modem
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/modem', pathParams: {serviceName: string}): Promise<XdslModem>;
-  /**
-  callWaiting operations
-  Get the status of callWaiting on modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/callWaiting', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
-  /**
-  List the xdsl.LAN objects
-  List of LANs on this modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/lan', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  LAN Configuration of the Modem
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}', pathParams: {serviceName: string, lanName: string}): Promise<XdslLAN>;
-  /**
-  List the xdsl.DHCP objects
-  List of DHCP on this modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp', pathParams: {serviceName: string, lanName: string}): Promise<string[]>;
-  /**
-  List the xdsl.DHCPStaticAddress objects
-  List of DHCP Static Address of this modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses', pathParams: {serviceName: string, lanName: string, dhcpName: string}): Promise<string[]>;
-  /**
-  DHCP Static Address
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', pathParams: {serviceName: string, lanName: string, dhcpName: string, MACAddress: string}): Promise<XdslDHCPStaticAddress>;
-  /**
-  DHCP Configuration of the Modem
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}', pathParams: {serviceName: string, lanName: string, dhcpName: string}): Promise<XdslDHCP>;
-  /**
-  firmware operations
-  Get the firmware version installed on modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/firmware', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  Port Mappings
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/portMappings/{name}', pathParams: {serviceName: string, name: string}): Promise<XdslPortMapping>;
-  /**
-  List the xdsl.PortMapping objects
-  List of PortMappings on this modem
-  **/
-  public get(path: '/xdsl/{serviceName}/modem/portMappings', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  XDSL Access
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}', pathParams: {serviceName: string}): Promise<XdslAccess>;
-  /**
-  Describes the current status of a task
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/tasks/{id}', pathParams: {serviceName: string, id: Number}): Promise<XdslTask>;
-  /**
-  List the xdsl.Task objects
-  Tasks scheduled for this access
-  **/
-  public get(path: '/xdsl/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {function?: string, status?: XdslTaskStatusEnum}): Promise<Number[]>;
-  /**
-  evidences operations
-  List of evidences stored on PCS for this ip
-  **/
-  public get(path: '/xdsl/{serviceName}/antiSpams/{ip}/evidences', pathParams: {serviceName: string, ip: string}): Promise<XdslAntiSpamEvidencesInfo>;
-  /**
-  Spams detected from xdsl access
-  Get this object properties
-  **/
-  public get(path: '/xdsl/{serviceName}/antiSpams/{ip}', pathParams: {serviceName: string, ip: string}): Promise<XdslAntiSpam>;
-  /**
-  List the xdsl.AntiSpam objects
-  List antiSpams for this access
-  **/
-  public get(path: '/xdsl/{serviceName}/antiSpams', pathParams: {serviceName: string}): Promise<string[]>;
-  /**
-  resiliationFollowup operations
-  Get information about the ongoing resiliation
-  **/
-  public get(path: '/xdsl/{serviceName}/resiliationFollowup', pathParams: {serviceName: string}): Promise<XdslResiliationFollowUpDetail>;
-  /**
-  List the xdsl.Incident objects
-  List of incidents
-  **/
-  public get(path: '/xdsl/incidents', pathParams: null, queryParams: {endDate?: Date, creationDate?: Date}): Promise<Number[]>;
-  /**
-  Detected incident
-  Get this object properties
-  **/
-  public get(path: '/xdsl/incidents/{id}', pathParams: {id: Number}): Promise<XdslIncident>;
-  /**
-  Operations about the XDSL service
-  List available services
-  **/
-  public get(path: '/xdsl/email/pro'): Promise<string[]>;
-  /**
-  XDSL Email Pro
-  Get this object properties
-  **/
-  public get(path: '/xdsl/email/pro/{email}', pathParams: {email: string}): Promise<XdslXdslEmailPro>;
-  /**
-  Modem Template
-  Get this object properties
-  **/
-  public get(path: '/xdsl/templateModem/{name}', pathParams: {name: string}): Promise<XdslTemplateModem>;
-  /**
-  List the xdsl.TemplateModem objects
-  List of TemplateModem
-  **/
-  public get(path: '/xdsl/templateModem'): Promise<string[]>;
-  /**
-  Search for meeting time slot
-  Search for meeting time slot
-  **/
-  public get(path: '/xdsl/eligibility/meetings', pathParams: null, queryParams: {offerLabel?: string, eligibilityId?: string}): Promise<XdslAsyncTask<XdslEligibilityMeetingSlots>>;
-  /**
-  Get the cities from a zipCode
-  Get the cities from a zipCode
-  **/
-  public get(path: '/xdsl/eligibility/cities', pathParams: null, queryParams: {zipCode?: string}): Promise<XdslEligibilityCity[]>;
-  /**
-  Get an eligibility by its id
-  Get an eligibility by its id
-  **/
-  public get(path: '/xdsl/eligibility/test', pathParams: null, queryParams: {id?: string}): Promise<XdslEligibilityEligibility>;
-  /**
-  Get the streets from a city inseeCode and partial street name
-  Get the streets from a city inseeCode and partial street name
-  **/
-  public get(path: '/xdsl/eligibility/streets', pathParams: null, queryParams: {inseeCode?: string, partialName?: string}): Promise<XdslEligibilityStreet[]>;
+  public get(path: '/xdsl/spare/{spare}/serviceInfos', pathParams: {spare: string}): Promise<ServicesService>;
   /**
   Operations about the XDSL service
   List available services
@@ -3660,297 +3355,437 @@ export class ApiXdsl extends ApiCommon {
   **/
   public get(path: '/xdsl/spare/brands'): Promise<string[]>;
   /**
-  compatibleReplacement operations
-  Return the list of brand compatible to be replaced
+  Get the cities from a zipCode
+  Get the cities from a zipCode
   **/
-  public get(path: '/xdsl/spare/{spare}/compatibleReplacement', pathParams: {spare: string}): Promise<string[]>;
+  public get(path: '/xdsl/eligibility/cities', pathParams: undefined, queryParams: {zipCode?: string}): Promise<XdslEligibilityCity[]>;
   /**
-  Details about a Service
+  Get the streets from a city inseeCode and partial street name
+  Get the streets from a city inseeCode and partial street name
+  **/
+  public get(path: '/xdsl/eligibility/streets', pathParams: undefined, queryParams: {partialName?: string, inseeCode?: string}): Promise<XdslEligibilityStreet[]>;
+  /**
+  Get an eligibility by its id
+  Get an eligibility by its id
+  **/
+  public get(path: '/xdsl/eligibility/test', pathParams: undefined, queryParams: {id?: string}): Promise<XdslEligibilityEligibility>;
+  /**
+  Search for meeting time slot
+  Search for meeting time slot
+  **/
+  public get(path: '/xdsl/eligibility/meetings', pathParams: undefined, queryParams: {eligibilityId?: string, offerLabel?: string}): Promise<XdslAsyncTask<XdslEligibilityMeetingSlots>>;
+  /**
+  List the xdsl.Incident objects
+  List of incidents
+  **/
+  public get(path: '/xdsl/incidents', pathParams: undefined, queryParams: {creationDate?: string, endDate?: string}): Promise<Number[]>;
+  /**
+  Detected incident
   Get this object properties
   **/
-  public get(path: '/xdsl/spare/{spare}/serviceInfos', pathParams: {spare: string}): Promise<ServicesService>;
+  public get(path: '/xdsl/incidents/{id}', pathParams: {id: Number}): Promise<XdslIncident>;
   /**
-  Spare properties
+  Modem Template
   Get this object properties
   **/
-  public get(path: '/xdsl/spare/{spare}', pathParams: {spare: string}): Promise<SpareXdslXdslSpare>;
-  public get(path: PathsXdslGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/xdsl/templateModem/{name}', pathParams: {name: string}): Promise<XdslTemplateModem>;
   /**
-  Defines where and how the notifications will be sent
-  Alter this object properties
+  List the xdsl.TemplateModem objects
+  List of TemplateModem
   **/
-  public put(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', pathParams: {serviceName: string, id: Number}): Promise<void>;
+  public get(path: '/xdsl/templateModem'): Promise<string[]>;
   /**
-  Current Return Merchandise Authorisation
-  Alter this object properties
+  Operations about the XDSL service
+  List available services
   **/
-  public put(path: '/xdsl/{serviceName}/rma/{id}', pathParams: {serviceName: string, id: string}): Promise<void>;
-  /**
-  Details about a Service
-  Alter this object properties
-  **/
-  public put(path: '/xdsl/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  WLAN Configuration of the Modem
-  Alter this object properties
-  **/
-  public put(path: '/xdsl/{serviceName}/modem/wifi/{wifiName}', pathParams: {serviceName: string, wifiName: string}): Promise<void>;
-  /**
-  Modem
-  Alter this object properties
-  **/
-  public put(path: '/xdsl/{serviceName}/modem', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  LAN Configuration of the Modem
-  Alter this object properties
-  **/
-  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}', pathParams: {serviceName: string, lanName: string}): Promise<void>;
-  /**
-  DHCP Static Address
-  Alter this object properties
-  **/
-  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', pathParams: {serviceName: string, lanName: string, dhcpName: string, MACAddress: string}): Promise<void>;
-  /**
-  DHCP Configuration of the Modem
-  Alter this object properties
-  **/
-  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}', pathParams: {serviceName: string, lanName: string, dhcpName: string}): Promise<void>;
-  /**
-  Port Mappings
-  Alter this object properties
-  **/
-  public put(path: '/xdsl/{serviceName}/modem/portMappings/{name}', pathParams: {serviceName: string, name: string}): Promise<void>;
-  /**
-  XDSL Access
-  Alter this object properties
-  **/
-  public put(path: '/xdsl/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public get(path: '/xdsl/email/pro'): Promise<string[]>;
   /**
   XDSL Email Pro
+  Get this object properties
+  **/
+  public get(path: '/xdsl/email/pro/{email}', pathParams: {email: string}): Promise<XdslXdslEmailPro>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  canCancelResiliation operations
+  Get information about the ongoing resiliation
+  **/
+  public get(path: '/xdsl/{serviceName}/canCancelResiliation', pathParams: {serviceName: string}): Promise<boolean>;
+  /**
+  List the xdsl.Task objects
+  Tasks scheduled for this access
+  **/
+  public get(path: '/xdsl/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {function?: string, status?: XdslTaskStatusEnum}): Promise<Number[]>;
+  /**
+  Describes the current status of a task
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/tasks/{id}', pathParams: {serviceName: string, id: Number}): Promise<XdslTask>;
+  /**
+  orderFollowup operations
+  Get the status of the order
+  **/
+  public get(path: '/xdsl/{serviceName}/orderFollowup', pathParams: {serviceName: string}): Promise<XdslOrderFollowupStep[]>;
+  /**
+  Information about the physical copper line
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/lines/{number}', pathParams: {serviceName: string, number: string}): Promise<XdslLine>;
+  /**
+  statistics operations
+  Get various statistics about the line
+  **/
+  public get(path: '/xdsl/{serviceName}/lines/{number}/statistics', pathParams: {serviceName: string, number: string}, queryParams: {period?: XdslStatisticsPeriodEnum, type?: XdslLineStatisticsTypeEnum}): Promise<ComplexTypeUnitAndValues<XdslTimestampAndValue>>;
+  /**
+  logs operations
+  Get the logs emitted by the DSLAM for this port
+  **/
+  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/logs', pathParams: {serviceName: string, number: string}, queryParams: {limit?: Number}): Promise<XdslDslamPortLog[]>;
+  /**
+  Information about the port on the DSLAM
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort', pathParams: {serviceName: string, number: string}): Promise<XdslDslamPort>;
+  /**
+  availableProfiles operations
+  List all availables profiles for this port
+  **/
+  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles', pathParams: {serviceName: string, number: string}): Promise<XdslDslamLineProfile[]>;
+  /**
+  List the xdsl.Line objects
+  The lines of the access
+  **/
+  public get(path: '/xdsl/{serviceName}/lines', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  radiusConnectionLogs operations
+  List the radius connection logs
+  **/
+  public get(path: '/xdsl/{serviceName}/radiusConnectionLogs', pathParams: {serviceName: string}): Promise<XdslRadiusConnectionLog[]>;
+  /**
+  Scheduled action before the next renewal of the service
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/pendingAction', pathParams: {serviceName: string}): Promise<XdslPendingAction>;
+  /**
+  Current Return Merchandise Authorisation
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/rma/{id}', pathParams: {serviceName: string, id: string}): Promise<TelephonyRma>;
+  /**
+  List the telephony.Rma objects
+  Return Merchandise Authorisation associated
+  **/
+  public get(path: '/xdsl/{serviceName}/rma', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  List the xdsl.MonitoringNotification objects
+  List the notifications for this access
+  **/
+  public get(path: '/xdsl/{serviceName}/monitoringNotifications', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Defines where and how the notifications will be sent
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', pathParams: {serviceName: string, id: Number}): Promise<XdslMonitoringNotification>;
+  /**
+  resiliationFollowup operations
+  Get information about the ongoing resiliation
+  **/
+  public get(path: '/xdsl/{serviceName}/resiliationFollowup', pathParams: {serviceName: string}): Promise<XdslResiliationFollowUpDetail>;
+  /**
+  XDSL Access
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}', pathParams: {serviceName: string}): Promise<XdslAccess>;
+  /**
+  statistics operations
+  Get various statistics about this access
+  **/
+  public get(path: '/xdsl/{serviceName}/statistics', pathParams: {serviceName: string}, queryParams: {period?: XdslStatisticsPeriodEnum, type?: XdslAccessStatisticsTypeEnum}): Promise<ComplexTypeUnitAndValues<XdslTimestampAndValue>>;
+  /**
+  Informations about an IP address
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/ips/{ip}', pathParams: {serviceName: string, ip: string}): Promise<XdslIP>;
+  /**
+  List the xdsl.IP objects
+  List of IPs addresses for this access
+  **/
+  public get(path: '/xdsl/{serviceName}/ips', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  resiliationTerms operations
+  Get resiliation terms
+  **/
+  public get(path: '/xdsl/{serviceName}/resiliationTerms', pathParams: {serviceName: string}, queryParams: {resiliationDate?: string}): Promise<XdslResiliationTerms>;
+  /**
+  totalDeconsolidationTerms operations
+  Give the price to requestTotalDeconsolidation on the access
+  **/
+  public get(path: '/xdsl/{serviceName}/totalDeconsolidationTerms', pathParams: {serviceName: string}): Promise<XdslDeconsolidationTerms>;
+  /**
+  extraIpRange operations
+  Informations about the extra IP range during address move
+  **/
+  public get(path: '/xdsl/{serviceName}/addressMove/extraIpRange', pathParams: {serviceName: string}): Promise<XdslExtraIpRangeMove>;
+  /**
+  List the xdsl.AntiSpam objects
+  List antiSpams for this access
+  **/
+  public get(path: '/xdsl/{serviceName}/antiSpams', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  evidences operations
+  List of evidences stored on PCS for this ip
+  **/
+  public get(path: '/xdsl/{serviceName}/antiSpams/{ip}/evidences', pathParams: {serviceName: string, ip: string}): Promise<XdslAntiSpamEvidencesInfo>;
+  /**
+  Spams detected from xdsl access
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/antiSpams/{ip}', pathParams: {serviceName: string, ip: string}): Promise<XdslAntiSpam>;
+  /**
+  List the xdsl.LAN objects
+  List of LANs on this modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/lan', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  LAN Configuration of the Modem
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}', pathParams: {serviceName: string, lanName: string}): Promise<XdslLAN>;
+  /**
+  DHCP Configuration of the Modem
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}', pathParams: {serviceName: string, lanName: string, dhcpName: string}): Promise<XdslDHCP>;
+  /**
+  List the xdsl.DHCPStaticAddress objects
+  List of DHCP Static Address of this modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses', pathParams: {serviceName: string, lanName: string, dhcpName: string}): Promise<string[]>;
+  /**
+  DHCP Static Address
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', pathParams: {serviceName: string, lanName: string, dhcpName: string, MACAddress: string}): Promise<XdslDHCPStaticAddress>;
+  /**
+  List the xdsl.DHCP objects
+  List of DHCP on this modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp', pathParams: {serviceName: string, lanName: string}): Promise<string[]>;
+  /**
+  callWaiting operations
+  Get the status of callWaiting on modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/callWaiting', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
+  /**
+  upnp operations
+  Get the status of the Upnp on modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/upnp', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
+  /**
+  Modem
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/modem', pathParams: {serviceName: string}): Promise<XdslModem>;
+  /**
+  List the xdsl.connectedDevice objects
+  List of devices connected on this modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/connectedDevices', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Connected Device
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/connectedDevices/{macAddress}', pathParams: {serviceName: string, macAddress: string}): Promise<XdslConnectedDevice>;
+  /**
+  firmwareAvailable operations
+  List available firmware for this modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/firmwareAvailable', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  contentSharing operations
+  Get the status of contentSharing on modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/contentSharing', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
+  /**
+  Port Mappings
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/portMappings/{name}', pathParams: {serviceName: string, name: string}): Promise<XdslPortMapping>;
+  /**
+  List the xdsl.PortMapping objects
+  List of PortMappings on this modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/portMappings', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  ftp operations
+  Get the status of ftp service on modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/ftp', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
+  /**
+  firmware operations
+  Get the firmware version installed on modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/firmware', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  ipsecAlg operations
+  Get the status of ipsec alg service on modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/ipsecAlg', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
+  /**
+  availableWLANChannel operations
+  List available WLAN channel for this modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/availableWLANChannel', pathParams: {serviceName: string}, queryParams: {frequency?: XdslWLANFrequencyEnum}): Promise<Number[]>;
+  /**
+  blocIp operations
+  Get the status of the Bloc IP on modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/blocIp', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
+  /**
+  sipAlg operations
+  Get the status of sip alg service on modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/sipAlg', pathParams: {serviceName: string}): Promise<XdslServiceStatusEnum>;
+  /**
+  List the xdsl.WLAN objects
+  List of WLANs on this modem
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/wifi', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  WLAN Configuration of the Modem
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/modem/wifi/{wifiName}', pathParams: {serviceName: string, wifiName: string}): Promise<XdslWLAN>;
+  /**
+  Detected incident
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/incident', pathParams: {serviceName: string}): Promise<XdslIncident>;
+  /**
+  Diagnostic of the access
+  Get this object properties
+  **/
+  public get(path: '/xdsl/{serviceName}/diagnostic', pathParams: {serviceName: string}): Promise<XdslAccessDiagnostic>;
+  /**
+  Operations about the XDSL service
+  List available services
+  **/
+  public get(path: '/xdsl'): Promise<string[]>;
+  public get(path: PathsXdslGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  /**
+  Details about a Service
   Alter this object properties
   **/
-  public put(path: '/xdsl/email/pro/{email}', pathParams: {email: string}): Promise<void>;
+  public put(path: '/xdsl/spare/{spare}/serviceInfos', pathParams: {spare: string}): Promise<void>;
   /**
   Modem Template
   Alter this object properties
   **/
   public put(path: '/xdsl/templateModem/{name}', pathParams: {name: string}): Promise<void>;
   /**
+  XDSL Email Pro
+  Alter this object properties
+  **/
+  public put(path: '/xdsl/email/pro/{email}', pathParams: {email: string}): Promise<void>;
+  /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/xdsl/spare/{spare}/serviceInfos', pathParams: {spare: string}): Promise<void>;
-  public put(path: PathsXdslPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/xdsl/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
+  Current Return Merchandise Authorisation
+  Alter this object properties
   **/
-  public post(path: '/xdsl/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  public put(path: '/xdsl/{serviceName}/rma/{id}', pathParams: {serviceName: string, id: string}): Promise<void>;
   /**
-  changeProfile operations
-  Change the profile of the port
+  Defines where and how the notifications will be sent
+  Alter this object properties
   **/
-  public post(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile', pathParams: {serviceName: string, number: string}): Promise<XdslTask>;
+  public put(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', pathParams: {serviceName: string, id: Number}): Promise<void>;
   /**
-  reset operations
-  Reset the port on the DSLAM
+  XDSL Access
+  Alter this object properties
   **/
-  public post(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/reset', pathParams: {serviceName: string, number: string}): Promise<XdslTask>;
+  public put(path: '/xdsl/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
   /**
-  run operations
-  Update and get advanced diagnostic of the line
+  LAN Configuration of the Modem
+  Alter this object properties
   **/
-  public post(path: '/xdsl/{serviceName}/lines/{number}/diagnostic/run', pathParams: {serviceName: string, number: string}): Promise<XdslLineDiagnosticDiagnostic>;
+  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}', pathParams: {serviceName: string, lanName: string}): Promise<void>;
   /**
-  cancel operations
-  Cancel line diagnostic if possible
+  DHCP Configuration of the Modem
+  Alter this object properties
   **/
-  public post(path: '/xdsl/{serviceName}/lines/{number}/diagnostic/cancel', pathParams: {serviceName: string, number: string}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}', pathParams: {serviceName: string, lanName: string, dhcpName: string}): Promise<void>;
   /**
-  requestTotalDeconsolidation operations
-  Switch this access to total deconsolidation
+  DHCP Static Address
+  Alter this object properties
   **/
-  public post(path: '/xdsl/{serviceName}/requestTotalDeconsolidation', pathParams: {serviceName: string}): Promise<XdslTask>;
+  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', pathParams: {serviceName: string, lanName: string, dhcpName: string, MACAddress: string}): Promise<void>;
   /**
-  cancelResiliation operations
-  Cancel the ongoing resiliation
+  Modem
+  Alter this object properties
   **/
-  public post(path: '/xdsl/{serviceName}/cancelResiliation', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem', pathParams: {serviceName: string}): Promise<void>;
   /**
-  Diagnostic of the access
-  Run diagnostic on the access
+  Port Mappings
+  Alter this object properties
   **/
-  public post(path: '/xdsl/{serviceName}/diagnostic', pathParams: {serviceName: string}): Promise<XdslTask>;
+  public put(path: '/xdsl/{serviceName}/modem/portMappings/{name}', pathParams: {serviceName: string, name: string}): Promise<void>;
   /**
-  List the xdsl.IP objects
-  Order an extra /29 range of IPv4 addresses
+  WLAN Configuration of the Modem
+  Alter this object properties
   **/
-  public post(path: '/xdsl/{serviceName}/ips', pathParams: {serviceName: string}): Promise<XdslTask>;
+  public put(path: '/xdsl/{serviceName}/modem/wifi/{wifiName}', pathParams: {serviceName: string, wifiName: string}): Promise<void>;
+  public put(path: PathsXdslPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  List the xdsl.MonitoringNotification objects
-  Add a notification
+  returnMerchandise operations
+  Return the broken equipment in instantRefund
   **/
-  public post(path: '/xdsl/{serviceName}/monitoringNotifications', pathParams: {serviceName: string}): Promise<XdslMonitoringNotification>;
+  public post(path: '/xdsl/spare/{spare}/returnMerchandise', pathParams: {spare: string}): Promise<void>;
   /**
-  sendOrderToProvider operations
-  Unlock order in "waitingCustomer" status. It only concerns orders whose modem is sent before anything have been forwarded to our provider
+  replace operations
+  Replace the modem by its spare
   **/
-  public post(path: '/xdsl/{serviceName}/sendOrderToProvider', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  requestPPPLoginMail operations
-  Renew PPP password and send the PPP login informations to the e-mail of the nicAdmin
-  **/
-  public post(path: '/xdsl/{serviceName}/requestPPPLoginMail', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  applyTemplateToModem operations
-  Apply TemplateModem to existing Modem
-  **/
-  public post(path: '/xdsl/{serviceName}/applyTemplateToModem', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  resiliate operations
-  Resiliate the access
-  **/
-  public post(path: '/xdsl/{serviceName}/resiliate', pathParams: {serviceName: string}): Promise<XdslResiliationFollowUpDetail>;
-  /**
-  extraIpRangeMove operations
-  Initiate the extra IP range migration
-  **/
-  public post(path: '/xdsl/{serviceName}/addressMove/extraIpRangeMove', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  retrieveInfo operations
-  get general Modem information
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/retrieveInfo', pathParams: {serviceName: string}): Promise<XdslAsyncTask<XdslModemInfo>>;
-  /**
-  reset operations
-  Reset the modem to its default configuration
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/reset', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  sipAlg operations
-  Change the status of the sip alg service on modem
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/sipAlg', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  duplicatePortMappingConfig operations
-  Remove all the current port mapping rules and set the same config as the access given in parameters
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/duplicatePortMappingConfig', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  reboot operations
-  Reboot the modem
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/reboot', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  ftp operations
-  Change the status of the ftp service on modem
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/ftp', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  upnp operations
-  Change the status of the Upnp on modem
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/upnp', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  blocIp operations
-  Change the status of the Bloc IP on modem
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/blocIp', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  resetPortMappingConfig operations
-  Remove all the current port mapping rules
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/resetPortMappingConfig', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  contentSharing operations
-  Change the status of contentSharing on modem
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/contentSharing', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  ipsecAlg operations
-  Change the status of the ipsec alg service on modem
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/ipsecAlg', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  callWaiting operations
-  Change the status of callWaiting on modem
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/callWaiting', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  List the xdsl.DHCPStaticAddress objects
-  Add a DHCP static lease
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses', pathParams: {serviceName: string, lanName: string, dhcpName: string}): Promise<XdslDHCPStaticAddress>;
-  /**
-  refreshConnectedDevices operations
-  Refresh the list of connected devices on the modem
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/refreshConnectedDevices', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  firmware operations
-  Launch a task to install target firmware on modem
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/firmware', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  List the xdsl.PortMapping objects
-  Add a port mapping
-  **/
-  public post(path: '/xdsl/{serviceName}/modem/portMappings', pathParams: {serviceName: string}): Promise<XdslPortMapping>;
-  /**
-  ipv6 operations
-  Change the status of the IPv6 for this access
-  **/
-  public post(path: '/xdsl/{serviceName}/ipv6', pathParams: {serviceName: string}): Promise<XdslTask>;
-  /**
-  archive operations
-  Delete the task in problem from the results
-  **/
-  public post(path: '/xdsl/{serviceName}/tasks/{id}/archive', pathParams: {serviceName: string, id: Number}): Promise<void>;
-  /**
-  updateInvalidOrMissingRio operations
-  Update RIO, or disable portability, for order in error because of missing or invalid RIO
-  **/
-  public post(path: '/xdsl/{serviceName}/updateInvalidOrMissingRio', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  changePassword operations
-  Change the email password
-  **/
-  public post(path: '/xdsl/email/pro/{email}/changePassword', pathParams: {email: string}): Promise<XdslEmailProTask>;
-  /**
-  List the xdsl.TemplateModem objects
-  Create new Modem Template from existing modem
-  **/
-  public post(path: '/xdsl/templateModem'): Promise<XdslTemplateModem>;
-  /**
-  Get the active lines at given address
-  Get the active lines at given address
-  **/
-  public post(path: '/xdsl/eligibility/lines/active'): Promise<XdslAsyncTaskArray<XdslEligibilityLine>>;
+  public post(path: '/xdsl/spare/{spare}/replace', pathParams: {spare: string}): Promise<void>;
   /**
   Get the inactive lines at given address
   Get the inactive lines at given address
   **/
   public post(path: '/xdsl/eligibility/lines/inactive'): Promise<XdslAsyncTaskArray<XdslEligibilityLine>>;
   /**
+  Get the active lines at given address
+  Get the active lines at given address
+  **/
+  public post(path: '/xdsl/eligibility/lines/active'): Promise<XdslAsyncTaskArray<XdslEligibilityLine>>;
+  /**
+  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)
+  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)
+  **/
+  public post(path: '/xdsl/eligibility/search/streetNumbers'): Promise<XdslAsyncTaskArray<string>>;
+  /**
   Get all street linked to a locality
   Get all street linked to a locality
   **/
   public post(path: '/xdsl/eligibility/search/fiberStreets'): Promise<XdslAsyncTaskArray<XdslEligibilityFiberStreet>>;
-  /**
-  Get all localities linked to a zip code
-  Get all localities linked to a zip code
-  **/
-  public post(path: '/xdsl/eligibility/search/cities'): Promise<XdslAsyncTaskArray<XdslEligibilityCity>>;
   /**
   Get all buildings for a specific address
   Get all buildings for a specific address
   **/
   public post(path: '/xdsl/eligibility/search/buildings'): Promise<XdslAsyncTaskArray<XdslEligibilityBuilding>>;
   /**
-  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)
-  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)
+  Get all localities linked to a zip code
+  Get all localities linked to a zip code
   **/
-  public post(path: '/xdsl/eligibility/search/streetNumbers'): Promise<XdslAsyncTaskArray<string>>;
+  public post(path: '/xdsl/eligibility/search/cities'): Promise<XdslAsyncTaskArray<XdslEligibilityCity>>;
+  /**
+  Perform a fiber eligibility for a building
+  Perform a fiber eligibility for a building
+  **/
+  public post(path: '/xdsl/eligibility/test/fiber/building'): Promise<XdslAsyncTask<XdslEligibilityFiberEligibility>>;
   /**
   Do an eligibility for an address, if no line exist
   Do an eligibility for an address, if no line exist
@@ -3962,36 +3797,216 @@ export class ApiXdsl extends ApiCommon {
   **/
   public post(path: '/xdsl/eligibility/test/line'): Promise<XdslAsyncTask<XdslEligibilityEligibility>>;
   /**
-  Perform a fiber eligibility for a building
-  Perform a fiber eligibility for a building
+  List the xdsl.TemplateModem objects
+  Create new Modem Template from existing modem
   **/
-  public post(path: '/xdsl/eligibility/test/fiber/building'): Promise<XdslAsyncTask<XdslEligibilityFiberEligibility>>;
+  public post(path: '/xdsl/templateModem'): Promise<XdslTemplateModem>;
   /**
-  returnMerchandise operations
-  Return the broken equipment in instantRefund
+  changePassword operations
+  Change the email password
   **/
-  public post(path: '/xdsl/spare/{spare}/returnMerchandise', pathParams: {spare: string}): Promise<void>;
+  public post(path: '/xdsl/email/pro/{email}/changePassword', pathParams: {email: string}): Promise<XdslEmailProTask>;
   /**
-  replace operations
-  Replace the modem by its spare
+  updateInvalidOrMissingRio operations
+  Update RIO, or disable portability, for order in error because of missing or invalid RIO
   **/
-  public post(path: '/xdsl/spare/{spare}/replace', pathParams: {spare: string}): Promise<void>;
-  public post(path: PathsXdslPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/xdsl/{serviceName}/updateInvalidOrMissingRio', pathParams: {serviceName: string}): Promise<void>;
   /**
-  Informations about an IP address
-  Stop renewing this extra IPv4 option
+  archive operations
+  Delete the task in problem from the results
   **/
-  public delete(path: '/xdsl/{serviceName}/ips/{ip}', pathParams: {serviceName: string, ip: string}): Promise<void>;
+  public post(path: '/xdsl/{serviceName}/tasks/{id}/archive', pathParams: {serviceName: string, id: Number}): Promise<void>;
+  /**
+  Change the contacts of this service
+  Launch a contact change procedure
+  **/
+  public post(path: '/xdsl/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  run operations
+  Update and get advanced diagnostic of the line
+  **/
+  public post(path: '/xdsl/{serviceName}/lines/{number}/diagnostic/run', pathParams: {serviceName: string, number: string}): Promise<XdslLineDiagnosticDiagnostic>;
+  /**
+  cancel operations
+  Cancel line diagnostic if possible
+  **/
+  public post(path: '/xdsl/{serviceName}/lines/{number}/diagnostic/cancel', pathParams: {serviceName: string, number: string}): Promise<void>;
+  /**
+  changeProfile operations
+  Change the profile of the port
+  **/
+  public post(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile', pathParams: {serviceName: string, number: string}): Promise<XdslTask>;
+  /**
+  reset operations
+  Reset the port on the DSLAM
+  **/
+  public post(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/reset', pathParams: {serviceName: string, number: string}): Promise<XdslTask>;
+  /**
+  List the xdsl.MonitoringNotification objects
+  Add a notification
+  **/
+  public post(path: '/xdsl/{serviceName}/monitoringNotifications', pathParams: {serviceName: string}): Promise<XdslMonitoringNotification>;
+  /**
+  cancelResiliation operations
+  Cancel the ongoing resiliation
+  **/
+  public post(path: '/xdsl/{serviceName}/cancelResiliation', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  List the xdsl.IP objects
+  Order an extra /29 range of IPv4 addresses
+  **/
+  public post(path: '/xdsl/{serviceName}/ips', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  extraIpRangeMove operations
+  Initiate the extra IP range migration
+  **/
+  public post(path: '/xdsl/{serviceName}/addressMove/extraIpRangeMove', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  requestTotalDeconsolidation operations
+  Switch this access to total deconsolidation
+  **/
+  public post(path: '/xdsl/{serviceName}/requestTotalDeconsolidation', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  applyTemplateToModem operations
+  Apply TemplateModem to existing Modem
+  **/
+  public post(path: '/xdsl/{serviceName}/applyTemplateToModem', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  ipv6 operations
+  Change the status of the IPv6 for this access
+  **/
+  public post(path: '/xdsl/{serviceName}/ipv6', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  requestPPPLoginMail operations
+  Renew PPP password and send the PPP login informations to the e-mail of the nicAdmin
+  **/
+  public post(path: '/xdsl/{serviceName}/requestPPPLoginMail', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  List the xdsl.DHCPStaticAddress objects
+  Add a DHCP static lease
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses', pathParams: {serviceName: string, lanName: string, dhcpName: string}): Promise<XdslDHCPStaticAddress>;
+  /**
+  reboot operations
+  Reboot the modem
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/reboot', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  callWaiting operations
+  Change the status of callWaiting on modem
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/callWaiting', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  upnp operations
+  Change the status of the Upnp on modem
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/upnp', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  refreshConnectedDevices operations
+  Refresh the list of connected devices on the modem
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/refreshConnectedDevices', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  reset operations
+  Reset the modem to its default configuration
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/reset', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  contentSharing operations
+  Change the status of contentSharing on modem
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/contentSharing', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  List the xdsl.PortMapping objects
+  Add a port mapping
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/portMappings', pathParams: {serviceName: string}): Promise<XdslPortMapping>;
+  /**
+  ftp operations
+  Change the status of the ftp service on modem
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/ftp', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  duplicatePortMappingConfig operations
+  Remove all the current port mapping rules and set the same config as the access given in parameters
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/duplicatePortMappingConfig', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  firmware operations
+  Launch a task to install target firmware on modem
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/firmware', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  ipsecAlg operations
+  Change the status of the ipsec alg service on modem
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/ipsecAlg', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  resetPortMappingConfig operations
+  Remove all the current port mapping rules
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/resetPortMappingConfig', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  retrieveInfo operations
+  get general Modem information
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/retrieveInfo', pathParams: {serviceName: string}): Promise<XdslAsyncTask<XdslModemInfo>>;
+  /**
+  blocIp operations
+  Change the status of the Bloc IP on modem
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/blocIp', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  sipAlg operations
+  Change the status of the sip alg service on modem
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/sipAlg', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  resiliate operations
+  Resiliate the access
+  **/
+  public post(path: '/xdsl/{serviceName}/resiliate', pathParams: {serviceName: string}): Promise<XdslResiliationFollowUpDetail>;
+  /**
+  Diagnostic of the access
+  Run diagnostic on the access
+  **/
+  public post(path: '/xdsl/{serviceName}/diagnostic', pathParams: {serviceName: string}): Promise<XdslTask>;
+  /**
+  sendOrderToProvider operations
+  Unlock order in "waitingCustomer" status. It only concerns orders whose modem is sent before anything have been forwarded to our provider
+  **/
+  public post(path: '/xdsl/{serviceName}/sendOrderToProvider', pathParams: {serviceName: string}): Promise<void>;
+  public post(path: PathsXdslPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  /**
+  Spare properties
+  Delete the spare as if it was not belonging to OVH anymore
+  **/
+  public delete(path: '/xdsl/spare/{spare}', pathParams: {spare: string}): Promise<void>;
+  /**
+  Modem Template
+  Delete this Modem Template
+  **/
+  public delete(path: '/xdsl/templateModem/{name}', pathParams: {name: string}): Promise<void>;
+  /**
+  XDSL Email Pro
+  Delete the email
+  **/
+  public delete(path: '/xdsl/email/pro/{email}', pathParams: {email: string}): Promise<void>;
+  /**
+  Current Return Merchandise Authorisation
+  Cancel the rma
+  **/
+  public delete(path: '/xdsl/{serviceName}/rma/{id}', pathParams: {serviceName: string, id: string}): Promise<void>;
   /**
   Defines where and how the notifications will be sent
   Delete this notification
   **/
   public delete(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', pathParams: {serviceName: string, id: Number}): Promise<void>;
   /**
-  Current Return Merchandise Authorisation
-  Cancel the rma
+  Informations about an IP address
+  Stop renewing this extra IPv4 option
   **/
-  public delete(path: '/xdsl/{serviceName}/rma/{id}', pathParams: {serviceName: string, id: string}): Promise<void>;
+  public delete(path: '/xdsl/{serviceName}/ips/{ip}', pathParams: {serviceName: string, ip: string}): Promise<void>;
   /**
   DHCP Static Address
   Delete this port mapping
@@ -4002,20 +4017,5 @@ export class ApiXdsl extends ApiCommon {
   Delete this port mapping
   **/
   public delete(path: '/xdsl/{serviceName}/modem/portMappings/{name}', pathParams: {serviceName: string, name: string}): Promise<XdslTask>;
-  /**
-  XDSL Email Pro
-  Delete the email
-  **/
-  public delete(path: '/xdsl/email/pro/{email}', pathParams: {email: string}): Promise<void>;
-  /**
-  Modem Template
-  Delete this Modem Template
-  **/
-  public delete(path: '/xdsl/templateModem/{name}', pathParams: {name: string}): Promise<void>;
-  /**
-  Spare properties
-  Delete the spare as if it was not belonging to OVH anymore
-  **/
-  public delete(path: '/xdsl/spare/{spare}', pathParams: {spare: string}): Promise<void>;
-  public delete(path: PathsXdslDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: PathsXdslDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

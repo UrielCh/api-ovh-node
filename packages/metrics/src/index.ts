@@ -46,7 +46,7 @@ export interface MetricsApiOption {
    * Time of last modification
    *
    */
-  lastModification?: Date;
+  lastModification?: string;
   /**
    * Monthly active device streams
    *
@@ -120,7 +120,7 @@ export interface MetricsApiService {
 /**
  * Status of of the service
  */
-export type MetricsApiServiceStatusEnum = 'new' | 'alive' | 'disabled' | 'dead';
+export type MetricsApiServiceStatusEnum = 'alive' | 'dead' | 'disabled' | 'new';
 /**
  * Structure holding the elements about a token
  */
@@ -134,7 +134,7 @@ export interface MetricsApiToken {
    * Token creation date
    *
    */
-  createdAt?: Date;
+  createdAt?: string;
   /**
    * Description of the token
    *
@@ -144,7 +144,7 @@ export interface MetricsApiToken {
    * Token expiration date
    *
    */
-  expiredAt?: Date;
+  expiredAt?: string;
   /**
    * Id of the token
    *
@@ -232,16 +232,16 @@ export interface ServicesService {
   contactTech?: string;
   /**
    */
-  creation?: Date;
+  creation?: string;
   /**
    */
   domain?: string;
   /**
    */
-  engagedUpTo?: Date;
+  engagedUpTo?: string;
   /**
    */
-  expiration?: Date;
+  expiration?: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -262,23 +262,23 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsMetricsGET = '/metrics/{serviceName}' | 
-'/metrics/{serviceName}/serviceInfos' | 
-'/metrics/{serviceName}/consumption' | 
+type PathsMetricsGET = '/metrics' | 
 '/metrics/{serviceName}/token/{tokenId}' | 
 '/metrics/{serviceName}/token' | 
-'/metrics';
-
-type PathsMetricsPUT = '/metrics/{serviceName}/quota' | 
 '/metrics/{serviceName}' | 
-'/metrics/{serviceName}/serviceInfos' | 
-'/metrics/{serviceName}/token/{tokenId}';
+'/metrics/{serviceName}/consumption' | 
+'/metrics/{serviceName}/serviceInfos';
 
-type PathsMetricsPOST = '/metrics/{serviceName}/changeContact' | 
+type PathsMetricsPUT = '/metrics/{serviceName}/token/{tokenId}' | 
+'/metrics/{serviceName}' | 
+'/metrics/{serviceName}/quota' | 
+'/metrics/{serviceName}/serviceInfos';
+
+type PathsMetricsPOST = '/metrics/{serviceName}/confirmTermination' | 
+'/metrics/{serviceName}/token' | 
+'/metrics/{serviceName}/changeContact' | 
 '/metrics/{serviceName}/lookup/token' | 
-'/metrics/{serviceName}/confirmTermination' | 
-'/metrics/{serviceName}/terminate' | 
-'/metrics/{serviceName}/token';
+'/metrics/{serviceName}/terminate';
 
 type PathsMetricsDELETE = '/metrics/{serviceName}/token/{tokenId}';
 
@@ -287,20 +287,10 @@ export class ApiMetrics extends ApiCommon {
     super(config);
   }
   /**
-  Missing description
-  Get service
+  Operations about the METRICS service
+  List available services
   **/
-  public get(path: '/metrics/{serviceName}', pathParams: {serviceName: string}): Promise<MetricsApiService>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/metrics/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  /**
-  Missing description
-  Get consumption for your service
-  **/
-  public get(path: '/metrics/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams: {duration?: Number}): Promise<MetricsApiConsumption>;
+  public get(path: '/metrics'): Promise<string[]>;
   /**
   Missing description
   Get a specific token
@@ -312,32 +302,52 @@ export class ApiMetrics extends ApiCommon {
   **/
   public get(path: '/metrics/{serviceName}/token', pathParams: {serviceName: string}): Promise<string[]>;
   /**
-  Operations about the METRICS service
-  List available services
+  Missing description
+  Get service
   **/
-  public get(path: '/metrics'): Promise<string[]>;
-  public get(path: PathsMetricsGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/metrics/{serviceName}', pathParams: {serviceName: string}): Promise<MetricsApiService>;
   /**
   Missing description
-  Set overquota
+  Get consumption for your service
   **/
-  public put(path: '/metrics/{serviceName}/quota', pathParams: {serviceName: string}): Promise<string>;
+  public get(path: '/metrics/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams: {duration?: Number}): Promise<MetricsApiConsumption>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/metrics/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: PathsMetricsGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  /**
+  Missing description
+  Modify a token
+  **/
+  public put(path: '/metrics/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<MetricsApiToken>;
   /**
   Missing description
   Modify service
   **/
   public put(path: '/metrics/{serviceName}', pathParams: {serviceName: string}): Promise<MetricsApiService>;
   /**
+  Missing description
+  Set overquota
+  **/
+  public put(path: '/metrics/{serviceName}/quota', pathParams: {serviceName: string}): Promise<string>;
+  /**
   Details about a Service
   Alter this object properties
   **/
   public put(path: '/metrics/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsMetricsPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  /**
+  Confirm termination of your service
+  Confirm termination of your service
+  **/
+  public post(path: '/metrics/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
   Missing description
-  Modify a token
+  Create a token
   **/
-  public put(path: '/metrics/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<MetricsApiToken>;
-  public put(path: PathsMetricsPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public post(path: '/metrics/{serviceName}/token', pathParams: {serviceName: string}): Promise<MetricsApiToken>;
   /**
   Change the contacts of this service
   Launch a contact change procedure
@@ -349,25 +359,15 @@ export class ApiMetrics extends ApiCommon {
   **/
   public post(path: '/metrics/{serviceName}/lookup/token', pathParams: {serviceName: string}): Promise<string[]>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
-  public post(path: '/metrics/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
-  /**
   Terminate your service
   Terminate your service
   **/
   public post(path: '/metrics/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
-  /**
-  Missing description
-  Create a token
-  **/
-  public post(path: '/metrics/{serviceName}/token', pathParams: {serviceName: string}): Promise<MetricsApiToken>;
-  public post(path: PathsMetricsPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: PathsMetricsPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Missing description
   Revoke a token
   **/
   public delete(path: '/metrics/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<void>;
-  public delete(path: PathsMetricsDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: PathsMetricsDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

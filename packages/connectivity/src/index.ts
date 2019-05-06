@@ -2,7 +2,7 @@ import { ApiCommon } from '@ovh-api/common';
 /**
  * Operator
  */
-export type ConnectivityOperatorEnum = 'OVH' | 'KOSC' | 'SFR' | 'ORANGE' | 'AXIONE';
+export type ConnectivityOperatorEnum = 'AXIONE' | 'KOSC' | 'ORANGE' | 'OVH' | 'SFR';
 /**
  * Activation type, for copper only
  */
@@ -312,12 +312,12 @@ export interface ConnectivityEligibilityMeetingSlot {
    * End date
    *
    */
-  endDate?: Date;
+  endDate?: string;
   /**
    * Start date
    *
    */
-  startDate?: Date;
+  startDate?: string;
   /**
    * An opaque string that represents an intervention unit
    *
@@ -347,7 +347,7 @@ export interface ConnectivityEligibilityMessage {
    * Availability date of the offer (if code of non eligibility is COPPER_NOT_YET_AVAILABLE, FIBER_NOT_YET_AVAILABLE or PRODUCT_NOT_YET_AVAILABLE)
    *
    */
-  availabilityDate?: Date;
+  availabilityDate?: string;
   /**
    * Code of the message
    *
@@ -484,7 +484,7 @@ export interface ConnectivityEligibilityPortability {
    * Date of the end of quarantine, if any
    *
    */
-  quarantineEndDate?: Date;
+  quarantineEndDate?: string;
   /**
    * Portability type, if a portability is ongoing
    *
@@ -558,7 +558,7 @@ export interface ConnectivityMonitoringGenericIncident {
    * Creation date, the generic incident has been detected
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * List of impacted department codes
    *
@@ -568,7 +568,7 @@ export interface ConnectivityMonitoringGenericIncident {
    * End date, the generic incident is resolved and closed
    *
    */
-  endDate?: Date;
+  endDate?: string;
   /**
    * Generic incident id
    *
@@ -598,7 +598,7 @@ export interface ConnectivityMonitoringGenericIncident {
 /**
  * Generic incident status
  */
-export type ConnectivityMonitoringGenericIncidentStatusEnum = 'detected' | 'validated' | 'closed';
+export type ConnectivityMonitoringGenericIncidentStatusEnum = 'closed' | 'detected' | 'validated';
 /**
  * Async task
  */
@@ -644,23 +644,23 @@ export interface XdslAsyncTaskArray<T> {
  */
 export type XdslAsyncTaskStatusEnum = 'error' | 'ok' | 'pending';
 type PathsConnectivityGET = '/connectivity/eligibility/test' | 
-'/connectivity/monitoring/genericIncident/public' | 
-'/connectivity/monitoring/genericIncident/partners';
+'/connectivity/monitoring/genericIncident/partners' | 
+'/connectivity/monitoring/genericIncident/public';
 
-type PathsConnectivityPOST = '/connectivity/eligibility/test/address' | 
+type PathsConnectivityPOST = '/connectivity/eligibility/search/streetNumbers' | 
+'/connectivity/eligibility/search/meetings' | 
+'/connectivity/eligibility/search/cities' | 
+'/connectivity/eligibility/search/lines' | 
+'/connectivity/eligibility/search/buildingsByLine' | 
+'/connectivity/eligibility/search/buildings' | 
+'/connectivity/eligibility/search/buildingDetails' | 
+'/connectivity/eligibility/search/streets' | 
+'/connectivity/eligibility/test/otp' | 
+'/connectivity/eligibility/test/address' | 
 '/connectivity/eligibility/test/address/partners' | 
 '/connectivity/eligibility/test/building' | 
 '/connectivity/eligibility/test/line' | 
-'/connectivity/eligibility/test/line/partners' | 
-'/connectivity/eligibility/test/otp' | 
-'/connectivity/eligibility/search/lines' | 
-'/connectivity/eligibility/search/buildingsByLine' | 
-'/connectivity/eligibility/search/meetings' | 
-'/connectivity/eligibility/search/streets' | 
-'/connectivity/eligibility/search/buildingDetails' | 
-'/connectivity/eligibility/search/cities' | 
-'/connectivity/eligibility/search/buildings' | 
-'/connectivity/eligibility/search/streetNumbers';
+'/connectivity/eligibility/test/line/partners';
 
 export class ApiConnectivity extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
@@ -670,18 +670,63 @@ export class ApiConnectivity extends ApiCommon {
   Get an eligibility by its reference
   Get an eligibility by its reference
   **/
-  public get(path: '/connectivity/eligibility/test', pathParams: null, queryParams: {eligibilityReference?: string}): Promise<ConnectivityEligibilityEligibilityTest>;
-  /**
-  Missing description
-  List validated and recently closed generic incidents
-  **/
-  public get(path: '/connectivity/monitoring/genericIncident/public', pathParams: null, queryParams: {status?: ConnectivityMonitoringGenericIncidentStatusEnum, creationDate?: Date, endDate?: Date}): Promise<ConnectivityMonitoringGenericIncident[]>;
+  public get(path: '/connectivity/eligibility/test', pathParams: undefined, queryParams: {eligibilityReference?: string}): Promise<ConnectivityEligibilityEligibilityTest>;
   /**
   Missing description
   List detected, validated and recently closed generic incidents. For partners only
   **/
-  public get(path: '/connectivity/monitoring/genericIncident/partners', pathParams: null, queryParams: {status?: ConnectivityMonitoringGenericIncidentStatusEnum, creationDate?: Date, endDate?: Date}): Promise<ConnectivityMonitoringGenericIncident[]>;
-  public get(path: PathsConnectivityGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/connectivity/monitoring/genericIncident/partners', pathParams: undefined, queryParams: {status?: ConnectivityMonitoringGenericIncidentStatusEnum, creationDate?: string, endDate?: string}): Promise<ConnectivityMonitoringGenericIncident[]>;
+  /**
+  Missing description
+  List validated and recently closed generic incidents
+  **/
+  public get(path: '/connectivity/monitoring/genericIncident/public', pathParams: undefined, queryParams: {status?: ConnectivityMonitoringGenericIncidentStatusEnum, creationDate?: string, endDate?: string}): Promise<ConnectivityMonitoringGenericIncident[]>;
+  public get(path: PathsConnectivityGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  /**
+  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
+  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
+  **/
+  public post(path: '/connectivity/eligibility/search/streetNumbers'): Promise<XdslAsyncTaskArray<string>>;
+  /**
+  Search for available line creation meeting time slots, for copper only
+  Search for available line creation meeting time slots, for copper only
+  **/
+  public post(path: '/connectivity/eligibility/search/meetings'): Promise<XdslAsyncTask<ConnectivityEligibilityMeetings>>;
+  /**
+  Get all localities linked to a zip code
+  Get all localities linked to a zip code
+  **/
+  public post(path: '/connectivity/eligibility/search/cities'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityCity>>;
+  /**
+  Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified
+  Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified
+  **/
+  public post(path: '/connectivity/eligibility/search/lines'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityLine>>;
+  /**
+  Get building references from a given line number
+  Get building references from a given line number
+  **/
+  public post(path: '/connectivity/eligibility/search/buildingsByLine'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityBuilding>>;
+  /**
+  Get all buildings for a specific address
+  Get all buildings for a specific address
+  **/
+  public post(path: '/connectivity/eligibility/search/buildings'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityBuilding>>;
+  /**
+  Get the details for a building
+  Get the details for a building
+  **/
+  public post(path: '/connectivity/eligibility/search/buildingDetails'): Promise<XdslAsyncTask<ConnectivityEligibilityBuilding>>;
+  /**
+  Get all street linked to a locality
+  Get all street linked to a locality
+  **/
+  public post(path: '/connectivity/eligibility/search/streets'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityStreet>>;
+  /**
+  Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
+  Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
+  **/
+  public post(path: '/connectivity/eligibility/test/otp'): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
   /**
   Do an eligibility for an address, if no line exist
   Do an eligibility for an address, if no line exist
@@ -707,50 +752,5 @@ export class ApiConnectivity extends ApiCommon {
   Do an eligibility test on a line number, for copper only. Partners only.
   **/
   public post(path: '/connectivity/eligibility/test/line/partners'): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
-  /**
-  Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
-  Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
-  **/
-  public post(path: '/connectivity/eligibility/test/otp'): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
-  /**
-  Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified
-  Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified
-  **/
-  public post(path: '/connectivity/eligibility/search/lines'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityLine>>;
-  /**
-  Get building references from a given line number
-  Get building references from a given line number
-  **/
-  public post(path: '/connectivity/eligibility/search/buildingsByLine'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityBuilding>>;
-  /**
-  Search for available line creation meeting time slots, for copper only
-  Search for available line creation meeting time slots, for copper only
-  **/
-  public post(path: '/connectivity/eligibility/search/meetings'): Promise<XdslAsyncTask<ConnectivityEligibilityMeetings>>;
-  /**
-  Get all street linked to a locality
-  Get all street linked to a locality
-  **/
-  public post(path: '/connectivity/eligibility/search/streets'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityStreet>>;
-  /**
-  Get the details for a building
-  Get the details for a building
-  **/
-  public post(path: '/connectivity/eligibility/search/buildingDetails'): Promise<XdslAsyncTask<ConnectivityEligibilityBuilding>>;
-  /**
-  Get all localities linked to a zip code
-  Get all localities linked to a zip code
-  **/
-  public post(path: '/connectivity/eligibility/search/cities'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityCity>>;
-  /**
-  Get all buildings for a specific address
-  Get all buildings for a specific address
-  **/
-  public post(path: '/connectivity/eligibility/search/buildings'): Promise<XdslAsyncTaskArray<ConnectivityEligibilityBuilding>>;
-  /**
-  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
-  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
-  **/
-  public post(path: '/connectivity/eligibility/search/streetNumbers'): Promise<XdslAsyncTaskArray<string>>;
-  public post(path: PathsConnectivityPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: PathsConnectivityPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

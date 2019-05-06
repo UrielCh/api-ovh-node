@@ -2,11 +2,11 @@ import { ApiCommon } from '@ovh-api/common';
 /**
  * Description not available
  */
-export type OvhstatusTaskTaskImpactEnum = 'partialUnavailability' | 'fullUnavailability' | 'downtime' | 'none' | 'unknown';
+export type OvhstatusTaskTaskImpactEnum = 'downtime' | 'fullUnavailability' | 'none' | 'partialUnavailability' | 'unknown';
 /**
  * Description not available
  */
-export type OvhstatusTaskTaskStatusEnum = 'planned' | 'inProgress' | 'finished';
+export type OvhstatusTaskTaskStatusEnum = 'finished' | 'inProgress' | 'planned';
 /**
  * Description not available
  */
@@ -24,7 +24,7 @@ export interface StatusReply {
    * The date of the reply
    *
    */
-  date?: Date;
+  date?: string;
 }
 /**
  * A task linked to one of your services
@@ -39,7 +39,7 @@ export interface StatusTask {
    * The end date of the task
    *
    */
-  endDate?: Date;
+  endDate?: string;
   /**
    * The impact of the task
    *
@@ -74,7 +74,7 @@ export interface StatusTask {
    * The start date of the task
    *
    */
-  startDate?: Date;
+  startDate?: string;
   /**
    * The status of the task
    *
@@ -106,6 +106,6 @@ export class ApiStatus extends ApiCommon {
   API to get incidents or maintenances linked to nichandle services
   Find all the incidents or maintenances linked to your services
   **/
-  public get(path: '/status/task', pathParams: null, queryParams: {impact?: OvhstatusTaskTaskImpactEnum, status?: OvhstatusTaskTaskStatusEnum, type?: OvhstatusTaskTaskTypeEnum}): Promise<StatusTask[]>;
-  public get(path: PathsStatusGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/status/task', pathParams: undefined, queryParams: {impact?: OvhstatusTaskTaskImpactEnum, status?: OvhstatusTaskTaskStatusEnum, type?: OvhstatusTaskTaskTypeEnum}): Promise<StatusTask[]>;
+  public get(path: PathsStatusGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
 }

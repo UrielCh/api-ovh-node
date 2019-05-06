@@ -129,12 +129,12 @@ export interface ServiceConsumptionTransaction {
    * Begin date
    *
    */
-  beginDate?: Date;
+  beginDate?: string;
   /**
    * Creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * List of product plan code consumption
    *
@@ -144,7 +144,7 @@ export interface ServiceConsumptionTransaction {
    * End date
    *
    */
-  endDate?: Date;
+  endDate?: string;
   /**
    * Transaction ID
    *
@@ -154,7 +154,7 @@ export interface ServiceConsumptionTransaction {
    * Last update
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * Consumption amount price
    *
@@ -232,7 +232,7 @@ export interface ServiceRenewRenewDescription {
    * ISO8601 formatted renewal duration
    *
    */
-  renewPeriod?: duration:string;
+  renewPeriod?: string;
   /**
    * List possible strategies
    *
@@ -312,12 +312,12 @@ export interface ServiceRenewRenewOrder {
    * Creation date of the renew Order
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * Expiration date of the renew Order
    *
    */
-  expirationDate?: Date;
+  expirationDate?: string;
   /**
    * ID of the renew Order
    *
@@ -347,7 +347,7 @@ export interface ServiceRenewRenewOrder {
    * Retraction date
    *
    */
-  retractionDate?: Date;
+  retractionDate?: string;
   /**
    * Value of the tax
    *
@@ -377,7 +377,7 @@ export interface ServiceRenewRenewStrategy {
    * Services renewed by strategy
    *
    */
-  services?: Number[][];
+  services?: Number[];
   /**
    * Details of services renewed by strategy
    *
@@ -412,7 +412,7 @@ export interface ServiceListService {
    * Creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Resource details
    *
@@ -422,17 +422,17 @@ export interface ServiceListService {
    * Engagement date
    *
    */
-  engagementDate?: Date;
+  engagementDate?: string;
   /**
    * Expiration date
    *
    */
-  expirationDate?: Date;
+  expirationDate?: string;
   /**
    * The next billing date
    *
    */
-  nextBillingDate?: Date;
+  nextBillingDate?: string;
   /**
    * Plan service description
    *
@@ -464,62 +464,62 @@ export interface ServiceListService {
    */
   state?: ServiceBillingStateEnum;
 }
-type PathsServiceGET = '/service/{serviceId}/renew' | 
+type PathsServiceGET = '/service' | 
 '/service/{serviceId}' | 
-'/service';
+'/service/{serviceId}/renew';
 
 type PathsServicePUT = '/service/{serviceId}';
 
-type PathsServicePOST = '/service/{serviceId}/suspend' | 
-'/service/{serviceId}/renew' | 
-'/service/{serviceId}/reopen' | 
-'/service/{serviceId}/terminate';
+type PathsServicePOST = '/service/{serviceId}/reopen' | 
+'/service/{serviceId}/suspend' | 
+'/service/{serviceId}/terminate' | 
+'/service/{serviceId}/renew';
 
 export class ApiService extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
     super(config);
   }
   /**
-  Missing description
-  List possible renews for this service
+  Operations about the services
+  List available services
   **/
-  public get(path: '/service/{serviceId}/renew', pathParams: {serviceId: string}, queryParams: {includeOptions?: boolean}): Promise<ServiceRenewRenewDescription[]>;
+  public get(path: '/service'): Promise<Number[]>;
   /**
   Details about a Service
   Get this object properties
   **/
   public get(path: '/service/{serviceId}', pathParams: {serviceId: Number}): Promise<ServiceListService>;
   /**
-  Operations about the services
-  List available services
+  Missing description
+  List possible renews for this service
   **/
-  public get(path: '/service'): Promise<Number[]>;
-  public get(path: PathsServiceGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/service/{serviceId}/renew', pathParams: {serviceId: string}, queryParams: {includeOptions?: boolean}): Promise<ServiceRenewRenewDescription[]>;
+  public get(path: PathsServiceGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
   public put(path: '/service/{serviceId}', pathParams: {serviceId: Number}): Promise<void>;
-  public put(path: PathsServicePUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
-  /**
-  suspend operations
-  Suspend the service. The service won't be accessible, but you will still be charged for it
-  **/
-  public post(path: '/service/{serviceId}/suspend', pathParams: {serviceId: Number}): Promise<void>;
-  /**
-  Missing description
-  Create a renew order
-  **/
-  public post(path: '/service/{serviceId}/renew', pathParams: {serviceId: string}): Promise<ServiceRenewRenewOrder>;
+  public put(path: PathsServicePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   reopen operations
   Reopen a suspended service
   **/
   public post(path: '/service/{serviceId}/reopen', pathParams: {serviceId: Number}): Promise<void>;
   /**
+  suspend operations
+  Suspend the service. The service won't be accessible, but you will still be charged for it
+  **/
+  public post(path: '/service/{serviceId}/suspend', pathParams: {serviceId: Number}): Promise<void>;
+  /**
   terminate operations
   Terminates a suspended service
   **/
   public post(path: '/service/{serviceId}/terminate', pathParams: {serviceId: Number}): Promise<void>;
-  public post(path: PathsServicePOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  /**
+  Missing description
+  Create a renew order
+  **/
+  public post(path: '/service/{serviceId}/renew', pathParams: {serviceId: string}): Promise<ServiceRenewRenewOrder>;
+  public post(path: PathsServicePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

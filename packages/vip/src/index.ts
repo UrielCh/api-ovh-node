@@ -57,16 +57,16 @@ export interface ServicesService {
   contactTech?: string;
   /**
    */
-  creation?: Date;
+  creation?: string;
   /**
    */
   domain?: string;
   /**
    */
-  engagedUpTo?: Date;
+  engagedUpTo?: string;
   /**
    */
-  expiration?: Date;
+  expiration?: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -106,9 +106,9 @@ export interface VipSupportVip {
  * Available universe for VIP service
  */
 export type VipUniverseEnum = 'cloud' | 'dedicated' | 'telecom' | 'web';
-type PathsVipGET = '/vip' | 
-'/vip/{serviceName}/serviceInfos' | 
-'/vip/{serviceName}';
+type PathsVipGET = '/vip/{serviceName}/serviceInfos' | 
+'/vip/{serviceName}' | 
+'/vip';
 
 type PathsVipPUT = '/vip/{serviceName}/serviceInfos';
 
@@ -116,11 +116,6 @@ export class ApiVip extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
     super(config);
   }
-  /**
-  Operations about the SUPPORT_PLUS service
-  List available services
-  **/
-  public get(path: '/vip'): Promise<string[]>;
   /**
   Details about a Service
   Get this object properties
@@ -131,11 +126,16 @@ export class ApiVip extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/vip/{serviceName}', pathParams: {serviceName: string}): Promise<VipSupportVip>;
-  public get(path: PathsVipGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  /**
+  Operations about the SUPPORT_PLUS service
+  List available services
+  **/
+  public get(path: '/vip'): Promise<string[]>;
+  public get(path: PathsVipGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
   public put(path: '/vip/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsVipPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: PathsVipPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
 }

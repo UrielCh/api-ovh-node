@@ -7,7 +7,7 @@ export interface SecretSecret {
    * Expiration time of the secret
    *
    */
-  expiration?: Date;
+  expiration?: string;
   /**
    * The secret
    *
@@ -25,5 +25,5 @@ export class ApiSecret extends ApiCommon {
   Retrieve a secret sent by email
   **/
   public post(path: '/secret/retrieve'): Promise<SecretSecret>;
-  public post(path: PathsSecretPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: PathsSecretPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

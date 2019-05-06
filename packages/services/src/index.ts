@@ -2,7 +2,7 @@ import { ApiCommon } from '@ovh-api/common';
 /**
  * Key and value, with proper key strings
  */
-export interface ComplexTypeSafeKeyValue {
+export interface ComplexTypeSafeKeyValue<T> {
   /**
    */
   key?: string;
@@ -42,7 +42,7 @@ export interface ServicesBillingInvoice {
    * Invoice date
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * Invoice reference
    *
@@ -67,12 +67,12 @@ export interface ServicesBillingInvoiceLine {
    * End period
    *
    */
-  periodEnd?: Date;
+  periodEnd?: string;
   /**
    * Start period
    *
    */
-  periodStart?: Date;
+  periodStart?: string;
   /**
    * Price without tax
    *
@@ -121,12 +121,12 @@ export interface ServicesBillingEngagementEngagementPeriod {
    * End of the period
    *
    */
-  endDate?: Date;
+  endDate?: string;
   /**
    * Beginning of the period
    *
    */
-  startDate?: Date;
+  startDate?: string;
 }
 /**
  * Billing informations of the service
@@ -136,12 +136,12 @@ export interface ServicesExpandedBilling {
    * Expiration date
    *
    */
-  expirationDate?: Date;
+  expirationDate?: string;
   /**
    * Next billing date
    *
    */
-  nextBillingDate?: Date;
+  nextBillingDate?: string;
   /**
    * Service Plan
    *
@@ -255,7 +255,7 @@ export class ApiServices extends ApiCommon {
   Get list of your service details
   null
   **/
-  public get(path: '/services', pathParams: null, queryParams: {routes?: string, orderBy?: string, sort?: string}): Promise<Number[]>;
+  public get(path: '/services', pathParams: undefined, queryParams: {routes?: string, orderBy?: string, sort?: string}): Promise<Number[]>;
   /**
   Get list of your service details
   Get details about a service
@@ -266,5 +266,5 @@ export class ApiServices extends ApiCommon {
   Get engagement details
   **/
   public get(path: '/services/{serviceId}/billing/engagement', pathParams: {serviceId: Number}): Promise<ServicesBillingEngagementEngagement>;
-  public get(path: PathsServicesGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: PathsServicesGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
 }

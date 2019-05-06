@@ -33,7 +33,7 @@ export interface HpcspotConsumption {
    * Date of the completion of the item consumption
    *
    */
-  hpcspotItemEndDate?: Date;
+  hpcspotItemEndDate?: string;
   /**
    * ID of the linked job on HPC Spot interface
    *
@@ -136,16 +136,16 @@ export interface ServicesService {
   contactTech?: string;
   /**
    */
-  creation?: Date;
+  creation?: string;
   /**
    */
   domain?: string;
   /**
    */
-  engagedUpTo?: Date;
+  engagedUpTo?: string;
   /**
    */
-  expiration?: Date;
+  expiration?: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -166,10 +166,10 @@ export interface ServicesService {
    */
   status?: ServiceStateEnum;
 }
-type PathsHpcspotGET = '/hpcspot/{serviceName}/consumption/{id}' | 
-'/hpcspot/{serviceName}/consumption' | 
-'/hpcspot/{serviceName}' | 
+type PathsHpcspotGET = '/hpcspot/{serviceName}' | 
 '/hpcspot/{serviceName}/serviceInfos' | 
+'/hpcspot/{serviceName}/consumption/{id}' | 
+'/hpcspot/{serviceName}/consumption' | 
 '/hpcspot';
 
 type PathsHpcspotPUT = '/hpcspot/{serviceName}/serviceInfos';
@@ -178,16 +178,6 @@ export class ApiHpcspot extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
     super(config);
   }
-  /**
-  Detail of a HPC Spot consumtion
-  Get this object properties
-  **/
-  public get(path: '/hpcspot/{serviceName}/consumption/{id}', pathParams: {serviceName: string, id: Number}): Promise<HpcspotConsumption>;
-  /**
-  List the hpcspot.Consumption objects
-  Details of the consumption of your account
-  **/
-  public get(path: '/hpcspot/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams: {'hpcspotItemEndDate.to'?: Date, hpcspotItemId?: Number, 'hpcspotItemEndDate.from'?: Date, orderId?: Number, type?: HpcspotConsumptionTypeEnum}): Promise<Number[]>;
   /**
   Account HPC Spot
   Get this object properties
@@ -199,15 +189,25 @@ export class ApiHpcspot extends ApiCommon {
   **/
   public get(path: '/hpcspot/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
+  Detail of a HPC Spot consumtion
+  Get this object properties
+  **/
+  public get(path: '/hpcspot/{serviceName}/consumption/{id}', pathParams: {serviceName: string, id: Number}): Promise<HpcspotConsumption>;
+  /**
+  List the hpcspot.Consumption objects
+  Details of the consumption of your account
+  **/
+  public get(path: '/hpcspot/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams: {orderId?: Number, 'hpcspotItemEndDate.to'?: string, hpcspotItemId?: Number, 'hpcspotItemEndDate.from'?: string, type?: HpcspotConsumptionTypeEnum}): Promise<Number[]>;
+  /**
   Operations about the HPCSPOT service
   List available services
   **/
   public get(path: '/hpcspot'): Promise<string[]>;
-  public get(path: PathsHpcspotGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: PathsHpcspotGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
   public put(path: '/hpcspot/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsHpcspotPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: PathsHpcspotPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
 }

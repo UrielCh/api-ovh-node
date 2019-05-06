@@ -112,16 +112,16 @@ export interface ServicesService {
   contactTech?: string;
   /**
    */
-  creation?: Date;
+  creation?: string;
   /**
    */
   domain?: string;
   /**
    */
-  engagedUpTo?: Date;
+  engagedUpTo?: string;
   /**
    */
-  expiration?: Date;
+  expiration?: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -272,27 +272,32 @@ export interface TelephonyVoicemailProperties {
    */
   unreadMessages?: Number;
 }
-type PathsFreefaxGET = '/freefax/{serviceName}/voicemail/routing' | 
+type PathsFreefaxGET = '/freefax/{serviceName}/mainService' | 
+'/freefax/{serviceName}/voicemail/routing' | 
 '/freefax/{serviceName}/voicemail' | 
 '/freefax/{serviceName}/voicemail/voicemailNumbers' | 
-'/freefax/{serviceName}/mainService' | 
-'/freefax/{serviceName}' | 
 '/freefax/{serviceName}/serviceInfos' | 
+'/freefax/{serviceName}' | 
 '/freefax/credits' | 
 '/freefax';
 
 type PathsFreefaxPUT = '/freefax/{serviceName}/voicemail' | 
-'/freefax/{serviceName}' | 
-'/freefax/{serviceName}/serviceInfos';
+'/freefax/{serviceName}/serviceInfos' | 
+'/freefax/{serviceName}';
 
-type PathsFreefaxPOST = '/freefax/{serviceName}/voicemail/changePassword' | 
-'/freefax/{serviceName}/voicemail/changeRouting' | 
-'/freefax/{serviceName}/changePassword';
+type PathsFreefaxPOST = '/freefax/{serviceName}/changePassword' | 
+'/freefax/{serviceName}/voicemail/changePassword' | 
+'/freefax/{serviceName}/voicemail/changeRouting';
 
 export class ApiFreefax extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
     super(config);
   }
+  /**
+  mainService operations
+  Main service attached to freefax
+  **/
+  public get(path: '/freefax/{serviceName}/mainService', pathParams: {serviceName: string}): Promise<string>;
   /**
   routing operations
   Get the status of the voicemail. Available only if the line has fax capabilities
@@ -309,20 +314,15 @@ export class ApiFreefax extends ApiCommon {
   **/
   public get(path: '/freefax/{serviceName}/voicemail/voicemailNumbers', pathParams: {serviceName: string}): Promise<TelephonyVoicemailNumbers>;
   /**
-  mainService operations
-  Main service attached to freefax
+  Details about a Service
+  Get this object properties
   **/
-  public get(path: '/freefax/{serviceName}/mainService', pathParams: {serviceName: string}): Promise<string>;
+  public get(path: '/freefax/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Freefax properties
   Get this object properties
   **/
   public get(path: '/freefax/{serviceName}', pathParams: {serviceName: string}): Promise<FreefaxFreefaxProperties>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/freefax/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Get the credit balance and the remaining pages available for all our freefax
   Get the credit balance and the remaining pages available for all our freefax
@@ -333,23 +333,28 @@ export class ApiFreefax extends ApiCommon {
   List available services
   **/
   public get(path: '/freefax'): Promise<string[]>;
-  public get(path: PathsFreefaxGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: PathsFreefaxGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Voicemail Properties
   Alter this object properties
   **/
   public put(path: '/freefax/{serviceName}/voicemail', pathParams: {serviceName: string}): Promise<void>;
   /**
-  Freefax properties
-  Alter this object properties
-  **/
-  public put(path: '/freefax/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
-  /**
   Details about a Service
   Alter this object properties
   **/
   public put(path: '/freefax/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsFreefaxPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  /**
+  Freefax properties
+  Alter this object properties
+  **/
+  public put(path: '/freefax/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsFreefaxPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  /**
+  changePassword operations
+  Generates a new password for your fax account
+  **/
+  public post(path: '/freefax/{serviceName}/changePassword', pathParams: {serviceName: string}): Promise<string>;
   /**
   changePassword operations
   Change the voicemail password. It must be 4 digit
@@ -360,10 +365,5 @@ export class ApiFreefax extends ApiCommon {
   Disable/Enable voicemail. Available only if the line has fax capabilities
   **/
   public post(path: '/freefax/{serviceName}/voicemail/changeRouting', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  changePassword operations
-  Generates a new password for your fax account
-  **/
-  public post(path: '/freefax/{serviceName}/changePassword', pathParams: {serviceName: string}): Promise<string>;
-  public post(path: PathsFreefaxPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: PathsFreefaxPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

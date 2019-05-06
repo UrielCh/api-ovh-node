@@ -12,7 +12,7 @@ export interface SupportMessage {
    * Message creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Message sender type
    *
@@ -32,7 +32,7 @@ export interface SupportMessage {
    * Message last update date
    *
    */
-  updateDate?: Date;
+  updateDate?: string;
 }
 /**
  * Message sender type
@@ -81,7 +81,7 @@ export interface SupportTicket {
    * Ticket creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Sender type of last message
    *
@@ -131,7 +131,7 @@ export interface SupportTicket {
    * Ticket last update date
    *
    */
-  updateDate?: Date;
+  updateDate?: string;
 }
 /**
  * Ticket request category
@@ -153,21 +153,26 @@ export type SupportTicketSubCategoryEnum = 'alerts' | 'autorenew' | 'bill' | 'do
  * Ticket type (criticalIntervention requires VIP support level)
  */
 export type SupportTicketTypeEnum = 'criticalIntervention' | 'genericRequest';
-type PathsSupportGET = '/support/tickets/{ticketId}/canBeScored' | 
+type PathsSupportGET = '/support/tickets/{ticketId}/messages' | 
+'/support/tickets/{ticketId}/canBeScored' | 
 '/support/tickets/{ticketId}' | 
-'/support/tickets/{ticketId}/messages' | 
 '/support/tickets';
 
-type PathsSupportPOST = '/support/tickets/create' | 
+type PathsSupportPOST = '/support/tickets/{ticketId}/reopen' | 
 '/support/tickets/{ticketId}/close' | 
-'/support/tickets/{ticketId}/reopen' | 
 '/support/tickets/{ticketId}/reply' | 
-'/support/tickets/{ticketId}/score';
+'/support/tickets/{ticketId}/score' | 
+'/support/tickets/create';
 
 export class ApiSupport extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
     super(config);
   }
+  /**
+  Get ticket messages
+  Get ticket messages
+  **/
+  public get(path: '/support/tickets/{ticketId}/messages', pathParams: {ticketId: Number}): Promise<SupportMessage[]>;
   /**
   Check whether ticket can be scored
   Checks whether ticket can be scored
@@ -179,31 +184,21 @@ export class ApiSupport extends ApiCommon {
   **/
   public get(path: '/support/tickets/{ticketId}', pathParams: {ticketId: Number}): Promise<SupportTicket>;
   /**
-  Get ticket messages
-  Get ticket messages
-  **/
-  public get(path: '/support/tickets/{ticketId}/messages', pathParams: {ticketId: Number}): Promise<SupportMessage[]>;
-  /**
   List support tickets identifiers for this service
   List support tickets identifiers for this service
   **/
-  public get(path: '/support/tickets', pathParams: null, queryParams: {minCreationDate?: Date, product?: SupportTicketProductEnum, ticketNumber?: string, maxCreationDate?: Date, serviceName?: string, status?: SupportTicketStatusEnum, subject?: string, category?: SupportTicketCategoryEnum, archived?: boolean}): Promise<Number[]>;
-  public get(path: PathsSupportGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
-  /**
-  Create a new ticket
-  Create a new ticket
-  **/
-  public post(path: '/support/tickets/create'): Promise<SupportNewMessageInfo>;
-  /**
-  Close ticket
-  Close ticket
-  **/
-  public post(path: '/support/tickets/{ticketId}/close', pathParams: {ticketId: Number}): Promise<void>;
+  public get(path: '/support/tickets', pathParams: undefined, queryParams: {status?: SupportTicketStatusEnum, product?: SupportTicketProductEnum, maxCreationDate?: string, category?: SupportTicketCategoryEnum, serviceName?: string, ticketNumber?: string, minCreationDate?: string, archived?: boolean, subject?: string}): Promise<Number[]>;
+  public get(path: PathsSupportGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Reopen a ticket
   Reopen a ticket
   **/
   public post(path: '/support/tickets/{ticketId}/reopen', pathParams: {ticketId: Number}): Promise<void>;
+  /**
+  Close ticket
+  Close ticket
+  **/
+  public post(path: '/support/tickets/{ticketId}/close', pathParams: {ticketId: Number}): Promise<void>;
   /**
   Reply to ticket
   Reply to ticket
@@ -214,5 +209,10 @@ export class ApiSupport extends ApiCommon {
   Set ticket score
   **/
   public post(path: '/support/tickets/{ticketId}/score', pathParams: {ticketId: Number}): Promise<void>;
-  public post(path: PathsSupportPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  /**
+  Create a new ticket
+  Create a new ticket
+  **/
+  public post(path: '/support/tickets/create'): Promise<SupportNewMessageInfo>;
+  public post(path: PathsSupportPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

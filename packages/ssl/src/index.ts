@@ -57,16 +57,16 @@ export interface ServicesService {
   contactTech?: string;
   /**
    */
-  creation?: Date;
+  creation?: string;
   /**
    */
   domain?: string;
   /**
    */
-  engagedUpTo?: Date;
+  engagedUpTo?: string;
   /**
    */
-  expiration?: Date;
+  expiration?: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -140,12 +140,12 @@ export interface SslCertificate {
    * Your certificate is invalid from this date
    *
    */
-  validityEnd?: Date;
+  validityEnd?: string;
   /**
    * Your certificate is valid from this date
    *
    */
-  validityStart?: Date;
+  validityStart?: string;
 }
 /**
  * All authority a SSL certificate can be issued from
@@ -167,7 +167,7 @@ export interface SslOperation {
    * Completion date
    *
    */
-  doneDate?: Date;
+  doneDate?: string;
   /**
    * Task function name
    *
@@ -177,12 +177,12 @@ export interface SslOperation {
    * Task last update
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * Task Creation date
    *
    */
-  startDate?: Date;
+  startDate?: string;
   /**
    * Task status
    *
@@ -200,10 +200,10 @@ export type SslOperationFunctionEnum = 'createCertificate';
  * All status a SSL operation can be in
  */
 export type SslOperationStatusEnum = 'cancelled' | 'doing' | 'done' | 'error' | 'todo';
-type PathsSslGET = '/ssl/{serviceName}/serviceInfos' | 
-'/ssl/{serviceName}/tasks/{taskId}' | 
+type PathsSslGET = '/ssl/{serviceName}/tasks/{taskId}' | 
 '/ssl/{serviceName}/tasks' | 
 '/ssl/{serviceName}' | 
+'/ssl/{serviceName}/serviceInfos' | 
 '/ssl';
 
 type PathsSslPUT = '/ssl/{serviceName}/serviceInfos';
@@ -212,11 +212,6 @@ export class ApiSsl extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
     super(config);
   }
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/ssl/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Task on a SSL
   Get this object properties
@@ -233,15 +228,20 @@ export class ApiSsl extends ApiCommon {
   **/
   public get(path: '/ssl/{serviceName}', pathParams: {serviceName: string}): Promise<SslCertificate>;
   /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/ssl/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
   Operations about the SSL service
   List available services
   **/
   public get(path: '/ssl'): Promise<string[]>;
-  public get(path: PathsSslGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: PathsSslGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
   public put(path: '/ssl/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsSslPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: PathsSslPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
 }

@@ -16,7 +16,7 @@ export interface AgreementsContract {
    * Date the contract was created on
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * Name of of the contract
    *
@@ -51,7 +51,7 @@ export interface AgreementsContractAgreement {
    * Date the agreed contract was effective
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * Id of the contract
    *
@@ -91,16 +91,16 @@ export interface ApiCredential {
   applicationId?: Number;
   /**
    */
-  creation?: Date;
+  creation?: string;
   /**
    */
   credentialId?: Number;
   /**
    */
-  expiration?: Date;
+  expiration?: string;
   /**
    */
-  lastUse?: Date;
+  lastUse?: string;
   /**
    * States whether this credential has been created by yourself or by the OVH support team
    *
@@ -126,7 +126,7 @@ export interface ApiLog {
    * Date of the request
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * Source IP of the request
    *
@@ -204,7 +204,7 @@ export interface BillingBankAccount {
   bic?: string;
   /**
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    */
   defaultPaymentMean?: boolean;
@@ -221,7 +221,7 @@ export interface BillingBankAccount {
   id?: Number;
   /**
    */
-  mandateSignatureDate?: Date;
+  mandateSignatureDate?: string;
   /**
    */
   ownerAddress?: string;
@@ -251,7 +251,7 @@ export interface BillingBill {
   billId?: string;
   /**
    */
-  date?: Date;
+  date?: string;
   /**
    */
   orderId?: Number;
@@ -289,10 +289,10 @@ export interface BillingBillDetail {
   domain?: string;
   /**
    */
-  periodEnd?: Date;
+  periodEnd?: string;
   /**
    */
-  periodStart?: Date;
+  periodStart?: string;
   /**
    */
   quantity?: string;
@@ -336,7 +336,7 @@ export interface BillingCreditCard {
   description?: string;
   /**
    */
-  expirationDate?: Date;
+  expirationDate?: string;
   /**
    */
   id?: Number;
@@ -365,7 +365,7 @@ export type BillingCreditCardStateEnum = 'expired' | 'tooManyFailures' | 'valid'
 export interface BillingDeferredPaymentAccount {
   /**
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    */
   defaultPaymentMean?: boolean;
@@ -399,7 +399,7 @@ export interface BillingDeposit {
   amount?: OrderPrice;
   /**
    */
-  date?: Date;
+  date?: string;
   /**
    */
   depositId?: string;
@@ -457,10 +457,10 @@ export interface BillingFidelityAccount {
   canBeCredited?: boolean;
   /**
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    */
-  openDate?: Date;
+  openDate?: string;
 }
 /**
  * Details about a fidelity account
@@ -474,7 +474,7 @@ export interface BillingFidelityMovement {
   balance?: Number;
   /**
    */
-  date?: Date;
+  date?: string;
   /**
    */
   description?: string;
@@ -608,7 +608,7 @@ export interface BillingMovement {
   balance?: OrderPrice;
   /**
    */
-  date?: Date;
+  date?: string;
   /**
    */
   description?: string;
@@ -631,10 +631,10 @@ export interface BillingMovement {
 export interface BillingOrder {
   /**
    */
-  date?: Date;
+  date?: string;
   /**
    */
-  expirationDate?: Date;
+  expirationDate?: string;
   /**
    */
   orderId?: Number;
@@ -652,7 +652,7 @@ export interface BillingOrder {
   priceWithoutTax?: OrderPrice;
   /**
    */
-  retractionDate?: Date;
+  retractionDate?: string;
   /**
    */
   tax?: OrderPrice;
@@ -704,10 +704,10 @@ export interface BillingOvhAccount {
   isActive?: boolean;
   /**
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    */
-  openDate?: Date;
+  openDate?: string;
   /**
    */
   ovhAccountId?: string;
@@ -718,7 +718,7 @@ export interface BillingOvhAccount {
 export interface BillingPayment {
   /**
    */
-  paymentDate?: Date;
+  paymentDate?: string;
   /**
    */
   paymentIdentifier?: string;
@@ -764,7 +764,7 @@ export interface BillingPaymentMethod {
    * Creation date of the payment method
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Is this payment method set as the default one
    *
@@ -810,7 +810,7 @@ export interface BillingPaypal {
   agreementId?: string;
   /**
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    */
   defaultPaymentMean?: boolean;
@@ -839,7 +839,7 @@ export type BillingPaypalStateEnum = 'tooManyFailures' | 'valid';
 export interface BillingRefund {
   /**
    */
-  date?: Date;
+  date?: string;
   /**
    */
   orderId?: Number;
@@ -909,7 +909,7 @@ export interface BillingSlaOperation {
    * Date of the event that led to SLA
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * Description of the SLA operation for this incident
    *
@@ -919,7 +919,7 @@ export interface BillingSlaOperation {
    * Date of the end of the SLA
    *
    */
-  endDate?: Date;
+  endDate?: string;
   /**
    * SLA identifier
    *
@@ -934,7 +934,7 @@ export interface BillingSlaOperation {
    * Date of the start of the SLA
    *
    */
-  startDate?: Date;
+  startDate?: string;
 }
 /**
  * Describe all services impacted by SLA
@@ -970,10 +970,10 @@ export interface BillingVoucherAccount {
   balance?: OrderPrice;
   /**
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    */
-  openDate?: Date;
+  openDate?: string;
   /**
    */
   voucherAccountId?: string;
@@ -990,7 +990,7 @@ export interface BillingVoucherMovement {
   balance?: OrderPrice;
   /**
    */
-  date?: Date;
+  date?: string;
   /**
    */
   description?: string;
@@ -1019,7 +1019,7 @@ export interface BillingWithdrawal {
   country?: string;
   /**
    */
-  date?: Date;
+  date?: string;
   /**
    */
   orderId?: Number;
@@ -1082,7 +1082,7 @@ export interface BillingCreditBalance {
    * Balance creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Movement expiring soon
    *
@@ -1097,7 +1097,7 @@ export interface BillingCreditBalance {
    * Balance last update
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * Balance type
    *
@@ -1132,17 +1132,17 @@ export interface BillingCreditBalanceExpiringMovement {
    * Movement creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Movement expiration date
    *
    */
-  expirationDate?: Date;
+  expirationDate?: string;
   /**
    * Movement last update
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * Object source of this credit movement
    *
@@ -1167,17 +1167,17 @@ export interface BillingCreditBalanceMovement {
    * Movement creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Movement expiration date
    *
    */
-  expirationDate?: Date;
+  expirationDate?: string;
   /**
    * Movement last update
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * Movement ID
    *
@@ -1202,7 +1202,7 @@ export interface BillingCreditBalanceMovement {
 /**
  * Balance type
  */
-export type BillingCreditBalanceType = 'PREPAID_ACCOUNT' | 'VOUCHER' | 'DEPOSIT' | 'BONUS';
+export type BillingCreditBalanceType = 'BONUS' | 'DEPOSIT' | 'PREPAID_ACCOUNT' | 'VOUCHER';
 /**
  * Movement sub object
  */
@@ -1468,7 +1468,7 @@ export interface ContactContact {
    * Birth date
    *
    */
-  birthDay?: Date;
+  birthDay?: string;
   /**
    * Birth Zipcode
    *
@@ -1629,7 +1629,7 @@ export interface DebtDebt {
    * Date the debt was created on
    *
    */
-  date?: Date;
+  date?: string;
   /**
    */
   debtId?: Number;
@@ -1642,7 +1642,7 @@ export interface DebtDebt {
    * If specified, the debt will not be recovered before that date
    *
    */
-  dueDate?: Date;
+  dueDate?: string;
   /**
    * The order the debt relates to
    *
@@ -1677,7 +1677,7 @@ export interface DebtOperation {
    * Date the operation took place on
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * Order id associated to the deposit
    *
@@ -1876,7 +1876,7 @@ export interface DedicatedInstallationTemplateTemplates {
    * Date of last modification of the base image
    *
    */
-  lastModification?: Date;
+  lastModification?: string;
   /**
    * This distribution supports Logical Volumes (Linux LVM)
    *
@@ -2076,12 +2076,12 @@ export interface InsightAccess {
    * Token creation date
    *
    */
-  createdAt?: Date;
+  createdAt?: string;
   /**
    * Token expiration date
    *
    */
-  expireAt?: Date;
+  expireAt?: string;
 }
 /**
  * Consent campaign
@@ -2140,7 +2140,7 @@ export interface MeConsentDecision {
    * Consent decision datetime
    *
    */
-  timestamp?: Date;
+  timestamp?: string;
   /**
    * Consent decision value
    *
@@ -2172,12 +2172,12 @@ export interface MeConsumptionTransaction {
    * Begin date
    *
    */
-  beginDate?: Date;
+  beginDate?: string;
   /**
    * Creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * List of product plan code consumption
    *
@@ -2187,7 +2187,7 @@ export interface MeConsumptionTransaction {
    * End date
    *
    */
-  endDate?: Date;
+  endDate?: string;
   /**
    * Transaction ID
    *
@@ -2197,7 +2197,7 @@ export interface MeConsumptionTransaction {
    * Last update
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * Consumption amount price
    *
@@ -2342,7 +2342,7 @@ export interface MePaymentMethodPaymentMethod {
    * Creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Creation date
    *
@@ -2357,7 +2357,7 @@ export interface MePaymentMethodPaymentMethod {
    * Expiration date
    *
    */
-  expirationDate?: Date;
+  expirationDate?: string;
   /**
    * Payment method type icon
    *
@@ -2372,7 +2372,7 @@ export interface MePaymentMethodPaymentMethod {
    * Last update date
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * Payment mean ID associated to this payment method
    *
@@ -2402,7 +2402,7 @@ export interface MePaymentMethodPaymentMethod {
 /**
  * Payment method status enum
  */
-export type MePaymentMethodPaymentMethodStatus = 'CANCELED' | 'CANCELING' | 'CREATED' | 'ERROR' | 'EXPIRED' | 'CREATING' | 'MAINTENANCE' | 'PAUSED' | 'VALID';
+export type MePaymentMethodPaymentMethodStatus = 'CANCELED' | 'CANCELING' | 'CREATED' | 'CREATING' | 'ERROR' | 'EXPIRED' | 'MAINTENANCE' | 'PAUSED' | 'VALID';
 /**
  * Register validation payload result
  */
@@ -2426,7 +2426,7 @@ export interface MePaymentMethodRegisterValidationResult {
 /**
  * Register validation type enum
  */
-export type MePaymentMethodRegisterValidationType = 'DONE' | 'REDIRECT' | 'IFRAME_VANTIV';
+export type MePaymentMethodRegisterValidationType = 'DONE' | 'IFRAME_VANTIV' | 'REDIRECT';
 /**
  * Payment method transaction object
  */
@@ -2440,7 +2440,7 @@ export interface MePaymentMethodTransaction {
    * Creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Transaction status
    *
@@ -2473,7 +2473,7 @@ export interface NichandleAuthenticationCertificate {
    * Certificate's expiration
    *
    */
-  expiration?: Date;
+  expiration?: string;
   /**
    * Certificate's subject
    *
@@ -2488,7 +2488,7 @@ export interface NichandleAuthenticationGroup {
    * Creation date of this group
    *
    */
-  creation?: Date;
+  creation?: string;
   /**
    * True if it is an default group. This kind of group can't be edited or deleted
    *
@@ -2503,7 +2503,7 @@ export interface NichandleAuthenticationGroup {
    * Last update of this group
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * Group's name
    *
@@ -2523,7 +2523,7 @@ export interface NichandleAuthenticationProvider {
    * Creation date of the identity provider
    *
    */
-  creation?: Date;
+  creation?: string;
   /**
    * SAML Group attribute name
    *
@@ -2538,7 +2538,7 @@ export interface NichandleAuthenticationProvider {
    * Last update of the identity provider
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * IdP's Single Sign On Service Url
    *
@@ -2548,7 +2548,7 @@ export interface NichandleAuthenticationProvider {
 /**
  * Permission given on the account
  */
-export type NichandleAuthenticationRoleEnum = 'REGULAR' | 'ADMIN' | 'UNPRIVILEGED';
+export type NichandleAuthenticationRoleEnum = 'ADMIN' | 'REGULAR' | 'UNPRIVILEGED';
 /**
  * Internal customer billing capacities for customer control panel
  */
@@ -2626,7 +2626,7 @@ export interface NichandleDomainTask {
    * Creation date of the task
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Domain of the task
    *
@@ -2636,7 +2636,7 @@ export interface NichandleDomainTask {
    * Done date of the task
    *
    */
-  doneDate?: Date;
+  doneDate?: string;
   /**
    * Function of the task
    *
@@ -2651,7 +2651,7 @@ export interface NichandleDomainTask {
    * Last update date of the task
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * Status of the task
    *
@@ -2661,7 +2661,7 @@ export interface NichandleDomainTask {
    * Todo date of the task
    *
    */
-  todoDate?: Date;
+  todoDate?: string;
 }
 /**
  * Domain operation argument
@@ -2736,7 +2736,7 @@ export interface NichandleDomainTaskProgressBar {
    * The estimated end date of the task
    *
    */
-  expectedDoneDate?: Date;
+  expectedDoneDate?: string;
   /**
    * all the steps of operation
    *
@@ -2746,7 +2746,7 @@ export interface NichandleDomainTaskProgressBar {
    * The last update date of the task
    *
    */
-  lastUpdateDate?: Date;
+  lastUpdateDate?: string;
   /**
    * Progress percentage of the task
    *
@@ -2885,7 +2885,7 @@ export interface NichandleNicAutorenewInfos {
    * give the last renew
    *
    */
-  lastRenew?: Date;
+  lastRenew?: string;
   /**
    * give the renewal day
    *
@@ -2998,7 +2998,7 @@ export interface NichandleNichandleSmsNotification {
    * Creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * The phone number you want to receive notification on
    *
@@ -3013,7 +3013,7 @@ export interface NichandleNichandleSmsNotification {
    * Last update date
    *
    */
-  updateDate?: Date;
+  updateDate?: string;
 }
 /**
  * Status of your notification
@@ -3043,7 +3043,7 @@ export interface NichandleSubAccount {
    * Creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * This sub-account description
    *
@@ -3088,7 +3088,7 @@ export interface NichandleUser {
    * Creation date of this user
    *
    */
-  creation?: Date;
+  creation?: string;
   /**
    * User's description
    *
@@ -3108,7 +3108,7 @@ export interface NichandleUser {
    * Last update of this user
    *
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * User's login suffix
    *
@@ -3118,7 +3118,7 @@ export interface NichandleUser {
    * When the user changed his password for the last time
    *
    */
-  passwordLastUpdate?: Date;
+  passwordLastUpdate?: string;
   /**
    * Current user's status
    *
@@ -3128,7 +3128,7 @@ export interface NichandleUser {
 /**
  * Status of a User
  */
-export type NichandleUserStatus = 'OK' | 'DISABLED' | 'PASSWORD_CHANGE_REQUIRED';
+export type NichandleUserStatus = 'DISABLED' | 'OK' | 'PASSWORD_CHANGE_REQUIRED';
 /**
  * VIP Status by Universe
  */
@@ -3176,12 +3176,12 @@ export interface NichandleAccessRestrictionSOTPAccount {
    * Creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Last used date
    *
    */
-  lastUsedDate?: Date;
+  lastUsedDate?: string;
   /**
    * Number of remaining codes
    *
@@ -3221,7 +3221,7 @@ export interface NichandleAccessRestrictionSmsAccount {
    * Creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Description of this phone
    *
@@ -3236,7 +3236,7 @@ export interface NichandleAccessRestrictionSmsAccount {
    * Last used date
    *
    */
-  lastUsedDate?: Date;
+  lastUsedDate?: string;
   /**
    * Associated phone number
    *
@@ -3279,7 +3279,7 @@ export interface NichandleAccessRestrictionTOTPAccount {
    * Creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Description of this TOTP
    *
@@ -3294,7 +3294,7 @@ export interface NichandleAccessRestrictionTOTPAccount {
    * Last used date
    *
    */
-  lastUsedDate?: Date;
+  lastUsedDate?: string;
   /**
    * Status of this account
    *
@@ -3327,7 +3327,7 @@ export interface NichandleAccessRestrictionU2FAccount {
    * Creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Description of this U2F key
    *
@@ -3342,7 +3342,7 @@ export interface NichandleAccessRestrictionU2FAccount {
    * Last used date
    *
    */
-  lastUsedDate?: Date;
+  lastUsedDate?: string;
   /**
    * Status of this account
    *
@@ -3433,12 +3433,12 @@ export interface NichandleContactChangeTask {
    * Date at which the contact change has been finished
    *
    */
-  dateDone?: Date;
+  dateDone?: string;
   /**
    * Date at which the request has been made
    *
    */
-  dateRequest?: Date;
+  dateRequest?: string;
   /**
    * Account to change contact from
    *
@@ -3471,12 +3471,12 @@ export interface NichandleDocumentDocument {
    * Document creation
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Document expiration
    *
    */
-  expirationDate?: Date;
+  expirationDate?: string;
   /**
    * URL used to get document
    *
@@ -3511,7 +3511,7 @@ export interface NichandleDocumentDocument {
    * Document validation
    *
    */
-  validationDate?: Date;
+  validationDate?: string;
 }
 /**
  * Task running an email change on an account
@@ -3521,12 +3521,12 @@ export interface NichandleEmailChangeTask {
    * End date of that request
    *
    */
-  dateDone?: Date;
+  dateDone?: string;
   /**
    * Creation date of that request
    *
    */
-  dateRequest?: Date;
+  dateRequest?: string;
   /**
    */
   id?: Number;
@@ -3554,7 +3554,7 @@ export interface NichandleEmailNotification {
    * This email date
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * This email Id
    *
@@ -3753,321 +3753,326 @@ export interface XdslSetting {
    */
   resellerModemBasicConfig?: boolean;
 }
-type PathsMeGET = '/me/xdsl/setting' | 
-'/me/availableAutomaticPaymentMeans' | 
+type PathsMeGET = '/me/subscription' | 
+'/me/subscription/{subscriptionType}' | 
+'/me/mailingList/availableLists' | 
 '/me/sshKey' | 
 '/me/sshKey/{keyName}' | 
-'/me/insight' | 
-'/me' | 
-'/me/telephony/defaultIpRestriction/{id}' | 
-'/me/telephony/defaultIpRestriction' | 
-'/me/telephony/settings' | 
-'/me/paymentMean/creditCard/{id}' | 
-'/me/paymentMean/creditCard' | 
-'/me/paymentMean/paypal/{id}' | 
-'/me/paymentMean/paypal' | 
-'/me/paymentMean/bankAccount/{id}' | 
-'/me/paymentMean/bankAccount' | 
-'/me/paymentMean/deferredPaymentAccount' | 
-'/me/paymentMean/deferredPaymentAccount/{id}' | 
-'/me/credit/balance' | 
-'/me/credit/balance/{balanceName}/movement/{movementId}' | 
-'/me/credit/balance/{balanceName}/movement' | 
-'/me/credit/balance/{balanceName}' | 
-'/me/debtAccount/debt/{debtId}/operation/{operationId}' | 
-'/me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject' | 
-'/me/debtAccount/debt/{debtId}/operation' | 
-'/me/debtAccount/debt/{debtId}' | 
-'/me/debtAccount/debt' | 
-'/me/debtAccount' | 
-'/me/fidelityAccount' | 
-'/me/fidelityAccount/movements' | 
-'/me/fidelityAccount/movements/{movementId}' | 
-'/me/installationTemplate' | 
-'/me/installationTemplate/{templateName}/partitionScheme' | 
-'/me/installationTemplate/{templateName}/partitionScheme/{schemeName}' | 
-'/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}' | 
-'/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid' | 
-'/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition' | 
-'/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}' | 
-'/me/installationTemplate/{templateName}' | 
-'/me/api/logs/services/{logId}' | 
-'/me/api/logs/services' | 
-'/me/api/logs/self/{logId}' | 
-'/me/api/logs/self' | 
-'/me/api/application' | 
-'/me/api/application/{applicationId}' | 
-'/me/api/credential/{credentialId}' | 
-'/me/api/credential/{credentialId}/application' | 
-'/me/api/credential' | 
-'/me/accessRestriction/sms/{id}' | 
-'/me/accessRestriction/sms' | 
-'/me/accessRestriction/u2f' | 
-'/me/accessRestriction/u2f/{id}' | 
-'/me/accessRestriction/ipDefaultRule' | 
-'/me/accessRestriction/developerMode' | 
-'/me/accessRestriction/backupCode' | 
-'/me/accessRestriction/totp' | 
-'/me/accessRestriction/totp/{id}' | 
-'/me/accessRestriction/ip' | 
-'/me/accessRestriction/ip/{id}' | 
-'/me/autorenew' | 
 '/me/consent' | 
 '/me/consent/{campaignName}/decision' | 
 '/me/consent/{campaignName}' | 
-'/me/mailingList/availableLists' | 
-'/me/refund' | 
-'/me/refund/{refundId}/details' | 
-'/me/refund/{refundId}/details/{refundDetailId}' | 
-'/me/refund/{refundId}' | 
-'/me/refund/{refundId}/payment' | 
-'/me/subAccount/{id}' | 
-'/me/subAccount' | 
-'/me/payment/availableMethods' | 
-'/me/payment/method' | 
-'/me/payment/method/{paymentMethodId}' | 
-'/me/payment/transaction' | 
-'/me/payment/transaction/{transactionId}' | 
-'/me/contact' | 
-'/me/contact/{contactId}/fields' | 
-'/me/contact/{contactId}' | 
-'/me/subscription/{subscriptionType}' | 
-'/me/subscription' | 
-'/me/task/domain/{id}/argument' | 
-'/me/task/domain/{id}/argument/{key}' | 
-'/me/task/domain/{id}/progressbar' | 
-'/me/task/domain/{id}' | 
-'/me/task/domain' | 
-'/me/task/emailChange/{id}' | 
-'/me/task/emailChange' | 
-'/me/task/contactChange' | 
-'/me/task/contactChange/{id}' | 
-'/me/agreements' | 
-'/me/agreements/{id}' | 
-'/me/agreements/{id}/contract' | 
-'/me/ipOrganisation' | 
-'/me/ipOrganisation/{organisationId}' | 
-'/me/sla' | 
-'/me/sla/{id}/services' | 
-'/me/sla/{id}' | 
-'/me/sla/{id}/status' | 
-'/me/sla/{id}/canBeApplied' | 
-'/me/fax/customDomains' | 
-'/me/fax/customDomains/{id}' | 
-'/me/ipxeScript' | 
-'/me/ipxeScript/{name}' | 
-'/me/bill' | 
-'/me/bill/{billId}/payment' | 
-'/me/bill/{billId}/details' | 
-'/me/bill/{billId}/details/{billDetailId}' | 
-'/me/bill/{billId}' | 
-'/me/bill/{billId}/debt/operation' | 
-'/me/bill/{billId}/debt/operation/{operationId}/associatedObject' | 
-'/me/bill/{billId}/debt/operation/{operationId}' | 
-'/me/bill/{billId}/debt' | 
-'/me/withdrawal/{withdrawalId}' | 
-'/me/withdrawal/{withdrawalId}/details' | 
-'/me/withdrawal/{withdrawalId}/details/{withdrawalDetailId}' | 
-'/me/withdrawal/{withdrawalId}/payment' | 
-'/me/withdrawal' | 
-'/me/certificates' | 
-'/me/billing/invoicesByPostalMail' | 
-'/me/vipStatus' | 
-'/me/notification/email/history/{id}' | 
-'/me/notification/email/history' | 
-'/me/identity/group/{group}' | 
-'/me/identity/group' | 
-'/me/identity/user/{user}' | 
-'/me/identity/user' | 
-'/me/consumption/usage/current' | 
-'/me/consumption/usage/forecast' | 
-'/me/consumption/usage/history' | 
-'/me/document/{id}' | 
-'/me/document' | 
-'/me/order' | 
-'/me/order/{orderId}/paymentMethods' | 
-'/me/order/{orderId}/paymentMeans' | 
-'/me/order/{orderId}/payment' | 
-'/me/order/{orderId}/status' | 
-'/me/order/{orderId}/availableRegisteredPaymentMean' | 
-'/me/order/{orderId}/associatedObject' | 
-'/me/order/{orderId}' | 
-'/me/order/{orderId}/debt' | 
-'/me/order/{orderId}/debt/operation/{operationId}' | 
-'/me/order/{orderId}/debt/operation/{operationId}/associatedObject' | 
-'/me/order/{orderId}/debt/operation' | 
-'/me/order/{orderId}/details' | 
-'/me/order/{orderId}/details/{orderDetailId}/extension' | 
-'/me/order/{orderId}/details/{orderDetailId}' | 
-'/me/order/{orderId}/bill' | 
-'/me/order/{orderId}/refund' | 
+'/me/deposit' | 
+'/me/deposit/{depositId}/payment' | 
+'/me/deposit/{depositId}/paidBills' | 
+'/me/deposit/{depositId}/paidBills/{billId}/details' | 
+'/me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}' | 
+'/me/deposit/{depositId}/paidBills/{billId}' | 
+'/me/deposit/{depositId}/paidBills/{billId}/debt' | 
+'/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}' | 
+'/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject' | 
+'/me/deposit/{depositId}/paidBills/{billId}/debt/operation' | 
+'/me/deposit/{depositId}/paidBills/{billId}/payment' | 
+'/me/deposit/{depositId}' | 
+'/me/deposit/{depositId}/details/{depositDetailId}' | 
+'/me/deposit/{depositId}/details' | 
 '/me/ovhAccount' | 
 '/me/ovhAccount/{ovhAccountId}/movements/{movementId}' | 
 '/me/ovhAccount/{ovhAccountId}/movements' | 
 '/me/ovhAccount/{ovhAccountId}' | 
-'/me/deposit' | 
-'/me/deposit/{depositId}/payment' | 
-'/me/deposit/{depositId}/details' | 
-'/me/deposit/{depositId}/details/{depositDetailId}' | 
-'/me/deposit/{depositId}/paidBills' | 
-'/me/deposit/{depositId}/paidBills/{billId}/debt' | 
-'/me/deposit/{depositId}/paidBills/{billId}/debt/operation' | 
-'/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject' | 
-'/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}' | 
-'/me/deposit/{depositId}/paidBills/{billId}' | 
-'/me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}' | 
-'/me/deposit/{depositId}/paidBills/{billId}/details' | 
-'/me/deposit/{depositId}/paidBills/{billId}/payment' | 
-'/me/deposit/{depositId}';
-
-type PathsMePUT = '/me/sshKey/{keyName}' | 
-'/me' | 
-'/me/paymentMean/creditCard/{id}' | 
-'/me/paymentMean/paypal/{id}' | 
-'/me/paymentMean/bankAccount/{id}' | 
-'/me/paymentMean/deferredPaymentAccount/{id}' | 
+'/me/fidelityAccount/movements/{movementId}' | 
+'/me/fidelityAccount/movements' | 
 '/me/fidelityAccount' | 
+'/me/ipxeScript' | 
+'/me/ipxeScript/{name}' | 
+'/me/notification/email/history' | 
+'/me/notification/email/history/{id}' | 
+'/me/order/{orderId}/status' | 
+'/me/order/{orderId}/details' | 
+'/me/order/{orderId}/details/{orderDetailId}' | 
+'/me/order/{orderId}/details/{orderDetailId}/extension' | 
+'/me/order/{orderId}/payment' | 
+'/me/order/{orderId}/refund' | 
+'/me/order/{orderId}/debt' | 
+'/me/order/{orderId}/debt/operation' | 
+'/me/order/{orderId}/debt/operation/{operationId}/associatedObject' | 
+'/me/order/{orderId}/debt/operation/{operationId}' | 
+'/me/order/{orderId}/paymentMeans' | 
+'/me/order/{orderId}/paymentMethods' | 
+'/me/order/{orderId}/associatedObject' | 
+'/me/order/{orderId}' | 
+'/me/order/{orderId}/bill' | 
+'/me/order/{orderId}/availableRegisteredPaymentMean' | 
+'/me/order' | 
+'/me/fax/customDomains/{id}' | 
+'/me/fax/customDomains' | 
+'/me/xdsl/setting' | 
+'/me/api/logs/services/{logId}' | 
+'/me/api/logs/services' | 
+'/me/api/logs/self' | 
+'/me/api/logs/self/{logId}' | 
+'/me/api/credential' | 
+'/me/api/credential/{credentialId}' | 
+'/me/api/credential/{credentialId}/application' | 
+'/me/api/application' | 
+'/me/api/application/{applicationId}' | 
+'/me/availableAutomaticPaymentMeans' | 
+'/me/contact/{contactId}/fields' | 
+'/me/contact/{contactId}' | 
+'/me/contact' | 
+'/me/autorenew' | 
+'/me/paymentMean/bankAccount' | 
+'/me/paymentMean/bankAccount/{id}' | 
+'/me/paymentMean/paypal/{id}' | 
+'/me/paymentMean/paypal' | 
+'/me/paymentMean/creditCard' | 
+'/me/paymentMean/creditCard/{id}' | 
+'/me/paymentMean/deferredPaymentAccount/{id}' | 
+'/me/paymentMean/deferredPaymentAccount' | 
+'/me/document/{id}' | 
+'/me/document' | 
+'/me/installationTemplate' | 
+'/me/installationTemplate/{templateName}' | 
+'/me/installationTemplate/{templateName}/partitionScheme' | 
+'/me/installationTemplate/{templateName}/partitionScheme/{schemeName}' | 
+'/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid' | 
+'/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}' | 
+'/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition' | 
+'/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}' | 
+'/me/agreements' | 
+'/me/agreements/{id}' | 
+'/me/agreements/{id}/contract' | 
+'/me/payment/method/{paymentMethodId}' | 
+'/me/payment/method' | 
+'/me/payment/availableMethods' | 
+'/me/payment/transaction/{transactionId}' | 
+'/me/payment/transaction' | 
+'/me/refund/{refundId}' | 
+'/me/refund/{refundId}/details' | 
+'/me/refund/{refundId}/details/{refundDetailId}' | 
+'/me/refund/{refundId}/payment' | 
+'/me/refund' | 
+'/me/insight' | 
+'/me/sla/{id}/status' | 
+'/me/sla/{id}' | 
+'/me/sla/{id}/services' | 
+'/me/sla/{id}/canBeApplied' | 
+'/me/sla' | 
+'/me/withdrawal' | 
+'/me/withdrawal/{withdrawalId}' | 
+'/me/withdrawal/{withdrawalId}/details/{withdrawalDetailId}' | 
+'/me/withdrawal/{withdrawalId}/details' | 
+'/me/withdrawal/{withdrawalId}/payment' | 
+'/me/telephony/settings' | 
+'/me/telephony/defaultIpRestriction' | 
+'/me/telephony/defaultIpRestriction/{id}' | 
+'/me/subAccount' | 
+'/me/subAccount/{id}' | 
+'/me/ipOrganisation' | 
+'/me/ipOrganisation/{organisationId}' | 
+'/me/accessRestriction/u2f' | 
+'/me/accessRestriction/u2f/{id}' | 
+'/me/accessRestriction/developerMode' | 
+'/me/accessRestriction/totp/{id}' | 
+'/me/accessRestriction/totp' | 
+'/me/accessRestriction/backupCode' | 
+'/me/accessRestriction/ipDefaultRule' | 
+'/me/accessRestriction/sms/{id}' | 
+'/me/accessRestriction/sms' | 
+'/me/accessRestriction/ip/{id}' | 
+'/me/accessRestriction/ip' | 
+'/me/billing/invoicesByPostalMail' | 
+'/me' | 
+'/me/consumption/usage/history' | 
+'/me/consumption/usage/current' | 
+'/me/consumption/usage/forecast' | 
+'/me/identity/user' | 
+'/me/identity/user/{user}' | 
+'/me/identity/group' | 
+'/me/identity/group/{group}' | 
+'/me/bill/{billId}/details' | 
+'/me/bill/{billId}/details/{billDetailId}' | 
+'/me/bill/{billId}' | 
+'/me/bill/{billId}/debt/operation/{operationId}' | 
+'/me/bill/{billId}/debt/operation/{operationId}/associatedObject' | 
+'/me/bill/{billId}/debt/operation' | 
+'/me/bill/{billId}/debt' | 
+'/me/bill/{billId}/payment' | 
+'/me/bill' | 
+'/me/certificates' | 
+'/me/debtAccount/debt/{debtId}' | 
+'/me/debtAccount/debt/{debtId}/operation/{operationId}' | 
+'/me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject' | 
+'/me/debtAccount/debt/{debtId}/operation' | 
+'/me/debtAccount/debt' | 
+'/me/debtAccount' | 
+'/me/vipStatus' | 
+'/me/task/emailChange' | 
+'/me/task/emailChange/{id}' | 
+'/me/task/contactChange' | 
+'/me/task/contactChange/{id}' | 
+'/me/task/domain' | 
+'/me/task/domain/{id}' | 
+'/me/task/domain/{id}/argument/{key}' | 
+'/me/task/domain/{id}/argument' | 
+'/me/task/domain/{id}/progressbar' | 
+'/me/credit/balance' | 
+'/me/credit/balance/{balanceName}' | 
+'/me/credit/balance/{balanceName}/movement' | 
+'/me/credit/balance/{balanceName}/movement/{movementId}';
+
+type PathsMePUT = '/me/subscription/{subscriptionType}' | 
+'/me/sshKey/{keyName}' | 
+'/me/consent/{campaignName}/decision' | 
+'/me/ovhAccount/{ovhAccountId}' | 
+'/me/fidelityAccount' | 
+'/me/contact/{contactId}' | 
+'/me/autorenew' | 
+'/me/paymentMean/bankAccount/{id}' | 
+'/me/paymentMean/paypal/{id}' | 
+'/me/paymentMean/creditCard/{id}' | 
+'/me/paymentMean/deferredPaymentAccount/{id}' | 
+'/me/document/{id}' | 
+'/me/installationTemplate/{templateName}' | 
 '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}' | 
 '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}' | 
 '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}' | 
-'/me/installationTemplate/{templateName}' | 
-'/me/accessRestriction/sms/{id}' | 
+'/me/payment/method/{paymentMethodId}' | 
+'/me/subAccount/{id}' | 
+'/me/ipOrganisation/{organisationId}' | 
 '/me/accessRestriction/u2f/{id}' | 
-'/me/accessRestriction/ipDefaultRule' | 
 '/me/accessRestriction/developerMode' | 
 '/me/accessRestriction/totp/{id}' | 
+'/me/accessRestriction/ipDefaultRule' | 
+'/me/accessRestriction/sms/{id}' | 
 '/me/accessRestriction/ip/{id}' | 
-'/me/autorenew' | 
-'/me/consent/{campaignName}/decision' | 
-'/me/subAccount/{id}' | 
-'/me/payment/method/{paymentMethodId}' | 
-'/me/contact/{contactId}' | 
-'/me/subscription/{subscriptionType}' | 
-'/me/task/domain/{id}/argument/{key}' | 
-'/me/ipOrganisation/{organisationId}' | 
-'/me/identity/group/{group}' | 
+'/me' | 
 '/me/identity/user/{user}' | 
-'/me/document/{id}' | 
-'/me/ovhAccount/{ovhAccountId}';
+'/me/identity/group/{group}' | 
+'/me/task/domain/{id}/argument/{key}';
 
-type PathsMePOST = '/me/xdsl/setting' | 
+type PathsMePOST = '/me/mailingList/subscribe' | 
 '/me/sshKey' | 
-'/me/telephony/defaultIpRestriction' | 
-'/me/telephony/settings' | 
-'/me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean' | 
-'/me/paymentMean/creditCard' | 
+'/me/deposit/{depositId}/paidBills/{billId}/debt/pay' | 
+'/me/ovhAccount/{ovhAccountId}/retrieveMoney' | 
+'/me/ovhAccount/{ovhAccountId}/creditOrder' | 
+'/me/fidelityAccount/creditOrder' | 
+'/me/ipxeScript' | 
+'/me/order/{orderId}/pay' | 
+'/me/order/{orderId}/payWithRegisteredPaymentMean' | 
+'/me/order/{orderId}/debt/pay' | 
+'/me/order/{orderId}/retraction' | 
+'/me/fax/customDomains' | 
+'/me/xdsl/setting' | 
+'/me/contact' | 
+'/me/autorenew' | 
+'/me/paymentMean/bankAccount' | 
+'/me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean' | 
 '/me/paymentMean/paypal/{id}/chooseAsDefaultPaymentMean' | 
 '/me/paymentMean/paypal' | 
-'/me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean' | 
-'/me/paymentMean/bankAccount' | 
+'/me/paymentMean/creditCard' | 
+'/me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean' | 
 '/me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean' | 
-'/me/credit/code' | 
-'/me/debtAccount/debt/{debtId}/pay' | 
-'/me/debtAccount/pay' | 
-'/me/fidelityAccount/creditOrder' | 
+'/me/document/cors' | 
+'/me/document' | 
 '/me/installationTemplate' | 
 '/me/installationTemplate/{templateName}/partitionScheme' | 
 '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid' | 
 '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition' | 
 '/me/installationTemplate/{templateName}/checkIntegrity' | 
-'/me/accessRestriction/sms/{id}/disable' | 
-'/me/accessRestriction/sms/{id}/sendCode' | 
-'/me/accessRestriction/sms/{id}/validate' | 
-'/me/accessRestriction/sms/{id}/enable' | 
-'/me/accessRestriction/sms' | 
+'/me/agreements/{id}/accept' | 
+'/me/payment/method/{paymentMethodId}/finalize' | 
+'/me/payment/method' | 
+'/me/sla/{id}/apply' | 
+'/me/telephony/settings' | 
+'/me/telephony/defaultIpRestriction' | 
+'/me/subAccount' | 
+'/me/subAccount/{id}/createConsumerKey' | 
+'/me/voucher/checkValidity' | 
+'/me/changeEmail' | 
+'/me/ipOrganisation' | 
 '/me/accessRestriction/u2f' | 
-'/me/accessRestriction/u2f/{id}/challenge' | 
-'/me/accessRestriction/u2f/{id}/enable' | 
 '/me/accessRestriction/u2f/{id}/disable' | 
+'/me/accessRestriction/u2f/{id}/challenge' | 
 '/me/accessRestriction/u2f/{id}/validate' | 
-'/me/accessRestriction/backupCode' | 
-'/me/accessRestriction/backupCode/enable' | 
-'/me/accessRestriction/backupCode/disable' | 
-'/me/accessRestriction/backupCode/validate' | 
-'/me/accessRestriction/totp' | 
+'/me/accessRestriction/u2f/{id}/enable' | 
+'/me/accessRestriction/totp/{id}/enable' | 
 '/me/accessRestriction/totp/{id}/disable' | 
 '/me/accessRestriction/totp/{id}/validate' | 
-'/me/accessRestriction/totp/{id}/enable' | 
+'/me/accessRestriction/totp' | 
+'/me/accessRestriction/backupCode/validate' | 
+'/me/accessRestriction/backupCode/disable' | 
+'/me/accessRestriction/backupCode' | 
+'/me/accessRestriction/backupCode/enable' | 
+'/me/accessRestriction/sms/{id}/disable' | 
+'/me/accessRestriction/sms/{id}/validate' | 
+'/me/accessRestriction/sms/{id}/enable' | 
+'/me/accessRestriction/sms/{id}/sendCode' | 
+'/me/accessRestriction/sms' | 
 '/me/accessRestriction/ip' | 
-'/me/autorenew' | 
-'/me/mailingList/subscribe' | 
-'/me/geolocation' | 
-'/me/subAccount/{id}/createConsumerKey' | 
-'/me/subAccount' | 
-'/me/payment/method' | 
-'/me/payment/method/{paymentMethodId}/finalize' | 
-'/me/contact' | 
-'/me/task/domain/{id}/cancel' | 
-'/me/task/domain/{id}/relaunch' | 
-'/me/task/domain/{id}/accelerate' | 
+'/me/billing/invoicesByPostalMail' | 
+'/me/changePassword' | 
+'/me/identity/user' | 
+'/me/identity/user/{user}/enable' | 
+'/me/identity/user/{user}/disable' | 
+'/me/identity/group' | 
+'/me/bill/{billId}/debt/pay' | 
+'/me/debtAccount/debt/{debtId}/pay' | 
+'/me/debtAccount/pay' | 
 '/me/task/emailChange/{id}/refuse' | 
 '/me/task/emailChange/{id}/accept' | 
-'/me/task/contactChange/{id}/accept' | 
 '/me/task/contactChange/{id}/refuse' | 
+'/me/task/contactChange/{id}/accept' | 
 '/me/task/contactChange/{id}/resendEmail' | 
-'/me/agreements/{id}/accept' | 
-'/me/ipOrganisation' | 
-'/me/voucher/checkValidity' | 
-'/me/sla/{id}/apply' | 
-'/me/passwordRecover' | 
-'/me/fax/customDomains' | 
-'/me/ipxeScript' | 
-'/me/bill/{billId}/debt/pay' | 
-'/me/billing/invoicesByPostalMail' | 
-'/me/identity/group' | 
-'/me/identity/user/{user}/disable' | 
-'/me/identity/user/{user}/enable' | 
-'/me/identity/user' | 
-'/me/changeEmail' | 
-'/me/document' | 
-'/me/document/cors' | 
-'/me/changePassword' | 
-'/me/order/{orderId}/pay' | 
-'/me/order/{orderId}/payWithRegisteredPaymentMean' | 
-'/me/order/{orderId}/retraction' | 
-'/me/order/{orderId}/debt/pay' | 
-'/me/ovhAccount/{ovhAccountId}/creditOrder' | 
-'/me/ovhAccount/{ovhAccountId}/retrieveMoney' | 
-'/me/deposit/{depositId}/paidBills/{billId}/debt/pay';
+'/me/task/domain/{id}/relaunch' | 
+'/me/task/domain/{id}/accelerate' | 
+'/me/task/domain/{id}/cancel' | 
+'/me/credit/code' | 
+'/me/geolocation' | 
+'/me/passwordRecover';
 
 type PathsMeDELETE = '/me/sshKey/{keyName}' | 
-'/me/telephony/defaultIpRestriction/{id}' | 
-'/me/paymentMean/creditCard/{id}' | 
-'/me/paymentMean/paypal/{id}' | 
+'/me/ipxeScript/{name}' | 
+'/me/fax/customDomains/{id}' | 
+'/me/api/credential/{credentialId}' | 
+'/me/api/application/{applicationId}' | 
 '/me/paymentMean/bankAccount/{id}' | 
+'/me/paymentMean/paypal/{id}' | 
+'/me/paymentMean/creditCard/{id}' | 
+'/me/document/{id}' | 
+'/me/installationTemplate/{templateName}' | 
 '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}' | 
 '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}' | 
 '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}' | 
-'/me/installationTemplate/{templateName}' | 
-'/me/api/application/{applicationId}' | 
-'/me/api/credential/{credentialId}' | 
-'/me/accessRestriction/sms/{id}' | 
-'/me/accessRestriction/u2f/{id}' | 
-'/me/accessRestriction/backupCode' | 
-'/me/accessRestriction/totp/{id}' | 
-'/me/accessRestriction/ip/{id}' | 
 '/me/payment/method/{paymentMethodId}' | 
+'/me/telephony/defaultIpRestriction/{id}' | 
 '/me/ipOrganisation/{organisationId}' | 
-'/me/fax/customDomains/{id}' | 
-'/me/ipxeScript/{name}' | 
-'/me/identity/group/{group}' | 
+'/me/accessRestriction/u2f/{id}' | 
+'/me/accessRestriction/totp/{id}' | 
+'/me/accessRestriction/backupCode' | 
+'/me/accessRestriction/sms/{id}' | 
+'/me/accessRestriction/ip/{id}' | 
 '/me/identity/user/{user}' | 
-'/me/document/{id}';
+'/me/identity/group/{group}';
 
 export class ApiMe extends ApiCommon {
   constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
     super(config);
   }
   /**
-  setting operations
-  Get xdsl settings linked to the nichandle
+  List the nichandle.Subscription objects
+  List of all OVH things you can subscribe to
   **/
-  public get(path: '/me/xdsl/setting'): Promise<XdslSetting>;
+  public get(path: '/me/subscription'): Promise<string[]>;
   /**
-  availableAutomaticPaymentMeans operations
-  List available payment methods in this Nic's country
+  List of all OVH things you can subscribe to
+  Get this object properties
   **/
-  public get(path: '/me/availableAutomaticPaymentMeans'): Promise<BillingAutomaticPaymentMean>;
+  public get(path: '/me/subscription/{subscriptionType}', pathParams: {subscriptionType: string}): Promise<NichandleSubscription>;
+  /**
+  availableLists operations
+  List of mailing list you can subscribe
+  **/
+  public get(path: '/me/mailingList/availableLists'): Promise<string[]>;
   /**
   List the nichandle.sshKey objects
   List of your public SSH keys
@@ -4078,281 +4083,6 @@ export class ApiMe extends ApiCommon {
   Get this object properties
   **/
   public get(path: '/me/sshKey/{keyName}', pathParams: {keyName: string}): Promise<NichandleSshKey>;
-  /**
-  Retrieve your insight access token. This token give you access to all your products metrics (cloud instances, dedicated servers, load balancers, ...)
-  Get your insight access token
-  **/
-  public get(path: '/me/insight'): Promise<InsightAccess>;
-  /**
-  Details about your OVH identifier
-  Get this object properties
-  **/
-  public get(path: '/me'): Promise<NichandleNichandle>;
-  /**
-  Default IP restriction of a VoIP line
-  Get this object properties
-  **/
-  public get(path: '/me/telephony/defaultIpRestriction/{id}', pathParams: {id: Number}): Promise<TelephonyDefaultIpRestriction>;
-  /**
-  List the telephony.DefaultIpRestriction objects
-  The default SIP IP restictions for your future VoIP lines
-  **/
-  public get(path: '/me/telephony/defaultIpRestriction'): Promise<Number[]>;
-  /**
-  settings operations
-  Get the telephony settings linked to the customer account
-  **/
-  public get(path: '/me/telephony/settings'): Promise<TelephonySettings>;
-  /**
-  Credit card informations
-  Get this object properties
-  **/
-  public get(path: '/me/paymentMean/creditCard/{id}', pathParams: {id: Number}): Promise<BillingCreditCard>;
-  /**
-  List the billing.CreditCard objects
-  List of credit cards
-  **/
-  public get(path: '/me/paymentMean/creditCard'): Promise<Number[]>;
-  /**
-  Paypal account info
-  Get this object properties
-  **/
-  public get(path: '/me/paymentMean/paypal/{id}', pathParams: {id: Number}): Promise<BillingPaypal>;
-  /**
-  List the billing.Paypal objects
-  List of Paypal accounts usable for payments on this account
-  **/
-  public get(path: '/me/paymentMean/paypal'): Promise<Number[]>;
-  /**
-  SEPA bank account info
-  Get this object properties
-  **/
-  public get(path: '/me/paymentMean/bankAccount/{id}', pathParams: {id: Number}): Promise<BillingBankAccount>;
-  /**
-  List the billing.BankAccount objects
-  List of bank accounts
-  **/
-  public get(path: '/me/paymentMean/bankAccount', pathParams: null, queryParams: {state?: BillingBankAccountStateEnum}): Promise<Number[]>;
-  /**
-  List the billing.DeferredPaymentAccount objects
-  List of authorized deferred payment account for this customer
-  **/
-  public get(path: '/me/paymentMean/deferredPaymentAccount'): Promise<Number[]>;
-  /**
-  Deferred payment account info
-  Get this object properties
-  **/
-  public get(path: '/me/paymentMean/deferredPaymentAccount/{id}', pathParams: {id: Number}): Promise<BillingDeferredPaymentAccount>;
-  /**
-  Retrieve credit balance names
-  Retrieve credit balance names
-  **/
-  public get(path: '/me/credit/balance', pathParams: null, queryParams: {type?: BillingCreditBalanceType}): Promise<string[]>;
-  /**
-  Retrieve a specific movement for a credit balance
-  Retrieve a specific movement for a credit balance
-  **/
-  public get(path: '/me/credit/balance/{balanceName}/movement/{movementId}', pathParams: {balanceName: string, movementId: Number}): Promise<BillingCreditBalanceMovement>;
-  /**
-  Retrieve movements for a specific balance
-  Retrieve movements for a specific balance
-  **/
-  public get(path: '/me/credit/balance/{balanceName}/movement', pathParams: {balanceName: string}): Promise<Number[]>;
-  /**
-  Retrieve a credit balance
-  Retrieve a credit balance
-  **/
-  public get(path: '/me/credit/balance/{balanceName}', pathParams: {balanceName: string}): Promise<BillingCreditBalance>;
-  /**
-  Operation that happend on a debt
-  Get this object properties
-  **/
-  public get(path: '/me/debtAccount/debt/{debtId}/operation/{operationId}', pathParams: {debtId: Number, operationId: Number}): Promise<DebtOperation>;
-  /**
-  associatedObject operations
-  Return main data about the object related to this debt operation
-  **/
-  public get(path: '/me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject', pathParams: {debtId: Number, operationId: Number}): Promise<DebtEntryAssociatedObject>;
-  /**
-  List the debt.Operation objects
-  All operations related to these debts
-  **/
-  public get(path: '/me/debtAccount/debt/{debtId}/operation', pathParams: {debtId: Number}, queryParams: {depositOrderId?: Number}): Promise<Number[]>;
-  /**
-  State of a debt
-  Get this object properties
-  **/
-  public get(path: '/me/debtAccount/debt/{debtId}', pathParams: {debtId: Number}): Promise<DebtDebt>;
-  /**
-  List the debt.Debt objects
-  All debts related to your account
-  **/
-  public get(path: '/me/debtAccount/debt'): Promise<Number[]>;
-  /**
-  Debt balance of the account
-  Get this object properties
-  **/
-  public get(path: '/me/debtAccount'): Promise<DebtBalance>;
-  /**
-  Balance of the fidelity account
-  Get this object properties
-  **/
-  public get(path: '/me/fidelityAccount'): Promise<BillingFidelityAccount>;
-  /**
-  List the billing.FidelityMovement objects
-  List of entries of the fidelity account
-  **/
-  public get(path: '/me/fidelityAccount/movements', pathParams: null, queryParams: {'date.from'?: Date, 'date.to'?: Date}): Promise<Number[]>;
-  /**
-  Details about a fidelity account
-  Get this object properties
-  **/
-  public get(path: '/me/fidelityAccount/movements/{movementId}', pathParams: {movementId: Number}): Promise<BillingFidelityMovement>;
-  /**
-  List the dedicated.installationTemplate.Templates objects
-  Your customized operating system installation templates
-  **/
-  public get(path: '/me/installationTemplate'): Promise<string[]>;
-  /**
-  List the dedicated.installationTemplate.templatePartitioningSchemes objects
-  Partitioning schemes available on this template
-  **/
-  public get(path: '/me/installationTemplate/{templateName}/partitionScheme', pathParams: {templateName: string}): Promise<string[]>;
-  /**
-  Partitioning schemes available on this template
-  Get this object properties
-  **/
-  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}', pathParams: {templateName: string, schemeName: string}): Promise<DedicatedInstallationTemplateTemplatePartitioningSchemes>;
-  /**
-  Hardware RAID defined in this partitioning scheme
-  Get this object properties
-  **/
-  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', pathParams: {templateName: string, schemeName: string, name: string}): Promise<DedicatedInstallationTemplateHardwareRaid>;
-  /**
-  List the dedicated.installationTemplate.hardwareRaid objects
-  Hardware RAIDs defined in this partitioning scheme
-  **/
-  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid', pathParams: {templateName: string, schemeName: string}): Promise<string[]>;
-  /**
-  List the dedicated.installationTemplate.templatePartitions objects
-  Partitions defined in this partitioning scheme
-  **/
-  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', pathParams: {templateName: string, schemeName: string}): Promise<string[]>;
-  /**
-   Partitions defined in this partitioning scheme
-  Get this object properties
-  **/
-  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', pathParams: {templateName: string, schemeName: string, mountpoint: string}): Promise<DedicatedInstallationTemplateTemplatePartitions>;
-  /**
-  Available installation templates
-  Get this object properties
-  **/
-  public get(path: '/me/installationTemplate/{templateName}', pathParams: {templateName: string}): Promise<DedicatedInstallationTemplateTemplates>;
-  /**
-  API Log
-  Get this object properties
-  **/
-  public get(path: '/me/api/logs/services/{logId}', pathParams: {logId: Number}): Promise<ApiLog>;
-  /**
-  List the api.Log objects
-  List of Api calls done on services you have access to
-  **/
-  public get(path: '/me/api/logs/services'): Promise<Number[]>;
-  /**
-  API Log
-  Get this object properties
-  **/
-  public get(path: '/me/api/logs/self/{logId}', pathParams: {logId: Number}): Promise<ApiLog>;
-  /**
-  List the api.Log objects
-  List of Api calls done with your account
-  **/
-  public get(path: '/me/api/logs/self'): Promise<Number[]>;
-  /**
-  List the api.Application objects
-  List of your Api Application
-  **/
-  public get(path: '/me/api/application'): Promise<Number[]>;
-  /**
-  API Application
-  Get this object properties
-  **/
-  public get(path: '/me/api/application/{applicationId}', pathParams: {applicationId: Number}): Promise<ApiApplication>;
-  /**
-  API Credential
-  Get this object properties
-  **/
-  public get(path: '/me/api/credential/{credentialId}', pathParams: {credentialId: Number}): Promise<ApiCredential>;
-  /**
-  API Application
-  Get this object properties
-  **/
-  public get(path: '/me/api/credential/{credentialId}/application', pathParams: {credentialId: Number}): Promise<ApiApplication>;
-  /**
-  List the api.Credential objects
-  List of your Api Credentials
-  **/
-  public get(path: '/me/api/credential', pathParams: null, queryParams: {applicationId?: Number, status?: AuthCredentialStateEnum}): Promise<Number[]>;
-  /**
-  Sms Two-Factor Authentication
-  Get this object properties
-  **/
-  public get(path: '/me/accessRestriction/sms/{id}', pathParams: {id: Number}): Promise<NichandleAccessRestrictionSmsAccount>;
-  /**
-  List the nichandle.accessRestriction.SmsAccount objects
-  List of Sms accounts
-  **/
-  public get(path: '/me/accessRestriction/sms'): Promise<Number[]>;
-  /**
-  List the nichandle.accessRestriction.U2FAccount objects
-  List of U2F accounts
-  **/
-  public get(path: '/me/accessRestriction/u2f'): Promise<Number[]>;
-  /**
-  U2F Two-Factor Authentication
-  Get this object properties
-  **/
-  public get(path: '/me/accessRestriction/u2f/{id}', pathParams: {id: Number}): Promise<NichandleAccessRestrictionU2FAccount>;
-  /**
-  IP Restriction default rule
-  Get this object properties
-  **/
-  public get(path: '/me/accessRestriction/ipDefaultRule'): Promise<NichandleIpRestrictionDefaultRule>;
-  /**
-  Login restrictions on a development version of the Manager
-  Get this object properties
-  **/
-  public get(path: '/me/accessRestriction/developerMode'): Promise<NichandleDeveloperModeRestriction>;
-  /**
-  SOTP Two-Factor Authentication
-  Get this object properties
-  **/
-  public get(path: '/me/accessRestriction/backupCode'): Promise<NichandleAccessRestrictionSOTPAccount>;
-  /**
-  List the nichandle.accessRestriction.TOTPAccount objects
-  List of TOTP accounts
-  **/
-  public get(path: '/me/accessRestriction/totp'): Promise<Number[]>;
-  /**
-  TOTP Two-Factor Authentication
-  Get this object properties
-  **/
-  public get(path: '/me/accessRestriction/totp/{id}', pathParams: {id: Number}): Promise<NichandleAccessRestrictionTOTPAccount>;
-  /**
-  List the nichandle.IpRestriction objects
-  List of IP restrictions
-  **/
-  public get(path: '/me/accessRestriction/ip'): Promise<Number[]>;
-  /**
-  List of all IP Restrictions
-  Get this object properties
-  **/
-  public get(path: '/me/accessRestriction/ip/{id}', pathParams: {id: Number}): Promise<NichandleIpRestriction>;
-  /**
-  Auto renewal information
-  Get this object properties
-  **/
-  public get(path: '/me/autorenew'): Promise<NichandleNicAutorenewInfos>;
   /**
   List all consent campaign available
   List all consent campaign available
@@ -4369,200 +4099,110 @@ export class ApiMe extends ApiCommon {
   **/
   public get(path: '/me/consent/{campaignName}', pathParams: {campaignName: string}): Promise<MeConsentCampaign>;
   /**
-  availableLists operations
-  List of mailing list you can subscribe
+  List the billing.Deposit objects
+  List of all the deposits made to your prepaid account or debt account
   **/
-  public get(path: '/me/mailingList/availableLists'): Promise<string[]>;
-  /**
-  List the billing.Refund objects
-  List of all the refunds the logged account has
-  **/
-  public get(path: '/me/refund', pathParams: null, queryParams: {'date.to'?: Date, orderId?: Number, 'date.from'?: Date}): Promise<string[]>;
-  /**
-  List the billing.RefundDetail objects
-  Give access to all entries of the refund
-  **/
-  public get(path: '/me/refund/{refundId}/details', pathParams: {refundId: string}): Promise<string[]>;
-  /**
-  Information about a Bill entry
-  Get this object properties
-  **/
-  public get(path: '/me/refund/{refundId}/details/{refundDetailId}', pathParams: {refundId: string, refundDetailId: string}): Promise<BillingRefundDetail>;
-  /**
-  Details about a Refund
-  Get this object properties
-  **/
-  public get(path: '/me/refund/{refundId}', pathParams: {refundId: string}): Promise<BillingRefund>;
+  public get(path: '/me/deposit', pathParams: undefined, queryParams: {'date.from'?: string, 'date.to'?: string, orderId?: Number}): Promise<string[]>;
   /**
   Details about a payment
   Get this object properties
   **/
-  public get(path: '/me/refund/{refundId}/payment', pathParams: {refundId: string}): Promise<BillingPayment>;
+  public get(path: '/me/deposit/{depositId}/payment', pathParams: {depositId: string}): Promise<BillingPayment>;
   /**
-  Sub Account
+  List the billing.Bill objects
+  Get invoices paid by this deposit
+  **/
+  public get(path: '/me/deposit/{depositId}/paidBills', pathParams: {depositId: string}): Promise<string[]>;
+  /**
+  List the billing.BillDetail objects
+  Give access to all entries of the bill
+  **/
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/details', pathParams: {depositId: string, billId: string}): Promise<string[]>;
+  /**
+  Information about a Bill entry
   Get this object properties
   **/
-  public get(path: '/me/subAccount/{id}', pathParams: {id: Number}): Promise<NichandleSubAccount>;
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}', pathParams: {depositId: string, billId: string, billDetailId: string}): Promise<BillingBillDetail>;
   /**
-  List the nichandle.SubAccount objects
-  List of sub-accounts
-  **/
-  public get(path: '/me/subAccount'): Promise<Number[]>;
-  /**
-  Available payment methods
-  Retrieve available payment method
-  **/
-  public get(path: '/me/payment/availableMethods'): Promise<MePaymentMethodAvailablePaymentMethod[]>;
-  /**
-  Manage payment method
-  Retrieve payment method ID list
-  **/
-  public get(path: '/me/payment/method', pathParams: null, queryParams: {status?: MePaymentMethodPaymentMethodStatus, paymentType?: string}): Promise<Number[]>;
-  /**
-  Manage payment method
-  Get one payment method
-  **/
-  public get(path: '/me/payment/method/{paymentMethodId}', pathParams: {paymentMethodId: Number}): Promise<MePaymentMethodPaymentMethod>;
-  /**
-  Retrieve payment method transaction ID list
-  Retrieve associated payment method transaction ID list
-  **/
-  public get(path: '/me/payment/transaction', pathParams: null, queryParams: {paymentMethodId?: Number, status?: MePaymentMethodTransactionStatus}): Promise<Number[]>;
-  /**
-  Manage payment method transaction
-  Get associated payment method transaction
-  **/
-  public get(path: '/me/payment/transaction/{transactionId}', pathParams: {transactionId: Number}): Promise<MePaymentMethodTransaction>;
-  /**
-  Missing description
-  Retrieve all contact that you created
-  **/
-  public get(path: '/me/contact'): Promise<Number[]>;
-  /**
-  Missing description
-  Display mandatory/read-only informations of a contact
-  **/
-  public get(path: '/me/contact/{contactId}/fields', pathParams: {contactId: Number}): Promise<ContactFieldInformation[]>;
-  /**
-  Missing description
-  Retrieve information about a contact
-  **/
-  public get(path: '/me/contact/{contactId}', pathParams: {contactId: Number}): Promise<ContactContact>;
-  /**
-  List of all OVH things you can subscribe to
+  Details about a Bill
   Get this object properties
   **/
-  public get(path: '/me/subscription/{subscriptionType}', pathParams: {subscriptionType: string}): Promise<NichandleSubscription>;
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}', pathParams: {depositId: string, billId: string}): Promise<BillingBill>;
   /**
-  List the nichandle.Subscription objects
-  List of all OVH things you can subscribe to
-  **/
-  public get(path: '/me/subscription'): Promise<string[]>;
-  /**
-  List the nichandle.DomainTaskArgument objects
-  List of arguments
-  **/
-  public get(path: '/me/task/domain/{id}/argument', pathParams: {id: Number}): Promise<string[]>;
-  /**
-  Domain operation argument
+  State of a debt
   Get this object properties
   **/
-  public get(path: '/me/task/domain/{id}/argument/{key}', pathParams: {id: Number, key: string}): Promise<NichandleDomainTaskArgument>;
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt', pathParams: {depositId: string, billId: string}): Promise<DebtDebt>;
   /**
-  Domain operation progress
+  Operation that happend on a debt
   Get this object properties
   **/
-  public get(path: '/me/task/domain/{id}/progressbar', pathParams: {id: Number}): Promise<NichandleDomainTaskProgressBar>;
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}', pathParams: {depositId: string, billId: string, operationId: Number}): Promise<DebtOperation>;
   /**
-  Domain tasks
+  associatedObject operations
+  Return main data about the object related to this debt operation
+  **/
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject', pathParams: {depositId: string, billId: string, operationId: Number}): Promise<DebtEntryAssociatedObject>;
+  /**
+  List the debt.Operation objects
+  All operations related to these debts
+  **/
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/operation', pathParams: {depositId: string, billId: string}, queryParams: {depositOrderId?: Number}): Promise<Number[]>;
+  /**
+  Details about a payment
   Get this object properties
   **/
-  public get(path: '/me/task/domain/{id}', pathParams: {id: Number}): Promise<NichandleDomainTask>;
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/payment', pathParams: {depositId: string, billId: string}): Promise<BillingPayment>;
   /**
-  List the nichandle.DomainTask objects
-  List of domain task
-  **/
-  public get(path: '/me/task/domain', pathParams: null, queryParams: {function?: DomainNicOperationFunctionEnum, status?: DomainOperationStatusEnum, domain?: string}): Promise<Number[]>;
-  /**
-  Task running an email change on an account
+  Details about a deposit
   Get this object properties
   **/
-  public get(path: '/me/task/emailChange/{id}', pathParams: {id: Number}): Promise<NichandleEmailChangeTask>;
+  public get(path: '/me/deposit/{depositId}', pathParams: {depositId: string}): Promise<BillingDeposit>;
   /**
-  List the nichandle.emailChange.Task objects
-  List of email change tasks you are involved in
-  **/
-  public get(path: '/me/task/emailChange', pathParams: null, queryParams: {state?: NichandleChangeEmailTaskStateEnum}): Promise<Number[]>;
-  /**
-  List the nichandle.contactChange.Task objects
-  List of service contact change tasks you are involved in
-  **/
-  public get(path: '/me/task/contactChange', pathParams: null, queryParams: {toAccount?: string, askingAccount?: string, state?: NichandleChangeContactTaskStateEnum}): Promise<Number[]>;
-  /**
-  Task running a contact change on a service
+  Information about a Deposit entry
   Get this object properties
   **/
-  public get(path: '/me/task/contactChange/{id}', pathParams: {id: Number}): Promise<NichandleContactChangeTask>;
+  public get(path: '/me/deposit/{depositId}/details/{depositDetailId}', pathParams: {depositId: string, depositDetailId: string}): Promise<BillingDepositDetail>;
   /**
-  List the agreements.ContractAgreement objects
-  List of contracts signed between you and OVH
+  List the billing.DepositDetail objects
+  Give access to all entries of this deposit
   **/
-  public get(path: '/me/agreements', pathParams: null, queryParams: {contractId?: Number, agreed?: AgreementsAgreementStateEnum}): Promise<Number[]>;
+  public get(path: '/me/deposit/{depositId}/details', pathParams: {depositId: string}): Promise<string[]>;
   /**
-  Contract agreement
+  List the billing.OvhAccount objects
+  List of OVH accounts the logged account has
+  **/
+  public get(path: '/me/ovhAccount'): Promise<string[]>;
+  /**
+  Details about an OVH account
   Get this object properties
   **/
-  public get(path: '/me/agreements/{id}', pathParams: {id: Number}): Promise<AgreementsContractAgreement>;
+  public get(path: '/me/ovhAccount/{ovhAccountId}/movements/{movementId}', pathParams: {ovhAccountId: string, movementId: Number}): Promise<BillingMovement>;
   /**
-  Contract of service
+  List the billing.Movement objects
+  Details about an entry of the OVH account
+  **/
+  public get(path: '/me/ovhAccount/{ovhAccountId}/movements', pathParams: {ovhAccountId: string}, queryParams: {'date.from'?: string, 'date.to'?: string}): Promise<Number[]>;
+  /**
+  Details about an OVH account
   Get this object properties
   **/
-  public get(path: '/me/agreements/{id}/contract', pathParams: {id: Number}): Promise<AgreementsContract>;
+  public get(path: '/me/ovhAccount/{ovhAccountId}', pathParams: {ovhAccountId: string}): Promise<BillingOvhAccount>;
   /**
-  List the nichandle.Ipv4Org objects
-  List of organisations
-  **/
-  public get(path: '/me/ipOrganisation'): Promise<string[]>;
-  /**
-  Details about an IP block organisation
+  Details about a fidelity account
   Get this object properties
   **/
-  public get(path: '/me/ipOrganisation/{organisationId}', pathParams: {organisationId: string}): Promise<NichandleIpv4Org>;
+  public get(path: '/me/fidelityAccount/movements/{movementId}', pathParams: {movementId: Number}): Promise<BillingFidelityMovement>;
   /**
-  List the billing.SlaOperation objects
-  List active SLA
+  List the billing.FidelityMovement objects
+  List of entries of the fidelity account
   **/
-  public get(path: '/me/sla'): Promise<Number[]>;
+  public get(path: '/me/fidelityAccount/movements', pathParams: undefined, queryParams: {'date.to'?: string, 'date.from'?: string}): Promise<Number[]>;
   /**
-  services operations
-  Get services impacted by this SLA
-  **/
-  public get(path: '/me/sla/{id}/services', pathParams: {id: Number}): Promise<BillingSlaOperationService[]>;
-  /**
-  SLA properties
+  Balance of the fidelity account
   Get this object properties
   **/
-  public get(path: '/me/sla/{id}', pathParams: {id: Number}): Promise<BillingSlaOperation>;
-  /**
-  status operations
-  Get the status request of this SLA
-  **/
-  public get(path: '/me/sla/{id}/status', pathParams: {id: Number}): Promise<string>;
-  /**
-  canBeApplied operations
-  Check whether this SLA can be applied on your services
-  **/
-  public get(path: '/me/sla/{id}/canBeApplied', pathParams: {id: Number}): Promise<boolean>;
-  /**
-  List the telephony.MailDomain2Service objects
-  Get the fax custom domains linked to the customer account
-  **/
-  public get(path: '/me/fax/customDomains'): Promise<Number[]>;
-  /**
-  Custom domains of your fax services
-  Get this object properties
-  **/
-  public get(path: '/me/fax/customDomains/{id}', pathParams: {id: Number}): Promise<TelephonyMailDomain2Service>;
+  public get(path: '/me/fidelityAccount'): Promise<BillingFidelityAccount>;
   /**
   List the nichandle.ipxe objects
   List of all your IPXE scripts
@@ -4574,15 +4214,530 @@ export class ApiMe extends ApiCommon {
   **/
   public get(path: '/me/ipxeScript/{name}', pathParams: {name: string}): Promise<NichandleIpxe>;
   /**
-  List the billing.Bill objects
-  List of all the bills the logged account has
+  List the nichandle.emailNotification objects
+  List of all your email notifications
   **/
-  public get(path: '/me/bill', pathParams: null, queryParams: {orderId?: Number, 'date.from'?: Date, 'date.to'?: Date}): Promise<string[]>;
+  public get(path: '/me/notification/email/history'): Promise<Number[]>;
+  /**
+  Email notification
+  Get this object properties
+  **/
+  public get(path: '/me/notification/email/history/{id}', pathParams: {id: Number}): Promise<NichandleEmailNotification>;
+  /**
+  status operations
+  Return status of order
+  **/
+  public get(path: '/me/order/{orderId}/status', pathParams: {orderId: Number}): Promise<BillingOrderOrderStatusEnum>;
+  /**
+  List the billing.OrderDetail objects
+  Give access to all entries of the order
+  **/
+  public get(path: '/me/order/{orderId}/details', pathParams: {orderId: Number}): Promise<Number[]>;
+  /**
+  Information about a Bill entry
+  Get this object properties
+  **/
+  public get(path: '/me/order/{orderId}/details/{orderDetailId}', pathParams: {orderId: Number, orderDetailId: Number}): Promise<BillingOrderDetail>;
+  /**
+  Extensions of a detail
+  Get this object properties
+  **/
+  public get(path: '/me/order/{orderId}/details/{orderDetailId}/extension', pathParams: {orderId: Number, orderDetailId: Number}): Promise<BillingItemDetail>;
   /**
   Details about a payment
   Get this object properties
   **/
-  public get(path: '/me/bill/{billId}/payment', pathParams: {billId: string}): Promise<BillingPayment>;
+  public get(path: '/me/order/{orderId}/payment', pathParams: {orderId: Number}): Promise<BillingPayment>;
+  /**
+  Details about a Refund
+  Get this object properties
+  **/
+  public get(path: '/me/order/{orderId}/refund', pathParams: {orderId: Number}): Promise<BillingRefund>;
+  /**
+  State of a debt
+  Get this object properties
+  **/
+  public get(path: '/me/order/{orderId}/debt', pathParams: {orderId: Number}): Promise<DebtDebt>;
+  /**
+  List the debt.Operation objects
+  All operations related to these debts
+  **/
+  public get(path: '/me/order/{orderId}/debt/operation', pathParams: {orderId: Number}, queryParams: {depositOrderId?: Number}): Promise<Number[]>;
+  /**
+  associatedObject operations
+  Return main data about the object related to this debt operation
+  **/
+  public get(path: '/me/order/{orderId}/debt/operation/{operationId}/associatedObject', pathParams: {orderId: Number, operationId: Number}): Promise<DebtEntryAssociatedObject>;
+  /**
+  Operation that happend on a debt
+  Get this object properties
+  **/
+  public get(path: '/me/order/{orderId}/debt/operation/{operationId}', pathParams: {orderId: Number, operationId: Number}): Promise<DebtOperation>;
+  /**
+  paymentMeans operations
+  Return main data about the object the processing of the order generated
+  **/
+  public get(path: '/me/order/{orderId}/paymentMeans', pathParams: {orderId: Number}): Promise<BillingOrderPaymentMeans>;
+  /**
+  paymentMethods operations
+  List of registered payment method you can use to pay this order
+  **/
+  public get(path: '/me/order/{orderId}/paymentMethods', pathParams: {orderId: Number}): Promise<BillingOrderPaymentMethods>;
+  /**
+  associatedObject operations
+  Return main data about the object the processing of the order generated
+  **/
+  public get(path: '/me/order/{orderId}/associatedObject', pathParams: {orderId: Number}): Promise<BillingOrderAssociatedObject>;
+  /**
+  Details about an Order
+  Get this object properties
+  **/
+  public get(path: '/me/order/{orderId}', pathParams: {orderId: Number}): Promise<BillingOrder>;
+  /**
+  Details about a Bill
+  Get this object properties
+  **/
+  public get(path: '/me/order/{orderId}/bill', pathParams: {orderId: Number}): Promise<BillingBill>;
+  /**
+  availableRegisteredPaymentMean operations
+  List of registered payment mean you can use to pay this order
+  **/
+  public get(path: '/me/order/{orderId}/availableRegisteredPaymentMean', pathParams: {orderId: Number}): Promise<BillingOrderRegisteredPaymentMean[]>;
+  /**
+  List the billing.Order objects
+  List of all the orders the logged account has
+  **/
+  public get(path: '/me/order', pathParams: undefined, queryParams: {'date.from'?: string, 'date.to'?: string}): Promise<Number[]>;
+  /**
+  Custom domains of your fax services
+  Get this object properties
+  **/
+  public get(path: '/me/fax/customDomains/{id}', pathParams: {id: Number}): Promise<TelephonyMailDomain2Service>;
+  /**
+  List the telephony.MailDomain2Service objects
+  Get the fax custom domains linked to the customer account
+  **/
+  public get(path: '/me/fax/customDomains'): Promise<Number[]>;
+  /**
+  setting operations
+  Get xdsl settings linked to the nichandle
+  **/
+  public get(path: '/me/xdsl/setting'): Promise<XdslSetting>;
+  /**
+  API Log
+  Get this object properties
+  **/
+  public get(path: '/me/api/logs/services/{logId}', pathParams: {logId: Number}): Promise<ApiLog>;
+  /**
+  List the api.Log objects
+  List of Api calls done on services you have access to
+  **/
+  public get(path: '/me/api/logs/services'): Promise<Number[]>;
+  /**
+  List the api.Log objects
+  List of Api calls done with your account
+  **/
+  public get(path: '/me/api/logs/self'): Promise<Number[]>;
+  /**
+  API Log
+  Get this object properties
+  **/
+  public get(path: '/me/api/logs/self/{logId}', pathParams: {logId: Number}): Promise<ApiLog>;
+  /**
+  List the api.Credential objects
+  List of your Api Credentials
+  **/
+  public get(path: '/me/api/credential', pathParams: undefined, queryParams: {applicationId?: Number, status?: AuthCredentialStateEnum}): Promise<Number[]>;
+  /**
+  API Credential
+  Get this object properties
+  **/
+  public get(path: '/me/api/credential/{credentialId}', pathParams: {credentialId: Number}): Promise<ApiCredential>;
+  /**
+  API Application
+  Get this object properties
+  **/
+  public get(path: '/me/api/credential/{credentialId}/application', pathParams: {credentialId: Number}): Promise<ApiApplication>;
+  /**
+  List the api.Application objects
+  List of your Api Application
+  **/
+  public get(path: '/me/api/application'): Promise<Number[]>;
+  /**
+  API Application
+  Get this object properties
+  **/
+  public get(path: '/me/api/application/{applicationId}', pathParams: {applicationId: Number}): Promise<ApiApplication>;
+  /**
+  availableAutomaticPaymentMeans operations
+  List available payment methods in this Nic's country
+  **/
+  public get(path: '/me/availableAutomaticPaymentMeans'): Promise<BillingAutomaticPaymentMean>;
+  /**
+  Missing description
+  Display mandatory/read-only informations of a contact
+  **/
+  public get(path: '/me/contact/{contactId}/fields', pathParams: {contactId: Number}): Promise<ContactFieldInformation[]>;
+  /**
+  Missing description
+  Retrieve information about a contact
+  **/
+  public get(path: '/me/contact/{contactId}', pathParams: {contactId: Number}): Promise<ContactContact>;
+  /**
+  Missing description
+  Retrieve all contact that you created
+  **/
+  public get(path: '/me/contact'): Promise<Number[]>;
+  /**
+  Auto renewal information
+  Get this object properties
+  **/
+  public get(path: '/me/autorenew'): Promise<NichandleNicAutorenewInfos>;
+  /**
+  List the billing.BankAccount objects
+  List of bank accounts
+  **/
+  public get(path: '/me/paymentMean/bankAccount', pathParams: undefined, queryParams: {state?: BillingBankAccountStateEnum}): Promise<Number[]>;
+  /**
+  SEPA bank account info
+  Get this object properties
+  **/
+  public get(path: '/me/paymentMean/bankAccount/{id}', pathParams: {id: Number}): Promise<BillingBankAccount>;
+  /**
+  Paypal account info
+  Get this object properties
+  **/
+  public get(path: '/me/paymentMean/paypal/{id}', pathParams: {id: Number}): Promise<BillingPaypal>;
+  /**
+  List the billing.Paypal objects
+  List of Paypal accounts usable for payments on this account
+  **/
+  public get(path: '/me/paymentMean/paypal'): Promise<Number[]>;
+  /**
+  List the billing.CreditCard objects
+  List of credit cards
+  **/
+  public get(path: '/me/paymentMean/creditCard'): Promise<Number[]>;
+  /**
+  Credit card informations
+  Get this object properties
+  **/
+  public get(path: '/me/paymentMean/creditCard/{id}', pathParams: {id: Number}): Promise<BillingCreditCard>;
+  /**
+  Deferred payment account info
+  Get this object properties
+  **/
+  public get(path: '/me/paymentMean/deferredPaymentAccount/{id}', pathParams: {id: Number}): Promise<BillingDeferredPaymentAccount>;
+  /**
+  List the billing.DeferredPaymentAccount objects
+  List of authorized deferred payment account for this customer
+  **/
+  public get(path: '/me/paymentMean/deferredPaymentAccount'): Promise<Number[]>;
+  /**
+  List of documents added on your account
+  Get this object properties
+  **/
+  public get(path: '/me/document/{id}', pathParams: {id: string}): Promise<NichandleDocumentDocument>;
+  /**
+  List the nichandle.document.Document objects
+  List of documents added in your account
+  **/
+  public get(path: '/me/document'): Promise<string[]>;
+  /**
+  List the dedicated.installationTemplate.Templates objects
+  Your customized operating system installation templates
+  **/
+  public get(path: '/me/installationTemplate'): Promise<string[]>;
+  /**
+  Available installation templates
+  Get this object properties
+  **/
+  public get(path: '/me/installationTemplate/{templateName}', pathParams: {templateName: string}): Promise<DedicatedInstallationTemplateTemplates>;
+  /**
+  List the dedicated.installationTemplate.templatePartitioningSchemes objects
+  Partitioning schemes available on this template
+  **/
+  public get(path: '/me/installationTemplate/{templateName}/partitionScheme', pathParams: {templateName: string}): Promise<string[]>;
+  /**
+  Partitioning schemes available on this template
+  Get this object properties
+  **/
+  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}', pathParams: {templateName: string, schemeName: string}): Promise<DedicatedInstallationTemplateTemplatePartitioningSchemes>;
+  /**
+  List the dedicated.installationTemplate.hardwareRaid objects
+  Hardware RAIDs defined in this partitioning scheme
+  **/
+  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid', pathParams: {templateName: string, schemeName: string}): Promise<string[]>;
+  /**
+  Hardware RAID defined in this partitioning scheme
+  Get this object properties
+  **/
+  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', pathParams: {templateName: string, schemeName: string, name: string}): Promise<DedicatedInstallationTemplateHardwareRaid>;
+  /**
+  List the dedicated.installationTemplate.templatePartitions objects
+  Partitions defined in this partitioning scheme
+  **/
+  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', pathParams: {templateName: string, schemeName: string}): Promise<string[]>;
+  /**
+   Partitions defined in this partitioning scheme
+  Get this object properties
+  **/
+  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', pathParams: {templateName: string, schemeName: string, mountpoint: string}): Promise<DedicatedInstallationTemplateTemplatePartitions>;
+  /**
+  List the agreements.ContractAgreement objects
+  List of contracts signed between you and OVH
+  **/
+  public get(path: '/me/agreements', pathParams: undefined, queryParams: {contractId?: Number, agreed?: AgreementsAgreementStateEnum}): Promise<Number[]>;
+  /**
+  Contract agreement
+  Get this object properties
+  **/
+  public get(path: '/me/agreements/{id}', pathParams: {id: Number}): Promise<AgreementsContractAgreement>;
+  /**
+  Contract of service
+  Get this object properties
+  **/
+  public get(path: '/me/agreements/{id}/contract', pathParams: {id: Number}): Promise<AgreementsContract>;
+  /**
+  Manage payment method
+  Get one payment method
+  **/
+  public get(path: '/me/payment/method/{paymentMethodId}', pathParams: {paymentMethodId: Number}): Promise<MePaymentMethodPaymentMethod>;
+  /**
+  Manage payment method
+  Retrieve payment method ID list
+  **/
+  public get(path: '/me/payment/method', pathParams: undefined, queryParams: {status?: MePaymentMethodPaymentMethodStatus, paymentType?: string}): Promise<Number[]>;
+  /**
+  Available payment methods
+  Retrieve available payment method
+  **/
+  public get(path: '/me/payment/availableMethods'): Promise<MePaymentMethodAvailablePaymentMethod[]>;
+  /**
+  Manage payment method transaction
+  Get associated payment method transaction
+  **/
+  public get(path: '/me/payment/transaction/{transactionId}', pathParams: {transactionId: Number}): Promise<MePaymentMethodTransaction>;
+  /**
+  Retrieve payment method transaction ID list
+  Retrieve associated payment method transaction ID list
+  **/
+  public get(path: '/me/payment/transaction', pathParams: undefined, queryParams: {paymentMethodId?: Number, status?: MePaymentMethodTransactionStatus}): Promise<Number[]>;
+  /**
+  Details about a Refund
+  Get this object properties
+  **/
+  public get(path: '/me/refund/{refundId}', pathParams: {refundId: string}): Promise<BillingRefund>;
+  /**
+  List the billing.RefundDetail objects
+  Give access to all entries of the refund
+  **/
+  public get(path: '/me/refund/{refundId}/details', pathParams: {refundId: string}): Promise<string[]>;
+  /**
+  Information about a Bill entry
+  Get this object properties
+  **/
+  public get(path: '/me/refund/{refundId}/details/{refundDetailId}', pathParams: {refundId: string, refundDetailId: string}): Promise<BillingRefundDetail>;
+  /**
+  Details about a payment
+  Get this object properties
+  **/
+  public get(path: '/me/refund/{refundId}/payment', pathParams: {refundId: string}): Promise<BillingPayment>;
+  /**
+  List the billing.Refund objects
+  List of all the refunds the logged account has
+  **/
+  public get(path: '/me/refund', pathParams: undefined, queryParams: {orderId?: Number, 'date.from'?: string, 'date.to'?: string}): Promise<string[]>;
+  /**
+  Retrieve your insight access token. This token give you access to all your products metrics (cloud instances, dedicated servers, load balancers, ...)
+  Get your insight access token
+  **/
+  public get(path: '/me/insight'): Promise<InsightAccess>;
+  /**
+  status operations
+  Get the status request of this SLA
+  **/
+  public get(path: '/me/sla/{id}/status', pathParams: {id: Number}): Promise<string>;
+  /**
+  SLA properties
+  Get this object properties
+  **/
+  public get(path: '/me/sla/{id}', pathParams: {id: Number}): Promise<BillingSlaOperation>;
+  /**
+  services operations
+  Get services impacted by this SLA
+  **/
+  public get(path: '/me/sla/{id}/services', pathParams: {id: Number}): Promise<BillingSlaOperationService[]>;
+  /**
+  canBeApplied operations
+  Check whether this SLA can be applied on your services
+  **/
+  public get(path: '/me/sla/{id}/canBeApplied', pathParams: {id: Number}): Promise<boolean>;
+  /**
+  List the billing.SlaOperation objects
+  List active SLA
+  **/
+  public get(path: '/me/sla'): Promise<Number[]>;
+  /**
+  List the billing.Withdrawal objects
+  List of all the withdrawals made from your prepaid account
+  **/
+  public get(path: '/me/withdrawal', pathParams: undefined, queryParams: {'date.from'?: string, 'date.to'?: string, orderId?: Number}): Promise<string[]>;
+  /**
+  Details about a withdrawal
+  Get this object properties
+  **/
+  public get(path: '/me/withdrawal/{withdrawalId}', pathParams: {withdrawalId: string}): Promise<BillingWithdrawal>;
+  /**
+  Information about a Withdrawal entry
+  Get this object properties
+  **/
+  public get(path: '/me/withdrawal/{withdrawalId}/details/{withdrawalDetailId}', pathParams: {withdrawalId: string, withdrawalDetailId: string}): Promise<BillingWithdrawalDetail>;
+  /**
+  List the billing.WithdrawalDetail objects
+  Give access to all entries of this withdrawal
+  **/
+  public get(path: '/me/withdrawal/{withdrawalId}/details', pathParams: {withdrawalId: string}): Promise<string[]>;
+  /**
+  Details about a payment
+  Get this object properties
+  **/
+  public get(path: '/me/withdrawal/{withdrawalId}/payment', pathParams: {withdrawalId: string}): Promise<BillingPayment>;
+  /**
+  settings operations
+  Get the telephony settings linked to the customer account
+  **/
+  public get(path: '/me/telephony/settings'): Promise<TelephonySettings>;
+  /**
+  List the telephony.DefaultIpRestriction objects
+  The default SIP IP restictions for your future VoIP lines
+  **/
+  public get(path: '/me/telephony/defaultIpRestriction'): Promise<Number[]>;
+  /**
+  Default IP restriction of a VoIP line
+  Get this object properties
+  **/
+  public get(path: '/me/telephony/defaultIpRestriction/{id}', pathParams: {id: Number}): Promise<TelephonyDefaultIpRestriction>;
+  /**
+  List the nichandle.SubAccount objects
+  List of sub-accounts
+  **/
+  public get(path: '/me/subAccount'): Promise<Number[]>;
+  /**
+  Sub Account
+  Get this object properties
+  **/
+  public get(path: '/me/subAccount/{id}', pathParams: {id: Number}): Promise<NichandleSubAccount>;
+  /**
+  List the nichandle.Ipv4Org objects
+  List of organisations
+  **/
+  public get(path: '/me/ipOrganisation'): Promise<string[]>;
+  /**
+  Details about an IP block organisation
+  Get this object properties
+  **/
+  public get(path: '/me/ipOrganisation/{organisationId}', pathParams: {organisationId: string}): Promise<NichandleIpv4Org>;
+  /**
+  List the nichandle.accessRestriction.U2FAccount objects
+  List of U2F accounts
+  **/
+  public get(path: '/me/accessRestriction/u2f'): Promise<Number[]>;
+  /**
+  U2F Two-Factor Authentication
+  Get this object properties
+  **/
+  public get(path: '/me/accessRestriction/u2f/{id}', pathParams: {id: Number}): Promise<NichandleAccessRestrictionU2FAccount>;
+  /**
+  Login restrictions on a development version of the Manager
+  Get this object properties
+  **/
+  public get(path: '/me/accessRestriction/developerMode'): Promise<NichandleDeveloperModeRestriction>;
+  /**
+  TOTP Two-Factor Authentication
+  Get this object properties
+  **/
+  public get(path: '/me/accessRestriction/totp/{id}', pathParams: {id: Number}): Promise<NichandleAccessRestrictionTOTPAccount>;
+  /**
+  List the nichandle.accessRestriction.TOTPAccount objects
+  List of TOTP accounts
+  **/
+  public get(path: '/me/accessRestriction/totp'): Promise<Number[]>;
+  /**
+  SOTP Two-Factor Authentication
+  Get this object properties
+  **/
+  public get(path: '/me/accessRestriction/backupCode'): Promise<NichandleAccessRestrictionSOTPAccount>;
+  /**
+  IP Restriction default rule
+  Get this object properties
+  **/
+  public get(path: '/me/accessRestriction/ipDefaultRule'): Promise<NichandleIpRestrictionDefaultRule>;
+  /**
+  Sms Two-Factor Authentication
+  Get this object properties
+  **/
+  public get(path: '/me/accessRestriction/sms/{id}', pathParams: {id: Number}): Promise<NichandleAccessRestrictionSmsAccount>;
+  /**
+  List the nichandle.accessRestriction.SmsAccount objects
+  List of Sms accounts
+  **/
+  public get(path: '/me/accessRestriction/sms'): Promise<Number[]>;
+  /**
+  List of all IP Restrictions
+  Get this object properties
+  **/
+  public get(path: '/me/accessRestriction/ip/{id}', pathParams: {id: Number}): Promise<NichandleIpRestriction>;
+  /**
+  List the nichandle.IpRestriction objects
+  List of IP restrictions
+  **/
+  public get(path: '/me/accessRestriction/ip'): Promise<Number[]>;
+  /**
+  invoicesByPostalMail operations
+  Send invoices through postal mail
+  **/
+  public get(path: '/me/billing/invoicesByPostalMail'): Promise<boolean>;
+  /**
+  Details about your OVH identifier
+  Get this object properties
+  **/
+  public get(path: '/me'): Promise<NichandleNichandle>;
+  /**
+  Missing description
+  Get list of transactions between two dates
+  **/
+  public get(path: '/me/consumption/usage/history', pathParams: undefined, queryParams: {beginDate?: string, endDate?: string}): Promise<MeConsumptionTransaction[]>;
+  /**
+  Missing description
+  Get on-going consumptions for all services
+  **/
+  public get(path: '/me/consumption/usage/current'): Promise<MeConsumptionTransaction[]>;
+  /**
+  Missing description
+  Get forecasted consumptions for all services
+  **/
+  public get(path: '/me/consumption/usage/forecast'): Promise<MeConsumptionTransaction[]>;
+  /**
+  Users linked to this account
+  Retrieve all users of this account
+  **/
+  public get(path: '/me/identity/user'): Promise<string[]>;
+  /**
+  A user linked to this account
+  Get this object properties
+  **/
+  public get(path: '/me/identity/user/{user}', pathParams: {user: string}): Promise<NichandleUser>;
+  /**
+  Groups linked to this account
+  Retrieve all groups of this account
+  **/
+  public get(path: '/me/identity/group'): Promise<string[]>;
+  /**
+  A group linked to this account
+  Get this object properties
+  **/
+  public get(path: '/me/identity/group/{group}', pathParams: {group: string}): Promise<NichandleAuthenticationGroup>;
   /**
   List the billing.BillDetail objects
   Give access to all entries of the bill
@@ -4599,331 +4754,206 @@ export class ApiMe extends ApiCommon {
   **/
   public get(path: '/me/bill/{billId}', pathParams: {billId: string}): Promise<BillingBill>;
   /**
-  List the debt.Operation objects
-  All operations related to these debts
+  Operation that happend on a debt
+  Get this object properties
   **/
-  public get(path: '/me/bill/{billId}/debt/operation', pathParams: {billId: string}, queryParams: {depositOrderId?: Number}): Promise<Number[]>;
+  public get(path: '/me/bill/{billId}/debt/operation/{operationId}', pathParams: {billId: string, operationId: Number}): Promise<DebtOperation>;
   /**
   associatedObject operations
   Return main data about the object related to this debt operation
   **/
   public get(path: '/me/bill/{billId}/debt/operation/{operationId}/associatedObject', pathParams: {billId: string, operationId: Number}): Promise<DebtEntryAssociatedObject>;
   /**
-  Operation that happend on a debt
-  Get this object properties
+  List the debt.Operation objects
+  All operations related to these debts
   **/
-  public get(path: '/me/bill/{billId}/debt/operation/{operationId}', pathParams: {billId: string, operationId: Number}): Promise<DebtOperation>;
+  public get(path: '/me/bill/{billId}/debt/operation', pathParams: {billId: string}, queryParams: {depositOrderId?: Number}): Promise<Number[]>;
   /**
   State of a debt
   Get this object properties
   **/
   public get(path: '/me/bill/{billId}/debt', pathParams: {billId: string}): Promise<DebtDebt>;
   /**
-  Details about a withdrawal
-  Get this object properties
-  **/
-  public get(path: '/me/withdrawal/{withdrawalId}', pathParams: {withdrawalId: string}): Promise<BillingWithdrawal>;
-  /**
-  List the billing.WithdrawalDetail objects
-  Give access to all entries of this withdrawal
-  **/
-  public get(path: '/me/withdrawal/{withdrawalId}/details', pathParams: {withdrawalId: string}): Promise<string[]>;
-  /**
-  Information about a Withdrawal entry
-  Get this object properties
-  **/
-  public get(path: '/me/withdrawal/{withdrawalId}/details/{withdrawalDetailId}', pathParams: {withdrawalId: string, withdrawalDetailId: string}): Promise<BillingWithdrawalDetail>;
-  /**
   Details about a payment
   Get this object properties
   **/
-  public get(path: '/me/withdrawal/{withdrawalId}/payment', pathParams: {withdrawalId: string}): Promise<BillingPayment>;
+  public get(path: '/me/bill/{billId}/payment', pathParams: {billId: string}): Promise<BillingPayment>;
   /**
-  List the billing.Withdrawal objects
-  List of all the withdrawals made from your prepaid account
+  List the billing.Bill objects
+  List of all the bills the logged account has
   **/
-  public get(path: '/me/withdrawal', pathParams: null, queryParams: {'date.from'?: Date, orderId?: Number, 'date.to'?: Date}): Promise<string[]>;
+  public get(path: '/me/bill', pathParams: undefined, queryParams: {orderId?: Number, 'date.from'?: string, 'date.to'?: string}): Promise<string[]>;
   /**
   Get all certificates of the account
   Get all certificates of the account
   **/
-  public get(path: '/me/certificates', pathParams: null, queryParams: {name?: string}): Promise<string[]>;
+  public get(path: '/me/certificates', pathParams: undefined, queryParams: {name?: string}): Promise<string[]>;
   /**
-  invoicesByPostalMail operations
-  Send invoices through postal mail
+  State of a debt
+  Get this object properties
   **/
-  public get(path: '/me/billing/invoicesByPostalMail'): Promise<boolean>;
+  public get(path: '/me/debtAccount/debt/{debtId}', pathParams: {debtId: Number}): Promise<DebtDebt>;
+  /**
+  Operation that happend on a debt
+  Get this object properties
+  **/
+  public get(path: '/me/debtAccount/debt/{debtId}/operation/{operationId}', pathParams: {debtId: Number, operationId: Number}): Promise<DebtOperation>;
+  /**
+  associatedObject operations
+  Return main data about the object related to this debt operation
+  **/
+  public get(path: '/me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject', pathParams: {debtId: Number, operationId: Number}): Promise<DebtEntryAssociatedObject>;
+  /**
+  List the debt.Operation objects
+  All operations related to these debts
+  **/
+  public get(path: '/me/debtAccount/debt/{debtId}/operation', pathParams: {debtId: Number}, queryParams: {depositOrderId?: Number}): Promise<Number[]>;
+  /**
+  List the debt.Debt objects
+  All debts related to your account
+  **/
+  public get(path: '/me/debtAccount/debt'): Promise<Number[]>;
+  /**
+  Debt balance of the account
+  Get this object properties
+  **/
+  public get(path: '/me/debtAccount'): Promise<DebtBalance>;
   /**
   vipStatus operations
   VIP Status of this account
   **/
   public get(path: '/me/vipStatus'): Promise<NichandleVipStatus>;
   /**
-  Email notification
+  List the nichandle.emailChange.Task objects
+  List of email change tasks you are involved in
+  **/
+  public get(path: '/me/task/emailChange', pathParams: undefined, queryParams: {state?: NichandleChangeEmailTaskStateEnum}): Promise<Number[]>;
+  /**
+  Task running an email change on an account
   Get this object properties
   **/
-  public get(path: '/me/notification/email/history/{id}', pathParams: {id: Number}): Promise<NichandleEmailNotification>;
+  public get(path: '/me/task/emailChange/{id}', pathParams: {id: Number}): Promise<NichandleEmailChangeTask>;
   /**
-  List the nichandle.emailNotification objects
-  List of all your email notifications
+  List the nichandle.contactChange.Task objects
+  List of service contact change tasks you are involved in
   **/
-  public get(path: '/me/notification/email/history'): Promise<Number[]>;
+  public get(path: '/me/task/contactChange', pathParams: undefined, queryParams: {state?: NichandleChangeContactTaskStateEnum, askingAccount?: string, toAccount?: string}): Promise<Number[]>;
   /**
-  A group linked to this account
+  Task running a contact change on a service
   Get this object properties
   **/
-  public get(path: '/me/identity/group/{group}', pathParams: {group: string}): Promise<NichandleAuthenticationGroup>;
+  public get(path: '/me/task/contactChange/{id}', pathParams: {id: Number}): Promise<NichandleContactChangeTask>;
   /**
-  Groups linked to this account
-  Retrieve all groups of this account
+  List the nichandle.DomainTask objects
+  List of domain task
   **/
-  public get(path: '/me/identity/group'): Promise<string[]>;
+  public get(path: '/me/task/domain', pathParams: undefined, queryParams: {status?: DomainOperationStatusEnum, domain?: string, function?: DomainNicOperationFunctionEnum}): Promise<Number[]>;
   /**
-  A user linked to this account
+  Domain tasks
   Get this object properties
   **/
-  public get(path: '/me/identity/user/{user}', pathParams: {user: string}): Promise<NichandleUser>;
+  public get(path: '/me/task/domain/{id}', pathParams: {id: Number}): Promise<NichandleDomainTask>;
   /**
-  Users linked to this account
-  Retrieve all users of this account
-  **/
-  public get(path: '/me/identity/user'): Promise<string[]>;
-  /**
-  Missing description
-  Get on-going consumptions for all services
-  **/
-  public get(path: '/me/consumption/usage/current'): Promise<MeConsumptionTransaction[]>;
-  /**
-  Missing description
-  Get forecasted consumptions for all services
-  **/
-  public get(path: '/me/consumption/usage/forecast'): Promise<MeConsumptionTransaction[]>;
-  /**
-  Missing description
-  Get list of transactions between two dates
-  **/
-  public get(path: '/me/consumption/usage/history', pathParams: null, queryParams: {beginDate?: Date, endDate?: Date}): Promise<MeConsumptionTransaction[]>;
-  /**
-  List of documents added on your account
+  Domain operation argument
   Get this object properties
   **/
-  public get(path: '/me/document/{id}', pathParams: {id: string}): Promise<NichandleDocumentDocument>;
+  public get(path: '/me/task/domain/{id}/argument/{key}', pathParams: {id: Number, key: string}): Promise<NichandleDomainTaskArgument>;
   /**
-  List the nichandle.document.Document objects
-  List of documents added in your account
+  List the nichandle.DomainTaskArgument objects
+  List of arguments
   **/
-  public get(path: '/me/document'): Promise<string[]>;
+  public get(path: '/me/task/domain/{id}/argument', pathParams: {id: Number}): Promise<string[]>;
   /**
-  List the billing.Order objects
-  List of all the orders the logged account has
-  **/
-  public get(path: '/me/order', pathParams: null, queryParams: {'date.to'?: Date, 'date.from'?: Date}): Promise<Number[]>;
-  /**
-  paymentMethods operations
-  List of registered payment method you can use to pay this order
-  **/
-  public get(path: '/me/order/{orderId}/paymentMethods', pathParams: {orderId: Number}): Promise<BillingOrderPaymentMethods>;
-  /**
-  paymentMeans operations
-  Return main data about the object the processing of the order generated
-  **/
-  public get(path: '/me/order/{orderId}/paymentMeans', pathParams: {orderId: Number}): Promise<BillingOrderPaymentMeans>;
-  /**
-  Details about a payment
+  Domain operation progress
   Get this object properties
   **/
-  public get(path: '/me/order/{orderId}/payment', pathParams: {orderId: Number}): Promise<BillingPayment>;
+  public get(path: '/me/task/domain/{id}/progressbar', pathParams: {id: Number}): Promise<NichandleDomainTaskProgressBar>;
   /**
-  status operations
-  Return status of order
+  Retrieve credit balance names
+  Retrieve credit balance names
   **/
-  public get(path: '/me/order/{orderId}/status', pathParams: {orderId: Number}): Promise<BillingOrderOrderStatusEnum>;
+  public get(path: '/me/credit/balance', pathParams: undefined, queryParams: {type?: BillingCreditBalanceType}): Promise<string[]>;
   /**
-  availableRegisteredPaymentMean operations
-  List of registered payment mean you can use to pay this order
+  Retrieve a credit balance
+  Retrieve a credit balance
   **/
-  public get(path: '/me/order/{orderId}/availableRegisteredPaymentMean', pathParams: {orderId: Number}): Promise<BillingOrderRegisteredPaymentMean[]>;
+  public get(path: '/me/credit/balance/{balanceName}', pathParams: {balanceName: string}): Promise<BillingCreditBalance>;
   /**
-  associatedObject operations
-  Return main data about the object the processing of the order generated
+  Retrieve movements for a specific balance
+  Retrieve movements for a specific balance
   **/
-  public get(path: '/me/order/{orderId}/associatedObject', pathParams: {orderId: Number}): Promise<BillingOrderAssociatedObject>;
+  public get(path: '/me/credit/balance/{balanceName}/movement', pathParams: {balanceName: string}): Promise<Number[]>;
   /**
-  Details about an Order
-  Get this object properties
+  Retrieve a specific movement for a credit balance
+  Retrieve a specific movement for a credit balance
   **/
-  public get(path: '/me/order/{orderId}', pathParams: {orderId: Number}): Promise<BillingOrder>;
+  public get(path: '/me/credit/balance/{balanceName}/movement/{movementId}', pathParams: {balanceName: string, movementId: Number}): Promise<BillingCreditBalanceMovement>;
+  public get(path: PathsMeGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
-  State of a debt
-  Get this object properties
+  List of all OVH things you can subscribe to
+  Alter this object properties
   **/
-  public get(path: '/me/order/{orderId}/debt', pathParams: {orderId: Number}): Promise<DebtDebt>;
-  /**
-  Operation that happend on a debt
-  Get this object properties
-  **/
-  public get(path: '/me/order/{orderId}/debt/operation/{operationId}', pathParams: {orderId: Number, operationId: Number}): Promise<DebtOperation>;
-  /**
-  associatedObject operations
-  Return main data about the object related to this debt operation
-  **/
-  public get(path: '/me/order/{orderId}/debt/operation/{operationId}/associatedObject', pathParams: {orderId: Number, operationId: Number}): Promise<DebtEntryAssociatedObject>;
-  /**
-  List the debt.Operation objects
-  All operations related to these debts
-  **/
-  public get(path: '/me/order/{orderId}/debt/operation', pathParams: {orderId: Number}, queryParams: {depositOrderId?: Number}): Promise<Number[]>;
-  /**
-  List the billing.OrderDetail objects
-  Give access to all entries of the order
-  **/
-  public get(path: '/me/order/{orderId}/details', pathParams: {orderId: Number}): Promise<Number[]>;
-  /**
-  Extensions of a detail
-  Get this object properties
-  **/
-  public get(path: '/me/order/{orderId}/details/{orderDetailId}/extension', pathParams: {orderId: Number, orderDetailId: Number}): Promise<BillingItemDetail>;
-  /**
-  Information about a Bill entry
-  Get this object properties
-  **/
-  public get(path: '/me/order/{orderId}/details/{orderDetailId}', pathParams: {orderId: Number, orderDetailId: Number}): Promise<BillingOrderDetail>;
-  /**
-  Details about a Bill
-  Get this object properties
-  **/
-  public get(path: '/me/order/{orderId}/bill', pathParams: {orderId: Number}): Promise<BillingBill>;
-  /**
-  Details about a Refund
-  Get this object properties
-  **/
-  public get(path: '/me/order/{orderId}/refund', pathParams: {orderId: Number}): Promise<BillingRefund>;
-  /**
-  List the billing.OvhAccount objects
-  List of OVH accounts the logged account has
-  **/
-  public get(path: '/me/ovhAccount'): Promise<string[]>;
-  /**
-  Details about an OVH account
-  Get this object properties
-  **/
-  public get(path: '/me/ovhAccount/{ovhAccountId}/movements/{movementId}', pathParams: {ovhAccountId: string, movementId: Number}): Promise<BillingMovement>;
-  /**
-  List the billing.Movement objects
-  Details about an entry of the OVH account
-  **/
-  public get(path: '/me/ovhAccount/{ovhAccountId}/movements', pathParams: {ovhAccountId: string}, queryParams: {'date.from'?: Date, 'date.to'?: Date}): Promise<Number[]>;
-  /**
-  Details about an OVH account
-  Get this object properties
-  **/
-  public get(path: '/me/ovhAccount/{ovhAccountId}', pathParams: {ovhAccountId: string}): Promise<BillingOvhAccount>;
-  /**
-  List the billing.Deposit objects
-  List of all the deposits made to your prepaid account or debt account
-  **/
-  public get(path: '/me/deposit', pathParams: null, queryParams: {'date.to'?: Date, 'date.from'?: Date, orderId?: Number}): Promise<string[]>;
-  /**
-  Details about a payment
-  Get this object properties
-  **/
-  public get(path: '/me/deposit/{depositId}/payment', pathParams: {depositId: string}): Promise<BillingPayment>;
-  /**
-  List the billing.DepositDetail objects
-  Give access to all entries of this deposit
-  **/
-  public get(path: '/me/deposit/{depositId}/details', pathParams: {depositId: string}): Promise<string[]>;
-  /**
-  Information about a Deposit entry
-  Get this object properties
-  **/
-  public get(path: '/me/deposit/{depositId}/details/{depositDetailId}', pathParams: {depositId: string, depositDetailId: string}): Promise<BillingDepositDetail>;
-  /**
-  List the billing.Bill objects
-  Get invoices paid by this deposit
-  **/
-  public get(path: '/me/deposit/{depositId}/paidBills', pathParams: {depositId: string}): Promise<string[]>;
-  /**
-  State of a debt
-  Get this object properties
-  **/
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt', pathParams: {depositId: string, billId: string}): Promise<DebtDebt>;
-  /**
-  List the debt.Operation objects
-  All operations related to these debts
-  **/
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/operation', pathParams: {depositId: string, billId: string}, queryParams: {depositOrderId?: Number}): Promise<Number[]>;
-  /**
-  associatedObject operations
-  Return main data about the object related to this debt operation
-  **/
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject', pathParams: {depositId: string, billId: string, operationId: Number}): Promise<DebtEntryAssociatedObject>;
-  /**
-  Operation that happend on a debt
-  Get this object properties
-  **/
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}', pathParams: {depositId: string, billId: string, operationId: Number}): Promise<DebtOperation>;
-  /**
-  Details about a Bill
-  Get this object properties
-  **/
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}', pathParams: {depositId: string, billId: string}): Promise<BillingBill>;
-  /**
-  Information about a Bill entry
-  Get this object properties
-  **/
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}', pathParams: {depositId: string, billId: string, billDetailId: string}): Promise<BillingBillDetail>;
-  /**
-  List the billing.BillDetail objects
-  Give access to all entries of the bill
-  **/
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/details', pathParams: {depositId: string, billId: string}): Promise<string[]>;
-  /**
-  Details about a payment
-  Get this object properties
-  **/
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/payment', pathParams: {depositId: string, billId: string}): Promise<BillingPayment>;
-  /**
-  Details about a deposit
-  Get this object properties
-  **/
-  public get(path: '/me/deposit/{depositId}', pathParams: {depositId: string}): Promise<BillingDeposit>;
-  public get(path: PathsMeGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public put(path: '/me/subscription/{subscriptionType}', pathParams: {subscriptionType: string}): Promise<void>;
   /**
   Customer public SSH key, can be used for rescue netboot or server access after reinstallation
   Alter this object properties
   **/
   public put(path: '/me/sshKey/{keyName}', pathParams: {keyName: string}): Promise<void>;
   /**
-  Details about your OVH identifier
-  Alter this object properties
+  Get decision value for a consent campaign
+  Update decision of a consent campaign
   **/
-  public put(path: '/me'): Promise<void>;
+  public put(path: '/me/consent/{campaignName}/decision', pathParams: {campaignName: string}): Promise<void>;
   /**
-  Credit card informations
+  Details about an OVH account
   Alter this object properties
   **/
-  public put(path: '/me/paymentMean/creditCard/{id}', pathParams: {id: Number}): Promise<void>;
+  public put(path: '/me/ovhAccount/{ovhAccountId}', pathParams: {ovhAccountId: string}): Promise<void>;
   /**
-  Paypal account info
+  Balance of the fidelity account
   Alter this object properties
   **/
-  public put(path: '/me/paymentMean/paypal/{id}', pathParams: {id: Number}): Promise<void>;
+  public put(path: '/me/fidelityAccount'): Promise<void>;
+  /**
+  Missing description
+  Update an existing contact
+  **/
+  public put(path: '/me/contact/{contactId}', pathParams: {contactId: Number}): Promise<ContactContact>;
+  /**
+  Auto renewal information
+  Alter this object properties
+  **/
+  public put(path: '/me/autorenew'): Promise<void>;
   /**
   SEPA bank account info
   Alter this object properties
   **/
   public put(path: '/me/paymentMean/bankAccount/{id}', pathParams: {id: Number}): Promise<void>;
   /**
+  Paypal account info
+  Alter this object properties
+  **/
+  public put(path: '/me/paymentMean/paypal/{id}', pathParams: {id: Number}): Promise<void>;
+  /**
+  Credit card informations
+  Alter this object properties
+  **/
+  public put(path: '/me/paymentMean/creditCard/{id}', pathParams: {id: Number}): Promise<void>;
+  /**
   Deferred payment account info
   Alter this object properties
   **/
   public put(path: '/me/paymentMean/deferredPaymentAccount/{id}', pathParams: {id: Number}): Promise<void>;
   /**
-  Balance of the fidelity account
+  List of documents added on your account
   Alter this object properties
   **/
-  public put(path: '/me/fidelityAccount'): Promise<void>;
+  public put(path: '/me/document/{id}', pathParams: {id: string}): Promise<void>;
+  /**
+  Available installation templates
+  Alter this object properties
+  **/
+  public put(path: '/me/installationTemplate/{templateName}', pathParams: {templateName: string}): Promise<void>;
   /**
   Partitioning schemes available on this template
   Alter this object properties
@@ -4940,25 +4970,25 @@ export class ApiMe extends ApiCommon {
   **/
   public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', pathParams: {templateName: string, schemeName: string, mountpoint: string}): Promise<void>;
   /**
-  Available installation templates
-  Alter this object properties
+  Manage payment method
+  Edit payment method
   **/
-  public put(path: '/me/installationTemplate/{templateName}', pathParams: {templateName: string}): Promise<void>;
+  public put(path: '/me/payment/method/{paymentMethodId}', pathParams: {paymentMethodId: Number}): Promise<BillingPaymentMethod>;
   /**
-  Sms Two-Factor Authentication
+  Sub Account
   Alter this object properties
   **/
-  public put(path: '/me/accessRestriction/sms/{id}', pathParams: {id: Number}): Promise<void>;
+  public put(path: '/me/subAccount/{id}', pathParams: {id: Number}): Promise<void>;
+  /**
+  Details about an IP block organisation
+  Alter this object properties
+  **/
+  public put(path: '/me/ipOrganisation/{organisationId}', pathParams: {organisationId: string}): Promise<void>;
   /**
   U2F Two-Factor Authentication
   Alter this object properties
   **/
   public put(path: '/me/accessRestriction/u2f/{id}', pathParams: {id: Number}): Promise<void>;
-  /**
-  IP Restriction default rule
-  Alter this object properties
-  **/
-  public put(path: '/me/accessRestriction/ipDefaultRule'): Promise<void>;
   /**
   Login restrictions on a development version of the Manager
   Alter this object properties
@@ -4970,101 +5000,126 @@ export class ApiMe extends ApiCommon {
   **/
   public put(path: '/me/accessRestriction/totp/{id}', pathParams: {id: Number}): Promise<void>;
   /**
+  IP Restriction default rule
+  Alter this object properties
+  **/
+  public put(path: '/me/accessRestriction/ipDefaultRule'): Promise<void>;
+  /**
+  Sms Two-Factor Authentication
+  Alter this object properties
+  **/
+  public put(path: '/me/accessRestriction/sms/{id}', pathParams: {id: Number}): Promise<void>;
+  /**
   List of all IP Restrictions
   Alter this object properties
   **/
   public put(path: '/me/accessRestriction/ip/{id}', pathParams: {id: Number}): Promise<void>;
   /**
-  Auto renewal information
+  Details about your OVH identifier
   Alter this object properties
   **/
-  public put(path: '/me/autorenew'): Promise<void>;
-  /**
-  Get decision value for a consent campaign
-  Update decision of a consent campaign
-  **/
-  public put(path: '/me/consent/{campaignName}/decision', pathParams: {campaignName: string}): Promise<void>;
-  /**
-  Sub Account
-  Alter this object properties
-  **/
-  public put(path: '/me/subAccount/{id}', pathParams: {id: Number}): Promise<void>;
-  /**
-  Manage payment method
-  Edit payment method
-  **/
-  public put(path: '/me/payment/method/{paymentMethodId}', pathParams: {paymentMethodId: Number}): Promise<BillingPaymentMethod>;
-  /**
-  Missing description
-  Update an existing contact
-  **/
-  public put(path: '/me/contact/{contactId}', pathParams: {contactId: Number}): Promise<ContactContact>;
-  /**
-  List of all OVH things you can subscribe to
-  Alter this object properties
-  **/
-  public put(path: '/me/subscription/{subscriptionType}', pathParams: {subscriptionType: string}): Promise<void>;
-  /**
-  Domain operation argument
-  Alter this object properties
-  **/
-  public put(path: '/me/task/domain/{id}/argument/{key}', pathParams: {id: Number, key: string}): Promise<void>;
-  /**
-  Details about an IP block organisation
-  Alter this object properties
-  **/
-  public put(path: '/me/ipOrganisation/{organisationId}', pathParams: {organisationId: string}): Promise<void>;
-  /**
-  A group linked to this account
-  Alter a group
-  **/
-  public put(path: '/me/identity/group/{group}', pathParams: {group: string}): Promise<void>;
+  public put(path: '/me'): Promise<void>;
   /**
   A user linked to this account
   Alter a user
   **/
   public put(path: '/me/identity/user/{user}', pathParams: {user: string}): Promise<void>;
   /**
-  List of documents added on your account
+  A group linked to this account
+  Alter a group
+  **/
+  public put(path: '/me/identity/group/{group}', pathParams: {group: string}): Promise<void>;
+  /**
+  Domain operation argument
   Alter this object properties
   **/
-  public put(path: '/me/document/{id}', pathParams: {id: string}): Promise<void>;
+  public put(path: '/me/task/domain/{id}/argument/{key}', pathParams: {id: Number, key: string}): Promise<void>;
+  public put(path: PathsMePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
-  Details about an OVH account
-  Alter this object properties
+  subscribe operations
+  Subscribe an email to a restricted mailing list
   **/
-  public put(path: '/me/ovhAccount/{ovhAccountId}', pathParams: {ovhAccountId: string}): Promise<void>;
-  public put(path: PathsMePUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
-  /**
-  setting operations
-  Change xdsl settings linked to the nichandle
-  **/
-  public post(path: '/me/xdsl/setting'): Promise<void>;
+  public post(path: '/me/mailingList/subscribe'): Promise<void>;
   /**
   List the nichandle.sshKey objects
   Add a new public SSH key
   **/
   public post(path: '/me/sshKey'): Promise<void>;
   /**
-  List the telephony.DefaultIpRestriction objects
-  Create a default IP restriction for your future VoIP lines
+  pay operations
+  Create an order in order to pay this order's debt
   **/
-  public post(path: '/me/telephony/defaultIpRestriction'): Promise<TelephonyDefaultIpRestriction>;
+  public post(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/pay', pathParams: {depositId: string, billId: string}): Promise<BillingOrder>;
   /**
-  settings operations
-  Change the telephony settings linked to the customer account
+  retrieveMoney operations
+  Transfer money from ovhAccount to your bank account
   **/
-  public post(path: '/me/telephony/settings'): Promise<void>;
+  public post(path: '/me/ovhAccount/{ovhAccountId}/retrieveMoney', pathParams: {ovhAccountId: string}): Promise<BillingOrder>;
+  /**
+  creditOrder operations
+  Generate an order that can be paid in order to credit the OVH account
+  **/
+  public post(path: '/me/ovhAccount/{ovhAccountId}/creditOrder', pathParams: {ovhAccountId: string}): Promise<BillingOrder>;
+  /**
+  creditOrder operations
+  Generate an order that can be paid in order to credit the fidelity account
+  **/
+  public post(path: '/me/fidelityAccount/creditOrder'): Promise<BillingOrder>;
+  /**
+  List the nichandle.ipxe objects
+  Add an IPXE script
+  **/
+  public post(path: '/me/ipxeScript'): Promise<NichandleIpxe>;
+  /**
+  pay operations
+  Pay with a payment method reference
+  **/
+  public post(path: '/me/order/{orderId}/pay', pathParams: {orderId: Number}): Promise<void>;
+  /**
+  payWithRegisteredPaymentMean operations
+  Pay with an already registered payment mean
+  **/
+  public post(path: '/me/order/{orderId}/payWithRegisteredPaymentMean', pathParams: {orderId: Number}): Promise<void>;
+  /**
+  pay operations
+  Create an order in order to pay this order's debt
+  **/
+  public post(path: '/me/order/{orderId}/debt/pay', pathParams: {orderId: Number}): Promise<BillingOrder>;
+  /**
+  retraction operations
+  Request retraction of order
+  **/
+  public post(path: '/me/order/{orderId}/retraction', pathParams: {orderId: Number}): Promise<void>;
+  /**
+  List the telephony.MailDomain2Service objects
+  Create a custom domain for your fax services
+  **/
+  public post(path: '/me/fax/customDomains'): Promise<TelephonyMailDomain2Service>;
+  /**
+  setting operations
+  Change xdsl settings linked to the nichandle
+  **/
+  public post(path: '/me/xdsl/setting'): Promise<void>;
+  /**
+  Missing description
+  Create a new contact
+  **/
+  public post(path: '/me/contact'): Promise<ContactContact>;
+  /**
+  Auto renewal information
+  Activate auto renew for this nic
+  **/
+  public post(path: '/me/autorenew'): Promise<void>;
+  /**
+  List the billing.BankAccount objects
+  Enable payment through a new account
+  **/
+  public post(path: '/me/paymentMean/bankAccount'): Promise<BillingPaymentMeanValidation>;
   /**
   chooseAsDefaultPaymentMean operations
-  Choose this credit card as your default payment mean. Will cancel the previous choice.
+  Choose this bank account as your default payment mean. Will cancel the previous choice.
   **/
-  public post(path: '/me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean', pathParams: {id: Number}): Promise<void>;
-  /**
-  List the billing.CreditCard objects
-  Add a new credit card
-  **/
-  public post(path: '/me/paymentMean/creditCard'): Promise<BillingPaymentMeanValidation>;
+  public post(path: '/me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean', pathParams: {id: Number}): Promise<void>;
   /**
   chooseAsDefaultPaymentMean operations
   Choose this Paypal agreement as your default payment mean. Will cancel the previous choice.
@@ -5076,40 +5131,30 @@ export class ApiMe extends ApiCommon {
   **/
   public post(path: '/me/paymentMean/paypal'): Promise<BillingPaymentMeanValidation>;
   /**
-  chooseAsDefaultPaymentMean operations
-  Choose this bank account as your default payment mean. Will cancel the previous choice.
+  List the billing.CreditCard objects
+  Add a new credit card
   **/
-  public post(path: '/me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean', pathParams: {id: Number}): Promise<void>;
+  public post(path: '/me/paymentMean/creditCard'): Promise<BillingPaymentMeanValidation>;
   /**
-  List the billing.BankAccount objects
-  Enable payment through a new account
+  chooseAsDefaultPaymentMean operations
+  Choose this credit card as your default payment mean. Will cancel the previous choice.
   **/
-  public post(path: '/me/paymentMean/bankAccount'): Promise<BillingPaymentMeanValidation>;
+  public post(path: '/me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean', pathParams: {id: Number}): Promise<void>;
   /**
   chooseAsDefaultPaymentMean operations
   Allow you to use deferred payment. Will cancel the previous choice.
   **/
   public post(path: '/me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean', pathParams: {id: Number}): Promise<void>;
   /**
-  Validate a code to generate associated credit
-  Validate a code to generate associated credit movement
+  Add CORS support on your container
+  Add CORS support on your container
   **/
-  public post(path: '/me/credit/code'): Promise<BillingCreditBalanceMovement>;
+  public post(path: '/me/document/cors'): Promise<void>;
   /**
-  pay operations
-  Create an order in order to pay this order's debt
+  List the nichandle.document.Document objects
+  Create new document
   **/
-  public post(path: '/me/debtAccount/debt/{debtId}/pay', pathParams: {debtId: Number}): Promise<BillingOrder>;
-  /**
-  pay operations
-  Create an order in order to pay all your due debts
-  **/
-  public post(path: '/me/debtAccount/pay'): Promise<BillingOrder>;
-  /**
-  creditOrder operations
-  Generate an order that can be paid in order to credit the fidelity account
-  **/
-  public post(path: '/me/fidelityAccount/creditOrder'): Promise<BillingOrder>;
+  public post(path: '/me/document'): Promise<NichandleDocumentDocument>;
   /**
   List the dedicated.installationTemplate.Templates objects
   Create a template
@@ -5136,55 +5181,115 @@ export class ApiMe extends ApiCommon {
   **/
   public post(path: '/me/installationTemplate/{templateName}/checkIntegrity', pathParams: {templateName: string}): Promise<void>;
   /**
-  disable operations
-  Disable this SMS account
+  accept operations
+  Accept this contract
   **/
-  public post(path: '/me/accessRestriction/sms/{id}/disable', pathParams: {id: Number}): Promise<void>;
+  public post(path: '/me/agreements/{id}/accept', pathParams: {id: Number}): Promise<string>;
   /**
-  sendCode operations
-  Send a SMS to this account
+  Finalize one payment method registration
+  Finalize one payment method registration
   **/
-  public post(path: '/me/accessRestriction/sms/{id}/sendCode', pathParams: {id: Number}): Promise<NichandleAccessRestrictionSmsCode>;
+  public post(path: '/me/payment/method/{paymentMethodId}/finalize', pathParams: {paymentMethodId: Number}): Promise<MePaymentMethodPaymentMethod>;
   /**
-  validate operations
-  Validate your SMS account
+  Manage payment method
+  Pay an order and register a new payment method if necessary
   **/
-  public post(path: '/me/accessRestriction/sms/{id}/validate', pathParams: {id: Number}): Promise<void>;
+  public post(path: '/me/payment/method'): Promise<MePaymentMethodRegisterValidationResult>;
   /**
-  enable operations
-  Enable this SMS account
+  apply operations
+  Ask for SLA application
   **/
-  public post(path: '/me/accessRestriction/sms/{id}/enable', pathParams: {id: Number}): Promise<void>;
+  public post(path: '/me/sla/{id}/apply', pathParams: {id: Number}): Promise<void>;
   /**
-  List the nichandle.accessRestriction.SmsAccount objects
-  Add a SMS access restriction
+  settings operations
+  Change the telephony settings linked to the customer account
   **/
-  public post(path: '/me/accessRestriction/sms'): Promise<NichandleAccessRestrictionSmsSecret>;
+  public post(path: '/me/telephony/settings'): Promise<void>;
+  /**
+  List the telephony.DefaultIpRestriction objects
+  Create a default IP restriction for your future VoIP lines
+  **/
+  public post(path: '/me/telephony/defaultIpRestriction'): Promise<TelephonyDefaultIpRestriction>;
+  /**
+  List the nichandle.SubAccount objects
+  Create a new sub-account
+  **/
+  public post(path: '/me/subAccount'): Promise<Number>;
+  /**
+  createConsumerKey operations
+  Create a consumer key for the current application
+  **/
+  public post(path: '/me/subAccount/{id}/createConsumerKey', pathParams: {id: Number}): Promise<NichandleSubAccountConsumerKey>;
+  /**
+  checkValidity operations
+  Verify existing voucher
+  **/
+  public post(path: '/me/voucher/checkValidity'): Promise<NichandleVoucherStatus>;
+  /**
+  changeEmail operations
+  Initiate an email change procedure
+  **/
+  public post(path: '/me/changeEmail'): Promise<NichandleEmailChangeTask>;
+  /**
+  List the nichandle.Ipv4Org objects
+  Add an organisation
+  **/
+  public post(path: '/me/ipOrganisation'): Promise<void>;
   /**
   List the nichandle.accessRestriction.U2FAccount objects
   Add a U2F access restriction
   **/
   public post(path: '/me/accessRestriction/u2f'): Promise<NichandleAccessRestrictionU2FRegisterChallenge>;
   /**
+  disable operations
+  Disable this U2F account
+  **/
+  public post(path: '/me/accessRestriction/u2f/{id}/disable', pathParams: {id: Number}): Promise<void>;
+  /**
   challenge operations
   Get an U2F Challenge
   **/
   public post(path: '/me/accessRestriction/u2f/{id}/challenge', pathParams: {id: Number}): Promise<NichandleAccessRestrictionU2FSignChallenge>;
+  /**
+  validate operations
+  Validate your U2F account
+  **/
+  public post(path: '/me/accessRestriction/u2f/{id}/validate', pathParams: {id: Number}): Promise<void>;
   /**
   enable operations
   Enable this U2F account
   **/
   public post(path: '/me/accessRestriction/u2f/{id}/enable', pathParams: {id: Number}): Promise<void>;
   /**
-  disable operations
-  Disable this U2F account
+  enable operations
+  Enable this TOTP account
   **/
-  public post(path: '/me/accessRestriction/u2f/{id}/disable', pathParams: {id: Number}): Promise<void>;
+  public post(path: '/me/accessRestriction/totp/{id}/enable', pathParams: {id: Number}): Promise<void>;
+  /**
+  disable operations
+  Disable this TOTP account
+  **/
+  public post(path: '/me/accessRestriction/totp/{id}/disable', pathParams: {id: Number}): Promise<void>;
   /**
   validate operations
-  Validate your U2F account
+  Validate your TOTP account
   **/
-  public post(path: '/me/accessRestriction/u2f/{id}/validate', pathParams: {id: Number}): Promise<void>;
+  public post(path: '/me/accessRestriction/totp/{id}/validate', pathParams: {id: Number}): Promise<void>;
+  /**
+  List the nichandle.accessRestriction.TOTPAccount objects
+  Add a TOTP access restriction
+  **/
+  public post(path: '/me/accessRestriction/totp'): Promise<NichandleAccessRestrictionTOTPSecret>;
+  /**
+  validate operations
+  Validate your SOTP account
+  **/
+  public post(path: '/me/accessRestriction/backupCode/validate'): Promise<NichandleAccessRestrictionSOTPValidate>;
+  /**
+  disable operations
+  Disable this SOTP account
+  **/
+  public post(path: '/me/accessRestriction/backupCode/disable'): Promise<void>;
   /**
   SOTP Two-Factor Authentication
   Add a SOTP access restriction
@@ -5197,94 +5302,79 @@ export class ApiMe extends ApiCommon {
   public post(path: '/me/accessRestriction/backupCode/enable'): Promise<void>;
   /**
   disable operations
-  Disable this SOTP account
+  Disable this SMS account
   **/
-  public post(path: '/me/accessRestriction/backupCode/disable'): Promise<void>;
+  public post(path: '/me/accessRestriction/sms/{id}/disable', pathParams: {id: Number}): Promise<void>;
   /**
   validate operations
-  Validate your SOTP account
+  Validate your SMS account
   **/
-  public post(path: '/me/accessRestriction/backupCode/validate'): Promise<NichandleAccessRestrictionSOTPValidate>;
-  /**
-  List the nichandle.accessRestriction.TOTPAccount objects
-  Add a TOTP access restriction
-  **/
-  public post(path: '/me/accessRestriction/totp'): Promise<NichandleAccessRestrictionTOTPSecret>;
-  /**
-  disable operations
-  Disable this TOTP account
-  **/
-  public post(path: '/me/accessRestriction/totp/{id}/disable', pathParams: {id: Number}): Promise<void>;
-  /**
-  validate operations
-  Validate your TOTP account
-  **/
-  public post(path: '/me/accessRestriction/totp/{id}/validate', pathParams: {id: Number}): Promise<void>;
+  public post(path: '/me/accessRestriction/sms/{id}/validate', pathParams: {id: Number}): Promise<void>;
   /**
   enable operations
-  Enable this TOTP account
+  Enable this SMS account
   **/
-  public post(path: '/me/accessRestriction/totp/{id}/enable', pathParams: {id: Number}): Promise<void>;
+  public post(path: '/me/accessRestriction/sms/{id}/enable', pathParams: {id: Number}): Promise<void>;
+  /**
+  sendCode operations
+  Send a SMS to this account
+  **/
+  public post(path: '/me/accessRestriction/sms/{id}/sendCode', pathParams: {id: Number}): Promise<NichandleAccessRestrictionSmsCode>;
+  /**
+  List the nichandle.accessRestriction.SmsAccount objects
+  Add a SMS access restriction
+  **/
+  public post(path: '/me/accessRestriction/sms'): Promise<NichandleAccessRestrictionSmsSecret>;
   /**
   List the nichandle.IpRestriction objects
   Add an IP access restriction
   **/
   public post(path: '/me/accessRestriction/ip'): Promise<void>;
   /**
-  Auto renewal information
-  Activate auto renew for this nic
+  invoicesByPostalMail operations
+  Enable or disable invoices by postal mail
   **/
-  public post(path: '/me/autorenew'): Promise<void>;
+  public post(path: '/me/billing/invoicesByPostalMail'): Promise<void>;
   /**
-  subscribe operations
-  Subscribe an email to a restricted mailing list
+  changePassword operations
+  Initiate a password change procedure
   **/
-  public post(path: '/me/mailingList/subscribe'): Promise<void>;
+  public post(path: '/me/changePassword'): Promise<void>;
   /**
-  Route for getting visitor's country and continent
-  Fetch visitor country & region
+  Users linked to this account
+  Create a new user
   **/
-  public post(path: '/me/geolocation'): Promise<GeolocationContinentCountryLocation>;
+  public post(path: '/me/identity/user'): Promise<void>;
   /**
-  createConsumerKey operations
-  Create a consumer key for the current application
+  A user linked to this account
+  Enable this user
   **/
-  public post(path: '/me/subAccount/{id}/createConsumerKey', pathParams: {id: Number}): Promise<NichandleSubAccountConsumerKey>;
+  public post(path: '/me/identity/user/{user}/enable', pathParams: {user: string}): Promise<void>;
   /**
-  List the nichandle.SubAccount objects
-  Create a new sub-account
+  A user linked to this account
+  Disable this user
   **/
-  public post(path: '/me/subAccount'): Promise<Number>;
+  public post(path: '/me/identity/user/{user}/disable', pathParams: {user: string}): Promise<void>;
   /**
-  Manage payment method
-  Pay an order and register a new payment method if necessary
+  Groups linked to this account
+  Create a new group
   **/
-  public post(path: '/me/payment/method'): Promise<MePaymentMethodRegisterValidationResult>;
+  public post(path: '/me/identity/group'): Promise<NichandleAuthenticationGroup>;
   /**
-  Finalize one payment method registration
-  Finalize one payment method registration
+  pay operations
+  Create an order in order to pay this order's debt
   **/
-  public post(path: '/me/payment/method/{paymentMethodId}/finalize', pathParams: {paymentMethodId: Number}): Promise<MePaymentMethodPaymentMethod>;
+  public post(path: '/me/bill/{billId}/debt/pay', pathParams: {billId: string}): Promise<BillingOrder>;
   /**
-  Missing description
-  Create a new contact
+  pay operations
+  Create an order in order to pay this order's debt
   **/
-  public post(path: '/me/contact'): Promise<ContactContact>;
+  public post(path: '/me/debtAccount/debt/{debtId}/pay', pathParams: {debtId: Number}): Promise<BillingOrder>;
   /**
-  cancel operations
-  Cancel the task
+  pay operations
+  Create an order in order to pay all your due debts
   **/
-  public post(path: '/me/task/domain/{id}/cancel', pathParams: {id: Number}): Promise<void>;
-  /**
-  relaunch operations
-  Relaunch the task
-  **/
-  public post(path: '/me/task/domain/{id}/relaunch', pathParams: {id: Number}): Promise<void>;
-  /**
-  accelerate operations
-  Accelerate the task
-  **/
-  public post(path: '/me/task/domain/{id}/accelerate', pathParams: {id: Number}): Promise<void>;
+  public post(path: '/me/debtAccount/pay'): Promise<BillingOrder>;
   /**
   refuse operations
   Refuse this change request
@@ -5296,166 +5386,101 @@ export class ApiMe extends ApiCommon {
   **/
   public post(path: '/me/task/emailChange/{id}/accept', pathParams: {id: Number}): Promise<void>;
   /**
-  accept operations
-  Accept this change request
-  **/
-  public post(path: '/me/task/contactChange/{id}/accept', pathParams: {id: Number}): Promise<void>;
-  /**
   refuse operations
   Refuse this change request
   **/
   public post(path: '/me/task/contactChange/{id}/refuse', pathParams: {id: Number}): Promise<void>;
+  /**
+  accept operations
+  Accept this change request
+  **/
+  public post(path: '/me/task/contactChange/{id}/accept', pathParams: {id: Number}): Promise<void>;
   /**
   resendEmail operations
   This call will send you a new email, containing a new token
   **/
   public post(path: '/me/task/contactChange/{id}/resendEmail', pathParams: {id: Number}): Promise<void>;
   /**
-  accept operations
-  Accept this contract
+  relaunch operations
+  Relaunch the task
   **/
-  public post(path: '/me/agreements/{id}/accept', pathParams: {id: Number}): Promise<string>;
+  public post(path: '/me/task/domain/{id}/relaunch', pathParams: {id: Number}): Promise<void>;
   /**
-  List the nichandle.Ipv4Org objects
-  Add an organisation
+  accelerate operations
+  Accelerate the task
   **/
-  public post(path: '/me/ipOrganisation'): Promise<void>;
+  public post(path: '/me/task/domain/{id}/accelerate', pathParams: {id: Number}): Promise<void>;
   /**
-  checkValidity operations
-  Verify existing voucher
+  cancel operations
+  Cancel the task
   **/
-  public post(path: '/me/voucher/checkValidity'): Promise<NichandleVoucherStatus>;
+  public post(path: '/me/task/domain/{id}/cancel', pathParams: {id: Number}): Promise<void>;
   /**
-  apply operations
-  Ask for SLA application
+  Validate a code to generate associated credit
+  Validate a code to generate associated credit movement
   **/
-  public post(path: '/me/sla/{id}/apply', pathParams: {id: Number}): Promise<void>;
+  public post(path: '/me/credit/code'): Promise<BillingCreditBalanceMovement>;
+  /**
+  Route for getting visitor's country and continent
+  Fetch visitor country & region
+  **/
+  public post(path: '/me/geolocation'): Promise<GeolocationContinentCountryLocation>;
   /**
   Request a password recover
   Request a password recover
   **/
   public post(path: '/me/passwordRecover'): Promise<void>;
-  /**
-  List the telephony.MailDomain2Service objects
-  Create a custom domain for your fax services
-  **/
-  public post(path: '/me/fax/customDomains'): Promise<TelephonyMailDomain2Service>;
-  /**
-  List the nichandle.ipxe objects
-  Add an IPXE script
-  **/
-  public post(path: '/me/ipxeScript'): Promise<NichandleIpxe>;
-  /**
-  pay operations
-  Create an order in order to pay this order's debt
-  **/
-  public post(path: '/me/bill/{billId}/debt/pay', pathParams: {billId: string}): Promise<BillingOrder>;
-  /**
-  invoicesByPostalMail operations
-  Enable or disable invoices by postal mail
-  **/
-  public post(path: '/me/billing/invoicesByPostalMail'): Promise<void>;
-  /**
-  Groups linked to this account
-  Create a new group
-  **/
-  public post(path: '/me/identity/group'): Promise<NichandleAuthenticationGroup>;
-  /**
-  A user linked to this account
-  Disable this user
-  **/
-  public post(path: '/me/identity/user/{user}/disable', pathParams: {user: string}): Promise<void>;
-  /**
-  A user linked to this account
-  Enable this user
-  **/
-  public post(path: '/me/identity/user/{user}/enable', pathParams: {user: string}): Promise<void>;
-  /**
-  Users linked to this account
-  Create a new user
-  **/
-  public post(path: '/me/identity/user'): Promise<void>;
-  /**
-  changeEmail operations
-  Initiate an email change procedure
-  **/
-  public post(path: '/me/changeEmail'): Promise<NichandleEmailChangeTask>;
-  /**
-  List the nichandle.document.Document objects
-  Create new document
-  **/
-  public post(path: '/me/document'): Promise<NichandleDocumentDocument>;
-  /**
-  Add CORS support on your container
-  Add CORS support on your container
-  **/
-  public post(path: '/me/document/cors'): Promise<void>;
-  /**
-  changePassword operations
-  Initiate a password change procedure
-  **/
-  public post(path: '/me/changePassword'): Promise<void>;
-  /**
-  pay operations
-  Pay with a payment method reference
-  **/
-  public post(path: '/me/order/{orderId}/pay', pathParams: {orderId: Number}): Promise<void>;
-  /**
-  payWithRegisteredPaymentMean operations
-  Pay with an already registered payment mean
-  **/
-  public post(path: '/me/order/{orderId}/payWithRegisteredPaymentMean', pathParams: {orderId: Number}): Promise<void>;
-  /**
-  retraction operations
-  Request retraction of order
-  **/
-  public post(path: '/me/order/{orderId}/retraction', pathParams: {orderId: Number}): Promise<void>;
-  /**
-  pay operations
-  Create an order in order to pay this order's debt
-  **/
-  public post(path: '/me/order/{orderId}/debt/pay', pathParams: {orderId: Number}): Promise<BillingOrder>;
-  /**
-  creditOrder operations
-  Generate an order that can be paid in order to credit the OVH account
-  **/
-  public post(path: '/me/ovhAccount/{ovhAccountId}/creditOrder', pathParams: {ovhAccountId: string}): Promise<BillingOrder>;
-  /**
-  retrieveMoney operations
-  Transfer money from ovhAccount to your bank account
-  **/
-  public post(path: '/me/ovhAccount/{ovhAccountId}/retrieveMoney', pathParams: {ovhAccountId: string}): Promise<BillingOrder>;
-  /**
-  pay operations
-  Create an order in order to pay this order's debt
-  **/
-  public post(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/pay', pathParams: {depositId: string, billId: string}): Promise<BillingOrder>;
-  public post(path: PathsMePOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: PathsMePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Customer public SSH key, can be used for rescue netboot or server access after reinstallation
   Remove this public SSH key
   **/
   public delete(path: '/me/sshKey/{keyName}', pathParams: {keyName: string}): Promise<void>;
   /**
-  Default IP restriction of a VoIP line
-  Delete a default IP restriction for your future VoIP lines
+  Customer IPXE scripts
+  Remove this IPXE Script
   **/
-  public delete(path: '/me/telephony/defaultIpRestriction/{id}', pathParams: {id: Number}): Promise<void>;
+  public delete(path: '/me/ipxeScript/{name}', pathParams: {name: string}): Promise<void>;
   /**
-  Credit card informations
-  Disable payment through this credit card
+  Custom domains of your fax services
+  Delete a custom domain of your fax services
   **/
-  public delete(path: '/me/paymentMean/creditCard/{id}', pathParams: {id: Number}): Promise<void>;
+  public delete(path: '/me/fax/customDomains/{id}', pathParams: {id: Number}): Promise<void>;
+  /**
+  API Credential
+  Remove this credential
+  **/
+  public delete(path: '/me/api/credential/{credentialId}', pathParams: {credentialId: Number}): Promise<void>;
+  /**
+  API Application
+  Remove this application. It will revoke all credential belonging to this application.
+  **/
+  public delete(path: '/me/api/application/{applicationId}', pathParams: {applicationId: Number}): Promise<void>;
+  /**
+  SEPA bank account info
+  Disable payment through this account
+  **/
+  public delete(path: '/me/paymentMean/bankAccount/{id}', pathParams: {id: Number}): Promise<void>;
   /**
   Paypal account info
   Disable payment through this PayPal account
   **/
   public delete(path: '/me/paymentMean/paypal/{id}', pathParams: {id: Number}): Promise<void>;
   /**
-  SEPA bank account info
-  Disable payment through this account
+  Credit card informations
+  Disable payment through this credit card
   **/
-  public delete(path: '/me/paymentMean/bankAccount/{id}', pathParams: {id: Number}): Promise<void>;
+  public delete(path: '/me/paymentMean/creditCard/{id}', pathParams: {id: Number}): Promise<void>;
+  /**
+  List of documents added on your account
+  Delete a document
+  **/
+  public delete(path: '/me/document/{id}', pathParams: {id: string}): Promise<void>;
+  /**
+  Available installation templates
+  remove this template
+  **/
+  public delete(path: '/me/installationTemplate/{templateName}', pathParams: {templateName: string}): Promise<void>;
   /**
   Partitioning schemes available on this template
   remove this scheme of partition
@@ -5472,79 +5497,54 @@ export class ApiMe extends ApiCommon {
   **/
   public delete(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', pathParams: {templateName: string, schemeName: string, mountpoint: string}): Promise<void>;
   /**
-  Available installation templates
-  remove this template
-  **/
-  public delete(path: '/me/installationTemplate/{templateName}', pathParams: {templateName: string}): Promise<void>;
-  /**
-  API Application
-  Remove this application. It will revoke all credential belonging to this application.
-  **/
-  public delete(path: '/me/api/application/{applicationId}', pathParams: {applicationId: Number}): Promise<void>;
-  /**
-  API Credential
-  Remove this credential
-  **/
-  public delete(path: '/me/api/credential/{credentialId}', pathParams: {credentialId: Number}): Promise<void>;
-  /**
-  Sms Two-Factor Authentication
-  Delete this Two-Factor
-  **/
-  public delete(path: '/me/accessRestriction/sms/{id}', pathParams: {id: Number}): Promise<void>;
-  /**
-  U2F Two-Factor Authentication
-  Delete this Two-Factor
-  **/
-  public delete(path: '/me/accessRestriction/u2f/{id}', pathParams: {id: Number}): Promise<void>;
-  /**
-  SOTP Two-Factor Authentication
-  Delete this Two-Factor
-  **/
-  public delete(path: '/me/accessRestriction/backupCode'): Promise<void>;
-  /**
-  TOTP Two-Factor Authentication
-  Delete this Two-Factor
-  **/
-  public delete(path: '/me/accessRestriction/totp/{id}', pathParams: {id: Number}): Promise<void>;
-  /**
-  List of all IP Restrictions
-  Delete this restriction rule
-  **/
-  public delete(path: '/me/accessRestriction/ip/{id}', pathParams: {id: Number}): Promise<void>;
-  /**
   Manage payment method
   Cancel one payment method
   **/
   public delete(path: '/me/payment/method/{paymentMethodId}', pathParams: {paymentMethodId: Number}): Promise<MePaymentMethodPaymentMethod>;
+  /**
+  Default IP restriction of a VoIP line
+  Delete a default IP restriction for your future VoIP lines
+  **/
+  public delete(path: '/me/telephony/defaultIpRestriction/{id}', pathParams: {id: Number}): Promise<void>;
   /**
   Details about an IP block organisation
   Delete this organisation
   **/
   public delete(path: '/me/ipOrganisation/{organisationId}', pathParams: {organisationId: string}): Promise<void>;
   /**
-  Custom domains of your fax services
-  Delete a custom domain of your fax services
+  U2F Two-Factor Authentication
+  Delete this Two-Factor
   **/
-  public delete(path: '/me/fax/customDomains/{id}', pathParams: {id: Number}): Promise<void>;
+  public delete(path: '/me/accessRestriction/u2f/{id}', pathParams: {id: Number}): Promise<void>;
   /**
-  Customer IPXE scripts
-  Remove this IPXE Script
+  TOTP Two-Factor Authentication
+  Delete this Two-Factor
   **/
-  public delete(path: '/me/ipxeScript/{name}', pathParams: {name: string}): Promise<void>;
+  public delete(path: '/me/accessRestriction/totp/{id}', pathParams: {id: Number}): Promise<void>;
   /**
-  A group linked to this account
-  Delete this object
+  SOTP Two-Factor Authentication
+  Delete this Two-Factor
   **/
-  public delete(path: '/me/identity/group/{group}', pathParams: {group: string}): Promise<void>;
+  public delete(path: '/me/accessRestriction/backupCode'): Promise<void>;
+  /**
+  Sms Two-Factor Authentication
+  Delete this Two-Factor
+  **/
+  public delete(path: '/me/accessRestriction/sms/{id}', pathParams: {id: Number}): Promise<void>;
+  /**
+  List of all IP Restrictions
+  Delete this restriction rule
+  **/
+  public delete(path: '/me/accessRestriction/ip/{id}', pathParams: {id: Number}): Promise<void>;
   /**
   A user linked to this account
   Delete this object
   **/
   public delete(path: '/me/identity/user/{user}', pathParams: {user: string}): Promise<void>;
   /**
-  List of documents added on your account
-  Delete a document
+  A group linked to this account
+  Delete this object
   **/
-  public delete(path: '/me/document/{id}', pathParams: {id: string}): Promise<void>;
-  public delete(path: PathsMeDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/me/identity/group/{group}', pathParams: {group: string}): Promise<void>;
+  public delete(path: PathsMeDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

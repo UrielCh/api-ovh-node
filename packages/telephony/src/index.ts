@@ -138,16 +138,16 @@ export interface ServicesService {
   contactTech?: string;
   /**
    */
-  creation?: Date;
+  creation?: string;
   /**
    */
   domain?: string;
   /**
    */
-  engagedUpTo?: Date;
+  engagedUpTo?: string;
   /**
    */
-  expiration?: Date;
+  expiration?: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -267,7 +267,7 @@ export interface TelephonyBannerAccess {
    * The creation date of this access
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    */
   id?: Number;
@@ -412,7 +412,7 @@ export interface TelephonyCallDiagnosticCallQuality {
    * The creation timestamp of the given direction flow
    *
    */
-  timestamp?: Date;
+  timestamp?: string;
 }
 /**
  * SS7 ISUP cause codes
@@ -431,7 +431,7 @@ export interface TelephonyCallDiagnosticCdrs {
    * The timestamp of the call details record capture
    *
    */
-  timestamp?: Date;
+  timestamp?: string;
 }
 /**
  * Call diagnostic analyze structure call cdrs
@@ -528,7 +528,7 @@ export interface TelephonyCallsGenerated {
    * answer date
    *
    */
-  answerDatetime?: Date;
+  answerDatetime?: string;
   /**
    * Application and dialplan running for call
    *
@@ -548,7 +548,7 @@ export interface TelephonyCallsGenerated {
    * creation date of the call
    *
    */
-  callCreatedDatetime?: Date;
+  callCreatedDatetime?: string;
   /**
    * call duration on seconds
    *
@@ -578,7 +578,7 @@ export interface TelephonyCallsGenerated {
    * hangup date
    *
    */
-  hangupDatetime?: Date;
+  hangupDatetime?: string;
   /**
    * Generated call identifier
    *
@@ -631,7 +631,7 @@ export interface TelephonyClick2CallUser {
    * Date when user was created
    *
    */
-  creationDateTime?: Date;
+  creationDateTime?: string;
   /**
    * Contact identifier
    *
@@ -678,12 +678,12 @@ export interface TelephonyConferenceHistory {
    * The date the conference began
    *
    */
-  dateBegin?: Date;
+  dateBegin?: string;
   /**
    * The date the conference end
    *
    */
-  dateEnd?: Date;
+  dateEnd?: string;
   /**
    * The duration of the conference in seconds
    *
@@ -718,7 +718,7 @@ export interface TelephonyConferenceHistoryEvent {
    * The date of the conference event
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * The nature of the event : left/join
    *
@@ -733,7 +733,7 @@ export interface TelephonyConferenceInformations {
    * The date when the conference began
    *
    */
-  dateStart?: Date;
+  dateStart?: string;
   /**
    * Whether or not the conference room is locked
    *
@@ -757,7 +757,7 @@ export interface TelephonyConferenceParticipants {
    * The arrival datetime of the participant in the conference.
    *
    */
-  arrivalDateTime?: Date;
+  arrivalDateTime?: string;
   /**
    * The caller name of the participant
    *
@@ -975,7 +975,7 @@ export type TelephonyContactsExportFormatsEnum = 'csv';
 export interface TelephonyDatetimeAndIpvalue {
   /**
    */
-  datetime?: Date;
+  datetime?: string;
   /**
    */
   ip?: string;
@@ -1033,12 +1033,12 @@ export interface TelephonyDetailedRateCodeInformation {
    * Cancelable datetime deadline for the new scheduled rateCode
    *
    */
-  cancelLimitDatetime?: Date;
+  cancelLimitDatetime?: string;
   /**
    * Effective datetime
    *
    */
-  effectiveDatetime?: Date;
+  effectiveDatetime?: string;
   /**
    * Price per call
    *
@@ -1088,7 +1088,7 @@ export interface TelephonyDiagnosticReport {
    * Datetime of the diagnostic
    *
    */
-  datetime?: Date;
+  datetime?: string;
   /**
    * Explanation of the diagnostic
    *
@@ -1163,7 +1163,7 @@ export interface TelephonyDirectoryInfo {
   areaCode?: Number;
   /**
    */
-  birthDate?: Date;
+  birthDate?: string;
   /**
    */
   cedex?: string;
@@ -1401,12 +1401,12 @@ export interface TelephonyEasyHuntingTimeConditions {
    * The time of the day when the extension will start to be executed
    *
    */
-  timeFrom?: Date;
+  timeFrom?: string;
   /**
    * The time of the day when the extension will stop to be executed
    *
    */
-  timeTo?: Date;
+  timeTo?: string;
   /**
    * The day of the week when the extension will be executed
    *
@@ -1650,7 +1650,7 @@ export interface TelephonyEvent {
    * Datetime call establishment
    *
    */
-  dateTime?: Date;
+  dateTime?: string;
   /**
    * Incoming or outgoing call
    *
@@ -1745,12 +1745,12 @@ export interface TelephonyFaxCampaign {
    * The end date of the fax campaign
    *
    */
-  dateEnd?: Date;
+  dateEnd?: string;
   /**
    * The start date of the fax campaign
    *
    */
-  dateStart?: Date;
+  dateStart?: string;
   /**
    * The id of the fax campaign
    *
@@ -1809,7 +1809,7 @@ export interface TelephonyFaxConsumption {
   consumptionId?: Number;
   /**
    */
-  creationDatetime?: Date;
+  creationDatetime?: string;
   /**
    */
   pages?: Number;
@@ -1998,7 +1998,7 @@ export interface TelephonyHardwareOffer {
 export interface TelephonyHistoryConsumption {
   /**
    */
-  date?: Date;
+  date?: string;
   /**
    */
   price?: OrderPrice;
@@ -2022,7 +2022,7 @@ export interface TelephonyHistoryRepaymentConsumption {
    * date of the bill
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * the amout which is repayed
    *
@@ -2042,7 +2042,7 @@ export interface TelephonyHistoryTollfreeConsumption {
    * date of the bill
    *
    */
-  date?: Date;
+  date?: string;
   /**
    * the amount which is paid by the called number
    *
@@ -2641,7 +2641,7 @@ export interface TelephonyOfferTask {
    * Planned execution date
    *
    */
-  executionDate?: Date;
+  executionDate?: string;
   /**
    * Current status of the task
    *
@@ -2733,7 +2733,7 @@ export interface TelephonyOvhPabxDialplan {
   dialplanId?: Number;
   /**
    */
-  lastUpdate?: Date;
+  lastUpdate?: string;
   /**
    * The dialplan name
    *
@@ -2816,12 +2816,12 @@ export interface TelephonyOvhPabxDialplanExtensionConditionTime {
    * The time of the day when the extension will start to be executed
    *
    */
-  timeFrom?: Date;
+  timeFrom?: string;
   /**
    * The time of the day when the extension will stop to be executed
    *
    */
-  timeTo?: Date;
+  timeTo?: string;
   /**
    * The day of the week when the extension will be executed
    *
@@ -2954,7 +2954,7 @@ export interface TelephonyOvhPabxHuntingAgentLiveStatus {
    * Last status change date
    *
    */
-  lastStatusChange?: Date;
+  lastStatusChange?: string;
   /**
    * Current status of the agent
    *
@@ -3089,12 +3089,12 @@ export interface TelephonyOvhPabxHuntingQueueLiveCalls {
    * Answer date of the call
    *
    */
-  answered?: Date;
+  answered?: string;
   /**
    * Begin date of the call
    *
    */
-  begin?: Date;
+  begin?: string;
   /**
    * Name of the caller (or anonymous if unknown)
    *
@@ -3114,7 +3114,7 @@ export interface TelephonyOvhPabxHuntingQueueLiveCalls {
    * End date of the call
    *
    */
-  end?: Date;
+  end?: string;
   /**
    */
   id?: Number;
@@ -3157,7 +3157,7 @@ export interface TelephonyOvhPabxHuntingQueueLiveStatistics {
    * Last reset datetime of queue's statistics
    *
    */
-  lastReset?: Date;
+  lastReset?: string;
   /**
    * Total call duration in seconds
    *
@@ -3263,12 +3263,12 @@ export interface TelephonyOvhPabxRecord {
    * The end date of the recorded call
    *
    */
-  callEnd?: Date;
+  callEnd?: string;
   /**
    * The begin date of the recorded call
    *
    */
-  callStart?: Date;
+  callStart?: string;
   /**
    * The caller name of the recorded call
    *
@@ -3352,7 +3352,7 @@ export interface TelephonyPcsFile {
   url?: string;
   /**
    */
-  urlExpirationDatetime?: Date;
+  urlExpirationDatetime?: string;
 }
 /**
  * File providing task status
@@ -3579,7 +3579,7 @@ export interface TelephonyPortability {
    * The portability's creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Customer informations about this portability
    *
@@ -3589,7 +3589,7 @@ export interface TelephonyPortability {
    * The date when the portability will be done and when numbers will be ported
    *
    */
-  desiredExecutionDate?: Date;
+  desiredExecutionDate?: string;
   /**
    * Indicates that portability is in error
    *
@@ -3753,7 +3753,7 @@ export interface TelephonyPortabilityStep {
    * The date when this step was done
    *
    */
-  doneDate?: Date;
+  doneDate?: string;
   /**
    * The theoric delay between the previous step's done date and this step's done date
    *
@@ -3802,7 +3802,7 @@ export interface TelephonyPortabilityStepInfos {
    * The last portability due date that has been proposed
    *
    */
-  lastProposedDate?: Date;
+  lastProposedDate?: string;
   /**
    * If the step status is "error", it is the reason
    *
@@ -3842,7 +3842,7 @@ export interface TelephonyPreviousVoiceConsumption {
   countrySuffix?: string;
   /**
    */
-  creationDatetime?: Date;
+  creationDatetime?: string;
   /**
    * Description of the destination
    *
@@ -3937,7 +3937,7 @@ export interface TelephonyRegistrationInformations {
    * SIP registration's date
    *
    */
-  datetime?: Date;
+  datetime?: string;
   /**
    * SIP registration's domain
    *
@@ -3994,7 +3994,7 @@ export interface TelephonyRepaymentConsumption {
    * the Datetime of the start of the call
    *
    */
-  creationDatetime?: Date;
+  creationDatetime?: string;
   /**
    */
   dialed?: string;
@@ -4071,7 +4071,7 @@ export interface TelephonyRma {
    * Creation datetime of the return merchandise authorisation ticket
    *
    */
-  creationDatetime?: Date;
+  creationDatetime?: string;
   /**
    * Merchandise reference
    *
@@ -4106,7 +4106,7 @@ export interface TelephonyRma {
    * Reception datetime of the return merchandise authorisation ticket
    *
    */
-  receptionDatetime?: Date;
+  receptionDatetime?: string;
   /**
    * Contact information related to the delivery shipping in case of exchange
    *
@@ -4126,7 +4126,7 @@ export interface TelephonyRma {
    * Termination datetime of the return merchandise authorisation ticket
    *
    */
-  terminationDatetime?: Date;
+  terminationDatetime?: string;
   /**
    * Typology process of merchandise return
    *
@@ -4172,7 +4172,7 @@ export interface TelephonyRmaStep {
    * The date when this step was done
    *
    */
-  doneDate?: Date;
+  doneDate?: string;
   /**
    * Additional informations about the step
    *
@@ -4240,12 +4240,12 @@ export interface TelephonySchedulerEvent {
    * The ending date of the event
    *
    */
-  dateEnd?: Date;
+  dateEnd?: string;
   /**
    * The beginning date of the event
    *
    */
-  dateStart?: Date;
+  dateStart?: string;
   /**
    */
   description?: string;
@@ -4365,7 +4365,7 @@ export interface TelephonySound {
    * Sound creation date
    *
    */
-  creationDate?: Date;
+  creationDate?: string;
   /**
    * Sound description
    *
@@ -4547,7 +4547,7 @@ export interface TelephonyTemporaryLogsLink {
    * Temporary url expiration date
    *
    */
-  expirationDate?: Date;
+  expirationDate?: string;
   /**
    * Temporary url
    *
@@ -4740,7 +4740,7 @@ export interface TelephonyTrunkExternalDisplayedNumber {
    * Creation date
    *
    */
-  createdAt?: Date;
+  createdAt?: string;
   /**
    * External displayed number linked to a trunk
    *
@@ -4755,7 +4755,7 @@ export interface TelephonyTrunkExternalDisplayedNumber {
    * Validation date
    *
    */
-  validatedAt?: Date;
+  validatedAt?: string;
 }
 /**
  * Status of the trunk's external displayed number
@@ -4844,7 +4844,7 @@ export interface TelephonyVoiceConsumption {
   countrySuffix?: string;
   /**
    */
-  creationDatetime?: Date;
+  creationDatetime?: string;
   /**
    * Description of the destination
    *
@@ -4957,7 +4957,7 @@ export interface TelephonyVoicemailMessages {
    * Message datetime creation
    *
    */
-  creationDatetime?: Date;
+  creationDatetime?: string;
   /**
    * Voicemessage directory
    *
@@ -5113,12 +5113,12 @@ export interface TelephonyTrafficExtract {
    * The start date of the traffic extract
    *
    */
-  dateEnd?: Date;
+  dateEnd?: string;
   /**
    * The start date of the traffic extract
    *
    */
-  dateStart?: Date;
+  dateStart?: string;
   /**
    * The PCAP file size of the traffic extract
    *
@@ -5140,577 +5140,577 @@ export interface TelephonyTrafficExtract {
    */
   status?: TelephonyTaskStatusEnum;
 }
-type PathsTelephonyGET = '/telephony/availableDefaultSipDomains' | 
-'/telephony/spare/{spare}/serviceInfos' | 
+type PathsTelephonyGET = '/telephony/searchServices' | 
 '/telephony/spare/{spare}' | 
 '/telephony/spare/{spare}/compatibleReplacement' | 
-'/telephony/spare' | 
+'/telephony/spare/{spare}/serviceInfos' | 
 '/telephony/spare/brands' | 
-'/telephony/currentOrderIds' | 
-'/telephony/lines/{serviceName}/serviceInfos' | 
-'/telephony/lines/{serviceName}' | 
-'/telephony/lines' | 
-'/telephony/line/offer/phones' | 
-'/telephony/line/offers' | 
-'/telephony/aliases' | 
-'/telephony/aliases/{serviceName}/serviceInfos' | 
-'/telephony/aliases/{serviceName}' | 
+'/telephony/spare' | 
+'/telephony/{billingAccount}/service' | 
+'/telephony/{billingAccount}/service/{serviceName}/offerChanges' | 
+'/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption' | 
+'/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption/{consumptionId}' | 
+'/telephony/{billingAccount}/service/{serviceName}/voiceConsumption' | 
+'/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}/callDiagnostics' | 
+'/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}' | 
+'/telephony/{billingAccount}/service/{serviceName}/offerTask' | 
+'/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}' | 
+'/telephony/{billingAccount}/service/{serviceName}/diagnosticReports' | 
+'/telephony/{billingAccount}/service/{serviceName}/offerChange' | 
+'/telephony/{billingAccount}/service/{serviceName}/task/{taskId}' | 
+'/telephony/{billingAccount}/service/{serviceName}/task' | 
+'/telephony/{billingAccount}/service/{serviceName}/directory' | 
+'/telephony/{billingAccount}/service/{serviceName}/directory/getDirectoryServiceCode' | 
+'/telephony/{billingAccount}/service/{serviceName}/directory/getWayTypes' | 
+'/telephony/{billingAccount}/service/{serviceName}/faxConsumption' | 
+'/telephony/{billingAccount}/service/{serviceName}/faxConsumption/{consumptionId}' | 
+'/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption/{consumptionId}' | 
+'/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption' | 
+'/telephony/{billingAccount}/service/{serviceName}' | 
+'/telephony/{billingAccount}/service/{serviceName}/eventToken' | 
+'/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' | 
+'/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact' | 
+'/telephony/{billingAccount}/phonebook/{bookKey}' | 
+'/telephony/{billingAccount}/phonebook/{bookKey}/export' | 
+'/telephony/{billingAccount}/phonebook' | 
+'/telephony/{billingAccount}/amountSecurityDeposit' | 
+'/telephony/{billingAccount}/historyConsumption' | 
+'/telephony/{billingAccount}/historyConsumption/{date}' | 
+'/telephony/{billingAccount}/historyConsumption/{date}/file' | 
+'/telephony/{billingAccount}/offerTask' | 
+'/telephony/{billingAccount}/offerTask/{taskId}' | 
+'/telephony/{billingAccount}/ddi/{serviceName}' | 
+'/telephony/{billingAccount}/ddi' | 
+'/telephony/{billingAccount}/number' | 
 '/telephony/{billingAccount}/number/{serviceName}/convertToLineAvailableOffers' | 
 '/telephony/{billingAccount}/number/{serviceName}' | 
-'/telephony/{billingAccount}/number' | 
-'/telephony/{billingAccount}/allowedCreditThreshold' | 
-'/telephony/{billingAccount}/scheduler' | 
-'/telephony/{billingAccount}/scheduler/{serviceName}' | 
-'/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' | 
-'/telephony/{billingAccount}/scheduler/{serviceName}/events' | 
-'/telephony/{billingAccount}/oldPhone' | 
-'/telephony/{billingAccount}/timeCondition' | 
-'/telephony/{billingAccount}/timeCondition/{serviceName}/options' | 
-'/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' | 
-'/telephony/{billingAccount}/timeCondition/{serviceName}/condition' | 
-'/telephony/{billingAccount}/timeCondition/{serviceName}' | 
-'/telephony/{billingAccount}/historyTollfreeConsumption' | 
-'/telephony/{billingAccount}/historyTollfreeConsumption/{date}' | 
-'/telephony/{billingAccount}/historyTollfreeConsumption/{date}/document' | 
-'/telephony/{billingAccount}/historyRepaymentConsumption/{date}/document' | 
-'/telephony/{billingAccount}/historyRepaymentConsumption/{date}' | 
-'/telephony/{billingAccount}/historyRepaymentConsumption' | 
+'/telephony/{billingAccount}/easyPabx' | 
+'/telephony/{billingAccount}/easyPabx/{serviceName}' | 
+'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones' | 
+'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' | 
+'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent' | 
+'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting' | 
+'/telephony/{billingAccount}/redirect' | 
+'/telephony/{billingAccount}/redirect/{serviceName}' | 
 '/telephony/{billingAccount}/trunk/{serviceName}' | 
 '/telephony/{billingAccount}/trunk/{serviceName}/channelsPacksRepartition' | 
 '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber' | 
 '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}' | 
 '/telephony/{billingAccount}/trunk' | 
-'/telephony/{billingAccount}/portability/{id}/dateCanBeChanged' | 
-'/telephony/{billingAccount}/portability/{id}/document' | 
-'/telephony/{billingAccount}/portability/{id}/document/{documentId}' | 
-'/telephony/{billingAccount}/portability/{id}/status' | 
-'/telephony/{billingAccount}/portability/{id}/relaunch' | 
-'/telephony/{billingAccount}/portability/{id}/canBeCancelled' | 
-'/telephony/{billingAccount}/portability/{id}/canBeExecuted' | 
-'/telephony/{billingAccount}/portability/{id}' | 
-'/telephony/{billingAccount}/portability' | 
-'/telephony/{billingAccount}/fax' | 
-'/telephony/{billingAccount}/fax/{serviceName}/settings' | 
-'/telephony/{billingAccount}/fax/{serviceName}/screenLists' | 
-'/telephony/{billingAccount}/fax/{serviceName}' | 
-'/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}' | 
-'/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/detail' | 
-'/telephony/{billingAccount}/fax/{serviceName}/campaigns' | 
-'/telephony/{billingAccount}/eventToken' | 
-'/telephony/{billingAccount}/miniPabx' | 
-'/telephony/{billingAccount}/miniPabx/{serviceName}' | 
-'/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent' | 
-'/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' | 
-'/telephony/{billingAccount}/miniPabx/{serviceName}/hunting' | 
-'/telephony/{billingAccount}/miniPabx/{serviceName}/tones' | 
-'/telephony/{billingAccount}/conference' | 
-'/telephony/{billingAccount}/conference/{serviceName}/webAccess' | 
-'/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}' | 
-'/telephony/{billingAccount}/conference/{serviceName}/participants' | 
-'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}' | 
-'/telephony/{billingAccount}/conference/{serviceName}/histories/{id}' | 
-'/telephony/{billingAccount}/conference/{serviceName}/histories' | 
-'/telephony/{billingAccount}/conference/{serviceName}/settings' | 
-'/telephony/{billingAccount}/conference/{serviceName}/informations' | 
-'/telephony/{billingAccount}/conference/{serviceName}' | 
-'/telephony/{billingAccount}/easyHunting' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/records' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/sound' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/liveStatus' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveStatistics' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting' | 
-'/telephony/{billingAccount}/task' | 
-'/telephony/{billingAccount}/task/{taskId}' | 
-'/telephony/{billingAccount}/outplanNotification' | 
-'/telephony/{billingAccount}/outplanNotification/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/offer' | 
-'/telephony/{billingAccount}/line/{serviceName}/listAssociablePhones' | 
-'/telephony/{billingAccount}/line/{serviceName}/canChangePassword' | 
-'/telephony/{billingAccount}/line/{serviceName}/calls/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/calls' | 
-'/telephony/{billingAccount}/line/{serviceName}/ips' | 
-'/telephony/{billingAccount}/line/{serviceName}' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/rma' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/adminCredentials' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/functionKey' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/merchandiseAvailable' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/supportsPhonebook' | 
-'/telephony/{billingAccount}/line/{serviceName}/activateNewPhone' | 
-'/telephony/{billingAccount}/line/{serviceName}/records/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/records' | 
-'/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/click2CallUser' | 
-'/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' | 
-'/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber' | 
-'/telephony/{billingAccount}/line/{serviceName}/trafficExtracts' | 
-'/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/lastRegistrations' | 
-'/telephony/{billingAccount}/line/{serviceName}/antihack' | 
-'/telephony/{billingAccount}/line/{serviceName}/availableSipDomains' | 
-'/telephony/{billingAccount}/line/{serviceName}/statistics' | 
-'/telephony/{billingAccount}/line/{serviceName}/maximumAvailableSimultaneousLines' | 
-'/telephony/{billingAccount}/line/{serviceName}/simultaneousChannelsDetails' | 
-'/telephony/{billingAccount}/line/{serviceName}/automaticCall' | 
-'/telephony/{billingAccount}/line/{serviceName}/automaticCall/{identifier}' | 
-'/telephony/{billingAccount}/line/{serviceName}/tones' | 
-'/telephony/{billingAccount}/line/{serviceName}/phoneCanBeAssociable' | 
-'/telephony/{billingAccount}/line/{serviceName}/options/defaultCodecs' | 
-'/telephony/{billingAccount}/line/{serviceName}/options' | 
-'/telephony/{billingAccount}/line/{serviceName}/options/availableCodecs' | 
-'/telephony/{billingAccount}/line' | 
-'/telephony/{billingAccount}/serviceInfos' | 
-'/telephony/{billingAccount}/phonebook' | 
-'/telephony/{billingAccount}/phonebook/{bookKey}' | 
-'/telephony/{billingAccount}/phonebook/{bookKey}/export' | 
-'/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' | 
-'/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/settings/routing' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/settings' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/settings/voicemailNumbers' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/greetings' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/directories' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}' | 
-'/telephony/{billingAccount}/voicemail' | 
-'/telephony/{billingAccount}/ovhPabx' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/tts' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/records' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' | 
 '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveStatistics' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/sound' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/tts' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/records' | 
 '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent' | 
 '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus' | 
 '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveStatistics' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}' | 
 '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/liveStatus' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' | 
 '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/liveStatus' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' | 
 '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}' | 
 '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/sound' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}' | 
-'/telephony/{billingAccount}/ddi/{serviceName}' | 
-'/telephony/{billingAccount}/ddi' | 
-'/telephony/{billingAccount}/easyPabx/{serviceName}' | 
-'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones' | 
-'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting' | 
-'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' | 
-'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent' | 
-'/telephony/{billingAccount}/easyPabx' | 
-'/telephony/{billingAccount}/billingAccountSite' | 
-'/telephony/{billingAccount}/abbreviatedNumber' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan' | 
+'/telephony/{billingAccount}/ovhPabx' | 
+'/telephony/{billingAccount}/eventToken' | 
+'/telephony/{billingAccount}/oldPhone' | 
 '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' | 
-'/telephony/{billingAccount}/vxml' | 
-'/telephony/{billingAccount}/vxml/{serviceName}/settings' | 
-'/telephony/{billingAccount}/vxml/{serviceName}' | 
-'/telephony/{billingAccount}/amountSecurityDeposit' | 
-'/telephony/{billingAccount}' | 
-'/telephony/{billingAccount}/offerTask/{taskId}' | 
-'/telephony/{billingAccount}/offerTask' | 
-'/telephony/{billingAccount}/historyConsumption/{date}/file' | 
-'/telephony/{billingAccount}/historyConsumption/{date}' | 
-'/telephony/{billingAccount}/historyConsumption' | 
-'/telephony/{billingAccount}/redirect/{serviceName}' | 
-'/telephony/{billingAccount}/redirect' | 
-'/telephony/{billingAccount}/rsva/{serviceName}' | 
-'/telephony/{billingAccount}/rsva/{serviceName}/allowedRateCodes' | 
-'/telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode' | 
-'/telephony/{billingAccount}/rsva/{serviceName}/currentRateCode' | 
-'/telephony/{billingAccount}/rsva' | 
-'/telephony/{billingAccount}/service' | 
-'/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption/{consumptionId}' | 
-'/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption' | 
-'/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption' | 
-'/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption/{consumptionId}' | 
-'/telephony/{billingAccount}/service/{serviceName}/task/{taskId}' | 
-'/telephony/{billingAccount}/service/{serviceName}/task' | 
-'/telephony/{billingAccount}/service/{serviceName}/faxConsumption/{consumptionId}' | 
-'/telephony/{billingAccount}/service/{serviceName}/faxConsumption' | 
-'/telephony/{billingAccount}/service/{serviceName}' | 
-'/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}' | 
-'/telephony/{billingAccount}/service/{serviceName}/offerTask' | 
-'/telephony/{billingAccount}/service/{serviceName}/offerChanges' | 
-'/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}' | 
-'/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}/callDiagnostics' | 
-'/telephony/{billingAccount}/service/{serviceName}/voiceConsumption' | 
-'/telephony/{billingAccount}/service/{serviceName}/eventToken' | 
-'/telephony/{billingAccount}/service/{serviceName}/offerChange' | 
-'/telephony/{billingAccount}/service/{serviceName}/diagnosticReports' | 
-'/telephony/{billingAccount}/service/{serviceName}/directory' | 
-'/telephony/{billingAccount}/service/{serviceName}/directory/getDirectoryServiceCode' | 
-'/telephony/{billingAccount}/service/{serviceName}/directory/getWayTypes' | 
+'/telephony/{billingAccount}/abbreviatedNumber' | 
 '/telephony/{billingAccount}/screen' | 
 '/telephony/{billingAccount}/screen/{serviceName}' | 
 '/telephony/{billingAccount}/screen/{serviceName}/screenLists' | 
 '/telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}' | 
-'/telephony/searchServices' | 
-'/telephony/trunks' | 
-'/telephony/trunks/{serviceName}' | 
-'/telephony/trunks/{serviceName}/serviceInfos' | 
-'/telephony/number/ranges' | 
-'/telephony/number/specificNumbers' | 
-'/telephony/number/zones' | 
-'/telephony/number/detailedZones' | 
-'/telephony/sounds/{id}' | 
-'/telephony/sounds' | 
-'/telephony/directories/availableZipCodes' | 
-'/telephony/directories/cities' | 
-'/telephony' | 
-'/telephony/accessories' | 
-'/telephony/fax/offers';
-
-type PathsTelephonyPUT = '/telephony/spare/{spare}/serviceInfos' | 
-'/telephony/lines/{serviceName}/serviceInfos' | 
-'/telephony/aliases/{serviceName}/serviceInfos' | 
-'/telephony/{billingAccount}/number/{serviceName}' | 
+'/telephony/{billingAccount}/historyTollfreeConsumption/{date}' | 
+'/telephony/{billingAccount}/historyTollfreeConsumption/{date}/document' | 
+'/telephony/{billingAccount}/historyTollfreeConsumption' | 
+'/telephony/{billingAccount}/task/{taskId}' | 
+'/telephony/{billingAccount}/task' | 
+'/telephony/{billingAccount}/outplanNotification' | 
+'/telephony/{billingAccount}/outplanNotification/{id}' | 
+'/telephony/{billingAccount}/billingAccountSite' | 
+'/telephony/{billingAccount}/scheduler' | 
 '/telephony/{billingAccount}/scheduler/{serviceName}' | 
+'/telephony/{billingAccount}/scheduler/{serviceName}/events' | 
 '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' | 
-'/telephony/{billingAccount}/timeCondition/{serviceName}/options' | 
-'/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' | 
-'/telephony/{billingAccount}/portability/{id}/document/{documentId}' | 
+'/telephony/{billingAccount}/historyRepaymentConsumption/{date}' | 
+'/telephony/{billingAccount}/historyRepaymentConsumption/{date}/document' | 
+'/telephony/{billingAccount}/historyRepaymentConsumption' | 
+'/telephony/{billingAccount}/conference/{serviceName}' | 
+'/telephony/{billingAccount}/conference/{serviceName}/webAccess' | 
+'/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}' | 
+'/telephony/{billingAccount}/conference/{serviceName}/informations' | 
+'/telephony/{billingAccount}/conference/{serviceName}/settings' | 
+'/telephony/{billingAccount}/conference/{serviceName}/histories' | 
+'/telephony/{billingAccount}/conference/{serviceName}/histories/{id}' | 
+'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}' | 
+'/telephony/{billingAccount}/conference/{serviceName}/participants' | 
+'/telephony/{billingAccount}/conference' | 
+'/telephony/{billingAccount}/serviceInfos' | 
+'/telephony/{billingAccount}/voicemail' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/settings/routing' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/settings/voicemailNumbers' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/settings' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/directories' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/greetings' | 
+'/telephony/{billingAccount}/vxml' | 
+'/telephony/{billingAccount}/vxml/{serviceName}' | 
+'/telephony/{billingAccount}/vxml/{serviceName}/settings' | 
+'/telephony/{billingAccount}/allowedCreditThreshold' | 
+'/telephony/{billingAccount}/fax' | 
+'/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}' | 
+'/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/detail' | 
+'/telephony/{billingAccount}/fax/{serviceName}/campaigns' | 
 '/telephony/{billingAccount}/fax/{serviceName}/settings' | 
 '/telephony/{billingAccount}/fax/{serviceName}/screenLists' | 
 '/telephony/{billingAccount}/fax/{serviceName}' | 
-'/telephony/{billingAccount}/miniPabx/{serviceName}' | 
+'/telephony/{billingAccount}/portability/{id}/dateCanBeChanged' | 
+'/telephony/{billingAccount}/portability/{id}/canBeExecuted' | 
+'/telephony/{billingAccount}/portability/{id}/canBeCancelled' | 
+'/telephony/{billingAccount}/portability/{id}/status' | 
+'/telephony/{billingAccount}/portability/{id}' | 
+'/telephony/{billingAccount}/portability/{id}/relaunch' | 
+'/telephony/{billingAccount}/portability/{id}/document/{documentId}' | 
+'/telephony/{billingAccount}/portability/{id}/document' | 
+'/telephony/{billingAccount}/portability' | 
+'/telephony/{billingAccount}/miniPabx' | 
 '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' | 
+'/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent' | 
 '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting' | 
 '/telephony/{billingAccount}/miniPabx/{serviceName}/tones' | 
-'/telephony/{billingAccount}/conference/{serviceName}/settings' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions' | 
+'/telephony/{billingAccount}/miniPabx/{serviceName}' | 
+'/telephony/{billingAccount}/line' | 
+'/telephony/{billingAccount}/line/{serviceName}/lastRegistrations' | 
+'/telephony/{billingAccount}/line/{serviceName}/availableSipDomains' | 
+'/telephony/{billingAccount}/line/{serviceName}/listAssociablePhones' | 
+'/telephony/{billingAccount}/line/{serviceName}/ips' | 
+'/telephony/{billingAccount}/line/{serviceName}/antihack' | 
+'/telephony/{billingAccount}/line/{serviceName}/options' | 
+'/telephony/{billingAccount}/line/{serviceName}/options/availableCodecs' | 
+'/telephony/{billingAccount}/line/{serviceName}/options/defaultCodecs' | 
+'/telephony/{billingAccount}/line/{serviceName}/offer' | 
+'/telephony/{billingAccount}/line/{serviceName}/simultaneousChannelsDetails' | 
+'/telephony/{billingAccount}/line/{serviceName}/phoneCanBeAssociable' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/merchandiseAvailable' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/rma' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/functionKey' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/supportsPhonebook' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/adminCredentials' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone' | 
+'/telephony/{billingAccount}/line/{serviceName}/maximumAvailableSimultaneousLines' | 
+'/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}' | 
+'/telephony/{billingAccount}/line/{serviceName}/click2CallUser' | 
+'/telephony/{billingAccount}/line/{serviceName}/automaticCall' | 
+'/telephony/{billingAccount}/line/{serviceName}/automaticCall/{identifier}' | 
+'/telephony/{billingAccount}/line/{serviceName}/records/{id}' | 
+'/telephony/{billingAccount}/line/{serviceName}/records' | 
+'/telephony/{billingAccount}/line/{serviceName}/statistics' | 
+'/telephony/{billingAccount}/line/{serviceName}/tones' | 
+'/telephony/{billingAccount}/line/{serviceName}' | 
+'/telephony/{billingAccount}/line/{serviceName}/activateNewPhone' | 
+'/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber' | 
+'/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' | 
+'/telephony/{billingAccount}/line/{serviceName}/trafficExtracts' | 
+'/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}' | 
+'/telephony/{billingAccount}/line/{serviceName}/canChangePassword' | 
+'/telephony/{billingAccount}/line/{serviceName}/calls' | 
+'/telephony/{billingAccount}/line/{serviceName}/calls/{id}' | 
+'/telephony/{billingAccount}/rsva' | 
+'/telephony/{billingAccount}/rsva/{serviceName}/allowedRateCodes' | 
+'/telephony/{billingAccount}/rsva/{serviceName}' | 
+'/telephony/{billingAccount}/rsva/{serviceName}/currentRateCode' | 
+'/telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode' | 
+'/telephony/{billingAccount}' | 
+'/telephony/{billingAccount}/easyHunting' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions' | 
 '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}' | 
 '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions' | 
 '/telephony/{billingAccount}/easyHunting/{serviceName}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/records' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveStatistics' | 
 '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/liveStatus' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent' | 
 '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting' | 
-'/telephony/{billingAccount}/line/{serviceName}' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone' | 
-'/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' | 
-'/telephony/{billingAccount}/line/{serviceName}/tones' | 
-'/telephony/{billingAccount}/line/{serviceName}/options' | 
-'/telephony/{billingAccount}/serviceInfos' | 
-'/telephony/{billingAccount}/phonebook/{bookKey}' | 
-'/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/settings' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting' | 
-'/telephony/{billingAccount}/ddi/{serviceName}' | 
-'/telephony/{billingAccount}/easyPabx/{serviceName}' | 
-'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones' | 
-'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting' | 
-'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' | 
-'/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' | 
-'/telephony/{billingAccount}/vxml/{serviceName}/settings' | 
-'/telephony/{billingAccount}' | 
-'/telephony/{billingAccount}/offerTask/{taskId}' | 
-'/telephony/{billingAccount}/redirect/{serviceName}' | 
-'/telephony/{billingAccount}/rsva/{serviceName}' | 
-'/telephony/{billingAccount}/service/{serviceName}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/sound' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}' | 
+'/telephony/{billingAccount}/timeCondition' | 
+'/telephony/{billingAccount}/timeCondition/{serviceName}' | 
+'/telephony/{billingAccount}/timeCondition/{serviceName}/options' | 
+'/telephony/{billingAccount}/timeCondition/{serviceName}/condition' | 
+'/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' | 
+'/telephony/availableDefaultSipDomains' | 
+'/telephony/trunks/{serviceName}/serviceInfos' | 
+'/telephony/trunks/{serviceName}' | 
+'/telephony/trunks' | 
+'/telephony/currentOrderIds' | 
+'/telephony/sounds' | 
+'/telephony/sounds/{id}' | 
+'/telephony/number/specificNumbers' | 
+'/telephony/number/detailedZones' | 
+'/telephony/number/ranges' | 
+'/telephony/number/zones' | 
+'/telephony/fax/offers' | 
+'/telephony/aliases' | 
+'/telephony/aliases/{serviceName}' | 
+'/telephony/aliases/{serviceName}/serviceInfos' | 
+'/telephony/accessories' | 
+'/telephony/directories/availableZipCodes' | 
+'/telephony/directories/cities' | 
+'/telephony' | 
+'/telephony/lines/{serviceName}/serviceInfos' | 
+'/telephony/lines/{serviceName}' | 
+'/telephony/lines' | 
+'/telephony/line/offer/phones' | 
+'/telephony/line/offers';
+
+type PathsTelephonyPUT = '/telephony/spare/{spare}/serviceInfos' | 
 '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}' | 
 '/telephony/{billingAccount}/service/{serviceName}/directory' | 
+'/telephony/{billingAccount}/service/{serviceName}' | 
+'/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' | 
+'/telephony/{billingAccount}/phonebook/{bookKey}' | 
+'/telephony/{billingAccount}/offerTask/{taskId}' | 
+'/telephony/{billingAccount}/ddi/{serviceName}' | 
+'/telephony/{billingAccount}/number/{serviceName}' | 
+'/telephony/{billingAccount}/easyPabx/{serviceName}' | 
+'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones' | 
+'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' | 
+'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting' | 
+'/telephony/{billingAccount}/redirect/{serviceName}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' | 
+'/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' | 
 '/telephony/{billingAccount}/screen/{serviceName}' | 
+'/telephony/{billingAccount}/scheduler/{serviceName}' | 
+'/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' | 
+'/telephony/{billingAccount}/conference/{serviceName}/settings' | 
+'/telephony/{billingAccount}/serviceInfos' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/settings' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}' | 
+'/telephony/{billingAccount}/vxml/{serviceName}/settings' | 
+'/telephony/{billingAccount}/fax/{serviceName}/settings' | 
+'/telephony/{billingAccount}/fax/{serviceName}/screenLists' | 
+'/telephony/{billingAccount}/fax/{serviceName}' | 
+'/telephony/{billingAccount}/portability/{id}/document/{documentId}' | 
+'/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' | 
+'/telephony/{billingAccount}/miniPabx/{serviceName}/hunting' | 
+'/telephony/{billingAccount}/miniPabx/{serviceName}/tones' | 
+'/telephony/{billingAccount}/miniPabx/{serviceName}' | 
+'/telephony/{billingAccount}/line/{serviceName}/options' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone' | 
+'/telephony/{billingAccount}/line/{serviceName}/tones' | 
+'/telephony/{billingAccount}/line/{serviceName}' | 
+'/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' | 
+'/telephony/{billingAccount}/rsva/{serviceName}' | 
+'/telephony/{billingAccount}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting' | 
+'/telephony/{billingAccount}/timeCondition/{serviceName}/options' | 
+'/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' | 
 '/telephony/trunks/{serviceName}/serviceInfos' | 
-'/telephony/sounds/{id}';
+'/telephony/sounds/{id}' | 
+'/telephony/aliases/{serviceName}/serviceInfos' | 
+'/telephony/lines/{serviceName}/serviceInfos';
 
 type PathsTelephonyPOST = '/telephony/spare/{spare}/replace' | 
-'/telephony/lines/{serviceName}/changeContact' | 
-'/telephony/aliases/{serviceName}/changeContact' | 
-'/telephony/setDefaultSipDomain' | 
-'/telephony/{billingAccount}/number/{serviceName}/changeFeatureType' | 
-'/telephony/{billingAccount}/number/{serviceName}/convertToLine' | 
+'/telephony/{billingAccount}/service/{serviceName}/offerChange' | 
+'/telephony/{billingAccount}/service/{serviceName}/cancelTermination' | 
+'/telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations' | 
+'/telephony/{billingAccount}/service/{serviceName}/changeOfBillingAccount' | 
+'/telephony/{billingAccount}/service/{serviceName}/eventToken' | 
+'/telephony/{billingAccount}/changeContact' | 
+'/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact' | 
+'/telephony/{billingAccount}/phonebook/{bookKey}/import' | 
+'/telephony/{billingAccount}/phonebook' | 
+'/telephony/{billingAccount}/ddi/{serviceName}/changeDestination' | 
 '/telephony/{billingAccount}/number/{serviceName}/cancelConvertToLine' | 
-'/telephony/{billingAccount}/scheduler/{serviceName}/importIcsCalendar' | 
-'/telephony/{billingAccount}/scheduler/{serviceName}/events' | 
-'/telephony/{billingAccount}/timeCondition/{serviceName}/condition' | 
-'/telephony/{billingAccount}/historyRepaymentConsumption' | 
+'/telephony/{billingAccount}/number/{serviceName}/convertToLine' | 
+'/telephony/{billingAccount}/number/{serviceName}/changeFeatureType' | 
+'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload' | 
+'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent' | 
+'/telephony/{billingAccount}/transferSecurityDeposit' | 
+'/telephony/{billingAccount}/redirect/{serviceName}/changeDestination' | 
 '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber' | 
 '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}/validate' | 
-'/telephony/{billingAccount}/portability/{id}/document' | 
-'/telephony/{billingAccount}/portability/{id}/relaunch' | 
-'/telephony/{billingAccount}/portability/{id}/changeDate' | 
-'/telephony/{billingAccount}/portability/{id}/execute' | 
-'/telephony/{billingAccount}/portability/{id}/cancel' | 
-'/telephony/{billingAccount}/fax/{serviceName}/settings/changePassword' | 
-'/telephony/{billingAccount}/fax/{serviceName}/settings/sendFax' | 
-'/telephony/{billingAccount}/fax/{serviceName}/screenLists' | 
-'/telephony/{billingAccount}/fax/{serviceName}/screenLists/reset' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/tts' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/soundUpload' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan' | 
+'/telephony/{billingAccount}/eventToken' | 
+'/telephony/{billingAccount}/abbreviatedNumber' | 
+'/telephony/{billingAccount}/screen/{serviceName}/screenLists' | 
+'/telephony/{billingAccount}/outplanNotification' | 
+'/telephony/{billingAccount}/billingAccountSite' | 
+'/telephony/{billingAccount}/scheduler/{serviceName}/importIcsCalendar' | 
+'/telephony/{billingAccount}/scheduler/{serviceName}/events' | 
+'/telephony/{billingAccount}/historyRepaymentConsumption' | 
+'/telephony/{billingAccount}/conference/{serviceName}/unlock' | 
+'/telephony/{billingAccount}/conference/{serviceName}/webAccess' | 
+'/telephony/{billingAccount}/conference/{serviceName}/lock' | 
+'/telephony/{billingAccount}/conference/{serviceName}/announceUpload' | 
+'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/mute' | 
+'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/deaf' | 
+'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/energy' | 
+'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/unmute' | 
+'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/undeaf' | 
+'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/kick' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/settings/changePassword' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/greetings' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/migrateOnNewVersion' | 
+'/telephony/{billingAccount}/vxml/{serviceName}/settings/logs' | 
+'/telephony/{billingAccount}/canTransferSecurityDeposit' | 
 '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/start' | 
 '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/stop' | 
 '/telephony/{billingAccount}/fax/{serviceName}/campaigns' | 
-'/telephony/{billingAccount}/eventToken' | 
-'/telephony/{billingAccount}/changeContact' | 
+'/telephony/{billingAccount}/fax/{serviceName}/settings/changePassword' | 
+'/telephony/{billingAccount}/fax/{serviceName}/settings/sendFax' | 
+'/telephony/{billingAccount}/fax/{serviceName}/screenLists/reset' | 
+'/telephony/{billingAccount}/fax/{serviceName}/screenLists' | 
+'/telephony/{billingAccount}/portability/{id}/execute' | 
+'/telephony/{billingAccount}/portability/{id}/relaunch' | 
+'/telephony/{billingAccount}/portability/{id}/changeDate' | 
+'/telephony/{billingAccount}/portability/{id}/cancel' | 
+'/telephony/{billingAccount}/portability/{id}/document' | 
 '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent' | 
 '/telephony/{billingAccount}/miniPabx/{serviceName}/tones/toneUpload' | 
 '/telephony/{billingAccount}/cancelTermination' | 
-'/telephony/{billingAccount}/conference/{serviceName}/webAccess' | 
-'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/unmute' | 
-'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/mute' | 
-'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/kick' | 
-'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/energy' | 
-'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/deaf' | 
-'/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/undeaf' | 
-'/telephony/{billingAccount}/conference/{serviceName}/lock' | 
-'/telephony/{billingAccount}/conference/{serviceName}/unlock' | 
-'/telephony/{billingAccount}/conference/{serviceName}/announceUpload' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/soundUpload' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus' | 
-'/telephony/{billingAccount}/outplanNotification' | 
-'/telephony/{billingAccount}/line/{serviceName}/calls/{id}/eavesdrop' | 
-'/telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper' | 
-'/telephony/{billingAccount}/line/{serviceName}/calls/{id}/transfer' | 
-'/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hold' | 
-'/telephony/{billingAccount}/line/{serviceName}/calls/{id}/intercept' | 
-'/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hangup' | 
-'/telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber' | 
-'/telephony/{billingAccount}/line/{serviceName}/block' | 
-'/telephony/{billingAccount}/line/{serviceName}/changePassword' | 
+'/telephony/{billingAccount}/line/{serviceName}/removeSimultaneousLines' | 
 '/telephony/{billingAccount}/line/{serviceName}/associateDevice' | 
+'/telephony/{billingAccount}/line/{serviceName}/unblock' | 
+'/telephony/{billingAccount}/line/{serviceName}/click2Call' | 
+'/telephony/{billingAccount}/line/{serviceName}/antihack' | 
+'/telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber' | 
+'/telephony/{billingAccount}/line/{serviceName}/convertToNumber' | 
 '/telephony/{billingAccount}/line/{serviceName}/phone/rma' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/reboot' | 
 '/telephony/{billingAccount}/line/{serviceName}/phone/resetConfig' | 
 '/telephony/{billingAccount}/line/{serviceName}/phone/refreshScreen' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration' | 
 '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/import' | 
 '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/reboot' | 
-'/telephony/{billingAccount}/line/{serviceName}/activateNewPhone' | 
-'/telephony/{billingAccount}/line/{serviceName}/convertToNumber' | 
-'/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/changePassword' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/import' | 
 '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/click2Call' | 
+'/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/changePassword' | 
 '/telephony/{billingAccount}/line/{serviceName}/click2CallUser' | 
-'/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber' | 
-'/telephony/{billingAccount}/line/{serviceName}/trafficExtracts' | 
-'/telephony/{billingAccount}/line/{serviceName}/antihack' | 
-'/telephony/{billingAccount}/line/{serviceName}/removeSimultaneousLines' | 
-'/telephony/{billingAccount}/line/{serviceName}/dissociateDevice' | 
-'/telephony/{billingAccount}/line/{serviceName}/click2Call' | 
 '/telephony/{billingAccount}/line/{serviceName}/automaticCall' | 
 '/telephony/{billingAccount}/line/{serviceName}/tones/toneUpload' | 
-'/telephony/{billingAccount}/line/{serviceName}/unblock' | 
-'/telephony/{billingAccount}/phonebook' | 
-'/telephony/{billingAccount}/phonebook/{bookKey}/import' | 
-'/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/settings/changePassword' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/greetings' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/migrateOnNewVersion' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/tts' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/soundUpload' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus' | 
-'/telephony/{billingAccount}/ddi/{serviceName}/changeDestination' | 
-'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload' | 
-'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent' | 
-'/telephony/{billingAccount}/billingAccountSite' | 
-'/telephony/{billingAccount}/abbreviatedNumber' | 
-'/telephony/{billingAccount}/vxml/{serviceName}/settings/logs' | 
-'/telephony/{billingAccount}/canTransferSecurityDeposit' | 
-'/telephony/{billingAccount}/redirect/{serviceName}/changeDestination' | 
-'/telephony/{billingAccount}/rsva/{serviceName}/cancelScheduledRateCode' | 
+'/telephony/{billingAccount}/line/{serviceName}/activateNewPhone' | 
+'/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber' | 
+'/telephony/{billingAccount}/line/{serviceName}/block' | 
+'/telephony/{billingAccount}/line/{serviceName}/trafficExtracts' | 
+'/telephony/{billingAccount}/line/{serviceName}/calls/{id}/transfer' | 
+'/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hold' | 
+'/telephony/{billingAccount}/line/{serviceName}/calls/{id}/eavesdrop' | 
+'/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hangup' | 
+'/telephony/{billingAccount}/line/{serviceName}/calls/{id}/intercept' | 
+'/telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper' | 
+'/telephony/{billingAccount}/line/{serviceName}/changePassword' | 
+'/telephony/{billingAccount}/line/{serviceName}/dissociateDevice' | 
 '/telephony/{billingAccount}/rsva/{serviceName}/scheduleRateCode' | 
-'/telephony/{billingAccount}/transferSecurityDeposit' | 
-'/telephony/{billingAccount}/service/{serviceName}/cancelTermination' | 
-'/telephony/{billingAccount}/service/{serviceName}/eventToken' | 
-'/telephony/{billingAccount}/service/{serviceName}/changeOfBillingAccount' | 
-'/telephony/{billingAccount}/service/{serviceName}/offerChange' | 
-'/telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations' | 
-'/telephony/{billingAccount}/screen/{serviceName}/screenLists' | 
+'/telephony/{billingAccount}/rsva/{serviceName}/cancelScheduledRateCode' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/soundUpload' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent' | 
+'/telephony/{billingAccount}/timeCondition/{serviceName}/condition' | 
 '/telephony/trunks/{serviceName}/changeContact' | 
-'/telephony/sounds';
+'/telephony/sounds' | 
+'/telephony/aliases/{serviceName}/changeContact' | 
+'/telephony/lines/{serviceName}/changeContact' | 
+'/telephony/setDefaultSipDomain';
 
 type PathsTelephonyDELETE = '/telephony/spare/{spare}' | 
-'/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' | 
-'/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' | 
-'/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}' | 
-'/telephony/{billingAccount}/portability/{id}/document/{documentId}' | 
-'/telephony/{billingAccount}/fax/{serviceName}/screenLists' | 
-'/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}' | 
-'/telephony/{billingAccount}/eventToken' | 
-'/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' | 
-'/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' | 
-'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}' | 
-'/telephony/{billingAccount}/outplanNotification/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' | 
-'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/records/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}' | 
-'/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' | 
-'/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}' | 
-'/telephony/{billingAccount}/phonebook/{bookKey}' | 
-'/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}' | 
-'/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}' | 
-'/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}' | 
-'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' | 
-'/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' | 
-'/telephony/{billingAccount}' | 
+'/telephony/{billingAccount}/service/{serviceName}/offerChange' | 
 '/telephony/{billingAccount}/service/{serviceName}' | 
 '/telephony/{billingAccount}/service/{serviceName}/eventToken' | 
-'/telephony/{billingAccount}/service/{serviceName}/offerChange' | 
+'/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' | 
+'/telephony/{billingAccount}/phonebook/{bookKey}' | 
+'/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' | 
+'/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' | 
+'/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' | 
+'/telephony/{billingAccount}/eventToken' | 
+'/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' | 
 '/telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}' | 
+'/telephony/{billingAccount}/outplanNotification/{id}' | 
+'/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' | 
+'/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}' | 
+'/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}' | 
+'/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}' | 
+'/telephony/{billingAccount}/fax/{serviceName}/screenLists' | 
+'/telephony/{billingAccount}/portability/{id}/document/{documentId}' | 
+'/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' | 
+'/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' | 
+'/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}' | 
+'/telephony/{billingAccount}/line/{serviceName}/records/{id}' | 
+'/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' | 
+'/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}' | 
+'/telephony/{billingAccount}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' | 
+'/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}' | 
+'/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' | 
 '/telephony/sounds/{id}';
 
 export class ApiTelephony extends ApiCommon {
@@ -5718,15 +5718,10 @@ export class ApiTelephony extends ApiCommon {
     super(config);
   }
   /**
-  Get all available SIP domains by country
-  Get all available SIP domains by country
+  Search a service with its domain, to get its billing account and type
+  Search a service with its domain, to get its billing account and type
   **/
-  public get(path: '/telephony/availableDefaultSipDomains', pathParams: null, queryParams: {type?: TelephonySipDomainProductTypeEnum}): Promise<TelephonyDefaultSipDomains[]>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/telephony/spare/{spare}/serviceInfos', pathParams: {spare: string}): Promise<ServicesService>;
+  public get(path: '/telephony/searchServices', pathParams: undefined, queryParams: {axiom?: string}): Promise<TelephonyTelephonySearchService[]>;
   /**
   Spare properties
   Get this object properties
@@ -5738,60 +5733,200 @@ export class ApiTelephony extends ApiCommon {
   **/
   public get(path: '/telephony/spare/{spare}/compatibleReplacement', pathParams: {spare: string}): Promise<string[]>;
   /**
-  Operations about the VOIP service
-  List available services
+  Details about a Service
+  Get this object properties
   **/
-  public get(path: '/telephony/spare'): Promise<string[]>;
+  public get(path: '/telephony/spare/{spare}/serviceInfos', pathParams: {spare: string}): Promise<ServicesService>;
   /**
   Get all available spare brands
   Get all available spare brands
   **/
   public get(path: '/telephony/spare/brands'): Promise<string[]>;
   /**
-  Get current order ids
-  Get current order ids
+  Operations about the VOIP service
+  List available services
   **/
-  public get(path: '/telephony/currentOrderIds'): Promise<Number[]>;
+  public get(path: '/telephony/spare'): Promise<string[]>;
   /**
-  Details about a Service
+  List the telephony.TelephonyService objects
+  Services associated with this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/service', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  offerChanges operations
+  List all available offer changes compatibilities
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/offerChanges', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyLineOffer[]>;
+  /**
+  List the telephony.RepaymentConsumption objects
+  Call which could be repayable
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'creationDatetime.to'?: string, 'creationDatetime.from'?: string}): Promise<Number[]>;
+  /**
+  Call which are repayable
   Get this object properties
   **/
-  public get(path: '/telephony/lines/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption/{consumptionId}', pathParams: {billingAccount: string, serviceName: string, consumptionId: Number}): Promise<TelephonyRepaymentConsumption>;
+  /**
+  List the telephony.VoiceConsumption objects
+  Call delivery records.
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'creationDatetime.to'?: string, destinationType?: TelephonyVoiceConsumptionDestinationTypeEnum, wayType?: TelephonyVoiceConsumptionWayTypeEnum, 'creationDatetime.from'?: string, planType?: TelephonyVoiceConsumptionPlanTypeEnum}): Promise<Number[]>;
+  /**
+  Advanced diagnostic of the voice call
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}/callDiagnostics', pathParams: {billingAccount: string, serviceName: string, consumptionId: Number}): Promise<TelephonyCallDiagnostics>;
+  /**
+  Call delivery record
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}', pathParams: {billingAccount: string, serviceName: string, consumptionId: Number}): Promise<TelephonyVoiceConsumption>;
+  /**
+  List the telephony.OfferTask objects
+  Operations on a telephony service's offer
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/offerTask', pathParams: {billingAccount: string, serviceName: string}, queryParams: {status?: TelephonyTaskStatusEnum, type?: TelephonyOfferTaskTypeEnum, action?: TelephonyOfferTaskActionEnum}): Promise<Number[]>;
+  /**
+  Operation on a telephony offer
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}', pathParams: {billingAccount: string, serviceName: string, taskId: Number}): Promise<TelephonyOfferTask>;
+  /**
+  diagnosticReports operations
+  Get Relevant informations of the service detected from the MOS or the signal leg in SIP/MGCP protocol.
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/diagnosticReports', pathParams: {billingAccount: string, serviceName: string}, queryParams: {dayInterval?: TelephonyDiagnosticReportIndexEnum}): Promise<TelephonyDiagnosticReport[]>;
+  /**
+  Offer change
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/offerChange', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOfferChange>;
+  /**
+  Operation on a telephony service
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/task/{taskId}', pathParams: {billingAccount: string, serviceName: string, taskId: Number}): Promise<TelephonyTask>;
+  /**
+  List the telephony.Task objects
+  Operations on a telephony service
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/task', pathParams: {billingAccount: string, serviceName: string}, queryParams: {action?: string, status?: TelephonyTaskStatusEnum, serviceType?: string}): Promise<Number[]>;
+  /**
+  Directory Informations
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/directory', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDirectoryInfo>;
+  /**
+  getDirectoryServiceCode operations
+  Get directory service code from an APE code ( principal activity of the firm code )
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/directory/getDirectoryServiceCode', pathParams: {billingAccount: string, serviceName: string}, queryParams: {apeCode?: string}): Promise<TelephonyDirectoryHeadingPJ[]>;
+  /**
+  getWayTypes operations
+  Get all the way types availables
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/directory/getWayTypes', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDirectoryWayType[]>;
+  /**
+  List the telephony.FaxConsumption objects
+  Fax delivery records.
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/faxConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'creationDatetime.from'?: string, wayType?: TelephonyFaxConsumptionWayTypeEnum, 'creationDatetime.to'?: string}): Promise<Number[]>;
+  /**
+  Fax delivery record
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/faxConsumption/{consumptionId}', pathParams: {billingAccount: string, serviceName: string, consumptionId: Number}): Promise<TelephonyFaxConsumption>;
+  /**
+  Call delivery record of the previous month
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption/{consumptionId}', pathParams: {billingAccount: string, serviceName: string, consumptionId: Number}): Promise<TelephonyPreviousVoiceConsumption>;
+  /**
+  List the telephony.PreviousVoiceConsumption objects
+  Call delivery records of the previous month.
+  **/
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'creationDatetime.to'?: string, destinationType?: TelephonyVoiceConsumptionDestinationTypeEnum, wayType?: TelephonyVoiceConsumptionWayTypeEnum, 'creationDatetime.from'?: string, planType?: TelephonyVoiceConsumptionPlanTypeEnum}): Promise<Number[]>;
   /**
   Telephony service
   Get this object properties
   **/
-  public get(path: '/telephony/lines/{serviceName}', pathParams: {serviceName: string}): Promise<TelephonyTelephonyGenericService>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTelephonyService>;
   /**
-  Operations about the VOIP service
-  List available services
-  **/
-  public get(path: '/telephony/lines'): Promise<string[]>;
-  /**
-  Get all available phone brands compatible with lines
-  Get all available phone brands compatible with lines
-  **/
-  public get(path: '/telephony/line/offer/phones', pathParams: null, queryParams: {country?: TelephonyNumberCountryEnum, offer?: string}): Promise<TelephonyLinePhone[]>;
-  /**
-  Get all available line offer compatible
-  Get all available line offer compatible
-  **/
-  public get(path: '/telephony/line/offers', pathParams: null, queryParams: {country?: TelephonyNumberCountryEnum}): Promise<TelephonyLineOffer[]>;
-  /**
-  Operations about the VOIP service
-  List available services
-  **/
-  public get(path: '/telephony/aliases'): Promise<string[]>;
-  /**
-  Details about a Service
+  Token associated to the service for live event
   Get this object properties
   **/
-  public get(path: '/telephony/aliases/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEventToken>;
   /**
-  Telephony service
+  Phone book contact
   Get this object properties
   **/
-  public get(path: '/telephony/aliases/{serviceName}', pathParams: {serviceName: string}): Promise<TelephonyTelephonyGenericService>;
+  public get(path: '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}', pathParams: {billingAccount: string, bookKey: string, id: Number}): Promise<TelephonyPhonebookContact>;
+  /**
+  List the telephony.PhonebookContact objects
+  Phonebook contacts
+  **/
+  public get(path: '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact', pathParams: {billingAccount: string, bookKey: string}): Promise<Number[]>;
+  /**
+  Phone book on group
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/phonebook/{bookKey}', pathParams: {billingAccount: string, bookKey: string}): Promise<TelephonyPhonebookMaster>;
+  /**
+  export operations
+  Export the phonebook's contacts
+  **/
+  public get(path: '/telephony/{billingAccount}/phonebook/{bookKey}/export', pathParams: {billingAccount: string, bookKey: string}, queryParams: {format?: TelephonyContactsExportFormatsEnum}): Promise<TelephonyPcsFile>;
+  /**
+  List the telephony.PhonebookMaster objects
+  Return phonebooks associated to this group
+  **/
+  public get(path: '/telephony/{billingAccount}/phonebook', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  amountSecurityDeposit operations
+  Give all amounts availables for your billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/amountSecurityDeposit', pathParams: {billingAccount: string}): Promise<OrderPrice[]>;
+  /**
+  List the telephony.HistoryConsumption objects
+  Previous billed consumptions
+  **/
+  public get(path: '/telephony/{billingAccount}/historyConsumption', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  Previous billed consumptions
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/historyConsumption/{date}', pathParams: {billingAccount: string, date: string}): Promise<TelephonyHistoryConsumption>;
+  /**
+  file operations
+  Previous billed consumption files
+  **/
+  public get(path: '/telephony/{billingAccount}/historyConsumption/{date}/file', pathParams: {billingAccount: string, date: string}, queryParams: {extension?: TelephonyBillDocument}): Promise<TelephonyPcsFile>;
+  /**
+  List the telephony.OfferTask objects
+  Operations on a telephony service's offer
+  **/
+  public get(path: '/telephony/{billingAccount}/offerTask', pathParams: {billingAccount: string}, queryParams: {type?: TelephonyOfferTaskTypeEnum, action?: TelephonyOfferTaskActionEnum, status?: TelephonyTaskStatusEnum}): Promise<Number[]>;
+  /**
+  Operation on a telephony offer
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/offerTask/{taskId}', pathParams: {billingAccount: string, taskId: Number}): Promise<TelephonyOfferTask>;
+  /**
+  DDI (direct dial-in) service
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/ddi/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDdi>;
+  /**
+  List the telephony.Ddi objects
+  DDIs (direct dial-in) associated with this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/ddi', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  List the telephony.Number objects
+  Additional numbers associated with this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/number', pathParams: {billingAccount: string}): Promise<string[]>;
   /**
   convertToLineAvailableOffers operations
   Get the available line offers to schedule a conversion to line
@@ -5803,95 +5938,45 @@ export class ApiTelephony extends ApiCommon {
   **/
   public get(path: '/telephony/{billingAccount}/number/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyNumber>;
   /**
-  List the telephony.Number objects
-  Additional numbers associated with this billing account
+  List the telephony.EasyPabx objects
+  EasyPabx associated with this billing account
   **/
-  public get(path: '/telephony/{billingAccount}/number', pathParams: {billingAccount: string}): Promise<string[]>;
+  public get(path: '/telephony/{billingAccount}/easyPabx', pathParams: {billingAccount: string}): Promise<string[]>;
   /**
-  allowedCreditThreshold operations
-  Get the allowed creditThreshold for this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/allowedCreditThreshold', pathParams: {billingAccount: string}): Promise<OrderPrice[]>;
-  /**
-  List the telephony.Scheduler objects
-  Scheduled events
-  **/
-  public get(path: '/telephony/{billingAccount}/scheduler', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  Scheduler capable services
+  EasyPabx
   Get this object properties
   **/
-  public get(path: '/telephony/{billingAccount}/scheduler/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyScheduler>;
+  public get(path: '/telephony/{billingAccount}/easyPabx/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyPabx>;
   /**
-  Scheduled event
+  Line tones
   Get this object properties
   **/
-  public get(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}', pathParams: {billingAccount: string, serviceName: string, uid: string}): Promise<TelephonySchedulerEvent>;
+  public get(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTones>;
   /**
-  List the telephony.SchedulerEvent objects
-  Custom events scheduled
-  **/
-  public get(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'dateStart.to'?: Date, 'dateEnd.from'?: Date, 'dateEnd.to'?: Date, categories?: TelephonySchedulerCategoryEnum, 'dateStart.from'?: Date}): Promise<string[]>;
-  /**
-  oldPhone operations
-  List old phones archived as they were not returned after an RMA
-  **/
-  public get(path: '/telephony/{billingAccount}/oldPhone', pathParams: {billingAccount: string}): Promise<TelephonyPhone[]>;
-  /**
-  List the telephony.GenericScreen objects
-  Time conditions compatible numbers associated with this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/timeCondition', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  Time conditions options
+  Easy/Mini PABX agent
   Get this object properties
   **/
-  public get(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/options', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTimeConditionOptions>;
+  public get(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}', pathParams: {billingAccount: string, serviceName: string, agentNumber: string}): Promise<TelephonyEasyMiniPabxHuntingAgent>;
   /**
-  Time conditions
+  List the telephony.EasyMiniPabxHuntingAgent objects
+  Hunting agents
+  **/
+  public get(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
+  /**
+  EasyPabx Hunting
   Get this object properties
   **/
-  public get(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTimeCondition>;
+  public get(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyPabxHunting>;
   /**
-  List the telephony.TimeCondition objects
-  Rules for time conditions for this service
+  List the telephony.Redirect objects
+  Redirects associated with this billing account
   **/
-  public get(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  public get(path: '/telephony/{billingAccount}/redirect', pathParams: {billingAccount: string}): Promise<string[]>;
   /**
-  Time conditions capable services
+  Redirect service
   Get this object properties
   **/
-  public get(path: '/telephony/{billingAccount}/timeCondition/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyGenericScreen>;
-  /**
-  List the telephony.HistoryTollfreeConsumption objects
-  Previous tollfree bill
-  **/
-  public get(path: '/telephony/{billingAccount}/historyTollfreeConsumption', pathParams: {billingAccount: string}): Promise<Date[]>;
-  /**
-  Previous tollfree bill
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/historyTollfreeConsumption/{date}', pathParams: {billingAccount: string, date: Date}): Promise<TelephonyHistoryTollfreeConsumption>;
-  /**
-  document operations
-  Get the csv document
-  **/
-  public get(path: '/telephony/{billingAccount}/historyTollfreeConsumption/{date}/document', pathParams: {billingAccount: string, date: Date}): Promise<TelephonyPcsFile>;
-  /**
-  document operations
-  Get the csv document
-  **/
-  public get(path: '/telephony/{billingAccount}/historyRepaymentConsumption/{date}/document', pathParams: {billingAccount: string, date: Date}): Promise<TelephonyPcsFile>;
-  /**
-  Previous repayment bill
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/historyRepaymentConsumption/{date}', pathParams: {billingAccount: string, date: Date}): Promise<TelephonyHistoryRepaymentConsumption>;
-  /**
-  List the telephony.HistoryRepaymentConsumption objects
-  Previous repayment bill
-  **/
-  public get(path: '/telephony/{billingAccount}/historyRepaymentConsumption', pathParams: {billingAccount: string}): Promise<Date[]>;
+  public get(path: '/telephony/{billingAccount}/redirect/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyRedirect>;
   /**
   Trunk service
   Get this object properties
@@ -5918,790 +6003,65 @@ export class ApiTelephony extends ApiCommon {
   **/
   public get(path: '/telephony/{billingAccount}/trunk', pathParams: {billingAccount: string}): Promise<string[]>;
   /**
-  dateCanBeChanged operations
-  Indicates whether or not the portability date can be changed
-  **/
-  public get(path: '/telephony/{billingAccount}/portability/{id}/dateCanBeChanged', pathParams: {billingAccount: string, id: Number}): Promise<boolean>;
-  /**
-  List the telephony.PortabilityDocument objects
-  Document linked to this portability
-  **/
-  public get(path: '/telephony/{billingAccount}/portability/{id}/document', pathParams: {billingAccount: string, id: Number}): Promise<Number[]>;
-  /**
-  Document linked to a portability
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/portability/{id}/document/{documentId}', pathParams: {billingAccount: string, id: Number, documentId: Number}): Promise<TelephonyPortabilityDocument>;
-  /**
-  status operations
-  Indicates the current status of the portability, with a list of steps
-  **/
-  public get(path: '/telephony/{billingAccount}/portability/{id}/status', pathParams: {billingAccount: string, id: Number}): Promise<TelephonyPortabilityStep[]>;
-  /**
-  relaunch operations
-  Indicates whether or not error can be fixed and portability can be relaunched
-  **/
-  public get(path: '/telephony/{billingAccount}/portability/{id}/relaunch', pathParams: {billingAccount: string, id: Number}): Promise<TelephonyPortabilityFixErrorPossibleParameters>;
-  /**
-  canBeCancelled operations
-  Indicates whether or not the portability can be cancelled
-  **/
-  public get(path: '/telephony/{billingAccount}/portability/{id}/canBeCancelled', pathParams: {billingAccount: string, id: Number}): Promise<boolean>;
-  /**
-  canBeExecuted operations
-  Indicates whether or not the portability can be executed
-  **/
-  public get(path: '/telephony/{billingAccount}/portability/{id}/canBeExecuted', pathParams: {billingAccount: string, id: Number}): Promise<boolean>;
-  /**
-  Portability informations
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/portability/{id}', pathParams: {billingAccount: string, id: Number}): Promise<TelephonyPortability>;
-  /**
-  List the telephony.Portability objects
-  Current number portabilities for this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/portability', pathParams: {billingAccount: string}): Promise<Number[]>;
-  /**
-  List the telephony.Fax objects
-  Faxes associated with this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/fax', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  Fax properties
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/fax/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyFaxProperties>;
-  /**
-  Fax ScreenLists
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/fax/{serviceName}/screenLists', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyFaxScreen>;
-  /**
-  Fax service
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/fax/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyFax>;
-  /**
-  Fax campaigns
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyFaxCampaign>;
-  /**
-  detail operations
-  Detail of the fax recipients by status
-  **/
-  public get(path: '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/detail', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyFaxCampaignDetail>;
-  /**
-  List the telephony.FaxCampaign objects
-  Fax campaigns of the associate fax
-  **/
-  public get(path: '/telephony/{billingAccount}/fax/{serviceName}/campaigns', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  Token associated to the service for live event
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/eventToken', pathParams: {billingAccount: string}): Promise<TelephonyEventToken>;
-  /**
-  List the telephony.MiniPabx objects
-  Miniabx associated with this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/miniPabx', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  MiniPabx
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/miniPabx/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyMiniPabx>;
-  /**
-  List the telephony.EasyMiniPabxHuntingAgent objects
-  Hunting agents
-  **/
-  public get(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
-  /**
-  Easy/Mini PABX agent
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}', pathParams: {billingAccount: string, serviceName: string, agentNumber: string}): Promise<TelephonyEasyMiniPabxHuntingAgent>;
-  /**
-  MiniPabx Hunting
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyMiniPabxHunting>;
-  /**
-  Line tones
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/tones', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTones>;
-  /**
-  List the telephony.Conference objects
-  Conferences associated with this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/conference', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  List the telephony.ConferenceWebAccess objects
-  List your conference web access
-  **/
-  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/webAccess', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  List public web access of your conference
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyConferenceWebAccess>;
-  /**
-  List the telephony.ConferenceParticipants objects
-  Current participants of the associate conference
-  **/
-  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/participants', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  Conference service
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyConferenceParticipants>;
-  /**
-  List past conferences on your number
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/histories/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyConferenceHistory>;
-  /**
-  List the telephony.ConferenceHistory objects
-  List your past conferences for this number
-  **/
-  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/histories', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  Conference properties
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyConferenceProperties>;
-  /**
-  informations operations
-  Get realtime conference informations
-  **/
-  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/informations', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyConferenceInformations>;
-  /**
-  Conference
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/conference/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyConference>;
-  /**
-  List the telephony.EasyHunting objects
-  OVH easy calls queues associated with this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  List the telephony.EasyHuntingScreenListsConditions objects
-  Screen lists conditions checked when a call is received
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions', pathParams: {billingAccount: string, serviceName: string}, queryParams: {screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<Number[]>;
-  /**
-  Screenlist condition
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}', pathParams: {billingAccount: string, serviceName: string, conditionId: Number}): Promise<TelephonyEasyHuntingScreenListsConditions>;
-  /**
-  Easy hunting screen lists conditions options
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyHuntingScreenListsConditionsSettings>;
-  /**
-  The PABX records
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyOvhPabxRecord>;
-  /**
-  List the telephony.OvhPabxRecord objects
-  Records associated with this PABX
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/records', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  List the telephony.OvhPabxSound objects
-  Sounds associated with this PABX
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/sound', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  The PABX sounds
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}', pathParams: {billingAccount: string, serviceName: string, soundId: Number}): Promise<TelephonyOvhPabxSound>;
-  /**
-  List the telephony.EasyHuntingTimeConditions objects
-  Time conditions checked when a call is received
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions', pathParams: {billingAccount: string, serviceName: string}, queryParams: {policy?: TelephonyTimeConditionsPolicyEnum}): Promise<Number[]>;
-  /**
-  Easy hunting time conditions
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}', pathParams: {billingAccount: string, serviceName: string, conditionId: Number}): Promise<TelephonyEasyHuntingTimeConditions>;
-  /**
-  Easy hunting time conditions options
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyHuntingTimeConditionsSettings>;
-  /**
-  OVH easy calls queues
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyHunting>;
-  /**
-  List the telephony.OvhPabxHuntingAgent objects
-  Calls agents
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  Token associated to the service for live event
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyEventToken>;
-  /**
-  Live statistics of the queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveCalls>;
-  /**
-  List the telephony.OvhPabxHuntingQueueLiveCalls objects
-  Current calls of the callcenter agent
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<Number[]>;
-  /**
-  List the telephony.OvhPabxHuntingAgentQueue objects
-  Agent assigned to the queues
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<Number[]>;
-  /**
-  Live statistics of the queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<TelephonyOvhPabxHuntingAgentLiveStatus>;
-  /**
-  Agent assigned to a queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<TelephonyOvhPabxHuntingAgentQueue>;
-  /**
-  Live statistics of the queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/liveStatus', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgentLiveStatus>;
-  /**
-  Calls agent
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgent>;
-  /**
-  The web access for your cloudpabx
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyBannerAccess>;
-  /**
-  Token associated to the service for live event
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEventToken>;
-  /**
-  List the telephony.OvhPabxHuntingAgentQueue objects
-  Agent assigned to the queue
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<Number[]>;
-  /**
-  Agent assigned to a queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgentQueue>;
-  /**
-  Live statistics of the queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus', pathParams: {billingAccount: string, serviceName: string, queueId: Number, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgentLiveStatus>;
-  /**
-  Calls queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<TelephonyOvhPabxHuntingQueue>;
-  /**
-  Live statistics of the queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveStatistics', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveStatistics>;
-  /**
-  List the telephony.OvhPabxHuntingQueueLiveCalls objects
-  Live calls of the queue
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<Number[]>;
-  /**
-  Live statistics of the queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveCalls>;
-  /**
-  List the telephony.OvhPabxHuntingQueue objects
-  Calls queues
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  List the telephony.OvhPabxCustomStatus objects
-  Custom statuses of your agents
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  Custom statuses of your callcenter agents
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyOvhPabxCustomStatus>;
-  /**
-  PABX Hunting
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHunting>;
-  /**
-  List the telephony.Task objects
-  Operations on a telephony billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/task', pathParams: {billingAccount: string}, queryParams: {serviceType?: string, status?: TelephonyTaskStatusEnum, action?: string}): Promise<Number[]>;
-  /**
-  Operation on a telephony service
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/task/{taskId}', pathParams: {billingAccount: string, taskId: Number}): Promise<TelephonyTask>;
-  /**
-  List the telephony.ConsumptionThreshold objects
-  Outplan notifications configured for this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/outplanNotification', pathParams: {billingAccount: string}): Promise<Number[]>;
-  /**
-  The outplan notifications configured for your billing account
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/outplanNotification/{id}', pathParams: {billingAccount: string, id: Number}): Promise<TelephonyConsumptionThreshold>;
-  /**
-  offer operations
-  Return public offer property
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/offer', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyLineOffer>;
-  /**
-  listAssociablePhones operations
-  List phones with available slots where this line can be attached
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/listAssociablePhones', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyLinePhoneAssociable[]>;
-  /**
-  canChangePassword operations
-  Ability to manage SIP password on this service
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/canChangePassword', pathParams: {billingAccount: string, serviceName: string}): Promise<boolean>;
-  /**
-  Live statistics of the queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveCalls>;
-  /**
-  List the telephony.OvhPabxHuntingQueueLiveCalls objects
-  The current calls of your line
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/calls', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  ips operations
-  Listing of last ips registry
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/ips', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDatetimeAndIpvalue[]>;
-  /**
-  Line service
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyLine>;
-  /**
-  Current Return Merchandise Authorisation
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}', pathParams: {billingAccount: string, serviceName: string, id: string}): Promise<TelephonyRma>;
-  /**
-  List the telephony.Rma objects
-  Return Merchandise Authorisation associated
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
-  /**
-  adminCredentials operations
-  Returns the administration user and password of the phone if you are a VIP
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/adminCredentials', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyPhoneCredentials>;
-  /**
-  List the telephony.FunctionKey objects
-  Plug & Phone function keys
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  availableFunction operations
-  List the available functions for the key
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction', pathParams: {billingAccount: string, serviceName: string, keyNum: Number}): Promise<string[]>;
-  /**
-  Plug & Phone function key
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}', pathParams: {billingAccount: string, serviceName: string, keyNum: Number}): Promise<TelephonyFunctionKey>;
-  /**
-  List the telephony.Phonebook objects
-  Return phonebooks associated
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
-  /**
-  export operations
-  Export the phonebook's contacts
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export', pathParams: {billingAccount: string, serviceName: string, bookKey: string}, queryParams: {format?: TelephonyContactsExportFormatsEnum}): Promise<TelephonyPcsFile>;
-  /**
-  Phone book
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}', pathParams: {billingAccount: string, serviceName: string, bookKey: string}): Promise<TelephonyPhonebook>;
-  /**
-  Phone book contact
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}', pathParams: {billingAccount: string, serviceName: string, bookKey: string, id: Number}): Promise<TelephonyPhonebookContact>;
-  /**
-  List the telephony.PhonebookContact objects
-  Phonebook contacts
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact', pathParams: {billingAccount: string, serviceName: string, bookKey: string}): Promise<Number[]>;
-  /**
-  Plug & Phone
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyPhone>;
-  /**
-  merchandiseAvailable operations
-  List of available exchange merchandise brand
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/merchandiseAvailable', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyHardwareOffer[]>;
-  /**
-  supportsPhonebook operations
-  Does the phone manages phonebooks?
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/supportsPhonebook', pathParams: {billingAccount: string, serviceName: string}): Promise<boolean>;
-  /**
-  activateNewPhone operations
-  Check if there is a new phone to activate and if it's possible, in case of phone switch
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/activateNewPhone', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  The PABX records
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/records/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyOvhPabxRecord>;
-  /**
-  List the telephony.OvhPabxRecord objects
-  The recordings of your line outgoing calls
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/records', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  User of the click 2 call
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyClick2CallUser>;
-  /**
-  List the telephony.Click2CallUser objects
-  User which can use click 2 call on the line
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/click2CallUser', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  Abbreviated number
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}', pathParams: {billingAccount: string, serviceName: string, abbreviatedNumber: Number}): Promise<TelephonyAbbreviatedNumber>;
-  /**
-  List the telephony.AbbreviatedNumber objects
-  Abbreviated numbers for the line
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  List the telephony.trafficExtract objects
-  The traffic extracts (SIP only) of your line
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  Traffic extracts (SIP) of your line
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTrafficExtract>;
-  /**
-  lastRegistrations operations
-  List the informations about the last registrations (i.e. IP, port, User-Agent...)
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/lastRegistrations', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyRegistrationInformations[]>;
-  /**
-  antihack operations
-  Current list of numbers or short code numbers restricted by an auto antihack
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/antihack', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
-  /**
-  availableSipDomains operations
-  Listing of domains Sip availables
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/availableSipDomains', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
-  /**
-  statistics operations
-  Get statistics of the current line
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/statistics', pathParams: {billingAccount: string, serviceName: string}, queryParams: {type?: TelephonyLineStatisticsTypeEnum, timeframe?: TelephonyStatisticsTimeframeEnum}): Promise<ComplexTypeUnitAndValues<TelephonyTimestampAndValue>>;
-  /**
-  maximumAvailableSimultaneousLines operations
-  Get the maximum available simultaneous lines for this line
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/maximumAvailableSimultaneousLines', pathParams: {billingAccount: string, serviceName: string}): Promise<Number>;
-  /**
-  simultaneousChannelsDetails operations
-  Details about simultaneous channels of this line.
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/simultaneousChannelsDetails', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonySimultaneousChannelsDetails>;
-  /**
-  List the telephony.CallsGenerated objects
-  Automatic Calls made by Calls Generator on this line
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/automaticCall', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
-  /**
-  Automatic Call made by Call Generator on this line
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/automaticCall/{identifier}', pathParams: {billingAccount: string, serviceName: string, identifier: string}): Promise<TelephonyCallsGenerated>;
-  /**
-  Line tones
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/tones', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTones>;
-  /**
-  phoneCanBeAssociable operations
-  List the phones with Sip slot available
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phoneCanBeAssociable', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyLinePhone[]>;
-  /**
-  defaultCodecs operations
-  Get the default codecs for this line if none are set
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/options/defaultCodecs', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
-  /**
-  Line options
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/options', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyLineOptions>;
-  /**
-  availableCodecs operations
-  List of codecs combinaisons available for this line
-  **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/options/availableCodecs', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
-  /**
-  List the telephony.Line objects
-  Lines associated with this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/line', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/serviceInfos', pathParams: {billingAccount: string}): Promise<ServicesService>;
-  /**
-  List the telephony.PhonebookMaster objects
-  Return phonebooks associated to this group
-  **/
-  public get(path: '/telephony/{billingAccount}/phonebook', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  Phone book on group
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/phonebook/{bookKey}', pathParams: {billingAccount: string, bookKey: string}): Promise<TelephonyPhonebookMaster>;
-  /**
-  export operations
-  Export the phonebook's contacts
-  **/
-  public get(path: '/telephony/{billingAccount}/phonebook/{bookKey}/export', pathParams: {billingAccount: string, bookKey: string}, queryParams: {format?: TelephonyContactsExportFormatsEnum}): Promise<TelephonyPcsFile>;
-  /**
-  Phone book contact
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}', pathParams: {billingAccount: string, bookKey: string, id: Number}): Promise<TelephonyPhonebookContact>;
-  /**
-  List the telephony.PhonebookContact objects
-  Phonebook contacts
-  **/
-  public get(path: '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact', pathParams: {billingAccount: string, bookKey: string}): Promise<Number[]>;
-  /**
-  routing operations
-  Get the status of the voicemail. Available only if the line has fax capabilities
-  **/
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings/routing', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyVoicefaxRoutingEnum>;
-  /**
-  Voicemail Properties
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyVoicemailProperties>;
-  /**
-  voicemailNumbers operations
-  Get number for internal and external voicemail
-  **/
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings/voicemailNumbers', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyVoicemailNumbers>;
-  /**
-  Voicemail service
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyVoicemail>;
-  /**
-  List the telephony.VoicemailGreetings objects
-  Voicemail greeting message properties
-  **/
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings', pathParams: {billingAccount: string, serviceName: string}, queryParams: {dir?: TelephonyVoicemailMessageFolderGreetingEnum}): Promise<Number[]>;
-  /**
-  Voicemail greeting
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyVoicemailGreetings>;
-  /**
-  download operations
-  Get a url to download the sound file
-  **/
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download', pathParams: {billingAccount: string, serviceName: string, id: Number}, queryParams: {format?: TelephonyServiceVoicemailAudioFormatEnum}): Promise<TelephonyPcsFile>;
-  /**
-  List the telephony.VoicemailMessages objects
-  Voicemail directory messages
-  **/
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories', pathParams: {billingAccount: string, serviceName: string}, queryParams: {dir?: TelephonyVoicemailMessageFolderDirectoryEnum}): Promise<Number[]>;
-  /**
-  download operations
-  Get a url to download the sound file
-  **/
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download', pathParams: {billingAccount: string, serviceName: string, id: Number}, queryParams: {format?: TelephonyServiceVoicemailAudioFormatEnum}): Promise<TelephonyPcsFile>;
-  /**
-  Voicemail message
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyVoicemailMessages>;
-  /**
-  List the telephony.Voicemail objects
-  Voicemails associated with this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/voicemail', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  List the telephony.OvhPabx objects
-  OVH calls queues and OVH IVRs (Interactive Voice Response) associated with this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  List the telephony.OvhPabxDialplan objects
-  Dialplans associated with this PABX
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  Dialplan
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number}): Promise<TelephonyOvhPabxDialplan>;
-  /**
-  List the telephony.OvhPabxDialplanExtension objects
-  Extensions contained in the dialplan
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number}): Promise<Number[]>;
-  /**
-  Dialplan rule
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, ruleId: Number}): Promise<TelephonyOvhPabxDialplanExtensionRule>;
-  /**
-  List the telephony.OvhPabxDialplanExtensionRule objects
-  Rules contained in the extension
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<Number[]>;
-  /**
-  List the telephony.OvhPabxDialplanExtensionConditionScreenList objects
-  Screenlist conditions checked when executing the extension
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<Number[]>;
-  /**
-  Screenlist condition
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, conditionId: Number}): Promise<TelephonyOvhPabxDialplanExtensionConditionScreenList>;
-  /**
-  List the telephony.OvhPabxDialplanExtensionConditionTime objects
-  Time conditions checked when executing the extension
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<Number[]>;
-  /**
-  Time condition
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, conditionId: Number}): Promise<TelephonyOvhPabxDialplanExtensionConditionTime>;
-  /**
-  Dialplan extension
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<TelephonyOvhPabxDialplanExtension>;
-  /**
-  List the telephony.OvhPabxTts objects
-  Text to Speech associated with this PABX
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  The PABX Text To Speech sounds
+  IVR Menu
   Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyOvhPabxTts>;
-  /**
-  OVH calls queues and OVH IVRs (Interactive Voice Response)
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabx>;
-  /**
-  List the telephony.OvhPabxRecord objects
-  Records associated with this PABX
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/records', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  The PABX records
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyOvhPabxRecord>;
-  /**
-  List the telephony.OvhPabxMenu objects
-  Menus associated with this PABX
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  List the telephony.OvhPabxMenuEntry objects
-  Menu entry
   **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry', pathParams: {billingAccount: string, serviceName: string, menuId: Number}): Promise<Number[]>;
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}', pathParams: {billingAccount: string, serviceName: string, menuId: Number}): Promise<TelephonyOvhPabxMenu>;
   /**
   IVR menu entry
   Get this object properties
   **/
   public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}', pathParams: {billingAccount: string, serviceName: string, menuId: Number, entryId: Number}): Promise<TelephonyOvhPabxMenuEntry>;
   /**
-  IVR Menu
-  Get this object properties
+  List the telephony.OvhPabxMenuEntry objects
+  Menu entry
   **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}', pathParams: {billingAccount: string, serviceName: string, menuId: Number}): Promise<TelephonyOvhPabxMenu>;
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry', pathParams: {billingAccount: string, serviceName: string, menuId: Number}): Promise<Number[]>;
   /**
-  Live statistics of the queue
+  List the telephony.OvhPabxMenu objects
+  Menus associated with this PABX
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  The PABX sounds
   Get this object properties
   **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveStatistics', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveStatistics>;
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}', pathParams: {billingAccount: string, serviceName: string, soundId: Number}): Promise<TelephonyOvhPabxSound>;
+  /**
+  List the telephony.OvhPabxSound objects
+  Sounds associated with this PABX
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  OVH calls queues and OVH IVRs (Interactive Voice Response)
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabx>;
+  /**
+  The PABX Text To Speech sounds
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyOvhPabxTts>;
+  /**
+  List the telephony.OvhPabxTts objects
+  Text to Speech associated with this PABX
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  The PABX records
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyOvhPabxRecord>;
+  /**
+  List the telephony.OvhPabxRecord objects
+  Records associated with this PABX
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/records', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
   /**
   Calls queue
   Get this object properties
   **/
   public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<TelephonyOvhPabxHuntingQueue>;
-  /**
-  List the telephony.OvhPabxHuntingQueueLiveCalls objects
-  Live calls of the queue
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<Number[]>;
-  /**
-  Live statistics of the queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveCalls>;
-  /**
-  List the telephony.OvhPabxHuntingAgentQueue objects
-  Agent assigned to the queue
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<Number[]>;
   /**
   Live statistics of the queue
   Get this object properties
@@ -6713,70 +6073,90 @@ export class ApiTelephony extends ApiCommon {
   **/
   public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgentQueue>;
   /**
+  List the telephony.OvhPabxHuntingAgentQueue objects
+  Agent assigned to the queue
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<Number[]>;
+  /**
+  Live statistics of the queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveStatistics', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveStatistics>;
+  /**
+  List the telephony.OvhPabxHuntingQueueLiveCalls objects
+  Live calls of the queue
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<Number[]>;
+  /**
+  Live statistics of the queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveCalls>;
+  /**
   List the telephony.OvhPabxHuntingQueue objects
   Calls queues
   **/
   public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
   /**
-  Live statistics of the queue
+  PABX Hunting
   Get this object properties
   **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/liveStatus', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgentLiveStatus>;
-  /**
-  Agent assigned to a queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<TelephonyOvhPabxHuntingAgentQueue>;
-  /**
-  Live statistics of the queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<TelephonyOvhPabxHuntingAgentLiveStatus>;
-  /**
-  List the telephony.OvhPabxHuntingAgentQueue objects
-  Agent assigned to the queues
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<Number[]>;
-  /**
-  Live statistics of the queue
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveCalls>;
-  /**
-  List the telephony.OvhPabxHuntingQueueLiveCalls objects
-  Current calls of the callcenter agent
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<Number[]>;
-  /**
-  Token associated to the service for live event
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyEventToken>;
-  /**
-  The web access for your cloudpabx
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyBannerAccess>;
-  /**
-  Calls agent
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgent>;
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHunting>;
   /**
   List the telephony.OvhPabxHuntingAgent objects
   Calls agents
   **/
   public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
   /**
+  Live statistics of the queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/liveStatus', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgentLiveStatus>;
+  /**
+  Calls agent
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgent>;
+  /**
+  Token associated to the service for live event
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyEventToken>;
+  /**
+  List the telephony.OvhPabxHuntingQueueLiveCalls objects
+  Current calls of the callcenter agent
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<Number[]>;
+  /**
+  Live statistics of the queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveCalls>;
+  /**
+  Live statistics of the queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<TelephonyOvhPabxHuntingAgentLiveStatus>;
+  /**
+  Agent assigned to a queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<TelephonyOvhPabxHuntingAgentQueue>;
+  /**
+  List the telephony.OvhPabxHuntingAgentQueue objects
+  Agent assigned to the queues
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<Number[]>;
+  /**
+  The web access for your cloudpabx
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyBannerAccess>;
+  /**
   Token associated to the service for live event
   Get this object properties
   **/
   public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEventToken>;
-  /**
-  PABX Hunting
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHunting>;
   /**
   Custom statuses of your callcenter agents
   Get this object properties
@@ -6788,265 +6168,80 @@ export class ApiTelephony extends ApiCommon {
   **/
   public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
   /**
-  List the telephony.OvhPabxSound objects
-  Sounds associated with this PABX
-  **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
-  /**
-  The PABX sounds
+  Screenlist condition
   Get this object properties
   **/
-  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}', pathParams: {billingAccount: string, serviceName: string, soundId: Number}): Promise<TelephonyOvhPabxSound>;
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, conditionId: Number}): Promise<TelephonyOvhPabxDialplanExtensionConditionScreenList>;
   /**
-  DDI (direct dial-in) service
+  List the telephony.OvhPabxDialplanExtensionConditionScreenList objects
+  Screenlist conditions checked when executing the extension
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<Number[]>;
+  /**
+  Dialplan extension
   Get this object properties
   **/
-  public get(path: '/telephony/{billingAccount}/ddi/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDdi>;
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<TelephonyOvhPabxDialplanExtension>;
   /**
-  List the telephony.Ddi objects
-  DDIs (direct dial-in) associated with this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/ddi', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  EasyPabx
+  Time condition
   Get this object properties
   **/
-  public get(path: '/telephony/{billingAccount}/easyPabx/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyPabx>;
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, conditionId: Number}): Promise<TelephonyOvhPabxDialplanExtensionConditionTime>;
   /**
-  Line tones
+  List the telephony.OvhPabxDialplanExtensionConditionTime objects
+  Time conditions checked when executing the extension
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<Number[]>;
+  /**
+  List the telephony.OvhPabxDialplanExtensionRule objects
+  Rules contained in the extension
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<Number[]>;
+  /**
+  Dialplan rule
   Get this object properties
   **/
-  public get(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTones>;
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, ruleId: Number}): Promise<TelephonyOvhPabxDialplanExtensionRule>;
   /**
-  EasyPabx Hunting
+  List the telephony.OvhPabxDialplanExtension objects
+  Extensions contained in the dialplan
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number}): Promise<Number[]>;
+  /**
+  Dialplan
   Get this object properties
   **/
-  public get(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyPabxHunting>;
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number}): Promise<TelephonyOvhPabxDialplan>;
   /**
-  Easy/Mini PABX agent
+  List the telephony.OvhPabxDialplan objects
+  Dialplans associated with this PABX
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  List the telephony.OvhPabx objects
+  OVH calls queues and OVH IVRs (Interactive Voice Response) associated with this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/ovhPabx', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  Token associated to the service for live event
   Get this object properties
   **/
-  public get(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}', pathParams: {billingAccount: string, serviceName: string, agentNumber: string}): Promise<TelephonyEasyMiniPabxHuntingAgent>;
+  public get(path: '/telephony/{billingAccount}/eventToken', pathParams: {billingAccount: string}): Promise<TelephonyEventToken>;
   /**
-  List the telephony.EasyMiniPabxHuntingAgent objects
-  Hunting agents
+  oldPhone operations
+  List old phones archived as they were not returned after an RMA
   **/
-  public get(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
-  /**
-  List the telephony.EasyPabx objects
-  EasyPabx associated with this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/easyPabx', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  billingAccountSite operations
-  Current billing account site (billing account features are overwritten by the site)
-  **/
-  public get(path: '/telephony/{billingAccount}/billingAccountSite', pathParams: {billingAccount: string}): Promise<string>;
-  /**
-  List the telephony.AbbreviatedNumberGroup objects
-  Abbreviated numbers for the billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/abbreviatedNumber', pathParams: {billingAccount: string}): Promise<Number[]>;
+  public get(path: '/telephony/{billingAccount}/oldPhone', pathParams: {billingAccount: string}): Promise<TelephonyPhone[]>;
   /**
   Abbreviated number
   Get this object properties
   **/
   public get(path: '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}', pathParams: {billingAccount: string, abbreviatedNumber: Number}): Promise<TelephonyAbbreviatedNumberGroup>;
   /**
-  List the telephony.Vxml objects
-  Vxml numbers associated with this billing account
+  List the telephony.AbbreviatedNumberGroup objects
+  Abbreviated numbers for the billing account
   **/
-  public get(path: '/telephony/{billingAccount}/vxml', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  Vxml Properties
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/vxml/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyVxmlProperties>;
-  /**
-  Vxml services
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/vxml/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyVxml>;
-  /**
-  amountSecurityDeposit operations
-  Give all amounts availables for your billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/amountSecurityDeposit', pathParams: {billingAccount: string}): Promise<OrderPrice[]>;
-  /**
-  Billing Account
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}', pathParams: {billingAccount: string}): Promise<TelephonyBillingAccount>;
-  /**
-  Operation on a telephony offer
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/offerTask/{taskId}', pathParams: {billingAccount: string, taskId: Number}): Promise<TelephonyOfferTask>;
-  /**
-  List the telephony.OfferTask objects
-  Operations on a telephony service's offer
-  **/
-  public get(path: '/telephony/{billingAccount}/offerTask', pathParams: {billingAccount: string}, queryParams: {status?: TelephonyTaskStatusEnum, action?: TelephonyOfferTaskActionEnum, type?: TelephonyOfferTaskTypeEnum}): Promise<Number[]>;
-  /**
-  file operations
-  Previous billed consumption files
-  **/
-  public get(path: '/telephony/{billingAccount}/historyConsumption/{date}/file', pathParams: {billingAccount: string, date: Date}, queryParams: {extension?: TelephonyBillDocument}): Promise<TelephonyPcsFile>;
-  /**
-  Previous billed consumptions
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/historyConsumption/{date}', pathParams: {billingAccount: string, date: Date}): Promise<TelephonyHistoryConsumption>;
-  /**
-  List the telephony.HistoryConsumption objects
-  Previous billed consumptions
-  **/
-  public get(path: '/telephony/{billingAccount}/historyConsumption', pathParams: {billingAccount: string}): Promise<Date[]>;
-  /**
-  Redirect service
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/redirect/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyRedirect>;
-  /**
-  List the telephony.Redirect objects
-  Redirects associated with this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/redirect', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  French value added services subject to the RSVA reform (Référentiel des numéros SVA)
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/rsva/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyRsva>;
-  /**
-  allowedRateCodes operations
-  Compatible rate codes related to this value added service
-  **/
-  public get(path: '/telephony/{billingAccount}/rsva/{serviceName}/allowedRateCodes', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyRateCodeInformation[]>;
-  /**
-  scheduledRateCode operations
-  New scheduled rate code related to this sva
-  **/
-  public get(path: '/telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDetailedRateCodeInformation>;
-  /**
-  currentRateCode operations
-  Current rate code related to this sva
-  **/
-  public get(path: '/telephony/{billingAccount}/rsva/{serviceName}/currentRateCode', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDetailedRateCodeInformation>;
-  /**
-  List the telephony.Rsva objects
-  Service concerned by the french RSVA reform
-  **/
-  public get(path: '/telephony/{billingAccount}/rsva', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  List the telephony.TelephonyService objects
-  Services associated with this billing account
-  **/
-  public get(path: '/telephony/{billingAccount}/service', pathParams: {billingAccount: string}): Promise<string[]>;
-  /**
-  Call which are repayable
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption/{consumptionId}', pathParams: {billingAccount: string, serviceName: string, consumptionId: Number}): Promise<TelephonyRepaymentConsumption>;
-  /**
-  List the telephony.RepaymentConsumption objects
-  Call which could be repayable
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'creationDatetime.from'?: Date, 'creationDatetime.to'?: Date}): Promise<Number[]>;
-  /**
-  List the telephony.PreviousVoiceConsumption objects
-  Call delivery records of the previous month.
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {planType?: TelephonyVoiceConsumptionPlanTypeEnum, destinationType?: TelephonyVoiceConsumptionDestinationTypeEnum, wayType?: TelephonyVoiceConsumptionWayTypeEnum, 'creationDatetime.to'?: Date, 'creationDatetime.from'?: Date}): Promise<Number[]>;
-  /**
-  Call delivery record of the previous month
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption/{consumptionId}', pathParams: {billingAccount: string, serviceName: string, consumptionId: Number}): Promise<TelephonyPreviousVoiceConsumption>;
-  /**
-  Operation on a telephony service
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/task/{taskId}', pathParams: {billingAccount: string, serviceName: string, taskId: Number}): Promise<TelephonyTask>;
-  /**
-  List the telephony.Task objects
-  Operations on a telephony service
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/task', pathParams: {billingAccount: string, serviceName: string}, queryParams: {status?: TelephonyTaskStatusEnum, action?: string, serviceType?: string}): Promise<Number[]>;
-  /**
-  Fax delivery record
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/faxConsumption/{consumptionId}', pathParams: {billingAccount: string, serviceName: string, consumptionId: Number}): Promise<TelephonyFaxConsumption>;
-  /**
-  List the telephony.FaxConsumption objects
-  Fax delivery records.
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/faxConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {wayType?: TelephonyFaxConsumptionWayTypeEnum, 'creationDatetime.from'?: Date, 'creationDatetime.to'?: Date}): Promise<Number[]>;
-  /**
-  Telephony service
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTelephonyService>;
-  /**
-  Operation on a telephony offer
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}', pathParams: {billingAccount: string, serviceName: string, taskId: Number}): Promise<TelephonyOfferTask>;
-  /**
-  List the telephony.OfferTask objects
-  Operations on a telephony service's offer
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/offerTask', pathParams: {billingAccount: string, serviceName: string}, queryParams: {status?: TelephonyTaskStatusEnum, action?: TelephonyOfferTaskActionEnum, type?: TelephonyOfferTaskTypeEnum}): Promise<Number[]>;
-  /**
-  offerChanges operations
-  List all available offer changes compatibilities
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/offerChanges', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyLineOffer[]>;
-  /**
-  Call delivery record
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}', pathParams: {billingAccount: string, serviceName: string, consumptionId: Number}): Promise<TelephonyVoiceConsumption>;
-  /**
-  Advanced diagnostic of the voice call
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}/callDiagnostics', pathParams: {billingAccount: string, serviceName: string, consumptionId: Number}): Promise<TelephonyCallDiagnostics>;
-  /**
-  List the telephony.VoiceConsumption objects
-  Call delivery records.
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {planType?: TelephonyVoiceConsumptionPlanTypeEnum, destinationType?: TelephonyVoiceConsumptionDestinationTypeEnum, wayType?: TelephonyVoiceConsumptionWayTypeEnum, 'creationDatetime.from'?: Date, 'creationDatetime.to'?: Date}): Promise<Number[]>;
-  /**
-  Token associated to the service for live event
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEventToken>;
-  /**
-  Offer change
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/offerChange', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOfferChange>;
-  /**
-  diagnosticReports operations
-  Get Relevant informations of the service detected from the MOS or the signal leg in SIP/MGCP protocol.
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/diagnosticReports', pathParams: {billingAccount: string, serviceName: string}, queryParams: {dayInterval?: TelephonyDiagnosticReportIndexEnum}): Promise<TelephonyDiagnosticReport[]>;
-  /**
-  Directory Informations
-  Get this object properties
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/directory', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDirectoryInfo>;
-  /**
-  getDirectoryServiceCode operations
-  Get directory service code from an APE code ( principal activity of the firm code )
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/directory/getDirectoryServiceCode', pathParams: {billingAccount: string, serviceName: string}, queryParams: {apeCode?: string}): Promise<TelephonyDirectoryHeadingPJ[]>;
-  /**
-  getWayTypes operations
-  Get all the way types availables
-  **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/directory/getWayTypes', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDirectoryWayType[]>;
+  public get(path: '/telephony/{billingAccount}/abbreviatedNumber', pathParams: {billingAccount: string}): Promise<Number[]>;
   /**
   List the telephony.Screen objects
   Screenlist compatible numbers associated with this billing account
@@ -7068,101 +6263,1031 @@ export class ApiTelephony extends ApiCommon {
   **/
   public get(path: '/telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyScreenList>;
   /**
-  Search a service with its domain, to get its billing account and type
-  Search a service with its domain, to get its billing account and type
-  **/
-  public get(path: '/telephony/searchServices', pathParams: null, queryParams: {axiom?: string}): Promise<TelephonyTelephonySearchService[]>;
-  /**
-  Operations about the VOIP service
-  List available services
-  **/
-  public get(path: '/telephony/trunks'): Promise<string[]>;
-  /**
-  Telephony service
+  Previous tollfree bill
   Get this object properties
   **/
-  public get(path: '/telephony/trunks/{serviceName}', pathParams: {serviceName: string}): Promise<TelephonyTelephonyGenericService>;
+  public get(path: '/telephony/{billingAccount}/historyTollfreeConsumption/{date}', pathParams: {billingAccount: string, date: string}): Promise<TelephonyHistoryTollfreeConsumption>;
+  /**
+  document operations
+  Get the csv document
+  **/
+  public get(path: '/telephony/{billingAccount}/historyTollfreeConsumption/{date}/document', pathParams: {billingAccount: string, date: string}): Promise<TelephonyPcsFile>;
+  /**
+  List the telephony.HistoryTollfreeConsumption objects
+  Previous tollfree bill
+  **/
+  public get(path: '/telephony/{billingAccount}/historyTollfreeConsumption', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  Operation on a telephony service
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/task/{taskId}', pathParams: {billingAccount: string, taskId: Number}): Promise<TelephonyTask>;
+  /**
+  List the telephony.Task objects
+  Operations on a telephony billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/task', pathParams: {billingAccount: string}, queryParams: {serviceType?: string, status?: TelephonyTaskStatusEnum, action?: string}): Promise<Number[]>;
+  /**
+  List the telephony.ConsumptionThreshold objects
+  Outplan notifications configured for this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/outplanNotification', pathParams: {billingAccount: string}): Promise<Number[]>;
+  /**
+  The outplan notifications configured for your billing account
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/outplanNotification/{id}', pathParams: {billingAccount: string, id: Number}): Promise<TelephonyConsumptionThreshold>;
+  /**
+  billingAccountSite operations
+  Current billing account site (billing account features are overwritten by the site)
+  **/
+  public get(path: '/telephony/{billingAccount}/billingAccountSite', pathParams: {billingAccount: string}): Promise<string>;
+  /**
+  List the telephony.Scheduler objects
+  Scheduled events
+  **/
+  public get(path: '/telephony/{billingAccount}/scheduler', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  Scheduler capable services
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/scheduler/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyScheduler>;
+  /**
+  List the telephony.SchedulerEvent objects
+  Custom events scheduled
+  **/
+  public get(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'dateStart.to'?: string, 'dateStart.from'?: string, 'dateEnd.from'?: string, categories?: TelephonySchedulerCategoryEnum, 'dateEnd.to'?: string}): Promise<string[]>;
+  /**
+  Scheduled event
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}', pathParams: {billingAccount: string, serviceName: string, uid: string}): Promise<TelephonySchedulerEvent>;
+  /**
+  Previous repayment bill
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/historyRepaymentConsumption/{date}', pathParams: {billingAccount: string, date: string}): Promise<TelephonyHistoryRepaymentConsumption>;
+  /**
+  document operations
+  Get the csv document
+  **/
+  public get(path: '/telephony/{billingAccount}/historyRepaymentConsumption/{date}/document', pathParams: {billingAccount: string, date: string}): Promise<TelephonyPcsFile>;
+  /**
+  List the telephony.HistoryRepaymentConsumption objects
+  Previous repayment bill
+  **/
+  public get(path: '/telephony/{billingAccount}/historyRepaymentConsumption', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  Conference
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/conference/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyConference>;
+  /**
+  List the telephony.ConferenceWebAccess objects
+  List your conference web access
+  **/
+  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/webAccess', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  List public web access of your conference
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyConferenceWebAccess>;
+  /**
+  informations operations
+  Get realtime conference informations
+  **/
+  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/informations', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyConferenceInformations>;
+  /**
+  Conference properties
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyConferenceProperties>;
+  /**
+  List the telephony.ConferenceHistory objects
+  List your past conferences for this number
+  **/
+  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/histories', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  List past conferences on your number
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/histories/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyConferenceHistory>;
+  /**
+  Conference service
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyConferenceParticipants>;
+  /**
+  List the telephony.ConferenceParticipants objects
+  Current participants of the associate conference
+  **/
+  public get(path: '/telephony/{billingAccount}/conference/{serviceName}/participants', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  List the telephony.Conference objects
+  Conferences associated with this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/conference', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/serviceInfos', pathParams: {billingAccount: string}): Promise<ServicesService>;
+  /**
+  List the telephony.Voicemail objects
+  Voicemails associated with this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/voicemail', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  routing operations
+  Get the status of the voicemail. Available only if the line has fax capabilities
+  **/
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings/routing', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyVoicefaxRoutingEnum>;
+  /**
+  voicemailNumbers operations
+  Get number for internal and external voicemail
+  **/
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings/voicemailNumbers', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyVoicemailNumbers>;
+  /**
+  Voicemail Properties
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyVoicemailProperties>;
+  /**
+  Voicemail service
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyVoicemail>;
+  /**
+  download operations
+  Get a url to download the sound file
+  **/
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download', pathParams: {billingAccount: string, serviceName: string, id: Number}, queryParams: {format?: TelephonyServiceVoicemailAudioFormatEnum}): Promise<TelephonyPcsFile>;
+  /**
+  Voicemail message
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyVoicemailMessages>;
+  /**
+  List the telephony.VoicemailMessages objects
+  Voicemail directory messages
+  **/
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories', pathParams: {billingAccount: string, serviceName: string}, queryParams: {dir?: TelephonyVoicemailMessageFolderDirectoryEnum}): Promise<Number[]>;
+  /**
+  download operations
+  Get a url to download the sound file
+  **/
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download', pathParams: {billingAccount: string, serviceName: string, id: Number}, queryParams: {format?: TelephonyServiceVoicemailAudioFormatEnum}): Promise<TelephonyPcsFile>;
+  /**
+  Voicemail greeting
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyVoicemailGreetings>;
+  /**
+  List the telephony.VoicemailGreetings objects
+  Voicemail greeting message properties
+  **/
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings', pathParams: {billingAccount: string, serviceName: string}, queryParams: {dir?: TelephonyVoicemailMessageFolderGreetingEnum}): Promise<Number[]>;
+  /**
+  List the telephony.Vxml objects
+  Vxml numbers associated with this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/vxml', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  Vxml services
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/vxml/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyVxml>;
+  /**
+  Vxml Properties
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/vxml/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyVxmlProperties>;
+  /**
+  allowedCreditThreshold operations
+  Get the allowed creditThreshold for this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/allowedCreditThreshold', pathParams: {billingAccount: string}): Promise<OrderPrice[]>;
+  /**
+  List the telephony.Fax objects
+  Faxes associated with this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/fax', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  Fax campaigns
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyFaxCampaign>;
+  /**
+  detail operations
+  Detail of the fax recipients by status
+  **/
+  public get(path: '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/detail', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyFaxCampaignDetail>;
+  /**
+  List the telephony.FaxCampaign objects
+  Fax campaigns of the associate fax
+  **/
+  public get(path: '/telephony/{billingAccount}/fax/{serviceName}/campaigns', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  Fax properties
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/fax/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyFaxProperties>;
+  /**
+  Fax ScreenLists
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/fax/{serviceName}/screenLists', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyFaxScreen>;
+  /**
+  Fax service
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/fax/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyFax>;
+  /**
+  dateCanBeChanged operations
+  Indicates whether or not the portability date can be changed
+  **/
+  public get(path: '/telephony/{billingAccount}/portability/{id}/dateCanBeChanged', pathParams: {billingAccount: string, id: Number}): Promise<boolean>;
+  /**
+  canBeExecuted operations
+  Indicates whether or not the portability can be executed
+  **/
+  public get(path: '/telephony/{billingAccount}/portability/{id}/canBeExecuted', pathParams: {billingAccount: string, id: Number}): Promise<boolean>;
+  /**
+  canBeCancelled operations
+  Indicates whether or not the portability can be cancelled
+  **/
+  public get(path: '/telephony/{billingAccount}/portability/{id}/canBeCancelled', pathParams: {billingAccount: string, id: Number}): Promise<boolean>;
+  /**
+  status operations
+  Indicates the current status of the portability, with a list of steps
+  **/
+  public get(path: '/telephony/{billingAccount}/portability/{id}/status', pathParams: {billingAccount: string, id: Number}): Promise<TelephonyPortabilityStep[]>;
+  /**
+  Portability informations
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/portability/{id}', pathParams: {billingAccount: string, id: Number}): Promise<TelephonyPortability>;
+  /**
+  relaunch operations
+  Indicates whether or not error can be fixed and portability can be relaunched
+  **/
+  public get(path: '/telephony/{billingAccount}/portability/{id}/relaunch', pathParams: {billingAccount: string, id: Number}): Promise<TelephonyPortabilityFixErrorPossibleParameters>;
+  /**
+  Document linked to a portability
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/portability/{id}/document/{documentId}', pathParams: {billingAccount: string, id: Number, documentId: Number}): Promise<TelephonyPortabilityDocument>;
+  /**
+  List the telephony.PortabilityDocument objects
+  Document linked to this portability
+  **/
+  public get(path: '/telephony/{billingAccount}/portability/{id}/document', pathParams: {billingAccount: string, id: Number}): Promise<Number[]>;
+  /**
+  List the telephony.Portability objects
+  Current number portabilities for this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/portability', pathParams: {billingAccount: string}): Promise<Number[]>;
+  /**
+  List the telephony.MiniPabx objects
+  Miniabx associated with this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/miniPabx', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  Easy/Mini PABX agent
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}', pathParams: {billingAccount: string, serviceName: string, agentNumber: string}): Promise<TelephonyEasyMiniPabxHuntingAgent>;
+  /**
+  List the telephony.EasyMiniPabxHuntingAgent objects
+  Hunting agents
+  **/
+  public get(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
+  /**
+  MiniPabx Hunting
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyMiniPabxHunting>;
+  /**
+  Line tones
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/tones', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTones>;
+  /**
+  MiniPabx
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/miniPabx/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyMiniPabx>;
+  /**
+  List the telephony.Line objects
+  Lines associated with this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/line', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  lastRegistrations operations
+  List the informations about the last registrations (i.e. IP, port, User-Agent...)
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/lastRegistrations', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyRegistrationInformations[]>;
+  /**
+  availableSipDomains operations
+  Listing of domains Sip availables
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/availableSipDomains', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
+  /**
+  listAssociablePhones operations
+  List phones with available slots where this line can be attached
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/listAssociablePhones', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyLinePhoneAssociable[]>;
+  /**
+  ips operations
+  Listing of last ips registry
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/ips', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDatetimeAndIpvalue[]>;
+  /**
+  antihack operations
+  Current list of numbers or short code numbers restricted by an auto antihack
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/antihack', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
+  /**
+  Line options
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/options', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyLineOptions>;
+  /**
+  availableCodecs operations
+  List of codecs combinaisons available for this line
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/options/availableCodecs', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
+  /**
+  defaultCodecs operations
+  Get the default codecs for this line if none are set
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/options/defaultCodecs', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
+  /**
+  offer operations
+  Return public offer property
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/offer', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyLineOffer>;
+  /**
+  simultaneousChannelsDetails operations
+  Details about simultaneous channels of this line.
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/simultaneousChannelsDetails', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonySimultaneousChannelsDetails>;
+  /**
+  phoneCanBeAssociable operations
+  List the phones with Sip slot available
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phoneCanBeAssociable', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyLinePhone[]>;
+  /**
+  merchandiseAvailable operations
+  List of available exchange merchandise brand
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/merchandiseAvailable', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyHardwareOffer[]>;
+  /**
+  List the telephony.Rma objects
+  Return Merchandise Authorisation associated
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
+  /**
+  Current Return Merchandise Authorisation
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}', pathParams: {billingAccount: string, serviceName: string, id: string}): Promise<TelephonyRma>;
+  /**
+  List the telephony.Phonebook objects
+  Return phonebooks associated
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
+  /**
+  List the telephony.PhonebookContact objects
+  Phonebook contacts
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact', pathParams: {billingAccount: string, serviceName: string, bookKey: string}): Promise<Number[]>;
+  /**
+  Phone book contact
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}', pathParams: {billingAccount: string, serviceName: string, bookKey: string, id: Number}): Promise<TelephonyPhonebookContact>;
+  /**
+  export operations
+  Export the phonebook's contacts
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export', pathParams: {billingAccount: string, serviceName: string, bookKey: string}, queryParams: {format?: TelephonyContactsExportFormatsEnum}): Promise<TelephonyPcsFile>;
+  /**
+  Phone book
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}', pathParams: {billingAccount: string, serviceName: string, bookKey: string}): Promise<TelephonyPhonebook>;
+  /**
+  availableFunction operations
+  List the available functions for the key
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction', pathParams: {billingAccount: string, serviceName: string, keyNum: Number}): Promise<string[]>;
+  /**
+  Plug & Phone function key
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}', pathParams: {billingAccount: string, serviceName: string, keyNum: Number}): Promise<TelephonyFunctionKey>;
+  /**
+  List the telephony.FunctionKey objects
+  Plug & Phone function keys
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  supportsPhonebook operations
+  Does the phone manages phonebooks?
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/supportsPhonebook', pathParams: {billingAccount: string, serviceName: string}): Promise<boolean>;
+  /**
+  adminCredentials operations
+  Returns the administration user and password of the phone if you are a VIP
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/adminCredentials', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyPhoneCredentials>;
+  /**
+  Plug & Phone
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyPhone>;
+  /**
+  maximumAvailableSimultaneousLines operations
+  Get the maximum available simultaneous lines for this line
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/maximumAvailableSimultaneousLines', pathParams: {billingAccount: string, serviceName: string}): Promise<Number>;
+  /**
+  User of the click 2 call
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyClick2CallUser>;
+  /**
+  List the telephony.Click2CallUser objects
+  User which can use click 2 call on the line
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/click2CallUser', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  List the telephony.CallsGenerated objects
+  Automatic Calls made by Calls Generator on this line
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/automaticCall', pathParams: {billingAccount: string, serviceName: string}): Promise<string[]>;
+  /**
+  Automatic Call made by Call Generator on this line
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/automaticCall/{identifier}', pathParams: {billingAccount: string, serviceName: string, identifier: string}): Promise<TelephonyCallsGenerated>;
+  /**
+  The PABX records
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/records/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyOvhPabxRecord>;
+  /**
+  List the telephony.OvhPabxRecord objects
+  The recordings of your line outgoing calls
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/records', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  statistics operations
+  Get statistics of the current line
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/statistics', pathParams: {billingAccount: string, serviceName: string}, queryParams: {type?: TelephonyLineStatisticsTypeEnum, timeframe?: TelephonyStatisticsTimeframeEnum}): Promise<ComplexTypeUnitAndValues<TelephonyTimestampAndValue>>;
+  /**
+  Line tones
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/tones', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTones>;
+  /**
+  Line service
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyLine>;
+  /**
+  activateNewPhone operations
+  Check if there is a new phone to activate and if it's possible, in case of phone switch
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/activateNewPhone', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  List the telephony.AbbreviatedNumber objects
+  Abbreviated numbers for the line
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  Abbreviated number
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}', pathParams: {billingAccount: string, serviceName: string, abbreviatedNumber: Number}): Promise<TelephonyAbbreviatedNumber>;
+  /**
+  List the telephony.trafficExtract objects
+  The traffic extracts (SIP only) of your line
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  Traffic extracts (SIP) of your line
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTrafficExtract>;
+  /**
+  canChangePassword operations
+  Ability to manage SIP password on this service
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/canChangePassword', pathParams: {billingAccount: string, serviceName: string}): Promise<boolean>;
+  /**
+  List the telephony.OvhPabxHuntingQueueLiveCalls objects
+  The current calls of your line
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/calls', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  Live statistics of the queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveCalls>;
+  /**
+  List the telephony.Rsva objects
+  Service concerned by the french RSVA reform
+  **/
+  public get(path: '/telephony/{billingAccount}/rsva', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  allowedRateCodes operations
+  Compatible rate codes related to this value added service
+  **/
+  public get(path: '/telephony/{billingAccount}/rsva/{serviceName}/allowedRateCodes', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyRateCodeInformation[]>;
+  /**
+  French value added services subject to the RSVA reform (Référentiel des numéros SVA)
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/rsva/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyRsva>;
+  /**
+  currentRateCode operations
+  Current rate code related to this sva
+  **/
+  public get(path: '/telephony/{billingAccount}/rsva/{serviceName}/currentRateCode', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDetailedRateCodeInformation>;
+  /**
+  scheduledRateCode operations
+  New scheduled rate code related to this sva
+  **/
+  public get(path: '/telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDetailedRateCodeInformation>;
+  /**
+  Billing Account
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}', pathParams: {billingAccount: string}): Promise<TelephonyBillingAccount>;
+  /**
+  List the telephony.EasyHunting objects
+  OVH easy calls queues associated with this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  List the telephony.EasyHuntingTimeConditions objects
+  Time conditions checked when a call is received
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions', pathParams: {billingAccount: string, serviceName: string}, queryParams: {policy?: TelephonyTimeConditionsPolicyEnum}): Promise<Number[]>;
+  /**
+  Easy hunting time conditions
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}', pathParams: {billingAccount: string, serviceName: string, conditionId: Number}): Promise<TelephonyEasyHuntingTimeConditions>;
+  /**
+  Easy hunting time conditions options
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyHuntingTimeConditionsSettings>;
+  /**
+  OVH easy calls queues
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyHunting>;
+  /**
+  Easy hunting screen lists conditions options
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyHuntingScreenListsConditionsSettings>;
+  /**
+  Screenlist condition
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}', pathParams: {billingAccount: string, serviceName: string, conditionId: Number}): Promise<TelephonyEasyHuntingScreenListsConditions>;
+  /**
+  List the telephony.EasyHuntingScreenListsConditions objects
+  Screen lists conditions checked when a call is received
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions', pathParams: {billingAccount: string, serviceName: string}, queryParams: {screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<Number[]>;
+  /**
+  List the telephony.OvhPabxRecord objects
+  Records associated with this PABX
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/records', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  The PABX records
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyOvhPabxRecord>;
+  /**
+  Live statistics of the queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveCalls>;
+  /**
+  List the telephony.OvhPabxHuntingQueueLiveCalls objects
+  Live calls of the queue
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<Number[]>;
+  /**
+  Live statistics of the queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveStatistics', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveStatistics>;
+  /**
+  Calls queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<TelephonyOvhPabxHuntingQueue>;
+  /**
+  Agent assigned to a queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgentQueue>;
+  /**
+  Live statistics of the queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus', pathParams: {billingAccount: string, serviceName: string, queueId: Number, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgentLiveStatus>;
+  /**
+  List the telephony.OvhPabxHuntingAgentQueue objects
+  Agent assigned to the queue
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<Number[]>;
+  /**
+  List the telephony.OvhPabxHuntingQueue objects
+  Calls queues
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  List the telephony.OvhPabxCustomStatus objects
+  Custom statuses of your agents
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  Custom statuses of your callcenter agents
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyOvhPabxCustomStatus>;
+  /**
+  Token associated to the service for live event
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEventToken>;
+  /**
+  List the telephony.OvhPabxHuntingQueueLiveCalls objects
+  Current calls of the callcenter agent
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<Number[]>;
+  /**
+  Live statistics of the queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyOvhPabxHuntingQueueLiveCalls>;
+  /**
+  Live statistics of the queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<TelephonyOvhPabxHuntingAgentLiveStatus>;
+  /**
+  Agent assigned to a queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<TelephonyOvhPabxHuntingAgentQueue>;
+  /**
+  List the telephony.OvhPabxHuntingAgentQueue objects
+  Agent assigned to the queues
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<Number[]>;
+  /**
+  The web access for your cloudpabx
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyBannerAccess>;
+  /**
+  Token associated to the service for live event
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyEventToken>;
+  /**
+  Calls agent
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgent>;
+  /**
+  Live statistics of the queue
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/liveStatus', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgentLiveStatus>;
+  /**
+  List the telephony.OvhPabxHuntingAgent objects
+  Calls agents
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  PABX Hunting
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHunting>;
+  /**
+  List the telephony.OvhPabxSound objects
+  Sounds associated with this PABX
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/sound', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  The PABX sounds
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}', pathParams: {billingAccount: string, serviceName: string, soundId: Number}): Promise<TelephonyOvhPabxSound>;
+  /**
+  List the telephony.GenericScreen objects
+  Time conditions compatible numbers associated with this billing account
+  **/
+  public get(path: '/telephony/{billingAccount}/timeCondition', pathParams: {billingAccount: string}): Promise<string[]>;
+  /**
+  Time conditions capable services
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/timeCondition/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyGenericScreen>;
+  /**
+  Time conditions options
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/options', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTimeConditionOptions>;
+  /**
+  List the telephony.TimeCondition objects
+  Rules for time conditions for this service
+  **/
+  public get(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition', pathParams: {billingAccount: string, serviceName: string}): Promise<Number[]>;
+  /**
+  Time conditions
+  Get this object properties
+  **/
+  public get(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTimeCondition>;
+  /**
+  Get all available SIP domains by country
+  Get all available SIP domains by country
+  **/
+  public get(path: '/telephony/availableDefaultSipDomains', pathParams: undefined, queryParams: {type?: TelephonySipDomainProductTypeEnum}): Promise<TelephonyDefaultSipDomains[]>;
   /**
   Details about a Service
   Get this object properties
   **/
   public get(path: '/telephony/trunks/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
-  Get all available special range from a country
-  Get all available special range from a country
-  **/
-  public get(path: '/telephony/number/ranges', pathParams: null, queryParams: {country?: TelephonyNumberCountryEnum}): Promise<string[]>;
-  /**
-  Get all available specific number from a country
-  Get all available specific number from a country
-  **/
-  public get(path: '/telephony/number/specificNumbers', pathParams: null, queryParams: {type?: TelephonyNumberTypeEnum, zone?: string, range?: string, country?: TelephonyNumberCountryEnum}): Promise<TelephonySpecificNumber[]>;
-  /**
-  Get all available geographic zone from a country
-  Get all available geographic zone from a country
-  **/
-  public get(path: '/telephony/number/zones', pathParams: null, queryParams: {country?: TelephonyNumberCountryEnum, axiom?: string}): Promise<string[]>;
-  /**
-  Get all available geographic zone with some details, from a country
-  Get all available geographic zone with some details, from a country
-  **/
-  public get(path: '/telephony/number/detailedZones', pathParams: null, queryParams: {axiom?: string, country?: TelephonyNumberCountryEnum}): Promise<TelephonyNumberDetailedZone[]>;
-  /**
-  Sounds attached to this telephony account
+  Telephony service
   Get this object properties
   **/
-  public get(path: '/telephony/sounds/{id}', pathParams: {id: Number}): Promise<TelephonySound>;
+  public get(path: '/telephony/trunks/{serviceName}', pathParams: {serviceName: string}): Promise<TelephonyTelephonyGenericService>;
+  /**
+  Operations about the VOIP service
+  List available services
+  **/
+  public get(path: '/telephony/trunks'): Promise<string[]>;
+  /**
+  Get current order ids
+  Get current order ids
+  **/
+  public get(path: '/telephony/currentOrderIds'): Promise<Number[]>;
   /**
   List the telephony.Sound objects
   Sounds attached to this telephony account
   **/
   public get(path: '/telephony/sounds'): Promise<Number[]>;
   /**
+  Sounds attached to this telephony account
+  Get this object properties
+  **/
+  public get(path: '/telephony/sounds/{id}', pathParams: {id: Number}): Promise<TelephonySound>;
+  /**
+  Get all available specific number from a country
+  Get all available specific number from a country
+  **/
+  public get(path: '/telephony/number/specificNumbers', pathParams: undefined, queryParams: {range?: string, zone?: string, type?: TelephonyNumberTypeEnum, country?: TelephonyNumberCountryEnum}): Promise<TelephonySpecificNumber[]>;
+  /**
+  Get all available geographic zone with some details, from a country
+  Get all available geographic zone with some details, from a country
+  **/
+  public get(path: '/telephony/number/detailedZones', pathParams: undefined, queryParams: {axiom?: string, country?: TelephonyNumberCountryEnum}): Promise<TelephonyNumberDetailedZone[]>;
+  /**
+  Get all available special range from a country
+  Get all available special range from a country
+  **/
+  public get(path: '/telephony/number/ranges', pathParams: undefined, queryParams: {country?: TelephonyNumberCountryEnum}): Promise<string[]>;
+  /**
+  Get all available geographic zone from a country
+  Get all available geographic zone from a country
+  **/
+  public get(path: '/telephony/number/zones', pathParams: undefined, queryParams: {country?: TelephonyNumberCountryEnum, axiom?: string}): Promise<string[]>;
+  /**
+  Get all available fax offer compatible
+  Get all available fax offer compatible
+  **/
+  public get(path: '/telephony/fax/offers', pathParams: undefined, queryParams: {country?: TelephonyNumberCountryEnum}): Promise<TelephonyLineOffer[]>;
+  /**
+  Operations about the VOIP service
+  List available services
+  **/
+  public get(path: '/telephony/aliases'): Promise<string[]>;
+  /**
+  Telephony service
+  Get this object properties
+  **/
+  public get(path: '/telephony/aliases/{serviceName}', pathParams: {serviceName: string}): Promise<TelephonyTelephonyGenericService>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/telephony/aliases/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  Get all available accessories
+  Get all available accessories
+  **/
+  public get(path: '/telephony/accessories', pathParams: undefined, queryParams: {country?: TelephonyNumberCountryEnum}): Promise<TelephonyAccessoryOffer[]>;
+  /**
   Get all zip codes compatible for a number
   Get all zip codes compatible for a number
   **/
-  public get(path: '/telephony/directories/availableZipCodes', pathParams: null, queryParams: {country?: TelephonyNumberCountryEnum, number?: string}): Promise<string[]>;
+  public get(path: '/telephony/directories/availableZipCodes', pathParams: undefined, queryParams: {country?: TelephonyNumberCountryEnum, number?: string}): Promise<string[]>;
   /**
   Get city informations from a zip code
   Get city informations from a zip code
   **/
-  public get(path: '/telephony/directories/cities', pathParams: null, queryParams: {zipCode?: string, country?: TelephonyNumberCountryEnum}): Promise<TelephonyCity[]>;
+  public get(path: '/telephony/directories/cities', pathParams: undefined, queryParams: {zipCode?: string, country?: TelephonyNumberCountryEnum}): Promise<TelephonyCity[]>;
   /**
   Operations about the VOIP service
   List available services
   **/
   public get(path: '/telephony'): Promise<string[]>;
   /**
-  Get all available accessories
-  Get all available accessories
+  Details about a Service
+  Get this object properties
   **/
-  public get(path: '/telephony/accessories', pathParams: null, queryParams: {country?: TelephonyNumberCountryEnum}): Promise<TelephonyAccessoryOffer[]>;
+  public get(path: '/telephony/lines/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
-  Get all available fax offer compatible
-  Get all available fax offer compatible
+  Telephony service
+  Get this object properties
   **/
-  public get(path: '/telephony/fax/offers', pathParams: null, queryParams: {country?: TelephonyNumberCountryEnum}): Promise<TelephonyLineOffer[]>;
-  public get(path: PathsTelephonyGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/telephony/lines/{serviceName}', pathParams: {serviceName: string}): Promise<TelephonyTelephonyGenericService>;
+  /**
+  Operations about the VOIP service
+  List available services
+  **/
+  public get(path: '/telephony/lines'): Promise<string[]>;
+  /**
+  Get all available phone brands compatible with lines
+  Get all available phone brands compatible with lines
+  **/
+  public get(path: '/telephony/line/offer/phones', pathParams: undefined, queryParams: {country?: TelephonyNumberCountryEnum, offer?: string}): Promise<TelephonyLinePhone[]>;
+  /**
+  Get all available line offer compatible
+  Get all available line offer compatible
+  **/
+  public get(path: '/telephony/line/offers', pathParams: undefined, queryParams: {country?: TelephonyNumberCountryEnum}): Promise<TelephonyLineOffer[]>;
+  public get(path: PathsTelephonyGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
   public put(path: '/telephony/spare/{spare}/serviceInfos', pathParams: {spare: string}): Promise<void>;
   /**
-  Details about a Service
+  Operation on a telephony offer
   Alter this object properties
   **/
-  public put(path: '/telephony/lines/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}', pathParams: {billingAccount: string, serviceName: string, taskId: Number}): Promise<void>;
   /**
-  Details about a Service
+  Directory Informations
   Alter this object properties
   **/
-  public put(path: '/telephony/aliases/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/service/{serviceName}/directory', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Telephony service
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/service/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Phone book contact
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}', pathParams: {billingAccount: string, bookKey: string, id: Number}): Promise<void>;
+  /**
+  Phone book on group
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/phonebook/{bookKey}', pathParams: {billingAccount: string, bookKey: string}): Promise<void>;
+  /**
+  Operation on a telephony offer
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/offerTask/{taskId}', pathParams: {billingAccount: string, taskId: Number}): Promise<void>;
+  /**
+  DDI (direct dial-in) service
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ddi/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
   Additional number
   Alter this object properties
   **/
   public put(path: '/telephony/{billingAccount}/number/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  EasyPabx
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Line tones
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Easy/Mini PABX agent
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}', pathParams: {billingAccount: string, serviceName: string, agentNumber: string}): Promise<void>;
+  /**
+  EasyPabx Hunting
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Redirect service
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/redirect/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  IVR Menu
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}', pathParams: {billingAccount: string, serviceName: string, menuId: Number}): Promise<void>;
+  /**
+  IVR menu entry
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}', pathParams: {billingAccount: string, serviceName: string, menuId: Number, entryId: Number}): Promise<void>;
+  /**
+  OVH calls queues and OVH IVRs (Interactive Voice Response)
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  The PABX Text To Speech sounds
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
+  Calls queue
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<void>;
+  /**
+  Agent assigned to a queue
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, agentId: Number}): Promise<void>;
+  /**
+  PABX Hunting
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Calls agent
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<void>;
+  /**
+  Agent assigned to a queue
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<void>;
+  /**
+  Dialplan extension
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<void>;
+  /**
+  Time condition
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, conditionId: Number}): Promise<void>;
+  /**
+  Dialplan rule
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, ruleId: Number}): Promise<void>;
+  /**
+  Dialplan
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number}): Promise<void>;
+  /**
+  Abbreviated number
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}', pathParams: {billingAccount: string, abbreviatedNumber: Number}): Promise<void>;
+  /**
+  ScreenList capable services
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/screen/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
   Scheduler capable services
   Alter this object properties
@@ -7174,20 +7299,30 @@ export class ApiTelephony extends ApiCommon {
   **/
   public put(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}', pathParams: {billingAccount: string, serviceName: string, uid: string}): Promise<void>;
   /**
-  Time conditions options
+  Conference properties
   Alter this object properties
   **/
-  public put(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/options', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/conference/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  Time conditions
+  Details about a Service
   Alter this object properties
   **/
-  public put(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/serviceInfos', pathParams: {billingAccount: string}): Promise<void>;
   /**
-  Document linked to a portability
+  Voicemail Properties
   Alter this object properties
   **/
-  public put(path: '/telephony/{billingAccount}/portability/{id}/document/{documentId}', pathParams: {billingAccount: string, id: Number, documentId: Number}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Voicemail service
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/voicemail/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Vxml Properties
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/vxml/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
   Fax properties
   Alter this object properties
@@ -7204,10 +7339,10 @@ export class ApiTelephony extends ApiCommon {
   **/
   public put(path: '/telephony/{billingAccount}/fax/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  MiniPabx
+  Document linked to a portability
   Alter this object properties
   **/
-  public put(path: '/telephony/{billingAccount}/miniPabx/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/portability/{id}/document/{documentId}', pathParams: {billingAccount: string, id: Number, documentId: Number}): Promise<void>;
   /**
   Easy/Mini PABX agent
   Alter this object properties
@@ -7224,20 +7359,65 @@ export class ApiTelephony extends ApiCommon {
   **/
   public put(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/tones', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  Conference properties
+  MiniPabx
   Alter this object properties
   **/
-  public put(path: '/telephony/{billingAccount}/conference/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/miniPabx/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  Screenlist condition
+  Line options
   Alter this object properties
   **/
-  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}', pathParams: {billingAccount: string, serviceName: string, conditionId: Number}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}/options', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  Easy hunting screen lists conditions options
+  Current Return Merchandise Authorisation
   Alter this object properties
   **/
-  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}', pathParams: {billingAccount: string, serviceName: string, id: string}): Promise<void>;
+  /**
+  Phone book contact
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}', pathParams: {billingAccount: string, serviceName: string, bookKey: string, id: Number}): Promise<void>;
+  /**
+  Phone book
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}', pathParams: {billingAccount: string, serviceName: string, bookKey: string}): Promise<void>;
+  /**
+  Plug & Phone function key
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}', pathParams: {billingAccount: string, serviceName: string, keyNum: Number}): Promise<void>;
+  /**
+  Plug & Phone
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Line tones
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}/tones', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Line service
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Abbreviated number
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}', pathParams: {billingAccount: string, serviceName: string, abbreviatedNumber: Number}): Promise<void>;
+  /**
+  French value added services subject to the RSVA reform (Référentiel des numéros SVA)
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/rsva/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Billing Account
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}', pathParams: {billingAccount: string}): Promise<void>;
   /**
   Easy hunting time conditions
   Alter this object properties
@@ -7254,6 +7434,26 @@ export class ApiTelephony extends ApiCommon {
   **/
   public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
+  Easy hunting screen lists conditions options
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Screenlist condition
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}', pathParams: {billingAccount: string, serviceName: string, conditionId: Number}): Promise<void>;
+  /**
+  Calls queue
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<void>;
+  /**
+  Agent assigned to a queue
+  Alter this object properties
+  **/
+  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, agentId: Number}): Promise<void>;
+  /**
   Agent assigned to a queue
   Alter this object properties
   **/
@@ -7264,230 +7464,20 @@ export class ApiTelephony extends ApiCommon {
   **/
   public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<void>;
   /**
-  Agent assigned to a queue
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, agentId: Number}): Promise<void>;
-  /**
-  Calls queue
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<void>;
-  /**
   PABX Hunting
   Alter this object properties
   **/
   public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  Line service
+  Time conditions options
   Alter this object properties
   **/
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/options', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  Current Return Merchandise Authorisation
+  Time conditions
   Alter this object properties
   **/
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}', pathParams: {billingAccount: string, serviceName: string, id: string}): Promise<void>;
-  /**
-  Plug & Phone function key
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}', pathParams: {billingAccount: string, serviceName: string, keyNum: Number}): Promise<void>;
-  /**
-  Phone book
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}', pathParams: {billingAccount: string, serviceName: string, bookKey: string}): Promise<void>;
-  /**
-  Phone book contact
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}', pathParams: {billingAccount: string, serviceName: string, bookKey: string, id: Number}): Promise<void>;
-  /**
-  Plug & Phone
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Abbreviated number
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}', pathParams: {billingAccount: string, serviceName: string, abbreviatedNumber: Number}): Promise<void>;
-  /**
-  Line tones
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}/tones', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Line options
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}/options', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Details about a Service
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/serviceInfos', pathParams: {billingAccount: string}): Promise<void>;
-  /**
-  Phone book on group
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/phonebook/{bookKey}', pathParams: {billingAccount: string, bookKey: string}): Promise<void>;
-  /**
-  Phone book contact
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}', pathParams: {billingAccount: string, bookKey: string, id: Number}): Promise<void>;
-  /**
-  Voicemail Properties
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Voicemail service
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/voicemail/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Dialplan
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number}): Promise<void>;
-  /**
-  Dialplan rule
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, ruleId: Number}): Promise<void>;
-  /**
-  Time condition
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, conditionId: Number}): Promise<void>;
-  /**
-  Dialplan extension
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<void>;
-  /**
-  The PABX Text To Speech sounds
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
-  /**
-  OVH calls queues and OVH IVRs (Interactive Voice Response)
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  IVR menu entry
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}', pathParams: {billingAccount: string, serviceName: string, menuId: Number, entryId: Number}): Promise<void>;
-  /**
-  IVR Menu
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}', pathParams: {billingAccount: string, serviceName: string, menuId: Number}): Promise<void>;
-  /**
-  Calls queue
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<void>;
-  /**
-  Agent assigned to a queue
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, agentId: Number}): Promise<void>;
-  /**
-  Agent assigned to a queue
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<void>;
-  /**
-  Calls agent
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<void>;
-  /**
-  PABX Hunting
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  DDI (direct dial-in) service
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/ddi/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  EasyPabx
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Line tones
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  EasyPabx Hunting
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Easy/Mini PABX agent
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}', pathParams: {billingAccount: string, serviceName: string, agentNumber: string}): Promise<void>;
-  /**
-  Abbreviated number
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}', pathParams: {billingAccount: string, abbreviatedNumber: Number}): Promise<void>;
-  /**
-  Vxml Properties
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/vxml/{serviceName}/settings', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Billing Account
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}', pathParams: {billingAccount: string}): Promise<void>;
-  /**
-  Operation on a telephony offer
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/offerTask/{taskId}', pathParams: {billingAccount: string, taskId: Number}): Promise<void>;
-  /**
-  Redirect service
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/redirect/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  French value added services subject to the RSVA reform (Référentiel des numéros SVA)
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/rsva/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Telephony service
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/service/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Operation on a telephony offer
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}', pathParams: {billingAccount: string, serviceName: string, taskId: Number}): Promise<void>;
-  /**
-  Directory Informations
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/service/{serviceName}/directory', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  ScreenList capable services
-  Alter this object properties
-  **/
-  public put(path: '/telephony/{billingAccount}/screen/{serviceName}', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
@@ -7498,62 +7488,107 @@ export class ApiTelephony extends ApiCommon {
   Alter this object properties
   **/
   public put(path: '/telephony/sounds/{id}', pathParams: {id: Number}): Promise<void>;
-  public put(path: PathsTelephonyPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  /**
+  Details about a Service
+  Alter this object properties
+  **/
+  public put(path: '/telephony/aliases/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  Details about a Service
+  Alter this object properties
+  **/
+  public put(path: '/telephony/lines/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsTelephonyPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   replace operations
   Replace the phone by its spare. The broken phone became a spare if it was bought. An RMA is created if the broken phone is under securitydeposit.
   **/
   public post(path: '/telephony/spare/{spare}/replace', pathParams: {spare: string}): Promise<void>;
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
+  Offer change
+  Add a new offer change
   **/
-  public post(path: '/telephony/lines/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  public post(path: '/telephony/{billingAccount}/service/{serviceName}/offerChange', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  cancelTermination operations
+  Cancel the service termination
+  **/
+  public post(path: '/telephony/{billingAccount}/service/{serviceName}/cancelTermination', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  fetchEntrepriseInformations operations
+  Get company entreprise informations by providing entreprise number
+  **/
+  public post(path: '/telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEntrepriseNumberInformationsTask>;
+  /**
+  changeOfBillingAccount operations
+  Move a service of billing account. Source and destination nics should be the same.
+  **/
+  public post(path: '/telephony/{billingAccount}/service/{serviceName}/changeOfBillingAccount', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Token associated to the service for live event
+  Create a new token
+  **/
+  public post(path: '/telephony/{billingAccount}/service/{serviceName}/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/telephony/aliases/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  public post(path: '/telephony/{billingAccount}/changeContact', pathParams: {billingAccount: string}): Promise<Number[]>;
   /**
-  Get all available SIP domains by country
-  Get all available SIP domains by country
+  List the telephony.PhonebookContact objects
+  Create a phonebook contact. Return identifier of the phonebook contact.
   **/
-  public post(path: '/telephony/setDefaultSipDomain'): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact', pathParams: {billingAccount: string, bookKey: string}): Promise<Number>;
   /**
-  changeFeatureType operations
-  Change the feature type of the phone number
+  import operations
+  Import a contacts file. Supported formats are Excel (.xls and .xlsx) and CSV
   **/
-  public post(path: '/telephony/{billingAccount}/number/{serviceName}/changeFeatureType', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/phonebook/{bookKey}/import', pathParams: {billingAccount: string, bookKey: string}): Promise<TelephonyTask>;
   /**
-  convertToLine operations
-  Schedule a conversion to line
+  List the telephony.PhonebookMaster objects
+  Add a phonebook on group. Return the bookKey.
   **/
-  public post(path: '/telephony/{billingAccount}/number/{serviceName}/convertToLine', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOfferTask>;
+  public post(path: '/telephony/{billingAccount}/phonebook', pathParams: {billingAccount: string}): Promise<string>;
+  /**
+  changeDestination operations
+  Change the destination of the DDI
+  **/
+  public post(path: '/telephony/{billingAccount}/ddi/{serviceName}/changeDestination', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
   /**
   cancelConvertToLine operations
   Cancel a scheduled conversion to line
   **/
   public post(path: '/telephony/{billingAccount}/number/{serviceName}/cancelConvertToLine', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  importIcsCalendar operations
-  Add scheduler events in ICS format
+  convertToLine operations
+  Schedule a conversion to line
   **/
-  public post(path: '/telephony/{billingAccount}/scheduler/{serviceName}/importIcsCalendar', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/number/{serviceName}/convertToLine', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOfferTask>;
   /**
-  List the telephony.SchedulerEvent objects
-  Add a scheduler event
+  changeFeatureType operations
+  Change the feature type of the phone number
   **/
-  public post(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/number/{serviceName}/changeFeatureType', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
   /**
-  List the telephony.TimeCondition objects
-  Create a new time condition rule
+  toneUpload operations
+  Upload new tone file
   **/
-  public post(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTimeCondition>;
+  public post(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
   /**
-  List the telephony.HistoryRepaymentConsumption objects
-  Ask for a new repayment
+  List the telephony.EasyMiniPabxHuntingAgent objects
+  Create a new agent
   **/
-  public post(path: '/telephony/{billingAccount}/historyRepaymentConsumption', pathParams: {billingAccount: string}): Promise<TelephonyHistoryRepaymentConsumption>;
+  public post(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyMiniPabxHuntingAgent>;
+  /**
+  transferSecurityDeposit operations
+  Transfer security deposit between two billing accounts
+  **/
+  public post(path: '/telephony/{billingAccount}/transferSecurityDeposit', pathParams: {billingAccount: string}): Promise<void>;
+  /**
+  changeDestination operations
+  Change the destination of the redirect
+  **/
+  public post(path: '/telephony/{billingAccount}/redirect/{serviceName}/changeDestination', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
   /**
   List the telephony.TrunkExternalDisplayedNumber objects
   External displayed number creation for a given trunk
@@ -7565,50 +7600,280 @@ export class ApiTelephony extends ApiCommon {
   **/
   public post(path: '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}/validate', pathParams: {billingAccount: string, serviceName: string, number: string}): Promise<TelephonyTrunkExternalDisplayedNumberValidation>;
   /**
-  List the telephony.PortabilityDocument objects
-  Create a portability document
+  List the telephony.OvhPabxMenuEntry objects
+  Create a new menu entry
   **/
-  public post(path: '/telephony/{billingAccount}/portability/{id}/document', pathParams: {billingAccount: string, id: Number}): Promise<TelephonyPortabilityDocument>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry', pathParams: {billingAccount: string, serviceName: string, menuId: Number}): Promise<TelephonyOvhPabxMenuEntry>;
   /**
-  relaunch operations
-  Fix error and relaunch portability
+  List the telephony.OvhPabxMenu objects
+  Create a new menu
   **/
-  public post(path: '/telephony/{billingAccount}/portability/{id}/relaunch', pathParams: {billingAccount: string, id: Number}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxMenu>;
   /**
-  changeDate operations
-  Ask to change the portability date
+  List the telephony.OvhPabxTts objects
+  Create a new text to speech
   **/
-  public post(path: '/telephony/{billingAccount}/portability/{id}/changeDate', pathParams: {billingAccount: string, id: Number}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  execute operations
-  Ask to execute the portability
+  soundUpload operations
+  Upload new sound file
   **/
-  public post(path: '/telephony/{billingAccount}/portability/{id}/execute', pathParams: {billingAccount: string, id: Number}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/soundUpload', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
   /**
-  cancel operations
-  Ask to cancel the portability
+  List the telephony.OvhPabxHuntingAgentQueue objects
+  Create a new skill for an agent (it adds the agent in a queue)
   **/
-  public post(path: '/telephony/{billingAccount}/portability/{id}/cancel', pathParams: {billingAccount: string, id: Number}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHuntingAgentQueue>;
+  /**
+  transfer operations
+  Transfer an answered call
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  eavesdrop operations
+  Eavesdrop on a call
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  hold operations
+  Toogle hold on call
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  hangup operations
+  Hangup a call
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  intercept operations
+  Intercept a non answered call
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  whisper operations
+  Whisper on a call
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  List the telephony.OvhPabxHuntingQueue objects
+  Create a new queue
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHuntingQueue>;
+  /**
+  List the telephony.OvhPabxHuntingAgent objects
+  Create a new agent
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHuntingAgent>;
+  /**
+  Token associated to the service for live event
+  Create a new token
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<string>;
+  /**
+  eavesdrop operations
+  Eavesdrop on a call
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  hold operations
+  Toogle hold on call
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  transfer operations
+  Transfer an answered call
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  whisper operations
+  Whisper on a call
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  intercept operations
+  Intercept a non answered call
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  hangup operations
+  Hangup a call
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  List the telephony.OvhPabxHuntingAgentQueue objects
+  Create a new skill for an agent (it adds the agent in a queue)
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgentQueue>;
+  /**
+  The web access for your cloudpabx
+  Create a new web access for this ressource
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyBannerAccess>;
+  /**
+  Token associated to the service for live event
+  Create a new token
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
+  /**
+  List the telephony.OvhPabxCustomStatus objects
+  Create a new custom status
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxCustomStatus>;
+  /**
+  List the telephony.OvhPabxDialplanExtensionConditionScreenList objects
+  Create a new screenlist condition for an extension
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<TelephonyOvhPabxDialplanExtensionConditionScreenList>;
+  /**
+  List the telephony.OvhPabxDialplanExtensionConditionTime objects
+  Create a new time condition for an extension
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<TelephonyOvhPabxDialplanExtensionConditionTime>;
+  /**
+  List the telephony.OvhPabxDialplanExtensionRule objects
+  Create a new rule for an extension
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<TelephonyOvhPabxDialplanExtensionRule>;
+  /**
+  List the telephony.OvhPabxDialplanExtension objects
+  Create a new extension for a dialplan
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number}): Promise<TelephonyOvhPabxDialplanExtension>;
+  /**
+  List the telephony.OvhPabxDialplan objects
+  Create a new dialplan
+  **/
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxDialplan>;
+  /**
+  Token associated to the service for live event
+  Create a new token
+  **/
+  public post(path: '/telephony/{billingAccount}/eventToken', pathParams: {billingAccount: string}): Promise<string>;
+  /**
+  List the telephony.AbbreviatedNumberGroup objects
+  Create a new abbreviated number for the billing account
+  **/
+  public post(path: '/telephony/{billingAccount}/abbreviatedNumber', pathParams: {billingAccount: string}): Promise<TelephonyAbbreviatedNumberGroup>;
+  /**
+  List the telephony.ScreenList objects
+  Create a new screen list rule
+  **/
+  public post(path: '/telephony/{billingAccount}/screen/{serviceName}/screenLists', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  List the telephony.ConsumptionThreshold objects
+  Add an outplan notification on the billing account
+  **/
+  public post(path: '/telephony/{billingAccount}/outplanNotification', pathParams: {billingAccount: string}): Promise<TelephonyConsumptionThreshold>;
+  /**
+  billingAccountSite operations
+  Used to overwrite current billing account feature by the billing account site
+  **/
+  public post(path: '/telephony/{billingAccount}/billingAccountSite', pathParams: {billingAccount: string}): Promise<void>;
+  /**
+  importIcsCalendar operations
+  Add scheduler events in ICS format
+  **/
+  public post(path: '/telephony/{billingAccount}/scheduler/{serviceName}/importIcsCalendar', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
+  /**
+  List the telephony.SchedulerEvent objects
+  Add a scheduler event
+  **/
+  public post(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  List the telephony.HistoryRepaymentConsumption objects
+  Ask for a new repayment
+  **/
+  public post(path: '/telephony/{billingAccount}/historyRepaymentConsumption', pathParams: {billingAccount: string}): Promise<TelephonyHistoryRepaymentConsumption>;
+  /**
+  unlock operations
+  Lock the conference room
+  **/
+  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/unlock', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
+  /**
+  List the telephony.ConferenceWebAccess objects
+  Add a public web access to your conference
+  **/
+  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/webAccess', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyConferenceWebAccess>;
+  /**
+  lock operations
+  Lock the conference room
+  **/
+  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/lock', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
+  /**
+  announceUpload operations
+  Change the sound played at the beginning of the conference
+  **/
+  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/announceUpload', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
+  /**
+  mute operations
+  Mute a participant in your conference room
+  **/
+  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/mute', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  /**
+  deaf operations
+  Make a participant deaf in your conference room
+  **/
+  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/deaf', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  /**
+  energy operations
+  Change a participant level of audio transmission
+  **/
+  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/energy', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  /**
+  unmute operations
+  Unmute a participant in your conference room
+  **/
+  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/unmute', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  /**
+  undeaf operations
+  Make a participant undeaf your conference room
+  **/
+  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/undeaf', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  /**
+  kick operations
+  Eject a participant from your conference room
+  **/
+  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/kick', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
   /**
   changePassword operations
-  Generates a new password for your fax account
+  Change the voicemail password. It must be 4 digit
   **/
-  public post(path: '/telephony/{billingAccount}/fax/{serviceName}/settings/changePassword', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
+  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changePassword', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  sendFax operations
-  Send a fax
+  changeRouting operations
+  Disable/Enable voicemail. Available only if the line has fax capabilities
   **/
-  public post(path: '/telephony/{billingAccount}/fax/{serviceName}/settings/sendFax', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  Fax ScreenLists
-  Create a new fax ScreenLists
+  move operations
+  Move the message to another directory
   **/
-  public post(path: '/telephony/{billingAccount}/fax/{serviceName}/screenLists', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyFaxScreen>;
+  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
   /**
-  reset operations
-  Reset a specifical fax screenList
+  move operations
+  Move the message to another directory
   **/
-  public post(path: '/telephony/{billingAccount}/fax/{serviceName}/screenLists/reset', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
+  List the telephony.VoicemailGreetings objects
+  Upload a new sound for a specific greeting. Return a task id.
+  **/
+  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings', pathParams: {billingAccount: string, serviceName: string}): Promise<Number>;
+  /**
+  migrateOnNewVersion operations
+  Change the voicemail on a new version to manager greetings, directories and extra settings.
+  **/
+  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/migrateOnNewVersion', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  logs operations
+  Generate a temporary url to retrieve device logs
+  **/
+  public post(path: '/telephony/{billingAccount}/vxml/{serviceName}/settings/logs', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTemporaryLogsLink>;
+  /**
+  canTransferSecurityDeposit operations
+  Check if security deposit transfer is possible between two billing accounts
+  **/
+  public post(path: '/telephony/{billingAccount}/canTransferSecurityDeposit', pathParams: {billingAccount: string}): Promise<boolean>;
   /**
   start operations
   Start a fax campaign
@@ -7625,15 +7890,50 @@ export class ApiTelephony extends ApiCommon {
   **/
   public post(path: '/telephony/{billingAccount}/fax/{serviceName}/campaigns', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyFaxCampaign>;
   /**
-  Token associated to the service for live event
-  Create a new token
+  changePassword operations
+  Generates a new password for your fax account
   **/
-  public post(path: '/telephony/{billingAccount}/eventToken', pathParams: {billingAccount: string}): Promise<string>;
+  public post(path: '/telephony/{billingAccount}/fax/{serviceName}/settings/changePassword', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
+  sendFax operations
+  Send a fax
   **/
-  public post(path: '/telephony/{billingAccount}/changeContact', pathParams: {billingAccount: string}): Promise<Number[]>;
+  public post(path: '/telephony/{billingAccount}/fax/{serviceName}/settings/sendFax', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
+  /**
+  reset operations
+  Reset a specifical fax screenList
+  **/
+  public post(path: '/telephony/{billingAccount}/fax/{serviceName}/screenLists/reset', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Fax ScreenLists
+  Create a new fax ScreenLists
+  **/
+  public post(path: '/telephony/{billingAccount}/fax/{serviceName}/screenLists', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyFaxScreen>;
+  /**
+  execute operations
+  Ask to execute the portability
+  **/
+  public post(path: '/telephony/{billingAccount}/portability/{id}/execute', pathParams: {billingAccount: string, id: Number}): Promise<void>;
+  /**
+  relaunch operations
+  Fix error and relaunch portability
+  **/
+  public post(path: '/telephony/{billingAccount}/portability/{id}/relaunch', pathParams: {billingAccount: string, id: Number}): Promise<void>;
+  /**
+  changeDate operations
+  Ask to change the portability date
+  **/
+  public post(path: '/telephony/{billingAccount}/portability/{id}/changeDate', pathParams: {billingAccount: string, id: Number}): Promise<void>;
+  /**
+  cancel operations
+  Ask to cancel the portability
+  **/
+  public post(path: '/telephony/{billingAccount}/portability/{id}/cancel', pathParams: {billingAccount: string, id: Number}): Promise<void>;
+  /**
+  List the telephony.PortabilityDocument objects
+  Create a portability document
+  **/
+  public post(path: '/telephony/{billingAccount}/portability/{id}/document', pathParams: {billingAccount: string, id: Number}): Promise<TelephonyPortabilityDocument>;
   /**
   List the telephony.EasyMiniPabxHuntingAgent objects
   Create a new agent
@@ -7650,110 +7950,270 @@ export class ApiTelephony extends ApiCommon {
   **/
   public post(path: '/telephony/{billingAccount}/cancelTermination', pathParams: {billingAccount: string}): Promise<void>;
   /**
-  List the telephony.ConferenceWebAccess objects
-  Add a public web access to your conference
+  removeSimultaneousLines operations
+  Remove extra simultaneous lines
   **/
-  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/webAccess', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyConferenceWebAccess>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/removeSimultaneousLines', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  unmute operations
-  Unmute a participant in your conference room
+  associateDevice operations
+  Associate a device to the current line with the device mac address
   **/
-  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/unmute', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/associateDevice', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  mute operations
-  Mute a participant in your conference room
+  unblock operations
+  Unblock the line. It will remove any incoming and outboing block made earlier
   **/
-  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/mute', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/unblock', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  kick operations
-  Eject a participant from your conference room
+  click2Call operations
+  Make a phone call from the current line
   **/
-  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/kick', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/click2Call', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  energy operations
-  Change a participant level of audio transmission
+  antihack operations
+  Clean the antihack or add it on active filter screen list
   **/
-  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/energy', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/antihack', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  deaf operations
-  Make a participant deaf in your conference room
+  cancelConvertToNumber operations
+  Cancel a scheduled conversion to number
   **/
-  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/deaf', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  undeaf operations
-  Make a participant undeaf your conference room
+  convertToNumber operations
+  Schedule a conversion to number
   **/
-  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/undeaf', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/convertToNumber', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOfferTask>;
   /**
-  lock operations
-  Lock the conference room
+  List the telephony.Rma objects
+  Create a specific rma
   **/
-  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/lock', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyRmaReturn>;
   /**
-  unlock operations
-  Lock the conference room
+  changePhoneConfiguration operations
+  Edit configuration of the phone remotely by provisioning
   **/
-  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/unlock', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  announceUpload operations
-  Change the sound played at the beginning of the conference
+  reboot operations
+  Create a task to reboot the phone
   **/
-  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/announceUpload', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/reboot', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
   /**
-  List the telephony.EasyHuntingScreenListsConditions objects
-  Create a new screenlist condition for an extension
+  resetConfig operations
+  Reinitialize the phone configuration
   **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyHuntingScreenListsConditions>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/resetConfig', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyResetPhoneInfo>;
+  /**
+  refreshScreen operations
+  Create a task to refresh the screen of the MGCP phone
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/refreshScreen', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
+  /**
+  List the telephony.Phonebook objects
+  Add a phonebook. Return the bookKey.
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
+  /**
+  List the telephony.PhonebookContact objects
+  Create a phonebook contact. Return identifier of the phonebook contact.
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact', pathParams: {billingAccount: string, serviceName: string, bookKey: string}): Promise<Number>;
+  /**
+  import operations
+  Import a contacts file. Supported formats are Excel (.xls and .xlsx) and CSV
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/import', pathParams: {billingAccount: string, serviceName: string, bookKey: string}): Promise<TelephonyTask>;
+  /**
+  click2Call operations
+  Make a phone call from the current line
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/click2Call', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
+  changePassword operations
+  Change the password of the click2call user
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/changePassword', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
+  List the telephony.Click2CallUser objects
+  Create a new user for click 2 call
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/click2CallUser', pathParams: {billingAccount: string, serviceName: string}): Promise<Number>;
+  /**
+  List the telephony.CallsGenerated objects
+  Make an automatic phone call. Return generated call identifier
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/automaticCall', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
+  /**
+  toneUpload operations
+  Upload new tone file
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/tones/toneUpload', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
+  /**
+  activateNewPhone operations
+  Allow to activate new phone, in case of phone switch
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/activateNewPhone', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  List the telephony.AbbreviatedNumber objects
+  Create a new abbreviated number for the line
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyAbbreviatedNumber>;
+  /**
+  block operations
+  Block the line. By default it will block incoming and outgoing calls (except for emergency numbers)
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/block', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  List the telephony.trafficExtract objects
+  Launch a traffic extract on your line
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTrafficExtract>;
+  /**
+  transfer operations
+  Transfer an answered call
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/transfer', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  /**
+  hold operations
+  Toogle hold on call
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hold', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  /**
+  eavesdrop operations
+  Eavesdrop on a call
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/eavesdrop', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  /**
+  hangup operations
+  Hangup a call
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hangup', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  /**
+  intercept operations
+  Intercept a non answered call
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/intercept', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  /**
+  whisper operations
+  Whisper on a call
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
+  /**
+  changePassword operations
+  Change the SIP account password. It must be more than 7 and less than 21 alpha and numerical characters.
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/changePassword', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  dissociateDevice operations
+  Dissociate a device from the current line with the device mac address
+  **/
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/dissociateDevice', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  scheduleRateCode operations
+  Schedule a new rate code for this sva
+  **/
+  public post(path: '/telephony/{billingAccount}/rsva/{serviceName}/scheduleRateCode', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDetailedRateCodeInformation>;
+  /**
+  cancelScheduledRateCode operations
+  Cancel a scheduled rate code update
+  **/
+  public post(path: '/telephony/{billingAccount}/rsva/{serviceName}/cancelScheduledRateCode', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
   List the telephony.EasyHuntingTimeConditions objects
   Create a new time condition
   **/
   public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyHuntingTimeConditions>;
   /**
+  List the telephony.EasyHuntingScreenListsConditions objects
+  Create a new screenlist condition for an extension
+  **/
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyHuntingScreenListsConditions>;
+  /**
   soundUpload operations
   Upload new sound file
   **/
   public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/soundUpload', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
   /**
-  List the telephony.OvhPabxHuntingAgent objects
-  Create a new agent
-  **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHuntingAgent>;
-  /**
-  Token associated to the service for live event
-  Create a new token
-  **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<string>;
-  /**
   transfer operations
   Transfer an answered call
   **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
   /**
   hold operations
   Toogle hold on call
   **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  eavesdrop operations
+  Eavesdrop on a call
+  **/
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  intercept operations
+  Intercept a non answered call
+  **/
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  hangup operations
+  Hangup a call
+  **/
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  whisper operations
+  Whisper on a call
+  **/
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  List the telephony.OvhPabxHuntingAgentQueue objects
+  Create a new skill for an agent (it adds the agent in a queue)
+  **/
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHuntingAgentQueue>;
+  /**
+  List the telephony.OvhPabxHuntingQueue objects
+  Create a new queue
+  **/
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHuntingQueue>;
+  /**
+  List the telephony.OvhPabxCustomStatus objects
+  Create a new custom status
+  **/
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxCustomStatus>;
+  /**
+  Token associated to the service for live event
+  Create a new token
+  **/
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
   /**
   whisper operations
   Whisper on a call
   **/
   public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
   /**
-  eavesdrop operations
-  Eavesdrop on a call
+  intercept operations
+  Intercept a non answered call
   **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
   /**
   hangup operations
   Hangup a call
   **/
   public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
   /**
-  intercept operations
-  Intercept a non answered call
+  hold operations
+  Toogle hold on call
   **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  eavesdrop operations
+  Eavesdrop on a call
+  **/
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
+  /**
+  transfer operations
+  Transfer an answered call
+  **/
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
   /**
   List the telephony.OvhPabxHuntingAgentQueue objects
   Create a new skill for an agent (it adds the agent in a queue)
@@ -7768,492 +8228,17 @@ export class ApiTelephony extends ApiCommon {
   Token associated to the service for live event
   Create a new token
   **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
-  /**
-  List the telephony.OvhPabxHuntingAgentQueue objects
-  Create a new skill for an agent (it adds the agent in a queue)
-  **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHuntingAgentQueue>;
-  /**
-  hold operations
-  Toogle hold on call
-  **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  transfer operations
-  Transfer an answered call
-  **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  whisper operations
-  Whisper on a call
-  **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  eavesdrop operations
-  Eavesdrop on a call
-  **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  hangup operations
-  Hangup a call
-  **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  intercept operations
-  Intercept a non answered call
-  **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  List the telephony.OvhPabxHuntingQueue objects
-  Create a new queue
-  **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHuntingQueue>;
-  /**
-  List the telephony.OvhPabxCustomStatus objects
-  Create a new custom status
-  **/
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxCustomStatus>;
-  /**
-  List the telephony.ConsumptionThreshold objects
-  Add an outplan notification on the billing account
-  **/
-  public post(path: '/telephony/{billingAccount}/outplanNotification', pathParams: {billingAccount: string}): Promise<TelephonyConsumptionThreshold>;
-  /**
-  eavesdrop operations
-  Eavesdrop on a call
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/eavesdrop', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
-  /**
-  whisper operations
-  Whisper on a call
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
-  /**
-  transfer operations
-  Transfer an answered call
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/transfer', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
-  /**
-  hold operations
-  Toogle hold on call
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hold', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
-  /**
-  intercept operations
-  Intercept a non answered call
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/intercept', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
-  /**
-  hangup operations
-  Hangup a call
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hangup', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<TelephonyTask>;
-  /**
-  cancelConvertToNumber operations
-  Cancel a scheduled conversion to number
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  block operations
-  Block the line. By default it will block incoming and outgoing calls (except for emergency numbers)
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/block', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  changePassword operations
-  Change the SIP account password. It must be more than 7 and less than 21 alpha and numerical characters.
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/changePassword', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  associateDevice operations
-  Associate a device to the current line with the device mac address
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/associateDevice', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  List the telephony.Rma objects
-  Create a specific rma
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyRmaReturn>;
-  /**
-  resetConfig operations
-  Reinitialize the phone configuration
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/resetConfig', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyResetPhoneInfo>;
-  /**
-  refreshScreen operations
-  Create a task to refresh the screen of the MGCP phone
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/refreshScreen', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
-  /**
-  changePhoneConfiguration operations
-  Edit configuration of the phone remotely by provisioning
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  List the telephony.Phonebook objects
-  Add a phonebook. Return the bookKey.
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
-  /**
-  import operations
-  Import a contacts file. Supported formats are Excel (.xls and .xlsx) and CSV
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/import', pathParams: {billingAccount: string, serviceName: string, bookKey: string}): Promise<TelephonyTask>;
-  /**
-  List the telephony.PhonebookContact objects
-  Create a phonebook contact. Return identifier of the phonebook contact.
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact', pathParams: {billingAccount: string, serviceName: string, bookKey: string}): Promise<Number>;
-  /**
-  reboot operations
-  Create a task to reboot the phone
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/reboot', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
-  /**
-  activateNewPhone operations
-  Allow to activate new phone, in case of phone switch
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/activateNewPhone', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  convertToNumber operations
-  Schedule a conversion to number
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/convertToNumber', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOfferTask>;
-  /**
-  changePassword operations
-  Change the password of the click2call user
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/changePassword', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
-  /**
-  click2Call operations
-  Make a phone call from the current line
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/click2Call', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
-  /**
-  List the telephony.Click2CallUser objects
-  Create a new user for click 2 call
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/click2CallUser', pathParams: {billingAccount: string, serviceName: string}): Promise<Number>;
-  /**
-  List the telephony.AbbreviatedNumber objects
-  Create a new abbreviated number for the line
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyAbbreviatedNumber>;
-  /**
-  List the telephony.trafficExtract objects
-  Launch a traffic extract on your line
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTrafficExtract>;
-  /**
-  antihack operations
-  Clean the antihack or add it on active filter screen list
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/antihack', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  removeSimultaneousLines operations
-  Remove extra simultaneous lines
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/removeSimultaneousLines', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  dissociateDevice operations
-  Dissociate a device from the current line with the device mac address
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/dissociateDevice', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  click2Call operations
-  Make a phone call from the current line
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/click2Call', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  List the telephony.CallsGenerated objects
-  Make an automatic phone call. Return generated call identifier
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/automaticCall', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
-  /**
-  toneUpload operations
-  Upload new tone file
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/tones/toneUpload', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
-  /**
-  unblock operations
-  Unblock the line. It will remove any incoming and outboing block made earlier
-  **/
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/unblock', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  List the telephony.PhonebookMaster objects
-  Add a phonebook on group. Return the bookKey.
-  **/
-  public post(path: '/telephony/{billingAccount}/phonebook', pathParams: {billingAccount: string}): Promise<string>;
-  /**
-  import operations
-  Import a contacts file. Supported formats are Excel (.xls and .xlsx) and CSV
-  **/
-  public post(path: '/telephony/{billingAccount}/phonebook/{bookKey}/import', pathParams: {billingAccount: string, bookKey: string}): Promise<TelephonyTask>;
-  /**
-  List the telephony.PhonebookContact objects
-  Create a phonebook contact. Return identifier of the phonebook contact.
-  **/
-  public post(path: '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact', pathParams: {billingAccount: string, bookKey: string}): Promise<Number>;
-  /**
-  changePassword operations
-  Change the voicemail password. It must be 4 digit
-  **/
-  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changePassword', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  changeRouting operations
-  Disable/Enable voicemail. Available only if the line has fax capabilities
-  **/
-  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  List the telephony.VoicemailGreetings objects
-  Upload a new sound for a specific greeting. Return a task id.
-  **/
-  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings', pathParams: {billingAccount: string, serviceName: string}): Promise<Number>;
-  /**
-  move operations
-  Move the message to another directory
-  **/
-  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
-  /**
-  move operations
-  Move the message to another directory
-  **/
-  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
-  /**
-  migrateOnNewVersion operations
-  Change the voicemail on a new version to manager greetings, directories and extra settings.
-  **/
-  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/migrateOnNewVersion', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  List the telephony.OvhPabxDialplan objects
-  Create a new dialplan
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxDialplan>;
-  /**
-  List the telephony.OvhPabxDialplanExtension objects
-  Create a new extension for a dialplan
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number}): Promise<TelephonyOvhPabxDialplanExtension>;
-  /**
-  List the telephony.OvhPabxDialplanExtensionRule objects
-  Create a new rule for an extension
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<TelephonyOvhPabxDialplanExtensionRule>;
-  /**
-  List the telephony.OvhPabxDialplanExtensionConditionScreenList objects
-  Create a new screenlist condition for an extension
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<TelephonyOvhPabxDialplanExtensionConditionScreenList>;
-  /**
-  List the telephony.OvhPabxDialplanExtensionConditionTime objects
-  Create a new time condition for an extension
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<TelephonyOvhPabxDialplanExtensionConditionTime>;
-  /**
-  List the telephony.OvhPabxTts objects
-  Create a new text to speech
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  soundUpload operations
-  Upload new sound file
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/soundUpload', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
-  /**
-  List the telephony.OvhPabxMenu objects
-  Create a new menu
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxMenu>;
-  /**
-  List the telephony.OvhPabxMenuEntry objects
-  Create a new menu entry
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry', pathParams: {billingAccount: string, serviceName: string, menuId: Number}): Promise<TelephonyOvhPabxMenuEntry>;
-  /**
-  hold operations
-  Toogle hold on call
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  transfer operations
-  Transfer an answered call
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  whisper operations
-  Whisper on a call
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  eavesdrop operations
-  Eavesdrop on a call
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  hangup operations
-  Hangup a call
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  intercept operations
-  Intercept a non answered call
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept', pathParams: {billingAccount: string, serviceName: string, queueId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  List the telephony.OvhPabxHuntingAgentQueue objects
-  Create a new skill for an agent (it adds the agent in a queue)
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHuntingAgentQueue>;
-  /**
-  List the telephony.OvhPabxHuntingQueue objects
-  Create a new queue
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHuntingQueue>;
-  /**
-  List the telephony.OvhPabxHuntingAgentQueue objects
-  Create a new skill for an agent (it adds the agent in a queue)
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyOvhPabxHuntingAgentQueue>;
-  /**
-  hangup operations
-  Hangup a call
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  intercept operations
-  Intercept a non answered call
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  transfer operations
-  Transfer an answered call
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  hold operations
-  Toogle hold on call
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  eavesdrop operations
-  Eavesdrop on a call
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  whisper operations
-  Whisper on a call
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper', pathParams: {billingAccount: string, serviceName: string, agentId: Number, id: Number}): Promise<TelephonyTask>;
-  /**
-  Token associated to the service for live event
-  Create a new token
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<string>;
-  /**
-  The web access for your cloudpabx
-  Create a new web access for this ressource
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<TelephonyBannerAccess>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<string>;
   /**
   List the telephony.OvhPabxHuntingAgent objects
   Create a new agent
   **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHuntingAgent>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxHuntingAgent>;
   /**
-  Token associated to the service for live event
-  Create a new token
+  List the telephony.TimeCondition objects
+  Create a new time condition rule
   **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
-  /**
-  List the telephony.OvhPabxCustomStatus objects
-  Create a new custom status
-  **/
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyOvhPabxCustomStatus>;
-  /**
-  changeDestination operations
-  Change the destination of the DDI
-  **/
-  public post(path: '/telephony/{billingAccount}/ddi/{serviceName}/changeDestination', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
-  /**
-  toneUpload operations
-  Upload new tone file
-  **/
-  public post(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
-  /**
-  List the telephony.EasyMiniPabxHuntingAgent objects
-  Create a new agent
-  **/
-  public post(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEasyMiniPabxHuntingAgent>;
-  /**
-  billingAccountSite operations
-  Used to overwrite current billing account feature by the billing account site
-  **/
-  public post(path: '/telephony/{billingAccount}/billingAccountSite', pathParams: {billingAccount: string}): Promise<void>;
-  /**
-  List the telephony.AbbreviatedNumberGroup objects
-  Create a new abbreviated number for the billing account
-  **/
-  public post(path: '/telephony/{billingAccount}/abbreviatedNumber', pathParams: {billingAccount: string}): Promise<TelephonyAbbreviatedNumberGroup>;
-  /**
-  logs operations
-  Generate a temporary url to retrieve device logs
-  **/
-  public post(path: '/telephony/{billingAccount}/vxml/{serviceName}/settings/logs', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTemporaryLogsLink>;
-  /**
-  canTransferSecurityDeposit operations
-  Check if security deposit transfer is possible between two billing accounts
-  **/
-  public post(path: '/telephony/{billingAccount}/canTransferSecurityDeposit', pathParams: {billingAccount: string}): Promise<boolean>;
-  /**
-  changeDestination operations
-  Change the destination of the redirect
-  **/
-  public post(path: '/telephony/{billingAccount}/redirect/{serviceName}/changeDestination', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTask>;
-  /**
-  cancelScheduledRateCode operations
-  Cancel a scheduled rate code update
-  **/
-  public post(path: '/telephony/{billingAccount}/rsva/{serviceName}/cancelScheduledRateCode', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  scheduleRateCode operations
-  Schedule a new rate code for this sva
-  **/
-  public post(path: '/telephony/{billingAccount}/rsva/{serviceName}/scheduleRateCode', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyDetailedRateCodeInformation>;
-  /**
-  transferSecurityDeposit operations
-  Transfer security deposit between two billing accounts
-  **/
-  public post(path: '/telephony/{billingAccount}/transferSecurityDeposit', pathParams: {billingAccount: string}): Promise<void>;
-  /**
-  cancelTermination operations
-  Cancel the service termination
-  **/
-  public post(path: '/telephony/{billingAccount}/service/{serviceName}/cancelTermination', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Token associated to the service for live event
-  Create a new token
-  **/
-  public post(path: '/telephony/{billingAccount}/service/{serviceName}/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<string>;
-  /**
-  changeOfBillingAccount operations
-  Move a service of billing account. Source and destination nics should be the same.
-  **/
-  public post(path: '/telephony/{billingAccount}/service/{serviceName}/changeOfBillingAccount', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Offer change
-  Add a new offer change
-  **/
-  public post(path: '/telephony/{billingAccount}/service/{serviceName}/offerChange', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  fetchEntrepriseInformations operations
-  Get company entreprise informations by providing entreprise number
-  **/
-  public post(path: '/telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyEntrepriseNumberInformationsTask>;
-  /**
-  List the telephony.ScreenList objects
-  Create a new screen list rule
-  **/
-  public post(path: '/telephony/{billingAccount}/screen/{serviceName}/screenLists', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition', pathParams: {billingAccount: string, serviceName: string}): Promise<TelephonyTimeCondition>;
   /**
   Change the contacts of this service
   Launch a contact change procedure
@@ -8264,202 +8249,77 @@ export class ApiTelephony extends ApiCommon {
   Create a new sound
   **/
   public post(path: '/telephony/sounds'): Promise<TelephonySound>;
-  public post(path: PathsTelephonyPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  /**
+  Change the contacts of this service
+  Launch a contact change procedure
+  **/
+  public post(path: '/telephony/aliases/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Change the contacts of this service
+  Launch a contact change procedure
+  **/
+  public post(path: '/telephony/lines/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Get all available SIP domains by country
+  Get all available SIP domains by country
+  **/
+  public post(path: '/telephony/setDefaultSipDomain'): Promise<void>;
+  public post(path: PathsTelephonyPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Spare properties
   Delete the spare as if it was not belonging to OVH anymore
   **/
   public delete(path: '/telephony/spare/{spare}', pathParams: {spare: string}): Promise<void>;
   /**
-  Scheduled event
-  Delete the given scheduler event
+  Offer change
+  Delete the replacement offer scheduling
   **/
-  public delete(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}', pathParams: {billingAccount: string, serviceName: string, uid: string}): Promise<void>;
+  public delete(path: '/telephony/{billingAccount}/service/{serviceName}/offerChange', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
-  Time conditions
-  Delete the given screen list
+  Telephony service
+  Ask for a service termination.
   **/
-  public delete(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
-  /**
-  External displayed number linked to a trunk
-  Delete an external displayed number for a given trunk
-  **/
-  public delete(path: '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}', pathParams: {billingAccount: string, serviceName: string, number: string}): Promise<void>;
-  /**
-  Document linked to a portability
-  Delete the document
-  **/
-  public delete(path: '/telephony/{billingAccount}/portability/{id}/document/{documentId}', pathParams: {billingAccount: string, id: Number, documentId: Number}): Promise<void>;
-  /**
-  Fax ScreenLists
-  Delete all fax screenLists
-  **/
-  public delete(path: '/telephony/{billingAccount}/fax/{serviceName}/screenLists', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Fax campaigns
-  Delete a fax campaign
-  **/
-  public delete(path: '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  public delete(path: '/telephony/{billingAccount}/service/{serviceName}', pathParams: {billingAccount: string, serviceName: string}, bodyParams: {details?: string, reason?: TelephonyTerminationReasonEnum}): Promise<void>;
   /**
   Token associated to the service for live event
   Delete the given token
   **/
-  public delete(path: '/telephony/{billingAccount}/eventToken', pathParams: {billingAccount: string}): Promise<void>;
-  /**
-  Easy/Mini PABX agent
-  Delete the agent
-  **/
-  public delete(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}', pathParams: {billingAccount: string, serviceName: string, agentNumber: string}): Promise<void>;
-  /**
-  List public web access of your conference
-  Delete a public web access to your conference
-  **/
-  public delete(path: '/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
-  /**
-  Screenlist condition
-  Delete the given condition
-  **/
-  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}', pathParams: {billingAccount: string, serviceName: string, conditionId: Number}): Promise<void>;
-  /**
-  The PABX records
-  Delete the given record
-  **/
-  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
-  /**
-  The PABX sounds
-  Delete the given sound
-  **/
-  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}', pathParams: {billingAccount: string, serviceName: string, soundId: Number}): Promise<void>;
-  /**
-  Easy hunting time conditions
-  Delete the given condition
-  **/
-  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}', pathParams: {billingAccount: string, serviceName: string, conditionId: Number}): Promise<void>;
-  /**
-  Token associated to the service for live event
-  Delete the given token
-  **/
-  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<void>;
-  /**
-  Agent assigned to a queue
-  Delete the given skill
-  **/
-  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<void>;
-  /**
-  Calls agent
-  Delete the given agent
-  **/
-  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<void>;
-  /**
-  The web access for your cloudpabx
-  Delete the given web access
-  **/
-  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<void>;
-  /**
-  Token associated to the service for live event
-  Delete the given token
-  **/
-  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Agent assigned to a queue
-  Delete the given skill
-  **/
-  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, agentId: Number}): Promise<void>;
-  /**
-  Calls queue
-  Delete the given queue
-  **/
-  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<void>;
-  /**
-  Custom statuses of your callcenter agents
-  Delete the given custom status
-  **/
-  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
-  /**
-  The outplan notifications configured for your billing account
-  Delete an outplan notification
-  **/
-  public delete(path: '/telephony/{billingAccount}/outplanNotification/{id}', pathParams: {billingAccount: string, id: Number}): Promise<void>;
-  /**
-  Current Return Merchandise Authorisation
-  Cancel the rma
-  **/
-  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}', pathParams: {billingAccount: string, serviceName: string, id: string}): Promise<void>;
-  /**
-  Phone book
-  Delete a phonebook
-  **/
-  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}', pathParams: {billingAccount: string, serviceName: string, bookKey: string}): Promise<void>;
-  /**
-  Phone book contact
-  Delete a phonebook contact
-  **/
-  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}', pathParams: {billingAccount: string, serviceName: string, bookKey: string, id: Number}): Promise<void>;
-  /**
-  The PABX records
-  Delete the given record
-  **/
-  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/records/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
-  /**
-  User of the click 2 call
-  Delete a click 2 call user
-  **/
-  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
-  /**
-  Abbreviated number
-  Delete the given abbreviated number
-  **/
-  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}', pathParams: {billingAccount: string, serviceName: string, abbreviatedNumber: Number}): Promise<void>;
-  /**
-  Traffic extracts (SIP) of your line
-  Delete a traffic extract
-  **/
-  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
-  /**
-  Phone book on group
-  Delete a phonebook
-  **/
-  public delete(path: '/telephony/{billingAccount}/phonebook/{bookKey}', pathParams: {billingAccount: string, bookKey: string}): Promise<void>;
+  public delete(path: '/telephony/{billingAccount}/service/{serviceName}/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
   /**
   Phone book contact
   Delete a phonebook contact
   **/
   public delete(path: '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}', pathParams: {billingAccount: string, bookKey: string, id: Number}): Promise<void>;
   /**
-  Voicemail greeting
-  Delete the customized greeting
+  Phone book on group
+  Delete a phonebook
   **/
-  public delete(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  public delete(path: '/telephony/{billingAccount}/phonebook/{bookKey}', pathParams: {billingAccount: string, bookKey: string}): Promise<void>;
   /**
-  Voicemail message
-  Delete the given voicemail message
+  Easy/Mini PABX agent
+  Delete the agent
   **/
-  public delete(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  public delete(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}', pathParams: {billingAccount: string, serviceName: string, agentNumber: string}): Promise<void>;
   /**
-  Dialplan
-  Delete the given dialplan
+  External displayed number linked to a trunk
+  Delete an external displayed number for a given trunk
   **/
-  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number}): Promise<void>;
+  public delete(path: '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}', pathParams: {billingAccount: string, serviceName: string, number: string}): Promise<void>;
   /**
-  Dialplan rule
-  Delete the given rule
+  IVR Menu
+  Delete the given menu
   **/
-  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, ruleId: Number}): Promise<void>;
+  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}', pathParams: {billingAccount: string, serviceName: string, menuId: Number}): Promise<void>;
   /**
-  Screenlist condition
-  Delete the given condition
+  IVR menu entry
+  Delete the given menu entry
   **/
-  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, conditionId: Number}): Promise<void>;
+  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}', pathParams: {billingAccount: string, serviceName: string, menuId: Number, entryId: Number}): Promise<void>;
   /**
-  Time condition
-  Delete the given condition
+  The PABX sounds
+  Delete the given sound
   **/
-  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, conditionId: Number}): Promise<void>;
-  /**
-  Dialplan extension
-  Delete the given extension
-  **/
-  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<void>;
+  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}', pathParams: {billingAccount: string, serviceName: string, soundId: Number}): Promise<void>;
   /**
   The PABX Text To Speech sounds
   Delete the given text to speech
@@ -8471,16 +8331,6 @@ export class ApiTelephony extends ApiCommon {
   **/
   public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
   /**
-  IVR menu entry
-  Delete the given menu entry
-  **/
-  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}', pathParams: {billingAccount: string, serviceName: string, menuId: Number, entryId: Number}): Promise<void>;
-  /**
-  IVR Menu
-  Delete the given menu
-  **/
-  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}', pathParams: {billingAccount: string, serviceName: string, menuId: Number}): Promise<void>;
-  /**
   Calls queue
   Delete the given queue
   **/
@@ -8491,25 +8341,25 @@ export class ApiTelephony extends ApiCommon {
   **/
   public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, agentId: Number}): Promise<void>;
   /**
-  Agent assigned to a queue
-  Delete the given skill
+  Calls agent
+  Delete the given agent
   **/
-  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<void>;
+  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<void>;
   /**
   Token associated to the service for live event
   Delete the given token
   **/
   public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<void>;
   /**
+  Agent assigned to a queue
+  Delete the given skill
+  **/
+  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<void>;
+  /**
   The web access for your cloudpabx
   Delete the given web access
   **/
   public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<void>;
-  /**
-  Calls agent
-  Delete the given agent
-  **/
-  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<void>;
   /**
   Token associated to the service for live event
   Delete the given token
@@ -8521,49 +8371,199 @@ export class ApiTelephony extends ApiCommon {
   **/
   public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
   /**
-  The PABX sounds
-  Delete the given sound
+  Screenlist condition
+  Delete the given condition
   **/
-  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}', pathParams: {billingAccount: string, serviceName: string, soundId: Number}): Promise<void>;
+  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, conditionId: Number}): Promise<void>;
   /**
-  Easy/Mini PABX agent
-  Delete the agent
+  Dialplan extension
+  Delete the given extension
   **/
-  public delete(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}', pathParams: {billingAccount: string, serviceName: string, agentNumber: string}): Promise<void>;
+  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number}): Promise<void>;
+  /**
+  Time condition
+  Delete the given condition
+  **/
+  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, conditionId: Number}): Promise<void>;
+  /**
+  Dialplan rule
+  Delete the given rule
+  **/
+  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number, extensionId: Number, ruleId: Number}): Promise<void>;
+  /**
+  Dialplan
+  Delete the given dialplan
+  **/
+  public delete(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}', pathParams: {billingAccount: string, serviceName: string, dialplanId: Number}): Promise<void>;
+  /**
+  Token associated to the service for live event
+  Delete the given token
+  **/
+  public delete(path: '/telephony/{billingAccount}/eventToken', pathParams: {billingAccount: string}): Promise<void>;
   /**
   Abbreviated number
   Delete the given abbreviated number
   **/
   public delete(path: '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}', pathParams: {billingAccount: string, abbreviatedNumber: Number}): Promise<void>;
   /**
-  Billing Account
-  Ask for a billing account termination.
-  **/
-  public delete(path: '/telephony/{billingAccount}', pathParams: {billingAccount: string}, bodyParams: {reason?: TelephonyTerminationReasonEnum, details?: string}): Promise<void>;
-  /**
-  Telephony service
-  Ask for a service termination.
-  **/
-  public delete(path: '/telephony/{billingAccount}/service/{serviceName}', pathParams: {billingAccount: string, serviceName: string}, bodyParams: {reason?: TelephonyTerminationReasonEnum, details?: string}): Promise<void>;
-  /**
-  Token associated to the service for live event
-  Delete the given token
-  **/
-  public delete(path: '/telephony/{billingAccount}/service/{serviceName}/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
-  Offer change
-  Delete the replacement offer scheduling
-  **/
-  public delete(path: '/telephony/{billingAccount}/service/{serviceName}/offerChange', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
-  /**
   Screen list
   Delete the given screen list
   **/
   public delete(path: '/telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
   /**
+  The outplan notifications configured for your billing account
+  Delete an outplan notification
+  **/
+  public delete(path: '/telephony/{billingAccount}/outplanNotification/{id}', pathParams: {billingAccount: string, id: Number}): Promise<void>;
+  /**
+  Scheduled event
+  Delete the given scheduler event
+  **/
+  public delete(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}', pathParams: {billingAccount: string, serviceName: string, uid: string}): Promise<void>;
+  /**
+  List public web access of your conference
+  Delete a public web access to your conference
+  **/
+  public delete(path: '/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
+  Voicemail message
+  Delete the given voicemail message
+  **/
+  public delete(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
+  Voicemail greeting
+  Delete the customized greeting
+  **/
+  public delete(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
+  Fax campaigns
+  Delete a fax campaign
+  **/
+  public delete(path: '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
+  Fax ScreenLists
+  Delete all fax screenLists
+  **/
+  public delete(path: '/telephony/{billingAccount}/fax/{serviceName}/screenLists', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Document linked to a portability
+  Delete the document
+  **/
+  public delete(path: '/telephony/{billingAccount}/portability/{id}/document/{documentId}', pathParams: {billingAccount: string, id: Number, documentId: Number}): Promise<void>;
+  /**
+  Easy/Mini PABX agent
+  Delete the agent
+  **/
+  public delete(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}', pathParams: {billingAccount: string, serviceName: string, agentNumber: string}): Promise<void>;
+  /**
+  Current Return Merchandise Authorisation
+  Cancel the rma
+  **/
+  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}', pathParams: {billingAccount: string, serviceName: string, id: string}): Promise<void>;
+  /**
+  Phone book contact
+  Delete a phonebook contact
+  **/
+  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}', pathParams: {billingAccount: string, serviceName: string, bookKey: string, id: Number}): Promise<void>;
+  /**
+  Phone book
+  Delete a phonebook
+  **/
+  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}', pathParams: {billingAccount: string, serviceName: string, bookKey: string}): Promise<void>;
+  /**
+  User of the click 2 call
+  Delete a click 2 call user
+  **/
+  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
+  The PABX records
+  Delete the given record
+  **/
+  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/records/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
+  Abbreviated number
+  Delete the given abbreviated number
+  **/
+  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}', pathParams: {billingAccount: string, serviceName: string, abbreviatedNumber: Number}): Promise<void>;
+  /**
+  Traffic extracts (SIP) of your line
+  Delete a traffic extract
+  **/
+  public delete(path: '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
+  Billing Account
+  Ask for a billing account termination.
+  **/
+  public delete(path: '/telephony/{billingAccount}', pathParams: {billingAccount: string}, bodyParams: {reason?: TelephonyTerminationReasonEnum, details?: string}): Promise<void>;
+  /**
+  Easy hunting time conditions
+  Delete the given condition
+  **/
+  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}', pathParams: {billingAccount: string, serviceName: string, conditionId: Number}): Promise<void>;
+  /**
+  Screenlist condition
+  Delete the given condition
+  **/
+  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}', pathParams: {billingAccount: string, serviceName: string, conditionId: Number}): Promise<void>;
+  /**
+  The PABX records
+  Delete the given record
+  **/
+  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
+  Calls queue
+  Delete the given queue
+  **/
+  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number}): Promise<void>;
+  /**
+  Agent assigned to a queue
+  Delete the given skill
+  **/
+  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, queueId: Number, agentId: Number}): Promise<void>;
+  /**
+  Custom statuses of your callcenter agents
+  Delete the given custom status
+  **/
+  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
+  Token associated to the service for live event
+  Delete the given token
+  **/
+  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken', pathParams: {billingAccount: string, serviceName: string}): Promise<void>;
+  /**
+  Agent assigned to a queue
+  Delete the given skill
+  **/
+  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number, queueId: Number}): Promise<void>;
+  /**
+  The web access for your cloudpabx
+  Delete the given web access
+  **/
+  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<void>;
+  /**
+  Token associated to the service for live event
+  Delete the given token
+  **/
+  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<void>;
+  /**
+  Calls agent
+  Delete the given agent
+  **/
+  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}', pathParams: {billingAccount: string, serviceName: string, agentId: Number}): Promise<void>;
+  /**
+  The PABX sounds
+  Delete the given sound
+  **/
+  public delete(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}', pathParams: {billingAccount: string, serviceName: string, soundId: Number}): Promise<void>;
+  /**
+  Time conditions
+  Delete the given screen list
+  **/
+  public delete(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}', pathParams: {billingAccount: string, serviceName: string, id: Number}): Promise<void>;
+  /**
   Sounds attached to this telephony account
   Delete the sound
   **/
   public delete(path: '/telephony/sounds/{id}', pathParams: {id: Number}): Promise<void>;
-  public delete(path: PathsTelephonyDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: PathsTelephonyDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

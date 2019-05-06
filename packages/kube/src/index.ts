@@ -12,7 +12,7 @@ export interface KubeCluster {
    * Cluster creation date
    *
    */
-  createdAt?: Date;
+  createdAt?: string;
   /**
    * Cluster ID
    *
@@ -47,7 +47,7 @@ export interface KubeCluster {
    * Cluster last update date
    *
    */
-  updatedAt?: Date;
+  updatedAt?: string;
   /**
    * Management URL of your cluster
    *
@@ -62,7 +62,7 @@ export interface KubeCluster {
 /**
  * Enum values for Status
  */
-export type KubeClusterStatus = 'INSTALLING' | 'UPDATING' | 'RESETTING' | 'SUSPENDING' | 'REOPENING' | 'DELETING' | 'SUSPENDED' | 'ERROR' | 'USER_ERROR' | 'USER_QUOTA_ERROR' | 'READY';
+export type KubeClusterStatus = 'DELETING' | 'ERROR' | 'INSTALLING' | 'READY' | 'REOPENING' | 'RESETTING' | 'SUSPENDED' | 'SUSPENDING' | 'UPDATING' | 'USER_ERROR' | 'USER_QUOTA_ERROR';
 /**
  * Kubeconfig description
  */
@@ -81,7 +81,7 @@ export interface KubeNode {
    * Creation date
    *
    */
-  createdAt?: Date;
+  createdAt?: string;
   /**
    * Public Cloud flavor name
    *
@@ -121,7 +121,7 @@ export interface KubeNode {
    * Node last update date
    *
    */
-  updatedAt?: Date;
+  updatedAt?: string;
   /**
    * Node version
    *
@@ -131,7 +131,7 @@ export interface KubeNode {
 /**
  * Enum values for Status
  */
-export type KubeNodeStatus = 'INSTALLING' | 'UPDATING' | 'RESETTING' | 'SUSPENDING' | 'REOPENING' | 'DELETING' | 'SUSPENDED' | 'ERROR' | 'USER_ERROR' | 'USER_QUOTA_ERROR' | 'USER_NODE_NOT_FOUND_ERROR' | 'USER_NODE_SUSPENDED_SERVICE' | 'READY';
+export type KubeNodeStatus = 'DELETING' | 'ERROR' | 'INSTALLING' | 'READY' | 'REOPENING' | 'RESETTING' | 'SUSPENDED' | 'SUSPENDING' | 'UPDATING' | 'USER_ERROR' | 'USER_NODE_NOT_FOUND_ERROR' | 'USER_NODE_SUSPENDED_SERVICE' | 'USER_QUOTA_ERROR';
 /**
  * Public Cloud project linked to a Kube cluster
  */
@@ -150,7 +150,7 @@ export interface KubePublicCloudProject {
 /**
  * Enum values for worker nodes reset policy
  */
-export type KubeResetWorkerNodesPolicy = 'reinstall' | 'delete';
+export type KubeResetWorkerNodesPolicy = 'delete' | 'reinstall';
 /**
  * Enum values for UpdatePolicy
  */
@@ -225,16 +225,16 @@ export interface ServicesService {
   contactTech?: string;
   /**
    */
-  creation?: Date;
+  creation?: string;
   /**
    */
   domain?: string;
   /**
    */
-  engagedUpTo?: Date;
+  engagedUpTo?: string;
   /**
    */
-  expiration?: Date;
+  expiration?: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -256,23 +256,23 @@ export interface ServicesService {
   status?: ServiceStateEnum;
 }
 type PathsKubeGET = '/kube' | 
+'/kube/{serviceName}/serviceInfos' | 
 '/kube/{serviceName}/kubeconfig' | 
-'/kube/{serviceName}' | 
-'/kube/{serviceName}/publiccloud/node' | 
 '/kube/{serviceName}/publiccloud/node/{nodeId}' | 
+'/kube/{serviceName}/publiccloud/node' | 
 '/kube/{serviceName}/publiccloud/project' | 
-'/kube/{serviceName}/serviceInfos';
+'/kube/{serviceName}';
 
-type PathsKubePUT = '/kube/{serviceName}' | 
+type PathsKubePUT = '/kube/{serviceName}/serviceInfos' | 
 '/kube/{serviceName}/updatePolicy' | 
-'/kube/{serviceName}/serviceInfos';
+'/kube/{serviceName}';
 
-type PathsKubePOST = '/kube/{serviceName}/publiccloud/node' | 
-'/kube/{serviceName}/changeContact' | 
+type PathsKubePOST = '/kube/{serviceName}/update' | 
 '/kube/{serviceName}/reset' | 
+'/kube/{serviceName}/terminate' | 
 '/kube/{serviceName}/confirmTermination' | 
-'/kube/{serviceName}/update' | 
-'/kube/{serviceName}/terminate';
+'/kube/{serviceName}/changeContact' | 
+'/kube/{serviceName}/publiccloud/node';
 
 type PathsKubeDELETE = '/kube/{serviceName}/publiccloud/node/{nodeId}';
 
@@ -286,87 +286,87 @@ export class ApiKube extends ApiCommon {
   **/
   public get(path: '/kube'): Promise<string[]>;
   /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/kube/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
   Get your cluster configuration
   Get kubeconfig file
   **/
   public get(path: '/kube/{serviceName}/kubeconfig', pathParams: {serviceName: string}): Promise<KubeKubeconfig>;
-  /**
-  Manage your cluster
-  Get information about your managed Kubernetes cluster
-  **/
-  public get(path: '/kube/{serviceName}', pathParams: {serviceName: string}): Promise<KubeCluster>;
-  /**
-  Manage your Public Cloud cluster nodes
-  List your nodes on Public Cloud
-  **/
-  public get(path: '/kube/{serviceName}/publiccloud/node', pathParams: {serviceName: string}): Promise<KubeNode[]>;
   /**
   Manage a single node on your cluster
   Get information on a specific node on your cluster
   **/
   public get(path: '/kube/{serviceName}/publiccloud/node/{nodeId}', pathParams: {nodeId: string, serviceName: string}): Promise<KubeNode>;
   /**
+  Manage your Public Cloud cluster nodes
+  List your nodes on Public Cloud
+  **/
+  public get(path: '/kube/{serviceName}/publiccloud/node', pathParams: {serviceName: string}): Promise<KubeNode[]>;
+  /**
   Manage your Public Cloud projects linked to your cluster
   List your Public Cloud projects linked to your cluster
   **/
   public get(path: '/kube/{serviceName}/publiccloud/project', pathParams: {serviceName: string}): Promise<KubePublicCloudProject[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/kube/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsKubeGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
-  /**
   Manage your cluster
-  Update information about your managed Kubernetes cluster
+  Get information about your managed Kubernetes cluster
   **/
-  public put(path: '/kube/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public get(path: '/kube/{serviceName}', pathParams: {serviceName: string}): Promise<KubeCluster>;
+  public get(path: PathsKubeGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  /**
+  Details about a Service
+  Alter this object properties
+  **/
+  public put(path: '/kube/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
   Manage the update policy of your cluster
   Change the update policy of your cluster
   **/
   public put(path: '/kube/{serviceName}/updatePolicy', pathParams: {serviceName: string}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
+  Manage your cluster
+  Update information about your managed Kubernetes cluster
   **/
-  public put(path: '/kube/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsKubePUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
-  /**
-  Manage your Public Cloud cluster nodes
-  Deploy a node for your cluster on Public Cloud
-  **/
-  public post(path: '/kube/{serviceName}/publiccloud/node', pathParams: {serviceName: string}): Promise<KubeNode>;
-  /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
-  public post(path: '/kube/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
-  /**
-  Reset your cluster
-  Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
-  **/
-  public post(path: '/kube/{serviceName}/reset', pathParams: {serviceName: string}): Promise<void>;
-  /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
-  public post(path: '/kube/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public put(path: '/kube/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsKubePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Update cluster
   Update cluster to the latest patch version
   **/
   public post(path: '/kube/{serviceName}/update', pathParams: {serviceName: string}): Promise<void>;
   /**
+  Reset your cluster
+  Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
+  **/
+  public post(path: '/kube/{serviceName}/reset', pathParams: {serviceName: string}): Promise<void>;
+  /**
   Terminate your service
   Terminate your service
   **/
   public post(path: '/kube/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
-  public post(path: PathsKubePOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  /**
+  Confirm termination of your service
+  Confirm termination of your service
+  **/
+  public post(path: '/kube/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  Change the contacts of this service
+  Launch a contact change procedure
+  **/
+  public post(path: '/kube/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Manage your Public Cloud cluster nodes
+  Deploy a node for your cluster on Public Cloud
+  **/
+  public post(path: '/kube/{serviceName}/publiccloud/node', pathParams: {serviceName: string}): Promise<KubeNode>;
+  public post(path: PathsKubePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Manage a single node on your cluster
   Delete a node on your cluster
   **/
   public delete(path: '/kube/{serviceName}/publiccloud/node/{nodeId}', pathParams: {nodeId: string, serviceName: string}): Promise<void>;
-  public delete(path: PathsKubeDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: PathsKubeDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

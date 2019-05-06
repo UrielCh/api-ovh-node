@@ -12,7 +12,7 @@ class ApiCommon {
         if (!pathParams)
             return path;
         for (const key of Object.keys(pathParams)) {
-            const value = pathParams[key];
+            const value = String(pathParams[key]);
             path = path.replace(`{${key}}`, value);
         }
         return path;
