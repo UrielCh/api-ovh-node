@@ -1,11 +1,11 @@
 {
   "name": "@ovh-api/veeam-veeam-enterprise",
-  "version": "1.0.0",
-  "main": "dist/index.js", 
+  "version": "0.0.2",
+  "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "@ovh-api/common": "0.0.1"
+    "@ovh-api/common": "^0.0.2"
   },
   "scripts": {
     "run": "ts-node src/index.ts",
