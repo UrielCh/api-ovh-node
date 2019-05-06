@@ -5,7 +5,7 @@
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "@ovh-api/common": "1.0.0"
+    "@ovh-api/common": "0.0.1"
   },
   "scripts": {
     "run": "ts-node src/index.ts",
