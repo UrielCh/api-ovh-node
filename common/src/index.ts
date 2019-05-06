@@ -5,7 +5,7 @@
 export class ApiCommon {
     private ovh: any;
     constructor(config: {appKey: string, appSecret: string, consumerKey: string}) { 
-        this.ovh = require('ovh')( {appKey: String, appSecret: String, consumerKey: String});
+        this.ovh = require('ovh')(config);
     }
     private replacePath(path: string, pathParams?:{ [key:string]:string | Number; }) : string{
         // TODO add assert .match(/(\{[\w]+\})/g)
