@@ -14,13 +14,16 @@ export interface SecretSecret {
    */
   secret?: string;
 }
-type PathssecretPOST = '/secret/retrieve';
+type PathsSecretPOST = '/secret/retrieve';
 
-class Apisecret extends ApiCommon {
+export class ApiSecret extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Retrieve a secret sent by email
   Retrieve a secret sent by email
   **/
-  public post(path: '/secret/retrieve', pathParams: null, bodyParams: null): Promise<SecretSecret>;
-  public post(path: PathssecretPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/secret/retrieve'): Promise<SecretSecret>;
+  public post(path: PathsSecretPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

@@ -5,25 +5,25 @@ import { ApiCommon } from '@ovh-api/common';
 export interface ComplexTypeSafeKeyValue {
   /**
    */
-  value?: T;
+  key?: string;
   /**
    */
-  key?: string;
+  value?: T;
 }
 /**
  * Price with it's currency and textual representation
  */
 export interface OrderPrice {
   /**
-   * Textual representation
-   *
-   */
-  text?: string;
-  /**
    * Currency code
    *
    */
   currencyCode?: PriceCurrencyCodeEnum;
+  /**
+   * Textual representation
+   *
+   */
+  text?: string;
   /**
    * The effective price
    *
@@ -59,45 +59,45 @@ export interface ServicesBillingInvoice {
  */
 export interface ServicesBillingInvoiceLine {
   /**
-   * Quantity of item
-   *
-   */
-  quantity?: Number;
-  /**
-   * Price with tax
-   *
-   */
-  totalPrice?: OrderPrice;
-  /**
-   * Price without tax
-   *
-   */
-  price?: OrderPrice;
-  /**
    * Description of item
    *
    */
   description?: string;
   /**
-   * Associated service name
+   * End period
    *
    */
-  serviceName?: string;
-  /**
-   * Type of item
-   *
-   */
-  type?: ServicesBillingInvoiceLineTypeEnum;
+  periodEnd?: Date;
   /**
    * Start period
    *
    */
   periodStart?: Date;
   /**
-   * End period
+   * Price without tax
    *
    */
-  periodEnd?: Date;
+  price?: OrderPrice;
+  /**
+   * Quantity of item
+   *
+   */
+  quantity?: Number;
+  /**
+   * Associated service name
+   *
+   */
+  serviceName?: string;
+  /**
+   * Price with tax
+   *
+   */
+  totalPrice?: OrderPrice;
+  /**
+   * Type of item
+   *
+   */
+  type?: ServicesBillingInvoiceLineTypeEnum;
 }
 /**
  * Type of item
@@ -133,6 +133,11 @@ export interface ServicesBillingEngagementEngagementPeriod {
  */
 export interface ServicesExpandedBilling {
   /**
+   * Expiration date
+   *
+   */
+  expirationDate?: Date;
+  /**
    * Next billing date
    *
    */
@@ -142,11 +147,6 @@ export interface ServicesExpandedBilling {
    *
    */
   plan?: ServicesExpandedPlan;
-  /**
-   * Expiration date
-   *
-   */
-  expirationDate?: Date;
 }
 /**
  * Plan of the service
@@ -168,25 +168,20 @@ export interface ServicesExpandedPlan {
  */
 export interface ServicesExpandedProduct {
   /**
-   * Product name
-   *
-   */
-  name?: string;
-  /**
    * Product description
    *
    */
   description?: string;
+  /**
+   * Product name
+   *
+   */
+  name?: string;
 }
 /**
  * Resource of the service
  */
 export interface ServicesExpandedResource {
-  /**
-   * Product
-   *
-   */
-  product?: ServicesExpandedProduct;
   /**
    * Display name of the resource
    *
@@ -197,6 +192,11 @@ export interface ServicesExpandedResource {
    *
    */
   name?: string;
+  /**
+   * Product
+   *
+   */
+  product?: ServicesExpandedProduct;
 }
 /**
  * Route of the service
@@ -208,46 +208,49 @@ export interface ServicesExpandedRoute {
    */
   path?: string;
   /**
-   * Variables to use in the path
-   *
-   */
-  vars?: ComplexTypeSafeKeyValue<string>[];
-  /**
    * Path with variables applied
    *
    */
   url?: string;
+  /**
+   * Variables to use in the path
+   *
+   */
+  vars?: ComplexTypeSafeKeyValue<string>[];
 }
 /**
  * Description of a service
  */
 export interface ServicesExpandedService {
   /**
-   * Route
+   * Billing information
    *
    */
-  route?: ServicesExpandedRoute;
+  billing?: ServicesExpandedBilling;
   /**
    * Resource
    *
    */
   resource?: ServicesExpandedResource;
   /**
+   * Route
+   *
+   */
+  route?: ServicesExpandedRoute;
+  /**
    * Service ID
    *
    */
   serviceId: Number;
-  /**
-   * Billing information
-   *
-   */
-  billing?: ServicesExpandedBilling;
 }
-type PathsservicesGET = '/services' | 
+type PathsServicesGET = '/services' | 
 '/services/{serviceId}' | 
 '/services/{serviceId}/billing/engagement';
 
-class Apiservices extends ApiCommon {
+export class ApiServices extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Get list of your service details
   null
@@ -257,11 +260,11 @@ class Apiservices extends ApiCommon {
   Get list of your service details
   Get details about a service
   **/
-  public get(path: '/services/{serviceId}', pathParams: {serviceId?: Number}, queryParams: null): Promise<ServicesExpandedService>;
+  public get(path: '/services/{serviceId}', pathParams: {serviceId: Number}): Promise<ServicesExpandedService>;
   /**
   Engagement for a given service
   Get engagement details
   **/
-  public get(path: '/services/{serviceId}/billing/engagement', pathParams: {serviceId?: Number}, queryParams: null): Promise<ServicesBillingEngagementEngagement>;
-  public get(path: PathsservicesGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/services/{serviceId}/billing/engagement', pathParams: {serviceId: Number}): Promise<ServicesBillingEngagementEngagement>;
+  public get(path: PathsServicesGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
 }

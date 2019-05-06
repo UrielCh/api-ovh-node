@@ -27,10 +27,15 @@ export type DedicatedTemplateOsLanguageEnum = 'ar' | 'bg' | 'cs' | 'da' | 'de' |
  */
 export interface DedicatedTemplateOsProperties {
   /**
-   * Name of the ssh key that should be installed. Password login will be disabled
+   * Template change log details
    *
    */
-  sshKeyName?: string;
+  changeLog?: string;
+  /**
+   * Set up the server using the provided hostname instead of the default hostname
+   *
+   */
+  customHostname?: string;
   /**
    * Indicate the URL where your postinstall customisation script is located
    *
@@ -42,18 +47,13 @@ export interface DedicatedTemplateOsProperties {
    */
   postInstallationScriptReturn?: string;
   /**
-   * Set up the server using the provided hostname instead of the default hostname
-   *
-   */
-  customHostname?: string;
-  /**
    */
   rating?: Number;
   /**
-   * Template change log details
+   * Name of the ssh key that should be installed. Password login will be disabled
    *
    */
-  changeLog?: string;
+  sshKeyName?: string;
   /**
    * Use the distribution's native kernel instead of the recommended OVH Kernel
    *
@@ -77,35 +77,90 @@ export type DedicatedTemplatePartitionTypeEnum = 'logical' | 'lv' | 'primary';
  */
 export interface DedicatedInstallationTemplateTemplates {
   /**
+   * list of all language available for this template
+   *
+   */
+  availableLanguages?: DedicatedTemplateOsLanguageEnum[];
+  /**
+   * This distribution is new, and although tested and functional, may still display odd behaviour
+   *
+   */
+  beta?: boolean;
+  /**
    * this template  bit format
    *
    */
   bitFormat?: DedicatedServerBitFormatEnum;
   /**
-   * This distribution supports the GUID Partition Table (GPT), providing up to 128 partitions that can have more than 2 TB
+   * category of this template (informative only)
    *
    */
-  supportsGptLabel?: boolean;
+  category?: DedicatedTemplateOsUsageEnum;
   /**
    * Customizable template properties
    *
    */
   customization?: DedicatedTemplateOsProperties;
   /**
+   * the default language of this template
+   *
+   */
+  defaultLanguage?: DedicatedTemplateOsLanguageEnum;
+  /**
    * is this distribution deprecated
    *
    */
   deprecated?: boolean;
   /**
-   * list of all language available for this template
-   *
-   */
-  availableLanguages?: DedicatedTemplateOsLanguageEnum[];
-  /**
    * information about this template
    *
    */
   description?: string;
+  /**
+   * the distribution this template is based on
+   *
+   */
+  distribution?: string;
+  /**
+   * this template family type
+   *
+   */
+  family?: DedicatedTemplateOsTypeEnum;
+  /**
+   * list of all filesystems  available for this template
+   *
+   */
+  filesystems?: DedicatedTemplateOsFileSystemEnum[];
+  /**
+   * This distribution supports hardware raid configuration through the OVH API
+   *
+   */
+  hardRaidConfiguration?: boolean;
+  /**
+   * Date of last modification of the base image
+   *
+   */
+  lastModification?: Date;
+  /**
+   * This distribution supports Logical Volumes (Linux LVM)
+   *
+   */
+  lvmReady?: boolean;
+  /**
+   * This distribution supports installation using the distribution's native kernel instead of the recommended OVH kernel
+   *
+   */
+  supportsDistributionKernel?: boolean;
+  /**
+   * This distribution supports the GUID Partition Table (GPT), providing up to 128 partitions that can have more than 2 TB
+   *
+   */
+  supportsGptLabel?: boolean;
+  /**
+   * This distribution supports RTM software
+   *
+   */
+  supportsRTM?: boolean;
   /**
    * This distribution supports the microsoft SQL server
    *
@@ -117,80 +172,25 @@ export interface DedicatedInstallationTemplateTemplates {
    */
   supportsUEFI?: DedicatedServerSupportsUEFIEnum;
   /**
-   * the distribution this template is based on
-   *
-   */
-  distribution?: string;
-  /**
-   * list of all filesystems  available for this template
-   *
-   */
-  filesystems?: DedicatedTemplateOsFileSystemEnum[];
-  /**
-   * This distribution supports Logical Volumes (Linux LVM)
-   *
-   */
-  lvmReady?: boolean;
-  /**
-   * This distribution supports hardware raid configuration through the OVH API
-   *
-   */
-  hardRaidConfiguration?: boolean;
-  /**
-   * This distribution supports RTM software
-   *
-   */
-  supportsRTM?: boolean;
-  /**
-   * the default language of this template
-   *
-   */
-  defaultLanguage?: DedicatedTemplateOsLanguageEnum;
-  /**
    * This template name
    *
    */
   templateName?: string;
-  /**
-   * Date of last modification of the base image
-   *
-   */
-  lastModification?: Date;
-  /**
-   * This distribution supports installation using the distribution's native kernel instead of the recommended OVH kernel
-   *
-   */
-  supportsDistributionKernel?: boolean;
-  /**
-   * category of this template (informative only)
-   *
-   */
-  category?: DedicatedTemplateOsUsageEnum;
-  /**
-   * this template family type
-   *
-   */
-  family?: DedicatedTemplateOsTypeEnum;
-  /**
-   * This distribution is new, and although tested and functional, may still display odd behaviour
-   *
-   */
-  beta?: boolean;
 }
 /**
  * Hardware RAID defined in this partitioning scheme
  */
 export interface DedicatedInstallationTemplateHardwareRaid {
   /**
-   * RAID mode
-   *
-   */
-  mode?: DedicatedTemplateOsHardwareRaidEnum;
-  /**
    * Disk list
    *
    */
   disks?: string[];
+  /**
+   * RAID mode
+   *
+   */
+  mode?: DedicatedTemplateOsHardwareRaidEnum;
   /**
    * Hardware RAID name
    *
@@ -222,28 +222,10 @@ export interface DedicatedInstallationTemplateTemplatePartitioningSchemes {
  */
 export interface DedicatedInstallationTemplateTemplatePartitions {
   /**
-   * size of partition in Mb, 0 => rest of the space
-   *
-   */
-  size?: ComplexTypeUnitAndValue<Number>;
-  /**
-   * The volume name needed for proxmox distribution
-   *
-   */
-  volumeName?: string;
-  /**
-   */
-  type?: DedicatedTemplatePartitionTypeEnum;
-  /**
    * Partition filesytem
    *
    */
   filesystem?: DedicatedTemplateOsFileSystemEnum;
-  /**
-   * raid partition type
-   *
-   */
-  raid?: DedicatedServerPartitionRaidEnum;
   /**
    * partition mount point
    *
@@ -254,6 +236,24 @@ export interface DedicatedInstallationTemplateTemplatePartitions {
    *
    */
   order?: Number;
+  /**
+   * raid partition type
+   *
+   */
+  raid?: DedicatedServerPartitionRaidEnum;
+  /**
+   * size of partition in Mb, 0 => rest of the space
+   *
+   */
+  size?: ComplexTypeUnitAndValue<Number>;
+  /**
+   */
+  type?: DedicatedTemplatePartitionTypeEnum;
+  /**
+   * The volume name needed for proxmox distribution
+   *
+   */
+  volumeName?: string;
 }
 /**
  * Available os bit format
@@ -267,55 +267,58 @@ export type DedicatedServerPartitionRaidEnum = '0' | '1' | '10' | '5' | '6';
  * supports UEFI setup
  */
 export type DedicatedServerSupportsUEFIEnum = 'no' | 'only' | 'yes';
-type PathsdedicatedinstallationTemplateGET = '/dedicated/installationTemplate' | 
+type PathsDedicatedinstallationTemplateGET = '/dedicated/installationTemplate' | 
 '/dedicated/installationTemplate/{templateName}' | 
 '/dedicated/installationTemplate/{templateName}/partitionScheme' | 
-'/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}' | 
 '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}' | 
 '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition' | 
 '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}' | 
-'/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid';
+'/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid' | 
+'/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}';
 
-class ApidedicatedinstallationTemplate extends ApiCommon {
+export class ApiDedicatedinstallationTemplate extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   List the dedicated.installationTemplate.Templates objects
   OVH operating system installation templates
   **/
-  public get(path: '/dedicated/installationTemplate', pathParams: null, queryParams: null): Promise<string[]>;
+  public get(path: '/dedicated/installationTemplate'): Promise<string[]>;
   /**
   Available installation templates
   Get this object properties
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}', pathParams: {templateName?: string}, queryParams: null): Promise<DedicatedInstallationTemplateTemplates>;
+  public get(path: '/dedicated/installationTemplate/{templateName}', pathParams: {templateName: string}): Promise<DedicatedInstallationTemplateTemplates>;
   /**
   List the dedicated.installationTemplate.templatePartitioningSchemes objects
   Partitioning schemes available on this template
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme', pathParams: {templateName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Partitioning schemes available on this template
-  Get this object properties
-  **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}', pathParams: {templateName?: string, schemeName?: string}, queryParams: null): Promise<DedicatedInstallationTemplateTemplatePartitioningSchemes>;
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme', pathParams: {templateName: string}): Promise<string[]>;
   /**
    Partitions defined in this partitioning scheme
   Get this object properties
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', pathParams: {templateName?: string, schemeName?: string, mountpoint?: string}, queryParams: null): Promise<DedicatedInstallationTemplateTemplatePartitions>;
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', pathParams: {templateName: string, schemeName: string, mountpoint: string}): Promise<DedicatedInstallationTemplateTemplatePartitions>;
   /**
   List the dedicated.installationTemplate.templatePartitions objects
   Partitions defined in this partitioning scheme
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', pathParams: {templateName?: string, schemeName?: string}, queryParams: null): Promise<string[]>;
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', pathParams: {templateName: string, schemeName: string}): Promise<string[]>;
   /**
   Hardware RAID defined in this partitioning scheme
   Get this object properties
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', pathParams: {templateName?: string, schemeName?: string, name?: string}, queryParams: null): Promise<DedicatedInstallationTemplateHardwareRaid>;
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', pathParams: {templateName: string, schemeName: string, name: string}): Promise<DedicatedInstallationTemplateHardwareRaid>;
   /**
   List the dedicated.installationTemplate.hardwareRaid objects
   Hardware RAIDs defined in this partitioning scheme
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid', pathParams: {templateName?: string, schemeName?: string}, queryParams: null): Promise<string[]>;
-  public get(path: PathsdedicatedinstallationTemplateGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid', pathParams: {templateName: string, schemeName: string}): Promise<string[]>;
+  /**
+  Partitioning schemes available on this template
+  Get this object properties
+  **/
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}', pathParams: {templateName: string, schemeName: string}): Promise<DedicatedInstallationTemplateTemplatePartitioningSchemes>;
+  public get(path: PathsDedicatedinstallationTemplateGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
 }

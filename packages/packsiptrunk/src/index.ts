@@ -14,30 +14,30 @@ export interface PackSiptrunkPackSipTrunk {
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -52,31 +52,36 @@ export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' |
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
+  /**
+   */
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  engagedUpTo?: Date;
+  contactTech?: string;
   /**
    */
-  contactAdmin?: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -84,54 +89,52 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
-  /**
-   */
-  creation?: Date;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
   /**
    */
   status?: ServiceStateEnum;
 }
-type PathspacksiptrunkGET = '/pack/siptrunk' | 
+type PathsPacksiptrunkGET = '/pack/siptrunk' | 
 '/pack/siptrunk/{packName}' | 
 '/pack/siptrunk/{packName}/serviceInfos';
 
-type PathspacksiptrunkPUT = '/pack/siptrunk/{packName}/serviceInfos';
+type PathsPacksiptrunkPUT = '/pack/siptrunk/{packName}/serviceInfos';
 
-type PathspacksiptrunkPOST = '/pack/siptrunk/{packName}/changeContact';
+type PathsPacksiptrunkPOST = '/pack/siptrunk/{packName}/changeContact';
 
-class Apipacksiptrunk extends ApiCommon {
+export class ApiPacksiptrunk extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Operations about the PACK service
   List available services
   **/
-  public get(path: '/pack/siptrunk', pathParams: null, queryParams: null): Promise<string[]>;
+  public get(path: '/pack/siptrunk'): Promise<string[]>;
   /**
   Pack of SIP trunk services
   Get this object properties
   **/
-  public get(path: '/pack/siptrunk/{packName}', pathParams: {packName?: string}, queryParams: null): Promise<PackSiptrunkPackSipTrunk>;
+  public get(path: '/pack/siptrunk/{packName}', pathParams: {packName: string}): Promise<PackSiptrunkPackSipTrunk>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/pack/siptrunk/{packName}/serviceInfos', pathParams: {packName?: string}, queryParams: null): Promise<ServicesService>;
-  public get(path: PathspacksiptrunkGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/pack/siptrunk/{packName}/serviceInfos', pathParams: {packName: string}): Promise<ServicesService>;
+  public get(path: PathsPacksiptrunkGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/pack/siptrunk/{packName}/serviceInfos', pathParams: {packName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathspacksiptrunkPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/pack/siptrunk/{packName}/serviceInfos', pathParams: {packName: string}): Promise<void>;
+  public put(path: PathsPacksiptrunkPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/pack/siptrunk/{packName}/changeContact', pathParams: {packName?: string}, bodyParams: null): Promise<Number[]>;
-  public post(path: PathspacksiptrunkPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/pack/siptrunk/{packName}/changeContact', pathParams: {packName: string}): Promise<Number[]>;
+  public post(path: PathsPacksiptrunkPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

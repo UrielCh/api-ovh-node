@@ -16,20 +16,25 @@ export type OvhstatusTaskTaskTypeEnum = 'incident' | 'maintenance' | 'upgrade';
  */
 export interface StatusReply {
   /**
-   * The date of the reply
-   *
-   */
-  date?: Date;
-  /**
    * The comment of the reply
    *
    */
   comment?: string;
+  /**
+   * The date of the reply
+   *
+   */
+  date?: Date;
 }
 /**
  * A task linked to one of your services
  */
 export interface StatusTask {
+  /**
+   * The category of the task
+   *
+   */
+  category?: string;
   /**
    * The end date of the task
    *
@@ -41,30 +46,20 @@ export interface StatusTask {
    */
   impact?: OvhstatusTaskTaskImpactEnum;
   /**
-   * The project of task
-   *
-   */
-  project?: string;
-  /**
    * Your impacted service linked to the task
    *
    */
   impactedService?: string;
   /**
-   * The type of the task
+   * The task progression from 0 to 100
    *
    */
-  type?: OvhstatusTaskTaskTypeEnum;
+  progress?: Number;
   /**
-   * The title of the task
+   * The project of task
    *
    */
-  title?: string;
-  /**
-   * The task uuid
-   *
-   */
-  uuid?: string;
+  project?: string;
   /**
    * The reference of the task
    *
@@ -76,16 +71,6 @@ export interface StatusTask {
    */
   replies?: StatusReply[];
   /**
-   * The task progression from 0 to 100
-   *
-   */
-  progress?: Number;
-  /**
-   * The category of the task
-   *
-   */
-  category?: string;
-  /**
    * The start date of the task
    *
    */
@@ -95,14 +80,32 @@ export interface StatusTask {
    *
    */
   status?: OvhstatusTaskTaskStatusEnum;
+  /**
+   * The title of the task
+   *
+   */
+  title?: string;
+  /**
+   * The type of the task
+   *
+   */
+  type?: OvhstatusTaskTaskTypeEnum;
+  /**
+   * The task uuid
+   *
+   */
+  uuid?: string;
 }
-type PathsstatusGET = '/status/task';
+type PathsStatusGET = '/status/task';
 
-class Apistatus extends ApiCommon {
+export class ApiStatus extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   API to get incidents or maintenances linked to nichandle services
   Find all the incidents or maintenances linked to your services
   **/
   public get(path: '/status/task', pathParams: null, queryParams: {impact?: OvhstatusTaskTaskImpactEnum, status?: OvhstatusTaskTaskStatusEnum, type?: OvhstatusTaskTaskTypeEnum}): Promise<StatusTask[]>;
-  public get(path: PathsstatusGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: PathsStatusGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
 }

@@ -13,10 +13,10 @@ export type LicenseChangeIpMessageEnum = 'OK' | 'destinationNotAllowed' | 'licen
 export interface LicenseChangeIpStatus {
   /**
    */
-  success?: boolean;
+  message?: LicenseChangeIpMessageEnum;
   /**
    */
-  message?: LicenseChangeIpMessageEnum;
+  success?: boolean;
 }
 /**
  * Possible values for license type
@@ -27,15 +27,20 @@ export type LicenseLicenseTypeEnum = 'dedicated' | 'dedicatedCloud' | 'dedicated
  */
 export interface LicenseOption {
   /**
+   * Quantity or corresponding label of the designated option enabled on your license
+   *
+   */
+  amount?: string;
+  /**
    * Specifies whether this option can be released or not
    *
    */
   canBeDeleted?: boolean;
   /**
-   * Quantity or corresponding label of the designated option enabled on your license
+   * This option expiration date
    *
    */
-  amount?: string;
+  expirationDate?: Date;
   /**
    * This option designation
    *
@@ -46,11 +51,6 @@ export interface LicenseOption {
    *
    */
   version?: string;
-  /**
-   * This option expiration date
-   *
-   */
-  expirationDate?: Date;
 }
 /**
  * The name of an option currently enabled on your license
@@ -91,21 +91,6 @@ export type LicenseStateEnum = 'ok' | 'released' | 'terminated' | 'toDeliver';
  */
 export interface LicenseTask {
   /**
-   * The last time this Task was updated
-   *
-   */
-  lastUpdate?: Date;
-  /**
-   * This Task name
-   *
-   */
-  name?: string;
-  /**
-   * When was this Task created
-   *
-   */
-  todoDate?: Date;
-  /**
    * This Task description
    *
    */
@@ -116,15 +101,30 @@ export interface LicenseTask {
    */
   doneDate?: Date;
   /**
-   * This Task id
+   * The last time this Task was updated
    *
    */
-  taskId?: Number;
+  lastUpdate?: Date;
+  /**
+   * This Task name
+   *
+   */
+  name?: string;
   /**
    * Current Taks status
    *
    */
   status?: LicenseTaskStateEnum;
+  /**
+   * This Task id
+   *
+   */
+  taskId?: Number;
+  /**
+   * When was this Task created
+   *
+   */
+  todoDate?: Date;
 }
 /**
  * All states a license Task can be in
@@ -140,10 +140,10 @@ export type LicenseVirtuozzoContainerNumberEnum = '2_CPU_001_CONTAINER' | '2_CPU
 export interface LicenseVirtuozzoOrderConfiguration {
   /**
    */
-  serviceType?: LicenseLicenseTypeEnum;
+  orderableVersions?: LicenseOrderableVirtuozzoCompatibilityInfos[];
   /**
    */
-  orderableVersions?: LicenseOrderableVirtuozzoCompatibilityInfos[];
+  serviceType?: LicenseLicenseTypeEnum;
 }
 /**
  * All versions available for Virtuozzo products
@@ -154,85 +154,85 @@ export type LicenseVirtuozzoVersionEnum = 'VIRTUOZZO_CONTAINERS_4_FOR_LINUX' | '
  */
 export interface LicenseVirtuozzoVirtuozzo {
   /**
-   * Shall we delete this on expiration ?
-   *
-   */
-  deleteAtExpiration?: boolean;
-  /**
    * The amount of containers this license can manage
    *
    */
   containerNumber?: LicenseVirtuozzoContainerNumberEnum;
-  /**
-   * The internal name of your license
-   *
-   */
-  domain?: string;
-  /**
-   * The ip on which this license is attached
-   *
-   */
-  ip?: string;
-  /**
-   * This license product key
-   *
-   */
-  productKey?: string;
-  /**
-   * The license id on license provider side
-   *
-   */
-  licenseId?: string;
-  /**
-   * This license version
-   *
-   */
-  version?: LicenseVirtuozzoVersionEnum;
-  /**
-   * This license Information key
-   *
-   */
-  informationKey?: string;
   /**
    * This license creation date
    *
    */
   creation?: Date;
   /**
+   * Shall we delete this on expiration ?
+   *
+   */
+  deleteAtExpiration?: boolean;
+  /**
+   * The internal name of your license
+   *
+   */
+  domain?: string;
+  /**
+   * This license Information key
+   *
+   */
+  informationKey?: string;
+  /**
+   * The ip on which this license is attached
+   *
+   */
+  ip?: string;
+  /**
+   * The license id on license provider side
+   *
+   */
+  licenseId?: string;
+  /**
+   * This license product key
+   *
+   */
+  productKey?: string;
+  /**
    * This license state
    *
    */
   status?: LicenseStateEnum;
+  /**
+   * This license version
+   *
+   */
+  version?: LicenseVirtuozzoVersionEnum;
 }
 /**
  * Map a possible renew for a specific service
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -255,31 +255,36 @@ export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PE
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
   /**
    */
-  engagedUpTo?: Date;
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  contactAdmin?: string;
+  contactTech?: string;
   /**
-   * All the possible renew period of your service in month
-   *
    */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -287,122 +292,120 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
-  /**
-   */
-  creation?: Date;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
   /**
    */
   status?: ServiceStateEnum;
 }
-type PathslicensevirtuozzoGET = '/license/virtuozzo/orderableVersions' | 
-'/license/virtuozzo' | 
-'/license/virtuozzo/{serviceName}/canLicenseBeMovedTo' | 
-'/license/virtuozzo/{serviceName}' | 
-'/license/virtuozzo/{serviceName}/serviceInfos' | 
-'/license/virtuozzo/{serviceName}/option/{label}' | 
-'/license/virtuozzo/{serviceName}/option' | 
-'/license/virtuozzo/{serviceName}/tasks' | 
+type PathsLicensevirtuozzoGET = '/license/virtuozzo' | 
+'/license/virtuozzo/orderableVersions' | 
 '/license/virtuozzo/{serviceName}/tasks/{taskId}' | 
-'/license/virtuozzo/{serviceName}/allowedDestinationIp';
+'/license/virtuozzo/{serviceName}/tasks' | 
+'/license/virtuozzo/{serviceName}/allowedDestinationIp' | 
+'/license/virtuozzo/{serviceName}/serviceInfos' | 
+'/license/virtuozzo/{serviceName}' | 
+'/license/virtuozzo/{serviceName}/canLicenseBeMovedTo' | 
+'/license/virtuozzo/{serviceName}/option' | 
+'/license/virtuozzo/{serviceName}/option/{label}';
 
-type PathslicensevirtuozzoPUT = '/license/virtuozzo/{serviceName}' | 
-'/license/virtuozzo/{serviceName}/serviceInfos';
+type PathsLicensevirtuozzoPUT = '/license/virtuozzo/{serviceName}/serviceInfos' | 
+'/license/virtuozzo/{serviceName}';
 
-type PathslicensevirtuozzoPOST = '/license/virtuozzo/{serviceName}/confirmTermination' | 
+type PathsLicensevirtuozzoPOST = '/license/virtuozzo/{serviceName}/confirmTermination' | 
 '/license/virtuozzo/{serviceName}/changeIp' | 
 '/license/virtuozzo/{serviceName}/terminate';
 
-type PathslicensevirtuozzoDELETE = '/license/virtuozzo/{serviceName}/option/{label}';
+type PathsLicensevirtuozzoDELETE = '/license/virtuozzo/{serviceName}/option/{label}';
 
-class Apilicensevirtuozzo extends ApiCommon {
+export class ApiLicensevirtuozzo extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
+  /**
+  Operations about the LICENSE service
+  List available services
+  **/
+  public get(path: '/license/virtuozzo'): Promise<string[]>;
   /**
   Get the orderable Virtuozzo versions
   Get the orderable Virtuozzo versions
   **/
   public get(path: '/license/virtuozzo/orderableVersions', pathParams: null, queryParams: {ip?: string}): Promise<LicenseVirtuozzoOrderConfiguration[]>;
   /**
-  Operations about the LICENSE service
-  List available services
-  **/
-  public get(path: '/license/virtuozzo', pathParams: null, queryParams: null): Promise<string[]>;
-  /**
-  canLicenseBeMovedTo operations
-  Will tell if the ip can accept the license
-  **/
-  public get(path: '/license/virtuozzo/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName?: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
-  /**
-  Your Virtuozzo license
+  licenses Todos
   Get this object properties
   **/
-  public get(path: '/license/virtuozzo/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<LicenseVirtuozzoVirtuozzo>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/license/virtuozzo/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  Your License options
-  Get this object properties
-  **/
-  public get(path: '/license/virtuozzo/{serviceName}/option/{label}', pathParams: {serviceName?: string, label?: LicenseOptionLabel}, queryParams: null): Promise<LicenseOption>;
-  /**
-  List the license.Option objects
-  Options linked to this license
-  **/
-  public get(path: '/license/virtuozzo/{serviceName}/option', pathParams: {serviceName?: string}, queryParams: {label?: LicenseOptionLabel}): Promise<LicenseOptionLabel[]>;
+  public get(path: '/license/virtuozzo/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
   /**
   List the license.Task objects
   tasks linked to this license
   **/
-  public get(path: '/license/virtuozzo/{serviceName}/tasks', pathParams: {serviceName?: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
-  /**
-  licenses Todos
-  Get this object properties
-  **/
-  public get(path: '/license/virtuozzo/{serviceName}/tasks/{taskId}', pathParams: {serviceName?: string, taskId?: Number}, queryParams: null): Promise<LicenseTask>;
+  public get(path: '/license/virtuozzo/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
   /**
   allowedDestinationIp operations
   Returns an array of ips where the license can be moved to
   **/
-  public get(path: '/license/virtuozzo/{serviceName}/allowedDestinationIp', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  public get(path: PathslicensevirtuozzoGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/license/virtuozzo/{serviceName}/allowedDestinationIp', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/license/virtuozzo/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Your Virtuozzo license
-  Alter this object properties
+  Get this object properties
   **/
-  public put(path: '/license/virtuozzo/{serviceName}', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public get(path: '/license/virtuozzo/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseVirtuozzoVirtuozzo>;
+  /**
+  canLicenseBeMovedTo operations
+  Will tell if the ip can accept the license
+  **/
+  public get(path: '/license/virtuozzo/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  /**
+  List the license.Option objects
+  Options linked to this license
+  **/
+  public get(path: '/license/virtuozzo/{serviceName}/option', pathParams: {serviceName: string}, queryParams: {label?: LicenseOptionLabel}): Promise<LicenseOptionLabel[]>;
+  /**
+  Your License options
+  Get this object properties
+  **/
+  public get(path: '/license/virtuozzo/{serviceName}/option/{label}', pathParams: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseOption>;
+  public get(path: PathsLicensevirtuozzoGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/virtuozzo/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathslicensevirtuozzoPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/license/virtuozzo/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  Your Virtuozzo license
+  Alter this object properties
+  **/
+  public put(path: '/license/virtuozzo/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsLicensevirtuozzoPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/license/virtuozzo/{serviceName}/confirmTermination', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
+  public post(path: '/license/virtuozzo/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
   changeIp operations
   Move this license to another Ip
   **/
-  public post(path: '/license/virtuozzo/{serviceName}/changeIp', pathParams: {serviceName?: string}, bodyParams: null): Promise<LicenseTask>;
+  public post(path: '/license/virtuozzo/{serviceName}/changeIp', pathParams: {serviceName: string}): Promise<LicenseTask>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/license/virtuozzo/{serviceName}/terminate', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  public post(path: PathslicensevirtuozzoPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/license/virtuozzo/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: PathsLicensevirtuozzoPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Your License options
   release this Option
   **/
-  public delete(path: '/license/virtuozzo/{serviceName}/option/{label}', pathParams: {serviceName?: string, label?: LicenseOptionLabel}, bodyParams: null): Promise<LicenseTask>;
-  public delete(path: PathslicensevirtuozzoDELETE, pathParams?: any, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/license/virtuozzo/{serviceName}/option/{label}', pathParams: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseTask>;
+  public delete(path: PathsLicensevirtuozzoDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

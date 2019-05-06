@@ -20,10 +20,10 @@ export type DedicatedServerMrtgPeriodEnum = 'daily' | 'hourly' | 'monthly' | 'we
 export interface DedicatedServerMrtgTimestampValue {
   /**
    */
-  value?: ComplexTypeUnitAndValue<Number>;
+  timestamp?: Number;
   /**
    */
-  timestamp?: Number;
+  value?: ComplexTypeUnitAndValue<Number>;
 }
 /**
  * distincts MRTG type
@@ -39,22 +39,22 @@ export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' |
 export interface ServicesNonExpiringService {
   /**
    */
-  contactBilling?: string;
-  /**
-   */
   contactAdmin?: string;
   /**
    */
-  domain?: string;
+  contactBilling?: string;
   /**
    */
   contactTech?: string;
   /**
    */
-  serviceId?: Number;
+  creation?: Date;
   /**
    */
-  creation?: Date;
+  domain?: string;
+  /**
+   */
+  serviceId?: Number;
   /**
    */
   status?: ServiceStateEnum;
@@ -69,65 +69,65 @@ export interface VrackAllowedDedicatedServerInterfaces {
    */
   dedicatedServer?: string;
   /**
-   * the name of dedicatedServerInterface
-   *
-   */
-  name?: string;
-  /**
    * the unique identifier of dedicatedServerInterface
    *
    */
   dedicatedServerInterface?: string;
+  /**
+   * the name of dedicatedServerInterface
+   *
+   */
+  name?: string;
 }
 /**
  * A structure given all service allowed for this vrack
  */
 export interface VrackAllowedServices {
   /**
-   * list of legacy vrack (1.0) allowed to be connected to vrack
+   * list of publicCloud projects allowed to be connected to vrack
    *
    */
-  legacyVrack?: string[];
-  /**
-   * list of dedicated cloud datacenters allowed to be connected to vrack
-   *
-   */
-  dedicatedCloudDatacenter?: string[];
+  cloudProject?: string[];
   /**
    * list of dedicated cloud allowed to be connected to vrack
    *
    */
   dedicatedCloud?: string[];
   /**
-   * list of dedicated servers allowed to be connected to vrack
+   * list of dedicated cloud datacenters allowed to be connected to vrack
    *
    */
-  dedicatedServer?: string[];
-  /**
-   * list of blocks allowed to be connected to vrack
-   *
-   */
-  ip?: string[];
+  dedicatedCloudDatacenter?: string[];
   /**
    * list of dedicated connect links allowed to be connected to vrack
    *
    */
   dedicatedConnect?: string[];
   /**
+   * list of dedicated servers allowed to be connected to vrack
+   *
+   */
+  dedicatedServer?: string[];
+  /**
    * list of dedicated server interfaces allowed to be connected to vrack
    *
    */
   dedicatedServerInterface?: VrackAllowedDedicatedServerInterfaces[];
   /**
-   * list of publicCloud projects allowed to be connected to vrack
+   * list of blocks allowed to be connected to vrack
    *
    */
-  cloudProject?: string[];
+  ip?: string[];
   /**
    * list of ipLoadbalancing allowed to be connected to vrack
    *
    */
   ipLoadbalancing?: string[];
+  /**
+   * list of legacy vrack (1.0) allowed to be connected to vrack
+   *
+   */
+  legacyVrack?: string[];
 }
 /**
  * vrack tasks
@@ -135,22 +135,16 @@ export interface VrackAllowedServices {
 export interface VrackTask {
   /**
    */
-  targetDomain?: string;
+  function?: string;
   /**
    */
-  orderId?: Number;
+  id?: Number;
   /**
    */
   lastUpdate?: Date;
   /**
    */
-  function?: string;
-  /**
-   */
-  todoDate?: Date;
-  /**
-   */
-  id?: Number;
+  orderId?: Number;
   /**
    */
   serviceName?: string;
@@ -159,6 +153,12 @@ export interface VrackTask {
    *
    */
   status?: VrackTaskStatusEnum;
+  /**
+   */
+  targetDomain?: string;
+  /**
+   */
+  todoDate?: Date;
 }
 /**
  * All states a vRack Task can be in
@@ -188,15 +188,15 @@ export interface VrackCloudProject {
  */
 export interface VrackDedicatedCloud {
   /**
-   * Dedicated cloud vlanId used
-   *
-   */
-  vlanId?: Number;
-  /**
    * your dedicated cloud service
    *
    */
   dedicatedCloud?: string;
+  /**
+   * Dedicated cloud vlanId used
+   *
+   */
+  vlanId?: Number;
   /**
    * vrack name
    *
@@ -233,50 +233,50 @@ export interface VrackDedicatedServer {
  */
 export interface VrackDedicatedServerInterface {
   /**
-   * vrack name
-   *
-   */
-  vrack?: string;
-  /**
    * Dedicated Server Interface
    *
    */
   dedicatedServerInterface?: string;
+  /**
+   * vrack name
+   *
+   */
+  vrack?: string;
 }
 /**
  * IP block in vrack
  */
 export interface VrackIp {
   /**
-   * Where you want your block announced on the network
+   * Your gateway
    *
    */
-  zone?: VrackVrackZoneEnum;
+  gateway?: string;
   /**
    * Your IP block
    *
    */
   ip?: string;
   /**
-   * Your gateway
+   * Where you want your block announced on the network
    *
    */
-  gateway?: string;
+  zone?: VrackVrackZoneEnum;
 }
 /**
  * ipLoadbalancing in vrack
  */
 export interface VrackIplb {
   /**
-   * vrack name
-   *
-   */
-  vrack?: string;
-  /**
    * Your ipLoadbalancing
    *
    */
   ipLoadbalancing?: string;
+  /**
+   * vrack name
+   *
+   */
+  vrack?: string;
 }
 /**
  * interface between legacy vrack (vrackXXXX) and vrack (pn-XXXX)
@@ -313,6 +313,11 @@ export interface VrackNasha {
  */
 export interface VrackPccDatacenter {
   /**
+   * Your dedicatedCloud datacenter name
+   *
+   */
+  datacenter?: string;
+  /**
    * Your dedicatedCloud name
    *
    */
@@ -322,11 +327,6 @@ export interface VrackPccDatacenter {
    *
    */
   vrack?: string;
-  /**
-   * Your dedicatedCloud datacenter name
-   *
-   */
-  datacenter?: string;
 }
 /**
  * A structure describing the public routing option
@@ -343,299 +343,302 @@ export interface VrackPublicRoutingOption {
  */
 export interface VrackVrack {
   /**
-   * yourvrackname
-   *
-   */
-  name?: string;
-  /**
    * yourvrackdescription
    *
    */
   description?: string;
+  /**
+   * yourvrackname
+   *
+   */
+  name?: string;
 }
-type PathsvrackGET = '/vrack' | 
-'/vrack/{serviceName}/dedicatedServerInterface' | 
+type PathsVrackGET = '/vrack/{serviceName}/dedicatedServerInterface' | 
 '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}' | 
-'/vrack/{serviceName}/dedicatedConnect' | 
-'/vrack/{serviceName}/dedicatedConnect/{name}' | 
+'/vrack/{serviceName}/dedicatedCloud' | 
+'/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}' | 
+'/vrack/{serviceName}/allowedServices' | 
 '/vrack/{serviceName}/serviceInfos' | 
-'/vrack/{serviceName}' | 
-'/vrack/{serviceName}/dedicatedServer/{dedicatedServer}' | 
-'/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg' | 
-'/vrack/{serviceName}/dedicatedServer' | 
-'/vrack/{serviceName}/cloudProject' | 
+'/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}' | 
+'/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/allowedVrack' | 
+'/vrack/{serviceName}/dedicatedCloudDatacenter' | 
+'/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}' | 
+'/vrack/{serviceName}/ipLoadbalancing' | 
+'/vrack/{serviceName}/ip' | 
+'/vrack/{serviceName}/ip/{ip}/availableZone' | 
+'/vrack/{serviceName}/ip/{ip}' | 
 '/vrack/{serviceName}/cloudProject/{project}' | 
+'/vrack/{serviceName}/cloudProject' | 
 '/vrack/{serviceName}/task/{taskId}' | 
 '/vrack/{serviceName}/task' | 
-'/vrack/{serviceName}/dedicatedServerInterfaceDetails' | 
-'/vrack/{serviceName}/ipLoadbalancing' | 
-'/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}' | 
-'/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/allowedVrack' | 
-'/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}' | 
-'/vrack/{serviceName}/dedicatedCloudDatacenter' | 
-'/vrack/{serviceName}/ip/{ip}' | 
-'/vrack/{serviceName}/ip/{ip}/availableZone' | 
-'/vrack/{serviceName}/ip' | 
-'/vrack/{serviceName}/allowedServices' | 
-'/vrack/{serviceName}/dedicatedCloud' | 
-'/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}' | 
+'/vrack/{serviceName}/legacyVrack' | 
 '/vrack/{serviceName}/legacyVrack/{legacyVrack}' | 
-'/vrack/{serviceName}/legacyVrack';
+'/vrack/{serviceName}/dedicatedConnect/{name}' | 
+'/vrack/{serviceName}/dedicatedConnect' | 
+'/vrack/{serviceName}/dedicatedServerInterfaceDetails' | 
+'/vrack/{serviceName}' | 
+'/vrack/{serviceName}/dedicatedServer' | 
+'/vrack/{serviceName}/dedicatedServer/{dedicatedServer}' | 
+'/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg' | 
+'/vrack';
 
-type PathsvrackPUT = '/vrack/{serviceName}/dedicatedConnect/{name}' | 
+type PathsVrackPUT = '/vrack/{serviceName}/dedicatedConnect/{name}' | 
 '/vrack/{serviceName}';
 
-type PathsvrackPOST = '/vrack/{serviceName}/dedicatedServerInterface' | 
-'/vrack/{serviceName}/dedicatedServer' | 
-'/vrack/{serviceName}/cloudProject' | 
-'/vrack/{serviceName}/ipLoadbalancing' | 
-'/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move' | 
-'/vrack/{serviceName}/ip/{ip}/announceInZone' | 
-'/vrack/{serviceName}/ip' | 
+type PathsVrackPOST = '/vrack/{serviceName}/dedicatedServerInterface' | 
 '/vrack/{serviceName}/dedicatedCloud' | 
-'/vrack/{serviceName}/legacyVrack';
+'/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move' | 
+'/vrack/{serviceName}/ipLoadbalancing' | 
+'/vrack/{serviceName}/ip' | 
+'/vrack/{serviceName}/ip/{ip}/announceInZone' | 
+'/vrack/{serviceName}/cloudProject' | 
+'/vrack/{serviceName}/legacyVrack' | 
+'/vrack/{serviceName}/dedicatedServer';
 
-type PathsvrackDELETE = '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}' | 
-'/vrack/{serviceName}/dedicatedServer/{dedicatedServer}' | 
-'/vrack/{serviceName}/cloudProject/{project}' | 
+type PathsVrackDELETE = '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}' | 
+'/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}' | 
 '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}' | 
 '/vrack/{serviceName}/ip/{ip}' | 
-'/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}' | 
-'/vrack/{serviceName}/legacyVrack/{legacyVrack}';
+'/vrack/{serviceName}/cloudProject/{project}' | 
+'/vrack/{serviceName}/legacyVrack/{legacyVrack}' | 
+'/vrack/{serviceName}/dedicatedServer/{dedicatedServer}';
 
-class Apivrack extends ApiCommon {
-  /**
-  Operations about the VRACK service
-  List available services
-  **/
-  public get(path: '/vrack', pathParams: null, queryParams: null): Promise<string[]>;
+export class ApiVrack extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   List the vrack.dedicatedServerInterface objects
   vrack for dedicated server interface
   **/
-  public get(path: '/vrack/{serviceName}/dedicatedServerInterface', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
+  public get(path: '/vrack/{serviceName}/dedicatedServerInterface', pathParams: {serviceName: string}): Promise<string[]>;
   /**
   vrack dedicated server interfaces
   Get this object properties
   **/
-  public get(path: '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}', pathParams: {serviceName?: string, dedicatedServerInterface?: string}, queryParams: null): Promise<VrackDedicatedServerInterface>;
-  /**
-  List the vrack.dedicatedConnect objects
-  vrack dedicated connect
-  **/
-  public get(path: '/vrack/{serviceName}/dedicatedConnect', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  vrack dedicated connect interface
-  Get this object properties
-  **/
-  public get(path: '/vrack/{serviceName}/dedicatedConnect/{name}', pathParams: {serviceName?: string, name?: string}, queryParams: null): Promise<VrackDedicatedConnect>;
-  /**
-  Details about a non-expiring Service
-  Get this object properties
-  **/
-  public get(path: '/vrack/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesNonExpiringService>;
-  /**
-  vrack
-  Get this object properties
-  **/
-  public get(path: '/vrack/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<VrackVrack>;
-  /**
-  vrack dedicated server interfaces
-  Get this object properties
-  **/
-  public get(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}', pathParams: {serviceName?: string, dedicatedServer?: string}, queryParams: null): Promise<VrackDedicatedServer>;
-  /**
-  mrtg operations
-  Retrieve vrack traffic graph values
-  **/
-  public get(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg', pathParams: {serviceName?: string, dedicatedServer?: string}, queryParams: {type?: DedicatedServerMrtgTypeEnum, period?: DedicatedServerMrtgPeriodEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
-  /**
-  List the vrack.dedicatedServer objects
-  vrack for dedicated server
-  **/
-  public get(path: '/vrack/{serviceName}/dedicatedServer', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  List the vrack.cloudProject objects
-  vrack for publicCloud project
-  **/
-  public get(path: '/vrack/{serviceName}/cloudProject', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  PublicCloud project in vrack
-  Get this object properties
-  **/
-  public get(path: '/vrack/{serviceName}/cloudProject/{project}', pathParams: {serviceName?: string, project?: string}, queryParams: null): Promise<VrackCloudProject>;
-  /**
-  vrack tasks
-  Get this object properties
-  **/
-  public get(path: '/vrack/{serviceName}/task/{taskId}', pathParams: {serviceName?: string, taskId?: Number}, queryParams: null): Promise<VrackTask>;
-  /**
-  List the vrack.Task objects
-  vrack tasks
-  **/
-  public get(path: '/vrack/{serviceName}/task', pathParams: {serviceName?: string}, queryParams: null): Promise<Number[]>;
-  /**
-  dedicatedServerInterfaceDetails operations
-  Details for all dedicated server interfaces in this vrack
-  **/
-  public get(path: '/vrack/{serviceName}/dedicatedServerInterfaceDetails', pathParams: {serviceName?: string}, queryParams: null): Promise<VrackAllowedDedicatedServerInterfaces[]>;
-  /**
-  List the vrack.iplb objects
-  vrack for ipLoadbalancing
-  **/
-  public get(path: '/vrack/{serviceName}/ipLoadbalancing', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  ipLoadbalancing in vrack
-  Get this object properties
-  **/
-  public get(path: '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}', pathParams: {serviceName?: string, ipLoadbalancing?: string}, queryParams: null): Promise<VrackIplb>;
-  /**
-  allowedVrack operations
-  Vracks allowed for your dedicatedCloud datacenter
-  **/
-  public get(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/allowedVrack', pathParams: {serviceName?: string, datacenter?: string}, queryParams: null): Promise<string[]>;
-  /**
-  vrack datacenter interface
-  Get this object properties
-  **/
-  public get(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}', pathParams: {serviceName?: string, datacenter?: string}, queryParams: null): Promise<VrackPccDatacenter>;
-  /**
-  List the vrack.pccDatacenter objects
-  vrack dedicated cloud datacenter
-  **/
-  public get(path: '/vrack/{serviceName}/dedicatedCloudDatacenter', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  IP block in vrack
-  Get this object properties
-  **/
-  public get(path: '/vrack/{serviceName}/ip/{ip}', pathParams: {serviceName?: string, ip?: string}, queryParams: null): Promise<VrackIp>;
-  /**
-  availableZone operations
-  Zone available to announce your block
-  **/
-  public get(path: '/vrack/{serviceName}/ip/{ip}/availableZone', pathParams: {serviceName?: string, ip?: string}, queryParams: null): Promise<VrackVrackZoneEnum[]>;
-  /**
-  List the vrack.ip objects
-  vrack for IP blocks
-  **/
-  public get(path: '/vrack/{serviceName}/ip', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  allowedServices operations
-  List all services allowed in this vrack
-  **/
-  public get(path: '/vrack/{serviceName}/allowedServices', pathParams: {serviceName?: string}, queryParams: null): Promise<VrackAllowedServices>;
+  public get(path: '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}', pathParams: {serviceName: string, dedicatedServerInterface: string}): Promise<VrackDedicatedServerInterface>;
   /**
   List the vrack.dedicatedCloud objects
   vrack dedicated cloud (VmNetwork)
   **/
-  public get(path: '/vrack/{serviceName}/dedicatedCloud', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
+  public get(path: '/vrack/{serviceName}/dedicatedCloud', pathParams: {serviceName: string}): Promise<string[]>;
   /**
   vrack dedicated cloud interface
   Get this object properties
   **/
-  public get(path: '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}', pathParams: {serviceName?: string, dedicatedCloud?: string}, queryParams: null): Promise<VrackDedicatedCloud>;
+  public get(path: '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}', pathParams: {serviceName: string, dedicatedCloud: string}): Promise<VrackDedicatedCloud>;
   /**
-  interface between legacy vrack (vrackXXXX) and vrack (pn-XXXX)
+  allowedServices operations
+  List all services allowed in this vrack
+  **/
+  public get(path: '/vrack/{serviceName}/allowedServices', pathParams: {serviceName: string}): Promise<VrackAllowedServices>;
+  /**
+  Details about a non-expiring Service
   Get this object properties
   **/
-  public get(path: '/vrack/{serviceName}/legacyVrack/{legacyVrack}', pathParams: {serviceName?: string, legacyVrack?: string}, queryParams: null): Promise<VrackLegacyVrack>;
+  public get(path: '/vrack/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesNonExpiringService>;
+  /**
+  vrack datacenter interface
+  Get this object properties
+  **/
+  public get(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}', pathParams: {serviceName: string, datacenter: string}): Promise<VrackPccDatacenter>;
+  /**
+  allowedVrack operations
+  Vracks allowed for your dedicatedCloud datacenter
+  **/
+  public get(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/allowedVrack', pathParams: {serviceName: string, datacenter: string}): Promise<string[]>;
+  /**
+  List the vrack.pccDatacenter objects
+  vrack dedicated cloud datacenter
+  **/
+  public get(path: '/vrack/{serviceName}/dedicatedCloudDatacenter', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  ipLoadbalancing in vrack
+  Get this object properties
+  **/
+  public get(path: '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}', pathParams: {serviceName: string, ipLoadbalancing: string}): Promise<VrackIplb>;
+  /**
+  List the vrack.iplb objects
+  vrack for ipLoadbalancing
+  **/
+  public get(path: '/vrack/{serviceName}/ipLoadbalancing', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  List the vrack.ip objects
+  vrack for IP blocks
+  **/
+  public get(path: '/vrack/{serviceName}/ip', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  availableZone operations
+  Zone available to announce your block
+  **/
+  public get(path: '/vrack/{serviceName}/ip/{ip}/availableZone', pathParams: {serviceName: string, ip: string}): Promise<VrackVrackZoneEnum[]>;
+  /**
+  IP block in vrack
+  Get this object properties
+  **/
+  public get(path: '/vrack/{serviceName}/ip/{ip}', pathParams: {serviceName: string, ip: string}): Promise<VrackIp>;
+  /**
+  PublicCloud project in vrack
+  Get this object properties
+  **/
+  public get(path: '/vrack/{serviceName}/cloudProject/{project}', pathParams: {serviceName: string, project: string}): Promise<VrackCloudProject>;
+  /**
+  List the vrack.cloudProject objects
+  vrack for publicCloud project
+  **/
+  public get(path: '/vrack/{serviceName}/cloudProject', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  vrack tasks
+  Get this object properties
+  **/
+  public get(path: '/vrack/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<VrackTask>;
+  /**
+  List the vrack.Task objects
+  vrack tasks
+  **/
+  public get(path: '/vrack/{serviceName}/task', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
   List the vrack.legacyVrack objects
   vrack for legacy vrack
   **/
-  public get(path: '/vrack/{serviceName}/legacyVrack', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  public get(path: PathsvrackGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/vrack/{serviceName}/legacyVrack', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  interface between legacy vrack (vrackXXXX) and vrack (pn-XXXX)
+  Get this object properties
+  **/
+  public get(path: '/vrack/{serviceName}/legacyVrack/{legacyVrack}', pathParams: {serviceName: string, legacyVrack: string}): Promise<VrackLegacyVrack>;
+  /**
+  vrack dedicated connect interface
+  Get this object properties
+  **/
+  public get(path: '/vrack/{serviceName}/dedicatedConnect/{name}', pathParams: {serviceName: string, name: string}): Promise<VrackDedicatedConnect>;
+  /**
+  List the vrack.dedicatedConnect objects
+  vrack dedicated connect
+  **/
+  public get(path: '/vrack/{serviceName}/dedicatedConnect', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  dedicatedServerInterfaceDetails operations
+  Details for all dedicated server interfaces in this vrack
+  **/
+  public get(path: '/vrack/{serviceName}/dedicatedServerInterfaceDetails', pathParams: {serviceName: string}): Promise<VrackAllowedDedicatedServerInterfaces[]>;
+  /**
+  vrack
+  Get this object properties
+  **/
+  public get(path: '/vrack/{serviceName}', pathParams: {serviceName: string}): Promise<VrackVrack>;
+  /**
+  List the vrack.dedicatedServer objects
+  vrack for dedicated server
+  **/
+  public get(path: '/vrack/{serviceName}/dedicatedServer', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  vrack dedicated server interfaces
+  Get this object properties
+  **/
+  public get(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}', pathParams: {serviceName: string, dedicatedServer: string}): Promise<VrackDedicatedServer>;
+  /**
+  mrtg operations
+  Retrieve vrack traffic graph values
+  **/
+  public get(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg', pathParams: {serviceName: string, dedicatedServer: string}, queryParams: {type?: DedicatedServerMrtgTypeEnum, period?: DedicatedServerMrtgPeriodEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
+  /**
+  Operations about the VRACK service
+  List available services
+  **/
+  public get(path: '/vrack'): Promise<string[]>;
+  public get(path: PathsVrackGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   vrack dedicated connect interface
   Alter this object properties
   **/
-  public put(path: '/vrack/{serviceName}/dedicatedConnect/{name}', pathParams: {serviceName?: string, name?: string}, bodyParams: null): Promise<void>;
+  public put(path: '/vrack/{serviceName}/dedicatedConnect/{name}', pathParams: {serviceName: string, name: string}): Promise<void>;
   /**
   vrack
   Alter this object properties
   **/
-  public put(path: '/vrack/{serviceName}', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathsvrackPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/vrack/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsVrackPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   List the vrack.dedicatedServerInterface objects
   add a dedicated server interface to this vrack
   **/
-  public post(path: '/vrack/{serviceName}/dedicatedServerInterface', pathParams: {serviceName?: string}, bodyParams: null): Promise<VrackTask>;
-  /**
-  List the vrack.dedicatedServer objects
-  add a dedicated server to this vrack
-  **/
-  public post(path: '/vrack/{serviceName}/dedicatedServer', pathParams: {serviceName?: string}, bodyParams: null): Promise<VrackTask>;
-  /**
-  List the vrack.cloudProject objects
-  add a publicCloud project to this vrack
-  **/
-  public post(path: '/vrack/{serviceName}/cloudProject', pathParams: {serviceName?: string}, bodyParams: null): Promise<VrackTask>;
-  /**
-  List the vrack.iplb objects
-  add an ipLoadbalancing to this vrack
-  **/
-  public post(path: '/vrack/{serviceName}/ipLoadbalancing', pathParams: {serviceName?: string}, bodyParams: null): Promise<VrackTask>;
-  /**
-  move operations
-  Move your dedicatedCloud datacenter from a Vrack to another
-  **/
-  public post(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move', pathParams: {serviceName?: string, datacenter?: string}, bodyParams: null): Promise<VrackTask>;
-  /**
-  announceInZone operations
-  Announce IP to zone for vrack
-  **/
-  public post(path: '/vrack/{serviceName}/ip/{ip}/announceInZone', pathParams: {serviceName?: string, ip?: string}, bodyParams: null): Promise<VrackTask>;
-  /**
-  List the vrack.ip objects
-  add an IP block to this vrack
-  **/
-  public post(path: '/vrack/{serviceName}/ip', pathParams: {serviceName?: string}, bodyParams: null): Promise<VrackTask>;
+  public post(path: '/vrack/{serviceName}/dedicatedServerInterface', pathParams: {serviceName: string}): Promise<VrackTask>;
   /**
   List the vrack.dedicatedCloud objects
   add a dedicatedCloud (VmNetwork) to this vrack
   **/
-  public post(path: '/vrack/{serviceName}/dedicatedCloud', pathParams: {serviceName?: string}, bodyParams: null): Promise<VrackTask>;
+  public post(path: '/vrack/{serviceName}/dedicatedCloud', pathParams: {serviceName: string}): Promise<VrackTask>;
+  /**
+  move operations
+  Move your dedicatedCloud datacenter from a Vrack to another
+  **/
+  public post(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move', pathParams: {serviceName: string, datacenter: string}): Promise<VrackTask>;
+  /**
+  List the vrack.iplb objects
+  add an ipLoadbalancing to this vrack
+  **/
+  public post(path: '/vrack/{serviceName}/ipLoadbalancing', pathParams: {serviceName: string}): Promise<VrackTask>;
+  /**
+  List the vrack.ip objects
+  add an IP block to this vrack
+  **/
+  public post(path: '/vrack/{serviceName}/ip', pathParams: {serviceName: string}): Promise<VrackTask>;
+  /**
+  announceInZone operations
+  Announce IP to zone for vrack
+  **/
+  public post(path: '/vrack/{serviceName}/ip/{ip}/announceInZone', pathParams: {serviceName: string, ip: string}): Promise<VrackTask>;
+  /**
+  List the vrack.cloudProject objects
+  add a publicCloud project to this vrack
+  **/
+  public post(path: '/vrack/{serviceName}/cloudProject', pathParams: {serviceName: string}): Promise<VrackTask>;
   /**
   List the vrack.legacyVrack objects
   add a legacy vrack (vrackXXXX) to this vrack (pn-XXXX)
   **/
-  public post(path: '/vrack/{serviceName}/legacyVrack', pathParams: {serviceName?: string}, bodyParams: null): Promise<VrackTask>;
-  public post(path: PathsvrackPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/vrack/{serviceName}/legacyVrack', pathParams: {serviceName: string}): Promise<VrackTask>;
+  /**
+  List the vrack.dedicatedServer objects
+  add a dedicated server to this vrack
+  **/
+  public post(path: '/vrack/{serviceName}/dedicatedServer', pathParams: {serviceName: string}): Promise<VrackTask>;
+  public post(path: PathsVrackPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   vrack dedicated server interfaces
   remove this server interface from this vrack
   **/
-  public delete(path: '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}', pathParams: {serviceName?: string, dedicatedServerInterface?: string}, bodyParams: null): Promise<VrackTask>;
-  /**
-  vrack dedicated server interfaces
-  remove this server from this vrack
-  **/
-  public delete(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}', pathParams: {serviceName?: string, dedicatedServer?: string}, bodyParams: null): Promise<VrackTask>;
-  /**
-  PublicCloud project in vrack
-  remove this publicCloud project from this vrack
-  **/
-  public delete(path: '/vrack/{serviceName}/cloudProject/{project}', pathParams: {serviceName?: string, project?: string}, bodyParams: null): Promise<VrackTask>;
-  /**
-  ipLoadbalancing in vrack
-  remove this ipLoadbalancing from this vrack
-  **/
-  public delete(path: '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}', pathParams: {serviceName?: string, ipLoadbalancing?: string}, bodyParams: null): Promise<VrackTask>;
-  /**
-  IP block in vrack
-  remove this IP block from this vrack
-  **/
-  public delete(path: '/vrack/{serviceName}/ip/{ip}', pathParams: {serviceName?: string, ip?: string}, bodyParams: null): Promise<VrackTask>;
+  public delete(path: '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}', pathParams: {serviceName: string, dedicatedServerInterface: string}): Promise<VrackTask>;
   /**
   vrack dedicated cloud interface
   remove this dedicatedCloud (VmNetwork) from this vrack
   **/
-  public delete(path: '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}', pathParams: {serviceName?: string, dedicatedCloud?: string}, bodyParams: null): Promise<VrackTask>;
+  public delete(path: '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}', pathParams: {serviceName: string, dedicatedCloud: string}): Promise<VrackTask>;
+  /**
+  ipLoadbalancing in vrack
+  remove this ipLoadbalancing from this vrack
+  **/
+  public delete(path: '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}', pathParams: {serviceName: string, ipLoadbalancing: string}): Promise<VrackTask>;
+  /**
+  IP block in vrack
+  remove this IP block from this vrack
+  **/
+  public delete(path: '/vrack/{serviceName}/ip/{ip}', pathParams: {serviceName: string, ip: string}): Promise<VrackTask>;
+  /**
+  PublicCloud project in vrack
+  remove this publicCloud project from this vrack
+  **/
+  public delete(path: '/vrack/{serviceName}/cloudProject/{project}', pathParams: {serviceName: string, project: string}): Promise<VrackTask>;
   /**
   interface between legacy vrack (vrackXXXX) and vrack (pn-XXXX)
   remove this legacy vrack (vrackXXXX) from this vrack (pn-XXXX)
   **/
-  public delete(path: '/vrack/{serviceName}/legacyVrack/{legacyVrack}', pathParams: {serviceName?: string, legacyVrack?: string}, bodyParams: null): Promise<VrackTask>;
-  public delete(path: PathsvrackDELETE, pathParams?: any, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/vrack/{serviceName}/legacyVrack/{legacyVrack}', pathParams: {serviceName: string, legacyVrack: string}): Promise<VrackTask>;
+  /**
+  vrack dedicated server interfaces
+  remove this server from this vrack
+  **/
+  public delete(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}', pathParams: {serviceName: string, dedicatedServer: string}): Promise<VrackTask>;
+  public delete(path: PathsVrackDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

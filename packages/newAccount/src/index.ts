@@ -8,40 +8,40 @@ export type NichandleCountryEnum = 'AC' | 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL
  */
 export interface NichandleCreationRule {
   /**
-   * Name of the field
+   * Default value of the field
    *
    */
-  fieldName?: string;
+  defaultValue?: string;
   /**
    * Examples of values for the fields
    *
    */
   examples?: string[];
   /**
-   * Regular expression to validate the field value
+   * Name of the field
    *
    */
-  regularExpression?: string;
+  fieldName?: string;
   /**
    * List of allowed values for the field
    *
    */
   in?: string[];
   /**
-   * Default value of the field
+   * Whether the field is mandatory
    *
    */
-  defaultValue?: string;
+  mandatory?: boolean;
   /**
    * Prefix of the field value
    *
    */
   prefix?: string;
   /**
-   * Whether the field is mandatory
+   * Regular expression to validate the field value
    *
    */
-  mandatory?: boolean;
+  regularExpression?: string;
 }
 /**
  * Describe rules foreach field in order to create a nic
@@ -49,76 +49,76 @@ export interface NichandleCreationRule {
 export interface NichandleCreationRules {
   /**
    */
-  zip?: NichandleCreationRule;
+  address?: NichandleCreationRule;
   /**
    */
   area?: NichandleCreationRule;
   /**
    */
-  country?: NichandleCreationRule;
-  /**
-   */
-  ovhCompany?: NichandleCreationRule;
+  birthCity?: NichandleCreationRule;
   /**
    */
   birthDay?: NichandleCreationRule;
   /**
    */
-  legalform?: NichandleCreationRule;
-  /**
-   */
-  firstname?: NichandleCreationRule;
-  /**
-   */
-  address?: NichandleCreationRule;
-  /**
-   */
   city?: NichandleCreationRule;
-  /**
-   */
-  sex?: NichandleCreationRule;
-  /**
-   */
-  vat?: NichandleCreationRule;
-  /**
-   */
-  organisation?: NichandleCreationRule;
   /**
    */
   companyNationalIdentificationNumber?: NichandleCreationRule;
   /**
    */
-  language?: NichandleCreationRule;
-  /**
-   */
-  birthCity?: NichandleCreationRule;
-  /**
-   */
-  phoneCountry?: NichandleCreationRule;
-  /**
-   */
-  phone?: NichandleCreationRule;
-  /**
-   */
-  name?: NichandleCreationRule;
-  /**
-   */
-  spareEmail?: NichandleCreationRule;
-  /**
-   */
   corporationType?: NichandleCreationRule;
   /**
    */
-  fax?: NichandleCreationRule;
+  country?: NichandleCreationRule;
   /**
    */
   email?: NichandleCreationRule;
   /**
    */
-  ovhSubsidiary?: NichandleCreationRule;
+  fax?: NichandleCreationRule;
+  /**
+   */
+  firstname?: NichandleCreationRule;
+  /**
+   */
+  language?: NichandleCreationRule;
+  /**
+   */
+  legalform?: NichandleCreationRule;
+  /**
+   */
+  name?: NichandleCreationRule;
   /**
    */
   nationalIdentificationNumber?: NichandleCreationRule;
+  /**
+   */
+  organisation?: NichandleCreationRule;
+  /**
+   */
+  ovhCompany?: NichandleCreationRule;
+  /**
+   */
+  ovhSubsidiary?: NichandleCreationRule;
+  /**
+   */
+  phone?: NichandleCreationRule;
+  /**
+   */
+  phoneCountry?: NichandleCreationRule;
+  /**
+   */
+  sex?: NichandleCreationRule;
+  /**
+   */
+  spareEmail?: NichandleCreationRule;
+  /**
+   */
+  vat?: NichandleCreationRule;
+  /**
+   */
+  zip?: NichandleCreationRule;
 }
 /**
  * Action a nichandle can perform on his account.
@@ -161,65 +161,68 @@ export type NichandleOvhSubsidiaryEnum = 'ASIA' | 'AU' | 'CA' | 'CZ' | 'DE' | 'E
 export interface OrderContract {
   /**
    */
+  content?: string;
+  /**
+   */
   name?: string;
   /**
    */
   url?: string;
-  /**
-   */
-  content?: string;
 }
-type PathsnewAccountGET = '/newAccount/contracts' | 
-'/newAccount/creationRules' | 
-'/newAccount/area' | 
+type PathsNewAccountGET = '/newAccount/legalform' | 
+'/newAccount/contracts' | 
 '/newAccount/corporationType' | 
-'/newAccount/legalform' | 
-'/newAccount/countries';
+'/newAccount/countries' | 
+'/newAccount/creationRules' | 
+'/newAccount/area';
 
-type PathsnewAccountPOST = '/newAccount/rules' | 
+type PathsNewAccountPOST = '/newAccount/rules' | 
 '/newAccount';
 
-class ApinewAccount extends ApiCommon {
-  /**
-  Returns the contracts that governs the creation of an OVH identifier
-  Returns the contracts that governs the creation of an OVH identifier
-  **/
-  public get(path: '/newAccount/contracts', pathParams: null, queryParams: {company?: NichandleOvhCompanyEnum, subsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderContract[]>;
-  /**
-  Give all the rules to follow in order to create an OVH identifier
-  Give all the rules to follow in order to create an OVH identifier
-  **/
-  public get(path: '/newAccount/creationRules', pathParams: null, queryParams: {ovhCompany?: NichandleOvhCompanyEnum, legalform?: NichandleLegalFormEnum, ovhSubsidiary?: NichandleOvhSubsidiaryEnum, country?: NichandleCountryEnum}): Promise<NichandleCreationRules>;
-  /**
-  All available areas for a given country
-  All available areas for a given country
-  **/
-  public get(path: '/newAccount/area', pathParams: null, queryParams: {country?: NichandleCountryEnum}): Promise<string[]>;
-  /**
-  All available corporation types for a given country
-  All available corporation types for a given country
-  **/
-  public get(path: '/newAccount/corporationType', pathParams: null, queryParams: {country?: NichandleCountryEnum}): Promise<string[]>;
+export class ApiNewAccount extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   All available legal forms for a given country
   All available legal forms for a given country
   **/
   public get(path: '/newAccount/legalform', pathParams: null, queryParams: {country?: NichandleCountryEnum}): Promise<string[]>;
   /**
+  Returns the contracts that governs the creation of an OVH identifier
+  Returns the contracts that governs the creation of an OVH identifier
+  **/
+  public get(path: '/newAccount/contracts', pathParams: null, queryParams: {company?: NichandleOvhCompanyEnum, subsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderContract[]>;
+  /**
+  All available corporation types for a given country
+  All available corporation types for a given country
+  **/
+  public get(path: '/newAccount/corporationType', pathParams: null, queryParams: {country?: NichandleCountryEnum}): Promise<string[]>;
+  /**
   All available countries for an ovh company and an ovh subsidiary
   All available countries for an ovh company and an ovh subsidiary
   **/
   public get(path: '/newAccount/countries', pathParams: null, queryParams: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum, ovhCompany?: NichandleOvhCompanyEnum}): Promise<NichandleCountryEnum[]>;
-  public get(path: PathsnewAccountGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  /**
+  Give all the rules to follow in order to create an OVH identifier
+  Give all the rules to follow in order to create an OVH identifier
+  **/
+  public get(path: '/newAccount/creationRules', pathParams: null, queryParams: {legalform?: NichandleLegalFormEnum, ovhCompany?: NichandleOvhCompanyEnum, country?: NichandleCountryEnum, ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<NichandleCreationRules>;
+  /**
+  All available areas for a given country
+  All available areas for a given country
+  **/
+  public get(path: '/newAccount/area', pathParams: null, queryParams: {country?: NichandleCountryEnum}): Promise<string[]>;
+  public get(path: PathsNewAccountGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Give all the rules to follow in order to create and update an OVH identifier
   Give all the rules to follow in order to create and update an OVH identifier
   **/
-  public post(path: '/newAccount/rules', pathParams: null, bodyParams: null): Promise<NichandleCreationRule[]>;
+  public post(path: '/newAccount/rules'): Promise<NichandleCreationRule[]>;
   /**
   Create a new OVH identifier
   Create a new OVH identifier
   **/
-  public post(path: '/newAccount', pathParams: null, bodyParams: null): Promise<NichandleNewAccountAndToken>;
-  public post(path: PathsnewAccountPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/newAccount'): Promise<NichandleNewAccountAndToken>;
+  public post(path: PathsNewAccountPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

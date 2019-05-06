@@ -13,10 +13,10 @@ export type LicenseChangeIpMessageEnum = 'OK' | 'destinationNotAllowed' | 'licen
 export interface LicenseChangeIpStatus {
   /**
    */
-  success?: boolean;
+  message?: LicenseChangeIpMessageEnum;
   /**
    */
-  message?: LicenseChangeIpMessageEnum;
+  success?: boolean;
 }
 /**
  * The serviceTypes allowed to Order a DirectAdmin version
@@ -24,10 +24,10 @@ export interface LicenseChangeIpStatus {
 export interface LicenseDirectAdminOrderConfiguration {
   /**
    */
-  serviceType?: LicenseLicenseTypeEnum;
+  orderableVersions?: LicenseOrderableDirectAdminCompatibilityInfos[];
   /**
    */
-  orderableVersions?: LicenseOrderableDirectAdminCompatibilityInfos[];
+  serviceType?: LicenseLicenseTypeEnum;
 }
 /**
  * All operating systems available for DirectAdmin products
@@ -62,6 +62,16 @@ export type LicenseStateEnum = 'ok' | 'released' | 'terminated' | 'toDeliver';
  */
 export interface LicenseTask {
   /**
+   * This Task description
+   *
+   */
+  action?: LicenseActionType;
+  /**
+   * When was this Task done
+   *
+   */
+  doneDate?: Date;
+  /**
    * The last time this Task was updated
    *
    */
@@ -72,30 +82,20 @@ export interface LicenseTask {
    */
   name?: string;
   /**
-   * This Task description
+   * Current Taks status
    *
    */
-  action?: LicenseActionType;
-  /**
-   * When was this Task created
-   *
-   */
-  todoDate?: Date;
-  /**
-   * When was this Task done
-   *
-   */
-  doneDate?: Date;
+  status?: LicenseTaskStateEnum;
   /**
    * This Task id
    *
    */
   taskId?: Number;
   /**
-   * Current Taks status
+   * When was this Task created
    *
    */
-  status?: LicenseTaskStateEnum;
+  todoDate?: Date;
 }
 /**
  * All states a license Task can be in
@@ -106,20 +106,20 @@ export type LicenseTaskStateEnum = 'cancelled' | 'doing' | 'done' | 'error' | 't
  */
 export interface LicenseDirectadminDirectAdmin {
   /**
-   * Shall we delete this on expiration ?
-   *
-   */
-  deleteAtExpiration?: boolean;
-  /**
    * The client id on license provider side
    *
    */
   clientId?: Number;
   /**
-   * This license operating system
+   * This license creation date
    *
    */
-  os?: LicenseDirectAdminOsEnum;
+  creation?: Date;
+  /**
+   * Shall we delete this on expiration ?
+   *
+   */
+  deleteAtExpiration?: boolean;
   /**
    * The internal name of your license
    *
@@ -136,35 +136,30 @@ export interface LicenseDirectadminDirectAdmin {
    */
   licenseId?: string;
   /**
-   * This license version
+   * This license operating system
    *
    */
-  version?: LicenseDirectAdminVersionEnum;
-  /**
-   * This license creation date
-   *
-   */
-  creation?: Date;
+  os?: LicenseDirectAdminOsEnum;
   /**
    * This license state
    *
    */
   status?: LicenseStateEnum;
+  /**
+   * This license version
+   *
+   */
+  version?: LicenseDirectAdminVersionEnum;
 }
 /**
  * Map a possible renew for a specific service
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
@@ -176,10 +171,15 @@ export interface ServiceRenewType {
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -202,31 +202,36 @@ export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PE
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
   /**
    */
-  engagedUpTo?: Date;
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  contactAdmin?: string;
+  contactTech?: string;
   /**
-   * All the possible renew period of your service in month
-   *
    */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -234,108 +239,106 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
-  /**
-   */
-  creation?: Date;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
   /**
    */
   status?: ServiceStateEnum;
 }
-type PathslicensedirectadminGET = '/license/directadmin/{serviceName}/tasks' | 
-'/license/directadmin/{serviceName}/tasks/{taskId}' | 
-'/license/directadmin/{serviceName}/serviceInfos' | 
-'/license/directadmin/{serviceName}' | 
-'/license/directadmin/{serviceName}/allowedDestinationIp' | 
-'/license/directadmin/{serviceName}/canLicenseBeMovedTo' | 
+type PathsLicensedirectadminGET = '/license/directadmin' | 
 '/license/directadmin/orderableVersions' | 
-'/license/directadmin';
-
-type PathslicensedirectadminPUT = '/license/directadmin/{serviceName}/serviceInfos' | 
+'/license/directadmin/{serviceName}/canLicenseBeMovedTo' | 
+'/license/directadmin/{serviceName}/serviceInfos' | 
+'/license/directadmin/{serviceName}/allowedDestinationIp' | 
+'/license/directadmin/{serviceName}/tasks/{taskId}' | 
+'/license/directadmin/{serviceName}/tasks' | 
 '/license/directadmin/{serviceName}';
 
-type PathslicensedirectadminPOST = '/license/directadmin/{serviceName}/terminate' | 
-'/license/directadmin/{serviceName}/changeIp' | 
-'/license/directadmin/{serviceName}/changeOs' | 
-'/license/directadmin/{serviceName}/confirmTermination';
+type PathsLicensedirectadminPUT = '/license/directadmin/{serviceName}/serviceInfos' | 
+'/license/directadmin/{serviceName}';
 
-class Apilicensedirectadmin extends ApiCommon {
+type PathsLicensedirectadminPOST = '/license/directadmin/{serviceName}/terminate' | 
+'/license/directadmin/{serviceName}/confirmTermination' | 
+'/license/directadmin/{serviceName}/changeIp' | 
+'/license/directadmin/{serviceName}/changeOs';
+
+export class ApiLicensedirectadmin extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
-  List the license.Task objects
-  tasks linked to this license
+  Operations about the LICENSE service
+  List available services
   **/
-  public get(path: '/license/directadmin/{serviceName}/tasks', pathParams: {serviceName?: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
-  /**
-  licenses Todos
-  Get this object properties
-  **/
-  public get(path: '/license/directadmin/{serviceName}/tasks/{taskId}', pathParams: {serviceName?: string, taskId?: Number}, queryParams: null): Promise<LicenseTask>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/license/directadmin/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  Your DirectAdmin license
-  Get this object properties
-  **/
-  public get(path: '/license/directadmin/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<LicenseDirectadminDirectAdmin>;
-  /**
-  allowedDestinationIp operations
-  Returns an array of ips where the license can be moved to
-  **/
-  public get(path: '/license/directadmin/{serviceName}/allowedDestinationIp', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  canLicenseBeMovedTo operations
-  Will tell if the ip can accept the license
-  **/
-  public get(path: '/license/directadmin/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName?: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  public get(path: '/license/directadmin'): Promise<string[]>;
   /**
   Get the orderable DirectAdmin versions
   Get the orderable DirectAdmin versions
   **/
   public get(path: '/license/directadmin/orderableVersions', pathParams: null, queryParams: {ip?: string}): Promise<LicenseDirectAdminOrderConfiguration[]>;
   /**
-  Operations about the LICENSE service
-  List available services
+  canLicenseBeMovedTo operations
+  Will tell if the ip can accept the license
   **/
-  public get(path: '/license/directadmin', pathParams: null, queryParams: null): Promise<string[]>;
-  public get(path: PathslicensedirectadminGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/license/directadmin/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/license/directadmin/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  allowedDestinationIp operations
+  Returns an array of ips where the license can be moved to
+  **/
+  public get(path: '/license/directadmin/{serviceName}/allowedDestinationIp', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  licenses Todos
+  Get this object properties
+  **/
+  public get(path: '/license/directadmin/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
+  /**
+  List the license.Task objects
+  tasks linked to this license
+  **/
+  public get(path: '/license/directadmin/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
+  /**
+  Your DirectAdmin license
+  Get this object properties
+  **/
+  public get(path: '/license/directadmin/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseDirectadminDirectAdmin>;
+  public get(path: PathsLicensedirectadminGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/directadmin/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public put(path: '/license/directadmin/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
   Your DirectAdmin license
   Alter this object properties
   **/
-  public put(path: '/license/directadmin/{serviceName}', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathslicensedirectadminPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/license/directadmin/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsLicensedirectadminPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/license/directadmin/{serviceName}/terminate', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
+  public post(path: '/license/directadmin/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  Confirm termination of your service
+  Confirm termination of your service
+  **/
+  public post(path: '/license/directadmin/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
   changeIp operations
   Move this license to another Ip
   **/
-  public post(path: '/license/directadmin/{serviceName}/changeIp', pathParams: {serviceName?: string}, bodyParams: null): Promise<LicenseTask>;
+  public post(path: '/license/directadmin/{serviceName}/changeIp', pathParams: {serviceName: string}): Promise<LicenseTask>;
   /**
   changeOs operations
   Change the Operating System for a license
   **/
-  public post(path: '/license/directadmin/{serviceName}/changeOs', pathParams: {serviceName?: string}, bodyParams: null): Promise<LicenseTask>;
-  /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
-  public post(path: '/license/directadmin/{serviceName}/confirmTermination', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  public post(path: PathslicensedirectadminPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/license/directadmin/{serviceName}/changeOs', pathParams: {serviceName: string}): Promise<LicenseTask>;
+  public post(path: PathsLicensedirectadminPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

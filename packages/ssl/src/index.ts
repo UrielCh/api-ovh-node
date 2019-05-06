@@ -4,30 +4,30 @@ import { ApiCommon } from '@ovh-api/common';
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -42,31 +42,36 @@ export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' |
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
+  /**
+   */
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  engagedUpTo?: Date;
+  contactTech?: string;
   /**
    */
-  contactAdmin?: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -74,15 +79,10 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
-  /**
-   */
-  creation?: Date;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
   /**
    */
   status?: ServiceStateEnum;
@@ -91,26 +91,6 @@ export interface ServicesService {
  * Certificate of an SSL customer
  */
 export interface SslCertificate {
-  /**
-   * The CN field in your certificate
-   *
-   */
-  commonName?: string;
-  /**
-   * The issuer chain of your certificate
-   *
-   */
-  chain?: string;
-  /**
-   * The CSR used to create your certificate
-   *
-   */
-  csr?: string;
-  /**
-   * Your certificate is invalid from this date
-   *
-   */
-  validityEnd?: Date;
   /**
    * The authority your certificate is issued from
    *
@@ -122,20 +102,25 @@ export interface SslCertificate {
    */
   certificate?: string;
   /**
-   * Your certificate is valid from this date
+   * The issuer chain of your certificate
    *
    */
-  validityStart?: Date;
+  chain?: string;
+  /**
+   * The CN field in your certificate
+   *
+   */
+  commonName?: string;
+  /**
+   * The CSR used to create your certificate
+   *
+   */
+  csr?: string;
   /**
    * The internal name of your certificate offer
    *
    */
   serviceName?: string;
-  /**
-   * Type of your certificate
-   *
-   */
-  type?: SslCertificateTypeEnum;
   /**
    * Current status of your certificate
    *
@@ -146,6 +131,21 @@ export interface SslCertificate {
    *
    */
   subjectAltName?: string[];
+  /**
+   * Type of your certificate
+   *
+   */
+  type?: SslCertificateTypeEnum;
+  /**
+   * Your certificate is invalid from this date
+   *
+   */
+  validityEnd?: Date;
+  /**
+   * Your certificate is valid from this date
+   *
+   */
+  validityStart?: Date;
 }
 /**
  * All authority a SSL certificate can be issued from
@@ -164,6 +164,11 @@ export type SslCertificateTypeEnum = 'DV' | 'EV' | 'OV';
  */
 export interface SslOperation {
   /**
+   * Completion date
+   *
+   */
+  doneDate?: Date;
+  /**
    * Task function name
    *
    */
@@ -174,14 +179,6 @@ export interface SslOperation {
    */
   lastUpdate?: Date;
   /**
-   * Completion date
-   *
-   */
-  doneDate?: Date;
-  /**
-   */
-  taskId?: Number;
-  /**
    * Task Creation date
    *
    */
@@ -191,6 +188,9 @@ export interface SslOperation {
    *
    */
   status?: SslOperationStatusEnum;
+  /**
+   */
+  taskId?: Number;
 }
 /**
  * All functions a SSL operation can handle
@@ -200,45 +200,48 @@ export type SslOperationFunctionEnum = 'createCertificate';
  * All status a SSL operation can be in
  */
 export type SslOperationStatusEnum = 'cancelled' | 'doing' | 'done' | 'error' | 'todo';
-type PathssslGET = '/ssl' | 
-'/ssl/{serviceName}/serviceInfos' | 
-'/ssl/{serviceName}/tasks' | 
+type PathsSslGET = '/ssl/{serviceName}/serviceInfos' | 
 '/ssl/{serviceName}/tasks/{taskId}' | 
-'/ssl/{serviceName}';
+'/ssl/{serviceName}/tasks' | 
+'/ssl/{serviceName}' | 
+'/ssl';
 
-type PathssslPUT = '/ssl/{serviceName}/serviceInfos';
+type PathsSslPUT = '/ssl/{serviceName}/serviceInfos';
 
-class Apissl extends ApiCommon {
-  /**
-  Operations about the SSL service
-  List available services
-  **/
-  public get(path: '/ssl', pathParams: null, queryParams: null): Promise<string[]>;
+export class ApiSsl extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/ssl/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  List the ssl.Operation objects
-  Tasks associated to this ssl
-  **/
-  public get(path: '/ssl/{serviceName}/tasks', pathParams: {serviceName?: string}, queryParams: null): Promise<Number[]>;
+  public get(path: '/ssl/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Task on a SSL
   Get this object properties
   **/
-  public get(path: '/ssl/{serviceName}/tasks/{taskId}', pathParams: {serviceName?: string, taskId?: Number}, queryParams: null): Promise<SslOperation>;
+  public get(path: '/ssl/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<SslOperation>;
+  /**
+  List the ssl.Operation objects
+  Tasks associated to this ssl
+  **/
+  public get(path: '/ssl/{serviceName}/tasks', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
   Certificate of an SSL customer
   Get this object properties
   **/
-  public get(path: '/ssl/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<SslCertificate>;
-  public get(path: PathssslGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/ssl/{serviceName}', pathParams: {serviceName: string}): Promise<SslCertificate>;
+  /**
+  Operations about the SSL service
+  List available services
+  **/
+  public get(path: '/ssl'): Promise<string[]>;
+  public get(path: PathsSslGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/ssl/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathssslPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/ssl/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsSslPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
 }

@@ -4,21 +4,6 @@ import { ApiCommon } from '@ovh-api/common';
  */
 export interface SupportMessage {
   /**
-   * Message last update date
-   *
-   */
-  updateDate?: Date;
-  /**
-   * Message identifier
-   *
-   */
-  messageId?: Number;
-  /**
-   * Message sender type
-   *
-   */
-  from?: SupportMessageSenderEnum;
-  /**
    * Message body
    *
    */
@@ -29,24 +14,10 @@ export interface SupportMessage {
    */
   creationDate?: Date;
   /**
-   * Ticket identifier
+   * Message sender type
    *
    */
-  ticketId?: Number;
-}
-/**
- * Message sender type
- */
-export type SupportMessageSenderEnum = 'customer' | 'support';
-/**
- * Newly created support identifiers
- */
-export interface SupportNewMessageInfo {
-  /**
-   * Ticket external number
-   *
-   */
-  ticketNumber?: Number;
+  from?: SupportMessageSenderEnum;
   /**
    * Message identifier
    *
@@ -57,51 +28,40 @@ export interface SupportNewMessageInfo {
    *
    */
   ticketId?: Number;
+  /**
+   * Message last update date
+   *
+   */
+  updateDate?: Date;
 }
 /**
- * Support Ticket
+ * Message sender type
  */
-export interface SupportTicket {
+export type SupportMessageSenderEnum = 'customer' | 'support';
+/**
+ * Newly created support identifiers
+ */
+export interface SupportNewMessageInfo {
+  /**
+   * Message identifier
+   *
+   */
+  messageId?: Number;
+  /**
+   * Ticket identifier
+   *
+   */
+  ticketId?: Number;
   /**
    * Ticket external number
    *
    */
   ticketNumber?: Number;
-  /**
-   * Ticket last update date
-   *
-   */
-  updateDate?: Date;
-  /**
-   * Product service concerned by ticket
-   *
-   */
-  product?: SupportTicketProductEnum;
-  /**
-   * Ticket subject
-   *
-   */
-  subject?: string;
-  /**
-   * Ticket creation date
-   *
-   */
-  creationDate?: Date;
-  /**
-   * Name of service concerned by ticket
-   *
-   */
-  serviceName?: string;
-  /**
-   * Ticket type
-   *
-   */
-  type?: SupportTicketTypeEnum;
-  /**
-   * Ticket score
-   *
-   */
-  score?: string;
+}
+/**
+ * Support Ticket
+ */
+export interface SupportTicket {
   /**
    * Customer account identifier
    *
@@ -113,25 +73,65 @@ export interface SupportTicket {
    */
   canBeClosed?: boolean;
   /**
+   * Ticket request category
+   *
+   */
+  category?: SupportTicketCategoryEnum;
+  /**
+   * Ticket creation date
+   *
+   */
+  creationDate?: Date;
+  /**
    * Sender type of last message
    *
    */
   lastMessageFrom?: SupportMessageSenderEnum;
+  /**
+   * Product service concerned by ticket
+   *
+   */
+  product?: SupportTicketProductEnum;
+  /**
+   * Ticket score
+   *
+   */
+  score?: string;
+  /**
+   * Name of service concerned by ticket
+   *
+   */
+  serviceName?: string;
   /**
    * State of ticket
    *
    */
   state?: SupportTicketStatusEnum;
   /**
-   * Ticket request category
+   * Ticket subject
    *
    */
-  category?: SupportTicketCategoryEnum;
+  subject?: string;
   /**
    * Ticket identifier
    *
    */
   ticketId?: Number;
+  /**
+   * Ticket external number
+   *
+   */
+  ticketNumber?: Number;
+  /**
+   * Ticket type
+   *
+   */
+  type?: SupportTicketTypeEnum;
+  /**
+   * Ticket last update date
+   *
+   */
+  updateDate?: Date;
 }
 /**
  * Ticket request category
@@ -153,63 +153,66 @@ export type SupportTicketSubCategoryEnum = 'alerts' | 'autorenew' | 'bill' | 'do
  * Ticket type (criticalIntervention requires VIP support level)
  */
 export type SupportTicketTypeEnum = 'criticalIntervention' | 'genericRequest';
-type PathssupportGET = '/support/tickets' | 
-'/support/tickets/{ticketId}/messages' | 
+type PathsSupportGET = '/support/tickets/{ticketId}/canBeScored' | 
 '/support/tickets/{ticketId}' | 
-'/support/tickets/{ticketId}/canBeScored';
+'/support/tickets/{ticketId}/messages' | 
+'/support/tickets';
 
-type PathssupportPOST = '/support/tickets/create' | 
-'/support/tickets/{ticketId}/score' | 
-'/support/tickets/{ticketId}/reopen' | 
+type PathsSupportPOST = '/support/tickets/create' | 
 '/support/tickets/{ticketId}/close' | 
-'/support/tickets/{ticketId}/reply';
+'/support/tickets/{ticketId}/reopen' | 
+'/support/tickets/{ticketId}/reply' | 
+'/support/tickets/{ticketId}/score';
 
-class Apisupport extends ApiCommon {
-  /**
-  List support tickets identifiers for this service
-  List support tickets identifiers for this service
-  **/
-  public get(path: '/support/tickets', pathParams: null, queryParams: {category?: SupportTicketCategoryEnum, minCreationDate?: Date, status?: SupportTicketStatusEnum, serviceName?: string, ticketNumber?: string, product?: SupportTicketProductEnum, maxCreationDate?: Date, archived?: boolean, subject?: string}): Promise<Number[]>;
-  /**
-  Get ticket messages
-  Get ticket messages
-  **/
-  public get(path: '/support/tickets/{ticketId}/messages', pathParams: {ticketId?: Number}, queryParams: null): Promise<SupportMessage[]>;
-  /**
-  Get ticket
-  Get ticket
-  **/
-  public get(path: '/support/tickets/{ticketId}', pathParams: {ticketId?: Number}, queryParams: null): Promise<SupportTicket>;
+export class ApiSupport extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Check whether ticket can be scored
   Checks whether ticket can be scored
   **/
-  public get(path: '/support/tickets/{ticketId}/canBeScored', pathParams: {ticketId?: Number}, queryParams: null): Promise<boolean>;
-  public get(path: PathssupportGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/support/tickets/{ticketId}/canBeScored', pathParams: {ticketId: Number}): Promise<boolean>;
+  /**
+  Get ticket
+  Get ticket
+  **/
+  public get(path: '/support/tickets/{ticketId}', pathParams: {ticketId: Number}): Promise<SupportTicket>;
+  /**
+  Get ticket messages
+  Get ticket messages
+  **/
+  public get(path: '/support/tickets/{ticketId}/messages', pathParams: {ticketId: Number}): Promise<SupportMessage[]>;
+  /**
+  List support tickets identifiers for this service
+  List support tickets identifiers for this service
+  **/
+  public get(path: '/support/tickets', pathParams: null, queryParams: {minCreationDate?: Date, product?: SupportTicketProductEnum, ticketNumber?: string, maxCreationDate?: Date, serviceName?: string, status?: SupportTicketStatusEnum, subject?: string, category?: SupportTicketCategoryEnum, archived?: boolean}): Promise<Number[]>;
+  public get(path: PathsSupportGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Create a new ticket
   Create a new ticket
   **/
-  public post(path: '/support/tickets/create', pathParams: null, bodyParams: null): Promise<SupportNewMessageInfo>;
-  /**
-  Set ticket score
-  Set ticket score
-  **/
-  public post(path: '/support/tickets/{ticketId}/score', pathParams: {ticketId?: Number}, bodyParams: null): Promise<void>;
-  /**
-  Reopen a ticket
-  Reopen a ticket
-  **/
-  public post(path: '/support/tickets/{ticketId}/reopen', pathParams: {ticketId?: Number}, bodyParams: null): Promise<void>;
+  public post(path: '/support/tickets/create'): Promise<SupportNewMessageInfo>;
   /**
   Close ticket
   Close ticket
   **/
-  public post(path: '/support/tickets/{ticketId}/close', pathParams: {ticketId?: Number}, bodyParams: null): Promise<void>;
+  public post(path: '/support/tickets/{ticketId}/close', pathParams: {ticketId: Number}): Promise<void>;
+  /**
+  Reopen a ticket
+  Reopen a ticket
+  **/
+  public post(path: '/support/tickets/{ticketId}/reopen', pathParams: {ticketId: Number}): Promise<void>;
   /**
   Reply to ticket
   Reply to ticket
   **/
-  public post(path: '/support/tickets/{ticketId}/reply', pathParams: {ticketId?: Number}, bodyParams: null): Promise<void>;
-  public post(path: PathssupportPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/support/tickets/{ticketId}/reply', pathParams: {ticketId: Number}): Promise<void>;
+  /**
+  Set ticket score
+  Set ticket score
+  **/
+  public post(path: '/support/tickets/{ticketId}/score', pathParams: {ticketId: Number}): Promise<void>;
+  public post(path: PathsSupportPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

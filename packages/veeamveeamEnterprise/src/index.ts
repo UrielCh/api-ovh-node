@@ -4,15 +4,10 @@ import { ApiCommon } from '@ovh-api/common';
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
@@ -24,10 +19,15 @@ export interface ServiceRenewType {
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -50,31 +50,36 @@ export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PE
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
   /**
    */
-  engagedUpTo?: Date;
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  contactAdmin?: string;
+  contactTech?: string;
   /**
-   * All the possible renew period of your service in month
-   *
    */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -82,43 +87,38 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
   /**
    */
-  creation?: Date;
-  /**
-   */
   status?: ServiceStateEnum;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
 }
 /**
  * Veeeam Enterprise offer
  */
 export interface VeeamVeeamEnterpriseAccount {
   /**
-   * OVH Enterprise Manager IP
+   * This Backup Server IP
    *
    */
-  sourceIp?: string;
+  ip?: string;
   /**
    * This Backup Server port
    *
    */
   port?: Number;
   /**
-   * This Backup Server IP
-   *
-   */
-  ip?: string;
-  /**
    * Your Veeam Enterprise Service name
    *
    */
   serviceName?: string;
+  /**
+   * OVH Enterprise Manager IP
+   *
+   */
+  sourceIp?: string;
 }
 /**
  * Operation with the Enterprise Account
@@ -140,6 +140,11 @@ export interface VeeamVeeamEnterpriseTask {
    */
   progress?: Number;
   /**
+   * Task creation date
+   *
+   */
+  startDate?: Date;
+  /**
    * Current Task state
    *
    */
@@ -149,81 +154,79 @@ export interface VeeamVeeamEnterpriseTask {
    *
    */
   taskId?: Number;
-  /**
-   * Task creation date
-   *
-   */
-  startDate?: Date;
 }
 /**
  * All possible states for a Veeam Enterprise Task
  */
 export type VeeamEnterpriseTaskStateEnum = 'canceled' | 'doing' | 'done' | 'error' | 'toCreate' | 'todo' | 'unfixed' | 'waiting' | 'waitingForChilds';
-type PathsveeamveeamEnterpriseGET = '/veeam/veeamEnterprise' | 
+type PathsVeeamveeamEnterpriseGET = '/veeam/veeamEnterprise/{serviceName}/serviceInfos' | 
 '/veeam/veeamEnterprise/{serviceName}' | 
-'/veeam/veeamEnterprise/{serviceName}/task' | 
 '/veeam/veeamEnterprise/{serviceName}/task/{taskId}' | 
-'/veeam/veeamEnterprise/{serviceName}/serviceInfos';
+'/veeam/veeamEnterprise/{serviceName}/task' | 
+'/veeam/veeamEnterprise';
 
-type PathsveeamveeamEnterprisePUT = '/veeam/veeamEnterprise/{serviceName}/serviceInfos';
+type PathsVeeamveeamEnterprisePUT = '/veeam/veeamEnterprise/{serviceName}/serviceInfos';
 
-type PathsveeamveeamEnterprisePOST = '/veeam/veeamEnterprise/{serviceName}/update' | 
+type PathsVeeamveeamEnterprisePOST = '/veeam/veeamEnterprise/{serviceName}/update' | 
 '/veeam/veeamEnterprise/{serviceName}/terminate' | 
 '/veeam/veeamEnterprise/{serviceName}/confirmTermination' | 
 '/veeam/veeamEnterprise/{serviceName}/register';
 
-class ApiveeamveeamEnterprise extends ApiCommon {
+export class ApiVeeamveeamEnterprise extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
-  Operations about the VEEAMENTERPRISE service
-  List available services
+  Details about a Service
+  Get this object properties
   **/
-  public get(path: '/veeam/veeamEnterprise', pathParams: null, queryParams: null): Promise<string[]>;
+  public get(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Veeeam Enterprise offer
   Get this object properties
   **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<VeeamVeeamEnterpriseAccount>;
-  /**
-  List the veeam.veeamEnterprise.Task objects
-  Tasks associated with Veeam Enterprise
-  **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}/task', pathParams: {serviceName?: string}, queryParams: {name?: string, state?: VeeamEnterpriseTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/veeam/veeamEnterprise/{serviceName}', pathParams: {serviceName: string}): Promise<VeeamVeeamEnterpriseAccount>;
   /**
   Operation with the Enterprise Account
   Get this object properties
   **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}/task/{taskId}', pathParams: {serviceName?: string, taskId?: Number}, queryParams: null): Promise<VeeamVeeamEnterpriseTask>;
+  public get(path: '/veeam/veeamEnterprise/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<VeeamVeeamEnterpriseTask>;
   /**
-  Details about a Service
-  Get this object properties
+  List the veeam.veeamEnterprise.Task objects
+  Tasks associated with Veeam Enterprise
   **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  public get(path: PathsveeamveeamEnterpriseGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/veeam/veeamEnterprise/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {name?: string, state?: VeeamEnterpriseTaskStateEnum}): Promise<Number[]>;
+  /**
+  Operations about the VEEAMENTERPRISE service
+  List available services
+  **/
+  public get(path: '/veeam/veeamEnterprise'): Promise<string[]>;
+  public get(path: PathsVeeamveeamEnterpriseGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathsveeamveeamEnterprisePUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsVeeamveeamEnterprisePUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   update operations
   Update Veeam enterprise configuration
   **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/update', pathParams: {serviceName?: string}, bodyParams: null): Promise<VeeamVeeamEnterpriseTask[]>;
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/update', pathParams: {serviceName: string}): Promise<VeeamVeeamEnterpriseTask[]>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/terminate', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/confirmTermination', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
   register operations
   Register Veeam Backup Server to Veeam Enterprise
   **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/register', pathParams: {serviceName?: string}, bodyParams: null): Promise<VeeamVeeamEnterpriseTask[]>;
-  public post(path: PathsveeamveeamEnterprisePOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/register', pathParams: {serviceName: string}): Promise<VeeamVeeamEnterpriseTask[]>;
+  public post(path: PathsVeeamveeamEnterprisePOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

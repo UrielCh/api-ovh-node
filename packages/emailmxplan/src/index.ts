@@ -4,30 +4,85 @@ import { ApiCommon } from '@ovh-api/common';
  */
 export interface EmailMxplanAccount {
   /**
-   * Account last name
+   * SAM account name
    *
    */
-  lastName?: string;
+  SAMAccountName?: string;
   /**
-   * Account was sending spam
+   * Indicates if the account is configured
    *
    */
-  spamDetected?: boolean;
+  configured?: boolean;
   /**
-   * Ticket number of spam detection
+   * Creation date
    *
    */
-  spamTicketNumber?: Number;
+  creationDate?: Date;
   /**
-   * Time of account's password last update
+   * Mailbox usage
    *
    */
-  passwordLastUpdate?: Date;
+  currentUsage?: Number;
+  /**
+   * delete at expiration
+   *
+   */
+  deleteAtExpiration?: boolean;
   /**
    * Account display name
    *
    */
   displayName?: string;
+  /**
+   * Email domain
+   *
+   */
+  domain?: string;
+  /**
+   * expiration date
+   *
+   */
+  expirationDate?: Date;
+  /**
+   * expiration date
+   *
+   */
+  expirationOutlookDate?: Date;
+  /**
+   * Account first name
+   *
+   */
+  firstName?: string;
+  /**
+   * Hide account in Global Address List
+   *
+   */
+  hiddenFromGAL?: boolean;
+  /**
+   * Account id
+   *
+   */
+  id?: Number;
+  /**
+   * Account initials
+   *
+   */
+  initial?: string;
+  /**
+   * Last logoff
+   *
+   */
+  lastLogoffDate?: Date;
+  /**
+   * Last logon
+   *
+   */
+  lastLogonDate?: Date;
+  /**
+   * Account last name
+   *
+   */
+  lastName?: string;
   /**
    * Last update
    *
@@ -39,110 +94,55 @@ export interface EmailMxplanAccount {
    */
   login?: string;
   /**
-   * Spam and Antivirus configuration
+   * Enable or disable anti-virus and anti-spam
    *
    */
-  spamAndVirusConfiguration?: EmailProSpamAndVirusConfiguration;
+  mailingFilter?: EmailProMailingFilterEnum[];
+  /**
+   * Time of account's password last update
+   *
+   */
+  passwordLastUpdate?: Date;
   /**
    * Default email for this mailbox
    *
    */
   primaryEmailAddress?: string;
   /**
-   * Hide account in Global Address List
-   *
-   */
-  hiddenFromGAL?: boolean;
-  /**
    * Account maximum size
    *
    */
   quota?: Number;
-  /**
-   * Account state
-   *
-   */
-  state?: EmailProObjectStateEnum;
-  /**
-   * Account id
-   *
-   */
-  id?: Number;
-  /**
-   * expiration date
-   *
-   */
-  expirationDate?: Date;
-  /**
-   * Indicates if the account is configured
-   *
-   */
-  configured?: boolean;
-  /**
-   * delete at expiration
-   *
-   */
-  deleteAtExpiration?: boolean;
-  /**
-   * expiration date
-   *
-   */
-  expirationOutlookDate?: Date;
-  /**
-   * Account initials
-   *
-   */
-  initial?: string;
-  /**
-   * Enable or disable anti-virus and anti-spam
-   *
-   */
-  mailingFilter?: EmailProMailingFilterEnum[];
-  /**
-   * Mailbox usage
-   *
-   */
-  currentUsage?: Number;
-  /**
-   * Creation date
-   *
-   */
-  creationDate?: Date;
-  /**
-   * Pending tasks for this account
-   *
-   */
-  taskPendingId?: Number;
-  /**
-   * Account first name
-   *
-   */
-  firstName?: string;
   /**
    * change the renew period
    *
    */
   renewPeriod?: EmailProRenewPeriodEnum;
   /**
-   * Email domain
+   * Spam and Antivirus configuration
    *
    */
-  domain?: string;
+  spamAndVirusConfiguration?: EmailProSpamAndVirusConfiguration;
   /**
-   * Last logoff
+   * Account was sending spam
    *
    */
-  lastLogoffDate?: Date;
+  spamDetected?: boolean;
   /**
-   * SAM account name
+   * Ticket number of spam detection
    *
    */
-  SAMAccountName?: string;
+  spamTicketNumber?: Number;
   /**
-   * Last logon
+   * Account state
    *
    */
-  lastLogonDate?: Date;
+  state?: EmailProObjectStateEnum;
+  /**
+   * Pending tasks for this account
+   *
+   */
+  taskPendingId?: Number;
 }
 /**
  * Aliases on this mailbox
@@ -169,6 +169,26 @@ export interface EmailMxplanAccountAlias {
  */
 export interface EmailMxplanAccountDiagnosis {
   /**
+   * Determines if ingoing message has been received
+   *
+   */
+  canReceiveEmail?: boolean;
+  /**
+   * Determines if outgoing message has been delivered
+   *
+   */
+  canSendEmail?: boolean;
+  /**
+   * Determines if possible to authenticate with credentials
+   *
+   */
+  connectiveWebmail?: boolean;
+  /**
+   * Determines if account is locked
+   *
+   */
+  isLocked?: boolean;
+  /**
    * Determines if MX record for account's domain is properly set
    *
    */
@@ -179,40 +199,20 @@ export interface EmailMxplanAccountDiagnosis {
    */
   isSpammer?: boolean;
   /**
-   * Last performed diagnostics date
+   * Determines if SRV (autodiscovery) record for account's domain is properly set
    *
    */
-  lastCheck?: Date;
-  /**
-   * Determines if ingoing message has been received
-   *
-   */
-  canReceiveEmail?: boolean;
+  isSrvValid?: boolean;
   /**
    * Determines if account is suspended
    *
    */
   isSuspended?: boolean;
   /**
-   * Determines if outgoing message has been delivered
+   * Last performed diagnostics date
    *
    */
-  canSendEmail?: boolean;
-  /**
-   * Determines if SRV (autodiscovery) record for account's domain is properly set
-   *
-   */
-  isSrvValid?: boolean;
-  /**
-   * Determines if account is locked
-   *
-   */
-  isLocked?: boolean;
-  /**
-   * Determines if possible to authenticate with credentials
-   *
-   */
-  connectiveWebmail?: boolean;
+  lastCheck?: Date;
 }
 /**
  * Users having full access on this mailbox
@@ -284,90 +284,75 @@ export interface EmailMxplanDomain {
    */
   cnameToCheck?: string;
   /**
-   * Domain SRV record configured in DNS
+   * List of aliases for this domain
    *
    */
-  srvRecord?: string[];
-  /**
-   * Indicate if this domain is an alias for another domain
-   *
-   */
-  isAliasDomain?: boolean;
+  domainAliases?: string[];
   /**
    * Domain validation status
    *
    */
   domainValidated?: boolean;
   /**
-   * Domain MX record configured in DNS
+   * Indicate if this domain is an alias for another domain
    *
    */
-  mxRecord?: string[];
-  /**
-   * List of aliases for this domain
-   *
-   */
-  domainAliases?: string[];
-  /**
-   * Domain type
-   *
-   */
-  type?: EmailProDomainTypeEnum;
-  /**
-   * Pending taks id
-   *
-   */
-  taskPendingId?: Number;
-  /**
-   * If true your dns srv record is valid
-   *
-   */
-  srvIsValid?: boolean;
-  /**
-   * Domain name
-   *
-   */
-  name?: string;
+  isAliasDomain?: boolean;
   /**
    * If true your dns mx configuration is valid
    *
    */
   mxIsValid?: boolean;
   /**
+   * Domain MX record configured in DNS
+   *
+   */
+  mxRecord?: string[];
+  /**
    * If specified, emails to not existing address will be redirected to that domain
    *
    */
   mxRelay?: string;
   /**
+   * Domain name
+   *
+   */
+  name?: string;
+  /**
+   * If true your dns srv record is valid
+   *
+   */
+  srvIsValid?: boolean;
+  /**
+   * Domain SRV record configured in DNS
+   *
+   */
+  srvRecord?: string[];
+  /**
    * Domain state
    *
    */
   state?: EmailProObjectStateEnum;
+  /**
+   * Pending taks id
+   *
+   */
+  taskPendingId?: Number;
+  /**
+   * Domain type
+   *
+   */
+  type?: EmailProDomainTypeEnum;
 }
 /**
  * External contact for this mxplan service
  */
 export interface EmailMxplanExternalContact {
   /**
-   * Contact first name
+   * Creation date
    *
    */
-  firstName?: string;
-  /**
-   * Contact last name
-   *
-   */
-  lastName?: string;
-  /**
-   * Hide the contact in Global Address List
-   *
-   */
-  hiddenFromGAL?: boolean;
-  /**
-   * Contact initals
-   *
-   */
-  initials?: string;
+  creationDate?: Date;
   /**
    * Contact display name
    *
@@ -379,20 +364,35 @@ export interface EmailMxplanExternalContact {
    */
   externalEmailAddress?: string;
   /**
-   * Contact state
+   * Contact first name
    *
    */
-  state?: EmailProObjectStateEnum;
+  firstName?: string;
+  /**
+   * Hide the contact in Global Address List
+   *
+   */
+  hiddenFromGAL?: boolean;
   /**
    * Contact id
    *
    */
   id?: Number;
   /**
-   * Creation date
+   * Contact initals
    *
    */
-  creationDate?: Date;
+  initials?: string;
+  /**
+   * Contact last name
+   *
+   */
+  lastName?: string;
+  /**
+   * Contact state
+   *
+   */
+  state?: EmailProObjectStateEnum;
   /**
    * Task pending id
    *
@@ -404,155 +404,155 @@ export interface EmailMxplanExternalContact {
  */
 export interface EmailMxplanServer {
   /**
-   * Total disk size in MB
-   *
-   */
-  diskSize?: Number;
-  /**
-   * If true your dns ptrV6 record is valid
-   *
-   */
-  isPtrV6Valid?: boolean;
-  /**
    * Current disk usage in MB
    *
    */
   currentDiskUsage?: Number;
   /**
-   * ipV6
+   * Total disk size in MB
    *
    */
-  ipV6?: string;
+  diskSize?: Number;
   /**
    * ipV4
    *
    */
   ip?: string;
   /**
-   * If true your dns ptr record is valid
+   * ipV6
    *
    */
-  isPtrValid?: boolean;
+  ipV6?: string;
   /**
    * If true your dns A record is valid
    *
    */
   isAValid?: boolean;
   /**
-   * Server state
-   *
-   */
-  state?: EmailProServerStateEnum;
-  /**
    * If true your dns AAAA record is valid
    *
    */
   isAaaaValid?: boolean;
   /**
-   * Server version
+   * If true your dns ptrV6 record is valid
    *
    */
-  version?: Number;
+  isPtrV6Valid?: boolean;
+  /**
+   * If true your dns ptr record is valid
+   *
+   */
+  isPtrValid?: boolean;
+  /**
+   * Server state
+   *
+   */
+  state?: EmailProServerStateEnum;
   /**
    * Task pending id
    *
    */
   taskPendingId?: Number;
+  /**
+   * Server version
+   *
+   */
+  version?: Number;
 }
 /**
  * MXPlan service
  */
 export interface EmailMxplanService {
   /**
-   * Maximum message size that You can receive in MB
+   * enable policy for strong and secure passwords
    *
    */
-  maxReceiveSize?: Number;
-  /**
-   * minimum number of days before able to change account's password
-   *
-   */
-  minPasswordAge?: Number;
+  complexityEnabled?: boolean;
   /**
    * service displayName
    *
    */
   displayName?: string;
   /**
-   * Update date
+   * Domain name of your service
    *
    */
-  lastUpdateDate?: Date;
-  /**
-   * Spam and Antivirus configuration
-   *
-   */
-  spamAndVirusConfiguration?: EmailProSpamAndVirusConfiguration;
-  /**
-   * enable policy for strong and secure passwords
-   *
-   */
-  complexityEnabled?: boolean;
-  /**
-   * maximum number of days that account's password is valid before expiration
-   *
-   */
-  maxPasswordAge?: Number;
-  /**
-   * Task pending id
-   *
-   */
-  taskPendingId?: Number;
-  /**
-   * Type of your offer
-   *
-   */
-  offer?: EmailMxplanServiceOfferEnum;
-  /**
-   * Maximum message size that You can send in MB
-   *
-   */
-  maxSendSize?: Number;
+  domain?: string;
   /**
    * Hostname of your service
    *
    */
   hostname?: string;
   /**
-   * number of attempts before account to be locked
+   * Update date
    *
    */
-  lockoutThreshold?: Number;
+  lastUpdateDate?: Date;
   /**
    * number of minutes account will remain locked if it occurs
    *
    */
   lockoutDuration?: Number;
   /**
-   * URL for web interface
+   * number of minutes that must elapse after a failed logon to reset lockout trigger
    *
    */
-  webUrl?: string;
+  lockoutObservationWindow?: Number;
+  /**
+   * number of attempts before account to be locked
+   *
+   */
+  lockoutThreshold?: Number;
+  /**
+   * maximum number of days that account's password is valid before expiration
+   *
+   */
+  maxPasswordAge?: Number;
+  /**
+   * Maximum message size that You can receive in MB
+   *
+   */
+  maxReceiveSize?: Number;
+  /**
+   * Maximum message size that You can send in MB
+   *
+   */
+  maxSendSize?: Number;
+  /**
+   * minimum number of days before able to change account's password
+   *
+   */
+  minPasswordAge?: Number;
   /**
    * minimum number of characters password must contain
    *
    */
   minPasswordLength?: Number;
   /**
-   * Domain name of your service
+   * Type of your offer
    *
    */
-  domain?: string;
+  offer?: EmailMxplanServiceOfferEnum;
+  /**
+   * Spam and Antivirus configuration
+   *
+   */
+  spamAndVirusConfiguration?: EmailProSpamAndVirusConfiguration;
   /**
    * State of your service
    *
    */
   state?: EmailProServiceStateEnum;
   /**
-   * number of minutes that must elapse after a failed logon to reset lockout trigger
+   * Task pending id
    *
    */
-  lockoutObservationWindow?: Number;
+  taskPendingId?: Number;
+  /**
+   * URL for web interface
+   *
+   */
+  webUrl?: string;
 }
 /**
  * Service Offer name
@@ -587,20 +587,15 @@ export type EmailProServiceStateEnum = 'inMaintenance' | 'ok' | 'suspended';
  */
 export interface EmailProTask {
   /**
-   * Function name
-   *
-   */
-  function?: EmailProTaskFunctionEnum;
-  /**
-   * Creation date
-   *
-   */
-  todoDate?: Date;
-  /**
    * Completion date
    *
    */
   finishDate?: Date;
+  /**
+   * Function name
+   *
+   */
+  function?: EmailProTaskFunctionEnum;
   /**
    * Task id
    *
@@ -611,6 +606,11 @@ export interface EmailProTask {
    *
    */
   status?: EmailProTaskStatusEnum;
+  /**
+   * Creation date
+   *
+   */
+  todoDate?: Date;
 }
 /**
  * function enumeration for task
@@ -625,6 +625,16 @@ export type EmailProTaskStatusEnum = 'cancelled' | 'doing' | 'done' | 'error' | 
  */
 export interface EmailProDisclaimer {
   /**
+   * Signature, added at the bottom of your organization emails
+   *
+   */
+  content?: string;
+  /**
+   * Creation date
+   *
+   */
+  creationDate?: Date;
+  /**
    * Disclaimer name
    *
    */
@@ -635,20 +645,10 @@ export interface EmailProDisclaimer {
    */
   outsideOnly?: boolean;
   /**
-   * Creation date
-   *
-   */
-  creationDate?: Date;
-  /**
    * task pending id
    *
    */
   taskPendingId?: Number;
-  /**
-   * Signature, added at the bottom of your organization emails
-   *
-   */
-  content?: string;
 }
 /**
  * Renew period
@@ -658,21 +658,6 @@ export type EmailProRenewPeriodEnum = 'monthly' | 'yearly';
  * Spam and Antyvirus configuration
  */
 export interface EmailProSpamAndVirusConfiguration {
-  /**
-   * If message is a virus change its subject
-   *
-   */
-  tagVirus?: boolean;
-  /**
-   * If message is a spam change its subject
-   *
-   */
-  tagSpam?: boolean;
-  /**
-   * If message is a spam delete it
-   *
-   */
-  deleteSpam?: boolean;
   /**
    * Check DKIM of message
    *
@@ -684,6 +669,11 @@ export interface EmailProSpamAndVirusConfiguration {
    */
   checkSPF?: boolean;
   /**
+   * If message is a spam delete it
+   *
+   */
+  deleteSpam?: boolean;
+  /**
    * If message is a virus delete it
    *
    */
@@ -693,284 +683,297 @@ export interface EmailProSpamAndVirusConfiguration {
    *
    */
   putInJunk?: boolean;
+  /**
+   * If message is a spam change its subject
+   *
+   */
+  tagSpam?: boolean;
+  /**
+   * If message is a virus change its subject
+   *
+   */
+  tagVirus?: boolean;
 }
-type PathsemailmxplanGET = '/email/mxplan/{service}' | 
-'/email/mxplan/{service}/server' | 
-'/email/mxplan/{service}/externalContact/{externalEmailAddress}' | 
-'/email/mxplan/{service}/externalContact' | 
-'/email/mxplan/{service}/account/{email}/alias/{alias}' | 
-'/email/mxplan/{service}/account/{email}/alias' | 
-'/email/mxplan/{service}/account/{email}' | 
-'/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}' | 
-'/email/mxplan/{service}/account/{email}/fullAccess' | 
-'/email/mxplan/{service}/account/{email}/task/{id}' | 
-'/email/mxplan/{service}/account/{email}/task' | 
-'/email/mxplan/{service}/account/{email}/diagnostic' | 
-'/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}' | 
-'/email/mxplan/{service}/account/{email}/sendAs' | 
-'/email/mxplan/{service}/account/{email}/sendOnBehalfTo' | 
-'/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' | 
-'/email/mxplan/{service}/account' | 
-'/email/mxplan/{service}/domain/{domainName}/disclaimer' | 
-'/email/mxplan/{service}/domain/{domainName}' | 
-'/email/mxplan/{service}/domain/{domainName}/disclaimerAttribute' | 
-'/email/mxplan/{service}/domain' | 
+type PathsEmailmxplanGET = '/email/mxplan/{service}' | 
 '/email/mxplan/{service}/task' | 
 '/email/mxplan/{service}/task/{id}' | 
+'/email/mxplan/{service}/domain' | 
+'/email/mxplan/{service}/domain/{domainName}' | 
+'/email/mxplan/{service}/domain/{domainName}/disclaimer' | 
+'/email/mxplan/{service}/domain/{domainName}/disclaimerAttribute' | 
+'/email/mxplan/{service}/account/{email}/diagnostic' | 
+'/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}' | 
+'/email/mxplan/{service}/account/{email}/sendAs' | 
+'/email/mxplan/{service}/account/{email}/task' | 
+'/email/mxplan/{service}/account/{email}/task/{id}' | 
+'/email/mxplan/{service}/account/{email}/alias' | 
+'/email/mxplan/{service}/account/{email}/alias/{alias}' | 
+'/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' | 
+'/email/mxplan/{service}/account/{email}/sendOnBehalfTo' | 
+'/email/mxplan/{service}/account/{email}' | 
+'/email/mxplan/{service}/account/{email}/fullAccess' | 
+'/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}' | 
+'/email/mxplan/{service}/account' | 
+'/email/mxplan/{service}/externalContact/{externalEmailAddress}' | 
+'/email/mxplan/{service}/externalContact' | 
+'/email/mxplan/{service}/server' | 
 '/email/mxplan';
 
-type PathsemailmxplanPUT = '/email/mxplan/{service}' | 
-'/email/mxplan/{service}/externalContact/{externalEmailAddress}' | 
-'/email/mxplan/{service}/account/{email}' | 
+type PathsEmailmxplanPUT = '/email/mxplan/{service}' | 
+'/email/mxplan/{service}/domain/{domainName}' | 
 '/email/mxplan/{service}/domain/{domainName}/disclaimer' | 
-'/email/mxplan/{service}/domain/{domainName}';
+'/email/mxplan/{service}/account/{email}' | 
+'/email/mxplan/{service}/externalContact/{externalEmailAddress}';
 
-type PathsemailmxplanPOST = '/email/mxplan/{service}/externalContact' | 
-'/email/mxplan/{service}/account/{email}/alias' | 
-'/email/mxplan/{service}/account/{email}/fullAccess' | 
+type PathsEmailmxplanPOST = '/email/mxplan/{service}/domain/{domainName}/disclaimer' | 
 '/email/mxplan/{service}/account/{email}/diagnostic' | 
 '/email/mxplan/{service}/account/{email}/sendAs' | 
+'/email/mxplan/{service}/account/{email}/alias' | 
 '/email/mxplan/{service}/account/{email}/changePassword' | 
 '/email/mxplan/{service}/account/{email}/sendOnBehalfTo' | 
-'/email/mxplan/{service}/domain/{domainName}/disclaimer' | 
-'/email/mxplan/{service}/updateFlagsOnAllAccounts';
+'/email/mxplan/{service}/account/{email}/fullAccess' | 
+'/email/mxplan/{service}/updateFlagsOnAllAccounts' | 
+'/email/mxplan/{service}/externalContact';
 
-type PathsemailmxplanDELETE = '/email/mxplan/{service}/externalContact/{externalEmailAddress}' | 
+type PathsEmailmxplanDELETE = '/email/mxplan/{service}/domain/{domainName}/disclaimer' | 
+'/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}' | 
 '/email/mxplan/{service}/account/{email}/alias/{alias}' | 
+'/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' | 
 '/email/mxplan/{service}/account/{email}' | 
 '/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}' | 
-'/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}' | 
-'/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' | 
-'/email/mxplan/{service}/domain/{domainName}/disclaimer';
+'/email/mxplan/{service}/externalContact/{externalEmailAddress}';
 
-class Apiemailmxplan extends ApiCommon {
+export class ApiEmailmxplan extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   MXPlan service
   Get this object properties
   **/
-  public get(path: '/email/mxplan/{service}', pathParams: {service?: string}, queryParams: null): Promise<EmailMxplanService>;
-  /**
-  Server
-  Get this object properties
-  **/
-  public get(path: '/email/mxplan/{service}/server', pathParams: {service?: string}, queryParams: null): Promise<EmailMxplanServer>;
-  /**
-  External contact for this mxplan service
-  Get this object properties
-  **/
-  public get(path: '/email/mxplan/{service}/externalContact/{externalEmailAddress}', pathParams: {service?: string, externalEmailAddress?: string}, queryParams: null): Promise<EmailMxplanExternalContact>;
-  /**
-  List the email.mxplan.ExternalContact objects
-  External contacts for this service
-  **/
-  public get(path: '/email/mxplan/{service}/externalContact', pathParams: {service?: string}, queryParams: {id?: Number, displayName?: string, externalEmailAddress?: string, lastName?: string, firstName?: string}): Promise<string[]>;
-  /**
-  Aliases on this mailbox
-  Get this object properties
-  **/
-  public get(path: '/email/mxplan/{service}/account/{email}/alias/{alias}', pathParams: {service?: string, email?: string, alias?: string}, queryParams: null): Promise<EmailMxplanAccountAlias>;
-  /**
-  List the email.mxplan.AccountAlias objects
-  Aliases associated to this mailbox
-  **/
-  public get(path: '/email/mxplan/{service}/account/{email}/alias', pathParams: {service?: string, email?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Mailbox
-  Get this object properties
-  **/
-  public get(path: '/email/mxplan/{service}/account/{email}', pathParams: {service?: string, email?: string}, queryParams: null): Promise<EmailMxplanAccount>;
-  /**
-  Users having full access on this mailbox
-  Get this object properties
-  **/
-  public get(path: '/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}', pathParams: {service?: string, email?: string, allowedAccountId?: Number}, queryParams: null): Promise<EmailMxplanAccountFullAccess>;
-  /**
-  List the email.mxplan.AccountFullAccess objects
-  Full access granted users for this mailbox
-  **/
-  public get(path: '/email/mxplan/{service}/account/{email}/fullAccess', pathParams: {service?: string, email?: string}, queryParams: null): Promise<Number[]>;
-  /**
-  Organization task details
-  Get this object properties
-  **/
-  public get(path: '/email/mxplan/{service}/account/{email}/task/{id}', pathParams: {service?: string, email?: string, id?: Number}, queryParams: null): Promise<EmailProTask>;
-  /**
-  List the email.pro.Task objects
-  Pending task for this mailbox
-  **/
-  public get(path: '/email/mxplan/{service}/account/{email}/task', pathParams: {service?: string, email?: string}, queryParams: null): Promise<Number[]>;
-  /**
-  Account Diagnosis
-  Get this object properties
-  **/
-  public get(path: '/email/mxplan/{service}/account/{email}/diagnostic', pathParams: {service?: string, email?: string}, queryParams: null): Promise<EmailMxplanAccountDiagnosis>;
-  /**
-  Users authorized to send mails from this mailbox
-  Get this object properties
-  **/
-  public get(path: '/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}', pathParams: {service?: string, email?: string, allowedAccountId?: Number}, queryParams: null): Promise<EmailMxplanAccountSendAs>;
-  /**
-  List the email.mxplan.AccountSendAs objects
-  Send as granted users for this mailbox
-  **/
-  public get(path: '/email/mxplan/{service}/account/{email}/sendAs', pathParams: {service?: string, email?: string}, queryParams: null): Promise<Number[]>;
-  /**
-  List the email.mxplan.AccountSendOnBehalfTo objects
-  SendOnBehalfTo granted users for this mailbox
-  **/
-  public get(path: '/email/mxplan/{service}/account/{email}/sendOnBehalfTo', pathParams: {service?: string, email?: string}, queryParams: null): Promise<Number[]>;
-  /**
-  Get users authorized to Send On Behalf To mails from this mailbox
-  Get this object properties
-  **/
-  public get(path: '/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}', pathParams: {service?: string, email?: string, allowedAccountId?: Number}, queryParams: null): Promise<EmailMxplanAccountSendOnBehalfTo>;
-  /**
-  List the email.mxplan.Account objects
-  Accounts associated to this mxplan service
-  **/
-  public get(path: '/email/mxplan/{service}/account', pathParams: {service?: string}, queryParams: {id?: Number, primaryEmailAddress?: string}): Promise<string[]>;
-  /**
-  disclaimer
-  Get this object properties
-  **/
-  public get(path: '/email/mxplan/{service}/domain/{domainName}/disclaimer', pathParams: {service?: string, domainName?: string}, queryParams: null): Promise<EmailProDisclaimer>;
-  /**
-  Domain
-  Get this object properties
-  **/
-  public get(path: '/email/mxplan/{service}/domain/{domainName}', pathParams: {service?: string, domainName?: string}, queryParams: null): Promise<EmailMxplanDomain>;
-  /**
-  disclaimerAttribute operations
-  Get diclaimer attributes to substitute with Active Directory properties
-  **/
-  public get(path: '/email/mxplan/{service}/domain/{domainName}/disclaimerAttribute', pathParams: {service?: string, domainName?: string}, queryParams: null): Promise<EmailProDisclaimerAttributeEnum[]>;
-  /**
-  List the email.mxplan.Domain objects
-  Domains associated to this service
-  **/
-  public get(path: '/email/mxplan/{service}/domain', pathParams: {service?: string}, queryParams: {state?: EmailProObjectStateEnum}): Promise<string[]>;
+  public get(path: '/email/mxplan/{service}', pathParams: {service: string}): Promise<EmailMxplanService>;
   /**
   List the email.pro.Task objects
   Pending actions
   **/
-  public get(path: '/email/mxplan/{service}/task', pathParams: {service?: string}, queryParams: null): Promise<Number[]>;
+  public get(path: '/email/mxplan/{service}/task', pathParams: {service: string}): Promise<Number[]>;
   /**
   Organization task details
   Get this object properties
   **/
-  public get(path: '/email/mxplan/{service}/task/{id}', pathParams: {service?: string, id?: Number}, queryParams: null): Promise<EmailProTask>;
+  public get(path: '/email/mxplan/{service}/task/{id}', pathParams: {service: string, id: Number}): Promise<EmailProTask>;
+  /**
+  List the email.mxplan.Domain objects
+  Domains associated to this service
+  **/
+  public get(path: '/email/mxplan/{service}/domain', pathParams: {service: string}, queryParams: {state?: EmailProObjectStateEnum}): Promise<string[]>;
+  /**
+  Domain
+  Get this object properties
+  **/
+  public get(path: '/email/mxplan/{service}/domain/{domainName}', pathParams: {service: string, domainName: string}): Promise<EmailMxplanDomain>;
+  /**
+  disclaimer
+  Get this object properties
+  **/
+  public get(path: '/email/mxplan/{service}/domain/{domainName}/disclaimer', pathParams: {service: string, domainName: string}): Promise<EmailProDisclaimer>;
+  /**
+  disclaimerAttribute operations
+  Get diclaimer attributes to substitute with Active Directory properties
+  **/
+  public get(path: '/email/mxplan/{service}/domain/{domainName}/disclaimerAttribute', pathParams: {service: string, domainName: string}): Promise<EmailProDisclaimerAttributeEnum[]>;
+  /**
+  Account Diagnosis
+  Get this object properties
+  **/
+  public get(path: '/email/mxplan/{service}/account/{email}/diagnostic', pathParams: {service: string, email: string}): Promise<EmailMxplanAccountDiagnosis>;
+  /**
+  Users authorized to send mails from this mailbox
+  Get this object properties
+  **/
+  public get(path: '/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailMxplanAccountSendAs>;
+  /**
+  List the email.mxplan.AccountSendAs objects
+  Send as granted users for this mailbox
+  **/
+  public get(path: '/email/mxplan/{service}/account/{email}/sendAs', pathParams: {service: string, email: string}): Promise<Number[]>;
+  /**
+  List the email.pro.Task objects
+  Pending task for this mailbox
+  **/
+  public get(path: '/email/mxplan/{service}/account/{email}/task', pathParams: {service: string, email: string}): Promise<Number[]>;
+  /**
+  Organization task details
+  Get this object properties
+  **/
+  public get(path: '/email/mxplan/{service}/account/{email}/task/{id}', pathParams: {service: string, email: string, id: Number}): Promise<EmailProTask>;
+  /**
+  List the email.mxplan.AccountAlias objects
+  Aliases associated to this mailbox
+  **/
+  public get(path: '/email/mxplan/{service}/account/{email}/alias', pathParams: {service: string, email: string}): Promise<string[]>;
+  /**
+  Aliases on this mailbox
+  Get this object properties
+  **/
+  public get(path: '/email/mxplan/{service}/account/{email}/alias/{alias}', pathParams: {service: string, email: string, alias: string}): Promise<EmailMxplanAccountAlias>;
+  /**
+  Get users authorized to Send On Behalf To mails from this mailbox
+  Get this object properties
+  **/
+  public get(path: '/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailMxplanAccountSendOnBehalfTo>;
+  /**
+  List the email.mxplan.AccountSendOnBehalfTo objects
+  SendOnBehalfTo granted users for this mailbox
+  **/
+  public get(path: '/email/mxplan/{service}/account/{email}/sendOnBehalfTo', pathParams: {service: string, email: string}): Promise<Number[]>;
+  /**
+  Mailbox
+  Get this object properties
+  **/
+  public get(path: '/email/mxplan/{service}/account/{email}', pathParams: {service: string, email: string}): Promise<EmailMxplanAccount>;
+  /**
+  List the email.mxplan.AccountFullAccess objects
+  Full access granted users for this mailbox
+  **/
+  public get(path: '/email/mxplan/{service}/account/{email}/fullAccess', pathParams: {service: string, email: string}): Promise<Number[]>;
+  /**
+  Users having full access on this mailbox
+  Get this object properties
+  **/
+  public get(path: '/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailMxplanAccountFullAccess>;
+  /**
+  List the email.mxplan.Account objects
+  Accounts associated to this mxplan service
+  **/
+  public get(path: '/email/mxplan/{service}/account', pathParams: {service: string}, queryParams: {id?: Number, primaryEmailAddress?: string}): Promise<string[]>;
+  /**
+  External contact for this mxplan service
+  Get this object properties
+  **/
+  public get(path: '/email/mxplan/{service}/externalContact/{externalEmailAddress}', pathParams: {service: string, externalEmailAddress: string}): Promise<EmailMxplanExternalContact>;
+  /**
+  List the email.mxplan.ExternalContact objects
+  External contacts for this service
+  **/
+  public get(path: '/email/mxplan/{service}/externalContact', pathParams: {service: string}, queryParams: {displayName?: string, externalEmailAddress?: string, id?: Number, firstName?: string, lastName?: string}): Promise<string[]>;
+  /**
+  Server
+  Get this object properties
+  **/
+  public get(path: '/email/mxplan/{service}/server', pathParams: {service: string}): Promise<EmailMxplanServer>;
   /**
   Operations about the MXPLAN service
   List available services
   **/
-  public get(path: '/email/mxplan', pathParams: null, queryParams: null): Promise<string[]>;
-  public get(path: PathsemailmxplanGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/email/mxplan'): Promise<string[]>;
+  public get(path: PathsEmailmxplanGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   MXPlan service
   Alter this object properties
   **/
-  public put(path: '/email/mxplan/{service}', pathParams: {service?: string}, bodyParams: null): Promise<void>;
-  /**
-  External contact for this mxplan service
-  Alter this object properties
-  **/
-  public put(path: '/email/mxplan/{service}/externalContact/{externalEmailAddress}', pathParams: {service?: string, externalEmailAddress?: string}, bodyParams: null): Promise<void>;
-  /**
-  Mailbox
-  Alter this object properties
-  **/
-  public put(path: '/email/mxplan/{service}/account/{email}', pathParams: {service?: string, email?: string}, bodyParams: null): Promise<void>;
-  /**
-  disclaimer
-  Alter this object properties
-  **/
-  public put(path: '/email/mxplan/{service}/domain/{domainName}/disclaimer', pathParams: {service?: string, domainName?: string}, bodyParams: null): Promise<void>;
+  public put(path: '/email/mxplan/{service}', pathParams: {service: string}): Promise<void>;
   /**
   Domain
   Alter this object properties
   **/
-  public put(path: '/email/mxplan/{service}/domain/{domainName}', pathParams: {service?: string, domainName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathsemailmxplanPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/email/mxplan/{service}/domain/{domainName}', pathParams: {service: string, domainName: string}): Promise<void>;
   /**
-  List the email.mxplan.ExternalContact objects
-  create new external contact
+  disclaimer
+  Alter this object properties
   **/
-  public post(path: '/email/mxplan/{service}/externalContact', pathParams: {service?: string}, bodyParams: null): Promise<EmailProTask>;
+  public put(path: '/email/mxplan/{service}/domain/{domainName}/disclaimer', pathParams: {service: string, domainName: string}): Promise<void>;
   /**
-  List the email.mxplan.AccountAlias objects
-  Create new alias
+  Mailbox
+  Alter this object properties
   **/
-  public post(path: '/email/mxplan/{service}/account/{email}/alias', pathParams: {service?: string, email?: string}, bodyParams: null): Promise<EmailProTask>;
+  public put(path: '/email/mxplan/{service}/account/{email}', pathParams: {service: string, email: string}): Promise<void>;
   /**
-  List the email.mxplan.AccountFullAccess objects
-  Allow full access to a user
+  External contact for this mxplan service
+  Alter this object properties
   **/
-  public post(path: '/email/mxplan/{service}/account/{email}/fullAccess', pathParams: {service?: string, email?: string}, bodyParams: null): Promise<EmailProTask>;
-  /**
-  Account Diagnosis
-  Create new diagnosis request
-  **/
-  public post(path: '/email/mxplan/{service}/account/{email}/diagnostic', pathParams: {service?: string, email?: string}, bodyParams: null): Promise<EmailProTask>;
-  /**
-  List the email.mxplan.AccountSendAs objects
-  Allow another user to send mails from this mailbox
-  **/
-  public post(path: '/email/mxplan/{service}/account/{email}/sendAs', pathParams: {service?: string, email?: string}, bodyParams: null): Promise<EmailProTask>;
-  /**
-  changePassword operations
-  Change mailbox password
-  **/
-  public post(path: '/email/mxplan/{service}/account/{email}/changePassword', pathParams: {service?: string, email?: string}, bodyParams: null): Promise<EmailProTask>;
-  /**
-  List the email.mxplan.AccountSendOnBehalfTo objects
-  Allow another user to Send On Behalf To mails from this mailbox
-  **/
-  public post(path: '/email/mxplan/{service}/account/{email}/sendOnBehalfTo', pathParams: {service?: string, email?: string}, bodyParams: null): Promise<EmailProTask>;
+  public put(path: '/email/mxplan/{service}/externalContact/{externalEmailAddress}', pathParams: {service: string, externalEmailAddress: string}): Promise<void>;
+  public put(path: PathsEmailmxplanPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   disclaimer
   Create organization disclaimer of each email
   **/
-  public post(path: '/email/mxplan/{service}/domain/{domainName}/disclaimer', pathParams: {service?: string, domainName?: string}, bodyParams: null): Promise<EmailProTask>;
+  public post(path: '/email/mxplan/{service}/domain/{domainName}/disclaimer', pathParams: {service: string, domainName: string}): Promise<EmailProTask>;
+  /**
+  Account Diagnosis
+  Create new diagnosis request
+  **/
+  public post(path: '/email/mxplan/{service}/account/{email}/diagnostic', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  /**
+  List the email.mxplan.AccountSendAs objects
+  Allow another user to send mails from this mailbox
+  **/
+  public post(path: '/email/mxplan/{service}/account/{email}/sendAs', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  /**
+  List the email.mxplan.AccountAlias objects
+  Create new alias
+  **/
+  public post(path: '/email/mxplan/{service}/account/{email}/alias', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  /**
+  changePassword operations
+  Change mailbox password
+  **/
+  public post(path: '/email/mxplan/{service}/account/{email}/changePassword', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  /**
+  List the email.mxplan.AccountSendOnBehalfTo objects
+  Allow another user to Send On Behalf To mails from this mailbox
+  **/
+  public post(path: '/email/mxplan/{service}/account/{email}/sendOnBehalfTo', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  /**
+  List the email.mxplan.AccountFullAccess objects
+  Allow full access to a user
+  **/
+  public post(path: '/email/mxplan/{service}/account/{email}/fullAccess', pathParams: {service: string, email: string}): Promise<EmailProTask>;
   /**
   updateFlagsOnAllAccounts operations
   Update spam and virus flags on all active accounts
   **/
-  public post(path: '/email/mxplan/{service}/updateFlagsOnAllAccounts', pathParams: {service?: string}, bodyParams: null): Promise<void>;
-  public post(path: PathsemailmxplanPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/email/mxplan/{service}/updateFlagsOnAllAccounts', pathParams: {service: string}): Promise<void>;
   /**
-  External contact for this mxplan service
-  delete external contact
+  List the email.mxplan.ExternalContact objects
+  create new external contact
   **/
-  public delete(path: '/email/mxplan/{service}/externalContact/{externalEmailAddress}', pathParams: {service?: string, externalEmailAddress?: string}, bodyParams: null): Promise<EmailProTask>;
-  /**
-  Aliases on this mailbox
-  Delete existing alias
-  **/
-  public delete(path: '/email/mxplan/{service}/account/{email}/alias/{alias}', pathParams: {service?: string, email?: string, alias?: string}, bodyParams: null): Promise<EmailProTask>;
-  /**
-  Mailbox
-  Delete existing mailbox in mxplan server
-  **/
-  public delete(path: '/email/mxplan/{service}/account/{email}', pathParams: {service?: string, email?: string}, bodyParams: null): Promise<EmailProTask>;
-  /**
-  Users having full access on this mailbox
-  Revoke full access
-  **/
-  public delete(path: '/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}', pathParams: {service?: string, email?: string, allowedAccountId?: Number}, bodyParams: null): Promise<EmailProTask>;
-  /**
-  Users authorized to send mails from this mailbox
-  Delete allowed user for sendAs
-  **/
-  public delete(path: '/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}', pathParams: {service?: string, email?: string, allowedAccountId?: Number}, bodyParams: null): Promise<EmailProTask>;
-  /**
-  Get users authorized to Send On Behalf To mails from this mailbox
-  Delete allowed user for SendOnBehalfTo
-  **/
-  public delete(path: '/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}', pathParams: {service?: string, email?: string, allowedAccountId?: Number}, bodyParams: null): Promise<EmailProTask>;
+  public post(path: '/email/mxplan/{service}/externalContact', pathParams: {service: string}): Promise<EmailProTask>;
+  public post(path: PathsEmailmxplanPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   disclaimer
   Delete existing organization disclaimer
   **/
-  public delete(path: '/email/mxplan/{service}/domain/{domainName}/disclaimer', pathParams: {service?: string, domainName?: string}, bodyParams: null): Promise<EmailProTask>;
-  public delete(path: PathsemailmxplanDELETE, pathParams?: any, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/email/mxplan/{service}/domain/{domainName}/disclaimer', pathParams: {service: string, domainName: string}): Promise<EmailProTask>;
+  /**
+  Users authorized to send mails from this mailbox
+  Delete allowed user for sendAs
+  **/
+  public delete(path: '/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProTask>;
+  /**
+  Aliases on this mailbox
+  Delete existing alias
+  **/
+  public delete(path: '/email/mxplan/{service}/account/{email}/alias/{alias}', pathParams: {service: string, email: string, alias: string}): Promise<EmailProTask>;
+  /**
+  Get users authorized to Send On Behalf To mails from this mailbox
+  Delete allowed user for SendOnBehalfTo
+  **/
+  public delete(path: '/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProTask>;
+  /**
+  Mailbox
+  Delete existing mailbox in mxplan server
+  **/
+  public delete(path: '/email/mxplan/{service}/account/{email}', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  /**
+  Users having full access on this mailbox
+  Revoke full access
+  **/
+  public delete(path: '/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProTask>;
+  /**
+  External contact for this mxplan service
+  delete external contact
+  **/
+  public delete(path: '/email/mxplan/{service}/externalContact/{externalEmailAddress}', pathParams: {service: string, externalEmailAddress: string}): Promise<EmailProTask>;
+  public delete(path: PathsEmailmxplanDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

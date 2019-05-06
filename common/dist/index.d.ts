@@ -1,6 +1,21 @@
 export declare class ApiCommon {
-    protected get(path: String, pathParams?: any, queryParams?: any): Promise<any>;
-    protected put(path: String, pathParams?: any, queryParams?: any, bodyParams?: any): Promise<any>;
-    protected post(path: String, pathParams?: any, queryParams?: any, bodyParams?: any): Promise<any>;
-    protected delete(path: String, pathParams?: any, queryParams?: any, bodyParams?: any): Promise<any>;
+    private ovh;
+    constructor(config: {
+        appKey: string;
+        appSecret: string;
+        consumerKey: string;
+    });
+    private replacePath;
+    protected get(path: string, pathParams?: {
+        [key: string]: string;
+    }, queryParams?: any): Promise<any>;
+    protected put(path: string, pathParams?: {
+        [key: string]: string;
+    }, bodyParams?: any): Promise<any>;
+    protected post(path: string, pathParams?: {
+        [key: string]: string;
+    }, bodyParams?: any): Promise<any>;
+    protected delete(path: string, pathParams?: {
+        [key: string]: string;
+    }, bodyParams?: any): Promise<any>;
 }

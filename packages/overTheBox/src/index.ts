@@ -9,10 +9,10 @@ export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL
 export interface OrderPrice {
   /**
    */
-  text?: string;
+  currencyCode?: OrderCurrencyCodeEnum;
   /**
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  text?: string;
   /**
    */
   value?: Number;
@@ -26,30 +26,25 @@ export type OverTheBoxActionStatusEnum = 'doing' | 'done' | 'error' | 'todo';
  */
 export interface OverTheBoxAvailableDeviceAction {
   /**
-   * Name of the action
-   *
-   */
-  name?: string;
-  /**
    * Description of the action
    *
    */
   description?: string;
+  /**
+   * Name of the action
+   *
+   */
+  name?: string;
 }
 /**
  * Migration offer
  */
 export interface OverTheBoxAvailableMigrationOffer {
   /**
-   * Name of the offer
+   * Monthly price of the current offer
    *
    */
-  offer?: string;
-  /**
-   * Monthly price of the new offer
-   *
-   */
-  price?: OrderPrice;
+  currentOfferPrice?: OrderPrice;
   /**
    * Description of the offer
    *
@@ -66,25 +61,30 @@ export interface OverTheBoxAvailableMigrationOffer {
    */
   hardwareAvailable?: boolean;
   /**
-   * Monthly price of the current offer
+   * Name of the offer
    *
    */
-  currentOfferPrice?: OrderPrice;
+  offer?: string;
+  /**
+   * Monthly price of the new offer
+   *
+   */
+  price?: OrderPrice;
 }
 /**
  * Backup
  */
 export interface OverTheBoxBackup {
   /**
-   * Date of the creation of the backup
-   *
-   */
-  createdAt?: Date;
-  /**
    * The id of the backup
    *
    */
   backupId?: string;
+  /**
+   * Date of the creation of the backup
+   *
+   */
+  createdAt?: Date;
   /**
    * The id of the device action that triggered the backup
    *
@@ -96,15 +96,25 @@ export interface OverTheBoxBackup {
  */
 export interface OverTheBoxDevice {
   /**
-   * Network interfaces of the device
+   * Whether or not this device is associated to a service
    *
    */
-  networkInterfaces?: OverTheBoxDeviceInterface[];
+  activated?: boolean;
+  /**
+   * The id of the device
+   *
+   */
+  deviceId?: string;
   /**
    * Last time the device has been seen on the provisionning servers
    *
    */
   lastSeen?: Date;
+  /**
+   * Network interfaces of the device
+   *
+   */
+  networkInterfaces?: OverTheBoxDeviceInterface[];
   /**
    * The public IP of the device
    *
@@ -120,139 +130,129 @@ export interface OverTheBoxDevice {
    *
    */
   version?: string;
-  /**
-   * The id of the device
-   *
-   */
-  deviceId?: string;
-  /**
-   * Whether or not this device is associated to a service
-   *
-   */
-  activated?: boolean;
 }
 /**
  * Device action
  */
 export interface OverTheBoxDeviceAction {
   /**
-   * Date of creation of the action
-   *
-   */
-  createdAt?: Date;
-  /**
-   * The name of the action
-   *
-   */
-  name?: string;
-  /**
-   * Date of execution of the action
-   *
-   */
-  todoDate?: Date;
-  /**
    * The id of the action
    *
    */
   actionId?: string;
+  /**
+   * Date of creation of the action
+   *
+   */
+  createdAt?: Date;
   /**
    * The details of the action
    *
    */
   details?: string;
   /**
-   * Last time the action was updated
+   * The name of the action
    *
    */
-  updatedAt?: Date;
+  name?: string;
   /**
    * The status of the action
    *
    */
   status?: OverTheBoxActionStatusEnum;
+  /**
+   * Date of execution of the action
+   *
+   */
+  todoDate?: Date;
+  /**
+   * Last time the action was updated
+   *
+   */
+  updatedAt?: Date;
 }
 /**
  * A device for registration
  */
 export interface OverTheBoxDeviceForRegistration {
   /**
-   * The last time this device was seen on the provisionning servers
-   *
-   */
-  lastSeen?: Date;
-  /**
-   */
-  deviceId?: string;
-  /**
    * Whether or not this device is actived
    *
    */
   activated?: boolean;
+  /**
+   */
+  deviceId?: string;
+  /**
+   * The last time this device was seen on the provisionning servers
+   *
+   */
+  lastSeen?: Date;
 }
 /**
  * Infos about a network interface
  */
 export interface OverTheBoxDeviceInterface {
   /**
-   * Netmask of the interface
+   * Device of the interface
    *
    */
-  netmask?: string;
-  /**
-   * IP of the interface
-   *
-   */
-  ip?: string;
-  /**
-   * Name of the interface
-   *
-   */
-  name?: string;
-  /**
-   * Public IP of the interface
-   *
-   */
-  publicIp?: string;
+  device?: string;
   /**
    * The DNS servers of this interface
    *
    */
   dnsServers?: string[];
   /**
-   * Device of the interface
-   *
-   */
-  device?: string;
-  /**
    * Gateway of the interface
    *
    */
   gateway?: string;
   /**
+   * IP of the interface
+   *
+   */
+  ip?: string;
+  /**
    * Status of MPTCP on this interface
    *
    */
   multipathStatus?: OverTheBoxMultipathStatusEnum;
+  /**
+   * Name of the interface
+   *
+   */
+  name?: string;
+  /**
+   * Netmask of the interface
+   *
+   */
+  netmask?: string;
+  /**
+   * Public IP of the interface
+   *
+   */
+  publicIp?: string;
 }
 /**
  * Parameters required to query metrics from OpenTSDB
  */
 export interface OverTheBoxGraphEndpoint {
   /**
-   * The read-only token ID
+   * The OpenTSDB host
    *
    */
-  readTokenID?: string;
+  host?: string;
   /**
    * A read-only token
    *
    */
   readToken?: string;
   /**
-   * The OpenTSDB host
+   * The read-only token ID
    *
    */
-  host?: string;
+  readTokenID?: string;
 }
 /**
  * Status of a MPTCP Interface.
@@ -262,31 +262,6 @@ export type OverTheBoxMultipathStatusEnum = 'backup' | 'handover' | 'master' | '
  * If authorized, a remote access will expose a port, allowing an access to the device remotely
  */
 export interface OverTheBoxRemoteAccess {
-  /**
-   * All the infos needed to connect yourself to your OTB
-   *
-   */
-  connectionInfos?: OverTheBoxRemoteAccessConnectionInfos;
-  /**
-   * Infos about the remote user
-   *
-   */
-  remoteUserInfos?: OverTheBoxRemoteAccessUserInfos;
-  /**
-   * The user that authorized the remote access
-   *
-   */
-  authorizedBy?: string;
-  /**
-   * The id of the remote access
-   *
-   */
-  remoteAccessId?: string;
-  /**
-   * The device's port which will be exposed
-   *
-   */
-  exposedPort?: Number;
   /**
    * If the remote access was accepted by the remote user
    *
@@ -298,10 +273,35 @@ export interface OverTheBoxRemoteAccess {
    */
   askDate?: Date;
   /**
+   * The user that authorized the remote access
+   *
+   */
+  authorizedBy?: string;
+  /**
+   * All the infos needed to connect yourself to your OTB
+   *
+   */
+  connectionInfos?: OverTheBoxRemoteAccessConnectionInfos;
+  /**
    * When the remote access will be automatically deleted
    *
    */
   expirationDate?: Date;
+  /**
+   * The device's port which will be exposed
+   *
+   */
+  exposedPort?: Number;
+  /**
+   * The id of the remote access
+   *
+   */
+  remoteAccessId?: string;
+  /**
+   * Infos about the remote user
+   *
+   */
+  remoteUserInfos?: OverTheBoxRemoteAccessUserInfos;
   /**
    * Status of the remote access
    *
@@ -313,15 +313,15 @@ export interface OverTheBoxRemoteAccess {
  */
 export interface OverTheBoxRemoteAccessConnectionInfos {
   /**
-   * Port to connect to when accessing the device remotely
-   *
-   */
-  port?: Number;
-  /**
    * IP to connect to when accessing the device remotely
    *
    */
   ip?: string;
+  /**
+   * Port to connect to when accessing the device remotely
+   *
+   */
+  port?: Number;
 }
 /**
  * Status of the remote access.
@@ -352,30 +352,25 @@ export interface OverTheBoxRemoteAccessUserInfos {
  */
 export interface OverTheBoxService {
   /**
-   * Release channel of the service
-   *
-   */
-  releaseChannel?: string;
-  /**
    * If the socks proxy is enabled
    *
    */
   SOCKSProxyEnabled?: boolean;
   /**
-   * The tunnel mode of the service
+   * Editable field for customer
    *
    */
-  tunnelMode?: OverTheBoxTunnelModeEnum;
+  customerDescription?: string;
   /**
    * Parameters needed to fetch metrics
    *
    */
   graphEndpoint?: OverTheBoxGraphEndpoint;
   /**
-   * Editable field for customer
+   * Release channel of the service
    *
    */
-  customerDescription?: string;
+  releaseChannel?: string;
   /**
    * The name of the service
    *
@@ -386,6 +381,11 @@ export interface OverTheBoxService {
    *
    */
   status?: OverTheBoxServiceStatusEnum;
+  /**
+   * The tunnel mode of the service
+   *
+   */
+  tunnelMode?: OverTheBoxTunnelModeEnum;
 }
 /**
  * Status of the service.
@@ -401,15 +401,15 @@ export interface OverTheBoxTask {
    */
   name?: string;
   /**
-   * The id of the task
-   *
-   */
-  taskId?: string;
-  /**
    * The status of the task
    *
    */
   status?: OverTheBoxTaskStatusEnum;
+  /**
+   * The id of the task
+   *
+   */
+  taskId?: string;
 }
 /**
  * Status of a task.
@@ -420,15 +420,15 @@ export type OverTheBoxTaskStatusEnum = 'doing' | 'done' | 'error' | 'todo';
  */
 export interface OverTheBoxTemporaryLogsLink {
   /**
-   * Temporary url
-   *
-   */
-  url?: string;
-  /**
    * Temporary url expiration date
    *
    */
   expirationDate?: Date;
+  /**
+   * Temporary url
+   *
+   */
+  url?: string;
 }
 /**
  * Tunnel mode of the service.
@@ -443,15 +443,10 @@ export type PriceOverTheBoxOfferEnum = 'plus.v1';
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
@@ -463,10 +458,15 @@ export interface ServiceRenewType {
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -481,31 +481,36 @@ export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' |
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
+  /**
+   */
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  engagedUpTo?: Date;
+  contactTech?: string;
   /**
    */
-  contactAdmin?: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -513,212 +518,210 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
-  /**
-   */
-  creation?: Date;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
   /**
    */
   status?: ServiceStateEnum;
 }
-type PathsoverTheBoxGET = '/overTheBox' | 
-'/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}' | 
-'/overTheBox/{serviceName}/remoteAccesses' | 
+type PathsOverTheBoxGET = '/overTheBox' | 
 '/overTheBox/{serviceName}/migration/offers' | 
-'/overTheBox/{serviceName}/backups/{backupId}' | 
-'/overTheBox/{serviceName}/backups' | 
-'/overTheBox/{serviceName}/availableReleaseChannels' | 
-'/overTheBox/{serviceName}/serviceInfos' | 
 '/overTheBox/{serviceName}' | 
-'/overTheBox/{serviceName}/tasks/{taskId}' | 
-'/overTheBox/{serviceName}/tasks' | 
+'/overTheBox/{serviceName}/availableReleaseChannels' | 
+'/overTheBox/{serviceName}/device/actions/{actionId}' | 
+'/overTheBox/{serviceName}/device/actions' | 
 '/overTheBox/{serviceName}/device/availableActions' | 
 '/overTheBox/{serviceName}/device' | 
-'/overTheBox/{serviceName}/device/actions' | 
-'/overTheBox/{serviceName}/device/actions/{actionId}' | 
+'/overTheBox/{serviceName}/serviceInfos' | 
+'/overTheBox/{serviceName}/remoteAccesses' | 
+'/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}' | 
+'/overTheBox/{serviceName}/backups' | 
+'/overTheBox/{serviceName}/backups/{backupId}' | 
+'/overTheBox/{serviceName}/tasks' | 
+'/overTheBox/{serviceName}/tasks/{taskId}' | 
 '/overTheBox/availableOffers';
 
-type PathsoverTheBoxPUT = '/overTheBox/{serviceName}/serviceInfos' | 
-'/overTheBox/{serviceName}';
+type PathsOverTheBoxPUT = '/overTheBox/{serviceName}' | 
+'/overTheBox/{serviceName}/serviceInfos';
 
-type PathsoverTheBoxPOST = '/overTheBox/devices' | 
-'/overTheBox/{serviceName}/changeContact' | 
-'/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize' | 
-'/overTheBox/{serviceName}/remoteAccesses' | 
+type PathsOverTheBoxPOST = '/overTheBox/{serviceName}/cancelResiliation' | 
 '/overTheBox/{serviceName}/linkDevice' | 
-'/overTheBox/{serviceName}/cancelResiliation' | 
+'/overTheBox/{serviceName}/changeContact' | 
 '/overTheBox/{serviceName}/device/logs' | 
-'/overTheBox/{serviceName}/device/backup' | 
+'/overTheBox/{serviceName}/device/actions' | 
 '/overTheBox/{serviceName}/device/restoreBackup' | 
-'/overTheBox/{serviceName}/device/actions';
+'/overTheBox/{serviceName}/device/backup' | 
+'/overTheBox/{serviceName}/remoteAccesses' | 
+'/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize' | 
+'/overTheBox/devices';
 
-type PathsoverTheBoxDELETE = '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}' | 
-'/overTheBox/{serviceName}' | 
-'/overTheBox/{serviceName}/device';
+type PathsOverTheBoxDELETE = '/overTheBox/{serviceName}' | 
+'/overTheBox/{serviceName}/device' | 
+'/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}';
 
-class ApioverTheBox extends ApiCommon {
+export class ApiOverTheBox extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Operations about the OVERTHEBOX service
   List available services
   **/
-  public get(path: '/overTheBox', pathParams: null, queryParams: null): Promise<string[]>;
-  /**
-  If authorized, a remote access will expose a port, allowing an access to the device remotely
-  Get this object properties
-  **/
-  public get(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}', pathParams: {serviceName?: string, remoteAccessId?: string}, queryParams: null): Promise<OverTheBoxRemoteAccess>;
-  /**
-  List the overTheBox.RemoteAccess objects
-  List of remote accesses for the service
-  **/
-  public get(path: '/overTheBox/{serviceName}/remoteAccesses', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
+  public get(path: '/overTheBox'): Promise<string[]>;
   /**
   offers operations
   List all available offers one can migrate to
   **/
-  public get(path: '/overTheBox/{serviceName}/migration/offers', pathParams: {serviceName?: string}, queryParams: null): Promise<OverTheBoxAvailableMigrationOffer[]>;
+  public get(path: '/overTheBox/{serviceName}/migration/offers', pathParams: {serviceName: string}): Promise<OverTheBoxAvailableMigrationOffer[]>;
   /**
-  Backup
+  Service
   Get this object properties
   **/
-  public get(path: '/overTheBox/{serviceName}/backups/{backupId}', pathParams: {serviceName?: string, backupId?: string}, queryParams: null): Promise<OverTheBoxBackup>;
-  /**
-  List the overTheBox.Backup objects
-  List of backups for this service
-  **/
-  public get(path: '/overTheBox/{serviceName}/backups', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
+  public get(path: '/overTheBox/{serviceName}', pathParams: {serviceName: string}): Promise<OverTheBoxService>;
   /**
   availableReleaseChannels operations
   List available release channels for this service
   **/
-  public get(path: '/overTheBox/{serviceName}/availableReleaseChannels', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/overTheBox/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  Service
-  Get this object properties
-  **/
-  public get(path: '/overTheBox/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<OverTheBoxService>;
-  /**
-  Task
-  Get this object properties
-  **/
-  public get(path: '/overTheBox/{serviceName}/tasks/{taskId}', pathParams: {serviceName?: string, taskId?: string}, queryParams: null): Promise<OverTheBoxTask>;
-  /**
-  List the overTheBox.Task objects
-  List of tasks scheduled for this service
-  **/
-  public get(path: '/overTheBox/{serviceName}/tasks', pathParams: {serviceName?: string}, queryParams: {status?: OverTheBoxTaskStatusEnum, name?: string}): Promise<string[]>;
-  /**
-  availableActions operations
-  List the available device actions
-  **/
-  public get(path: '/overTheBox/{serviceName}/device/availableActions', pathParams: {serviceName?: string}, queryParams: null): Promise<OverTheBoxAvailableDeviceAction[]>;
-  /**
-  Device
-  Get this object properties
-  **/
-  public get(path: '/overTheBox/{serviceName}/device', pathParams: {serviceName?: string}, queryParams: null): Promise<OverTheBoxDevice>;
-  /**
-  List the overTheBox.DeviceAction objects
-  List of actions scheduled for this device
-  **/
-  public get(path: '/overTheBox/{serviceName}/device/actions', pathParams: {serviceName?: string}, queryParams: {status?: OverTheBoxActionStatusEnum, name?: string}): Promise<string[]>;
+  public get(path: '/overTheBox/{serviceName}/availableReleaseChannels', pathParams: {serviceName: string}): Promise<string[]>;
   /**
   Device action
   Get this object properties
   **/
-  public get(path: '/overTheBox/{serviceName}/device/actions/{actionId}', pathParams: {serviceName?: string, actionId?: string}, queryParams: null): Promise<OverTheBoxDeviceAction>;
+  public get(path: '/overTheBox/{serviceName}/device/actions/{actionId}', pathParams: {serviceName: string, actionId: string}): Promise<OverTheBoxDeviceAction>;
+  /**
+  List the overTheBox.DeviceAction objects
+  List of actions scheduled for this device
+  **/
+  public get(path: '/overTheBox/{serviceName}/device/actions', pathParams: {serviceName: string}, queryParams: {status?: OverTheBoxActionStatusEnum, name?: string}): Promise<string[]>;
+  /**
+  availableActions operations
+  List the available device actions
+  **/
+  public get(path: '/overTheBox/{serviceName}/device/availableActions', pathParams: {serviceName: string}): Promise<OverTheBoxAvailableDeviceAction[]>;
+  /**
+  Device
+  Get this object properties
+  **/
+  public get(path: '/overTheBox/{serviceName}/device', pathParams: {serviceName: string}): Promise<OverTheBoxDevice>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/overTheBox/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  List the overTheBox.RemoteAccess objects
+  List of remote accesses for the service
+  **/
+  public get(path: '/overTheBox/{serviceName}/remoteAccesses', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  If authorized, a remote access will expose a port, allowing an access to the device remotely
+  Get this object properties
+  **/
+  public get(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}', pathParams: {serviceName: string, remoteAccessId: string}): Promise<OverTheBoxRemoteAccess>;
+  /**
+  List the overTheBox.Backup objects
+  List of backups for this service
+  **/
+  public get(path: '/overTheBox/{serviceName}/backups', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Backup
+  Get this object properties
+  **/
+  public get(path: '/overTheBox/{serviceName}/backups/{backupId}', pathParams: {serviceName: string, backupId: string}): Promise<OverTheBoxBackup>;
+  /**
+  List the overTheBox.Task objects
+  List of tasks scheduled for this service
+  **/
+  public get(path: '/overTheBox/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {name?: string, status?: OverTheBoxTaskStatusEnum}): Promise<string[]>;
+  /**
+  Task
+  Get this object properties
+  **/
+  public get(path: '/overTheBox/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: string}): Promise<OverTheBoxTask>;
   /**
   List the available offers for the new call
   List the available offers for the new call
   **/
-  public get(path: '/overTheBox/availableOffers', pathParams: null, queryParams: null): Promise<PriceOverTheBoxOfferEnum[]>;
-  public get(path: PathsoverTheBoxGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/overTheBox/availableOffers'): Promise<PriceOverTheBoxOfferEnum[]>;
+  public get(path: PathsOverTheBoxGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  /**
+  Service
+  Alter this object properties
+  **/
+  public put(path: '/overTheBox/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/overTheBox/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  /**
-  Service
-  Alter this object properties
-  **/
-  public put(path: '/overTheBox/{serviceName}', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathsoverTheBoxPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
-  /**
-  Get the list of devices connected from the same IP address
-  Get the list of devices connected from the same IP address
-  **/
-  public post(path: '/overTheBox/devices', pathParams: null, bodyParams: null): Promise<OverTheBoxDeviceForRegistration[]>;
-  /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
-  public post(path: '/overTheBox/{serviceName}/changeContact', pathParams: {serviceName?: string}, bodyParams: null): Promise<Number[]>;
-  /**
-  authorize operations
-  Authorize the remote access
-  **/
-  public post(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize', pathParams: {serviceName?: string, remoteAccessId?: string}, bodyParams: null): Promise<void>;
-  /**
-  List the overTheBox.RemoteAccess objects
-  Create a new remote access for the service
-  **/
-  public post(path: '/overTheBox/{serviceName}/remoteAccesses', pathParams: {serviceName?: string}, bodyParams: null): Promise<OverTheBoxRemoteAccess>;
-  /**
-  linkDevice operations
-  Link a device to this service
-  **/
-  public post(path: '/overTheBox/{serviceName}/linkDevice', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public put(path: '/overTheBox/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsOverTheBoxPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   cancelResiliation operations
   Cancel the resiliation of the Service
   **/
-  public post(path: '/overTheBox/{serviceName}/cancelResiliation', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public post(path: '/overTheBox/{serviceName}/cancelResiliation', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  linkDevice operations
+  Link a device to this service
+  **/
+  public post(path: '/overTheBox/{serviceName}/linkDevice', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  Change the contacts of this service
+  Launch a contact change procedure
+  **/
+  public post(path: '/overTheBox/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
   logs operations
   Generate a temporary url to retrieve device logs
   **/
-  public post(path: '/overTheBox/{serviceName}/device/logs', pathParams: {serviceName?: string}, bodyParams: null): Promise<OverTheBoxTemporaryLogsLink>;
-  /**
-  backup operations
-  Create an action to generate a backup
-  **/
-  public post(path: '/overTheBox/{serviceName}/device/backup', pathParams: {serviceName?: string}, bodyParams: null): Promise<OverTheBoxDeviceAction>;
-  /**
-  restoreBackup operations
-  Create a group of actions to restore a given backup
-  **/
-  public post(path: '/overTheBox/{serviceName}/device/restoreBackup', pathParams: {serviceName?: string}, bodyParams: null): Promise<OverTheBoxDeviceAction[]>;
+  public post(path: '/overTheBox/{serviceName}/device/logs', pathParams: {serviceName: string}): Promise<OverTheBoxTemporaryLogsLink>;
   /**
   List the overTheBox.DeviceAction objects
   Create a device action on the device
   **/
-  public post(path: '/overTheBox/{serviceName}/device/actions', pathParams: {serviceName?: string}, bodyParams: null): Promise<OverTheBoxDeviceAction>;
-  public post(path: PathsoverTheBoxPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/overTheBox/{serviceName}/device/actions', pathParams: {serviceName: string}): Promise<OverTheBoxDeviceAction>;
   /**
-  If authorized, a remote access will expose a port, allowing an access to the device remotely
-  Delete a remote access
+  restoreBackup operations
+  Create a group of actions to restore a given backup
   **/
-  public delete(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}', pathParams: {serviceName?: string, remoteAccessId?: string}, bodyParams: null): Promise<void>;
+  public post(path: '/overTheBox/{serviceName}/device/restoreBackup', pathParams: {serviceName: string}): Promise<OverTheBoxDeviceAction[]>;
+  /**
+  backup operations
+  Create an action to generate a backup
+  **/
+  public post(path: '/overTheBox/{serviceName}/device/backup', pathParams: {serviceName: string}): Promise<OverTheBoxDeviceAction>;
+  /**
+  List the overTheBox.RemoteAccess objects
+  Create a new remote access for the service
+  **/
+  public post(path: '/overTheBox/{serviceName}/remoteAccesses', pathParams: {serviceName: string}): Promise<OverTheBoxRemoteAccess>;
+  /**
+  authorize operations
+  Authorize the remote access
+  **/
+  public post(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize', pathParams: {serviceName: string, remoteAccessId: string}): Promise<void>;
+  /**
+  Get the list of devices connected from the same IP address
+  Get the list of devices connected from the same IP address
+  **/
+  public post(path: '/overTheBox/devices'): Promise<OverTheBoxDeviceForRegistration[]>;
+  public post(path: PathsOverTheBoxPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Service
   Resiliate a service
   **/
-  public delete(path: '/overTheBox/{serviceName}', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public delete(path: '/overTheBox/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
   /**
   Device
   Unlink a device from a service
   **/
-  public delete(path: '/overTheBox/{serviceName}/device', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public delete(path: PathsoverTheBoxDELETE, pathParams?: any, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/overTheBox/{serviceName}/device', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  If authorized, a remote access will expose a port, allowing an access to the device remotely
+  Delete a remote access
+  **/
+  public delete(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}', pathParams: {serviceName: string, remoteAccessId: string}): Promise<void>;
+  public delete(path: PathsOverTheBoxDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

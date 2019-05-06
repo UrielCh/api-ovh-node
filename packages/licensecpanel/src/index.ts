@@ -13,10 +13,10 @@ export type LicenseChangeIpMessageEnum = 'OK' | 'destinationNotAllowed' | 'licen
 export interface LicenseChangeIpStatus {
   /**
    */
-  success?: boolean;
+  message?: LicenseChangeIpMessageEnum;
   /**
    */
-  message?: LicenseChangeIpMessageEnum;
+  success?: boolean;
 }
 /**
  * The serviceTypes allowed to Order a CPanel version
@@ -24,10 +24,10 @@ export interface LicenseChangeIpStatus {
 export interface LicenseCpanelOrderConfiguration {
   /**
    */
-  serviceType?: LicenseLicenseTypeEnum;
+  orderableVersions?: LicenseOrderableCpanelCompatibilityInfos[];
   /**
    */
-  orderableVersions?: LicenseOrderableCpanelCompatibilityInfos[];
+  serviceType?: LicenseLicenseTypeEnum;
 }
 /**
  * All versions available for Cpanel products
@@ -58,21 +58,6 @@ export type LicenseStateEnum = 'ok' | 'released' | 'terminated' | 'toDeliver';
  */
 export interface LicenseTask {
   /**
-   * The last time this Task was updated
-   *
-   */
-  lastUpdate?: Date;
-  /**
-   * This Task name
-   *
-   */
-  name?: string;
-  /**
-   * When was this Task created
-   *
-   */
-  todoDate?: Date;
-  /**
    * This Task description
    *
    */
@@ -83,15 +68,30 @@ export interface LicenseTask {
    */
   doneDate?: Date;
   /**
-   * This Task id
+   * The last time this Task was updated
    *
    */
-  taskId?: Number;
+  lastUpdate?: Date;
+  /**
+   * This Task name
+   *
+   */
+  name?: string;
   /**
    * Current Taks status
    *
    */
   status?: LicenseTaskStateEnum;
+  /**
+   * This Task id
+   *
+   */
+  taskId?: Number;
+  /**
+   * When was this Task created
+   *
+   */
+  todoDate?: Date;
 }
 /**
  * All states a license Task can be in
@@ -102,70 +102,70 @@ export type LicenseTaskStateEnum = 'cancelled' | 'doing' | 'done' | 'error' | 't
  */
 export interface LicenseCpanelCpanel {
   /**
+   * This license creation date
+   *
+   */
+  creation?: Date;
+  /**
    * Shall we delete this on expiration ?
    *
    */
   deleteAtExpiration?: boolean;
-  /**
-   * The ip on which this license is attached
-   *
-   */
-  ip?: string;
   /**
    * The internal name of your license
    *
    */
   domain?: string;
   /**
+   * The ip on which this license is attached
+   *
+   */
+  ip?: string;
+  /**
    * The license id on license provider side
    *
    */
   licenseId?: string;
   /**
-   * This license version
-   *
-   */
-  version?: LicenseCpanelVersionEnum;
-  /**
-   * This license creation date
-   *
-   */
-  creation?: Date;
-  /**
    * This license state
    *
    */
   status?: LicenseStateEnum;
+  /**
+   * This license version
+   *
+   */
+  version?: LicenseCpanelVersionEnum;
 }
 /**
  * Map a possible renew for a specific service
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -188,31 +188,36 @@ export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PE
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
   /**
    */
-  engagedUpTo?: Date;
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  contactAdmin?: string;
+  contactTech?: string;
   /**
-   * All the possible renew period of your service in month
-   *
    */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -220,102 +225,100 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
   /**
    */
-  creation?: Date;
-  /**
-   */
   status?: ServiceStateEnum;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
 }
-type PathslicensecpanelGET = '/license/cpanel' | 
-'/license/cpanel/{serviceName}/allowedDestinationIp' | 
-'/license/cpanel/{serviceName}/serviceInfos' | 
+type PathsLicensecpanelGET = '/license/cpanel/{serviceName}/tasks/{taskId}' | 
 '/license/cpanel/{serviceName}/tasks' | 
-'/license/cpanel/{serviceName}/tasks/{taskId}' | 
+'/license/cpanel/{serviceName}/serviceInfos' | 
+'/license/cpanel/{serviceName}/allowedDestinationIp' | 
 '/license/cpanel/{serviceName}/canLicenseBeMovedTo' | 
 '/license/cpanel/{serviceName}' | 
+'/license/cpanel' | 
 '/license/cpanel/orderableVersions';
 
-type PathslicensecpanelPUT = '/license/cpanel/{serviceName}/serviceInfos' | 
+type PathsLicensecpanelPUT = '/license/cpanel/{serviceName}/serviceInfos' | 
 '/license/cpanel/{serviceName}';
 
-type PathslicensecpanelPOST = '/license/cpanel/{serviceName}/changeIp' | 
-'/license/cpanel/{serviceName}/confirmTermination' | 
-'/license/cpanel/{serviceName}/terminate';
+type PathsLicensecpanelPOST = '/license/cpanel/{serviceName}/terminate' | 
+'/license/cpanel/{serviceName}/changeIp' | 
+'/license/cpanel/{serviceName}/confirmTermination';
 
-class Apilicensecpanel extends ApiCommon {
-  /**
-  Operations about the LICENSE service
-  List available services
-  **/
-  public get(path: '/license/cpanel', pathParams: null, queryParams: null): Promise<string[]>;
-  /**
-  allowedDestinationIp operations
-  Returns an array of ips where the license can be moved to
-  **/
-  public get(path: '/license/cpanel/{serviceName}/allowedDestinationIp', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/license/cpanel/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  List the license.Task objects
-  tasks linked to this license
-  **/
-  public get(path: '/license/cpanel/{serviceName}/tasks', pathParams: {serviceName?: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
+export class ApiLicensecpanel extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   licenses Todos
   Get this object properties
   **/
-  public get(path: '/license/cpanel/{serviceName}/tasks/{taskId}', pathParams: {serviceName?: string, taskId?: Number}, queryParams: null): Promise<LicenseTask>;
+  public get(path: '/license/cpanel/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
+  /**
+  List the license.Task objects
+  tasks linked to this license
+  **/
+  public get(path: '/license/cpanel/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/license/cpanel/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  allowedDestinationIp operations
+  Returns an array of ips where the license can be moved to
+  **/
+  public get(path: '/license/cpanel/{serviceName}/allowedDestinationIp', pathParams: {serviceName: string}): Promise<string[]>;
   /**
   canLicenseBeMovedTo operations
   Will tell if the ip can accept the license
   **/
-  public get(path: '/license/cpanel/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName?: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  public get(path: '/license/cpanel/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
   /**
   Your Cpanel license
   Get this object properties
   **/
-  public get(path: '/license/cpanel/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<LicenseCpanelCpanel>;
+  public get(path: '/license/cpanel/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseCpanelCpanel>;
+  /**
+  Operations about the LICENSE service
+  List available services
+  **/
+  public get(path: '/license/cpanel'): Promise<string[]>;
   /**
   Get the orderable CPanel versions
   Get the orderable CPanel versions
   **/
   public get(path: '/license/cpanel/orderableVersions', pathParams: null, queryParams: {ip?: string}): Promise<LicenseCpanelOrderConfiguration[]>;
-  public get(path: PathslicensecpanelGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: PathsLicensecpanelGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/cpanel/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public put(path: '/license/cpanel/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
   Your Cpanel license
   Alter this object properties
   **/
-  public put(path: '/license/cpanel/{serviceName}', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathslicensecpanelPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/license/cpanel/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsLicensecpanelPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/license/cpanel/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
   /**
   changeIp operations
   Move this license to another Ip
   **/
-  public post(path: '/license/cpanel/{serviceName}/changeIp', pathParams: {serviceName?: string}, bodyParams: null): Promise<LicenseTask>;
+  public post(path: '/license/cpanel/{serviceName}/changeIp', pathParams: {serviceName: string}): Promise<LicenseTask>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/license/cpanel/{serviceName}/confirmTermination', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  /**
-  Terminate your service
-  Terminate your service
-  **/
-  public post(path: '/license/cpanel/{serviceName}/terminate', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  public post(path: PathslicensecpanelPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/license/cpanel/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: PathsLicensecpanelPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

@@ -14,210 +14,210 @@ export interface PartnerApplication {
  */
 export interface PartnerCompany {
   /**
-   * Company's zipCode
+   * OVH certification acquired
    *
    */
-  zipCode?: string;
-  /**
-   * Company's domain of competence
-   *
-   */
-  expertises?: PartnerExpertisesChoices;
-  /**
-   * Company's country
-   *
-   */
-  country?: string;
-  /**
-   * OVH's product the company's solutions relies on
-   *
-   */
-  OVHProductsUsed?: PartnerOVHProductsUsed;
-  /**
-   * Company's city
-   *
-   */
-  city?: string;
-  /**
-   * Company's summary
-   *
-   */
-  description?: string;
-  /**
-   * Estimation of the number of employees
-   *
-   */
-  employeesNumber?: string;
-  /**
-   * Company's linkedin profile url
-   *
-   */
-  linkedin?: string;
-  /**
-   * Certifications obtained from other enterprises
-   *
-   */
-  externalCertifications?: PartnerExternalCertifications;
-  /**
-   * Estimation of the revenue of the company
-   *
-   */
-  revenue?: string;
-  /**
-   * Company's twitter profile url
-   *
-   */
-  twitter?: string;
-  /**
-   * Kind of client the company target
-   *
-   */
-  clientKinds?: PartnerClientKinds;
+  OVHCertifications?: PartnerOVHCertifications;
   /**
    * Estimation of the number of accompanied customers in using OVH's solutions
    *
    */
   OVHCustomersAdvised?: string;
   /**
-   * Company's logo
-   *
-   */
-  logo?: string;
-  /**
-   * Company's email
-   *
-   */
-  email?: string;
-  /**
-   * The commercial name of the company
-   *
-   */
-  commercialName?: string;
-  /**
-   * In which country the company products of solutions are available
-   *
-   */
-  productCountries?: PartnerProductCountries;
-  /**
-   * Company's website
-   *
-   */
-  website?: string;
-  /**
-   * Company's street address
-   *
-   */
-  address?: string;
-  /**
-   * OVH certification acquired
-   *
-   */
-  OVHCertifications?: PartnerOVHCertifications;
-  /**
-   * Company's facebook profile url
-   *
-   */
-  facebook?: string;
-  /**
    * Estimation of the number of resources knowing OVH product the company has
    *
    */
   OVHKnowledgeResources?: string;
   /**
-   * Company's phone number
+   * OVH's product the company's solutions relies on
    *
    */
-  phone?: string;
-  /**
-   * Estimation of the number of expert resources for OVH solutions the company has
-   *
-   */
-  OVHTechnicalExpertResources?: string;
-  /**
-   * Company's registration number
-   *
-   */
-  registrationNumber?: string;
-  /**
-   * Company's sector of activity
-   *
-   */
-  activitySectors?: PartnerActivitySectors;
-  /**
-   * Name of the company
-   *
-   */
-  name?: string;
+  OVHProductsUsed?: PartnerOVHProductsUsed;
   /**
    * Estimation of the number of resources that have technical skills on OVH solutions the company has
    *
    */
   OVHTechnicalAdvancedResources?: string;
   /**
+   * Estimation of the number of expert resources for OVH solutions the company has
+   *
+   */
+  OVHTechnicalExpertResources?: string;
+  /**
+   * Company's sector of activity
+   *
+   */
+  activitySectors?: PartnerActivitySectors;
+  /**
+   * Company's street address
+   *
+   */
+  address?: string;
+  /**
+   * Company's city
+   *
+   */
+  city?: string;
+  /**
+   * Kind of client the company target
+   *
+   */
+  clientKinds?: PartnerClientKinds;
+  /**
+   * The commercial name of the company
+   *
+   */
+  commercialName?: string;
+  /**
+   * Company's country
+   *
+   */
+  country?: string;
+  /**
+   * Company's summary
+   *
+   */
+  description?: string;
+  /**
+   * Company's email
+   *
+   */
+  email?: string;
+  /**
+   * Estimation of the number of employees
+   *
+   */
+  employeesNumber?: string;
+  /**
+   * Company's domain of competence
+   *
+   */
+  expertises?: PartnerExpertisesChoices;
+  /**
+   * Certifications obtained from other enterprises
+   *
+   */
+  externalCertifications?: PartnerExternalCertifications;
+  /**
+   * Company's facebook profile url
+   *
+   */
+  facebook?: string;
+  /**
+   * Company's linkedin profile url
+   *
+   */
+  linkedin?: string;
+  /**
+   * Company's logo
+   *
+   */
+  logo?: string;
+  /**
+   * Name of the company
+   *
+   */
+  name?: string;
+  /**
    * How did you heard about the OVH's partnership program
    *
    */
   partnerKnowledges?: PartnerPartnerKnowledges;
   /**
+   * Company's phone number
+   *
+   */
+  phone?: string;
+  /**
+   * In which country the company products of solutions are available
+   *
+   */
+  productCountries?: PartnerProductCountries;
+  /**
+   * Company's registration number
+   *
+   */
+  registrationNumber?: string;
+  /**
+   * Estimation of the revenue of the company
+   *
+   */
+  revenue?: string;
+  /**
    * Registration status
    *
    */
   status?: PartnerCompanyStatusEnum;
+  /**
+   * Company's twitter profile url
+   *
+   */
+  twitter?: string;
+  /**
+   * Company's website
+   *
+   */
+  website?: string;
+  /**
+   * Company's zipCode
+   *
+   */
+  zipCode?: string;
 }
 /**
  * Partner contact
  */
 export interface PartnerContact {
   /**
-   * Contact's last name
+   * Contact's email
    *
    */
-  lastName?: string;
-  /**
-   * Newsletter subscription choice
-   *
-   */
-  newsletter?: string;
-  /**
-   * Contact's first name
-   *
-   */
-  firstName?: string;
-  /**
-   * Contact's twitter url
-   *
-   */
-  twitter?: string;
-  /**
-   * Contact's function in the company
-   *
-   */
-  role?: string;
-  /**
-   * Contact's phone number
-   *
-   */
-  phone?: string;
+  email?: string;
   /**
    * Contact's facebook url
    *
    */
   facebook?: string;
   /**
-   * List of nics to associate with this contact
+   * Contact's first name
    *
    */
-  otherNics?: string[];
+  firstName?: string;
+  /**
+   * Contact's last name
+   *
+   */
+  lastName?: string;
   /**
    * Contact's linkedin url
    *
    */
   linkedin?: string;
   /**
-   * Contact's email
+   * Newsletter subscription choice
    *
    */
-  email?: string;
+  newsletter?: string;
+  /**
+   * List of nics to associate with this contact
+   *
+   */
+  otherNics?: string[];
+  /**
+   * Contact's phone number
+   *
+   */
+  phone?: string;
+  /**
+   * Contact's function in the company
+   *
+   */
+  role?: string;
+  /**
+   * Contact's twitter url
+   *
+   */
+  twitter?: string;
 }
 /**
  * Partner Nic
@@ -234,20 +234,20 @@ export interface PartnerNic {
  */
 export interface PartnerOVHCertifications {
   /**
-   * Technical certification id
+   * Advanced certification id
    *
    */
-  technical?: string;
+  advanced?: string;
   /**
    * Business certification id
    *
    */
   business?: string;
   /**
-   * Advanced certification id
+   * Technical certification id
    *
    */
-  advanced?: string;
+  technical?: string;
 }
 /**
  * Possible choices for OVHCustomersAdvisedEnum
@@ -263,115 +263,115 @@ export interface PartnerOVHProductsUsed {
    */
   cloud?: PartnerOVHProductsUsedCloud;
   /**
-   * WEB solutions
+   * Mobile Hosting solutions
    *
    */
-  web?: PartnerOVHProductsUsedWeb;
+  mobileHosting?: PartnerOVHProductsUsedMobileHosting;
   /**
    * Telecom solutions
    *
    */
   telecom?: PartnerOVHProductsUsedTelecom;
   /**
-   * Mobile Hosting solutions
+   * WEB solutions
    *
    */
-  mobileHosting?: PartnerOVHProductsUsedMobileHosting;
+  web?: PartnerOVHProductsUsedWeb;
 }
 /**
  * Possible options for OVHProductsUsed_cloud
  */
 export interface PartnerOVHProductsUsedCloud {
   /**
-   * NAS
+   * Cloud Desktop
    *
    */
-  nas?: boolean;
-  /**
-   * Dedicated Serveurs
-   *
-   */
-  dedicated?: boolean;
-  /**
-   * VPS
-   *
-   */
-  vps?: boolean;
-  /**
-   * Private Cloud
-   *
-   */
-  privateCloud?: boolean;
-  /**
-   * vRack / vRack Connect
-   *
-   */
-  vrack?: boolean;
+  cloudDesktop?: boolean;
   /**
    * Cloud Desktop Infrastructure
    *
    */
   cloudDesktopInfrastructure?: boolean;
   /**
-   * Public Cloud
+   * Dedicated Serveurs
    *
    */
-  publicCloud?: boolean;
+  dedicated?: boolean;
   /**
-   * Cloud Desktop
+   * NAS
    *
    */
-  cloudDesktop?: boolean;
+  nas?: boolean;
   /**
    * Network and security solutions
    *
    */
   networkAndSecurity?: boolean;
+  /**
+   * Private Cloud
+   *
+   */
+  privateCloud?: boolean;
+  /**
+   * Public Cloud
+   *
+   */
+  publicCloud?: boolean;
+  /**
+   * VPS
+   *
+   */
+  vps?: boolean;
+  /**
+   * vRack / vRack Connect
+   *
+   */
+  vrack?: boolean;
 }
 /**
  * Possible ranges for OVHProductsUsed_mobileHosting
  */
 export interface PartnerOVHProductsUsedMobileHosting {
   /**
-   * Metrics Data Platforms
-   *
-   */
-  metrics?: boolean;
-  /**
    * Logs Data Platforms
    *
    */
   logs?: boolean;
+  /**
+   * Metrics Data Platforms
+   *
+   */
+  metrics?: boolean;
 }
 /**
  * Possible ranges for OVHProductsUsed_telecom
  */
 export interface PartnerOVHProductsUsedTelecom {
   /**
-   * OverTheBox
+   * ADSL / SDSL
    *
    */
-  overTheBox?: boolean;
-  /**
-   * VoIP
-   *
-   */
-  voip?: boolean;
-  /**
-   * SMS
-   *
-   */
-  sms?: boolean;
+  dsl?: boolean;
   /**
    * Fax
    *
    */
   fax?: boolean;
   /**
-   * ADSL / SDSL
+   * OverTheBox
    *
    */
-  dsl?: boolean;
+  overTheBox?: boolean;
+  /**
+   * SMS
+   *
+   */
+  sms?: boolean;
+  /**
+   * VoIP
+   *
+   */
+  voip?: boolean;
 }
 /**
  * Possible ranges for OVHProductsUsed_web
@@ -383,16 +383,6 @@ export interface PartnerOVHProductsUsedWeb {
    */
   domainName?: boolean;
   /**
-   * Microsoft Sharepoint 2016
-   *
-   */
-  sharepoint?: boolean;
-  /**
-   * Web Hosting
-   *
-   */
-  webHosting?: boolean;
-  /**
    * Microsoft Exchange 2016
    *
    */
@@ -402,126 +392,136 @@ export interface PartnerOVHProductsUsedWeb {
    *
    */
   office?: boolean;
+  /**
+   * Microsoft Sharepoint 2016
+   *
+   */
+  sharepoint?: boolean;
+  /**
+   * Web Hosting
+   *
+   */
+  webHosting?: boolean;
 }
 /**
  * Possible choices for activitySectors
  */
 export interface PartnerActivitySectors {
   /**
-   * Other (specify)
-   *
-   */
-  other?: string;
-  /**
-   * Reseller of IT / Telecom services
-   *
-   */
-  resellerITOrTelecom?: boolean;
-  /**
-   * Digital Services Companies
-   *
-   */
-  digitalServicesCompanies?: boolean;
-  /**
-   * Health
-   *
-   */
-  health?: boolean;
-  /**
-   * Software editor
-   *
-   */
-  softwareEditor?: boolean;
-  /**
-   * Public Sector / Education
-   *
-   */
-  publicSectorOrEducation?: boolean;
-  /**
    * Bank / Insurance / Finance
    *
    */
   bankInsuranceFinance?: boolean;
-  /**
-   * Communication / Media
-   *
-   */
-  communicationOrMedia?: boolean;
-  /**
-   * Video games / Online games
-   *
-   */
-  videoGames?: boolean;
-  /**
-   * Other IT / Telecom professions
-   *
-   */
-  otherITOrTelecom?: boolean;
-  /**
-   * Web Agency
-   *
-   */
-  webAgency?: boolean;
-  /**
-   * E-commerce
-   *
-   */
-  ecommerce?: boolean;
   /**
    * Business Services / Individuals
    *
    */
   businessServiceOrIndividuals?: boolean;
   /**
-   * Trade / Trading / Distribution
+   * Communication / Media
    *
    */
-  tradeTradingDistribution?: boolean;
+  communicationOrMedia?: boolean;
+  /**
+   * Digital Services Companies
+   *
+   */
+  digitalServicesCompanies?: boolean;
+  /**
+   * E-commerce
+   *
+   */
+  ecommerce?: boolean;
+  /**
+   * Health
+   *
+   */
+  health?: boolean;
   /**
    * Industry / Transportation / Energy
    *
    */
   industryTransportationEnegy?: boolean;
-}
-/**
- * Possible choices for clientKinds
- */
-export interface PartnerClientKinds {
-  /**
-   * Medium Business
-   *
-   */
-  mediumBusiness?: boolean;
-  /**
-   * Public Sector
-   *
-   */
-  publicSector?: boolean;
   /**
    * Other (specify)
    *
    */
   other?: string;
   /**
-   * Individual
+   * Other IT / Telecom professions
    *
    */
-  individual?: boolean;
+  otherITOrTelecom?: boolean;
   /**
-   * Startup
+   * Public Sector / Education
    *
    */
-  startup?: boolean;
+  publicSectorOrEducation?: boolean;
+  /**
+   * Reseller of IT / Telecom services
+   *
+   */
+  resellerITOrTelecom?: boolean;
+  /**
+   * Software editor
+   *
+   */
+  softwareEditor?: boolean;
+  /**
+   * Trade / Trading / Distribution
+   *
+   */
+  tradeTradingDistribution?: boolean;
+  /**
+   * Video games / Online games
+   *
+   */
+  videoGames?: boolean;
+  /**
+   * Web Agency
+   *
+   */
+  webAgency?: boolean;
+}
+/**
+ * Possible choices for clientKinds
+ */
+export interface PartnerClientKinds {
   /**
    * Associations
    *
    */
   association?: boolean;
   /**
+   * Individual
+   *
+   */
+  individual?: boolean;
+  /**
    * Large Group
    *
    */
   largeGroup?: boolean;
+  /**
+   * Medium Business
+   *
+   */
+  mediumBusiness?: boolean;
+  /**
+   * Other (specify)
+   *
+   */
+  other?: string;
+  /**
+   * Public Sector
+   *
+   */
+  publicSector?: boolean;
+  /**
+   * Startup
+   *
+   */
+  startup?: boolean;
 }
 /**
  * Possible choices for companyStatusEnum
@@ -536,50 +536,50 @@ export type PartnerEmployeesNumberEnum = 'from1To10' | 'from11To50' | 'from51To1
  */
 export interface PartnerExpertisesChoices {
   /**
-   * Outsourcing And Maintenance
-   *
-   */
-  outsourcingAndMaintenance?: PartnerExpertisesChoicesOutsourcingAndMaintenance;
-  /**
    * Consulting
    *
    */
   consulting?: PartnerExpertisesChoicesConsulting;
   /**
-   * Software And Development
-   *
-   */
-  softwareAndDevelopment?: PartnerExpertisesChoicesSoftwareAndDevelopment;
-  /**
    * Installation and integration
    *
    */
   installationAndIntegration?: PartnerExpertisesChoicesInstallationAndIntegration;
+  /**
+   * Outsourcing And Maintenance
+   *
+   */
+  outsourcingAndMaintenance?: PartnerExpertisesChoicesOutsourcingAndMaintenance;
+  /**
+   * Software And Development
+   *
+   */
+  softwareAndDevelopment?: PartnerExpertisesChoicesSoftwareAndDevelopment;
 }
 /**
  * Possible options for consulting expertises
  */
 export interface PartnerExpertisesChoicesConsulting {
   /**
-   * Audit and Consulting
-   *
-   */
-  auditAndConsulting?: boolean;
-  /**
-   * Marketing, Commerce and Communication
-   *
-   */
-  marketingCommerceAndCommunication?: boolean;
-  /**
    * IT security
    *
    */
   ITSecurity?: boolean;
   /**
+   * Audit and Consulting
+   *
+   */
+  auditAndConsulting?: boolean;
+  /**
    * Infrastructure Architecture
    *
    */
   infrastructureArchitecture?: boolean;
+  /**
+   * Marketing, Commerce and Communication
+   *
+   */
+  marketingCommerceAndCommunication?: boolean;
   /**
    * SEO-SEA Search Engine Optimization
    *
@@ -591,35 +591,30 @@ export interface PartnerExpertisesChoicesConsulting {
  */
 export interface PartnerExpertisesChoicesInstallationAndIntegration {
   /**
-   * Installation and integration of network equipment
-   *
-   */
-  networkEquipment?: boolean;
-  /**
-   * Installation and integration of telecom equipment and infrastructure
-   *
-   */
-  telecomEquipmentAndInfrastructure?: boolean;
-  /**
    * Cloud infrastructure installation and integration
    *
    */
   cloudInfrastructure?: boolean;
   /**
+   * Installation and integration of network equipment
+   *
+   */
+  networkEquipment?: boolean;
+  /**
    * Installation and integration of peripherals and mobility solutions
    *
    */
   peripheralsAndMobilitySolutions?: boolean;
+  /**
+   * Installation and integration of telecom equipment and infrastructure
+   *
+   */
+  telecomEquipmentAndInfrastructure?: boolean;
 }
 /**
  * Possible options for outsourcing and maintenance expertises
  */
 export interface PartnerExpertisesChoicesOutsourcingAndMaintenance {
-  /**
-   * Outsourcing
-   *
-   */
-  outsourcing?: boolean;
   /**
    * Computer support
    *
@@ -630,11 +625,26 @@ export interface PartnerExpertisesChoicesOutsourcingAndMaintenance {
    *
    */
   maintenanceOfNetworkEquipment?: boolean;
+  /**
+   * Outsourcing
+   *
+   */
+  outsourcing?: boolean;
 }
 /**
  * Possible options for software and development expertises
  */
 export interface PartnerExpertisesChoicesSoftwareAndDevelopment {
+  /**
+   * Advice and expertises
+   *
+   */
+  adviceAndexpertises?: boolean;
+  /**
+   * Maintenance / Application Management
+   *
+   */
+  maintenanceOrApplicationManagement?: boolean;
   /**
    * Installation and integration of network equipment
    *
@@ -645,21 +655,31 @@ export interface PartnerExpertisesChoicesSoftwareAndDevelopment {
    *
    */
   softwareSolutions?: boolean;
-  /**
-   * Maintenance / Application Management
-   *
-   */
-  maintenanceOrApplicationManagement?: boolean;
-  /**
-   * Advice and expertises
-   *
-   */
-  adviceAndexpertises?: boolean;
 }
 /**
  * Possible choices for externalCertifications
  */
 export interface PartnerExternalCertifications {
+  /**
+   * AWS
+   *
+   */
+  aws?: boolean;
+  /**
+   * Cisco
+   *
+   */
+  cisco?: boolean;
+  /**
+   * Intel
+   *
+   */
+  intel?: boolean;
+  /**
+   * Microsoft
+   *
+   */
+  microsoft?: boolean;
   /**
    * Other (specify)
    *
@@ -670,26 +690,6 @@ export interface PartnerExternalCertifications {
    *
    */
   vmware?: boolean;
-  /**
-   * Microsoft
-   *
-   */
-  microsoft?: boolean;
-  /**
-   * AWS
-   *
-   */
-  aws?: boolean;
-  /**
-   * Intel
-   *
-   */
-  intel?: boolean;
-  /**
-   * Cisco
-   *
-   */
-  cisco?: boolean;
 }
 /**
  * Possible ranges for knowledgeResources
@@ -700,15 +700,20 @@ export type PartnerKnowledgeResourcesRangeEnum = 'none' | 'from1To3' | 'from4To1
  */
 export interface PartnerPartnerKnowledges {
   /**
+   * Events
+   *
+   */
+  events?: boolean;
+  /**
    * Forum
    *
    */
   forum?: boolean;
   /**
-   * OVH website
+   * Media
    *
    */
-  website?: boolean;
+  media?: boolean;
   /**
    * Other (specify)
    *
@@ -720,45 +725,85 @@ export interface PartnerPartnerKnowledges {
    */
   searchEngine?: boolean;
   /**
-   * Media
-   *
-   */
-  media?: boolean;
-  /**
    * Social Networks
    *
    */
   socialNetwork?: boolean;
   /**
-   * Events
+   * OVH website
    *
    */
-  events?: boolean;
+  website?: boolean;
 }
 /**
  * Possible choices for productCountries
  */
 export interface PartnerProductCountries {
   /**
-   * Spain
+   * Australia
    *
    */
-  spain?: boolean;
-  /**
-   * Other (specify)
-   *
-   */
-  other?: string;
+  australia?: boolean;
   /**
    * Brazil
    *
    */
   brazil?: boolean;
   /**
+   * Canada
+   *
+   */
+  canada?: boolean;
+  /**
+   * Czech republic
+   *
+   */
+  czechRepublic?: boolean;
+  /**
+   * Finland
+   *
+   */
+  finland?: boolean;
+  /**
+   * France
+   *
+   */
+  france?: boolean;
+  /**
    * Germany
    *
    */
   germany?: boolean;
+  /**
+   * Ireland
+   *
+   */
+  ireland?: boolean;
+  /**
+   * Italy
+   *
+   */
+  italy?: boolean;
+  /**
+   * Lithuania
+   *
+   */
+  lithuania?: boolean;
+  /**
+   * Morocco
+   *
+   */
+  morocco?: boolean;
+  /**
+   * Netherlands
+   *
+   */
+  netherlands?: boolean;
+  /**
+   * Other (specify)
+   *
+   */
+  other?: string;
   /**
    * Poland
    *
@@ -770,21 +815,6 @@ export interface PartnerProductCountries {
    */
   portugal?: boolean;
   /**
-   * Netherlands
-   *
-   */
-  netherlands?: boolean;
-  /**
-   * Lithuania
-   *
-   */
-  lithuania?: boolean;
-  /**
-   * Australia
-   *
-   */
-  australia?: boolean;
-  /**
    * Senegal
    *
    */
@@ -795,50 +825,20 @@ export interface PartnerProductCountries {
    */
   singapore?: boolean;
   /**
-   * Canada
+   * Spain
    *
    */
-  canada?: boolean;
-  /**
-   * UK
-   *
-   */
-  uk?: boolean;
+  spain?: boolean;
   /**
    * Tunisia
    *
    */
   tunisia?: boolean;
   /**
-   * France
+   * UK
    *
    */
-  france?: boolean;
-  /**
-   * Czech republic
-   *
-   */
-  czechRepublic?: boolean;
-  /**
-   * Morocco
-   *
-   */
-  morocco?: boolean;
-  /**
-   * Italy
-   *
-   */
-  italy?: boolean;
-  /**
-   * Finland
-   *
-   */
-  finland?: boolean;
-  /**
-   * Ireland
-   *
-   */
-  ireland?: boolean;
+  uk?: boolean;
 }
 /**
  * Possible ranges for revenue
@@ -856,85 +856,88 @@ export type PartnerTechnicalExpertResourcesRangeEnum = 'none' | 'from1To3' | 'fr
  * Countries a nichandle can choose
  */
 export type NichandleCountryEnum = 'AC' | 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL' | 'AM' | 'AO' | 'AQ' | 'AR' | 'AS' | 'AT' | 'AU' | 'AW' | 'AX' | 'AZ' | 'BA' | 'BB' | 'BD' | 'BE' | 'BF' | 'BG' | 'BH' | 'BI' | 'BJ' | 'BL' | 'BM' | 'BN' | 'BO' | 'BQ' | 'BR' | 'BS' | 'BT' | 'BW' | 'BY' | 'BZ' | 'CA' | 'CC' | 'CD' | 'CF' | 'CG' | 'CH' | 'CI' | 'CK' | 'CL' | 'CM' | 'CN' | 'CO' | 'CR' | 'CU' | 'CV' | 'CW' | 'CX' | 'CY' | 'CZ' | 'DE' | 'DG' | 'DJ' | 'DK' | 'DM' | 'DO' | 'DZ' | 'EA' | 'EC' | 'EE' | 'EG' | 'EH' | 'ER' | 'ES' | 'ET' | 'FI' | 'FJ' | 'FK' | 'FM' | 'FO' | 'FR' | 'GA' | 'GB' | 'GD' | 'GE' | 'GF' | 'GG' | 'GH' | 'GI' | 'GL' | 'GM' | 'GN' | 'GP' | 'GQ' | 'GR' | 'GS' | 'GT' | 'GU' | 'GW' | 'GY' | 'HK' | 'HN' | 'HR' | 'HT' | 'HU' | 'IC' | 'ID' | 'IE' | 'IL' | 'IM' | 'IN' | 'IO' | 'IQ' | 'IR' | 'IS' | 'IT' | 'JE' | 'JM' | 'JO' | 'JP' | 'KE' | 'KG' | 'KH' | 'KI' | 'KM' | 'KN' | 'KP' | 'KR' | 'KW' | 'KY' | 'KZ' | 'LA' | 'LB' | 'LC' | 'LI' | 'LK' | 'LR' | 'LS' | 'LT' | 'LU' | 'LV' | 'LY' | 'MA' | 'MC' | 'MD' | 'ME' | 'MF' | 'MG' | 'MH' | 'MK' | 'ML' | 'MM' | 'MN' | 'MO' | 'MP' | 'MQ' | 'MR' | 'MS' | 'MT' | 'MU' | 'MV' | 'MW' | 'MX' | 'MY' | 'MZ' | 'NA' | 'NC' | 'NE' | 'NF' | 'NG' | 'NI' | 'NL' | 'NO' | 'NP' | 'NR' | 'NU' | 'NZ' | 'OM' | 'PA' | 'PE' | 'PF' | 'PG' | 'PH' | 'PK' | 'PL' | 'PM' | 'PN' | 'PR' | 'PS' | 'PT' | 'PW' | 'PY' | 'QA' | 'RE' | 'RO' | 'RS' | 'RU' | 'RW' | 'SA' | 'SB' | 'SC' | 'SD' | 'SE' | 'SG' | 'SH' | 'SI' | 'SJ' | 'SK' | 'SL' | 'SM' | 'SN' | 'SO' | 'SR' | 'SS' | 'ST' | 'SV' | 'SX' | 'SY' | 'SZ' | 'TA' | 'TC' | 'TD' | 'TF' | 'TG' | 'TH' | 'TJ' | 'TK' | 'TL' | 'TM' | 'TN' | 'TO' | 'TR' | 'TT' | 'TV' | 'TW' | 'TZ' | 'UA' | 'UG' | 'UM' | 'UNKNOWN' | 'US' | 'UY' | 'UZ' | 'VA' | 'VC' | 'VE' | 'VG' | 'VI' | 'VN' | 'VU' | 'WF' | 'WS' | 'XK' | 'YE' | 'YT' | 'ZA' | 'ZM' | 'ZW';
-type PathspartnersGET = '/partners/register/company/{companyId}/contact/{contactId}' | 
+type PathsPartnersGET = '/partners/register/company' | 
 '/partners/register/company/{companyId}/contact' | 
-'/partners/register/company/{companyId}/application' | 
+'/partners/register/company/{companyId}/contact/{contactId}' | 
 '/partners/register/company/{companyId}' | 
-'/partners/register/company';
+'/partners/register/company/{companyId}/application';
 
-type PathspartnersPUT = '/partners/register/company/{companyId}/contact/{contactId}' | 
+type PathsPartnersPUT = '/partners/register/company/{companyId}/contact/{contactId}' | 
 '/partners/register/company/{companyId}';
 
-type PathspartnersPOST = '/partners/register/company/{companyId}/contact' | 
-'/partners/register/company/{companyId}/application' | 
-'/partners/register/company';
+type PathsPartnersPOST = '/partners/register/company' | 
+'/partners/register/company/{companyId}/contact' | 
+'/partners/register/company/{companyId}/application';
 
-type PathspartnersDELETE = '/partners/register/company/{companyId}/contact/{contactId}' | 
+type PathsPartnersDELETE = '/partners/register/company/{companyId}/contact/{contactId}' | 
 '/partners/register/company/{companyId}';
 
-class Apipartners extends ApiCommon {
-  /**
-  Contact.get
-  Get information on a created contact
-  **/
-  public get(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId?: string, contactId?: string}, queryParams: null): Promise<PartnerContact>;
-  /**
-  Contact.list
-  List created contacts
-  **/
-  public get(path: '/partners/register/company/{companyId}/contact', pathParams: {companyId?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Application.create
-  Compute scoring score without submitting application
-  **/
-  public get(path: '/partners/register/company/{companyId}/application', pathParams: {companyId?: string}, queryParams: null): Promise<PartnerApplication>;
-  /**
-  Company.get
-  Get information on a created company
-  **/
-  public get(path: '/partners/register/company/{companyId}', pathParams: {companyId?: string}, queryParams: null): Promise<PartnerCompany>;
+export class ApiPartners extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Company.list
   List created companies
   **/
-  public get(path: '/partners/register/company', pathParams: null, queryParams: null): Promise<string[]>;
-  public get(path: PathspartnersGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/partners/register/company'): Promise<string[]>;
+  /**
+  Contact.list
+  List created contacts
+  **/
+  public get(path: '/partners/register/company/{companyId}/contact', pathParams: {companyId: string}): Promise<string[]>;
+  /**
+  Contact.get
+  Get information on a created contact
+  **/
+  public get(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<PartnerContact>;
+  /**
+  Company.get
+  Get information on a created company
+  **/
+  public get(path: '/partners/register/company/{companyId}', pathParams: {companyId: string}): Promise<PartnerCompany>;
+  /**
+  Application.create
+  Compute scoring score without submitting application
+  **/
+  public get(path: '/partners/register/company/{companyId}/application', pathParams: {companyId: string}): Promise<PartnerApplication>;
+  public get(path: PathsPartnersGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Contact.get
   Update some fields on a created contact
   **/
-  public put(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId?: string, contactId?: string}, bodyParams: null): Promise<PartnerContact>;
+  public put(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<PartnerContact>;
   /**
   Company.get
   Update some fields on a created company
   **/
-  public put(path: '/partners/register/company/{companyId}', pathParams: {companyId?: string}, bodyParams: null): Promise<PartnerCompany>;
-  public put(path: PathspartnersPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
-  /**
-  Contact.list
-  Created a new contact for the inscription
-  **/
-  public post(path: '/partners/register/company/{companyId}/contact', pathParams: {companyId?: string}, bodyParams: null): Promise<PartnerContact>;
-  /**
-  Application.create
-  Submit application information for validation
-  **/
-  public post(path: '/partners/register/company/{companyId}/application', pathParams: {companyId?: string}, bodyParams: null): Promise<PartnerApplication>;
+  public put(path: '/partners/register/company/{companyId}', pathParams: {companyId: string}): Promise<PartnerCompany>;
+  public put(path: PathsPartnersPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Company.list
   Created a new company for the inscription
   **/
-  public post(path: '/partners/register/company', pathParams: null, bodyParams: null): Promise<PartnerCompany>;
-  public post(path: PathspartnersPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/partners/register/company'): Promise<PartnerCompany>;
+  /**
+  Contact.list
+  Created a new contact for the inscription
+  **/
+  public post(path: '/partners/register/company/{companyId}/contact', pathParams: {companyId: string}): Promise<PartnerContact>;
+  /**
+  Application.create
+  Submit application information for validation
+  **/
+  public post(path: '/partners/register/company/{companyId}/application', pathParams: {companyId: string}): Promise<PartnerApplication>;
+  public post(path: PathsPartnersPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Contact.get
   Remove a contact
   **/
-  public delete(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId?: string, contactId?: string}, bodyParams: null): Promise<string>;
+  public delete(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<string>;
   /**
   Company.get
   Remove a company
   **/
-  public delete(path: '/partners/register/company/{companyId}', pathParams: {companyId?: string}, bodyParams: null): Promise<string>;
-  public delete(path: PathspartnersDELETE, pathParams?: any, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/partners/register/company/{companyId}', pathParams: {companyId: string}): Promise<string>;
+  public delete(path: PathsPartnersDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

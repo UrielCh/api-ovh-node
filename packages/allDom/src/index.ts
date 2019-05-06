@@ -4,15 +4,15 @@ import { ApiCommon } from '@ovh-api/common';
  */
 export interface AllDomAllDom {
   /**
-   * Offer of the allDom
-   *
-   */
-  offer?: DomainOfferEnum;
-  /**
    * Name of the allDom
    *
    */
   name?: string;
+  /**
+   * Offer of the allDom
+   *
+   */
+  offer?: DomainOfferEnum;
   /**
    * Type of the allDom
    *
@@ -42,30 +42,30 @@ export type DomainOfferEnum = 'diamond' | 'gold' | 'platinum';
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -80,31 +80,36 @@ export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' |
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
   /**
    */
-  engagedUpTo?: Date;
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  contactAdmin?: string;
+  contactTech?: string;
   /**
-   * All the possible renew period of your service in month
-   *
    */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -112,58 +117,56 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
   /**
    */
-  creation?: Date;
-  /**
-   */
   status?: ServiceStateEnum;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
 }
-type PathsallDomGET = '/allDom/{serviceName}/serviceInfos' | 
-'/allDom/{serviceName}' | 
-'/allDom/{serviceName}/domain/{domain}' | 
+type PathsAllDomGET = '/allDom' | 
 '/allDom/{serviceName}/domain' | 
-'/allDom';
+'/allDom/{serviceName}/domain/{domain}' | 
+'/allDom/{serviceName}' | 
+'/allDom/{serviceName}/serviceInfos';
 
-type PathsallDomPUT = '/allDom/{serviceName}/serviceInfos';
+type PathsAllDomPUT = '/allDom/{serviceName}/serviceInfos';
 
-class ApiallDom extends ApiCommon {
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/allDom/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  AllDom administration
-  Get this object properties
-  **/
-  public get(path: '/allDom/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<AllDomAllDom>;
-  /**
-  Domain name of a allDom
-  Get this object properties
-  **/
-  public get(path: '/allDom/{serviceName}/domain/{domain}', pathParams: {serviceName?: string, domain?: string}, queryParams: null): Promise<AllDomAllDomDomain>;
-  /**
-  List the allDom.AllDomDomain objects
-  Domains attached to this allDom
-  **/
-  public get(path: '/allDom/{serviceName}/domain', pathParams: {serviceName?: string}, queryParams: {domain?: string}): Promise<string[]>;
+export class ApiAllDom extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Operations about the ALLDOM service
   List available services
   **/
-  public get(path: '/allDom', pathParams: null, queryParams: null): Promise<string[]>;
-  public get(path: PathsallDomGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/allDom'): Promise<string[]>;
+  /**
+  List the allDom.AllDomDomain objects
+  Domains attached to this allDom
+  **/
+  public get(path: '/allDom/{serviceName}/domain', pathParams: {serviceName: string}, queryParams: {domain?: string}): Promise<string[]>;
+  /**
+  Domain name of a allDom
+  Get this object properties
+  **/
+  public get(path: '/allDom/{serviceName}/domain/{domain}', pathParams: {serviceName: string, domain: string}): Promise<AllDomAllDomDomain>;
+  /**
+  AllDom administration
+  Get this object properties
+  **/
+  public get(path: '/allDom/{serviceName}', pathParams: {serviceName: string}): Promise<AllDomAllDom>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/allDom/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: PathsAllDomGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/allDom/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathsallDomPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/allDom/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsAllDomPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
 }

@@ -16,10 +16,10 @@ export interface ComplexTypeChartReturn {
 export interface ComplexTypeChartTimestampValue {
   /**
    */
-  value?: Number;
+  timestamp?: Number;
   /**
    */
-  timestamp?: Number;
+  value?: Number;
 }
 /**
  * A numeric value tagged with its unit
@@ -46,60 +46,25 @@ export interface DedicatedAvailabilities {
    */
   datacenters?: DedicatedAvailabilityDatacenter[];
   /**
-   * Region where is located the hardware
-   *
-   */
-  region?: DedicatedAvailabilityRegionEnum;
-  /**
    * Name of the hardware
    *
    */
   hardware?: string;
+  /**
+   * Region where is located the hardware
+   *
+   */
+  region?: DedicatedAvailabilityRegionEnum;
 }
 /**
  * A structure describing the availabilities of dedicated server
  */
 export interface DedicatedAvailabilitiesRaw {
   /**
-   * Last availability rule applied
+   * The availability
    *
    */
-  lastRule?: string;
-  /**
-   * Product reference
-   *
-   */
-  reference?: string;
-  /**
-   * Ordered count
-   *
-   */
-  ordered?: Number;
-  /**
-   * 4H count
-   *
-   */
-  trueAvailable4H?: Number;
-  /**
-   * Validating order count
-   *
-   */
-  orderedCheck?: Number;
-  /**
-   * 24H count
-   *
-   */
-  trueAvailable24H?: Number;
-  /**
-   * Region where is located the product
-   *
-   */
-  zone?: DedicatedAvailabilityRegionEnum;
-  /**
-   * Real stock (considering order in validating)
-   *
-   */
-  trueAvailable?: Number;
+  availability?: DedicatedAvailabilityEnum;
   /**
    * Real stock in database
    *
@@ -111,30 +76,65 @@ export interface DedicatedAvailabilitiesRaw {
    */
   incomingDatacenter?: Number;
   /**
+   * Last availability rule applied
+   *
+   */
+  lastRule?: string;
+  /**
+   * Ordered count
+   *
+   */
+  ordered?: Number;
+  /**
+   * Validating order count
+   *
+   */
+  orderedCheck?: Number;
+  /**
    * Blockbuster stock count
    *
    */
   parentAvailable?: Number;
   /**
-   * The availability
+   * Product reference
    *
    */
-  availability?: DedicatedAvailabilityEnum;
+  reference?: string;
+  /**
+   * Real stock (considering order in validating)
+   *
+   */
+  trueAvailable?: Number;
+  /**
+   * 24H count
+   *
+   */
+  trueAvailable24H?: Number;
+  /**
+   * 4H count
+   *
+   */
+  trueAvailable4H?: Number;
+  /**
+   * Region where is located the product
+   *
+   */
+  zone?: DedicatedAvailabilityRegionEnum;
 }
 /**
  * A structure describing the hardware availability for each datacenter
  */
 export interface DedicatedAvailabilityDatacenter {
   /**
-   * Datacenter code
-   *
-   */
-  datacenter?: DedicatedAvailabilityDatacenterEnum;
-  /**
    * Availability status
    *
    */
   availability?: DedicatedAvailabilityEnum;
+  /**
+   * Datacenter code
+   *
+   */
+  datacenter?: DedicatedAvailabilityDatacenterEnum;
 }
 /**
  * The datacenter
@@ -153,6 +153,11 @@ export type DedicatedAvailabilityRegionEnum = 'europe' | 'northAmerica';
  */
 export interface DedicatedBinaryFirewall {
   /**
+   * List of compatible asa binaries names
+   *
+   */
+  asa?: string[];
+  /**
    * List of compatible asdm binaries names
    *
    */
@@ -160,11 +165,6 @@ export interface DedicatedBinaryFirewall {
   /**
    */
   type?: DedicatedProfileFirewallEnum;
-  /**
-   * List of compatible asa binaries names
-   *
-   */
-  asa?: string[];
 }
 /**
  * Get temporary URL link to download binary
@@ -186,11 +186,6 @@ export interface DedicatedDatacenterAvailability {
    */
   datacenters?: DedicatedAvailabilityDatacenter[];
   /**
-   * Name of the base hardware
-   *
-   */
-  server?: string;
-  /**
    * Fully qualified and unique name of the hardware
    *
    */
@@ -201,15 +196,20 @@ export interface DedicatedDatacenterAvailability {
    */
   memory?: string;
   /**
-   * Name of the storage hardware part
-   *
-   */
-  storage?: string;
-  /**
    * Plan code in which the hardware is involved
    *
    */
   planCode?: string;
+  /**
+   * Name of the base hardware
+   *
+   */
+  server?: string;
+  /**
+   * Name of the storage hardware part
+   *
+   */
+  storage?: string;
 }
 /**
  * ovh datacenter
@@ -269,15 +269,15 @@ export interface DedicatedServerAccess {
    */
   type?: DedicatedServerAccessTypeEnum;
   /**
-   * Login
-   *
-   */
-  user?: string;
-  /**
    * Url
    *
    */
   url?: string;
+  /**
+   * Login
+   *
+   */
+  user?: string;
 }
 /**
  * Application access type
@@ -302,50 +302,55 @@ export interface DedicatedServerBackupCloud {
    */
   archive?: DedicatedServerBackupBackupContainer;
   /**
-   * Storage space info.
-   *
-   */
-  storage?: DedicatedServerBackupBackupContainer;
-  /**
    * Status of the container.
    *
    */
   status?: DedicatedServerBackupBackupStatus;
+  /**
+   * Storage space info.
+   *
+   */
+  storage?: DedicatedServerBackupBackupContainer;
 }
 /**
  * Backup Ftp assigned to this server
  */
 export interface DedicatedServerBackupFtp {
   /**
-   * If not-null, gives the date since when your account was set in read-only mode because the quota was exceeded
+   * The backup FTP server name
    *
    */
-  readOnlyDate?: Date;
+  ftpBackupName?: string;
   /**
    * The disk space available in gigabytes
    *
    */
   quota?: ComplexTypeUnitAndValue<Number>;
   /**
-   * The disk space currently used on your backup FTP in percent
+   * If not-null, gives the date since when your account was set in read-only mode because the quota was exceeded
    *
    */
-  usage?: ComplexTypeUnitAndValue<Number>;
-  /**
-   * The backup FTP server name
-   *
-   */
-  ftpBackupName?: string;
+  readOnlyDate?: Date;
   /**
    * The backup FTP type
    *
    */
   type?: DedicatedServerBackupStorageTypeEnum;
+  /**
+   * The disk space currently used on your backup FTP in percent
+   *
+   */
+  usage?: ComplexTypeUnitAndValue<Number>;
 }
 /**
  * Backup Ftp ACL for this server and Backup Ftp
  */
 export interface DedicatedServerBackupFtpAcl {
+  /**
+   * Wether to allow the CIFS (SMB) protocol for this ACL
+   *
+   */
+  cifs?: boolean;
   /**
    * Wether to allow the FTP protocol for this ACL
    *
@@ -357,25 +362,20 @@ export interface DedicatedServerBackupFtpAcl {
    */
   ipBlock?: string;
   /**
-   * Date of the last object modification
-   *
-   */
-  lastUpdate?: Date;
-  /**
    * Whether the rule has been applied on the Backup Ftp
    *
    */
   isApplied?: boolean;
   /**
+   * Date of the last object modification
+   *
+   */
+  lastUpdate?: Date;
+  /**
    * Wether to allow the NFS protocol for this ACL
    *
    */
   nfs?: boolean;
-  /**
-   * Wether to allow the CIFS (SMB) protocol for this ACL
-   *
-   */
-  cifs?: boolean;
 }
 /**
  * Different backup storage capacity in gigabytes
@@ -386,15 +386,15 @@ export type DedicatedServerBackupStorageCapacityEnum = 1000 | 10000 | 500 | 5000
  */
 export interface DedicatedServerBackupStorageOrderable {
   /**
-   * Is a backup storage is orderable for this server
-   *
-   */
-  orderable?: boolean;
-  /**
    * Backup storage orderable capacities in gigabytes
    *
    */
   capacities?: DedicatedServerBackupStorageCapacityEnum[];
+  /**
+   * Is a backup storage is orderable for this server
+   *
+   */
+  orderable?: boolean;
 }
 /**
  * Different backup storage type
@@ -405,20 +405,20 @@ export type DedicatedServerBackupStorageTypeEnum = 'included' | 'storage';
  */
 export interface DedicatedServerBandwidthDetails {
   /**
-   * bandwidth limitation OVH to OVH
+   * bandwidth limitation Internet to OVH
    *
    */
-  OvhToOvh?: ComplexTypeUnitAndValue<Number>;
+  InternetToOvh?: ComplexTypeUnitAndValue<Number>;
   /**
    * bandwidth limitation OVH to Internet
    *
    */
   OvhToInternet?: ComplexTypeUnitAndValue<Number>;
   /**
-   * bandwidth limitation Internet to OVH
+   * bandwidth limitation OVH to OVH
    *
    */
-  InternetToOvh?: ComplexTypeUnitAndValue<Number>;
+  OvhToOvh?: ComplexTypeUnitAndValue<Number>;
   /**
    * bandwidth offer type
    *
@@ -434,6 +434,11 @@ export type DedicatedServerBandwidthOrderEnum = 1000 | 2000 | 3000;
  */
 export interface DedicatedServerBandwidthOrderable {
   /**
+   * Is bandwidth orderable for this server
+   *
+   */
+  orderable?: boolean;
+  /**
    * Bandwidth "platinum" orderable in mbps
    *
    */
@@ -448,11 +453,6 @@ export interface DedicatedServerBandwidthOrderable {
    *
    */
   ultimate?: DedicatedServerBandwidthOrderEnum[];
-  /**
-   * Is bandwidth orderable for this server
-   *
-   */
-  orderable?: boolean;
 }
 /**
  *  Different Bandwidth type
@@ -526,15 +526,17 @@ export type DedicatedServerCpuFamilyEnum = 'arm64' | 'armhf32' | 'ppc64' | 'x86'
 export interface DedicatedServerDedicated {
   /**
    */
-  rack?: string;
+  bootId?: Number;
   /**
-   * Operating system
+   * dedicater server commercial range
    *
    */
-  os?: string;
+  commercialRange?: string;
   /**
+   * dedicated datacenter localisation
+   *
    */
-  bootId?: Number;
+  datacenter?: DedicatedDatacenterEnum;
   /**
    * dedicated server ip
    *
@@ -544,41 +546,20 @@ export interface DedicatedServerDedicated {
    */
   linkSpeed?: Number;
   /**
-   * dedicated datacenter localisation
-   *
-   */
-  datacenter?: DedicatedDatacenterEnum;
-  /**
-   * Dedicated server support level
-   *
-   */
-  supportLevel?: DedicatedServerSupportLevelEnum;
-  /**
    * Icmp monitoring state
    *
    */
   monitoring?: boolean;
-  /**
-   * dedicated server reverse
-   *
-   */
-  reverse?: string;
-  /**
-   * your server id
-   *
-   */
-  serverId?: Number;
-  /**
-   */
-  rescueMail?: string;
   /**
    * dedicated server name
    *
    */
   name?: string;
   /**
+   * Operating system
+   *
    */
-  state?: DedicatedServerStateEnum;
+  os?: string;
   /**
    * Does this server have professional use option
    *
@@ -586,12 +567,31 @@ export interface DedicatedServerDedicated {
   professionalUse?: boolean;
   /**
    */
-  rootDevice?: string;
+  rack?: string;
   /**
-   * dedicater server commercial range
+   */
+  rescueMail?: string;
+  /**
+   * dedicated server reverse
    *
    */
-  commercialRange?: string;
+  reverse?: string;
+  /**
+   */
+  rootDevice?: string;
+  /**
+   * your server id
+   *
+   */
+  serverId?: Number;
+  /**
+   */
+  state?: DedicatedServerStateEnum;
+  /**
+   * Dedicated server support level
+   *
+   */
+  supportLevel?: DedicatedServerSupportLevelEnum;
 }
 /**
  * Disk interface type enum
@@ -602,10 +602,8 @@ export type DedicatedServerDiskTypeEnum = 'NVMe' | 'SAS' | 'SATA' | 'SSD' | 'Unk
  */
 export interface DedicatedServerFirewall {
   /**
-   * transparent mode : device is invisible on the network; routed mode : the security appliance is considered to be a router hop in the network
-   *
    */
-  mode?: DedicatedServerFirewallModeEnum;
+  enabled?: boolean;
   /**
    */
   firewall?: string;
@@ -615,13 +613,15 @@ export interface DedicatedServerFirewall {
    */
   ip?: string;
   /**
+   * transparent mode : device is invisible on the network; routed mode : the security appliance is considered to be a router hop in the network
+   *
+   */
+  mode?: DedicatedServerFirewallModeEnum;
+  /**
    * Firewall model
    *
    */
   model?: DedicatedServerFirewallModelEnum;
-  /**
-   */
-  enabled?: boolean;
 }
 /**
  * Dedicated server firewall mode
@@ -640,40 +640,40 @@ export type DedicatedServerFormFactorEnum = '0.25u' | '0.5u' | '1u' | '2u' | '3u
  */
 export interface DedicatedServerHardwareRaidConfiguration {
   /**
-   * RAID mode
+   * RAID total capacity
    *
    */
-  mode?: DedicatedServerHardwareSpecificationsRaidHardEnum;
-  /**
-   * Disk capacity
-   *
-   */
-  diskSize?: ComplexTypeUnitAndValue<Number>;
-  /**
-   * RAID configuration name
-   *
-   */
-  name?: string;
-  /**
-   * Size of disk spans on RAID
-   *
-   */
-  diskSpanSize?: Number;
-  /**
-   * RAID controller type
-   *
-   */
-  type?: string;
+  capacity?: ComplexTypeUnitAndValue<Number>;
   /**
    * Disk count
    *
    */
   diskCount?: Number;
   /**
-   * RAID total capacity
+   * Disk capacity
    *
    */
-  capacity?: ComplexTypeUnitAndValue<Number>;
+  diskSize?: ComplexTypeUnitAndValue<Number>;
+  /**
+   * Size of disk spans on RAID
+   *
+   */
+  diskSpanSize?: Number;
+  /**
+   * RAID mode
+   *
+   */
+  mode?: DedicatedServerHardwareSpecificationsRaidHardEnum;
+  /**
+   * RAID configuration name
+   *
+   */
+  name?: string;
+  /**
+   * RAID controller type
+   *
+   */
+  type?: string;
 }
 /**
  * RAID controller configuration
@@ -700,25 +700,25 @@ export interface DedicatedServerHardwareRaidController {
  */
 export interface DedicatedServerHardwareRaidDiskGroup {
   /**
+   * Disk capacity
+   *
+   */
+  capacity?: ComplexTypeUnitAndValue<Number>;
+  /**
    * Disk names
    *
    */
   names?: string[];
-  /**
-   * Disk type
-   *
-   */
-  type?: DedicatedServerDiskTypeEnum;
   /**
    * Disk insterface speed
    *
    */
   speed?: ComplexTypeUnitAndValue<string>;
   /**
-   * Disk capacity
+   * Disk type
    *
    */
-  capacity?: ComplexTypeUnitAndValue<Number>;
+  type?: DedicatedServerDiskTypeEnum;
 }
 /**
  * A structure describing the server's hardware RAID configuration
@@ -745,115 +745,110 @@ export interface DedicatedServerHardwareRaidSize {
  */
 export interface DedicatedServerHardwareSpecifications {
   /**
-   * Server form factor
+   * Server boot mode
    *
    */
-  formFactor?: DedicatedServerFormFactorEnum;
-  /**
-   * Capacity of the USB keys installed on your server, if any
-   *
-   */
-  usbKeys?: ComplexTypeUnitAndValue<Number>[];
-  /**
-   * server motherboard
-   *
-   */
-  motherboard?: string;
-  /**
-   * commercial name of this server
-   *
-   */
-  description?: string;
-  /**
-   * Default hardware raid type configured on this server
-   *
-   */
-  defaultHardwareRaidType?: DedicatedServerHardwareSpecificationsRaidHardEnum;
+  bootMode?: DedicatedServerBootModeEnum;
   /**
    * number of cores per processor
    *
    */
   coresPerProcessor?: Number;
   /**
-   * Server boot mode
-   *
-   */
-  bootMode?: DedicatedServerBootModeEnum;
-  /**
-   * number of threads per processor
-   *
-   */
-  threadsPerProcessor?: Number;
-  /**
-   * ram capacity
-   *
-   */
-  memorySize?: ComplexTypeUnitAndValue<Number>;
-  /**
    * Default hardware raid size for this server
    *
    */
   defaultHardwareRaidSize?: ComplexTypeUnitAndValue<Number>;
   /**
-   * number of processors in this dedicated server
+   * Default hardware raid type configured on this server
    *
    */
-  numberOfProcessors?: Number;
+  defaultHardwareRaidType?: DedicatedServerHardwareSpecificationsRaidHardEnum;
+  /**
+   * commercial name of this server
+   *
+   */
+  description?: string;
   /**
    * details about the groups of disks in the server
    *
    */
   diskGroups?: DedicatedServerHardwareSpecificationsDisk[];
   /**
-   * processor name
+   * details about the server's expansion cards
    *
    */
-  processorName?: string;
+  expansionCards?: DedicatedServerHardwareSpecificationsExpansionCard[];
+  /**
+   * Server form factor
+   *
+   */
+  formFactor?: DedicatedServerFormFactorEnum;
+  /**
+   * ram capacity
+   *
+   */
+  memorySize?: ComplexTypeUnitAndValue<Number>;
+  /**
+   * server motherboard
+   *
+   */
+  motherboard?: string;
+  /**
+   * number of processors in this dedicated server
+   *
+   */
+  numberOfProcessors?: Number;
   /**
    * processor architecture bit
    *
    */
   processorArchitecture?: DedicatedServerCpuFamilyEnum;
   /**
-   * details about the server's expansion cards
+   * processor name
    *
    */
-  expansionCards?: DedicatedServerHardwareSpecificationsExpansionCard[];
+  processorName?: string;
+  /**
+   * number of threads per processor
+   *
+   */
+  threadsPerProcessor?: Number;
+  /**
+   * Capacity of the USB keys installed on your server, if any
+   *
+   */
+  usbKeys?: ComplexTypeUnitAndValue<Number>[];
 }
 /**
  * A structure describing informations about server disks
  */
 export interface DedicatedServerHardwareSpecificationsDisk {
   /**
-   * disk capacity
-   *
-   */
-  diskSize?: ComplexTypeUnitAndValue<Number>;
-  /**
    * default hardware raid size for this disk group
    *
    */
   defaultHardwareRaidSize?: ComplexTypeUnitAndValue<Number>;
-  /**
-   * human readable description of this disk group
-   *
-   */
-  description?: string;
-  /**
-   * raid controller, if any, managing this group of disks
-   *
-   */
-  raidController?: string;
   /**
    * default hardware raid type for this disk group
    *
    */
   defaultHardwareRaidType?: DedicatedServerHardwareSpecificationsRaidHardEnum;
   /**
+   * human readable description of this disk group
+   *
+   */
+  description?: string;
+  /**
    * identifier of this disk group
    *
    */
   diskGroupId?: Number;
+  /**
+   * disk capacity
+   *
+   */
+  diskSize?: ComplexTypeUnitAndValue<Number>;
   /**
    * type of the disk (SSD, SATA, SAS, ...)
    *
@@ -864,6 +859,11 @@ export interface DedicatedServerHardwareSpecificationsDisk {
    *
    */
   numberOfDisks?: Number;
+  /**
+   * raid controller, if any, managing this group of disks
+   *
+   */
+  raidController?: string;
 }
 /**
  * A structure describing informations about server expansion cards
@@ -893,15 +893,25 @@ export type DedicatedServerHardwareSpecificationsRaidHardEnum = 'raid0' | 'raid1
  */
 export interface DedicatedServerInstallCustom {
   /**
-   * Specify if we should attempt to reset hw raid on install.
+   * Personnal hostname to use in server reinstallation
    *
    */
-  resetHwRaid?: boolean;
+  customHostname?: string;
   /**
-   * The name of ssh key to install
+   * Disk group id to process install on (only available for some templates)
    *
    */
-  sshKeyName?: string;
+  diskGroupId?: Number;
+  /**
+   * true if you want to install windows with sql feature
+   *
+   */
+  installSqlServer?: boolean;
+  /**
+   * install language for ovh install choice
+   *
+   */
+  language?: string;
   /**
    * true if you want to install only on the first disk
    *
@@ -913,45 +923,35 @@ export interface DedicatedServerInstallCustom {
    */
   postInstallationScriptLink?: string;
   /**
-   * true if you want to install windows with your spla license
+   * the return of your script if everythings ok. Advice: your script should return a unique validation string in case of succes. A good example is "loh1Xee7eo OK OK OK UGh8Ang1Gu
    *
    */
-  useSpla?: boolean;
+  postInstallationScriptReturn?: string;
+  /**
+   * Specify if we should attempt to reset hw raid on install.
+   *
+   */
+  resetHwRaid?: boolean;
   /**
    * Number of devices to use for system's software RAID
    *
    */
   softRaidDevices?: Number;
   /**
-   * the return of your script if everythings ok. Advice: your script should return a unique validation string in case of succes. A good example is "loh1Xee7eo OK OK OK UGh8Ang1Gu
+   * The name of ssh key to install
    *
    */
-  postInstallationScriptReturn?: string;
-  /**
-   * Personnal hostname to use in server reinstallation
-   *
-   */
-  customHostname?: string;
-  /**
-   * true if you want to install windows with sql feature
-   *
-   */
-  installSqlServer?: boolean;
+  sshKeyName?: string;
   /**
    * true if you want to install with distrib kernel
    *
    */
   useDistribKernel?: boolean;
   /**
-   * install language for ovh install choice
+   * true if you want to install windows with your spla license
    *
    */
-  language?: string;
-  /**
-   * Disk group id to process install on (only available for some templates)
-   *
-   */
-  diskGroupId?: Number;
+  useSpla?: boolean;
 }
 /**
  * A structure describing informations about an Installation templates
@@ -973,15 +973,15 @@ export interface DedicatedServerInstallTemplate {
  */
 export interface DedicatedServerInstallationProgressStatus {
   /**
-   * Installation steps
-   *
-   */
-  progress?: DedicatedServerInstallationProgressSteps[];
-  /**
    * Elapsed time in seconds since installation beggining
    *
    */
   elapsedTime?: Number;
+  /**
+   * Installation steps
+   *
+   */
+  progress?: DedicatedServerInstallationProgressSteps[];
 }
 /**
  * Distinct Installation status
@@ -1017,15 +1017,15 @@ export interface DedicatedServerIntervention {
    */
   date?: Date;
   /**
-   * the intervention type
-   *
-   */
-  type?: string;
-  /**
    * The intervention id
    *
    */
   interventionId?: Number;
+  /**
+   * the intervention type
+   *
+   */
+  type?: string;
 }
 /**
  * IP block size
@@ -1055,35 +1055,35 @@ export interface DedicatedServerIpOrderable {
  */
 export interface DedicatedServerIpOrderableDetails {
   /**
-   * Which option is required to order this type of IP
+   * Orderable IP blocks sizes
    *
    */
-  optionRequired?: DedicatedServerOptionRequiredEnum;
+  blockSizes?: DedicatedServerIpBlockSizeEnum[];
   /**
-   * Total number of prefixes that can be routed to this server
+   * Are those IP included with your offer
    *
    */
-  number?: Number;
+  included?: boolean;
   /**
    * Total number of IP that can be routed to this server
    *
    */
   ipNumber?: Number;
   /**
-   * Orderable IP blocks sizes
+   * Total number of prefixes that can be routed to this server
    *
    */
-  blockSizes?: DedicatedServerIpBlockSizeEnum[];
+  number?: Number;
+  /**
+   * Which option is required to order this type of IP
+   *
+   */
+  optionRequired?: DedicatedServerOptionRequiredEnum;
   /**
    * this IP type
    *
    */
   type?: DedicatedServerIpTypeOrderableEnum;
-  /**
-   * Are those IP included with your offer
-   *
-   */
-  included?: boolean;
 }
 /**
  * Orderable IP type
@@ -1094,15 +1094,15 @@ export type DedicatedServerIpTypeOrderableEnum = 'failover' | 'static' | 'unshie
  */
 export interface DedicatedServerIpmi {
   /**
-   * A structure describing the IPMI supported features
-   *
-   */
-  supportedFeatures?: DedicatedServerIpmiSupportedFeatures;
-  /**
    * true, if IPMI is available on this server
    *
    */
   activated?: boolean;
+  /**
+   * A structure describing the IPMI supported features
+   *
+   */
+  supportedFeatures?: DedicatedServerIpmiSupportedFeatures;
 }
 /**
  * Distinct way to acces a KVM IPMI session
@@ -1128,20 +1128,20 @@ export interface DedicatedServerIpmiAccessValue {
  */
 export interface DedicatedServerIpmiSupportedFeatures {
   /**
-   * Access to the virtual serial port of your server through an SSH client
+   * Access to the KVM through an HTML web interface
    *
    */
-  serialOverLanSshKey?: boolean;
+  kvmipHtml5URL?: boolean;
   /**
    * Access to the KVM through a Java web launch application
    *
    */
   kvmipJnlp?: boolean;
   /**
-   * Access to the KVM through an HTML web interface
+   * Access to the virtual serial port of your server through an SSH client
    *
    */
-  kvmipHtml5URL?: boolean;
+  serialOverLanSshKey?: boolean;
   /**
    * Access to the virtual serial port of your server through an HTML command line interface
    *
@@ -1185,10 +1185,10 @@ export type DedicatedServerMrtgPeriodEnum = 'daily' | 'hourly' | 'monthly' | 'we
 export interface DedicatedServerMrtgTimestampValue {
   /**
    */
-  value?: ComplexTypeUnitAndValue<Number>;
+  timestamp?: Number;
   /**
    */
-  timestamp?: Number;
+  value?: ComplexTypeUnitAndValue<Number>;
 }
 /**
  * distincts MRTG type
@@ -1204,11 +1204,6 @@ export interface DedicatedServerNetboot {
    */
   bootId?: Number;
   /**
-   * The boot kernel
-   *
-   */
-  kernel?: string;
-  /**
    * the boot system
    *
    */
@@ -1218,51 +1213,56 @@ export interface DedicatedServerNetboot {
    *
    */
   description?: string;
+  /**
+   * The boot kernel
+   *
+   */
+  kernel?: string;
 }
 /**
  * A structure describing network informations about this dedicated server
  */
 export interface DedicatedServerNetworkSpecifications {
   /**
-   * Routing details
-   *
-   */
-  routing?: DedicatedServerRoutingDetails;
-  /**
    * Bandwidth details
    *
    */
   bandwidth?: DedicatedServerBandwidthDetails;
-  /**
-   * vRack details
-   *
-   */
-  vrack?: DedicatedServerBandwidthvRackDetails;
   /**
    * Network connection flow rate
    *
    */
   connection?: ComplexTypeUnitAndValue<Number>;
   /**
+   * Routing details
+   *
+   */
+  routing?: DedicatedServerRoutingDetails;
+  /**
    * Traffic details
    *
    */
   traffic?: DedicatedServerTrafficDetails;
+  /**
+   * vRack details
+   *
+   */
+  vrack?: DedicatedServerBandwidthvRackDetails;
 }
 /**
  * Information about the options of a dedicated server
  */
 export interface DedicatedServerOption {
   /**
-   * The state of the option
-   *
-   */
-  state?: DedicatedServerOptionStateEnum;
-  /**
    * The option name
    *
    */
   option?: DedicatedServerOptionEnum;
+  /**
+   * The state of the option
+   *
+   */
+  state?: DedicatedServerOptionStateEnum;
 }
 /**
  * All options a dedicated server can have and release
@@ -1300,15 +1300,15 @@ export interface DedicatedServerRoutingDetails {
  */
 export interface DedicatedServerRoutingDetailsIpv4 {
   /**
-   * Server main IP
-   *
-   */
-  ip?: string;
-  /**
    * Server gateway
    *
    */
   gateway?: string;
+  /**
+   * Server main IP
+   *
+   */
+  ip?: string;
   /**
    * Server network
    *
@@ -1320,15 +1320,15 @@ export interface DedicatedServerRoutingDetailsIpv4 {
  */
 export interface DedicatedServerRoutingDetailsIpv6 {
   /**
-   * Server main IP
-   *
-   */
-  ip?: string;
-  /**
    * Server gateway
    *
    */
   gateway?: string;
+  /**
+   * Server main IP
+   *
+   */
+  ip?: string;
   /**
    * Server network
    *
@@ -1340,20 +1340,20 @@ export interface DedicatedServerRoutingDetailsIpv6 {
  */
 export interface DedicatedServerRtm {
   /**
-   * You need to update RTM script on your server
+   * RTM current version
    *
    */
-  needsUpdate?: boolean;
+  currentVersion?: string;
   /**
    * RTM currently installed version
    *
    */
   installedVersion?: string;
   /**
-   * RTM current version
+   * You need to update RTM script on your server
    *
    */
-  currentVersion?: string;
+  needsUpdate?: boolean;
 }
 /**
  * distincts RTM charts period
@@ -1368,60 +1368,60 @@ export type DedicatedServerRtmChartTypeEnum = 'cpu' | 'loadavg1' | 'loadavg15' |
  */
 export interface DedicatedServerRtmCommandSize {
   /**
-   * Memory used by this process
-   *
-   */
-  memory?: ComplexTypeUnitAndValue<Number>;
-  /**
    * Complete command line used for starting this process
    *
    */
   command?: string;
+  /**
+   * Memory used by this process
+   *
+   */
+  memory?: ComplexTypeUnitAndValue<Number>;
 }
 /**
  * A structure describing informations about opened sockets on the server
  */
 export interface DedicatedServerRtmConnection {
   /**
-   * System user ID
-   *
-   */
-  uid?: Number;
-  /**
-   * Path to the program
-   *
-   */
-  exe?: string;
-  /**
    * Complete command line used for starting this process
    *
    */
   cmdline?: string;
-  /**
-   * Port opened
-   *
-   */
-  port?: Number;
-  /**
-   * The IP address connected
-   *
-   */
-  ip?: string;
   /**
    * Domain used by the process
    *
    */
   domain?: string;
   /**
+   * Path to the program
+   *
+   */
+  exe?: string;
+  /**
+   * The IP address connected
+   *
+   */
+  ip?: string;
+  /**
    * Process ID
    *
    */
   pid?: Number;
   /**
+   * Port opened
+   *
+   */
+  port?: Number;
+  /**
    * Name of the process
    *
    */
   procname?: string;
+  /**
+   * System user ID
+   *
+   */
+  uid?: Number;
   /**
    * Username used to start the process
    *
@@ -1433,15 +1433,15 @@ export interface DedicatedServerRtmConnection {
  */
 export interface DedicatedServerRtmCpu {
   /**
-   * CPU core number
-   *
-   */
-  core?: Number;
-  /**
    * CPU cache size
    *
    */
   cache?: ComplexTypeUnitAndValue<Number>;
+  /**
+   * CPU core number
+   *
+   */
+  core?: Number;
   /**
    * CPU frequency
    *
@@ -1458,95 +1458,105 @@ export interface DedicatedServerRtmCpu {
  */
 export interface DedicatedServerRtmDisk {
   /**
+   * Disk capacity
+   *
+   */
+  capacity?: ComplexTypeUnitAndValue<Number>;
+  /**
    * Disk
    *
    */
   disk?: string;
-  /**
-   * Disk temperature
-   *
-   */
-  temperature?: ComplexTypeUnitAndValue<Number>;
   /**
    * Disk model
    *
    */
   model?: string;
   /**
-   * Disk capacity
+   * Disk temperature
    *
    */
-  capacity?: ComplexTypeUnitAndValue<Number>;
+  temperature?: ComplexTypeUnitAndValue<Number>;
 }
 /**
  * A structure describing SMART health disk status
  */
 export interface DedicatedServerRtmDiskSmart {
   /**
-   * temperature
+   * Current pending sectors
    *
    */
-  temperature_celsius?: Number;
+  current_pending_sector?: Number;
   /**
    * Multizone error rate
    *
    */
   multizone_error_rate?: Number;
   /**
-   * Other errors
+   * Offline seek rate
    *
    */
-  other_errors?: Number;
-  /**
-   * Current pending sectors
-   *
-   */
-  current_pending_sector?: Number;
+  offline_seek_performance?: Number;
   /**
    * Offline uncorrectable
    *
    */
   offline_uncorrectable?: Number;
   /**
+   * Other errors
+   *
+   */
+  other_errors?: Number;
+  /**
    * Realocated event count
    *
    */
   realocated_event_count?: Number;
+  /**
+   * temperature
+   *
+   */
+  temperature_celsius?: Number;
+  /**
+   * UDMA crc error
+   *
+   */
+  udma_crc_error?: Number;
   /**
    * Uncorrected read errors
    *
    */
   uncorrected_read_errors?: Number;
   /**
-   * Offline seek rate
-   *
-   */
-  offline_seek_performance?: Number;
-  /**
    * Uncorrected write errors
    *
    */
   uncorrected_write_errors?: Number;
-  /**
-   * UDMA crc error
-   *
-   */
-  udma_crc_error?: Number;
 }
 /**
  * A structure describing informations about server load
  */
 export interface DedicatedServerRtmLoad {
   /**
-   * Load average in the last 15 minutes
+   * CPU usage
    *
    */
-  loadavg15?: Number;
+  cpu?: ComplexTypeUnitAndValue<Number>;
   /**
    * Load average in the last 1 minute
    *
    */
   loadavg1?: Number;
+  /**
+   * Load average in the last 15 minutes
+   *
+   */
+  loadavg15?: Number;
+  /**
+   * Load average in the last 5 minutes
+   *
+   */
+  loadavg5?: Number;
   /**
    * Memory usage
    *
@@ -1558,60 +1568,50 @@ export interface DedicatedServerRtmLoad {
    */
   processCount?: Number;
   /**
+   * Number of process running
+   *
+   */
+  processRunning?: Number;
+  /**
    * Swap usage
    *
    */
   swap?: ComplexTypeUnitAndValue<Number>;
   /**
-   * CPU usage
-   *
-   */
-  cpu?: ComplexTypeUnitAndValue<Number>;
-  /**
-   * Load average in the last 5 minutes
-   *
-   */
-  loadavg5?: Number;
-  /**
    * Server uptime
    *
    */
   uptime?: Number;
-  /**
-   * Number of process running
-   *
-   */
-  processRunning?: Number;
 }
 /**
  * A structure describing informations about server memory
  */
 export interface DedicatedServerRtmMemory {
   /**
-   * Memory slot
-   *
-   */
-  slot?: string;
-  /**
    * Memory capacity
    *
    */
   capacity?: ComplexTypeUnitAndValue<Number>;
+  /**
+   * Memory slot
+   *
+   */
+  slot?: string;
 }
 /**
  * A structure describing informations about motherboard
  */
 export interface DedicatedServerRtmMotherboardHw {
   /**
-   * Motherboard name
-   *
-   */
-  name?: string;
-  /**
    * Motherboard manufacturer
    *
    */
   manufacturer?: string;
+  /**
+   * Motherboard name
+   *
+   */
+  name?: string;
 }
 /**
  * A structure describing informations about Rtm os
@@ -1623,20 +1623,25 @@ export interface DedicatedServerRtmOs {
    */
   kernelRelease?: string;
   /**
-   * OS release
-   *
-   */
-  release?: string;
-  /**
    * OS kernel version
    *
    */
   kernelVersion?: string;
+  /**
+   * OS release
+   *
+   */
+  release?: string;
 }
 /**
  * Server partitions informations
  */
 export interface DedicatedServerRtmPartition {
+  /**
+   * Partition inode
+   *
+   */
+  inodeUsage?: ComplexTypeUnitAndValue<Number>;
   /**
    * Partition mount point
    *
@@ -1647,11 +1652,6 @@ export interface DedicatedServerRtmPartition {
    *
    */
   partition?: string;
-  /**
-   * Partition inode
-   *
-   */
-  inodeUsage?: ComplexTypeUnitAndValue<Number>;
   /**
    * Partition usage
    *
@@ -1692,25 +1692,35 @@ export type DedicatedServerRtmRaidStatusEnum = 'KO' | 'OK' | 'REBUILDING' | 'UNK
  */
 export interface DedicatedServerRtmRaidVolume {
   /**
-   * Raid volume name
+   * Raid volume capacity
    *
    */
-  volume?: string;
-  /**
-   * Raid volume phys
-   *
-   */
-  phys?: string;
+  capacity?: ComplexTypeUnitAndValue<Number>;
   /**
    * Raid volume chunks
    *
    */
   chunks?: string;
   /**
+   * Raid volume label
+   *
+   */
+  label?: string;
+  /**
    * Raid volume letter
    *
    */
   letter?: string;
+  /**
+   * Raid volume phys
+   *
+   */
+  phys?: string;
+  /**
+   * Raid volume status
+   *
+   */
+  status?: DedicatedServerRtmRaidStatusEnum;
   /**
    * Raid volume stripe
    *
@@ -1722,35 +1732,35 @@ export interface DedicatedServerRtmRaidVolume {
    */
   syncprogress?: string;
   /**
-   * Raid volume label
-   *
-   */
-  label?: string;
-  /**
    * Raid volume type
    *
    */
   type?: string;
   /**
-   * Raid volume status
+   * Raid volume name
    *
    */
-  status?: DedicatedServerRtmRaidStatusEnum;
-  /**
-   * Raid volume capacity
-   *
-   */
-  capacity?: ComplexTypeUnitAndValue<Number>;
+  volume?: string;
 }
 /**
  * Server raid volume port informations
  */
 export interface DedicatedServerRtmRaidVolumePort {
   /**
+   * Port capacity
+   *
+   */
+  capacity?: ComplexTypeUnitAndValue<Number>;
+  /**
    * Port disk
    *
    */
   disk?: string;
+  /**
+   * Port model name
+   *
+   */
+  model?: string;
   /**
    * Raid volume port
    *
@@ -1762,40 +1772,30 @@ export interface DedicatedServerRtmRaidVolumePort {
    */
   serial?: string;
   /**
-   * Raid port synchronization progress
-   *
-   */
-  syncprogress?: string;
-  /**
-   * Port model name
-   *
-   */
-  model?: string;
-  /**
    * Status of this port
    *
    */
   status?: DedicatedServerRtmRaidStatusEnum;
   /**
-   * Port capacity
+   * Raid port synchronization progress
    *
    */
-  capacity?: ComplexTypeUnitAndValue<Number>;
+  syncprogress?: string;
 }
 /**
  * Server bandwidth burst details
  */
 export interface DedicatedServerServerBurst {
   /**
-   * indicates wether burstable bandwidth is currently active, allowing it to temporarily exceed the normally included bandwidth.OvhToInternet amount, within the limits indicated by the burst.capacity item. It can also be inactiveLocked when temporarily disabled due to overuse, capping it to the included non-burstable bandwidth capacity of bandwidth.OvhToInternet
-   *
-   */
-  status?: DedicatedServerBurstStatusEnum;
-  /**
    * Bandwidth busrt capacity
    *
    */
   capacity?: ComplexTypeUnitAndValue<Number>;
+  /**
+   * indicates wether burstable bandwidth is currently active, allowing it to temporarily exceed the normally included bandwidth.OvhToInternet amount, within the limits indicated by the burst.capacity item. It can also be inactiveLocked when temporarily disabled due to overuse, capping it to the included non-burstable bandwidth capacity of bandwidth.OvhToInternet
+   *
+   */
+  status?: DedicatedServerBurstStatusEnum;
 }
 /**
  * SPLA license status
@@ -1818,15 +1818,15 @@ export type DedicatedServerSupportLevelEnum = 'critical' | 'fastpath' | 'gs' | '
  */
 export interface DedicatedServerSupportLevelOrderable {
   /**
-   * Is a support level is orderable for this server
-   *
-   */
-  orderable?: boolean;
-  /**
    * Support level  orderable
    *
    */
   levels?: DedicatedServerSupportLevelOrderableEnum[];
+  /**
+   * Is a support level is orderable for this server
+   *
+   */
+  orderable?: boolean;
 }
 /**
  * distincts support level
@@ -1852,16 +1852,6 @@ export interface DedicatedServerSupportReplaceHddInfo {
  */
 export interface DedicatedServerTask {
   /**
-   * Function name
-   *
-   */
-  function?: DedicatedTaskFunctionEnum;
-  /**
-   * last update
-   *
-   */
-  lastUpdate?: Date;
-  /**
    * Details of this task
    *
    */
@@ -1872,10 +1862,15 @@ export interface DedicatedServerTask {
    */
   doneDate?: Date;
   /**
-   * the id of the task
+   * Function name
    *
    */
-  taskId?: Number;
+  function?: DedicatedTaskFunctionEnum;
+  /**
+   * last update
+   *
+   */
+  lastUpdate?: Date;
   /**
    * Task Creation date
    *
@@ -1886,6 +1881,11 @@ export interface DedicatedServerTask {
    *
    */
   status?: DedicatedTaskStatusEnum;
+  /**
+   * the id of the task
+   *
+   */
+  taskId?: Number;
 }
 /**
  * Miscellaneous template capabilities regarding the server.
@@ -1907,30 +1907,30 @@ export interface DedicatedServerTrafficDetails {
    */
   inputQuotaSize?: ComplexTypeUnitAndValue<Number>;
   /**
-   * Monthly output traffic quota allowed
+   * Monthly input traffic consumed this month
    *
    */
-  outputQuotaSize?: ComplexTypeUnitAndValue<Number>;
+  inputQuotaUsed?: ComplexTypeUnitAndValue<Number>;
   /**
    * Is bandwidth throttleted for being over quota
    *
    */
   isThrottled?: boolean;
   /**
-   * Monthly input traffic consumed this month
+   * Monthly output traffic quota allowed
    *
    */
-  inputQuotaUsed?: ComplexTypeUnitAndValue<Number>;
-  /**
-   * Next reset quota date for traffic counter
-   *
-   */
-  resetQuotaDate?: string;
+  outputQuotaSize?: ComplexTypeUnitAndValue<Number>;
   /**
    * Monthly output traffic consumed this month
    *
    */
   outputQuotaUsed?: ComplexTypeUnitAndValue<Number>;
+  /**
+   * Next reset quota date for traffic counter
+   *
+   */
+  resetQuotaDate?: string;
 }
 /**
  *  traffic orderable 
@@ -1960,25 +1960,25 @@ export type DedicatedServerUsbKeyCapacityEnum = 128 | 16 | 256 | 32 | 64;
  */
 export interface DedicatedServerUsbKeyOrderableDetails {
   /**
-   * Which option is required to order an USB key
+   * Orderable USB keys capacity in gigabytes
    *
    */
-  optionRequired?: DedicatedServerOptionRequiredEnum;
+  capacity?: DedicatedServerUsbKeyCapacityEnum[];
   /**
    * Number of USB keys that can be ordered for this server
    *
    */
   number?: Number;
   /**
+   * Which option is required to order an USB key
+   *
+   */
+  optionRequired?: DedicatedServerOptionRequiredEnum;
+  /**
    * Is USB keys orderable for this server
    *
    */
   orderable?: boolean;
-  /**
-   * Orderable USB keys capacity in gigabytes
-   *
-   */
-  capacity?: DedicatedServerUsbKeyCapacityEnum[];
 }
 /**
  * A virtual MAC address associated to one or more IPs
@@ -2000,15 +2000,15 @@ export interface DedicatedServerVirtualMac {
  */
 export interface DedicatedServerVirtualMacManagement {
   /**
-   * Friendly name of your Virtual Machine behind this IP/MAC
-   *
-   */
-  virtualMachineName?: string;
-  /**
    * IP address
    *
    */
   ipAddress?: string;
+  /**
+   * Friendly name of your Virtual Machine behind this IP/MAC
+   *
+   */
+  virtualMachineName?: string;
 }
 /**
  * Distinct type of virtual mac
@@ -2019,35 +2019,35 @@ export type DedicatedServerVmacTypeEnum = 'ovh' | 'vmware';
  */
 export interface DedicatedServerBackupBackupContainer {
   /**
-   * Quota on the current container
+   * /cloud project which the container belongs to.
    *
    */
-  quota?: DedicatedServerBackupBackupQuota;
-  /**
-   * Container name.
-   *
-   */
-  name?: string;
-  /**
-   * Sftp connection info
-   *
-   */
-  sftp?: DedicatedServerBackupBackupSftp;
+  cloudProject?: DedicatedServerBackupBackupProject;
   /**
    * Container id (can also be used to retrieve the resource in the /cloud api).
    *
    */
   id?: string;
   /**
+   * Container name.
+   *
+   */
+  name?: string;
+  /**
+   * Quota on the current container
+   *
+   */
+  quota?: DedicatedServerBackupBackupQuota;
+  /**
    * The cloud region which the container belongs to.
    *
    */
   region?: string;
   /**
-   * /cloud project which the container belongs to.
+   * Sftp connection info
    *
    */
-  cloudProject?: DedicatedServerBackupBackupProject;
+  sftp?: DedicatedServerBackupBackupSftp;
   /**
    * Swift related information to reach the container
    *
@@ -2059,40 +2059,40 @@ export interface DedicatedServerBackupBackupContainer {
  */
 export interface DedicatedServerBackupBackupOffer {
   /**
-   * Storage volume r/w bandwidth limit: read/write volume offered per month on the container.
+   * Archive container max size.
    *
    */
-  maxBandwidthStorage?: ComplexTypeUnitAndValue<Number>;
+  maxArchive?: ComplexTypeUnitAndValue<Number>;
   /**
    * Archive volume r/w bandwidth limit: read/write volume offered per month on the container.
    *
    */
   maxBandwidthArchive?: ComplexTypeUnitAndValue<Number>;
   /**
+   * Storage volume r/w bandwidth limit: read/write volume offered per month on the container.
+   *
+   */
+  maxBandwidthStorage?: ComplexTypeUnitAndValue<Number>;
+  /**
    * Storage container max size.
    *
    */
   maxStorage?: ComplexTypeUnitAndValue<Number>;
-  /**
-   * Archive container max size.
-   *
-   */
-  maxArchive?: ComplexTypeUnitAndValue<Number>;
 }
 /**
  * A structure describing regenerated passwords
  */
 export interface DedicatedServerBackupBackupPassword {
   /**
-   * Password to reach the storage container through the sftp gw.
-   *
-   */
-  sftpStorage?: string;
-  /**
    * Password to reach the archive container through the sftp gw.
    *
    */
   sftpArchive?: string;
+  /**
+   * Password to reach the storage container through the sftp gw.
+   *
+   */
+  sftpStorage?: string;
   /**
    * Password to reach the archive container through swift.
    *
@@ -2129,6 +2129,11 @@ export interface DedicatedServerBackupBackupQuota {
    */
   maxBandwidth?: ComplexTypeUnitAndValue<Number>;
   /**
+   * Container max size.
+   *
+   */
+  maxStorage?: ComplexTypeUnitAndValue<Number>;
+  /**
    * Volume usage.
    *
    */
@@ -2138,11 +2143,6 @@ export interface DedicatedServerBackupBackupQuota {
    *
    */
   usagePercent?: Number;
-  /**
-   * Container max size.
-   *
-   */
-  maxStorage?: ComplexTypeUnitAndValue<Number>;
 }
 /**
  * A structure describing the SFTP access to a container
@@ -2169,15 +2169,15 @@ export interface DedicatedServerBackupBackupSftp {
  */
 export interface DedicatedServerBackupBackupStatus {
   /**
-   * Status code reason (when not ok)
-   *
-   */
-  reason?: string;
-  /**
    * Status code
    *
    */
   code?: DedicatedServerBackupBackupStatusCodeEnum;
+  /**
+   * Status code reason (when not ok)
+   *
+   */
+  reason?: string;
 }
 /**
  * Possible values for backup status code
@@ -2208,30 +2208,35 @@ export interface DedicatedServerBackupBackupSwift {
  */
 export interface DedicatedServerEmailAlert {
   /**
-   * Alert language
-   *
-   */
-  language?: DedicatedServerAlertLanguageEnum;
-  /**
    * This monitoring id
    *
    */
   alertId?: Number;
+  /**
+   * Alert destination
+   *
+   */
+  email?: string;
   /**
    * Is this monitor enabled
    *
    */
   enabled?: boolean;
   /**
-   * Alert destination
+   * Alert language
    *
    */
-  email?: string;
+  language?: DedicatedServerAlertLanguageEnum;
 }
 /**
  * Physical KVM
  */
 export interface DedicatedServerKvm {
+  /**
+   * KVM expiration date
+   *
+   */
+  expiration?: Date;
   /**
    * KVM access ip
    *
@@ -2242,81 +2247,81 @@ export interface DedicatedServerKvm {
    *
    */
   name?: string;
-  /**
-   * KVM expiration date
-   *
-   */
-  expiration?: Date;
 }
 /**
  * Available boot options
  */
 export interface DedicatedServerNetbootOption {
   /**
-   * the value of this option
-   *
-   */
-  value?: string;
-  /**
    * The option of this boot
    *
    */
   option?: DedicatedServerBootOptionEnum;
+  /**
+   * the value of this option
+   *
+   */
+  value?: string;
 }
 /**
  * Service monitoring details
  */
 export interface DedicatedServerServiceMonitoring {
   /**
-   * The protocol to use
-   *
-   */
-  protocol?: DedicatedServerMonitoringProtocolEnum;
-  /**
-   * The service port to monitor
-   *
-   */
-  port?: Number;
-  /**
-   * The ip to monitor
-   *
-   */
-  ip?: string;
-  /**
    * The expected return
    *
    */
   challengeText?: string;
-  /**
-   * The test interval in seconds
-   *
-   */
-  interval?: DedicatedServerMonitoringIntervalEnum;
-  /**
-   * The URL to test
-   *
-   */
-  url?: string;
   /**
    * Is this service monitoring is enabled
    *
    */
   enabled?: boolean;
   /**
+   * The test interval in seconds
+   *
+   */
+  interval?: DedicatedServerMonitoringIntervalEnum;
+  /**
+   * The ip to monitor
+   *
+   */
+  ip?: string;
+  /**
    * This monitoring id
    *
    */
   monitoringId?: Number;
+  /**
+   * The service port to monitor
+   *
+   */
+  port?: Number;
+  /**
+   * The protocol to use
+   *
+   */
+  protocol?: DedicatedServerMonitoringProtocolEnum;
+  /**
+   * The URL to test
+   *
+   */
+  url?: string;
 }
 /**
  * Monitoring SMS alert details, This service is currently not supported for servers at BHS 
  */
 export interface DedicatedServerSmsAlert {
   /**
-   * Your SMS account
+   * Id of this alert
    *
    */
-  smsAccount?: string;
+  alertId?: Number;
+  /**
+   * Is this alert enabled
+   *
+   */
+  enabled?: boolean;
   /**
    * Daily hour end time for SMS notification
    *
@@ -2328,20 +2333,15 @@ export interface DedicatedServerSmsAlert {
    */
   language?: DedicatedServerAlertLanguageEnum;
   /**
-   * Id of this alert
-   *
-   */
-  alertId?: Number;
-  /**
    * Alert destination
    *
    */
   phoneNumberTo?: string;
   /**
-   * Is this alert enabled
+   * Your SMS account
    *
    */
-  enabled?: boolean;
+  smsAccount?: string;
   /**
    * Daily hour start time for SMS notification
    *
@@ -2353,30 +2353,30 @@ export interface DedicatedServerSmsAlert {
  */
 export interface DedicatedServerSpla {
   /**
-   * License serial number
+   * License id
    *
    */
-  serialNumber?: string;
+  id?: Number;
   /**
    * Last update timestamp
    *
    */
   lastUpdate?: Date;
   /**
-   * License id
+   * License serial number
    *
    */
-  id?: Number;
-  /**
-   * License type
-   *
-   */
-  type?: DedicatedServerSplaTypeEnum;
+  serialNumber?: string;
   /**
    * Status of license
    *
    */
   status?: DedicatedServerSplaStatusEnum;
+  /**
+   * License type
+   *
+   */
+  type?: DedicatedServerSplaTypeEnum;
 }
 /**
  * Your VirtualNetworkInterface
@@ -2393,11 +2393,6 @@ export interface DedicatedVirtualNetworkInterfaceVirtualNetworkInterface {
    */
   name?: string;
   /**
-   * vRack name
-   *
-   */
-  vrack?: string;
-  /**
    * Server bound to this VirtualNetworkInterface
    *
    */
@@ -2407,6 +2402,11 @@ export interface DedicatedVirtualNetworkInterfaceVirtualNetworkInterface {
    *
    */
   uuid?: string;
+  /**
+   * vRack name
+   *
+   */
+  vrack?: string;
 }
 /**
  * Available VirtualNetworkInterface modes
@@ -2429,18 +2429,18 @@ export type NichandleOvhSubsidiaryEnum = 'ASIA' | 'AU' | 'CA' | 'CZ' | 'DE' | 'E
  */
 export interface SecondaryDnsSecondaryDNS {
   /**
-   * domain on slave server
-   *
    */
-  domain?: string;
+  creationDate?: Date;
   /**
    * secondary dns server
    *
    */
   dns?: string;
   /**
+   * domain on slave server
+   *
    */
-  creationDate?: Date;
+  domain?: string;
   /**
    * master ip
    *
@@ -2452,11 +2452,6 @@ export interface SecondaryDnsSecondaryDNS {
  */
 export interface SecondaryDnsSecondaryDNSCheckField {
   /**
-   * The subdomain to add on your DNS zone for the domain
-   *
-   */
-  subDomain?: string;
-  /**
    * The field type to add on your DNS zone for this subDomain
    *
    */
@@ -2466,6 +2461,11 @@ export interface SecondaryDnsSecondaryDNSCheckField {
    *
    */
   fieldValue?: string;
+  /**
+   * The subdomain to add on your DNS zone for the domain
+   *
+   */
+  subDomain?: string;
 }
 /**
  * A structure describing informations about available nameserver for secondary dns 
@@ -2478,40 +2478,40 @@ export interface SecondaryDnsSecondaryDNSNameServer {
   hostname?: string;
   /**
    */
-  ipv6?: string;
+  ip?: string;
   /**
    */
-  ip?: string;
+  ipv6?: string;
 }
 /**
  * Map a possible renew for a specific service
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -2534,31 +2534,36 @@ export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PE
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
   /**
    */
-  engagedUpTo?: Date;
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  contactAdmin?: string;
+  contactTech?: string;
   /**
-   * All the possible renew period of your service in month
-   *
    */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -2566,28 +2571,18 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
   /**
    */
-  creation?: Date;
-  /**
-   */
   status?: ServiceStateEnum;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
 }
 /**
  * Newly created support identifiers
  */
 export interface SupportNewMessageInfo {
-  /**
-   * Ticket external number
-   *
-   */
-  ticketNumber?: Number;
   /**
    * Message identifier
    *
@@ -2598,6 +2593,11 @@ export interface SupportNewMessageInfo {
    *
    */
   ticketId?: Number;
+  /**
+   * Ticket external number
+   *
+   */
+  ticketNumber?: Number;
 }
 /**
  * vrack tasks
@@ -2605,22 +2605,16 @@ export interface SupportNewMessageInfo {
 export interface VrackTask {
   /**
    */
-  targetDomain?: string;
-  /**
-   */
-  orderId?: Number;
-  /**
-   */
   function?: string;
+  /**
+   */
+  id?: Number;
   /**
    */
   lastUpdate?: Date;
   /**
    */
-  todoDate?: Date;
-  /**
-   */
-  id?: Number;
+  orderId?: Number;
   /**
    */
   serviceName?: string;
@@ -2629,6 +2623,12 @@ export interface VrackTask {
    *
    */
   status?: VrackTaskStatusEnum;
+  /**
+   */
+  targetDomain?: string;
+  /**
+   */
+  todoDate?: Date;
 }
 /**
  * All states a vRack Task can be in
@@ -2653,168 +2653,661 @@ export interface VrackDedicatedServer {
  * Resource record fieldType
  */
 export type ZoneNamedResolutionFieldTypeEnum = 'A' | 'AAAA' | 'CAA' | 'CNAME' | 'DKIM' | 'DMARC' | 'LOC' | 'MX' | 'NAPTR' | 'NS' | 'PTR' | 'SPF' | 'SRV' | 'SSHFP' | 'TLSA' | 'TXT';
-type PathsdedicatedserverGET = '/dedicated/server/datacenter/availabilities' | 
-'/dedicated/server/availabilities' | 
-'/dedicated/server/availabilities/raw' | 
-'/dedicated/server' | 
-'/dedicated/server/osAvailabilities' | 
-'/dedicated/server/virtualNetworkInterface/{uuid}' | 
-'/dedicated/server/{serviceName}/virtualNetworkInterface' | 
-'/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}' | 
-'/dedicated/server/{serviceName}/mrtg' | 
-'/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable' | 
-'/dedicated/server/{serviceName}/secondaryDnsNameDomainToken' | 
-'/dedicated/server/{serviceName}/ipCanBeMovedTo' | 
-'/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg' | 
-'/dedicated/server/{serviceName}/networkInterfaceController/{mac}' | 
-'/dedicated/server/{serviceName}/networkInterfaceController' | 
-'/dedicated/server/{serviceName}/serviceMonitoring' | 
-'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' | 
-'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' | 
-'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email' | 
-'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms' | 
-'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' | 
-'/dedicated/server/{serviceName}/spla/{id}' | 
-'/dedicated/server/{serviceName}/spla' | 
-'/dedicated/server/{serviceName}/task' | 
-'/dedicated/server/{serviceName}/task/{taskId}' | 
-'/dedicated/server/{serviceName}/vrack/{vrack}' | 
-'/dedicated/server/{serviceName}/vrack/{vrack}/mrtg' | 
-'/dedicated/server/{serviceName}/vrack' | 
-'/dedicated/server/{serviceName}/orderable/backupStorage' | 
-'/dedicated/server/{serviceName}/orderable/usbKey' | 
-'/dedicated/server/{serviceName}/orderable/bandwidthvRack' | 
-'/dedicated/server/{serviceName}/orderable/traffic' | 
-'/dedicated/server/{serviceName}/orderable/kvm' | 
-'/dedicated/server/{serviceName}/orderable/bandwidth' | 
-'/dedicated/server/{serviceName}/orderable/kvmExpress' | 
-'/dedicated/server/{serviceName}/orderable/feature' | 
-'/dedicated/server/{serviceName}/orderable/ip' | 
-'/dedicated/server/{serviceName}/orderable/professionalUse' | 
-'/dedicated/server/{serviceName}' | 
-'/dedicated/server/{serviceName}/virtualMac' | 
-'/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}' | 
-'/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress' | 
-'/dedicated/server/{serviceName}/virtualMac/{macAddress}' | 
+type PathsDedicatedserverGET = '/dedicated/server/osAvailabilities' | 
+'/dedicated/server/{serviceName}/features/firewall' | 
+'/dedicated/server/{serviceName}/features/ipmi/access' | 
+'/dedicated/server/{serviceName}/features/ipmi' | 
+'/dedicated/server/{serviceName}/features/ipmi/test' | 
+'/dedicated/server/{serviceName}/features/kvm' | 
 '/dedicated/server/{serviceName}/features/backupFTP/access' | 
 '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' | 
 '/dedicated/server/{serviceName}/features/backupFTP' | 
 '/dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks' | 
 '/dedicated/server/{serviceName}/features/backupCloud' | 
-'/dedicated/server/{serviceName}/features/ipmi' | 
-'/dedicated/server/{serviceName}/features/ipmi/test' | 
-'/dedicated/server/{serviceName}/features/ipmi/access' | 
-'/dedicated/server/{serviceName}/features/kvm' | 
-'/dedicated/server/{serviceName}/features/firewall' | 
-'/dedicated/server/{serviceName}/license/compliantWindowsSqlServer' | 
-'/dedicated/server/{serviceName}/license/compliantWindows' | 
-'/dedicated/server/{serviceName}/serviceInfos' | 
-'/dedicated/server/{serviceName}/specifications/ip' | 
-'/dedicated/server/{serviceName}/specifications/network' | 
-'/dedicated/server/{serviceName}/specifications/hardware' | 
-'/dedicated/server/{serviceName}/secondaryDnsDomains' | 
-'/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' | 
-'/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer' | 
-'/dedicated/server/{serviceName}/firewall/binary/compatible' | 
-'/dedicated/server/{serviceName}/firewall/binary/link' | 
-'/dedicated/server/{serviceName}/boot/{bootId}/option/{option}' | 
-'/dedicated/server/{serviceName}/boot/{bootId}/option' | 
-'/dedicated/server/{serviceName}/boot/{bootId}' | 
-'/dedicated/server/{serviceName}/boot' | 
-'/dedicated/server/{serviceName}/option' | 
-'/dedicated/server/{serviceName}/option/{option}' | 
-'/dedicated/server/{serviceName}/install/compatibleTemplates' | 
+'/dedicated/server/{serviceName}' | 
+'/dedicated/server/{serviceName}/virtualMac/{macAddress}' | 
+'/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress' | 
+'/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}' | 
+'/dedicated/server/{serviceName}/virtualMac' | 
 '/dedicated/server/{serviceName}/install/templateCapabilities' | 
-'/dedicated/server/{serviceName}/install/status' | 
 '/dedicated/server/{serviceName}/install/hardwareRaidSize' | 
 '/dedicated/server/{serviceName}/install/hardwareRaidProfile' | 
 '/dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes' | 
-'/dedicated/server/{serviceName}/burst' | 
-'/dedicated/server/{serviceName}/statistics/process' | 
-'/dedicated/server/{serviceName}/statistics/pci' | 
-'/dedicated/server/{serviceName}/statistics/os' | 
-'/dedicated/server/{serviceName}/statistics/chart' | 
-'/dedicated/server/{serviceName}/statistics/cpu' | 
-'/dedicated/server/{serviceName}/statistics/disk/{disk}/smart' | 
-'/dedicated/server/{serviceName}/statistics/disk/{disk}' | 
-'/dedicated/server/{serviceName}/statistics/disk' | 
-'/dedicated/server/{serviceName}/statistics/motherboard' | 
-'/dedicated/server/{serviceName}/statistics/raid/{unit}' | 
-'/dedicated/server/{serviceName}/statistics/raid/{unit}/volume' | 
-'/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port' | 
-'/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}' | 
-'/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}' | 
-'/dedicated/server/{serviceName}/statistics/raid' | 
-'/dedicated/server/{serviceName}/statistics/partition' | 
-'/dedicated/server/{serviceName}/statistics/partition/{partition}/chart' | 
-'/dedicated/server/{serviceName}/statistics/partition/{partition}' | 
-'/dedicated/server/{serviceName}/statistics/load' | 
-'/dedicated/server/{serviceName}/statistics/memory' | 
-'/dedicated/server/{serviceName}/statistics' | 
-'/dedicated/server/{serviceName}/statistics/connection' | 
-'/dedicated/server/{serviceName}/backupCloudOfferDetails' | 
+'/dedicated/server/{serviceName}/install/status' | 
+'/dedicated/server/{serviceName}/install/compatibleTemplates' | 
+'/dedicated/server/{serviceName}/task/{taskId}' | 
+'/dedicated/server/{serviceName}/task' | 
+'/dedicated/server/{serviceName}/license/compliantWindows' | 
+'/dedicated/server/{serviceName}/license/compliantWindowsSqlServer' | 
 '/dedicated/server/{serviceName}/intervention/{interventionId}' | 
 '/dedicated/server/{serviceName}/intervention' | 
+'/dedicated/server/{serviceName}/burst' | 
+'/dedicated/server/{serviceName}/serviceInfos' | 
+'/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable' | 
+'/dedicated/server/{serviceName}/secondaryDnsNameDomainToken' | 
+'/dedicated/server/{serviceName}/ipCanBeMovedTo' | 
+'/dedicated/server/{serviceName}/spla' | 
+'/dedicated/server/{serviceName}/spla/{id}' | 
+'/dedicated/server/{serviceName}/firewall/binary/compatible' | 
+'/dedicated/server/{serviceName}/firewall/binary/link' | 
+'/dedicated/server/{serviceName}/ipCountryAvailable' | 
+'/dedicated/server/{serviceName}/mrtg' | 
+'/dedicated/server/{serviceName}/statistics/load' | 
+'/dedicated/server/{serviceName}/statistics/pci' | 
+'/dedicated/server/{serviceName}/statistics/motherboard' | 
+'/dedicated/server/{serviceName}/statistics' | 
+'/dedicated/server/{serviceName}/statistics/memory' | 
+'/dedicated/server/{serviceName}/statistics/partition' | 
+'/dedicated/server/{serviceName}/statistics/partition/{partition}' | 
+'/dedicated/server/{serviceName}/statistics/partition/{partition}/chart' | 
+'/dedicated/server/{serviceName}/statistics/os' | 
+'/dedicated/server/{serviceName}/statistics/connection' | 
+'/dedicated/server/{serviceName}/statistics/chart' | 
+'/dedicated/server/{serviceName}/statistics/cpu' | 
+'/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}' | 
+'/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port' | 
+'/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}' | 
+'/dedicated/server/{serviceName}/statistics/raid/{unit}/volume' | 
+'/dedicated/server/{serviceName}/statistics/raid/{unit}' | 
+'/dedicated/server/{serviceName}/statistics/raid' | 
+'/dedicated/server/{serviceName}/statistics/disk' | 
+'/dedicated/server/{serviceName}/statistics/disk/{disk}' | 
+'/dedicated/server/{serviceName}/statistics/disk/{disk}/smart' | 
+'/dedicated/server/{serviceName}/statistics/process' | 
 '/dedicated/server/{serviceName}/ips' | 
-'/dedicated/server/{serviceName}/ipCountryAvailable';
+'/dedicated/server/{serviceName}/option/{option}' | 
+'/dedicated/server/{serviceName}/option' | 
+'/dedicated/server/{serviceName}/specifications/hardware' | 
+'/dedicated/server/{serviceName}/specifications/ip' | 
+'/dedicated/server/{serviceName}/specifications/network' | 
+'/dedicated/server/{serviceName}/networkInterfaceController' | 
+'/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg' | 
+'/dedicated/server/{serviceName}/networkInterfaceController/{mac}' | 
+'/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer' | 
+'/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' | 
+'/dedicated/server/{serviceName}/secondaryDnsDomains' | 
+'/dedicated/server/{serviceName}/backupCloudOfferDetails' | 
+'/dedicated/server/{serviceName}/orderable/professionalUse' | 
+'/dedicated/server/{serviceName}/orderable/kvm' | 
+'/dedicated/server/{serviceName}/orderable/kvmExpress' | 
+'/dedicated/server/{serviceName}/orderable/usbKey' | 
+'/dedicated/server/{serviceName}/orderable/backupStorage' | 
+'/dedicated/server/{serviceName}/orderable/ip' | 
+'/dedicated/server/{serviceName}/orderable/feature' | 
+'/dedicated/server/{serviceName}/orderable/traffic' | 
+'/dedicated/server/{serviceName}/orderable/bandwidthvRack' | 
+'/dedicated/server/{serviceName}/orderable/bandwidth' | 
+'/dedicated/server/{serviceName}/vrack/{vrack}' | 
+'/dedicated/server/{serviceName}/vrack/{vrack}/mrtg' | 
+'/dedicated/server/{serviceName}/vrack' | 
+'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' | 
+'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email' | 
+'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' | 
+'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms' | 
+'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' | 
+'/dedicated/server/{serviceName}/serviceMonitoring' | 
+'/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}' | 
+'/dedicated/server/{serviceName}/virtualNetworkInterface' | 
+'/dedicated/server/{serviceName}/boot/{bootId}' | 
+'/dedicated/server/{serviceName}/boot/{bootId}/option/{option}' | 
+'/dedicated/server/{serviceName}/boot/{bootId}/option' | 
+'/dedicated/server/{serviceName}/boot' | 
+'/dedicated/server/availabilities' | 
+'/dedicated/server/availabilities/raw' | 
+'/dedicated/server' | 
+'/dedicated/server/datacenter/availabilities' | 
+'/dedicated/server/virtualNetworkInterface/{uuid}';
 
-type PathsdedicatedserverPUT = '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' | 
+type PathsDedicatedserverPUT = '/dedicated/server/{serviceName}/features/firewall' | 
+'/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' | 
+'/dedicated/server/{serviceName}' | 
+'/dedicated/server/{serviceName}/burst' | 
+'/dedicated/server/{serviceName}/serviceInfos' | 
+'/dedicated/server/{serviceName}/spla/{id}' | 
+'/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' | 
 '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' | 
 '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' | 
-'/dedicated/server/{serviceName}/spla/{id}' | 
-'/dedicated/server/{serviceName}' | 
-'/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' | 
-'/dedicated/server/{serviceName}/features/firewall' | 
-'/dedicated/server/{serviceName}/serviceInfos' | 
-'/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' | 
-'/dedicated/server/{serviceName}/burst';
+'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}';
 
-type PathsdedicatedserverPOST = '/dedicated/server/{serviceName}/serviceMonitoring' | 
-'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email' | 
-'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms' | 
-'/dedicated/server/{serviceName}/spla/{id}/revoke' | 
-'/dedicated/server/{serviceName}/spla' | 
-'/dedicated/server/{serviceName}/task/{taskId}/cancel' | 
-'/dedicated/server/{serviceName}/terminate' | 
-'/dedicated/server/{serviceName}/virtualMac' | 
-'/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress' | 
+type PathsDedicatedserverPOST = '/dedicated/server/{serviceName}/features/ipmi/access' | 
+'/dedicated/server/{serviceName}/features/ipmi/resetInterface' | 
+'/dedicated/server/{serviceName}/features/ipmi/test' | 
+'/dedicated/server/{serviceName}/features/ipmi/resetSessions' | 
 '/dedicated/server/{serviceName}/features/backupFTP/access' | 
 '/dedicated/server/{serviceName}/features/backupFTP' | 
 '/dedicated/server/{serviceName}/features/backupFTP/password' | 
-'/dedicated/server/{serviceName}/features/backupCloud' | 
 '/dedicated/server/{serviceName}/features/backupCloud/password' | 
-'/dedicated/server/{serviceName}/features/ipmi/resetInterface' | 
-'/dedicated/server/{serviceName}/features/ipmi/test' | 
-'/dedicated/server/{serviceName}/features/ipmi/access' | 
-'/dedicated/server/{serviceName}/features/ipmi/resetSessions' | 
+'/dedicated/server/{serviceName}/features/backupCloud' | 
+'/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress' | 
+'/dedicated/server/{serviceName}/virtualMac' | 
+'/dedicated/server/{serviceName}/authenticationSecret' | 
+'/dedicated/server/{serviceName}/install/start' | 
+'/dedicated/server/{serviceName}/task/{taskId}/cancel' | 
 '/dedicated/server/{serviceName}/license/windows' | 
 '/dedicated/server/{serviceName}/support/replace/hardDiskDrive' | 
-'/dedicated/server/{serviceName}/authenticationSecret' | 
-'/dedicated/server/{serviceName}/reboot' | 
-'/dedicated/server/{serviceName}/secondaryDnsDomains' | 
+'/dedicated/server/{serviceName}/changeContact' | 
 '/dedicated/server/{serviceName}/confirmTermination' | 
-'/dedicated/server/{serviceName}/ipBlockMerge' | 
-'/dedicated/server/{serviceName}/install/start' | 
+'/dedicated/server/{serviceName}/spla' | 
+'/dedicated/server/{serviceName}/spla/{id}/revoke' | 
+'/dedicated/server/{serviceName}/reboot' | 
 '/dedicated/server/{serviceName}/ipMove' | 
-'/dedicated/server/{serviceName}/changeContact';
+'/dedicated/server/{serviceName}/terminate' | 
+'/dedicated/server/{serviceName}/secondaryDnsDomains' | 
+'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email' | 
+'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms' | 
+'/dedicated/server/{serviceName}/serviceMonitoring' | 
+'/dedicated/server/{serviceName}/ipBlockMerge';
 
-type PathsdedicatedserverDELETE = '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' | 
-'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' | 
-'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' | 
-'/dedicated/server/{serviceName}/vrack/{vrack}' | 
-'/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}' | 
-'/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' | 
+type PathsDedicatedserverDELETE = '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' | 
 '/dedicated/server/{serviceName}/features/backupFTP' | 
 '/dedicated/server/{serviceName}/features/backupCloud' | 
+'/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}' | 
+'/dedicated/server/{serviceName}/option/{option}' | 
 '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' | 
-'/dedicated/server/{serviceName}/option/{option}';
+'/dedicated/server/{serviceName}/vrack/{vrack}' | 
+'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' | 
+'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' | 
+'/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}';
 
-class Apidedicatedserver extends ApiCommon {
+export class ApiDedicatedserver extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
-  List the availability of dedicated server
-  List the availability of dedicated server
+  List the operating systems available for a specified hardware reference
+  List the os available for a specified hardware reference
   **/
-  public get(path: '/dedicated/server/datacenter/availabilities', pathParams: null, queryParams: {planCode?: string, server?: string, memory?: string, storage?: string, datacenters?: string, excludeDatacenters?: boolean}): Promise<DedicatedDatacenterAvailability[]>;
+  public get(path: '/dedicated/server/osAvailabilities', pathParams: null, queryParams: {hardware?: string}): Promise<DedicatedOsAvailabilitiesEnum[]>;
+  /**
+  Firewall attached to this server
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/features/firewall', pathParams: {serviceName: string}): Promise<DedicatedServerFirewall>;
+  /**
+  access operations
+  IPMI access method
+  **/
+  public get(path: '/dedicated/server/{serviceName}/features/ipmi/access', pathParams: {serviceName: string}, queryParams: {type?: DedicatedServerIpmiAccessTypeEnum}): Promise<DedicatedServerIpmiAccessValue>;
+  /**
+  Server IPMI interface
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/features/ipmi', pathParams: {serviceName: string}): Promise<DedicatedServerIpmi>;
+  /**
+  test operations
+  Result of http, ping and identification tests on IPMI interface
+  **/
+  public get(path: '/dedicated/server/{serviceName}/features/ipmi/test', pathParams: {serviceName: string}, queryParams: {type?: DedicatedServerIpmiTestTypeEnum}): Promise<DedicatedServerIpmiTestResult>;
+  /**
+  Physical KVM
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/features/kvm', pathParams: {serviceName: string}): Promise<DedicatedServerKvm>;
+  /**
+  List the dedicated.server.BackupFtpAcl objects
+  List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
+  **/
+  public get(path: '/dedicated/server/{serviceName}/features/backupFTP/access', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Backup Ftp ACL for this server and Backup Ftp
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<DedicatedServerBackupFtpAcl>;
+  /**
+  Backup Ftp assigned to this server
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerBackupFtp>;
+  /**
+  authorizableBlocks operations
+  Get all IP blocks that can be used in the ACL
+  **/
+  public get(path: '/dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Backup Cloud assigned to this server
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/features/backupCloud', pathParams: {serviceName: string}): Promise<DedicatedServerBackupCloud>;
+  /**
+  Server informations
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}', pathParams: {serviceName: string}): Promise<DedicatedServerDedicated>;
+  /**
+  A virtual MAC address associated to one or more IPs
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}', pathParams: {serviceName: string, macAddress: string}): Promise<DedicatedServerVirtualMac>;
+  /**
+  List the dedicated.server.VirtualMacManagement objects
+  List of IPs associated to this Virtual MAC
+  **/
+  public get(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress', pathParams: {serviceName: string, macAddress: string}): Promise<string[]>;
+  /**
+   ip address linked with this virtual mac address
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}', pathParams: {serviceName: string, macAddress: string, ipAddress: string}): Promise<DedicatedServerVirtualMacManagement>;
+  /**
+  List the dedicated.server.VirtualMac objects
+  Virtual MAC addresses of the server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/virtualMac', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  templateCapabilities operations
+  Gives some capabilities regarding the template for the current dedicated server.
+  **/
+  public get(path: '/dedicated/server/{serviceName}/install/templateCapabilities', pathParams: {serviceName: string}, queryParams: {templateName?: string}): Promise<DedicatedServerTemplateCaps>;
+  /**
+  hardwareRaidSize operations
+  Get hardware RAID size for a given configuration
+  **/
+  public get(path: '/dedicated/server/{serviceName}/install/hardwareRaidSize', pathParams: {serviceName: string}, queryParams: {partitionSchemeName?: string, templateName?: string}): Promise<DedicatedServerHardwareRaidSize>;
+  /**
+  hardwareRaidProfile operations
+  Retrieve hardware RAID profile
+  **/
+  public get(path: '/dedicated/server/{serviceName}/install/hardwareRaidProfile', pathParams: {serviceName: string}): Promise<DedicatedServerHardwareRaidProfile>;
+  /**
+  compatibleTemplatePartitionSchemes operations
+  Retrieve compatible  install template partitions scheme
+  **/
+  public get(path: '/dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes', pathParams: {serviceName: string}, queryParams: {templateName?: string}): Promise<string[]>;
+  /**
+  status operations
+  Get installation status
+  **/
+  public get(path: '/dedicated/server/{serviceName}/install/status', pathParams: {serviceName: string}): Promise<DedicatedServerInstallationProgressStatus>;
+  /**
+  compatibleTemplates operations
+  Retrieve compatible  install templates names
+  **/
+  public get(path: '/dedicated/server/{serviceName}/install/compatibleTemplates', pathParams: {serviceName: string}): Promise<DedicatedServerInstallTemplate>;
+  /**
+  Server tasks
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DedicatedServerTask>;
+  /**
+  List the dedicated.server.Task objects
+  Dedicated server todos
+  **/
+  public get(path: '/dedicated/server/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {status?: DedicatedTaskStatusEnum, function?: DedicatedTaskFunctionEnum}): Promise<Number[]>;
+  /**
+  compliantWindows operations
+  Get the windows license compliant with your server.
+  **/
+  public get(path: '/dedicated/server/{serviceName}/license/compliantWindows', pathParams: {serviceName: string}): Promise<LicenseWindowsOsVersionEnum[]>;
+  /**
+  compliantWindowsSqlServer operations
+  Get the windows SQL server license compliant with your server.
+  **/
+  public get(path: '/dedicated/server/{serviceName}/license/compliantWindowsSqlServer', pathParams: {serviceName: string}): Promise<LicenseWindowsSqlVersionEnum[]>;
+  /**
+  Intervention made on this server
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/intervention/{interventionId}', pathParams: {serviceName: string, interventionId: Number}): Promise<DedicatedServerIntervention>;
+  /**
+  List the dedicated.server.Intervention objects
+  technical intervention history
+  **/
+  public get(path: '/dedicated/server/{serviceName}/intervention', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Server bandwidth burst details
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/burst', pathParams: {serviceName: string}): Promise<DedicatedServerServerBurst>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  secondaryDnsNameServerAvailable operations
+  Secondary nameServer available for your Server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable', pathParams: {serviceName: string}): Promise<SecondaryDnsSecondaryDNSNameServer>;
+  /**
+  secondaryDnsNameDomainToken operations
+  DNS field to temporarily add to your zone so that we can verify you are the owner of this domain
+  **/
+  public get(path: '/dedicated/server/{serviceName}/secondaryDnsNameDomainToken', pathParams: {serviceName: string}, queryParams: {domain?: string}): Promise<SecondaryDnsSecondaryDNSCheckField>;
+  /**
+  ipCanBeMovedTo operations
+  Check if given IP can be moved to this server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/ipCanBeMovedTo', pathParams: {serviceName: string}, queryParams: {ip?: string}): Promise<void>;
+  /**
+  List the dedicated.server.spla objects
+  Your own SPLA licenses attached to this dedicated server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/spla', pathParams: {serviceName: string}, queryParams: {status?: DedicatedServerSplaStatusEnum, type?: DedicatedServerSplaTypeEnum}): Promise<Number[]>;
+  /**
+  SPLA licenses management
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/spla/{id}', pathParams: {serviceName: string, id: Number}): Promise<DedicatedServerSpla>;
+  /**
+  compatible operations
+  Get name binary for asa
+  **/
+  public get(path: '/dedicated/server/{serviceName}/firewall/binary/compatible', pathParams: {serviceName: string}): Promise<DedicatedBinaryFirewall>;
+  /**
+  link operations
+  Get url of binary to update firewall asa
+  **/
+  public get(path: '/dedicated/server/{serviceName}/firewall/binary/link', pathParams: {serviceName: string}, queryParams: {binaryName?: string}): Promise<DedicatedBinaryFirewallLink>;
+  /**
+  ipCountryAvailable operations
+  Retrieve available country for IP order
+  **/
+  public get(path: '/dedicated/server/{serviceName}/ipCountryAvailable', pathParams: {serviceName: string}): Promise<DedicatedServerIpCountryEnum[]>;
+  /**
+  mrtg operations
+  Retrieve traffic graph values
+  **/
+  public get(path: '/dedicated/server/{serviceName}/mrtg', pathParams: {serviceName: string}, queryParams: {period?: DedicatedServerMrtgPeriodEnum, type?: DedicatedServerMrtgTypeEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
+  /**
+  load operations
+  Get server load
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/load', pathParams: {serviceName: string}): Promise<DedicatedServerRtmLoad>;
+  /**
+  pci operations
+  Get server PCI devices informations
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/pci', pathParams: {serviceName: string}): Promise<DedicatedServerRtmPci[]>;
+  /**
+  motherboard operations
+  Get server motherboard hardware informations
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/motherboard', pathParams: {serviceName: string}): Promise<DedicatedServerRtmMotherboardHw>;
+  /**
+  Servers statistics sent by RTM (Real Time Monitoring)
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics', pathParams: {serviceName: string}): Promise<DedicatedServerRtm>;
+  /**
+  memory operations
+  Get server memory informations
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/memory', pathParams: {serviceName: string}): Promise<DedicatedServerRtmMemory[]>;
+  /**
+  List the dedicated.server.RtmPartition objects
+  Server partitions
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/partition', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Server partitions informations
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/partition/{partition}', pathParams: {serviceName: string, partition: string}): Promise<DedicatedServerRtmPartition>;
+  /**
+  chart operations
+  Retrieve partition charts
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/partition/{partition}/chart', pathParams: {serviceName: string, partition: string}, queryParams: {period?: DedicatedServerRtmChartPeriodEnum}): Promise<ComplexTypeChartReturn>;
+  /**
+  os operations
+  Get server os informations
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/os', pathParams: {serviceName: string}): Promise<DedicatedServerRtmOs>;
+  /**
+  connection operations
+  Get server opened connections
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/connection', pathParams: {serviceName: string}): Promise<DedicatedServerRtmConnection[]>;
+  /**
+  chart operations
+  Retrieve RTM graph values
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/chart', pathParams: {serviceName: string}, queryParams: {type?: DedicatedServerRtmChartTypeEnum, period?: DedicatedServerRtmChartPeriodEnum}): Promise<ComplexTypeChartReturn>;
+  /**
+  cpu operations
+  Get server cpu informations
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/cpu', pathParams: {serviceName: string}): Promise<DedicatedServerRtmCpu>;
+  /**
+  Server raid volume port informations
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}', pathParams: {serviceName: string, unit: string, volume: string, port: string}): Promise<DedicatedServerRtmRaidVolumePort>;
+  /**
+  List the dedicated.server.RtmRaidVolumePort objects
+  Raid unit volume ports
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port', pathParams: {serviceName: string, unit: string, volume: string}): Promise<string[]>;
+  /**
+  Server raid volume information
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}', pathParams: {serviceName: string, unit: string, volume: string}): Promise<DedicatedServerRtmRaidVolume>;
+  /**
+  List the dedicated.server.RtmRaidVolume objects
+  Raid unit volumes
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume', pathParams: {serviceName: string, unit: string}): Promise<string[]>;
+  /**
+  Server raid informations
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/raid/{unit}', pathParams: {serviceName: string, unit: string}): Promise<DedicatedServerRtmRaid>;
+  /**
+  List the dedicated.server.RtmRaid objects
+  Server raid informations
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/raid', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  List the dedicated.server.RtmDisk objects
+  Server disks
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/disk', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Server disks informations
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/disk/{disk}', pathParams: {serviceName: string, disk: string}): Promise<DedicatedServerRtmDisk>;
+  /**
+  smart operations
+  Get disk smart informations
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/disk/{disk}/smart', pathParams: {serviceName: string, disk: string}): Promise<DedicatedServerRtmDiskSmart>;
+  /**
+  process operations
+  Get server process
+  **/
+  public get(path: '/dedicated/server/{serviceName}/statistics/process', pathParams: {serviceName: string}): Promise<DedicatedServerRtmCommandSize[]>;
+  /**
+  ips operations
+  List all ip from server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/ips', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Information about the options of a dedicated server
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/option/{option}', pathParams: {serviceName: string, option: DedicatedServerOptionEnum}): Promise<DedicatedServerOption>;
+  /**
+  List the dedicated.server.Option objects
+  List of dedicated server options
+  **/
+  public get(path: '/dedicated/server/{serviceName}/option', pathParams: {serviceName: string}): Promise<DedicatedServerOptionEnum[]>;
+  /**
+  hardware operations
+  Retrieve hardware informations about this dedicated server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/specifications/hardware', pathParams: {serviceName: string}): Promise<DedicatedServerHardwareSpecifications>;
+  /**
+  ip operations
+  Retrieve IP capabilities about this dedicated server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/specifications/ip', pathParams: {serviceName: string}): Promise<DedicatedServerIpOrderable>;
+  /**
+  network operations
+  Retrieve network informations about this dedicated server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/specifications/network', pathParams: {serviceName: string}): Promise<DedicatedServerNetworkSpecifications>;
+  /**
+  List the dedicated.networkInterfaceController.NetworkInterfaceController objects
+  List server networkInterfaceController
+  **/
+  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController', pathParams: {serviceName: string}, queryParams: {linkType?: DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum}): Promise<string[]>;
+  /**
+  mrtg operations
+  Retrieve traffic graph values
+  **/
+  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg', pathParams: {serviceName: string, mac: string}, queryParams: {type?: DedicatedServerMrtgTypeEnum, period?: DedicatedServerMrtgPeriodEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
+  /**
+  Your networkInterfaceController
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController/{mac}', pathParams: {serviceName: string, mac: string}): Promise<DedicatedNetworkInterfaceControllerNetworkInterfaceController>;
+  /**
+  dnsServer operations
+  domain name server informations
+  **/
+  public get(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer', pathParams: {serviceName: string, domain: string}): Promise<SecondaryDnsSecondaryDNSNameServer>;
+  /**
+  Secondary dns infos
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', pathParams: {serviceName: string, domain: string}): Promise<SecondaryDnsSecondaryDNS>;
+  /**
+  List the secondaryDns.SecondaryDNS objects
+  List of secondary dns domain name
+  **/
+  public get(path: '/dedicated/server/{serviceName}/secondaryDnsDomains', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  backupCloudOfferDetails operations
+  Get details on offered backup cloud if available for the current server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/backupCloudOfferDetails', pathParams: {serviceName: string}): Promise<DedicatedServerBackupBackupOffer>;
+  /**
+  professionalUse operations
+  Is professional use orderable with your server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/orderable/professionalUse', pathParams: {serviceName: string}): Promise<boolean>;
+  /**
+  kvm operations
+  Is a KVM orderable with your server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/orderable/kvm', pathParams: {serviceName: string}): Promise<boolean>;
+  /**
+  kvmExpress operations
+  Is a KVM express orderable with your server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/orderable/kvmExpress', pathParams: {serviceName: string}): Promise<boolean>;
+  /**
+  usbKey operations
+  Get USB keys orderable with your server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/orderable/usbKey', pathParams: {serviceName: string}): Promise<DedicatedServerUsbKeyOrderableDetails>;
+  /**
+  backupStorage operations
+  Get the backup storage orderable with your server.
+  **/
+  public get(path: '/dedicated/server/{serviceName}/orderable/backupStorage', pathParams: {serviceName: string}): Promise<DedicatedServerBackupStorageOrderable>;
+  /**
+  ip operations
+  Get IP orderable with your server.
+  **/
+  public get(path: '/dedicated/server/{serviceName}/orderable/ip', pathParams: {serviceName: string}): Promise<DedicatedServerIpOrderable>;
+  /**
+  feature operations
+  Is this feature orderable with your server
+  **/
+  public get(path: '/dedicated/server/{serviceName}/orderable/feature', pathParams: {serviceName: string}, queryParams: {feature?: DedicatedServerOrderableSysFeatureEnum}): Promise<boolean>;
+  /**
+  traffic operations
+  Get orderable traffic with your server.
+  **/
+  public get(path: '/dedicated/server/{serviceName}/orderable/traffic', pathParams: {serviceName: string}): Promise<DedicatedServerTrafficOrderable>;
+  /**
+  bandwidthvRack operations
+  Get vRack bandwidth orderable with your server.
+  **/
+  public get(path: '/dedicated/server/{serviceName}/orderable/bandwidthvRack', pathParams: {serviceName: string}): Promise<DedicatedServerBandwidthvRackOrderable>;
+  /**
+  bandwidth operations
+  Get bandwidth orderable with your server.
+  **/
+  public get(path: '/dedicated/server/{serviceName}/orderable/bandwidth', pathParams: {serviceName: string}): Promise<DedicatedServerBandwidthOrderable>;
+  /**
+  vrack dedicated server interfaces
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/vrack/{vrack}', pathParams: {serviceName: string, vrack: string}): Promise<VrackDedicatedServer>;
+  /**
+  mrtg operations
+  Retrieve vrack traffic graph values
+  **/
+  public get(path: '/dedicated/server/{serviceName}/vrack/{vrack}/mrtg', pathParams: {serviceName: string, vrack: string}, queryParams: {period?: DedicatedServerMrtgPeriodEnum, type?: DedicatedServerMrtgTypeEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
+  /**
+  List the vrack.dedicatedServer objects
+  Server Vracks
+  **/
+  public get(path: '/dedicated/server/{serviceName}/vrack', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Service monitoring Email alert
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', pathParams: {serviceName: string, monitoringId: Number, alertId: Number}): Promise<DedicatedServerEmailAlert>;
+  /**
+  List the dedicated.server.emailAlert objects
+  Service monitoring alert by email
+  **/
+  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email', pathParams: {serviceName: string, monitoringId: Number}): Promise<Number[]>;
+  /**
+  Monitoring SMS alert details, This service is currently not supported for servers at BHS 
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', pathParams: {serviceName: string, monitoringId: Number, alertId: Number}): Promise<DedicatedServerSmsAlert>;
+  /**
+  List the dedicated.server.smsAlert objects
+  Service monitoring alert by SMS
+  **/
+  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms', pathParams: {serviceName: string, monitoringId: Number}): Promise<Number[]>;
+  /**
+  Service monitoring details
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', pathParams: {serviceName: string, monitoringId: Number}): Promise<DedicatedServerServiceMonitoring>;
+  /**
+  List the dedicated.server.serviceMonitoring objects
+  Service monitoring details
+  **/
+  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Your VirtualNetworkInterface
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}', pathParams: {serviceName: string, uuid: string}): Promise<DedicatedVirtualNetworkInterfaceVirtualNetworkInterface>;
+  /**
+  List the dedicated.virtualNetworkInterface.VirtualNetworkInterface objects
+  List server VirtualNetworkInterfaces
+  **/
+  public get(path: '/dedicated/server/{serviceName}/virtualNetworkInterface', pathParams: {serviceName: string}, queryParams: {name?: string, vrack?: string, mode?: DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum}): Promise<string[]>;
+  /**
+  Available boots
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/boot/{bootId}', pathParams: {serviceName: string, bootId: Number}): Promise<DedicatedServerNetboot>;
+  /**
+  Available boot options
+  Get this object properties
+  **/
+  public get(path: '/dedicated/server/{serviceName}/boot/{bootId}/option/{option}', pathParams: {serviceName: string, bootId: Number, option: DedicatedServerBootOptionEnum}): Promise<DedicatedServerNetbootOption>;
+  /**
+  List the dedicated.server.netbootOption objects
+  Option used on this netboot
+  **/
+  public get(path: '/dedicated/server/{serviceName}/boot/{bootId}/option', pathParams: {serviceName: string, bootId: Number}): Promise<DedicatedServerBootOptionEnum[]>;
+  /**
+  List the dedicated.server.Netboot objects
+  Server compatibles netboots
+  **/
+  public get(path: '/dedicated/server/{serviceName}/boot', pathParams: {serviceName: string}, queryParams: {bootType?: DedicatedServerBootTypeEnum}): Promise<Number[]>;
   /**
   List the availability of dedicated server
   List the availability of dedicated server
@@ -2824,754 +3317,264 @@ class Apidedicatedserver extends ApiCommon {
   List the availability of dedicated server (RAW)
   List the availability of dedicated server
   **/
-  public get(path: '/dedicated/server/availabilities/raw', pathParams: null, queryParams: null): Promise<DedicatedAvailabilitiesRaw[]>;
+  public get(path: '/dedicated/server/availabilities/raw'): Promise<DedicatedAvailabilitiesRaw[]>;
   /**
   Operations about the DEDICATED service
   List available services
   **/
-  public get(path: '/dedicated/server', pathParams: null, queryParams: null): Promise<string[]>;
+  public get(path: '/dedicated/server'): Promise<string[]>;
   /**
-  List the operating systems available for a specified hardware reference
-  List the os available for a specified hardware reference
+  List the availability of dedicated server
+  List the availability of dedicated server
   **/
-  public get(path: '/dedicated/server/osAvailabilities', pathParams: null, queryParams: {hardware?: string}): Promise<DedicatedOsAvailabilitiesEnum[]>;
+  public get(path: '/dedicated/server/datacenter/availabilities', pathParams: null, queryParams: {planCode?: string, server?: string, memory?: string, storage?: string, datacenters?: string, excludeDatacenters?: boolean}): Promise<DedicatedDatacenterAvailability[]>;
   /**
   Get a VirtualNetworkInterface details
   Get VirtualNetworkInterface details
   **/
-  public get(path: '/dedicated/server/virtualNetworkInterface/{uuid}', pathParams: {uuid?: string}, queryParams: null): Promise<DedicatedVirtualNetworkInterfaceVirtualNetworkInterface>;
-  /**
-  List the dedicated.virtualNetworkInterface.VirtualNetworkInterface objects
-  List server VirtualNetworkInterfaces
-  **/
-  public get(path: '/dedicated/server/{serviceName}/virtualNetworkInterface', pathParams: {serviceName?: string}, queryParams: {vrack?: string, name?: string, mode?: DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum}): Promise<string[]>;
-  /**
-  Your VirtualNetworkInterface
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}', pathParams: {serviceName?: string, uuid?: string}, queryParams: null): Promise<DedicatedVirtualNetworkInterfaceVirtualNetworkInterface>;
-  /**
-  mrtg operations
-  Retrieve traffic graph values
-  **/
-  public get(path: '/dedicated/server/{serviceName}/mrtg', pathParams: {serviceName?: string}, queryParams: {type?: DedicatedServerMrtgTypeEnum, period?: DedicatedServerMrtgPeriodEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
-  /**
-  secondaryDnsNameServerAvailable operations
-  Secondary nameServer available for your Server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable', pathParams: {serviceName?: string}, queryParams: null): Promise<SecondaryDnsSecondaryDNSNameServer>;
-  /**
-  secondaryDnsNameDomainToken operations
-  DNS field to temporarily add to your zone so that we can verify you are the owner of this domain
-  **/
-  public get(path: '/dedicated/server/{serviceName}/secondaryDnsNameDomainToken', pathParams: {serviceName?: string}, queryParams: {domain?: string}): Promise<SecondaryDnsSecondaryDNSCheckField>;
-  /**
-  ipCanBeMovedTo operations
-  Check if given IP can be moved to this server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/ipCanBeMovedTo', pathParams: {serviceName?: string}, queryParams: {ip?: string}): Promise<void>;
-  /**
-  mrtg operations
-  Retrieve traffic graph values
-  **/
-  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg', pathParams: {serviceName?: string, mac?: string}, queryParams: {period?: DedicatedServerMrtgPeriodEnum, type?: DedicatedServerMrtgTypeEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
-  /**
-  Your networkInterfaceController
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController/{mac}', pathParams: {serviceName?: string, mac?: string}, queryParams: null): Promise<DedicatedNetworkInterfaceControllerNetworkInterfaceController>;
-  /**
-  List the dedicated.networkInterfaceController.NetworkInterfaceController objects
-  List server networkInterfaceController
-  **/
-  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController', pathParams: {serviceName?: string}, queryParams: {linkType?: DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum}): Promise<string[]>;
-  /**
-  List the dedicated.server.serviceMonitoring objects
-  Service monitoring details
-  **/
-  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring', pathParams: {serviceName?: string}, queryParams: null): Promise<Number[]>;
-  /**
-  Service monitoring details
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', pathParams: {serviceName?: string, monitoringId?: Number}, queryParams: null): Promise<DedicatedServerServiceMonitoring>;
-  /**
-  Service monitoring Email alert
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', pathParams: {serviceName?: string, monitoringId?: Number, alertId?: Number}, queryParams: null): Promise<DedicatedServerEmailAlert>;
-  /**
-  List the dedicated.server.emailAlert objects
-  Service monitoring alert by email
-  **/
-  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email', pathParams: {serviceName?: string, monitoringId?: Number}, queryParams: null): Promise<Number[]>;
-  /**
-  List the dedicated.server.smsAlert objects
-  Service monitoring alert by SMS
-  **/
-  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms', pathParams: {serviceName?: string, monitoringId?: Number}, queryParams: null): Promise<Number[]>;
-  /**
-  Monitoring SMS alert details, This service is currently not supported for servers at BHS 
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', pathParams: {serviceName?: string, monitoringId?: Number, alertId?: Number}, queryParams: null): Promise<DedicatedServerSmsAlert>;
-  /**
-  SPLA licenses management
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/spla/{id}', pathParams: {serviceName?: string, id?: Number}, queryParams: null): Promise<DedicatedServerSpla>;
-  /**
-  List the dedicated.server.spla objects
-  Your own SPLA licenses attached to this dedicated server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/spla', pathParams: {serviceName?: string}, queryParams: {type?: DedicatedServerSplaTypeEnum, status?: DedicatedServerSplaStatusEnum}): Promise<Number[]>;
-  /**
-  List the dedicated.server.Task objects
-  Dedicated server todos
-  **/
-  public get(path: '/dedicated/server/{serviceName}/task', pathParams: {serviceName?: string}, queryParams: {function?: DedicatedTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<Number[]>;
-  /**
-  Server tasks
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/task/{taskId}', pathParams: {serviceName?: string, taskId?: Number}, queryParams: null): Promise<DedicatedServerTask>;
-  /**
-  vrack dedicated server interfaces
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/vrack/{vrack}', pathParams: {serviceName?: string, vrack?: string}, queryParams: null): Promise<VrackDedicatedServer>;
-  /**
-  mrtg operations
-  Retrieve vrack traffic graph values
-  **/
-  public get(path: '/dedicated/server/{serviceName}/vrack/{vrack}/mrtg', pathParams: {serviceName?: string, vrack?: string}, queryParams: {type?: DedicatedServerMrtgTypeEnum, period?: DedicatedServerMrtgPeriodEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
-  /**
-  List the vrack.dedicatedServer objects
-  Server Vracks
-  **/
-  public get(path: '/dedicated/server/{serviceName}/vrack', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  backupStorage operations
-  Get the backup storage orderable with your server.
-  **/
-  public get(path: '/dedicated/server/{serviceName}/orderable/backupStorage', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerBackupStorageOrderable>;
-  /**
-  usbKey operations
-  Get USB keys orderable with your server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/orderable/usbKey', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerUsbKeyOrderableDetails>;
-  /**
-  bandwidthvRack operations
-  Get vRack bandwidth orderable with your server.
-  **/
-  public get(path: '/dedicated/server/{serviceName}/orderable/bandwidthvRack', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerBandwidthvRackOrderable>;
-  /**
-  traffic operations
-  Get orderable traffic with your server.
-  **/
-  public get(path: '/dedicated/server/{serviceName}/orderable/traffic', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerTrafficOrderable>;
-  /**
-  kvm operations
-  Is a KVM orderable with your server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/orderable/kvm', pathParams: {serviceName?: string}, queryParams: null): Promise<boolean>;
-  /**
-  bandwidth operations
-  Get bandwidth orderable with your server.
-  **/
-  public get(path: '/dedicated/server/{serviceName}/orderable/bandwidth', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerBandwidthOrderable>;
-  /**
-  kvmExpress operations
-  Is a KVM express orderable with your server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/orderable/kvmExpress', pathParams: {serviceName?: string}, queryParams: null): Promise<boolean>;
-  /**
-  feature operations
-  Is this feature orderable with your server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/orderable/feature', pathParams: {serviceName?: string}, queryParams: {feature?: DedicatedServerOrderableSysFeatureEnum}): Promise<boolean>;
-  /**
-  ip operations
-  Get IP orderable with your server.
-  **/
-  public get(path: '/dedicated/server/{serviceName}/orderable/ip', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerIpOrderable>;
-  /**
-  professionalUse operations
-  Is professional use orderable with your server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/orderable/professionalUse', pathParams: {serviceName?: string}, queryParams: null): Promise<boolean>;
-  /**
-  Server informations
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerDedicated>;
-  /**
-  List the dedicated.server.VirtualMac objects
-  Virtual MAC addresses of the server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/virtualMac', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-   ip address linked with this virtual mac address
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}', pathParams: {serviceName?: string, macAddress?: string, ipAddress?: string}, queryParams: null): Promise<DedicatedServerVirtualMacManagement>;
-  /**
-  List the dedicated.server.VirtualMacManagement objects
-  List of IPs associated to this Virtual MAC
-  **/
-  public get(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress', pathParams: {serviceName?: string, macAddress?: string}, queryParams: null): Promise<string[]>;
-  /**
-  A virtual MAC address associated to one or more IPs
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}', pathParams: {serviceName?: string, macAddress?: string}, queryParams: null): Promise<DedicatedServerVirtualMac>;
-  /**
-  List the dedicated.server.BackupFtpAcl objects
-  List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
-  **/
-  public get(path: '/dedicated/server/{serviceName}/features/backupFTP/access', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Backup Ftp ACL for this server and Backup Ftp
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName?: string, ipBlock?: string}, queryParams: null): Promise<DedicatedServerBackupFtpAcl>;
-  /**
-  Backup Ftp assigned to this server
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/features/backupFTP', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerBackupFtp>;
-  /**
-  authorizableBlocks operations
-  Get all IP blocks that can be used in the ACL
-  **/
-  public get(path: '/dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Backup Cloud assigned to this server
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/features/backupCloud', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerBackupCloud>;
-  /**
-  Server IPMI interface
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/features/ipmi', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerIpmi>;
-  /**
-  test operations
-  Result of http, ping and identification tests on IPMI interface
-  **/
-  public get(path: '/dedicated/server/{serviceName}/features/ipmi/test', pathParams: {serviceName?: string}, queryParams: {type?: DedicatedServerIpmiTestTypeEnum}): Promise<DedicatedServerIpmiTestResult>;
-  /**
-  access operations
-  IPMI access method
-  **/
-  public get(path: '/dedicated/server/{serviceName}/features/ipmi/access', pathParams: {serviceName?: string}, queryParams: {type?: DedicatedServerIpmiAccessTypeEnum}): Promise<DedicatedServerIpmiAccessValue>;
-  /**
-  Physical KVM
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/features/kvm', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerKvm>;
+  public get(path: '/dedicated/server/virtualNetworkInterface/{uuid}', pathParams: {uuid: string}): Promise<DedicatedVirtualNetworkInterfaceVirtualNetworkInterface>;
+  public get(path: PathsDedicatedserverGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Firewall attached to this server
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/features/firewall', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerFirewall>;
-  /**
-  compliantWindowsSqlServer operations
-  Get the windows SQL server license compliant with your server.
-  **/
-  public get(path: '/dedicated/server/{serviceName}/license/compliantWindowsSqlServer', pathParams: {serviceName?: string}, queryParams: null): Promise<LicenseWindowsSqlVersionEnum[]>;
-  /**
-  compliantWindows operations
-  Get the windows license compliant with your server.
-  **/
-  public get(path: '/dedicated/server/{serviceName}/license/compliantWindows', pathParams: {serviceName?: string}, queryParams: null): Promise<LicenseWindowsOsVersionEnum[]>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  ip operations
-  Retrieve IP capabilities about this dedicated server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/specifications/ip', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerIpOrderable>;
-  /**
-  network operations
-  Retrieve network informations about this dedicated server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/specifications/network', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerNetworkSpecifications>;
-  /**
-  hardware operations
-  Retrieve hardware informations about this dedicated server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/specifications/hardware', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerHardwareSpecifications>;
-  /**
-  List the secondaryDns.SecondaryDNS objects
-  List of secondary dns domain name
-  **/
-  public get(path: '/dedicated/server/{serviceName}/secondaryDnsDomains', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Secondary dns infos
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', pathParams: {serviceName?: string, domain?: string}, queryParams: null): Promise<SecondaryDnsSecondaryDNS>;
-  /**
-  dnsServer operations
-  domain name server informations
-  **/
-  public get(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer', pathParams: {serviceName?: string, domain?: string}, queryParams: null): Promise<SecondaryDnsSecondaryDNSNameServer>;
-  /**
-  compatible operations
-  Get name binary for asa
-  **/
-  public get(path: '/dedicated/server/{serviceName}/firewall/binary/compatible', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedBinaryFirewall>;
-  /**
-  link operations
-  Get url of binary to update firewall asa
-  **/
-  public get(path: '/dedicated/server/{serviceName}/firewall/binary/link', pathParams: {serviceName?: string}, queryParams: {binaryName?: string}): Promise<DedicatedBinaryFirewallLink>;
-  /**
-  Available boot options
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/boot/{bootId}/option/{option}', pathParams: {serviceName?: string, bootId?: Number, option?: DedicatedServerBootOptionEnum}, queryParams: null): Promise<DedicatedServerNetbootOption>;
-  /**
-  List the dedicated.server.netbootOption objects
-  Option used on this netboot
-  **/
-  public get(path: '/dedicated/server/{serviceName}/boot/{bootId}/option', pathParams: {serviceName?: string, bootId?: Number}, queryParams: null): Promise<DedicatedServerBootOptionEnum[]>;
-  /**
-  Available boots
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/boot/{bootId}', pathParams: {serviceName?: string, bootId?: Number}, queryParams: null): Promise<DedicatedServerNetboot>;
-  /**
-  List the dedicated.server.Netboot objects
-  Server compatibles netboots
-  **/
-  public get(path: '/dedicated/server/{serviceName}/boot', pathParams: {serviceName?: string}, queryParams: {bootType?: DedicatedServerBootTypeEnum}): Promise<Number[]>;
-  /**
-  List the dedicated.server.Option objects
-  List of dedicated server options
-  **/
-  public get(path: '/dedicated/server/{serviceName}/option', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerOptionEnum[]>;
-  /**
-  Information about the options of a dedicated server
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/option/{option}', pathParams: {serviceName?: string, option?: DedicatedServerOptionEnum}, queryParams: null): Promise<DedicatedServerOption>;
-  /**
-  compatibleTemplates operations
-  Retrieve compatible  install templates names
-  **/
-  public get(path: '/dedicated/server/{serviceName}/install/compatibleTemplates', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerInstallTemplate>;
-  /**
-  templateCapabilities operations
-  Gives some capabilities regarding the template for the current dedicated server.
-  **/
-  public get(path: '/dedicated/server/{serviceName}/install/templateCapabilities', pathParams: {serviceName?: string}, queryParams: {templateName?: string}): Promise<DedicatedServerTemplateCaps>;
-  /**
-  status operations
-  Get installation status
-  **/
-  public get(path: '/dedicated/server/{serviceName}/install/status', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerInstallationProgressStatus>;
-  /**
-  hardwareRaidSize operations
-  Get hardware RAID size for a given configuration
-  **/
-  public get(path: '/dedicated/server/{serviceName}/install/hardwareRaidSize', pathParams: {serviceName?: string}, queryParams: {templateName?: string, partitionSchemeName?: string}): Promise<DedicatedServerHardwareRaidSize>;
-  /**
-  hardwareRaidProfile operations
-  Retrieve hardware RAID profile
-  **/
-  public get(path: '/dedicated/server/{serviceName}/install/hardwareRaidProfile', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerHardwareRaidProfile>;
-  /**
-  compatibleTemplatePartitionSchemes operations
-  Retrieve compatible  install template partitions scheme
-  **/
-  public get(path: '/dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes', pathParams: {serviceName?: string}, queryParams: {templateName?: string}): Promise<string[]>;
-  /**
-  Server bandwidth burst details
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/burst', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerServerBurst>;
-  /**
-  process operations
-  Get server process
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/process', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerRtmCommandSize[]>;
-  /**
-  pci operations
-  Get server PCI devices informations
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/pci', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerRtmPci[]>;
-  /**
-  os operations
-  Get server os informations
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/os', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerRtmOs>;
-  /**
-  chart operations
-  Retrieve RTM graph values
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/chart', pathParams: {serviceName?: string}, queryParams: {type?: DedicatedServerRtmChartTypeEnum, period?: DedicatedServerRtmChartPeriodEnum}): Promise<ComplexTypeChartReturn>;
-  /**
-  cpu operations
-  Get server cpu informations
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/cpu', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerRtmCpu>;
-  /**
-  smart operations
-  Get disk smart informations
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/disk/{disk}/smart', pathParams: {serviceName?: string, disk?: string}, queryParams: null): Promise<DedicatedServerRtmDiskSmart>;
-  /**
-  Server disks informations
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/disk/{disk}', pathParams: {serviceName?: string, disk?: string}, queryParams: null): Promise<DedicatedServerRtmDisk>;
-  /**
-  List the dedicated.server.RtmDisk objects
-  Server disks
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/disk', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  motherboard operations
-  Get server motherboard hardware informations
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/motherboard', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerRtmMotherboardHw>;
-  /**
-  Server raid informations
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/raid/{unit}', pathParams: {serviceName?: string, unit?: string}, queryParams: null): Promise<DedicatedServerRtmRaid>;
-  /**
-  List the dedicated.server.RtmRaidVolume objects
-  Raid unit volumes
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume', pathParams: {serviceName?: string, unit?: string}, queryParams: null): Promise<string[]>;
-  /**
-  List the dedicated.server.RtmRaidVolumePort objects
-  Raid unit volume ports
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port', pathParams: {serviceName?: string, unit?: string, volume?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Server raid volume port informations
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}', pathParams: {serviceName?: string, unit?: string, volume?: string, port?: string}, queryParams: null): Promise<DedicatedServerRtmRaidVolumePort>;
-  /**
-  Server raid volume information
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}', pathParams: {serviceName?: string, unit?: string, volume?: string}, queryParams: null): Promise<DedicatedServerRtmRaidVolume>;
-  /**
-  List the dedicated.server.RtmRaid objects
-  Server raid informations
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/raid', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  List the dedicated.server.RtmPartition objects
-  Server partitions
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/partition', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  chart operations
-  Retrieve partition charts
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/partition/{partition}/chart', pathParams: {serviceName?: string, partition?: string}, queryParams: {period?: DedicatedServerRtmChartPeriodEnum}): Promise<ComplexTypeChartReturn>;
-  /**
-  Server partitions informations
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/partition/{partition}', pathParams: {serviceName?: string, partition?: string}, queryParams: null): Promise<DedicatedServerRtmPartition>;
-  /**
-  load operations
-  Get server load
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/load', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerRtmLoad>;
-  /**
-  memory operations
-  Get server memory informations
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/memory', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerRtmMemory[]>;
-  /**
-  Servers statistics sent by RTM (Real Time Monitoring)
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerRtm>;
-  /**
-  connection operations
-  Get server opened connections
-  **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/connection', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerRtmConnection[]>;
-  /**
-  backupCloudOfferDetails operations
-  Get details on offered backup cloud if available for the current server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/backupCloudOfferDetails', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerBackupBackupOffer>;
-  /**
-  Intervention made on this server
-  Get this object properties
-  **/
-  public get(path: '/dedicated/server/{serviceName}/intervention/{interventionId}', pathParams: {serviceName?: string, interventionId?: Number}, queryParams: null): Promise<DedicatedServerIntervention>;
-  /**
-  List the dedicated.server.Intervention objects
-  technical intervention history
-  **/
-  public get(path: '/dedicated/server/{serviceName}/intervention', pathParams: {serviceName?: string}, queryParams: null): Promise<Number[]>;
-  /**
-  ips operations
-  List all ip from server
-  **/
-  public get(path: '/dedicated/server/{serviceName}/ips', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  ipCountryAvailable operations
-  Retrieve available country for IP order
-  **/
-  public get(path: '/dedicated/server/{serviceName}/ipCountryAvailable', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerIpCountryEnum[]>;
-  public get(path: PathsdedicatedserverGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
-  /**
-  Service monitoring details
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', pathParams: {serviceName?: string, monitoringId?: Number}, bodyParams: null): Promise<void>;
-  /**
-  Service monitoring Email alert
-  Alter this object properties
-  **/
-  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', pathParams: {serviceName?: string, monitoringId?: Number, alertId?: Number}, bodyParams: null): Promise<void>;
-  /**
-  Monitoring SMS alert details, This service is currently not supported for servers at BHS 
-  Alter this object properties
-  **/
-  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', pathParams: {serviceName?: string, monitoringId?: Number, alertId?: Number}, bodyParams: null): Promise<void>;
-  /**
-  SPLA licenses management
-  Alter this object properties
-  **/
-  public put(path: '/dedicated/server/{serviceName}/spla/{id}', pathParams: {serviceName?: string, id?: Number}, bodyParams: null): Promise<void>;
-  /**
-  Server informations
-  Alter this object properties
-  **/
-  public put(path: '/dedicated/server/{serviceName}', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/features/firewall', pathParams: {serviceName: string}): Promise<void>;
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName?: string, ipBlock?: string}, bodyParams: null): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<void>;
   /**
-  Firewall attached to this server
+  Server informations
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/features/firewall', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  /**
-  Details about a Service
-  Alter this object properties
-  **/
-  public put(path: '/dedicated/server/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  /**
-  Secondary dns infos
-  Alter this object properties
-  **/
-  public put(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', pathParams: {serviceName?: string, domain?: string}, bodyParams: null): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
   /**
   Server bandwidth burst details
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/burst', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathsdedicatedserverPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/dedicated/server/{serviceName}/burst', pathParams: {serviceName: string}): Promise<void>;
   /**
-  List the dedicated.server.serviceMonitoring objects
-  Add a new service monitoring
+  Details about a Service
+  Alter this object properties
   **/
-  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerServiceMonitoring>;
+  public put(path: '/dedicated/server/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
-  List the dedicated.server.emailAlert objects
-  Add a new email alert
+  SPLA licenses management
+  Alter this object properties
   **/
-  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email', pathParams: {serviceName?: string, monitoringId?: Number}, bodyParams: null): Promise<DedicatedServerEmailAlert>;
+  public put(path: '/dedicated/server/{serviceName}/spla/{id}', pathParams: {serviceName: string, id: Number}): Promise<void>;
   /**
-  List the dedicated.server.smsAlert objects
-  Create a SMS alert
+  Secondary dns infos
+  Alter this object properties
   **/
-  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms', pathParams: {serviceName?: string, monitoringId?: Number}, bodyParams: null): Promise<DedicatedServerSmsAlert>;
+  public put(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', pathParams: {serviceName: string, domain: string}): Promise<void>;
   /**
-  revoke operations
-  Revoke an SPLA license
+  Service monitoring Email alert
+  Alter this object properties
   **/
-  public post(path: '/dedicated/server/{serviceName}/spla/{id}/revoke', pathParams: {serviceName?: string, id?: Number}, bodyParams: null): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', pathParams: {serviceName: string, monitoringId: Number, alertId: Number}): Promise<void>;
   /**
-  List the dedicated.server.spla objects
-  Add a new SPLA license
+  Monitoring SMS alert details, This service is currently not supported for servers at BHS 
+  Alter this object properties
   **/
-  public post(path: '/dedicated/server/{serviceName}/spla', pathParams: {serviceName?: string}, bodyParams: null): Promise<Number>;
+  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', pathParams: {serviceName: string, monitoringId: Number, alertId: Number}): Promise<void>;
   /**
-  cancel operations
-  this action stop the task progression if it's possible
+  Service monitoring details
+  Alter this object properties
   **/
-  public post(path: '/dedicated/server/{serviceName}/task/{taskId}/cancel', pathParams: {serviceName?: string, taskId?: Number}, bodyParams: null): Promise<void>;
-  /**
-  Terminate your service
-  Terminate your service
-  **/
-  public post(path: '/dedicated/server/{serviceName}/terminate', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  /**
-  List the dedicated.server.VirtualMac objects
-  Add a virtual mac to an IP address
-  **/
-  public post(path: '/dedicated/server/{serviceName}/virtualMac', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
-  /**
-  List the dedicated.server.VirtualMacManagement objects
-  Add an IP to this Virtual MAC
-  **/
-  public post(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress', pathParams: {serviceName?: string, macAddress?: string}, bodyParams: null): Promise<DedicatedServerTask>;
-  /**
-  List the dedicated.server.BackupFtpAcl objects
-  Create a new Backup FTP ACL
-  **/
-  public post(path: '/dedicated/server/{serviceName}/features/backupFTP/access', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
-  /**
-  Backup Ftp assigned to this server
-  Create a new Backup FTP space
-  **/
-  public post(path: '/dedicated/server/{serviceName}/features/backupFTP', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
-  /**
-  password operations
-  Change your Backup FTP password
-  **/
-  public post(path: '/dedicated/server/{serviceName}/features/backupFTP/password', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
-  /**
-  Backup Cloud assigned to this server
-  Create a new storage backup space associated to server
-  **/
-  public post(path: '/dedicated/server/{serviceName}/features/backupCloud', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerBackupCloud>;
-  /**
-  password operations
-  Change your cloud account password
-  **/
-  public post(path: '/dedicated/server/{serviceName}/features/backupCloud/password', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerBackupBackupPassword>;
-  /**
-  resetInterface operations
-  Reset KVM IPMI interface
-  **/
-  public post(path: '/dedicated/server/{serviceName}/features/ipmi/resetInterface', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
-  /**
-  test operations
-  Launch test on KVM IPMI interface
-  **/
-  public post(path: '/dedicated/server/{serviceName}/features/ipmi/test', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
+  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', pathParams: {serviceName: string, monitoringId: Number}): Promise<void>;
+  public put(path: PathsDedicatedserverPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   access operations
   Request an acces on KVM IPMI interface
   **/
-  public post(path: '/dedicated/server/{serviceName}/features/ipmi/access', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/features/ipmi/access', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  /**
+  resetInterface operations
+  Reset KVM IPMI interface
+  **/
+  public post(path: '/dedicated/server/{serviceName}/features/ipmi/resetInterface', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  /**
+  test operations
+  Launch test on KVM IPMI interface
+  **/
+  public post(path: '/dedicated/server/{serviceName}/features/ipmi/test', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
   resetSessions operations
   Reset KVM IPMI sessions
   **/
-  public post(path: '/dedicated/server/{serviceName}/features/ipmi/resetSessions', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/features/ipmi/resetSessions', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
-  windows operations
-  Add your existing windows license serial to this dedicated server. Will be manageable in /license/windows.
+  List the dedicated.server.BackupFtpAcl objects
+  Create a new Backup FTP ACL
   **/
-  public post(path: '/dedicated/server/{serviceName}/license/windows', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/features/backupFTP/access', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
-  hardDiskDrive operations
-  Ask for a broken HDD replacement
+  Backup Ftp assigned to this server
+  Create a new Backup FTP space
   **/
-  public post(path: '/dedicated/server/{serviceName}/support/replace/hardDiskDrive', pathParams: {serviceName?: string}, bodyParams: null): Promise<SupportNewMessageInfo>;
+  public post(path: '/dedicated/server/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  /**
+  password operations
+  Change your Backup FTP password
+  **/
+  public post(path: '/dedicated/server/{serviceName}/features/backupFTP/password', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  /**
+  password operations
+  Change your cloud account password
+  **/
+  public post(path: '/dedicated/server/{serviceName}/features/backupCloud/password', pathParams: {serviceName: string}): Promise<DedicatedServerBackupBackupPassword>;
+  /**
+  Backup Cloud assigned to this server
+  Create a new storage backup space associated to server
+  **/
+  public post(path: '/dedicated/server/{serviceName}/features/backupCloud', pathParams: {serviceName: string}): Promise<DedicatedServerBackupCloud>;
+  /**
+  List the dedicated.server.VirtualMacManagement objects
+  Add an IP to this Virtual MAC
+  **/
+  public post(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress', pathParams: {serviceName: string, macAddress: string}): Promise<DedicatedServerTask>;
+  /**
+  List the dedicated.server.VirtualMac objects
+  Add a virtual mac to an IP address
+  **/
+  public post(path: '/dedicated/server/{serviceName}/virtualMac', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
   authenticationSecret operations
   Retrieve secret to connect to the server / application
   **/
-  public post(path: '/dedicated/server/{serviceName}/authenticationSecret', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerAccess[]>;
-  /**
-  reboot operations
-  Hard reboot this server
-  **/
-  public post(path: '/dedicated/server/{serviceName}/reboot', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
-  /**
-  List the secondaryDns.SecondaryDNS objects
-  add a domain on secondary dns
-  **/
-  public post(path: '/dedicated/server/{serviceName}/secondaryDnsDomains', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
-  public post(path: '/dedicated/server/{serviceName}/confirmTermination', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  /**
-  ipBlockMerge operations
-  Merge a splitted block and route it to the choosen server. You cannot undo this operation
-  **/
-  public post(path: '/dedicated/server/{serviceName}/ipBlockMerge', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/authenticationSecret', pathParams: {serviceName: string}): Promise<DedicatedServerAccess[]>;
   /**
   start operations
   Start an install
   **/
-  public post(path: '/dedicated/server/{serviceName}/install/start', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/install/start', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
-  ipMove operations
-  Move an Ip failover to this server
+  cancel operations
+  this action stop the task progression if it's possible
   **/
-  public post(path: '/dedicated/server/{serviceName}/ipMove', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/task/{taskId}/cancel', pathParams: {serviceName: string, taskId: Number}): Promise<void>;
+  /**
+  windows operations
+  Add your existing windows license serial to this dedicated server. Will be manageable in /license/windows.
+  **/
+  public post(path: '/dedicated/server/{serviceName}/license/windows', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  /**
+  hardDiskDrive operations
+  Ask for a broken HDD replacement
+  **/
+  public post(path: '/dedicated/server/{serviceName}/support/replace/hardDiskDrive', pathParams: {serviceName: string}): Promise<SupportNewMessageInfo>;
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/dedicated/server/{serviceName}/changeContact', pathParams: {serviceName?: string}, bodyParams: null): Promise<Number[]>;
-  public post(path: PathsdedicatedserverPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/dedicated/server/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
-  Service monitoring details
-  Remove this service monitoring
+  Confirm termination of your service
+  Confirm termination of your service
   **/
-  public delete(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', pathParams: {serviceName?: string, monitoringId?: Number}, bodyParams: null): Promise<void>;
+  public post(path: '/dedicated/server/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
-  Service monitoring Email alert
-  Remove this Email alert monitoring
+  List the dedicated.server.spla objects
+  Add a new SPLA license
   **/
-  public delete(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', pathParams: {serviceName?: string, monitoringId?: Number, alertId?: Number}, bodyParams: null): Promise<void>;
+  public post(path: '/dedicated/server/{serviceName}/spla', pathParams: {serviceName: string}): Promise<Number>;
   /**
-  Monitoring SMS alert details, This service is currently not supported for servers at BHS 
-  Remove this SMS alert
+  revoke operations
+  Revoke an SPLA license
   **/
-  public delete(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', pathParams: {serviceName?: string, monitoringId?: Number, alertId?: Number}, bodyParams: null): Promise<void>;
+  public post(path: '/dedicated/server/{serviceName}/spla/{id}/revoke', pathParams: {serviceName: string, id: Number}): Promise<void>;
   /**
-  vrack dedicated server interfaces
-  remove this server from this vrack
+  reboot operations
+  Hard reboot this server
   **/
-  public delete(path: '/dedicated/server/{serviceName}/vrack/{vrack}', pathParams: {serviceName?: string, vrack?: string}, bodyParams: null): Promise<VrackTask>;
+  public post(path: '/dedicated/server/{serviceName}/reboot', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
-   ip address linked with this virtual mac address
-  Remove this ip from virtual mac , if you remove the last linked Ip, virtualmac will be deleted
+  ipMove operations
+  Move an Ip failover to this server
   **/
-  public delete(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}', pathParams: {serviceName?: string, macAddress?: string, ipAddress?: string}, bodyParams: null): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/ipMove', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/dedicated/server/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  List the secondaryDns.SecondaryDNS objects
+  add a domain on secondary dns
+  **/
+  public post(path: '/dedicated/server/{serviceName}/secondaryDnsDomains', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  List the dedicated.server.emailAlert objects
+  Add a new email alert
+  **/
+  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email', pathParams: {serviceName: string, monitoringId: Number}): Promise<DedicatedServerEmailAlert>;
+  /**
+  List the dedicated.server.smsAlert objects
+  Create a SMS alert
+  **/
+  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms', pathParams: {serviceName: string, monitoringId: Number}): Promise<DedicatedServerSmsAlert>;
+  /**
+  List the dedicated.server.serviceMonitoring objects
+  Add a new service monitoring
+  **/
+  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring', pathParams: {serviceName: string}): Promise<DedicatedServerServiceMonitoring>;
+  /**
+  ipBlockMerge operations
+  Merge a splitted block and route it to the choosen server. You cannot undo this operation
+  **/
+  public post(path: '/dedicated/server/{serviceName}/ipBlockMerge', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: PathsDedicatedserverPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Revoke this ACL
   **/
-  public delete(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName?: string, ipBlock?: string}, bodyParams: null): Promise<DedicatedServerTask>;
+  public delete(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<DedicatedServerTask>;
   /**
   Backup Ftp assigned to this server
   Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED
   **/
-  public delete(path: '/dedicated/server/{serviceName}/features/backupFTP', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
+  public delete(path: '/dedicated/server/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
   Backup Cloud assigned to this server
   Deactivate the cloud backup associated to the server. This does not delete container data.
   **/
-  public delete(path: '/dedicated/server/{serviceName}/features/backupCloud', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public delete(path: '/dedicated/server/{serviceName}/features/backupCloud', pathParams: {serviceName: string}): Promise<void>;
   /**
-  Secondary dns infos
-  remove this domain
+   ip address linked with this virtual mac address
+  Remove this ip from virtual mac , if you remove the last linked Ip, virtualmac will be deleted
   **/
-  public delete(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', pathParams: {serviceName?: string, domain?: string}, bodyParams: null): Promise<void>;
+  public delete(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}', pathParams: {serviceName: string, macAddress: string, ipAddress: string}): Promise<DedicatedServerTask>;
   /**
   Information about the options of a dedicated server
   Release a given option
   **/
-  public delete(path: '/dedicated/server/{serviceName}/option/{option}', pathParams: {serviceName?: string, option?: DedicatedServerOptionEnum}, bodyParams: null): Promise<void>;
-  public delete(path: PathsdedicatedserverDELETE, pathParams?: any, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/dedicated/server/{serviceName}/option/{option}', pathParams: {serviceName: string, option: DedicatedServerOptionEnum}): Promise<void>;
+  /**
+  Secondary dns infos
+  remove this domain
+  **/
+  public delete(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', pathParams: {serviceName: string, domain: string}): Promise<void>;
+  /**
+  vrack dedicated server interfaces
+  remove this server from this vrack
+  **/
+  public delete(path: '/dedicated/server/{serviceName}/vrack/{vrack}', pathParams: {serviceName: string, vrack: string}): Promise<VrackTask>;
+  /**
+  Service monitoring Email alert
+  Remove this Email alert monitoring
+  **/
+  public delete(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', pathParams: {serviceName: string, monitoringId: Number, alertId: Number}): Promise<void>;
+  /**
+  Monitoring SMS alert details, This service is currently not supported for servers at BHS 
+  Remove this SMS alert
+  **/
+  public delete(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', pathParams: {serviceName: string, monitoringId: Number, alertId: Number}): Promise<void>;
+  /**
+  Service monitoring details
+  Remove this service monitoring
+  **/
+  public delete(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', pathParams: {serviceName: string, monitoringId: Number}): Promise<void>;
+  public delete(path: PathsDedicatedserverDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

@@ -4,40 +4,45 @@ import { ApiCommon } from '@ovh-api/common';
  */
 export interface HostingResellerMetaType {
   /**
-   * Region hosting the cloud instance
-   *
-   */
-  region?: string;
-  /**
    * Customer email
    *
    */
   email?: string;
+  /**
+   * Region hosting the cloud instance
+   *
+   */
+  region?: string;
 }
 /**
  * Reseller
  */
 export interface HostingResellerProduct {
   /**
-   * Additional information about the plesk
+   * Current action done on the instance
    *
    */
-  meta?: HostingResellerMetaType;
+  action?: string;
   /**
    * Ip address of the Plesk instance
    *
    */
   ip?: string;
   /**
+   * Additional information about the plesk
+   *
+   */
+  meta?: HostingResellerMetaType;
+  /**
    * Progression of an action on the instance if any
    *
    */
   progress?: Number;
   /**
-   * Current action done on the instance
+   * Status of the instance
    *
    */
-  action?: string;
+  status?: string;
   /**
    * Reseller flavor
    *
@@ -53,46 +58,41 @@ export interface HostingResellerProduct {
    *
    */
   url?: string;
-  /**
-   * Status of the instance
-   *
-   */
-  status?: string;
 }
 /**
  * Plesk instance type details
  */
 export interface HostingResellerProductType {
   /**
-   * Number of allowed databases
+   * Number of allowed customers
    *
    */
-  databases?: Number;
-  /**
-   * Number of allowed email accounts
-   *
-   */
-  emailAccounts?: Number;
-  /**
-   * Disk size of the instance (in GB)
-   *
-   */
-  diskSize?: Number;
+  consumers?: Number;
   /**
    * Instance's cpu
    *
    */
   cpu?: string;
   /**
-   * Number of allowed customers
+   * Number of allowed databases
    *
    */
-  consumers?: Number;
+  databases?: Number;
   /**
-   * Number of allowed websites
+   * Disk size of the instance (in GB)
    *
    */
-  websites?: Number;
+  diskSize?: Number;
+  /**
+   * Number of allowed email accounts
+   *
+   */
+  emailAccounts?: Number;
+  /**
+   * Instance's ram (in GB)
+   *
+   */
+  ram?: Number;
   /**
    * Type name
    *
@@ -104,10 +104,10 @@ export interface HostingResellerProductType {
    */
   vCores?: Number;
   /**
-   * Instance's ram (in GB)
+   * Number of allowed websites
    *
    */
-  ram?: Number;
+  websites?: Number;
 }
 /**
  * Reseller type
@@ -122,25 +122,25 @@ export type ResellerPleskLanguageTypeEnum = 'ar' | 'zh-CN' | 'zh-TW' | 'cs-CZ' |
  */
 export interface ResellerSnapshot {
   /**
-   * Snapshot name
+   * Snapshot creation date
    *
    */
-  snashotName?: string;
+  creationDate?: Date;
   /**
    * Snapshot id
    *
    */
   id?: string;
   /**
+   * Snapshot name
+   *
+   */
+  snashotName?: string;
+  /**
    * Snapshot type
    *
    */
   type?: ResellerSnapshotTypeEnum;
-  /**
-   * Snapshot creation date
-   *
-   */
-  creationDate?: Date;
 }
 /**
  * Possible values for snapshot type
@@ -156,15 +156,25 @@ export interface ResellerTask {
    */
   currentStep?: string;
   /**
+   * Task expected done date
+   *
+   */
+  expectedDoneDate?: Date;
+  /**
+   * Task id
+   *
+   */
+  id?: string;
+  /**
    * Task last update date
    *
    */
   lastUpdateDate?: Date;
   /**
-   * Task expected done date
+   * Linked product
    *
    */
-  expectedDoneDate?: Date;
+  productDomain?: string;
   /**
    * Task percentage progression
    *
@@ -175,16 +185,6 @@ export interface ResellerTask {
    *
    */
   taskName?: string;
-  /**
-   * Task id
-   *
-   */
-  id?: string;
-  /**
-   * Linked product
-   *
-   */
-  productDomain?: string;
   /**
    * Task status
    *
@@ -200,30 +200,30 @@ export type ResellerTaskTypeEnum = 'done' | 'error' | 'doing' | 'todo' | 'unknow
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -238,31 +238,36 @@ export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' |
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
+  /**
+   */
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  engagedUpTo?: Date;
+  contactTech?: string;
   /**
    */
-  contactAdmin?: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -270,126 +275,124 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
   /**
    */
-  creation?: Date;
-  /**
-   */
   status?: ServiceStateEnum;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
 }
-type PathshostingresellerGET = '/hosting/reseller' | 
-'/hosting/reseller/{serviceName}/serviceInfos' | 
+type PathsHostingresellerGET = '/hosting/reseller/{serviceName}/serviceInfos' | 
+'/hosting/reseller/{serviceName}' | 
 '/hosting/reseller/{serviceName}/task' | 
 '/hosting/reseller/{serviceName}/task/{taskId}' | 
 '/hosting/reseller/{serviceName}/resetPasswordUrl' | 
-'/hosting/reseller/{serviceName}' | 
+'/hosting/reseller/{serviceName}/snapshot/{snapshotId}' | 
 '/hosting/reseller/{serviceName}/snapshot' | 
-'/hosting/reseller/{serviceName}/snapshot/{snapshotId}';
+'/hosting/reseller';
 
-type PathshostingresellerPUT = '/hosting/reseller/{serviceName}/serviceInfos';
+type PathsHostingresellerPUT = '/hosting/reseller/{serviceName}/serviceInfos';
 
-type PathshostingresellerPOST = '/hosting/reseller/{serviceName}/reinstall' | 
-'/hosting/reseller/{serviceName}/email' | 
+type PathsHostingresellerPOST = '/hosting/reseller/{serviceName}/reboot' | 
 '/hosting/reseller/{serviceName}/reverse' | 
 '/hosting/reseller/{serviceName}/changeContact' | 
-'/hosting/reseller/{serviceName}/reboot' | 
+'/hosting/reseller/{serviceName}/email' | 
 '/hosting/reseller/{serviceName}/language' | 
+'/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore' | 
 '/hosting/reseller/{serviceName}/snapshot' | 
-'/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore';
+'/hosting/reseller/{serviceName}/reinstall';
 
-class Apihostingreseller extends ApiCommon {
-  /**
-  Operations about the HOSTING_RESELLER service
-  List available services
-  **/
-  public get(path: '/hosting/reseller', pathParams: null, queryParams: null): Promise<string[]>;
+export class ApiHostingreseller extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/hosting/reseller/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  Reseller.list_task
-  Get list of tasks
-  **/
-  public get(path: '/hosting/reseller/{serviceName}/task', pathParams: {serviceName?: string}, queryParams: null): Promise<ResellerTask[]>;
-  /**
-  Reseller.get_task
-  Get task information given its id
-  **/
-  public get(path: '/hosting/reseller/{serviceName}/task/{taskId}', pathParams: {serviceName?: string, taskId?: string}, queryParams: null): Promise<ResellerTask>;
-  /**
-  Reseller.resetPassword
-  Get reset instance password url
-  **/
-  public get(path: '/hosting/reseller/{serviceName}/resetPasswordUrl', pathParams: {serviceName?: string}, queryParams: null): Promise<string>;
+  public get(path: '/hosting/reseller/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Reseller
   Get this object properties
   **/
-  public get(path: '/hosting/reseller/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<HostingResellerProduct>;
+  public get(path: '/hosting/reseller/{serviceName}', pathParams: {serviceName: string}): Promise<HostingResellerProduct>;
   /**
-  Reseller.list_snapshot
-  List instance's current snapshots
+  Reseller.list_task
+  Get list of tasks
   **/
-  public get(path: '/hosting/reseller/{serviceName}/snapshot', pathParams: {serviceName?: string}, queryParams: null): Promise<ResellerSnapshot[]>;
+  public get(path: '/hosting/reseller/{serviceName}/task', pathParams: {serviceName: string}): Promise<ResellerTask[]>;
+  /**
+  Reseller.get_task
+  Get task information given its id
+  **/
+  public get(path: '/hosting/reseller/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: string}): Promise<ResellerTask>;
+  /**
+  Reseller.resetPassword
+  Get reset instance password url
+  **/
+  public get(path: '/hosting/reseller/{serviceName}/resetPasswordUrl', pathParams: {serviceName: string}): Promise<string>;
   /**
   Reseller.get_snapshot
   Detail of a snapshot
   **/
-  public get(path: '/hosting/reseller/{serviceName}/snapshot/{snapshotId}', pathParams: {serviceName?: string, snapshotId?: string}, queryParams: null): Promise<ResellerSnapshot>;
-  public get(path: PathshostingresellerGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/hosting/reseller/{serviceName}/snapshot/{snapshotId}', pathParams: {serviceName: string, snapshotId: string}): Promise<ResellerSnapshot>;
+  /**
+  Reseller.list_snapshot
+  List instance's current snapshots
+  **/
+  public get(path: '/hosting/reseller/{serviceName}/snapshot', pathParams: {serviceName: string}): Promise<ResellerSnapshot[]>;
+  /**
+  Operations about the HOSTING_RESELLER service
+  List available services
+  **/
+  public get(path: '/hosting/reseller'): Promise<string[]>;
+  public get(path: PathsHostingresellerGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/hosting/reseller/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathshostingresellerPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
-  /**
-  Reseller.reinstall
-  Reinstall instance
-  **/
-  public post(path: '/hosting/reseller/{serviceName}/reinstall', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  /**
-  Reseller.change_email
-  Change user email
-  **/
-  public post(path: '/hosting/reseller/{serviceName}/email', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  /**
-  Reseller.set_reverse
-  Set new reverse to ip
-  **/
-  public post(path: '/hosting/reseller/{serviceName}/reverse', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
-  public post(path: '/hosting/reseller/{serviceName}/changeContact', pathParams: {serviceName?: string}, bodyParams: null): Promise<Number[]>;
+  public put(path: '/hosting/reseller/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsHostingresellerPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Reseller.reboot
   Restart instance
   **/
-  public post(path: '/hosting/reseller/{serviceName}/reboot', pathParams: {serviceName?: string}, bodyParams: {hard?: boolean}): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/reboot', pathParams: {serviceName: string}, bodyParams: {hard?: boolean}): Promise<string>;
+  /**
+  Reseller.set_reverse
+  Set new reverse to ip
+  **/
+  public post(path: '/hosting/reseller/{serviceName}/reverse', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  Change the contacts of this service
+  Launch a contact change procedure
+  **/
+  public post(path: '/hosting/reseller/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Reseller.change_email
+  Change user email
+  **/
+  public post(path: '/hosting/reseller/{serviceName}/email', pathParams: {serviceName: string}): Promise<string>;
   /**
   Reseller.change_language
   Change language of the Plesk instance
   **/
-  public post(path: '/hosting/reseller/{serviceName}/language', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  /**
-  Reseller.list_snapshot
-  Make manual snapshot
-  **/
-  public post(path: '/hosting/reseller/{serviceName}/snapshot', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/language', pathParams: {serviceName: string}): Promise<string>;
   /**
   Reseller.restore_snapshot
   Restore a snapshot
   **/
-  public post(path: '/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore', pathParams: {serviceName?: string, snapshotId?: string}, bodyParams: null): Promise<string>;
-  public post(path: PathshostingresellerPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore', pathParams: {serviceName: string, snapshotId: string}): Promise<string>;
+  /**
+  Reseller.list_snapshot
+  Make manual snapshot
+  **/
+  public post(path: '/hosting/reseller/{serviceName}/snapshot', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  Reseller.reinstall
+  Reinstall instance
+  **/
+  public post(path: '/hosting/reseller/{serviceName}/reinstall', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: PathsHostingresellerPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

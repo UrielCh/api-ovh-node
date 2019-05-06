@@ -4,15 +4,10 @@ import { ApiCommon } from '@ovh-api/common';
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
@@ -24,10 +19,15 @@ export interface ServiceRenewType {
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -42,31 +42,36 @@ export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' |
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
   /**
    */
-  engagedUpTo?: Date;
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  contactAdmin?: string;
+  contactTech?: string;
   /**
-   * All the possible renew period of your service in month
-   *
    */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -74,65 +79,63 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
   /**
    */
-  creation?: Date;
-  /**
-   */
   status?: ServiceStateEnum;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
 }
 /**
  * Vip Service
  */
 export interface VipSupportVip {
   /**
-   * VIP universes of this service
-   *
-   */
-  universe?: VipUniverseEnum[];
-  /**
    * Name of the VIP offer
    *
    */
   serviceName?: string;
+  /**
+   * VIP universes of this service
+   *
+   */
+  universe?: VipUniverseEnum[];
 }
 /**
  * Available universe for VIP service
  */
 export type VipUniverseEnum = 'cloud' | 'dedicated' | 'telecom' | 'web';
-type PathsvipGET = '/vip/{serviceName}/serviceInfos' | 
-'/vip/{serviceName}' | 
-'/vip';
+type PathsVipGET = '/vip' | 
+'/vip/{serviceName}/serviceInfos' | 
+'/vip/{serviceName}';
 
-type PathsvipPUT = '/vip/{serviceName}/serviceInfos';
+type PathsVipPUT = '/vip/{serviceName}/serviceInfos';
 
-class Apivip extends ApiCommon {
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/vip/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  Vip Service
-  Get this object properties
-  **/
-  public get(path: '/vip/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<VipSupportVip>;
+export class ApiVip extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Operations about the SUPPORT_PLUS service
   List available services
   **/
-  public get(path: '/vip', pathParams: null, queryParams: null): Promise<string[]>;
-  public get(path: PathsvipGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/vip'): Promise<string[]>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/vip/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  Vip Service
+  Get this object properties
+  **/
+  public get(path: '/vip/{serviceName}', pathParams: {serviceName: string}): Promise<VipSupportVip>;
+  public get(path: PathsVipGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/vip/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathsvipPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/vip/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsVipPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
 }

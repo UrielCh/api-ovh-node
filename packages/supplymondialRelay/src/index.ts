@@ -8,50 +8,45 @@ export type CoreTypesCountryEnum = 'ac' | 'ad' | 'ae' | 'af' | 'ag' | 'ai' | 'al
  */
 export interface SupplyMondialRelay {
   /**
-   * Relay country
-   *
-   */
-  country?: CoreTypesCountryEnum;
-  /**
    * Relay point address
    *
    */
   address?: string;
-  /**
-   * Distance between address and relay point
-   *
-   */
-  distance?: Number;
-  /**
-   * Relay point longitude
-   *
-   */
-  lng?: Number;
   /**
    * City
    *
    */
   city?: string;
   /**
-   * Relay point picture\s URL
-   *
-   */
-  pictureUrl?: string;
-  /**
-   * Relay point opening hours
-   *
-   */
-  opening?: SupplyMondialRelayOpening;
-  /**
-   * Zipcode
-   *
-   */
-  zipcode?: string;
-  /**
    * Relay point closing dates
    *
    */
   closing?: SupplyMondialRelayClosingPeriod[];
+  /**
+   * Relay country
+   *
+   */
+  country?: CoreTypesCountryEnum;
+  /**
+   * Distance between address and relay point
+   *
+   */
+  distance?: Number;
+  /**
+   * Mondial Relay point ID
+   *
+   */
+  id?: string;
+  /**
+   * Relay point latitude
+   *
+   */
+  lat?: Number;
+  /**
+   * Relay point longitude
+   *
+   */
+  lng?: Number;
   /**
    * URL of short map
    *
@@ -63,45 +58,50 @@ export interface SupplyMondialRelay {
    */
   name?: string;
   /**
-   * Mondial Relay point ID
+   * Relay point opening hours
    *
    */
-  id?: string;
+  opening?: SupplyMondialRelayOpening;
   /**
-   * Relay point latitude
+   * Relay point picture\s URL
    *
    */
-  lat?: Number;
+  pictureUrl?: string;
+  /**
+   * Zipcode
+   *
+   */
+  zipcode?: string;
 }
 /**
  * Closing period for mondial relay point
  */
 export interface SupplyMondialRelayClosingPeriod {
   /**
-   * Beginning of closing period
-   *
-   */
-  start?: Date;
-  /**
    * Ending of closing period
    *
    */
   end?: Date;
+  /**
+   * Beginning of closing period
+   *
+   */
+  start?: Date;
 }
 /**
  * Opening range for mondial relay point
  */
 export interface SupplyMondialRelayDayPeriod {
   /**
-   * Starting time (00:00 format)
-   *
-   */
-  start?: string;
-  /**
    * Ending time (00:00 format)
    *
    */
   end?: string;
+  /**
+   * Starting time (00:00 format)
+   *
+   */
+  start?: string;
 }
 /**
  * Day with schedule for mondial relay point opening
@@ -111,7 +111,12 @@ export interface SupplyMondialRelayOpening {
    * Opening range
    *
    */
-  sunday?: SupplyMondialRelayDayPeriod[];
+  friday?: SupplyMondialRelayDayPeriod[];
+  /**
+   * Opening range
+   *
+   */
+  monday?: SupplyMondialRelayDayPeriod[];
   /**
    * Opening range
    *
@@ -121,7 +126,7 @@ export interface SupplyMondialRelayOpening {
    * Opening range
    *
    */
-  tuesday?: SupplyMondialRelayDayPeriod[];
+  sunday?: SupplyMondialRelayDayPeriod[];
   /**
    * Opening range
    *
@@ -131,47 +136,42 @@ export interface SupplyMondialRelayOpening {
    * Opening range
    *
    */
-  friday?: SupplyMondialRelayDayPeriod[];
+  tuesday?: SupplyMondialRelayDayPeriod[];
   /**
    * Opening range
    *
    */
   wednesday?: SupplyMondialRelayDayPeriod[];
-  /**
-   * Opening range
-   *
-   */
-  monday?: SupplyMondialRelayDayPeriod[];
 }
 /**
  * Status and Mondial Relay Point Details
  */
 export interface SupplyMondialRelayResult {
   /**
-   * Array of relay points
-   *
-   */
-  relayPoints?: SupplyMondialRelay[];
-  /**
    * Reference address for finding RelayPoints
    *
    */
   referenceAddress?: string;
+  /**
+   * Array of relay points
+   *
+   */
+  relayPoints?: SupplyMondialRelay[];
 }
 /**
  * Status and Mondial Relay Point Details
  */
 export interface SupplyMondialRelayReturn {
   /**
-   * Relay points list and reference address
-   *
-   */
-  result?: SupplyMondialRelayResult;
-  /**
    * Error
    *
    */
   error?: string;
+  /**
+   * Relay points list and reference address
+   *
+   */
+  result?: SupplyMondialRelayResult;
   /**
    * Request status
    *
@@ -182,13 +182,16 @@ export interface SupplyMondialRelayReturn {
  * Request status
  */
 export type SupplyStatus = 'error' | 'ok' | 'pending';
-type PathssupplymondialRelayPOST = '/supply/mondialRelay';
+type PathsSupplymondialRelayPOST = '/supply/mondialRelay';
 
-class ApisupplymondialRelay extends ApiCommon {
+export class ApiSupplymondialRelay extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Find the 10 nearest MondialRelay points from address or city.
   Find the 10 nearest MondialRelay points from address or city.
   **/
-  public post(path: '/supply/mondialRelay', pathParams: null, bodyParams: null): Promise<SupplyMondialRelayReturn>;
-  public post(path: PathssupplymondialRelayPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/supply/mondialRelay'): Promise<SupplyMondialRelayReturn>;
+  public post(path: PathsSupplymondialRelayPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

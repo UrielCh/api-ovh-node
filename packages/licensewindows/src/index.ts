@@ -12,15 +12,20 @@ export type LicenseLicenseTypeEnum = 'dedicated' | 'dedicatedCloud' | 'dedicated
  */
 export interface LicenseOption {
   /**
+   * Quantity or corresponding label of the designated option enabled on your license
+   *
+   */
+  amount?: string;
+  /**
    * Specifies whether this option can be released or not
    *
    */
   canBeDeleted?: boolean;
   /**
-   * Quantity or corresponding label of the designated option enabled on your license
+   * This option expiration date
    *
    */
-  amount?: string;
+  expirationDate?: Date;
   /**
    * This option designation
    *
@@ -31,11 +36,6 @@ export interface LicenseOption {
    *
    */
   version?: string;
-  /**
-   * This option expiration date
-   *
-   */
-  expirationDate?: Date;
 }
 /**
  * The name of an option currently enabled on your license
@@ -61,21 +61,6 @@ export type LicenseStateEnum = 'ok' | 'released' | 'terminated' | 'toDeliver';
  */
 export interface LicenseTask {
   /**
-   * The last time this Task was updated
-   *
-   */
-  lastUpdate?: Date;
-  /**
-   * This Task name
-   *
-   */
-  name?: string;
-  /**
-   * When was this Task created
-   *
-   */
-  todoDate?: Date;
-  /**
    * This Task description
    *
    */
@@ -86,15 +71,30 @@ export interface LicenseTask {
    */
   doneDate?: Date;
   /**
-   * This Task id
+   * The last time this Task was updated
    *
    */
-  taskId?: Number;
+  lastUpdate?: Date;
+  /**
+   * This Task name
+   *
+   */
+  name?: string;
   /**
    * Current Taks status
    *
    */
   status?: LicenseTaskStateEnum;
+  /**
+   * This Task id
+   *
+   */
+  taskId?: Number;
+  /**
+   * When was this Task created
+   *
+   */
+  todoDate?: Date;
 }
 /**
  * All states a license Task can be in
@@ -106,10 +106,10 @@ export type LicenseTaskStateEnum = 'cancelled' | 'doing' | 'done' | 'error' | 't
 export interface LicenseWindowsOrderConfiguration {
   /**
    */
-  serviceType?: LicenseLicenseTypeEnum;
+  orderableVersions?: LicenseOrderableWindowsCompatibilityInfos[];
   /**
    */
-  orderableVersions?: LicenseOrderableWindowsCompatibilityInfos[];
+  serviceType?: LicenseLicenseTypeEnum;
 }
 /**
  * All versions for Windows products
@@ -124,70 +124,70 @@ export type LicenseWindowsSqlVersionEnum = 'SQL_SERVER_2008_STANDARD_EDITION' | 
  */
 export interface LicenseWindowsWindows {
   /**
+   * This license creation date
+   *
+   */
+  creation?: Date;
+  /**
    * Shall we delete this on expiration ?
    *
    */
   deleteAtExpiration?: boolean;
-  /**
-   * The ip on which this license is attached
-   *
-   */
-  ip?: string;
   /**
    * The internal name of your license
    *
    */
   domain?: string;
   /**
+   * The ip on which this license is attached
+   *
+   */
+  ip?: string;
+  /**
    * The license id on license provider side
    *
    */
   licenseId?: string;
   /**
-   * This license version
-   *
-   */
-  version?: LicenseWindowsOsVersionEnum;
-  /**
-   * This license creation date
-   *
-   */
-  creation?: Date;
-  /**
    * This license state
    *
    */
   status?: LicenseStateEnum;
+  /**
+   * This license version
+   *
+   */
+  version?: LicenseWindowsOsVersionEnum;
 }
 /**
  * Map a possible renew for a specific service
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -210,31 +210,36 @@ export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PE
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
   /**
    */
-  engagedUpTo?: Date;
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  contactAdmin?: string;
+  contactTech?: string;
   /**
-   * All the possible renew period of your service in month
-   *
    */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -242,110 +247,108 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
   /**
    */
-  creation?: Date;
-  /**
-   */
   status?: ServiceStateEnum;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
 }
-type PathslicensewindowsGET = '/license/windows/{serviceName}' | 
+type PathsLicensewindowsGET = '/license/windows/orderableVersions' | 
 '/license/windows/{serviceName}/serviceInfos' | 
 '/license/windows/{serviceName}/option' | 
 '/license/windows/{serviceName}/option/{label}' | 
-'/license/windows/{serviceName}/tasks' | 
+'/license/windows/{serviceName}' | 
 '/license/windows/{serviceName}/tasks/{taskId}' | 
-'/license/windows/orderableVersions' | 
+'/license/windows/{serviceName}/tasks' | 
 '/license/windows';
 
-type PathslicensewindowsPUT = '/license/windows/{serviceName}' | 
-'/license/windows/{serviceName}/serviceInfos';
+type PathsLicensewindowsPUT = '/license/windows/{serviceName}/serviceInfos' | 
+'/license/windows/{serviceName}';
 
-type PathslicensewindowsPOST = '/license/windows/{serviceName}/confirmTermination' | 
+type PathsLicensewindowsPOST = '/license/windows/{serviceName}/confirmTermination' | 
 '/license/windows/{serviceName}/sqlServer' | 
 '/license/windows/{serviceName}/terminate';
 
-type PathslicensewindowsDELETE = '/license/windows/{serviceName}/option/{label}';
+type PathsLicensewindowsDELETE = '/license/windows/{serviceName}/option/{label}';
 
-class Apilicensewindows extends ApiCommon {
-  /**
-  Your Windows license
-  Get this object properties
-  **/
-  public get(path: '/license/windows/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<LicenseWindowsWindows>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/license/windows/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  List the license.Option objects
-  options attached to this license
-  **/
-  public get(path: '/license/windows/{serviceName}/option', pathParams: {serviceName?: string}, queryParams: null): Promise<LicenseOptionLabel[]>;
-  /**
-  Your License options
-  Get this object properties
-  **/
-  public get(path: '/license/windows/{serviceName}/option/{label}', pathParams: {serviceName?: string, label?: LicenseOptionLabel}, queryParams: null): Promise<LicenseOption>;
-  /**
-  List the license.Task objects
-  tasks linked to this license
-  **/
-  public get(path: '/license/windows/{serviceName}/tasks', pathParams: {serviceName?: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
-  /**
-  licenses Todos
-  Get this object properties
-  **/
-  public get(path: '/license/windows/{serviceName}/tasks/{taskId}', pathParams: {serviceName?: string, taskId?: Number}, queryParams: null): Promise<LicenseTask>;
+export class ApiLicensewindows extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Get the orderable Windows versions
   Get the orderable Windows versions
   **/
   public get(path: '/license/windows/orderableVersions', pathParams: null, queryParams: {ip?: string}): Promise<LicenseWindowsOrderConfiguration[]>;
   /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/license/windows/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  List the license.Option objects
+  options attached to this license
+  **/
+  public get(path: '/license/windows/{serviceName}/option', pathParams: {serviceName: string}): Promise<LicenseOptionLabel[]>;
+  /**
+  Your License options
+  Get this object properties
+  **/
+  public get(path: '/license/windows/{serviceName}/option/{label}', pathParams: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseOption>;
+  /**
+  Your Windows license
+  Get this object properties
+  **/
+  public get(path: '/license/windows/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseWindowsWindows>;
+  /**
+  licenses Todos
+  Get this object properties
+  **/
+  public get(path: '/license/windows/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
+  /**
+  List the license.Task objects
+  tasks linked to this license
+  **/
+  public get(path: '/license/windows/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
+  /**
   Operations about the LICENSE service
   List available services
   **/
-  public get(path: '/license/windows', pathParams: null, queryParams: null): Promise<string[]>;
-  public get(path: PathslicensewindowsGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
-  /**
-  Your Windows license
-  Alter this object properties
-  **/
-  public put(path: '/license/windows/{serviceName}', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public get(path: '/license/windows'): Promise<string[]>;
+  public get(path: PathsLicensewindowsGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/windows/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathslicensewindowsPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/license/windows/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  Your Windows license
+  Alter this object properties
+  **/
+  public put(path: '/license/windows/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsLicensewindowsPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/license/windows/{serviceName}/confirmTermination', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
+  public post(path: '/license/windows/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
   sqlServer operations
   Link your own sql server license to this Windows license
   **/
-  public post(path: '/license/windows/{serviceName}/sqlServer', pathParams: {serviceName?: string}, bodyParams: null): Promise<LicenseTask>;
+  public post(path: '/license/windows/{serviceName}/sqlServer', pathParams: {serviceName: string}): Promise<LicenseTask>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/license/windows/{serviceName}/terminate', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  public post(path: PathslicensewindowsPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/license/windows/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: PathsLicensewindowsPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Your License options
   release this Option
   **/
-  public delete(path: '/license/windows/{serviceName}/option/{label}', pathParams: {serviceName?: string, label?: LicenseOptionLabel}, bodyParams: null): Promise<LicenseTask>;
-  public delete(path: PathslicensewindowsDELETE, pathParams?: any, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/license/windows/{serviceName}/option/{label}', pathParams: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseTask>;
+  public delete(path: PathsLicensewindowsDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

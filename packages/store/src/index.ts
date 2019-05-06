@@ -4,60 +4,60 @@ import { ApiCommon } from '@ovh-api/common';
  */
 export interface MarketPlaceContact {
   /**
-   * Zipcode
+   * City
    *
    */
-  zip?: string;
+  city?: string;
   /**
    * Country
    *
    */
   country?: string;
   /**
+   * Email address
+   *
+   */
+  email?: string;
+  /**
    * First name
    *
    */
   firstname?: string;
-  /**
-   * Province name
-   *
-   */
-  province?: string;
-  /**
-   * City
-   *
-   */
-  city?: string;
-  /**
-   * Phone number
-   *
-   */
-  phone?: string;
-  /**
-   * Street address
-   *
-   */
-  street?: string;
   /**
    * Unique identifier
    *
    */
   id?: string;
   /**
+   * Last name
+   *
+   */
+  lastname?: string;
+  /**
+   * Phone number
+   *
+   */
+  phone?: string;
+  /**
+   * Province name
+   *
+   */
+  province?: string;
+  /**
+   * Street address
+   *
+   */
+  street?: string;
+  /**
    * Title
    *
    */
   title?: string;
   /**
-   * Email address
+   * Zipcode
    *
    */
-  email?: string;
-  /**
-   * Last name
-   *
-   */
-  lastname?: string;
+  zip?: string;
 }
 /**
  * Document
@@ -67,22 +67,12 @@ export interface MarketPlaceDocument {
    * str
    *
    */
+  creationDate?: string;
+  /**
+   * str
+   *
+   */
   getUrl?: string;
-  /**
-   * str
-   *
-   */
-  size?: string;
-  /**
-   * str
-   *
-   */
-  putUrl?: string;
-  /**
-   * str
-   *
-   */
-  name?: string;
   /**
    * Unique identifier
    *
@@ -92,7 +82,17 @@ export interface MarketPlaceDocument {
    * str
    *
    */
-  creationDate?: string;
+  name?: string;
+  /**
+   * str
+   *
+   */
+  putUrl?: string;
+  /**
+   * str
+   *
+   */
+  size?: string;
   /**
    * Attached tags
    *
@@ -104,30 +104,30 @@ export interface MarketPlaceDocument {
  */
 export interface MarketPlacePartner {
   /**
-   * ZipCode
+   * Category
    *
    */
-  zip?: string;
-  /**
-   * Country
-   *
-   */
-  country?: string;
+  category?: string;
   /**
    * City
    *
    */
   city?: string;
   /**
-   * Complementary information
+   * Company national identification number
    *
    */
-  otherDetails?: string;
+  companyNationalIdentificationNumber?: string;
   /**
-   * VAT number
+   * str
    *
    */
-  vat?: string;
+  contact?: string;
+  /**
+   * Country
+   *
+   */
+  country?: string;
   /**
    * Complete description
    *
@@ -139,25 +139,25 @@ export interface MarketPlacePartner {
    */
   language?: string;
   /**
-   * Company national identification number
-   *
-   */
-  companyNationalIdentificationNumber?: string;
-  /**
    * Legal form
    *
    */
   legalForm?: string;
   /**
-   * Website address
+   * Organisation display name
    *
    */
-  url?: string;
+  organisationDisplayName?: string;
   /**
    * Organisation name
    *
    */
   organisationName?: string;
+  /**
+   * Complementary information
+   *
+   */
+  otherDetails?: string;
   /**
    * Province name
    *
@@ -169,45 +169,45 @@ export interface MarketPlacePartner {
    */
   street?: string;
   /**
-   * str
+   * Website address
    *
    */
-  contact?: string;
+  url?: string;
   /**
-   * Organisation display name
+   * VAT number
    *
    */
-  organisationDisplayName?: string;
+  vat?: string;
   /**
-   * Category
+   * ZipCode
    *
    */
-  category?: string;
+  zip?: string;
 }
 /**
  * product
  */
 export interface MarketPlacePartnerProduct {
   /**
-   * Additional information
+   * Name of product category
    *
    */
-  otherDetails?: string;
-  /**
-   * Name of product
-   *
-   */
-  name?: string;
+  category?: string;
   /**
    * Description of product
    *
    */
   description?: string;
   /**
-   * Name of product category
+   * Name of product
    *
    */
-  category?: string;
+  name?: string;
+  /**
+   * Additional information
+   *
+   */
+  otherDetails?: string;
 }
 /**
  * Key and value, with proper key strings
@@ -215,192 +215,195 @@ export interface MarketPlacePartnerProduct {
 export interface ComplexTypeSafeKeyValue<T> {
   /**
    */
-  value?: T;
+  key?: string;
   /**
    */
-  key?: string;
+  value?: T;
 }
-type PathsstoreGET = '/store/document' | 
-'/store/document/{documentId}' | 
-'/store/contact' | 
-'/store/contact/{contactId}/document' | 
+type PathsStoreGET = '/store/contact' | 
 '/store/contact/{contactId}' | 
-'/store/partner' | 
-'/store/partner/{partnerId}' | 
+'/store/contact/{contactId}/document' | 
+'/store/document/{documentId}' | 
+'/store/document' | 
 '/store/partner/{partnerId}/product' | 
 '/store/partner/{partnerId}/product/{productId}/document' | 
 '/store/partner/{partnerId}/product/{productId}' | 
-'/store/partner/{partnerId}/document';
-
-type PathsstorePUT = '/store/contact/{contactId}' | 
+'/store/partner/{partnerId}/document' | 
 '/store/partner/{partnerId}' | 
-'/store/partner/{partnerId}/product/{productId}';
+'/store/partner';
 
-type PathsstorePOST = '/store/document' | 
-'/store/document/cors' | 
-'/store/contact' | 
+type PathsStorePUT = '/store/contact/{contactId}' | 
+'/store/partner/{partnerId}/product/{productId}' | 
+'/store/partner/{partnerId}';
+
+type PathsStorePOST = '/store/contact' | 
 '/store/contact/{contactId}/document' | 
-'/store/partner' | 
+'/store/document/cors' | 
+'/store/document' | 
 '/store/partner/{partnerId}/product' | 
 '/store/partner/{partnerId}/product/{productId}/document' | 
-'/store/partner/{partnerId}/document';
+'/store/partner/{partnerId}/document' | 
+'/store/partner';
 
-type PathsstoreDELETE = '/store/document/{documentId}' | 
+type PathsStoreDELETE = '/store/contact/{contactId}' | 
 '/store/contact/{contactId}/document/{documentId}' | 
-'/store/contact/{contactId}' | 
-'/store/partner/{partnerId}' | 
+'/store/document/{documentId}' | 
 '/store/partner/{partnerId}/product/{productId}/document/{documentId}' | 
 '/store/partner/{partnerId}/product/{productId}' | 
-'/store/partner/{partnerId}/document/{documentId}';
+'/store/partner/{partnerId}/document/{documentId}' | 
+'/store/partner/{partnerId}';
 
-class Apistore extends ApiCommon {
-  /**
-  MarketPlaceDocument
-  List current customer documents
-  **/
-  public get(path: '/store/document', pathParams: null, queryParams: null): Promise<MarketPlaceDocument[]>;
-  /**
-  MarketPlaceDocument.documentId
-  Get document info
-  **/
-  public get(path: '/store/document/{documentId}', pathParams: {documentId?: string}, queryParams: null): Promise<MarketPlaceDocument>;
+export class ApiStore extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   MarketPlaceContact
   List current customer contacts
   **/
-  public get(path: '/store/contact', pathParams: null, queryParams: null): Promise<MarketPlaceContact[]>;
-  /**
-  MarketPlaceContact.doc
-  List document associated with contact
-  **/
-  public get(path: '/store/contact/{contactId}/document', pathParams: {contactId?: string}, queryParams: null): Promise<string[]>;
+  public get(path: '/store/contact'): Promise<MarketPlaceContact[]>;
   /**
   MarketPlaceContact.contactId
   Get contact details
   **/
-  public get(path: '/store/contact/{contactId}', pathParams: {contactId?: string}, queryParams: null): Promise<MarketPlaceContact>;
+  public get(path: '/store/contact/{contactId}', pathParams: {contactId: string}): Promise<MarketPlaceContact>;
   /**
-  MarketPlacePartner.search
-  List current customer partners
+  MarketPlaceContact.doc
+  List document associated with contact
   **/
-  public get(path: '/store/partner', pathParams: null, queryParams: null): Promise<MarketPlacePartner[]>;
+  public get(path: '/store/contact/{contactId}/document', pathParams: {contactId: string}): Promise<string[]>;
   /**
-  MarketPlacePartner.get
-  Get partner info
+  MarketPlaceDocument.documentId
+  Get document info
   **/
-  public get(path: '/store/partner/{partnerId}', pathParams: {partnerId?: string}, queryParams: null): Promise<MarketPlacePartner>;
+  public get(path: '/store/document/{documentId}', pathParams: {documentId: string}): Promise<MarketPlaceDocument>;
+  /**
+  MarketPlaceDocument
+  List current customer documents
+  **/
+  public get(path: '/store/document'): Promise<MarketPlaceDocument[]>;
   /**
   MarketPlacePartnerProduct.search
   List partner's products
   **/
-  public get(path: '/store/partner/{partnerId}/product', pathParams: {partnerId?: string}, queryParams: null): Promise<MarketPlacePartnerProduct[]>;
+  public get(path: '/store/partner/{partnerId}/product', pathParams: {partnerId: string}): Promise<MarketPlacePartnerProduct[]>;
   /**
   MarketPlacePartnerProduct.doc
   List document associated with product
   **/
-  public get(path: '/store/partner/{partnerId}/product/{productId}/document', pathParams: {partnerId?: string, productId?: string}, queryParams: null): Promise<string[]>;
+  public get(path: '/store/partner/{partnerId}/product/{productId}/document', pathParams: {partnerId: string, productId: string}): Promise<string[]>;
   /**
   MarketPlacePartnerProduct.get
   Get partner info
   **/
-  public get(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId?: string, productId?: string}, queryParams: null): Promise<MarketPlacePartnerProduct>;
+  public get(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId: string, productId: string}): Promise<MarketPlacePartnerProduct>;
   /**
   MarketPlacePartner.doc
   List document associated with partner
   **/
-  public get(path: '/store/partner/{partnerId}/document', pathParams: {partnerId?: string}, queryParams: null): Promise<string[]>;
-  public get(path: PathsstoreGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/store/partner/{partnerId}/document', pathParams: {partnerId: string}): Promise<string[]>;
+  /**
+  MarketPlacePartner.get
+  Get partner info
+  **/
+  public get(path: '/store/partner/{partnerId}', pathParams: {partnerId: string}): Promise<MarketPlacePartner>;
+  /**
+  MarketPlacePartner.search
+  List current customer partners
+  **/
+  public get(path: '/store/partner'): Promise<MarketPlacePartner[]>;
+  public get(path: PathsStoreGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   MarketPlaceContact.contactId
   Edit contact information
   **/
-  public put(path: '/store/contact/{contactId}', pathParams: {contactId?: string}, bodyParams: null): Promise<MarketPlaceContact>;
-  /**
-  MarketPlacePartner.get
-  Edit partner info
-  **/
-  public put(path: '/store/partner/{partnerId}', pathParams: {partnerId?: string}, bodyParams: null): Promise<MarketPlacePartner>;
+  public put(path: '/store/contact/{contactId}', pathParams: {contactId: string}): Promise<MarketPlaceContact>;
   /**
   MarketPlacePartnerProduct.get
   Edit product info
   **/
-  public put(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId?: string, productId?: string}, bodyParams: null): Promise<MarketPlacePartnerProduct>;
-  public put(path: PathsstorePUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId: string, productId: string}): Promise<MarketPlacePartnerProduct>;
   /**
-  MarketPlaceDocument
-  Create a document
+  MarketPlacePartner.get
+  Edit partner info
   **/
-  public post(path: '/store/document', pathParams: null, bodyParams: null): Promise<MarketPlaceDocument>;
-  /**
-  MarketPlaceDocument
-  Add CORS support on your container
-  **/
-  public post(path: '/store/document/cors', pathParams: null, bodyParams: null): Promise<void>;
+  public put(path: '/store/partner/{partnerId}', pathParams: {partnerId: string}): Promise<MarketPlacePartner>;
+  public put(path: PathsStorePUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   MarketPlaceContact
   Create a 'marketplace' contact for current nic
   **/
-  public post(path: '/store/contact', pathParams: null, bodyParams: null): Promise<MarketPlaceContact>;
+  public post(path: '/store/contact'): Promise<MarketPlaceContact>;
   /**
   MarketPlaceContact.doc
   Add a document to a contact
   **/
-  public post(path: '/store/contact/{contactId}/document', pathParams: {contactId?: string}, bodyParams: null): Promise<string[]>;
+  public post(path: '/store/contact/{contactId}/document', pathParams: {contactId: string}): Promise<string[]>;
   /**
-  MarketPlacePartner.search
-  Create a 'marketplace' partner for current nic
+  MarketPlaceDocument
+  Add CORS support on your container
   **/
-  public post(path: '/store/partner', pathParams: null, bodyParams: null): Promise<MarketPlacePartner>;
+  public post(path: '/store/document/cors'): Promise<void>;
+  /**
+  MarketPlaceDocument
+  Create a document
+  **/
+  public post(path: '/store/document'): Promise<MarketPlaceDocument>;
   /**
   MarketPlacePartnerProduct.search
   Create a new product for partner
   **/
-  public post(path: '/store/partner/{partnerId}/product', pathParams: {partnerId?: string}, bodyParams: null): Promise<MarketPlacePartnerProduct>;
+  public post(path: '/store/partner/{partnerId}/product', pathParams: {partnerId: string}): Promise<MarketPlacePartnerProduct>;
   /**
   MarketPlacePartnerProduct.doc
   Add a document to a product
   **/
-  public post(path: '/store/partner/{partnerId}/product/{productId}/document', pathParams: {partnerId?: string, productId?: string}, bodyParams: null): Promise<string[]>;
+  public post(path: '/store/partner/{partnerId}/product/{productId}/document', pathParams: {partnerId: string, productId: string}): Promise<string[]>;
   /**
   MarketPlacePartner.doc
   Add a document to a partner
   **/
-  public post(path: '/store/partner/{partnerId}/document', pathParams: {partnerId?: string}, bodyParams: null): Promise<string[]>;
-  public post(path: PathsstorePOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/store/partner/{partnerId}/document', pathParams: {partnerId: string}): Promise<string[]>;
   /**
-  MarketPlaceDocument.documentId
-  Delete document
+  MarketPlacePartner.search
+  Create a 'marketplace' partner for current nic
   **/
-  public delete(path: '/store/document/{documentId}', pathParams: {documentId?: string}, bodyParams: null): Promise<string>;
-  /**
-  MarketPlaceContact.doc_id
-  Unlink a document from a contact
-  **/
-  public delete(path: '/store/contact/{contactId}/document/{documentId}', pathParams: {contactId?: string, documentId?: string}, bodyParams: null): Promise<string[]>;
+  public post(path: '/store/partner'): Promise<MarketPlacePartner>;
+  public post(path: PathsStorePOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   MarketPlaceContact.contactId
   Remove an existing contact
   **/
-  public delete(path: '/store/contact/{contactId}', pathParams: {contactId?: string}, bodyParams: null): Promise<string>;
+  public delete(path: '/store/contact/{contactId}', pathParams: {contactId: string}): Promise<string>;
   /**
-  MarketPlacePartner.get
-  Delete partner
+  MarketPlaceContact.doc_id
+  Unlink a document from a contact
   **/
-  public delete(path: '/store/partner/{partnerId}', pathParams: {partnerId?: string}, bodyParams: null): Promise<string>;
+  public delete(path: '/store/contact/{contactId}/document/{documentId}', pathParams: {contactId: string, documentId: string}): Promise<string[]>;
+  /**
+  MarketPlaceDocument.documentId
+  Delete document
+  **/
+  public delete(path: '/store/document/{documentId}', pathParams: {documentId: string}): Promise<string>;
   /**
   MarketPlacePartnerProduct.doc_id
   Unlink a document from a product
   **/
-  public delete(path: '/store/partner/{partnerId}/product/{productId}/document/{documentId}', pathParams: {partnerId?: string, productId?: string, documentId?: string}, bodyParams: null): Promise<string[]>;
+  public delete(path: '/store/partner/{partnerId}/product/{productId}/document/{documentId}', pathParams: {partnerId: string, productId: string, documentId: string}): Promise<string[]>;
   /**
   MarketPlacePartnerProduct.get
   Delete product
   **/
-  public delete(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId?: string, productId?: string}, bodyParams: null): Promise<string>;
+  public delete(path: '/store/partner/{partnerId}/product/{productId}', pathParams: {partnerId: string, productId: string}): Promise<string>;
   /**
   MarketPlacePartner.doc_id
   Unlink a document from a partner
   **/
-  public delete(path: '/store/partner/{partnerId}/document/{documentId}', pathParams: {partnerId?: string, documentId?: string}, bodyParams: null): Promise<string[]>;
-  public delete(path: PathsstoreDELETE, pathParams?: any, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/store/partner/{partnerId}/document/{documentId}', pathParams: {partnerId: string, documentId: string}): Promise<string[]>;
+  /**
+  MarketPlacePartner.get
+  Delete partner
+  **/
+  public delete(path: '/store/partner/{partnerId}', pathParams: {partnerId: string}): Promise<string>;
+  public delete(path: PathsStoreDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

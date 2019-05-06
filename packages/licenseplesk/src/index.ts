@@ -13,10 +13,10 @@ export type LicenseChangeIpMessageEnum = 'OK' | 'destinationNotAllowed' | 'licen
 export interface LicenseChangeIpStatus {
   /**
    */
-  success?: boolean;
+  message?: LicenseChangeIpMessageEnum;
   /**
    */
-  message?: LicenseChangeIpMessageEnum;
+  success?: boolean;
 }
 /**
  * All quantities of domain available for a license
@@ -31,15 +31,20 @@ export type LicenseLicenseTypeEnum = 'dedicated' | 'dedicatedCloud' | 'dedicated
  */
 export interface LicenseOption {
   /**
+   * Quantity or corresponding label of the designated option enabled on your license
+   *
+   */
+  amount?: string;
+  /**
    * Specifies whether this option can be released or not
    *
    */
   canBeDeleted?: boolean;
   /**
-   * Quantity or corresponding label of the designated option enabled on your license
+   * This option expiration date
    *
    */
-  amount?: string;
+  expirationDate?: Date;
   /**
    * This option designation
    *
@@ -50,11 +55,6 @@ export interface LicenseOption {
    *
    */
   version?: string;
-  /**
-   * This option expiration date
-   *
-   */
-  expirationDate?: Date;
 }
 /**
  * The name of an option currently enabled on your license
@@ -73,22 +73,22 @@ export interface LicenseOrderablePleskCompatibilityInfos {
   canHavePowerPack?: boolean;
   /**
    */
-  compliantApplicationSets?: LicensePleskApplicationSetEnum[];
-  /**
-   */
   canHaveResellerManagement?: boolean;
-  /**
-   */
-  compliantLanguagePack?: LicenseOrderablePleskLanguagePackEnum[];
-  /**
-   */
-  compliantAntivirus?: LicenseOrderableAntivirusEnum[];
   /**
    */
   canHaveWordpressToolkit?: boolean;
   /**
    */
+  compliantAntivirus?: LicenseOrderableAntivirusEnum[];
+  /**
+   */
+  compliantApplicationSets?: LicensePleskApplicationSetEnum[];
+  /**
+   */
   compliantDomains?: LicenseOrderablePleskDomainNumberEnum[];
+  /**
+   */
+  compliantLanguagePack?: LicenseOrderablePleskLanguagePackEnum[];
   /**
    */
   potentialProblems?: LicensePotentialProblemPleskEnum[];
@@ -114,10 +114,10 @@ export type LicensePleskApplicationSetEnum = 'applicationpack' | 'developerpack'
 export interface LicensePleskOrderConfiguration {
   /**
    */
-  serviceType?: LicenseLicenseTypeEnum;
+  orderableVersions?: LicenseOrderablePleskCompatibilityInfos[];
   /**
    */
-  orderableVersions?: LicenseOrderablePleskCompatibilityInfos[];
+  serviceType?: LicenseLicenseTypeEnum;
 }
 /**
  * All versions available for Plesk products
@@ -136,21 +136,6 @@ export type LicenseStateEnum = 'ok' | 'released' | 'terminated' | 'toDeliver';
  */
 export interface LicenseTask {
   /**
-   * The last time this Task was updated
-   *
-   */
-  lastUpdate?: Date;
-  /**
-   * This Task name
-   *
-   */
-  name?: string;
-  /**
-   * When was this Task created
-   *
-   */
-  todoDate?: Date;
-  /**
    * This Task description
    *
    */
@@ -161,15 +146,30 @@ export interface LicenseTask {
    */
   doneDate?: Date;
   /**
-   * This Task id
+   * The last time this Task was updated
    *
    */
-  taskId?: Number;
+  lastUpdate?: Date;
+  /**
+   * This Task name
+   *
+   */
+  name?: string;
   /**
    * Current Taks status
    *
    */
   status?: LicenseTaskStateEnum;
+  /**
+   * This Task id
+   *
+   */
+  taskId?: Number;
+  /**
+   * When was this Task created
+   *
+   */
+  todoDate?: Date;
 }
 /**
  * All states a license Task can be in
@@ -180,15 +180,15 @@ export type LicenseTaskStateEnum = 'cancelled' | 'doing' | 'done' | 'error' | 't
  */
 export interface LicensePleskPlesk {
   /**
+   * This license creation date
+   *
+   */
+  creation?: Date;
+  /**
    * Shall we delete this on expiration ?
    *
    */
   deleteAtExpiration?: boolean;
-  /**
-   * The ip on which this license is attached
-   *
-   */
-  ip?: string;
   /**
    * The internal name of your license
    *
@@ -200,6 +200,21 @@ export interface LicensePleskPlesk {
    */
   domainNumber?: LicenseDomainNumberEnum;
   /**
+   * This license Information key
+   *
+   */
+  informationKey?: string;
+  /**
+   * The ip on which this license is attached
+   *
+   */
+  ip?: string;
+  /**
+   * This license key
+   *
+   */
+  key?: string;
+  /**
    * The license id on license provider side
    *
    */
@@ -210,60 +225,45 @@ export interface LicensePleskPlesk {
    */
   productKey?: string;
   /**
-   * This license version
-   *
-   */
-  version?: LicensePleskVersionEnum;
-  /**
-   * This license Information key
-   *
-   */
-  informationKey?: string;
-  /**
-   * This license key
-   *
-   */
-  key?: string;
-  /**
-   * This license creation date
-   *
-   */
-  creation?: Date;
-  /**
    * This license state
    *
    */
   status?: LicenseStateEnum;
+  /**
+   * This license version
+   *
+   */
+  version?: LicensePleskVersionEnum;
 }
 /**
  * Map a possible renew for a specific service
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -286,31 +286,36 @@ export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PE
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
+  /**
+   */
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  engagedUpTo?: Date;
+  contactTech?: string;
   /**
    */
-  contactAdmin?: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -318,122 +323,120 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
   /**
    */
-  creation?: Date;
-  /**
-   */
   status?: ServiceStateEnum;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
 }
-type PathslicensepleskGET = '/license/plesk/orderableVersions' | 
-'/license/plesk' | 
-'/license/plesk/{serviceName}/option' | 
-'/license/plesk/{serviceName}/option/{label}' | 
+type PathsLicensepleskGET = '/license/plesk/orderableVersions' | 
 '/license/plesk/{serviceName}/serviceInfos' | 
-'/license/plesk/{serviceName}' | 
-'/license/plesk/{serviceName}/canLicenseBeMovedTo' | 
-'/license/plesk/{serviceName}/tasks' | 
 '/license/plesk/{serviceName}/tasks/{taskId}' | 
-'/license/plesk/{serviceName}/allowedDestinationIp';
+'/license/plesk/{serviceName}/tasks' | 
+'/license/plesk/{serviceName}/option/{label}' | 
+'/license/plesk/{serviceName}/option' | 
+'/license/plesk/{serviceName}/canLicenseBeMovedTo' | 
+'/license/plesk/{serviceName}/allowedDestinationIp' | 
+'/license/plesk/{serviceName}' | 
+'/license/plesk';
 
-type PathslicensepleskPUT = '/license/plesk/{serviceName}/serviceInfos' | 
+type PathsLicensepleskPUT = '/license/plesk/{serviceName}/serviceInfos' | 
 '/license/plesk/{serviceName}';
 
-type PathslicensepleskPOST = '/license/plesk/{serviceName}/terminate' | 
+type PathsLicensepleskPOST = '/license/plesk/{serviceName}/changeIp' | 
 '/license/plesk/{serviceName}/confirmTermination' | 
-'/license/plesk/{serviceName}/changeIp';
+'/license/plesk/{serviceName}/terminate';
 
-type PathslicensepleskDELETE = '/license/plesk/{serviceName}/option/{label}';
+type PathsLicensepleskDELETE = '/license/plesk/{serviceName}/option/{label}';
 
-class Apilicenseplesk extends ApiCommon {
+export class ApiLicenseplesk extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Get the orderable Plesk versions and their associated compatibilities
   Get the orderable Plesk versions and their associated compatibilities
   **/
   public get(path: '/license/plesk/orderableVersions', pathParams: null, queryParams: {ip?: string}): Promise<LicensePleskOrderConfiguration[]>;
   /**
-  Operations about the LICENSE service
-  List available services
-  **/
-  public get(path: '/license/plesk', pathParams: null, queryParams: null): Promise<string[]>;
-  /**
-  List the license.Option objects
-  options attached to this license
-  **/
-  public get(path: '/license/plesk/{serviceName}/option', pathParams: {serviceName?: string}, queryParams: null): Promise<LicenseOptionLabel[]>;
-  /**
-  Your License options
-  Get this object properties
-  **/
-  public get(path: '/license/plesk/{serviceName}/option/{label}', pathParams: {serviceName?: string, label?: LicenseOptionLabel}, queryParams: null): Promise<LicenseOption>;
-  /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/license/plesk/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  Your Plesk license
-  Get this object properties
-  **/
-  public get(path: '/license/plesk/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<LicensePleskPlesk>;
-  /**
-  canLicenseBeMovedTo operations
-  Will tell if the ip can accept the license
-  **/
-  public get(path: '/license/plesk/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName?: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
-  /**
-  List the license.Task objects
-  tasks linked to this license
-  **/
-  public get(path: '/license/plesk/{serviceName}/tasks', pathParams: {serviceName?: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
+  public get(path: '/license/plesk/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   licenses Todos
   Get this object properties
   **/
-  public get(path: '/license/plesk/{serviceName}/tasks/{taskId}', pathParams: {serviceName?: string, taskId?: Number}, queryParams: null): Promise<LicenseTask>;
+  public get(path: '/license/plesk/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
+  /**
+  List the license.Task objects
+  tasks linked to this license
+  **/
+  public get(path: '/license/plesk/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  /**
+  Your License options
+  Get this object properties
+  **/
+  public get(path: '/license/plesk/{serviceName}/option/{label}', pathParams: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseOption>;
+  /**
+  List the license.Option objects
+  options attached to this license
+  **/
+  public get(path: '/license/plesk/{serviceName}/option', pathParams: {serviceName: string}): Promise<LicenseOptionLabel[]>;
+  /**
+  canLicenseBeMovedTo operations
+  Will tell if the ip can accept the license
+  **/
+  public get(path: '/license/plesk/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
   /**
   allowedDestinationIp operations
   Returns an array of ips where the license can be moved to
   **/
-  public get(path: '/license/plesk/{serviceName}/allowedDestinationIp', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  public get(path: PathslicensepleskGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/license/plesk/{serviceName}/allowedDestinationIp', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Your Plesk license
+  Get this object properties
+  **/
+  public get(path: '/license/plesk/{serviceName}', pathParams: {serviceName: string}): Promise<LicensePleskPlesk>;
+  /**
+  Operations about the LICENSE service
+  List available services
+  **/
+  public get(path: '/license/plesk'): Promise<string[]>;
+  public get(path: PathsLicensepleskGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/plesk/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public put(path: '/license/plesk/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
   Your Plesk license
   Alter this object properties
   **/
-  public put(path: '/license/plesk/{serviceName}', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathslicensepleskPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
-  /**
-  Terminate your service
-  Terminate your service
-  **/
-  public post(path: '/license/plesk/{serviceName}/terminate', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
-  public post(path: '/license/plesk/{serviceName}/confirmTermination', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
+  public put(path: '/license/plesk/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsLicensepleskPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   changeIp operations
   Move this license to another Ip
   **/
-  public post(path: '/license/plesk/{serviceName}/changeIp', pathParams: {serviceName?: string}, bodyParams: null): Promise<LicenseTask>;
-  public post(path: PathslicensepleskPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/license/plesk/{serviceName}/changeIp', pathParams: {serviceName: string}): Promise<LicenseTask>;
+  /**
+  Confirm termination of your service
+  Confirm termination of your service
+  **/
+  public post(path: '/license/plesk/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/license/plesk/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: PathsLicensepleskPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Your License options
   release this Option
   **/
-  public delete(path: '/license/plesk/{serviceName}/option/{label}', pathParams: {serviceName?: string, label?: LicenseOptionLabel}, bodyParams: null): Promise<LicenseTask>;
-  public delete(path: PathslicensepleskDELETE, pathParams?: any, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/license/plesk/{serviceName}/option/{label}', pathParams: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseTask>;
+  public delete(path: PathsLicensepleskDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

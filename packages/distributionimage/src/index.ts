@@ -4,11 +4,6 @@ import { ApiCommon } from '@ovh-api/common';
  */
 export interface DistributionImage {
   /**
-   * The service type name
-   *
-   */
-  service?: DistributionImageService;
-  /**
    * The image name
    *
    */
@@ -23,21 +18,26 @@ export interface DistributionImage {
    *
    */
   properties?: DistributionImageProperties;
+  /**
+   * The service type name
+   *
+   */
+  service?: DistributionImageService;
 }
 /**
  * An image package description
  */
 export interface DistributionImagePackage {
   /**
-   * Package name
-   *
-   */
-  name?: string;
-  /**
    * Package alias
    *
    */
   alias?: string;
+  /**
+   * Package name
+   *
+   */
+  name?: string;
   /**
    * Package version
    *
@@ -62,19 +62,22 @@ export type DistributionImagePropertiesCategory = 'none' | 'bare' | 'panel' | 'c
  * Description not available
  */
 export type DistributionImageService = 'vps' | 'dedicated' | 'cloud' | 'dedicatedCloud';
-type PathsdistributionimageGET = '/distribution/image/{serviceType}/{imageName}' | 
+type PathsDistributionimageGET = '/distribution/image/{serviceType}/{imageName}' | 
 '/distribution/image/{serviceType}';
 
-class Apidistributionimage extends ApiCommon {
+export class ApiDistributionimage extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Missing description
   Show image details
   **/
-  public get(path: '/distribution/image/{serviceType}/{imageName}', pathParams: {serviceType?: DistributionImageService, imageName?: string}, queryParams: null): Promise<DistributionImage>;
+  public get(path: '/distribution/image/{serviceType}/{imageName}', pathParams: {serviceType: DistributionImageService, imageName: string}): Promise<DistributionImage>;
   /**
   Missing description
   List images for a service
   **/
-  public get(path: '/distribution/image/{serviceType}', pathParams: {serviceType?: DistributionImageService}, queryParams: null): Promise<string[]>;
-  public get(path: PathsdistributionimageGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/distribution/image/{serviceType}', pathParams: {serviceType: DistributionImageService}): Promise<string[]>;
+  public get(path: PathsDistributionimageGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
 }

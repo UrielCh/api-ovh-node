@@ -5,20 +5,20 @@ import { ApiCommon } from '@ovh-api/common';
 export interface CdnWebstorageAccount {
   /**
    */
+  domain?: string;
+  /**
+   */
   server?: string;
   /**
    * value in Bytes
    *
    */
-  storageUsage?: Number;
-  /**
-   */
-  domain?: string;
+  storageLimit?: Number;
   /**
    * value in Bytes
    *
    */
-  storageLimit?: Number;
+  storageUsage?: Number;
 }
 /**
  * A structure with credentials for using openstack account
@@ -26,13 +26,13 @@ export interface CdnWebstorageAccount {
 export interface CdnWebstorageAccountCredentials {
   /**
    */
-  password?: string;
-  /**
-   */
   endpoint?: string;
   /**
    */
   login?: string;
+  /**
+   */
+  password?: string;
   /**
    */
   tenant?: string;
@@ -61,30 +61,30 @@ export type CdnWebstorageStatsTypeEnum = 'backend' | 'cdn' | 'quota';
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -99,31 +99,36 @@ export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' |
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
+  /**
+   */
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  engagedUpTo?: Date;
+  contactTech?: string;
   /**
    */
-  contactAdmin?: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -131,58 +136,56 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
   /**
    */
-  creation?: Date;
-  /**
-   */
   status?: ServiceStateEnum;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
 }
-type PathscdnwebstorageGET = '/cdn/webstorage/{serviceName}' | 
+type PathsCdnwebstorageGET = '/cdn/webstorage/{serviceName}' | 
 '/cdn/webstorage/{serviceName}/serviceInfos' | 
-'/cdn/webstorage/{serviceName}/credentials' | 
 '/cdn/webstorage/{serviceName}/statistics' | 
+'/cdn/webstorage/{serviceName}/credentials' | 
 '/cdn/webstorage';
 
-type PathscdnwebstoragePUT = '/cdn/webstorage/{serviceName}/serviceInfos';
+type PathsCdnwebstoragePUT = '/cdn/webstorage/{serviceName}/serviceInfos';
 
-class Apicdnwebstorage extends ApiCommon {
+export class ApiCdnwebstorage extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Static CDN
   Get this object properties
   **/
-  public get(path: '/cdn/webstorage/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<CdnWebstorageAccount>;
+  public get(path: '/cdn/webstorage/{serviceName}', pathParams: {serviceName: string}): Promise<CdnWebstorageAccount>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/cdn/webstorage/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  credentials operations
-  Gives for customer credentials to accesss swift account
-  **/
-  public get(path: '/cdn/webstorage/{serviceName}/credentials', pathParams: {serviceName?: string}, queryParams: null): Promise<CdnWebstorageAccountCredentials>;
+  public get(path: '/cdn/webstorage/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   statistics operations
   Return stats about bandwidth consumption
   **/
-  public get(path: '/cdn/webstorage/{serviceName}/statistics', pathParams: {serviceName?: string}, queryParams: {type?: CdnWebstorageStatsTypeEnum, period?: CdnWebstorageStatsPeriodEnum}): Promise<CdnWebstorageStatsDataType[]>;
+  public get(path: '/cdn/webstorage/{serviceName}/statistics', pathParams: {serviceName: string}, queryParams: {type?: CdnWebstorageStatsTypeEnum, period?: CdnWebstorageStatsPeriodEnum}): Promise<CdnWebstorageStatsDataType[]>;
+  /**
+  credentials operations
+  Gives for customer credentials to accesss swift account
+  **/
+  public get(path: '/cdn/webstorage/{serviceName}/credentials', pathParams: {serviceName: string}): Promise<CdnWebstorageAccountCredentials>;
   /**
   Operations about the CDNSTATIC service
   List available services
   **/
-  public get(path: '/cdn/webstorage', pathParams: null, queryParams: null): Promise<string[]>;
-  public get(path: PathscdnwebstorageGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/cdn/webstorage'): Promise<string[]>;
+  public get(path: PathsCdnwebstorageGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cdn/webstorage/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathscdnwebstoragePUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/cdn/webstorage/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsCdnwebstoragePUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
 }

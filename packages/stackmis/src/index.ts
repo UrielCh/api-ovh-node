@@ -4,30 +4,30 @@ import { ApiCommon } from '@ovh-api/common';
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -42,31 +42,36 @@ export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' |
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
   /**
    */
-  engagedUpTo?: Date;
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  contactAdmin?: string;
+  contactTech?: string;
   /**
-   * All the possible renew period of your service in month
-   *
    */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -74,15 +79,10 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
-  /**
-   */
-  creation?: Date;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
   /**
    */
   status?: ServiceStateEnum;
@@ -106,33 +106,36 @@ export interface StackMisProduct {
    */
   type?: StackStackTypeEnum;
 }
-type PathsstackmisGET = '/stack/mis' | 
-'/stack/mis/{serviceName}/serviceInfos' | 
-'/stack/mis/{serviceName}';
+type PathsStackmisGET = '/stack/mis/{serviceName}/serviceInfos' | 
+'/stack/mis/{serviceName}' | 
+'/stack/mis';
 
-type PathsstackmisPUT = '/stack/mis/{serviceName}/serviceInfos';
+type PathsStackmisPUT = '/stack/mis/{serviceName}/serviceInfos';
 
-class Apistackmis extends ApiCommon {
-  /**
-  Operations about the GS service
-  List available services
-  **/
-  public get(path: '/stack/mis', pathParams: null, queryParams: null): Promise<string[]>;
+export class ApiStackmis extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/stack/mis/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
+  public get(path: '/stack/mis/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Stack MIS
   Get this object properties
   **/
-  public get(path: '/stack/mis/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<StackMisProduct>;
-  public get(path: PathsstackmisGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/stack/mis/{serviceName}', pathParams: {serviceName: string}): Promise<StackMisProduct>;
+  /**
+  Operations about the GS service
+  List available services
+  **/
+  public get(path: '/stack/mis'): Promise<string[]>;
+  public get(path: PathsStackmisGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/stack/mis/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathsstackmisPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/stack/mis/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsStackmisPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
 }

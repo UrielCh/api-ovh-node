@@ -21,10 +21,10 @@ export interface LicenseOrderableSqlServerCompatibilityInfos {
 export interface LicenseSqlServerOrderConfiguration {
   /**
    */
-  serviceType?: LicenseLicenseTypeEnum;
+  orderableVersions?: LicenseOrderableSqlServerCompatibilityInfos[];
   /**
    */
-  orderableVersions?: LicenseOrderableSqlServerCompatibilityInfos[];
+  serviceType?: LicenseLicenseTypeEnum;
 }
 /**
  * All versions for SQL Server product
@@ -39,21 +39,6 @@ export type LicenseStateEnum = 'ok' | 'released' | 'terminated' | 'toDeliver';
  */
 export interface LicenseTask {
   /**
-   * The last time this Task was updated
-   *
-   */
-  lastUpdate?: Date;
-  /**
-   * This Task name
-   *
-   */
-  name?: string;
-  /**
-   * When was this Task created
-   *
-   */
-  todoDate?: Date;
-  /**
    * This Task description
    *
    */
@@ -64,15 +49,30 @@ export interface LicenseTask {
    */
   doneDate?: Date;
   /**
-   * This Task id
+   * The last time this Task was updated
    *
    */
-  taskId?: Number;
+  lastUpdate?: Date;
+  /**
+   * This Task name
+   *
+   */
+  name?: string;
   /**
    * Current Taks status
    *
    */
   status?: LicenseTaskStateEnum;
+  /**
+   * This Task id
+   *
+   */
+  taskId?: Number;
+  /**
+   * When was this Task created
+   *
+   */
+  todoDate?: Date;
 }
 /**
  * All states a license Task can be in
@@ -83,50 +83,45 @@ export type LicenseTaskStateEnum = 'cancelled' | 'doing' | 'done' | 'error' | 't
  */
 export interface LicenseSqlserverSqlServer {
   /**
-   * The ip on which this license is attached
+   * This license creation date
    *
    */
-  ip?: string;
+  creation?: Date;
   /**
    * The internal name of your license
    *
    */
   domain?: string;
   /**
+   * The ip on which this license is attached
+   *
+   */
+  ip?: string;
+  /**
    * The license id on license provider side
    *
    */
   licenseId?: string;
   /**
-   * This license version
-   *
-   */
-  version?: LicenseSqlServerVersionEnum;
-  /**
-   * This license creation date
-   *
-   */
-  creation?: Date;
-  /**
    * This license state
    *
    */
   status?: LicenseStateEnum;
+  /**
+   * This license version
+   *
+   */
+  version?: LicenseSqlServerVersionEnum;
 }
 /**
  * Map a possible renew for a specific service
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
@@ -138,10 +133,15 @@ export interface ServiceRenewType {
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -164,31 +164,36 @@ export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PE
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
+  /**
+   */
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  engagedUpTo?: Date;
+  contactTech?: string;
   /**
    */
-  contactAdmin?: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -196,78 +201,76 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
-  /**
-   */
-  creation?: Date;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
   /**
    */
   status?: ServiceStateEnum;
 }
-type PathslicensesqlserverGET = '/license/sqlserver/orderableVersions' | 
-'/license/sqlserver/{serviceName}/serviceInfos' | 
+type PathsLicensesqlserverGET = '/license/sqlserver/orderableVersions' | 
 '/license/sqlserver/{serviceName}' | 
 '/license/sqlserver/{serviceName}/tasks/{taskId}' | 
 '/license/sqlserver/{serviceName}/tasks' | 
+'/license/sqlserver/{serviceName}/serviceInfos' | 
 '/license/sqlserver';
 
-type PathslicensesqlserverPUT = '/license/sqlserver/{serviceName}/serviceInfos';
+type PathsLicensesqlserverPUT = '/license/sqlserver/{serviceName}/serviceInfos';
 
-type PathslicensesqlserverPOST = '/license/sqlserver/{serviceName}/confirmTermination' | 
+type PathsLicensesqlserverPOST = '/license/sqlserver/{serviceName}/confirmTermination' | 
 '/license/sqlserver/{serviceName}/terminate';
 
-class Apilicensesqlserver extends ApiCommon {
+export class ApiLicensesqlserver extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Get the orderable Sql Server versions
   Get the orderable Sql Server versions
   **/
   public get(path: '/license/sqlserver/orderableVersions', pathParams: null, queryParams: {ip?: string}): Promise<LicenseSqlServerOrderConfiguration[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/license/sqlserver/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
   Your SQL Server license
   Get this object properties
   **/
-  public get(path: '/license/sqlserver/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<LicenseSqlserverSqlServer>;
+  public get(path: '/license/sqlserver/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseSqlserverSqlServer>;
   /**
   licenses Todos
   Get this object properties
   **/
-  public get(path: '/license/sqlserver/{serviceName}/tasks/{taskId}', pathParams: {serviceName?: string, taskId?: Number}, queryParams: null): Promise<LicenseTask>;
+  public get(path: '/license/sqlserver/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
   /**
   List the license.Task objects
   Tasks linked to this license
   **/
-  public get(path: '/license/sqlserver/{serviceName}/tasks', pathParams: {serviceName?: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
+  public get(path: '/license/sqlserver/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/license/sqlserver/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
   Operations about the LICENSE service
   List available services
   **/
-  public get(path: '/license/sqlserver', pathParams: null, queryParams: null): Promise<string[]>;
-  public get(path: PathslicensesqlserverGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/license/sqlserver'): Promise<string[]>;
+  public get(path: PathsLicensesqlserverGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/sqlserver/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathslicensesqlserverPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/license/sqlserver/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsLicensesqlserverPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/license/sqlserver/{serviceName}/confirmTermination', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
+  public post(path: '/license/sqlserver/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/license/sqlserver/{serviceName}/terminate', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  public post(path: PathslicensesqlserverPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/license/sqlserver/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: PathsLicensesqlserverPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

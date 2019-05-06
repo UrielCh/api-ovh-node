@@ -12,11 +12,6 @@ export type LicenseOfficeLicenceEnum = 'officeBusiness' | 'officeProPlus';
  */
 export interface LicenseOfficeOfficeDomain {
   /**
-   * TXT entry required for domain validation
-   *
-   */
-  txtEntry?: string;
-  /**
    * Domain name
    *
    */
@@ -26,66 +21,66 @@ export interface LicenseOfficeOfficeDomain {
    *
    */
   status?: LicenseOfficeDomainStateEnum;
+  /**
+   * TXT entry required for domain validation
+   *
+   */
+  txtEntry?: string;
 }
 /**
  * Office subscription
  */
 export interface LicenseOfficeOfficeSubscription {
   /**
-   * Number of available licenses
+   * Creation date
    *
    */
-  quantity?: Number;
-  /**
-   * Last update date
-   *
-   */
-  lastUpdate?: Date;
+  creationDate?: Date;
   /**
    * Subscription's unique identifier
    *
    */
   id?: Number;
   /**
-   * Creation date
+   * Last update date
    *
    */
-  creationDate?: Date;
+  lastUpdate?: Date;
   /**
    * License's type id
    *
    */
   licenseId?: Number;
   /**
-   * Pending task's unique identifier
+   * Number of available licenses
    *
    */
-  taskPendingId?: Number;
+  quantity?: Number;
   /**
    * Current state of the subscription
    *
    */
   status?: string;
+  /**
+   * Pending task's unique identifier
+   *
+   */
+  taskPendingId?: Number;
 }
 /**
  * Office task
  */
 export interface LicenseOfficeOfficeTask {
   /**
-   * Function name
-   *
-   */
-  function?: string;
-  /**
-   * Creation date
-   *
-   */
-  todoDate?: Date;
-  /**
    * Completion date
    *
    */
   finishDate?: Date;
+  /**
+   * Function name
+   *
+   */
+  function?: string;
   /**
    * Task's unique identifier
    *
@@ -96,31 +91,16 @@ export interface LicenseOfficeOfficeTask {
    *
    */
   status?: LicenseOfficeTaskStatusEnum;
+  /**
+   * Creation date
+   *
+   */
+  todoDate?: Date;
 }
 /**
  * Office tenant
  */
 export interface LicenseOfficeOfficeTenant {
-  /**
-   * Tenant's service type
-   *
-   */
-  serviceType?: LicenseOfficeServiceTypeEnum;
-  /**
-   * Contact's zip code
-   *
-   */
-  zipCode?: string;
-  /**
-   * Contact's fisrt name
-   *
-   */
-  lastName?: string;
-  /**
-   * Contact's fisrt name
-   *
-   */
-  firstName?: string;
   /**
    * Contact's address line
    *
@@ -132,68 +112,88 @@ export interface LicenseOfficeOfficeTenant {
    */
   city?: string;
   /**
-   * Primary phone number
+   * Creation date
    *
    */
-  phone?: string;
+  creationDate?: Date;
   /**
    * Tenant's display name
    *
    */
   displayName?: string;
   /**
-   * Creation date
+   * Contact's fisrt name
    *
    */
-  creationDate?: Date;
+  firstName?: string;
+  /**
+   * Contact's fisrt name
+   *
+   */
+  lastName?: string;
+  /**
+   * Primary phone number
+   *
+   */
+  phone?: string;
+  /**
+   * Tenant's service type
+   *
+   */
+  serviceType?: LicenseOfficeServiceTypeEnum;
   /**
    */
   status?: LicenseOfficeServiceStateEnum;
+  /**
+   * Contact's zip code
+   *
+   */
+  zipCode?: string;
 }
 /**
  * Office user
  */
 export interface LicenseOfficeOfficeUser {
   /**
-   * User's first name
+   * Email used to activate Microsoft Office
    *
    */
-  firstName?: string;
-  /**
-   * User's last name
-   *
-   */
-  lastName?: string;
+  activationEmail?: string;
   /**
    * Whether or not this user slot will be resigned at the next renew period
    *
    */
   deleteAtExpiration?: boolean;
   /**
+   * User's first name
+   *
+   */
+  firstName?: string;
+  /**
    * Specify if the user is actually a user slot (configureme) or a real user
    *
    */
   isVirtual?: boolean;
+  /**
+   * User's last name
+   *
+   */
+  lastName?: string;
   /**
    * Licenses attributed to the user
    *
    */
   licences?: LicenseOfficeLicenceEnum[];
   /**
-   * Pending task id
-   *
-   */
-  taskPendingId?: Number;
-  /**
-   * Email used to activate Microsoft Office
-   *
-   */
-  activationEmail?: string;
-  /**
    * User state
    *
    */
   status?: LicenseOfficeUserStateEnum;
+  /**
+   * Pending task id
+   *
+   */
+  taskPendingId?: Number;
 }
 /**
  * Office tenant state
@@ -213,15 +213,15 @@ export interface LicenseOfficeStatistic {
    */
   available?: Number;
   /**
-   * Number of used seats in the subscription
-   *
-   */
-  used?: Number;
-  /**
    * License type's unique identifier
    *
    */
   licenseId?: Number;
+  /**
+   * Number of used seats in the subscription
+   *
+   */
+  used?: Number;
 }
 /**
  * License usage statistics.
@@ -271,30 +271,30 @@ export type LicenseOfficeUserStateEnum = 'creating' | 'deleting' | 'ok';
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -309,31 +309,36 @@ export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' |
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
   /**
    */
-  engagedUpTo?: Date;
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  contactAdmin?: string;
+  contactTech?: string;
   /**
-   * All the possible renew period of your service in month
-   *
    */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -341,122 +346,120 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
   /**
    */
-  creation?: Date;
-  /**
-   */
   status?: ServiceStateEnum;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
 }
-type PathslicenseofficeGET = '/license/office/{serviceName}/user/{activationEmail}' | 
-'/license/office/{serviceName}/user' | 
+type PathsLicenseofficeGET = '/license/office' | 
+'/license/office/{serviceName}/domain/{domainName}' | 
+'/license/office/{serviceName}/domain' | 
 '/license/office/{serviceName}/serviceInfos' | 
-'/license/office/{serviceName}' | 
 '/license/office/{serviceName}/pendingTask' | 
 '/license/office/{serviceName}/pendingTask/{id}' | 
-'/license/office/{serviceName}/usageStatistics' | 
-'/license/office/{serviceName}/domain' | 
-'/license/office/{serviceName}/domain/{domainName}' | 
-'/license/office';
+'/license/office/{serviceName}' | 
+'/license/office/{serviceName}/user/{activationEmail}' | 
+'/license/office/{serviceName}/user' | 
+'/license/office/{serviceName}/usageStatistics';
 
-type PathslicenseofficePUT = '/license/office/{serviceName}/user/{activationEmail}' | 
-'/license/office/{serviceName}/serviceInfos' | 
-'/license/office/{serviceName}';
+type PathsLicenseofficePUT = '/license/office/{serviceName}/serviceInfos' | 
+'/license/office/{serviceName}' | 
+'/license/office/{serviceName}/user/{activationEmail}';
 
-type PathslicenseofficePOST = '/license/office/{serviceName}/user/{activationEmail}/changePassword' | 
+type PathsLicenseofficePOST = '/license/office/{serviceName}/user/{activationEmail}/changePassword' | 
 '/license/office/{serviceName}/user';
 
-type PathslicenseofficeDELETE = '/license/office/{serviceName}/user/{activationEmail}';
+type PathsLicenseofficeDELETE = '/license/office/{serviceName}/user/{activationEmail}';
 
-class Apilicenseoffice extends ApiCommon {
-  /**
-  Office user
-  Get this object properties
-  **/
-  public get(path: '/license/office/{serviceName}/user/{activationEmail}', pathParams: {serviceName?: string, activationEmail?: string}, queryParams: null): Promise<LicenseOfficeOfficeUser>;
-  /**
-  List the license.office.OfficeUser objects
-  Accounts associated to this office tenant
-  **/
-  public get(path: '/license/office/{serviceName}/user', pathParams: {serviceName?: string}, queryParams: {lastName?: string, licences?: LicenseOfficeLicenceEnum[], activationEmail?: string, firstName?: string}): Promise<string[]>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/license/office/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  Office tenant
-  Get this object properties
-  **/
-  public get(path: '/license/office/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<LicenseOfficeOfficeTenant>;
-  /**
-  List the license.office.OfficeTask objects
-  Tasks associated to this office tenant
-  **/
-  public get(path: '/license/office/{serviceName}/pendingTask', pathParams: {serviceName?: string}, queryParams: null): Promise<Number[]>;
-  /**
-  Office task
-  Get this object properties
-  **/
-  public get(path: '/license/office/{serviceName}/pendingTask/{id}', pathParams: {serviceName?: string, id?: Number}, queryParams: null): Promise<LicenseOfficeOfficeTask>;
-  /**
-  usageStatistics operations
-  Shows the subscriptions' usage statistics for the given time period
-  **/
-  public get(path: '/license/office/{serviceName}/usageStatistics', pathParams: {serviceName?: string}, queryParams: {from?: Date, to?: Date}): Promise<LicenseOfficeStatistics[]>;
-  /**
-  List the license.office.OfficeDomain objects
-  Domain associated to this office tenant
-  **/
-  public get(path: '/license/office/{serviceName}/domain', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Office domain
-  Get this object properties
-  **/
-  public get(path: '/license/office/{serviceName}/domain/{domainName}', pathParams: {serviceName?: string, domainName?: string}, queryParams: null): Promise<LicenseOfficeOfficeDomain>;
+export class ApiLicenseoffice extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Operations about the OFFICE service
   List available services
   **/
-  public get(path: '/license/office', pathParams: null, queryParams: null): Promise<string[]>;
-  public get(path: PathslicenseofficeGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/license/office'): Promise<string[]>;
+  /**
+  Office domain
+  Get this object properties
+  **/
+  public get(path: '/license/office/{serviceName}/domain/{domainName}', pathParams: {serviceName: string, domainName: string}): Promise<LicenseOfficeOfficeDomain>;
+  /**
+  List the license.office.OfficeDomain objects
+  Domain associated to this office tenant
+  **/
+  public get(path: '/license/office/{serviceName}/domain', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/license/office/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  List the license.office.OfficeTask objects
+  Tasks associated to this office tenant
+  **/
+  public get(path: '/license/office/{serviceName}/pendingTask', pathParams: {serviceName: string}): Promise<Number[]>;
+  /**
+  Office task
+  Get this object properties
+  **/
+  public get(path: '/license/office/{serviceName}/pendingTask/{id}', pathParams: {serviceName: string, id: Number}): Promise<LicenseOfficeOfficeTask>;
+  /**
+  Office tenant
+  Get this object properties
+  **/
+  public get(path: '/license/office/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseOfficeOfficeTenant>;
   /**
   Office user
-  Alter this object properties
+  Get this object properties
   **/
-  public put(path: '/license/office/{serviceName}/user/{activationEmail}', pathParams: {serviceName?: string, activationEmail?: string}, bodyParams: null): Promise<void>;
+  public get(path: '/license/office/{serviceName}/user/{activationEmail}', pathParams: {serviceName: string, activationEmail: string}): Promise<LicenseOfficeOfficeUser>;
+  /**
+  List the license.office.OfficeUser objects
+  Accounts associated to this office tenant
+  **/
+  public get(path: '/license/office/{serviceName}/user', pathParams: {serviceName: string}, queryParams: {firstName?: string, lastName?: string, activationEmail?: string, licences?: LicenseOfficeLicenceEnum[]}): Promise<string[]>;
+  /**
+  usageStatistics operations
+  Shows the subscriptions' usage statistics for the given time period
+  **/
+  public get(path: '/license/office/{serviceName}/usageStatistics', pathParams: {serviceName: string}, queryParams: {to?: Date, from?: Date}): Promise<LicenseOfficeStatistics[]>;
+  public get(path: PathsLicenseofficeGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/office/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public put(path: '/license/office/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
   Office tenant
   Alter this object properties
   **/
-  public put(path: '/license/office/{serviceName}', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathslicenseofficePUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/license/office/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  /**
+  Office user
+  Alter this object properties
+  **/
+  public put(path: '/license/office/{serviceName}/user/{activationEmail}', pathParams: {serviceName: string, activationEmail: string}): Promise<void>;
+  public put(path: PathsLicenseofficePUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   changePassword operations
   Change or reset  user's password
   **/
-  public post(path: '/license/office/{serviceName}/user/{activationEmail}/changePassword', pathParams: {serviceName?: string, activationEmail?: string}, bodyParams: null): Promise<LicenseOfficeOfficeTask>;
+  public post(path: '/license/office/{serviceName}/user/{activationEmail}/changePassword', pathParams: {serviceName: string, activationEmail: string}): Promise<LicenseOfficeOfficeTask>;
   /**
   List the license.office.OfficeUser objects
   Create new office user
   **/
-  public post(path: '/license/office/{serviceName}/user', pathParams: {serviceName?: string}, bodyParams: null): Promise<LicenseOfficeOfficeTask>;
-  public post(path: PathslicenseofficePOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/license/office/{serviceName}/user', pathParams: {serviceName: string}): Promise<LicenseOfficeOfficeTask>;
+  public post(path: PathsLicenseofficePOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Office user
   Delete existing office user
   **/
-  public delete(path: '/license/office/{serviceName}/user/{activationEmail}', pathParams: {serviceName?: string, activationEmail?: string}, bodyParams: null): Promise<LicenseOfficeOfficeTask>;
-  public delete(path: PathslicenseofficeDELETE, pathParams?: any, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/license/office/{serviceName}/user/{activationEmail}', pathParams: {serviceName: string, activationEmail: string}): Promise<LicenseOfficeOfficeTask>;
+  public delete(path: PathsLicenseofficeDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

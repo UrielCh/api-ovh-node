@@ -13,10 +13,10 @@ export type LicenseChangeIpMessageEnum = 'OK' | 'destinationNotAllowed' | 'licen
 export interface LicenseChangeIpStatus {
   /**
    */
-  success?: boolean;
+  message?: LicenseChangeIpMessageEnum;
   /**
    */
-  message?: LicenseChangeIpMessageEnum;
+  success?: boolean;
 }
 /**
  * Possible values for license type
@@ -39,21 +39,6 @@ export type LicenseStateEnum = 'ok' | 'released' | 'terminated' | 'toDeliver';
  */
 export interface LicenseTask {
   /**
-   * The last time this Task was updated
-   *
-   */
-  lastUpdate?: Date;
-  /**
-   * This Task name
-   *
-   */
-  name?: string;
-  /**
-   * When was this Task created
-   *
-   */
-  todoDate?: Date;
-  /**
    * This Task description
    *
    */
@@ -64,15 +49,30 @@ export interface LicenseTask {
    */
   doneDate?: Date;
   /**
-   * This Task id
+   * The last time this Task was updated
    *
    */
-  taskId?: Number;
+  lastUpdate?: Date;
+  /**
+   * This Task name
+   *
+   */
+  name?: string;
   /**
    * Current Taks status
    *
    */
   status?: LicenseTaskStateEnum;
+  /**
+   * This Task id
+   *
+   */
+  taskId?: Number;
+  /**
+   * When was this Task created
+   *
+   */
+  todoDate?: Date;
 }
 /**
  * All states a license Task can be in
@@ -84,10 +84,10 @@ export type LicenseTaskStateEnum = 'cancelled' | 'doing' | 'done' | 'error' | 't
 export interface LicenseWorkLightOrderConfiguration {
   /**
    */
-  serviceType?: LicenseLicenseTypeEnum;
+  orderableVersions?: LicenseOrderableWorkLightCompatibilityInfos[];
   /**
    */
-  orderableVersions?: LicenseOrderableWorkLightCompatibilityInfos[];
+  serviceType?: LicenseLicenseTypeEnum;
 }
 /**
  * All versions for WorkLight product
@@ -97,6 +97,11 @@ export type LicenseWorkLightVersionEnum = 'VERSION-6.1U.1CPU' | 'VERSION-6.1U.2C
  * Your WorkLight license
  */
 export interface LicenseWorklightWorkLight {
+  /**
+   * This license creation date
+   *
+   */
+  creation?: Date;
   /**
    * Shall we delete this on expiration ?
    *
@@ -118,35 +123,25 @@ export interface LicenseWorklightWorkLight {
    */
   licenseId?: string;
   /**
-   * This license version
-   *
-   */
-  version?: LicenseWorkLightVersionEnum;
-  /**
-   * This license creation date
-   *
-   */
-  creation?: Date;
-  /**
    * This license state
    *
    */
   status?: LicenseStateEnum;
+  /**
+   * This license version
+   *
+   */
+  version?: LicenseWorkLightVersionEnum;
 }
 /**
  * Map a possible renew for a specific service
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
@@ -158,10 +153,15 @@ export interface ServiceRenewType {
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -184,31 +184,36 @@ export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PE
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
+  /**
+   */
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  engagedUpTo?: Date;
+  contactTech?: string;
   /**
    */
-  contactAdmin?: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -216,102 +221,100 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
   /**
    */
-  creation?: Date;
-  /**
-   */
   status?: ServiceStateEnum;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
 }
-type PathslicenseworklightGET = '/license/worklight/{serviceName}/tasks' | 
-'/license/worklight/{serviceName}/tasks/{taskId}' | 
+type PathsLicenseworklightGET = '/license/worklight/{serviceName}/canLicenseBeMovedTo' | 
 '/license/worklight/{serviceName}' | 
-'/license/worklight/{serviceName}/allowedDestinationIp' | 
-'/license/worklight/{serviceName}/canLicenseBeMovedTo' | 
 '/license/worklight/{serviceName}/serviceInfos' | 
-'/license/worklight' | 
-'/license/worklight/orderableVersions';
+'/license/worklight/{serviceName}/allowedDestinationIp' | 
+'/license/worklight/{serviceName}/tasks/{taskId}' | 
+'/license/worklight/{serviceName}/tasks' | 
+'/license/worklight/orderableVersions' | 
+'/license/worklight';
 
-type PathslicenseworklightPUT = '/license/worklight/{serviceName}' | 
+type PathsLicenseworklightPUT = '/license/worklight/{serviceName}' | 
 '/license/worklight/{serviceName}/serviceInfos';
 
-type PathslicenseworklightPOST = '/license/worklight/{serviceName}/changeIp' | 
-'/license/worklight/{serviceName}/confirmTermination' | 
-'/license/worklight/{serviceName}/terminate';
+type PathsLicenseworklightPOST = '/license/worklight/{serviceName}/terminate' | 
+'/license/worklight/{serviceName}/changeIp' | 
+'/license/worklight/{serviceName}/confirmTermination';
 
-class Apilicenseworklight extends ApiCommon {
-  /**
-  List the license.Task objects
-  Tasks linked to this license
-  **/
-  public get(path: '/license/worklight/{serviceName}/tasks', pathParams: {serviceName?: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
-  /**
-  licenses Todos
-  Get this object properties
-  **/
-  public get(path: '/license/worklight/{serviceName}/tasks/{taskId}', pathParams: {serviceName?: string, taskId?: Number}, queryParams: null): Promise<LicenseTask>;
-  /**
-  Your WorkLight license
-  Get this object properties
-  **/
-  public get(path: '/license/worklight/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<LicenseWorklightWorkLight>;
-  /**
-  allowedDestinationIp operations
-  Returns an array of ips where the license can be moved to
-  **/
-  public get(path: '/license/worklight/{serviceName}/allowedDestinationIp', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
+export class ApiLicenseworklight extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   canLicenseBeMovedTo operations
   Will tell if the ip can accept the license
   **/
-  public get(path: '/license/worklight/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName?: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  public get(path: '/license/worklight/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  /**
+  Your WorkLight license
+  Get this object properties
+  **/
+  public get(path: '/license/worklight/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseWorklightWorkLight>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/license/worklight/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
+  public get(path: '/license/worklight/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
   /**
-  Operations about the LICENSE service
-  List available services
+  allowedDestinationIp operations
+  Returns an array of ips where the license can be moved to
   **/
-  public get(path: '/license/worklight', pathParams: null, queryParams: null): Promise<string[]>;
+  public get(path: '/license/worklight/{serviceName}/allowedDestinationIp', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  licenses Todos
+  Get this object properties
+  **/
+  public get(path: '/license/worklight/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
+  /**
+  List the license.Task objects
+  Tasks linked to this license
+  **/
+  public get(path: '/license/worklight/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
   /**
   Get the orderable WorkLight versions
   Get the orderable WorkLight versions
   **/
   public get(path: '/license/worklight/orderableVersions', pathParams: null, queryParams: {ip?: string}): Promise<LicenseWorkLightOrderConfiguration[]>;
-  public get(path: PathslicenseworklightGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  /**
+  Operations about the LICENSE service
+  List available services
+  **/
+  public get(path: '/license/worklight'): Promise<string[]>;
+  public get(path: PathsLicenseworklightGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Your WorkLight license
   Alter this object properties
   **/
-  public put(path: '/license/worklight/{serviceName}', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public put(path: '/license/worklight/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/worklight/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathslicenseworklightPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/license/worklight/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: PathsLicenseworklightPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  /**
+  Terminate your service
+  Terminate your service
+  **/
+  public post(path: '/license/worklight/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
   /**
   changeIp operations
   Move this license to another Ip
   **/
-  public post(path: '/license/worklight/{serviceName}/changeIp', pathParams: {serviceName?: string}, bodyParams: null): Promise<LicenseTask>;
+  public post(path: '/license/worklight/{serviceName}/changeIp', pathParams: {serviceName: string}): Promise<LicenseTask>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/license/worklight/{serviceName}/confirmTermination', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  /**
-  Terminate your service
-  Terminate your service
-  **/
-  public post(path: '/license/worklight/{serviceName}/terminate', pathParams: {serviceName?: string}, bodyParams: null): Promise<string>;
-  public post(path: PathslicenseworklightPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/license/worklight/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: PathsLicenseworklightPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

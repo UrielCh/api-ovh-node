@@ -5,10 +5,10 @@ import { ApiCommon } from '@ovh-api/common';
 export interface ComplexTypeSafeKeyValue<T> {
   /**
    */
-  value?: T;
+  key?: string;
   /**
    */
-  key?: string;
+  value?: T;
 }
 /**
  * 
@@ -20,10 +20,10 @@ export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL
 export interface OrderPrice {
   /**
    */
-  text?: string;
+  currencyCode?: OrderCurrencyCodeEnum;
   /**
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  text?: string;
   /**
    */
   value?: Number;
@@ -37,40 +37,40 @@ export type ServiceBillingStateEnum = 'expired' | 'ok' | 'pending' | 'unpaid';
  */
 export interface ServicePlan {
   /**
-   * Product plan information
-   *
-   */
-  product?: ServicePlanProduct;
-  /**
    * Product code
    *
    */
   code?: string;
+  /**
+   * Product plan information
+   *
+   */
+  product?: ServicePlanProduct;
 }
 /**
  * Renew information
  */
 export interface ServiceRenew {
   /**
-   * Renewal mode
-   *
-   */
-  mode?: ServiceRenewMode;
-  /**
    * Renew day number
    *
    */
   dayOfMonth?: Number;
   /**
-   * Possible interval between each renewal
-   *
-   */
-  possibleIntervals?: ServiceRenewInterval[];
-  /**
    * Interval between each renewal
    *
    */
   interval?: ServiceRenewInterval;
+  /**
+   * Renewal mode
+   *
+   */
+  mode?: ServiceRenewMode;
+  /**
+   * Possible interval between each renewal
+   *
+   */
+  possibleIntervals?: ServiceRenewInterval[];
   /**
    * Possible renewal mode
    *
@@ -111,15 +111,15 @@ export interface ServiceRoute {
    */
   path?: string;
   /**
-   * Variables to use in the path
-   *
-   */
-  vars?: ComplexTypeSafeKeyValue<string>[];
-  /**
    * Path with variables applyed
    *
    */
   url?: string;
+  /**
+   * Variables to use in the path
+   *
+   */
+  vars?: ComplexTypeSafeKeyValue<string>[];
 }
 /**
  * List of consumptions recorded in a range
@@ -131,55 +131,45 @@ export interface ServiceConsumptionTransaction {
    */
   beginDate?: Date;
   /**
-   * End date
+   * Creation date
    *
    */
-  endDate?: Date;
-  /**
-   * Consumption amount price
-   *
-   */
-  price?: OrderPrice;
-  /**
-   * Last update
-   *
-   */
-  lastUpdate?: Date;
+  creationDate?: Date;
   /**
    * List of product plan code consumption
    *
    */
   elements?: ServiceConsumptionTransactionElement[];
   /**
+   * End date
+   *
+   */
+  endDate?: Date;
+  /**
    * Transaction ID
    *
    */
   id?: Number;
   /**
-   * Service ID
+   * Last update
    *
    */
-  serviceId?: Number;
-  /**
-   * Creation date
-   *
-   */
-  creationDate?: Date;
-}
-/**
- * Element of consumption for resource
- */
-export interface ServiceConsumptionTransactionElement {
-  /**
-   * Consumption quantity
-   *
-   */
-  quantity?: Number;
+  lastUpdate?: Date;
   /**
    * Consumption amount price
    *
    */
   price?: OrderPrice;
+  /**
+   * Service ID
+   *
+   */
+  serviceId?: Number;
+}
+/**
+ * Element of consumption for resource
+ */
+export interface ServiceConsumptionTransactionElement {
   /**
    * List of consumption details for this planCode
    *
@@ -190,21 +180,31 @@ export interface ServiceConsumptionTransactionElement {
    *
    */
   planCode?: string;
+  /**
+   * Consumption amount price
+   *
+   */
+  price?: OrderPrice;
+  /**
+   * Consumption quantity
+   *
+   */
+  quantity?: Number;
 }
 /**
  * Element of consumption for resource
  */
 export interface ServiceConsumptionTransactionElementDetail {
   /**
-   * Unique ID associated to one service element
-   *
-   */
-  unique_id?: string;
-  /**
    * Consumption quantity
    *
    */
   quantity?: Number;
+  /**
+   * Unique ID associated to one service element
+   *
+   */
+  unique_id?: string;
 }
 /**
  * Product plan information
@@ -259,35 +259,40 @@ export interface ServiceRenewRenewForecast {
  */
 export interface ServiceRenewRenewForecastDetail {
   /**
-   * Price for one unit
+   * Detail description
    *
    */
-  unitPrice?: OrderPrice;
+  description?: string;
   /**
    * Quantity
    *
    */
   quantity?: Number;
   /**
+   * Associated service name
+   *
+   */
+  serviceName?: string;
+  /**
    * Total price
    *
    */
   totalPrice?: OrderPrice;
   /**
-   * Detail description
+   * Price for one unit
    *
    */
-  description?: string;
-  /**
-   * Associated service name
-   *
-   */
-  serviceName?: string;
+  unitPrice?: OrderPrice;
 }
 /**
  * Prices for renew forecasting
  */
 export interface ServiceRenewRenewForecastPrices {
+  /**
+   * Tax
+   *
+   */
+  tax?: OrderPrice;
   /**
    * Total price with tax
    *
@@ -298,11 +303,6 @@ export interface ServiceRenewRenewForecastPrices {
    *
    */
   withoutTax?: OrderPrice;
-  /**
-   * Tax
-   *
-   */
-  tax?: OrderPrice;
 }
 /**
  * Details about a renew Order
@@ -314,10 +314,15 @@ export interface ServiceRenewRenewOrder {
    */
   date?: Date;
   /**
-   * Retraction date
+   * Expiration date of the renew Order
    *
    */
-  retractionDate?: Date;
+  expirationDate?: Date;
+  /**
+   * ID of the renew Order
+   *
+   */
+  orderId?: Number;
   /**
    * Password
    *
@@ -329,11 +334,6 @@ export interface ServiceRenewRenewOrder {
    */
   pdfUrl?: string;
   /**
-   * ID of the renew Order
-   *
-   */
-  orderId?: Number;
-  /**
    * Price of the product with tax
    *
    */
@@ -344,6 +344,11 @@ export interface ServiceRenewRenewOrder {
    */
   priceWithoutTax?: OrderPrice;
   /**
+   * Retraction date
+   *
+   */
+  retractionDate?: Date;
+  /**
    * Value of the tax
    *
    */
@@ -353,26 +358,21 @@ export interface ServiceRenewRenewOrder {
    *
    */
   url?: string;
-  /**
-   * Expiration date of the renew Order
-   *
-   */
-  expirationDate?: Date;
 }
 /**
  * Representation of a product renew pricing
  */
 export interface ServiceRenewRenewStrategy {
   /**
-   * Price of the product in micro-centims
-   *
-   */
-  priceInUcents?: Number;
-  /**
    * Price of the product
    *
    */
   price?: OrderPrice;
+  /**
+   * Price of the product in micro-centims
+   *
+   */
+  priceInUcents?: Number;
   /**
    * Services renewed by strategy
    *
@@ -389,134 +389,137 @@ export interface ServiceRenewRenewStrategy {
  */
 export interface ServiceRenewService {
   /**
-   * Type of the service
+   * ID of the service
    *
    */
-  serviceType?: string;
+  serviceId?: Number;
   /**
    * Name of the service
    *
    */
   serviceName?: string;
   /**
-   * ID of the service
+   * Type of the service
    *
    */
-  serviceId?: Number;
+  serviceType?: string;
 }
 /**
  * Details about a Service
  */
 export interface ServiceListService {
   /**
-   * The next billing date
+   * Creation date
    *
    */
-  nextBillingDate?: Date;
-  /**
-   * Quantity
-   *
-   */
-  quantity?: Number;
-  /**
-   * Route to use in API
-   *
-   */
-  route?: ServiceRoute;
-  /**
-   * Resource service description
-   *
-   */
-  resource?: ServiceResource;
-  /**
-   * Engagement date
-   *
-   */
-  engagementDate?: Date;
+  creationDate?: Date;
   /**
    * Resource details
    *
    */
   details?: ComplexTypeSafeKeyValue<string>[];
   /**
-   * Billing state of your service
+   * Engagement date
    *
    */
-  state?: ServiceBillingStateEnum;
+  engagementDate?: Date;
   /**
-   * Renew service description
+   * Expiration date
    *
    */
-  renew?: ServiceRenew;
+  expirationDate?: Date;
   /**
-   * Creation date
+   * The next billing date
    *
    */
-  creationDate?: Date;
+  nextBillingDate?: Date;
   /**
    * Plan service description
    *
    */
   plan?: ServicePlan;
   /**
-   * Expiration date
+   * Quantity
    *
    */
-  expirationDate?: Date;
+  quantity?: Number;
+  /**
+   * Renew service description
+   *
+   */
+  renew?: ServiceRenew;
+  /**
+   * Resource service description
+   *
+   */
+  resource?: ServiceResource;
+  /**
+   * Route to use in API
+   *
+   */
+  route?: ServiceRoute;
+  /**
+   * Billing state of your service
+   *
+   */
+  state?: ServiceBillingStateEnum;
 }
-type PathsserviceGET = '/service/{serviceId}' | 
-'/service/{serviceId}/renew' | 
+type PathsServiceGET = '/service/{serviceId}/renew' | 
+'/service/{serviceId}' | 
 '/service';
 
-type PathsservicePUT = '/service/{serviceId}';
+type PathsServicePUT = '/service/{serviceId}';
 
-type PathsservicePOST = '/service/{serviceId}/terminate' | 
-'/service/{serviceId}/suspend' | 
+type PathsServicePOST = '/service/{serviceId}/suspend' | 
 '/service/{serviceId}/renew' | 
-'/service/{serviceId}/reopen';
+'/service/{serviceId}/reopen' | 
+'/service/{serviceId}/terminate';
 
-class Apiservice extends ApiCommon {
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/service/{serviceId}', pathParams: {serviceId?: Number}, queryParams: null): Promise<ServiceListService>;
+export class ApiService extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Missing description
   List possible renews for this service
   **/
-  public get(path: '/service/{serviceId}/renew', pathParams: {serviceId?: string}, queryParams: {includeOptions?: boolean}): Promise<ServiceRenewRenewDescription[]>;
+  public get(path: '/service/{serviceId}/renew', pathParams: {serviceId: string}, queryParams: {includeOptions?: boolean}): Promise<ServiceRenewRenewDescription[]>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/service/{serviceId}', pathParams: {serviceId: Number}): Promise<ServiceListService>;
   /**
   Operations about the services
   List available services
   **/
-  public get(path: '/service', pathParams: null, queryParams: null): Promise<Number[]>;
-  public get(path: PathsserviceGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/service'): Promise<Number[]>;
+  public get(path: PathsServiceGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/service/{serviceId}', pathParams: {serviceId?: Number}, bodyParams: null): Promise<void>;
-  public put(path: PathsservicePUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
-  /**
-  terminate operations
-  Terminates a suspended service
-  **/
-  public post(path: '/service/{serviceId}/terminate', pathParams: {serviceId?: Number}, bodyParams: null): Promise<void>;
+  public put(path: '/service/{serviceId}', pathParams: {serviceId: Number}): Promise<void>;
+  public put(path: PathsServicePUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   suspend operations
   Suspend the service. The service won't be accessible, but you will still be charged for it
   **/
-  public post(path: '/service/{serviceId}/suspend', pathParams: {serviceId?: Number}, bodyParams: null): Promise<void>;
+  public post(path: '/service/{serviceId}/suspend', pathParams: {serviceId: Number}): Promise<void>;
   /**
   Missing description
   Create a renew order
   **/
-  public post(path: '/service/{serviceId}/renew', pathParams: {serviceId?: string}, bodyParams: null): Promise<ServiceRenewRenewOrder>;
+  public post(path: '/service/{serviceId}/renew', pathParams: {serviceId: string}): Promise<ServiceRenewRenewOrder>;
   /**
   reopen operations
   Reopen a suspended service
   **/
-  public post(path: '/service/{serviceId}/reopen', pathParams: {serviceId?: Number}, bodyParams: null): Promise<void>;
-  public post(path: PathsservicePOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/service/{serviceId}/reopen', pathParams: {serviceId: Number}): Promise<void>;
+  /**
+  terminate operations
+  Terminates a suspended service
+  **/
+  public post(path: '/service/{serviceId}/terminate', pathParams: {serviceId: Number}): Promise<void>;
+  public post(path: PathsServicePOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
 }

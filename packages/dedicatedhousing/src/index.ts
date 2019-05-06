@@ -23,15 +23,15 @@ export type DedicatedTaskStatusEnum = 'cancelled' | 'customerError' | 'doing' | 
  */
 export interface DedicatedHousingApcOrderable {
   /**
-   * Is an APC is orderable for this housing bay
-   *
-   */
-  orderable?: boolean;
-  /**
    * Is this APC free
    *
    */
   free?: boolean;
+  /**
+   * Is an APC is orderable for this housing bay
+   *
+   */
+  orderable?: boolean;
 }
 /**
  * Housing bay datacenters
@@ -61,45 +61,40 @@ export interface DedicatedHousingHaRoutingOrderable {
  */
 export interface DedicatedHousingHousing {
   /**
-   * The bay's description
+   * Housing bay datacenter
    *
    */
-  rack?: string;
-  /**
-   * Housing bay options
-   *
-   */
-  options?: DedicatedHousingOptions;
+  datacenter?: DedicatedHousingDatacenterEnum;
   /**
    * The name you give to the bay
    *
    */
   name?: string;
   /**
-   * Bay Security code
-   *
-   */
-  securityCode?: string;
-  /**
-   * Housing bay datacenter
-   *
-   */
-  datacenter?: DedicatedHousingDatacenterEnum;
-  /**
    * Housing bay network
    *
    */
   network?: DedicatedHousingNetworkInfo[];
+  /**
+   * Housing bay options
+   *
+   */
+  options?: DedicatedHousingOptions;
+  /**
+   * The bay's description
+   *
+   */
+  rack?: string;
+  /**
+   * Bay Security code
+   *
+   */
+  securityCode?: string;
 }
 /**
  * A structure describing the Bay's network configuration
  */
 export interface DedicatedHousingIpInfo {
-  /**
-   * Reserved addresses. You should not use them in your network
-   *
-   */
-  reservedAddresses?: string[];
   /**
    * Network gateway of the bay
    *
@@ -110,21 +105,26 @@ export interface DedicatedHousingIpInfo {
    *
    */
   network?: string;
+  /**
+   * Reserved addresses. You should not use them in your network
+   *
+   */
+  reservedAddresses?: string[];
 }
 /**
  * A structure describing the Bay`s link information
  */
 export interface DedicatedHousingLinkInfo {
   /**
-   * Router in charge of your network
-   *
-   */
-  router?: string;
-  /**
    * Router port number
    *
    */
   port?: string;
+  /**
+   * Router in charge of your network
+   *
+   */
+  router?: string;
 }
 /**
  * A structure describing the Bay`s network configuration
@@ -151,15 +151,15 @@ export interface DedicatedHousingNetworkInfo {
  */
 export interface DedicatedHousingOptions {
   /**
-   * Is this housing bay have handsneyes service
-   *
-   */
-  handsneyes?: boolean;
-  /**
    * Number of APC connected to this housing bay
    *
    */
   apcCount?: Number;
+  /**
+   * Is this housing bay have handsneyes service
+   *
+   */
+  handsneyes?: boolean;
   /**
    * High Availability routing service offer
    *
@@ -171,16 +171,6 @@ export interface DedicatedHousingOptions {
  */
 export interface DedicatedHousingTask {
   /**
-   * Function name
-   *
-   */
-  function?: DedicatedHousingTaskFunctionEnum;
-  /**
-   * last update
-   *
-   */
-  lastUpdate?: Date;
-  /**
    * Details of this task
    *
    */
@@ -191,10 +181,15 @@ export interface DedicatedHousingTask {
    */
   doneDate?: Date;
   /**
-   * the id of the task
+   * Function name
    *
    */
-  taskId?: Number;
+  function?: DedicatedHousingTaskFunctionEnum;
+  /**
+   * last update
+   *
+   */
+  lastUpdate?: Date;
   /**
    * Task Creation date
    *
@@ -205,6 +200,11 @@ export interface DedicatedHousingTask {
    *
    */
   status?: DedicatedTaskStatusEnum;
+  /**
+   * the id of the task
+   *
+   */
+  taskId?: Number;
 }
 /**
  * Distincts task
@@ -215,45 +215,45 @@ export type DedicatedHousingTaskFunctionEnum = 'applyBackupFtpAcls' | 'applyBack
  */
 export interface DedicatedServerBackupFtp {
   /**
-   * If not-null, gives the date since when your account was set in read-only mode because the quota was exceeded
+   * The backup FTP server name
    *
    */
-  readOnlyDate?: Date;
+  ftpBackupName?: string;
   /**
    * The disk space available in gigabytes
    *
    */
   quota?: ComplexTypeUnitAndValue<Number>;
   /**
-   * The disk space currently used on your backup FTP in percent
+   * If not-null, gives the date since when your account was set in read-only mode because the quota was exceeded
    *
    */
-  usage?: ComplexTypeUnitAndValue<Number>;
-  /**
-   * The backup FTP server name
-   *
-   */
-  ftpBackupName?: string;
+  readOnlyDate?: Date;
   /**
    * The backup FTP type
    *
    */
   type?: DedicatedServerBackupStorageTypeEnum;
+  /**
+   * The disk space currently used on your backup FTP in percent
+   *
+   */
+  usage?: ComplexTypeUnitAndValue<Number>;
 }
 /**
  * Backup Ftp ACL for this server and Backup Ftp
  */
 export interface DedicatedServerBackupFtpAcl {
   /**
+   * Wether to allow the CIFS (SMB) protocol for this ACL
+   *
+   */
+  cifs?: boolean;
+  /**
    * Wether to allow the FTP protocol for this ACL
    *
    */
   ftp?: boolean;
-  /**
-   * Date of the last object modification
-   *
-   */
-  lastUpdate?: Date;
   /**
    * The IP Block specific to this ACL
    *
@@ -265,15 +265,15 @@ export interface DedicatedServerBackupFtpAcl {
    */
   isApplied?: boolean;
   /**
+   * Date of the last object modification
+   *
+   */
+  lastUpdate?: Date;
+  /**
    * Wether to allow the NFS protocol for this ACL
    *
    */
   nfs?: boolean;
-  /**
-   * Wether to allow the CIFS (SMB) protocol for this ACL
-   *
-   */
-  cifs?: boolean;
 }
 /**
  * Different backup storage type
@@ -283,16 +283,6 @@ export type DedicatedServerBackupStorageTypeEnum = 'included' | 'storage';
  * Server tasks
  */
 export interface DedicatedServerTask {
-  /**
-   * last update
-   *
-   */
-  lastUpdate?: Date;
-  /**
-   * Function name
-   *
-   */
-  function?: DedicatedTaskFunctionEnum;
   /**
    * Details of this task
    *
@@ -304,10 +294,15 @@ export interface DedicatedServerTask {
    */
   doneDate?: Date;
   /**
-   * the id of the task
+   * Function name
    *
    */
-  taskId?: Number;
+  function?: DedicatedTaskFunctionEnum;
+  /**
+   * last update
+   *
+   */
+  lastUpdate?: Date;
   /**
    * Task Creation date
    *
@@ -318,36 +313,41 @@ export interface DedicatedServerTask {
    *
    */
   status?: DedicatedTaskStatusEnum;
+  /**
+   * the id of the task
+   *
+   */
+  taskId?: Number;
 }
 /**
  * Map a possible renew for a specific service
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -362,31 +362,36 @@ export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' |
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
+  /**
+   */
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  engagedUpTo?: Date;
+  contactTech?: string;
   /**
    */
-  contactAdmin?: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -394,134 +399,132 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
   /**
    */
-  creation?: Date;
-  /**
-   */
   status?: ServiceStateEnum;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
 }
-type PathsdedicatedhousingGET = '/dedicated/housing' | 
-'/dedicated/housing/{serviceName}/orderable/APC' | 
+type PathsDedicatedhousingGET = '/dedicated/housing' | 
+'/dedicated/housing/{serviceName}' | 
 '/dedicated/housing/{serviceName}/serviceInfos' | 
-'/dedicated/housing/{serviceName}/task' | 
-'/dedicated/housing/{serviceName}/task/{taskId}' | 
 '/dedicated/housing/{serviceName}/features/backupFTP' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}' | 
 '/dedicated/housing/{serviceName}/features/backupFTP/access' | 
-'/dedicated/housing/{serviceName}';
+'/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}' | 
+'/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks' | 
+'/dedicated/housing/{serviceName}/orderable/APC' | 
+'/dedicated/housing/{serviceName}/task' | 
+'/dedicated/housing/{serviceName}/task/{taskId}';
 
-type PathsdedicatedhousingPUT = '/dedicated/housing/{serviceName}/serviceInfos' | 
+type PathsDedicatedhousingPUT = '/dedicated/housing/{serviceName}/serviceInfos' | 
 '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}';
 
-type PathsdedicatedhousingPOST = '/dedicated/housing/{serviceName}/task/{taskId}/cancel' | 
+type PathsDedicatedhousingPOST = '/dedicated/housing/{serviceName}/features/backupFTP/password' | 
 '/dedicated/housing/{serviceName}/features/backupFTP' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/password' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/access';
+'/dedicated/housing/{serviceName}/features/backupFTP/access' | 
+'/dedicated/housing/{serviceName}/task/{taskId}/cancel';
 
-type PathsdedicatedhousingDELETE = '/dedicated/housing/{serviceName}/features/backupFTP' | 
+type PathsDedicatedhousingDELETE = '/dedicated/housing/{serviceName}/features/backupFTP' | 
 '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}';
 
-class Apidedicatedhousing extends ApiCommon {
+export class ApiDedicatedhousing extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Operations about the HOUSING service
   List available services
   **/
-  public get(path: '/dedicated/housing', pathParams: null, queryParams: null): Promise<string[]>;
-  /**
-  APC operations
-  Is an APC orderable for this housing bay
-  **/
-  public get(path: '/dedicated/housing/{serviceName}/orderable/APC', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedHousingApcOrderable>;
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/dedicated/housing/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  List the dedicated.housing.Task objects
-  View task list
-  **/
-  public get(path: '/dedicated/housing/{serviceName}/task', pathParams: {serviceName?: string}, queryParams: {status?: DedicatedTaskStatusEnum, function?: DedicatedHousingTaskFunctionEnum}): Promise<Number[]>;
-  /**
-  Housing tasks
-  Get this object properties
-  **/
-  public get(path: '/dedicated/housing/{serviceName}/task/{taskId}', pathParams: {serviceName?: string, taskId?: Number}, queryParams: null): Promise<DedicatedHousingTask>;
-  /**
-  Backup Ftp assigned to this server
-  Get this object properties
-  **/
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedServerBackupFtp>;
-  /**
-  authorizableBlocks operations
-  Get all IP blocks that can be used in the ACL
-  **/
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Backup Ftp ACL for this server and Backup Ftp
-  Get this object properties
-  **/
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName?: string, ipBlock?: string}, queryParams: null): Promise<DedicatedServerBackupFtpAcl>;
-  /**
-  List the dedicated.server.BackupFtpAcl objects
-  List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
-  **/
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
+  public get(path: '/dedicated/housing'): Promise<string[]>;
   /**
   Housing bay
   Get this object properties
   **/
-  public get(path: '/dedicated/housing/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<DedicatedHousingHousing>;
-  public get(path: PathsdedicatedhousingGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/dedicated/housing/{serviceName}', pathParams: {serviceName: string}): Promise<DedicatedHousingHousing>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/dedicated/housing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  Backup Ftp assigned to this server
+  Get this object properties
+  **/
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerBackupFtp>;
+  /**
+  List the dedicated.server.BackupFtpAcl objects
+  List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
+  **/
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Backup Ftp ACL for this server and Backup Ftp
+  Get this object properties
+  **/
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<DedicatedServerBackupFtpAcl>;
+  /**
+  authorizableBlocks operations
+  Get all IP blocks that can be used in the ACL
+  **/
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  APC operations
+  Is an APC orderable for this housing bay
+  **/
+  public get(path: '/dedicated/housing/{serviceName}/orderable/APC', pathParams: {serviceName: string}): Promise<DedicatedHousingApcOrderable>;
+  /**
+  List the dedicated.housing.Task objects
+  View task list
+  **/
+  public get(path: '/dedicated/housing/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {function?: DedicatedHousingTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<Number[]>;
+  /**
+  Housing tasks
+  Get this object properties
+  **/
+  public get(path: '/dedicated/housing/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DedicatedHousingTask>;
+  public get(path: PathsDedicatedhousingGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicated/housing/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public put(path: '/dedicated/housing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Alter this object properties
   **/
-  public put(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName?: string, ipBlock?: string}, bodyParams: null): Promise<void>;
-  public put(path: PathsdedicatedhousingPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
-  /**
-  cancel operations
-  this action stop the task progression if it's possible
-  **/
-  public post(path: '/dedicated/housing/{serviceName}/task/{taskId}/cancel', pathParams: {serviceName?: string, taskId?: Number}, bodyParams: null): Promise<void>;
-  /**
-  Backup Ftp assigned to this server
-  Create a new Backup FTP space
-  **/
-  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
+  public put(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<void>;
+  public put(path: PathsDedicatedhousingPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   password operations
   Change your Backup FTP password
   **/
-  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/password', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/password', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  /**
+  Backup Ftp assigned to this server
+  Create a new Backup FTP space
+  **/
+  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
   List the dedicated.server.BackupFtpAcl objects
   Create a new Backup FTP ACL
   **/
-  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
-  public post(path: PathsdedicatedhousingPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  /**
+  cancel operations
+  this action stop the task progression if it's possible
+  **/
+  public post(path: '/dedicated/housing/{serviceName}/task/{taskId}/cancel', pathParams: {serviceName: string, taskId: Number}): Promise<void>;
+  public post(path: PathsDedicatedhousingPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Backup Ftp assigned to this server
   Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED
   **/
-  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName?: string}, bodyParams: null): Promise<DedicatedServerTask>;
+  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Revoke this ACL
   **/
-  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName?: string, ipBlock?: string}, bodyParams: null): Promise<DedicatedServerTask>;
-  public delete(path: PathsdedicatedhousingDELETE, pathParams?: any, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<DedicatedServerTask>;
+  public delete(path: PathsDedicatedhousingDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }

@@ -9,30 +9,30 @@ export interface RegistryImage {
    */
   createdAt?: Date;
   /**
-   * Whether is image is public or private
+   * The image id
    *
    */
-  public?: boolean;
+  id?: string;
   /**
    * The image name
    *
    */
   name?: string;
   /**
-   * The image id
+   * Whether is image is public or private
    *
    */
-  id?: string;
-  /**
-   * Date of the resource last update
-   *
-   */
-  updatedAt?: Date;
+  public?: boolean;
   /**
    * The status of the image
    *
    */
   status?: RegistryImageStatus;
+  /**
+   * Date of the resource last update
+   *
+   */
+  updatedAt?: Date;
 }
 /**
  * The status of the image
@@ -78,15 +78,15 @@ export interface RegistryInputPermissions {
    */
   isAdmin?: boolean;
   /**
-   * User Id
-   *
-   */
-  userId?: string;
-  /**
    * The status of the permission
    *
    */
   status?: RegistryPermissionStatus;
+  /**
+   * User Id
+   *
+   */
+  userId?: string;
 }
 /**
  * A registry user account
@@ -108,25 +108,25 @@ export interface RegistryNamespace {
    */
   createdAt?: Date;
   /**
-   * The namespace name
-   *
-   */
-  name?: string;
-  /**
    * The namespace id
    *
    */
   id?: string;
   /**
-   * Date of the resource last update
+   * The namespace name
    *
    */
-  updatedAt?: Date;
+  name?: string;
   /**
    * The status of the namespace
    *
    */
   status?: RegistryNamespaceStatus;
+  /**
+   * Date of the resource last update
+   *
+   */
+  updatedAt?: Date;
 }
 /**
  * The status of the namespace
@@ -141,11 +141,6 @@ export type RegistryPermissionStatus = 'DELETING' | 'DEPLOYING' | 'ERROR' | 'OK'
  */
 export interface RegistryPermissions {
   /**
-   * Date of the resource creation
-   *
-   */
-  createdAt?: Date;
-  /**
    * Whether a user can read images on the namespace
    *
    */
@@ -155,6 +150,11 @@ export interface RegistryPermissions {
    *
    */
   canWrite?: boolean;
+  /**
+   * Date of the resource creation
+   *
+   */
+  createdAt?: Date;
   /**
    * Permission Id
    *
@@ -166,30 +166,25 @@ export interface RegistryPermissions {
    */
   isAdmin?: boolean;
   /**
-   * User Id
+   * The status of the permission
    *
    */
-  userId?: string;
+  status?: RegistryPermissionStatus;
   /**
    * Date of the resource last update
    *
    */
   updatedAt?: Date;
   /**
-   * The status of the permission
+   * User Id
    *
    */
-  status?: RegistryPermissionStatus;
+  userId?: string;
 }
 /**
  * The client subscription to the registry service
  */
 export interface RegistryService {
-  /**
-   * Maximal number of registered users in the service
-   *
-   */
-  maxUsers?: Number;
   /**
    * Date of the resource creation
    *
@@ -201,25 +196,30 @@ export interface RegistryService {
    */
   endpoint?: string;
   /**
-   * The name of the geographical zone the service is located in
+   * The service id
    *
    */
-  zone?: string;
+  id?: string;
   /**
    * Maximal number of registered namespaces in the service
    *
    */
   maxNamespaces?: Number;
   /**
-   * The service id
+   * Maximal number of registered users in the service
    *
    */
-  id?: string;
+  maxUsers?: Number;
   /**
    * Date of the resource last update
    *
    */
   updatedAt?: Date;
+  /**
+   * The name of the geographical zone the service is located in
+   *
+   */
+  zone?: string;
 }
 /**
  * An image tag
@@ -231,15 +231,15 @@ export interface RegistryTag {
    */
   createdAt?: Date;
   /**
-   * The tag name
-   *
-   */
-  name?: string;
-  /**
    * The tag id
    *
    */
   id?: string;
+  /**
+   * The tag name
+   *
+   */
+  name?: string;
   /**
    * Date of the resource last update
    *
@@ -271,15 +271,15 @@ export interface RegistryUser {
    */
   status?: RegistryUserStatus;
   /**
-   * The user name
-   *
-   */
-  username?: string;
-  /**
    * Date of the resource last update
    *
    */
   updatedAt?: Date;
+  /**
+   * The user name
+   *
+   */
+  username?: string;
 }
 /**
  * The status of the user
@@ -290,30 +290,30 @@ export type RegistryUserStatus = 'DELETING' | 'DEPLOYING' | 'ERROR' | 'OK';
  */
 export interface ServiceRenewType {
   /**
-   * The service needs to be manually renewed and paid
+   * The service is automatically renewed
    *
    */
-  manualPayment?: boolean;
+  automatic?: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
   deleteAtExpiration?: boolean;
   /**
-   * period of renew in month
-   *
-   */
-  period?: Number;
-  /**
    * The service forced to be renewed
    *
    */
   forced?: boolean;
   /**
-   * The service is automatically renewed
+   * The service needs to be manually renewed and paid
    *
    */
-  automatic?: boolean;
+  manualPayment?: boolean;
+  /**
+   * period of renew in month
+   *
+   */
+  period?: Number;
 }
 /**
  * Detailed renewal type of a service
@@ -328,31 +328,36 @@ export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' |
  */
 export interface ServicesService {
   /**
+   * Indicates that the service can be set up to be deleted at expiration
+   *
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  canDeleteAtExpiration?: boolean;
+  /**
+   */
+  contactAdmin?: string;
   /**
    */
   contactBilling?: string;
   /**
    */
-  engagedUpTo?: Date;
+  contactTech?: string;
   /**
    */
-  contactAdmin?: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: Number[];
+  creation?: Date;
   /**
    */
   domain?: string;
   /**
    */
-  contactTech?: string;
+  engagedUpTo?: Date;
   /**
    */
   expiration?: Date;
+  /**
+   * All the possible renew period of your service in month
+   *
+   */
+  possibleRenewPeriod?: Number[];
   /**
    * Way of handling the renew
    *
@@ -360,194 +365,192 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
+  renewalType?: ServiceRenewalTypeEnum;
+  /**
+   */
   serviceId?: Number;
   /**
    */
-  creation?: Date;
-  /**
-   */
   status?: ServiceStateEnum;
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration?: boolean;
 }
-type PathscaasregistryGET = '/caas/registry/{serviceName}/serviceInfos' | 
-'/caas/registry/{serviceName}' | 
-'/caas/registry/{serviceName}/users/{userId}' | 
+type PathsCaasregistryGET = '/caas/registry' | 
 '/caas/registry/{serviceName}/users' | 
-'/caas/registry/{serviceName}/namespaces' | 
+'/caas/registry/{serviceName}/users/{userId}' | 
+'/caas/registry/{serviceName}/serviceInfos' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}' | 
-'/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags/{tagId}' | 
+'/caas/registry/{serviceName}/namespaces/{namespaceId}/images' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags' | 
+'/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags/{tagId}' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions' | 
-'/caas/registry/{serviceName}/namespaces/{namespaceId}/images' | 
-'/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions' | 
-'/caas/registry';
+'/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}' | 
+'/caas/registry/{serviceName}/namespaces' | 
+'/caas/registry/{serviceName}';
 
-type PathscaasregistryPUT = '/caas/registry/{serviceName}/serviceInfos' | 
+type PathsCaasregistryPUT = '/caas/registry/{serviceName}/serviceInfos' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}';
 
-type PathscaasregistryPOST = '/caas/registry/{serviceName}/changeContact' | 
-'/caas/registry/{serviceName}/users/{userId}/changePassword' | 
+type PathsCaasregistryPOST = '/caas/registry/{serviceName}/changeContact' | 
 '/caas/registry/{serviceName}/users' | 
-'/caas/registry/{serviceName}/namespaces' | 
+'/caas/registry/{serviceName}/users/{userId}/changePassword' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions' | 
-'/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions';
+'/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions' | 
+'/caas/registry/{serviceName}/namespaces';
 
-type PathscaasregistryDELETE = '/caas/registry/{serviceName}/users/{userId}' | 
+type PathsCaasregistryDELETE = '/caas/registry/{serviceName}/users/{userId}' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}' | 
 '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}';
 
-class Apicaasregistry extends ApiCommon {
-  /**
-  Details about a Service
-  Get this object properties
-  **/
-  public get(path: '/caas/registry/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, queryParams: null): Promise<ServicesService>;
-  /**
-  Missing description
-  Inspect service.
-  **/
-  public get(path: '/caas/registry/{serviceName}', pathParams: {serviceName?: string}, queryParams: null): Promise<RegistryService>;
-  /**
-  Missing description
-  Inspect user
-  **/
-  public get(path: '/caas/registry/{serviceName}/users/{userId}', pathParams: {serviceName?: string, userId?: string}, queryParams: null): Promise<RegistryUser>;
-  /**
-  Missing description
-  List users
-  **/
-  public get(path: '/caas/registry/{serviceName}/users', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Missing description
-  List namespace
-  **/
-  public get(path: '/caas/registry/{serviceName}/namespaces', pathParams: {serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Missing description
-  Inspect namespace
-  **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}', pathParams: {namespaceId?: string, serviceName?: string}, queryParams: null): Promise<RegistryNamespace>;
-  /**
-  Missing description
-  Inspect image tag
-  **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags/{tagId}', pathParams: {imageId?: string, namespaceId?: string, serviceName?: string, tagId?: string}, queryParams: null): Promise<RegistryTag>;
-  /**
-  Missing description
-  List image tags
-  **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags', pathParams: {imageId?: string, namespaceId?: string, serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Missing description
-  Inspect image
-  **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}', pathParams: {imageId?: string, namespaceId?: string, serviceName?: string}, queryParams: null): Promise<RegistryImage>;
-  /**
-  Missing description
-  Inspect image permissions
-  **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}', pathParams: {imageId?: string, namespaceId?: string, permissionId?: string, serviceName?: string}, queryParams: null): Promise<RegistryPermissions>;
-  /**
-  Missing description
-  List image permissions
-  **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions', pathParams: {imageId?: string, namespaceId?: string, serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Missing description
-  List all images in namespace
-  **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images', pathParams: {namespaceId?: string, serviceName?: string}, queryParams: null): Promise<string[]>;
-  /**
-  Missing description
-  Inspect permission
-  **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}', pathParams: {namespaceId?: string, permissionId?: string, serviceName?: string}, queryParams: null): Promise<RegistryPermissions>;
-  /**
-  Missing description
-  List namespace permissions
-  **/
-  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions', pathParams: {namespaceId?: string, serviceName?: string}, queryParams: null): Promise<string[]>;
+export class ApiCaasregistry extends ApiCommon {
+  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
+    super(config);
+  }
   /**
   Operations about the DOCKER service
   List available services
   **/
-  public get(path: '/caas/registry', pathParams: null, queryParams: null): Promise<string[]>;
-  public get(path: PathscaasregistryGET, pathParams?: any, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/caas/registry'): Promise<string[]>;
+  /**
+  Missing description
+  List users
+  **/
+  public get(path: '/caas/registry/{serviceName}/users', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Missing description
+  Inspect user
+  **/
+  public get(path: '/caas/registry/{serviceName}/users/{userId}', pathParams: {serviceName: string, userId: string}): Promise<RegistryUser>;
+  /**
+  Details about a Service
+  Get this object properties
+  **/
+  public get(path: '/caas/registry/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  /**
+  Missing description
+  Inspect namespace
+  **/
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}', pathParams: {namespaceId: string, serviceName: string}): Promise<RegistryNamespace>;
+  /**
+  Missing description
+  List all images in namespace
+  **/
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images', pathParams: {namespaceId: string, serviceName: string}): Promise<string[]>;
+  /**
+  Missing description
+  List image tags
+  **/
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags', pathParams: {imageId: string, namespaceId: string, serviceName: string}): Promise<string[]>;
+  /**
+  Missing description
+  Inspect image tag
+  **/
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags/{tagId}', pathParams: {imageId: string, namespaceId: string, serviceName: string, tagId: string}): Promise<RegistryTag>;
+  /**
+  Missing description
+  Inspect image
+  **/
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}', pathParams: {imageId: string, namespaceId: string, serviceName: string}): Promise<RegistryImage>;
+  /**
+  Missing description
+  Inspect image permissions
+  **/
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}', pathParams: {imageId: string, namespaceId: string, permissionId: string, serviceName: string}): Promise<RegistryPermissions>;
+  /**
+  Missing description
+  List image permissions
+  **/
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions', pathParams: {imageId: string, namespaceId: string, serviceName: string}): Promise<string[]>;
+  /**
+  Missing description
+  List namespace permissions
+  **/
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions', pathParams: {namespaceId: string, serviceName: string}): Promise<string[]>;
+  /**
+  Missing description
+  Inspect permission
+  **/
+  public get(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}', pathParams: {namespaceId: string, permissionId: string, serviceName: string}): Promise<RegistryPermissions>;
+  /**
+  Missing description
+  List namespace
+  **/
+  public get(path: '/caas/registry/{serviceName}/namespaces', pathParams: {serviceName: string}): Promise<string[]>;
+  /**
+  Missing description
+  Inspect service.
+  **/
+  public get(path: '/caas/registry/{serviceName}', pathParams: {serviceName: string}): Promise<RegistryService>;
+  public get(path: PathsCaasregistryGET, pathParams?: { [key:string]:string; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/caas/registry/{serviceName}/serviceInfos', pathParams: {serviceName?: string}, bodyParams: null): Promise<void>;
+  public put(path: '/caas/registry/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
   /**
   Missing description
   Update image
   **/
-  public put(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}', pathParams: {imageId?: string, namespaceId?: string, serviceName?: string}, bodyParams: null): Promise<RegistryImage>;
-  public put(path: PathscaasregistryPUT, pathParams?: any, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}', pathParams: {imageId: string, namespaceId: string, serviceName: string}): Promise<RegistryImage>;
+  public put(path: PathsCaasregistryPUT, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/caas/registry/{serviceName}/changeContact', pathParams: {serviceName?: string}, bodyParams: null): Promise<Number[]>;
-  /**
-  Missing description
-  Update user password
-  **/
-  public post(path: '/caas/registry/{serviceName}/users/{userId}/changePassword', pathParams: {serviceName?: string, userId?: string}, bodyParams: null): Promise<RegistryUser>;
+  public post(path: '/caas/registry/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
   /**
   Missing description
   Create user
   **/
-  public post(path: '/caas/registry/{serviceName}/users', pathParams: {serviceName?: string}, bodyParams: null): Promise<RegistryUser>;
+  public post(path: '/caas/registry/{serviceName}/users', pathParams: {serviceName: string}): Promise<RegistryUser>;
   /**
   Missing description
-  Create namespace
+  Update user password
   **/
-  public post(path: '/caas/registry/{serviceName}/namespaces', pathParams: {serviceName?: string}, bodyParams: null): Promise<RegistryNamespace>;
+  public post(path: '/caas/registry/{serviceName}/users/{userId}/changePassword', pathParams: {serviceName: string, userId: string}): Promise<RegistryUser>;
   /**
   Missing description
   Create image permissions
   **/
-  public post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions', pathParams: {imageId?: string, namespaceId?: string, serviceName?: string}, bodyParams: null): Promise<RegistryPermissions>;
+  public post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions', pathParams: {imageId: string, namespaceId: string, serviceName: string}): Promise<RegistryPermissions>;
   /**
   Missing description
   Create namespace permissions
   **/
-  public post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions', pathParams: {namespaceId?: string, serviceName?: string}, bodyParams: null): Promise<RegistryPermissions>;
-  public post(path: PathscaasregistryPOST, pathParams?: any, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions', pathParams: {namespaceId: string, serviceName: string}): Promise<RegistryPermissions>;
+  /**
+  Missing description
+  Create namespace
+  **/
+  public post(path: '/caas/registry/{serviceName}/namespaces', pathParams: {serviceName: string}): Promise<RegistryNamespace>;
+  public post(path: PathsCaasregistryPOST, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
   /**
   Missing description
   Delete user
   **/
-  public delete(path: '/caas/registry/{serviceName}/users/{userId}', pathParams: {serviceName?: string, userId?: string}, bodyParams: null): Promise<void>;
+  public delete(path: '/caas/registry/{serviceName}/users/{userId}', pathParams: {serviceName: string, userId: string}): Promise<void>;
   /**
   Missing description
   Delete namespace
   **/
-  public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}', pathParams: {namespaceId?: string, serviceName?: string}, bodyParams: null): Promise<void>;
+  public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}', pathParams: {namespaceId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Delete image
   **/
-  public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}', pathParams: {imageId?: string, namespaceId?: string, serviceName?: string}, bodyParams: null): Promise<void>;
+  public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}', pathParams: {imageId: string, namespaceId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Delete image permissions.
   **/
-  public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}', pathParams: {imageId?: string, namespaceId?: string, permissionId?: string, serviceName?: string}, bodyParams: null): Promise<void>;
+  public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}', pathParams: {imageId: string, namespaceId: string, permissionId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Delete namespace permissions
   **/
-  public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}', pathParams: {namespaceId?: string, permissionId?: string, serviceName?: string}, bodyParams: null): Promise<void>;
-  public delete(path: PathscaasregistryDELETE, pathParams?: any, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}', pathParams: {namespaceId: string, permissionId: string, serviceName: string}): Promise<void>;
+  public delete(path: PathsCaasregistryDELETE, pathParams?: { [key:string]:string; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
 }
