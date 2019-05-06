@@ -207,7 +207,7 @@ export class ApiNewAccount extends ApiCommon {
   Give all the rules to follow in order to create an OVH identifier
   Give all the rules to follow in order to create an OVH identifier
   **/
-  public get(path: '/newAccount/creationRules', pathParams: undefined, queryParams: {ovhCompany?: NichandleOvhCompanyEnum, ovhSubsidiary?: NichandleOvhSubsidiaryEnum, country?: NichandleCountryEnum, legalform?: NichandleLegalFormEnum}): Promise<NichandleCreationRules>;
+  public get(path: '/newAccount/creationRules', pathParams: undefined, queryParams: {country?: NichandleCountryEnum, legalform?: NichandleLegalFormEnum, ovhCompany?: NichandleOvhCompanyEnum, ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<NichandleCreationRules>;
   /**
   All available legal forms for a given country
   All available legal forms for a given country

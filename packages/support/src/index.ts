@@ -172,7 +172,7 @@ export class ApiSupport extends ApiCommon {
   List support tickets identifiers for this service
   List support tickets identifiers for this service
   **/
-  public get(path: '/support/tickets', pathParams: undefined, queryParams: {status?: SupportTicketStatusEnum, product?: SupportTicketProductEnum, maxCreationDate?: string, category?: SupportTicketCategoryEnum, serviceName?: string, ticketNumber?: string, minCreationDate?: string, archived?: boolean, subject?: string}): Promise<Number[]>;
+  public get(path: '/support/tickets', pathParams: undefined, queryParams: {archived?: boolean, category?: SupportTicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: SupportTicketProductEnum, serviceName?: string, status?: SupportTicketStatusEnum, subject?: string, ticketNumber?: string}): Promise<Number[]>;
   /**
   Get ticket
   Get ticket

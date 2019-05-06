@@ -2534,12 +2534,12 @@ export class ApiHostingWeb extends ApiCommon {
   Get the result of a visibility check
   Get the result of a visibility check
   **/
-  public get(path: '/hosting/web/localSeo/visibilityCheckResult', pathParams: undefined, queryParams: {token?: string, id?: Number, directory?: string}): Promise<HostingWebLocalSeoVisibilityCheckResultResponse[]>;
+  public get(path: '/hosting/web/localSeo/visibilityCheckResult', pathParams: undefined, queryParams: {directory?: string, id?: Number, token?: string}): Promise<HostingWebLocalSeoVisibilityCheckResultResponse[]>;
   /**
   List the hosting.web.ModuleList objects
   IDs of all modules available
   **/
-  public get(path: '/hosting/web/moduleList', pathParams: undefined, queryParams: {active?: boolean, latest?: boolean, branch?: HostingWebModuleBranchEnum}): Promise<Number[]>;
+  public get(path: '/hosting/web/moduleList', pathParams: undefined, queryParams: {active?: boolean, branch?: HostingWebModuleBranchEnum, latest?: boolean}): Promise<Number[]>;
   /**
   A module specifically packaged by OVH
   Get this object properties
@@ -2589,7 +2589,7 @@ export class ApiHostingWeb extends ApiCommon {
   List the hosting.web.cron objects
   Crons on your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/cron', pathParams: {serviceName: string}, queryParams: {command?: string, language?: HostingWebCronLanguageEnum, email?: string, description?: string}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/cron', pathParams: {serviceName: string}, queryParams: {command?: string, description?: string, email?: string, language?: HostingWebCronLanguageEnum}): Promise<Number[]>;
   /**
   Hosting crons
   Get this object properties
@@ -2604,7 +2604,7 @@ export class ApiHostingWeb extends ApiCommon {
   List the hosting.web.database objects
   Databases linked to your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/database', pathParams: {serviceName: string}, queryParams: {type?: HostingWebDatabaseDatabaseTypeEnum, mode?: HostingWebDatabaseModeEnum, name?: string, server?: string, user?: string}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/database', pathParams: {serviceName: string}, queryParams: {mode?: HostingWebDatabaseModeEnum, name?: string, server?: string, type?: HostingWebDatabaseDatabaseTypeEnum, user?: string}): Promise<string[]>;
   /**
   Database
   Get this object properties
@@ -2619,7 +2619,7 @@ export class ApiHostingWeb extends ApiCommon {
   List the hosting.web.database.dump objects
   Dump available for your databases
   **/
-  public get(path: '/hosting/web/{serviceName}/database/{name}/dump', pathParams: {serviceName: string, name: string}, queryParams: {type?: HostingWebDatabaseDumpDateEnum, creationDate?: string, deletionDate?: string}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/database/{name}/dump', pathParams: {serviceName: string, name: string}, queryParams: {creationDate?: string, deletionDate?: string, type?: HostingWebDatabaseDumpDateEnum}): Promise<Number[]>;
   /**
   Dump
   Get this object properties
@@ -2629,7 +2629,7 @@ export class ApiHostingWeb extends ApiCommon {
   statistics operations
   Get statistics about this database
   **/
-  public get(path: '/hosting/web/{serviceName}/database/{name}/statistics', pathParams: {serviceName: string, name: string}, queryParams: {type?: HostingWebDatabaseStatisticsTypeEnum, period?: HostingWebStatisticsPeriodEnum}): Promise<ComplexTypeChartSerie<ComplexTypeChartTimestampValue>[]>;
+  public get(path: '/hosting/web/{serviceName}/database/{name}/statistics', pathParams: {serviceName: string, name: string}, queryParams: {period?: HostingWebStatisticsPeriodEnum, type?: HostingWebDatabaseStatisticsTypeEnum}): Promise<ComplexTypeChartSerie<ComplexTypeChartTimestampValue>[]>;
   /**
   databaseAvailableType operations
   List available database type
@@ -2649,7 +2649,7 @@ export class ApiHostingWeb extends ApiCommon {
   List the hosting.web.dump objects
   Dumps linked to your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/dump', pathParams: {serviceName: string}, queryParams: {creationDate?: string, orphan?: boolean, databaseName?: string, deletionDate?: string}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/dump', pathParams: {serviceName: string}, queryParams: {creationDate?: string, databaseName?: string, deletionDate?: string, orphan?: boolean}): Promise<Number[]>;
   /**
   Dump
   Get this object properties
@@ -2764,7 +2764,7 @@ export class ApiHostingWeb extends ApiCommon {
   List the hosting.web.ovhConfig objects
   Configuration used on your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/ovhConfig', pathParams: {serviceName: string}, queryParams: {path?: string, historical?: boolean}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/ovhConfig', pathParams: {serviceName: string}, queryParams: {historical?: boolean, path?: string}): Promise<Number[]>;
   /**
   Virtual service
   Get this object properties
@@ -2804,7 +2804,7 @@ export class ApiHostingWeb extends ApiCommon {
   List the hosting.web.runtime objects
   List of runtime configurations to your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/runtime', pathParams: {serviceName: string}, queryParams: {type?: HostingWebRuntimeTypeEnum, name?: string}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/runtime', pathParams: {serviceName: string}, queryParams: {name?: string, type?: HostingWebRuntimeTypeEnum}): Promise<Number[]>;
   /**
   The runtime configuration of an attached domain for cloud web offer
   Get this object properties
@@ -2884,7 +2884,7 @@ export class ApiHostingWeb extends ApiCommon {
   userLogsToken operations
   Get a temporary token to access the your web hosting logs interface
   **/
-  public get(path: '/hosting/web/{serviceName}/userLogsToken', pathParams: {serviceName: string}, queryParams: {attachedDomain?: string, ttl?: Number, remoteCheck?: boolean}): Promise<string>;
+  public get(path: '/hosting/web/{serviceName}/userLogsToken', pathParams: {serviceName: string}, queryParams: {attachedDomain?: string, remoteCheck?: boolean, ttl?: Number}): Promise<string>;
   public get(path: PathsHostingWebGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Web Hosting

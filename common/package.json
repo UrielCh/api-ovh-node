@@ -10,5 +10,6 @@
   },
   "dependencies": {
     "bluebird": "^3.5.3"
-  }
+  },
+  "gitHead": "680fd5661c3db0e8984c8b6c2dfcf1d11fdcda1b"
 }

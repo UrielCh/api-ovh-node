@@ -425,7 +425,7 @@ export class ApiCdnDedicated extends ApiCommon {
   statistics operations
   Return stats about a domain
   **/
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/statistics', pathParams: {serviceName: string, domain: string}, queryParams: {period?: CdnanycastStatsPeriodEnum, value?: CdnanycastStatsValueEnum, type?: CdnanycastStatsTypeEnum}): Promise<CdnanycastStatsDataType[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/statistics', pathParams: {serviceName: string, domain: string}, queryParams: {period?: CdnanycastStatsPeriodEnum, type?: CdnanycastStatsTypeEnum, value?: CdnanycastStatsValueEnum}): Promise<CdnanycastStatsDataType[]>;
   /**
   List the cdnanycast.Task objects
   Task associated to the domain

@@ -846,7 +846,7 @@ export class ApiEmailMxplan extends ApiCommon {
   List the email.mxplan.ExternalContact objects
   External contacts for this service
   **/
-  public get(path: '/email/mxplan/{service}/externalContact', pathParams: {service: string}, queryParams: {firstName?: string, externalEmailAddress?: string, displayName?: string, lastName?: string, id?: Number}): Promise<string[]>;
+  public get(path: '/email/mxplan/{service}/externalContact', pathParams: {service: string}, queryParams: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: Number, lastName?: string}): Promise<string[]>;
   /**
   External contact for this mxplan service
   Get this object properties

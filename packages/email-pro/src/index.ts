@@ -951,7 +951,7 @@ export class ApiEmailPro extends ApiCommon {
   List the email.pro.ExternalContact objects
   External contacts for this service
   **/
-  public get(path: '/email/pro/{service}/externalContact', pathParams: {service: string}, queryParams: {displayName?: string, lastName?: string, externalEmailAddress?: string, firstName?: string, id?: Number}): Promise<string[]>;
+  public get(path: '/email/pro/{service}/externalContact', pathParams: {service: string}, queryParams: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: Number, lastName?: string}): Promise<string[]>;
   /**
   External contact for this pro service
   Get this object properties

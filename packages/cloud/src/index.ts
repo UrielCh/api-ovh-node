@@ -4100,7 +4100,7 @@ export class ApiCloud extends ApiCommon {
   consumption operations
   Get your project consumption
   **/
-  public get(path: '/cloud/project/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams: {to?: string, from?: string}): Promise<CloudProjectProjectUsage>;
+  public get(path: '/cloud/project/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams: {from?: string, to?: string}): Promise<CloudProjectProjectUsage>;
   /**
   List the cloud.Credit objects
   Get your credit
@@ -4400,7 +4400,7 @@ export class ApiCloud extends ApiCommon {
   List the pca.Billing objects
   cloud Archives billing items
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/billing', pathParams: {serviceName: string, pcaServiceName: string}, queryParams: {'date.to'?: string, 'date.from'?: string, billed?: boolean}): Promise<Number[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/billing', pathParams: {serviceName: string, pcaServiceName: string}, queryParams: {billed?: boolean, 'date.from'?: string, 'date.to'?: string}): Promise<Number[]>;
   /**
   cloud archives billing
   Get this object properties
@@ -4435,7 +4435,7 @@ export class ApiCloud extends ApiCommon {
   List the pca.Task objects
   cloud archives tasks for account
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', pathParams: {serviceName: string, pcaServiceName: string}, queryParams: {status?: CloudPcaTaskStateEnum, 'todoDate.to'?: string, function?: CloudPcaFunctionTypeEnum, 'todoDate.from'?: string}): Promise<string[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', pathParams: {serviceName: string, pcaServiceName: string}, queryParams: {function?: CloudPcaFunctionTypeEnum, status?: CloudPcaTaskStateEnum, 'todoDate.from'?: string, 'todoDate.to'?: string}): Promise<string[]>;
   /**
   cloud archives tasks
   Get this object properties

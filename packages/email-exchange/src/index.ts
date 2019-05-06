@@ -1997,7 +1997,7 @@ export class ApiEmailExchange extends ApiCommon {
   List the email.exchange.Account objects
   Accounts associated to this exchange service
   **/
-  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/account', pathParams: {organizationName: string, exchangeService: string}, queryParams: {id?: Number, primaryEmailAddress?: string, accountLicense?: EmailExchangeOvhLicenceEnum}): Promise<string[]>;
+  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/account', pathParams: {organizationName: string, exchangeService: string}, queryParams: {accountLicense?: EmailExchangeOvhLicenceEnum, id?: Number, primaryEmailAddress?: string}): Promise<string[]>;
   /**
   Exchange mailbox
   Get this object properties
@@ -2092,7 +2092,7 @@ export class ApiEmailExchange extends ApiCommon {
   List the email.exchange.exchangeServiceDevice objects
   List of your ActiveSync devices registered on this Exchange service
   **/
-  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/device', pathParams: {organizationName: string, exchangeService: string}, queryParams: {identity?: string, IMEI?: string, deviceState?: EmailExchangeDeviceActiveSyncStateEnum}): Promise<string[]>;
+  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/device', pathParams: {organizationName: string, exchangeService: string}, queryParams: {IMEI?: string, deviceState?: EmailExchangeDeviceActiveSyncStateEnum, identity?: string}): Promise<string[]>;
   /**
   Get the list of your ActiveSync devices registered on this Exchange service
   Get this object properties
@@ -2122,7 +2122,7 @@ export class ApiEmailExchange extends ApiCommon {
   List the email.exchange.exchangeExternalContact objects
   External contacts for this service
   **/
-  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/externalContact', pathParams: {organizationName: string, exchangeService: string}, queryParams: {displayName?: string, id?: Number, externalEmailAddress?: string, firstName?: string, lastName?: string}): Promise<string[]>;
+  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/externalContact', pathParams: {organizationName: string, exchangeService: string}, queryParams: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: Number, lastName?: string}): Promise<string[]>;
   /**
   External contact for this exchange service
   Get this object properties
@@ -2207,7 +2207,7 @@ export class ApiEmailExchange extends ApiCommon {
   outlookAvailability operations
   Show available outlooks
   **/
-  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability', pathParams: {organizationName: string, exchangeService: string}, queryParams: {outlookVersion?: EmailExchangeOutlookVersionEnum, outlookLanguage?: EmailExchangeLanguageEnum}): Promise<EmailExchangeOutlookVersions[]>;
+  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability', pathParams: {organizationName: string, exchangeService: string}, queryParams: {outlookLanguage?: EmailExchangeLanguageEnum, outlookVersion?: EmailExchangeOutlookVersionEnum}): Promise<EmailExchangeOutlookVersions[]>;
   /**
   Protocol access policy for this Exchange service
   Get this object properties

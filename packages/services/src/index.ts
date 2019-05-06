@@ -255,7 +255,7 @@ export class ApiServices extends ApiCommon {
   Get list of your service details
   null
   **/
-  public get(path: '/services', pathParams: undefined, queryParams: {routes?: string, orderBy?: string, sort?: string}): Promise<Number[]>;
+  public get(path: '/services', pathParams: undefined, queryParams: {orderBy?: string, routes?: string, sort?: string}): Promise<Number[]>;
   /**
   Get list of your service details
   Get details about a service

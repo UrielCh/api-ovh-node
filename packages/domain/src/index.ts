@@ -1434,7 +1434,7 @@ export class ApiDomain extends ApiCommon {
   List the domain.zone.DynHostLogin objects
   DynHost' logins
   **/
-  public get(path: '/domain/zone/{zoneName}/dynHost/login', pathParams: {zoneName: string}, queryParams: {subDomain?: string, login?: string}): Promise<string[]>;
+  public get(path: '/domain/zone/{zoneName}/dynHost/login', pathParams: {zoneName: string}, queryParams: {login?: string, subDomain?: string}): Promise<string[]>;
   /**
   Manage DynHost login
   Get this object properties
@@ -1459,7 +1459,7 @@ export class ApiDomain extends ApiCommon {
   List the domain.zone.ZoneRestorePoint objects
   Zone restore points
   **/
-  public get(path: '/domain/zone/{zoneName}/history', pathParams: {zoneName: string}, queryParams: {'creationDate.to'?: string, 'creationDate.from'?: string}): Promise<string[]>;
+  public get(path: '/domain/zone/{zoneName}/history', pathParams: {zoneName: string}, queryParams: {'creationDate.from'?: string, 'creationDate.to'?: string}): Promise<string[]>;
   /**
   Zone restore point
   Get this object properties
@@ -1504,7 +1504,7 @@ export class ApiDomain extends ApiCommon {
   List the domain.zone.Task objects
   Domain pending tasks
   **/
-  public get(path: '/domain/zone/{zoneName}/task', pathParams: {zoneName: string}, queryParams: {status?: DomainOperationStatusEnum, function?: string}): Promise<Number[]>;
+  public get(path: '/domain/zone/{zoneName}/task', pathParams: {zoneName: string}, queryParams: {function?: string, status?: DomainOperationStatusEnum}): Promise<Number[]>;
   /**
   Tasks associated to a zone
   Get this object properties

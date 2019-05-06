@@ -1081,7 +1081,7 @@ export class ApiVps extends ApiCommon {
   List the vps.Task objects
   Tasks associated to this virtual server
   **/
-  public get(path: '/vps/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {type?: VpsTaskTypeEnum, state?: VpsTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/vps/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {state?: VpsTaskStateEnum, type?: VpsTaskTypeEnum}): Promise<Number[]>;
   /**
   Operation on a VPS Virtual Machine
   Get this object properties

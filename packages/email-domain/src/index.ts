@@ -1071,7 +1071,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.Account objects
   Get accounts
   **/
-  public get(path: '/email/domain/{domain}/account', pathParams: {domain: string}, queryParams: {description?: string, accountName?: string}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/account', pathParams: {domain: string}, queryParams: {accountName?: string, description?: string}): Promise<string[]>;
   /**
   Account List
   Get this object properties
@@ -1201,7 +1201,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.RedirectionGlobal objects
   Get redirections
   **/
-  public get(path: '/email/domain/{domain}/redirection', pathParams: {domain: string}, queryParams: {to?: string, from?: string}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/redirection', pathParams: {domain: string}, queryParams: {from?: string, to?: string}): Promise<string[]>;
   /**
   Global Redirection
   Get this object properties

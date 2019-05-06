@@ -195,7 +195,7 @@ export class ApiVeeamVeeamEnterprise extends ApiCommon {
   List the veeam.veeamEnterprise.Task objects
   Tasks associated with Veeam Enterprise
   **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {state?: VeeamEnterpriseTaskStateEnum, name?: string}): Promise<Number[]>;
+  public get(path: '/veeam/veeamEnterprise/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {name?: string, state?: VeeamEnterpriseTaskStateEnum}): Promise<Number[]>;
   /**
   Operation with the Enterprise Account
   Get this object properties

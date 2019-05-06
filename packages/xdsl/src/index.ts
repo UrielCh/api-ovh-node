@@ -3343,7 +3343,7 @@ export class ApiXdsl extends ApiCommon {
   Search for meeting time slot
   Search for meeting time slot
   **/
-  public get(path: '/xdsl/eligibility/meetings', pathParams: undefined, queryParams: {offerLabel?: string, eligibilityId?: string}): Promise<XdslAsyncTask<XdslEligibilityMeetingSlots>>;
+  public get(path: '/xdsl/eligibility/meetings', pathParams: undefined, queryParams: {eligibilityId?: string, offerLabel?: string}): Promise<XdslAsyncTask<XdslEligibilityMeetingSlots>>;
   /**
   Get the streets from a city inseeCode and partial street name
   Get the streets from a city inseeCode and partial street name
@@ -3368,7 +3368,7 @@ export class ApiXdsl extends ApiCommon {
   List the xdsl.Incident objects
   List of incidents
   **/
-  public get(path: '/xdsl/incidents', pathParams: undefined, queryParams: {endDate?: string, creationDate?: string}): Promise<Number[]>;
+  public get(path: '/xdsl/incidents', pathParams: undefined, queryParams: {creationDate?: string, endDate?: string}): Promise<Number[]>;
   /**
   Detected incident
   Get this object properties
@@ -3488,7 +3488,7 @@ export class ApiXdsl extends ApiCommon {
   statistics operations
   Get various statistics about the line
   **/
-  public get(path: '/xdsl/{serviceName}/lines/{number}/statistics', pathParams: {serviceName: string, number: string}, queryParams: {type?: XdslLineStatisticsTypeEnum, period?: XdslStatisticsPeriodEnum}): Promise<ComplexTypeUnitAndValues<XdslTimestampAndValue>>;
+  public get(path: '/xdsl/{serviceName}/lines/{number}/statistics', pathParams: {serviceName: string, number: string}, queryParams: {period?: XdslStatisticsPeriodEnum, type?: XdslLineStatisticsTypeEnum}): Promise<ComplexTypeUnitAndValues<XdslTimestampAndValue>>;
   /**
   Modem
   Get this object properties
@@ -3658,12 +3658,12 @@ export class ApiXdsl extends ApiCommon {
   statistics operations
   Get various statistics about this access
   **/
-  public get(path: '/xdsl/{serviceName}/statistics', pathParams: {serviceName: string}, queryParams: {type?: XdslAccessStatisticsTypeEnum, period?: XdslStatisticsPeriodEnum}): Promise<ComplexTypeUnitAndValues<XdslTimestampAndValue>>;
+  public get(path: '/xdsl/{serviceName}/statistics', pathParams: {serviceName: string}, queryParams: {period?: XdslStatisticsPeriodEnum, type?: XdslAccessStatisticsTypeEnum}): Promise<ComplexTypeUnitAndValues<XdslTimestampAndValue>>;
   /**
   List the xdsl.Task objects
   Tasks scheduled for this access
   **/
-  public get(path: '/xdsl/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {status?: XdslTaskStatusEnum, function?: string}): Promise<Number[]>;
+  public get(path: '/xdsl/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {function?: string, status?: XdslTaskStatusEnum}): Promise<Number[]>;
   /**
   Describes the current status of a task
   Get this object properties

@@ -279,7 +279,7 @@ export class ApiCdnWebsite extends ApiCommon {
   statistics operations
   Get statistics about request on CDN, bandwidth value in Bytes
   **/
-  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/statistics', pathParams: {serviceName: string, domain: string}, queryParams: {value?: CdnWebsiteStatsValueEnum, period?: CdnWebsiteStatsPeriodEnum, type?: CdnWebsiteStatsTypeEnum}): Promise<CdnWebsiteStatsDataType[]>;
+  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/statistics', pathParams: {serviceName: string, domain: string}, queryParams: {period?: CdnWebsiteStatsPeriodEnum, type?: CdnWebsiteStatsTypeEnum, value?: CdnWebsiteStatsValueEnum}): Promise<CdnWebsiteStatsDataType[]>;
   /**
   List the cdn.website.Task objects
   Task associated to this domain

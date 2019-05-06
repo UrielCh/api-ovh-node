@@ -2832,7 +2832,7 @@ export class ApiDedicatedServer extends ApiCommon {
   List the availability of dedicated server
   List the availability of dedicated server
   **/
-  public get(path: '/dedicated/server/datacenter/availabilities', pathParams: undefined, queryParams: {planCode?: string, server?: string, memory?: string, storage?: string, datacenters?: string, excludeDatacenters?: boolean}): Promise<DedicatedDatacenterAvailability[]>;
+  public get(path: '/dedicated/server/datacenter/availabilities', pathParams: undefined, queryParams: {datacenters?: string, excludeDatacenters?: boolean, memory?: string, planCode?: string, server?: string, storage?: string}): Promise<DedicatedDatacenterAvailability[]>;
   /**
   List the operating systems available for a specified hardware reference
   List the os available for a specified hardware reference
@@ -2957,7 +2957,7 @@ export class ApiDedicatedServer extends ApiCommon {
   hardwareRaidSize operations
   Get hardware RAID size for a given configuration
   **/
-  public get(path: '/dedicated/server/{serviceName}/install/hardwareRaidSize', pathParams: {serviceName: string}, queryParams: {templateName?: string, partitionSchemeName?: string}): Promise<DedicatedServerHardwareRaidSize>;
+  public get(path: '/dedicated/server/{serviceName}/install/hardwareRaidSize', pathParams: {serviceName: string}, queryParams: {partitionSchemeName?: string, templateName?: string}): Promise<DedicatedServerHardwareRaidSize>;
   /**
   status operations
   Get installation status
@@ -3007,7 +3007,7 @@ export class ApiDedicatedServer extends ApiCommon {
   mrtg operations
   Retrieve traffic graph values
   **/
-  public get(path: '/dedicated/server/{serviceName}/mrtg', pathParams: {serviceName: string}, queryParams: {type?: DedicatedServerMrtgTypeEnum, period?: DedicatedServerMrtgPeriodEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
+  public get(path: '/dedicated/server/{serviceName}/mrtg', pathParams: {serviceName: string}, queryParams: {period?: DedicatedServerMrtgPeriodEnum, type?: DedicatedServerMrtgTypeEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
   /**
   List the dedicated.networkInterfaceController.NetworkInterfaceController objects
   List server networkInterfaceController
@@ -3022,7 +3022,7 @@ export class ApiDedicatedServer extends ApiCommon {
   mrtg operations
   Retrieve traffic graph values
   **/
-  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg', pathParams: {serviceName: string, mac: string}, queryParams: {type?: DedicatedServerMrtgTypeEnum, period?: DedicatedServerMrtgPeriodEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
+  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg', pathParams: {serviceName: string, mac: string}, queryParams: {period?: DedicatedServerMrtgPeriodEnum, type?: DedicatedServerMrtgTypeEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
   /**
   List the dedicated.server.Option objects
   List of dedicated server options
@@ -3162,7 +3162,7 @@ export class ApiDedicatedServer extends ApiCommon {
   List the dedicated.server.spla objects
   Your own SPLA licenses attached to this dedicated server
   **/
-  public get(path: '/dedicated/server/{serviceName}/spla', pathParams: {serviceName: string}, queryParams: {type?: DedicatedServerSplaTypeEnum, status?: DedicatedServerSplaStatusEnum}): Promise<Number[]>;
+  public get(path: '/dedicated/server/{serviceName}/spla', pathParams: {serviceName: string}, queryParams: {status?: DedicatedServerSplaStatusEnum, type?: DedicatedServerSplaTypeEnum}): Promise<Number[]>;
   /**
   SPLA licenses management
   Get this object properties
@@ -3312,7 +3312,7 @@ export class ApiDedicatedServer extends ApiCommon {
   List the dedicated.virtualNetworkInterface.VirtualNetworkInterface objects
   List server VirtualNetworkInterfaces
   **/
-  public get(path: '/dedicated/server/{serviceName}/virtualNetworkInterface', pathParams: {serviceName: string}, queryParams: {vrack?: string, mode?: DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum, name?: string}): Promise<string[]>;
+  public get(path: '/dedicated/server/{serviceName}/virtualNetworkInterface', pathParams: {serviceName: string}, queryParams: {mode?: DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum, name?: string, vrack?: string}): Promise<string[]>;
   /**
   Your VirtualNetworkInterface
   Get this object properties

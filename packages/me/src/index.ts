@@ -4122,7 +4122,7 @@ export class ApiMe extends ApiCommon {
   List the agreements.ContractAgreement objects
   List of contracts signed between you and OVH
   **/
-  public get(path: '/me/agreements', pathParams: undefined, queryParams: {contractId?: Number, agreed?: AgreementsAgreementStateEnum}): Promise<Number[]>;
+  public get(path: '/me/agreements', pathParams: undefined, queryParams: {agreed?: AgreementsAgreementStateEnum, contractId?: Number}): Promise<Number[]>;
   /**
   Contract agreement
   Get this object properties
@@ -4192,7 +4192,7 @@ export class ApiMe extends ApiCommon {
   List the billing.Bill objects
   List of all the bills the logged account has
   **/
-  public get(path: '/me/bill', pathParams: undefined, queryParams: {orderId?: Number, 'date.from'?: string, 'date.to'?: string}): Promise<string[]>;
+  public get(path: '/me/bill', pathParams: undefined, queryParams: {'date.from'?: string, 'date.to'?: string, orderId?: Number}): Promise<string[]>;
   /**
   Details about a Bill
   Get this object properties
@@ -4437,7 +4437,7 @@ export class ApiMe extends ApiCommon {
   List the billing.FidelityMovement objects
   List of entries of the fidelity account
   **/
-  public get(path: '/me/fidelityAccount/movements', pathParams: undefined, queryParams: {'date.to'?: string, 'date.from'?: string}): Promise<Number[]>;
+  public get(path: '/me/fidelityAccount/movements', pathParams: undefined, queryParams: {'date.from'?: string, 'date.to'?: string}): Promise<Number[]>;
   /**
   Details about a fidelity account
   Get this object properties
@@ -4657,7 +4657,7 @@ export class ApiMe extends ApiCommon {
   Manage payment method
   Retrieve payment method ID list
   **/
-  public get(path: '/me/payment/method', pathParams: undefined, queryParams: {status?: MePaymentMethodPaymentMethodStatus, paymentType?: string}): Promise<Number[]>;
+  public get(path: '/me/payment/method', pathParams: undefined, queryParams: {paymentType?: string, status?: MePaymentMethodPaymentMethodStatus}): Promise<Number[]>;
   /**
   Manage payment method
   Get one payment method
@@ -4717,7 +4717,7 @@ export class ApiMe extends ApiCommon {
   List the billing.Refund objects
   List of all the refunds the logged account has
   **/
-  public get(path: '/me/refund', pathParams: undefined, queryParams: {orderId?: Number, 'date.from'?: string, 'date.to'?: string}): Promise<string[]>;
+  public get(path: '/me/refund', pathParams: undefined, queryParams: {'date.from'?: string, 'date.to'?: string, orderId?: Number}): Promise<string[]>;
   /**
   Details about a Refund
   Get this object properties
@@ -4797,7 +4797,7 @@ export class ApiMe extends ApiCommon {
   List the nichandle.contactChange.Task objects
   List of service contact change tasks you are involved in
   **/
-  public get(path: '/me/task/contactChange', pathParams: undefined, queryParams: {state?: NichandleChangeContactTaskStateEnum, askingAccount?: string, toAccount?: string}): Promise<Number[]>;
+  public get(path: '/me/task/contactChange', pathParams: undefined, queryParams: {askingAccount?: string, state?: NichandleChangeContactTaskStateEnum, toAccount?: string}): Promise<Number[]>;
   /**
   Task running a contact change on a service
   Get this object properties
@@ -4807,7 +4807,7 @@ export class ApiMe extends ApiCommon {
   List the nichandle.DomainTask objects
   List of domain task
   **/
-  public get(path: '/me/task/domain', pathParams: undefined, queryParams: {status?: DomainOperationStatusEnum, domain?: string, function?: DomainNicOperationFunctionEnum}): Promise<Number[]>;
+  public get(path: '/me/task/domain', pathParams: undefined, queryParams: {domain?: string, function?: DomainNicOperationFunctionEnum, status?: DomainOperationStatusEnum}): Promise<Number[]>;
   /**
   Domain tasks
   Get this object properties

@@ -3284,12 +3284,12 @@ export class ApiOrder extends ApiCommon {
   Missing description
   Get informations about a dedicated server
   **/
-  public get(path: '/order/cart/{cartId}/dedicated', pathParams: {cartId: string}, queryParams: {planCode?: string, family?: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/dedicated', pathParams: {cartId: string}, queryParams: {family?: string, planCode?: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about dedicated server options
   **/
-  public get(path: '/order/cart/{cartId}/dedicated/options', pathParams: {cartId: string}, queryParams: {planCode?: string, family?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/dedicated/options', pathParams: {cartId: string}, queryParams: {family?: string, planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about a dedicated labs server
@@ -3304,12 +3304,12 @@ export class ApiOrder extends ApiCommon {
   Missing description
   Get informations about a dedicated server for US Reseller
   **/
-  public get(path: '/order/cart/{cartId}/dedicatedReseller', pathParams: {cartId: string}, queryParams: {planCode?: string, family?: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/dedicatedReseller', pathParams: {cartId: string}, queryParams: {family?: string, planCode?: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about dedicated server options
   **/
-  public get(path: '/order/cart/{cartId}/dedicatedReseller/options', pathParams: {cartId: string}, queryParams: {planCode?: string, family?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/dedicatedReseller/options', pathParams: {cartId: string}, queryParams: {family?: string, planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Desk As A Service offers
@@ -4134,7 +4134,7 @@ export class ApiOrder extends ApiCommon {
   Order failover ip on your Cloud project
   Get prices and contracts information
   **/
-  public get(path: '/order/cloud/project/{serviceName}/ip', pathParams: {serviceName: string}, queryParams: {instanceId?: string, country?: VpsIpGeolocationEnum, quantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/cloud/project/{serviceName}/ip', pathParams: {serviceName: string}, queryParams: {country?: VpsIpGeolocationEnum, instanceId?: string, quantity?: Number}): Promise<OrderOrder>;
   /**
   Operations about the HOUSING service
   List available services
@@ -4189,12 +4189,12 @@ export class ApiOrder extends ApiCommon {
   Order bandwidth for this server
   Get allowed durations for 'bandwidth' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/bandwidth', pathParams: {serviceName: string}, queryParams: {type?: DedicatedServerBandwidthOrderTypeEnum, bandwidth?: DedicatedServerBandwidthOrderEnum}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/bandwidth', pathParams: {serviceName: string}, queryParams: {bandwidth?: DedicatedServerBandwidthOrderEnum, type?: DedicatedServerBandwidthOrderTypeEnum}): Promise<string[]>;
   /**
   Order bandwidth for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/bandwidth/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {type?: DedicatedServerBandwidthOrderTypeEnum, bandwidth?: DedicatedServerBandwidthOrderEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/bandwidth/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {bandwidth?: DedicatedServerBandwidthOrderEnum, type?: DedicatedServerBandwidthOrderTypeEnum}): Promise<OrderOrder>;
   /**
   Order vRack bandwidth for this server
   Get allowed durations for 'bandwidthvRack' option
@@ -4239,12 +4239,12 @@ export class ApiOrder extends ApiCommon {
   Order IP for this server
   Get allowed durations for 'ip' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/ip', pathParams: {serviceName: string}, queryParams: {country?: DedicatedServerIpCountryEnum, blockSize?: DedicatedServerIpBlockSizeEnum, type?: DedicatedServerIpTypeOrderableEnum, organisationId?: string}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/ip', pathParams: {serviceName: string}, queryParams: {blockSize?: DedicatedServerIpBlockSizeEnum, country?: DedicatedServerIpCountryEnum, organisationId?: string, type?: DedicatedServerIpTypeOrderableEnum}): Promise<string[]>;
   /**
   Order IP for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/ip/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {country?: DedicatedServerIpCountryEnum, blockSize?: DedicatedServerIpBlockSizeEnum, type?: DedicatedServerIpTypeOrderableEnum, organisationId?: string}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/ip/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {blockSize?: DedicatedServerIpBlockSizeEnum, country?: DedicatedServerIpCountryEnum, organisationId?: string, type?: DedicatedServerIpTypeOrderableEnum}): Promise<OrderOrder>;
   /**
   Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted
   Get allowed durations for 'ipMigration' option
@@ -4339,32 +4339,32 @@ export class ApiOrder extends ApiCommon {
   Order a new Filer in a given Datacenter (available filers are given in /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)
   Get allowed durations for 'filer' option
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/filer', pathParams: {serviceName: string}, queryParams: {quantity?: Number, datacenterId?: Number, name?: string}): Promise<string[]>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/filer', pathParams: {serviceName: string}, queryParams: {datacenterId?: Number, name?: string, quantity?: Number}): Promise<string[]>;
   /**
   Order a new Filer in a given Datacenter (available filers are given in /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/filer/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {quantity?: Number, datacenterId?: Number, name?: string}): Promise<OrderOrder>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/filer/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {datacenterId?: Number, name?: string, quantity?: Number}): Promise<OrderOrder>;
   /**
   Order a new Host in a given Datacenter  (orderable hosts are given by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)
   Get allowed durations for 'host' option
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/host', pathParams: {serviceName: string}, queryParams: {quantity?: Number, datacenterId?: Number, name?: string}): Promise<string[]>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/host', pathParams: {serviceName: string}, queryParams: {datacenterId?: Number, name?: string, quantity?: Number}): Promise<string[]>;
   /**
   Order a new Host in a given Datacenter  (orderable hosts are given by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/host/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {quantity?: Number, datacenterId?: Number, name?: string}): Promise<OrderOrder>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/host/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {datacenterId?: Number, name?: string, quantity?: Number}): Promise<OrderOrder>;
   /**
   Order an IP block for your Private Cloud
   Get allowed durations for 'ip' option
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/ip', pathParams: {serviceName: string}, queryParams: {estimatedClientsNumber?: Number, size?: DedicatedCloudOrderableIpBlockRangeEnum, networkName?: string, country?: DedicatedCloudIpCountriesEnum, usage?: string, description?: string}): Promise<string[]>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/ip', pathParams: {serviceName: string}, queryParams: {country?: DedicatedCloudIpCountriesEnum, description?: string, estimatedClientsNumber?: Number, networkName?: string, size?: DedicatedCloudOrderableIpBlockRangeEnum, usage?: string}): Promise<string[]>;
   /**
   Order an IP block for your Private Cloud
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/ip/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {estimatedClientsNumber?: Number, size?: DedicatedCloudOrderableIpBlockRangeEnum, networkName?: string, country?: DedicatedCloudIpCountriesEnum, usage?: string, description?: string}): Promise<OrderOrder>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/ip/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {country?: DedicatedCloudIpCountriesEnum, description?: string, estimatedClientsNumber?: Number, networkName?: string, size?: DedicatedCloudOrderableIpBlockRangeEnum, usage?: string}): Promise<OrderOrder>;
   /**
   Enable windows templates (SPLA) in your Private Cloud
   Get prices and contracts information
@@ -4384,7 +4384,7 @@ export class ApiOrder extends ApiCommon {
   Order VDI option in a given Datacenter
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/vdi', pathParams: {serviceName: string}, queryParams: {datacenterId?: Number, secondPublicIpAddress?: string, firstPublicIpAddress?: string}): Promise<OrderOrder>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/vdi', pathParams: {serviceName: string}, queryParams: {datacenterId?: Number, firstPublicIpAddress?: string, secondPublicIpAddress?: string}): Promise<OrderOrder>;
   /**
   Operations about the HOSTING service
   List available services
@@ -4394,7 +4394,7 @@ export class ApiOrder extends ApiCommon {
   Order a new DNS zone
   Get prices and contracts information
   **/
-  public get(path: '/order/domain/zone/new', pathParams: undefined, queryParams: {zoneName?: string, minimized?: boolean}): Promise<OrderOrder>;
+  public get(path: '/order/domain/zone/new', pathParams: undefined, queryParams: {minimized?: boolean, zoneName?: string}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
@@ -4529,12 +4529,12 @@ export class ApiOrder extends ApiCommon {
   Order new private database
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/hosting/privateDatabase/new', pathParams: undefined, queryParams: {datacenter?: HostingPrivateDatabaseDatacenterEnum, ram?: HostingPrivateDatabaseAvailableRamSizeEnum, offer?: HostingPrivateDatabaseOfferEnum, version?: HostingPrivateDatabaseOrderableVersionEnum}): Promise<string[]>;
+  public get(path: '/order/hosting/privateDatabase/new', pathParams: undefined, queryParams: {datacenter?: HostingPrivateDatabaseDatacenterEnum, offer?: HostingPrivateDatabaseOfferEnum, ram?: HostingPrivateDatabaseAvailableRamSizeEnum, version?: HostingPrivateDatabaseOrderableVersionEnum}): Promise<string[]>;
   /**
   Order new private database
   Get prices and contracts information
   **/
-  public get(path: '/order/hosting/privateDatabase/new/{duration}', pathParams: {duration: string}, queryParams: {datacenter?: HostingPrivateDatabaseDatacenterEnum, ram?: HostingPrivateDatabaseAvailableRamSizeEnum, offer?: HostingPrivateDatabaseOfferEnum, version?: HostingPrivateDatabaseOrderableVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/hosting/privateDatabase/new/{duration}', pathParams: {duration: string}, queryParams: {datacenter?: HostingPrivateDatabaseDatacenterEnum, offer?: HostingPrivateDatabaseOfferEnum, ram?: HostingPrivateDatabaseAvailableRamSizeEnum, version?: HostingPrivateDatabaseOrderableVersionEnum}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
@@ -4559,12 +4559,12 @@ export class ApiOrder extends ApiCommon {
   Order a new hosting account
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/hosting/web/new', pathParams: undefined, queryParams: {offer?: HostingWebOfferEnum, module?: HostingWebModuleOrderableNameEnum, dnsZone?: HostingWebDnsZoneEnum, domain?: string, waiveRetractationPeriod?: boolean}): Promise<string[]>;
+  public get(path: '/order/hosting/web/new', pathParams: undefined, queryParams: {dnsZone?: HostingWebDnsZoneEnum, domain?: string, module?: HostingWebModuleOrderableNameEnum, offer?: HostingWebOfferEnum, waiveRetractationPeriod?: boolean}): Promise<string[]>;
   /**
   Order a new hosting account
   Get prices and contracts information
   **/
-  public get(path: '/order/hosting/web/new/{duration}', pathParams: {duration: string}, queryParams: {offer?: HostingWebOfferEnum, module?: HostingWebModuleOrderableNameEnum, dnsZone?: HostingWebDnsZoneEnum, domain?: string, waiveRetractationPeriod?: boolean}): Promise<OrderOrder>;
+  public get(path: '/order/hosting/web/new/{duration}', pathParams: {duration: string}, queryParams: {dnsZone?: HostingWebDnsZoneEnum, domain?: string, module?: HostingWebModuleOrderableNameEnum, offer?: HostingWebOfferEnum, waiveRetractationPeriod?: boolean}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
@@ -4654,22 +4654,22 @@ export class ApiOrder extends ApiCommon {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/cpanel/new', pathParams: undefined, queryParams: {ip?: string, version?: LicenseOrderableCpanelVersionEnum, serviceType?: LicenseLicenseTypeEnum}): Promise<string[]>;
+  public get(path: '/order/license/cpanel/new', pathParams: undefined, queryParams: {ip?: string, serviceType?: LicenseLicenseTypeEnum, version?: LicenseOrderableCpanelVersionEnum}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/cpanel/new/{duration}', pathParams: {duration: string}, queryParams: {ip?: string, version?: LicenseOrderableCpanelVersionEnum, serviceType?: LicenseLicenseTypeEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/cpanel/new/{duration}', pathParams: {duration: string}, queryParams: {ip?: string, serviceType?: LicenseLicenseTypeEnum, version?: LicenseOrderableCpanelVersionEnum}): Promise<OrderOrder>;
   /**
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/directadmin/new', pathParams: undefined, queryParams: {version?: LicenseOrderableDirectAdminVersionEnum, serviceType?: LicenseLicenseTypeEnum, ip?: string}): Promise<string[]>;
+  public get(path: '/order/license/directadmin/new', pathParams: undefined, queryParams: {ip?: string, serviceType?: LicenseLicenseTypeEnum, version?: LicenseOrderableDirectAdminVersionEnum}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/directadmin/new/{duration}', pathParams: {duration: string}, queryParams: {version?: LicenseOrderableDirectAdminVersionEnum, serviceType?: LicenseLicenseTypeEnum, ip?: string}): Promise<OrderOrder>;
+  public get(path: '/order/license/directadmin/new/{duration}', pathParams: {duration: string}, queryParams: {ip?: string, serviceType?: LicenseLicenseTypeEnum, version?: LicenseOrderableDirectAdminVersionEnum}): Promise<OrderOrder>;
   /**
   Create an order for an new office tenant
   Get allowed durations for 'new' option
@@ -4689,12 +4689,12 @@ export class ApiOrder extends ApiCommon {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/plesk/new', pathParams: undefined, queryParams: {ip?: string, powerpack?: boolean, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, serviceType?: LicenseLicenseTypeEnum, resellerManagement?: boolean, applicationSet?: LicensePleskApplicationSetEnum, antivirus?: LicenseOrderableAntivirusEnum, wordpressToolkit?: boolean, version?: LicensePleskVersionEnum}): Promise<string[]>;
+  public get(path: '/order/license/plesk/new', pathParams: undefined, queryParams: {antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, ip?: string, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: LicenseLicenseTypeEnum, version?: LicensePleskVersionEnum, wordpressToolkit?: boolean}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/plesk/new/{duration}', pathParams: {duration: string}, queryParams: {ip?: string, powerpack?: boolean, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, serviceType?: LicenseLicenseTypeEnum, resellerManagement?: boolean, applicationSet?: LicensePleskApplicationSetEnum, antivirus?: LicenseOrderableAntivirusEnum, wordpressToolkit?: boolean, version?: LicensePleskVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/plesk/new/{duration}', pathParams: {duration: string}, queryParams: {antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, ip?: string, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: LicenseLicenseTypeEnum, version?: LicensePleskVersionEnum, wordpressToolkit?: boolean}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
@@ -4704,12 +4704,12 @@ export class ApiOrder extends ApiCommon {
   Upgrade this license with some given options
   Get allowed durations for 'upgrade' option
   **/
-  public get(path: '/order/license/plesk/{serviceName}/upgrade', pathParams: {serviceName: string}, queryParams: {domainNumber?: LicenseOrderablePleskDomainNumberEnum, antispam?: LicenseOrderableAntispamEnum, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, version?: LicensePleskVersionEnum, wordpressToolkit?: boolean, antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, resellerManagement?: boolean, powerpack?: boolean}): Promise<string[]>;
+  public get(path: '/order/license/plesk/{serviceName}/upgrade', pathParams: {serviceName: string}, queryParams: {antispam?: LicenseOrderableAntispamEnum, antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: LicensePleskVersionEnum, wordpressToolkit?: boolean}): Promise<string[]>;
   /**
   Upgrade this license with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/plesk/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {domainNumber?: LicenseOrderablePleskDomainNumberEnum, antispam?: LicenseOrderableAntispamEnum, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, version?: LicensePleskVersionEnum, wordpressToolkit?: boolean, antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, resellerManagement?: boolean, powerpack?: boolean}): Promise<OrderOrder>;
+  public get(path: '/order/license/plesk/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {antispam?: LicenseOrderableAntispamEnum, antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: LicensePleskVersionEnum, wordpressToolkit?: boolean}): Promise<OrderOrder>;
   /**
   Operations about the LICENSE service
   List available services
@@ -4719,12 +4719,12 @@ export class ApiOrder extends ApiCommon {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/sqlserver/new', pathParams: undefined, queryParams: {version?: LicenseSqlServerVersionEnum, ip?: string}): Promise<string[]>;
+  public get(path: '/order/license/sqlserver/new', pathParams: undefined, queryParams: {ip?: string, version?: LicenseSqlServerVersionEnum}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/sqlserver/new/{duration}', pathParams: {duration: string}, queryParams: {version?: LicenseSqlServerVersionEnum, ip?: string}): Promise<OrderOrder>;
+  public get(path: '/order/license/sqlserver/new/{duration}', pathParams: {duration: string}, queryParams: {ip?: string, version?: LicenseSqlServerVersionEnum}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
@@ -4749,12 +4749,12 @@ export class ApiOrder extends ApiCommon {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/virtuozzo/new', pathParams: undefined, queryParams: {serviceType?: LicenseLicenseTypeEnum, containerNumber?: LicenseOrderableVirtuozzoContainerNumberEnum, version?: LicenseOrderableVirtuozzoVersionEnum, ip?: string}): Promise<string[]>;
+  public get(path: '/order/license/virtuozzo/new', pathParams: undefined, queryParams: {containerNumber?: LicenseOrderableVirtuozzoContainerNumberEnum, ip?: string, serviceType?: LicenseLicenseTypeEnum, version?: LicenseOrderableVirtuozzoVersionEnum}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/virtuozzo/new/{duration}', pathParams: {duration: string}, queryParams: {serviceType?: LicenseLicenseTypeEnum, containerNumber?: LicenseOrderableVirtuozzoContainerNumberEnum, version?: LicenseOrderableVirtuozzoVersionEnum, ip?: string}): Promise<OrderOrder>;
+  public get(path: '/order/license/virtuozzo/new/{duration}', pathParams: {duration: string}, queryParams: {containerNumber?: LicenseOrderableVirtuozzoContainerNumberEnum, ip?: string, serviceType?: LicenseLicenseTypeEnum, version?: LicenseOrderableVirtuozzoVersionEnum}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
@@ -4779,12 +4779,12 @@ export class ApiOrder extends ApiCommon {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/windows/new', pathParams: undefined, queryParams: {ip?: string, sqlVersion?: LicenseWindowsSqlVersionEnum, version?: LicenseWindowsOsVersionEnum, serviceType?: LicenseLicenseTypeEnum}): Promise<string[]>;
+  public get(path: '/order/license/windows/new', pathParams: undefined, queryParams: {ip?: string, serviceType?: LicenseLicenseTypeEnum, sqlVersion?: LicenseWindowsSqlVersionEnum, version?: LicenseWindowsOsVersionEnum}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/windows/new/{duration}', pathParams: {duration: string}, queryParams: {ip?: string, sqlVersion?: LicenseWindowsSqlVersionEnum, version?: LicenseWindowsOsVersionEnum, serviceType?: LicenseLicenseTypeEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/windows/new/{duration}', pathParams: {duration: string}, queryParams: {ip?: string, serviceType?: LicenseLicenseTypeEnum, sqlVersion?: LicenseWindowsSqlVersionEnum, version?: LicenseWindowsOsVersionEnum}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
@@ -4794,12 +4794,12 @@ export class ApiOrder extends ApiCommon {
   Upgrade this license with some given options
   Get allowed durations for 'upgrade' option
   **/
-  public get(path: '/order/license/windows/{serviceName}/upgrade', pathParams: {serviceName: string}, queryParams: {version?: LicenseWindowsOsVersionEnum, sqlVersion?: LicenseWindowsSqlVersionEnum}): Promise<string[]>;
+  public get(path: '/order/license/windows/{serviceName}/upgrade', pathParams: {serviceName: string}, queryParams: {sqlVersion?: LicenseWindowsSqlVersionEnum, version?: LicenseWindowsOsVersionEnum}): Promise<string[]>;
   /**
   Upgrade this license with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/windows/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {version?: LicenseWindowsOsVersionEnum, sqlVersion?: LicenseWindowsSqlVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/windows/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}, queryParams: {sqlVersion?: LicenseWindowsSqlVersionEnum, version?: LicenseWindowsOsVersionEnum}): Promise<OrderOrder>;
   /**
   Operations about the LICENSE service
   List available services
@@ -4809,12 +4809,12 @@ export class ApiOrder extends ApiCommon {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/worklight/new', pathParams: undefined, queryParams: {lessThan1000Users?: boolean, version?: LicenseWorkLightVersionEnum, ip?: string}): Promise<string[]>;
+  public get(path: '/order/license/worklight/new', pathParams: undefined, queryParams: {ip?: string, lessThan1000Users?: boolean, version?: LicenseWorkLightVersionEnum}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/worklight/new/{duration}', pathParams: {duration: string}, queryParams: {lessThan1000Users?: boolean, version?: LicenseWorkLightVersionEnum, ip?: string}): Promise<OrderOrder>;
+  public get(path: '/order/license/worklight/new/{duration}', pathParams: {duration: string}, queryParams: {ip?: string, lessThan1000Users?: boolean, version?: LicenseWorkLightVersionEnum}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
@@ -4839,12 +4839,12 @@ export class ApiOrder extends ApiCommon {
   Subscribe to overTheBox service
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/overTheBox/new', pathParams: undefined, queryParams: {voucher?: string, deviceId?: string, offer?: string}): Promise<string[]>;
+  public get(path: '/order/overTheBox/new', pathParams: undefined, queryParams: {deviceId?: string, offer?: string, voucher?: string}): Promise<string[]>;
   /**
   Subscribe to overTheBox service
   Get prices and contracts information
   **/
-  public get(path: '/order/overTheBox/new/{duration}', pathParams: {duration: string}, queryParams: {voucher?: string, deviceId?: string, offer?: string}): Promise<OrderOrder>;
+  public get(path: '/order/overTheBox/new/{duration}', pathParams: {duration: string}, queryParams: {deviceId?: string, offer?: string, voucher?: string}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
@@ -4854,7 +4854,7 @@ export class ApiOrder extends ApiCommon {
   Create an order to upgrade your overTheBox service
   Get prices and contracts information
   **/
-  public get(path: '/order/overTheBox/{serviceName}/migrate', pathParams: {serviceName: string}, queryParams: {shippingRelayID?: Number, offer?: string, shippingMethod?: OverTheBoxShippingMethodEnum, hardware?: boolean, shippingContactID?: string}): Promise<OrderOrder>;
+  public get(path: '/order/overTheBox/{serviceName}/migrate', pathParams: {serviceName: string}, queryParams: {hardware?: boolean, offer?: string, shippingContactID?: string, shippingMethod?: OverTheBoxShippingMethodEnum, shippingRelayID?: Number}): Promise<OrderOrder>;
   /**
   Order router vpn
   Get allowed durations for 'new' option
@@ -4914,12 +4914,12 @@ export class ApiOrder extends ApiCommon {
   Add extra simultaneous lines for a specifical line
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/lines/{serviceName}/addSimultaneousLines', pathParams: {serviceName: string}, queryParams: {quantity?: Number, billingAccount?: string}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/lines/{serviceName}/addSimultaneousLines', pathParams: {serviceName: string}, queryParams: {billingAccount?: string, quantity?: Number}): Promise<OrderOrder>;
   /**
   Order a phone for this specific line
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/lines/{serviceName}/hardware', pathParams: {serviceName: string}, queryParams: {mondialRelayId?: string, shippingContactId?: string, hardware?: string, retractation?: boolean}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/lines/{serviceName}/hardware', pathParams: {serviceName: string}, queryParams: {hardware?: string, mondialRelayId?: string, retractation?: boolean, shippingContactId?: string}): Promise<OrderOrder>;
   /**
   Update extra simultaneous channels for a specifical service to the requested amount
   Get prices and contracts information
@@ -4934,7 +4934,7 @@ export class ApiOrder extends ApiCommon {
   Purchase spare phone
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/spare/new', pathParams: undefined, queryParams: {shippingContactId?: Number, brand?: string, mondialRelayId?: string, quantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/spare/new', pathParams: undefined, queryParams: {brand?: string, mondialRelayId?: string, quantity?: Number, shippingContactId?: Number}): Promise<OrderOrder>;
   /**
   Operations about the VOIP service
   List available services
@@ -4949,12 +4949,12 @@ export class ApiOrder extends ApiCommon {
   Add extra simultaneous lines for a specifical line
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/trunks/{serviceName}/addSimultaneousLines', pathParams: {serviceName: string}, queryParams: {quantity?: Number, billingAccount?: string}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/trunks/{serviceName}/addSimultaneousLines', pathParams: {serviceName: string}, queryParams: {billingAccount?: string, quantity?: Number}): Promise<OrderOrder>;
   /**
   Order a phone for this specific line
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/trunks/{serviceName}/hardware', pathParams: {serviceName: string}, queryParams: {mondialRelayId?: string, shippingContactId?: string, hardware?: string, retractation?: boolean}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/trunks/{serviceName}/hardware', pathParams: {serviceName: string}, queryParams: {hardware?: string, mondialRelayId?: string, retractation?: boolean, shippingContactId?: string}): Promise<OrderOrder>;
   /**
   Update extra simultaneous channels for a specifical service to the requested amount
   Get prices and contracts information
@@ -4969,32 +4969,32 @@ export class ApiOrder extends ApiCommon {
   Purchase new accessories
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/{billingAccount}/accessories', pathParams: {billingAccount: string}, queryParams: {accessories?: string[], shippingContactId?: Number, retractation?: boolean, mondialRelayId?: string}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/{billingAccount}/accessories', pathParams: {billingAccount: string}, queryParams: {accessories?: string[], mondialRelayId?: string, retractation?: boolean, shippingContactId?: Number}): Promise<OrderOrder>;
   /**
   Purchase a new line offer
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/{billingAccount}/line', pathParams: {billingAccount: string}, queryParams: {retractation?: boolean, types?: TelephonyLineTypeEnum[], displayUniversalDirectories?: boolean[], ownerContactIds?: Number[], brand?: string, shippingContactId?: Number, mondialRelayId?: string, zones?: string[], quantity?: Number, extraSimultaneousLines?: Number[], offers?: string[]}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/{billingAccount}/line', pathParams: {billingAccount: string}, queryParams: {brand?: string, displayUniversalDirectories?: boolean[], extraSimultaneousLines?: Number[], mondialRelayId?: string, offers?: string[], ownerContactIds?: Number[], quantity?: Number, retractation?: boolean, shippingContactId?: Number, types?: TelephonyLineTypeEnum[], zones?: string[]}): Promise<OrderOrder>;
   /**
   Purchase a new standard alias number
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/{billingAccount}/numberGeographic', pathParams: {billingAccount: string}, queryParams: {city?: string, phone?: string, country?: TelephonyNumberCountryEnum, displayUniversalDirectory?: boolean, specificNumber?: string, name?: string, retractation?: boolean, streetNumber?: string, organisation?: string, ape?: string, socialNomination?: string, pool?: TelephonyNumberPoolEnum, email?: string, zip?: string, streetName?: string, zone?: string, offer?: TelephonyNumberOffer, firstname?: string, siret?: string, legalform?: NichandleLegalFormEnum}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/{billingAccount}/numberGeographic', pathParams: {billingAccount: string}, queryParams: {ape?: string, city?: string, country?: TelephonyNumberCountryEnum, displayUniversalDirectory?: boolean, email?: string, firstname?: string, legalform?: NichandleLegalFormEnum, name?: string, offer?: TelephonyNumberOffer, organisation?: string, phone?: string, pool?: TelephonyNumberPoolEnum, retractation?: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string, zone?: string}): Promise<OrderOrder>;
   /**
   Purchase a new standard alias number
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/{billingAccount}/numberNogeographic', pathParams: {billingAccount: string}, queryParams: {siret?: string, legalform?: NichandleLegalFormEnum, offer?: TelephonyNumberOffer, firstname?: string, pool?: TelephonyNumberPoolEnum, email?: string, zip?: string, streetName?: string, city?: string, phone?: string, country?: TelephonyNumberCountryEnum, displayUniversalDirectory?: boolean, retractation?: boolean, specificNumber?: string, name?: string, streetNumber?: string, organisation?: string, ape?: string, socialNomination?: string}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/{billingAccount}/numberNogeographic', pathParams: {billingAccount: string}, queryParams: {ape?: string, city?: string, country?: TelephonyNumberCountryEnum, displayUniversalDirectory?: boolean, email?: string, firstname?: string, legalform?: NichandleLegalFormEnum, name?: string, offer?: TelephonyNumberOffer, organisation?: string, phone?: string, pool?: TelephonyNumberPoolEnum, retractation?: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string}): Promise<OrderOrder>;
   /**
   Purchase a new standard alias number
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/{billingAccount}/numberSpecial', pathParams: {billingAccount: string}, queryParams: {siret?: string, legalform?: NichandleLegalFormEnum, range?: string, firstname?: string, email?: string, zip?: string, streetName?: string, pool?: TelephonyNumberPoolEnum, organisation?: string, typology?: TelephonyNumberSpecialTypologyEnum, ape?: string, socialNomination?: string, city?: string, phone?: string, country?: TelephonyNumberCountryEnum, displayUniversalDirectory?: boolean, streetNumber?: string, retractation?: boolean, specificNumber?: string, name?: string}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/{billingAccount}/numberSpecial', pathParams: {billingAccount: string}, queryParams: {ape?: string, city?: string, country?: TelephonyNumberCountryEnum, displayUniversalDirectory?: boolean, email?: string, firstname?: string, legalform?: NichandleLegalFormEnum, name?: string, organisation?: string, phone?: string, pool?: TelephonyNumberPoolEnum, range?: string, retractation?: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, typology?: TelephonyNumberSpecialTypologyEnum, zip?: string}): Promise<OrderOrder>;
   /**
   Order a new portability
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/{billingAccount}/portability', pathParams: {billingAccount: string}, queryParams: {zip?: string, streetName?: string, door?: string, lineToRedirectAliasTo?: string, mobilePhone?: string, stair?: Number, contactNumber?: string, listNumbers?: string, country?: TelephonyPortabilityCountriesAvailable, displayUniversalDirectory?: boolean, desireDate?: string, name?: string, streetNumber?: Number, city?: string, rio?: string, fiabilisation?: boolean, streetType?: string, socialReason?: TelephonyPortabilitySocialReason, siret?: string, type?: TelephonyPortabilityNumberType, firstName?: string, executeAsSoonAsPossible?: boolean, building?: string, contactName?: string, specialNumberCategory?: TelephonyPortabilitySpecialNumberCategoryEnum, callNumber?: string, floor?: Number, streetNumberExtra?: string, offer?: TelephonyPortabilityOfferType}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/{billingAccount}/portability', pathParams: {billingAccount: string}, queryParams: {building?: string, callNumber?: string, city?: string, contactName?: string, contactNumber?: string, country?: TelephonyPortabilityCountriesAvailable, desireDate?: string, displayUniversalDirectory?: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName?: string, floor?: Number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name?: string, offer?: TelephonyPortabilityOfferType, rio?: string, siret?: string, socialReason?: TelephonyPortabilitySocialReason, specialNumberCategory?: TelephonyPortabilitySpecialNumberCategoryEnum, stair?: Number, streetName?: string, streetNumber?: Number, streetNumberExtra?: string, streetType?: string, type?: TelephonyPortabilityNumberType, zip?: string}): Promise<OrderOrder>;
   /**
   Credit security deposit
   Get prices and contracts information
@@ -5284,7 +5284,7 @@ export class ApiOrder extends ApiCommon {
   Purchase spare modem
   Get prices and contracts information
   **/
-  public get(path: '/order/xdsl/spare/new', pathParams: undefined, queryParams: {brand?: string, shippingContactId?: Number, mondialRelayId?: string, quantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/xdsl/spare/new', pathParams: undefined, queryParams: {brand?: string, mondialRelayId?: string, quantity?: Number, shippingContactId?: Number}): Promise<OrderOrder>;
   public get(path: PathsOrderGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Missing description

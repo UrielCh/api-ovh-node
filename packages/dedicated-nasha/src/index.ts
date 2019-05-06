@@ -564,7 +564,7 @@ export class ApiDedicatedNasha extends ApiCommon {
   List the dedicated.nasTask.Task objects
   View task list
   **/
-  public get(path: '/dedicated/nasha/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {status?: DedicatedTaskStatusEnum, operation?: DedicatedStorageTaskFunctionEnum}): Promise<Number[]>;
+  public get(path: '/dedicated/nasha/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {operation?: DedicatedStorageTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<Number[]>;
   /**
   Storage task
   Get this object properties

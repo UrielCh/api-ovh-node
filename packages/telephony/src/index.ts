@@ -5761,7 +5761,7 @@ export class ApiTelephony extends ApiCommon {
   Get city informations from a zip code
   Get city informations from a zip code
   **/
-  public get(path: '/telephony/directories/cities', pathParams: undefined, queryParams: {zipCode?: string, country?: TelephonyNumberCountryEnum}): Promise<TelephonyCity[]>;
+  public get(path: '/telephony/directories/cities', pathParams: undefined, queryParams: {country?: TelephonyNumberCountryEnum, zipCode?: string}): Promise<TelephonyCity[]>;
   /**
   Get all available fax offer compatible
   Get all available fax offer compatible
@@ -5806,12 +5806,12 @@ export class ApiTelephony extends ApiCommon {
   Get all available specific number from a country
   Get all available specific number from a country
   **/
-  public get(path: '/telephony/number/specificNumbers', pathParams: undefined, queryParams: {range?: string, zone?: string, type?: TelephonyNumberTypeEnum, country?: TelephonyNumberCountryEnum}): Promise<TelephonySpecificNumber[]>;
+  public get(path: '/telephony/number/specificNumbers', pathParams: undefined, queryParams: {country?: TelephonyNumberCountryEnum, range?: string, type?: TelephonyNumberTypeEnum, zone?: string}): Promise<TelephonySpecificNumber[]>;
   /**
   Get all available geographic zone from a country
   Get all available geographic zone from a country
   **/
-  public get(path: '/telephony/number/zones', pathParams: undefined, queryParams: {country?: TelephonyNumberCountryEnum, axiom?: string}): Promise<string[]>;
+  public get(path: '/telephony/number/zones', pathParams: undefined, queryParams: {axiom?: string, country?: TelephonyNumberCountryEnum}): Promise<string[]>;
   /**
   Search a service with its domain, to get its billing account and type
   Search a service with its domain, to get its billing account and type
@@ -6446,7 +6446,7 @@ export class ApiTelephony extends ApiCommon {
   statistics operations
   Get statistics of the current line
   **/
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/statistics', pathParams: {billingAccount: string, serviceName: string}, queryParams: {type?: TelephonyLineStatisticsTypeEnum, timeframe?: TelephonyStatisticsTimeframeEnum}): Promise<ComplexTypeUnitAndValues<TelephonyTimestampAndValue>>;
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/statistics', pathParams: {billingAccount: string, serviceName: string}, queryParams: {timeframe?: TelephonyStatisticsTimeframeEnum, type?: TelephonyLineStatisticsTypeEnum}): Promise<ComplexTypeUnitAndValues<TelephonyTimestampAndValue>>;
   /**
   Line tones
   Get this object properties
@@ -6511,7 +6511,7 @@ export class ApiTelephony extends ApiCommon {
   List the telephony.OfferTask objects
   Operations on a telephony service's offer
   **/
-  public get(path: '/telephony/{billingAccount}/offerTask', pathParams: {billingAccount: string}, queryParams: {type?: TelephonyOfferTaskTypeEnum, action?: TelephonyOfferTaskActionEnum, status?: TelephonyTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/telephony/{billingAccount}/offerTask', pathParams: {billingAccount: string}, queryParams: {action?: TelephonyOfferTaskActionEnum, status?: TelephonyTaskStatusEnum, type?: TelephonyOfferTaskTypeEnum}): Promise<Number[]>;
   /**
   Operation on a telephony offer
   Get this object properties
@@ -6871,7 +6871,7 @@ export class ApiTelephony extends ApiCommon {
   List the telephony.SchedulerEvent objects
   Custom events scheduled
   **/
-  public get(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'dateStart.to'?: string, 'dateStart.from'?: string, 'dateEnd.from'?: string, categories?: TelephonySchedulerCategoryEnum, 'dateEnd.to'?: string}): Promise<string[]>;
+  public get(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events', pathParams: {billingAccount: string, serviceName: string}, queryParams: {categories?: TelephonySchedulerCategoryEnum, 'dateEnd.from'?: string, 'dateEnd.to'?: string, 'dateStart.from'?: string, 'dateStart.to'?: string}): Promise<string[]>;
   /**
   Scheduled event
   Get this object properties
@@ -6936,7 +6936,7 @@ export class ApiTelephony extends ApiCommon {
   List the telephony.FaxConsumption objects
   Fax delivery records.
   **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/faxConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'creationDatetime.from'?: string, wayType?: TelephonyFaxConsumptionWayTypeEnum, 'creationDatetime.to'?: string}): Promise<Number[]>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/faxConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, wayType?: TelephonyFaxConsumptionWayTypeEnum}): Promise<Number[]>;
   /**
   Fax delivery record
   Get this object properties
@@ -6956,7 +6956,7 @@ export class ApiTelephony extends ApiCommon {
   List the telephony.OfferTask objects
   Operations on a telephony service's offer
   **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/offerTask', pathParams: {billingAccount: string, serviceName: string}, queryParams: {status?: TelephonyTaskStatusEnum, type?: TelephonyOfferTaskTypeEnum, action?: TelephonyOfferTaskActionEnum}): Promise<Number[]>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/offerTask', pathParams: {billingAccount: string, serviceName: string}, queryParams: {action?: TelephonyOfferTaskActionEnum, status?: TelephonyTaskStatusEnum, type?: TelephonyOfferTaskTypeEnum}): Promise<Number[]>;
   /**
   Operation on a telephony offer
   Get this object properties
@@ -6966,7 +6966,7 @@ export class ApiTelephony extends ApiCommon {
   List the telephony.PreviousVoiceConsumption objects
   Call delivery records of the previous month.
   **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'creationDatetime.to'?: string, destinationType?: TelephonyVoiceConsumptionDestinationTypeEnum, wayType?: TelephonyVoiceConsumptionWayTypeEnum, 'creationDatetime.from'?: string, planType?: TelephonyVoiceConsumptionPlanTypeEnum}): Promise<Number[]>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, destinationType?: TelephonyVoiceConsumptionDestinationTypeEnum, planType?: TelephonyVoiceConsumptionPlanTypeEnum, wayType?: TelephonyVoiceConsumptionWayTypeEnum}): Promise<Number[]>;
   /**
   Call delivery record of the previous month
   Get this object properties
@@ -6976,7 +6976,7 @@ export class ApiTelephony extends ApiCommon {
   List the telephony.RepaymentConsumption objects
   Call which could be repayable
   **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'creationDatetime.to'?: string, 'creationDatetime.from'?: string}): Promise<Number[]>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string}): Promise<Number[]>;
   /**
   Call which are repayable
   Get this object properties
@@ -6986,7 +6986,7 @@ export class ApiTelephony extends ApiCommon {
   List the telephony.Task objects
   Operations on a telephony service
   **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/task', pathParams: {billingAccount: string, serviceName: string}, queryParams: {action?: string, status?: TelephonyTaskStatusEnum, serviceType?: string}): Promise<Number[]>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/task', pathParams: {billingAccount: string, serviceName: string}, queryParams: {action?: string, serviceType?: string, status?: TelephonyTaskStatusEnum}): Promise<Number[]>;
   /**
   Operation on a telephony service
   Get this object properties
@@ -6996,7 +6996,7 @@ export class ApiTelephony extends ApiCommon {
   List the telephony.VoiceConsumption objects
   Call delivery records.
   **/
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'creationDatetime.to'?: string, destinationType?: TelephonyVoiceConsumptionDestinationTypeEnum, wayType?: TelephonyVoiceConsumptionWayTypeEnum, 'creationDatetime.from'?: string, planType?: TelephonyVoiceConsumptionPlanTypeEnum}): Promise<Number[]>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption', pathParams: {billingAccount: string, serviceName: string}, queryParams: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, destinationType?: TelephonyVoiceConsumptionDestinationTypeEnum, planType?: TelephonyVoiceConsumptionPlanTypeEnum, wayType?: TelephonyVoiceConsumptionWayTypeEnum}): Promise<Number[]>;
   /**
   Call delivery record
   Get this object properties
@@ -7016,7 +7016,7 @@ export class ApiTelephony extends ApiCommon {
   List the telephony.Task objects
   Operations on a telephony billing account
   **/
-  public get(path: '/telephony/{billingAccount}/task', pathParams: {billingAccount: string}, queryParams: {serviceType?: string, status?: TelephonyTaskStatusEnum, action?: string}): Promise<Number[]>;
+  public get(path: '/telephony/{billingAccount}/task', pathParams: {billingAccount: string}, queryParams: {action?: string, serviceType?: string, status?: TelephonyTaskStatusEnum}): Promise<Number[]>;
   /**
   Operation on a telephony service
   Get this object properties
@@ -8279,7 +8279,7 @@ export class ApiTelephony extends ApiCommon {
   Billing Account
   Ask for a billing account termination.
   **/
-  public delete(path: '/telephony/{billingAccount}', pathParams: {billingAccount: string}, bodyParams: {reason?: TelephonyTerminationReasonEnum, details?: string}): Promise<void>;
+  public delete(path: '/telephony/{billingAccount}', pathParams: {billingAccount: string}, bodyParams: {details?: string, reason?: TelephonyTerminationReasonEnum}): Promise<void>;
   /**
   Abbreviated number
   Delete the given abbreviated number

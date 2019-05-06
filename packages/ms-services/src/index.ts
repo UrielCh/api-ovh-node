@@ -1024,7 +1024,7 @@ export class ApiMsServices extends ApiCommon {
   license operations
   Get active licenses for specific period of time
   **/
-  public get(path: '/msServices/{serviceName}/sharepoint/license', pathParams: {serviceName: string}, queryParams: {period?: MsServicesLicensePeriodEnum, license?: MsServicesSharepointLicenseEnum}): Promise<MsServicesSharepointDailyLicense[]>;
+  public get(path: '/msServices/{serviceName}/sharepoint/license', pathParams: {serviceName: string}, queryParams: {license?: MsServicesSharepointLicenseEnum, period?: MsServicesLicensePeriodEnum}): Promise<MsServicesSharepointDailyLicense[]>;
   /**
   List the msServices.sharepointTask objects
   Pending actions

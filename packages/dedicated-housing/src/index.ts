@@ -477,7 +477,7 @@ export class ApiDedicatedHousing extends ApiCommon {
   List the dedicated.housing.Task objects
   View task list
   **/
-  public get(path: '/dedicated/housing/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {status?: DedicatedTaskStatusEnum, function?: DedicatedHousingTaskFunctionEnum}): Promise<Number[]>;
+  public get(path: '/dedicated/housing/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {function?: DedicatedHousingTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<Number[]>;
   /**
   Housing tasks
   Get this object properties

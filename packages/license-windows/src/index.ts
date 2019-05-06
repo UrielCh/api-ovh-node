@@ -311,7 +311,7 @@ export class ApiLicenseWindows extends ApiCommon {
   List the license.Task objects
   tasks linked to this license
   **/
-  public get(path: '/license/windows/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
+  public get(path: '/license/windows/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
   /**
   licenses Todos
   Get this object properties

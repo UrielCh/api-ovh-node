@@ -1170,7 +1170,7 @@ export class ApiIp extends ApiCommon {
   List the ip.Ip objects
   Your OVH IPs
   **/
-  public get(path: '/ip', pathParams: undefined, queryParams: {'routedTo.serviceName'?: string, description?: string, type?: IpIpTypeEnum, ip?: string}): Promise<string[]>;
+  public get(path: '/ip', pathParams: undefined, queryParams: {description?: string, ip?: string, 'routedTo.serviceName'?: string, type?: IpIpTypeEnum}): Promise<string[]>;
   /**
   Operations about the IP service
   List available services
@@ -1385,7 +1385,7 @@ export class ApiIp extends ApiCommon {
   topStream operations
   AntiDDOS option. Get top stream on your ip on a specific timestamp
   **/
-  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/topStream', pathParams: {ip: string, ipOnMitigation: string}, queryParams: {scale?: IpMitigationStatsScaleEnum, date?: string}): Promise<IpMitigationDetailedStats[]>;
+  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/topStream', pathParams: {ip: string, ipOnMitigation: string}, queryParams: {date?: string, scale?: IpMitigationStatsScaleEnum}): Promise<IpMitigationDetailedStats[]>;
   /**
   List the ip.MitigationProfile objects
   Manage mitigation profile on your IPs
@@ -1405,7 +1405,7 @@ export class ApiIp extends ApiCommon {
   List the ip.Antiphishing objects
   Ip under anti-phishing
   **/
-  public get(path: '/ip/{ip}/phishing', pathParams: {ip: string}, queryParams: {state?: IpAntiphishingStateEnum, ipOnAntiphishing?: string}): Promise<Number[]>;
+  public get(path: '/ip/{ip}/phishing', pathParams: {ip: string}, queryParams: {ipOnAntiphishing?: string, state?: IpAntiphishingStateEnum}): Promise<Number[]>;
   /**
   Phishing URLs hosted on your IP
   Get this object properties
@@ -1445,7 +1445,7 @@ export class ApiIp extends ApiCommon {
   List the ip.IpTask objects
   IP tasks
   **/
-  public get(path: '/ip/{ip}/task', pathParams: {ip: string}, queryParams: {status?: IpTaskStatusEnum, function?: IpTaskFunctionEnum}): Promise<Number[]>;
+  public get(path: '/ip/{ip}/task', pathParams: {ip: string}, queryParams: {function?: IpTaskFunctionEnum, status?: IpTaskStatusEnum}): Promise<Number[]>;
   /**
   IP tasks
   Get this object properties

@@ -249,7 +249,7 @@ export class ApiLicenseCloudLinux extends ApiCommon {
   List the license.Task objects
   Tasks linked to this license
   **/
-  public get(path: '/license/cloudLinux/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {status?: LicenseTaskStateEnum, action?: LicenseActionType}): Promise<Number[]>;
+  public get(path: '/license/cloudLinux/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
   /**
   licenses Todos
   Get this object properties

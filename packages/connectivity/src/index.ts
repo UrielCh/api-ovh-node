@@ -675,12 +675,12 @@ export class ApiConnectivity extends ApiCommon {
   Missing description
   List detected, validated and recently closed generic incidents. For partners only
   **/
-  public get(path: '/connectivity/monitoring/genericIncident/partners', pathParams: undefined, queryParams: {status?: ConnectivityMonitoringGenericIncidentStatusEnum, creationDate?: string, endDate?: string}): Promise<ConnectivityMonitoringGenericIncident[]>;
+  public get(path: '/connectivity/monitoring/genericIncident/partners', pathParams: undefined, queryParams: {creationDate?: string, endDate?: string, status?: ConnectivityMonitoringGenericIncidentStatusEnum}): Promise<ConnectivityMonitoringGenericIncident[]>;
   /**
   Missing description
   List validated and recently closed generic incidents
   **/
-  public get(path: '/connectivity/monitoring/genericIncident/public', pathParams: undefined, queryParams: {status?: ConnectivityMonitoringGenericIncidentStatusEnum, creationDate?: string, endDate?: string}): Promise<ConnectivityMonitoringGenericIncident[]>;
+  public get(path: '/connectivity/monitoring/genericIncident/public', pathParams: undefined, queryParams: {creationDate?: string, endDate?: string, status?: ConnectivityMonitoringGenericIncidentStatusEnum}): Promise<ConnectivityMonitoringGenericIncident[]>;
   public get(path: PathsConnectivityGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Get the details for a building

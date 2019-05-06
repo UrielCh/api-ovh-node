@@ -81,30 +81,6 @@ export interface OrderPrice {
   value?: Number;
 }
 /**
- * Async task
- */
-export interface PackXdslAsyncTask<T> {
-  /**
-   * Error
-   *
-   */
-  error?: string;
-  /**
-   * Result of the call
-   *
-   */
-  result?: T;
-  /**
-   * Status of the call
-   *
-   */
-  status?: PackXdslAsyncTaskStatusEnum;
-}
-/**
- * AsyncTask status
- */
-export type PackXdslAsyncTaskStatusEnum = 'error' | 'ok' | 'pending';
-/**
  * Domain action
  */
 export type PackXdslDomainActionEnum = 'create' | 'trade' | 'transfer';
@@ -961,6 +937,30 @@ export interface ServicesService {
   status?: ServiceStateEnum;
 }
 /**
+ * Async task
+ */
+export interface XdslAsyncTask<T> {
+  /**
+   * Error
+   *
+   */
+  error?: string;
+  /**
+   * Result of the call
+   *
+   */
+  result?: T;
+  /**
+   * Status of the call
+   *
+   */
+  status?: XdslAsyncTaskStatusEnum;
+}
+/**
+ * AsyncTask status
+ */
+export type XdslAsyncTaskStatusEnum = 'error' | 'ok' | 'pending';
+/**
  * Deconsolidation of the line.
  */
 export type XdslDeconsolidationEnum = 'createNeighbour' | 'creation' | 'creationNeighbour' | 'partial' | 'total';
@@ -1374,7 +1374,7 @@ export class ApiPackXdsl extends ApiCommon {
   details operations
   Details associated to a voucher
   **/
-  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', pathParams: {packName: string, domain: string}): Promise<PackXdslAsyncTask<XdslHubicHubicDetailsResponse>>;
+  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', pathParams: {packName: string, domain: string}): Promise<XdslAsyncTask<XdslHubicHubicDetailsResponse>>;
   /**
   capabilities operations
   Get informations about the promotion code generation
@@ -1511,12 +1511,12 @@ export class ApiPackXdsl extends ApiCommon {
   eligibility operations
   Eligibility to move the access
   **/
-  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', pathParams: {packName: string}): Promise<PackXdslAsyncTask<PackXdslAddressMoveEligibility>>;
+  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', pathParams: {packName: string}): Promise<XdslAsyncTask<PackXdslAddressMoveEligibility>>;
   /**
   move operations
   Move the access to another address
   **/
-  public post(path: '/pack/xdsl/{packName}/addressMove/move', pathParams: {packName: string}): Promise<PackXdslAsyncTask<Number>>;
+  public post(path: '/pack/xdsl/{packName}/addressMove/move', pathParams: {packName: string}): Promise<XdslAsyncTask<Number>>;
   /**
   cancelResiliation operations
   Cancel the ongoing resiliation
@@ -1561,7 +1561,7 @@ export class ApiPackXdsl extends ApiCommon {
   offers operations
   Get the possibilities of migration offers available
   **/
-  public post(path: '/pack/xdsl/{packName}/migration/offers', pathParams: {packName: string}): Promise<PackXdslAsyncTask<PackXdslMigrationMigrationOfferResponse>>;
+  public post(path: '/pack/xdsl/{packName}/migration/offers', pathParams: {packName: string}): Promise<XdslAsyncTask<PackXdslMigrationMigrationOfferResponse>>;
   /**
   servicesToDelete operations
   Calculate services to delete with new offer and options
