@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "common"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^11.13.0",
+    "lerna": "^3.13.1",
+    "ts-node": "^8.0.3",
+    "typescript": "^3.4.1"
+  },
+  "scripts": {
+    "build": "lerna run build"
+  }
+}
