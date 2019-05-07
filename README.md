@@ -1,4 +1,4 @@
-# Use Ovh Api in TypeScript.
+# Use Ovh's Apis with TypeScript
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api/common.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/)
 
