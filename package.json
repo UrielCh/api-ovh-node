@@ -12,8 +12,7 @@
   "devDependencies": {
     "@types/node": "^11.13.10",
     "lerna": "^3.13.1",
-    "ts-node": "^8.0.3",
-    "typescript": "^3.4.1"
+    "typescript": "^3.4.5"
   },
   "publishConfig": {
     "access": "public"
@@ -23,6 +22,8 @@
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
   "scripts": {
-    "build": "lerna run build"
+    "build": "lerna run build",
+    "publish": "lerna run tsc && lerna publish",
+    "prepublish": "lerna run yarn run lint && lerna run yarn run test && lerna run yarn run build"
   }
 }
