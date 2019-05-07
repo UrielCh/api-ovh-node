@@ -1,13 +1,13 @@
 {
   "name": "@ovh-api/dbaas-queue",
   "description": "Add typing to to ovh api dbaas-queue",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "dependencies": {
-    "@ovh-api/common": "^0.0.5"
+    "@ovh-api/common": "^0.1.0"
   },
   "publishConfig": {
     "access": "public"
