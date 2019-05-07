@@ -1,16 +1,25 @@
 {
   "name": "@ovh-api/license-plesk",
+  "description": "Add typing to to ovh api license-plesk",
   "version": "0.0.3",
-  "main": "dist/index.js",
+  "main": "dist/index.js", 
   "typings": "dist/index.d.ts",
   "license": "MIT",
+  "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "dependencies": {
     "@ovh-api/common": "^0.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
   "scripts": {
     "run": "ts-node src/index.ts",
     "build": "tsc",
     "build:watch": "tsc --watch"
-  },
-  "gitHead": "9e97f634666d9959514bf17dc9eb33a87be18782"
+  }
 }
