@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@ovh-api/sample",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
@@ -10,8 +10,8 @@
     "build:watch": "tsc --watch"
   },
   "dependencies": {
-    "@ovh-api/domain": "^0.0.4",
-    "@ovh-api/me": "^0.0.4",
+    "@ovh-api/domain": "^0.0.5",
+    "@ovh-api/me": "^0.0.5",
     "ovh": "^2.0.2"
   }
 }

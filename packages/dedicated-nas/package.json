@@ -1,13 +1,13 @@
 {
   "name": "@ovh-api/dedicated-nas",
   "description": "Add typing to to ovh api dedicated-nas",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "dependencies": {
-    "@ovh-api/common": "^0.0.4"
+    "@ovh-api/common": "^0.0.5"
   },
   "publishConfig": {
     "access": "public"
