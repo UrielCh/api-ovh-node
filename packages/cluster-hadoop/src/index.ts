@@ -443,7 +443,7 @@ export class ApiClusterHadoop extends ApiCommon {
   List the cluster.hadoop.Node objects
   Nodes of the Cluster
   **/
-  public get(path: '/cluster/hadoop/{serviceName}/node', pathParams: {serviceName: string}, queryParams: {softwareProfile?: ClusterHadoopNodeProfileEnum}): Promise<string[]>;
+  public get(path: '/cluster/hadoop/{serviceName}/node', pathParams: {serviceName: string}, queryParams?: {softwareProfile?: ClusterHadoopNodeProfileEnum}): Promise<string[]>;
   /**
   Physical or Virtual Node
   Get this object properties
@@ -483,7 +483,7 @@ export class ApiClusterHadoop extends ApiCommon {
   List the cluster.hadoop.Task objects
   Tasks associated with this Hadoop Cluster
   **/
-  public get(path: '/cluster/hadoop/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {status?: ClusterHadoopOperationStateEnum}): Promise<Number[]>;
+  public get(path: '/cluster/hadoop/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {status?: ClusterHadoopOperationStateEnum}): Promise<Number[]>;
   /**
   Operation on a Hadoop Cluster component
   Get this object properties

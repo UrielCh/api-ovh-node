@@ -187,32 +187,32 @@ export class ApiNewAccount extends ApiCommon {
   All available areas for a given country
   All available areas for a given country
   **/
-  public get(path: '/newAccount/area', pathParams: undefined, queryParams: {country?: NichandleCountryEnum}): Promise<string[]>;
+  public get(path: '/newAccount/area', queryParams?: {country?: NichandleCountryEnum}): Promise<string[]>;
   /**
   Returns the contracts that governs the creation of an OVH identifier
   Returns the contracts that governs the creation of an OVH identifier
   **/
-  public get(path: '/newAccount/contracts', pathParams: undefined, queryParams: {company?: NichandleOvhCompanyEnum, subsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderContract[]>;
+  public get(path: '/newAccount/contracts', queryParams?: {company?: NichandleOvhCompanyEnum, subsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderContract[]>;
   /**
   All available corporation types for a given country
   All available corporation types for a given country
   **/
-  public get(path: '/newAccount/corporationType', pathParams: undefined, queryParams: {country?: NichandleCountryEnum}): Promise<string[]>;
+  public get(path: '/newAccount/corporationType', queryParams?: {country?: NichandleCountryEnum}): Promise<string[]>;
   /**
   All available countries for an ovh company and an ovh subsidiary
   All available countries for an ovh company and an ovh subsidiary
   **/
-  public get(path: '/newAccount/countries', pathParams: undefined, queryParams: {ovhCompany?: NichandleOvhCompanyEnum, ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<NichandleCountryEnum[]>;
+  public get(path: '/newAccount/countries', queryParams?: {ovhCompany?: NichandleOvhCompanyEnum, ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<NichandleCountryEnum[]>;
   /**
   Give all the rules to follow in order to create an OVH identifier
   Give all the rules to follow in order to create an OVH identifier
   **/
-  public get(path: '/newAccount/creationRules', pathParams: undefined, queryParams: {country?: NichandleCountryEnum, legalform?: NichandleLegalFormEnum, ovhCompany?: NichandleOvhCompanyEnum, ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<NichandleCreationRules>;
+  public get(path: '/newAccount/creationRules', queryParams?: {country?: NichandleCountryEnum, legalform?: NichandleLegalFormEnum, ovhCompany?: NichandleOvhCompanyEnum, ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<NichandleCreationRules>;
   /**
   All available legal forms for a given country
   All available legal forms for a given country
   **/
-  public get(path: '/newAccount/legalform', pathParams: undefined, queryParams: {country?: NichandleCountryEnum}): Promise<string[]>;
+  public get(path: '/newAccount/legalform', queryParams?: {country?: NichandleCountryEnum}): Promise<string[]>;
   public get(path: PathsNewAccountGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Create a new OVH identifier

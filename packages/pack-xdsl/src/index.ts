@@ -81,6 +81,30 @@ export interface OrderPrice {
   value?: Number;
 }
 /**
+ * Async task
+ */
+export interface PackXdslAsyncTask<T> {
+  /**
+   * Error
+   *
+   */
+  error?: string;
+  /**
+   * Result of the call
+   *
+   */
+  result?: T;
+  /**
+   * Status of the call
+   *
+   */
+  status?: PackXdslAsyncTaskStatusEnum;
+}
+/**
+ * AsyncTask status
+ */
+export type PackXdslAsyncTaskStatusEnum = 'error' | 'ok' | 'pending';
+/**
  * Domain action
  */
 export type PackXdslDomainActionEnum = 'create' | 'trade' | 'transfer';
@@ -937,30 +961,6 @@ export interface ServicesService {
   status?: ServiceStateEnum;
 }
 /**
- * Async task
- */
-export interface XdslAsyncTask<T> {
-  /**
-   * Error
-   *
-   */
-  error?: string;
-  /**
-   * Result of the call
-   *
-   */
-  result?: T;
-  /**
-   * Status of the call
-   *
-   */
-  status?: XdslAsyncTaskStatusEnum;
-}
-/**
- * AsyncTask status
- */
-export type XdslAsyncTaskStatusEnum = 'error' | 'ok' | 'pending';
-/**
  * Deconsolidation of the line.
  */
 export type XdslDeconsolidationEnum = 'createNeighbour' | 'creation' | 'creationNeighbour' | 'partial' | 'total';
@@ -1299,7 +1299,7 @@ export class ApiPackXdsl extends ApiCommon {
   isEmailAvailable operations
   Check if the given email address is available for an Email Pro activation
   **/
-  public get(path: '/pack/xdsl/{packName}/emailPro/options/isEmailAvailable', pathParams: {packName: string}, queryParams: {email?: string}): Promise<boolean>;
+  public get(path: '/pack/xdsl/{packName}/emailPro/options/isEmailAvailable', pathParams: {packName: string}, queryParams?: {email?: string}): Promise<boolean>;
   /**
   List the pack.xdsl.EmailProService objects
   List the Email Pro services
@@ -1324,7 +1324,7 @@ export class ApiPackXdsl extends ApiCommon {
   isEmailAvailable operations
   Check if the email address is available for service creation
   **/
-  public get(path: '/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable', pathParams: {packName: string}, queryParams: {email?: string}): Promise<boolean>;
+  public get(path: '/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable', pathParams: {packName: string}, queryParams?: {email?: string}): Promise<boolean>;
   /**
   List the pack.xdsl.ExchangeIndividual objects
   Exchange services
@@ -1334,7 +1334,7 @@ export class ApiPackXdsl extends ApiCommon {
   isEmailAvailable operations
   Check if the email address is available for service creation
   **/
-  public get(path: '/pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable', pathParams: {packName: string}, queryParams: {email?: string}): Promise<boolean>;
+  public get(path: '/pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable', pathParams: {packName: string}, queryParams?: {email?: string}): Promise<boolean>;
   /**
   List the pack.xdsl.ExchangeLiteService objects
   Exchange lite services
@@ -1374,7 +1374,7 @@ export class ApiPackXdsl extends ApiCommon {
   details operations
   Details associated to a voucher
   **/
-  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', pathParams: {packName: string, domain: string}): Promise<XdslAsyncTask<XdslHubicHubicDetailsResponse>>;
+  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', pathParams: {packName: string, domain: string}): Promise<PackXdslAsyncTask<XdslHubicHubicDetailsResponse>>;
   /**
   capabilities operations
   Get informations about the promotion code generation
@@ -1389,7 +1389,7 @@ export class ApiPackXdsl extends ApiCommon {
   resiliationTerms operations
   Get resiliation terms
   **/
-  public get(path: '/pack/xdsl/{packName}/resiliationTerms', pathParams: {packName: string}, queryParams: {resiliationDate?: string}): Promise<PackXdslResiliationTerms>;
+  public get(path: '/pack/xdsl/{packName}/resiliationTerms', pathParams: {packName: string}, queryParams?: {resiliationDate?: string}): Promise<PackXdslResiliationTerms>;
   /**
   Details about a Service
   Get this object properties
@@ -1404,7 +1404,7 @@ export class ApiPackXdsl extends ApiCommon {
   shippingAddresses operations
   Allowed shipping addresses given a context
   **/
-  public get(path: '/pack/xdsl/{packName}/shippingAddresses', pathParams: {packName: string}, queryParams: {context?: PackXdslShippingAddressContextEnum}): Promise<PackXdslShippingAddress[]>;
+  public get(path: '/pack/xdsl/{packName}/shippingAddresses', pathParams: {packName: string}, queryParams?: {context?: PackXdslShippingAddressContextEnum}): Promise<PackXdslShippingAddress[]>;
   /**
   domains operations
   Get the available domains
@@ -1454,7 +1454,7 @@ export class ApiPackXdsl extends ApiCommon {
   List the pack.xdsl.Task objects
   Tasks scheduled for this pack
   **/
-  public get(path: '/pack/xdsl/{packName}/tasks', pathParams: {packName: string}, queryParams: {function?: string, status?: PackXdslTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/pack/xdsl/{packName}/tasks', pathParams: {packName: string}, queryParams?: {function?: string, status?: PackXdslTaskStatusEnum}): Promise<Number[]>;
   /**
   Describes the current status of a task
   Get this object properties
@@ -1511,12 +1511,12 @@ export class ApiPackXdsl extends ApiCommon {
   eligibility operations
   Eligibility to move the access
   **/
-  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', pathParams: {packName: string}): Promise<XdslAsyncTask<PackXdslAddressMoveEligibility>>;
+  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', pathParams: {packName: string}): Promise<PackXdslAsyncTask<PackXdslAddressMoveEligibility>>;
   /**
   move operations
   Move the access to another address
   **/
-  public post(path: '/pack/xdsl/{packName}/addressMove/move', pathParams: {packName: string}): Promise<XdslAsyncTask<Number>>;
+  public post(path: '/pack/xdsl/{packName}/addressMove/move', pathParams: {packName: string}): Promise<PackXdslAsyncTask<Number>>;
   /**
   cancelResiliation operations
   Cancel the ongoing resiliation
@@ -1561,7 +1561,7 @@ export class ApiPackXdsl extends ApiCommon {
   offers operations
   Get the possibilities of migration offers available
   **/
-  public post(path: '/pack/xdsl/{packName}/migration/offers', pathParams: {packName: string}): Promise<XdslAsyncTask<PackXdslMigrationMigrationOfferResponse>>;
+  public post(path: '/pack/xdsl/{packName}/migration/offers', pathParams: {packName: string}): Promise<PackXdslAsyncTask<PackXdslMigrationMigrationOfferResponse>>;
   /**
   servicesToDelete operations
   Calculate services to delete with new offer and options

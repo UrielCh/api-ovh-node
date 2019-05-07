@@ -234,7 +234,7 @@ export class ApiLicenseSqlserver extends ApiCommon {
   Get the orderable Sql Server versions
   Get the orderable Sql Server versions
   **/
-  public get(path: '/license/sqlserver/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseSqlServerOrderConfiguration[]>;
+  public get(path: '/license/sqlserver/orderableVersions', queryParams?: {ip?: string}): Promise<LicenseSqlServerOrderConfiguration[]>;
   /**
   Your SQL Server license
   Get this object properties
@@ -249,7 +249,7 @@ export class ApiLicenseSqlserver extends ApiCommon {
   List the license.Task objects
   Tasks linked to this license
   **/
-  public get(path: '/license/sqlserver/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/license/sqlserver/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
   /**
   licenses Todos
   Get this object properties

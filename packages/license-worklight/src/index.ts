@@ -258,7 +258,7 @@ export class ApiLicenseWorklight extends ApiCommon {
   Get the orderable WorkLight versions
   Get the orderable WorkLight versions
   **/
-  public get(path: '/license/worklight/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseWorkLightOrderConfiguration[]>;
+  public get(path: '/license/worklight/orderableVersions', queryParams?: {ip?: string}): Promise<LicenseWorkLightOrderConfiguration[]>;
   /**
   Your WorkLight license
   Get this object properties
@@ -273,7 +273,7 @@ export class ApiLicenseWorklight extends ApiCommon {
   canLicenseBeMovedTo operations
   Will tell if the ip can accept the license
   **/
-  public get(path: '/license/worklight/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  public get(path: '/license/worklight/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams?: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
   /**
   Details about a Service
   Get this object properties
@@ -283,7 +283,7 @@ export class ApiLicenseWorklight extends ApiCommon {
   List the license.Task objects
   Tasks linked to this license
   **/
-  public get(path: '/license/worklight/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/license/worklight/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
   /**
   licenses Todos
   Get this object properties

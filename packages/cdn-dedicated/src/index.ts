@@ -405,7 +405,7 @@ export class ApiCdnDedicated extends ApiCommon {
   List the cdnanycast.CacheRule objects
   Cache rules associated to the domain
   **/
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', pathParams: {serviceName: string, domain: string}, queryParams: {fileMatch?: string}): Promise<Number[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', pathParams: {serviceName: string, domain: string}, queryParams?: {fileMatch?: string}): Promise<Number[]>;
   /**
   CacheRules for a domain
   Get this object properties
@@ -425,7 +425,7 @@ export class ApiCdnDedicated extends ApiCommon {
   statistics operations
   Return stats about a domain
   **/
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/statistics', pathParams: {serviceName: string, domain: string}, queryParams: {period?: CdnanycastStatsPeriodEnum, type?: CdnanycastStatsTypeEnum, value?: CdnanycastStatsValueEnum}): Promise<CdnanycastStatsDataType[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/statistics', pathParams: {serviceName: string, domain: string}, queryParams?: {period?: CdnanycastStatsPeriodEnum, type?: CdnanycastStatsTypeEnum, value?: CdnanycastStatsValueEnum}): Promise<CdnanycastStatsDataType[]>;
   /**
   List the cdnanycast.Task objects
   Task associated to the domain
@@ -440,7 +440,7 @@ export class ApiCdnDedicated extends ApiCommon {
   quota operations
   Return quota history
   **/
-  public get(path: '/cdn/dedicated/{serviceName}/quota', pathParams: {serviceName: string}, queryParams: {period?: CdnanycastStatsPeriodEnum}): Promise<CdnanycastStatsDataType[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/quota', pathParams: {serviceName: string}, queryParams?: {period?: CdnanycastStatsPeriodEnum}): Promise<CdnanycastStatsDataType[]>;
   /**
   Details about a Service
   Get this object properties
@@ -455,7 +455,7 @@ export class ApiCdnDedicated extends ApiCommon {
   List the cdnanycast.Task objects
   Task associated to the ssl
   **/
-  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks', pathParams: {serviceName: string}, queryParams: {function?: CdnanycastTaskFunctionEnum, status?: CdnanycastTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks', pathParams: {serviceName: string}, queryParams?: {function?: CdnanycastTaskFunctionEnum, status?: CdnanycastTaskStateEnum}): Promise<Number[]>;
   /**
   Task on a CDN
   Get this object properties

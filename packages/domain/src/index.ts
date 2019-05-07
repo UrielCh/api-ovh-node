@@ -1359,7 +1359,7 @@ export class ApiDomain extends ApiCommon {
   Operations about the DOMAIN service
   List available services
   **/
-  public get(path: '/domain', pathParams: undefined, queryParams: {whoisOwner?: string}): Promise<string[]>;
+  public get(path: '/domain', queryParams?: {whoisOwner?: string}): Promise<string[]>;
   /**
   Missing description
   Retrieve all association information according to Afnic
@@ -1384,12 +1384,12 @@ export class ApiDomain extends ApiCommon {
   Missing description
   Retrieve claim notices associated to a domain
   **/
-  public get(path: '/domain/data/claimNotice', pathParams: undefined, queryParams: {domain?: string}): Promise<DomainDataClaimNoticeClaimNotice>;
+  public get(path: '/domain/data/claimNotice', queryParams?: {domain?: string}): Promise<DomainDataClaimNoticeClaimNotice>;
   /**
   Missing description
   List all the extensions for a specific country
   **/
-  public get(path: '/domain/data/extension', pathParams: undefined, queryParams: {country?: NichandleCountryEnum}): Promise<string[]>;
+  public get(path: '/domain/data/extension', queryParams?: {country?: NichandleCountryEnum}): Promise<string[]>;
   /**
   Missing description
   Retrieve all your Pro Contact
@@ -1404,7 +1404,7 @@ export class ApiDomain extends ApiCommon {
   Missing description
   List all your SMD files
   **/
-  public get(path: '/domain/data/smd', pathParams: undefined, queryParams: {'protectedLabels.label'?: string}): Promise<Number[]>;
+  public get(path: '/domain/data/smd', queryParams?: {'protectedLabels.label'?: string}): Promise<Number[]>;
   /**
   Missing description
   Retrieve information about a SMD file
@@ -1414,7 +1414,7 @@ export class ApiDomain extends ApiCommon {
   Rules for creating a domain
   List all the rules for a specific cartId/itemId
   **/
-  public get(path: '/domain/rules', pathParams: undefined, queryParams: {cartId?: string, itemId?: Number}): Promise<any>;
+  public get(path: '/domain/rules', queryParams?: {cartId?: string, itemId?: Number}): Promise<any>;
   /**
   Operations about the HOSTING service
   List available services
@@ -1434,7 +1434,7 @@ export class ApiDomain extends ApiCommon {
   List the domain.zone.DynHostLogin objects
   DynHost' logins
   **/
-  public get(path: '/domain/zone/{zoneName}/dynHost/login', pathParams: {zoneName: string}, queryParams: {login?: string, subDomain?: string}): Promise<string[]>;
+  public get(path: '/domain/zone/{zoneName}/dynHost/login', pathParams: {zoneName: string}, queryParams?: {login?: string, subDomain?: string}): Promise<string[]>;
   /**
   Manage DynHost login
   Get this object properties
@@ -1444,7 +1444,7 @@ export class ApiDomain extends ApiCommon {
   List the domain.zone.DynHostRecord objects
   DynHost' records
   **/
-  public get(path: '/domain/zone/{zoneName}/dynHost/record', pathParams: {zoneName: string}, queryParams: {subDomain?: string}): Promise<Number[]>;
+  public get(path: '/domain/zone/{zoneName}/dynHost/record', pathParams: {zoneName: string}, queryParams?: {subDomain?: string}): Promise<Number[]>;
   /**
   DynHost record
   Get this object properties
@@ -1459,7 +1459,7 @@ export class ApiDomain extends ApiCommon {
   List the domain.zone.ZoneRestorePoint objects
   Zone restore points
   **/
-  public get(path: '/domain/zone/{zoneName}/history', pathParams: {zoneName: string}, queryParams: {'creationDate.from'?: string, 'creationDate.to'?: string}): Promise<string[]>;
+  public get(path: '/domain/zone/{zoneName}/history', pathParams: {zoneName: string}, queryParams?: {'creationDate.from'?: string, 'creationDate.to'?: string}): Promise<string[]>;
   /**
   Zone restore point
   Get this object properties
@@ -1469,7 +1469,7 @@ export class ApiDomain extends ApiCommon {
   List the domain.zone.Record objects
   Records of the zone
   **/
-  public get(path: '/domain/zone/{zoneName}/record', pathParams: {zoneName: string}, queryParams: {fieldType?: ZoneNamedResolutionFieldTypeEnum, subDomain?: string}): Promise<Number[]>;
+  public get(path: '/domain/zone/{zoneName}/record', pathParams: {zoneName: string}, queryParams?: {fieldType?: ZoneNamedResolutionFieldTypeEnum, subDomain?: string}): Promise<Number[]>;
   /**
   Zone resource records
   Get this object properties
@@ -1479,7 +1479,7 @@ export class ApiDomain extends ApiCommon {
   List the domain.zone.Redirection objects
   Redirections
   **/
-  public get(path: '/domain/zone/{zoneName}/redirection', pathParams: {zoneName: string}, queryParams: {subDomain?: string}): Promise<Number[]>;
+  public get(path: '/domain/zone/{zoneName}/redirection', pathParams: {zoneName: string}, queryParams?: {subDomain?: string}): Promise<Number[]>;
   /**
   Redirection
   Get this object properties
@@ -1504,7 +1504,7 @@ export class ApiDomain extends ApiCommon {
   List the domain.zone.Task objects
   Domain pending tasks
   **/
-  public get(path: '/domain/zone/{zoneName}/task', pathParams: {zoneName: string}, queryParams: {function?: string, status?: DomainOperationStatusEnum}): Promise<Number[]>;
+  public get(path: '/domain/zone/{zoneName}/task', pathParams: {zoneName: string}, queryParams?: {function?: string, status?: DomainOperationStatusEnum}): Promise<Number[]>;
   /**
   Tasks associated to a zone
   Get this object properties
@@ -1534,7 +1534,7 @@ export class ApiDomain extends ApiCommon {
   List the domain.DnssecKey objects
   List of domain's DS Records
   **/
-  public get(path: '/domain/{serviceName}/dsRecord', pathParams: {serviceName: string}, queryParams: {flags?: DnssecKeyFlagEnum, status?: DnssecKeyStatusEnum}): Promise<Number[]>;
+  public get(path: '/domain/{serviceName}/dsRecord', pathParams: {serviceName: string}, queryParams?: {flags?: DnssecKeyFlagEnum, status?: DnssecKeyStatusEnum}): Promise<Number[]>;
   /**
   Domain's DNSSEC Key
   Get this object properties
@@ -1544,7 +1544,7 @@ export class ApiDomain extends ApiCommon {
   List the domain.GlueRecord objects
   List of glue record
   **/
-  public get(path: '/domain/{serviceName}/glueRecord', pathParams: {serviceName: string}, queryParams: {host?: string}): Promise<string[]>;
+  public get(path: '/domain/{serviceName}/glueRecord', pathParams: {serviceName: string}, queryParams?: {host?: string}): Promise<string[]>;
   /**
   Glue record
   Get this object properties
@@ -1564,7 +1564,7 @@ export class ApiDomain extends ApiCommon {
   List the domain.Owo objects
   List of whois obfuscators
   **/
-  public get(path: '/domain/{serviceName}/owo', pathParams: {serviceName: string}, queryParams: {field?: DomainWhoisObfuscatorFieldsEnum}): Promise<DomainWhoisObfuscatorFieldsEnum[]>;
+  public get(path: '/domain/{serviceName}/owo', pathParams: {serviceName: string}, queryParams?: {field?: DomainWhoisObfuscatorFieldsEnum}): Promise<DomainWhoisObfuscatorFieldsEnum[]>;
   /**
   Obfuscate whois
   Get this object properties
@@ -1589,7 +1589,7 @@ export class ApiDomain extends ApiCommon {
   List the domain.Task objects
   Domain pending tasks
   **/
-  public get(path: '/domain/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {function?: string, status?: DomainOperationStatusEnum}): Promise<Number[]>;
+  public get(path: '/domain/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {function?: string, status?: DomainOperationStatusEnum}): Promise<Number[]>;
   /**
   Tasks associated to domain
   Get this object properties

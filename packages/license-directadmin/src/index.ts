@@ -277,7 +277,7 @@ export class ApiLicenseDirectadmin extends ApiCommon {
   Get the orderable DirectAdmin versions
   Get the orderable DirectAdmin versions
   **/
-  public get(path: '/license/directadmin/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseDirectAdminOrderConfiguration[]>;
+  public get(path: '/license/directadmin/orderableVersions', queryParams?: {ip?: string}): Promise<LicenseDirectAdminOrderConfiguration[]>;
   /**
   Your DirectAdmin license
   Get this object properties
@@ -292,7 +292,7 @@ export class ApiLicenseDirectadmin extends ApiCommon {
   canLicenseBeMovedTo operations
   Will tell if the ip can accept the license
   **/
-  public get(path: '/license/directadmin/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  public get(path: '/license/directadmin/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams?: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
   /**
   Details about a Service
   Get this object properties
@@ -302,7 +302,7 @@ export class ApiLicenseDirectadmin extends ApiCommon {
   List the license.Task objects
   tasks linked to this license
   **/
-  public get(path: '/license/directadmin/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/license/directadmin/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
   /**
   licenses Todos
   Get this object properties

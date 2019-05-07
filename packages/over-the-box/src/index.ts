@@ -604,7 +604,7 @@ export class ApiOverTheBox extends ApiCommon {
   List the overTheBox.DeviceAction objects
   List of actions scheduled for this device
   **/
-  public get(path: '/overTheBox/{serviceName}/device/actions', pathParams: {serviceName: string}, queryParams: {name?: string, status?: OverTheBoxActionStatusEnum}): Promise<string[]>;
+  public get(path: '/overTheBox/{serviceName}/device/actions', pathParams: {serviceName: string}, queryParams?: {name?: string, status?: OverTheBoxActionStatusEnum}): Promise<string[]>;
   /**
   Device action
   Get this object properties
@@ -639,7 +639,7 @@ export class ApiOverTheBox extends ApiCommon {
   List the overTheBox.Task objects
   List of tasks scheduled for this service
   **/
-  public get(path: '/overTheBox/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {name?: string, status?: OverTheBoxTaskStatusEnum}): Promise<string[]>;
+  public get(path: '/overTheBox/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {name?: string, status?: OverTheBoxTaskStatusEnum}): Promise<string[]>;
   /**
   Task
   Get this object properties

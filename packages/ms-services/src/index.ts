@@ -964,7 +964,7 @@ export class ApiMsServices extends ApiCommon {
   List the msServices.Account objects
   Accounts associated to this Active Directory service
   **/
-  public get(path: '/msServices/{serviceName}/account', pathParams: {serviceName: string}, queryParams: {id?: Number, userPrincipalName?: string}): Promise<string[]>;
+  public get(path: '/msServices/{serviceName}/account', pathParams: {serviceName: string}, queryParams?: {id?: Number, userPrincipalName?: string}): Promise<string[]>;
   /**
   Active Directory Account
   Get this object properties
@@ -1024,12 +1024,12 @@ export class ApiMsServices extends ApiCommon {
   license operations
   Get active licenses for specific period of time
   **/
-  public get(path: '/msServices/{serviceName}/sharepoint/license', pathParams: {serviceName: string}, queryParams: {license?: MsServicesSharepointLicenseEnum, period?: MsServicesLicensePeriodEnum}): Promise<MsServicesSharepointDailyLicense[]>;
+  public get(path: '/msServices/{serviceName}/sharepoint/license', pathParams: {serviceName: string}, queryParams?: {license?: MsServicesSharepointLicenseEnum, period?: MsServicesLicensePeriodEnum}): Promise<MsServicesSharepointDailyLicense[]>;
   /**
   List the msServices.sharepointTask objects
   Pending actions
   **/
-  public get(path: '/msServices/{serviceName}/sharepoint/task', pathParams: {serviceName: string}, queryParams: {function?: string, status?: MsServicesTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/msServices/{serviceName}/sharepoint/task', pathParams: {serviceName: string}, queryParams?: {function?: string, status?: MsServicesTaskStatusEnum}): Promise<Number[]>;
   /**
   Sharepoint task details
   Get this object properties
@@ -1049,12 +1049,12 @@ export class ApiMsServices extends ApiCommon {
   license operations
   Get active licenses for specific period of time
   **/
-  public get(path: '/msServices/{serviceName}/sync/license', pathParams: {serviceName: string}, queryParams: {license?: MsServicesSyncLicenseEnum, period?: MsServicesLicensePeriodEnum}): Promise<MsServicesSyncDailyLicense[]>;
+  public get(path: '/msServices/{serviceName}/sync/license', pathParams: {serviceName: string}, queryParams?: {license?: MsServicesSyncLicenseEnum, period?: MsServicesLicensePeriodEnum}): Promise<MsServicesSyncDailyLicense[]>;
   /**
   List the msServices.Task objects
   Pending actions
   **/
-  public get(path: '/msServices/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {function?: MsServicesTaskFunctionEnum, status?: MsServicesTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/msServices/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {function?: MsServicesTaskFunctionEnum, status?: MsServicesTaskStatusEnum}): Promise<Number[]>;
   /**
   Active Directory task details
   Get this object properties

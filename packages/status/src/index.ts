@@ -106,6 +106,6 @@ export class ApiStatus extends ApiCommon {
   API to get incidents or maintenances linked to nichandle services
   Find all the incidents or maintenances linked to your services
   **/
-  public get(path: '/status/task', pathParams: undefined, queryParams: {impact?: OvhstatusTaskTaskImpactEnum, status?: OvhstatusTaskTaskStatusEnum, type?: OvhstatusTaskTaskTypeEnum}): Promise<StatusTask[]>;
+  public get(path: '/status/task', queryParams?: {impact?: OvhstatusTaskTaskImpactEnum, status?: OvhstatusTaskTaskStatusEnum, type?: OvhstatusTaskTaskTypeEnum}): Promise<StatusTask[]>;
   public get(path: PathsStatusGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
 }

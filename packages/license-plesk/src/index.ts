@@ -364,7 +364,7 @@ export class ApiLicensePlesk extends ApiCommon {
   Get the orderable Plesk versions and their associated compatibilities
   Get the orderable Plesk versions and their associated compatibilities
   **/
-  public get(path: '/license/plesk/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicensePleskOrderConfiguration[]>;
+  public get(path: '/license/plesk/orderableVersions', queryParams?: {ip?: string}): Promise<LicensePleskOrderConfiguration[]>;
   /**
   Your Plesk license
   Get this object properties
@@ -379,7 +379,7 @@ export class ApiLicensePlesk extends ApiCommon {
   canLicenseBeMovedTo operations
   Will tell if the ip can accept the license
   **/
-  public get(path: '/license/plesk/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  public get(path: '/license/plesk/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams?: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
   /**
   List the license.Option objects
   options attached to this license
@@ -399,7 +399,7 @@ export class ApiLicensePlesk extends ApiCommon {
   List the license.Task objects
   tasks linked to this license
   **/
-  public get(path: '/license/plesk/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/license/plesk/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
   /**
   licenses Todos
   Get this object properties

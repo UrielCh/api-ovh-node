@@ -333,7 +333,7 @@ export class ApiDeskaas extends ApiCommon {
   List the deskaas.Task objects
   Tasks associated with this Desktop As A Service
   **/
-  public get(path: '/deskaas/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {state?: DeskaasTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/deskaas/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {state?: DeskaasTaskStateEnum}): Promise<Number[]>;
   /**
   Operation on a Desktop As A Service component
   Get this object properties
@@ -348,7 +348,7 @@ export class ApiDeskaas extends ApiCommon {
   List the deskaas.Task objects
   Tasks associated with this User
   **/
-  public get(path: '/deskaas/{serviceName}/user/task', pathParams: {serviceName: string}, queryParams: {state?: DeskaasTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/deskaas/{serviceName}/user/task', pathParams: {serviceName: string}, queryParams?: {state?: DeskaasTaskStateEnum}): Promise<Number[]>;
   /**
   Operation on a Desktop As A Service component
   Get this object properties

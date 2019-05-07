@@ -510,7 +510,7 @@ export class ApiHorizonView extends ApiCommon {
   List the horizonView.Task objects
   Tasks associated with this Dedicated Horizon
   **/
-  public get(path: '/horizonView/{serviceName}/dedicatedHorizon/task', pathParams: {serviceName: string}, queryParams: {state?: HorizonViewTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/horizonView/{serviceName}/dedicatedHorizon/task', pathParams: {serviceName: string}, queryParams?: {state?: HorizonViewTaskStateEnum}): Promise<Number[]>;
   /**
   Operation on a Horizon View component
   Get this object properties

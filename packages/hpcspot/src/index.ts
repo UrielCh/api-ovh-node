@@ -192,7 +192,7 @@ export class ApiHpcspot extends ApiCommon {
   List the hpcspot.Consumption objects
   Details of the consumption of your account
   **/
-  public get(path: '/hpcspot/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams: {'hpcspotItemEndDate.from'?: string, 'hpcspotItemEndDate.to'?: string, hpcspotItemId?: Number, orderId?: Number, type?: HpcspotConsumptionTypeEnum}): Promise<Number[]>;
+  public get(path: '/hpcspot/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams?: {'hpcspotItemEndDate.from'?: string, 'hpcspotItemEndDate.to'?: string, hpcspotItemId?: Number, orderId?: Number, type?: HpcspotConsumptionTypeEnum}): Promise<Number[]>;
   /**
   Detail of a HPC Spot consumtion
   Get this object properties

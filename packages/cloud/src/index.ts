@@ -4040,17 +4040,17 @@ export class ApiCloud extends ApiCommon {
   Get information about a cloud project creation
   Get information about a cloud project creation
   **/
-  public get(path: '/cloud/createProjectInfo', pathParams: undefined, queryParams: {voucher?: string}): Promise<CloudProjectNewProjectInfo>;
+  public get(path: '/cloud/createProjectInfo', queryParams?: {voucher?: string}): Promise<CloudProjectNewProjectInfo>;
   /**
   Missing description
   Get all cloud pending orders
   **/
-  public get(path: '/cloud/order', pathParams: undefined, queryParams: {planCode?: string}): Promise<CloudOrderOrder[]>;
+  public get(path: '/cloud/order', queryParams?: {planCode?: string}): Promise<CloudOrderOrder[]>;
   /**
   Get services prices
   Get services prices
   **/
-  public get(path: '/cloud/price', pathParams: undefined, queryParams: {flavorId?: string, region?: string}): Promise<CloudPrice>;
+  public get(path: '/cloud/price', queryParams?: {flavorId?: string, region?: string}): Promise<CloudPrice>;
   /**
   Operations about the PUBLICCLOUD service
   List available services
@@ -4065,7 +4065,7 @@ export class ApiCloud extends ApiCommon {
   List the cloud.Acl objects
   Get ACL on your cloud project
   **/
-  public get(path: '/cloud/project/{serviceName}/acl', pathParams: {serviceName: string}, queryParams: {type?: CloudAclTypeEnum}): Promise<string[]>;
+  public get(path: '/cloud/project/{serviceName}/acl', pathParams: {serviceName: string}, queryParams?: {type?: CloudAclTypeEnum}): Promise<string[]>;
   /**
   Cloud ACL
   Get this object properties
@@ -4095,12 +4095,12 @@ export class ApiCloud extends ApiCommon {
   bill operations
   Get your project bills
   **/
-  public get(path: '/cloud/project/{serviceName}/bill', pathParams: {serviceName: string}, queryParams: {from?: string, to?: string}): Promise<CloudProjectBill[]>;
+  public get(path: '/cloud/project/{serviceName}/bill', pathParams: {serviceName: string}, queryParams?: {from?: string, to?: string}): Promise<CloudProjectBill[]>;
   /**
   consumption operations
   Get your project consumption
   **/
-  public get(path: '/cloud/project/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams: {from?: string, to?: string}): Promise<CloudProjectProjectUsage>;
+  public get(path: '/cloud/project/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams?: {from?: string, to?: string}): Promise<CloudProjectProjectUsage>;
   /**
   List the cloud.Credit objects
   Get your credit
@@ -4115,7 +4115,7 @@ export class ApiCloud extends ApiCommon {
   Missing description
   Get flavors
   **/
-  public get(path: '/cloud/project/{serviceName}/flavor', pathParams: {serviceName: string}, queryParams: {region?: string}): Promise<CloudFlavorFlavor[]>;
+  public get(path: '/cloud/project/{serviceName}/flavor', pathParams: {serviceName: string}, queryParams?: {region?: string}): Promise<CloudFlavorFlavor[]>;
   /**
   Missing description
   Get flavor
@@ -4125,12 +4125,12 @@ export class ApiCloud extends ApiCommon {
   Missing description
   Get your consumption forecast
   **/
-  public get(path: '/cloud/project/{serviceName}/forecast', pathParams: {serviceName: string}, queryParams: {toDate?: string}): Promise<CloudForecastProjectForecast>;
+  public get(path: '/cloud/project/{serviceName}/forecast', pathParams: {serviceName: string}, queryParams?: {toDate?: string}): Promise<CloudForecastProjectForecast>;
   /**
   Missing description
   Get images
   **/
-  public get(path: '/cloud/project/{serviceName}/image', pathParams: {serviceName: string}, queryParams: {flavorType?: string, osType?: CloudImageOSTypeEnum, region?: string}): Promise<CloudImageImage[]>;
+  public get(path: '/cloud/project/{serviceName}/image', pathParams: {serviceName: string}, queryParams?: {flavorType?: string, osType?: CloudImageOSTypeEnum, region?: string}): Promise<CloudImageImage[]>;
   /**
   Missing description
   Get image
@@ -4140,17 +4140,17 @@ export class ApiCloud extends ApiCommon {
   Missing description
   Get instances
   **/
-  public get(path: '/cloud/project/{serviceName}/instance', pathParams: {serviceName: string}, queryParams: {region?: string}): Promise<CloudInstanceInstance[]>;
+  public get(path: '/cloud/project/{serviceName}/instance', pathParams: {serviceName: string}, queryParams?: {region?: string}): Promise<CloudInstanceInstance[]>;
   /**
   Missing description
   Get the detail of a group
   **/
-  public get(path: '/cloud/project/{serviceName}/instance/group', pathParams: {serviceName: string}, queryParams: {region?: string}): Promise<CloudInstancegroupInstanceGroup[]>;
+  public get(path: '/cloud/project/{serviceName}/instance/group', pathParams: {serviceName: string}, queryParams?: {region?: string}): Promise<CloudInstancegroupInstanceGroup[]>;
   /**
   Missing description
   Get all groups
   **/
-  public get(path: '/cloud/project/{serviceName}/instance/group/{groupId}', pathParams: {groupId: string, serviceName: string}, queryParams: {region?: string}): Promise<CloudInstancegroupInstanceGroup>;
+  public get(path: '/cloud/project/{serviceName}/instance/group/{groupId}', pathParams: {groupId: string, serviceName: string}, queryParams?: {region?: string}): Promise<CloudInstancegroupInstanceGroup>;
   /**
   Missing description
   Get instance
@@ -4170,7 +4170,7 @@ export class ApiCloud extends ApiCommon {
   Missing description
   Return many statistics about the virtual machine for a given period
   **/
-  public get(path: '/cloud/project/{serviceName}/instance/{instanceId}/monitoring', pathParams: {instanceId: string, serviceName: string}, queryParams: {period?: CloudInstanceMetricsPeriod, type?: CloudInstanceMetricsType}): Promise<CloudInstanceInstanceMetrics>;
+  public get(path: '/cloud/project/{serviceName}/instance/{instanceId}/monitoring', pathParams: {instanceId: string, serviceName: string}, queryParams?: {period?: CloudInstanceMetricsPeriod, type?: CloudInstanceMetricsType}): Promise<CloudInstanceInstanceMetrics>;
   /**
   Missing description
   Get ips
@@ -4275,7 +4275,7 @@ export class ApiCloud extends ApiCommon {
   Missing description
   Get snapshots
   **/
-  public get(path: '/cloud/project/{serviceName}/snapshot', pathParams: {serviceName: string}, queryParams: {flavorType?: string, region?: string}): Promise<CloudImageImage[]>;
+  public get(path: '/cloud/project/{serviceName}/snapshot', pathParams: {serviceName: string}, queryParams?: {flavorType?: string, region?: string}): Promise<CloudImageImage[]>;
   /**
   Missing description
   Get snapshot details
@@ -4285,7 +4285,7 @@ export class ApiCloud extends ApiCommon {
   Missing description
   Get SSH keys
   **/
-  public get(path: '/cloud/project/{serviceName}/sshkey', pathParams: {serviceName: string}, queryParams: {region?: string}): Promise<CloudSshkeySshKey[]>;
+  public get(path: '/cloud/project/{serviceName}/sshkey', pathParams: {serviceName: string}, queryParams?: {region?: string}): Promise<CloudSshkeySshKey[]>;
   /**
   Missing description
   Get SSH key
@@ -4330,7 +4330,7 @@ export class ApiCloud extends ApiCommon {
   Missing description
   Usage information on your project
   **/
-  public get(path: '/cloud/project/{serviceName}/usage/history', pathParams: {serviceName: string}, queryParams: {from?: string, to?: string}): Promise<CloudUsageUsageHistory[]>;
+  public get(path: '/cloud/project/{serviceName}/usage/history', pathParams: {serviceName: string}, queryParams?: {from?: string, to?: string}): Promise<CloudUsageUsageHistory[]>;
   /**
   Missing description
   Usage information details
@@ -4350,22 +4350,22 @@ export class ApiCloud extends ApiCommon {
   Missing description
   Get RC file of OpenStack
   **/
-  public get(path: '/cloud/project/{serviceName}/user/{userId}/openrc', pathParams: {serviceName: string, userId: Number}, queryParams: {region?: string, version?: CloudUserOpenrcVersionEnum}): Promise<CloudUserOpenrc>;
+  public get(path: '/cloud/project/{serviceName}/user/{userId}/openrc', pathParams: {serviceName: string, userId: Number}, queryParams?: {region?: string, version?: CloudUserOpenrcVersionEnum}): Promise<CloudUserOpenrc>;
   /**
   Missing description
   Get rclone configuration file
   **/
-  public get(path: '/cloud/project/{serviceName}/user/{userId}/rclone', pathParams: {serviceName: string, userId: Number}, queryParams: {region?: string}): Promise<CloudUserRclone>;
+  public get(path: '/cloud/project/{serviceName}/user/{userId}/rclone', pathParams: {serviceName: string, userId: Number}, queryParams?: {region?: string}): Promise<CloudUserRclone>;
   /**
   Missing description
   Get volumes
   **/
-  public get(path: '/cloud/project/{serviceName}/volume', pathParams: {serviceName: string}, queryParams: {region?: string}): Promise<CloudVolumeVolume[]>;
+  public get(path: '/cloud/project/{serviceName}/volume', pathParams: {serviceName: string}, queryParams?: {region?: string}): Promise<CloudVolumeVolume[]>;
   /**
   Missing description
   Get volume snapshots
   **/
-  public get(path: '/cloud/project/{serviceName}/volume/snapshot', pathParams: {serviceName: string}, queryParams: {region?: string}): Promise<CloudVolumeSnapshot[]>;
+  public get(path: '/cloud/project/{serviceName}/volume/snapshot', pathParams: {serviceName: string}, queryParams?: {region?: string}): Promise<CloudVolumeSnapshot[]>;
   /**
   Missing description
   Get volume snapshot details
@@ -4385,7 +4385,7 @@ export class ApiCloud extends ApiCommon {
   Get services prices for a subsidiary
   Get services prices for a subsidiary
   **/
-  public get(path: '/cloud/subsidiaryPrice', pathParams: undefined, queryParams: {flavorId?: string, ovhSubsidiary?: NichandleOvhSubsidiaryEnum, region?: string}): Promise<CloudPrice>;
+  public get(path: '/cloud/subsidiaryPrice', queryParams?: {flavorId?: string, ovhSubsidiary?: NichandleOvhSubsidiaryEnum, region?: string}): Promise<CloudPrice>;
   /**
   Operations about the PUBLICCLOUD service
   List available services
@@ -4400,7 +4400,7 @@ export class ApiCloud extends ApiCommon {
   List the pca.Billing objects
   cloud Archives billing items
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/billing', pathParams: {serviceName: string, pcaServiceName: string}, queryParams: {billed?: boolean, 'date.from'?: string, 'date.to'?: string}): Promise<Number[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/billing', pathParams: {serviceName: string, pcaServiceName: string}, queryParams?: {billed?: boolean, 'date.from'?: string, 'date.to'?: string}): Promise<Number[]>;
   /**
   cloud archives billing
   Get this object properties
@@ -4415,7 +4415,7 @@ export class ApiCloud extends ApiCommon {
   List the pca.Session objects
   cloud archives sessions for account
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions', pathParams: {serviceName: string, pcaServiceName: string}, queryParams: {name?: string}): Promise<string[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions', pathParams: {serviceName: string, pcaServiceName: string}, queryParams?: {name?: string}): Promise<string[]>;
   /**
   cloud archives sessions
   Get this object properties
@@ -4425,7 +4425,7 @@ export class ApiCloud extends ApiCommon {
   List the pca.File objects
   cloud archives files in session
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files', pathParams: {serviceName: string, pcaServiceName: string, sessionId: string}, queryParams: {name?: string}): Promise<string[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files', pathParams: {serviceName: string, pcaServiceName: string, sessionId: string}, queryParams?: {name?: string}): Promise<string[]>;
   /**
   cloud archives files
   Get this object properties
@@ -4435,7 +4435,7 @@ export class ApiCloud extends ApiCommon {
   List the pca.Task objects
   cloud archives tasks for account
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', pathParams: {serviceName: string, pcaServiceName: string}, queryParams: {function?: CloudPcaFunctionTypeEnum, status?: CloudPcaTaskStateEnum, 'todoDate.from'?: string, 'todoDate.to'?: string}): Promise<string[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', pathParams: {serviceName: string, pcaServiceName: string}, queryParams?: {function?: CloudPcaFunctionTypeEnum, status?: CloudPcaTaskStateEnum, 'todoDate.from'?: string, 'todoDate.to'?: string}): Promise<string[]>;
   /**
   cloud archives tasks
   Get this object properties
@@ -4838,7 +4838,7 @@ export class ApiCloud extends ApiCommon {
   Missing description
   Delete CORS support on your container
   **/
-  public delete(path: '/cloud/project/{serviceName}/storage/{containerId}/cors', pathParams: {containerId: string, serviceName: string}, bodyParams: {origin?: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/storage/{containerId}/cors', pathParams: {containerId: string, serviceName: string}, bodyParams?: {origin?: string}): Promise<void>;
   /**
   Missing description
   Delete user

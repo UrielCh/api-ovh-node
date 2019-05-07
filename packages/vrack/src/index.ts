@@ -481,7 +481,7 @@ export class ApiVrack extends ApiCommon {
   mrtg operations
   Retrieve vrack traffic graph values
   **/
-  public get(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg', pathParams: {serviceName: string, dedicatedServer: string}, queryParams: {period?: DedicatedServerMrtgPeriodEnum, type?: DedicatedServerMrtgTypeEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
+  public get(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg', pathParams: {serviceName: string, dedicatedServer: string}, queryParams?: {period?: DedicatedServerMrtgPeriodEnum, type?: DedicatedServerMrtgTypeEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
   /**
   List the vrack.dedicatedServerInterface objects
   vrack for dedicated server interface

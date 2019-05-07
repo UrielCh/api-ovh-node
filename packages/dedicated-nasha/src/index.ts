@@ -554,7 +554,7 @@ export class ApiDedicatedNasha extends ApiCommon {
   use operations
   Return statistics about the partition
   **/
-  public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/use', pathParams: {serviceName: string, partitionName: string}, queryParams: {type?: DedicatedStoragePartitionUsageTypeEnum}): Promise<ComplexTypeUnitAndValue<Number>>;
+  public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/use', pathParams: {serviceName: string, partitionName: string}, queryParams?: {type?: DedicatedStoragePartitionUsageTypeEnum}): Promise<ComplexTypeUnitAndValue<Number>>;
   /**
   Details about a Service
   Get this object properties
@@ -564,7 +564,7 @@ export class ApiDedicatedNasha extends ApiCommon {
   List the dedicated.nasTask.Task objects
   View task list
   **/
-  public get(path: '/dedicated/nasha/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {operation?: DedicatedStorageTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/dedicated/nasha/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {operation?: DedicatedStorageTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<Number[]>;
   /**
   Storage task
   Get this object properties
@@ -574,7 +574,7 @@ export class ApiDedicatedNasha extends ApiCommon {
   use operations
   Return statistics about the nas
   **/
-  public get(path: '/dedicated/nasha/{serviceName}/use', pathParams: {serviceName: string}, queryParams: {type?: DedicatedStorageNasUsageTypeEnum}): Promise<ComplexTypeUnitAndValue<Number>>;
+  public get(path: '/dedicated/nasha/{serviceName}/use', pathParams: {serviceName: string}, queryParams?: {type?: DedicatedStorageNasUsageTypeEnum}): Promise<ComplexTypeUnitAndValue<Number>>;
   public get(path: PathsDedicatedNashaGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Storage nas HA

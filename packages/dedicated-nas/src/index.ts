@@ -322,7 +322,7 @@ export class ApiDedicatedNas extends ApiCommon {
   List the dedicated.nasTask.Task objects
   View task list
   **/
-  public get(path: '/dedicated/nas/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {operation?: DedicatedStorageTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/dedicated/nas/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {operation?: DedicatedStorageTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<Number[]>;
   /**
   Storage task
   Get this object properties

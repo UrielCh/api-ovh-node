@@ -354,7 +354,7 @@ export class ApiSslGateway extends ApiCommon {
   Check domain eligibility. Return list of eligible IP(s) for this domain.
   Check domain eligibility. Return list of eligible IP(s) for this domain.
   **/
-  public get(path: '/sslGateway/eligibility', pathParams: undefined, queryParams: {domain?: string}): Promise<SslGatewayEligibilityStatus>;
+  public get(path: '/sslGateway/eligibility', queryParams?: {domain?: string}): Promise<SslGatewayEligibilityStatus>;
   /**
   Your SSL Gateway
   Get this object properties

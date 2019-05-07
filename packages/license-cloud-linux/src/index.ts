@@ -234,7 +234,7 @@ export class ApiLicenseCloudLinux extends ApiCommon {
   Get the orderable CloudLinux versions
   Get the orderable CloudLinux versions
   **/
-  public get(path: '/license/cloudLinux/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseCloudLinuxOrderConfiguration[]>;
+  public get(path: '/license/cloudLinux/orderableVersions', queryParams?: {ip?: string}): Promise<LicenseCloudLinuxOrderConfiguration[]>;
   /**
   Your CloudLinux license
   Get this object properties
@@ -249,7 +249,7 @@ export class ApiLicenseCloudLinux extends ApiCommon {
   List the license.Task objects
   Tasks linked to this license
   **/
-  public get(path: '/license/cloudLinux/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/license/cloudLinux/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
   /**
   licenses Todos
   Get this object properties

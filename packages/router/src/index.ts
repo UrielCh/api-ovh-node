@@ -430,7 +430,7 @@ export class ApiRouter extends ApiCommon {
   List the router.Task objects
   Tasks for this Router
   **/
-  public get(path: '/router/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {function?: RouterTaskFunctionEnum, status?: RouterTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/router/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {function?: RouterTaskFunctionEnum, status?: RouterTaskStatusEnum}): Promise<Number[]>;
   /**
   Task
   Get this object properties

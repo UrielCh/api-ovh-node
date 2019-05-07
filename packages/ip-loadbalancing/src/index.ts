@@ -1706,7 +1706,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   definedFarms operations
   List of defined farms, and whether they are HTTP, TCP or UDP
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/definedFarms', pathParams: {serviceName: string}, queryParams: {vrackNetworkId?: Number}): Promise<IpLoadbalancingDefinedFarm[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/definedFarms', pathParams: {serviceName: string}, queryParams?: {vrackNetworkId?: Number}): Promise<IpLoadbalancingDefinedFarm[]>;
   /**
   definedFrontends operations
   List of defined frontends, and whether they are HTTP, TCP or UDP
@@ -1726,7 +1726,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.backendHttp.BackendHttp objects
   HTTP Farm for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/farm', pathParams: {serviceName: string}, queryParams: {vrackNetworkId?: Number, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/farm', pathParams: {serviceName: string}, queryParams?: {vrackNetworkId?: Number, zone?: string}): Promise<Number[]>;
   /**
   HTTP Farm
   Get this object properties
@@ -1736,7 +1736,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer objects
   HTTP Farm's Servers
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server', pathParams: {serviceName: string, farmId: Number}, queryParams: {address?: string, cookie?: string, status?: IpLoadbalancingBackendCustomerServerStatusEnum}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server', pathParams: {serviceName: string, farmId: Number}, queryParams?: {address?: string, cookie?: string, status?: IpLoadbalancingBackendCustomerServerStatusEnum}): Promise<Number[]>;
   /**
   HTTP Farm's Server
   Get this object properties
@@ -1746,7 +1746,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.frontendHttp.FrontendHttp objects
   HTTP frontends for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/frontend', pathParams: {serviceName: string}, queryParams: {defaultFarmId?: Number, port?: string, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/frontend', pathParams: {serviceName: string}, queryParams?: {defaultFarmId?: Number, port?: string, zone?: string}): Promise<Number[]>;
   /**
   Frontend HTTP
   Get this object properties
@@ -1756,7 +1756,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.RouteHttp.RouteHttp objects
   HTTP routes for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/route', pathParams: {serviceName: string}, queryParams: {frontendId?: Number}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/route', pathParams: {serviceName: string}, queryParams?: {frontendId?: Number}): Promise<Number[]>;
   /**
   HTTP Route
   Get this object properties
@@ -1801,7 +1801,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.QuotaHistory.QuotaHistory objects
   Quota history informations, per month
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/quotaHistory', pathParams: {serviceName: string}, queryParams: {'historizedDate.from'?: string, 'historizedDate.to'?: string, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/quotaHistory', pathParams: {serviceName: string}, queryParams?: {'historizedDate.from'?: string, 'historizedDate.to'?: string, zone?: string}): Promise<Number[]>;
   /**
   QuotaHistory
   Get this object properties
@@ -1816,7 +1816,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.Ssl.Ssl objects
   Ssl for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/ssl', pathParams: {serviceName: string}, queryParams: {fingerprint?: string, serial?: string, type?: IpLoadbalancingSslTypeEnum}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/ssl', pathParams: {serviceName: string}, queryParams?: {fingerprint?: string, serial?: string, type?: IpLoadbalancingSslTypeEnum}): Promise<Number[]>;
   /**
   Ssl
   Get this object properties
@@ -1831,7 +1831,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.Task.Task objects
   Task for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {action?: IpLoadbalancingTaskActionEnum, 'creationDate.from'?: string, 'creationDate.to'?: string, 'doneDate.from'?: string, 'doneDate.to'?: string, status?: IpLoadbalancingTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {action?: IpLoadbalancingTaskActionEnum, 'creationDate.from'?: string, 'creationDate.to'?: string, 'doneDate.from'?: string, 'doneDate.to'?: string, status?: IpLoadbalancingTaskStatusEnum}): Promise<Number[]>;
   /**
   IP Load Balancing Operations
   Get this object properties
@@ -1841,7 +1841,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.backendTcp.BackendTcp objects
   TCP Farm for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/farm', pathParams: {serviceName: string}, queryParams: {vrackNetworkId?: Number, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/farm', pathParams: {serviceName: string}, queryParams?: {vrackNetworkId?: Number, zone?: string}): Promise<Number[]>;
   /**
   TCP Farm
   Get this object properties
@@ -1851,7 +1851,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer objects
   TCP Farm's Servers
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server', pathParams: {serviceName: string, farmId: Number}, queryParams: {address?: string, status?: IpLoadbalancingBackendCustomerServerStatusEnum}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server', pathParams: {serviceName: string, farmId: Number}, queryParams?: {address?: string, status?: IpLoadbalancingBackendCustomerServerStatusEnum}): Promise<Number[]>;
   /**
   TCP Farm's Server
   Get this object properties
@@ -1861,7 +1861,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.frontendTcp.FrontendTcp objects
   TCP frontends for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/frontend', pathParams: {serviceName: string}, queryParams: {defaultFarmId?: Number, port?: string, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/frontend', pathParams: {serviceName: string}, queryParams?: {defaultFarmId?: Number, port?: string, zone?: string}): Promise<Number[]>;
   /**
   Frontend TCP
   Get this object properties
@@ -1871,7 +1871,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.RouteTcp.RouteTcp objects
   TCP routes for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/route', pathParams: {serviceName: string}, queryParams: {frontendId?: Number}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/route', pathParams: {serviceName: string}, queryParams?: {frontendId?: Number}): Promise<Number[]>;
   /**
   TCP Route
   Get this object properties
@@ -1891,7 +1891,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.backendUdp.BackendUdp objects
   UDP Farm for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/udp/farm', pathParams: {serviceName: string}, queryParams: {vrackNetworkId?: Number, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/udp/farm', pathParams: {serviceName: string}, queryParams?: {vrackNetworkId?: Number, zone?: string}): Promise<Number[]>;
   /**
   UDP Farm
   Get this object properties
@@ -1901,7 +1901,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer objects
   UDP Farm's Servers
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server', pathParams: {serviceName: string, farmId: Number}, queryParams: {address?: string, status?: IpLoadbalancingBackendCustomerServerStatusEnum}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server', pathParams: {serviceName: string, farmId: Number}, queryParams?: {address?: string, status?: IpLoadbalancingBackendCustomerServerStatusEnum}): Promise<Number[]>;
   /**
   UDP Farm's Server
   Get this object properties
@@ -1911,7 +1911,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.frontendUdp.FrontendUdp objects
   UDP frontends for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/udp/frontend', pathParams: {serviceName: string}, queryParams: {defaultFarmId?: Number, port?: string, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/udp/frontend', pathParams: {serviceName: string}, queryParams?: {defaultFarmId?: Number, port?: string, zone?: string}): Promise<Number[]>;
   /**
   Frontend UDP
   Get this object properties
@@ -1921,7 +1921,7 @@ export class ApiIpLoadbalancing extends ApiCommon {
   List the ipLoadbalancing.VrackNetwork.VrackNetwork objects
   Descriptions of private networks in the vRack attached to this Load Balancer
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/vrack/network', pathParams: {serviceName: string}, queryParams: {subnet?: string, vlan?: Number}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/vrack/network', pathParams: {serviceName: string}, queryParams?: {subnet?: string, vlan?: Number}): Promise<Number[]>;
   /**
   Represents a private network in the vRack
   Get this object properties

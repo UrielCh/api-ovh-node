@@ -373,7 +373,7 @@ export class ApiHostingReseller extends ApiCommon {
   Reseller.reboot
   Restart instance
   **/
-  public post(path: '/hosting/reseller/{serviceName}/reboot', pathParams: {serviceName: string}, bodyParams: {hard?: boolean}): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/reboot', pathParams: {serviceName: string}, bodyParams?: {hard?: boolean}): Promise<string>;
   /**
   Reseller.reinstall
   Reinstall instance

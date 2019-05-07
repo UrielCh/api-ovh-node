@@ -180,7 +180,7 @@ export class ApiCdnWebstorage extends ApiCommon {
   statistics operations
   Return stats about bandwidth consumption
   **/
-  public get(path: '/cdn/webstorage/{serviceName}/statistics', pathParams: {serviceName: string}, queryParams: {period?: CdnWebstorageStatsPeriodEnum, type?: CdnWebstorageStatsTypeEnum}): Promise<CdnWebstorageStatsDataType[]>;
+  public get(path: '/cdn/webstorage/{serviceName}/statistics', pathParams: {serviceName: string}, queryParams?: {period?: CdnWebstorageStatsPeriodEnum, type?: CdnWebstorageStatsTypeEnum}): Promise<CdnWebstorageStatsDataType[]>;
   public get(path: PathsCdnWebstorageGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service

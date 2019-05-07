@@ -3338,22 +3338,22 @@ export class ApiXdsl extends ApiCommon {
   Get the cities from a zipCode
   Get the cities from a zipCode
   **/
-  public get(path: '/xdsl/eligibility/cities', pathParams: undefined, queryParams: {zipCode?: string}): Promise<XdslEligibilityCity[]>;
+  public get(path: '/xdsl/eligibility/cities', queryParams?: {zipCode?: string}): Promise<XdslEligibilityCity[]>;
   /**
   Search for meeting time slot
   Search for meeting time slot
   **/
-  public get(path: '/xdsl/eligibility/meetings', pathParams: undefined, queryParams: {eligibilityId?: string, offerLabel?: string}): Promise<XdslAsyncTask<XdslEligibilityMeetingSlots>>;
+  public get(path: '/xdsl/eligibility/meetings', queryParams?: {eligibilityId?: string, offerLabel?: string}): Promise<XdslAsyncTask<XdslEligibilityMeetingSlots>>;
   /**
   Get the streets from a city inseeCode and partial street name
   Get the streets from a city inseeCode and partial street name
   **/
-  public get(path: '/xdsl/eligibility/streets', pathParams: undefined, queryParams: {inseeCode?: string, partialName?: string}): Promise<XdslEligibilityStreet[]>;
+  public get(path: '/xdsl/eligibility/streets', queryParams?: {inseeCode?: string, partialName?: string}): Promise<XdslEligibilityStreet[]>;
   /**
   Get an eligibility by its id
   Get an eligibility by its id
   **/
-  public get(path: '/xdsl/eligibility/test', pathParams: undefined, queryParams: {id?: string}): Promise<XdslEligibilityEligibility>;
+  public get(path: '/xdsl/eligibility/test', queryParams?: {id?: string}): Promise<XdslEligibilityEligibility>;
   /**
   Operations about the XDSL service
   List available services
@@ -3368,7 +3368,7 @@ export class ApiXdsl extends ApiCommon {
   List the xdsl.Incident objects
   List of incidents
   **/
-  public get(path: '/xdsl/incidents', pathParams: undefined, queryParams: {creationDate?: string, endDate?: string}): Promise<Number[]>;
+  public get(path: '/xdsl/incidents', queryParams?: {creationDate?: string, endDate?: string}): Promise<Number[]>;
   /**
   Detected incident
   Get this object properties
@@ -3483,12 +3483,12 @@ export class ApiXdsl extends ApiCommon {
   logs operations
   Get the logs emitted by the DSLAM for this port
   **/
-  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/logs', pathParams: {serviceName: string, number: string}, queryParams: {limit?: Number}): Promise<XdslDslamPortLog[]>;
+  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/logs', pathParams: {serviceName: string, number: string}, queryParams?: {limit?: Number}): Promise<XdslDslamPortLog[]>;
   /**
   statistics operations
   Get various statistics about the line
   **/
-  public get(path: '/xdsl/{serviceName}/lines/{number}/statistics', pathParams: {serviceName: string, number: string}, queryParams: {period?: XdslStatisticsPeriodEnum, type?: XdslLineStatisticsTypeEnum}): Promise<ComplexTypeUnitAndValues<XdslTimestampAndValue>>;
+  public get(path: '/xdsl/{serviceName}/lines/{number}/statistics', pathParams: {serviceName: string, number: string}, queryParams?: {period?: XdslStatisticsPeriodEnum, type?: XdslLineStatisticsTypeEnum}): Promise<ComplexTypeUnitAndValues<XdslTimestampAndValue>>;
   /**
   Modem
   Get this object properties
@@ -3498,7 +3498,7 @@ export class ApiXdsl extends ApiCommon {
   availableWLANChannel operations
   List available WLAN channel for this modem
   **/
-  public get(path: '/xdsl/{serviceName}/modem/availableWLANChannel', pathParams: {serviceName: string}, queryParams: {frequency?: XdslWLANFrequencyEnum}): Promise<Number[]>;
+  public get(path: '/xdsl/{serviceName}/modem/availableWLANChannel', pathParams: {serviceName: string}, queryParams?: {frequency?: XdslWLANFrequencyEnum}): Promise<Number[]>;
   /**
   blocIp operations
   Get the status of the Bloc IP on modem
@@ -3638,7 +3638,7 @@ export class ApiXdsl extends ApiCommon {
   resiliationTerms operations
   Get resiliation terms
   **/
-  public get(path: '/xdsl/{serviceName}/resiliationTerms', pathParams: {serviceName: string}, queryParams: {resiliationDate?: string}): Promise<XdslResiliationTerms>;
+  public get(path: '/xdsl/{serviceName}/resiliationTerms', pathParams: {serviceName: string}, queryParams?: {resiliationDate?: string}): Promise<XdslResiliationTerms>;
   /**
   List the telephony.Rma objects
   Return Merchandise Authorisation associated
@@ -3658,12 +3658,12 @@ export class ApiXdsl extends ApiCommon {
   statistics operations
   Get various statistics about this access
   **/
-  public get(path: '/xdsl/{serviceName}/statistics', pathParams: {serviceName: string}, queryParams: {period?: XdslStatisticsPeriodEnum, type?: XdslAccessStatisticsTypeEnum}): Promise<ComplexTypeUnitAndValues<XdslTimestampAndValue>>;
+  public get(path: '/xdsl/{serviceName}/statistics', pathParams: {serviceName: string}, queryParams?: {period?: XdslStatisticsPeriodEnum, type?: XdslAccessStatisticsTypeEnum}): Promise<ComplexTypeUnitAndValues<XdslTimestampAndValue>>;
   /**
   List the xdsl.Task objects
   Tasks scheduled for this access
   **/
-  public get(path: '/xdsl/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {function?: string, status?: XdslTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/xdsl/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {function?: string, status?: XdslTaskStatusEnum}): Promise<Number[]>;
   /**
   Describes the current status of a task
   Get this object properties

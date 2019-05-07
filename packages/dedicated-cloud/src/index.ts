@@ -95,7 +95,7 @@ export interface DedicatedCloudBackup {
    * This Backup current state
    *
    */
-  state?: DedicatedCloudBackupStateEnum;
+  state?: 'disabled' | 'disabling' | 'enabled' | 'enabling' | 'error' | 'removing';
   /**
    * The moref of the backup server virtual machine
    *
@@ -135,7 +135,7 @@ export interface DedicatedCloudBackupJob {
    * State of the backup job
    *
    */
-  state?: DedicatedCloudBackupStateEnum;
+  state?: 'deleting' | 'delivered' | 'disabled' | 'disabling' | 'enabling' | 'error' | 'migrating' | 'pending' | 'removed' | 'stopping' | 'toCreate' | 'toDelete' | 'toDisable' | 'toEnable' | 'toStop' | 'unknown';
   /**
    * Name of the virtual Machine
    *
@@ -145,7 +145,6 @@ export interface DedicatedCloudBackupJob {
 /**
  * All states a Dedicated Cloud Backup can be in
  */
-// export type DedicatedCloudBackupStateEnum = 'disabled' | 'disabling' | 'enabled' | 'enabling' | 'error' | 'removing';
 /**
  * The billing type of this Dedicated Cloud
  */
@@ -1502,7 +1501,7 @@ export interface DedicatedCloudBackupBackup {
    * State of the backup job
    *
    */
-  state?: DedicatedCloudBackupStateEnum;
+  state?: 'deleting' | 'delivered' | 'disabled' | 'disabling' | 'enabling' | 'error' | 'migrating' | 'pending' | 'removed' | 'stopping' | 'toCreate' | 'toDelete' | 'toDisable' | 'toEnable' | 'toStop' | 'unknown';
 }
 /**
  * All the possible Days of Backup
@@ -1553,7 +1552,6 @@ export interface DedicatedCloudBackupRestorePoint {
 /**
  * All the state of the backup
  */
-export type DedicatedCloudBackupStateEnum = 'deleting' | 'delivered' | 'disabled' | 'disabling' | 'enabling' | 'error' | 'migrating' | 'pending' | 'removed' | 'stopping' | 'toCreate' | 'toDelete' | 'toDisable' | 'toEnable' | 'toStop' | 'unknown';
 /**
  * All Dedicated Cloud feature status available
  */
@@ -2578,7 +2576,7 @@ export class ApiDedicatedCloud extends ApiCommon {
   host operations
   Available host stock
   **/
-  public get(path: '/dedicatedCloud/location/{pccZone}/stock/host', pathParams: {pccZone: string}, queryParams: {minYear?: Number}): Promise<DedicatedCloudHostStockProfile[]>;
+  public get(path: '/dedicatedCloud/location/{pccZone}/stock/host', pathParams: {pccZone: string}, queryParams?: {minYear?: Number}): Promise<DedicatedCloudHostStockProfile[]>;
   /**
   pcc operations
   Available PCC stock
@@ -2588,7 +2586,7 @@ export class ApiDedicatedCloud extends ApiCommon {
   zpool operations
   Available zpool stock
   **/
-  public get(path: '/dedicatedCloud/location/{pccZone}/stock/zpool', pathParams: {pccZone: string}, queryParams: {profileFilter?: string}): Promise<DedicatedCloudZpoolStockProfile[]>;
+  public get(path: '/dedicatedCloud/location/{pccZone}/stock/zpool', pathParams: {pccZone: string}, queryParams?: {profileFilter?: string}): Promise<DedicatedCloudZpoolStockProfile[]>;
   /**
   Private Cloud
   Get this object properties
@@ -2608,7 +2606,7 @@ export class ApiDedicatedCloud extends ApiCommon {
   List the dedicatedCloud.Task objects
   Tasks associated with this allowed network
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task', pathParams: {serviceName: string, networkAccessId: Number}, queryParams: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task', pathParams: {serviceName: string, networkAccessId: Number}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
@@ -2668,7 +2666,7 @@ export class ApiDedicatedCloud extends ApiCommon {
   List the dedicatedCloud.Task objects
   Tasks associated with this Filer
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task', pathParams: {serviceName: string, datacenterId: Number, filerId: Number}, queryParams: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task', pathParams: {serviceName: string, datacenterId: Number, filerId: Number}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
@@ -2693,7 +2691,7 @@ export class ApiDedicatedCloud extends ApiCommon {
   List the dedicatedCloud.Task objects
   Tasks associated with this Host
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task', pathParams: {serviceName: string, datacenterId: Number, hostId: Number}, queryParams: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task', pathParams: {serviceName: string, datacenterId: Number, hostId: Number}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
@@ -2713,7 +2711,7 @@ export class ApiDedicatedCloud extends ApiCommon {
   List the dedicatedCloud.Task objects
   Tasks associated with this Datacenter
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task', pathParams: {serviceName: string, datacenterId: Number}, queryParams: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task', pathParams: {serviceName: string, datacenterId: Number}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
@@ -2778,7 +2776,7 @@ export class ApiDedicatedCloud extends ApiCommon {
   List the dedicatedCloud.Task objects
   Tasks associated with this Filer
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task', pathParams: {serviceName: string, filerId: Number}, queryParams: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task', pathParams: {serviceName: string, filerId: Number}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
@@ -2788,7 +2786,7 @@ export class ApiDedicatedCloud extends ApiCommon {
   globalTasks operations
   Get filtered tasks associated with this Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/globalTasks', pathParams: {serviceName: string}, queryParams: {datacenterId?: Number, 'endDate.from'?: string, 'endDate.to'?: string, 'executionDate.from'?: string, 'executionDate.to'?: string, filerId?: Number, hostId?: Number, 'lastModificationDate.from'?: string, 'lastModificationDate.to'?: string, name?: string, networkAccessId?: Number, orderId?: Number, parentTaskId?: Number, state?: DedicatedCloudTaskStateEnum[], userId?: Number, vlanId?: Number}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/globalTasks', pathParams: {serviceName: string}, queryParams?: {datacenterId?: Number, 'endDate.from'?: string, 'endDate.to'?: string, 'executionDate.from'?: string, 'executionDate.to'?: string, filerId?: Number, hostId?: Number, 'lastModificationDate.from'?: string, 'lastModificationDate.to'?: string, name?: string, networkAccessId?: Number, orderId?: Number, parentTaskId?: Number, state?: DedicatedCloudTaskStateEnum[], userId?: Number, vlanId?: Number}): Promise<Number[]>;
   /**
   Private Cloud VMware Hybrid Cloud Extension option
   Get this object properties
@@ -2853,7 +2851,7 @@ export class ApiDedicatedCloud extends ApiCommon {
   List the dedicatedCloud.Task objects
   Tasks associated with this IP Block
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/ip/{network}/task', pathParams: {serviceName: string, network: string}, queryParams: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/ip/{network}/task', pathParams: {serviceName: string, network: string}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
@@ -2933,7 +2931,7 @@ export class ApiDedicatedCloud extends ApiCommon {
   List the dedicatedCloud.Task objects
   Tasks associated with this Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
@@ -2953,7 +2951,7 @@ export class ApiDedicatedCloud extends ApiCommon {
   List the dedicatedCloud.User objects
   Private Cloud users
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/user', pathParams: {serviceName: string}, queryParams: {name?: string}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/user', pathParams: {serviceName: string}, queryParams?: {name?: string}): Promise<Number[]>;
   /**
   Private Cloud User
   Get this object properties
@@ -2983,7 +2981,7 @@ export class ApiDedicatedCloud extends ApiCommon {
   List the dedicatedCloud.Task objects
   Tasks associated with this User
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/task', pathParams: {serviceName: string, userId: Number}, queryParams: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/task', pathParams: {serviceName: string, userId: Number}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties

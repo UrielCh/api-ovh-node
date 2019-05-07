@@ -417,12 +417,12 @@ export class ApiLicenseOffice extends ApiCommon {
   usageStatistics operations
   Shows the subscriptions' usage statistics for the given time period
   **/
-  public get(path: '/license/office/{serviceName}/usageStatistics', pathParams: {serviceName: string}, queryParams: {from?: string, to?: string}): Promise<LicenseOfficeStatistics[]>;
+  public get(path: '/license/office/{serviceName}/usageStatistics', pathParams: {serviceName: string}, queryParams?: {from?: string, to?: string}): Promise<LicenseOfficeStatistics[]>;
   /**
   List the license.office.OfficeUser objects
   Accounts associated to this office tenant
   **/
-  public get(path: '/license/office/{serviceName}/user', pathParams: {serviceName: string}, queryParams: {activationEmail?: string, firstName?: string, lastName?: string, licences?: LicenseOfficeLicenceEnum[]}): Promise<string[]>;
+  public get(path: '/license/office/{serviceName}/user', pathParams: {serviceName: string}, queryParams?: {activationEmail?: string, firstName?: string, lastName?: string, licences?: LicenseOfficeLicenceEnum[]}): Promise<string[]>;
   /**
   Office user
   Get this object properties

@@ -435,7 +435,7 @@ export class ApiSaasCsp2 extends ApiCommon {
   usageStatistics operations
   Get the usage statistics over the chose period
   **/
-  public get(path: '/saas/csp2/{serviceName}/usageStatistics', pathParams: {serviceName: string}, queryParams: {timePeriod?: MsServicesLicensePeriodEnum}): Promise<SaasCsp2Statistics[]>;
+  public get(path: '/saas/csp2/{serviceName}/usageStatistics', pathParams: {serviceName: string}, queryParams?: {timePeriod?: MsServicesLicensePeriodEnum}): Promise<SaasCsp2Statistics[]>;
   public get(path: PathsSaasCsp2GET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Office tenant

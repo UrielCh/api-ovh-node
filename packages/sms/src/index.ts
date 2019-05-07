@@ -1136,7 +1136,7 @@ export class ApiSms extends ApiCommon {
   Get informations about the given ptt code
   Get informations about the given ptt code
   **/
-  public get(path: '/sms/ptts', pathParams: undefined, queryParams: {ptt?: Number}): Promise<SmsPttDetails>;
+  public get(path: '/sms/ptts', queryParams?: {ptt?: Number}): Promise<SmsPttDetails>;
   /**
   Operations about the VOIP service
   List available services
@@ -1171,12 +1171,12 @@ export class ApiSms extends ApiCommon {
   document operations
   Get the /me/document id generated
   **/
-  public get(path: '/sms/{serviceName}/document', pathParams: {serviceName: string}, queryParams: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, tag?: string, wayType?: SmsDocumentWayTypeEnum}): Promise<string>;
+  public get(path: '/sms/{serviceName}/document', pathParams: {serviceName: string}, queryParams?: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, tag?: string, wayType?: SmsDocumentWayTypeEnum}): Promise<string>;
   /**
   exceptions operations
   Describe filter exceptions in sms sending from a specific receiver.
   **/
-  public get(path: '/sms/{serviceName}/exceptions', pathParams: {serviceName: string}, queryParams: {receiver?: string}): Promise<SmsException[]>;
+  public get(path: '/sms/{serviceName}/exceptions', pathParams: {serviceName: string}, queryParams?: {receiver?: string}): Promise<SmsException[]>;
   /**
   List the sms.HlrLookupNumber objects
   Home Location Register informations. Give informations about a given cellular phone.
@@ -1196,7 +1196,7 @@ export class ApiSms extends ApiCommon {
   List the sms.Incoming objects
   Sms received associated to the sms account
   **/
-  public get(path: '/sms/{serviceName}/incoming', pathParams: {serviceName: string}, queryParams: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, sender?: string, tag?: string}): Promise<Number[]>;
+  public get(path: '/sms/{serviceName}/incoming', pathParams: {serviceName: string}, queryParams?: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, sender?: string, tag?: string}): Promise<Number[]>;
   /**
   Sms history of sms incoming received
   Get this object properties
@@ -1216,7 +1216,7 @@ export class ApiSms extends ApiCommon {
   List the sms.Outgoing objects
   Sms sent associated to the sms account
   **/
-  public get(path: '/sms/{serviceName}/outgoing', pathParams: {serviceName: string}, queryParams: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, deliveryReceipt?: Number, differedDelivery?: Number, ptt?: Number, receiver?: string, sender?: string, tag?: string}): Promise<Number[]>;
+  public get(path: '/sms/{serviceName}/outgoing', pathParams: {serviceName: string}, queryParams?: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, deliveryReceipt?: Number, differedDelivery?: Number, ptt?: Number, receiver?: string, sender?: string, tag?: string}): Promise<Number[]>;
   /**
   Sms history of sms outgoing sent
   Get this object properties
@@ -1241,7 +1241,7 @@ export class ApiSms extends ApiCommon {
   export operations
   Export the phonebook's contacts
   **/
-  public get(path: '/sms/{serviceName}/phonebooks/{bookKey}/export', pathParams: {serviceName: string, bookKey: string}, queryParams: {format?: TelephonyContactsExportFormatsEnum}): Promise<TelephonyPcsFile>;
+  public get(path: '/sms/{serviceName}/phonebooks/{bookKey}/export', pathParams: {serviceName: string, bookKey: string}, queryParams?: {format?: TelephonyContactsExportFormatsEnum}): Promise<TelephonyPcsFile>;
   /**
   List the sms.PhonebookContact objects
   Phonebook contacts
@@ -1271,7 +1271,7 @@ export class ApiSms extends ApiCommon {
   seeOffers operations
   Describe SMS offers available.
   **/
-  public get(path: '/sms/{serviceName}/seeOffers', pathParams: {serviceName: string}, queryParams: {countryCurrencyPrice?: ReferenceCountryEnum, countryDestination?: SmsCountryEnum, quantity?: SmsPackQuantityEnum}): Promise<SmsPackOffer[]>;
+  public get(path: '/sms/{serviceName}/seeOffers', pathParams: {serviceName: string}, queryParams?: {countryCurrencyPrice?: ReferenceCountryEnum, countryDestination?: SmsCountryEnum, quantity?: SmsPackQuantityEnum}): Promise<SmsPackOffer[]>;
   /**
   List the sms.Sender objects
   Senders allowed associated to the sms account
@@ -1286,7 +1286,7 @@ export class ApiSms extends ApiCommon {
   sendersAvailableForValidation operations
   The senders that are attached to your personal informations or OVH services and that can be automatically validated
   **/
-  public get(path: '/sms/{serviceName}/sendersAvailableForValidation', pathParams: {serviceName: string}, queryParams: {referer?: SmsSenderRefererEnum}): Promise<SmsSenderAvailable[]>;
+  public get(path: '/sms/{serviceName}/sendersAvailableForValidation', pathParams: {serviceName: string}, queryParams?: {referer?: SmsSenderRefererEnum}): Promise<SmsSenderAvailable[]>;
   /**
   Details about a Service
   Get this object properties
@@ -1296,7 +1296,7 @@ export class ApiSms extends ApiCommon {
   List the sms.Task objects
   Operations on a SMS service
   **/
-  public get(path: '/sms/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {status?: TelephonyTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/sms/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {status?: TelephonyTaskStatusEnum}): Promise<Number[]>;
   /**
   Operation on a SMS service
   Get this object properties
@@ -1326,12 +1326,12 @@ export class ApiSms extends ApiCommon {
   document operations
   Get the /me/document id generated
   **/
-  public get(path: '/sms/{serviceName}/users/{login}/document', pathParams: {serviceName: string, login: string}, queryParams: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, tag?: string, wayType?: SmsDocumentWayTypeEnum}): Promise<string>;
+  public get(path: '/sms/{serviceName}/users/{login}/document', pathParams: {serviceName: string, login: string}, queryParams?: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, tag?: string, wayType?: SmsDocumentWayTypeEnum}): Promise<string>;
   /**
   List the sms.Incoming objects
   Sms received associated to the sms user
   **/
-  public get(path: '/sms/{serviceName}/users/{login}/incoming', pathParams: {serviceName: string, login: string}, queryParams: {sender?: string, tag?: string}): Promise<Number[]>;
+  public get(path: '/sms/{serviceName}/users/{login}/incoming', pathParams: {serviceName: string, login: string}, queryParams?: {sender?: string, tag?: string}): Promise<Number[]>;
   /**
   Sms history of sms incoming received
   Get this object properties
@@ -1351,7 +1351,7 @@ export class ApiSms extends ApiCommon {
   List the sms.Outgoing objects
   Sms sent associated to the sms user
   **/
-  public get(path: '/sms/{serviceName}/users/{login}/outgoing', pathParams: {serviceName: string, login: string}, queryParams: {deliveryReceipt?: Number, differedDelivery?: Number, ptt?: Number, receiver?: string, sender?: string, tag?: string}): Promise<Number[]>;
+  public get(path: '/sms/{serviceName}/users/{login}/outgoing', pathParams: {serviceName: string, login: string}, queryParams?: {deliveryReceipt?: Number, differedDelivery?: Number, ptt?: Number, receiver?: string, sender?: string, tag?: string}): Promise<Number[]>;
   /**
   Sms history of sms outgoing sent
   Get this object properties
@@ -1396,7 +1396,7 @@ export class ApiSms extends ApiCommon {
   List the sms.Incoming objects
   Sms received associated to the sms account
   **/
-  public get(path: '/sms/{serviceName}/virtualNumbers/{number}/incoming', pathParams: {serviceName: string, number: string}, queryParams: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, sender?: string, tag?: string}): Promise<Number[]>;
+  public get(path: '/sms/{serviceName}/virtualNumbers/{number}/incoming', pathParams: {serviceName: string, number: string}, queryParams?: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, sender?: string, tag?: string}): Promise<Number[]>;
   /**
   Sms history of sms incoming received
   Get this object properties
@@ -1416,7 +1416,7 @@ export class ApiSms extends ApiCommon {
   List the sms.Outgoing objects
   Sms sent associated to the sms account
   **/
-  public get(path: '/sms/{serviceName}/virtualNumbers/{number}/outgoing', pathParams: {serviceName: string, number: string}, queryParams: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, deliveryReceipt?: Number, differedDelivery?: Number, ptt?: Number, receiver?: string, sender?: string, tag?: string}): Promise<Number[]>;
+  public get(path: '/sms/{serviceName}/virtualNumbers/{number}/outgoing', pathParams: {serviceName: string, number: string}, queryParams?: {'creationDatetime.from'?: string, 'creationDatetime.to'?: string, deliveryReceipt?: Number, differedDelivery?: Number, ptt?: Number, receiver?: string, sender?: string, tag?: string}): Promise<Number[]>;
   /**
   Sms history of sms outgoing sent
   Get this object properties

@@ -916,7 +916,7 @@ export class ApiVps extends ApiCommon {
   Missing description
   List all the datacenters for a specific country
   **/
-  public get(path: '/vps/datacenter', pathParams: undefined, queryParams: {country?: NichandleCountryEnum}): Promise<string[]>;
+  public get(path: '/vps/datacenter', queryParams?: {country?: NichandleCountryEnum}): Promise<string[]>;
   /**
   VPS Virtual Machine
   Get this object properties
@@ -941,7 +941,7 @@ export class ApiVps extends ApiCommon {
   restorePoints operations
   Get available Restore Points
   **/
-  public get(path: '/vps/{serviceName}/automatedBackup/restorePoints', pathParams: {serviceName: string}, queryParams: {state?: VpsRestoreStateEnum}): Promise<string[]>;
+  public get(path: '/vps/{serviceName}/automatedBackup/restorePoints', pathParams: {serviceName: string}, queryParams?: {state?: VpsRestoreStateEnum}): Promise<string[]>;
   /**
   availableUpgrade operations
   Return all models the virtual server can be upgraded to
@@ -986,12 +986,12 @@ export class ApiVps extends ApiCommon {
   monitoring operations
   Return many statistics about the disk for a given period
   **/
-  public get(path: '/vps/{serviceName}/disks/{id}/monitoring', pathParams: {serviceName: string, id: Number}, queryParams: {period?: VpsVpsMonitoringPeriodEnum, type?: VpsDiskStatisticTypeEnum}): Promise<ComplexTypeUnitAndValues<VpsVpsTimestampValue>>;
+  public get(path: '/vps/{serviceName}/disks/{id}/monitoring', pathParams: {serviceName: string, id: Number}, queryParams?: {period?: VpsVpsMonitoringPeriodEnum, type?: VpsDiskStatisticTypeEnum}): Promise<ComplexTypeUnitAndValues<VpsVpsTimestampValue>>;
   /**
   use operations
   Return many statistics about the disk at that time
   **/
-  public get(path: '/vps/{serviceName}/disks/{id}/use', pathParams: {serviceName: string, id: Number}, queryParams: {type?: VpsDiskStatisticTypeEnum}): Promise<ComplexTypeUnitAndValue<Number>>;
+  public get(path: '/vps/{serviceName}/disks/{id}/use', pathParams: {serviceName: string, id: Number}, queryParams?: {type?: VpsDiskStatisticTypeEnum}): Promise<ComplexTypeUnitAndValue<Number>>;
   /**
   Installation template for a VPS Virtual Machine
   Get this object properties
@@ -1031,7 +1031,7 @@ export class ApiVps extends ApiCommon {
   monitoring operations
   Return many statistics about the virtual machine for a given period
   **/
-  public get(path: '/vps/{serviceName}/monitoring', pathParams: {serviceName: string}, queryParams: {period?: VpsVpsMonitoringPeriodEnum, type?: VpsVpsStatisticTypeEnum}): Promise<ComplexTypeUnitAndValues<VpsVpsTimestampValue>>;
+  public get(path: '/vps/{serviceName}/monitoring', pathParams: {serviceName: string}, queryParams?: {period?: VpsVpsMonitoringPeriodEnum, type?: VpsVpsStatisticTypeEnum}): Promise<ComplexTypeUnitAndValues<VpsVpsTimestampValue>>;
   /**
   List the vps.Option objects
   List of VPS options
@@ -1081,7 +1081,7 @@ export class ApiVps extends ApiCommon {
   List the vps.Task objects
   Tasks associated to this virtual server
   **/
-  public get(path: '/vps/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {state?: VpsTaskStateEnum, type?: VpsTaskTypeEnum}): Promise<Number[]>;
+  public get(path: '/vps/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {state?: VpsTaskStateEnum, type?: VpsTaskTypeEnum}): Promise<Number[]>;
   /**
   Operation on a VPS Virtual Machine
   Get this object properties
@@ -1111,7 +1111,7 @@ export class ApiVps extends ApiCommon {
   use operations
   Return many statistics about the virtual machine at that time
   **/
-  public get(path: '/vps/{serviceName}/use', pathParams: {serviceName: string}, queryParams: {type?: VpsVpsStatisticTypeEnum}): Promise<ComplexTypeUnitAndValue<Number>>;
+  public get(path: '/vps/{serviceName}/use', pathParams: {serviceName: string}, queryParams?: {type?: VpsVpsStatisticTypeEnum}): Promise<ComplexTypeUnitAndValue<Number>>;
   /**
   Informations about a VPS Veeam backups
   Get this object properties
@@ -1121,7 +1121,7 @@ export class ApiVps extends ApiCommon {
   List the vps.veeam.RestorePoint objects
   Veeam restore points for the VPS
   **/
-  public get(path: '/vps/{serviceName}/veeam/restorePoints', pathParams: {serviceName: string}, queryParams: {creationTime?: string}): Promise<Number[]>;
+  public get(path: '/vps/{serviceName}/veeam/restorePoints', pathParams: {serviceName: string}, queryParams?: {creationTime?: string}): Promise<Number[]>;
   /**
   Informations about a VPS Veeam restore points
   Get this object properties

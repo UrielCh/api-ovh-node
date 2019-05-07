@@ -670,17 +670,17 @@ export class ApiConnectivity extends ApiCommon {
   Get an eligibility by its reference
   Get an eligibility by its reference
   **/
-  public get(path: '/connectivity/eligibility/test', pathParams: undefined, queryParams: {eligibilityReference?: string}): Promise<ConnectivityEligibilityEligibilityTest>;
+  public get(path: '/connectivity/eligibility/test', queryParams?: {eligibilityReference?: string}): Promise<ConnectivityEligibilityEligibilityTest>;
   /**
   Missing description
   List detected, validated and recently closed generic incidents. For partners only
   **/
-  public get(path: '/connectivity/monitoring/genericIncident/partners', pathParams: undefined, queryParams: {creationDate?: string, endDate?: string, status?: ConnectivityMonitoringGenericIncidentStatusEnum}): Promise<ConnectivityMonitoringGenericIncident[]>;
+  public get(path: '/connectivity/monitoring/genericIncident/partners', queryParams?: {creationDate?: string, endDate?: string, status?: ConnectivityMonitoringGenericIncidentStatusEnum}): Promise<ConnectivityMonitoringGenericIncident[]>;
   /**
   Missing description
   List validated and recently closed generic incidents
   **/
-  public get(path: '/connectivity/monitoring/genericIncident/public', pathParams: undefined, queryParams: {creationDate?: string, endDate?: string, status?: ConnectivityMonitoringGenericIncidentStatusEnum}): Promise<ConnectivityMonitoringGenericIncident[]>;
+  public get(path: '/connectivity/monitoring/genericIncident/public', queryParams?: {creationDate?: string, endDate?: string, status?: ConnectivityMonitoringGenericIncidentStatusEnum}): Promise<ConnectivityMonitoringGenericIncident[]>;
   public get(path: PathsConnectivityGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Get the details for a building

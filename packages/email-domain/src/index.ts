@@ -1026,7 +1026,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.AccountDelegated objects
   Delegated emails
   **/
-  public get(path: '/email/domain/delegatedAccount', pathParams: undefined, queryParams: {accountName?: string, domain?: string}): Promise<string[]>;
+  public get(path: '/email/domain/delegatedAccount', queryParams?: {accountName?: string, domain?: string}): Promise<string[]>;
   /**
   Account List
   Get this object properties
@@ -1061,7 +1061,7 @@ export class ApiEmailDomain extends ApiCommon {
   Get limits of mailing list
   Get limits of mailing list
   **/
-  public get(path: '/email/domain/mailingListLimits', pathParams: undefined, queryParams: {moderatorMessage?: boolean}): Promise<DomainDomainMlLimits>;
+  public get(path: '/email/domain/mailingListLimits', queryParams?: {moderatorMessage?: boolean}): Promise<DomainDomainMlLimits>;
   /**
   Domain service
   Get this object properties
@@ -1071,7 +1071,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.Account objects
   Get accounts
   **/
-  public get(path: '/email/domain/{domain}/account', pathParams: {domain: string}, queryParams: {accountName?: string, description?: string}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/account', pathParams: {domain: string}, queryParams?: {accountName?: string, description?: string}): Promise<string[]>;
   /**
   Account List
   Get this object properties
@@ -1111,7 +1111,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.MigrationService objects
   Get migration service
   **/
-  public get(path: '/email/domain/{domain}/account/{accountName}/migrate', pathParams: {domain: string, accountName: string}, queryParams: {type?: EmailDomainMigrationServiceType}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/migrate', pathParams: {domain: string, accountName: string}, queryParams?: {type?: EmailDomainMigrationServiceType}): Promise<string[]>;
   /**
   Migration service
   Get this object properties
@@ -1121,7 +1121,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.MigrationAccount objects
   List of email address available for migration
   **/
-  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress', pathParams: {domain: string, accountName: string, destinationServiceName: string}, queryParams: {quota?: Number}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress', pathParams: {domain: string, accountName: string, destinationServiceName: string}, queryParams?: {quota?: Number}): Promise<string[]>;
   /**
   Migration account
   Get this object properties
@@ -1151,17 +1151,17 @@ export class ApiEmailDomain extends ApiCommon {
   dnsMXFilter operations
   Domain MX filter
   **/
-  public get(path: '/email/domain/{domain}/dnsMXFilter', pathParams: {domain: string}, queryParams: {subDomain?: string}): Promise<DomainDomainMXFilterEnum>;
+  public get(path: '/email/domain/{domain}/dnsMXFilter', pathParams: {domain: string}, queryParams?: {subDomain?: string}): Promise<DomainDomainMXFilterEnum>;
   /**
   dnsMXRecords operations
   Domain MX records
   **/
-  public get(path: '/email/domain/{domain}/dnsMXRecords', pathParams: {domain: string}, queryParams: {subDomain?: string}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/dnsMXRecords', pathParams: {domain: string}, queryParams?: {subDomain?: string}): Promise<string[]>;
   /**
   List the email.domain.MailingList objects
   Get mailing lists
   **/
-  public get(path: '/email/domain/{domain}/mailingList', pathParams: {domain: string}, queryParams: {name?: string}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/mailingList', pathParams: {domain: string}, queryParams?: {name?: string}): Promise<string[]>;
   /**
   Mailing List
   Get this object properties
@@ -1171,7 +1171,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.Moderator objects
   List of moderators
   **/
-  public get(path: '/email/domain/{domain}/mailingList/{name}/moderator', pathParams: {domain: string, name: string}, queryParams: {email?: string}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/mailingList/{name}/moderator', pathParams: {domain: string, name: string}, queryParams?: {email?: string}): Promise<string[]>;
   /**
   Moderators List
   Get this object properties
@@ -1181,7 +1181,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.Subscriber objects
   List of subscribers
   **/
-  public get(path: '/email/domain/{domain}/mailingList/{name}/subscriber', pathParams: {domain: string, name: string}, queryParams: {email?: string}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/mailingList/{name}/subscriber', pathParams: {domain: string, name: string}, queryParams?: {email?: string}): Promise<string[]>;
   /**
   Subscribers List
   Get this object properties
@@ -1201,7 +1201,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.RedirectionGlobal objects
   Get redirections
   **/
-  public get(path: '/email/domain/{domain}/redirection', pathParams: {domain: string}, queryParams: {from?: string, to?: string}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/redirection', pathParams: {domain: string}, queryParams?: {from?: string, to?: string}): Promise<string[]>;
   /**
   Global Redirection
   Get this object properties
@@ -1211,7 +1211,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.Responder objects
   Get responders
   **/
-  public get(path: '/email/domain/{domain}/responder', pathParams: {domain: string}, queryParams: {account?: string}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/responder', pathParams: {domain: string}, queryParams?: {account?: string}): Promise<string[]>;
   /**
   Responder
   Get this object properties
@@ -1231,7 +1231,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.TaskPop objects
   Get account tasks
   **/
-  public get(path: '/email/domain/{domain}/task/account', pathParams: {domain: string}, queryParams: {name?: string}): Promise<Number[]>;
+  public get(path: '/email/domain/{domain}/task/account', pathParams: {domain: string}, queryParams?: {name?: string}): Promise<Number[]>;
   /**
   Task Pop List
   Get this object properties
@@ -1241,7 +1241,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.TaskFilter objects
   Get filter tasks
   **/
-  public get(path: '/email/domain/{domain}/task/filter', pathParams: {domain: string}, queryParams: {account?: string}): Promise<Number[]>;
+  public get(path: '/email/domain/{domain}/task/filter', pathParams: {domain: string}, queryParams?: {account?: string}): Promise<Number[]>;
   /**
   Task filter List
   Get this object properties
@@ -1251,7 +1251,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.TaskMl objects
   Get Mailing List tasks
   **/
-  public get(path: '/email/domain/{domain}/task/mailinglist', pathParams: {domain: string}, queryParams: {account?: string}): Promise<Number[]>;
+  public get(path: '/email/domain/{domain}/task/mailinglist', pathParams: {domain: string}, queryParams?: {account?: string}): Promise<Number[]>;
   /**
   Task Mailing List
   Get this object properties
@@ -1261,7 +1261,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.TaskSpecialAccount objects
   Get redirection tasks
   **/
-  public get(path: '/email/domain/{domain}/task/redirection', pathParams: {domain: string}, queryParams: {account?: string}): Promise<Number[]>;
+  public get(path: '/email/domain/{domain}/task/redirection', pathParams: {domain: string}, queryParams?: {account?: string}): Promise<Number[]>;
   /**
   Task special account List
   Get this object properties
@@ -1271,7 +1271,7 @@ export class ApiEmailDomain extends ApiCommon {
   List the email.domain.TaskSpecialAccount objects
   Get responder tasks
   **/
-  public get(path: '/email/domain/{domain}/task/responder', pathParams: {domain: string}, queryParams: {account?: string}): Promise<Number[]>;
+  public get(path: '/email/domain/{domain}/task/responder', pathParams: {domain: string}, queryParams?: {account?: string}): Promise<Number[]>;
   /**
   Task special account List
   Get this object properties

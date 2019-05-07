@@ -493,7 +493,7 @@ export class ApiService extends ApiCommon {
   Missing description
   List possible renews for this service
   **/
-  public get(path: '/service/{serviceId}/renew', pathParams: {serviceId: string}, queryParams: {includeOptions?: boolean}): Promise<ServiceRenewRenewDescription[]>;
+  public get(path: '/service/{serviceId}/renew', pathParams: {serviceId: string}, queryParams?: {includeOptions?: boolean}): Promise<ServiceRenewRenewDescription[]>;
   public get(path: PathsServiceGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Details about a Service

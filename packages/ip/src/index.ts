@@ -1170,7 +1170,7 @@ export class ApiIp extends ApiCommon {
   List the ip.Ip objects
   Your OVH IPs
   **/
-  public get(path: '/ip', pathParams: undefined, queryParams: {description?: string, ip?: string, 'routedTo.serviceName'?: string, type?: IpIpTypeEnum}): Promise<string[]>;
+  public get(path: '/ip', queryParams?: {description?: string, ip?: string, 'routedTo.serviceName'?: string, type?: IpIpTypeEnum}): Promise<string[]>;
   /**
   Operations about the IP service
   List available services
@@ -1200,7 +1200,7 @@ export class ApiIp extends ApiCommon {
   internalNatIp operations
   Ip subnet used by OVH to nat requests on your ip lb to your backends. You must ensure that your backends are not part of a network that overlap with this one.
   **/
-  public get(path: '/ip/loadBalancing/{serviceName}/internalNatIp', pathParams: {serviceName: string}, queryParams: {zone?: IpLoadBalancingZoneEnum}): Promise<string>;
+  public get(path: '/ip/loadBalancing/{serviceName}/internalNatIp', pathParams: {serviceName: string}, queryParams?: {zone?: IpLoadBalancingZoneEnum}): Promise<string>;
   /**
   List the portsRedirection objects
   Get all srcPort
@@ -1215,7 +1215,7 @@ export class ApiIp extends ApiCommon {
   probeIp operations
   Ip subnet used to send probes to your backends
   **/
-  public get(path: '/ip/loadBalancing/{serviceName}/probeIp', pathParams: {serviceName: string}, queryParams: {zone?: IpLoadBalancingZoneEnum}): Promise<string[]>;
+  public get(path: '/ip/loadBalancing/{serviceName}/probeIp', pathParams: {serviceName: string}, queryParams?: {zone?: IpLoadBalancingZoneEnum}): Promise<string[]>;
   /**
   Details about a Service
   Get this object properties
@@ -1255,7 +1255,7 @@ export class ApiIp extends ApiCommon {
   List the ip.BlockedIp objects
   Anti-Hack blocked IP
   **/
-  public get(path: '/ip/{ip}/antihack', pathParams: {ip: string}, queryParams: {state?: IpBlockedIpStateEnum}): Promise<string[]>;
+  public get(path: '/ip/{ip}/antihack', pathParams: {ip: string}, queryParams?: {state?: IpBlockedIpStateEnum}): Promise<string[]>;
   /**
   Blocked IP information
   Get this object properties
@@ -1265,7 +1265,7 @@ export class ApiIp extends ApiCommon {
   List the ip.ArpBlockedIp objects
   ARP blocked IP
   **/
-  public get(path: '/ip/{ip}/arp', pathParams: {ip: string}, queryParams: {state?: IpArpStateEnum}): Promise<string[]>;
+  public get(path: '/ip/{ip}/arp', pathParams: {ip: string}, queryParams?: {state?: IpArpStateEnum}): Promise<string[]>;
   /**
   ARP blocked IP information
   Get this object properties
@@ -1285,7 +1285,7 @@ export class ApiIp extends ApiCommon {
   List the ip.FirewallIp objects
   Ip under firewall
   **/
-  public get(path: '/ip/{ip}/firewall', pathParams: {ip: string}, queryParams: {enabled?: boolean, state?: IpFirewallStateEnum}): Promise<string[]>;
+  public get(path: '/ip/{ip}/firewall', pathParams: {ip: string}, queryParams?: {enabled?: boolean, state?: IpFirewallStateEnum}): Promise<string[]>;
   /**
   Your IP on firewall
   Get this object properties
@@ -1295,7 +1295,7 @@ export class ApiIp extends ApiCommon {
   List the ip.FirewallNetworkRule objects
   Rules for this IP
   **/
-  public get(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule', pathParams: {ip: string, ipOnFirewall: string}, queryParams: {state?: IpFirewallRuleStateEnum}): Promise<Number[]>;
+  public get(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule', pathParams: {ip: string, ipOnFirewall: string}, queryParams?: {state?: IpFirewallRuleStateEnum}): Promise<Number[]>;
   /**
   Rule on ip
   Get this object properties
@@ -1325,42 +1325,42 @@ export class ApiIp extends ApiCommon {
   List the license.cloudLinux.CloudLinux objects
   Cloud Linux licenses associated to this IP
   **/
-  public get(path: '/ip/{ip}/license/cloudLinux', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  public get(path: '/ip/{ip}/license/cloudLinux', pathParams: {ip: string}, queryParams?: {ipAddress?: string}): Promise<string[]>;
   /**
   List the license.cpanel.Cpanel objects
   Cpanel licenses associated to this IP
   **/
-  public get(path: '/ip/{ip}/license/cpanel', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  public get(path: '/ip/{ip}/license/cpanel', pathParams: {ip: string}, queryParams?: {ipAddress?: string}): Promise<string[]>;
   /**
   List the license.directadmin.DirectAdmin objects
   DirectAdmin licenses associated to this IP
   **/
-  public get(path: '/ip/{ip}/license/directadmin', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  public get(path: '/ip/{ip}/license/directadmin', pathParams: {ip: string}, queryParams?: {ipAddress?: string}): Promise<string[]>;
   /**
   List the license.plesk.Plesk objects
   Plesk licenses associated to this IP
   **/
-  public get(path: '/ip/{ip}/license/plesk', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  public get(path: '/ip/{ip}/license/plesk', pathParams: {ip: string}, queryParams?: {ipAddress?: string}): Promise<string[]>;
   /**
   List the license.sqlserver.SqlServer objects
   SQL Server licenses associated to this IP
   **/
-  public get(path: '/ip/{ip}/license/sqlserver', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  public get(path: '/ip/{ip}/license/sqlserver', pathParams: {ip: string}, queryParams?: {ipAddress?: string}): Promise<string[]>;
   /**
   List the license.virtuozzo.Virtuozzo objects
   Virtuozzo licenses associated to this IP
   **/
-  public get(path: '/ip/{ip}/license/virtuozzo', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  public get(path: '/ip/{ip}/license/virtuozzo', pathParams: {ip: string}, queryParams?: {ipAddress?: string}): Promise<string[]>;
   /**
   List the license.windows.Windows objects
   Windows licenses associated to this IP
   **/
-  public get(path: '/ip/{ip}/license/windows', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  public get(path: '/ip/{ip}/license/windows', pathParams: {ip: string}, queryParams?: {ipAddress?: string}): Promise<string[]>;
   /**
   List the license.worklight.WorkLight objects
   WorkLight licenses associated to this IP
   **/
-  public get(path: '/ip/{ip}/license/worklight', pathParams: {ip: string}, queryParams: {ipAddress?: string}): Promise<string[]>;
+  public get(path: '/ip/{ip}/license/worklight', pathParams: {ip: string}, queryParams?: {ipAddress?: string}): Promise<string[]>;
   /**
   IP migration to OVH
   Get this object properties
@@ -1370,7 +1370,7 @@ export class ApiIp extends ApiCommon {
   List the ip.MitigationIp objects
   Ip under mitigation
   **/
-  public get(path: '/ip/{ip}/mitigation', pathParams: {ip: string}, queryParams: {auto?: boolean, state?: IpMitigationStateEnum}): Promise<string[]>;
+  public get(path: '/ip/{ip}/mitigation', pathParams: {ip: string}, queryParams?: {auto?: boolean, state?: IpMitigationStateEnum}): Promise<string[]>;
   /**
   Your IP on mitigation
   Get this object properties
@@ -1380,12 +1380,12 @@ export class ApiIp extends ApiCommon {
   stats operations
   AntiDDOS option. Get statistics about your traffic in and out during this mitigation
   **/
-  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/stats', pathParams: {ip: string, ipOnMitigation: string}, queryParams: {from?: string, scale?: IpMitigationStatsScaleEnum, to?: string}): Promise<IpMitigationStats[]>;
+  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/stats', pathParams: {ip: string, ipOnMitigation: string}, queryParams?: {from?: string, scale?: IpMitigationStatsScaleEnum, to?: string}): Promise<IpMitigationStats[]>;
   /**
   topStream operations
   AntiDDOS option. Get top stream on your ip on a specific timestamp
   **/
-  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/topStream', pathParams: {ip: string, ipOnMitigation: string}, queryParams: {date?: string, scale?: IpMitigationStatsScaleEnum}): Promise<IpMitigationDetailedStats[]>;
+  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/topStream', pathParams: {ip: string, ipOnMitigation: string}, queryParams?: {date?: string, scale?: IpMitigationStatsScaleEnum}): Promise<IpMitigationDetailedStats[]>;
   /**
   List the ip.MitigationProfile objects
   Manage mitigation profile on your IPs
@@ -1405,7 +1405,7 @@ export class ApiIp extends ApiCommon {
   List the ip.Antiphishing objects
   Ip under anti-phishing
   **/
-  public get(path: '/ip/{ip}/phishing', pathParams: {ip: string}, queryParams: {ipOnAntiphishing?: string, state?: IpAntiphishingStateEnum}): Promise<Number[]>;
+  public get(path: '/ip/{ip}/phishing', pathParams: {ip: string}, queryParams?: {ipOnAntiphishing?: string, state?: IpAntiphishingStateEnum}): Promise<Number[]>;
   /**
   Phishing URLs hosted on your IP
   Get this object properties
@@ -1430,7 +1430,7 @@ export class ApiIp extends ApiCommon {
   List the ip.SpamIp objects
   Ip spamming
   **/
-  public get(path: '/ip/{ip}/spam', pathParams: {ip: string}, queryParams: {state?: IpSpamStateEnum}): Promise<string[]>;
+  public get(path: '/ip/{ip}/spam', pathParams: {ip: string}, queryParams?: {state?: IpSpamStateEnum}): Promise<string[]>;
   /**
   Your IP spam stats
   Get this object properties
@@ -1440,12 +1440,12 @@ export class ApiIp extends ApiCommon {
   stats operations
   Get statistics about the email traffic
   **/
-  public get(path: '/ip/{ip}/spam/{ipSpamming}/stats', pathParams: {ip: string, ipSpamming: string}, queryParams: {from?: string, to?: string}): Promise<IpSpamStats[]>;
+  public get(path: '/ip/{ip}/spam/{ipSpamming}/stats', pathParams: {ip: string, ipSpamming: string}, queryParams?: {from?: string, to?: string}): Promise<IpSpamStats[]>;
   /**
   List the ip.IpTask objects
   IP tasks
   **/
-  public get(path: '/ip/{ip}/task', pathParams: {ip: string}, queryParams: {function?: IpTaskFunctionEnum, status?: IpTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/ip/{ip}/task', pathParams: {ip: string}, queryParams?: {function?: IpTaskFunctionEnum, status?: IpTaskStatusEnum}): Promise<Number[]>;
   /**
   IP tasks
   Get this object properties

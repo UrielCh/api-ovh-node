@@ -2822,7 +2822,7 @@ export class ApiDedicatedServer extends ApiCommon {
   List the availability of dedicated server
   List the availability of dedicated server
   **/
-  public get(path: '/dedicated/server/availabilities', pathParams: undefined, queryParams: {country?: NichandleOvhSubsidiaryEnum, hardware?: string}): Promise<DedicatedAvailabilities[]>;
+  public get(path: '/dedicated/server/availabilities', queryParams?: {country?: NichandleOvhSubsidiaryEnum, hardware?: string}): Promise<DedicatedAvailabilities[]>;
   /**
   List the availability of dedicated server (RAW)
   List the availability of dedicated server
@@ -2832,12 +2832,12 @@ export class ApiDedicatedServer extends ApiCommon {
   List the availability of dedicated server
   List the availability of dedicated server
   **/
-  public get(path: '/dedicated/server/datacenter/availabilities', pathParams: undefined, queryParams: {datacenters?: string, excludeDatacenters?: boolean, memory?: string, planCode?: string, server?: string, storage?: string}): Promise<DedicatedDatacenterAvailability[]>;
+  public get(path: '/dedicated/server/datacenter/availabilities', queryParams?: {datacenters?: string, excludeDatacenters?: boolean, memory?: string, planCode?: string, server?: string, storage?: string}): Promise<DedicatedDatacenterAvailability[]>;
   /**
   List the operating systems available for a specified hardware reference
   List the os available for a specified hardware reference
   **/
-  public get(path: '/dedicated/server/osAvailabilities', pathParams: undefined, queryParams: {hardware?: string}): Promise<DedicatedOsAvailabilitiesEnum[]>;
+  public get(path: '/dedicated/server/osAvailabilities', queryParams?: {hardware?: string}): Promise<DedicatedOsAvailabilitiesEnum[]>;
   /**
   Get a VirtualNetworkInterface details
   Get VirtualNetworkInterface details
@@ -2857,7 +2857,7 @@ export class ApiDedicatedServer extends ApiCommon {
   List the dedicated.server.Netboot objects
   Server compatibles netboots
   **/
-  public get(path: '/dedicated/server/{serviceName}/boot', pathParams: {serviceName: string}, queryParams: {bootType?: DedicatedServerBootTypeEnum}): Promise<Number[]>;
+  public get(path: '/dedicated/server/{serviceName}/boot', pathParams: {serviceName: string}, queryParams?: {bootType?: DedicatedServerBootTypeEnum}): Promise<Number[]>;
   /**
   Available boots
   Get this object properties
@@ -2917,12 +2917,12 @@ export class ApiDedicatedServer extends ApiCommon {
   access operations
   IPMI access method
   **/
-  public get(path: '/dedicated/server/{serviceName}/features/ipmi/access', pathParams: {serviceName: string}, queryParams: {type?: DedicatedServerIpmiAccessTypeEnum}): Promise<DedicatedServerIpmiAccessValue>;
+  public get(path: '/dedicated/server/{serviceName}/features/ipmi/access', pathParams: {serviceName: string}, queryParams?: {type?: DedicatedServerIpmiAccessTypeEnum}): Promise<DedicatedServerIpmiAccessValue>;
   /**
   test operations
   Result of http, ping and identification tests on IPMI interface
   **/
-  public get(path: '/dedicated/server/{serviceName}/features/ipmi/test', pathParams: {serviceName: string}, queryParams: {type?: DedicatedServerIpmiTestTypeEnum}): Promise<DedicatedServerIpmiTestResult>;
+  public get(path: '/dedicated/server/{serviceName}/features/ipmi/test', pathParams: {serviceName: string}, queryParams?: {type?: DedicatedServerIpmiTestTypeEnum}): Promise<DedicatedServerIpmiTestResult>;
   /**
   Physical KVM
   Get this object properties
@@ -2937,12 +2937,12 @@ export class ApiDedicatedServer extends ApiCommon {
   link operations
   Get url of binary to update firewall asa
   **/
-  public get(path: '/dedicated/server/{serviceName}/firewall/binary/link', pathParams: {serviceName: string}, queryParams: {binaryName?: string}): Promise<DedicatedBinaryFirewallLink>;
+  public get(path: '/dedicated/server/{serviceName}/firewall/binary/link', pathParams: {serviceName: string}, queryParams?: {binaryName?: string}): Promise<DedicatedBinaryFirewallLink>;
   /**
   compatibleTemplatePartitionSchemes operations
   Retrieve compatible  install template partitions scheme
   **/
-  public get(path: '/dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes', pathParams: {serviceName: string}, queryParams: {templateName?: string}): Promise<string[]>;
+  public get(path: '/dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes', pathParams: {serviceName: string}, queryParams?: {templateName?: string}): Promise<string[]>;
   /**
   compatibleTemplates operations
   Retrieve compatible  install templates names
@@ -2957,7 +2957,7 @@ export class ApiDedicatedServer extends ApiCommon {
   hardwareRaidSize operations
   Get hardware RAID size for a given configuration
   **/
-  public get(path: '/dedicated/server/{serviceName}/install/hardwareRaidSize', pathParams: {serviceName: string}, queryParams: {partitionSchemeName?: string, templateName?: string}): Promise<DedicatedServerHardwareRaidSize>;
+  public get(path: '/dedicated/server/{serviceName}/install/hardwareRaidSize', pathParams: {serviceName: string}, queryParams?: {partitionSchemeName?: string, templateName?: string}): Promise<DedicatedServerHardwareRaidSize>;
   /**
   status operations
   Get installation status
@@ -2967,7 +2967,7 @@ export class ApiDedicatedServer extends ApiCommon {
   templateCapabilities operations
   Gives some capabilities regarding the template for the current dedicated server.
   **/
-  public get(path: '/dedicated/server/{serviceName}/install/templateCapabilities', pathParams: {serviceName: string}, queryParams: {templateName?: string}): Promise<DedicatedServerTemplateCaps>;
+  public get(path: '/dedicated/server/{serviceName}/install/templateCapabilities', pathParams: {serviceName: string}, queryParams?: {templateName?: string}): Promise<DedicatedServerTemplateCaps>;
   /**
   List the dedicated.server.Intervention objects
   technical intervention history
@@ -2982,7 +2982,7 @@ export class ApiDedicatedServer extends ApiCommon {
   ipCanBeMovedTo operations
   Check if given IP can be moved to this server
   **/
-  public get(path: '/dedicated/server/{serviceName}/ipCanBeMovedTo', pathParams: {serviceName: string}, queryParams: {ip?: string}): Promise<void>;
+  public get(path: '/dedicated/server/{serviceName}/ipCanBeMovedTo', pathParams: {serviceName: string}, queryParams?: {ip?: string}): Promise<void>;
   /**
   ipCountryAvailable operations
   Retrieve available country for IP order
@@ -3007,12 +3007,12 @@ export class ApiDedicatedServer extends ApiCommon {
   mrtg operations
   Retrieve traffic graph values
   **/
-  public get(path: '/dedicated/server/{serviceName}/mrtg', pathParams: {serviceName: string}, queryParams: {period?: DedicatedServerMrtgPeriodEnum, type?: DedicatedServerMrtgTypeEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
+  public get(path: '/dedicated/server/{serviceName}/mrtg', pathParams: {serviceName: string}, queryParams?: {period?: DedicatedServerMrtgPeriodEnum, type?: DedicatedServerMrtgTypeEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
   /**
   List the dedicated.networkInterfaceController.NetworkInterfaceController objects
   List server networkInterfaceController
   **/
-  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController', pathParams: {serviceName: string}, queryParams: {linkType?: DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum}): Promise<string[]>;
+  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController', pathParams: {serviceName: string}, queryParams?: {linkType?: DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum}): Promise<string[]>;
   /**
   Your networkInterfaceController
   Get this object properties
@@ -3022,7 +3022,7 @@ export class ApiDedicatedServer extends ApiCommon {
   mrtg operations
   Retrieve traffic graph values
   **/
-  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg', pathParams: {serviceName: string, mac: string}, queryParams: {period?: DedicatedServerMrtgPeriodEnum, type?: DedicatedServerMrtgTypeEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
+  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg', pathParams: {serviceName: string, mac: string}, queryParams?: {period?: DedicatedServerMrtgPeriodEnum, type?: DedicatedServerMrtgTypeEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
   /**
   List the dedicated.server.Option objects
   List of dedicated server options
@@ -3052,7 +3052,7 @@ export class ApiDedicatedServer extends ApiCommon {
   feature operations
   Is this feature orderable with your server
   **/
-  public get(path: '/dedicated/server/{serviceName}/orderable/feature', pathParams: {serviceName: string}, queryParams: {feature?: DedicatedServerOrderableSysFeatureEnum}): Promise<boolean>;
+  public get(path: '/dedicated/server/{serviceName}/orderable/feature', pathParams: {serviceName: string}, queryParams?: {feature?: DedicatedServerOrderableSysFeatureEnum}): Promise<boolean>;
   /**
   ip operations
   Get IP orderable with your server.
@@ -3102,7 +3102,7 @@ export class ApiDedicatedServer extends ApiCommon {
   secondaryDnsNameDomainToken operations
   DNS field to temporarily add to your zone so that we can verify you are the owner of this domain
   **/
-  public get(path: '/dedicated/server/{serviceName}/secondaryDnsNameDomainToken', pathParams: {serviceName: string}, queryParams: {domain?: string}): Promise<SecondaryDnsSecondaryDNSCheckField>;
+  public get(path: '/dedicated/server/{serviceName}/secondaryDnsNameDomainToken', pathParams: {serviceName: string}, queryParams?: {domain?: string}): Promise<SecondaryDnsSecondaryDNSCheckField>;
   /**
   secondaryDnsNameServerAvailable operations
   Secondary nameServer available for your Server
@@ -3162,7 +3162,7 @@ export class ApiDedicatedServer extends ApiCommon {
   List the dedicated.server.spla objects
   Your own SPLA licenses attached to this dedicated server
   **/
-  public get(path: '/dedicated/server/{serviceName}/spla', pathParams: {serviceName: string}, queryParams: {status?: DedicatedServerSplaStatusEnum, type?: DedicatedServerSplaTypeEnum}): Promise<Number[]>;
+  public get(path: '/dedicated/server/{serviceName}/spla', pathParams: {serviceName: string}, queryParams?: {status?: DedicatedServerSplaStatusEnum, type?: DedicatedServerSplaTypeEnum}): Promise<Number[]>;
   /**
   SPLA licenses management
   Get this object properties
@@ -3177,7 +3177,7 @@ export class ApiDedicatedServer extends ApiCommon {
   chart operations
   Retrieve RTM graph values
   **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/chart', pathParams: {serviceName: string}, queryParams: {period?: DedicatedServerRtmChartPeriodEnum, type?: DedicatedServerRtmChartTypeEnum}): Promise<ComplexTypeChartReturn>;
+  public get(path: '/dedicated/server/{serviceName}/statistics/chart', pathParams: {serviceName: string}, queryParams?: {period?: DedicatedServerRtmChartPeriodEnum, type?: DedicatedServerRtmChartTypeEnum}): Promise<ComplexTypeChartReturn>;
   /**
   connection operations
   Get server opened connections
@@ -3237,7 +3237,7 @@ export class ApiDedicatedServer extends ApiCommon {
   chart operations
   Retrieve partition charts
   **/
-  public get(path: '/dedicated/server/{serviceName}/statistics/partition/{partition}/chart', pathParams: {serviceName: string, partition: string}, queryParams: {period?: DedicatedServerRtmChartPeriodEnum}): Promise<ComplexTypeChartReturn>;
+  public get(path: '/dedicated/server/{serviceName}/statistics/partition/{partition}/chart', pathParams: {serviceName: string, partition: string}, queryParams?: {period?: DedicatedServerRtmChartPeriodEnum}): Promise<ComplexTypeChartReturn>;
   /**
   pci operations
   Get server PCI devices informations
@@ -3282,7 +3282,7 @@ export class ApiDedicatedServer extends ApiCommon {
   List the dedicated.server.Task objects
   Dedicated server todos
   **/
-  public get(path: '/dedicated/server/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {function?: DedicatedTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/dedicated/server/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {function?: DedicatedTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<Number[]>;
   /**
   Server tasks
   Get this object properties
@@ -3312,7 +3312,7 @@ export class ApiDedicatedServer extends ApiCommon {
   List the dedicated.virtualNetworkInterface.VirtualNetworkInterface objects
   List server VirtualNetworkInterfaces
   **/
-  public get(path: '/dedicated/server/{serviceName}/virtualNetworkInterface', pathParams: {serviceName: string}, queryParams: {mode?: DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum, name?: string, vrack?: string}): Promise<string[]>;
+  public get(path: '/dedicated/server/{serviceName}/virtualNetworkInterface', pathParams: {serviceName: string}, queryParams?: {mode?: DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum, name?: string, vrack?: string}): Promise<string[]>;
   /**
   Your VirtualNetworkInterface
   Get this object properties
@@ -3332,7 +3332,7 @@ export class ApiDedicatedServer extends ApiCommon {
   mrtg operations
   Retrieve vrack traffic graph values
   **/
-  public get(path: '/dedicated/server/{serviceName}/vrack/{vrack}/mrtg', pathParams: {serviceName: string, vrack: string}, queryParams: {period?: DedicatedServerMrtgPeriodEnum, type?: DedicatedServerMrtgTypeEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
+  public get(path: '/dedicated/server/{serviceName}/vrack/{vrack}/mrtg', pathParams: {serviceName: string, vrack: string}, queryParams?: {period?: DedicatedServerMrtgPeriodEnum, type?: DedicatedServerMrtgTypeEnum}): Promise<DedicatedServerMrtgTimestampValue[]>;
   public get(path: PathsDedicatedServerGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
   /**
   Server informations

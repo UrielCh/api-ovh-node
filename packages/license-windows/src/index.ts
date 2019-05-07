@@ -286,7 +286,7 @@ export class ApiLicenseWindows extends ApiCommon {
   Get the orderable Windows versions
   Get the orderable Windows versions
   **/
-  public get(path: '/license/windows/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseWindowsOrderConfiguration[]>;
+  public get(path: '/license/windows/orderableVersions', queryParams?: {ip?: string}): Promise<LicenseWindowsOrderConfiguration[]>;
   /**
   Your Windows license
   Get this object properties
@@ -311,7 +311,7 @@ export class ApiLicenseWindows extends ApiCommon {
   List the license.Task objects
   tasks linked to this license
   **/
-  public get(path: '/license/windows/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/license/windows/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
   /**
   licenses Todos
   Get this object properties

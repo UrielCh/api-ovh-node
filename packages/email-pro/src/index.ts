@@ -856,7 +856,7 @@ export class ApiEmailPro extends ApiCommon {
   List the email.pro.Account objects
   Accounts associated to this pro service
   **/
-  public get(path: '/email/pro/{service}/account', pathParams: {service: string}, queryParams: {id?: Number, primaryEmailAddress?: string}): Promise<string[]>;
+  public get(path: '/email/pro/{service}/account', pathParams: {service: string}, queryParams?: {id?: Number, primaryEmailAddress?: string}): Promise<string[]>;
   /**
   Mailbox
   Get this object properties
@@ -931,7 +931,7 @@ export class ApiEmailPro extends ApiCommon {
   List the email.pro.Domain objects
   Domains associated to this service
   **/
-  public get(path: '/email/pro/{service}/domain', pathParams: {service: string}, queryParams: {state?: EmailProObjectStateEnum}): Promise<string[]>;
+  public get(path: '/email/pro/{service}/domain', pathParams: {service: string}, queryParams?: {state?: EmailProObjectStateEnum}): Promise<string[]>;
   /**
   Domain
   Get this object properties
@@ -951,7 +951,7 @@ export class ApiEmailPro extends ApiCommon {
   List the email.pro.ExternalContact objects
   External contacts for this service
   **/
-  public get(path: '/email/pro/{service}/externalContact', pathParams: {service: string}, queryParams: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: Number, lastName?: string}): Promise<string[]>;
+  public get(path: '/email/pro/{service}/externalContact', pathParams: {service: string}, queryParams?: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: Number, lastName?: string}): Promise<string[]>;
   /**
   External contact for this pro service
   Get this object properties

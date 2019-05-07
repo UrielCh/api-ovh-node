@@ -151,7 +151,7 @@ export class ApiAllDom extends ApiCommon {
   List the allDom.AllDomDomain objects
   Domains attached to this allDom
   **/
-  public get(path: '/allDom/{serviceName}/domain', pathParams: {serviceName: string}, queryParams: {domain?: string}): Promise<string[]>;
+  public get(path: '/allDom/{serviceName}/domain', pathParams: {serviceName: string}, queryParams?: {domain?: string}): Promise<string[]>;
   /**
   Domain name of a allDom
   Get this object properties

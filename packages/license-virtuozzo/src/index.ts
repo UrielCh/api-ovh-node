@@ -333,7 +333,7 @@ export class ApiLicenseVirtuozzo extends ApiCommon {
   Get the orderable Virtuozzo versions
   Get the orderable Virtuozzo versions
   **/
-  public get(path: '/license/virtuozzo/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseVirtuozzoOrderConfiguration[]>;
+  public get(path: '/license/virtuozzo/orderableVersions', queryParams?: {ip?: string}): Promise<LicenseVirtuozzoOrderConfiguration[]>;
   /**
   Your Virtuozzo license
   Get this object properties
@@ -348,12 +348,12 @@ export class ApiLicenseVirtuozzo extends ApiCommon {
   canLicenseBeMovedTo operations
   Will tell if the ip can accept the license
   **/
-  public get(path: '/license/virtuozzo/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  public get(path: '/license/virtuozzo/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams?: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
   /**
   List the license.Option objects
   Options linked to this license
   **/
-  public get(path: '/license/virtuozzo/{serviceName}/option', pathParams: {serviceName: string}, queryParams: {label?: LicenseOptionLabel}): Promise<LicenseOptionLabel[]>;
+  public get(path: '/license/virtuozzo/{serviceName}/option', pathParams: {serviceName: string}, queryParams?: {label?: LicenseOptionLabel}): Promise<LicenseOptionLabel[]>;
   /**
   Your License options
   Get this object properties
@@ -368,7 +368,7 @@ export class ApiLicenseVirtuozzo extends ApiCommon {
   List the license.Task objects
   tasks linked to this license
   **/
-  public get(path: '/license/virtuozzo/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/license/virtuozzo/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
   /**
   licenses Todos
   Get this object properties

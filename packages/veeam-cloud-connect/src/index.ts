@@ -312,7 +312,7 @@ export class ApiVeeamCloudConnect extends ApiCommon {
   List the veeamCloudConnect.Task objects
   Tasks associated with Cloud Tenant
   **/
-  public get(path: '/veeamCloudConnect/{serviceName}/task', pathParams: {serviceName: string}, queryParams: {name?: string, state?: VeeamCloudConnectTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/veeamCloudConnect/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {name?: string, state?: VeeamCloudConnectTaskStateEnum}): Promise<Number[]>;
   /**
   Operation with the Cloud Tenant Account
   Get this object properties

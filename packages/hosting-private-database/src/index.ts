@@ -833,7 +833,7 @@ export class ApiHostingPrivateDatabase extends ApiCommon {
   Get available order capacitie
   Get available order capacitie
   **/
-  public get(path: '/hosting/privateDatabase/availableOrderCapacities', pathParams: undefined, queryParams: {offer?: HostingPrivateDatabaseOfferEnum}): Promise<HostingPrivateDatabaseAvailableOrderCapacities>;
+  public get(path: '/hosting/privateDatabase/availableOrderCapacities', queryParams?: {offer?: HostingPrivateDatabaseOfferEnum}): Promise<HostingPrivateDatabaseAvailableOrderCapacities>;
   /**
   Private database
   Get this object properties
@@ -863,7 +863,7 @@ export class ApiHostingPrivateDatabase extends ApiCommon {
   List the hosting.privateDatabase.database.dump objects
   Dump available for your databases
   **/
-  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump', pathParams: {serviceName: string, databaseName: string}, queryParams: {creationDate?: string, deletionDate?: string}): Promise<Number[]>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump', pathParams: {serviceName: string, databaseName: string}, queryParams?: {creationDate?: string, deletionDate?: string}): Promise<Number[]>;
   /**
   Dump
   Get this object properties
@@ -873,7 +873,7 @@ export class ApiHostingPrivateDatabase extends ApiCommon {
   List the hosting.privateDatabase.database.extension objects
   Extensions linked to your database
   **/
-  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension', pathParams: {serviceName: string, databaseName: string}, queryParams: {extensionName?: string, status?: HostingPrivateDatabaseDatabaseExtensionStatus}): Promise<string[]>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension', pathParams: {serviceName: string, databaseName: string}, queryParams?: {extensionName?: string, status?: HostingPrivateDatabaseDatabaseExtensionStatus}): Promise<string[]>;
   /**
   Databases extension
   Get this object properties
@@ -883,7 +883,7 @@ export class ApiHostingPrivateDatabase extends ApiCommon {
   List the hosting.privateDatabase.dump objects
   Dumps available for your private database service
   **/
-  public get(path: '/hosting/privateDatabase/{serviceName}/dump', pathParams: {serviceName: string}, queryParams: {databaseName?: string, orphan?: boolean}): Promise<Number[]>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/dump', pathParams: {serviceName: string}, queryParams?: {databaseName?: string, orphan?: boolean}): Promise<Number[]>;
   /**
   Dump
   Get this object properties
@@ -903,7 +903,7 @@ export class ApiHostingPrivateDatabase extends ApiCommon {
   List the hosting.privateDatabase.task objects
   Tasks attached to your private database service
   **/
-  public get(path: '/hosting/privateDatabase/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {function?: HostingPrivateDatabaseTaskFunctionEnum, status?: HostingPrivateDatabaseTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {function?: HostingPrivateDatabaseTaskFunctionEnum, status?: HostingPrivateDatabaseTaskStatusEnum}): Promise<Number[]>;
   /**
   Tasks
   Get this object properties
@@ -938,7 +938,7 @@ export class ApiHostingPrivateDatabase extends ApiCommon {
   List the hosting.privateDatabase.whitelist objects
   Whitelist allowed on your privatesql
   **/
-  public get(path: '/hosting/privateDatabase/{serviceName}/whitelist', pathParams: {serviceName: string}, queryParams: {ip?: string, service?: boolean, sftp?: boolean}): Promise<string[]>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/whitelist', pathParams: {serviceName: string}, queryParams?: {ip?: string, service?: boolean, sftp?: boolean}): Promise<string[]>;
   /**
   IP whitelisting for your instance
   Get this object properties

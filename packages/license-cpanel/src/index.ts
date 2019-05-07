@@ -262,7 +262,7 @@ export class ApiLicenseCpanel extends ApiCommon {
   Get the orderable CPanel versions
   Get the orderable CPanel versions
   **/
-  public get(path: '/license/cpanel/orderableVersions', pathParams: undefined, queryParams: {ip?: string}): Promise<LicenseCpanelOrderConfiguration[]>;
+  public get(path: '/license/cpanel/orderableVersions', queryParams?: {ip?: string}): Promise<LicenseCpanelOrderConfiguration[]>;
   /**
   Your Cpanel license
   Get this object properties
@@ -277,7 +277,7 @@ export class ApiLicenseCpanel extends ApiCommon {
   canLicenseBeMovedTo operations
   Will tell if the ip can accept the license
   **/
-  public get(path: '/license/cpanel/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
+  public get(path: '/license/cpanel/{serviceName}/canLicenseBeMovedTo', pathParams: {serviceName: string}, queryParams?: {destinationIp?: string}): Promise<LicenseChangeIpStatus>;
   /**
   Details about a Service
   Get this object properties
@@ -287,7 +287,7 @@ export class ApiLicenseCpanel extends ApiCommon {
   List the license.Task objects
   tasks linked to this license
   **/
-  public get(path: '/license/cpanel/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/license/cpanel/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
   /**
   licenses Todos
   Get this object properties

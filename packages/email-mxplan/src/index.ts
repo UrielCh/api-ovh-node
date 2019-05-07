@@ -761,7 +761,7 @@ export class ApiEmailMxplan extends ApiCommon {
   List the email.mxplan.Account objects
   Accounts associated to this mxplan service
   **/
-  public get(path: '/email/mxplan/{service}/account', pathParams: {service: string}, queryParams: {id?: Number, primaryEmailAddress?: string}): Promise<string[]>;
+  public get(path: '/email/mxplan/{service}/account', pathParams: {service: string}, queryParams?: {id?: Number, primaryEmailAddress?: string}): Promise<string[]>;
   /**
   Mailbox
   Get this object properties
@@ -826,7 +826,7 @@ export class ApiEmailMxplan extends ApiCommon {
   List the email.mxplan.Domain objects
   Domains associated to this service
   **/
-  public get(path: '/email/mxplan/{service}/domain', pathParams: {service: string}, queryParams: {state?: EmailProObjectStateEnum}): Promise<string[]>;
+  public get(path: '/email/mxplan/{service}/domain', pathParams: {service: string}, queryParams?: {state?: EmailProObjectStateEnum}): Promise<string[]>;
   /**
   Domain
   Get this object properties
@@ -846,7 +846,7 @@ export class ApiEmailMxplan extends ApiCommon {
   List the email.mxplan.ExternalContact objects
   External contacts for this service
   **/
-  public get(path: '/email/mxplan/{service}/externalContact', pathParams: {service: string}, queryParams: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: Number, lastName?: string}): Promise<string[]>;
+  public get(path: '/email/mxplan/{service}/externalContact', pathParams: {service: string}, queryParams?: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: Number, lastName?: string}): Promise<string[]>;
   /**
   External contact for this mxplan service
   Get this object properties

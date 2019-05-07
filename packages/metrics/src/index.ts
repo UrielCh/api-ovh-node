@@ -300,7 +300,7 @@ export class ApiMetrics extends ApiCommon {
   Missing description
   Get consumption for your service
   **/
-  public get(path: '/metrics/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams: {duration?: Number}): Promise<MetricsApiConsumption>;
+  public get(path: '/metrics/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams?: {duration?: Number}): Promise<MetricsApiConsumption>;
   /**
   Details about a Service
   Get this object properties
