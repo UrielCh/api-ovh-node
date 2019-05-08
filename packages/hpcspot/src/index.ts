@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * A numeric value tagged with its unit
  */
@@ -38,7 +38,7 @@ export interface HpcspotConsumption {
    * ID of the linked job on HPC Spot interface
    *
    */
-  hpcspotItemId?: Number;
+  hpcspotItemId?: number;
   /**
    * URL for the description of the consumption on the HPC Spot interface
    *
@@ -48,17 +48,17 @@ export interface HpcspotConsumption {
    * ID of the detail
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * ID of the Order that billed this item. If null, this item has not been billed
    *
    */
-  orderId?: Number;
+  orderId?: number;
   /**
    * Quantity consumed (minutes, core minutes, licences, token)
    *
    */
-  quantity?: ComplexTypeUnitAndValue<Number>;
+  quantity?: ComplexTypeUnitAndValue<number>;
   /**
    * Reference of the item. This reference is linked with the type of the item
    *
@@ -106,7 +106,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -150,7 +150,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -161,7 +161,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -175,8 +175,8 @@ type PathsHpcspotGET = '/hpcspot' |
 type PathsHpcspotPUT = '/hpcspot/{serviceName}/serviceInfos';
 
 export class ApiHpcspot extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the HPCSPOT service
@@ -187,27 +187,31 @@ export class ApiHpcspot extends ApiCommon {
   Account HPC Spot
   Get this object properties
   **/
-  public get(path: '/hpcspot/{serviceName}', pathParams: {serviceName: string}): Promise<HpcspotAccount>;
+  public get(path: '/hpcspot/{serviceName}', params: {serviceName: string}): Promise<HpcspotAccount>;
   /**
   List the hpcspot.Consumption objects
   Details of the consumption of your account
   **/
-  public get(path: '/hpcspot/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams?: {'hpcspotItemEndDate.from'?: string, 'hpcspotItemEndDate.to'?: string, hpcspotItemId?: Number, orderId?: Number, type?: HpcspotConsumptionTypeEnum}): Promise<Number[]>;
+  public get(path: '/hpcspot/{serviceName}/consumption', params: {serviceName: string, 'hpcspotItemEndDate.from'?: string, 'hpcspotItemEndDate.to'?: string, hpcspotItemId?: number, orderId?: number, type?: HpcspotConsumptionTypeEnum}): Promise<number[]>;
   /**
   Detail of a HPC Spot consumtion
   Get this object properties
   **/
-  public get(path: '/hpcspot/{serviceName}/consumption/{id}', pathParams: {serviceName: string, id: Number}): Promise<HpcspotConsumption>;
+  public get(path: '/hpcspot/{serviceName}/consumption/{id}', params: {serviceName: string, id: number}): Promise<HpcspotConsumption>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/hpcspot/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsHpcspotGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/hpcspot/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  public get(path: PathsHpcspotGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/hpcspot/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsHpcspotPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/hpcspot/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsHpcspotPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
 }

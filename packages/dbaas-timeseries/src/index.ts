@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * A numeric value tagged with its unit
  */
@@ -26,7 +26,7 @@ export interface OrderPrice {
   text?: string;
   /**
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * Consumption
@@ -76,7 +76,7 @@ export interface PaasTimeseriesConsumptionItem {
    * Quantity consumed in unit
    *
    */
-  quantity?: ComplexTypeUnitAndValue<Number>;
+  quantity?: ComplexTypeUnitAndValue<number>;
   /**
    * Unit price
    *
@@ -183,12 +183,12 @@ export interface PaasTimeseriesQuota {
    * Current value
    *
    */
-  current?: Number;
+  current?: number;
   /**
    * Max allowed
    *
    */
-  max?: Number;
+  max?: number;
   /**
    * Type (ie: mads, ddp, ...)
    *
@@ -257,17 +257,17 @@ export interface PaasTimeseriesWarp10Token {
    * Maximum depth of the stack allowed
    *
    */
-  maxFetch?: Number;
+  maxFetch?: number;
   /**
    * Maximum number of GTS retrieved allowed
    *
    */
-  maxGts?: Number;
+  maxGts?: number;
   /**
    * maximum number of operations allowed
    *
    */
-  maxOps?: Number;
+  maxOps?: number;
   /**
    * permission
    *
@@ -321,7 +321,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -365,7 +365,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -376,7 +376,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -444,8 +444,8 @@ type PathsDbaasTimeseriesDELETE = '/dbaas/timeseries/{serviceName}/key/{keyId}' 
 '/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}';
 
 export class ApiDbaasTimeseries extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the PAAS_TIMESERIES service
@@ -461,89 +461,97 @@ export class ApiDbaasTimeseries extends ApiCommon {
   Timeseries project
   Get this object properties
   **/
-  public get(path: '/dbaas/timeseries/{serviceName}', pathParams: {serviceName: string}): Promise<TimeseriesProject>;
+  public get(path: '/dbaas/timeseries/{serviceName}', params: {serviceName: string}): Promise<TimeseriesProject>;
   /**
   Consumption
   Get consumption
   **/
-  public get(path: '/dbaas/timeseries/{serviceName}/consumption', pathParams: {serviceName: string}): Promise<PaasTimeseriesConsumption[]>;
+  public get(path: '/dbaas/timeseries/{serviceName}/consumption', params: {serviceName: string}): Promise<PaasTimeseriesConsumption[]>;
   /**
   Keys
   Get keys for a project
   **/
-  public get(path: '/dbaas/timeseries/{serviceName}/key', pathParams: {serviceName: string}): Promise<PaasTimeseriesKey[]>;
+  public get(path: '/dbaas/timeseries/{serviceName}/key', params: {serviceName: string}): Promise<PaasTimeseriesKey[]>;
   /**
   Key
   Get a key
   **/
-  public get(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', pathParams: {serviceName: string, keyId: string}): Promise<PaasTimeseriesKey>;
+  public get(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<PaasTimeseriesKey>;
   /**
   Quotas
   Get quotas
   **/
-  public get(path: '/dbaas/timeseries/{serviceName}/quota', pathParams: {serviceName: string}): Promise<PaasTimeseriesQuota[]>;
+  public get(path: '/dbaas/timeseries/{serviceName}/quota', params: {serviceName: string}): Promise<PaasTimeseriesQuota[]>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/dbaas/timeseries/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/dbaas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   OpenTSDBTokens
   Get OpenTSDB tokens
   **/
-  public get(path: '/dbaas/timeseries/{serviceName}/token/opentsdb', pathParams: {serviceName: string}): Promise<PaasTimeseriesOpenTSDBToken[]>;
+  public get(path: '/dbaas/timeseries/{serviceName}/token/opentsdb', params: {serviceName: string}): Promise<PaasTimeseriesOpenTSDBToken[]>;
   /**
   Key
   Get a OpenTSDB token
   **/
-  public get(path: '/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<PaasTimeseriesOpenTSDBToken>;
-  public get(path: PathsDbaasTimeseriesGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}', params: {serviceName: string, tokenId: string}): Promise<PaasTimeseriesOpenTSDBToken>;
+  public get(path: PathsDbaasTimeseriesGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Timeseries project
   Alter this object properties
   **/
-  public put(path: '/dbaas/timeseries/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/dbaas/timeseries/{serviceName}', params: {serviceName: string}): Promise<void>;
   /**
   Key
   Create a key
   **/
-  public put(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', pathParams: {serviceName: string, keyId: string}): Promise<PaasTimeseriesKey>;
+  public put(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<PaasTimeseriesKey>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dbaas/timeseries/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsDbaasTimeseriesPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/dbaas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsDbaasTimeseriesPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/dbaas/timeseries/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  public post(path: '/dbaas/timeseries/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
   /**
   Keys
   Create a key for a project
   **/
-  public post(path: '/dbaas/timeseries/{serviceName}/key', pathParams: {serviceName: string}): Promise<PaasTimeseriesKey>;
+  public post(path: '/dbaas/timeseries/{serviceName}/key', params: {serviceName: string}): Promise<PaasTimeseriesKey>;
   /**
   Setup your project on our platform
   Setup a project
   **/
-  public post(path: '/dbaas/timeseries/{serviceName}/setup', pathParams: {serviceName: string}): Promise<PaasTimeseriesProject>;
+  public post(path: '/dbaas/timeseries/{serviceName}/setup', params: {serviceName: string}): Promise<PaasTimeseriesProject>;
   /**
   OpenTSDBTokens
   Create a OpenTSDB token
   **/
-  public post(path: '/dbaas/timeseries/{serviceName}/token/opentsdb', pathParams: {serviceName: string}): Promise<PaasTimeseriesOpenTSDBToken>;
-  public post(path: PathsDbaasTimeseriesPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/dbaas/timeseries/{serviceName}/token/opentsdb', params: {serviceName: string}): Promise<PaasTimeseriesOpenTSDBToken>;
+  public post(path: PathsDbaasTimeseriesPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Key
   Delete a OpenTSDB token
   **/
-  public delete(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', pathParams: {serviceName: string, keyId: string}): Promise<boolean>;
+  public delete(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<boolean>;
   /**
   Key
   Delete an OpenTSDB token
   **/
-  public delete(path: '/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<boolean>;
-  public delete(path: PathsDbaasTimeseriesDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}', params: {serviceName: string, tokenId: string}): Promise<boolean>;
+  public delete(path: PathsDbaasTimeseriesDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

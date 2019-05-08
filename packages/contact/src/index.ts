@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Key and value, with proper key strings
  */
@@ -45,19 +45,23 @@ type PathsContactGET = '/contact/form';
 type PathsContactPOST = '/contact/form/send';
 
 export class ApiContact extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Get form characteristics
   Get form characteristics
   **/
   public get(path: '/contact/form'): Promise<ContactFormCharacteristic[]>;
-  public get(path: PathsContactGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: PathsContactGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Send form following characteristics of /contact/form
   Send form following characteristics of /contact/form
   **/
   public post(path: '/contact/form/send'): Promise<void>;
-  public post(path: PathsContactPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: PathsContactPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
 }

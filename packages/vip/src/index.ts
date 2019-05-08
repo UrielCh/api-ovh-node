@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Map a possible renew for a specific service
  */
@@ -27,7 +27,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -71,7 +71,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -82,7 +82,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -113,8 +113,8 @@ type PathsVipGET = '/vip' |
 type PathsVipPUT = '/vip/{serviceName}/serviceInfos';
 
 export class ApiVip extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the SUPPORT_PLUS service
@@ -125,17 +125,21 @@ export class ApiVip extends ApiCommon {
   Vip Service
   Get this object properties
   **/
-  public get(path: '/vip/{serviceName}', pathParams: {serviceName: string}): Promise<VipSupportVip>;
+  public get(path: '/vip/{serviceName}', params: {serviceName: string}): Promise<VipSupportVip>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/vip/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsVipGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/vip/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  public get(path: PathsVipGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/vip/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsVipPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/vip/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsVipPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
 }

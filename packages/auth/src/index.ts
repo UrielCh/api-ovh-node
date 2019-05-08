@@ -1,17 +1,17 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * API Credential
  */
 export interface ApiCredential {
   /**
    */
-  applicationId?: Number;
+  applicationId?: number;
   /**
    */
   creation?: string;
   /**
    */
-  credentialId?: Number;
+  credentialId?: number;
   /**
    */
   expiration?: string;
@@ -70,8 +70,8 @@ type PathsAuthPOST = '/auth/credential' |
 '/auth/logout';
 
 export class ApiAuth extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Get the current credential details
@@ -82,8 +82,10 @@ export class ApiAuth extends ApiCommon {
   Get the time of OVH servers
   Get the current time of the OVH servers, since UNIX epoch
   **/
-  public get(path: '/auth/time'): Promise<Number>;
-  public get(path: PathsAuthGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/auth/time'): Promise<number>;
+  public get(path: PathsAuthGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Operations with credentials
   Request a new credential for your application
@@ -94,5 +96,7 @@ export class ApiAuth extends ApiCommon {
   Expire current credential
   **/
   public post(path: '/auth/logout'): Promise<void>;
-  public post(path: PathsAuthPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: PathsAuthPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
 }

@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Structure holding the consumption
  */
@@ -7,12 +7,12 @@ export interface MetricsApiConsumption {
    * Current Daily data points
    *
    */
-  ddp?: Number;
+  ddp?: number;
   /**
    * Current monthly active data streams
    *
    */
-  mads?: Number;
+  mads?: number;
 }
 /**
  * Structure holding the elements about a label
@@ -41,7 +41,7 @@ export interface MetricsApiOption {
    * Daily data points
    *
    */
-  ddp?: Number;
+  ddp?: number;
   /**
    * Time of last modification
    *
@@ -51,7 +51,7 @@ export interface MetricsApiOption {
    * Monthly active device streams
    *
    */
-  mads?: Number;
+  mads?: number;
 }
 /**
  * Description not available
@@ -194,7 +194,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -246,7 +246,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -257,7 +257,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -283,8 +283,8 @@ type PathsMetricsPOST = '/metrics/{serviceName}/changeContact' |
 type PathsMetricsDELETE = '/metrics/{serviceName}/token/{tokenId}';
 
 export class ApiMetrics extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the METRICS service
@@ -295,79 +295,87 @@ export class ApiMetrics extends ApiCommon {
   Missing description
   Get service
   **/
-  public get(path: '/metrics/{serviceName}', pathParams: {serviceName: string}): Promise<MetricsApiService>;
+  public get(path: '/metrics/{serviceName}', params: {serviceName: string}): Promise<MetricsApiService>;
   /**
   Missing description
   Get consumption for your service
   **/
-  public get(path: '/metrics/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams?: {duration?: Number}): Promise<MetricsApiConsumption>;
+  public get(path: '/metrics/{serviceName}/consumption', params: {serviceName: string, duration?: number}): Promise<MetricsApiConsumption>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/metrics/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/metrics/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   Missing description
   Get list of tokens
   **/
-  public get(path: '/metrics/{serviceName}/token', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/metrics/{serviceName}/token', params: {serviceName: string}): Promise<string[]>;
   /**
   Missing description
   Get a specific token
   **/
-  public get(path: '/metrics/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<MetricsApiToken>;
-  public get(path: PathsMetricsGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/metrics/{serviceName}/token/{tokenId}', params: {serviceName: string, tokenId: string}): Promise<MetricsApiToken>;
+  public get(path: PathsMetricsGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Missing description
   Modify service
   **/
-  public put(path: '/metrics/{serviceName}', pathParams: {serviceName: string}): Promise<MetricsApiService>;
+  public put(path: '/metrics/{serviceName}', params: {serviceName: string}): Promise<MetricsApiService>;
   /**
   Missing description
   Set overquota
   **/
-  public put(path: '/metrics/{serviceName}/quota', pathParams: {serviceName: string}): Promise<string>;
+  public put(path: '/metrics/{serviceName}/quota', params: {serviceName: string}): Promise<string>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/metrics/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/metrics/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
   /**
   Missing description
   Modify a token
   **/
-  public put(path: '/metrics/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<MetricsApiToken>;
-  public put(path: PathsMetricsPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/metrics/{serviceName}/token/{tokenId}', params: {serviceName: string, tokenId: string}): Promise<MetricsApiToken>;
+  public put(path: PathsMetricsPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/metrics/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  public post(path: '/metrics/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/metrics/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/metrics/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
   /**
   Missing description
   Find TokenID for a specific token
   **/
-  public post(path: '/metrics/{serviceName}/lookup/token', pathParams: {serviceName: string}): Promise<string[]>;
+  public post(path: '/metrics/{serviceName}/lookup/token', params: {serviceName: string}): Promise<string[]>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/metrics/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/metrics/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
   /**
   Missing description
   Create a token
   **/
-  public post(path: '/metrics/{serviceName}/token', pathParams: {serviceName: string}): Promise<MetricsApiToken>;
-  public post(path: PathsMetricsPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/metrics/{serviceName}/token', params: {serviceName: string}): Promise<MetricsApiToken>;
+  public post(path: PathsMetricsPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Missing description
   Revoke a token
   **/
-  public delete(path: '/metrics/{serviceName}/token/{tokenId}', pathParams: {serviceName: string, tokenId: string}): Promise<void>;
-  public delete(path: PathsMetricsDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/metrics/{serviceName}/token/{tokenId}', params: {serviceName: string, tokenId: string}): Promise<void>;
+  public delete(path: PathsMetricsDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Managed Kubernetes cluster description
  */
@@ -187,7 +187,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -239,7 +239,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -250,7 +250,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -277,8 +277,8 @@ type PathsKubePOST = '/kube/{serviceName}/changeContact' |
 type PathsKubeDELETE = '/kube/{serviceName}/publiccloud/node/{nodeId}';
 
 export class ApiKube extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the KUBERNETES service
@@ -289,84 +289,92 @@ export class ApiKube extends ApiCommon {
   Manage your cluster
   Get information about your managed Kubernetes cluster
   **/
-  public get(path: '/kube/{serviceName}', pathParams: {serviceName: string}): Promise<KubeCluster>;
+  public get(path: '/kube/{serviceName}', params: {serviceName: string}): Promise<KubeCluster>;
   /**
   Get your cluster configuration
   Get kubeconfig file
   **/
-  public get(path: '/kube/{serviceName}/kubeconfig', pathParams: {serviceName: string}): Promise<KubeKubeconfig>;
+  public get(path: '/kube/{serviceName}/kubeconfig', params: {serviceName: string}): Promise<KubeKubeconfig>;
   /**
   Manage your Public Cloud cluster nodes
   List your nodes on Public Cloud
   **/
-  public get(path: '/kube/{serviceName}/publiccloud/node', pathParams: {serviceName: string}): Promise<KubeNode[]>;
+  public get(path: '/kube/{serviceName}/publiccloud/node', params: {serviceName: string}): Promise<KubeNode[]>;
   /**
   Manage a single node on your cluster
   Get information on a specific node on your cluster
   **/
-  public get(path: '/kube/{serviceName}/publiccloud/node/{nodeId}', pathParams: {nodeId: string, serviceName: string}): Promise<KubeNode>;
+  public get(path: '/kube/{serviceName}/publiccloud/node/{nodeId}', params: {nodeId: string, serviceName: string}): Promise<KubeNode>;
   /**
   Manage your Public Cloud projects linked to your cluster
   List your Public Cloud projects linked to your cluster
   **/
-  public get(path: '/kube/{serviceName}/publiccloud/project', pathParams: {serviceName: string}): Promise<KubePublicCloudProject[]>;
+  public get(path: '/kube/{serviceName}/publiccloud/project', params: {serviceName: string}): Promise<KubePublicCloudProject[]>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/kube/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsKubeGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/kube/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  public get(path: PathsKubeGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Manage your cluster
   Update information about your managed Kubernetes cluster
   **/
-  public put(path: '/kube/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/kube/{serviceName}', params: {serviceName: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/kube/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/kube/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
   /**
   Manage the update policy of your cluster
   Change the update policy of your cluster
   **/
-  public put(path: '/kube/{serviceName}/updatePolicy', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsKubePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/kube/{serviceName}/updatePolicy', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsKubePUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/kube/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  public post(path: '/kube/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/kube/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/kube/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
   /**
   Manage your Public Cloud cluster nodes
   Deploy a node for your cluster on Public Cloud
   **/
-  public post(path: '/kube/{serviceName}/publiccloud/node', pathParams: {serviceName: string}): Promise<KubeNode>;
+  public post(path: '/kube/{serviceName}/publiccloud/node', params: {serviceName: string}): Promise<KubeNode>;
   /**
   Reset your cluster
   Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
   **/
-  public post(path: '/kube/{serviceName}/reset', pathParams: {serviceName: string}): Promise<void>;
+  public post(path: '/kube/{serviceName}/reset', params: {serviceName: string}): Promise<void>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/kube/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/kube/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
   /**
   Update cluster
   Update cluster to the latest patch version
   **/
-  public post(path: '/kube/{serviceName}/update', pathParams: {serviceName: string}): Promise<void>;
-  public post(path: PathsKubePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/kube/{serviceName}/update', params: {serviceName: string}): Promise<void>;
+  public post(path: PathsKubePOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Manage a single node on your cluster
   Delete a node on your cluster
   **/
-  public delete(path: '/kube/{serviceName}/publiccloud/node/{nodeId}', pathParams: {nodeId: string, serviceName: string}): Promise<void>;
-  public delete(path: PathsKubeDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/kube/{serviceName}/publiccloud/node/{nodeId}', params: {nodeId: string, serviceName: string}): Promise<void>;
+  public delete(path: PathsKubeDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

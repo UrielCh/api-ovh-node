@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Key and value, with proper key strings
  */
@@ -26,7 +26,7 @@ export interface OrderPrice {
   text?: string;
   /**
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * Possible billing states
@@ -55,7 +55,7 @@ export interface ServiceRenew {
    * Renew day number
    *
    */
-  dayOfMonth?: Number;
+  dayOfMonth?: number;
   /**
    * Interval between each renewal
    *
@@ -149,7 +149,7 @@ export interface ServiceConsumptionTransaction {
    * Transaction ID
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Last update
    *
@@ -164,7 +164,7 @@ export interface ServiceConsumptionTransaction {
    * Service ID
    *
    */
-  serviceId?: Number;
+  serviceId?: number;
 }
 /**
  * Element of consumption for resource
@@ -189,7 +189,7 @@ export interface ServiceConsumptionTransactionElement {
    * Consumption quantity
    *
    */
-  quantity?: Number;
+  quantity?: number;
 }
 /**
  * Element of consumption for resource
@@ -199,7 +199,7 @@ export interface ServiceConsumptionTransactionElementDetail {
    * Consumption quantity
    *
    */
-  quantity?: Number;
+  quantity?: number;
   /**
    * Unique ID associated to one service element
    *
@@ -267,7 +267,7 @@ export interface ServiceRenewRenewForecastDetail {
    * Quantity
    *
    */
-  quantity?: Number;
+  quantity?: number;
   /**
    * Associated service name
    *
@@ -322,7 +322,7 @@ export interface ServiceRenewRenewOrder {
    * ID of the renew Order
    *
    */
-  orderId?: Number;
+  orderId?: number;
   /**
    * Password
    *
@@ -372,12 +372,12 @@ export interface ServiceRenewRenewStrategy {
    * Price of the product in micro-centims
    *
    */
-  priceInUcents?: Number;
+  priceInUcents?: number;
   /**
    * Services renewed by strategy
    *
    */
-  services?: Number[];
+  services?: number[];
   /**
    * Details of services renewed by strategy
    *
@@ -392,7 +392,7 @@ export interface ServiceRenewService {
    * ID of the service
    *
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    * Name of the service
    *
@@ -442,7 +442,7 @@ export interface ServiceListService {
    * Quantity
    *
    */
-  quantity?: Number;
+  quantity?: number;
   /**
    * Renew service description
    *
@@ -476,50 +476,56 @@ type PathsServicePOST = '/service/{serviceId}/renew' |
 '/service/{serviceId}/terminate';
 
 export class ApiService extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the services
   List available services
   **/
-  public get(path: '/service'): Promise<Number[]>;
+  public get(path: '/service'): Promise<number[]>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/service/{serviceId}', pathParams: {serviceId: Number}): Promise<ServiceListService>;
+  public get(path: '/service/{serviceId}', params: {serviceId: number}): Promise<ServiceListService>;
   /**
   Missing description
   List possible renews for this service
   **/
-  public get(path: '/service/{serviceId}/renew', pathParams: {serviceId: string}, queryParams?: {includeOptions?: boolean}): Promise<ServiceRenewRenewDescription[]>;
-  public get(path: PathsServiceGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/service/{serviceId}/renew', params: {serviceId: string, includeOptions?: boolean}): Promise<ServiceRenewRenewDescription[]>;
+  public get(path: PathsServiceGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/service/{serviceId}', pathParams: {serviceId: Number}): Promise<void>;
-  public put(path: PathsServicePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/service/{serviceId}', params: {serviceId: number}): Promise<void>;
+  public put(path: PathsServicePUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Missing description
   Create a renew order
   **/
-  public post(path: '/service/{serviceId}/renew', pathParams: {serviceId: string}): Promise<ServiceRenewRenewOrder>;
+  public post(path: '/service/{serviceId}/renew', params: {serviceId: string}): Promise<ServiceRenewRenewOrder>;
   /**
   reopen operations
   Reopen a suspended service
   **/
-  public post(path: '/service/{serviceId}/reopen', pathParams: {serviceId: Number}): Promise<void>;
+  public post(path: '/service/{serviceId}/reopen', params: {serviceId: number}): Promise<void>;
   /**
   suspend operations
   Suspend the service. The service won't be accessible, but you will still be charged for it
   **/
-  public post(path: '/service/{serviceId}/suspend', pathParams: {serviceId: Number}): Promise<void>;
+  public post(path: '/service/{serviceId}/suspend', params: {serviceId: number}): Promise<void>;
   /**
   terminate operations
   Terminates a suspended service
   **/
-  public post(path: '/service/{serviceId}/terminate', pathParams: {serviceId: Number}): Promise<void>;
-  public post(path: PathsServicePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/service/{serviceId}/terminate', params: {serviceId: number}): Promise<void>;
+  public post(path: PathsServicePOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
 }

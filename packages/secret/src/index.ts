@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * A secret
  */
@@ -17,13 +17,15 @@ export interface SecretSecret {
 type PathsSecretPOST = '/secret/retrieve';
 
 export class ApiSecret extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Retrieve a secret sent by email
   Retrieve a secret sent by email
   **/
   public post(path: '/secret/retrieve'): Promise<SecretSecret>;
-  public post(path: PathsSecretPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: PathsSecretPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
 }

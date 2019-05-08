@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Available storage order
  */
@@ -173,7 +173,7 @@ export interface HostingWebCapabilities {
    * Number of domains you can attach to your hosting
    *
    */
-  attachedDomains?: Number;
+  attachedDomains?: number;
   /**
    * Does the offer allow crontab
    *
@@ -183,7 +183,7 @@ export interface HostingWebCapabilities {
    * Number of database engines allowed for your hosting
    *
    */
-  databaseEngines?: Number;
+  databaseEngines?: number;
   /**
    * Describe all databases type you can have
    *
@@ -203,12 +203,12 @@ export interface HostingWebCapabilities {
    * Number of environment variables allowed for your hosting
    *
    */
-  envVars?: Number;
+  envVars?: number;
   /**
    * Number of ftp user you can create
    *
    */
-  extraUsers?: Number;
+  extraUsers?: number;
   /**
    * Does the offer allow access to web files browser?
    *
@@ -238,12 +238,12 @@ export interface HostingWebCapabilities {
    * Number of runtimes allowed for your hosting
    *
    */
-  runtimes?: Number;
+  runtimes?: number;
   /**
    * Number of sites recommended for your hosting ( -1 for unlimited )
    *
    */
-  sitesRecommended?: Number;
+  sitesRecommended?: number;
   /**
    * Does the offer allow SSH access
    *
@@ -253,7 +253,7 @@ export interface HostingWebCapabilities {
    * Traffic quota size for your hosting ( null for unlimited )
    *
    */
-  traffic?: ComplexTypeUnitAndValue<Number>;
+  traffic?: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Hosting's CDN offer
@@ -267,12 +267,12 @@ export interface HostingWebCreationEmailCapabilities {
    * Number of email available for creation
    *
    */
-  available?: Number;
+  available?: number;
   /**
    * Email account capacity
    *
    */
-  quota?: ComplexTypeUnitAndValue<Number>;
+  quota?: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Language available for cron script
@@ -307,7 +307,7 @@ export interface HostingWebDiskType {
    * Size of the disk
    *
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * Disk type available
@@ -341,7 +341,7 @@ export interface HostingWebDatabaseCreationDatabaseCapabilities {
    * Number of database left for creation
    *
    */
-  available?: Number;
+  available?: number;
   /**
    * Database software available on this platform
    *
@@ -356,7 +356,7 @@ export interface HostingWebDatabaseCreationDatabaseCapabilities {
    * Size of data can be used
    *
    */
-  quota?: ComplexTypeUnitAndValue<Number>;
+  quota?: ComplexTypeUnitAndValue<number>;
   /**
    * Database offer name
    *
@@ -493,7 +493,7 @@ export interface OrderOrder {
   details?: OrderOrderDetail[];
   /**
    */
-  orderId?: Number;
+  orderId?: number;
   /**
    */
   prices?: OrderOrderPrices;
@@ -516,7 +516,7 @@ export interface OrderOrderDetail {
   domain?: string;
   /**
    */
-  quantity?: Number;
+  quantity?: number;
   /**
    */
   totalPrice?: OrderPrice;
@@ -554,7 +554,7 @@ export interface OrderPrice {
   text?: string;
   /**
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * A shopping cart
@@ -579,7 +579,7 @@ export interface OrderCartCart {
    * Items of your cart
    *
    */
-  items?: Number[];
+  items?: number[];
   /**
    * Indicates if the cart has already been validated
    *
@@ -594,7 +594,7 @@ export interface OrderCartConfigurationItem {
    * Configuration ID
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Identifier of the resource
    *
@@ -778,27 +778,27 @@ export interface OrderCartGenericProductPricing {
    * Interval of renewal
    *
    */
-  interval?: Number;
+  interval?: number;
   /**
    * Maximum quantity that can be ordered
    *
    */
-  maximumQuantity?: Number;
+  maximumQuantity?: number;
   /**
    * Maximum repeat for renewal
    *
    */
-  maximumRepeat?: Number;
+  maximumRepeat?: number;
   /**
    * Minimum quantity that can be ordered
    *
    */
-  minimumQuantity?: Number;
+  minimumQuantity?: number;
   /**
    * Minimum repeat for renewal
    *
    */
-  minimumRepeat?: Number;
+  minimumRepeat?: number;
   /**
    * Price of the product
    *
@@ -808,7 +808,7 @@ export interface OrderCartGenericProductPricing {
    * Price of the product in micro-centims
    *
    */
-  priceInUcents?: Number;
+  priceInUcents?: number;
   /**
    * Pricing model identifier
    *
@@ -849,7 +849,7 @@ export interface OrderCartItem {
    * Configuration set for this product
    *
    */
-  configurations?: Number[];
+  configurations?: number[];
   /**
    * Duration for the service
    *
@@ -859,7 +859,7 @@ export interface OrderCartItem {
    * Current product identifier
    *
    */
-  itemId?: Number;
+  itemId?: number;
   /**
    * Offer unique identifier of the product added
    *
@@ -869,12 +869,12 @@ export interface OrderCartItem {
    * Options item ID attached to this item
    *
    */
-  options?: Number[];
+  options?: number[];
   /**
    * Id of parent item (if item is an option)
    *
    */
-  parentItemId?: Number;
+  parentItemId?: number;
   /**
    * Price of the item
    *
@@ -963,7 +963,7 @@ export interface OrderCartProductInformation {
    * Maximum quantity purchasable for this product
    *
    */
-  quantityMax?: Number;
+  quantityMax?: number;
 }
 /**
  * Information about a Web Hosting offer information
@@ -1033,7 +1033,7 @@ export interface OrderCatalogCatalog {
    * Identifier of the catalog
    *
    */
-  catalogId?: Number;
+  catalogId?: number;
   /**
    * OVH Subsidiary concerned by this catalog
    *
@@ -1103,7 +1103,7 @@ export interface OrderCatalogPricing {
    * Engagement period
    *
    */
-  commitment?: Number;
+  commitment?: number;
   /**
    * Description
    *
@@ -1113,7 +1113,7 @@ export interface OrderCatalogPricing {
    * Number length of the interval
    *
    */
-  interval?: Number;
+  interval?: number;
   /**
    * Unit interval for duration
    *
@@ -1123,22 +1123,22 @@ export interface OrderCatalogPricing {
    * Maximum quantity buyable
    *
    */
-  maximumQuantity?: Number;
+  maximumQuantity?: number;
   /**
    * Maximum repeat duration
    *
    */
-  maximumRepeat?: Number;
+  maximumRepeat?: number;
   /**
    * Minimum quantity
    *
    */
-  minimumQuantity?: Number;
+  minimumQuantity?: number;
   /**
    * Minimum repeat duration
    *
    */
-  minimumRepeat?: Number;
+  minimumRepeat?: number;
   /**
    * Whether the catalog must reach max repeat before subscription can use another one
    *
@@ -1153,12 +1153,12 @@ export interface OrderCatalogPricing {
    * Max price customer will pay at the end of the period (cap)
    *
    */
-  priceCapInUcents?: Number;
+  priceCapInUcents?: number;
   /**
    * Price in microcents
    *
    */
-  priceInUcents?: Number;
+  priceInUcents?: number;
   /**
    * Strategy on which the pricing can change
    *
@@ -1263,7 +1263,7 @@ export interface OrderCatalogPccCatalog {
    * Catalog ID
    *
    */
-  catalogId?: Number;
+  catalogId?: number;
   /**
    * Catalog name
    *
@@ -1413,12 +1413,12 @@ export interface OrderCatalogPccHostCpuSpecifications {
    * Number of CPU Cores
    *
    */
-  cores?: Number;
+  cores?: number;
   /**
    * CPU Frequency
    *
    */
-  frequency?: ComplexTypeUnitAndValue<Number>;
+  frequency?: ComplexTypeUnitAndValue<number>;
   /**
    * CPU Generation
    *
@@ -1433,12 +1433,12 @@ export interface OrderCatalogPccHostCpuSpecifications {
    * Number of CPU
    *
    */
-  socket?: Number;
+  socket?: number;
   /**
    * Number of CPU Threads
    *
    */
-  threads?: Number;
+  threads?: number;
 }
 /**
  * Describes a Private Cloud Host Memory
@@ -1448,7 +1448,7 @@ export interface OrderCatalogPccHostMemorySpecifications {
    * Memory Size
    *
    */
-  ram?: ComplexTypeUnitAndValue<Number>;
+  ram?: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Describes a Private Cloud Host Network
@@ -1458,12 +1458,12 @@ export interface OrderCatalogPccHostNetworkSpecifications {
    * Number of network interfaces
    *
    */
-  nics?: Number;
+  nics?: number;
   /**
    * Speed of the network interfaces
    *
    */
-  speed?: ComplexTypeUnitAndValue<Number>;
+  speed?: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Describes a Private Cloud Host Hardware
@@ -1538,7 +1538,7 @@ export interface OrderCatalogPccOption {
    * Describes the maximum quantity on the initial order
    *
    */
-  maxInitialQuantity?: Number;
+  maxInitialQuantity?: number;
   /**
    * Name of the option
    *
@@ -1648,7 +1648,7 @@ export interface OrderCatalogPccStorageSpecifications {
    * Size of the storage
    *
    */
-  size?: ComplexTypeUnitAndValue<Number>;
+  size?: ComplexTypeUnitAndValue<number>;
   /**
    * Type of the storage
    *
@@ -1738,7 +1738,7 @@ export interface OrderCatalogPrivateCloudCatalog {
    * Catalog ID
    *
    */
-  catalogId?: Number;
+  catalogId?: number;
   /**
    * Catalog name
    *
@@ -1883,7 +1883,7 @@ export interface OrderCatalogPublicCatalog {
    * Identifier of the catalog
    *
    */
-  catalogId?: Number;
+  catalogId?: number;
   /**
    * Subsidiary specific information
    *
@@ -1943,7 +1943,7 @@ export interface OrderCatalogPublicDedicatedServerCatalog {
    * Identifier of the catalog
    *
    */
-  catalogId?: Number;
+  catalogId?: number;
   /**
    * Subsidiary specific information
    *
@@ -2043,7 +2043,7 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalCPU {
    * CPU Boost
    *
    */
-  boost?: Number;
+  boost?: number;
   /**
    * CPU Brand
    *
@@ -2053,12 +2053,12 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalCPU {
    * Number of cores
    *
    */
-  cores?: Number;
+  cores?: number;
   /**
    * Frequency of CPU in GHz
    *
    */
-  frequency?: Number;
+  frequency?: number;
   /**
    * Displayable name
    *
@@ -2068,12 +2068,12 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalCPU {
    * CPU score
    *
    */
-  score?: Number;
+  score?: number;
   /**
    * Number of threads
    *
    */
-  threads?: Number;
+  threads?: number;
 }
 /**
  * Describes a Disk for a Dedicated Server
@@ -2083,7 +2083,7 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalDisk {
    * Disk capacity in Gb
    *
    */
-  capacity?: Number;
+  capacity?: number;
   /**
    * Disk interface
    *
@@ -2093,7 +2093,7 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalDisk {
    * Number of disks
    *
    */
-  number?: Number;
+  number?: number;
   /**
    * Disk specs
    *
@@ -2128,7 +2128,7 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalGPU {
    * GPU memory size
    *
    */
-  memory?: Number;
+  memory?: number;
 }
 /**
  * Describes a Memory technical Blob for a Dedicated Server
@@ -2143,7 +2143,7 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalMemory {
    * RAM Frequency
    *
    */
-  frequency?: Number;
+  frequency?: number;
   /**
    * RAM Type (DDRx...)
    *
@@ -2153,7 +2153,7 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalMemory {
    * Size of the RAM in Gb
    *
    */
-  size?: Number;
+  size?: number;
 }
 /**
  * Describes a Network technical Blob for a Dedicated Server
@@ -2163,7 +2163,7 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalNetwork {
    * Network burst
    *
    */
-  burst?: Number;
+  burst?: number;
   /**
    * Guaranteed Network
    *
@@ -2173,12 +2173,12 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalNetwork {
    * Network level
    *
    */
-  level?: Number;
+  level?: number;
   /**
    * Network limit
    *
    */
-  limit?: Number;
+  limit?: number;
 }
 /**
  * Describes some technicals informations of a Dedicated Server
@@ -2233,7 +2233,7 @@ export interface OrderCatalogPublicLocale {
    * Default VAT rate used by the Subsidiary
    *
    */
-  taxRate?: Number;
+  taxRate?: number;
 }
 /**
  * Describes a Commercial offer inside a Catalog
@@ -2303,7 +2303,7 @@ export interface OrderCatalogPublicPricing {
    * Engagement period
    *
    */
-  commitment?: Number;
+  commitment?: number;
   /**
    * Pricing description
    *
@@ -2313,7 +2313,7 @@ export interface OrderCatalogPublicPricing {
    * Length of the interval
    *
    */
-  interval?: Number;
+  interval?: number;
   /**
    * Unit of the interval
    *
@@ -2333,12 +2333,12 @@ export interface OrderCatalogPublicPricing {
    * Phase for the Pricing
    *
    */
-  phase?: Number;
+  phase?: number;
   /**
    * Price, in micro-cents
    *
    */
-  price?: Number;
+  price?: number;
   /**
    * Describes how many times the Commercial offer can be added to the Cart
    *
@@ -2358,7 +2358,7 @@ export interface OrderCatalogPublicPricing {
    * Tax that can be applied, in micro-cents
    *
    */
-  tax?: Number;
+  tax?: number;
   /**
    * Pricing type
    *
@@ -2373,12 +2373,12 @@ export interface OrderCatalogPublicPricingMinMax {
    * Maximal value
    *
    */
-  max?: Number;
+  max?: number;
   /**
    * Minimal value
    *
    */
-  min?: Number;
+  min?: number;
 }
 /**
  * Describes a Product attached to a Commercial offer
@@ -2403,7 +2403,7 @@ export interface OrderUpgradeOperation {
    * Identifier of the operation
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Product concerned by the operation
    *
@@ -3192,579 +3192,579 @@ type PathsOrderDELETE = '/order/cart/{cartId}' |
 '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}';
 
 export class ApiOrder extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Missing description
   List of your OVH order carts
   **/
-  public get(path: '/order/cart', queryParams?: {description?: string}): Promise<string[]>;
+  public get(path: '/order/cart'): Promise<string[]>;
   /**
   Missing description
   Retrieve information about a specific cart
   **/
-  public get(path: '/order/cart/{cartId}', pathParams: {cartId: string}): Promise<OrderCartCart>;
+  public get(path: '/order/cart/{cartId}', params: {cartId: string}): Promise<OrderCartCart>;
   /**
   Missing description
   Get informations about a baremetal server
   **/
-  public get(path: '/order/cart/{cartId}/baremetalServers', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/baremetalServers', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about baremetal server options
   **/
-  public get(path: '/order/cart/{cartId}/baremetalServers/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/baremetalServers/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about CDN offers
   **/
-  public get(path: '/order/cart/{cartId}/cdn', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/cdn', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about CDN options
   **/
-  public get(path: '/order/cart/{cartId}/cdn/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/cdn/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Ceph as a Service offers
   **/
-  public get(path: '/order/cart/{cartId}/cephaas', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/cephaas', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Ceph as a Service options
   **/
-  public get(path: '/order/cart/{cartId}/cephaas/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/cephaas/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get prices and contracts information for your cart
   **/
-  public get(path: '/order/cart/{cartId}/checkout', pathParams: {cartId: string}): Promise<OrderOrder>;
+  public get(path: '/order/cart/{cartId}/checkout', params: {cartId: string}): Promise<OrderOrder>;
   /**
   Missing description
   Get informations about Public Cloud offers
   **/
-  public get(path: '/order/cart/{cartId}/cloud', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/cloud', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Public Cloud options
   **/
-  public get(path: '/order/cart/{cartId}/cloud/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/cloud/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Cloud Web offers
   **/
-  public get(path: '/order/cart/{cartId}/cloudweb', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/cloudweb', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Cloud Web options
   **/
-  public get(path: '/order/cart/{cartId}/cloudweb/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/cloudweb/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Retrieve coupons associated to cart
   **/
-  public get(path: '/order/cart/{cartId}/coupon', pathParams: {cartId: string}): Promise<string[]>;
+  public get(path: '/order/cart/{cartId}/coupon', params: {cartId: string}): Promise<string[]>;
   /**
   Missing description
   Get informations about SaaS CSP2 offers
   **/
-  public get(path: '/order/cart/{cartId}/csp2', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/csp2', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about SaaS CSP2 options
   **/
-  public get(path: '/order/cart/{cartId}/csp2/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/csp2/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about a timeseries offer
   **/
-  public get(path: '/order/cart/{cartId}/dbaasTimeseries', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/dbaasTimeseries', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about a dedicated server
   **/
-  public get(path: '/order/cart/{cartId}/dedicated', pathParams: {cartId: string}, queryParams?: {family?: string, planCode?: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/dedicated', params: {cartId: string, family?: string, planCode?: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about dedicated server options
   **/
-  public get(path: '/order/cart/{cartId}/dedicated/options', pathParams: {cartId: string}, queryParams?: {family?: string, planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/dedicated/options', params: {cartId: string, family?: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about a dedicated labs server
   **/
-  public get(path: '/order/cart/{cartId}/dedicatedLabs', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/dedicatedLabs', params: {cartId: string, planCode?: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about dedicated labs server options
   **/
-  public get(path: '/order/cart/{cartId}/dedicatedLabs/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/dedicatedLabs/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about a dedicated server for US Reseller
   **/
-  public get(path: '/order/cart/{cartId}/dedicatedReseller', pathParams: {cartId: string}, queryParams?: {family?: string, planCode?: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/dedicatedReseller', params: {cartId: string, family?: string, planCode?: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about dedicated server options
   **/
-  public get(path: '/order/cart/{cartId}/dedicatedReseller/options', pathParams: {cartId: string}, queryParams?: {family?: string, planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/dedicatedReseller/options', params: {cartId: string, family?: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Desk As A Service offers
   **/
-  public get(path: '/order/cart/{cartId}/deskaas', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/deskaas', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Dedicated Discover server offers
   **/
-  public get(path: '/order/cart/{cartId}/discover', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/discover', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Dedicated Discover server options
   **/
-  public get(path: '/order/cart/{cartId}/discover/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/discover/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about DNS zone offer
   **/
-  public get(path: '/order/cart/{cartId}/dns', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/dns', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about a domain name
   **/
-  public get(path: '/order/cart/{cartId}/domain', pathParams: {cartId: string}, queryParams?: {domain?: string}): Promise<OrderCartProductInformation[]>;
+  public get(path: '/order/cart/{cartId}/domain', params: {cartId: string, domain: string}): Promise<OrderCartProductInformation[]>;
   /**
   Missing description
   Get informations about domain names options
   **/
-  public get(path: '/order/cart/{cartId}/domain/options', pathParams: {cartId: string}, queryParams?: {domain?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/domain/options', params: {cartId: string, domain: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Domain packs offers (AllDom)
   **/
-  public get(path: '/order/cart/{cartId}/domainPacks', pathParams: {cartId: string}, queryParams?: {domain?: string}): Promise<OrderCartDomainPacksProductInformation[]>;
+  public get(path: '/order/cart/{cartId}/domainPacks', params: {cartId: string, domain: string}): Promise<OrderCartDomainPacksProductInformation[]>;
   /**
   Missing description
   Get informations about Domain Restore
   **/
-  public get(path: '/order/cart/{cartId}/domainRestore', pathParams: {cartId: string}, queryParams?: {domain?: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/domainRestore', params: {cartId: string, domain: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about a domain name transfer
   **/
-  public get(path: '/order/cart/{cartId}/domainTransfer', pathParams: {cartId: string}, queryParams?: {domain?: string}): Promise<OrderCartProductInformation[]>;
+  public get(path: '/order/cart/{cartId}/domainTransfer', params: {cartId: string, domain: string}): Promise<OrderCartProductInformation[]>;
   /**
   Missing description
   Get informations about domain names transfer options
   **/
-  public get(path: '/order/cart/{cartId}/domainTransfer/options', pathParams: {cartId: string}, queryParams?: {domain?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/domainTransfer/options', params: {cartId: string, domain: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about EmailPro offers
   **/
-  public get(path: '/order/cart/{cartId}/emailpro', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/emailpro', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about EmailPro options
   **/
-  public get(path: '/order/cart/{cartId}/emailpro/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/emailpro/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Exchange offers
   **/
-  public get(path: '/order/cart/{cartId}/exchange', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/exchange', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Exchange options
   **/
-  public get(path: '/order/cart/{cartId}/exchange/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/exchange/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Exchange Enterprise offers
   **/
-  public get(path: '/order/cart/{cartId}/exchangeEnterprise', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/exchangeEnterprise', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Exchange Enterprise options
   **/
-  public get(path: '/order/cart/{cartId}/exchangeEnterprise/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/exchangeEnterprise/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Hosting Reseller offers
   **/
-  public get(path: '/order/cart/{cartId}/hostingReseller', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/hostingReseller', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about IP addresses offers
   **/
-  public get(path: '/order/cart/{cartId}/ip', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/ip', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about IP addresses options
   **/
-  public get(path: '/order/cart/{cartId}/ip/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/ip/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about IP Load-Balancing offers
   **/
-  public get(path: '/order/cart/{cartId}/ipLoadbalancing', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/ipLoadbalancing', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about IP Load-Balancing options
   **/
-  public get(path: '/order/cart/{cartId}/ipLoadbalancing/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/ipLoadbalancing/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   List all the items of a cart
   **/
-  public get(path: '/order/cart/{cartId}/item', pathParams: {cartId: string}): Promise<Number[]>;
+  public get(path: '/order/cart/{cartId}/item', params: {cartId: string}): Promise<number[]>;
   /**
   Missing description
   Retrieve information about a specific item of a cart
   **/
-  public get(path: '/order/cart/{cartId}/item/{itemId}', pathParams: {cartId: string, itemId: Number}): Promise<OrderCartItem>;
+  public get(path: '/order/cart/{cartId}/item/{itemId}', params: {cartId: string, itemId: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Retrieve all configuration item of the cart item
   **/
-  public get(path: '/order/cart/{cartId}/item/{itemId}/configuration', pathParams: {cartId: string, itemId: Number}, queryParams?: {label?: string}): Promise<Number[]>;
+  public get(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {cartId: string, itemId: number, label?: string}): Promise<number[]>;
   /**
   Missing description
   Retrieve configuration item
   **/
-  public get(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}', pathParams: {cartId: string, itemId: Number, configurationId: Number}): Promise<OrderCartConfigurationItem>;
+  public get(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}', params: {cartId: string, itemId: number, configurationId: number}): Promise<OrderCartConfigurationItem>;
   /**
   Missing description
   Retrieve all required configuration item of the cart item
   **/
-  public get(path: '/order/cart/{cartId}/item/{itemId}/requiredConfiguration', pathParams: {cartId: string, itemId: Number}): Promise<OrderCartConfigurationRequirements[]>;
+  public get(path: '/order/cart/{cartId}/item/{itemId}/requiredConfiguration', params: {cartId: string, itemId: number}): Promise<OrderCartConfigurationRequirements[]>;
   /**
   Missing description
   Get informations about Kubernetes offers
   **/
-  public get(path: '/order/cart/{cartId}/kubernetes', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/kubernetes', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Kubernetes options
   **/
-  public get(path: '/order/cart/{cartId}/kubernetes/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/kubernetes/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about CloudLinux licenses offers
   **/
-  public get(path: '/order/cart/{cartId}/licenseCloudLinux', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/licenseCloudLinux', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Directadmin licenses offers
   **/
-  public get(path: '/order/cart/{cartId}/licenseDirectadmin', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/licenseDirectadmin', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Plesk licenses offers
   **/
-  public get(path: '/order/cart/{cartId}/licensePlesk', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/licensePlesk', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Plesk license options
   **/
-  public get(path: '/order/cart/{cartId}/licensePlesk/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/licensePlesk/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about SqlServer licenses offers
   **/
-  public get(path: '/order/cart/{cartId}/licenseSqlServer', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/licenseSqlServer', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Virtuozzo licenses offers
   **/
-  public get(path: '/order/cart/{cartId}/licenseVirtuozzo', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/licenseVirtuozzo', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Windows licenses offers
   **/
-  public get(path: '/order/cart/{cartId}/licenseWindows', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/licenseWindows', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Worklight licenses offers
   **/
-  public get(path: '/order/cart/{cartId}/licenseWorklight', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/licenseWorklight', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about cPanel licenses offers
   **/
-  public get(path: '/order/cart/{cartId}/licensecPanel', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/licensecPanel', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Logs offers
   **/
-  public get(path: '/order/cart/{cartId}/logs', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/logs', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Logs options
   **/
-  public get(path: '/order/cart/{cartId}/logs/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/logs/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Managed Services offers
   **/
-  public get(path: '/order/cart/{cartId}/managedServices', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/managedServices', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Managed Services options
   **/
-  public get(path: '/order/cart/{cartId}/managedServices/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/managedServices/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Metrics offers
   **/
-  public get(path: '/order/cart/{cartId}/metrics', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/metrics', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Metrics options
   **/
-  public get(path: '/order/cart/{cartId}/metrics/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/metrics/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Microsoft offers
   **/
-  public get(path: '/order/cart/{cartId}/microsoft', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/microsoft', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Microsoft options
   **/
-  public get(path: '/order/cart/{cartId}/microsoft/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/microsoft/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about NAS HA offers
   **/
-  public get(path: '/order/cart/{cartId}/nasha', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/nasha', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about NAS HA options
   **/
-  public get(path: '/order/cart/{cartId}/nasha/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/nasha/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Office 365 licenses
   **/
-  public get(path: '/order/cart/{cartId}/office365', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/office365', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Office 365 options
   **/
-  public get(path: '/order/cart/{cartId}/office365/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/office365/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Office 365 Prepaid licenses
   **/
-  public get(path: '/order/cart/{cartId}/office365Prepaid', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/office365Prepaid', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Office 365 Prepaid options
   **/
-  public get(path: '/order/cart/{cartId}/office365Prepaid/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/office365Prepaid/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Over The Box offers
   **/
-  public get(path: '/order/cart/{cartId}/otb', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/otb', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Over The Box options
   **/
-  public get(path: '/order/cart/{cartId}/otb/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/otb/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   List of OVHcloud Connect product
   Get informations about OVHcloud Connect offers
   **/
-  public get(path: '/order/cart/{cartId}/ovhCloudConnect', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/ovhCloudConnect', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about PaaS Monitoring offers
   **/
-  public get(path: '/order/cart/{cartId}/paasmon', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/paasmon', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Private Cloud CDI offers
   **/
-  public get(path: '/order/cart/{cartId}/privateCloudCDI', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/privateCloudCDI', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Private Cloud CDI options
   **/
-  public get(path: '/order/cart/{cartId}/privateCloudCDI/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/privateCloudCDI/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Private Cloud Dedicated Cloud offers
   **/
-  public get(path: '/order/cart/{cartId}/privateCloudDC', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/privateCloudDC', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Private Cloud Dedicated Cloud options
   **/
-  public get(path: '/order/cart/{cartId}/privateCloudDC/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/privateCloudDC/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Private Cloud Reseller offers
   **/
-  public get(path: '/order/cart/{cartId}/privateCloudReseller', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/privateCloudReseller', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Private Cloud Reseller options
   **/
-  public get(path: '/order/cart/{cartId}/privateCloudReseller/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/privateCloudReseller/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Private Cloud Reseller Enterprise offers
   **/
-  public get(path: '/order/cart/{cartId}/privateCloudResellerEnterprise', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/privateCloudResellerEnterprise', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Private Cloud Reseller Enterprise options
   **/
-  public get(path: '/order/cart/{cartId}/privateCloudResellerEnterprise/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/privateCloudResellerEnterprise/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Private Cloud SDDC offers
   **/
-  public get(path: '/order/cart/{cartId}/privateCloudSDDC', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/privateCloudSDDC', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Private Cloud SDDC options
   **/
-  public get(path: '/order/cart/{cartId}/privateCloudSDDC/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/privateCloudSDDC/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Reseller offers
   **/
-  public get(path: '/order/cart/{cartId}/reseller', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/reseller', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Sharepoint offers
   **/
-  public get(path: '/order/cart/{cartId}/sharepoint', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/sharepoint', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Sharepoint options
   **/
-  public get(path: '/order/cart/{cartId}/sharepoint/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/sharepoint/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about SMS offers
   **/
-  public get(path: '/order/cart/{cartId}/sms', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/sms', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about SSL Comodo offers
   **/
-  public get(path: '/order/cart/{cartId}/sslComodo', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/sslComodo', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about SSL Comodo options
   **/
-  public get(path: '/order/cart/{cartId}/sslComodo/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/sslComodo/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about SSL Gateway offers
   **/
-  public get(path: '/order/cart/{cartId}/sslGateway', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/sslGateway', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about SSL Gateway options
   **/
-  public get(path: '/order/cart/{cartId}/sslGateway/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/sslGateway/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get a summary of your current order
   **/
-  public get(path: '/order/cart/{cartId}/summary', pathParams: {cartId: string}): Promise<OrderOrder>;
+  public get(path: '/order/cart/{cartId}/summary', params: {cartId: string}): Promise<OrderOrder>;
   /**
   Missing description
   Get informations about VoIP offers
   **/
-  public get(path: '/order/cart/{cartId}/telephony', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/telephony', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about VoIP options
   **/
-  public get(path: '/order/cart/{cartId}/telephony/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/telephony/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   List of OVHcloud Connect product
   Get informations about OVHcloud Connect offers
   **/
-  public get(path: '/order/cart/{cartId}/vco', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/vco', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Horizon View offers
   **/
-  public get(path: '/order/cart/{cartId}/vdi', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/vdi', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Horizon View options
   **/
-  public get(path: '/order/cart/{cartId}/vdi/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/vdi/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Veeam Enterprise offers
   **/
-  public get(path: '/order/cart/{cartId}/veeamEnterprise', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/veeamEnterprise', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Veeam Enterprise options
   **/
-  public get(path: '/order/cart/{cartId}/veeamEnterprise/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/veeamEnterprise/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about Veeam Cloud Connect offers
   **/
-  public get(path: '/order/cart/{cartId}/veeamcc', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/veeamcc', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about Veeam Cloud Connect options
   **/
-  public get(path: '/order/cart/{cartId}/veeamcc/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/veeamcc/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about VPS offers
   **/
-  public get(path: '/order/cart/{cartId}/vps', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/vps', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about VPS options
   **/
-  public get(path: '/order/cart/{cartId}/vps/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/vps/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Get informations about vRack offers
   **/
-  public get(path: '/order/cart/{cartId}/vrack', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/vrack', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about vRack offers
   **/
-  public get(path: '/order/cart/{cartId}/vrackReseller', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/vrackReseller', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about webHosting offers
   **/
-  public get(path: '/order/cart/{cartId}/webHosting', pathParams: {cartId: string}): Promise<OrderCartWebHostingProductInformation[]>;
+  public get(path: '/order/cart/{cartId}/webHosting', params: {cartId: string}): Promise<OrderCartWebHostingProductInformation[]>;
   /**
   Missing description
   Get informations about webHosting options
   **/
-  public get(path: '/order/cart/{cartId}/webHosting/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/webHosting/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   List of xdsl product
   Get informations about xdsl offers
   **/
-  public get(path: '/order/cart/{cartId}/xdsl', pathParams: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/cart/{cartId}/xdsl', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   List of xdsl addon
   Get informations about xdsl options
   **/
-  public get(path: '/order/cart/{cartId}/xdsl/options', pathParams: {cartId: string}, queryParams?: {planCode?: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cart/{cartId}/xdsl/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the PUBLICCLOUD service
   List available services
@@ -3774,7 +3774,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/cloud/#serviceName#
   Get informations about additional Cloud offer for your service
   **/
-  public get(path: '/order/cartServiceOption/cloud/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/cloud/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the DEDICATED service
   List available services
@@ -3784,17 +3784,17 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/dedicated/#serviceName#
   Get informations about additional dedicated offer for your service
   **/
-  public get(path: '/order/cartServiceOption/dedicated/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/dedicated/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the DOMAIN service
   List available services
   **/
-  public get(path: '/order/cartServiceOption/domain', queryParams?: {whoisOwner?: string}): Promise<string[]>;
+  public get(path: '/order/cartServiceOption/domain'): Promise<string[]>;
   /**
   Listing offers /order/cartServiceOptions/domain/#serviceName#
   Get informations about additional Domain offer for your service
   **/
-  public get(path: '/order/cartServiceOption/domain/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/domain/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the PROEMAIL service
   List available services
@@ -3804,7 +3804,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/emailpro/#serviceName#
   Get informations about additional EmailPro offer for your service
   **/
-  public get(path: '/order/cartServiceOption/emailpro/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/emailpro/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the IPLB service
   List available services
@@ -3814,7 +3814,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/ipLoadbalancing/#serviceName#
   Get informations about additional IP Load-Balancing offer for your service
   **/
-  public get(path: '/order/cartServiceOption/ipLoadbalancing/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/ipLoadbalancing/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the DBAAS-LOGS service
   List available services
@@ -3824,7 +3824,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/logs/#serviceName#
   Get informations about additional Logs offer for your service
   **/
-  public get(path: '/order/cartServiceOption/logs/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/logs/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the MSSERVICES service
   List available services
@@ -3834,7 +3834,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/microsoft/#serviceName#
   Get informations about additional Microsoft offer for your service
   **/
-  public get(path: '/order/cartServiceOption/microsoft/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/microsoft/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the EXCHANGE service
   List available services
@@ -3844,7 +3844,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/microsoftExchange/#serviceName#
   Get informations about additional Microsoft offer for your service
   **/
-  public get(path: '/order/cartServiceOption/microsoftExchange/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/microsoftExchange/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the OFFICE service
   List available services
@@ -3854,7 +3854,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/office365/#serviceName#
   Get informations about additional Office offer for your service
   **/
-  public get(path: '/order/cartServiceOption/office365Prepaid/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/office365Prepaid/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the PCC service
   List available services
@@ -3864,7 +3864,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/privateCloud/#serviceName#
   Get informations about additional Private Cloud offer for your service
   **/
-  public get(path: '/order/cartServiceOption/privateCloud/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/privateCloud/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the PCC service
   List available services
@@ -3874,7 +3874,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/privateCloudReseller/#serviceName#
   Get informations about additional Private Cloud offer for your service
   **/
-  public get(path: '/order/cartServiceOption/privateCloudReseller/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/privateCloudReseller/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the PCC service
   List available services
@@ -3884,7 +3884,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/privateCloudResellerEnterprise/#serviceName#
   Get informations about additional Private Cloud Enterprise offer for your service
   **/
-  public get(path: '/order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the SHAREPOINT service
   List available services
@@ -3894,7 +3894,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/sharepoint/#serviceName#
   Get informations about additional Sharepoint offer for your service
   **/
-  public get(path: '/order/cartServiceOption/sharepoint/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/sharepoint/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the SSLGATEWAY service
   List available services
@@ -3904,7 +3904,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/sslGateway/#serviceName#
   Get informations about additional SSL Gateway offer for your service
   **/
-  public get(path: '/order/cartServiceOption/sslGateway/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/sslGateway/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the HORIZONVIEW service
   List available services
@@ -3914,7 +3914,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/vdi/#serviceName#
   Get informations about additional Horizon View offer for your service
   **/
-  public get(path: '/order/cartServiceOption/vdi/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/vdi/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Operations about the HOSTING service
   List available services
@@ -3924,7 +3924,7 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/cartServiceOptions/webHosting/#serviceName#
   Get informations about additional Web Hosting offer for your service
   **/
-  public get(path: '/order/cartServiceOption/webHosting/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  public get(path: '/order/cartServiceOption/webHosting/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
   Missing description
   Retrieve list of catalog name
@@ -3934,112 +3934,112 @@ export class ApiOrder extends ApiCommon {
   Missing description
   Retrieve information of Public Cloud catalog
   **/
-  public get(path: '/order/catalog/formatted/cloud', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/cloud'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of dedicated server catalog
   **/
-  public get(path: '/order/catalog/formatted/dedicated', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/dedicated'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Desk as a service catalog
   **/
-  public get(path: '/order/catalog/formatted/deskaas', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/deskaas'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of dedicated discover offer server catalog
   **/
-  public get(path: '/order/catalog/formatted/discover', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/discover'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of IP addresses catalog
   **/
-  public get(path: '/order/catalog/formatted/ip', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/ip'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of CloudLinux licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licenseCloudLinux', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licenseCloudLinux'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Directadmin licenses offers catalog
   **/
-  public get(path: '/order/catalog/formatted/licenseDirectadmin', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licenseDirectadmin'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Plesk licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licensePlesk', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licensePlesk'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of SqlServer licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licenseSqlServer', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licenseSqlServer'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Virtuozzo licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licenseVirtuozzo', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licenseVirtuozzo'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Windows licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licenseWindows', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licenseWindows'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Worklight licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licenseWorklight', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licenseWorklight'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of cPanel licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licensecPanel', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licensecPanel'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Logs Data Platform catalog
   **/
-  public get(path: '/order/catalog/formatted/logs', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/logs'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Private Cloud CDI catalog
   **/
-  public get(path: '/order/catalog/formatted/privateCloudCDI', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogPrivateCloudCatalog>;
+  public get(path: '/order/catalog/formatted/privateCloudCDI'): Promise<OrderCatalogPrivateCloudCatalog>;
   /**
   Missing description
   Retrieve information of Private Cloud Dedicated Cloud catalog
   **/
-  public get(path: '/order/catalog/formatted/privateCloudDC', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogPrivateCloudCatalog>;
+  public get(path: '/order/catalog/formatted/privateCloudDC'): Promise<OrderCatalogPrivateCloudCatalog>;
   /**
   Missing description
   Retrieve information of Private Cloud Reseller catalog
   **/
-  public get(path: '/order/catalog/formatted/privateCloudReseller', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogPccCatalog>;
+  public get(path: '/order/catalog/formatted/privateCloudReseller'): Promise<OrderCatalogPccCatalog>;
   /**
   Missing description
   Retrieve information of Private Cloud Reseller Enterprise catalog
   **/
-  public get(path: '/order/catalog/formatted/privateCloudResellerEnterprise', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogPccCatalog>;
+  public get(path: '/order/catalog/formatted/privateCloudResellerEnterprise'): Promise<OrderCatalogPccCatalog>;
   /**
   Missing description
   Retrieve information of Private Cloud SDDC catalog
   **/
-  public get(path: '/order/catalog/formatted/privateCloudSDDC', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogPrivateCloudCatalog>;
+  public get(path: '/order/catalog/formatted/privateCloudSDDC'): Promise<OrderCatalogPrivateCloudCatalog>;
   /**
   Missing description
   Retrieve information of Reseller catalog
   **/
-  public get(path: '/order/catalog/formatted/reseller', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/reseller'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of VPS catalog
   **/
-  public get(path: '/order/catalog/formatted/vps', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/vps'): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve bare-metal servers catalog
   **/
-  public get(path: '/order/catalog/public/baremetalServers', queryParams?: {ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogPublicDedicatedServerCatalog>;
+  public get(path: '/order/catalog/public/baremetalServers'): Promise<OrderCatalogPublicDedicatedServerCatalog>;
   /**
   Operations about the CDNANYCAST service
   List available services
@@ -4054,42 +4054,42 @@ export class ApiOrder extends ApiCommon {
   Order a New Dedicated CDN Service
   Get prices and contracts information
   **/
-  public get(path: '/order/cdn/dedicated/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/cdn/dedicated/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/cdn/dedicated/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/cdn/dedicated/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Order Backend Option
   Get allowed durations for 'backend' option
   **/
-  public get(path: '/order/cdn/dedicated/{serviceName}/backend', pathParams: {serviceName: string}, queryParams?: {backend?: Number}): Promise<string[]>;
+  public get(path: '/order/cdn/dedicated/{serviceName}/backend', params: {serviceName: string, backend: number}): Promise<string[]>;
   /**
   Order Backend Option
   Get prices and contracts information
   **/
-  public get(path: '/order/cdn/dedicated/{serviceName}/backend/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {backend?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/cdn/dedicated/{serviceName}/backend/{duration}', params: {serviceName: string, duration: string, backend: number}): Promise<OrderOrder>;
   /**
   Upgrade cacheRule Option
   Get allowed durations for 'cacheRule' option
   **/
-  public get(path: '/order/cdn/dedicated/{serviceName}/cacheRule', pathParams: {serviceName: string}, queryParams?: {cacheRule?: CdnanycastOrderCacheRuleEnum}): Promise<string[]>;
+  public get(path: '/order/cdn/dedicated/{serviceName}/cacheRule', params: {serviceName: string, cacheRule: CdnanycastOrderCacheRuleEnum}): Promise<string[]>;
   /**
   Upgrade cacheRule Option
   Get prices and contracts information
   **/
-  public get(path: '/order/cdn/dedicated/{serviceName}/cacheRule/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {cacheRule?: CdnanycastOrderCacheRuleEnum}): Promise<OrderOrder>;
+  public get(path: '/order/cdn/dedicated/{serviceName}/cacheRule/{duration}', params: {serviceName: string, duration: string, cacheRule: CdnanycastOrderCacheRuleEnum}): Promise<OrderOrder>;
   /**
   Order Quota
   Get allowed durations for 'quota' option
   **/
-  public get(path: '/order/cdn/dedicated/{serviceName}/quota', pathParams: {serviceName: string}, queryParams?: {quota?: CdnanycastOrderQuotaEnum}): Promise<string[]>;
+  public get(path: '/order/cdn/dedicated/{serviceName}/quota', params: {serviceName: string, quota: CdnanycastOrderQuotaEnum}): Promise<string[]>;
   /**
   Order Quota
   Get prices and contracts information
   **/
-  public get(path: '/order/cdn/dedicated/{serviceName}/quota/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {quota?: CdnanycastOrderQuotaEnum}): Promise<OrderOrder>;
+  public get(path: '/order/cdn/dedicated/{serviceName}/quota/{duration}', params: {serviceName: string, duration: string, quota: CdnanycastOrderQuotaEnum}): Promise<OrderOrder>;
   /**
   Operations about the CDNSTATIC service
   List available services
@@ -4099,22 +4099,22 @@ export class ApiOrder extends ApiCommon {
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/cdn/webstorage/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/cdn/webstorage/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Upgrade Storage Option
   Get allowed durations for 'storage' option
   **/
-  public get(path: '/order/cdn/webstorage/{serviceName}/storage', pathParams: {serviceName: string}, queryParams?: {storage?: CdnWebstorageOrderStorageEnum}): Promise<string[]>;
+  public get(path: '/order/cdn/webstorage/{serviceName}/storage', params: {serviceName: string, storage: CdnWebstorageOrderStorageEnum}): Promise<string[]>;
   /**
   Upgrade Storage Option
   Get prices and contracts information
   **/
-  public get(path: '/order/cdn/webstorage/{serviceName}/storage/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {storage?: CdnWebstorageOrderStorageEnum}): Promise<OrderOrder>;
+  public get(path: '/order/cdn/webstorage/{serviceName}/storage/{duration}', params: {serviceName: string, duration: string, storage: CdnWebstorageOrderStorageEnum}): Promise<OrderOrder>;
   /**
   Order Traffic
   Get prices and contracts information
   **/
-  public get(path: '/order/cdn/webstorage/{serviceName}/traffic', pathParams: {serviceName: string}, queryParams?: {bandwidth?: CdnWebstorageOrderTrafficEnum}): Promise<OrderOrder>;
+  public get(path: '/order/cdn/webstorage/{serviceName}/traffic', params: {serviceName: string, bandwidth: CdnWebstorageOrderTrafficEnum}): Promise<OrderOrder>;
   /**
   Operations about the PUBLICCLOUD service
   List available services
@@ -4124,17 +4124,17 @@ export class ApiOrder extends ApiCommon {
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/cloud/project/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/cloud/project/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Order credit usable on your Cloud project
   Get prices and contracts information
   **/
-  public get(path: '/order/cloud/project/{serviceName}/credit', pathParams: {serviceName: string}, queryParams?: {amount?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/cloud/project/{serviceName}/credit', params: {serviceName: string, amount: number}): Promise<OrderOrder>;
   /**
   Order failover ip on your Cloud project
   Get prices and contracts information
   **/
-  public get(path: '/order/cloud/project/{serviceName}/ip', pathParams: {serviceName: string}, queryParams?: {country?: VpsIpGeolocationEnum, instanceId?: string, quantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/cloud/project/{serviceName}/ip', params: {serviceName: string, country?: VpsIpGeolocationEnum, instanceId: string, quantity: number}): Promise<OrderOrder>;
   /**
   Operations about the HOUSING service
   List available services
@@ -4144,27 +4144,27 @@ export class ApiOrder extends ApiCommon {
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/dedicated/housing/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/dedicated/housing/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Order an APC for this bay
   Get allowed durations for 'APC' option
   **/
-  public get(path: '/order/dedicated/housing/{serviceName}/APC', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/dedicated/housing/{serviceName}/APC', params: {serviceName: string}): Promise<string[]>;
   /**
   Order an APC for this bay
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/housing/{serviceName}/APC/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/housing/{serviceName}/APC/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a new Nas HA
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/dedicated/nasha/new', queryParams?: {datacenter?: DedicatedNasHAZoneEnum, model?: DedicatedNasHAOfferEnum}): Promise<string[]>;
+  public get(path: '/order/dedicated/nasha/new'): Promise<string[]>;
   /**
   Order a new Nas HA
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/nasha/new/{duration}', pathParams: {duration: string}, queryParams?: {datacenter?: DedicatedNasHAZoneEnum, model?: DedicatedNasHAOfferEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/nasha/new/{duration}', params: {duration: string, datacenter: DedicatedNasHAZoneEnum, model: DedicatedNasHAOfferEnum}): Promise<OrderOrder>;
   /**
   Operations about the DEDICATED service
   List available services
@@ -4174,147 +4174,147 @@ export class ApiOrder extends ApiCommon {
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/dedicated/server/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Order a backup storage for this server
   Get allowed durations for 'backupStorage' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/backupStorage', pathParams: {serviceName: string}, queryParams?: {capacity?: DedicatedServerBackupStorageCapacityEnum}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/backupStorage', params: {serviceName: string, capacity: DedicatedServerBackupStorageCapacityEnum}): Promise<string[]>;
   /**
   Order a backup storage for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/backupStorage/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {capacity?: DedicatedServerBackupStorageCapacityEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/backupStorage/{duration}', params: {serviceName: string, duration: string, capacity: DedicatedServerBackupStorageCapacityEnum}): Promise<OrderOrder>;
   /**
   Order bandwidth for this server
   Get allowed durations for 'bandwidth' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/bandwidth', pathParams: {serviceName: string}, queryParams?: {bandwidth?: DedicatedServerBandwidthOrderEnum, type?: DedicatedServerBandwidthOrderTypeEnum}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/bandwidth', params: {serviceName: string, bandwidth: DedicatedServerBandwidthOrderEnum, type: DedicatedServerBandwidthOrderTypeEnum}): Promise<string[]>;
   /**
   Order bandwidth for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/bandwidth/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {bandwidth?: DedicatedServerBandwidthOrderEnum, type?: DedicatedServerBandwidthOrderTypeEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/bandwidth/{duration}', params: {serviceName: string, duration: string, bandwidth: DedicatedServerBandwidthOrderEnum, type: DedicatedServerBandwidthOrderTypeEnum}): Promise<OrderOrder>;
   /**
   Order vRack bandwidth for this server
   Get allowed durations for 'bandwidthvRack' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/bandwidthvRack', pathParams: {serviceName: string}, queryParams?: {bandwidth?: DedicatedServerBandwidthvRackOrderEnum}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/bandwidthvRack', params: {serviceName: string, bandwidth: DedicatedServerBandwidthvRackOrderEnum}): Promise<string[]>;
   /**
   Order vRack bandwidth for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/bandwidthvRack/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {bandwidth?: DedicatedServerBandwidthvRackOrderEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/bandwidthvRack/{duration}', params: {serviceName: string, duration: string, bandwidth: DedicatedServerBandwidthvRackOrderEnum}): Promise<OrderOrder>;
   /**
   Order a failover IP for this server
   Get allowed durations for 'failoverIP' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/failoverIP', pathParams: {serviceName: string}, queryParams?: {country?: DedicatedServerIpCountryEnum}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/failoverIP', params: {serviceName: string, country: DedicatedServerIpCountryEnum}): Promise<string[]>;
   /**
   Order a failover IP for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/failoverIP/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {country?: DedicatedServerIpCountryEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/failoverIP/{duration}', params: {serviceName: string, duration: string, country: DedicatedServerIpCountryEnum}): Promise<OrderOrder>;
   /**
   Order a feature for this server
   Get allowed durations for 'feature' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/feature', pathParams: {serviceName: string}, queryParams?: {feature?: DedicatedServerOrderableSysFeatureEnum}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/feature', params: {serviceName: string, feature: DedicatedServerOrderableSysFeatureEnum}): Promise<string[]>;
   /**
   Order a feature for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/feature/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {feature?: DedicatedServerOrderableSysFeatureEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/feature/{duration}', params: {serviceName: string, duration: string, feature: DedicatedServerOrderableSysFeatureEnum}): Promise<OrderOrder>;
   /**
   order a Firewall for this server
   Get allowed durations for 'firewall' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/firewall', pathParams: {serviceName: string}, queryParams?: {firewallModel?: DedicatedServerFirewallModelEnum}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/firewall', params: {serviceName: string, firewallModel: DedicatedServerFirewallModelEnum}): Promise<string[]>;
   /**
   order a Firewall for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/firewall/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {firewallModel?: DedicatedServerFirewallModelEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/firewall/{duration}', params: {serviceName: string, duration: string, firewallModel: DedicatedServerFirewallModelEnum}): Promise<OrderOrder>;
   /**
   Order IP for this server
   Get allowed durations for 'ip' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/ip', pathParams: {serviceName: string}, queryParams?: {blockSize?: DedicatedServerIpBlockSizeEnum, country?: DedicatedServerIpCountryEnum, organisationId?: string, type?: DedicatedServerIpTypeOrderableEnum}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/ip', params: {serviceName: string, blockSize: DedicatedServerIpBlockSizeEnum, country?: DedicatedServerIpCountryEnum, organisationId?: string, type: DedicatedServerIpTypeOrderableEnum}): Promise<string[]>;
   /**
   Order IP for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/ip/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {blockSize?: DedicatedServerIpBlockSizeEnum, country?: DedicatedServerIpCountryEnum, organisationId?: string, type?: DedicatedServerIpTypeOrderableEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/ip/{duration}', params: {serviceName: string, duration: string, blockSize: DedicatedServerIpBlockSizeEnum, country?: DedicatedServerIpCountryEnum, organisationId?: string, type: DedicatedServerIpTypeOrderableEnum}): Promise<OrderOrder>;
   /**
   Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted
   Get allowed durations for 'ipMigration' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/ipMigration', pathParams: {serviceName: string}, queryParams?: {ip?: string, token?: string}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/ipMigration', params: {serviceName: string, ip: string, token: string}): Promise<string[]>;
   /**
   Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/ipMigration/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {ip?: string, token?: string}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/ipMigration/{duration}', params: {serviceName: string, duration: string, ip: string, token: string}): Promise<OrderOrder>;
   /**
   Order a kvm for this server
   Get allowed durations for 'kvm' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/kvm', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/kvm', params: {serviceName: string}): Promise<string[]>;
   /**
   Order a kvm for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/kvm/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/kvm/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a kvmip express for this server
   Get allowed durations for 'kvmExpress' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/kvmExpress', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/kvmExpress', params: {serviceName: string}): Promise<string[]>;
   /**
   Order a kvmip express for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/kvmExpress/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/kvmExpress/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order professional use option
   Get allowed durations for 'professionalUse' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/professionalUse', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/professionalUse', params: {serviceName: string}): Promise<string[]>;
   /**
   Order professional use option
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/professionalUse/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/professionalUse/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a static IP for this server
   Get allowed durations for 'staticIP' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/staticIP', pathParams: {serviceName: string}, queryParams?: {country?: DedicatedServerIpStaticCountryEnum}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/staticIP', params: {serviceName: string, country: DedicatedServerIpStaticCountryEnum}): Promise<string[]>;
   /**
   Order a static IP for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/staticIP/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {country?: DedicatedServerIpStaticCountryEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/staticIP/{duration}', params: {serviceName: string, duration: string, country: DedicatedServerIpStaticCountryEnum}): Promise<OrderOrder>;
   /**
   Order additionall traffic for this server
   Get allowed durations for 'traffic' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/traffic', pathParams: {serviceName: string}, queryParams?: {traffic?: DedicatedServerTrafficOrderEnum}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/traffic', params: {serviceName: string, traffic: DedicatedServerTrafficOrderEnum}): Promise<string[]>;
   /**
   Order additionall traffic for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/traffic/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {traffic?: DedicatedServerTrafficOrderEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/traffic/{duration}', params: {serviceName: string, duration: string, traffic: DedicatedServerTrafficOrderEnum}): Promise<OrderOrder>;
   /**
   Order an USB key for this server
   Get allowed durations for 'usbKey' option
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/usbKey', pathParams: {serviceName: string}, queryParams?: {capacity?: DedicatedServerUsbKeyCapacityEnum}): Promise<string[]>;
+  public get(path: '/order/dedicated/server/{serviceName}/usbKey', params: {serviceName: string, capacity: DedicatedServerUsbKeyCapacityEnum}): Promise<string[]>;
   /**
   Order an USB key for this server
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicated/server/{serviceName}/usbKey/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {capacity?: DedicatedServerUsbKeyCapacityEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicated/server/{serviceName}/usbKey/{duration}', params: {serviceName: string, duration: string, capacity: DedicatedServerUsbKeyCapacityEnum}): Promise<OrderOrder>;
   /**
   Operations about the PCC service
   List available services
@@ -4324,67 +4324,67 @@ export class ApiOrder extends ApiCommon {
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/dedicatedCloud/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Order additional bandwidth in your Private Cloud
   Get allowed durations for 'additionalBandwidth' option
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/additionalBandwidth', pathParams: {serviceName: string}, queryParams?: {bandwidth?: DedicatedCloudAdditionalBandwidthEnum}): Promise<string[]>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/additionalBandwidth', params: {serviceName: string, bandwidth: DedicatedCloudAdditionalBandwidthEnum}): Promise<string[]>;
   /**
   Order additional bandwidth in your Private Cloud
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/additionalBandwidth/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {bandwidth?: DedicatedCloudAdditionalBandwidthEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/additionalBandwidth/{duration}', params: {serviceName: string, duration: string, bandwidth: DedicatedCloudAdditionalBandwidthEnum}): Promise<OrderOrder>;
   /**
   Order a new Filer in a given Datacenter (available filers are given in /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)
   Get allowed durations for 'filer' option
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/filer', pathParams: {serviceName: string}, queryParams?: {datacenterId?: Number, name?: string, quantity?: Number}): Promise<string[]>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/filer', params: {serviceName: string, datacenterId?: number, name: string, quantity?: number}): Promise<string[]>;
   /**
   Order a new Filer in a given Datacenter (available filers are given in /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/filer/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {datacenterId?: Number, name?: string, quantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/filer/{duration}', params: {serviceName: string, duration: string, datacenterId?: number, name: string, quantity?: number}): Promise<OrderOrder>;
   /**
   Order a new Host in a given Datacenter  (orderable hosts are given by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)
   Get allowed durations for 'host' option
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/host', pathParams: {serviceName: string}, queryParams?: {datacenterId?: Number, name?: string, quantity?: Number}): Promise<string[]>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/host', params: {serviceName: string, datacenterId: number, name: string, quantity?: number}): Promise<string[]>;
   /**
   Order a new Host in a given Datacenter  (orderable hosts are given by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/host/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {datacenterId?: Number, name?: string, quantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/host/{duration}', params: {serviceName: string, duration: string, datacenterId: number, name: string, quantity?: number}): Promise<OrderOrder>;
   /**
   Order an IP block for your Private Cloud
   Get allowed durations for 'ip' option
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/ip', pathParams: {serviceName: string}, queryParams?: {country?: DedicatedCloudIpCountriesEnum, description?: string, estimatedClientsNumber?: Number, networkName?: string, size?: DedicatedCloudOrderableIpBlockRangeEnum, usage?: string}): Promise<string[]>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/ip', params: {serviceName: string, country: DedicatedCloudIpCountriesEnum, description: string, estimatedClientsNumber: number, networkName: string, size: DedicatedCloudOrderableIpBlockRangeEnum, usage: string}): Promise<string[]>;
   /**
   Order an IP block for your Private Cloud
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/ip/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {country?: DedicatedCloudIpCountriesEnum, description?: string, estimatedClientsNumber?: Number, networkName?: string, size?: DedicatedCloudOrderableIpBlockRangeEnum, usage?: string}): Promise<OrderOrder>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/ip/{duration}', params: {serviceName: string, duration: string, country: DedicatedCloudIpCountriesEnum, description: string, estimatedClientsNumber: number, networkName: string, size: DedicatedCloudOrderableIpBlockRangeEnum, usage: string}): Promise<OrderOrder>;
   /**
   Enable windows templates (SPLA) in your Private Cloud
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/spla', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/spla', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Upgrade ressources billing type. For hourlyToMonthly, already consumed hours will be billed at the end of the month
   Get allowed durations for 'upgradeRessource' option
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/upgradeRessource', pathParams: {serviceName: string}, queryParams?: {upgradeType?: DedicatedCloudRessourcesUpgradeTypeEnum, upgradedRessourceId?: Number, upgradedRessourceType?: DedicatedCloudRessourcesUpgradeRessourceTypeEnum}): Promise<string[]>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/upgradeRessource', params: {serviceName: string, upgradeType: DedicatedCloudRessourcesUpgradeTypeEnum, upgradedRessourceId?: number, upgradedRessourceType: DedicatedCloudRessourcesUpgradeRessourceTypeEnum}): Promise<string[]>;
   /**
   Upgrade ressources billing type. For hourlyToMonthly, already consumed hours will be billed at the end of the month
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/upgradeRessource/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {upgradeType?: DedicatedCloudRessourcesUpgradeTypeEnum, upgradedRessourceId?: Number, upgradedRessourceType?: DedicatedCloudRessourcesUpgradeRessourceTypeEnum}): Promise<OrderOrder>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/upgradeRessource/{duration}', params: {serviceName: string, duration: string, upgradeType: DedicatedCloudRessourcesUpgradeTypeEnum, upgradedRessourceId?: number, upgradedRessourceType: DedicatedCloudRessourcesUpgradeRessourceTypeEnum}): Promise<OrderOrder>;
   /**
   Order VDI option in a given Datacenter
   Get prices and contracts information
   **/
-  public get(path: '/order/dedicatedCloud/{serviceName}/vdi', pathParams: {serviceName: string}, queryParams?: {datacenterId?: Number, firstPublicIpAddress?: string, secondPublicIpAddress?: string}): Promise<OrderOrder>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/vdi', params: {serviceName: string, datacenterId: number, firstPublicIpAddress: string, secondPublicIpAddress: string}): Promise<OrderOrder>;
   /**
   Operations about the HOSTING service
   List available services
@@ -4394,22 +4394,22 @@ export class ApiOrder extends ApiCommon {
   Order a new DNS zone
   Get prices and contracts information
   **/
-  public get(path: '/order/domain/zone/new', queryParams?: {minimized?: boolean, zoneName?: string}): Promise<OrderOrder>;
+  public get(path: '/order/domain/zone/new'): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/domain/zone/{zoneName}', pathParams: {zoneName: string}): Promise<string[]>;
+  public get(path: '/order/domain/zone/{zoneName}', params: {zoneName: string}): Promise<string[]>;
   /**
   Order Anycast
   Get allowed durations for 'dnsAnycast' option
   **/
-  public get(path: '/order/domain/zone/{zoneName}/dnsAnycast', pathParams: {zoneName: string}): Promise<string[]>;
+  public get(path: '/order/domain/zone/{zoneName}/dnsAnycast', params: {zoneName: string}): Promise<string[]>;
   /**
   Order Anycast
   Get prices and contracts information
   **/
-  public get(path: '/order/domain/zone/{zoneName}/dnsAnycast/{duration}', pathParams: {zoneName: string, duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/domain/zone/{zoneName}/dnsAnycast/{duration}', params: {zoneName: string, duration: string}): Promise<OrderOrder>;
   /**
   Operations about the MX service
   List available services
@@ -4419,12 +4419,12 @@ export class ApiOrder extends ApiCommon {
   Order a new mx plan
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/email/domain/new', queryParams?: {domain?: string, offer?: EmailDomainOfferEnum}): Promise<string[]>;
+  public get(path: '/order/email/domain/new'): Promise<string[]>;
   /**
   Order a new mx plan
   Get prices and contracts information
   **/
-  public get(path: '/order/email/domain/new/{duration}', pathParams: {duration: string}, queryParams?: {domain?: string, offer?: EmailDomainOfferEnum}): Promise<OrderOrder>;
+  public get(path: '/order/email/domain/new/{duration}', params: {duration: string, domain: string, offer: EmailDomainOfferEnum}): Promise<OrderOrder>;
   /**
   Operations about the MSSERVICES service
   List available services
@@ -4434,52 +4434,52 @@ export class ApiOrder extends ApiCommon {
   Operations about the EXCHANGE service
   List available services
   **/
-  public get(path: '/order/email/exchange/{organizationName}/service', pathParams: {organizationName: string}): Promise<string[]>;
+  public get(path: '/order/email/exchange/{organizationName}/service', params: {organizationName: string}): Promise<string[]>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}', pathParams: {organizationName: string, exchangeService: string}): Promise<string[]>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}', params: {organizationName: string, exchangeService: string}): Promise<string[]>;
   /**
   Create an order for an exchange account
   Get allowed durations for 'account' option
   **/
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/account', pathParams: {organizationName: string, exchangeService: string}, queryParams?: {licence?: EmailExchangeOvhLicenceEnum, number?: Number, storageQuota?: EmailExchangeAccountQuotaEnum}): Promise<string[]>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/account', params: {organizationName: string, exchangeService: string, licence: EmailExchangeOvhLicenceEnum, number: number, storageQuota?: EmailExchangeAccountQuotaEnum}): Promise<string[]>;
   /**
   Create an order for an exchange account
   Get prices and contracts information
   **/
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/account/{duration}', pathParams: {organizationName: string, exchangeService: string, duration: string}, queryParams?: {licence?: EmailExchangeOvhLicenceEnum, number?: Number, storageQuota?: EmailExchangeAccountQuotaEnum}): Promise<OrderOrder>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/account/{duration}', params: {organizationName: string, exchangeService: string, duration: string, licence: EmailExchangeOvhLicenceEnum, number: number, storageQuota?: EmailExchangeAccountQuotaEnum}): Promise<OrderOrder>;
   /**
   Create an order to upgrade your hosted account storage
   Get allowed durations for 'accountUpgrade' option
   **/
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade', pathParams: {organizationName: string, exchangeService: string}, queryParams?: {newQuota?: EmailExchangeAccountQuotaEnum, primaryEmailAddress?: string}): Promise<string[]>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade', params: {organizationName: string, exchangeService: string, newQuota: EmailExchangeAccountQuotaEnum, primaryEmailAddress: string}): Promise<string[]>;
   /**
   Create an order to upgrade your hosted account storage
   Get prices and contracts information
   **/
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade/{duration}', pathParams: {organizationName: string, exchangeService: string, duration: string}, queryParams?: {newQuota?: EmailExchangeAccountQuotaEnum, primaryEmailAddress?: string}): Promise<OrderOrder>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade/{duration}', params: {organizationName: string, exchangeService: string, duration: string, newQuota: EmailExchangeAccountQuotaEnum, primaryEmailAddress: string}): Promise<OrderOrder>;
   /**
   Create an order for a additional 50GB of space (Exchange 2010 reseller only)
   Get prices and contracts information
   **/
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/diskSpace', pathParams: {organizationName: string, exchangeService: string}): Promise<OrderOrder>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/diskSpace', params: {organizationName: string, exchangeService: string}): Promise<OrderOrder>;
   /**
   Create an order for a outlook licence.
   Get allowed durations for 'outlook' option
   **/
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/outlook', pathParams: {organizationName: string, exchangeService: string}, queryParams?: {licence?: EmailExchangeOutlookVersionEnum, primaryEmailAddress?: string}): Promise<string[]>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/outlook', params: {organizationName: string, exchangeService: string, licence: EmailExchangeOutlookVersionEnum, primaryEmailAddress: string}): Promise<string[]>;
   /**
   Create an order for a outlook licence.
   Get prices and contracts information
   **/
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/outlook/{duration}', pathParams: {organizationName: string, exchangeService: string, duration: string}, queryParams?: {licence?: EmailExchangeOutlookVersionEnum, primaryEmailAddress?: string}): Promise<OrderOrder>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/outlook/{duration}', params: {organizationName: string, exchangeService: string, duration: string, licence: EmailExchangeOutlookVersionEnum, primaryEmailAddress: string}): Promise<OrderOrder>;
   /**
   Upgrade infrustruction to newest offer (Exchange 2013 to Exchange 2016)
   Get prices and contracts information
   **/
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/upgrade', pathParams: {organizationName: string, exchangeService: string}): Promise<OrderOrder>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/upgrade', params: {organizationName: string, exchangeService: string}): Promise<OrderOrder>;
   /**
   Operations about the PROEMAIL service
   List available services
@@ -4489,17 +4489,17 @@ export class ApiOrder extends ApiCommon {
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/email/pro/{service}', pathParams: {service: string}): Promise<string[]>;
+  public get(path: '/order/email/pro/{service}', params: {service: string}): Promise<string[]>;
   /**
   Create an order for a pro account
   Get allowed durations for 'account' option
   **/
-  public get(path: '/order/email/pro/{service}/account', pathParams: {service: string}, queryParams?: {number?: Number}): Promise<string[]>;
+  public get(path: '/order/email/pro/{service}/account', params: {service: string, number: number}): Promise<string[]>;
   /**
   Create an order for a pro account
   Get prices and contracts information
   **/
-  public get(path: '/order/email/pro/{service}/account/{duration}', pathParams: {service: string, duration: string}, queryParams?: {number?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/email/pro/{service}/account/{duration}', params: {service: string, duration: string, number: number}): Promise<OrderOrder>;
   /**
   Operations about the VOIP service
   List available services
@@ -4509,17 +4509,17 @@ export class ApiOrder extends ApiCommon {
   Credit freefax account pages
   Get prices and contracts information
   **/
-  public get(path: '/order/freefax/new', queryParams?: {quantity?: FreefaxQuantityEnum}): Promise<OrderOrder>;
+  public get(path: '/order/freefax/new'): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/freefax/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/freefax/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Convert the freefax service to a /telephony voicefax service
   Get prices and contracts information
   **/
-  public get(path: '/order/freefax/{serviceName}/convertToVoicefax', pathParams: {serviceName: string}, queryParams?: {billingAccount?: string}): Promise<OrderOrder>;
+  public get(path: '/order/freefax/{serviceName}/convertToVoicefax', params: {serviceName: string, billingAccount: string}): Promise<OrderOrder>;
   /**
   Operations about the SQLPRIVE service
   List available services
@@ -4529,27 +4529,27 @@ export class ApiOrder extends ApiCommon {
   Order new private database
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/hosting/privateDatabase/new', queryParams?: {datacenter?: HostingPrivateDatabaseDatacenterEnum, offer?: HostingPrivateDatabaseOfferEnum, ram?: HostingPrivateDatabaseAvailableRamSizeEnum, version?: HostingPrivateDatabaseOrderableVersionEnum}): Promise<string[]>;
+  public get(path: '/order/hosting/privateDatabase/new'): Promise<string[]>;
   /**
   Order new private database
   Get prices and contracts information
   **/
-  public get(path: '/order/hosting/privateDatabase/new/{duration}', pathParams: {duration: string}, queryParams?: {datacenter?: HostingPrivateDatabaseDatacenterEnum, offer?: HostingPrivateDatabaseOfferEnum, ram?: HostingPrivateDatabaseAvailableRamSizeEnum, version?: HostingPrivateDatabaseOrderableVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/hosting/privateDatabase/new/{duration}', params: {duration: string, datacenter?: HostingPrivateDatabaseDatacenterEnum, offer?: HostingPrivateDatabaseOfferEnum, ram: HostingPrivateDatabaseAvailableRamSizeEnum, version: HostingPrivateDatabaseOrderableVersionEnum}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/hosting/privateDatabase/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/hosting/privateDatabase/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Create an order for change ram size on your private database
   Get allowed durations for 'ram' option
   **/
-  public get(path: '/order/hosting/privateDatabase/{serviceName}/ram', pathParams: {serviceName: string}, queryParams?: {ram?: HostingPrivateDatabaseAvailableRamSizeEnum}): Promise<string[]>;
+  public get(path: '/order/hosting/privateDatabase/{serviceName}/ram', params: {serviceName: string, ram: HostingPrivateDatabaseAvailableRamSizeEnum}): Promise<string[]>;
   /**
   Create an order for change ram size on your private database
   Get prices and contracts information
   **/
-  public get(path: '/order/hosting/privateDatabase/{serviceName}/ram/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {ram?: HostingPrivateDatabaseAvailableRamSizeEnum}): Promise<OrderOrder>;
+  public get(path: '/order/hosting/privateDatabase/{serviceName}/ram/{duration}', params: {serviceName: string, duration: string, ram: HostingPrivateDatabaseAvailableRamSizeEnum}): Promise<OrderOrder>;
   /**
   Operations about the HOSTING service
   List available services
@@ -4559,77 +4559,77 @@ export class ApiOrder extends ApiCommon {
   Order a new hosting account
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/hosting/web/new', queryParams?: {dnsZone?: HostingWebDnsZoneEnum, domain?: string, module?: HostingWebModuleOrderableNameEnum, offer?: HostingWebOfferEnum, waiveRetractationPeriod?: boolean}): Promise<string[]>;
+  public get(path: '/order/hosting/web/new'): Promise<string[]>;
   /**
   Order a new hosting account
   Get prices and contracts information
   **/
-  public get(path: '/order/hosting/web/new/{duration}', pathParams: {duration: string}, queryParams?: {dnsZone?: HostingWebDnsZoneEnum, domain?: string, module?: HostingWebModuleOrderableNameEnum, offer?: HostingWebOfferEnum, waiveRetractationPeriod?: boolean}): Promise<OrderOrder>;
+  public get(path: '/order/hosting/web/new/{duration}', params: {duration: string, dnsZone?: HostingWebDnsZoneEnum, domain: string, module?: HostingWebModuleOrderableNameEnum, offer: HostingWebOfferEnum, waiveRetractationPeriod?: boolean}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/hosting/web/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/hosting/web/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Order additional bandwidth
   Get allowed durations for 'bandwidth' option
   **/
-  public get(path: '/order/hosting/web/{serviceName}/bandwidth', pathParams: {serviceName: string}, queryParams?: {traffic?: HostingWebBandwidthOfferEnum}): Promise<string[]>;
+  public get(path: '/order/hosting/web/{serviceName}/bandwidth', params: {serviceName: string, traffic: HostingWebBandwidthOfferEnum}): Promise<string[]>;
   /**
   Order additional bandwidth
   Get prices and contracts information
   **/
-  public get(path: '/order/hosting/web/{serviceName}/bandwidth/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {traffic?: HostingWebBandwidthOfferEnum}): Promise<OrderOrder>;
+  public get(path: '/order/hosting/web/{serviceName}/bandwidth/{duration}', params: {serviceName: string, duration: string, traffic: HostingWebBandwidthOfferEnum}): Promise<OrderOrder>;
   /**
   Create an order for cdn option
   Get allowed durations for 'cdn' option
   **/
-  public get(path: '/order/hosting/web/{serviceName}/cdn', pathParams: {serviceName: string}, queryParams?: {offer?: HostingWebCdnOfferEnum}): Promise<string[]>;
+  public get(path: '/order/hosting/web/{serviceName}/cdn', params: {serviceName: string, offer: HostingWebCdnOfferEnum}): Promise<string[]>;
   /**
   Create an order for cdn option
   Get prices and contracts information
   **/
-  public get(path: '/order/hosting/web/{serviceName}/cdn/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {offer?: HostingWebCdnOfferEnum}): Promise<OrderOrder>;
+  public get(path: '/order/hosting/web/{serviceName}/cdn/{duration}', params: {serviceName: string, duration: string, offer: HostingWebCdnOfferEnum}): Promise<OrderOrder>;
   /**
   Create an order for change the hosting main domain
   Get allowed durations for 'changeMainDomain' option
   **/
-  public get(path: '/order/hosting/web/{serviceName}/changeMainDomain', pathParams: {serviceName: string}, queryParams?: {domain?: string, mxplan?: HostingWebOrderMxPlanEnum}): Promise<string[]>;
+  public get(path: '/order/hosting/web/{serviceName}/changeMainDomain', params: {serviceName: string, domain: string, mxplan: HostingWebOrderMxPlanEnum}): Promise<string[]>;
   /**
   Create an order for change the hosting main domain
   Get prices and contracts information
   **/
-  public get(path: '/order/hosting/web/{serviceName}/changeMainDomain/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {domain?: string, mxplan?: HostingWebOrderMxPlanEnum}): Promise<OrderOrder>;
+  public get(path: '/order/hosting/web/{serviceName}/changeMainDomain/{duration}', params: {serviceName: string, duration: string, domain: string, mxplan: HostingWebOrderMxPlanEnum}): Promise<OrderOrder>;
   /**
   Create an order for extra sql perso
   Get allowed durations for 'extraSqlPerso' option
   **/
-  public get(path: '/order/hosting/web/{serviceName}/extraSqlPerso', pathParams: {serviceName: string}, queryParams?: {offer?: HostingWebDatabaseSqlPersoOfferEnum}): Promise<string[]>;
+  public get(path: '/order/hosting/web/{serviceName}/extraSqlPerso', params: {serviceName: string, offer: HostingWebDatabaseSqlPersoOfferEnum}): Promise<string[]>;
   /**
   Create an order for extra sql perso
   Get prices and contracts information
   **/
-  public get(path: '/order/hosting/web/{serviceName}/extraSqlPerso/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {offer?: HostingWebDatabaseSqlPersoOfferEnum}): Promise<OrderOrder>;
+  public get(path: '/order/hosting/web/{serviceName}/extraSqlPerso/{duration}', params: {serviceName: string, duration: string, offer: HostingWebDatabaseSqlPersoOfferEnum}): Promise<OrderOrder>;
   /**
   Create an order for hosted ssl option
   Get allowed durations for 'ssl' option
   **/
-  public get(path: '/order/hosting/web/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/hosting/web/{serviceName}/ssl', params: {serviceName: string}): Promise<string[]>;
   /**
   Create an order for hosted ssl option
   Get prices and contracts information
   **/
-  public get(path: '/order/hosting/web/{serviceName}/ssl/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/hosting/web/{serviceName}/ssl/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Create an order for upgrade your hosting account
   Get allowed durations for 'upgrade' option
   **/
-  public get(path: '/order/hosting/web/{serviceName}/upgrade', pathParams: {serviceName: string}, queryParams?: {offer?: HostingWebOfferEnum, waiveRetractationPeriod?: boolean}): Promise<string[]>;
+  public get(path: '/order/hosting/web/{serviceName}/upgrade', params: {serviceName: string, offer: HostingWebOfferEnum, waiveRetractationPeriod?: boolean}): Promise<string[]>;
   /**
   Create an order for upgrade your hosting account
   Get prices and contracts information
   **/
-  public get(path: '/order/hosting/web/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {offer?: HostingWebOfferEnum, waiveRetractationPeriod?: boolean}): Promise<OrderOrder>;
+  public get(path: '/order/hosting/web/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, offer: HostingWebOfferEnum, waiveRetractationPeriod?: boolean}): Promise<OrderOrder>;
   /**
   Order a HPC Spot Account
   Get allowed durations for 'new' option
@@ -4639,47 +4639,47 @@ export class ApiOrder extends ApiCommon {
   Order a HPC Spot Account
   Get prices and contracts information
   **/
-  public get(path: '/order/hpcspot/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/hpcspot/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/cloudLinux/new', queryParams?: {ip?: string, version?: LicenseCloudLinuxVersionEnum}): Promise<string[]>;
+  public get(path: '/order/license/cloudLinux/new'): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/cloudLinux/new/{duration}', pathParams: {duration: string}, queryParams?: {ip?: string, version?: LicenseCloudLinuxVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/cloudLinux/new/{duration}', params: {duration: string, ip: string, version: LicenseCloudLinuxVersionEnum}): Promise<OrderOrder>;
   /**
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/cpanel/new', queryParams?: {ip?: string, serviceType?: LicenseLicenseTypeEnum, version?: LicenseOrderableCpanelVersionEnum}): Promise<string[]>;
+  public get(path: '/order/license/cpanel/new'): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/cpanel/new/{duration}', pathParams: {duration: string}, queryParams?: {ip?: string, serviceType?: LicenseLicenseTypeEnum, version?: LicenseOrderableCpanelVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/cpanel/new/{duration}', params: {duration: string, ip: string, serviceType?: LicenseLicenseTypeEnum, version: LicenseOrderableCpanelVersionEnum}): Promise<OrderOrder>;
   /**
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/directadmin/new', queryParams?: {ip?: string, serviceType?: LicenseLicenseTypeEnum, version?: LicenseOrderableDirectAdminVersionEnum}): Promise<string[]>;
+  public get(path: '/order/license/directadmin/new'): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/directadmin/new/{duration}', pathParams: {duration: string}, queryParams?: {ip?: string, serviceType?: LicenseLicenseTypeEnum, version?: LicenseOrderableDirectAdminVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/directadmin/new/{duration}', params: {duration: string, ip: string, serviceType?: LicenseLicenseTypeEnum, version: LicenseOrderableDirectAdminVersionEnum}): Promise<OrderOrder>;
   /**
   Create an order for an new office tenant
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/office/new', queryParams?: {giftCode?: string, officeBusinessQuantity?: Number, officeProPlusQuantity?: Number}): Promise<string[]>;
+  public get(path: '/order/license/office/new'): Promise<string[]>;
   /**
   Create an order for an new office tenant
   Get prices and contracts information
   **/
-  public get(path: '/order/license/office/new/{duration}', pathParams: {duration: string}, queryParams?: {giftCode?: string, officeBusinessQuantity?: Number, officeProPlusQuantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/license/office/new/{duration}', params: {duration: string, giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<OrderOrder>;
   /**
   Operations about the LICENSE service
   List available services
@@ -4689,27 +4689,27 @@ export class ApiOrder extends ApiCommon {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/plesk/new', queryParams?: {antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, ip?: string, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: LicenseLicenseTypeEnum, version?: LicensePleskVersionEnum, wordpressToolkit?: boolean}): Promise<string[]>;
+  public get(path: '/order/license/plesk/new'): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/plesk/new/{duration}', pathParams: {duration: string}, queryParams?: {antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, ip?: string, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: LicenseLicenseTypeEnum, version?: LicensePleskVersionEnum, wordpressToolkit?: boolean}): Promise<OrderOrder>;
+  public get(path: '/order/license/plesk/new/{duration}', params: {duration: string, antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: LicenseLicenseTypeEnum, version: LicensePleskVersionEnum, wordpressToolkit?: boolean}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/license/plesk/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/license/plesk/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Upgrade this license with some given options
   Get allowed durations for 'upgrade' option
   **/
-  public get(path: '/order/license/plesk/{serviceName}/upgrade', pathParams: {serviceName: string}, queryParams?: {antispam?: LicenseOrderableAntispamEnum, antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: LicensePleskVersionEnum, wordpressToolkit?: boolean}): Promise<string[]>;
+  public get(path: '/order/license/plesk/{serviceName}/upgrade', params: {serviceName: string, antispam?: LicenseOrderableAntispamEnum, antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: LicensePleskVersionEnum, wordpressToolkit?: boolean}): Promise<string[]>;
   /**
   Upgrade this license with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/plesk/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {antispam?: LicenseOrderableAntispamEnum, antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: LicensePleskVersionEnum, wordpressToolkit?: boolean}): Promise<OrderOrder>;
+  public get(path: '/order/license/plesk/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, antispam?: LicenseOrderableAntispamEnum, antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: LicensePleskVersionEnum, wordpressToolkit?: boolean}): Promise<OrderOrder>;
   /**
   Operations about the LICENSE service
   List available services
@@ -4719,27 +4719,27 @@ export class ApiOrder extends ApiCommon {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/sqlserver/new', queryParams?: {ip?: string, version?: LicenseSqlServerVersionEnum}): Promise<string[]>;
+  public get(path: '/order/license/sqlserver/new'): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/sqlserver/new/{duration}', pathParams: {duration: string}, queryParams?: {ip?: string, version?: LicenseSqlServerVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/sqlserver/new/{duration}', params: {duration: string, ip: string, version: LicenseSqlServerVersionEnum}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/license/sqlserver/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/license/sqlserver/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Upgrade this license with some given options
   Get allowed durations for 'upgrade' option
   **/
-  public get(path: '/order/license/sqlserver/{serviceName}/upgrade', pathParams: {serviceName: string}, queryParams?: {version?: LicenseSqlServerVersionEnum}): Promise<string[]>;
+  public get(path: '/order/license/sqlserver/{serviceName}/upgrade', params: {serviceName: string, version: LicenseSqlServerVersionEnum}): Promise<string[]>;
   /**
   Upgrade this license with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/sqlserver/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {version?: LicenseSqlServerVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/sqlserver/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, version: LicenseSqlServerVersionEnum}): Promise<OrderOrder>;
   /**
   Operations about the LICENSE service
   List available services
@@ -4749,27 +4749,27 @@ export class ApiOrder extends ApiCommon {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/virtuozzo/new', queryParams?: {containerNumber?: LicenseOrderableVirtuozzoContainerNumberEnum, ip?: string, serviceType?: LicenseLicenseTypeEnum, version?: LicenseOrderableVirtuozzoVersionEnum}): Promise<string[]>;
+  public get(path: '/order/license/virtuozzo/new'): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/virtuozzo/new/{duration}', pathParams: {duration: string}, queryParams?: {containerNumber?: LicenseOrderableVirtuozzoContainerNumberEnum, ip?: string, serviceType?: LicenseLicenseTypeEnum, version?: LicenseOrderableVirtuozzoVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/virtuozzo/new/{duration}', params: {duration: string, containerNumber: LicenseOrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: LicenseLicenseTypeEnum, version: LicenseOrderableVirtuozzoVersionEnum}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/license/virtuozzo/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/license/virtuozzo/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Upgrade this license with some given options
   Get allowed durations for 'upgrade' option
   **/
-  public get(path: '/order/license/virtuozzo/{serviceName}/upgrade', pathParams: {serviceName: string}, queryParams?: {containerNumber?: LicenseOrderableVirtuozzoContainerNumberEnum}): Promise<string[]>;
+  public get(path: '/order/license/virtuozzo/{serviceName}/upgrade', params: {serviceName: string, containerNumber: LicenseOrderableVirtuozzoContainerNumberEnum}): Promise<string[]>;
   /**
   Upgrade this license with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/virtuozzo/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {containerNumber?: LicenseOrderableVirtuozzoContainerNumberEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/virtuozzo/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, containerNumber: LicenseOrderableVirtuozzoContainerNumberEnum}): Promise<OrderOrder>;
   /**
   Operations about the LICENSE service
   List available services
@@ -4779,27 +4779,27 @@ export class ApiOrder extends ApiCommon {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/windows/new', queryParams?: {ip?: string, serviceType?: LicenseLicenseTypeEnum, sqlVersion?: LicenseWindowsSqlVersionEnum, version?: LicenseWindowsOsVersionEnum}): Promise<string[]>;
+  public get(path: '/order/license/windows/new'): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/windows/new/{duration}', pathParams: {duration: string}, queryParams?: {ip?: string, serviceType?: LicenseLicenseTypeEnum, sqlVersion?: LicenseWindowsSqlVersionEnum, version?: LicenseWindowsOsVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/windows/new/{duration}', params: {duration: string, ip: string, serviceType?: LicenseLicenseTypeEnum, sqlVersion?: LicenseWindowsSqlVersionEnum, version: LicenseWindowsOsVersionEnum}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/license/windows/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/license/windows/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Upgrade this license with some given options
   Get allowed durations for 'upgrade' option
   **/
-  public get(path: '/order/license/windows/{serviceName}/upgrade', pathParams: {serviceName: string}, queryParams?: {sqlVersion?: LicenseWindowsSqlVersionEnum, version?: LicenseWindowsOsVersionEnum}): Promise<string[]>;
+  public get(path: '/order/license/windows/{serviceName}/upgrade', params: {serviceName: string, sqlVersion?: LicenseWindowsSqlVersionEnum, version?: LicenseWindowsOsVersionEnum}): Promise<string[]>;
   /**
   Upgrade this license with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/windows/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {sqlVersion?: LicenseWindowsSqlVersionEnum, version?: LicenseWindowsOsVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/windows/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, sqlVersion?: LicenseWindowsSqlVersionEnum, version?: LicenseWindowsOsVersionEnum}): Promise<OrderOrder>;
   /**
   Operations about the LICENSE service
   List available services
@@ -4809,27 +4809,27 @@ export class ApiOrder extends ApiCommon {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/worklight/new', queryParams?: {ip?: string, lessThan1000Users?: boolean, version?: LicenseWorkLightVersionEnum}): Promise<string[]>;
+  public get(path: '/order/license/worklight/new'): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/worklight/new/{duration}', pathParams: {duration: string}, queryParams?: {ip?: string, lessThan1000Users?: boolean, version?: LicenseWorkLightVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/worklight/new/{duration}', params: {duration: string, ip: string, lessThan1000Users: boolean, version: LicenseWorkLightVersionEnum}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/license/worklight/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/license/worklight/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Upgrade this license with some given options
   Get allowed durations for 'upgrade' option
   **/
-  public get(path: '/order/license/worklight/{serviceName}/upgrade', pathParams: {serviceName: string}, queryParams?: {version?: LicenseWorkLightVersionEnum}): Promise<string[]>;
+  public get(path: '/order/license/worklight/{serviceName}/upgrade', params: {serviceName: string, version: LicenseWorkLightVersionEnum}): Promise<string[]>;
   /**
   Upgrade this license with some given options
   Get prices and contracts information
   **/
-  public get(path: '/order/license/worklight/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {version?: LicenseWorkLightVersionEnum}): Promise<OrderOrder>;
+  public get(path: '/order/license/worklight/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, version: LicenseWorkLightVersionEnum}): Promise<OrderOrder>;
   /**
   Operations about the OVERTHEBOX service
   List available services
@@ -4839,42 +4839,42 @@ export class ApiOrder extends ApiCommon {
   Subscribe to overTheBox service
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/overTheBox/new', queryParams?: {deviceId?: string, offer?: string, voucher?: string}): Promise<string[]>;
+  public get(path: '/order/overTheBox/new'): Promise<string[]>;
   /**
   Subscribe to overTheBox service
   Get prices and contracts information
   **/
-  public get(path: '/order/overTheBox/new/{duration}', pathParams: {duration: string}, queryParams?: {deviceId?: string, offer?: string, voucher?: string}): Promise<OrderOrder>;
+  public get(path: '/order/overTheBox/new/{duration}', params: {duration: string, deviceId?: string, offer: string, voucher?: string}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/overTheBox/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/overTheBox/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Create an order to upgrade your overTheBox service
   Get prices and contracts information
   **/
-  public get(path: '/order/overTheBox/{serviceName}/migrate', pathParams: {serviceName: string}, queryParams?: {hardware?: boolean, offer?: string, shippingContactID?: string, shippingMethod?: OverTheBoxShippingMethodEnum, shippingRelayID?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/overTheBox/{serviceName}/migrate', params: {serviceName: string, hardware: boolean, offer: string, shippingContactID?: string, shippingMethod?: OverTheBoxShippingMethodEnum, shippingRelayID?: number}): Promise<OrderOrder>;
   /**
   Order router vpn
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/router/new', queryParams?: {vrack?: string}): Promise<string[]>;
+  public get(path: '/order/router/new'): Promise<string[]>;
   /**
   Order router vpn
   Get prices and contracts information
   **/
-  public get(path: '/order/router/new/{duration}', pathParams: {duration: string}, queryParams?: {vrack?: string}): Promise<OrderOrder>;
+  public get(path: '/order/router/new/{duration}', params: {duration: string, vrack: string}): Promise<OrderOrder>;
   /**
   Create an order for a new office tenant
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/saas/csp2/new', queryParams?: {giftCode?: string, officeBusinessQuantity?: Number, officeProPlusQuantity?: Number}): Promise<string[]>;
+  public get(path: '/order/saas/csp2/new'): Promise<string[]>;
   /**
   Create an order for a new office tenant
   Get prices and contracts information
   **/
-  public get(path: '/order/saas/csp2/new/{duration}', pathParams: {duration: string}, queryParams?: {giftCode?: string, officeBusinessQuantity?: Number, officeProPlusQuantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/saas/csp2/new/{duration}', params: {duration: string, giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<OrderOrder>;
   /**
   Operations about the VOIP service
   List available services
@@ -4884,17 +4884,17 @@ export class ApiOrder extends ApiCommon {
   Create and credit a new SMS Account
   Get prices and contracts information
   **/
-  public get(path: '/order/sms/new', queryParams?: {quantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/sms/new'): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/sms/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/sms/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Order credits on an existing SMS account
   Get prices and contracts information
   **/
-  public get(path: '/order/sms/{serviceName}/credits', pathParams: {serviceName: string}, queryParams?: {quantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/sms/{serviceName}/credits', params: {serviceName: string, quantity: number}): Promise<OrderOrder>;
   /**
   Operations about the VOIP service
   List available services
@@ -4909,22 +4909,22 @@ export class ApiOrder extends ApiCommon {
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/telephony/lines/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/telephony/lines/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Add extra simultaneous lines for a specifical line
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/lines/{serviceName}/addSimultaneousLines', pathParams: {serviceName: string}, queryParams?: {billingAccount?: string, quantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/lines/{serviceName}/addSimultaneousLines', params: {serviceName: string, billingAccount: string, quantity: number}): Promise<OrderOrder>;
   /**
   Order a phone for this specific line
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/lines/{serviceName}/hardware', pathParams: {serviceName: string}, queryParams?: {hardware?: string, mondialRelayId?: string, retractation?: boolean, shippingContactId?: string}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/lines/{serviceName}/hardware', params: {serviceName: string, hardware: string, mondialRelayId?: string, retractation: boolean, shippingContactId?: string}): Promise<OrderOrder>;
   /**
   Update extra simultaneous channels for a specifical service to the requested amount
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/lines/{serviceName}/updateSimultaneousChannels', pathParams: {serviceName: string}, queryParams?: {quantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/lines/{serviceName}/updateSimultaneousChannels', params: {serviceName: string, quantity: number}): Promise<OrderOrder>;
   /**
   Purchase a new billing account
   Get prices and contracts information
@@ -4934,7 +4934,7 @@ export class ApiOrder extends ApiCommon {
   Purchase spare phone
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/spare/new', queryParams?: {brand?: string, mondialRelayId?: string, quantity?: Number, shippingContactId?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/spare/new'): Promise<OrderOrder>;
   /**
   Operations about the VOIP service
   List available services
@@ -4944,62 +4944,62 @@ export class ApiOrder extends ApiCommon {
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/telephony/trunks/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/telephony/trunks/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Add extra simultaneous lines for a specifical line
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/trunks/{serviceName}/addSimultaneousLines', pathParams: {serviceName: string}, queryParams?: {billingAccount?: string, quantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/trunks/{serviceName}/addSimultaneousLines', params: {serviceName: string, billingAccount: string, quantity: number}): Promise<OrderOrder>;
   /**
   Order a phone for this specific line
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/trunks/{serviceName}/hardware', pathParams: {serviceName: string}, queryParams?: {hardware?: string, mondialRelayId?: string, retractation?: boolean, shippingContactId?: string}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/trunks/{serviceName}/hardware', params: {serviceName: string, hardware: string, mondialRelayId?: string, retractation: boolean, shippingContactId?: string}): Promise<OrderOrder>;
   /**
   Update extra simultaneous channels for a specifical service to the requested amount
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/trunks/{serviceName}/updateSimultaneousChannels', pathParams: {serviceName: string}, queryParams?: {quantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/trunks/{serviceName}/updateSimultaneousChannels', params: {serviceName: string, quantity: number}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/telephony/{billingAccount}', pathParams: {billingAccount: string}): Promise<string[]>;
+  public get(path: '/order/telephony/{billingAccount}', params: {billingAccount: string}): Promise<string[]>;
   /**
   Purchase new accessories
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/{billingAccount}/accessories', pathParams: {billingAccount: string}, queryParams?: {accessories?: string[], mondialRelayId?: string, retractation?: boolean, shippingContactId?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/{billingAccount}/accessories', params: {billingAccount: string, accessories: string[], mondialRelayId?: string, retractation: boolean, shippingContactId: number}): Promise<OrderOrder>;
   /**
   Purchase a new line offer
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/{billingAccount}/line', pathParams: {billingAccount: string}, queryParams?: {brand?: string, displayUniversalDirectories?: boolean[], extraSimultaneousLines?: Number[], mondialRelayId?: string, offers?: string[], ownerContactIds?: Number[], quantity?: Number, retractation?: boolean, shippingContactId?: Number, types?: TelephonyLineTypeEnum[], zones?: string[]}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/{billingAccount}/line', params: {billingAccount: string, brand?: string, displayUniversalDirectories: boolean[], extraSimultaneousLines: number[], mondialRelayId?: string, offers: string[], ownerContactIds: number[], quantity: number, retractation: boolean, shippingContactId: number, types: TelephonyLineTypeEnum[], zones?: string[]}): Promise<OrderOrder>;
   /**
   Purchase a new standard alias number
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/{billingAccount}/numberGeographic', pathParams: {billingAccount: string}, queryParams?: {ape?: string, city?: string, country?: TelephonyNumberCountryEnum, displayUniversalDirectory?: boolean, email?: string, firstname?: string, legalform?: NichandleLegalFormEnum, name?: string, offer?: TelephonyNumberOffer, organisation?: string, phone?: string, pool?: TelephonyNumberPoolEnum, retractation?: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string, zone?: string}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/{billingAccount}/numberGeographic', params: {billingAccount: string, ape?: string, city: string, country: TelephonyNumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: NichandleLegalFormEnum, name?: string, offer: TelephonyNumberOffer, organisation?: string, phone?: string, pool?: TelephonyNumberPoolEnum, retractation: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string, zone: string}): Promise<OrderOrder>;
   /**
   Purchase a new standard alias number
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/{billingAccount}/numberNogeographic', pathParams: {billingAccount: string}, queryParams?: {ape?: string, city?: string, country?: TelephonyNumberCountryEnum, displayUniversalDirectory?: boolean, email?: string, firstname?: string, legalform?: NichandleLegalFormEnum, name?: string, offer?: TelephonyNumberOffer, organisation?: string, phone?: string, pool?: TelephonyNumberPoolEnum, retractation?: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/{billingAccount}/numberNogeographic', params: {billingAccount: string, ape?: string, city?: string, country: TelephonyNumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: NichandleLegalFormEnum, name?: string, offer: TelephonyNumberOffer, organisation?: string, phone?: string, pool?: TelephonyNumberPoolEnum, retractation: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string}): Promise<OrderOrder>;
   /**
   Purchase a new standard alias number
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/{billingAccount}/numberSpecial', pathParams: {billingAccount: string}, queryParams?: {ape?: string, city?: string, country?: TelephonyNumberCountryEnum, displayUniversalDirectory?: boolean, email?: string, firstname?: string, legalform?: NichandleLegalFormEnum, name?: string, organisation?: string, phone?: string, pool?: TelephonyNumberPoolEnum, range?: string, retractation?: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, typology?: TelephonyNumberSpecialTypologyEnum, zip?: string}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/{billingAccount}/numberSpecial', params: {billingAccount: string, ape: string, city?: string, country: TelephonyNumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: NichandleLegalFormEnum, name?: string, organisation?: string, phone?: string, pool?: TelephonyNumberPoolEnum, range: string, retractation: boolean, siret: string, socialNomination: string, specificNumber?: string, streetName?: string, streetNumber?: string, typology: TelephonyNumberSpecialTypologyEnum, zip?: string}): Promise<OrderOrder>;
   /**
   Order a new portability
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/{billingAccount}/portability', pathParams: {billingAccount: string}, queryParams?: {building?: string, callNumber?: string, city?: string, contactName?: string, contactNumber?: string, country?: TelephonyPortabilityCountriesAvailable, desireDate?: string, displayUniversalDirectory?: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName?: string, floor?: Number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name?: string, offer?: TelephonyPortabilityOfferType, rio?: string, siret?: string, socialReason?: TelephonyPortabilitySocialReason, specialNumberCategory?: TelephonyPortabilitySpecialNumberCategoryEnum, stair?: Number, streetName?: string, streetNumber?: Number, streetNumberExtra?: string, streetType?: string, type?: TelephonyPortabilityNumberType, zip?: string}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/{billingAccount}/portability', params: {billingAccount: string, building?: string, callNumber: string, city: string, contactName?: string, contactNumber?: string, country: TelephonyPortabilityCountriesAvailable, desireDate?: string, displayUniversalDirectory: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName: string, floor?: number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name: string, offer: TelephonyPortabilityOfferType, rio?: string, siret?: string, socialReason: TelephonyPortabilitySocialReason, specialNumberCategory?: TelephonyPortabilitySpecialNumberCategoryEnum, stair?: number, streetName: string, streetNumber: number, streetNumberExtra?: string, streetType?: string, type: TelephonyPortabilityNumberType, zip: string}): Promise<OrderOrder>;
   /**
   Credit security deposit
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/{billingAccount}/securityDeposit', pathParams: {billingAccount: string}, queryParams?: {amount?: TelephonySecurityDepositAmountsEnum}): Promise<OrderOrder>;
+  public get(path: '/order/telephony/{billingAccount}/securityDeposit', params: {billingAccount: string, amount: TelephonySecurityDepositAmountsEnum}): Promise<OrderOrder>;
   /**
   Operations about the DEDICATED-OPTION service
   List available services
@@ -5009,12 +5009,12 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/upgrade/baremetalPrivateBandwidth
   Retrieve available offers to upgrade your service to
   **/
-  public get(path: '/order/upgrade/baremetalPrivateBandwidth/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/upgrade/baremetalPrivateBandwidth/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Listing offers /order/upgrade/baremetalPrivateBandwidth/#serviceName#
   Get a provisional order for the selected upgrade of your service
   **/
-  public get(path: '/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}, queryParams?: {quantity?: Number}): Promise<OrderUpgradeOperationAndOrder>;
+  public get(path: '/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}', params: {planCode: string, serviceName: string, quantity: number}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Operations about the DEDICATED-OPTION service
   List available services
@@ -5024,12 +5024,12 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/upgrade/baremetalPublicBandwidth
   Retrieve available offers to upgrade your service to
   **/
-  public get(path: '/order/upgrade/baremetalPublicBandwidth/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/upgrade/baremetalPublicBandwidth/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Listing offers /order/upgrade/baremetalPublicBandwidth/#serviceName#
   Get a provisional order for the selected upgrade of your service
   **/
-  public get(path: '/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}, queryParams?: {quantity?: Number}): Promise<OrderUpgradeOperationAndOrder>;
+  public get(path: '/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}', params: {planCode: string, serviceName: string, quantity: number}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Operations about the CEPH service
   List available services
@@ -5039,12 +5039,12 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/upgrade/cephaas
   Retrieve available offers to upgrade your service to
   **/
-  public get(path: '/order/upgrade/cephaas/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/upgrade/cephaas/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Listing offers /order/upgrade/cephaas/#serviceName#
   Get a provisional order for the selected upgrade of your service
   **/
-  public get(path: '/order/upgrade/cephaas/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}, queryParams?: {quantity?: Number}): Promise<OrderUpgradeOperationAndOrder>;
+  public get(path: '/order/upgrade/cephaas/{serviceName}/{planCode}', params: {planCode: string, serviceName: string, quantity: number}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Operations about the IPLB service
   List available services
@@ -5054,12 +5054,12 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/upgrade/ipLoadbalancing
   Retrieve available offers to upgrade your service to
   **/
-  public get(path: '/order/upgrade/ipLoadbalancing/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/upgrade/ipLoadbalancing/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Listing offers /order/upgrade/ipLoadbalancing/#serviceName#
   Get a provisional order for the selected upgrade of your service
   **/
-  public get(path: '/order/upgrade/ipLoadbalancing/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}, queryParams?: {quantity?: Number}): Promise<OrderUpgradeOperationAndOrder>;
+  public get(path: '/order/upgrade/ipLoadbalancing/{serviceName}/{planCode}', params: {planCode: string, serviceName: string, quantity: number}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Operations about the DBAAS-LOGS service
   List available services
@@ -5069,12 +5069,12 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/upgrade/logs
   Retrieve available offers to upgrade your service to
   **/
-  public get(path: '/order/upgrade/logs/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/upgrade/logs/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Listing offers /order/upgrade/logs/#serviceName#
   Get a provisional order for the selected upgrade of your service
   **/
-  public get(path: '/order/upgrade/logs/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}, queryParams?: {quantity?: Number}): Promise<OrderUpgradeOperationAndOrder>;
+  public get(path: '/order/upgrade/logs/{serviceName}/{planCode}', params: {planCode: string, serviceName: string, quantity: number}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Operations about the METRICS service
   List available services
@@ -5084,12 +5084,12 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/upgrade/metrics
   Retrieve available offers to upgrade your service to
   **/
-  public get(path: '/order/upgrade/metrics/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/upgrade/metrics/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Listing offers /order/upgrade/metrics/#serviceName#
   Get a provisional order for the selected upgrade of your service
   **/
-  public get(path: '/order/upgrade/metrics/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}, queryParams?: {quantity?: Number}): Promise<OrderUpgradeOperationAndOrder>;
+  public get(path: '/order/upgrade/metrics/{serviceName}/{planCode}', params: {planCode: string, serviceName: string, quantity: number}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Operations about the EXCHANGE service
   List available services
@@ -5099,12 +5099,12 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/upgrade/microsoftExchange
   Retrieve available offers to upgrade your service to
   **/
-  public get(path: '/order/upgrade/microsoftExchange/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/upgrade/microsoftExchange/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Listing offers /order/upgrade/microsoftExchange/#serviceName#
   Get a provisional order for the selected upgrade of your service
   **/
-  public get(path: '/order/upgrade/microsoftExchange/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}, queryParams?: {quantity?: Number}): Promise<OrderUpgradeOperationAndOrder>;
+  public get(path: '/order/upgrade/microsoftExchange/{serviceName}/{planCode}', params: {planCode: string, serviceName: string, quantity: number}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Operations about the PCC service
   List available services
@@ -5114,12 +5114,12 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/upgrade/privateCloud
   Retrieve available offers to upgrade your service to
   **/
-  public get(path: '/order/upgrade/privateCloud/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/upgrade/privateCloud/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Listing offers /order/upgrade/privateCloud/#serviceName#
   Get a provisional order for the selected upgrade of your service
   **/
-  public get(path: '/order/upgrade/privateCloud/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}, queryParams?: {quantity?: Number}): Promise<OrderUpgradeOperationAndOrder>;
+  public get(path: '/order/upgrade/privateCloud/{serviceName}/{planCode}', params: {planCode: string, serviceName: string, quantity: number}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Operations about the SSLGATEWAY service
   List available services
@@ -5129,12 +5129,12 @@ export class ApiOrder extends ApiCommon {
   Listing offers /order/upgrade/sslGateway
   Retrieve available offers to upgrade your service to
   **/
-  public get(path: '/order/upgrade/sslGateway/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
+  public get(path: '/order/upgrade/sslGateway/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Listing offers /order/upgrade/sslGateway/#serviceName#
   Get a provisional order for the selected upgrade of your service
   **/
-  public get(path: '/order/upgrade/sslGateway/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}, queryParams?: {quantity?: Number}): Promise<OrderUpgradeOperationAndOrder>;
+  public get(path: '/order/upgrade/sslGateway/{serviceName}/{planCode}', params: {planCode: string, serviceName: string, quantity: number}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Operations about the VEEAMCC service
   List available services
@@ -5144,17 +5144,17 @@ export class ApiOrder extends ApiCommon {
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/veeamCloudConnect/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/veeamCloudConnect/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Order an upgrade upon your Veeam Cloud Connect account
   Get allowed durations for 'upgrade' option
   **/
-  public get(path: '/order/veeamCloudConnect/{serviceName}/upgrade', pathParams: {serviceName: string}, queryParams?: {offer?: VeeamCloudConnectOffer}): Promise<string[]>;
+  public get(path: '/order/veeamCloudConnect/{serviceName}/upgrade', params: {serviceName: string, offer: VeeamCloudConnectOffer}): Promise<string[]>;
   /**
   Order an upgrade upon your Veeam Cloud Connect account
   Get prices and contracts information
   **/
-  public get(path: '/order/veeamCloudConnect/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {offer?: VeeamCloudConnectOffer}): Promise<OrderOrder>;
+  public get(path: '/order/veeamCloudConnect/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, offer: VeeamCloudConnectOffer}): Promise<OrderOrder>;
   /**
   Operations about the VPS service
   List available services
@@ -5164,107 +5164,107 @@ export class ApiOrder extends ApiCommon {
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/vps/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/vps/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Order additional disk
   Get allowed durations for 'additionalDisk' option
   **/
-  public get(path: '/order/vps/{serviceName}/additionalDisk', pathParams: {serviceName: string}, queryParams?: {additionalDiskSize?: VpsAdditionalDiskAdditionalDiskSizeEnum}): Promise<string[]>;
+  public get(path: '/order/vps/{serviceName}/additionalDisk', params: {serviceName: string, additionalDiskSize: VpsAdditionalDiskAdditionalDiskSizeEnum}): Promise<string[]>;
   /**
   Order additional disk
   Get prices and contracts information
   **/
-  public get(path: '/order/vps/{serviceName}/additionalDisk/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {additionalDiskSize?: VpsAdditionalDiskAdditionalDiskSizeEnum}): Promise<OrderOrder>;
+  public get(path: '/order/vps/{serviceName}/additionalDisk/{duration}', params: {serviceName: string, duration: string, additionalDiskSize: VpsAdditionalDiskAdditionalDiskSizeEnum}): Promise<OrderOrder>;
   /**
   Order Automated Backup Option (vps Cloud only)
   Get allowed durations for 'automatedBackup' option
   **/
-  public get(path: '/order/vps/{serviceName}/automatedBackup', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/vps/{serviceName}/automatedBackup', params: {serviceName: string}): Promise<string[]>;
   /**
   Order Automated Backup Option (vps Cloud only)
   Get prices and contracts information
   **/
-  public get(path: '/order/vps/{serviceName}/automatedBackup/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/vps/{serviceName}/automatedBackup/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Create an order for a cPanel license
   Get allowed durations for 'cpanel' option
   **/
-  public get(path: '/order/vps/{serviceName}/cpanel', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/vps/{serviceName}/cpanel', params: {serviceName: string}): Promise<string[]>;
   /**
   Create an order for a cPanel license
   Get prices and contracts information
   **/
-  public get(path: '/order/vps/{serviceName}/cpanel/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/vps/{serviceName}/cpanel/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order FtpBackup Option
   Get allowed durations for 'ftpbackup' option
   **/
-  public get(path: '/order/vps/{serviceName}/ftpbackup', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/vps/{serviceName}/ftpbackup', params: {serviceName: string}): Promise<string[]>;
   /**
   Order FtpBackup Option
   Get prices and contracts information
   **/
-  public get(path: '/order/vps/{serviceName}/ftpbackup/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/vps/{serviceName}/ftpbackup/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order Additional IP
   Get allowed durations for 'ip' option
   **/
-  public get(path: '/order/vps/{serviceName}/ip', pathParams: {serviceName: string}, queryParams?: {country?: VpsIpGeolocationEnum, number?: Number}): Promise<string[]>;
+  public get(path: '/order/vps/{serviceName}/ip', params: {serviceName: string, country?: VpsIpGeolocationEnum, number: number}): Promise<string[]>;
   /**
   Order Additional IP
   Get prices and contracts information
   **/
-  public get(path: '/order/vps/{serviceName}/ip/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {country?: VpsIpGeolocationEnum, number?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/vps/{serviceName}/ip/{duration}', params: {serviceName: string, duration: string, country?: VpsIpGeolocationEnum, number: number}): Promise<OrderOrder>;
   /**
   Create an order for a PLESK license
   Get allowed durations for 'plesk' option
   **/
-  public get(path: '/order/vps/{serviceName}/plesk', pathParams: {serviceName: string}, queryParams?: {domainNumber?: VpsPleskLicenseDomainNumberEnum}): Promise<string[]>;
+  public get(path: '/order/vps/{serviceName}/plesk', params: {serviceName: string, domainNumber: VpsPleskLicenseDomainNumberEnum}): Promise<string[]>;
   /**
   Create an order for a PLESK license
   Get prices and contracts information
   **/
-  public get(path: '/order/vps/{serviceName}/plesk/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {domainNumber?: VpsPleskLicenseDomainNumberEnum}): Promise<OrderOrder>;
+  public get(path: '/order/vps/{serviceName}/plesk/{duration}', params: {serviceName: string, duration: string, domainNumber: VpsPleskLicenseDomainNumberEnum}): Promise<OrderOrder>;
   /**
   Order Snapshot Option
   Get allowed durations for 'snapshot' option
   **/
-  public get(path: '/order/vps/{serviceName}/snapshot', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/vps/{serviceName}/snapshot', params: {serviceName: string}): Promise<string[]>;
   /**
   Order Snapshot Option
   Get prices and contracts information
   **/
-  public get(path: '/order/vps/{serviceName}/snapshot/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/vps/{serviceName}/snapshot/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order Upgrade
   Get allowed durations for 'upgrade' option
   **/
-  public get(path: '/order/vps/{serviceName}/upgrade', pathParams: {serviceName: string}, queryParams?: {model?: string}): Promise<string[]>;
+  public get(path: '/order/vps/{serviceName}/upgrade', params: {serviceName: string, model: string}): Promise<string[]>;
   /**
   Order Upgrade
   Get prices and contracts information
   **/
-  public get(path: '/order/vps/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}, queryParams?: {model?: string}): Promise<OrderOrder>;
+  public get(path: '/order/vps/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, model: string}): Promise<OrderOrder>;
   /**
   Order Veeam Option
   Get allowed durations for 'veeam' option
   **/
-  public get(path: '/order/vps/{serviceName}/veeam', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/vps/{serviceName}/veeam', params: {serviceName: string}): Promise<string[]>;
   /**
   Order Veeam Option
   Get prices and contracts information
   **/
-  public get(path: '/order/vps/{serviceName}/veeam/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/vps/{serviceName}/veeam/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order Windows Option (2015 only)
   Get allowed durations for 'windows' option
   **/
-  public get(path: '/order/vps/{serviceName}/windows', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/vps/{serviceName}/windows', params: {serviceName: string}): Promise<string[]>;
   /**
   Order Windows Option (2015 only)
   Get prices and contracts information
   **/
-  public get(path: '/order/vps/{serviceName}/windows/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public get(path: '/order/vps/{serviceName}/windows/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Operations about the VRACK service
   List available services
@@ -5274,29 +5274,33 @@ export class ApiOrder extends ApiCommon {
   Order new vrack
   Get prices and contracts information
   **/
-  public get(path: '/order/vrack/new', queryParams?: {quantity?: Number}): Promise<OrderOrder>;
+  public get(path: '/order/vrack/new'): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
   **/
-  public get(path: '/order/vrack/{serviceName}', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/order/vrack/{serviceName}', params: {serviceName: string}): Promise<string[]>;
   /**
   Purchase spare modem
   Get prices and contracts information
   **/
-  public get(path: '/order/xdsl/spare/new', queryParams?: {brand?: string, mondialRelayId?: string, quantity?: Number, shippingContactId?: Number}): Promise<OrderOrder>;
-  public get(path: PathsOrderGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/order/xdsl/spare/new'): Promise<OrderOrder>;
+  public get(path: PathsOrderGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Missing description
   Modify information about a specific cart
   **/
-  public put(path: '/order/cart/{cartId}', pathParams: {cartId: string}): Promise<OrderCartCart>;
+  public put(path: '/order/cart/{cartId}', params: {cartId: string}): Promise<OrderCartCart>;
   /**
   Missing description
   Update some values on a cart item
   **/
-  public put(path: '/order/cart/{cartId}/item/{itemId}', pathParams: {cartId: string, itemId: Number}): Promise<OrderCartItem>;
-  public put(path: PathsOrderPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/order/cart/{cartId}/item/{itemId}', params: {cartId: string, itemId: number}): Promise<OrderCartItem>;
+  public put(path: PathsOrderPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Missing description
   Create a new OVH order cart
@@ -5306,772 +5310,772 @@ export class ApiOrder extends ApiCommon {
   Missing description
   Assign a shopping cart to an loggedin client
   **/
-  public post(path: '/order/cart/{cartId}/assign', pathParams: {cartId: string}): Promise<void>;
+  public post(path: '/order/cart/{cartId}/assign', params: {cartId: string}): Promise<void>;
   /**
   Missing description
   Post a new baremetal server item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/baremetalServers', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/baremetalServers', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new baremetal server option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/baremetalServers/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/baremetalServers/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new CDN item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cdn', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cdn', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new CDN option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cdn/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cdn/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Ceph as a Service item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cephaas', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cephaas', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Ceph as a Service option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cephaas/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cephaas/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Validate your shopping and create order
   **/
-  public post(path: '/order/cart/{cartId}/checkout', pathParams: {cartId: string}): Promise<OrderOrder>;
+  public post(path: '/order/cart/{cartId}/checkout', params: {cartId: string}): Promise<OrderOrder>;
   /**
   Missing description
   Post a new Public Cloud item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cloud', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cloud', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Public Cloud option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cloud/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cloud/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Cloud Web item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cloudweb', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cloudweb', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Cloud Web option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cloudweb/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cloudweb/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Add a new coupon to cart
   **/
-  public post(path: '/order/cart/{cartId}/coupon', pathParams: {cartId: string}): Promise<string[]>;
+  public post(path: '/order/cart/{cartId}/coupon', params: {cartId: string}): Promise<string[]>;
   /**
   Missing description
   Post a new SaaS CSP2 offer item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/csp2', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/csp2', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SaaS CSP2 option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/csp2/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/csp2/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new timeseries offer item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dbaasTimeseries', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dbaasTimeseries', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new dedicated server item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dedicated', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dedicated', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new dedicated server option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dedicated/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dedicated/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new dedicated labs server item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dedicatedLabs', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dedicatedLabs', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new dedicated labs server option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dedicatedLabs/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dedicatedLabs/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new dedicated server item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dedicatedReseller', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dedicatedReseller', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new dedicated server option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dedicatedReseller/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dedicatedReseller/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Desk as a service item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/deskaas', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/deskaas', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Dedicated Discover server item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/discover', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/discover', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Dedicated Discover server option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/discover/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/discover/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new DNS zone item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dns', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dns', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new domain in your cart
   **/
-  public post(path: '/order/cart/{cartId}/domain', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/domain', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new domain name option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/domain/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/domain/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Domain Packs item (AllDom) in your cart
   **/
-  public post(path: '/order/cart/{cartId}/domainPacks', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/domainPacks', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new domain tranfer in your cart
   **/
-  public post(path: '/order/cart/{cartId}/domainTransfer', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/domainTransfer', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new domain name transfer option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/domainTransfer/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/domainTransfer/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new EmailPro item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/emailpro', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/emailpro', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new EmailPro option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/emailpro/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/emailpro/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Exchange item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/exchange', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/exchange', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Exchange option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/exchange/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/exchange/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Exchange Enterprise item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/exchangeEnterprise', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/exchangeEnterprise', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Exchange Enterprise option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/exchangeEnterprise/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/exchangeEnterprise/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Hosting Reseller item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/hostingReseller', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/hostingReseller', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new IP addresses item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/ip', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/ip', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new IP addresses option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/ip/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/ip/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new IP Load-Balancing item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/ipLoadbalancing', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/ipLoadbalancing', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new IP Load-Balancing option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/ipLoadbalancing/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/ipLoadbalancing/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Setup configuration item for the product
   **/
-  public post(path: '/order/cart/{cartId}/item/{itemId}/configuration', pathParams: {cartId: string, itemId: Number}): Promise<OrderCartConfigurationItem>;
+  public post(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {cartId: string, itemId: number}): Promise<OrderCartConfigurationItem>;
   /**
   Missing description
   Post a new Kubernetes item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/kubernetes', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/kubernetes', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Kubernetes option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/kubernetes/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/kubernetes/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new CloudLinux license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licenseCloudLinux', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licenseCloudLinux', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Directadmin license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licenseDirectadmin', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licenseDirectadmin', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Plesk license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licensePlesk', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licensePlesk', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Plesk license option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licensePlesk/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licensePlesk/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SqlServer license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licenseSqlServer', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licenseSqlServer', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Virtuozzo license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licenseVirtuozzo', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licenseVirtuozzo', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Windows license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licenseWindows', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licenseWindows', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Worklight license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licenseWorklight', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licenseWorklight', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new cPanel license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licensecPanel', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licensecPanel', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Logs item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/logs', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/logs', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Logs option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/logs/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/logs/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Managed Services item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/managedServices', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/managedServices', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Managed Services option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/managedServices/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/managedServices/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Metrics item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/metrics', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/metrics', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Metrics option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/metrics/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/metrics/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Microsoft offer item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/microsoft', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/microsoft', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Microsoft option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/microsoft/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/microsoft/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new NAS HA item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/nasha', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/nasha', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new NAS HA option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/nasha/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/nasha/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Office 365 item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/office365', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/office365', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Office 365 option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/office365/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/office365/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Office 365 Prepaid item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/office365Prepaid', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/office365Prepaid', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Office 365 Prepaid option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/office365Prepaid/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/office365Prepaid/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Over The Box item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/otb', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/otb', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Over The Box option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/otb/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/otb/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   List of OVHcloud Connect product
   Post a new OVHcloud Connect item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/ovhCloudConnect', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/ovhCloudConnect', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new PaaS Monitoring item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/paasmon', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/paasmon', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud CDI item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudCDI', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudCDI', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud CDI option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudCDI/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudCDI/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud Dedicated Cloud item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudDC', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudDC', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud Dedicated Cloud option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudDC/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudDC/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud Reseller item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudReseller', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudReseller', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud Reseller option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudReseller/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudReseller/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud Reseller Enterprise item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudResellerEnterprise', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudResellerEnterprise', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud Reseller Enterprise option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudResellerEnterprise/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudResellerEnterprise/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud SDDC item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudSDDC', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudSDDC', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud SDDC option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudSDDC/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudSDDC/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Reseller offer item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/reseller', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/reseller', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Sharepoint offer item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sharepoint', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sharepoint', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Sharepoint option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sharepoint/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sharepoint/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SMS item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sms', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sms', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SSL Comodo item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sslComodo', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sslComodo', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SSL Comodo option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sslComodo/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sslComodo/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SSL Gateway item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sslGateway', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sslGateway', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SSL Gateway option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sslGateway/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sslGateway/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new VoIP item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/telephony', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/telephony', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new VoIP option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/telephony/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/telephony/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   List of OVHcloud Connect product
   Post a new OVHcloud Connect item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/vco', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/vco', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Horizon View item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/vdi', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/vdi', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Horizon View option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/vdi/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/vdi/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Veeam Enterprise item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/veeamEnterprise', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/veeamEnterprise', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Veeam Enterprise option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/veeamEnterprise/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/veeamEnterprise/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Veeam Cloud Connect item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/veeamcc', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/veeamcc', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Veeam Cloud Connect option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/veeamcc/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/veeamcc/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new VPS item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/vps', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/vps', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new VPS option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/vps/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/vps/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new vRack item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/vrack', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/vrack', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new vRack item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/vrackReseller', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/vrackReseller', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new webHosting item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/webHosting', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/webHosting', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new webHosting option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/webHosting/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/webHosting/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   List of xdsl product
   Post a new xdsl item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/xdsl', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/xdsl', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   List of xdsl addon
   Post a new xdsl option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/xdsl/options', pathParams: {cartId: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/xdsl/options', params: {cartId: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/cloud/#serviceName#
   Post an additional Cloud option in your cart
   **/
-  public post(path: '/order/cartServiceOption/cloud/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/cloud/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/dedicated/#serviceName#
   Post an additional dedicated option in your cart
   **/
-  public post(path: '/order/cartServiceOption/dedicated/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/dedicated/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/domain/#serviceName#
   Post an additional Domain option in your cart
   **/
-  public post(path: '/order/cartServiceOption/domain/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/domain/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/emailpro/#serviceName#
   Post an additional EmailPro option in your cart
   **/
-  public post(path: '/order/cartServiceOption/emailpro/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/emailpro/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/ipLoadbalancing/#serviceName#
   Post an additional IP Load-Balancing option in your cart
   **/
-  public post(path: '/order/cartServiceOption/ipLoadbalancing/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/ipLoadbalancing/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/logs/#serviceName#
   Post an additional Logs option in your cart
   **/
-  public post(path: '/order/cartServiceOption/logs/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/logs/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/microsoft/#serviceName#
   Post an additional Microsoft option in your cart
   **/
-  public post(path: '/order/cartServiceOption/microsoft/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/microsoft/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/microsoftExchange/#serviceName#
   Post an additional Microsoft option in your cart
   **/
-  public post(path: '/order/cartServiceOption/microsoftExchange/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/microsoftExchange/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/office365/#serviceName#
   Post an additional Office option in your cart
   **/
-  public post(path: '/order/cartServiceOption/office365Prepaid/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/office365Prepaid/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/privateCloud/#serviceName#
   Post an additional Private Cloud option in your cart
   **/
-  public post(path: '/order/cartServiceOption/privateCloud/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/privateCloud/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/privateCloudReseller/#serviceName#
   Post an additional Private Cloud option in your cart
   **/
-  public post(path: '/order/cartServiceOption/privateCloudReseller/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/privateCloudReseller/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/privateCloudResellerEnterprise/#serviceName#
   Post an additional Private Cloud Enterprise option in your cart
   **/
-  public post(path: '/order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/sharepoint/#serviceName#
   Post an additional Sharepoint option in your cart
   **/
-  public post(path: '/order/cartServiceOption/sharepoint/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/sharepoint/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/sslGateway/#serviceName#
   Post an additional SSL Gateway option in your cart
   **/
-  public post(path: '/order/cartServiceOption/sslGateway/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/sslGateway/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/vdi/#serviceName#
   Post an additional Horizon View option in your cart
   **/
-  public post(path: '/order/cartServiceOption/vdi/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/vdi/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/webHosting/#serviceName#
   Post an additional Web Hosting option in your cart
   **/
-  public post(path: '/order/cartServiceOption/webHosting/{serviceName}', pathParams: {serviceName: string}): Promise<OrderCartItem>;
+  public post(path: '/order/cartServiceOption/webHosting/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
   Order a New Dedicated CDN Service
   Create order
   **/
-  public post(path: '/order/cdn/dedicated/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/cdn/dedicated/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Order Backend Option
   Create order
   **/
-  public post(path: '/order/cdn/dedicated/{serviceName}/backend/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/cdn/dedicated/{serviceName}/backend/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Upgrade cacheRule Option
   Create order
   **/
-  public post(path: '/order/cdn/dedicated/{serviceName}/cacheRule/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/cdn/dedicated/{serviceName}/cacheRule/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order Quota
   Create order
   **/
-  public post(path: '/order/cdn/dedicated/{serviceName}/quota/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/cdn/dedicated/{serviceName}/quota/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Upgrade Storage Option
   Create order
   **/
-  public post(path: '/order/cdn/webstorage/{serviceName}/storage/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/cdn/webstorage/{serviceName}/storage/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order Traffic
   Create order
   **/
-  public post(path: '/order/cdn/webstorage/{serviceName}/traffic', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/cdn/webstorage/{serviceName}/traffic', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Order credit usable on your Cloud project
   Create order
   **/
-  public post(path: '/order/cloud/project/{serviceName}/credit', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/cloud/project/{serviceName}/credit', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Order failover ip on your Cloud project
   Create order
   **/
-  public post(path: '/order/cloud/project/{serviceName}/ip', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/cloud/project/{serviceName}/ip', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Order an APC for this bay
   Create order
   **/
-  public post(path: '/order/dedicated/housing/{serviceName}/APC/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/housing/{serviceName}/APC/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a new Nas HA
   Create order
   **/
-  public post(path: '/order/dedicated/nasha/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/nasha/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Order a backup storage for this server
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/backupStorage/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/backupStorage/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order bandwidth for this server
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/bandwidth/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/bandwidth/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order vRack bandwidth for this server
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/bandwidthvRack/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/bandwidthvRack/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a failover IP for this server
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/failoverIP/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/failoverIP/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a feature for this server
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/feature/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/feature/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   order a Firewall for this server
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/firewall/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/firewall/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order IP for this server
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/ip/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/ip/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/ipMigration/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/ipMigration/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a kvm for this server
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/kvm/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/kvm/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a kvmip express for this server
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/kvmExpress/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/kvmExpress/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order professional use option
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/professionalUse/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/professionalUse/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a static IP for this server
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/staticIP/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/staticIP/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order additionall traffic for this server
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/traffic/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/traffic/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order an USB key for this server
   Create order
   **/
-  public post(path: '/order/dedicated/server/{serviceName}/usbKey/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicated/server/{serviceName}/usbKey/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order additional bandwidth in your Private Cloud
   Create order
   **/
-  public post(path: '/order/dedicatedCloud/{serviceName}/additionalBandwidth/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicatedCloud/{serviceName}/additionalBandwidth/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a new Filer in a given Datacenter (available filers are given in /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)
   Create order
   **/
-  public post(path: '/order/dedicatedCloud/{serviceName}/filer/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicatedCloud/{serviceName}/filer/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a new Host in a given Datacenter  (orderable hosts are given by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)
   Create order
   **/
-  public post(path: '/order/dedicatedCloud/{serviceName}/host/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicatedCloud/{serviceName}/host/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order an IP block for your Private Cloud
   Create order
   **/
-  public post(path: '/order/dedicatedCloud/{serviceName}/ip/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicatedCloud/{serviceName}/ip/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Enable windows templates (SPLA) in your Private Cloud
   Create order
   **/
-  public post(path: '/order/dedicatedCloud/{serviceName}/spla', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicatedCloud/{serviceName}/spla', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Upgrade ressources billing type. For hourlyToMonthly, already consumed hours will be billed at the end of the month
   Create order
   **/
-  public post(path: '/order/dedicatedCloud/{serviceName}/upgradeRessource/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicatedCloud/{serviceName}/upgradeRessource/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order VDI option in a given Datacenter
   Create order
   **/
-  public post(path: '/order/dedicatedCloud/{serviceName}/vdi', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/dedicatedCloud/{serviceName}/vdi', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Order a new DNS zone
   Create order
@@ -6081,42 +6085,42 @@ export class ApiOrder extends ApiCommon {
   Order Anycast
   Create order
   **/
-  public post(path: '/order/domain/zone/{zoneName}/dnsAnycast/{duration}', pathParams: {zoneName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/domain/zone/{zoneName}/dnsAnycast/{duration}', params: {zoneName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a new mx plan
   Create order
   **/
-  public post(path: '/order/email/domain/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/email/domain/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Create an order for an exchange account
   Create order
   **/
-  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/account/{duration}', pathParams: {organizationName: string, exchangeService: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/account/{duration}', params: {organizationName: string, exchangeService: string, duration: string}): Promise<OrderOrder>;
   /**
   Create an order to upgrade your hosted account storage
   Create order
   **/
-  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade/{duration}', pathParams: {organizationName: string, exchangeService: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade/{duration}', params: {organizationName: string, exchangeService: string, duration: string}): Promise<OrderOrder>;
   /**
   Create an order for a additional 50GB of space (Exchange 2010 reseller only)
   Create order
   **/
-  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/diskSpace', pathParams: {organizationName: string, exchangeService: string}): Promise<OrderOrder>;
+  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/diskSpace', params: {organizationName: string, exchangeService: string}): Promise<OrderOrder>;
   /**
   Create an order for a outlook licence.
   Create order
   **/
-  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/outlook/{duration}', pathParams: {organizationName: string, exchangeService: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/outlook/{duration}', params: {organizationName: string, exchangeService: string, duration: string}): Promise<OrderOrder>;
   /**
   Upgrade infrustruction to newest offer (Exchange 2013 to Exchange 2016)
   Create order
   **/
-  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/upgrade', pathParams: {organizationName: string, exchangeService: string}): Promise<OrderOrder>;
+  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/upgrade', params: {organizationName: string, exchangeService: string}): Promise<OrderOrder>;
   /**
   Create an order for a pro account
   Create order
   **/
-  public post(path: '/order/email/pro/{service}/account/{duration}', pathParams: {service: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/email/pro/{service}/account/{duration}', params: {service: string, duration: string}): Promise<OrderOrder>;
   /**
   Credit freefax account pages
   Create order
@@ -6126,147 +6130,147 @@ export class ApiOrder extends ApiCommon {
   Convert the freefax service to a /telephony voicefax service
   Create order
   **/
-  public post(path: '/order/freefax/{serviceName}/convertToVoicefax', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/freefax/{serviceName}/convertToVoicefax', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Order new private database
   Create order
   **/
-  public post(path: '/order/hosting/privateDatabase/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/hosting/privateDatabase/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Create an order for change ram size on your private database
   Create order
   **/
-  public post(path: '/order/hosting/privateDatabase/{serviceName}/ram/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/hosting/privateDatabase/{serviceName}/ram/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a new hosting account
   Create order
   **/
-  public post(path: '/order/hosting/web/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/hosting/web/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Order additional bandwidth
   Create order
   **/
-  public post(path: '/order/hosting/web/{serviceName}/bandwidth/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/hosting/web/{serviceName}/bandwidth/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Create an order for cdn option
   Create order
   **/
-  public post(path: '/order/hosting/web/{serviceName}/cdn/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/hosting/web/{serviceName}/cdn/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Create an order for change the hosting main domain
   Create order
   **/
-  public post(path: '/order/hosting/web/{serviceName}/changeMainDomain/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/hosting/web/{serviceName}/changeMainDomain/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Create an order for extra sql perso
   Create order
   **/
-  public post(path: '/order/hosting/web/{serviceName}/extraSqlPerso/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/hosting/web/{serviceName}/extraSqlPerso/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Create an order for hosted ssl option
   Create order
   **/
-  public post(path: '/order/hosting/web/{serviceName}/ssl/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/hosting/web/{serviceName}/ssl/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Create an order for upgrade your hosting account
   Create order
   **/
-  public post(path: '/order/hosting/web/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/hosting/web/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a HPC Spot Account
   Create order
   **/
-  public post(path: '/order/hpcspot/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/hpcspot/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Order a new license on a given Ip with some given options
   Create order
   **/
-  public post(path: '/order/license/cloudLinux/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/cloudLinux/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Order a new license on a given Ip with some given options
   Create order
   **/
-  public post(path: '/order/license/cpanel/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/cpanel/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Order a new license on a given Ip with some given options
   Create order
   **/
-  public post(path: '/order/license/directadmin/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/directadmin/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Create an order for an new office tenant
   Create order
   **/
-  public post(path: '/order/license/office/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/office/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Order a new license on a given Ip with some given options
   Create order
   **/
-  public post(path: '/order/license/plesk/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/plesk/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Upgrade this license with some given options
   Create order
   **/
-  public post(path: '/order/license/plesk/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/plesk/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a new license on a given Ip with some given options
   Create order
   **/
-  public post(path: '/order/license/sqlserver/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/sqlserver/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Upgrade this license with some given options
   Create order
   **/
-  public post(path: '/order/license/sqlserver/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/sqlserver/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a new license on a given Ip with some given options
   Create order
   **/
-  public post(path: '/order/license/virtuozzo/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/virtuozzo/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Upgrade this license with some given options
   Create order
   **/
-  public post(path: '/order/license/virtuozzo/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/virtuozzo/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a new license on a given Ip with some given options
   Create order
   **/
-  public post(path: '/order/license/windows/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/windows/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Upgrade this license with some given options
   Create order
   **/
-  public post(path: '/order/license/windows/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/windows/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order a new license on a given Ip with some given options
   Create order
   **/
-  public post(path: '/order/license/worklight/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/worklight/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Upgrade this license with some given options
   Create order
   **/
-  public post(path: '/order/license/worklight/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/license/worklight/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Subscribe to overTheBox service
   Create order
   **/
-  public post(path: '/order/overTheBox/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/overTheBox/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Create an order to upgrade your overTheBox service
   Create order
   **/
-  public post(path: '/order/overTheBox/{serviceName}/migrate', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/overTheBox/{serviceName}/migrate', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Order router vpn
   Create order
   **/
-  public post(path: '/order/router/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/router/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Create an order for a new office tenant
   Create order
   **/
-  public post(path: '/order/saas/csp2/new/{duration}', pathParams: {duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/saas/csp2/new/{duration}', params: {duration: string}): Promise<OrderOrder>;
   /**
   Create and credit a new SMS Account
   Create order
@@ -6276,22 +6280,22 @@ export class ApiOrder extends ApiCommon {
   Order credits on an existing SMS account
   Create order
   **/
-  public post(path: '/order/sms/{serviceName}/credits', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/sms/{serviceName}/credits', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Add extra simultaneous lines for a specifical line
   Create order
   **/
-  public post(path: '/order/telephony/lines/{serviceName}/addSimultaneousLines', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/telephony/lines/{serviceName}/addSimultaneousLines', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Order a phone for this specific line
   Create order
   **/
-  public post(path: '/order/telephony/lines/{serviceName}/hardware', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/telephony/lines/{serviceName}/hardware', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Update extra simultaneous channels for a specifical service to the requested amount
   Create order
   **/
-  public post(path: '/order/telephony/lines/{serviceName}/updateSimultaneousChannels', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/telephony/lines/{serviceName}/updateSimultaneousChannels', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Purchase a new billing account
   Create order
@@ -6306,152 +6310,152 @@ export class ApiOrder extends ApiCommon {
   Add extra simultaneous lines for a specifical line
   Create order
   **/
-  public post(path: '/order/telephony/trunks/{serviceName}/addSimultaneousLines', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/telephony/trunks/{serviceName}/addSimultaneousLines', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Order a phone for this specific line
   Create order
   **/
-  public post(path: '/order/telephony/trunks/{serviceName}/hardware', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/telephony/trunks/{serviceName}/hardware', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Update extra simultaneous channels for a specifical service to the requested amount
   Create order
   **/
-  public post(path: '/order/telephony/trunks/{serviceName}/updateSimultaneousChannels', pathParams: {serviceName: string}): Promise<OrderOrder>;
+  public post(path: '/order/telephony/trunks/{serviceName}/updateSimultaneousChannels', params: {serviceName: string}): Promise<OrderOrder>;
   /**
   Purchase new accessories
   Create order
   **/
-  public post(path: '/order/telephony/{billingAccount}/accessories', pathParams: {billingAccount: string}): Promise<OrderOrder>;
+  public post(path: '/order/telephony/{billingAccount}/accessories', params: {billingAccount: string}): Promise<OrderOrder>;
   /**
   Purchase a new line offer
   Create order
   **/
-  public post(path: '/order/telephony/{billingAccount}/line', pathParams: {billingAccount: string}): Promise<OrderOrder>;
+  public post(path: '/order/telephony/{billingAccount}/line', params: {billingAccount: string}): Promise<OrderOrder>;
   /**
   Purchase a new standard alias number
   Create order
   **/
-  public post(path: '/order/telephony/{billingAccount}/numberGeographic', pathParams: {billingAccount: string}): Promise<OrderOrder>;
+  public post(path: '/order/telephony/{billingAccount}/numberGeographic', params: {billingAccount: string}): Promise<OrderOrder>;
   /**
   Purchase a new standard alias number
   Create order
   **/
-  public post(path: '/order/telephony/{billingAccount}/numberNogeographic', pathParams: {billingAccount: string}): Promise<OrderOrder>;
+  public post(path: '/order/telephony/{billingAccount}/numberNogeographic', params: {billingAccount: string}): Promise<OrderOrder>;
   /**
   Purchase a new standard alias number
   Create order
   **/
-  public post(path: '/order/telephony/{billingAccount}/numberSpecial', pathParams: {billingAccount: string}): Promise<OrderOrder>;
+  public post(path: '/order/telephony/{billingAccount}/numberSpecial', params: {billingAccount: string}): Promise<OrderOrder>;
   /**
   Order a new portability
   Create order
   **/
-  public post(path: '/order/telephony/{billingAccount}/portability', pathParams: {billingAccount: string}): Promise<OrderOrder>;
+  public post(path: '/order/telephony/{billingAccount}/portability', params: {billingAccount: string}): Promise<OrderOrder>;
   /**
   Credit security deposit
   Create order
   **/
-  public post(path: '/order/telephony/{billingAccount}/securityDeposit', pathParams: {billingAccount: string}): Promise<OrderOrder>;
+  public post(path: '/order/telephony/{billingAccount}/securityDeposit', params: {billingAccount: string}): Promise<OrderOrder>;
   /**
   Listing offers /order/upgrade/baremetalPrivateBandwidth/#serviceName#
   Perform the requested upgrade of your service
   **/
-  public post(path: '/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
+  public post(path: '/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}', params: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Listing offers /order/upgrade/baremetalPublicBandwidth/#serviceName#
   Perform the requested upgrade of your service
   **/
-  public post(path: '/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
+  public post(path: '/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}', params: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Listing offers /order/upgrade/cephaas/#serviceName#
   Perform the requested upgrade of your service
   **/
-  public post(path: '/order/upgrade/cephaas/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
+  public post(path: '/order/upgrade/cephaas/{serviceName}/{planCode}', params: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Listing offers /order/upgrade/ipLoadbalancing/#serviceName#
   Perform the requested upgrade of your service
   **/
-  public post(path: '/order/upgrade/ipLoadbalancing/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
+  public post(path: '/order/upgrade/ipLoadbalancing/{serviceName}/{planCode}', params: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Listing offers /order/upgrade/logs/#serviceName#
   Perform the requested upgrade of your service
   **/
-  public post(path: '/order/upgrade/logs/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
+  public post(path: '/order/upgrade/logs/{serviceName}/{planCode}', params: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Listing offers /order/upgrade/metrics/#serviceName#
   Perform the requested upgrade of your service
   **/
-  public post(path: '/order/upgrade/metrics/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
+  public post(path: '/order/upgrade/metrics/{serviceName}/{planCode}', params: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Listing offers /order/upgrade/microsoftExchange/#serviceName#
   Perform the requested upgrade of your service
   **/
-  public post(path: '/order/upgrade/microsoftExchange/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
+  public post(path: '/order/upgrade/microsoftExchange/{serviceName}/{planCode}', params: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Listing offers /order/upgrade/privateCloud/#serviceName#
   Perform the requested upgrade of your service
   **/
-  public post(path: '/order/upgrade/privateCloud/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
+  public post(path: '/order/upgrade/privateCloud/{serviceName}/{planCode}', params: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Listing offers /order/upgrade/sslGateway/#serviceName#
   Perform the requested upgrade of your service
   **/
-  public post(path: '/order/upgrade/sslGateway/{serviceName}/{planCode}', pathParams: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
+  public post(path: '/order/upgrade/sslGateway/{serviceName}/{planCode}', params: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Order an upgrade upon your Veeam Cloud Connect account
   Create order
   **/
-  public post(path: '/order/veeamCloudConnect/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/veeamCloudConnect/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order additional disk
   Create order
   **/
-  public post(path: '/order/vps/{serviceName}/additionalDisk/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/vps/{serviceName}/additionalDisk/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order Automated Backup Option (vps Cloud only)
   Create order
   **/
-  public post(path: '/order/vps/{serviceName}/automatedBackup/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/vps/{serviceName}/automatedBackup/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Create an order for a cPanel license
   Create order
   **/
-  public post(path: '/order/vps/{serviceName}/cpanel/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/vps/{serviceName}/cpanel/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order FtpBackup Option
   Create order
   **/
-  public post(path: '/order/vps/{serviceName}/ftpbackup/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/vps/{serviceName}/ftpbackup/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order Additional IP
   Create order
   **/
-  public post(path: '/order/vps/{serviceName}/ip/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/vps/{serviceName}/ip/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Create an order for a PLESK license
   Create order
   **/
-  public post(path: '/order/vps/{serviceName}/plesk/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/vps/{serviceName}/plesk/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order Snapshot Option
   Create order
   **/
-  public post(path: '/order/vps/{serviceName}/snapshot/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/vps/{serviceName}/snapshot/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order Upgrade
   Create order
   **/
-  public post(path: '/order/vps/{serviceName}/upgrade/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/vps/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order Veeam Option
   Create order
   **/
-  public post(path: '/order/vps/{serviceName}/veeam/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/vps/{serviceName}/veeam/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order Windows Option (2015 only)
   Create order
   **/
-  public post(path: '/order/vps/{serviceName}/windows/{duration}', pathParams: {serviceName: string, duration: string}): Promise<OrderOrder>;
+  public post(path: '/order/vps/{serviceName}/windows/{duration}', params: {serviceName: string, duration: string}): Promise<OrderOrder>;
   /**
   Order new vrack
   Create order
@@ -6462,26 +6466,30 @@ export class ApiOrder extends ApiCommon {
   Create order
   **/
   public post(path: '/order/xdsl/spare/new'): Promise<OrderOrder>;
-  public post(path: PathsOrderPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: PathsOrderPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Missing description
   Delete a cart
   **/
-  public delete(path: '/order/cart/{cartId}', pathParams: {cartId: string}): Promise<void>;
+  public delete(path: '/order/cart/{cartId}', params: {cartId: string}): Promise<void>;
   /**
   Missing description
   Delete a coupon from cart
   **/
-  public delete(path: '/order/cart/{cartId}/coupon', pathParams: {cartId: string}, bodyParams?: {coupon?: string}): Promise<void>;
+  public delete(path: '/order/cart/{cartId}/coupon', params: {cartId: string, coupon: string}): Promise<void>;
   /**
   Missing description
   Delete an item from a cart
   **/
-  public delete(path: '/order/cart/{cartId}/item/{itemId}', pathParams: {cartId: string, itemId: Number}): Promise<void>;
+  public delete(path: '/order/cart/{cartId}/item/{itemId}', params: {cartId: string, itemId: number}): Promise<void>;
   /**
   Missing description
   Delete configuration item
   **/
-  public delete(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}', pathParams: {cartId: string, itemId: Number, configurationId: Number}): Promise<void>;
-  public delete(path: PathsOrderDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}', params: {cartId: string, itemId: number, configurationId: number}): Promise<void>;
+  public delete(path: PathsOrderDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Network Dnat
  */
@@ -7,10 +7,10 @@ export interface RouterDnat {
    * Destination port number
    *
    */
-  destinationPort?: Number;
+  destinationPort?: number;
   /**
    */
-  id?: Number;
+  id?: number;
   /**
    * New destination IP
    *
@@ -20,7 +20,7 @@ export interface RouterDnat {
    * New destination port number
    *
    */
-  newDestinationPort?: Number;
+  newDestinationPort?: number;
   /**
    * Protocol (TCP, UDP)
    *
@@ -51,7 +51,7 @@ export interface RouterNetwork {
   description?: string;
   /**
    */
-  id?: Number;
+  id?: number;
   /**
    * Gateway IP / CIDR Netmask
    *
@@ -62,7 +62,7 @@ export interface RouterNetwork {
   status?: RouterIpStatusEnum;
   /**
    */
-  vlanTag?: Number;
+  vlanTag?: number;
 }
 /**
  * Action to be taken against the Private Link request
@@ -81,7 +81,7 @@ export interface RouterPrivateLink {
   creationDate?: string;
   /**
    */
-  id?: Number;
+  id?: number;
   /**
    * Your memory-friendly name of this private link
    *
@@ -116,7 +116,7 @@ export interface RouterPrivateLinkRoute {
   creationDate?: string;
   /**
    */
-  id?: Number;
+  id?: number;
   /**
    * Network allowed to be routed outside
    *
@@ -159,10 +159,10 @@ export interface RouterSnat {
    * Destination port number
    *
    */
-  destinationPort?: Number;
+  destinationPort?: number;
   /**
    */
-  id?: Number;
+  id?: number;
   /**
    * New source IP
    *
@@ -172,7 +172,7 @@ export interface RouterSnat {
    * New destination port number
    *
    */
-  newSourcePort?: Number;
+  newSourcePort?: number;
   /**
    * Protocol (TCP, UDP)
    *
@@ -201,7 +201,7 @@ export interface RouterTask {
   function?: RouterTaskFunctionEnum;
   /**
    */
-  id?: Number;
+  id?: number;
   /**
    */
   status?: RouterTaskStatusEnum;
@@ -230,7 +230,7 @@ export interface RouterVpn {
   clientPrivNet?: string;
   /**
    */
-  id?: Number;
+  id?: number;
   /**
    * Your VPN server IP
    *
@@ -270,7 +270,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -322,7 +322,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -333,7 +333,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -373,8 +373,8 @@ type PathsRouterDELETE = '/router/{serviceName}/network/{ipNet}' |
 '/router/{serviceName}/vpn/{id}';
 
 export class ApiRouter extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the ROUTER service
@@ -385,149 +385,157 @@ export class ApiRouter extends ApiCommon {
   Router
   Get this object properties
   **/
-  public get(path: '/router/{serviceName}', pathParams: {serviceName: string}): Promise<RouterRouter>;
+  public get(path: '/router/{serviceName}', params: {serviceName: string}): Promise<RouterRouter>;
   /**
   List the router.Network objects
   Networks mounted on this Router
   **/
-  public get(path: '/router/{serviceName}/network', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/router/{serviceName}/network', params: {serviceName: string}): Promise<string[]>;
   /**
   Network
   Get this object properties
   **/
-  public get(path: '/router/{serviceName}/network/{ipNet}', pathParams: {serviceName: string, ipNet: string}): Promise<RouterNetwork>;
+  public get(path: '/router/{serviceName}/network/{ipNet}', params: {serviceName: string, ipNet: string}): Promise<RouterNetwork>;
   /**
   List the router.PrivateLink objects
   Private links set up on this router
   **/
-  public get(path: '/router/{serviceName}/privateLink', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/router/{serviceName}/privateLink', params: {serviceName: string}): Promise<string[]>;
   /**
   Private Link to another service
   Get this object properties
   **/
-  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}', pathParams: {serviceName: string, peerServiceName: string}): Promise<RouterPrivateLink>;
+  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}', params: {serviceName: string, peerServiceName: string}): Promise<RouterPrivateLink>;
   /**
   Received Private Link requests
   Get this object properties
   **/
-  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/request', pathParams: {serviceName: string, peerServiceName: string}): Promise<RouterPrivateLinkRequest>;
+  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/request', params: {serviceName: string, peerServiceName: string}): Promise<RouterPrivateLinkRequest>;
   /**
   List the router.PrivateLinkRoute objects
   Routes set up in a Private Link
   **/
-  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/route', pathParams: {serviceName: string, peerServiceName: string}): Promise<string[]>;
+  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/route', params: {serviceName: string, peerServiceName: string}): Promise<string[]>;
   /**
   Outgoing routes configured inside a Private Link
   Get this object properties
   **/
-  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/route/{network}', pathParams: {serviceName: string, peerServiceName: string, network: string}): Promise<RouterPrivateLinkRoute>;
+  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/route/{network}', params: {serviceName: string, peerServiceName: string, network: string}): Promise<RouterPrivateLinkRoute>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/router/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/router/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   List the router.Task objects
   Tasks for this Router
   **/
-  public get(path: '/router/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {function?: RouterTaskFunctionEnum, status?: RouterTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/router/{serviceName}/task', params: {serviceName: string, function?: RouterTaskFunctionEnum, status?: RouterTaskStatusEnum}): Promise<number[]>;
   /**
   Task
   Get this object properties
   **/
-  public get(path: '/router/{serviceName}/task/{id}', pathParams: {serviceName: string, id: Number}): Promise<RouterTask>;
+  public get(path: '/router/{serviceName}/task/{id}', params: {serviceName: string, id: number}): Promise<RouterTask>;
   /**
   List the router.Vpn objects
   VPN associated with this Router
   **/
-  public get(path: '/router/{serviceName}/vpn', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/router/{serviceName}/vpn', params: {serviceName: string}): Promise<number[]>;
   /**
   Virtual Private Network
   Get this object properties
   **/
-  public get(path: '/router/{serviceName}/vpn/{id}', pathParams: {serviceName: string, id: Number}): Promise<RouterVpn>;
-  public get(path: PathsRouterGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/router/{serviceName}/vpn/{id}', params: {serviceName: string, id: number}): Promise<RouterVpn>;
+  public get(path: PathsRouterGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Network
   Alter this object properties
   **/
-  public put(path: '/router/{serviceName}/network/{ipNet}', pathParams: {serviceName: string, ipNet: string}): Promise<void>;
+  public put(path: '/router/{serviceName}/network/{ipNet}', params: {serviceName: string, ipNet: string}): Promise<void>;
   /**
   Private Link to another service
   Alter this object properties
   **/
-  public put(path: '/router/{serviceName}/privateLink/{peerServiceName}', pathParams: {serviceName: string, peerServiceName: string}): Promise<void>;
+  public put(path: '/router/{serviceName}/privateLink/{peerServiceName}', params: {serviceName: string, peerServiceName: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/router/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/router/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
   /**
   Virtual Private Network
   Alter this object properties
   **/
-  public put(path: '/router/{serviceName}/vpn/{id}', pathParams: {serviceName: string, id: Number}): Promise<void>;
-  public put(path: PathsRouterPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/router/{serviceName}/vpn/{id}', params: {serviceName: string, id: number}): Promise<void>;
+  public put(path: PathsRouterPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/router/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/router/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
   /**
   List the router.Network objects
   Add a network to your router
   **/
-  public post(path: '/router/{serviceName}/network', pathParams: {serviceName: string}): Promise<RouterTask>;
+  public post(path: '/router/{serviceName}/network', params: {serviceName: string}): Promise<RouterTask>;
   /**
   List the router.PrivateLink objects
   Add a new Private Link to your Router service
   **/
-  public post(path: '/router/{serviceName}/privateLink', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/router/{serviceName}/privateLink', params: {serviceName: string}): Promise<string>;
   /**
   manage operations
   Accept, reject or cancel a pending request
   **/
-  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/request/manage', pathParams: {serviceName: string, peerServiceName: string}): Promise<string>;
+  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/request/manage', params: {serviceName: string, peerServiceName: string}): Promise<string>;
   /**
   List the router.PrivateLinkRoute objects
   Add a new outgoing route to your router
   **/
-  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/route', pathParams: {serviceName: string, peerServiceName: string}): Promise<RouterTask>;
+  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/route', params: {serviceName: string, peerServiceName: string}): Promise<RouterTask>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/router/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/router/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
   /**
   List the router.Vpn objects
   Add a VPN to your router
   **/
-  public post(path: '/router/{serviceName}/vpn', pathParams: {serviceName: string}): Promise<RouterVpn>;
+  public post(path: '/router/{serviceName}/vpn', params: {serviceName: string}): Promise<RouterVpn>;
   /**
   setPsk operations
   Change your VPN's PSK
   **/
-  public post(path: '/router/{serviceName}/vpn/{id}/setPsk', pathParams: {serviceName: string, id: Number}): Promise<RouterTask>;
-  public post(path: PathsRouterPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/router/{serviceName}/vpn/{id}/setPsk', params: {serviceName: string, id: number}): Promise<RouterTask>;
+  public post(path: PathsRouterPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Network
   Remove this network from your router
   **/
-  public delete(path: '/router/{serviceName}/network/{ipNet}', pathParams: {serviceName: string, ipNet: string}): Promise<RouterTask>;
+  public delete(path: '/router/{serviceName}/network/{ipNet}', params: {serviceName: string, ipNet: string}): Promise<RouterTask>;
   /**
   Private Link to another service
   Remove an existing Private Link from your Router service
   **/
-  public delete(path: '/router/{serviceName}/privateLink/{peerServiceName}', pathParams: {serviceName: string, peerServiceName: string}): Promise<RouterTask>;
+  public delete(path: '/router/{serviceName}/privateLink/{peerServiceName}', params: {serviceName: string, peerServiceName: string}): Promise<RouterTask>;
   /**
   Outgoing routes configured inside a Private Link
   Delete an existing route from your router
   **/
-  public delete(path: '/router/{serviceName}/privateLink/{peerServiceName}/route/{network}', pathParams: {serviceName: string, peerServiceName: string, network: string}): Promise<RouterTask>;
+  public delete(path: '/router/{serviceName}/privateLink/{peerServiceName}/route/{network}', params: {serviceName: string, peerServiceName: string, network: string}): Promise<RouterTask>;
   /**
   Virtual Private Network
   Delete a VPN from your router
   **/
-  public delete(path: '/router/{serviceName}/vpn/{id}', pathParams: {serviceName: string, id: Number}): Promise<RouterTask>;
-  public delete(path: PathsRouterDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/router/{serviceName}/vpn/{id}', params: {serviceName: string, id: number}): Promise<RouterTask>;
+  public delete(path: PathsRouterDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

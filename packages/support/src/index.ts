@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Support ticket message
  */
@@ -22,12 +22,12 @@ export interface SupportMessage {
    * Message identifier
    *
    */
-  messageId?: Number;
+  messageId?: number;
   /**
    * Ticket identifier
    *
    */
-  ticketId?: Number;
+  ticketId?: number;
   /**
    * Message last update date
    *
@@ -46,17 +46,17 @@ export interface SupportNewMessageInfo {
    * Message identifier
    *
    */
-  messageId?: Number;
+  messageId?: number;
   /**
    * Ticket identifier
    *
    */
-  ticketId?: Number;
+  ticketId?: number;
   /**
    * Ticket external number
    *
    */
-  ticketNumber?: Number;
+  ticketNumber?: number;
 }
 /**
  * Support Ticket
@@ -116,12 +116,12 @@ export interface SupportTicket {
    * Ticket identifier
    *
    */
-  ticketId?: Number;
+  ticketId?: number;
   /**
    * Ticket external number
    *
    */
-  ticketNumber?: Number;
+  ticketNumber?: number;
   /**
    * Ticket type
    *
@@ -165,30 +165,32 @@ type PathsSupportPOST = '/support/tickets/create' |
 '/support/tickets/{ticketId}/score';
 
 export class ApiSupport extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   List support tickets identifiers for this service
   List support tickets identifiers for this service
   **/
-  public get(path: '/support/tickets', queryParams?: {archived?: boolean, category?: SupportTicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: SupportTicketProductEnum, serviceName?: string, status?: SupportTicketStatusEnum, subject?: string, ticketNumber?: string}): Promise<Number[]>;
+  public get(path: '/support/tickets'): Promise<number[]>;
   /**
   Get ticket
   Get ticket
   **/
-  public get(path: '/support/tickets/{ticketId}', pathParams: {ticketId: Number}): Promise<SupportTicket>;
+  public get(path: '/support/tickets/{ticketId}', params: {ticketId: number}): Promise<SupportTicket>;
   /**
   Check whether ticket can be scored
   Checks whether ticket can be scored
   **/
-  public get(path: '/support/tickets/{ticketId}/canBeScored', pathParams: {ticketId: Number}): Promise<boolean>;
+  public get(path: '/support/tickets/{ticketId}/canBeScored', params: {ticketId: number}): Promise<boolean>;
   /**
   Get ticket messages
   Get ticket messages
   **/
-  public get(path: '/support/tickets/{ticketId}/messages', pathParams: {ticketId: Number}): Promise<SupportMessage[]>;
-  public get(path: PathsSupportGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/support/tickets/{ticketId}/messages', params: {ticketId: number}): Promise<SupportMessage[]>;
+  public get(path: PathsSupportGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Create a new ticket
   Create a new ticket
@@ -198,21 +200,23 @@ export class ApiSupport extends ApiCommon {
   Close ticket
   Close ticket
   **/
-  public post(path: '/support/tickets/{ticketId}/close', pathParams: {ticketId: Number}): Promise<void>;
+  public post(path: '/support/tickets/{ticketId}/close', params: {ticketId: number}): Promise<void>;
   /**
   Reopen a ticket
   Reopen a ticket
   **/
-  public post(path: '/support/tickets/{ticketId}/reopen', pathParams: {ticketId: Number}): Promise<void>;
+  public post(path: '/support/tickets/{ticketId}/reopen', params: {ticketId: number}): Promise<void>;
   /**
   Reply to ticket
   Reply to ticket
   **/
-  public post(path: '/support/tickets/{ticketId}/reply', pathParams: {ticketId: Number}): Promise<void>;
+  public post(path: '/support/tickets/{ticketId}/reply', params: {ticketId: number}): Promise<void>;
   /**
   Set ticket score
   Set ticket score
   **/
-  public post(path: '/support/tickets/{ticketId}/score', pathParams: {ticketId: Number}): Promise<void>;
-  public post(path: PathsSupportPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/support/tickets/{ticketId}/score', params: {ticketId: number}): Promise<void>;
+  public post(path: PathsSupportPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
 }

@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * A short description of what does the Task on your license
  */
@@ -67,7 +67,7 @@ export interface LicenseTask {
    * This Task id
    *
    */
-  taskId?: Number;
+  taskId?: number;
   /**
    * When was this Task created
    *
@@ -141,7 +141,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -193,7 +193,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -204,7 +204,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -222,8 +222,8 @@ type PathsLicenseSqlserverPOST = '/license/sqlserver/{serviceName}/confirmTermin
 '/license/sqlserver/{serviceName}/terminate';
 
 export class ApiLicenseSqlserver extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the LICENSE service
@@ -234,43 +234,49 @@ export class ApiLicenseSqlserver extends ApiCommon {
   Get the orderable Sql Server versions
   Get the orderable Sql Server versions
   **/
-  public get(path: '/license/sqlserver/orderableVersions', queryParams?: {ip?: string}): Promise<LicenseSqlServerOrderConfiguration[]>;
+  public get(path: '/license/sqlserver/orderableVersions'): Promise<LicenseSqlServerOrderConfiguration[]>;
   /**
   Your SQL Server license
   Get this object properties
   **/
-  public get(path: '/license/sqlserver/{serviceName}', pathParams: {serviceName: string}): Promise<LicenseSqlserverSqlServer>;
+  public get(path: '/license/sqlserver/{serviceName}', params: {serviceName: string}): Promise<LicenseSqlserverSqlServer>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/license/sqlserver/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/license/sqlserver/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   List the license.Task objects
   Tasks linked to this license
   **/
-  public get(path: '/license/sqlserver/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/license/sqlserver/{serviceName}/tasks', params: {serviceName: string, action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<number[]>;
   /**
   licenses Todos
   Get this object properties
   **/
-  public get(path: '/license/sqlserver/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<LicenseTask>;
-  public get(path: PathsLicenseSqlserverGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/license/sqlserver/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<LicenseTask>;
+  public get(path: PathsLicenseSqlserverGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/sqlserver/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsLicenseSqlserverPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/license/sqlserver/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsLicenseSqlserverPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/license/sqlserver/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/license/sqlserver/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/license/sqlserver/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
-  public post(path: PathsLicenseSqlserverPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/license/sqlserver/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
+  public post(path: PathsLicenseSqlserverPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
 }

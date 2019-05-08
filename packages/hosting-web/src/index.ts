@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * A value set tagged with its unit and serie name
  */
@@ -19,10 +19,10 @@ export interface ComplexTypeChartSerie<T> {
 export interface ComplexTypeChartTimestampValue {
   /**
    */
-  timestamp?: Number;
+  timestamp?: number;
   /**
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * A numeric value tagged with its unit
@@ -51,7 +51,7 @@ export interface HostingWebAddress {
    * Port to use to access to the service
    *
    */
-  port?: Number;
+  port?: number;
   /**
    * Url to contact the service
    *
@@ -81,7 +81,7 @@ export interface HostingWebCapabilities {
    * Number of domains you can attach to your hosting
    *
    */
-  attachedDomains?: Number;
+  attachedDomains?: number;
   /**
    * Does the offer allow crontab
    *
@@ -91,7 +91,7 @@ export interface HostingWebCapabilities {
    * Number of database engines allowed for your hosting
    *
    */
-  databaseEngines?: Number;
+  databaseEngines?: number;
   /**
    * Describe all databases type you can have
    *
@@ -111,12 +111,12 @@ export interface HostingWebCapabilities {
    * Number of environment variables allowed for your hosting
    *
    */
-  envVars?: Number;
+  envVars?: number;
   /**
    * Number of ftp user you can create
    *
    */
-  extraUsers?: Number;
+  extraUsers?: number;
   /**
    * Does the offer allow access to web files browser?
    *
@@ -146,12 +146,12 @@ export interface HostingWebCapabilities {
    * Number of runtimes allowed for your hosting
    *
    */
-  runtimes?: Number;
+  runtimes?: number;
   /**
    * Number of sites recommended for your hosting ( -1 for unlimited )
    *
    */
-  sitesRecommended?: Number;
+  sitesRecommended?: number;
   /**
    * Does the offer allow SSH access
    *
@@ -161,7 +161,7 @@ export interface HostingWebCapabilities {
    * Traffic quota size for your hosting ( null for unlimited )
    *
    */
-  traffic?: ComplexTypeUnitAndValue<Number>;
+  traffic?: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Available clusterIp by country
@@ -195,12 +195,12 @@ export interface HostingWebCreationEmailCapabilities {
    * Number of email available for creation
    *
    */
-  available?: Number;
+  available?: number;
   /**
    * Email account capacity
    *
    */
-  quota?: ComplexTypeUnitAndValue<Number>;
+  quota?: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Language available for cron script
@@ -239,7 +239,7 @@ export interface HostingWebDiskType {
    * Size of the disk
    *
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * Disk type available
@@ -277,7 +277,7 @@ export interface HostingWebModuleList {
    * The ID of the module
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * The keywords for this module
    *
@@ -307,12 +307,12 @@ export interface HostingWebModuleList {
    * Size of the module
    *
    */
-  size?: ComplexTypeUnitAndValue<Number>;
+  size?: ComplexTypeUnitAndValue<number>;
   /**
    * The IDs of the module you can upgrade to
    *
    */
-  upgradeFrom?: Number[];
+  upgradeFrom?: number[];
   /**
    * The version of the module
    *
@@ -469,12 +469,12 @@ export interface HostingWebService {
    * Space allowed
    *
    */
-  quotaSize?: ComplexTypeUnitAndValue<Number>;
+  quotaSize?: ComplexTypeUnitAndValue<number>;
   /**
    * Space used
    *
    */
-  quotaUsed?: ComplexTypeUnitAndValue<Number>;
+  quotaUsed?: ComplexTypeUnitAndValue<number>;
   /**
    * If your offer is old, return a recommended offer to migrate on
    *
@@ -509,12 +509,12 @@ export interface HostingWebService {
    * Traffic quota allowed ( null = unlimited )
    *
    */
-  trafficQuotaSize?: ComplexTypeUnitAndValue<Number>;
+  trafficQuotaSize?: ComplexTypeUnitAndValue<number>;
   /**
    * Traffic quota used
    *
    */
-  trafficQuotaUsed?: ComplexTypeUnitAndValue<Number>;
+  trafficQuotaUsed?: ComplexTypeUnitAndValue<number>;
   /**
    * List of updates on your hosting
    *
@@ -591,7 +591,7 @@ export interface HostingWebAttachedDomain {
    * The runtime configuration ID used on this domain
    *
    */
-  runtimeId?: Number;
+  runtimeId?: number;
   /**
    * Put domain in ssl certificate
    *
@@ -606,7 +606,7 @@ export interface HostingWebAttachedDomain {
    * The task ID working on this domain
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * Attached domain cdn enum
@@ -672,7 +672,7 @@ export interface HostingWebCdn {
    * The task ID working on this CDN
    *
    */
-  taskId?: Number;
+  taskId?: number;
   /**
    * Type of the CDN
    *
@@ -716,7 +716,7 @@ export interface HostingWebCron {
    * Cron's id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Cron language
    *
@@ -744,7 +744,7 @@ export interface HostingWebDatabase {
    * The number of available dumps associated to this database
    *
    */
-  dumps?: Number;
+  dumps?: number;
   /**
    * URL for the graphical user interface
    *
@@ -769,17 +769,17 @@ export interface HostingWebDatabase {
    * The port on where to contact this database
    *
    */
-  port?: Number;
+  port?: number;
   /**
    * Space allowed
    *
    */
-  quotaSize?: ComplexTypeUnitAndValue<Number>;
+  quotaSize?: ComplexTypeUnitAndValue<number>;
   /**
    * Space used
    *
    */
-  quotaUsed?: ComplexTypeUnitAndValue<Number>;
+  quotaUsed?: ComplexTypeUnitAndValue<number>;
   /**
    * Your database server name
    *
@@ -799,7 +799,7 @@ export interface HostingWebDatabase {
    * The task ID working on this database
    *
    */
-  taskId?: Number;
+  taskId?: number;
   /**
    * Type of your database
    *
@@ -844,7 +844,7 @@ export interface HostingWebDatabaseCreationDatabaseCapabilities {
    * Number of database left for creation
    *
    */
-  available?: Number;
+  available?: number;
   /**
    * Database software available on this platform
    *
@@ -859,7 +859,7 @@ export interface HostingWebDatabaseCreationDatabaseCapabilities {
    * Size of data can be used
    *
    */
-  quota?: ComplexTypeUnitAndValue<Number>;
+  quota?: ComplexTypeUnitAndValue<number>;
   /**
    * Database offer name
    *
@@ -978,7 +978,7 @@ export interface HostingWebDatabaseDump {
    * Dump id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * The dump status
    *
@@ -988,7 +988,7 @@ export interface HostingWebDatabaseDump {
    * The task ID working on this dump
    *
    */
-  taskId?: Number;
+  taskId?: number;
   /**
    * Dump type
    *
@@ -1031,7 +1031,7 @@ export interface HostingWebDump {
    * Dump id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * If source database was deleted
    *
@@ -1046,7 +1046,7 @@ export interface HostingWebDump {
    * The task ID working on this dump
    *
    */
-  taskId?: Number;
+  taskId?: number;
   /**
    * Dump type
    *
@@ -1066,7 +1066,7 @@ export interface HostingWebEmail {
    * Bounce
    *
    */
-  bounce?: Number;
+  bounce?: number;
   /**
    * Email used to receive errors
    *
@@ -1076,17 +1076,17 @@ export interface HostingWebEmail {
    * Max email to sent per day
    *
    */
-  maxPerDay?: Number;
+  maxPerDay?: number;
   /**
    * Email sent since hosting creation
    *
    */
-  sent?: Number;
+  sent?: number;
   /**
    * Email sent today
    *
    */
-  sentToday?: Number;
+  sentToday?: number;
   /**
    * Email state
    *
@@ -1111,7 +1111,7 @@ export interface HostingWebEnvVar {
    * The task ID working on this variable
    *
    */
-  taskId?: Number;
+  taskId?: number;
   /**
    * Type of variable set
    *
@@ -1139,7 +1139,7 @@ export interface HostingWebExtrasqlperso {
    * Number of database allowed by this option
    *
    */
-  database?: Number;
+  database?: number;
   /**
    * The extraSqlPerso option name
    *
@@ -1149,7 +1149,7 @@ export interface HostingWebExtrasqlperso {
    * Quota size allowed per each database by this option
    *
    */
-  size?: ComplexTypeUnitAndValue<Number>;
+  size?: ComplexTypeUnitAndValue<number>;
   /**
    * The extraSqlPerso option status
    *
@@ -1159,7 +1159,7 @@ export interface HostingWebExtrasqlperso {
    * The task ID working on this extraSqlPerso
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * Freedoms linked to this hosting account
@@ -1298,7 +1298,7 @@ export interface HostingWebLocalSeoSearchData {
    * Id of the search
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Name of the location
    *
@@ -1518,7 +1518,7 @@ export interface HostingWebLocalSeoAccount {
    * Account id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Date of the last account's update
    *
@@ -1533,7 +1533,7 @@ export interface HostingWebLocalSeoAccount {
    * Running task associated to the account
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * Availability of an email address for a local SEO order
@@ -1551,7 +1551,7 @@ export interface HostingWebLocalSeoLocation {
    * Account id
    *
    */
-  accountId?: Number;
+  accountId?: number;
   /**
    * Address of the location
    *
@@ -1571,7 +1571,7 @@ export interface HostingWebLocalSeoLocation {
    * Location id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Date of the last location's update
    *
@@ -1596,7 +1596,7 @@ export interface HostingWebLocalSeoLocation {
    * Running task associated to the location
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * Location country
@@ -1651,7 +1651,7 @@ export interface HostingWebMailVolumeHistory {
    * The volume history size
    *
    */
-  volume?: Number;
+  volume?: number;
 }
 /**
  * Hosting modules installed
@@ -1681,7 +1681,7 @@ export interface HostingWebModule {
    * Installation ID
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * The language of the module
    *
@@ -1696,7 +1696,7 @@ export interface HostingWebModule {
    * ID of the module associated with this installation
    *
    */
-  moduleId?: Number;
+  moduleId?: number;
   /**
    * Where the module is installed, relative to your home directory
    *
@@ -1716,7 +1716,7 @@ export interface HostingWebModule {
    * The task ID working on this module
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * The type of the admin name
@@ -1744,7 +1744,7 @@ export interface HostingWebModuleDependencyType {
    * The port on where to contact this dependency
    *
    */
-  port?: Number;
+  port?: number;
   /**
    * The prefix to set to the data to distinguish between the data from the module and the rest
    *
@@ -1826,7 +1826,7 @@ export interface HostingWebOvhConfig {
    * Configuration's id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Config path, relative to your home directory
    *
@@ -1841,7 +1841,7 @@ export interface HostingWebOvhConfig {
    * The task ID working on this configuration
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * Hosting available configuration version
@@ -1884,7 +1884,7 @@ export interface HostingWebOwnLogs {
    * Identifier of this ownLogs
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Status of this ownLogs
    *
@@ -1894,7 +1894,7 @@ export interface HostingWebOwnLogs {
    * The task ID working on this ownLogs
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * OwnLogs status
@@ -1923,7 +1923,7 @@ export interface HostingWebRuntime {
    * The runtime configuration ID
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Is the runtime configuration is the one by default for the hosting
    *
@@ -1958,7 +1958,7 @@ export interface HostingWebRuntime {
    * The link current task for the runtime configuration
    *
    */
-  taskId?: Number;
+  taskId?: number;
   /**
    * The backend type of the runtime
    *
@@ -2005,7 +2005,7 @@ export interface HostingWebSsl {
    * The task ID working on this HostedSsl
    *
    */
-  taskId?: Number;
+  taskId?: number;
   /**
    * Type of the HostedSsl
    *
@@ -2070,7 +2070,7 @@ export interface HostingWebTask {
    * the id of the task
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * last update
    *
@@ -2148,7 +2148,7 @@ export interface HostingWebUser {
    * The task ID working on this user
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * User, url and port of a service
@@ -2158,7 +2158,7 @@ export interface HostingWebUserCredentials {
    * Port to use to access to the service
    *
    */
-  port?: Number;
+  port?: number;
   /**
    * Url to contact the service
    *
@@ -2220,7 +2220,7 @@ export interface HostingWebUserLogs {
    * OwnLogs where this userLogs will be enable. Default : main domain ownlogs
    *
    */
-  ownLogsId?: Number;
+  ownLogsId?: number;
   /**
    * Status of this userLogs
    *
@@ -2230,7 +2230,7 @@ export interface HostingWebUserLogs {
    * The task ID working on this userLogs
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * UserLogs status
@@ -2252,7 +2252,7 @@ export interface OrderPrice {
   text?: string;
   /**
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * Map a possible renew for a specific service
@@ -2282,7 +2282,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -2334,7 +2334,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -2345,7 +2345,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -2497,8 +2497,8 @@ type PathsHostingWebDELETE = '/hosting/web/{serviceName}/attachedDomain/{domain}
 '/hosting/web/{serviceName}/userLogs/{login}';
 
 export class ApiHostingWeb extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the HOSTING service
@@ -2509,12 +2509,12 @@ export class ApiHostingWeb extends ApiCommon {
   Find hosting service linked to a domain
   Find hosting service linked to a domain
   **/
-  public get(path: '/hosting/web/attachedDomain', queryParams?: {domain?: string}): Promise<string[]>;
+  public get(path: '/hosting/web/attachedDomain'): Promise<string[]>;
   /**
   Get available offer
   Get available offer
   **/
-  public get(path: '/hosting/web/availableOffer', queryParams?: {domain?: string}): Promise<HostingWebOfferEnum[]>;
+  public get(path: '/hosting/web/availableOffer'): Promise<HostingWebOfferEnum[]>;
   /**
   Get current incident
   Get current incident
@@ -2524,419 +2524,423 @@ export class ApiHostingWeb extends ApiCommon {
   Get list of directories associated to a local SEO offer and a country
   Get list of directories associated to a local SEO offer and a country
   **/
-  public get(path: '/hosting/web/localSeo/directoriesList', queryParams?: {country?: HostingWebLocalSeoLocationCountryEnum, offer?: HostingWebLocalSeoLocationOfferEnum}): Promise<HostingWebLocalSeoDirectoriesList>;
+  public get(path: '/hosting/web/localSeo/directoriesList'): Promise<HostingWebLocalSeoDirectoriesList>;
   /**
   Check email availability for a local SEO order
   Check email availability for a local SEO order
   **/
-  public get(path: '/hosting/web/localSeo/emailAvailability', queryParams?: {email?: string}): Promise<HostingWebLocalSeoEmailAvailability>;
+  public get(path: '/hosting/web/localSeo/emailAvailability'): Promise<HostingWebLocalSeoEmailAvailability>;
   /**
   Get the result of a visibility check
   Get the result of a visibility check
   **/
-  public get(path: '/hosting/web/localSeo/visibilityCheckResult', queryParams?: {directory?: string, id?: Number, token?: string}): Promise<HostingWebLocalSeoVisibilityCheckResultResponse[]>;
+  public get(path: '/hosting/web/localSeo/visibilityCheckResult'): Promise<HostingWebLocalSeoVisibilityCheckResultResponse[]>;
   /**
   List the hosting.web.ModuleList objects
   IDs of all modules available
   **/
-  public get(path: '/hosting/web/moduleList', queryParams?: {active?: boolean, branch?: HostingWebModuleBranchEnum, latest?: boolean}): Promise<Number[]>;
+  public get(path: '/hosting/web/moduleList'): Promise<number[]>;
   /**
   A module specifically packaged by OVH
   Get this object properties
   **/
-  public get(path: '/hosting/web/moduleList/{id}', pathParams: {id: Number}): Promise<HostingWebModuleList>;
+  public get(path: '/hosting/web/moduleList/{id}', params: {id: number}): Promise<HostingWebModuleList>;
   /**
   Get offer capabilities
   Get offer capabilities
   **/
-  public get(path: '/hosting/web/offerCapabilities', queryParams?: {offer?: HostingWebOfferCapabilitiesEnum}): Promise<HostingWebCapabilities>;
+  public get(path: '/hosting/web/offerCapabilities'): Promise<HostingWebCapabilities>;
   /**
   Web Hosting
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}', pathParams: {serviceName: string}): Promise<HostingWebService>;
+  public get(path: '/hosting/web/{serviceName}', params: {serviceName: string}): Promise<HostingWebService>;
   /**
   List the hosting.web.attachedDomain objects
   Domains or subdomains attached to your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/attachedDomain', pathParams: {serviceName: string}, queryParams?: {domain?: string, path?: string}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/attachedDomain', params: {serviceName: string, domain?: string, path?: string}): Promise<string[]>;
   /**
   Virtual service
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/attachedDomain/{domain}', pathParams: {serviceName: string, domain: string}): Promise<HostingWebAttachedDomain>;
+  public get(path: '/hosting/web/{serviceName}/attachedDomain/{domain}', params: {serviceName: string, domain: string}): Promise<HostingWebAttachedDomain>;
   /**
   List the hosting.web.boostHistory objects
   History of your hosting boost
   **/
-  public get(path: '/hosting/web/{serviceName}/boostHistory', pathParams: {serviceName: string}, queryParams?: {date?: string}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/boostHistory', params: {serviceName: string, date?: string}): Promise<string[]>;
   /**
   History of your boost requests
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/boostHistory/{date}', pathParams: {serviceName: string, date: string}): Promise<HostingWebBoostHistory>;
+  public get(path: '/hosting/web/{serviceName}/boostHistory/{date}', params: {serviceName: string, date: string}): Promise<HostingWebBoostHistory>;
   /**
   CDN service
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/cdn', pathParams: {serviceName: string}): Promise<HostingWebCdn>;
+  public get(path: '/hosting/web/{serviceName}/cdn', params: {serviceName: string}): Promise<HostingWebCdn>;
   /**
   serviceInfos operations
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/cdn/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/hosting/web/{serviceName}/cdn/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   List the hosting.web.cron objects
   Crons on your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/cron', pathParams: {serviceName: string}, queryParams?: {command?: string, description?: string, email?: string, language?: HostingWebCronLanguageEnum}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/cron', params: {serviceName: string, command?: string, description?: string, email?: string, language?: HostingWebCronLanguageEnum}): Promise<number[]>;
   /**
   Hosting crons
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/cron/{id}', pathParams: {serviceName: string, id: Number}): Promise<HostingWebCron>;
+  public get(path: '/hosting/web/{serviceName}/cron/{id}', params: {serviceName: string, id: number}): Promise<HostingWebCron>;
   /**
   cronAvailableLanguage operations
   List available cron language
   **/
-  public get(path: '/hosting/web/{serviceName}/cronAvailableLanguage', pathParams: {serviceName: string}): Promise<HostingWebCronLanguageEnum[]>;
+  public get(path: '/hosting/web/{serviceName}/cronAvailableLanguage', params: {serviceName: string}): Promise<HostingWebCronLanguageEnum[]>;
   /**
   List the hosting.web.database objects
   Databases linked to your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/database', pathParams: {serviceName: string}, queryParams?: {mode?: HostingWebDatabaseModeEnum, name?: string, server?: string, type?: HostingWebDatabaseDatabaseTypeEnum, user?: string}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/database', params: {serviceName: string, mode?: HostingWebDatabaseModeEnum, name?: string, server?: string, type?: HostingWebDatabaseDatabaseTypeEnum, user?: string}): Promise<string[]>;
   /**
   Database
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/database/{name}', pathParams: {serviceName: string, name: string}): Promise<HostingWebDatabase>;
+  public get(path: '/hosting/web/{serviceName}/database/{name}', params: {serviceName: string, name: string}): Promise<HostingWebDatabase>;
   /**
   capabilities operations
   Get available capabilities for this database
   **/
-  public get(path: '/hosting/web/{serviceName}/database/{name}/capabilities', pathParams: {serviceName: string, name: string}): Promise<HostingWebDatabaseDatabaseCapabilities>;
+  public get(path: '/hosting/web/{serviceName}/database/{name}/capabilities', params: {serviceName: string, name: string}): Promise<HostingWebDatabaseDatabaseCapabilities>;
   /**
   List the hosting.web.database.dump objects
   Dump available for your databases
   **/
-  public get(path: '/hosting/web/{serviceName}/database/{name}/dump', pathParams: {serviceName: string, name: string}, queryParams?: {creationDate?: string, deletionDate?: string, type?: HostingWebDatabaseDumpDateEnum}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/database/{name}/dump', params: {serviceName: string, name: string, creationDate?: string, deletionDate?: string, type?: HostingWebDatabaseDumpDateEnum}): Promise<number[]>;
   /**
   Dump
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/database/{name}/dump/{id}', pathParams: {serviceName: string, name: string, id: Number}): Promise<HostingWebDatabaseDump>;
+  public get(path: '/hosting/web/{serviceName}/database/{name}/dump/{id}', params: {serviceName: string, name: string, id: number}): Promise<HostingWebDatabaseDump>;
   /**
   statistics operations
   Get statistics about this database
   **/
-  public get(path: '/hosting/web/{serviceName}/database/{name}/statistics', pathParams: {serviceName: string, name: string}, queryParams?: {period?: HostingWebStatisticsPeriodEnum, type?: HostingWebDatabaseStatisticsTypeEnum}): Promise<ComplexTypeChartSerie<ComplexTypeChartTimestampValue>[]>;
+  public get(path: '/hosting/web/{serviceName}/database/{name}/statistics', params: {serviceName: string, name: string, period: HostingWebStatisticsPeriodEnum, type: HostingWebDatabaseStatisticsTypeEnum}): Promise<ComplexTypeChartSerie<ComplexTypeChartTimestampValue>[]>;
   /**
   databaseAvailableType operations
   List available database type
   **/
-  public get(path: '/hosting/web/{serviceName}/databaseAvailableType', pathParams: {serviceName: string}): Promise<HostingWebDatabaseDatabaseTypeEnum[]>;
+  public get(path: '/hosting/web/{serviceName}/databaseAvailableType', params: {serviceName: string}): Promise<HostingWebDatabaseDatabaseTypeEnum[]>;
   /**
   databaseAvailableVersion operations
   List available database version following a type
   **/
-  public get(path: '/hosting/web/{serviceName}/databaseAvailableVersion', pathParams: {serviceName: string}, queryParams?: {type?: HostingWebDatabaseDatabaseTypeEnum}): Promise<HostingWebDatabaseAvailableVersionStruct>;
+  public get(path: '/hosting/web/{serviceName}/databaseAvailableVersion', params: {serviceName: string, type: HostingWebDatabaseDatabaseTypeEnum}): Promise<HostingWebDatabaseAvailableVersionStruct>;
   /**
   databaseCreationCapabilities operations
   List available database you can install
   **/
-  public get(path: '/hosting/web/{serviceName}/databaseCreationCapabilities', pathParams: {serviceName: string}): Promise<HostingWebDatabaseCreationDatabaseCapabilities[]>;
+  public get(path: '/hosting/web/{serviceName}/databaseCreationCapabilities', params: {serviceName: string}): Promise<HostingWebDatabaseCreationDatabaseCapabilities[]>;
   /**
   List the hosting.web.dump objects
   Dumps linked to your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/dump', pathParams: {serviceName: string}, queryParams?: {creationDate?: string, databaseName?: string, deletionDate?: string, orphan?: boolean}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/dump', params: {serviceName: string, creationDate?: string, databaseName?: string, deletionDate?: string, orphan?: boolean}): Promise<number[]>;
   /**
   Dump
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/dump/{id}', pathParams: {serviceName: string, id: Number}): Promise<HostingWebDump>;
+  public get(path: '/hosting/web/{serviceName}/dump/{id}', params: {serviceName: string, id: number}): Promise<HostingWebDump>;
   /**
   Hosting automated emails
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/email', pathParams: {serviceName: string}): Promise<HostingWebEmail>;
+  public get(path: '/hosting/web/{serviceName}/email', params: {serviceName: string}): Promise<HostingWebEmail>;
   /**
   bounces operations
   Request the last bounces
   **/
-  public get(path: '/hosting/web/{serviceName}/email/bounces', pathParams: {serviceName: string}, queryParams?: {limit?: Number}): Promise<HostingWebMailBounce[]>;
+  public get(path: '/hosting/web/{serviceName}/email/bounces', params: {serviceName: string, limit: number}): Promise<HostingWebMailBounce[]>;
   /**
   volumes operations
   Request the history volume of email sent
   **/
-  public get(path: '/hosting/web/{serviceName}/email/volumes', pathParams: {serviceName: string}): Promise<HostingWebMailVolumeHistory[]>;
+  public get(path: '/hosting/web/{serviceName}/email/volumes', params: {serviceName: string}): Promise<HostingWebMailVolumeHistory[]>;
   /**
   List the hosting.web.envVar objects
   Environment variables set on your webhosting
   **/
-  public get(path: '/hosting/web/{serviceName}/envVar', pathParams: {serviceName: string}, queryParams?: {type?: HostingWebEnvVarTypeEnum}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/envVar', params: {serviceName: string, type?: HostingWebEnvVarTypeEnum}): Promise<string[]>;
   /**
   Environment variables set into your webhosting account
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/envVar/{key}', pathParams: {serviceName: string, key: string}): Promise<HostingWebEnvVar>;
+  public get(path: '/hosting/web/{serviceName}/envVar/{key}', params: {serviceName: string, key: string}): Promise<HostingWebEnvVar>;
   /**
   List the hosting.web.extrasqlperso objects
   Sqlperso linked to your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/extraSqlPerso', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/extraSqlPerso', params: {serviceName: string}): Promise<string[]>;
   /**
   Sqlperso service
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/extraSqlPerso/{name}', pathParams: {serviceName: string, name: string}): Promise<HostingWebExtrasqlperso>;
+  public get(path: '/hosting/web/{serviceName}/extraSqlPerso/{name}', params: {serviceName: string, name: string}): Promise<HostingWebExtrasqlperso>;
   /**
   databases operations
   Get databases linked with this option
   **/
-  public get(path: '/hosting/web/{serviceName}/extraSqlPerso/{name}/databases', pathParams: {serviceName: string, name: string}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/extraSqlPerso/{name}/databases', params: {serviceName: string, name: string}): Promise<string[]>;
   /**
   serviceInfos operations
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfos', pathParams: {serviceName: string, name: string}): Promise<ServicesService>;
+  public get(path: '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfos', params: {serviceName: string, name: string}): Promise<ServicesService>;
   /**
   List the hosting.web.freedom objects
   Freedom linked to this hosting account
   **/
-  public get(path: '/hosting/web/{serviceName}/freedom', pathParams: {serviceName: string}, queryParams?: {status?: HostingWebFreedomStatusEnum}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/freedom', params: {serviceName: string, status?: HostingWebFreedomStatusEnum}): Promise<string[]>;
   /**
   Freedoms linked to this hosting account
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/freedom/{domain}', pathParams: {serviceName: string, domain: string}): Promise<HostingWebFreedom>;
+  public get(path: '/hosting/web/{serviceName}/freedom/{domain}', params: {serviceName: string, domain: string}): Promise<HostingWebFreedom>;
   /**
   List the hosting.web.indy objects
   User of multidomain independent allowed on your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/indy', pathParams: {serviceName: string}, queryParams?: {login?: string}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/indy', params: {serviceName: string, login?: string}): Promise<string[]>;
   /**
   Hosting indys
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/indy/{login}', pathParams: {serviceName: string, login: string}): Promise<HostingWebIndy>;
+  public get(path: '/hosting/web/{serviceName}/indy/{login}', params: {serviceName: string, login: string}): Promise<HostingWebIndy>;
   /**
   List the hosting.web.localSeo.account objects
   Local SEO accounts associated to the hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/localSeo/account', pathParams: {serviceName: string}, queryParams?: {email?: string}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/localSeo/account', params: {serviceName: string, email?: string}): Promise<number[]>;
   /**
   Local SEO accounts
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/localSeo/account/{id}', pathParams: {serviceName: string, id: Number}): Promise<HostingWebLocalSeoAccount>;
+  public get(path: '/hosting/web/{serviceName}/localSeo/account/{id}', params: {serviceName: string, id: number}): Promise<HostingWebLocalSeoAccount>;
   /**
   emailAvailability operations
   Check email availability for a local SEO order
   **/
-  public get(path: '/hosting/web/{serviceName}/localSeo/emailAvailability', pathParams: {serviceName: string}, queryParams?: {email?: string}): Promise<HostingWebLocalSeoEmailAvailability>;
+  public get(path: '/hosting/web/{serviceName}/localSeo/emailAvailability', params: {serviceName: string, email: string}): Promise<HostingWebLocalSeoEmailAvailability>;
   /**
   List the hosting.web.localSeo.location objects
   Local SEO locations associated to the hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/localSeo/location', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/localSeo/location', params: {serviceName: string}): Promise<number[]>;
   /**
   Local SEO locations
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/localSeo/location/{id}', pathParams: {serviceName: string, id: Number}): Promise<HostingWebLocalSeoLocation>;
+  public get(path: '/hosting/web/{serviceName}/localSeo/location/{id}', params: {serviceName: string, id: number}): Promise<HostingWebLocalSeoLocation>;
   /**
   serviceInfos operations
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfos', pathParams: {serviceName: string, id: Number}): Promise<ServicesService>;
+  public get(path: '/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfos', params: {serviceName: string, id: number}): Promise<ServicesService>;
   /**
   List the hosting.web.module objects
   Module installed on your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/module', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/module', params: {serviceName: string}): Promise<number[]>;
   /**
   Hosting modules installed
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/module/{id}', pathParams: {serviceName: string, id: Number}): Promise<HostingWebModule>;
+  public get(path: '/hosting/web/{serviceName}/module/{id}', params: {serviceName: string, id: number}): Promise<HostingWebModule>;
   /**
   List the hosting.web.ovhConfig objects
   Configuration used on your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/ovhConfig', pathParams: {serviceName: string}, queryParams?: {historical?: boolean, path?: string}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/ovhConfig', params: {serviceName: string, historical?: boolean, path?: string}): Promise<number[]>;
   /**
   Virtual service
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/ovhConfig/{id}', pathParams: {serviceName: string, id: Number}): Promise<HostingWebOvhConfig>;
+  public get(path: '/hosting/web/{serviceName}/ovhConfig/{id}', params: {serviceName: string, id: number}): Promise<HostingWebOvhConfig>;
   /**
   List the hosting.web.ownLogs objects
   Own Logs linked to your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/ownLogs', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/ownLogs', params: {serviceName: string}): Promise<number[]>;
   /**
   Hosting own logs
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/ownLogs/{id}', pathParams: {serviceName: string, id: Number}): Promise<HostingWebOwnLogs>;
+  public get(path: '/hosting/web/{serviceName}/ownLogs/{id}', params: {serviceName: string, id: number}): Promise<HostingWebOwnLogs>;
   /**
   List the hosting.web.userLogs objects
   User allowed to connect into your logs interface
   **/
-  public get(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs', pathParams: {serviceName: string, id: Number}, queryParams?: {login?: string}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs', params: {serviceName: string, id: number, login?: string}): Promise<string[]>;
   /**
   Hosting users logs
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}', pathParams: {serviceName: string, id: Number, login: string}): Promise<HostingWebUserLogs>;
+  public get(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}', params: {serviceName: string, id: number, login: string}): Promise<HostingWebUserLogs>;
   /**
   privateDatabaseCreationCapabilities operations
   List available privateDatabase you can install
   **/
-  public get(path: '/hosting/web/{serviceName}/privateDatabaseCreationCapabilities', pathParams: {serviceName: string}): Promise<HostingWebDatabaseCreationDatabaseCapabilities[]>;
+  public get(path: '/hosting/web/{serviceName}/privateDatabaseCreationCapabilities', params: {serviceName: string}): Promise<HostingWebDatabaseCreationDatabaseCapabilities[]>;
   /**
   privateDatabases operations
   List linked privateDatabases
   **/
-  public get(path: '/hosting/web/{serviceName}/privateDatabases', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/privateDatabases', params: {serviceName: string}): Promise<string[]>;
   /**
   List the hosting.web.runtime objects
   List of runtime configurations to your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/runtime', pathParams: {serviceName: string}, queryParams?: {name?: string, type?: HostingWebRuntimeTypeEnum}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/runtime', params: {serviceName: string, name?: string, type?: HostingWebRuntimeTypeEnum}): Promise<number[]>;
   /**
   The runtime configuration of an attached domain for cloud web offer
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/runtime/{id}', pathParams: {serviceName: string, id: Number}): Promise<HostingWebRuntime>;
+  public get(path: '/hosting/web/{serviceName}/runtime/{id}', params: {serviceName: string, id: number}): Promise<HostingWebRuntime>;
   /**
   attachedDomains operations
   Get the attached domains linked to this runtime configuration
   **/
-  public get(path: '/hosting/web/{serviceName}/runtime/{id}/attachedDomains', pathParams: {serviceName: string, id: Number}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/runtime/{id}/attachedDomains', params: {serviceName: string, id: number}): Promise<string[]>;
   /**
   runtimeAvailableTypes operations
   List available runtime configurations available backend types
   **/
-  public get(path: '/hosting/web/{serviceName}/runtimeAvailableTypes', pathParams: {serviceName: string}, queryParams?: {language?: string}): Promise<HostingWebRuntimeTypeEnum[]>;
+  public get(path: '/hosting/web/{serviceName}/runtimeAvailableTypes', params: {serviceName: string, language?: string}): Promise<HostingWebRuntimeTypeEnum[]>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/hosting/web/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   Hostedssl
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<HostingWebSsl>;
+  public get(path: '/hosting/web/{serviceName}/ssl', params: {serviceName: string}): Promise<HostingWebSsl>;
   /**
   domains operations
   Get domains linked to this HostedSsl
   **/
-  public get(path: '/hosting/web/{serviceName}/ssl/domains', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/ssl/domains', params: {serviceName: string}): Promise<string[]>;
   /**
   Hostedssl Report
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/ssl/report', pathParams: {serviceName: string}): Promise<HostingWebSslReport>;
+  public get(path: '/hosting/web/{serviceName}/ssl/report', params: {serviceName: string}): Promise<HostingWebSslReport>;
   /**
   statistics operations
   Get statistics about this web hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/statistics', pathParams: {serviceName: string}, queryParams?: {period?: HostingWebStatisticsPeriodEnum, type?: HostingWebStatisticsTypeEnum}): Promise<ComplexTypeChartSerie<ComplexTypeChartTimestampValue>[]>;
+  public get(path: '/hosting/web/{serviceName}/statistics', params: {serviceName: string, period: HostingWebStatisticsPeriodEnum, type: HostingWebStatisticsTypeEnum}): Promise<ComplexTypeChartSerie<ComplexTypeChartTimestampValue>[]>;
   /**
   List the hosting.web.task objects
   Tasks attached to your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/tasks', pathParams: {serviceName: string}, queryParams?: {function?: string, status?: HostingWebTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/hosting/web/{serviceName}/tasks', params: {serviceName: string, function?: string, status?: HostingWebTaskStatusEnum}): Promise<number[]>;
   /**
   Tasks
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/tasks/{id}', pathParams: {serviceName: string, id: Number}): Promise<HostingWebTask>;
+  public get(path: '/hosting/web/{serviceName}/tasks/{id}', params: {serviceName: string, id: number}): Promise<HostingWebTask>;
   /**
   token operations
   Use to link an external domain. ( This token has to be insert into a TXT field on your dns zone with ovhcontrol subdomain )
   **/
-  public get(path: '/hosting/web/{serviceName}/token', pathParams: {serviceName: string}): Promise<string>;
+  public get(path: '/hosting/web/{serviceName}/token', params: {serviceName: string}): Promise<string>;
   /**
   List the hosting.web.user objects
   User allowed to connect into your hosting
   **/
-  public get(path: '/hosting/web/{serviceName}/user', pathParams: {serviceName: string}, queryParams?: {home?: string, login?: string}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/user', params: {serviceName: string, home?: string, login?: string}): Promise<string[]>;
   /**
   Hosting users
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/user/{login}', pathParams: {serviceName: string, login: string}): Promise<HostingWebUser>;
+  public get(path: '/hosting/web/{serviceName}/user/{login}', params: {serviceName: string, login: string}): Promise<HostingWebUser>;
   /**
   List the hosting.web.userLogs objects
   User allowed to connect into your logs interface
   **/
-  public get(path: '/hosting/web/{serviceName}/userLogs', pathParams: {serviceName: string}, queryParams?: {login?: string}): Promise<string[]>;
+  public get(path: '/hosting/web/{serviceName}/userLogs', params: {serviceName: string, login?: string}): Promise<string[]>;
   /**
   Hosting users logs
   Get this object properties
   **/
-  public get(path: '/hosting/web/{serviceName}/userLogs/{login}', pathParams: {serviceName: string, login: string}): Promise<HostingWebUserLogs>;
+  public get(path: '/hosting/web/{serviceName}/userLogs/{login}', params: {serviceName: string, login: string}): Promise<HostingWebUserLogs>;
   /**
   userLogsToken operations
   Get a temporary token to access the your web hosting logs interface
   **/
-  public get(path: '/hosting/web/{serviceName}/userLogsToken', pathParams: {serviceName: string}, queryParams?: {attachedDomain?: string, remoteCheck?: boolean, ttl?: Number}): Promise<string>;
-  public get(path: PathsHostingWebGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/hosting/web/{serviceName}/userLogsToken', params: {serviceName: string, attachedDomain?: string, remoteCheck?: boolean, ttl?: number}): Promise<string>;
+  public get(path: PathsHostingWebGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Web Hosting
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}', params: {serviceName: string}): Promise<void>;
   /**
   Virtual service
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/attachedDomain/{domain}', pathParams: {serviceName: string, domain: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/attachedDomain/{domain}', params: {serviceName: string, domain: string}): Promise<void>;
   /**
   Hosting crons
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/cron/{id}', pathParams: {serviceName: string, id: Number}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/cron/{id}', params: {serviceName: string, id: number}): Promise<void>;
   /**
   Hosting automated emails
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/email', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/email', params: {serviceName: string}): Promise<void>;
   /**
   Environment variables set into your webhosting account
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/envVar/{key}', pathParams: {serviceName: string, key: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/envVar/{key}', params: {serviceName: string, key: string}): Promise<void>;
   /**
   Hosting users logs
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}', pathParams: {serviceName: string, id: Number, login: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}', params: {serviceName: string, id: number, login: string}): Promise<void>;
   /**
   The runtime configuration of an attached domain for cloud web offer
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/runtime/{id}', pathParams: {serviceName: string, id: Number}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/runtime/{id}', params: {serviceName: string, id: number}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
   /**
   Hosting users
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/user/{login}', pathParams: {serviceName: string, login: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/user/{login}', params: {serviceName: string, login: string}): Promise<void>;
   /**
   Hosting users logs
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/userLogs/{login}', pathParams: {serviceName: string, login: string}): Promise<void>;
-  public put(path: PathsHostingWebPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/hosting/web/{serviceName}/userLogs/{login}', params: {serviceName: string, login: string}): Promise<void>;
+  public put(path: PathsHostingWebPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Check visibility of a location
   Check visibility of a location
@@ -2946,272 +2950,276 @@ export class ApiHostingWeb extends ApiCommon {
   activatePrivateDatabase operations
   Activate an included private database on your hosting offer
   **/
-  public post(path: '/hosting/web/{serviceName}/activatePrivateDatabase', pathParams: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/activatePrivateDatabase', params: {serviceName: string}): Promise<HostingWebTask>;
   /**
   List the hosting.web.attachedDomain objects
   Link a domain to this hosting
   **/
-  public post(path: '/hosting/web/{serviceName}/attachedDomain', pathParams: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/attachedDomain', params: {serviceName: string}): Promise<HostingWebTask>;
   /**
   purgeCache operations
   Purge cache for this attached domain
   **/
-  public post(path: '/hosting/web/{serviceName}/attachedDomain/{domain}/purgeCache', pathParams: {serviceName: string, domain: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/attachedDomain/{domain}/purgeCache', params: {serviceName: string, domain: string}): Promise<HostingWebTask>;
   /**
   restart operations
   Restart the virtual host of the attached domain
   **/
-  public post(path: '/hosting/web/{serviceName}/attachedDomain/{domain}/restart', pathParams: {serviceName: string, domain: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/attachedDomain/{domain}/restart', params: {serviceName: string, domain: string}): Promise<HostingWebTask>;
   /**
   serviceInfosUpdate operations
   Alter this object properties
   **/
-  public post(path: '/hosting/web/{serviceName}/cdn/serviceInfosUpdate', pathParams: {serviceName: string}): Promise<void>;
+  public post(path: '/hosting/web/{serviceName}/cdn/serviceInfosUpdate', params: {serviceName: string}): Promise<void>;
   /**
   terminate operations
   Terminate your cdn sub service
   **/
-  public post(path: '/hosting/web/{serviceName}/cdn/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/cdn/terminate', params: {serviceName: string}): Promise<string>;
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/hosting/web/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  public post(path: '/hosting/web/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/hosting/web/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
   /**
   List the hosting.web.cron objects
   Create new cron
   **/
-  public post(path: '/hosting/web/{serviceName}/cron', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/cron', params: {serviceName: string}): Promise<string>;
   /**
   List the hosting.web.database objects
   Install new database
   **/
-  public post(path: '/hosting/web/{serviceName}/database', pathParams: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/database', params: {serviceName: string}): Promise<HostingWebTask>;
   /**
   changePassword operations
   Request a password change
   **/
-  public post(path: '/hosting/web/{serviceName}/database/{name}/changePassword', pathParams: {serviceName: string, name: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/database/{name}/changePassword', params: {serviceName: string, name: string}): Promise<HostingWebTask>;
   /**
   List the hosting.web.database.dump objects
   Request the dump from your database
   **/
-  public post(path: '/hosting/web/{serviceName}/database/{name}/dump', pathParams: {serviceName: string, name: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/database/{name}/dump', params: {serviceName: string, name: string}): Promise<HostingWebTask>;
   /**
   restore operations
   Request the restore from this dump
   **/
-  public post(path: '/hosting/web/{serviceName}/database/{name}/dump/{id}/restore', pathParams: {serviceName: string, name: string, id: Number}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/database/{name}/dump/{id}/restore', params: {serviceName: string, name: string, id: number}): Promise<HostingWebTask>;
   /**
   import operations
   Import a dump from an specific file uploaded with /me/documents
   **/
-  public post(path: '/hosting/web/{serviceName}/database/{name}/import', pathParams: {serviceName: string, name: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/database/{name}/import', params: {serviceName: string, name: string}): Promise<HostingWebTask>;
   /**
   request operations
   Request specific operation for your database
   **/
-  public post(path: '/hosting/web/{serviceName}/database/{name}/request', pathParams: {serviceName: string, name: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/database/{name}/request', params: {serviceName: string, name: string}): Promise<HostingWebTask>;
   /**
   restore operations
   Request the restore from your database backup
   **/
-  public post(path: '/hosting/web/{serviceName}/database/{name}/restore', pathParams: {serviceName: string, name: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/database/{name}/restore', params: {serviceName: string, name: string}): Promise<HostingWebTask>;
   /**
   request operations
   Request specific operation for your email
   **/
-  public post(path: '/hosting/web/{serviceName}/email/request', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/email/request', params: {serviceName: string}): Promise<string>;
   /**
   List the hosting.web.envVar objects
   Set a variable to this hosting
   **/
-  public post(path: '/hosting/web/{serviceName}/envVar', pathParams: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/envVar', params: {serviceName: string}): Promise<HostingWebTask>;
   /**
   serviceInfosUpdate operations
   Alter this object properties
   **/
-  public post(path: '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate', pathParams: {serviceName: string, name: string}): Promise<void>;
+  public post(path: '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate', params: {serviceName: string, name: string}): Promise<void>;
   /**
   terminate operations
   Terminate your extraSqlPerso sub service
   **/
-  public post(path: '/hosting/web/{serviceName}/extraSqlPerso/{name}/terminate', pathParams: {serviceName: string, name: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/extraSqlPerso/{name}/terminate', params: {serviceName: string, name: string}): Promise<string>;
   /**
   login operations
   Login this location for SSO
   **/
-  public post(path: '/hosting/web/{serviceName}/localSeo/account/{id}/login', pathParams: {serviceName: string, id: Number}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/localSeo/account/{id}/login', params: {serviceName: string, id: number}): Promise<string>;
   /**
   serviceInfosUpdate operations
   Alter this object properties
   **/
-  public post(path: '/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate', pathParams: {serviceName: string, id: Number}): Promise<void>;
+  public post(path: '/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate', params: {serviceName: string, id: number}): Promise<void>;
   /**
   terminate operations
   Terminate a local SEO sub service
   **/
-  public post(path: '/hosting/web/{serviceName}/localSeo/location/{id}/terminate', pathParams: {serviceName: string, id: Number}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/localSeo/location/{id}/terminate', params: {serviceName: string, id: number}): Promise<string>;
   /**
   List the hosting.web.module objects
   Install a new module
   **/
-  public post(path: '/hosting/web/{serviceName}/module', pathParams: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/module', params: {serviceName: string}): Promise<HostingWebTask>;
   /**
   changePassword operations
   Generate a new admin password for your module
   **/
-  public post(path: '/hosting/web/{serviceName}/module/{id}/changePassword', pathParams: {serviceName: string, id: Number}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/module/{id}/changePassword', params: {serviceName: string, id: number}): Promise<HostingWebTask>;
   /**
   changeConfiguration operations
   Apply a new configuration on this path
   **/
-  public post(path: '/hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration', pathParams: {serviceName: string, id: Number}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration', params: {serviceName: string, id: number}): Promise<HostingWebTask>;
   /**
   rollback operations
   Rollback to an old configuration
   **/
-  public post(path: '/hosting/web/{serviceName}/ovhConfig/{id}/rollback', pathParams: {serviceName: string, id: Number}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/ovhConfig/{id}/rollback', params: {serviceName: string, id: number}): Promise<HostingWebTask>;
   /**
   ovhConfigRefresh operations
   Synchronize the configuration listing with content on your hosting
   **/
-  public post(path: '/hosting/web/{serviceName}/ovhConfigRefresh', pathParams: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/ovhConfigRefresh', params: {serviceName: string}): Promise<HostingWebTask>;
   /**
   List the hosting.web.userLogs objects
   Create new userLogs
   **/
-  public post(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs', pathParams: {serviceName: string, id: Number}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs', params: {serviceName: string, id: number}): Promise<string>;
   /**
   changePassword operations
   Request a password change
   **/
-  public post(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword', pathParams: {serviceName: string, id: Number, login: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword', params: {serviceName: string, id: number, login: string}): Promise<string>;
   /**
   request operations
   Request specific operation for your hosting
   **/
-  public post(path: '/hosting/web/{serviceName}/request', pathParams: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/request', params: {serviceName: string}): Promise<HostingWebTask>;
   /**
   requestBoost operations
   Allows you to boost your offer.
   **/
-  public post(path: '/hosting/web/{serviceName}/requestBoost', pathParams: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/requestBoost', params: {serviceName: string}): Promise<HostingWebTask>;
   /**
   restoreSnapshot operations
   Restore this snapshot ALL CURRENT DATA WILL BE REPLACED BY YOUR SNAPSHOT
   **/
-  public post(path: '/hosting/web/{serviceName}/restoreSnapshot', pathParams: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/restoreSnapshot', params: {serviceName: string}): Promise<HostingWebTask>;
   /**
   List the hosting.web.runtime objects
   Request the creation of a new runtime configuration
   **/
-  public post(path: '/hosting/web/{serviceName}/runtime', pathParams: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/runtime', params: {serviceName: string}): Promise<HostingWebTask>;
   /**
   Hostedssl
   Create the free default HostedSsl OR import your proper SSL on your hosting
   **/
-  public post(path: '/hosting/web/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<HostingWebSsl>;
+  public post(path: '/hosting/web/{serviceName}/ssl', params: {serviceName: string}): Promise<HostingWebSsl>;
   /**
   regenerate operations
   Request the regeneration of your HostedSsl
   **/
-  public post(path: '/hosting/web/{serviceName}/ssl/regenerate', pathParams: {serviceName: string}): Promise<HostingWebSsl>;
+  public post(path: '/hosting/web/{serviceName}/ssl/regenerate', params: {serviceName: string}): Promise<HostingWebSsl>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/hosting/web/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
   /**
   List the hosting.web.user objects
   Create new ftp/ssh user
   **/
-  public post(path: '/hosting/web/{serviceName}/user', pathParams: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/user', params: {serviceName: string}): Promise<HostingWebTask>;
   /**
   changePassword operations
   Request a password change
   **/
-  public post(path: '/hosting/web/{serviceName}/user/{login}/changePassword', pathParams: {serviceName: string, login: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/user/{login}/changePassword', params: {serviceName: string, login: string}): Promise<HostingWebTask>;
   /**
   List the hosting.web.userLogs objects
   Create new userLogs
   **/
-  public post(path: '/hosting/web/{serviceName}/userLogs', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/userLogs', params: {serviceName: string}): Promise<string>;
   /**
   changePassword operations
   Request a password change
   **/
-  public post(path: '/hosting/web/{serviceName}/userLogs/{login}/changePassword', pathParams: {serviceName: string, login: string}): Promise<string>;
-  public post(path: PathsHostingWebPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/hosting/web/{serviceName}/userLogs/{login}/changePassword', params: {serviceName: string, login: string}): Promise<string>;
+  public post(path: PathsHostingWebPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Virtual service
   Unlink domain from hosting
   **/
-  public delete(path: '/hosting/web/{serviceName}/attachedDomain/{domain}', pathParams: {serviceName: string, domain: string}): Promise<HostingWebTask>;
+  public delete(path: '/hosting/web/{serviceName}/attachedDomain/{domain}', params: {serviceName: string, domain: string}): Promise<HostingWebTask>;
   /**
   Hosting crons
   Delete cron
   **/
-  public delete(path: '/hosting/web/{serviceName}/cron/{id}', pathParams: {serviceName: string, id: Number}): Promise<string>;
+  public delete(path: '/hosting/web/{serviceName}/cron/{id}', params: {serviceName: string, id: number}): Promise<string>;
   /**
   Database
   Delete database
   **/
-  public delete(path: '/hosting/web/{serviceName}/database/{name}', pathParams: {serviceName: string, name: string}): Promise<HostingWebTask>;
+  public delete(path: '/hosting/web/{serviceName}/database/{name}', params: {serviceName: string, name: string}): Promise<HostingWebTask>;
   /**
   Dump
   Delete dump before expiration date
   **/
-  public delete(path: '/hosting/web/{serviceName}/database/{name}/dump/{id}', pathParams: {serviceName: string, name: string, id: Number}): Promise<HostingWebTask>;
+  public delete(path: '/hosting/web/{serviceName}/database/{name}/dump/{id}', params: {serviceName: string, name: string, id: number}): Promise<HostingWebTask>;
   /**
   Dump
   Delete dump before expiration date
   **/
-  public delete(path: '/hosting/web/{serviceName}/dump/{id}', pathParams: {serviceName: string, id: Number}): Promise<HostingWebTask>;
+  public delete(path: '/hosting/web/{serviceName}/dump/{id}', params: {serviceName: string, id: number}): Promise<HostingWebTask>;
   /**
   Environment variables set into your webhosting account
   Remove variable from hosting
   **/
-  public delete(path: '/hosting/web/{serviceName}/envVar/{key}', pathParams: {serviceName: string, key: string}): Promise<HostingWebTask>;
+  public delete(path: '/hosting/web/{serviceName}/envVar/{key}', params: {serviceName: string, key: string}): Promise<HostingWebTask>;
   /**
   Freedoms linked to this hosting account
   Delete the freedom
   **/
-  public delete(path: '/hosting/web/{serviceName}/freedom/{domain}', pathParams: {serviceName: string, domain: string}): Promise<void>;
+  public delete(path: '/hosting/web/{serviceName}/freedom/{domain}', params: {serviceName: string, domain: string}): Promise<void>;
   /**
   Hosting modules installed
   Delete a module installed
   **/
-  public delete(path: '/hosting/web/{serviceName}/module/{id}', pathParams: {serviceName: string, id: Number}): Promise<HostingWebTask>;
+  public delete(path: '/hosting/web/{serviceName}/module/{id}', params: {serviceName: string, id: number}): Promise<HostingWebTask>;
   /**
   Hosting users logs
   Delete the userLogs
   **/
-  public delete(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}', pathParams: {serviceName: string, id: Number, login: string}): Promise<string>;
+  public delete(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}', params: {serviceName: string, id: number, login: string}): Promise<string>;
   /**
   The runtime configuration of an attached domain for cloud web offer
   Delete a runtime configuration of an hosting
   **/
-  public delete(path: '/hosting/web/{serviceName}/runtime/{id}', pathParams: {serviceName: string, id: Number}): Promise<HostingWebTask>;
+  public delete(path: '/hosting/web/{serviceName}/runtime/{id}', params: {serviceName: string, id: number}): Promise<HostingWebTask>;
   /**
   Hostedssl
   Delete the HostedSsl on your hosting
   **/
-  public delete(path: '/hosting/web/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<HostingWebSsl>;
+  public delete(path: '/hosting/web/{serviceName}/ssl', params: {serviceName: string}): Promise<HostingWebSsl>;
   /**
   Hosting users
   Delete ftp/ssh user
   **/
-  public delete(path: '/hosting/web/{serviceName}/user/{login}', pathParams: {serviceName: string, login: string}): Promise<HostingWebTask>;
+  public delete(path: '/hosting/web/{serviceName}/user/{login}', params: {serviceName: string, login: string}): Promise<HostingWebTask>;
   /**
   Hosting users logs
   Delete the userLogs
   **/
-  public delete(path: '/hosting/web/{serviceName}/userLogs/{login}', pathParams: {serviceName: string, login: string}): Promise<string>;
-  public delete(path: PathsHostingWebDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/hosting/web/{serviceName}/userLogs/{login}', params: {serviceName: string, login: string}): Promise<string>;
+  public delete(path: PathsHostingWebDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

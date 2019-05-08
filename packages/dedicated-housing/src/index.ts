@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * A numeric value tagged with its unit
  */
@@ -154,7 +154,7 @@ export interface DedicatedHousingOptions {
    * Number of APC connected to this housing bay
    *
    */
-  apcCount?: Number;
+  apcCount?: number;
   /**
    * Is this housing bay have handsneyes service
    *
@@ -204,7 +204,7 @@ export interface DedicatedHousingTask {
    * the id of the task
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * Distincts task
@@ -223,7 +223,7 @@ export interface DedicatedServerBackupFtp {
    * The disk space available in gigabytes
    *
    */
-  quota?: ComplexTypeUnitAndValue<Number>;
+  quota?: ComplexTypeUnitAndValue<number>;
   /**
    * If not-null, gives the date since when your account was set in read-only mode because the quota was exceeded
    *
@@ -238,7 +238,7 @@ export interface DedicatedServerBackupFtp {
    * The disk space currently used on your backup FTP in percent
    *
    */
-  usage?: ComplexTypeUnitAndValue<Number>;
+  usage?: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Backup Ftp ACL for this server and Backup Ftp
@@ -317,7 +317,7 @@ export interface DedicatedServerTask {
    * the id of the task
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * Map a possible renew for a specific service
@@ -347,7 +347,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -391,7 +391,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -402,7 +402,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -430,8 +430,8 @@ type PathsDedicatedHousingDELETE = '/dedicated/housing/{serviceName}/features/ba
 '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}';
 
 export class ApiDedicatedHousing extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the HOUSING service
@@ -442,89 +442,97 @@ export class ApiDedicatedHousing extends ApiCommon {
   Housing bay
   Get this object properties
   **/
-  public get(path: '/dedicated/housing/{serviceName}', pathParams: {serviceName: string}): Promise<DedicatedHousingHousing>;
+  public get(path: '/dedicated/housing/{serviceName}', params: {serviceName: string}): Promise<DedicatedHousingHousing>;
   /**
   Backup Ftp assigned to this server
   Get this object properties
   **/
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerBackupFtp>;
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP', params: {serviceName: string}): Promise<DedicatedServerBackupFtp>;
   /**
   List the dedicated.server.BackupFtpAcl objects
   List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
   **/
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', params: {serviceName: string}): Promise<string[]>;
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Get this object properties
   **/
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<DedicatedServerBackupFtpAcl>;
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<DedicatedServerBackupFtpAcl>;
   /**
   authorizableBlocks operations
   Get all IP blocks that can be used in the ACL
   **/
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks', params: {serviceName: string}): Promise<string[]>;
   /**
   APC operations
   Is an APC orderable for this housing bay
   **/
-  public get(path: '/dedicated/housing/{serviceName}/orderable/APC', pathParams: {serviceName: string}): Promise<DedicatedHousingApcOrderable>;
+  public get(path: '/dedicated/housing/{serviceName}/orderable/APC', params: {serviceName: string}): Promise<DedicatedHousingApcOrderable>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/dedicated/housing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/dedicated/housing/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   List the dedicated.housing.Task objects
   View task list
   **/
-  public get(path: '/dedicated/housing/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {function?: DedicatedHousingTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/dedicated/housing/{serviceName}/task', params: {serviceName: string, function?: DedicatedHousingTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<number[]>;
   /**
   Housing tasks
   Get this object properties
   **/
-  public get(path: '/dedicated/housing/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DedicatedHousingTask>;
-  public get(path: PathsDedicatedHousingGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/dedicated/housing/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<DedicatedHousingTask>;
+  public get(path: PathsDedicatedHousingGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Alter this object properties
   **/
-  public put(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<void>;
+  public put(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicated/housing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsDedicatedHousingPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/dedicated/housing/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsDedicatedHousingPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Backup Ftp assigned to this server
   Create a new Backup FTP space
   **/
-  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP', params: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
   List the dedicated.server.BackupFtpAcl objects
   Create a new Backup FTP ACL
   **/
-  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', params: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
   password operations
   Change your Backup FTP password
   **/
-  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/password', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/password', params: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
   cancel operations
   this action stop the task progression if it's possible
   **/
-  public post(path: '/dedicated/housing/{serviceName}/task/{taskId}/cancel', pathParams: {serviceName: string, taskId: Number}): Promise<void>;
-  public post(path: PathsDedicatedHousingPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/dedicated/housing/{serviceName}/task/{taskId}/cancel', params: {serviceName: string, taskId: number}): Promise<void>;
+  public post(path: PathsDedicatedHousingPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Backup Ftp assigned to this server
   Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED
   **/
-  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP', pathParams: {serviceName: string}): Promise<DedicatedServerTask>;
+  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP', params: {serviceName: string}): Promise<DedicatedServerTask>;
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Revoke this ACL
   **/
-  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', pathParams: {serviceName: string, ipBlock: string}): Promise<DedicatedServerTask>;
-  public delete(path: PathsDedicatedHousingDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<DedicatedServerTask>;
+  public delete(path: PathsDedicatedHousingDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

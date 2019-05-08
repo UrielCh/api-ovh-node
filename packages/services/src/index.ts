@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Key and value, with proper key strings
  */
@@ -28,7 +28,7 @@ export interface OrderPrice {
    * The effective price
    *
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * Currency code
@@ -82,7 +82,7 @@ export interface ServicesBillingInvoiceLine {
    * Quantity of item
    *
    */
-  quantity?: Number;
+  quantity?: number;
   /**
    * Associated service name
    *
@@ -241,30 +241,32 @@ export interface ServicesExpandedService {
    * Service ID
    *
    */
-  serviceId: Number;
+  serviceId: number;
 }
 type PathsServicesGET = '/services' | 
 '/services/{serviceId}' | 
 '/services/{serviceId}/billing/engagement';
 
 export class ApiServices extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Get list of your service details
   null
   **/
-  public get(path: '/services', queryParams?: {orderBy?: string, routes?: string, sort?: string}): Promise<Number[]>;
+  public get(path: '/services'): Promise<number[]>;
   /**
   Get list of your service details
   Get details about a service
   **/
-  public get(path: '/services/{serviceId}', pathParams: {serviceId: Number}): Promise<ServicesExpandedService>;
+  public get(path: '/services/{serviceId}', params: {serviceId: number}): Promise<ServicesExpandedService>;
   /**
   Engagement for a given service
   Get engagement details
   **/
-  public get(path: '/services/{serviceId}/billing/engagement', pathParams: {serviceId: Number}): Promise<ServicesBillingEngagementEngagement>;
-  public get(path: PathsServicesGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/services/{serviceId}/billing/engagement', params: {serviceId: number}): Promise<ServicesBillingEngagementEngagement>;
+  public get(path: PathsServicesGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
 }

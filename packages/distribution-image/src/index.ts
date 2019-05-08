@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Information about installed package for a given image
  */
@@ -66,18 +66,20 @@ type PathsDistributionImageGET = '/distribution/image/{serviceType}' |
 '/distribution/image/{serviceType}/{imageName}';
 
 export class ApiDistributionImage extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Missing description
   List images for a service
   **/
-  public get(path: '/distribution/image/{serviceType}', pathParams: {serviceType: DistributionImageService}): Promise<string[]>;
+  public get(path: '/distribution/image/{serviceType}', params: {serviceType: DistributionImageService}): Promise<string[]>;
   /**
   Missing description
   Show image details
   **/
-  public get(path: '/distribution/image/{serviceType}/{imageName}', pathParams: {serviceType: DistributionImageService, imageName: string}): Promise<DistributionImage>;
-  public get(path: PathsDistributionImageGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/distribution/image/{serviceType}/{imageName}', params: {serviceType: DistributionImageService, imageName: string}): Promise<DistributionImage>;
+  public get(path: PathsDistributionImageGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
 }

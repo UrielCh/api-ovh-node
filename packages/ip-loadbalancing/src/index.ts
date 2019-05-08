@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Possible values for server status
  */
@@ -16,7 +16,7 @@ export interface IpLoadbalancingBackendProbe {
    * Seconds between each probe check. Must be > 30sec. Defaults to 30
    *
    */
-  interval?: Number;
+  interval?: number;
   /**
    * Matcher to use to valide "expect". "default" uses HAProxy's default behavior for this type of check. "status" is only supported for HTTP probes
    *
@@ -41,7 +41,7 @@ export interface IpLoadbalancingBackendProbe {
    * Port used to probe your backend. Equal to farm port if null. Ignored for oco probe type
    *
    */
-  port?: Number;
+  port?: number;
   /**
    * Probe type. "tcp" if null
    *
@@ -67,7 +67,7 @@ export type IpLoadbalancingBalanceTCPEnum = 'first' | 'leastconn' | 'roundrobin'
 export interface IpLoadbalancingDefinedFarm {
   /**
    */
-  id?: Number;
+  id?: number;
   /**
    */
   type?: string;
@@ -78,7 +78,7 @@ export interface IpLoadbalancingDefinedFarm {
 export interface IpLoadbalancingDefinedFrontend {
   /**
    */
-  id?: Number;
+  id?: number;
   /**
    */
   type?: string;
@@ -96,7 +96,7 @@ export interface IpLoadbalancingDefinedRoute {
    * Id of your route
    *
    */
-  routeId?: Number;
+  routeId?: number;
   /**
    * Protocol supported by this route
    *
@@ -146,7 +146,7 @@ export interface IpLoadbalancingInstancesState {
    * Internal ID of this IPLB instance
    *
    */
-  internalId?: Number;
+  internalId?: number;
   /**
    * Last update date
    *
@@ -271,7 +271,7 @@ export interface IpLoadbalancingPendingChanges {
    * The number of changes waiting to be applied
    *
    */
-  number?: Number;
+  number?: number;
   /**
    * The Load Balancer zone with pending changes
    *
@@ -302,12 +302,12 @@ export interface IpLoadbalancingQuotaQuota {
    * Quota alert value in bytes. When reached, we will send you an alert. Default : included quota with your offer
    *
    */
-  alert?: Number;
+  alert?: number;
   /**
    * Included quota value with your offer, in bytes
    *
    */
-  included?: Number;
+  included?: number;
   /**
    * The last time your quota was updated from your Load Balancer instance
    *
@@ -322,7 +322,7 @@ export interface IpLoadbalancingQuotaQuota {
    * Total used quota value in bytes
    *
    */
-  total?: Number;
+  total?: number;
   /**
    * Zone of your quota
    *
@@ -342,7 +342,7 @@ export interface IpLoadbalancingQuotaHistoryQuotaHistory {
    * Id of your quota
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * The last time your quota was updated from your Load Balancer instance
    *
@@ -357,7 +357,7 @@ export interface IpLoadbalancingQuotaHistoryQuotaHistory {
    * Total used quota value in bytes
    *
    */
-  total?: Number;
+  total?: number;
   /**
    * Zone of your quota
    *
@@ -382,7 +382,7 @@ export interface IpLoadbalancingRouteAvailableAction {
    * List of available HTTP status code if applicable
    *
    */
-  status?: Number[];
+  status?: number[];
   /**
    * Protocol supported by this action
    *
@@ -442,12 +442,12 @@ export interface IpLoadbalancingRouteHttpRouteHttp {
    * Route traffic for this frontend
    *
    */
-  frontendId?: Number;
+  frontendId?: number;
   /**
    * Id of your route
    *
    */
-  routeId?: Number;
+  routeId?: number;
   /**
    * List of rules to match to trigger action
    *
@@ -462,7 +462,7 @@ export interface IpLoadbalancingRouteHttpRouteHttp {
    * Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action
    *
    */
-  weight?: Number;
+  weight?: number;
 }
 /**
  * Action triggered when all rules from route match
@@ -472,7 +472,7 @@ export interface IpLoadbalancingRouteHttpAction {
    * HTTP status code for "redirect" and "reject" actions
    *
    */
-  status?: Number;
+  status?: number;
   /**
    * Farm ID for "farm" action type or URL template for "redirect" action. You may use ${uri}, ${protocol}, ${host}, ${port} and ${path} variables in redirect target
    *
@@ -512,7 +512,7 @@ export interface IpLoadbalancingRouteRule {
    * Id of your rule
    *
    */
-  ruleId?: Number;
+  ruleId?: number;
   /**
    * Name of sub-field, if applicable. This may be a Cookie or Header name for instance
    *
@@ -552,7 +552,7 @@ export interface IpLoadbalancingRouteRuleRouteRule {
    * Id of your rule
    *
    */
-  ruleId?: Number;
+  ruleId?: number;
   /**
    * Name of sub-field, if applicable. This may be a Cookie or Header name for instance
    *
@@ -585,12 +585,12 @@ export interface IpLoadbalancingRouteTcpRouteTcp {
    * Route traffic for this frontend
    *
    */
-  frontendId?: Number;
+  frontendId?: number;
   /**
    * Id of your route
    *
    */
-  routeId?: Number;
+  routeId?: number;
   /**
    * List of rules to match to trigger action
    *
@@ -605,7 +605,7 @@ export interface IpLoadbalancingRouteTcpRouteTcp {
    * Route priority ([0..255]). 0 if null. Highest priority routes are evaluated last. Only the first matching route will trigger an action
    *
    */
-  weight?: Number;
+  weight?: number;
 }
 /**
  * Action triggered when all rules from route match
@@ -645,7 +645,7 @@ export interface IpLoadbalancingServerState {
    * Id of your instance
    *
    */
-  instanceId?: Number;
+  instanceId?: number;
   /**
    * Last health check contents or textual error
    *
@@ -680,7 +680,7 @@ export interface IpLoadbalancingSslSsl {
    * Id of your SSL certificate
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Subject Alternative Name of your SSL certificate
    *
@@ -767,12 +767,12 @@ export interface IpLoadbalancingTaskTask {
    * Id of the operation
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Operation progress percentage
    *
    */
-  progress?: Number;
+  progress?: number;
   /**
    * Current status of your operation
    *
@@ -805,7 +805,7 @@ export interface IpLoadbalancingVrackInformation {
    * Ongoing task related to vRack installation or uninstallation on your Load Balancer
    *
    */
-  task?: Number[];
+  task?: number[];
   /**
    * Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
    *
@@ -840,12 +840,12 @@ export interface IpLoadbalancingVrackNetworkVrackNetwork {
    * VLAN of the private network in the vRack. 0 if the private network is not in a VLAN
    *
    */
-  vlan?: Number;
+  vlan?: number;
   /**
    * Internal Load Balancer identifier of the vRack private network description
    *
    */
-  vrackNetworkId?: Number;
+  vrackNetworkId?: number;
 }
 /**
  * Rules to create a new description of a private network in the vRack
@@ -855,12 +855,12 @@ export interface IpLoadbalancingVrackNetworkCreationRules {
    * Minimum number of IPs needed to forward requests to your servers using NAT in your private network behind the current Load Balancer. Ip Block given on Load Balancer vRack network must contain at least this number of IP.
    *
    */
-  minNatIps?: Number;
+  minNatIps?: number;
   /**
    * Number of remaining private network descriptions available for creation for this Load Balancer
    *
    */
-  remainingNetworks?: Number;
+  remainingNetworks?: number;
   /**
    * Name of the vRack on which the current Load Balancer is attached to, as it is named on vRack product
    *
@@ -889,7 +889,7 @@ export interface IpLoadbalancingVrackTransparentGateways {
    * vlan
    *
    */
-  vlan?: Number;
+  vlan?: number;
 }
 /**
  * Server's vrack transparent ip
@@ -900,16 +900,16 @@ export interface IpLoadbalancingVrackTransparentIpVrackTransparentIp {
   address?: string;
   /**
    */
-  farmId?: Number;
+  farmId?: number;
   /**
    */
-  id?: Number;
+  id?: number;
   /**
    */
-  serverId?: Number;
+  serverId?: number;
   /**
    */
-  slotId?: Number;
+  slotId?: number;
 }
 /**
  * IP Load Balancing Zone
@@ -944,12 +944,12 @@ export interface IpLoadbalancingBackendHttpBackendHttp {
    * Id of your farm
    *
    */
-  farmId?: Number;
+  farmId?: number;
   /**
    * Port attached to your farm. Inherited from frontend if null
    *
    */
-  port?: Number;
+  port?: number;
   /**
    * Probe used to determine if a backend is alive and can handle requests. Defaults to tcp on the same port as the farm
    *
@@ -964,7 +964,7 @@ export interface IpLoadbalancingBackendHttpBackendHttp {
    * Internal Load Balancer identifier of the vRack private network attached to your farm, mandatory when your Load Balancer is attached to a vRack
    *
    */
-  vrackNetworkId?: Number;
+  vrackNetworkId?: number;
   /**
    * Zone of you farm
    *
@@ -984,7 +984,7 @@ export interface IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer {
    * farm id
    *
    */
-  backendId?: Number;
+  backendId?: number;
   /**
    * Backup state. Default: 'false'
    *
@@ -1009,7 +1009,7 @@ export interface IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer {
    * Port attached to your server. Inherited from farm if null
    *
    */
-  port?: Number;
+  port?: number;
   /**
    * Probe state. Default: 'false'
    *
@@ -1024,7 +1024,7 @@ export interface IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer {
    * Id of your server
    *
    */
-  serverId?: Number;
+  serverId?: number;
   /**
    * Server state
    *
@@ -1044,7 +1044,7 @@ export interface IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer {
    * Weight value. Defaults to 1. 0 if not used in load balancing. Servers with higher weight get more requests.
    *
    */
-  weight?: Number;
+  weight?: number;
 }
 /**
  * TCP Farm
@@ -1064,12 +1064,12 @@ export interface IpLoadbalancingBackendTcpBackendTcp {
    * Id of your farm
    *
    */
-  farmId?: Number;
+  farmId?: number;
   /**
    * Port attached to your farm. Inherited from frontend if null
    *
    */
-  port?: Number;
+  port?: number;
   /**
    * Probe used to determine if a backend is alive and can handle requests. Defaults to tcp on the same port as the farm
    *
@@ -1084,7 +1084,7 @@ export interface IpLoadbalancingBackendTcpBackendTcp {
    * Internal Load Balancer identifier of the vRack private network attached to your farm, mandatory when your Load Balancer is attached to a vRack
    *
    */
-  vrackNetworkId?: Number;
+  vrackNetworkId?: number;
   /**
    * Zone of you farm
    *
@@ -1104,7 +1104,7 @@ export interface IpLoadbalancingBackendTcpCustomerServerBackendTCPServer {
    * Farm id
    *
    */
-  backendId?: Number;
+  backendId?: number;
   /**
    * Backup state. Default: 'false'
    *
@@ -1124,7 +1124,7 @@ export interface IpLoadbalancingBackendTcpCustomerServerBackendTCPServer {
    * Port attached to your server. Inherited from farm if null
    *
    */
-  port?: Number;
+  port?: number;
   /**
    * Probe state. Default: 'false'
    *
@@ -1139,7 +1139,7 @@ export interface IpLoadbalancingBackendTcpCustomerServerBackendTCPServer {
    * Id of your server
    *
    */
-  serverId?: Number;
+  serverId?: number;
   /**
    * Server state
    *
@@ -1159,7 +1159,7 @@ export interface IpLoadbalancingBackendTcpCustomerServerBackendTCPServer {
    * Weight value. Defaults to 1. 0 if not used in load balancing. Servers with higher weight get more requests.
    *
    */
-  weight?: Number;
+  weight?: number;
 }
 /**
  * UDP Farm
@@ -1174,17 +1174,17 @@ export interface IpLoadbalancingBackendUdpBackendUdp {
    * Id of your farm
    *
    */
-  farmId?: Number;
+  farmId?: number;
   /**
    * Port attached to your farm. Inherited from frontend if null
    *
    */
-  port?: Number;
+  port?: number;
   /**
    * Internal Load Balancer identifier of the vRack private network attached to your farm, mandatory when your Load Balancer is attached to a vRack
    *
    */
-  vrackNetworkId?: Number;
+  vrackNetworkId?: number;
   /**
    * Zone of you farm
    *
@@ -1204,7 +1204,7 @@ export interface IpLoadbalancingBackendUdpCustomerServerBackendUDPServer {
    * farm id
    *
    */
-  backendId?: Number;
+  backendId?: number;
   /**
    * Human readable name for your server, this field is for you
    *
@@ -1214,12 +1214,12 @@ export interface IpLoadbalancingBackendUdpCustomerServerBackendUDPServer {
    * Port attached to your server. Inherited from farm if null
    *
    */
-  port?: Number;
+  port?: number;
   /**
    * Id of your server
    *
    */
-  serverId?: Number;
+  serverId?: number;
   /**
    * Status attached to your server
    *
@@ -1244,12 +1244,12 @@ export interface IpLoadbalancingFrontendHttpFrontendHttp {
    * Default HTTP Farm of your frontend
    *
    */
-  defaultFarmId?: Number;
+  defaultFarmId?: number;
   /**
    * Default ssl served to your customer
    *
    */
-  defaultSslId?: Number;
+  defaultSslId?: number;
   /**
    * Disable frontend. Default: 'false'
    *
@@ -1264,7 +1264,7 @@ export interface IpLoadbalancingFrontendHttpFrontendHttp {
    * Id of your frontend
    *
    */
-  frontendId?: Number;
+  frontendId?: number;
   /**
    * HTTP Strict Transport Security. Default: 'false'
    *
@@ -1314,12 +1314,12 @@ export interface IpLoadbalancingFrontendTcpFrontendTcp {
    * Default TCP Farm of your frontend
    *
    */
-  defaultFarmId?: Number;
+  defaultFarmId?: number;
   /**
    * Default ssl served to your customer
    *
    */
-  defaultSslId?: Number;
+  defaultSslId?: number;
   /**
    * Disable frontend. Default: 'false'
    *
@@ -1334,7 +1334,7 @@ export interface IpLoadbalancingFrontendTcpFrontendTcp {
    * Id of your frontend
    *
    */
-  frontendId?: Number;
+  frontendId?: number;
   /**
    * Listening port(s) on the server
    *
@@ -1364,7 +1364,7 @@ export interface IpLoadbalancingFrontendUdpFrontendUdp {
    * Default UDP Farm of your frontend
    *
    */
-  defaultFarmId?: Number;
+  defaultFarmId?: number;
   /**
    * Disable frontend. Default: 'false'
    *
@@ -1379,7 +1379,7 @@ export interface IpLoadbalancingFrontendUdpFrontendUdp {
    * Id of your frontend
    *
    */
-  frontendId?: Number;
+  frontendId?: number;
   /**
    * Listening port(s) on the server
    *
@@ -1404,7 +1404,7 @@ export interface IpLoadbalancingStatusComponent {
    * The Load Balancer total component count
    *
    */
-  total?: Number;
+  total?: number;
 }
 /**
  * The statuses of a Load Balancer component
@@ -1414,22 +1414,22 @@ export interface IpLoadbalancingStatusComponentStatus {
    * The number of component with status error
    *
    */
-  error?: Number;
+  error?: number;
   /**
    * The number of component with status ok
    *
    */
-  ok?: Number;
+  ok?: number;
   /**
    * The number of component with status unknown
    *
    */
-  unknown?: Number;
+  unknown?: number;
   /**
    * The number of component with status warn
    *
    */
-  warn?: Number;
+  warn?: number;
 }
 /**
  * Possible values for a Load Balancer status
@@ -1473,7 +1473,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -1525,7 +1525,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -1536,7 +1536,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -1659,8 +1659,8 @@ type PathsIpLoadbalancingDELETE = '/ipLoadbalancing/{serviceName}/http/farm/{far
 '/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}';
 
 export class ApiIpLoadbalancing extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the IPLB service
@@ -1676,559 +1676,567 @@ export class ApiIpLoadbalancing extends ApiCommon {
   Your IP load balancing
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}', pathParams: {serviceName: string}): Promise<IpLoadbalancingIp>;
+  public get(path: '/ipLoadbalancing/{serviceName}', params: {serviceName: string}): Promise<IpLoadbalancingIp>;
   /**
   availableFarmProbes operations
   Available farm probes for health checks
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/availableFarmProbes', pathParams: {serviceName: string}): Promise<IpLoadbalancingFarmAvailableProbe[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/availableFarmProbes', params: {serviceName: string}): Promise<IpLoadbalancingFarmAvailableProbe[]>;
   /**
   availableFarmType operations
   Available farm types
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/availableFarmType', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/availableFarmType', params: {serviceName: string}): Promise<string[]>;
   /**
   availableFrontendType operations
   Available frontend type
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/availableFrontendType', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/availableFrontendType', params: {serviceName: string}): Promise<string[]>;
   /**
   availableRouteActions operations
   Available route actions
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/availableRouteActions', pathParams: {serviceName: string}): Promise<IpLoadbalancingRouteAvailableAction[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/availableRouteActions', params: {serviceName: string}): Promise<IpLoadbalancingRouteAvailableAction[]>;
   /**
   availableRouteRules operations
   Available route match rules
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/availableRouteRules', pathParams: {serviceName: string}): Promise<IpLoadbalancingRouteAvailableRule[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/availableRouteRules', params: {serviceName: string}): Promise<IpLoadbalancingRouteAvailableRule[]>;
   /**
   definedFarms operations
   List of defined farms, and whether they are HTTP, TCP or UDP
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/definedFarms', pathParams: {serviceName: string}, queryParams?: {vrackNetworkId?: Number}): Promise<IpLoadbalancingDefinedFarm[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/definedFarms', params: {serviceName: string, vrackNetworkId?: number}): Promise<IpLoadbalancingDefinedFarm[]>;
   /**
   definedFrontends operations
   List of defined frontends, and whether they are HTTP, TCP or UDP
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/definedFrontends', pathParams: {serviceName: string}): Promise<IpLoadbalancingDefinedFrontend[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/definedFrontends', params: {serviceName: string}): Promise<IpLoadbalancingDefinedFrontend[]>;
   /**
   definedRoutes operations
   List of defined routes, and whether they are HTTP or TCP
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/definedRoutes', pathParams: {serviceName: string}): Promise<IpLoadbalancingDefinedRoute[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/definedRoutes', params: {serviceName: string}): Promise<IpLoadbalancingDefinedRoute[]>;
   /**
   failover operations
   List all failover ip routed to this IPLB
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/failover', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/failover', params: {serviceName: string}): Promise<string[]>;
   /**
   List the ipLoadbalancing.backendHttp.BackendHttp objects
   HTTP Farm for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/farm', pathParams: {serviceName: string}, queryParams?: {vrackNetworkId?: Number, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/farm', params: {serviceName: string, vrackNetworkId?: number, zone?: string}): Promise<number[]>;
   /**
   HTTP Farm
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}', pathParams: {serviceName: string, farmId: Number}): Promise<IpLoadbalancingBackendHttpBackendHttp>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}', params: {serviceName: string, farmId: number}): Promise<IpLoadbalancingBackendHttpBackendHttp>;
   /**
   List the ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer objects
   HTTP Farm's Servers
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server', pathParams: {serviceName: string, farmId: Number}, queryParams?: {address?: string, cookie?: string, status?: IpLoadbalancingBackendCustomerServerStatusEnum}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server', params: {serviceName: string, farmId: number, address?: string, cookie?: string, status?: IpLoadbalancingBackendCustomerServerStatusEnum}): Promise<number[]>;
   /**
   HTTP Farm's Server
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}', pathParams: {serviceName: string, farmId: Number, serverId: Number}): Promise<IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}', params: {serviceName: string, farmId: number, serverId: number}): Promise<IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer>;
   /**
   List the ipLoadbalancing.frontendHttp.FrontendHttp objects
   HTTP frontends for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/frontend', pathParams: {serviceName: string}, queryParams?: {defaultFarmId?: Number, port?: string, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/frontend', params: {serviceName: string, defaultFarmId?: number, port?: string, zone?: string}): Promise<number[]>;
   /**
   Frontend HTTP
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}', pathParams: {serviceName: string, frontendId: Number}): Promise<IpLoadbalancingFrontendHttpFrontendHttp>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}', params: {serviceName: string, frontendId: number}): Promise<IpLoadbalancingFrontendHttpFrontendHttp>;
   /**
   List the ipLoadbalancing.RouteHttp.RouteHttp objects
   HTTP routes for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/route', pathParams: {serviceName: string}, queryParams?: {frontendId?: Number}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/route', params: {serviceName: string, frontendId?: number}): Promise<number[]>;
   /**
   HTTP Route
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}', pathParams: {serviceName: string, routeId: Number}): Promise<IpLoadbalancingRouteHttpRouteHttp>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}', params: {serviceName: string, routeId: number}): Promise<IpLoadbalancingRouteHttpRouteHttp>;
   /**
   List the ipLoadbalancing.RouteRule.RouteRule objects
   HTTP routes for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule', pathParams: {serviceName: string, routeId: Number}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule', params: {serviceName: string, routeId: number}): Promise<number[]>;
   /**
   Rule of a route
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}', pathParams: {serviceName: string, routeId: Number, ruleId: Number}): Promise<IpLoadbalancingRouteRuleRouteRule>;
+  public get(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}', params: {serviceName: string, routeId: number, ruleId: number}): Promise<IpLoadbalancingRouteRuleRouteRule>;
   /**
   instancesState operations
   Get the effective state of your IPLB instances on IPLB servers
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/instancesState', pathParams: {serviceName: string}): Promise<IpLoadbalancingInstancesState[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/instancesState', params: {serviceName: string}): Promise<IpLoadbalancingInstancesState[]>;
   /**
   natIp operations
   Ip subnet used by OVH to nat requests on your IPLB to your backends. You must ensure that your backends are not part of a network that overlap with this one
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/natIp', pathParams: {serviceName: string}): Promise<IpLoadbalancingNatIps[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/natIp', params: {serviceName: string}): Promise<IpLoadbalancingNatIps[]>;
   /**
   pendingChanges operations
   List the pending changes on your Load Balancer configuration, per zone
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/pendingChanges', pathParams: {serviceName: string}): Promise<IpLoadbalancingPendingChanges[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/pendingChanges', params: {serviceName: string}): Promise<IpLoadbalancingPendingChanges[]>;
   /**
   List the ipLoadbalancing.Quota.Quota objects
   Available quota informations for current billing period per zone
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/quota', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/quota', params: {serviceName: string}): Promise<string[]>;
   /**
   Quota informations for current billing period for this zone
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/quota/{zone}', pathParams: {serviceName: string, zone: string}): Promise<IpLoadbalancingQuotaQuota>;
+  public get(path: '/ipLoadbalancing/{serviceName}/quota/{zone}', params: {serviceName: string, zone: string}): Promise<IpLoadbalancingQuotaQuota>;
   /**
   List the ipLoadbalancing.QuotaHistory.QuotaHistory objects
   Quota history informations, per month
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/quotaHistory', pathParams: {serviceName: string}, queryParams?: {'historizedDate.from'?: string, 'historizedDate.to'?: string, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/quotaHistory', params: {serviceName: string, 'historizedDate.from'?: string, 'historizedDate.to'?: string, zone?: string}): Promise<number[]>;
   /**
   QuotaHistory
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/quotaHistory/{id}', pathParams: {serviceName: string, id: Number}): Promise<IpLoadbalancingQuotaHistoryQuotaHistory>;
+  public get(path: '/ipLoadbalancing/{serviceName}/quotaHistory/{id}', params: {serviceName: string, id: number}): Promise<IpLoadbalancingQuotaHistoryQuotaHistory>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/ipLoadbalancing/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   List the ipLoadbalancing.Ssl.Ssl objects
   Ssl for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/ssl', pathParams: {serviceName: string}, queryParams?: {fingerprint?: string, serial?: string, type?: IpLoadbalancingSslTypeEnum}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/ssl', params: {serviceName: string, fingerprint?: string, serial?: string, type?: IpLoadbalancingSslTypeEnum}): Promise<number[]>;
   /**
   Ssl
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/ssl/{id}', pathParams: {serviceName: string, id: Number}): Promise<IpLoadbalancingSslSsl>;
+  public get(path: '/ipLoadbalancing/{serviceName}/ssl/{id}', params: {serviceName: string, id: number}): Promise<IpLoadbalancingSslSsl>;
   /**
   status operations
   Get the global status of your IPLB
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/status', pathParams: {serviceName: string}): Promise<IpLoadbalancingStatus>;
+  public get(path: '/ipLoadbalancing/{serviceName}/status', params: {serviceName: string}): Promise<IpLoadbalancingStatus>;
   /**
   List the ipLoadbalancing.Task.Task objects
   Task for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {action?: IpLoadbalancingTaskActionEnum, 'creationDate.from'?: string, 'creationDate.to'?: string, 'doneDate.from'?: string, 'doneDate.to'?: string, status?: IpLoadbalancingTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/task', params: {serviceName: string, action?: IpLoadbalancingTaskActionEnum, 'creationDate.from'?: string, 'creationDate.to'?: string, 'doneDate.from'?: string, 'doneDate.to'?: string, status?: IpLoadbalancingTaskStatusEnum}): Promise<number[]>;
   /**
   IP Load Balancing Operations
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/task/{id}', pathParams: {serviceName: string, id: Number}): Promise<IpLoadbalancingTaskTask>;
+  public get(path: '/ipLoadbalancing/{serviceName}/task/{id}', params: {serviceName: string, id: number}): Promise<IpLoadbalancingTaskTask>;
   /**
   List the ipLoadbalancing.backendTcp.BackendTcp objects
   TCP Farm for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/farm', pathParams: {serviceName: string}, queryParams?: {vrackNetworkId?: Number, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/farm', params: {serviceName: string, vrackNetworkId?: number, zone?: string}): Promise<number[]>;
   /**
   TCP Farm
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}', pathParams: {serviceName: string, farmId: Number}): Promise<IpLoadbalancingBackendTcpBackendTcp>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}', params: {serviceName: string, farmId: number}): Promise<IpLoadbalancingBackendTcpBackendTcp>;
   /**
   List the ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer objects
   TCP Farm's Servers
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server', pathParams: {serviceName: string, farmId: Number}, queryParams?: {address?: string, status?: IpLoadbalancingBackendCustomerServerStatusEnum}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server', params: {serviceName: string, farmId: number, address?: string, status?: IpLoadbalancingBackendCustomerServerStatusEnum}): Promise<number[]>;
   /**
   TCP Farm's Server
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}', pathParams: {serviceName: string, farmId: Number, serverId: Number}): Promise<IpLoadbalancingBackendTcpCustomerServerBackendTCPServer>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}', params: {serviceName: string, farmId: number, serverId: number}): Promise<IpLoadbalancingBackendTcpCustomerServerBackendTCPServer>;
   /**
   List the ipLoadbalancing.frontendTcp.FrontendTcp objects
   TCP frontends for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/frontend', pathParams: {serviceName: string}, queryParams?: {defaultFarmId?: Number, port?: string, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/frontend', params: {serviceName: string, defaultFarmId?: number, port?: string, zone?: string}): Promise<number[]>;
   /**
   Frontend TCP
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}', pathParams: {serviceName: string, frontendId: Number}): Promise<IpLoadbalancingFrontendTcpFrontendTcp>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}', params: {serviceName: string, frontendId: number}): Promise<IpLoadbalancingFrontendTcpFrontendTcp>;
   /**
   List the ipLoadbalancing.RouteTcp.RouteTcp objects
   TCP routes for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/route', pathParams: {serviceName: string}, queryParams?: {frontendId?: Number}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/route', params: {serviceName: string, frontendId?: number}): Promise<number[]>;
   /**
   TCP Route
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}', pathParams: {serviceName: string, routeId: Number}): Promise<IpLoadbalancingRouteTcpRouteTcp>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}', params: {serviceName: string, routeId: number}): Promise<IpLoadbalancingRouteTcpRouteTcp>;
   /**
   List the ipLoadbalancing.RouteRule.RouteRule objects
   HTTP routes for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule', pathParams: {serviceName: string, routeId: Number}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule', params: {serviceName: string, routeId: number}): Promise<number[]>;
   /**
   Rule of a route
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}', pathParams: {serviceName: string, routeId: Number, ruleId: Number}): Promise<IpLoadbalancingRouteRuleRouteRule>;
+  public get(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}', params: {serviceName: string, routeId: number, ruleId: number}): Promise<IpLoadbalancingRouteRuleRouteRule>;
   /**
   List the ipLoadbalancing.backendUdp.BackendUdp objects
   UDP Farm for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/udp/farm', pathParams: {serviceName: string}, queryParams?: {vrackNetworkId?: Number, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/udp/farm', params: {serviceName: string, vrackNetworkId?: number, zone?: string}): Promise<number[]>;
   /**
   UDP Farm
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}', pathParams: {serviceName: string, farmId: Number}): Promise<IpLoadbalancingBackendUdpBackendUdp>;
+  public get(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}', params: {serviceName: string, farmId: number}): Promise<IpLoadbalancingBackendUdpBackendUdp>;
   /**
   List the ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer objects
   UDP Farm's Servers
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server', pathParams: {serviceName: string, farmId: Number}, queryParams?: {address?: string, status?: IpLoadbalancingBackendCustomerServerStatusEnum}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server', params: {serviceName: string, farmId: number, address?: string, status?: IpLoadbalancingBackendCustomerServerStatusEnum}): Promise<number[]>;
   /**
   UDP Farm's Server
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}', pathParams: {serviceName: string, farmId: Number, serverId: Number}): Promise<IpLoadbalancingBackendUdpCustomerServerBackendUDPServer>;
+  public get(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}', params: {serviceName: string, farmId: number, serverId: number}): Promise<IpLoadbalancingBackendUdpCustomerServerBackendUDPServer>;
   /**
   List the ipLoadbalancing.frontendUdp.FrontendUdp objects
   UDP frontends for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/udp/frontend', pathParams: {serviceName: string}, queryParams?: {defaultFarmId?: Number, port?: string, zone?: string}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/udp/frontend', params: {serviceName: string, defaultFarmId?: number, port?: string, zone?: string}): Promise<number[]>;
   /**
   Frontend UDP
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}', pathParams: {serviceName: string, frontendId: Number}): Promise<IpLoadbalancingFrontendUdpFrontendUdp>;
+  public get(path: '/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}', params: {serviceName: string, frontendId: number}): Promise<IpLoadbalancingFrontendUdpFrontendUdp>;
   /**
   List the ipLoadbalancing.VrackNetwork.VrackNetwork objects
   Descriptions of private networks in the vRack attached to this Load Balancer
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/vrack/network', pathParams: {serviceName: string}, queryParams?: {subnet?: string, vlan?: Number}): Promise<Number[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/vrack/network', params: {serviceName: string, subnet?: string, vlan?: number}): Promise<number[]>;
   /**
   Represents a private network in the vRack
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}', pathParams: {serviceName: string, vrackNetworkId: Number}): Promise<IpLoadbalancingVrackNetworkVrackNetwork>;
+  public get(path: '/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}', params: {serviceName: string, vrackNetworkId: number}): Promise<IpLoadbalancingVrackNetworkVrackNetwork>;
   /**
   networkCreationRules operations
   Rules to create a network attached to a vrack
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/vrack/networkCreationRules', pathParams: {serviceName: string}): Promise<IpLoadbalancingVrackNetworkCreationRules>;
+  public get(path: '/ipLoadbalancing/{serviceName}/vrack/networkCreationRules', params: {serviceName: string}): Promise<IpLoadbalancingVrackNetworkCreationRules>;
   /**
   status operations
   Information about vRack for your Load Balancer
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/vrack/status', pathParams: {serviceName: string}): Promise<IpLoadbalancingVrackInformation>;
+  public get(path: '/ipLoadbalancing/{serviceName}/vrack/status', params: {serviceName: string}): Promise<IpLoadbalancingVrackInformation>;
   /**
   List the ipLoadbalancing.Zone.Zone objects
   Zone for this iplb
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/zone', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/ipLoadbalancing/{serviceName}/zone', params: {serviceName: string}): Promise<string[]>;
   /**
   IP Load Balancing Zone
   Get this object properties
   **/
-  public get(path: '/ipLoadbalancing/{serviceName}/zone/{name}', pathParams: {serviceName: string, name: string}): Promise<IpLoadbalancingZoneZone>;
-  public get(path: PathsIpLoadbalancingGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/ipLoadbalancing/{serviceName}/zone/{name}', params: {serviceName: string, name: string}): Promise<IpLoadbalancingZoneZone>;
+  public get(path: PathsIpLoadbalancingGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Your IP load balancing
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}', params: {serviceName: string}): Promise<void>;
   /**
   HTTP Farm
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}', pathParams: {serviceName: string, farmId: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}', params: {serviceName: string, farmId: number}): Promise<void>;
   /**
   HTTP Farm's Server
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}', pathParams: {serviceName: string, farmId: Number, serverId: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}', params: {serviceName: string, farmId: number, serverId: number}): Promise<void>;
   /**
   Frontend HTTP
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}', pathParams: {serviceName: string, frontendId: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}', params: {serviceName: string, frontendId: number}): Promise<void>;
   /**
   HTTP Route
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}', pathParams: {serviceName: string, routeId: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}', params: {serviceName: string, routeId: number}): Promise<void>;
   /**
   Rule of a route
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}', pathParams: {serviceName: string, routeId: Number, ruleId: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}', params: {serviceName: string, routeId: number, ruleId: number}): Promise<void>;
   /**
   Quota informations for current billing period for this zone
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/quota/{zone}', pathParams: {serviceName: string, zone: string}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/quota/{zone}', params: {serviceName: string, zone: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
   /**
   Ssl
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/ssl/{id}', pathParams: {serviceName: string, id: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/ssl/{id}', params: {serviceName: string, id: number}): Promise<void>;
   /**
   TCP Farm
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}', pathParams: {serviceName: string, farmId: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}', params: {serviceName: string, farmId: number}): Promise<void>;
   /**
   TCP Farm's Server
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}', pathParams: {serviceName: string, farmId: Number, serverId: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}', params: {serviceName: string, farmId: number, serverId: number}): Promise<void>;
   /**
   Frontend TCP
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}', pathParams: {serviceName: string, frontendId: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}', params: {serviceName: string, frontendId: number}): Promise<void>;
   /**
   TCP Route
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}', pathParams: {serviceName: string, routeId: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}', params: {serviceName: string, routeId: number}): Promise<void>;
   /**
   Rule of a route
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}', pathParams: {serviceName: string, routeId: Number, ruleId: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}', params: {serviceName: string, routeId: number, ruleId: number}): Promise<void>;
   /**
   UDP Farm
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}', pathParams: {serviceName: string, farmId: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}', params: {serviceName: string, farmId: number}): Promise<void>;
   /**
   UDP Farm's Server
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}', pathParams: {serviceName: string, farmId: Number, serverId: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}', params: {serviceName: string, farmId: number, serverId: number}): Promise<void>;
   /**
   Frontend UDP
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}', pathParams: {serviceName: string, frontendId: Number}): Promise<void>;
+  public put(path: '/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}', params: {serviceName: string, frontendId: number}): Promise<void>;
   /**
   Represents a private network in the vRack
   Alter this object properties
   **/
-  public put(path: '/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}', pathParams: {serviceName: string, vrackNetworkId: Number}): Promise<void>;
-  public put(path: PathsIpLoadbalancingPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}', params: {serviceName: string, vrackNetworkId: number}): Promise<void>;
+  public put(path: PathsIpLoadbalancingPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  public post(path: '/ipLoadbalancing/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/ipLoadbalancing/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
   /**
   freeCertificate operations
   Order a free certificate. We order and deliver it for you
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/freeCertificate', pathParams: {serviceName: string}): Promise<IpLoadbalancingTaskTask>;
+  public post(path: '/ipLoadbalancing/{serviceName}/freeCertificate', params: {serviceName: string}): Promise<IpLoadbalancingTaskTask>;
   /**
   List the ipLoadbalancing.backendHttp.BackendHttp objects
   Add a new HTTP Farm on your IP Load Balancing
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/http/farm', pathParams: {serviceName: string}): Promise<IpLoadbalancingBackendHttpBackendHttp>;
+  public post(path: '/ipLoadbalancing/{serviceName}/http/farm', params: {serviceName: string}): Promise<IpLoadbalancingBackendHttpBackendHttp>;
   /**
   List the ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer objects
   Add a server to an HTTP Farm
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server', pathParams: {serviceName: string, farmId: Number}): Promise<IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer>;
+  public post(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server', params: {serviceName: string, farmId: number}): Promise<IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer>;
   /**
   List the ipLoadbalancing.frontendHttp.FrontendHttp objects
   Add a new http frontend on your IP Load Balancing
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/http/frontend', pathParams: {serviceName: string}): Promise<IpLoadbalancingFrontendHttpFrontendHttp>;
+  public post(path: '/ipLoadbalancing/{serviceName}/http/frontend', params: {serviceName: string}): Promise<IpLoadbalancingFrontendHttpFrontendHttp>;
   /**
   List the ipLoadbalancing.RouteHttp.RouteHttp objects
   Add a new HTTP route to your frontend
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/http/route', pathParams: {serviceName: string}): Promise<IpLoadbalancingRouteHttpRouteHttp>;
+  public post(path: '/ipLoadbalancing/{serviceName}/http/route', params: {serviceName: string}): Promise<IpLoadbalancingRouteHttpRouteHttp>;
   /**
   List the ipLoadbalancing.RouteRule.RouteRule objects
   Add a new rule to your route
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule', pathParams: {serviceName: string, routeId: Number}): Promise<IpLoadbalancingRouteRuleRouteRule>;
+  public post(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule', params: {serviceName: string, routeId: number}): Promise<IpLoadbalancingRouteRuleRouteRule>;
   /**
   refresh operations
   Apply the configuration to your iplb
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/refresh', pathParams: {serviceName: string}): Promise<IpLoadbalancingTaskTask>;
+  public post(path: '/ipLoadbalancing/{serviceName}/refresh', params: {serviceName: string}): Promise<IpLoadbalancingTaskTask>;
   /**
   List the ipLoadbalancing.Ssl.Ssl objects
   Add a new custom SSL certificate on your IP Load Balancing
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/ssl', pathParams: {serviceName: string}): Promise<IpLoadbalancingSslSsl>;
+  public post(path: '/ipLoadbalancing/{serviceName}/ssl', params: {serviceName: string}): Promise<IpLoadbalancingSslSsl>;
   /**
   List the ipLoadbalancing.backendTcp.BackendTcp objects
   Add a new TCP Farm on your IP Load Balancing
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/tcp/farm', pathParams: {serviceName: string}): Promise<IpLoadbalancingBackendTcpBackendTcp>;
+  public post(path: '/ipLoadbalancing/{serviceName}/tcp/farm', params: {serviceName: string}): Promise<IpLoadbalancingBackendTcpBackendTcp>;
   /**
   List the ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer objects
   Add a server to a TCP Farm
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server', pathParams: {serviceName: string, farmId: Number}): Promise<IpLoadbalancingBackendTcpCustomerServerBackendTCPServer>;
+  public post(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server', params: {serviceName: string, farmId: number}): Promise<IpLoadbalancingBackendTcpCustomerServerBackendTCPServer>;
   /**
   List the ipLoadbalancing.frontendTcp.FrontendTcp objects
   Add a new TCP frontend on your IP Load Balancing
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/tcp/frontend', pathParams: {serviceName: string}): Promise<IpLoadbalancingFrontendTcpFrontendTcp>;
+  public post(path: '/ipLoadbalancing/{serviceName}/tcp/frontend', params: {serviceName: string}): Promise<IpLoadbalancingFrontendTcpFrontendTcp>;
   /**
   List the ipLoadbalancing.RouteTcp.RouteTcp objects
   Add a new TCP route to your frontend
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/tcp/route', pathParams: {serviceName: string}): Promise<IpLoadbalancingRouteTcpRouteTcp>;
+  public post(path: '/ipLoadbalancing/{serviceName}/tcp/route', params: {serviceName: string}): Promise<IpLoadbalancingRouteTcpRouteTcp>;
   /**
   List the ipLoadbalancing.RouteRule.RouteRule objects
   Add a new rule to your route
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule', pathParams: {serviceName: string, routeId: Number}): Promise<IpLoadbalancingRouteRuleRouteRule>;
+  public post(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule', params: {serviceName: string, routeId: number}): Promise<IpLoadbalancingRouteRuleRouteRule>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/ipLoadbalancing/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
   /**
   List the ipLoadbalancing.backendUdp.BackendUdp objects
   Add a new UDP Farm on your IP Load Balancing
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/udp/farm', pathParams: {serviceName: string}): Promise<IpLoadbalancingBackendUdpBackendUdp>;
+  public post(path: '/ipLoadbalancing/{serviceName}/udp/farm', params: {serviceName: string}): Promise<IpLoadbalancingBackendUdpBackendUdp>;
   /**
   List the ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer objects
   Add a server to an UDP Farm
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server', pathParams: {serviceName: string, farmId: Number}): Promise<IpLoadbalancingBackendUdpCustomerServerBackendUDPServer>;
+  public post(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server', params: {serviceName: string, farmId: number}): Promise<IpLoadbalancingBackendUdpCustomerServerBackendUDPServer>;
   /**
   List the ipLoadbalancing.frontendUdp.FrontendUdp objects
   Add a new UDP frontend on your IP Load Balancing
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/udp/frontend', pathParams: {serviceName: string}): Promise<IpLoadbalancingFrontendUdpFrontendUdp>;
+  public post(path: '/ipLoadbalancing/{serviceName}/udp/frontend', params: {serviceName: string}): Promise<IpLoadbalancingFrontendUdpFrontendUdp>;
   /**
   List the ipLoadbalancing.VrackNetwork.VrackNetwork objects
   Add a description of a private network in the attached vRack
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/vrack/network', pathParams: {serviceName: string}): Promise<IpLoadbalancingVrackNetworkVrackNetwork>;
+  public post(path: '/ipLoadbalancing/{serviceName}/vrack/network', params: {serviceName: string}): Promise<IpLoadbalancingVrackNetworkVrackNetwork>;
   /**
   updateFarmId operations
   Update farm attached to that vrack network id
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}/updateFarmId', pathParams: {serviceName: string, vrackNetworkId: Number}): Promise<IpLoadbalancingVrackNetworkVrackNetwork>;
+  public post(path: '/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}/updateFarmId', params: {serviceName: string, vrackNetworkId: number}): Promise<IpLoadbalancingVrackNetworkVrackNetwork>;
   /**
   cancelTermination operations
   Cancel the termination request of your service zone option
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/zone/{name}/cancelTermination', pathParams: {serviceName: string, name: string}): Promise<void>;
+  public post(path: '/ipLoadbalancing/{serviceName}/zone/{name}/cancelTermination', params: {serviceName: string, name: string}): Promise<void>;
   /**
   terminate operations
   Terminate your service zone option
   **/
-  public post(path: '/ipLoadbalancing/{serviceName}/zone/{name}/terminate', pathParams: {serviceName: string, name: string}): Promise<void>;
-  public post(path: PathsIpLoadbalancingPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/ipLoadbalancing/{serviceName}/zone/{name}/terminate', params: {serviceName: string, name: string}): Promise<void>;
+  public post(path: PathsIpLoadbalancingPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   HTTP Farm
   Delete an HTTP Farm
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}', pathParams: {serviceName: string, farmId: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}', params: {serviceName: string, farmId: number}): Promise<void>;
   /**
   HTTP Farm's Server
   Delete a server from an HTTP Farm
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}', pathParams: {serviceName: string, farmId: Number, serverId: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}', params: {serviceName: string, farmId: number, serverId: number}): Promise<void>;
   /**
   Frontend HTTP
   Delete an HTTP frontend
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}', pathParams: {serviceName: string, frontendId: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}', params: {serviceName: string, frontendId: number}): Promise<void>;
   /**
   HTTP Route
   Delete this HTTP route
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}', pathParams: {serviceName: string, routeId: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}', params: {serviceName: string, routeId: number}): Promise<void>;
   /**
   Rule of a route
   Delete this rule from the route
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}', pathParams: {serviceName: string, routeId: Number, ruleId: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}', params: {serviceName: string, routeId: number, ruleId: number}): Promise<void>;
   /**
   Ssl
   Delete a custom SSL certificate
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/ssl/{id}', pathParams: {serviceName: string, id: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/ssl/{id}', params: {serviceName: string, id: number}): Promise<void>;
   /**
   TCP Farm
   Delete a TCP Farm
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}', pathParams: {serviceName: string, farmId: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}', params: {serviceName: string, farmId: number}): Promise<void>;
   /**
   TCP Farm's Server
   Delete a server from a TCP Farm
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}', pathParams: {serviceName: string, farmId: Number, serverId: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}', params: {serviceName: string, farmId: number, serverId: number}): Promise<void>;
   /**
   Frontend TCP
   Delete an TCP frontend
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}', pathParams: {serviceName: string, frontendId: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}', params: {serviceName: string, frontendId: number}): Promise<void>;
   /**
   TCP Route
   Delete this TCP route
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}', pathParams: {serviceName: string, routeId: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}', params: {serviceName: string, routeId: number}): Promise<void>;
   /**
   Rule of a route
   Delete this rule from the route
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}', pathParams: {serviceName: string, routeId: Number, ruleId: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}', params: {serviceName: string, routeId: number, ruleId: number}): Promise<void>;
   /**
   UDP Farm
   Delete an UDP Farm
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}', pathParams: {serviceName: string, farmId: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}', params: {serviceName: string, farmId: number}): Promise<void>;
   /**
   UDP Farm's Server
   Delete a server from an UDP Farm
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}', pathParams: {serviceName: string, farmId: Number, serverId: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}', params: {serviceName: string, farmId: number, serverId: number}): Promise<void>;
   /**
   Frontend UDP
   Delete an UDP frontend
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}', pathParams: {serviceName: string, frontendId: Number}): Promise<void>;
+  public delete(path: '/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}', params: {serviceName: string, frontendId: number}): Promise<void>;
   /**
   Represents a private network in the vRack
   Delete this description of a private network in the vRack. It must not be used by any farm server
   **/
-  public delete(path: '/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}', pathParams: {serviceName: string, vrackNetworkId: Number}): Promise<void>;
-  public delete(path: PathsIpLoadbalancingDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}', params: {serviceName: string, vrackNetworkId: number}): Promise<void>;
+  public delete(path: PathsIpLoadbalancingDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

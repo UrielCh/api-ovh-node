@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Static CDN
  */
@@ -13,12 +13,12 @@ export interface CdnWebstorageAccount {
    * value in Bytes
    *
    */
-  storageLimit?: Number;
+  storageLimit?: number;
   /**
    * value in Bytes
    *
    */
-  storageUsage?: Number;
+  storageUsage?: number;
 }
 /**
  * A structure with credentials for using openstack account
@@ -46,7 +46,7 @@ export interface CdnWebstorageStatsDataType {
   date?: string;
   /**
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * Period of the statistics
@@ -84,7 +84,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -128,7 +128,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -139,7 +139,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -153,8 +153,8 @@ type PathsCdnWebstorageGET = '/cdn/webstorage' |
 type PathsCdnWebstoragePUT = '/cdn/webstorage/{serviceName}/serviceInfos';
 
 export class ApiCdnWebstorage extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the CDNSTATIC service
@@ -165,27 +165,31 @@ export class ApiCdnWebstorage extends ApiCommon {
   Static CDN
   Get this object properties
   **/
-  public get(path: '/cdn/webstorage/{serviceName}', pathParams: {serviceName: string}): Promise<CdnWebstorageAccount>;
+  public get(path: '/cdn/webstorage/{serviceName}', params: {serviceName: string}): Promise<CdnWebstorageAccount>;
   /**
   credentials operations
   Gives for customer credentials to accesss swift account
   **/
-  public get(path: '/cdn/webstorage/{serviceName}/credentials', pathParams: {serviceName: string}): Promise<CdnWebstorageAccountCredentials>;
+  public get(path: '/cdn/webstorage/{serviceName}/credentials', params: {serviceName: string}): Promise<CdnWebstorageAccountCredentials>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/cdn/webstorage/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/cdn/webstorage/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   statistics operations
   Return stats about bandwidth consumption
   **/
-  public get(path: '/cdn/webstorage/{serviceName}/statistics', pathParams: {serviceName: string}, queryParams?: {period?: CdnWebstorageStatsPeriodEnum, type?: CdnWebstorageStatsTypeEnum}): Promise<CdnWebstorageStatsDataType[]>;
-  public get(path: PathsCdnWebstorageGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/cdn/webstorage/{serviceName}/statistics', params: {serviceName: string, period: CdnWebstorageStatsPeriodEnum, type: CdnWebstorageStatsTypeEnum}): Promise<CdnWebstorageStatsDataType[]>;
+  public get(path: PathsCdnWebstorageGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cdn/webstorage/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsCdnWebstoragePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/cdn/webstorage/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsCdnWebstoragePUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
 }

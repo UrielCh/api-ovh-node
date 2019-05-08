@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Active Directory Account
  */
@@ -32,7 +32,7 @@ export interface MsServicesAccount {
    * Account id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Account initials
    *
@@ -72,7 +72,7 @@ export interface MsServicesAccount {
    * Pending task for this account
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
   /**
    * User Principal Name
    *
@@ -92,32 +92,32 @@ export interface MsServicesActiveDirectoryOrganizationalUnit {
    * Account lock time (in minutes) when too much passwords have been tried
    *
    */
-  lockoutDuration?: Number;
+  lockoutDuration?: number;
   /**
    * Time (in minutes) before the password attempts counter is reset
    *
    */
-  lockoutObservationWindow?: Number;
+  lockoutObservationWindow?: number;
   /**
    * Maximum number of password tries before account locking
    *
    */
-  lockoutThreshold?: Number;
+  lockoutThreshold?: number;
   /**
    * Maximum lifespan of passwords, in days
    *
    */
-  maxPasswordAge?: Number;
+  maxPasswordAge?: number;
   /**
    * Minimum lifespan of passwords, in days (0 = unlimited)
    *
    */
-  minPasswordAge?: Number;
+  minPasswordAge?: number;
   /**
    * Minimum number of characters passwords must contain
    *
    */
-  minPasswordLength?: Number;
+  minPasswordLength?: number;
   /**
    * Name of the Active Directory organizational unit
    *
@@ -137,7 +137,7 @@ export interface MsServicesActiveDirectoryOrganizationalUnit {
    * Task pending id
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Temporary link to ADSync software executable
@@ -177,7 +177,7 @@ export interface MsServicesExchangeInformation {
    * Mailbox usage in KB
    *
    */
-  currentUsage?: Number;
+  currentUsage?: number;
   /**
    * Delete mailbox at expiration date
    *
@@ -212,7 +212,7 @@ export interface MsServicesExchangeInformation {
    * Account id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Litigation hold feature enabled on this mailbox
    *
@@ -222,7 +222,7 @@ export interface MsServicesExchangeInformation {
    * Litigation hold period in days (0 means unlimited). This setting covers all items in the mailbox.
    *
    */
-  litigationPeriod?: Number;
+  litigationPeriod?: number;
   /**
    * Enable or disable anti-virus and anti-spam
    *
@@ -247,7 +247,7 @@ export interface MsServicesExchangeInformation {
    * Maximum mailbox usage in GB (overall size)
    *
    */
-  quota?: Number;
+  quota?: number;
   /**
    * Frequency of Outlook license renewals
    *
@@ -272,7 +272,7 @@ export interface MsServicesExchangeInformation {
    * Ticket number of spam detection
    *
    */
-  spamTicketNumber?: Number;
+  spamTicketNumber?: number;
   /**
    * Mailbox state
    *
@@ -282,7 +282,7 @@ export interface MsServicesExchangeInformation {
    * Pending task id for this account
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Exchange account licence
@@ -311,12 +311,12 @@ export interface MsServicesExchangeService {
    * Maximum allowable size for received messages in MB
    *
    */
-  maxReceiveSize?: Number;
+  maxReceiveSize?: number;
   /**
    * Maximum allowable size of sent messages in MB
    *
    */
-  maxSendSize?: Number;
+  maxSendSize?: number;
   /**
    * Exchange service offer
    *
@@ -341,7 +341,7 @@ export interface MsServicesExchangeService {
    * Task pending id
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Period of time used to determine license statistics
@@ -369,7 +369,7 @@ export interface MsServicesMfaInformation {
    * Pending task for Multi Factor Authentication
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Current object state
@@ -400,7 +400,7 @@ export interface MsServicesSharepointAccountLicense {
   license?: MsServicesSharepointLicenseEnum;
   /**
    */
-  licenseQuantity?: Number;
+  licenseQuantity?: number;
 }
 /**
  * Sharepoint account license per day
@@ -426,7 +426,7 @@ export interface MsServicesSharepointInformation {
    * Active Directory Account id
    *
    */
-  activeDirectoryAccountId?: Number;
+  activeDirectoryAccountId?: number;
   /**
    * Indicates if the account is configured
    *
@@ -436,7 +436,7 @@ export interface MsServicesSharepointInformation {
    * OneDrive usage in byte
    *
    */
-  currentUsage?: Number;
+  currentUsage?: number;
   /**
    * delete at expiration
    *
@@ -446,7 +446,7 @@ export interface MsServicesSharepointInformation {
    * Sharepoint account id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Sharepoint account license
    *
@@ -461,7 +461,7 @@ export interface MsServicesSharepointInformation {
    * OneDrive maximum size in byte
    *
    */
-  quota?: Number;
+  quota?: number;
   /**
    * Sharepoint account state
    *
@@ -471,7 +471,7 @@ export interface MsServicesSharepointInformation {
    * Pending task for this sharepoint account
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Sharepoint account license
@@ -485,7 +485,7 @@ export interface MsServicesSharepointService {
    * Shared space usage in byte
    *
    */
-  currentUsage?: Number;
+  currentUsage?: number;
   /**
    * Service family name displayed
    *
@@ -510,7 +510,7 @@ export interface MsServicesSharepointService {
    * Shared space maximum size in byte
    *
    */
-  quota?: Number;
+  quota?: number;
   /**
    * Sharepoint service state
    *
@@ -520,7 +520,7 @@ export interface MsServicesSharepointService {
    * Task pending id
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
   /**
    * Sharepoint url
    *
@@ -594,7 +594,7 @@ export interface MsServicesSyncAccountLicense {
    * number of license instances
    *
    */
-  licenseQuantity?: Number;
+  licenseQuantity?: number;
 }
 /**
  * Sync account license per day
@@ -634,7 +634,7 @@ export interface MsServicesSyncInformation {
    * Pending task for this sync account
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Sync account license
@@ -653,7 +653,7 @@ export interface MsServicesSyncService {
    * Task pending id
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Active Directory task details
@@ -673,7 +673,7 @@ export interface MsServicesTask {
    * Task id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Task status
    *
@@ -715,7 +715,7 @@ export interface MsServicesExchangeTask {
    * Task id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Task status
    *
@@ -745,7 +745,7 @@ export interface MsServicesSharepointTask {
    * Task id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Task status
    *
@@ -785,7 +785,7 @@ export interface MsServicesUpnSuffix {
    * Pending task for this upnSuffix
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Map a possible renew for a specific service
@@ -815,7 +815,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -859,7 +859,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -870,7 +870,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -932,8 +932,8 @@ type PathsMsServicesDELETE = '/msServices/{serviceName}/account/{userPrincipalNa
 '/msServices/{serviceName}/upnSuffix/{suffix}';
 
 export class ApiMsServices extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the MSSERVICES service
@@ -949,254 +949,262 @@ export class ApiMsServices extends ApiCommon {
   Sharepoint service
   Get this object properties
   **/
-  public get(path: '/msServices/sharepoint/{domain}', pathParams: {domain: string}): Promise<MsServicesSharepointServiceInfo>;
+  public get(path: '/msServices/sharepoint/{domain}', params: {domain: string}): Promise<MsServicesSharepointServiceInfo>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/msServices/sharepoint/{domain}/serviceInfos', pathParams: {domain: string}): Promise<ServicesService>;
+  public get(path: '/msServices/sharepoint/{domain}/serviceInfos', params: {domain: string}): Promise<ServicesService>;
   /**
   Active Directory organizational unit
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}', pathParams: {serviceName: string}): Promise<MsServicesActiveDirectoryOrganizationalUnit>;
+  public get(path: '/msServices/{serviceName}', params: {serviceName: string}): Promise<MsServicesActiveDirectoryOrganizationalUnit>;
   /**
   List the msServices.Account objects
   Accounts associated to this Active Directory service
   **/
-  public get(path: '/msServices/{serviceName}/account', pathParams: {serviceName: string}, queryParams?: {id?: Number, userPrincipalName?: string}): Promise<string[]>;
+  public get(path: '/msServices/{serviceName}/account', params: {serviceName: string, id?: number, userPrincipalName?: string}): Promise<string[]>;
   /**
   Active Directory Account
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesAccount>;
+  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesAccount>;
   /**
   Exchange mailbox information
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesExchangeInformation>;
+  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesExchangeInformation>;
   /**
   Multi Factor Authentication informations
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesMfaInformation>;
+  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesMfaInformation>;
   /**
   Sharepoint account information
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesSharepointInformation>;
+  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesSharepointInformation>;
   /**
   Sync account information
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesSyncInformation>;
+  public get(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesSyncInformation>;
   /**
   Exchange service
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/exchange', pathParams: {serviceName: string}): Promise<MsServicesExchangeService>;
+  public get(path: '/msServices/{serviceName}/exchange', params: {serviceName: string}): Promise<MsServicesExchangeService>;
   /**
   billingMigrated operations
   Detects billing transition status for the service
   **/
-  public get(path: '/msServices/{serviceName}/exchange/billingMigrated', pathParams: {serviceName: string}): Promise<boolean>;
+  public get(path: '/msServices/{serviceName}/exchange/billingMigrated', params: {serviceName: string}): Promise<boolean>;
   /**
   List the msServices.exchangeTask objects
   Pending actions
   **/
-  public get(path: '/msServices/{serviceName}/exchange/task', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/msServices/{serviceName}/exchange/task', params: {serviceName: string}): Promise<number[]>;
   /**
   Exchange task details
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/exchange/task/{id}', pathParams: {serviceName: string, id: Number}): Promise<MsServicesExchangeTask>;
+  public get(path: '/msServices/{serviceName}/exchange/task/{id}', params: {serviceName: string, id: number}): Promise<MsServicesExchangeTask>;
   /**
   Sharepoint service
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/sharepoint', pathParams: {serviceName: string}): Promise<MsServicesSharepointService>;
+  public get(path: '/msServices/{serviceName}/sharepoint', params: {serviceName: string}): Promise<MsServicesSharepointService>;
   /**
   billingMigrated operations
   Detects billing transition status for the service
   **/
-  public get(path: '/msServices/{serviceName}/sharepoint/billingMigrated', pathParams: {serviceName: string}): Promise<boolean>;
+  public get(path: '/msServices/{serviceName}/sharepoint/billingMigrated', params: {serviceName: string}): Promise<boolean>;
   /**
   license operations
   Get active licenses for specific period of time
   **/
-  public get(path: '/msServices/{serviceName}/sharepoint/license', pathParams: {serviceName: string}, queryParams?: {license?: MsServicesSharepointLicenseEnum, period?: MsServicesLicensePeriodEnum}): Promise<MsServicesSharepointDailyLicense[]>;
+  public get(path: '/msServices/{serviceName}/sharepoint/license', params: {serviceName: string, license?: MsServicesSharepointLicenseEnum, period: MsServicesLicensePeriodEnum}): Promise<MsServicesSharepointDailyLicense[]>;
   /**
   List the msServices.sharepointTask objects
   Pending actions
   **/
-  public get(path: '/msServices/{serviceName}/sharepoint/task', pathParams: {serviceName: string}, queryParams?: {function?: string, status?: MsServicesTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/msServices/{serviceName}/sharepoint/task', params: {serviceName: string, function?: string, status?: MsServicesTaskStatusEnum}): Promise<number[]>;
   /**
   Sharepoint task details
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/sharepoint/task/{id}', pathParams: {serviceName: string, id: Number}): Promise<MsServicesSharepointTask>;
+  public get(path: '/msServices/{serviceName}/sharepoint/task/{id}', params: {serviceName: string, id: number}): Promise<MsServicesSharepointTask>;
   /**
   Sync service
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/sync', pathParams: {serviceName: string}): Promise<MsServicesSyncService>;
+  public get(path: '/msServices/{serviceName}/sync', params: {serviceName: string}): Promise<MsServicesSyncService>;
   /**
   Temporary link to ADSync software executable
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/sync/clientSoftwareURL', pathParams: {serviceName: string}): Promise<MsServicesActiveDirectorySyncClientUrl>;
+  public get(path: '/msServices/{serviceName}/sync/clientSoftwareURL', params: {serviceName: string}): Promise<MsServicesActiveDirectorySyncClientUrl>;
   /**
   license operations
   Get active licenses for specific period of time
   **/
-  public get(path: '/msServices/{serviceName}/sync/license', pathParams: {serviceName: string}, queryParams?: {license?: MsServicesSyncLicenseEnum, period?: MsServicesLicensePeriodEnum}): Promise<MsServicesSyncDailyLicense[]>;
+  public get(path: '/msServices/{serviceName}/sync/license', params: {serviceName: string, license?: MsServicesSyncLicenseEnum, period: MsServicesLicensePeriodEnum}): Promise<MsServicesSyncDailyLicense[]>;
   /**
   List the msServices.Task objects
   Pending actions
   **/
-  public get(path: '/msServices/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {function?: MsServicesTaskFunctionEnum, status?: MsServicesTaskStatusEnum}): Promise<Number[]>;
+  public get(path: '/msServices/{serviceName}/task', params: {serviceName: string, function?: MsServicesTaskFunctionEnum, status?: MsServicesTaskStatusEnum}): Promise<number[]>;
   /**
   Active Directory task details
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/task/{id}', pathParams: {serviceName: string, id: Number}): Promise<MsServicesTask>;
+  public get(path: '/msServices/{serviceName}/task/{id}', params: {serviceName: string, id: number}): Promise<MsServicesTask>;
   /**
   List the msServices.upnSuffix objects
   active directory UPN suffix
   **/
-  public get(path: '/msServices/{serviceName}/upnSuffix', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/msServices/{serviceName}/upnSuffix', params: {serviceName: string}): Promise<string[]>;
   /**
   Active Directory UPN Suffix
   Get this object properties
   **/
-  public get(path: '/msServices/{serviceName}/upnSuffix/{suffix}', pathParams: {serviceName: string, suffix: string}): Promise<MsServicesUpnSuffix>;
-  public get(path: PathsMsServicesGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/msServices/{serviceName}/upnSuffix/{suffix}', params: {serviceName: string, suffix: string}): Promise<MsServicesUpnSuffix>;
+  public get(path: PathsMsServicesGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/msServices/sharepoint/{domain}/serviceInfos', pathParams: {domain: string}): Promise<void>;
+  public put(path: '/msServices/sharepoint/{domain}/serviceInfos', params: {domain: string}): Promise<void>;
   /**
   Active Directory organizational unit
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/msServices/{serviceName}', params: {serviceName: string}): Promise<void>;
   /**
   Active Directory Account
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}', pathParams: {serviceName: string, userPrincipalName: string}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}', params: {serviceName: string, userPrincipalName: string}): Promise<void>;
   /**
   Exchange mailbox information
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange', pathParams: {serviceName: string, userPrincipalName: string}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange', params: {serviceName: string, userPrincipalName: string}): Promise<void>;
   /**
   Sharepoint account information
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint', pathParams: {serviceName: string, userPrincipalName: string}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint', params: {serviceName: string, userPrincipalName: string}): Promise<void>;
   /**
   Exchange service
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/exchange', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/exchange', params: {serviceName: string}): Promise<void>;
   /**
   Sharepoint service
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/sharepoint', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsMsServicesPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/msServices/{serviceName}/sharepoint', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsMsServicesPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   changePassword operations
   Change account password
   **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/changePassword', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/changePassword', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
   /**
   configure operations
   Configure mailbox to be operational
   **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange/configure', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesExchangeTask>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange/configure', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesExchangeTask>;
   /**
   Multi Factor Authentication informations
   Create Multi Factor Authentication for this account
   **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
   /**
   disable operations
   Disable Multi Factor Authentication for a period of time
   **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/disable', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/disable', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
   /**
   enable operations
   Enable Mfa (enabled by default when created)
   **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/enable', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/enable', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
   /**
   reset operations
   Reset Multi Factor Authentication status for this account
   **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/reset', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/reset', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
   /**
   clearSpace operations
   On-demand MySite clearance
   **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/clearSpace', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesSharepointTask>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/clearSpace', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesSharepointTask>;
   /**
   configure operations
   Configure sharepoint account to be operational
   **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/configure', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesSharepointTask>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/configure', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesSharepointTask>;
   /**
   Sync account information
   Create new sync account
   **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
   /**
   configure operations
   Configure sync account to be operational
   **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync/configure', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync/configure', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
   /**
   restoreAdminRights operations
   Restore administrator rights
   **/
-  public post(path: '/msServices/{serviceName}/sharepoint/restoreAdminRights', pathParams: {serviceName: string}): Promise<MsServicesSharepointTask>;
+  public post(path: '/msServices/{serviceName}/sharepoint/restoreAdminRights', params: {serviceName: string}): Promise<MsServicesSharepointTask>;
   /**
   changePassword operations
   Change account password
   **/
-  public post(path: '/msServices/{serviceName}/sync/changePassword', pathParams: {serviceName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/sync/changePassword', params: {serviceName: string}): Promise<MsServicesTask>;
   /**
   Temporary link to ADSync software executable
   Generate temporary link to ADSync software executable
   **/
-  public post(path: '/msServices/{serviceName}/sync/clientSoftwareURL', pathParams: {serviceName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/sync/clientSoftwareURL', params: {serviceName: string}): Promise<MsServicesTask>;
   /**
   List the msServices.upnSuffix objects
   Create new UPN suffix
   **/
-  public post(path: '/msServices/{serviceName}/upnSuffix', pathParams: {serviceName: string}): Promise<MsServicesTask>;
-  public post(path: PathsMsServicesPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/msServices/{serviceName}/upnSuffix', params: {serviceName: string}): Promise<MsServicesTask>;
+  public post(path: PathsMsServicesPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Multi Factor Authentication informations
   Delete Multi Factor Authentication feature for this account
   **/
-  public delete(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  public delete(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
   /**
   Sync account information
   Delete sync account
   **/
-  public delete(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync', pathParams: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  public delete(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
   /**
   Sync service
   Delete sync service
   **/
-  public delete(path: '/msServices/{serviceName}/sync', pathParams: {serviceName: string}): Promise<MsServicesTask>;
+  public delete(path: '/msServices/{serviceName}/sync', params: {serviceName: string}): Promise<MsServicesTask>;
   /**
   Active Directory UPN Suffix
   Delete existing UPN suffix
   **/
-  public delete(path: '/msServices/{serviceName}/upnSuffix/{suffix}', pathParams: {serviceName: string, suffix: string}): Promise<MsServicesTask>;
-  public delete(path: PathsMsServicesDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/msServices/{serviceName}/upnSuffix/{suffix}', params: {serviceName: string, suffix: string}): Promise<MsServicesTask>;
+  public delete(path: PathsMsServicesDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

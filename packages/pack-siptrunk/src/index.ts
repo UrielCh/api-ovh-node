@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * Pack of SIP trunk services
  */
@@ -37,7 +37,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -81,7 +81,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -92,7 +92,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -106,8 +106,8 @@ type PathsPackSiptrunkPUT = '/pack/siptrunk/{packName}/serviceInfos';
 type PathsPackSiptrunkPOST = '/pack/siptrunk/{packName}/changeContact';
 
 export class ApiPackSiptrunk extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Operations about the PACK service
@@ -118,23 +118,29 @@ export class ApiPackSiptrunk extends ApiCommon {
   Pack of SIP trunk services
   Get this object properties
   **/
-  public get(path: '/pack/siptrunk/{packName}', pathParams: {packName: string}): Promise<PackSiptrunkPackSipTrunk>;
+  public get(path: '/pack/siptrunk/{packName}', params: {packName: string}): Promise<PackSiptrunkPackSipTrunk>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/pack/siptrunk/{packName}/serviceInfos', pathParams: {packName: string}): Promise<ServicesService>;
-  public get(path: PathsPackSiptrunkGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/pack/siptrunk/{packName}/serviceInfos', params: {packName: string}): Promise<ServicesService>;
+  public get(path: PathsPackSiptrunkGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/pack/siptrunk/{packName}/serviceInfos', pathParams: {packName: string}): Promise<void>;
-  public put(path: PathsPackSiptrunkPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/pack/siptrunk/{packName}/serviceInfos', params: {packName: string}): Promise<void>;
+  public put(path: PathsPackSiptrunkPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/pack/siptrunk/{packName}/changeContact', pathParams: {packName: string}): Promise<Number[]>;
-  public post(path: PathsPackSiptrunkPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/pack/siptrunk/{packName}/changeContact', params: {packName: string}): Promise<number[]>;
+  public post(path: PathsPackSiptrunkPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
 }

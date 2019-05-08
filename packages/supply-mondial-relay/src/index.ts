@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
 /**
  * ISO country codes
  */
@@ -31,7 +31,7 @@ export interface SupplyMondialRelay {
    * Distance between address and relay point
    *
    */
-  distance?: Number;
+  distance?: number;
   /**
    * Mondial Relay point ID
    *
@@ -41,12 +41,12 @@ export interface SupplyMondialRelay {
    * Relay point latitude
    *
    */
-  lat?: Number;
+  lat?: number;
   /**
    * Relay point longitude
    *
    */
-  lng?: Number;
+  lng?: number;
   /**
    * URL of short map
    *
@@ -185,13 +185,15 @@ export type SupplyStatus = 'error' | 'ok' | 'pending';
 type PathsSupplyMondialRelayPOST = '/supply/mondialRelay';
 
 export class ApiSupplyMondialRelay extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhEngine) {
+    super(engine);
   }
   /**
   Find the 10 nearest MondialRelay points from address or city.
   Find the 10 nearest MondialRelay points from address or city.
   **/
   public post(path: '/supply/mondialRelay'): Promise<SupplyMondialRelayReturn>;
-  public post(path: PathsSupplyMondialRelayPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: PathsSupplyMondialRelayPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
 }
