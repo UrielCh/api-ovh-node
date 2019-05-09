@@ -695,6 +695,13 @@
   dependencies:
     bluebird "^3.5.3"
 
+"@ovh-api/common@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-api/common/-/common-1.0.0.tgz#383520c75d65cf26b8b5c768eabcf6683a4ba602"
+  integrity sha512-8GF405ASAdfWj39g+qWwyUzye18J7x2FTWR1in9VZuSejTXHEycZeyUTWER6YeVn5c5+pWifQLuPjGZidL6ZpA==
+  dependencies:
+    bluebird "^3.5.3"
+
 "@types/chai@^4.1.7":
   version "4.1.7"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.7.tgz#1b8e33b61a8c09cbe1f85133071baa0dbf9fa71a"
