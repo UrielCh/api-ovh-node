@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/veeam-veeam-enterprise",
   "description": "Add typing to to ovh api veeam-veeam-enterprise",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
