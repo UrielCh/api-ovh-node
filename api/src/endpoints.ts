@@ -14,6 +14,4 @@ const endpoints: { [key: string]: { host: string, port?: number } } = {
     'kimsufi-ca': { host: 'ca.api.kimsufi.com' },
 };
 
-export type OvhParamType = { [key:string]: string | number | undefined | boolean | string[] | boolean[] | number[]; };
-
 export { endpoints }
