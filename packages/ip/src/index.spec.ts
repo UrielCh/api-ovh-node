@@ -1,3 +1,4 @@
+/*
 import { OvhApiDefault } from '@ovh-api/api';
 
 import { ApiIp } from './index';
@@ -17,3 +18,4 @@ describe('Call OVH api', () => {
   });
 
 });
+*/

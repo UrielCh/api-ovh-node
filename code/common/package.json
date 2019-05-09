@@ -1,5 +1,6 @@
 {
   "name": "@ovh-api/common",
+  "description": "common class used by new syntax",
   "version": "0.1.0",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -14,5 +15,13 @@
   "gitHead": "b9fec53f25067fa01d341adc086a63ef2c2a5f62",
   "devDependencies": {
     "@types/bluebird": "^3.5.26"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   }
 }
