@@ -1,4 +1,5 @@
 /**
+ * Copyright (c) 2019 Uriel Chemouni
  * Copyright (c) 2013 - 2016 OVH SAS
  * Copyright (c) 2012 - 2013 Vincent Giersch
  *
@@ -25,30 +26,12 @@
  * other dealings in this Software without prior written authorization from OVH.
  */
 import * as https from 'https';
-// import * as Bluebird from 'bluebird';
-//import {Promise} from 'bluebird';
 import * as querystring from 'querystring';
 import * as crypto from 'crypto';
 import { Schema, API } from './schema';
 import { RequestOptions } from 'http';
-// import * as endpoints from './endpoints';
-
-export type OvhParamType = { [key:string]: string | number | undefined | boolean | string[] | boolean[] | number[]; };
-
-const endpoints: { [key: string]: { host: string, port?: number } } = {
-    'ovh-eu': { host: 'eu.api.ovh.com' },
-    'ovh-us': { host: 'api.us.ovhcloud.com' },
-    'ovh-ca': { host: 'ca.api.ovh.com' },
-    'runabove-ca': { host: 'api.runabove.com' },
-    'sys-eu': { host: 'eu.api.soyoustart.com' },
-    'sys-ca': { host: 'ca.api.soyoustart.com' },
-    'soyoustart-eu': { host: 'eu.api.soyoustart.com' },
-    'soyoustart-ca': { host: 'ca.api.soyoustart.com' },
-    'ks-eu': { host: 'eu.api.kimsufi.com' },
-    'ks-ca': { host: 'ca.api.kimsufi.com' },
-    'kimsufi-eu': { host: 'eu.api.kimsufi.com' },
-    'kimsufi-ca': { host: 'ca.api.kimsufi.com' },
-};
+import { endpoints } from './endpoints';
+import { OvhParamType } from '@ovh-api/common';
 
 type DebugFnc = (...args: any[]) => any;
 
@@ -77,7 +60,7 @@ interface CacheApi {
     [key: string]: API | string | CacheApi | undefined;
 }
 
-export class OvhEngine {
+export class OvhApiDefault {
     appKey: string;
     appSecret: string;
     consumerKey: string | null;
@@ -301,7 +284,7 @@ You can replace it with ${status.replacement}`);
      * @param {Object} refer: The parent proxied object
      */
     request(httpMethod: string, path: string, params?: OvhParamType): Promise<any> {
-        const ovhEngine: OvhEngine = this;
+        const ovhEngine = this;
         let promise: Promise<any> = Promise.resolve({});
 
         // Schemas
@@ -473,8 +456,3 @@ You can replace it with ${status.replacement}`);
         return '$1$' + crypto.createHash('sha1').update(s.join('+')).digest('hex');
     }
 }
-/*
-module.exports = function (params) {
-    return new Ovh(params || {});
-};
-*/

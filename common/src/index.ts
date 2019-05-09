@@ -1,24 +1,25 @@
-import { OvhEngine, OvhParamType } from "./OvhEngine";
+//import { endpoints } from "./common";
+//export { endpoints };
 
-export { OvhEngine, OvhParamType };
+export type OvhParamType = { [key:string]: string | number | undefined | boolean | string[] | boolean[] | number[]; };
+
+export interface OvhApi {
+   /**
+     * Execute a request on the API with promise
+     *
+     * @param httpMethod: The HTTP method GET POST PUT DELETE
+     * @param path: The request path with {pathParams}
+     * @param params: The request parameters (passed as query string or body params)
+     */
+    requestPromised(httpMethod: string, path: string, params?: OvhParamType) : Promise<any>;
+}
 
 export class ApiCommon {
-    private ovh: OvhEngine;
-    constructor(ovh: OvhEngine) {
+    private ovh: OvhApi;
+    constructor(ovh: OvhApi) {
         this.ovh = ovh;
     }
     
-    //private replacePath(path: string, pathParams?: { [key: string]: string | Number; }): string {
-    //    // TODO add assert .match(/(\{[\w]+\})/g)
-    //    if (!pathParams)
-    //        return path;
-    //    for (const key of Object.keys(pathParams)) {
-    //        const value: string = String(pathParams[key]);
-    //        path = path.replace(`{${key}}`, value);
-    //    }
-    //    return path;
-    //}
-
     protected get(path: string, params?: OvhParamType): Promise<any> {
         return this.ovh.requestPromised('GET', path, params)
     }

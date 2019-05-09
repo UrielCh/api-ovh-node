@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Dnssec Status
  */
@@ -1352,7 +1352,7 @@ type PathsDomainDELETE = '/domain/data/smd/{smdId}' |
 '/domain/{serviceName}/owo/{field}';
 
 export class ApiDomain extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

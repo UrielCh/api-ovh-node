@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A numeric value tagged with its unit
  */
@@ -467,7 +467,7 @@ type PathsDedicatedNashaDELETE = '/dedicated/nasha/{serviceName}/partition/{part
 '/dedicated/nasha/{serviceName}/vrack';
 
 export class ApiDedicatedNasha extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

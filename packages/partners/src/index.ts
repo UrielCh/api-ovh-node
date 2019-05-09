@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Partner Application
  */
@@ -873,7 +873,7 @@ type PathsPartnersDELETE = '/partners/register/company/{companyId}' |
 '/partners/register/company/{companyId}/contact/{contactId}';
 
 export class ApiPartners extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

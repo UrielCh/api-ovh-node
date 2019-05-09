@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A numeric value tagged with its unit
  */
@@ -444,7 +444,7 @@ type PathsDbaasTimeseriesDELETE = '/dbaas/timeseries/{serviceName}/key/{keyId}' 
 '/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}';
 
 export class ApiDbaasTimeseries extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

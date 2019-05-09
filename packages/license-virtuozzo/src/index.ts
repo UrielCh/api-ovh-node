@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A short description of what does the Task on your license
  */
@@ -321,7 +321,7 @@ type PathsLicenseVirtuozzoPOST = '/license/virtuozzo/{serviceName}/changeIp' |
 type PathsLicenseVirtuozzoDELETE = '/license/virtuozzo/{serviceName}/option/{label}';
 
 export class ApiLicenseVirtuozzo extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

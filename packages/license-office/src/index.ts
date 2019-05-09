@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Office domain state
  */
@@ -375,7 +375,7 @@ type PathsLicenseOfficePOST = '/license/office/{serviceName}/user' |
 type PathsLicenseOfficeDELETE = '/license/office/{serviceName}/user/{activationEmail}';
 
 export class ApiLicenseOffice extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

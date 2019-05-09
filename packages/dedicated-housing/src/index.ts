@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A numeric value tagged with its unit
  */
@@ -430,7 +430,7 @@ type PathsDedicatedHousingDELETE = '/dedicated/housing/{serviceName}/features/ba
 '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}';
 
 export class ApiDedicatedHousing extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

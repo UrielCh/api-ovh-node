@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Information about installed package for a given image
  */
@@ -66,7 +66,7 @@ type PathsDistributionImageGET = '/distribution/image/{serviceType}' |
 '/distribution/image/{serviceType}/{imageName}';
 
 export class ApiDistributionImage extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

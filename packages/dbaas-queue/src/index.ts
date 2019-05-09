@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * App
  */
@@ -340,7 +340,7 @@ type PathsDbaasQueuePOST = '/dbaas/queue/{serviceName}/user/{userId}/changePassw
 type PathsDbaasQueueDELETE = '/dbaas/queue/{serviceName}/topic/{topicId}';
 
 export class ApiDbaasQueue extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

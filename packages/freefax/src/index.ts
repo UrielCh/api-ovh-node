@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Return credit balance informations structure
  */
@@ -290,7 +290,7 @@ type PathsFreefaxPOST = '/freefax/{serviceName}/changePassword' |
 '/freefax/{serviceName}/voicemail/changeRouting';
 
 export class ApiFreefax extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

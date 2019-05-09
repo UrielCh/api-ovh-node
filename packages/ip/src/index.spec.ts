@@ -1,4 +1,4 @@
-import { OvhEngine } from '@ovh-api/common';
+import { OvhApiDefault } from '@ovh-api/api';
 
 import { ApiIp } from './index';
 import { assert } from 'chai';

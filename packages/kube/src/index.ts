@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Managed Kubernetes cluster description
  */
@@ -277,7 +277,7 @@ type PathsKubePOST = '/kube/{serviceName}/changeContact' |
 type PathsKubeDELETE = '/kube/{serviceName}/publiccloud/node/{nodeId}';
 
 export class ApiKube extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

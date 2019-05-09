@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Structure holding the consumption
  */
@@ -283,7 +283,7 @@ type PathsMetricsPOST = '/metrics/{serviceName}/changeContact' |
 type PathsMetricsDELETE = '/metrics/{serviceName}/token/{tokenId}';
 
 export class ApiMetrics extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

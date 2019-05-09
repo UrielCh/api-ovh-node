@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Period of time used to determine license statistics
  */
@@ -368,7 +368,7 @@ type PathsSaasCsp2POST = '/saas/csp2/{serviceName}/changeAdministratorPassword' 
 type PathsSaasCsp2DELETE = '/saas/csp2/{serviceName}/subscription/{id}';
 
 export class ApiSaasCsp2 extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

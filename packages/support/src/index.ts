@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Support ticket message
  */
@@ -165,7 +165,7 @@ type PathsSupportPOST = '/support/tickets/create' |
 '/support/tickets/{ticketId}/score';
 
 export class ApiSupport extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

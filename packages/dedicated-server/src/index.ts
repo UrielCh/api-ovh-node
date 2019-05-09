@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Chart
  */
@@ -2810,7 +2810,7 @@ type PathsDedicatedServerDELETE = '/dedicated/server/{serviceName}/features/back
 '/dedicated/server/{serviceName}/vrack/{vrack}';
 
 export class ApiDedicatedServer extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

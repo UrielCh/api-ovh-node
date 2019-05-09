@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A numeric value tagged with its unit
  */
@@ -306,7 +306,7 @@ type PathsDeskaasPOST = '/deskaas/{serviceName}/changeAlias' |
 '/deskaas/{serviceName}/user/changeProperties';
 
 export class ApiDeskaas extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

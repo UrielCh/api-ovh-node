@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Possible values for server status
  */
@@ -1659,7 +1659,7 @@ type PathsIpLoadbalancingDELETE = '/ipLoadbalancing/{serviceName}/http/farm/{far
 '/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}';
 
 export class ApiIpLoadbalancing extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * The current state of a contract agreement
  */
@@ -4055,7 +4055,7 @@ type PathsMeDELETE = '/me/accessRestriction/backupCode' |
 '/me/telephony/defaultIpRestriction/{id}';
 
 export class ApiMe extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

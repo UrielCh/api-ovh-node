@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * AllDom administration
  */
@@ -134,7 +134,7 @@ type PathsAllDomGET = '/allDom' |
 type PathsAllDomPUT = '/allDom/{serviceName}/serviceInfos';
 
 export class ApiAllDom extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

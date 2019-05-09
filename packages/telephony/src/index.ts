@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Start and end points (inclusive) of a range
  */
@@ -5714,7 +5714,7 @@ type PathsTelephonyDELETE = '/telephony/sounds/{id}' |
 '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}';
 
 export class ApiTelephony extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

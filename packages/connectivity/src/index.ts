@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Operator
  */
@@ -663,7 +663,7 @@ type PathsConnectivityPOST = '/connectivity/eligibility/search/buildingDetails' 
 '/connectivity/eligibility/test/otp';
 
 export class ApiConnectivity extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

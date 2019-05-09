@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Key and value, with proper key strings
  */
@@ -476,7 +476,7 @@ type PathsServicePOST = '/service/{serviceId}/renew' |
 '/service/{serviceId}/terminate';
 
 export class ApiService extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

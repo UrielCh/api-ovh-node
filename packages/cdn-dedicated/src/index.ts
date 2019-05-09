@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Anycast IP of a CDN customer
  */
@@ -358,7 +358,7 @@ type PathsCdnDedicatedDELETE = '/cdn/dedicated/{serviceName}/domains/{domain}' |
 '/cdn/dedicated/{serviceName}/ssl';
 
 export class ApiCdnDedicated extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * different task status
  */
@@ -265,7 +265,7 @@ type PathsDedicatedNasDELETE = '/dedicated/nas/{serviceName}/partition/{partitio
 '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}';
 
 export class ApiDedicatedNas extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

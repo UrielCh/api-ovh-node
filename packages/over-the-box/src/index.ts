@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * 
  */
@@ -562,7 +562,7 @@ type PathsOverTheBoxDELETE = '/overTheBox/{serviceName}' |
 '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}';
 
 export class ApiOverTheBox extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * API Credential
  */
@@ -70,7 +70,7 @@ type PathsAuthPOST = '/auth/credential' |
 '/auth/logout';
 
 export class ApiAuth extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

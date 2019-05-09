@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A short description of what does the Task on your license
  */
@@ -250,7 +250,7 @@ type PathsLicenseCpanelPOST = '/license/cpanel/{serviceName}/changeIp' |
 '/license/cpanel/{serviceName}/terminate';
 
 export class ApiLicenseCpanel extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

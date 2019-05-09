@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * ISO country codes
  */
@@ -185,7 +185,7 @@ export type SupplyStatus = 'error' | 'ok' | 'pending';
 type PathsSupplyMondialRelayPOST = '/supply/mondialRelay';
 
 export class ApiSupplyMondialRelay extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

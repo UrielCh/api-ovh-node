@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Mailbox
  */
@@ -744,7 +744,7 @@ type PathsEmailMxplanDELETE = '/email/mxplan/{service}/account/{email}' |
 '/email/mxplan/{service}/externalContact/{externalEmailAddress}';
 
 export class ApiEmailMxplan extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

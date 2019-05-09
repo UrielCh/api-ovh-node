@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Network Dnat
  */
@@ -373,7 +373,7 @@ type PathsRouterDELETE = '/router/{serviceName}/network/{ipNet}' |
 '/router/{serviceName}/vpn/{id}';
 
 export class ApiRouter extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

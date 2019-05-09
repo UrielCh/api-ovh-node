@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A secret
  */
@@ -17,7 +17,7 @@ export interface SecretSecret {
 type PathsSecretPOST = '/secret/retrieve';
 
 export class ApiSecret extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

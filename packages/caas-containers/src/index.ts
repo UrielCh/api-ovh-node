@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * The new framework password
  */
@@ -518,7 +518,7 @@ type PathsCaasContainersDELETE = '/caas/containers/{serviceName}/registry/creden
 '/caas/containers/{serviceName}/ssl';
 
 export class ApiCaasContainers extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

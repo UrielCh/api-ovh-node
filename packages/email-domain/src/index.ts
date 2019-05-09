@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Possible values for filter action
  */
@@ -1014,7 +1014,7 @@ type PathsEmailDomainDELETE = '/email/domain/delegatedAccount/{email}/filter/{na
 '/email/domain/{domain}/responder/{account}';
 
 export class ApiEmailDomain extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

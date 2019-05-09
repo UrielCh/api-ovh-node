@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * An image stored in a namespace
  */
@@ -406,7 +406,7 @@ type PathsCaasRegistryDELETE = '/caas/registry/{serviceName}/namespaces/{namespa
 '/caas/registry/{serviceName}/users/{userId}';
 
 export class ApiCaasRegistry extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

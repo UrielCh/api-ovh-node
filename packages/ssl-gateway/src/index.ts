@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Map a possible renew for a specific service
  */
@@ -337,7 +337,7 @@ type PathsSslGatewayDELETE = '/sslGateway/{serviceName}/domain/{id}' |
 '/sslGateway/{serviceName}/server/{id}';
 
 export class ApiSslGateway extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A short description of what does the Task on your license
  */
@@ -222,7 +222,7 @@ type PathsLicenseCloudLinuxPOST = '/license/cloudLinux/{serviceName}/confirmTerm
 '/license/cloudLinux/{serviceName}/terminate';
 
 export class ApiLicenseCloudLinux extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

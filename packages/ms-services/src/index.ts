@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Active Directory Account
  */
@@ -932,7 +932,7 @@ type PathsMsServicesDELETE = '/msServices/{serviceName}/account/{userPrincipalNa
 '/msServices/{serviceName}/upnSuffix/{suffix}';
 
 export class ApiMsServices extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

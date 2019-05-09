@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A value set tagged with its unit and serie name
  */
@@ -2497,7 +2497,7 @@ type PathsHostingWebDELETE = '/hosting/web/{serviceName}/attachedDomain/{domain}
 '/hosting/web/{serviceName}/userLogs/{login}';
 
 export class ApiHostingWeb extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

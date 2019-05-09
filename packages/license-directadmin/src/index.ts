@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A short description of what does the Task on your license
  */
@@ -265,7 +265,7 @@ type PathsLicenseDirectadminPOST = '/license/directadmin/{serviceName}/changeIp'
 '/license/directadmin/{serviceName}/terminate';
 
 export class ApiLicenseDirectadmin extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

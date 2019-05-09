@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Mailbox
  */
@@ -839,7 +839,7 @@ type PathsEmailProDELETE = '/email/pro/{service}/account/{email}' |
 '/email/pro/{service}/externalContact/{externalEmailAddress}';
 
 export class ApiEmailPro extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

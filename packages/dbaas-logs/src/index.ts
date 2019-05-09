@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Elasticsearch alias
  */
@@ -1485,7 +1485,7 @@ type PathsDbaasLogsDELETE = '/dbaas/logs/{serviceName}/cluster/{clusterId}/allow
 '/dbaas/logs/{serviceName}/token/{tokenId}';
 
 export class ApiDbaasLogs extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

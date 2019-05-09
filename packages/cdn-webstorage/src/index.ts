@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Static CDN
  */
@@ -153,7 +153,7 @@ type PathsCdnWebstorageGET = '/cdn/webstorage' |
 type PathsCdnWebstoragePUT = '/cdn/webstorage/{serviceName}/serviceInfos';
 
 export class ApiCdnWebstorage extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

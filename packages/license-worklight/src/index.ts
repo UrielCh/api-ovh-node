@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A short description of what does the Task on your license
  */
@@ -246,7 +246,7 @@ type PathsLicenseWorklightPOST = '/license/worklight/{serviceName}/changeIp' |
 '/license/worklight/{serviceName}/terminate';
 
 export class ApiLicenseWorklight extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

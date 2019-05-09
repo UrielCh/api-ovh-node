@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A numeric value tagged with its unit
  */
@@ -277,7 +277,7 @@ type PathsDedicatedInstallationTemplateGET = '/dedicated/installationTemplate' |
 '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}';
 
 export class ApiDedicatedInstallationTemplate extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

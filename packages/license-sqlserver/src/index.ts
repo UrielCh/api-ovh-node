@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A short description of what does the Task on your license
  */
@@ -222,7 +222,7 @@ type PathsLicenseSqlserverPOST = '/license/sqlserver/{serviceName}/confirmTermin
 '/license/sqlserver/{serviceName}/terminate';
 
 export class ApiLicenseSqlserver extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

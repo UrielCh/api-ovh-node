@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Possible values for project access type
  */
@@ -4028,7 +4028,7 @@ type PathsCloudDELETE = '/cloud/project/{serviceName}/acl/{accountId}' |
 '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}';
 
 export class ApiCloud extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

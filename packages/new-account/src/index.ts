@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Countries a nichandle can choose
  */
@@ -180,7 +180,7 @@ type PathsNewAccountPOST = '/newAccount' |
 '/newAccount/rules';
 
 export class ApiNewAccount extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

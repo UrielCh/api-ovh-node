@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * All country prices accessible from a reference
  */
@@ -1124,7 +1124,7 @@ type PathsSmsDELETE = '/sms/{serviceName}/blacklists/{number}' |
 '/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}';
 
 export class ApiSms extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

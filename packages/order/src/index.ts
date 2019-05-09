@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Available storage order
  */
@@ -3192,7 +3192,7 @@ type PathsOrderDELETE = '/order/cart/{cartId}' |
 '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}';
 
 export class ApiOrder extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * All billing profile names
  */
@@ -401,7 +401,7 @@ type PathsClusterHadoopDELETE = '/cluster/hadoop/{serviceName}/networkAcl/{block
 '/cluster/hadoop/{serviceName}/user/{username}';
 
 export class ApiClusterHadoop extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

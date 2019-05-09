@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Pack of SIP trunk services
  */
@@ -106,7 +106,7 @@ type PathsPackSiptrunkPUT = '/pack/siptrunk/{packName}/serviceInfos';
 type PathsPackSiptrunkPOST = '/pack/siptrunk/{packName}/changeContact';
 
 export class ApiPackSiptrunk extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

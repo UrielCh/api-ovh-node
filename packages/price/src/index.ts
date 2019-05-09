@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * 
  */
@@ -2833,7 +2833,7 @@ type PathsPriceGET = '/price/dedicated/nasha/model/{modelName}' |
 '/price/xdsl/options/line/{lineAction}';
 
 export class ApiPrice extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

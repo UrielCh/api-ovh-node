@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A short description of what does the Task on your license
  */
@@ -274,7 +274,7 @@ type PathsLicenseWindowsPOST = '/license/windows/{serviceName}/confirmTerminatio
 type PathsLicenseWindowsDELETE = '/license/windows/{serviceName}/option/{label}';
 
 export class ApiLicenseWindows extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

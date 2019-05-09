@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A numeric value tagged with its unit
  */
@@ -352,7 +352,7 @@ type PathsPaasTimeseriesPOST = '/paas/timeseries/{serviceName}/changeContact' |
 type PathsPaasTimeseriesDELETE = '/paas/timeseries/{serviceName}/key/{keyId}';
 
 export class ApiPaasTimeseries extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

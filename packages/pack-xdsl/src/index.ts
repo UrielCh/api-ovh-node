@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Details of a Building
  */
@@ -1262,7 +1262,7 @@ type PathsPackXdslPOST = '/pack/xdsl/{packName}/addressMove/eligibility' |
 '/pack/xdsl/{packName}/voipLine/services';
 
 export class ApiPackXdsl extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

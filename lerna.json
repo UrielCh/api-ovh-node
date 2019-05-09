@@ -1,7 +1,8 @@
 {
   "packages": [
     "packages/*",
-    "common"
+    "common",
+    "api"
   ],
   "version": "0.1.0",
   "npmClient": "yarn",

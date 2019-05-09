@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Contact information
  */
@@ -254,7 +254,7 @@ type PathsStoreDELETE = '/store/contact/{contactId}' |
 '/store/partner/{partnerId}/product/{productId}/document/{documentId}';
 
 export class ApiStore extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

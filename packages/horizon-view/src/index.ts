@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Access Point type the customer can deploy
  */
@@ -448,7 +448,7 @@ type PathsHorizonViewDELETE = '/horizonView/{serviceName}/accessPoint/{accessPoi
 '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}';
 
 export class ApiHorizonView extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

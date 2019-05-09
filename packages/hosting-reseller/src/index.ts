@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Plesk instance meta details
  */
@@ -304,7 +304,7 @@ type PathsHostingResellerPOST = '/hosting/reseller/{serviceName}/changeContact' 
 '/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore';
 
 export class ApiHostingReseller extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * IP ACL
  */
@@ -563,7 +563,7 @@ type PathsDedicatedCephDELETE = '/dedicated/ceph/{serviceName}/acl/{aclId}' |
 '/dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}';
 
 export class ApiDedicatedCeph extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

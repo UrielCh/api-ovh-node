@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Map a possible renew for a specific service
  */
@@ -173,7 +173,7 @@ type PathsVeeamVeeamEnterprisePOST = '/veeam/veeamEnterprise/{serviceName}/confi
 '/veeam/veeamEnterprise/{serviceName}/update';
 
 export class ApiVeeamVeeamEnterprise extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Key and value, with proper key strings
  */
@@ -821,7 +821,7 @@ type PathsHostingPrivateDatabaseDELETE = '/hosting/privateDatabase/{serviceName}
 '/hosting/privateDatabase/{serviceName}/whitelist/{ip}';
 
 export class ApiHostingPrivateDatabase extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

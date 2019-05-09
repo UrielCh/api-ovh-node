@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Backend on zone
  */
@@ -222,7 +222,7 @@ type PathsCdnWebsiteDELETE = '/cdn/website/{serviceName}/zone' |
 '/cdn/website/{serviceName}/zone/domains/{domain}';
 
 export class ApiCdnWebsite extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**

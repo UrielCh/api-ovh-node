@@ -1,4 +1,4 @@
-import { ApiCommon, OvhEngine, OvhParamType } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Start and end points (inclusive) of a range
  */
@@ -1163,7 +1163,7 @@ type PathsIpDELETE = '/ip/loadBalancing/{serviceName}/backend/{backend}' |
 '/ip/{ip}/reverse/{ipReverse}';
 
 export class ApiIp extends ApiCommon {
-  constructor(engine: OvhEngine) {
+  constructor(engine: OvhApi) {
     super(engine);
   }
   /**
