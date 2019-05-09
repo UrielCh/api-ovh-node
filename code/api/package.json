@@ -9,6 +9,14 @@
   "dependencies": {
     "@ovh-api/common": "^1.0.0"
   },
+  "devDependencies": {
+    "@ovh-api/api": "^0.1.0",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "ts-node": "^8.1.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -20,6 +28,7 @@
   "scripts": {
     "run": "ts-node src/index.ts",
     "build": "tsc",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "build:watch": "tsc --watch"
   },
   "gitHead": "b9fec53f25067fa01d341adc086a63ef2c2a5f62"

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Uriel Chemouni
+ * Copyright (c) 2019 - Uriel Chemouni
  * Copyright (c) 2013 - 2016 OVH SAS
  * Copyright (c) 2012 - 2013 Vincent Giersch
  *
@@ -35,9 +35,16 @@ import { OvhParamType } from '@ovh-api/common';
 
 type DebugFnc = (...args: any[]) => any;
 
-interface OvhParams {
-    appKey: string;
-    appSecret: string;
+
+interface OvhError {
+    errorCode: 'INVALID_CREDENTIAL' | 'NOT_CREDENTIAL' | 'QUERY_TIME_OUT' | 'NOT_GRANTED_CALL';
+    httpCode: string;
+    message: string;
+}
+
+export interface OvhParams {
+    appKey?: string;
+    appSecret?: string;
     consumerKey?: string;
     timeout?: number;
     /**
@@ -52,6 +59,7 @@ interface OvhParams {
     port?: string;
     apis?: string[];
     debug?: boolean | DebugFnc,
+    accessRules?: string[] | string;
 }
 
 interface CacheApi {
@@ -60,13 +68,29 @@ interface CacheApi {
     [key: string]: API | string | CacheApi | undefined;
 }
 
+interface AccessRule {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+    path: string;
+}
+
+/**
+ * conver 'GET PATH1', 'POST PATH2', ... to AccessRules
+ * 
+ * @param rules 
+ */
+function toAccessRules(...rules: string[]): AccessRule[] {
+    return <AccessRule[]>rules
+        .map(s => s.split(/\s+/))
+        .map(([method, path]) => ({ method, path }));
+}
+export {toAccessRules}
+
 export class OvhApiDefault {
     appKey: string;
     appSecret: string;
     consumerKey: string | null;
     timeout?: number;
     apiTimeDiff: number | null;
-    // endpoint: string;
     host: string;
     port: number;
     basePath: string; // '/1.0'
@@ -75,14 +99,30 @@ export class OvhApiDefault {
     usedApi: string[];
     apis: CacheApi;
     apisLoaded: boolean;
+    accessRules: string[];
 
     constructor(params: OvhParams) {
-        this.appKey = params.appKey;
-        this.appSecret = params.appSecret;
+        this.appKey = params.appKey || 'qCLhWaDgfbAkbuzN';
+        this.appSecret = params.appSecret || '8moT8ezpp5kaK2mBSEyazP1oQfEvMPu0';
         this.consumerKey = params.consumerKey || null;
         this.timeout = params.timeout;
         this.apiTimeDiff = params.apiTimeDiff || null;
-        // let endpoint = params.endpoint || 'ovh-eu';
+        this.warn = console.log;
+
+        if (params.accessRules) {
+            if (typeof (params.accessRules) === 'string')
+                this.accessRules = params.accessRules.split(/\s*[,;]\s*/);
+            else
+                this.accessRules = params.accessRules;
+        } else {
+            this.accessRules = ['GET /*', 'POST /*', 'PUT /*', 'DELETE /*'];
+        }
+
+        if (!params.appKey && !params.appSecret) {
+            if (!this.consumerKey && !params.accessRules) {
+                this.warn(`Initializing Api OVH without appKey / appSecret: using Default Certificat\n provide an accessRules to choose the authorisation you need\n by default I will ask for all rights`);
+            }
+        }
 
         // Custom configuration of the API endpoint
         let { host, port, endpoint, debug } = params;
@@ -106,7 +146,6 @@ export class OvhApiDefault {
             this.debug = console.log;
         else
             this.debug = undefined;
-        this.warn = console.log;
         // Declared used API, will be used to check the associated schema
         this.usedApi = params.apis || [];
         if (Array.isArray(this.usedApi) && this.usedApi.length > 0 && this.usedApi.indexOf('auth') < 0) {
@@ -146,7 +185,6 @@ export class OvhApiDefault {
         })
     }
 
-
     /**
      * Add a fetched schema to the loaded API list
      *
@@ -155,11 +193,11 @@ export class OvhApiDefault {
      */
     addApi(apiPath: string[], api: API, apis: CacheApi): void {
         let path = apiPath.shift();
-        if (!path)
-            return;
         if (path === '') {
             return this.addApi(apiPath, api, apis);
         }
+        if (!path)
+            return;
         let selected: CacheApi;
         if (apis[path] == null) {
             selected = <CacheApi>{ _path: `${apis._path}/${path}` };
@@ -190,7 +228,6 @@ export class OvhApiDefault {
                                 Error(`[OVH] Unable to load schema ${options.path}, HTTP response code: ${res.statusCode}`));
                         }
                         try {
-                            body = JSON.parse(body);
                             return resolve(<Schema>JSON.parse(body));
                         } catch (e) {
                             return reject(
@@ -283,7 +320,7 @@ You can replace it with ${status.replacement}`);
      * @param {Function} callback
      * @param {Object} refer: The parent proxied object
      */
-    request(httpMethod: string, path: string, params?: OvhParamType): Promise<any> {
+    request(httpMethod: string, path: string, params?: any): Promise<any> {
         const ovhEngine = this;
         let promise: Promise<any> = Promise.resolve({});
 
@@ -307,24 +344,15 @@ You can replace it with ${status.replacement}`);
             if (Object.keys(ovhEngine.apis).length > 1) {
                 ovhEngine.warnsRequest(httpMethod, path);
             }
-
-            // Replace "{str}", used for $call()
-            if (~path.indexOf('{')) {
-                let newPath = path;
-                for (let paramKey in params) {
-                    if (params.hasOwnProperty(paramKey)) {
-                        newPath = path.replace(`{${paramKey}}`, String(params[paramKey]));
-                        // Remove from body parameters
-                        if (newPath !== path) {
-                            delete params[paramKey];
-                        }
-                        path = newPath;
-                    }
-                }
+            let path0 = path;
+            let m: RegExpMatchArray | null = null;
+            while (m = path.match(/{([^}]+)}/)) {
+                let val = params[m[1]];
+                if (val === undefined)
+                    return <Promise<any>>Promise.reject(`${m[1]} param must be provide to ${path0}`);
+                delete params[m[1]];
+                path = path.replace(m[0], String(val));
             }
-        });
-
-        promise = promise.then(() => {
             let options: RequestOptions = {
                 host: ovhEngine.host,
                 port: ovhEngine.port,
@@ -349,16 +377,16 @@ You can replace it with ${status.replacement}`);
             if (typeof (params) === 'object' && Object.keys(params).length > 0) {
                 if (httpMethod === 'PUT' || httpMethod === 'POST') {
                     // Escape unicode
-                    reqBody = JSON.stringify(params).replace(/[\u0080-\uFFFF]/g, (m) => {
-                        return '\\u' + ('0000' + m.charCodeAt(0).toString(16)).slice(-4);
-                    });
+                    reqBody = JSON
+                        .stringify(params)
+                        .replace(/[\u0080-\uFFFF]/g, (m) => '\\u' + ('0000' + m.charCodeAt(0).toString(16)).slice(-4));
                     options.headers['Content-Length'] = reqBody.length;
                 } else {
-                    options.path += '?' + querystring.stringify(params);
+                    options.path += `?${querystring.stringify(params)}`;
                 }
             }
-
-            if (path.indexOf('/auth') < 0) {
+            // signe operation if /auth service
+            if (!~path.indexOf('/auth')) {
                 const XOvhTimestamp: number = Math.round(Date.now() / 1000) + Number(ovhEngine.apiTimeDiff);
                 options.headers['X-Ovh-Timestamp'] = XOvhTimestamp;
 
@@ -397,7 +425,20 @@ You can replace it with ${status.replacement}`);
                                 ovhEngine.debug(`[OVH] API response to ${options.method} ${options.path}: ${body}`);
                             }
 
-                            if (res.statusCode !== 200) {
+                            if (res.statusCode !== 200) { // errorCode:"INVALID_CREDENTIAL"httpCode:"403 Forbidden"message:"This credential is not valid"
+                                //const { errorCode, httpCode, message } = response;
+
+                                //if (errorCode && httpCode && message) {
+                                const error: OvhError = <OvhError>response;
+                                if (error.errorCode === 'INVALID_CREDENTIAL' || error.message === 'You must login first') {
+                                    this.warn(`[OVH] INVALID_CREDENTIAL you can try this cert:`);
+                                    return ovhEngine.request('POST', '/auth/credential', { accessRules: toAccessRules.apply(this, ovhEngine.accessRules) })
+                                        .then(({ consumerKey, state, validationUrl }) => console.log(`consumerKey: ${consumerKey}\nurl: ${validationUrl}`))
+                                        .then(() => reject(error))
+                                }
+                                //}
+                                if (response.errorCode)
+                                    return reject(response);
                                 return reject(res.statusCode + ': ' + response ? response.message : response);
                             }
                             return resolve(response);
