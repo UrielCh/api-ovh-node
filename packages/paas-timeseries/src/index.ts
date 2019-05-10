@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A numeric value tagged with its unit
  */
@@ -26,7 +26,7 @@ export interface OrderPrice {
   text?: string;
   /**
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * Consumption
@@ -76,7 +76,7 @@ export interface PaasTimeseriesConsumptionItem {
    * Quantity consumed in unit
    *
    */
-  quantity?: ComplexTypeUnitAndValue<Number>;
+  quantity?: ComplexTypeUnitAndValue<number>;
   /**
    * Unit price
    *
@@ -150,12 +150,12 @@ export interface PaasTimeseriesQuota {
    * Current value
    *
    */
-  current?: Number;
+  current?: number;
   /**
    * Max allowed
    *
    */
-  max?: Number;
+  max?: number;
   /**
    * Type (ie: mads, ddp, ...)
    *
@@ -233,7 +233,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -277,7 +277,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -288,7 +288,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -352,8 +352,8 @@ type PathsPaasTimeseriesPOST = '/paas/timeseries/{serviceName}/changeContact' |
 type PathsPaasTimeseriesDELETE = '/paas/timeseries/{serviceName}/key/{keyId}';
 
 export class ApiPaasTimeseries extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   Operations about the PAAS_TIMESERIES service
@@ -369,69 +369,77 @@ export class ApiPaasTimeseries extends ApiCommon {
   Timeseries project
   Get this object properties
   **/
-  public get(path: '/paas/timeseries/{serviceName}', pathParams: {serviceName: string}): Promise<TimeseriesProject>;
+  public get(path: '/paas/timeseries/{serviceName}', params: {serviceName: string}): Promise<TimeseriesProject>;
   /**
   Consumption
   Get consumption
   **/
-  public get(path: '/paas/timeseries/{serviceName}/consumption', pathParams: {serviceName: string}): Promise<PaasTimeseriesConsumption[]>;
+  public get(path: '/paas/timeseries/{serviceName}/consumption', params: {serviceName: string}): Promise<PaasTimeseriesConsumption[]>;
   /**
   Keys
   Get keys for a project
   **/
-  public get(path: '/paas/timeseries/{serviceName}/key', pathParams: {serviceName: string}): Promise<PaasTimeseriesKey[]>;
+  public get(path: '/paas/timeseries/{serviceName}/key', params: {serviceName: string}): Promise<PaasTimeseriesKey[]>;
   /**
   Key
   Get a key
   **/
-  public get(path: '/paas/timeseries/{serviceName}/key/{keyId}', pathParams: {serviceName: string, keyId: string}): Promise<PaasTimeseriesKey>;
+  public get(path: '/paas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<PaasTimeseriesKey>;
   /**
   Quotas
   Get quotas
   **/
-  public get(path: '/paas/timeseries/{serviceName}/quota', pathParams: {serviceName: string}): Promise<PaasTimeseriesQuota[]>;
+  public get(path: '/paas/timeseries/{serviceName}/quota', params: {serviceName: string}): Promise<PaasTimeseriesQuota[]>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/paas/timeseries/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsPaasTimeseriesGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/paas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  public get(path: PathsPaasTimeseriesGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Timeseries project
   Alter this object properties
   **/
-  public put(path: '/paas/timeseries/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/paas/timeseries/{serviceName}', params: {serviceName: string}): Promise<void>;
   /**
   Key
   Create a key
   **/
-  public put(path: '/paas/timeseries/{serviceName}/key/{keyId}', pathParams: {serviceName: string, keyId: string}): Promise<PaasTimeseriesKey>;
+  public put(path: '/paas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<PaasTimeseriesKey>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/paas/timeseries/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsPaasTimeseriesPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/paas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsPaasTimeseriesPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/paas/timeseries/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  public post(path: '/paas/timeseries/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
   /**
   Keys
   Create a key for a project
   **/
-  public post(path: '/paas/timeseries/{serviceName}/key', pathParams: {serviceName: string}): Promise<PaasTimeseriesKey>;
+  public post(path: '/paas/timeseries/{serviceName}/key', params: {serviceName: string}): Promise<PaasTimeseriesKey>;
   /**
   Setup your project on our platform
   Setup a project
   **/
-  public post(path: '/paas/timeseries/{serviceName}/setup', pathParams: {serviceName: string}): Promise<PaasTimeseriesProject>;
-  public post(path: PathsPaasTimeseriesPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/paas/timeseries/{serviceName}/setup', params: {serviceName: string}): Promise<PaasTimeseriesProject>;
+  public post(path: PathsPaasTimeseriesPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Key
   Delete a OpenTSDB token
   **/
-  public delete(path: '/paas/timeseries/{serviceName}/key/{keyId}', pathParams: {serviceName: string, keyId: string}): Promise<boolean>;
-  public delete(path: PathsPaasTimeseriesDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/paas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<boolean>;
+  public delete(path: PathsPaasTimeseriesDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Map a possible renew for a specific service
  */
@@ -27,7 +27,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -71,7 +71,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -82,7 +82,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -113,8 +113,8 @@ type PathsStackMisGET = '/stack/mis' |
 type PathsStackMisPUT = '/stack/mis/{serviceName}/serviceInfos';
 
 export class ApiStackMis extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   Operations about the GS service
@@ -125,17 +125,21 @@ export class ApiStackMis extends ApiCommon {
   Stack MIS
   Get this object properties
   **/
-  public get(path: '/stack/mis/{serviceName}', pathParams: {serviceName: string}): Promise<StackMisProduct>;
+  public get(path: '/stack/mis/{serviceName}', params: {serviceName: string}): Promise<StackMisProduct>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/stack/mis/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsStackMisGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/stack/mis/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  public get(path: PathsStackMisGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/stack/mis/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsStackMisPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/stack/mis/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsStackMisPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
 }

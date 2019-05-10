@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * AllDom administration
  */
@@ -65,7 +65,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -109,7 +109,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -120,7 +120,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -134,8 +134,8 @@ type PathsAllDomGET = '/allDom' |
 type PathsAllDomPUT = '/allDom/{serviceName}/serviceInfos';
 
 export class ApiAllDom extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   Operations about the ALLDOM service
@@ -146,27 +146,31 @@ export class ApiAllDom extends ApiCommon {
   AllDom administration
   Get this object properties
   **/
-  public get(path: '/allDom/{serviceName}', pathParams: {serviceName: string}): Promise<AllDomAllDom>;
+  public get(path: '/allDom/{serviceName}', params: {serviceName: string}): Promise<AllDomAllDom>;
   /**
   List the allDom.AllDomDomain objects
   Domains attached to this allDom
   **/
-  public get(path: '/allDom/{serviceName}/domain', pathParams: {serviceName: string}, queryParams?: {domain?: string}): Promise<string[]>;
+  public get(path: '/allDom/{serviceName}/domain', params: {serviceName: string, domain?: string}): Promise<string[]>;
   /**
   Domain name of a allDom
   Get this object properties
   **/
-  public get(path: '/allDom/{serviceName}/domain/{domain}', pathParams: {serviceName: string, domain: string}): Promise<AllDomAllDomDomain>;
+  public get(path: '/allDom/{serviceName}/domain/{domain}', params: {serviceName: string, domain: string}): Promise<AllDomAllDomDomain>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/allDom/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsAllDomGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/allDom/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  public get(path: PathsAllDomGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/allDom/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsAllDomPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/allDom/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsAllDomPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
 }

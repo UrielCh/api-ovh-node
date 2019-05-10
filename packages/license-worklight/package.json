@@ -1,13 +1,13 @@
 {
   "name": "@ovh-api/license-worklight",
   "description": "Add typing to to ovh api license-worklight",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "dependencies": {
-    "@ovh-api/common": "^0.1.0"
+    "@ovh-api/common": "^1.0.0"
   },
   "publishConfig": {
     "access": "public"

@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A numeric value tagged with its unit
  */
@@ -48,7 +48,7 @@ export interface DedicatedTemplateOsProperties {
   postInstallationScriptReturn?: string;
   /**
    */
-  rating?: Number;
+  rating?: number;
   /**
    * Name of the ssh key that should be installed. Password login will be disabled
    *
@@ -200,7 +200,7 @@ export interface DedicatedInstallationTemplateHardwareRaid {
    * Specifies the creation order of the hardware RAID
    *
    */
-  step?: Number;
+  step?: number;
 }
 /**
  * Partitioning schemes available on this template
@@ -215,7 +215,7 @@ export interface DedicatedInstallationTemplateTemplatePartitioningSchemes {
    * on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications)
    *
    */
-  priority?: Number;
+  priority?: number;
 }
 /**
  *  Partitions defined in this partitioning scheme
@@ -235,7 +235,7 @@ export interface DedicatedInstallationTemplateTemplatePartitions {
    * specifies the creation order of the partition on the disk
    *
    */
-  order?: Number;
+  order?: number;
   /**
    * raid partition type
    *
@@ -245,7 +245,7 @@ export interface DedicatedInstallationTemplateTemplatePartitions {
    * size of partition in Mb, 0 => rest of the space
    *
    */
-  size?: ComplexTypeUnitAndValue<Number>;
+  size?: ComplexTypeUnitAndValue<number>;
   /**
    */
   type?: DedicatedTemplatePartitionTypeEnum;
@@ -277,8 +277,8 @@ type PathsDedicatedInstallationTemplateGET = '/dedicated/installationTemplate' |
 '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}';
 
 export class ApiDedicatedInstallationTemplate extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   List the dedicated.installationTemplate.Templates objects
@@ -289,36 +289,38 @@ export class ApiDedicatedInstallationTemplate extends ApiCommon {
   Available installation templates
   Get this object properties
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}', pathParams: {templateName: string}): Promise<DedicatedInstallationTemplateTemplates>;
+  public get(path: '/dedicated/installationTemplate/{templateName}', params: {templateName: string}): Promise<DedicatedInstallationTemplateTemplates>;
   /**
   List the dedicated.installationTemplate.templatePartitioningSchemes objects
   Partitioning schemes available on this template
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme', pathParams: {templateName: string}): Promise<string[]>;
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme', params: {templateName: string}): Promise<string[]>;
   /**
   Partitioning schemes available on this template
   Get this object properties
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}', pathParams: {templateName: string, schemeName: string}): Promise<DedicatedInstallationTemplateTemplatePartitioningSchemes>;
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}', params: {templateName: string, schemeName: string}): Promise<DedicatedInstallationTemplateTemplatePartitioningSchemes>;
   /**
   List the dedicated.installationTemplate.hardwareRaid objects
   Hardware RAIDs defined in this partitioning scheme
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid', pathParams: {templateName: string, schemeName: string}): Promise<string[]>;
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid', params: {templateName: string, schemeName: string}): Promise<string[]>;
   /**
   Hardware RAID defined in this partitioning scheme
   Get this object properties
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', pathParams: {templateName: string, schemeName: string, name: string}): Promise<DedicatedInstallationTemplateHardwareRaid>;
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', params: {templateName: string, schemeName: string, name: string}): Promise<DedicatedInstallationTemplateHardwareRaid>;
   /**
   List the dedicated.installationTemplate.templatePartitions objects
   Partitions defined in this partitioning scheme
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', pathParams: {templateName: string, schemeName: string}): Promise<string[]>;
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', params: {templateName: string, schemeName: string}): Promise<string[]>;
   /**
    Partitions defined in this partitioning scheme
   Get this object properties
   **/
-  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', pathParams: {templateName: string, schemeName: string, mountpoint: string}): Promise<DedicatedInstallationTemplateTemplatePartitions>;
-  public get(path: PathsDedicatedInstallationTemplateGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', params: {templateName: string, schemeName: string, mountpoint: string}): Promise<DedicatedInstallationTemplateTemplatePartitions>;
+  public get(path: PathsDedicatedInstallationTemplateGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
 }

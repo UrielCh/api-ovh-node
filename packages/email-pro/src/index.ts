@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Mailbox
  */
@@ -22,7 +22,7 @@ export interface EmailProAccount {
    * Mailbox usage
    *
    */
-  currentUsage?: Number;
+  currentUsage?: number;
   /**
    * delete at expiration
    *
@@ -62,7 +62,7 @@ export interface EmailProAccount {
    * Account id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Account initials
    *
@@ -112,7 +112,7 @@ export interface EmailProAccount {
    * Account maximum size
    *
    */
-  quota?: Number;
+  quota?: number;
   /**
    * change the renew period
    *
@@ -132,7 +132,7 @@ export interface EmailProAccount {
    * Ticket number of spam detection
    *
    */
-  spamTicketNumber?: Number;
+  spamTicketNumber?: number;
   /**
    * Account state
    *
@@ -142,7 +142,7 @@ export interface EmailProAccount {
    * Pending tasks for this account
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Aliases on this mailbox
@@ -162,7 +162,7 @@ export interface EmailProAccountAlias {
    * Pending task id
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Account Diagnosis
@@ -222,7 +222,7 @@ export interface EmailProAccountFullAccess {
    * Account id to give full access
    *
    */
-  allowedAccountId?: Number;
+  allowedAccountId?: number;
   /**
    * Creation date
    *
@@ -232,7 +232,7 @@ export interface EmailProAccountFullAccess {
    * Pending task id
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Users authorized to send mails from this mailbox
@@ -242,7 +242,7 @@ export interface EmailProAccountSendAs {
    * Account id to give send as
    *
    */
-  allowedAccountId?: Number;
+  allowedAccountId?: number;
   /**
    * Creation date
    *
@@ -252,7 +252,7 @@ export interface EmailProAccountSendAs {
    * Pending task id
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Get users authorized to Send On Behalf To mails from this mailbox
@@ -262,7 +262,7 @@ export interface EmailProAccountSendOnBehalfTo {
    * Account id to give send on behalf to
    *
    */
-  allowedAccountId?: Number;
+  allowedAccountId?: number;
   /**
    * Creation date
    *
@@ -272,7 +272,7 @@ export interface EmailProAccountSendOnBehalfTo {
    * Pending task id
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Disclaimer attributes list
@@ -341,7 +341,7 @@ export interface EmailProDomain {
    * Pending taks id
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
   /**
    * Domain type
    *
@@ -385,7 +385,7 @@ export interface EmailProExternalContact {
    * Contact id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Contact initals
    *
@@ -405,7 +405,7 @@ export interface EmailProExternalContact {
    * Task pending id
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Mailing filter options availlable
@@ -423,12 +423,12 @@ export interface EmailProServer {
    * Current disk usage in MB
    *
    */
-  currentDiskUsage?: Number;
+  currentDiskUsage?: number;
   /**
    * Total disk size in MB
    *
    */
-  diskSize?: Number;
+  diskSize?: number;
   /**
    * ipV4
    *
@@ -468,12 +468,12 @@ export interface EmailProServer {
    * Task pending id
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
   /**
    * Server version
    *
    */
-  version?: Number;
+  version?: number;
 }
 /**
  * Server State
@@ -512,42 +512,42 @@ export interface EmailProService {
    * number of minutes account will remain locked if it occurs
    *
    */
-  lockoutDuration?: Number;
+  lockoutDuration?: number;
   /**
    * number of minutes that must elapse after a failed logon to reset lockout trigger
    *
    */
-  lockoutObservationWindow?: Number;
+  lockoutObservationWindow?: number;
   /**
    * number of attempts before account to be locked
    *
    */
-  lockoutThreshold?: Number;
+  lockoutThreshold?: number;
   /**
    * maximum number of days that account's password is valid before expiration
    *
    */
-  maxPasswordAge?: Number;
+  maxPasswordAge?: number;
   /**
    * Maximum message size that You can receive in MB
    *
    */
-  maxReceiveSize?: Number;
+  maxReceiveSize?: number;
   /**
    * Maximum message size that You can send in MB
    *
    */
-  maxSendSize?: Number;
+  maxSendSize?: number;
   /**
    * minimum number of days before able to change account's password
    *
    */
-  minPasswordAge?: Number;
+  minPasswordAge?: number;
   /**
    * minimum number of characters password must contain
    *
    */
-  minPasswordLength?: Number;
+  minPasswordLength?: number;
   /**
    * Type of your offer
    *
@@ -567,7 +567,7 @@ export interface EmailProService {
    * Task pending id
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
   /**
    * URL for web interface
    *
@@ -600,7 +600,7 @@ export interface EmailProTask {
    * Task id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Task status
    *
@@ -648,7 +648,7 @@ export interface EmailProDisclaimer {
    * task pending id
    *
    */
-  taskPendingId?: Number;
+  taskPendingId?: number;
 }
 /**
  * Renew period
@@ -722,7 +722,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -766,7 +766,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -777,7 +777,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -839,8 +839,8 @@ type PathsEmailProDELETE = '/email/pro/{service}/account/{email}' |
 '/email/pro/{service}/externalContact/{externalEmailAddress}';
 
 export class ApiEmailPro extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   Operations about the PROEMAIL service
@@ -851,259 +851,267 @@ export class ApiEmailPro extends ApiCommon {
   Email pro service
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}', pathParams: {service: string}): Promise<EmailProService>;
+  public get(path: '/email/pro/{service}', params: {service: string}): Promise<EmailProService>;
   /**
   List the email.pro.Account objects
   Accounts associated to this pro service
   **/
-  public get(path: '/email/pro/{service}/account', pathParams: {service: string}, queryParams?: {id?: Number, primaryEmailAddress?: string}): Promise<string[]>;
+  public get(path: '/email/pro/{service}/account', params: {service: string, id?: number, primaryEmailAddress?: string}): Promise<string[]>;
   /**
   Mailbox
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/account/{email}', pathParams: {service: string, email: string}): Promise<EmailProAccount>;
+  public get(path: '/email/pro/{service}/account/{email}', params: {service: string, email: string}): Promise<EmailProAccount>;
   /**
   List the email.pro.AccountAlias objects
   Aliases associated to this mailbox
   **/
-  public get(path: '/email/pro/{service}/account/{email}/alias', pathParams: {service: string, email: string}): Promise<string[]>;
+  public get(path: '/email/pro/{service}/account/{email}/alias', params: {service: string, email: string}): Promise<string[]>;
   /**
   Aliases on this mailbox
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/account/{email}/alias/{alias}', pathParams: {service: string, email: string, alias: string}): Promise<EmailProAccountAlias>;
+  public get(path: '/email/pro/{service}/account/{email}/alias/{alias}', params: {service: string, email: string, alias: string}): Promise<EmailProAccountAlias>;
   /**
   Account Diagnosis
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/account/{email}/diagnostics', pathParams: {service: string, email: string}): Promise<EmailProAccountDiagnosis>;
+  public get(path: '/email/pro/{service}/account/{email}/diagnostics', params: {service: string, email: string}): Promise<EmailProAccountDiagnosis>;
   /**
   List the email.pro.AccountFullAccess objects
   Full access granted users for this mailbox
   **/
-  public get(path: '/email/pro/{service}/account/{email}/fullAccess', pathParams: {service: string, email: string}): Promise<Number[]>;
+  public get(path: '/email/pro/{service}/account/{email}/fullAccess', params: {service: string, email: string}): Promise<number[]>;
   /**
   Users having full access on this mailbox
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProAccountFullAccess>;
+  public get(path: '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}', params: {service: string, email: string, allowedAccountId: number}): Promise<EmailProAccountFullAccess>;
   /**
   List the email.pro.AccountSendAs objects
   Send as granted users for this mailbox
   **/
-  public get(path: '/email/pro/{service}/account/{email}/sendAs', pathParams: {service: string, email: string}): Promise<Number[]>;
+  public get(path: '/email/pro/{service}/account/{email}/sendAs', params: {service: string, email: string}): Promise<number[]>;
   /**
   Users authorized to send mails from this mailbox
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProAccountSendAs>;
+  public get(path: '/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}', params: {service: string, email: string, allowedAccountId: number}): Promise<EmailProAccountSendAs>;
   /**
   List the email.pro.AccountSendOnBehalfTo objects
   SendOnBehalfTo granted users for this mailbox
   **/
-  public get(path: '/email/pro/{service}/account/{email}/sendOnBehalfTo', pathParams: {service: string, email: string}): Promise<Number[]>;
+  public get(path: '/email/pro/{service}/account/{email}/sendOnBehalfTo', params: {service: string, email: string}): Promise<number[]>;
   /**
   Get users authorized to Send On Behalf To mails from this mailbox
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProAccountSendOnBehalfTo>;
+  public get(path: '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}', params: {service: string, email: string, allowedAccountId: number}): Promise<EmailProAccountSendOnBehalfTo>;
   /**
   List the email.pro.Task objects
   Pending task for this mailbox
   **/
-  public get(path: '/email/pro/{service}/account/{email}/tasks', pathParams: {service: string, email: string}): Promise<Number[]>;
+  public get(path: '/email/pro/{service}/account/{email}/tasks', params: {service: string, email: string}): Promise<number[]>;
   /**
   Organization task details
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/account/{email}/tasks/{id}', pathParams: {service: string, email: string, id: Number}): Promise<EmailProTask>;
+  public get(path: '/email/pro/{service}/account/{email}/tasks/{id}', params: {service: string, email: string, id: number}): Promise<EmailProTask>;
   /**
   billingMigrated operations
   Detects billing transition status for the service
   **/
-  public get(path: '/email/pro/{service}/billingMigrated', pathParams: {service: string}): Promise<boolean>;
+  public get(path: '/email/pro/{service}/billingMigrated', params: {service: string}): Promise<boolean>;
   /**
   billingPlan operations
   Emailpro billing plan
   **/
-  public get(path: '/email/pro/{service}/billingPlan', pathParams: {service: string}): Promise<string>;
+  public get(path: '/email/pro/{service}/billingPlan', params: {service: string}): Promise<string>;
   /**
   List the email.pro.Domain objects
   Domains associated to this service
   **/
-  public get(path: '/email/pro/{service}/domain', pathParams: {service: string}, queryParams?: {state?: EmailProObjectStateEnum}): Promise<string[]>;
+  public get(path: '/email/pro/{service}/domain', params: {service: string, state?: EmailProObjectStateEnum}): Promise<string[]>;
   /**
   Domain
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/domain/{domainName}', pathParams: {service: string, domainName: string}): Promise<EmailProDomain>;
+  public get(path: '/email/pro/{service}/domain/{domainName}', params: {service: string, domainName: string}): Promise<EmailProDomain>;
   /**
   disclaimer
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/domain/{domainName}/disclaimer', pathParams: {service: string, domainName: string}): Promise<EmailProDisclaimer>;
+  public get(path: '/email/pro/{service}/domain/{domainName}/disclaimer', params: {service: string, domainName: string}): Promise<EmailProDisclaimer>;
   /**
   disclaimerAttribute operations
   Get diclaimer attributes to substitute with Active Directory properties
   **/
-  public get(path: '/email/pro/{service}/domain/{domainName}/disclaimerAttribute', pathParams: {service: string, domainName: string}): Promise<EmailProDisclaimerAttributeEnum[]>;
+  public get(path: '/email/pro/{service}/domain/{domainName}/disclaimerAttribute', params: {service: string, domainName: string}): Promise<EmailProDisclaimerAttributeEnum[]>;
   /**
   List the email.pro.ExternalContact objects
   External contacts for this service
   **/
-  public get(path: '/email/pro/{service}/externalContact', pathParams: {service: string}, queryParams?: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: Number, lastName?: string}): Promise<string[]>;
+  public get(path: '/email/pro/{service}/externalContact', params: {service: string, displayName?: string, externalEmailAddress?: string, firstName?: string, id?: number, lastName?: string}): Promise<string[]>;
   /**
   External contact for this pro service
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/externalContact/{externalEmailAddress}', pathParams: {service: string, externalEmailAddress: string}): Promise<EmailProExternalContact>;
+  public get(path: '/email/pro/{service}/externalContact/{externalEmailAddress}', params: {service: string, externalEmailAddress: string}): Promise<EmailProExternalContact>;
   /**
   Server
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/server', pathParams: {service: string}): Promise<EmailProServer>;
+  public get(path: '/email/pro/{service}/server', params: {service: string}): Promise<EmailProServer>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/serviceInfos', pathParams: {service: string}): Promise<ServicesService>;
+  public get(path: '/email/pro/{service}/serviceInfos', params: {service: string}): Promise<ServicesService>;
   /**
   List the email.pro.Task objects
   Pending actions
   **/
-  public get(path: '/email/pro/{service}/task', pathParams: {service: string}): Promise<Number[]>;
+  public get(path: '/email/pro/{service}/task', params: {service: string}): Promise<number[]>;
   /**
   Organization task details
   Get this object properties
   **/
-  public get(path: '/email/pro/{service}/task/{id}', pathParams: {service: string, id: Number}): Promise<EmailProTask>;
-  public get(path: PathsEmailProGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/email/pro/{service}/task/{id}', params: {service: string, id: number}): Promise<EmailProTask>;
+  public get(path: PathsEmailProGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Email pro service
   Alter this object properties
   **/
-  public put(path: '/email/pro/{service}', pathParams: {service: string}): Promise<void>;
+  public put(path: '/email/pro/{service}', params: {service: string}): Promise<void>;
   /**
   Mailbox
   Alter this object properties
   **/
-  public put(path: '/email/pro/{service}/account/{email}', pathParams: {service: string, email: string}): Promise<void>;
+  public put(path: '/email/pro/{service}/account/{email}', params: {service: string, email: string}): Promise<void>;
   /**
   Domain
   Alter this object properties
   **/
-  public put(path: '/email/pro/{service}/domain/{domainName}', pathParams: {service: string, domainName: string}): Promise<void>;
+  public put(path: '/email/pro/{service}/domain/{domainName}', params: {service: string, domainName: string}): Promise<void>;
   /**
   disclaimer
   Alter this object properties
   **/
-  public put(path: '/email/pro/{service}/domain/{domainName}/disclaimer', pathParams: {service: string, domainName: string}): Promise<void>;
+  public put(path: '/email/pro/{service}/domain/{domainName}/disclaimer', params: {service: string, domainName: string}): Promise<void>;
   /**
   External contact for this pro service
   Alter this object properties
   **/
-  public put(path: '/email/pro/{service}/externalContact/{externalEmailAddress}', pathParams: {service: string, externalEmailAddress: string}): Promise<void>;
+  public put(path: '/email/pro/{service}/externalContact/{externalEmailAddress}', params: {service: string, externalEmailAddress: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/email/pro/{service}/serviceInfos', pathParams: {service: string}): Promise<void>;
-  public put(path: PathsEmailProPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/email/pro/{service}/serviceInfos', params: {service: string}): Promise<void>;
+  public put(path: PathsEmailProPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   List the email.pro.AccountAlias objects
   Create new alias
   **/
-  public post(path: '/email/pro/{service}/account/{email}/alias', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/account/{email}/alias', params: {service: string, email: string}): Promise<EmailProTask>;
   /**
   changePassword operations
   Change mailbox password
   **/
-  public post(path: '/email/pro/{service}/account/{email}/changePassword', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/account/{email}/changePassword', params: {service: string, email: string}): Promise<EmailProTask>;
   /**
   Account Diagnosis
   Create new diagnosis request
   **/
-  public post(path: '/email/pro/{service}/account/{email}/diagnostics', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/account/{email}/diagnostics', params: {service: string, email: string}): Promise<EmailProTask>;
   /**
   List the email.pro.AccountFullAccess objects
   Allow full access to a user
   **/
-  public post(path: '/email/pro/{service}/account/{email}/fullAccess', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/account/{email}/fullAccess', params: {service: string, email: string}): Promise<EmailProTask>;
   /**
   List the email.pro.AccountSendAs objects
   Allow another user to send mails from this mailbox
   **/
-  public post(path: '/email/pro/{service}/account/{email}/sendAs', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/account/{email}/sendAs', params: {service: string, email: string}): Promise<EmailProTask>;
   /**
   List the email.pro.AccountSendOnBehalfTo objects
   Allow another user to Send On Behalf To mails from this mailbox
   **/
-  public post(path: '/email/pro/{service}/account/{email}/sendOnBehalfTo', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/account/{email}/sendOnBehalfTo', params: {service: string, email: string}): Promise<EmailProTask>;
   /**
   terminate operations
   Terminate account at expiration date
   **/
-  public post(path: '/email/pro/{service}/account/{email}/terminate', pathParams: {service: string, email: string}): Promise<string>;
+  public post(path: '/email/pro/{service}/account/{email}/terminate', params: {service: string, email: string}): Promise<string>;
   /**
   List the email.pro.Domain objects
   Create new domain in pro services
   **/
-  public post(path: '/email/pro/{service}/domain', pathParams: {service: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/domain', params: {service: string}): Promise<EmailProTask>;
   /**
   disclaimer
   Create organization disclaimer of each email
   **/
-  public post(path: '/email/pro/{service}/domain/{domainName}/disclaimer', pathParams: {service: string, domainName: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/domain/{domainName}/disclaimer', params: {service: string, domainName: string}): Promise<EmailProTask>;
   /**
   List the email.pro.ExternalContact objects
   create new external contact
   **/
-  public post(path: '/email/pro/{service}/externalContact', pathParams: {service: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/externalContact', params: {service: string}): Promise<EmailProTask>;
   /**
   updateFlagsOnAllAccounts operations
   Update spam and virus flags on all active accounts
   **/
-  public post(path: '/email/pro/{service}/updateFlagsOnAllAccounts', pathParams: {service: string}): Promise<void>;
-  public post(path: PathsEmailProPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/email/pro/{service}/updateFlagsOnAllAccounts', params: {service: string}): Promise<void>;
+  public post(path: PathsEmailProPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Mailbox
   Delete existing mailbox in pro server
   **/
-  public delete(path: '/email/pro/{service}/account/{email}', pathParams: {service: string, email: string}): Promise<EmailProTask>;
+  public delete(path: '/email/pro/{service}/account/{email}', params: {service: string, email: string}): Promise<EmailProTask>;
   /**
   Aliases on this mailbox
   Delete existing alias
   **/
-  public delete(path: '/email/pro/{service}/account/{email}/alias/{alias}', pathParams: {service: string, email: string, alias: string}): Promise<EmailProTask>;
+  public delete(path: '/email/pro/{service}/account/{email}/alias/{alias}', params: {service: string, email: string, alias: string}): Promise<EmailProTask>;
   /**
   Users having full access on this mailbox
   Revoke full access
   **/
-  public delete(path: '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProTask>;
+  public delete(path: '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}', params: {service: string, email: string, allowedAccountId: number}): Promise<EmailProTask>;
   /**
   Users authorized to send mails from this mailbox
   Delete allowed user for sendAs
   **/
-  public delete(path: '/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProTask>;
+  public delete(path: '/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}', params: {service: string, email: string, allowedAccountId: number}): Promise<EmailProTask>;
   /**
   Get users authorized to Send On Behalf To mails from this mailbox
   Delete allowed user for SendOnBehalfTo
   **/
-  public delete(path: '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}', pathParams: {service: string, email: string, allowedAccountId: Number}): Promise<EmailProTask>;
+  public delete(path: '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}', params: {service: string, email: string, allowedAccountId: number}): Promise<EmailProTask>;
   /**
   Domain
   Delete existing domain in pro services
   **/
-  public delete(path: '/email/pro/{service}/domain/{domainName}', pathParams: {service: string, domainName: string}): Promise<EmailProTask>;
+  public delete(path: '/email/pro/{service}/domain/{domainName}', params: {service: string, domainName: string}): Promise<EmailProTask>;
   /**
   disclaimer
   Delete existing organization disclaimer
   **/
-  public delete(path: '/email/pro/{service}/domain/{domainName}/disclaimer', pathParams: {service: string, domainName: string}): Promise<EmailProTask>;
+  public delete(path: '/email/pro/{service}/domain/{domainName}/disclaimer', params: {service: string, domainName: string}): Promise<EmailProTask>;
   /**
   External contact for this pro service
   delete external contact
   **/
-  public delete(path: '/email/pro/{service}/externalContact/{externalEmailAddress}', pathParams: {service: string, externalEmailAddress: string}): Promise<EmailProTask>;
-  public delete(path: PathsEmailProDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/email/pro/{service}/externalContact/{externalEmailAddress}', params: {service: string, externalEmailAddress: string}): Promise<EmailProTask>;
+  public delete(path: PathsEmailProDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

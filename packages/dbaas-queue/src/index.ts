@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * App
  */
@@ -176,12 +176,12 @@ export interface DbaasQueueTopic {
    * Number of partitions
    *
    */
-  partitions?: Number;
+  partitions?: number;
   /**
    * Replication factor
    *
    */
-  replicationFactor?: Number;
+  replicationFactor?: number;
 }
 /**
  * User
@@ -256,7 +256,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -300,7 +300,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -311,7 +311,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -340,8 +340,8 @@ type PathsDbaasQueuePOST = '/dbaas/queue/{serviceName}/user/{userId}/changePassw
 type PathsDbaasQueueDELETE = '/dbaas/queue/{serviceName}/topic/{topicId}';
 
 export class ApiDbaasQueue extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   Operations about the PAAS_QUEUE service
@@ -352,94 +352,102 @@ export class ApiDbaasQueue extends ApiCommon {
   App
   Get an application
   **/
-  public get(path: '/dbaas/queue/{serviceName}', pathParams: {serviceName: string}): Promise<DbaasQueueApp>;
+  public get(path: '/dbaas/queue/{serviceName}', params: {serviceName: string}): Promise<DbaasQueueApp>;
   /**
   Key
   List all keys of the application
   **/
-  public get(path: '/dbaas/queue/{serviceName}/key', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dbaas/queue/{serviceName}/key', params: {serviceName: string}): Promise<string[]>;
   /**
   Key
   Get a key
   **/
-  public get(path: '/dbaas/queue/{serviceName}/key/{keyId}', pathParams: {serviceName: string, keyId: string}): Promise<DbaasQueueKey>;
+  public get(path: '/dbaas/queue/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<DbaasQueueKey>;
   /**
   Metrics
   Get metrics account
   **/
-  public get(path: '/dbaas/queue/{serviceName}/metrics/account', pathParams: {serviceName: string}): Promise<DbaasQueueMetricsAccount>;
+  public get(path: '/dbaas/queue/{serviceName}/metrics/account', params: {serviceName: string}): Promise<DbaasQueueMetricsAccount>;
   /**
   Region
   List all regions ID
   **/
-  public get(path: '/dbaas/queue/{serviceName}/region', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dbaas/queue/{serviceName}/region', params: {serviceName: string}): Promise<string[]>;
   /**
   Region
   Get one region
   **/
-  public get(path: '/dbaas/queue/{serviceName}/region/{regionId}', pathParams: {serviceName: string, regionId: string}): Promise<DbaasQueueRegion>;
+  public get(path: '/dbaas/queue/{serviceName}/region/{regionId}', params: {serviceName: string, regionId: string}): Promise<DbaasQueueRegion>;
   /**
   Role
   List all roles of the application
   **/
-  public get(path: '/dbaas/queue/{serviceName}/role', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dbaas/queue/{serviceName}/role', params: {serviceName: string}): Promise<string[]>;
   /**
   Role
   Get a role
   **/
-  public get(path: '/dbaas/queue/{serviceName}/role/{roleName}', pathParams: {serviceName: string, roleName: string}): Promise<DbaasQueueRole>;
+  public get(path: '/dbaas/queue/{serviceName}/role/{roleName}', params: {serviceName: string, roleName: string}): Promise<DbaasQueueRole>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/dbaas/queue/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/dbaas/queue/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   Topic
   List all topics of the application
   **/
-  public get(path: '/dbaas/queue/{serviceName}/topic', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dbaas/queue/{serviceName}/topic', params: {serviceName: string}): Promise<string[]>;
   /**
   Topic
   Get a topic
   **/
-  public get(path: '/dbaas/queue/{serviceName}/topic/{topicId}', pathParams: {serviceName: string, topicId: string}): Promise<DbaasQueueTopic>;
+  public get(path: '/dbaas/queue/{serviceName}/topic/{topicId}', params: {serviceName: string, topicId: string}): Promise<DbaasQueueTopic>;
   /**
   User
   List all users of the application
   **/
-  public get(path: '/dbaas/queue/{serviceName}/user', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dbaas/queue/{serviceName}/user', params: {serviceName: string}): Promise<string[]>;
   /**
   User
   Get a user
   **/
-  public get(path: '/dbaas/queue/{serviceName}/user/{userId}', pathParams: {serviceName: string, userId: string}): Promise<DbaasQueueUser>;
+  public get(path: '/dbaas/queue/{serviceName}/user/{userId}', params: {serviceName: string, userId: string}): Promise<DbaasQueueUser>;
   /**
   User roles
   Get user roles
   **/
-  public get(path: '/dbaas/queue/{serviceName}/user/{userId}/roles', pathParams: {serviceName: string, userId: string}): Promise<string[]>;
-  public get(path: PathsDbaasQueueGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/dbaas/queue/{serviceName}/user/{userId}/roles', params: {serviceName: string, userId: string}): Promise<string[]>;
+  public get(path: PathsDbaasQueueGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   App
   Update an application
   **/
-  public put(path: '/dbaas/queue/{serviceName}', pathParams: {serviceName: string}): Promise<DbaasQueueApp>;
+  public put(path: '/dbaas/queue/{serviceName}', params: {serviceName: string}): Promise<DbaasQueueApp>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dbaas/queue/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsDbaasQueuePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/dbaas/queue/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsDbaasQueuePUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   User
   Generate a new user password
   **/
-  public post(path: '/dbaas/queue/{serviceName}/user/{userId}/changePassword', pathParams: {serviceName: string, userId: string}): Promise<DbaasQueueUserWithPassword>;
-  public post(path: PathsDbaasQueuePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/dbaas/queue/{serviceName}/user/{userId}/changePassword', params: {serviceName: string, userId: string}): Promise<DbaasQueueUserWithPassword>;
+  public post(path: PathsDbaasQueuePOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Topic
   Delete a topic
   **/
-  public delete(path: '/dbaas/queue/{serviceName}/topic/{topicId}', pathParams: {serviceName: string, topicId: string}): Promise<void>;
-  public delete(path: PathsDbaasQueueDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/dbaas/queue/{serviceName}/topic/{topicId}', params: {serviceName: string, topicId: string}): Promise<void>;
+  public delete(path: PathsDbaasQueueDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

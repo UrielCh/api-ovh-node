@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A numeric value tagged with its unit
  */
@@ -37,7 +37,7 @@ export interface DeskaasTask {
    * Current progress
    *
    */
-  progress?: Number;
+  progress?: number;
   /**
    * Current Task state
    *
@@ -47,7 +47,7 @@ export interface DeskaasTask {
    * Task id
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * All states a Desktop As A Service Task can be in
@@ -71,7 +71,7 @@ export interface DeskaasUser {
   state?: DeskaasUserStateEnum;
   /**
    */
-  userId?: Number;
+  userId?: number;
 }
 /**
  * Desktop As A Service
@@ -86,7 +86,7 @@ export interface DeskaasDeskaas {
    * Data allocated to desktop
    *
    */
-  dataDisk?: ComplexTypeUnitAndValue<Number>;
+  dataDisk?: ComplexTypeUnitAndValue<number>;
   /**
    * Outgoing ip
    *
@@ -106,7 +106,7 @@ export interface DeskaasDeskaas {
    * RAM allocated to desktop
    *
    */
-  ram?: ComplexTypeUnitAndValue<Number>;
+  ram?: ComplexTypeUnitAndValue<number>;
   /**
    * Reference of Virtual Desktop
    *
@@ -131,7 +131,7 @@ export interface DeskaasDeskaas {
    * Vcpu allocated to desktop
    *
    */
-  vcpu?: Number;
+  vcpu?: number;
 }
 /**
  * A structure describing the current password policy for your Dedicated Cloud
@@ -161,12 +161,12 @@ export interface DeskaasPasswordPolicy {
    * Maximum lenght of the password
    *
    */
-  maxLength?: Number;
+  maxLength?: number;
   /**
    * Minimum lenght of the password
    *
    */
-  minLength?: Number;
+  minLength?: number;
   /**
    * Whether or not a special character (\W or _) is mandatory in the password
    *
@@ -214,7 +214,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -266,7 +266,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -277,7 +277,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -306,8 +306,8 @@ type PathsDeskaasPOST = '/deskaas/{serviceName}/changeAlias' |
 '/deskaas/{serviceName}/user/changeProperties';
 
 export class ApiDeskaas extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   Operations about the DESKAAS service
@@ -318,98 +318,104 @@ export class ApiDeskaas extends ApiCommon {
   Desktop As A Service
   Get this object properties
   **/
-  public get(path: '/deskaas/{serviceName}', pathParams: {serviceName: string}): Promise<DeskaasDeskaas>;
+  public get(path: '/deskaas/{serviceName}', params: {serviceName: string}): Promise<DeskaasDeskaas>;
   /**
   passwordPolicy operations
   Get the current password policy for your Desktop As A Service
   **/
-  public get(path: '/deskaas/{serviceName}/passwordPolicy', pathParams: {serviceName: string}): Promise<DeskaasPasswordPolicy>;
+  public get(path: '/deskaas/{serviceName}/passwordPolicy', params: {serviceName: string}): Promise<DeskaasPasswordPolicy>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/deskaas/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/deskaas/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   List the deskaas.Task objects
   Tasks associated with this Desktop As A Service
   **/
-  public get(path: '/deskaas/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {state?: DeskaasTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/deskaas/{serviceName}/task', params: {serviceName: string, state?: DeskaasTaskStateEnum}): Promise<number[]>;
   /**
   Operation on a Desktop As A Service component
   Get this object properties
   **/
-  public get(path: '/deskaas/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DeskaasTask>;
+  public get(path: '/deskaas/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<DeskaasTask>;
   /**
   Desktop As A Service User
   Get this object properties
   **/
-  public get(path: '/deskaas/{serviceName}/user', pathParams: {serviceName: string}): Promise<DeskaasUser>;
+  public get(path: '/deskaas/{serviceName}/user', params: {serviceName: string}): Promise<DeskaasUser>;
   /**
   List the deskaas.Task objects
   Tasks associated with this User
   **/
-  public get(path: '/deskaas/{serviceName}/user/task', pathParams: {serviceName: string}, queryParams?: {state?: DeskaasTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/deskaas/{serviceName}/user/task', params: {serviceName: string, state?: DeskaasTaskStateEnum}): Promise<number[]>;
   /**
   Operation on a Desktop As A Service component
   Get this object properties
   **/
-  public get(path: '/deskaas/{serviceName}/user/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DeskaasTask>;
-  public get(path: PathsDeskaasGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/deskaas/{serviceName}/user/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<DeskaasTask>;
+  public get(path: PathsDeskaasGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/deskaas/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsDeskaasPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/deskaas/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsDeskaasPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   changeAlias operations
   Change the Virtual Desktop alias
   **/
-  public post(path: '/deskaas/{serviceName}/changeAlias', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: '/deskaas/{serviceName}/changeAlias', params: {serviceName: string}): Promise<DeskaasTask>;
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/deskaas/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  public post(path: '/deskaas/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/deskaas/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/deskaas/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
   /**
   console operations
   New console access
   **/
-  public post(path: '/deskaas/{serviceName}/console', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: '/deskaas/{serviceName}/console', params: {serviceName: string}): Promise<DeskaasTask>;
   /**
   reboot operations
   Reboot the Operating system of the Cloud Desktop.
   **/
-  public post(path: '/deskaas/{serviceName}/reboot', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: '/deskaas/{serviceName}/reboot', params: {serviceName: string}): Promise<DeskaasTask>;
   /**
   refresh operations
   Refresh the Operating system of the Desktop As A Service. All your personnal data are kept.
   **/
-  public post(path: '/deskaas/{serviceName}/refresh', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: '/deskaas/{serviceName}/refresh', params: {serviceName: string}): Promise<DeskaasTask>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/deskaas/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/deskaas/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
   /**
   upgrade operations
   Upgrading the Desktop As A Service to another profile. The Virtual Desktop will not be available during upgrade and has to be restarted. You cannot downgrade a Virtual Desktop
   **/
-  public post(path: '/deskaas/{serviceName}/upgrade', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: '/deskaas/{serviceName}/upgrade', params: {serviceName: string}): Promise<DeskaasTask>;
   /**
   changePassword operations
   Change Desktop As A Service user password
   **/
-  public post(path: '/deskaas/{serviceName}/user/changePassword', pathParams: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: '/deskaas/{serviceName}/user/changePassword', params: {serviceName: string}): Promise<DeskaasTask>;
   /**
   changeProperties operations
   Change Desktop As A Service user properties
   **/
-  public post(path: '/deskaas/{serviceName}/user/changeProperties', pathParams: {serviceName: string}): Promise<DeskaasTask>;
-  public post(path: PathsDeskaasPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/deskaas/{serviceName}/user/changeProperties', params: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: PathsDeskaasPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
 }

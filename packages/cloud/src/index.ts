@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Possible values for project access type
  */
@@ -55,7 +55,7 @@ export interface CloudAlerting {
    * Monthly threshold for this alerting
    *
    */
-  monthlyThreshold?: Number;
+  monthlyThreshold?: number;
 }
 /**
  * Cloud alert on your consumption
@@ -70,7 +70,7 @@ export interface CloudAlertingAlert {
    * Alert id
    *
    */
-  alertId?: Number;
+  alertId?: number;
   /**
    * Alert sent to
    *
@@ -209,7 +209,7 @@ export interface CloudCredit {
    * Credit id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Use credits on following products
    *
@@ -343,7 +343,7 @@ export interface CloudOperation {
    * The progression in percentage of the operation
    *
    */
-  progress?: Number;
+  progress?: number;
   /**
    * Affected regions of the operation
    *
@@ -440,7 +440,7 @@ export interface CloudProject {
    * Project order id
    *
    */
-  orderId?: Number;
+  orderId?: number;
   /**
    * Order plan code
    *
@@ -723,7 +723,7 @@ export interface CloudBillingViewBandwidthInstance {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * BandwidthStorage
@@ -738,7 +738,7 @@ export interface CloudBillingViewBandwidthStorage {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * HourlyInstance
@@ -768,7 +768,7 @@ export interface CloudBillingViewHourlyInstance {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * HourlyInstanceBandwidth
@@ -793,7 +793,7 @@ export interface CloudBillingViewHourlyInstanceBandwidth {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * HourlyInstanceDetail
@@ -813,7 +813,7 @@ export interface CloudBillingViewHourlyInstanceDetail {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * HourlyInstanceOption
@@ -843,7 +843,7 @@ export interface CloudBillingViewHourlyInstanceOption {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * HourlyInstanceOptionDetail
@@ -863,7 +863,7 @@ export interface CloudBillingViewHourlyInstanceOptionDetail {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * HourlyResources
@@ -918,7 +918,7 @@ export interface CloudBillingViewHourlySnapshot {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
   /**
    * Volume snapshot details
    *
@@ -953,7 +953,7 @@ export interface CloudBillingViewHourlyStorage {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
   /**
    * Storage type
    *
@@ -983,7 +983,7 @@ export interface CloudBillingViewHourlyVolume {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
   /**
    * Volume type
    *
@@ -1003,7 +1003,7 @@ export interface CloudBillingViewHourlyVolumeDetail {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
   /**
    * Volume ID
    *
@@ -1023,7 +1023,7 @@ export interface CloudBillingViewInstanceSnapshot {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * MonthlyInstance
@@ -1048,7 +1048,7 @@ export interface CloudBillingViewMonthlyInstance {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * MonthlyInstanceDetail
@@ -1068,7 +1068,7 @@ export interface CloudBillingViewMonthlyInstanceDetail {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * MonthlyInstanceOption
@@ -1093,7 +1093,7 @@ export interface CloudBillingViewMonthlyInstanceOption {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * MonthlyInstanceOptionDetail
@@ -1108,7 +1108,7 @@ export interface CloudBillingViewMonthlyInstanceOptionDetail {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * MonthlyResources
@@ -1138,7 +1138,7 @@ export interface CloudBillingViewQuantity {
    * Quantity value
    *
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * StorageTypeEnum
@@ -1157,7 +1157,7 @@ export interface CloudBillingViewStoredStorage {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * UnitQuantity
@@ -1176,12 +1176,12 @@ export interface CloudBillingViewUsedCredit {
    * Credit ID
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Total credit used
    *
    */
-  usedAmount?: Number;
+  usedAmount?: number;
 }
 /**
  * UsedCredits
@@ -1196,7 +1196,7 @@ export interface CloudBillingViewUsedCredits {
    * Total credit that will be used to pay the bill
    *
    */
-  totalCredit?: Number;
+  totalCredit?: number;
 }
 /**
  * VolumeSnapshot
@@ -1211,7 +1211,7 @@ export interface CloudBillingViewVolumeSnapshot {
    * Total price
    *
    */
-  totalPrice?: Number;
+  totalPrice?: number;
 }
 /**
  * Voucher validity range
@@ -1241,7 +1241,7 @@ export interface CloudFlavorFlavor {
    * Number of disks
    *
    */
-  disk?: Number;
+  disk?: number;
   /**
    * Flavor id
    *
@@ -1251,7 +1251,7 @@ export interface CloudFlavorFlavor {
    * Max capacity of inbound traffic in Mbit/s
    *
    */
-  inboundBandwidth?: Number;
+  inboundBandwidth?: number;
   /**
    * Flavor name
    *
@@ -1266,7 +1266,7 @@ export interface CloudFlavorFlavor {
    * Max capacity of outbound traffic in Mbit/s
    *
    */
-  outboundBandwidth?: Number;
+  outboundBandwidth?: number;
   /**
    * Plan codes to order instances
    *
@@ -1276,7 +1276,7 @@ export interface CloudFlavorFlavor {
    * Ram quantity (Gio)
    *
    */
-  ram?: Number;
+  ram?: number;
   /**
    * Flavor region
    *
@@ -1291,7 +1291,7 @@ export interface CloudFlavorFlavor {
    * Number of VCPUs
    *
    */
-  vcpus?: Number;
+  vcpus?: number;
 }
 /**
  * FlavorPlanCodes
@@ -1346,12 +1346,12 @@ export interface CloudImageImage {
    * Minimum disks required to use image
    *
    */
-  minDisk?: Number;
+  minDisk?: number;
   /**
    * Minimum RAM required to use image
    *
    */
-  minRam?: Number;
+  minRam?: number;
   /**
    * Image name
    *
@@ -1371,7 +1371,7 @@ export interface CloudImageImage {
    * Image size (in GiB)
    *
    */
-  size?: Number;
+  size?: number;
   /**
    * Image status
    *
@@ -1583,10 +1583,10 @@ export interface CloudInstanceInstanceMetrics {
 export interface CloudInstanceInstanceMetricsValue {
   /**
    */
-  timestamp?: Number;
+  timestamp?: number;
   /**
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * InstanceStatusEnum
@@ -1635,7 +1635,7 @@ export interface CloudInstanceIpAddress {
    * IP version
    *
    */
-  version?: Number;
+  version?: number;
 }
 /**
  * MetricsPeriod
@@ -1845,7 +1845,7 @@ export interface CloudIpFailoverIp {
    * Current operation progress in percent
    *
    */
-  progress?: Number;
+  progress?: number;
   /**
    * Instance where ip is routed to
    *
@@ -2102,7 +2102,7 @@ export interface CloudNetworkNetwork {
    * Network VLAN id
    *
    */
-  vlanId?: Number;
+  vlanId?: number;
 }
 /**
  * NetworkRegion
@@ -2204,7 +2204,7 @@ export interface CloudOrderOrder {
    * Order id
    *
    */
-  orderId?: Number;
+  orderId?: number;
   /**
    * Order plan code
    *
@@ -2296,7 +2296,7 @@ export interface CloudPcaTransferState {
    * Agreements pending for approval
    *
    */
-  agreements?: Number[];
+  agreements?: number[];
   /**
    * Cloud project id
    *
@@ -2325,7 +2325,7 @@ export interface CloudProjectBandwidthStorageUsage {
    * Downloaded bytes from your containers
    *
    */
-  downloadedBytes?: Number;
+  downloadedBytes?: number;
   /**
    * Region
    *
@@ -2459,7 +2459,7 @@ export interface CloudProjectNewProject {
    * Agreement to valid
    *
    */
-  agreements?: Number[];
+  agreements?: number[];
   /**
    * Cloud credit
    *
@@ -2474,7 +2474,7 @@ export interface CloudProjectNewProject {
    * Cloud project order id
    *
    */
-  orderId?: Number;
+  orderId?: number;
   /**
    * Cloud project
    *
@@ -2499,7 +2499,7 @@ export interface CloudProjectNewProjectCredit {
    * Credit id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Use credits on following products
    *
@@ -2524,7 +2524,7 @@ export interface CloudProjectNewProjectInfo {
    * Agreement to valid
    *
    */
-  agreements?: Number[];
+  agreements?: number[];
   /**
    * Error to fix before trying to create a new Public Cloud project
    *
@@ -2591,7 +2591,7 @@ export interface CloudProjectSnapshotUsageDetail {
    * Stored snapshot size in gigabytes
    *
    */
-  storedSize?: ComplexTypeUnitAndValue<Number>;
+  storedSize?: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Snapshots usage for current month
@@ -2641,7 +2641,7 @@ export interface CloudProjectStorageVolumeUsage {
    * Bytes stored in your containers
    *
    */
-  storedBytes?: Number;
+  storedBytes?: number;
   /**
    * Cost for your storage bandwidth
    *
@@ -2665,7 +2665,7 @@ export interface CloudProjectVolumeUsageDetail {
    * Volume capacity in gigabytes
    *
    */
-  volumeCapacity?: ComplexTypeUnitAndValue<Number>;
+  volumeCapacity?: ComplexTypeUnitAndValue<number>;
   /**
    * Volume id
    *
@@ -2700,30 +2700,30 @@ export interface CloudQuotaInstanceQuotas {
    * Maximum total cores allowed in your project
    *
    */
-  maxCores?: Number;
+  maxCores?: number;
   /**
    * Maximum total cores allowed in your project
    *
    */
-  maxInstances?: Number;
+  maxInstances?: number;
   /**
    */
-  maxRam?: Number;
+  maxRam?: number;
   /**
    * Current used cores number
    *
    */
-  usedCores?: Number;
+  usedCores?: number;
   /**
    * Current used instances
    *
    */
-  usedInstances?: Number;
+  usedInstances?: number;
   /**
    * Current used ram
    *
    */
-  usedRAM?: Number;
+  usedRAM?: number;
 }
 /**
  * KeypairQuotas
@@ -2733,7 +2733,7 @@ export interface CloudQuotaKeypairQuotas {
    * Maximum keypairs count allowed in your project
    *
    */
-  maxCount?: Number;
+  maxCount?: number;
 }
 /**
  * Quotas
@@ -2768,17 +2768,17 @@ export interface CloudQuotaVolumeQuotas {
    * Maximum total volume capacity allowed in your project
    *
    */
-  maxGigabytes?: Number;
+  maxGigabytes?: number;
   /**
    * Current used volume gigabytes
    *
    */
-  usedGigabytes?: Number;
+  usedGigabytes?: number;
   /**
    * Current volumes count
    *
    */
-  volumeCount?: Number;
+  volumeCount?: number;
 }
 /**
  * Role
@@ -2991,12 +2991,12 @@ export interface CloudStorageContainer {
    * Total bytes stored
    *
    */
-  storedBytes?: Number;
+  storedBytes?: number;
   /**
    * Total objects stored
    *
    */
-  storedObjects?: Number;
+  storedObjects?: number;
 }
 /**
  * ContainerAccess
@@ -3061,12 +3061,12 @@ export interface CloudStorageContainerDetail {
    * Total bytes stored
    *
    */
-  storedBytes?: Number;
+  storedBytes?: number;
   /**
    * Total objects stored
    *
    */
-  storedObjects?: Number;
+  storedObjects?: number;
 }
 /**
  * ContainerObject
@@ -3091,7 +3091,7 @@ export interface CloudStorageContainerObject {
    * Object retrieval delay (when unsealing)
    *
    */
-  retrievalDelay?: Number;
+  retrievalDelay?: number;
   /**
    * Object retrieval state
    *
@@ -3101,7 +3101,7 @@ export interface CloudStorageContainerObject {
    * Object size
    *
    */
-  size?: Number;
+  size?: number;
 }
 /**
  * ContainerObjectTempURL
@@ -3177,12 +3177,12 @@ export interface CloudUsageUsageBill {
    * Amount of credits used in this bill (not necessarily on part)
    *
    */
-  credit?: Number;
+  credit?: number;
   /**
    * Amount of the bill that accounts for services for the usage period, credits not taken into account
    *
    */
-  part?: Number;
+  part?: number;
   /**
    * Payment type
    *
@@ -3192,7 +3192,7 @@ export interface CloudUsageUsageBill {
    * Total amount of the bill, credits not taken into account
    *
    */
-  total?: Number;
+  total?: number;
 }
 /**
  * UsageCurrent
@@ -3365,7 +3365,7 @@ export interface CloudUserUser {
    * User id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * User status
    *
@@ -3395,7 +3395,7 @@ export interface CloudUserUserDetail {
    * User id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * User password
    *
@@ -3454,7 +3454,7 @@ export interface CloudVolumeSnapshot {
    * Snapshot size
    *
    */
-  size?: Number;
+  size?: number;
   /**
    * Snapshot status
    *
@@ -3518,7 +3518,7 @@ export interface CloudVolumeVolume {
    * Volume size (in GB)
    *
    */
-  size?: Number;
+  size?: number;
   /**
    * Volume status
    *
@@ -3565,7 +3565,7 @@ export interface OrderPrice {
   text?: string;
   /**
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * Cloud Archives Account
@@ -3615,12 +3615,12 @@ export interface PcaBilling {
    * Billing id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Quantity of bytes for operation
    *
    */
-  quantity?: Number;
+  quantity?: number;
   /**
    * Billing reference name
    *
@@ -3630,7 +3630,7 @@ export interface PcaBilling {
    * Total usage after operation
    *
    */
-  total?: Number;
+  total?: number;
 }
 /**
  * cloud archives files
@@ -3665,7 +3665,7 @@ export interface PcaFile {
    * File size, in bytes
    *
    */
-  size?: Number;
+  size?: number;
   /**
    * File state
    *
@@ -3705,7 +3705,7 @@ export interface PcaSession {
    * Session size, in bytes
    *
    */
-  size?: Number;
+  size?: number;
   /**
    * IP session was made from
    *
@@ -3790,7 +3790,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -3842,7 +3842,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -3853,7 +3853,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -4028,8 +4028,8 @@ type PathsCloudDELETE = '/cloud/project/{serviceName}/acl/{accountId}' |
 '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}';
 
 export class ApiCloud extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   Operations about the PUBLICCLOUD service
@@ -4040,17 +4040,17 @@ export class ApiCloud extends ApiCommon {
   Get information about a cloud project creation
   Get information about a cloud project creation
   **/
-  public get(path: '/cloud/createProjectInfo', queryParams?: {voucher?: string}): Promise<CloudProjectNewProjectInfo>;
+  public get(path: '/cloud/createProjectInfo'): Promise<CloudProjectNewProjectInfo>;
   /**
   Missing description
   Get all cloud pending orders
   **/
-  public get(path: '/cloud/order', queryParams?: {planCode?: string}): Promise<CloudOrderOrder[]>;
+  public get(path: '/cloud/order'): Promise<CloudOrderOrder[]>;
   /**
   Get services prices
   Get services prices
   **/
-  public get(path: '/cloud/price', queryParams?: {flavorId?: string, region?: string}): Promise<CloudPrice>;
+  public get(path: '/cloud/price'): Promise<CloudPrice>;
   /**
   Operations about the PUBLICCLOUD service
   List available services
@@ -4060,449 +4060,453 @@ export class ApiCloud extends ApiCommon {
   Project
   Get this object properties
   **/
-  public get(path: '/cloud/project/{serviceName}', pathParams: {serviceName: string}): Promise<CloudProject>;
+  public get(path: '/cloud/project/{serviceName}', params: {serviceName: string}): Promise<CloudProject>;
   /**
   List the cloud.Acl objects
   Get ACL on your cloud project
   **/
-  public get(path: '/cloud/project/{serviceName}/acl', pathParams: {serviceName: string}, queryParams?: {type?: CloudAclTypeEnum}): Promise<string[]>;
+  public get(path: '/cloud/project/{serviceName}/acl', params: {serviceName: string, type?: CloudAclTypeEnum}): Promise<string[]>;
   /**
   Cloud ACL
   Get this object properties
   **/
-  public get(path: '/cloud/project/{serviceName}/acl/{accountId}', pathParams: {serviceName: string, accountId: string}): Promise<CloudAcl>;
+  public get(path: '/cloud/project/{serviceName}/acl/{accountId}', params: {serviceName: string, accountId: string}): Promise<CloudAcl>;
   /**
   List the cloud.Alerting objects
   Manage alerts on your consumption
   **/
-  public get(path: '/cloud/project/{serviceName}/alerting', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/cloud/project/{serviceName}/alerting', params: {serviceName: string}): Promise<string[]>;
   /**
   Cloud alerting consumption
   Get this object properties
   **/
-  public get(path: '/cloud/project/{serviceName}/alerting/{id}', pathParams: {serviceName: string, id: string}): Promise<CloudAlerting>;
+  public get(path: '/cloud/project/{serviceName}/alerting/{id}', params: {serviceName: string, id: string}): Promise<CloudAlerting>;
   /**
   List the cloud.AlertingAlert objects
   See alerts
   **/
-  public get(path: '/cloud/project/{serviceName}/alerting/{id}/alert', pathParams: {serviceName: string, id: string}): Promise<Number[]>;
+  public get(path: '/cloud/project/{serviceName}/alerting/{id}/alert', params: {serviceName: string, id: string}): Promise<number[]>;
   /**
   Cloud alert on your consumption
   Get this object properties
   **/
-  public get(path: '/cloud/project/{serviceName}/alerting/{id}/alert/{alertId}', pathParams: {serviceName: string, id: string, alertId: Number}): Promise<CloudAlertingAlert>;
+  public get(path: '/cloud/project/{serviceName}/alerting/{id}/alert/{alertId}', params: {serviceName: string, id: string, alertId: number}): Promise<CloudAlertingAlert>;
   /**
   bill operations
   Get your project bills
   **/
-  public get(path: '/cloud/project/{serviceName}/bill', pathParams: {serviceName: string}, queryParams?: {from?: string, to?: string}): Promise<CloudProjectBill[]>;
+  public get(path: '/cloud/project/{serviceName}/bill', params: {serviceName: string, from: string, to: string}): Promise<CloudProjectBill[]>;
   /**
   consumption operations
   Get your project consumption
   **/
-  public get(path: '/cloud/project/{serviceName}/consumption', pathParams: {serviceName: string}, queryParams?: {from?: string, to?: string}): Promise<CloudProjectProjectUsage>;
+  public get(path: '/cloud/project/{serviceName}/consumption', params: {serviceName: string, from: string, to: string}): Promise<CloudProjectProjectUsage>;
   /**
   List the cloud.Credit objects
   Get your credit
   **/
-  public get(path: '/cloud/project/{serviceName}/credit', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/cloud/project/{serviceName}/credit', params: {serviceName: string}): Promise<number[]>;
   /**
   Cloud credit
   Get this object properties
   **/
-  public get(path: '/cloud/project/{serviceName}/credit/{id}', pathParams: {serviceName: string, id: Number}): Promise<CloudCredit>;
+  public get(path: '/cloud/project/{serviceName}/credit/{id}', params: {serviceName: string, id: number}): Promise<CloudCredit>;
   /**
   Missing description
   Get flavors
   **/
-  public get(path: '/cloud/project/{serviceName}/flavor', pathParams: {serviceName: string}, queryParams?: {region?: string}): Promise<CloudFlavorFlavor[]>;
+  public get(path: '/cloud/project/{serviceName}/flavor', params: {serviceName: string, region?: string}): Promise<CloudFlavorFlavor[]>;
   /**
   Missing description
   Get flavor
   **/
-  public get(path: '/cloud/project/{serviceName}/flavor/{flavorId}', pathParams: {flavorId: string, serviceName: string}): Promise<CloudFlavorFlavor>;
+  public get(path: '/cloud/project/{serviceName}/flavor/{flavorId}', params: {flavorId: string, serviceName: string}): Promise<CloudFlavorFlavor>;
   /**
   Missing description
   Get your consumption forecast
   **/
-  public get(path: '/cloud/project/{serviceName}/forecast', pathParams: {serviceName: string}, queryParams?: {toDate?: string}): Promise<CloudForecastProjectForecast>;
+  public get(path: '/cloud/project/{serviceName}/forecast', params: {serviceName: string, toDate: string}): Promise<CloudForecastProjectForecast>;
   /**
   Missing description
   Get images
   **/
-  public get(path: '/cloud/project/{serviceName}/image', pathParams: {serviceName: string}, queryParams?: {flavorType?: string, osType?: CloudImageOSTypeEnum, region?: string}): Promise<CloudImageImage[]>;
+  public get(path: '/cloud/project/{serviceName}/image', params: {serviceName: string, flavorType?: string, osType?: CloudImageOSTypeEnum, region?: string}): Promise<CloudImageImage[]>;
   /**
   Missing description
   Get image
   **/
-  public get(path: '/cloud/project/{serviceName}/image/{imageId}', pathParams: {imageId: string, serviceName: string}): Promise<CloudImageImage>;
+  public get(path: '/cloud/project/{serviceName}/image/{imageId}', params: {imageId: string, serviceName: string}): Promise<CloudImageImage>;
   /**
   Missing description
   Get instances
   **/
-  public get(path: '/cloud/project/{serviceName}/instance', pathParams: {serviceName: string}, queryParams?: {region?: string}): Promise<CloudInstanceInstance[]>;
+  public get(path: '/cloud/project/{serviceName}/instance', params: {serviceName: string, region?: string}): Promise<CloudInstanceInstance[]>;
   /**
   Missing description
   Get the detail of a group
   **/
-  public get(path: '/cloud/project/{serviceName}/instance/group', pathParams: {serviceName: string}, queryParams?: {region?: string}): Promise<CloudInstancegroupInstanceGroup[]>;
+  public get(path: '/cloud/project/{serviceName}/instance/group', params: {serviceName: string, region?: string}): Promise<CloudInstancegroupInstanceGroup[]>;
   /**
   Missing description
   Get all groups
   **/
-  public get(path: '/cloud/project/{serviceName}/instance/group/{groupId}', pathParams: {groupId: string, serviceName: string}, queryParams?: {region?: string}): Promise<CloudInstancegroupInstanceGroup>;
+  public get(path: '/cloud/project/{serviceName}/instance/group/{groupId}', params: {groupId: string, serviceName: string, region?: string}): Promise<CloudInstancegroupInstanceGroup>;
   /**
   Missing description
   Get instance
   **/
-  public get(path: '/cloud/project/{serviceName}/instance/{instanceId}', pathParams: {instanceId: string, serviceName: string}): Promise<CloudInstanceInstanceDetail>;
+  public get(path: '/cloud/project/{serviceName}/instance/{instanceId}', params: {instanceId: string, serviceName: string}): Promise<CloudInstanceInstanceDetail>;
   /**
   Missing description
   Get interfaces
   **/
-  public get(path: '/cloud/project/{serviceName}/instance/{instanceId}/interface', pathParams: {instanceId: string, serviceName: string}): Promise<CloudInstanceInterfaceInterface[]>;
+  public get(path: '/cloud/project/{serviceName}/instance/{instanceId}/interface', params: {instanceId: string, serviceName: string}): Promise<CloudInstanceInterfaceInterface[]>;
   /**
   Missing description
   Get interface
   **/
-  public get(path: '/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}', pathParams: {instanceId: string, interfaceId: string, serviceName: string}): Promise<CloudInstanceInterfaceInterface>;
+  public get(path: '/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}', params: {instanceId: string, interfaceId: string, serviceName: string}): Promise<CloudInstanceInterfaceInterface>;
   /**
   Missing description
   Return many statistics about the virtual machine for a given period
   **/
-  public get(path: '/cloud/project/{serviceName}/instance/{instanceId}/monitoring', pathParams: {instanceId: string, serviceName: string}, queryParams?: {period?: CloudInstanceMetricsPeriod, type?: CloudInstanceMetricsType}): Promise<CloudInstanceInstanceMetrics>;
+  public get(path: '/cloud/project/{serviceName}/instance/{instanceId}/monitoring', params: {instanceId: string, serviceName: string, period: CloudInstanceMetricsPeriod, type: CloudInstanceMetricsType}): Promise<CloudInstanceInstanceMetrics>;
   /**
   Missing description
   Get ips
   **/
-  public get(path: '/cloud/project/{serviceName}/ip', pathParams: {serviceName: string}): Promise<CloudIpCloudIp[]>;
+  public get(path: '/cloud/project/{serviceName}/ip', params: {serviceName: string}): Promise<CloudIpCloudIp[]>;
   /**
   Missing description
   Get failover ips
   **/
-  public get(path: '/cloud/project/{serviceName}/ip/failover', pathParams: {serviceName: string}): Promise<CloudIpFailoverIp[]>;
+  public get(path: '/cloud/project/{serviceName}/ip/failover', params: {serviceName: string}): Promise<CloudIpFailoverIp[]>;
   /**
   Missing description
   Get failover ip
   **/
-  public get(path: '/cloud/project/{serviceName}/ip/failover/{id}', pathParams: {id: string, serviceName: string}): Promise<CloudIpFailoverIp>;
+  public get(path: '/cloud/project/{serviceName}/ip/failover/{id}', params: {id: string, serviceName: string}): Promise<CloudIpFailoverIp>;
   /**
   List the cloud.IPLoadbalancing objects
   Managed imported IP LB in OpenStack
   **/
-  public get(path: '/cloud/project/{serviceName}/ipLoadbalancing', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/cloud/project/{serviceName}/ipLoadbalancing', params: {serviceName: string}): Promise<string[]>;
   /**
   Load balancing IP imported into your OpenStack project
   Get this object properties
   **/
-  public get(path: '/cloud/project/{serviceName}/ipLoadbalancing/{id}', pathParams: {serviceName: string, id: string}): Promise<CloudIPLoadbalancing>;
+  public get(path: '/cloud/project/{serviceName}/ipLoadbalancing/{id}', params: {serviceName: string, id: string}): Promise<CloudIPLoadbalancing>;
   /**
   Missing description
   Get planned migrations
   **/
-  public get(path: '/cloud/project/{serviceName}/migration', pathParams: {serviceName: string}): Promise<CloudMigrationMigration[]>;
+  public get(path: '/cloud/project/{serviceName}/migration', params: {serviceName: string}): Promise<CloudMigrationMigration[]>;
   /**
   Missing description
   Get planned migration
   **/
-  public get(path: '/cloud/project/{serviceName}/migration/{migrationId}', pathParams: {migrationId: string, serviceName: string}): Promise<CloudMigrationMigration>;
+  public get(path: '/cloud/project/{serviceName}/migration/{migrationId}', params: {migrationId: string, serviceName: string}): Promise<CloudMigrationMigration>;
   /**
   Missing description
   Get private networks
   **/
-  public get(path: '/cloud/project/{serviceName}/network/private', pathParams: {serviceName: string}): Promise<CloudNetworkNetwork[]>;
+  public get(path: '/cloud/project/{serviceName}/network/private', params: {serviceName: string}): Promise<CloudNetworkNetwork[]>;
   /**
   Missing description
   Get private network
   **/
-  public get(path: '/cloud/project/{serviceName}/network/private/{networkId}', pathParams: {networkId: string, serviceName: string}): Promise<CloudNetworkNetwork>;
+  public get(path: '/cloud/project/{serviceName}/network/private/{networkId}', params: {networkId: string, serviceName: string}): Promise<CloudNetworkNetwork>;
   /**
   Missing description
   Get network subnets
   **/
-  public get(path: '/cloud/project/{serviceName}/network/private/{networkId}/subnet', pathParams: {networkId: string, serviceName: string}): Promise<CloudNetworkSubnet[]>;
+  public get(path: '/cloud/project/{serviceName}/network/private/{networkId}/subnet', params: {networkId: string, serviceName: string}): Promise<CloudNetworkSubnet[]>;
   /**
   Missing description
   Get public networks
   **/
-  public get(path: '/cloud/project/{serviceName}/network/public', pathParams: {serviceName: string}): Promise<CloudNetworkNetwork[]>;
+  public get(path: '/cloud/project/{serviceName}/network/public', params: {serviceName: string}): Promise<CloudNetworkNetwork[]>;
   /**
   Manage the operations on your Cloud Project
   List your operations
   **/
-  public get(path: '/cloud/project/{serviceName}/operation', pathParams: {serviceName: string}): Promise<CloudOperation[]>;
+  public get(path: '/cloud/project/{serviceName}/operation', params: {serviceName: string}): Promise<CloudOperation[]>;
   /**
   Manage one of your operations
   Get information about one operation
   **/
-  public get(path: '/cloud/project/{serviceName}/operation/{operationId}', pathParams: {operationId: string, serviceName: string}): Promise<CloudOperation>;
+  public get(path: '/cloud/project/{serviceName}/operation/{operationId}', params: {operationId: string, serviceName: string}): Promise<CloudOperation>;
   /**
   Missing description
   Get project quotas
   **/
-  public get(path: '/cloud/project/{serviceName}/quota', pathParams: {serviceName: string}): Promise<CloudQuotaQuotas[]>;
+  public get(path: '/cloud/project/{serviceName}/quota', params: {serviceName: string}): Promise<CloudQuotaQuotas[]>;
   /**
   Manage your regions
   List your regions
   **/
-  public get(path: '/cloud/project/{serviceName}/region', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/cloud/project/{serviceName}/region', params: {serviceName: string}): Promise<string[]>;
   /**
   Manage one of your region
   Get information about your region
   **/
-  public get(path: '/cloud/project/{serviceName}/region/{regionName}', pathParams: {regionName: string, serviceName: string}): Promise<CloudRegion>;
+  public get(path: '/cloud/project/{serviceName}/region/{regionName}', params: {regionName: string, serviceName: string}): Promise<CloudRegion>;
   /**
   Manage your automated backups
   List your automated backups
   **/
-  public get(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup', pathParams: {regionName: string, serviceName: string}): Promise<CloudBackup[]>;
+  public get(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup', params: {regionName: string, serviceName: string}): Promise<CloudBackup[]>;
   /**
   Missing description
   Get details about a backup workflow process
   **/
-  public get(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}', pathParams: {backupWorkflowId: string, regionName: string, serviceName: string}): Promise<CloudBackup>;
+  public get(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}', params: {backupWorkflowId: string, regionName: string, serviceName: string}): Promise<CloudBackup>;
   /**
   Manage the regions you can add on your project
   List the regions on which you can ask an access to
   **/
-  public get(path: '/cloud/project/{serviceName}/regionAvailable', pathParams: {serviceName: string}): Promise<CloudAvailableRegion[]>;
+  public get(path: '/cloud/project/{serviceName}/regionAvailable', params: {serviceName: string}): Promise<CloudAvailableRegion[]>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/cloud/project/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/cloud/project/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   Missing description
   Get snapshots
   **/
-  public get(path: '/cloud/project/{serviceName}/snapshot', pathParams: {serviceName: string}, queryParams?: {flavorType?: string, region?: string}): Promise<CloudImageImage[]>;
+  public get(path: '/cloud/project/{serviceName}/snapshot', params: {serviceName: string, flavorType?: string, region?: string}): Promise<CloudImageImage[]>;
   /**
   Missing description
   Get snapshot details
   **/
-  public get(path: '/cloud/project/{serviceName}/snapshot/{snapshotId}', pathParams: {serviceName: string, snapshotId: string}): Promise<CloudImageImage>;
+  public get(path: '/cloud/project/{serviceName}/snapshot/{snapshotId}', params: {serviceName: string, snapshotId: string}): Promise<CloudImageImage>;
   /**
   Missing description
   Get SSH keys
   **/
-  public get(path: '/cloud/project/{serviceName}/sshkey', pathParams: {serviceName: string}, queryParams?: {region?: string}): Promise<CloudSshkeySshKey[]>;
+  public get(path: '/cloud/project/{serviceName}/sshkey', params: {serviceName: string, region?: string}): Promise<CloudSshkeySshKey[]>;
   /**
   Missing description
   Get SSH key
   **/
-  public get(path: '/cloud/project/{serviceName}/sshkey/{keyId}', pathParams: {keyId: string, serviceName: string}): Promise<CloudSshkeySshKeyDetail>;
+  public get(path: '/cloud/project/{serviceName}/sshkey/{keyId}', params: {keyId: string, serviceName: string}): Promise<CloudSshkeySshKeyDetail>;
   /**
   Missing description
   Get stacks
   **/
-  public get(path: '/cloud/project/{serviceName}/stack', pathParams: {serviceName: string}): Promise<CloudStackStack[]>;
+  public get(path: '/cloud/project/{serviceName}/stack', params: {serviceName: string}): Promise<CloudStackStack[]>;
   /**
   Missing description
   Get stack
   **/
-  public get(path: '/cloud/project/{serviceName}/stack/{stackId}', pathParams: {serviceName: string, stackId: string}): Promise<CloudStackStack>;
+  public get(path: '/cloud/project/{serviceName}/stack/{stackId}', params: {serviceName: string, stackId: string}): Promise<CloudStackStack>;
   /**
   Missing description
   Get storage containers
   **/
-  public get(path: '/cloud/project/{serviceName}/storage', pathParams: {serviceName: string}): Promise<CloudStorageContainer[]>;
+  public get(path: '/cloud/project/{serviceName}/storage', params: {serviceName: string}): Promise<CloudStorageContainer[]>;
   /**
   Missing description
   Access to storage API
   **/
-  public get(path: '/cloud/project/{serviceName}/storage/access', pathParams: {serviceName: string}): Promise<CloudStorageContainerAccess>;
+  public get(path: '/cloud/project/{serviceName}/storage/access', params: {serviceName: string}): Promise<CloudStorageContainerAccess>;
   /**
   Missing description
   Get storage container
   **/
-  public get(path: '/cloud/project/{serviceName}/storage/{containerId}', pathParams: {containerId: string, serviceName: string}): Promise<CloudStorageContainerDetail>;
+  public get(path: '/cloud/project/{serviceName}/storage/{containerId}', params: {containerId: string, serviceName: string}): Promise<CloudStorageContainerDetail>;
   /**
   Missing description
   Get current usage
   **/
-  public get(path: '/cloud/project/{serviceName}/usage/current', pathParams: {serviceName: string}): Promise<CloudUsageUsageCurrent>;
+  public get(path: '/cloud/project/{serviceName}/usage/current', params: {serviceName: string}): Promise<CloudUsageUsageCurrent>;
   /**
   Missing description
   Get usage forecast
   **/
-  public get(path: '/cloud/project/{serviceName}/usage/forecast', pathParams: {serviceName: string}): Promise<CloudUsageUsageForecast>;
+  public get(path: '/cloud/project/{serviceName}/usage/forecast', params: {serviceName: string}): Promise<CloudUsageUsageForecast>;
   /**
   Missing description
   Usage information on your project
   **/
-  public get(path: '/cloud/project/{serviceName}/usage/history', pathParams: {serviceName: string}, queryParams?: {from?: string, to?: string}): Promise<CloudUsageUsageHistory[]>;
+  public get(path: '/cloud/project/{serviceName}/usage/history', params: {serviceName: string, from?: string, to?: string}): Promise<CloudUsageUsageHistory[]>;
   /**
   Missing description
   Usage information details
   **/
-  public get(path: '/cloud/project/{serviceName}/usage/history/{usageId}', pathParams: {serviceName: string, usageId: string}): Promise<CloudUsageUsageHistoryDetail>;
+  public get(path: '/cloud/project/{serviceName}/usage/history/{usageId}', params: {serviceName: string, usageId: string}): Promise<CloudUsageUsageHistoryDetail>;
   /**
   Missing description
   Get all users
   **/
-  public get(path: '/cloud/project/{serviceName}/user', pathParams: {serviceName: string}): Promise<CloudUserUser[]>;
+  public get(path: '/cloud/project/{serviceName}/user', params: {serviceName: string}): Promise<CloudUserUser[]>;
   /**
   Missing description
   Get user details
   **/
-  public get(path: '/cloud/project/{serviceName}/user/{userId}', pathParams: {serviceName: string, userId: Number}): Promise<CloudUserUser>;
+  public get(path: '/cloud/project/{serviceName}/user/{userId}', params: {serviceName: string, userId: number}): Promise<CloudUserUser>;
   /**
   Missing description
   Get RC file of OpenStack
   **/
-  public get(path: '/cloud/project/{serviceName}/user/{userId}/openrc', pathParams: {serviceName: string, userId: Number}, queryParams?: {region?: string, version?: CloudUserOpenrcVersionEnum}): Promise<CloudUserOpenrc>;
+  public get(path: '/cloud/project/{serviceName}/user/{userId}/openrc', params: {serviceName: string, userId: number, region: string, version?: CloudUserOpenrcVersionEnum}): Promise<CloudUserOpenrc>;
   /**
   Missing description
   Get rclone configuration file
   **/
-  public get(path: '/cloud/project/{serviceName}/user/{userId}/rclone', pathParams: {serviceName: string, userId: Number}, queryParams?: {region?: string}): Promise<CloudUserRclone>;
+  public get(path: '/cloud/project/{serviceName}/user/{userId}/rclone', params: {serviceName: string, userId: number, region: string}): Promise<CloudUserRclone>;
   /**
   Missing description
   Get volumes
   **/
-  public get(path: '/cloud/project/{serviceName}/volume', pathParams: {serviceName: string}, queryParams?: {region?: string}): Promise<CloudVolumeVolume[]>;
+  public get(path: '/cloud/project/{serviceName}/volume', params: {serviceName: string, region?: string}): Promise<CloudVolumeVolume[]>;
   /**
   Missing description
   Get volume snapshots
   **/
-  public get(path: '/cloud/project/{serviceName}/volume/snapshot', pathParams: {serviceName: string}, queryParams?: {region?: string}): Promise<CloudVolumeSnapshot[]>;
+  public get(path: '/cloud/project/{serviceName}/volume/snapshot', params: {serviceName: string, region?: string}): Promise<CloudVolumeSnapshot[]>;
   /**
   Missing description
   Get volume snapshot details
   **/
-  public get(path: '/cloud/project/{serviceName}/volume/snapshot/{snapshotId}', pathParams: {serviceName: string, snapshotId: string}): Promise<CloudVolumeSnapshot>;
+  public get(path: '/cloud/project/{serviceName}/volume/snapshot/{snapshotId}', params: {serviceName: string, snapshotId: string}): Promise<CloudVolumeSnapshot>;
   /**
   Missing description
   Get volume details
   **/
-  public get(path: '/cloud/project/{serviceName}/volume/{volumeId}', pathParams: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
+  public get(path: '/cloud/project/{serviceName}/volume/{volumeId}', params: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
   /**
   Manage the vRack on your Cloud Project
   Get the linked vRack on your project
   **/
-  public get(path: '/cloud/project/{serviceName}/vrack', pathParams: {serviceName: string}): Promise<CloudVrack>;
+  public get(path: '/cloud/project/{serviceName}/vrack', params: {serviceName: string}): Promise<CloudVrack>;
   /**
   Get services prices for a subsidiary
   Get services prices for a subsidiary
   **/
-  public get(path: '/cloud/subsidiaryPrice', queryParams?: {flavorId?: string, ovhSubsidiary?: NichandleOvhSubsidiaryEnum, region?: string}): Promise<CloudPrice>;
+  public get(path: '/cloud/subsidiaryPrice'): Promise<CloudPrice>;
   /**
   Operations about the PUBLICCLOUD service
   List available services
   **/
-  public get(path: '/cloud/{serviceName}/pca', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/cloud/{serviceName}/pca', params: {serviceName: string}): Promise<string[]>;
   /**
   Cloud Archives Account
   Get this object properties
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}', pathParams: {serviceName: string, pcaServiceName: string}): Promise<PcaAccount>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}', params: {serviceName: string, pcaServiceName: string}): Promise<PcaAccount>;
   /**
   List the pca.Billing objects
   cloud Archives billing items
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/billing', pathParams: {serviceName: string, pcaServiceName: string}, queryParams?: {billed?: boolean, 'date.from'?: string, 'date.to'?: string}): Promise<Number[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/billing', params: {serviceName: string, pcaServiceName: string, billed?: boolean, 'date.from'?: string, 'date.to'?: string}): Promise<number[]>;
   /**
   cloud archives billing
   Get this object properties
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/billing/{billingId}', pathParams: {serviceName: string, pcaServiceName: string, billingId: Number}): Promise<PcaBilling>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/billing/{billingId}', params: {serviceName: string, pcaServiceName: string, billingId: number}): Promise<PcaBilling>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', pathParams: {serviceName: string, pcaServiceName: string}): Promise<ServicesService>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', params: {serviceName: string, pcaServiceName: string}): Promise<ServicesService>;
   /**
   List the pca.Session objects
   cloud archives sessions for account
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions', pathParams: {serviceName: string, pcaServiceName: string}, queryParams?: {name?: string}): Promise<string[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions', params: {serviceName: string, pcaServiceName: string, name?: string}): Promise<string[]>;
   /**
   cloud archives sessions
   Get this object properties
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', pathParams: {serviceName: string, pcaServiceName: string, sessionId: string}): Promise<PcaSession>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {serviceName: string, pcaServiceName: string, sessionId: string}): Promise<PcaSession>;
   /**
   List the pca.File objects
   cloud archives files in session
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files', pathParams: {serviceName: string, pcaServiceName: string, sessionId: string}, queryParams?: {name?: string}): Promise<string[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files', params: {serviceName: string, pcaServiceName: string, sessionId: string, name?: string}): Promise<string[]>;
   /**
   cloud archives files
   Get this object properties
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files/{fileId}', pathParams: {serviceName: string, pcaServiceName: string, sessionId: string, fileId: string}): Promise<PcaFile>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files/{fileId}', params: {serviceName: string, pcaServiceName: string, sessionId: string, fileId: string}): Promise<PcaFile>;
   /**
   List the pca.Task objects
   cloud archives tasks for account
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', pathParams: {serviceName: string, pcaServiceName: string}, queryParams?: {function?: CloudPcaFunctionTypeEnum, status?: CloudPcaTaskStateEnum, 'todoDate.from'?: string, 'todoDate.to'?: string}): Promise<string[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', params: {serviceName: string, pcaServiceName: string, function?: CloudPcaFunctionTypeEnum, status?: CloudPcaTaskStateEnum, 'todoDate.from'?: string, 'todoDate.to'?: string}): Promise<string[]>;
   /**
   cloud archives tasks
   Get this object properties
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks/{taskId}', pathParams: {serviceName: string, pcaServiceName: string, taskId: string}): Promise<PcaTask>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks/{taskId}', params: {serviceName: string, pcaServiceName: string, taskId: string}): Promise<PcaTask>;
   /**
   usage operations
   View account current total sessions usage (bytes)
   **/
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/usage', pathParams: {serviceName: string, pcaServiceName: string}): Promise<Number>;
-  public get(path: PathsCloudGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/usage', params: {serviceName: string, pcaServiceName: string}): Promise<number>;
+  public get(path: PathsCloudGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Project
   Alter this object properties
   **/
-  public put(path: '/cloud/project/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}', params: {serviceName: string}): Promise<void>;
   /**
   Cloud alerting consumption
   Alter this object properties
   **/
-  public put(path: '/cloud/project/{serviceName}/alerting/{id}', pathParams: {serviceName: string, id: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/alerting/{id}', params: {serviceName: string, id: string}): Promise<void>;
   /**
   Missing description
   Alter an instance
   **/
-  public put(path: '/cloud/project/{serviceName}/instance/{instanceId}', pathParams: {instanceId: string, serviceName: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/instance/{instanceId}', params: {instanceId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Update planned migration
   **/
-  public put(path: '/cloud/project/{serviceName}/migration/{migrationId}', pathParams: {migrationId: string, serviceName: string}): Promise<CloudMigrationMigration>;
+  public put(path: '/cloud/project/{serviceName}/migration/{migrationId}', params: {migrationId: string, serviceName: string}): Promise<CloudMigrationMigration>;
   /**
   Missing description
   Rename private network
   **/
-  public put(path: '/cloud/project/{serviceName}/network/private/{networkId}', pathParams: {networkId: string, serviceName: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/network/private/{networkId}', params: {networkId: string, serviceName: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cloud/project/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
   /**
   Missing description
   Update your storage container
   **/
-  public put(path: '/cloud/project/{serviceName}/storage/{containerId}', pathParams: {containerId: string, serviceName: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/storage/{containerId}', params: {containerId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Update a volume
   **/
-  public put(path: '/cloud/project/{serviceName}/volume/{volumeId}', pathParams: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
+  public put(path: '/cloud/project/{serviceName}/volume/{volumeId}', params: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
   /**
   Cloud Archives Account
   Alter this object properties
   **/
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}', pathParams: {serviceName: string, pcaServiceName: string}): Promise<void>;
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}', params: {serviceName: string, pcaServiceName: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', pathParams: {serviceName: string, pcaServiceName: string}): Promise<void>;
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', params: {serviceName: string, pcaServiceName: string}): Promise<void>;
   /**
   cloud archives sessions
   Alter this object properties
   **/
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', pathParams: {serviceName: string, pcaServiceName: string, sessionId: string}): Promise<void>;
-  public put(path: PathsCloudPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {serviceName: string, pcaServiceName: string, sessionId: string}): Promise<void>;
+  public put(path: PathsCloudPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Start a new cloud project
   Start a new cloud project
@@ -4512,352 +4516,356 @@ export class ApiCloud extends ApiCommon {
   List the cloud.Acl objects
   Create new ACL
   **/
-  public post(path: '/cloud/project/{serviceName}/acl', pathParams: {serviceName: string}): Promise<CloudAcl>;
+  public post(path: '/cloud/project/{serviceName}/acl', params: {serviceName: string}): Promise<CloudAcl>;
   /**
   List the cloud.Alerting objects
   Add new alert
   **/
-  public post(path: '/cloud/project/{serviceName}/alerting', pathParams: {serviceName: string}): Promise<CloudAlerting>;
+  public post(path: '/cloud/project/{serviceName}/alerting', params: {serviceName: string}): Promise<CloudAlerting>;
   /**
   cancel operations
   Cancel project creation
   **/
-  public post(path: '/cloud/project/{serviceName}/cancel', pathParams: {serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/cancel', params: {serviceName: string}): Promise<void>;
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/cloud/project/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  public post(path: '/cloud/project/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/cloud/project/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/cloud/project/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
   /**
   List the cloud.Credit objects
   Add credit to your project
   **/
-  public post(path: '/cloud/project/{serviceName}/credit', pathParams: {serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/credit', params: {serviceName: string}): Promise<void>;
   /**
   Missing description
   Create a new instance
   **/
-  public post(path: '/cloud/project/{serviceName}/instance', pathParams: {serviceName: string}): Promise<CloudInstanceInstanceDetail>;
+  public post(path: '/cloud/project/{serviceName}/instance', params: {serviceName: string}): Promise<CloudInstanceInstanceDetail>;
   /**
   Missing description
   Create multiple instances
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/bulk', pathParams: {serviceName: string}): Promise<CloudInstanceInstance[]>;
+  public post(path: '/cloud/project/{serviceName}/instance/bulk', params: {serviceName: string}): Promise<CloudInstanceInstance[]>;
   /**
   Missing description
   Create a group
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/group', pathParams: {serviceName: string}): Promise<CloudInstancegroupInstanceGroup>;
+  public post(path: '/cloud/project/{serviceName}/instance/group', params: {serviceName: string}): Promise<CloudInstancegroupInstanceGroup>;
   /**
   Missing description
   Active monthly billing on instance
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/activeMonthlyBilling', pathParams: {instanceId: string, serviceName: string}): Promise<CloudInstanceInstanceDetail>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/activeMonthlyBilling', params: {instanceId: string, serviceName: string}): Promise<CloudInstanceInstanceDetail>;
   /**
   Missing description
   Return initial credentials of applications installed from public image
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/applicationAccess', pathParams: {instanceId: string, serviceName: string}): Promise<CloudInstanceApplicationAccess>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/applicationAccess', params: {instanceId: string, serviceName: string}): Promise<CloudInstanceApplicationAccess>;
   /**
   Missing description
   Create interface on an instance and attached it to a network
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/interface', pathParams: {instanceId: string, serviceName: string}): Promise<CloudInstanceInterfaceInterface>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/interface', params: {instanceId: string, serviceName: string}): Promise<CloudInstanceInterfaceInterface>;
   /**
   Missing description
   Reboot an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/reboot', pathParams: {instanceId: string, serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/reboot', params: {instanceId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Reinstall an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/reinstall', pathParams: {instanceId: string, serviceName: string}): Promise<CloudInstanceInstanceDetail>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/reinstall', params: {instanceId: string, serviceName: string}): Promise<CloudInstanceInstanceDetail>;
   /**
   Missing description
   Enable or disable rescue mode
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/rescueMode', pathParams: {instanceId: string, serviceName: string}): Promise<CloudInstanceRescueAdminPassword>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/rescueMode', params: {instanceId: string, serviceName: string}): Promise<CloudInstanceRescueAdminPassword>;
   /**
   Missing description
   Migrate your instance to another flavor
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/resize', pathParams: {instanceId: string, serviceName: string}): Promise<CloudInstanceInstanceDetail>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/resize', params: {instanceId: string, serviceName: string}): Promise<CloudInstanceInstanceDetail>;
   /**
   Missing description
   Resume a suspended instance
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/resume', pathParams: {instanceId: string, serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/resume', params: {instanceId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Snapshot an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/snapshot', pathParams: {instanceId: string, serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/snapshot', params: {instanceId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Start an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/start', pathParams: {instanceId: string, serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/start', params: {instanceId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Stop an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/stop', pathParams: {instanceId: string, serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/stop', params: {instanceId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Get VNC access to your instance
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/vnc', pathParams: {instanceId: string, serviceName: string}): Promise<CloudInstanceInstanceVnc>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/vnc', params: {instanceId: string, serviceName: string}): Promise<CloudInstanceInstanceVnc>;
   /**
   Missing description
   Attach failover ip to an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/ip/failover/{id}/attach', pathParams: {id: string, serviceName: string}): Promise<CloudIpFailoverIp>;
+  public post(path: '/cloud/project/{serviceName}/ip/failover/{id}/attach', params: {id: string, serviceName: string}): Promise<CloudIpFailoverIp>;
   /**
   List the cloud.IPLoadbalancing objects
   Import an existing IP LB into OpenStack
   **/
-  public post(path: '/cloud/project/{serviceName}/ipLoadbalancing', pathParams: {serviceName: string}): Promise<CloudIPLoadbalancing>;
+  public post(path: '/cloud/project/{serviceName}/ipLoadbalancing', params: {serviceName: string}): Promise<CloudIPLoadbalancing>;
   /**
   renew operations
   Renew the import of your load balancing IP into Openstack
   **/
-  public post(path: '/cloud/project/{serviceName}/ipLoadbalancing/{id}/renew', pathParams: {serviceName: string, id: string}): Promise<CloudIPLoadbalancing>;
+  public post(path: '/cloud/project/{serviceName}/ipLoadbalancing/{id}/renew', params: {serviceName: string, id: string}): Promise<CloudIPLoadbalancing>;
   /**
   validate operations
   Validate the import of your load balancing IP into OpenStack
   **/
-  public post(path: '/cloud/project/{serviceName}/ipLoadbalancing/{id}/validate', pathParams: {serviceName: string, id: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/ipLoadbalancing/{id}/validate', params: {serviceName: string, id: string}): Promise<void>;
   /**
   Missing description
   Create a new network
   **/
-  public post(path: '/cloud/project/{serviceName}/network/private', pathParams: {serviceName: string}): Promise<CloudNetworkNetwork>;
+  public post(path: '/cloud/project/{serviceName}/network/private', params: {serviceName: string}): Promise<CloudNetworkNetwork>;
   /**
   Missing description
   Activate private network in a new region
   **/
-  public post(path: '/cloud/project/{serviceName}/network/private/{networkId}/region', pathParams: {networkId: string, serviceName: string}): Promise<CloudNetworkNetwork>;
+  public post(path: '/cloud/project/{serviceName}/network/private/{networkId}/region', params: {networkId: string, serviceName: string}): Promise<CloudNetworkNetwork>;
   /**
   Missing description
   Create a new network subnet
   **/
-  public post(path: '/cloud/project/{serviceName}/network/private/{networkId}/subnet', pathParams: {networkId: string, serviceName: string}): Promise<CloudNetworkSubnet>;
+  public post(path: '/cloud/project/{serviceName}/network/private/{networkId}/subnet', params: {networkId: string, serviceName: string}): Promise<CloudNetworkSubnet>;
   /**
   Missing description
   Get OVH playground session to use the openstack terminal
   **/
-  public post(path: '/cloud/project/{serviceName}/openstackClient', pathParams: {serviceName: string}): Promise<CloudOpenstackClientSession>;
+  public post(path: '/cloud/project/{serviceName}/openstackClient', params: {serviceName: string}): Promise<CloudOpenstackClientSession>;
   /**
   Manage your regions
   Request access to a region
   **/
-  public post(path: '/cloud/project/{serviceName}/region', pathParams: {serviceName: string}): Promise<CloudRegion>;
+  public post(path: '/cloud/project/{serviceName}/region', params: {serviceName: string}): Promise<CloudRegion>;
   /**
   Manage your automated backups
   Create a new automated backup
   **/
-  public post(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup', pathParams: {regionName: string, serviceName: string}): Promise<CloudBackup>;
+  public post(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup', params: {regionName: string, serviceName: string}): Promise<CloudBackup>;
   /**
   retain operations
   Do not expire the project, and retain it. You will have to pay for the resources you will use after using this call
   **/
-  public post(path: '/cloud/project/{serviceName}/retain', pathParams: {serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/retain', params: {serviceName: string}): Promise<void>;
   /**
   Missing description
   Create SSH key
   **/
-  public post(path: '/cloud/project/{serviceName}/sshkey', pathParams: {serviceName: string}): Promise<CloudSshkeySshKeyDetail>;
+  public post(path: '/cloud/project/{serviceName}/sshkey', params: {serviceName: string}): Promise<CloudSshkeySshKeyDetail>;
   /**
   Missing description
   Get OVH playground session with a stack installed to use the openstack terminal
   **/
-  public post(path: '/cloud/project/{serviceName}/stack/{stackId}/client', pathParams: {serviceName: string, stackId: string}): Promise<CloudOpenstackClientSession>;
+  public post(path: '/cloud/project/{serviceName}/stack/{stackId}/client', params: {serviceName: string, stackId: string}): Promise<CloudOpenstackClientSession>;
   /**
   Missing description
   Create container
   **/
-  public post(path: '/cloud/project/{serviceName}/storage', pathParams: {serviceName: string}): Promise<CloudStorageContainer>;
+  public post(path: '/cloud/project/{serviceName}/storage', params: {serviceName: string}): Promise<CloudStorageContainer>;
   /**
   Missing description
   Access to storage API
   **/
-  public post(path: '/cloud/project/{serviceName}/storage/access', pathParams: {serviceName: string}): Promise<CloudStorageContainerAccess>;
+  public post(path: '/cloud/project/{serviceName}/storage/access', params: {serviceName: string}): Promise<CloudStorageContainerAccess>;
   /**
   Missing description
   Add CORS support on your container
   **/
-  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/cors', pathParams: {containerId: string, serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/cors', params: {containerId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Get a public temporary URL to access to one of your object
   **/
-  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/publicUrl', pathParams: {containerId: string, serviceName: string}): Promise<CloudStorageContainerObjectTempURL>;
+  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/publicUrl', params: {containerId: string, serviceName: string}): Promise<CloudStorageContainerObjectTempURL>;
   /**
   Missing description
   Deploy your container files as a static web site
   **/
-  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/static', pathParams: {containerId: string, serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/static', params: {containerId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Create openstack user with only access to this container
   **/
-  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/user', pathParams: {containerId: string, serviceName: string}): Promise<CloudUserUserDetail>;
+  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/user', params: {containerId: string, serviceName: string}): Promise<CloudUserUserDetail>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/cloud/project/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/cloud/project/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
   /**
   unleash operations
   Request more quota on your /cloud project
   **/
-  public post(path: '/cloud/project/{serviceName}/unleash', pathParams: {serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/unleash', params: {serviceName: string}): Promise<void>;
   /**
   Missing description
   Create user
   **/
-  public post(path: '/cloud/project/{serviceName}/user', pathParams: {serviceName: string}): Promise<CloudUserUserDetail>;
+  public post(path: '/cloud/project/{serviceName}/user', params: {serviceName: string}): Promise<CloudUserUserDetail>;
   /**
   Missing description
   Regenerate user password
   **/
-  public post(path: '/cloud/project/{serviceName}/user/{userId}/regeneratePassword', pathParams: {serviceName: string, userId: Number}): Promise<CloudUserUserDetail>;
+  public post(path: '/cloud/project/{serviceName}/user/{userId}/regeneratePassword', params: {serviceName: string, userId: number}): Promise<CloudUserUserDetail>;
   /**
   Missing description
   Get token for user
   **/
-  public post(path: '/cloud/project/{serviceName}/user/{userId}/token', pathParams: {serviceName: string, userId: Number}): Promise<CloudAuthenticationToken>;
+  public post(path: '/cloud/project/{serviceName}/user/{userId}/token', params: {serviceName: string, userId: number}): Promise<CloudAuthenticationToken>;
   /**
   Missing description
   Create a volume
   **/
-  public post(path: '/cloud/project/{serviceName}/volume', pathParams: {serviceName: string}): Promise<CloudVolumeVolume>;
+  public post(path: '/cloud/project/{serviceName}/volume', params: {serviceName: string}): Promise<CloudVolumeVolume>;
   /**
   Missing description
   Attach a volume on an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/attach', pathParams: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
+  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/attach', params: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
   /**
   Missing description
   Detach a volume from an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/detach', pathParams: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
+  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/detach', params: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
   /**
   Missing description
   Snapshot a volume
   **/
-  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/snapshot', pathParams: {serviceName: string, volumeId: string}): Promise<CloudVolumeSnapshot>;
+  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/snapshot', params: {serviceName: string, volumeId: string}): Promise<CloudVolumeSnapshot>;
   /**
   Missing description
   Extend a volume
   **/
-  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/upsize', pathParams: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
+  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/upsize', params: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
   /**
   Manage the vRack on your Cloud Project
   Order and attach a new vRack on your project
   **/
-  public post(path: '/cloud/project/{serviceName}/vrack', pathParams: {serviceName: string}): Promise<CloudOperation>;
+  public post(path: '/cloud/project/{serviceName}/vrack', params: {serviceName: string}): Promise<CloudOperation>;
   /**
   restore operations
   Create a restore task for session
   **/
-  public post(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/restore', pathParams: {serviceName: string, pcaServiceName: string, sessionId: string}): Promise<PcaTask>;
+  public post(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/restore', params: {serviceName: string, pcaServiceName: string, sessionId: string}): Promise<PcaTask>;
   /**
   List the pca.Task objects
   Create a cloud archives task
   **/
-  public post(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', pathParams: {serviceName: string, pcaServiceName: string}): Promise<PcaTask>;
-  public post(path: PathsCloudPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', params: {serviceName: string, pcaServiceName: string}): Promise<PcaTask>;
+  public post(path: PathsCloudPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Cloud ACL
   Delete ACL
   **/
-  public delete(path: '/cloud/project/{serviceName}/acl/{accountId}', pathParams: {serviceName: string, accountId: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/acl/{accountId}', params: {serviceName: string, accountId: string}): Promise<void>;
   /**
   Cloud alerting consumption
   Delete alerting
   **/
-  public delete(path: '/cloud/project/{serviceName}/alerting/{id}', pathParams: {serviceName: string, id: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/alerting/{id}', params: {serviceName: string, id: string}): Promise<void>;
   /**
   Missing description
   Delete a group
   **/
-  public delete(path: '/cloud/project/{serviceName}/instance/group/{groupId}', pathParams: {groupId: string, serviceName: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/instance/group/{groupId}', params: {groupId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Delete an instance
   **/
-  public delete(path: '/cloud/project/{serviceName}/instance/{instanceId}', pathParams: {instanceId: string, serviceName: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/instance/{instanceId}', params: {instanceId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Delete an interface
   **/
-  public delete(path: '/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}', pathParams: {instanceId: string, interfaceId: string, serviceName: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}', params: {instanceId: string, interfaceId: string, serviceName: string}): Promise<void>;
   /**
   Load balancing IP imported into your OpenStack project
   Delete the import of your load balancing IP into OpenStack. This does not delete the IP LB but close the access of it from OpenStack
   **/
-  public delete(path: '/cloud/project/{serviceName}/ipLoadbalancing/{id}', pathParams: {serviceName: string, id: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/ipLoadbalancing/{id}', params: {serviceName: string, id: string}): Promise<void>;
   /**
   Missing description
   Delete private network
   **/
-  public delete(path: '/cloud/project/{serviceName}/network/private/{networkId}', pathParams: {networkId: string, serviceName: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/network/private/{networkId}', params: {networkId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Delete a network subnet
   **/
-  public delete(path: '/cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}', pathParams: {networkId: string, serviceName: string, subnetId: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}', params: {networkId: string, serviceName: string, subnetId: string}): Promise<void>;
   /**
   Missing description
   Delete a backup workflow process
   **/
-  public delete(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}', pathParams: {backupWorkflowId: string, regionName: string, serviceName: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}', params: {backupWorkflowId: string, regionName: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Delete a snapshot
   **/
-  public delete(path: '/cloud/project/{serviceName}/snapshot/{snapshotId}', pathParams: {serviceName: string, snapshotId: string}): Promise<CloudImageImage>;
+  public delete(path: '/cloud/project/{serviceName}/snapshot/{snapshotId}', params: {serviceName: string, snapshotId: string}): Promise<CloudImageImage>;
   /**
   Missing description
   Delete SSH key
   **/
-  public delete(path: '/cloud/project/{serviceName}/sshkey/{keyId}', pathParams: {keyId: string, serviceName: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/sshkey/{keyId}', params: {keyId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Delete container
   **/
-  public delete(path: '/cloud/project/{serviceName}/storage/{containerId}', pathParams: {containerId: string, serviceName: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/storage/{containerId}', params: {containerId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Delete CORS support on your container
   **/
-  public delete(path: '/cloud/project/{serviceName}/storage/{containerId}/cors', pathParams: {containerId: string, serviceName: string}, bodyParams?: {origin?: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/storage/{containerId}/cors', params: {containerId: string, serviceName: string, origin: string}): Promise<void>;
   /**
   Missing description
   Delete user
   **/
-  public delete(path: '/cloud/project/{serviceName}/user/{userId}', pathParams: {serviceName: string, userId: Number}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/user/{userId}', params: {serviceName: string, userId: number}): Promise<void>;
   /**
   Missing description
   Delete a volume snapshot
   **/
-  public delete(path: '/cloud/project/{serviceName}/volume/snapshot/{snapshotId}', pathParams: {serviceName: string, snapshotId: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/volume/snapshot/{snapshotId}', params: {serviceName: string, snapshotId: string}): Promise<void>;
   /**
   Missing description
   Delete a volume
   **/
-  public delete(path: '/cloud/project/{serviceName}/volume/{volumeId}', pathParams: {serviceName: string, volumeId: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/volume/{volumeId}', params: {serviceName: string, volumeId: string}): Promise<void>;
   /**
   cloud archives sessions
   Create a delete task for all files in session
   **/
-  public delete(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', pathParams: {serviceName: string, pcaServiceName: string, sessionId: string}): Promise<PcaTask>;
-  public delete(path: PathsCloudDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {serviceName: string, pcaServiceName: string, sessionId: string}): Promise<PcaTask>;
+  public delete(path: PathsCloudDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

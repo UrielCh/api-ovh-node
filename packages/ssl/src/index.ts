@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Map a possible renew for a specific service
  */
@@ -27,7 +27,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -71,7 +71,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -82,7 +82,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -190,7 +190,7 @@ export interface SslOperation {
   status?: SslOperationStatusEnum;
   /**
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * All functions a SSL operation can handle
@@ -209,8 +209,8 @@ type PathsSslGET = '/ssl' |
 type PathsSslPUT = '/ssl/{serviceName}/serviceInfos';
 
 export class ApiSsl extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   Operations about the SSL service
@@ -221,27 +221,31 @@ export class ApiSsl extends ApiCommon {
   Certificate of an SSL customer
   Get this object properties
   **/
-  public get(path: '/ssl/{serviceName}', pathParams: {serviceName: string}): Promise<SslCertificate>;
+  public get(path: '/ssl/{serviceName}', params: {serviceName: string}): Promise<SslCertificate>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/ssl/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/ssl/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   List the ssl.Operation objects
   Tasks associated to this ssl
   **/
-  public get(path: '/ssl/{serviceName}/tasks', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/ssl/{serviceName}/tasks', params: {serviceName: string}): Promise<number[]>;
   /**
   Task on a SSL
   Get this object properties
   **/
-  public get(path: '/ssl/{serviceName}/tasks/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<SslOperation>;
-  public get(path: PathsSslGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/ssl/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<SslOperation>;
+  public get(path: PathsSslGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/ssl/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsSslPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/ssl/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsSslPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
 }

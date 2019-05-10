@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Plesk instance meta details
  */
@@ -37,7 +37,7 @@ export interface HostingResellerProduct {
    * Progression of an action on the instance if any
    *
    */
-  progress?: Number;
+  progress?: number;
   /**
    * Status of the instance
    *
@@ -67,7 +67,7 @@ export interface HostingResellerProductType {
    * Number of allowed customers
    *
    */
-  consumers?: Number;
+  consumers?: number;
   /**
    * Instance's cpu
    *
@@ -77,22 +77,22 @@ export interface HostingResellerProductType {
    * Number of allowed databases
    *
    */
-  databases?: Number;
+  databases?: number;
   /**
    * Disk size of the instance (in GB)
    *
    */
-  diskSize?: Number;
+  diskSize?: number;
   /**
    * Number of allowed email accounts
    *
    */
-  emailAccounts?: Number;
+  emailAccounts?: number;
   /**
    * Instance's ram (in GB)
    *
    */
-  ram?: Number;
+  ram?: number;
   /**
    * Type name
    *
@@ -102,12 +102,12 @@ export interface HostingResellerProductType {
    * Number of vCore
    *
    */
-  vCores?: Number;
+  vCores?: number;
   /**
    * Number of allowed websites
    *
    */
-  websites?: Number;
+  websites?: number;
 }
 /**
  * Reseller type
@@ -179,7 +179,7 @@ export interface ResellerTask {
    * Task percentage progression
    *
    */
-  progress?: Number;
+  progress?: number;
   /**
    * Task name
    *
@@ -223,7 +223,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -267,7 +267,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -278,7 +278,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -304,8 +304,8 @@ type PathsHostingResellerPOST = '/hosting/reseller/{serviceName}/changeContact' 
 '/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore';
 
 export class ApiHostingReseller extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   Operations about the HOSTING_RESELLER service
@@ -316,83 +316,89 @@ export class ApiHostingReseller extends ApiCommon {
   Reseller
   Get this object properties
   **/
-  public get(path: '/hosting/reseller/{serviceName}', pathParams: {serviceName: string}): Promise<HostingResellerProduct>;
+  public get(path: '/hosting/reseller/{serviceName}', params: {serviceName: string}): Promise<HostingResellerProduct>;
   /**
   Reseller.resetPassword
   Get reset instance password url
   **/
-  public get(path: '/hosting/reseller/{serviceName}/resetPasswordUrl', pathParams: {serviceName: string}): Promise<string>;
+  public get(path: '/hosting/reseller/{serviceName}/resetPasswordUrl', params: {serviceName: string}): Promise<string>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/hosting/reseller/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/hosting/reseller/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   Reseller.list_snapshot
   List instance's current snapshots
   **/
-  public get(path: '/hosting/reseller/{serviceName}/snapshot', pathParams: {serviceName: string}): Promise<ResellerSnapshot[]>;
+  public get(path: '/hosting/reseller/{serviceName}/snapshot', params: {serviceName: string}): Promise<ResellerSnapshot[]>;
   /**
   Reseller.get_snapshot
   Detail of a snapshot
   **/
-  public get(path: '/hosting/reseller/{serviceName}/snapshot/{snapshotId}', pathParams: {serviceName: string, snapshotId: string}): Promise<ResellerSnapshot>;
+  public get(path: '/hosting/reseller/{serviceName}/snapshot/{snapshotId}', params: {serviceName: string, snapshotId: string}): Promise<ResellerSnapshot>;
   /**
   Reseller.list_task
   Get list of tasks
   **/
-  public get(path: '/hosting/reseller/{serviceName}/task', pathParams: {serviceName: string}): Promise<ResellerTask[]>;
+  public get(path: '/hosting/reseller/{serviceName}/task', params: {serviceName: string}): Promise<ResellerTask[]>;
   /**
   Reseller.get_task
   Get task information given its id
   **/
-  public get(path: '/hosting/reseller/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: string}): Promise<ResellerTask>;
-  public get(path: PathsHostingResellerGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/hosting/reseller/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<ResellerTask>;
+  public get(path: PathsHostingResellerGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/hosting/reseller/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsHostingResellerPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/hosting/reseller/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsHostingResellerPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/hosting/reseller/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  public post(path: '/hosting/reseller/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
   /**
   Reseller.change_email
   Change user email
   **/
-  public post(path: '/hosting/reseller/{serviceName}/email', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/email', params: {serviceName: string}): Promise<string>;
   /**
   Reseller.change_language
   Change language of the Plesk instance
   **/
-  public post(path: '/hosting/reseller/{serviceName}/language', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/language', params: {serviceName: string}): Promise<string>;
   /**
   Reseller.reboot
   Restart instance
   **/
-  public post(path: '/hosting/reseller/{serviceName}/reboot', pathParams: {serviceName: string}, bodyParams?: {hard?: boolean}): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/reboot', params: {serviceName: string, hard?: boolean}): Promise<string>;
   /**
   Reseller.reinstall
   Reinstall instance
   **/
-  public post(path: '/hosting/reseller/{serviceName}/reinstall', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/reinstall', params: {serviceName: string}): Promise<string>;
   /**
   Reseller.set_reverse
   Set new reverse to ip
   **/
-  public post(path: '/hosting/reseller/{serviceName}/reverse', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/reverse', params: {serviceName: string}): Promise<string>;
   /**
   Reseller.list_snapshot
   Make manual snapshot
   **/
-  public post(path: '/hosting/reseller/{serviceName}/snapshot', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/snapshot', params: {serviceName: string}): Promise<string>;
   /**
   Reseller.restore_snapshot
   Restore a snapshot
   **/
-  public post(path: '/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore', pathParams: {serviceName: string, snapshotId: string}): Promise<string>;
-  public post(path: PathsHostingResellerPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore', params: {serviceName: string, snapshotId: string}): Promise<string>;
+  public post(path: PathsHostingResellerPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
 }

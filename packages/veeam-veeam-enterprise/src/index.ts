@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Map a possible renew for a specific service
  */
@@ -27,7 +27,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -79,7 +79,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -90,7 +90,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -108,7 +108,7 @@ export interface VeeamVeeamEnterpriseAccount {
    * This Backup Server port
    *
    */
-  port?: Number;
+  port?: number;
   /**
    * Your Veeam Enterprise Service name
    *
@@ -138,7 +138,7 @@ export interface VeeamVeeamEnterpriseTask {
    * Current progress
    *
    */
-  progress?: Number;
+  progress?: number;
   /**
    * Task creation date
    *
@@ -153,7 +153,7 @@ export interface VeeamVeeamEnterpriseTask {
    * Task id
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * All possible states for a Veeam Enterprise Task
@@ -173,8 +173,8 @@ type PathsVeeamVeeamEnterprisePOST = '/veeam/veeamEnterprise/{serviceName}/confi
 '/veeam/veeamEnterprise/{serviceName}/update';
 
 export class ApiVeeamVeeamEnterprise extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   Operations about the VEEAMENTERPRISE service
@@ -185,48 +185,54 @@ export class ApiVeeamVeeamEnterprise extends ApiCommon {
   Veeeam Enterprise offer
   Get this object properties
   **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}', pathParams: {serviceName: string}): Promise<VeeamVeeamEnterpriseAccount>;
+  public get(path: '/veeam/veeamEnterprise/{serviceName}', params: {serviceName: string}): Promise<VeeamVeeamEnterpriseAccount>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   List the veeam.veeamEnterprise.Task objects
   Tasks associated with Veeam Enterprise
   **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {name?: string, state?: VeeamEnterpriseTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/veeam/veeamEnterprise/{serviceName}/task', params: {serviceName: string, name?: string, state?: VeeamEnterpriseTaskStateEnum}): Promise<number[]>;
   /**
   Operation with the Enterprise Account
   Get this object properties
   **/
-  public get(path: '/veeam/veeamEnterprise/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<VeeamVeeamEnterpriseTask>;
-  public get(path: PathsVeeamVeeamEnterpriseGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/veeam/veeamEnterprise/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<VeeamVeeamEnterpriseTask>;
+  public get(path: PathsVeeamVeeamEnterpriseGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
-  public put(path: PathsVeeamVeeamEnterprisePUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: PathsVeeamVeeamEnterprisePUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
   /**
   register operations
   Register Veeam Backup Server to Veeam Enterprise
   **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/register', pathParams: {serviceName: string}): Promise<VeeamVeeamEnterpriseTask[]>;
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/register', params: {serviceName: string}): Promise<VeeamVeeamEnterpriseTask[]>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
   /**
   update operations
   Update Veeam enterprise configuration
   **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/update', pathParams: {serviceName: string}): Promise<VeeamVeeamEnterpriseTask[]>;
-  public post(path: PathsVeeamVeeamEnterprisePOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/update', params: {serviceName: string}): Promise<VeeamVeeamEnterpriseTask[]>;
+  public post(path: PathsVeeamVeeamEnterprisePOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
 }

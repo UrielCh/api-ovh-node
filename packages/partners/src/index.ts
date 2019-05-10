@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Partner Application
  */
@@ -873,8 +873,8 @@ type PathsPartnersDELETE = '/partners/register/company/{companyId}' |
 '/partners/register/company/{companyId}/contact/{contactId}';
 
 export class ApiPartners extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   Company.list
@@ -885,34 +885,38 @@ export class ApiPartners extends ApiCommon {
   Company.get
   Get information on a created company
   **/
-  public get(path: '/partners/register/company/{companyId}', pathParams: {companyId: string}): Promise<PartnerCompany>;
+  public get(path: '/partners/register/company/{companyId}', params: {companyId: string}): Promise<PartnerCompany>;
   /**
   Application.create
   Compute scoring score without submitting application
   **/
-  public get(path: '/partners/register/company/{companyId}/application', pathParams: {companyId: string}): Promise<PartnerApplication>;
+  public get(path: '/partners/register/company/{companyId}/application', params: {companyId: string}): Promise<PartnerApplication>;
   /**
   Contact.list
   List created contacts
   **/
-  public get(path: '/partners/register/company/{companyId}/contact', pathParams: {companyId: string}): Promise<string[]>;
+  public get(path: '/partners/register/company/{companyId}/contact', params: {companyId: string}): Promise<string[]>;
   /**
   Contact.get
   Get information on a created contact
   **/
-  public get(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<PartnerContact>;
-  public get(path: PathsPartnersGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/partners/register/company/{companyId}/contact/{contactId}', params: {companyId: string, contactId: string}): Promise<PartnerContact>;
+  public get(path: PathsPartnersGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Company.get
   Update some fields on a created company
   **/
-  public put(path: '/partners/register/company/{companyId}', pathParams: {companyId: string}): Promise<PartnerCompany>;
+  public put(path: '/partners/register/company/{companyId}', params: {companyId: string}): Promise<PartnerCompany>;
   /**
   Contact.get
   Update some fields on a created contact
   **/
-  public put(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<PartnerContact>;
-  public put(path: PathsPartnersPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/partners/register/company/{companyId}/contact/{contactId}', params: {companyId: string, contactId: string}): Promise<PartnerContact>;
+  public put(path: PathsPartnersPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   Company.list
   Created a new company for the inscription
@@ -922,22 +926,26 @@ export class ApiPartners extends ApiCommon {
   Application.create
   Submit application information for validation
   **/
-  public post(path: '/partners/register/company/{companyId}/application', pathParams: {companyId: string}): Promise<PartnerApplication>;
+  public post(path: '/partners/register/company/{companyId}/application', params: {companyId: string}): Promise<PartnerApplication>;
   /**
   Contact.list
   Created a new contact for the inscription
   **/
-  public post(path: '/partners/register/company/{companyId}/contact', pathParams: {companyId: string}): Promise<PartnerContact>;
-  public post(path: PathsPartnersPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/partners/register/company/{companyId}/contact', params: {companyId: string}): Promise<PartnerContact>;
+  public post(path: PathsPartnersPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Company.get
   Remove a company
   **/
-  public delete(path: '/partners/register/company/{companyId}', pathParams: {companyId: string}): Promise<string>;
+  public delete(path: '/partners/register/company/{companyId}', params: {companyId: string}): Promise<string>;
   /**
   Contact.get
   Remove a contact
   **/
-  public delete(path: '/partners/register/company/{companyId}/contact/{contactId}', pathParams: {companyId: string, contactId: string}): Promise<string>;
-  public delete(path: PathsPartnersDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/partners/register/company/{companyId}/contact/{contactId}', params: {companyId: string, contactId: string}): Promise<string>;
+  public delete(path: PathsPartnersDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

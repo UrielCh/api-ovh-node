@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * A numeric value tagged with its unit
  */
@@ -28,7 +28,7 @@ export interface DedicatedCloudAllowedNetwork {
   network?: string;
   /**
    */
-  networkAccessId?: Number;
+  networkAccessId?: number;
   /**
    */
   state?: DedicatedCloudAllowedNetworkStateEnum;
@@ -110,7 +110,7 @@ export interface DedicatedCloudBackupJob {
    * Disk space allocated to the virtual machine
    *
    */
-  allocatedDisk?: Number;
+  allocatedDisk?: number;
   /**
    * List of days your Virtual Machine will be backuped
    *
@@ -130,7 +130,7 @@ export interface DedicatedCloudBackupJob {
    * Number of days before the backup is deleted
    *
    */
-  retentionTime?: Number;
+  retentionTime?: number;
   /**
    * State of the backup job
    *
@@ -243,7 +243,7 @@ export interface DedicatedCloudDatacenter {
   commercialRangeName?: string;
   /**
    */
-  datacenterId?: Number;
+  datacenterId?: number;
   /**
    */
   description?: string;
@@ -284,7 +284,7 @@ export interface DedicatedCloudFederationAccessNetwork {
    * Id of the Active Directory
    *
    */
-  activeDirectoryId?: Number;
+  activeDirectoryId?: number;
   /**
    * Active Directory base DN for groups
    *
@@ -319,7 +319,7 @@ export interface DedicatedCloudFederationAccessNetwork {
    * Active Directory LDAP port
    *
    */
-  ldapTcpPort?: Number;
+  ldapTcpPort?: number;
   /**
    * SSL thumbprint of the remote service
    *
@@ -349,7 +349,7 @@ export interface DedicatedCloudFiler {
    * Filer Id
    *
    */
-  filerId?: Number;
+  filerId?: number;
   /**
    * Human-Readable profile name
    *
@@ -369,22 +369,22 @@ export interface DedicatedCloudFiler {
    * Filer capacity
    *
    */
-  size?: ComplexTypeUnitAndValue<Number>;
+  size?: ComplexTypeUnitAndValue<number>;
   /**
    * Available space of this datastore, in GB
    *
    */
-  spaceFree?: Number;
+  spaceFree?: number;
   /**
    * Provisionned space of this datastore, in GB
    *
    */
-  spaceProvisionned?: Number;
+  spaceProvisionned?: number;
   /**
    * Used Space of this filer, in GB
    *
    */
-  spaceUsed?: Number;
+  spaceUsed?: number;
   /**
    * State of the filer
    *
@@ -394,7 +394,7 @@ export interface DedicatedCloudFiler {
    * Number of virtual machine on the filer
    *
    */
-  vmTotal?: Number;
+  vmTotal?: number;
 }
 /**
  * The generation of a Private Cloud
@@ -463,32 +463,32 @@ export interface DedicatedCloudHost {
    * CPU total frenquency
    *
    */
-  cpu?: ComplexTypeUnitAndValue<Number>;
+  cpu?: ComplexTypeUnitAndValue<number>;
   /**
    * The maximum speed of the cpu, in Mhz
    *
    */
-  cpuMax?: Number;
+  cpuMax?: number;
   /**
    * The speed of the CPU cores. This is an average value if there are multiple speeds. in Mhz
    *
    */
-  cpuMaxCore?: Number;
+  cpuMaxCore?: number;
   /**
    * Number of physical CPU cores on the host.
    *
    */
-  cpuNum?: Number;
+  cpuNum?: number;
   /**
    * Current cpu utilization, in Mhz
    *
    */
-  cpuUsed?: Number;
+  cpuUsed?: number;
   /**
    * Id of the host
    *
    */
-  hostId?: Number;
+  hostId?: number;
   /**
    * Host is in maintenance mode
    *
@@ -498,7 +498,7 @@ export interface DedicatedCloudHost {
    * Amount of used memory. Sum of the memory used by all powered on virtual machines and vSphere services on the host. in MB
    *
    */
-  memoryUsed?: Number;
+  memoryUsed?: number;
   /**
    * Name of the host (IP address)
    *
@@ -508,7 +508,7 @@ export interface DedicatedCloudHost {
    * Id of the parent host (if any)
    *
    */
-  parentHostId?: Number;
+  parentHostId?: number;
   /**
    * Host profile in a commercial range
    *
@@ -528,7 +528,7 @@ export interface DedicatedCloudHost {
    * Total RAM quantity
    *
    */
-  ram?: ComplexTypeUnitAndValue<Number>;
+  ram?: ComplexTypeUnitAndValue<number>;
   /**
    * State of the host
    *
@@ -538,17 +538,17 @@ export interface DedicatedCloudHost {
    * Host uptime in second
    *
    */
-  uptime?: Number;
+  uptime?: number;
   /**
    * Number of Virtual Machine on the host
    *
    */
-  vmTotal?: Number;
+  vmTotal?: number;
   /**
    * Number of Vcpu use by virtual machines on the host
    *
    */
-  vmVcpuTotal?: Number;
+  vmVcpuTotal?: number;
 }
 /**
  * Host profiles actually available in Private Cloud
@@ -558,7 +558,7 @@ export interface DedicatedCloudHostProfile {
    * Id of Host profile
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Name of Host profile
    *
@@ -573,7 +573,7 @@ export interface DedicatedCloudHostStockHypervisor {
    * Number of available hypervisors
    *
    */
-  value?: Number;
+  value?: number;
   /**
    * Version of hypervisor
    *
@@ -603,7 +603,7 @@ export interface DedicatedCloudHostStockProfile {
    * Id of host profile
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Name of host profile
    *
@@ -653,7 +653,7 @@ export interface DedicatedCloudIp {
    * Vlan where this network is routed
    *
    */
-  vlanNumber?: Number;
+  vlanNumber?: number;
 }
 /**
  * All countries in which an Ip Block may be ordered
@@ -714,7 +714,7 @@ export interface DedicatedCloudObjectRight {
   name?: string;
   /**
    */
-  objectRightId?: Number;
+  objectRightId?: number;
   /**
    * Right propagation on children objects
    *
@@ -764,7 +764,7 @@ export interface DedicatedCloudPccStockProfile {
    * Available PCC
    *
    */
-  count?: Number;
+  count?: number;
   /**
    * Kind of hypervisor
    *
@@ -784,7 +784,7 @@ export interface DedicatedCloudPccZone {
    * Id of pccZone
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * Name of pccZone
    *
@@ -819,12 +819,12 @@ export interface DedicatedCloudRestorePoint {
    * Id of the restore point.
    *
    */
-  restorePointId?: Number;
+  restorePointId?: number;
   /**
    * Size of the restore point
    *
    */
-  restorePointSize?: ComplexTypeUnitAndValue<Number>;
+  restorePointSize?: ComplexTypeUnitAndValue<number>;
   /**
    * Type of the restore point
    *
@@ -842,7 +842,7 @@ export interface DedicatedCloudRight {
   canAddRessource?: boolean;
   /**
    */
-  datacenterId?: Number;
+  datacenterId?: number;
   /**
    * Determine how this user can interact with the Private Cloud V(x)Lans
    *
@@ -855,7 +855,7 @@ export interface DedicatedCloudRight {
   right?: DedicatedCloudRightRightEnum;
   /**
    */
-  rightId?: Number;
+  rightId?: number;
   /**
    * Determine how this user can interact with the Private Cloud VM Network
    *
@@ -929,7 +929,7 @@ export interface DedicatedCloudTask {
    * datacenterId of the associated dedicatedCloud.Datacenter object
    *
    */
-  datacenterId?: Number;
+  datacenterId?: number;
   /**
    * Current progress description
    *
@@ -949,12 +949,12 @@ export interface DedicatedCloudTask {
    * filerId of the associated dedicatedCloud.Filer object
    *
    */
-  filerId?: Number;
+  filerId?: number;
   /**
    * hostId of the associated dedicatedCloud.Host object
    *
    */
-  hostId?: Number;
+  hostId?: number;
   /**
    * Task last modification date
    *
@@ -984,22 +984,22 @@ export interface DedicatedCloudTask {
    * networkAccessId of the associated dedicatedCloud.AllowedNetwork object
    *
    */
-  networkAccessId?: Number;
+  networkAccessId?: number;
   /**
    * orderId of the associated billing.Order object
    *
    */
-  orderId?: Number;
+  orderId?: number;
   /**
    * taskId of the parent dedicatedCloud.Task object
    *
    */
-  parentTaskId?: Number;
+  parentTaskId?: number;
   /**
    * Current progress
    *
    */
-  progress?: Number;
+  progress?: number;
   /**
    * Current Task state
    *
@@ -1009,7 +1009,7 @@ export interface DedicatedCloudTask {
    * Task id
    *
    */
-  taskId?: Number;
+  taskId?: number;
   /**
    * Task type
    *
@@ -1019,12 +1019,12 @@ export interface DedicatedCloudTask {
    * userId of the associated dedicatedCloud.User object
    *
    */
-  userId?: Number;
+  userId?: number;
   /**
    * vlanId of the parent dedicatedCloud.Vlan object
    *
    */
-  vlanId?: Number;
+  vlanId?: number;
 }
 /**
  * All states a Dedicated Cloud Task can be in
@@ -1120,7 +1120,7 @@ export interface DedicatedCloudUser {
   state?: DedicatedCloudUserStateEnum;
   /**
    */
-  userId?: Number;
+  userId?: number;
 }
 /**
  * Open or restricted access to management interface ?
@@ -1158,12 +1158,12 @@ export interface DedicatedCloudVMEncryptionAccessNetwork {
    * Id of the VM Encryption KMS
    *
    */
-  kmsId?: Number;
+  kmsId?: number;
   /**
    * VM Encryption KMS TCP port
    *
    */
-  kmsTcpPort?: Number;
+  kmsTcpPort?: number;
   /**
    * SSL thumbprint of the remote service
    *
@@ -1223,10 +1223,10 @@ export interface DedicatedCloudVlan {
   type?: DedicatedCloudVlanTypeEnum;
   /**
    */
-  vlanId?: Number;
+  vlanId?: number;
   /**
    */
-  vlanNumber?: Number;
+  vlanNumber?: number;
 }
 /**
  * Private Cloud Virtual Machine
@@ -1251,27 +1251,27 @@ export interface DedicatedCloudVm {
    * Maximum CPU performance, in MHz.
    *
    */
-  cpuMax?: Number;
+  cpuMax?: number;
   /**
    * Number of processors in the virtual machine.
    *
    */
-  cpuNum?: Number;
+  cpuNum?: number;
   /**
    * Time that the virtual machine was ready, but could not get scheduled to run on the physical CPU. In millisecond
    *
    */
-  cpuReady?: Number;
+  cpuReady?: number;
   /**
    * Percentage of time that the virtual machine was ready, but could not get scheduled to run on the physical CPU. In percent
    *
    */
-  cpuReadyPercent?: Number;
+  cpuReadyPercent?: number;
   /**
    * Current CPU performance, in MHz.
    *
    */
-  cpuUsed?: Number;
+  cpuUsed?: number;
   /**
    * List of filers in use by the virtual machine.
    *
@@ -1291,7 +1291,7 @@ export interface DedicatedCloudVm {
    * Memory size of the virtual machine, in MB
    *
    */
-  memoryMax?: Number;
+  memoryMax?: number;
   /**
    * Amount of guest memory that is shared with other virtual machines, in Mb
    *
@@ -1301,7 +1301,7 @@ export interface DedicatedCloudVm {
    * Current memory utilization, in MB
    *
    */
-  memoryUsed?: Number;
+  memoryUsed?: number;
   /**
    * moRef of the virtual machine.
    *
@@ -1316,22 +1316,22 @@ export interface DedicatedCloudVm {
    * Number of packets received.
    *
    */
-  netPacketRx?: Number;
+  netPacketRx?: number;
   /**
    * Number of packets transmitted.
    *
    */
-  netPacketTx?: Number;
+  netPacketTx?: number;
   /**
    * Rate at which data is received. In KB/s
    *
    */
-  netRx?: Number;
+  netRx?: number;
   /**
    * Rate at which data is transmitted. In KB/s
    *
    */
-  netTx?: Number;
+  netTx?: number;
   /**
    * List of the networks link to this virtual machine
    *
@@ -1346,17 +1346,17 @@ export interface DedicatedCloudVm {
    * Amount of time for a read operation from the virtual disk. In millisecond
    *
    */
-  readLatency?: Number;
+  readLatency?: number;
   /**
    * Number of read issued per second to the virtual disk. In millisecond
    *
    */
-  readPerSecond?: Number;
+  readPerSecond?: number;
   /**
    * Rate of reading data from the virtual disk. In KB/s
    *
    */
-  readRate?: Number;
+  readRate?: number;
   /**
    * The index of the current VM in instanceUuids array starting from 1, so 1 means that it is the primary VM.
    *
@@ -1366,7 +1366,7 @@ export interface DedicatedCloudVm {
    * Number of snapshot of the virtual machine.
    *
    */
-  snapshotNum?: Number;
+  snapshotNum?: number;
   /**
    * The fault tolerance state of the virtual machine.
    *
@@ -1376,7 +1376,7 @@ export interface DedicatedCloudVm {
    * Id of the virtual machine.
    *
    */
-  vmId?: Number;
+  vmId?: number;
   /**
    * Current version status of VMware Tools in the guest operating system.
    *
@@ -1391,17 +1391,17 @@ export interface DedicatedCloudVm {
    * Amount of time for a write operation from the virtual disk. In millisecond
    *
    */
-  writeLatency?: Number;
+  writeLatency?: number;
   /**
    * Number of write issued per second to the virtual disk. In millisecond
    *
    */
-  writePerSecond?: Number;
+  writePerSecond?: number;
   /**
    * Rate of writing data from the virtual disk. In KB/s
    *
    */
-  writeRate?: Number;
+  writeRate?: number;
 }
 /**
  * The Private Cloud vRealize Operations option
@@ -1436,7 +1436,7 @@ export interface DedicatedCloudZpoolStockProfile {
    * Available zpools
    *
    */
-  realCount?: Number;
+  realCount?: number;
 }
 /**
  * Details about a backup
@@ -1446,7 +1446,7 @@ export interface DedicatedCloudBackupBackup {
    * Disk space allocated to the virtual machine (in GB)
    *
    */
-  allocatedDisk?: Number;
+  allocatedDisk?: number;
   /**
    * List of days your Virtual Machine will be backuped
    *
@@ -1466,7 +1466,7 @@ export interface DedicatedCloudBackupBackup {
    * Last duration of the backup job
    *
    */
-  lastDuration?: ComplexTypeUnitAndValue<Number>;
+  lastDuration?: ComplexTypeUnitAndValue<number>;
   /**
    * Last result of the backup job
    *
@@ -1481,7 +1481,7 @@ export interface DedicatedCloudBackupBackup {
    * Last successful duration of the backup job
    *
    */
-  lastSuccessfulDuration?: ComplexTypeUnitAndValue<Number>;
+  lastSuccessfulDuration?: ComplexTypeUnitAndValue<number>;
   /**
    * Offer type of the backup job
    *
@@ -1496,7 +1496,7 @@ export interface DedicatedCloudBackupBackup {
    * Number of days before the backup is deleted
    *
    */
-  retentionTime?: Number;
+  retentionTime?: number;
   /**
    * State of the backup job
    *
@@ -1537,12 +1537,12 @@ export interface DedicatedCloudBackupRestorePoint {
    * Id of the restore point
    *
    */
-  restorePointId?: Number;
+  restorePointId?: number;
   /**
    * Size of the restore point
    *
    */
-  size?: ComplexTypeUnitAndValue<Number>;
+  size?: ComplexTypeUnitAndValue<number>;
   /**
    * Type of the restore point
    *
@@ -1639,7 +1639,7 @@ export interface DedicatedCloudDedicatedCloud {
    * The maximum amount of connected users allowed on the Private Cloud management interface
    *
    */
-  userLimitConcurrentSession?: Number;
+  userLimitConcurrentSession?: number;
   /**
    */
   userLogoutPolicy?: DedicatedCloudUserLogoutPolicyEnum;
@@ -1647,7 +1647,7 @@ export interface DedicatedCloudDedicatedCloud {
    * The timeout (in seconds) for the user sessions on the Private Cloud management interface. 0 value disable the timeout
    *
    */
-  userSessionTimeout?: Number;
+  userSessionTimeout?: number;
   /**
    * Url to the Private Cloud vScope interface
    *
@@ -1731,7 +1731,7 @@ export interface DedicatedCloudDisasterRecoveryRemoteSiteDetails {
    * Datacenter Id (if hosted by OVH)
    *
    */
-  datacenterId?: Number;
+  datacenterId?: number;
   /**
    * Datacenter name (if hosted by OVH)
    *
@@ -1779,7 +1779,7 @@ export interface DedicatedCloudFilerHourlyConsumption {
    * Consumption of the Filer
    *
    */
-  consumption?: ComplexTypeUnitAndValue<Number>;
+  consumption?: ComplexTypeUnitAndValue<number>;
   /**
    * Last update
    *
@@ -1802,7 +1802,7 @@ export interface DedicatedCloudFilerProfile {
   name?: string;
   /**
    */
-  size?: ComplexTypeUnitAndValue<Number>;
+  size?: ComplexTypeUnitAndValue<number>;
 }
 /**
  * All states a Dedicated Cloud Filer can be in
@@ -1816,7 +1816,7 @@ export interface DedicatedCloudHostHourlyConsumption {
    * Consumption of the Host.
    *
    */
-  consumption?: ComplexTypeUnitAndValue<Number>;
+  consumption?: ComplexTypeUnitAndValue<number>;
   /**
    * Last update.
    *
@@ -1832,13 +1832,13 @@ export interface DedicatedCloudHostProfile {
   core?: string;
   /**
    */
-  cpu?: ComplexTypeUnitAndValue<Number>;
+  cpu?: ComplexTypeUnitAndValue<number>;
   /**
    */
   name?: string;
   /**
    */
-  ram?: ComplexTypeUnitAndValue<Number>;
+  ram?: ComplexTypeUnitAndValue<number>;
 }
 /**
  * All states a Dedicated Cloud Host can be in
@@ -1893,7 +1893,7 @@ export interface DedicatedCloudPasswordPolicy {
    * Number of previous passwords to keep
    *
    */
-  historyCheck?: Number;
+  historyCheck?: number;
   /**
    * Whether or not a letter (a-z or A-Z) is mandatory in the password
    *
@@ -1908,12 +1908,12 @@ export interface DedicatedCloudPasswordPolicy {
    * Maximum lenght of the password
    *
    */
-  maxLength?: Number;
+  maxLength?: number;
   /**
    * Minimum lenght of the password
    *
    */
-  minLength?: Number;
+  minLength?: number;
   /**
    * Whether or not a special character (\W or _) is mandatory in the password
    *
@@ -1928,7 +1928,7 @@ export interface DedicatedCloudPasswordPolicy {
    * Password validity period (in days)
    *
    */
-  validityPeriod?: Number;
+  validityPeriod?: number;
 }
 /**
  * A structure describing the Resource's new price
@@ -1998,7 +1998,7 @@ export interface DedicatedCloudTwoFAWhitelist {
    * Id of the trusted IP
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * IP address of the remote service
    *
@@ -2026,22 +2026,22 @@ export interface DedicatedCloudVendorOvhId {
    * Datacenter id
    *
    */
-  datacenterId?: Number;
+  datacenterId?: number;
   /**
    * Filer id
    *
    */
-  filerId?: Number;
+  filerId?: number;
   /**
    * Host id
    *
    */
-  hostId?: Number;
+  hostId?: number;
   /**
    * Vm id
    *
    */
-  vmId?: Number;
+  vmId?: number;
 }
 /**
  * The connectable virtual device status
@@ -2080,7 +2080,7 @@ export type DedicatedCloudVlanTypeEnum = 'admin' | 'free' | 'paid';
 export interface DedicatedCloudVmFiler {
   /**
    */
-  committed?: Number;
+  committed?: number;
   /**
    */
   disks?: DedicatedCloudVmFilerDisk[];
@@ -2094,7 +2094,7 @@ export interface DedicatedCloudVmFiler {
 export interface DedicatedCloudVmFilerDisk {
   /**
    */
-  capacity?: Number;
+  capacity?: number;
   /**
    */
   id?: string;
@@ -2174,7 +2174,7 @@ export interface OrderPrice {
   text?: string;
   /**
    */
-  value?: Number;
+  value?: number;
 }
 /**
  * Map a possible renew for a specific service
@@ -2204,7 +2204,7 @@ export interface ServiceRenewType {
    * period of renew in month
    *
    */
-  period?: Number;
+  period?: number;
 }
 /**
  * Detailed renewal type of a service
@@ -2256,7 +2256,7 @@ export interface ServicesService {
    * All the possible renew period of your service in month
    *
    */
-  possibleRenewPeriod?: Number[];
+  possibleRenewPeriod?: number[];
   /**
    * Way of handling the renew
    *
@@ -2267,7 +2267,7 @@ export interface ServicesService {
   renewalType?: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: Number;
+  serviceId?: number;
   /**
    */
   status?: ServiceStateEnum;
@@ -2281,13 +2281,13 @@ export interface VrackTask {
   function?: string;
   /**
    */
-  id?: Number;
+  id?: number;
   /**
    */
   lastUpdate?: string;
   /**
    */
-  orderId?: Number;
+  orderId?: number;
   /**
    */
   serviceName?: string;
@@ -2320,7 +2320,7 @@ export interface VrackDedicatedCloud {
    * Dedicated cloud vlanId used
    *
    */
-  vlanId?: Number;
+  vlanId?: number;
   /**
    * vrack name
    *
@@ -2524,8 +2524,8 @@ type PathsDedicatedCloudDELETE = '/dedicatedCloud/{serviceName}/allowedNetwork/{
 '/dedicatedCloud/{serviceName}/vrack/{vrack}';
 
 export class ApiDedicatedCloud extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   Operations about the PCC service
@@ -2541,7 +2541,7 @@ export class ApiDedicatedCloud extends ApiCommon {
   The commercial ranges actually available in your Private Cloud
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/commercialRange/{commercialRangeName}', pathParams: {commercialRangeName: string}): Promise<DedicatedCloudCommercialRange>;
+  public get(path: '/dedicatedCloud/commercialRange/{commercialRangeName}', params: {commercialRangeName: string}): Promise<DedicatedCloudCommercialRange>;
   /**
   List the dedicatedCloud.PccZone objects
   List of locations available in a Dedicated Cloud
@@ -2551,944 +2551,952 @@ export class ApiDedicatedCloud extends ApiCommon {
   PccZones actually available in Private Cloud
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/location/{pccZone}', pathParams: {pccZone: string}): Promise<DedicatedCloudPccZone>;
+  public get(path: '/dedicatedCloud/location/{pccZone}', params: {pccZone: string}): Promise<DedicatedCloudPccZone>;
   /**
   List the dedicatedCloud.HostProfile objects
   Offered host profile
   **/
-  public get(path: '/dedicatedCloud/location/{pccZone}/hostProfile', pathParams: {pccZone: string}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/location/{pccZone}/hostProfile', params: {pccZone: string}): Promise<number[]>;
   /**
   Host profiles actually available in Private Cloud
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/location/{pccZone}/hostProfile/{id}', pathParams: {pccZone: string, id: Number}): Promise<DedicatedCloudHostProfile>;
+  public get(path: '/dedicatedCloud/location/{pccZone}/hostProfile/{id}', params: {pccZone: string, id: number}): Promise<DedicatedCloudHostProfile>;
   /**
   List the dedicatedCloud.Os objects
   Offered hypervisor version
   **/
-  public get(path: '/dedicatedCloud/location/{pccZone}/hypervisor', pathParams: {pccZone: string}): Promise<string[]>;
+  public get(path: '/dedicatedCloud/location/{pccZone}/hypervisor', params: {pccZone: string}): Promise<string[]>;
   /**
   Hypervisors actually available in Private Cloud
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/location/{pccZone}/hypervisor/{shortName}', pathParams: {pccZone: string, shortName: string}): Promise<DedicatedCloudOs>;
+  public get(path: '/dedicatedCloud/location/{pccZone}/hypervisor/{shortName}', params: {pccZone: string, shortName: string}): Promise<DedicatedCloudOs>;
   /**
   host operations
   Available host stock
   **/
-  public get(path: '/dedicatedCloud/location/{pccZone}/stock/host', pathParams: {pccZone: string}, queryParams?: {minYear?: Number}): Promise<DedicatedCloudHostStockProfile[]>;
+  public get(path: '/dedicatedCloud/location/{pccZone}/stock/host', params: {pccZone: string, minYear?: number}): Promise<DedicatedCloudHostStockProfile[]>;
   /**
   pcc operations
   Available PCC stock
   **/
-  public get(path: '/dedicatedCloud/location/{pccZone}/stock/pcc', pathParams: {pccZone: string}): Promise<DedicatedCloudPccStockProfile[]>;
+  public get(path: '/dedicatedCloud/location/{pccZone}/stock/pcc', params: {pccZone: string}): Promise<DedicatedCloudPccStockProfile[]>;
   /**
   zpool operations
   Available zpool stock
   **/
-  public get(path: '/dedicatedCloud/location/{pccZone}/stock/zpool', pathParams: {pccZone: string}, queryParams?: {profileFilter?: string}): Promise<DedicatedCloudZpoolStockProfile[]>;
+  public get(path: '/dedicatedCloud/location/{pccZone}/stock/zpool', params: {pccZone: string, profileFilter?: string}): Promise<DedicatedCloudZpoolStockProfile[]>;
   /**
   Private Cloud
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}', pathParams: {serviceName: string}): Promise<DedicatedCloudDedicatedCloud>;
+  public get(path: '/dedicatedCloud/{serviceName}', params: {serviceName: string}): Promise<DedicatedCloudDedicatedCloud>;
   /**
   List the dedicatedCloud.AllowedNetwork objects
   Networks allowed to access to this Private Cloud management interface
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/allowedNetwork', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/allowedNetwork', params: {serviceName: string}): Promise<number[]>;
   /**
   Network allowed to connect to the Private Cloud management interface
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', pathParams: {serviceName: string, networkAccessId: Number}): Promise<DedicatedCloudAllowedNetwork>;
+  public get(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', params: {serviceName: string, networkAccessId: number}): Promise<DedicatedCloudAllowedNetwork>;
   /**
   List the dedicatedCloud.Task objects
   Tasks associated with this allowed network
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task', pathParams: {serviceName: string, networkAccessId: Number}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task', params: {serviceName: string, networkAccessId: number, name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}', pathParams: {serviceName: string, networkAccessId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public get(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}', params: {serviceName: string, networkAccessId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   The features available in your Private Cloud
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/capabilities', pathParams: {serviceName: string}): Promise<DedicatedCloudCapabilities>;
+  public get(path: '/dedicatedCloud/{serviceName}/capabilities', params: {serviceName: string}): Promise<DedicatedCloudCapabilities>;
   /**
   compliance operations
   Get the name of the commercial ranges compliant with your Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/commercialRange/compliance', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/commercialRange/compliance', params: {serviceName: string}): Promise<string[]>;
   /**
   orderable operations
   Get the name of the commercial ranges orderable in your Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/commercialRange/orderable', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/commercialRange/orderable', params: {serviceName: string}): Promise<string[]>;
   /**
   List the dedicatedCloud.Datacenter objects
   Datacenters associated with this Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter', params: {serviceName: string}): Promise<number[]>;
   /**
   Private Cloud Datacenter
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudDatacenter>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudDatacenter>;
   /**
   Backup configured on a given Datacenter
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudBackup>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudBackup>;
   /**
   defaultLocalVraNetwork operations
   Get the default localVraNetwork subnet suggested by OVH
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/defaultLocalVraNetwork', pathParams: {serviceName: string, datacenterId: Number}): Promise<string>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/defaultLocalVraNetwork', params: {serviceName: string, datacenterId: number}): Promise<string>;
   /**
   List the dedicatedCloud.Filer objects
   Filers associated with this Datacenter
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer', pathParams: {serviceName: string, datacenterId: Number}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer', params: {serviceName: string, datacenterId: number}): Promise<number[]>;
   /**
   Private Cloud Filer
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}', pathParams: {serviceName: string, datacenterId: Number, filerId: Number}): Promise<DedicatedCloudFiler>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}', params: {serviceName: string, datacenterId: number, filerId: number}): Promise<DedicatedCloudFiler>;
   /**
   hourlyConsumption operations
   Hourly consumption associated with this Filer
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/hourlyConsumption', pathParams: {serviceName: string, datacenterId: Number, filerId: Number}): Promise<DedicatedCloudFilerHourlyConsumption>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/hourlyConsumption', params: {serviceName: string, datacenterId: number, filerId: number}): Promise<DedicatedCloudFilerHourlyConsumption>;
   /**
   List the dedicatedCloud.Task objects
   Tasks associated with this Filer
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task', pathParams: {serviceName: string, datacenterId: Number, filerId: Number}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task', params: {serviceName: string, datacenterId: number, filerId: number, name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}', pathParams: {serviceName: string, datacenterId: Number, filerId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}', params: {serviceName: string, datacenterId: number, filerId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   List the dedicatedCloud.Host objects
   Hosts associated with this Datacenter
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host', pathParams: {serviceName: string, datacenterId: Number}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host', params: {serviceName: string, datacenterId: number}): Promise<number[]>;
   /**
   Private Cloud Host
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}', pathParams: {serviceName: string, datacenterId: Number, hostId: Number}): Promise<DedicatedCloudHost>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}', params: {serviceName: string, datacenterId: number, hostId: number}): Promise<DedicatedCloudHost>;
   /**
   hourlyConsumption operations
   Hourly consumption associated with this host.
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/hourlyConsumption', pathParams: {serviceName: string, datacenterId: Number, hostId: Number}): Promise<DedicatedCloudHostHourlyConsumption>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/hourlyConsumption', params: {serviceName: string, datacenterId: number, hostId: number}): Promise<DedicatedCloudHostHourlyConsumption>;
   /**
   List the dedicatedCloud.Task objects
   Tasks associated with this Host
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task', pathParams: {serviceName: string, datacenterId: Number, hostId: Number}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task', params: {serviceName: string, datacenterId: number, hostId: number, name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}', pathParams: {serviceName: string, datacenterId: Number, hostId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}', params: {serviceName: string, datacenterId: number, hostId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   orderableFilerProfiles operations
   List available filers in a given Private Cloud Datacenter
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudFilerProfile[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudFilerProfile[]>;
   /**
   orderableHostProfiles operations
   List available hosts in a given Private Cloud Datacenter
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudHostProfile[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudHostProfile[]>;
   /**
   List the dedicatedCloud.Task objects
   Tasks associated with this Datacenter
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task', pathParams: {serviceName: string, datacenterId: Number}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task', params: {serviceName: string, datacenterId: number, name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}', pathParams: {serviceName: string, datacenterId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}', params: {serviceName: string, datacenterId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   List the dedicatedCloud.Vm objects
   Virtual machiness associated with this Datacenter
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm', pathParams: {serviceName: string, datacenterId: Number}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm', params: {serviceName: string, datacenterId: number}): Promise<number[]>;
   /**
   Private Cloud Virtual Machine
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}', pathParams: {serviceName: string, datacenterId: Number, vmId: Number}): Promise<DedicatedCloudVm>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudVm>;
   /**
   Private Cloud Backup Job
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob', pathParams: {serviceName: string, datacenterId: Number, vmId: Number}): Promise<DedicatedCloudBackupJob>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudBackupJob>;
   /**
   List the dedicatedCloud.RestorePoint objects
   Restore point associated to this Backup Job
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints', pathParams: {serviceName: string, datacenterId: Number, vmId: Number}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<number[]>;
   /**
   Private Cloud Restore Point
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}', pathParams: {serviceName: string, datacenterId: Number, vmId: Number, restorePointId: Number}): Promise<DedicatedCloudRestorePoint>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}', params: {serviceName: string, datacenterId: number, vmId: number, restorePointId: number}): Promise<DedicatedCloudRestorePoint>;
   /**
   Private Cloud Active Directory Federation option
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/federation', pathParams: {serviceName: string}): Promise<DedicatedCloudFederation>;
+  public get(path: '/dedicatedCloud/{serviceName}/federation', params: {serviceName: string}): Promise<DedicatedCloudFederation>;
   /**
   List the dedicatedCloud.FederationAccessNetwork objects
   Active Directories linked to this Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory', params: {serviceName: string}): Promise<number[]>;
   /**
   Private Cloud federation option access network
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}', pathParams: {serviceName: string, activeDirectoryId: Number}): Promise<DedicatedCloudFederationAccessNetwork>;
+  public get(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}', params: {serviceName: string, activeDirectoryId: number}): Promise<DedicatedCloudFederationAccessNetwork>;
   /**
   List the dedicatedCloud.Filer objects
   Filers mounted on all Datacenters of your Private Cloud Vsphere
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/filer', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/filer', params: {serviceName: string}): Promise<number[]>;
   /**
   Private Cloud Filer
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}', pathParams: {serviceName: string, filerId: Number}): Promise<DedicatedCloudFiler>;
+  public get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}', params: {serviceName: string, filerId: number}): Promise<DedicatedCloudFiler>;
   /**
   hourlyConsumption operations
   Hourly consumption associated with this Filer
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/hourlyConsumption', pathParams: {serviceName: string, filerId: Number}): Promise<DedicatedCloudFilerHourlyConsumption>;
+  public get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/hourlyConsumption', params: {serviceName: string, filerId: number}): Promise<DedicatedCloudFilerHourlyConsumption>;
   /**
   List the dedicatedCloud.Task objects
   Tasks associated with this Filer
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task', pathParams: {serviceName: string, filerId: Number}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task', params: {serviceName: string, filerId: number, name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}', pathParams: {serviceName: string, filerId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}', params: {serviceName: string, filerId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   globalTasks operations
   Get filtered tasks associated with this Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/globalTasks', pathParams: {serviceName: string}, queryParams?: {datacenterId?: Number, 'endDate.from'?: string, 'endDate.to'?: string, 'executionDate.from'?: string, 'executionDate.to'?: string, filerId?: Number, hostId?: Number, 'lastModificationDate.from'?: string, 'lastModificationDate.to'?: string, name?: string, networkAccessId?: Number, orderId?: Number, parentTaskId?: Number, state?: DedicatedCloudTaskStateEnum[], userId?: Number, vlanId?: Number}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/globalTasks', params: {serviceName: string, datacenterId?: number, 'endDate.from'?: string, 'endDate.to'?: string, 'executionDate.from'?: string, 'executionDate.to'?: string, filerId?: number, hostId?: number, 'lastModificationDate.from'?: string, 'lastModificationDate.to'?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: DedicatedCloudTaskStateEnum[], userId?: number, vlanId?: number}): Promise<number[]>;
   /**
   Private Cloud VMware Hybrid Cloud Extension option
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/hcx', pathParams: {serviceName: string}): Promise<DedicatedCloudHcx>;
+  public get(path: '/dedicatedCloud/{serviceName}/hcx', params: {serviceName: string}): Promise<DedicatedCloudHcx>;
   /**
   canBeDisabled operations
   Check if VMware Hybrid Cloud Extension option can be disabled
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/hcx/canBeDisabled', pathParams: {serviceName: string}): Promise<boolean>;
+  public get(path: '/dedicatedCloud/{serviceName}/hcx/canBeDisabled', params: {serviceName: string}): Promise<boolean>;
   /**
   canBeEnabled operations
   Check if VMware Hybrid Cloud Extension option can be enabled
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/hcx/canBeEnabled', pathParams: {serviceName: string}): Promise<boolean>;
+  public get(path: '/dedicatedCloud/{serviceName}/hcx/canBeEnabled', params: {serviceName: string}): Promise<boolean>;
   /**
   The Private Cloud Hds option
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/hds', pathParams: {serviceName: string}): Promise<DedicatedCloudHds>;
+  public get(path: '/dedicatedCloud/{serviceName}/hds', params: {serviceName: string}): Promise<DedicatedCloudHds>;
   /**
   canBeDisabled operations
   Check if Hds option can be disabled
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/hds/canBeDisabled', pathParams: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
+  public get(path: '/dedicatedCloud/{serviceName}/hds/canBeDisabled', params: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
   /**
   canBeEnabled operations
   Check if Hds option can be enabled
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/hds/canBeEnabled', pathParams: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
+  public get(path: '/dedicatedCloud/{serviceName}/hds/canBeEnabled', params: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
   /**
   The Private Cloud Hipaa option
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/hipaa', pathParams: {serviceName: string}): Promise<DedicatedCloudHipaa>;
+  public get(path: '/dedicatedCloud/{serviceName}/hipaa', params: {serviceName: string}): Promise<DedicatedCloudHipaa>;
   /**
   canBeDisabled operations
   Check if Hipaa option can be disabled
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/hipaa/canBeDisabled', pathParams: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
+  public get(path: '/dedicatedCloud/{serviceName}/hipaa/canBeDisabled', params: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
   /**
   canBeEnabled operations
   Check if Hipaa option can be enabled
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/hipaa/canBeEnabled', pathParams: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
+  public get(path: '/dedicatedCloud/{serviceName}/hipaa/canBeEnabled', params: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
   /**
   List the dedicatedCloud.Ip objects
   Ip Blocks attached to this Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/ip', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/ip', params: {serviceName: string}): Promise<string[]>;
   /**
   IP Blocks associated with a Private Cloud
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/ip/{network}', pathParams: {serviceName: string, network: string}): Promise<DedicatedCloudIp>;
+  public get(path: '/dedicatedCloud/{serviceName}/ip/{network}', params: {serviceName: string, network: string}): Promise<DedicatedCloudIp>;
   /**
   details operations
   List details about this IP Block
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/ip/{network}/details', pathParams: {serviceName: string, network: string}): Promise<DedicatedCloudIpDetails[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/ip/{network}/details', params: {serviceName: string, network: string}): Promise<DedicatedCloudIpDetails[]>;
   /**
   List the dedicatedCloud.Task objects
   Tasks associated with this IP Block
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/ip/{network}/task', pathParams: {serviceName: string, network: string}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/ip/{network}/task', params: {serviceName: string, network: string, name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}', pathParams: {serviceName: string, network: string, taskId: Number}): Promise<DedicatedCloudTask>;
+  public get(path: '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}', params: {serviceName: string, network: string, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   newPrices operations
   Get the new Prices for your Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/newPrices', pathParams: {serviceName: string}): Promise<DedicatedCloudResourceNewPrices>;
+  public get(path: '/dedicatedCloud/{serviceName}/newPrices', params: {serviceName: string}): Promise<DedicatedCloudResourceNewPrices>;
   /**
   The Private Cloud Nsx option
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/nsx', pathParams: {serviceName: string}): Promise<DedicatedCloudNsx>;
+  public get(path: '/dedicatedCloud/{serviceName}/nsx', params: {serviceName: string}): Promise<DedicatedCloudNsx>;
   /**
   canBeDisabled operations
   Check if Nsx option can be disabled
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/nsx/canBeDisabled', pathParams: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
+  public get(path: '/dedicatedCloud/{serviceName}/nsx/canBeDisabled', params: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
   /**
   canBeEnabled operations
   Check if Nsx option can be enabled
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/nsx/canBeEnabled', pathParams: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
+  public get(path: '/dedicatedCloud/{serviceName}/nsx/canBeEnabled', params: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
   /**
   orderableIpCountries operations
   Get the countries you can select in /order/dedicatedCloud/{serviceName}/ip
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/orderableIpCountries', pathParams: {serviceName: string}): Promise<DedicatedCloudIpCountriesEnum[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/orderableIpCountries', params: {serviceName: string}): Promise<DedicatedCloudIpCountriesEnum[]>;
   /**
   passwordPolicy operations
   Get the current password policy for your Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/passwordPolicy', pathParams: {serviceName: string}): Promise<DedicatedCloudPasswordPolicy>;
+  public get(path: '/dedicatedCloud/{serviceName}/passwordPolicy', params: {serviceName: string}): Promise<DedicatedCloudPasswordPolicy>;
   /**
   The Private Cloud PCI-DSS option
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/pcidss', pathParams: {serviceName: string}): Promise<DedicatedCloudPciDss>;
+  public get(path: '/dedicatedCloud/{serviceName}/pcidss', params: {serviceName: string}): Promise<DedicatedCloudPciDss>;
   /**
   canBeDisabled operations
   Check if PCI-DSS option can be disabled
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/pcidss/canBeDisabled', pathParams: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
+  public get(path: '/dedicatedCloud/{serviceName}/pcidss/canBeDisabled', params: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
   /**
   canBeEnabled operations
   Check if PCI-DSS option can be enabled
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/pcidss/canBeEnabled', pathParams: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
+  public get(path: '/dedicatedCloud/{serviceName}/pcidss/canBeEnabled', params: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
   /**
   List the dedicatedCloud.Robot objects
   Robots that can run on this Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/robot', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/robot', params: {serviceName: string}): Promise<string[]>;
   /**
   The robots used in Private Cloud
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/robot/{name}', pathParams: {serviceName: string, name: string}): Promise<DedicatedCloudRobot>;
+  public get(path: '/dedicatedCloud/{serviceName}/robot/{name}', params: {serviceName: string, name: string}): Promise<DedicatedCloudRobot>;
   /**
   Details about a Service
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/dedicatedCloud/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
   List the dedicatedCloud.ServicePack objects
   Service Pack compliant with the current Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/servicePacks', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/servicePacks', params: {serviceName: string}): Promise<string[]>;
   /**
   List of Service Pack compliant with the current Private Cloud
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/servicePacks/{name}', pathParams: {serviceName: string, name: string}): Promise<DedicatedCloudServicePack>;
+  public get(path: '/dedicatedCloud/{serviceName}/servicePacks/{name}', params: {serviceName: string, name: string}): Promise<DedicatedCloudServicePack>;
   /**
   List the dedicatedCloud.Task objects
   Tasks associated with this Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/task', pathParams: {serviceName: string}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/task', params: {serviceName: string, name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/task/{taskId}', pathParams: {serviceName: string, taskId: Number}): Promise<DedicatedCloudTask>;
+  public get(path: '/dedicatedCloud/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   List the dedicatedCloud.twoFAWhitelist objects
   Ip allowed to bypass the two factor authentication on this Private Cloud management interface
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist', params: {serviceName: string}): Promise<number[]>;
   /**
   Trust IP which can bypass the two factor authentication
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}', pathParams: {serviceName: string, id: Number}): Promise<DedicatedCloudTwoFAWhitelist>;
+  public get(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}', params: {serviceName: string, id: number}): Promise<DedicatedCloudTwoFAWhitelist>;
   /**
   List the dedicatedCloud.User objects
   Private Cloud users
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/user', pathParams: {serviceName: string}, queryParams?: {name?: string}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/user', params: {serviceName: string, name?: string}): Promise<number[]>;
   /**
   Private Cloud User
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}', pathParams: {serviceName: string, userId: Number}): Promise<DedicatedCloudUser>;
+  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}', params: {serviceName: string, userId: number}): Promise<DedicatedCloudUser>;
   /**
   List the dedicatedCloud.ObjectRight objects
   User rights on an object
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight', pathParams: {serviceName: string, userId: Number}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight', params: {serviceName: string, userId: number}): Promise<number[]>;
   /**
   Private Cloud User object right
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}', pathParams: {serviceName: string, userId: Number, objectRightId: Number}): Promise<DedicatedCloudObjectRight>;
+  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}', params: {serviceName: string, userId: number, objectRightId: number}): Promise<DedicatedCloudObjectRight>;
   /**
   List the dedicatedCloud.Right objects
   User rights in a given Datacenters
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/right', pathParams: {serviceName: string, userId: Number}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/right', params: {serviceName: string, userId: number}): Promise<number[]>;
   /**
   Private Cloud User right
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}', pathParams: {serviceName: string, userId: Number, rightId: Number}): Promise<DedicatedCloudRight>;
+  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}', params: {serviceName: string, userId: number, rightId: number}): Promise<DedicatedCloudRight>;
   /**
   List the dedicatedCloud.Task objects
   Tasks associated with this User
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/task', pathParams: {serviceName: string, userId: Number}, queryParams?: {name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/task', params: {serviceName: string, userId: number, name?: string, state?: DedicatedCloudTaskStateEnum}): Promise<number[]>;
   /**
   Operation on a Private Cloud component
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}', pathParams: {serviceName: string, userId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}', params: {serviceName: string, userId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   The Private Cloud Vendor option
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/vendor', pathParams: {serviceName: string}): Promise<DedicatedCloudVendor>;
+  public get(path: '/dedicatedCloud/{serviceName}/vendor', params: {serviceName: string}): Promise<DedicatedCloudVendor>;
   /**
   List the dedicatedCloud.Vlan objects
   Private Cloud vlans
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/vlan', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/vlan', params: {serviceName: string}): Promise<number[]>;
   /**
   Private Cloud Vlan
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/vlan/{vlanId}', pathParams: {serviceName: string, vlanId: Number}): Promise<DedicatedCloudVlan>;
+  public get(path: '/dedicatedCloud/{serviceName}/vlan/{vlanId}', params: {serviceName: string, vlanId: number}): Promise<DedicatedCloudVlan>;
   /**
   Private Cloud VM Encryption option
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/vmEncryption', pathParams: {serviceName: string}): Promise<DedicatedCloudVMEncryption>;
+  public get(path: '/dedicatedCloud/{serviceName}/vmEncryption', params: {serviceName: string}): Promise<DedicatedCloudVMEncryption>;
   /**
   List the dedicatedCloud.VMEncryptionAccessNetwork objects
   VM Encryption KMS linked to this Private Cloud
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms', pathParams: {serviceName: string}): Promise<Number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms', params: {serviceName: string}): Promise<number[]>;
   /**
   Private Cloud VM Encryption option access network
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}', pathParams: {serviceName: string, kmsId: Number}): Promise<DedicatedCloudVMEncryptionAccessNetwork>;
+  public get(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}', params: {serviceName: string, kmsId: number}): Promise<DedicatedCloudVMEncryptionAccessNetwork>;
   /**
   List the vrack.dedicatedCloud objects
   This Private Cloud vrack
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/vrack', pathParams: {serviceName: string}): Promise<string[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/vrack', params: {serviceName: string}): Promise<string[]>;
   /**
   vrack dedicated cloud interface
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/vrack/{vrack}', pathParams: {serviceName: string, vrack: string}): Promise<VrackDedicatedCloud>;
+  public get(path: '/dedicatedCloud/{serviceName}/vrack/{vrack}', params: {serviceName: string, vrack: string}): Promise<VrackDedicatedCloud>;
   /**
   The Private Cloud vRealize Operations option
   Get this object properties
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/vrops', pathParams: {serviceName: string}): Promise<DedicatedCloudVrops>;
+  public get(path: '/dedicatedCloud/{serviceName}/vrops', params: {serviceName: string}): Promise<DedicatedCloudVrops>;
   /**
   canBeDisabled operations
   Check if vRealize Operations option can be disabled
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/vrops/canBeDisabled', pathParams: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
+  public get(path: '/dedicatedCloud/{serviceName}/vrops/canBeDisabled', params: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
   /**
   canBeEnabled operations
   Check if vRealize Operations option can be enabled
   **/
-  public get(path: '/dedicatedCloud/{serviceName}/vrops/canBeEnabled', pathParams: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
-  public get(path: PathsDedicatedCloudGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/dedicatedCloud/{serviceName}/vrops/canBeEnabled', params: {serviceName: string}): Promise<DedicatedCloudOptionCompatibility>;
+  public get(path: PathsDedicatedCloudGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Private Cloud
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}', params: {serviceName: string}): Promise<void>;
   /**
   Network allowed to connect to the Private Cloud management interface
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', pathParams: {serviceName: string, networkAccessId: Number}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', params: {serviceName: string, networkAccessId: number}): Promise<void>;
   /**
   Private Cloud Datacenter
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', pathParams: {serviceName: string, datacenterId: Number}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', params: {serviceName: string, datacenterId: number}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/serviceInfos', pathParams: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
   /**
   Private Cloud User right
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}', pathParams: {serviceName: string, userId: Number, rightId: Number}): Promise<void>;
-  public put(path: PathsDedicatedCloudPUT, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.put(path, pathParams, bodyParams);}
+  public put(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}', params: {serviceName: string, userId: number, rightId: number}): Promise<void>;
+  public put(path: PathsDedicatedCloudPUT, params?: OvhParamType) : Promise<any> {
+    return super.put(path, params
+  );}
   /**
   List the dedicatedCloud.AllowedNetwork objects
   Create a new Allowed network for your dedicatedCloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/allowedNetwork', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/allowedNetwork', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/changeMaintenanceExecutionDate', pathParams: {serviceName: string, networkAccessId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, networkAccessId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState', pathParams: {serviceName: string, networkAccessId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState', params: {serviceName: string, networkAccessId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/changeContact', pathParams: {serviceName: string}): Promise<Number[]>;
+  public post(path: '/dedicatedCloud/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
   /**
   changeProperties operations
   Update this Private Cloud properties.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/changeProperties', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/changeProperties', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/confirmTermination', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/dedicatedCloud/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
   /**
   List the dedicatedCloud.Datacenter objects
   Add a new Datacenter in your Private Cloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   changeProperties operations
   Edit the backup on a Private Cloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable backup solution on a Private Cloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/disable', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/disable', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
   /**
   enable operations
   Enable backup solution on a Private Cloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable Zerto
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/disable', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/disable', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
   /**
   enable operations
   Enable Zerto replication between 2 OVH dedicated Clouds
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/enable', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/enable', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
   /**
   generateZsspPassword operations
   Generate a new password for Zerto Self Service Portal and receive it by email.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/generateZsspPassword', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/generateZsspPassword', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
   /**
   state operations
   Get the current state of Zerto deployment on your dedicated Cloud.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/state', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudDisasterRecoveryProfile>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/state', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudDisasterRecoveryProfile>;
   /**
   configureVpn operations
   Configure vpn between your OVH Private Cloud and your onsite infrastructure
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/configureVpn', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/configureVpn', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable Single site Zerto
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/disable', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/disable', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
   /**
   enable operations
   Enable Zerto replication between your OVH Private Cloud and your onsite infrastructure
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
   /**
   remove operations
   Remove the filer from your Private Cloud.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/remove', pathParams: {serviceName: string, datacenterId: Number, filerId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/remove', params: {serviceName: string, datacenterId: number, filerId: number}): Promise<DedicatedCloudTask>;
   /**
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate', pathParams: {serviceName: string, datacenterId: Number, filerId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, datacenterId: number, filerId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/resetTaskState', pathParams: {serviceName: string, datacenterId: Number, filerId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/resetTaskState', params: {serviceName: string, datacenterId: number, filerId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   addHostSpare operations
   Add a spare host to your Private Cloud.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare', pathParams: {serviceName: string, datacenterId: Number, hostId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare', params: {serviceName: string, datacenterId: number, hostId: number}): Promise<DedicatedCloudTask>;
   /**
   remove operations
   Remove the host from your Private Cloud.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/remove', pathParams: {serviceName: string, datacenterId: Number, hostId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/remove', params: {serviceName: string, datacenterId: number, hostId: number}): Promise<DedicatedCloudTask>;
   /**
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/changeMaintenanceExecutionDate', pathParams: {serviceName: string, datacenterId: Number, hostId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, datacenterId: number, hostId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState', pathParams: {serviceName: string, datacenterId: Number, hostId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState', params: {serviceName: string, datacenterId: number, hostId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   orderNewFilerHourly operations
   Order a new hourly Filer in a given Datacenter
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewFilerHourly', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewFilerHourly', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
   /**
   orderNewHostHourly operations
   Order a new hourly Host in a given Datacenter
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
   /**
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/changeMaintenanceExecutionDate', pathParams: {serviceName: string, datacenterId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, datacenterId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/resetTaskState', pathParams: {serviceName: string, datacenterId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/resetTaskState', params: {serviceName: string, datacenterId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   Private Cloud Backup Job
   Edit a backup job
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob', pathParams: {serviceName: string, datacenterId: Number, vmId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable backup solution on this virtual Machine
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/disable', pathParams: {serviceName: string, datacenterId: Number, vmId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/disable', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudTask>;
   /**
   enable operations
   Enable backup solution on this virtual Machine
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable', pathParams: {serviceName: string, datacenterId: Number, vmId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudTask>;
   /**
   restore operations
   Restore this restore point
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}/restore', pathParams: {serviceName: string, datacenterId: Number, vmId: Number, restorePointId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}/restore', params: {serviceName: string, datacenterId: number, vmId: number, restorePointId: number}): Promise<DedicatedCloudTask>;
   /**
   disableBackup operations
   Disable backup on this virtual Machine
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableBackup', pathParams: {serviceName: string, datacenterId: Number, vmId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableBackup', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudTask>;
   /**
   editBackup operations
   Edit backup on this virtual Machine
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup', pathParams: {serviceName: string, datacenterId: Number, vmId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudTask>;
   /**
   enableBackup operations
   Enable backup on this virtual Machine
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup', pathParams: {serviceName: string, datacenterId: Number, vmId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudTask>;
   /**
   restoreBackup operations
   Restore this restore point
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup', pathParams: {serviceName: string, datacenterId: Number, vmId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudTask>;
   /**
   List the dedicatedCloud.FederationAccessNetwork objects
   Add a new option user access
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   changeProperties operations
   Change Active Directory properties
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties', pathParams: {serviceName: string, activeDirectoryId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties', params: {serviceName: string, activeDirectoryId: number}): Promise<DedicatedCloudTask>;
   /**
   grantActiveDirectoryUser operations
   Grant Active Directory user
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryUser', pathParams: {serviceName: string, activeDirectoryId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryUser', params: {serviceName: string, activeDirectoryId: number}): Promise<DedicatedCloudTask>;
   /**
   remove operations
   Remove the filer from your Private Cloud.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/remove', pathParams: {serviceName: string, filerId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/remove', params: {serviceName: string, filerId: number}): Promise<DedicatedCloudTask>;
   /**
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate', pathParams: {serviceName: string, filerId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, filerId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/resetTaskState', pathParams: {serviceName: string, filerId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/resetTaskState', params: {serviceName: string, filerId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable VMware Hybrid Cloud Extension option
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/hcx/disable', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/hcx/disable', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   enable operations
   Enable VMware Hybrid Cloud Extension option
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/hcx/enable', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/hcx/enable', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable Hds option
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/hds/disable', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/hds/disable', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   enable operations
   Enable Hds option
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/hds/enable', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/hds/enable', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable Hipaa option
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/hipaa/disable', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/hipaa/disable', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   enable operations
   Enable Hipaa option
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/hipaa/enable', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/hipaa/enable', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/changeMaintenanceExecutionDate', pathParams: {serviceName: string, network: string, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, network: string, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/resetTaskState', pathParams: {serviceName: string, network: string, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/resetTaskState', params: {serviceName: string, network: string, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable Nsx option
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/nsx/disable', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/nsx/disable', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   enable operations
   Enable Nsx option
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/nsx/enable', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/nsx/enable', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   orderNewFilerHourly operations
   Order a new hourly Filer mounted in every Datacenter of a given Private Cloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/orderNewFilerHourly', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/orderNewFilerHourly', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable PCI-DSS option
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/pcidss/disable', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/pcidss/disable', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   enable operations
   Enable PCI-DSS option
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/pcidss/enable', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/pcidss/enable', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   resetTriggeredAlarm operations
   Reset all triggered alarms on PCC
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/resetTriggeredAlarm', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/resetTriggeredAlarm', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/task/{taskId}/changeMaintenanceExecutionDate', pathParams: {serviceName: string, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/task/{taskId}/resetTaskState', pathParams: {serviceName: string, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/task/{taskId}/resetTaskState', params: {serviceName: string, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   Terminate your service
   Terminate your service
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/terminate', pathParams: {serviceName: string}): Promise<string>;
+  public post(path: '/dedicatedCloud/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
   /**
   List the dedicatedCloud.twoFAWhitelist objects
   Add a whitelisted ip on the two factor authentication
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   changeProperties operations
   Change Private Cloud Two facter authentication whitelist properties
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}/changeProperties', pathParams: {serviceName: string, id: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}/changeProperties', params: {serviceName: string, id: number}): Promise<DedicatedCloudTask>;
   /**
   upgradeHypervisor operations
   Upgrade your hypervisor to the next released version
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/upgradeHypervisor', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/upgradeHypervisor', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   List the dedicatedCloud.User objects
   Create a new User in your Private Cloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   changePassword operations
   Change Private Cloud user password
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/changePassword', pathParams: {serviceName: string, userId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/changePassword', params: {serviceName: string, userId: number}): Promise<DedicatedCloudTask>;
   /**
   changeProperties operations
   Change Private Cloud user properties
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/changeProperties', pathParams: {serviceName: string, userId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/changeProperties', params: {serviceName: string, userId: number}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable the given Private Cloud user 
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/disable', pathParams: {serviceName: string, userId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/disable', params: {serviceName: string, userId: number}): Promise<DedicatedCloudTask>;
   /**
   enable operations
   Enable the given Private Cloud user 
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/enable', pathParams: {serviceName: string, userId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/enable', params: {serviceName: string, userId: number}): Promise<DedicatedCloudTask>;
   /**
   List the dedicatedCloud.ObjectRight objects
   Add a new object right to user in datacenter on Private Cloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight', pathParams: {serviceName: string, userId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight', params: {serviceName: string, userId: number}): Promise<DedicatedCloudTask>;
   /**
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/changeMaintenanceExecutionDate', pathParams: {serviceName: string, userId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, userId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/resetTaskState', pathParams: {serviceName: string, userId: Number, taskId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/resetTaskState', params: {serviceName: string, userId: number, taskId: number}): Promise<DedicatedCloudTask>;
   /**
   objectType operations
   Get available object types
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/vendor/objectType', pathParams: {serviceName: string}): Promise<string[]>;
+  public post(path: '/dedicatedCloud/{serviceName}/vendor/objectType', params: {serviceName: string}): Promise<string[]>;
   /**
   ovhId operations
   Get ovh id from object type
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/vendor/ovhId', pathParams: {serviceName: string}): Promise<DedicatedCloudVendorOvhId>;
+  public post(path: '/dedicatedCloud/{serviceName}/vendor/ovhId', params: {serviceName: string}): Promise<DedicatedCloudVendorOvhId>;
   /**
   List the dedicatedCloud.VMEncryptionAccessNetwork objects
   Add a new option user access
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   changeProperties operations
   Change option user access properties
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}/changeProperties', pathParams: {serviceName: string, kmsId: Number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}/changeProperties', params: {serviceName: string, kmsId: number}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable vRealize Operations option
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/vrops/disable', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/vrops/disable', params: {serviceName: string}): Promise<DedicatedCloudTask>;
   /**
   enable operations
   Enable vRealize Operations option
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/vrops/enable', pathParams: {serviceName: string}): Promise<DedicatedCloudTask>;
-  public post(path: PathsDedicatedCloudPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: '/dedicatedCloud/{serviceName}/vrops/enable', params: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: PathsDedicatedCloudPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
   /**
   Network allowed to connect to the Private Cloud management interface
   Remove this network from your Private Cloud
   **/
-  public delete(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', pathParams: {serviceName: string, networkAccessId: Number}): Promise<DedicatedCloudTask>;
+  public delete(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', params: {serviceName: string, networkAccessId: number}): Promise<DedicatedCloudTask>;
   /**
   Private Cloud Datacenter
   Remove this Datacenter from your Private Cloud. (It has to be empty in order to be removable)
   **/
-  public delete(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', pathParams: {serviceName: string, datacenterId: Number}): Promise<DedicatedCloudTask>;
+  public delete(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
   /**
   Private Cloud federation option access network
   Remove an option user access
   **/
-  public delete(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}', pathParams: {serviceName: string, activeDirectoryId: Number}): Promise<DedicatedCloudTask>;
+  public delete(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}', params: {serviceName: string, activeDirectoryId: number}): Promise<DedicatedCloudTask>;
   /**
   Trust IP which can bypass the two factor authentication
   Remove a whitelisted ip on the two factor authentication
   **/
-  public delete(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}', pathParams: {serviceName: string, id: Number}): Promise<DedicatedCloudTask>;
+  public delete(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}', params: {serviceName: string, id: number}): Promise<DedicatedCloudTask>;
   /**
   Private Cloud User
   Remove a given user from your Private Cloud
   **/
-  public delete(path: '/dedicatedCloud/{serviceName}/user/{userId}', pathParams: {serviceName: string, userId: Number}): Promise<DedicatedCloudTask>;
+  public delete(path: '/dedicatedCloud/{serviceName}/user/{userId}', params: {serviceName: string, userId: number}): Promise<DedicatedCloudTask>;
   /**
   Private Cloud User object right
   Remove an object right from user in datacenter on Private Cloud
   **/
-  public delete(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}', pathParams: {serviceName: string, userId: Number, objectRightId: Number}): Promise<DedicatedCloudTask>;
+  public delete(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}', params: {serviceName: string, userId: number, objectRightId: number}): Promise<DedicatedCloudTask>;
   /**
   Private Cloud VM Encryption option access network
   Remove an option user access
   **/
-  public delete(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}', pathParams: {serviceName: string, kmsId: Number}): Promise<DedicatedCloudTask>;
+  public delete(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}', params: {serviceName: string, kmsId: number}): Promise<DedicatedCloudTask>;
   /**
   vrack dedicated cloud interface
   remove this dedicatedCloud (VmNetwork) from this vrack
   **/
-  public delete(path: '/dedicatedCloud/{serviceName}/vrack/{vrack}', pathParams: {serviceName: string, vrack: string}): Promise<VrackTask>;
-  public delete(path: PathsDedicatedCloudDELETE, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.delete(path, pathParams, bodyParams);}
+  public delete(path: '/dedicatedCloud/{serviceName}/vrack/{vrack}', params: {serviceName: string, vrack: string}): Promise<VrackTask>;
+  public delete(path: PathsDedicatedCloudDELETE, params?: OvhParamType) : Promise<any> {
+    return super.delete(path, params
+  );}
 }

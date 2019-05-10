@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Operator
  */
@@ -154,12 +154,12 @@ export interface ConnectivityEligibilityCopperInfo {
    * Number of available pairs. This is given only for an eligibility test.
    *
    */
-  availablePairs?: Number;
+  availablePairs?: number;
   /**
    * Number of maximun available pairs using desaturation. This is given only for an eligibility test.
    *
    */
-  maxAvailablePairs?: Number;
+  maxAvailablePairs?: number;
   /**
    * NRA ("Nœud de raccordement abonné" in french) is an identifier of the building where is the Main Distribution Frames for the copper line. This is given only for an eligibility test.
    *
@@ -396,12 +396,12 @@ export interface ConnectivityEligibilityOfferEligibility {
    * Estimated download rate, for copper and non guaranteed offers only
    *
    */
-  estimatedDownloadRate?: Number;
+  estimatedDownloadRate?: number;
   /**
    * Estimated upload rate, for copper and non guaranteed offers only
    *
    */
-  estimatedUploadRate?: Number;
+  estimatedUploadRate?: number;
   /**
    * Reasons when not eligible, if any
    *
@@ -426,7 +426,7 @@ export interface ConnectivityEligibilityOfferProduct {
    * Download rate in Mb
    *
    */
-  downloadRate?: Number;
+  downloadRate?: number;
   /**
    * GRT (Guaranteed Restoration Time) available list
    *
@@ -446,7 +446,7 @@ export interface ConnectivityEligibilityOfferProduct {
    * Number of copper pairs required, for copper only
    *
    */
-  pairs?: Number;
+  pairs?: number;
   /**
    * Provider
    *
@@ -461,7 +461,7 @@ export interface ConnectivityEligibilityOfferProduct {
    * Upload rate in Mb
    *
    */
-  uploadRate?: Number;
+  uploadRate?: number;
 }
 /**
  * Offer product provider
@@ -523,12 +523,12 @@ export interface ConnectivityEligibilitySectionLength {
    * Diameter in millimeters of the copper line section
    *
    */
-  diameter?: Number;
+  diameter?: number;
   /**
    * Lenght in meters of the copper line section
    *
    */
-  length?: Number;
+  length?: number;
 }
 /**
  * Details of a street
@@ -573,7 +573,7 @@ export interface ConnectivityMonitoringGenericIncident {
    * Generic incident id
    *
    */
-  id?: Number;
+  id?: number;
   /**
    * List of impacted NRA/NRO
    *
@@ -593,7 +593,7 @@ export interface ConnectivityMonitoringGenericIncident {
    * Task id
    *
    */
-  taskId?: Number;
+  taskId?: number;
 }
 /**
  * Generic incident status
@@ -663,25 +663,27 @@ type PathsConnectivityPOST = '/connectivity/eligibility/search/buildingDetails' 
 '/connectivity/eligibility/test/otp';
 
 export class ApiConnectivity extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   Get an eligibility by its reference
   Get an eligibility by its reference
   **/
-  public get(path: '/connectivity/eligibility/test', queryParams?: {eligibilityReference?: string}): Promise<ConnectivityEligibilityEligibilityTest>;
+  public get(path: '/connectivity/eligibility/test'): Promise<ConnectivityEligibilityEligibilityTest>;
   /**
   Missing description
   List detected, validated and recently closed generic incidents. For partners only
   **/
-  public get(path: '/connectivity/monitoring/genericIncident/partners', queryParams?: {creationDate?: string, endDate?: string, status?: ConnectivityMonitoringGenericIncidentStatusEnum}): Promise<ConnectivityMonitoringGenericIncident[]>;
+  public get(path: '/connectivity/monitoring/genericIncident/partners'): Promise<ConnectivityMonitoringGenericIncident[]>;
   /**
   Missing description
   List validated and recently closed generic incidents
   **/
-  public get(path: '/connectivity/monitoring/genericIncident/public', queryParams?: {creationDate?: string, endDate?: string, status?: ConnectivityMonitoringGenericIncidentStatusEnum}): Promise<ConnectivityMonitoringGenericIncident[]>;
-  public get(path: PathsConnectivityGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/connectivity/monitoring/genericIncident/public'): Promise<ConnectivityMonitoringGenericIncident[]>;
+  public get(path: PathsConnectivityGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
   /**
   Get the details for a building
   Get the details for a building
@@ -752,5 +754,7 @@ export class ApiConnectivity extends ApiCommon {
   Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
   **/
   public post(path: '/connectivity/eligibility/test/otp'): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
-  public post(path: PathsConnectivityPOST, pathParams?: { [key:string]: string | Number; }, bodyParams?: any) : Promise<any> {return super.post(path, pathParams, bodyParams);}
+  public post(path: PathsConnectivityPOST, params?: OvhParamType) : Promise<any> {
+    return super.post(path, params
+  );}
 }

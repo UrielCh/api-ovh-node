@@ -1,4 +1,4 @@
-import { ApiCommon } from '@ovh-api/common';
+import { ApiCommon, OvhApi, OvhParamType } from '@ovh-api/common';
 /**
  * Description not available
  */
@@ -54,7 +54,7 @@ export interface StatusTask {
    * The task progression from 0 to 100
    *
    */
-  progress?: Number;
+  progress?: number;
   /**
    * The project of task
    *
@@ -99,13 +99,15 @@ export interface StatusTask {
 type PathsStatusGET = '/status/task';
 
 export class ApiStatus extends ApiCommon {
-  constructor(config: {appKey: string, appSecret: string, consumerKey: string}) {
-    super(config);
+  constructor(engine: OvhApi) {
+    super(engine);
   }
   /**
   API to get incidents or maintenances linked to nichandle services
   Find all the incidents or maintenances linked to your services
   **/
-  public get(path: '/status/task', queryParams?: {impact?: OvhstatusTaskTaskImpactEnum, status?: OvhstatusTaskTaskStatusEnum, type?: OvhstatusTaskTaskTypeEnum}): Promise<StatusTask[]>;
-  public get(path: PathsStatusGET, pathParams?: { [key:string]: string | Number; }, queryParams?: any) : Promise<any> {return super.get(path, pathParams, queryParams);}
+  public get(path: '/status/task'): Promise<StatusTask[]>;
+  public get(path: PathsStatusGET, params?: OvhParamType) : Promise<any> {
+    return super.get(path, params
+  );}
 }
