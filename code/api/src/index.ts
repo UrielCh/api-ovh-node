@@ -83,7 +83,7 @@ function toAccessRules(...rules: string[]): AccessRule[] {
         .map(s => s.split(/\s+/))
         .map(([method, path]) => ({ method, path }));
 }
-export {toAccessRules}
+export { toAccessRules }
 
 export class OvhApiDefault {
     appKey: string;
@@ -120,7 +120,9 @@ export class OvhApiDefault {
 
         if (!params.appKey && !params.appSecret) {
             if (!this.consumerKey && !params.accessRules) {
-                this.warn(`Initializing Api OVH without appKey / appSecret: using Default Certificat\n provide an accessRules to choose the authorisation you need\n by default I will ask for all rights`);
+                this.warn(`Initializing Api OVH without appKey / appSecret: using Default Certificat
+provide an accessRules to choose the authorisation you need
+by default I will ask for all rights`);
             }
         }
 
@@ -386,7 +388,7 @@ You can replace it with ${status.replacement}`);
                 }
             }
             // signe operation if /auth service
-            if (!~path.indexOf('/auth')) {
+            if (!~path.indexOf('/auth/credential') && !~path.indexOf('/auth/time')) {
                 const XOvhTimestamp: number = Math.round(Date.now() / 1000) + Number(ovhEngine.apiTimeDiff);
                 options.headers['X-Ovh-Timestamp'] = XOvhTimestamp;
 
@@ -432,11 +434,32 @@ You can replace it with ${status.replacement}`);
                                 const error: OvhError = <OvhError>response;
                                 if (error.errorCode === 'INVALID_CREDENTIAL' || error.message === 'You must login first') {
                                     this.warn(`[OVH] INVALID_CREDENTIAL you can try this cert:`);
-                                    return ovhEngine.request('POST', '/auth/credential', { accessRules: toAccessRules.apply(this, ovhEngine.accessRules) })
-                                        .then(({ consumerKey, state, validationUrl }) => console.log(`consumerKey: ${consumerKey}\nurl: ${validationUrl}`))
-                                        .then(() => reject(error))
+                                    if (ovhEngine.consumerKey === null) {
+                                        return ovhEngine.request('POST', '/auth/credential', { accessRules: toAccessRules.apply(this, ovhEngine.accessRules) })
+                                            .then(({ consumerKey, state, validationUrl }) => {
+                                                ovhEngine.consumerKey = consumerKey;
+                                                console.log(`consumerKey: ${consumerKey}\nurl: ${validationUrl}`)
+                                                let pass = 0;
+                                                return new Promise((resolve) => {
+                                                    let timer = setInterval(() => {
+                                                        ovhEngine.request('GET', '/auth/currentCredential')
+                                                            .then(({ status }) => {
+                                                                if (status === 'validated') {
+                                                                    console.log('consumerKey Authorized!')
+                                                                    clearInterval(timer);
+                                                                    resolve()
+                                                                }
+                                                                if (++pass % 5 == 0) {
+                                                                    console.log(`Validate consumerKey: ${consumerKey} url: ${validationUrl}`)
+                                                                }
+                                                            })
+                                                    }, 2000)
+                                                })
+                                            })
+                                            .then(() => ovhEngine.request(httpMethod, path, params))
+                                    }
+                                    return reject(response);
                                 }
-                                //}
                                 if (response.errorCode)
                                     return reject(response);
                                 return reject(res.statusCode + ': ' + response ? response.message : response);
