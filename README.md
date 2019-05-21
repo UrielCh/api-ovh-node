@@ -1,10 +1,13 @@
 # Use Ovh's Apis with TypeScript
 
-[![NPM Version](https://img.shields.io/npm/v/@ovh-api/common.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/)
+@ovh-api/ip
+[![NPM Version](https://img.shields.io/npm/v/@ovh-api/ip.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/ip)
+@ovh-api/api
+[![NPM Version](https://img.shields.io/npm/v/@ovh-api/api.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/api)
 
-## samples
+## Samples
 
-### with no Credential
+### Interactive mode With no Credential.
 ```typescript
 import { ApiIp } from '@ovh-api/ip';
 import Ovh from '@ovh-api/api';
@@ -19,7 +22,7 @@ async function printIP() {
 printIP().then(console.log)
 ```
 
-### with Credential With TS Ovh api
+### With Credential With TS Ovh api
 
 Create your first application tokens here: https://api.ovh.com/createToken/?GET=/me
 
@@ -40,7 +43,7 @@ printIP().then(console.log)
 ```
 
 
-### with Credential With official Ovh api
+### With Credential With the official Ovh api
 
 Create your first application tokens here: https://api.ovh.com/createToken/?GET=/me
 
