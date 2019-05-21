@@ -2,3 +2,5 @@ node_modules
 **/.vscode
 *.log
 **/dist/
+**/index.d.ts
+**/index.js
