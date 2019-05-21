@@ -1,9 +1,6 @@
-//import { endpoints } from "./common";
-//export { endpoints };
-
 export type OvhParamType = { [key:string]: string | number | undefined | boolean | string[] | boolean[] | number[]; };
 
-export interface OvhApi {
+export interface OvhApiCommon {
    /**
      * Execute a request on the API with promise
      *
@@ -15,8 +12,8 @@ export interface OvhApi {
 }
 
 export class ApiCommon {
-    private ovh: OvhApi;
-    constructor(ovh: OvhApi) {
+    private ovh: OvhApiCommon;
+    constructor(ovh: OvhApiCommon) {
         this.ovh = ovh;
     }
     
