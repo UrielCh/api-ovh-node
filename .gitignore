@@ -1,6 +1,8 @@
 node_modules
 **/.vscode
 *.log
-**/dist/
+package/*/dist/
+code/api/dist/
+code/common/dist/
 **/index.d.ts
 **/index.js

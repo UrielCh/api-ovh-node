@@ -1,7 +1,7 @@
 // need the followig deps:
 // npm install @ovh-api/api @ovh-api/vps fs-extra
 
-import { networkInterfaces } from 'os';
+import { networkInterfaces } from 'os'
 import { readFile, writeFile } from 'fs-extra'
 import { ApiVps } from '@ovh-api/vps'
 import Ovh from '@ovh-api/api'
@@ -44,4 +44,4 @@ async function main() {
   console.log('mv 51-fo  /etc/network/interfaces.d/')
 }
 
-main().then(console.log, console.error);
+main().then(console.log, console.error)
