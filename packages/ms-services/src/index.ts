@@ -386,7 +386,7 @@ export type MsServicesServiceOfferEnum = 'dedicated' | 'dedicatedCluster' | 'hos
 /**
  * Service State
  */
-export type MsServicesServiceStateEnum = 'creating' | 'deleting' | 'inMaintenance' | 'ok' | 'suspended';
+export type MsServicesServiceStateEnum = 'creating' | 'deleting' | 'inMaintenance' | 'ok' | 'reopening' | 'suspended' | 'suspending';
 /**
  * Account access rights to the service
  */

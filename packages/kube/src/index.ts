@@ -307,9 +307,9 @@ export class ApiKube extends ApiCommon {
   public get(path: '/kube/{serviceName}/publiccloud/node/{nodeId}', params: {nodeId: string, serviceName: string}): Promise<KubeNode>;
   /**
   Manage your Public Cloud projects linked to your cluster
-  List your Public Cloud projects linked to your cluster
+  Get your Public Cloud project linked to your cluster
   **/
-  public get(path: '/kube/{serviceName}/publiccloud/project', params: {serviceName: string}): Promise<KubePublicCloudProject[]>;
+  public get(path: '/kube/{serviceName}/publiccloud/project', params: {serviceName: string}): Promise<KubePublicCloudProject>;
   /**
   Details about a Service
   Get this object properties

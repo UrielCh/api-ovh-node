@@ -2674,6 +2674,8 @@ type PathsOrderGET = '/order/cart' |
 '/order/cartServiceOption/sslGateway/{serviceName}' | 
 '/order/cartServiceOption/vdi' | 
 '/order/cartServiceOption/vdi/{serviceName}' | 
+'/order/cartServiceOption/vps' | 
+'/order/cartServiceOption/vps/{serviceName}' | 
 '/order/cartServiceOption/webHosting' | 
 '/order/cartServiceOption/webHosting/{serviceName}' | 
 '/order/catalog/formatted' | 
@@ -2918,6 +2920,9 @@ type PathsOrderGET = '/order/cart' |
 '/order/upgrade/sslGateway' | 
 '/order/upgrade/sslGateway/{serviceName}' | 
 '/order/upgrade/sslGateway/{serviceName}/{planCode}' | 
+'/order/upgrade/vps' | 
+'/order/upgrade/vps/{serviceName}' | 
+'/order/upgrade/vps/{serviceName}/{planCode}' | 
 '/order/veeamCloudConnect' | 
 '/order/veeamCloudConnect/{serviceName}' | 
 '/order/veeamCloudConnect/{serviceName}/upgrade' | 
@@ -3075,6 +3080,7 @@ type PathsOrderPOST = '/order/cart' |
 '/order/cartServiceOption/sharepoint/{serviceName}' | 
 '/order/cartServiceOption/sslGateway/{serviceName}' | 
 '/order/cartServiceOption/vdi/{serviceName}' | 
+'/order/cartServiceOption/vps/{serviceName}' | 
 '/order/cartServiceOption/webHosting/{serviceName}' | 
 '/order/cdn/dedicated/new/{duration}' | 
 '/order/cdn/dedicated/{serviceName}/backend/{duration}' | 
@@ -3172,6 +3178,7 @@ type PathsOrderPOST = '/order/cart' |
 '/order/upgrade/microsoftExchange/{serviceName}/{planCode}' | 
 '/order/upgrade/privateCloud/{serviceName}/{planCode}' | 
 '/order/upgrade/sslGateway/{serviceName}/{planCode}' | 
+'/order/upgrade/vps/{serviceName}/{planCode}' | 
 '/order/veeamCloudConnect/{serviceName}/upgrade/{duration}' | 
 '/order/vps/{serviceName}/additionalDisk/{duration}' | 
 '/order/vps/{serviceName}/automatedBackup/{duration}' | 
@@ -3916,6 +3923,16 @@ export class ApiOrder extends ApiCommon {
   **/
   public get(path: '/order/cartServiceOption/vdi/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
+  Operations about the VPS service
+  List available services
+  **/
+  public get(path: '/order/cartServiceOption/vps'): Promise<string[]>;
+  /**
+  Listing offers /order/cartServiceOptions/vps/#serviceName#
+  Get informations about additional VPS offer for your service
+  **/
+  public get(path: '/order/cartServiceOption/vps/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  /**
   Operations about the HOSTING service
   List available services
   **/
@@ -4624,12 +4641,12 @@ export class ApiOrder extends ApiCommon {
   Create an order for upgrade your hosting account
   Get allowed durations for 'upgrade' option
   **/
-  public get(path: '/order/hosting/web/{serviceName}/upgrade', params: {serviceName: string, offer: HostingWebOfferEnum, waiveRetractationPeriod?: boolean}): Promise<string[]>;
+  public get(path: '/order/hosting/web/{serviceName}/upgrade', params: {serviceName: string, offer: HostingWebOfferEnum, startTime?: string, waiveRetractationPeriod?: boolean}): Promise<string[]>;
   /**
   Create an order for upgrade your hosting account
   Get prices and contracts information
   **/
-  public get(path: '/order/hosting/web/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, offer: HostingWebOfferEnum, waiveRetractationPeriod?: boolean}): Promise<OrderOrder>;
+  public get(path: '/order/hosting/web/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, offer: HostingWebOfferEnum, startTime?: string, waiveRetractationPeriod?: boolean}): Promise<OrderOrder>;
   /**
   Order a HPC Spot Account
   Get allowed durations for 'new' option
@@ -5135,6 +5152,21 @@ export class ApiOrder extends ApiCommon {
   Get a provisional order for the selected upgrade of your service
   **/
   public get(path: '/order/upgrade/sslGateway/{serviceName}/{planCode}', params: {planCode: string, serviceName: string, quantity: number}): Promise<OrderUpgradeOperationAndOrder>;
+  /**
+  Operations about the VPS service
+  List available services
+  **/
+  public get(path: '/order/upgrade/vps'): Promise<string[]>;
+  /**
+  Listing offers /order/upgrade/vps
+  Retrieve available offers to upgrade your service to
+  **/
+  public get(path: '/order/upgrade/vps/{serviceName}', params: {serviceName: string}): Promise<OrderCartGenericProductDefinition[]>;
+  /**
+  Listing offers /order/upgrade/vps/#serviceName#
+  Get a provisional order for the selected upgrade of your service
+  **/
+  public get(path: '/order/upgrade/vps/{serviceName}/{planCode}', params: {planCode: string, serviceName: string, quantity: number}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Operations about the VEEAMCC service
   List available services
@@ -5917,6 +5949,11 @@ export class ApiOrder extends ApiCommon {
   **/
   public post(path: '/order/cartServiceOption/vdi/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
   /**
+  Listing offers /order/cartServiceOptions/vps/#serviceName#
+  Post an additional VPS option in your cart
+  **/
+  public post(path: '/order/cartServiceOption/vps/{serviceName}', params: {serviceName: string}): Promise<OrderCartItem>;
+  /**
   Listing offers /order/cartServiceOptions/webHosting/#serviceName#
   Post an additional Web Hosting option in your cart
   **/
@@ -6401,6 +6438,11 @@ export class ApiOrder extends ApiCommon {
   Perform the requested upgrade of your service
   **/
   public post(path: '/order/upgrade/sslGateway/{serviceName}/{planCode}', params: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
+  /**
+  Listing offers /order/upgrade/vps/#serviceName#
+  Perform the requested upgrade of your service
+  **/
+  public post(path: '/order/upgrade/vps/{serviceName}/{planCode}', params: {planCode: string, serviceName: string}): Promise<OrderUpgradeOperationAndOrder>;
   /**
   Order an upgrade upon your Veeam Cloud Connect account
   Create order

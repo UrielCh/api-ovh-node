@@ -581,7 +581,7 @@ export type EmailProServiceOfferEnum = 'emailpro';
 /**
  * Service State
  */
-export type EmailProServiceStateEnum = 'inMaintenance' | 'ok' | 'suspended';
+export type EmailProServiceStateEnum = 'creating' | 'deleting' | 'inMaintenance' | 'ok' | 'reopening' | 'suspended' | 'suspending';
 /**
  * Organization task details
  */

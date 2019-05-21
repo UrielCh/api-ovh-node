@@ -291,31 +291,6 @@ export interface CloudFlavorPrice {
   region?: string;
 }
 /**
- * Load balancing IP imported into your OpenStack project
- */
-export interface CloudIPLoadbalancing {
-  /**
-   * ID of your load balancing ip import
-   *
-   */
-  id?: string;
-  /**
-   * IPLB service name
-   *
-   */
-  iplb?: string;
-  /**
-   * Status of your import
-   *
-   */
-  status?: string;
-  /**
-   * validation url
-   *
-   */
-  validationUrl?: string;
-}
-/**
  * An operation is an async process on your Project
  */
 export interface CloudOperation {
@@ -1229,6 +1204,99 @@ export interface CloudCommonVoucherValidity {
   to?: string;
 }
 /**
+ * Region of the registry
+ */
+export type CloudContainerRegistryRegistryRegionEnum = 'GRA7';
+/**
+ * Managed docker registry
+ */
+export interface CloudContainerRegistryRegistryRegistry {
+  /**
+   * Registry creation date
+   *
+   */
+  createdAt?: string;
+  /**
+   * Registry ID
+   *
+   */
+  id?: string;
+  /**
+   * Registry name
+   *
+   */
+  name?: string;
+  /**
+   * Project ID of your registry
+   *
+   */
+  projectID?: string;
+  /**
+   * Region of the registry
+   *
+   */
+  region?: CloudContainerRegistryRegistryRegionEnum;
+  /**
+   * Registry status
+   *
+   */
+  status?: CloudContainerRegistryRegistryStatusEnum;
+  /**
+   * Registry last update date
+   *
+   */
+  updatedAt?: string;
+  /**
+   * Access url of the registry
+   *
+   */
+  url?: string;
+  /**
+   * Version of your registry
+   *
+   */
+  version?: string;
+}
+/**
+ * Docker registry creation result
+ */
+export interface CloudContainerRegistryRegistryRegistryCreationResult {
+  /**
+   * Registry ID
+   *
+   */
+  id?: string;
+}
+/**
+ * Status of the registry
+ */
+export type CloudContainerRegistryRegistryStatusEnum = 'DELETED' | 'DELETING' | 'ERROR' | 'INSTALLING' | 'READY' | 'RESTORING' | 'SUSPENDED' | 'SUSPENDING' | 'UPDATING';
+/**
+ * Docker registry user
+ */
+export interface CloudContainerRegistryUserUser {
+  /**
+   * User email
+   *
+   */
+  email?: string;
+  /**
+   * User ID
+   *
+   */
+  id?: string;
+  /**
+   * User password
+   *
+   */
+  password?: string;
+  /**
+   * User name
+   *
+   */
+  user?: string;
+}
+/**
  * Flavor
  */
 export interface CloudFlavorFlavor {
@@ -1999,6 +2067,10 @@ export interface CloudKubeNode {
  */
 export type CloudKubeNodeStatus = 'DELETING' | 'ERROR' | 'INSTALLING' | 'READY' | 'REOPENING' | 'RESETTING' | 'SUSPENDED' | 'SUSPENDING' | 'UPDATING' | 'USER_ERROR' | 'USER_NODE_NOT_FOUND_ERROR' | 'USER_NODE_SUSPENDED_SERVICE' | 'USER_QUOTA_ERROR';
 /**
+ * Enum values for available regions
+ */
+export type CloudKubeRegion = 'GRA5';
+/**
  * Enum values for worker nodes reset policy
  */
 export type CloudKubeResetWorkerNodesPolicy = 'delete' | 'reinstall';
@@ -2009,7 +2081,7 @@ export type CloudKubeUpdatePolicy = 'ALWAYS_UPDATE' | 'MINIMAL_DOWNTIME' | 'NEVE
 /**
  * Description not available
  */
-export type CloudKubeVersion = '1.11' | '1.12';
+export type CloudKubeVersion = '1.11' | '1.12' | '1.13';
 /**
  * Migration
  */
@@ -2535,6 +2607,11 @@ export interface CloudProjectNewProjectInfo {
    *
    */
   order?: OrderPrice;
+  /**
+   * Information about voucher code
+   *
+   */
+  voucher?: CloudProjectNewProjectInfoVoucher;
 }
 /**
  * Error that can occur when creating a Public Cloud project
@@ -2555,6 +2632,21 @@ export interface CloudProjectNewProjectInfoError {
  * Possible values for error code on project creation
  */
 export type CloudProjectNewProjectInfoErrorCodeEnum = 'accountNotEligible' | 'invalidPaymentMean' | 'maxProjectsLimitReached' | 'paypalAccountNotVerified' | 'unpaidDebts';
+/**
+ * Information about voucher
+ */
+export interface CloudProjectNewProjectInfoVoucher {
+  /**
+   * Credit added thanks to the voucher
+   *
+   */
+  credit?: OrderPrice;
+  /**
+   * A valid registered payment method is required to use the voucher
+   *
+   */
+  paymentMethodRequired?: boolean;
+}
 /**
  * Possible values for new project status
  */
@@ -2781,6 +2873,21 @@ export interface CloudQuotaVolumeQuotas {
   volumeCount?: number;
 }
 /**
+ * Role permissions
+ */
+export interface CloudRolePermission {
+  /**
+   * Permission label
+   *
+   */
+  label?: string;
+  /**
+   * Roles having this permission
+   *
+   */
+  roles?: string[];
+}
+/**
  * Role
  */
 export interface CloudRoleRole {
@@ -2790,7 +2897,7 @@ export interface CloudRoleRole {
    */
   description?: string;
   /**
-   * Role Id
+   * Role id
    *
    */
   id?: string;
@@ -2799,6 +2906,41 @@ export interface CloudRoleRole {
    *
    */
   name?: string;
+  /**
+   * Permissions granted by this role
+   *
+   */
+  permissions?: string[];
+}
+/**
+ * OpenStack role
+ */
+export interface CloudRoleRoles {
+  /**
+   * OpenStack roles
+   *
+   */
+  roles?: CloudRoleRole[];
+  /**
+   * OpenStack services
+   *
+   */
+  services?: CloudRoleService[];
+}
+/**
+ * OpenStack service
+ */
+export interface CloudRoleService {
+  /**
+   * Name of the service
+   *
+   */
+  name?: string;
+  /**
+   * List of permissions
+   *
+   */
+  permissions?: CloudRolePermission[];
 }
 /**
  * SshKey
@@ -3889,8 +4031,11 @@ type PathsCloudGET = '/cloud' |
 '/cloud/project/{serviceName}/ip' | 
 '/cloud/project/{serviceName}/ip/failover' | 
 '/cloud/project/{serviceName}/ip/failover/{id}' | 
-'/cloud/project/{serviceName}/ipLoadbalancing' | 
-'/cloud/project/{serviceName}/ipLoadbalancing/{id}' | 
+'/cloud/project/{serviceName}/kube' | 
+'/cloud/project/{serviceName}/kube/regions' | 
+'/cloud/project/{serviceName}/kube/{kubeId}' | 
+'/cloud/project/{serviceName}/kube/{kubeId}/node' | 
+'/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}' | 
 '/cloud/project/{serviceName}/migration' | 
 '/cloud/project/{serviceName}/migration/{migrationId}' | 
 '/cloud/project/{serviceName}/network/private' | 
@@ -3945,6 +4090,8 @@ type PathsCloudGET = '/cloud' |
 type PathsCloudPUT = '/cloud/project/{serviceName}' | 
 '/cloud/project/{serviceName}/alerting/{id}' | 
 '/cloud/project/{serviceName}/instance/{instanceId}' | 
+'/cloud/project/{serviceName}/kube/{kubeId}' | 
+'/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy' | 
 '/cloud/project/{serviceName}/migration/{migrationId}' | 
 '/cloud/project/{serviceName}/network/private/{networkId}' | 
 '/cloud/project/{serviceName}/serviceInfos' | 
@@ -3977,9 +4124,11 @@ type PathsCloudPOST = '/cloud/createProject' |
 '/cloud/project/{serviceName}/instance/{instanceId}/stop' | 
 '/cloud/project/{serviceName}/instance/{instanceId}/vnc' | 
 '/cloud/project/{serviceName}/ip/failover/{id}/attach' | 
-'/cloud/project/{serviceName}/ipLoadbalancing' | 
-'/cloud/project/{serviceName}/ipLoadbalancing/{id}/renew' | 
-'/cloud/project/{serviceName}/ipLoadbalancing/{id}/validate' | 
+'/cloud/project/{serviceName}/kube' | 
+'/cloud/project/{serviceName}/kube/{kubeId}/kubeconfig' | 
+'/cloud/project/{serviceName}/kube/{kubeId}/node' | 
+'/cloud/project/{serviceName}/kube/{kubeId}/reset' | 
+'/cloud/project/{serviceName}/kube/{kubeId}/update' | 
 '/cloud/project/{serviceName}/network/private' | 
 '/cloud/project/{serviceName}/network/private/{networkId}/region' | 
 '/cloud/project/{serviceName}/network/private/{networkId}/subnet' | 
@@ -4014,7 +4163,8 @@ type PathsCloudDELETE = '/cloud/project/{serviceName}/acl/{accountId}' |
 '/cloud/project/{serviceName}/instance/group/{groupId}' | 
 '/cloud/project/{serviceName}/instance/{instanceId}' | 
 '/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}' | 
-'/cloud/project/{serviceName}/ipLoadbalancing/{id}' | 
+'/cloud/project/{serviceName}/kube/{kubeId}' | 
+'/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}' | 
 '/cloud/project/{serviceName}/network/private/{networkId}' | 
 '/cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}' | 
 '/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}' | 
@@ -4187,15 +4337,30 @@ export class ApiCloud extends ApiCommon {
   **/
   public get(path: '/cloud/project/{serviceName}/ip/failover/{id}', params: {id: string, serviceName: string}): Promise<CloudIpFailoverIp>;
   /**
-  List the cloud.IPLoadbalancing objects
-  Managed imported IP LB in OpenStack
+  Manage your clusters
+  List your managed Kubernetes clusters
   **/
-  public get(path: '/cloud/project/{serviceName}/ipLoadbalancing', params: {serviceName: string}): Promise<string[]>;
+  public get(path: '/cloud/project/{serviceName}/kube', params: {serviceName: string}): Promise<string[]>;
   /**
-  Load balancing IP imported into your OpenStack project
-  Get this object properties
+  List Kubernetes available regions
+  List Kubernetes available regions
   **/
-  public get(path: '/cloud/project/{serviceName}/ipLoadbalancing/{id}', params: {serviceName: string, id: string}): Promise<CloudIPLoadbalancing>;
+  public get(path: '/cloud/project/{serviceName}/kube/regions', params: {serviceName: string}): Promise<CloudKubeRegion[]>;
+  /**
+  Manage your cluster
+  Get information about your managed Kubernetes cluster
+  **/
+  public get(path: '/cloud/project/{serviceName}/kube/{kubeId}', params: {serviceName: string, kubeId: string}): Promise<CloudKubeCluster>;
+  /**
+  Manage your nodes
+  List your nodes
+  **/
+  public get(path: '/cloud/project/{serviceName}/kube/{kubeId}/node', params: {serviceName: string, kubeId: string}): Promise<CloudKubeNode[]>;
+  /**
+  Manage a single node on your cluster
+  Get information on a specific node on your cluster
+  **/
+  public get(path: '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}', params: {serviceName: string, nodeId: string, kubeId: string}): Promise<CloudKubeNode>;
   /**
   Missing description
   Get planned migrations
@@ -4465,6 +4630,16 @@ export class ApiCloud extends ApiCommon {
   **/
   public put(path: '/cloud/project/{serviceName}/instance/{instanceId}', params: {instanceId: string, serviceName: string}): Promise<void>;
   /**
+  Manage your cluster
+  Update information about your managed Kubernetes cluster
+  **/
+  public put(path: '/cloud/project/{serviceName}/kube/{kubeId}', params: {serviceName: string, kubeId: string}): Promise<void>;
+  /**
+  Manage the update policy of your cluster
+  Change the update policy of your cluster
+  **/
+  public put(path: '/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy', params: {serviceName: string, kubeId: string}): Promise<void>;
+  /**
   Missing description
   Update planned migration
   **/
@@ -4623,20 +4798,30 @@ export class ApiCloud extends ApiCommon {
   **/
   public post(path: '/cloud/project/{serviceName}/ip/failover/{id}/attach', params: {id: string, serviceName: string}): Promise<CloudIpFailoverIp>;
   /**
-  List the cloud.IPLoadbalancing objects
-  Import an existing IP LB into OpenStack
+  Manage your clusters
+  Create a new managed Kubernetes cluster
   **/
-  public post(path: '/cloud/project/{serviceName}/ipLoadbalancing', params: {serviceName: string}): Promise<CloudIPLoadbalancing>;
+  public post(path: '/cloud/project/{serviceName}/kube', params: {serviceName: string}): Promise<CloudKubeCluster>;
   /**
-  renew operations
-  Renew the import of your load balancing IP into Openstack
+  Get your cluster configuration
+  Generate kubeconfig file
   **/
-  public post(path: '/cloud/project/{serviceName}/ipLoadbalancing/{id}/renew', params: {serviceName: string, id: string}): Promise<CloudIPLoadbalancing>;
+  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/kubeconfig', params: {serviceName: string, kubeId: string}): Promise<CloudKubeKubeconfig>;
   /**
-  validate operations
-  Validate the import of your load balancing IP into OpenStack
+  Manage your nodes
+  Deploy a node for your cluster
   **/
-  public post(path: '/cloud/project/{serviceName}/ipLoadbalancing/{id}/validate', params: {serviceName: string, id: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/node', params: {serviceName: string, kubeId: string}): Promise<CloudKubeNode>;
+  /**
+  Reset your cluster
+  Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
+  **/
+  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/reset', params: {serviceName: string, kubeId: string}): Promise<void>;
+  /**
+  Update cluster
+  Update cluster to the latest patch version
+  **/
+  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/update', params: {serviceName: string, kubeId: string}): Promise<void>;
   /**
   Missing description
   Create a new network
@@ -4806,10 +4991,15 @@ export class ApiCloud extends ApiCommon {
   **/
   public delete(path: '/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}', params: {instanceId: string, interfaceId: string, serviceName: string}): Promise<void>;
   /**
-  Load balancing IP imported into your OpenStack project
-  Delete the import of your load balancing IP into OpenStack. This does not delete the IP LB but close the access of it from OpenStack
+  Manage your cluster
+  Delete your managed Kubernetes cluster
   **/
-  public delete(path: '/cloud/project/{serviceName}/ipLoadbalancing/{id}', params: {serviceName: string, id: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/kube/{kubeId}', params: {serviceName: string, kubeId: string}): Promise<void>;
+  /**
+  Manage a single node on your cluster
+  Delete a node on your cluster
+  **/
+  public delete(path: '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}', params: {serviceName: string, nodeId: string, kubeId: string}): Promise<void>;
   /**
   Missing description
   Delete private network
