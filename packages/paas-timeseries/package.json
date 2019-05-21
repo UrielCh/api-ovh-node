@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/paas-timeseries",
   "description": "Add typing to to ovh api paas-timeseries",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
