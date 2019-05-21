@@ -2,7 +2,6 @@
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api/common.svg?style=api)](https://www.npmjs.org/package/@ovh-api/api)
 
-
 ## interactive usage:
 
 ```typescript
@@ -12,4 +11,3 @@ const ovh = new Ovh({accessRules: 'GET /ip'});
 const api = new ApiIp(ovh);
 api.get('/ip').then(console.log);
 ```
-
