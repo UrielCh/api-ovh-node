@@ -681,12 +681,10 @@
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
-"@ovh-api/common@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@ovh-api/common/-/common-1.1.0.tgz#3ca4f026a8a35c6a851676acf4dc89f2f73d5006"
-  integrity sha512-a56MjG+Vqc/7lsmcfbkCHrnJuoo+U2nKPJJAIgwAqg+3Fe/qrrnqbsjHeEKVgAEhGNKSugIexYdFirK1V7NBRw==
-  dependencies:
-    bluebird "^3.5.3"
+"@ovh-api/common@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@ovh-api/common/-/common-1.2.0.tgz#385586a11150c0aa3de6729081f52be9a4f71090"
+  integrity sha512-9nyi3g1Amj20WkBtqolVfxoHcAAH37EvRjPVmi61+AN/BoE8pt8lALvBI0MzjzZPzE9N07JXf5vyZcIQUoesIA==
 
 "@types/node@^11.13.10":
   version "11.13.10"
