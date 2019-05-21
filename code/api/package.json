@@ -10,7 +10,6 @@
     "@ovh-api/common": "^1.2.0"
   },
   "devDependencies": {
-    "@ovh-api/api": "^0.1.0",
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
     "chai": "^4.2.0",

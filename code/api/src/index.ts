@@ -32,7 +32,7 @@ import * as crypto from 'crypto';
 import { Schema, API } from './schema';
 import { RequestOptions } from 'http';
 import { endpoints } from './endpoints';
-import { OvhParamType /*, OvhApiCommon*/ } from '@ovh-api/common';
+import { OvhParamType, OvhRequestable } from '@ovh-api/common';
 
 type DebugFnc = (...args: any[]) => any;
 
@@ -73,7 +73,7 @@ interface AccessRule {
     path: string;
 }
 
-export default class OvhApi /* implements OvhApiCommon */ {
+export default class OvhApi implements OvhRequestable {
     appKey: string;
     appSecret: string;
     consumerKey: string | null;
