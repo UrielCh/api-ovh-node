@@ -25,6 +25,7 @@
  * shall not be used in advertising or otherwise to promote the sale, use or
  * other dealings in this Software without prior written authorization from OVH.
  */
+import { IncomingMessage } from 'http';
 import * as https from 'https';
 import * as querystring from 'querystring';
 import * as crypto from 'crypto';
@@ -35,8 +36,7 @@ import { OvhParamType } from '@ovh-api/common';
 
 type DebugFnc = (...args: any[]) => any;
 
-
-interface OvhError {
+export interface OvhError {
     errorCode: 'INVALID_CREDENTIAL' | 'NOT_CREDENTIAL' | 'QUERY_TIME_OUT' | 'NOT_GRANTED_CALL';
     httpCode: string;
     message: string;
@@ -322,168 +322,179 @@ You can replace it with ${status.replacement}`);
      * @param {Function} callback
      * @param {Object} refer: The parent proxied object
      */
-    request(httpMethod: string, path: string, params?: any): Promise<any> {
+    async request(httpMethod: string, path: string, params?: any): Promise<any> {
         const ovhEngine = this;
-        let promise: Promise<any> = Promise.resolve({});
 
         // Schemas
         if (!ovhEngine.apisLoaded) {
-            promise = promise
-                .then(() => ovhEngine.loadSchemas('/'))
-                .then(() => ovhEngine.apisLoaded = true);
+            await ovhEngine.loadSchemas('/')
+            ovhEngine.apisLoaded = true;
         }
 
         // Time drift
         if (ovhEngine.apiTimeDiff === null && path !== '/auth/time') {
-            promise = promise
-                .then(() => ovhEngine.request('GET', '/auth/time', {}))
-                .then((time: number) => ovhEngine.apiTimeDiff = time - Math.round(Date.now() / 1000),
-                    (err: Error) => Promise.reject('[OVH] Unable to fetch OVH API time' + err.message));
+            try {
+                const time: number = await ovhEngine.request('GET', '/auth/time', {})
+                ovhEngine.apiTimeDiff = time - Math.round(Date.now() / 1000);
+            } catch (err) {
+                throw '[OVH] Unable to fetch OVH API time' + err.message
+            }
+
         }
 
-        promise = promise.then(() => {
-            // Potential warnings
-            if (Object.keys(ovhEngine.apis).length > 1) {
-                ovhEngine.warnsRequest(httpMethod, path);
-            }
-            let path0 = path;
-            let m: RegExpMatchArray | null = null;
-            while (m = path.match(/{([^}]+)}/)) {
-                let val = params[m[1]];
-                if (val === undefined)
-                    return <Promise<any>>Promise.reject(`${m[1]} param must be provide to ${path0}`);
-                delete params[m[1]];
-                path = path.replace(m[0], String(val));
-            }
-            let options: RequestOptions = {
-                host: ovhEngine.host,
-                port: ovhEngine.port,
-                method: httpMethod,
-                path: ovhEngine.basePath + path
-            };
+        // Potential warnings
+        if (Object.keys(ovhEngine.apis).length > 1) {
+            ovhEngine.warnsRequest(httpMethod, path);
+        }
+        let path0 = path;
+        let m: RegExpMatchArray | null = null;
+        while (m = path.match(/{([^}]+)}/)) {
+            let val = params[m[1]];
+            if (val === undefined)
+                return <Promise<any>>Promise.reject(`${m[1]} param must be provide to ${path0}`);
+            delete params[m[1]];
+            path = path.replace(m[0], String(val));
+        }
+        let options: RequestOptions = {
+            host: ovhEngine.host,
+            port: ovhEngine.port,
+            method: httpMethod,
+            path: ovhEngine.basePath + path
+        };
 
-            // Headers
-            options.headers = {
-                'Content-Type': 'application/json',
-                'X-Ovh-Application': ovhEngine.appKey,
-            };
+        // Headers
+        options.headers = {
+            'Content-Type': 'application/json',
+            'X-Ovh-Application': ovhEngine.appKey,
+        };
 
-            // Remove undefined values
-            for (let k in params) {
-                if (params.hasOwnProperty(k) && params[k] == null) {
-                    delete params[k];
+        // Remove undefined values
+        for (let k in params) {
+            if (params.hasOwnProperty(k) && params[k] == null) {
+                delete params[k];
+            }
+        }
+
+        let reqBody: string = '';
+        if (typeof (params) === 'object' && Object.keys(params).length > 0) {
+            if (httpMethod === 'PUT' || httpMethod === 'POST') {
+                // Escape unicode
+                reqBody = JSON
+                    .stringify(params)
+                    .replace(/[\u0080-\uFFFF]/g, (m) => '\\u' + ('0000' + m.charCodeAt(0).toString(16)).slice(-4));
+                options.headers['Content-Length'] = reqBody.length;
+            } else {
+                options.path += `?${querystring.stringify(params)}`;
+            }
+        }
+        // signe operation if /auth service
+        if (path !== '/auth/credential' && path !== '/auth/time') {
+            const XOvhTimestamp: number = Math.round(Date.now() / 1000) + Number(ovhEngine.apiTimeDiff);
+            options.headers['X-Ovh-Timestamp'] = XOvhTimestamp;
+
+            // Sign request
+            if (typeof (ovhEngine.consumerKey) === 'string') {
+                options.headers['X-Ovh-Consumer'] = ovhEngine.consumerKey;
+                options.headers['X-Ovh-Signature'] = ovhEngine.signRequest(
+                    httpMethod, `https://${options.host}${options.path}`,
+                    reqBody, XOvhTimestamp
+                );
+            }
+        }
+
+        if (ovhEngine.debug) {
+            ovhEngine.debug(`[OVH] API call: ${options.method} ${options.path} ${reqBody}`);
+        }
+        // retry the Query thith a new cert
+        const waitForCertValidation = async (consumerKey: string, validationUrl: string) => new Promise((done) => {
+            // set consumerKey
+            ovhEngine.consumerKey = consumerKey;
+            console.log(`[OVH] MISSING_CREDENTIAL issue: ${consumerKey}\nvalidate this cert url:\n${validationUrl}`)
+            let pass = 0;
+            const checkCert = () => ovhEngine.request('GET', '/auth/currentCredential')
+            .then(({ status }) => {
+                if (status === 'validated') {
+                    console.log('consumerKey Authorized!')
+                    done();
+                    return false; 
                 }
-            }
-
-            let reqBody: string = '';
-            if (typeof (params) === 'object' && Object.keys(params).length > 0) {
-                if (httpMethod === 'PUT' || httpMethod === 'POST') {
-                    // Escape unicode
-                    reqBody = JSON
-                        .stringify(params)
-                        .replace(/[\u0080-\uFFFF]/g, (m) => '\\u' + ('0000' + m.charCodeAt(0).toString(16)).slice(-4));
-                    options.headers['Content-Length'] = reqBody.length;
-                } else {
-                    options.path += `?${querystring.stringify(params)}`;
+                setTimeout(checkCert, 2000);
+            }, ({errorCode}) => {
+                // errorCode:"INVALID_CREDENTIAL"
+                // httpCode:"403 Forbidden"
+                // message:"This credential is not valid"
+                setTimeout(checkCert, 2000);
+                if (++pass % 5 == 0) {
+                    console.log(`\n${errorCode}: ${consumerKey} url:\n${validationUrl}`)
                 }
-            }
-            // signe operation if /auth service
-            if (!~path.indexOf('/auth/credential') && !~path.indexOf('/auth/time')) {
-                const XOvhTimestamp: number = Math.round(Date.now() / 1000) + Number(ovhEngine.apiTimeDiff);
-                options.headers['X-Ovh-Timestamp'] = XOvhTimestamp;
+            })
+            setTimeout(checkCert, 2000)
+        });
 
-                // Sign request
-                if (typeof (ovhEngine.consumerKey) === 'string') {
-                    options.headers['X-Ovh-Consumer'] = ovhEngine.consumerKey;
-                    options.headers['X-Ovh-Signature'] = ovhEngine.signRequest(
-                        httpMethod, `https://${options.host}${options.path}`,
-                        reqBody, XOvhTimestamp
-                    );
+        const handleResponse = async (res: http.IncomingMessage, body: string) => {
+            let response;
+            if (body.length > 0) {
+                try {
+                    response = JSON.parse(body);
+                } catch (e) {
+                    throw '[OVH] Unable to parse JSON reponse';
                 }
+            } else {
+                response = null;
             }
 
             if (ovhEngine.debug) {
-                ovhEngine.debug(`[OVH] API call: ${options.method} ${options.path} ${reqBody}`);
+                ovhEngine.debug(`[OVH] API response to ${options.method} ${options.path}: ${body}`);
+            }
+            if (res.statusCode === 200) {
+                return response;
             }
 
-            return new Promise((resolve, reject) => {
-                let req = https.request(options, (res) => {
-                    let body = '';
-                    res.on('data', (chunk) => body += chunk)
-                        .on('end', () => {
-                            let response;
-
-                            if (body.length > 0) {
-                                try {
-                                    response = JSON.parse(body);
-                                } catch (e) {
-                                    return reject(Error('[OVH] Unable to parse JSON reponse'));
-                                }
-                            } else {
-                                response = null;
-                            }
-
-                            if (ovhEngine.debug) {
-                                ovhEngine.debug(`[OVH] API response to ${options.method} ${options.path}: ${body}`);
-                            }
-
-                            if (res.statusCode !== 200) { // errorCode:"INVALID_CREDENTIAL"httpCode:"403 Forbidden"message:"This credential is not valid"
-                                //const { errorCode, httpCode, message } = response;
-
-                                //if (errorCode && httpCode && message) {
-                                const error: OvhError = <OvhError>response;
-                                if (error.errorCode === 'INVALID_CREDENTIAL' || error.message === 'You must login first') {
-                                    this.warn(`[OVH] INVALID_CREDENTIAL you can try this cert:`);
-                                    if (ovhEngine.consumerKey === null) {
-                                        return ovhEngine.request('POST', '/auth/credential', { accessRules: toAccessRules.apply(this, ovhEngine.accessRules) })
-                                            .then(({ consumerKey, state, validationUrl }) => {
-                                                ovhEngine.consumerKey = consumerKey;
-                                                console.log(`consumerKey: ${consumerKey}\nurl: ${validationUrl}`)
-                                                let pass = 0;
-                                                return new Promise((resolve) => {
-                                                    let timer = setInterval(() => {
-                                                        ovhEngine.request('GET', '/auth/currentCredential')
-                                                            .then(({ status }) => {
-                                                                if (status === 'validated') {
-                                                                    console.log('consumerKey Authorized!')
-                                                                    clearInterval(timer);
-                                                                    resolve()
-                                                                }
-                                                                if (++pass % 5 == 0) {
-                                                                    console.log(`Validate consumerKey: ${consumerKey} url: ${validationUrl}`)
-                                                                }
-                                                            })
-                                                    }, 2000)
-                                                })
-                                            })
-                                            .then(() => ovhEngine.request(httpMethod, path, params))
-                                    }
-                                    return reject(response);
-                                }
-                                if (response.errorCode)
-                                    return reject(response);
-                                return reject(res.statusCode + ': ' + response ? response.message : response);
-                            }
-                            return resolve(response);
-                        })
-                }).on('error', (e) => reject(e.message || e));
-
-                // mocked socket has no setTimeout
-                if (typeof (ovhEngine.timeout) === 'number') {
-                    req.on('socket', (socket) => {
-                        socket.setTimeout(ovhEngine.timeout);
-                        if (socket._events.timeout != null) {
-                            socket.on('timeout', () => req.abort());
-                        }
-                    });
+            const error: OvhError = <OvhError>response;
+            if (error.errorCode === 'INVALID_CREDENTIAL' || error.message === 'You must login first') {
+                if (ovhEngine.consumerKey === null) {
+                    const rules = { accessRules: toAccessRules.apply(this, ovhEngine.accessRules) };
+                    let consumerKey, validationUrl;
+                    try {
+                        const credential = await ovhEngine.request('POST', '/auth/credential', rules);
+                        consumerKey = credential['consumerKey'];
+                        validationUrl = credential['validationUrl'];
+                    } catch (e) {
+                        throw `failed to request a credential with rule ${JSON.stringify(ovhEngine.accessRules)} ${e.message || e}`;
+                    }
+                    await waitForCertValidation(consumerKey, validationUrl);
+                    return ovhEngine.request(httpMethod, path, params);
                 }
-                if (reqBody != null) {
-                    req.write(reqBody);
-                }
-                req.end();
-            });// end return Query promise
-        });
-        return promise;
+                throw response;
+            }
+            if (response.errorCode)
+                throw response;
+            if (!response.message)
+                throw 'ErrorCode ' + res.statusCode;
+            throw res.statusCode + ': ' + response.message;
+        }
+        // Promisify https.request
+        return new Promise((resolve, reject) => {
+            let req = https.request(options, (res: IncomingMessage) => {
+                let body = '';
+                res.on('data', (chunk) => body += chunk)
+                    .on('end', () => handleResponse(res, body).then(resolve, reject))
+            }).on('error', (e) => reject(e.message || e));
+
+            // mocked socket has no setTimeout
+            if (typeof (ovhEngine.timeout) === 'number') {
+                req.on('socket', (socket) => {
+                    socket.setTimeout(ovhEngine.timeout);
+                    if (socket._events.timeout != null) {
+                        socket.on('timeout', () => req.abort());
+                    }
+                });
+            }
+            if (reqBody != null) {
+                req.write(reqBody);
+            }
+            req.end();
+        });// end return Query promise
     }
 
     /**
