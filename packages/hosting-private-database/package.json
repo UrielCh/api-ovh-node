@@ -7,7 +7,7 @@
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "dependencies": {
-    "@ovh-api/common": "^1.0.0"
+    "@ovh-api/common": "^1.1.0"
   },
   "publishConfig": {
     "access": "public"
