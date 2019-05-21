@@ -32,7 +32,7 @@ import * as crypto from 'crypto';
 import { Schema, API } from './schema';
 import { RequestOptions } from 'http';
 import { endpoints } from './endpoints';
-import { OvhParamType } from '@ovh-api/common';
+import { OvhParamType /*, OvhApiCommon*/ } from '@ovh-api/common';
 
 type DebugFnc = (...args: any[]) => any;
 
@@ -73,19 +73,7 @@ interface AccessRule {
     path: string;
 }
 
-/**
- * conver 'GET PATH1', 'POST PATH2', ... to AccessRules
- * 
- * @param rules 
- */
-function toAccessRules(...rules: string[]): AccessRule[] {
-    return <AccessRule[]>rules
-        .map(s => s.split(/\s+/))
-        .map(([method, path]) => ({ method, path }));
-}
-export { toAccessRules }
-
-export class OvhApiDefault {
+export default class OvhApi /* implements OvhApiCommon */ {
     appKey: string;
     appSecret: string;
     consumerKey: string | null;
@@ -159,6 +147,16 @@ by default I will ask for all rights`);
             typeof (this.appSecret) !== 'string') {
             throw new Error('[OVH] You should precise an application key / secret');
         }
+    }
+    /**
+     * conver 'GET PATH1', 'POST PATH2', ... to AccessRules
+     * 
+     * @param rules 
+     */
+    toAccessRules(...rules: string[]): AccessRule[] {
+        return <AccessRule[]>rules
+            .map(s => s.split(/\s+/))
+            .map(([method, path]) => ({ method, path }));
     }
 
     /**
@@ -412,26 +410,26 @@ You can replace it with ${status.replacement}`);
             console.log(`[OVH] MISSING_CREDENTIAL issue: ${consumerKey}\nvalidate this cert url:\n${validationUrl}`)
             let pass = 0;
             const checkCert = () => ovhEngine.request('GET', '/auth/currentCredential')
-            .then(({ status }) => {
-                if (status === 'validated') {
-                    console.log('consumerKey Authorized!')
-                    done();
-                    return false; 
-                }
-                setTimeout(checkCert, 2000);
-            }, ({errorCode}) => {
-                // errorCode:"INVALID_CREDENTIAL"
-                // httpCode:"403 Forbidden"
-                // message:"This credential is not valid"
-                setTimeout(checkCert, 2000);
-                if (++pass % 5 == 0) {
-                    console.log(`\n${errorCode}: ${consumerKey} url:\n${validationUrl}`)
-                }
-            })
+                .then(({ status }) => {
+                    if (status === 'validated') {
+                        console.log('consumerKey Authorized!')
+                        done();
+                        return false;
+                    }
+                    setTimeout(checkCert, 2000);
+                }, ({ errorCode }) => {
+                    // errorCode:"INVALID_CREDENTIAL"
+                    // httpCode:"403 Forbidden"
+                    // message:"This credential is not valid"
+                    setTimeout(checkCert, 2000);
+                    if (++pass % 5 == 0) {
+                        console.log(`\n${errorCode}: ${consumerKey} url:\n${validationUrl}`)
+                    }
+                })
             setTimeout(checkCert, 2000)
         });
 
-        const handleResponse = async (res: http.IncomingMessage, body: string) => {
+        const handleResponse = async (res: IncomingMessage, body: string) => {
             let response;
             if (body.length > 0) {
                 try {
@@ -453,7 +451,7 @@ You can replace it with ${status.replacement}`);
             const error: OvhError = <OvhError>response;
             if (error.errorCode === 'INVALID_CREDENTIAL' || error.message === 'You must login first') {
                 if (ovhEngine.consumerKey === null) {
-                    const rules = { accessRules: toAccessRules.apply(this, ovhEngine.accessRules) };
+                    const rules = { accessRules: ovhEngine.toAccessRules.apply(this, ovhEngine.accessRules) };
                     let consumerKey, validationUrl;
                     try {
                         const credential = await ovhEngine.request('POST', '/auth/credential', rules);

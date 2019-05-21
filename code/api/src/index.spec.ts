@@ -1,4 +1,4 @@
-import { OvhApiDefault, OvhParams } from '.';
+import {OvhParams, default as Ovh} from '.';
 
 import { ApiIp, IpIp } from '@ovh-api/ip';
 import { assert } from 'chai';
@@ -13,7 +13,7 @@ const config: OvhParams = {
   accessRules: 'GET /ip'  
   // apis: ['ip'],
 };
-const ovhEngine = new OvhApiDefault(config);
+const ovhEngine = new Ovh(config);
 const api = new ApiIp(ovhEngine);
 
 const test1 = async () => {
