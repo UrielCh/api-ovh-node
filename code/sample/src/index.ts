@@ -1,4 +1,4 @@
-import { OvhApiDefault } from '@ovh-api/api';
+import Ovh from '@ovh-api/api';
 import { ApiDomain } from '@ovh-api/domain';
 import { ApiMe } from '@ovh-api/me';
 
@@ -7,8 +7,8 @@ const config = { appKey: String(process.env.APP_KEY),
     appSecret: String(process.env.APP_SECRET),
     consumerKey: String(process.env.CONSUMER_KEY)
 };
-const ovhEngine = new OvhApiDefault(config);
-const apiDomain = new ApiDomain(ovhEngine);
-const apiMe = new ApiMe(ovhEngine);
+const ovh = new Ovh(config);
+const apiDomain = new ApiDomain(ovh);
+const apiMe = new ApiMe(ovh);
 
 apiMe.get("/me").then((data)=> console.log(data));
