@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * 
@@ -20,13 +20,13 @@ export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL
 export interface OrderPrice {
   /**
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  currencyCode: OrderCurrencyCodeEnum;
   /**
    */
-  text?: string;
+  text: string;
   /**
    */
-  value?: number;
+  value: number;
 }
 /**
  * Consumption
@@ -36,27 +36,27 @@ export interface PaasTimeseriesConsumption {
    * Consumption start date
    *
    */
-  from?: string;
+  from: string;
   /**
    * Timestamp of consumption generation
    *
    */
-  generated?: string;
+  generated: string;
   /**
    * List of consumption items
    *
    */
-  items?: PaasTimeseriesConsumptionItem[];
+  items: PaasTimeseriesConsumptionItem[];
   /**
    * Consumption end date
    *
    */
-  to?: string;
+  to: string;
   /**
    * Total
    *
    */
-  total?: OrderPrice;
+  total: OrderPrice;
 }
 /**
  * ConsumptionItem
@@ -66,22 +66,22 @@ export interface PaasTimeseriesConsumptionItem {
    * Metric name
    *
    */
-  metricName?: PaasTimeseriesConsumptionItemMetricNameEnum;
+  metricName: PaasTimeseriesConsumptionItemMetricNameEnum;
   /**
    * Price
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Quantity consumed in unit
    *
    */
-  quantity?: ComplexTypeUnitAndValue<number>;
+  quantity: ComplexTypeUnitAndValue<number>;
   /**
    * Unit price
    *
    */
-  unitPrice?: OrderPrice;
+  unitPrice: OrderPrice;
 }
 /**
  * Key
@@ -91,27 +91,27 @@ export interface PaasTimeseriesKey {
    * Description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Id
    *
    */
-  id?: string;
+  id: string;
   /**
    * List of permissions
    *
    */
-  permissions?: PaasTimeseriesPermissionEnum[];
+  permissions: PaasTimeseriesPermissionEnum[];
   /**
    * Secret part
    *
    */
-  secret?: string;
+  secret: string;
   /**
    * List of tags
    *
    */
-  tags?: PaasTimeseriesTag[];
+  tags: PaasTimeseriesTag[];
 }
 /**
  * Tokens permissions
@@ -130,17 +130,17 @@ export interface PaasTimeseriesProject {
    * Name
    *
    */
-  displayName?: string;
+  displayName: string;
   /**
    * Region
    *
    */
-  region?: PaasTimeseriesRegion;
+  region: PaasTimeseriesRegion;
   /**
    * Id
    *
    */
-  serviceName?: string;
+  serviceName: string;
 }
 /**
  * Quota
@@ -150,17 +150,17 @@ export interface PaasTimeseriesQuota {
    * Current value
    *
    */
-  current?: number;
+  current: number;
   /**
    * Max allowed
    *
    */
-  max?: number;
+  max: number;
   /**
    * Type (ie: mads, ddp, ...)
    *
    */
-  type?: PaasTimeseriesQuotaTypeEnum;
+  type: PaasTimeseriesQuotaTypeEnum;
 }
 /**
  * Project quotas
@@ -174,17 +174,17 @@ export interface PaasTimeseriesRegion {
    * Name
    *
    */
-  displayName?: string;
+  displayName: string;
   /**
    * Id
    *
    */
-  id?: string;
+  id: string;
   /**
    * URL
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Tag
@@ -194,12 +194,12 @@ export interface PaasTimeseriesTag {
    * Key
    *
    */
-  key?: string;
+  key: string;
   /**
    * Value
    *
    */
-  value?: string;
+  value: string;
 }
 /**
  * Metric name
@@ -213,17 +213,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -251,28 +251,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -285,13 +285,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * Timeseries project
@@ -321,7 +321,7 @@ export interface TimeseriesProject {
    * timeseries Project id
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * project status
    *

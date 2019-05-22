@@ -7,7 +7,7 @@ export interface PartnerApplication {
    * You are eligible for the OVH Services Program Partners (OSPP) with the following tiering level
    *
    */
-  tieringLevel?: string;
+  tieringLevel: string;
 }
 /**
  * Partner company
@@ -17,152 +17,152 @@ export interface PartnerCompany {
    * OVH certification acquired
    *
    */
-  OVHCertifications?: PartnerOVHCertifications;
+  OVHCertifications: PartnerOVHCertifications;
   /**
    * Estimation of the number of accompanied customers in using OVH's solutions
    *
    */
-  OVHCustomersAdvised?: string;
+  OVHCustomersAdvised: string;
   /**
    * Estimation of the number of resources knowing OVH product the company has
    *
    */
-  OVHKnowledgeResources?: string;
+  OVHKnowledgeResources: string;
   /**
    * OVH's product the company's solutions relies on
    *
    */
-  OVHProductsUsed?: PartnerOVHProductsUsed;
+  OVHProductsUsed: PartnerOVHProductsUsed;
   /**
    * Estimation of the number of resources that have technical skills on OVH solutions the company has
    *
    */
-  OVHTechnicalAdvancedResources?: string;
+  OVHTechnicalAdvancedResources: string;
   /**
    * Estimation of the number of expert resources for OVH solutions the company has
    *
    */
-  OVHTechnicalExpertResources?: string;
+  OVHTechnicalExpertResources: string;
   /**
    * Company's sector of activity
    *
    */
-  activitySectors?: PartnerActivitySectors;
+  activitySectors: PartnerActivitySectors;
   /**
    * Company's street address
    *
    */
-  address?: string;
+  address: string;
   /**
    * Company's city
    *
    */
-  city?: string;
+  city: string;
   /**
    * Kind of client the company target
    *
    */
-  clientKinds?: PartnerClientKinds;
+  clientKinds: PartnerClientKinds;
   /**
    * The commercial name of the company
    *
    */
-  commercialName?: string;
+  commercialName: string;
   /**
    * Company's country
    *
    */
-  country?: string;
+  country: string;
   /**
    * Company's summary
    *
    */
-  description?: string;
+  description: string;
   /**
    * Company's email
    *
    */
-  email?: string;
+  email: string;
   /**
    * Estimation of the number of employees
    *
    */
-  employeesNumber?: string;
+  employeesNumber: string;
   /**
    * Company's domain of competence
    *
    */
-  expertises?: PartnerExpertisesChoices;
+  expertises: PartnerExpertisesChoices;
   /**
    * Certifications obtained from other enterprises
    *
    */
-  externalCertifications?: PartnerExternalCertifications;
+  externalCertifications: PartnerExternalCertifications;
   /**
    * Company's facebook profile url
    *
    */
-  facebook?: string;
+  facebook: string;
   /**
    * Company's linkedin profile url
    *
    */
-  linkedin?: string;
+  linkedin: string;
   /**
    * Company's logo
    *
    */
-  logo?: string;
+  logo: string;
   /**
    * Name of the company
    *
    */
-  name?: string;
+  name: string;
   /**
    * How did you heard about the OVH's partnership program
    *
    */
-  partnerKnowledges?: PartnerPartnerKnowledges;
+  partnerKnowledges: PartnerPartnerKnowledges;
   /**
    * Company's phone number
    *
    */
-  phone?: string;
+  phone: string;
   /**
    * In which country the company products of solutions are available
    *
    */
-  productCountries?: PartnerProductCountries;
+  productCountries: PartnerProductCountries;
   /**
    * Company's registration number
    *
    */
-  registrationNumber?: string;
+  registrationNumber: string;
   /**
    * Estimation of the revenue of the company
    *
    */
-  revenue?: string;
+  revenue: string;
   /**
    * Registration status
    *
    */
-  status?: PartnerCompanyStatusEnum;
+  status: PartnerCompanyStatusEnum;
   /**
    * Company's twitter profile url
    *
    */
-  twitter?: string;
+  twitter: string;
   /**
    * Company's website
    *
    */
-  website?: string;
+  website: string;
   /**
    * Company's zipCode
    *
    */
-  zipCode?: string;
+  zipCode: string;
 }
 /**
  * Partner contact
@@ -172,7 +172,7 @@ export interface PartnerContact {
    * Contact's email
    *
    */
-  email?: string;
+  email: string;
   /**
    * Contact's facebook url
    *
@@ -182,12 +182,12 @@ export interface PartnerContact {
    * Contact's first name
    *
    */
-  firstName?: string;
+  firstName: string;
   /**
    * Contact's last name
    *
    */
-  lastName?: string;
+  lastName: string;
   /**
    * Contact's linkedin url
    *
@@ -197,22 +197,22 @@ export interface PartnerContact {
    * Newsletter subscription choice
    *
    */
-  newsletter?: string;
+  newsletter: string;
   /**
    * List of nics to associate with this contact
    *
    */
-  otherNics?: string[];
+  otherNics: string[];
   /**
    * Contact's phone number
    *
    */
-  phone?: string;
+  phone: string;
   /**
    * Contact's function in the company
    *
    */
-  role?: string;
+  role: string;
   /**
    * Contact's twitter url
    *
@@ -227,7 +227,7 @@ export interface PartnerNic {
    * Nic
    *
    */
-  nic?: string;
+  nic: string;
 }
 /**
  * Possible choices for OVHCertifications
@@ -261,22 +261,22 @@ export interface PartnerOVHProductsUsed {
    * Cloud solutions
    *
    */
-  cloud?: PartnerOVHProductsUsedCloud;
+  cloud: PartnerOVHProductsUsedCloud;
   /**
    * Mobile Hosting solutions
    *
    */
-  mobileHosting?: PartnerOVHProductsUsedMobileHosting;
+  mobileHosting: PartnerOVHProductsUsedMobileHosting;
   /**
    * Telecom solutions
    *
    */
-  telecom?: PartnerOVHProductsUsedTelecom;
+  telecom: PartnerOVHProductsUsedTelecom;
   /**
    * WEB solutions
    *
    */
-  web?: PartnerOVHProductsUsedWeb;
+  web: PartnerOVHProductsUsedWeb;
 }
 /**
  * Possible options for OVHProductsUsed_cloud
@@ -286,47 +286,47 @@ export interface PartnerOVHProductsUsedCloud {
    * Cloud Desktop
    *
    */
-  cloudDesktop?: boolean;
+  cloudDesktop: boolean;
   /**
    * Cloud Desktop Infrastructure
    *
    */
-  cloudDesktopInfrastructure?: boolean;
+  cloudDesktopInfrastructure: boolean;
   /**
    * Dedicated Serveurs
    *
    */
-  dedicated?: boolean;
+  dedicated: boolean;
   /**
    * NAS
    *
    */
-  nas?: boolean;
+  nas: boolean;
   /**
    * Network and security solutions
    *
    */
-  networkAndSecurity?: boolean;
+  networkAndSecurity: boolean;
   /**
    * Private Cloud
    *
    */
-  privateCloud?: boolean;
+  privateCloud: boolean;
   /**
    * Public Cloud
    *
    */
-  publicCloud?: boolean;
+  publicCloud: boolean;
   /**
    * VPS
    *
    */
-  vps?: boolean;
+  vps: boolean;
   /**
    * vRack / vRack Connect
    *
    */
-  vrack?: boolean;
+  vrack: boolean;
 }
 /**
  * Possible ranges for OVHProductsUsed_mobileHosting
@@ -336,12 +336,12 @@ export interface PartnerOVHProductsUsedMobileHosting {
    * Logs Data Platforms
    *
    */
-  logs?: boolean;
+  logs: boolean;
   /**
    * Metrics Data Platforms
    *
    */
-  metrics?: boolean;
+  metrics: boolean;
 }
 /**
  * Possible ranges for OVHProductsUsed_telecom
@@ -351,27 +351,27 @@ export interface PartnerOVHProductsUsedTelecom {
    * ADSL / SDSL
    *
    */
-  dsl?: boolean;
+  dsl: boolean;
   /**
    * Fax
    *
    */
-  fax?: boolean;
+  fax: boolean;
   /**
    * OverTheBox
    *
    */
-  overTheBox?: boolean;
+  overTheBox: boolean;
   /**
    * SMS
    *
    */
-  sms?: boolean;
+  sms: boolean;
   /**
    * VoIP
    *
    */
-  voip?: boolean;
+  voip: boolean;
 }
 /**
  * Possible ranges for OVHProductsUsed_web
@@ -381,27 +381,27 @@ export interface PartnerOVHProductsUsedWeb {
    * Domain name
    *
    */
-  domainName?: boolean;
+  domainName: boolean;
   /**
    * Microsoft Exchange 2016
    *
    */
-  exchange?: boolean;
+  exchange: boolean;
   /**
    * Microsoft Office 365 (CSP2)
    *
    */
-  office?: boolean;
+  office: boolean;
   /**
    * Microsoft Sharepoint 2016
    *
    */
-  sharepoint?: boolean;
+  sharepoint: boolean;
   /**
    * Web Hosting
    *
    */
-  webHosting?: boolean;
+  webHosting: boolean;
 }
 /**
  * Possible choices for activitySectors
@@ -411,37 +411,37 @@ export interface PartnerActivitySectors {
    * Bank / Insurance / Finance
    *
    */
-  bankInsuranceFinance?: boolean;
+  bankInsuranceFinance: boolean;
   /**
    * Business Services / Individuals
    *
    */
-  businessServiceOrIndividuals?: boolean;
+  businessServiceOrIndividuals: boolean;
   /**
    * Communication / Media
    *
    */
-  communicationOrMedia?: boolean;
+  communicationOrMedia: boolean;
   /**
    * Digital Services Companies
    *
    */
-  digitalServicesCompanies?: boolean;
+  digitalServicesCompanies: boolean;
   /**
    * E-commerce
    *
    */
-  ecommerce?: boolean;
+  ecommerce: boolean;
   /**
    * Health
    *
    */
-  health?: boolean;
+  health: boolean;
   /**
    * Industry / Transportation / Energy
    *
    */
-  industryTransportationEnegy?: boolean;
+  industryTransportationEnegy: boolean;
   /**
    * Other (specify)
    *
@@ -451,37 +451,37 @@ export interface PartnerActivitySectors {
    * Other IT / Telecom professions
    *
    */
-  otherITOrTelecom?: boolean;
+  otherITOrTelecom: boolean;
   /**
    * Public Sector / Education
    *
    */
-  publicSectorOrEducation?: boolean;
+  publicSectorOrEducation: boolean;
   /**
    * Reseller of IT / Telecom services
    *
    */
-  resellerITOrTelecom?: boolean;
+  resellerITOrTelecom: boolean;
   /**
    * Software editor
    *
    */
-  softwareEditor?: boolean;
+  softwareEditor: boolean;
   /**
    * Trade / Trading / Distribution
    *
    */
-  tradeTradingDistribution?: boolean;
+  tradeTradingDistribution: boolean;
   /**
    * Video games / Online games
    *
    */
-  videoGames?: boolean;
+  videoGames: boolean;
   /**
    * Web Agency
    *
    */
-  webAgency?: boolean;
+  webAgency: boolean;
 }
 /**
  * Possible choices for clientKinds
@@ -491,22 +491,22 @@ export interface PartnerClientKinds {
    * Associations
    *
    */
-  association?: boolean;
+  association: boolean;
   /**
    * Individual
    *
    */
-  individual?: boolean;
+  individual: boolean;
   /**
    * Large Group
    *
    */
-  largeGroup?: boolean;
+  largeGroup: boolean;
   /**
    * Medium Business
    *
    */
-  mediumBusiness?: boolean;
+  mediumBusiness: boolean;
   /**
    * Other (specify)
    *
@@ -516,12 +516,12 @@ export interface PartnerClientKinds {
    * Public Sector
    *
    */
-  publicSector?: boolean;
+  publicSector: boolean;
   /**
    * Startup
    *
    */
-  startup?: boolean;
+  startup: boolean;
 }
 /**
  * Possible choices for companyStatusEnum
@@ -539,22 +539,22 @@ export interface PartnerExpertisesChoices {
    * Consulting
    *
    */
-  consulting?: PartnerExpertisesChoicesConsulting;
+  consulting: PartnerExpertisesChoicesConsulting;
   /**
    * Installation and integration
    *
    */
-  installationAndIntegration?: PartnerExpertisesChoicesInstallationAndIntegration;
+  installationAndIntegration: PartnerExpertisesChoicesInstallationAndIntegration;
   /**
    * Outsourcing And Maintenance
    *
    */
-  outsourcingAndMaintenance?: PartnerExpertisesChoicesOutsourcingAndMaintenance;
+  outsourcingAndMaintenance: PartnerExpertisesChoicesOutsourcingAndMaintenance;
   /**
    * Software And Development
    *
    */
-  softwareAndDevelopment?: PartnerExpertisesChoicesSoftwareAndDevelopment;
+  softwareAndDevelopment: PartnerExpertisesChoicesSoftwareAndDevelopment;
 }
 /**
  * Possible options for consulting expertises
@@ -564,27 +564,27 @@ export interface PartnerExpertisesChoicesConsulting {
    * IT security
    *
    */
-  ITSecurity?: boolean;
+  ITSecurity: boolean;
   /**
    * Audit and Consulting
    *
    */
-  auditAndConsulting?: boolean;
+  auditAndConsulting: boolean;
   /**
    * Infrastructure Architecture
    *
    */
-  infrastructureArchitecture?: boolean;
+  infrastructureArchitecture: boolean;
   /**
    * Marketing, Commerce and Communication
    *
    */
-  marketingCommerceAndCommunication?: boolean;
+  marketingCommerceAndCommunication: boolean;
   /**
    * SEO-SEA Search Engine Optimization
    *
    */
-  searchEngineOptimization?: boolean;
+  searchEngineOptimization: boolean;
 }
 /**
  * Possible options for installation and integration expertises
@@ -594,22 +594,22 @@ export interface PartnerExpertisesChoicesInstallationAndIntegration {
    * Cloud infrastructure installation and integration
    *
    */
-  cloudInfrastructure?: boolean;
+  cloudInfrastructure: boolean;
   /**
    * Installation and integration of network equipment
    *
    */
-  networkEquipment?: boolean;
+  networkEquipment: boolean;
   /**
    * Installation and integration of peripherals and mobility solutions
    *
    */
-  peripheralsAndMobilitySolutions?: boolean;
+  peripheralsAndMobilitySolutions: boolean;
   /**
    * Installation and integration of telecom equipment and infrastructure
    *
    */
-  telecomEquipmentAndInfrastructure?: boolean;
+  telecomEquipmentAndInfrastructure: boolean;
 }
 /**
  * Possible options for outsourcing and maintenance expertises
@@ -619,17 +619,17 @@ export interface PartnerExpertisesChoicesOutsourcingAndMaintenance {
    * Computer support
    *
    */
-  cmputerSupport?: boolean;
+  cmputerSupport: boolean;
   /**
    * Maintenance of network equipment / servers
    *
    */
-  maintenanceOfNetworkEquipment?: boolean;
+  maintenanceOfNetworkEquipment: boolean;
   /**
    * Outsourcing
    *
    */
-  outsourcing?: boolean;
+  outsourcing: boolean;
 }
 /**
  * Possible options for software and development expertises
@@ -639,22 +639,22 @@ export interface PartnerExpertisesChoicesSoftwareAndDevelopment {
    * Advice and expertises
    *
    */
-  adviceAndexpertises?: boolean;
+  adviceAndexpertises: boolean;
   /**
    * Maintenance / Application Management
    *
    */
-  maintenanceOrApplicationManagement?: boolean;
+  maintenanceOrApplicationManagement: boolean;
   /**
    * Installation and integration of network equipment
    *
    */
-  networkEquipment?: boolean;
+  networkEquipment: boolean;
   /**
    * Software solutions (collaborative solutions, virtual offices)
    *
    */
-  softwareSolutions?: boolean;
+  softwareSolutions: boolean;
 }
 /**
  * Possible choices for externalCertifications
@@ -664,22 +664,22 @@ export interface PartnerExternalCertifications {
    * AWS
    *
    */
-  aws?: boolean;
+  aws: boolean;
   /**
    * Cisco
    *
    */
-  cisco?: boolean;
+  cisco: boolean;
   /**
    * Intel
    *
    */
-  intel?: boolean;
+  intel: boolean;
   /**
    * Microsoft
    *
    */
-  microsoft?: boolean;
+  microsoft: boolean;
   /**
    * Other (specify)
    *
@@ -689,7 +689,7 @@ export interface PartnerExternalCertifications {
    * VMWare
    *
    */
-  vmware?: boolean;
+  vmware: boolean;
 }
 /**
  * Possible ranges for knowledgeResources
@@ -703,17 +703,17 @@ export interface PartnerPartnerKnowledges {
    * Events
    *
    */
-  events?: boolean;
+  events: boolean;
   /**
    * Forum
    *
    */
-  forum?: boolean;
+  forum: boolean;
   /**
    * Media
    *
    */
-  media?: boolean;
+  media: boolean;
   /**
    * Other (specify)
    *
@@ -723,17 +723,17 @@ export interface PartnerPartnerKnowledges {
    * Search engine
    *
    */
-  searchEngine?: boolean;
+  searchEngine: boolean;
   /**
    * Social Networks
    *
    */
-  socialNetwork?: boolean;
+  socialNetwork: boolean;
   /**
    * OVH website
    *
    */
-  website?: boolean;
+  website: boolean;
 }
 /**
  * Possible choices for productCountries
@@ -743,62 +743,62 @@ export interface PartnerProductCountries {
    * Australia
    *
    */
-  australia?: boolean;
+  australia: boolean;
   /**
    * Brazil
    *
    */
-  brazil?: boolean;
+  brazil: boolean;
   /**
    * Canada
    *
    */
-  canada?: boolean;
+  canada: boolean;
   /**
    * Czech republic
    *
    */
-  czechRepublic?: boolean;
+  czechRepublic: boolean;
   /**
    * Finland
    *
    */
-  finland?: boolean;
+  finland: boolean;
   /**
    * France
    *
    */
-  france?: boolean;
+  france: boolean;
   /**
    * Germany
    *
    */
-  germany?: boolean;
+  germany: boolean;
   /**
    * Ireland
    *
    */
-  ireland?: boolean;
+  ireland: boolean;
   /**
    * Italy
    *
    */
-  italy?: boolean;
+  italy: boolean;
   /**
    * Lithuania
    *
    */
-  lithuania?: boolean;
+  lithuania: boolean;
   /**
    * Morocco
    *
    */
-  morocco?: boolean;
+  morocco: boolean;
   /**
    * Netherlands
    *
    */
-  netherlands?: boolean;
+  netherlands: boolean;
   /**
    * Other (specify)
    *
@@ -808,37 +808,37 @@ export interface PartnerProductCountries {
    * Poland
    *
    */
-  poland?: boolean;
+  poland: boolean;
   /**
    * Portugal
    *
    */
-  portugal?: boolean;
+  portugal: boolean;
   /**
    * Senegal
    *
    */
-  senegal?: boolean;
+  senegal: boolean;
   /**
    * Singapore
    *
    */
-  singapore?: boolean;
+  singapore: boolean;
   /**
    * Spain
    *
    */
-  spain?: boolean;
+  spain: boolean;
   /**
    * Tunisia
    *
    */
-  tunisia?: boolean;
+  tunisia: boolean;
   /**
    * UK
    *
    */
-  uk?: boolean;
+  uk: boolean;
 }
 /**
  * Possible ranges for revenue

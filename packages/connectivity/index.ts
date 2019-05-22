@@ -20,7 +20,7 @@ export interface ConnectivityEligibilityAddress {
    * City name
    *
    */
-  city?: string;
+  city: string;
   /**
    * Identifier of the door, if any
    *
@@ -40,7 +40,7 @@ export interface ConnectivityEligibilityAddress {
    * INSEE code
    *
    */
-  inseeCode?: string;
+  inseeCode: string;
   /**
    * Owner name, this information can be restricted
    *
@@ -70,7 +70,7 @@ export interface ConnectivityEligibilityAddress {
    * ZIP code
    *
    */
-  zipCode?: string;
+  zipCode: string;
 }
 /**
  * Details of a Building
@@ -80,7 +80,7 @@ export interface ConnectivityEligibilityBuilding {
    * Building name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Building NRO (Optical main distribution frame)
    *
@@ -90,17 +90,17 @@ export interface ConnectivityEligibilityBuilding {
    * Identifier which refer to a building uniquely
    *
    */
-  reference?: string;
+  reference: string;
   /**
    * Stairs for this building
    *
    */
-  stairs?: ConnectivityEligibilityBuildingStair[];
+  stairs: ConnectivityEligibilityBuildingStair[];
   /**
    * Building type
    *
    */
-  type?: ConnectivityEligibilityBuildingTypeEnum;
+  type: ConnectivityEligibilityBuildingTypeEnum;
 }
 /**
  * Stair details of a Building
@@ -110,12 +110,12 @@ export interface ConnectivityEligibilityBuildingStair {
    * List of floor indentifier, "_NA_" if no identifier is available
    *
    */
-  floors?: string[];
+  floors: string[];
   /**
    * Stair identifier, "_NA_" if no identifier is available
    *
    */
-  stair?: string;
+  stair: string;
 }
 /**
  * Building type
@@ -129,12 +129,12 @@ export interface ConnectivityEligibilityCity {
    * Name of the city
    *
    */
-  city?: string;
+  city: string;
   /**
    * INSEE code of the city
    *
    */
-  inseeCode?: string;
+  inseeCode: string;
   /**
    * Locality (subset of a city)
    *
@@ -144,7 +144,7 @@ export interface ConnectivityEligibilityCity {
    * Zip code of the city
    *
    */
-  zipCode?: string;
+  zipCode: string;
 }
 /**
  * Copper informations
@@ -169,12 +169,12 @@ export interface ConnectivityEligibilityCopperInfo {
    * Sections lengths of the copper line. This is given only for an eligibility test.
    *
    */
-  sectionsLengths?: ConnectivityEligibilitySectionLength[];
+  sectionsLengths: ConnectivityEligibilitySectionLength[];
   /**
    * Status of the copper line
    *
    */
-  status?: ConnectivityEligibilityLineStatusEnum;
+  status: ConnectivityEligibilityLineStatusEnum;
   /**
    * Is the line under construction ? This is given only for an eligibility test.
    *
@@ -184,7 +184,7 @@ export interface ConnectivityEligibilityCopperInfo {
    * Is the number unlisted ? ("sur liste rouge" in french)
    *
    */
-  unlistedNumber?: boolean;
+  unlistedNumber: boolean;
 }
 /**
  * Eligibility test results
@@ -194,17 +194,17 @@ export interface ConnectivityEligibilityEligibilityTest {
    * Eligibility unique reference
    *
    */
-  eligibilityReference?: string;
+  eligibilityReference: string;
   /**
    * Endpoint informations
    *
    */
-  endpoint?: ConnectivityEligibilityEndpoint;
+  endpoint: ConnectivityEligibilityEndpoint;
   /**
    * Offers informations
    *
    */
-  offers?: ConnectivityEligibilityOffer[];
+  offers: ConnectivityEligibilityOffer[];
 }
 /**
  * Endpoint informations
@@ -214,7 +214,7 @@ export interface ConnectivityEligibilityEndpoint {
    * Address
    *
    */
-  address?: ConnectivityEligibilityAddress;
+  address: ConnectivityEligibilityAddress;
   /**
    * Copper informations, if any
    *
@@ -234,12 +234,12 @@ export interface ConnectivityEligibilityEndpoint {
    * Reference of the endpoint
    *
    */
-  reference?: string;
+  reference: string;
   /**
    * Reference type
    *
    */
-  referenceType?: ConnectivityEligibilityEndpointReferenceTypeEnum;
+  referenceType: ConnectivityEligibilityEndpointReferenceTypeEnum;
 }
 /**
  * Endpoint reference type
@@ -253,17 +253,17 @@ export interface ConnectivityEligibilityFiberInfo {
    * Building name
    *
    */
-  buildingName?: string;
+  buildingName: string;
   /**
    * Building unique identifier
    *
    */
-  buildingReference?: string;
+  buildingReference: string;
   /**
    * Building type
    *
    */
-  buildingType?: ConnectivityEligibilityBuildingTypeEnum;
+  buildingType: ConnectivityEligibilityBuildingTypeEnum;
   /**
    * NRO ("Nœud de raccordement optique" in french) is an identifier of the building where is the Optical Distribution Frame (ODF) of the fiber
    *
@@ -273,12 +273,12 @@ export interface ConnectivityEligibilityFiberInfo {
    * Operator code
    *
    */
-  operatorCode?: string;
+  operatorCode: string;
   /**
    * Operator name
    *
    */
-  operatorName?: string;
+  operatorName: string;
 }
 /**
  * Copper line details
@@ -288,17 +288,17 @@ export interface ConnectivityEligibilityLine {
    * Line address
    *
    */
-  address?: ConnectivityEligibilityAddress;
+  address: ConnectivityEligibilityAddress;
   /**
    * Copper informations
    *
    */
-  copperInfo?: ConnectivityEligibilityCopperInfo;
+  copperInfo: ConnectivityEligibilityCopperInfo;
   /**
    * Line number
    *
    */
-  lineNumber?: string;
+  lineNumber: string;
 }
 /**
  * Line status
@@ -312,17 +312,17 @@ export interface ConnectivityEligibilityMeetingSlot {
    * End date
    *
    */
-  endDate?: string;
+  endDate: string;
   /**
    * Start date
    *
    */
-  startDate?: string;
+  startDate: string;
   /**
    * An opaque string that represents an intervention unit
    *
    */
-  uiCode?: string;
+  uiCode: string;
 }
 /**
  * List of available meeting time slots
@@ -332,12 +332,12 @@ export interface ConnectivityEligibilityMeetings {
    * Whether or not it is possible to book a fake meeting
    *
    */
-  canBookFakeMeeting?: boolean;
+  canBookFakeMeeting: boolean;
   /**
    * A time slot
    *
    */
-  meetingSlots?: ConnectivityEligibilityMeetingSlot[];
+  meetingSlots: ConnectivityEligibilityMeetingSlot[];
 }
 /**
  * Message
@@ -352,12 +352,12 @@ export interface ConnectivityEligibilityMessage {
    * Code of the message
    *
    */
-  code?: ConnectivityEligibilityMessageCodeEnum;
+  code: ConnectivityEligibilityMessageCodeEnum;
   /**
    * Message
    *
    */
-  message?: string;
+  message: string;
 }
 /**
  * Message codes
@@ -371,12 +371,12 @@ export interface ConnectivityEligibilityOffer {
    * Eligibility result for the offer
    *
    */
-  eligibility?: ConnectivityEligibilityOfferEligibility;
+  eligibility: ConnectivityEligibilityOfferEligibility;
   /**
    * Product informations
    *
    */
-  product?: ConnectivityEligibilityOfferProduct;
+  product: ConnectivityEligibilityOfferProduct;
 }
 /**
  * Offer eligibility
@@ -386,12 +386,12 @@ export interface ConnectivityEligibilityOfferEligibility {
    * Activation type list, for copper only
    *
    */
-  activationTypes?: ConnectivityEligibilityActivationTypeEnum[];
+  activationTypes: ConnectivityEligibilityActivationTypeEnum[];
   /**
    * Is the endpoint eligible to this offer ?
    *
    */
-  eligible?: boolean;
+  eligible: boolean;
   /**
    * Estimated download rate, for copper and non guaranteed offers only
    *
@@ -406,12 +406,12 @@ export interface ConnectivityEligibilityOfferEligibility {
    * Reasons when not eligible, if any
    *
    */
-  reasons?: ConnectivityEligibilityMessage[];
+  reasons: ConnectivityEligibilityMessage[];
   /**
    * Warnings to consider when eligible, if any
    *
    */
-  underConditions?: ConnectivityEligibilityMessage[];
+  underConditions: ConnectivityEligibilityMessage[];
 }
 /**
  * Offer product
@@ -421,27 +421,27 @@ export interface ConnectivityEligibilityOfferProduct {
    * Product code, an unique identifier for the product
    *
    */
-  code?: string;
+  code: string;
   /**
    * Download rate in Mb
    *
    */
-  downloadRate?: number;
+  downloadRate: number;
   /**
    * GRT (Guaranteed Restoration Time) available list
    *
    */
-  grt?: string[];
+  grt: string[];
   /**
    * Is the rates guaranteed ?
    *
    */
-  guaranteed?: boolean;
+  guaranteed: boolean;
   /**
    * Name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Number of copper pairs required, for copper only
    *
@@ -451,17 +451,17 @@ export interface ConnectivityEligibilityOfferProduct {
    * Provider
    *
    */
-  provider?: ConnectivityEligibilityOfferProductProviderEnum;
+  provider: ConnectivityEligibilityOfferProductProviderEnum;
   /**
    * Type of the product
    *
    */
-  type?: ConnectivityEligibilityOfferProductTypeEnum;
+  type: ConnectivityEligibilityOfferProductTypeEnum;
   /**
    * Upload rate in Mb
    *
    */
-  uploadRate?: number;
+  uploadRate: number;
 }
 /**
  * Offer product provider
@@ -479,7 +479,7 @@ export interface ConnectivityEligibilityPortability {
    * Eligibility informations
    *
    */
-  eligibility?: ConnectivityEligibilityPortabilityEligibility;
+  eligibility: ConnectivityEligibilityPortabilityEligibility;
   /**
    * Date of the end of quarantine, if any
    *
@@ -499,17 +499,17 @@ export interface ConnectivityEligibilityPortabilityEligibility {
    * Is the portability eligible for this line ?
    *
    */
-  eligible?: boolean;
+  eligible: boolean;
   /**
    * Reasons when not eligible, if any
    *
    */
-  reasons?: ConnectivityEligibilityMessage[];
+  reasons: ConnectivityEligibilityMessage[];
   /**
    * Warnings to consider when eligible, if any
    *
    */
-  underConditions?: ConnectivityEligibilityMessage[];
+  underConditions: ConnectivityEligibilityMessage[];
 }
 /**
  * Portability type
@@ -523,12 +523,12 @@ export interface ConnectivityEligibilitySectionLength {
    * Diameter in millimeters of the copper line section
    *
    */
-  diameter?: number;
+  diameter: number;
   /**
    * Lenght in meters of the copper line section
    *
    */
-  length?: number;
+  length: number;
 }
 /**
  * Details of a street
@@ -538,12 +538,12 @@ export interface ConnectivityEligibilityStreet {
    * Identifier which refer to a street uniquely
    *
    */
-  streetCode?: string;
+  streetCode: string;
   /**
    * Street name
    *
    */
-  streetName?: string;
+  streetName: string;
 }
 /**
  * Generic incident structure
@@ -558,12 +558,12 @@ export interface ConnectivityMonitoringGenericIncident {
    * Creation date, the generic incident has been detected
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * List of impacted department codes
    *
    */
-  departments?: string[];
+  departments: string[];
   /**
    * End date, the generic incident is resolved and closed
    *
@@ -573,22 +573,22 @@ export interface ConnectivityMonitoringGenericIncident {
    * Generic incident id
    *
    */
-  id?: number;
+  id: number;
   /**
    * List of impacted NRA/NRO
    *
    */
-  nra?: string[];
+  nra: string[];
   /**
    * List of impacted operators
    *
    */
-  operators?: ConnectivityOperatorEnum[];
+  operators: ConnectivityOperatorEnum[];
   /**
    * Status (detected: we detected a potential generic incident, validated: the operators or our tech teams have confirmed the generic incident, closed: the generic incident is resolved and closed)
    *
    */
-  status?: ConnectivityMonitoringGenericIncidentStatusEnum;
+  status: ConnectivityMonitoringGenericIncidentStatusEnum;
   /**
    * Task id
    *
@@ -617,7 +617,7 @@ export interface XdslAsyncTask<T> {
    * Status of the call
    *
    */
-  status?: XdslAsyncTaskStatusEnum;
+  status: XdslAsyncTaskStatusEnum;
 }
 /**
  * Async task array
@@ -637,7 +637,7 @@ export interface XdslAsyncTaskArray<T> {
    * Status of the call
    *
    */
-  status?: XdslAsyncTaskStatusEnum;
+  status: XdslAsyncTaskStatusEnum;
 }
 /**
  * AsyncTask status

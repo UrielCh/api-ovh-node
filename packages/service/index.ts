@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeSafeKeyValue<T> {
   /**
    */
-  key?: string;
+  key: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * 
@@ -20,13 +20,13 @@ export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL
 export interface OrderPrice {
   /**
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  currencyCode: OrderCurrencyCodeEnum;
   /**
    */
-  text?: string;
+  text: string;
   /**
    */
-  value?: number;
+  value: number;
 }
 /**
  * Possible billing states
@@ -45,7 +45,7 @@ export interface ServicePlan {
    * Product plan information
    *
    */
-  product?: ServicePlanProduct;
+  product: ServicePlanProduct;
 }
 /**
  * Renew information
@@ -65,7 +65,7 @@ export interface ServiceRenew {
    * Renewal mode
    *
    */
-  mode?: ServiceRenewMode;
+  mode: ServiceRenewMode;
   /**
    * Possible interval between each renewal
    *
@@ -75,7 +75,7 @@ export interface ServiceRenew {
    * Possible renewal mode
    *
    */
-  possibleModes?: ServiceRenewMode[];
+  possibleModes: ServiceRenewMode[];
 }
 /**
  * Resource service informations
@@ -85,7 +85,7 @@ export interface ServiceResource {
    * Custom display name of the service
    *
    */
-  displayName?: string;
+  displayName: string;
   /**
    * Name of the service
    *
@@ -119,7 +119,7 @@ export interface ServiceRoute {
    * Variables to use in the path
    *
    */
-  vars?: ComplexTypeSafeKeyValue<string>[];
+  vars: ComplexTypeSafeKeyValue<string>[];
 }
 /**
  * List of consumptions recorded in a range
@@ -129,7 +129,7 @@ export interface ServiceConsumptionTransaction {
    * Begin date
    *
    */
-  beginDate?: string;
+  beginDate: string;
   /**
    * Creation date
    *
@@ -139,7 +139,7 @@ export interface ServiceConsumptionTransaction {
    * List of product plan code consumption
    *
    */
-  elements?: ServiceConsumptionTransactionElement[];
+  elements: ServiceConsumptionTransactionElement[];
   /**
    * End date
    *
@@ -159,12 +159,12 @@ export interface ServiceConsumptionTransaction {
    * Consumption amount price
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Service ID
    *
    */
-  serviceId?: number;
+  serviceId: number;
 }
 /**
  * Element of consumption for resource
@@ -174,22 +174,22 @@ export interface ServiceConsumptionTransactionElement {
    * List of consumption details for this planCode
    *
    */
-  details?: ServiceConsumptionTransactionElementDetail[];
+  details: ServiceConsumptionTransactionElementDetail[];
   /**
    * Identifier of the offer
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Consumption amount price
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Consumption quantity
    *
    */
-  quantity?: number;
+  quantity: number;
 }
 /**
  * Element of consumption for resource
@@ -199,7 +199,7 @@ export interface ServiceConsumptionTransactionElementDetail {
    * Consumption quantity
    *
    */
-  quantity?: number;
+  quantity: number;
   /**
    * Unique ID associated to one service element
    *
@@ -232,12 +232,12 @@ export interface ServiceRenewRenewDescription {
    * ISO8601 formatted renewal duration
    *
    */
-  renewPeriod?: string;
+  renewPeriod: string;
   /**
    * List possible strategies
    *
    */
-  strategies?: ServiceRenewRenewStrategy[];
+  strategies: ServiceRenewRenewStrategy[];
 }
 /**
  * Representation of service's renew forecasting
@@ -247,12 +247,12 @@ export interface ServiceRenewRenewForecast {
    * Forecast details
    *
    */
-  details?: ServiceRenewRenewForecastDetail[];
+  details: ServiceRenewRenewForecastDetail[];
   /**
    * Prices for renew forecasting
    *
    */
-  prices?: ServiceRenewRenewForecastPrices;
+  prices: ServiceRenewRenewForecastPrices;
 }
 /**
  * Representation of a product renew pricing
@@ -267,22 +267,22 @@ export interface ServiceRenewRenewForecastDetail {
    * Quantity
    *
    */
-  quantity?: number;
+  quantity: number;
   /**
    * Associated service name
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Total price
    *
    */
-  totalPrice?: OrderPrice;
+  totalPrice: OrderPrice;
   /**
    * Price for one unit
    *
    */
-  unitPrice?: OrderPrice;
+  unitPrice: OrderPrice;
 }
 /**
  * Prices for renew forecasting
@@ -292,17 +292,17 @@ export interface ServiceRenewRenewForecastPrices {
    * Tax
    *
    */
-  tax?: OrderPrice;
+  tax: OrderPrice;
   /**
    * Total price with tax
    *
    */
-  withTax?: OrderPrice;
+  withTax: OrderPrice;
   /**
    * Total price without tax
    *
    */
-  withoutTax?: OrderPrice;
+  withoutTax: OrderPrice;
 }
 /**
  * Details about a renew Order
@@ -322,27 +322,27 @@ export interface ServiceRenewRenewOrder {
    * ID of the renew Order
    *
    */
-  orderId?: number;
+  orderId: number;
   /**
    * Password
    *
    */
-  password?: string;
+  password: string;
   /**
    * Public pdf URL of the generated renew Order
    *
    */
-  pdfUrl?: string;
+  pdfUrl: string;
   /**
    * Price of the product with tax
    *
    */
-  priceWithTax?: OrderPrice;
+  priceWithTax: OrderPrice;
   /**
    * Price of the product without tax
    *
    */
-  priceWithoutTax?: OrderPrice;
+  priceWithoutTax: OrderPrice;
   /**
    * Retraction date
    *
@@ -352,12 +352,12 @@ export interface ServiceRenewRenewOrder {
    * Value of the tax
    *
    */
-  tax?: OrderPrice;
+  tax: OrderPrice;
   /**
    * Public URL to display generated renew Order
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Representation of a product renew pricing
@@ -367,22 +367,22 @@ export interface ServiceRenewRenewStrategy {
    * Price of the product
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Price of the product in micro-centims
    *
    */
-  priceInUcents?: number;
+  priceInUcents: number;
   /**
    * Services renewed by strategy
    *
    */
-  services?: number[];
+  services: number[];
   /**
    * Details of services renewed by strategy
    *
    */
-  servicesDetails?: ServiceRenewService[];
+  servicesDetails: ServiceRenewService[];
 }
 /**
  * Description of a service
@@ -392,17 +392,17 @@ export interface ServiceRenewService {
    * ID of the service
    *
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    * Name of the service
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Type of the service
    *
    */
-  serviceType?: string;
+  serviceType: string;
 }
 /**
  * Details about a Service
@@ -412,12 +412,12 @@ export interface ServiceListService {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Resource details
    *
    */
-  details?: ComplexTypeSafeKeyValue<string>[];
+  details: ComplexTypeSafeKeyValue<string>[];
   /**
    * Engagement date
    *
@@ -437,12 +437,12 @@ export interface ServiceListService {
    * Plan service description
    *
    */
-  plan?: ServicePlan;
+  plan: ServicePlan;
   /**
    * Quantity
    *
    */
-  quantity?: number;
+  quantity: number;
   /**
    * Renew service description
    *
@@ -452,17 +452,17 @@ export interface ServiceListService {
    * Resource service description
    *
    */
-  resource?: ServiceResource;
+  resource: ServiceResource;
   /**
    * Route to use in API
    *
    */
-  route?: ServiceRoute;
+  route: ServiceRoute;
   /**
    * Billing state of your service
    *
    */
-  state?: ServiceBillingStateEnum;
+  state: ServiceBillingStateEnum;
 }
 type PathsServiceGET = '/service' | 
 '/service/{serviceId}' | 

@@ -5,13 +5,13 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeChartSerie<T> {
   /**
    */
-  serieName?: string;
+  serieName: string;
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  values?: T[];
+  values: T[];
 }
 /**
  * A timestamp associated to a value
@@ -19,7 +19,7 @@ export interface ComplexTypeChartSerie<T> {
 export interface ComplexTypeChartTimestampValue {
   /**
    */
-  timestamp?: number;
+  timestamp: number;
   /**
    */
   value?: number;
@@ -30,10 +30,10 @@ export interface ComplexTypeChartTimestampValue {
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * Private database available ram sizes
@@ -51,12 +51,12 @@ export interface HostingWebAddress {
    * Port to use to access to the service
    *
    */
-  port?: number;
+  port: number;
   /**
    * Url to contact the service
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Struct which describs an boost offer from a service
@@ -66,12 +66,12 @@ export interface HostingWebAvailableOfferStruct {
    * Available boost offer
    *
    */
-  offer?: HostingWebOfferEnum;
+  offer: HostingWebOfferEnum;
   /**
    * The price in month for this boost offer
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
 }
 /**
  * Struct which describs an offer
@@ -81,22 +81,22 @@ export interface HostingWebCapabilities {
    * Number of domains you can attach to your hosting
    *
    */
-  attachedDomains?: number;
+  attachedDomains: number;
   /**
    * Does the offer allow crontab
    *
    */
-  crontab?: boolean;
+  crontab: boolean;
   /**
    * Number of database engines allowed for your hosting
    *
    */
-  databaseEngines?: number;
+  databaseEngines: number;
   /**
    * Describe all databases type you can have
    *
    */
-  databases?: HostingWebDatabaseCreationDatabaseCapabilities[];
+  databases: HostingWebDatabaseCreationDatabaseCapabilities[];
   /**
    * Disk capacity and type available for your hosting ( null for unlimited )
    *
@@ -106,22 +106,22 @@ export interface HostingWebCapabilities {
    * Describe all email offer you can have
    *
    */
-  emails?: HostingWebCreationEmailCapabilities;
+  emails: HostingWebCreationEmailCapabilities;
   /**
    * Number of environment variables allowed for your hosting
    *
    */
-  envVars?: number;
+  envVars: number;
   /**
    * Number of ftp user you can create
    *
    */
-  extraUsers?: number;
+  extraUsers: number;
   /**
    * Does the offer allow access to web files browser?
    *
    */
-  filesBrowser?: boolean;
+  filesBrowser: boolean;
   /**
    * Marketing information about the current offer
    *
@@ -131,22 +131,22 @@ export interface HostingWebCapabilities {
    * Language available for cron script
    *
    */
-  languages?: HostingWebCronLanguageAvailable;
+  languages: HostingWebCronLanguageAvailable;
   /**
    * Does the offer allow 1-click modules?
    *
    */
-  moduleOneClick?: boolean;
+  moduleOneClick: boolean;
   /**
    * Describe all privateDatabases type you can have
    *
    */
-  privateDatabases?: HostingWebDatabaseCreationDatabaseCapabilities[];
+  privateDatabases: HostingWebDatabaseCreationDatabaseCapabilities[];
   /**
    * Number of runtimes allowed for your hosting
    *
    */
-  runtimes?: number;
+  runtimes: number;
   /**
    * Number of sites recommended for your hosting ( -1 for unlimited )
    *
@@ -156,7 +156,7 @@ export interface HostingWebCapabilities {
    * Does the offer allow SSH access
    *
    */
-  ssh?: boolean;
+  ssh: boolean;
   /**
    * Traffic quota size for your hosting ( null for unlimited )
    *
@@ -171,12 +171,12 @@ export interface HostingWebCountriesIp {
    * The whois country of the ip
    *
    */
-  country?: HostingWebCountryEnum;
+  country: HostingWebCountryEnum;
   /**
    * The cluster ip
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * The cluster ipv6
    *
@@ -195,12 +195,12 @@ export interface HostingWebCreationEmailCapabilities {
    * Number of email available for creation
    *
    */
-  available?: number;
+  available: number;
   /**
    * Email account capacity
    *
    */
-  quota?: ComplexTypeUnitAndValue<number>;
+  quota: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Language available for cron script
@@ -210,12 +210,12 @@ export interface HostingWebCronLanguageAvailable {
    * NodeJS versions
    *
    */
-  nodejs?: HostingWebNodejsVersionAvailableEnum[];
+  nodejs: HostingWebNodejsVersionAvailableEnum[];
   /**
    * Php versions
    *
    */
-  php?: HostingWebPhpVersionAvailableEnum[];
+  php: HostingWebPhpVersionAvailableEnum[];
 }
 /**
  * Available datacenters
@@ -229,17 +229,17 @@ export interface HostingWebDiskType {
    * Type of the disk
    *
    */
-  type?: HostingWebDiskTypeEnum;
+  type: HostingWebDiskTypeEnum;
   /**
    * Unit for disk size
    *
    */
-  unit?: string;
+  unit: string;
   /**
    * Size of the disk
    *
    */
-  value?: number;
+  value: number;
 }
 /**
  * Disk type available
@@ -257,67 +257,67 @@ export interface HostingWebModuleList {
    * Is the module available?
    *
    */
-  active?: boolean;
+  active: boolean;
   /**
    * The type of the admin name
    *
    */
-  adminNameType?: HostingWebModuleAdminNameTypeEnum;
+  adminNameType: HostingWebModuleAdminNameTypeEnum;
   /**
    * The packager of this module for OVH
    *
    */
-  author?: string;
+  author: string;
   /**
    * The branch of the module
    *
    */
-  branch?: HostingWebModuleBranchEnum;
+  branch: HostingWebModuleBranchEnum;
   /**
    * The ID of the module
    *
    */
-  id?: number;
+  id: number;
   /**
    * The keywords for this module
    *
    */
-  keywords?: string[];
+  keywords: string[];
   /**
    * All available languages for this module
    *
    */
-  language?: HostingWebModuleLanguageEnum[];
+  language: HostingWebModuleLanguageEnum[];
   /**
    * Minimal language version required to run this module
    *
    */
-  languageRequirement?: ComplexTypeUnitAndValue<string>;
+  languageRequirement: ComplexTypeUnitAndValue<string>;
   /**
    * Is this the latest version available?
    *
    */
-  latest?: boolean;
+  latest: boolean;
   /**
    * The name of the module
    *
    */
-  name?: string;
+  name: string;
   /**
    * Size of the module
    *
    */
-  size?: ComplexTypeUnitAndValue<number>;
+  size: ComplexTypeUnitAndValue<number>;
   /**
    * The IDs of the module you can upgrade to
    *
    */
-  upgradeFrom?: number[];
+  upgradeFrom: number[];
   /**
    * The version of the module
    *
    */
-  version?: string;
+  version: string;
 }
 /**
  * Different NodeJs versions available
@@ -343,12 +343,12 @@ export interface HostingWebPhpVersion {
    * Current support of this php version
    *
    */
-  support?: HostingWebPhpVersionStateEnum;
+  support: HostingWebPhpVersionStateEnum;
   /**
    * PHP version
    *
    */
-  version?: string;
+  version: string;
 }
 /**
  * Different PHP versions available
@@ -374,7 +374,7 @@ export interface HostingWebService {
    * Available offers for boost option
    *
    */
-  availableBoostOffer?: HostingWebAvailableOfferStruct[];
+  availableBoostOffer: HostingWebAvailableOfferStruct[];
   /**
    * Current boost offer
    *
@@ -384,7 +384,7 @@ export interface HostingWebService {
    * Cluster name
    *
    */
-  cluster?: string;
+  cluster: string;
   /**
    * This direct ip to your cluster ( usefull for application like api )
    *
@@ -404,7 +404,7 @@ export interface HostingWebService {
    * Datacenter where this account is located
    *
    */
-  datacenter?: HostingWebDatacenterEnum;
+  datacenter: HostingWebDatacenterEnum;
   /**
    * Set the name displayed in ManagerV6 for your hosting (max 50 chars)
    *
@@ -429,7 +429,7 @@ export interface HostingWebService {
    * Path of your home
    *
    */
-  home?: string;
+  home: string;
   /**
    * The recommended ip for your hosting ( depends on hosting's linked services, e.g CDN or hostedSSL )
    *
@@ -449,27 +449,27 @@ export interface HostingWebService {
    * Hosting offer
    *
    */
-  offer?: HostingWebOfferCapabilitiesEnum;
+  offer: HostingWebOfferCapabilitiesEnum;
   /**
    * Hosting's OS
    *
    */
-  operatingSystem?: HostingWebOperatingSystemEnum;
+  operatingSystem: HostingWebOperatingSystemEnum;
   /**
    * State of available php versions for this account
    *
    */
-  phpVersions?: HostingWebPhpVersion[];
+  phpVersions: HostingWebPhpVersion[];
   /**
    * Hosting's main login
    *
    */
-  primaryLogin?: string;
+  primaryLogin: string;
   /**
    * Space allowed
    *
    */
-  quotaSize?: ComplexTypeUnitAndValue<number>;
+  quotaSize: ComplexTypeUnitAndValue<number>;
   /**
    * Space used
    *
@@ -484,22 +484,22 @@ export interface HostingWebService {
    * Hosting resource type
    *
    */
-  resourceType?: HostingWebResourceEnum;
+  resourceType: HostingWebResourceEnum;
   /**
    * URLs to use to manage your webhosting
    *
    */
-  serviceManagementAccess?: HostingWebServiceAccess;
+  serviceManagementAccess: HostingWebServiceAccess;
   /**
    * Service name
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * State of your hosting
    *
    */
-  state?: HostingWebStateEnum;
+  state: HostingWebStateEnum;
   /**
    * Use to link an external domain. ( This token has to be insert into a TXT field on your dns zone with ovhcontrol subdomain )
    *
@@ -519,7 +519,7 @@ export interface HostingWebService {
    * List of updates on your hosting
    *
    */
-  updates?: string[];
+  updates: string[];
 }
 /**
  * Different url to manage your service
@@ -529,17 +529,17 @@ export interface HostingWebServiceAccess {
    * Address with url and port to manage files by ftp
    *
    */
-  ftp?: HostingWebAddress;
+  ftp: HostingWebAddress;
   /**
    * Address to see your webhosting without domain
    *
    */
-  http?: HostingWebAddress;
+  http: HostingWebAddress;
   /**
    * Address with url and port to manage webhosting by ssh
    *
    */
-  ssh?: HostingWebAddress;
+  ssh: HostingWebAddress;
 }
 /**
  * Hosting's state
@@ -561,17 +561,17 @@ export interface HostingWebAttachedDomain {
    * Is linked to the hosting cdn
    *
    */
-  cdn?: HostingWebAttachedDomainCdnEnum;
+  cdn: HostingWebAttachedDomainCdnEnum;
   /**
    * Domain linked (fqdn)
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Firewall state for this path
    *
    */
-  firewall?: HostingWebAttachedDomainFirewallEnum;
+  firewall: HostingWebAttachedDomainFirewallEnum;
   /**
    * IP location of the domain linked
    *
@@ -586,7 +586,7 @@ export interface HostingWebAttachedDomain {
    * Domain path, relative to your home directory
    *
    */
-  path?: string;
+  path: string;
   /**
    * The runtime configuration ID used on this domain
    *
@@ -601,7 +601,7 @@ export interface HostingWebAttachedDomain {
    * The domain status
    *
    */
-  status?: HostingWebAttachedDomainStatusEnum;
+  status: HostingWebAttachedDomainStatusEnum;
   /**
    * The task ID working on this domain
    *
@@ -632,7 +632,7 @@ export interface HostingWebBoostHistory {
    * Account who requested the change
    *
    */
-  accountId?: string;
+  accountId: string;
   /**
    * Boost offer used
    *
@@ -642,12 +642,12 @@ export interface HostingWebBoostHistory {
    * The date when the change has been requested
    *
    */
-  date?: string;
+  date: string;
   /**
    * Offer when the change was made
    *
    */
-  offer?: HostingWebOfferCapabilitiesEnum;
+  offer: HostingWebOfferCapabilitiesEnum;
 }
 /**
  * CDN service
@@ -657,17 +657,17 @@ export interface HostingWebCdn {
    * Domain of this CDN
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Option CDN free with the hosting ?
    *
    */
-  free?: boolean;
+  free: boolean;
   /**
    * Status of the CDN option
    *
    */
-  status?: HostingWebCdnStatusEnum;
+  status: HostingWebCdnStatusEnum;
   /**
    * The task ID working on this CDN
    *
@@ -677,12 +677,12 @@ export interface HostingWebCdn {
    * Type of the CDN
    *
    */
-  type?: string;
+  type: string;
   /**
    * Version of the CDN
    *
    */
-  version?: string;
+  version: string;
 }
 /**
  * Cdn status
@@ -696,7 +696,7 @@ export interface HostingWebCron {
    * Command to execute
    *
    */
-  command?: string;
+  command: string;
   /**
    * Description field for you
    *
@@ -711,22 +711,22 @@ export interface HostingWebCron {
    * Frequency ( crontab format ) defined for the script ( minutes are ignored )
    *
    */
-  frequency?: string;
+  frequency: string;
   /**
    * Cron's id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Cron language
    *
    */
-  language?: HostingWebCronLanguageEnum;
+  language: HostingWebCronLanguageEnum;
   /**
    * Cron status
    *
    */
-  status?: HostingWebCronStatusEnum;
+  status: HostingWebCronStatusEnum;
 }
 /**
  * Cron's language
@@ -744,7 +744,7 @@ export interface HostingWebDatabase {
    * The number of available dumps associated to this database
    *
    */
-  dumps?: number;
+  dumps: number;
   /**
    * URL for the graphical user interface
    *
@@ -759,27 +759,27 @@ export interface HostingWebDatabase {
    * Mode of your database
    *
    */
-  mode?: HostingWebDatabaseModeEnum;
+  mode: HostingWebDatabaseModeEnum;
   /**
    * Database name (like mydb.mysql.db or mydb.postgres.db)
    *
    */
-  name?: string;
+  name: string;
   /**
    * The port on where to contact this database
    *
    */
-  port?: number;
+  port: number;
   /**
    * Space allowed
    *
    */
-  quotaSize?: ComplexTypeUnitAndValue<number>;
+  quotaSize: ComplexTypeUnitAndValue<number>;
   /**
    * Space used
    *
    */
-  quotaUsed?: ComplexTypeUnitAndValue<number>;
+  quotaUsed: ComplexTypeUnitAndValue<number>;
   /**
    * Your database server name
    *
@@ -789,12 +789,12 @@ export interface HostingWebDatabase {
    * Database state
    *
    */
-  state?: HostingWebDatabaseStateEnum;
+  state: HostingWebDatabaseStateEnum;
   /**
    * The database status
    *
    */
-  status?: HostingWebDatabaseStatusEnum;
+  status: HostingWebDatabaseStatusEnum;
   /**
    * The task ID working on this database
    *
@@ -804,22 +804,22 @@ export interface HostingWebDatabase {
    * Type of your database
    *
    */
-  type?: HostingWebDatabaseDatabaseTypeEnum;
+  type: HostingWebDatabaseDatabaseTypeEnum;
   /**
    * Database user name
    *
    */
-  user?: string;
+  user: string;
   /**
    * Database version following the database type
    *
    */
-  version?: HostingWebDatabaseVersionEnum;
+  version: HostingWebDatabaseVersionEnum;
   /**
    * Indicates the current support state of your database version
    *
    */
-  versionSupport?: HostingWebDatabaseSupportedVersionEnum;
+  versionSupport: HostingWebDatabaseSupportedVersionEnum;
 }
 /**
  * Database Available and Default version
@@ -829,12 +829,12 @@ export interface HostingWebDatabaseAvailableVersionStruct {
    * Database default version
    *
    */
-  default?: HostingWebDatabaseVersionEnum;
+  default: HostingWebDatabaseVersionEnum;
   /**
    * Database available version
    *
    */
-  list?: HostingWebDatabaseVersionEnum[];
+  list: HostingWebDatabaseVersionEnum[];
 }
 /**
  * Struct which describs quota and available for a specific type of database
@@ -844,27 +844,27 @@ export interface HostingWebDatabaseCreationDatabaseCapabilities {
    * Number of database left for creation
    *
    */
-  available?: number;
+  available: number;
   /**
    * Database software available on this platform
    *
    */
-  engines?: HostingWebDatabaseDatabaseTypeEnum[];
+  engines: HostingWebDatabaseDatabaseTypeEnum[];
   /**
    * Technology use to isolate differents webhosting accounts
    *
    */
-  isolation?: HostingWebDatabaseDatabaseIsolationEnum;
+  isolation: HostingWebDatabaseDatabaseIsolationEnum;
   /**
    * Size of data can be used
    *
    */
-  quota?: ComplexTypeUnitAndValue<number>;
+  quota: ComplexTypeUnitAndValue<number>;
   /**
    * Database offer name
    *
    */
-  type?: HostingWebDatabaseDatabaseCapabilitiesTypeEnum;
+  type: HostingWebDatabaseDatabaseCapabilitiesTypeEnum;
 }
 /**
  * Struct which describe available features for a database
@@ -874,47 +874,47 @@ export interface HostingWebDatabaseDatabaseCapabilities {
    * Availability of the changePassword function
    *
    */
-  changePassword?: boolean;
+  changePassword: boolean;
   /**
    * Availability of the changeRight function
    *
    */
-  changeRight?: boolean;
+  changeRight: boolean;
   /**
    * Availability of the delete function
    *
    */
-  delete?: boolean;
+  delete: boolean;
   /**
    * Availability of the dump function
    *
    */
-  dump?: boolean;
+  dump: boolean;
   /**
    * Availability of the getQuota function
    *
    */
-  getQuota?: boolean;
+  getQuota: boolean;
   /**
    * Availability of the getQuota function
    *
    */
-  getRight?: boolean;
+  getRight: boolean;
   /**
    * URL of the database management tool
    *
    */
-  guiURL?: string;
+  guiURL: string;
   /**
    * Availability of the optimize function
    *
    */
-  optimize?: boolean;
+  optimize: boolean;
   /**
    * Availability of the restore function
    *
    */
-  restore?: boolean;
+  restore: boolean;
 }
 /**
  * Database capabitities type enum
@@ -968,22 +968,22 @@ export interface HostingWebDatabaseDump {
    * Creation date of the dump
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Automatic deletion date of the dump
    *
    */
-  deletionDate?: string;
+  deletionDate: string;
   /**
    * Dump id
    *
    */
-  id?: number;
+  id: number;
   /**
    * The dump status
    *
    */
-  status?: HostingWebDatabaseDumpStatusEnum;
+  status: HostingWebDatabaseDumpStatusEnum;
   /**
    * The task ID working on this dump
    *
@@ -993,7 +993,7 @@ export interface HostingWebDatabaseDump {
    * Dump type
    *
    */
-  type?: HostingWebDatabaseDumpDateEnum;
+  type: HostingWebDatabaseDumpDateEnum;
   /**
    * Dump url access
    *
@@ -1016,32 +1016,32 @@ export interface HostingWebDump {
    * Creation date of the dump
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Source database name
    *
    */
-  databaseName?: string;
+  databaseName: string;
   /**
    * Automatic deletion date of the dump
    *
    */
-  deletionDate?: string;
+  deletionDate: string;
   /**
    * Dump id
    *
    */
-  id?: number;
+  id: number;
   /**
    * If source database was deleted
    *
    */
-  orphan?: boolean;
+  orphan: boolean;
   /**
    * The dump status
    *
    */
-  status?: HostingWebDatabaseDumpStatusEnum;
+  status: HostingWebDatabaseDumpStatusEnum;
   /**
    * The task ID working on this dump
    *
@@ -1051,7 +1051,7 @@ export interface HostingWebDump {
    * Dump type
    *
    */
-  type?: HostingWebDatabaseDumpDateEnum;
+  type: HostingWebDatabaseDumpDateEnum;
   /**
    * Dump url access
    *
@@ -1066,7 +1066,7 @@ export interface HostingWebEmail {
    * Bounce
    *
    */
-  bounce?: number;
+  bounce: number;
   /**
    * Email used to receive errors
    *
@@ -1076,22 +1076,22 @@ export interface HostingWebEmail {
    * Max email to sent per day
    *
    */
-  maxPerDay?: number;
+  maxPerDay: number;
   /**
    * Email sent since hosting creation
    *
    */
-  sent?: number;
+  sent: number;
   /**
    * Email sent today
    *
    */
-  sentToday?: number;
+  sentToday: number;
   /**
    * Email state
    *
    */
-  state?: HostingWebMailStateEnum;
+  state: HostingWebMailStateEnum;
 }
 /**
  * Environment variables set into your webhosting account
@@ -1101,12 +1101,12 @@ export interface HostingWebEnvVar {
    * Name of the variable
    *
    */
-  key?: string;
+  key: string;
   /**
    * The environnement variable status
    *
    */
-  status?: HostingWebEnvVarStatusEnum;
+  status: HostingWebEnvVarStatusEnum;
   /**
    * The task ID working on this variable
    *
@@ -1116,12 +1116,12 @@ export interface HostingWebEnvVar {
    * Type of variable set
    *
    */
-  type?: HostingWebEnvVarTypeEnum;
+  type: HostingWebEnvVarTypeEnum;
   /**
    * Value of the variable
    *
    */
-  value?: string;
+  value: string;
 }
 /**
  * EnvVar status
@@ -1139,22 +1139,22 @@ export interface HostingWebExtrasqlperso {
    * Number of database allowed by this option
    *
    */
-  database?: number;
+  database: number;
   /**
    * The extraSqlPerso option name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Quota size allowed per each database by this option
    *
    */
-  size?: ComplexTypeUnitAndValue<number>;
+  size: ComplexTypeUnitAndValue<number>;
   /**
    * The extraSqlPerso option status
    *
    */
-  status?: string;
+  status: string;
   /**
    * The task ID working on this extraSqlPerso
    *
@@ -1169,17 +1169,17 @@ export interface HostingWebFreedom {
    * Freedom domain
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Available status for freedom
    *
    */
-  status?: HostingWebFreedomStatusEnum;
+  status: HostingWebFreedomStatusEnum;
   /**
    * Freedom type
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * Available status for freedoms
@@ -1201,22 +1201,22 @@ export interface HostingWebIndy {
    * AttachedDomain IDs linked to this multidomain
    *
    */
-  attachedDomains?: string[];
+  attachedDomains: string[];
   /**
    * Home directory
    *
    */
-  home?: string;
+  home: string;
   /**
    * Login of the multidomain independent user
    *
    */
-  login?: string;
+  login: string;
   /**
    * User status
    *
    */
-  state?: HostingWebUserStateEnum;
+  state: HostingWebUserStateEnum;
 }
 /**
  * Struct describing a list of directories ordered by type
@@ -1226,17 +1226,17 @@ export interface HostingWebLocalSeoDirectoriesList {
    * Navigation systems
    *
    */
-  navigationSystems?: HostingWebLocalSeoDirectory[];
+  navigationSystems: HostingWebLocalSeoDirectory[];
   /**
    * Search engines
    *
    */
-  searchEngines?: HostingWebLocalSeoDirectory[];
+  searchEngines: HostingWebLocalSeoDirectory[];
   /**
    * Social networks
    *
    */
-  socialNetworks?: HostingWebLocalSeoDirectory[];
+  socialNetworks: HostingWebLocalSeoDirectory[];
 }
 /**
  * Struct describing a directory
@@ -1246,12 +1246,12 @@ export interface HostingWebLocalSeoDirectory {
    * Identifier to use to get the result of a visibility check for the directory
    *
    */
-  code?: string;
+  code: string;
   /**
    * Human-readable name of the directory
    *
    */
-  displayName?: string;
+  displayName: string;
 }
 /**
  * Struct describing the availability of an email address for a local SEO order
@@ -1261,7 +1261,7 @@ export interface HostingWebLocalSeoEmailAvailability {
    * Availability of the email address
    *
    */
-  availability?: HostingWebLocalSeoAccountEmailAvailabilityEnum;
+  availability: HostingWebLocalSeoAccountEmailAvailabilityEnum;
   /**
    * Hosting on which the email address is used
    *
@@ -1288,22 +1288,22 @@ export interface HostingWebLocalSeoSearchData {
    * City of the location
    *
    */
-  city?: string;
+  city: string;
   /**
    * Country of the location
    *
    */
-  country?: string;
+  country: string;
   /**
    * Id of the search
    *
    */
-  id?: number;
+  id: number;
   /**
    * Name of the location
    *
    */
-  name?: string;
+  name: string;
   /**
    * Province of the location
    *
@@ -1313,22 +1313,22 @@ export interface HostingWebLocalSeoSearchData {
    * Street of the location
    *
    */
-  street?: string;
+  street: string;
   /**
    * Street numero of the location
    *
    */
-  streetNo?: string;
+  streetNo: string;
   /**
    * Token to use to get the results of the search
    *
    */
-  token?: string;
+  token: string;
   /**
    * Zipcode of the location
    *
    */
-  zip?: string;
+  zip: string;
 }
 /**
  * Struct describing the response for a visibility check request
@@ -1343,7 +1343,7 @@ export interface HostingWebLocalSeoVisibilityCheckResponse {
    * Searched location data
    *
    */
-  searchData?: HostingWebLocalSeoSearchData;
+  searchData: HostingWebLocalSeoSearchData;
 }
 /**
  * Struct describing a visibility check result
@@ -1508,27 +1508,27 @@ export interface HostingWebLocalSeoAccount {
    * Date of creation of the account
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Email address associated to the account
    *
    */
-  email?: string;
+  email: string;
   /**
    * Account id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Date of the last account's update
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Current status of the account
    *
    */
-  status?: HostingWebLocalSeoAccountStatusEnum;
+  status: HostingWebLocalSeoAccountStatusEnum;
   /**
    * Running task associated to the account
    *
@@ -1561,22 +1561,22 @@ export interface HostingWebLocalSeoLocation {
    * Country of the location
    *
    */
-  country?: HostingWebLocalSeoLocationCountryEnum;
+  country: HostingWebLocalSeoLocationCountryEnum;
   /**
    * Date of the installation of the location
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Location id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Date of the last location's update
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Name of the location
    *
@@ -1586,12 +1586,12 @@ export interface HostingWebLocalSeoLocation {
    * Local SEO offer for this location
    *
    */
-  offer?: HostingWebLocalSeoLocationOfferEnum;
+  offer: HostingWebLocalSeoLocationOfferEnum;
   /**
    * Current status of the location
    *
    */
-  status?: HostingWebLocalSeoLocationStatusEnum;
+  status: HostingWebLocalSeoLocationStatusEnum;
   /**
    * Running task associated to the location
    *
@@ -1622,7 +1622,7 @@ export interface HostingWebMailBounce {
    * The datetime of this bounce
    *
    */
-  date?: string;
+  date: string;
   /**
    * The return message for this bounce
    *
@@ -1646,7 +1646,7 @@ export interface HostingWebMailVolumeHistory {
    * The datetime of this volume history point
    *
    */
-  date?: string;
+  date: string;
   /**
    * The volume history size
    *
@@ -1661,57 +1661,57 @@ export interface HostingWebModule {
    * The admin folder, relative to the module's installation path
    *
    */
-  adminFolder?: string;
+  adminFolder: string;
   /**
    * Login for the admin account
    *
    */
-  adminName?: string;
+  adminName: string;
   /**
    * Date of the installation of the module
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * The dependencies to which the module has access. A dependency can be a standard database (like MySQL or PostgreSQL) or a key-value store (like Redis or Memcached) for example
    *
    */
-  dependencies?: HostingWebModuleDependencyType[];
+  dependencies: HostingWebModuleDependencyType[];
   /**
    * Installation ID
    *
    */
-  id?: number;
+  id: number;
   /**
    * The language of the module
    *
    */
-  language?: HostingWebModuleLanguageEnum;
+  language: HostingWebModuleLanguageEnum;
   /**
    * Date of the last module's upgrade
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * ID of the module associated with this installation
    *
    */
-  moduleId?: number;
+  moduleId: number;
   /**
    * Where the module is installed, relative to your home directory
    *
    */
-  path?: string;
+  path: string;
   /**
    * The module status
    *
    */
-  status?: HostingWebModuleStatusEnum;
+  status: HostingWebModuleStatusEnum;
   /**
    * The URL from where your module can be reached
    *
    */
-  targetUrl?: string;
+  targetUrl: string;
   /**
    * The task ID working on this module
    *
@@ -1759,7 +1759,7 @@ export interface HostingWebModuleDependencyType {
    * Type
    *
    */
-  type?: HostingWebModuleDependencyTypeEnum;
+  type: HostingWebModuleDependencyTypeEnum;
   /**
    * The user to use to connect to this dependency
    *
@@ -1786,32 +1786,32 @@ export interface HostingWebOvhConfig {
    * Container to run this website
    *
    */
-  container?: string;
+  container: string;
   /**
    * When ovhconfig was created, or found for the first time, on the hosting servers
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Version of engine you want
    *
    */
-  engineName?: HostingWebOvhConfigEngineNameEnum;
+  engineName: HostingWebOvhConfigEngineNameEnum;
   /**
    * Name of engine you want
    *
    */
-  engineVersion?: HostingWebOvhConfigEngineVersionEnum;
+  engineVersion: HostingWebOvhConfigEngineVersionEnum;
   /**
    * Environment configuration you want
    *
    */
-  environment?: HostingWebOvhConfigEnvironmentEnum;
+  environment: HostingWebOvhConfigEnvironmentEnum;
   /**
    * If .ovhConfig exists
    *
    */
-  fileExist?: boolean;
+  fileExist: boolean;
   /**
    * If this configuration is an old configuration
    *
@@ -1821,12 +1821,12 @@ export interface HostingWebOvhConfig {
    * Configuration you want for http firewall
    *
    */
-  httpFirewall?: HostingWebOvhConfigHttpFirewallEnum;
+  httpFirewall: HostingWebOvhConfigHttpFirewallEnum;
   /**
    * Configuration's id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Config path, relative to your home directory
    *
@@ -1836,7 +1836,7 @@ export interface HostingWebOvhConfig {
    * The configuration status
    *
    */
-  status?: HostingWebOvhConfigStatusEnum;
+  status: HostingWebOvhConfigStatusEnum;
   /**
    * The task ID working on this configuration
    *
@@ -1879,17 +1879,17 @@ export interface HostingWebOwnLogs {
    * The ownlogs fqdn available on logs.clusterXX.hosting.ovh.net
    *
    */
-  fqdn?: string;
+  fqdn: string;
   /**
    * Identifier of this ownLogs
    *
    */
-  id?: number;
+  id: number;
   /**
    * Status of this ownLogs
    *
    */
-  status?: HostingWebOwnLogsStatusEnum;
+  status: HostingWebOwnLogsStatusEnum;
   /**
    * The task ID working on this ownLogs
    *
@@ -1913,32 +1913,32 @@ export interface HostingWebRuntime {
    * The client application environment
    *
    */
-  appEnv?: HostingWebRuntimeEnvEnum;
+  appEnv: HostingWebRuntimeEnvEnum;
   /**
    * The creation date of the runtime configuration
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * The runtime configuration ID
    *
    */
-  id?: number;
+  id: number;
   /**
    * Is the runtime configuration is the one by default for the hosting
    *
    */
-  isDefault?: boolean;
+  isDefault: boolean;
   /**
    * Return if the runtime configuration can be deleted
    *
    */
-  isDeletable?: boolean;
+  isDeletable: boolean;
   /**
    * The last update date of the runtime configuration
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * The custom display name of the runtime configuration
    *
@@ -1953,7 +1953,7 @@ export interface HostingWebRuntime {
    * The status of the runtime
    *
    */
-  status?: HostingWebRuntimeStateEnum;
+  status: HostingWebRuntimeStateEnum;
   /**
    * The link current task for the runtime configuration
    *
@@ -1963,7 +1963,7 @@ export interface HostingWebRuntime {
    * The backend type of the runtime
    *
    */
-  type?: HostingWebRuntimeTypeEnum;
+  type: HostingWebRuntimeTypeEnum;
 }
 /**
  * Runtime env enum
@@ -1985,22 +1985,22 @@ export interface HostingWebSsl {
    * If the hostedssl is currently bound to a report
    *
    */
-  isReportable?: boolean;
+  isReportable: boolean;
   /**
    * Provider of the HostedSsl
    *
    */
-  provider?: string;
+  provider: string;
   /**
    * Regenerable flag
    *
    */
-  regenerable?: boolean;
+  regenerable: boolean;
   /**
    * Status of the HostedSsl
    *
    */
-  status?: HostingWebHostedsslStatusEnum;
+  status: HostingWebHostedsslStatusEnum;
   /**
    * The task ID working on this HostedSsl
    *
@@ -2010,7 +2010,7 @@ export interface HostingWebSsl {
    * Type of the HostedSsl
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * Hostedssl Report
@@ -2020,37 +2020,37 @@ export interface HostingWebSslReport {
    * "Certificate signing request" test status done by certification authority
    *
    */
-  certificateSigningRequestStatus?: HostingWebHostedsslReportValueEnum;
+  certificateSigningRequestStatus: HostingWebHostedsslReportValueEnum;
   /**
    * "Domain control validation" test status done by certification authority
    *
    */
-  domainControlValidationStatus?: HostingWebHostedsslReportValueEnum;
+  domainControlValidationStatus: HostingWebHostedsslReportValueEnum;
   /**
    * Applicant's legal status obtained or verified directly with registration agency
    *
    */
-  organizationValidationStatus?: HostingWebHostedsslReportValueEnum;
+  organizationValidationStatus: HostingWebHostedsslReportValueEnum;
   /**
    * Approval verified through a phone call to the contract signer
    *
    */
-  phoneCallApprovalStatus?: HostingWebHostedsslReportValueEnum;
+  phoneCallApprovalStatus: HostingWebHostedsslReportValueEnum;
   /**
    * The order ID from given hostedssl provider
    *
    */
-  providerOrderId?: string;
+  providerOrderId: string;
   /**
    * Terms and conditions agreements acceptance
    *
    */
-  termsAndConditionsAcceptanceStatus?: HostingWebHostedsslReportValueEnum;
+  termsAndConditionsAcceptanceStatus: HostingWebHostedsslReportValueEnum;
   /**
    * Trade name verified directly with registration agency or through a verified third party
    *
    */
-  tradeNameVerificationStatus?: HostingWebHostedsslReportValueEnum;
+  tradeNameVerificationStatus: HostingWebHostedsslReportValueEnum;
 }
 /**
  * Tasks
@@ -2065,12 +2065,12 @@ export interface HostingWebTask {
    * Function name
    *
    */
-  function?: string;
+  function: string;
   /**
    * the id of the task
    *
    */
-  id?: number;
+  id: number;
   /**
    * last update
    *
@@ -2090,12 +2090,12 @@ export interface HostingWebTask {
    * Task Creation date
    *
    */
-  startDate?: string;
+  startDate: string;
   /**
    * Task status
    *
    */
-  status?: HostingWebTaskStatusEnum;
+  status: HostingWebTaskStatusEnum;
 }
 /**
  * Task object type listing
@@ -2113,37 +2113,37 @@ export interface HostingWebUser {
    * Home directory
    *
    */
-  home?: string;
+  home: string;
   /**
    * Is this user primary
    *
    */
-  isPrimaryAccount?: boolean;
+  isPrimaryAccount: boolean;
   /**
    * Login used to connect on FTP and SSH
    *
    */
-  login?: string;
+  login: string;
   /**
    * Credentials to manage your webhosting
    *
    */
-  serviceManagementCredentials?: HostingWebUserServiceCredentials;
+  serviceManagementCredentials: HostingWebUserServiceCredentials;
   /**
    * User ssh status
    *
    */
-  sshState?: HostingWebUserSshStateEnum;
+  sshState: HostingWebUserSshStateEnum;
   /**
    * User state
    *
    */
-  state?: HostingWebUserStateEnum;
+  state: HostingWebUserStateEnum;
   /**
    * The user status
    *
    */
-  status?: HostingWebUserStatusEnum;
+  status: HostingWebUserStatusEnum;
   /**
    * The task ID working on this user
    *
@@ -2158,17 +2158,17 @@ export interface HostingWebUserCredentials {
    * Port to use to access to the service
    *
    */
-  port?: number;
+  port: number;
   /**
    * Url to contact the service
    *
    */
-  url?: string;
+  url: string;
   /**
    * Login to authentificate you on the service
    *
    */
-  user?: string;
+  user: string;
 }
 /**
  * Different credentials to manage your service
@@ -2178,12 +2178,12 @@ export interface HostingWebUserServiceCredentials {
    * Credentials to manage files by ftp
    *
    */
-  ftp?: HostingWebUserCredentials;
+  ftp: HostingWebUserCredentials;
   /**
    * Credentials to manage webhosting by ssh
    *
    */
-  ssh?: HostingWebUserCredentials;
+  ssh: HostingWebUserCredentials;
 }
 /**
  * Account's ssh state
@@ -2205,7 +2205,7 @@ export interface HostingWebUserLogs {
    * Date of the user creation
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Description field for you
    *
@@ -2215,7 +2215,7 @@ export interface HostingWebUserLogs {
    * The userLogs login used to connect to logs.ovh.net
    *
    */
-  login?: string;
+  login: string;
   /**
    * OwnLogs where this userLogs will be enable. Default : main domain ownlogs
    *
@@ -2225,7 +2225,7 @@ export interface HostingWebUserLogs {
    * Status of this userLogs
    *
    */
-  status?: HostingWebUserLogsStatusEnum;
+  status: HostingWebUserLogsStatusEnum;
   /**
    * The task ID working on this userLogs
    *
@@ -2246,13 +2246,13 @@ export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL
 export interface OrderPrice {
   /**
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  currencyCode: OrderCurrencyCodeEnum;
   /**
    */
-  text?: string;
+  text: string;
   /**
    */
-  value?: number;
+  value: number;
 }
 /**
  * Map a possible renew for a specific service
@@ -2262,17 +2262,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -2308,28 +2308,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -2342,13 +2342,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsHostingWebGET = '/hosting/web' | 
 '/hosting/web/attachedDomain' | 

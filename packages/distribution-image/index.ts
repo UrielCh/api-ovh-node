@@ -7,22 +7,22 @@ export interface DistributionImage {
    * The image name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Packages informations
    *
    */
-  packages?: DistributionImagePackage[];
+  packages: DistributionImagePackage[];
   /**
    * Image properties
    *
    */
-  properties?: DistributionImageProperties;
+  properties: DistributionImageProperties;
   /**
    * The service type name
    *
    */
-  service?: DistributionImageService;
+  service: DistributionImageService;
 }
 /**
  * An image package description
@@ -32,17 +32,17 @@ export interface DistributionImagePackage {
    * Package alias
    *
    */
-  alias?: string;
+  alias: string;
   /**
    * Package name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Package version
    *
    */
-  version?: string;
+  version: string;
 }
 /**
  * Description not available
@@ -52,7 +52,7 @@ export interface DistributionImageProperties {
    * The image category
    *
    */
-  category?: DistributionImagePropertiesCategory;
+  category: DistributionImagePropertiesCategory;
 }
 /**
  * Description not available

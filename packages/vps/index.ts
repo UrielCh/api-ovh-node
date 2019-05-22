@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * A value set tagged with its unit
@@ -16,10 +16,10 @@ export interface ComplexTypeUnitAndValue<T> {
 export interface ComplexTypeUnitAndValues<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  values?: T[];
+  values: T[];
 }
 /**
  * ISO country codes
@@ -45,32 +45,32 @@ export interface DedicatedServerBackupFtpAcl {
    * Wether to allow the CIFS (SMB) protocol for this ACL
    *
    */
-  cifs?: boolean;
+  cifs: boolean;
   /**
    * Wether to allow the FTP protocol for this ACL
    *
    */
-  ftp?: boolean;
+  ftp: boolean;
   /**
    * The IP Block specific to this ACL
    *
    */
-  ipBlock?: string;
+  ipBlock: string;
   /**
    * Whether the rule has been applied on the Backup Ftp
    *
    */
-  isApplied?: boolean;
+  isApplied: boolean;
   /**
    * Date of the last object modification
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Wether to allow the NFS protocol for this ACL
    *
    */
-  nfs?: boolean;
+  nfs: boolean;
 }
 /**
  * Server tasks
@@ -90,7 +90,7 @@ export interface DedicatedServerTask {
    * Function name
    *
    */
-  function?: DedicatedTaskFunctionEnum;
+  function: DedicatedTaskFunctionEnum;
   /**
    * last update
    *
@@ -100,17 +100,17 @@ export interface DedicatedServerTask {
    * Task Creation date
    *
    */
-  startDate?: string;
+  startDate: string;
   /**
    * Task status
    *
    */
-  status?: DedicatedTaskStatusEnum;
+  status: DedicatedTaskStatusEnum;
   /**
    * the id of the task
    *
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * Countries a nichandle can choose
@@ -122,22 +122,22 @@ export type NichandleCountryEnum = 'AC' | 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL
 export interface SecondaryDnsSecondaryDNS {
   /**
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * secondary dns server
    *
    */
-  dns?: string;
+  dns: string;
   /**
    * domain on slave server
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * master ip
    *
    */
-  ipMaster?: string;
+  ipMaster: string;
 }
 /**
  * A structure describing informations about available nameserver for secondary dns 
@@ -147,10 +147,10 @@ export interface SecondaryDnsSecondaryDNSNameServer {
    * the name server
    *
    */
-  hostname?: string;
+  hostname: string;
   /**
    */
-  ip?: string;
+  ip: string;
   /**
    */
   ipv6?: string;
@@ -163,17 +163,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -209,28 +209,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -243,13 +243,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * Backup your VPS
@@ -264,7 +264,7 @@ export interface VpsAutomatedBackup {
    * Backup state
    *
    */
-  state?: VpsBackupStateEnum;
+  state: VpsBackupStateEnum;
 }
 /**
  * Backup Ftp assigned to this VPS
@@ -274,7 +274,7 @@ export interface VpsBackupFtp {
    * The backup FTP server name
    *
    */
-  ftpBackupName?: string;
+  ftpBackupName: string;
   /**
    * The disk space available on your backup FTP
    *
@@ -289,7 +289,7 @@ export interface VpsBackupFtp {
    * The backup FTP type
    *
    */
-  type?: string;
+  type: string;
   /**
    * The disk space currently used on your backup FTP
    *
@@ -306,10 +306,10 @@ export type VpsBackupStateEnum = 'disabled' | 'enabled';
 export interface VpsDatacenter {
   /**
    */
-  longName?: string;
+  longName: string;
   /**
    */
-  name?: string;
+  name: string;
 }
 /**
  * Information about a disk of a VPS Virtual Machine
@@ -317,10 +317,10 @@ export interface VpsDatacenter {
 export interface VpsDisk {
   /**
    */
-  bandwidthLimit?: number;
+  bandwidthLimit: number;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * The low disk free space threshold in MiB
    *
@@ -333,13 +333,13 @@ export interface VpsDisk {
   monitoring?: boolean;
   /**
    */
-  size?: number;
+  size: number;
   /**
    */
-  state?: VpsDiskStateEnum;
+  state: VpsDiskStateEnum;
   /**
    */
-  type?: VpsDiskTypeEnum;
+  type: VpsDiskTypeEnum;
 }
 /**
  * Installation image for a VPS
@@ -347,10 +347,10 @@ export interface VpsDisk {
 export interface VpsImage {
   /**
    */
-  id?: string;
+  id: string;
   /**
    */
-  name?: string;
+  name: string;
 }
 /**
  * Information about an IP address for a VPS Virtual Machine
@@ -361,12 +361,12 @@ export interface VpsIp {
   gateway?: string;
   /**
    */
-  geolocation?: VpsIpGeolocationEnum;
+  geolocation: VpsIpGeolocationEnum;
   /**
    * The effective ip address of the Ip object
    *
    */
-  ipAddress?: string;
+  ipAddress: string;
   /**
    */
   macAddress?: string;
@@ -375,10 +375,10 @@ export interface VpsIp {
   reverse?: string;
   /**
    */
-  type?: VpsIpTypeEnum;
+  type: VpsIpTypeEnum;
   /**
    */
-  version?: CoreTypesIpVersionEnum;
+  version: CoreTypesIpVersionEnum;
 }
 /**
  * A structure describing characteristics of a VPS model
@@ -386,31 +386,31 @@ export interface VpsIp {
 export interface VpsModel {
   /**
    */
-  availableOptions?: VpsVpsOptionEnum[];
+  availableOptions: VpsVpsOptionEnum[];
   /**
    */
-  datacenter?: string[];
+  datacenter: string[];
   /**
    */
-  disk?: number;
+  disk: number;
   /**
    */
-  maximumAdditionnalIp?: number;
+  maximumAdditionnalIp: number;
   /**
    */
-  memory?: number;
+  memory: number;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  offer?: string;
+  offer: string;
   /**
    */
-  vcore?: number;
+  vcore: number;
   /**
    */
-  version?: VpsVpsVersionEnum;
+  version: VpsVpsVersionEnum;
 }
 /**
  * Information about the options of a VPS Virtual Machine
@@ -420,12 +420,12 @@ export interface VpsOption {
    * The option name
    *
    */
-  option?: VpsVpsOptionEnum;
+  option: VpsVpsOptionEnum;
   /**
    * The state of the option
    *
    */
-  state?: VpsVpsOptionStateEnum;
+  state: VpsVpsOptionStateEnum;
 }
 /**
  * Available restore state
@@ -441,10 +441,10 @@ export type VpsRestoreTypeEnum = 'file' | 'full';
 export interface VpsSnapshot {
   /**
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    */
-  description?: string;
+  description: string;
 }
 /**
  * Available softwares on a Template
@@ -452,16 +452,16 @@ export interface VpsSnapshot {
 export interface VpsSoftware {
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  status?: VpsSoftwareStatusEnum;
+  status: VpsSoftwareStatusEnum;
   /**
    */
-  type?: VpsSoftwareTypeEnum;
+  type: VpsSoftwareTypeEnum;
 }
 /**
  * Available Status for a vps Software
@@ -477,16 +477,16 @@ export type VpsSoftwareTypeEnum = 'database' | 'environment' | 'webserver';
 export interface VpsTask {
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  progress?: number;
+  progress: number;
   /**
    */
-  state?: VpsTaskStateEnum;
+  state: VpsTaskStateEnum;
   /**
    */
-  type?: VpsTaskTypeEnum;
+  type: VpsTaskTypeEnum;
 }
 /**
  * All states a VPS task can be in
@@ -502,22 +502,22 @@ export type VpsTaskTypeEnum = 'addVeeamBackupJob' | 'changeRootPassword' | 'crea
 export interface VpsTemplate {
   /**
    */
-  availableLanguage?: string[];
+  availableLanguage: string[];
   /**
    */
-  bitFormat?: VpsTemplateBitFormatEnum;
+  bitFormat: VpsTemplateBitFormatEnum;
   /**
    */
-  distribution?: string;
+  distribution: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  locale?: string;
+  locale: string;
   /**
    */
-  name?: string;
+  name: string;
 }
 /**
  * Bitness of a VPS template
@@ -529,7 +529,7 @@ export type VpsTemplateBitFormatEnum = 32 | 64;
 export interface VpsVPS {
   /**
    */
-  cluster?: string;
+  cluster: string;
   /**
    * Set the name displayed in ManagerV6 for your VPS (max 50 chars)
    *
@@ -542,38 +542,38 @@ export interface VpsVPS {
   keymap?: VpsVpsKeymapEnum;
   /**
    */
-  memoryLimit?: number;
+  memoryLimit: number;
   /**
    */
-  model?: VpsModel;
+  model: VpsModel;
   /**
    * Ip blocks for OVH monitoring servers
    *
    */
-  monitoringIpBlocks?: string[];
+  monitoringIpBlocks: string[];
   /**
    */
-  name?: string;
+  name: string;
   /**
    * Reboot your VPS 'Cloud' after change, VPS 'Classic/LowLat' will reboot automatically. Credentials for rescue mode will be sent by mail
    *
    */
-  netbootMode?: VpsVpsNetbootEnum;
+  netbootMode: VpsVpsNetbootEnum;
   /**
    */
-  offerType?: VpsVpsOfferEnum;
+  offerType: VpsVpsOfferEnum;
   /**
    */
   slaMonitoring?: boolean;
   /**
    */
-  state?: VpsVpsStateEnum;
+  state: VpsVpsStateEnum;
   /**
    */
-  vcore?: number;
+  vcore: number;
   /**
    */
-  zone?: string;
+  zone: string;
 }
 /**
  * Informations about a VPS Veeam backups
@@ -583,7 +583,7 @@ export interface VpsVeeam {
    * Backup state
    *
    */
-  backup?: boolean;
+  backup: boolean;
 }
 /**
  * A VNC connection informations
@@ -591,13 +591,13 @@ export interface VpsVeeam {
 export interface VpsVnc {
   /**
    */
-  host?: string;
+  host: string;
   /**
    */
-  password?: string;
+  password: string;
   /**
    */
-  port?: number;
+  port: number;
 }
 /**
  * All supported VNC protocols by VPS
@@ -609,7 +609,7 @@ export type VpsVncProtocolEnum = 'VNC' | 'VNCOverWebSocket';
 export interface VpsVpsBillingVersion {
   /**
    */
-  version?: number;
+  version: number;
 }
 /**
  * All values keymap can be in
@@ -649,7 +649,7 @@ export type VpsVpsStatisticTypeEnum = 'cpu:iowait' | 'cpu:max' | 'cpu:nice' | 'c
 export interface VpsVpsTimestampValue {
   /**
    */
-  timestamp?: number;
+  timestamp: number;
   /**
    */
   value?: number;
@@ -664,10 +664,10 @@ export type VpsVpsVersionEnum = '2013v1' | '2014v1' | '2015v1' | '2017v1' | '201
 export interface VpsAutomatedBackupAttached {
   /**
    */
-  access?: VpsAutomatedBackupAttachedInfos;
+  access: VpsAutomatedBackupAttachedInfos;
   /**
    */
-  restorePoint?: string;
+  restorePoint: string;
 }
 /**
  * A structure describing a backup's access informations
@@ -711,22 +711,22 @@ export type VpsIpGeolocationEnum = 'au' | 'be' | 'ca' | 'cz' | 'de' | 'es' | 'fi
 export interface VpsIpServiceStatus {
   /**
    */
-  dns?: VpsIpServiceStatusService;
+  dns: VpsIpServiceStatusService;
   /**
    */
-  http?: VpsIpServiceStatusService;
+  http: VpsIpServiceStatusService;
   /**
    */
-  https?: VpsIpServiceStatusService;
+  https: VpsIpServiceStatusService;
   /**
    */
-  ping?: VpsIpServiceStatusStateEnum;
+  ping: VpsIpServiceStatusStateEnum;
   /**
    */
-  smtp?: VpsIpServiceStatusService;
+  smtp: VpsIpServiceStatusService;
   /**
    */
-  ssh?: VpsIpServiceStatusService;
+  ssh: VpsIpServiceStatusService;
   /**
    */
   tools?: VpsIpServiceStatusStateEnum;
@@ -737,10 +737,10 @@ export interface VpsIpServiceStatus {
 export interface VpsIpServiceStatusService {
   /**
    */
-  port?: number;
+  port: number;
   /**
    */
-  state?: VpsIpServiceStatusStateEnum;
+  state: VpsIpServiceStatusStateEnum;
 }
 /**
  * Possible states of a service (ping, port)
@@ -758,12 +758,12 @@ export interface VpsMigrationMigration {
    * The planned date of the migration
    *
    */
-  date?: string;
+  date: string;
   /**
    * Migration Id
    *
    */
-  id?: string;
+  id: string;
 }
 /**
  * A structure describing a Veeam backup's export options
@@ -777,12 +777,12 @@ export interface VpsVeeamInfos {
    * NFS URL of the backup
    *
    */
-  nfs?: string;
+  nfs: string;
   /**
    * SMB URL of the backup
    *
    */
-  smb?: string;
+  smb: string;
 }
 /**
  * Informations about a VPS Veeam restore points
@@ -792,12 +792,12 @@ export interface VpsVeeamRestorePoint {
    * The restore point's creation time
    *
    */
-  creationTime?: string;
+  creationTime: string;
   /**
    * The restore point's id
    *
    */
-  id?: number;
+  id: number;
 }
 /**
  * Currently restored backup
@@ -807,17 +807,17 @@ export interface VpsVeeamRestoredBackup {
    * Backup access informations
    *
    */
-  accessInfos?: VpsVeeamInfos;
+  accessInfos: VpsVeeamInfos;
   /**
    * The restore point id
    *
    */
-  restorePointId?: number;
+  restorePointId: number;
   /**
    * The restored backup state
    *
    */
-  state?: VpsVeeamStateEnum;
+  state: VpsVeeamStateEnum;
 }
 /**
  * A structure describing a Veeam restored backup's state

@@ -13,10 +13,10 @@ export type LicenseChangeIpMessageEnum = 'OK' | 'destinationNotAllowed' | 'licen
 export interface LicenseChangeIpStatus {
   /**
    */
-  message?: LicenseChangeIpMessageEnum;
+  message: LicenseChangeIpMessageEnum;
   /**
    */
-  success?: boolean;
+  success: boolean;
 }
 /**
  * All quantities of domain available for a license
@@ -39,17 +39,17 @@ export interface LicenseOption {
    * Specifies whether this option can be released or not
    *
    */
-  canBeDeleted?: boolean;
+  canBeDeleted: boolean;
   /**
    * This option expiration date
    *
    */
-  expirationDate?: string;
+  expirationDate: string;
   /**
    * This option designation
    *
    */
-  label?: LicenseOptionLabel;
+  label: LicenseOptionLabel;
   /**
    * This option related version
    *
@@ -70,31 +70,31 @@ export type LicenseOrderableAntivirusEnum = 'DR_WEB' | 'KASPERSKY_UNLIMITED_MAIL
 export interface LicenseOrderablePleskCompatibilityInfos {
   /**
    */
-  canHavePowerPack?: boolean;
+  canHavePowerPack: boolean;
   /**
    */
-  canHaveResellerManagement?: boolean;
+  canHaveResellerManagement: boolean;
   /**
    */
-  canHaveWordpressToolkit?: boolean;
+  canHaveWordpressToolkit: boolean;
   /**
    */
-  compliantAntivirus?: LicenseOrderableAntivirusEnum[];
+  compliantAntivirus: LicenseOrderableAntivirusEnum[];
   /**
    */
-  compliantApplicationSets?: LicensePleskApplicationSetEnum[];
+  compliantApplicationSets: LicensePleskApplicationSetEnum[];
   /**
    */
-  compliantDomains?: LicenseOrderablePleskDomainNumberEnum[];
+  compliantDomains: LicenseOrderablePleskDomainNumberEnum[];
   /**
    */
-  compliantLanguagePack?: LicenseOrderablePleskLanguagePackEnum[];
+  compliantLanguagePack: LicenseOrderablePleskLanguagePackEnum[];
   /**
    */
-  potentialProblems?: LicensePotentialProblemPleskEnum[];
+  potentialProblems: LicensePotentialProblemPleskEnum[];
   /**
    */
-  version?: LicensePleskVersionEnum;
+  version: LicensePleskVersionEnum;
 }
 /**
  * All domain available for Plesk products
@@ -114,10 +114,10 @@ export type LicensePleskApplicationSetEnum = 'applicationpack' | 'developerpack'
 export interface LicensePleskOrderConfiguration {
   /**
    */
-  orderableVersions?: LicenseOrderablePleskCompatibilityInfos[];
+  orderableVersions: LicenseOrderablePleskCompatibilityInfos[];
   /**
    */
-  serviceType?: LicenseLicenseTypeEnum;
+  serviceType: LicenseLicenseTypeEnum;
 }
 /**
  * All versions available for Plesk products
@@ -139,7 +139,7 @@ export interface LicenseTask {
    * This Task description
    *
    */
-  action?: LicenseActionType;
+  action: LicenseActionType;
   /**
    * When was this Task done
    *
@@ -149,27 +149,27 @@ export interface LicenseTask {
    * The last time this Task was updated
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * This Task name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Current Taks status
    *
    */
-  status?: LicenseTaskStateEnum;
+  status: LicenseTaskStateEnum;
   /**
    * This Task id
    *
    */
-  taskId?: number;
+  taskId: number;
   /**
    * When was this Task created
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * All states a license Task can be in
@@ -183,17 +183,17 @@ export interface LicensePleskPlesk {
    * This license creation date
    *
    */
-  creation?: string;
+  creation: string;
   /**
    * Shall we delete this on expiration ?
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The internal name of your license
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * The amount of domain this license can manage
    *
@@ -208,17 +208,17 @@ export interface LicensePleskPlesk {
    * The ip on which this license is attached
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * This license key
    *
    */
-  key?: string;
+  key: string;
   /**
    * The license id on license provider side
    *
    */
-  licenseId?: string;
+  licenseId: string;
   /**
    * This license product key
    *
@@ -228,12 +228,12 @@ export interface LicensePleskPlesk {
    * This license state
    *
    */
-  status?: LicenseStateEnum;
+  status: LicenseStateEnum;
   /**
    * This license version
    *
    */
-  version?: LicensePleskVersionEnum;
+  version: LicensePleskVersionEnum;
 }
 /**
  * Map a possible renew for a specific service
@@ -243,17 +243,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -289,28 +289,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -323,13 +323,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsLicensePleskGET = '/license/plesk' | 
 '/license/plesk/orderableVersions' | 

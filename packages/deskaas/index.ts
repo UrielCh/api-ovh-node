@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * All states a Desktop As A Service can be in
@@ -32,22 +32,22 @@ export interface DeskaasTask {
    * Task name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Current progress
    *
    */
-  progress?: number;
+  progress: number;
   /**
    * Current Task state
    *
    */
-  state?: DeskaasTaskStateEnum;
+  state: DeskaasTaskStateEnum;
   /**
    * Task id
    *
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * All states a Desktop As A Service Task can be in
@@ -59,19 +59,19 @@ export type DeskaasTaskStateEnum = 'canceled' | 'doing' | 'done' | 'error' | 'fi
 export interface DeskaasUser {
   /**
    */
-  activationState?: DeskaasUserActivationStateEnum;
+  activationState: DeskaasUserActivationStateEnum;
   /**
    */
-  email?: string;
+  email: string;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  state?: DeskaasUserStateEnum;
+  state: DeskaasUserStateEnum;
   /**
    */
-  userId?: number;
+  userId: number;
 }
 /**
  * Desktop As A Service
@@ -81,12 +81,12 @@ export interface DeskaasDeskaas {
    * Alias determined by the use
    *
    */
-  alias?: string;
+  alias: string;
   /**
    * Data allocated to desktop
    *
    */
-  dataDisk?: ComplexTypeUnitAndValue<number>;
+  dataDisk: ComplexTypeUnitAndValue<number>;
   /**
    * Outgoing ip
    *
@@ -96,32 +96,32 @@ export interface DeskaasDeskaas {
    * Operating system of desktop
    *
    */
-  os?: string;
+  os: string;
   /**
    * Profile of Virtual Desktop
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * RAM allocated to desktop
    *
    */
-  ram?: ComplexTypeUnitAndValue<number>;
+  ram: ComplexTypeUnitAndValue<number>;
   /**
    * Reference of Virtual Desktop
    *
    */
-  reference?: string;
+  reference: string;
   /**
    * Service name of your Desktop As A Service
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Current state of your Virtual Desktop
    *
    */
-  state?: DeskaasStateEnum;
+  state: DeskaasStateEnum;
   /**
    * URL to connect to the virtualDesktop
    *
@@ -131,7 +131,7 @@ export interface DeskaasDeskaas {
    * Vcpu allocated to desktop
    *
    */
-  vcpu?: number;
+  vcpu: number;
 }
 /**
  * A structure describing the current password policy for your Dedicated Cloud
@@ -141,42 +141,42 @@ export interface DeskaasPasswordPolicy {
    * List of denied characters in the password
    *
    */
-  deniedChars?: string[];
+  deniedChars: string[];
   /**
    * Whether or not a digit (0-9) is mandatory in the password
    *
    */
-  digitMandatory?: boolean;
+  digitMandatory: boolean;
   /**
    * Whether or not a letter (a-z or A-Z) is mandatory in the password
    *
    */
-  letterMandatory?: boolean;
+  letterMandatory: boolean;
   /**
    * Whether or not a lowercase letter (a-z) is mandatory in the password
    *
    */
-  lowercaseLetterMandatory?: boolean;
+  lowercaseLetterMandatory: boolean;
   /**
    * Maximum lenght of the password
    *
    */
-  maxLength?: number;
+  maxLength: number;
   /**
    * Minimum lenght of the password
    *
    */
-  minLength?: number;
+  minLength: number;
   /**
    * Whether or not a special character (\W or _) is mandatory in the password
    *
    */
-  specialMandatory?: boolean;
+  specialMandatory: boolean;
   /**
    * Whether or not an uppercase letter (A-Z) is mandatory in the password
    *
    */
-  uppercaseLetterMandatory?: boolean;
+  uppercaseLetterMandatory: boolean;
 }
 /**
  * All activation states a Dedicated Cloud User can have
@@ -194,17 +194,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -240,28 +240,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -274,13 +274,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsDeskaasGET = '/deskaas' | 
 '/deskaas/{serviceName}' | 

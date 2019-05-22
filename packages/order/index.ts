@@ -21,10 +21,10 @@ export type CdnanycastOrderQuotaEnum = 1 | 10 | 100 | 1000;
 export interface ComplexTypeSafeKeyValue<T> {
   /**
    */
-  key?: string;
+  key: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * A numeric value tagged with its unit
@@ -32,10 +32,10 @@ export interface ComplexTypeSafeKeyValue<T> {
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * ISO country codes
@@ -173,22 +173,22 @@ export interface HostingWebCapabilities {
    * Number of domains you can attach to your hosting
    *
    */
-  attachedDomains?: number;
+  attachedDomains: number;
   /**
    * Does the offer allow crontab
    *
    */
-  crontab?: boolean;
+  crontab: boolean;
   /**
    * Number of database engines allowed for your hosting
    *
    */
-  databaseEngines?: number;
+  databaseEngines: number;
   /**
    * Describe all databases type you can have
    *
    */
-  databases?: HostingWebDatabaseCreationDatabaseCapabilities[];
+  databases: HostingWebDatabaseCreationDatabaseCapabilities[];
   /**
    * Disk capacity and type available for your hosting ( null for unlimited )
    *
@@ -198,22 +198,22 @@ export interface HostingWebCapabilities {
    * Describe all email offer you can have
    *
    */
-  emails?: HostingWebCreationEmailCapabilities;
+  emails: HostingWebCreationEmailCapabilities;
   /**
    * Number of environment variables allowed for your hosting
    *
    */
-  envVars?: number;
+  envVars: number;
   /**
    * Number of ftp user you can create
    *
    */
-  extraUsers?: number;
+  extraUsers: number;
   /**
    * Does the offer allow access to web files browser?
    *
    */
-  filesBrowser?: boolean;
+  filesBrowser: boolean;
   /**
    * Marketing information about the current offer
    *
@@ -223,22 +223,22 @@ export interface HostingWebCapabilities {
    * Language available for cron script
    *
    */
-  languages?: HostingWebCronLanguageAvailable;
+  languages: HostingWebCronLanguageAvailable;
   /**
    * Does the offer allow 1-click modules?
    *
    */
-  moduleOneClick?: boolean;
+  moduleOneClick: boolean;
   /**
    * Describe all privateDatabases type you can have
    *
    */
-  privateDatabases?: HostingWebDatabaseCreationDatabaseCapabilities[];
+  privateDatabases: HostingWebDatabaseCreationDatabaseCapabilities[];
   /**
    * Number of runtimes allowed for your hosting
    *
    */
-  runtimes?: number;
+  runtimes: number;
   /**
    * Number of sites recommended for your hosting ( -1 for unlimited )
    *
@@ -248,7 +248,7 @@ export interface HostingWebCapabilities {
    * Does the offer allow SSH access
    *
    */
-  ssh?: boolean;
+  ssh: boolean;
   /**
    * Traffic quota size for your hosting ( null for unlimited )
    *
@@ -267,12 +267,12 @@ export interface HostingWebCreationEmailCapabilities {
    * Number of email available for creation
    *
    */
-  available?: number;
+  available: number;
   /**
    * Email account capacity
    *
    */
-  quota?: ComplexTypeUnitAndValue<number>;
+  quota: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Language available for cron script
@@ -282,12 +282,12 @@ export interface HostingWebCronLanguageAvailable {
    * NodeJS versions
    *
    */
-  nodejs?: HostingWebNodejsVersionAvailableEnum[];
+  nodejs: HostingWebNodejsVersionAvailableEnum[];
   /**
    * Php versions
    *
    */
-  php?: HostingWebPhpVersionAvailableEnum[];
+  php: HostingWebPhpVersionAvailableEnum[];
 }
 /**
  * Disk properties (size and type of disk)
@@ -297,17 +297,17 @@ export interface HostingWebDiskType {
    * Type of the disk
    *
    */
-  type?: HostingWebDiskTypeEnum;
+  type: HostingWebDiskTypeEnum;
   /**
    * Unit for disk size
    *
    */
-  unit?: string;
+  unit: string;
   /**
    * Size of the disk
    *
    */
-  value?: number;
+  value: number;
 }
 /**
  * Disk type available
@@ -341,27 +341,27 @@ export interface HostingWebDatabaseCreationDatabaseCapabilities {
    * Number of database left for creation
    *
    */
-  available?: number;
+  available: number;
   /**
    * Database software available on this platform
    *
    */
-  engines?: HostingWebDatabaseDatabaseTypeEnum[];
+  engines: HostingWebDatabaseDatabaseTypeEnum[];
   /**
    * Technology use to isolate differents webhosting accounts
    *
    */
-  isolation?: HostingWebDatabaseDatabaseIsolationEnum;
+  isolation: HostingWebDatabaseDatabaseIsolationEnum;
   /**
    * Size of data can be used
    *
    */
-  quota?: ComplexTypeUnitAndValue<number>;
+  quota: ComplexTypeUnitAndValue<number>;
   /**
    * Database offer name
    *
    */
-  type?: HostingWebDatabaseDatabaseCapabilitiesTypeEnum;
+  type: HostingWebDatabaseDatabaseCapabilitiesTypeEnum;
 }
 /**
  * Database capabitities type enum
@@ -469,13 +469,13 @@ export type NichandleOvhSubsidiaryEnum = 'ASIA' | 'AU' | 'CA' | 'CZ' | 'DE' | 'E
 export interface OrderContract {
   /**
    */
-  content?: string;
+  content: string;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  url?: string;
+  url: string;
 }
 /**
  * 
@@ -487,16 +487,16 @@ export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL
 export interface OrderOrder {
   /**
    */
-  contracts?: OrderContract[];
+  contracts: OrderContract[];
   /**
    */
-  details?: OrderOrderDetail[];
+  details: OrderOrderDetail[];
   /**
    */
   orderId?: number;
   /**
    */
-  prices?: OrderOrderPrices;
+  prices: OrderOrderPrices;
   /**
    */
   url?: string;
@@ -507,22 +507,22 @@ export interface OrderOrder {
 export interface OrderOrderDetail {
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
   detailType?: OrderOrderDetailTypeEnum;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  quantity?: number;
+  quantity: number;
   /**
    */
-  totalPrice?: OrderPrice;
+  totalPrice: OrderPrice;
   /**
    */
-  unitPrice?: OrderPrice;
+  unitPrice: OrderPrice;
 }
 /**
  * Product type of item in order
@@ -534,13 +534,13 @@ export type OrderOrderDetailTypeEnum = 'ACCESSORY' | 'CAUTION' | 'CHOOSED' | 'CO
 export interface OrderOrderPrices {
   /**
    */
-  tax?: OrderPrice;
+  tax: OrderPrice;
   /**
    */
-  withTax?: OrderPrice;
+  withTax: OrderPrice;
   /**
    */
-  withoutTax?: OrderPrice;
+  withoutTax: OrderPrice;
 }
 /**
  * Price with it's currency and textual representation
@@ -548,13 +548,13 @@ export interface OrderOrderPrices {
 export interface OrderPrice {
   /**
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  currencyCode: OrderCurrencyCodeEnum;
   /**
    */
-  text?: string;
+  text: string;
   /**
    */
-  value?: number;
+  value: number;
 }
 /**
  * A shopping cart
@@ -564,12 +564,12 @@ export interface OrderCartCart {
    * Cart identifier
    *
    */
-  cartId?: string;
+  cartId: string;
   /**
    * Description of your cart
    *
    */
-  description?: string;
+  description: string;
   /**
    * Expiration time
    *
@@ -579,12 +579,12 @@ export interface OrderCartCart {
    * Items of your cart
    *
    */
-  items?: number[];
+  items: number[];
   /**
    * Indicates if the cart has already been validated
    *
    */
-  readOnly?: boolean;
+  readOnly: boolean;
 }
 /**
  * Representation of a configuration item for personalizing product
@@ -594,17 +594,17 @@ export interface OrderCartConfigurationItem {
    * Configuration ID
    *
    */
-  id?: number;
+  id: number;
   /**
    * Identifier of the resource
    *
    */
-  label?: string;
+  label: string;
   /**
    * Path to the resource in API.OVH.COM
    *
    */
-  value?: string;
+  value: string;
 }
 /**
  * Information about a configuration
@@ -619,17 +619,17 @@ export interface OrderCartConfigurationRequirements {
    * Label for your configuration item
    *
    */
-  label?: string;
+  label: string;
   /**
    * Indicates if the configuration item is required
    *
    */
-  required?: boolean;
+  required: boolean;
   /**
    * Type of the configuration item
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * Specific details about domain packs offer
@@ -639,7 +639,7 @@ export interface OrderCartDomainPacksDescription {
    * Informations about domains availability
    *
    */
-  domains?: OrderCartDomainPacksDescriptionItem[];
+  domains: OrderCartDomainPacksDescriptionItem[];
 }
 /**
  * Describe the eligibility of each domain in the packs
@@ -649,12 +649,12 @@ export interface OrderCartDomainPacksDescriptionItem {
    * Indicates if domain is available and will be included in the pack
    *
    */
-  available?: boolean;
+  available: boolean;
   /**
    * Domain concerned by the availability
    *
    */
-  domain?: string;
+  domain: string;
 }
 /**
  * Information about a Domain Packs offer information
@@ -664,17 +664,17 @@ export interface OrderCartDomainPacksProductInformation {
    * Specific details about domain packs offer
    *
    */
-  description?: OrderCartDomainPacksDescription;
+  description: OrderCartDomainPacksDescription;
   /**
    * Identifier of the offer
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Prices of the offer
    *
    */
-  prices?: OrderCartGenericProductPricing[];
+  prices: OrderCartGenericProductPricing[];
 }
 /**
  * Representation of domain name order properties
@@ -684,7 +684,7 @@ export interface OrderCartDomainSettings {
    * Domain name requested
    *
    */
-  domain?: string;
+  domain: string;
 }
 /**
  * Unit that correspond to a duration range
@@ -698,37 +698,37 @@ export interface OrderCartGenericOptionDefinition {
    * Define if options of this family are exclusive with each other
    *
    */
-  exclusive?: boolean;
+  exclusive: boolean;
   /**
    * Option family
    *
    */
-  family?: string;
+  family: string;
   /**
    * Define if an option of this family is mandatory
    *
    */
-  mandatory?: boolean;
+  mandatory: boolean;
   /**
    * Product offer identifier
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Prices of the product offer
    *
    */
-  prices?: OrderCartGenericProductPricing[];
+  prices: OrderCartGenericProductPricing[];
   /**
    * Name of the product
    *
    */
-  productName?: string;
+  productName: string;
   /**
    * Product type
    *
    */
-  productType?: OrderCartGenericProductTypeEnum;
+  productType: OrderCartGenericProductTypeEnum;
 }
 /**
  * Representation of a generic product
@@ -738,22 +738,22 @@ export interface OrderCartGenericProductDefinition {
    * Product offer identifier
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Prices of the product offer
    *
    */
-  prices?: OrderCartGenericProductPricing[];
+  prices: OrderCartGenericProductPricing[];
   /**
    * Name of the product
    *
    */
-  productName?: string;
+  productName: string;
   /**
    * Product type
    *
    */
-  productType?: OrderCartGenericProductTypeEnum;
+  productType: OrderCartGenericProductTypeEnum;
 }
 /**
  * Representation of a product pricing
@@ -763,27 +763,27 @@ export interface OrderCartGenericProductPricing {
    * Capacities of the pricing (type of pricing)
    *
    */
-  capacities?: OrderCartGenericProductPricingCapacitiesEnum[];
+  capacities: OrderCartGenericProductPricingCapacitiesEnum[];
   /**
    * Description of the pricing
    *
    */
-  description?: string;
+  description: string;
   /**
    * Duration for ordering the product
    *
    */
-  duration?: string;
+  duration: string;
   /**
    * Interval of renewal
    *
    */
-  interval?: number;
+  interval: number;
   /**
    * Maximum quantity that can be ordered
    *
    */
-  maximumQuantity?: number;
+  maximumQuantity: number;
   /**
    * Maximum repeat for renewal
    *
@@ -793,32 +793,32 @@ export interface OrderCartGenericProductPricing {
    * Minimum quantity that can be ordered
    *
    */
-  minimumQuantity?: number;
+  minimumQuantity: number;
   /**
    * Minimum repeat for renewal
    *
    */
-  minimumRepeat?: number;
+  minimumRepeat: number;
   /**
    * Price of the product
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Price of the product in micro-centims
    *
    */
-  priceInUcents?: number;
+  priceInUcents: number;
   /**
    * Pricing model identifier
    *
    */
-  pricingMode?: string;
+  pricingMode: string;
   /**
    * Pricing type
    *
    */
-  pricingType?: OrderCartGenericProductPricingTypeEnum;
+  pricingType: OrderCartGenericProductPricingTypeEnum;
 }
 /**
  * Capacity of a pricing (type)
@@ -844,7 +844,7 @@ export interface OrderCartItem {
    * Cart identifier
    *
    */
-  cartId?: string;
+  cartId: string;
   /**
    * Configuration set for this product
    *
@@ -859,17 +859,17 @@ export interface OrderCartItem {
    * Current product identifier
    *
    */
-  itemId?: number;
+  itemId: number;
   /**
    * Offer unique identifier of the product added
    *
    */
-  offerId?: string;
+  offerId: string;
   /**
    * Options item ID attached to this item
    *
    */
-  options?: number[];
+  options: number[];
   /**
    * Id of parent item (if item is an option)
    *
@@ -879,17 +879,17 @@ export interface OrderCartItem {
    * Price of the item
    *
    */
-  prices?: OrderCartPrice[];
+  prices: OrderCartPrice[];
   /**
    * Type of the product added
    *
    */
-  productId?: string;
+  productId: string;
   /**
    * Domain related settings
    *
    */
-  settings?: OrderCartDomainSettings;
+  settings: OrderCartDomainSettings;
 }
 /**
  * Price informations with label
@@ -899,12 +899,12 @@ export interface OrderCartPrice {
    * Label corresponding to a price
    *
    */
-  label?: OrderCartPriceLabelEnum;
+  label: OrderCartPriceLabelEnum;
   /**
    * Price of the product
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
 }
 /**
  * Label corresponding to different type of price
@@ -918,17 +918,17 @@ export interface OrderCartProductInformation {
    * Informations about the configurations required
    *
    */
-  configurations?: OrderCartConfigurationRequirements[];
+  configurations: OrderCartConfigurationRequirements[];
   /**
    * Informations about the estimated delivery time for the product
    *
    */
-  deliveryTime?: string;
+  deliveryTime: string;
   /**
    * List all the duration allowed for the product
    *
    */
-  duration?: string[];
+  duration: string[];
   /**
    * Informations about the domain's offer (gold|diamond|platinium)
    *
@@ -938,12 +938,12 @@ export interface OrderCartProductInformation {
    * Indicates if the product is orderable or not
    *
    */
-  orderable?: boolean;
+  orderable: boolean;
   /**
    * Informations about the domain phase
    *
    */
-  phase?: string;
+  phase: string;
   /**
    * Price details of the product
    *
@@ -953,17 +953,17 @@ export interface OrderCartProductInformation {
    * Pricing model identifier for this product
    *
    */
-  pricingMode?: string;
+  pricingMode: string;
   /**
    * Product identifier
    *
    */
-  productId?: string;
+  productId: string;
   /**
    * Maximum quantity purchasable for this product
    *
    */
-  quantityMax?: number;
+  quantityMax: number;
 }
 /**
  * Information about a Web Hosting offer information
@@ -973,17 +973,17 @@ export interface OrderCartWebHostingProductInformation {
    * Specific details about web hosting offer
    *
    */
-  description?: HostingWebCapabilities;
+  description: HostingWebCapabilities;
   /**
    * Identifier of the offer
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Prices of the offer
    *
    */
-  prices?: OrderCartGenericProductPricing[];
+  prices: OrderCartGenericProductPricing[];
 }
 /**
  * Describes an Addon
@@ -993,22 +993,22 @@ export interface OrderCatalogAddonItem {
    * List of the addons of this family
    *
    */
-  addons?: OrderCatalogAddonOffer[];
+  addons: OrderCatalogAddonOffer[];
   /**
    * Whether you can only have one instance of this addon family (xor)
    *
    */
-  exclusive?: boolean;
+  exclusive: boolean;
   /**
    * Addon family name
    *
    */
-  family?: string;
+  family: string;
   /**
    * Indicated if addon family must be contracted
    *
    */
-  mandatory?: boolean;
+  mandatory: boolean;
 }
 /**
  * Describes of Addon offer
@@ -1018,12 +1018,12 @@ export interface OrderCatalogAddonOffer {
    * Name that appears on invoice
    *
    */
-  invoiceName?: string;
+  invoiceName: string;
   /**
    * Describes of commercial offer of a product
    *
    */
-  plan?: OrderCatalogProductPlan;
+  plan: OrderCatalogProductPlan;
 }
 /**
  * Describes a Catalog
@@ -1033,17 +1033,17 @@ export interface OrderCatalogCatalog {
    * Identifier of the catalog
    *
    */
-  catalogId?: number;
+  catalogId: number;
   /**
    * OVH Subsidiary concerned by this catalog
    *
    */
-  merchantCode?: string;
+  merchantCode: string;
   /**
    * List of plans of the catalog
    *
    */
-  plansFamily?: OrderCatalogPlansItem[];
+  plansFamily: OrderCatalogPlansItem[];
 }
 /**
  * Composition of a configuration
@@ -1058,22 +1058,22 @@ export interface OrderCatalogConfigurationItem {
    * Indicates if the configuration is free for writing (true) or have to follow an enum (false - have to follow values field)
    *
    */
-  isCustom?: boolean;
+  isCustom: boolean;
   /**
    * Indicates if configuration is required
    *
    */
-  isMandatory?: boolean;
+  isMandatory: boolean;
   /**
    * Label of the configuration
    *
    */
-  name?: string;
+  name: string;
   /**
    * Values allowed if configuration isn't custom
    *
    */
-  values?: string[];
+  values: string[];
 }
 /**
  * Describe an item that contains multiple plans
@@ -1083,12 +1083,12 @@ export interface OrderCatalogPlansItem {
    * Family of the product
    *
    */
-  family?: string;
+  family: string;
   /**
    * List of the plans for this catalog
    *
    */
-  plans?: OrderCatalogProductPlan[];
+  plans: OrderCatalogProductPlan[];
 }
 /**
  * Describes a pricing
@@ -1098,27 +1098,27 @@ export interface OrderCatalogPricing {
    * Install, renew ... What the pricing can be used for
    *
    */
-  capacities?: string[];
+  capacities: string[];
   /**
    * Engagement period
    *
    */
-  commitment?: number;
+  commitment: number;
   /**
    * Description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Number length of the interval
    *
    */
-  interval?: number;
+  interval: number;
   /**
    * Unit interval for duration
    *
    */
-  intervalUnit?: string;
+  intervalUnit: string;
   /**
    * Maximum quantity buyable
    *
@@ -1133,22 +1133,22 @@ export interface OrderCatalogPricing {
    * Minimum quantity
    *
    */
-  minimumQuantity?: number;
+  minimumQuantity: number;
   /**
    * Minimum repeat duration
    *
    */
-  minimumRepeat?: number;
+  minimumRepeat: number;
   /**
    * Whether the catalog must reach max repeat before subscription can use another one
    *
    */
-  mustBeCompleted?: boolean;
+  mustBeCompleted: boolean;
   /**
    * Price of the product
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Max price customer will pay at the end of the period (cap)
    *
@@ -1158,12 +1158,12 @@ export interface OrderCatalogPricing {
    * Price in microcents
    *
    */
-  priceInUcents?: number;
+  priceInUcents: number;
   /**
    * Strategy on which the pricing can change
    *
    */
-  pricingStrategy?: string;
+  pricingStrategy: string;
 }
 /**
  * Describe default pricings
@@ -1173,7 +1173,7 @@ export interface OrderCatalogPricingDefault {
    * Information about default pricing
    *
    */
-  default?: OrderCatalogPricing[];
+  default: OrderCatalogPricing[];
 }
 /**
  * Describe a Product in the Catalog
@@ -1183,17 +1183,17 @@ export interface OrderCatalogProduct {
    * List of the configurations available for the product
    *
    */
-  configurations?: OrderCatalogConfigurationItem[];
+  configurations: OrderCatalogConfigurationItem[];
   /**
    * Designation of the product
    *
    */
-  description?: string;
+  description: string;
   /**
    * Plan code identifier of the product
    *
    */
-  name?: string;
+  name: string;
   /**
    * Technicals details about product
    *
@@ -1208,17 +1208,17 @@ export interface OrderCatalogProductOfferDetails {
    * List of the metadatas attached
    *
    */
-  metadatas?: ComplexTypeSafeKeyValue<string>[];
+  metadatas: ComplexTypeSafeKeyValue<string>[];
   /**
    * Describe default pricings
    *
    */
-  pricings?: OrderCatalogPricingDefault;
+  pricings: OrderCatalogPricingDefault;
   /**
    * Information about the product
    *
    */
-  product?: OrderCatalogProduct;
+  product: OrderCatalogProduct;
 }
 /**
  * Describes of commercial offer of a product
@@ -1228,7 +1228,7 @@ export interface OrderCatalogProductPlan {
    * List of addons
    *
    */
-  addonsFamily?: OrderCatalogAddonItem[];
+  addonsFamily: OrderCatalogAddonItem[];
   /**
    * Strategy that follow the pricing when product is in consumption mode
    *
@@ -1238,22 +1238,22 @@ export interface OrderCatalogProductPlan {
    * Describe the details of a commercial offer
    *
    */
-  details?: OrderCatalogProductOfferDetails;
+  details: OrderCatalogProductOfferDetails;
   /**
    * Name that appears on invoice
    *
    */
-  invoiceName?: string;
+  invoiceName: string;
   /**
    * Plan code identifier
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Main mode: rental, consumption
    *
    */
-  pricingType?: string;
+  pricingType: string;
 }
 /**
  * Describe a Private Cloud commercial catalog
@@ -1263,27 +1263,27 @@ export interface OrderCatalogPccCatalog {
    * Catalog ID
    *
    */
-  catalogId?: number;
+  catalogId: number;
   /**
    * Catalog name
    *
    */
-  catalogName?: string;
+  catalogName: string;
   /**
    * Describes Commercial Ranges of a Private Cloud
    *
    */
-  commercialRanges?: OrderCatalogPccCommercialRange[];
+  commercialRanges: OrderCatalogPccCommercialRange[];
   /**
    * OVH Subsidiary of the Catalog
    *
    */
-  merchantCode?: string;
+  merchantCode: string;
   /**
    * Commercial offers
    *
    */
-  plans?: OrderCatalogProductPlan[];
+  plans: OrderCatalogProductPlan[];
 }
 /**
  * Describes the Commercial Range of a Private Cloud
@@ -1293,17 +1293,17 @@ export interface OrderCatalogPccCommercialRange {
    * Describes Private Cloud Datacenters
    *
    */
-  datacenters?: OrderCatalogPccDatacenter[];
+  datacenters: OrderCatalogPccDatacenter[];
   /**
    * Default datacenter of the commercial range
    *
    */
-  defaultZone?: string;
+  defaultZone: string;
   /**
    * Name of the commercial range
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Describes a Private Cloud Datacenter
@@ -1313,62 +1313,62 @@ export interface OrderCatalogPccDatacenter {
    * City Code of a Datacenter
    *
    */
-  cityCode?: string;
+  cityCode: string;
   /**
    * City Name of a Datacenter
    *
    */
-  cityName?: string;
+  cityName: string;
   /**
    * Country Code of a Datacenter
    *
    */
-  countryCode?: NichandleCountryEnum;
+  countryCode: NichandleCountryEnum;
   /**
    * Name of the default hypervisor of a Datacenter
    *
    */
-  defaultHypervisor?: string;
+  defaultHypervisor: string;
   /**
    * Describes Private Cloud Hypervisors
    *
    */
-  hypervisors?: OrderCatalogPccHypervisor[];
+  hypervisors: OrderCatalogPccHypervisor[];
   /**
    * Main plan code to use for a Datacenter
    *
    */
-  mainPlan?: string;
+  mainPlan: string;
   /**
    * Describes if a Private Cloud can be ordered on a Datacenter
    *
    */
-  orderable?: boolean;
+  orderable: boolean;
   /**
    * Describes if options can be ordered on a Datacenter
    *
    */
-  orderableOptions?: boolean;
+  orderableOptions: boolean;
   /**
    * Describes if resources can be ordered on a Datacenter
    *
    */
-  orderableResources?: boolean;
+  orderableResources: boolean;
   /**
    * List of filers add in case of a No Pack order
    *
    */
-  storagesNoPack?: string[];
+  storagesNoPack: string[];
   /**
    * Zone Code of a datacenter
    *
    */
-  zoneFullName?: string;
+  zoneFullName: string;
   /**
    * Zone Name of a datacenter
    *
    */
-  zoneName?: string;
+  zoneName: string;
 }
 /**
  * Describes a Private Cloud Host
@@ -1378,32 +1378,32 @@ export interface OrderCatalogPccHost {
    * Name of the host
    *
    */
-  name?: string;
+  name: string;
   /**
    * Describes if host is orderable on a initial Order
    *
    */
-  onInitialOrder?: boolean;
+  onInitialOrder: boolean;
   /**
    * Describes if host is orderable on a upgrade order
    *
    */
-  onUpgradeOrder?: boolean;
+  onUpgradeOrder: boolean;
   /**
    * Plan Code
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Describes Private Cloud Host specifications
    *
    */
-  specifications?: OrderCatalogPccHostSpecifications;
+  specifications: OrderCatalogPccHostSpecifications;
   /**
    * List of filers add in case of a Pack order
    *
    */
-  storagesPack?: string[];
+  storagesPack: string[];
 }
 /**
  * Describes a Private Cloud Host CPU
@@ -1413,32 +1413,32 @@ export interface OrderCatalogPccHostCpuSpecifications {
    * Number of CPU Cores
    *
    */
-  cores?: number;
+  cores: number;
   /**
    * CPU Frequency
    *
    */
-  frequency?: ComplexTypeUnitAndValue<number>;
+  frequency: ComplexTypeUnitAndValue<number>;
   /**
    * CPU Generation
    *
    */
-  generation?: string;
+  generation: string;
   /**
    * CPU Model
    *
    */
-  model?: string;
+  model: string;
   /**
    * Number of CPU
    *
    */
-  socket?: number;
+  socket: number;
   /**
    * Number of CPU Threads
    *
    */
-  threads?: number;
+  threads: number;
 }
 /**
  * Describes a Private Cloud Host Memory
@@ -1448,7 +1448,7 @@ export interface OrderCatalogPccHostMemorySpecifications {
    * Memory Size
    *
    */
-  ram?: ComplexTypeUnitAndValue<number>;
+  ram: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Describes a Private Cloud Host Network
@@ -1458,12 +1458,12 @@ export interface OrderCatalogPccHostNetworkSpecifications {
    * Number of network interfaces
    *
    */
-  nics?: number;
+  nics: number;
   /**
    * Speed of the network interfaces
    *
    */
-  speed?: ComplexTypeUnitAndValue<number>;
+  speed: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Describes a Private Cloud Host Hardware
@@ -1473,17 +1473,17 @@ export interface OrderCatalogPccHostSpecifications {
    * Describes the CPU specification of a Host
    *
    */
-  cpu?: OrderCatalogPccHostCpuSpecifications;
+  cpu: OrderCatalogPccHostCpuSpecifications;
   /**
    * Describes the memory specification of a Host
    *
    */
-  memory?: OrderCatalogPccHostMemorySpecifications;
+  memory: OrderCatalogPccHostMemorySpecifications;
   /**
    * Describes the network specification of a Host
    *
    */
-  network?: OrderCatalogPccHostNetworkSpecifications[];
+  network: OrderCatalogPccHostNetworkSpecifications[];
 }
 /**
  * Describes a Private Cloud Hypervisor
@@ -1493,42 +1493,42 @@ export interface OrderCatalogPccHypervisor {
    * Describes Private Cloud Hosts
    *
    */
-  hosts?: OrderCatalogPccHost[];
+  hosts: OrderCatalogPccHost[];
   /**
    * Name of the hypervisor
    *
    */
-  name?: string;
+  name: string;
   /**
    * Describes Private Cloud Options
    *
    */
-  options?: OrderCatalogPccOption[];
+  options: OrderCatalogPccOption[];
   /**
    * Describes if an hypervisor is orderable
    *
    */
-  orderable?: boolean;
+  orderable: boolean;
   /**
    * Describes Private Cloud Service Packs
    *
    */
-  servicePacks?: OrderCatalogPccServicePack[];
+  servicePacks: OrderCatalogPccServicePack[];
   /**
    * Short Name of the hypervisor
    *
    */
-  shortName?: string;
+  shortName: string;
   /**
    * Describes Private Cloud Storages
    *
    */
-  storages?: OrderCatalogPccStorage[];
+  storages: OrderCatalogPccStorage[];
   /**
    * Type of the hypervisor
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * Describes a Private Cloud Option
@@ -1538,32 +1538,32 @@ export interface OrderCatalogPccOption {
    * Describes the maximum quantity on the initial order
    *
    */
-  maxInitialQuantity?: number;
+  maxInitialQuantity: number;
   /**
    * Name of the option
    *
    */
-  name?: string;
+  name: string;
   /**
    * Describes if option is orderable on a initial order
    *
    */
-  onInitialOrder?: boolean;
+  onInitialOrder: boolean;
   /**
    * Describes if option is orderable on a upgrade order
    *
    */
-  onUpgradeOrder?: boolean;
+  onUpgradeOrder: boolean;
   /**
    * Plan Code
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Category of the option
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * Describes a Private Cloud Service Pack
@@ -1573,22 +1573,22 @@ export interface OrderCatalogPccServicePack {
    * Name of the service pack
    *
    */
-  name?: string;
+  name: string;
   /**
    * Describes Option include in the service pack
    *
    */
-  options?: OrderCatalogPccServicePackOption[];
+  options: OrderCatalogPccServicePackOption[];
   /**
    * Plan Code
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * List of available service pack upgrades
    *
    */
-  upgradableTo?: string[];
+  upgradableTo: string[];
 }
 /**
  * Describes a Private Cloud service pack option
@@ -1598,17 +1598,17 @@ export interface OrderCatalogPccServicePackOption {
    * Name of the option
    *
    */
-  name?: string;
+  name: string;
   /**
    * Plan Code
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Category of the option
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * Describes a Private Cloud Storage
@@ -1618,27 +1618,27 @@ export interface OrderCatalogPccStorage {
    * Name of the filer
    *
    */
-  name?: string;
+  name: string;
   /**
    * Describes if filer is orderable on a initial Order
    *
    */
-  onInitialOrder?: boolean;
+  onInitialOrder: boolean;
   /**
    * Describes if filer is orderable on a upgrade order
    *
    */
-  onUpgradeOrder?: boolean;
+  onUpgradeOrder: boolean;
   /**
    * Plan Code
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Describes Private Cloud Storage specifications
    *
    */
-  specifications?: OrderCatalogPccStorageSpecifications;
+  specifications: OrderCatalogPccStorageSpecifications;
 }
 /**
  * Describes a Private Cloud Storage
@@ -1648,12 +1648,12 @@ export interface OrderCatalogPccStorageSpecifications {
    * Size of the storage
    *
    */
-  size?: ComplexTypeUnitAndValue<number>;
+  size: ComplexTypeUnitAndValue<number>;
   /**
    * Type of the storage
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * Describes capabilities of a Private Cloud type of service
@@ -1663,27 +1663,27 @@ export interface OrderCatalogPrivateCloudCapabilities {
    * Define if HDS is part of this type of service
    *
    */
-  hds?: boolean;
+  hds: boolean;
   /**
    * Define if HIPAA is part of this type of service
    *
    */
-  hipaa?: boolean;
+  hipaa: boolean;
   /**
    * Define if NSX is part of this type of service
    *
    */
-  nsx?: boolean;
+  nsx: boolean;
   /**
    * Define if PCI-DSS is part of this type of service
    *
    */
-  pcidss?: boolean;
+  pcidss: boolean;
   /**
    * Define if VROPS is part of this type of service
    *
    */
-  vrops?: boolean;
+  vrops: boolean;
 }
 /**
  * Describe all capabilities of different types of service
@@ -1693,42 +1693,42 @@ export interface OrderCatalogPrivateCloudCapabilitiesListing {
    * Describe capabilities of 2016v1 type of service
    *
    */
-  '2016v1'?: OrderCatalogPrivateCloudCapabilities;
+  '2016v1': OrderCatalogPrivateCloudCapabilities;
   /**
    * Describe capabilities of 2016v2 type of service
    *
    */
-  '2016v2'?: OrderCatalogPrivateCloudCapabilities;
+  '2016v2': OrderCatalogPrivateCloudCapabilities;
   /**
    * Describe capabilities of 2016v3 type of service
    *
    */
-  '2016v3'?: OrderCatalogPrivateCloudCapabilities;
+  '2016v3': OrderCatalogPrivateCloudCapabilities;
   /**
    * Describe capabilities of 2016v4 type of service
    *
    */
-  '2016v4'?: OrderCatalogPrivateCloudCapabilities;
+  '2016v4': OrderCatalogPrivateCloudCapabilities;
   /**
    * Describe capabilities of 2016v5 type of service
    *
    */
-  '2016v5'?: OrderCatalogPrivateCloudCapabilities;
+  '2016v5': OrderCatalogPrivateCloudCapabilities;
   /**
    * Describe capabilities of 2016v6 type of service
    *
    */
-  '2016v6'?: OrderCatalogPrivateCloudCapabilities;
+  '2016v6': OrderCatalogPrivateCloudCapabilities;
   /**
    * Describe capabilities of 2016v7 type of service
    *
    */
-  '2016v7'?: OrderCatalogPrivateCloudCapabilities;
+  '2016v7': OrderCatalogPrivateCloudCapabilities;
   /**
    * Describe capabilities of default type of service
    *
    */
-  default?: OrderCatalogPrivateCloudCapabilities;
+  default: OrderCatalogPrivateCloudCapabilities;
 }
 /**
  * Describe a Private Cloud commercial catalog
@@ -1738,37 +1738,37 @@ export interface OrderCatalogPrivateCloudCatalog {
    * Catalog ID
    *
    */
-  catalogId?: number;
+  catalogId: number;
   /**
    * Catalog name
    *
    */
-  catalogName?: string;
+  catalogName: string;
   /**
    * Default hypervisor for this catalog
    *
    */
-  defaultHypervisor?: string;
+  defaultHypervisor: string;
   /**
    * Default datacenter for this catalog
    *
    */
-  defaultZone?: string;
+  defaultZone: string;
   /**
    * OVH Subsidiary of the Catalog
    *
    */
-  merchantCode?: string;
+  merchantCode: string;
   /**
    * Describe all capabilities of different types of service
    *
    */
-  options?: OrderCatalogPrivateCloudCapabilitiesListing;
+  options: OrderCatalogPrivateCloudCapabilitiesListing;
   /**
    * Zone definitions per datacenters
    *
    */
-  zones?: OrderCatalogPrivateCloudZonesListing;
+  zones: OrderCatalogPrivateCloudZonesListing;
 }
 /**
  * Describe a Private Cloud zone
@@ -1778,32 +1778,32 @@ export interface OrderCatalogPrivateCloudZone {
    * City where Private Cloud instance will be delivered
    *
    */
-  cityName?: string;
+  cityName: string;
   /**
    * Country where Private Cloud instance will be delivered
    *
    */
-  country?: string;
+  country: string;
   /**
    * Default hypervisor for this Private Cloud zone
    *
    */
-  defaultHypervisor?: string;
+  defaultHypervisor: string;
   /**
    * Default version for this Private Cloud zone
    *
    */
-  defaultVersion?: string;
+  defaultVersion: string;
   /**
    * Internal name of the zone
    *
    */
-  internalName?: string;
+  internalName: string;
   /**
    * Commercial offers on this zone
    *
    */
-  plans?: OrderCatalogProductPlan[];
+  plans: OrderCatalogProductPlan[];
 }
 /**
  * Zone definitions per datacenters
@@ -1813,32 +1813,32 @@ export interface OrderCatalogPrivateCloudZonesListing {
    * Zone definition for BHS datacenter
    *
    */
-  bhs?: OrderCatalogPrivateCloudZone;
+  bhs: OrderCatalogPrivateCloudZone;
   /**
    * Zone definition for ERI datacenter
    *
    */
-  eri?: OrderCatalogPrivateCloudZone;
+  eri: OrderCatalogPrivateCloudZone;
   /**
    * Zone definition for LIM datacenter
    *
    */
-  lim?: OrderCatalogPrivateCloudZone;
+  lim: OrderCatalogPrivateCloudZone;
   /**
    * Zone definition for RBX datacenter
    *
    */
-  rbx?: OrderCatalogPrivateCloudZone;
+  rbx: OrderCatalogPrivateCloudZone;
   /**
    * Zone definition for SBG datacenter
    *
    */
-  sbg?: OrderCatalogPrivateCloudZone;
+  sbg: OrderCatalogPrivateCloudZone;
   /**
    * Zone definition for WAW datacenter
    *
    */
-  waw?: OrderCatalogPrivateCloudZone;
+  waw: OrderCatalogPrivateCloudZone;
 }
 /**
  * Describes an Addon family for a Commercial offer
@@ -1848,7 +1848,7 @@ export interface OrderCatalogPublicAddonFamily {
    * List of Commercial offers that can be ordered as an Addon of the current Commerical offer for the current Family
    *
    */
-  addons?: string[];
+  addons: string[];
   /**
    * Default Commercial offer that can be ordered as an Addon of the current Commercial offer for the current Family
    *
@@ -1858,17 +1858,17 @@ export interface OrderCatalogPublicAddonFamily {
    * Whether this Addon family is exclusive and can be ordered only once for the main Commercial offer
    *
    */
-  exclusive?: boolean;
+  exclusive: boolean;
   /**
    * Whether this Addon family is mandatory
    *
    */
-  mandatory?: boolean;
+  mandatory: boolean;
   /**
    * Family name
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Describes a Catalog inside a Subsidiary
@@ -1878,32 +1878,32 @@ export interface OrderCatalogPublicCatalog {
    * List of addons of the catalog
    *
    */
-  addons?: OrderCatalogPublicPlan[];
+  addons: OrderCatalogPublicPlan[];
   /**
    * Identifier of the catalog
    *
    */
-  catalogId?: number;
+  catalogId: number;
   /**
    * Subsidiary specific information
    *
    */
-  locale?: OrderCatalogPublicLocale;
+  locale: OrderCatalogPublicLocale;
   /**
    * List of plan families of the catalog
    *
    */
-  planFamilies?: OrderCatalogPublicPlanFamily[];
+  planFamilies: OrderCatalogPublicPlanFamily[];
   /**
    * List of main plans of the catalog
    *
    */
-  plans?: OrderCatalogPublicPlan[];
+  plans: OrderCatalogPublicPlan[];
   /**
    * List of products of the catalog
    *
    */
-  products?: OrderCatalogPublicProduct[];
+  products: OrderCatalogPublicProduct[];
 }
 /**
  * Describes the Configuration for a Commercial offer
@@ -1913,22 +1913,22 @@ export interface OrderCatalogPublicConfiguration {
    * Whether the value of this Configuration is custom
    *
    */
-  isCustom?: boolean;
+  isCustom: boolean;
   /**
    * Whether this Configuration is mandatory
    *
    */
-  isMandatory?: boolean;
+  isMandatory: boolean;
   /**
    * Identifier of the Configuration
    *
    */
-  name?: string;
+  name: string;
   /**
    * Possible values for this Configuration, if not custom
    *
    */
-  values?: string[];
+  values: string[];
 }
 /**
  * Describes a Dedicated server Catalog inside a Subsidiary
@@ -1938,32 +1938,32 @@ export interface OrderCatalogPublicDedicatedServerCatalog {
    * List of addons of the catalog
    *
    */
-  addons?: OrderCatalogPublicPlan[];
+  addons: OrderCatalogPublicPlan[];
   /**
    * Identifier of the catalog
    *
    */
-  catalogId?: number;
+  catalogId: number;
   /**
    * Subsidiary specific information
    *
    */
-  locale?: OrderCatalogPublicLocale;
+  locale: OrderCatalogPublicLocale;
   /**
    * List of plan families of the catalog
    *
    */
-  planFamilies?: OrderCatalogPublicAddonFamily[];
+  planFamilies: OrderCatalogPublicAddonFamily[];
   /**
    * List of main plans of the catalog
    *
    */
-  plans?: OrderCatalogPublicPlan[];
+  plans: OrderCatalogPublicPlan[];
   /**
    * List of products of the catalog
    *
    */
-  products?: OrderCatalogPublicDedicatedServerProduct[];
+  products: OrderCatalogPublicDedicatedServerProduct[];
 }
 /**
  * Describes a Dedicated Server Product
@@ -1978,12 +1978,12 @@ export interface OrderCatalogPublicDedicatedServerProduct {
    * Description of the Product
    *
    */
-  description?: string;
+  description: string;
   /**
    * Identifier of the Product
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Describes a Blob for a Dedicated Server
@@ -2043,37 +2043,37 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalCPU {
    * CPU Boost
    *
    */
-  boost?: number;
+  boost: number;
   /**
    * CPU Brand
    *
    */
-  brand?: string;
+  brand: string;
   /**
    * Number of cores
    *
    */
-  cores?: number;
+  cores: number;
   /**
    * Frequency of CPU in GHz
    *
    */
-  frequency?: number;
+  frequency: number;
   /**
    * Displayable name
    *
    */
-  model?: string;
+  model: string;
   /**
    * CPU score
    *
    */
-  score?: number;
+  score: number;
   /**
    * Number of threads
    *
    */
-  threads?: number;
+  threads: number;
 }
 /**
  * Describes a Disk for a Dedicated Server
@@ -2083,27 +2083,27 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalDisk {
    * Disk capacity in Gb
    *
    */
-  capacity?: number;
+  capacity: number;
   /**
    * Disk interface
    *
    */
-  interface?: string;
+  interface: string;
   /**
    * Number of disks
    *
    */
-  number?: number;
+  number: number;
   /**
    * Disk specs
    *
    */
-  specs?: string;
+  specs: string;
   /**
    * Disk technology
    *
    */
-  technology?: string;
+  technology: string;
 }
 /**
  * Describes a Frame for a Dedicated Server
@@ -2113,12 +2113,12 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalFrame {
    * Frame model
    *
    */
-  model?: string;
+  model: string;
   /**
    * Frame size
    *
    */
-  size?: string;
+  size: string;
 }
 /**
  * Describes a GPU for a Dedicated Server
@@ -2128,7 +2128,7 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalGPU {
    * GPU memory size
    *
    */
-  memory?: number;
+  memory: number;
 }
 /**
  * Describes a Memory technical Blob for a Dedicated Server
@@ -2138,22 +2138,22 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalMemory {
    * ECC
    *
    */
-  ecc?: boolean;
+  ecc: boolean;
   /**
    * RAM Frequency
    *
    */
-  frequency?: number;
+  frequency: number;
   /**
    * RAM Type (DDRx...)
    *
    */
-  ramType?: string;
+  ramType: string;
   /**
    * Size of the RAM in Gb
    *
    */
-  size?: number;
+  size: number;
 }
 /**
  * Describes a Network technical Blob for a Dedicated Server
@@ -2168,12 +2168,12 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalNetwork {
    * Guaranteed Network
    *
    */
-  guaranteed?: boolean;
+  guaranteed: boolean;
   /**
    * Network level
    *
    */
-  level?: number;
+  level: number;
   /**
    * Network limit
    *
@@ -2188,17 +2188,17 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalServer {
    * CPU properties
    *
    */
-  cpu?: OrderCatalogPublicDedicatedServerProductBlobTechnicalCPU;
+  cpu: OrderCatalogPublicDedicatedServerProductBlobTechnicalCPU;
   /**
    * Frame properties
    *
    */
-  frame?: OrderCatalogPublicDedicatedServerProductBlobTechnicalFrame;
+  frame: OrderCatalogPublicDedicatedServerProductBlobTechnicalFrame;
   /**
    * Dedicated server series
    *
    */
-  range?: string;
+  range: string;
 }
 /**
  * Describes a Storage technical Blob for a Dedicated Server
@@ -2208,12 +2208,12 @@ export interface OrderCatalogPublicDedicatedServerProductBlobTechnicalStorage {
    * Disk properties
    *
    */
-  disks?: OrderCatalogPublicDedicatedServerProductBlobTechnicalDisk[];
+  disks: OrderCatalogPublicDedicatedServerProductBlobTechnicalDisk[];
   /**
    * Raid
    *
    */
-  raid?: string;
+  raid: string;
 }
 /**
  * Describes specifics for a given Subsidiary
@@ -2223,17 +2223,17 @@ export interface OrderCatalogPublicLocale {
    * Currency used by the Subsidiary
    *
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  currencyCode: OrderCurrencyCodeEnum;
   /**
    * Current Subsidiary
    *
    */
-  subsidiary?: NichandleOvhSubsidiaryEnum;
+  subsidiary: NichandleOvhSubsidiaryEnum;
   /**
    * Default VAT rate used by the Subsidiary
    *
    */
-  taxRate?: number;
+  taxRate: number;
 }
 /**
  * Describes a Commercial offer inside a Catalog
@@ -2243,12 +2243,12 @@ export interface OrderCatalogPublicPlan {
    * Addon families for this offer
    *
    */
-  addonFamilies?: OrderCatalogPublicAddonFamily[];
+  addonFamilies: OrderCatalogPublicAddonFamily[];
   /**
    * List of possible Configurations for this Commercial offer
    *
    */
-  configurations?: OrderCatalogPublicConfiguration[];
+  configurations: OrderCatalogPublicConfiguration[];
   /**
    * Name of the family this Commercial offer belongs to
    *
@@ -2258,27 +2258,27 @@ export interface OrderCatalogPublicPlan {
    * Commercial offer description
    *
    */
-  invoiceName?: string;
+  invoiceName: string;
   /**
    * Commercial offer identifier
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Type of Pricing used by this Commercial offer
    *
    */
-  pricingType?: OrderCartGenericProductPricingTypeEnum;
+  pricingType: OrderCartGenericProductPricingTypeEnum;
   /**
    * List of possible Pricings for this Commercial offer
    *
    */
-  pricings?: OrderCatalogPublicPricing[];
+  pricings: OrderCatalogPublicPricing[];
   /**
    * Identifier of the Product linked to this Commercial offer
    *
    */
-  product?: string;
+  product: string;
 }
 /**
  * Describes a PlanFamily for a Catalog
@@ -2288,7 +2288,7 @@ export interface OrderCatalogPublicPlanFamily {
    * Family name
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Describes a Pricing for a Commercial offer
@@ -2298,72 +2298,72 @@ export interface OrderCatalogPublicPricing {
    * Capacities of the Pricing, describes what the Pricing can be used for
    *
    */
-  capacities?: OrderCartGenericProductPricingCapacitiesEnum[];
+  capacities: OrderCartGenericProductPricingCapacitiesEnum[];
   /**
    * Engagement period
    *
    */
-  commitment?: number;
+  commitment: number;
   /**
    * Pricing description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Length of the interval
    *
    */
-  interval?: number;
+  interval: number;
   /**
    * Unit of the interval
    *
    */
-  intervalUnit?: OrderCartDurationUnitEnum;
+  intervalUnit: OrderCartDurationUnitEnum;
   /**
    * Pricing mode
    *
    */
-  mode?: string;
+  mode: string;
   /**
    * Pricing must be completed
    *
    */
-  mustBeCompleted?: boolean;
+  mustBeCompleted: boolean;
   /**
    * Phase for the Pricing
    *
    */
-  phase?: number;
+  phase: number;
   /**
    * Price, in micro-cents
    *
    */
-  price?: number;
+  price: number;
   /**
    * Describes how many times the Commercial offer can be added to the Cart
    *
    */
-  quantity?: OrderCatalogPublicPricingMinMax;
+  quantity: OrderCatalogPublicPricingMinMax;
   /**
    * Describes how many times the interval can be repeated
    *
    */
-  repeat?: OrderCatalogPublicPricingMinMax;
+  repeat: OrderCatalogPublicPricingMinMax;
   /**
    * Pricing strategy
    *
    */
-  strategy?: OrderCartGenericProductPricingStrategyEnum;
+  strategy: OrderCartGenericProductPricingStrategyEnum;
   /**
    * Tax that can be applied, in micro-cents
    *
    */
-  tax?: number;
+  tax: number;
   /**
    * Pricing type
    *
    */
-  type?: OrderCartGenericProductPricingTypeEnum;
+  type: OrderCartGenericProductPricingTypeEnum;
 }
 /**
  * Describes minimal and maximal values for a Pricing
@@ -2378,7 +2378,7 @@ export interface OrderCatalogPublicPricingMinMax {
    * Minimal value
    *
    */
-  min?: number;
+  min: number;
 }
 /**
  * Describes a Product attached to a Commercial offer
@@ -2388,12 +2388,12 @@ export interface OrderCatalogPublicProduct {
    * Description of the Product
    *
    */
-  description?: string;
+  description: string;
   /**
    * Identifier of the Product
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Describes an operation
@@ -2403,22 +2403,22 @@ export interface OrderUpgradeOperation {
    * Identifier of the operation
    *
    */
-  id?: number;
+  id: number;
   /**
    * Product concerned by the operation
    *
    */
-  product?: OrderUpgradeOperationProduct;
+  product: OrderUpgradeOperationProduct;
   /**
    * Status of the operation
    *
    */
-  status?: OrderUpgradeOperationStatusEnum;
+  status: OrderUpgradeOperationStatusEnum;
   /**
    * Type of the operation
    *
    */
-  type?: OrderUpgradeOperationTypeEnum;
+  type: OrderUpgradeOperationTypeEnum;
 }
 /**
  * Describes an Operation and the associated Order
@@ -2443,12 +2443,12 @@ export interface OrderUpgradeOperationProduct {
    * Detailled description of a product
    *
    */
-  description?: string;
+  description: string;
   /**
    * Name of the product
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Unit that represent the status of an operation

@@ -13,9 +13,11 @@
     "@ovh-api/api": "^1.2.0",
     "@ovh-api/domain": "^1.2.0",
     "@ovh-api/me": "^1.2.0",
-    "fs-extra": "^8.0.1"
+    "fs-extra": "^8.0.1",
+    "json2csv": "^4.5.1"
   },
   "devDependencies": {
-    "@types/fs-extra": "^7.0.0"
+    "@types/fs-extra": "^7.0.0",
+    "@types/json2csv": "^4.4.0"
   }
 }

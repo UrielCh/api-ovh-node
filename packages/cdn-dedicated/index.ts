@@ -5,16 +5,16 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface CdnanycastAnycast {
   /**
    */
-  anycast?: string;
+  anycast: string;
   /**
    */
-  backendLimit?: number;
+  backendLimit: number;
   /**
    */
-  backendUse?: number;
+  backendUse: number;
   /**
    */
-  cacheRuleLimitPerDomain?: number;
+  cacheRuleLimitPerDomain: number;
   /**
    */
   lastQuotaOrder?: string;
@@ -22,18 +22,18 @@ export interface CdnanycastAnycast {
    * URL for downloading daily log of your CDN
    *
    */
-  logUrl?: string;
+  logUrl: string;
   /**
    */
   offer?: string;
   /**
    */
-  quota?: number;
+  quota: number;
   /**
    * The internal name of your CDN offer
    *
    */
-  service?: string;
+  service: string;
 }
 /**
  * Backend for a domain
@@ -41,7 +41,7 @@ export interface CdnanycastAnycast {
 export interface CdnanycastBackend {
   /**
    */
-  ip?: string;
+  ip: string;
 }
 /**
  * CacheRules for a domain
@@ -51,25 +51,25 @@ export interface CdnanycastCacheRule {
    * Id for this cache rule
    *
    */
-  cacheRuleId?: number;
+  cacheRuleId: number;
   /**
    */
-  cacheType?: CdnanycastCacheRuleCacheTypeEnum;
+  cacheType: CdnanycastCacheRuleCacheTypeEnum;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  fileMatch?: string;
+  fileMatch: string;
   /**
    */
-  fileType?: CdnanycastCacheRuleFileTypeEnum;
+  fileType: CdnanycastCacheRuleFileTypeEnum;
   /**
    */
-  status?: CdnanycastCacheRuleStatusEnum;
+  status: CdnanycastCacheRuleStatusEnum;
   /**
    */
-  ttl?: number;
+  ttl: number;
 }
 /**
  * All type a cache can be in
@@ -89,21 +89,21 @@ export type CdnanycastCacheRuleStatusEnum = 'creating' | 'deleting' | 'error' | 
 export interface CdnanycastDomain {
   /**
    */
-  cacheRuleUse?: number;
+  cacheRuleUse: number;
   /**
    */
-  cname?: string;
+  cname: string;
   /**
    * Domain of this object
    *
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  status?: CdnanycastDomainStatusEnum;
+  status: CdnanycastDomainStatusEnum;
   /**
    */
-  type?: CdnanycastDomainTypeEnum;
+  type: CdnanycastDomainTypeEnum;
 }
 /**
  * All states a status can be in
@@ -121,12 +121,12 @@ export interface CdnanycastLogsURL {
    * URL expiration date
    *
    */
-  expirationDate?: string;
+  expirationDate: string;
   /**
    * URL to logs
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * CDN Pop
@@ -134,18 +134,18 @@ export interface CdnanycastLogsURL {
 export interface CdnanycastPop {
   /**
    */
-  city?: string;
+  city: string;
   /**
    */
-  comment?: string;
+  comment: string;
   /**
    * Name of the pop
    *
    */
-  name?: string;
+  name: string;
   /**
    */
-  status?: CdnanycastPopStatusEnum;
+  status: CdnanycastPopStatusEnum;
 }
 /**
  * All Pop status
@@ -159,7 +159,7 @@ export interface CdnanycastSsl {
    * Provider of the certificate installed on CDN
    *
    */
-  certificateProvider?: string;
+  certificateProvider: string;
   /**
    */
   certificateValidFrom?: string;
@@ -171,10 +171,10 @@ export interface CdnanycastSsl {
   cn?: string;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  status?: CdnanycastSslStateEnum;
+  status: CdnanycastSslStateEnum;
 }
 /**
  * All states a CDN SSL can be in
@@ -186,7 +186,7 @@ export type CdnanycastSslStateEnum = 'checking' | 'creating' | 'error' | 'off' |
 export interface CdnanycastStatsDataType {
   /**
    */
-  date?: string;
+  date: string;
   /**
    */
   value?: number;
@@ -212,13 +212,13 @@ export interface CdnanycastTask {
   comment?: string;
   /**
    */
-  function?: CdnanycastTaskFunctionEnum;
+  function: CdnanycastTaskFunctionEnum;
   /**
    */
-  status?: CdnanycastTaskStateEnum;
+  status: CdnanycastTaskStateEnum;
   /**
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * All function CDN task can be
@@ -236,17 +236,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -274,28 +274,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -308,13 +308,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsCdnDedicatedGET = '/cdn/dedicated' | 
 '/cdn/dedicated/pops' | 

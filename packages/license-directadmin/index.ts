@@ -13,10 +13,10 @@ export type LicenseChangeIpMessageEnum = 'OK' | 'destinationNotAllowed' | 'licen
 export interface LicenseChangeIpStatus {
   /**
    */
-  message?: LicenseChangeIpMessageEnum;
+  message: LicenseChangeIpMessageEnum;
   /**
    */
-  success?: boolean;
+  success: boolean;
 }
 /**
  * The serviceTypes allowed to Order a DirectAdmin version
@@ -24,10 +24,10 @@ export interface LicenseChangeIpStatus {
 export interface LicenseDirectAdminOrderConfiguration {
   /**
    */
-  orderableVersions?: LicenseOrderableDirectAdminCompatibilityInfos[];
+  orderableVersions: LicenseOrderableDirectAdminCompatibilityInfos[];
   /**
    */
-  serviceType?: LicenseLicenseTypeEnum;
+  serviceType: LicenseLicenseTypeEnum;
 }
 /**
  * All operating systems available for DirectAdmin products
@@ -47,7 +47,7 @@ export type LicenseLicenseTypeEnum = 'dedicated' | 'dedicatedCloud' | 'dedicated
 export interface LicenseOrderableDirectAdminCompatibilityInfos {
   /**
    */
-  version?: LicenseOrderableDirectAdminVersionEnum;
+  version: LicenseOrderableDirectAdminVersionEnum;
 }
 /**
  * All versions available for DirectAdmin products
@@ -65,7 +65,7 @@ export interface LicenseTask {
    * This Task description
    *
    */
-  action?: LicenseActionType;
+  action: LicenseActionType;
   /**
    * When was this Task done
    *
@@ -75,27 +75,27 @@ export interface LicenseTask {
    * The last time this Task was updated
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * This Task name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Current Taks status
    *
    */
-  status?: LicenseTaskStateEnum;
+  status: LicenseTaskStateEnum;
   /**
    * This Task id
    *
    */
-  taskId?: number;
+  taskId: number;
   /**
    * When was this Task created
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * All states a license Task can be in
@@ -109,47 +109,47 @@ export interface LicenseDirectadminDirectAdmin {
    * The client id on license provider side
    *
    */
-  clientId?: number;
+  clientId: number;
   /**
    * This license creation date
    *
    */
-  creation?: string;
+  creation: string;
   /**
    * Shall we delete this on expiration ?
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The internal name of your license
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * The ip on which this license is attached
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * The license id on license provider side
    *
    */
-  licenseId?: string;
+  licenseId: string;
   /**
    * This license operating system
    *
    */
-  os?: LicenseDirectAdminOsEnum;
+  os: LicenseDirectAdminOsEnum;
   /**
    * This license state
    *
    */
-  status?: LicenseStateEnum;
+  status: LicenseStateEnum;
   /**
    * This license version
    *
    */
-  version?: LicenseDirectAdminVersionEnum;
+  version: LicenseDirectAdminVersionEnum;
 }
 /**
  * Map a possible renew for a specific service
@@ -159,17 +159,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -205,28 +205,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -239,13 +239,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsLicenseDirectadminGET = '/license/directadmin' | 
 '/license/directadmin/orderableVersions' | 

@@ -7,17 +7,17 @@ export interface AllDomAllDom {
    * Name of the allDom
    *
    */
-  name?: string;
+  name: string;
   /**
    * Offer of the allDom
    *
    */
-  offer?: DomainOfferEnum;
+  offer: DomainOfferEnum;
   /**
    * Type of the allDom
    *
    */
-  type?: AllDomTypeEnum;
+  type: AllDomTypeEnum;
 }
 /**
  * Domain name of a allDom
@@ -27,7 +27,7 @@ export interface AllDomAllDomDomain {
    * Domain name
    *
    */
-  domain?: string;
+  domain: string;
 }
 /**
  * Type
@@ -45,17 +45,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -83,28 +83,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -117,13 +117,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsAllDomGET = '/allDom' | 
 '/allDom/{serviceName}' | 

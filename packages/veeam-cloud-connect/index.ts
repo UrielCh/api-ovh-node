@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * Map a possible renew for a specific service
@@ -18,17 +18,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -56,28 +56,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -90,13 +90,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * Veeam Cloud Connect account
@@ -106,17 +106,17 @@ export interface VeeamCloudConnectAccount {
    * Datacenter where your Cloud is physically located
    *
    */
-  location?: VeeamCloudConnectLocation;
+  location: VeeamCloudConnectLocation;
   /**
    * The commercial offer linked to your veeam cloud connect
    *
    */
-  productOffer?: VeeamCloudConnectOffer;
+  productOffer: VeeamCloudConnectOffer;
   /**
    * Your login in the Veeam Cloud Connect interface
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Backuped VMs quantity on your account
    *
@@ -131,12 +131,12 @@ export interface VeeamCloudConnectBackupRepository {
    * The inventory name of your backup repository
    *
    */
-  inventoryName?: string;
+  inventoryName: string;
   /**
    * The quota allowed on this Backup repository
    *
    */
-  quota?: ComplexTypeUnitAndValue<number>;
+  quota: ComplexTypeUnitAndValue<number>;
   /**
    * The quota used on this Backup repository
    *
@@ -151,7 +151,7 @@ export interface VeeamCloudConnectBackupRepository {
    * The state of your backup repository
    *
    */
-  state?: VeeamCloudConnectBackupRepositoryStateEnum;
+  state: VeeamCloudConnectBackupRepositoryStateEnum;
   /**
    * The usage in percent of this backup repository
    *
@@ -183,12 +183,12 @@ export interface VeeamCloudConnectTask {
    * Task name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Current progress
    *
    */
-  progress?: number;
+  progress: number;
   /**
    * When the task has been created
    *
@@ -198,10 +198,10 @@ export interface VeeamCloudConnectTask {
    * Current Task state
    *
    */
-  state?: VeeamCloudConnectTaskStateEnum;
+  state: VeeamCloudConnectTaskStateEnum;
   /**
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * All states a Cloud Tenant Task can be in
@@ -215,42 +215,42 @@ export interface VeeamCloudConnectOfferCapabilities {
    * Default quota applied on new repositories in GB
    *
    */
-  defaultQuota?: number;
+  defaultQuota: number;
   /**
    * Maximum quota you can apply on your repositories in GB
    *
    */
-  maxQuota?: number;
+  maxQuota: number;
   /**
    * Max number of repositories you can add on your account
    *
    */
-  maxStoragesCount?: number;
+  maxStoragesCount: number;
   /**
    * Required usage on all repositories to add a new one (percent)
    *
    */
-  minimumUsage?: number;
+  minimumUsage: number;
   /**
    * Is account allowed to add new repositories
    *
    */
-  multiStorages?: boolean;
+  multiStorages: boolean;
   /**
    * Are data replicated over two storages
    *
    */
-  replication?: boolean;
+  replication: boolean;
   /**
    * Included storage per vm
    *
    */
-  vmCapacity?: number;
+  vmCapacity: number;
   /**
    * Is wan accelerator enabled
    *
    */
-  wanAccelerator?: boolean;
+  wanAccelerator: boolean;
 }
 type PathsVeeamCloudConnectGET = '/veeamCloudConnect' | 
 '/veeamCloudConnect/{serviceName}' | 

@@ -5,20 +5,20 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface CdnWebstorageAccount {
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  server?: string;
-  /**
-   * value in Bytes
-   *
-   */
-  storageLimit?: number;
+  server: string;
   /**
    * value in Bytes
    *
    */
-  storageUsage?: number;
+  storageLimit: number;
+  /**
+   * value in Bytes
+   *
+   */
+  storageUsage: number;
 }
 /**
  * A structure with credentials for using openstack account
@@ -26,16 +26,16 @@ export interface CdnWebstorageAccount {
 export interface CdnWebstorageAccountCredentials {
   /**
    */
-  endpoint?: string;
+  endpoint: string;
   /**
    */
-  login?: string;
+  login: string;
   /**
    */
-  password?: string;
+  password: string;
   /**
    */
-  tenant?: string;
+  tenant: string;
 }
 /**
  * A structure describing type of a stats hash
@@ -43,10 +43,10 @@ export interface CdnWebstorageAccountCredentials {
 export interface CdnWebstorageStatsDataType {
   /**
    */
-  date?: string;
+  date: string;
   /**
    */
-  value?: number;
+  value: number;
 }
 /**
  * Period of the statistics
@@ -64,17 +64,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -102,28 +102,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -136,13 +136,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsCdnWebstorageGET = '/cdn/webstorage' | 
 '/cdn/webstorage/{serviceName}' | 

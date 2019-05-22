@@ -11,17 +11,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -49,28 +49,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -83,13 +83,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * SMS details
@@ -107,25 +107,25 @@ export interface SmsAccount {
    * Credit threshold after which an automatic recredit is launched
    *
    */
-  creditThresholdForAutomaticRecredit?: number;
+  creditThresholdForAutomaticRecredit: number;
   /**
    */
-  creditsHoldByQuota?: number;
+  creditsHoldByQuota: number;
   /**
    */
-  creditsLeft?: number;
+  creditsLeft: number;
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  smsResponse?: SmsResponse;
+  smsResponse: SmsResponse;
   /**
    */
-  status?: SmsStatusAccountEnum;
+  status: SmsStatusAccountEnum;
   /**
    * URL called when a STOP is received after a receiver replied stop to a SMS
    *
@@ -133,10 +133,10 @@ export interface SmsAccount {
   stopCallBack?: string;
   /**
    */
-  templates?: SmsTemplates;
+  templates: SmsTemplates;
   /**
    */
-  userQuantityWithQuota?: number;
+  userQuantityWithQuota: number;
 }
 /**
  * A structure describing all information about alert threshold informations
@@ -144,16 +144,16 @@ export interface SmsAccount {
 export interface SmsAlertThreshold {
   /**
    */
-  alertEmail?: string;
+  alertEmail: string;
   /**
    */
-  alertNumber?: string;
+  alertNumber: string;
   /**
    */
-  alertThreshold?: number;
+  alertThreshold: number;
   /**
    */
-  support?: SmsSupportEnum;
+  support: SmsSupportEnum;
 }
 /**
  * SMS blacklist
@@ -161,12 +161,12 @@ export interface SmsAlertThreshold {
 export interface SmsBlacklist {
   /**
    */
-  dateCreation?: string;
+  dateCreation: string;
   /**
    * The sms number blacklisted
    *
    */
-  number?: string;
+  number: string;
 }
 /**
  * The charset format
@@ -180,15 +180,15 @@ export interface SmsChatAccess {
    * The creation date of this access
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * The url of the web access
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * The sms class of sms sending job
@@ -214,22 +214,22 @@ export interface SmsException {
    * The abreviated country code.
    *
    */
-  countrySuffixe?: string;
+  countrySuffixe: string;
   /**
    * The exception message
    *
    */
-  messages?: string[];
+  messages: string[];
   /**
    * The list of operators impacted.
    *
    */
-  operators?: string;
+  operators: string;
   /**
    * The type of routing restriction imposed by the operator
    *
    */
-  restrictionCode?: SmsRestrictionCodeEnum;
+  restrictionCode: SmsRestrictionCodeEnum;
   /**
    * The substitution sender used to bypass operator filter
    *
@@ -244,27 +244,27 @@ export interface SmsHlr {
    * The country
    *
    */
-  country?: string;
+  country: string;
   /**
    * The countryCode prefix number
    *
    */
-  countryCode?: string;
+  countryCode: string;
   /**
    * The network name
    *
    */
-  network?: string;
+  network: string;
   /**
    * The operator name
    *
    */
-  operator?: string;
+  operator: string;
   /**
    * The region
    *
    */
-  region?: string;
+  region: string;
 }
 /**
  * Home Location Register informations. Give informations about a given cellular phone.
@@ -274,47 +274,47 @@ export interface SmsHlrLookupNumber {
    * HLR creation datetime
    *
    */
-  datetime?: string;
+  datetime: string;
   /**
    * HLR id
    *
    */
-  id?: number;
+  id: number;
   /**
    * MSISDN
    *
    */
-  msisdn?: string;
+  msisdn: string;
   /**
    * The {Mobile Country Code, Mobile Network Code} unique identifier
    *
    */
-  operatorCode?: string;
+  operatorCode: string;
   /**
    * Has the MSISDN been ported from its original network
    *
    */
-  ported?: boolean;
+  ported: boolean;
   /**
    * Is the MSISDN currently reachable
    *
    */
-  reachable?: boolean;
+  reachable: boolean;
   /**
    * Is the MSISDN currently roaming outside its natinal network
    *
    */
-  roaming?: boolean;
+  roaming: boolean;
   /**
    * Status of the HLR request
    *
    */
-  status?: SmsHlrStatuses;
+  status: SmsHlrStatuses;
   /**
    * Is the MSISDN valid
    *
    */
-  valid?: boolean;
+  valid: boolean;
 }
 /**
  * The sms coding
@@ -326,22 +326,22 @@ export type SmsHlrStatuses = 'doing' | 'done' | 'error' | 'todo';
 export interface SmsIncoming {
   /**
    */
-  creationDatetime?: string;
+  creationDatetime: string;
   /**
    */
-  credits?: number;
+  credits: number;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  message?: string;
+  message: string;
   /**
    */
-  sender?: string;
+  sender: string;
   /**
    */
-  tag?: string;
+  tag: string;
 }
 /**
  * Sms job
@@ -349,37 +349,37 @@ export interface SmsIncoming {
 export interface SmsJob {
   /**
    */
-  creationDatetime?: string;
+  creationDatetime: string;
   /**
    */
-  credits?: number;
+  credits: number;
   /**
    */
-  deliveryReceipt?: number;
+  deliveryReceipt: number;
   /**
    */
-  differedDelivery?: number;
+  differedDelivery: number;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  message?: string;
+  message: string;
   /**
    */
-  messageLength?: number;
+  messageLength: number;
   /**
    */
-  numberOfSms?: number;
+  numberOfSms: number;
   /**
    */
-  ptt?: number;
+  ptt: number;
   /**
    */
-  receiver?: string;
+  receiver: string;
   /**
    */
-  sender?: string;
+  sender: string;
 }
 /**
  * Sms history of sms outgoing sent
@@ -387,45 +387,45 @@ export interface SmsJob {
 export interface SmsOutgoing {
   /**
    */
-  creationDatetime?: string;
+  creationDatetime: string;
   /**
    */
-  credits?: number;
+  credits: number;
   /**
    */
-  deliveryReceipt?: number;
+  deliveryReceipt: number;
   /**
    */
-  differedDelivery?: number;
+  differedDelivery: number;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  message?: string;
+  message: string;
   /**
    */
-  messageLength?: number;
+  messageLength: number;
   /**
    */
-  numberOfSms?: number;
+  numberOfSms: number;
   /**
    */
-  ptt?: number;
+  ptt: number;
   /**
    */
-  receiver?: string;
+  receiver: string;
   /**
    */
-  sender?: string;
+  sender: string;
   /**
    */
-  tag?: string;
+  tag: string;
   /**
    * Tariff code applied on the sms
    *
    */
-  tariffCode?: string;
+  tariffCode: string;
 }
 /**
  * A structure describing all information about an sms pack offer
@@ -433,7 +433,7 @@ export interface SmsOutgoing {
 export interface SmsPackOffer {
   /**
    */
-  countryDestination?: string;
+  countryDestination: string;
   /**
    */
   giftPrice?: number;
@@ -442,16 +442,16 @@ export interface SmsPackOffer {
   giftQuantity?: number;
   /**
    */
-  language?: string;
+  language: string;
   /**
    */
-  price?: number;
+  price: number;
   /**
    */
-  quantity?: number;
+  quantity: number;
   /**
    */
-  smsQuantity?: number;
+  smsQuantity: number;
   /**
    */
   totalPrice?: number;
@@ -472,17 +472,17 @@ export interface SmsPhonebook {
    * Identifier of the phonebook
    *
    */
-  bookKey?: string;
+  bookKey: string;
   /**
    * Phonebook name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Phone key identifier between the phone and phonebooks
    *
    */
-  phoneKey?: string;
+  phoneKey: string;
 }
 /**
  * Phone book contact
@@ -492,7 +492,7 @@ export interface SmsPhonebookContact {
    * Group name of the phonebook
    *
    */
-  group?: string;
+  group: string;
   /**
    * Home mobile phone number of the contact
    *
@@ -507,17 +507,17 @@ export interface SmsPhonebookContact {
    * Contact identifier
    *
    */
-  id?: number;
+  id: number;
   /**
    * Contact name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Contact surname
    *
    */
-  surname?: string;
+  surname: string;
   /**
    * Mobile phone office number of the contact
    *
@@ -541,17 +541,17 @@ export interface SmsPttDetails {
    * Ptt informations
    *
    */
-  comment?: string;
+  comment: string;
   /**
    * Ptt short description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Ptt volatility type
    *
    */
-  duration?: SmsPttDurationTypeEnum;
+  duration: SmsPttDurationTypeEnum;
 }
 /**
  * All typology of ptt duration
@@ -563,10 +563,10 @@ export type SmsPttDurationTypeEnum = 'indeterminated' | 'permanent' | 'temporary
 export interface SmsQuota {
   /**
    */
-  quotaLeft?: number;
+  quotaLeft: number;
   /**
    */
-  quotaStatus?: SmsQuotaStatusUserEnum;
+  quotaStatus: SmsQuotaStatusUserEnum;
 }
 /**
  * Current quota status
@@ -580,32 +580,32 @@ export interface SmsReceiver {
    * Download file from URL before sending to contacts (works only with csvUrl and not document ID)
    *
    */
-  autoUpdate?: boolean;
+  autoUpdate: boolean;
   /**
    * Is the object compatible with autoUpdate
    *
    */
-  canAutoUpdate?: boolean;
+  canAutoUpdate: boolean;
   /**
    * Creation date of the document
    *
    */
-  datetime?: string;
+  datetime: string;
   /**
    * Description name of the document
    *
    */
-  description?: string;
+  description: string;
   /**
    * Number of receiver records in the document
    *
    */
-  records?: number;
+  records: number;
   /**
    * Slot number id
    *
    */
-  slotId?: number;
+  slotId: number;
 }
 /**
  * A structure giving operation price and asynchronous task ID
@@ -613,10 +613,10 @@ export interface SmsReceiver {
 export interface SmsReceiversAsynchronousCleanReport {
   /**
    */
-  taskId?: number;
+  taskId: number;
   /**
    */
-  totalCreditsRemoved?: number;
+  totalCreditsRemoved: number;
 }
 /**
  * All tyoplogy of senders
@@ -633,7 +633,7 @@ export interface SmsResponse {
   cgiUrl?: string;
   /**
    */
-  responseType?: SmsResponseTypeEnum;
+  responseType: SmsResponseTypeEnum;
   /**
    * Automatic notification sent by text in case of customer reply.
    *
@@ -656,13 +656,13 @@ export type SmsResponseTrackingMediaEnum = 'email' | 'sms' | 'voice';
 export interface SmsResponseTrackingOptions {
   /**
    */
-  media?: SmsResponseTrackingMediaEnum;
+  media: SmsResponseTrackingMediaEnum;
   /**
    */
-  sender?: string;
+  sender: string;
   /**
    */
-  target?: string;
+  target: string;
 }
 /**
  * Response type
@@ -685,22 +685,22 @@ export interface SmsSender {
    * Sender description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Specify if the sender is custom or not
    *
    */
-  referer?: SmsRefererSenderEnum;
+  referer: SmsRefererSenderEnum;
   /**
    * The sms sender
    *
    */
-  sender?: string;
+  sender: string;
   /**
    * Sender status
    *
    */
-  status?: SmsStatusSenderEnum;
+  status: SmsStatusSenderEnum;
   /**
    * Specify the kind of sender
    *
@@ -718,10 +718,10 @@ export interface SmsSender {
 export interface SmsSenderAvailable {
   /**
    */
-  referer?: SmsSenderRefererEnum;
+  referer: SmsSenderRefererEnum;
   /**
    */
-  sender?: string;
+  sender: string;
 }
 /**
  * The referer of the available sender
@@ -733,16 +733,16 @@ export type SmsSenderRefererEnum = 'domain' | 'nichandle';
 export interface SmsSmsSendingReport {
   /**
    */
-  ids?: number[];
+  ids: number[];
   /**
    */
-  invalidReceivers?: string[];
+  invalidReceivers: string[];
   /**
    */
-  totalCreditsRemoved?: number;
+  totalCreditsRemoved: number;
   /**
    */
-  validReceivers?: string[];
+  validReceivers: string[];
 }
 /**
  * Account status
@@ -762,16 +762,16 @@ export type SmsSupportEnum = 'both' | 'mail' | 'sms';
 export interface SmsTask {
   /**
    */
-  function?: SmsTodoGeneralPublicFunctionsEnum;
+  function: SmsTodoGeneralPublicFunctionsEnum;
   /**
    */
-  status?: TelephonyTaskStatusEnum;
+  status: TelephonyTaskStatusEnum;
   /**
    */
-  step?: SmsTodoGeneralPublicStepsEnum;
+  step: SmsTodoGeneralPublicStepsEnum;
   /**
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * Sms template for moderation (Needed to send in US country)
@@ -781,37 +781,37 @@ export interface SmsTemplateControl {
    * Specify the kind of template
    *
    */
-  activity?: SmsTypeTemplateEnum;
+  activity: SmsTypeTemplateEnum;
   /**
    * Message sent by the moderator
    *
    */
-  comment?: string;
+  comment: string;
   /**
    * Template creation datetime
    *
    */
-  datetime?: string;
+  datetime: string;
   /**
    * Template description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Message pattern to be moderated. Use "#VALUE#" format for dynamic text area.
    *
    */
-  message?: string;
+  message: string;
   /**
    * Name of the template
    *
    */
-  name?: string;
+  name: string;
   /**
    * Template status
    *
    */
-  status?: SmsStatusSenderEnum;
+  status: SmsStatusSenderEnum;
 }
 /**
  * A structure describing all information about templates informations
@@ -819,10 +819,10 @@ export interface SmsTemplateControl {
 export interface SmsTemplates {
   /**
    */
-  customizedEmailMode?: boolean;
+  customizedEmailMode: boolean;
   /**
    */
-  customizedSmsMode?: boolean;
+  customizedSmsMode: boolean;
   /**
    */
   emailBody?: string;
@@ -858,7 +858,7 @@ export type SmsTypeTemplateEnum = 'alerting' | 'authentification' | 'transaction
 export interface SmsUser {
   /**
    */
-  alertThresholdInformations?: SmsAlertThreshold;
+  alertThresholdInformations: SmsAlertThreshold;
   /**
    * URL called when state of a sent SMS changes
    *
@@ -866,18 +866,18 @@ export interface SmsUser {
   callBack?: string;
   /**
    */
-  ipRestrictions?: string[];
+  ipRestrictions: string[];
   /**
    * The sms user login
    *
    */
-  login?: string;
+  login: string;
   /**
    */
-  password?: string;
+  password: string;
   /**
    */
-  quotaInformations?: SmsQuota;
+  quotaInformations: SmsQuota;
   /**
    * URL called when a STOP is received after a receiver replied stop to a SMS
    *
@@ -892,12 +892,12 @@ export interface SmsVirtualNumber {
    * The ISO formated country code of the number
    *
    */
-  countryCode?: SmsVirtualNumberIsoCountryCodeEnum;
+  countryCode: SmsVirtualNumberIsoCountryCodeEnum;
   /**
    * The virtual number
    *
    */
-  number?: string;
+  number: string;
 }
 /**
  * Virtual numbers
@@ -907,12 +907,12 @@ export interface SmsVirtualNumberGenericService {
    * The ISO formated country code of the number
    *
    */
-  countryCode?: SmsVirtualNumberIsoCountryCodeEnum;
+  countryCode: SmsVirtualNumberIsoCountryCodeEnum;
   /**
    * The virtual number
    *
    */
-  number?: string;
+  number: string;
 }
 /**
  * The ISO formated country code of the number
@@ -924,34 +924,34 @@ export type SmsVirtualNumberIsoCountryCodeEnum = 'be' | 'ch' | 'de' | 'es' | 'fr
 export interface SmsVirtualNumberJob {
   /**
    */
-  creationDatetime?: string;
+  creationDatetime: string;
   /**
    */
-  credits?: number;
+  credits: number;
   /**
    */
-  deliveryReceipt?: number;
+  deliveryReceipt: number;
   /**
    */
-  differedDelivery?: number;
+  differedDelivery: number;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  message?: string;
+  message: string;
   /**
    */
-  messageLength?: number;
+  messageLength: number;
   /**
    */
-  numberOfSms?: number;
+  numberOfSms: number;
   /**
    */
-  ptt?: number;
+  ptt: number;
   /**
    */
-  receiver?: string;
+  receiver: string;
 }
 /**
  * Export file format
@@ -963,16 +963,16 @@ export type TelephonyContactsExportFormatsEnum = 'csv';
 export interface TelephonyPcsFile {
   /**
    */
-  filename?: string;
+  filename: string;
   /**
    */
-  status?: TelephonyPcsFileStatusEnum;
+  status: TelephonyPcsFileStatusEnum;
   /**
    */
-  url?: string;
+  url: string;
   /**
    */
-  urlExpirationDatetime?: string;
+  urlExpirationDatetime: string;
 }
 /**
  * File providing task status
@@ -986,7 +986,7 @@ export interface TelephonyTask {
    * Action associated with the task
    *
    */
-  action?: string;
+  action: string;
   /**
    * Potential failure reason of the task
    *
@@ -999,15 +999,15 @@ export interface TelephonyTask {
   objectCreated?: string;
   /**
    */
-  serviceType?: string;
+  serviceType: string;
   /**
    * Status of the task
    *
    */
-  status?: TelephonyTaskStatusEnum;
+  status: TelephonyTaskStatusEnum;
   /**
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * Task status

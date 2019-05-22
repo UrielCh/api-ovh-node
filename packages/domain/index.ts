@@ -11,22 +11,22 @@ export interface DnssecKey {
    * Algorithm
    *
    */
-  algorithm?: DnssecKeyAlgorithmEnum;
+  algorithm: DnssecKeyAlgorithmEnum;
   /**
    * Flag of the dnssec key
    *
    */
-  flags?: DnssecKeyFlagEnum;
+  flags: DnssecKeyFlagEnum;
   /**
    * Public key
    *
    */
-  publicKey?: string;
+  publicKey: string;
   /**
    * Key tag
    *
    */
-  tag?: number;
+  tag: number;
 }
 /**
  * Dnssec Algorithm
@@ -77,12 +77,12 @@ export interface DomainCurrentNameServer {
    * Host of the name server
    *
    */
-  host?: string;
+  host: string;
   /**
    * Id of the name server
    *
    */
-  id?: number;
+  id: number;
   /**
    * Ip of the name server
    *
@@ -92,12 +92,12 @@ export interface DomainCurrentNameServer {
    * isUsed flag of the name server
    *
    */
-  isUsed?: boolean;
+  isUsed: boolean;
   /**
    * toDelete flag of the name server
    *
    */
-  toDelete?: boolean;
+  toDelete: boolean;
 }
 /**
  * Domain's DNSSEC Key
@@ -107,32 +107,32 @@ export interface DomainDnssecKey {
    * Algorithm number of the DNSSEC key
    *
    */
-  algorithm?: DnssecKeyAlgorithmEnum;
+  algorithm: DnssecKeyAlgorithmEnum;
   /**
    * Flag of the DNSSEC key
    *
    */
-  flags?: DnssecKeyFlagEnum;
+  flags: DnssecKeyFlagEnum;
   /**
    * Id of the DNSSEC key
    *
    */
-  id?: number;
+  id: number;
   /**
    * Public key
    *
    */
-  publicKey?: string;
+  publicKey: string;
   /**
    * Key status of the DNSSEC key
    *
    */
-  status?: DnssecKeyStatusEnum;
+  status: DnssecKeyStatusEnum;
   /**
    * Tag of the DNSSEC key
    *
    */
-  tag?: number;
+  tag: number;
 }
 /**
  * Domain name administration
@@ -142,42 +142,42 @@ export interface DomainDomain {
    * Is DNSSEC implemented for this domain name's tld
    *
    */
-  dnssecSupported?: boolean;
+  dnssecSupported: boolean;
   /**
    * Domain name
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Does the registry support ipv6 glue record
    *
    */
-  glueRecordIpv6Supported?: boolean;
+  glueRecordIpv6Supported: boolean;
   /**
    * Does the registry support multi ip glue record
    *
    */
-  glueRecordMultiIpSupported?: boolean;
+  glueRecordMultiIpSupported: boolean;
   /**
    * Last update date
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Name servers type
    *
    */
-  nameServerType?: DomainDomainNsTypeEnum;
+  nameServerType: DomainDomainNsTypeEnum;
   /**
    * Domain's offer
    *
    */
-  offer?: DomainOfferEnum;
+  offer: DomainOfferEnum;
   /**
    * Is whois obfuscation supported by this domain name's registry
    *
    */
-  owoSupported?: boolean;
+  owoSupported: boolean;
   /**
    * Parent service
    *
@@ -187,12 +187,12 @@ export interface DomainDomain {
    * Transfer lock status
    *
    */
-  transferLockStatus?: DomainDomainLockStatusEnum;
+  transferLockStatus: DomainDomainLockStatusEnum;
   /**
    * Contact Owner (you can edit it via /me/contact/<ID>)
    *
    */
-  whoisOwner?: string;
+  whoisOwner: string;
 }
 /**
  * All contact type for a domain
@@ -210,7 +210,7 @@ export interface DomainDomainNs {
    * Host
    *
    */
-  host?: string;
+  host: string;
   /**
    * Ip
    *
@@ -229,12 +229,12 @@ export interface DomainDomainNsStatus {
    * Whether or not the DNS server is working
    *
    */
-  state?: DomainDomainNsStateEnum;
+  state: DomainDomainNsStateEnum;
   /**
    * Whether or not the DNS server is managed by OVH
    *
    */
-  type?: DomainDomainNsTypeEnum;
+  type: DomainDomainNsTypeEnum;
   /**
    * Date from which the DNS server is used by the domain
    *
@@ -253,12 +253,12 @@ export interface DomainGlueRecord {
    * Host of the glue record
    *
    */
-  host?: string;
+  host: string;
   /**
    * Ips of the glue record
    *
    */
-  ips?: string[];
+  ips: string[];
 }
 /**
  * Offer
@@ -280,7 +280,7 @@ export interface DomainOwo {
    * Obfuscated field
    *
    */
-  field?: DomainWhoisObfuscatorFieldsEnum;
+  field: DomainWhoisObfuscatorFieldsEnum;
 }
 /**
  * Parent service
@@ -290,12 +290,12 @@ export interface DomainParentService {
    * Name of the parent service
    *
    */
-  name?: string;
+  name: string;
   /**
    * Type of the parent service
    *
    */
-  type?: DomainParentServiceTypeEnum;
+  type: DomainParentServiceTypeEnum;
 }
 /**
  * Parent service type enum
@@ -310,7 +310,7 @@ export interface DomainRule {
   allowedValues?: string[];
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
   fields?: string[];
@@ -325,7 +325,7 @@ export interface DomainRule {
   required?: boolean;
   /**
    */
-  type?: string;
+  type: string;
 }
 /**
  * Tasks associated to domain
@@ -335,17 +335,17 @@ export interface DomainTask {
    * Can accelerate the task
    *
    */
-  canAccelerate?: boolean;
+  canAccelerate: boolean;
   /**
    * Can cancel the task
    *
    */
-  canCancel?: boolean;
+  canCancel: boolean;
   /**
    * Can relaunch the task
    *
    */
-  canRelaunch?: boolean;
+  canRelaunch: boolean;
   /**
    * Comment about the task
    *
@@ -355,7 +355,7 @@ export interface DomainTask {
    * Creation date of the task
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Done date of the task
    *
@@ -365,27 +365,27 @@ export interface DomainTask {
    * Function of the task
    *
    */
-  function?: string;
+  function: string;
   /**
    * Id of the task
    *
    */
-  id?: number;
+  id: number;
   /**
    * Last update date of the task
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Status of the task
    *
    */
-  status?: DomainOperationStatusEnum;
+  status: DomainOperationStatusEnum;
   /**
    * Todo date of the task
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * Representation of a UK Registrar (used for outgoing transfer)
@@ -395,12 +395,12 @@ export interface DomainUkRegistrar {
    * Registrar name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Registrar tag
    *
    */
-  tag?: string;
+  tag: string;
 }
 /**
  * Whois obfuscable fields
@@ -414,12 +414,12 @@ export interface DomainConfigurationsObfuscatedEmail {
    * Contact's type associated to the obfuscated email
    *
    */
-  type?: DomainContactAllTypesEnum;
+  type: DomainContactAllTypesEnum;
   /**
    * Obfuscated email value
    *
    */
-  value?: string;
+  value: string;
 }
 /**
  * Representation of the optin configuration
@@ -429,12 +429,12 @@ export interface DomainConfigurationsOptin {
    * Displayed fields
    *
    */
-  fields?: DomainOptinFieldsEnum[];
+  fields: DomainOptinFieldsEnum[];
   /**
    * Contact's type associated to the optin configuration
    *
    */
-  type?: DomainContactAllTypesEnum;
+  type: DomainContactAllTypesEnum;
 }
 /**
  * Representation of an Inpi additional information for a corporation
@@ -444,22 +444,22 @@ export interface DomainDataAfnicCorporationTrademarkContact {
    * Contact ID related to the Inpi additional information
    *
    */
-  contactId?: number;
+  contactId: number;
   /**
    * Corporation Inpi additional information ID
    *
    */
-  id?: number;
+  id: number;
   /**
    * Number of the Inpi declaration
    *
    */
-  inpiNumber?: string;
+  inpiNumber: string;
   /**
    * Owner of the trademark
    *
    */
-  inpiTrademarkOwner?: string;
+  inpiTrademarkOwner: string;
 }
 /**
  * Representation of a Association additional information
@@ -469,32 +469,32 @@ export interface DomainDataAssociationContact {
    * Contact ID related to the association contact information
    *
    */
-  contactId?: number;
+  contactId: number;
   /**
    * Date of the declaration of the association
    *
    */
-  declarationDate?: string;
+  declarationDate: string;
   /**
    * Association additional information ID
    *
    */
-  id?: number;
+  id: number;
   /**
    * Date of the publication of the declaration of the association
    *
    */
-  publicationDate?: string;
+  publicationDate: string;
   /**
    * Number of the publication of the declaration of the association
    *
    */
-  publicationNumber?: string;
+  publicationNumber: string;
   /**
    * Page number of the publication of the declaration of the association
    *
    */
-  publicationPageNumber?: string;
+  publicationPageNumber: string;
 }
 /**
  * Representation of an .pro Contact Resource
@@ -504,27 +504,27 @@ export interface DomainDataProContact {
    * Authority that certify your profesional status
    *
    */
-  authority?: string;
+  authority: string;
   /**
    * Website of the authority that certify your profesional status
    *
    */
-  authorityWebsite?: string;
+  authorityWebsite: string;
   /**
    * .pro Contact ID
    *
    */
-  id?: number;
+  id: number;
   /**
    * Description of your job
    *
    */
-  jobDescription?: string;
+  jobDescription: string;
   /**
    * License number given by the authority
    *
    */
-  licenseNumber?: string;
+  licenseNumber: string;
 }
 /**
  * Representation of a SMD Resource file
@@ -534,12 +534,12 @@ export interface DomainDataSmd {
    * SMD file content
    *
    */
-  data?: string;
+  data: string;
   /**
    * SMD file ID
    *
    */
-  id?: number;
+  id: number;
   /**
    * Date when information about SMD file aren't valid anymore
    *
@@ -554,7 +554,7 @@ export interface DomainDataSmd {
    * List of the labels that are protected with that SMD file
    *
    */
-  protectedLabels?: DomainDataSmdLabel[];
+  protectedLabels: DomainDataSmdLabel[];
   /**
    * TMCH Internal identifier
    *
@@ -569,12 +569,12 @@ export interface DomainDataSmdLabel {
    * Label that is protected
    *
    */
-  label?: string;
+  label: string;
   /**
    * Trademark associated to the protected label
    *
    */
-  trademark?: string;
+  trademark: string;
 }
 /**
  * Address for a claim notice holder
@@ -614,7 +614,7 @@ export interface DomainDataClaimNoticeAddress {
    * Array of street name
    *
    */
-  streets?: string[];
+  streets: string[];
   /**
    * Phone number
    *
@@ -639,17 +639,17 @@ export interface DomainDataClaimNoticeClaimNotice {
    * Ending date of claim notice
    *
    */
-  endingDate?: string;
+  endingDate: string;
   /**
    * Claim notice ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Label referring to claim notice
    *
    */
-  label?: string;
+  label: string;
   /**
    * Beginning date of claim notice
    *
@@ -669,47 +669,47 @@ export interface DomainDataClaimNoticeClaimNoticeDecision {
    * Classifications where trademark claim notice apply
    *
    */
-  classifications?: DomainDataClaimNoticeClassification[];
+  classifications: DomainDataClaimNoticeClassification[];
   /**
    * Array of court decisions related to claim notice
    *
    */
-  courtDecisions?: DomainDataClaimNoticeCourtDecision[];
+  courtDecisions: DomainDataClaimNoticeCourtDecision[];
   /**
    * Goods and services on which apply claim notice
    *
    */
-  goodsAndServices?: string;
+  goodsAndServices: string;
   /**
    * Name of jurisdiction
    *
    */
-  jurisdiction?: string;
+  jurisdiction: string;
   /**
    * Jurisdiction country code
    *
    */
-  jurisdictionCountryCode?: string;
+  jurisdictionCountryCode: string;
   /**
    * Mark name implicated in claim notice
    *
    */
-  markName?: string;
+  markName: string;
   /**
    * Trademark contacts
    *
    */
-  trademarkContacts?: DomainDataClaimNoticeContact[];
+  trademarkContacts: DomainDataClaimNoticeContact[];
   /**
    * Trademark holders
    *
    */
-  trademarkHolders?: DomainDataClaimNoticeContact[];
+  trademarkHolders: DomainDataClaimNoticeContact[];
   /**
    * Trademark UDRP informations
    *
    */
-  trademarkUDRP?: DomainDataClaimNoticeUDRP[];
+  trademarkUDRP: DomainDataClaimNoticeUDRP[];
 }
 /**
  * Type of claim notice
@@ -723,12 +723,12 @@ export interface DomainDataClaimNoticeClassification {
    * Summary of the classification
    *
    */
-  description?: string;
+  description: string;
   /**
    * Code of the classification
    *
    */
-  number?: string;
+  number: string;
 }
 /**
  * Contact definition of a claim notice holder
@@ -738,7 +738,7 @@ export interface DomainDataClaimNoticeContact {
    * Address of holder
    *
    */
-  address?: DomainDataClaimNoticeAddress;
+  address: DomainDataClaimNoticeAddress;
   /**
    * Email address
    *
@@ -773,22 +773,22 @@ export interface DomainDataClaimNoticeCourtDecision {
    * Country code
    *
    */
-  countryCode?: string;
+  countryCode: string;
   /**
    * Court name
    *
    */
-  courtName?: string;
+  courtName: string;
   /**
    * Reference number of court decision
    *
    */
-  referenceNumber?: string;
+  referenceNumber: string;
   /**
    * Regions where court decision apply
    *
    */
-  regions?: string[];
+  regions: string[];
 }
 /**
  * Definition of a UDRP procedure
@@ -798,12 +798,12 @@ export interface DomainDataClaimNoticeUDRP {
    * Case number
    *
    */
-  caseNumber?: string;
+  caseNumber: string;
   /**
    * UDRP Provider
    *
    */
-  udrpProvider?: string;
+  udrpProvider: string;
 }
 /**
  * Representation of the optin rule
@@ -813,12 +813,12 @@ export interface DomainRulesOptin {
    * Displayed fields
    *
    */
-  fields?: DomainOptinFieldsEnum[];
+  fields: DomainOptinFieldsEnum[];
   /**
    * Contact's type associated to the optin rule
    *
    */
-  type?: DomainContactAllTypesEnum;
+  type: DomainContactAllTypesEnum;
 }
 /**
  * Manage Dnssec for this zone
@@ -826,7 +826,7 @@ export interface DomainRulesOptin {
 export interface DomainZoneDnssec {
   /**
    */
-  status?: DnssecDnssecStatusEnum;
+  status: DnssecDnssecStatusEnum;
 }
 /**
  * Manage DynHost login
@@ -836,17 +836,17 @@ export interface DomainZoneDynHostLogin {
    * Login
    *
    */
-  login?: string;
+  login: string;
   /**
    * Subdomain that the login will be allowed to update (* to allow all)
    *
    */
-  subDomain?: string;
+  subDomain: string;
   /**
    * Zone
    *
    */
-  zone?: string;
+  zone: string;
 }
 /**
  * DynHost record
@@ -856,12 +856,12 @@ export interface DomainZoneDynHostRecord {
    * Id of the DynHost record
    *
    */
-  id?: number;
+  id: number;
   /**
    * Ip address of the DynHost record
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * Subdomain of the DynHost record
    *
@@ -876,7 +876,7 @@ export interface DomainZoneDynHostRecord {
    * Zone of the DynHost record
    *
    */
-  zone?: string;
+  zone: string;
 }
 /**
  * Zone resource records
@@ -886,12 +886,12 @@ export interface DomainZoneRecord {
    * Resource record Name
    *
    */
-  fieldType?: ZoneNamedResolutionFieldTypeEnum;
+  fieldType: ZoneNamedResolutionFieldTypeEnum;
   /**
    * Id of the zone resource record
    *
    */
-  id?: number;
+  id: number;
   /**
    * Resource record subdomain
    *
@@ -901,7 +901,7 @@ export interface DomainZoneRecord {
    * Resource record target
    *
    */
-  target?: string;
+  target: string;
   /**
    * Resource record ttl
    *
@@ -911,7 +911,7 @@ export interface DomainZoneRecord {
    * Resource record zone
    *
    */
-  zone?: string;
+  zone: string;
 }
 /**
  * Redirection
@@ -926,7 +926,7 @@ export interface DomainZoneRedirection {
    * Id of the redirection
    *
    */
-  id?: number;
+  id: number;
   /**
    * Keywords for invisible redirection
    *
@@ -941,7 +941,7 @@ export interface DomainZoneRedirection {
    * Target of the redirection
    *
    */
-  target?: string;
+  target: string;
   /**
    * Title for invisible redirection
    *
@@ -951,12 +951,12 @@ export interface DomainZoneRedirection {
    * Redirection type
    *
    */
-  type?: ZoneRedirectionTypeEnum;
+  type: ZoneRedirectionTypeEnum;
   /**
    * Redirection zone
    *
    */
-  zone?: string;
+  zone: string;
 }
 /**
  * Zone Start Of Authority
@@ -966,37 +966,37 @@ export interface DomainZoneSoa {
    * Email address of the DNS Administrator
    *
    */
-  email?: string;
+  email: string;
   /**
    * When a zone transfer fails, a countdown clock begins. When the number of seconds set in the expire field elapses, the nameserver stops answering for that zone file
    *
    */
-  expire?: number;
+  expire: number;
   /**
    * Non-Existent Domain TTL, if the name server returns a negative response, the remote server should wait the number of seconds set in the nxDomainTtl field before trying again
    *
    */
-  nxDomainTtl?: number;
+  nxDomainTtl: number;
   /**
    * The refresh value determines the interval in seconds between successful zone transfers of the entire zone file from a nameserver to another.
    *
    */
-  refresh?: number;
+  refresh: number;
   /**
    * The serial number is used to indicate which copy of the zone file is the most current. When editing zone files, you must increment the serial number
    *
    */
-  serial?: number;
+  serial: number;
   /**
    * Primary authoritative server
    *
    */
-  server?: string;
+  server: string;
   /**
    * Time To Live in seconds
    *
    */
-  ttl?: number;
+  ttl: number;
 }
 /**
  * Tasks associated to a zone
@@ -1006,17 +1006,17 @@ export interface DomainZoneTask {
    * Can accelerate the task
    *
    */
-  canAccelerate?: boolean;
+  canAccelerate: boolean;
   /**
    * Can cancel the task
    *
    */
-  canCancel?: boolean;
+  canCancel: boolean;
   /**
    * Can relaunch the task
    *
    */
-  canRelaunch?: boolean;
+  canRelaunch: boolean;
   /**
    * Comment about the task
    *
@@ -1026,7 +1026,7 @@ export interface DomainZoneTask {
    * Creation date of the task
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Done date of the task
    *
@@ -1036,27 +1036,27 @@ export interface DomainZoneTask {
    * Function of the task
    *
    */
-  function?: string;
+  function: string;
   /**
    * Id of the task
    *
    */
-  id?: number;
+  id: number;
   /**
    * Last update date of the task
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Status of the task
    *
    */
-  status?: DomainOperationStatusEnum;
+  status: DomainOperationStatusEnum;
   /**
    * Todo date of the task
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * Zone dns Management
@@ -1066,22 +1066,22 @@ export interface DomainZoneZone {
    * Is DNSSEC supported by this zone
    *
    */
-  dnssecSupported?: boolean;
+  dnssecSupported: boolean;
   /**
    * hasDnsAnycast flag of the DNS zone
    *
    */
-  hasDnsAnycast?: boolean;
+  hasDnsAnycast: boolean;
   /**
    * Last update date of the DNS zone
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Name servers that host the DNS zone
    *
    */
-  nameServers?: string[];
+  nameServers: string[];
 }
 /**
  * Zone restore point
@@ -1091,12 +1091,12 @@ export interface DomainZoneZoneRestorePoint {
    * Date of backup creation
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * URL to get backup content
    *
    */
-  zoneFileUrl?: string;
+  zoneFileUrl: string;
 }
 /**
  * Countries a nichandle can choose
@@ -1110,17 +1110,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -1156,28 +1156,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -1190,13 +1190,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * Resource record fieldType
@@ -1212,12 +1212,12 @@ export type ZoneRedirectionTypeEnum = 'invisible' | 'visible' | 'visiblePermanen
 export interface ZoneResetRecord {
   /**
    */
-  fieldType?: ZoneResettableNamedResolutionFieldTypeEnum;
+  fieldType: ZoneResettableNamedResolutionFieldTypeEnum;
   /**
    * Resource record target
    *
    */
-  target?: string;
+  target: string;
 }
 /**
  * Resource record type
@@ -1236,7 +1236,7 @@ export interface ZoneStatus {
    * True if the zone has successfully been deployed
    *
    */
-  isDeployed?: boolean;
+  isDeployed: boolean;
   /**
    * Warning list
    *

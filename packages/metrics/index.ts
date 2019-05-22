@@ -7,12 +7,12 @@ export interface MetricsApiConsumption {
    * Current Daily data points
    *
    */
-  ddp?: number;
+  ddp: number;
   /**
    * Current monthly active data streams
    *
    */
-  mads?: number;
+  mads: number;
 }
 /**
  * Structure holding the elements about a label
@@ -22,12 +22,12 @@ export interface MetricsApiLabel {
    * Label key
    *
    */
-  key?: string;
+  key: string;
   /**
    * Label value
    *
    */
-  value?: string;
+  value: string;
 }
 /**
  * Type of the service
@@ -41,17 +41,17 @@ export interface MetricsApiOption {
    * Daily data points
    *
    */
-  ddp?: number;
+  ddp: number;
   /**
    * Time of last modification
    *
    */
-  lastModification?: string;
+  lastModification: string;
   /**
    * Monthly active device streams
    *
    */
-  mads?: number;
+  mads: number;
 }
 /**
  * Description not available
@@ -65,12 +65,12 @@ export interface MetricsApiRegion {
    * Description of a region
    *
    */
-  description?: string;
+  description: string;
   /**
    * Name of a region
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Structure holding the elements about a service
@@ -80,42 +80,42 @@ export interface MetricsApiService {
    * Description of a service
    *
    */
-  description?: string;
+  description: string;
   /**
    * Name of a service
    *
    */
-  name?: string;
+  name: string;
   /**
    * Offer used for the service
    *
    */
-  offer?: string;
+  offer: string;
   /**
    * Quota used for the service
    *
    */
-  quota?: MetricsApiOption;
+  quota: MetricsApiOption;
   /**
    * Region holding the service
    *
    */
-  region?: MetricsApiRegion;
+  region: MetricsApiRegion;
   /**
    * Indicator if the service should be upgraded based on current quota and offer
    *
    */
-  shouldUpgrade?: boolean;
+  shouldUpgrade: boolean;
   /**
    * Status of a service
    *
    */
-  status?: MetricsApiServiceStatusEnum;
+  status: MetricsApiServiceStatusEnum;
   /**
    * Type of the service: cloud or live
    *
    */
-  type?: MetricsApiOfferTypeEnum;
+  type: MetricsApiOfferTypeEnum;
 }
 /**
  * Status of of the service
@@ -129,42 +129,42 @@ export interface MetricsApiToken {
    * The actual access token
    *
    */
-  access?: string;
+  access: string;
   /**
    * Token creation date
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * Description of the token
    *
    */
-  description?: string;
+  description: string;
   /**
    * Token expiration date
    *
    */
-  expiredAt?: string;
+  expiredAt: string;
   /**
    * Id of the token
    *
    */
-  id?: string;
+  id: string;
   /**
    * Is your token revoked?
    *
    */
-  isRevoked?: boolean;
+  isRevoked: boolean;
   /**
    * Labels for the token if set
    *
    */
-  labels?: MetricsApiLabel[];
+  labels: MetricsApiLabel[];
   /**
    * Token type: read or write
    *
    */
-  type?: MetricsApiPermissionEnum;
+  type: MetricsApiPermissionEnum;
 }
 /**
  * Map a possible renew for a specific service
@@ -174,17 +174,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -220,28 +220,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -254,13 +254,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsMetricsGET = '/metrics' | 
 '/metrics/{serviceName}' | 

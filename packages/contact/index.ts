@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeSafeKeyValue<T> {
   /**
    */
-  key?: string;
+  key: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * Form characteristics
@@ -18,12 +18,12 @@ export interface ContactFormCharacteristic {
    * Form keys to send
    *
    */
-  keys?: ContactKeyFormCharacteristic[];
+  keys: ContactKeyFormCharacteristic[];
   /**
    * Form type
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * Form key description
@@ -33,12 +33,12 @@ export interface ContactKeyFormCharacteristic {
    * Key name
    *
    */
-  key?: string;
+  key: string;
   /**
    * Key required or not
    *
    */
-  required?: boolean;
+  required: boolean;
 }
 type PathsContactGET = '/contact/form';
 

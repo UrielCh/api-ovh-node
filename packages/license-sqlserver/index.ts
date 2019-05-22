@@ -13,7 +13,7 @@ export type LicenseLicenseTypeEnum = 'dedicated' | 'dedicatedCloud' | 'dedicated
 export interface LicenseOrderableSqlServerCompatibilityInfos {
   /**
    */
-  version?: LicenseSqlServerVersionEnum;
+  version: LicenseSqlServerVersionEnum;
 }
 /**
  * Allowed SQL Server versions and their compliant options per matching serviceTypes
@@ -21,10 +21,10 @@ export interface LicenseOrderableSqlServerCompatibilityInfos {
 export interface LicenseSqlServerOrderConfiguration {
   /**
    */
-  orderableVersions?: LicenseOrderableSqlServerCompatibilityInfos[];
+  orderableVersions: LicenseOrderableSqlServerCompatibilityInfos[];
   /**
    */
-  serviceType?: LicenseLicenseTypeEnum;
+  serviceType: LicenseLicenseTypeEnum;
 }
 /**
  * All versions for SQL Server product
@@ -42,7 +42,7 @@ export interface LicenseTask {
    * This Task description
    *
    */
-  action?: LicenseActionType;
+  action: LicenseActionType;
   /**
    * When was this Task done
    *
@@ -52,27 +52,27 @@ export interface LicenseTask {
    * The last time this Task was updated
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * This Task name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Current Taks status
    *
    */
-  status?: LicenseTaskStateEnum;
+  status: LicenseTaskStateEnum;
   /**
    * This Task id
    *
    */
-  taskId?: number;
+  taskId: number;
   /**
    * When was this Task created
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * All states a license Task can be in
@@ -86,32 +86,32 @@ export interface LicenseSqlserverSqlServer {
    * This license creation date
    *
    */
-  creation?: string;
+  creation: string;
   /**
    * The internal name of your license
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * The ip on which this license is attached
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * The license id on license provider side
    *
    */
-  licenseId?: string;
+  licenseId: string;
   /**
    * This license state
    *
    */
-  status?: LicenseStateEnum;
+  status: LicenseStateEnum;
   /**
    * This license version
    *
    */
-  version?: LicenseSqlServerVersionEnum;
+  version: LicenseSqlServerVersionEnum;
 }
 /**
  * Map a possible renew for a specific service
@@ -121,17 +121,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -167,28 +167,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -201,13 +201,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsLicenseSqlserverGET = '/license/sqlserver' | 
 '/license/sqlserver/orderableVersions' | 

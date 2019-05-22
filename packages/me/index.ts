@@ -11,27 +11,27 @@ export interface AgreementsContract {
    * Is this contract currently active or not ?
    *
    */
-  active?: boolean;
+  active: boolean;
   /**
    * Date the contract was created on
    *
    */
-  date?: string;
+  date: string;
   /**
    * Name of of the contract
    *
    */
-  name?: string;
+  name: string;
   /**
    * URL you can download the contract at
    *
    */
-  pdf?: string;
+  pdf: string;
   /**
    * Full text of the contract
    *
    */
-  text?: string;
+  text: string;
 }
 /**
  * Contract agreement
@@ -41,22 +41,22 @@ export interface AgreementsContractAgreement {
    * State of the agreement
    *
    */
-  agreed?: AgreementsAgreementStateEnum;
+  agreed: AgreementsAgreementStateEnum;
   /**
    * Id of the agreed contract
    *
    */
-  contractId?: number;
+  contractId: number;
   /**
    * Date the agreed contract was effective
    *
    */
-  date?: string;
+  date: string;
   /**
    * Id of the contract
    *
    */
-  id?: number;
+  id: number;
 }
 /**
  * API Application
@@ -64,19 +64,19 @@ export interface AgreementsContractAgreement {
 export interface ApiApplication {
   /**
    */
-  applicationId?: number;
+  applicationId: number;
   /**
    */
-  applicationKey?: string;
+  applicationKey: string;
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  status?: ApiApplicationStatusEnum;
+  status: ApiApplicationStatusEnum;
 }
 /**
  * List of state of an Api Application
@@ -88,13 +88,13 @@ export type ApiApplicationStatusEnum = 'active' | 'blocked' | 'inactive' | 'trus
 export interface ApiCredential {
   /**
    */
-  applicationId?: number;
+  applicationId: number;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  credentialId?: number;
+  credentialId: number;
   /**
    */
   expiration?: string;
@@ -105,13 +105,13 @@ export interface ApiCredential {
    * States whether this credential has been created by yourself or by the OVH support team
    *
    */
-  ovhSupport?: boolean;
+  ovhSupport: boolean;
   /**
    */
-  rules?: AuthAccessRule[];
+  rules: AuthAccessRule[];
   /**
    */
-  status?: AuthCredentialStateEnum;
+  status: AuthCredentialStateEnum;
 }
 /**
  * API Log
@@ -121,12 +121,12 @@ export interface ApiLog {
    * Account which did the Request
    *
    */
-  account?: string;
+  account: string;
   /**
    * Date of the request
    *
    */
-  date?: string;
+  date: string;
   /**
    * Source IP of the request
    *
@@ -134,22 +134,22 @@ export interface ApiLog {
   ip?: string;
   /**
    */
-  logId?: number;
+  logId: number;
   /**
    * HTTP Method of the request
    *
    */
-  method?: HttpMethodEnum;
+  method: HttpMethodEnum;
   /**
    * HTTP URI of the request
    *
    */
-  path?: string;
+  path: string;
   /**
    * API Route called
    *
    */
-  route?: string;
+  route: string;
 }
 /**
  * Access rule required for the application
@@ -157,10 +157,10 @@ export interface ApiLog {
 export interface AuthAccessRule {
   /**
    */
-  method?: AuthMethodEnum;
+  method: AuthMethodEnum;
   /**
    */
-  path?: string;
+  path: string;
 }
 /**
  * All states a Credential can be in
@@ -178,22 +178,22 @@ export interface BillingAutomaticPaymentMean {
    * Bank Account
    *
    */
-  bankAccount?: boolean;
+  bankAccount: boolean;
   /**
    * Credit Card
    *
    */
-  creditCard?: boolean;
+  creditCard: boolean;
   /**
    * Deferred invoice payment account for authorized customers
    *
    */
-  deferredPaymentAccount?: boolean;
+  deferredPaymentAccount: boolean;
   /**
    * Paypal account
    *
    */
-  paypal?: boolean;
+  paypal: boolean;
 }
 /**
  * SEPA bank account info
@@ -201,13 +201,13 @@ export interface BillingAutomaticPaymentMean {
 export interface BillingBankAccount {
   /**
    */
-  bic?: string;
+  bic: string;
   /**
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    */
-  defaultPaymentMean?: boolean;
+  defaultPaymentMean: boolean;
   /**
    * Custom description of this account
    *
@@ -215,25 +215,25 @@ export interface BillingBankAccount {
   description?: string;
   /**
    */
-  iban?: string;
+  iban: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
   mandateSignatureDate?: string;
   /**
    */
-  ownerAddress?: string;
+  ownerAddress: string;
   /**
    */
-  ownerName?: string;
+  ownerName: string;
   /**
    */
-  state?: BillingBankAccountStateEnum;
+  state: BillingBankAccountStateEnum;
   /**
    */
-  uniqueReference?: string;
+  uniqueReference: string;
   /**
    */
   validationDocumentLink?: string;
@@ -248,31 +248,31 @@ export type BillingBankAccountStateEnum = 'blockedForIncidents' | 'pendingValida
 export interface BillingBill {
   /**
    */
-  billId?: string;
+  billId: string;
   /**
    */
-  date?: string;
+  date: string;
   /**
    */
-  orderId?: number;
+  orderId: number;
   /**
    */
-  password?: string;
+  password: string;
   /**
    */
-  pdfUrl?: string;
+  pdfUrl: string;
   /**
    */
-  priceWithTax?: OrderPrice;
+  priceWithTax: OrderPrice;
   /**
    */
-  priceWithoutTax?: OrderPrice;
+  priceWithoutTax: OrderPrice;
   /**
    */
-  tax?: OrderPrice;
+  tax: OrderPrice;
   /**
    */
-  url?: string;
+  url: string;
 }
 /**
  * Information about a Bill entry
@@ -280,13 +280,13 @@ export interface BillingBill {
 export interface BillingBillDetail {
   /**
    */
-  billDetailId?: string;
+  billDetailId: string;
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   periodEnd?: string;
@@ -295,13 +295,13 @@ export interface BillingBillDetail {
   periodStart?: string;
   /**
    */
-  quantity?: string;
+  quantity: string;
   /**
    */
-  totalPrice?: OrderPrice;
+  totalPrice: OrderPrice;
   /**
    */
-  unitPrice?: OrderPrice;
+  unitPrice: OrderPrice;
 }
 /**
  * billing task status
@@ -315,12 +315,12 @@ export interface BillingCreditBalance {
    * Amount applied from the balance
    *
    */
-  amount?: OrderPrice;
+  amount: OrderPrice;
   /**
    * Credit balance name
    *
    */
-  balanceName?: string;
+  balanceName: string;
 }
 /**
  * Credit card informations
@@ -328,7 +328,7 @@ export interface BillingCreditBalance {
 export interface BillingCreditCard {
   /**
    */
-  defaultPaymentMean?: boolean;
+  defaultPaymentMean: boolean;
   /**
    * Custom description of this account
    *
@@ -336,24 +336,24 @@ export interface BillingCreditCard {
   description?: string;
   /**
    */
-  expirationDate?: string;
+  expirationDate: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  number?: string;
+  number: string;
   /**
    */
-  state?: BillingCreditCardStateEnum;
+  state: BillingCreditCardStateEnum;
   /**
    * True if this credit card has been registered with a successful 3DSecure challenge
    *
    */
-  threeDsValidated?: boolean;
+  threeDsValidated: boolean;
   /**
    */
-  type?: string;
+  type: string;
 }
 /**
  * State of you credit card
@@ -365,10 +365,10 @@ export type BillingCreditCardStateEnum = 'expired' | 'tooManyFailures' | 'valid'
 export interface BillingDeferredPaymentAccount {
   /**
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    */
-  defaultPaymentMean?: boolean;
+  defaultPaymentMean: boolean;
   /**
    * Custom description of this account
    *
@@ -376,7 +376,7 @@ export interface BillingDeferredPaymentAccount {
   description?: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * Deferred account type
    *
@@ -384,7 +384,7 @@ export interface BillingDeferredPaymentAccount {
   label?: string;
   /**
    */
-  state?: BillingDeferredPaymentAccountStatusEnum;
+  state: BillingDeferredPaymentAccountStatusEnum;
 }
 /**
  * Status of your deferred invoice payment account
@@ -396,28 +396,28 @@ export type BillingDeferredPaymentAccountStatusEnum = 'valid';
 export interface BillingDeposit {
   /**
    */
-  amount?: OrderPrice;
+  amount: OrderPrice;
   /**
    */
-  date?: string;
+  date: string;
   /**
    */
-  depositId?: string;
+  depositId: string;
   /**
    */
-  orderId?: number;
+  orderId: number;
   /**
    */
-  password?: string;
+  password: string;
   /**
    */
   paymentInfo?: DebtAssociatedObjectPaymentInfo;
   /**
    */
-  pdfUrl?: string;
+  pdfUrl: string;
   /**
    */
-  url?: string;
+  url: string;
 }
 /**
  * Information about a Deposit entry
@@ -425,22 +425,22 @@ export interface BillingDeposit {
 export interface BillingDepositDetail {
   /**
    */
-  depositDetailId?: string;
+  depositDetailId: string;
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  quantity?: string;
+  quantity: string;
   /**
    */
-  totalPrice?: OrderPrice;
+  totalPrice: OrderPrice;
   /**
    */
-  unitPrice?: OrderPrice;
+  unitPrice: OrderPrice;
 }
 /**
  * Balance of the fidelity account
@@ -451,16 +451,16 @@ export interface BillingFidelityAccount {
   alertThreshold?: number;
   /**
    */
-  balance?: number;
+  balance: number;
   /**
    */
-  canBeCredited?: boolean;
+  canBeCredited: boolean;
   /**
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    */
-  openDate?: string;
+  openDate: string;
 }
 /**
  * Details about a fidelity account
@@ -468,28 +468,28 @@ export interface BillingFidelityAccount {
 export interface BillingFidelityMovement {
   /**
    */
-  amount?: number;
+  amount: number;
   /**
    */
-  balance?: number;
+  balance: number;
   /**
    */
-  date?: string;
+  date: string;
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  movementId?: number;
+  movementId: number;
   /**
    */
-  operation?: BillingFidelityAccountOperationEnum;
+  operation: BillingFidelityAccountOperationEnum;
   /**
    */
-  order?: number;
+  order: number;
   /**
    */
-  previousBalance?: number;
+  previousBalance: number;
 }
 /**
  * Extensions of a detail
@@ -497,7 +497,7 @@ export interface BillingFidelityMovement {
 export interface BillingItemDetail {
   /**
    */
-  order?: BillingItemDetailOrder;
+  order: BillingItemDetailOrder;
 }
 /**
  * Order data for this Detail
@@ -512,12 +512,12 @@ export interface BillingItemDetailOrder {
    * Configurations chosen during the order
    *
    */
-  configurations?: BillingItemDetailOrderConfiguration[];
+  configurations: BillingItemDetailOrderConfiguration[];
   /**
    * Plan from /order/cart
    *
    */
-  plan?: BillingItemDetailOrderPlan;
+  plan: BillingItemDetailOrderPlan;
 }
 /**
  * List of order actions
@@ -531,12 +531,12 @@ export interface BillingItemDetailOrderConfiguration {
    * Label of the configuration
    *
    */
-  label?: string;
+  label: string;
   /**
    * Value of the configuration
    *
    */
-  value?: string;
+  value: string;
 }
 /**
  * Plan data from order
@@ -561,7 +561,7 @@ export interface BillingItemDetailOrderPlan {
    * Product from /order/cart
    *
    */
-  product?: BillingItemDetailOrderPlanProduct;
+  product: BillingItemDetailOrderPlanProduct;
   /**
    * Quantity ordered
    *
@@ -594,7 +594,7 @@ export interface BillingManualDomainPaymentStatus {
   migratedDomains?: number;
   /**
    */
-  status?: BillingBillingTaskStatusEnum;
+  status: BillingBillingTaskStatusEnum;
 }
 /**
  * Details about an OVH account
@@ -602,28 +602,28 @@ export interface BillingManualDomainPaymentStatus {
 export interface BillingMovement {
   /**
    */
-  amount?: OrderPrice;
+  amount: OrderPrice;
   /**
    */
-  balance?: OrderPrice;
+  balance: OrderPrice;
   /**
    */
-  date?: string;
+  date: string;
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  movementId?: number;
+  movementId: number;
   /**
    */
-  operation?: BillingOvhAccountOperationEnum;
+  operation: BillingOvhAccountOperationEnum;
   /**
    */
-  order?: number;
+  order: number;
   /**
    */
-  previousBalance?: OrderPrice;
+  previousBalance: OrderPrice;
 }
 /**
  * Details about an Order
@@ -637,28 +637,28 @@ export interface BillingOrder {
   expirationDate?: string;
   /**
    */
-  orderId?: number;
+  orderId: number;
   /**
    */
-  password?: string;
+  password: string;
   /**
    */
-  pdfUrl?: string;
+  pdfUrl: string;
   /**
    */
-  priceWithTax?: OrderPrice;
+  priceWithTax: OrderPrice;
   /**
    */
-  priceWithoutTax?: OrderPrice;
+  priceWithoutTax: OrderPrice;
   /**
    */
   retractionDate?: string;
   /**
    */
-  tax?: OrderPrice;
+  tax: OrderPrice;
   /**
    */
-  url?: string;
+  url: string;
 }
 /**
  * Information about a Bill entry
@@ -666,25 +666,25 @@ export interface BillingOrder {
 export interface BillingOrderDetail {
   /**
    */
-  cancelled?: boolean;
+  cancelled: boolean;
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  orderDetailId?: number;
+  orderDetailId: number;
   /**
    */
-  quantity?: string;
+  quantity: string;
   /**
    */
-  totalPrice?: OrderPrice;
+  totalPrice: OrderPrice;
   /**
    */
-  unitPrice?: OrderPrice;
+  unitPrice: OrderPrice;
 }
 /**
  * Details about an OVH account
@@ -695,22 +695,22 @@ export interface BillingOvhAccount {
   alertThreshold?: number;
   /**
    */
-  balance?: OrderPrice;
+  balance: OrderPrice;
   /**
    */
-  canBeCredited?: boolean;
+  canBeCredited: boolean;
   /**
    */
-  isActive?: boolean;
+  isActive: boolean;
   /**
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    */
-  openDate?: string;
+  openDate: string;
   /**
    */
-  ovhAccountId?: string;
+  ovhAccountId: string;
 }
 /**
  * Details about a payment
@@ -718,13 +718,13 @@ export interface BillingOvhAccount {
 export interface BillingPayment {
   /**
    */
-  paymentDate?: string;
+  paymentDate: string;
   /**
    */
   paymentIdentifier?: string;
   /**
    */
-  paymentType?: BillingPaymentMeanEnum;
+  paymentType: BillingPaymentMeanEnum;
 }
 /**
  * All payment means you might have use on an OVH order
@@ -736,16 +736,16 @@ export type BillingPaymentMeanEnum = 'cash' | 'chargeback' | 'cheque' | 'creditA
 export interface BillingPaymentMeanValidation {
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
   submitUrl?: string;
   /**
    */
-  url?: string;
+  url: string;
   /**
    */
-  validationType?: BillingPaymentMeanValidationType;
+  validationType: BillingPaymentMeanValidationType;
 }
 /**
  * All the validation you may have to do
@@ -759,12 +759,12 @@ export interface BillingPaymentMethod {
    * Billing contact ID
    *
    */
-  billingContactId?: number;
+  billingContactId: number;
   /**
    * Creation date of the payment method
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Is this payment method set as the default one
    *
@@ -774,12 +774,12 @@ export interface BillingPaymentMethod {
    * Customer personalized description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Payment method id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Payment sub type
    *
@@ -789,17 +789,17 @@ export interface BillingPaymentMethod {
    * Payment type
    *
    */
-  paymentType?: BillingPaymentMethodPaymentTypeEnum;
+  paymentType: BillingPaymentMethodPaymentTypeEnum;
   /**
    * Public payment method label
    *
    */
-  publicLabel?: string;
+  publicLabel: string;
   /**
    * Payment method status enum
    *
    */
-  status?: BillingPaymentMethodStatusEnum;
+  status: BillingPaymentMethodStatusEnum;
 }
 /**
  * Paypal account info
@@ -807,13 +807,13 @@ export interface BillingPaymentMethod {
 export interface BillingPaypal {
   /**
    */
-  agreementId?: string;
+  agreementId: string;
   /**
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    */
-  defaultPaymentMean?: boolean;
+  defaultPaymentMean: boolean;
   /**
    * Custom description of this account
    *
@@ -821,13 +821,13 @@ export interface BillingPaypal {
   description?: string;
   /**
    */
-  email?: string;
+  email: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  state?: BillingPaypalStateEnum;
+  state: BillingPaypalStateEnum;
 }
 /**
  * State of you paypal account
@@ -839,34 +839,34 @@ export type BillingPaypalStateEnum = 'tooManyFailures' | 'valid';
 export interface BillingRefund {
   /**
    */
-  date?: string;
+  date: string;
   /**
    */
-  orderId?: number;
+  orderId: number;
   /**
    */
   originalBillId?: string;
   /**
    */
-  password?: string;
+  password: string;
   /**
    */
-  pdfUrl?: string;
+  pdfUrl: string;
   /**
    */
-  priceWithTax?: OrderPrice;
+  priceWithTax: OrderPrice;
   /**
    */
-  priceWithoutTax?: OrderPrice;
+  priceWithoutTax: OrderPrice;
   /**
    */
-  refundId?: string;
+  refundId: string;
   /**
    */
-  tax?: OrderPrice;
+  tax: OrderPrice;
   /**
    */
-  url?: string;
+  url: string;
 }
 /**
  * Information about a Bill entry
@@ -874,28 +874,28 @@ export interface BillingRefund {
 export interface BillingRefundDetail {
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  quantity?: string;
+  quantity: string;
   /**
    */
-  reference?: string;
+  reference: string;
   /**
    */
-  refundDetailId?: string;
+  refundDetailId: string;
   /**
    */
-  refundId?: string;
+  refundId: string;
   /**
    */
-  totalPrice?: OrderPrice;
+  totalPrice: OrderPrice;
   /**
    */
-  unitPrice?: OrderPrice;
+  unitPrice: OrderPrice;
 }
 /**
  * Reusable payment mean type
@@ -909,12 +909,12 @@ export interface BillingSlaOperation {
    * Date of the event that led to SLA
    *
    */
-  date?: string;
+  date: string;
   /**
    * Description of the SLA operation for this incident
    *
    */
-  description?: string;
+  description: string;
   /**
    * Date of the end of the SLA
    *
@@ -924,17 +924,17 @@ export interface BillingSlaOperation {
    * SLA identifier
    *
    */
-  id?: number;
+  id: number;
   /**
    * Sla operation name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Date of the start of the SLA
    *
    */
-  startDate?: string;
+  startDate: string;
 }
 /**
  * Describe all services impacted by SLA
@@ -944,22 +944,22 @@ export interface BillingSlaOperationService {
    * Service description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Impacted service name
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * SLA plan application
    *
    */
-  slaApplication?: string;
+  slaApplication: string;
   /**
    * SLA plan description
    *
    */
-  slaPlan?: string;
+  slaPlan: string;
 }
 /**
  * Details about a Voucher account
@@ -967,16 +967,16 @@ export interface BillingSlaOperationService {
 export interface BillingVoucherAccount {
   /**
    */
-  balance?: OrderPrice;
+  balance: OrderPrice;
   /**
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    */
-  openDate?: string;
+  openDate: string;
   /**
    */
-  voucherAccountId?: string;
+  voucherAccountId: string;
 }
 /**
  * Details about a voucher account
@@ -984,28 +984,28 @@ export interface BillingVoucherAccount {
 export interface BillingVoucherMovement {
   /**
    */
-  amount?: OrderPrice;
+  amount: OrderPrice;
   /**
    */
-  balance?: OrderPrice;
+  balance: OrderPrice;
   /**
    */
-  date?: string;
+  date: string;
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  movementId?: number;
+  movementId: number;
   /**
    */
-  operation?: BillingVoucherAccountOperationEnum;
+  operation: BillingVoucherAccountOperationEnum;
   /**
    */
-  order?: number;
+  order: number;
   /**
    */
-  previousBalance?: OrderPrice;
+  previousBalance: OrderPrice;
 }
 /**
  * Details about a withdrawal
@@ -1013,28 +1013,28 @@ export interface BillingVoucherMovement {
 export interface BillingWithdrawal {
   /**
    */
-  amount?: OrderPrice;
+  amount: OrderPrice;
   /**
    */
-  country?: string;
+  country: string;
   /**
    */
-  date?: string;
+  date: string;
   /**
    */
-  orderId?: number;
+  orderId: number;
   /**
    */
-  password?: string;
+  password: string;
   /**
    */
-  pdfUrl?: string;
+  pdfUrl: string;
   /**
    */
-  url?: string;
+  url: string;
   /**
    */
-  withdrawalId?: string;
+  withdrawalId: string;
 }
 /**
  * Information about a Withdrawal entry
@@ -1042,22 +1042,22 @@ export interface BillingWithdrawal {
 export interface BillingWithdrawalDetail {
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  quantity?: string;
+  quantity: string;
   /**
    */
-  totalPrice?: OrderPrice;
+  totalPrice: OrderPrice;
   /**
    */
-  unitPrice?: OrderPrice;
+  unitPrice: OrderPrice;
   /**
    */
-  withdrawalDetailId?: string;
+  withdrawalDetailId: string;
 }
 /**
  * Credit balance
@@ -1067,42 +1067,42 @@ export interface BillingCreditBalance {
    * Balance amount
    *
    */
-  amount?: OrderPrice;
+  amount: OrderPrice;
   /**
    * Balance name
    *
    */
-  balanceName?: string;
+  balanceName: string;
   /**
    * Movement already booked on orders
    *
    */
-  booked?: BillingCreditBalanceBookedMovement[];
+  booked: BillingCreditBalanceBookedMovement[];
   /**
    * Balance creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Movement expiring soon
    *
    */
-  expiring?: BillingCreditBalanceExpiringMovement[];
+  expiring: BillingCreditBalanceExpiringMovement[];
   /**
    * Movement expiring soon
    *
    */
-  expiringSummary?: BillingCreditBalanceExpiringMovement[];
+  expiringSummary: BillingCreditBalanceExpiringMovement[];
   /**
    * Balance last update
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Balance type
    *
    */
-  type?: BillingCreditBalanceType;
+  type: BillingCreditBalanceType;
 }
 /**
  * Movement already booked on orders
@@ -1112,12 +1112,12 @@ export interface BillingCreditBalanceBookedMovement {
    * Movement amount
    *
    */
-  amount?: OrderPrice;
+  amount: OrderPrice;
   /**
    * Order ID
    *
    */
-  orderId?: number;
+  orderId: number;
 }
 /**
  * Movement expiring soon
@@ -1127,27 +1127,27 @@ export interface BillingCreditBalanceExpiringMovement {
    * Movement amount
    *
    */
-  amount?: OrderPrice;
+  amount: OrderPrice;
   /**
    * Movement creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Movement expiration date
    *
    */
-  expirationDate?: string;
+  expirationDate: string;
   /**
    * Movement last update
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Object source of this credit movement
    *
    */
-  sourceObject?: BillingCreditBalanceMovementSubObject;
+  sourceObject: BillingCreditBalanceMovementSubObject;
 }
 /**
  * Credit balance
@@ -1157,17 +1157,17 @@ export interface BillingCreditBalanceMovement {
    * Movement amount
    *
    */
-  amount?: OrderPrice;
+  amount: OrderPrice;
   /**
    * Balance name
    *
    */
-  balanceName?: string;
+  balanceName: string;
   /**
    * Movement creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Movement expiration date
    *
@@ -1177,12 +1177,12 @@ export interface BillingCreditBalanceMovement {
    * Movement last update
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Movement ID
    *
    */
-  movementId?: number;
+  movementId: number;
   /**
    * Order ID associated to this credit movement
    *
@@ -1192,12 +1192,12 @@ export interface BillingCreditBalanceMovement {
    * Object source of this credit movement
    *
    */
-  sourceObject?: BillingCreditBalanceMovementSubObject;
+  sourceObject: BillingCreditBalanceMovementSubObject;
   /**
    * Movement type
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * Balance type
@@ -1245,7 +1245,7 @@ export interface BillingOrderPayWithPaymentMethod {
    * ID of payment method for pay this order
    *
    */
-  id?: number;
+  id: number;
 }
 /**
  * All data needed to use a payment mean
@@ -1253,25 +1253,25 @@ export interface BillingOrderPayWithPaymentMethod {
 export interface BillingOrderPaymentMean {
   /**
    */
-  fee?: number;
+  fee: number;
   /**
    */
   htmlForm?: string;
   /**
    */
-  httpMethod?: string;
+  httpMethod: string;
   /**
    */
   logo?: string;
   /**
    */
-  parameters?: BillingOrderPaymentMeanHttpParameter[];
+  parameters: BillingOrderPaymentMeanHttpParameter[];
   /**
    */
   subType?: string;
   /**
    */
-  url?: string;
+  url: string;
 }
 /**
  * TODO
@@ -1310,12 +1310,12 @@ export interface BillingOrderPaymentMethods {
    * Payment method available on this order
    *
    */
-  available?: PaymentMethodAvailablePaymentMethod[];
+  available: PaymentMethodAvailablePaymentMethod[];
   /**
    * IDs of registered payment method usable on this order
    *
    */
-  registered?: number[];
+  registered: number[];
 }
 /**
  * A registered payment mean
@@ -1323,7 +1323,7 @@ export interface BillingOrderPaymentMethods {
 export interface BillingOrderRegisteredPaymentMean {
   /**
    */
-  paymentMean?: BillingReusablePaymentMeanEnum;
+  paymentMean: BillingReusablePaymentMeanEnum;
 }
 /**
  * Retraction reason type
@@ -1342,7 +1342,7 @@ export interface BillingOrderPaymentMeanHttpParameter {
   choice?: BillingOrderPaymentMeanHttpParameterChoice[];
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
   value?: string;
@@ -1353,10 +1353,10 @@ export interface BillingOrderPaymentMeanHttpParameter {
 export interface BillingOrderPaymentMeanHttpParameterChoice {
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  value?: string;
+  value: string;
 }
 /**
  * Operations an OVH account movement can represent
@@ -1384,10 +1384,10 @@ export type BillingVoucherAccountOperationEnum = 'cancel-credit' | 'cancel-debit
 export interface ComplexTypeSafeKeyValue<T> {
   /**
    */
-  key?: string;
+  key: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * A numeric value tagged with its unit
@@ -1395,10 +1395,10 @@ export interface ComplexTypeSafeKeyValue<T> {
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * Representation of an Address
@@ -1408,17 +1408,17 @@ export interface ContactAddress {
    * City
    *
    */
-  city?: string;
+  city: string;
   /**
    * Country
    *
    */
-  country?: NichandleCountryEnum;
+  country: NichandleCountryEnum;
   /**
    * First line of the address
    *
    */
-  line1?: string;
+  line1: string;
   /**
    * Second line of the address
    *
@@ -1443,7 +1443,7 @@ export interface ContactAddress {
    * Zipcode
    *
    */
-  zip?: string;
+  zip: string;
 }
 /**
  * Representation of a Contact
@@ -1453,7 +1453,7 @@ export interface ContactContact {
    * Address for this contact
    *
    */
-  address?: ContactAddress;
+  address: ContactAddress;
   /**
    * Birth city
    *
@@ -1488,7 +1488,7 @@ export interface ContactContact {
    * Email address
    *
    */
-  email?: string;
+  email: string;
   /**
    * Fax number
    *
@@ -1498,7 +1498,7 @@ export interface ContactContact {
    * First name
    *
    */
-  firstName?: string;
+  firstName: string;
   /**
    * Gender
    *
@@ -1508,22 +1508,22 @@ export interface ContactContact {
    * Contact Identifier
    *
    */
-  id?: number;
+  id: number;
   /**
    * Language
    *
    */
-  language?: NichandleLanguageEnum;
+  language: NichandleLanguageEnum;
   /**
    * Last name
    *
    */
-  lastName?: string;
+  lastName: string;
   /**
    * Legal form of the contact
    *
    */
-  legalForm?: NichandleLegalFormEnum;
+  legalForm: NichandleLegalFormEnum;
   /**
    * National identification number of the contact
    *
@@ -1568,17 +1568,17 @@ export interface ContactFieldInformation {
    * Name of the field concerned by restrictions
    *
    */
-  fieldName?: string;
+  fieldName: string;
   /**
    * Indicates if the field is mandatory when editing
    *
    */
-  mandatory?: boolean;
+  mandatory: boolean;
   /**
    * Indicates if the field can't be edited
    *
    */
-  readOnly?: boolean;
+  readOnly: boolean;
 }
 /**
  * Continents
@@ -1594,27 +1594,27 @@ export type CoreTypesCountryEnum = 'ac' | 'ad' | 'ae' | 'af' | 'ag' | 'ai' | 'al
 export interface DebtBalance {
   /**
    */
-  active?: boolean;
+  active: boolean;
   /**
    * Amount of debts the account has
    *
    */
-  dueAmount?: OrderPrice;
+  dueAmount: OrderPrice;
   /**
    * Amount currently being processed
    *
    */
-  pendingAmount?: OrderPrice;
+  pendingAmount: OrderPrice;
   /**
    * Reserved amount awaiting payment
    *
    */
-  todoAmount?: OrderPrice;
+  todoAmount: OrderPrice;
   /**
    * Unmatured amount for deferred payment term
    *
    */
-  unmaturedAmount?: OrderPrice;
+  unmaturedAmount: OrderPrice;
 }
 /**
  * State of a debt
@@ -1624,20 +1624,20 @@ export interface DebtDebt {
    * Original amount of the debt
    *
    */
-  amount?: OrderPrice;
+  amount: OrderPrice;
   /**
    * Date the debt was created on
    *
    */
-  date?: string;
+  date: string;
   /**
    */
-  debtId?: number;
+  debtId: number;
   /**
    * Amount you still owe for that debt
    *
    */
-  dueAmount?: OrderPrice;
+  dueAmount: OrderPrice;
   /**
    * If specified, the debt will not be recovered before that date
    *
@@ -1647,22 +1647,22 @@ export interface DebtDebt {
    * The order the debt relates to
    *
    */
-  orderId?: number;
+  orderId: number;
   /**
    * Amount currently being processed
    *
    */
-  pendingAmount?: OrderPrice;
+  pendingAmount: OrderPrice;
   /**
    * Reserved amount awaiting payment
    *
    */
-  todoAmount?: OrderPrice;
+  todoAmount: OrderPrice;
   /**
    * Unmatured amount for deferred payment term
    *
    */
-  unmaturedAmount?: OrderPrice;
+  unmaturedAmount: OrderPrice;
 }
 /**
  * Operation that happend on a debt
@@ -1672,25 +1672,25 @@ export interface DebtOperation {
    * Amount of the operation
    *
    */
-  amount?: OrderPrice;
+  amount: OrderPrice;
   /**
    * Date the operation took place on
    *
    */
-  date?: string;
+  date: string;
   /**
    * Order id associated to the deposit
    *
    */
-  depositOrderId?: number;
+  depositOrderId: number;
   /**
    */
-  operationId?: number;
+  operationId: number;
   /**
    * Status of the operation
    *
    */
-  status?: DebtEntryStatusEnum;
+  status: DebtEntryStatusEnum;
   /**
    * Type of movement this operation represents
    *
@@ -1710,7 +1710,7 @@ export interface DebtAssociatedObjectPaymentInfo {
    * Payment mean used for this debt operation
    *
    */
-  paymentType?: BillingPaymentMeanEnum;
+  paymentType: BillingPaymentMeanEnum;
   /**
    * Public payment mean label
    *
@@ -1816,7 +1816,7 @@ export interface DedicatedInstallationTemplateTemplates {
    * list of all language available for this template
    *
    */
-  availableLanguages?: DedicatedTemplateOsLanguageEnum[];
+  availableLanguages: DedicatedTemplateOsLanguageEnum[];
   /**
    * This distribution is new, and although tested and functional, may still display odd behaviour
    *
@@ -1826,12 +1826,12 @@ export interface DedicatedInstallationTemplateTemplates {
    * this template  bit format
    *
    */
-  bitFormat?: DedicatedServerBitFormatEnum;
+  bitFormat: DedicatedServerBitFormatEnum;
   /**
    * category of this template (informative only)
    *
    */
-  category?: DedicatedTemplateOsUsageEnum;
+  category: DedicatedTemplateOsUsageEnum;
   /**
    * Customizable template properties
    *
@@ -1841,7 +1841,7 @@ export interface DedicatedInstallationTemplateTemplates {
    * the default language of this template
    *
    */
-  defaultLanguage?: DedicatedTemplateOsLanguageEnum;
+  defaultLanguage: DedicatedTemplateOsLanguageEnum;
   /**
    * is this distribution deprecated
    *
@@ -1851,22 +1851,22 @@ export interface DedicatedInstallationTemplateTemplates {
    * information about this template
    *
    */
-  description?: string;
+  description: string;
   /**
    * the distribution this template is based on
    *
    */
-  distribution?: string;
+  distribution: string;
   /**
    * this template family type
    *
    */
-  family?: DedicatedTemplateOsTypeEnum;
+  family: DedicatedTemplateOsTypeEnum;
   /**
    * list of all filesystems  available for this template
    *
    */
-  filesystems?: DedicatedTemplateOsFileSystemEnum[];
+  filesystems: DedicatedTemplateOsFileSystemEnum[];
   /**
    * This distribution supports hardware raid configuration through the OVH API
    *
@@ -1896,7 +1896,7 @@ export interface DedicatedInstallationTemplateTemplates {
    * This distribution supports RTM software
    *
    */
-  supportsRTM?: boolean;
+  supportsRTM: boolean;
   /**
    * This distribution supports the microsoft SQL server
    *
@@ -1911,7 +1911,7 @@ export interface DedicatedInstallationTemplateTemplates {
    * This template name
    *
    */
-  templateName?: string;
+  templateName: string;
 }
 /**
  * Hardware RAID defined in this partitioning scheme
@@ -1921,22 +1921,22 @@ export interface DedicatedInstallationTemplateHardwareRaid {
    * Disk list
    *
    */
-  disks?: string[];
+  disks: string[];
   /**
    * RAID mode
    *
    */
-  mode?: DedicatedTemplateOsHardwareRaidEnum;
+  mode: DedicatedTemplateOsHardwareRaidEnum;
   /**
    * Hardware RAID name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Specifies the creation order of the hardware RAID
    *
    */
-  step?: number;
+  step: number;
 }
 /**
  * Partitioning schemes available on this template
@@ -1946,12 +1946,12 @@ export interface DedicatedInstallationTemplateTemplatePartitioningSchemes {
    * name of this partitioning scheme
    *
    */
-  name?: string;
+  name: string;
   /**
    * on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications)
    *
    */
-  priority?: number;
+  priority: number;
 }
 /**
  *  Partitions defined in this partitioning scheme
@@ -1961,17 +1961,17 @@ export interface DedicatedInstallationTemplateTemplatePartitions {
    * Partition filesytem
    *
    */
-  filesystem?: DedicatedTemplateOsFileSystemEnum;
+  filesystem: DedicatedTemplateOsFileSystemEnum;
   /**
    * partition mount point
    *
    */
-  mountpoint?: string;
+  mountpoint: string;
   /**
    * specifies the creation order of the partition on the disk
    *
    */
-  order?: number;
+  order: number;
   /**
    * raid partition type
    *
@@ -1981,10 +1981,10 @@ export interface DedicatedInstallationTemplateTemplatePartitions {
    * size of partition in Mb, 0 => rest of the space
    *
    */
-  size?: ComplexTypeUnitAndValue<number>;
+  size: ComplexTypeUnitAndValue<number>;
   /**
    */
-  type?: DedicatedTemplatePartitionTypeEnum;
+  type: DedicatedTemplatePartitionTypeEnum;
   /**
    * The volume name needed for proxmox distribution
    *
@@ -2027,17 +2027,17 @@ export interface DomainOperationStep {
    * Description of the step
    *
    */
-  description?: string;
+  description: string;
   /**
    * Execution time of the step
    *
    */
-  executionDuration?: number;
+  executionDuration: number;
   /**
    * Name of the step
    *
    */
-  step?: string;
+  step: string;
 }
 /**
  * Representation of country and continent from visitor IP
@@ -2047,17 +2047,17 @@ export interface GeolocationContinentCountryLocation {
    * Continent
    *
    */
-  continent?: CoreTypesContinentEnum;
+  continent: CoreTypesContinentEnum;
   /**
    * Country iso code
    *
    */
-  countryCode?: CoreTypesCountryEnum;
+  countryCode: CoreTypesCountryEnum;
   /**
    * The IP address processed, the user's origin one
    *
    */
-  ip?: string;
+  ip: string;
 }
 /**
  * All HTTP methods available
@@ -2071,17 +2071,17 @@ export interface InsightAccess {
    * Access token
    *
    */
-  access?: string;
+  access: string;
   /**
    * Token creation date
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * Token expiration date
    *
    */
-  expireAt?: string;
+  expireAt: string;
 }
 /**
  * Consent campaign
@@ -2091,17 +2091,17 @@ export interface MeConsentCampaign {
    * Campaign description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Campaign name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Campaign type
    *
    */
-  type?: MeConsentCampaignTypeEnum;
+  type: MeConsentCampaignTypeEnum;
 }
 /**
  * Campaign type
@@ -2115,22 +2115,22 @@ export interface MeConsentConsent {
    * Campaign name
    *
    */
-  campaign?: string;
+  campaign: string;
   /**
    * Consent decisions history for this campaign
    *
    */
-  history?: MeConsentDecision[];
+  history: MeConsentDecision[];
   /**
    * Campaign type
    *
    */
-  type?: MeConsentCampaignTypeEnum;
+  type: MeConsentCampaignTypeEnum;
   /**
    * Current consent value
    *
    */
-  value?: boolean;
+  value: boolean;
 }
 /**
  * Customer consent decision
@@ -2140,12 +2140,12 @@ export interface MeConsentDecision {
    * Consent decision datetime
    *
    */
-  timestamp?: string;
+  timestamp: string;
   /**
    * Consent decision value
    *
    */
-  value?: boolean;
+  value: boolean;
 }
 /**
  * Price with currency and amount in micro-cents
@@ -2153,16 +2153,16 @@ export interface MeConsentDecision {
 export interface MeConsumptionPrice {
   /**
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  currencyCode: OrderCurrencyCodeEnum;
   /**
    */
-  text?: string;
+  text: string;
   /**
    */
-  value?: number;
+  value: number;
   /**
    */
-  valueInUcents?: number;
+  valueInUcents: number;
 }
 /**
  * List of consumptions recorded in a range
@@ -2172,7 +2172,7 @@ export interface MeConsumptionTransaction {
    * Begin date
    *
    */
-  beginDate?: string;
+  beginDate: string;
   /**
    * Creation date
    *
@@ -2182,7 +2182,7 @@ export interface MeConsumptionTransaction {
    * List of product plan code consumption
    *
    */
-  elements?: MeConsumptionTransactionElement[];
+  elements: MeConsumptionTransactionElement[];
   /**
    * End date
    *
@@ -2202,12 +2202,12 @@ export interface MeConsumptionTransaction {
    * Consumption amount price
    *
    */
-  price?: MeConsumptionPrice;
+  price: MeConsumptionPrice;
   /**
    * Service ID
    *
    */
-  serviceId?: number;
+  serviceId: number;
 }
 /**
  * Element of consumption for resource
@@ -2217,27 +2217,27 @@ export interface MeConsumptionTransactionElement {
    * List of consumption details for this planCode
    *
    */
-  details?: MeConsumptionTransactionElementDetail[];
+  details: MeConsumptionTransactionElementDetail[];
   /**
    * Identifier of the offer
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Family of the offer
    *
    */
-  planFamily?: string;
+  planFamily: string;
   /**
    * Consumption amount price
    *
    */
-  price?: MeConsumptionPrice;
+  price: MeConsumptionPrice;
   /**
    * Consumption quantity
    *
    */
-  quantity?: number;
+  quantity: number;
 }
 /**
  * Element of consumption for resource
@@ -2247,12 +2247,12 @@ export interface MeConsumptionTransactionElementDetail {
    * Consumption amount price
    *
    */
-  price?: MeConsumptionPrice;
+  price: MeConsumptionPrice;
   /**
    * Consumption quantity
    *
    */
-  quantity?: number;
+  quantity: number;
   /**
    * Unique ID associated to one service element
    *
@@ -2267,22 +2267,22 @@ export interface MePaymentMethodAvailablePaymentMethod {
    * Payment method type icon
    *
    */
-  icon?: MePaymentMethodIcon;
+  icon: MePaymentMethodIcon;
   /**
    * Payment method type is possible to pay in oneshot mode ?
    *
    */
-  oneshot?: boolean;
+  oneshot: boolean;
   /**
    * Payment method type
    *
    */
-  paymentType?: string;
+  paymentType: string;
   /**
    * Payment method type is registerable ?
    *
    */
-  registerable?: boolean;
+  registerable: boolean;
 }
 /**
  * Callback URL's to register a new payment method
@@ -2292,27 +2292,27 @@ export interface MePaymentMethodCallbackUrl {
    * URL when customer cancels the action
    *
    */
-  cancel?: string;
+  cancel: string;
   /**
    * URL when registration encounters an error
    *
    */
-  error?: string;
+  error: string;
   /**
    * URL when registration failed
    *
    */
-  failure?: string;
+  failure: string;
   /**
    * URL when payment method is in validation
    *
    */
-  pending?: string;
+  pending: string;
   /**
    * URL when payment method registration success
    *
    */
-  success?: string;
+  success: string;
 }
 /**
  * Icon
@@ -2342,12 +2342,12 @@ export interface MePaymentMethodPaymentMethod {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Creation date
    *
    */
-  default?: boolean;
+  default: boolean;
   /**
    * Custom customer description
    *
@@ -2362,7 +2362,7 @@ export interface MePaymentMethodPaymentMethod {
    * Payment method type icon
    *
    */
-  icon?: MePaymentMethodIcon;
+  icon: MePaymentMethodIcon;
   /**
    * Payment method public label
    *
@@ -2372,7 +2372,7 @@ export interface MePaymentMethodPaymentMethod {
    * Last update date
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Payment mean ID associated to this payment method
    *
@@ -2382,7 +2382,7 @@ export interface MePaymentMethodPaymentMethod {
    * Payment method ID
    *
    */
-  paymentMethodId?: number;
+  paymentMethodId: number;
   /**
    * Payment method sub-type
    *
@@ -2392,12 +2392,12 @@ export interface MePaymentMethodPaymentMethod {
    * Payment method type
    *
    */
-  paymentType?: string;
+  paymentType: string;
   /**
    * Payment method status
    *
    */
-  status?: MePaymentMethodPaymentMethodStatus;
+  status: MePaymentMethodPaymentMethodStatus;
 }
 /**
  * Payment method status enum
@@ -2411,7 +2411,7 @@ export interface MePaymentMethodRegisterValidationResult {
    * Register new payment method ID
    *
    */
-  paymentMethodId?: number;
+  paymentMethodId: number;
   /**
    * Register validation URL
    *
@@ -2421,7 +2421,7 @@ export interface MePaymentMethodRegisterValidationResult {
    * Register validation type
    *
    */
-  validationType?: MePaymentMethodRegisterValidationType;
+  validationType: MePaymentMethodRegisterValidationType;
 }
 /**
  * Register validation type enum
@@ -2435,27 +2435,27 @@ export interface MePaymentMethodTransaction {
    * Transaction amount
    *
    */
-  amount?: OrderPrice;
+  amount: OrderPrice;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Transaction status
    *
    */
-  status?: MePaymentMethodTransactionStatus;
+  status: MePaymentMethodTransactionStatus;
   /**
    * Transaction ID
    *
    */
-  transactionId?: number;
+  transactionId: number;
   /**
    * Transaction type
    *
    */
-  type?: MePaymentMethodTransactionType;
+  type: MePaymentMethodTransactionType;
 }
 /**
  * Payment transaction status enum
@@ -2473,12 +2473,12 @@ export interface NichandleAuthenticationCertificate {
    * Certificate's expiration
    *
    */
-  expiration?: string;
+  expiration: string;
   /**
    * Certificate's subject
    *
    */
-  subject?: string;
+  subject: string;
 }
 /**
  * A group
@@ -2488,32 +2488,32 @@ export interface NichandleAuthenticationGroup {
    * Creation date of this group
    *
    */
-  creation?: string;
+  creation: string;
   /**
    * True if it is an default group. This kind of group can't be edited or deleted
    *
    */
-  defaultGroup?: boolean;
+  defaultGroup: boolean;
   /**
    * Group's description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Last update of this group
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Group's name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Group's role
    *
    */
-  role?: NichandleAuthenticationRoleEnum;
+  role: NichandleAuthenticationRoleEnum;
 }
 /**
  * A SAML 2.0 provider
@@ -2523,27 +2523,27 @@ export interface NichandleAuthenticationProvider {
    * Creation date of the identity provider
    *
    */
-  creation?: string;
+  creation: string;
   /**
    * SAML Group attribute name
    *
    */
-  groupAttributeName?: string;
+  groupAttributeName: string;
   /**
    * IdP's signing certificate
    *
    */
-  idpSigningCertificate?: NichandleAuthenticationCertificate;
+  idpSigningCertificate: NichandleAuthenticationCertificate;
   /**
    * Last update of the identity provider
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * IdP's Single Sign On Service Url
    *
    */
-  ssoServiceUrl?: string;
+  ssoServiceUrl: string;
 }
 /**
  * Permission given on the account
@@ -2557,17 +2557,17 @@ export interface NichandleBillingCapacities {
    * Indicates if the debt system has been enabled on the customer account
    *
    */
-  canUseDebtSystem?: boolean;
+  canUseDebtSystem: boolean;
   /**
    * Indicates customer's ability to use postal mailing for invoices
    *
    */
-  canUsePostalMailForInvoices?: boolean;
+  canUsePostalMailForInvoices: boolean;
   /**
    * Indicates the mandatory nature of having a valid payment method
    *
    */
-  requiredPaymentMethod?: NichandleRequiredPaymentMethodEnum;
+  requiredPaymentMethod: NichandleRequiredPaymentMethodEnum;
 }
 /**
  * Countries a nichandle can choose
@@ -2581,12 +2581,12 @@ export interface NichandleCurrency {
    * Currency code
    *
    */
-  code?: string;
+  code: string;
   /**
    * Currency symbol
    *
    */
-  symbol?: string;
+  symbol: string;
 }
 /**
  * Login restrictions on a development version of the Manager
@@ -2596,7 +2596,7 @@ export interface NichandleDeveloperModeRestriction {
    * Allow login on your account on a development version of the Manager
    *
    */
-  enabled?: boolean;
+  enabled: boolean;
 }
 /**
  * Domain tasks
@@ -2606,17 +2606,17 @@ export interface NichandleDomainTask {
    * Can accelerate the task
    *
    */
-  canAccelerate?: boolean;
+  canAccelerate: boolean;
   /**
    * Can cancel the task
    *
    */
-  canCancel?: boolean;
+  canCancel: boolean;
   /**
    * Can relaunch the task
    *
    */
-  canRelaunch?: boolean;
+  canRelaunch: boolean;
   /**
    * Comment about the task
    *
@@ -2626,12 +2626,12 @@ export interface NichandleDomainTask {
    * Creation date of the task
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Domain of the task
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Done date of the task
    *
@@ -2641,27 +2641,27 @@ export interface NichandleDomainTask {
    * Function of the task
    *
    */
-  function?: DomainNicOperationFunctionEnum;
+  function: DomainNicOperationFunctionEnum;
   /**
    * Id of the task
    *
    */
-  id?: number;
+  id: number;
   /**
    * Last update date of the task
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Status of the task
    *
    */
-  status?: DomainOperationStatusEnum;
+  status: DomainOperationStatusEnum;
   /**
    * Todo date of the task
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * Domain operation argument
@@ -2691,7 +2691,7 @@ export interface NichandleDomainTaskArgument {
    * Key of the argument
    *
    */
-  key?: string;
+  key: string;
   /**
    * Maximum of the content length that you can send
    *
@@ -2706,7 +2706,7 @@ export interface NichandleDomainTaskArgument {
    * True if the argument is in read only
    *
    */
-  readOnly?: boolean;
+  readOnly: boolean;
   /**
    * Template of the content
    *
@@ -2716,7 +2716,7 @@ export interface NichandleDomainTaskArgument {
    * Type of the argument
    *
    */
-  type?: string;
+  type: string;
   /**
    * Value of the argument
    *
@@ -2731,7 +2731,7 @@ export interface NichandleDomainTaskProgressBar {
    * Current step of the operation
    *
    */
-  currentStep?: DomainOperationStep;
+  currentStep: DomainOperationStep;
   /**
    * The estimated end date of the task
    *
@@ -2751,17 +2751,17 @@ export interface NichandleDomainTaskProgressBar {
    * Progress percentage of the task
    *
    */
-  progress?: number;
+  progress: number;
   /**
    * Action possible on task
    *
    */
-  taskActions?: DomainOperationActionEnum[];
+  taskActions: DomainOperationActionEnum[];
   /**
    * The status of the task
    *
    */
-  taskStatus?: DomainOperationStatusEnum;
+  taskStatus: DomainOperationStatusEnum;
 }
 /**
  * All genders a person can choose
@@ -2779,22 +2779,22 @@ export interface NichandleIpRestriction {
    * The Id of the restriction
    *
    */
-  id?: number;
+  id: number;
   /**
    * An IP range where we will apply the rule
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * Accept or deny IP access
    *
    */
-  rule?: NichandleAccessRestrictionIpRestrictionRuleEnum;
+  rule: NichandleAccessRestrictionIpRestrictionRuleEnum;
   /**
    * Send an email if someone try to access with this IP address
    *
    */
-  warning?: boolean;
+  warning: boolean;
 }
 /**
  * IP Restriction default rule
@@ -2804,12 +2804,12 @@ export interface NichandleIpRestrictionDefaultRule {
    * Accept or deny access
    *
    */
-  rule?: NichandleAccessRestrictionIpRestrictionRuleEnum;
+  rule: NichandleAccessRestrictionIpRestrictionRuleEnum;
   /**
    * Send an email if someone try to access
    *
    */
-  warning?: boolean;
+  warning: boolean;
 }
 /**
  * Details about an IP block organisation
@@ -2817,31 +2817,31 @@ export interface NichandleIpRestrictionDefaultRule {
 export interface NichandleIpv4Org {
   /**
    */
-  abuse_mailbox?: string;
+  abuse_mailbox: string;
   /**
    */
-  address?: string;
+  address: string;
   /**
    */
-  city?: string;
+  city: string;
   /**
    */
-  country?: NichandleCountryEnum;
+  country: NichandleCountryEnum;
   /**
    */
-  firstname?: string;
+  firstname: string;
   /**
    */
-  lastname?: string;
+  lastname: string;
   /**
    */
-  organisationId?: string;
+  organisationId: string;
   /**
    */
-  phone?: string;
+  phone: string;
   /**
    */
-  registry?: NichandleIpRegistryEnum;
+  registry: NichandleIpRegistryEnum;
   /**
    */
   state?: string;
@@ -2865,12 +2865,12 @@ export interface NichandleManagerPreference {
    * This preference key
    *
    */
-  key?: string;
+  key: string;
   /**
    * This preference value
    *
    */
-  value?: string;
+  value: string;
 }
 /**
  * Auto renewal information
@@ -2880,7 +2880,7 @@ export interface NichandleNicAutorenewInfos {
    * Renewal active or not
    *
    */
-  active?: boolean;
+  active: boolean;
   /**
    * give the last renew
    *
@@ -2890,7 +2890,7 @@ export interface NichandleNicAutorenewInfos {
    * give the renewal day
    *
    */
-  renewDay?: number;
+  renewDay: number;
 }
 /**
  * Details about your OVH identifier
@@ -2919,12 +2919,12 @@ export interface NichandleNichandle {
   corporationType?: string;
   /**
    */
-  country?: NichandleCountryEnum;
+  country: NichandleCountryEnum;
   /**
    * Customer currency
    *
    */
-  currency?: NichandleCurrency;
+  currency: NichandleCurrency;
   /**
    * Your customer code (a numerical value used for identification when contacting support via phone call)
    *
@@ -2932,7 +2932,7 @@ export interface NichandleNichandle {
   customerCode?: string;
   /**
    */
-  email?: string;
+  email: string;
   /**
    */
   fax?: string;
@@ -2941,10 +2941,13 @@ export interface NichandleNichandle {
   firstname?: string;
   /**
    */
+  italianSDI?: string;
+  /**
+   */
   language?: NichandleLanguageEnum;
   /**
    */
-  legalform?: NichandleLegalFormEnum;
+  legalform: NichandleLegalFormEnum;
   /**
    */
   name?: string;
@@ -2953,16 +2956,16 @@ export interface NichandleNichandle {
   nationalIdentificationNumber?: string;
   /**
    */
-  nichandle?: string;
+  nichandle: string;
   /**
    */
   organisation?: string;
   /**
    */
-  ovhCompany?: NichandleOvhCompanyEnum;
+  ovhCompany: NichandleOvhCompanyEnum;
   /**
    */
-  ovhSubsidiary?: NichandleOvhSubsidiaryEnum;
+  ovhSubsidiary: NichandleOvhSubsidiaryEnum;
   /**
    */
   phone?: string;
@@ -2977,7 +2980,7 @@ export interface NichandleNichandle {
   spareEmail?: string;
   /**
    */
-  state?: NichandleStateEnum;
+  state: NichandleStateEnum;
   /**
    */
   vat?: string;
@@ -2993,22 +2996,22 @@ export interface NichandleNichandleSmsNotification {
    * Receive notification for abuse reports
    *
    */
-  abuse?: boolean;
+  abuse: boolean;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * The phone number you want to receive notification on
    *
    */
-  phoneNumber?: string;
+  phoneNumber: string;
   /**
    * Status of your notification
    *
    */
-  status?: NichandleNotificationStatusEnum;
+  status: NichandleNotificationStatusEnum;
   /**
    * Last update date
    *
@@ -3043,7 +3046,7 @@ export interface NichandleSubAccount {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * This sub-account description
    *
@@ -3053,7 +3056,7 @@ export interface NichandleSubAccount {
    * This sub-account id
    *
    */
-  id?: number;
+  id: number;
 }
 /**
  * Credentials to interact with the api on behalf of the sub-account
@@ -3063,7 +3066,7 @@ export interface NichandleSubAccountConsumerKey {
    * The consumer key
    *
    */
-  consumerKey?: string;
+  consumerKey: string;
 }
 /**
  * List of all OVH things you can subscribe to
@@ -3078,7 +3081,7 @@ export interface NichandleSubscription {
    * The type of subscription
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * A user
@@ -3088,42 +3091,42 @@ export interface NichandleUser {
    * Creation date of this user
    *
    */
-  creation?: string;
+  creation: string;
   /**
    * User's description
    *
    */
-  description?: string;
+  description: string;
   /**
    * User's email
    *
    */
-  email?: string;
+  email: string;
   /**
    * User's group
    *
    */
-  group?: string;
+  group: string;
   /**
    * Last update of this user
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * User's login suffix
    *
    */
-  login?: string;
+  login: string;
   /**
    * When the user changed his password for the last time
    *
    */
-  passwordLastUpdate?: string;
+  passwordLastUpdate: string;
   /**
    * Current user's status
    *
    */
-  status?: NichandleUserStatus;
+  status: NichandleUserStatus;
 }
 /**
  * Status of a User
@@ -3137,22 +3140,22 @@ export interface NichandleVipStatus {
    * Is account VIP for Cloud Universe
    *
    */
-  cloud?: boolean;
+  cloud: boolean;
   /**
    * Is account VIP for Dedicated Universe
    *
    */
-  dedicated?: boolean;
+  dedicated: boolean;
   /**
    * Is account VIP for Telecom Universe
    *
    */
-  telecom?: boolean;
+  telecom: boolean;
   /**
    * Is account VIP for Web Universe
    *
    */
-  web?: boolean;
+  web: boolean;
 }
 /**
  * Voucher Status and Information
@@ -3162,7 +3165,7 @@ export interface NichandleVoucherStatus {
    * Is voucher valid
    *
    */
-  validity?: boolean;
+  validity: boolean;
 }
 /**
  * Accept or deny IP access
@@ -3176,7 +3179,7 @@ export interface NichandleAccessRestrictionSOTPAccount {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Last used date
    *
@@ -3186,12 +3189,12 @@ export interface NichandleAccessRestrictionSOTPAccount {
    * Number of remaining codes
    *
    */
-  remaining?: number;
+  remaining: number;
   /**
    * Status of this account
    *
    */
-  status?: NichandleAccessRestrictionSOTPStatusEnum;
+  status: NichandleAccessRestrictionSOTPStatusEnum;
 }
 /**
  * Describe SOTP secret keys
@@ -3199,7 +3202,7 @@ export interface NichandleAccessRestrictionSOTPAccount {
 export interface NichandleAccessRestrictionSOTPSecret {
   /**
    */
-  codes?: string[];
+  codes: string[];
 }
 /**
  * Status of SOTP account
@@ -3211,7 +3214,7 @@ export type NichandleAccessRestrictionSOTPStatusEnum = 'disabled' | 'enabled' | 
 export interface NichandleAccessRestrictionSOTPValidate {
   /**
    */
-  remainingCodes?: number;
+  remainingCodes: number;
 }
 /**
  * Sms Two-Factor Authentication
@@ -3221,17 +3224,17 @@ export interface NichandleAccessRestrictionSmsAccount {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Description of this phone
    *
    */
-  description?: string;
+  description: string;
   /**
    * The Id of the restriction
    *
    */
-  id?: number;
+  id: number;
   /**
    * Last used date
    *
@@ -3241,12 +3244,12 @@ export interface NichandleAccessRestrictionSmsAccount {
    * Associated phone number
    *
    */
-  phoneNumber?: string;
+  phoneNumber: string;
   /**
    * Status of this account
    *
    */
-  status?: NichandleAccessRestrictionSmsStatusEnum;
+  status: NichandleAccessRestrictionSmsStatusEnum;
 }
 /**
  * Send secret code
@@ -3254,7 +3257,7 @@ export interface NichandleAccessRestrictionSmsAccount {
 export interface NichandleAccessRestrictionSmsCode {
   /**
    */
-  challenge?: string;
+  challenge: string;
 }
 /**
  * Describe secret key
@@ -3262,10 +3265,10 @@ export interface NichandleAccessRestrictionSmsCode {
 export interface NichandleAccessRestrictionSmsSecret {
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  remainingTry?: number;
+  remainingTry: number;
 }
 /**
  * Status of the Sms account
@@ -3279,17 +3282,17 @@ export interface NichandleAccessRestrictionTOTPAccount {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Description of this TOTP
    *
    */
-  description?: string;
+  description: string;
   /**
    * The Id of the restriction
    *
    */
-  id?: number;
+  id: number;
   /**
    * Last used date
    *
@@ -3299,7 +3302,7 @@ export interface NichandleAccessRestrictionTOTPAccount {
    * Status of this account
    *
    */
-  status?: NichandleAccessRestrictionTOTPStatusEnum;
+  status: NichandleAccessRestrictionTOTPStatusEnum;
 }
 /**
  * Describe TOTP secret keys
@@ -3307,13 +3310,13 @@ export interface NichandleAccessRestrictionTOTPAccount {
 export interface NichandleAccessRestrictionTOTPSecret {
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  qrcodeHelper?: string;
+  qrcodeHelper: string;
   /**
    */
-  secret?: string;
+  secret: string;
 }
 /**
  * Status of TOTP account
@@ -3327,17 +3330,17 @@ export interface NichandleAccessRestrictionU2FAccount {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Description of this U2F key
    *
    */
-  description?: string;
+  description: string;
   /**
    * The Id of the restriction
    *
    */
-  id?: number;
+  id: number;
   /**
    * Last used date
    *
@@ -3347,7 +3350,7 @@ export interface NichandleAccessRestrictionU2FAccount {
    * Status of this account
    *
    */
-  status?: NichandleAccessRestrictionU2FStatusEnum;
+  status: NichandleAccessRestrictionU2FStatusEnum;
 }
 /**
  * U2F Register Request
@@ -3355,13 +3358,13 @@ export interface NichandleAccessRestrictionU2FAccount {
 export interface NichandleAccessRestrictionU2FRegisterChallenge {
   /**
    */
-  applicationId?: string;
+  applicationId: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  request?: NichandleAccessRestrictionU2FRegistrationRequest;
+  request: NichandleAccessRestrictionU2FRegistrationRequest;
 }
 /**
  * Describe U2F RegistrationRequest
@@ -3369,10 +3372,10 @@ export interface NichandleAccessRestrictionU2FRegisterChallenge {
 export interface NichandleAccessRestrictionU2FRegistrationRequest {
   /**
    */
-  challenge?: string;
+  challenge: string;
   /**
    */
-  version?: string;
+  version: string;
 }
 /**
  * U2F Register Request
@@ -3380,10 +3383,10 @@ export interface NichandleAccessRestrictionU2FRegistrationRequest {
 export interface NichandleAccessRestrictionU2FSignChallenge {
   /**
    */
-  applicationId?: string;
+  applicationId: string;
   /**
    */
-  request?: NichandleAccessRestrictionU2FSignRequest;
+  request: NichandleAccessRestrictionU2FSignRequest;
 }
 /**
  * Describe U2F SignRequest
@@ -3391,13 +3394,13 @@ export interface NichandleAccessRestrictionU2FSignChallenge {
 export interface NichandleAccessRestrictionU2FSignRequest {
   /**
    */
-  challenge?: string;
+  challenge: string;
   /**
    */
-  keyHandle?: string;
+  keyHandle: string;
   /**
    */
-  version?: string;
+  version: string;
 }
 /**
  * Status of U2F account
@@ -3428,7 +3431,7 @@ export interface NichandleContactChangeTask {
    * Contacts to be changed
    *
    */
-  contactTypes?: NichandleChangeContactContactTypeEnum[];
+  contactTypes: NichandleChangeContactContactTypeEnum[];
   /**
    * Date at which the contact change has been finished
    *
@@ -3438,15 +3441,15 @@ export interface NichandleContactChangeTask {
    * Date at which the request has been made
    *
    */
-  dateRequest?: string;
+  dateRequest: string;
   /**
    * Account to change contact from
    *
    */
-  fromAccount?: string;
+  fromAccount: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * The service on which the task runs
    *
@@ -3456,12 +3459,12 @@ export interface NichandleContactChangeTask {
    * Current state of the request
    *
    */
-  state?: NichandleChangeContactTaskStateEnum;
+  state: NichandleChangeContactTaskStateEnum;
   /**
    * Account to change contact to
    *
    */
-  toAccount?: string;
+  toAccount: string;
 }
 /**
  * List of documents added on your account
@@ -3471,7 +3474,7 @@ export interface NichandleDocumentDocument {
    * Document creation
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Document expiration
    *
@@ -3481,32 +3484,32 @@ export interface NichandleDocumentDocument {
    * URL used to get document
    *
    */
-  getUrl?: string;
+  getUrl: string;
   /**
    * Document id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Document name
    *
    */
-  name?: string;
+  name: string;
   /**
    * URL used to put document
    *
    */
-  putUrl?: string;
+  putUrl: string;
   /**
    * Document size (in bytes)
    *
    */
-  size?: number;
+  size: number;
   /**
    * Document tags
    *
    */
-  tags?: ComplexTypeSafeKeyValue<string>[];
+  tags: ComplexTypeSafeKeyValue<string>[];
   /**
    * Document validation
    *
@@ -3526,20 +3529,20 @@ export interface NichandleEmailChangeTask {
    * Creation date of that request
    *
    */
-  dateRequest?: string;
+  dateRequest: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * The email address to change for
    *
    */
-  newEmail?: string;
+  newEmail: string;
   /**
    * Current state of the request
    *
    */
-  state?: NichandleChangeEmailTaskStateEnum;
+  state: NichandleChangeEmailTaskStateEnum;
 }
 /**
  * Email notification
@@ -3549,22 +3552,22 @@ export interface NichandleEmailNotification {
    * This email body
    *
    */
-  body?: string;
+  body: string;
   /**
    * This email date
    *
    */
-  date?: string;
+  date: string;
   /**
    * This email Id
    *
    */
-  id?: number;
+  id: number;
   /**
    * This email subject
    *
    */
-  subject?: string;
+  subject: string;
 }
 /**
  * Customer IPXE scripts
@@ -3574,12 +3577,12 @@ export interface NichandleIpxe {
    * Name of this script
    *
    */
-  name?: string;
+  name: string;
   /**
    * Content of your IPXE script
    *
    */
-  script?: string;
+  script: string;
 }
 /**
  * Customer public SSH key, can be used for rescue netboot or server access after reinstallation
@@ -3589,17 +3592,17 @@ export interface NichandleSshKey {
    * True when this public SSH key is used for rescue mode and reinstallations
    *
    */
-  default?: boolean;
+  default: boolean;
   /**
    * ASCII encoded public SSH key
    *
    */
-  key?: string;
+  key: string;
   /**
    * Name of this public SSH key
    *
    */
-  keyName?: string;
+  keyName: string;
 }
 /**
  * 
@@ -3611,13 +3614,13 @@ export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL
 export interface OrderPrice {
   /**
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  currencyCode: OrderCurrencyCodeEnum;
   /**
    */
-  text?: string;
+  text: string;
   /**
    */
-  value?: number;
+  value: number;
 }
 /**
  * Available payment methods
@@ -3627,22 +3630,22 @@ export interface PaymentMethodAvailablePaymentMethod {
    * Payment method type icon
    *
    */
-  icon?: PaymentMethodIcon;
+  icon: PaymentMethodIcon;
   /**
    * Payment method type is possible to pay in oneshot mode ?
    *
    */
-  oneshot?: boolean;
+  oneshot: boolean;
   /**
    * Payment method type
    *
    */
-  paymentType?: string;
+  paymentType: string;
   /**
    * Payment method type is registerable ?
    *
    */
-  registerable?: boolean;
+  registerable: boolean;
 }
 /**
  * Payment icon
@@ -3667,7 +3670,7 @@ export interface TelephonyBillingSettings {
    * Renew is done by billing contact instead of billing account
    *
    */
-  renewByBillingContact?: boolean;
+  renewByBillingContact: boolean;
 }
 /**
  * Default IP restriction of a VoIP line
@@ -3675,17 +3678,17 @@ export interface TelephonyBillingSettings {
 export interface TelephonyDefaultIpRestriction {
   /**
    */
-  id?: number;
+  id: number;
   /**
    * The IPv4 subnet you want to allow
    *
    */
-  subnet?: string;
+  subnet: string;
   /**
    * The protocol you want to restrict (sip/mgcp)
    *
    */
-  type?: TelephonyProtocolEnum;
+  type: TelephonyProtocolEnum;
 }
 /**
  * Line description policies settings
@@ -3695,12 +3698,12 @@ export interface TelephonyLineDescriptionSettings {
    * Line's description is displayed on bills
    *
    */
-  displayOnBill?: boolean;
+  displayOnBill: boolean;
   /**
    * Line's description is displayed on incoming calls
    *
    */
-  displayOnIncomingCall?: boolean;
+  displayOnIncomingCall: boolean;
 }
 /**
  * Custom domains of your fax services
@@ -3710,10 +3713,10 @@ export interface TelephonyMailDomain2Service {
    * The custom domain of your fax services
    *
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  id?: number;
+  id: number;
 }
 /**
  * Phone protocol
@@ -3727,12 +3730,12 @@ export interface TelephonySettings {
    * Billing policies settings
    *
    */
-  billingPolicies?: TelephonyBillingSettings;
+  billingPolicies: TelephonyBillingSettings;
   /**
    * Line description policies settings
    *
    */
-  lineDescriptionPolicies?: TelephonyLineDescriptionSettings;
+  lineDescriptionPolicies: TelephonyLineDescriptionSettings;
 }
 /**
  * Available contact fields
@@ -3746,12 +3749,12 @@ export interface XdslSetting {
    * Send the modem as soon as possible, do not wait the xdsl line to be active
    *
    */
-  resellerFastModemShipping?: boolean;
+  resellerFastModemShipping: boolean;
   /**
    * Let the modem with vendor configuration. It prevent to apply the config managed by ovh manager
    *
    */
-  resellerModemBasicConfig?: boolean;
+  resellerModemBasicConfig: boolean;
 }
 type PathsMeGET = '/me' | 
 '/me/accessRestriction/backupCode' | 

@@ -7,12 +7,12 @@ export interface ComplexTypeRange<T> {
    * Start point of the range
    *
    */
-  from?: T;
+  from: T;
   /**
    * End point of the range
    *
    */
-  to?: T;
+  to: T;
 }
 /**
  * ISO country codes
@@ -26,27 +26,27 @@ export interface IpAntiphishing {
    * Date of the event
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Internal ID of the phishing entry
    *
    */
-  id?: number;
+  id: number;
   /**
    * IP address hosting the phishing URL
    *
    */
-  ipOnAntiphishing?: string;
+  ipOnAntiphishing: string;
   /**
    * Current state of the phishing
    *
    */
-  state?: IpAntiphishingStateEnum;
+  state: IpAntiphishingStateEnum;
   /**
    * Phishing URL
    *
    */
-  urlPhishing?: string;
+  urlPhishing: string;
 }
 /**
  * Possible values for antiphishing state
@@ -60,12 +60,12 @@ export interface IpArpBlockedIp {
    * The last blocking date
    *
    */
-  blockedSince?: string;
+  blockedSince: string;
   /**
    * your IP
    *
    */
-  ipBlocked?: string;
+  ipBlocked: string;
   /**
    * ARP logs
    *
@@ -75,12 +75,12 @@ export interface IpArpBlockedIp {
    * this IP address state
    *
    */
-  state?: IpArpStateEnum;
+  state: IpArpStateEnum;
   /**
    * Time (in seconds) remaining before you can request your IP to be unblocked
    *
    */
-  time?: number;
+  time: number;
 }
 /**
  * Possible values for IP state
@@ -94,12 +94,12 @@ export interface IpBlockedIp {
    * The last blocking date
    *
    */
-  blockedSince?: string;
+  blockedSince: string;
   /**
    * your IP
    *
    */
-  ipBlocked?: string;
+  ipBlocked: string;
   /**
    * Logs
    *
@@ -109,12 +109,12 @@ export interface IpBlockedIp {
    * this IP address state
    *
    */
-  state?: IpBlockedIpStateEnum;
+  state: IpBlockedIpStateEnum;
   /**
    * Time (in seconds) remaining before you can request your IP to be unblocked
    *
    */
-  time?: number;
+  time: number;
 }
 /**
  * Possible values for IP state
@@ -133,7 +133,7 @@ export interface IpDestination {
    * Service destination
    *
    */
-  service?: string;
+  service: string;
 }
 /**
  * A structure given all services allowed as a destination for this ip
@@ -180,15 +180,15 @@ export type IpFirewallActionEnum = 'deny' | 'permit';
 export interface IpFirewallIp {
   /**
    */
-  enabled?: boolean;
+  enabled: boolean;
   /**
    */
-  ipOnFirewall?: string;
+  ipOnFirewall: string;
   /**
    * Current state of your ip on firewall
    *
    */
-  state?: IpFirewallStateEnum;
+  state: IpFirewallStateEnum;
 }
 /**
  * Rule on ip
@@ -198,15 +198,15 @@ export interface IpFirewallNetworkRule {
    * Action on this rule
    *
    */
-  action?: IpFirewallActionEnum;
+  action: IpFirewallActionEnum;
   /**
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Destination ip for your rule
    *
    */
-  destination?: string;
+  destination: string;
   /**
    * Destination port range for your rule. Only with TCP/UDP protocol
    *
@@ -221,18 +221,18 @@ export interface IpFirewallNetworkRule {
    * Network protocol
    *
    */
-  protocol?: IpFirewallProtocolEnum;
+  protocol: IpFirewallProtocolEnum;
   /**
    */
-  rule?: string;
+  rule: string;
   /**
    */
-  sequence?: number;
+  sequence: number;
   /**
    * Source ip for your rule
    *
    */
-  source?: string;
+  source: string;
   /**
    * Source port range for your rule. Only with TCP/UDP protocol
    *
@@ -242,7 +242,7 @@ export interface IpFirewallNetworkRule {
    * Current state of your rule
    *
    */
-  state?: IpFirewallRuleStateEnum;
+  state: IpFirewallRuleStateEnum;
   /**
    * TCP option on your rule
    *
@@ -292,13 +292,13 @@ export interface IpGameMitigation {
    * Firewall mode : in UDP, only allow traffic matching your rules (as well as established traffic). If not enabled, traffic to ports not defined in your rules will be permited. TCP traffic is unaffected by this.
    *
    */
-  firewallModeEnabled?: boolean;
+  firewallModeEnabled: boolean;
   /**
    */
-  ipOnGame?: string;
+  ipOnGame: string;
   /**
    */
-  state?: IpGameMitigationStateEnum;
+  state: IpGameMitigationStateEnum;
 }
 /**
  * Rule on ip:ports
@@ -308,18 +308,18 @@ export interface IpGameMitigationRule {
    * ID of the rule
    *
    */
-  id?: number;
+  id: number;
   /**
    */
-  ports?: ComplexTypeRange<number>;
+  ports: ComplexTypeRange<number>;
   /**
    */
-  protocol?: IpGameMitigationRuleProtocolEnum;
+  protocol: IpGameMitigationRuleProtocolEnum;
   /**
    * Current state of your rule
    *
    */
-  state?: IpGameMitigationRuleStateEnum;
+  state: IpGameMitigationRuleStateEnum;
 }
 /**
  * Possible values for game rule protocol
@@ -339,7 +339,7 @@ export type IpGameMitigationStateEnum = 'firewallModeDisablePending' | 'firewall
 export interface IpIp {
   /**
    */
-  canBeTerminated?: boolean;
+  canBeTerminated: boolean;
   /**
    */
   country?: CoreTypesCountryEnum;
@@ -350,7 +350,7 @@ export interface IpIp {
   description?: string;
   /**
    */
-  ip?: string;
+  ip: string;
   /**
    * IP block organisation Id
    *
@@ -363,7 +363,7 @@ export interface IpIp {
   routedTo?: IpRoutedTo;
   /**
    */
-  type?: IpIpTypeEnum;
+  type: IpIpTypeEnum;
 }
 /**
  * IP migration to OVH
@@ -373,12 +373,12 @@ export interface IpIpMigrationToken {
    * destination customer ID
    *
    */
-  customerId?: string;
+  customerId: string;
   /**
    * migration token
    *
    */
-  token?: string;
+  token: string;
 }
 /**
  * IP tasks
@@ -403,7 +403,7 @@ export interface IpIpTask {
    * Function name
    *
    */
-  function?: IpTaskFunctionEnum;
+  function: IpTaskFunctionEnum;
   /**
    * last update
    *
@@ -413,17 +413,17 @@ export interface IpIpTask {
    * Task Creation date
    *
    */
-  startDate?: string;
+  startDate: string;
   /**
    * Task status
    *
    */
-  status?: IpTaskStatusEnum;
+  status: IpTaskStatusEnum;
   /**
    * the id of the task
    *
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * Possible values for ip type
@@ -441,7 +441,7 @@ export interface IpLoadBalancingBackendIp {
    * IP of your backend
    *
    */
-  backend?: string;
+  backend: string;
   /**
    * If the backend has been configured as backup, this field contains the ip of the main backend
    *
@@ -451,17 +451,17 @@ export interface IpLoadBalancingBackendIp {
    * Probe used for your backend
    *
    */
-  probe?: IpLoadBalancingBackendProbeEnum;
+  probe: IpLoadBalancingBackendProbeEnum;
   /**
    * Weight of the backend on its zone, must be between 1 and 100, default is 8
    *
    */
-  weight?: number;
+  weight: number;
   /**
    * Location where your service is
    *
    */
-  zone?: IpLoadBalancingZoneEnum;
+  zone: IpLoadBalancingZoneEnum;
 }
 /**
  * Possible values for your IP load balancing backend probe
@@ -475,32 +475,32 @@ export interface IpLoadBalancingIp {
    * Your IP load balancing
    *
    */
-  ipLoadBalancing?: string;
+  ipLoadBalancing: string;
   /**
    * The internal name of your IP load balancing
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Ssl activation state
    *
    */
-  ssl?: IpLoadBalancingSslEnum;
+  ssl: IpLoadBalancingSslEnum;
   /**
    * Current state of your IP
    *
    */
-  state?: IpLoadBalancingStateEnum;
+  state: IpLoadBalancingStateEnum;
   /**
    * The type of stickiness currently in place on your Ip LoadBalancing
    *
    */
-  stickiness?: IpLoadBalancingStickinessEnum;
+  stickiness: IpLoadBalancingStickinessEnum;
   /**
    * Location where your service is
    *
    */
-  zone?: IpLoadBalancingZoneEnum[];
+  zone: IpLoadBalancingZoneEnum[];
 }
 /**
  * LoadBalancingPort mapping
@@ -508,10 +508,10 @@ export interface IpLoadBalancingIp {
 export interface IpLoadBalancingIpLoadBalancingPort {
   /**
    */
-  dstPort?: number;
+  dstPort: number;
   /**
    */
-  srcPort?: IpLoadBalancingAdditionalPortEnum;
+  srcPort: IpLoadBalancingAdditionalPortEnum;
 }
 /**
  * Possible values for ssl state
@@ -533,22 +533,22 @@ export interface IpLoadBalancingTask {
    * The action made
    *
    */
-  action?: IpLoadBalancingTaskActionEnum;
+  action: IpLoadBalancingTaskActionEnum;
   /**
    * Creation date of your task
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Identifier of your task
    *
    */
-  id?: number;
+  id: number;
   /**
    * Current status of your task
    *
    */
-  status?: string;
+  status: string;
 }
 /**
  * Possible values for load balancing task action
@@ -571,17 +571,17 @@ export interface IpMitigationAttack {
    * Internal id of your attack
    *
    */
-  idAttack?: number;
+  idAttack: number;
   /**
    * Your ip
    *
    */
-  ipAttack?: string;
+  ipAttack: string;
   /**
    * Start of the attack
    *
    */
-  startDate?: string;
+  startDate: string;
 }
 /**
  * Detailed statistics about your traffic
@@ -637,20 +637,20 @@ export interface IpMitigationIp {
    * Set on true if your ip is on auto-mitigation
    *
    */
-  auto?: boolean;
+  auto: boolean;
   /**
    */
-  ipOnMitigation?: string;
+  ipOnMitigation: string;
   /**
    * Set on true if your ip is on permanent mitigation
    *
    */
-  permanent?: boolean;
+  permanent: boolean;
   /**
    * Current state of your ip on mitigation
    *
    */
-  state?: IpMitigationStateEnum;
+  state: IpMitigationStateEnum;
 }
 /**
  * Mitigation profile for your ip
@@ -660,15 +660,15 @@ export interface IpMitigationProfile {
    * Delay to wait before remove ip from auto mitigation after an attack
    *
    */
-  autoMitigationTimeOut?: IpMitigationProfileAutoMitigationTimeOutEnum;
+  autoMitigationTimeOut: IpMitigationProfileAutoMitigationTimeOutEnum;
   /**
    */
-  ipMitigationProfile?: string;
+  ipMitigationProfile: string;
   /**
    * Current state of your mitigation profile
    *
    */
-  state?: IpMitigationProfileStateEnum;
+  state: IpMitigationProfileStateEnum;
 }
 /**
  * Possible values for auto mitigation timeout (minutes)
@@ -700,7 +700,7 @@ export interface IpMitigationStats {
    * Traffic timestamp
    *
    */
-  timestamp?: number;
+  timestamp: number;
 }
 /**
  * Possible aggregation scale on statistics
@@ -714,12 +714,12 @@ export interface IpMitigationTraffic {
    * Bits per second
    *
    */
-  bps?: number;
+  bps: number;
   /**
    * Paquets per second
    *
    */
-  pps?: number;
+  pps: number;
 }
 /**
  * Your reverse delegations on IPv6 subnet
@@ -729,7 +729,7 @@ export interface IpReverseDelegation {
    * NS target for delegation
    *
    */
-  target?: string;
+  target: string;
 }
 /**
  * Your reverse records on IP
@@ -737,10 +737,10 @@ export interface IpReverseDelegation {
 export interface IpReverseIp {
   /**
    */
-  ipReverse?: string;
+  ipReverse: string;
   /**
    */
-  reverse?: string;
+  reverse: string;
 }
 /**
  * IP block RIPE informations
@@ -769,7 +769,7 @@ export interface IpRoutedTo {
 export interface IpServiceIp {
   /**
    */
-  canBeTerminated?: boolean;
+  canBeTerminated: boolean;
   /**
    */
   country?: CoreTypesCountryEnum;
@@ -780,7 +780,7 @@ export interface IpServiceIp {
   description?: string;
   /**
    */
-  ip?: string;
+  ip: string;
   /**
    * IP block organisation Id
    *
@@ -793,7 +793,7 @@ export interface IpServiceIp {
   routedTo?: IpRoutedTo;
   /**
    */
-  type?: IpIpTypeEnum;
+  type: IpIpTypeEnum;
 }
 /**
  * Your IP spam stats
@@ -803,22 +803,22 @@ export interface IpSpamIp {
    * Last date the ip was blocked
    *
    */
-  date?: string;
+  date: string;
   /**
    * IP address which is sending spam
    *
    */
-  ipSpamming?: string;
+  ipSpamming: string;
   /**
    * Current state of the ip
    *
    */
-  state?: IpSpamStateEnum;
+  state: IpSpamStateEnum;
   /**
    * Time (in seconds) while the IP will be blocked
    *
    */
-  time?: number;
+  time: number;
 }
 /**
  * Possible values for spam state
@@ -842,17 +842,17 @@ export interface IpSpamStats {
    * Number of spams sent
    *
    */
-  numberOfSpams?: number;
+  numberOfSpams: number;
   /**
    * Time when the IP address was blocked
    *
    */
-  timestamp?: number;
+  timestamp: number;
   /**
    * Number of emails sent
    *
    */
-  total?: number;
+  total: number;
 }
 /**
  * Spam's target information
@@ -862,22 +862,22 @@ export interface IpSpamTarget {
    * Timestamp when the email was sent
    *
    */
-  date?: number;
+  date: number;
   /**
    * IP address of the target
    *
    */
-  destinationIp?: string;
+  destinationIp: string;
   /**
    * The message-id of the email
    *
    */
-  messageId?: string;
+  messageId: string;
   /**
    * Spam score for the email
    *
    */
-  spamscore?: number;
+  spamscore: number;
 }
 /**
  * different task operation
@@ -895,12 +895,12 @@ export interface IpLoadbalancingTaskTask {
    * Operation type
    *
    */
-  action?: IpLoadbalancingTaskActionEnum;
+  action: IpLoadbalancingTaskActionEnum;
   /**
    * Creation date of your operation
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Done date of your operation
    *
@@ -910,22 +910,22 @@ export interface IpLoadbalancingTaskTask {
    * Id of the operation
    *
    */
-  id?: number;
+  id: number;
   /**
    * Operation progress percentage
    *
    */
-  progress?: number;
+  progress: number;
   /**
    * Current status of your operation
    *
    */
-  status?: IpLoadbalancingTaskStatusEnum;
+  status: IpLoadbalancingTaskStatusEnum;
   /**
    * Zone of your Load Balancer which are updated by current Task
    *
    */
-  zones?: string[];
+  zones: string[];
 }
 /**
  * Possible task action
@@ -943,17 +943,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -987,25 +987,25 @@ export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PE
 export interface ServicesNonExpiringService {
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * Details about a Service
@@ -1015,28 +1015,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -1049,13 +1049,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsIpGET = '/ip' | 
 '/ip/loadBalancing' | 

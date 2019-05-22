@@ -11,12 +11,12 @@ export interface DedicatedNasAccess {
    * the id of the access
    *
    */
-  accessId?: number;
+  accessId: number;
   /**
    * the ip in root on storage
    *
    */
-  ip?: string;
+  ip: string;
 }
 /**
  * Storage nas
@@ -26,7 +26,7 @@ export interface DedicatedNasNas {
    * True, if partition creation is allowed on this nas
    *
    */
-  canCreatePartition?: boolean;
+  canCreatePartition: boolean;
   /**
    * The name you give to the nas
    *
@@ -46,17 +46,17 @@ export interface DedicatedNasNas {
    * The storage mount path
    *
    */
-  mountPath?: string;
+  mountPath: string;
   /**
    * The storage service name
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * the size of the nas
    *
    */
-  zpoolSize?: number;
+  zpoolSize: number;
 }
 /**
  * Storage partition
@@ -66,17 +66,17 @@ export interface DedicatedNasPartition {
    * the given name of partition
    *
    */
-  partitionName?: string;
+  partitionName: string;
   /**
    * must be nfs cifs or both
    *
    */
-  protocol?: DedicatedStorageProtocolEnum;
+  protocol: DedicatedStorageProtocolEnum;
   /**
    * Partition size
    *
    */
-  size?: number;
+  size: number;
 }
 /**
  * Partition Quota
@@ -86,12 +86,12 @@ export interface DedicatedNasQuota {
    * the size to set in MB
    *
    */
-  size?: number;
+  size: number;
   /**
    * the uid to set quota on
    *
    */
-  uid?: number;
+  uid: number;
 }
 /**
  * Storage task
@@ -116,7 +116,7 @@ export interface DedicatedNasTaskTask {
    * Task type of operation
    *
    */
-  operation?: DedicatedStorageTaskFunctionEnum;
+  operation: DedicatedStorageTaskFunctionEnum;
   /**
    * name of the partition
    *
@@ -126,7 +126,7 @@ export interface DedicatedNasTaskTask {
    * The actual state of the task
    *
    */
-  status?: DedicatedTaskStatusEnum;
+  status: DedicatedTaskStatusEnum;
   /**
    * the name of your service
    *
@@ -136,7 +136,7 @@ export interface DedicatedNasTaskTask {
    * id of the task
    *
    */
-  taskId?: number;
+  taskId: number;
   /**
    * Insertion of task in the todo
    *
@@ -159,17 +159,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -197,28 +197,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -231,13 +231,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsDedicatedNasGET = '/dedicated/nas' | 
 '/dedicated/nas/{serviceName}' | 

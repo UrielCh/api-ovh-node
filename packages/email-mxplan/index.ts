@@ -12,7 +12,7 @@ export interface EmailMxplanAccount {
    * Indicates if the account is configured
    *
    */
-  configured?: boolean;
+  configured: boolean;
   /**
    * Creation date
    *
@@ -37,7 +37,7 @@ export interface EmailMxplanAccount {
    * Email domain
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * expiration date
    *
@@ -57,12 +57,12 @@ export interface EmailMxplanAccount {
    * Hide account in Global Address List
    *
    */
-  hiddenFromGAL?: boolean;
+  hiddenFromGAL: boolean;
   /**
    * Account id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Account initials
    *
@@ -92,7 +92,7 @@ export interface EmailMxplanAccount {
    * Account login
    *
    */
-  login?: string;
+  login: string;
   /**
    * Enable or disable anti-virus and anti-spam
    *
@@ -107,12 +107,12 @@ export interface EmailMxplanAccount {
    * Default email for this mailbox
    *
    */
-  primaryEmailAddress?: string;
+  primaryEmailAddress: string;
   /**
    * Account maximum size
    *
    */
-  quota?: number;
+  quota: number;
   /**
    * change the renew period
    *
@@ -122,12 +122,12 @@ export interface EmailMxplanAccount {
    * Spam and Antivirus configuration
    *
    */
-  spamAndVirusConfiguration?: EmailProSpamAndVirusConfiguration;
+  spamAndVirusConfiguration: EmailProSpamAndVirusConfiguration;
   /**
    * Account was sending spam
    *
    */
-  spamDetected?: boolean;
+  spamDetected: boolean;
   /**
    * Ticket number of spam detection
    *
@@ -137,12 +137,12 @@ export interface EmailMxplanAccount {
    * Account state
    *
    */
-  state?: EmailProObjectStateEnum;
+  state: EmailProObjectStateEnum;
   /**
    * Pending tasks for this account
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Aliases on this mailbox
@@ -152,17 +152,17 @@ export interface EmailMxplanAccountAlias {
    * Alias
    *
    */
-  alias?: string;
+  alias: string;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Account Diagnosis
@@ -172,47 +172,47 @@ export interface EmailMxplanAccountDiagnosis {
    * Determines if ingoing message has been received
    *
    */
-  canReceiveEmail?: boolean;
+  canReceiveEmail: boolean;
   /**
    * Determines if outgoing message has been delivered
    *
    */
-  canSendEmail?: boolean;
+  canSendEmail: boolean;
   /**
    * Determines if possible to authenticate with credentials
    *
    */
-  connectiveWebmail?: boolean;
+  connectiveWebmail: boolean;
   /**
    * Determines if account is locked
    *
    */
-  isLocked?: boolean;
+  isLocked: boolean;
   /**
    * Determines if MX record for account's domain is properly set
    *
    */
-  isMxValid?: boolean;
+  isMxValid: boolean;
   /**
    * Determines if account is flagged as spammer
    *
    */
-  isSpammer?: boolean;
+  isSpammer: boolean;
   /**
    * Determines if SRV (autodiscovery) record for account's domain is properly set
    *
    */
-  isSrvValid?: boolean;
+  isSrvValid: boolean;
   /**
    * Determines if account is suspended
    *
    */
-  isSuspended?: boolean;
+  isSuspended: boolean;
   /**
    * Last performed diagnostics date
    *
    */
-  lastCheck?: string;
+  lastCheck: string;
 }
 /**
  * Users having full access on this mailbox
@@ -222,17 +222,17 @@ export interface EmailMxplanAccountFullAccess {
    * Account id to give full access
    *
    */
-  allowedAccountId?: number;
+  allowedAccountId: number;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Users authorized to send mails from this mailbox
@@ -242,17 +242,17 @@ export interface EmailMxplanAccountSendAs {
    * Account id to give send as
    *
    */
-  allowedAccountId?: number;
+  allowedAccountId: number;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Get users authorized to Send On Behalf To mails from this mailbox
@@ -262,17 +262,17 @@ export interface EmailMxplanAccountSendOnBehalfTo {
    * Account id to give send on behalf to
    *
    */
-  allowedAccountId?: number;
+  allowedAccountId: number;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Domain
@@ -287,27 +287,27 @@ export interface EmailMxplanDomain {
    * List of aliases for this domain
    *
    */
-  domainAliases?: string[];
+  domainAliases: string[];
   /**
    * Domain validation status
    *
    */
-  domainValidated?: boolean;
+  domainValidated: boolean;
   /**
    * Indicate if this domain is an alias for another domain
    *
    */
-  isAliasDomain?: boolean;
+  isAliasDomain: boolean;
   /**
    * If true your dns mx configuration is valid
    *
    */
-  mxIsValid?: boolean;
+  mxIsValid: boolean;
   /**
    * Domain MX record configured in DNS
    *
    */
-  mxRecord?: string[];
+  mxRecord: string[];
   /**
    * If specified, emails to not existing address will be redirected to that domain
    *
@@ -317,32 +317,32 @@ export interface EmailMxplanDomain {
    * Domain name
    *
    */
-  name?: string;
+  name: string;
   /**
    * If true your dns srv record is valid
    *
    */
-  srvIsValid?: boolean;
+  srvIsValid: boolean;
   /**
    * Domain SRV record configured in DNS
    *
    */
-  srvRecord?: string[];
+  srvRecord: string[];
   /**
    * Domain state
    *
    */
-  state?: EmailProObjectStateEnum;
+  state: EmailProObjectStateEnum;
   /**
    * Pending taks id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
   /**
    * Domain type
    *
    */
-  type?: EmailProDomainTypeEnum;
+  type: EmailProDomainTypeEnum;
 }
 /**
  * External contact for this mxplan service
@@ -352,17 +352,17 @@ export interface EmailMxplanExternalContact {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Contact display name
    *
    */
-  displayName?: string;
+  displayName: string;
   /**
    * Contact email
    *
    */
-  externalEmailAddress?: string;
+  externalEmailAddress: string;
   /**
    * Contact first name
    *
@@ -372,12 +372,12 @@ export interface EmailMxplanExternalContact {
    * Hide the contact in Global Address List
    *
    */
-  hiddenFromGAL?: boolean;
+  hiddenFromGAL: boolean;
   /**
    * Contact id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Contact initals
    *
@@ -392,12 +392,12 @@ export interface EmailMxplanExternalContact {
    * Contact state
    *
    */
-  state?: EmailProObjectStateEnum;
+  state: EmailProObjectStateEnum;
   /**
    * Task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Server
@@ -417,7 +417,7 @@ export interface EmailMxplanServer {
    * ipV4
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * ipV6
    *
@@ -427,32 +427,32 @@ export interface EmailMxplanServer {
    * If true your dns A record is valid
    *
    */
-  isAValid?: boolean;
+  isAValid: boolean;
   /**
    * If true your dns AAAA record is valid
    *
    */
-  isAaaaValid?: boolean;
+  isAaaaValid: boolean;
   /**
    * If true your dns ptrV6 record is valid
    *
    */
-  isPtrV6Valid?: boolean;
+  isPtrV6Valid: boolean;
   /**
    * If true your dns ptr record is valid
    *
    */
-  isPtrValid?: boolean;
+  isPtrValid: boolean;
   /**
    * Server state
    *
    */
-  state?: EmailProServerStateEnum;
+  state: EmailProServerStateEnum;
   /**
    * Task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
   /**
    * Server version
    *
@@ -467,7 +467,7 @@ export interface EmailMxplanService {
    * enable policy for strong and secure passwords
    *
    */
-  complexityEnabled?: boolean;
+  complexityEnabled: boolean;
   /**
    * service displayName
    *
@@ -477,7 +477,7 @@ export interface EmailMxplanService {
    * Domain name of your service
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Hostname of your service
    *
@@ -492,12 +492,12 @@ export interface EmailMxplanService {
    * number of minutes account will remain locked if it occurs
    *
    */
-  lockoutDuration?: number;
+  lockoutDuration: number;
   /**
    * number of minutes that must elapse after a failed logon to reset lockout trigger
    *
    */
-  lockoutObservationWindow?: number;
+  lockoutObservationWindow: number;
   /**
    * number of attempts before account to be locked
    *
@@ -512,12 +512,12 @@ export interface EmailMxplanService {
    * Maximum message size that You can receive in MB
    *
    */
-  maxReceiveSize?: number;
+  maxReceiveSize: number;
   /**
    * Maximum message size that You can send in MB
    *
    */
-  maxSendSize?: number;
+  maxSendSize: number;
   /**
    * minimum number of days before able to change account's password
    *
@@ -532,22 +532,22 @@ export interface EmailMxplanService {
    * Type of your offer
    *
    */
-  offer?: EmailMxplanServiceOfferEnum;
+  offer: EmailMxplanServiceOfferEnum;
   /**
    * Spam and Antivirus configuration
    *
    */
-  spamAndVirusConfiguration?: EmailProSpamAndVirusConfiguration;
+  spamAndVirusConfiguration: EmailProSpamAndVirusConfiguration;
   /**
    * State of your service
    *
    */
-  state?: EmailProServiceStateEnum;
+  state: EmailProServiceStateEnum;
   /**
    * Task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
   /**
    * URL for web interface
    *
@@ -595,22 +595,22 @@ export interface EmailProTask {
    * Function name
    *
    */
-  function?: EmailProTaskFunctionEnum;
+  function: EmailProTaskFunctionEnum;
   /**
    * Task id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Task status
    *
    */
-  status?: EmailProTaskStatusEnum;
+  status: EmailProTaskStatusEnum;
   /**
    * Creation date
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * function enumeration for task
@@ -628,27 +628,27 @@ export interface EmailProDisclaimer {
    * Signature, added at the bottom of your organization emails
    *
    */
-  content?: string;
+  content: string;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Disclaimer name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Activate the disclaimer only for external emails
    *
    */
-  outsideOnly?: boolean;
+  outsideOnly: boolean;
   /**
    * task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Renew period
@@ -662,37 +662,37 @@ export interface EmailProSpamAndVirusConfiguration {
    * Check DKIM of message
    *
    */
-  checkDKIM?: boolean;
+  checkDKIM: boolean;
   /**
    * Check SPF of message
    *
    */
-  checkSPF?: boolean;
+  checkSPF: boolean;
   /**
    * If message is a spam delete it
    *
    */
-  deleteSpam?: boolean;
+  deleteSpam: boolean;
   /**
    * If message is a virus delete it
    *
    */
-  deleteVirus?: boolean;
+  deleteVirus: boolean;
   /**
    * If message is a spam or virus put in junk. Overridden by deleteSpam or deleteVirus
    *
    */
-  putInJunk?: boolean;
+  putInJunk: boolean;
   /**
    * If message is a spam change its subject
    *
    */
-  tagSpam?: boolean;
+  tagSpam: boolean;
   /**
    * If message is a virus change its subject
    *
    */
-  tagVirus?: boolean;
+  tagVirus: boolean;
 }
 type PathsEmailMxplanGET = '/email/mxplan' | 
 '/email/mxplan/{service}' | 

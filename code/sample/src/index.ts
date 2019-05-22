@@ -1,5 +1,4 @@
 import Ovh from '@ovh-api/api';
-import { ApiDomain } from '@ovh-api/domain';
 import { ApiMe } from '@ovh-api/me';
 
 // Create your first application tokens here: https://api.ovh.com/createToken/?GET=/me
@@ -8,7 +7,6 @@ const config = { appKey: String(process.env.APP_KEY),
     consumerKey: String(process.env.CONSUMER_KEY)
 };
 const ovh = new Ovh(config);
-const apiDomain = new ApiDomain(ovh);
 const apiMe = new ApiMe(ovh);
 
-apiMe.get("/me").then((data)=> console.log(data));
+apiMe.get("/me").then(console.log);

@@ -10,12 +10,12 @@ export interface RouterDnat {
   destinationPort?: number;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * New destination IP
    *
    */
-  newDestinationNet?: string;
+  newDestinationNet: string;
   /**
    * New destination port number
    *
@@ -25,7 +25,7 @@ export interface RouterDnat {
    * Protocol (TCP, UDP)
    *
    */
-  protocol?: RouterProtocolEnum;
+  protocol: RouterProtocolEnum;
   /**
    * Source IP or network
    *
@@ -33,7 +33,7 @@ export interface RouterDnat {
   sourceNet?: string;
   /**
    */
-  status?: RouterStatusEnum;
+  status: RouterStatusEnum;
 }
 /**
  * All states this object can be in
@@ -45,21 +45,21 @@ export type RouterIpStatusEnum = 'blacklisted' | 'deleted' | 'free' | 'installin
 export interface RouterNetwork {
   /**
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    */
   description?: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * Gateway IP / CIDR Netmask
    *
    */
-  ipNet?: string;
+  ipNet: string;
   /**
    */
-  status?: RouterIpStatusEnum;
+  status: RouterIpStatusEnum;
   /**
    */
   vlanTag?: number;
@@ -78,23 +78,23 @@ export type RouterPrivLinkReqStatusEnum = 'accepted' | 'cancelled' | 'error' | '
 export interface RouterPrivateLink {
   /**
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * Your memory-friendly name of this private link
    *
    */
-  name?: string;
+  name: string;
   /**
    * Service name of the other side of this link
    *
    */
-  peerServiceName?: string;
+  peerServiceName: string;
   /**
    */
-  status?: RouterStatusEnum;
+  status: RouterStatusEnum;
 }
 /**
  * Received Private Link requests
@@ -102,10 +102,10 @@ export interface RouterPrivateLink {
 export interface RouterPrivateLinkRequest {
   /**
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    */
-  status?: RouterPrivLinkReqStatusEnum;
+  status: RouterPrivLinkReqStatusEnum;
 }
 /**
  * Outgoing routes configured inside a Private Link
@@ -113,18 +113,18 @@ export interface RouterPrivateLinkRequest {
 export interface RouterPrivateLinkRoute {
   /**
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * Network allowed to be routed outside
    *
    */
-  network?: string;
+  network: string;
   /**
    */
-  status?: RouterStatusEnum;
+  status: RouterStatusEnum;
 }
 /**
  * Allowed protocols
@@ -136,15 +136,15 @@ export type RouterProtocolEnum = 'any' | 'tcp' | 'udp';
 export interface RouterRouter {
   /**
    */
-  name?: string;
+  name: string;
   /**
    * The internal name of your Router offer
    *
    */
-  service?: string;
+  service: string;
   /**
    */
-  status?: RouterStatusEnum;
+  status: RouterStatusEnum;
 }
 /**
  * Network Snat
@@ -162,12 +162,12 @@ export interface RouterSnat {
   destinationPort?: number;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * New source IP
    *
    */
-  newSourceNet?: string;
+  newSourceNet: string;
   /**
    * New destination port number
    *
@@ -177,10 +177,10 @@ export interface RouterSnat {
    * Protocol (TCP, UDP)
    *
    */
-  protocol?: RouterProtocolEnum;
+  protocol: RouterProtocolEnum;
   /**
    */
-  status?: RouterStatusEnum;
+  status: RouterStatusEnum;
 }
 /**
  * All states this object can be in
@@ -192,19 +192,19 @@ export type RouterStatusEnum = 'creating' | 'error' | 'off' | 'on' | 'removing' 
 export interface RouterTask {
   /**
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    */
   finishDate?: string;
   /**
    */
-  function?: RouterTaskFunctionEnum;
+  function: RouterTaskFunctionEnum;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  status?: RouterTaskStatusEnum;
+  status: RouterTaskStatusEnum;
 }
 /**
  * All executable types of tasks
@@ -227,20 +227,20 @@ export interface RouterVpn {
    * Client's private network
    *
    */
-  clientPrivNet?: string;
+  clientPrivNet: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * Your VPN server IP
    *
    */
-  serverIp?: string;
+  serverIp: string;
   /**
    * Server's private network
    *
    */
-  serverPrivNet?: string;
+  serverPrivNet: string;
 }
 /**
  * Map a possible renew for a specific service
@@ -250,17 +250,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -296,28 +296,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -330,13 +330,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsRouterGET = '/router' | 
 '/router/{serviceName}' | 

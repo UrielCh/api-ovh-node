@@ -11,17 +11,17 @@ export interface HorizonViewCustomerNetwork {
    * Customer Network id
    *
    */
-  customerNetworkId?: number;
+  customerNetworkId: number;
   /**
    * Name of your network
    *
    */
-  name?: string;
+  name: string;
   /**
    * Customer network
    *
    */
-  network?: string;
+  network: string;
 }
 /**
  * You can reach from your virtual desktops, your customer network 
@@ -31,17 +31,17 @@ export interface HorizonViewCustomerNetworkPool {
    * Customer Network id
    *
    */
-  customerNetworkId?: number;
+  customerNetworkId: number;
   /**
    * Name of your network
    *
    */
-  name?: string;
+  name: string;
   /**
    * Customer network
    *
    */
-  network?: string;
+  network: string;
 }
 /**
  * Horizon As A Service Customer  User
@@ -56,12 +56,12 @@ export interface HorizonViewCustomerUser {
    * Customer id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Customer username of your HaaS User
    *
    */
-  username?: string;
+  username: string;
 }
 /**
  * Cloud Desktop Infrastructure Datacenter
@@ -71,52 +71,52 @@ export interface HorizonViewDatacenter {
    * IP of the VDI Active Directory
    *
    */
-  activeDirectoryIP?: string;
+  activeDirectoryIP: string;
   /**
    * Domain of the admin infrastructure
    *
    */
-  adminDomain?: string;
+  adminDomain: string;
   /**
    * Next hop to contact the private admin network
    *
    */
-  adminNetworkNextHop?: string;
+  adminNetworkNextHop: string;
   /**
    * Private network of the admin infrastructure
    *
    */
-  adminPrivateNetwork?: string;
+  adminPrivateNetwork: string;
   /**
    * Customer interco IP allows you to communicate between your private infrastructure and your CDI infrastructure throw the vrack.
    *
    */
-  customerIntercoIP?: string;
+  customerIntercoIP: string;
   /**
    * Customer interco netmask allows you to communicate between your private infrastructure and your CDI infrastructure throw the vrack.
    *
    */
-  customerIntercoMask?: string;
+  customerIntercoMask: string;
   /**
    * Customer interco vlan allows you to communicate between your private infrastructure and your CDI infrastructure throw the vrack.
    *
    */
-  customerIntercoVlanId?: number;
+  customerIntercoVlanId: number;
   /**
    * Datacenter ids
    *
    */
-  datacenterId?: number;
+  datacenterId: number;
   /**
    * Name of the datacenter
    *
    */
-  name?: string;
+  name: string;
   /**
    * Domain of your Horizon
    *
    */
-  serviceName?: string;
+  serviceName: string;
 }
 /**
  * Horizon View as a Service
@@ -126,37 +126,37 @@ export interface HorizonViewDedicatedHorizon {
    * The location of your administration servers in our datacenter
    *
    */
-  masterZone?: HorizonViewZone;
+  masterZone: HorizonViewZone;
   /**
    * Your Horizon Private Cloud
    *
    */
-  privateCloudName?: string;
+  privateCloudName: string;
   /**
    * The location of your datacenter
    *
    */
-  privateCloudZone?: HorizonViewZone;
+  privateCloudZone: HorizonViewZone;
   /**
    * Url of your Dedicated Horizon
    *
    */
-  publicUrl?: string;
+  publicUrl: string;
   /**
    * Current state of your Dedicated Horizon
    *
    */
-  state?: HorizonViewStateEnum;
+  state: HorizonViewStateEnum;
   /**
    * View Storage Accelerator for Vcenter
    *
    */
-  storageAccelerator?: boolean;
+  storageAccelerator: boolean;
   /**
    * Version of your Dedicated Horizon
    *
    */
-  version?: string;
+  version: string;
 }
 /**
  * List all Active Directories linked to your CDI Active Directory
@@ -166,7 +166,7 @@ export interface HorizonViewDomainTrust {
    * IP of your Active Directory
    *
    */
-  activeDirectoryIP?: string;
+  activeDirectoryIP: string;
   /**
    * IP of your first DNS
    *
@@ -181,12 +181,12 @@ export interface HorizonViewDomainTrust {
    * Name of your private domain
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Domain trust id
    *
    */
-  domainTrustId?: number;
+  domainTrustId: number;
 }
 /**
  * All informations about access point
@@ -196,22 +196,22 @@ export interface HorizonViewPool {
    * Pool id
    *
    */
-  accessPointId?: number;
+  accessPointId: number;
   /**
    * DHCP netmask in this port group
    *
    */
-  dhcpNetmask?: string;
+  dhcpNetmask: string;
   /**
    * DHCP network in this port group
    *
    */
-  dhcpNetwork?: string;
+  dhcpNetwork: string;
   /**
    * External url of your access point
    *
    */
-  externalUrl?: string;
+  externalUrl: string;
   /**
    * Next hop IP to reach virtual desktops network for public Access Point
    *
@@ -226,22 +226,22 @@ export interface HorizonViewPool {
    * Port group id
    *
    */
-  portGroupId?: string;
+  portGroupId: string;
   /**
    * Network state
    *
    */
-  state?: HorizonViewStateEnum;
+  state: HorizonViewStateEnum;
   /**
    * Two factor authentication
    *
    */
-  twoFA?: boolean;
+  twoFA: boolean;
   /**
    * Pool type
    *
    */
-  type?: HorizonViewPoolType;
+  type: HorizonViewPoolType;
 }
 /**
  * Pool type the customer can deploy
@@ -269,22 +269,22 @@ export interface HorizonViewTask {
    * Task name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Current progress
    *
    */
-  progress?: number;
+  progress: number;
   /**
    * Current Task state
    *
    */
-  state?: HorizonViewTaskStateEnum;
+  state: HorizonViewTaskStateEnum;
   /**
    * Task id
    *
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * All states a Horizon View  Task can be in
@@ -298,7 +298,7 @@ export interface HorizonViewUser {
    * Username of your HaaS User
    *
    */
-  username?: string;
+  username: string;
 }
 /**
  * All zones a Cloud Desktop Infrastructure can be in
@@ -312,17 +312,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -358,28 +358,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -392,13 +392,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsHorizonViewGET = '/horizonView' | 
 '/horizonView/{serviceName}' | 

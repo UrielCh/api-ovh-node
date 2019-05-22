@@ -32,7 +32,7 @@ export interface MsServicesAccount {
    * Account id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Account initials
    *
@@ -67,17 +67,17 @@ export interface MsServicesAccount {
    * Account state
    *
    */
-  state?: MsServicesObjectStateEnum;
+  state: MsServicesObjectStateEnum;
   /**
    * Pending task for this account
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
   /**
    * User Principal Name
    *
    */
-  userPrincipalName?: string;
+  userPrincipalName: string;
 }
 /**
  * Active Directory organizational unit
@@ -87,17 +87,17 @@ export interface MsServicesActiveDirectoryOrganizationalUnit {
    * Flag indicating if passwords should be forced to follow Microsoft's password guidelines
    *
    */
-  complexityEnabled?: boolean;
+  complexityEnabled: boolean;
   /**
    * Account lock time (in minutes) when too much passwords have been tried
    *
    */
-  lockoutDuration?: number;
+  lockoutDuration: number;
   /**
    * Time (in minutes) before the password attempts counter is reset
    *
    */
-  lockoutObservationWindow?: number;
+  lockoutObservationWindow: number;
   /**
    * Maximum number of password tries before account locking
    *
@@ -122,7 +122,7 @@ export interface MsServicesActiveDirectoryOrganizationalUnit {
    * Name of the Active Directory organizational unit
    *
    */
-  name?: string;
+  name: string;
   /**
    * Service name of the office tenant (/licence/office/{serviceName}) linked to this AD service
    *
@@ -132,12 +132,12 @@ export interface MsServicesActiveDirectoryOrganizationalUnit {
    * Current state of the Active Directory organizational unit
    *
    */
-  state?: MsServicesServiceStateEnum;
+  state: MsServicesServiceStateEnum;
   /**
    * Task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Temporary link to ADSync software executable
@@ -147,12 +147,12 @@ export interface MsServicesActiveDirectorySyncClientUrl {
    * Link expiration date
    *
    */
-  expiration?: string;
+  expiration: string;
   /**
    * ADSync software executable link
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Exchange mailbox information
@@ -162,12 +162,12 @@ export interface MsServicesExchangeInformation {
    * Exchange account license
    *
    */
-  accountLicense?: MsServicesExchangeLicenceEnum;
+  accountLicense: MsServicesExchangeLicenceEnum;
   /**
    * Indicates if the account is configured
    *
    */
-  configured?: boolean;
+  configured: boolean;
   /**
    * Creation date
    *
@@ -207,17 +207,17 @@ export interface MsServicesExchangeInformation {
    * Visibility in Global Address List
    *
    */
-  hiddenFromGAL?: boolean;
+  hiddenFromGAL: boolean;
   /**
    * Account id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Litigation hold feature enabled on this mailbox
    *
    */
-  litigation?: boolean;
+  litigation: boolean;
   /**
    * Litigation hold period in days (0 means unlimited). This setting covers all items in the mailbox.
    *
@@ -232,22 +232,22 @@ export interface MsServicesExchangeInformation {
    * Outlook licence attached
    *
    */
-  outlookLicense?: boolean;
+  outlookLicense: boolean;
   /**
    * OWA policy restriction is applied
    *
    */
-  owaLimited?: boolean;
+  owaLimited: boolean;
   /**
    * Primary address of the mailbox
    *
    */
-  primaryEmailAddress?: string;
+  primaryEmailAddress: string;
   /**
    * Maximum mailbox usage in GB (overall size)
    *
    */
-  quota?: number;
+  quota: number;
   /**
    * Frequency of Outlook license renewals
    *
@@ -262,12 +262,12 @@ export interface MsServicesExchangeInformation {
    * Spam and Antivirus configuration
    *
    */
-  spamAndVirusConfiguration?: MsServicesSpamAndVirusConfiguration;
+  spamAndVirusConfiguration: MsServicesSpamAndVirusConfiguration;
   /**
    * Spam activity detected on this mailbox
    *
    */
-  spamDetected?: boolean;
+  spamDetected: boolean;
   /**
    * Ticket number of spam detection
    *
@@ -277,12 +277,12 @@ export interface MsServicesExchangeInformation {
    * Mailbox state
    *
    */
-  state?: MsServicesObjectStateEnum;
+  state: MsServicesObjectStateEnum;
   /**
    * Pending task id for this account
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Exchange account licence
@@ -301,7 +301,7 @@ export interface MsServicesExchangeService {
    * Exchange service name
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Exchange service URL
    *
@@ -311,22 +311,22 @@ export interface MsServicesExchangeService {
    * Maximum allowable size for received messages in MB
    *
    */
-  maxReceiveSize?: number;
+  maxReceiveSize: number;
   /**
    * Maximum allowable size of sent messages in MB
    *
    */
-  maxSendSize?: number;
+  maxSendSize: number;
   /**
    * Exchange service offer
    *
    */
-  offer?: MsServicesServiceOfferEnum;
+  offer: MsServicesServiceOfferEnum;
   /**
    * Spam and Antivirus configuration
    *
    */
-  spamAndVirusConfiguration?: MsServicesSpamAndVirusConfiguration;
+  spamAndVirusConfiguration: MsServicesSpamAndVirusConfiguration;
   /**
    * Expiration date of SSL certificate
    *
@@ -336,12 +336,12 @@ export interface MsServicesExchangeService {
    * Exchange service state
    *
    */
-  state?: MsServicesServiceStateEnum;
+  state: MsServicesServiceStateEnum;
   /**
    * Task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Period of time used to determine license statistics
@@ -359,17 +359,17 @@ export interface MsServicesMfaInformation {
    * Indicates if Multi Factor Authentication is activated on this account
    *
    */
-  activated?: boolean;
+  activated: boolean;
   /**
    * Current status of Multi Factor Authentication feature
    *
    */
-  state?: MsServicesObjectStateEnum;
+  state: MsServicesObjectStateEnum;
   /**
    * Pending task for Multi Factor Authentication
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Current object state
@@ -397,10 +397,10 @@ export type MsServicesSharepointAccountAccessRightsEnum = 'administrator' | 'use
 export interface MsServicesSharepointAccountLicense {
   /**
    */
-  license?: MsServicesSharepointLicenseEnum;
+  license: MsServicesSharepointLicenseEnum;
   /**
    */
-  licenseQuantity?: number;
+  licenseQuantity: number;
 }
 /**
  * Sharepoint account license per day
@@ -408,10 +408,10 @@ export interface MsServicesSharepointAccountLicense {
 export interface MsServicesSharepointDailyLicense {
   /**
    */
-  accountLicense?: MsServicesSharepointAccountLicense[];
+  accountLicense: MsServicesSharepointAccountLicense[];
   /**
    */
-  date?: string;
+  date: string;
 }
 /**
  * Sharepoint account information
@@ -421,17 +421,17 @@ export interface MsServicesSharepointInformation {
    * The rights assigned to the sharepoint account
    *
    */
-  accessRights?: MsServicesSharepointAccountAccessRightsEnum;
+  accessRights: MsServicesSharepointAccountAccessRightsEnum;
   /**
    * Active Directory Account id
    *
    */
-  activeDirectoryAccountId?: number;
+  activeDirectoryAccountId: number;
   /**
    * Indicates if the account is configured
    *
    */
-  configured?: boolean;
+  configured: boolean;
   /**
    * OneDrive usage in byte
    *
@@ -446,32 +446,32 @@ export interface MsServicesSharepointInformation {
    * Sharepoint account id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Sharepoint account license
    *
    */
-  license?: MsServicesSharepointLicenseEnum;
+  license: MsServicesSharepointLicenseEnum;
   /**
    * office license is available
    *
    */
-  officeLicense?: boolean;
+  officeLicense: boolean;
   /**
    * OneDrive maximum size in byte
    *
    */
-  quota?: number;
+  quota: number;
   /**
    * Sharepoint account state
    *
    */
-  state?: MsServicesObjectStateEnum;
+  state: MsServicesObjectStateEnum;
   /**
    * Pending task for this sharepoint account
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Sharepoint account license
@@ -495,32 +495,32 @@ export interface MsServicesSharepointService {
    * Internal service name
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Sharepoint farm url
    *
    */
-  farmUrl?: string;
+  farmUrl: string;
   /**
    * Sharepoint offer
    *
    */
-  offer?: MsServicesSharepointServiceOfferEnum;
+  offer: MsServicesSharepointServiceOfferEnum;
   /**
    * Shared space maximum size in byte
    *
    */
-  quota?: number;
+  quota: number;
   /**
    * Sharepoint service state
    *
    */
-  state?: MsServicesServiceStateEnum;
+  state: MsServicesServiceStateEnum;
   /**
    * Task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
   /**
    * Sharepoint url
    *
@@ -535,7 +535,7 @@ export interface MsServicesSharepointServiceInfo {
    * Internal service name
    *
    */
-  domain?: string;
+  domain: string;
 }
 /**
  * Sharepoint service offer name
@@ -549,37 +549,37 @@ export interface MsServicesSpamAndVirusConfiguration {
    * Check DKIM of message
    *
    */
-  checkDKIM?: boolean;
+  checkDKIM: boolean;
   /**
    * Check SPF of message
    *
    */
-  checkSPF?: boolean;
+  checkSPF: boolean;
   /**
    * If message is a spam delete it
    *
    */
-  deleteSpam?: boolean;
+  deleteSpam: boolean;
   /**
    * If message is a virus delete it
    *
    */
-  deleteVirus?: boolean;
+  deleteVirus: boolean;
   /**
    * If message is a spam or virus put in junk. Overridden by deleteSpam or deleteVirus
    *
    */
-  putInJunk?: boolean;
+  putInJunk: boolean;
   /**
    * If message is a spam change its subject
    *
    */
-  tagSpam?: boolean;
+  tagSpam: boolean;
   /**
    * If message is a virus change its subject
    *
    */
-  tagVirus?: boolean;
+  tagVirus: boolean;
 }
 /**
  * Sync account license
@@ -589,12 +589,12 @@ export interface MsServicesSyncAccountLicense {
    * the kind of license under which sync account is contracted
    *
    */
-  license?: MsServicesSyncLicenseEnum;
+  license: MsServicesSyncLicenseEnum;
   /**
    * number of license instances
    *
    */
-  licenseQuantity?: number;
+  licenseQuantity: number;
 }
 /**
  * Sync account license per day
@@ -604,12 +604,12 @@ export interface MsServicesSyncDailyLicense {
    * sync account license usage
    *
    */
-  accountLicense?: MsServicesSyncAccountLicense[];
+  accountLicense: MsServicesSyncAccountLicense[];
   /**
    * the date used to determine sync account license usage
    *
    */
-  date?: string;
+  date: string;
 }
 /**
  * Sync account information
@@ -619,22 +619,22 @@ export interface MsServicesSyncInformation {
    * Indicates if the account is configured
    *
    */
-  configured?: boolean;
+  configured: boolean;
   /**
    * Sync account license
    *
    */
-  license?: MsServicesSyncLicenseEnum;
+  license: MsServicesSyncLicenseEnum;
   /**
    * Sync account state
    *
    */
-  state?: MsServicesObjectStateEnum;
+  state: MsServicesObjectStateEnum;
   /**
    * Pending task for this sync account
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Sync account license
@@ -648,12 +648,12 @@ export interface MsServicesSyncService {
    * Exchange service state
    *
    */
-  state?: MsServicesServiceStateEnum;
+  state: MsServicesServiceStateEnum;
   /**
    * Task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Active Directory task details
@@ -668,22 +668,22 @@ export interface MsServicesTask {
    * Function name
    *
    */
-  function?: MsServicesTaskFunctionEnum;
+  function: MsServicesTaskFunctionEnum;
   /**
    * Task id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Task status
    *
    */
-  status?: MsServicesTaskStatusEnum;
+  status: MsServicesTaskStatusEnum;
   /**
    * Creation date
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * function enumeration for Active Directory task
@@ -710,22 +710,22 @@ export interface MsServicesExchangeTask {
    * Function name
    *
    */
-  function?: string;
+  function: string;
   /**
    * Task id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Task status
    *
    */
-  status?: MsServicesTaskStatusEnum;
+  status: MsServicesTaskStatusEnum;
   /**
    * Creation date
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * Sharepoint task details
@@ -740,22 +740,22 @@ export interface MsServicesSharepointTask {
    * Function name
    *
    */
-  function?: string;
+  function: string;
   /**
    * Task id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Task status
    *
    */
-  status?: MsServicesTaskStatusEnum;
+  status: MsServicesTaskStatusEnum;
   /**
    * Creation date
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * Active Directory UPN Suffix
@@ -770,22 +770,22 @@ export interface MsServicesUpnSuffix {
    * Ownership for upn suffix confirmed
    *
    */
-  ownershipValidated?: boolean;
+  ownershipValidated: boolean;
   /**
    * UPN suffix state
    *
    */
-  state?: MsServicesUPNStateEnum;
+  state: MsServicesUPNStateEnum;
   /**
    * UPN suffix
    *
    */
-  suffix?: string;
+  suffix: string;
   /**
    * Pending task for this upnSuffix
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Map a possible renew for a specific service
@@ -795,17 +795,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -833,28 +833,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -867,13 +867,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsMsServicesGET = '/msServices' | 
 '/msServices/sharepoint' | 

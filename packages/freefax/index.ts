@@ -7,12 +7,12 @@ export interface FreefaxBalanceInformations {
    * The number of equivalement remaining french faxs
    *
    */
-  faxs?: number;
+  faxs: number;
   /**
    * Total balance available in points
    *
    */
-  points?: number;
+  points: number;
 }
 /**
  * Freefax properties
@@ -22,37 +22,37 @@ export interface FreefaxFreefaxProperties {
    * Number of max tentative of fax sending
    *
    */
-  faxMaxCall?: TelephonyFaxSendingTries;
+  faxMaxCall: TelephonyFaxSendingTries;
   /**
    * Quality of fax sending
    *
    */
-  faxQuality?: TelephonyFaxQualityEnum;
+  faxQuality: TelephonyFaxQualityEnum;
   /**
    * Customised freefax header
    *
    */
-  faxTagLine?: string;
+  faxTagLine: string;
   /**
    * FROM email header
    *
    */
-  fromEmail?: string;
+  fromEmail: string;
   /**
    * Name of the sender of the email
    *
    */
-  fromName?: string;
+  fromName: string;
   /**
    * Freefax number in international format
    *
    */
-  number?: string;
+  number: string;
   /**
    * Email address to redirect fax response.
    *
    */
-  redirectionEmail?: string[];
+  redirectionEmail: string[];
 }
 /**
  * Map a possible renew for a specific service
@@ -62,17 +62,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -100,28 +100,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -134,13 +134,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * Available quality for fax documents
@@ -164,10 +164,10 @@ export type TelephonyServiceVoicemailMailOptionEnum = 'attachment' | 'simple';
 export interface TelephonyServiceVoicemailNotifications {
   /**
    */
-  email?: string;
+  email: string;
   /**
    */
-  type?: TelephonyServiceVoicemailMailOptionEnum;
+  type: TelephonyServiceVoicemailMailOptionEnum;
 }
 /**
  * All existing type of routing for a voicemail
@@ -185,12 +185,12 @@ export interface TelephonyVoicemailNumbers {
    * The external voicemail number
    *
    */
-  external?: string;
+  external: string;
   /**
    * The internal voicemail number
    *
    */
-  internal?: string;
+  internal: string;
 }
 /**
  * Voicemail Properties
@@ -200,32 +200,32 @@ export interface TelephonyVoicemailProperties {
    * Name of the voicemail panel announce file
    *
    */
-  annouceMessage?: string;
+  annouceMessage: string;
   /**
    * Format of the voicemail audio file attached to emails
    *
    */
-  audioFormat?: TelephonyServiceVoicemailAudioFormatEnum;
+  audioFormat: TelephonyServiceVoicemailAudioFormatEnum;
   /**
    * Don't allow callers to leave voicemails
    *
    */
-  doNotRecord?: boolean;
+  doNotRecord: boolean;
   /**
    * Force password request to access the voicemail panel
    *
    */
-  forcePassword?: boolean;
+  forcePassword: boolean;
   /**
    * Email address from which emails will be sent
    *
    */
-  fromEmail?: string;
+  fromEmail: string;
   /**
    * Name from which emails will be sent
    *
    */
-  fromName?: string;
+  fromName: string;
   /**
    * Sound ID of the long greeeting
    *
@@ -235,22 +235,22 @@ export interface TelephonyVoicemailProperties {
    * Type of the greeting to play
    *
    */
-  greetingType?: TelephonyVoicemailGreetingEnum;
+  greetingType: TelephonyVoicemailGreetingEnum;
   /**
    * Current voicemail version
    *
    */
-  isNewVersion?: boolean;
+  isNewVersion: boolean;
   /**
    * Don't delete voicemails after they've been sent by email
    *
    */
-  keepMessage?: boolean;
+  keepMessage: boolean;
   /**
    * Email addresses to notify when a new voicemail is left
    *
    */
-  redirectionEmails?: TelephonyServiceVoicemailNotifications[];
+  redirectionEmails: TelephonyServiceVoicemailNotifications[];
   /**
    * Sound ID of the short greeting played before an automated message
    *
@@ -260,7 +260,7 @@ export interface TelephonyVoicemailProperties {
    * Play the temporary greeting instead of the regular one
    *
    */
-  temporaryGreetingActivated?: boolean;
+  temporaryGreetingActivated: boolean;
   /**
    * Sound ID of the temporary greeeting
    *
@@ -270,7 +270,7 @@ export interface TelephonyVoicemailProperties {
    * Quantity of unread voicemails
    *
    */
-  unreadMessages?: number;
+  unreadMessages: number;
 }
 type PathsFreefaxGET = '/freefax' | 
 '/freefax/credits' | 

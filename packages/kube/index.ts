@@ -7,57 +7,57 @@ export interface KubeCluster {
    * True if control-plane is up to date
    *
    */
-  controlPlaneIsUpToDate?: boolean;
+  controlPlaneIsUpToDate: boolean;
   /**
    * Cluster creation date
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * Cluster ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * True if all nodes and control-plane are up to date
    *
    */
-  isUpToDate?: boolean;
+  isUpToDate: boolean;
   /**
    * Cluster name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Cluster nodes URL
    *
    */
-  nodesUrl?: string;
+  nodesUrl: string;
   /**
    * Cluster status
    *
    */
-  status?: KubeClusterStatus;
+  status: KubeClusterStatus;
   /**
    * Cluster last update date
    *
    */
-  updatePolicy?: string;
+  updatePolicy: string;
   /**
    * Cluster last update date
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
   /**
    * Management URL of your cluster
    *
    */
-  url?: string;
+  url: string;
   /**
    * Kubernetes version of your cluster
    *
    */
-  version?: string;
+  version: string;
 }
 /**
  * Enum values for Status
@@ -71,7 +71,7 @@ export interface KubeKubeconfig {
    * kubeconfig file
    *
    */
-  content?: string;
+  content: string;
 }
 /**
  * Node installed on your cluster
@@ -81,17 +81,17 @@ export interface KubeNode {
    * Creation date
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * Public Cloud flavor name
    *
    */
-  flavor?: string;
+  flavor: string;
   /**
    * Node ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Public Cloud instance id
    *
@@ -101,7 +101,7 @@ export interface KubeNode {
    * True if the node is up to date
    *
    */
-  isUpToDate?: boolean;
+  isUpToDate: boolean;
   /**
    * Node name
    *
@@ -111,22 +111,22 @@ export interface KubeNode {
    * Public Cloud project ID where the node is started
    *
    */
-  projectId?: string;
+  projectId: string;
   /**
    * Status
    *
    */
-  status?: KubeNodeStatus;
+  status: KubeNodeStatus;
   /**
    * Node last update date
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
   /**
    * Node version
    *
    */
-  version?: string;
+  version: string;
 }
 /**
  * Enum values for Status
@@ -140,12 +140,12 @@ export interface KubePublicCloudProject {
    * Public Cloud project ID
    *
    */
-  projectId?: string;
+  projectId: string;
   /**
    * Public Cloud region associated with your cluster
    *
    */
-  region?: string;
+  region: string;
 }
 /**
  * Enum values for worker nodes reset policy
@@ -167,17 +167,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -213,28 +213,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -247,13 +247,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsKubeGET = '/kube' | 
 '/kube/{serviceName}' | 

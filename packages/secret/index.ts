@@ -7,12 +7,12 @@ export interface SecretSecret {
    * Expiration time of the secret
    *
    */
-  expiration?: string;
+  expiration: string;
   /**
    * The secret
    *
    */
-  secret?: string;
+  secret: string;
 }
 type PathsSecretPOST = '/secret/retrieve';
 

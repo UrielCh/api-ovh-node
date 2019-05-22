@@ -12,7 +12,7 @@ export interface EmailExchangeAccount {
    * Exchange account type
    *
    */
-  accountLicense?: EmailExchangeOvhLicenceEnum;
+  accountLicense: EmailExchangeOvhLicenceEnum;
   /**
    * Company name
    *
@@ -22,7 +22,7 @@ export interface EmailExchangeAccount {
    * Indicates if the account is configured
    *
    */
-  configured?: boolean;
+  configured: boolean;
   /**
    * Creation date
    *
@@ -52,7 +52,7 @@ export interface EmailExchangeAccount {
    * Email domain
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * exchangeGuid for manual configuration
    *
@@ -82,12 +82,12 @@ export interface EmailExchangeAccount {
    * Hide account in Global Address List
    *
    */
-  hiddenFromGAL?: boolean;
+  hiddenFromGAL: boolean;
   /**
    * Account id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Account initials
    *
@@ -117,7 +117,7 @@ export interface EmailExchangeAccount {
    * Litigation hold feature enabled on this mailbox
    *
    */
-  litigation?: boolean;
+  litigation: boolean;
   /**
    * Litigation hold period in days (0 means unlimited). This setting covers all items in the mailbox.
    *
@@ -127,7 +127,7 @@ export interface EmailExchangeAccount {
    * Account login
    *
    */
-  login?: string;
+  login: string;
   /**
    * Enable or disable anti-virus and anti-spam
    *
@@ -137,12 +137,12 @@ export interface EmailExchangeAccount {
    * Outlook licence
    *
    */
-  outlookLicense?: boolean;
+  outlookLicense: boolean;
   /**
    * OWA policy restriction is applied
    *
    */
-  owaLimited?: boolean;
+  owaLimited: boolean;
   /**
    * Time of account's password last update
    *
@@ -152,12 +152,12 @@ export interface EmailExchangeAccount {
    * Default email for this mailbox
    *
    */
-  primaryEmailAddress?: string;
+  primaryEmailAddress: string;
   /**
    * Account maximum size
    *
    */
-  quota?: number;
+  quota: number;
   /**
    * change the renew period for outlook
    *
@@ -172,12 +172,12 @@ export interface EmailExchangeAccount {
    * Spam and Antivirus configuration
    *
    */
-  spamAndVirusConfiguration?: EmailExchangeSpamAndVirusConfiguration;
+  spamAndVirusConfiguration: EmailExchangeSpamAndVirusConfiguration;
   /**
    * Account was sending spam
    *
    */
-  spamDetected?: boolean;
+  spamDetected: boolean;
   /**
    * Ticket number of spam detection
    *
@@ -187,12 +187,12 @@ export interface EmailExchangeAccount {
    * Account state
    *
    */
-  state?: EmailExchangeObjectStateEnum;
+  state: EmailExchangeObjectStateEnum;
   /**
    * Pending task for this account
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Exchange account license
@@ -200,10 +200,10 @@ export interface EmailExchangeAccount {
 export interface EmailExchangeAccountLicense {
   /**
    */
-  license?: EmailExchangeOvhLicenceEnum;
+  license: EmailExchangeOvhLicenceEnum;
   /**
    */
-  licenseQuantity?: number;
+  licenseQuantity: number;
 }
 /**
  * Activesync action
@@ -215,13 +215,13 @@ export type EmailExchangeActiveSyncPolicyEnum = 'allow' | 'block' | 'quarantine'
 export interface EmailExchangeDailyLicense {
   /**
    */
-  accountLicense?: EmailExchangeAccountLicense[];
+  accountLicense: EmailExchangeAccountLicense[];
   /**
    */
-  date?: string;
+  date: string;
   /**
    */
-  outlookQuantity?: number;
+  outlookQuantity: number;
 }
 /**
  * Device ActiveSync state
@@ -244,17 +244,17 @@ export interface EmailExchangeDomain {
    * List of aliases for this domain
    *
    */
-  domainAliases?: string[];
+  domainAliases: string[];
   /**
    * Domain validation status
    *
    */
-  domainValidated?: boolean;
+  domainValidated: boolean;
   /**
    * Indicate if this domain is an alias for another domain
    *
    */
-  isAliasDomain?: boolean;
+  isAliasDomain: boolean;
   /**
    * If true this is an organization (Exchange 2010 only)
    *
@@ -264,7 +264,7 @@ export interface EmailExchangeDomain {
    * If true your dns mx configuration is valid
    *
    */
-  mxIsValid?: boolean;
+  mxIsValid: boolean;
   /**
    * Domain MX record configured in DNS
    *
@@ -279,7 +279,7 @@ export interface EmailExchangeDomain {
    * Domain name
    *
    */
-  name?: string;
+  name: string;
   /**
    * If specified, indicates to which organization this domain belongs (Exchange 2010 only)
    *
@@ -289,7 +289,7 @@ export interface EmailExchangeDomain {
    * If true your dns srv record is valid
    *
    */
-  srvIsValid?: boolean;
+  srvIsValid: boolean;
   /**
    * Domain SRV record configured in DNS
    *
@@ -299,17 +299,17 @@ export interface EmailExchangeDomain {
    * Domain state
    *
    */
-  state?: EmailExchangeObjectStateEnum;
+  state: EmailExchangeObjectStateEnum;
   /**
    * Pending taks id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
   /**
    * Domain type
    *
    */
-  type?: EmailExchangeDomainTypeEnum;
+  type: EmailExchangeDomainTypeEnum;
 }
 /**
  * Domain type
@@ -323,7 +323,7 @@ export interface EmailExchangeExchangeService {
    * enable policy for strong and secure passwords
    *
    */
-  complexityEnabled?: boolean;
+  complexityEnabled: boolean;
   /**
    * service displayName
    *
@@ -331,7 +331,7 @@ export interface EmailExchangeExchangeService {
   displayName?: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   hostname?: string;
@@ -344,12 +344,12 @@ export interface EmailExchangeExchangeService {
    * number of minutes account will remain locked if it occurs
    *
    */
-  lockoutDuration?: number;
+  lockoutDuration: number;
   /**
    * number of minutes that must elapse after a failed logon to reset lockout trigger
    *
    */
-  lockoutObservationWindow?: number;
+  lockoutObservationWindow: number;
   /**
    * number of attempts before account to be locked
    *
@@ -364,12 +364,12 @@ export interface EmailExchangeExchangeService {
    * Maximum message size that You can receive in MB
    *
    */
-  maxReceiveSize?: number;
+  maxReceiveSize: number;
   /**
    * Maximum message size that You can send in MB
    *
    */
-  maxSendSize?: number;
+  maxSendSize: number;
   /**
    * minimum number of days before able to change account's password
    *
@@ -382,7 +382,7 @@ export interface EmailExchangeExchangeService {
   minPasswordLength?: number;
   /**
    */
-  offer?: EmailExchangeServiceOfferEnum;
+  offer: EmailExchangeServiceOfferEnum;
   /**
    * number of historical password that cannot be reused
    *
@@ -392,18 +392,18 @@ export interface EmailExchangeExchangeService {
    * Spam and Antivirus configuration
    *
    */
-  spamAndVirusConfiguration?: EmailExchangeSpamAndVirusConfiguration;
+  spamAndVirusConfiguration: EmailExchangeSpamAndVirusConfiguration;
   /**
    */
   sslExpirationDate?: string;
   /**
    */
-  state?: EmailExchangeServiceStateEnum;
+  state: EmailExchangeServiceStateEnum;
   /**
    * Task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
   /**
    * URL for web interface
    *
@@ -418,17 +418,17 @@ export interface EmailExchangeExport {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Percentage of export PST request completion
    *
    */
-  percentComplete?: number;
+  percentComplete: number;
   /**
    * Task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Export PST file url
@@ -438,12 +438,12 @@ export interface EmailExchangeExportUrl {
    * Url expiration date
    *
    */
-  expiration?: string;
+  expiration: string;
   /**
    * Export url
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Outlook language
@@ -473,17 +473,17 @@ export interface EmailExchangeOutlookUrl {
    * Url expiration date
    *
    */
-  expiration?: string;
+  expiration: string;
   /**
    * Serial number
    *
    */
-  serial?: string;
+  serial: string;
   /**
    * Outlook url
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Outlook version
@@ -495,13 +495,13 @@ export type EmailExchangeOutlookVersionEnum = 'mac_x86_2011' | 'mac_x86_2016' | 
 export interface EmailExchangeOutlookVersions {
   /**
    */
-  outlookLanguage?: EmailExchangeLanguageEnum;
+  outlookLanguage: EmailExchangeLanguageEnum;
   /**
    */
-  outlookVersion?: EmailExchangeOutlookVersionEnum;
+  outlookVersion: EmailExchangeOutlookVersionEnum;
   /**
    */
-  status?: boolean;
+  status: boolean;
 }
 /**
  * OVH licence account
@@ -515,17 +515,17 @@ export interface EmailExchangePublicFolderQuota {
    * total amount of space in MB for public folders within organization
    *
    */
-  quotaLimit?: number;
+  quotaLimit: number;
   /**
    * space in MB already reserved from the quota limit
    *
    */
-  quotaReserved?: number;
+  quotaReserved: number;
   /**
    * currently used space in MB within all public folders
    *
    */
-  quotaUsed?: number;
+  quotaUsed: number;
 }
 /**
  * Public folder right type
@@ -547,7 +547,7 @@ export interface EmailExchangeServer {
    * Exchange commercial version
    *
    */
-  commercialVersion?: EmailExchangeExchangeCommercialVersionEnum;
+  commercialVersion: EmailExchangeExchangeCommercialVersionEnum;
   /**
    * Current disk usage in MB
    *
@@ -562,12 +562,12 @@ export interface EmailExchangeServer {
    * If true server is 2010 individual offer
    *
    */
-  individual2010?: boolean;
+  individual2010: boolean;
   /**
    * ipV4
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * ipV6
    *
@@ -577,37 +577,37 @@ export interface EmailExchangeServer {
    * If true your dns A record is valid
    *
    */
-  isAValid?: boolean;
+  isAValid: boolean;
   /**
    * If true your dns AAAA record is valid
    *
    */
-  isAaaaValid?: boolean;
+  isAaaaValid: boolean;
   /**
    * If true your dns ptrV6 record is valid
    *
    */
-  isPtrV6Valid?: boolean;
+  isPtrV6Valid: boolean;
   /**
    * If true your dns ptr record is valid
    *
    */
-  isPtrValid?: boolean;
+  isPtrValid: boolean;
   /**
    * Indicates if Multi Factor Authentication is activated on Outlook Web Access interface
    *
    */
-  owaMfa?: boolean;
+  owaMfa: boolean;
   /**
    * Server state
    *
    */
-  state?: EmailExchangeServerStateEnum;
+  state: EmailExchangeServerStateEnum;
   /**
    * Task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
   /**
    * ExchangeServer version
    *
@@ -634,17 +634,17 @@ export interface EmailExchangeSharedAccountQuota {
    * total amount of space in MB for shared accounts within organization
    *
    */
-  quotaLimit?: number;
+  quotaLimit: number;
   /**
    * space in MB already reserved from the quota limit
    *
    */
-  quotaReserved?: number;
+  quotaReserved: number;
   /**
    * currently used space in KB within all shared accounts
    *
    */
-  quotaUsed?: number;
+  quotaUsed: number;
 }
 /**
  * Level of access to calendar of Resource Mailbox
@@ -663,22 +663,22 @@ export interface EmailExchangeTask {
    * Function name
    *
    */
-  function?: EmailExchangeTaskFunctionEnum;
+  function: EmailExchangeTaskFunctionEnum;
   /**
    * Task id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Task status
    *
    */
-  status?: EmailExchangeTaskStatusEnum;
+  status: EmailExchangeTaskStatusEnum;
   /**
    * Creation date
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * function enumeration for exchange task
@@ -704,27 +704,27 @@ export interface EmailExchangeDisclaimer {
    * Signature, added at the bottom of your organization emails
    *
    */
-  content?: string;
+  content: string;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Disclaimer name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Activate the disclaimer only for external emails
    *
    */
-  outsideOnly?: boolean;
+  outsideOnly: boolean;
   /**
    * task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Aliases on this mailbox
@@ -734,17 +734,17 @@ export interface EmailExchangeExchangeAccountAlias {
    * Alias
    *
    */
-  alias?: string;
+  alias: string;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Exchange Account Archive
@@ -754,7 +754,7 @@ export interface EmailExchangeExchangeAccountArchive {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Archive mailbox usage
    *
@@ -769,12 +769,12 @@ export interface EmailExchangeExchangeAccountArchive {
    * Archive mailbox maximum size in GB
    *
    */
-  quota?: number;
+  quota: number;
   /**
    * Archive mailbox state
    *
    */
-  state?: EmailExchangeObjectStateEnum;
+  state: EmailExchangeObjectStateEnum;
   /**
    * Pending task for this archive mailbox
    *
@@ -789,47 +789,47 @@ export interface EmailExchangeExchangeAccountDiagnosis {
    * Determines if ingoing message has been received
    *
    */
-  canReceiveEmail?: boolean;
+  canReceiveEmail: boolean;
   /**
    * Determines if outgoing message has been delivered
    *
    */
-  canSendEmail?: boolean;
+  canSendEmail: boolean;
   /**
    * Determines if possible to authenticate with credentials
    *
    */
-  connectiveOWA?: boolean;
+  connectiveOWA: boolean;
   /**
    * Determines if account is locked
    *
    */
-  isLocked?: boolean;
+  isLocked: boolean;
   /**
    * Determines if MX record for account's domain is properly set
    *
    */
-  isMxValid?: boolean;
+  isMxValid: boolean;
   /**
    * Determines if account is flagged as spammer
    *
    */
-  isSpammer?: boolean;
+  isSpammer: boolean;
   /**
    * Determines if SRV (autodiscovery) record for account's domain is properly set
    *
    */
-  isSrvValid?: boolean;
+  isSrvValid: boolean;
   /**
    * Determines if account is suspended
    *
    */
-  isSuspended?: boolean;
+  isSuspended: boolean;
   /**
    * Last performed diagnostics date
    *
    */
-  lastCheck?: string;
+  lastCheck: string;
 }
 /**
  * Users having full access on this mailbox
@@ -839,17 +839,17 @@ export interface EmailExchangeExchangeAccountFullAccess {
    * Account id to give full access
    *
    */
-  allowedAccountId?: number;
+  allowedAccountId: number;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Get protocol status on that mailbox
@@ -859,22 +859,22 @@ export interface EmailExchangeExchangeAccountProtocol {
    * IMAP protocol enabled on that mailbox
    *
    */
-  IMAP?: boolean;
+  IMAP: boolean;
   /**
    * POP protocol enabled on that mailbox
    *
    */
-  POP?: boolean;
+  POP: boolean;
   /**
    * Mobile access enabled on that mailbox
    *
    */
-  activeSync?: boolean;
+  activeSync: boolean;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Last update date
    *
@@ -884,12 +884,12 @@ export interface EmailExchangeExchangeAccountProtocol {
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
   /**
    * Web mail enabled on that mailbox
    *
    */
-  webMail?: boolean;
+  webMail: boolean;
 }
 /**
  * Users authorized to send mails from this mailbox
@@ -899,17 +899,17 @@ export interface EmailExchangeExchangeAccountSendAs {
    * Account id to give send as
    *
    */
-  allowedAccountId?: number;
+  allowedAccountId: number;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Get users authorized to Send On Behalf To mails from this mailbox
@@ -919,17 +919,17 @@ export interface EmailExchangeExchangeAccountSendOnBehalfTo {
    * Account id to give send on behalf to
    *
    */
-  allowedAccountId?: number;
+  allowedAccountId: number;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Exchange commercial version
@@ -943,22 +943,22 @@ export interface EmailExchangeExchangeDistributionGroupManager {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Manager account id
    *
    */
-  managerAccountId?: number;
+  managerAccountId: number;
   /**
    * Member account primaryEmailAddress
    *
    */
-  managerEmailAddress?: string;
+  managerEmailAddress: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Mailing list members
@@ -968,7 +968,7 @@ export interface EmailExchangeExchangeDistributionGroupMember {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Member account id
    *
@@ -983,12 +983,12 @@ export interface EmailExchangeExchangeDistributionGroupMember {
    * Member account primaryEmailAddress
    *
    */
-  memberEmailAddress?: string;
+  memberEmailAddress: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Get users authorized to Send On Behalf To mails from this mailbox
@@ -998,17 +998,17 @@ export interface EmailExchangeExchangeDistributionGroupSendAs {
    * Account id to give send on behalf to
    *
    */
-  allowedAccountId?: number;
+  allowedAccountId: number;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Get users authorized to Send On Behalf To mails from this mailing list
@@ -1018,17 +1018,17 @@ export interface EmailExchangeExchangeDistributionGroupSendOnBehalfTo {
    * Account id to give send on behalf to
    *
    */
-  allowedAccountId?: number;
+  allowedAccountId: number;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * External contact for this exchange service
@@ -1038,17 +1038,17 @@ export interface EmailExchangeExchangeExternalContact {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Contact display name
    *
    */
-  displayName?: string;
+  displayName: string;
   /**
    * Contact email
    *
    */
-  externalEmailAddress?: string;
+  externalEmailAddress: string;
   /**
    * Contact first name
    *
@@ -1058,12 +1058,12 @@ export interface EmailExchangeExchangeExternalContact {
    * Hide the contact in Global Address List
    *
    */
-  hiddenFromGAL?: boolean;
+  hiddenFromGAL: boolean;
   /**
    * Contact id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Contact initals
    *
@@ -1083,12 +1083,12 @@ export interface EmailExchangeExchangeExternalContact {
    * Contact state
    *
    */
-  state?: EmailExchangeObjectStateEnum;
+  state: EmailExchangeObjectStateEnum;
   /**
    * Task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Get aliases on this mailingList
@@ -1098,17 +1098,17 @@ export interface EmailExchangeExchangeMailingListAlias {
    * Alias
    *
    */
-  alias?: string;
+  alias: string;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Exchange organization public folder permission
@@ -1118,25 +1118,25 @@ export interface EmailExchangeExchangePublicFolderPermission {
    * Access right set for the account
    *
    */
-  accessRights?: EmailExchangePublicFolderRightTypeEnum;
+  accessRights: EmailExchangePublicFolderRightTypeEnum;
   /**
    * Account id
    *
    */
-  allowedAccountId?: number;
+  allowedAccountId: number;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    */
-  state?: EmailExchangeObjectStateEnum;
+  state: EmailExchangeObjectStateEnum;
   /**
    * task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Resource accounts delegates
@@ -1146,7 +1146,7 @@ export interface EmailExchangeExchangeResourceAccountDelegate {
    * delegate's account id
    *
    */
-  allowedAccountId?: number;
+  allowedAccountId: number;
   /**
    * Creation date
    *
@@ -1156,12 +1156,12 @@ export interface EmailExchangeExchangeResourceAccountDelegate {
    * Delegate account primaryEmailAddress
    *
    */
-  delegateEmailAddress?: string;
+  delegateEmailAddress: string;
   /**
    * task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Get email addresses subscribed to ActiveSync quarantine notifications
@@ -1171,22 +1171,22 @@ export interface EmailExchangeExchangeServiceActiveSyncNotification {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Notified Account Id
    *
    */
-  notifiedAccountId?: number;
+  notifiedAccountId: number;
   /**
    * Primary email address for notified account
    *
    */
-  primaryEmailAddress?: string;
+  primaryEmailAddress: string;
   /**
    * Email state
    *
    */
-  state?: EmailExchangeActiveSyncNotificationStateEnum;
+  state: EmailExchangeActiveSyncNotificationStateEnum;
 }
 /**
  * Get authorized IPs for POP, IMAP and webmail
@@ -1196,17 +1196,17 @@ export interface EmailExchangeExchangeServiceAuthorizedIp {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Authorized IP
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * Authorized IP status
    *
    */
-  status?: EmailExchangeAuthorizedIpStatusEnum;
+  status: EmailExchangeAuthorizedIpStatusEnum;
 }
 /**
  * Get the list of your ActiveSync devices registered on this Exchange service
@@ -1216,37 +1216,37 @@ export interface EmailExchangeExchangeServiceDevice {
    * International Mobile Equipment Identity
    *
    */
-  IMEI?: string;
+  IMEI: string;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Device Id
    *
    */
-  deviceId?: string;
+  deviceId: string;
   /**
    * Model device
    *
    */
-  deviceModel?: string;
+  deviceModel: string;
   /**
    * Device State
    *
    */
-  deviceState?: EmailExchangeDeviceActiveSyncStateEnum;
+  deviceState: EmailExchangeDeviceActiveSyncStateEnum;
   /**
    * user guid
    *
    */
-  guid?: string;
+  guid: string;
   /**
    * Exchange identity
    *
    */
-  identity?: string;
+  identity: string;
   /**
    * Last update date
    *
@@ -1256,7 +1256,7 @@ export interface EmailExchangeExchangeServiceDevice {
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Protocol access policy for this Exchange service
@@ -1266,27 +1266,27 @@ export interface EmailExchangeExchangeServiceProtocol {
    * IMAP protocol enabled on this Exchange service
    *
    */
-  IMAP?: boolean;
+  IMAP: boolean;
   /**
    * POP protocol enabled on this Exchange service
    *
    */
-  POP?: boolean;
+  POP: boolean;
   /**
    * ActiveSync protocol enabled on this Exchange service
    *
    */
-  activeSync?: boolean;
+  activeSync: boolean;
   /**
    * ActiveSync policy to apply at device's first connection
    *
    */
-  activeSyncPolicy?: EmailExchangeActiveSyncPolicyEnum;
+  activeSyncPolicy: EmailExchangeActiveSyncPolicyEnum;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Last update date
    *
@@ -1296,12 +1296,12 @@ export interface EmailExchangeExchangeServiceProtocol {
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
   /**
    * Web mail protocol enabled on this Exchange service
    *
    */
-  webMail?: boolean;
+  webMail: boolean;
 }
 /**
  * Users having full access on this shared mailbox
@@ -1311,17 +1311,17 @@ export interface EmailExchangeExchangeSharedAccountFullAccess {
    * Account id to give full access
    *
    */
-  allowedAccountId?: number;
+  allowedAccountId: number;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Users authorized to send mails from this shared mailbox
@@ -1331,17 +1331,17 @@ export interface EmailExchangeExchangeSharedAccountSendAs {
    * Account id to give send as
    *
    */
-  allowedAccountId?: number;
+  allowedAccountId: number;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Get users authorized to Send On Behalf To mails from this shared mailbox
@@ -1351,17 +1351,17 @@ export interface EmailExchangeExchangeSharedAccountSendOnBehalfTo {
    * Account id to give send on behalf to
    *
    */
-  allowedAccountId?: number;
+  allowedAccountId: number;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Mailing list
@@ -1371,12 +1371,12 @@ export interface EmailExchangeMailingList {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Depart restriction policy
    *
    */
-  departRestriction?: EmailExchangeMailingListDepartRestrictionEnum;
+  departRestriction: EmailExchangeMailingListDepartRestrictionEnum;
   /**
    * Name displayed in Global Access List
    *
@@ -1386,12 +1386,12 @@ export interface EmailExchangeMailingList {
    * If true mailing list is hiddend in Global Address List
    *
    */
-  hiddenFromGAL?: boolean;
+  hiddenFromGAL: boolean;
   /**
    * Join restriction policy
    *
    */
-  joinRestriction?: EmailExchangeMailingListJoinRestrictionEnum;
+  joinRestriction: EmailExchangeMailingListJoinRestrictionEnum;
   /**
    * Update date
    *
@@ -1401,7 +1401,7 @@ export interface EmailExchangeMailingList {
    * The mailing list address
    *
    */
-  mailingListAddress?: string;
+  mailingListAddress: string;
   /**
    * Maximum receive email size in MB
    *
@@ -1416,12 +1416,12 @@ export interface EmailExchangeMailingList {
    * If true sender has to authenticate
    *
    */
-  senderAuthentification?: boolean;
+  senderAuthentification: boolean;
   /**
    * Account was sending spam
    *
    */
-  spamDetected?: boolean;
+  spamDetected: boolean;
   /**
    * Ticket number of spam detection
    *
@@ -1431,12 +1431,12 @@ export interface EmailExchangeMailingList {
    * Mailing list state
    *
    */
-  state?: EmailExchangeObjectStateEnum;
+  state: EmailExchangeObjectStateEnum;
   /**
    * Task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Exchange organization public folder
@@ -1446,7 +1446,7 @@ export interface EmailExchangePublicFolder {
    * Access right for the guest users
    *
    */
-  anonymousPermission?: EmailExchangePublicFolderRightTypeEnum;
+  anonymousPermission: EmailExchangePublicFolderRightTypeEnum;
   /**
    * Creation date
    *
@@ -1456,7 +1456,7 @@ export interface EmailExchangePublicFolder {
    * Default access right
    *
    */
-  defaultPermission?: EmailExchangePublicFolderRightTypeEnum;
+  defaultPermission: EmailExchangePublicFolderRightTypeEnum;
   /**
    * If true, this public folder has subfolders
    *
@@ -1491,20 +1491,20 @@ export interface EmailExchangePublicFolder {
    * Path for public folder
    *
    */
-  path?: string;
+  path: string;
   /**
    * Quota for public folder in MB
    *
    */
-  quota?: number;
+  quota: number;
   /**
    */
-  state?: EmailExchangeObjectStateEnum;
+  state: EmailExchangeObjectStateEnum;
   /**
    * task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
   /**
    * Sum of all items in public folder in MB
    *
@@ -1514,7 +1514,7 @@ export interface EmailExchangePublicFolder {
    * Type for public folder
    *
    */
-  type?: EmailExchangePublicFolderTypeEnum;
+  type: EmailExchangePublicFolderTypeEnum;
 }
 /**
  * Renew period
@@ -1528,22 +1528,22 @@ export interface EmailExchangeResourceAccount {
    * meeting organizer's name is used as the subject of the meeting request
    *
    */
-  addOrganizerToSubject?: boolean;
+  addOrganizerToSubject: boolean;
   /**
    * resource can be scheduled by more than one person during the same time period
    *
    */
-  allowConflict?: boolean;
+  allowConflict: boolean;
   /**
    * maximum number of days in advance that the resource can be reserved
    *
    */
-  bookingWindow?: number;
+  bookingWindow: number;
   /**
    * number of the same equipment or capacity of a room
    *
    */
-  capacity?: number;
+  capacity: number;
   /**
    * Creation date
    *
@@ -1553,52 +1553,52 @@ export interface EmailExchangeResourceAccount {
    * remove any text in the message body of incoming meeting requests on resourceAccount
    *
    */
-  deleteComments?: boolean;
+  deleteComments: boolean;
   /**
    * remove email subject of incoming meeting requests on resourceAccount
    *
    */
-  deleteSubject?: boolean;
+  deleteSubject: boolean;
   /**
    * name of resource
    *
    */
-  displayName?: string;
+  displayName: string;
   /**
    * resource location name
    *
    */
-  location?: string;
+  location: string;
   /**
    * maximum duration in minutes for meeting requests
    *
    */
-  maximumDuration?: number;
+  maximumDuration: number;
   /**
    * resource as email
    *
    */
-  resourceEmailAddress?: string;
+  resourceEmailAddress: string;
   /**
    * granted right on a calendar of that resourceAccount
    *
    */
-  showMeetingDetails?: EmailExchangeShowMeetingDetailsEnum;
+  showMeetingDetails: EmailExchangeShowMeetingDetailsEnum;
   /**
    * account state
    *
    */
-  state?: EmailExchangeObjectStateEnum;
+  state: EmailExchangeObjectStateEnum;
   /**
    * task pending id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
   /**
    * resource type
    *
    */
-  type?: EmailExchangeResourceTypeEnum;
+  type: EmailExchangeResourceTypeEnum;
 }
 /**
  * Exchange shared mailbox
@@ -1628,12 +1628,12 @@ export interface EmailExchangeSharedAccount {
    * Hide shared account in Global Address List
    *
    */
-  hiddenFromGAL?: boolean;
+  hiddenFromGAL: boolean;
   /**
    * Shared account id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Shared account initials
    *
@@ -1663,17 +1663,17 @@ export interface EmailExchangeSharedAccount {
    * Shared account maximum size
    *
    */
-  quota?: number;
+  quota: number;
   /**
    * Default email for this shared mailbox
    *
    */
-  sharedEmailAddress?: string;
+  sharedEmailAddress: string;
   /**
    * Account was sending spam
    *
    */
-  spamDetected?: boolean;
+  spamDetected: boolean;
   /**
    * Ticket number of spam detection
    *
@@ -1683,12 +1683,12 @@ export interface EmailExchangeSharedAccount {
    * Shared account state
    *
    */
-  state?: EmailExchangeObjectStateEnum;
+  state: EmailExchangeObjectStateEnum;
   /**
    * Pending task for this shared account
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Spam and Antyvirus configuration
@@ -1698,37 +1698,37 @@ export interface EmailExchangeSpamAndVirusConfiguration {
    * Check DKIM of message
    *
    */
-  checkDKIM?: boolean;
+  checkDKIM: boolean;
   /**
    * Check SPF of message
    *
    */
-  checkSPF?: boolean;
+  checkSPF: boolean;
   /**
    * If message is a spam delete it
    *
    */
-  deleteSpam?: boolean;
+  deleteSpam: boolean;
   /**
    * If message is a virus delete it
    *
    */
-  deleteVirus?: boolean;
+  deleteVirus: boolean;
   /**
    * If message is a spam or virus put in junk. Overridden by deleteSpam or deleteVirus
    *
    */
-  putInJunk?: boolean;
+  putInJunk: boolean;
   /**
    * If message is a spam change its subject
    *
    */
-  tagSpam?: boolean;
+  tagSpam: boolean;
   /**
    * If message is a virus change its subject
    *
    */
-  tagVirus?: boolean;
+  tagVirus: boolean;
 }
 /**
  * Map a possible renew for a specific service
@@ -1738,17 +1738,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -1776,28 +1776,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -1810,13 +1810,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsEmailExchangeGET = '/email/exchange' | 
 '/email/exchange/{organizationName}/service' | 

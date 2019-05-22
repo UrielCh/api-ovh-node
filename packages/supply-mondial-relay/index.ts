@@ -11,12 +11,12 @@ export interface SupplyMondialRelay {
    * Relay point address
    *
    */
-  address?: string;
+  address: string;
   /**
    * City
    *
    */
-  city?: string;
+  city: string;
   /**
    * Relay point closing dates
    *
@@ -26,7 +26,7 @@ export interface SupplyMondialRelay {
    * Relay country
    *
    */
-  country?: CoreTypesCountryEnum;
+  country: CoreTypesCountryEnum;
   /**
    * Distance between address and relay point
    *
@@ -36,17 +36,17 @@ export interface SupplyMondialRelay {
    * Mondial Relay point ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Relay point latitude
    *
    */
-  lat?: number;
+  lat: number;
   /**
    * Relay point longitude
    *
    */
-  lng?: number;
+  lng: number;
   /**
    * URL of short map
    *
@@ -56,12 +56,12 @@ export interface SupplyMondialRelay {
    * Relay point name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Relay point opening hours
    *
    */
-  opening?: SupplyMondialRelayOpening;
+  opening: SupplyMondialRelayOpening;
   /**
    * Relay point picture\s URL
    *
@@ -71,7 +71,7 @@ export interface SupplyMondialRelay {
    * Zipcode
    *
    */
-  zipcode?: string;
+  zipcode: string;
 }
 /**
  * Closing period for mondial relay point
@@ -81,12 +81,12 @@ export interface SupplyMondialRelayClosingPeriod {
    * Ending of closing period
    *
    */
-  end?: string;
+  end: string;
   /**
    * Beginning of closing period
    *
    */
-  start?: string;
+  start: string;
 }
 /**
  * Opening range for mondial relay point
@@ -96,12 +96,12 @@ export interface SupplyMondialRelayDayPeriod {
    * Ending time (00:00 format)
    *
    */
-  end?: string;
+  end: string;
   /**
    * Starting time (00:00 format)
    *
    */
-  start?: string;
+  start: string;
 }
 /**
  * Day with schedule for mondial relay point opening
@@ -151,12 +151,12 @@ export interface SupplyMondialRelayResult {
    * Reference address for finding RelayPoints
    *
    */
-  referenceAddress?: string;
+  referenceAddress: string;
   /**
    * Array of relay points
    *
    */
-  relayPoints?: SupplyMondialRelay[];
+  relayPoints: SupplyMondialRelay[];
 }
 /**
  * Status and Mondial Relay Point Details
@@ -176,7 +176,7 @@ export interface SupplyMondialRelayReturn {
    * Request status
    *
    */
-  status?: SupplyStatus;
+  status: SupplyStatus;
 }
 /**
  * Request status

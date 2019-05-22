@@ -7,12 +7,12 @@ export interface ComplexTypeRange<T> {
    * Start point of the range
    *
    */
-  from?: T;
+  from: T;
   /**
    * End point of the range
    *
    */
-  to?: T;
+  to: T;
 }
 /**
  * Key and value, with proper key strings
@@ -20,10 +20,10 @@ export interface ComplexTypeRange<T> {
 export interface ComplexTypeSafeKeyValue<T> {
   /**
    */
-  key?: string;
+  key: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * A value set tagged with its unit
@@ -31,10 +31,10 @@ export interface ComplexTypeSafeKeyValue<T> {
 export interface ComplexTypeUnitAndValues<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  values?: T[];
+  values: T[];
 }
 /**
  * ISO country codes
@@ -54,13 +54,13 @@ export type NichandleGenderEnum = 'female' | 'male';
 export interface OrderContract {
   /**
    */
-  content?: string;
+  content: string;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  url?: string;
+  url: string;
 }
 /**
  * 
@@ -72,13 +72,13 @@ export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL
 export interface OrderPrice {
   /**
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  currencyCode: OrderCurrencyCodeEnum;
   /**
    */
-  text?: string;
+  text: string;
   /**
    */
-  value?: number;
+  value: number;
 }
 /**
  * Map a possible renew for a specific service
@@ -88,17 +88,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -126,28 +126,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -160,13 +160,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * Spare properties
@@ -176,17 +176,17 @@ export interface SpareTelephonyTelephonySpare {
    * Phone brand model
    *
    */
-  brand?: string;
+  brand: string;
   /**
    * Mac address
    *
    */
-  macAddress?: string;
+  macAddress: string;
   /**
    * Phone protocol
    *
    */
-  protocol?: TelephonyProtocolEnum;
+  protocol: TelephonyProtocolEnum;
 }
 /**
  * Abbreviated number
@@ -196,18 +196,18 @@ export interface TelephonyAbbreviatedNumber {
    * The abbreviated number which must start with "2" and must have a length of 3 or 4 digits
    *
    */
-  abbreviatedNumber?: number;
+  abbreviatedNumber: number;
   /**
    * The destination of the abbreviated number
    *
    */
-  destinationNumber?: string;
+  destinationNumber: string;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  surname?: string;
+  surname: string;
 }
 /**
  * Abbreviated number
@@ -217,18 +217,18 @@ export interface TelephonyAbbreviatedNumberGroup {
    * The abbreviated number which must start with "7" and must have a length of 3 or 4 digits
    *
    */
-  abbreviatedNumber?: number;
+  abbreviatedNumber: number;
   /**
    * The destination of the abbreviated number
    *
    */
-  destinationNumber?: string;
+  destinationNumber: string;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  surname?: string;
+  surname: string;
 }
 /**
  * Informations related to a line offer
@@ -243,12 +243,12 @@ export interface TelephonyAccessoryOffer {
    * The accessory name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Accessory price
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * An URL to accessory details
    *
@@ -267,15 +267,15 @@ export interface TelephonyBannerAccess {
    * The creation date of this access
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * The url of the web access
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Document suffix
@@ -293,52 +293,52 @@ export interface TelephonyBillingAccount {
    * Allowed outplan
    *
    */
-  allowedOutplan?: OrderPrice;
+  allowedOutplan: OrderPrice;
   /**
    * Name of the billing account
    *
    */
-  billingAccount?: string;
+  billingAccount: string;
   /**
    * Allowed threshold credit
    *
    */
-  creditThreshold?: OrderPrice;
+  creditThreshold: OrderPrice;
   /**
    * Current outplan
    *
    */
-  currentOutplan?: OrderPrice;
+  currentOutplan: OrderPrice;
   /**
    * Description of the billing account
    *
    */
-  description?: string;
+  description: string;
   /**
    * Hide called numbers in end-of-month call details CSV
    *
    */
-  hiddenExternalNumber?: boolean;
+  hiddenExternalNumber: boolean;
   /**
    * Override number display for calls between services of your billing account
    *
    */
-  overrideDisplayedNumber?: boolean;
+  overrideDisplayedNumber: boolean;
   /**
    * Security deposit amount
    *
    */
-  securityDeposit?: OrderPrice;
+  securityDeposit: OrderPrice;
   /**
    * Current status of billing account
    *
    */
-  status?: TelephonyBillingAccountStatusEnum;
+  status: TelephonyBillingAccountStatusEnum;
   /**
    * Is the billing account trusted
    *
    */
-  trusted?: boolean;
+  trusted: boolean;
 }
 /**
  * Status of billing account
@@ -352,67 +352,67 @@ export interface TelephonyCallDiagnosticCallQuality {
    * Call identifier of the sip signal leg
    *
    */
-  callId?: string;
+  callId: string;
   /**
    * Codec used in this direction flow
    *
    */
-  codec?: TelephonyCallDiagnosticCodecEnum;
+  codec: TelephonyCallDiagnosticCodecEnum;
   /**
    * Identifier of the metric performance value
    *
    */
-  flowId?: number;
+  flowId: number;
   /**
    * The ip address destination
    *
    */
-  ipDst?: string;
+  ipDst: string;
   /**
    * The ip address source
    *
    */
-  ipSrc?: string;
+  ipSrc: string;
   /**
    * The max delay between two packet in the given direction flow
    *
    */
-  maxDelay?: number;
+  maxDelay: number;
   /**
    * Variation in the delay of received packets. Smaller is better and less is more
    *
    */
-  maxJitter?: number;
+  maxJitter: number;
   /**
    * Mean Opinion Score expressed in one number, from 1 to 5, 1 being the worst and 5 the best.
    *
    */
-  mos?: number;
+  mos: number;
   /**
    * The number of packet sent in the given direction flow
    *
    */
-  packets?: number;
+  packets: number;
   /**
    * Destination port
    *
    */
-  portDst?: number;
+  portDst: number;
   /**
    * The port source
    *
    */
-  portSrc?: number;
+  portSrc: number;
   /**
    * Number of packet RTP lost in the direction flow
    *
    */
-  rtpLost?: number;
+  rtpLost: number;
   /**
    * The creation timestamp of the given direction flow
    *
    */
-  timestamp?: string;
+  timestamp: string;
 }
 /**
  * SS7 ISUP cause codes
@@ -426,12 +426,12 @@ export interface TelephonyCallDiagnosticCdrs {
    * Basic information about call details record
    *
    */
-  basic?: TelephonyCallDiagnosticCdrsBasic;
+  basic: TelephonyCallDiagnosticCdrsBasic;
   /**
    * The timestamp of the call details record capture
    *
    */
-  timestamp?: string;
+  timestamp: string;
 }
 /**
  * Call diagnostic analyze structure call cdrs
@@ -441,17 +441,17 @@ export interface TelephonyCallDiagnosticCdrsBasic {
    * Hexadecimal SIP-to-SS7 ISUP cause codes
    *
    */
-  cause?: TelephonyCallDiagnosticCauseEnum;
+  cause: TelephonyCallDiagnosticCauseEnum;
   /**
    * SS7 ISUP cause codes
    *
    */
-  causeDescription?: string;
+  causeDescription: string;
   /**
    * Release location type : forward if the calling hangup, backward if the caller hangup, else local
    *
    */
-  releaseLocation?: TelephonyReleaseLocationEnum;
+  releaseLocation: TelephonyReleaseLocationEnum;
 }
 /**
  * Enumeration providing payload type to Name of RTP audio video profile
@@ -465,7 +465,7 @@ export interface TelephonyCallDiagnosticReporting {
    * The relevant informations in anormal behaviors
    *
    */
-  message?: string;
+  message: string;
 }
 /**
  * Call diagnostic analyze structure on sip signal
@@ -475,7 +475,7 @@ export interface TelephonyCallDiagnosticSip {
    * Encoded json headers
    *
    */
-  headers?: string;
+  headers: string;
   /**
    */
   requestMethod?: string;
@@ -484,7 +484,7 @@ export interface TelephonyCallDiagnosticSip {
   response?: string;
   /**
    */
-  timestamp?: string;
+  timestamp: string;
 }
 /**
  * Information extraction status
@@ -498,27 +498,27 @@ export interface TelephonyCallDiagnostics {
    * The MOS call quality report
    *
    */
-  callQuality?: TelephonyCallDiagnosticCallQuality[];
+  callQuality: TelephonyCallDiagnosticCallQuality[];
   /**
    * The Call details records information
    *
    */
-  cdrs?: TelephonyCallDiagnosticCdrs[];
+  cdrs: TelephonyCallDiagnosticCdrs[];
   /**
    * The relevant informations in anormal behaviors
    *
    */
-  reporting?: TelephonyCallDiagnosticReporting[];
+  reporting: TelephonyCallDiagnosticReporting[];
   /**
    * Sip signal packets during the call and last registers
    *
    */
-  sip?: TelephonyCallDiagnosticSip[];
+  sip: TelephonyCallDiagnosticSip[];
   /**
    * Todo if datas are being to be loaded in cache. done when datas are available
    *
    */
-  status?: TelephonyCallDiagnosticStatusEnum;
+  status: TelephonyCallDiagnosticStatusEnum;
 }
 /**
  * Automatic Call made by Call Generator on this line
@@ -543,7 +543,7 @@ export interface TelephonyCallsGenerated {
    * billingNumber (service used)
    *
    */
-  billingNumber?: string;
+  billingNumber: string;
   /**
    * creation date of the call
    *
@@ -583,7 +583,7 @@ export interface TelephonyCallsGenerated {
    * Generated call identifier
    *
    */
-  identifier?: string;
+  identifier: string;
   /**
    * original call uuid if it's a transfer
    *
@@ -593,7 +593,7 @@ export interface TelephonyCallsGenerated {
    * unique call id
    *
    */
-  uuid?: string;
+  uuid: string;
 }
 /**
  * Types of dialplan available for callsGenerator.
@@ -616,12 +616,12 @@ export interface TelephonyCity {
    * The name of the city
    *
    */
-  name?: string;
+  name: string;
   /**
    * The zip code of the city
    *
    */
-  zipCode?: string;
+  zipCode: string;
 }
 /**
  * User of the click 2 call
@@ -631,17 +631,17 @@ export interface TelephonyClick2CallUser {
    * Date when user was created
    *
    */
-  creationDateTime?: string;
+  creationDateTime: string;
   /**
    * Contact identifier
    *
    */
-  id?: number;
+  id: number;
   /**
    * login of the click 2 call user
    *
    */
-  login?: string;
+  login: string;
 }
 /**
  * Conference
@@ -649,16 +649,16 @@ export interface TelephonyClick2CallUser {
 export interface TelephonyConference {
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  offers?: string[];
+  offers: string[];
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
 }
 /**
  * List past conferences on your number
@@ -668,37 +668,37 @@ export interface TelephonyConferenceHistory {
    * The count of connections to the conference
    *
    */
-  countConnections?: number;
+  countConnections: number;
   /**
    * The count of unique participants of the conference
    *
    */
-  countParticipants?: number;
+  countParticipants: number;
   /**
    * The date the conference began
    *
    */
-  dateBegin?: string;
+  dateBegin: string;
   /**
    * The date the conference end
    *
    */
-  dateEnd?: string;
+  dateEnd: string;
   /**
    * The duration of the conference in seconds
    *
    */
-  duration?: number;
+  duration: number;
   /**
    * The events of the conference (participants joining/left)
    *
    */
-  events?: TelephonyConferenceHistoryEvent[];
+  events: TelephonyConferenceHistoryEvent[];
   /**
    * The id of the conference history
    *
    */
-  id?: number;
+  id: number;
   /**
    * The audio record url if you set recording
    *
@@ -713,17 +713,17 @@ export interface TelephonyConferenceHistoryEvent {
    * The caller id of the participant
    *
    */
-  callerid?: string;
+  callerid: string;
   /**
    * The date of the conference event
    *
    */
-  date?: string;
+  date: string;
   /**
    * The nature of the event : left/join
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * Conference realtime informations structure
@@ -733,17 +733,17 @@ export interface TelephonyConferenceInformations {
    * The date when the conference began
    *
    */
-  dateStart?: string;
+  dateStart: string;
   /**
    * Whether or not the conference room is locked
    *
    */
-  locked?: boolean;
+  locked: boolean;
   /**
    * The current participants count in your conference room
    *
    */
-  membersCount?: number;
+  membersCount: number;
 }
 /**
  * Available language for your conference
@@ -757,47 +757,47 @@ export interface TelephonyConferenceParticipants {
    * The arrival datetime of the participant in the conference.
    *
    */
-  arrivalDateTime?: string;
+  arrivalDateTime: string;
   /**
    * The caller name of the participant
    *
    */
-  callerName?: string;
+  callerName: string;
   /**
    * The caller number of the participant
    *
    */
-  callerNumber?: string;
+  callerNumber: string;
   /**
    * The current level of the participant audio transmission
    *
    */
-  energy?: number;
+  energy: number;
   /**
    * Whether or not the participant is active in the room
    *
    */
-  floor?: boolean;
+  floor: boolean;
   /**
    * Whether or not the participant can hear the conference
    *
    */
-  hear?: boolean;
+  hear: boolean;
   /**
    * The id of the participant
    *
    */
-  id?: number;
+  id: number;
   /**
    * Whether or not the participant can talk in the conference
    *
    */
-  speak?: boolean;
+  speak: boolean;
   /**
    * Whether or not the participant is talking
    *
    */
-  talking?: boolean;
+  talking: boolean;
 }
 /**
  * Conference properties
@@ -807,7 +807,7 @@ export interface TelephonyConferenceProperties {
    * Whether or not announce file is played before entrance
    *
    */
-  announceFile?: boolean;
+  announceFile: boolean;
   /**
    * The announce file name
    *
@@ -822,32 +822,32 @@ export interface TelephonyConferenceProperties {
    * Whether or not anonmyous participants are allowed
    *
    */
-  anonymousRejection?: boolean;
+  anonymousRejection: boolean;
   /**
    * Whether or not participants enter conference room muted
    *
    */
-  enterMuted?: boolean;
+  enterMuted: boolean;
   /**
    * The events channel hash
    *
    */
-  eventsChannel?: string;
+  eventsChannel: string;
   /**
    * The conference sounds language
    *
    */
-  language?: TelephonyConferenceLanguageEnum;
+  language: TelephonyConferenceLanguageEnum;
   /**
    * The conference pin number
    *
    */
-  pin?: string;
+  pin: string;
   /**
    * Whether or not conference is recorded
    *
    */
-  recordStatus?: boolean;
+  recordStatus: boolean;
   /**
    * The email address to send conference report to
    *
@@ -857,12 +857,12 @@ export interface TelephonyConferenceProperties {
    * The status of the reporting
    *
    */
-  reportStatus?: TelephonyConferenceReportStatusEnum;
+  reportStatus: TelephonyConferenceReportStatusEnum;
   /**
    * True if you want to receive a white-labelled mail report of your conference
    *
    */
-  whiteLabelReport?: boolean;
+  whiteLabelReport: boolean;
 }
 /**
  * Conference report receiver
@@ -876,17 +876,17 @@ export interface TelephonyConferenceWebAccess {
    * The id of the conference web access
    *
    */
-  id?: number;
+  id: number;
   /**
    * The type of the conference web access : read or write
    *
    */
-  type?: TelephonyConferenceWebAccessTypeEnum;
+  type: TelephonyConferenceWebAccessTypeEnum;
   /**
    * The URL of the conference web access
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Webaccess type for your conference
@@ -900,22 +900,22 @@ export interface TelephonyConsumptionThreshold {
    * The blocking type of the associate lines
    *
    */
-  block?: TelephonyOutplanNotificationBlockEnum;
+  block: TelephonyOutplanNotificationBlockEnum;
   /**
    * The id of the notification
    *
    */
-  id?: number;
+  id: number;
   /**
    * Override the nichandle email for this notification
    *
    */
-  notifyEmail?: string;
+  notifyEmail: string;
   /**
    * The notification percentage of maximum outplan
    *
    */
-  percentage?: number;
+  percentage: number;
 }
 /**
  * Contact informations structure
@@ -975,7 +975,7 @@ export type TelephonyContactsExportFormatsEnum = 'csv';
 export interface TelephonyDatetimeAndIpvalue {
   /**
    */
-  datetime?: string;
+  datetime: string;
   /**
    */
   ip?: string;
@@ -986,19 +986,19 @@ export interface TelephonyDatetimeAndIpvalue {
 export interface TelephonyDdi {
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
   destination?: string;
   /**
    */
-  featureType?: TelephonyTypeEnum;
+  featureType: TelephonyTypeEnum;
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
 }
 /**
  * 
@@ -1008,22 +1008,22 @@ export interface TelephonyDefaultSipDomains {
    * Country
    *
    */
-  country?: TelephonyNumberCountryEnum;
+  country: TelephonyNumberCountryEnum;
   /**
    * Current SIP domain
    *
    */
-  currentDomain?: string;
+  currentDomain: string;
   /**
    * List of available SIP domains
    *
    */
-  list?: string[];
+  list: string[];
   /**
    * Type of the VoIP product concerned
    *
    */
-  productType?: TelephonySipDomainProductTypeEnum;
+  productType: TelephonySipDomainProductTypeEnum;
 }
 /**
  * Detailed informations related to this number
@@ -1043,27 +1043,27 @@ export interface TelephonyDetailedRateCodeInformation {
    * Price per call
    *
    */
-  pricePerCallWithoutTax?: OrderPrice;
+  pricePerCallWithoutTax: OrderPrice;
   /**
    * Price in minute
    *
    */
-  pricePerMinuteWithoutTax?: OrderPrice;
+  pricePerMinuteWithoutTax: OrderPrice;
   /**
    * Scheduled rate code
    *
    */
-  rateCode?: string;
+  rateCode: string;
   /**
    * Repayment per call
    *
    */
-  repaymentPricePerCallWithoutTax?: OrderPrice;
+  repaymentPricePerCallWithoutTax: OrderPrice;
   /**
    * Repayment per minute
    *
    */
-  repaymentPricePerMinuteWithoutTax?: OrderPrice;
+  repaymentPricePerMinuteWithoutTax: OrderPrice;
   /**
    * Fees concerning rateCode update
    *
@@ -1078,37 +1078,37 @@ export interface TelephonyDiagnosticReport {
    * Identifier of the concerned leg
    *
    */
-  callId?: string;
+  callId: string;
   /**
    * Typology where the diagnostic arriving from
    *
    */
-  category?: TelephonyDiagnosticReportCategoryEnum;
+  category: TelephonyDiagnosticReportCategoryEnum;
   /**
    * Datetime of the diagnostic
    *
    */
-  datetime?: string;
+  datetime: string;
   /**
    * Explanation of the diagnostic
    *
    */
-  description?: string;
+  description: string;
   /**
    * The level of the diagnostic
    *
    */
-  level?: TelephonyDiagnosticReportLevelEnum;
+  level: TelephonyDiagnosticReportLevelEnum;
   /**
    * Name of the rule detected
    *
    */
-  name?: string;
+  name: string;
   /**
    * Report of the diagnostic
    *
    */
-  report?: string;
+  report: string;
 }
 /**
  * Source of the diagnostic report
@@ -1128,19 +1128,19 @@ export type TelephonyDiagnosticReportLevelEnum = 'debug' | 'error' | 'info' | 'w
 export interface TelephonyDirectoryHeadingPJ {
   /**
    */
-  apeCode?: string;
+  apeCode: string;
   /**
    */
-  apeDescription?: string;
+  apeDescription: string;
   /**
    */
-  directoryServiceCode?: number;
+  directoryServiceCode: number;
   /**
    */
-  directoryServiceDescription?: string;
+  directoryServiceDescription: string;
   /**
    */
-  notification?: string;
+  notification: string;
 }
 /**
  * Directory Informations
@@ -1148,118 +1148,118 @@ export interface TelephonyDirectoryHeadingPJ {
 export interface TelephonyDirectoryInfo {
   /**
    */
-  PJSocialNomination?: string;
+  PJSocialNomination: string;
   /**
    */
-  address?: string;
+  address: string;
   /**
    */
-  addressExtra?: string;
+  addressExtra: string;
   /**
    */
-  ape?: string;
+  ape: string;
   /**
    */
-  areaCode?: number;
+  areaCode: number;
   /**
    */
   birthDate?: string;
   /**
    */
-  cedex?: string;
+  cedex: string;
   /**
    */
-  city?: string;
+  city: string;
   /**
    */
-  country?: string;
+  country: string;
   /**
    */
-  directoryServiceCode?: string;
+  directoryServiceCode: string;
   /**
    */
-  displayFirstName?: boolean;
+  displayFirstName: boolean;
   /**
    */
-  displayMarketingDirectory?: boolean;
+  displayMarketingDirectory: boolean;
   /**
    */
-  displayOnlyCity?: boolean;
+  displayOnlyCity: boolean;
   /**
    */
-  displaySearchReverse?: boolean;
+  displaySearchReverse: boolean;
   /**
    */
-  displayUniversalDirectory?: boolean;
+  displayUniversalDirectory: boolean;
   /**
    */
-  email?: string;
+  email: string;
   /**
    */
-  firstName?: string;
+  firstName: string;
   /**
    */
   gender?: NichandleGenderEnum;
   /**
    */
-  inseeCode?: number;
+  inseeCode: number;
   /**
    */
-  legalForm?: string;
+  legalForm: string;
   /**
    */
-  lineDescription?: string;
+  lineDescription: string;
   /**
    */
-  modificationDate?: string;
+  modificationDate: string;
   /**
    */
-  modificationType?: string;
+  modificationType: string;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  number?: string;
+  number: string;
   /**
    */
-  occupation?: string;
+  occupation: string;
   /**
    */
-  postBox?: string;
+  postBox: string;
   /**
    */
-  postCode?: string;
+  postCode: string;
   /**
    */
-  receivePJDirectory?: boolean;
+  receivePJDirectory: boolean;
   /**
    */
-  siret?: string;
+  siret: string;
   /**
    */
-  socialNomination?: string;
+  socialNomination: string;
   /**
    */
-  socialNominationExtra?: string;
+  socialNominationExtra: string;
   /**
    */
-  status?: string;
+  status: string;
   /**
    */
-  urbanDistrict?: string;
+  urbanDistrict: string;
   /**
    */
-  wayName?: string;
+  wayName: string;
   /**
    */
-  wayNumber?: string;
+  wayNumber: string;
   /**
    */
-  wayNumberExtra?: string;
+  wayNumberExtra: string;
   /**
    */
-  wayType?: string;
+  wayType: string;
 }
 /**
  * Directory way type
@@ -1267,10 +1267,10 @@ export interface TelephonyDirectoryInfo {
 export interface TelephonyDirectoryWayType {
   /**
    */
-  abbreviatedName?: string;
+  abbreviatedName: string;
   /**
    */
-  wayName?: string;
+  wayName: string;
 }
 /**
  * OVH easy calls queues
@@ -1280,55 +1280,55 @@ export interface TelephonyEasyHunting {
    * Reject (hangup) anonymous calls
    *
    */
-  anonymousRejection?: boolean;
+  anonymousRejection: boolean;
   /**
    * Description of the service
    *
    */
-  description?: string;
+  description: string;
   /**
    * Feature of the service
    *
    */
-  featureType?: TelephonyTypeEnum;
+  featureType: TelephonyTypeEnum;
   /**
    * Does the service have extended CCS options enabled?
    *
    */
-  isCCS?: boolean;
+  isCCS: boolean;
   /**
    * Max wait time when caller is in queue (in seconds)
    *
    */
-  maxWaitTime?: number;
+  maxWaitTime: number;
   /**
    * Max number of callers in queue
    *
    */
-  queueSize?: number;
+  queueSize: number;
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * General type of the service
    *
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
   /**
    * The presented number when bridging calls
    *
    */
-  showCallerNumber?: TelephonyOvhPabxDialplanNumberPresentationEnum;
+  showCallerNumber: TelephonyOvhPabxDialplanNumberPresentationEnum;
   /**
    * Enable/Disable the status change IVR on your callcenter. The IVR is enabled by default.
    *
    */
-  statusIvrEnabled?: boolean;
+  statusIvrEnabled: boolean;
   /**
    * The calls dispatching strategy
    *
    */
-  strategy?: TelephonyOvhPabxHuntingQueueStrategyEnum;
+  strategy: TelephonyOvhPabxHuntingQueueStrategyEnum;
   /**
    * Tone played just before call is hang up
    *
@@ -1361,7 +1361,7 @@ export interface TelephonyEasyHuntingScreenListsConditions {
   callerIdNumber?: string;
   /**
    */
-  conditionId?: number;
+  conditionId: number;
   /**
    * Screenlist based on the destination number
    *
@@ -1371,7 +1371,7 @@ export interface TelephonyEasyHuntingScreenListsConditions {
    * Type of screenlist
    *
    */
-  screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum;
+  screenListType: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum;
 }
 /**
  * Easy hunting screen lists conditions options
@@ -1379,7 +1379,7 @@ export interface TelephonyEasyHuntingScreenListsConditions {
 export interface TelephonyEasyHuntingScreenListsConditionsSettings {
   /**
    */
-  status?: TelephonyEasyHuntingScreenListsConditionsStatusEnum;
+  status: TelephonyEasyHuntingScreenListsConditionsStatusEnum;
 }
 /**
  * Screenlist condition type
@@ -1391,27 +1391,27 @@ export type TelephonyEasyHuntingScreenListsConditionsStatusEnum = 'disabled' | '
 export interface TelephonyEasyHuntingTimeConditions {
   /**
    */
-  conditionId?: number;
+  conditionId: number;
   /**
    * The policy of time condition
    *
    */
-  policy?: TelephonyTimeConditionsPolicyEnum;
+  policy: TelephonyTimeConditionsPolicyEnum;
   /**
    * The time of the day when the extension will start to be executed
    *
    */
-  timeFrom?: string;
+  timeFrom: string;
   /**
    * The time of the day when the extension will stop to be executed
    *
    */
-  timeTo?: string;
+  timeTo: string;
   /**
    * The day of the week when the extension will be executed
    *
    */
-  weekDay?: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum;
+  weekDay: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum;
 }
 /**
  * Easy hunting time conditions options
@@ -1421,7 +1421,7 @@ export interface TelephonyEasyHuntingTimeConditionsSettings {
    * Status of time conditions
    *
    */
-  enable?: boolean;
+  enable: boolean;
   /**
    * Number associated to the first slot action
    *
@@ -1471,22 +1471,22 @@ export interface TelephonyEasyMiniPabxHuntingAgent {
    * The phone number of the agent
    *
    */
-  agentNumber?: string;
+  agentNumber: string;
   /**
    * True if the agent is logged
    *
    */
-  logged?: boolean;
+  logged: boolean;
   /**
    * The maxium ringing time
    *
    */
-  noReplyTimer?: number;
+  noReplyTimer: number;
   /**
    * The position in the hunting
    *
    */
-  position?: number;
+  position: number;
 }
 /**
  * Calls dispatching pattern
@@ -1502,16 +1502,16 @@ export type TelephonyEasyMiniPabxHuntingStrategyEnum = 'cyclic' | 'leastIdleSinc
 export interface TelephonyEasyPabx {
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  featureType?: TelephonyTypeEnum;
+  featureType: TelephonyTypeEnum;
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
 }
 /**
  * EasyPabx Hunting
@@ -1521,31 +1521,31 @@ export interface TelephonyEasyPabxHunting {
    * Reject anonymous calls
    *
    */
-  anonymousCallRejection?: boolean;
+  anonymousCallRejection: boolean;
   /**
    */
-  name?: string;
+  name: string;
   /**
    * The maximum no-reply time before forwarding the call to the voicemail
    *
    */
-  noReplyTimer?: number;
+  noReplyTimer: number;
   /**
    * Number of simultaneous calls
    *
    */
-  numberOfCalls?: number;
+  numberOfCalls: number;
   /**
    */
-  pattern?: TelephonyEasyMiniPabxHuntingPatternEnum;
+  pattern: TelephonyEasyMiniPabxHuntingPatternEnum;
   /**
    */
-  strategy?: TelephonyEasyMiniPabxHuntingStrategyEnum;
+  strategy: TelephonyEasyMiniPabxHuntingStrategyEnum;
   /**
    * True if the tone on closure is enabled
    *
    */
-  toneOnClosure?: boolean;
+  toneOnClosure: boolean;
   /**
    * Sound ID of on-closure tone
    *
@@ -1555,7 +1555,7 @@ export interface TelephonyEasyPabxHunting {
    * True if the tone on hold is enabled
    *
    */
-  toneOnHold?: boolean;
+  toneOnHold: boolean;
   /**
    * Sound ID of on-hold tone
    *
@@ -1565,7 +1565,7 @@ export interface TelephonyEasyPabxHunting {
    * True if the ring back tone is enabled
    *
    */
-  toneRingback?: boolean;
+  toneRingback: boolean;
   /**
    * Sound ID of ringback tone
    *
@@ -1600,17 +1600,17 @@ export interface TelephonyEntrepriseNumberInformations {
    * Entreprise number
    *
    */
-  entrepriseNumber?: string;
+  entrepriseNumber: string;
   /**
    * Is this a valid entreprise number?
    *
    */
-  isValid?: boolean;
+  isValid: boolean;
   /**
    * Name of the entreprise
    *
    */
-  name?: string;
+  name: string;
   /**
    * Short version of the entreprise number (FR only)
    *
@@ -1625,12 +1625,12 @@ export interface TelephonyEntrepriseNumberInformationsTask {
    * Informations about the enterprise
    *
    */
-  informations?: TelephonyEntrepriseNumberInformations;
+  informations: TelephonyEntrepriseNumberInformations;
   /**
    * Task status
    *
    */
-  status?: TelephonyTaskStatusEnum;
+  status: TelephonyTaskStatusEnum;
 }
 /**
  * Events triggered by the line
@@ -1640,42 +1640,42 @@ export interface TelephonyEvent {
    * Called referer, could be the msisdn or the label name
    *
    */
-  calledIdentifier?: string;
+  calledIdentifier: string;
   /**
    * Calling referer, could be the msisdn or the label name
    *
    */
-  callingIdentifier?: string;
+  callingIdentifier: string;
   /**
    * Datetime call establishment
    *
    */
-  dateTime?: string;
+  dateTime: string;
   /**
    * Incoming or outgoing call
    *
    */
-  direction?: TelephonyRealtimeEventDirection;
+  direction: TelephonyRealtimeEventDirection;
   /**
    * Duration of the call
    *
    */
-  duration?: number;
+  duration: number;
   /**
    * Type of event
    *
    */
-  eventType?: TelephonyRealtimeEventType;
+  eventType: TelephonyRealtimeEventType;
   /**
    * Uniq identifier of the call
    *
    */
-  id?: string;
+  id: string;
   /**
    * Protocol (mgcp or sip)
    *
    */
-  protocol?: TelephonyRealtimeEventProtocol;
+  protocol: TelephonyRealtimeEventProtocol;
 }
 /**
  * Callback url for each event
@@ -1698,7 +1698,7 @@ export interface TelephonyEventCallback {
 export interface TelephonyEventToken {
   /**
    */
-  token?: string;
+  token: string;
 }
 /**
  * Fax service
@@ -1706,7 +1706,7 @@ export interface TelephonyEventToken {
 export interface TelephonyFax {
   /**
    */
-  description?: string;
+  description: string;
   /**
    * Send notifications about Line's diagnosticReports
    *
@@ -1714,13 +1714,13 @@ export interface TelephonyFax {
   notifications?: TelephonyLineNotificationsOptions;
   /**
    */
-  offers?: string[];
+  offers: string[];
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
 }
 /**
  * Fax campaigns
@@ -1730,17 +1730,17 @@ export interface TelephonyFaxCampaign {
    * The count of failed faxes in the campaign
    *
    */
-  countFailed?: number;
+  countFailed: number;
   /**
    * The count of success faxes in the campaign
    *
    */
-  countSuccess?: number;
+  countSuccess: number;
   /**
    * The total count of faxes in the campaign
    *
    */
-  countTotal?: number;
+  countTotal: number;
   /**
    * The end date of the fax campaign
    *
@@ -1755,22 +1755,22 @@ export interface TelephonyFaxCampaign {
    * The id of the fax campaign
    *
    */
-  id?: number;
+  id: number;
   /**
    * The name of the fax campaign
    *
    */
-  name?: string;
+  name: string;
   /**
    * The reference of the fax campaign
    *
    */
-  reference?: string;
+  reference: string;
   /**
    * The status of the fax campaign
    *
    */
-  status?: string;
+  status: string;
 }
 /**
  * Detail of a fax campaign
@@ -1778,13 +1778,13 @@ export interface TelephonyFaxCampaign {
 export interface TelephonyFaxCampaignDetail {
   /**
    */
-  failed?: string[];
+  failed: string[];
   /**
    */
-  success?: string[];
+  success: string[];
   /**
    */
-  todo?: string[];
+  todo: string[];
 }
 /**
  * Available recipients method for fax campaign
@@ -1806,19 +1806,19 @@ export interface TelephonyFaxConsumption {
   calling?: string;
   /**
    */
-  consumptionId?: number;
+  consumptionId: number;
   /**
    */
-  creationDatetime?: string;
+  creationDatetime: string;
   /**
    */
-  pages?: number;
+  pages: number;
   /**
    */
-  priceWithoutTax?: OrderPrice;
+  priceWithoutTax: OrderPrice;
   /**
    */
-  wayType?: TelephonyFaxConsumptionWayTypeEnum;
+  wayType: TelephonyFaxConsumptionWayTypeEnum;
 }
 /**
  * Consumption way type
@@ -1834,40 +1834,40 @@ export type TelephonyFaxMailFormatEnum = 'html' | 'text';
 export interface TelephonyFaxProperties {
   /**
    */
-  callNumber?: string;
+  callNumber: string;
   /**
    */
-  countryCode?: string;
+  countryCode: string;
   /**
    */
-  faxMaxCall?: TelephonyFaxSendingTries;
+  faxMaxCall: TelephonyFaxSendingTries;
   /**
    */
-  faxQuality?: TelephonyFaxQualityEnum;
+  faxQuality: TelephonyFaxQualityEnum;
   /**
    */
-  faxTagLine?: string;
+  faxTagLine: string;
   /**
    */
-  fromEmail?: string;
+  fromEmail: string;
   /**
    */
-  fromName?: string;
+  fromName: string;
   /**
    */
-  mailFormat?: TelephonyFaxMailFormatEnum;
+  mailFormat: TelephonyFaxMailFormatEnum;
   /**
    */
-  receiver?: string;
+  receiver: string;
   /**
    */
-  redirectionEmail?: string[];
+  redirectionEmail: string[];
   /**
    */
-  rejectAnonymous?: boolean;
+  rejectAnonymous: boolean;
   /**
    */
-  sender?: string;
+  sender: string;
 }
 /**
  * Available quality for fax documents
@@ -1891,12 +1891,12 @@ export interface TelephonyFaxScreen {
    * Number of the fax service
    *
    */
-  callNumber?: string;
+  callNumber: string;
   /**
    * Country code of the fax service
    *
    */
-  countryCode?: string;
+  countryCode: string;
   /**
    * Which list is active (blackist, whitelist or none)
    *
@@ -1904,7 +1904,7 @@ export interface TelephonyFaxScreen {
   filteringList?: TelephonyFaxScreenListTypeEnum;
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * List of numbers allowed to send a fax
    *
@@ -1942,12 +1942,12 @@ export interface TelephonyFunctionKey {
    * The number of the function key
    *
    */
-  keyNum?: number;
+  keyNum: number;
   /**
    * The key label
    *
    */
-  label?: string;
+  label: string;
   /**
    * The function parameter
    *
@@ -1957,7 +1957,7 @@ export interface TelephonyFunctionKey {
    * The key type
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * Time conditions capable services
@@ -1965,7 +1965,7 @@ export interface TelephonyFunctionKey {
 export interface TelephonyGenericScreen {
   /**
    */
-  serviceName?: string;
+  serviceName: string;
 }
 /**
  * Informations related to a telephone offer
@@ -1980,12 +1980,12 @@ export interface TelephonyHardwareOffer {
    * The telephony name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Telephony price
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * An URL to telephony details
    *
@@ -1998,16 +1998,16 @@ export interface TelephonyHardwareOffer {
 export interface TelephonyHistoryConsumption {
   /**
    */
-  date?: string;
+  date: string;
   /**
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    */
-  priceOutplan?: OrderPrice;
+  priceOutplan: OrderPrice;
   /**
    */
-  status?: TelephonyBillStatusEnum;
+  status: TelephonyBillStatusEnum;
 }
 /**
  * Previous repayment bill
@@ -2017,22 +2017,22 @@ export interface TelephonyHistoryRepaymentConsumption {
    * the number of the bill
    *
    */
-  billingNumber?: string;
+  billingNumber: string;
   /**
    * date of the bill
    *
    */
-  date?: string;
+  date: string;
   /**
    * the amout which is repayed
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * status of the bill
    *
    */
-  status?: TelephonyBillStatusEnum;
+  status: TelephonyBillStatusEnum;
 }
 /**
  * Previous tollfree bill
@@ -2042,17 +2042,17 @@ export interface TelephonyHistoryTollfreeConsumption {
    * date of the bill
    *
    */
-  date?: string;
+  date: string;
   /**
    * the amount which is paid by the called number
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * status of the bill
    *
    */
-  status?: TelephonyBillStatusEnum;
+  status: TelephonyBillStatusEnum;
 }
 /**
  * Line service
@@ -2062,25 +2062,25 @@ export interface TelephonyLine {
    * Ability to manage SIP password on this service
    *
    */
-  canChangePassword?: boolean;
+  canChangePassword: boolean;
   /**
    */
-  description?: string;
+  description: string;
   /**
    * The line offers
    *
    */
-  getPublicOffer?: TelephonyLineOffer;
+  getPublicOffer: TelephonyLineOffer;
   /**
    * The infrastructure where is configured the line
    *
    */
-  infrastructure?: string;
+  infrastructure: string;
   /**
    * Is this line attached to a phone that belongs to another line?
    *
    */
-  isAttachedToOtherLinesPhone?: boolean;
+  isAttachedToOtherLinesPhone: boolean;
   /**
    * Send notifications about Line's diagnosticReports
    *
@@ -2090,16 +2090,16 @@ export interface TelephonyLine {
    * The line offers (Deprecated, prefer "name" in getPublicOffer)
    *
    */
-  offers?: string[];
+  offers: string[];
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
   /**
    */
-  simultaneousLines?: number;
+  simultaneousLines: number;
 }
 /**
  * The blocking mode of line calls
@@ -2147,12 +2147,12 @@ export interface TelephonyLineOffer {
    * The offer description
    *
    */
-  description?: string;
+  description: string;
   /**
    * The offer name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Offer price per month
    *
@@ -2167,12 +2167,12 @@ export interface TelephonyLineOffersAndContracts {
    * Informations related to a line contracts
    *
    */
-  contracts?: OrderContract[];
+  contracts: OrderContract[];
   /**
    * Informations related to a line offer
    *
    */
-  offers?: TelephonyLineOffer[];
+  offers: TelephonyLineOffer[];
 }
 /**
  * The nature of the call forward
@@ -2192,138 +2192,138 @@ export type TelephonyLineOptionLanguageEnum = 'Dutch' | 'English (UK)' | 'French
 export interface TelephonyLineOptions {
   /**
    */
-  absentSubscriber?: boolean;
+  absentSubscriber: boolean;
   /**
    * Reject anonymous calls
    *
    */
-  anonymousCallRejection?: boolean;
+  anonymousCallRejection: boolean;
   /**
    * Whether or not the line has restriction on incoming calls
    *
    */
-  callRestrictionIncoming?: boolean;
+  callRestrictionIncoming: boolean;
   /**
    * Whether or not the line has restriction on outgoing calls
    *
    */
-  callRestrictionOutgoing?: boolean;
+  callRestrictionOutgoing: boolean;
   /**
    * If the line receives a new call and the line is already in communication, this new call is dispatched once the current call is completed
    *
    */
-  callWaiting?: boolean;
+  callWaiting: boolean;
   /**
    * Codecs preferences
    *
    */
-  codecs?: string;
+  codecs: string;
   /**
    * The default voicemail of the line. It can be the voicemail of any line of your account.
    *
    */
-  defaultVoicemail?: string;
+  defaultVoicemail: string;
   /**
    */
-  displayNumber?: string;
+  displayNumber: string;
   /**
    */
-  doNotDisturb?: boolean;
+  doNotDisturb: boolean;
   /**
    * The SIP domain of the line
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Enable calls forward when the line is unavailable
    *
    */
-  forwardBackup?: boolean;
+  forwardBackup: boolean;
   /**
    * Nature of the forward when the line is unavailable
    *
    */
-  forwardBackupNature?: TelephonyLineOptionForwardNatureTypeEnum;
+  forwardBackupNature: TelephonyLineOptionForwardNatureTypeEnum;
   /**
    * Destination of the forward when the line is unavailable
    *
    */
-  forwardBackupNumber?: string;
+  forwardBackupNumber: string;
   /**
    * Enable calls forward when the line is busy
    *
    */
-  forwardBusy?: boolean;
+  forwardBusy: boolean;
   /**
    * Nature of the forward when the line is busy
    *
    */
-  forwardBusyNature?: TelephonyLineOptionForwardNatureTypeEnum;
+  forwardBusyNature: TelephonyLineOptionForwardNatureTypeEnum;
   /**
    * Destination of the forward when the line is busy
    *
    */
-  forwardBusyNumber?: string;
+  forwardBusyNumber: string;
   /**
    * Enable calls forward on no-reply
    *
    */
-  forwardNoReply?: boolean;
+  forwardNoReply: boolean;
   /**
    * Delay before forward on no-reply
    *
    */
-  forwardNoReplyDelay?: number;
+  forwardNoReplyDelay: number;
   /**
    * Nature of the forward on no-reply
    *
    */
-  forwardNoReplyNature?: TelephonyLineOptionForwardNatureTypeEnum;
+  forwardNoReplyNature: TelephonyLineOptionForwardNatureTypeEnum;
   /**
    * Destination of the forward on no-reply
    *
    */
-  forwardNoReplyNumber?: string;
+  forwardNoReplyNumber: string;
   /**
    * Enable unconditional calls forward
    *
    */
-  forwardUnconditional?: boolean;
+  forwardUnconditional: boolean;
   /**
    * Nature of the unconditional forward
    *
    */
-  forwardUnconditionalNature?: TelephonyLineOptionForwardNatureTypeEnum;
+  forwardUnconditionalNature: TelephonyLineOptionForwardNatureTypeEnum;
   /**
    * Destination of the unconditional forward
    *
    */
-  forwardUnconditionalNumber?: string;
+  forwardUnconditionalNumber: string;
   /**
    * Do not display your number
    *
    */
-  identificationRestriction?: boolean;
+  identificationRestriction: boolean;
   /**
    * Intercom mode: takes automatically the call with the loudspeaker
    *
    */
-  intercom?: TelephonyLineOptionIntercomEnum;
+  intercom: TelephonyLineOptionIntercomEnum;
   /**
    * The ip restrictions of your line
    *
    */
-  ipRestrictions?: string[];
+  ipRestrictions: string[];
   /**
    * Language of the line
    *
    */
-  language?: TelephonyLineOptionLanguageEnum;
+  language: TelephonyLineOptionLanguageEnum;
   /**
    * Disallow outgoing calls
    *
    */
-  lockOutCall?: boolean;
+  lockOutCall: boolean;
   /**
    * Disallow outgoing calls password
    *
@@ -2333,7 +2333,7 @@ export interface TelephonyLineOptions {
    * Enable or disable record of outgoing calls
    *
    */
-  recordOutgoingCallsBeta?: boolean;
+  recordOutgoingCallsBeta: boolean;
   /**
    * Sound ID of on-call-waiting tone
    *
@@ -2353,12 +2353,12 @@ export interface TelephonyLineOptions {
    * Voicemail number to dial from any other line
    *
    */
-  voicemailExternalNumber?: string;
+  voicemailExternalNumber: string;
   /**
    * Voicemail short number to dial from the line
    *
    */
-  voicemailInternalNumber?: string;
+  voicemailInternalNumber: string;
 }
 /**
  * Informations related to phone capabilities
@@ -2368,27 +2368,27 @@ export interface TelephonyLinePhone {
    * Brand name of the phone
    *
    */
-  brand?: string;
+  brand: string;
   /**
    * The phone description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Maximum number of lines managed by a phone
    *
    */
-  maxline?: number;
+  maxline: number;
   /**
    * Telephony price
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Phone protocol
    *
    */
-  protocol?: TelephonyProtocolEnum;
+  protocol: TelephonyProtocolEnum;
 }
 /**
  * Informations related to associable phone capabilities
@@ -2398,22 +2398,22 @@ export interface TelephonyLinePhoneAssociable {
    * Current lines configured on the phone
    *
    */
-  associatedLines?: TelephonyLinePhoneAssociableConfiguredLines[];
+  associatedLines: TelephonyLinePhoneAssociableConfiguredLines[];
   /**
    * Brand name of the phone
    *
    */
-  brand?: string;
+  brand: string;
   /**
    * Maximum quantity of lines managed by the phone
    *
    */
-  maxLines?: number;
+  maxLines: number;
   /**
    * Phone protocol
    *
    */
-  protocol?: TelephonyProtocolEnum;
+  protocol: TelephonyProtocolEnum;
 }
 /**
  * Current lines configured on the phone
@@ -2423,12 +2423,12 @@ export interface TelephonyLinePhoneAssociableConfiguredLines {
    * The line description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Service name of the line
    *
    */
-  serviceName?: string;
+  serviceName: string;
 }
 /**
  * Types of statistics available for a line.
@@ -2440,16 +2440,16 @@ export type TelephonyLineStatisticsTypeEnum = 'maxDelay' | 'maxJitter' | 'rtpMos
 export interface TelephonyMiniPabx {
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  featureType?: TelephonyTypeEnum;
+  featureType: TelephonyTypeEnum;
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
 }
 /**
  * MiniPabx Hunting
@@ -2459,36 +2459,36 @@ export interface TelephonyMiniPabxHunting {
    * Reject anonymous calls
    *
    */
-  anonymousCallRejection?: boolean;
+  anonymousCallRejection: boolean;
   /**
    */
-  name?: string;
+  name: string;
   /**
    * Number of simultaneous calls
    *
    */
-  numberOfCalls?: number;
+  numberOfCalls: number;
   /**
    * The maximum waiting time in the calls queue
    *
    */
-  onHoldTimer?: number;
+  onHoldTimer: number;
   /**
    */
-  pattern?: TelephonyEasyMiniPabxHuntingPatternEnum;
+  pattern: TelephonyEasyMiniPabxHuntingPatternEnum;
   /**
    * Maximum numbers of callers in the queue
    *
    */
-  queueSize?: number;
+  queueSize: number;
   /**
    */
-  strategy?: TelephonyEasyMiniPabxHuntingStrategyEnum;
+  strategy: TelephonyEasyMiniPabxHuntingStrategyEnum;
   /**
    * True if the tone on closure is enabled
    *
    */
-  toneOnClosure?: boolean;
+  toneOnClosure: boolean;
   /**
    * Sound ID of on-closure tone
    *
@@ -2498,7 +2498,7 @@ export interface TelephonyMiniPabxHunting {
    * True if the tone on hold is enabled
    *
    */
-  toneOnHold?: boolean;
+  toneOnHold: boolean;
   /**
    * Sound ID of on-hold tone
    *
@@ -2508,7 +2508,7 @@ export interface TelephonyMiniPabxHunting {
    * True if the ring back tone is enabled
    *
    */
-  toneRingback?: boolean;
+  toneRingback: boolean;
   /**
    * Sound ID of ringback tone
    *
@@ -2523,12 +2523,12 @@ export interface TelephonyNumber {
    * Description of the service
    *
    */
-  description?: string;
+  description: string;
   /**
    * Feature enabled on the number
    *
    */
-  featureType?: TelephonyTypeEnum;
+  featureType: TelephonyTypeEnum;
   /**
    * Parent of the service (if it is part of a pool)
    *
@@ -2538,10 +2538,10 @@ export interface TelephonyNumber {
    * Name of the service
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
 }
 /**
  * Number country code
@@ -2564,17 +2564,17 @@ export interface TelephonyNumberDetailedZone {
    * The city of the zone
    *
    */
-  city?: string;
+  city: string;
   /**
    * The country of the zone
    *
    */
-  country?: TelephonyNumberCountryEnum;
+  country: TelephonyNumberCountryEnum;
   /**
    * The number's range of this zone, in international format
    *
    */
-  internationalNumber?: string;
+  internationalNumber: string;
   /**
    * The criteria that matched the searched value
    *
@@ -2584,17 +2584,17 @@ export interface TelephonyNumberDetailedZone {
    * The number's range of this zone
    *
    */
-  number?: string;
+  number: string;
   /**
    * The country code of the number's range
    *
    */
-  prefix?: TelephonyNumberCountryCodeEnum;
+  prefix: TelephonyNumberCountryCodeEnum;
   /**
    * The type of number's range of this zone
    *
    */
-  type?: TelephonyNumberDetailedZoneTypeEnum;
+  type: TelephonyNumberDetailedZoneTypeEnum;
   /**
    * The zip code of the zone
    *
@@ -2604,7 +2604,7 @@ export interface TelephonyNumberDetailedZone {
    * The list of ZNE of this zone
    *
    */
-  zneList?: string[];
+  zneList: string[];
 }
 /**
  * The possible criteria matching a searched value for a zone
@@ -2626,7 +2626,7 @@ export interface TelephonyOfferChange {
    * The current offer will be replace by this one on the next renew.
    *
    */
-  offer?: string;
+  offer: string;
 }
 /**
  * Operation on a telephony offer
@@ -2636,25 +2636,25 @@ export interface TelephonyOfferTask {
    * Actual action that will be executed
    *
    */
-  action?: TelephonyOfferTaskActionEnum;
+  action: TelephonyOfferTaskActionEnum;
   /**
    * Planned execution date
    *
    */
-  executionDate?: string;
+  executionDate: string;
   /**
    * Current status of the task
    *
    */
-  status?: TelephonyTaskStatusEnum;
+  status: TelephonyTaskStatusEnum;
   /**
    */
-  taskId?: number;
+  taskId: number;
   /**
    * Type of operation that will be executed
    *
    */
-  type?: TelephonyOfferTaskTypeEnum;
+  type: TelephonyOfferTaskTypeEnum;
 }
 /**
  * Offer task actions
@@ -2676,25 +2676,25 @@ export interface TelephonyOvhPabx {
    * Description of the service
    *
    */
-  description?: string;
+  description: string;
   /**
    * Feature of the service
    *
    */
-  featureType?: TelephonyTypeEnum;
+  featureType: TelephonyTypeEnum;
   /**
    * Does the service have extended CCS options enabled?
    *
    */
-  isCCS?: boolean;
+  isCCS: boolean;
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * General type of the service
    *
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
 }
 /**
  * Custom statuses of your callcenter agents
@@ -2712,12 +2712,12 @@ export interface TelephonyOvhPabxCustomStatus {
   description?: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * The name of the status (Pause, Mission, etc...)
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Dialplan
@@ -2727,28 +2727,28 @@ export interface TelephonyOvhPabxDialplan {
    * Reject (hangup) anonymous calls
    *
    */
-  anonymousRejection?: boolean;
+  anonymousRejection: boolean;
   /**
    */
-  dialplanId?: number;
+  dialplanId: number;
   /**
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * The dialplan name
    *
    */
-  name?: string;
+  name: string;
   /**
    * The presented number when bridging calls
    *
    */
-  showCallerNumber?: TelephonyOvhPabxDialplanNumberPresentationEnum;
+  showCallerNumber: TelephonyOvhPabxDialplanNumberPresentationEnum;
   /**
    * The timeout (in seconds) when bridging calls
    *
    */
-  transferTimeout?: number;
+  transferTimeout: number;
 }
 /**
  * Dialplan extension
@@ -2758,15 +2758,15 @@ export interface TelephonyOvhPabxDialplanExtension {
    * True if the extension is enabled
    *
    */
-  enabled?: boolean;
+  enabled: boolean;
   /**
    */
-  extensionId?: number;
+  extensionId: number;
   /**
    * The position of the extension in the dialplan (the extensions are executed following this order)
    *
    */
-  position?: number;
+  position: number;
   /**
    * Additionnal conditions are used from this chosen scheduler category
    *
@@ -2789,7 +2789,7 @@ export interface TelephonyOvhPabxDialplanExtensionConditionScreenList {
   callerIdNumber?: string;
   /**
    */
-  conditionId?: number;
+  conditionId: number;
   /**
    * Screenlist based on the destination number
    *
@@ -2811,22 +2811,22 @@ export type TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum = 'dest
 export interface TelephonyOvhPabxDialplanExtensionConditionTime {
   /**
    */
-  conditionId?: number;
+  conditionId: number;
   /**
    * The time of the day when the extension will start to be executed
    *
    */
-  timeFrom?: string;
+  timeFrom: string;
   /**
    * The time of the day when the extension will stop to be executed
    *
    */
-  timeTo?: string;
+  timeTo: string;
   /**
    * The day of the week when the extension will be executed
    *
    */
-  weekDay?: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum;
+  weekDay: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum;
 }
 /**
  * Day of the week
@@ -2840,7 +2840,7 @@ export interface TelephonyOvhPabxDialplanExtensionRule {
    * The action made by the rule
    *
    */
-  action?: TelephonyOvhPabxDialplanExtensionRuleActionEnum;
+  action: TelephonyOvhPabxDialplanExtensionRuleActionEnum;
   /**
    * The parameter of the chosen action
    *
@@ -2850,15 +2850,15 @@ export interface TelephonyOvhPabxDialplanExtensionRule {
    * If true, the rule will be executed only when the result of the conditions is false
    *
    */
-  negativeAction?: boolean;
+  negativeAction: boolean;
   /**
    * The position of the rule in the extension (the rules are executed following this order)
    *
    */
-  position?: number;
+  position: number;
   /**
    */
-  ruleId?: number;
+  ruleId: number;
 }
 /**
  * Dialplan rule action
@@ -2886,12 +2886,12 @@ export interface TelephonyOvhPabxHunting {
    * The name of your callcenter offer
    *
    */
-  name?: string;
+  name: string;
   /**
    * Enable/Disable the status change IVR on your callcenter. The IVR is enabled by default.
    *
    */
-  statusIvrEnabled?: boolean;
+  statusIvrEnabled: boolean;
 }
 /**
  * Calls agent
@@ -2899,7 +2899,7 @@ export interface TelephonyOvhPabxHunting {
 export interface TelephonyOvhPabxHuntingAgent {
   /**
    */
-  agentId?: number;
+  agentId: number;
   /**
    * The id of the current break status of the agent
    *
@@ -2914,32 +2914,32 @@ export interface TelephonyOvhPabxHuntingAgent {
    * The number of the agent
    *
    */
-  number?: string;
+  number: string;
   /**
    * The maximum of simultaneous calls that the agent will receive from the hunting
    *
    */
-  simultaneousLines?: number;
+  simultaneousLines: number;
   /**
    * The current status of the agent
    *
    */
-  status?: TelephonyOvhPabxHuntingAgentStatusEnum;
+  status: TelephonyOvhPabxHuntingAgentStatusEnum;
   /**
    * The waiting timeout (in seconds) before hangup an assigned called
    *
    */
-  timeout?: number;
+  timeout: number;
   /**
    * The agent's type
    *
    */
-  type?: TelephonyOvhPabxHuntingAgentTypeEnum;
+  type: TelephonyOvhPabxHuntingAgentTypeEnum;
   /**
    * The wrap up time (in seconds) after the calls
    *
    */
-  wrapUpTime?: number;
+  wrapUpTime: number;
 }
 /**
  * Live statistics of the queue
@@ -2949,22 +2949,22 @@ export interface TelephonyOvhPabxHuntingAgentLiveStatus {
    * The number of calls this agent took on the current day
    *
    */
-  answeredCalls?: number;
+  answeredCalls: number;
   /**
    * Last status change date
    *
    */
-  lastStatusChange?: string;
+  lastStatusChange: string;
   /**
    * Current status of the agent
    *
    */
-  status?: TelephonyOvhPabxHuntingLiveAgentStatusEnum;
+  status: TelephonyOvhPabxHuntingLiveAgentStatusEnum;
   /**
    * The total duration in seconds of the calls this agent took on the current day
    *
    */
-  totalCallDuration?: number;
+  totalCallDuration: number;
 }
 /**
  * Agent assigned to a queue
@@ -2972,15 +2972,15 @@ export interface TelephonyOvhPabxHuntingAgentLiveStatus {
 export interface TelephonyOvhPabxHuntingAgentQueue {
   /**
    */
-  agentId?: number;
+  agentId: number;
   /**
    * The position in the queue
    *
    */
-  position?: number;
+  position: number;
   /**
    */
-  queueId?: number;
+  queueId: number;
 }
 /**
  * Status of the agent
@@ -3041,15 +3041,15 @@ export interface TelephonyOvhPabxHuntingQueue {
    * The maximum of people waiting in the queue
    *
    */
-  maxMember?: number;
+  maxMember: number;
   /**
    * The maximum waiting time (in seconds) in the queue
    *
    */
-  maxWaitTime?: number;
+  maxWaitTime: number;
   /**
    */
-  queueId?: number;
+  queueId: number;
   /**
    * Enable record on calls in queue
    *
@@ -3074,7 +3074,7 @@ export interface TelephonyOvhPabxHuntingQueue {
    * The calls dispatching strategy
    *
    */
-  strategy?: TelephonyOvhPabxHuntingQueueStrategyEnum;
+  strategy: TelephonyOvhPabxHuntingQueueStrategyEnum;
 }
 /**
  * Live statistics of the queue
@@ -3084,7 +3084,7 @@ export interface TelephonyOvhPabxHuntingQueueLiveCalls {
    * Name or number of the agent who answered the call
    *
    */
-  agent?: string;
+  agent: string;
   /**
    * Answer date of the call
    *
@@ -3094,22 +3094,22 @@ export interface TelephonyOvhPabxHuntingQueueLiveCalls {
    * Begin date of the call
    *
    */
-  begin?: string;
+  begin: string;
   /**
    * Name of the caller (or anonymous if unknown)
    *
    */
-  callerIdName?: string;
+  callerIdName: string;
   /**
    * Phone number of the caller (or anonymous if unknown)
    *
    */
-  callerIdNumber?: string;
+  callerIdNumber: string;
   /**
    * Phone number called (in case of an outgoing call)
    *
    */
-  destinationNumber?: string;
+  destinationNumber: string;
   /**
    * End date of the call
    *
@@ -3117,7 +3117,7 @@ export interface TelephonyOvhPabxHuntingQueueLiveCalls {
   end?: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * Whether or not the call is on hold
    *
@@ -3127,12 +3127,12 @@ export interface TelephonyOvhPabxHuntingQueueLiveCalls {
    * Name of the queue of the call
    *
    */
-  queue?: string;
+  queue: string;
   /**
    * Current state of the call
    *
    */
-  state?: TelephonyOvhPabxHuntingLiveCallsStateEnum;
+  state: TelephonyOvhPabxHuntingLiveCallsStateEnum;
 }
 /**
  * Live statistics of the queue
@@ -3142,32 +3142,32 @@ export interface TelephonyOvhPabxHuntingQueueLiveStatistics {
    * Total of calls answered
    *
    */
-  callsAnswered?: number;
+  callsAnswered: number;
   /**
    * Total of calls lost
    *
    */
-  callsLost?: number;
+  callsLost: number;
   /**
    * Total of calls
    *
    */
-  callsTotal?: number;
+  callsTotal: number;
   /**
    * Last reset datetime of queue's statistics
    *
    */
-  lastReset?: string;
+  lastReset: string;
   /**
    * Total call duration in seconds
    *
    */
-  totalCallDuration?: number;
+  totalCallDuration: number;
   /**
    * Total waiting duration in seconds
    *
    */
-  totalWaitingDuration?: number;
+  totalWaitingDuration: number;
 }
 /**
  * Digit keys allowed to be pressed to disable call record
@@ -3211,12 +3211,12 @@ export interface TelephonyOvhPabxMenu {
   invalidSoundTts?: number;
   /**
    */
-  menuId?: number;
+  menuId: number;
   /**
    * The name of the menu
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * IVR menu entry
@@ -3226,25 +3226,25 @@ export interface TelephonyOvhPabxMenuEntry {
    * The action triggered by the DTMF
    *
    */
-  action?: TelephonyOvhPabxIvrMenuEntryActionEnum;
+  action: TelephonyOvhPabxIvrMenuEntryActionEnum;
   /**
    * The additionnal parameter of the action
    *
    */
-  actionParam?: string;
+  actionParam: string;
   /**
    * The DTMF that triggers the action
    *
    */
-  dtmf?: string;
+  dtmf: string;
   /**
    */
-  entryId?: number;
+  entryId: number;
   /**
    * The position of the entry in the menu
    *
    */
-  position?: number;
+  position: number;
 }
 /**
  * Available actions for overflow and on closure
@@ -3268,17 +3268,17 @@ export interface TelephonyOvhPabxRecord {
    * The begin date of the recorded call
    *
    */
-  callStart?: string;
+  callStart: string;
   /**
    * The caller name of the recorded call
    *
    */
-  callerIdName?: string;
+  callerIdName: string;
   /**
    * The caller number of the recorded call
    *
    */
-  callerIdNumber?: string;
+  callerIdNumber: string;
   /**
    * The destination number of the recorded call
    *
@@ -3288,15 +3288,15 @@ export interface TelephonyOvhPabxRecord {
    * The duration in seconds of the recorded call
    *
    */
-  duration?: number;
+  duration: number;
   /**
    * The record sound url
    *
    */
-  fileUrl?: string;
+  fileUrl: string;
   /**
    */
-  id?: number;
+  id: number;
 }
 /**
  * The PABX sounds
@@ -3306,10 +3306,10 @@ export interface TelephonyOvhPabxSound {
    * The sound filename
    *
    */
-  name?: string;
+  name: string;
   /**
    */
-  soundId?: number;
+  soundId: number;
 }
 /**
  * The PABX Text To Speech sounds
@@ -3317,17 +3317,17 @@ export interface TelephonyOvhPabxSound {
 export interface TelephonyOvhPabxTts {
   /**
    */
-  id?: number;
+  id: number;
   /**
    * The text that will be played
    *
    */
-  text?: string;
+  text: string;
   /**
    * The voice used to say text
    *
    */
-  voice?: TelephonyOvhPabxTtsVoiceEnum;
+  voice: TelephonyOvhPabxTtsVoiceEnum;
 }
 /**
  * Voice to use for your text to speech
@@ -3343,16 +3343,16 @@ export type TelephonyOvhPabxWhisperingModeEnum = 'Whisper to agent only' | 'Whis
 export interface TelephonyPcsFile {
   /**
    */
-  filename?: string;
+  filename: string;
   /**
    */
-  status?: TelephonyPcsFileStatusEnum;
+  status: TelephonyPcsFileStatusEnum;
   /**
    */
-  url?: string;
+  url: string;
   /**
    */
-  urlExpirationDatetime?: string;
+  urlExpirationDatetime: string;
 }
 /**
  * File providing task status
@@ -3366,22 +3366,22 @@ export interface TelephonyPhone {
    * Brand name
    *
    */
-  brand?: string;
+  brand: string;
   /**
    * The phone description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Mac Address
    *
    */
-  macAddress?: string;
+  macAddress: string;
   /**
    * Maximum number of lines managed by a phone
    *
    */
-  maxline?: number;
+  maxline: number;
   /**
    * The ip restriction of your MGCP phone
    *
@@ -3391,12 +3391,12 @@ export interface TelephonyPhone {
    * Current phone properties
    *
    */
-  phoneConfiguration?: TelephonyPhoneConfigurationProperty[];
+  phoneConfiguration: TelephonyPhoneConfigurationProperty[];
   /**
    * Phone protocol
    *
    */
-  protocol?: TelephonyProtocolEnum;
+  protocol: TelephonyProtocolEnum;
   /**
    * The phone user password
    *
@@ -3479,7 +3479,7 @@ export interface TelephonyPhoneCredentials {
    * Password to access the web interface of the phone
    *
    */
-  password?: string;
+  password: string;
 }
 /**
  * Phone book
@@ -3489,22 +3489,22 @@ export interface TelephonyPhonebook {
    * Identifier of the phonebook
    *
    */
-  bookKey?: string;
+  bookKey: string;
   /**
    * Set if phonebook is readonly
    *
    */
-  isReadonly?: boolean;
+  isReadonly: boolean;
   /**
    * Phonebook name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Phone key identifier between the phone and phonebooks
    *
    */
-  phoneKey?: string;
+  phoneKey: string;
 }
 /**
  * Phone book contact
@@ -3514,7 +3514,7 @@ export interface TelephonyPhonebookContact {
    * Group name of the phonebook
    *
    */
-  group?: string;
+  group: string;
   /**
    * Home mobile phone number of the contact
    *
@@ -3529,17 +3529,17 @@ export interface TelephonyPhonebookContact {
    * Contact identifier
    *
    */
-  id?: number;
+  id: number;
   /**
    * Contact name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Contact surname
    *
    */
-  surname?: string;
+  surname: string;
   /**
    * Mobile phone office number of the contact
    *
@@ -3559,12 +3559,12 @@ export interface TelephonyPhonebookMaster {
    * Identifier of the phonebook
    *
    */
-  bookKey?: string;
+  bookKey: string;
   /**
    * Phone book name
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Portability informations
@@ -3574,17 +3574,17 @@ export interface TelephonyPortability {
    * The billing account where the numbers will be inserted
    *
    */
-  billingAccount?: string;
+  billingAccount: string;
   /**
    * The portability's creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Customer informations about this portability
    *
    */
-  customerInfos?: TelephonyPortabilityCustomerInfos;
+  customerInfos: TelephonyPortabilityCustomerInfos;
   /**
    * The date when the portability will be done and when numbers will be ported
    *
@@ -3594,17 +3594,17 @@ export interface TelephonyPortability {
    * Indicates that portability is in error
    *
    */
-  error?: boolean;
+  error: boolean;
   /**
    * Codes representing the error in current portability
    *
    */
-  errorCodes?: string[];
+  errorCodes: string[];
   /**
    * The ID of the portability
    *
    */
-  id?: number;
+  id: number;
   /**
    * Show the redirection that will be configured when the portability will be done
    *
@@ -3614,22 +3614,22 @@ export interface TelephonyPortability {
    * The list of numbers that is going to be ported
    *
    */
-  numbersList?: string[];
+  numbersList: string[];
   /**
    * The operator that currently holds the numbers
    *
    */
-  operator?: string;
+  operator: string;
   /**
    * The ID of the portability order
    *
    */
-  orderId?: number;
+  orderId: number;
   /**
    * Country that defines the portability kind
    *
    */
-  portabilityCountry?: TelephonyPortabilityCountryEnum;
+  portabilityCountry: TelephonyPortabilityCountryEnum;
 }
 /**
  * Country that defines the portability kind
@@ -3648,7 +3648,7 @@ export interface TelephonyPortabilityCustomerInfos {
    * City of the customer's address
    *
    */
-  city?: string;
+  city: string;
   /**
    * Door of the customer's address
    *
@@ -3663,7 +3663,7 @@ export interface TelephonyPortabilityCustomerInfos {
    * Name of the customer
    *
    */
-  name?: string;
+  name: string;
   /**
    * SIRET of the customer
    *
@@ -3678,17 +3678,17 @@ export interface TelephonyPortabilityCustomerInfos {
    * Street name of the customer's address
    *
    */
-  streetName?: string;
+  streetName: string;
   /**
    * Street number of the customer's address
    *
    */
-  streetNumber?: string;
+  streetNumber: string;
   /**
    * ZIP code of the customer's address
    *
    */
-  zip?: string;
+  zip: string;
 }
 /**
  * Document linked to a portability
@@ -3703,17 +3703,17 @@ export interface TelephonyPortabilityDocument {
    * Identifier of the document
    *
    */
-  documentId?: number;
+  documentId: number;
   /**
    * URL to get document
    *
    */
-  getUrl?: string;
+  getUrl: string;
   /**
    * Name of the document
    *
    */
-  name?: string;
+  name: string;
   /**
    * URL to upload document
    *
@@ -3723,7 +3723,7 @@ export interface TelephonyPortabilityDocument {
    * Document size (in bytes)
    *
    */
-  size?: number;
+  size: number;
 }
 /**
  * Possible parameters to provide to fix portability errors
@@ -3733,12 +3733,12 @@ export interface TelephonyPortabilityFixErrorPossibleParameters {
    * Mandatory parameter list
    *
    */
-  mandatoryParameters?: string[];
+  mandatoryParameters: string[];
   /**
    * Optional parameter list
    *
    */
-  optionalParameters?: string[];
+  optionalParameters: string[];
 }
 /**
  * A step in the portability process
@@ -3758,7 +3758,7 @@ export interface TelephonyPortabilityStep {
    * The theoric delay between the previous step's done date and this step's done date
    *
    */
-  duration?: TelephonyPortabilityStepDuration;
+  duration: TelephonyPortabilityStepDuration;
   /**
    * Additional informations about the step
    *
@@ -3768,12 +3768,12 @@ export interface TelephonyPortabilityStep {
    * The name of the portability step
    *
    */
-  name?: TelephonyPortabilityStepNameEnum;
+  name: TelephonyPortabilityStepNameEnum;
   /**
    * Indicates if the step is to do, currently doing or done
    *
    */
-  status?: TelephonyPortabilityStepStatusEnum;
+  status: TelephonyPortabilityStepStatusEnum;
 }
 /**
  * Represent the delay between two portability steps
@@ -3783,12 +3783,12 @@ export interface TelephonyPortabilityStepDuration {
    * The quantity of delay
    *
    */
-  quantity?: number;
+  quantity: number;
   /**
    * The delay's unit
    *
    */
-  unit?: TelephonyPortabilityStepDurationUnitEnum;
+  unit: TelephonyPortabilityStepDurationUnitEnum;
 }
 /**
  * List of possible duration unit. "NA" means that there is no defined duration
@@ -3834,26 +3834,26 @@ export interface TelephonyPreviousVoiceConsumption {
   calling?: string;
   /**
    */
-  consumptionId?: number;
+  consumptionId: number;
   /**
    * Country suffix destination
    *
    */
-  countrySuffix?: string;
+  countrySuffix: string;
   /**
    */
-  creationDatetime?: string;
+  creationDatetime: string;
   /**
    * Description of the destination
    *
    */
-  designation?: string;
+  designation: string;
   /**
    */
-  destinationType?: TelephonyVoiceConsumptionDestinationTypeEnum;
+  destinationType: TelephonyVoiceConsumptionDestinationTypeEnum;
   /**
    */
-  duration?: number;
+  duration: number;
   /**
    * Information about hangup cause
    *
@@ -3861,13 +3861,13 @@ export interface TelephonyPreviousVoiceConsumption {
   hangupNature?: string;
   /**
    */
-  planType?: TelephonyVoiceConsumptionPlanTypeEnum;
+  planType: TelephonyVoiceConsumptionPlanTypeEnum;
   /**
    */
-  priceWithoutTax?: OrderPrice;
+  priceWithoutTax: OrderPrice;
   /**
    */
-  wayType?: TelephonyVoiceConsumptionWayTypeEnum;
+  wayType: TelephonyVoiceConsumptionWayTypeEnum;
 }
 /**
  * All existing properties of line or alias offer
@@ -3885,17 +3885,17 @@ export interface TelephonyRateCodeInformation {
    * The Rsva rate code
    *
    */
-  code?: string;
+  code: string;
   /**
    * Price per call
    *
    */
-  pricePerCallWithoutTax?: OrderPrice;
+  pricePerCallWithoutTax: OrderPrice;
   /**
    * Price per minute
    *
    */
-  pricePerMinuteWithoutTax?: OrderPrice;
+  pricePerMinuteWithoutTax: OrderPrice;
 }
 /**
  * The call direction for a given event
@@ -3915,19 +3915,19 @@ export type TelephonyRealtimeEventType = 'end_calling' | 'end_hold' | 'end_ringi
 export interface TelephonyRedirect {
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
   destination?: string;
   /**
    */
-  featureType?: TelephonyTypeEnum;
+  featureType: TelephonyTypeEnum;
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
 }
 /**
  * Informations about a SIP registration (i.e. IP, port, User-Agent...)
@@ -3937,7 +3937,7 @@ export interface TelephonyRegistrationInformations {
    * SIP registration's date
    *
    */
-  datetime?: string;
+  datetime: string;
   /**
    * SIP registration's domain
    *
@@ -3947,7 +3947,7 @@ export interface TelephonyRegistrationInformations {
    * SIP registration's IP
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * SIP registration's local device IP
    *
@@ -3989,7 +3989,7 @@ export interface TelephonyRepaymentConsumption {
   calling?: string;
   /**
    */
-  consumptionId?: number;
+  consumptionId: number;
   /**
    * the Datetime of the start of the call
    *
@@ -4052,7 +4052,7 @@ export interface TelephonyResetPhoneInfo {
    * Which way had been used to reset the phone
    *
    */
-  resetPhoneMethod?: TelephonyResetPhoneMethodEnum;
+  resetPhoneMethod: TelephonyResetPhoneMethodEnum;
 }
 /**
  * How the phone had been reset
@@ -4066,22 +4066,22 @@ export interface TelephonyRma {
    * Is the RMA cancellable?
    *
    */
-  cancellable?: boolean;
+  cancellable: boolean;
   /**
    * Creation datetime of the return merchandise authorisation ticket
    *
    */
-  creationDatetime?: string;
+  creationDatetime: string;
   /**
    * Merchandise reference
    *
    */
-  equipmentReference?: string;
+  equipmentReference: string;
   /**
    * Return merchandise authorisation identifier
    *
    */
-  id?: string;
+  id: string;
   /**
    * New merchandise brand in case of exchange
    *
@@ -4096,12 +4096,12 @@ export interface TelephonyRma {
    * Offer type of the return merchandise
    *
    */
-  offerTypeOld?: TelephonyRmaOfferTypeEnum;
+  offerTypeOld: TelephonyRmaOfferTypeEnum;
   /**
    * Process determined for merchandise returned
    *
    */
-  process?: TelephonyRmaReplaceTypeEnum;
+  process: TelephonyRmaReplaceTypeEnum;
   /**
    * Reception datetime of the return merchandise authorisation ticket
    *
@@ -4111,17 +4111,17 @@ export interface TelephonyRma {
    * Contact information related to the delivery shipping in case of exchange
    *
    */
-  shippingContact?: TelephonyContact;
+  shippingContact: TelephonyContact;
   /**
    * Return merchandise authorisation step
    *
    */
-  status?: TelephonyRmaStatusEnum;
+  status: TelephonyRmaStatusEnum;
   /**
    * Indicates the current status of the RMA with a list of steps
    *
    */
-  steps?: TelephonyRmaStep[];
+  steps: TelephonyRmaStep[];
   /**
    * Termination datetime of the return merchandise authorisation ticket
    *
@@ -4131,7 +4131,7 @@ export interface TelephonyRma {
    * Typology process of merchandise return
    *
    */
-  type?: TelephonyRmaTypeEnum;
+  type: TelephonyRmaTypeEnum;
 }
 /**
  * Return merchandise authorisation offer type
@@ -4153,7 +4153,7 @@ export interface TelephonyRmaReturn {
    * Voucher reference identifier of the return merchandise authorisation
    *
    */
-  id?: string;
+  id: string;
 }
 /**
  * Return merchandise authorisation step
@@ -4167,7 +4167,7 @@ export interface TelephonyRmaStep {
    * A brief description of the step
    *
    */
-  description?: string;
+  description: string;
   /**
    * The date when this step was done
    *
@@ -4182,12 +4182,12 @@ export interface TelephonyRmaStep {
    * The name of the RMA step
    *
    */
-  name?: TelephonyRmaStepNameEnum;
+  name: TelephonyRmaStepNameEnum;
   /**
    * Status of the step
    *
    */
-  status?: TelephonyRmaStepStatusEnum;
+  status: TelephonyRmaStepStatusEnum;
 }
 /**
  * RMA step names
@@ -4207,7 +4207,7 @@ export type TelephonyRmaTypeEnum = 'after sale equipment service exchange' | 'af
 export interface TelephonyRsva {
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    */
   typology?: TelephonyPortabilitySpecialNumberCategoryEnum;
@@ -4218,10 +4218,10 @@ export interface TelephonyRsva {
 export interface TelephonyScheduler {
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    */
-  timeZone?: TelephonyTimeZone;
+  timeZone: TelephonyTimeZone;
 }
 /**
  * Scheculer category
@@ -4235,28 +4235,28 @@ export interface TelephonySchedulerEvent {
    * The category of the event
    *
    */
-  categories?: TelephonySchedulerCategoryEnum;
+  categories: TelephonySchedulerCategoryEnum;
   /**
    * The ending date of the event
    *
    */
-  dateEnd?: string;
+  dateEnd: string;
   /**
    * The beginning date of the event
    *
    */
-  dateStart?: string;
+  dateStart: string;
   /**
    */
   description?: string;
   /**
    */
-  title?: string;
+  title: string;
   /**
    * The unique ICS event identifier
    *
    */
-  uid?: string;
+  uid: string;
 }
 /**
  * ScreenList capable services
@@ -4264,13 +4264,13 @@ export interface TelephonySchedulerEvent {
 export interface TelephonyScreen {
   /**
    */
-  incomingScreenList?: TelephonyScreenListChoosingEnum;
+  incomingScreenList: TelephonyScreenListChoosingEnum;
   /**
    */
-  outgoingScreenList?: TelephonyScreenListChoosingEnum;
+  outgoingScreenList: TelephonyScreenListChoosingEnum;
   /**
    */
-  serviceName?: string;
+  serviceName: string;
 }
 /**
  * Screen list
@@ -4278,19 +4278,19 @@ export interface TelephonyScreen {
 export interface TelephonyScreenList {
   /**
    */
-  callNumber?: string;
+  callNumber: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  nature?: TelephonyScreenListNatureEnum;
+  nature: TelephonyScreenListNatureEnum;
   /**
    */
-  status?: string;
+  status: string;
   /**
    */
-  type?: TelephonyScreenListTypeEnum;
+  type: TelephonyScreenListTypeEnum;
 }
 /**
  * Type of screen list
@@ -4318,10 +4318,10 @@ export type TelephonyServiceVoicemailMailOptionEnum = 'attachment' | 'simple';
 export interface TelephonyServiceVoicemailNotifications {
   /**
    */
-  email?: string;
+  email: string;
   /**
    */
-  type?: TelephonyServiceVoicemailMailOptionEnum;
+  type: TelephonyServiceVoicemailMailOptionEnum;
 }
 /**
  * Details about simultaneous channels of this line
@@ -4331,27 +4331,27 @@ export interface TelephonySimultaneousChannelsDetails {
    * Basic quantity of simultaneous channels included in the line.
    *
    */
-  basic?: number;
+  basic: number;
   /**
    * Current quantity of simultaneous channels.
    *
    */
-  current?: number;
+  current: number;
   /**
    * Extra quantity of simultaneous channels added to the line.
    *
    */
-  extra?: number;
+  extra: number;
   /**
    * Maximum quantity of simultaneous channels the line can have.
    *
    */
-  maximum?: number;
+  maximum: number;
   /**
    * Quantity of simultaneous channels going to be deleted at the end of the billing cycle.
    *
    */
-  toBeDeleted?: number;
+  toBeDeleted: number;
 }
 /**
  * Product type
@@ -4365,7 +4365,7 @@ export interface TelephonySound {
    * Sound creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Sound description
    *
@@ -4375,17 +4375,17 @@ export interface TelephonySound {
    * Sound filename
    *
    */
-  filename?: string;
+  filename: string;
   /**
    * URL to get sound file
    *
    */
-  getUrl?: string;
+  getUrl: string;
   /**
    * Sound ID
    *
    */
-  id?: number;
+  id: number;
   /**
    * URL to upload sound file
    *
@@ -4395,7 +4395,7 @@ export interface TelephonySound {
    * Sound file size (in bytes)
    *
    */
-  size?: number;
+  size: number;
 }
 /**
  * Specific number available
@@ -4405,12 +4405,12 @@ export interface TelephonySpecificNumber {
    * Set if number is premium
    *
    */
-  isPremium?: boolean;
+  isPremium: boolean;
   /**
    * The number
    *
    */
-  number?: string;
+  number: string;
 }
 /**
  * Available timeframes for statistics
@@ -4424,7 +4424,7 @@ export interface TelephonyTask {
    * Action associated with the task
    *
    */
-  action?: string;
+  action: string;
   /**
    * Potential failure reason of the task
    *
@@ -4437,15 +4437,15 @@ export interface TelephonyTask {
   objectCreated?: string;
   /**
    */
-  serviceType?: string;
+  serviceType: string;
   /**
    * Status of the task
    *
    */
-  status?: TelephonyTaskStatusEnum;
+  status: TelephonyTaskStatusEnum;
   /**
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * Task status
@@ -4457,7 +4457,7 @@ export type TelephonyTaskStatusEnum = 'doing' | 'done' | 'error' | 'pause' | 'to
 export interface TelephonyTelephonyGenericService {
   /**
    */
-  serviceName?: string;
+  serviceName: string;
 }
 /**
  * Informations related to a telephony service
@@ -4472,12 +4472,12 @@ export interface TelephonyTelephonySearchService {
    * The service domain
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * The offer description
    *
    */
-  type?: TelephonyTelephonySearchServiceTypeEnum;
+  type: TelephonyTelephonySearchServiceTypeEnum;
 }
 /**
  * List of possible type of a telephony service
@@ -4491,53 +4491,53 @@ export interface TelephonyTelephonyService {
    * The country of the number
    *
    */
-  country?: TelephonyNumberCountryEnum;
+  country: TelephonyNumberCountryEnum;
   /**
    * The country code of the number
    *
    */
-  countryCode?: TelephonyNumberCountryCodeEnum;
+  countryCode: TelephonyNumberCountryCodeEnum;
   /**
    * Current outplan
    *
    */
-  currentOutplan?: OrderPrice;
+  currentOutplan: OrderPrice;
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  featureType?: TelephonyTypeEnum;
+  featureType: TelephonyTypeEnum;
   /**
    * The service offers
    *
    */
-  getPublicOffer?: TelephonyLineOffer;
+  getPublicOffer: TelephonyLineOffer;
   /**
    * Does this service have fax capabilities?
    *
    */
-  hasFaxCapabilities?: boolean;
+  hasFaxCapabilities: boolean;
   /**
    */
-  offers?: string[];
+  offers: string[];
   /**
    */
-  properties?: TelephonyPropertyEnum[];
+  properties: TelephonyPropertyEnum[];
   /**
    * The identifier to use to port the number
    *
    */
-  rio?: string;
+  rio: string;
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
   /**
    */
-  simultaneousLines?: number;
+  simultaneousLines: number;
 }
 /**
  * Temporary url informations
@@ -4547,12 +4547,12 @@ export interface TelephonyTemporaryLogsLink {
    * Temporary url expiration date
    *
    */
-  expirationDate?: string;
+  expirationDate: string;
   /**
    * Temporary url
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Termination reason
@@ -4564,22 +4564,22 @@ export type TelephonyTerminationReasonEnum = 'addresseMove' | 'billingDifficulti
 export interface TelephonyTimeCondition {
   /**
    */
-  day?: TelephonyTimeConditionsDayEnum;
+  day: TelephonyTimeConditionsDayEnum;
   /**
    */
-  hourBegin?: string;
+  hourBegin: string;
   /**
    */
-  hourEnd?: string;
+  hourEnd: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  policy?: TelephonyTimeConditionsPolicyEnum;
+  policy: TelephonyTimeConditionsPolicyEnum;
   /**
    */
-  status?: string;
+  status: string;
 }
 /**
  * Time conditions options
@@ -4589,37 +4589,37 @@ export interface TelephonyTimeConditionOptions {
    * Number associated to the first slot action
    *
    */
-  slot1Number?: string;
+  slot1Number: string;
   /**
    * Action type executed when the first slot is used
    *
    */
-  slot1Type?: TelephonyTimeConditionsSlotTypeEnum;
+  slot1Type: TelephonyTimeConditionsSlotTypeEnum;
   /**
    * Number associated to the second slot action
    *
    */
-  slot2Number?: string;
+  slot2Number: string;
   /**
    * Action type executed when the second slot is used
    *
    */
-  slot2Type?: TelephonyTimeConditionsSlotTypeEnum;
+  slot2Type: TelephonyTimeConditionsSlotTypeEnum;
   /**
    * Number associated to the third slot action
    *
    */
-  slot3Number?: string;
+  slot3Number: string;
   /**
    * Action type executed when the third slot is used
    *
    */
-  slot3Type?: TelephonyTimeConditionsSlotTypeEnum;
+  slot3Type: TelephonyTimeConditionsSlotTypeEnum;
   /**
    * Status of time conditions
    *
    */
-  status?: TelephonyTimeConditionsGlobalStatusEnum;
+  status: TelephonyTimeConditionsGlobalStatusEnum;
   /**
    * Timeout value of the time condition
    *
@@ -4629,12 +4629,12 @@ export interface TelephonyTimeConditionOptions {
    * Number associated to the unavailable slot action
    *
    */
-  unavailableNumber?: string;
+  unavailableNumber: string;
   /**
    * Action type executed when the unavailable slot is used
    *
    */
-  unavailableType?: TelephonyTimeConditionsSlotTypeEnum;
+  unavailableType: TelephonyTimeConditionsSlotTypeEnum;
 }
 /**
  * Day of the time condition
@@ -4666,7 +4666,7 @@ export type TelephonyTimeConditionsTimeoutEnum = 10 | 15 | 20 | 25 | 30 | 35 | 4
 export interface TelephonyTimestampAndValue {
   /**
    */
-  timestamp?: number;
+  timestamp: number;
   /**
    */
   value?: number;
@@ -4683,22 +4683,22 @@ export interface TelephonyTones {
    * Tone played when caller is waiting in queue
    *
    */
-  callWaiting?: TelephonyTonesEnum;
+  callWaiting: TelephonyTonesEnum;
   /**
    * Tone played when callee is ending call
    *
    */
-  endCall?: TelephonyTonesEnum;
+  endCall: TelephonyTonesEnum;
   /**
    * Tone played when caller is put on hold
    *
    */
-  onHold?: TelephonyTonesOnHoldEnum;
+  onHold: TelephonyTonesOnHoldEnum;
   /**
    * Ringback tone
    *
    */
-  ringback?: TelephonyTonesEnum;
+  ringback: TelephonyTonesEnum;
 }
 /**
  * Tones type
@@ -4720,17 +4720,17 @@ export interface TelephonyTrunk {
    * Description of the service
    *
    */
-  description?: string;
+  description: string;
   /**
    * Name of the service
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Type of the service
    *
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
 }
 /**
  * External displayed number linked to a trunk
@@ -4740,17 +4740,17 @@ export interface TelephonyTrunkExternalDisplayedNumber {
    * Creation date
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * External displayed number linked to a trunk
    *
    */
-  number?: string;
+  number: string;
   /**
    * Validation status
    *
    */
-  status?: TelephonyTrunkExternalDisplayedNumberStatusEnum;
+  status: TelephonyTrunkExternalDisplayedNumberStatusEnum;
   /**
    * Validation date
    *
@@ -4769,12 +4769,12 @@ export interface TelephonyTrunkExternalDisplayedNumberValidation {
    * telephony.Task id of the validation phone call
    *
    */
-  phoneCallTaskId?: number;
+  phoneCallTaskId: number;
   /**
    * Validation code to type during phone call
    *
    */
-  validationCode?: string;
+  validationCode: string;
 }
 /**
  * Details for a channels pack
@@ -4784,17 +4784,17 @@ export interface TelephonyTrunkSimultaneousPack {
    * The number of channels included in the pack
    *
    */
-  channels?: number;
+  channels: number;
   /**
    * The quantity of packs present in the combination
    *
    */
-  quantity?: number;
+  quantity: number;
   /**
    * The unit price of the channels pack
    *
    */
-  unitPrice?: OrderPrice;
+  unitPrice: OrderPrice;
 }
 /**
  * Repartition of simultaneous channels packs for a trunk
@@ -4804,17 +4804,17 @@ export interface TelephonyTrunkSimultaneousPacksRepartition {
    * The optimized quantity of channels to order
    *
    */
-  optimizedChannelsQuantity?: number;
+  optimizedChannelsQuantity: number;
   /**
    * The repartition of the packs
    *
    */
-  packsRepartition?: TelephonyTrunkSimultaneousPack[];
+  packsRepartition: TelephonyTrunkSimultaneousPack[];
   /**
    * The total price of the channels packs combination
    *
    */
-  totalPrice?: OrderPrice;
+  totalPrice: OrderPrice;
 }
 /**
  * All existing types of line or alias
@@ -4836,29 +4836,29 @@ export interface TelephonyVoiceConsumption {
   calling?: string;
   /**
    */
-  consumptionId?: number;
+  consumptionId: number;
   /**
    * Country suffix destination
    *
    */
-  countrySuffix?: string;
+  countrySuffix: string;
   /**
    */
-  creationDatetime?: string;
+  creationDatetime: string;
   /**
    * Description of the destination
    *
    */
-  designation?: string;
+  designation: string;
   /**
    */
-  destinationType?: TelephonyVoiceConsumptionDestinationTypeEnum;
+  destinationType: TelephonyVoiceConsumptionDestinationTypeEnum;
   /**
    */
   dialed?: string;
   /**
    */
-  duration?: number;
+  duration: number;
   /**
    * Information about hangup cause
    *
@@ -4866,13 +4866,13 @@ export interface TelephonyVoiceConsumption {
   hangupNature?: string;
   /**
    */
-  planType?: TelephonyVoiceConsumptionPlanTypeEnum;
+  planType: TelephonyVoiceConsumptionPlanTypeEnum;
   /**
    */
-  priceWithoutTax?: OrderPrice;
+  priceWithoutTax: OrderPrice;
   /**
    */
-  wayType?: TelephonyVoiceConsumptionWayTypeEnum;
+  wayType: TelephonyVoiceConsumptionWayTypeEnum;
 }
 /**
  * Consumption destination type
@@ -4896,16 +4896,16 @@ export type TelephonyVoicefaxRoutingEnum = 'fax' | 'voicemail';
 export interface TelephonyVoicemail {
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  offers?: string[];
+  offers: string[];
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
 }
 /**
  * Greeting type
@@ -4919,17 +4919,17 @@ export interface TelephonyVoicemailGreetings {
    * Callee number in international format
    *
    */
-  callee?: string;
+  callee: string;
   /**
    * Customized greeting voicemail directory
    *
    */
-  dir?: TelephonyVoicemailMessageFolderGreetingEnum;
+  dir: TelephonyVoicemailMessageFolderGreetingEnum;
   /**
    * Uniq customized greeting identifier
    *
    */
-  id?: number;
+  id: number;
 }
 /**
  * Folder type
@@ -4947,32 +4947,32 @@ export interface TelephonyVoicemailMessages {
    * Callee number in international format
    *
    */
-  callee?: string;
+  callee: string;
   /**
    * Caller number in international format
    *
    */
-  caller?: string;
+  caller: string;
   /**
    * Message datetime creation
    *
    */
-  creationDatetime?: string;
+  creationDatetime: string;
   /**
    * Voicemessage directory
    *
    */
-  dir?: TelephonyVoicemailMessageFolderDirectoryEnum;
+  dir: TelephonyVoicemailMessageFolderDirectoryEnum;
   /**
    * Message duration (in seconds)
    *
    */
-  duration?: number;
+  duration: number;
   /**
    * Uniq voicemail message identifier
    *
    */
-  id?: number;
+  id: number;
 }
 /**
  * Internal and external numbers for voicemail service
@@ -4982,12 +4982,12 @@ export interface TelephonyVoicemailNumbers {
    * The external voicemail number
    *
    */
-  external?: string;
+  external: string;
   /**
    * The internal voicemail number
    *
    */
-  internal?: string;
+  internal: string;
 }
 /**
  * Voicemail Properties
@@ -4997,32 +4997,32 @@ export interface TelephonyVoicemailProperties {
    * Name of the voicemail panel announce file
    *
    */
-  annouceMessage?: string;
+  annouceMessage: string;
   /**
    * Format of the voicemail audio file attached to emails
    *
    */
-  audioFormat?: TelephonyServiceVoicemailAudioFormatEnum;
+  audioFormat: TelephonyServiceVoicemailAudioFormatEnum;
   /**
    * Don't allow callers to leave voicemails
    *
    */
-  doNotRecord?: boolean;
+  doNotRecord: boolean;
   /**
    * Force password request to access the voicemail panel
    *
    */
-  forcePassword?: boolean;
+  forcePassword: boolean;
   /**
    * Email address from which emails will be sent
    *
    */
-  fromEmail?: string;
+  fromEmail: string;
   /**
    * Name from which emails will be sent
    *
    */
-  fromName?: string;
+  fromName: string;
   /**
    * Sound ID of the long greeeting
    *
@@ -5032,22 +5032,22 @@ export interface TelephonyVoicemailProperties {
    * Type of the greeting to play
    *
    */
-  greetingType?: TelephonyVoicemailGreetingEnum;
+  greetingType: TelephonyVoicemailGreetingEnum;
   /**
    * Current voicemail version
    *
    */
-  isNewVersion?: boolean;
+  isNewVersion: boolean;
   /**
    * Don't delete voicemails after they've been sent by email
    *
    */
-  keepMessage?: boolean;
+  keepMessage: boolean;
   /**
    * Email addresses to notify when a new voicemail is left
    *
    */
-  redirectionEmails?: TelephonyServiceVoicemailNotifications[];
+  redirectionEmails: TelephonyServiceVoicemailNotifications[];
   /**
    * Sound ID of the short greeting played before an automated message
    *
@@ -5057,7 +5057,7 @@ export interface TelephonyVoicemailProperties {
    * Play the temporary greeting instead of the regular one
    *
    */
-  temporaryGreetingActivated?: boolean;
+  temporaryGreetingActivated: boolean;
   /**
    * Sound ID of the temporary greeeting
    *
@@ -5067,7 +5067,7 @@ export interface TelephonyVoicemailProperties {
    * Quantity of unread voicemails
    *
    */
-  unreadMessages?: number;
+  unreadMessages: number;
 }
 /**
  * Vxml services
@@ -5075,16 +5075,16 @@ export interface TelephonyVoicemailProperties {
 export interface TelephonyVxml {
   /**
    */
-  description?: string;
+  description: string;
   /**
    */
-  offers?: string[];
+  offers: string[];
   /**
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    */
-  serviceType?: TelephonyTypeServiceEnum;
+  serviceType: TelephonyTypeServiceEnum;
 }
 /**
  * Vxml Properties
@@ -5092,10 +5092,10 @@ export interface TelephonyVxml {
 export interface TelephonyVxmlProperties {
   /**
    */
-  url?: string;
+  url: string;
   /**
    */
-  urlRecord?: string;
+  urlRecord: string;
 }
 /**
  * Special number category
@@ -5113,32 +5113,32 @@ export interface TelephonyTrafficExtract {
    * The start date of the traffic extract
    *
    */
-  dateEnd?: string;
+  dateEnd: string;
   /**
    * The start date of the traffic extract
    *
    */
-  dateStart?: string;
+  dateStart: string;
   /**
    * The PCAP file size of the traffic extract
    *
    */
-  fileSize?: number;
+  fileSize: number;
   /**
    * The PCAP URL of the traffic extract
    *
    */
-  fileUrl?: string;
+  fileUrl: string;
   /**
    * The id of the traffic extract
    *
    */
-  id?: number;
+  id: number;
   /**
    * The status of the extract
    *
    */
-  status?: TelephonyTaskStatusEnum;
+  status: TelephonyTaskStatusEnum;
 }
 type PathsTelephonyGET = '/telephony' | 
 '/telephony/accessories' | 

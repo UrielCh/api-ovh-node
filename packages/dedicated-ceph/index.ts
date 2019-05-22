@@ -7,22 +7,22 @@ export interface DedicatedCephAclGetResponse {
    * Family of IP ACL
    *
    */
-  family?: DedicatedCephAclGetResponseFamilyEnum;
+  family: DedicatedCephAclGetResponseFamilyEnum;
   /**
    * ID of IP ACL
    *
    */
-  id?: number;
+  id: number;
   /**
    * Netmask of IP ACL
    *
    */
-  netmask?: string;
+  netmask: string;
   /**
    * Network of IP ACL
    *
    */
-  network?: string;
+  network: string;
 }
 /**
  * Family of IP ACL
@@ -36,22 +36,22 @@ export interface DedicatedCephAclListResponse {
    * Family of IP ACL
    *
    */
-  family?: DedicatedCephAclListResponseFamilyEnum;
+  family: DedicatedCephAclListResponseFamilyEnum;
   /**
    * ID of IP ACL
    *
    */
-  id?: number;
+  id: number;
   /**
    * Netmask of IP ACL
    *
    */
-  netmask?: string;
+  netmask: string;
   /**
    * Network of IP ACL
    *
    */
-  network?: string;
+  network: string;
 }
 /**
  * Family of IP ACL
@@ -65,57 +65,57 @@ export interface DedicatedCephClusterGetResponse {
    * List of CEPH monitor IPs
    *
    */
-  cephMons?: string[];
+  cephMons: string[];
   /**
    * Used version of ceph
    *
    */
-  cephVersion?: string;
+  cephVersion: string;
   /**
    * Creation date
    *
    */
-  createDate?: string;
+  createDate: string;
   /**
    * Tunables of cluster
    *
    */
-  crushTunables?: DedicatedCephClusterGetResponseCrushTunablesEnum;
+  crushTunables: DedicatedCephClusterGetResponseCrushTunablesEnum;
   /**
    * Name of cluster
    *
    */
-  label?: string;
+  label: string;
   /**
    * Name of region where cluster is located
    *
    */
-  region?: string;
+  region: string;
   /**
    * ID of cluster
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Size of cluster in TB
    *
    */
-  size?: number;
+  size: number;
   /**
    * State of cluster
    *
    */
-  state?: DedicatedCephClusterGetResponseStateEnum;
+  state: DedicatedCephClusterGetResponseStateEnum;
   /**
    * Status of cluster
    *
    */
-  status?: DedicatedCephClusterGetResponseStatusEnum;
+  status: DedicatedCephClusterGetResponseStatusEnum;
   /**
    * Last update date
    *
    */
-  updateDate?: string;
+  updateDate: string;
 }
 /**
  * Tunables of cluster
@@ -137,32 +137,32 @@ export interface DedicatedCephClusterHealthResponse {
    * All available space in bytes
    *
    */
-  availableBytes?: number;
+  availableBytes: number;
   /**
    * True or False
    *
    */
-  healthy?: boolean;
+  healthy: boolean;
   /**
    * ID of cluster
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Status of ceph cluster
    *
    */
-  status?: string;
+  status: string;
   /**
    * Total cluster space in bytes
    *
    */
-  totalBytes?: number;
+  totalBytes: number;
   /**
    * Used cluster space in bytes
    *
    */
-  usedBytes?: number;
+  usedBytes: number;
 }
 /**
  * Tunables of cluster
@@ -176,32 +176,32 @@ export interface DedicatedCephPoolGetResponse {
    * Determine if pool should be backuped
    *
    */
-  backup?: boolean;
+  backup: boolean;
   /**
    * Minimum active replicas
    *
    */
-  minActiveReplicas?: number;
+  minActiveReplicas: number;
   /**
    * Name of ceph user
    *
    */
-  name?: string;
+  name: string;
   /**
    * Type of pool
    *
    */
-  poolType?: DedicatedCephPoolGetResponsePoolTypeEnum;
+  poolType: DedicatedCephPoolGetResponsePoolTypeEnum;
   /**
    * Number of replica
    *
    */
-  replicaCount?: number;
+  replicaCount: number;
   /**
    * ID of cluster
    *
    */
-  serviceName?: string;
+  serviceName: string;
 }
 /**
  * Type of pool
@@ -215,32 +215,32 @@ export interface DedicatedCephPoolListResponse {
    * Determine if pool should be backuped
    *
    */
-  backup?: boolean;
+  backup: boolean;
   /**
    * Minimum active replicas
    *
    */
-  minActiveReplicas?: number;
+  minActiveReplicas: number;
   /**
    * Name of ceph user
    *
    */
-  name?: string;
+  name: string;
   /**
    * Type of pool
    *
    */
-  poolType?: DedicatedCephPoolListResponsePoolTypeEnum;
+  poolType: DedicatedCephPoolListResponsePoolTypeEnum;
   /**
    * Number of replica
    *
    */
-  replicaCount?: number;
+  replicaCount: number;
   /**
    * ID of cluster
    *
    */
-  serviceName?: string;
+  serviceName: string;
 }
 /**
  * Type of pool
@@ -254,7 +254,7 @@ export interface DedicatedCephTaskGetResponse {
    * Creation date of task
    *
    */
-  createDate?: string;
+  createDate: string;
   /**
    * Finish date of task
    *
@@ -264,7 +264,7 @@ export interface DedicatedCephTaskGetResponse {
    * Name of task
    *
    */
-  name?: string;
+  name: string;
   /**
    * State of task
    *
@@ -274,7 +274,7 @@ export interface DedicatedCephTaskGetResponse {
    * Type of task
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * State of task
@@ -288,12 +288,12 @@ export interface DedicatedCephTaskListResponse {
    * ID of task
    *
    */
-  id?: string;
+  id: string;
   /**
    * Name of task
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Ceph user
@@ -303,32 +303,32 @@ export interface DedicatedCephUserGetResponse {
    * Key of user to connect into cluster
    *
    */
-  key?: string;
+  key: string;
   /**
    * Capabilities of user on MDS
    *
    */
-  mdsCaps?: string;
+  mdsCaps: string;
   /**
    * Capabilities of user on MON
    *
    */
-  monCaps?: string;
+  monCaps: string;
   /**
    * Name of ceph user
    *
    */
-  name?: string;
+  name: string;
   /**
    * Capabilities of user on OSD
    *
    */
-  osdCaps?: string;
+  osdCaps: string;
   /**
    * ID of cluster
    *
    */
-  serviceName?: string;
+  serviceName: string;
 }
 /**
  * List of cluster users
@@ -338,32 +338,32 @@ export interface DedicatedCephUserListResponse {
    * Key of user to connect into cluster
    *
    */
-  key?: string;
+  key: string;
   /**
    * Capabilities of user on MDS
    *
    */
-  mdsCaps?: string;
+  mdsCaps: string;
   /**
    * Capabilities of user on MON
    *
    */
-  monCaps?: string;
+  monCaps: string;
   /**
    * Name of ceph user
    *
    */
-  name?: string;
+  name: string;
   /**
    * Capabilities of user on OSD
    *
    */
-  osdCaps?: string;
+  osdCaps: string;
   /**
    * ID of cluster
    *
    */
-  serviceName?: string;
+  serviceName: string;
 }
 /**
  * List of permissions
@@ -373,32 +373,32 @@ export interface DedicatedCephUserPoolPermListResponse {
    * Class read permission
    *
    */
-  classRead?: boolean;
+  classRead: boolean;
   /**
    * Class write permission
    *
    */
-  classWrite?: boolean;
+  classWrite: boolean;
   /**
    * Execute permission
    *
    */
-  execute?: boolean;
+  execute: boolean;
   /**
    * Name of Ceph pool
    *
    */
-  poolName?: string;
+  poolName: string;
   /**
    * Read permission
    *
    */
-  read?: boolean;
+  read: boolean;
   /**
    * Write permission
    *
    */
-  write?: boolean;
+  write: boolean;
 }
 /**
  * List of permissions
@@ -408,32 +408,32 @@ export interface DedicatedCephUserPoolPermSetAllPermissions {
    * Class read permission
    *
    */
-  classRead?: boolean;
+  classRead: boolean;
   /**
    * Class write permission
    *
    */
-  classWrite?: boolean;
+  classWrite: boolean;
   /**
    * Execute permission
    *
    */
-  execute?: boolean;
+  execute: boolean;
   /**
    * Name of Ceph pool
    *
    */
-  poolName?: string;
+  poolName: string;
   /**
    * Read permission
    *
    */
-  read?: boolean;
+  read: boolean;
   /**
    * Write permission
    *
    */
-  write?: boolean;
+  write: boolean;
 }
 /**
  * Map a possible renew for a specific service
@@ -443,17 +443,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -489,28 +489,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -523,13 +523,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsDedicatedCephGET = '/dedicated/ceph' | 
 '/dedicated/ceph/{serviceName}' | 

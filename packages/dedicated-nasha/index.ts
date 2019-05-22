@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * ovh Nas HA offer availabilities
@@ -18,12 +18,12 @@ export interface DedicatedNasHAAvailabilities {
    * Zone of the DC
    *
    */
-  datacenters?: DedicatedNasHAAvailabilityDatacenter[];
+  datacenters: DedicatedNasHAAvailabilityDatacenter[];
   /**
    * Name of the offer
    *
    */
-  offer?: DedicatedNasHAOfferEnum;
+  offer: DedicatedNasHAOfferEnum;
 }
 /**
  * A structure describing the availability of offer for each datacenter
@@ -33,12 +33,12 @@ export interface DedicatedNasHAAvailabilityDatacenter {
    * The availability
    *
    */
-  availability?: DedicatedNasHAAvailabilityEnum;
+  availability: DedicatedNasHAAvailabilityEnum;
   /**
    * The code of the datacenter
    *
    */
-  datacenter?: DedicatedNasHAZoneEnum;
+  datacenter: DedicatedNasHAZoneEnum;
 }
 /**
  * The availability
@@ -79,7 +79,7 @@ export interface DedicatedNasTaskTask {
    * Task type of operation
    *
    */
-  operation?: DedicatedStorageTaskFunctionEnum;
+  operation: DedicatedStorageTaskFunctionEnum;
   /**
    * name of the partition
    *
@@ -89,7 +89,7 @@ export interface DedicatedNasTaskTask {
    * The actual state of the task
    *
    */
-  status?: DedicatedTaskStatusEnum;
+  status: DedicatedTaskStatusEnum;
   /**
    * the name of your service
    *
@@ -99,7 +99,7 @@ export interface DedicatedNasTaskTask {
    * id of the task
    *
    */
-  taskId?: number;
+  taskId: number;
   /**
    * Insertion of task in the todo
    *
@@ -114,17 +114,17 @@ export interface DedicatedNashaAccess {
    * the id of the access
    *
    */
-  accessId?: number;
+  accessId: number;
   /**
    * the ip in root on storage
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * ACL type
    *
    */
-  type?: DedicatedStorageAclTypeEnum;
+  type: DedicatedStorageAclTypeEnum;
 }
 /**
  * Storage zpool partition
@@ -139,17 +139,17 @@ export interface DedicatedNashaPartition {
    * the given name of partition
    *
    */
-  partitionName?: string;
+  partitionName: string;
   /**
    * must be nfs cifs or both
    *
    */
-  protocol?: DedicatedStorageProtocolEnum;
+  protocol: DedicatedStorageProtocolEnum;
   /**
    * Partition size
    *
    */
-  size?: number;
+  size: number;
   /**
    * percentage of partition space used by snapshots, in %
    *
@@ -164,12 +164,12 @@ export interface DedicatedNashaQuota {
    * the size to set in MB
    *
    */
-  size?: number;
+  size: number;
   /**
    * the uid to set quota on
    *
    */
-  uid?: number;
+  uid: number;
 }
 /**
  * Partition Snapshot
@@ -179,7 +179,7 @@ export interface DedicatedNashaSnapshot {
    * the interval of snapshot
    *
    */
-  snapshotType?: DedicatedStorageSnapshotEnum;
+  snapshotType: DedicatedStorageSnapshotEnum;
 }
 /**
  * Storage nas HA
@@ -189,7 +189,7 @@ export interface DedicatedNashaStorage {
    * True, if partition creation is allowed on this nas HA
    *
    */
-  canCreatePartition?: boolean;
+  canCreatePartition: boolean;
   /**
    * The name you give to the nas
    *
@@ -209,22 +209,22 @@ export interface DedicatedNashaStorage {
    * Send an email to customer if any issue is detected
    *
    */
-  monitored?: boolean;
+  monitored: boolean;
   /**
    * The storage service name
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * percentage of nas space used in %
    *
    */
-  zpoolCapacity?: number;
+  zpoolCapacity: number;
   /**
    * the size of the nas
    *
    */
-  zpoolSize?: number;
+  zpoolSize: number;
 }
 /**
  * Partition Vrack
@@ -234,22 +234,22 @@ export interface DedicatedNashaVrack {
    * ID
    *
    */
-  id?: number;
+  id: number;
   /**
    * service ip
    *
    */
-  serviceIp?: string;
+  serviceIp: string;
   /**
    * type of
    *
    */
-  type?: string;
+  type: string;
   /**
    * vrack name
    *
    */
-  vrackName?: string;
+  vrackName: string;
 }
 /**
  * Custom Snapshot
@@ -264,7 +264,7 @@ export interface DedicatedNashaCustomSnap {
    * name of the snapshot
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Partition options
@@ -274,22 +274,22 @@ export interface DedicatedNashaOptions {
    * atime setting
    *
    */
-  atime?: string;
+  atime: string;
   /**
    * ID
    *
    */
-  id?: number;
+  id: number;
   /**
    * ZFS recordsize
    *
    */
-  recordsize?: string;
+  recordsize: string;
   /**
    * sync setting
    *
    */
-  sync?: string;
+  sync: string;
 }
 /**
  * Acl Type
@@ -335,17 +335,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -381,28 +381,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -415,13 +415,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsDedicatedNashaGET = '/dedicated/nasha' | 
 '/dedicated/nasha/availabilities' | 

@@ -17,22 +17,22 @@ export interface MarketPlaceContact {
    * Email address
    *
    */
-  email?: string;
+  email: string;
   /**
    * First name
    *
    */
-  firstname?: string;
+  firstname: string;
   /**
    * Unique identifier
    *
    */
-  id?: string;
+  id: string;
   /**
    * Last name
    *
    */
-  lastname?: string;
+  lastname: string;
   /**
    * Phone number
    *
@@ -52,7 +52,7 @@ export interface MarketPlaceContact {
    * Title
    *
    */
-  title?: string;
+  title: string;
   /**
    * Zipcode
    *
@@ -77,7 +77,7 @@ export interface MarketPlaceDocument {
    * Unique identifier
    *
    */
-  id?: string;
+  id: string;
   /**
    * str
    *
@@ -192,17 +192,17 @@ export interface MarketPlacePartnerProduct {
    * Name of product category
    *
    */
-  category?: string;
+  category: string;
   /**
    * Description of product
    *
    */
-  description?: string;
+  description: string;
   /**
    * Name of product
    *
    */
-  name?: string;
+  name: string;
   /**
    * Additional information
    *
@@ -215,10 +215,10 @@ export interface MarketPlacePartnerProduct {
 export interface ComplexTypeSafeKeyValue<T> {
   /**
    */
-  key?: string;
+  key: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 type PathsStoreGET = '/store/contact' | 
 '/store/contact/{contactId}' | 

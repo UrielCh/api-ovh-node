@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * Filesystems available
@@ -80,7 +80,7 @@ export interface DedicatedInstallationTemplateTemplates {
    * list of all language available for this template
    *
    */
-  availableLanguages?: DedicatedTemplateOsLanguageEnum[];
+  availableLanguages: DedicatedTemplateOsLanguageEnum[];
   /**
    * This distribution is new, and although tested and functional, may still display odd behaviour
    *
@@ -90,12 +90,12 @@ export interface DedicatedInstallationTemplateTemplates {
    * this template  bit format
    *
    */
-  bitFormat?: DedicatedServerBitFormatEnum;
+  bitFormat: DedicatedServerBitFormatEnum;
   /**
    * category of this template (informative only)
    *
    */
-  category?: DedicatedTemplateOsUsageEnum;
+  category: DedicatedTemplateOsUsageEnum;
   /**
    * Customizable template properties
    *
@@ -105,7 +105,7 @@ export interface DedicatedInstallationTemplateTemplates {
    * the default language of this template
    *
    */
-  defaultLanguage?: DedicatedTemplateOsLanguageEnum;
+  defaultLanguage: DedicatedTemplateOsLanguageEnum;
   /**
    * is this distribution deprecated
    *
@@ -115,22 +115,22 @@ export interface DedicatedInstallationTemplateTemplates {
    * information about this template
    *
    */
-  description?: string;
+  description: string;
   /**
    * the distribution this template is based on
    *
    */
-  distribution?: string;
+  distribution: string;
   /**
    * this template family type
    *
    */
-  family?: DedicatedTemplateOsTypeEnum;
+  family: DedicatedTemplateOsTypeEnum;
   /**
    * list of all filesystems  available for this template
    *
    */
-  filesystems?: DedicatedTemplateOsFileSystemEnum[];
+  filesystems: DedicatedTemplateOsFileSystemEnum[];
   /**
    * This distribution supports hardware raid configuration through the OVH API
    *
@@ -160,7 +160,7 @@ export interface DedicatedInstallationTemplateTemplates {
    * This distribution supports RTM software
    *
    */
-  supportsRTM?: boolean;
+  supportsRTM: boolean;
   /**
    * This distribution supports the microsoft SQL server
    *
@@ -175,7 +175,7 @@ export interface DedicatedInstallationTemplateTemplates {
    * This template name
    *
    */
-  templateName?: string;
+  templateName: string;
 }
 /**
  * Hardware RAID defined in this partitioning scheme
@@ -185,22 +185,22 @@ export interface DedicatedInstallationTemplateHardwareRaid {
    * Disk list
    *
    */
-  disks?: string[];
+  disks: string[];
   /**
    * RAID mode
    *
    */
-  mode?: DedicatedTemplateOsHardwareRaidEnum;
+  mode: DedicatedTemplateOsHardwareRaidEnum;
   /**
    * Hardware RAID name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Specifies the creation order of the hardware RAID
    *
    */
-  step?: number;
+  step: number;
 }
 /**
  * Partitioning schemes available on this template
@@ -210,12 +210,12 @@ export interface DedicatedInstallationTemplateTemplatePartitioningSchemes {
    * name of this partitioning scheme
    *
    */
-  name?: string;
+  name: string;
   /**
    * on a reinstall, if a partitioning scheme is not specified, the one with the higher priority will be used by default, among all the compatible partitioning schemes (given the underlying hardware specifications)
    *
    */
-  priority?: number;
+  priority: number;
 }
 /**
  *  Partitions defined in this partitioning scheme
@@ -225,17 +225,17 @@ export interface DedicatedInstallationTemplateTemplatePartitions {
    * Partition filesytem
    *
    */
-  filesystem?: DedicatedTemplateOsFileSystemEnum;
+  filesystem: DedicatedTemplateOsFileSystemEnum;
   /**
    * partition mount point
    *
    */
-  mountpoint?: string;
+  mountpoint: string;
   /**
    * specifies the creation order of the partition on the disk
    *
    */
-  order?: number;
+  order: number;
   /**
    * raid partition type
    *
@@ -245,10 +245,10 @@ export interface DedicatedInstallationTemplateTemplatePartitions {
    * size of partition in Mb, 0 => rest of the space
    *
    */
-  size?: ComplexTypeUnitAndValue<number>;
+  size: ComplexTypeUnitAndValue<number>;
   /**
    */
-  type?: DedicatedTemplatePartitionTypeEnum;
+  type: DedicatedTemplatePartitionTypeEnum;
   /**
    * The volume name needed for proxmox distribution
    *

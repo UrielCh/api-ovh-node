@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeSafeKeyValue<T> {
   /**
    */
-  key?: string;
+  key: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * Price with it's currency and textual representation
@@ -18,17 +18,17 @@ export interface OrderPrice {
    * Currency code
    *
    */
-  currencyCode?: PriceCurrencyCodeEnum;
+  currencyCode: PriceCurrencyCodeEnum;
   /**
    * Textual representation
    *
    */
-  text?: string;
+  text: string;
   /**
    * The effective price
    *
    */
-  value?: number;
+  value: number;
 }
 /**
  * Currency code
@@ -42,17 +42,17 @@ export interface ServicesBillingInvoice {
    * Invoice date
    *
    */
-  date?: string;
+  date: string;
   /**
    * Invoice reference
    *
    */
-  id?: string;
+  id: string;
   /**
    * Invoice details
    *
    */
-  lines?: ServicesBillingInvoiceLine[];
+  lines: ServicesBillingInvoiceLine[];
 }
 /**
  * Description of an invoice line
@@ -62,7 +62,7 @@ export interface ServicesBillingInvoiceLine {
    * Description of item
    *
    */
-  description?: string;
+  description: string;
   /**
    * End period
    *
@@ -77,22 +77,22 @@ export interface ServicesBillingInvoiceLine {
    * Price without tax
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Quantity of item
    *
    */
-  quantity?: number;
+  quantity: number;
   /**
    * Associated service name
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Price with tax
    *
    */
-  totalPrice?: OrderPrice;
+  totalPrice: OrderPrice;
   /**
    * Type of item
    *
@@ -111,7 +111,7 @@ export interface ServicesBillingEngagementEngagement {
    * Current engagement period
    *
    */
-  currentPeriod?: ServicesBillingEngagementEngagementPeriod;
+  currentPeriod: ServicesBillingEngagementEngagementPeriod;
 }
 /**
  * Period of Engagement
@@ -126,7 +126,7 @@ export interface ServicesBillingEngagementEngagementPeriod {
    * Beginning of the period
    *
    */
-  startDate?: string;
+  startDate: string;
 }
 /**
  * Billing informations of the service
@@ -156,12 +156,12 @@ export interface ServicesExpandedPlan {
    * Plan code
    *
    */
-  code?: string;
+  code: string;
   /**
    * Invoice Name
    *
    */
-  invoiceName?: string;
+  invoiceName: string;
 }
 /**
  * Product of the service
@@ -171,12 +171,12 @@ export interface ServicesExpandedProduct {
    * Product description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Product name
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Resource of the service
@@ -186,12 +186,12 @@ export interface ServicesExpandedResource {
    * Display name of the resource
    *
    */
-  displayName?: string;
+  displayName: string;
   /**
    * Name of the resource
    *
    */
-  name?: string;
+  name: string;
   /**
    * Product
    *
@@ -216,7 +216,7 @@ export interface ServicesExpandedRoute {
    * Variables to use in the path
    *
    */
-  vars?: ComplexTypeSafeKeyValue<string>[];
+  vars: ComplexTypeSafeKeyValue<string>[];
 }
 /**
  * Description of a service
@@ -226,12 +226,12 @@ export interface ServicesExpandedService {
    * Billing information
    *
    */
-  billing?: ServicesExpandedBilling;
+  billing: ServicesExpandedBilling;
   /**
    * Resource
    *
    */
-  resource?: ServicesExpandedResource;
+  resource: ServicesExpandedResource;
   /**
    * Route
    *
@@ -253,7 +253,7 @@ export class ApiServices extends OvhWrapper {
   }
   /**
   Get list of your service details
-  null
+  List available services
   **/
   public get(path: '/services'): Promise<number[]>;
   /**

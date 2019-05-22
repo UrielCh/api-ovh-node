@@ -23,7 +23,7 @@ export interface DomainDomainMlLimits {
    * Maximum number of subscribers
    *
    */
-  subscribers?: number;
+  subscribers: number;
 }
 /**
  * Structure of imapCopy
@@ -33,17 +33,17 @@ export interface DomainDomainMlOptionsStruct {
    * If true, messages are moderate
    *
    */
-  moderatorMessage?: boolean;
+  moderatorMessage: boolean;
   /**
    * If true, enabled moderation for subscribe
    *
    */
-  subscribeByModerator?: boolean;
+  subscribeByModerator: boolean;
   /**
    * If true, just user can post
    *
    */
-  usersPostOnly?: boolean;
+  usersPostOnly: boolean;
 }
 /**
  * Possible values for pop action task
@@ -57,27 +57,27 @@ export interface DomainDomainQuota {
    * Maximum number of mailboxes
    *
    */
-  account?: number;
+  account: number;
   /**
    * Maximum number of aliases
    *
    */
-  alias?: number;
+  alias: number;
   /**
    * Maximum number of mailing lists
    *
    */
-  mailingList?: number;
+  mailingList: number;
   /**
    * Maximum number of redirections
    *
    */
-  redirection?: number;
+  redirection: number;
   /**
    * Maximum number of responders
    *
    */
-  responder?: number;
+  responder: number;
 }
 /**
  * Possible values for pop action task
@@ -99,22 +99,22 @@ export interface DomainDomainSummary {
    * Number of mailboxes
    *
    */
-  account?: number;
+  account: number;
   /**
    * Number of mailing lists
    *
    */
-  mailingList?: number;
+  mailingList: number;
   /**
    * Number of redirections
    *
    */
-  redirection?: number;
+  redirection: number;
   /**
    * Number of responders
    *
    */
-  responder?: number;
+  responder: number;
 }
 /**
  * Structure of usage account
@@ -144,12 +144,12 @@ export interface DomainZoneRecord {
    * Resource record Name
    *
    */
-  fieldType?: ZoneNamedResolutionFieldTypeEnum;
+  fieldType: ZoneNamedResolutionFieldTypeEnum;
   /**
    * Id of the zone resource record
    *
    */
-  id?: number;
+  id: number;
   /**
    * Resource record subdomain
    *
@@ -159,7 +159,7 @@ export interface DomainZoneRecord {
    * Resource record target
    *
    */
-  target?: string;
+  target: string;
   /**
    * Resource record ttl
    *
@@ -169,7 +169,7 @@ export interface DomainZoneRecord {
    * Resource record zone
    *
    */
-  zone?: string;
+  zone: string;
 }
 /**
  * Account List
@@ -179,32 +179,32 @@ export interface EmailDomainAccount {
    * Name of account
    *
    */
-  accountName?: string;
+  accountName: string;
   /**
    * Account description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Name of domain
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Email
    *
    */
-  email?: string;
+  email: string;
   /**
    * If true your account is blocked
    *
    */
-  isBlocked?: boolean;
+  isBlocked: boolean;
   /**
    * Size of your account in bytes
    *
    */
-  size?: number;
+  size: number;
 }
 /**
  * Account List
@@ -214,7 +214,7 @@ export interface EmailDomainAccountDelegated {
    * Name of account
    *
    */
-  accountName?: string;
+  accountName: string;
   /**
    * List of allowed sizes for this account in bytes
    *
@@ -224,27 +224,27 @@ export interface EmailDomainAccountDelegated {
    * Account description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Name of domain
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Email
    *
    */
-  email?: string;
+  email: string;
   /**
    * If true your account is blocked
    *
    */
-  isBlocked?: boolean;
+  isBlocked: boolean;
   /**
    * Size of your account in bytes
    *
    */
-  size?: number;
+  size: number;
 }
 /**
  * Email ACL
@@ -254,7 +254,7 @@ export interface EmailDomainAcl {
    * OVH customer unique identifier
    *
    */
-  accountId?: string;
+  accountId: string;
 }
 /**
  * Delegation List
@@ -264,7 +264,7 @@ export interface EmailDomainDelegation {
    * OVH customer unique identifier
    *
    */
-  accountId?: string;
+  accountId: string;
 }
 /**
  * Email diagnoses
@@ -274,17 +274,17 @@ export interface EmailDomainDiagnose {
    * Creation date of diagnose
    *
    */
-  date?: string;
+  date: string;
   /**
    * Function of diagnose
    *
    */
-  function?: EmailDomainDomainDiagnoseFunctionEnum;
+  function: EmailDomainDomainDiagnoseFunctionEnum;
   /**
    * Id of diagnose
    *
    */
-  id?: number;
+  id: number;
   /**
    * Name of account
    *
@@ -315,10 +315,10 @@ export type EmailDomainDomainDiagnoseResultEnum = 'CUSTOM' | 'DEPRECATED' | 'KO'
 export interface EmailDomainDomainDiagnoseTraceStruct<T> {
   /**
    */
-  result?: T;
+  result: T;
   /**
    */
-  test?: string;
+  test: string;
 }
 /**
  * Domain service
@@ -338,7 +338,7 @@ export interface EmailDomainDomainService {
    * Name of domain
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Filerz of domain
    *
@@ -363,7 +363,7 @@ export interface EmailDomainDomainService {
    * Domain Status
    *
    */
-  status?: DomainDomainStatusEnum;
+  status: DomainDomainStatusEnum;
 }
 /**
  * Filter List
@@ -383,27 +383,27 @@ export interface EmailDomainFilter {
    * If true filter is active
    *
    */
-  active?: boolean;
+  active: boolean;
   /**
    * Domain name of filter
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Filter name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Account name of filter
    *
    */
-  pop?: string;
+  pop: string;
   /**
    * Priority of filter
    *
    */
-  priority?: number;
+  priority: number;
 }
 /**
  * Mailing List
@@ -413,7 +413,7 @@ export interface EmailDomainMailingList {
    * Id of mailing list
    *
    */
-  id?: number;
+  id: number;
   /**
    * Language of mailing list
    *
@@ -423,7 +423,7 @@ export interface EmailDomainMailingList {
    * Name of mailing list
    *
    */
-  name?: string;
+  name: string;
   /**
    * Subscribers number of mailing list
    *
@@ -438,17 +438,17 @@ export interface EmailDomainMailingList {
    * Options of mailing list
    *
    */
-  options?: DomainDomainMlOptionsStruct;
+  options: DomainDomainMlOptionsStruct;
   /**
    * Owner email of mailing list
    *
    */
-  ownerEmail?: string;
+  ownerEmail: string;
   /**
    * Email to reply of mailing list
    *
    */
-  replyTo?: string;
+  replyTo: string;
 }
 /**
  * Migration account
@@ -458,12 +458,12 @@ export interface EmailDomainMigrationAccount {
    * Destination account name
    *
    */
-  destinationEmailAddress?: string;
+  destinationEmailAddress: string;
   /**
    * Account maximum size
    *
    */
-  quota?: number;
+  quota: number;
 }
 /**
  * Result code of check migration
@@ -477,7 +477,7 @@ export interface EmailDomainMigrationCheckResultStruct {
    * Result code of check migration
    *
    */
-  code?: EmailDomainMigrationCheckCodeEnum;
+  code: EmailDomainMigrationCheckCodeEnum;
   /**
    * Details of result code
    *
@@ -522,37 +522,37 @@ export interface EmailDomainMigrationService {
    * Admin contact of service
    *
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    * Billing contact of service
    *
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    * Tech contact of service
    *
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    * Creation date of service
    *
    */
-  creation?: string;
+  creation: string;
   /**
    * Service name allowed as migration destination
    *
    */
-  destinationServiceName?: string;
+  destinationServiceName: string;
   /**
    * Expiration date of service
    *
    */
-  expiration?: string;
+  expiration: string;
   /**
    * Offer type of service
    *
    */
-  type?: EmailDomainMigrationServiceType;
+  type: EmailDomainMigrationServiceType;
 }
 /**
  * Types of migration service
@@ -564,13 +564,13 @@ export type EmailDomainMigrationServiceType = 'EMAIL PRO' | 'HOSTED EXCHANGE' | 
 export interface EmailDomainModerator {
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  email?: string;
+  email: string;
   /**
    */
-  mailinglist?: string;
+  mailinglist: string;
 }
 /**
  * Global Redirection
@@ -578,13 +578,13 @@ export interface EmailDomainModerator {
 export interface EmailDomainRedirectionGlobal {
   /**
    */
-  from?: string;
+  from: string;
   /**
    */
-  id?: string;
+  id: string;
   /**
    */
-  to?: string;
+  to: string;
 }
 /**
  * Responder
@@ -594,17 +594,17 @@ export interface EmailDomainResponder {
    * Name of account
    *
    */
-  account?: string;
+  account: string;
   /**
    * Content of responder
    *
    */
-  content?: string;
+  content: string;
   /**
    * If false, emails will be dropped. If true and copyTo field is empty, emails will be delivered to your mailbox. If true and copyTo is set with an address, emails will be delivered to this address
    *
    */
-  copy?: boolean;
+  copy: boolean;
   /**
    * Account where copy emails
    *
@@ -629,17 +629,17 @@ export interface EmailDomainResponderAccount {
    * Name of account
    *
    */
-  account?: string;
+  account: string;
   /**
    * Content of responder
    *
    */
-  content?: string;
+  content: string;
   /**
    * If true, emails will be copy to emailToCopy address
    *
    */
-  copy?: boolean;
+  copy: boolean;
   /**
    * Account where copy emails
    *
@@ -664,20 +664,20 @@ export interface EmailDomainRule {
    * Header to be filtered
    *
    */
-  header?: string;
+  header: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    * Rule of filter
    *
    */
-  operand?: DomainDomainFilterOperandEnum;
+  operand: DomainDomainFilterOperandEnum;
   /**
    * Rule parameter of filter
    *
    */
-  value?: string;
+  value: string;
 }
 /**
  * Subscribers List
@@ -685,13 +685,13 @@ export interface EmailDomainRule {
 export interface EmailDomainSubscriber {
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  email?: string;
+  email: string;
   /**
    */
-  mailinglist?: string;
+  mailinglist: string;
 }
 /**
  * Task filter List
@@ -701,27 +701,27 @@ export interface EmailDomainTaskFilter {
    * Account name of task
    *
    */
-  account?: string;
+  account: string;
   /**
    * Action of task
    *
    */
-  action?: string;
+  action: string;
   /**
    * Domain name of task
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Id of task
    *
    */
-  id?: number;
+  id: number;
   /**
    * Creation date of task
    *
    */
-  timestamp?: string;
+  timestamp: string;
 }
 /**
  * Task Mailing List
@@ -729,22 +729,22 @@ export interface EmailDomainTaskFilter {
 export interface EmailDomainTaskMl {
   /**
    */
-  account?: string;
+  account: string;
   /**
    */
-  action?: string;
+  action: string;
   /**
    */
-  date?: string;
+  date: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  language?: DomainDomainMlLanguageEnum;
+  language: DomainDomainMlLanguageEnum;
 }
 /**
  * Task Pop List
@@ -754,27 +754,27 @@ export interface EmailDomainTaskPop {
    * Action of task
    *
    */
-  action?: DomainDomainPopActionEnum;
+  action: DomainDomainPopActionEnum;
   /**
    * Creation date of task
    *
    */
-  date?: string;
+  date: string;
   /**
    * Domain name of task
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Id of task
    *
    */
-  id?: number;
+  id: number;
   /**
    * Account name of task
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Task special account List
@@ -784,32 +784,32 @@ export interface EmailDomainTaskSpecialAccount {
    * Account name of task
    *
    */
-  account?: string;
+  account: string;
   /**
    * Action of task
    *
    */
-  action?: DomainDomainSpecialAccountActionEnum;
+  action: DomainDomainSpecialAccountActionEnum;
   /**
    * Creation date of task
    *
    */
-  date?: string;
+  date: string;
   /**
    * Domain name of task
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Id of task
    *
    */
-  id?: number;
+  id: number;
   /**
    * Type of action filter
    *
    */
-  type?: DomainDomainSpecialAccountTypeEnum;
+  type: DomainDomainSpecialAccountTypeEnum;
 }
 /**
  * Map a possible renew for a specific service
@@ -819,17 +819,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -861,28 +861,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -895,13 +895,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * Resource record fieldType

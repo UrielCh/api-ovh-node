@@ -16,7 +16,7 @@ export interface ComplexTypeChartReturn {
 export interface ComplexTypeChartTimestampValue {
   /**
    */
-  timestamp?: number;
+  timestamp: number;
   /**
    */
   value?: number;
@@ -27,10 +27,10 @@ export interface ComplexTypeChartTimestampValue {
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * ISO country codes
@@ -44,7 +44,7 @@ export interface DedicatedAvailabilities {
    * The hardware availability for each datacenter which composed a region
    *
    */
-  datacenters?: DedicatedAvailabilityDatacenter[];
+  datacenters: DedicatedAvailabilityDatacenter[];
   /**
    * Name of the hardware
    *
@@ -64,17 +64,17 @@ export interface DedicatedAvailabilitiesRaw {
    * The availability
    *
    */
-  availability?: DedicatedAvailabilityEnum;
+  availability: DedicatedAvailabilityEnum;
   /**
    * Real stock in database
    *
    */
-  available?: number;
+  available: number;
   /**
    * Stock in datacenter
    *
    */
-  incomingDatacenter?: number;
+  incomingDatacenter: number;
   /**
    * Last availability rule applied
    *
@@ -84,42 +84,42 @@ export interface DedicatedAvailabilitiesRaw {
    * Ordered count
    *
    */
-  ordered?: number;
+  ordered: number;
   /**
    * Validating order count
    *
    */
-  orderedCheck?: number;
+  orderedCheck: number;
   /**
    * Blockbuster stock count
    *
    */
-  parentAvailable?: number;
+  parentAvailable: number;
   /**
    * Product reference
    *
    */
-  reference?: string;
+  reference: string;
   /**
    * Real stock (considering order in validating)
    *
    */
-  trueAvailable?: number;
+  trueAvailable: number;
   /**
    * 24H count
    *
    */
-  trueAvailable24H?: number;
+  trueAvailable24H: number;
   /**
    * 4H count
    *
    */
-  trueAvailable4H?: number;
+  trueAvailable4H: number;
   /**
    * Region where is located the product
    *
    */
-  zone?: DedicatedAvailabilityRegionEnum;
+  zone: DedicatedAvailabilityRegionEnum;
 }
 /**
  * A structure describing the hardware availability for each datacenter
@@ -129,12 +129,12 @@ export interface DedicatedAvailabilityDatacenter {
    * Availability status
    *
    */
-  availability?: DedicatedAvailabilityEnum;
+  availability: DedicatedAvailabilityEnum;
   /**
    * Datacenter code
    *
    */
-  datacenter?: DedicatedAvailabilityDatacenterEnum;
+  datacenter: DedicatedAvailabilityDatacenterEnum;
 }
 /**
  * The datacenter
@@ -156,15 +156,15 @@ export interface DedicatedBinaryFirewall {
    * List of compatible asa binaries names
    *
    */
-  asa?: string[];
+  asa: string[];
   /**
    * List of compatible asdm binaries names
    *
    */
-  asdm?: string[];
+  asdm: string[];
   /**
    */
-  type?: DedicatedProfileFirewallEnum;
+  type: DedicatedProfileFirewallEnum;
 }
 /**
  * Get temporary URL link to download binary
@@ -174,7 +174,7 @@ export interface DedicatedBinaryFirewallLink {
    * Temporary URL to download binary
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * A structure describing the availabilities of dedicated server
@@ -184,12 +184,12 @@ export interface DedicatedDatacenterAvailability {
    * The hardware availability for each datacenter
    *
    */
-  datacenters?: DedicatedAvailabilityDatacenter[];
+  datacenters: DedicatedAvailabilityDatacenter[];
   /**
    * Fully qualified and unique name of the hardware
    *
    */
-  fqn?: string;
+  fqn: string;
   /**
    * Name of the memory hardware part
    *
@@ -199,12 +199,12 @@ export interface DedicatedDatacenterAvailability {
    * Plan code in which the hardware is involved
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Name of the base hardware
    *
    */
-  server?: string;
+  server: string;
   /**
    * Name of the storage hardware part
    *
@@ -243,12 +243,12 @@ export interface DedicatedNetworkInterfaceControllerNetworkInterfaceController {
    * NetworkInterfaceController linkType
    *
    */
-  linkType?: DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum;
+  linkType: DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum;
   /**
    * NetworkInterfaceController mac
    *
    */
-  mac?: string;
+  mac: string;
 }
 /**
  * List NetworkInterfaceController linktype
@@ -262,12 +262,12 @@ export interface DedicatedServerAccess {
    * Password
    *
    */
-  password?: string;
+  password: string;
   /**
    * Application access type
    *
    */
-  type?: DedicatedServerAccessTypeEnum;
+  type: DedicatedServerAccessTypeEnum;
   /**
    * Url
    *
@@ -305,7 +305,7 @@ export interface DedicatedServerBackupCloud {
    * Status of the container.
    *
    */
-  status?: DedicatedServerBackupBackupStatus;
+  status: DedicatedServerBackupBackupStatus;
   /**
    * Storage space info.
    *
@@ -320,7 +320,7 @@ export interface DedicatedServerBackupFtp {
    * The backup FTP server name
    *
    */
-  ftpBackupName?: string;
+  ftpBackupName: string;
   /**
    * The disk space available in gigabytes
    *
@@ -335,7 +335,7 @@ export interface DedicatedServerBackupFtp {
    * The backup FTP type
    *
    */
-  type?: DedicatedServerBackupStorageTypeEnum;
+  type: DedicatedServerBackupStorageTypeEnum;
   /**
    * The disk space currently used on your backup FTP in percent
    *
@@ -350,32 +350,32 @@ export interface DedicatedServerBackupFtpAcl {
    * Wether to allow the CIFS (SMB) protocol for this ACL
    *
    */
-  cifs?: boolean;
+  cifs: boolean;
   /**
    * Wether to allow the FTP protocol for this ACL
    *
    */
-  ftp?: boolean;
+  ftp: boolean;
   /**
    * The IP Block specific to this ACL
    *
    */
-  ipBlock?: string;
+  ipBlock: string;
   /**
    * Whether the rule has been applied on the Backup Ftp
    *
    */
-  isApplied?: boolean;
+  isApplied: boolean;
   /**
    * Date of the last object modification
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Wether to allow the NFS protocol for this ACL
    *
    */
-  nfs?: boolean;
+  nfs: boolean;
 }
 /**
  * Different backup storage capacity in gigabytes
@@ -394,7 +394,7 @@ export interface DedicatedServerBackupStorageOrderable {
    * Is a backup storage is orderable for this server
    *
    */
-  orderable?: boolean;
+  orderable: boolean;
 }
 /**
  * Different backup storage type
@@ -437,7 +437,7 @@ export interface DedicatedServerBandwidthOrderable {
    * Is bandwidth orderable for this server
    *
    */
-  orderable?: boolean;
+  orderable: boolean;
   /**
    * Bandwidth "platinum" orderable in mbps
    *
@@ -485,7 +485,7 @@ export interface DedicatedServerBandwidthvRackOrderable {
    * Is bandwidth orderable for this server
    *
    */
-  orderable?: boolean;
+  orderable: boolean;
   /**
    * vRack Bandwidth orderable in mbps
    *
@@ -536,12 +536,12 @@ export interface DedicatedServerDedicated {
    * dedicated datacenter localisation
    *
    */
-  datacenter?: DedicatedDatacenterEnum;
+  datacenter: DedicatedDatacenterEnum;
   /**
    * dedicated server ip
    *
    */
-  ip?: string;
+  ip: string;
   /**
    */
   linkSpeed?: number;
@@ -549,25 +549,25 @@ export interface DedicatedServerDedicated {
    * Icmp monitoring state
    *
    */
-  monitoring?: boolean;
+  monitoring: boolean;
   /**
    * dedicated server name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Operating system
    *
    */
-  os?: string;
+  os: string;
   /**
    * Does this server have professional use option
    *
    */
-  professionalUse?: boolean;
+  professionalUse: boolean;
   /**
    */
-  rack?: string;
+  rack: string;
   /**
    */
   rescueMail?: string;
@@ -583,15 +583,15 @@ export interface DedicatedServerDedicated {
    * your server id
    *
    */
-  serverId?: number;
+  serverId: number;
   /**
    */
-  state?: DedicatedServerStateEnum;
+  state: DedicatedServerStateEnum;
   /**
    * Dedicated server support level
    *
    */
-  supportLevel?: DedicatedServerSupportLevelEnum;
+  supportLevel: DedicatedServerSupportLevelEnum;
 }
 /**
  * Disk interface type enum
@@ -603,20 +603,20 @@ export type DedicatedServerDiskTypeEnum = 'NVMe' | 'SAS' | 'SATA' | 'SSD' | 'Unk
 export interface DedicatedServerFirewall {
   /**
    */
-  enabled?: boolean;
+  enabled: boolean;
   /**
    */
-  firewall?: string;
+  firewall: string;
   /**
    * Firewall management IP
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * transparent mode : device is invisible on the network; routed mode : the security appliance is considered to be a router hop in the network
    *
    */
-  mode?: DedicatedServerFirewallModeEnum;
+  mode: DedicatedServerFirewallModeEnum;
   /**
    * Firewall model
    *
@@ -643,37 +643,37 @@ export interface DedicatedServerHardwareRaidConfiguration {
    * RAID total capacity
    *
    */
-  capacity?: ComplexTypeUnitAndValue<number>;
+  capacity: ComplexTypeUnitAndValue<number>;
   /**
    * Disk count
    *
    */
-  diskCount?: number;
+  diskCount: number;
   /**
    * Disk capacity
    *
    */
-  diskSize?: ComplexTypeUnitAndValue<number>;
+  diskSize: ComplexTypeUnitAndValue<number>;
   /**
    * Size of disk spans on RAID
    *
    */
-  diskSpanSize?: number;
+  diskSpanSize: number;
   /**
    * RAID mode
    *
    */
-  mode?: DedicatedServerHardwareSpecificationsRaidHardEnum;
+  mode: DedicatedServerHardwareSpecificationsRaidHardEnum;
   /**
    * RAID configuration name
    *
    */
-  name?: string;
+  name: string;
   /**
    * RAID controller type
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * RAID controller configuration
@@ -683,17 +683,17 @@ export interface DedicatedServerHardwareRaidController {
    * Connected disk type
    *
    */
-  disks?: DedicatedServerHardwareRaidDiskGroup[];
+  disks: DedicatedServerHardwareRaidDiskGroup[];
   /**
    * Raid controler model
    *
    */
-  model?: string;
+  model: string;
   /**
    * Raid controler type
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * Disk attached to a RAID controller
@@ -703,22 +703,22 @@ export interface DedicatedServerHardwareRaidDiskGroup {
    * Disk capacity
    *
    */
-  capacity?: ComplexTypeUnitAndValue<number>;
+  capacity: ComplexTypeUnitAndValue<number>;
   /**
    * Disk names
    *
    */
-  names?: string[];
+  names: string[];
   /**
    * Disk insterface speed
    *
    */
-  speed?: ComplexTypeUnitAndValue<string>;
+  speed: ComplexTypeUnitAndValue<string>;
   /**
    * Disk type
    *
    */
-  type?: DedicatedServerDiskTypeEnum;
+  type: DedicatedServerDiskTypeEnum;
 }
 /**
  * A structure describing the server's hardware RAID configuration
@@ -728,7 +728,7 @@ export interface DedicatedServerHardwareRaidProfile {
    * Hardware RAID controller list
    *
    */
-  controllers?: DedicatedServerHardwareRaidController[];
+  controllers: DedicatedServerHardwareRaidController[];
 }
 /**
  * A structure describing the server's resulting layout after RAID configuration
@@ -738,7 +738,7 @@ export interface DedicatedServerHardwareRaidSize {
    * Hardware RAID configuration list
    *
    */
-  configurations?: DedicatedServerHardwareRaidConfiguration[];
+  configurations: DedicatedServerHardwareRaidConfiguration[];
 }
 /**
  * A structure describing informations about this dedicated server
@@ -748,7 +748,7 @@ export interface DedicatedServerHardwareSpecifications {
    * Server boot mode
    *
    */
-  bootMode?: DedicatedServerBootModeEnum;
+  bootMode: DedicatedServerBootModeEnum;
   /**
    * number of cores per processor
    *
@@ -873,12 +873,12 @@ export interface DedicatedServerHardwareSpecificationsExpansionCard {
    * expansion card description
    *
    */
-  description?: string;
+  description: string;
   /**
    * expansion card type
    *
    */
-  type?: DedicatedServerHardwareSpecificationsExpansionCardTypeEnum;
+  type: DedicatedServerHardwareSpecificationsExpansionCardTypeEnum;
 }
 /**
  * Expansion card type enum
@@ -976,7 +976,7 @@ export interface DedicatedServerInstallationProgressStatus {
    * Elapsed time in seconds since installation beggining
    *
    */
-  elapsedTime?: number;
+  elapsedTime: number;
   /**
    * Installation steps
    *
@@ -995,7 +995,7 @@ export interface DedicatedServerInstallationProgressSteps {
    * Informations about this installation step
    *
    */
-  comment?: string;
+  comment: string;
   /**
    * Error details if state is error
    *
@@ -1005,7 +1005,7 @@ export interface DedicatedServerInstallationProgressSteps {
    * Status of this installation step
    *
    */
-  status?: DedicatedServerInstallationProgressStatusEnum;
+  status: DedicatedServerInstallationProgressStatusEnum;
 }
 /**
  * Intervention made on this server
@@ -1020,7 +1020,7 @@ export interface DedicatedServerIntervention {
    * The intervention id
    *
    */
-  interventionId?: number;
+  interventionId: number;
   /**
    * the intervention type
    *
@@ -1058,12 +1058,12 @@ export interface DedicatedServerIpOrderableDetails {
    * Orderable IP blocks sizes
    *
    */
-  blockSizes?: DedicatedServerIpBlockSizeEnum[];
+  blockSizes: DedicatedServerIpBlockSizeEnum[];
   /**
    * Are those IP included with your offer
    *
    */
-  included?: boolean;
+  included: boolean;
   /**
    * Total number of IP that can be routed to this server
    *
@@ -1073,7 +1073,7 @@ export interface DedicatedServerIpOrderableDetails {
    * Total number of prefixes that can be routed to this server
    *
    */
-  number?: number;
+  number: number;
   /**
    * Which option is required to order this type of IP
    *
@@ -1083,7 +1083,7 @@ export interface DedicatedServerIpOrderableDetails {
    * this IP type
    *
    */
-  type?: DedicatedServerIpTypeOrderableEnum;
+  type: DedicatedServerIpTypeOrderableEnum;
 }
 /**
  * Orderable IP type
@@ -1097,12 +1097,12 @@ export interface DedicatedServerIpmi {
    * true, if IPMI is available on this server
    *
    */
-  activated?: boolean;
+  activated: boolean;
   /**
    * A structure describing the IPMI supported features
    *
    */
-  supportedFeatures?: DedicatedServerIpmiSupportedFeatures;
+  supportedFeatures: DedicatedServerIpmiSupportedFeatures;
 }
 /**
  * Distinct way to acces a KVM IPMI session
@@ -1131,22 +1131,22 @@ export interface DedicatedServerIpmiSupportedFeatures {
    * Access to the KVM through an HTML web interface
    *
    */
-  kvmipHtml5URL?: boolean;
+  kvmipHtml5URL: boolean;
   /**
    * Access to the KVM through a Java web launch application
    *
    */
-  kvmipJnlp?: boolean;
+  kvmipJnlp: boolean;
   /**
    * Access to the virtual serial port of your server through an SSH client
    *
    */
-  serialOverLanSshKey?: boolean;
+  serialOverLanSshKey: boolean;
   /**
    * Access to the virtual serial port of your server through an HTML command line interface
    *
    */
-  serialOverLanURL?: boolean;
+  serialOverLanURL: boolean;
 }
 /**
  * A structure describing IPMI test result
@@ -1185,7 +1185,7 @@ export type DedicatedServerMrtgPeriodEnum = 'daily' | 'hourly' | 'monthly' | 'we
 export interface DedicatedServerMrtgTimestampValue {
   /**
    */
-  timestamp?: number;
+  timestamp: number;
   /**
    */
   value?: ComplexTypeUnitAndValue<number>;
@@ -1202,22 +1202,22 @@ export interface DedicatedServerNetboot {
    * boot id
    *
    */
-  bootId?: number;
+  bootId: number;
   /**
    * the boot system
    *
    */
-  bootType?: DedicatedServerBootTypeEnum;
+  bootType: DedicatedServerBootTypeEnum;
   /**
    * the boot description
    *
    */
-  description?: string;
+  description: string;
   /**
    * The boot kernel
    *
    */
-  kernel?: string;
+  kernel: string;
 }
 /**
  * A structure describing network informations about this dedicated server
@@ -1257,12 +1257,12 @@ export interface DedicatedServerOption {
    * The option name
    *
    */
-  option?: DedicatedServerOptionEnum;
+  option: DedicatedServerOptionEnum;
   /**
    * The state of the option
    *
    */
-  state?: DedicatedServerOptionStateEnum;
+  state: DedicatedServerOptionStateEnum;
 }
 /**
  * All options a dedicated server can have and release
@@ -1353,7 +1353,7 @@ export interface DedicatedServerRtm {
    * You need to update RTM script on your server
    *
    */
-  needsUpdate?: boolean;
+  needsUpdate: boolean;
 }
 /**
  * distincts RTM charts period
@@ -1466,7 +1466,7 @@ export interface DedicatedServerRtmDisk {
    * Disk
    *
    */
-  disk?: string;
+  disk: string;
   /**
    * Disk model
    *
@@ -1651,7 +1651,7 @@ export interface DedicatedServerRtmPartition {
    * Partition
    *
    */
-  partition?: string;
+  partition: string;
   /**
    * Partition usage
    *
@@ -1681,7 +1681,7 @@ export interface DedicatedServerRtmRaid {
    * Raid unit
    *
    */
-  unit?: string;
+  unit: string;
 }
 /**
  *  Different RAID status
@@ -1795,7 +1795,7 @@ export interface DedicatedServerServerBurst {
    * indicates wether burstable bandwidth is currently active, allowing it to temporarily exceed the normally included bandwidth.OvhToInternet amount, within the limits indicated by the burst.capacity item. It can also be inactiveLocked when temporarily disabled due to overuse, capping it to the included non-burstable bandwidth capacity of bandwidth.OvhToInternet
    *
    */
-  status?: DedicatedServerBurstStatusEnum;
+  status: DedicatedServerBurstStatusEnum;
 }
 /**
  * SPLA license status
@@ -1826,7 +1826,7 @@ export interface DedicatedServerSupportLevelOrderable {
    * Is a support level is orderable for this server
    *
    */
-  orderable?: boolean;
+  orderable: boolean;
 }
 /**
  * distincts support level
@@ -1840,7 +1840,7 @@ export interface DedicatedServerSupportReplaceHddInfo {
    * Disk serial number
    *
    */
-  disk_serial?: string;
+  disk_serial: string;
   /**
    * Disk slotId (if any)
    *
@@ -1865,7 +1865,7 @@ export interface DedicatedServerTask {
    * Function name
    *
    */
-  function?: DedicatedTaskFunctionEnum;
+  function: DedicatedTaskFunctionEnum;
   /**
    * last update
    *
@@ -1875,17 +1875,17 @@ export interface DedicatedServerTask {
    * Task Creation date
    *
    */
-  startDate?: string;
+  startDate: string;
   /**
    * Task status
    *
    */
-  status?: DedicatedTaskStatusEnum;
+  status: DedicatedTaskStatusEnum;
   /**
    * the id of the task
    *
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * Miscellaneous template capabilities regarding the server.
@@ -1895,7 +1895,7 @@ export interface DedicatedServerTemplateCaps {
    * This boolean tells if the template supports hybrid install for the considered server.
    *
    */
-  hybridSupport?: boolean;
+  hybridSupport: boolean;
 }
 /**
  * A structure describing traffic informations about this dedicated server
@@ -1944,7 +1944,7 @@ export interface DedicatedServerTrafficOrderable {
    * Is traffic orderable for this server
    *
    */
-  orderable?: boolean;
+  orderable: boolean;
   /**
    * traffic orderable
    *
@@ -1963,12 +1963,12 @@ export interface DedicatedServerUsbKeyOrderableDetails {
    * Orderable USB keys capacity in gigabytes
    *
    */
-  capacity?: DedicatedServerUsbKeyCapacityEnum[];
+  capacity: DedicatedServerUsbKeyCapacityEnum[];
   /**
    * Number of USB keys that can be ordered for this server
    *
    */
-  number?: number;
+  number: number;
   /**
    * Which option is required to order an USB key
    *
@@ -1978,7 +1978,7 @@ export interface DedicatedServerUsbKeyOrderableDetails {
    * Is USB keys orderable for this server
    *
    */
-  orderable?: boolean;
+  orderable: boolean;
 }
 /**
  * A virtual MAC address associated to one or more IPs
@@ -1988,12 +1988,12 @@ export interface DedicatedServerVirtualMac {
    * Virtual MAC address in 00:00:00:00:00:00 format
    *
    */
-  macAddress?: string;
+  macAddress: string;
   /**
    * Virtual MAC address type
    *
    */
-  type?: DedicatedServerVmacTypeEnum;
+  type: DedicatedServerVmacTypeEnum;
 }
 /**
  *  ip address linked with this virtual mac address
@@ -2003,12 +2003,12 @@ export interface DedicatedServerVirtualMacManagement {
    * IP address
    *
    */
-  ipAddress?: string;
+  ipAddress: string;
   /**
    * Friendly name of your Virtual Machine behind this IP/MAC
    *
    */
-  virtualMachineName?: string;
+  virtualMachineName: string;
 }
 /**
  * Distinct type of virtual mac
@@ -2172,7 +2172,7 @@ export interface DedicatedServerBackupBackupStatus {
    * Status code
    *
    */
-  code?: DedicatedServerBackupBackupStatusCodeEnum;
+  code: DedicatedServerBackupBackupStatusCodeEnum;
   /**
    * Status code reason (when not ok)
    *
@@ -2211,22 +2211,22 @@ export interface DedicatedServerEmailAlert {
    * This monitoring id
    *
    */
-  alertId?: number;
+  alertId: number;
   /**
    * Alert destination
    *
    */
-  email?: string;
+  email: string;
   /**
    * Is this monitor enabled
    *
    */
-  enabled?: boolean;
+  enabled: boolean;
   /**
    * Alert language
    *
    */
-  language?: DedicatedServerAlertLanguageEnum;
+  language: DedicatedServerAlertLanguageEnum;
 }
 /**
  * Physical KVM
@@ -2236,7 +2236,7 @@ export interface DedicatedServerKvm {
    * KVM expiration date
    *
    */
-  expiration?: string;
+  expiration: string;
   /**
    * KVM access ip
    *
@@ -2246,7 +2246,7 @@ export interface DedicatedServerKvm {
    * KVM hostname
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Available boot options
@@ -2256,12 +2256,12 @@ export interface DedicatedServerNetbootOption {
    * The option of this boot
    *
    */
-  option?: DedicatedServerBootOptionEnum;
+  option: DedicatedServerBootOptionEnum;
   /**
    * the value of this option
    *
    */
-  value?: string;
+  value: string;
 }
 /**
  * Service monitoring details
@@ -2276,32 +2276,32 @@ export interface DedicatedServerServiceMonitoring {
    * Is this service monitoring is enabled
    *
    */
-  enabled?: boolean;
+  enabled: boolean;
   /**
    * The test interval in seconds
    *
    */
-  interval?: DedicatedServerMonitoringIntervalEnum;
+  interval: DedicatedServerMonitoringIntervalEnum;
   /**
    * The ip to monitor
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * This monitoring id
    *
    */
-  monitoringId?: number;
+  monitoringId: number;
   /**
    * The service port to monitor
    *
    */
-  port?: number;
+  port: number;
   /**
    * The protocol to use
    *
    */
-  protocol?: DedicatedServerMonitoringProtocolEnum;
+  protocol: DedicatedServerMonitoringProtocolEnum;
   /**
    * The URL to test
    *
@@ -2316,12 +2316,12 @@ export interface DedicatedServerSmsAlert {
    * Id of this alert
    *
    */
-  alertId?: number;
+  alertId: number;
   /**
    * Is this alert enabled
    *
    */
-  enabled?: boolean;
+  enabled: boolean;
   /**
    * Daily hour end time for SMS notification
    *
@@ -2331,17 +2331,17 @@ export interface DedicatedServerSmsAlert {
    * Alert language
    *
    */
-  language?: DedicatedServerAlertLanguageEnum;
+  language: DedicatedServerAlertLanguageEnum;
   /**
    * Alert destination
    *
    */
-  phoneNumberTo?: string;
+  phoneNumberTo: string;
   /**
    * Your SMS account
    *
    */
-  smsAccount?: string;
+  smsAccount: string;
   /**
    * Daily hour start time for SMS notification
    *
@@ -2356,27 +2356,27 @@ export interface DedicatedServerSpla {
    * License id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Last update timestamp
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * License serial number
    *
    */
-  serialNumber?: string;
+  serialNumber: string;
   /**
    * Status of license
    *
    */
-  status?: DedicatedServerSplaStatusEnum;
+  status: DedicatedServerSplaStatusEnum;
   /**
    * License type
    *
    */
-  type?: DedicatedServerSplaTypeEnum;
+  type: DedicatedServerSplaTypeEnum;
 }
 /**
  * Your VirtualNetworkInterface
@@ -2386,22 +2386,22 @@ export interface DedicatedVirtualNetworkInterfaceVirtualNetworkInterface {
    * VirtualNetworkInterface mode
    *
    */
-  mode?: DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum;
+  mode: DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum;
   /**
    * User defined VirtualNetworkInterface name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Server bound to this VirtualNetworkInterface
    *
    */
-  serverName?: string;
+  serverName: string;
   /**
    * VirtualNetworkInterface unique id
    *
    */
-  uuid?: string;
+  uuid: string;
   /**
    * vRack name
    *
@@ -2430,22 +2430,22 @@ export type NichandleOvhSubsidiaryEnum = 'ASIA' | 'AU' | 'CA' | 'CZ' | 'DE' | 'E
 export interface SecondaryDnsSecondaryDNS {
   /**
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * secondary dns server
    *
    */
-  dns?: string;
+  dns: string;
   /**
    * domain on slave server
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * master ip
    *
    */
-  ipMaster?: string;
+  ipMaster: string;
 }
 /**
  * A structure describing informations about secondary dns check field
@@ -2455,17 +2455,17 @@ export interface SecondaryDnsSecondaryDNSCheckField {
    * The field type to add on your DNS zone for this subDomain
    *
    */
-  fieldType?: ZoneNamedResolutionFieldTypeEnum;
+  fieldType: ZoneNamedResolutionFieldTypeEnum;
   /**
    * The field value to add on your DNS zone for this subDomain
    *
    */
-  fieldValue?: string;
+  fieldValue: string;
   /**
    * The subdomain to add on your DNS zone for the domain
    *
    */
-  subDomain?: string;
+  subDomain: string;
 }
 /**
  * A structure describing informations about available nameserver for secondary dns 
@@ -2475,10 +2475,10 @@ export interface SecondaryDnsSecondaryDNSNameServer {
    * the name server
    *
    */
-  hostname?: string;
+  hostname: string;
   /**
    */
-  ip?: string;
+  ip: string;
   /**
    */
   ipv6?: string;
@@ -2491,17 +2491,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -2537,28 +2537,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -2571,13 +2571,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * Newly created support identifiers
@@ -2587,17 +2587,17 @@ export interface SupportNewMessageInfo {
    * Message identifier
    *
    */
-  messageId?: number;
+  messageId: number;
   /**
    * Ticket identifier
    *
    */
-  ticketId?: number;
+  ticketId: number;
   /**
    * Ticket external number
    *
    */
-  ticketNumber?: number;
+  ticketNumber: number;
 }
 /**
  * vrack tasks
@@ -2605,10 +2605,10 @@ export interface SupportNewMessageInfo {
 export interface VrackTask {
   /**
    */
-  function?: string;
+  function: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
   lastUpdate?: string;
@@ -2622,7 +2622,7 @@ export interface VrackTask {
    * Task status
    *
    */
-  status?: VrackTaskStatusEnum;
+  status: VrackTaskStatusEnum;
   /**
    */
   targetDomain?: string;
@@ -2642,12 +2642,12 @@ export interface VrackDedicatedServer {
    * Dedicated Server
    *
    */
-  dedicatedServer?: string;
+  dedicatedServer: string;
   /**
    * vrack name
    *
    */
-  vrack?: string;
+  vrack: string;
 }
 /**
  * Resource record fieldType

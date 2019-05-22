@@ -7,27 +7,27 @@ export interface DbaasQueueApp {
    * Human ID of the application
    *
    */
-  humanId?: string;
+  humanId: string;
   /**
    * Application ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Application name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Region ID of the application
    *
    */
-  regionId?: string;
+  regionId: string;
   /**
    * Application status
    *
    */
-  status?: DbaasQueueAppStatus;
+  status: DbaasQueueAppStatus;
 }
 /**
  * AppConfiguration
@@ -37,22 +37,22 @@ export interface DbaasQueueAppConfiguration {
    * Application
    *
    */
-  app?: DbaasQueueApp;
+  app: DbaasQueueApp;
   /**
    * Metrics account
    *
    */
-  metricsAccount?: DbaasQueueMetricsAccount;
+  metricsAccount: DbaasQueueMetricsAccount;
   /**
    * List of created roles
    *
    */
-  roles?: DbaasQueueRole[];
+  roles: DbaasQueueRole[];
   /**
    * List of created users
    *
    */
-  users?: DbaasQueueUserWithPassword[];
+  users: DbaasQueueUserWithPassword[];
 }
 /**
  * AppStatus
@@ -66,17 +66,17 @@ export interface DbaasQueueKey {
    * Human ID of the key's application
    *
    */
-  humanAppId?: string;
+  humanAppId: string;
   /**
    * Key ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Key name
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * KeyWithSecret
@@ -86,22 +86,22 @@ export interface DbaasQueueKeyWithSecret {
    * Human ID of the key's application
    *
    */
-  humanAppId?: string;
+  humanAppId: string;
   /**
    * Key ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Key name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Key secret
    *
    */
-  secret?: string;
+  secret: string;
 }
 /**
  * MetricsAccount
@@ -111,12 +111,12 @@ export interface DbaasQueueMetricsAccount {
    * OpenTSDB host url
    *
    */
-  host?: string;
+  host: string;
   /**
    * Token for OpenTSDB metrics access
    *
    */
-  token?: string;
+  token: string;
 }
 /**
  * Region
@@ -126,17 +126,17 @@ export interface DbaasQueueRegion {
    * Region ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Region name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Region URL
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Role
@@ -146,22 +146,22 @@ export interface DbaasQueueRole {
    * Automatically create non-existing topics on read & write operations
    *
    */
-  autoCreateAcl?: boolean;
+  autoCreateAcl: boolean;
   /**
    * Role name
    *
    */
-  name?: string;
+  name: string;
   /**
    * List of topics with read access
    *
    */
-  readAcl?: string[];
+  readAcl: string[];
   /**
    * List of topics with write access
    *
    */
-  writeAcl?: string[];
+  writeAcl: string[];
 }
 /**
  * Topic
@@ -171,17 +171,17 @@ export interface DbaasQueueTopic {
    * Topic ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Number of partitions
    *
    */
-  partitions?: number;
+  partitions: number;
   /**
    * Replication factor
    *
    */
-  replicationFactor?: number;
+  replicationFactor: number;
 }
 /**
  * User
@@ -191,17 +191,17 @@ export interface DbaasQueueUser {
    * User ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * User name
    *
    */
-  name?: string;
+  name: string;
   /**
    * List of roles this user belongs to
    *
    */
-  roles?: string[];
+  roles: string[];
 }
 /**
  * UserWithPassword
@@ -211,22 +211,22 @@ export interface DbaasQueueUserWithPassword {
    * User ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * User name
    *
    */
-  name?: string;
+  name: string;
   /**
    * User password
    *
    */
-  password?: string;
+  password: string;
   /**
    * List of roles this user belongs to
    *
    */
-  roles?: string[];
+  roles: string[];
 }
 /**
  * Map a possible renew for a specific service
@@ -236,17 +236,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -274,28 +274,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -308,13 +308,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsDbaasQueueGET = '/dbaas/queue' | 
 '/dbaas/queue/{serviceName}' | 

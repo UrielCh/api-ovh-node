@@ -7,17 +7,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -53,28 +53,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -87,13 +87,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * Domain attached to an SSL Gateway
@@ -103,17 +103,17 @@ export interface SslGatewayDomain {
    * Domain name attached to your SSL Gateway
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Id of your domain
    *
    */
-  id?: number;
+  id: number;
   /**
    * Domain state
    *
    */
-  state?: SslGatewayDomainStateEnum;
+  state: SslGatewayDomainStateEnum;
 }
 /**
  * Possible values for SSL Gateway domain state
@@ -127,22 +127,22 @@ export interface SslGatewayEligibilityStatus {
    * Customer domain name
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * Eligible IP(s) v6 for this domain
    *
    */
-  ip6s?: string[];
+  ip6s: string[];
   /**
    * Eligible IP(s) for this domain
    *
    */
-  ips?: string[];
+  ips: string[];
   /**
    * Whether this domain is hosted by Ovh or not
    *
    */
-  isHostedByOvh?: boolean;
+  isHostedByOvh: boolean;
 }
 /**
  * a list of {zone, nat Ip}
@@ -150,10 +150,10 @@ export interface SslGatewayEligibilityStatus {
 export interface SslGatewayNatIps {
   /**
    */
-  ip?: string[];
+  ip: string[];
   /**
    */
-  zone?: string;
+  zone: string;
 }
 /**
  * List of SSL Gateway offers
@@ -167,22 +167,22 @@ export interface SslGatewayServer {
    * IP address of the server attached to your SSL Gateway
    *
    */
-  address?: string;
+  address: string;
   /**
    * Id of your server
    *
    */
-  id?: number;
+  id: number;
   /**
    * Port of your server attached to your SSL Gateway
    *
    */
-  port?: number;
+  port: number;
   /**
    * Server state
    *
    */
-  state?: SslGatewayServerStateEnum;
+  state: SslGatewayServerStateEnum;
 }
 /**
  * Possible values for SSL Gateway server state
@@ -210,17 +210,17 @@ export interface SslGatewaySslGateway {
    * Set to true to enable Strict-Transport-Security HTTP header
    *
    */
-  hsts?: boolean;
+  hsts: boolean;
   /**
    * Set to true to enable https redirect
    *
    */
-  httpsRedirect?: boolean;
+  httpsRedirect: boolean;
   /**
    * The IPv4 you need to put in the A field of your domain name
    *
    */
-  ipv4?: string;
+  ipv4: string;
   /**
    * The IPv6 you need to put in the AAAA field of your domain name
    *
@@ -235,7 +235,7 @@ export interface SslGatewaySslGateway {
    * Current offer for your SSL Gateway
    *
    */
-  offer?: SslGatewayOfferEnum;
+  offer: SslGatewayOfferEnum;
   /**
    * Custom reverse for your SSL Gateway
    *
@@ -245,12 +245,12 @@ export interface SslGatewaySslGateway {
    * Set to true to contact backend servers over HTTPS
    *
    */
-  serverHttps?: boolean;
+  serverHttps: boolean;
   /**
    * The internal name of your SSL Gateway
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Modern oldest compatible clients : Firefox 27, Chrome 30, IE 11 on Windows 7, Edge, Opera 17, Safari 9, Android 5.0, and Java 8. Intermediate oldest compatible clients : Firefox 1, Chrome 1, IE 7, Opera 5, Safari 1, Windows XP IE8, Android 2.3, Java 7. Intermediate if null.
    *
@@ -260,12 +260,12 @@ export interface SslGatewaySslGateway {
    * Current state of your SSL Gateway
    *
    */
-  state?: SslGatewayStateEnum;
+  state: SslGatewayStateEnum;
   /**
    * Zones of your SSL Gateway
    *
    */
-  zones?: string[];
+  zones: string[];
 }
 /**
  * Possible values for SSL Gateway state
@@ -279,27 +279,27 @@ export interface SslGatewayTask {
    * The action made
    *
    */
-  action?: SslGatewayTaskActionEnum;
+  action: SslGatewayTaskActionEnum;
   /**
    * Creation date of your task
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Id of the task
    *
    */
-  id?: number;
+  id: number;
   /**
    * Task progress percentage
    *
    */
-  progress?: number;
+  progress: number;
   /**
    * Current status of your task
    *
    */
-  status?: SslGatewayTaskStatusEnum;
+  status: SslGatewayTaskStatusEnum;
 }
 /**
  * Possible task action

@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * different task operation
@@ -26,12 +26,12 @@ export interface DedicatedHousingApcOrderable {
    * Is this APC free
    *
    */
-  free?: boolean;
+  free: boolean;
   /**
    * Is an APC is orderable for this housing bay
    *
    */
-  orderable?: boolean;
+  orderable: boolean;
 }
 /**
  * Housing bay datacenters
@@ -49,12 +49,12 @@ export interface DedicatedHousingHaRoutingOrderable {
    * High Availability routing service offers
    *
    */
-  offer?: DedicatedHousingHaRoutingOfferEnum[];
+  offer: DedicatedHousingHaRoutingOfferEnum[];
   /**
    * Is a routing service is orderable for this housing bay
    *
    */
-  orderable?: boolean;
+  orderable: boolean;
 }
 /**
  * Housing bay
@@ -69,27 +69,27 @@ export interface DedicatedHousingHousing {
    * The name you give to the bay
    *
    */
-  name?: string;
+  name: string;
   /**
    * Housing bay network
    *
    */
-  network?: DedicatedHousingNetworkInfo[];
+  network: DedicatedHousingNetworkInfo[];
   /**
    * Housing bay options
    *
    */
-  options?: DedicatedHousingOptions;
+  options: DedicatedHousingOptions;
   /**
    * The bay's description
    *
    */
-  rack?: string;
+  rack: string;
   /**
    * Bay Security code
    *
    */
-  securityCode?: string;
+  securityCode: string;
 }
 /**
  * A structure describing the Bay's network configuration
@@ -104,7 +104,7 @@ export interface DedicatedHousingIpInfo {
    * Network address of the bay
    *
    */
-  network?: string;
+  network: string;
   /**
    * Reserved addresses. You should not use them in your network
    *
@@ -119,12 +119,12 @@ export interface DedicatedHousingLinkInfo {
    * Router port number
    *
    */
-  port?: string;
+  port: string;
   /**
    * Router in charge of your network
    *
    */
-  router?: string;
+  router: string;
 }
 /**
  * A structure describing the Bay`s network configuration
@@ -154,17 +154,17 @@ export interface DedicatedHousingOptions {
    * Number of APC connected to this housing bay
    *
    */
-  apcCount?: number;
+  apcCount: number;
   /**
    * Is this housing bay have handsneyes service
    *
    */
-  handsneyes?: boolean;
+  handsneyes: boolean;
   /**
    * High Availability routing service offer
    *
    */
-  highAvailabilityRouting?: string;
+  highAvailabilityRouting: string;
 }
 /**
  * Housing tasks
@@ -184,7 +184,7 @@ export interface DedicatedHousingTask {
    * Function name
    *
    */
-  function?: DedicatedHousingTaskFunctionEnum;
+  function: DedicatedHousingTaskFunctionEnum;
   /**
    * last update
    *
@@ -194,17 +194,17 @@ export interface DedicatedHousingTask {
    * Task Creation date
    *
    */
-  startDate?: string;
+  startDate: string;
   /**
    * Task status
    *
    */
-  status?: DedicatedTaskStatusEnum;
+  status: DedicatedTaskStatusEnum;
   /**
    * the id of the task
    *
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * Distincts task
@@ -218,7 +218,7 @@ export interface DedicatedServerBackupFtp {
    * The backup FTP server name
    *
    */
-  ftpBackupName?: string;
+  ftpBackupName: string;
   /**
    * The disk space available in gigabytes
    *
@@ -233,7 +233,7 @@ export interface DedicatedServerBackupFtp {
    * The backup FTP type
    *
    */
-  type?: DedicatedServerBackupStorageTypeEnum;
+  type: DedicatedServerBackupStorageTypeEnum;
   /**
    * The disk space currently used on your backup FTP in percent
    *
@@ -248,32 +248,32 @@ export interface DedicatedServerBackupFtpAcl {
    * Wether to allow the CIFS (SMB) protocol for this ACL
    *
    */
-  cifs?: boolean;
+  cifs: boolean;
   /**
    * Wether to allow the FTP protocol for this ACL
    *
    */
-  ftp?: boolean;
+  ftp: boolean;
   /**
    * The IP Block specific to this ACL
    *
    */
-  ipBlock?: string;
+  ipBlock: string;
   /**
    * Whether the rule has been applied on the Backup Ftp
    *
    */
-  isApplied?: boolean;
+  isApplied: boolean;
   /**
    * Date of the last object modification
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Wether to allow the NFS protocol for this ACL
    *
    */
-  nfs?: boolean;
+  nfs: boolean;
 }
 /**
  * Different backup storage type
@@ -297,7 +297,7 @@ export interface DedicatedServerTask {
    * Function name
    *
    */
-  function?: DedicatedTaskFunctionEnum;
+  function: DedicatedTaskFunctionEnum;
   /**
    * last update
    *
@@ -307,17 +307,17 @@ export interface DedicatedServerTask {
    * Task Creation date
    *
    */
-  startDate?: string;
+  startDate: string;
   /**
    * Task status
    *
    */
-  status?: DedicatedTaskStatusEnum;
+  status: DedicatedTaskStatusEnum;
   /**
    * the id of the task
    *
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * Map a possible renew for a specific service
@@ -327,17 +327,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -365,28 +365,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -399,13 +399,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsDedicatedHousingGET = '/dedicated/housing' | 
 '/dedicated/housing/{serviceName}' | 

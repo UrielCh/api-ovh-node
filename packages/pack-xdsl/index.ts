@@ -7,7 +7,7 @@ export interface ConnectivityEligibilityBuilding {
    * Building name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Building NRO (Optical main distribution frame)
    *
@@ -17,17 +17,17 @@ export interface ConnectivityEligibilityBuilding {
    * Identifier which refer to a building uniquely
    *
    */
-  reference?: string;
+  reference: string;
   /**
    * Stairs for this building
    *
    */
-  stairs?: ConnectivityEligibilityBuildingStair[];
+  stairs: ConnectivityEligibilityBuildingStair[];
   /**
    * Building type
    *
    */
-  type?: ConnectivityEligibilityBuildingTypeEnum;
+  type: ConnectivityEligibilityBuildingTypeEnum;
 }
 /**
  * Stair details of a Building
@@ -37,12 +37,12 @@ export interface ConnectivityEligibilityBuildingStair {
    * List of floor indentifier, "_NA_" if no identifier is available
    *
    */
-  floors?: string[];
+  floors: string[];
   /**
    * Stair identifier, "_NA_" if no identifier is available
    *
    */
-  stair?: string;
+  stair: string;
 }
 /**
  * Building type
@@ -54,13 +54,13 @@ export type ConnectivityEligibilityBuildingTypeEnum = 'BUILDING' | 'HOUSE';
 export interface OrderContract {
   /**
    */
-  content?: string;
+  content: string;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  url?: string;
+  url: string;
 }
 /**
  * 
@@ -72,13 +72,13 @@ export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL
 export interface OrderPrice {
   /**
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  currencyCode: OrderCurrencyCodeEnum;
   /**
    */
-  text?: string;
+  text: string;
   /**
    */
-  value?: number;
+  value: number;
 }
 /**
  * Domain action
@@ -90,13 +90,13 @@ export type PackXdslDomainActionEnum = 'create' | 'trade' | 'transfer';
 export interface PackXdslExchangeAccountService {
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  exchangeService?: string;
+  exchangeService: string;
   /**
    */
-  organizationName?: string;
+  organizationName: string;
 }
 /**
  * Exchange account service
@@ -104,7 +104,7 @@ export interface PackXdslExchangeAccountService {
 export interface PackXdslExchangeLiteService {
   /**
    */
-  domain?: string;
+  domain: string;
 }
 /**
  * Hubic service
@@ -114,20 +114,20 @@ export interface PackXdslHubic {
    * Size of the hubic account in bytes
    *
    */
-  bytes?: number;
+  bytes: number;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    * Indicate if the voucher is used or not
    *
    */
-  isUsed?: boolean;
+  isUsed: boolean;
   /**
    * Human readable size of the hubic account
    *
    */
-  size?: string;
+  size: string;
   /**
    * Voucher to enter on HubiC website to activate the account
    *
@@ -142,7 +142,7 @@ export interface PackXdslPackAdsl {
    * Capabilities of the pack
    *
    */
-  capabilities?: PackXdslPackCapabilities;
+  capabilities: PackXdslPackCapabilities;
   /**
    * Customer pack description
    *
@@ -152,17 +152,17 @@ export interface PackXdslPackAdsl {
    * Name of the offer
    *
    */
-  offerDescription?: string;
+  offerDescription: string;
   /**
    * Price of the offer
    *
    */
-  offerPrice?: OrderPrice;
+  offerPrice: OrderPrice;
   /**
    * Name of the xdsl pack
    *
    */
-  packName?: string;
+  packName: string;
 }
 /**
  * Describe the capabilities of this pack
@@ -172,12 +172,12 @@ export interface PackXdslPackCapabilities {
    * Whether or not this pack can move address
    *
    */
-  canMoveAddress?: boolean;
+  canMoveAddress: boolean;
   /**
    * Whether or not this pack is from an old offer
    *
    */
-  isLegacyOffer?: boolean;
+  isLegacyOffer: boolean;
 }
 /**
  * Information about pack xdsl
@@ -187,27 +187,27 @@ export interface PackXdslPackDetail {
    * Reference of the access
    *
    */
-  accessname?: string;
+  accessname: string;
   /**
    * Description of the access
    *
    */
-  description?: string;
+  description: string;
   /**
    * Number of the line
    *
    */
-  number?: string;
+  number: string;
   /**
    * Name of the pack
    *
    */
-  packname?: string;
+  packname: string;
   /**
    * Type of the access
    *
    */
-  type?: XdslDslTypeEnum;
+  type: XdslDslTypeEnum;
 }
 /**
  * Details about the resiliation
@@ -217,22 +217,22 @@ export interface PackXdslResiliationFollowUpDetail {
    * Date when the resiliation will take effect
    *
    */
-  dateTodo?: string;
+  dateTodo: string;
   /**
    * If the customer needs to return his modem
    *
    */
-  needModemReturn?: boolean;
+  needModemReturn: boolean;
   /**
    * Date when the resiliation was asked
    *
    */
-  registrationDate?: string;
+  registrationDate: string;
   /**
    * Status of the resiliation
    *
    */
-  status?: string;
+  status: string;
 }
 /**
  * Reason of a resiliation
@@ -251,7 +251,7 @@ export interface PackXdslResiliationSurvey {
    * Type of reason for the resiliation
    *
    */
-  type?: PackXdslResiliationReasonEnum;
+  type: PackXdslResiliationReasonEnum;
 }
 /**
  * Show the resiliation terms
@@ -261,7 +261,7 @@ export interface PackXdslResiliationTerms {
    * Price due at resiliationDate
    *
    */
-  due?: OrderPrice;
+  due: OrderPrice;
   /**
    * Date until which the customer is engaged
    *
@@ -271,17 +271,17 @@ export interface PackXdslResiliationTerms {
    * Minimum date at which the pack can be resiliated
    *
    */
-  minResiliationDate?: string;
+  minResiliationDate: string;
   /**
    * Date at which the pack will be resiliated
    *
    */
-  resiliationDate?: string;
+  resiliationDate: string;
   /**
    * List of available resiliation reasons
    *
    */
-  resiliationReasons?: PackXdslResiliationReasonEnum[];
+  resiliationReasons: PackXdslResiliationReasonEnum[];
 }
 /**
  * Service link to the pack
@@ -289,13 +289,13 @@ export interface PackXdslResiliationTerms {
 export interface PackXdslService {
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  type?: PackXdslServiceNameEnum;
+  type: PackXdslServiceNameEnum;
 }
 /**
  * Informations about a service
@@ -303,16 +303,16 @@ export interface PackXdslService {
 export interface PackXdslServiceInformation {
   /**
    */
-  inCreation?: number;
+  inCreation: number;
   /**
    */
-  name?: PackXdslServiceNameEnum;
+  name: PackXdslServiceNameEnum;
   /**
    */
-  total?: number;
+  total: number;
   /**
    */
-  used?: number;
+  used: number;
 }
 /**
  * Service name
@@ -324,25 +324,25 @@ export type PackXdslServiceNameEnum = 'domain' | 'emailPro' | 'exchangeAccount' 
 export interface PackXdslShippingAddress {
   /**
    */
-  address?: string;
+  address: string;
   /**
    */
-  cityName?: string;
+  cityName: string;
   /**
    */
-  countryCode?: string;
+  countryCode: string;
   /**
    */
-  firstName?: string;
+  firstName: string;
   /**
    */
-  lastName?: string;
+  lastName: string;
   /**
    */
-  shippingId?: string;
+  shippingId: string;
   /**
    */
-  zipCode?: string;
+  zipCode: string;
 }
 /**
  * Allowed contexts when looking for shipping addresses
@@ -354,10 +354,10 @@ export type PackXdslShippingAddressContextEnum = 'migration' | 'voipLine';
 export interface PackXdslSiteBuilderDomain {
   /**
    */
-  defaultSubDomain?: string;
+  defaultSubDomain: string;
   /**
    */
-  domain?: string;
+  domain: string;
 }
 /**
  * SiteBuilder template infos
@@ -365,22 +365,22 @@ export interface PackXdslSiteBuilderDomain {
 export interface PackXdslSiteBuilderTemplate {
   /**
    */
-  bkId?: number;
+  bkId: number;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  previewImg?: string;
+  previewImg: string;
   /**
    */
-  reference?: string;
+  reference: string;
   /**
    */
-  thumbImage?: string;
+  thumbImage: string;
 }
 /**
  * Describes the current status of a task
@@ -388,16 +388,16 @@ export interface PackXdslSiteBuilderTemplate {
 export interface PackXdslTask {
   /**
    */
-  function?: string;
+  function: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
-  status?: PackXdslTaskStatusEnum;
+  status: PackXdslTaskStatusEnum;
   /**
    */
-  updateDate?: string;
+  updateDate: string;
 }
 /**
  * Status of a task.
@@ -411,22 +411,22 @@ export interface PackXdslUnpackTerms {
    * Tells whether or not the service can be unpacked
    *
    */
-  isAllowed?: boolean;
+  isAllowed: boolean;
   /**
    * Price bill on the unpack action
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Renew period in month of the service
    *
    */
-  renewPeriod?: number;
+  renewPeriod: number;
   /**
    * The price it will cost when it will be renew
    *
    */
-  renewPrice?: OrderPrice;
+  renewPrice: OrderPrice;
 }
 /**
  * Hardware for VoIP line
@@ -440,16 +440,16 @@ export interface PackXdslVoIPHardware {
   image?: string;
   /**
    */
-  label?: string;
+  label: string;
   /**
    */
   max?: number;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  needShipping?: boolean;
+  needShipping: boolean;
   /**
    */
   url?: string;
@@ -462,16 +462,16 @@ export interface PackXdslVoIPLineOrder {
    * Whether or not this order need to be payed manually
    *
    */
-  needPayment?: boolean;
+  needPayment: boolean;
   /**
    */
-  orderId?: number;
+  orderId: number;
   /**
    */
-  orderUrl?: string;
+  orderUrl: string;
   /**
    */
-  taskIds?: number[];
+  taskIds: number[];
 }
 /**
  * VOIP line services
@@ -479,10 +479,10 @@ export interface PackXdslVoIPLineOrder {
 export interface PackXdslVoipLineService {
   /**
    */
-  billingAccount?: string;
+  billingAccount: string;
   /**
    */
-  domain?: string;
+  domain: string;
 }
 /**
  * The parameters needed to create a new landline
@@ -492,12 +492,12 @@ export interface PackXdslAddressMoveCreation {
    * The address
    *
    */
-  address?: XdslEligibilityAddress;
+  address: XdslEligibilityAddress;
   /**
    * Data to book a meeting slot
    *
    */
-  meeting?: XdslEligibilityBookMeetingSlot;
+  meeting: XdslEligibilityBookMeetingSlot;
 }
 /**
  * Eligibility
@@ -512,7 +512,7 @@ export interface PackXdslAddressMoveEligibility {
    * The available offers at this address
    *
    */
-  offers?: PackXdslAddressMoveOffer[];
+  offers: PackXdslAddressMoveOffer[];
 }
 /**
  * The parameters needed to activate the access on a landline
@@ -522,12 +522,12 @@ export interface PackXdslAddressMoveLandline {
    * The number of the landline
    *
    */
-  lineNumber?: string;
+  lineNumber: string;
   /**
    * Whether or not tha lineNumber should be ported to OVH, if eligibile
    *
    */
-  portLineNumber?: boolean;
+  portLineNumber: boolean;
   /**
    * A token to prove the ownership of the line number, needed to port the number
    *
@@ -537,12 +537,12 @@ export interface PackXdslAddressMoveLandline {
    * The status of the landline
    *
    */
-  status?: XdslEligibilityLandlineStatusEnum;
+  status: XdslEligibilityLandlineStatusEnum;
   /**
    * The unbundling of the landline
    *
    */
-  unbundling?: XdslDeconsolidationEnum;
+  unbundling: XdslDeconsolidationEnum;
 }
 /**
  * An offer
@@ -552,27 +552,27 @@ export interface PackXdslAddressMoveOffer {
    * Address of the landline
    *
    */
-  address?: XdslEligibilityAddress;
+  address: XdslEligibilityAddress;
   /**
    * The estimated download synchronisation in kbps
    *
    */
-  estimatedDownload?: number;
+  estimatedDownload: number;
   /**
    * The estimated upload synchronisation in kbps
    *
    */
-  estimatedUpload?: number;
+  estimatedUpload: number;
   /**
    * Detailed information about the sections between the DSLAM and the telephone jack
    *
    */
-  lineSectionsLength?: XdslLineSectionLength[];
+  lineSectionsLength: XdslLineSectionLength[];
   /**
    * The status of the landline
    *
    */
-  lineStatus?: XdslEligibilityLandlineStatusEnum;
+  lineStatus: XdslEligibilityLandlineStatusEnum;
   /**
    * Available meeting slots for the creation of this offer.
    *
@@ -582,52 +582,52 @@ export interface PackXdslAddressMoveOffer {
    * The NRA of the landline
    *
    */
-  nra?: string;
+  nra: string;
   /**
    * The code of the offer
    *
    */
-  offerCode?: string;
+  offerCode: string;
   /**
    * Tells whether the tested number can be ported to OVH or not
    *
    */
-  portability?: XdslEligibilityPortability;
+  portability: XdslEligibilityPortability;
   /**
    * The price of this offer
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Status of the request
    *
    */
-  provider?: XdslEligibilityProviderEnum;
+  provider: XdslEligibilityProviderEnum;
   /**
    * Whether this is a reseller offer or not
    *
    */
-  reseller?: boolean;
+  reseller: boolean;
   /**
    * The download synchronisation in kbps
    *
    */
-  syncDownload?: number;
+  syncDownload: number;
   /**
    * The upload synchronisation in kbps
    *
    */
-  syncUpload?: number;
+  syncUpload: number;
   /**
    * DSL technology
    *
    */
-  type?: XdslDslTypeEnum;
+  type: XdslDslTypeEnum;
   /**
    * The unbundling type
    *
    */
-  unbundling?: XdslDeconsolidationEnum;
+  unbundling: XdslDeconsolidationEnum;
 }
 /**
  * Migration offer
@@ -637,22 +637,22 @@ export interface PackXdslMigrationMigrationOffer {
    * DEPRECATED - List of contracts
    *
    */
-  contractList?: string[];
+  contractList: string[];
   /**
    * List of contracts for this offer
    *
    */
-  contracts?: OrderContract[];
+  contracts: OrderContract[];
   /**
    * Price of the current offer
    *
    */
-  currentOfferPrice?: OrderPrice;
+  currentOfferPrice: OrderPrice;
   /**
    * Description of the offer
    *
    */
-  description?: string;
+  description: string;
   /**
    * Price to make the migration
    *
@@ -667,7 +667,7 @@ export interface PackXdslMigrationMigrationOffer {
    * List of number of months possible for engagement
    *
    */
-  engagementMonths?: number[];
+  engagementMonths: number[];
   /**
    * Subscription price the first year
    *
@@ -692,37 +692,37 @@ export interface PackXdslMigrationMigrationOffer {
    * Tells if the offer needs a modem
    *
    */
-  needModem?: boolean;
+  needModem: boolean;
   /**
    * Tells if the customer will have to change its modem
    *
    */
-  needNewModem?: boolean;
+  needNewModem: boolean;
   /**
    * Name of the offer
    *
    */
-  offerName?: string;
+  offerName: string;
   /**
    * Available options for the migration
    *
    */
-  options?: PackXdslMigrationOfferAvailableOption[];
+  options: PackXdslMigrationOfferAvailableOption[];
   /**
    * Price of the offer
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * List of sub services to delete
    *
    */
-  subServicesToDelete?: PackXdslMigrationSubServiceToDelete[];
+  subServicesToDelete: PackXdslMigrationSubServiceToDelete[];
   /**
    * URL of the offer
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * List of available Migration offer
@@ -732,12 +732,12 @@ export interface PackXdslMigrationMigrationOfferResponse {
    * Array of buildings
    *
    */
-  buildings?: ConnectivityEligibilityBuilding[];
+  buildings: ConnectivityEligibilityBuilding[];
   /**
    * Array of offers
    *
    */
-  offers?: PackXdslMigrationMigrationOffer[];
+  offers: PackXdslMigrationMigrationOffer[];
 }
 /**
  * Available option for the offer
@@ -747,22 +747,22 @@ export interface PackXdslMigrationOfferAvailableOption {
    * Number of months paid for
    *
    */
-  duration?: number;
+  duration: number;
   /**
    * Number of slots included by default in this offer
    *
    */
-  included?: number;
+  included: number;
   /**
    * Name of the option
    *
    */
-  name?: string;
+  name: string;
   /**
    * Number of optional slots that can be puchased
    *
    */
-  optional?: number;
+  optional: number;
   /**
    * Price of an additional slot. You pay this price everytime the duration is expired
    *
@@ -777,12 +777,12 @@ export interface PackXdslMigrationOfferOption {
    * Name of the option
    *
    */
-  name?: string;
+  name: string;
   /**
    * Number of slots, couting included slots
    *
    */
-  quantity?: number;
+  quantity: number;
 }
 /**
  * Option of Offer
@@ -792,12 +792,12 @@ export interface PackXdslMigrationOfferServiceToDelete {
    * Type of the service
    *
    */
-  service?: string;
+  service: string;
   /**
    * Type of the service to delete
    *
    */
-  type?: PackXdslServiceNameEnum;
+  type: PackXdslServiceNameEnum;
 }
 /**
  * Sub service to delete
@@ -807,17 +807,17 @@ export interface PackXdslMigrationSubServiceToDelete {
    * Number of services to be deleted
    *
    */
-  numberToDelete?: number;
+  numberToDelete: number;
   /**
    * List of domains of sub services
    *
    */
-  services?: string[];
+  services: string[];
   /**
    * Type of service to be deleted
    *
    */
-  type?: PackXdslServiceNameEnum;
+  type: PackXdslServiceNameEnum;
 }
 /**
  * Informations about a promotion code
@@ -827,22 +827,22 @@ export interface PackXdslPromotionCodeCapabilities {
    * Amount of the promotion code
    *
    */
-  amount?: OrderPrice;
+  amount: OrderPrice;
   /**
    * True if the promotion code generation is available
    *
    */
-  canGenerate?: boolean;
+  canGenerate: boolean;
   /**
    * Number of months of engagement
    *
    */
-  engagement?: number;
+  engagement: number;
   /**
    * Enum of the possible errors
    *
    */
-  reasonCodes?: PackXdslPromotionCodeReasonCodes[];
+  reasonCodes: PackXdslPromotionCodeReasonCodes[];
 }
 /**
  * Reasons why the promotion code can not be generated
@@ -856,17 +856,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -894,28 +894,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -928,13 +928,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * Async task
@@ -954,7 +954,7 @@ export interface XdslAsyncTask<T> {
    * Status of the call
    *
    */
-  status?: XdslAsyncTaskStatusEnum;
+  status: XdslAsyncTaskStatusEnum;
 }
 /**
  * AsyncTask status
@@ -976,12 +976,12 @@ export interface XdslLineSectionLength {
    * The diameter of this section in millimeters
    *
    */
-  diameter?: number;
+  diameter: number;
   /**
    * The length of this section in meters
    *
    */
-  length?: number;
+  length: number;
 }
 /**
  * Represents an address
@@ -996,7 +996,7 @@ export interface XdslEligibilityAddress {
    * Informations about the city
    *
    */
-  city?: XdslEligibilityCity;
+  city: XdslEligibilityCity;
   /**
    * Identifier of the door, if any
    *
@@ -1046,7 +1046,7 @@ export interface XdslEligibilityBookMeetingSlot {
    * Whether or not to book a fake meeting slots (if no slots are available)
    *
    */
-  fakeMeeting?: boolean;
+  fakeMeeting: boolean;
   /**
    * The time slot to book, null if fakeMeeting is true
    *
@@ -1056,7 +1056,7 @@ export interface XdslEligibilityBookMeetingSlot {
    * The name of the customer
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Represent a city
@@ -1066,7 +1066,7 @@ export interface XdslEligibilityCity {
    * INSEE code of the city
    *
    */
-  inseeCode?: string;
+  inseeCode: string;
   /**
    * Locality (subset of a city)
    *
@@ -1076,12 +1076,12 @@ export interface XdslEligibilityCity {
    * Name of the city
    *
    */
-  name?: string;
+  name: string;
   /**
    * Zip code of the city
    *
    */
-  zipCode?: string;
+  zipCode: string;
 }
 /**
  * A message and its code
@@ -1091,12 +1091,12 @@ export interface XdslEligibilityCodeAndMessage {
    * A code identifying the message
    *
    */
-  code?: string;
+  code: string;
   /**
    * A message
    *
    */
-  message?: string;
+  message: string;
 }
 /**
  * Status of a landline
@@ -1110,17 +1110,17 @@ export interface XdslEligibilityMeetingSlot {
    * The end of the time slot
    *
    */
-  endDate?: string;
+  endDate: string;
   /**
    * The beginning of the time slot
    *
    */
-  startDate?: string;
+  startDate: string;
   /**
    * An opaque string that represents an intervention unit
    *
    */
-  uiCode?: string;
+  uiCode: string;
 }
 /**
  * List of available meeting time slots
@@ -1130,12 +1130,12 @@ export interface XdslEligibilityMeetingSlots {
    * Whether or not it is possible to book a fake meeting
    *
    */
-  canBookFakeMeeting?: boolean;
+  canBookFakeMeeting: boolean;
   /**
    * A time slot
    *
    */
-  meetingSlots?: XdslEligibilityMeetingSlot[];
+  meetingSlots: XdslEligibilityMeetingSlot[];
 }
 /**
  * Eligibility of the portability of the line number
@@ -1145,22 +1145,22 @@ export interface XdslEligibilityPortability {
    * The reason(s) of the negative portability eligibility
    *
    */
-  comments?: XdslEligibilityCodeAndMessage[];
+  comments: XdslEligibilityCodeAndMessage[];
   /**
    * Whether or not it is possible to port the line number. If false, commentList contains the reason(s)
    *
    */
-  eligible?: boolean;
+  eligible: boolean;
   /**
    * Whether or not the portability is possible under condition. If true, warningList contains the reason(s)
    *
    */
-  underCondition?: boolean;
+  underCondition: boolean;
   /**
    * The special condition(s) of the portability
    *
    */
-  warnings?: XdslEligibilityCodeAndMessage[];
+  warnings: XdslEligibilityCodeAndMessage[];
 }
 /**
  * The providers
@@ -1174,12 +1174,12 @@ export interface XdslEligibilityStreet {
    * Name of the street
    *
    */
-  name?: string;
+  name: string;
   /**
    * RIVOLI identifier of the street
    *
    */
-  rivoliCode?: string;
+  rivoliCode: string;
 }
 /**
  * Details that the user used for his voucher
@@ -1189,7 +1189,7 @@ export interface XdslHubicHubicDetailsResponse {
    * Mail used for the voucher
    *
    */
-  email?: string;
+  email: string;
 }
 type PathsPackXdslGET = '/pack/xdsl' | 
 '/pack/xdsl/{packName}' | 

@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface CdnWebsiteBackend {
   /**
    */
-  ipv4?: string;
+  ipv4: string;
   /**
    */
-  status?: CdnWebsiteBackendStatusEnum;
+  status: CdnWebsiteBackendStatusEnum;
 }
 /**
  * All states a status can be in
@@ -20,10 +20,10 @@ export type CdnWebsiteBackendStatusEnum = 'creating' | 'error' | 'on' | 'removin
 export interface CdnWebsiteDomain {
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  status?: CdnWebsiteDomainStatusEnum;
+  status: CdnWebsiteDomainStatusEnum;
 }
 /**
  * All states a status can be in
@@ -39,10 +39,10 @@ export type CdnWebsiteDomainZoneStatusEnum = 'error' | 'on' | 'removing';
 export interface CdnWebsiteStatsDataType {
   /**
    */
-  date?: string;
+  date: string;
   /**
    */
-  value?: number;
+  value: number;
 }
 /**
  * Period of the statistics
@@ -65,13 +65,13 @@ export interface CdnWebsiteTask {
   comment?: string;
   /**
    */
-  function?: CdnWebsiteTaskFunctionEnum;
+  function: CdnWebsiteTaskFunctionEnum;
   /**
    */
-  status?: CdnWebsiteTaskStateEnum;
+  status: CdnWebsiteTaskStateEnum;
   /**
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * All function CDN task can be
@@ -87,13 +87,13 @@ export type CdnWebsiteTaskStateEnum = 'cancelled' | 'doing' | 'done' | 'error' |
 export interface CdnWebsiteWebsite {
   /**
    */
-  anycast?: string;
+  anycast: string;
   /**
    */
-  offer?: string;
+  offer: string;
   /**
    */
-  service?: string;
+  service: string;
 }
 /**
  * Zone on CDN
@@ -101,10 +101,10 @@ export interface CdnWebsiteWebsite {
 export interface CdnWebsiteZone {
   /**
    */
-  status?: CdnWebsiteDomainZoneStatusEnum;
+  status: CdnWebsiteDomainZoneStatusEnum;
   /**
    */
-  zone?: string;
+  zone: string;
 }
 /**
  * Map a possible renew for a specific service
@@ -114,17 +114,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -152,28 +152,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -186,13 +186,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsCdnWebsiteGET = '/cdn/website' | 
 '/cdn/website/{serviceName}' | 

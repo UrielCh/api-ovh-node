@@ -7,7 +7,7 @@ export interface DockerFrameworkPassword {
    * The new framework password
    *
    */
-  password?: string;
+  password: string;
 }
 /**
  * A host on which containers can be deployed
@@ -17,47 +17,47 @@ export interface DockerSlave {
    * Date of the resource creation
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * The framework UUID
    *
    */
-  flavorId?: string;
+  flavorId: string;
   /**
    * The slave UUID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Metrics about slave usage
    *
    */
-  metrics?: DockerSlaveMetrics;
+  metrics: DockerSlaveMetrics;
   /**
    * The slave hostname
    *
    */
-  name?: string;
+  name: string;
   /**
    * The region where the slave is located
    *
    */
-  region?: string;
+  region: string;
   /**
    * The stack to which the slave belongs
    *
    */
-  stack?: string;
+  stack: string;
   /**
    * The state of the slave
    *
    */
-  state?: DockerSlaveStatus;
+  state: DockerSlaveStatus;
   /**
    * Date of the resource last update
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
 }
 /**
  * Attributes of the slave flavor
@@ -67,37 +67,37 @@ export interface DockerSlaveFlavor {
    * The network bandwidth, in Mbps
    *
    */
-  bandwidth?: number;
+  bandwidth: number;
   /**
    * The amount of (v)CPUs
    *
    */
-  cpus?: number;
+  cpus: number;
   /**
    * The disk size, in GB
    *
    */
-  disk?: number;
+  disk: number;
   /**
    * Wether the disk is HA (stored in Ceph) or local (SSD)
    *
    */
-  diskHa?: boolean;
+  diskHa: boolean;
   /**
    * The flavor UUID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Whether the flavor is an Openstack or dedicated flavor
    *
    */
-  isVm?: boolean;
+  isVm: boolean;
   /**
    * The amount of RAM, in MB
    *
    */
-  ram?: number;
+  ram: number;
 }
 /**
  * Application data
@@ -112,7 +112,7 @@ export interface DockerSlaveFrameworkApp {
    * Application environment
    *
    */
-  env?: DockerSlaveFrameworkAppEnvironment[];
+  env: DockerSlaveFrameworkAppEnvironment[];
   /**
    * Application id
    *
@@ -137,7 +137,7 @@ export interface DockerSlaveFrameworkApp {
    * Application ports
    *
    */
-  ports?: DockerSlaveFrameworkAppPort[];
+  ports: DockerSlaveFrameworkAppPort[];
   /**
    * Application status
    *
@@ -147,7 +147,7 @@ export interface DockerSlaveFrameworkApp {
    * Application volumes
    *
    */
-  volumes?: DockerSlaveFrameworkAppVolume[];
+  volumes: DockerSlaveFrameworkAppVolume[];
 }
 /**
  * Application environment variable
@@ -212,12 +212,12 @@ export interface DockerSlaveMetrics {
    * Metrics about available slave resources
    *
    */
-  resources?: DockerSlaveMetricsResources;
+  resources: DockerSlaveMetricsResources;
   /**
    * Metrics about used slave resources
    *
    */
-  usedResources?: DockerSlaveMetricsUsedResources;
+  usedResources: DockerSlaveMetricsUsedResources;
 }
 /**
  * Metrics about available slave resources
@@ -266,32 +266,32 @@ export interface DockerStack {
    * Date of the resource creation
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * The DNS address of the stack load balancer
    *
    */
-  loadBalancer?: string;
+  loadBalancer: string;
   /**
    * Metrics about slave usage
    *
    */
-  metrics?: DockerSlaveMetrics;
+  metrics: DockerSlaveMetrics;
   /**
    * The stack name
    *
    */
-  name?: string;
+  name: string;
   /**
    * A list of slave UUIDs
    *
    */
-  slaves?: string[];
+  slaves: string[];
   /**
    * Date of the resource last update
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
 }
 /**
  * A custom SSL certificate associated to a Docker PaaS environment
@@ -301,17 +301,17 @@ export interface DockerStackCustomSsl {
    * The custom SSL public certificate
    *
    */
-  certificate?: string;
+  certificate: string;
   /**
    * Date of the resource creation
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * Date of the resource last update
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
 }
 /**
  * Action validation message
@@ -321,7 +321,7 @@ export interface DockerStackCustomSslMessage {
    * The action validation message
    *
    */
-  message?: string;
+  message: string;
 }
 /**
  * A custom SSL certificate associated to a Docker PaaS environment
@@ -331,12 +331,12 @@ export interface DockerStackInputCustomSsl {
    * The custom SSL public certificate
    *
    */
-  certificate?: string;
+  certificate: string;
   /**
    * The custom SSL certificate private key
    *
    */
-  key?: string;
+  key: string;
 }
 /**
  * Credentials providing authentication to an external registry
@@ -346,22 +346,22 @@ export interface DockerStackRegistryCredentials {
    * Date of the resource creation
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * The URL of the registry
    *
    */
-  registryUrl?: string;
+  registryUrl: string;
   /**
    * Date of the resource last update
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
   /**
    * The registry account username
    *
    */
-  username?: string;
+  username: string;
 }
 /**
  * Map a possible renew for a specific service
@@ -371,17 +371,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -409,28 +409,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -443,13 +443,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * A framework installed for a docker PaaS stack
@@ -459,27 +459,27 @@ export interface StackFramework {
    * The framework name
    *
    */
-  accessUrl?: string;
+  accessUrl: string;
   /**
    * Date of the resource creation
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * The framework UUID
    *
    */
-  id?: string;
+  id: string;
   /**
    * The framework name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Date of the resource last update
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
 }
 /**
  * Application deployed on the framework
@@ -489,7 +489,7 @@ export interface StackFrameworkApplication {
    * Application list
    *
    */
-  apps?: DockerSlaveFrameworkApp[];
+  apps: DockerSlaveFrameworkApp[];
 }
 type PathsCaasContainersGET = '/caas/containers' | 
 '/caas/containers/slaves/flavors' | 

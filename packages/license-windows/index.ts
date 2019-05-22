@@ -20,17 +20,17 @@ export interface LicenseOption {
    * Specifies whether this option can be released or not
    *
    */
-  canBeDeleted?: boolean;
+  canBeDeleted: boolean;
   /**
    * This option expiration date
    *
    */
-  expirationDate?: string;
+  expirationDate: string;
   /**
    * This option designation
    *
    */
-  label?: LicenseOptionLabel;
+  label: LicenseOptionLabel;
   /**
    * This option related version
    *
@@ -47,10 +47,10 @@ export type LicenseOptionLabel = 'ANTISPAM_SPAMASSASSIN' | 'ANTIVIRUS_DRWEB' | '
 export interface LicenseOrderableWindowsCompatibilityInfos {
   /**
    */
-  compliantSql?: LicenseWindowsSqlVersionEnum[];
+  compliantSql: LicenseWindowsSqlVersionEnum[];
   /**
    */
-  version?: LicenseWindowsOsVersionEnum;
+  version: LicenseWindowsOsVersionEnum;
 }
 /**
  * All states a license can be in
@@ -64,7 +64,7 @@ export interface LicenseTask {
    * This Task description
    *
    */
-  action?: LicenseActionType;
+  action: LicenseActionType;
   /**
    * When was this Task done
    *
@@ -74,27 +74,27 @@ export interface LicenseTask {
    * The last time this Task was updated
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * This Task name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Current Taks status
    *
    */
-  status?: LicenseTaskStateEnum;
+  status: LicenseTaskStateEnum;
   /**
    * This Task id
    *
    */
-  taskId?: number;
+  taskId: number;
   /**
    * When was this Task created
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * All states a license Task can be in
@@ -106,10 +106,10 @@ export type LicenseTaskStateEnum = 'cancelled' | 'doing' | 'done' | 'error' | 't
 export interface LicenseWindowsOrderConfiguration {
   /**
    */
-  orderableVersions?: LicenseOrderableWindowsCompatibilityInfos[];
+  orderableVersions: LicenseOrderableWindowsCompatibilityInfos[];
   /**
    */
-  serviceType?: LicenseLicenseTypeEnum;
+  serviceType: LicenseLicenseTypeEnum;
 }
 /**
  * All versions for Windows products
@@ -127,37 +127,37 @@ export interface LicenseWindowsWindows {
    * This license creation date
    *
    */
-  creation?: string;
+  creation: string;
   /**
    * Shall we delete this on expiration ?
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The internal name of your license
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * The ip on which this license is attached
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * The license id on license provider side
    *
    */
-  licenseId?: string;
+  licenseId: string;
   /**
    * This license state
    *
    */
-  status?: LicenseStateEnum;
+  status: LicenseStateEnum;
   /**
    * This license version
    *
    */
-  version?: LicenseWindowsOsVersionEnum;
+  version: LicenseWindowsOsVersionEnum;
 }
 /**
  * Map a possible renew for a specific service
@@ -167,17 +167,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -213,28 +213,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -247,13 +247,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsLicenseWindowsGET = '/license/windows' | 
 '/license/windows/orderableVersions' | 

@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * Account HPC Spot
@@ -18,7 +18,7 @@ export interface HpcspotAccount {
    * Name of the HPC Spot Account
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Detail of a HPC Spot consumtion
@@ -33,12 +33,12 @@ export interface HpcspotConsumption {
    * Date of the completion of the item consumption
    *
    */
-  hpcspotItemEndDate?: string;
+  hpcspotItemEndDate: string;
   /**
    * ID of the linked job on HPC Spot interface
    *
    */
-  hpcspotItemId?: number;
+  hpcspotItemId: number;
   /**
    * URL for the description of the consumption on the HPC Spot interface
    *
@@ -48,7 +48,7 @@ export interface HpcspotConsumption {
    * ID of the detail
    *
    */
-  id?: number;
+  id: number;
   /**
    * ID of the Order that billed this item. If null, this item has not been billed
    *
@@ -58,17 +58,17 @@ export interface HpcspotConsumption {
    * Quantity consumed (minutes, core minutes, licences, token)
    *
    */
-  quantity?: ComplexTypeUnitAndValue<number>;
+  quantity: ComplexTypeUnitAndValue<number>;
   /**
    * Reference of the item. This reference is linked with the type of the item
    *
    */
-  reference?: HpcspotConsumptionReferenceEnum;
+  reference: HpcspotConsumptionReferenceEnum;
   /**
    * Type of consumption
    *
    */
-  type?: HpcspotConsumptionTypeEnum;
+  type: HpcspotConsumptionTypeEnum;
 }
 /**
  * All references a HPC Spot consumption can be in
@@ -86,17 +86,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -124,28 +124,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -158,13 +158,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsHpcspotGET = '/hpcspot' | 
 '/hpcspot/{serviceName}' | 

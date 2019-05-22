@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * distincts MRTG period
@@ -20,7 +20,7 @@ export type DedicatedServerMrtgPeriodEnum = 'daily' | 'hourly' | 'monthly' | 'we
 export interface DedicatedServerMrtgTimestampValue {
   /**
    */
-  timestamp?: number;
+  timestamp: number;
   /**
    */
   value?: ComplexTypeUnitAndValue<number>;
@@ -39,25 +39,25 @@ export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' |
 export interface ServicesNonExpiringService {
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * A structure giving all dedicated server interfaces allowed for this vrack
@@ -67,17 +67,17 @@ export interface VrackAllowedDedicatedServerInterfaces {
    * the name of dedicatedServer
    *
    */
-  dedicatedServer?: string;
+  dedicatedServer: string;
   /**
    * the unique identifier of dedicatedServerInterface
    *
    */
-  dedicatedServerInterface?: string;
+  dedicatedServerInterface: string;
   /**
    * the name of dedicatedServerInterface
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * A structure given all service allowed for this vrack
@@ -135,10 +135,10 @@ export interface VrackAllowedServices {
 export interface VrackTask {
   /**
    */
-  function?: string;
+  function: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
   lastUpdate?: string;
@@ -152,7 +152,7 @@ export interface VrackTask {
    * Task status
    *
    */
-  status?: VrackTaskStatusEnum;
+  status: VrackTaskStatusEnum;
   /**
    */
   targetDomain?: string;
@@ -176,12 +176,12 @@ export interface VrackCloudProject {
    * publicCloud project
    *
    */
-  project?: string;
+  project: string;
   /**
    * vrack name
    *
    */
-  vrack?: string;
+  vrack: string;
 }
 /**
  * vrack dedicated cloud interface
@@ -191,7 +191,7 @@ export interface VrackDedicatedCloud {
    * your dedicated cloud service
    *
    */
-  dedicatedCloud?: string;
+  dedicatedCloud: string;
   /**
    * Dedicated cloud vlanId used
    *
@@ -201,7 +201,7 @@ export interface VrackDedicatedCloud {
    * vrack name
    *
    */
-  vrack?: string;
+  vrack: string;
 }
 /**
  * vrack dedicated connect interface
@@ -211,7 +211,7 @@ export interface VrackDedicatedConnect {
    * A name for your dedicatedConnect link
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * vrack dedicated server interfaces
@@ -221,12 +221,12 @@ export interface VrackDedicatedServer {
    * Dedicated Server
    *
    */
-  dedicatedServer?: string;
+  dedicatedServer: string;
   /**
    * vrack name
    *
    */
-  vrack?: string;
+  vrack: string;
 }
 /**
  * vrack dedicated server interfaces
@@ -236,12 +236,12 @@ export interface VrackDedicatedServerInterface {
    * Dedicated Server Interface
    *
    */
-  dedicatedServerInterface?: string;
+  dedicatedServerInterface: string;
   /**
    * vrack name
    *
    */
-  vrack?: string;
+  vrack: string;
 }
 /**
  * IP block in vrack
@@ -256,7 +256,7 @@ export interface VrackIp {
    * Your IP block
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * Where you want your block announced on the network
    *
@@ -271,12 +271,12 @@ export interface VrackIplb {
    * Your ipLoadbalancing
    *
    */
-  ipLoadbalancing?: string;
+  ipLoadbalancing: string;
   /**
    * vrack name
    *
    */
-  vrack?: string;
+  vrack: string;
 }
 /**
  * interface between legacy vrack (vrackXXXX) and vrack (pn-XXXX)
@@ -286,12 +286,12 @@ export interface VrackLegacyVrack {
    * your legacy vrack service
    *
    */
-  legacyVrack?: string;
+  legacyVrack: string;
   /**
    * vlan to set on legacy vrack equipments
    *
    */
-  vlanId?: number;
+  vlanId: number;
 }
 /**
  * vrack (1.5) nasha server interfaces
@@ -301,12 +301,12 @@ export interface VrackNasha {
    * service ip
    *
    */
-  serviceIp?: string;
+  serviceIp: string;
   /**
    * Name of Nasha zpool
    *
    */
-  zpool?: string;
+  zpool: string;
 }
 /**
  * vrack datacenter interface
@@ -316,17 +316,17 @@ export interface VrackPccDatacenter {
    * Your dedicatedCloud datacenter name
    *
    */
-  datacenter?: string;
+  datacenter: string;
   /**
    * Your dedicatedCloud name
    *
    */
-  dedicatedCloud?: string;
+  dedicatedCloud: string;
   /**
    * vrack name
    *
    */
-  vrack?: string;
+  vrack: string;
 }
 /**
  * A structure describing the public routing option
@@ -346,12 +346,12 @@ export interface VrackVrack {
    * yourvrackdescription
    *
    */
-  description?: string;
+  description: string;
   /**
    * yourvrackname
    *
    */
-  name?: string;
+  name: string;
 }
 type PathsVrackGET = '/vrack' | 
 '/vrack/{serviceName}' | 

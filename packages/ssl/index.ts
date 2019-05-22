@@ -7,17 +7,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -45,28 +45,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -79,13 +79,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * Certificate of an SSL customer
@@ -95,7 +95,7 @@ export interface SslCertificate {
    * The authority your certificate is issued from
    *
    */
-  authority?: SslCertificateAuthorityEnum;
+  authority: SslCertificateAuthorityEnum;
   /**
    * Your certificate
    *
@@ -110,32 +110,32 @@ export interface SslCertificate {
    * The CN field in your certificate
    *
    */
-  commonName?: string;
+  commonName: string;
   /**
    * The CSR used to create your certificate
    *
    */
-  csr?: string;
+  csr: string;
   /**
    * The internal name of your certificate offer
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Current status of your certificate
    *
    */
-  status?: SslCertificateStatusEnum;
+  status: SslCertificateStatusEnum;
   /**
    * The SAN field for multidomain certificate
    *
    */
-  subjectAltName?: string[];
+  subjectAltName: string[];
   /**
    * Type of your certificate
    *
    */
-  type?: SslCertificateTypeEnum;
+  type: SslCertificateTypeEnum;
   /**
    * Your certificate is invalid from this date
    *
@@ -172,25 +172,25 @@ export interface SslOperation {
    * Task function name
    *
    */
-  function?: SslOperationFunctionEnum;
+  function: SslOperationFunctionEnum;
   /**
    * Task last update
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Task Creation date
    *
    */
-  startDate?: string;
+  startDate: string;
   /**
    * Task status
    *
    */
-  status?: SslOperationStatusEnum;
+  status: SslOperationStatusEnum;
   /**
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * All functions a SSL operation can handle

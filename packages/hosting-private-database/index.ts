@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeSafeKeyValue<T> {
   /**
    */
-  key?: string;
+  key: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * A numeric value tagged with its unit
@@ -16,10 +16,10 @@ export interface ComplexTypeSafeKeyValue<T> {
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * Description for available order capacities following an offer
@@ -29,22 +29,22 @@ export interface HostingPrivateDatabaseAvailableOrderCapacities {
    * A list of datacenter available for this offer
    *
    */
-  datacenter?: HostingPrivateDatabaseDatacenterEnum[];
+  datacenter: HostingPrivateDatabaseDatacenterEnum[];
   /**
    * Offer
    *
    */
-  offer?: HostingPrivateDatabaseOfferEnum;
+  offer: HostingPrivateDatabaseOfferEnum;
   /**
    * A list of ram size available for this offer
    *
    */
-  ram?: HostingPrivateDatabaseAvailableRamSizeEnum[];
+  ram: HostingPrivateDatabaseAvailableRamSizeEnum[];
   /**
    * A list of version available for this offer
    *
    */
-  version?: HostingPrivateDatabaseAvailableVersionEnum[];
+  version: HostingPrivateDatabaseAvailableVersionEnum[];
 }
 /**
  * Private database available ram sizes
@@ -62,22 +62,22 @@ export interface HostingPrivateDatabaseCapability {
    * Can the object be created
    *
    */
-  create?: boolean;
+  create: boolean;
   /**
    * Can the object be deleted
    *
    */
-  delete?: boolean;
+  delete: boolean;
   /**
    * Object name
    *
    */
-  object?: string;
+  object: string;
   /**
    * Can the object be updated
    *
    */
-  update?: boolean;
+  update: boolean;
 }
 /**
  * Configuration detail property
@@ -87,32 +87,32 @@ export interface HostingPrivateDatabaseConfigurationDetail {
    * Configuration available values
    *
    */
-  availableValues?: string[];
+  availableValues: string[];
   /**
    * Configuration default value
    *
    */
-  defaultValue?: string;
+  defaultValue: string;
   /**
    * Configuration description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Configuration key name
    *
    */
-  key?: string;
+  key: string;
   /**
    * Configuration last update date
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Configuration value type
    *
    */
-  type?: HostingPrivateDatabaseConfigurationDetailType;
+  type: HostingPrivateDatabaseConfigurationDetailType;
   /**
    * Configuration unit type
    *
@@ -122,7 +122,7 @@ export interface HostingPrivateDatabaseConfigurationDetail {
    * Configuration current value
    *
    */
-  value?: string;
+  value: string;
 }
 /**
  * Configuration detail type
@@ -144,17 +144,17 @@ export interface HostingPrivateDatabaseDatabaseUser {
    * The grantId associated for this databaseName and this userName
    *
    */
-  grantId?: number;
+  grantId: number;
   /**
    * User's rights on this database
    *
    */
-  grantType?: HostingPrivateDatabaseGrantGrantEnum;
+  grantType: HostingPrivateDatabaseGrantGrantEnum;
   /**
    * User's name granted on this database
    *
    */
-  userName?: string;
+  userName: string;
 }
 /**
  * Available datacenters
@@ -168,17 +168,17 @@ export interface HostingPrivateDatabaseGraphEndpoint {
    * The OpenTSDB host
    *
    */
-  host?: string;
+  host: string;
   /**
    * A read-only token
    *
    */
-  readToken?: string;
+  readToken: string;
   /**
    * A read-only token ID
    *
    */
-  readTokenId?: string;
+  readTokenId: string;
 }
 /**
  * Available offers
@@ -192,12 +192,12 @@ export interface HostingPrivateDatabaseOom {
    * Date of the OOM kill
    *
    */
-  date?: string;
+  date: string;
   /**
    * Memory size reached
    *
    */
-  sizeReached?: number;
+  sizeReached: number;
 }
 /**
  * Private database state
@@ -211,12 +211,12 @@ export interface HostingPrivateDatabaseTemporaryLogsLink {
    * Temporary url expiration date
    *
    */
-  expirationDate?: string;
+  expirationDate: string;
   /**
    * Temporary url
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Private database type
@@ -230,17 +230,17 @@ export interface HostingPrivateDatabaseUserDatabase {
    * Database's name linked to this user
    *
    */
-  databaseName?: string;
+  databaseName: string;
   /**
    * The grantId associated to this userName for this databaseName
    *
    */
-  grantId?: number;
+  grantId: number;
   /**
    * Grant of this user for this database
    *
    */
-  grantType?: HostingPrivateDatabaseGrantGrantEnum;
+  grantType: HostingPrivateDatabaseGrantGrantEnum;
 }
 /**
  * Whitelist status
@@ -266,17 +266,17 @@ export interface HostingPrivateDatabaseConfiguration {
    * Configuration full details
    *
    */
-  details?: HostingPrivateDatabaseConfigurationDetail[];
+  details: HostingPrivateDatabaseConfigurationDetail[];
   /**
    * Last update date
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Configuration status
    *
    */
-  status?: HostingPrivateDatabaseConfigurationStatus;
+  status: HostingPrivateDatabaseConfigurationStatus;
   /**
    * Configuration linked task id
    *
@@ -291,17 +291,17 @@ export interface HostingPrivateDatabaseService {
    * Private database capabilities
    *
    */
-  capabilities?: HostingPrivateDatabaseCapability[];
+  capabilities: HostingPrivateDatabaseCapability[];
   /**
    * Number of cpu on your private database
    *
    */
-  cpu?: number;
+  cpu: number;
   /**
    * Datacenter where this private database is located
    *
    */
-  datacenter?: HostingPrivateDatabaseDatacenterEnum;
+  datacenter: HostingPrivateDatabaseDatacenterEnum;
   /**
    * Set the name displayed in customer panel for your private database (max 50 chars)
    *
@@ -331,7 +331,7 @@ export interface HostingPrivateDatabaseService {
    * Infrastructure where service was stored
    *
    */
-  infrastructure?: string;
+  infrastructure: string;
   /**
    * Private database ip
    *
@@ -341,17 +341,17 @@ export interface HostingPrivateDatabaseService {
    * Date of the last data synchronization
    *
    */
-  lastCheck?: string;
+  lastCheck: string;
   /**
    * Type of the private database offer
    *
    */
-  offer?: HostingPrivateDatabaseOfferEnum;
+  offer: HostingPrivateDatabaseOfferEnum;
   /**
    * Private database service port
    *
    */
-  port?: number;
+  port: number;
   /**
    * Private database ftp port
    *
@@ -361,17 +361,17 @@ export interface HostingPrivateDatabaseService {
    * Space allowed on your private database
    *
    */
-  quotaSize?: ComplexTypeUnitAndValue<number>;
+  quotaSize: ComplexTypeUnitAndValue<number>;
   /**
    * Total space used on your private database
    *
    */
-  quotaUsed?: ComplexTypeUnitAndValue<number>;
+  quotaUsed: ComplexTypeUnitAndValue<number>;
   /**
    * Amount of ram on your private database
    *
    */
-  ram?: ComplexTypeUnitAndValue<number>;
+  ram: ComplexTypeUnitAndValue<number>;
   /**
    * Private database server name
    *
@@ -381,12 +381,12 @@ export interface HostingPrivateDatabaseService {
    * Service name
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Private database state
    *
    */
-  state?: HostingPrivateDatabaseStateEnum;
+  state: HostingPrivateDatabaseStateEnum;
   /**
    * Return the TLS certificate authority used by the private database
    *
@@ -396,17 +396,17 @@ export interface HostingPrivateDatabaseService {
    * Private database type
    *
    */
-  type?: HostingPrivateDatabaseTypeEnum;
+  type: HostingPrivateDatabaseTypeEnum;
   /**
    * Private database version
    *
    */
-  version?: HostingPrivateDatabaseAvailableVersionEnum;
+  version: HostingPrivateDatabaseAvailableVersionEnum;
   /**
    * Private database version number
    *
    */
-  versionNumber?: number;
+  versionNumber: number;
 }
 /**
  * Databases
@@ -421,22 +421,22 @@ export interface HostingPrivateDatabaseDatabase {
    * Creation date of the database
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Database name
    *
    */
-  databaseName?: string;
+  databaseName: string;
   /**
    * Space used by the database
    *
    */
-  quotaUsed?: ComplexTypeUnitAndValue<number>;
+  quotaUsed: ComplexTypeUnitAndValue<number>;
   /**
    * Users granted to this database
    *
    */
-  users?: HostingPrivateDatabaseDatabaseUser[];
+  users: HostingPrivateDatabaseDatabaseUser[];
 }
 /**
  * Dump
@@ -446,27 +446,27 @@ export interface HostingPrivateDatabaseDatabaseDump {
    * Creation date of the dump
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Dump of this database name
    *
    */
-  databaseName?: string;
+  databaseName: string;
   /**
    * Automatic deletion date of the dump
    *
    */
-  deletionDate?: string;
+  deletionDate: string;
   /**
    * Dump id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Dump url access
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Databases extension
@@ -476,22 +476,22 @@ export interface HostingPrivateDatabaseDatabaseExtension {
    * Extension description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Extension name
    *
    */
-  extensionName?: string;
+  extensionName: string;
   /**
    * Name of required extensions to enable this one
    *
    */
-  requiredExtensions?: string[];
+  requiredExtensions: string[];
   /**
    * Extension status
    *
    */
-  status?: HostingPrivateDatabaseDatabaseExtensionStatus;
+  status: HostingPrivateDatabaseDatabaseExtensionStatus;
 }
 /**
  * Dump
@@ -501,32 +501,32 @@ export interface HostingPrivateDatabaseDump {
    * Creation date of the dump
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Dump of this database name
    *
    */
-  databaseName?: string;
+  databaseName: string;
   /**
    * Automatic deletion date of the dump
    *
    */
-  deletionDate?: string;
+  deletionDate: string;
   /**
    * Dump id
    *
    */
-  dumpId?: number;
+  dumpId: number;
   /**
    * Dump orphan flag ( true if database does not exists )
    *
    */
-  orphan?: boolean;
+  orphan: boolean;
   /**
    * Dump url access
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Grants
@@ -536,17 +536,17 @@ export interface HostingPrivateDatabaseGrant {
    * Creation date of the grant
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Database name where grant is set
    *
    */
-  databaseName?: string;
+  databaseName: string;
   /**
    * Grant set
    *
    */
-  grant?: HostingPrivateDatabaseGrantGrantEnum;
+  grant: HostingPrivateDatabaseGrantGrantEnum;
 }
 /**
  * Tasks
@@ -571,12 +571,12 @@ export interface HostingPrivateDatabaseTask {
    * Function name
    *
    */
-  function?: HostingPrivateDatabaseTaskFunctionEnum;
+  function: HostingPrivateDatabaseTaskFunctionEnum;
   /**
    * The id of the task
    *
    */
-  id?: number;
+  id: number;
   /**
    * Last update
    *
@@ -586,12 +586,12 @@ export interface HostingPrivateDatabaseTask {
    * Task Creation date
    *
    */
-  startDate?: string;
+  startDate: string;
   /**
    * Task status
    *
    */
-  status?: HostingPrivateDatabaseTaskStatusEnum;
+  status: HostingPrivateDatabaseTaskStatusEnum;
   /**
    * User name on which the task is working
    *
@@ -606,17 +606,17 @@ export interface HostingPrivateDatabaseUser {
    * Creation date of the user
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Databases granted for this user
    *
    */
-  databases?: HostingPrivateDatabaseUserDatabase[];
+  databases: HostingPrivateDatabaseUserDatabase[];
   /**
    * User name used to connect to your databases
    *
    */
-  userName?: string;
+  userName: string;
 }
 /**
  * IP whitelisting for your instance
@@ -626,17 +626,17 @@ export interface HostingPrivateDatabaseWhitelist {
    * Creation date of this whitelist
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * The whitelisted IP in your instance
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * The last update date of this whitelist
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Custom name for your Whitelisted IP
    *
@@ -646,17 +646,17 @@ export interface HostingPrivateDatabaseWhitelist {
    * Authorize this IP to access service port
    *
    */
-  service?: boolean;
+  service: boolean;
   /**
    * Authorize this IP to access sftp port
    *
    */
-  sftp?: boolean;
+  sftp: boolean;
   /**
    * Whitelist status
    *
    */
-  status?: HostingPrivateDatabaseWhitelistStatus;
+  status: HostingPrivateDatabaseWhitelistStatus;
   /**
    * The id of the task working on this object
    *
@@ -671,17 +671,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -717,28 +717,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -751,13 +751,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsHostingPrivateDatabaseGET = '/hosting/privateDatabase' | 
 '/hosting/privateDatabase/availableOrderCapacities' | 

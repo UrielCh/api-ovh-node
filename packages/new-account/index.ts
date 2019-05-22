@@ -31,7 +31,7 @@ export interface NichandleCreationRule {
    * Whether the field is mandatory
    *
    */
-  mandatory?: boolean;
+  mandatory: boolean;
   /**
    * Prefix of the field value
    *
@@ -49,76 +49,79 @@ export interface NichandleCreationRule {
 export interface NichandleCreationRules {
   /**
    */
-  address?: NichandleCreationRule;
+  address: NichandleCreationRule;
   /**
    */
-  area?: NichandleCreationRule;
+  area: NichandleCreationRule;
   /**
    */
-  birthCity?: NichandleCreationRule;
+  birthCity: NichandleCreationRule;
   /**
    */
-  birthDay?: NichandleCreationRule;
+  birthDay: NichandleCreationRule;
   /**
    */
-  city?: NichandleCreationRule;
+  city: NichandleCreationRule;
   /**
    */
-  companyNationalIdentificationNumber?: NichandleCreationRule;
+  companyNationalIdentificationNumber: NichandleCreationRule;
   /**
    */
-  corporationType?: NichandleCreationRule;
+  corporationType: NichandleCreationRule;
   /**
    */
-  country?: NichandleCreationRule;
+  country: NichandleCreationRule;
   /**
    */
-  email?: NichandleCreationRule;
+  email: NichandleCreationRule;
   /**
    */
-  fax?: NichandleCreationRule;
+  fax: NichandleCreationRule;
   /**
    */
-  firstname?: NichandleCreationRule;
+  firstname: NichandleCreationRule;
   /**
    */
-  language?: NichandleCreationRule;
+  italianSDI: NichandleCreationRule;
   /**
    */
-  legalform?: NichandleCreationRule;
+  language: NichandleCreationRule;
   /**
    */
-  name?: NichandleCreationRule;
+  legalform: NichandleCreationRule;
   /**
    */
-  nationalIdentificationNumber?: NichandleCreationRule;
+  name: NichandleCreationRule;
   /**
    */
-  organisation?: NichandleCreationRule;
+  nationalIdentificationNumber: NichandleCreationRule;
   /**
    */
-  ovhCompany?: NichandleCreationRule;
+  organisation: NichandleCreationRule;
   /**
    */
-  ovhSubsidiary?: NichandleCreationRule;
+  ovhCompany: NichandleCreationRule;
   /**
    */
-  phone?: NichandleCreationRule;
+  ovhSubsidiary: NichandleCreationRule;
   /**
    */
-  phoneCountry?: NichandleCreationRule;
+  phone: NichandleCreationRule;
   /**
    */
-  sex?: NichandleCreationRule;
+  phoneCountry: NichandleCreationRule;
   /**
    */
-  spareEmail?: NichandleCreationRule;
+  sex: NichandleCreationRule;
   /**
    */
-  vat?: NichandleCreationRule;
+  spareEmail: NichandleCreationRule;
   /**
    */
-  zip?: NichandleCreationRule;
+  vat: NichandleCreationRule;
+  /**
+   */
+  zip: NichandleCreationRule;
 }
 /**
  * Action a nichandle can perform on his account.
@@ -145,7 +148,7 @@ export interface NichandleNewAccountAndToken {
   consumerKey?: string;
   /**
    */
-  ovhIdentifier?: string;
+  ovhIdentifier: string;
 }
 /**
  * OVH subsidiaries
@@ -161,13 +164,13 @@ export type NichandleOvhSubsidiaryEnum = 'ASIA' | 'AU' | 'CA' | 'CZ' | 'DE' | 'E
 export interface OrderContract {
   /**
    */
-  content?: string;
+  content: string;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  url?: string;
+  url: string;
 }
 type PathsNewAccountGET = '/newAccount/area' | 
 '/newAccount/contracts' | 

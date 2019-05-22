@@ -7,12 +7,12 @@ export interface HostingResellerMetaType {
    * Customer email
    *
    */
-  email?: string;
+  email: string;
   /**
    * Region hosting the cloud instance
    *
    */
-  region?: string;
+  region: string;
 }
 /**
  * Reseller
@@ -32,7 +32,7 @@ export interface HostingResellerProduct {
    * Additional information about the plesk
    *
    */
-  meta?: HostingResellerMetaType;
+  meta: HostingResellerMetaType;
   /**
    * Progression of an action on the instance if any
    *
@@ -42,17 +42,17 @@ export interface HostingResellerProduct {
    * Status of the instance
    *
    */
-  status?: string;
+  status: string;
   /**
    * Reseller flavor
    *
    */
-  type?: HostingResellerResellerTypeEnum;
+  type: HostingResellerResellerTypeEnum;
   /**
    * Details about the plesk type
    *
    */
-  typeDetail?: HostingResellerProductType;
+  typeDetail: HostingResellerProductType;
   /**
    * Plesk server address
    *
@@ -67,47 +67,47 @@ export interface HostingResellerProductType {
    * Number of allowed customers
    *
    */
-  consumers?: number;
+  consumers: number;
   /**
    * Instance's cpu
    *
    */
-  cpu?: string;
+  cpu: string;
   /**
    * Number of allowed databases
    *
    */
-  databases?: number;
+  databases: number;
   /**
    * Disk size of the instance (in GB)
    *
    */
-  diskSize?: number;
+  diskSize: number;
   /**
    * Number of allowed email accounts
    *
    */
-  emailAccounts?: number;
+  emailAccounts: number;
   /**
    * Instance's ram (in GB)
    *
    */
-  ram?: number;
+  ram: number;
   /**
    * Type name
    *
    */
-  type?: string;
+  type: string;
   /**
    * Number of vCore
    *
    */
-  vCores?: number;
+  vCores: number;
   /**
    * Number of allowed websites
    *
    */
-  websites?: number;
+  websites: number;
 }
 /**
  * Reseller type
@@ -125,22 +125,22 @@ export interface ResellerSnapshot {
    * Snapshot creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Snapshot id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Snapshot name
    *
    */
-  snashotName?: string;
+  snashotName: string;
   /**
    * Snapshot type
    *
    */
-  type?: ResellerSnapshotTypeEnum;
+  type: ResellerSnapshotTypeEnum;
 }
 /**
  * Possible values for snapshot type
@@ -154,7 +154,7 @@ export interface ResellerTask {
    * Task current step
    *
    */
-  currentStep?: string;
+  currentStep: string;
   /**
    * Task expected done date
    *
@@ -164,7 +164,7 @@ export interface ResellerTask {
    * Task id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Task last update date
    *
@@ -174,22 +174,22 @@ export interface ResellerTask {
    * Linked product
    *
    */
-  productDomain?: string;
+  productDomain: string;
   /**
    * Task percentage progression
    *
    */
-  progress?: number;
+  progress: number;
   /**
    * Task name
    *
    */
-  taskName?: string;
+  taskName: string;
   /**
    * Task status
    *
    */
-  taskStatus?: ResellerTaskTypeEnum;
+  taskStatus: ResellerTaskTypeEnum;
 }
 /**
  * Possible values for task status
@@ -203,17 +203,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -241,28 +241,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -275,13 +275,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsHostingResellerGET = '/hosting/reseller' | 
 '/hosting/reseller/{serviceName}' | 

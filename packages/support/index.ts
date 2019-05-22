@@ -7,32 +7,32 @@ export interface SupportMessage {
    * Message body
    *
    */
-  body?: string;
+  body: string;
   /**
    * Message creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Message sender type
    *
    */
-  from?: SupportMessageSenderEnum;
+  from: SupportMessageSenderEnum;
   /**
    * Message identifier
    *
    */
-  messageId?: number;
+  messageId: number;
   /**
    * Ticket identifier
    *
    */
-  ticketId?: number;
+  ticketId: number;
   /**
    * Message last update date
    *
    */
-  updateDate?: string;
+  updateDate: string;
 }
 /**
  * Message sender type
@@ -46,17 +46,17 @@ export interface SupportNewMessageInfo {
    * Message identifier
    *
    */
-  messageId?: number;
+  messageId: number;
   /**
    * Ticket identifier
    *
    */
-  ticketId?: number;
+  ticketId: number;
   /**
    * Ticket external number
    *
    */
-  ticketNumber?: number;
+  ticketNumber: number;
 }
 /**
  * Support Ticket
@@ -66,12 +66,12 @@ export interface SupportTicket {
    * Customer account identifier
    *
    */
-  accountId?: string;
+  accountId: string;
   /**
    * Can this ticket be closed or not
    *
    */
-  canBeClosed?: boolean;
+  canBeClosed: boolean;
   /**
    * Ticket request category
    *
@@ -81,12 +81,12 @@ export interface SupportTicket {
    * Ticket creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Sender type of last message
    *
    */
-  lastMessageFrom?: SupportMessageSenderEnum;
+  lastMessageFrom: SupportMessageSenderEnum;
   /**
    * Product service concerned by ticket
    *
@@ -96,7 +96,7 @@ export interface SupportTicket {
    * Ticket score
    *
    */
-  score?: string;
+  score: string;
   /**
    * Name of service concerned by ticket
    *
@@ -106,32 +106,32 @@ export interface SupportTicket {
    * State of ticket
    *
    */
-  state?: SupportTicketStatusEnum;
+  state: SupportTicketStatusEnum;
   /**
    * Ticket subject
    *
    */
-  subject?: string;
+  subject: string;
   /**
    * Ticket identifier
    *
    */
-  ticketId?: number;
+  ticketId: number;
   /**
    * Ticket external number
    *
    */
-  ticketNumber?: number;
+  ticketNumber: number;
   /**
    * Ticket type
    *
    */
-  type?: SupportTicketTypeEnum;
+  type: SupportTicketTypeEnum;
   /**
    * Ticket last update date
    *
    */
-  updateDate?: string;
+  updateDate: string;
 }
 /**
  * Ticket request category

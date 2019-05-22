@@ -11,7 +11,7 @@ export interface ClusterHadoopClusterConsumption {
    * Number of hours consummed
    *
    */
-  quantity?: ComplexTypeUnitAndValue<number>;
+  quantity: ComplexTypeUnitAndValue<number>;
 }
 /**
  * All services names in a Hadoop Cluster
@@ -29,7 +29,7 @@ export interface ClusterHadoopNetworkAcl {
    * IP Block to allow
    *
    */
-  block?: string;
+  block: string;
   /**
    * description of this ACL
    *
@@ -39,7 +39,7 @@ export interface ClusterHadoopNetworkAcl {
    * State of the NetworkAcl.
    *
    */
-  state?: ClusterHadoopNetworkAclStateEnum;
+  state: ClusterHadoopNetworkAclStateEnum;
 }
 /**
  * All states a Hadoop Cluster NetworkAcl can be in
@@ -53,32 +53,32 @@ export interface ClusterHadoopNode {
    * Name of the billing profile attached to the node
    *
    */
-  billingProfileName?: ClusterHadoopBillingNameEnum;
+  billingProfileName: ClusterHadoopBillingNameEnum;
   /**
    * Hostname of the node
    *
    */
-  hostname?: string;
+  hostname: string;
   /**
    * IP of the Node
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * Wether or not the Node is removable
    *
    */
-  isRemovable?: boolean;
+  isRemovable: boolean;
   /**
    * Profile of the Node
    *
    */
-  softwareProfile?: ClusterHadoopNodeProfileEnum;
+  softwareProfile: ClusterHadoopNodeProfileEnum;
   /**
    * State of the Node
    *
    */
-  state?: ClusterHadoopNodeStateEnum;
+  state: ClusterHadoopNodeStateEnum;
 }
 /**
  * Detailed information on a node billing profile
@@ -88,37 +88,37 @@ export interface ClusterHadoopNodeBillingProfile {
    * Frequency of one CPU core
    *
    */
-  CPUFrequency?: ComplexTypeUnitAndValue<number>;
+  CPUFrequency: ComplexTypeUnitAndValue<number>;
   /**
    * Total capacity available for HDFS
    *
    */
-  diskCapacity?: ComplexTypeUnitAndValue<number>;
+  diskCapacity: ComplexTypeUnitAndValue<number>;
   /**
    * Total number of the CPU cores
    *
    */
-  nbCPUCores?: number;
+  nbCPUCores: number;
   /**
    * Total number of the CPU threads
    *
    */
-  nbCPUThreads?: number;
+  nbCPUThreads: number;
   /**
    * Network speed of the link used for the Hadoop process
    *
    */
-  networkBandwidth?: ComplexTypeUnitAndValue<number>;
+  networkBandwidth: ComplexTypeUnitAndValue<number>;
   /**
    * Name of the Node billing profile
    *
    */
-  nodeProfile?: string;
+  nodeProfile: string;
   /**
    * Total amount of RAM
    *
    */
-  ramQuantity?: ComplexTypeUnitAndValue<number>;
+  ramQuantity: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Detailed information on a node consumption of a Hadoop Cluster
@@ -128,17 +128,17 @@ export interface ClusterHadoopNodeConsumption {
    * Hostname of the consumed resource
    *
    */
-  hostname?: string;
+  hostname: string;
   /**
    * Name of the node profile for the consumptions
    *
    */
-  nodeProfile?: ClusterHadoopBillingNameEnum;
+  nodeProfile: ClusterHadoopBillingNameEnum;
   /**
    * Number of hours consummed
    *
    */
-  quantity?: ComplexTypeUnitAndValue<number>;
+  quantity: ComplexTypeUnitAndValue<number>;
 }
 /**
  * All profiles a Hadoop Cluster Node can be
@@ -160,12 +160,12 @@ export interface ClusterHadoopOrderInformations {
    * Maximal number of Node allowed in one order
    *
    */
-  maximumOrderableNodes?: number;
+  maximumOrderableNodes: number;
   /**
    * Minimum number of Node allowed in one order
    *
    */
-  minimumOrderableNodes?: number;
+  minimumOrderableNodes: number;
 }
 /**
  * Role (ie set of Hadoop services) of the Node
@@ -175,12 +175,12 @@ export interface ClusterHadoopRole {
    * ID of the Role
    *
    */
-  id?: number;
+  id: number;
   /**
    * Role name
    *
    */
-  type?: ClusterHadoopRoleTypeEnum;
+  type: ClusterHadoopRoleTypeEnum;
 }
 /**
  * All roles a Hadoop Cluster Node can be
@@ -194,15 +194,15 @@ export interface ClusterHadoopTask {
    * Operation name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Current Task state
    *
    */
-  status?: ClusterHadoopOperationStateEnum;
+  status: ClusterHadoopOperationStateEnum;
   /**
    */
-  taskId?: number;
+  taskId: number;
 }
 /**
  * User allowed to access interfaces on your cluster
@@ -212,22 +212,22 @@ export interface ClusterHadoopUser {
    * Whether or not the User is allowed to access to the Cloudera Manager interface
    *
    */
-  clouderaManager?: boolean;
+  clouderaManager: boolean;
   /**
    * Whether or not the User is allowed to access to the WebUI interfaces
    *
    */
-  httpFrontend?: boolean;
+  httpFrontend: boolean;
   /**
    * Whether or not the User is allowed to access to the Hue interface
    *
    */
-  hue?: boolean;
+  hue: boolean;
   /**
    * The username of the User
    *
    */
-  username?: string;
+  username: string;
 }
 /**
  * Managed Hadoop Cluster
@@ -237,22 +237,22 @@ export interface ClusterHadoopHadoop {
    * CDH and Cloudera Manager version
    *
    */
-  clouderaVersion?: string;
+  clouderaVersion: string;
   /**
    * Maximum quantity of nodes allowed to be ordered in the cluster
    *
    */
-  maxOrderableNodes?: number;
+  maxOrderableNodes: number;
   /**
    * Service name of your Cluster
    *
    */
-  name?: string;
+  name: string;
   /**
    * State of the Hadoop Cluster
    *
    */
-  state?: ClusterHadoopClusterStateEnum;
+  state: ClusterHadoopClusterStateEnum;
 }
 /**
  * A numeric value tagged with its unit
@@ -260,10 +260,10 @@ export interface ClusterHadoopHadoop {
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * Map a possible renew for a specific service
@@ -273,17 +273,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -311,28 +311,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -345,13 +345,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsClusterHadoopGET = '/cluster/hadoop' | 
 '/cluster/hadoop/orderInformations' | 

@@ -7,32 +7,32 @@ export interface RegistryImage {
    * Date of the resource creation
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * The image id
    *
    */
-  id?: string;
+  id: string;
   /**
    * The image name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Whether is image is public or private
    *
    */
-  public?: boolean;
+  public: boolean;
   /**
    * The status of the image
    *
    */
-  status?: RegistryImageStatus;
+  status: RegistryImageStatus;
   /**
    * Date of the resource last update
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
 }
 /**
  * The status of the image
@@ -46,7 +46,7 @@ export interface RegistryInputImage {
    * image is public
    *
    */
-  public?: boolean;
+  public: boolean;
 }
 /**
  * A namespace in which a user can either read, write or delete images
@@ -56,7 +56,7 @@ export interface RegistryInputNamespace {
    * The namespace name
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Permissions of a user over a namespace
@@ -66,27 +66,27 @@ export interface RegistryInputPermissions {
    * Whether a user can read images on the namespace
    *
    */
-  canRead?: boolean;
+  canRead: boolean;
   /**
    * Whether a user can create images on the namespace
    *
    */
-  canWrite?: boolean;
+  canWrite: boolean;
   /**
    * Whether a user can delete images on the namespace
    *
    */
-  isAdmin?: boolean;
+  isAdmin: boolean;
   /**
    * The status of the permission
    *
    */
-  status?: RegistryPermissionStatus;
+  status: RegistryPermissionStatus;
   /**
    * User Id
    *
    */
-  userId?: string;
+  userId: string;
 }
 /**
  * A registry user account
@@ -96,7 +96,7 @@ export interface RegistryInputUser {
    * A general description of the user account
    *
    */
-  description?: string;
+  description: string;
 }
 /**
  * A namespace in which a user can either read, write or delete images
@@ -106,27 +106,27 @@ export interface RegistryNamespace {
    * Date of the resource creation
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * The namespace id
    *
    */
-  id?: string;
+  id: string;
   /**
    * The namespace name
    *
    */
-  name?: string;
+  name: string;
   /**
    * The status of the namespace
    *
    */
-  status?: RegistryNamespaceStatus;
+  status: RegistryNamespaceStatus;
   /**
    * Date of the resource last update
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
 }
 /**
  * The status of the namespace
@@ -144,42 +144,42 @@ export interface RegistryPermissions {
    * Whether a user can read images on the namespace
    *
    */
-  canRead?: boolean;
+  canRead: boolean;
   /**
    * Whether a user can create images on the namespace
    *
    */
-  canWrite?: boolean;
+  canWrite: boolean;
   /**
    * Date of the resource creation
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * Permission Id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Whether a user can delete images on the namespace
    *
    */
-  isAdmin?: boolean;
+  isAdmin: boolean;
   /**
    * The status of the permission
    *
    */
-  status?: RegistryPermissionStatus;
+  status: RegistryPermissionStatus;
   /**
    * Date of the resource last update
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
   /**
    * User Id
    *
    */
-  userId?: string;
+  userId: string;
 }
 /**
  * The client subscription to the registry service
@@ -189,37 +189,37 @@ export interface RegistryService {
    * Date of the resource creation
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * The endpoint used for docker login
    *
    */
-  endpoint?: string;
+  endpoint: string;
   /**
    * The service id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Maximal number of registered namespaces in the service
    *
    */
-  maxNamespaces?: number;
+  maxNamespaces: number;
   /**
    * Maximal number of registered users in the service
    *
    */
-  maxUsers?: number;
+  maxUsers: number;
   /**
    * Date of the resource last update
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
   /**
    * The name of the geographical zone the service is located in
    *
    */
-  zone?: string;
+  zone: string;
 }
 /**
  * An image tag
@@ -229,22 +229,22 @@ export interface RegistryTag {
    * Date of the resource creation
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * The tag id
    *
    */
-  id?: string;
+  id: string;
   /**
    * The tag name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Date of the resource last update
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
 }
 /**
  * A registry user account
@@ -254,32 +254,32 @@ export interface RegistryUser {
    * Date of the resource creation
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * A general description of the user account
    *
    */
-  description?: boolean;
+  description: boolean;
   /**
    * The user id
    *
    */
-  id?: string;
+  id: string;
   /**
    * The status of the user
    *
    */
-  status?: RegistryUserStatus;
+  status: RegistryUserStatus;
   /**
    * Date of the resource last update
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
   /**
    * The user name
    *
    */
-  username?: string;
+  username: string;
 }
 /**
  * The status of the user
@@ -293,17 +293,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -331,28 +331,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -365,13 +365,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsCaasRegistryGET = '/caas/registry' | 
 '/caas/registry/{serviceName}' | 

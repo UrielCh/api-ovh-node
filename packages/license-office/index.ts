@@ -15,17 +15,17 @@ export interface LicenseOfficeOfficeDomain {
    * Domain name
    *
    */
-  domainName?: string;
+  domainName: string;
   /**
    * Domain state
    *
    */
-  status?: LicenseOfficeDomainStateEnum;
+  status: LicenseOfficeDomainStateEnum;
   /**
    * TXT entry required for domain validation
    *
    */
-  txtEntry?: string;
+  txtEntry: string;
 }
 /**
  * Office subscription
@@ -35,12 +35,12 @@ export interface LicenseOfficeOfficeSubscription {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Subscription's unique identifier
    *
    */
-  id?: number;
+  id: number;
   /**
    * Last update date
    *
@@ -50,22 +50,22 @@ export interface LicenseOfficeOfficeSubscription {
    * License's type id
    *
    */
-  licenseId?: number;
+  licenseId: number;
   /**
    * Number of available licenses
    *
    */
-  quantity?: number;
+  quantity: number;
   /**
    * Current state of the subscription
    *
    */
-  status?: string;
+  status: string;
   /**
    * Pending task's unique identifier
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Office task
@@ -80,22 +80,22 @@ export interface LicenseOfficeOfficeTask {
    * Function name
    *
    */
-  function?: string;
+  function: string;
   /**
    * Task's unique identifier
    *
    */
-  id?: number;
+  id: number;
   /**
    * Task state
    *
    */
-  status?: LicenseOfficeTaskStatusEnum;
+  status: LicenseOfficeTaskStatusEnum;
   /**
    * Creation date
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * Office tenant
@@ -105,50 +105,50 @@ export interface LicenseOfficeOfficeTenant {
    * Contact's address line
    *
    */
-  address?: string;
+  address: string;
   /**
    * Contact's city
    *
    */
-  city?: string;
+  city: string;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Tenant's display name
    *
    */
-  displayName?: string;
+  displayName: string;
   /**
    * Contact's fisrt name
    *
    */
-  firstName?: string;
+  firstName: string;
   /**
    * Contact's fisrt name
    *
    */
-  lastName?: string;
+  lastName: string;
   /**
    * Primary phone number
    *
    */
-  phone?: string;
+  phone: string;
   /**
    * Tenant's service type
    *
    */
-  serviceType?: LicenseOfficeServiceTypeEnum;
+  serviceType: LicenseOfficeServiceTypeEnum;
   /**
    */
-  status?: LicenseOfficeServiceStateEnum;
+  status: LicenseOfficeServiceStateEnum;
   /**
    * Contact's zip code
    *
    */
-  zipCode?: string;
+  zipCode: string;
 }
 /**
  * Office user
@@ -158,42 +158,42 @@ export interface LicenseOfficeOfficeUser {
    * Email used to activate Microsoft Office
    *
    */
-  activationEmail?: string;
+  activationEmail: string;
   /**
    * Whether or not this user slot will be resigned at the next renew period
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * User's first name
    *
    */
-  firstName?: string;
+  firstName: string;
   /**
    * Specify if the user is actually a user slot (configureme) or a real user
    *
    */
-  isVirtual?: boolean;
+  isVirtual: boolean;
   /**
    * User's last name
    *
    */
-  lastName?: string;
+  lastName: string;
   /**
    * Licenses attributed to the user
    *
    */
-  licences?: LicenseOfficeLicenceEnum[];
+  licences: LicenseOfficeLicenceEnum[];
   /**
    * User state
    *
    */
-  status?: LicenseOfficeUserStateEnum;
+  status: LicenseOfficeUserStateEnum;
   /**
    * Pending task id
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Office tenant state
@@ -211,17 +211,17 @@ export interface LicenseOfficeStatistic {
    * Number of available seats in the subscription
    *
    */
-  available?: number;
+  available: number;
   /**
    * License type's unique identifier
    *
    */
-  licenseId?: number;
+  licenseId: number;
   /**
    * Number of used seats in the subscription
    *
    */
-  used?: number;
+  used: number;
 }
 /**
  * License usage statistics.
@@ -231,12 +231,12 @@ export interface LicenseOfficeStatistics {
    * Date of the statistics.
    *
    */
-  date?: string;
+  date: string;
   /**
    * List of lines associated to this statistics entity.
    *
    */
-  lines?: LicenseOfficeStatisticsLine[];
+  lines: LicenseOfficeStatisticsLine[];
 }
 /**
  * License usage statistics line.
@@ -246,17 +246,17 @@ export interface LicenseOfficeStatisticsLine {
    * Count of activated licenses at the end of the day.
    *
    */
-  endOfDayCount?: number;
+  endOfDayCount: number;
   /**
    * Type of the Office license.
    *
    */
-  licenceType?: LicenseOfficeLicenceEnum;
+  licenceType: LicenseOfficeLicenceEnum;
   /**
    * Maximum count of simultaneous activated licences.
    *
    */
-  peakCount?: number;
+  peakCount: number;
 }
 /**
  * Exchange task status
@@ -274,17 +274,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -312,28 +312,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -346,13 +346,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsLicenseOfficeGET = '/license/office' | 
 '/license/office/{serviceName}' | 

@@ -19,12 +19,12 @@ export interface StatusReply {
    * The comment of the reply
    *
    */
-  comment?: string;
+  comment: string;
   /**
    * The date of the reply
    *
    */
-  date?: string;
+  date: string;
 }
 /**
  * A task linked to one of your services
@@ -34,7 +34,7 @@ export interface StatusTask {
    * The category of the task
    *
    */
-  category?: string;
+  category: string;
   /**
    * The end date of the task
    *
@@ -44,32 +44,32 @@ export interface StatusTask {
    * The impact of the task
    *
    */
-  impact?: OvhstatusTaskTaskImpactEnum;
+  impact: OvhstatusTaskTaskImpactEnum;
   /**
    * Your impacted service linked to the task
    *
    */
-  impactedService?: string;
+  impactedService: string;
   /**
    * The task progression from 0 to 100
    *
    */
-  progress?: number;
+  progress: number;
   /**
    * The project of task
    *
    */
-  project?: string;
+  project: string;
   /**
    * The reference of the task
    *
    */
-  reference?: string;
+  reference: string;
   /**
    * The replies of the task
    *
    */
-  replies?: StatusReply[];
+  replies: StatusReply[];
   /**
    * The start date of the task
    *
@@ -79,22 +79,22 @@ export interface StatusTask {
    * The status of the task
    *
    */
-  status?: OvhstatusTaskTaskStatusEnum;
+  status: OvhstatusTaskTaskStatusEnum;
   /**
    * The title of the task
    *
    */
-  title?: string;
+  title: string;
   /**
    * The type of the task
    *
    */
-  type?: OvhstatusTaskTaskTypeEnum;
+  type: OvhstatusTaskTaskTypeEnum;
   /**
    * The task uuid
    *
    */
-  uuid?: string;
+  uuid: string;
 }
 type PathsStatusGET = '/status/task';
 

@@ -5,13 +5,13 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ApiCredential {
   /**
    */
-  applicationId?: number;
+  applicationId: number;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  credentialId?: number;
+  credentialId: number;
   /**
    */
   expiration?: string;
@@ -22,13 +22,13 @@ export interface ApiCredential {
    * States whether this credential has been created by yourself or by the OVH support team
    *
    */
-  ovhSupport?: boolean;
+  ovhSupport: boolean;
   /**
    */
-  rules?: AuthAccessRule[];
+  rules: AuthAccessRule[];
   /**
    */
-  status?: AuthCredentialStateEnum;
+  status: AuthCredentialStateEnum;
 }
 /**
  * Access rule required for the application
@@ -36,10 +36,10 @@ export interface ApiCredential {
 export interface AuthAccessRule {
   /**
    */
-  method?: AuthMethodEnum;
+  method: AuthMethodEnum;
   /**
    */
-  path?: string;
+  path: string;
 }
 /**
  * Credential request to get access to the API
@@ -47,10 +47,10 @@ export interface AuthAccessRule {
 export interface AuthCredential {
   /**
    */
-  consumerKey?: string;
+  consumerKey: string;
   /**
    */
-  state?: AuthCredentialStateEnum;
+  state: AuthCredentialStateEnum;
   /**
    */
   validationUrl?: string;

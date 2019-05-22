@@ -11,17 +11,17 @@ export interface SaasCsp2BillingStatistics {
    * End of the billing period
    *
    */
-  endDate?: string;
+  endDate: string;
   /**
    * List of lines associated to this statistics entity.
    *
    */
-  lines?: SaasCsp2BillingStatisticsLine[];
+  lines: SaasCsp2BillingStatisticsLine[];
   /**
    * Start of the billing period
    *
    */
-  startDate?: string;
+  startDate: string;
 }
 /**
  * Billing statistics line.
@@ -31,17 +31,17 @@ export interface SaasCsp2BillingStatisticsLine {
    * Id of the Office license.
    *
    */
-  licenceId?: number;
+  licenceId: number;
   /**
    * Name of the Office license.
    *
    */
-  licenceName?: string;
+  licenceName: string;
   /**
    * Maximum count of simultaneous activated licences.
    *
    */
-  peakCount?: number;
+  peakCount: number;
 }
 /**
  * Office license's type
@@ -55,12 +55,12 @@ export interface SaasCsp2OfficeLicence {
    * License unique identifier
    *
    */
-  id?: number;
+  id: number;
   /**
    * License's type, indicates if the licence is standalone or an addon
    *
    */
-  licenceType?: SaasCsp2LicenseTypeEnum;
+  licenceType: SaasCsp2LicenseTypeEnum;
   /**
    * Maximum purchasable license
    *
@@ -70,7 +70,7 @@ export interface SaasCsp2OfficeLicence {
    * License name
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Office subscription
@@ -80,12 +80,12 @@ export interface SaasCsp2OfficeSubscription {
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Subscription's unique identifier
    *
    */
-  id?: number;
+  id: number;
   /**
    * Last update date
    *
@@ -95,22 +95,22 @@ export interface SaasCsp2OfficeSubscription {
    * License's type id
    *
    */
-  licenseId?: number;
+  licenseId: number;
   /**
    * Number of available licenses
    *
    */
-  quantity?: number;
+  quantity: number;
   /**
    * Subscription's status
    *
    */
-  status?: string;
+  status: string;
   /**
    * Pending task's unique identifier
    *
    */
-  taskPendingId?: number;
+  taskPendingId: number;
 }
 /**
  * Office task
@@ -125,22 +125,22 @@ export interface SaasCsp2OfficeTask {
    * Function name
    *
    */
-  function?: string;
+  function: string;
   /**
    * Unique identifier of the task
    *
    */
-  id?: number;
+  id: number;
   /**
    * Task state
    *
    */
-  status?: SaasCsp2TaskStatusEnum;
+  status: SaasCsp2TaskStatusEnum;
   /**
    * Creation date
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * Office tenant
@@ -150,57 +150,57 @@ export interface SaasCsp2OfficeTenant {
    * Contact's address line
    *
    */
-  address?: string;
+  address: string;
   /**
    * Contact's city
    *
    */
-  city?: string;
+  city: string;
   /**
    * Creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Tenant's display name
    *
    */
-  displayName?: string;
+  displayName: string;
   /**
    * Contact's email address
    *
    */
-  email?: string;
+  email: string;
   /**
    * Contact's first name
    *
    */
-  firstName?: string;
+  firstName: string;
   /**
    * Contact's last name
    *
    */
-  lastName?: string;
+  lastName: string;
   /**
    * Primary phone number
    *
    */
-  phone?: string;
+  phone: string;
   /**
    * Internal service name
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Tenant's status
    *
    */
-  status?: SaasCsp2ServiceStateEnum;
+  status: SaasCsp2ServiceStateEnum;
   /**
    * Contact's zip code
    *
    */
-  zipCode?: string;
+  zipCode: string;
 }
 /**
  * Office tenant state
@@ -214,12 +214,12 @@ export interface SaasCsp2Statistics {
    * Date of the statistics.
    *
    */
-  date?: string;
+  date: string;
   /**
    * List of lines associated to this statistics entity.
    *
    */
-  lines?: SaasCsp2StatisticsLine[];
+  lines: SaasCsp2StatisticsLine[];
 }
 /**
  * License usage statistics line.
@@ -229,22 +229,22 @@ export interface SaasCsp2StatisticsLine {
    * Count of activated licenses at the end of the day.
    *
    */
-  endOfDayCount?: number;
+  endOfDayCount: number;
   /**
    * Id of the Office license.
    *
    */
-  licenceId?: number;
+  licenceId: number;
   /**
    * Name of the Office license.
    *
    */
-  licenceName?: string;
+  licenceName: string;
   /**
    * Maximum count of simultaneous activated licences.
    *
    */
-  peakCount?: number;
+  peakCount: number;
 }
 /**
  * Supported services of Office365
@@ -262,17 +262,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -300,28 +300,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -334,13 +334,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsSaasCsp2GET = '/saas/csp2' | 
 '/saas/csp2/{serviceName}' | 

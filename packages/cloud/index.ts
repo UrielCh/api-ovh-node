@@ -11,12 +11,12 @@ export interface CloudAcl {
    * OVH customer unique identifier
    *
    */
-  accountId?: string;
+  accountId: string;
   /**
    * ACL type
    *
    */
-  type?: CloudAclTypeEnum;
+  type: CloudAclTypeEnum;
 }
 /**
  * Possible values for ACL type
@@ -30,32 +30,32 @@ export interface CloudAlerting {
    * Alerting creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Delay between alerts in seconds
    *
    */
-  delay?: CloudAlertingDelayEnum;
+  delay: CloudAlertingDelayEnum;
   /**
    * Email to contact
    *
    */
-  email?: string;
+  email: string;
   /**
    * Formatted monthly threshold for this alerting
    *
    */
-  formattedMonthlyThreshold?: OrderPrice;
+  formattedMonthlyThreshold: OrderPrice;
   /**
    * Alerting unique UUID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Monthly threshold for this alerting
    *
    */
-  monthlyThreshold?: number;
+  monthlyThreshold: number;
 }
 /**
  * Cloud alert on your consumption
@@ -65,17 +65,17 @@ export interface CloudAlertingAlert {
    * Alert date
    *
    */
-  alertDate?: string;
+  alertDate: string;
   /**
    * Alert id
    *
    */
-  alertId?: number;
+  alertId: number;
   /**
    * Alert sent to
    *
    */
-  emails?: string[];
+  emails: string[];
 }
 /**
  * Possible values for delay between two alerts in seconds
@@ -89,12 +89,12 @@ export interface CloudArchiveStoragePrice {
    * Monthly archive storage price (for 1GB stored per month)
    *
    */
-  monthlyPrice?: OrderPrice;
+  monthlyPrice: OrderPrice;
   /**
    * Archive region
    *
    */
-  region?: string;
+  region: string;
 }
 /**
  * Details about an available region that can be activated on your project
@@ -104,17 +104,17 @@ export interface CloudAvailableRegion {
    * Region continent code
    *
    */
-  continentCode?: CloudRegionContinent;
+  continentCode: CloudRegionContinent;
   /**
    * Location of the datacenter where the region is
    *
    */
-  datacenterLocation?: string;
+  datacenterLocation: string;
   /**
    * Region name
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * List your automated backups
@@ -124,17 +124,17 @@ export interface CloudBackup {
    * Backup name
    *
    */
-  backupName?: string;
+  backupName: string;
   /**
    * Creation date of the workflow
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * Workflow cron pattern
    *
    */
-  cron?: string;
+  cron: string;
   /**
    * Executions logs
    *
@@ -144,17 +144,17 @@ export interface CloudBackup {
    * Workflow id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Instance id
    *
    */
-  instanceId?: string;
+  instanceId: string;
   /**
    * Workflow name identifier
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Details about bandwidth storage pricing
@@ -164,12 +164,12 @@ export interface CloudBandwidthStoragePrice {
    * Bandwidth storage price (for 1GB)
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Bandwidth storage region
    *
    */
-  region?: string;
+  region: string;
 }
 /**
  * Information about the different components available in the region
@@ -179,12 +179,12 @@ export interface CloudComponent {
    * Service name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Service status
    *
    */
-  status?: CloudServiceStatus;
+  status: CloudServiceStatus;
 }
 /**
  * Cloud credit
@@ -194,7 +194,7 @@ export interface CloudCredit {
    * Available credit
    *
    */
-  available_credit?: OrderPrice;
+  available_credit: OrderPrice;
   /**
    * Credit bill id
    *
@@ -209,7 +209,7 @@ export interface CloudCredit {
    * Credit id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Use credits on following products
    *
@@ -219,12 +219,12 @@ export interface CloudCredit {
    * Total credit
    *
    */
-  total_credit?: OrderPrice;
+  total_credit: OrderPrice;
   /**
    * Used credit
    *
    */
-  used_credit?: OrderPrice;
+  used_credit: OrderPrice;
   /**
    * Credit validity
    *
@@ -244,17 +244,17 @@ export interface CloudExecution {
    * Last date of cron trigger execution
    *
    */
-  executedAt?: string;
+  executedAt: string;
   /**
    * Execution state
    *
    */
-  state?: CloudExecutionState;
+  state: CloudExecutionState;
   /**
    * Information about state
    *
    */
-  stateInfo?: string;
+  stateInfo: string;
 }
 /**
  * Enum values for State
@@ -268,12 +268,12 @@ export interface CloudFlavorPrice {
    * Flavor id
    *
    */
-  flavorId?: string;
+  flavorId: string;
   /**
    * Flavor name
    *
    */
-  flavorName?: string;
+  flavorName: string;
   /**
    * Monthly flavor price
    *
@@ -283,12 +283,12 @@ export interface CloudFlavorPrice {
    * Hourly flavor price
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Flavor region
    *
    */
-  region?: string;
+  region: string;
 }
 /**
  * An operation is an async process on your Project
@@ -298,7 +298,7 @@ export interface CloudOperation {
    * The action of the operation
    *
    */
-  action?: string;
+  action: string;
   /**
    * The completed date of the operation
    *
@@ -308,17 +308,17 @@ export interface CloudOperation {
    * The creation date of the operation
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * Unique ID to describe the operation
    *
    */
-  id?: string;
+  id: string;
   /**
    * The progression in percentage of the operation
    *
    */
-  progress?: number;
+  progress: number;
   /**
    * Affected regions of the operation
    *
@@ -333,7 +333,7 @@ export interface CloudOperation {
    * Operation status
    *
    */
-  status?: CloudOperationStatus;
+  status: CloudOperationStatus;
 }
 /**
  * Enum values for Status
@@ -347,45 +347,45 @@ export interface CloudPrice {
    * Price for archive storage
    *
    */
-  archive?: CloudArchiveStoragePrice[];
+  archive: CloudArchiveStoragePrice[];
   /**
    * Price for incoming bandwidth on archive storage
    *
    */
-  bandwidthArchiveIn?: CloudBandwidthStoragePrice[];
+  bandwidthArchiveIn: CloudBandwidthStoragePrice[];
   /**
    * Price for outgoing bandwidth on archive storage
    *
    */
-  bandwidthArchiveOut?: CloudBandwidthStoragePrice[];
+  bandwidthArchiveOut: CloudBandwidthStoragePrice[];
   /**
    * Price for bandwidth storage
    *
    */
-  bandwidthStorage?: CloudBandwidthStoragePrice[];
+  bandwidthStorage: CloudBandwidthStoragePrice[];
   /**
    */
-  instances?: CloudFlavorPrice[];
+  instances: CloudFlavorPrice[];
   /**
    * Price for project creation
    *
    */
-  projectCreation?: OrderPrice;
+  projectCreation: OrderPrice;
   /**
    * Prices for snapshots
    *
    */
-  snapshots?: CloudSnapshotPrice[];
+  snapshots: CloudSnapshotPrice[];
   /**
    * Price for storage
    *
    */
-  storage?: CloudStoragePrice[];
+  storage: CloudStoragePrice[];
   /**
    * Prices for volumes
    *
    */
-  volumes?: CloudVolumePrice[];
+  volumes: CloudVolumePrice[];
 }
 /**
  * Project
@@ -395,12 +395,12 @@ export interface CloudProject {
    * Project access
    *
    */
-  access?: CloudAccessTypeEnum;
+  access: CloudAccessTypeEnum;
   /**
    * Project creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Description of your project
    *
@@ -420,22 +420,22 @@ export interface CloudProject {
    * Order plan code
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Project id
    *
    */
-  project_id?: string;
+  project_id: string;
   /**
    * Current status
    *
    */
-  status?: CloudProjectProjectStatus;
+  status: CloudProjectProjectStatus;
   /**
    * Project unleashed
    *
    */
-  unleash?: boolean;
+  unleash: boolean;
 }
 /**
  * Details about your region
@@ -445,27 +445,27 @@ export interface CloudRegion {
    * Region continent code
    *
    */
-  continentCode?: CloudRegionContinent;
+  continentCode: CloudRegionContinent;
   /**
    * Location of the datacenter where the region is
    *
    */
-  datacenterLocation?: string;
+  datacenterLocation: string;
   /**
    * Region name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Details about components status
    *
    */
-  services?: CloudComponent[];
+  services: CloudComponent[];
   /**
    * Openstack region status
    *
    */
-  status?: CloudRegionStatus;
+  status: CloudRegionStatus;
 }
 /**
  * Enum values for ContinentCode
@@ -487,17 +487,17 @@ export interface CloudSnapshotPrice {
    * Monthly flavor price (for 1GB per month)
    *
    */
-  monthlyPrice?: OrderPrice;
+  monthlyPrice: OrderPrice;
   /**
    * Hourly snapshot price (for 1GB per hour)
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Snapshot region
    *
    */
-  region?: string;
+  region: string;
 }
 /**
  * Details about storage pricing
@@ -507,17 +507,17 @@ export interface CloudStoragePrice {
    * Monthly storage price (for 1GB stored per month)
    *
    */
-  monthlyPrice?: OrderPrice;
+  monthlyPrice: OrderPrice;
   /**
    * Hourly storage price (for 1GB stored per hour)
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Storage region
    *
    */
-  region?: string;
+  region: string;
 }
 /**
  * Details about volume pricing
@@ -527,22 +527,22 @@ export interface CloudVolumePrice {
    * Monthly volume price (for 1GB per month)
    *
    */
-  monthlyPrice?: OrderPrice;
+  monthlyPrice: OrderPrice;
   /**
    * Hourly volume price (for 1GB per hour)
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Volume region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Volume name
    *
    */
-  volumeName?: string;
+  volumeName: string;
 }
 /**
  * A vRack allows to connect your OVH infrastructures accross products and datacenters
@@ -552,17 +552,17 @@ export interface CloudVrack {
    * Description of your vRack
    *
    */
-  description?: string;
+  description: string;
   /**
    * Vrack ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Name of your vRack
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Catalog
@@ -570,13 +570,13 @@ export interface CloudVrack {
 export interface CloudAuthenticationCatalog {
   /**
    */
-  endpoints?: CloudAuthenticationEndpoint[];
+  endpoints: CloudAuthenticationEndpoint[];
   /**
    */
-  id?: string;
+  id: string;
   /**
    */
-  type?: string;
+  type: string;
 }
 /**
  * Domain
@@ -584,7 +584,7 @@ export interface CloudAuthenticationCatalog {
 export interface CloudAuthenticationDomain {
   /**
    */
-  name?: string;
+  name: string;
 }
 /**
  * Endpoint
@@ -592,22 +592,22 @@ export interface CloudAuthenticationDomain {
 export interface CloudAuthenticationEndpoint {
   /**
    */
-  id?: string;
+  id: string;
   /**
    */
-  interface?: string;
+  interface: string;
   /**
    */
-  legacy_endpoint_id?: string;
+  legacy_endpoint_id: string;
   /**
    */
-  region_id?: string;
+  region_id: string;
   /**
    */
-  service_id?: string;
+  service_id: string;
   /**
    */
-  url?: string;
+  url: string;
 }
 /**
  * OpenstackToken
@@ -615,25 +615,25 @@ export interface CloudAuthenticationEndpoint {
 export interface CloudAuthenticationOpenstackToken {
   /**
    */
-  catalog?: CloudAuthenticationCatalog[];
+  catalog: CloudAuthenticationCatalog[];
   /**
    */
-  expires_at?: string;
+  expires_at: string;
   /**
    */
-  issued_at?: string;
+  issued_at: string;
   /**
    */
-  methods?: string[];
+  methods: string[];
   /**
    */
-  project?: CloudAuthenticationTokenProject;
+  project: CloudAuthenticationTokenProject;
   /**
    */
-  roles?: CloudAuthenticationRole[];
+  roles: CloudAuthenticationRole[];
   /**
    */
-  user?: CloudAuthenticationUserToken;
+  user: CloudAuthenticationUserToken;
 }
 /**
  * Role
@@ -641,10 +641,10 @@ export interface CloudAuthenticationOpenstackToken {
 export interface CloudAuthenticationRole {
   /**
    */
-  id?: string;
+  id: string;
   /**
    */
-  name?: string;
+  name: string;
 }
 /**
  * Token
@@ -652,10 +652,10 @@ export interface CloudAuthenticationRole {
 export interface CloudAuthenticationToken {
   /**
    */
-  'X-Auth-Token'?: string;
+  'X-Auth-Token': string;
   /**
    */
-  token?: CloudAuthenticationOpenstackToken;
+  token: CloudAuthenticationOpenstackToken;
 }
 /**
  * TokenProject
@@ -663,13 +663,13 @@ export interface CloudAuthenticationToken {
 export interface CloudAuthenticationTokenProject {
   /**
    */
-  domain?: CloudAuthenticationDomain;
+  domain: CloudAuthenticationDomain;
   /**
    */
-  id?: string;
+  id: string;
   /**
    */
-  name?: string;
+  name: string;
 }
 /**
  * UserToken
@@ -677,13 +677,13 @@ export interface CloudAuthenticationTokenProject {
 export interface CloudAuthenticationUserToken {
   /**
    */
-  domain?: CloudAuthenticationDomain;
+  domain: CloudAuthenticationDomain;
   /**
    */
-  id?: string;
+  id: string;
   /**
    */
-  name?: string;
+  name: string;
 }
 /**
  * BandwidthInstance
@@ -693,12 +693,12 @@ export interface CloudBillingViewBandwidthInstance {
    * Total bandwidth in GiB
    *
    */
-  quantity?: CloudBillingViewQuantity;
+  quantity: CloudBillingViewQuantity;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * BandwidthStorage
@@ -708,12 +708,12 @@ export interface CloudBillingViewBandwidthStorage {
    * Total bandwidth in GiB
    *
    */
-  quantity?: CloudBillingViewQuantity;
+  quantity: CloudBillingViewQuantity;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * HourlyInstance
@@ -723,27 +723,27 @@ export interface CloudBillingViewHourlyInstance {
    * Details about hourly instances
    *
    */
-  details?: CloudBillingViewHourlyInstanceDetail[];
+  details: CloudBillingViewHourlyInstanceDetail[];
   /**
    * Hours of run instances
    *
    */
-  quantity?: CloudBillingViewQuantity;
+  quantity: CloudBillingViewQuantity;
   /**
    * Instance reference
    *
    */
-  reference?: string;
+  reference: string;
   /**
    * Instance region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * HourlyInstanceBandwidth
@@ -763,12 +763,12 @@ export interface CloudBillingViewHourlyInstanceBandwidth {
    * Region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * HourlyInstanceDetail
@@ -778,17 +778,17 @@ export interface CloudBillingViewHourlyInstanceDetail {
    * Instance ID
    *
    */
-  instanceId?: string;
+  instanceId: string;
   /**
    * Hours of run instances
    *
    */
-  quantity?: CloudBillingViewQuantity;
+  quantity: CloudBillingViewQuantity;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * HourlyInstanceOption
@@ -798,27 +798,27 @@ export interface CloudBillingViewHourlyInstanceOption {
    * Details about hourly instances option
    *
    */
-  details?: CloudBillingViewHourlyInstanceOptionDetail[];
+  details: CloudBillingViewHourlyInstanceOptionDetail[];
   /**
    * Quantity of instance hours running with this option
    *
    */
-  quantity?: CloudBillingViewQuantity;
+  quantity: CloudBillingViewQuantity;
   /**
    * Instance reference
    *
    */
-  reference?: string;
+  reference: string;
   /**
    * Instance region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * HourlyInstanceOptionDetail
@@ -828,17 +828,17 @@ export interface CloudBillingViewHourlyInstanceOptionDetail {
    * Instance ID
    *
    */
-  instanceId?: string;
+  instanceId: string;
   /**
    * Quantity of instance hours running with this option
    *
    */
-  quantity?: CloudBillingViewQuantity;
+  quantity: CloudBillingViewQuantity;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * HourlyResources
@@ -848,32 +848,32 @@ export interface CloudBillingViewHourlyResources {
    * Details about hourly instances
    *
    */
-  instance?: CloudBillingViewHourlyInstance[];
+  instance: CloudBillingViewHourlyInstance[];
   /**
    * Details about instances bandwidth consumption
    *
    */
-  instanceBandwidth?: CloudBillingViewHourlyInstanceBandwidth[];
+  instanceBandwidth: CloudBillingViewHourlyInstanceBandwidth[];
   /**
    * Details about hourly instances options
    *
    */
-  instanceOption?: CloudBillingViewHourlyInstanceOption[];
+  instanceOption: CloudBillingViewHourlyInstanceOption[];
   /**
    * Details about hourly snapshots
    *
    */
-  snapshot?: CloudBillingViewHourlySnapshot[];
+  snapshot: CloudBillingViewHourlySnapshot[];
   /**
    * Details about hourly storage
    *
    */
-  storage?: CloudBillingViewHourlyStorage[];
+  storage: CloudBillingViewHourlyStorage[];
   /**
    * Details about hourly volumes
    *
    */
-  volume?: CloudBillingViewHourlyVolume[];
+  volume: CloudBillingViewHourlyVolume[];
 }
 /**
  * HourlySnapshot
@@ -888,12 +888,12 @@ export interface CloudBillingViewHourlySnapshot {
    * Region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
   /**
    * Volume snapshot details
    *
@@ -918,7 +918,7 @@ export interface CloudBillingViewHourlyStorage {
    * Region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Information about stored data
    *
@@ -928,12 +928,12 @@ export interface CloudBillingViewHourlyStorage {
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
   /**
    * Storage type
    *
    */
-  type?: CloudBillingViewStorageTypeEnum;
+  type: CloudBillingViewStorageTypeEnum;
 }
 /**
  * HourlyVolume
@@ -943,27 +943,27 @@ export interface CloudBillingViewHourlyVolume {
    * Detail about volume consumption
    *
    */
-  details?: CloudBillingViewHourlyVolumeDetail[];
+  details: CloudBillingViewHourlyVolumeDetail[];
   /**
    * Total GiBh of volume
    *
    */
-  quantity?: CloudBillingViewQuantity;
+  quantity: CloudBillingViewQuantity;
   /**
    * Region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
   /**
    * Volume type
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * HourlyVolumeDetail
@@ -973,17 +973,17 @@ export interface CloudBillingViewHourlyVolumeDetail {
    * GiBh of volume
    *
    */
-  quantity?: CloudBillingViewQuantity;
+  quantity: CloudBillingViewQuantity;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
   /**
    * Volume ID
    *
    */
-  volumeId?: string;
+  volumeId: string;
 }
 /**
  * InstanceSnapshot
@@ -993,12 +993,12 @@ export interface CloudBillingViewInstanceSnapshot {
    * GiBh stored
    *
    */
-  quantity?: CloudBillingViewQuantity;
+  quantity: CloudBillingViewQuantity;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * MonthlyInstance
@@ -1008,22 +1008,22 @@ export interface CloudBillingViewMonthlyInstance {
    * Details about monthly instances
    *
    */
-  details?: CloudBillingViewMonthlyInstanceDetail[];
+  details: CloudBillingViewMonthlyInstanceDetail[];
   /**
    * Instance reference
    *
    */
-  reference?: string;
+  reference: string;
   /**
    * Instance region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * MonthlyInstanceDetail
@@ -1033,17 +1033,17 @@ export interface CloudBillingViewMonthlyInstanceDetail {
    * Monthly instance activation
    *
    */
-  activation?: string;
+  activation: string;
   /**
    * Instance ID
    *
    */
-  instanceId?: string;
+  instanceId: string;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * MonthlyInstanceOption
@@ -1053,22 +1053,22 @@ export interface CloudBillingViewMonthlyInstanceOption {
    * Details about monthly instances
    *
    */
-  details?: CloudBillingViewMonthlyInstanceOptionDetail[];
+  details: CloudBillingViewMonthlyInstanceOptionDetail[];
   /**
    * Instance reference
    *
    */
-  reference?: string;
+  reference: string;
   /**
    * Instance region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * MonthlyInstanceOptionDetail
@@ -1078,12 +1078,12 @@ export interface CloudBillingViewMonthlyInstanceOptionDetail {
    * Instance ID
    *
    */
-  instanceId?: string;
+  instanceId: string;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * MonthlyResources
@@ -1093,12 +1093,12 @@ export interface CloudBillingViewMonthlyResources {
    * Details about monthly instances
    *
    */
-  instance?: CloudBillingViewMonthlyInstance[];
+  instance: CloudBillingViewMonthlyInstance[];
   /**
    * Details about monthly instances options
    *
    */
-  instanceOption?: CloudBillingViewMonthlyInstanceOption[];
+  instanceOption: CloudBillingViewMonthlyInstanceOption[];
 }
 /**
  * Quantity
@@ -1108,12 +1108,12 @@ export interface CloudBillingViewQuantity {
    * Quantity unit
    *
    */
-  unit?: CloudBillingViewUnitQuantity;
+  unit: CloudBillingViewUnitQuantity;
   /**
    * Quantity value
    *
    */
-  value?: number;
+  value: number;
 }
 /**
  * StorageTypeEnum
@@ -1127,12 +1127,12 @@ export interface CloudBillingViewStoredStorage {
    * GiBh stored
    *
    */
-  quantity?: CloudBillingViewQuantity;
+  quantity: CloudBillingViewQuantity;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * UnitQuantity
@@ -1146,17 +1146,17 @@ export interface CloudBillingViewUsedCredit {
    * Credit description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Credit ID
    *
    */
-  id?: number;
+  id: number;
   /**
    * Total credit used
    *
    */
-  usedAmount?: number;
+  usedAmount: number;
 }
 /**
  * UsedCredits
@@ -1166,12 +1166,12 @@ export interface CloudBillingViewUsedCredits {
    * Details about credits that will be used
    *
    */
-  details?: CloudBillingViewUsedCredit[];
+  details: CloudBillingViewUsedCredit[];
   /**
    * Total credit that will be used to pay the bill
    *
    */
-  totalCredit?: number;
+  totalCredit: number;
 }
 /**
  * VolumeSnapshot
@@ -1181,12 +1181,12 @@ export interface CloudBillingViewVolumeSnapshot {
    * GiBh stored
    *
    */
-  quantity?: CloudBillingViewQuantity;
+  quantity: CloudBillingViewQuantity;
   /**
    * Total price
    *
    */
-  totalPrice?: number;
+  totalPrice: number;
 }
 /**
  * Voucher validity range
@@ -1215,47 +1215,47 @@ export interface CloudContainerRegistryRegistryRegistry {
    * Registry creation date
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * Registry ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Registry name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Project ID of your registry
    *
    */
-  projectID?: string;
+  projectID: string;
   /**
    * Region of the registry
    *
    */
-  region?: CloudContainerRegistryRegistryRegionEnum;
+  region: CloudContainerRegistryRegistryRegionEnum;
   /**
    * Registry status
    *
    */
-  status?: CloudContainerRegistryRegistryStatusEnum;
+  status: CloudContainerRegistryRegistryStatusEnum;
   /**
    * Registry last update date
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
   /**
    * Access url of the registry
    *
    */
-  url?: string;
+  url: string;
   /**
    * Version of your registry
    *
    */
-  version?: string;
+  version: string;
 }
 /**
  * Docker registry creation result
@@ -1265,7 +1265,7 @@ export interface CloudContainerRegistryRegistryRegistryCreationResult {
    * Registry ID
    *
    */
-  id?: string;
+  id: string;
 }
 /**
  * Status of the registry
@@ -1279,12 +1279,12 @@ export interface CloudContainerRegistryUserUser {
    * User email
    *
    */
-  email?: string;
+  email: string;
   /**
    * User ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * User password
    *
@@ -1294,7 +1294,7 @@ export interface CloudContainerRegistryUserUser {
    * User name
    *
    */
-  user?: string;
+  user: string;
 }
 /**
  * Flavor
@@ -1304,17 +1304,17 @@ export interface CloudFlavorFlavor {
    * Available in stock
    *
    */
-  available?: boolean;
+  available: boolean;
   /**
    * Number of disks
    *
    */
-  disk?: number;
+  disk: number;
   /**
    * Flavor id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Max capacity of inbound traffic in Mbit/s
    *
@@ -1324,12 +1324,12 @@ export interface CloudFlavorFlavor {
    * Flavor name
    *
    */
-  name?: string;
+  name: string;
   /**
    * OS to install on
    *
    */
-  osType?: string;
+  osType: string;
   /**
    * Max capacity of outbound traffic in Mbit/s
    *
@@ -1339,27 +1339,27 @@ export interface CloudFlavorFlavor {
    * Plan codes to order instances
    *
    */
-  planCodes?: CloudFlavorFlavorPlanCodes;
+  planCodes: CloudFlavorFlavorPlanCodes;
   /**
    * Ram quantity (Gio)
    *
    */
-  ram?: number;
+  ram: number;
   /**
    * Flavor region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Flavor type
    *
    */
-  type?: string;
+  type: string;
   /**
    * Number of VCPUs
    *
    */
-  vcpus?: number;
+  vcpus: number;
 }
 /**
  * FlavorPlanCodes
@@ -1384,12 +1384,12 @@ export interface CloudForecastProjectForecast {
    * Time when we got last metric
    *
    */
-  lastMetric?: string;
+  lastMetric: string;
   /**
    * Forecast for your whole project
    *
    */
-  projectForecast?: OrderPrice;
+  projectForecast: OrderPrice;
 }
 /**
  * Image
@@ -1399,7 +1399,7 @@ export interface CloudImageImage {
    * Image creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Image usable only for this type of flavor if not null
    *
@@ -1409,22 +1409,22 @@ export interface CloudImageImage {
    * Image id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Minimum disks required to use image
    *
    */
-  minDisk?: number;
+  minDisk: number;
   /**
    * Minimum RAM required to use image
    *
    */
-  minRam?: number;
+  minRam: number;
   /**
    * Image name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Order plan code
    *
@@ -1434,17 +1434,17 @@ export interface CloudImageImage {
    * Image region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Image size (in GiB)
    *
    */
-  size?: number;
+  size: number;
   /**
    * Image status
    *
    */
-  status?: string;
+  status: string;
   /**
    * Tags about the image
    *
@@ -1454,17 +1454,17 @@ export interface CloudImageImage {
    * Image type
    *
    */
-  type?: string;
+  type: string;
   /**
    * User to connect with
    *
    */
-  user?: string;
+  user: string;
   /**
    * Image visibility
    *
    */
-  visibility?: string;
+  visibility: string;
 }
 /**
  * OSTypeEnum
@@ -1478,22 +1478,22 @@ export interface CloudInstanceAccess {
    * Login
    *
    */
-  login?: string;
+  login: string;
   /**
    * Password
    *
    */
-  password?: string;
+  password: string;
   /**
    * Application access type
    *
    */
-  type?: string;
+  type: string;
   /**
    * Url
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * ApplicationAccess
@@ -1503,12 +1503,12 @@ export interface CloudInstanceApplicationAccess {
    * List of credentials
    *
    */
-  accesses?: CloudInstanceAccess[];
+  accesses: CloudInstanceAccess[];
   /**
    * Application status
    *
    */
-  status?: CloudInstanceApplicationAccessStateEnum;
+  status: CloudInstanceApplicationAccessStateEnum;
 }
 /**
  * ApplicationAccessStateEnum
@@ -1522,27 +1522,27 @@ export interface CloudInstanceInstance {
    * Instance creation date
    *
    */
-  created?: string;
+  created: string;
   /**
    * Instance flavor id
    *
    */
-  flavorId?: string;
+  flavorId: string;
   /**
    * Instance id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Instance image id
    *
    */
-  imageId?: string;
+  imageId: string;
   /**
    * Instance IP addresses
    *
    */
-  ipAddresses?: CloudInstanceIpAddress[];
+  ipAddresses: CloudInstanceIpAddress[];
   /**
    * Instance monthly billing status
    *
@@ -1552,7 +1552,7 @@ export interface CloudInstanceInstance {
    * Instance name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Order plan code
    *
@@ -1562,7 +1562,7 @@ export interface CloudInstanceInstance {
    * Instance id
    *
    */
-  region?: string;
+  region: string;
   /**
    * Instance ssh key id
    *
@@ -1572,7 +1572,7 @@ export interface CloudInstanceInstance {
    * Instance status
    *
    */
-  status?: CloudInstanceInstanceStatusEnum;
+  status: CloudInstanceInstanceStatusEnum;
 }
 /**
  * InstanceDetail
@@ -1582,27 +1582,27 @@ export interface CloudInstanceInstanceDetail {
    * Instance creation date
    *
    */
-  created?: string;
+  created: string;
   /**
    * Instance flavor
    *
    */
-  flavor?: CloudFlavorFlavor;
+  flavor: CloudFlavorFlavor;
   /**
    * Instance id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Instance image
    *
    */
-  image?: CloudImageImage;
+  image: CloudImageImage;
   /**
    * Instance IP addresses
    *
    */
-  ipAddresses?: CloudInstanceIpAddress[];
+  ipAddresses: CloudInstanceIpAddress[];
   /**
    * Instance monthly billing status
    *
@@ -1612,7 +1612,7 @@ export interface CloudInstanceInstanceDetail {
    * Instance name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Order plan code
    *
@@ -1622,17 +1622,17 @@ export interface CloudInstanceInstanceDetail {
    * Instance id
    *
    */
-  region?: string;
+  region: string;
   /**
    * Instance SSH key
    *
    */
-  sshKey?: CloudSshkeySshKeyDetail;
+  sshKey: CloudSshkeySshKeyDetail;
   /**
    * Instance status
    *
    */
-  status?: CloudInstanceInstanceStatusEnum;
+  status: CloudInstanceInstanceStatusEnum;
 }
 /**
  * InstanceMetrics
@@ -1640,10 +1640,10 @@ export interface CloudInstanceInstanceDetail {
 export interface CloudInstanceInstanceMetrics {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  values?: CloudInstanceInstanceMetricsValue[];
+  values: CloudInstanceInstanceMetricsValue[];
 }
 /**
  * InstanceMetricsValue
@@ -1651,10 +1651,10 @@ export interface CloudInstanceInstanceMetrics {
 export interface CloudInstanceInstanceMetricsValue {
   /**
    */
-  timestamp?: number;
+  timestamp: number;
   /**
    */
-  value?: number;
+  value: number;
 }
 /**
  * InstanceStatusEnum
@@ -1668,12 +1668,12 @@ export interface CloudInstanceInstanceVnc {
    * VNC type
    *
    */
-  type?: string;
+  type: string;
   /**
    * VNC url
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * IpAddress
@@ -1688,22 +1688,22 @@ export interface CloudInstanceIpAddress {
    * Instance IP address
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * Network ID
    *
    */
-  networkId?: string;
+  networkId: string;
   /**
    * Instance IP address type
    *
    */
-  type?: string;
+  type: string;
   /**
    * IP version
    *
    */
-  version?: number;
+  version: number;
 }
 /**
  * MetricsPeriod
@@ -1721,12 +1721,12 @@ export interface CloudInstanceMonthlyBilling {
    * Monthly billing activated since
    *
    */
-  since?: string;
+  since: string;
   /**
    * Monthly billing status
    *
    */
-  status?: CloudInstanceMonthlyBillingStatusEnum;
+  status: CloudInstanceMonthlyBillingStatusEnum;
 }
 /**
  * MonthlyBillingStatusEnum
@@ -1740,7 +1740,7 @@ export interface CloudInstanceNetworkBulkParams {
    * Private or public network Id
    *
    */
-  networkId?: string;
+  networkId: string;
 }
 /**
  * NetworkParams
@@ -1755,7 +1755,7 @@ export interface CloudInstanceNetworkParams {
    * Private or public network Id
    *
    */
-  networkId?: string;
+  networkId: string;
 }
 /**
  * RebootTypeEnum
@@ -1779,12 +1779,12 @@ export interface CloudInstanceInterfaceFixedIp {
    * Ip
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * Subnetwork Id
    *
    */
-  subnetId?: string;
+  subnetId: string;
 }
 /**
  * Interface
@@ -1794,32 +1794,32 @@ export interface CloudInstanceInterfaceInterface {
    * List of ips of the interface
    *
    */
-  fixedIps?: CloudInstanceInterfaceFixedIp[];
+  fixedIps: CloudInstanceInterfaceFixedIp[];
   /**
    * Interface unique identifier
    *
    */
-  id?: string;
+  id: string;
   /**
    * Mac address
    *
    */
-  macAddress?: string;
+  macAddress: string;
   /**
    * Network id
    *
    */
-  networkId?: string;
+  networkId: string;
   /**
    * Openstack state
    *
    */
-  state?: string;
+  state: string;
   /**
    * Network type
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * InstanceGroup
@@ -1829,27 +1829,27 @@ export interface CloudInstancegroupInstanceGroup {
    * Instance group id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Instances ids
    *
    */
-  instance_ids?: string[];
+  instance_ids: string[];
   /**
    * Instance group name
    *
    */
-  name?: string;
+  name: string;
   /**
    * region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Instance group type
    *
    */
-  type?: CloudInstancegroupInstanceGroupTypeEnum;
+  type: CloudInstancegroupInstanceGroupTypeEnum;
 }
 /**
  * InstanceGroupTypeEnum
@@ -1863,7 +1863,7 @@ export interface CloudIpCloudIp {
    * Ip id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Ip
    *
@@ -1873,12 +1873,12 @@ export interface CloudIpCloudIp {
    * Ip status
    *
    */
-  status?: CloudIpIpStatusEnum;
+  status: CloudIpIpStatusEnum;
   /**
    * Ip type
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * FailoverIp
@@ -1903,7 +1903,7 @@ export interface CloudIpFailoverIp {
    * Ip id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Ip
    *
@@ -1913,22 +1913,22 @@ export interface CloudIpFailoverIp {
    * Current operation progress in percent
    *
    */
-  progress?: number;
+  progress: number;
   /**
    * Instance where ip is routed to
    *
    */
-  routedTo?: string;
+  routedTo: string;
   /**
    * Ip status
    *
    */
-  status?: CloudIpIpStatusEnum;
+  status: CloudIpIpStatusEnum;
   /**
    * IP sub type
    *
    */
-  subType?: CloudIpIpSubTypeEnum;
+  subType: CloudIpIpSubTypeEnum;
 }
 /**
  * IpStatusEnum
@@ -1946,57 +1946,57 @@ export interface CloudKubeCluster {
    * True if control-plane is up to date
    *
    */
-  controlPlaneIsUpToDate?: boolean;
+  controlPlaneIsUpToDate: boolean;
   /**
    * Cluster creation date
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * Cluster ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * True if all nodes and control-plane are up to date
    *
    */
-  isUpToDate?: boolean;
+  isUpToDate: boolean;
   /**
    * Cluster name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Cluster nodes URL
    *
    */
-  nodesUrl?: string;
+  nodesUrl: string;
   /**
    * Cluster status
    *
    */
-  status?: CloudKubeClusterStatus;
+  status: CloudKubeClusterStatus;
   /**
    * Cluster last update date
    *
    */
-  updatePolicy?: string;
+  updatePolicy: string;
   /**
    * Cluster last update date
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
   /**
    * Management URL of your cluster
    *
    */
-  url?: string;
+  url: string;
   /**
    * Kubernetes version of your cluster
    *
    */
-  version?: string;
+  version: string;
 }
 /**
  * Enum values for Status
@@ -2010,7 +2010,7 @@ export interface CloudKubeKubeconfig {
    * kubeconfig file
    *
    */
-  content?: string;
+  content: string;
 }
 /**
  * Node installed on your cluster
@@ -2020,17 +2020,17 @@ export interface CloudKubeNode {
    * Creation date
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * Flavor name
    *
    */
-  flavor?: string;
+  flavor: string;
   /**
    * Node ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Public Cloud instance id
    *
@@ -2040,7 +2040,7 @@ export interface CloudKubeNode {
    * True if the node is up to date
    *
    */
-  isUpToDate?: boolean;
+  isUpToDate: boolean;
   /**
    * Node name
    *
@@ -2050,17 +2050,17 @@ export interface CloudKubeNode {
    * Status
    *
    */
-  status?: CloudKubeNodeStatus;
+  status: CloudKubeNodeStatus;
   /**
    * Node last update date
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
   /**
    * Node version
    *
    */
-  version?: string;
+  version: string;
 }
 /**
  * Enum values for Status
@@ -2090,22 +2090,22 @@ export interface CloudMigrationMigration {
    * The planned date of the migration
    *
    */
-  date?: string;
+  date: string;
   /**
    * Migration Id
    *
    */
-  migrationId?: string;
+  migrationId: string;
   /**
    * The id of the resource to migrate
    *
    */
-  resourceId?: string;
+  resourceId: string;
   /**
    * The type of the resource to migrate
    *
    */
-  resourceType?: CloudMigrationResourceTypeEnum;
+  resourceType: CloudMigrationResourceTypeEnum;
 }
 /**
  * ResourceTypeEnum
@@ -2119,27 +2119,27 @@ export interface CloudNetworkIPPool {
    * Enable DHCP
    *
    */
-  dhcp?: boolean;
+  dhcp: boolean;
   /**
    * Last IP for this region (eg: 192.168.1.24)
    *
    */
-  end?: string;
+  end: string;
   /**
    * Global network with cidr (eg: 192.168.1.0/24)
    *
    */
-  network?: string;
+  network: string;
   /**
    * Region where this subnet will be created
    *
    */
-  region?: string;
+  region: string;
   /**
    * First IP for this region (eg: 192.168.1.12)
    *
    */
-  start?: string;
+  start: string;
 }
 /**
  * Network
@@ -2149,22 +2149,22 @@ export interface CloudNetworkNetwork {
    * Network id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Network name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Details about private network in region
    *
    */
-  regions?: CloudNetworkNetworkRegion[];
+  regions: CloudNetworkNetworkRegion[];
   /**
    * Network status
    *
    */
-  status?: CloudNetworkNetworkStatusEnum;
+  status: CloudNetworkNetworkStatusEnum;
   /**
    * Network type
    *
@@ -2174,7 +2174,7 @@ export interface CloudNetworkNetwork {
    * Network VLAN id
    *
    */
-  vlanId?: number;
+  vlanId: number;
 }
 /**
  * NetworkRegion
@@ -2184,12 +2184,12 @@ export interface CloudNetworkNetworkRegion {
    * Network region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Network region status
    *
    */
-  status?: CloudNetworkNetworkRegionStatusEnum;
+  status: CloudNetworkNetworkRegionStatusEnum;
 }
 /**
  * NetworkRegionStatusEnum
@@ -2211,7 +2211,7 @@ export interface CloudNetworkSubnet {
    * Subnet CIDR
    *
    */
-  cidr?: string;
+  cidr: string;
   /**
    * Gateway IP in the subnet
    *
@@ -2221,12 +2221,12 @@ export interface CloudNetworkSubnet {
    * Subnet id
    *
    */
-  id?: string;
+  id: string;
   /**
    * List of ip pools allocated in subnet
    *
    */
-  ipPools?: CloudNetworkIPPool[];
+  ipPools: CloudNetworkIPPool[];
 }
 /**
  * Profile
@@ -2236,7 +2236,7 @@ export interface CloudOpenstackClientProfile {
    * Profile name
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Session
@@ -2246,22 +2246,22 @@ export interface CloudOpenstackClientSession {
    * Expiration date
    *
    */
-  expires?: string;
+  expires: string;
   /**
    * Session Id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Profile of the session
    *
    */
-  profile?: CloudOpenstackClientProfile;
+  profile: CloudOpenstackClientProfile;
   /**
    * Websocket url to use the terminal
    *
    */
-  websocket?: string;
+  websocket: string;
 }
 /**
  * Order
@@ -2271,17 +2271,17 @@ export interface CloudOrderOrder {
    * Order creation date
    *
    */
-  date?: string;
+  date: string;
   /**
    * Order id
    *
    */
-  orderId?: number;
+  orderId: number;
   /**
    * Order plan code
    *
    */
-  planCode?: string;
+  planCode: string;
   /**
    * Service created
    *
@@ -2289,7 +2289,7 @@ export interface CloudOrderOrder {
   serviceName?: string;
   /**
    */
-  status?: CloudOrderStatusEnum;
+  status: CloudOrderStatusEnum;
 }
 /**
  * StatusEnum
@@ -2307,42 +2307,42 @@ export interface CloudPcaDownloadCredentials {
    * Openstack authentication URL
    *
    */
-  authEndpoint?: string;
+  authEndpoint: string;
   /**
    * Openstack swift container name
    *
    */
-  container?: string;
+  container: string;
   /**
    * Openstack user login
    *
    */
-  login?: string;
+  login: string;
   /**
    * Openstack user password
    *
    */
-  password?: string;
+  password: string;
   /**
    * Openstack region name
    *
    */
-  region?: string;
+  region: string;
   /**
    * Openstack storage URL
    *
    */
-  storageEndpoint?: string;
+  storageEndpoint: string;
   /**
    * Openstack tenant id
    *
    */
-  tenantId?: string;
+  tenantId: string;
   /**
    * Openstack tenant name
    *
    */
-  tenantName?: string;
+  tenantName: string;
 }
 /**
  * Task types for cloud archives
@@ -2373,12 +2373,12 @@ export interface CloudPcaTransferState {
    * Cloud project id
    *
    */
-  projectId?: string;
+  projectId: string;
   /**
    * Transfer state
    *
    */
-  state?: CloudPcaTransferStateEnum;
+  state: CloudPcaTransferStateEnum;
   /**
    * Transfer request date
    *
@@ -2397,17 +2397,17 @@ export interface CloudProjectBandwidthStorageUsage {
    * Downloaded bytes from your containers
    *
    */
-  downloadedBytes?: number;
+  downloadedBytes: number;
   /**
    * Region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Cost for your storage bandwidth
    *
    */
-  total?: OrderPrice;
+  total: OrderPrice;
 }
 /**
  * Project bill
@@ -2417,12 +2417,12 @@ export interface CloudProjectBill {
    * Bill id
    *
    */
-  billId?: string;
+  billId: string;
   /**
    * Bill type
    *
    */
-  type?: CloudProjectBillTypeEnum;
+  type: CloudProjectBillTypeEnum;
 }
 /**
  * Possible values for bill type
@@ -2436,32 +2436,32 @@ export interface CloudProjectCurrentUsage {
    * Instances usage
    *
    */
-  instances?: CloudProjectInstancesUsage;
+  instances: CloudProjectInstancesUsage;
   /**
    * Snapshots usage
    *
    */
-  snapshots?: CloudProjectSnapshotsUsage;
+  snapshots: CloudProjectSnapshotsUsage;
   /**
    * Storage usage
    *
    */
-  storage?: CloudProjectStorageUsage;
+  storage: CloudProjectStorageUsage;
   /**
    * Total cost for the project
    *
    */
-  total?: OrderPrice;
+  total: OrderPrice;
   /**
    * Snapshots usage
    *
    */
-  volumeSnapshots?: CloudProjectSnapshotsUsage;
+  volumeSnapshots: CloudProjectSnapshotsUsage;
   /**
    * Volumes usage
    *
    */
-  volumes?: CloudProjectVolumesUsage;
+  volumes: CloudProjectVolumesUsage;
 }
 /**
  * Instance monthly billing details
@@ -2471,12 +2471,12 @@ export interface CloudProjectInstanceMonthlyBilling {
    * Monthly billing activation date
    *
    */
-  activatedOn?: string;
+  activatedOn: string;
   /**
    * Cost
    *
    */
-  cost?: OrderPrice;
+  cost: OrderPrice;
 }
 /**
  * Instance usage
@@ -2491,7 +2491,7 @@ export interface CloudProjectInstanceUsageDetail {
    * Instance id
    *
    */
-  instanceId?: string;
+  instanceId: string;
   /**
    * Monthly price
    *
@@ -2501,12 +2501,12 @@ export interface CloudProjectInstanceUsageDetail {
    * Is monthly billing enabled
    *
    */
-  monthlyBilling?: boolean;
+  monthlyBilling: boolean;
   /**
    * Reference
    *
    */
-  reference?: string;
+  reference: string;
 }
 /**
  * Instances usage for current month
@@ -2516,12 +2516,12 @@ export interface CloudProjectInstancesUsage {
    * Instance usage details
    *
    */
-  detail?: CloudProjectInstanceUsageDetail[];
+  detail: CloudProjectInstanceUsageDetail[];
   /**
    * Total cost for the instances
    *
    */
-  total?: OrderPrice;
+  total: OrderPrice;
 }
 /**
  * New cloud project
@@ -2556,7 +2556,7 @@ export interface CloudProjectNewProject {
    * Project creation status
    *
    */
-  status?: CloudProjectNewProjectStatusEnum;
+  status: CloudProjectNewProjectStatusEnum;
 }
 /**
  * Credit details
@@ -2571,7 +2571,7 @@ export interface CloudProjectNewProjectCredit {
    * Credit id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Use credits on following products
    *
@@ -2581,7 +2581,7 @@ export interface CloudProjectNewProjectCredit {
    * Total credit
    *
    */
-  total_credit?: OrderPrice;
+  total_credit: OrderPrice;
   /**
    * Credit validity
    *
@@ -2621,12 +2621,12 @@ export interface CloudProjectNewProjectInfoError {
    * Error code
    *
    */
-  code?: CloudProjectNewProjectInfoErrorCodeEnum;
+  code: CloudProjectNewProjectInfoErrorCodeEnum;
   /**
    * Error message
    *
    */
-  message?: string;
+  message: string;
 }
 /**
  * Possible values for error code on project creation
@@ -2640,12 +2640,12 @@ export interface CloudProjectNewProjectInfoVoucher {
    * Credit added thanks to the voucher
    *
    */
-  credit?: OrderPrice;
+  credit: OrderPrice;
   /**
    * A valid registered payment method is required to use the voucher
    *
    */
-  paymentMethodRequired?: boolean;
+  paymentMethodRequired: boolean;
 }
 /**
  * Possible values for new project status
@@ -2663,7 +2663,7 @@ export interface CloudProjectProjectUsage {
    * Current usage details
    *
    */
-  current?: CloudProjectCurrentUsage;
+  current: CloudProjectCurrentUsage;
 }
 /**
  * Snapshot usage
@@ -2673,17 +2673,17 @@ export interface CloudProjectSnapshotUsageDetail {
    * Snapshot price
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Snapshot region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Stored snapshot size in gigabytes
    *
    */
-  storedSize?: ComplexTypeUnitAndValue<number>;
+  storedSize: ComplexTypeUnitAndValue<number>;
 }
 /**
  * Snapshots usage for current month
@@ -2693,12 +2693,12 @@ export interface CloudProjectSnapshotsUsage {
    * Snapshots usage details
    *
    */
-  detail?: CloudProjectSnapshotUsageDetail[];
+  detail: CloudProjectSnapshotUsageDetail[];
   /**
    * Total cost for the snapshots
    *
    */
-  total?: OrderPrice;
+  total: OrderPrice;
 }
 /**
  * Usage information for current month on your project
@@ -2708,17 +2708,17 @@ export interface CloudProjectStorageUsage {
    * Storage bandwidth usage
    *
    */
-  bandwidth?: CloudProjectBandwidthStorageUsage[];
+  bandwidth: CloudProjectBandwidthStorageUsage[];
   /**
    * Cost for your storage in all your containers
    *
    */
-  total?: OrderPrice;
+  total: OrderPrice;
   /**
    * Storage volume usage
    *
    */
-  volume?: CloudProjectStorageVolumeUsage[];
+  volume: CloudProjectStorageVolumeUsage[];
 }
 /**
  * Storage volume used on your project
@@ -2728,17 +2728,17 @@ export interface CloudProjectStorageVolumeUsage {
    * Region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Bytes stored in your containers
    *
    */
-  storedBytes?: number;
+  storedBytes: number;
   /**
    * Cost for your storage bandwidth
    *
    */
-  total?: OrderPrice;
+  total: OrderPrice;
 }
 /**
  * Possible values for volume type
@@ -2752,22 +2752,22 @@ export interface CloudProjectVolumeUsageDetail {
    * Volume price
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
   /**
    * Volume capacity in gigabytes
    *
    */
-  volumeCapacity?: ComplexTypeUnitAndValue<number>;
+  volumeCapacity: ComplexTypeUnitAndValue<number>;
   /**
    * Volume id
    *
    */
-  volumeId?: string;
+  volumeId: string;
   /**
    * Volume type
    *
    */
-  volumeType?: CloudProjectVolumeType;
+  volumeType: CloudProjectVolumeType;
 }
 /**
  * Volumes usage for current month
@@ -2777,12 +2777,12 @@ export interface CloudProjectVolumesUsage {
    * Volume usage details
    *
    */
-  detail?: CloudProjectVolumeUsageDetail[];
+  detail: CloudProjectVolumeUsageDetail[];
   /**
    * Total cost for the volumes
    *
    */
-  total?: OrderPrice;
+  total: OrderPrice;
 }
 /**
  * InstanceQuotas
@@ -2792,30 +2792,30 @@ export interface CloudQuotaInstanceQuotas {
    * Maximum total cores allowed in your project
    *
    */
-  maxCores?: number;
+  maxCores: number;
   /**
    * Maximum total cores allowed in your project
    *
    */
-  maxInstances?: number;
+  maxInstances: number;
   /**
    */
-  maxRam?: number;
+  maxRam: number;
   /**
    * Current used cores number
    *
    */
-  usedCores?: number;
+  usedCores: number;
   /**
    * Current used instances
    *
    */
-  usedInstances?: number;
+  usedInstances: number;
   /**
    * Current used ram
    *
    */
-  usedRAM?: number;
+  usedRAM: number;
 }
 /**
  * KeypairQuotas
@@ -2825,7 +2825,7 @@ export interface CloudQuotaKeypairQuotas {
    * Maximum keypairs count allowed in your project
    *
    */
-  maxCount?: number;
+  maxCount: number;
 }
 /**
  * Quotas
@@ -2835,22 +2835,22 @@ export interface CloudQuotaQuotas {
    * Quotas on instances
    *
    */
-  instance?: CloudQuotaInstanceQuotas;
+  instance: CloudQuotaInstanceQuotas;
   /**
    * Quotas on keypairs
    *
    */
-  keypair?: CloudQuotaKeypairQuotas;
+  keypair: CloudQuotaKeypairQuotas;
   /**
    * Region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Quotas on volumes
    *
    */
-  volume?: CloudQuotaVolumeQuotas;
+  volume: CloudQuotaVolumeQuotas;
 }
 /**
  * VolumeQuotas
@@ -2860,17 +2860,17 @@ export interface CloudQuotaVolumeQuotas {
    * Maximum total volume capacity allowed in your project
    *
    */
-  maxGigabytes?: number;
+  maxGigabytes: number;
   /**
    * Current used volume gigabytes
    *
    */
-  usedGigabytes?: number;
+  usedGigabytes: number;
   /**
    * Current volumes count
    *
    */
-  volumeCount?: number;
+  volumeCount: number;
 }
 /**
  * Role permissions
@@ -2880,12 +2880,12 @@ export interface CloudRolePermission {
    * Permission label
    *
    */
-  label?: string;
+  label: string;
   /**
    * Roles having this permission
    *
    */
-  roles?: string[];
+  roles: string[];
 }
 /**
  * Role
@@ -2895,22 +2895,22 @@ export interface CloudRoleRole {
    * Role Description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Role id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Role Name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Permissions granted by this role
    *
    */
-  permissions?: string[];
+  permissions: string[];
 }
 /**
  * OpenStack role
@@ -2920,12 +2920,12 @@ export interface CloudRoleRoles {
    * OpenStack roles
    *
    */
-  roles?: CloudRoleRole[];
+  roles: CloudRoleRole[];
   /**
    * OpenStack services
    *
    */
-  services?: CloudRoleService[];
+  services: CloudRoleService[];
 }
 /**
  * OpenStack service
@@ -2935,12 +2935,12 @@ export interface CloudRoleService {
    * Name of the service
    *
    */
-  name?: string;
+  name: string;
   /**
    * List of permissions
    *
    */
-  permissions?: CloudRolePermission[];
+  permissions: CloudRolePermission[];
 }
 /**
  * SshKey
@@ -2950,22 +2950,22 @@ export interface CloudSshkeySshKey {
    * SSH key id
    *
    */
-  id?: string;
+  id: string;
   /**
    * SSH key name
    *
    */
-  name?: string;
+  name: string;
   /**
    * SSH public key
    *
    */
-  publicKey?: string;
+  publicKey: string;
   /**
    * SSH key regions
    *
    */
-  regions?: string[];
+  regions: string[];
 }
 /**
  * SshKeyDetail
@@ -2975,27 +2975,27 @@ export interface CloudSshkeySshKeyDetail {
    * SSH key fingerprint
    *
    */
-  fingerPrint?: string;
+  fingerPrint: string;
   /**
    * SSH key id
    *
    */
-  id?: string;
+  id: string;
   /**
    * SSH key name
    *
    */
-  name?: string;
+  name: string;
   /**
    * SSH public key
    *
    */
-  publicKey?: string;
+  publicKey: string;
   /**
    * SSH key regions
    *
    */
-  regions?: string[];
+  regions: string[];
 }
 /**
  * Content
@@ -3005,12 +3005,12 @@ export interface CloudStackContent {
    * Content
    *
    */
-  content?: string;
+  content: string;
   /**
    * Type of the content
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * InstructionGuide
@@ -3020,22 +3020,22 @@ export interface CloudStackInstructionGuide {
    * Guide introduction content
    *
    */
-  content?: CloudStackContent[];
+  content: CloudStackContent[];
   /**
    * Guide language
    *
    */
-  language?: string;
+  language: string;
   /**
    * Sections of the guide
    *
    */
-  sections?: CloudStackSection[];
+  sections: CloudStackSection[];
   /**
    * Guide title
    *
    */
-  title?: string;
+  title: string;
 }
 /**
  * Section
@@ -3045,17 +3045,17 @@ export interface CloudStackSection {
    * Content of the guide section
    *
    */
-  content?: CloudStackContent[];
+  content: CloudStackContent[];
   /**
    * Steps to follow
    *
    */
-  steps?: CloudStackStep[];
+  steps: CloudStackStep[];
   /**
    * Title of the guide section
    *
    */
-  title?: string;
+  title: string;
 }
 /**
  * Stack
@@ -3065,37 +3065,37 @@ export interface CloudStackStack {
    * Stack last commit
    *
    */
-  commit?: string;
+  commit: string;
   /**
    * Stack description
    *
    */
-  description?: string;
+  description: string;
   /**
    * GIT repository
    *
    */
-  gitRepository?: string;
+  gitRepository: string;
   /**
    * Instructions to start the stack
    *
    */
-  instructions?: CloudStackInstructionGuide[];
+  instructions: CloudStackInstructionGuide[];
   /**
    * Stack name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Stack release tag
    *
    */
-  release?: string;
+  release: string;
   /**
    * Stack uuid
    *
    */
-  uuid?: string;
+  uuid: string;
 }
 /**
  * Step
@@ -3105,12 +3105,12 @@ export interface CloudStackStep {
    * Content of the step
    *
    */
-  content?: CloudStackContent[];
+  content: CloudStackContent[];
   /**
    * Title of the step
    *
    */
-  title?: string;
+  title: string;
 }
 /**
  * Container
@@ -3120,25 +3120,25 @@ export interface CloudStorageContainer {
    * Storage id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Storage name
    *
    */
-  name?: string;
+  name: string;
   /**
    */
-  region?: string;
+  region: string;
   /**
    * Total bytes stored
    *
    */
-  storedBytes?: number;
+  storedBytes: number;
   /**
    * Total objects stored
    *
    */
-  storedObjects?: number;
+  storedObjects: number;
 }
 /**
  * ContainerAccess
@@ -3148,12 +3148,12 @@ export interface CloudStorageContainerAccess {
    * Storage access endpoints
    *
    */
-  endpoints?: CloudStorageEndpoint[];
+  endpoints: CloudStorageEndpoint[];
   /**
    * Storage access token
    *
    */
-  token?: string;
+  token: string;
 }
 /**
  * ContainerDetail
@@ -3163,52 +3163,52 @@ export interface CloudStorageContainerDetail {
    * Whether this is an archive container or not
    *
    */
-  archive?: boolean;
+  archive: boolean;
   /**
    * Container type
    *
    */
-  containerType?: CloudStorageTypeEnum;
+  containerType: CloudStorageTypeEnum;
   /**
    * Origins allowed to make Cross Origin Requests
    *
    */
-  cors?: string[];
+  cors: string[];
   /**
    * Container name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Objects stored in container
    *
    */
-  objects?: CloudStorageContainerObject[];
+  objects: CloudStorageContainerObject[];
   /**
    * Public container (DEPRECATED: see containerType)
    *
    */
-  public?: boolean;
+  public: boolean;
   /**
    * Container region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Container static URL
    *
    */
-  staticUrl?: string;
+  staticUrl: string;
   /**
    * Total bytes stored
    *
    */
-  storedBytes?: number;
+  storedBytes: number;
   /**
    * Total objects stored
    *
    */
-  storedObjects?: number;
+  storedObjects: number;
 }
 /**
  * ContainerObject
@@ -3218,32 +3218,32 @@ export interface CloudStorageContainerObject {
    * Object content type
    *
    */
-  contentType?: string;
+  contentType: string;
   /**
    * Last modification date
    *
    */
-  lastModified?: string;
+  lastModified: string;
   /**
    * Object name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Object retrieval delay (when unsealing)
    *
    */
-  retrievalDelay?: number;
+  retrievalDelay: number;
   /**
    * Object retrieval state
    *
    */
-  retrievalState?: CloudStorageRetrievalStateEnum;
+  retrievalState: CloudStorageRetrievalStateEnum;
   /**
    * Object size
    *
    */
-  size?: number;
+  size: number;
 }
 /**
  * ContainerObjectTempURL
@@ -3253,12 +3253,12 @@ export interface CloudStorageContainerObjectTempURL {
    * Temporary URL expiration date
    *
    */
-  expirationDate?: string;
+  expirationDate: string;
   /**
    * Temporary URL to get object
    *
    */
-  getURL?: string;
+  getURL: string;
 }
 /**
  * Endpoint
@@ -3268,12 +3268,12 @@ export interface CloudStorageEndpoint {
    * Endpoint region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Endpoint URL
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * RetrievalStateEnum
@@ -3299,12 +3299,12 @@ export interface CloudUsagePeriod {
    * Usage from
    *
    */
-  from?: string;
+  from: string;
   /**
    * Usage to
    *
    */
-  to?: string;
+  to: string;
 }
 /**
  * UsageBill
@@ -3314,27 +3314,27 @@ export interface CloudUsageUsageBill {
    * ID of the bill
    *
    */
-  bill_id?: string;
+  bill_id: string;
   /**
    * Amount of credits used in this bill (not necessarily on part)
    *
    */
-  credit?: number;
+  credit: number;
   /**
    * Amount of the bill that accounts for services for the usage period, credits not taken into account
    *
    */
-  part?: number;
+  part: number;
   /**
    * Payment type
    *
    */
-  payment_type?: CloudUsagePaymentTypeEnum;
+  payment_type: CloudUsagePaymentTypeEnum;
   /**
    * Total amount of the bill, credits not taken into account
    *
    */
-  total?: number;
+  total: number;
 }
 /**
  * UsageCurrent
@@ -3349,7 +3349,7 @@ export interface CloudUsageUsageCurrent {
    * Entry last update
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Monthly usage
    *
@@ -3359,7 +3359,7 @@ export interface CloudUsageUsageCurrent {
    * Usage dates (from/to)
    *
    */
-  period?: CloudUsagePeriod;
+  period: CloudUsagePeriod;
 }
 /**
  * UsageCurrentBills
@@ -3369,7 +3369,7 @@ export interface CloudUsageUsageCurrentBills {
    * Bills related to the current usage
    *
    */
-  bills?: CloudUsageUsageBill[];
+  bills: CloudUsageUsageBill[];
 }
 /**
  * UsageForecast
@@ -3384,7 +3384,7 @@ export interface CloudUsageUsageForecast {
    * Entry last update
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Monthly forecast
    *
@@ -3394,7 +3394,7 @@ export interface CloudUsageUsageForecast {
    * Forecast dates (from/to)
    *
    */
-  period?: CloudUsagePeriod;
+  period: CloudUsagePeriod;
   /**
    * Usable credit to pay next bill
    *
@@ -3409,17 +3409,17 @@ export interface CloudUsageUsageHistory {
    * Usage id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Entry last update
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Usage dates (from/to)
    *
    */
-  period?: CloudUsagePeriod;
+  period: CloudUsagePeriod;
 }
 /**
  * UsageHistoryDetail
@@ -3434,12 +3434,12 @@ export interface CloudUsageUsageHistoryDetail {
    * Usage id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Entry last update
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
   /**
    * Monthly usage
    *
@@ -3449,7 +3449,7 @@ export interface CloudUsageUsageHistoryDetail {
    * Usage dates (from/to)
    *
    */
-  period?: CloudUsagePeriod;
+  period: CloudUsagePeriod;
 }
 /**
  * UsageHistoryDetailBills
@@ -3459,7 +3459,7 @@ export interface CloudUsageUsageHistoryDetailBills {
    * Bills related to the usage
    *
    */
-  bills?: CloudUsageUsageBill[];
+  bills: CloudUsageUsageBill[];
 }
 /**
  * Openrc
@@ -3469,7 +3469,7 @@ export interface CloudUserOpenrc {
    * openrc file
    *
    */
-  content?: string;
+  content: string;
 }
 /**
  * OpenrcVersionEnum
@@ -3483,7 +3483,7 @@ export interface CloudUserRclone {
    * rclone configuration file
    *
    */
-  content?: string;
+  content: string;
 }
 /**
  * RoleEnum
@@ -3497,27 +3497,27 @@ export interface CloudUserUser {
    * User creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * User description
    *
    */
-  description?: string;
+  description: string;
   /**
    * User id
    *
    */
-  id?: number;
+  id: number;
   /**
    * User status
    *
    */
-  status?: CloudUserUserStatusEnum;
+  status: CloudUserUserStatusEnum;
   /**
    * Username
    *
    */
-  username?: string;
+  username: string;
 }
 /**
  * UserDetail
@@ -3527,32 +3527,32 @@ export interface CloudUserUserDetail {
    * User creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * User description
    *
    */
-  description?: string;
+  description: string;
   /**
    * User id
    *
    */
-  id?: number;
+  id: number;
   /**
    * User password
    *
    */
-  password?: string;
+  password: string;
   /**
    * User status
    *
    */
-  status?: CloudUserUserStatusEnum;
+  status: CloudUserUserStatusEnum;
   /**
    * Username
    *
    */
-  username?: string;
+  username: string;
 }
 /**
  * UserStatusEnum
@@ -3566,22 +3566,22 @@ export interface CloudVolumeSnapshot {
    * Snapshot creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Snapshot description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Snapshot id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Snapshot name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Order plan code
    *
@@ -3591,22 +3591,22 @@ export interface CloudVolumeSnapshot {
    * Snapshot region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Snapshot size
    *
    */
-  size?: number;
+  size: number;
   /**
    * Snapshot status
    *
    */
-  status?: CloudVolumeSnapshotStatusEnum;
+  status: CloudVolumeSnapshotStatusEnum;
   /**
    * Volume source id
    *
    */
-  volumeId?: string;
+  volumeId: string;
 }
 /**
  * SnapshotStatusEnum
@@ -3620,32 +3620,32 @@ export interface CloudVolumeVolume {
    * Volume attached to instances id
    *
    */
-  attachedTo?: string[];
+  attachedTo: string[];
   /**
    * Volume bootable
    *
    */
-  bootable?: boolean;
+  bootable: boolean;
   /**
    * Volume creation date
    *
    */
-  creationDate?: string;
+  creationDate: string;
   /**
    * Volume description
    *
    */
-  description?: string;
+  description: string;
   /**
    * Volume id
    *
    */
-  id?: string;
+  id: string;
   /**
    * Volume name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Order plan code
    *
@@ -3655,22 +3655,22 @@ export interface CloudVolumeVolume {
    * Volume region
    *
    */
-  region?: string;
+  region: string;
   /**
    * Volume size (in GB)
    *
    */
-  size?: number;
+  size: number;
   /**
    * Volume status
    *
    */
-  status?: string;
+  status: string;
   /**
    * Volume type
    *
    */
-  type?: CloudVolumeVolumeTypeEnum;
+  type: CloudVolumeVolumeTypeEnum;
 }
 /**
  * VolumeTypeEnum
@@ -3682,10 +3682,10 @@ export type CloudVolumeVolumeTypeEnum = 'classic' | 'high-speed';
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * OVH subsidiaries
@@ -3701,13 +3701,13 @@ export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL
 export interface OrderPrice {
   /**
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  currencyCode: OrderCurrencyCodeEnum;
   /**
    */
-  text?: string;
+  text: string;
   /**
    */
-  value?: number;
+  value: number;
 }
 /**
  * Cloud Archives Account
@@ -3717,22 +3717,22 @@ export interface PcaAccount {
    * account domain
    *
    */
-  domain?: string;
+  domain: string;
   /**
    * host where to upload files to
    *
    */
-  host?: string;
+  host: string;
   /**
    * login for cloud archives
    *
    */
-  login?: string;
+  login: string;
   /**
    * encrypted password
    *
    */
-  password?: string;
+  password: string;
   /**
    * ssh key to be used for upload and download
    *
@@ -3747,32 +3747,32 @@ export interface PcaBilling {
    * Billing action is billed.
    *
    */
-  billed?: boolean;
+  billed: boolean;
   /**
    * Date and time the operation took place
    *
    */
-  date?: string;
+  date: string;
   /**
    * Billing id
    *
    */
-  id?: number;
+  id: number;
   /**
    * Quantity of bytes for operation
    *
    */
-  quantity?: number;
+  quantity: number;
   /**
    * Billing reference name
    *
    */
-  reference?: CloudPcaBillingRefEnum;
+  reference: CloudPcaBillingRefEnum;
   /**
    * Total usage after operation
    *
    */
-  total?: number;
+  total: number;
 }
 /**
  * cloud archives files
@@ -3782,42 +3782,42 @@ export interface PcaFile {
    * File MD5 hash
    *
    */
-  MD5?: string;
+  MD5: string;
   /**
    * File SHA1 hash
    *
    */
-  SHA1?: string;
+  SHA1: string;
   /**
    * File SHA256 hash
    *
    */
-  SHA256?: string;
+  SHA256: string;
   /**
    * File id
    *
    */
-  id?: string;
+  id: string;
   /**
    * File name
    *
    */
-  name?: string;
+  name: string;
   /**
    * File size, in bytes
    *
    */
-  size?: number;
+  size: number;
   /**
    * File state
    *
    */
-  state?: string;
+  state: string;
   /**
    * File type
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * cloud archives sessions
@@ -3832,22 +3832,22 @@ export interface PcaSession {
    * Session ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * This is your login
    *
    */
-  login?: string;
+  login: string;
   /**
    * Session friendly name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Session size, in bytes
    *
    */
-  size?: number;
+  size: number;
   /**
    * IP session was made from
    *
@@ -3857,12 +3857,12 @@ export interface PcaSession {
    * Session start date
    *
    */
-  startDate?: string;
+  startDate: string;
   /**
    * Session state
    *
    */
-  state?: CloudPcaSessionStateEnum;
+  state: CloudPcaSessionStateEnum;
 }
 /**
  * cloud archives tasks
@@ -3877,12 +3877,12 @@ export interface PcaTask {
    * Task function
    *
    */
-  function?: CloudPcaFunctionTypeEnum;
+  function: CloudPcaFunctionTypeEnum;
   /**
    * Task ID
    *
    */
-  id?: string;
+  id: string;
   /**
    * Host used for task
    *
@@ -3892,17 +3892,17 @@ export interface PcaTask {
    * Task login
    *
    */
-  login?: string;
+  login: string;
   /**
    * Task status
    *
    */
-  status?: CloudPcaTaskStateEnum;
+  status: CloudPcaTaskStateEnum;
   /**
    * Task date
    *
    */
-  todoDate?: string;
+  todoDate: string;
 }
 /**
  * Map a possible renew for a specific service
@@ -3912,17 +3912,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -3958,28 +3958,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -3992,13 +3992,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsCloudGET = '/cloud' | 
 '/cloud/createProjectInfo' | 

@@ -9,13 +9,13 @@ export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL
 export interface OrderPrice {
   /**
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  currencyCode: OrderCurrencyCodeEnum;
   /**
    */
-  text?: string;
+  text: string;
   /**
    */
-  value?: number;
+  value: number;
 }
 /**
  * Status of a task.
@@ -29,12 +29,12 @@ export interface OverTheBoxAvailableDeviceAction {
    * Description of the action
    *
    */
-  description?: string;
+  description: string;
   /**
    * Name of the action
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Migration offer
@@ -44,32 +44,32 @@ export interface OverTheBoxAvailableMigrationOffer {
    * Monthly price of the current offer
    *
    */
-  currentOfferPrice?: OrderPrice;
+  currentOfferPrice: OrderPrice;
   /**
    * Description of the offer
    *
    */
-  description?: string;
+  description: string;
   /**
    * Number of months of engagement
    *
    */
-  engagementMonths?: number;
+  engagementMonths: number;
   /**
    * Specify if a hardware is available
    *
    */
-  hardwareAvailable?: boolean;
+  hardwareAvailable: boolean;
   /**
    * Name of the offer
    *
    */
-  offer?: string;
+  offer: string;
   /**
    * Monthly price of the new offer
    *
    */
-  price?: OrderPrice;
+  price: OrderPrice;
 }
 /**
  * Backup
@@ -79,12 +79,12 @@ export interface OverTheBoxBackup {
    * The id of the backup
    *
    */
-  backupId?: string;
+  backupId: string;
   /**
    * Date of the creation of the backup
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * The id of the device action that triggered the backup
    *
@@ -99,37 +99,37 @@ export interface OverTheBoxDevice {
    * Whether or not this device is associated to a service
    *
    */
-  activated?: boolean;
+  activated: boolean;
   /**
    * The id of the device
    *
    */
-  deviceId?: string;
+  deviceId: string;
   /**
    * Last time the device has been seen on the provisionning servers
    *
    */
-  lastSeen?: string;
+  lastSeen: string;
   /**
    * Network interfaces of the device
    *
    */
-  networkInterfaces?: OverTheBoxDeviceInterface[];
+  networkInterfaces: OverTheBoxDeviceInterface[];
   /**
    * The public IP of the device
    *
    */
-  publicIp?: string;
+  publicIp: string;
   /**
    * System version of the device
    *
    */
-  systemVersion?: string;
+  systemVersion: string;
   /**
    * Version of the device
    *
    */
-  version?: string;
+  version: string;
 }
 /**
  * Device action
@@ -139,37 +139,37 @@ export interface OverTheBoxDeviceAction {
    * The id of the action
    *
    */
-  actionId?: string;
+  actionId: string;
   /**
    * Date of creation of the action
    *
    */
-  createdAt?: string;
+  createdAt: string;
   /**
    * The details of the action
    *
    */
-  details?: string;
+  details: string;
   /**
    * The name of the action
    *
    */
-  name?: string;
+  name: string;
   /**
    * The status of the action
    *
    */
-  status?: OverTheBoxActionStatusEnum;
+  status: OverTheBoxActionStatusEnum;
   /**
    * Date of execution of the action
    *
    */
-  todoDate?: string;
+  todoDate: string;
   /**
    * Last time the action was updated
    *
    */
-  updatedAt?: string;
+  updatedAt: string;
 }
 /**
  * A device for registration
@@ -179,15 +179,15 @@ export interface OverTheBoxDeviceForRegistration {
    * Whether or not this device is actived
    *
    */
-  activated?: boolean;
+  activated: boolean;
   /**
    */
-  deviceId?: string;
+  deviceId: string;
   /**
    * The last time this device was seen on the provisionning servers
    *
    */
-  lastSeen?: string;
+  lastSeen: string;
 }
 /**
  * Infos about a network interface
@@ -217,12 +217,12 @@ export interface OverTheBoxDeviceInterface {
    * Status of MPTCP on this interface
    *
    */
-  multipathStatus?: OverTheBoxMultipathStatusEnum;
+  multipathStatus: OverTheBoxMultipathStatusEnum;
   /**
    * Name of the interface
    *
    */
-  name?: string;
+  name: string;
   /**
    * Netmask of the interface
    *
@@ -242,17 +242,17 @@ export interface OverTheBoxGraphEndpoint {
    * The OpenTSDB host
    *
    */
-  host?: string;
+  host: string;
   /**
    * A read-only token
    *
    */
-  readToken?: string;
+  readToken: string;
   /**
    * The read-only token ID
    *
    */
-  readTokenID?: string;
+  readTokenID: string;
 }
 /**
  * Status of a MPTCP Interface.
@@ -266,12 +266,12 @@ export interface OverTheBoxRemoteAccess {
    * If the remote access was accepted by the remote user
    *
    */
-  accepted?: boolean;
+  accepted: boolean;
   /**
    * The date of the remote access demand
    *
    */
-  askDate?: string;
+  askDate: string;
   /**
    * The user that authorized the remote access
    *
@@ -281,32 +281,32 @@ export interface OverTheBoxRemoteAccess {
    * All the infos needed to connect yourself to your OTB
    *
    */
-  connectionInfos?: OverTheBoxRemoteAccessConnectionInfos;
+  connectionInfos: OverTheBoxRemoteAccessConnectionInfos;
   /**
    * When the remote access will be automatically deleted
    *
    */
-  expirationDate?: string;
+  expirationDate: string;
   /**
    * The device's port which will be exposed
    *
    */
-  exposedPort?: number;
+  exposedPort: number;
   /**
    * The id of the remote access
    *
    */
-  remoteAccessId?: string;
+  remoteAccessId: string;
   /**
    * Infos about the remote user
    *
    */
-  remoteUserInfos?: OverTheBoxRemoteAccessUserInfos;
+  remoteUserInfos: OverTheBoxRemoteAccessUserInfos;
   /**
    * Status of the remote access
    *
    */
-  status?: OverTheBoxRemoteAccessStatusEnum;
+  status: OverTheBoxRemoteAccessStatusEnum;
 }
 /**
  * All the infos needed to connect yourself to your OTB
@@ -335,7 +335,7 @@ export interface OverTheBoxRemoteAccessUserInfos {
    * IP from which the remote access will be allowed
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * The public key authorized on the device (for SSH purpose)
    *
@@ -345,7 +345,7 @@ export interface OverTheBoxRemoteAccessUserInfos {
    * The user that will access the device remotely
    *
    */
-  user?: string;
+  user: string;
 }
 /**
  * Service
@@ -355,7 +355,7 @@ export interface OverTheBoxService {
    * If the socks proxy is enabled
    *
    */
-  SOCKSProxyEnabled?: boolean;
+  SOCKSProxyEnabled: boolean;
   /**
    * Editable field for customer
    *
@@ -370,22 +370,22 @@ export interface OverTheBoxService {
    * Release channel of the service
    *
    */
-  releaseChannel?: string;
+  releaseChannel: string;
   /**
    * The name of the service
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * The status of the service
    *
    */
-  status?: OverTheBoxServiceStatusEnum;
+  status: OverTheBoxServiceStatusEnum;
   /**
    * The tunnel mode of the service
    *
    */
-  tunnelMode?: OverTheBoxTunnelModeEnum;
+  tunnelMode: OverTheBoxTunnelModeEnum;
 }
 /**
  * Status of the service.
@@ -399,17 +399,17 @@ export interface OverTheBoxTask {
    * The name of the task
    *
    */
-  name?: string;
+  name: string;
   /**
    * The status of the task
    *
    */
-  status?: OverTheBoxTaskStatusEnum;
+  status: OverTheBoxTaskStatusEnum;
   /**
    * The id of the task
    *
    */
-  taskId?: string;
+  taskId: string;
 }
 /**
  * Status of a task.
@@ -423,12 +423,12 @@ export interface OverTheBoxTemporaryLogsLink {
    * Temporary url expiration date
    *
    */
-  expirationDate?: string;
+  expirationDate: string;
   /**
    * Temporary url
    *
    */
-  url?: string;
+  url: string;
 }
 /**
  * Tunnel mode of the service.
@@ -446,17 +446,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -484,28 +484,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -518,13 +518,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 type PathsOverTheBoxGET = '/overTheBox' | 
 '/overTheBox/availableOffers' | 

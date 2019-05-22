@@ -5,10 +5,10 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 export interface ComplexTypeUnitAndValue<T> {
   /**
    */
-  unit?: string;
+  unit: string;
   /**
    */
-  value?: T;
+  value: T;
 }
 /**
  * ISO country codes
@@ -25,13 +25,13 @@ export interface DedicatedCloudAllowedNetwork {
    * Network name, e.g. 123.100.200.0/32
    *
    */
-  network?: string;
+  network: string;
   /**
    */
-  networkAccessId?: number;
+  networkAccessId: number;
   /**
    */
-  state?: DedicatedCloudAllowedNetworkStateEnum;
+  state: DedicatedCloudAllowedNetworkStateEnum;
 }
 /**
  * All states an Allowed Network can be in
@@ -95,7 +95,7 @@ export interface DedicatedCloudBackup {
    * This Backup current state
    *
    */
-  state?: 'disabled' | 'disabling' | 'enabled' | 'enabling' | 'error' | 'removing';
+  state: 'disabled' | 'disabling' | 'enabled' | 'enabling' | 'error' | 'removing';
   /**
    * The moref of the backup server virtual machine
    *
@@ -135,7 +135,7 @@ export interface DedicatedCloudBackupJob {
    * State of the backup job
    *
    */
-  state?: 'deleting' | 'delivered' | 'disabled' | 'disabling' | 'enabling' | 'error' | 'migrating' | 'pending' | 'removed' | 'stopping' | 'toCreate' | 'toDelete' | 'toDisable' | 'toEnable' | 'toStop' | 'unknown';
+  state: 'deleting' | 'delivered' | 'disabled' | 'disabling' | 'enabling' | 'error' | 'migrating' | 'pending' | 'removed' | 'stopping' | 'toCreate' | 'toDelete' | 'toDisable' | 'toEnable' | 'toStop' | 'unknown';
   /**
    * Name of the virtual Machine
    *
@@ -161,37 +161,37 @@ export interface DedicatedCloudCapabilities {
    * canAddRessource right order status in this Private Cloud
    *
    */
-  addRessourceRightStatus?: DedicatedCloudCapabilitiesFeatureStatusEnum;
+  addRessourceRightStatus: DedicatedCloudCapabilitiesFeatureStatusEnum;
   /**
    * Backup feature order status for this Private Cloud
    *
    */
-  backupStatus?: DedicatedCloudCapabilitiesFeatureStatusEnum;
+  backupStatus: DedicatedCloudCapabilitiesFeatureStatusEnum;
   /**
    * if true user can be added in this Private Cloud (with POST /dedicatedCloud/{serviceName}/user
    *
    */
-  canAddUser?: boolean;
+  canAddUser: boolean;
   /**
    * fullAdminRO user right order status in this Private Cloud
    *
    */
-  fullAdminRoUserStatus?: DedicatedCloudCapabilitiesFeatureStatusEnum;
+  fullAdminRoUserStatus: DedicatedCloudCapabilitiesFeatureStatusEnum;
   /**
    * Nexus 1000v feature order status in this Private Cloud ?
    *
    */
-  nexus1000vStatus?: DedicatedCloudCapabilitiesFeatureStatusEnum;
+  nexus1000vStatus: DedicatedCloudCapabilitiesFeatureStatusEnum;
   /**
    * Hypervisor upgrade order status in this Private Cloud (upgrade with POST /dedicatedCloud/{serviceName}/upgradeHypervisor)
    *
    */
-  upgradable?: boolean;
+  upgradable: boolean;
   /**
    * userAccessPolicy property edition status in PUT /dedicatedCloud/{serviceName}
    *
    */
-  userAccessPolicyStatus?: DedicatedCloudCapabilitiesFeatureStatusEnum;
+  userAccessPolicyStatus: DedicatedCloudCapabilitiesFeatureStatusEnum;
 }
 /**
  * The commercial name component
@@ -205,22 +205,22 @@ export interface DedicatedCloudCommercialRange {
    * The hypervisor versions compliant with this commercial Range
    *
    */
-  allowedHypervisorVersions?: DedicatedCloudHypervisorVersionEnum[];
+  allowedHypervisorVersions: DedicatedCloudHypervisorVersionEnum[];
   /**
    * The list of NetworkRoles allowed for one user in this commercial range
    *
    */
-  allowedNetworkRoles?: DedicatedCloudRightNetworkRoleEnum[];
+  allowedNetworkRoles: DedicatedCloudRightNetworkRoleEnum[];
   /**
    * The name of this commercial range
    *
    */
-  commercialRangeName?: string;
+  commercialRangeName: string;
   /**
    * The name of the dedicated Cloud version associated to this commercial range
    *
    */
-  dedicatedCloudVersion?: string;
+  dedicatedCloudVersion: string;
   /**
    * The range of this Datacenter in this Private Cloud version
    *
@@ -235,18 +235,18 @@ export interface DedicatedCloudDatacenter {
    * The commercial name of this Datacenter
    *
    */
-  commercialName?: DedicatedCloudCommercialNameEnum;
+  commercialName: DedicatedCloudCommercialNameEnum;
   /**
    * The commercial range associated to this Datacenter
    *
    */
-  commercialRangeName?: string;
+  commercialRangeName: string;
   /**
    */
-  datacenterId?: number;
+  datacenterId: number;
   /**
    */
-  description?: string;
+  description: string;
   /**
    * Name of the associated Horizon View service if the VDI option is enabled
    *
@@ -256,15 +256,15 @@ export interface DedicatedCloudDatacenter {
    * Check if this datacenter is removable (Need to be Empty)
    *
    */
-  isRemovable?: boolean;
+  isRemovable: boolean;
   /**
    */
-  name?: string;
+  name: string;
   /**
    * Os version installed on your Private Cloud
    *
    */
-  version?: string;
+  version: string;
 }
 /**
  * Private Cloud Active Directory Federation option
@@ -274,7 +274,7 @@ export interface DedicatedCloudFederation {
    * State of the option
    *
    */
-  state?: DedicatedCloudOptionStateEnum;
+  state: DedicatedCloudOptionStateEnum;
 }
 /**
  * Private Cloud federation option access network
@@ -284,42 +284,42 @@ export interface DedicatedCloudFederationAccessNetwork {
    * Id of the Active Directory
    *
    */
-  activeDirectoryId?: number;
+  activeDirectoryId: number;
   /**
    * Active Directory base DN for groups
    *
    */
-  baseDnForGroups?: string;
+  baseDnForGroups: string;
   /**
    * Active Directory base DN for users
    *
    */
-  baseDnForUsers?: string;
+  baseDnForUsers: string;
   /**
    * Description of your option access network
    *
    */
-  description?: string;
+  description: string;
   /**
    * Active Directory NetBIOS name
    *
    */
-  domainAlias?: string;
+  domainAlias: string;
   /**
    * Active Directory domain name
    *
    */
-  domainName?: string;
+  domainName: string;
   /**
    * IP address of the remote service
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * Active Directory LDAP port
    *
    */
-  ldapTcpPort?: number;
+  ldapTcpPort: number;
   /**
    * SSL thumbprint of the remote service
    *
@@ -329,12 +329,12 @@ export interface DedicatedCloudFederationAccessNetwork {
    * State of the option
    *
    */
-  state?: DedicatedCloudOptionAccessNetworkStateEnum;
+  state: DedicatedCloudOptionAccessNetworkStateEnum;
   /**
    * Active Directory username
    *
    */
-  username?: string;
+  username: string;
 }
 /**
  * Private Cloud Filer
@@ -344,32 +344,32 @@ export interface DedicatedCloudFiler {
    * Billing type of this filer
    *
    */
-  billingType?: DedicatedCloudRessourcesBillingTypeEnum;
+  billingType: DedicatedCloudRessourcesBillingTypeEnum;
   /**
    * Filer Id
    *
    */
-  filerId?: number;
+  filerId: number;
   /**
    * Human-Readable profile name
    *
    */
-  fullProfile?: string;
+  fullProfile: string;
   /**
    * Filer name
    *
    */
-  name?: string;
+  name: string;
   /**
    * Commercial profile name
    *
    */
-  profile?: string;
+  profile: string;
   /**
    * Filer capacity
    *
    */
-  size?: ComplexTypeUnitAndValue<number>;
+  size: ComplexTypeUnitAndValue<number>;
   /**
    * Available space of this datastore, in GB
    *
@@ -389,7 +389,7 @@ export interface DedicatedCloudFiler {
    * State of the filer
    *
    */
-  state?: DedicatedCloudFilerStateEnum;
+  state: DedicatedCloudFilerStateEnum;
   /**
    * Number of virtual machine on the filer
    *
@@ -413,7 +413,7 @@ export interface DedicatedCloudHcx {
    * State of the option
    *
    */
-  state?: DedicatedCloudOptionStateEnum;
+  state: DedicatedCloudOptionStateEnum;
   /**
    * Version of the VMware Hybrid Cloud Extension
    *
@@ -428,7 +428,7 @@ export interface DedicatedCloudHds {
    * State of the option
    *
    */
-  state?: DedicatedCloudOptionStateEnum;
+  state: DedicatedCloudOptionStateEnum;
 }
 /**
  * The Private Cloud Hipaa option
@@ -438,7 +438,7 @@ export interface DedicatedCloudHipaa {
    * State of the option
    *
    */
-  state?: DedicatedCloudOptionStateEnum;
+  state: DedicatedCloudOptionStateEnum;
 }
 /**
  * Private Cloud Host
@@ -448,7 +448,7 @@ export interface DedicatedCloudHost {
    * Billing type of the host
    *
    */
-  billingType?: DedicatedCloudRessourcesBillingTypeEnum;
+  billingType: DedicatedCloudRessourcesBillingTypeEnum;
   /**
    * Cluster of the host
    *
@@ -463,7 +463,7 @@ export interface DedicatedCloudHost {
    * CPU total frenquency
    *
    */
-  cpu?: ComplexTypeUnitAndValue<number>;
+  cpu: ComplexTypeUnitAndValue<number>;
   /**
    * The maximum speed of the cpu, in Mhz
    *
@@ -488,7 +488,7 @@ export interface DedicatedCloudHost {
    * Id of the host
    *
    */
-  hostId?: number;
+  hostId: number;
   /**
    * Host is in maintenance mode
    *
@@ -503,7 +503,7 @@ export interface DedicatedCloudHost {
    * Name of the host (IP address)
    *
    */
-  name?: string;
+  name: string;
   /**
    * Id of the parent host (if any)
    *
@@ -513,27 +513,27 @@ export interface DedicatedCloudHost {
    * Host profile in a commercial range
    *
    */
-  profile?: string;
+  profile: string;
   /**
    * Host profile code
    *
    */
-  profileCode?: string;
+  profileCode: string;
   /**
    * Rack of the host
    *
    */
-  rack?: string;
+  rack: string;
   /**
    * Total RAM quantity
    *
    */
-  ram?: ComplexTypeUnitAndValue<number>;
+  ram: ComplexTypeUnitAndValue<number>;
   /**
    * State of the host
    *
    */
-  state?: DedicatedCloudHostStateEnum;
+  state: DedicatedCloudHostStateEnum;
   /**
    * Host uptime in second
    *
@@ -558,12 +558,12 @@ export interface DedicatedCloudHostProfile {
    * Id of Host profile
    *
    */
-  id?: number;
+  id: number;
   /**
    * Name of Host profile
    *
    */
-  name?: string;
+  name: string;
 }
 /**
  * Hypervisor and their availability
@@ -573,12 +573,12 @@ export interface DedicatedCloudHostStockHypervisor {
    * Number of available hypervisors
    *
    */
-  value?: number;
+  value: number;
   /**
    * Version of hypervisor
    *
    */
-  version?: string;
+  version: string;
 }
 /**
  * Processor generation and their availability
@@ -588,12 +588,12 @@ export interface DedicatedCloudHostStockProcGen {
    * CPU generation
    *
    */
-  cpuGeneration?: string;
+  cpuGeneration: string;
   /**
    * Number of available hosts
    *
    */
-  value?: DedicatedCloudHostStockHypervisor[];
+  value: DedicatedCloudHostStockHypervisor[];
 }
 /**
  * HostProfiles and their availability
@@ -603,22 +603,22 @@ export interface DedicatedCloudHostStockProfile {
    * Id of host profile
    *
    */
-  id?: number;
+  id: number;
   /**
    * Name of host profile
    *
    */
-  name?: string;
+  name: string;
   /**
    * Reference of host profile
    *
    */
-  ref?: string;
+  ref: string;
   /**
    * Available hosts
    *
    */
-  value?: DedicatedCloudHostStockProcGen[];
+  value: DedicatedCloudHostStockProcGen[];
 }
 /**
  * The Hypervisor version of this Dedicated Cloud component
@@ -630,30 +630,30 @@ export type DedicatedCloudHypervisorVersionEnum = '4.1' | '5.0' | '5.1' | '5.5' 
 export interface DedicatedCloudIp {
   /**
    */
-  country?: string;
+  country: string;
   /**
    */
-  description?: string;
+  description: string;
   /**
    * IP ex: 213.186.33.34/24
    *
    */
-  network?: string;
+  network: string;
   /**
    * Network name
    *
    */
-  networkName?: string;
+  networkName: string;
   /**
    * The Regional Internet Registry of this Ip Block
    *
    */
-  register?: DedicatedCloudBlockRegisterEnum;
+  register: DedicatedCloudBlockRegisterEnum;
   /**
    * Vlan where this network is routed
    *
    */
-  vlanNumber?: number;
+  vlanNumber: number;
 }
 /**
  * All countries in which an Ip Block may be ordered
@@ -667,7 +667,7 @@ export interface DedicatedCloudIpDetails {
    * IP address
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * IP address reverse record
    *
@@ -677,7 +677,7 @@ export interface DedicatedCloudIpDetails {
    * IP address usage
    *
    */
-  usage?: DedicatedCloudIpUsageEnum;
+  usage: DedicatedCloudIpUsageEnum;
   /**
    * IP address usage details
    *
@@ -696,7 +696,7 @@ export interface DedicatedCloudNsx {
    * State of the option
    *
    */
-  state?: DedicatedCloudOptionStateEnum;
+  state: DedicatedCloudOptionStateEnum;
   /**
    * Url of the NSX API
    *
@@ -711,30 +711,30 @@ export interface DedicatedCloudObjectRight {
    * Name of the object
    *
    */
-  name?: string;
+  name: string;
   /**
    */
-  objectRightId?: number;
+  objectRightId: number;
   /**
    * Right propagation on children objects
    *
    */
-  propagate?: boolean;
+  propagate: boolean;
   /**
    * User access on the VMware object
    *
    */
-  right?: DedicatedCloudRightRightEnum;
+  right: DedicatedCloudRightRightEnum;
   /**
    * Type of the object
    *
    */
-  type?: DedicatedCloudRightUserObjectRightTypeEnum;
+  type: DedicatedCloudRightUserObjectRightTypeEnum;
   /**
    * The VMware MoRef of the object
    *
    */
-  vmwareObjectId?: string;
+  vmwareObjectId: string;
 }
 /**
  * Hypervisors actually available in Private Cloud
@@ -744,17 +744,17 @@ export interface DedicatedCloudOs {
    * Full name of hypervisor
    *
    */
-  fullName?: string;
+  fullName: string;
   /**
    * Last modification of hypervisor
    *
    */
-  lastModificationDate?: string;
+  lastModificationDate: string;
   /**
    * Short name of hypervisor
    *
    */
-  shortName?: string;
+  shortName: string;
 }
 /**
  * PCC and their availability
@@ -764,17 +764,17 @@ export interface DedicatedCloudPccStockProfile {
    * Available PCC
    *
    */
-  count?: number;
+  count: number;
   /**
    * Kind of hypervisor
    *
    */
-  mode?: string;
+  mode: string;
   /**
    * Hypervisor version
    *
    */
-  realVersion?: string;
+  realVersion: string;
 }
 /**
  * PccZones actually available in Private Cloud
@@ -784,12 +784,12 @@ export interface DedicatedCloudPccZone {
    * Id of pccZone
    *
    */
-  id?: number;
+  id: number;
   /**
    * Name of pccZone
    *
    */
-  pccZone?: string;
+  pccZone: string;
 }
 /**
  * The Private Cloud PCI-DSS option
@@ -799,7 +799,7 @@ export interface DedicatedCloudPciDss {
    * State of the option
    *
    */
-  state?: DedicatedCloudOptionStateEnum;
+  state: DedicatedCloudOptionStateEnum;
 }
 /**
  * Private Cloud Restore Point
@@ -814,17 +814,17 @@ export interface DedicatedCloudRestorePoint {
    * Show if the restore point is corrupted
    *
    */
-  isCorrupted?: boolean;
+  isCorrupted: boolean;
   /**
    * Id of the restore point.
    *
    */
-  restorePointId?: number;
+  restorePointId: number;
   /**
    * Size of the restore point
    *
    */
-  restorePointSize?: ComplexTypeUnitAndValue<number>;
+  restorePointSize: ComplexTypeUnitAndValue<number>;
   /**
    * Type of the restore point
    *
@@ -839,28 +839,28 @@ export interface DedicatedCloudRight {
    * Determine if the user can add ressources in your Private Cloud
    *
    */
-  canAddRessource?: boolean;
+  canAddRessource: boolean;
   /**
    */
-  datacenterId?: number;
+  datacenterId: number;
   /**
    * Determine how this user can interact with the Private Cloud V(x)Lans
    *
    */
-  networkRole?: DedicatedCloudRightNetworkRoleEnum;
+  networkRole: DedicatedCloudRightNetworkRoleEnum;
   /**
    * Determine what kind of access the User will have in this Datacenter of your Private Cloud
    *
    */
-  right?: DedicatedCloudRightRightEnum;
+  right: DedicatedCloudRightRightEnum;
   /**
    */
-  rightId?: number;
+  rightId: number;
   /**
    * Determine how this user can interact with the Private Cloud VM Network
    *
    */
-  vmNetworkRole?: DedicatedCloudRightVmNetworkRoleEnum;
+  vmNetworkRole: DedicatedCloudRightVmNetworkRoleEnum;
 }
 /**
  * The robots used in Private Cloud
@@ -870,7 +870,7 @@ export interface DedicatedCloudRobot {
    * The criticity of this robot
    *
    */
-  criticity?: string;
+  criticity: string;
   /**
    * Description of this robot
    *
@@ -880,17 +880,17 @@ export interface DedicatedCloudRobot {
    * Is this robot enabled
    *
    */
-  enabled?: boolean;
+  enabled: boolean;
   /**
    * The name of this robot
    *
    */
-  name?: string;
+  name: string;
   /**
    * The type of this robot
    *
    */
-  type?: string;
+  type: string;
 }
 /**
  * List of Service Pack compliant with the current Private Cloud
@@ -900,12 +900,12 @@ export interface DedicatedCloudServicePack {
    * Name of the Service Pack
    *
    */
-  name?: string;
+  name: string;
   /**
    * Options available in the Service Pack
    *
    */
-  options?: string[];
+  options: string[];
 }
 /**
  * All states a Dedicated Cloud can be in
@@ -944,7 +944,7 @@ export interface DedicatedCloudTask {
    * Task execution date
    *
    */
-  executionDate?: string;
+  executionDate: string;
   /**
    * filerId of the associated dedicatedCloud.Filer object
    *
@@ -974,7 +974,7 @@ export interface DedicatedCloudTask {
    * Task name
    *
    */
-  name?: string;
+  name: string;
   /**
    * network of the associated dedicatedCloud.Ip object
    *
@@ -999,22 +999,22 @@ export interface DedicatedCloudTask {
    * Current progress
    *
    */
-  progress?: number;
+  progress: number;
   /**
    * Current Task state
    *
    */
-  state?: DedicatedCloudTaskStateEnum;
+  state: DedicatedCloudTaskStateEnum;
   /**
    * Task id
    *
    */
-  taskId?: number;
+  taskId: number;
   /**
    * Task type
    *
    */
-  type?: string;
+  type: string;
   /**
    * userId of the associated dedicatedCloud.User object
    *
@@ -1047,17 +1047,17 @@ export interface DedicatedCloudUser {
    * Defines if the user can manage ip failovers
    *
    */
-  canManageIpFailOvers?: boolean;
+  canManageIpFailOvers: boolean;
   /**
    * Defines if the user can manage the network
    *
    */
-  canManageNetwork?: boolean;
+  canManageNetwork: boolean;
   /**
    * Defines if the user can manage users rights
    *
    */
-  canManageRights?: boolean;
+  canManageRights: boolean;
   /**
    * Email address of the user
    *
@@ -1072,17 +1072,17 @@ export interface DedicatedCloudUser {
    * Defines if the user is a full admin in readonly
    *
    */
-  fullAdminRo?: boolean;
+  fullAdminRo: boolean;
   /**
    * Check if the given Private Cloud user can be enabled or disabled ?
    *
    */
-  isEnableManageable?: boolean;
+  isEnableManageable: boolean;
   /**
    * Defines if the user can confirm security tokens (if a compatible option is enabled)
    *
    */
-  isTokenValidator?: boolean;
+  isTokenValidator: boolean;
   /**
    * Last name of the user
    *
@@ -1092,17 +1092,17 @@ export interface DedicatedCloudUser {
    * Login of the user
    *
    */
-  login?: string;
+  login: string;
   /**
    * Name of the user
    *
    */
-  name?: string;
+  name: string;
   /**
    * Is this User able to access nsx interface (requires NSX option)
    *
    */
-  nsxRight?: boolean;
+  nsxRight: boolean;
   /**
    * Mobile phone number of the user
    *
@@ -1112,15 +1112,15 @@ export interface DedicatedCloudUser {
    * Defines if the user receives technical alerts
    *
    */
-  receiveAlerts?: boolean;
+  receiveAlerts: boolean;
   /**
    * State of the user account
    *
    */
-  state?: DedicatedCloudUserStateEnum;
+  state: DedicatedCloudUserStateEnum;
   /**
    */
-  userId?: number;
+  userId: number;
 }
 /**
  * Open or restricted access to management interface ?
@@ -1138,7 +1138,7 @@ export interface DedicatedCloudVMEncryption {
    * State of the option
    *
    */
-  state?: DedicatedCloudOptionStateEnum;
+  state: DedicatedCloudOptionStateEnum;
 }
 /**
  * Private Cloud VM Encryption option access network
@@ -1148,32 +1148,32 @@ export interface DedicatedCloudVMEncryptionAccessNetwork {
    * Description of your option access network
    *
    */
-  description?: string;
+  description: string;
   /**
    * IP address of the remote service
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * Id of the VM Encryption KMS
    *
    */
-  kmsId?: number;
+  kmsId: number;
   /**
    * VM Encryption KMS TCP port
    *
    */
-  kmsTcpPort?: number;
+  kmsTcpPort: number;
   /**
    * SSL thumbprint of the remote service
    *
    */
-  sslThumbprint?: string;
+  sslThumbprint: string;
   /**
    * State of the option
    *
    */
-  state?: DedicatedCloudOptionAccessNetworkStateEnum;
+  state: DedicatedCloudOptionAccessNetworkStateEnum;
 }
 /**
  * The Private Cloud Vendor option
@@ -1183,7 +1183,7 @@ export interface DedicatedCloudVendor {
    * name
    *
    */
-  vendorName?: string;
+  vendorName: string;
 }
 /**
  * Dedicated Cloud vendors objects types
@@ -1195,13 +1195,13 @@ export type DedicatedCloudVendorObjectTypeEnum = 'cluster' | 'datacenter' | 'fil
 export interface DedicatedCloudVersion {
   /**
    */
-  build?: string;
+  build: string;
   /**
    */
-  major?: string;
+  major: string;
   /**
    */
-  minor?: string;
+  minor: string;
 }
 /**
  * Private Cloud Vlan
@@ -1209,24 +1209,24 @@ export interface DedicatedCloudVersion {
 export interface DedicatedCloudVlan {
   /**
    */
-  name?: string;
+  name: string;
   /**
    * Speed in Mbps
    *
    */
-  routingRateLimit?: string;
+  routingRateLimit: string;
   /**
    */
-  state?: DedicatedCloudVlanStateEnum;
+  state: DedicatedCloudVlanStateEnum;
   /**
    */
-  type?: DedicatedCloudVlanTypeEnum;
+  type: DedicatedCloudVlanTypeEnum;
   /**
    */
-  vlanId?: number;
+  vlanId: number;
   /**
    */
-  vlanNumber?: number;
+  vlanNumber: number;
 }
 /**
  * Private Cloud Virtual Machine
@@ -1306,7 +1306,7 @@ export interface DedicatedCloudVm {
    * moRef of the virtual machine.
    *
    */
-  moRef?: string;
+  moRef: string;
   /**
    * Name of the virtual machine.
    *
@@ -1341,7 +1341,7 @@ export interface DedicatedCloudVm {
    * Power state of the virtual machine.
    *
    */
-  powerState?: DedicatedCloudVirtualMachinePowerState;
+  powerState: DedicatedCloudVirtualMachinePowerState;
   /**
    * Amount of time for a read operation from the virtual disk. In millisecond
    *
@@ -1376,7 +1376,7 @@ export interface DedicatedCloudVm {
    * Id of the virtual machine.
    *
    */
-  vmId?: number;
+  vmId: number;
   /**
    * Current version status of VMware Tools in the guest operating system.
    *
@@ -1411,7 +1411,7 @@ export interface DedicatedCloudVrops {
    * State of the option
    *
    */
-  state?: DedicatedCloudOptionStateEnum;
+  state: DedicatedCloudOptionStateEnum;
   /**
    * Url of the vRealize Operations interface
    *
@@ -1426,17 +1426,17 @@ export interface DedicatedCloudZpoolStockProfile {
    * Minimum accepted available zpools
    *
    */
-  minimumAvailability?: string;
+  minimumAvailability: string;
   /**
    * Reference of zpool
    *
    */
-  profile?: string;
+  profile: string;
   /**
    * Available zpools
    *
    */
-  realCount?: number;
+  realCount: number;
 }
 /**
  * Details about a backup
@@ -1537,7 +1537,7 @@ export interface DedicatedCloudBackupRestorePoint {
    * Id of the restore point
    *
    */
-  restorePointId?: number;
+  restorePointId: number;
   /**
    * Size of the restore point
    *
@@ -1564,52 +1564,52 @@ export interface DedicatedCloudDedicatedCloud {
    * Advanced security state
    *
    */
-  advancedSecurity?: boolean;
+  advancedSecurity: boolean;
   /**
    * The current bandwidth of your Private Cloud
    *
    */
-  bandwidth?: string;
+  bandwidth: string;
   /**
    * Billing type of your Private Cloud
    *
    */
-  billingType?: DedicatedCloudBillingTypeEnum;
+  billingType: DedicatedCloudBillingTypeEnum;
   /**
    * Url to the Private Cloud certified interface
    *
    */
-  certifiedInterfaceUrl?: string;
+  certifiedInterfaceUrl: string;
   /**
    * The current version of your Private Cloud
    *
    */
-  commercialRange?: string;
+  commercialRange: string;
   /**
    * Description of your Private Cloud
    *
    */
-  description?: string;
+  description: string;
   /**
    * Generation of your Private Cloud
    *
    */
-  generation?: DedicatedCloudGenerationEnum;
+  generation: DedicatedCloudGenerationEnum;
   /**
    * Datacenter where your Private Cloud is physically located
    *
    */
-  location?: string;
+  location: string;
   /**
    * The management interface name
    *
    */
-  managementInterface?: DedicatedCloudManagementInterfaceEnum;
+  managementInterface: DedicatedCloudManagementInterfaceEnum;
   /**
    * Service name of your Private Cloud
    *
    */
-  serviceName?: string;
+  serviceName: string;
   /**
    * Name of the current service pack
    *
@@ -1619,7 +1619,7 @@ export interface DedicatedCloudDedicatedCloud {
    * SPLA licensing state
    *
    */
-  spla?: boolean;
+  spla: boolean;
   /**
    * Enable SSL v3 support. Warning : this option is not recommended as it was recognized as a security breach. If this is enabled, we advise you to enable the filtered User access policy
    *
@@ -1629,40 +1629,40 @@ export interface DedicatedCloudDedicatedCloud {
    * Current state of your Private Cloud
    *
    */
-  state?: DedicatedCloudStateEnum;
+  state: DedicatedCloudStateEnum;
   /**
    * Access policy of your Private Cloud : opened to every IPs or filtered
    *
    */
-  userAccessPolicy?: DedicatedCloudUserAccessPolicyEnum;
+  userAccessPolicy: DedicatedCloudUserAccessPolicyEnum;
   /**
    * The maximum amount of connected users allowed on the Private Cloud management interface
    *
    */
-  userLimitConcurrentSession?: number;
+  userLimitConcurrentSession: number;
   /**
    */
-  userLogoutPolicy?: DedicatedCloudUserLogoutPolicyEnum;
+  userLogoutPolicy: DedicatedCloudUserLogoutPolicyEnum;
   /**
    * The timeout (in seconds) for the user sessions on the Private Cloud management interface. 0 value disable the timeout
    *
    */
-  userSessionTimeout?: number;
+  userSessionTimeout: number;
   /**
    * Url to the Private Cloud vScope interface
    *
    */
-  vScopeUrl?: string;
+  vScopeUrl: string;
   /**
    * Version of the management interface
    *
    */
-  version?: DedicatedCloudVersion;
+  version: DedicatedCloudVersion;
   /**
    * Url to the Private Cloud web interface
    *
    */
-  webInterfaceUrl?: string;
+  webInterfaceUrl: string;
 }
 /**
  * Disaster Recovery Plan Types
@@ -1676,17 +1676,17 @@ export interface DedicatedCloudDisasterRecoveryLocalSiteDetails {
    * Zvm mode configured
    *
    */
-  role?: DedicatedCloudDisasterRecoverySiteRoleEnum;
+  role: DedicatedCloudDisasterRecoverySiteRoleEnum;
   /**
    * Type of hosting for the local datacenter
    *
    */
-  type?: DedicatedCloudDisasterRecoverySiteTypeEnum;
+  type: DedicatedCloudDisasterRecoverySiteTypeEnum;
   /**
    * Installed version of Zerto
    *
    */
-  zertoVersion?: string;
+  zertoVersion: string;
   /**
    * Local Network Ip of the Zerto virtual manager
    *
@@ -1716,12 +1716,12 @@ export interface DedicatedCloudDisasterRecoveryProfile {
    * State of the disaster recovery service
    *
    */
-  state?: DedicatedCloudStateEnum;
+  state: DedicatedCloudStateEnum;
   /**
    * Technical solution used
    *
    */
-  systemVersion?: string;
+  systemVersion: string;
 }
 /**
  * Information on the remote datacenter linked to the local one
@@ -1756,7 +1756,7 @@ export interface DedicatedCloudDisasterRecoveryRemoteSiteDetails {
    * Type of hosting for the remote datacenter
    *
    */
-  type?: DedicatedCloudDisasterRecoverySiteTypeEnum;
+  type: DedicatedCloudDisasterRecoverySiteTypeEnum;
   /**
    * Installed version of Zerto
    *
@@ -1779,12 +1779,12 @@ export interface DedicatedCloudFilerHourlyConsumption {
    * Consumption of the Filer
    *
    */
-  consumption?: ComplexTypeUnitAndValue<number>;
+  consumption: ComplexTypeUnitAndValue<number>;
   /**
    * Last update
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
 }
 /**
  * A Filer profile
@@ -1794,15 +1794,15 @@ export interface DedicatedCloudFilerProfile {
    * Human-Readable name
    *
    */
-  fullName?: string;
+  fullName: string;
   /**
    * Commercial name
    *
    */
-  name?: string;
+  name: string;
   /**
    */
-  size?: ComplexTypeUnitAndValue<number>;
+  size: ComplexTypeUnitAndValue<number>;
 }
 /**
  * All states a Dedicated Cloud Filer can be in
@@ -1816,12 +1816,12 @@ export interface DedicatedCloudHostHourlyConsumption {
    * Consumption of the Host.
    *
    */
-  consumption?: ComplexTypeUnitAndValue<number>;
+  consumption: ComplexTypeUnitAndValue<number>;
   /**
    * Last update.
    *
    */
-  lastUpdate?: string;
+  lastUpdate: string;
 }
 /**
  * A Host profile
@@ -1829,16 +1829,16 @@ export interface DedicatedCloudHostHourlyConsumption {
 export interface DedicatedCloudHostProfile {
   /**
    */
-  core?: string;
+  core: string;
   /**
    */
-  cpu?: ComplexTypeUnitAndValue<number>;
+  cpu: ComplexTypeUnitAndValue<number>;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  ram?: ComplexTypeUnitAndValue<number>;
+  ram: ComplexTypeUnitAndValue<number>;
 }
 /**
  * All states a Dedicated Cloud Host can be in
@@ -1868,12 +1868,12 @@ export interface DedicatedCloudOptionCompatibility {
    * The new/future commercial version
    *
    */
-  newCommercialVersion?: string;
+  newCommercialVersion: string;
   /**
    * The old/current commercial version
    *
    */
-  oldCommercialVersion?: string;
+  oldCommercialVersion: string;
 }
 /**
  * A structure describing the current password policy for your Dedicated Cloud
@@ -1883,52 +1883,52 @@ export interface DedicatedCloudPasswordPolicy {
    * List of denied characters in the password
    *
    */
-  deniedChars?: string[];
+  deniedChars: string[];
   /**
    * Whether or not a digit (0-9) is mandatory in the password
    *
    */
-  digitMandatory?: boolean;
+  digitMandatory: boolean;
   /**
    * Number of previous passwords to keep
    *
    */
-  historyCheck?: number;
+  historyCheck: number;
   /**
    * Whether or not a letter (a-z or A-Z) is mandatory in the password
    *
    */
-  letterMandatory?: boolean;
+  letterMandatory: boolean;
   /**
    * Whether or not a lowercase letter (a-z) is mandatory in the password
    *
    */
-  lowercaseLetterMandatory?: boolean;
+  lowercaseLetterMandatory: boolean;
   /**
    * Maximum lenght of the password
    *
    */
-  maxLength?: number;
+  maxLength: number;
   /**
    * Minimum lenght of the password
    *
    */
-  minLength?: number;
+  minLength: number;
   /**
    * Whether or not a special character (\W or _) is mandatory in the password
    *
    */
-  specialMandatory?: boolean;
+  specialMandatory: boolean;
   /**
    * Whether or not an uppercase letter (A-Z) is mandatory in the password
    *
    */
-  uppercaseLetterMandatory?: boolean;
+  uppercaseLetterMandatory: boolean;
   /**
    * Password validity period (in days)
    *
    */
-  validityPeriod?: number;
+  validityPeriod: number;
 }
 /**
  * A structure describing the Resource's new price
@@ -1944,22 +1944,22 @@ export interface DedicatedCloudResourceNewPrices {
 export interface DedicatedCloudResourceNewPricesEntry {
   /**
    */
-  billingType?: DedicatedCloudRessourcesBillingTypeEnum;
+  billingType: DedicatedCloudRessourcesBillingTypeEnum;
   /**
    */
-  changed?: boolean;
+  changed: boolean;
   /**
    */
-  name?: string;
+  name: string;
   /**
    */
-  newPrice?: OrderPrice;
+  newPrice: OrderPrice;
   /**
    */
-  oldPrice?: OrderPrice;
+  oldPrice: OrderPrice;
   /**
    */
-  resourceType?: DedicatedCloudRessourcesResourceTypeEnum;
+  resourceType: DedicatedCloudRessourcesResourceTypeEnum;
 }
 /**
  * The billing type of this Dedicated Cloud ressource
@@ -1993,22 +1993,22 @@ export interface DedicatedCloudTwoFAWhitelist {
    * Description of the trusted IP
    *
    */
-  description?: string;
+  description: string;
   /**
    * Id of the trusted IP
    *
    */
-  id?: number;
+  id: number;
   /**
    * IP address of the remote service
    *
    */
-  ip?: string;
+  ip: string;
   /**
    * State of the whitelist
    *
    */
-  state?: DedicatedCloudTwoFAWhitelistStateEnum;
+  state: DedicatedCloudTwoFAWhitelistStateEnum;
 }
 /**
  * All activation states a Dedicated Cloud User can have
@@ -2080,13 +2080,13 @@ export type DedicatedCloudVlanTypeEnum = 'admin' | 'free' | 'paid';
 export interface DedicatedCloudVmFiler {
   /**
    */
-  committed?: number;
+  committed: number;
   /**
    */
-  disks?: DedicatedCloudVmFilerDisk[];
+  disks: DedicatedCloudVmFilerDisk[];
   /**
    */
-  name?: string;
+  name: string;
 }
 /**
  * A structure describing filer disks of a the virtual machine
@@ -2094,10 +2094,10 @@ export interface DedicatedCloudVmFiler {
 export interface DedicatedCloudVmFilerDisk {
   /**
    */
-  capacity?: number;
+  capacity: number;
   /**
    */
-  id?: string;
+  id: string;
 }
 /**
  * A structure describing the network of a the virtual machine
@@ -2105,28 +2105,28 @@ export interface DedicatedCloudVmFilerDisk {
 export interface DedicatedCloudVmNetwork {
   /**
    */
-  allowGuestControl?: boolean;
+  allowGuestControl: boolean;
   /**
    */
-  backing?: DedicatedCloudVmNetworkBacking;
+  backing: DedicatedCloudVmNetworkBacking;
   /**
    */
-  connected?: boolean;
+  connected: boolean;
   /**
    */
-  controler?: string;
+  controler: string;
   /**
    */
-  label?: string;
+  label: string;
   /**
    */
-  macAddress?: string;
+  macAddress: string;
   /**
    */
-  startConnected?: boolean;
+  startConnected: boolean;
   /**
    */
-  status?: DedicatedCloudVirtualDeviceConnectInfoStatus;
+  status: DedicatedCloudVirtualDeviceConnectInfoStatus;
 }
 /**
  * A structure describing the backing network of a the virtual machine
@@ -2146,7 +2146,7 @@ export interface DedicatedCloudVmNetworkBacking {
   switchUuid?: string;
   /**
    */
-  type?: DedicatedCloudVmNetworkBackingTypeEnum;
+  type: DedicatedCloudVmNetworkBackingTypeEnum;
   /**
    */
   useAutoDetect?: boolean;
@@ -2168,13 +2168,13 @@ export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL
 export interface OrderPrice {
   /**
    */
-  currencyCode?: OrderCurrencyCodeEnum;
+  currencyCode: OrderCurrencyCodeEnum;
   /**
    */
-  text?: string;
+  text: string;
   /**
    */
-  value?: number;
+  value: number;
 }
 /**
  * Map a possible renew for a specific service
@@ -2184,17 +2184,17 @@ export interface ServiceRenewType {
    * The service is automatically renewed
    *
    */
-  automatic?: boolean;
+  automatic: boolean;
   /**
    * The service will be deleted at expiration
    *
    */
-  deleteAtExpiration?: boolean;
+  deleteAtExpiration: boolean;
   /**
    * The service forced to be renewed
    *
    */
-  forced?: boolean;
+  forced: boolean;
   /**
    * The service needs to be manually renewed and paid
    *
@@ -2230,28 +2230,28 @@ export interface ServicesService {
    * Indicates that the service can be set up to be deleted at expiration
    *
    */
-  canDeleteAtExpiration?: boolean;
+  canDeleteAtExpiration: boolean;
   /**
    */
-  contactAdmin?: string;
+  contactAdmin: string;
   /**
    */
-  contactBilling?: string;
+  contactBilling: string;
   /**
    */
-  contactTech?: string;
+  contactTech: string;
   /**
    */
-  creation?: string;
+  creation: string;
   /**
    */
-  domain?: string;
+  domain: string;
   /**
    */
   engagedUpTo?: string;
   /**
    */
-  expiration?: string;
+  expiration: string;
   /**
    * All the possible renew period of your service in month
    *
@@ -2264,13 +2264,13 @@ export interface ServicesService {
   renew?: ServiceRenewType;
   /**
    */
-  renewalType?: ServiceRenewalTypeEnum;
+  renewalType: ServiceRenewalTypeEnum;
   /**
    */
-  serviceId?: number;
+  serviceId: number;
   /**
    */
-  status?: ServiceStateEnum;
+  status: ServiceStateEnum;
 }
 /**
  * vrack tasks
@@ -2278,10 +2278,10 @@ export interface ServicesService {
 export interface VrackTask {
   /**
    */
-  function?: string;
+  function: string;
   /**
    */
-  id?: number;
+  id: number;
   /**
    */
   lastUpdate?: string;
@@ -2295,7 +2295,7 @@ export interface VrackTask {
    * Task status
    *
    */
-  status?: VrackTaskStatusEnum;
+  status: VrackTaskStatusEnum;
   /**
    */
   targetDomain?: string;
@@ -2315,7 +2315,7 @@ export interface VrackDedicatedCloud {
    * your dedicated cloud service
    *
    */
-  dedicatedCloud?: string;
+  dedicatedCloud: string;
   /**
    * Dedicated cloud vlanId used
    *
@@ -2325,7 +2325,7 @@ export interface VrackDedicatedCloud {
    * vrack name
    *
    */
-  vrack?: string;
+  vrack: string;
 }
 type PathsDedicatedCloudGET = '/dedicatedCloud' | 
 '/dedicatedCloud/commercialRange' | 
