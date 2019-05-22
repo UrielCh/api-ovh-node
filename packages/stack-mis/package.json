@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/stack-mis",
   "description": "Add typing to to ovh api stack-mis",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",

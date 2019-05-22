@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/price",
   "description": "Add typing to to ovh api price",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
