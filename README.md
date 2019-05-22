@@ -1,11 +1,11 @@
 # Use Ovh's Apis with TypeScript
 
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api/api.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/api) *Api engine*
-* [![NPM Version](https://img.shields.io/npm/v/@ovh-api/ip.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/ip) *All api helper*
+* [![NPM Version](https://img.shields.io/npm/v/@ovh-api/me.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/me) *All api helper have the same version*
 
 ## Samples
 
-### Interactive mode With no Credential
+### Interactive mode with no Credential
 
 Print account information of your OVH-account
 
@@ -57,3 +57,4 @@ const api = new ApiMe(ovh);
 api.get('/me').then(console.log);
 ```
 
+for more sample see [samples](https://github.com/UrielCh/api-ovh-node/tree/master/code/sample)
