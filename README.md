@@ -1,31 +1,31 @@
 # Use Ovh's Apis with TypeScript
 
-* @ovh-api/api [![NPM Version](https://img.shields.io/npm/v/@ovh-api/api.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/api)
-* @ovh-api/ip [![NPM Version](https://img.shields.io/npm/v/@ovh-api/ip.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/ip)
+* [![NPM Version](https://img.shields.io/npm/v/@ovh-api/api.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/api) *Api engine*
+* [![NPM Version](https://img.shields.io/npm/v/@ovh-api/ip.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/ip) *All api helper*
 
 ## Samples
 
-### Interactive mode With no Credential.
+### Interactive mode With no Credential
+
+Print account information of your OVH-account
+
 ```typescript
-import { ApiIp } from '@ovh-api/ip';
+import { ApiMe } from '@ovh-api/me';
 import Ovh from '@ovh-api/api';
 
 const ovh = new Ovh({accessRules: 'GET /ip'});
-const api = new ApiIp(ovh);
-
-async function printIP() {
-    return await api.get('/ip');
-}
-
-printIP().then(console.log)
+const api = new ApiMe(ovh);
+api.get('/me').then(console.log)
 ```
 
-### With Credential With TS Ovh api
+You will be asked to authorized an new issued certificat.
 
-Create your first application tokens here: https://api.ovh.com/createToken/?GET=/me
+### Same thing With credential with a certificate
+
+Create your first application tokens here: [here](https://api.ovh.com/createToken/?GET=/me)
 
 ```typescript
-import { ApiIp } from '@ovh-api/ip';
+import { ApiMe } from '@ovh-api/me';
 import Ovh from '@ovh-api/api';
 
 const config = {
@@ -34,16 +34,13 @@ const config = {
     consumerKey: String(process.env.CONSUMER_KEY)
 };
 const ovh = new Ovh(config);
-async printIP() {
-    return await api.get('/ip');
-}
-printIP().then(console.log)
+const api = new ApiMe(ovh);
+api.get('/me').then(console.log);
 ```
 
+### Same thing with a credential using the [official Ovh api](https://github.com/ovh/node-ovh)
 
-### With Credential With the official Ovh api
-
-Create your first application tokens here: https://api.ovh.com/createToken/?GET=/me
+Create your first application tokens here: [here](https://api.ovh.com/createToken/?GET=/me)
 
 ```typescript
 import { ApiIp } from '@ovh-api/ip';
@@ -56,9 +53,7 @@ const config = {
     consumerKey: String(process.env.CONSUMER_KEY)
 };
 const ovh = new Ovh(config);
-async printIP() {
-    return await api.get('/ip');
-}
-printIP().then(console.log)
+const api = new ApiMe(ovh);
+api.get('/me').then(console.log);
 ```
 
