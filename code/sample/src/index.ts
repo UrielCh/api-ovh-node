@@ -1,5 +1,5 @@
 import Ovh from '@ovh-api/api';
-import { ApiMe } from '@ovh-api/me';
+import ApiMe from '@ovh-api/me';
 
 // Create your first application tokens here: https://api.ovh.com/createToken/?GET=/me
 const config = { appKey: String(process.env.APP_KEY),

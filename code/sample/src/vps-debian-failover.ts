@@ -3,7 +3,7 @@
 
 import { networkInterfaces } from 'os'
 import { readFile, writeFile } from 'fs-extra'
-import { ApiVps } from '@ovh-api/vps'
+import ApiVps from '@ovh-api/vps'
 import Ovh from '@ovh-api/api'
 
 async function main() {

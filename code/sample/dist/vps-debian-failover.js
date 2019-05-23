@@ -7,7 +7,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const os_1 = require("os");
 const fs_extra_1 = require("fs-extra");
-const vps_1 = require("@ovh-api/vps");
+const vps_1 = __importDefault(require("@ovh-api/vps"));
 const api_1 = __importDefault(require("@ovh-api/api"));
 async function main() {
     const ifaces = os_1.networkInterfaces();
@@ -25,7 +25,7 @@ async function main() {
         throw 'No vps hostname in found in /etc/hosts';
     const serviceName = m[1];
     let ovh = new api_1.default({ accessRules: `GET /vps/${serviceName}/ips` });
-    const vps = new vps_1.ApiVps(ovh);
+    const vps = new vps_1.default(ovh);
     console.log({ serviceName });
     let data = await vps.get('/vps/{serviceName}/ips', { serviceName });
     let confFile = '';

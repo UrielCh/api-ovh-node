@@ -1,4 +1,4 @@
-import { ApiIp } from '@ovh-api/ip';
+import ApiIp from '@ovh-api/ip';
 import Ovh from '@ovh-api/api';
 
 const ovh = new Ovh({accessRules: 'GET /ip'});

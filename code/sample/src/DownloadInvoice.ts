@@ -3,7 +3,7 @@
 
 import { EOL } from 'os'
 import fse from 'fs-extra'
-import { ApiMe, NichandleNichandle, BillingBill } from '@ovh-api/me'
+import ApiMe, { NichandleNichandle, BillingBill } from '@ovh-api/me'
 import Ovh from '@ovh-api/api'
 import path from 'path'
 import fetch from 'node-fetch'

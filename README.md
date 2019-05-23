@@ -10,7 +10,7 @@
 Print account information of your OVH-account
 
 ```typescript
-import { ApiMe } from '@ovh-api/me';
+import ApiMe from '@ovh-api/me';
 import Ovh from '@ovh-api/api';
 
 const ovh = new Ovh({accessRules: 'GET /ip'});
@@ -25,7 +25,7 @@ You will be asked to authorized an new issued certificat.
 Create your first application tokens here: [here](https://api.ovh.com/createToken/?GET=/me)
 
 ```typescript
-import { ApiMe } from '@ovh-api/me';
+import ApiMe from '@ovh-api/me';
 import Ovh from '@ovh-api/api';
 
 const config = {
@@ -43,7 +43,7 @@ api.get('/me').then(console.log);
 Create your first application tokens here: [here](https://api.ovh.com/createToken/?GET=/me)
 
 ```typescript
-import { ApiIp } from '@ovh-api/ip';
+import ApiMe from '@ovh-api/me';
 import Ovh from require(ovh);
 
 // Create your first application tokens here: https://api.ovh.com/createToken/?GET=/me

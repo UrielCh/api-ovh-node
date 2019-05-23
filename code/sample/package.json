@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@ovh-api/api": "^1.2.0",
-    "@ovh-api/domain": "^1.2.1",
-    "@ovh-api/me": "^1.2.1",
-    "@ovh-api/ip": "^1.2.1",
-    "@ovh-api/vps": "^1.2.1",
+    "@ovh-api/domain": "^1.2.2",
+    "@ovh-api/me": "^1.2.2",
+    "@ovh-api/ip": "^1.2.2",
+    "@ovh-api/vps": "^1.2.2",
     "commander": "^2.20.0",
     "fs-extra": "^8.0.1",
     "node-fetch": "^2.6.0"

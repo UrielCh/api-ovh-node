@@ -7,7 +7,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const os_1 = require("os");
 const fs_extra_1 = __importDefault(require("fs-extra"));
-const me_1 = require("@ovh-api/me");
+const me_1 = __importDefault(require("@ovh-api/me"));
 const api_1 = __importDefault(require("@ovh-api/api"));
 const path_1 = __importDefault(require("path"));
 const node_fetch_1 = __importDefault(require("node-fetch"));
@@ -40,7 +40,7 @@ async function listDir(root, type) {
 }
 async function main(root, type) {
     let ovh = new api_1.default({ accessRules: `GET /me, GET /me/bill, GET /me/bill/*` });
-    const apiMe = new me_1.ApiMe(ovh);
+    const apiMe = new me_1.default(ovh);
     const me = await apiMe.get('/me');
     const dbInvoice = new Set();
     let dest = path_1.default.join(root, me.nichandle);
