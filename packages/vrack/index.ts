@@ -650,3 +650,4 @@ export class ApiVrack extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiVrack;

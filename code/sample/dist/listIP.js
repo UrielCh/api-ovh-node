@@ -12,3 +12,4 @@ async function printIP() {
     return ips;
 }
 printIP().then(console.log);
+//# sourceMappingURL=listIP.js.map

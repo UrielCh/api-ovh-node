@@ -379,3 +379,4 @@ export class ApiMetrics extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiMetrics;

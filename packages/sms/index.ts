@@ -1670,3 +1670,4 @@ export class ApiSms extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiSms;

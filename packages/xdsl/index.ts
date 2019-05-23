@@ -4027,3 +4027,4 @@ export class ApiXdsl extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiXdsl;

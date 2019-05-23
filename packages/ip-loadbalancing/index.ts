@@ -2240,3 +2240,4 @@ export class ApiIpLoadbalancing extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiIpLoadbalancing;

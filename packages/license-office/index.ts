@@ -471,3 +471,4 @@ export class ApiLicenseOffice extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiLicenseOffice;

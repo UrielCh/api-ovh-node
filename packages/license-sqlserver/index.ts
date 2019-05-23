@@ -280,3 +280,4 @@ export class ApiLicenseSqlserver extends OvhWrapper {
     return super.post(path, params
   );}
 }
+export default ApiLicenseSqlserver;

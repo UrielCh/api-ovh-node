@@ -46,3 +46,4 @@ async function main() {
     console.log('mv 51-fo  /etc/network/interfaces.d/');
 }
 main().then(console.log, console.error);
+//# sourceMappingURL=vps-debian-failover.js.map

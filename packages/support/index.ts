@@ -220,3 +220,4 @@ export class ApiSupport extends OvhWrapper {
     return super.post(path, params
   );}
 }
+export default ApiSupport;

@@ -5559,3 +5559,4 @@ export class ApiMe extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiMe;

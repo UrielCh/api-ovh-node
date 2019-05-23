@@ -417,3 +417,4 @@ export class ApiLicenseVirtuozzo extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiLicenseVirtuozzo;

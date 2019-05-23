@@ -1,8 +1,8 @@
-# @ovh-api/sample
+# Samples using Typescript nodejs Api
 
-check src folder for code sample
+Check src folder for all codes.
 
-## configure debian VPS ip failover with nodejs
+## Configure debian VPS ip failover with a single script
 
 ```bash
 apt-get update && \

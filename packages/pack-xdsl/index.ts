@@ -1610,3 +1610,4 @@ export class ApiPackXdsl extends OvhWrapper {
     return super.post(path, params
   );}
 }
+export default ApiPackXdsl;

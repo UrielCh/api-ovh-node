@@ -174,3 +174,4 @@ export class ApiAllDom extends OvhWrapper {
     return super.put(path, params
   );}
 }
+export default ApiAllDom;

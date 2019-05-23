@@ -451,3 +451,4 @@ export class ApiDbaasQueue extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiDbaasQueue;

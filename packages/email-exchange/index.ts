@@ -2751,3 +2751,4 @@ export class ApiEmailExchange extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiEmailExchange;

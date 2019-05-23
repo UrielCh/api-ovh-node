@@ -270,3 +270,4 @@ export class ApiServices extends OvhWrapper {
     return super.get(path, params
   );}
 }
+export default ApiServices;

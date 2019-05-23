@@ -280,3 +280,4 @@ export class ApiLicenseCloudLinux extends OvhWrapper {
     return super.post(path, params
   );}
 }
+export default ApiLicenseCloudLinux;

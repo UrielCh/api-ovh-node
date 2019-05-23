@@ -529,3 +529,4 @@ export class ApiService extends OvhWrapper {
     return super.post(path, params
   );}
 }
+export default ApiService;

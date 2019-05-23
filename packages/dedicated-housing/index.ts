@@ -536,3 +536,4 @@ export class ApiDedicatedHousing extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiDedicatedHousing;

@@ -11,13 +11,19 @@
   },
   "dependencies": {
     "@ovh-api/api": "^1.2.0",
-    "@ovh-api/domain": "^1.2.0",
-    "@ovh-api/me": "^1.2.0",
+    "@ovh-api/domain": "^1.2.1",
+    "@ovh-api/me": "^1.2.1",
+    "@ovh-api/ip": "^1.2.1",
+    "@ovh-api/vps": "^1.2.1",
+    "commander": "^2.20.0",
     "fs-extra": "^8.0.1",
-    "json2csv": "^4.5.1"
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
+    "@types/commander": "^2.12.2",
     "@types/fs-extra": "^7.0.0",
-    "@types/json2csv": "^4.4.0"
+    "@types/node-fetch": "^2.3.4",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
   }
 }

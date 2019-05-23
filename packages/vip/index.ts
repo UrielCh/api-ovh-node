@@ -143,3 +143,4 @@ export class ApiVip extends OvhWrapper {
     return super.put(path, params
   );}
 }
+export default ApiVip;

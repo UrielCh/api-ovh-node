@@ -1540,3 +1540,4 @@ export class ApiEmailDomain extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiEmailDomain;

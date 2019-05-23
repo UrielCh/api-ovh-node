@@ -1208,3 +1208,4 @@ export class ApiMsServices extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiMsServices;

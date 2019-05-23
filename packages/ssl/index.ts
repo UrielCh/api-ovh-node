@@ -249,3 +249,4 @@ export class ApiSsl extends OvhWrapper {
     return super.put(path, params
   );}
 }
+export default ApiSsl;

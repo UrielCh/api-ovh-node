@@ -65,3 +65,4 @@ export class ApiContact extends OvhWrapper {
     return super.post(path, params
   );}
 }
+export default ApiContact;

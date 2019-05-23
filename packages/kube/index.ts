@@ -378,3 +378,4 @@ export class ApiKube extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiKube;

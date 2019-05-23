@@ -246,6 +246,14 @@ export interface DomainDomainNsStatus {
  */
 export type DomainDomainNsTypeEnum = 'external' | 'hosted';
 /**
+ * All options a domain can have
+ */
+export type DomainDomainOptionEnum = 'dnsAnycast';
+/**
+ * All states a domain Option can be in
+ */
+export type DomainDomainOptionStateEnum = 'released' | 'subscribed';
+/**
  * Glue record
  */
 export interface DomainGlueRecord {
@@ -272,6 +280,21 @@ export type DomainOperationStatusEnum = 'cancelled' | 'doing' | 'done' | 'error'
  * Whois optin fields
  */
 export type DomainOptinFieldsEnum = 'address' | 'city' | 'country' | 'email' | 'fax' | 'name' | 'organisation' | 'phone' | 'province' | 'zip';
+/**
+ * Information about the options of a domain
+ */
+export interface DomainOption {
+  /**
+   * The option name
+   *
+   */
+  option: DomainDomainOptionEnum;
+  /**
+   * The state of the option
+   *
+   */
+  state: DomainDomainOptionStateEnum;
+}
 /**
  * Obfuscate whois
  */
@@ -1284,6 +1307,8 @@ type PathsDomainGET = '/domain' |
 '/domain/{serviceName}/glueRecord/{host}' | 
 '/domain/{serviceName}/nameServer' | 
 '/domain/{serviceName}/nameServer/{id}' | 
+'/domain/{serviceName}/option' | 
+'/domain/{serviceName}/option/{option}' | 
 '/domain/{serviceName}/owo' | 
 '/domain/{serviceName}/owo/{field}' | 
 '/domain/{serviceName}/rules/emailsObfuscation' | 
@@ -1349,6 +1374,7 @@ type PathsDomainDELETE = '/domain/data/smd/{smdId}' |
 '/domain/zone/{zoneName}/redirection/{id}' | 
 '/domain/{serviceName}/glueRecord/{host}' | 
 '/domain/{serviceName}/nameServer/{id}' | 
+'/domain/{serviceName}/option/{option}' | 
 '/domain/{serviceName}/owo/{field}';
 
 export class ApiDomain extends OvhWrapper {
@@ -1560,6 +1586,16 @@ export class ApiDomain extends OvhWrapper {
   Get this object properties
   **/
   public get(path: '/domain/{serviceName}/nameServer/{id}', params: {serviceName: string, id: number}): Promise<DomainCurrentNameServer>;
+  /**
+  List the domain.Option objects
+  List of domain options
+  **/
+  public get(path: '/domain/{serviceName}/option', params: {serviceName: string}): Promise<DomainDomainOptionEnum[]>;
+  /**
+  Information about the options of a domain
+  Get this object properties
+  **/
+  public get(path: '/domain/{serviceName}/option/{option}', params: {serviceName: string, option: DomainDomainOptionEnum}): Promise<DomainOption>;
   /**
   List the domain.Owo objects
   List of whois obfuscators
@@ -1880,6 +1916,11 @@ export class ApiDomain extends OvhWrapper {
   **/
   public delete(path: '/domain/{serviceName}/nameServer/{id}', params: {serviceName: string, id: number}): Promise<DomainTask>;
   /**
+  Information about the options of a domain
+  Release a given option
+  **/
+  public delete(path: '/domain/{serviceName}/option/{option}', params: {serviceName: string, option: DomainDomainOptionEnum}): Promise<void>;
+  /**
   Obfuscate whois
   Delete a whois obfuscator
   **/
@@ -1888,3 +1929,4 @@ export class ApiDomain extends OvhWrapper {
     return super.delete(path, params
   );}
 }
+export default ApiDomain;

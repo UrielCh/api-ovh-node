@@ -233,3 +233,4 @@ export class ApiNewAccount extends OvhWrapper {
     return super.post(path, params
   );}
 }
+export default ApiNewAccount;

@@ -328,3 +328,4 @@ export class ApiLicenseCpanel extends OvhWrapper {
     return super.post(path, params
   );}
 }
+export default ApiLicenseCpanel;

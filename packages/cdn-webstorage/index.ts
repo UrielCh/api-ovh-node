@@ -193,3 +193,4 @@ export class ApiCdnWebstorage extends OvhWrapper {
     return super.put(path, params
   );}
 }
+export default ApiCdnWebstorage;
