@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/service",
   "description": "Add typing to to ovh api service",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",

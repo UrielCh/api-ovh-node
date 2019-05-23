@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/cluster-hadoop",
   "description": "Add typing to to ovh api cluster-hadoop",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
