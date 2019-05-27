@@ -6,3 +6,4 @@ code/api/dist/
 code/common/dist/
 **/index.d.ts
 **/index.js
+**/index.js.map

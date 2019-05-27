@@ -15,6 +15,11 @@ program
   .option('-c, --concurrency <number>', 'max concurent download', /^[0-9]+$/)
   .parse(process.argv)
 
+  /**
+   * list all existing invoice
+   * @param root root directory
+   * @param type file extention
+   */
 async function listDir(root: string, type: 'pdf' | 'html'): Promise<string[]> {
   let result: string[] = []
   let list = await fse.readdir(root)
