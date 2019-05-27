@@ -11,7 +11,7 @@ program
   .version('1.0.0')
   .option('-u, --utc', 'use UTC times, by defaut use localhost timezone')
   .option('-d, --dest <path>', 'destination directory')
-  .option('-s, --split <type>', 'hierarchy model year/month/nonde default is month', /^(month|year|none)$/i, 'month')
+  .option('-s, --split <type>', 'hierarchy model year/month/none default is month', /^(month|year|none)$/i, 'month')
   .option('-c, --concurrency <number>', 'max concurent download', /^[0-9]+$/)
   .parse(process.argv)
 
