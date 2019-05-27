@@ -27,8 +27,8 @@ Options:
 
 ### utc / locale -u
 
-si le flag *utc* est activé, convertit les date en convert en UTC.
-sinon, le script utilisera votre fuseau horaire actuel.
+Si le flag *utc* est activé, convertit les date en convert en UTC.
+Sinon, le script utilisera votre fuseau horaire actuel.
 
 ### destination -d
 

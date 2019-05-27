@@ -27,12 +27,12 @@ Options:
 
 ### utc / locale -u
 
-if *utc* flag is enabled, convert add date as UTC.
-if not the script will use your current timezone.
+If *utc* flag is enabled, convert add date as UTC.
+If not the script will use your current timezone.
 
 ### destination -d
 
-provide a local path to save all invoice, a directory containing the nic-handle will be create into this destination to avoid mixing invoice from different accounts.
+Provide a local path to save all invoice, a directory containing the nic-handle will be create into this destination to avoid mixing invoice from different accounts.
 
 ### concurrency -c
 

@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "@ovh-api/sample-download-invoices",
   "version": "1.0.0",
   "main": "index.js",
