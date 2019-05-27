@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "name": "ovh-me",
+  "version": "1.0.0",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@ovh-api/api": "^1.2.0",
+    "@ovh-api/me": "^1.2.2"
+  },
+  "devDependencies": {
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
+  }
+}
