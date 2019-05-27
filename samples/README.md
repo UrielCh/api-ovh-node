@@ -27,4 +27,4 @@ reboot
 
 ## Download all invoice
 
-[see DownloadInvoice.ts](https://github.com/UrielCh/api-ovh-node/blob/master/code/sample/src/DownloadInvoice.ts)
+[see ovh-download-invoices](https://github.com/UrielCh/api-ovh-node/blob/master/samples/ovh-download-invoices/ovh-download-invoices)
