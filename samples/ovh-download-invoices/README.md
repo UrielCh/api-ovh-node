@@ -1,4 +1,4 @@
-# sample-download-invoices
+# ovh-download-invoices
 
 This code download all invoices from you OVH account and store them as an easy to use directory scruture, with a summary tsv file.
 

@@ -1,4 +1,4 @@
-# sample-download-invoices
+# ovh-download-invoices
 
 Ce code télécharge toutes les factures de votre compte OVH et les stocke dans un répertoire facile à utiliser, avec un fichier tsv résumé.
 
