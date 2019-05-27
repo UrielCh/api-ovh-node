@@ -60,9 +60,9 @@ async function main(root: string, type: 'pdf' | 'html') {
 
   const allInvoice: CsvLine[] = []
 
-  const summeryFile = path.join(dest, "summery.tsv")
-  if (await fse.existsSync(summeryFile)) {
-    let input = fse.readFileSync(summeryFile, { encoding: 'utf8' })
+  const summaryFile = path.join(dest, "summary.tsv")
+  if (await fse.existsSync(summaryFile)) {
+    let input = fse.readFileSync(summaryFile, { encoding: 'utf8' })
     input.split(/[\r\n]+/g)
       .forEach(line => {
         const [invoiceId, date, HT, TVA, TTC, currency] = line.split(/\t/)
@@ -141,7 +141,7 @@ async function main(root: string, type: 'pdf' | 'html') {
     allInvoice.sort((a, b) => a.invoiceId.localeCompare(b.invoiceId))
     let db = allInvoice.map(({ invoiceId, date, HT, TVA, TTC, currency }) => `${invoiceId}\t${date}\t${HT}\t${TVA}\t${TTC}\t${currency}`)
     db.unshift('invoiceId\tdate\tHT\tTVA\tTTC\tcurrency')
-    await fse.writeFile(summeryFile, db.join(EOL), { encoding: 'utf8' });
+    await fse.writeFile(summaryFile, db.join(EOL), { encoding: 'utf8' });
     console.log('All done.')
   } else {
     console.log('No new invoice. Bye.')

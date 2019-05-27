@@ -1,6 +1,6 @@
 # sample-download-invoices
 
-This code download all invoices from you ovh account and store them as an easy to use directory scruture, with a summery tsv file.
+This code download all invoices from you OVH account and store them as an easy to use directory scruture, with a summary tsv file.
 
 This tsv file can be open in any tabler to extract VAT for your accountancy.
 
@@ -32,11 +32,11 @@ if not the script will use your current timezone.
 
 ### destination -d
 
-provide a local path to save all invoice, a directory containing the nic-handle will be create into this destination to avoid mixing invoice from diffrent accounts.
+provide a local path to save all invoice, a directory containing the nic-handle will be create into this destination to avoid mixing invoice from different accounts.
 
 ### concurrency -c
 
-Download multiple invoice un parallel, Do not ask for much concurency, or Ovh will block your IP.
+Download multiple invoice un parallel, Do not ask for much concurrency, or Ovh will block your IP.
 
 ## Tree
 
@@ -44,7 +44,7 @@ The destination directory may look like that:
 
 ```bash
 nichandle-ovh
- - summery.tsv
+ - summary.tsv
  - 2019
     - 01
         - 2019-01-01_FR123406_12.99EUR.pdf
