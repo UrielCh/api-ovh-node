@@ -2,7 +2,7 @@
 // npm install @ovh-api/api @ovh-api/vps fs-extra
 
 import { networkInterfaces } from 'os'
-import { readFile, writeFile } from 'fs-extra'
+import fse, { readFile, writeFile } from 'fs-extra'
 import ApiVps from '@ovh-api/vps'
 import Ovh from '@ovh-api/api'
 
@@ -14,7 +14,7 @@ async function main() {
   if (!ifaces['ens3'])
     throw 'No ens3 netword interface';
   const mainIP = ifaces['ens3'].filter(a => a.family == 'IPv4')[0].address
-  if (!mainIP)  
+  if (!mainIP)
     throw 'No ens3 has no IPv4';
   console.log(`Your main IP is ${mainIP}`)
   const hosts = await readFile('/etc/hosts', 'utf8');
@@ -22,13 +22,18 @@ async function main() {
   if (!m)
     throw 'No vps hostname in found in /etc/hosts';
   const serviceName = m[1];
-  let ovh = new Ovh({accessRules:`GET /vps/${serviceName}/ips`});
+  let ovh = new Ovh({ accessRules: `GET /vps/${serviceName}/ips` });
   const vps = new ApiVps(ovh);
   console.log({ serviceName });
   let data = await vps.get('/vps/{serviceName}/ips', { serviceName })
   let confFile = '';
   const ipFo = data.filter(a => a != mainIP).filter(a => !~a.indexOf(':'))
   console.log(`TOTAL IP: ${data.length} FO: ${ipFo.length}`)
+  // TODO ident distribution
+  //let list = (await fse.readdir('/etc'))
+  //  .filter(n => ~n.indexOf('-release'))
+  //if ()
+
   for (var i = 0; i < ipFo.length; i++) {
     confFile += `auto ens3:${i}
  iface ens3:${i + 1} inet static

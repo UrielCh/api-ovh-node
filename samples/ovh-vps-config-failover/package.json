@@ -1,5 +1,5 @@
 {
-  "name": "ovh-download-invoices",
+  "name": "ovh-vps-config-failover",
   "version": "1.0.0",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -10,15 +10,11 @@
   },
   "dependencies": {
     "@ovh-api/api": "^1.2.0",
-    "@ovh-api/me": "^1.2.2",
-    "bluebird": "^3.5.4",
-    "fs-extra": "^8.0.1",
-    "node-fetch": "^2.6.0"
+    "@ovh-api/vps": "^1.2.2",
+    "fs-extra": "^8.0.1"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.26",
     "@types/fs-extra": "^7.0.0",
-    "@types/node-fetch": "^2.3.4",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5"
   }
