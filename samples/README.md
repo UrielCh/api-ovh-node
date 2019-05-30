@@ -19,10 +19,12 @@ nvm install 10
 ### Configure debian VPS ip failover with a single script
 
 [see ovh-vps-config-failover](https://github.com/UrielCh/api-ovh-node/blob/master/samples/ovh-vps-config-failover)
+[![NPM Version](https://img.shields.io/npm/v/ovh-vps-config-failover.svg?style=flat)](https://www.npmjs.org/package/ovh-vps-config-failover)
 
 ### Download all invoice
 
 [see ovh-bill-importer](https://github.com/UrielCh/api-ovh-node/blob/master/samples/ovh-bill-importer)
+[![NPM Version](https://img.shields.io/npm/v/ovh-bill-importer.svg?style=flat)](https://www.npmjs.org/package/ovh-bill-importer)
 
 ## Simple sample
 

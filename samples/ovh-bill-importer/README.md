@@ -1,5 +1,7 @@
 # ovh-bill-importer
 
+[![NPM Version](https://img.shields.io/npm/v/ovh-bill-importer.svg?style=flat)](https://www.npmjs.org/package/ovh-bill-importer)
+
 This code download all invoices from you OVH account and store them as an easy to use directory scruture, with a summary tsv file.
 
 This tsv file can be open in any tabler to extract VAT for your accountancy.
