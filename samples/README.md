@@ -1,6 +1,6 @@
 # Samples using Typescript nodejs Api
 
-Check src folder for all codes.
+Each sub-folder contains a sample.
 
 ## install nodejs
 
@@ -14,7 +14,7 @@ export NVM_DIR="$HOME/.nvm" && \
 nvm install 10
 ```
 
-## Daily Usable sample
+## Daily Usable samples
 
 ### Configure debian VPS ip failover with a single script
 
@@ -26,7 +26,7 @@ nvm install 10
 [see ovh-bill-importer](https://github.com/UrielCh/api-ovh-node/blob/master/samples/ovh-bill-importer)
 [![NPM Version](https://img.shields.io/npm/v/ovh-bill-importer.svg?style=flat)](https://www.npmjs.org/package/ovh-bill-importer)
 
-## Simple sample
+## Simple samples
 
 ### Print Ovh Info
 
