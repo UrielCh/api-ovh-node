@@ -4,6 +4,8 @@ Ce code télécharge toutes les factures de votre compte OVH et les stocke dans 
 
 Ce fichier tsv peut être ouvert dans n’importe quel tableur afin d’extraire la TVA de votre comptabilité.
 
+Ce script utilise les packages npm `ovh-api/api` et `@ovh-api/me`
+
 ## Usage
 
 ```bash

@@ -4,6 +4,8 @@ This code download all invoices from you OVH account and store them as an easy t
 
 This tsv file can be open in any tabler to extract VAT for your accountancy.
 
+This script use the npm packages `@ovh-api/api` and `@ovh-api/me`
+
 ## Usage
 
 ```bash
