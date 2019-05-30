@@ -2,8 +2,12 @@
 
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api/api.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/api) *Api engine*
 * [![NPM Version](https://img.shields.io/npm/v/@ovh-api/me.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/me) *All api helper have the same version*
+* [![NPM Version](https://img.shields.io/npm/v/ovh-vps-config-failover.svg?style=flat)](https://www.npmjs.org/package/ovh-vps-config-failover) *ovh-vps-config-failover* Configure the IP failover of your vps
+* [![NPM Version](https://img.shields.io/npm/v/ovh-bill-importer.svg?style=flat)](https://www.npmjs.org/package/ovh-bill-importer) *ovh-bill-importer* Import all ovh billing data
 
 ## Samples
+
+Find all sample [here](https://github.com/UrielCh/api-ovh-node/tree/master/samples)
 
 ### Interactive mode with no Credential
 
@@ -57,4 +61,4 @@ const api = new ApiMe(ovh);
 api.get('/me').then(console.log);
 ```
 
-for more sample see [samples](https://github.com/UrielCh/api-ovh-node/tree/master/code/sample)
+For more sample see [samples](https://github.com/UrielCh/api-ovh-node/tree/master/code/sample)
