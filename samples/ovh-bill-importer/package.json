@@ -1,5 +1,5 @@
 {
-  "name": "ovh-download-invoices",
+  "name": "ovh-bill-importer",
   "version": "1.0.0",
   "main": "index.js",
   "typings": "index.d.ts",
