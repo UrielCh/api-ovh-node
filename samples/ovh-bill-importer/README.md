@@ -1,4 +1,4 @@
-# ovh-download-invoices
+# ovh-bill-importer
 
 This code download all invoices from you OVH account and store them as an easy to use directory scruture, with a summary tsv file.
 
