@@ -8,10 +8,16 @@ This tsv file can be open in any tabler to extract VAT for your accountancy.
 
 This script use the npm packages `@ovh-api/api` and `@ovh-api/me`
 
+## setup
+
+```bash
+npm install -g ovh-bill-importer
+```
+
 ## Usage
 
 ```bash
-$ node index.js --help
+$ ovh-bill-importer --help
 Usage: index [options]
 
 Options:

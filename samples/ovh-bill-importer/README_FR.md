@@ -1,10 +1,18 @@
 # ovh-bill-importer
 
+[![NPM Version](https://img.shields.io/npm/v/ovh-bill-importer.svg?style=flat)](https://www.npmjs.org/package/ovh-bill-importer)
+
 Ce code télécharge toutes les factures de votre compte OVH et les stocke dans un répertoire facile à utiliser, avec un fichier tsv résumé.
 
 Ce fichier tsv peut être ouvert dans n’importe quel tableur afin d’extraire la TVA de votre comptabilité.
 
 Ce script utilise les packages npm `ovh-api/api` et `@ovh-api/me`
+
+## Installation
+
+```bash
+npm install -g ovh-bill-importer
+```
 
 ## Usage
 

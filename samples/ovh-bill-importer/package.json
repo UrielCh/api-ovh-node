@@ -1,9 +1,16 @@
 {
   "name": "ovh-bill-importer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "typings": "index.d.ts",
   "license": "MIT",
+  "bin": {
+    "ovh-bill-importer": "./bin/ovh-bill-importer"
+  },
+  "author": {
+    "name": "urielch"
+  },
+  "preferGlobal": true,
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch"
