@@ -10,3 +10,5 @@ Configure the IP-failover on OVH VPS using Debian (centOS is comming next)
 npm install -g ovh-vps-config-failover
 ovh-vps-config-failover
 ```
+
+![ovh-vps-config-failover on vps](../ressources/ovh-vps-config-failover.gif?raw=true "preview")
