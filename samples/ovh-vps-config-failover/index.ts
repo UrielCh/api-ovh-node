@@ -6,6 +6,16 @@ import fse, { readFile, writeFile } from 'fs-extra'
 import ApiVps from '@ovh-api/vps'
 import Ovh from '@ovh-api/api'
 
+async function identDist() {
+  let list = (await fse.readdir('/etc'))
+    .filter(n => ~n.indexOf('-release'));
+  let release = list.join(' ');
+  let iscentos = ~release.indexOf('centos')
+  if (iscentos)
+    return 'centos';
+  return 'debian';
+}
+
 async function main() {
   const ifaces = networkInterfaces()
   if (!ifaces)
@@ -22,36 +32,47 @@ async function main() {
   console.log(`Your main IP is ${mainIP}`)
   const hosts = await readFile('/etc/hosts', 'utf8');
   let m = hosts.match(/127.0.1.1\s+([a-z0-9]+\.ovh\.net)/);
-  if (!m) 
+  if (!m)
     m = hosts.match(/\s([a-z0-9]+\.ovh\.net)/);
-  if (!m) 
+  if (!m)
     throw 'No vps hostname in found in /etc/hosts';
+
+  const dist = await identDist();
   const serviceName = m[1];
   let ovh = new Ovh({ accessRules: `GET /vps/${serviceName}/ips` });
   const vps = new ApiVps(ovh);
   console.log({ serviceName });
   let data = await vps.get('/vps/{serviceName}/ips', { serviceName })
-  let confFile = '';
   const ipFo = data.filter(a => a != mainIP).filter(a => !~a.indexOf(':'))
   console.log(`TOTAL IP: ${data.length} FO: ${ipFo.length}`)
-  // TODO ident distribution
-  //let list = (await fse.readdir('/etc'))
-  //  .filter(n => ~n.indexOf('-release'))
-  //if ()
-
-  for (var i = 0; i < ipFo.length; i++) {
-    confFile += `auto ens3:${i}
- iface ${iface}:${i + 1} inet static
- address ${ipFo[i]}
- netmask 255.255.255.255
- broadcast ${ipFo[i]}
-
-`
+  if (dist === 'debian') {
+    const confs = ipFo.map((ip, i) => `auto ${iface}:${i}
+iface ${iface}:${i + 1} inet static
+address ${ip}
+netmask 255.255.255.255
+broadcast ${ip}
+`);
+    await writeFile('51-fo', confs.join('\n'), { mode: 0o644 })
+    console.log('51-fo Generated')
+    console.log('')
+    console.log('mv 51-fo  /etc/network/interfaces.d/')
+    console.log('service networking restart')
+  } else if (dist === 'centos') {
+    const confs = ipFo.map((ip, i) => `DEVICE="${iface}:${i}"
+BOOTPROTO=static
+IPADDR="${ip}"
+NETMASK="255.255.255.255"
+BROADCAST="${ip}"
+ONBOOT=yes   
+`);
+    for (let i = 0; i < confs.length; i++) {
+      await writeFile(`ifcfg-${iface}:${i}`, confs[i], { mode: 0o644 });
+    }
+    console.log('ifcfg-${iface}:* Generated')
+    console.log('')
+    console.log('mv ifcfg-${iface}:* /etc/sysconfig/network-scripts/')
+    for (let i = 0; i < confs.length; i++)
+      console.log('ifup ifcfg-${iface}:${i}');
   }
-  await writeFile('51-fo', confFile, { mode: 0o644 })
-  console.log('51-fo Generated')
-  console.log('')
-  console.log('mv 51-fo  /etc/network/interfaces.d/')
 }
-
-main().then(console.log, console.error)
+main().then(console.log, console.error);
