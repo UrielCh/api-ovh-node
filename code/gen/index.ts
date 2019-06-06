@@ -1,6 +1,7 @@
 import GenApiTypes, { CacheApi, CacheModel } from './src'
 import { Parameter } from './src/schema';
 import fse from 'fs-extra'
+import Path from 'path'
 
 let gen = new GenApiTypes();
 let extraNS = '';
@@ -40,15 +41,6 @@ const rawRemapNode: { [keys: string]: string } = {
     "long[]": "number[]",
     "ipInterface": "string",
 }
-function mapNode(type: string): string {
-    if (type == null)
-        return '';
-    let p = type.indexOf(":");
-    if (p > 0) {
-        type = type.substring(p + 1);
-    }
-    return rawRemapNode[type] || '';
-}
 
 function formatUpperCamlCase(name: string) {
     let sb = '';
@@ -83,25 +75,50 @@ function protectJsonKey(key: string): string {
     return key;
 }
 
+function aliasFilter(type: string) {
+    let rawType: string = type;
+    let isArray: boolean = false;
+    let generic: string = '';
+    if (type.endsWith("[]")) {
+        rawType = type.substring(0, type.length - 2);
+        isArray = true;
+    }
+    if (rawType.endsWith(">")) {
+        let p = rawType.indexOf("<");
+        generic = rawType.substring(p + 1, rawType.length - 1);
+        if (rawRemapNode[generic])
+            generic = rawRemapNode[generic];
+        rawType = rawType.substring(0, p);
+    }
+    if (gen.alias[rawType])
+        rawType = gen.alias[rawType];
+
+    // OVHdomain.coreTypes.ServiceId:long
+    if (~rawType.indexOf(':')) {
+        rawType = rawType.substring(rawType.indexOf(':') + 1);
+    }
+
+    if (rawRemapNode[rawType])
+        rawType = rawRemapNode[rawType];
+    if (generic)
+        rawType += '<' + generic + '>';
+    if (isArray)
+        rawType += "[]";
+    return rawType;
+}
+
 function fullTypeExp(param: Parameter) {
     // final String prefix = data.getNodeProject();
-    let full = param.fullType;
-    let tmp = mapNode(full);
-    if (tmp) {
-        return tmp;
-    }
-    if (full == null) {
-        full = param.dataType;
-    }
+    let typename = param.fullType;
+    if (!typename)
+        typename = param.dataType;
     //let typename = 'data.toNodeType(' + full + ')';
-    let typename = full;
     //if (isblackListed(typename)) {
     //    OvhApiModel model = data.models.get(full);
     //    genEnum(model, sb);
     //    return;
     //}
-    if (gen.alias[typename])
-        return gen.alias[typename];
+    typename = aliasFilter(typename);
     return typename;
 }
 /**
@@ -163,10 +180,8 @@ function dumpApi(depth: number, api: CacheApi, code: string): string {
             code += `): `;
             let retType = op.responseFullType;
             if (!retType)
-                retType = mapNode(op.responseType);
-            if (!retType)
                 retType = op.responseType;
-
+            retType = aliasFilter(retType);
             code += `${retType};\n`;
         }
     }
@@ -219,18 +234,9 @@ function dumpModel(depth: number, cache: CacheModel, code: string, fullNS: strin
                 let type = prop.fullType || prop.type;
                 if (type.endsWith(':string'))
                     type = 'string'
-                if (rawRemapNode[type])
-                    type = rawRemapNode[type]
-                if (gen.alias[type])
-                    type = gen.alias[type];
+                type = aliasFilter(type);
                 if (~type.indexOf('.'))
                     type = extraNS + type;
-                //const fullNS = model.namespace;
-                //if (type.startsWith(fullNS)) {
-                //    let tmp = type.substr(fullNS.length + 1)
-                //    if (!~tmp.indexOf('.'))
-                //        type = tmp;
-                //}
                 type = type.replace('<long>', '<number>');
                 code += type;
                 code += ';\n';
@@ -253,9 +259,6 @@ function dumpModel(depth: number, cache: CacheModel, code: string, fullNS: strin
         //console.log(ns['order']);
         for (const ns of keys) {
             let fns = fullNS ? `${fullNS}.${ns}` : ns;
-            if (cache['order'] && !fullNS) {
-                console.log(fns + ' in Order ' + Object.keys(<CacheModel>cache['order']));
-            }
             code = dumpModel(depth + 1, <CacheModel>cache[ns], code, fns);
         }
         if (cache._namespace || cache._name)
@@ -264,16 +267,21 @@ function dumpModel(depth: number, cache: CacheModel, code: string, fullNS: strin
     return code;
 }
 async function main() {
-    /** @type {Schema>}*/
-    //  await gen.loadSchemas('/services.json')
-    let api = 'me';
-    extraNS = `OVHme.`;
-    await gen.loadSchemas(`/${api}.json`)
-    let code = `export namespace ${extraNS.replace('.', '')} {\n`;
-    code = dumpModel(0, gen.models, code, '');
-    code += dumpApi(0, gen.apis, '// Apis\n');
-    code += '}';
-    await fse.writeFile(`${api}.ts`, code);
+    let apis = await gen.listSchemas()
+    // ['/me', '/domain']
+    // await fse.mkdir('dist');
+    for (const api of apis) {
+        let flat = api.replace(/\//g, '');
+        gen = new GenApiTypes();
+        extraNS = `OVH${flat}.`;
+        await gen.loadSchemas(`${api}.json`)
+        let code = `export namespace ${extraNS.replace('.', '')} {\n`;
+        code = dumpModel(0, gen.models, code, '');
+        code += dumpApi(0, gen.apis, '// Apis\n');
+        code += '}';
+        console.log(`dist${Path.sep}${flat}.ts`);
+        await fse.writeFile(`dist${Path.sep}${flat}.ts`, code);
+    }
 }
 
 main().then(() => console.log);

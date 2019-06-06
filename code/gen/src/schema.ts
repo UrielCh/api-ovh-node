@@ -72,3 +72,20 @@ export interface FieldProp  {
     required:     boolean;
     type:         string;
 }
+
+export interface OvhIndex {
+    apis:     API[];
+    basePath: string;
+}
+
+export interface API {
+    path:        string;
+    schema:      string; // "{path}.{format}",
+    format:      ApiFormat[];
+    description: string;
+}
+
+export enum ApiFormat {
+    JSON = "json",
+    YAML = "yaml",
+}

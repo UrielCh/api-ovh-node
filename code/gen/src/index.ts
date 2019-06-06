@@ -1,5 +1,5 @@
 import * as https from 'https';
-import { Schema, API, ModelsProp } from './schema';
+import { Schema, OvhIndex, API, ModelsProp } from './schema';
 import { endpoints } from './endpoints';
 
 export interface OvhParams {
@@ -25,11 +25,9 @@ export interface CacheModel {
 
 export default class GenApiTypes {
     basePath: string; // '/1.0'
-    usedApi: string[];
     apis: CacheApi;
     models: CacheModel;
-    alias: {[key: string]: string} = {};
-    apisLoaded: boolean;
+    alias: { [key: string]: string } = {};
     host: string;
     port: number;
 
@@ -51,13 +49,20 @@ export default class GenApiTypes {
         this.basePath = '/1.0';
 
         // Declared used API, will be used to check the associated schema
-        this.usedApi = params.apis || [];
-        if (Array.isArray(this.usedApi) && this.usedApi.length > 0 && this.usedApi.indexOf('auth') < 0) {
-            this.usedApi.push('auth');
-        }
         this.apis = <CacheApi>{ _path: '' }
         this.models = <CacheModel>{ _name: '' }
-        this.apisLoaded = !this.usedApi.length;
+    }
+
+    listSchemas(): Promise<String[]> {
+        let request = { // https://eu.api.ovh.com/1.0/
+            host: this.host, // eu.api.ovh.com
+            port: this.port, // 443
+            path: this.basePath// /1.0/
+        };
+        return this.loadJson(request)
+            .then((data: OvhIndex) => {
+                return data.apis.map(api => api.path)
+            })
     }
     /**
      * Recursively loads the schemas of the specified used APIs.
@@ -70,13 +75,8 @@ export default class GenApiTypes {
             port: this.port, // 443
             path: this.basePath + path // /1.0/
         };
-        // Fetch only selected APIs
-        if (path === '/') {
-            return Promise.all(this.usedApi.map((apiName) => this.loadSchemas(`/${apiName}.json`)))
-        }
-
         // Fetch all APIs
-        return this.loadSchemasRequest(request).then((schema: Schema) => {
+        return this.loadJson(request).then((schema: Schema) => {
             schema.apis.map((api: API) => {
                 let apiPath = api.path.split('/');
                 this.addApi(apiPath, api, this.apis);
@@ -141,7 +141,7 @@ export default class GenApiTypes {
      * @param {Object} options: HTTP request options
      * @param {Function} callback
      */
-    loadSchemasRequest(options: https.RequestOptions): Promise<Schema> {
+    loadJson(options: https.RequestOptions): Promise<any> {
         return new Promise((resolve, reject) => {
             https.get(options, (res) => {
                 let body: string = '';
@@ -152,7 +152,7 @@ export default class GenApiTypes {
                                 Error(`[OVH] Unable to load schema ${options.path}, HTTP response code: ${res.statusCode}`));
                         }
                         try {
-                            return resolve(<Schema>JSON.parse(body));
+                            return resolve(JSON.parse(body));
                         } catch (e) {
                             return reject(
                                 Error(`[OVH] Unable to parse the schema: ${options.path}`));
