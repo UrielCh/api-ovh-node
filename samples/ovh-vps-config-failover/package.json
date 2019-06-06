@@ -1,10 +1,11 @@
 {
   "name": "ovh-vps-config-failover",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index.js",
   "typings": "index.d.ts",
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
+  "description": "Configure IP Failover on an Debian/centOS based OVH VPS.",
   "bin": {
     "ovh-vps-config-failover": "./bin/ovh-vps-config-failover"
   },
