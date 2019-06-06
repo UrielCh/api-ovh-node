@@ -21,8 +21,10 @@ async function main() {
     throw `No ${iface} has no IPv4`;
   console.log(`Your main IP is ${mainIP}`)
   const hosts = await readFile('/etc/hosts', 'utf8');
-  const m = hosts.match(/127.0.1.1\s+([a-z0-9]+\.ovh\.net)/);
-  if (!m)
+  let m = hosts.match(/127.0.1.1\s+([a-z0-9]+\.ovh\.net)/);
+  if (!m) 
+    m = hosts.match(/\s([a-z0-9]+\.ovh\.net)/);
+  if (!m) 
     throw 'No vps hostname in found in /etc/hosts';
   const serviceName = m[1];
   let ovh = new Ovh({ accessRules: `GET /vps/${serviceName}/ips` });
