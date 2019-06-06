@@ -10,12 +10,15 @@ async function main() {
   const ifaces = networkInterfaces()
   if (!ifaces)
     throw 'os.networkInterfaces() failed';
-
-  if (!ifaces['ens3'])
-    throw 'No ens3 netword interface';
-  const mainIP = ifaces['ens3'].filter(a => a.family == 'IPv4')[0].address
+  let iface = 'ens3';
+  // test common interface
+  if (!ifaces[iface])
+    iface = 'eth0';
+  if (!ifaces[iface])
+    throw `No ens3/eth0 netword interface`;
+  const mainIP = ifaces[iface].filter(a => a.family == 'IPv4')[0].address
   if (!mainIP)
-    throw 'No ens3 has no IPv4';
+    throw `No ${iface} has no IPv4`;
   console.log(`Your main IP is ${mainIP}`)
   const hosts = await readFile('/etc/hosts', 'utf8');
   const m = hosts.match(/127.0.1.1\s+([a-z0-9]+\.ovh\.net)/);
@@ -36,7 +39,7 @@ async function main() {
 
   for (var i = 0; i < ipFo.length; i++) {
     confFile += `auto ens3:${i}
- iface ens3:${i + 1} inet static
+ iface ${iface}:${i + 1} inet static
  address ${ipFo[i]}
  netmask 255.255.255.255
  broadcast ${ipFo[i]}
