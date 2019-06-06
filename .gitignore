@@ -3,6 +3,10 @@ node_modules
 *.log
 package/*/dist/
 code/api/dist/
+code/api/src/*.d.ts
+code/api/src/*.js
+code/gen/src/*.js
+code/gen/src/*.d.ts
 code/common/dist/
 **/index.d.ts
 **/index.js
