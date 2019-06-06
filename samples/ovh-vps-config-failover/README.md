@@ -9,9 +9,9 @@ npm install -g ovh-vps-config-failover
 ovh-vps-config-failover
 ```
 
-![ovh-vps-config-failover on vps](../ressources/ovh-vps-config-failover.gif?raw=true "preview")
+![ovh-vps-config-failover on vps](https://github.com/UrielCh/api-ovh-node/blob/master/samples/ressources/ovh-vps-config-failover.gif?raw=true "preview")
 
 ## install nodejs
 
-[samples doc](../README.md)
+[samples doc](https://github.com/UrielCh/api-ovh-node/blob/master/samples/README.md)
 
