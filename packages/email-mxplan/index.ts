@@ -559,6 +559,16 @@ export interface EmailMxplanService {
  */
 export type EmailMxplanServiceOfferEnum = 'MXPLAN';
 /**
+ * Account capabilities
+ */
+export interface EmailMxplanAccountCapabilities {
+  /**
+   * List of allowed quotas (no constraint if null)
+   *
+   */
+  quotas?: number[];
+}
+/**
  * Disclaimer attributes list
  */
 export type EmailProDisclaimerAttributeEnum = 'City' | 'Company' | 'Country' | 'Department' | 'DisplayName' | 'Email' | 'FaxNumber' | 'FirstName' | 'HomePhoneNumber' | 'Initials' | 'LastName' | 'Manager' | 'MobileNumber' | 'Notes' | 'Office' | 'OtherFaxNumber' | 'OtherHomePhoneNumber' | 'OtherPhoneNumber' | 'PagerNumber' | 'PhoneNumber' | 'State' | 'Street' | 'Title' | 'UserLogonName' | 'ZipCode';
@@ -700,6 +710,7 @@ type PathsEmailMxplanGET = '/email/mxplan' |
 '/email/mxplan/{service}/account/{email}' | 
 '/email/mxplan/{service}/account/{email}/alias' | 
 '/email/mxplan/{service}/account/{email}/alias/{alias}' | 
+'/email/mxplan/{service}/account/{email}/capabilities' | 
 '/email/mxplan/{service}/account/{email}/diagnostic' | 
 '/email/mxplan/{service}/account/{email}/fullAccess' | 
 '/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}' | 
@@ -777,6 +788,11 @@ export class ApiEmailMxplan extends OvhWrapper {
   Get this object properties
   **/
   public get(path: '/email/mxplan/{service}/account/{email}/alias/{alias}', params: {service: string, email: string, alias: string}): Promise<EmailMxplanAccountAlias>;
+  /**
+  capabilities operations
+  Get available capabilities for this account
+  **/
+  public get(path: '/email/mxplan/{service}/account/{email}/capabilities', params: {service: string, email: string}): Promise<EmailMxplanAccountCapabilities>;
   /**
   Account Diagnosis
   Get this object properties

@@ -2081,7 +2081,7 @@ export type CloudKubeUpdatePolicy = 'ALWAYS_UPDATE' | 'MINIMAL_DOWNTIME' | 'NEVE
 /**
  * Description not available
  */
-export type CloudKubeVersion = '1.11' | '1.12' | '1.13';
+export type CloudKubeVersion = '1.11' | '1.12' | '1.13' | '1.14';
 /**
  * Migration
  */
@@ -3488,7 +3488,7 @@ export interface CloudUserRclone {
 /**
  * RoleEnum
  */
-export type CloudUserRoleEnum = 'admin' | 'authentication';
+export type CloudUserRoleEnum = 'admin' | 'administrator' | 'authentication' | 'backup_operator' | 'compute_operator' | 'image_operator' | 'infrastructure_supervisor' | 'network_operator' | 'network_security_operator' | 'objectstore_operator' | 'volume_operator';
 /**
  * User
  */

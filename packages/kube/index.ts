@@ -158,7 +158,7 @@ export type KubeUpdatePolicy = 'ALWAYS_UPDATE' | 'MINIMAL_DOWNTIME' | 'NEVER_UPD
 /**
  * Description not available
  */
-export type KubeVersion = '1.11' | '1.12' | '1.13';
+export type KubeVersion = '1.11' | '1.12' | '1.13' | '1.14';
 /**
  * Map a possible renew for a specific service
  */
