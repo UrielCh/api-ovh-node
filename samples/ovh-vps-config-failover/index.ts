@@ -38,7 +38,7 @@ async function main() {
     throw 'No vps hostname in found in /etc/hosts';
   const dist = await identDist();
   const serviceName = m[1];
-  console.log(`serviceName: ${serviceName}, distrib:${dist}`);
+  console.log({ serviceName, distrib: dist });
   console.log('');
   let ovh = new Ovh({ accessRules: `GET /vps/${serviceName}/ips` });
   const vps = new ApiVps(ovh);

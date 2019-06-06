@@ -422,7 +422,7 @@ You can replace it with ${status.replacement}`);
                     // httpCode:"403 Forbidden"
                     // message:"This credential is not valid"
                     setTimeout(checkCert, 2000);
-                    if (++pass % 5 == 0) {
+                    if (++pass % 15 == 0) {
                         console.log(`\n${errorCode}: ${consumerKey} url:\n${validationUrl}`)
                     }
                 })
