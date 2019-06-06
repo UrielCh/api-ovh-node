@@ -36,12 +36,12 @@ async function main() {
     m = hosts.match(/\s([a-z0-9]+\.ovh\.net)/);
   if (!m)
     throw 'No vps hostname in found in /etc/hosts';
-
   const dist = await identDist();
   const serviceName = m[1];
+  console.log(`serviceName: ${serviceName}, distrib:${dist}`);
+  console.log('');
   let ovh = new Ovh({ accessRules: `GET /vps/${serviceName}/ips` });
   const vps = new ApiVps(ovh);
-  console.log({ serviceName });
   let data = await vps.get('/vps/{serviceName}/ips', { serviceName })
   const ipFo = data.filter(a => a != mainIP).filter(a => !~a.indexOf(':'))
   console.log(`TOTAL IP: ${data.length} FO: ${ipFo.length}`)
@@ -68,11 +68,11 @@ ONBOOT=yes
     for (let i = 0; i < confs.length; i++) {
       await writeFile(`ifcfg-${iface}:${i}`, confs[i], { mode: 0o644 });
     }
-    console.log('ifcfg-${iface}:* Generated')
+    console.log(`ifcfg-${iface}:* Generated`)
     console.log('')
-    console.log('mv ifcfg-${iface}:* /etc/sysconfig/network-scripts/')
+    console.log(`mv ifcfg-${iface}:* /etc/sysconfig/network-scripts/`)
     for (let i = 0; i < confs.length; i++)
-      console.log('ifup ifcfg-${iface}:${i}');
+      console.log(`ifup ifcfg-${iface}:${i}`);
   }
 }
 main().then(console.log, console.error);
