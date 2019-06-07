@@ -291,6 +291,10 @@ export interface CloudFlavorPrice {
   region: string;
 }
 /**
+ * Enum values for IpCountry
+ */
+export type CloudIpCountryEnum = 'au' | 'be' | 'ca' | 'cz' | 'de' | 'es' | 'fi' | 'fr' | 'ie' | 'it' | 'lt' | 'nl' | 'pl' | 'pt' | 'sg' | 'uk' | 'us';
+/**
  * An operation is an async process on your Project
  */
 export interface CloudOperation {
@@ -451,6 +455,11 @@ export interface CloudRegion {
    *
    */
   datacenterLocation: string;
+  /**
+   * Allowed countries for failover ip
+   *
+   */
+  ipCountries: CloudIpCountryEnum[];
   /**
    * Region name
    *
@@ -4422,7 +4431,7 @@ export class ApiCloud extends OvhWrapper {
   **/
   public get(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup', params: {regionName: string, serviceName: string}): Promise<CloudBackup[]>;
   /**
-  Missing description
+  Manage a backup workflow process
   Get details about a backup workflow process
   **/
   public get(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}', params: {backupWorkflowId: string, regionName: string, serviceName: string}): Promise<CloudBackup>;
@@ -5011,7 +5020,7 @@ export class ApiCloud extends OvhWrapper {
   **/
   public delete(path: '/cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}', params: {networkId: string, serviceName: string, subnetId: string}): Promise<void>;
   /**
-  Missing description
+  Manage a backup workflow process
   Delete a backup workflow process
   **/
   public delete(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}', params: {backupWorkflowId: string, regionName: string, serviceName: string}): Promise<void>;

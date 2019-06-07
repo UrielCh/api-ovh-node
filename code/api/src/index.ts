@@ -407,7 +407,7 @@ You can replace it with ${status.replacement}`);
         const waitForCertValidation = async (consumerKey: string, validationUrl: string) => new Promise((done) => {
             // set consumerKey
             ovhEngine.consumerKey = consumerKey;
-            console.log(`[OVH] MISSING_CREDENTIAL issue: ${consumerKey}\nvalidate this cert url:\n${validationUrl}`)
+            console.log(`[OVH] MISSING_CREDENTIAL issue a new one: ${consumerKey}\nValidate this cert with this url to continue:\n${validationUrl}`)
             let pass = 0;
             const checkCert = () => ovhEngine.request('GET', '/auth/currentCredential')
                 .then(({ status }) => {
@@ -423,7 +423,10 @@ You can replace it with ${status.replacement}`);
                     // message:"This credential is not valid"
                     setTimeout(checkCert, 2000);
                     if (++pass % 15 == 0) {
-                        console.log(`\n${errorCode}: ${consumerKey} url:\n${validationUrl}`)
+                        if (errorCode === 'MISSING_CREDENTIAL')
+                            console.log(`waiting for cert validation here: ${validationUrl}`)
+                        else
+                            console.log(`\n${errorCode}: ${consumerKey} url:\n${validationUrl}`)
                     }
                 })
             setTimeout(checkCert, 2000)

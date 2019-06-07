@@ -2084,6 +2084,20 @@ export interface InsightAccess {
   expireAt: string;
 }
 /**
+ * Support level of an account
+ */
+export interface MeSupportLevelLevel {
+  /**
+   * Level of support
+   *
+   */
+  level: MeSupportLevelLevelTypeEnum;
+}
+/**
+ * Type of level
+ */
+export type MeSupportLevelLevelTypeEnum = 'business' | 'enterprise' | 'premium' | 'premium-accredited' | 'standard';
+/**
  * Consent campaign
  */
 export interface MeConsentCampaign {
@@ -3605,7 +3619,7 @@ export interface NichandleSshKey {
   keyName: string;
 }
 /**
- * 
+ * null
  */
 export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL' | 'MAD' | 'N/A' | 'PLN' | 'SGD' | 'TND' | 'USD' | 'XOF' | 'points';
 /**
@@ -3903,6 +3917,7 @@ type PathsMeGET = '/me' |
 '/me/subAccount/{id}' | 
 '/me/subscription' | 
 '/me/subscription/{subscriptionType}' | 
+'/me/supportLevel' | 
 '/me/task/contactChange' | 
 '/me/task/contactChange/{id}' | 
 '/me/task/domain' | 
@@ -4796,6 +4811,11 @@ export class ApiMe extends OvhWrapper {
   Get this object properties
   **/
   public get(path: '/me/subscription/{subscriptionType}', params: {subscriptionType: string}): Promise<NichandleSubscription>;
+  /**
+  Fetch the support level of the account
+  Fetch the support level of the account
+  **/
+  public get(path: '/me/supportLevel'): Promise<MeSupportLevelLevel>;
   /**
   List the nichandle.contactChange.Task objects
   List of service contact change tasks you are involved in

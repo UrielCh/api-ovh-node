@@ -265,7 +265,8 @@ type PathsVeeamCloudConnectGET = '/veeamCloudConnect' |
 type PathsVeeamCloudConnectPUT = '/veeamCloudConnect/{serviceName}/serviceInfos';
 
 type PathsVeeamCloudConnectPOST = '/veeamCloudConnect/{serviceName}/backupRepository' | 
-'/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota';
+'/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota' | 
+'/veeamCloudConnect/{serviceName}/resetPassword';
 
 type PathsVeeamCloudConnectDELETE = '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}';
 
@@ -339,6 +340,11 @@ export class ApiVeeamCloudConnect extends OvhWrapper {
   Change your quota
   **/
   public post(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota', params: {serviceName: string, inventoryName: string}): Promise<VeeamCloudConnectTask[]>;
+  /**
+  resetPassword operations
+  Reset your Cloud Tenant Password
+  **/
+  public post(path: '/veeamCloudConnect/{serviceName}/resetPassword', params: {serviceName: string}): Promise<VeeamCloudConnectTask>;
   public post(path: PathsVeeamCloudConnectPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

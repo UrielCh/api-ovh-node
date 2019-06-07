@@ -1239,6 +1239,11 @@ export interface DedicatedServerNetworkSpecifications {
    */
   routing?: DedicatedServerRoutingDetails;
   /**
+   * Switching details
+   *
+   */
+  switching?: DedicatedServerSwitchingDetails;
+  /**
    * Traffic details
    *
    */
@@ -1846,6 +1851,16 @@ export interface DedicatedServerSupportReplaceHddInfo {
    *
    */
   slot_id?: number;
+}
+/**
+ * A structure describing switching informations about this dedicated server
+ */
+export interface DedicatedServerSwitchingDetails {
+  /**
+   * Switch name
+   *
+   */
+  name?: string;
 }
 /**
  * Server tasks

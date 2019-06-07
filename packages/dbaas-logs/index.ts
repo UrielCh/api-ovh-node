@@ -4,7 +4,7 @@ import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
  */
 export interface DbaasLogsAlias {
   /**
-   * Alias UUID
+   * Alias ID
    *
    */
   aliasId: string;
@@ -49,7 +49,7 @@ export interface DbaasLogsAlias {
  */
 export interface DbaasLogsAllowedNetwork {
   /**
-   * Network UUID
+   * Network ID
    *
    */
   allowedNetworkId: string;
@@ -64,7 +64,7 @@ export interface DbaasLogsAllowedNetwork {
  */
 export interface DbaasLogsArchive {
   /**
-   * Archive UUID
+   * Archive ID
    *
    */
   archiveId: string;
@@ -128,7 +128,7 @@ export interface DbaasLogsArchiveUrl {
  */
 export interface DbaasLogsCluster {
   /**
-   * Cluster UUID
+   * Cluster ID
    *
    */
   clusterId: string;
@@ -173,7 +173,7 @@ export interface DbaasLogsCluster {
  */
 export interface DbaasLogsClusterAllowedNetwork {
   /**
-   * Network UUID
+   * Network ID
    *
    */
   allowedNetworkId: string;
@@ -210,7 +210,7 @@ export interface DbaasLogsDashboard {
    */
   createdAt: string;
   /**
-   * Dashboard UUID
+   * Dashboard ID
    *
    */
   dashboardId: string;
@@ -250,7 +250,7 @@ export interface DbaasLogsDashboard {
  */
 export interface DbaasLogsEngine {
   /**
-   * Input engine UUID
+   * Input engine ID
    *
    */
   engineId: string;
@@ -317,7 +317,7 @@ export interface DbaasLogsIndex {
    */
   description?: string;
   /**
-   * Index UUID
+   * Index ID
    *
    */
   indexId: string;
@@ -367,7 +367,7 @@ export interface DbaasLogsInput {
    */
   description: string;
   /**
-   * Input engine UUID
+   * Input engine ID
    *
    */
   engineId: string;
@@ -600,7 +600,7 @@ export interface DbaasLogsOperation {
    */
   inputId?: string;
   /**
-   * Operation UUID
+   * Operation ID
    *
    */
   operationId: string;
@@ -709,7 +709,7 @@ export interface DbaasLogsOption {
    */
   maxNbStream: number;
   /**
-   * Option UUID
+   * Option ID
    *
    */
   optionId: string;
@@ -753,7 +753,7 @@ export interface DbaasLogsPermission {
    */
   indexId?: string;
   /**
-   * Permission UUID
+   * Permission ID
    *
    */
   permissionId: string;
@@ -901,7 +901,7 @@ export interface DbaasLogsRole {
    */
   optionId?: string;
   /**
-   * Role UUID
+   * Role ID
    *
    */
   roleId: string;
@@ -1045,7 +1045,7 @@ export interface DbaasLogsStream {
    */
   parentStreamId?: string;
   /**
-   * Stream UUID
+   * Stream ID
    *
    */
   streamId: string;
@@ -1070,7 +1070,7 @@ export interface DbaasLogsStream {
  */
 export interface DbaasLogsStreamAlertCondition {
   /**
-   * Stream alert condition UUID
+   * Stream alert condition ID
    *
    */
   alertId: string;
@@ -1179,7 +1179,7 @@ export interface DbaasLogsStreamRule {
    */
   operator?: DbaasLogsStreamRuleOperatorEnum;
   /**
-   * Stream rule UUID
+   * Stream rule ID
    *
    */
   ruleId: string;
@@ -1233,7 +1233,7 @@ export interface DbaasLogsTestResult {
  */
 export interface DbaasLogsToken {
   /**
-   * Cluster UUID
+   * Cluster ID
    *
    */
   clusterId?: string;
@@ -1248,7 +1248,7 @@ export interface DbaasLogsToken {
    */
   name: string;
   /**
-   * Token UUID
+   * Token ID
    *
    */
   tokenId: string;
@@ -1509,7 +1509,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   **/
   public get(path: '/dbaas/logs/offer/{reference}', params: {reference: string}): Promise<DbaasLogsPublicOffer>;
   /**
-  Service
+  Operations about the DBAAS-LOGS service
   Returns the service object of connected identity.
   **/
   public get(path: '/dbaas/logs/{serviceName}', params: {serviceName: string}): Promise<DbaasLogsService>;
@@ -1525,7 +1525,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   public get(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}', params: {serviceName: string, clusterId: string}): Promise<DbaasLogsCluster>;
   /**
   Cluster allowed networks
-  List all the network UUID allowed to contact given cluster
+  List all the network ID allowed to contact given cluster
   **/
   public get(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork', params: {serviceName: string, clusterId: string}): Promise<string[]>;
   /**
@@ -1550,12 +1550,12 @@ export class ApiDbaasLogs extends OvhWrapper {
   public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/action', params: {serviceName: string, inputId: string}): Promise<DbaasLogsInputAction[]>;
   /**
   InputAllowedNetworks
-  List all network UUID allowed to join input
+  List all network ID allowed to join input
   **/
   public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', params: {serviceName: string, inputId: string}): Promise<string[]>;
   /**
-  InputAllowedNetworkDetails
-  List all network UUID allowed to join input
+  InputAllowedNetwork
+  List all network ID allowed to join input
   **/
   public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {serviceName: string, inputId: string, allowedNetworkId: string}): Promise<DbaasLogsAllowedNetwork>;
   /**
@@ -1686,12 +1686,12 @@ export class ApiDbaasLogs extends OvhWrapper {
   **/
   public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {serviceName: string, streamId: string, alertId: string}): Promise<DbaasLogsStreamAlertCondition>;
   /**
-  Streams
+  StreamArchives
   Returns the list of archives
   **/
   public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive', params: {serviceName: string, streamId: string}): Promise<string[]>;
   /**
-  Streams
+  StreamArchive
   Returns details of specified archive
   **/
   public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}', params: {serviceName: string, streamId: string, archiveId: string}): Promise<DbaasLogsArchive>;
@@ -1769,7 +1769,7 @@ export class ApiDbaasLogs extends OvhWrapper {
     return super.get(path, params
   );}
   /**
-  Service
+  Operations about the DBAAS-LOGS service
   Update the service properties
   **/
   public put(path: '/dbaas/logs/{serviceName}', params: {serviceName: string}): Promise<DbaasLogsOperation>;
@@ -1985,7 +1985,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   **/
   public delete(path: '/dbaas/logs/{serviceName}/input/{inputId}', params: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
   /**
-  InputAllowedNetworkDetails
+  InputAllowedNetwork
   Remove the specified IP from the list of allowed networks
   **/
   public delete(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {serviceName: string, inputId: string, allowedNetworkId: string}): Promise<DbaasLogsOperation>;
