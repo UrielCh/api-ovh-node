@@ -319,17 +319,17 @@ export class ApiStore extends OvhWrapper {
   MarketPlaceContact.contactId
   Edit contact information
   **/
-  public put(path: '/store/contact/{contactId}', params: {contactId: string}): Promise<MarketPlaceContact>;
+  public put(path: '/store/contact/{contactId}', params: {contactId: string, city?: string, country?: string, email?: string, firstname?: string, lastname?: string, phone?: string, province?: string, street?: string, title?: string, zip?: string}): Promise<MarketPlaceContact>;
   /**
   MarketPlacePartner.get
   Edit partner info
   **/
-  public put(path: '/store/partner/{partnerId}', params: {partnerId: string}): Promise<MarketPlacePartner>;
+  public put(path: '/store/partner/{partnerId}', params: {partnerId: string, category?: string, city?: string, companyNationalIdentificationNumber?: string, contact?: string, country?: string, description?: string, language?: string, legalForm?: string, organisationDisplayName?: string, organisationName?: string, otherDetails?: string, province?: string, street?: string, url?: string, vat?: string, zip?: string}): Promise<MarketPlacePartner>;
   /**
   MarketPlacePartnerProduct.get
   Edit product info
   **/
-  public put(path: '/store/partner/{partnerId}/product/{productId}', params: {partnerId: string, productId: string}): Promise<MarketPlacePartnerProduct>;
+  public put(path: '/store/partner/{partnerId}/product/{productId}', params: {partnerId: string, productId: string, category?: string, description?: string, name?: string, otherDetails?: string}): Promise<MarketPlacePartnerProduct>;
   public put(path: PathsStorePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -342,7 +342,7 @@ export class ApiStore extends OvhWrapper {
   MarketPlaceContact.doc
   Add a document to a contact
   **/
-  public post(path: '/store/contact/{contactId}/document', params: {contactId: string}): Promise<string[]>;
+  public post(path: '/store/contact/{contactId}/document', params: {contactId: string, documentId: string}): Promise<string[]>;
   /**
   MarketPlaceDocument
   Create a document
@@ -362,17 +362,17 @@ export class ApiStore extends OvhWrapper {
   MarketPlacePartner.doc
   Add a document to a partner
   **/
-  public post(path: '/store/partner/{partnerId}/document', params: {partnerId: string}): Promise<string[]>;
+  public post(path: '/store/partner/{partnerId}/document', params: {partnerId: string, documentId: string}): Promise<string[]>;
   /**
   MarketPlacePartnerProduct.search
   Create a new product for partner
   **/
-  public post(path: '/store/partner/{partnerId}/product', params: {partnerId: string}): Promise<MarketPlacePartnerProduct>;
+  public post(path: '/store/partner/{partnerId}/product', params: {partnerId: string, category: string, description: string, name: string, otherDetails?: string}): Promise<MarketPlacePartnerProduct>;
   /**
   MarketPlacePartnerProduct.doc
   Add a document to a product
   **/
-  public post(path: '/store/partner/{partnerId}/product/{productId}/document', params: {partnerId: string, productId: string}): Promise<string[]>;
+  public post(path: '/store/partner/{partnerId}/product/{productId}/document', params: {partnerId: string, productId: string, documentId: string}): Promise<string[]>;
   public post(path: PathsStorePOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

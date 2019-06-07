@@ -1772,62 +1772,62 @@ export class ApiDbaasLogs extends OvhWrapper {
   Operations about the DBAAS-LOGS service
   Update the service properties
   **/
-  public put(path: '/dbaas/logs/{serviceName}', params: {serviceName: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}', params: {serviceName: string, displayName?: string, isCapped?: boolean}): Promise<DbaasLogsOperation>;
   /**
   Input
   Update information of specified input object
   **/
-  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}', params: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}', params: {serviceName: string, inputId: string, description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string}): Promise<DbaasLogsOperation>;
   /**
   FlowggerConfiguration
   Update the flowgger configuration
   **/
-  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger', params: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger', params: {serviceName: string, inputId: string, logFormat: DbaasLogsFlowggerConfigurationLogFormatEnum, logFraming: DbaasLogsFlowggerConfigurationLogFramingEnum}): Promise<DbaasLogsOperation>;
   /**
   LogstashConfiguration
   Update the logstash configuration
   **/
-  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash', params: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash', params: {serviceName: string, inputId: string, filterSection?: string, inputSection: string, patternSection?: string}): Promise<DbaasLogsOperation>;
   /**
   Alias
   Update specified elasticsearch alias
   **/
-  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', params: {serviceName: string, aliasId: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', params: {serviceName: string, aliasId: string, description: string, optionId?: string}): Promise<DbaasLogsOperation>;
   /**
   Index
   Update specified elasticsearch index
   **/
-  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}', params: {serviceName: string, indexId: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}', params: {serviceName: string, indexId: string, alertNotifyEnabled?: boolean, description: string}): Promise<DbaasLogsOperation>;
   /**
   Dashboard
   Update information of specified graylog dashboard
   **/
-  public put(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}', params: {serviceName: string, dashboardId: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}', params: {serviceName: string, dashboardId: string, description: string, optionId?: string, title: string}): Promise<DbaasLogsOperation>;
   /**
   Stream
   Update information of specified graylog stream
   **/
-  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}', params: {serviceName: string, streamId: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}', params: {serviceName: string, streamId: string, coldStorageCompression?: DbaasLogsStreamColdStorageCompressionEnum, coldStorageContent?: DbaasLogsStreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: DbaasLogsStreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, title: string, webSocketEnabled?: boolean}): Promise<DbaasLogsOperation>;
   /**
   StreamAlert
   Update alert information of specified graylog stream
   **/
-  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {serviceName: string, streamId: string, alertId: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {serviceName: string, streamId: string, alertId: string, backlog: number, conditionType?: DbaasLogsStreamAlertConditionConditionTypeEnum, constraintType?: DbaasLogsStreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: DbaasLogsStreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}): Promise<DbaasLogsOperation>;
   /**
   Role
   Update information of specified role
   **/
-  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}', params: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}', params: {serviceName: string, roleId: string, description: string, name: string, optionId?: string}): Promise<DbaasLogsOperation>;
   /**
   RoleMember
   Update the member metadata
   **/
-  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', params: {serviceName: string, roleId: string, username: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', params: {serviceName: string, roleId: string, username: string, note?: string}): Promise<DbaasLogsOperation>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dbaas/logs/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dbaas/logs/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsDbaasLogsPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -1835,22 +1835,22 @@ export class ApiDbaasLogs extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/dbaas/logs/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/dbaas/logs/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Cluster allowed networks
   Allow an IP to contact cluster
   **/
-  public post(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork', params: {serviceName: string, clusterId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork', params: {serviceName: string, clusterId: string, flowType: DbaasLogsClusterAllowedNetworkFlowTypeEnum, network: string}): Promise<DbaasLogsOperation>;
   /**
   Inputs
   Register a new input object
   **/
-  public post(path: '/dbaas/logs/{serviceName}/input', params: {serviceName: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/input', params: {serviceName: string, autoSelectOption?: boolean, description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string}): Promise<DbaasLogsOperation>;
   /**
   InputAllowedNetworks
   Allow an ip to join input
   **/
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', params: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', params: {serviceName: string, inputId: string, network: string}): Promise<DbaasLogsOperation>;
   /**
   InputConfigtest
   Validate configuration of specified input
@@ -1885,42 +1885,42 @@ export class ApiDbaasLogs extends OvhWrapper {
   Aliases
   Register a new elasticsearch alias
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias', params: {serviceName: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias', params: {serviceName: string, autoSelectOption?: boolean, description: string, optionId?: string, suffix: string}): Promise<DbaasLogsOperation>;
   /**
   AliasStreams
   Attach a elasticsearch index to specified elasticsearch alias
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', params: {serviceName: string, aliasId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', params: {serviceName: string, aliasId: string, indexId: string}): Promise<DbaasLogsOperation>;
   /**
   AliasStreams
   Attach a graylog stream to specified elasticsearch alias
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', params: {serviceName: string, aliasId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', params: {serviceName: string, aliasId: string, streamId: string}): Promise<DbaasLogsOperation>;
   /**
   Indexes
   Register a new elasticsearch index
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index', params: {serviceName: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index', params: {serviceName: string, alertNotifyEnabled?: boolean, autoSelectOption?: boolean, description: string, optionId?: string, suffix: string}): Promise<DbaasLogsOperation>;
   /**
   Dashboards
   Register a new graylog dashboard
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard', params: {serviceName: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard', params: {serviceName: string, autoSelectOption?: boolean, description: string, optionId?: string, title: string}): Promise<DbaasLogsOperation>;
   /**
   DashboardClone
   Copy all widgets from specified dashboard to a new one
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate', params: {serviceName: string, dashboardId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate', params: {serviceName: string, dashboardId: string, autoSelectOption?: boolean, description: string, optionId?: string, streamId?: string, title: string}): Promise<DbaasLogsOperation>;
   /**
   Streams
   Register a new graylog stream
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream', params: {serviceName: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream', params: {serviceName: string, autoSelectOption?: boolean, coldStorageCompression?: DbaasLogsStreamColdStorageCompressionEnum, coldStorageContent?: DbaasLogsStreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: DbaasLogsStreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, parentStreamId?: string, title: string, webSocketEnabled?: boolean}): Promise<DbaasLogsOperation>;
   /**
   StreamAlerts
   Register a new alert on specified graylog stream
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert', params: {serviceName: string, streamId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert', params: {serviceName: string, streamId: string, backlog: number, conditionType?: DbaasLogsStreamAlertConditionConditionTypeEnum, constraintType?: DbaasLogsStreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: DbaasLogsStreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}): Promise<DbaasLogsOperation>;
   /**
   Streams
   Get a public temporary URL to access the archive
@@ -1930,47 +1930,47 @@ export class ApiDbaasLogs extends OvhWrapper {
   StreamRules
   Register a new rule on specified graylog stream
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {serviceName: string, streamId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {serviceName: string, streamId: string, field: string, isInverted?: boolean, operator: DbaasLogsStreamRuleOperatorEnum, value: string}): Promise<DbaasLogsOperation>;
   /**
   Roles
   Register a new role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role', params: {serviceName: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role', params: {serviceName: string, autoSelectOption?: boolean, description: string, name: string, optionId?: string}): Promise<DbaasLogsOperation>;
   /**
   RoleMembers
   Append user into the member list of specified role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/member', params: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/member', params: {serviceName: string, roleId: string, note?: string, username: string}): Promise<DbaasLogsOperation>;
   /**
   RolePermissionAlias
   Append a elasticsearch alias permission to role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/alias', params: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/alias', params: {serviceName: string, roleId: string, aliasId: string}): Promise<DbaasLogsOperation>;
   /**
   RolePermissionIndex
   Append a graylog dashboard permission to role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard', params: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard', params: {serviceName: string, roleId: string, dashboardId: string, permissionType?: DbaasLogsPermissionDashboardPermissionTypeEnum}): Promise<DbaasLogsOperation>;
   /**
   RolePermissionIndex
   Append a elasticsearch index permission to role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/index', params: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/index', params: {serviceName: string, roleId: string, indexId: string, permissionType?: DbaasLogsPermissionIndexPermissionTypeEnum}): Promise<DbaasLogsOperation>;
   /**
   RolePermissionIndex
   Append a graylog stream permission to role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/stream', params: {serviceName: string, roleId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/stream', params: {serviceName: string, roleId: string, streamId: string}): Promise<DbaasLogsOperation>;
   /**
   Tokens
   Add a new token
   **/
-  public post(path: '/dbaas/logs/{serviceName}/token', params: {serviceName: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/token', params: {serviceName: string, clusterId?: string, name: string}): Promise<DbaasLogsOperation>;
   /**
   ServiceChangePassword
   Initiate a password change procedure.
   **/
-  public post(path: '/dbaas/logs/{serviceName}/user/changePassword', params: {serviceName: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/user/changePassword', params: {serviceName: string, password: string}): Promise<DbaasLogsOperation>;
   public post(path: PathsDbaasLogsPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

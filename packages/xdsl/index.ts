@@ -3681,67 +3681,67 @@ export class ApiXdsl extends OvhWrapper {
   XDSL Email Pro
   Alter this object properties
   **/
-  public put(path: '/xdsl/email/pro/{email}', params: {email: string}): Promise<void>;
+  public put(path: '/xdsl/email/pro/{email}', params: {email: string, body: XdslXdslEmailPro}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/xdsl/spare/{spare}/serviceInfos', params: {spare: string}): Promise<void>;
+  public put(path: '/xdsl/spare/{spare}/serviceInfos', params: {spare: string, body: ServicesService}): Promise<void>;
   /**
   Modem Template
   Alter this object properties
   **/
-  public put(path: '/xdsl/templateModem/{name}', params: {name: string}): Promise<void>;
+  public put(path: '/xdsl/templateModem/{name}', params: {name: string, body: XdslTemplateModem}): Promise<void>;
   /**
   XDSL Access
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}', params: {serviceName: string, body: XdslAccess}): Promise<void>;
   /**
   Modem
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/modem', params: {serviceName: string}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem', params: {serviceName: string, body: XdslModem}): Promise<void>;
   /**
   LAN Configuration of the Modem
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}', params: {serviceName: string, lanName: string}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}', params: {serviceName: string, lanName: string, body: XdslLAN}): Promise<void>;
   /**
   DHCP Configuration of the Modem
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}', params: {serviceName: string, lanName: string, dhcpName: string}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}', params: {serviceName: string, lanName: string, dhcpName: string, body: XdslDHCP}): Promise<void>;
   /**
   DHCP Static Address
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', params: {serviceName: string, lanName: string, dhcpName: string, MACAddress: string}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', params: {serviceName: string, lanName: string, dhcpName: string, MACAddress: string, body: XdslDHCPStaticAddress}): Promise<void>;
   /**
   Port Mappings
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/modem/portMappings/{name}', params: {serviceName: string, name: string}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/portMappings/{name}', params: {serviceName: string, name: string, body: XdslPortMapping}): Promise<void>;
   /**
   WLAN Configuration of the Modem
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/modem/wifi/{wifiName}', params: {serviceName: string, wifiName: string}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/wifi/{wifiName}', params: {serviceName: string, wifiName: string, body: XdslWLAN}): Promise<void>;
   /**
   Defines where and how the notifications will be sent
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', params: {serviceName: string, id: number}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', params: {serviceName: string, id: number, body: XdslMonitoringNotification}): Promise<void>;
   /**
   Current Return Merchandise Authorisation
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/rma/{id}', params: {serviceName: string, id: string}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/rma/{id}', params: {serviceName: string, id: string, body: TelephonyRma}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsXdslPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -3794,12 +3794,12 @@ export class ApiXdsl extends OvhWrapper {
   changePassword operations
   Change the email password
   **/
-  public post(path: '/xdsl/email/pro/{email}/changePassword', params: {email: string}): Promise<XdslEmailProTask>;
+  public post(path: '/xdsl/email/pro/{email}/changePassword', params: {email: string, password: string}): Promise<XdslEmailProTask>;
   /**
   replace operations
   Replace the modem by its spare
   **/
-  public post(path: '/xdsl/spare/{spare}/replace', params: {spare: string}): Promise<void>;
+  public post(path: '/xdsl/spare/{spare}/replace', params: {spare: string, domain: string}): Promise<void>;
   /**
   returnMerchandise operations
   Return the broken equipment in instantRefund
@@ -3819,7 +3819,7 @@ export class ApiXdsl extends OvhWrapper {
   applyTemplateToModem operations
   Apply TemplateModem to existing Modem
   **/
-  public post(path: '/xdsl/{serviceName}/applyTemplateToModem', params: {serviceName: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/applyTemplateToModem', params: {serviceName: string, templateName: string}): Promise<XdslTask>;
   /**
   cancelResiliation operations
   Cancel the ongoing resiliation
@@ -3829,7 +3829,7 @@ export class ApiXdsl extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/xdsl/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/xdsl/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Diagnostic of the access
   Run diagnostic on the access
@@ -3844,7 +3844,7 @@ export class ApiXdsl extends OvhWrapper {
   ipv6 operations
   Change the status of the IPv6 for this access
   **/
-  public post(path: '/xdsl/{serviceName}/ipv6', params: {serviceName: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/ipv6', params: {serviceName: string, enabled: boolean}): Promise<XdslTask>;
   /**
   cancel operations
   Cancel line diagnostic if possible
@@ -3854,12 +3854,12 @@ export class ApiXdsl extends OvhWrapper {
   run operations
   Update and get advanced diagnostic of the line
   **/
-  public post(path: '/xdsl/{serviceName}/lines/{number}/diagnostic/run', params: {serviceName: string, number: string}): Promise<XdslLineDiagnosticDiagnostic>;
+  public post(path: '/xdsl/{serviceName}/lines/{number}/diagnostic/run', params: {serviceName: string, number: string, actionsDone?: XdslLineDiagnosticCustomerActionsEnum[], answers?: XdslLineDiagnosticAnswers, faultType: XdslLineDiagnosticFaultTypeEnum}): Promise<XdslLineDiagnosticDiagnostic>;
   /**
   changeProfile operations
   Change the profile of the port
   **/
-  public post(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile', params: {serviceName: string, number: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile', params: {serviceName: string, number: string, dslamProfileId: number}): Promise<XdslTask>;
   /**
   reset operations
   Reset the port on the DSLAM
@@ -3869,52 +3869,52 @@ export class ApiXdsl extends OvhWrapper {
   blocIp operations
   Change the status of the Bloc IP on modem
   **/
-  public post(path: '/xdsl/{serviceName}/modem/blocIp', params: {serviceName: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/modem/blocIp', params: {serviceName: string, status: XdslServiceStatusEnum}): Promise<XdslTask>;
   /**
   callWaiting operations
   Change the status of callWaiting on modem
   **/
-  public post(path: '/xdsl/{serviceName}/modem/callWaiting', params: {serviceName: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/modem/callWaiting', params: {serviceName: string, callWaiting: XdslServiceStatusEnum}): Promise<XdslTask>;
   /**
   contentSharing operations
   Change the status of contentSharing on modem
   **/
-  public post(path: '/xdsl/{serviceName}/modem/contentSharing', params: {serviceName: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/modem/contentSharing', params: {serviceName: string, contentSharing: XdslServiceStatusEnum}): Promise<XdslTask>;
   /**
   duplicatePortMappingConfig operations
   Remove all the current port mapping rules and set the same config as the access given in parameters
   **/
-  public post(path: '/xdsl/{serviceName}/modem/duplicatePortMappingConfig', params: {serviceName: string}): Promise<void>;
+  public post(path: '/xdsl/{serviceName}/modem/duplicatePortMappingConfig', params: {serviceName: string, accessName: string}): Promise<void>;
   /**
   firmware operations
   Launch a task to install target firmware on modem
   **/
-  public post(path: '/xdsl/{serviceName}/modem/firmware', params: {serviceName: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/modem/firmware', params: {serviceName: string, firmware: string, todoDate?: string}): Promise<XdslTask>;
   /**
   ftp operations
   Change the status of the ftp service on modem
   **/
-  public post(path: '/xdsl/{serviceName}/modem/ftp', params: {serviceName: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/modem/ftp', params: {serviceName: string, ftp: XdslServiceStatusEnum}): Promise<XdslTask>;
   /**
   ipsecAlg operations
   Change the status of the ipsec alg service on modem
   **/
-  public post(path: '/xdsl/{serviceName}/modem/ipsecAlg', params: {serviceName: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/modem/ipsecAlg', params: {serviceName: string, ipsecAlg: XdslServiceStatusEnum}): Promise<XdslTask>;
   /**
   List the xdsl.DHCPStaticAddress objects
   Add a DHCP static lease
   **/
-  public post(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses', params: {serviceName: string, lanName: string, dhcpName: string}): Promise<XdslDHCPStaticAddress>;
+  public post(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses', params: {serviceName: string, lanName: string, dhcpName: string, IPAddress: string, MACAddress: string, name?: string}): Promise<XdslDHCPStaticAddress>;
   /**
   List the xdsl.PortMapping objects
   Add a port mapping
   **/
-  public post(path: '/xdsl/{serviceName}/modem/portMappings', params: {serviceName: string}): Promise<XdslPortMapping>;
+  public post(path: '/xdsl/{serviceName}/modem/portMappings', params: {serviceName: string, allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart: number, internalClient: string, internalPort: number, name: string, protocol: XdslXdslModemConfigProtocolTypeEnum}): Promise<XdslPortMapping>;
   /**
   reboot operations
   Reboot the modem
   **/
-  public post(path: '/xdsl/{serviceName}/modem/reboot', params: {serviceName: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/modem/reboot', params: {serviceName: string, todoDate?: string}): Promise<XdslTask>;
   /**
   refreshConnectedDevices operations
   Refresh the list of connected devices on the modem
@@ -3924,7 +3924,7 @@ export class ApiXdsl extends OvhWrapper {
   reset operations
   Reset the modem to its default configuration
   **/
-  public post(path: '/xdsl/{serviceName}/modem/reset', params: {serviceName: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/modem/reset', params: {serviceName: string, resetOvhConfig?: boolean}): Promise<XdslTask>;
   /**
   resetPortMappingConfig operations
   Remove all the current port mapping rules
@@ -3939,17 +3939,17 @@ export class ApiXdsl extends OvhWrapper {
   sipAlg operations
   Change the status of the sip alg service on modem
   **/
-  public post(path: '/xdsl/{serviceName}/modem/sipAlg', params: {serviceName: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/modem/sipAlg', params: {serviceName: string, sipAlg: XdslServiceStatusEnum}): Promise<XdslTask>;
   /**
   upnp operations
   Change the status of the Upnp on modem
   **/
-  public post(path: '/xdsl/{serviceName}/modem/upnp', params: {serviceName: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/modem/upnp', params: {serviceName: string, upnp: XdslServiceStatusEnum}): Promise<XdslTask>;
   /**
   List the xdsl.MonitoringNotification objects
   Add a notification
   **/
-  public post(path: '/xdsl/{serviceName}/monitoringNotifications', params: {serviceName: string}): Promise<XdslMonitoringNotification>;
+  public post(path: '/xdsl/{serviceName}/monitoringNotifications', params: {serviceName: string, allowIncident?: boolean, downThreshold?: number, email?: string, frequency: XdslMonitoringNotificationsFrequencyEnum, phone?: string, smsAccount?: string, type: XdslMonitoringNotificationsTypeEnum}): Promise<XdslMonitoringNotification>;
   /**
   requestPPPLoginMail operations
   Renew PPP password and send the PPP login informations to the e-mail of the nicAdmin
@@ -3959,12 +3959,12 @@ export class ApiXdsl extends OvhWrapper {
   requestTotalDeconsolidation operations
   Switch this access to total deconsolidation
   **/
-  public post(path: '/xdsl/{serviceName}/requestTotalDeconsolidation', params: {serviceName: string}): Promise<XdslTask>;
+  public post(path: '/xdsl/{serviceName}/requestTotalDeconsolidation', params: {serviceName: string, noPortability?: boolean, rio?: string}): Promise<XdslTask>;
   /**
   resiliate operations
   Resiliate the access
   **/
-  public post(path: '/xdsl/{serviceName}/resiliate', params: {serviceName: string}): Promise<XdslResiliationFollowUpDetail>;
+  public post(path: '/xdsl/{serviceName}/resiliate', params: {serviceName: string, resiliationDate?: string, resiliationSurvey: XdslResiliationSurvey}): Promise<XdslResiliationFollowUpDetail>;
   /**
   sendOrderToProvider operations
   Unlock order in "waitingCustomer" status. It only concerns orders whose modem is sent before anything have been forwarded to our provider
@@ -3979,7 +3979,7 @@ export class ApiXdsl extends OvhWrapper {
   updateInvalidOrMissingRio operations
   Update RIO, or disable portability, for order in error because of missing or invalid RIO
   **/
-  public post(path: '/xdsl/{serviceName}/updateInvalidOrMissingRio', params: {serviceName: string}): Promise<void>;
+  public post(path: '/xdsl/{serviceName}/updateInvalidOrMissingRio', params: {serviceName: string, relaunchWithoutPortability: boolean, rio?: string}): Promise<void>;
   public post(path: PathsXdslPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

@@ -1,21 +1,21 @@
 {
   "name": "@ovh-api/api",
   "description": "Ovh api connector implementation",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "dependencies": {
-    "@ovh-api/common": "^1.2.0"
+    "@ovh-api/common": "^1.2.2"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.6",
+    "@types/mocha": "^5.2.7",
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
-    "ts-node": "^8.1.0",
-    "typescript": "^3.4.5"
+    "ts-node": "^8.2.0",
+    "typescript": "^3.5.1"
   },
   "publishConfig": {
     "access": "public"

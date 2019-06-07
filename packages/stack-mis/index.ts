@@ -138,7 +138,7 @@ export class ApiStackMis extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/stack/mis/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/stack/mis/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsStackMisPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

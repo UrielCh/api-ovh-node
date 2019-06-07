@@ -131,7 +131,7 @@ export class ApiPackSiptrunk extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/pack/siptrunk/{packName}/serviceInfos', params: {packName: string}): Promise<void>;
+  public put(path: '/pack/siptrunk/{packName}/serviceInfos', params: {packName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsPackSiptrunkPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -139,7 +139,7 @@ export class ApiPackSiptrunk extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/pack/siptrunk/{packName}/changeContact', params: {packName: string}): Promise<number[]>;
+  public post(path: '/pack/siptrunk/{packName}/changeContact', params: {packName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   public post(path: PathsPackSiptrunkPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

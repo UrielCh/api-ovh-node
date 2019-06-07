@@ -3355,52 +3355,52 @@ export class ApiDedicatedServer extends OvhWrapper {
   Server informations
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}', params: {serviceName: string, body: DedicatedServerDedicated}): Promise<void>;
   /**
   Server bandwidth burst details
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/burst', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/burst', params: {serviceName: string, body: DedicatedServerServerBurst}): Promise<void>;
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string, body: DedicatedServerBackupFtpAcl}): Promise<void>;
   /**
   Firewall attached to this server
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/features/firewall', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/features/firewall', params: {serviceName: string, body: DedicatedServerFirewall}): Promise<void>;
   /**
   Secondary dns infos
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string, body: SecondaryDnsSecondaryDNS}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   Service monitoring details
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', params: {serviceName: string, monitoringId: number}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', params: {serviceName: string, monitoringId: number, body: DedicatedServerServiceMonitoring}): Promise<void>;
   /**
   Service monitoring Email alert
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', params: {serviceName: string, monitoringId: number, alertId: number}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', params: {serviceName: string, monitoringId: number, alertId: number, body: DedicatedServerEmailAlert}): Promise<void>;
   /**
   Monitoring SMS alert details, This service is currently not supported for servers at BHS 
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', params: {serviceName: string, monitoringId: number, alertId: number}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', params: {serviceName: string, monitoringId: number, alertId: number, body: DedicatedServerSmsAlert}): Promise<void>;
   /**
   SPLA licenses management
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/spla/{id}', params: {serviceName: string, id: number}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/spla/{id}', params: {serviceName: string, id: number, body: DedicatedServerSpla}): Promise<void>;
   public put(path: PathsDedicatedServerPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -3413,17 +3413,17 @@ export class ApiDedicatedServer extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/dedicated/server/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/dedicated/server/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/dedicated/server/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/dedicated/server/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   Backup Cloud assigned to this server
   Create a new storage backup space associated to server
   **/
-  public post(path: '/dedicated/server/{serviceName}/features/backupCloud', params: {serviceName: string}): Promise<DedicatedServerBackupCloud>;
+  public post(path: '/dedicated/server/{serviceName}/features/backupCloud', params: {serviceName: string, cloudProjectId?: string, projectDescription?: string}): Promise<DedicatedServerBackupCloud>;
   /**
   password operations
   Change your cloud account password
@@ -3438,7 +3438,7 @@ export class ApiDedicatedServer extends OvhWrapper {
   List the dedicated.server.BackupFtpAcl objects
   Create a new Backup FTP ACL
   **/
-  public post(path: '/dedicated/server/{serviceName}/features/backupFTP/access', params: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/features/backupFTP/access', params: {serviceName: string, cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<DedicatedServerTask>;
   /**
   password operations
   Change your Backup FTP password
@@ -3448,7 +3448,7 @@ export class ApiDedicatedServer extends OvhWrapper {
   access operations
   Request an acces on KVM IPMI interface
   **/
-  public post(path: '/dedicated/server/{serviceName}/features/ipmi/access', params: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/features/ipmi/access', params: {serviceName: string, ipToAllow?: string, sshKey?: string, ttl: DedicatedServerCacheTTLEnum, type: DedicatedServerIpmiAccessTypeEnum}): Promise<DedicatedServerTask>;
   /**
   resetInterface operations
   Reset KVM IPMI interface
@@ -3463,27 +3463,27 @@ export class ApiDedicatedServer extends OvhWrapper {
   test operations
   Launch test on KVM IPMI interface
   **/
-  public post(path: '/dedicated/server/{serviceName}/features/ipmi/test', params: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/features/ipmi/test', params: {serviceName: string, ttl: DedicatedServerCacheTTLEnum, type: DedicatedServerIpmiTestTypeEnum}): Promise<DedicatedServerTask>;
   /**
   start operations
   Start an install
   **/
-  public post(path: '/dedicated/server/{serviceName}/install/start', params: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/install/start', params: {serviceName: string, details?: DedicatedServerInstallCustom, partitionSchemeName?: string, templateName: string}): Promise<DedicatedServerTask>;
   /**
   ipBlockMerge operations
   Merge a splitted block and route it to the choosen server. You cannot undo this operation
   **/
-  public post(path: '/dedicated/server/{serviceName}/ipBlockMerge', params: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/ipBlockMerge', params: {serviceName: string, block: string}): Promise<DedicatedServerTask>;
   /**
   ipMove operations
   Move an Ip failover to this server
   **/
-  public post(path: '/dedicated/server/{serviceName}/ipMove', params: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/ipMove', params: {serviceName: string, ip: string}): Promise<DedicatedServerTask>;
   /**
   windows operations
   Add your existing windows license serial to this dedicated server. Will be manageable in /license/windows.
   **/
-  public post(path: '/dedicated/server/{serviceName}/license/windows', params: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/license/windows', params: {serviceName: string, licenseId: string, version: LicenseWindowsOsVersionEnum}): Promise<DedicatedServerTask>;
   /**
   reboot operations
   Hard reboot this server
@@ -3493,27 +3493,27 @@ export class ApiDedicatedServer extends OvhWrapper {
   List the secondaryDns.SecondaryDNS objects
   add a domain on secondary dns
   **/
-  public post(path: '/dedicated/server/{serviceName}/secondaryDnsDomains', params: {serviceName: string}): Promise<void>;
+  public post(path: '/dedicated/server/{serviceName}/secondaryDnsDomains', params: {serviceName: string, domain: string, ip?: string}): Promise<void>;
   /**
   List the dedicated.server.serviceMonitoring objects
   Add a new service monitoring
   **/
-  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring', params: {serviceName: string}): Promise<DedicatedServerServiceMonitoring>;
+  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring', params: {serviceName: string, challengeText?: string, enabled: boolean, interval: DedicatedServerMonitoringIntervalEnum, ip: string, port: number, protocol: DedicatedServerMonitoringProtocolEnum, url?: string}): Promise<DedicatedServerServiceMonitoring>;
   /**
   List the dedicated.server.emailAlert objects
   Add a new email alert
   **/
-  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email', params: {serviceName: string, monitoringId: number}): Promise<DedicatedServerEmailAlert>;
+  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email', params: {serviceName: string, monitoringId: number, email: string, language: DedicatedServerAlertLanguageEnum}): Promise<DedicatedServerEmailAlert>;
   /**
   List the dedicated.server.smsAlert objects
   Create a SMS alert
   **/
-  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms', params: {serviceName: string, monitoringId: number}): Promise<DedicatedServerSmsAlert>;
+  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms', params: {serviceName: string, monitoringId: number, fromHour?: number, language: DedicatedServerAlertLanguageEnum, phoneNumberTo: string, smsAccount: string, toHour?: number}): Promise<DedicatedServerSmsAlert>;
   /**
   List the dedicated.server.spla objects
   Add a new SPLA license
   **/
-  public post(path: '/dedicated/server/{serviceName}/spla', params: {serviceName: string}): Promise<number>;
+  public post(path: '/dedicated/server/{serviceName}/spla', params: {serviceName: string, serialNumber: string, type: DedicatedServerSplaTypeEnum}): Promise<number>;
   /**
   revoke operations
   Revoke an SPLA license
@@ -3523,7 +3523,7 @@ export class ApiDedicatedServer extends OvhWrapper {
   hardDiskDrive operations
   Ask for a broken HDD replacement
   **/
-  public post(path: '/dedicated/server/{serviceName}/support/replace/hardDiskDrive', params: {serviceName: string}): Promise<SupportNewMessageInfo>;
+  public post(path: '/dedicated/server/{serviceName}/support/replace/hardDiskDrive', params: {serviceName: string, comment: string, disks: DedicatedServerSupportReplaceHddInfo[], inverse: boolean}): Promise<SupportNewMessageInfo>;
   /**
   cancel operations
   this action stop the task progression if it's possible
@@ -3538,12 +3538,12 @@ export class ApiDedicatedServer extends OvhWrapper {
   List the dedicated.server.VirtualMac objects
   Add a virtual mac to an IP address
   **/
-  public post(path: '/dedicated/server/{serviceName}/virtualMac', params: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/virtualMac', params: {serviceName: string, ipAddress: string, type: DedicatedServerVmacTypeEnum, virtualMachineName: string}): Promise<DedicatedServerTask>;
   /**
   List the dedicated.server.VirtualMacManagement objects
   Add an IP to this Virtual MAC
   **/
-  public post(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress', params: {serviceName: string, macAddress: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress', params: {serviceName: string, macAddress: string, ipAddress: string, virtualMachineName: string}): Promise<DedicatedServerTask>;
   public post(path: PathsDedicatedServerPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

@@ -340,17 +340,17 @@ export class ApiFreefax extends OvhWrapper {
   Freefax properties
   Alter this object properties
   **/
-  public put(path: '/freefax/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/freefax/{serviceName}', params: {serviceName: string, body: FreefaxFreefaxProperties}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/freefax/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/freefax/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   Voicemail Properties
   Alter this object properties
   **/
-  public put(path: '/freefax/{serviceName}/voicemail', params: {serviceName: string}): Promise<void>;
+  public put(path: '/freefax/{serviceName}/voicemail', params: {serviceName: string, body: TelephonyVoicemailProperties}): Promise<void>;
   public put(path: PathsFreefaxPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -363,12 +363,12 @@ export class ApiFreefax extends OvhWrapper {
   changePassword operations
   Change the voicemail password. It must be 4 digit
   **/
-  public post(path: '/freefax/{serviceName}/voicemail/changePassword', params: {serviceName: string}): Promise<void>;
+  public post(path: '/freefax/{serviceName}/voicemail/changePassword', params: {serviceName: string, password: string}): Promise<void>;
   /**
   changeRouting operations
   Disable/Enable voicemail. Available only if the line has fax capabilities
   **/
-  public post(path: '/freefax/{serviceName}/voicemail/changeRouting', params: {serviceName: string}): Promise<void>;
+  public post(path: '/freefax/{serviceName}/voicemail/changeRouting', params: {serviceName: string, routing: TelephonyVoicefaxRoutingEnum}): Promise<void>;
   public post(path: PathsFreefaxPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

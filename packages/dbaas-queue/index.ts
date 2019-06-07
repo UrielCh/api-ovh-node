@@ -425,12 +425,12 @@ export class ApiDbaasQueue extends OvhWrapper {
   App
   Update an application
   **/
-  public put(path: '/dbaas/queue/{serviceName}', params: {serviceName: string}): Promise<DbaasQueueApp>;
+  public put(path: '/dbaas/queue/{serviceName}', params: {serviceName: string, name: string}): Promise<DbaasQueueApp>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dbaas/queue/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dbaas/queue/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsDbaasQueuePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

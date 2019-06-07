@@ -307,7 +307,7 @@ export class ApiCdnWebsite extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cdn/website/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/cdn/website/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsCdnWebsitePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -315,17 +315,17 @@ export class ApiCdnWebsite extends OvhWrapper {
   Zone on CDN
   Configure a zone on CDN
   **/
-  public post(path: '/cdn/website/{serviceName}/zone', params: {serviceName: string}): Promise<CdnWebsiteZone>;
+  public post(path: '/cdn/website/{serviceName}/zone', params: {serviceName: string, zone: string}): Promise<CdnWebsiteZone>;
   /**
   List the cdn.website.Backend objects
   Configure a backend on the zone
   **/
-  public post(path: '/cdn/website/{serviceName}/zone/backends', params: {serviceName: string}): Promise<CdnWebsiteTask>;
+  public post(path: '/cdn/website/{serviceName}/zone/backends', params: {serviceName: string, ipv4: string}): Promise<CdnWebsiteTask>;
   /**
   List the cdn.website.Domain objects
   Configure a domain on CDN
   **/
-  public post(path: '/cdn/website/{serviceName}/zone/domains', params: {serviceName: string}): Promise<CdnWebsiteDomain>;
+  public post(path: '/cdn/website/{serviceName}/zone/domains', params: {serviceName: string, domain: string}): Promise<CdnWebsiteDomain>;
   /**
   flush operations
   Flush all cache

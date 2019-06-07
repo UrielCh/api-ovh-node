@@ -361,7 +361,7 @@ export class ApiDeskaas extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/deskaas/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/deskaas/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsDeskaasPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -369,17 +369,17 @@ export class ApiDeskaas extends OvhWrapper {
   changeAlias operations
   Change the Virtual Desktop alias
   **/
-  public post(path: '/deskaas/{serviceName}/changeAlias', params: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: '/deskaas/{serviceName}/changeAlias', params: {serviceName: string, alias: string}): Promise<DeskaasTask>;
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/deskaas/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/deskaas/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/deskaas/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/deskaas/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   console operations
   New console access
@@ -404,17 +404,17 @@ export class ApiDeskaas extends OvhWrapper {
   upgrade operations
   Upgrading the Desktop As A Service to another profile. The Virtual Desktop will not be available during upgrade and has to be restarted. You cannot downgrade a Virtual Desktop
   **/
-  public post(path: '/deskaas/{serviceName}/upgrade', params: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: '/deskaas/{serviceName}/upgrade', params: {serviceName: string, newReference?: string, planCode?: string}): Promise<DeskaasTask>;
   /**
   changePassword operations
   Change Desktop As A Service user password
   **/
-  public post(path: '/deskaas/{serviceName}/user/changePassword', params: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: '/deskaas/{serviceName}/user/changePassword', params: {serviceName: string, password?: string}): Promise<DeskaasTask>;
   /**
   changeProperties operations
   Change Desktop As A Service user properties
   **/
-  public post(path: '/deskaas/{serviceName}/user/changeProperties', params: {serviceName: string}): Promise<DeskaasTask>;
+  public post(path: '/deskaas/{serviceName}/user/changeProperties', params: {serviceName: string, email?: string}): Promise<DeskaasTask>;
   public post(path: PathsDeskaasPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

@@ -300,12 +300,12 @@ export class ApiLicenseCpanel extends OvhWrapper {
   Your Cpanel license
   Alter this object properties
   **/
-  public put(path: '/license/cpanel/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/license/cpanel/{serviceName}', params: {serviceName: string, body: LicenseCpanelCpanel}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/cpanel/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/license/cpanel/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsLicenseCpanelPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -313,12 +313,12 @@ export class ApiLicenseCpanel extends OvhWrapper {
   changeIp operations
   Move this license to another Ip
   **/
-  public post(path: '/license/cpanel/{serviceName}/changeIp', params: {serviceName: string}): Promise<LicenseTask>;
+  public post(path: '/license/cpanel/{serviceName}/changeIp', params: {serviceName: string, destinationIp: string}): Promise<LicenseTask>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/license/cpanel/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/license/cpanel/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   Terminate your service
   Terminate your service

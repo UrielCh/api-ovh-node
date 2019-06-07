@@ -323,22 +323,22 @@ export class ApiMetrics extends OvhWrapper {
   Missing description
   Modify service
   **/
-  public put(path: '/metrics/{serviceName}', params: {serviceName: string}): Promise<MetricsApiService>;
+  public put(path: '/metrics/{serviceName}', params: {serviceName: string, description?: string}): Promise<MetricsApiService>;
   /**
   Missing description
   Set overquota
   **/
-  public put(path: '/metrics/{serviceName}/quota', params: {serviceName: string}): Promise<string>;
+  public put(path: '/metrics/{serviceName}/quota', params: {serviceName: string, quota: number}): Promise<string>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/metrics/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/metrics/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   Missing description
   Modify a token
   **/
-  public put(path: '/metrics/{serviceName}/token/{tokenId}', params: {serviceName: string, tokenId: string}): Promise<MetricsApiToken>;
+  public put(path: '/metrics/{serviceName}/token/{tokenId}', params: {serviceName: string, tokenId: string, description?: string}): Promise<MetricsApiToken>;
   public put(path: PathsMetricsPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -346,17 +346,17 @@ export class ApiMetrics extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/metrics/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/metrics/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/metrics/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/metrics/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   Missing description
   Find TokenID for a specific token
   **/
-  public post(path: '/metrics/{serviceName}/lookup/token', params: {serviceName: string}): Promise<string[]>;
+  public post(path: '/metrics/{serviceName}/lookup/token', params: {serviceName: string, accessToken: string}): Promise<string[]>;
   /**
   Terminate your service
   Terminate your service
@@ -366,7 +366,7 @@ export class ApiMetrics extends OvhWrapper {
   Missing description
   Create a token
   **/
-  public post(path: '/metrics/{serviceName}/token', params: {serviceName: string}): Promise<MetricsApiToken>;
+  public post(path: '/metrics/{serviceName}/token', params: {serviceName: string, description?: string, labels?: MetricsApiLabel[], permission: MetricsApiPermissionEnum}): Promise<MetricsApiToken>;
   public post(path: PathsMetricsPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

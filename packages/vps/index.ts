@@ -1139,37 +1139,37 @@ export class ApiVps extends OvhWrapper {
   VPS Virtual Machine
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/vps/{serviceName}', params: {serviceName: string, body: VpsVPS}): Promise<void>;
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}/backupftp/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<void>;
+  public put(path: '/vps/{serviceName}/backupftp/access/{ipBlock}', params: {serviceName: string, ipBlock: string, body: DedicatedServerBackupFtpAcl}): Promise<void>;
   /**
   Information about a disk of a VPS Virtual Machine
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}/disks/{id}', params: {serviceName: string, id: number}): Promise<void>;
+  public put(path: '/vps/{serviceName}/disks/{id}', params: {serviceName: string, id: number, body: VpsDisk}): Promise<void>;
   /**
   Information about an IP address for a VPS Virtual Machine
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}/ips/{ipAddress}', params: {serviceName: string, ipAddress: string}): Promise<void>;
+  public put(path: '/vps/{serviceName}/ips/{ipAddress}', params: {serviceName: string, ipAddress: string, body: VpsIp}): Promise<void>;
   /**
   Secondary dns infos
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string}): Promise<void>;
+  public put(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string, body: SecondaryDnsSecondaryDNS}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/vps/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   Information about the snapshot of a VPS Virtual Machine
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}/snapshot', params: {serviceName: string}): Promise<void>;
+  public put(path: '/vps/{serviceName}/snapshot', params: {serviceName: string, body: VpsSnapshot}): Promise<void>;
   public put(path: PathsVpsPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -1177,17 +1177,17 @@ export class ApiVps extends OvhWrapper {
   detachBackup operations
   Create a VPS.Task that will umount a restored backup on your VPS
   **/
-  public post(path: '/vps/{serviceName}/automatedBackup/detachBackup', params: {serviceName: string}): Promise<VpsTask>;
+  public post(path: '/vps/{serviceName}/automatedBackup/detachBackup', params: {serviceName: string, restorePoint: string}): Promise<VpsTask>;
   /**
   restore operations
   Creates a VPS.Task that will restore the given restorePoint
   **/
-  public post(path: '/vps/{serviceName}/automatedBackup/restore', params: {serviceName: string}): Promise<VpsTask>;
+  public post(path: '/vps/{serviceName}/automatedBackup/restore', params: {serviceName: string, changePassword?: boolean, restorePoint: string, type: VpsRestoreTypeEnum}): Promise<VpsTask>;
   /**
   List the dedicated.server.BackupFtpAcl objects
   Create a new Backup FTP ACL
   **/
-  public post(path: '/vps/{serviceName}/backupftp/access', params: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/vps/{serviceName}/backupftp/access', params: {serviceName: string, cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<DedicatedServerTask>;
   /**
   password operations
   Change your Backup FTP password
@@ -1197,17 +1197,17 @@ export class ApiVps extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/vps/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/vps/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/vps/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/vps/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   createSnapshot operations
   Create a snapshot of the Virtual Server if the snapshot option is enabled and if there is no existing snapshot
   **/
-  public post(path: '/vps/{serviceName}/createSnapshot', params: {serviceName: string}): Promise<VpsTask>;
+  public post(path: '/vps/{serviceName}/createSnapshot', params: {serviceName: string, description?: string}): Promise<VpsTask>;
   /**
   getConsoleUrl operations
   Return the VPS console URL
@@ -1217,7 +1217,7 @@ export class ApiVps extends OvhWrapper {
   openConsoleAccess operations
   Return the necessary informations to open a VNC connection to your VPS
   **/
-  public post(path: '/vps/{serviceName}/openConsoleAccess', params: {serviceName: string}): Promise<VpsVnc>;
+  public post(path: '/vps/{serviceName}/openConsoleAccess', params: {serviceName: string, protocol?: VpsVncProtocolEnum}): Promise<VpsVnc>;
   /**
   reboot operations
   Request a reboot of the machine
@@ -1227,12 +1227,12 @@ export class ApiVps extends OvhWrapper {
   reinstall operations
   Reinstall the virtual server
   **/
-  public post(path: '/vps/{serviceName}/reinstall', params: {serviceName: string}): Promise<VpsTask>;
+  public post(path: '/vps/{serviceName}/reinstall', params: {serviceName: string, doNotSendPassword?: boolean, language?: string, softwareId?: number[], sshKey?: string[], templateId: number}): Promise<VpsTask>;
   /**
   List the secondaryDns.SecondaryDNS objects
   add a domain on secondary dns
   **/
-  public post(path: '/vps/{serviceName}/secondaryDnsDomains', params: {serviceName: string}): Promise<void>;
+  public post(path: '/vps/{serviceName}/secondaryDnsDomains', params: {serviceName: string, domain: string, ip?: string}): Promise<void>;
   /**
   setPassword operations
   Start the process in order to set the root password of the virtual machine. Be careful, in case of Cloud model, a reboot is mandatory.
@@ -1262,7 +1262,7 @@ export class ApiVps extends OvhWrapper {
   restore operations
   Creates a VPS.Task that will restore the given restorePoint
   **/
-  public post(path: '/vps/{serviceName}/veeam/restorePoints/{id}/restore', params: {serviceName: string, id: number}): Promise<VpsTask>;
+  public post(path: '/vps/{serviceName}/veeam/restorePoints/{id}/restore', params: {serviceName: string, id: number, changePassword?: boolean, export?: VpsVeeamExportTypeEnum, full: boolean}): Promise<VpsTask>;
   public post(path: PathsVpsPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

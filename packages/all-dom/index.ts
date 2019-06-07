@@ -169,7 +169,7 @@ export class ApiAllDom extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/allDom/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/allDom/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsAllDomPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

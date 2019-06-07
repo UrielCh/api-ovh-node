@@ -582,17 +582,17 @@ export class ApiDedicatedNasha extends OvhWrapper {
   Storage nas HA
   Alter this object properties
   **/
-  public put(path: '/dedicated/nasha/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicated/nasha/{serviceName}', params: {serviceName: string, body: DedicatedNashaStorage}): Promise<void>;
   /**
   Storage zpool partition
   Alter this object properties
   **/
-  public put(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string}): Promise<void>;
+  public put(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string, body: DedicatedNashaPartition}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicated/nasha/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicated/nasha/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsDedicatedNashaPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -600,42 +600,42 @@ export class ApiDedicatedNasha extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/dedicated/nasha/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/dedicated/nasha/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/dedicated/nasha/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/dedicated/nasha/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   List the dedicated.nasha.Partition objects
   Create a new partition
   **/
-  public post(path: '/dedicated/nasha/{serviceName}/partition', params: {serviceName: string}): Promise<DedicatedNasTaskTask>;
+  public post(path: '/dedicated/nasha/{serviceName}/partition', params: {serviceName: string, partitionName: string, protocol: DedicatedStorageProtocolEnum, size: number}): Promise<DedicatedNasTaskTask>;
   /**
   List the dedicated.nasha.Access objects
   Add a new ACL entry
   **/
-  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/access', params: {serviceName: string, partitionName: string}): Promise<DedicatedNasTaskTask>;
+  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/access', params: {serviceName: string, partitionName: string, ip: string, type?: DedicatedStorageAclTypeEnum}): Promise<DedicatedNasTaskTask>;
   /**
   List the dedicated.nasha.customSnap objects
   Create a new snapshot
   **/
-  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot', params: {serviceName: string, partitionName: string}): Promise<DedicatedNasTaskTask>;
+  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot', params: {serviceName: string, partitionName: string, expiration?: string, name: string}): Promise<DedicatedNasTaskTask>;
   /**
   Partition options
   Setup options
   **/
-  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/options', params: {serviceName: string, partitionName: string}): Promise<DedicatedNasTaskTask>;
+  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/options', params: {serviceName: string, partitionName: string, atime?: DedicatedStorageAtimeEnum, recordsize?: DedicatedStorageRecordSizeEnum, sync?: DedicatedStorageSyncEnum}): Promise<DedicatedNasTaskTask>;
   /**
   List the dedicated.nasha.Quota objects
   Set a new quota
   **/
-  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/quota', params: {serviceName: string, partitionName: string}): Promise<DedicatedNasTaskTask>;
+  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/quota', params: {serviceName: string, partitionName: string, size: number, uid: number}): Promise<DedicatedNasTaskTask>;
   /**
   List the dedicated.nasha.Snapshot objects
   Schedule a new snapshot type
   **/
-  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot', params: {serviceName: string, partitionName: string}): Promise<DedicatedNasTaskTask>;
+  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot', params: {serviceName: string, partitionName: string, snapshotType: DedicatedStorageSnapshotEnum}): Promise<DedicatedNasTaskTask>;
   /**
   Terminate your service
   Terminate your service

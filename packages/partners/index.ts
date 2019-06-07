@@ -908,12 +908,12 @@ export class ApiPartners extends OvhWrapper {
   Company.get
   Update some fields on a created company
   **/
-  public put(path: '/partners/register/company/{companyId}', params: {companyId: string}): Promise<PartnerCompany>;
+  public put(path: '/partners/register/company/{companyId}', params: {companyId: string, OVHCertifications?: PartnerOVHCertifications, OVHCustomersAdvised?: PartnerOVHCustomersAdvisedEnum, OVHKnowledgeResources?: PartnerKnowledgeResourcesRangeEnum, OVHProductsUsed?: PartnerOVHProductsUsed, OVHTechnicalAdvancedResources?: PartnerTechnicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources?: PartnerTechnicalExpertResourcesRangeEnum, activitySectors?: PartnerActivitySectors, address?: string, city?: string, clientKinds?: PartnerClientKinds, commercialName?: string, country?: NichandleCountryEnum, description?: string, effective?: PartnerEmployeesNumberEnum, email?: string, expertises?: PartnerExpertisesChoices, externalCertifications?: PartnerExternalCertifications, facebook?: string, linkedin?: string, logo?: string, name?: string, partnerKnowledges?: PartnerPartnerKnowledges, phone?: string, productCountries?: PartnerProductCountries, registrationNumber?: string, revenue?: PartnerRevenueRangeEnum, twitter?: string, website?: string, zipCode?: string}): Promise<PartnerCompany>;
   /**
   Contact.get
   Update some fields on a created contact
   **/
-  public put(path: '/partners/register/company/{companyId}/contact/{contactId}', params: {companyId: string, contactId: string}): Promise<PartnerContact>;
+  public put(path: '/partners/register/company/{companyId}/contact/{contactId}', params: {companyId: string, contactId: string, email?: string, facebook?: string, firstName?: string, lastName?: string, linkedin?: string, newsletter?: boolean, otherNics?: PartnerNic[], phone?: string, role?: string, twitter?: string}): Promise<PartnerContact>;
   public put(path: PathsPartnersPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -926,12 +926,12 @@ export class ApiPartners extends OvhWrapper {
   Application.create
   Submit application information for validation
   **/
-  public post(path: '/partners/register/company/{companyId}/application', params: {companyId: string}): Promise<PartnerApplication>;
+  public post(path: '/partners/register/company/{companyId}/application', params: {companyId: string, termsAndConditionsOfServiceAccepted: boolean}): Promise<PartnerApplication>;
   /**
   Contact.list
   Created a new contact for the inscription
   **/
-  public post(path: '/partners/register/company/{companyId}/contact', params: {companyId: string}): Promise<PartnerContact>;
+  public post(path: '/partners/register/company/{companyId}/contact', params: {companyId: string, email: string, facebook?: string, firstName: string, lastName: string, linkedin?: string, newsletter?: boolean, otherNics?: PartnerNic[], phone: string, role: string, twitter?: string}): Promise<PartnerContact>;
   public post(path: PathsPartnersPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

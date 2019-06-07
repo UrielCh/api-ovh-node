@@ -453,22 +453,22 @@ export class ApiRouter extends OvhWrapper {
   Network
   Alter this object properties
   **/
-  public put(path: '/router/{serviceName}/network/{ipNet}', params: {serviceName: string, ipNet: string}): Promise<void>;
+  public put(path: '/router/{serviceName}/network/{ipNet}', params: {serviceName: string, ipNet: string, body: RouterNetwork}): Promise<void>;
   /**
   Private Link to another service
   Alter this object properties
   **/
-  public put(path: '/router/{serviceName}/privateLink/{peerServiceName}', params: {serviceName: string, peerServiceName: string}): Promise<void>;
+  public put(path: '/router/{serviceName}/privateLink/{peerServiceName}', params: {serviceName: string, peerServiceName: string, body: RouterPrivateLink}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/router/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/router/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   Virtual Private Network
   Alter this object properties
   **/
-  public put(path: '/router/{serviceName}/vpn/{id}', params: {serviceName: string, id: number}): Promise<void>;
+  public put(path: '/router/{serviceName}/vpn/{id}', params: {serviceName: string, id: number, body: RouterVpn}): Promise<void>;
   public put(path: PathsRouterPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -476,27 +476,27 @@ export class ApiRouter extends OvhWrapper {
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/router/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/router/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   List the router.Network objects
   Add a network to your router
   **/
-  public post(path: '/router/{serviceName}/network', params: {serviceName: string}): Promise<RouterTask>;
+  public post(path: '/router/{serviceName}/network', params: {serviceName: string, description: string, ipNet: string, vlanTag?: number}): Promise<RouterTask>;
   /**
   List the router.PrivateLink objects
   Add a new Private Link to your Router service
   **/
-  public post(path: '/router/{serviceName}/privateLink', params: {serviceName: string}): Promise<string>;
+  public post(path: '/router/{serviceName}/privateLink', params: {serviceName: string, name: string, peerServiceName: string}): Promise<string>;
   /**
   manage operations
   Accept, reject or cancel a pending request
   **/
-  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/request/manage', params: {serviceName: string, peerServiceName: string}): Promise<string>;
+  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/request/manage', params: {serviceName: string, peerServiceName: string, action: RouterPrivLinkReqActionEnum}): Promise<string>;
   /**
   List the router.PrivateLinkRoute objects
   Add a new outgoing route to your router
   **/
-  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/route', params: {serviceName: string, peerServiceName: string}): Promise<RouterTask>;
+  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/route', params: {serviceName: string, peerServiceName: string, network: string}): Promise<RouterTask>;
   /**
   Terminate your service
   Terminate your service
@@ -506,12 +506,12 @@ export class ApiRouter extends OvhWrapper {
   List the router.Vpn objects
   Add a VPN to your router
   **/
-  public post(path: '/router/{serviceName}/vpn', params: {serviceName: string}): Promise<RouterVpn>;
+  public post(path: '/router/{serviceName}/vpn', params: {serviceName: string, clientIp?: string, clientPrivNet: string, psk: string, serverPrivNet: string}): Promise<RouterVpn>;
   /**
   setPsk operations
   Change your VPN's PSK
   **/
-  public post(path: '/router/{serviceName}/vpn/{id}/setPsk', params: {serviceName: string, id: number}): Promise<RouterTask>;
+  public post(path: '/router/{serviceName}/vpn/{id}/setPsk', params: {serviceName: string, id: number, psk: string}): Promise<RouterTask>;
   public post(path: PathsRouterPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

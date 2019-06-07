@@ -138,7 +138,7 @@ export class ApiVip extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/vip/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/vip/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsVipPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

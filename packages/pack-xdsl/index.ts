@@ -1502,12 +1502,12 @@ export class ApiPackXdsl extends OvhWrapper {
   Pack of xDSL services
   Alter this object properties
   **/
-  public put(path: '/pack/xdsl/{packName}', params: {packName: string}): Promise<void>;
+  public put(path: '/pack/xdsl/{packName}', params: {packName: string, body: PackXdslPackAdsl}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/pack/xdsl/{packName}/serviceInfos', params: {packName: string}): Promise<void>;
+  public put(path: '/pack/xdsl/{packName}/serviceInfos', params: {packName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsPackXdslPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -1515,12 +1515,12 @@ export class ApiPackXdsl extends OvhWrapper {
   eligibility operations
   Eligibility to move the access
   **/
-  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', params: {packName: string}): Promise<PackXdslAsyncTask<PackXdslAddressMoveEligibility>>;
+  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', params: {packName: string, address?: XdslEligibilityAddress, lineNumber?: string}): Promise<PackXdslAsyncTask<PackXdslAddressMoveEligibility>>;
   /**
   move operations
   Move the access to another address
   **/
-  public post(path: '/pack/xdsl/{packName}/addressMove/move', params: {packName: string}): Promise<PackXdslAsyncTask<number>>;
+  public post(path: '/pack/xdsl/{packName}/addressMove/move', params: {packName: string, creation?: PackXdslAddressMoveCreation, keepCurrentNumber: boolean, landline?: PackXdslAddressMoveLandline, moveOutDate?: string, offerCode: string, provider?: XdslEligibilityProviderEnum}): Promise<PackXdslAsyncTask<number>>;
   /**
   cancelResiliation operations
   Cancel the ongoing resiliation
@@ -1530,37 +1530,37 @@ export class ApiPackXdsl extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/pack/xdsl/{packName}/changeContact', params: {packName: string}): Promise<number[]>;
+  public post(path: '/pack/xdsl/{packName}/changeContact', params: {packName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   List the pack.xdsl.DomainService objects
   Activate a domain service
   **/
-  public post(path: '/pack/xdsl/{packName}/domain/services', params: {packName: string}): Promise<PackXdslTask>;
+  public post(path: '/pack/xdsl/{packName}/domain/services', params: {packName: string, action: PackXdslDomainActionEnum, authInfo?: string, domain: string, tld: string}): Promise<PackXdslTask>;
   /**
   List the pack.xdsl.EmailProService objects
   Activate an Email Pro service
   **/
-  public post(path: '/pack/xdsl/{packName}/emailPro/services', params: {packName: string}): Promise<PackXdslTask>;
+  public post(path: '/pack/xdsl/{packName}/emailPro/services', params: {packName: string, email: string, password: string}): Promise<PackXdslTask>;
   /**
   List the pack.xdsl.ExchangeIndividual objects
   Activate an exchange service
   **/
-  public post(path: '/pack/xdsl/{packName}/exchangeIndividual/services', params: {packName: string}): Promise<PackXdslTask>;
+  public post(path: '/pack/xdsl/{packName}/exchangeIndividual/services', params: {packName: string, email: string, password: string}): Promise<PackXdslTask>;
   /**
   List the pack.xdsl.ExchangeLiteService objects
   Activate a exchange lite service
   **/
-  public post(path: '/pack/xdsl/{packName}/exchangeLite/services', params: {packName: string}): Promise<PackXdslTask>;
+  public post(path: '/pack/xdsl/{packName}/exchangeLite/services', params: {packName: string, antispam?: boolean, displayName?: string, email: string, firstName?: string, initials?: string, lastName?: string, password: string}): Promise<PackXdslTask>;
   /**
   List the pack.xdsl.HostedEmailService objects
   Activate an hosted email service
   **/
-  public post(path: '/pack/xdsl/{packName}/hostedEmail/services', params: {packName: string}): Promise<PackXdslTask>;
+  public post(path: '/pack/xdsl/{packName}/hostedEmail/services', params: {packName: string, email: string, password: string}): Promise<PackXdslTask>;
   /**
   migrate operations
   Migrate to the selected offer
   **/
-  public post(path: '/pack/xdsl/{packName}/migration/migrate', params: {packName: string}): Promise<PackXdslTask>;
+  public post(path: '/pack/xdsl/{packName}/migration/migrate', params: {packName: string, acceptContracts: boolean, buildingReference?: string, engageMonths?: number, floor?: string, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: PackXdslMigrationOfferOption[], otp?: boolean, otpReference?: string, stair?: string, subServicesToDelete?: PackXdslMigrationOfferServiceToDelete[]}): Promise<PackXdslTask>;
   /**
   offers operations
   Get the possibilities of migration offers available
@@ -1570,7 +1570,7 @@ export class ApiPackXdsl extends OvhWrapper {
   servicesToDelete operations
   Calculate services to delete with new offer and options
   **/
-  public post(path: '/pack/xdsl/{packName}/migration/servicesToDelete', params: {packName: string}): Promise<PackXdslMigrationSubServiceToDelete[]>;
+  public post(path: '/pack/xdsl/{packName}/migration/servicesToDelete', params: {packName: string, offerName: string, options?: PackXdslMigrationOfferOption[]}): Promise<PackXdslMigrationSubServiceToDelete[]>;
   /**
   generate operations
   Creates a task to generate a new promotion code
@@ -1580,17 +1580,17 @@ export class ApiPackXdsl extends OvhWrapper {
   resiliate operations
   Resiliate the pack
   **/
-  public post(path: '/pack/xdsl/{packName}/resiliate', params: {packName: string}): Promise<PackXdslResiliationFollowUpDetail>;
+  public post(path: '/pack/xdsl/{packName}/resiliate', params: {packName: string, resiliationDate?: string, resiliationSurvey: PackXdslResiliationSurvey, servicesToKeep?: number[]}): Promise<PackXdslResiliationFollowUpDetail>;
   /**
   List the pack.xdsl.SiteBuilderFullService objects
   Activate a sitebuilder full service
   **/
-  public post(path: '/pack/xdsl/{packName}/siteBuilderFull/services', params: {packName: string}): Promise<PackXdslTask>;
+  public post(path: '/pack/xdsl/{packName}/siteBuilderFull/services', params: {packName: string, domain: string, subdomain: string, templateId: number}): Promise<PackXdslTask>;
   /**
   List the pack.xdsl.SiteBuilderStartService objects
   Activate a sitebuilder full service
   **/
-  public post(path: '/pack/xdsl/{packName}/siteBuilderStart/services', params: {packName: string}): Promise<PackXdslTask>;
+  public post(path: '/pack/xdsl/{packName}/siteBuilderStart/services', params: {packName: string, domain: string, subdomain: string, templateId: number}): Promise<PackXdslTask>;
   /**
   List the pack.xdsl.VoipEcoFaxService objects
   Activate a voicefax service
@@ -1600,12 +1600,12 @@ export class ApiPackXdsl extends OvhWrapper {
   customShippingAddress operations
   Create a new shippingId to be used for voipLine service creation
   **/
-  public post(path: '/pack/xdsl/{packName}/voipLine/options/customShippingAddress', params: {packName: string}): Promise<number>;
+  public post(path: '/pack/xdsl/{packName}/voipLine/options/customShippingAddress', params: {packName: string, address: string, cityName: string, firstName: string, lastName: string, zipCode: string}): Promise<number>;
   /**
   List the pack.xdsl.VoipLineService objects
   Activate a voip line service
   **/
-  public post(path: '/pack/xdsl/{packName}/voipLine/services', params: {packName: string}): Promise<PackXdslVoIPLineOrder>;
+  public post(path: '/pack/xdsl/{packName}/voipLine/services', params: {packName: string, hardwareNames: string[], mondialRelayId?: string, shippingId?: string}): Promise<PackXdslVoIPLineOrder>;
   public post(path: PathsPackXdslPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

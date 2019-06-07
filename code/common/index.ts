@@ -1,7 +1,7 @@
 /**
  * all type that should be sent as parameter to Ovh calls
  */
-export type OvhParamType = { [key:string]: string | number | undefined | boolean | string[] | boolean[] | number[]; };
+export type OvhParamType = { [key:string]: any; };
 
 /**
  * contains `requestPromised`

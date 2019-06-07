@@ -443,12 +443,12 @@ export class ApiSaasCsp2 extends OvhWrapper {
   Office tenant
   Alter this object properties
   **/
-  public put(path: '/saas/csp2/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/saas/csp2/{serviceName}', params: {serviceName: string, body: SaasCsp2OfficeTenant}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/saas/csp2/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/saas/csp2/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsSaasCsp2PUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -456,27 +456,27 @@ export class ApiSaasCsp2 extends OvhWrapper {
   changeAdministratorPassword operations
   Changes the tenant administrator's password
   **/
-  public post(path: '/saas/csp2/{serviceName}/changeAdministratorPassword', params: {serviceName: string}): Promise<SaasCsp2OfficeTask>;
+  public post(path: '/saas/csp2/{serviceName}/changeAdministratorPassword', params: {serviceName: string, newPassword: string}): Promise<SaasCsp2OfficeTask>;
   /**
   configureDomain operations
   Automatically sets up an OVH-hosted domain of yours for your office365 services. Note, this requires the domain to not have any interfering MX/SRV/TXT records
   **/
-  public post(path: '/saas/csp2/{serviceName}/configureDomain', params: {serviceName: string}): Promise<SaasCsp2OfficeTask>;
+  public post(path: '/saas/csp2/{serviceName}/configureDomain', params: {serviceName: string, domain: string, supportedServices: SaasCsp2SupportedServiceEnum[]}): Promise<SaasCsp2OfficeTask>;
   /**
   List the saas.csp2.OfficeSubscription objects
   Add a subscription to this tenant
   **/
-  public post(path: '/saas/csp2/{serviceName}/subscription', params: {serviceName: string}): Promise<SaasCsp2OfficeTask>;
+  public post(path: '/saas/csp2/{serviceName}/subscription', params: {serviceName: string, licenseId: number, quantity: number}): Promise<SaasCsp2OfficeTask>;
   /**
   changeQuantity operations
   Change the quantity of seats in the subscription
   **/
-  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/changeQuantity', params: {serviceName: string, id: number}): Promise<SaasCsp2OfficeTask>;
+  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/changeQuantity', params: {serviceName: string, id: number, quantity: number}): Promise<SaasCsp2OfficeTask>;
   /**
   orderAddon operations
   Creates a new subscription as an addon for this subscription
   **/
-  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/orderAddon', params: {serviceName: string, id: number}): Promise<SaasCsp2OfficeTask>;
+  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/orderAddon', params: {serviceName: string, id: number, licenseId: number, quantity: number}): Promise<SaasCsp2OfficeTask>;
   public post(path: PathsSaasCsp2POST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

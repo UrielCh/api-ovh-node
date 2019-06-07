@@ -208,7 +208,7 @@ export class ApiVeeamVeeamEnterprise extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsVeeamVeeamEnterprisePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -216,12 +216,12 @@ export class ApiVeeamVeeamEnterprise extends OvhWrapper {
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   register operations
   Register Veeam Backup Server to Veeam Enterprise
   **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/register', params: {serviceName: string}): Promise<VeeamVeeamEnterpriseTask[]>;
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/register', params: {serviceName: string, ip: string, password: string, port: number, username: string}): Promise<VeeamVeeamEnterpriseTask[]>;
   /**
   Terminate your service
   Terminate your service
@@ -231,7 +231,7 @@ export class ApiVeeamVeeamEnterprise extends OvhWrapper {
   update operations
   Update Veeam enterprise configuration
   **/
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/update', params: {serviceName: string}): Promise<VeeamVeeamEnterpriseTask[]>;
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/update', params: {serviceName: string, ip: string, password: string, port: number, username: string}): Promise<VeeamVeeamEnterpriseTask[]>;
   public post(path: PathsVeeamVeeamEnterprisePOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

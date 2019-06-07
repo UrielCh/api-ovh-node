@@ -652,12 +652,12 @@ export class ApiOverTheBox extends OvhWrapper {
   Service
   Alter this object properties
   **/
-  public put(path: '/overTheBox/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/overTheBox/{serviceName}', params: {serviceName: string, body: OverTheBoxService}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/overTheBox/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/overTheBox/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsOverTheBoxPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -675,12 +675,12 @@ export class ApiOverTheBox extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/overTheBox/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/overTheBox/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   List the overTheBox.DeviceAction objects
   Create a device action on the device
   **/
-  public post(path: '/overTheBox/{serviceName}/device/actions', params: {serviceName: string}): Promise<OverTheBoxDeviceAction>;
+  public post(path: '/overTheBox/{serviceName}/device/actions', params: {serviceName: string, name: string}): Promise<OverTheBoxDeviceAction>;
   /**
   backup operations
   Create an action to generate a backup
@@ -695,17 +695,17 @@ export class ApiOverTheBox extends OvhWrapper {
   restoreBackup operations
   Create a group of actions to restore a given backup
   **/
-  public post(path: '/overTheBox/{serviceName}/device/restoreBackup', params: {serviceName: string}): Promise<OverTheBoxDeviceAction[]>;
+  public post(path: '/overTheBox/{serviceName}/device/restoreBackup', params: {serviceName: string, backupId: string}): Promise<OverTheBoxDeviceAction[]>;
   /**
   linkDevice operations
   Link a device to this service
   **/
-  public post(path: '/overTheBox/{serviceName}/linkDevice', params: {serviceName: string}): Promise<void>;
+  public post(path: '/overTheBox/{serviceName}/linkDevice', params: {serviceName: string, deviceId: string}): Promise<void>;
   /**
   List the overTheBox.RemoteAccess objects
   Create a new remote access for the service
   **/
-  public post(path: '/overTheBox/{serviceName}/remoteAccesses', params: {serviceName: string}): Promise<OverTheBoxRemoteAccess>;
+  public post(path: '/overTheBox/{serviceName}/remoteAccesses', params: {serviceName: string, allowedIp?: string, expirationDate?: string, exposedPort: number, publicKey?: string}): Promise<OverTheBoxRemoteAccess>;
   /**
   authorize operations
   Authorize the remote access

@@ -205,17 +205,17 @@ export class ApiSupport extends OvhWrapper {
   Reopen a ticket
   Reopen a ticket
   **/
-  public post(path: '/support/tickets/{ticketId}/reopen', params: {ticketId: number}): Promise<void>;
+  public post(path: '/support/tickets/{ticketId}/reopen', params: {ticketId: number, body: string}): Promise<void>;
   /**
   Reply to ticket
   Reply to ticket
   **/
-  public post(path: '/support/tickets/{ticketId}/reply', params: {ticketId: number}): Promise<void>;
+  public post(path: '/support/tickets/{ticketId}/reply', params: {ticketId: number, body: string}): Promise<void>;
   /**
   Set ticket score
   Set ticket score
   **/
-  public post(path: '/support/tickets/{ticketId}/score', params: {ticketId: number}): Promise<void>;
+  public post(path: '/support/tickets/{ticketId}/score', params: {ticketId: number, score: string, scoreComment?: string}): Promise<void>;
   public post(path: PathsSupportPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

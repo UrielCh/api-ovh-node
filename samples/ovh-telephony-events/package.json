@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "ovh-list-ip",
+  "name": "ovh-telephony-events",
   "version": "1.0.0",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@ovh-api/api": "^1.2.1",
-    "@ovh-api/ip": "^1.2.2"
+    "@ovh-api/telephony": "^1.2.2",
+    "bluebird": "^3.5.5"
   },
   "devDependencies": {
+    "@types/bluebird": "^3.5.27",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5"
   }

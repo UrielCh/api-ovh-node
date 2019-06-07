@@ -1458,47 +1458,47 @@ export class ApiIp extends OvhWrapper {
   Backends attached to your IP load balancing
   Alter this object properties
   **/
-  public put(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', params: {serviceName: string, backend: string}): Promise<void>;
+  public put(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', params: {serviceName: string, backend: string, body: IpLoadBalancingBackendIp}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/ip/loadBalancing/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/ip/loadBalancing/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   Your IP linked to service
   Alter this object properties
   **/
-  public put(path: '/ip/service/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/ip/service/{serviceName}', params: {serviceName: string, body: IpServiceIp}): Promise<void>;
   /**
   Your IP
   Alter this object properties
   **/
-  public put(path: '/ip/{ip}', params: {ip: string}): Promise<void>;
+  public put(path: '/ip/{ip}', params: {ip: string, body: IpIp}): Promise<void>;
   /**
   Your IP on firewall
   Alter this object properties
   **/
-  public put(path: '/ip/{ip}/firewall/{ipOnFirewall}', params: {ip: string, ipOnFirewall: string}): Promise<void>;
+  public put(path: '/ip/{ip}/firewall/{ipOnFirewall}', params: {ip: string, ipOnFirewall: string, body: IpFirewallIp}): Promise<void>;
   /**
   GAME Anti-DDoS
   Alter this object properties
   **/
-  public put(path: '/ip/{ip}/game/{ipOnGame}', params: {ip: string, ipOnGame: string}): Promise<void>;
+  public put(path: '/ip/{ip}/game/{ipOnGame}', params: {ip: string, ipOnGame: string, body: IpGameMitigation}): Promise<void>;
   /**
   Your IP on mitigation
   Alter this object properties
   **/
-  public put(path: '/ip/{ip}/mitigation/{ipOnMitigation}', params: {ip: string, ipOnMitigation: string}): Promise<void>;
+  public put(path: '/ip/{ip}/mitigation/{ipOnMitigation}', params: {ip: string, ipOnMitigation: string, body: IpMitigationIp}): Promise<void>;
   /**
   Mitigation profile for your ip
   Alter this object properties
   **/
-  public put(path: '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}', params: {ip: string, ipMitigationProfile: string}): Promise<void>;
+  public put(path: '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}', params: {ip: string, ipMitigationProfile: string, body: IpMitigationProfile}): Promise<void>;
   /**
   IP block RIPE informations
   Alter this object properties
   **/
-  public put(path: '/ip/{ip}/ripe', params: {ip: string}): Promise<void>;
+  public put(path: '/ip/{ip}/ripe', params: {ip: string, body: IpRipeInfos}): Promise<void>;
   public put(path: PathsIpPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -1506,27 +1506,27 @@ export class ApiIp extends OvhWrapper {
   List the ip.LoadBalancingBackendIp objects
   Add a new backend on your IP load balancing
   **/
-  public post(path: '/ip/loadBalancing/{serviceName}/backend', params: {serviceName: string}): Promise<IpLoadBalancingTask>;
+  public post(path: '/ip/loadBalancing/{serviceName}/backend', params: {serviceName: string, ipBackend: string, probe: IpLoadBalancingBackendProbeEnum, weight?: number}): Promise<IpLoadBalancingTask>;
   /**
   backupState operations
   Set or unset the backend as a backup of another backend. Requests will be directed to the backup only if the main backend is in probe fail
   **/
-  public post(path: '/ip/loadBalancing/{serviceName}/backend/{backend}/backupState', params: {serviceName: string, backend: string}): Promise<IpLoadBalancingTask>;
+  public post(path: '/ip/loadBalancing/{serviceName}/backend/{backend}/backupState', params: {serviceName: string, backend: string, backupStateSet: boolean, mainBackendIp?: string}): Promise<IpLoadBalancingTask>;
   /**
   setWeight operations
   Set the weight of a backend. For instance, if backend A has a weight of 8 and backup B was a weight of 16, backend B will receive twice more connections as backend A. Backends must be on the same POP for the weight parameter to take effect between them.
   **/
-  public post(path: '/ip/loadBalancing/{serviceName}/backend/{backend}/setWeight', params: {serviceName: string, backend: string}): Promise<IpLoadBalancingTask>;
+  public post(path: '/ip/loadBalancing/{serviceName}/backend/{backend}/setWeight', params: {serviceName: string, backend: string, weight: number}): Promise<IpLoadBalancingTask>;
   /**
   importCustomSsl operations
   Import your own ssl certificate on your IP load balancing. Ssl option is needed to use this url.
   **/
-  public post(path: '/ip/loadBalancing/{serviceName}/importCustomSsl', params: {serviceName: string}): Promise<IpLoadBalancingTask>;
+  public post(path: '/ip/loadBalancing/{serviceName}/importCustomSsl', params: {serviceName: string, certificate: string, chain?: string, key: string}): Promise<IpLoadBalancingTask>;
   /**
   List the portsRedirection objects
   Add a new port redirection
   **/
-  public post(path: '/ip/loadBalancing/{serviceName}/portsRedirection', params: {serviceName: string}): Promise<IpLoadBalancingTask>;
+  public post(path: '/ip/loadBalancing/{serviceName}/portsRedirection', params: {serviceName: string, body: IpLoadBalancingIpLoadBalancingPort}): Promise<IpLoadBalancingTask>;
   /**
   restoreSsl operations
   Restore OVH' ssl certificate on your IP load balancing. Ssl option is needed to use this url. (A DCV mail will be sent to postmaster@your-domain.abc)
@@ -1536,7 +1536,7 @@ export class ApiIp extends OvhWrapper {
   stickiness operations
   Set Stickiness type. 'ipSource' will stick clients to a backend by their source ip, 'cookie' will stick them by inserting a cookie, 'none' is to set no stickiness
   **/
-  public post(path: '/ip/loadBalancing/{serviceName}/stickiness', params: {serviceName: string}): Promise<IpLoadBalancingTask>;
+  public post(path: '/ip/loadBalancing/{serviceName}/stickiness', params: {serviceName: string, stickiness: IpLoadBalancingStickinessEnum}): Promise<IpLoadBalancingTask>;
   /**
   switchToIplbNextGenerationApi operations
   Switch to ipLoadbalancing next-gen API. Benefits : additionnals probes, DDOS protection.
@@ -1546,12 +1546,12 @@ export class ApiIp extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/ip/service/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/ip/service/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/ip/service/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/ip/service/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   Terminate your service
   Terminate your service
@@ -1571,47 +1571,47 @@ export class ApiIp extends OvhWrapper {
   changeOrg operations
   Change organisation of this IP
   **/
-  public post(path: '/ip/{ip}/changeOrg', params: {ip: string}): Promise<IpIpTask>;
+  public post(path: '/ip/{ip}/changeOrg', params: {ip: string, organisation: string}): Promise<IpIpTask>;
   /**
   List the ip.ReverseDelegation objects
   Add target for reverse delegation on IPv6 subnet
   **/
-  public post(path: '/ip/{ip}/delegation', params: {ip: string}): Promise<IpReverseDelegation>;
+  public post(path: '/ip/{ip}/delegation', params: {ip: string, target: string}): Promise<IpReverseDelegation>;
   /**
   List the ip.FirewallIp objects
   AntiDDOS option. Add new IP on firewall
   **/
-  public post(path: '/ip/{ip}/firewall', params: {ip: string}): Promise<IpFirewallIp>;
+  public post(path: '/ip/{ip}/firewall', params: {ip: string, ipOnFirewall: string}): Promise<IpFirewallIp>;
   /**
   List the ip.FirewallNetworkRule objects
   AntiDDOS option. Add new rule on your IP
   **/
-  public post(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule', params: {ip: string, ipOnFirewall: string}): Promise<IpFirewallNetworkRule>;
+  public post(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule', params: {ip: string, ipOnFirewall: string, action: IpFirewallActionEnum, destinationPort?: number, protocol: IpFirewallProtocolEnum, sequence: IpFirewallSequenceRangeEnum, source?: string, sourcePort?: number, tcpOption?: IpFirewallOptionTCP}): Promise<IpFirewallNetworkRule>;
   /**
   List the ip.GameMitigationRule objects
   Add new rule on your IP
   **/
-  public post(path: '/ip/{ip}/game/{ipOnGame}/rule', params: {ip: string, ipOnGame: string}): Promise<IpGameMitigationRule>;
+  public post(path: '/ip/{ip}/game/{ipOnGame}/rule', params: {ip: string, ipOnGame: string, ports: ComplexTypeRange<number>, protocol: IpGameMitigationRuleProtocolEnum}): Promise<IpGameMitigationRule>;
   /**
   IP migration to OVH
   Generate a migration token
   **/
-  public post(path: '/ip/{ip}/migrationToken', params: {ip: string}): Promise<IpIpMigrationToken>;
+  public post(path: '/ip/{ip}/migrationToken', params: {ip: string, customerId: string}): Promise<IpIpMigrationToken>;
   /**
   List the ip.MitigationIp objects
   AntiDDOS option. Add new IP on permanent mitigation
   **/
-  public post(path: '/ip/{ip}/mitigation', params: {ip: string}): Promise<IpMitigationIp>;
+  public post(path: '/ip/{ip}/mitigation', params: {ip: string, ipOnMitigation: string}): Promise<IpMitigationIp>;
   /**
   List the ip.MitigationProfile objects
   Create new profile for one of your ip
   **/
-  public post(path: '/ip/{ip}/mitigationProfiles', params: {ip: string}): Promise<IpMitigationProfile>;
+  public post(path: '/ip/{ip}/mitigationProfiles', params: {ip: string, autoMitigationTimeOut: IpMitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile: string}): Promise<IpMitigationProfile>;
   /**
   move operations
   Move this IP to another service
   **/
-  public post(path: '/ip/{ip}/move', params: {ip: string}): Promise<IpIpTask>;
+  public post(path: '/ip/{ip}/move', params: {ip: string, nexthop?: string, to: string}): Promise<IpIpTask>;
   /**
   park operations
   Park this IP
@@ -1621,7 +1621,7 @@ export class ApiIp extends OvhWrapper {
   List the ip.ReverseIp objects
   Add reverse on an ip
   **/
-  public post(path: '/ip/{ip}/reverse', params: {ip: string}): Promise<IpReverseIp>;
+  public post(path: '/ip/{ip}/reverse', params: {ip: string, ipReverse: string, reverse: string}): Promise<IpReverseIp>;
   /**
   unblock operations
   Release the ip from anti-spam system

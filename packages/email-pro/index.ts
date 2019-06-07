@@ -984,32 +984,32 @@ export class ApiEmailPro extends OvhWrapper {
   Email pro service
   Alter this object properties
   **/
-  public put(path: '/email/pro/{service}', params: {service: string}): Promise<void>;
+  public put(path: '/email/pro/{service}', params: {service: string, body: EmailProService}): Promise<void>;
   /**
   Mailbox
   Alter this object properties
   **/
-  public put(path: '/email/pro/{service}/account/{email}', params: {service: string, email: string}): Promise<void>;
+  public put(path: '/email/pro/{service}/account/{email}', params: {service: string, email: string, body: EmailProAccount}): Promise<void>;
   /**
   Domain
   Alter this object properties
   **/
-  public put(path: '/email/pro/{service}/domain/{domainName}', params: {service: string, domainName: string}): Promise<void>;
+  public put(path: '/email/pro/{service}/domain/{domainName}', params: {service: string, domainName: string, body: EmailProDomain}): Promise<void>;
   /**
   disclaimer
   Alter this object properties
   **/
-  public put(path: '/email/pro/{service}/domain/{domainName}/disclaimer', params: {service: string, domainName: string}): Promise<void>;
+  public put(path: '/email/pro/{service}/domain/{domainName}/disclaimer', params: {service: string, domainName: string, body: EmailProDisclaimer}): Promise<void>;
   /**
   External contact for this pro service
   Alter this object properties
   **/
-  public put(path: '/email/pro/{service}/externalContact/{externalEmailAddress}', params: {service: string, externalEmailAddress: string}): Promise<void>;
+  public put(path: '/email/pro/{service}/externalContact/{externalEmailAddress}', params: {service: string, externalEmailAddress: string, body: EmailProExternalContact}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/email/pro/{service}/serviceInfos', params: {service: string}): Promise<void>;
+  public put(path: '/email/pro/{service}/serviceInfos', params: {service: string, body: ServicesService}): Promise<void>;
   public put(path: PathsEmailProPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -1017,32 +1017,32 @@ export class ApiEmailPro extends OvhWrapper {
   List the email.pro.AccountAlias objects
   Create new alias
   **/
-  public post(path: '/email/pro/{service}/account/{email}/alias', params: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/account/{email}/alias', params: {service: string, email: string, alias: string}): Promise<EmailProTask>;
   /**
   changePassword operations
   Change mailbox password
   **/
-  public post(path: '/email/pro/{service}/account/{email}/changePassword', params: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/account/{email}/changePassword', params: {service: string, email: string, password: string}): Promise<EmailProTask>;
   /**
   Account Diagnosis
   Create new diagnosis request
   **/
-  public post(path: '/email/pro/{service}/account/{email}/diagnostics', params: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/account/{email}/diagnostics', params: {service: string, email: string, password: string}): Promise<EmailProTask>;
   /**
   List the email.pro.AccountFullAccess objects
   Allow full access to a user
   **/
-  public post(path: '/email/pro/{service}/account/{email}/fullAccess', params: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/account/{email}/fullAccess', params: {service: string, email: string, allowedAccountId: number}): Promise<EmailProTask>;
   /**
   List the email.pro.AccountSendAs objects
   Allow another user to send mails from this mailbox
   **/
-  public post(path: '/email/pro/{service}/account/{email}/sendAs', params: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/account/{email}/sendAs', params: {service: string, email: string, allowAccountId: number}): Promise<EmailProTask>;
   /**
   List the email.pro.AccountSendOnBehalfTo objects
   Allow another user to Send On Behalf To mails from this mailbox
   **/
-  public post(path: '/email/pro/{service}/account/{email}/sendOnBehalfTo', params: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/account/{email}/sendOnBehalfTo', params: {service: string, email: string, allowAccountId: number}): Promise<EmailProTask>;
   /**
   terminate operations
   Terminate account at expiration date
@@ -1052,17 +1052,17 @@ export class ApiEmailPro extends OvhWrapper {
   List the email.pro.Domain objects
   Create new domain in pro services
   **/
-  public post(path: '/email/pro/{service}/domain', params: {service: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/domain', params: {service: string, configureAutodiscover?: boolean, configureMx?: boolean, mxRelay?: string, name: string, type: EmailProDomainTypeEnum}): Promise<EmailProTask>;
   /**
   disclaimer
   Create organization disclaimer of each email
   **/
-  public post(path: '/email/pro/{service}/domain/{domainName}/disclaimer', params: {service: string, domainName: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/domain/{domainName}/disclaimer', params: {service: string, domainName: string, content: string, outsideOnly?: boolean}): Promise<EmailProTask>;
   /**
   List the email.pro.ExternalContact objects
   create new external contact
   **/
-  public post(path: '/email/pro/{service}/externalContact', params: {service: string}): Promise<EmailProTask>;
+  public post(path: '/email/pro/{service}/externalContact', params: {service: string, displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string}): Promise<EmailProTask>;
   /**
   updateFlagsOnAllAccounts operations
   Update spam and virus flags on all active accounts

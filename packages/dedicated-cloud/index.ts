@@ -3049,27 +3049,27 @@ export class ApiDedicatedCloud extends OvhWrapper {
   Private Cloud
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}', params: {serviceName: string, body: DedicatedCloudDedicatedCloud}): Promise<void>;
   /**
   Network allowed to connect to the Private Cloud management interface
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', params: {serviceName: string, networkAccessId: number}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', params: {serviceName: string, networkAccessId: number, body: DedicatedCloudAllowedNetwork}): Promise<void>;
   /**
   Private Cloud Datacenter
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', params: {serviceName: string, datacenterId: number}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', params: {serviceName: string, datacenterId: number, body: DedicatedCloudDatacenter}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   Private Cloud User right
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}', params: {serviceName: string, userId: number, rightId: number}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}', params: {serviceName: string, userId: number, rightId: number, body: DedicatedCloudRight}): Promise<void>;
   public put(path: PathsDedicatedCloudPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -3077,42 +3077,42 @@ export class ApiDedicatedCloud extends OvhWrapper {
   List the dedicatedCloud.AllowedNetwork objects
   Create a new Allowed network for your dedicatedCloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/allowedNetwork', params: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/allowedNetwork', params: {serviceName: string, description?: string, network: string}): Promise<DedicatedCloudTask>;
   /**
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, networkAccessId: number, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, networkAccessId: number, taskId: number, executionDate: string}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState', params: {serviceName: string, networkAccessId: number, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState', params: {serviceName: string, networkAccessId: number, taskId: number, reason: string}): Promise<DedicatedCloudTask>;
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/dedicatedCloud/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   changeProperties operations
   Update this Private Cloud properties.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/changeProperties', params: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/changeProperties', params: {serviceName: string, description?: string, sslV3?: boolean, userAccessPolicy?: DedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: DedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number}): Promise<DedicatedCloudTask>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/dedicatedCloud/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   List the dedicatedCloud.Datacenter objects
   Add a new Datacenter in your Private Cloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter', params: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter', params: {serviceName: string, commercialRangeName: string, vrackName?: string}): Promise<DedicatedCloudTask>;
   /**
   changeProperties operations
   Edit the backup on a Private Cloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties', params: {serviceName: string, datacenterId: number, backupDurationInReport: boolean, backupOffer: DedicatedCloudBackupOfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable backup solution on a Private Cloud
@@ -3122,17 +3122,17 @@ export class ApiDedicatedCloud extends OvhWrapper {
   enable operations
   Enable backup solution on a Private Cloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable', params: {serviceName: string, datacenterId: number, backupOffer?: DedicatedCloudBackupOfferTypeEnum}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable Zerto
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/disable', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/disable', params: {serviceName: string, datacenterId: number, secondaryDatacenterId: number, secondaryServiceName: string}): Promise<DedicatedCloudTask>;
   /**
   enable operations
   Enable Zerto replication between 2 OVH dedicated Clouds
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/enable', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/enable', params: {serviceName: string, datacenterId: number, primaryEndpointIp: string, secondaryDatacenterId: number, secondaryEndpointIp: string, secondaryServiceName: string}): Promise<DedicatedCloudTask>;
   /**
   generateZsspPassword operations
   Generate a new password for Zerto Self Service Portal and receive it by email.
@@ -3147,7 +3147,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
   configureVpn operations
   Configure vpn between your OVH Private Cloud and your onsite infrastructure
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/configureVpn', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/configureVpn', params: {serviceName: string, datacenterId: number, preSharedKey: string, remoteEndpointInternalIp: string, remoteEndpointPublicIp: string, remoteVraNetwork?: string, remoteZvmInternalIp: string}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable Single site Zerto
@@ -3157,7 +3157,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
   enable operations
   Enable Zerto replication between your OVH Private Cloud and your onsite infrastructure
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable', params: {serviceName: string, datacenterId: number, localVraNetwork: string, ovhEndpointIp: string, remoteVraNetwork: string}): Promise<DedicatedCloudTask>;
   /**
   remove operations
   Remove the filer from your Private Cloud.
@@ -3167,17 +3167,17 @@ export class ApiDedicatedCloud extends OvhWrapper {
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, datacenterId: number, filerId: number, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, datacenterId: number, filerId: number, taskId: number, executionDate: string}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/resetTaskState', params: {serviceName: string, datacenterId: number, filerId: number, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/resetTaskState', params: {serviceName: string, datacenterId: number, filerId: number, taskId: number, reason: string}): Promise<DedicatedCloudTask>;
   /**
   addHostSpare operations
   Add a spare host to your Private Cloud.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare', params: {serviceName: string, datacenterId: number, hostId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare', params: {serviceName: string, datacenterId: number, hostId: number, reason: string}): Promise<DedicatedCloudTask>;
   /**
   remove operations
   Remove the host from your Private Cloud.
@@ -3187,37 +3187,37 @@ export class ApiDedicatedCloud extends OvhWrapper {
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, datacenterId: number, hostId: number, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, datacenterId: number, hostId: number, taskId: number, executionDate: string}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState', params: {serviceName: string, datacenterId: number, hostId: number, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState', params: {serviceName: string, datacenterId: number, hostId: number, taskId: number, reason: string}): Promise<DedicatedCloudTask>;
   /**
   orderNewFilerHourly operations
   Order a new hourly Filer in a given Datacenter
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewFilerHourly', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewFilerHourly', params: {serviceName: string, datacenterId: number, name: string}): Promise<DedicatedCloudTask>;
   /**
   orderNewHostHourly operations
   Order a new hourly Host in a given Datacenter
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly', params: {serviceName: string, datacenterId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly', params: {serviceName: string, datacenterId: number, name: string}): Promise<DedicatedCloudTask>;
   /**
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, datacenterId: number, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, datacenterId: number, taskId: number, executionDate: string}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/resetTaskState', params: {serviceName: string, datacenterId: number, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/resetTaskState', params: {serviceName: string, datacenterId: number, taskId: number, reason: string}): Promise<DedicatedCloudTask>;
   /**
   Private Cloud Backup Job
   Edit a backup job
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob', params: {serviceName: string, datacenterId: number, vmId: number, backupDays: DedicatedCloudBackupBackupDaysEnum[]}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable backup solution on this virtual Machine
@@ -3227,12 +3227,12 @@ export class ApiDedicatedCloud extends OvhWrapper {
   enable operations
   Enable backup solution on this virtual Machine
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable', params: {serviceName: string, datacenterId: number, vmId: number, backupDays: DedicatedCloudBackupBackupDaysEnum[]}): Promise<DedicatedCloudTask>;
   /**
   restore operations
   Restore this restore point
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}/restore', params: {serviceName: string, datacenterId: number, vmId: number, restorePointId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}/restore', params: {serviceName: string, datacenterId: number, vmId: number, restorePointId: number, filerId: number}): Promise<DedicatedCloudTask>;
   /**
   disableBackup operations
   Disable backup on this virtual Machine
@@ -3242,32 +3242,32 @@ export class ApiDedicatedCloud extends OvhWrapper {
   editBackup operations
   Edit backup on this virtual Machine
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup', params: {serviceName: string, datacenterId: number, vmId: number, backupDays: DedicatedCloudBackupBackupDaysEnum[]}): Promise<DedicatedCloudTask>;
   /**
   enableBackup operations
   Enable backup on this virtual Machine
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup', params: {serviceName: string, datacenterId: number, vmId: number, backupDays: DedicatedCloudBackupBackupDaysEnum[]}): Promise<DedicatedCloudTask>;
   /**
   restoreBackup operations
   Restore this restore point
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup', params: {serviceName: string, datacenterId: number, vmId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup', params: {serviceName: string, datacenterId: number, vmId: number, filerId: number, restorePointId: number}): Promise<DedicatedCloudTask>;
   /**
   List the dedicatedCloud.FederationAccessNetwork objects
   Add a new option user access
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory', params: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory', params: {serviceName: string, baseDnForGroups: string, baseDnForUsers: string, description?: string, domainAlias: string, domainName: string, ip: string, password: string, username: string}): Promise<DedicatedCloudTask>;
   /**
   changeProperties operations
   Change Active Directory properties
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties', params: {serviceName: string, activeDirectoryId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties', params: {serviceName: string, activeDirectoryId: number, description?: string, password: string, username: string}): Promise<DedicatedCloudTask>;
   /**
   grantActiveDirectoryUser operations
   Grant Active Directory user
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryUser', params: {serviceName: string, activeDirectoryId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryUser', params: {serviceName: string, activeDirectoryId: number, username: string}): Promise<DedicatedCloudTask>;
   /**
   remove operations
   Remove the filer from your Private Cloud.
@@ -3277,12 +3277,12 @@ export class ApiDedicatedCloud extends OvhWrapper {
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, filerId: number, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, filerId: number, taskId: number, executionDate: string}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/resetTaskState', params: {serviceName: string, filerId: number, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/resetTaskState', params: {serviceName: string, filerId: number, taskId: number, reason: string}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable VMware Hybrid Cloud Extension option
@@ -3317,12 +3317,12 @@ export class ApiDedicatedCloud extends OvhWrapper {
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, network: string, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, network: string, taskId: number, executionDate: string}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/resetTaskState', params: {serviceName: string, network: string, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/resetTaskState', params: {serviceName: string, network: string, taskId: number, reason: string}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable Nsx option
@@ -3337,7 +3337,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
   orderNewFilerHourly operations
   Order a new hourly Filer mounted in every Datacenter of a given Private Cloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/orderNewFilerHourly', params: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/orderNewFilerHourly', params: {serviceName: string, name: string}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable PCI-DSS option
@@ -3357,12 +3357,12 @@ export class ApiDedicatedCloud extends OvhWrapper {
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, taskId: number, executionDate: string}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/task/{taskId}/resetTaskState', params: {serviceName: string, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/task/{taskId}/resetTaskState', params: {serviceName: string, taskId: number, reason: string}): Promise<DedicatedCloudTask>;
   /**
   Terminate your service
   Terminate your service
@@ -3372,12 +3372,12 @@ export class ApiDedicatedCloud extends OvhWrapper {
   List the dedicatedCloud.twoFAWhitelist objects
   Add a whitelisted ip on the two factor authentication
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist', params: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist', params: {serviceName: string, description: string, ip: string}): Promise<DedicatedCloudTask>;
   /**
   changeProperties operations
   Change Private Cloud Two facter authentication whitelist properties
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}/changeProperties', params: {serviceName: string, id: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}/changeProperties', params: {serviceName: string, id: number, description?: string}): Promise<DedicatedCloudTask>;
   /**
   upgradeHypervisor operations
   Upgrade your hypervisor to the next released version
@@ -3387,17 +3387,17 @@ export class ApiDedicatedCloud extends OvhWrapper {
   List the dedicatedCloud.User objects
   Create a new User in your Private Cloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user', params: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user', params: {serviceName: string, canAddRessource?: boolean, canManageRights?: boolean, email?: string, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: DedicatedCloudRightNetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: DedicatedCloudRightRightEnum, tokenValidator?: boolean, vmNetworkRole?: DedicatedCloudRightVmNetworkRoleEnum}): Promise<DedicatedCloudTask>;
   /**
   changePassword operations
   Change Private Cloud user password
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/changePassword', params: {serviceName: string, userId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/changePassword', params: {serviceName: string, userId: number, password?: string}): Promise<DedicatedCloudTask>;
   /**
   changeProperties operations
   Change Private Cloud user properties
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/changeProperties', params: {serviceName: string, userId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/changeProperties', params: {serviceName: string, userId: number, canManageIpFailOvers?: boolean, canManageNetwork?: boolean, canManageRights?: boolean, email?: string, firstName?: string, fullAdminRo?: boolean, lastName?: string, nsxRight?: boolean, phoneNumber?: string, receiveAlerts?: boolean, tokenValidator?: boolean}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable the given Private Cloud user 
@@ -3412,17 +3412,17 @@ export class ApiDedicatedCloud extends OvhWrapper {
   List the dedicatedCloud.ObjectRight objects
   Add a new object right to user in datacenter on Private Cloud
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight', params: {serviceName: string, userId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight', params: {serviceName: string, userId: number, propagate?: boolean, right: DedicatedCloudRightRightEnum, type: DedicatedCloudRightUserObjectRightTypeEnum, vmwareObjectId: string}): Promise<DedicatedCloudTask>;
   /**
   changeMaintenanceExecutionDate operations
   Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, userId: number, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/changeMaintenanceExecutionDate', params: {serviceName: string, userId: number, taskId: number, executionDate: string}): Promise<DedicatedCloudTask>;
   /**
   resetTaskState operations
   Restart task in error.
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/resetTaskState', params: {serviceName: string, userId: number, taskId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/resetTaskState', params: {serviceName: string, userId: number, taskId: number, reason: string}): Promise<DedicatedCloudTask>;
   /**
   objectType operations
   Get available object types
@@ -3432,17 +3432,17 @@ export class ApiDedicatedCloud extends OvhWrapper {
   ovhId operations
   Get ovh id from object type
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/vendor/ovhId', params: {serviceName: string}): Promise<DedicatedCloudVendorOvhId>;
+  public post(path: '/dedicatedCloud/{serviceName}/vendor/ovhId', params: {serviceName: string, objectType: DedicatedCloudVendorObjectTypeEnum, vendorId: string}): Promise<DedicatedCloudVendorOvhId>;
   /**
   List the dedicatedCloud.VMEncryptionAccessNetwork objects
   Add a new option user access
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms', params: {serviceName: string}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms', params: {serviceName: string, description?: string, ip: string, sslThumbprint: string}): Promise<DedicatedCloudTask>;
   /**
   changeProperties operations
   Change option user access properties
   **/
-  public post(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}/changeProperties', params: {serviceName: string, kmsId: number}): Promise<DedicatedCloudTask>;
+  public post(path: '/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}/changeProperties', params: {serviceName: string, kmsId: number, description?: string, sslThumbprint: string}): Promise<DedicatedCloudTask>;
   /**
   disable operations
   Disable vRealize Operations option

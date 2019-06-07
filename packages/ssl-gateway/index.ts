@@ -407,17 +407,17 @@ export class ApiSslGateway extends OvhWrapper {
   Your SSL Gateway
   Alter this object properties
   **/
-  public put(path: '/sslGateway/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/sslGateway/{serviceName}', params: {serviceName: string, body: SslGatewaySslGateway}): Promise<void>;
   /**
   Server attached to an SSL Gateway
   Alter this object properties
   **/
-  public put(path: '/sslGateway/{serviceName}/server/{id}', params: {serviceName: string, id: number}): Promise<void>;
+  public put(path: '/sslGateway/{serviceName}/server/{id}', params: {serviceName: string, id: number, body: SslGatewayServer}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/sslGateway/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/sslGateway/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsSslGatewayPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -425,27 +425,27 @@ export class ApiSslGateway extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/sslGateway/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/sslGateway/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/sslGateway/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/sslGateway/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   List the sslGateway.Domain objects
   Attach a new domain to your SSL Gateway
   **/
-  public post(path: '/sslGateway/{serviceName}/domain', params: {serviceName: string}): Promise<SslGatewayDomain>;
+  public post(path: '/sslGateway/{serviceName}/domain', params: {serviceName: string, domain: string}): Promise<SslGatewayDomain>;
   /**
   renewCertificate operations
   Renew your SSL certificates
   **/
-  public post(path: '/sslGateway/{serviceName}/renewCertificate', params: {serviceName: string}): Promise<string[]>;
+  public post(path: '/sslGateway/{serviceName}/renewCertificate', params: {serviceName: string, domain?: string}): Promise<string[]>;
   /**
   List the sslGateway.Server objects
   Add a new server to your SSL Gateway
   **/
-  public post(path: '/sslGateway/{serviceName}/server', params: {serviceName: string}): Promise<SslGatewayServer>;
+  public post(path: '/sslGateway/{serviceName}/server', params: {serviceName: string, address: string, port: number}): Promise<SslGatewayServer>;
   /**
   Terminate your service
   Terminate your service

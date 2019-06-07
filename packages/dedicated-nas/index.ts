@@ -335,17 +335,17 @@ export class ApiDedicatedNas extends OvhWrapper {
   Storage nas
   Alter this object properties
   **/
-  public put(path: '/dedicated/nas/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicated/nas/{serviceName}', params: {serviceName: string, body: DedicatedNasNas}): Promise<void>;
   /**
   Storage partition
   Alter this object properties
   **/
-  public put(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string}): Promise<void>;
+  public put(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string, body: DedicatedNasPartition}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicated/nas/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicated/nas/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsDedicatedNasPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -353,17 +353,17 @@ export class ApiDedicatedNas extends OvhWrapper {
   List the dedicated.nas.Partition objects
   Create a  new partition
   **/
-  public post(path: '/dedicated/nas/{serviceName}/partition', params: {serviceName: string}): Promise<DedicatedNasTaskTask>;
+  public post(path: '/dedicated/nas/{serviceName}/partition', params: {serviceName: string, partitionName: string, protocol: DedicatedStorageProtocolEnum, size: number}): Promise<DedicatedNasTaskTask>;
   /**
   List the dedicated.nas.Access objects
   Add an Acl to this  partition
   **/
-  public post(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access', params: {serviceName: string, partitionName: string}): Promise<DedicatedNasTaskTask>;
+  public post(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access', params: {serviceName: string, partitionName: string, ip: string}): Promise<DedicatedNasTaskTask>;
   /**
   List the dedicated.nas.Quota objects
   Set a new quota
   **/
-  public post(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota', params: {serviceName: string, partitionName: string}): Promise<DedicatedNasTaskTask>;
+  public post(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota', params: {serviceName: string, partitionName: string, size: number, uid: number}): Promise<DedicatedNasTaskTask>;
   public post(path: PathsDedicatedNasPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

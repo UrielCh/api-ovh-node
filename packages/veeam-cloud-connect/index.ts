@@ -326,7 +326,7 @@ export class ApiVeeamCloudConnect extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/veeamCloudConnect/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/veeamCloudConnect/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsVeeamCloudConnectPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -339,7 +339,7 @@ export class ApiVeeamCloudConnect extends OvhWrapper {
   upgradeQuota operations
   Change your quota
   **/
-  public post(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota', params: {serviceName: string, inventoryName: string}): Promise<VeeamCloudConnectTask[]>;
+  public post(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota', params: {serviceName: string, inventoryName: string, newQuota: number}): Promise<VeeamCloudConnectTask[]>;
   /**
   resetPassword operations
   Reset your Cloud Tenant Password

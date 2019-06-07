@@ -638,17 +638,17 @@ export class ApiDedicatedCeph extends OvhWrapper {
   dedicated.ceph.clusterGet
   Update cluster details
   **/
-  public put(path: '/dedicated/ceph/{serviceName}', params: {serviceName: string}): Promise<string>;
+  public put(path: '/dedicated/ceph/{serviceName}', params: {serviceName: string, crushTunables: DedicatedCephClusterUpdateCrushTunablesEnum, label: string}): Promise<string>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicated/ceph/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicated/ceph/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   dedicated.ceph.userPoolPermList
   Update user-pool permission for single pool
   **/
-  public put(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool', params: {userName: string, serviceName: string}): Promise<string>;
+  public put(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool', params: {userName: string, serviceName: string, classRead: boolean, classWrite: boolean, execute: boolean, poolName: string, read: boolean, write: boolean}): Promise<string>;
   public put(path: PathsDedicatedCephPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -656,22 +656,22 @@ export class ApiDedicatedCeph extends OvhWrapper {
   dedicated.ceph.aclCreate
   Create one or more new IP ACLs
   **/
-  public post(path: '/dedicated/ceph/{serviceName}/acl', params: {serviceName: string}): Promise<string>;
+  public post(path: '/dedicated/ceph/{serviceName}/acl', params: {serviceName: string, aclList: string[]}): Promise<string>;
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/dedicated/ceph/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/dedicated/ceph/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/dedicated/ceph/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/dedicated/ceph/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   dedicated.ceph.poolCreate
   Create a new ceph pool
   **/
-  public post(path: '/dedicated/ceph/{serviceName}/pool', params: {serviceName: string}): Promise<string>;
+  public post(path: '/dedicated/ceph/{serviceName}/pool', params: {serviceName: string, poolName: string}): Promise<string>;
   /**
   Terminate your service
   Terminate your service
@@ -681,12 +681,12 @@ export class ApiDedicatedCeph extends OvhWrapper {
   dedicated.ceph.userCreate
   Create a new ceph user
   **/
-  public post(path: '/dedicated/ceph/{serviceName}/user', params: {serviceName: string}): Promise<string>;
+  public post(path: '/dedicated/ceph/{serviceName}/user', params: {serviceName: string, userName: string}): Promise<string>;
   /**
   dedicated.ceph.userPoolPermList
   Create new user-pool permissions. All old permissions will be cleared
   **/
-  public post(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool', params: {userName: string, serviceName: string}): Promise<string>;
+  public post(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool', params: {userName: string, serviceName: string, permissions?: DedicatedCephUserPoolPermSetAllPermissions[]}): Promise<string>;
   public post(path: PathsDedicatedCephPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

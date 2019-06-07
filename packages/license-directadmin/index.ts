@@ -315,12 +315,12 @@ export class ApiLicenseDirectadmin extends OvhWrapper {
   Your DirectAdmin license
   Alter this object properties
   **/
-  public put(path: '/license/directadmin/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/license/directadmin/{serviceName}', params: {serviceName: string, body: LicenseDirectadminDirectAdmin}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/directadmin/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/license/directadmin/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsLicenseDirectadminPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -328,17 +328,17 @@ export class ApiLicenseDirectadmin extends OvhWrapper {
   changeIp operations
   Move this license to another Ip
   **/
-  public post(path: '/license/directadmin/{serviceName}/changeIp', params: {serviceName: string}): Promise<LicenseTask>;
+  public post(path: '/license/directadmin/{serviceName}/changeIp', params: {serviceName: string, destinationIp: string}): Promise<LicenseTask>;
   /**
   changeOs operations
   Change the Operating System for a license
   **/
-  public post(path: '/license/directadmin/{serviceName}/changeOs', params: {serviceName: string}): Promise<LicenseTask>;
+  public post(path: '/license/directadmin/{serviceName}/changeOs', params: {serviceName: string, os: LicenseDirectAdminOsEnum}): Promise<LicenseTask>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/license/directadmin/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/license/directadmin/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   Terminate your service
   Terminate your service

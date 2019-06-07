@@ -554,12 +554,12 @@ export class ApiVrack extends OvhWrapper {
   vrack
   Alter this object properties
   **/
-  public put(path: '/vrack/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/vrack/{serviceName}', params: {serviceName: string, body: VrackVrack}): Promise<void>;
   /**
   vrack dedicated connect interface
   Alter this object properties
   **/
-  public put(path: '/vrack/{serviceName}/dedicatedConnect/{name}', params: {serviceName: string, name: string}): Promise<void>;
+  public put(path: '/vrack/{serviceName}/dedicatedConnect/{name}', params: {serviceName: string, name: string, body: VrackDedicatedConnect}): Promise<void>;
   public put(path: PathsVrackPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -567,47 +567,47 @@ export class ApiVrack extends OvhWrapper {
   List the vrack.cloudProject objects
   add a publicCloud project to this vrack
   **/
-  public post(path: '/vrack/{serviceName}/cloudProject', params: {serviceName: string}): Promise<VrackTask>;
+  public post(path: '/vrack/{serviceName}/cloudProject', params: {serviceName: string, project: string}): Promise<VrackTask>;
   /**
   List the vrack.dedicatedCloud objects
   add a dedicatedCloud (VmNetwork) to this vrack
   **/
-  public post(path: '/vrack/{serviceName}/dedicatedCloud', params: {serviceName: string}): Promise<VrackTask>;
+  public post(path: '/vrack/{serviceName}/dedicatedCloud', params: {serviceName: string, dedicatedCloud: string}): Promise<VrackTask>;
   /**
   move operations
   Move your dedicatedCloud datacenter from a Vrack to another
   **/
-  public post(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move', params: {serviceName: string, datacenter: string}): Promise<VrackTask>;
+  public post(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move', params: {serviceName: string, datacenter: string, targetServiceName: string}): Promise<VrackTask>;
   /**
   List the vrack.dedicatedServer objects
   add a dedicated server to this vrack
   **/
-  public post(path: '/vrack/{serviceName}/dedicatedServer', params: {serviceName: string}): Promise<VrackTask>;
+  public post(path: '/vrack/{serviceName}/dedicatedServer', params: {serviceName: string, dedicatedServer: string}): Promise<VrackTask>;
   /**
   List the vrack.dedicatedServerInterface objects
   add a dedicated server interface to this vrack
   **/
-  public post(path: '/vrack/{serviceName}/dedicatedServerInterface', params: {serviceName: string}): Promise<VrackTask>;
+  public post(path: '/vrack/{serviceName}/dedicatedServerInterface', params: {serviceName: string, dedicatedServerInterface: string}): Promise<VrackTask>;
   /**
   List the vrack.ip objects
   add an IP block to this vrack
   **/
-  public post(path: '/vrack/{serviceName}/ip', params: {serviceName: string}): Promise<VrackTask>;
+  public post(path: '/vrack/{serviceName}/ip', params: {serviceName: string, block: string}): Promise<VrackTask>;
   /**
   announceInZone operations
   Announce IP to zone for vrack
   **/
-  public post(path: '/vrack/{serviceName}/ip/{ip}/announceInZone', params: {serviceName: string, ip: string}): Promise<VrackTask>;
+  public post(path: '/vrack/{serviceName}/ip/{ip}/announceInZone', params: {serviceName: string, ip: string, zone: VrackVrackZoneEnum}): Promise<VrackTask>;
   /**
   List the vrack.iplb objects
   add an ipLoadbalancing to this vrack
   **/
-  public post(path: '/vrack/{serviceName}/ipLoadbalancing', params: {serviceName: string}): Promise<VrackTask>;
+  public post(path: '/vrack/{serviceName}/ipLoadbalancing', params: {serviceName: string, ipLoadbalancing: string}): Promise<VrackTask>;
   /**
   List the vrack.legacyVrack objects
   add a legacy vrack (vrackXXXX) to this vrack (pn-XXXX)
   **/
-  public post(path: '/vrack/{serviceName}/legacyVrack', params: {serviceName: string}): Promise<VrackTask>;
+  public post(path: '/vrack/{serviceName}/legacyVrack', params: {serviceName: string, legacyVrack: string}): Promise<VrackTask>;
   public post(path: PathsVrackPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

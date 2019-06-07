@@ -324,12 +324,12 @@ export class ApiLicenseWindows extends OvhWrapper {
   Your Windows license
   Alter this object properties
   **/
-  public put(path: '/license/windows/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/license/windows/{serviceName}', params: {serviceName: string, body: LicenseWindowsWindows}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/windows/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/license/windows/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsLicenseWindowsPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -337,12 +337,12 @@ export class ApiLicenseWindows extends OvhWrapper {
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/license/windows/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/license/windows/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   sqlServer operations
   Link your own sql server license to this Windows license
   **/
-  public post(path: '/license/windows/{serviceName}/sqlServer', params: {serviceName: string}): Promise<LicenseTask>;
+  public post(path: '/license/windows/{serviceName}/sqlServer', params: {serviceName: string, licenseId: string, version: LicenseWindowsSqlVersionEnum}): Promise<LicenseTask>;
   /**
   Terminate your service
   Terminate your service

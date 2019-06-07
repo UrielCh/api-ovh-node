@@ -1077,37 +1077,37 @@ export class ApiMsServices extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/msServices/sharepoint/{domain}/serviceInfos', params: {domain: string}): Promise<void>;
+  public put(path: '/msServices/sharepoint/{domain}/serviceInfos', params: {domain: string, body: ServicesService}): Promise<void>;
   /**
   Active Directory organizational unit
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/msServices/{serviceName}', params: {serviceName: string, body: MsServicesActiveDirectoryOrganizationalUnit}): Promise<void>;
   /**
   Active Directory Account
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}', params: {serviceName: string, userPrincipalName: string}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}', params: {serviceName: string, userPrincipalName: string, body: MsServicesAccount}): Promise<void>;
   /**
   Exchange mailbox information
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange', params: {serviceName: string, userPrincipalName: string}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange', params: {serviceName: string, userPrincipalName: string, body: MsServicesExchangeInformation}): Promise<void>;
   /**
   Sharepoint account information
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint', params: {serviceName: string, userPrincipalName: string}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint', params: {serviceName: string, userPrincipalName: string, body: MsServicesSharepointInformation}): Promise<void>;
   /**
   Exchange service
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/exchange', params: {serviceName: string}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/exchange', params: {serviceName: string, body: MsServicesExchangeService}): Promise<void>;
   /**
   Sharepoint service
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/sharepoint', params: {serviceName: string}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/sharepoint', params: {serviceName: string, body: MsServicesSharepointService}): Promise<void>;
   public put(path: PathsMsServicesPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -1115,7 +1115,7 @@ export class ApiMsServices extends OvhWrapper {
   changePassword operations
   Change account password
   **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/changePassword', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/changePassword', params: {serviceName: string, userPrincipalName: string, password: string}): Promise<MsServicesTask>;
   /**
   configure operations
   Configure mailbox to be operational
@@ -1130,7 +1130,7 @@ export class ApiMsServices extends OvhWrapper {
   disable operations
   Disable Multi Factor Authentication for a period of time
   **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/disable', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/mfa/disable', params: {serviceName: string, userPrincipalName: string, period: number}): Promise<MsServicesTask>;
   /**
   enable operations
   Enable Mfa (enabled by default when created)
@@ -1155,7 +1155,7 @@ export class ApiMsServices extends OvhWrapper {
   Sync account information
   Create new sync account
   **/
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync', params: {serviceName: string, userPrincipalName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync', params: {serviceName: string, userPrincipalName: string, license: MsServicesSyncLicenseEnum}): Promise<MsServicesTask>;
   /**
   configure operations
   Configure sync account to be operational
@@ -1170,7 +1170,7 @@ export class ApiMsServices extends OvhWrapper {
   changePassword operations
   Change account password
   **/
-  public post(path: '/msServices/{serviceName}/sync/changePassword', params: {serviceName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/sync/changePassword', params: {serviceName: string, password: string}): Promise<MsServicesTask>;
   /**
   Temporary link to ADSync software executable
   Generate temporary link to ADSync software executable
@@ -1180,7 +1180,7 @@ export class ApiMsServices extends OvhWrapper {
   List the msServices.upnSuffix objects
   Create new UPN suffix
   **/
-  public post(path: '/msServices/{serviceName}/upnSuffix', params: {serviceName: string}): Promise<MsServicesTask>;
+  public post(path: '/msServices/{serviceName}/upnSuffix', params: {serviceName: string, suffix: string}): Promise<MsServicesTask>;
   public post(path: PathsMsServicesPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

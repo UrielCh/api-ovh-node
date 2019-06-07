@@ -890,27 +890,27 @@ export class ApiEmailMxplan extends OvhWrapper {
   MXPlan service
   Alter this object properties
   **/
-  public put(path: '/email/mxplan/{service}', params: {service: string}): Promise<void>;
+  public put(path: '/email/mxplan/{service}', params: {service: string, body: EmailMxplanService}): Promise<void>;
   /**
   Mailbox
   Alter this object properties
   **/
-  public put(path: '/email/mxplan/{service}/account/{email}', params: {service: string, email: string}): Promise<void>;
+  public put(path: '/email/mxplan/{service}/account/{email}', params: {service: string, email: string, body: EmailMxplanAccount}): Promise<void>;
   /**
   Domain
   Alter this object properties
   **/
-  public put(path: '/email/mxplan/{service}/domain/{domainName}', params: {service: string, domainName: string}): Promise<void>;
+  public put(path: '/email/mxplan/{service}/domain/{domainName}', params: {service: string, domainName: string, body: EmailMxplanDomain}): Promise<void>;
   /**
   disclaimer
   Alter this object properties
   **/
-  public put(path: '/email/mxplan/{service}/domain/{domainName}/disclaimer', params: {service: string, domainName: string}): Promise<void>;
+  public put(path: '/email/mxplan/{service}/domain/{domainName}/disclaimer', params: {service: string, domainName: string, body: EmailProDisclaimer}): Promise<void>;
   /**
   External contact for this mxplan service
   Alter this object properties
   **/
-  public put(path: '/email/mxplan/{service}/externalContact/{externalEmailAddress}', params: {service: string, externalEmailAddress: string}): Promise<void>;
+  public put(path: '/email/mxplan/{service}/externalContact/{externalEmailAddress}', params: {service: string, externalEmailAddress: string, body: EmailMxplanExternalContact}): Promise<void>;
   public put(path: PathsEmailMxplanPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -918,42 +918,42 @@ export class ApiEmailMxplan extends OvhWrapper {
   List the email.mxplan.AccountAlias objects
   Create new alias
   **/
-  public post(path: '/email/mxplan/{service}/account/{email}/alias', params: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/mxplan/{service}/account/{email}/alias', params: {service: string, email: string, alias: string}): Promise<EmailProTask>;
   /**
   changePassword operations
   Change mailbox password
   **/
-  public post(path: '/email/mxplan/{service}/account/{email}/changePassword', params: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/mxplan/{service}/account/{email}/changePassword', params: {service: string, email: string, password: string}): Promise<EmailProTask>;
   /**
   Account Diagnosis
   Create new diagnosis request
   **/
-  public post(path: '/email/mxplan/{service}/account/{email}/diagnostic', params: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/mxplan/{service}/account/{email}/diagnostic', params: {service: string, email: string, password: string}): Promise<EmailProTask>;
   /**
   List the email.mxplan.AccountFullAccess objects
   Allow full access to a user
   **/
-  public post(path: '/email/mxplan/{service}/account/{email}/fullAccess', params: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/mxplan/{service}/account/{email}/fullAccess', params: {service: string, email: string, allowedAccountId: number}): Promise<EmailProTask>;
   /**
   List the email.mxplan.AccountSendAs objects
   Allow another user to send mails from this mailbox
   **/
-  public post(path: '/email/mxplan/{service}/account/{email}/sendAs', params: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/mxplan/{service}/account/{email}/sendAs', params: {service: string, email: string, allowAccountId: number}): Promise<EmailProTask>;
   /**
   List the email.mxplan.AccountSendOnBehalfTo objects
   Allow another user to Send On Behalf To mails from this mailbox
   **/
-  public post(path: '/email/mxplan/{service}/account/{email}/sendOnBehalfTo', params: {service: string, email: string}): Promise<EmailProTask>;
+  public post(path: '/email/mxplan/{service}/account/{email}/sendOnBehalfTo', params: {service: string, email: string, allowAccountId: number}): Promise<EmailProTask>;
   /**
   disclaimer
   Create organization disclaimer of each email
   **/
-  public post(path: '/email/mxplan/{service}/domain/{domainName}/disclaimer', params: {service: string, domainName: string}): Promise<EmailProTask>;
+  public post(path: '/email/mxplan/{service}/domain/{domainName}/disclaimer', params: {service: string, domainName: string, content: string, outsideOnly?: boolean}): Promise<EmailProTask>;
   /**
   List the email.mxplan.ExternalContact objects
   create new external contact
   **/
-  public post(path: '/email/mxplan/{service}/externalContact', params: {service: string}): Promise<EmailProTask>;
+  public post(path: '/email/mxplan/{service}/externalContact', params: {service: string, displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string}): Promise<EmailProTask>;
   /**
   updateFlagsOnAllAccounts operations
   Update spam and virus flags on all active accounts

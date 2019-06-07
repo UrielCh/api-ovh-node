@@ -501,7 +501,7 @@ export class ApiService extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/service/{serviceId}', params: {serviceId: number}): Promise<void>;
+  public put(path: '/service/{serviceId}', params: {serviceId: number, body: ServiceListService}): Promise<void>;
   public put(path: PathsServicePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -509,7 +509,7 @@ export class ApiService extends OvhWrapper {
   Missing description
   Create a renew order
   **/
-  public post(path: '/service/{serviceId}/renew', params: {serviceId: string}): Promise<ServiceRenewRenewOrder>;
+  public post(path: '/service/{serviceId}/renew', params: {serviceId: string, dryRun?: boolean, duration: string, services: number[]}): Promise<ServiceRenewRenewOrder>;
   /**
   reopen operations
   Reopen a suspended service

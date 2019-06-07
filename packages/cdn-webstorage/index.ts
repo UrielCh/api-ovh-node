@@ -188,7 +188,7 @@ export class ApiCdnWebstorage extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cdn/webstorage/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/cdn/webstorage/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsCdnWebstoragePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

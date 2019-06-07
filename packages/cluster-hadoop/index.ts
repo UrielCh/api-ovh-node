@@ -506,17 +506,17 @@ export class ApiClusterHadoop extends OvhWrapper {
   ACL for allowing ip blocks to access to your cluster
   Alter this object properties
   **/
-  public put(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {serviceName: string, block: string}): Promise<void>;
+  public put(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {serviceName: string, block: string, body: ClusterHadoopNetworkAcl}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cluster/hadoop/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/cluster/hadoop/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   User allowed to access interfaces on your cluster
   Alter this object properties
   **/
-  public put(path: '/cluster/hadoop/{serviceName}/user/{username}', params: {serviceName: string, username: string}): Promise<void>;
+  public put(path: '/cluster/hadoop/{serviceName}/user/{username}', params: {serviceName: string, username: string, body: ClusterHadoopUser}): Promise<void>;
   public put(path: PathsClusterHadoopPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -524,7 +524,7 @@ export class ApiClusterHadoop extends OvhWrapper {
   List the cluster.hadoop.NetworkAcl objects
   Add an ACL to your cluster
   **/
-  public post(path: '/cluster/hadoop/{serviceName}/networkAcl', params: {serviceName: string}): Promise<ClusterHadoopTask>;
+  public post(path: '/cluster/hadoop/{serviceName}/networkAcl', params: {serviceName: string, block?: string, description?: string}): Promise<ClusterHadoopTask>;
   /**
   decommission operations
   Decommission the node and all the services on it
@@ -539,7 +539,7 @@ export class ApiClusterHadoop extends OvhWrapper {
   List the cluster.hadoop.Role objects
   Add the Role to the Node
   **/
-  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role', params: {serviceName: string, hostname: string}): Promise<ClusterHadoopTask>;
+  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role', params: {serviceName: string, hostname: string, type: ClusterHadoopRoleTypeEnum}): Promise<ClusterHadoopTask>;
   /**
   restart operations
   Restart the role on the node (THIS ACTION WILL RESTART OTHER DEPENDANT ROLES)
@@ -559,7 +559,7 @@ export class ApiClusterHadoop extends OvhWrapper {
   orderNewNodeHourly operations
   Order a new node in the cluster
   **/
-  public post(path: '/cluster/hadoop/{serviceName}/orderNewNodeHourly', params: {serviceName: string}): Promise<ClusterHadoopTask>;
+  public post(path: '/cluster/hadoop/{serviceName}/orderNewNodeHourly', params: {serviceName: string, nodeProfile: string}): Promise<ClusterHadoopTask>;
   /**
   restart operations
   Restart the Cloudera Manager Hadoop Cluster (THIS ACTION WILL RESTART EVERY SERVICE)
@@ -569,17 +569,17 @@ export class ApiClusterHadoop extends OvhWrapper {
   restart operations
   Restart a Cloudera Manager service (THIS ACTION WILL RESTART OTHER DEPENDANT SERVICES)
   **/
-  public post(path: '/cluster/hadoop/{serviceName}/service/restart', params: {serviceName: string}): Promise<ClusterHadoopTask>;
+  public post(path: '/cluster/hadoop/{serviceName}/service/restart', params: {serviceName: string, service: ClusterHadoopClusterServiceNameEnum}): Promise<ClusterHadoopTask>;
   /**
   start operations
   Start a Cloudera Manager service
   **/
-  public post(path: '/cluster/hadoop/{serviceName}/service/start', params: {serviceName: string}): Promise<ClusterHadoopTask>;
+  public post(path: '/cluster/hadoop/{serviceName}/service/start', params: {serviceName: string, service: ClusterHadoopClusterServiceNameEnum}): Promise<ClusterHadoopTask>;
   /**
   stop operations
   Stop a Cloudera Manager service (THIS ACTION WILL STOP OTHER DEPENDANT SERVICES)
   **/
-  public post(path: '/cluster/hadoop/{serviceName}/service/stop', params: {serviceName: string}): Promise<ClusterHadoopTask>;
+  public post(path: '/cluster/hadoop/{serviceName}/service/stop', params: {serviceName: string, service: ClusterHadoopClusterServiceNameEnum}): Promise<ClusterHadoopTask>;
   /**
   start operations
   Start the Cloudera Manager Hadoop Cluster
@@ -599,12 +599,12 @@ export class ApiClusterHadoop extends OvhWrapper {
   List the cluster.hadoop.User objects
   Add an User to your cluster
   **/
-  public post(path: '/cluster/hadoop/{serviceName}/user', params: {serviceName: string}): Promise<ClusterHadoopTask>;
+  public post(path: '/cluster/hadoop/{serviceName}/user', params: {serviceName: string, clouderaManager: boolean, httpFrontend: boolean, hue: boolean, password: string, username: string}): Promise<ClusterHadoopTask>;
   /**
   resetPassword operations
   Reset the password for a given Hadoop Cluster User
   **/
-  public post(path: '/cluster/hadoop/{serviceName}/user/{username}/resetPassword', params: {serviceName: string, username: string}): Promise<ClusterHadoopTask>;
+  public post(path: '/cluster/hadoop/{serviceName}/user/{username}/resetPassword', params: {serviceName: string, username: string, password: string}): Promise<ClusterHadoopTask>;
   public post(path: PathsClusterHadoopPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

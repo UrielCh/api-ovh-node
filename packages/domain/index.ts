@@ -1643,57 +1643,57 @@ export class ApiDomain extends OvhWrapper {
   Missing description
   Modify an existing SMD file
   **/
-  public put(path: '/domain/data/smd/{smdId}', params: {smdId: number}): Promise<DomainDataSmd>;
+  public put(path: '/domain/data/smd/{smdId}', params: {smdId: number, data: string}): Promise<DomainDataSmd>;
   /**
   Manage DynHost login
   Alter this object properties
   **/
-  public put(path: '/domain/zone/{zoneName}/dynHost/login/{login}', params: {zoneName: string, login: string}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/dynHost/login/{login}', params: {zoneName: string, login: string, body: DomainZoneDynHostLogin}): Promise<void>;
   /**
   DynHost record
   Alter this object properties
   **/
-  public put(path: '/domain/zone/{zoneName}/dynHost/record/{id}', params: {zoneName: string, id: number}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/dynHost/record/{id}', params: {zoneName: string, id: number, body: DomainZoneDynHostRecord}): Promise<void>;
   /**
   Zone resource records
   Alter this object properties
   **/
-  public put(path: '/domain/zone/{zoneName}/record/{id}', params: {zoneName: string, id: number}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/record/{id}', params: {zoneName: string, id: number, body: DomainZoneRecord}): Promise<void>;
   /**
   Redirection
   Alter this object properties
   **/
-  public put(path: '/domain/zone/{zoneName}/redirection/{id}', params: {zoneName: string, id: number}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/redirection/{id}', params: {zoneName: string, id: number, body: DomainZoneRedirection}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/domain/zone/{zoneName}/serviceInfos', params: {zoneName: string}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/serviceInfos', params: {zoneName: string, body: ServicesService}): Promise<void>;
   /**
   Zone Start Of Authority
   Alter this object properties
   **/
-  public put(path: '/domain/zone/{zoneName}/soa', params: {zoneName: string}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/soa', params: {zoneName: string, body: DomainZoneSoa}): Promise<void>;
   /**
   Domain name administration
   Alter this object properties
   **/
-  public put(path: '/domain/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/domain/{serviceName}', params: {serviceName: string, body: DomainDomain}): Promise<void>;
   /**
   Missing description
   Save a new obfuscated emails configuration
   **/
-  public put(path: '/domain/{serviceName}/configurations/obfuscatedEmails', params: {serviceName: string}): Promise<DomainConfigurationsObfuscatedEmail[]>;
+  public put(path: '/domain/{serviceName}/configurations/obfuscatedEmails', params: {serviceName: string, contacts: DomainContactAllTypesEnum[]}): Promise<DomainConfigurationsObfuscatedEmail[]>;
   /**
   Missing description
   Save a new optin configuration
   **/
-  public put(path: '/domain/{serviceName}/configurations/optin', params: {serviceName: string}): Promise<DomainConfigurationsOptin[]>;
+  public put(path: '/domain/{serviceName}/configurations/optin', params: {serviceName: string, optin: DomainConfigurationsOptin[]}): Promise<DomainConfigurationsOptin[]>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/domain/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/domain/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsDomainPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -1721,12 +1721,12 @@ export class ApiDomain extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/domain/zone/{zoneName}/changeContact', params: {zoneName: string}): Promise<number[]>;
+  public post(path: '/domain/zone/{zoneName}/changeContact', params: {zoneName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/domain/zone/{zoneName}/confirmTermination', params: {zoneName: string}): Promise<string>;
+  public post(path: '/domain/zone/{zoneName}/confirmTermination', params: {zoneName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   Manage Dnssec for this zone
   Enable Dnssec
@@ -1736,17 +1736,17 @@ export class ApiDomain extends OvhWrapper {
   List the domain.zone.DynHostLogin objects
   Create a new DynHost login
   **/
-  public post(path: '/domain/zone/{zoneName}/dynHost/login', params: {zoneName: string}): Promise<DomainZoneDynHostLogin>;
+  public post(path: '/domain/zone/{zoneName}/dynHost/login', params: {zoneName: string, loginSuffix: string, password: string, subDomain: string}): Promise<DomainZoneDynHostLogin>;
   /**
   changePassword operations
   Change password of the DynHost login
   **/
-  public post(path: '/domain/zone/{zoneName}/dynHost/login/{login}/changePassword', params: {zoneName: string, login: string}): Promise<void>;
+  public post(path: '/domain/zone/{zoneName}/dynHost/login/{login}/changePassword', params: {zoneName: string, login: string, password: string}): Promise<void>;
   /**
   List the domain.zone.DynHostRecord objects
   Create a new DynHost record (Don't forget to refresh the zone)
   **/
-  public post(path: '/domain/zone/{zoneName}/dynHost/record', params: {zoneName: string}): Promise<DomainZoneDynHostRecord>;
+  public post(path: '/domain/zone/{zoneName}/dynHost/record', params: {zoneName: string, ip: string, subDomain?: string}): Promise<DomainZoneDynHostRecord>;
   /**
   restore operations
   Restore the DNS zone
@@ -1756,17 +1756,17 @@ export class ApiDomain extends OvhWrapper {
   import operations
   Import zone
   **/
-  public post(path: '/domain/zone/{zoneName}/import', params: {zoneName: string}): Promise<DomainZoneTask>;
+  public post(path: '/domain/zone/{zoneName}/import', params: {zoneName: string, zoneFile: string}): Promise<DomainZoneTask>;
   /**
   List the domain.zone.Record objects
   Create a new DNS record (Don't forget to refresh the zone)
   **/
-  public post(path: '/domain/zone/{zoneName}/record', params: {zoneName: string}): Promise<DomainZoneRecord>;
+  public post(path: '/domain/zone/{zoneName}/record', params: {zoneName: string, fieldType: ZoneNamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}): Promise<DomainZoneRecord>;
   /**
   List the domain.zone.Redirection objects
   Create a new redirection (Don't forget to refresh the zone)
   **/
-  public post(path: '/domain/zone/{zoneName}/redirection', params: {zoneName: string}): Promise<DomainZoneRedirection>;
+  public post(path: '/domain/zone/{zoneName}/redirection', params: {zoneName: string, description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: ZoneRedirectionTypeEnum}): Promise<DomainZoneRedirection>;
   /**
   refresh operations
   Apply zone modification on DNS servers
@@ -1776,7 +1776,7 @@ export class ApiDomain extends OvhWrapper {
   reset operations
   Reset the DNS zone
   **/
-  public post(path: '/domain/zone/{zoneName}/reset', params: {zoneName: string}): Promise<void>;
+  public post(path: '/domain/zone/{zoneName}/reset', params: {zoneName: string, DnsRecords?: ZoneResetRecord[], minimized?: boolean}): Promise<void>;
   /**
   accelerate operations
   Accelerate the task
@@ -1801,42 +1801,42 @@ export class ApiDomain extends OvhWrapper {
   activateZone operations
   Activate the DNS zone for this domain
   **/
-  public post(path: '/domain/{serviceName}/activateZone', params: {serviceName: string}): Promise<void>;
+  public post(path: '/domain/{serviceName}/activateZone', params: {serviceName: string, minimized?: boolean}): Promise<void>;
   /**
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/domain/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/domain/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Missing description
   Refresh an obfuscated emails configuration
   **/
-  public post(path: '/domain/{serviceName}/configurations/obfuscatedEmails/refresh', params: {serviceName: string}): Promise<void>;
+  public post(path: '/domain/{serviceName}/configurations/obfuscatedEmails/refresh', params: {serviceName: string, contacts: DomainContactAllTypesEnum[]}): Promise<void>;
   /**
   List the domain.DnssecKey objects
   Update DS records
   **/
-  public post(path: '/domain/{serviceName}/dsRecord', params: {serviceName: string}): Promise<DomainTask>;
+  public post(path: '/domain/{serviceName}/dsRecord', params: {serviceName: string, keys: DnssecKey[]}): Promise<DomainTask>;
   /**
   refresh operations
   Regenerate the obfuscated email address
   **/
-  public post(path: '/domain/{serviceName}/email/obfuscated/refresh', params: {serviceName: string}): Promise<void>;
+  public post(path: '/domain/{serviceName}/email/obfuscated/refresh', params: {serviceName: string, contactType: DomainDomainContactTypeEnum[]}): Promise<void>;
   /**
   List the domain.GlueRecord objects
   Create a glue record
   **/
-  public post(path: '/domain/{serviceName}/glueRecord', params: {serviceName: string}): Promise<DomainTask>;
+  public post(path: '/domain/{serviceName}/glueRecord', params: {serviceName: string, host: string, ips: string[]}): Promise<DomainTask>;
   /**
   update operations
   Update the glue record
   **/
-  public post(path: '/domain/{serviceName}/glueRecord/{host}/update', params: {serviceName: string, host: string}): Promise<DomainTask>;
+  public post(path: '/domain/{serviceName}/glueRecord/{host}/update', params: {serviceName: string, host: string, ips: string[]}): Promise<DomainTask>;
   /**
   List the domain.CurrentNameServer objects
   Add new name server
   **/
-  public post(path: '/domain/{serviceName}/nameServer', params: {serviceName: string}): Promise<DomainTask>;
+  public post(path: '/domain/{serviceName}/nameServer', params: {serviceName: string, nameServer: DomainDomainNs[]}): Promise<DomainTask>;
   /**
   status operations
   Get name server status
@@ -1846,12 +1846,12 @@ export class ApiDomain extends OvhWrapper {
   update operations
   Update DNS servers
   **/
-  public post(path: '/domain/{serviceName}/nameServers/update', params: {serviceName: string}): Promise<DomainTask>;
+  public post(path: '/domain/{serviceName}/nameServers/update', params: {serviceName: string, nameServers: DomainDomainNs[]}): Promise<DomainTask>;
   /**
   List the domain.Owo objects
   Add whois obfuscators
   **/
-  public post(path: '/domain/{serviceName}/owo', params: {serviceName: string}): Promise<DomainWhoisObfuscatorFieldsEnum[]>;
+  public post(path: '/domain/{serviceName}/owo', params: {serviceName: string, fields: DomainWhoisObfuscatorFieldsEnum[]}): Promise<DomainWhoisObfuscatorFieldsEnum[]>;
   /**
   accelerate operations
   Accelerate the task
@@ -1871,7 +1871,7 @@ export class ApiDomain extends OvhWrapper {
   ukOutgoingTransfer operations
   Schedule an outgoing transfer task for this domain (.uk only)
   **/
-  public post(path: '/domain/{serviceName}/ukOutgoingTransfer', params: {serviceName: string}): Promise<DomainTask>;
+  public post(path: '/domain/{serviceName}/ukOutgoingTransfer', params: {serviceName: string, tag: string}): Promise<DomainTask>;
   public post(path: PathsDomainPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

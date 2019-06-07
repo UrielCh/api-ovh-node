@@ -2350,82 +2350,82 @@ export class ApiEmailExchange extends OvhWrapper {
   Exchange service
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}', params: {organizationName: string, exchangeService: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}', params: {organizationName: string, exchangeService: string, body: EmailExchangeExchangeService}): Promise<void>;
   /**
   Exchange mailbox
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, body: EmailExchangeAccount}): Promise<void>;
   /**
   Exchange Account Archive
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, body: EmailExchangeExchangeAccountArchive}): Promise<void>;
   /**
   Get protocol status on that mailbox
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, body: EmailExchangeExchangeAccountProtocol}): Promise<void>;
   /**
   Get the list of your ActiveSync devices registered on this Exchange service
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}', params: {organizationName: string, exchangeService: string, identity: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}', params: {organizationName: string, exchangeService: string, identity: string, body: EmailExchangeExchangeServiceDevice}): Promise<void>;
   /**
   Exchange domain
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}', params: {organizationName: string, exchangeService: string, domainName: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}', params: {organizationName: string, exchangeService: string, domainName: string, body: EmailExchangeDomain}): Promise<void>;
   /**
   Exchange organization disclaimer
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer', params: {organizationName: string, exchangeService: string, domainName: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer', params: {organizationName: string, exchangeService: string, domainName: string, body: EmailExchangeDisclaimer}): Promise<void>;
   /**
   External contact for this exchange service
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}', params: {organizationName: string, exchangeService: string, externalEmailAddress: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}', params: {organizationName: string, exchangeService: string, externalEmailAddress: string, body: EmailExchangeExchangeExternalContact}): Promise<void>;
   /**
   Mailing list
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}', params: {organizationName: string, exchangeService: string, mailingListAddress: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}', params: {organizationName: string, exchangeService: string, mailingListAddress: string, body: EmailExchangeMailingList}): Promise<void>;
   /**
   Protocol access policy for this Exchange service
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/protocol', params: {organizationName: string, exchangeService: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/protocol', params: {organizationName: string, exchangeService: string, body: EmailExchangeExchangeServiceProtocol}): Promise<void>;
   /**
   Exchange organization public folder
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}', params: {organizationName: string, exchangeService: string, path: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}', params: {organizationName: string, exchangeService: string, path: string, body: EmailExchangePublicFolder}): Promise<void>;
   /**
   Exchange organization public folder permission
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}', params: {organizationName: string, exchangeService: string, path: string, allowedAccountId: number}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}', params: {organizationName: string, exchangeService: string, path: string, allowedAccountId: number, body: EmailExchangeExchangePublicFolderPermission}): Promise<void>;
   /**
   Exchange resource account
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}', params: {organizationName: string, exchangeService: string, resourceEmailAddress: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}', params: {organizationName: string, exchangeService: string, resourceEmailAddress: string, body: EmailExchangeResourceAccount}): Promise<void>;
   /**
   Exchange server
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/server', params: {organizationName: string, exchangeService: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/server', params: {organizationName: string, exchangeService: string, body: EmailExchangeServer}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos', params: {organizationName: string, exchangeService: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos', params: {organizationName: string, exchangeService: string, body: ServicesService}): Promise<void>;
   /**
   Exchange shared mailbox
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}', params: {organizationName: string, exchangeService: string, sharedEmailAddress: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}', params: {organizationName: string, exchangeService: string, sharedEmailAddress: string, body: EmailExchangeSharedAccount}): Promise<void>;
   public put(path: PathsEmailExchangePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -2433,27 +2433,27 @@ export class ApiEmailExchange extends OvhWrapper {
   List the email.exchange.Account objects
   Create new mailbox in exchange server
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account', params: {organizationName: string, exchangeService: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account', params: {organizationName: string, exchangeService: string, SAMAccountName?: string, company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: EmailExchangeOvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: EmailExchangeMailingFilterEnum[], outlookLicense?: boolean, password: string, spamAndVirusConfiguration?: EmailExchangeSpamAndVirusConfiguration}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeAccountAlias objects
   Create new alias
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, alias: string}): Promise<EmailExchangeTask>;
   /**
   Exchange Account Archive
   Create new archive mailbox
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, quota?: number}): Promise<EmailExchangeTask>;
   /**
   changePassword operations
   Change mailbox password
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/changePassword', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/changePassword', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, password: string}): Promise<EmailExchangeTask>;
   /**
   Exchange Account Diagnosis
   Create new diagnosis request
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, password: string}): Promise<EmailExchangeTask>;
   /**
   Export PST file request
   Request PST file for the account
@@ -2468,22 +2468,22 @@ export class ApiEmailExchange extends OvhWrapper {
   List the email.exchange.exchangeAccountFullAccess objects
   Allow full access to a user
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, allowedAccountId: number}): Promise<EmailExchangeTask>;
   /**
   Outlook url
   Generate outlook url
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, language: EmailExchangeLanguageEnum, version: EmailExchangeOutlookVersionEnum}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeAccountSendAs objects
   Allow another user to send mails from this mailbox
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, allowAccountId: number}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeAccountSendOnBehalfTo objects
   Allow another user to Send On Behalf To mails from this mailbox
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, allowAccountId: number}): Promise<EmailExchangeTask>;
   /**
   terminate operations
   Terminate account at expiration date
@@ -2493,12 +2493,12 @@ export class ApiEmailExchange extends OvhWrapper {
   activateSharepoint operations
   Activate Sharepoint infra connected to this exchange service
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/activateSharepoint', params: {organizationName: string, exchangeService: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/activateSharepoint', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, subDomain: string}): Promise<EmailExchangeTask>;
   /**
   changeHostname operations
   Setting SSL hostname for Exchange private offer
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/changeHostname', params: {organizationName: string, exchangeService: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/changeHostname', params: {organizationName: string, exchangeService: string, dcvEmail: string, hostname: string, useDnsAssist: boolean}): Promise<EmailExchangeTask>;
   /**
   clearDevice operations
   Executes a factory reset on the device. THIS OPERATION CANNOT BE REVERSED, ALL DATA ON THE DEVICE WILL BE LOST.
@@ -2508,102 +2508,102 @@ export class ApiEmailExchange extends OvhWrapper {
   List the email.exchange.Domain objects
   Create new domain in exchange services
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain', params: {organizationName: string, exchangeService: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain', params: {organizationName: string, exchangeService: string, configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, type: EmailExchangeDomainTypeEnum}): Promise<EmailExchangeTask>;
   /**
   Exchange organization disclaimer
   Create organization disclaimer of each email
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer', params: {organizationName: string, exchangeService: string, domainName: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer', params: {organizationName: string, exchangeService: string, domainName: string, content: string, outsideOnly?: boolean}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeExternalContact objects
   create new external contact
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/externalContact', params: {organizationName: string, exchangeService: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/externalContact', params: {organizationName: string, exchangeService: string, displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, organization2010?: string}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.mailingList objects
   Add mailing list
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList', params: {organizationName: string, exchangeService: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList', params: {organizationName: string, exchangeService: string, departRestriction: EmailExchangeMailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction: EmailExchangeMailingListJoinRestrictionEnum, mailingListAddress: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeMailingListAlias objects
   Create new alias
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias', params: {organizationName: string, exchangeService: string, mailingListAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias', params: {organizationName: string, exchangeService: string, mailingListAddress: string, alias: string}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeDistributionGroupManager objects
   Add new mailing list manager
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account', params: {organizationName: string, exchangeService: string, mailingListAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account', params: {organizationName: string, exchangeService: string, mailingListAddress: string, managerAccountId: number}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeDistributionGroupMember objects
   Add new mailing list member
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account', params: {organizationName: string, exchangeService: string, mailingListAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account', params: {organizationName: string, exchangeService: string, mailingListAddress: string, memberAccountId?: number, memberContactId?: number}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeDistributionGroupMember objects
   Add new mailing list member
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact', params: {organizationName: string, exchangeService: string, mailingListAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact', params: {organizationName: string, exchangeService: string, mailingListAddress: string, memberAccountId?: number, memberContactId?: number}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeDistributionGroupSendAs objects
   Allow another user to Send aso mails from this mailing list
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs', params: {organizationName: string, exchangeService: string, mailingListAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs', params: {organizationName: string, exchangeService: string, mailingListAddress: string, allowAccountId: number}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeDistributionGroupSendOnBehalfTo objects
   Allow another user to Send aso mails from this mailing list
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo', params: {organizationName: string, exchangeService: string, mailingListAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo', params: {organizationName: string, exchangeService: string, mailingListAddress: string, allowAccountId: number}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeServiceActiveSyncNotification objects
   Subscribe new address to ActiveSync quarantine notifications
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification', params: {organizationName: string, exchangeService: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification', params: {organizationName: string, exchangeService: string, notifiedAccountId: number}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.publicFolder objects
   Create organization public folder
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder', params: {organizationName: string, exchangeService: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder', params: {organizationName: string, exchangeService: string, anonymousPermission?: EmailExchangePublicFolderRightTypeEnum, defaultPermission?: EmailExchangePublicFolderRightTypeEnum, path: string, quota: number, type: EmailExchangePublicFolderTypeEnum}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangePublicFolderPermission objects
   Create public folder permission
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission', params: {organizationName: string, exchangeService: string, path: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission', params: {organizationName: string, exchangeService: string, path: string, accessRights: EmailExchangePublicFolderRightTypeEnum, allowedAccountId: number}): Promise<EmailExchangeTask>;
   /**
   renewSSL operations
   Renew SSL if it will expire in next 30 days
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/renewSSL', params: {organizationName: string, exchangeService: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/renewSSL', params: {organizationName: string, exchangeService: string, dcv: string}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.resourceAccount objects
   create new resource account in exchange server
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount', params: {organizationName: string, exchangeService: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount', params: {organizationName: string, exchangeService: string, addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity: number, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress: string, showMeetingDetails?: EmailExchangeShowMeetingDetailsEnum, type: EmailExchangeResourceTypeEnum}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeResourceAccountDelegate objects
   add new resource account delegate in exchange server
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate', params: {organizationName: string, exchangeService: string, resourceEmailAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate', params: {organizationName: string, exchangeService: string, resourceEmailAddress: string, allowedAccountId: number}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.sharedAccount objects
   Create new shared mailbox in exchange server
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount', params: {organizationName: string, exchangeService: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount', params: {organizationName: string, exchangeService: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, mailingFilter?: EmailExchangeMailingFilterEnum[], quota: number, sharedEmailAddress: string}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeSharedAccountFullAccess objects
   Allow full access to a user
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess', params: {organizationName: string, exchangeService: string, sharedEmailAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess', params: {organizationName: string, exchangeService: string, sharedEmailAddress: string, allowedAccountId: number}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeSharedAccountSendAs objects
   Allow another user to send mails from this shared mailbox
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs', params: {organizationName: string, exchangeService: string, sharedEmailAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs', params: {organizationName: string, exchangeService: string, sharedEmailAddress: string, allowAccountId: number}): Promise<EmailExchangeTask>;
   /**
   List the email.exchange.exchangeSharedAccountSendOnBehalfTo objects
   Allow another user to Send On Behalf To mails from this shared mailbox
   **/
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo', params: {organizationName: string, exchangeService: string, sharedEmailAddress: string}): Promise<EmailExchangeTask>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo', params: {organizationName: string, exchangeService: string, sharedEmailAddress: string, allowAccountId: number}): Promise<EmailExchangeTask>;
   /**
   updateDeviceList operations
   Update device list

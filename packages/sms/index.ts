@@ -1434,52 +1434,52 @@ export class ApiSms extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/sms/virtualNumbers/{number}/serviceInfos', params: {number: string}): Promise<void>;
+  public put(path: '/sms/virtualNumbers/{number}/serviceInfos', params: {number: string, body: ServicesService}): Promise<void>;
   /**
   SMS details
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/sms/{serviceName}', params: {serviceName: string, body: SmsAccount}): Promise<void>;
   /**
   Phone book
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/phonebooks/{bookKey}', params: {serviceName: string, bookKey: string}): Promise<void>;
+  public put(path: '/sms/{serviceName}/phonebooks/{bookKey}', params: {serviceName: string, bookKey: string, body: SmsPhonebook}): Promise<void>;
   /**
   Phone book contact
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}', params: {serviceName: string, bookKey: string, id: number}): Promise<void>;
+  public put(path: '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}', params: {serviceName: string, bookKey: string, id: number, body: SmsPhonebookContact}): Promise<void>;
   /**
   Sms receivers preloaded
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/receivers/{slotId}', params: {serviceName: string, slotId: number}): Promise<void>;
+  public put(path: '/sms/{serviceName}/receivers/{slotId}', params: {serviceName: string, slotId: number, body: SmsReceiver}): Promise<void>;
   /**
   SMS senders
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/senders/{sender}', params: {serviceName: string, sender: string}): Promise<void>;
+  public put(path: '/sms/{serviceName}/senders/{sender}', params: {serviceName: string, sender: string, body: SmsSender}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/sms/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   Sms template for moderation (Needed to send in US country)
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/templatesControl/{name}', params: {serviceName: string, name: string}): Promise<void>;
+  public put(path: '/sms/{serviceName}/templatesControl/{name}', params: {serviceName: string, name: string, body: SmsTemplateControl}): Promise<void>;
   /**
   SMS users
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/users/{login}', params: {serviceName: string, login: string}): Promise<void>;
+  public put(path: '/sms/{serviceName}/users/{login}', params: {serviceName: string, login: string, body: SmsUser}): Promise<void>;
   /**
   Sms receivers preloaded
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/users/{login}/receivers/{slotId}', params: {serviceName: string, login: string, slotId: number}): Promise<void>;
+  public put(path: '/sms/{serviceName}/users/{login}/receivers/{slotId}', params: {serviceName: string, login: string, slotId: number, body: SmsReceiver}): Promise<void>;
   public put(path: PathsSmsPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -1487,82 +1487,82 @@ export class ApiSms extends OvhWrapper {
   List the sms.HlrLookupNumber objects
   Add one or several sending hlr lookup request
   **/
-  public post(path: '/sms/{serviceName}/hlr', params: {serviceName: string}): Promise<SmsSmsSendingReport>;
+  public post(path: '/sms/{serviceName}/hlr', params: {serviceName: string, receivers?: string[], receiversDocumentUrl?: string}): Promise<SmsSmsSendingReport>;
   /**
   List the sms.Job objects
   Add one or several sending jobs
   **/
-  public post(path: '/sms/{serviceName}/jobs', params: {serviceName: string}): Promise<SmsSmsSendingReport>;
+  public post(path: '/sms/{serviceName}/jobs', params: {serviceName: string, charset?: SmsCharsetEnum, class?: SmsClassEnum, coding?: SmsCodingEnum, differedPeriod?: number, message: string, noStopClause?: boolean, priority?: SmsPriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, sender?: string, senderForResponse?: boolean, tag?: string, validityPeriod?: number}): Promise<SmsSmsSendingReport>;
   /**
   List the sms.Phonebook objects
   Add a phonebook. Return the bookKey.
   **/
-  public post(path: '/sms/{serviceName}/phonebooks', params: {serviceName: string}): Promise<string>;
+  public post(path: '/sms/{serviceName}/phonebooks', params: {serviceName: string, name: string}): Promise<string>;
   /**
   import operations
   Import a contacts file. Supported formats are Excel (.xls and .xlsx) and CSV
   **/
-  public post(path: '/sms/{serviceName}/phonebooks/{bookKey}/import', params: {serviceName: string, bookKey: string}): Promise<TelephonyTask>;
+  public post(path: '/sms/{serviceName}/phonebooks/{bookKey}/import', params: {serviceName: string, bookKey: string, documentId: string}): Promise<TelephonyTask>;
   /**
   List the sms.PhonebookContact objects
   Create a phonebook contact. Return identifier of the phonebook contact.
   **/
-  public post(path: '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact', params: {serviceName: string, bookKey: string}): Promise<number>;
+  public post(path: '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact', params: {serviceName: string, bookKey: string, group: string, homeMobile?: string, homePhone?: string, name: string, surname: string, workMobile?: string, workPhone?: string}): Promise<number>;
   /**
   List the sms.Receiver objects
   Add a new document of csv receivers
   **/
-  public post(path: '/sms/{serviceName}/receivers', params: {serviceName: string}): Promise<SmsReceiver>;
+  public post(path: '/sms/{serviceName}/receivers', params: {serviceName: string, autoUpdate: boolean, csvUrl?: string, description: string, documentId?: string, slotId: number}): Promise<SmsReceiver>;
   /**
   clean operations
   Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.
   **/
-  public post(path: '/sms/{serviceName}/receivers/{slotId}/clean', params: {serviceName: string, slotId: number}): Promise<SmsReceiversAsynchronousCleanReport>;
+  public post(path: '/sms/{serviceName}/receivers/{slotId}/clean', params: {serviceName: string, slotId: number, freemium: boolean, priceOnly: boolean}): Promise<SmsReceiversAsynchronousCleanReport>;
   /**
   List the sms.Sender objects
   Create the sms sender given
   **/
-  public post(path: '/sms/{serviceName}/senders', params: {serviceName: string}): Promise<string>;
+  public post(path: '/sms/{serviceName}/senders', params: {serviceName: string, description?: string, reason?: string, sender: string}): Promise<string>;
   /**
   validate operations
   Validate a given sender with an activation code.
   **/
-  public post(path: '/sms/{serviceName}/senders/{sender}/validate', params: {serviceName: string, sender: string}): Promise<void>;
+  public post(path: '/sms/{serviceName}/senders/{sender}/validate', params: {serviceName: string, sender: string, code: string}): Promise<void>;
   /**
   List the sms.TemplateControl objects
   Create the sms template control given
   **/
-  public post(path: '/sms/{serviceName}/templatesControl', params: {serviceName: string}): Promise<void>;
+  public post(path: '/sms/{serviceName}/templatesControl', params: {serviceName: string, activity: SmsTypeTemplateEnum, description?: string, message: string, name: string, reason?: string}): Promise<void>;
   /**
   relaunchValidation operations
   Attempt a new validation after moderation refusal
   **/
-  public post(path: '/sms/{serviceName}/templatesControl/{name}/relaunchValidation', params: {serviceName: string, name: string}): Promise<void>;
+  public post(path: '/sms/{serviceName}/templatesControl/{name}/relaunchValidation', params: {serviceName: string, name: string, description: string, message: string}): Promise<void>;
   /**
   transferCredits operations
   Credit transfer between two sms accounts.
   **/
-  public post(path: '/sms/{serviceName}/transferCredits', params: {serviceName: string}): Promise<void>;
+  public post(path: '/sms/{serviceName}/transferCredits', params: {serviceName: string, credits: number, smsAccountTarget: string}): Promise<void>;
   /**
   List the sms.User objects
   Create a new user for an sms account
   **/
-  public post(path: '/sms/{serviceName}/users', params: {serviceName: string}): Promise<void>;
+  public post(path: '/sms/{serviceName}/users', params: {serviceName: string, login: string, password: string}): Promise<void>;
   /**
   List the sms.Job objects
   Add one or several sending jobs
   **/
-  public post(path: '/sms/{serviceName}/users/{login}/jobs', params: {serviceName: string, login: string}): Promise<SmsSmsSendingReport>;
+  public post(path: '/sms/{serviceName}/users/{login}/jobs', params: {serviceName: string, login: string, charset?: SmsCharsetEnum, class?: SmsClassEnum, coding?: SmsCodingEnum, differedPeriod?: number, message: string, noStopClause?: boolean, priority?: SmsPriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, sender?: string, senderForResponse?: boolean, tag?: string, validityPeriod?: number}): Promise<SmsSmsSendingReport>;
   /**
   List the sms.Receiver objects
   Add a new document of csv receivers
   **/
-  public post(path: '/sms/{serviceName}/users/{login}/receivers', params: {serviceName: string, login: string}): Promise<SmsReceiver>;
+  public post(path: '/sms/{serviceName}/users/{login}/receivers', params: {serviceName: string, login: string, autoUpdate: boolean, csvUrl?: string, description: string, documentId?: string, slotId: number}): Promise<SmsReceiver>;
   /**
   clean operations
   Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.
   **/
-  public post(path: '/sms/{serviceName}/users/{login}/receivers/{slotId}/clean', params: {serviceName: string, login: string, slotId: number}): Promise<SmsReceiversAsynchronousCleanReport>;
+  public post(path: '/sms/{serviceName}/users/{login}/receivers/{slotId}/clean', params: {serviceName: string, login: string, slotId: number, freemium: boolean, priceOnly: boolean}): Promise<SmsReceiversAsynchronousCleanReport>;
   /**
   The web access for your virtual number chat application
   Create a new web access for this ressource
@@ -1572,7 +1572,7 @@ export class ApiSms extends OvhWrapper {
   List the sms.VirtualNumberJob objects
   Add one or several sending jobs
   **/
-  public post(path: '/sms/{serviceName}/virtualNumbers/{number}/jobs', params: {serviceName: string, number: string}): Promise<SmsSmsSendingReport>;
+  public post(path: '/sms/{serviceName}/virtualNumbers/{number}/jobs', params: {serviceName: string, number: string, charset?: SmsCharsetEnum, class?: SmsClassEnum, coding?: SmsCodingEnum, differedPeriod?: number, message: string, priority?: SmsPriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, tag?: string, validityPeriod?: number}): Promise<SmsSmsSendingReport>;
   public post(path: PathsSmsPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

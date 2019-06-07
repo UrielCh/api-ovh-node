@@ -435,17 +435,17 @@ export class ApiLicenseOffice extends OvhWrapper {
   Office tenant
   Alter this object properties
   **/
-  public put(path: '/license/office/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/license/office/{serviceName}', params: {serviceName: string, body: LicenseOfficeOfficeTenant}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/office/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/license/office/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   Office user
   Alter this object properties
   **/
-  public put(path: '/license/office/{serviceName}/user/{activationEmail}', params: {serviceName: string, activationEmail: string}): Promise<void>;
+  public put(path: '/license/office/{serviceName}/user/{activationEmail}', params: {serviceName: string, activationEmail: string, body: LicenseOfficeOfficeUser}): Promise<void>;
   public put(path: PathsLicenseOfficePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -453,12 +453,12 @@ export class ApiLicenseOffice extends OvhWrapper {
   List the license.office.OfficeUser objects
   Create new office user
   **/
-  public post(path: '/license/office/{serviceName}/user', params: {serviceName: string}): Promise<LicenseOfficeOfficeTask>;
+  public post(path: '/license/office/{serviceName}/user', params: {serviceName: string, domain: string, firstName?: string, lastName?: string, licence: LicenseOfficeLicenceEnum, login: string}): Promise<LicenseOfficeOfficeTask>;
   /**
   changePassword operations
   Change or reset  user's password
   **/
-  public post(path: '/license/office/{serviceName}/user/{activationEmail}/changePassword', params: {serviceName: string, activationEmail: string}): Promise<LicenseOfficeOfficeTask>;
+  public post(path: '/license/office/{serviceName}/user/{activationEmail}/changePassword', params: {serviceName: string, activationEmail: string, notifyEmail?: string, password?: string, shouldSendMail: boolean}): Promise<LicenseOfficeOfficeTask>;
   public post(path: PathsLicenseOfficePOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

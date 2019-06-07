@@ -504,17 +504,17 @@ export class ApiDbaasTimeseries extends OvhWrapper {
   Timeseries project
   Alter this object properties
   **/
-  public put(path: '/dbaas/timeseries/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dbaas/timeseries/{serviceName}', params: {serviceName: string, body: TimeseriesProject}): Promise<void>;
   /**
   Key
   Create a key
   **/
-  public put(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<PaasTimeseriesKey>;
+  public put(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string, description?: string, permissions: PaasTimeseriesPermissionEnum[], tags: PaasTimeseriesTag[]}): Promise<PaasTimeseriesKey>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dbaas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dbaas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsDbaasTimeseriesPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -522,22 +522,22 @@ export class ApiDbaasTimeseries extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/dbaas/timeseries/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/dbaas/timeseries/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Keys
   Create a key for a project
   **/
-  public post(path: '/dbaas/timeseries/{serviceName}/key', params: {serviceName: string}): Promise<PaasTimeseriesKey>;
+  public post(path: '/dbaas/timeseries/{serviceName}/key', params: {serviceName: string, description?: string, permissions: string[], tags: PaasTimeseriesTag[]}): Promise<PaasTimeseriesKey>;
   /**
   Setup your project on our platform
   Setup a project
   **/
-  public post(path: '/dbaas/timeseries/{serviceName}/setup', params: {serviceName: string}): Promise<PaasTimeseriesProject>;
+  public post(path: '/dbaas/timeseries/{serviceName}/setup', params: {serviceName: string, description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string}): Promise<PaasTimeseriesProject>;
   /**
   OpenTSDBTokens
   Create a OpenTSDB token
   **/
-  public post(path: '/dbaas/timeseries/{serviceName}/token/opentsdb', params: {serviceName: string}): Promise<PaasTimeseriesOpenTSDBToken>;
+  public post(path: '/dbaas/timeseries/{serviceName}/token/opentsdb', params: {serviceName: string, description?: string, permission: string, tags: PaasTimeseriesTag[]}): Promise<PaasTimeseriesOpenTSDBToken>;
   public post(path: PathsDbaasTimeseriesPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

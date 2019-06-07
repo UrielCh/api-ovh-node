@@ -951,17 +951,17 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
   Private database
   Alter this object properties
   **/
-  public put(path: '/hosting/privateDatabase/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/hosting/privateDatabase/{serviceName}', params: {serviceName: string, body: HostingPrivateDatabaseService}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/hosting/privateDatabase/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/hosting/privateDatabase/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   IP whitelisting for your instance
   Alter this object properties
   **/
-  public put(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {serviceName: string, ip: string}): Promise<void>;
+  public put(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {serviceName: string, ip: string, body: HostingPrivateDatabaseWhitelist}): Promise<void>;
   public put(path: PathsHostingPrivateDatabasePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -969,37 +969,37 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   changeFtpPassword operations
   Change your ftp admin password
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/changeFtpPassword', params: {serviceName: string}): Promise<HostingPrivateDatabaseTask>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/changeFtpPassword', params: {serviceName: string, password: string}): Promise<HostingPrivateDatabaseTask>;
   /**
   changeVersion operations
   Change the private database engine version
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/changeVersion', params: {serviceName: string}): Promise<HostingPrivateDatabaseTask>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/changeVersion', params: {serviceName: string, version: HostingPrivateDatabaseAvailableVersionEnum}): Promise<HostingPrivateDatabaseTask>;
   /**
   update operations
   Update the configuration
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/config/update', params: {serviceName: string}): Promise<HostingPrivateDatabaseConfiguration>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/config/update', params: {serviceName: string, parameters: ComplexTypeSafeKeyValue<string>[]}): Promise<HostingPrivateDatabaseConfiguration>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   List the hosting.privateDatabase.database objects
   Create a new database on your private database service
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/database', params: {serviceName: string}): Promise<HostingPrivateDatabaseTask>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/database', params: {serviceName: string, databaseName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
   List the hosting.privateDatabase.database.dump objects
   Request the dump of this database ( an email will be send with a link available 30 days )
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump', params: {serviceName: string, databaseName: string}): Promise<HostingPrivateDatabaseTask>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump', params: {serviceName: string, databaseName: string, sendEmail?: boolean}): Promise<HostingPrivateDatabaseTask>;
   /**
   restore operations
   Request the restore from this dump
@@ -1019,17 +1019,17 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
   import operations
   Request the import in this database
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/import', params: {serviceName: string, databaseName: string}): Promise<HostingPrivateDatabaseTask>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/import', params: {serviceName: string, databaseName: string, documentId: string, flushDatabase?: boolean, sendEmail?: boolean}): Promise<HostingPrivateDatabaseTask>;
   /**
   databaseWizard operations
   Create a new database/user and grant it
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/databaseWizard', params: {serviceName: string}): Promise<HostingPrivateDatabaseTask>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/databaseWizard', params: {serviceName: string, databaseName: string, grant: HostingPrivateDatabaseGrantGrantEnum, password: string, userName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
   restore operations
   Request the restore from this dump
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore', params: {serviceName: string, dumpId: number}): Promise<HostingPrivateDatabaseTask>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore', params: {serviceName: string, dumpId: number, databaseName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
   generateTemporaryLogsLink operations
   Generate a temporary url to retrieve instance logs
@@ -1064,27 +1064,27 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
   List the hosting.privateDatabase.user objects
   Create a new user on your service
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/user', params: {serviceName: string}): Promise<HostingPrivateDatabaseTask>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/user', params: {serviceName: string, password: string, userName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
   changePassword operations
   Request a change password for a user
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/changePassword', params: {serviceName: string, userName: string}): Promise<HostingPrivateDatabaseTask>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/changePassword', params: {serviceName: string, userName: string, password: string}): Promise<HostingPrivateDatabaseTask>;
   /**
   List the hosting.privateDatabase.grant objects
   Add grant on a database
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant', params: {serviceName: string, userName: string}): Promise<HostingPrivateDatabaseTask>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant', params: {serviceName: string, userName: string, databaseName: string, grant: HostingPrivateDatabaseGrantGrantEnum}): Promise<HostingPrivateDatabaseTask>;
   /**
   update operations
   Update user grant
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update', params: {serviceName: string, userName: string, databaseName: string}): Promise<HostingPrivateDatabaseTask>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update', params: {serviceName: string, userName: string, databaseName: string, grant: HostingPrivateDatabaseGrantGrantEnum}): Promise<HostingPrivateDatabaseTask>;
   /**
   List the hosting.privateDatabase.whitelist objects
   Create a new IP whitelist
   **/
-  public post(path: '/hosting/privateDatabase/{serviceName}/whitelist', params: {serviceName: string}): Promise<HostingPrivateDatabaseTask>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/whitelist', params: {serviceName: string, ip: string, name?: string, service?: boolean, sftp?: boolean}): Promise<HostingPrivateDatabaseTask>;
   public post(path: PathsHostingPrivateDatabasePOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

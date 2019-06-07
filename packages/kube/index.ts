@@ -322,17 +322,17 @@ export class ApiKube extends OvhWrapper {
   Manage your cluster
   Update information about your managed Kubernetes cluster
   **/
-  public put(path: '/kube/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/kube/{serviceName}', params: {serviceName: string, name: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/kube/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/kube/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   Manage the update policy of your cluster
   Change the update policy of your cluster
   **/
-  public put(path: '/kube/{serviceName}/updatePolicy', params: {serviceName: string}): Promise<void>;
+  public put(path: '/kube/{serviceName}/updatePolicy', params: {serviceName: string, updatePolicy: KubeUpdatePolicy}): Promise<void>;
   public put(path: PathsKubePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -340,22 +340,22 @@ export class ApiKube extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/kube/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/kube/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/kube/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/kube/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   Manage your Public Cloud cluster nodes
   Deploy a node for your cluster on Public Cloud
   **/
-  public post(path: '/kube/{serviceName}/publiccloud/node', params: {serviceName: string}): Promise<KubeNode>;
+  public post(path: '/kube/{serviceName}/publiccloud/node', params: {serviceName: string, flavorName: string, name?: string}): Promise<KubeNode>;
   /**
   Reset your cluster
   Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
   **/
-  public post(path: '/kube/{serviceName}/reset', params: {serviceName: string}): Promise<void>;
+  public post(path: '/kube/{serviceName}/reset', params: {serviceName: string, version?: KubeVersion, workerNodesPolicy?: KubeResetWorkerNodesPolicy}): Promise<void>;
   /**
   Terminate your service
   Terminate your service

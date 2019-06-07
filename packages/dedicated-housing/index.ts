@@ -490,12 +490,12 @@ export class ApiDedicatedHousing extends OvhWrapper {
   Backup Ftp ACL for this server and Backup Ftp
   Alter this object properties
   **/
-  public put(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<void>;
+  public put(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string, body: DedicatedServerBackupFtpAcl}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicated/housing/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/dedicated/housing/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsDedicatedHousingPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -508,7 +508,7 @@ export class ApiDedicatedHousing extends OvhWrapper {
   List the dedicated.server.BackupFtpAcl objects
   Create a new Backup FTP ACL
   **/
-  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', params: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', params: {serviceName: string, cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<DedicatedServerTask>;
   /**
   password operations
   Change your Backup FTP password

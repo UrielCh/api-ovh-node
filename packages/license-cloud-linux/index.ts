@@ -262,7 +262,7 @@ export class ApiLicenseCloudLinux extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/cloudLinux/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/license/cloudLinux/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsLicenseCloudLinuxPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -270,7 +270,7 @@ export class ApiLicenseCloudLinux extends OvhWrapper {
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/license/cloudLinux/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/license/cloudLinux/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   Terminate your service
   Terminate your service

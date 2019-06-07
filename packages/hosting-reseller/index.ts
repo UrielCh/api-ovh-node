@@ -354,7 +354,7 @@ export class ApiHostingReseller extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/hosting/reseller/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/hosting/reseller/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsHostingResellerPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -362,22 +362,22 @@ export class ApiHostingReseller extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/hosting/reseller/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/hosting/reseller/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Reseller.change_email
   Change user email
   **/
-  public post(path: '/hosting/reseller/{serviceName}/email', params: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/email', params: {serviceName: string, email: string}): Promise<string>;
   /**
   Reseller.change_language
   Change language of the Plesk instance
   **/
-  public post(path: '/hosting/reseller/{serviceName}/language', params: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/language', params: {serviceName: string, language: ResellerPleskLanguageTypeEnum}): Promise<string>;
   /**
   Reseller.reboot
   Restart instance
   **/
-  public post(path: '/hosting/reseller/{serviceName}/reboot', params: {serviceName: string, hard?: boolean}): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/reboot', params: {serviceName: string}): Promise<string>;
   /**
   Reseller.reinstall
   Reinstall instance
@@ -387,7 +387,7 @@ export class ApiHostingReseller extends OvhWrapper {
   Reseller.set_reverse
   Set new reverse to ip
   **/
-  public post(path: '/hosting/reseller/{serviceName}/reverse', params: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/reverse', params: {serviceName: string, reverse: string}): Promise<string>;
   /**
   Reseller.list_snapshot
   Make manual snapshot

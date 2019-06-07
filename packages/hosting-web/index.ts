@@ -2892,52 +2892,52 @@ export class ApiHostingWeb extends OvhWrapper {
   Web Hosting
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}', params: {serviceName: string, body: HostingWebService}): Promise<void>;
   /**
   Virtual service
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/attachedDomain/{domain}', params: {serviceName: string, domain: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/attachedDomain/{domain}', params: {serviceName: string, domain: string, body: HostingWebAttachedDomain}): Promise<void>;
   /**
   Hosting crons
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/cron/{id}', params: {serviceName: string, id: number}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/cron/{id}', params: {serviceName: string, id: number, body: HostingWebCron}): Promise<void>;
   /**
   Hosting automated emails
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/email', params: {serviceName: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/email', params: {serviceName: string, body: HostingWebEmail}): Promise<void>;
   /**
   Environment variables set into your webhosting account
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/envVar/{key}', params: {serviceName: string, key: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/envVar/{key}', params: {serviceName: string, key: string, body: HostingWebEnvVar}): Promise<void>;
   /**
   Hosting users logs
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}', params: {serviceName: string, id: number, login: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}', params: {serviceName: string, id: number, login: string, body: HostingWebUserLogs}): Promise<void>;
   /**
   The runtime configuration of an attached domain for cloud web offer
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/runtime/{id}', params: {serviceName: string, id: number}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/runtime/{id}', params: {serviceName: string, id: number, body: HostingWebRuntime}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   Hosting users
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/user/{login}', params: {serviceName: string, login: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/user/{login}', params: {serviceName: string, login: string, body: HostingWebUser}): Promise<void>;
   /**
   Hosting users logs
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/userLogs/{login}', params: {serviceName: string, login: string}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/userLogs/{login}', params: {serviceName: string, login: string, body: HostingWebUserLogs}): Promise<void>;
   public put(path: PathsHostingWebPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -2950,12 +2950,12 @@ export class ApiHostingWeb extends OvhWrapper {
   activatePrivateDatabase operations
   Activate an included private database on your hosting offer
   **/
-  public post(path: '/hosting/web/{serviceName}/activatePrivateDatabase', params: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/activatePrivateDatabase', params: {serviceName: string, ram: HostingPrivateDatabaseAvailableRamSizeEnum, version: HostingPrivateDatabaseOrderableVersionEnum}): Promise<HostingWebTask>;
   /**
   List the hosting.web.attachedDomain objects
   Link a domain to this hosting
   **/
-  public post(path: '/hosting/web/{serviceName}/attachedDomain', params: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/attachedDomain', params: {serviceName: string, cdn?: HostingWebAttachedDomainCdnEnum, domain: string, firewall?: HostingWebAttachedDomainFirewallEnum, ownLog?: string, path: string, runtimeId?: number, ssl?: boolean}): Promise<HostingWebTask>;
   /**
   purgeCache operations
   Purge cache for this attached domain
@@ -2970,7 +2970,7 @@ export class ApiHostingWeb extends OvhWrapper {
   serviceInfosUpdate operations
   Alter this object properties
   **/
-  public post(path: '/hosting/web/{serviceName}/cdn/serviceInfosUpdate', params: {serviceName: string}): Promise<void>;
+  public post(path: '/hosting/web/{serviceName}/cdn/serviceInfosUpdate', params: {serviceName: string, renew: ServiceRenewType}): Promise<void>;
   /**
   terminate operations
   Terminate your cdn sub service
@@ -2980,32 +2980,32 @@ export class ApiHostingWeb extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/hosting/web/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/hosting/web/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/hosting/web/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   List the hosting.web.cron objects
   Create new cron
   **/
-  public post(path: '/hosting/web/{serviceName}/cron', params: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/cron', params: {serviceName: string, command: string, description?: string, email?: string, frequency: string, language: HostingWebCronLanguageEnum, status?: HostingWebCronStatusEnum}): Promise<string>;
   /**
   List the hosting.web.database objects
   Install new database
   **/
-  public post(path: '/hosting/web/{serviceName}/database', params: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/database', params: {serviceName: string, capabilitie: HostingWebDatabaseDatabaseCapabilitiesTypeEnum, password?: string, quota?: HostingWebDatabaseExtraSqlQuotaEnum, type: HostingWebDatabaseDatabaseTypeEnum, user: string, version?: HostingWebDatabaseVersionEnum}): Promise<HostingWebTask>;
   /**
   changePassword operations
   Request a password change
   **/
-  public post(path: '/hosting/web/{serviceName}/database/{name}/changePassword', params: {serviceName: string, name: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/database/{name}/changePassword', params: {serviceName: string, name: string, password: string}): Promise<HostingWebTask>;
   /**
   List the hosting.web.database.dump objects
   Request the dump from your database
   **/
-  public post(path: '/hosting/web/{serviceName}/database/{name}/dump', params: {serviceName: string, name: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/database/{name}/dump', params: {serviceName: string, name: string, date: HostingWebDatabaseDumpDateEnum, sendEmail?: boolean}): Promise<HostingWebTask>;
   /**
   restore operations
   Request the restore from this dump
@@ -3015,32 +3015,32 @@ export class ApiHostingWeb extends OvhWrapper {
   import operations
   Import a dump from an specific file uploaded with /me/documents
   **/
-  public post(path: '/hosting/web/{serviceName}/database/{name}/import', params: {serviceName: string, name: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/database/{name}/import', params: {serviceName: string, name: string, documentId: string, flushDatabase?: boolean, sendEmail?: boolean}): Promise<HostingWebTask>;
   /**
   request operations
   Request specific operation for your database
   **/
-  public post(path: '/hosting/web/{serviceName}/database/{name}/request', params: {serviceName: string, name: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/database/{name}/request', params: {serviceName: string, name: string, action: HostingWebDatabaseRequestActionEnum}): Promise<HostingWebTask>;
   /**
   restore operations
   Request the restore from your database backup
   **/
-  public post(path: '/hosting/web/{serviceName}/database/{name}/restore', params: {serviceName: string, name: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/database/{name}/restore', params: {serviceName: string, name: string, date: HostingWebDatabaseDumpDateEnum, sendEmail?: boolean}): Promise<HostingWebTask>;
   /**
   request operations
   Request specific operation for your email
   **/
-  public post(path: '/hosting/web/{serviceName}/email/request', params: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/email/request', params: {serviceName: string, action: HostingWebMailActionEnum}): Promise<string>;
   /**
   List the hosting.web.envVar objects
   Set a variable to this hosting
   **/
-  public post(path: '/hosting/web/{serviceName}/envVar', params: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/envVar', params: {serviceName: string, key: string, type: HostingWebEnvVarTypeEnum, value: string}): Promise<HostingWebTask>;
   /**
   serviceInfosUpdate operations
   Alter this object properties
   **/
-  public post(path: '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate', params: {serviceName: string, name: string}): Promise<void>;
+  public post(path: '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate', params: {serviceName: string, name: string, renew: ServiceRenewType}): Promise<void>;
   /**
   terminate operations
   Terminate your extraSqlPerso sub service
@@ -3055,7 +3055,7 @@ export class ApiHostingWeb extends OvhWrapper {
   serviceInfosUpdate operations
   Alter this object properties
   **/
-  public post(path: '/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate', params: {serviceName: string, id: number}): Promise<void>;
+  public post(path: '/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate', params: {serviceName: string, id: number, renew: ServiceRenewType}): Promise<void>;
   /**
   terminate operations
   Terminate a local SEO sub service
@@ -3065,7 +3065,7 @@ export class ApiHostingWeb extends OvhWrapper {
   List the hosting.web.module objects
   Install a new module
   **/
-  public post(path: '/hosting/web/{serviceName}/module', params: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/module', params: {serviceName: string, adminName?: string, adminPassword?: string, dependencies?: HostingWebModuleDependencyType[], domain?: string, language?: HostingWebModuleLanguageEnum, moduleId: number, path?: string}): Promise<HostingWebTask>;
   /**
   changePassword operations
   Generate a new admin password for your module
@@ -3075,12 +3075,12 @@ export class ApiHostingWeb extends OvhWrapper {
   changeConfiguration operations
   Apply a new configuration on this path
   **/
-  public post(path: '/hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration', params: {serviceName: string, id: number}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration', params: {serviceName: string, id: number, container?: HostingWebOvhconfigContainerEnum, engineName?: HostingWebOvhConfigEngineNameEnum, engineVersion?: HostingWebOvhConfigAvailableEngineVersionEnum, environment?: HostingWebOvhConfigEnvironmentEnum, httpFirewall?: HostingWebOvhConfigHttpFirewallEnum}): Promise<HostingWebTask>;
   /**
   rollback operations
   Rollback to an old configuration
   **/
-  public post(path: '/hosting/web/{serviceName}/ovhConfig/{id}/rollback', params: {serviceName: string, id: number}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/ovhConfig/{id}/rollback', params: {serviceName: string, id: number, rollbackId: number}): Promise<HostingWebTask>;
   /**
   ovhConfigRefresh operations
   Synchronize the configuration listing with content on your hosting
@@ -3090,37 +3090,37 @@ export class ApiHostingWeb extends OvhWrapper {
   List the hosting.web.userLogs objects
   Create new userLogs
   **/
-  public post(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs', params: {serviceName: string, id: number}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs', params: {serviceName: string, id: number, description: string, login: string, ownLogsId?: number, password: string}): Promise<string>;
   /**
   changePassword operations
   Request a password change
   **/
-  public post(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword', params: {serviceName: string, id: number, login: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword', params: {serviceName: string, id: number, login: string, password: string}): Promise<string>;
   /**
   request operations
   Request specific operation for your hosting
   **/
-  public post(path: '/hosting/web/{serviceName}/request', params: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/request', params: {serviceName: string, action: HostingWebRequestActionEnum}): Promise<HostingWebTask>;
   /**
   requestBoost operations
   Allows you to boost your offer.
   **/
-  public post(path: '/hosting/web/{serviceName}/requestBoost', params: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/requestBoost', params: {serviceName: string, offer?: HostingWebOfferEnum}): Promise<HostingWebTask>;
   /**
   restoreSnapshot operations
   Restore this snapshot ALL CURRENT DATA WILL BE REPLACED BY YOUR SNAPSHOT
   **/
-  public post(path: '/hosting/web/{serviceName}/restoreSnapshot', params: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/restoreSnapshot', params: {serviceName: string, backup: HostingWebBackupTypeEnum}): Promise<HostingWebTask>;
   /**
   List the hosting.web.runtime objects
   Request the creation of a new runtime configuration
   **/
-  public post(path: '/hosting/web/{serviceName}/runtime', params: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/runtime', params: {serviceName: string, appBootstrap?: string, appEnv?: HostingWebRuntimeEnvEnum, attachedDomains?: string[], isDefault?: boolean, name?: string, publicDir?: string, type?: HostingWebRuntimeTypeEnum}): Promise<HostingWebTask>;
   /**
   Hostedssl
   Create the free default HostedSsl OR import your proper SSL on your hosting
   **/
-  public post(path: '/hosting/web/{serviceName}/ssl', params: {serviceName: string}): Promise<HostingWebSsl>;
+  public post(path: '/hosting/web/{serviceName}/ssl', params: {serviceName: string, certificate?: string, chain?: string, key?: string}): Promise<HostingWebSsl>;
   /**
   regenerate operations
   Request the regeneration of your HostedSsl
@@ -3135,22 +3135,22 @@ export class ApiHostingWeb extends OvhWrapper {
   List the hosting.web.user objects
   Create new ftp/ssh user
   **/
-  public post(path: '/hosting/web/{serviceName}/user', params: {serviceName: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/user', params: {serviceName: string, home: string, login: string, password: string, sshState?: HostingWebUserSshStateEnum}): Promise<HostingWebTask>;
   /**
   changePassword operations
   Request a password change
   **/
-  public post(path: '/hosting/web/{serviceName}/user/{login}/changePassword', params: {serviceName: string, login: string}): Promise<HostingWebTask>;
+  public post(path: '/hosting/web/{serviceName}/user/{login}/changePassword', params: {serviceName: string, login: string, password: string}): Promise<HostingWebTask>;
   /**
   List the hosting.web.userLogs objects
   Create new userLogs
   **/
-  public post(path: '/hosting/web/{serviceName}/userLogs', params: {serviceName: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/userLogs', params: {serviceName: string, description: string, login: string, ownLogsId?: number, password: string}): Promise<string>;
   /**
   changePassword operations
   Request a password change
   **/
-  public post(path: '/hosting/web/{serviceName}/userLogs/{login}/changePassword', params: {serviceName: string, login: string}): Promise<string>;
+  public post(path: '/hosting/web/{serviceName}/userLogs/{login}/changePassword', params: {serviceName: string, login: string, password: string}): Promise<string>;
   public post(path: PathsHostingWebPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

@@ -210,7 +210,7 @@ export class ApiHpcspot extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/hpcspot/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/hpcspot/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsHpcspotPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

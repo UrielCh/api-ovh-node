@@ -468,17 +468,17 @@ export class ApiCdnDedicated extends OvhWrapper {
   Domain on CDN
   Alter this object properties
   **/
-  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string, body: CdnanycastDomain}): Promise<void>;
   /**
   CacheRules for a domain
   Alter this object properties
   **/
-  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: number}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: number, body: CdnanycastCacheRule}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cdn/dedicated/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   public put(path: PathsCdnDedicatedPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -486,22 +486,22 @@ export class ApiCdnDedicated extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/cdn/dedicated/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/cdn/dedicated/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   List the cdnanycast.Domain objects
   Add a domain on CDN
   **/
-  public post(path: '/cdn/dedicated/{serviceName}/domains', params: {serviceName: string}): Promise<CdnanycastDomain>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains', params: {serviceName: string, domain: string}): Promise<CdnanycastDomain>;
   /**
   List the cdnanycast.Backend objects
   Add a backend IP
   **/
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', params: {serviceName: string, domain: string}): Promise<CdnanycastBackend>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', params: {serviceName: string, domain: string, ip: string}): Promise<CdnanycastBackend>;
   /**
   List the cdnanycast.CacheRule objects
   Add a cache rule to a domain
   **/
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', params: {serviceName: string, domain: string}): Promise<CdnanycastCacheRule>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', params: {serviceName: string, domain: string, cacheType: CdnanycastCacheRuleCacheTypeEnum, fileMatch: string, fileType: CdnanycastCacheRuleFileTypeEnum, ttl: number}): Promise<CdnanycastCacheRule>;
   /**
   flush operations
   Flush the cache
@@ -526,12 +526,12 @@ export class ApiCdnDedicated extends OvhWrapper {
   CDN Ssl
   Add a SSL on CDN or Generate a Lets Encrypt certificate
   **/
-  public post(path: '/cdn/dedicated/{serviceName}/ssl', params: {serviceName: string}): Promise<CdnanycastSsl>;
+  public post(path: '/cdn/dedicated/{serviceName}/ssl', params: {serviceName: string, certificate?: string, chain?: string, key?: string, name: string}): Promise<CdnanycastSsl>;
   /**
   update operations
   Update an existing SSL with a custom certificate
   **/
-  public post(path: '/cdn/dedicated/{serviceName}/ssl/update', params: {serviceName: string}): Promise<CdnanycastTask>;
+  public post(path: '/cdn/dedicated/{serviceName}/ssl/update', params: {serviceName: string, certificate: string, chain?: string, key: string}): Promise<CdnanycastTask>;
   public post(path: PathsCdnDedicatedPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

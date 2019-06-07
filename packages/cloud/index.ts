@@ -4627,67 +4627,67 @@ export class ApiCloud extends OvhWrapper {
   Project
   Alter this object properties
   **/
-  public put(path: '/cloud/project/{serviceName}', params: {serviceName: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}', params: {serviceName: string, body: CloudProject}): Promise<void>;
   /**
   Cloud alerting consumption
   Alter this object properties
   **/
-  public put(path: '/cloud/project/{serviceName}/alerting/{id}', params: {serviceName: string, id: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/alerting/{id}', params: {serviceName: string, id: string, body: CloudAlerting}): Promise<void>;
   /**
   Missing description
   Alter an instance
   **/
-  public put(path: '/cloud/project/{serviceName}/instance/{instanceId}', params: {instanceId: string, serviceName: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/instance/{instanceId}', params: {instanceId: string, serviceName: string, instanceName: string}): Promise<void>;
   /**
   Manage your cluster
   Update information about your managed Kubernetes cluster
   **/
-  public put(path: '/cloud/project/{serviceName}/kube/{kubeId}', params: {serviceName: string, kubeId: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/kube/{kubeId}', params: {serviceName: string, kubeId: string, name: string}): Promise<void>;
   /**
   Manage the update policy of your cluster
   Change the update policy of your cluster
   **/
-  public put(path: '/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy', params: {serviceName: string, kubeId: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy', params: {serviceName: string, kubeId: string, updatePolicy: CloudKubeUpdatePolicy}): Promise<void>;
   /**
   Missing description
   Update planned migration
   **/
-  public put(path: '/cloud/project/{serviceName}/migration/{migrationId}', params: {migrationId: string, serviceName: string}): Promise<CloudMigrationMigration>;
+  public put(path: '/cloud/project/{serviceName}/migration/{migrationId}', params: {migrationId: string, serviceName: string, date: string}): Promise<CloudMigrationMigration>;
   /**
   Missing description
   Rename private network
   **/
-  public put(path: '/cloud/project/{serviceName}/network/private/{networkId}', params: {networkId: string, serviceName: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/network/private/{networkId}', params: {networkId: string, serviceName: string, name: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cloud/project/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
   /**
   Missing description
   Update your storage container
   **/
-  public put(path: '/cloud/project/{serviceName}/storage/{containerId}', params: {containerId: string, serviceName: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/storage/{containerId}', params: {containerId: string, serviceName: string, containerType?: CloudStorageTypeEnum}): Promise<void>;
   /**
   Missing description
   Update a volume
   **/
-  public put(path: '/cloud/project/{serviceName}/volume/{volumeId}', params: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
+  public put(path: '/cloud/project/{serviceName}/volume/{volumeId}', params: {serviceName: string, volumeId: string, description?: string, name?: string}): Promise<CloudVolumeVolume>;
   /**
   Cloud Archives Account
   Alter this object properties
   **/
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}', params: {serviceName: string, pcaServiceName: string}): Promise<void>;
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}', params: {serviceName: string, pcaServiceName: string, body: PcaAccount}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', params: {serviceName: string, pcaServiceName: string}): Promise<void>;
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', params: {serviceName: string, pcaServiceName: string, body: ServicesService}): Promise<void>;
   /**
   cloud archives sessions
   Alter this object properties
   **/
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {serviceName: string, pcaServiceName: string, sessionId: string}): Promise<void>;
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {serviceName: string, pcaServiceName: string, sessionId: string, body: PcaSession}): Promise<void>;
   public put(path: PathsCloudPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -4700,12 +4700,12 @@ export class ApiCloud extends OvhWrapper {
   List the cloud.Acl objects
   Create new ACL
   **/
-  public post(path: '/cloud/project/{serviceName}/acl', params: {serviceName: string}): Promise<CloudAcl>;
+  public post(path: '/cloud/project/{serviceName}/acl', params: {serviceName: string, accountId: string, type: CloudAclTypeEnum}): Promise<CloudAcl>;
   /**
   List the cloud.Alerting objects
   Add new alert
   **/
-  public post(path: '/cloud/project/{serviceName}/alerting', params: {serviceName: string}): Promise<CloudAlerting>;
+  public post(path: '/cloud/project/{serviceName}/alerting', params: {serviceName: string, delay: CloudAlertingDelayEnum, email: string, monthlyThreshold: number}): Promise<CloudAlerting>;
   /**
   cancel operations
   Cancel project creation
@@ -4715,32 +4715,32 @@ export class ApiCloud extends OvhWrapper {
   Change the contacts of this service
   Launch a contact change procedure
   **/
-  public post(path: '/cloud/project/{serviceName}/changeContact', params: {serviceName: string}): Promise<number[]>;
+  public post(path: '/cloud/project/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
   Confirm termination of your service
   Confirm termination of your service
   **/
-  public post(path: '/cloud/project/{serviceName}/confirmTermination', params: {serviceName: string}): Promise<string>;
+  public post(path: '/cloud/project/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
   List the cloud.Credit objects
   Add credit to your project
   **/
-  public post(path: '/cloud/project/{serviceName}/credit', params: {serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/credit', params: {serviceName: string, code: string}): Promise<void>;
   /**
   Missing description
   Create a new instance
   **/
-  public post(path: '/cloud/project/{serviceName}/instance', params: {serviceName: string}): Promise<CloudInstanceInstanceDetail>;
+  public post(path: '/cloud/project/{serviceName}/instance', params: {serviceName: string, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: CloudInstanceNetworkParams[], region: string, sshKeyId?: string, userData?: string, volumeId?: string}): Promise<CloudInstanceInstanceDetail>;
   /**
   Missing description
   Create multiple instances
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/bulk', params: {serviceName: string}): Promise<CloudInstanceInstance[]>;
+  public post(path: '/cloud/project/{serviceName}/instance/bulk', params: {serviceName: string, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: CloudInstanceNetworkBulkParams[], number: number, region: string, sshKeyId?: string, userData?: string, volumeId?: string}): Promise<CloudInstanceInstance[]>;
   /**
   Missing description
   Create a group
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/group', params: {serviceName: string}): Promise<CloudInstancegroupInstanceGroup>;
+  public post(path: '/cloud/project/{serviceName}/instance/group', params: {serviceName: string, name: string, region: string, type: CloudInstancegroupInstanceGroupTypeEnum}): Promise<CloudInstancegroupInstanceGroup>;
   /**
   Missing description
   Active monthly billing on instance
@@ -4755,27 +4755,27 @@ export class ApiCloud extends OvhWrapper {
   Missing description
   Create interface on an instance and attached it to a network
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/interface', params: {instanceId: string, serviceName: string}): Promise<CloudInstanceInterfaceInterface>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/interface', params: {instanceId: string, serviceName: string, ip?: string, networkId: string}): Promise<CloudInstanceInterfaceInterface>;
   /**
   Missing description
   Reboot an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/reboot', params: {instanceId: string, serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/reboot', params: {instanceId: string, serviceName: string, type: CloudInstanceRebootTypeEnum}): Promise<void>;
   /**
   Missing description
   Reinstall an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/reinstall', params: {instanceId: string, serviceName: string}): Promise<CloudInstanceInstanceDetail>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/reinstall', params: {instanceId: string, serviceName: string, imageId: string}): Promise<CloudInstanceInstanceDetail>;
   /**
   Missing description
   Enable or disable rescue mode
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/rescueMode', params: {instanceId: string, serviceName: string}): Promise<CloudInstanceRescueAdminPassword>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/rescueMode', params: {instanceId: string, serviceName: string, imageId?: string, rescue: boolean}): Promise<CloudInstanceRescueAdminPassword>;
   /**
   Missing description
   Migrate your instance to another flavor
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/resize', params: {instanceId: string, serviceName: string}): Promise<CloudInstanceInstanceDetail>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/resize', params: {instanceId: string, serviceName: string, flavorId: string}): Promise<CloudInstanceInstanceDetail>;
   /**
   Missing description
   Resume a suspended instance
@@ -4785,7 +4785,7 @@ export class ApiCloud extends OvhWrapper {
   Missing description
   Snapshot an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/snapshot', params: {instanceId: string, serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/snapshot', params: {instanceId: string, serviceName: string, snapshotName: string}): Promise<void>;
   /**
   Missing description
   Start an instance
@@ -4805,12 +4805,12 @@ export class ApiCloud extends OvhWrapper {
   Missing description
   Attach failover ip to an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/ip/failover/{id}/attach', params: {id: string, serviceName: string}): Promise<CloudIpFailoverIp>;
+  public post(path: '/cloud/project/{serviceName}/ip/failover/{id}/attach', params: {id: string, serviceName: string, instanceId: string}): Promise<CloudIpFailoverIp>;
   /**
   Manage your clusters
   Create a new managed Kubernetes cluster
   **/
-  public post(path: '/cloud/project/{serviceName}/kube', params: {serviceName: string}): Promise<CloudKubeCluster>;
+  public post(path: '/cloud/project/{serviceName}/kube', params: {serviceName: string, name?: string, region: CloudKubeRegion, version?: CloudKubeVersion}): Promise<CloudKubeCluster>;
   /**
   Get your cluster configuration
   Generate kubeconfig file
@@ -4820,12 +4820,12 @@ export class ApiCloud extends OvhWrapper {
   Manage your nodes
   Deploy a node for your cluster
   **/
-  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/node', params: {serviceName: string, kubeId: string}): Promise<CloudKubeNode>;
+  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/node', params: {serviceName: string, kubeId: string, flavorName: string, name?: string}): Promise<CloudKubeNode>;
   /**
   Reset your cluster
   Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
   **/
-  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/reset', params: {serviceName: string, kubeId: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/reset', params: {serviceName: string, kubeId: string, version?: CloudKubeVersion, workerNodesPolicy?: CloudKubeResetWorkerNodesPolicy}): Promise<void>;
   /**
   Update cluster
   Update cluster to the latest patch version
@@ -4835,17 +4835,17 @@ export class ApiCloud extends OvhWrapper {
   Missing description
   Create a new network
   **/
-  public post(path: '/cloud/project/{serviceName}/network/private', params: {serviceName: string}): Promise<CloudNetworkNetwork>;
+  public post(path: '/cloud/project/{serviceName}/network/private', params: {serviceName: string, name: string, regions?: string[], vlanId?: number}): Promise<CloudNetworkNetwork>;
   /**
   Missing description
   Activate private network in a new region
   **/
-  public post(path: '/cloud/project/{serviceName}/network/private/{networkId}/region', params: {networkId: string, serviceName: string}): Promise<CloudNetworkNetwork>;
+  public post(path: '/cloud/project/{serviceName}/network/private/{networkId}/region', params: {networkId: string, serviceName: string, region: string}): Promise<CloudNetworkNetwork>;
   /**
   Missing description
   Create a new network subnet
   **/
-  public post(path: '/cloud/project/{serviceName}/network/private/{networkId}/subnet', params: {networkId: string, serviceName: string}): Promise<CloudNetworkSubnet>;
+  public post(path: '/cloud/project/{serviceName}/network/private/{networkId}/subnet', params: {networkId: string, serviceName: string, dhcp: boolean, end: string, network: string, noGateway: boolean, region: string, start: string}): Promise<CloudNetworkSubnet>;
   /**
   Missing description
   Get OVH playground session to use the openstack terminal
@@ -4855,12 +4855,12 @@ export class ApiCloud extends OvhWrapper {
   Manage your regions
   Request access to a region
   **/
-  public post(path: '/cloud/project/{serviceName}/region', params: {serviceName: string}): Promise<CloudRegion>;
+  public post(path: '/cloud/project/{serviceName}/region', params: {serviceName: string, region: string}): Promise<CloudRegion>;
   /**
   Manage your automated backups
   Create a new automated backup
   **/
-  public post(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup', params: {regionName: string, serviceName: string}): Promise<CloudBackup>;
+  public post(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup', params: {regionName: string, serviceName: string, cron: string, instanceId: string, maxExecutionCount?: number, name: string, rotation: number}): Promise<CloudBackup>;
   /**
   retain operations
   Do not expire the project, and retain it. You will have to pay for the resources you will use after using this call
@@ -4870,7 +4870,7 @@ export class ApiCloud extends OvhWrapper {
   Missing description
   Create SSH key
   **/
-  public post(path: '/cloud/project/{serviceName}/sshkey', params: {serviceName: string}): Promise<CloudSshkeySshKeyDetail>;
+  public post(path: '/cloud/project/{serviceName}/sshkey', params: {serviceName: string, name: string, publicKey: string, region?: string}): Promise<CloudSshkeySshKeyDetail>;
   /**
   Missing description
   Get OVH playground session with a stack installed to use the openstack terminal
@@ -4880,7 +4880,7 @@ export class ApiCloud extends OvhWrapper {
   Missing description
   Create container
   **/
-  public post(path: '/cloud/project/{serviceName}/storage', params: {serviceName: string}): Promise<CloudStorageContainer>;
+  public post(path: '/cloud/project/{serviceName}/storage', params: {serviceName: string, archive: boolean, containerName: string, region: string}): Promise<CloudStorageContainer>;
   /**
   Missing description
   Access to storage API
@@ -4890,12 +4890,12 @@ export class ApiCloud extends OvhWrapper {
   Missing description
   Add CORS support on your container
   **/
-  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/cors', params: {containerId: string, serviceName: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/cors', params: {containerId: string, serviceName: string, origin: string}): Promise<void>;
   /**
   Missing description
   Get a public temporary URL to access to one of your object
   **/
-  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/publicUrl', params: {containerId: string, serviceName: string}): Promise<CloudStorageContainerObjectTempURL>;
+  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/publicUrl', params: {containerId: string, serviceName: string, expirationDate: string, objectName: string}): Promise<CloudStorageContainerObjectTempURL>;
   /**
   Missing description
   Deploy your container files as a static web site
@@ -4905,7 +4905,7 @@ export class ApiCloud extends OvhWrapper {
   Missing description
   Create openstack user with only access to this container
   **/
-  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/user', params: {containerId: string, serviceName: string}): Promise<CloudUserUserDetail>;
+  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/user', params: {containerId: string, serviceName: string, description?: string, right: CloudStorageRightEnum}): Promise<CloudUserUserDetail>;
   /**
   Terminate your service
   Terminate your service
@@ -4920,7 +4920,7 @@ export class ApiCloud extends OvhWrapper {
   Missing description
   Create user
   **/
-  public post(path: '/cloud/project/{serviceName}/user', params: {serviceName: string}): Promise<CloudUserUserDetail>;
+  public post(path: '/cloud/project/{serviceName}/user', params: {serviceName: string, description?: string, role?: CloudUserRoleEnum}): Promise<CloudUserUserDetail>;
   /**
   Missing description
   Regenerate user password
@@ -4930,32 +4930,32 @@ export class ApiCloud extends OvhWrapper {
   Missing description
   Get token for user
   **/
-  public post(path: '/cloud/project/{serviceName}/user/{userId}/token', params: {serviceName: string, userId: number}): Promise<CloudAuthenticationToken>;
+  public post(path: '/cloud/project/{serviceName}/user/{userId}/token', params: {serviceName: string, userId: number, password: string}): Promise<CloudAuthenticationToken>;
   /**
   Missing description
   Create a volume
   **/
-  public post(path: '/cloud/project/{serviceName}/volume', params: {serviceName: string}): Promise<CloudVolumeVolume>;
+  public post(path: '/cloud/project/{serviceName}/volume', params: {serviceName: string, description?: string, imageId?: string, name?: string, region: string, size: number, snapshotId?: string, type: CloudVolumeVolumeTypeEnum}): Promise<CloudVolumeVolume>;
   /**
   Missing description
   Attach a volume on an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/attach', params: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
+  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/attach', params: {serviceName: string, volumeId: string, instanceId: string}): Promise<CloudVolumeVolume>;
   /**
   Missing description
   Detach a volume from an instance
   **/
-  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/detach', params: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
+  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/detach', params: {serviceName: string, volumeId: string, instanceId: string}): Promise<CloudVolumeVolume>;
   /**
   Missing description
   Snapshot a volume
   **/
-  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/snapshot', params: {serviceName: string, volumeId: string}): Promise<CloudVolumeSnapshot>;
+  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/snapshot', params: {serviceName: string, volumeId: string, description?: string, name?: string}): Promise<CloudVolumeSnapshot>;
   /**
   Missing description
   Extend a volume
   **/
-  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/upsize', params: {serviceName: string, volumeId: string}): Promise<CloudVolumeVolume>;
+  public post(path: '/cloud/project/{serviceName}/volume/{volumeId}/upsize', params: {serviceName: string, volumeId: string, size: number}): Promise<CloudVolumeVolume>;
   /**
   Manage the vRack on your Cloud Project
   Order and attach a new vRack on your project
@@ -4970,7 +4970,7 @@ export class ApiCloud extends OvhWrapper {
   List the pca.Task objects
   Create a cloud archives task
   **/
-  public post(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', params: {serviceName: string, pcaServiceName: string}): Promise<PcaTask>;
+  public post(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', params: {serviceName: string, pcaServiceName: string, fileIds: string[], sessionId: string, taskFunction: CloudPcaTaskTypeEnum}): Promise<PcaTask>;
   public post(path: PathsCloudPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}
@@ -5043,7 +5043,7 @@ export class ApiCloud extends OvhWrapper {
   Missing description
   Delete CORS support on your container
   **/
-  public delete(path: '/cloud/project/{serviceName}/storage/{containerId}/cors', params: {containerId: string, serviceName: string, origin: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/storage/{containerId}/cors', params: {containerId: string, serviceName: string}): Promise<void>;
   /**
   Missing description
   Delete user
