@@ -11,11 +11,18 @@
   },
   "dependencies": {
     "@ovh-api/api": "^1.2.1",
-    "@ovh-api/telephony": "^1.2.2",
-    "bluebird": "^3.5.5"
+    "@ovh-api/telephony": "^1.2.3",
+    "bluebird": "^3.5.5",
+    "commander": "^2.20.0",
+    "fs-extra": "^8.0.1",
+    "handy-redis": "^1.5.4",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.27",
+    "@types/commander": "^2.12.2",
+    "@types/fs-extra": "^7.0.0",
+    "@types/node-fetch": "^2.3.5",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5"
   }

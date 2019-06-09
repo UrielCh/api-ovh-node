@@ -12,3 +12,4 @@ code/common/dist/
 **/index.d.ts
 **/index.js
 **/index.js.map
+**/tokens.json

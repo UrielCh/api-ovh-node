@@ -62,12 +62,6 @@ export interface OvhParams {
     accessRules?: string[] | string;
 }
 
-interface CacheApi {
-    _path: string;
-    _api: API | undefined;
-    [key: string]: API | string | CacheApi | undefined;
-}
-
 interface AccessRule {
     method: 'GET' | 'POST' | 'PUT' | 'DELETE';
     path: string;
@@ -84,9 +78,6 @@ export default class OvhApi implements OvhRequestable {
     basePath: string; // '/1.0'
     debug?: DebugFnc;
     warn: DebugFnc;
-    usedApi: string[];
-    apis: CacheApi;
-    apisLoaded: boolean;
     accessRules: string[];
 
     constructor(params: OvhParams) {
@@ -137,12 +128,6 @@ by default I will ask for all rights`);
         else
             this.debug = undefined;
         // Declared used API, will be used to check the associated schema
-        this.usedApi = params.apis || [];
-        if (Array.isArray(this.usedApi) && this.usedApi.length > 0 && this.usedApi.indexOf('auth') < 0) {
-            this.usedApi.push('auth');
-        }
-        this.apis = <CacheApi>{ _path: '' }
-        this.apisLoaded = !this.usedApi.length;
         if (typeof (this.appKey) !== 'string' ||
             typeof (this.appSecret) !== 'string') {
             throw new Error('[OVH] You should precise an application key / secret');
@@ -158,59 +143,6 @@ by default I will ask for all rights`);
             .map(s => s.split(/\s+/))
             .map(([method, path]) => ({ method, path }));
     }
-
-    /**
-     * Recursively loads the schemas of the specified used APIs.
-     *
-     * @param {String} path
-     */
-    loadSchemas(path: string): Promise<any> {
-        let request = { // https://eu.api.ovh.com/1.0/
-            host: this.host, // eu.api.ovh.com
-            port: this.port, // 443
-            path: this.basePath + path // /1.0/
-        };
-
-        // Fetch only selected APIs
-        if (path === '/') {
-            return Promise.all(this.usedApi.map((apiName) => this.loadSchemas(`/${apiName}.json`)))
-        }
-
-        // Fetch all APIs
-        return this.loadSchemasRequest(request).then((schema: Schema) => {
-            schema.apis.map((api: API) => {
-                let apiPath = api.path.split('/');
-                this.addApi(apiPath, api, this.apis);
-            });
-        })
-    }
-
-    /**
-     * Add a fetched schema to the loaded API list
-     *
-     * @param {Array} apiPath: Splited API path using '/'
-     * @param {String} api: API Name
-     */
-    addApi(apiPath: string[], api: API, apis: CacheApi): void {
-        let path = apiPath.shift();
-        if (path === '') {
-            return this.addApi(apiPath, api, apis);
-        }
-        if (!path)
-            return;
-        let selected: CacheApi;
-        if (apis[path] == null) {
-            selected = <CacheApi>{ _path: `${apis._path}/${path}` };
-            apis[path] = selected;
-        } else {
-            selected = <CacheApi>apis[path];
-        }
-        if (apiPath.length > 0) {
-            return this.addApi(apiPath, api, <CacheApi>apis[path]);
-        }
-        selected._api = <API>api;
-    }
-
     /**
      * Fetch an API schema
      *
@@ -240,77 +172,6 @@ by default I will ask for all rights`);
     }
 
     /**
-     * Generates warns from the loaded API schema when processing a request
-     *
-     * A warn is generated when the API schema is loaded and:
-     *  - The API method does not exists
-     *  - The API method is not available with the provided httpMethod
-     *  - The API method is tagged as deprecated in the schema
-     *
-     * The function called can be customzied by providing a function using the
-     * 'warn' parameter when instancing the module. Default function used is
-     * 'console.warn'.
-     *
-     * @param {String} httpMethod
-     * @param {String} pathStr
-     */
-    warnsRequest(httpMethod: string, pathStr: string) {
-        let path: string[] = pathStr.split('/'),
-            api = this.apis;
-
-        while (path.length > 0) {
-            let pElem: string = <string>path.shift();
-            if (pElem === '') {
-                continue;
-            }
-
-            if (api[pElem] != null) {
-                api = <CacheApi>api[pElem];
-                continue;
-            }
-
-            let keys: string[] | null = Object.keys(api);
-            for (let i = 0; i < keys.length; ++i) {
-                if (keys[i].charAt(0) === '{') {
-                    api = <CacheApi>api[keys[i]];
-                    keys = null;
-                    break;
-                }
-            }
-
-            if (keys) {
-                return this.warn(`[OVH] Your call ${pathStr} was not found in the API schemas.`);
-            }
-        }
-
-        if (!api._api || !api._api.operations) {
-            return this.warn(`[OVH] Your call ${pathStr} was not found in the API schemas.`);
-        }
-
-        for (let i = 0; i < api._api.operations.length; ++i) {
-            if (api._api.operations[i].httpMethod === httpMethod) {
-                if (api._api.operations[i].apiStatus.value === 'DEPRECATED') {
-                    let status = api._api.operations[i].apiStatus;
-                    return this.warn(`[OVH] Your API call ${pathStr} is tagged DEPRECATED since ${status.deprecatedDate} and will deleted on ${status.deletionDate}.,
-You can replace it with ${status.replacement}`);
-                }
-
-                if (typeof (this.consumerKey) !== 'string' && !api._api.operations[i].noAuthentication) {
-                    return this.warn(`[OVH] The API call ${pathStr}requires an authentication with a consumer key.`
-                    );
-                }
-
-                return true;
-            }
-        }
-
-        return this.warn(
-            '[OVH] The method ' + httpMethod + ' for the API call ' +
-            pathStr + ' was not found in the API schemas.'
-        );
-    }
-
-    /**
      * Execute a request on the API
      *
      * @param {String} httpMethod: The HTTP method
@@ -322,13 +183,6 @@ You can replace it with ${status.replacement}`);
      */
     async request(httpMethod: string, path: string, params?: any): Promise<any> {
         const ovhEngine = this;
-
-        // Schemas
-        if (!ovhEngine.apisLoaded) {
-            await ovhEngine.loadSchemas('/')
-            ovhEngine.apisLoaded = true;
-        }
-
         // Time drift
         if (ovhEngine.apiTimeDiff === null && path !== '/auth/time') {
             try {
@@ -337,12 +191,6 @@ You can replace it with ${status.replacement}`);
             } catch (err) {
                 throw '[OVH] Unable to fetch OVH API time' + err.message
             }
-
-        }
-
-        // Potential warnings
-        if (Object.keys(ovhEngine.apis).length > 1) {
-            ovhEngine.warnsRequest(httpMethod, path);
         }
         let path0 = path;
         let m: RegExpMatchArray | null = null;
