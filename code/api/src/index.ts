@@ -28,7 +28,7 @@
 import { IncomingMessage } from 'http';
 import * as https from 'https';
 import * as querystring from 'querystring';
-import * as crypto from 'crypto';
+import { createHash } from 'crypto';
 import { Schema, API } from './schema';
 import { RequestOptions } from 'http';
 import { endpoints } from './endpoints';
@@ -529,6 +529,6 @@ You can replace it with ${status.replacement}`);
             String(timestamp)
         ];
 
-        return '$1$' + crypto.createHash('sha1').update(s.join('+')).digest('hex');
+        return '$1$' + createHash('sha1').update(s.join('+')).digest('hex');
     }
 }
