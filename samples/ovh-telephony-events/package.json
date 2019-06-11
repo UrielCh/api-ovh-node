@@ -26,7 +26,7 @@
     "bluebird": "^3.5.5",
     "commander": "^2.20.0",
     "fs-extra": "^8.0.1",
-    "handy-redis": "^1.5.4",
+    "handy-redis": "^1.5.5",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
@@ -34,7 +34,7 @@
     "@types/commander": "^2.12.2",
     "@types/fs-extra": "^7.0.0",
     "@types/node-fetch": "^2.3.5",
-    "ts-node": "^8.1.0",
-    "typescript": "^3.4.5"
+    "ts-node": "^8.2.0",
+    "typescript": "^3.5.1"
   }
 }
