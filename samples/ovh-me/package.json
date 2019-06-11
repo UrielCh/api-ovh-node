@@ -10,8 +10,8 @@
     "build:watch": "tsc --watch"
   },
   "dependencies": {
-    "@ovh-api/api": "^1.2.1",
-    "@ovh-api/me": "^1.2.2"
+    "@ovh-api/api": "^1.2.2",
+    "@ovh-api/me": "^1.2.3"
   },
   "devDependencies": {
     "ts-node": "^8.1.0",

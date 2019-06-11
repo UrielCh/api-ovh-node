@@ -21,8 +21,8 @@
     "build:watch": "tsc --watch"
   },
   "dependencies": {
-    "@ovh-api/api": "^1.2.1",
-    "@ovh-api/me": "^1.2.2",
+    "@ovh-api/api": "^1.2.2",
+    "@ovh-api/me": "^1.2.3",
     "bluebird": "^3.5.5",
     "commander": "^2.20.0",
     "fs-extra": "^8.0.1",

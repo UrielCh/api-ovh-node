@@ -1,19 +1,27 @@
 {
-  "private": true,
   "name": "ovh-telephony-events",
   "version": "1.0.0",
   "main": "index.js",
   "typings": "index.d.ts",
   "license": "MIT",
+  "author": "Uriel Chemouni <uchemouni@gmail.com>",
+  "bin": {
+    "ovh-telephony-events": "./bin/ovh-telephony-events"
+  },
+  "preferGlobal": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UrielCh/api-ovh-node.git"
+  },
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch"
   },
-  "bin": {
-    "ovh-telephony-events": "./bin/ovh-telephony-events"
-  },
   "dependencies": {
-    "@ovh-api/api": "^1.2.1",
+    "@ovh-api/api": "^1.2.2",
     "@ovh-api/telephony": "^1.2.3",
     "bluebird": "^3.5.5",
     "commander": "^2.20.0",
