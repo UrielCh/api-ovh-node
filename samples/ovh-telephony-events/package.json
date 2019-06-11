@@ -9,6 +9,9 @@
     "build": "tsc",
     "build:watch": "tsc --watch"
   },
+  "bin": {
+    "ovh-telephony-events": "./bin/ovh-telephony-events"
+  },
   "dependencies": {
     "@ovh-api/api": "^1.2.1",
     "@ovh-api/telephony": "^1.2.3",

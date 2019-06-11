@@ -6,45 +6,57 @@ import program from 'commander'
 import { gToken, gTokenGroup, EventSession, VoipEventV2, VoipEventV1Root, VoipEventV1 } from './model';
 import { createHandyClient, IHandyRedis } from 'handy-redis';
 import fse from 'fs-extra';
-
+// ts-node index.ts --redis-host 127.0.0.1 --cache tokens.json --channel event-voip
 program
     .version('1.0.0')
     .option('--redis-host <host>', 'store Even in Redis')
     .option('--redis-port <port>', 'use non standatd port')
+    .option('--redis-password <password>', 'provide a redis password')
     .option('--channel <channel>', 'channel key used in redis to push events')
+    .option('--cache <cacheFile.json>', 'store and cache tokens')
+    .option('--v1', 'use Api V1 (by default use V2)')
     .parse(process.argv);
 
 const headers = { 'Content-Type': 'application/json', 'Accept': 'text/plain' };
 
-async function loadTokens() {
+async function feachToken(): Promise<gToken[]> {
     let tokens: gToken[] = []
-    const cachefile = 'tokens.json';
+    const ovh = new Ovh({ accessRules: 'GET /telephony, GET /telephony/*/eventToken, POST /telephony/*/eventToken' });
+    const api = new Api(ovh);
+    const groups = await api.get('/telephony');
+
+    function addToken(billingAccount: string, token: string) {
+        tokens.push({ billingAccount, token })
+    }
+    console.log(`Importing ${groups.length} token`)
+    await bluebird.map(
+        groups,
+        (billingAccount, index, length) => api.get('/telephony/{billingAccount}/eventToken', { billingAccount })
+            .then(
+                ({ token }) => addToken(billingAccount, token),
+                // 404: The requested object (eventToken) does not exist
+                (err) => api.post('/telephony/{billingAccount}/eventToken', { billingAccount, expiration: 'unlimited' })
+                    .then(token => addToken(billingAccount, token))
+            ),
+        { concurrency: 5 }
+    );
+    return tokens;
+}
+
+async function loadTokens() {
+    const cachefile = program.cache;
+    if (!cachefile) {
+        return await feachToken();
+    }
     try {
         await fse.access(cachefile);
-        tokens = await fse.readJSON(cachefile);
+        return await fse.readJSON(cachefile);
     } catch {
-        const ovh = new Ovh({ accessRules: 'GET /telephony, GET /telephony/*/eventToken, POST /telephony/*/eventToken' });
-        const api = new Api(ovh);
-        const groups = await api.get('/telephony');
-
-        function addToken(billingAccount: string, token: string) {
-            tokens.push({ billingAccount, token })
-        }
-        console.log(`Importing ${groups.length} token`)
-        await bluebird.map(
-            groups,
-            (billingAccount, index, length) => api.get('/telephony/{billingAccount}/eventToken', { billingAccount })
-                .then(
-                    ({ token }) => addToken(billingAccount, token),
-                    // 404: The requested object (eventToken) does not exist
-                    (err) => api.post('/telephony/{billingAccount}/eventToken', { billingAccount, expiration: 'unlimited' })
-                        .then(token => addToken(billingAccount, token))
-                ),
-            { concurrency: 5 }
-        );
+        console.log(`cacheFile ${cachefile} do not Exists, creating a new one`);
+        let tokens = await feachToken();
         await fse.writeJSON(cachefile, tokens);
+        return tokens;
     }
-    return tokens;
 }
 
 async function listenV1(tokens: gToken[], redis: IHandyRedis | null) {
@@ -58,7 +70,7 @@ async function listenV1(tokens: gToken[], redis: IHandyRedis | null) {
                 let resp: VoipEventV1Root;
                 try {
                     resp = JSON.parse(body);
-                } catch(e1) {
+                } catch (e1) {
                     console.log('fail to parse:' + body)
                     continue;
                 }
@@ -90,7 +102,7 @@ async function listenV1(tokens: gToken[], redis: IHandyRedis | null) {
                         console.log(resp);
                     }
                 }
-            } catch (e) { 
+            } catch (e) {
                 console.log(e)
             }
         }
@@ -145,16 +157,18 @@ async function listenV2(tokens: gToken[], redis: IHandyRedis | null) {
         }
     })
     await Promise.all(listen);
-
 }
 
 async function main() {
     let redis: IHandyRedis | null = null;
     if (program['redisHost']) {
-        redis = createHandyClient({ host: program['redisHost'], port: Number(program['redisPort']) | 6379 });
+        redis = createHandyClient({ host: program['redisHost'], port: Number(program['redisPort']) | 6379, password: program['redisPassword'] });
     }
     const tokens: gToken[] = await loadTokens();
-    // await listenV1(tokens, redis);
-    await listenV2(tokens, redis);
+    if (program.v1) {
+        await listenV1(tokens, redis);
+    } else {
+        await listenV2(tokens, redis);
+    }
 }
-main().then(console.log)
+main().then(process.exit(0))
