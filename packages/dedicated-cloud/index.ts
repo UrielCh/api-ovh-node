@@ -3049,17 +3049,17 @@ export class ApiDedicatedCloud extends OvhWrapper {
   Private Cloud
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}', params: {serviceName: string, body: DedicatedCloudDedicatedCloud}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}', params: {serviceName: string, body: DedicatedCloudDedicatedCloud}): Promise<DedicatedCloudTask>;
   /**
   Network allowed to connect to the Private Cloud management interface
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', params: {serviceName: string, networkAccessId: number, body: DedicatedCloudAllowedNetwork}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', params: {serviceName: string, networkAccessId: number, body: DedicatedCloudAllowedNetwork}): Promise<DedicatedCloudTask>;
   /**
   Private Cloud Datacenter
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', params: {serviceName: string, datacenterId: number, body: DedicatedCloudDatacenter}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', params: {serviceName: string, datacenterId: number, body: DedicatedCloudDatacenter}): Promise<DedicatedCloudTask>;
   /**
   Details about a Service
   Alter this object properties
@@ -3069,7 +3069,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
   Private Cloud User right
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}', params: {serviceName: string, userId: number, rightId: number, body: DedicatedCloudRight}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}', params: {serviceName: string, userId: number, rightId: number, body: DedicatedCloudRight}): Promise<DedicatedCloudTask>;
   public put(path: PathsDedicatedCloudPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
