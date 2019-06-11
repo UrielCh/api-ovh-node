@@ -951,17 +951,17 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
   Private database
   Alter this object properties
   **/
-  public put(path: '/hosting/privateDatabase/{serviceName}', params: {serviceName: string, body: HostingPrivateDatabaseService}): Promise<void>;
+  public put(path: '/hosting/privateDatabase/{serviceName}', params: {serviceName: string, capabilities?: HostingPrivateDatabaseCapability[], cpu?: number, datacenter?: HostingPrivateDatabaseDatacenterEnum, displayName?: string, graphEndpoint?: HostingPrivateDatabaseGraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: HostingPrivateDatabaseOfferEnum, port?: number, portFtp?: number, quotaSize?: ComplexTypeUnitAndValue<number>, quotaUsed?: ComplexTypeUnitAndValue<number>, ram?: ComplexTypeUnitAndValue<number>, server?: string, state?: HostingPrivateDatabaseStateEnum, tlsCa?: string, type?: HostingPrivateDatabaseTypeEnum, version?: HostingPrivateDatabaseAvailableVersionEnum, versionNumber?: number}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/hosting/privateDatabase/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/hosting/privateDatabase/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   IP whitelisting for your instance
   Alter this object properties
   **/
-  public put(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {serviceName: string, ip: string, body: HostingPrivateDatabaseWhitelist}): Promise<void>;
+  public put(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {serviceName: string, ip: string, creationDate?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: HostingPrivateDatabaseWhitelistStatus, taskId?: string}): Promise<void>;
   public put(path: PathsHostingPrivateDatabasePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

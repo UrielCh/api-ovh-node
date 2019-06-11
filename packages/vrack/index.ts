@@ -554,12 +554,12 @@ export class ApiVrack extends OvhWrapper {
   vrack
   Alter this object properties
   **/
-  public put(path: '/vrack/{serviceName}', params: {serviceName: string, body: VrackVrack}): Promise<void>;
+  public put(path: '/vrack/{serviceName}', params: {serviceName: string, description?: string, name?: string}): Promise<void>;
   /**
   vrack dedicated connect interface
   Alter this object properties
   **/
-  public put(path: '/vrack/{serviceName}/dedicatedConnect/{name}', params: {serviceName: string, name: string, body: VrackDedicatedConnect}): Promise<void>;
+  public put(path: '/vrack/{serviceName}/dedicatedConnect/{name}', params: {serviceName: string, name: string}): Promise<void>;
   public put(path: PathsVrackPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

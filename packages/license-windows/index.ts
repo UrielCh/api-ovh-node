@@ -324,12 +324,12 @@ export class ApiLicenseWindows extends OvhWrapper {
   Your Windows license
   Alter this object properties
   **/
-  public put(path: '/license/windows/{serviceName}', params: {serviceName: string, body: LicenseWindowsWindows}): Promise<void>;
+  public put(path: '/license/windows/{serviceName}', params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: LicenseStateEnum, version?: LicenseWindowsOsVersionEnum}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/windows/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/license/windows/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsLicenseWindowsPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

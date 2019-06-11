@@ -2350,82 +2350,82 @@ export class ApiEmailExchange extends OvhWrapper {
   Exchange service
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}', params: {organizationName: string, exchangeService: string, body: EmailExchangeExchangeService}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}', params: {organizationName: string, exchangeService: string, complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: EmailExchangeServiceOfferEnum, passwordHistoryCount?: number, spamAndVirusConfiguration?: EmailExchangeSpamAndVirusConfiguration, sslExpirationDate?: string, state?: EmailExchangeServiceStateEnum, taskPendingId?: number, webUrl?: string}): Promise<void>;
   /**
   Exchange mailbox
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, body: EmailExchangeAccount}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, SAMAccountName?: string, accountLicense?: EmailExchangeOvhLicenceEnum, company?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: EmailExchangeMailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, quota?: number, renewOutlookPeriod?: EmailExchangeRenewPeriodEnum, renewPeriod?: EmailExchangeRenewPeriodEnum, spamAndVirusConfiguration?: EmailExchangeSpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: EmailExchangeObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
   Exchange Account Archive
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, body: EmailExchangeExchangeAccountArchive}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, creationDate?: string, currentUsage?: number, guid?: string, quota?: number, state?: EmailExchangeObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
   Get protocol status on that mailbox
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, body: EmailExchangeExchangeAccountProtocol}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol', params: {organizationName: string, exchangeService: string, primaryEmailAddress: string, IMAP?: boolean, POP?: boolean, activeSync?: boolean, creationDate?: string, lastUpdate?: string, taskPendingId?: number, webMail?: boolean}): Promise<void>;
   /**
   Get the list of your ActiveSync devices registered on this Exchange service
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}', params: {organizationName: string, exchangeService: string, identity: string, body: EmailExchangeExchangeServiceDevice}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}', params: {organizationName: string, exchangeService: string, identity: string, IMEI?: string, creationDate?: string, deviceId?: string, deviceModel?: string, deviceState?: EmailExchangeDeviceActiveSyncStateEnum, guid?: string, lastUpdate?: string, taskPendingId?: number}): Promise<void>;
   /**
   Exchange domain
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}', params: {organizationName: string, exchangeService: string, domainName: string, body: EmailExchangeDomain}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}', params: {organizationName: string, exchangeService: string, domainName: string, cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, srvIsValid?: boolean, srvRecord?: string[], state?: EmailExchangeObjectStateEnum, taskPendingId?: number, type?: EmailExchangeDomainTypeEnum}): Promise<void>;
   /**
   Exchange organization disclaimer
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer', params: {organizationName: string, exchangeService: string, domainName: string, body: EmailExchangeDisclaimer}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer', params: {organizationName: string, exchangeService: string, domainName: string, content?: string, creationDate?: string, name?: string, outsideOnly?: boolean, taskPendingId?: number}): Promise<void>;
   /**
   External contact for this exchange service
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}', params: {organizationName: string, exchangeService: string, externalEmailAddress: string, body: EmailExchangeExchangeExternalContact}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}', params: {organizationName: string, exchangeService: string, externalEmailAddress: string, creationDate?: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, organization2010?: string, state?: EmailExchangeObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
   Mailing list
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}', params: {organizationName: string, exchangeService: string, mailingListAddress: string, body: EmailExchangeMailingList}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}', params: {organizationName: string, exchangeService: string, mailingListAddress: string, creationDate?: string, departRestriction?: EmailExchangeMailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction?: EmailExchangeMailingListJoinRestrictionEnum, lastUpdateDate?: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean, spamDetected?: boolean, spamTicketNumber?: number, state?: EmailExchangeObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
   Protocol access policy for this Exchange service
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/protocol', params: {organizationName: string, exchangeService: string, body: EmailExchangeExchangeServiceProtocol}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/protocol', params: {organizationName: string, exchangeService: string, IMAP?: boolean, POP?: boolean, activeSync?: boolean, activeSyncPolicy?: EmailExchangeActiveSyncPolicyEnum, creationDate?: string, lastUpdate?: string, taskPendingId?: number, webMail?: boolean}): Promise<void>;
   /**
   Exchange organization public folder
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}', params: {organizationName: string, exchangeService: string, path: string, body: EmailExchangePublicFolder}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}', params: {organizationName: string, exchangeService: string, path: string, anonymousPermission?: EmailExchangePublicFolderRightTypeEnum, creationDate?: string, defaultPermission?: EmailExchangePublicFolderRightTypeEnum, hasSubFolders?: boolean, itemCount?: number, lastAccessTime?: string, lastModificationTime?: string, lastUserAccessTime?: string, lastUserModificationTime?: string, quota?: number, state?: EmailExchangeObjectStateEnum, taskPendingId?: number, totalItemSize?: number, type?: EmailExchangePublicFolderTypeEnum}): Promise<void>;
   /**
   Exchange organization public folder permission
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}', params: {organizationName: string, exchangeService: string, path: string, allowedAccountId: number, body: EmailExchangeExchangePublicFolderPermission}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}', params: {organizationName: string, exchangeService: string, path: string, allowedAccountId: number, accessRights?: EmailExchangePublicFolderRightTypeEnum, creationDate?: string, state?: EmailExchangeObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
   Exchange resource account
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}', params: {organizationName: string, exchangeService: string, resourceEmailAddress: string, body: EmailExchangeResourceAccount}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}', params: {organizationName: string, exchangeService: string, resourceEmailAddress: string, addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity?: number, creationDate?: string, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, showMeetingDetails?: EmailExchangeShowMeetingDetailsEnum, state?: EmailExchangeObjectStateEnum, taskPendingId?: number, type?: EmailExchangeResourceTypeEnum}): Promise<void>;
   /**
   Exchange server
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/server', params: {organizationName: string, exchangeService: string, body: EmailExchangeServer}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/server', params: {organizationName: string, exchangeService: string, commercialVersion?: EmailExchangeExchangeCommercialVersionEnum, currentDiskUsage?: number, diskSize?: number, individual2010?: boolean, ip?: string, ipV6?: string, isAValid?: boolean, isAaaaValid?: boolean, isPtrV6Valid?: boolean, isPtrValid?: boolean, owaMfa?: boolean, state?: EmailExchangeServerStateEnum, taskPendingId?: number, version?: number}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos', params: {organizationName: string, exchangeService: string, body: ServicesService}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos', params: {organizationName: string, exchangeService: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Exchange shared mailbox
   Alter this object properties
   **/
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}', params: {organizationName: string, exchangeService: string, sharedEmailAddress: string, body: EmailExchangeSharedAccount}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}', params: {organizationName: string, exchangeService: string, sharedEmailAddress: string, creationDate?: string, currentUsage?: number, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, mailingFilter?: EmailExchangeMailingFilterEnum[], quota?: number, spamDetected?: boolean, spamTicketNumber?: number, state?: EmailExchangeObjectStateEnum, taskPendingId?: number}): Promise<void>;
   public put(path: PathsEmailExchangePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

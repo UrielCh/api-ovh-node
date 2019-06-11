@@ -435,17 +435,17 @@ export class ApiLicenseOffice extends OvhWrapper {
   Office tenant
   Alter this object properties
   **/
-  public put(path: '/license/office/{serviceName}', params: {serviceName: string, body: LicenseOfficeOfficeTenant}): Promise<void>;
+  public put(path: '/license/office/{serviceName}', params: {serviceName: string, address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: LicenseOfficeServiceTypeEnum, status?: LicenseOfficeServiceStateEnum, zipCode?: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/office/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/license/office/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Office user
   Alter this object properties
   **/
-  public put(path: '/license/office/{serviceName}/user/{activationEmail}', params: {serviceName: string, activationEmail: string, body: LicenseOfficeOfficeUser}): Promise<void>;
+  public put(path: '/license/office/{serviceName}/user/{activationEmail}', params: {serviceName: string, activationEmail: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: LicenseOfficeLicenceEnum[], status?: LicenseOfficeUserStateEnum, taskPendingId?: number}): Promise<void>;
   public put(path: PathsLicenseOfficePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

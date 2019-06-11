@@ -4627,12 +4627,12 @@ export class ApiCloud extends OvhWrapper {
   Project
   Alter this object properties
   **/
-  public put(path: '/cloud/project/{serviceName}', params: {serviceName: string, body: CloudProject}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}', params: {serviceName: string, access?: CloudAccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: CloudProjectProjectStatus, unleash?: boolean}): Promise<void>;
   /**
   Cloud alerting consumption
   Alter this object properties
   **/
-  public put(path: '/cloud/project/{serviceName}/alerting/{id}', params: {serviceName: string, id: string, body: CloudAlerting}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/alerting/{id}', params: {serviceName: string, id: string, creationDate?: string, delay?: CloudAlertingDelayEnum, email?: string, formattedMonthlyThreshold?: OrderPrice, monthlyThreshold?: number}): Promise<void>;
   /**
   Missing description
   Alter an instance
@@ -4662,7 +4662,7 @@ export class ApiCloud extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cloud/project/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Missing description
   Update your storage container
@@ -4677,17 +4677,17 @@ export class ApiCloud extends OvhWrapper {
   Cloud Archives Account
   Alter this object properties
   **/
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}', params: {serviceName: string, pcaServiceName: string, body: PcaAccount}): Promise<void>;
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}', params: {serviceName: string, pcaServiceName: string, domain?: string, host?: string, login?: string, password?: string, sshkey?: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', params: {serviceName: string, pcaServiceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', params: {serviceName: string, pcaServiceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   cloud archives sessions
   Alter this object properties
   **/
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {serviceName: string, pcaServiceName: string, sessionId: string, body: PcaSession}): Promise<void>;
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {serviceName: string, pcaServiceName: string, sessionId: string, endDate?: string, id?: string, login?: string, name?: string, size?: number, srcIp?: string, startDate?: string, state?: CloudPcaSessionStateEnum}): Promise<void>;
   public put(path: PathsCloudPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

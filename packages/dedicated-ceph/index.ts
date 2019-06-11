@@ -643,7 +643,7 @@ export class ApiDedicatedCeph extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicated/ceph/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/dedicated/ceph/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   dedicated.ceph.userPoolPermList
   Update user-pool permission for single pool

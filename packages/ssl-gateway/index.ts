@@ -407,17 +407,17 @@ export class ApiSslGateway extends OvhWrapper {
   Your SSL Gateway
   Alter this object properties
   **/
-  public put(path: '/sslGateway/{serviceName}', params: {serviceName: string, body: SslGatewaySslGateway}): Promise<void>;
+  public put(path: '/sslGateway/{serviceName}', params: {serviceName: string, allowedSource?: string[], displayName?: string, hsts?: boolean, httpsRedirect?: boolean, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: SslGatewayOfferEnum, reverse?: string, serverHttps?: boolean, sslConfiguration?: SslGatewaySslConfigurationEnum, state?: SslGatewayStateEnum, zones?: string[]}): Promise<void>;
   /**
   Server attached to an SSL Gateway
   Alter this object properties
   **/
-  public put(path: '/sslGateway/{serviceName}/server/{id}', params: {serviceName: string, id: number, body: SslGatewayServer}): Promise<void>;
+  public put(path: '/sslGateway/{serviceName}/server/{id}', params: {serviceName: string, id: number, address?: string, port?: number, state?: SslGatewayServerStateEnum}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/sslGateway/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/sslGateway/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsSslGatewayPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

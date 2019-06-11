@@ -652,12 +652,12 @@ export class ApiOverTheBox extends OvhWrapper {
   Service
   Alter this object properties
   **/
-  public put(path: '/overTheBox/{serviceName}', params: {serviceName: string, body: OverTheBoxService}): Promise<void>;
+  public put(path: '/overTheBox/{serviceName}', params: {serviceName: string, SOCKSProxyEnabled?: boolean, customerDescription?: string, graphEndpoint?: OverTheBoxGraphEndpoint, releaseChannel?: string, status?: OverTheBoxServiceStatusEnum, tunnelMode?: OverTheBoxTunnelModeEnum}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/overTheBox/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/overTheBox/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsOverTheBoxPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

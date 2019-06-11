@@ -131,7 +131,7 @@ export class ApiPackSiptrunk extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/pack/siptrunk/{packName}/serviceInfos', params: {packName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/pack/siptrunk/{packName}/serviceInfos', params: {packName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsPackSiptrunkPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

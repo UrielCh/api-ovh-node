@@ -1434,52 +1434,52 @@ export class ApiSms extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/sms/virtualNumbers/{number}/serviceInfos', params: {number: string, body: ServicesService}): Promise<void>;
+  public put(path: '/sms/virtualNumbers/{number}/serviceInfos', params: {number: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   SMS details
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}', params: {serviceName: string, body: SmsAccount}): Promise<void>;
+  public put(path: '/sms/{serviceName}', params: {serviceName: string, automaticRecreditAmount?: SmsPackQuantityAutomaticRecreditEnum, callBack?: string, creditThresholdForAutomaticRecredit?: number, creditsHoldByQuota?: number, creditsLeft?: number, description?: string, name?: string, smsResponse?: SmsResponse, status?: SmsStatusAccountEnum, stopCallBack?: string, templates?: SmsTemplates, userQuantityWithQuota?: number}): Promise<void>;
   /**
   Phone book
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/phonebooks/{bookKey}', params: {serviceName: string, bookKey: string, body: SmsPhonebook}): Promise<void>;
+  public put(path: '/sms/{serviceName}/phonebooks/{bookKey}', params: {serviceName: string, bookKey: string, name?: string, phoneKey?: string}): Promise<void>;
   /**
   Phone book contact
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}', params: {serviceName: string, bookKey: string, id: number, body: SmsPhonebookContact}): Promise<void>;
+  public put(path: '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}', params: {serviceName: string, bookKey: string, id: number, group?: string, homeMobile?: string, homePhone?: string, name?: string, surname?: string, workMobile?: string, workPhone?: string}): Promise<void>;
   /**
   Sms receivers preloaded
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/receivers/{slotId}', params: {serviceName: string, slotId: number, body: SmsReceiver}): Promise<void>;
+  public put(path: '/sms/{serviceName}/receivers/{slotId}', params: {serviceName: string, slotId: number, autoUpdate?: boolean, canAutoUpdate?: boolean, datetime?: string, description?: string, records?: number}): Promise<void>;
   /**
   SMS senders
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/senders/{sender}', params: {serviceName: string, sender: string, body: SmsSender}): Promise<void>;
+  public put(path: '/sms/{serviceName}/senders/{sender}', params: {serviceName: string, sender: string, comment?: string, description?: string, referer?: SmsRefererSenderEnum, status?: SmsStatusSenderEnum, type?: SmsTypeSenderEnum, validationMedia?: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/sms/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Sms template for moderation (Needed to send in US country)
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/templatesControl/{name}', params: {serviceName: string, name: string, body: SmsTemplateControl}): Promise<void>;
+  public put(path: '/sms/{serviceName}/templatesControl/{name}', params: {serviceName: string, name: string, activity?: SmsTypeTemplateEnum, comment?: string, datetime?: string, description?: string, message?: string, status?: SmsStatusSenderEnum}): Promise<void>;
   /**
   SMS users
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/users/{login}', params: {serviceName: string, login: string, body: SmsUser}): Promise<void>;
+  public put(path: '/sms/{serviceName}/users/{login}', params: {serviceName: string, login: string, alertThresholdInformations?: SmsAlertThreshold, callBack?: string, ipRestrictions?: string[], password?: string, quotaInformations?: SmsQuota, stopCallBack?: string}): Promise<void>;
   /**
   Sms receivers preloaded
   Alter this object properties
   **/
-  public put(path: '/sms/{serviceName}/users/{login}/receivers/{slotId}', params: {serviceName: string, login: string, slotId: number, body: SmsReceiver}): Promise<void>;
+  public put(path: '/sms/{serviceName}/users/{login}/receivers/{slotId}', params: {serviceName: string, login: string, slotId: number, autoUpdate?: boolean, canAutoUpdate?: boolean, datetime?: string, description?: string, records?: number}): Promise<void>;
   public put(path: PathsSmsPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

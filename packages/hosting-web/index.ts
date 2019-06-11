@@ -2892,52 +2892,52 @@ export class ApiHostingWeb extends OvhWrapper {
   Web Hosting
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}', params: {serviceName: string, body: HostingWebService}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}', params: {serviceName: string, availableBoostOffer?: HostingWebAvailableOfferStruct[], boostOffer?: HostingWebOfferCapabilitiesEnum, cluster?: string, clusterIp?: string, clusterIpv6?: string, countriesIp?: HostingWebCountriesIp[], datacenter?: HostingWebDatacenterEnum, displayName?: string, filer?: string, hasCdn?: boolean, hasHostedSsl?: boolean, home?: string, hostingIp?: string, hostingIpv6?: string, lastOvhConfigScan?: string, offer?: HostingWebOfferCapabilitiesEnum, operatingSystem?: HostingWebOperatingSystemEnum, phpVersions?: HostingWebPhpVersion[], primaryLogin?: string, quotaSize?: ComplexTypeUnitAndValue<number>, quotaUsed?: ComplexTypeUnitAndValue<number>, recommendedOffer?: HostingWebOfferEnum, resourceType?: HostingWebResourceEnum, serviceManagementAccess?: HostingWebServiceAccess, state?: HostingWebStateEnum, token?: string, trafficQuotaSize?: ComplexTypeUnitAndValue<number>, trafficQuotaUsed?: ComplexTypeUnitAndValue<number>, updates?: string[]}): Promise<void>;
   /**
   Virtual service
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/attachedDomain/{domain}', params: {serviceName: string, domain: string, body: HostingWebAttachedDomain}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/attachedDomain/{domain}', params: {serviceName: string, domain: string, cdn?: HostingWebAttachedDomainCdnEnum, firewall?: HostingWebAttachedDomainFirewallEnum, ipLocation?: HostingWebCountryEnum, ownLog?: string, path?: string, runtimeId?: number, ssl?: boolean, status?: HostingWebAttachedDomainStatusEnum, taskId?: number}): Promise<void>;
   /**
   Hosting crons
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/cron/{id}', params: {serviceName: string, id: number, body: HostingWebCron}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/cron/{id}', params: {serviceName: string, id: number, command?: string, description?: string, email?: string, frequency?: string, language?: HostingWebCronLanguageEnum, status?: HostingWebCronStatusEnum}): Promise<void>;
   /**
   Hosting automated emails
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/email', params: {serviceName: string, body: HostingWebEmail}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/email', params: {serviceName: string, bounce?: number, email?: string, maxPerDay?: number, sent?: number, sentToday?: number, state?: HostingWebMailStateEnum}): Promise<void>;
   /**
   Environment variables set into your webhosting account
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/envVar/{key}', params: {serviceName: string, key: string, body: HostingWebEnvVar}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/envVar/{key}', params: {serviceName: string, key: string, status?: HostingWebEnvVarStatusEnum, taskId?: number, type?: HostingWebEnvVarTypeEnum, value?: string}): Promise<void>;
   /**
   Hosting users logs
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}', params: {serviceName: string, id: number, login: string, body: HostingWebUserLogs}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}', params: {serviceName: string, id: number, login: string, creationDate?: string, description?: string, ownLogsId?: number, status?: HostingWebUserLogsStatusEnum, taskId?: number}): Promise<void>;
   /**
   The runtime configuration of an attached domain for cloud web offer
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/runtime/{id}', params: {serviceName: string, id: number, body: HostingWebRuntime}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/runtime/{id}', params: {serviceName: string, id: number, appBootstrap?: string, appEnv?: HostingWebRuntimeEnvEnum, creationDate?: string, isDefault?: boolean, isDeletable?: boolean, lastUpdate?: string, name?: string, publicDir?: string, status?: HostingWebRuntimeStateEnum, taskId?: number, type?: HostingWebRuntimeTypeEnum}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Hosting users
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/user/{login}', params: {serviceName: string, login: string, body: HostingWebUser}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/user/{login}', params: {serviceName: string, login: string, home?: string, isPrimaryAccount?: boolean, serviceManagementCredentials?: HostingWebUserServiceCredentials, sshState?: HostingWebUserSshStateEnum, state?: HostingWebUserStateEnum, status?: HostingWebUserStatusEnum, taskId?: number}): Promise<void>;
   /**
   Hosting users logs
   Alter this object properties
   **/
-  public put(path: '/hosting/web/{serviceName}/userLogs/{login}', params: {serviceName: string, login: string, body: HostingWebUserLogs}): Promise<void>;
+  public put(path: '/hosting/web/{serviceName}/userLogs/{login}', params: {serviceName: string, login: string, creationDate?: string, description?: string, ownLogsId?: number, status?: HostingWebUserLogsStatusEnum, taskId?: number}): Promise<void>;
   public put(path: PathsHostingWebPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

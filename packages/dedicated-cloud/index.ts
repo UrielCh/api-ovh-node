@@ -3049,27 +3049,27 @@ export class ApiDedicatedCloud extends OvhWrapper {
   Private Cloud
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}', params: {serviceName: string, body: DedicatedCloudDedicatedCloud}): Promise<DedicatedCloudTask>;
+  public put(path: '/dedicatedCloud/{serviceName}', params: {serviceName: string, advancedSecurity?: boolean, bandwidth?: string, billingType?: DedicatedCloudBillingTypeEnum, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: DedicatedCloudGenerationEnum, location?: string, managementInterface?: DedicatedCloudManagementInterfaceEnum, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: DedicatedCloudStateEnum, userAccessPolicy?: DedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: DedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: DedicatedCloudVersion, webInterfaceUrl?: string}): Promise<DedicatedCloudTask>;
   /**
   Network allowed to connect to the Private Cloud management interface
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', params: {serviceName: string, networkAccessId: number, body: DedicatedCloudAllowedNetwork}): Promise<DedicatedCloudTask>;
+  public put(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', params: {serviceName: string, networkAccessId: number, description?: string, network?: string, state?: DedicatedCloudAllowedNetworkStateEnum}): Promise<DedicatedCloudTask>;
   /**
   Private Cloud Datacenter
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', params: {serviceName: string, datacenterId: number, body: DedicatedCloudDatacenter}): Promise<DedicatedCloudTask>;
+  public put(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', params: {serviceName: string, datacenterId: number, commercialName?: DedicatedCloudCommercialNameEnum, commercialRangeName?: string, description?: string, horizonViewName?: string, isRemovable?: boolean, name?: string, version?: string}): Promise<DedicatedCloudTask>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Private Cloud User right
   Alter this object properties
   **/
-  public put(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}', params: {serviceName: string, userId: number, rightId: number, body: DedicatedCloudRight}): Promise<DedicatedCloudTask>;
+  public put(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}', params: {serviceName: string, userId: number, rightId: number, canAddRessource?: boolean, datacenterId?: number, networkRole?: DedicatedCloudRightNetworkRoleEnum, right?: DedicatedCloudRightRightEnum, vmNetworkRole?: DedicatedCloudRightVmNetworkRoleEnum}): Promise<DedicatedCloudTask>;
   public put(path: PathsDedicatedCloudPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

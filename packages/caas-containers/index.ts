@@ -598,22 +598,22 @@ export class ApiCaasContainers extends OvhWrapper {
   Missing description
   Update the framework access password
   **/
-  public put(path: '/caas/containers/{serviceName}/frameworks/{frameworkId}/password', params: {frameworkId: string, serviceName: string, body: DockerFrameworkPassword}): Promise<void>;
+  public put(path: '/caas/containers/{serviceName}/frameworks/{frameworkId}/password', params: {frameworkId: string, serviceName: string, password?: string}): Promise<void>;
   /**
   Missing description
   Update the registry credentials.
   **/
-  public put(path: '/caas/containers/{serviceName}/registry/credentials/{credentialsId}', params: {credentialsId: string, serviceName: string, body: DockerStackInputCustomSsl}): Promise<DockerStackRegistryCredentials>;
+  public put(path: '/caas/containers/{serviceName}/registry/credentials/{credentialsId}', params: {credentialsId: string, serviceName: string, certificate?: string, key?: string}): Promise<DockerStackRegistryCredentials>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/caas/containers/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/caas/containers/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Missing description
   Update the custom SSL certificate and private
   **/
-  public put(path: '/caas/containers/{serviceName}/ssl', params: {serviceName: string, body: DockerStackInputCustomSsl}): Promise<DockerStackCustomSslMessage>;
+  public put(path: '/caas/containers/{serviceName}/ssl', params: {serviceName: string, certificate?: string, key?: string}): Promise<DockerStackCustomSslMessage>;
   public put(path: PathsCaasContainersPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -626,7 +626,7 @@ export class ApiCaasContainers extends OvhWrapper {
   Missing description
   Associate the stack with some credentials to an authenticated registry.
   **/
-  public post(path: '/caas/containers/{serviceName}/registry/credentials', params: {serviceName: string, body: DockerStackInputCustomSsl}): Promise<DockerStackRegistryCredentials>;
+  public post(path: '/caas/containers/{serviceName}/registry/credentials', params: {serviceName: string, certificate?: string, key?: string}): Promise<DockerStackRegistryCredentials>;
   public post(path: PathsCaasContainersPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

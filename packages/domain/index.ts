@@ -1648,37 +1648,37 @@ export class ApiDomain extends OvhWrapper {
   Manage DynHost login
   Alter this object properties
   **/
-  public put(path: '/domain/zone/{zoneName}/dynHost/login/{login}', params: {zoneName: string, login: string, body: DomainZoneDynHostLogin}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/dynHost/login/{login}', params: {zoneName: string, login: string, subDomain?: string, zone?: string}): Promise<void>;
   /**
   DynHost record
   Alter this object properties
   **/
-  public put(path: '/domain/zone/{zoneName}/dynHost/record/{id}', params: {zoneName: string, id: number, body: DomainZoneDynHostRecord}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/dynHost/record/{id}', params: {zoneName: string, id: number, ip?: string, subDomain?: string, ttl?: number, zone?: string}): Promise<void>;
   /**
   Zone resource records
   Alter this object properties
   **/
-  public put(path: '/domain/zone/{zoneName}/record/{id}', params: {zoneName: string, id: number, body: DomainZoneRecord}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/record/{id}', params: {zoneName: string, id: number, fieldType?: ZoneNamedResolutionFieldTypeEnum, subDomain?: string, target?: string, ttl?: number, zone?: string}): Promise<void>;
   /**
   Redirection
   Alter this object properties
   **/
-  public put(path: '/domain/zone/{zoneName}/redirection/{id}', params: {zoneName: string, id: number, body: DomainZoneRedirection}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/redirection/{id}', params: {zoneName: string, id: number, description?: string, keywords?: string, subDomain?: string, target?: string, title?: string, type?: ZoneRedirectionTypeEnum, zone?: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/domain/zone/{zoneName}/serviceInfos', params: {zoneName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/serviceInfos', params: {zoneName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Zone Start Of Authority
   Alter this object properties
   **/
-  public put(path: '/domain/zone/{zoneName}/soa', params: {zoneName: string, body: DomainZoneSoa}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/soa', params: {zoneName: string, email?: string, expire?: number, nxDomainTtl?: number, refresh?: number, serial?: number, server?: string, ttl?: number}): Promise<void>;
   /**
   Domain name administration
   Alter this object properties
   **/
-  public put(path: '/domain/{serviceName}', params: {serviceName: string, body: DomainDomain}): Promise<void>;
+  public put(path: '/domain/{serviceName}', params: {serviceName: string, dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: DomainDomainNsTypeEnum, offer?: DomainOfferEnum, owoSupported?: boolean, parentService?: DomainParentService, transferLockStatus?: DomainDomainLockStatusEnum, whoisOwner?: string}): Promise<void>;
   /**
   Missing description
   Save a new obfuscated emails configuration
@@ -1693,7 +1693,7 @@ export class ApiDomain extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/domain/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/domain/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsDomainPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

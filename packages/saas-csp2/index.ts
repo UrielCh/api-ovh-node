@@ -443,12 +443,12 @@ export class ApiSaasCsp2 extends OvhWrapper {
   Office tenant
   Alter this object properties
   **/
-  public put(path: '/saas/csp2/{serviceName}', params: {serviceName: string, body: SaasCsp2OfficeTenant}): Promise<void>;
+  public put(path: '/saas/csp2/{serviceName}', params: {serviceName: string, address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, status?: SaasCsp2ServiceStateEnum, zipCode?: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/saas/csp2/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/saas/csp2/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsSaasCsp2PUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

@@ -582,17 +582,17 @@ export class ApiDedicatedNasha extends OvhWrapper {
   Storage nas HA
   Alter this object properties
   **/
-  public put(path: '/dedicated/nasha/{serviceName}', params: {serviceName: string, body: DedicatedNashaStorage}): Promise<void>;
+  public put(path: '/dedicated/nasha/{serviceName}', params: {serviceName: string, canCreatePartition?: boolean, customName?: string, datacenter?: string, ip?: string, monitored?: boolean, zpoolCapacity?: number, zpoolSize?: number}): Promise<void>;
   /**
   Storage zpool partition
   Alter this object properties
   **/
-  public put(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string, body: DedicatedNashaPartition}): Promise<void>;
+  public put(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string, partitionCapacity?: number, protocol?: DedicatedStorageProtocolEnum, size?: number, usedBySnapshots?: number}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicated/nasha/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/dedicated/nasha/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsDedicatedNashaPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

@@ -501,7 +501,7 @@ export class ApiService extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/service/{serviceId}', params: {serviceId: number, body: ServiceListService}): Promise<void>;
+  public put(path: '/service/{serviceId}', params: {serviceId: number, creationDate?: string, details?: ComplexTypeSafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: ServicePlan, quantity?: number, renew?: ServiceRenew, resource?: ServiceResource, route?: ServiceRoute, state?: ServiceBillingStateEnum}): Promise<void>;
   public put(path: PathsServicePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

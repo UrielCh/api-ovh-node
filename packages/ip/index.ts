@@ -1458,47 +1458,47 @@ export class ApiIp extends OvhWrapper {
   Backends attached to your IP load balancing
   Alter this object properties
   **/
-  public put(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', params: {serviceName: string, backend: string, body: IpLoadBalancingBackendIp}): Promise<void>;
+  public put(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', params: {serviceName: string, backend: string, mainBackendIp?: string, probe?: IpLoadBalancingBackendProbeEnum, weight?: number, zone?: IpLoadBalancingZoneEnum}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/ip/loadBalancing/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/ip/loadBalancing/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Your IP linked to service
   Alter this object properties
   **/
-  public put(path: '/ip/service/{serviceName}', params: {serviceName: string, body: IpServiceIp}): Promise<void>;
+  public put(path: '/ip/service/{serviceName}', params: {serviceName: string, canBeTerminated?: boolean, country?: CoreTypesCountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: IpRoutedTo, type?: IpIpTypeEnum}): Promise<void>;
   /**
   Your IP
   Alter this object properties
   **/
-  public put(path: '/ip/{ip}', params: {ip: string, body: IpIp}): Promise<void>;
+  public put(path: '/ip/{ip}', params: {ip: string, canBeTerminated?: boolean, country?: CoreTypesCountryEnum, description?: string, organisationId?: string, routedTo?: IpRoutedTo, type?: IpIpTypeEnum}): Promise<void>;
   /**
   Your IP on firewall
   Alter this object properties
   **/
-  public put(path: '/ip/{ip}/firewall/{ipOnFirewall}', params: {ip: string, ipOnFirewall: string, body: IpFirewallIp}): Promise<void>;
+  public put(path: '/ip/{ip}/firewall/{ipOnFirewall}', params: {ip: string, ipOnFirewall: string, enabled?: boolean, state?: IpFirewallStateEnum}): Promise<void>;
   /**
   GAME Anti-DDoS
   Alter this object properties
   **/
-  public put(path: '/ip/{ip}/game/{ipOnGame}', params: {ip: string, ipOnGame: string, body: IpGameMitigation}): Promise<void>;
+  public put(path: '/ip/{ip}/game/{ipOnGame}', params: {ip: string, ipOnGame: string, firewallModeEnabled?: boolean, state?: IpGameMitigationStateEnum}): Promise<void>;
   /**
   Your IP on mitigation
   Alter this object properties
   **/
-  public put(path: '/ip/{ip}/mitigation/{ipOnMitigation}', params: {ip: string, ipOnMitigation: string, body: IpMitigationIp}): Promise<void>;
+  public put(path: '/ip/{ip}/mitigation/{ipOnMitigation}', params: {ip: string, ipOnMitigation: string, auto?: boolean, permanent?: boolean, state?: IpMitigationStateEnum}): Promise<void>;
   /**
   Mitigation profile for your ip
   Alter this object properties
   **/
-  public put(path: '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}', params: {ip: string, ipMitigationProfile: string, body: IpMitigationProfile}): Promise<void>;
+  public put(path: '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}', params: {ip: string, ipMitigationProfile: string, autoMitigationTimeOut?: IpMitigationProfileAutoMitigationTimeOutEnum, state?: IpMitigationProfileStateEnum}): Promise<void>;
   /**
   IP block RIPE informations
   Alter this object properties
   **/
-  public put(path: '/ip/{ip}/ripe', params: {ip: string, body: IpRipeInfos}): Promise<void>;
+  public put(path: '/ip/{ip}/ripe', params: {ip: string, description?: string, netname?: string}): Promise<void>;
   public put(path: PathsIpPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -1526,7 +1526,7 @@ export class ApiIp extends OvhWrapper {
   List the portsRedirection objects
   Add a new port redirection
   **/
-  public post(path: '/ip/loadBalancing/{serviceName}/portsRedirection', params: {serviceName: string, body: IpLoadBalancingIpLoadBalancingPort}): Promise<IpLoadBalancingTask>;
+  public post(path: '/ip/loadBalancing/{serviceName}/portsRedirection', params: {serviceName: string, dstPort?: number, srcPort?: IpLoadBalancingAdditionalPortEnum}): Promise<IpLoadBalancingTask>;
   /**
   restoreSsl operations
   Restore OVH' ssl certificate on your IP load balancing. Ssl option is needed to use this url. (A DCV mail will be sent to postmaster@your-domain.abc)

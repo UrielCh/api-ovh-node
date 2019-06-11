@@ -1284,32 +1284,32 @@ export class ApiEmailDomain extends OvhWrapper {
   Account List
   Alter this object properties
   **/
-  public put(path: '/email/domain/delegatedAccount/{email}', params: {email: string, body: EmailDomainAccountDelegated}): Promise<void>;
+  public put(path: '/email/domain/delegatedAccount/{email}', params: {email: string, accountName?: string, allowedAccountSize?: number[], description?: string, domain?: string, isBlocked?: boolean, size?: number}): Promise<void>;
   /**
   Responder of account
   Alter this object properties
   **/
-  public put(path: '/email/domain/delegatedAccount/{email}/responder', params: {email: string, body: EmailDomainResponderAccount}): Promise<void>;
+  public put(path: '/email/domain/delegatedAccount/{email}/responder', params: {email: string, account?: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string}): Promise<void>;
   /**
   Account List
   Alter this object properties
   **/
-  public put(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string, body: EmailDomainAccount}): Promise<void>;
+  public put(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string, description?: string, email?: string, isBlocked?: boolean, size?: number}): Promise<void>;
   /**
   Mailing List
   Alter this object properties
   **/
-  public put(path: '/email/domain/{domain}/mailingList/{name}', params: {domain: string, name: string, body: EmailDomainMailingList}): Promise<void>;
+  public put(path: '/email/domain/{domain}/mailingList/{name}', params: {domain: string, name: string, id?: number, language?: DomainDomainMlLanguageEnum, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options?: DomainDomainMlOptionsStruct, ownerEmail?: string, replyTo?: string}): Promise<void>;
   /**
   Responder
   Alter this object properties
   **/
-  public put(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string, body: EmailDomainResponder}): Promise<void>;
+  public put(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/email/domain/{domain}/serviceInfos', params: {domain: string, body: ServicesService}): Promise<void>;
+  public put(path: '/email/domain/{domain}/serviceInfos', params: {domain: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsEmailDomainPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

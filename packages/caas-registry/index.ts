@@ -491,12 +491,12 @@ export class ApiCaasRegistry extends OvhWrapper {
   Missing description
   Update image
   **/
-  public put(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}', params: {imageId: string, namespaceId: string, serviceName: string, body: RegistryInputImage}): Promise<RegistryImage>;
+  public put(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}', params: {imageId: string, namespaceId: string, serviceName: string, public?: boolean}): Promise<RegistryImage>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/caas/registry/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/caas/registry/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsCaasRegistryPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
@@ -509,22 +509,22 @@ export class ApiCaasRegistry extends OvhWrapper {
   Missing description
   Create namespace
   **/
-  public post(path: '/caas/registry/{serviceName}/namespaces', params: {serviceName: string, body: RegistryInputNamespace}): Promise<RegistryNamespace>;
+  public post(path: '/caas/registry/{serviceName}/namespaces', params: {serviceName: string, name?: string}): Promise<RegistryNamespace>;
   /**
   Missing description
   Create image permissions
   **/
-  public post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions', params: {imageId: string, namespaceId: string, serviceName: string, body: RegistryInputPermissions}): Promise<RegistryPermissions>;
+  public post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions', params: {imageId: string, namespaceId: string, serviceName: string, canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: RegistryPermissionStatus, userId?: string}): Promise<RegistryPermissions>;
   /**
   Missing description
   Create namespace permissions
   **/
-  public post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions', params: {namespaceId: string, serviceName: string, body: RegistryInputPermissions}): Promise<RegistryPermissions>;
+  public post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions', params: {namespaceId: string, serviceName: string, canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: RegistryPermissionStatus, userId?: string}): Promise<RegistryPermissions>;
   /**
   Missing description
   Create user
   **/
-  public post(path: '/caas/registry/{serviceName}/users', params: {serviceName: string, body: RegistryInputUser}): Promise<RegistryUser>;
+  public post(path: '/caas/registry/{serviceName}/users', params: {serviceName: string, description?: string}): Promise<RegistryUser>;
   /**
   Missing description
   Update user password

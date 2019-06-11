@@ -244,7 +244,7 @@ export class ApiSsl extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/ssl/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/ssl/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsSslPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

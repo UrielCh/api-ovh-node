@@ -506,17 +506,17 @@ export class ApiClusterHadoop extends OvhWrapper {
   ACL for allowing ip blocks to access to your cluster
   Alter this object properties
   **/
-  public put(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {serviceName: string, block: string, body: ClusterHadoopNetworkAcl}): Promise<void>;
+  public put(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {serviceName: string, block: string, description?: string, state?: ClusterHadoopNetworkAclStateEnum}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cluster/hadoop/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/cluster/hadoop/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   User allowed to access interfaces on your cluster
   Alter this object properties
   **/
-  public put(path: '/cluster/hadoop/{serviceName}/user/{username}', params: {serviceName: string, username: string, body: ClusterHadoopUser}): Promise<void>;
+  public put(path: '/cluster/hadoop/{serviceName}/user/{username}', params: {serviceName: string, username: string, clouderaManager?: boolean, httpFrontend?: boolean, hue?: boolean}): Promise<void>;
   public put(path: PathsClusterHadoopPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

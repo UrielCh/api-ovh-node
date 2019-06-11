@@ -468,17 +468,17 @@ export class ApiCdnDedicated extends OvhWrapper {
   Domain on CDN
   Alter this object properties
   **/
-  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string, body: CdnanycastDomain}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string, cacheRuleUse?: number, cname?: string, status?: CdnanycastDomainStatusEnum, type?: CdnanycastDomainTypeEnum}): Promise<void>;
   /**
   CacheRules for a domain
   Alter this object properties
   **/
-  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: number, body: CdnanycastCacheRule}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: number, cacheType?: CdnanycastCacheRuleCacheTypeEnum, fileMatch?: string, fileType?: CdnanycastCacheRuleFileTypeEnum, status?: CdnanycastCacheRuleStatusEnum, ttl?: number}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/cdn/dedicated/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsCdnDedicatedPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

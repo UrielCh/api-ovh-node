@@ -3681,67 +3681,67 @@ export class ApiXdsl extends OvhWrapper {
   XDSL Email Pro
   Alter this object properties
   **/
-  public put(path: '/xdsl/email/pro/{email}', params: {email: string, body: XdslXdslEmailPro}): Promise<void>;
+  public put(path: '/xdsl/email/pro/{email}', params: {email: string, currentUsage?: ComplexTypeUnitAndValue<number>, displayName?: string, domain?: string, firstName?: string, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, login?: string, passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: ComplexTypeUnitAndValue<number>, state?: EmailProObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/xdsl/spare/{spare}/serviceInfos', params: {spare: string, body: ServicesService}): Promise<void>;
+  public put(path: '/xdsl/spare/{spare}/serviceInfos', params: {spare: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Modem Template
   Alter this object properties
   **/
-  public put(path: '/xdsl/templateModem/{name}', params: {name: string, body: XdslTemplateModem}): Promise<void>;
+  public put(path: '/xdsl/templateModem/{name}', params: {name: string, DHCP?: XdslTemplateModemDHCP[], LAN?: XdslTemplateModemLAN[], WLAN?: XdslTemplateModemWLAN[], capabilities?: string, creationDate?: string, dmzIP?: string, mtuSize?: XdslXdslModemConfigMTUSizeEnum, parametersToIgnore?: XdslTemplateModemParametersToIgnore, portMapping?: XdslTemplateModemPortMapping[]}): Promise<void>;
   /**
   XDSL Access
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}', params: {serviceName: string, body: XdslAccess}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}', params: {serviceName: string, accessName?: string, accessType?: XdslDslTypeEnum, address?: XdslAddressDetail, capabilities?: XdslAccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, pairsNumber?: number, role?: XdslAccessRoleEnum, status?: XdslAccessStatusEnum}): Promise<void>;
   /**
   Modem
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/modem', params: {serviceName: string, body: XdslModem}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem', params: {serviceName: string, brandName?: string, capabilities?: XdslModemCapabilities, dmzIP?: string, easyFirewallLevel?: XdslXdslModemConfigEasyFirewallLevelEnum, ipv6Support?: boolean, isBridged?: boolean, lastCwmpRequestDate?: string, macAddress?: string, managedByOvh?: boolean, model?: string, mtuSize?: XdslXdslModemConfigMTUSizeEnum}): Promise<void>;
   /**
   LAN Configuration of the Modem
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}', params: {serviceName: string, lanName: string, body: XdslLAN}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}', params: {serviceName: string, lanName: string, IPAddress?: string, addressingType?: XdslXdslModemConfigAddressingTypeEnum, subnetMask?: string, taskId?: number}): Promise<void>;
   /**
   DHCP Configuration of the Modem
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}', params: {serviceName: string, lanName: string, dhcpName: string, body: XdslDHCP}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}', params: {serviceName: string, lanName: string, dhcpName: string, defaultGateway?: string, domainName?: string, endAddress?: string, leaseTime?: number, primaryDNS?: string, secondaryDNS?: string, serverEnabled?: boolean, startAddress?: string, subnetMask?: string, taskId?: number}): Promise<void>;
   /**
   DHCP Static Address
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', params: {serviceName: string, lanName: string, dhcpName: string, MACAddress: string, body: XdslDHCPStaticAddress}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', params: {serviceName: string, lanName: string, dhcpName: string, MACAddress: string, IPAddress?: string, name?: string, taskId?: number}): Promise<void>;
   /**
   Port Mappings
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/modem/portMappings/{name}', params: {serviceName: string, name: string, body: XdslPortMapping}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/portMappings/{name}', params: {serviceName: string, name: string, allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart?: number, id?: number, internalClient?: string, internalPort?: number, protocol?: XdslXdslModemConfigProtocolTypeEnum, taskId?: number}): Promise<void>;
   /**
   WLAN Configuration of the Modem
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/modem/wifi/{wifiName}', params: {serviceName: string, wifiName: string, body: XdslWLAN}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/wifi/{wifiName}', params: {serviceName: string, wifiName: string, SSID?: string, SSIDAdvertisementEnabled?: boolean, bandSteering?: boolean, channel?: number, channelMode?: XdslXdslModemConfigChannelModeEnum, enabled?: boolean, frequency?: XdslXdslModemConfigFrequencyEnum, guest?: boolean, securityKey?: string, securityType?: XdslXdslModemConfigSecurityTypeEnum, taskId?: number}): Promise<void>;
   /**
   Defines where and how the notifications will be sent
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', params: {serviceName: string, id: number, body: XdslMonitoringNotification}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', params: {serviceName: string, id: number, allowIncident?: boolean, downThreshold?: number, email?: string, enabled?: boolean, frequency?: XdslMonitoringNotificationsFrequencyEnum, phone?: string, smsAccount?: string, type?: XdslMonitoringNotificationsTypeEnum}): Promise<void>;
   /**
   Current Return Merchandise Authorisation
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/rma/{id}', params: {serviceName: string, id: string, body: TelephonyRma}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/rma/{id}', params: {serviceName: string, id: string, cancellable?: boolean, creationDatetime?: string, equipmentReference?: string, newMerchandise?: string, offerTypeNew?: TelephonyRmaOfferTypeEnum, offerTypeOld?: TelephonyRmaOfferTypeEnum, process?: TelephonyRmaReplaceTypeEnum, receptionDatetime?: string, shippingContact?: TelephonyContact, status?: TelephonyRmaStatusEnum, steps?: TelephonyRmaStep[], terminationDatetime?: string, type?: TelephonyRmaTypeEnum}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/xdsl/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsXdslPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

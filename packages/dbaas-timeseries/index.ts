@@ -504,7 +504,7 @@ export class ApiDbaasTimeseries extends OvhWrapper {
   Timeseries project
   Alter this object properties
   **/
-  public put(path: '/dbaas/timeseries/{serviceName}', params: {serviceName: string, body: TimeseriesProject}): Promise<void>;
+  public put(path: '/dbaas/timeseries/{serviceName}', params: {serviceName: string, description?: string, displayName?: string, offerId?: string, regionId?: string, status?: TimeseriesStatusTypeEnum}): Promise<void>;
   /**
   Key
   Create a key
@@ -514,7 +514,7 @@ export class ApiDbaasTimeseries extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dbaas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/dbaas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsDbaasTimeseriesPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

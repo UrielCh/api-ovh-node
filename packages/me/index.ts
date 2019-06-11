@@ -4928,7 +4928,7 @@ export class ApiMe extends OvhWrapper {
   List of all IP Restrictions
   Alter this object properties
   **/
-  public put(path: '/me/accessRestriction/ip/{id}', params: {id: number, body: NichandleIpRestriction}): Promise<void>;
+  public put(path: '/me/accessRestriction/ip/{id}', params: {id: number, ip?: string, rule?: NichandleAccessRestrictionIpRestrictionRuleEnum, warning?: boolean}): Promise<void>;
   /**
   IP Restriction default rule
   Alter this object properties
@@ -4938,17 +4938,17 @@ export class ApiMe extends OvhWrapper {
   Sms Two-Factor Authentication
   Alter this object properties
   **/
-  public put(path: '/me/accessRestriction/sms/{id}', params: {id: number, body: NichandleAccessRestrictionSmsAccount}): Promise<void>;
+  public put(path: '/me/accessRestriction/sms/{id}', params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, phoneNumber?: string, status?: NichandleAccessRestrictionSmsStatusEnum}): Promise<void>;
   /**
   TOTP Two-Factor Authentication
   Alter this object properties
   **/
-  public put(path: '/me/accessRestriction/totp/{id}', params: {id: number, body: NichandleAccessRestrictionTOTPAccount}): Promise<void>;
+  public put(path: '/me/accessRestriction/totp/{id}', params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, status?: NichandleAccessRestrictionTOTPStatusEnum}): Promise<void>;
   /**
   U2F Two-Factor Authentication
   Alter this object properties
   **/
-  public put(path: '/me/accessRestriction/u2f/{id}', params: {id: number, body: NichandleAccessRestrictionU2FAccount}): Promise<void>;
+  public put(path: '/me/accessRestriction/u2f/{id}', params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, status?: NichandleAccessRestrictionU2FStatusEnum}): Promise<void>;
   /**
   Auto renewal information
   Alter this object properties
@@ -4968,7 +4968,7 @@ export class ApiMe extends OvhWrapper {
   List of documents added on your account
   Alter this object properties
   **/
-  public put(path: '/me/document/{id}', params: {id: string, body: NichandleDocumentDocument}): Promise<void>;
+  public put(path: '/me/document/{id}', params: {id: string, creationDate?: string, expirationDate?: string, getUrl?: string, name?: string, putUrl?: string, size?: number, tags?: ComplexTypeSafeKeyValue<string>[], validationDate?: string}): Promise<void>;
   /**
   Balance of the fidelity account
   Alter this object properties
@@ -4988,32 +4988,32 @@ export class ApiMe extends OvhWrapper {
   Available installation templates
   Alter this object properties
   **/
-  public put(path: '/me/installationTemplate/{templateName}', params: {templateName: string, body: DedicatedInstallationTemplateTemplates}): Promise<void>;
+  public put(path: '/me/installationTemplate/{templateName}', params: {templateName: string, availableLanguages?: DedicatedTemplateOsLanguageEnum[], beta?: boolean, bitFormat?: DedicatedServerBitFormatEnum, category?: DedicatedTemplateOsUsageEnum, customization?: DedicatedTemplateOsProperties, defaultLanguage?: DedicatedTemplateOsLanguageEnum, deprecated?: boolean, description?: string, distribution?: string, family?: DedicatedTemplateOsTypeEnum, filesystems?: DedicatedTemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, lvmReady?: boolean, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: DedicatedServerSupportsUEFIEnum}): Promise<void>;
   /**
   Partitioning schemes available on this template
   Alter this object properties
   **/
-  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}', params: {templateName: string, schemeName: string, body: DedicatedInstallationTemplateTemplatePartitioningSchemes}): Promise<void>;
+  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}', params: {templateName: string, schemeName: string, name?: string, priority?: number}): Promise<void>;
   /**
   Hardware RAID defined in this partitioning scheme
   Alter this object properties
   **/
-  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', params: {templateName: string, schemeName: string, name: string, body: DedicatedInstallationTemplateHardwareRaid}): Promise<void>;
+  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', params: {templateName: string, schemeName: string, name: string, disks?: string[], mode?: DedicatedTemplateOsHardwareRaidEnum, step?: number}): Promise<void>;
   /**
    Partitions defined in this partitioning scheme
   Alter this object properties
   **/
-  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', params: {templateName: string, schemeName: string, mountpoint: string, body: DedicatedInstallationTemplateTemplatePartitions}): Promise<void>;
+  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', params: {templateName: string, schemeName: string, mountpoint: string, filesystem?: DedicatedTemplateOsFileSystemEnum, order?: number, raid?: DedicatedServerPartitionRaidEnum, size?: ComplexTypeUnitAndValue<number>, type?: DedicatedTemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
   /**
   Details about an IP block organisation
   Alter this object properties
   **/
-  public put(path: '/me/ipOrganisation/{organisationId}', params: {organisationId: string, body: NichandleIpv4Org}): Promise<void>;
+  public put(path: '/me/ipOrganisation/{organisationId}', params: {organisationId: string, abuse_mailbox?: string, address?: string, city?: string, country?: NichandleCountryEnum, firstname?: string, lastname?: string, phone?: string, registry?: NichandleIpRegistryEnum, state?: string, zip?: string}): Promise<void>;
   /**
   Details about an OVH account
   Alter this object properties
   **/
-  public put(path: '/me/ovhAccount/{ovhAccountId}', params: {ovhAccountId: string, body: BillingOvhAccount}): Promise<void>;
+  public put(path: '/me/ovhAccount/{ovhAccountId}', params: {ovhAccountId: string, alertThreshold?: number, balance?: OrderPrice, canBeCredited?: boolean, isActive?: boolean, lastUpdate?: string, openDate?: string}): Promise<void>;
   /**
   Manage payment method
   Edit payment method
@@ -5023,42 +5023,42 @@ export class ApiMe extends OvhWrapper {
   SEPA bank account info
   Alter this object properties
   **/
-  public put(path: '/me/paymentMean/bankAccount/{id}', params: {id: number, body: BillingBankAccount}): Promise<void>;
+  public put(path: '/me/paymentMean/bankAccount/{id}', params: {id: number, bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: BillingBankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string}): Promise<void>;
   /**
   Credit card informations
   Alter this object properties
   **/
-  public put(path: '/me/paymentMean/creditCard/{id}', params: {id: number, body: BillingCreditCard}): Promise<void>;
+  public put(path: '/me/paymentMean/creditCard/{id}', params: {id: number, defaultPaymentMean?: boolean, description?: string, expirationDate?: string, number?: string, state?: BillingCreditCardStateEnum, threeDsValidated?: boolean, type?: string}): Promise<void>;
   /**
   Deferred payment account info
   Alter this object properties
   **/
-  public put(path: '/me/paymentMean/deferredPaymentAccount/{id}', params: {id: number, body: BillingDeferredPaymentAccount}): Promise<void>;
+  public put(path: '/me/paymentMean/deferredPaymentAccount/{id}', params: {id: number, creationDate?: string, defaultPaymentMean?: boolean, description?: string, label?: string, state?: BillingDeferredPaymentAccountStatusEnum}): Promise<void>;
   /**
   Paypal account info
   Alter this object properties
   **/
-  public put(path: '/me/paymentMean/paypal/{id}', params: {id: number, body: BillingPaypal}): Promise<void>;
+  public put(path: '/me/paymentMean/paypal/{id}', params: {id: number, agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, state?: BillingPaypalStateEnum}): Promise<void>;
   /**
   Customer public SSH key, can be used for rescue netboot or server access after reinstallation
   Alter this object properties
   **/
-  public put(path: '/me/sshKey/{keyName}', params: {keyName: string, body: NichandleSshKey}): Promise<void>;
+  public put(path: '/me/sshKey/{keyName}', params: {keyName: string, default?: boolean, key?: string}): Promise<void>;
   /**
   Sub Account
   Alter this object properties
   **/
-  public put(path: '/me/subAccount/{id}', params: {id: number, body: NichandleSubAccount}): Promise<void>;
+  public put(path: '/me/subAccount/{id}', params: {id: number, creationDate?: string, description?: string}): Promise<void>;
   /**
   List of all OVH things you can subscribe to
   Alter this object properties
   **/
-  public put(path: '/me/subscription/{subscriptionType}', params: {subscriptionType: string, body: NichandleSubscription}): Promise<void>;
+  public put(path: '/me/subscription/{subscriptionType}', params: {subscriptionType: string, registered?: boolean, type?: string}): Promise<void>;
   /**
   Domain operation argument
   Alter this object properties
   **/
-  public put(path: '/me/task/domain/{id}/argument/{key}', params: {id: number, key: string, body: NichandleDomainTaskArgument}): Promise<void>;
+  public put(path: '/me/task/domain/{id}/argument/{key}', params: {id: number, key: string, acceptedFormats?: DomainDocumentFormatsEnum[], acceptedValues?: string[], description?: string, fields?: XanderContactFieldEnum[], maximumSize?: number, minimumSize?: number, readOnly?: boolean, template?: string, type?: string, value?: string}): Promise<void>;
   public put(path: PathsMePUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

@@ -381,12 +381,12 @@ export class ApiLicenseVirtuozzo extends OvhWrapper {
   Your Virtuozzo license
   Alter this object properties
   **/
-  public put(path: '/license/virtuozzo/{serviceName}', params: {serviceName: string, body: LicenseVirtuozzoVirtuozzo}): Promise<void>;
+  public put(path: '/license/virtuozzo/{serviceName}', params: {serviceName: string, containerNumber?: LicenseVirtuozzoContainerNumberEnum, creation?: string, deleteAtExpiration?: boolean, domain?: string, informationKey?: string, ip?: string, licenseId?: string, productKey?: string, status?: LicenseStateEnum, version?: LicenseVirtuozzoVersionEnum}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/virtuozzo/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/license/virtuozzo/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsLicenseVirtuozzoPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

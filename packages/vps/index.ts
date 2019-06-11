@@ -1139,37 +1139,37 @@ export class ApiVps extends OvhWrapper {
   VPS Virtual Machine
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}', params: {serviceName: string, body: VpsVPS}): Promise<void>;
+  public put(path: '/vps/{serviceName}', params: {serviceName: string, cluster?: string, displayName?: string, keymap?: VpsVpsKeymapEnum, memoryLimit?: number, model?: VpsModel, monitoringIpBlocks?: string[], name?: string, netbootMode?: VpsVpsNetbootEnum, offerType?: VpsVpsOfferEnum, slaMonitoring?: boolean, state?: VpsVpsStateEnum, vcore?: number, zone?: string}): Promise<void>;
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}/backupftp/access/{ipBlock}', params: {serviceName: string, ipBlock: string, body: DedicatedServerBackupFtpAcl}): Promise<void>;
+  public put(path: '/vps/{serviceName}/backupftp/access/{ipBlock}', params: {serviceName: string, ipBlock: string, cifs?: boolean, ftp?: boolean, isApplied?: boolean, lastUpdate?: string, nfs?: boolean}): Promise<void>;
   /**
   Information about a disk of a VPS Virtual Machine
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}/disks/{id}', params: {serviceName: string, id: number, body: VpsDisk}): Promise<void>;
+  public put(path: '/vps/{serviceName}/disks/{id}', params: {serviceName: string, id: number, bandwidthLimit?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: VpsDiskStateEnum, type?: VpsDiskTypeEnum}): Promise<void>;
   /**
   Information about an IP address for a VPS Virtual Machine
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}/ips/{ipAddress}', params: {serviceName: string, ipAddress: string, body: VpsIp}): Promise<void>;
+  public put(path: '/vps/{serviceName}/ips/{ipAddress}', params: {serviceName: string, ipAddress: string, gateway?: string, geolocation?: VpsIpGeolocationEnum, macAddress?: string, reverse?: string, type?: VpsIpTypeEnum, version?: CoreTypesIpVersionEnum}): Promise<void>;
   /**
   Secondary dns infos
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string, body: SecondaryDnsSecondaryDNS}): Promise<void>;
+  public put(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string, creationDate?: string, dns?: string, ipMaster?: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/vps/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Information about the snapshot of a VPS Virtual Machine
   Alter this object properties
   **/
-  public put(path: '/vps/{serviceName}/snapshot', params: {serviceName: string, body: VpsSnapshot}): Promise<void>;
+  public put(path: '/vps/{serviceName}/snapshot', params: {serviceName: string, creationDate?: string, description?: string}): Promise<void>;
   public put(path: PathsVpsPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

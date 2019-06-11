@@ -1502,12 +1502,12 @@ export class ApiPackXdsl extends OvhWrapper {
   Pack of xDSL services
   Alter this object properties
   **/
-  public put(path: '/pack/xdsl/{packName}', params: {packName: string, body: PackXdslPackAdsl}): Promise<void>;
+  public put(path: '/pack/xdsl/{packName}', params: {packName: string, capabilities?: PackXdslPackCapabilities, description?: string, offerDescription?: string, offerPrice?: OrderPrice}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/pack/xdsl/{packName}/serviceInfos', params: {packName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/pack/xdsl/{packName}/serviceInfos', params: {packName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsPackXdslPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

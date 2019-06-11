@@ -3355,52 +3355,52 @@ export class ApiDedicatedServer extends OvhWrapper {
   Server informations
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}', params: {serviceName: string, body: DedicatedServerDedicated}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}', params: {serviceName: string, bootId?: number, commercialRange?: string, datacenter?: DedicatedDatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: DedicatedServerStateEnum, supportLevel?: DedicatedServerSupportLevelEnum}): Promise<void>;
   /**
   Server bandwidth burst details
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/burst', params: {serviceName: string, body: DedicatedServerServerBurst}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/burst', params: {serviceName: string, capacity?: ComplexTypeUnitAndValue<number>, status?: DedicatedServerBurstStatusEnum}): Promise<void>;
   /**
   Backup Ftp ACL for this server and Backup Ftp
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string, body: DedicatedServerBackupFtpAcl}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string, cifs?: boolean, ftp?: boolean, isApplied?: boolean, lastUpdate?: string, nfs?: boolean}): Promise<void>;
   /**
   Firewall attached to this server
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/features/firewall', params: {serviceName: string, body: DedicatedServerFirewall}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/features/firewall', params: {serviceName: string, enabled?: boolean, firewall?: string, ip?: string, mode?: DedicatedServerFirewallModeEnum, model?: DedicatedServerFirewallModelEnum}): Promise<void>;
   /**
   Secondary dns infos
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string, body: SecondaryDnsSecondaryDNS}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string, creationDate?: string, dns?: string, ipMaster?: string}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Service monitoring details
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', params: {serviceName: string, monitoringId: number, body: DedicatedServerServiceMonitoring}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', params: {serviceName: string, monitoringId: number, challengeText?: string, enabled?: boolean, interval?: DedicatedServerMonitoringIntervalEnum, ip?: string, port?: number, protocol?: DedicatedServerMonitoringProtocolEnum, url?: string}): Promise<void>;
   /**
   Service monitoring Email alert
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', params: {serviceName: string, monitoringId: number, alertId: number, body: DedicatedServerEmailAlert}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', params: {serviceName: string, monitoringId: number, alertId: number, email?: string, enabled?: boolean, language?: DedicatedServerAlertLanguageEnum}): Promise<void>;
   /**
   Monitoring SMS alert details, This service is currently not supported for servers at BHS 
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', params: {serviceName: string, monitoringId: number, alertId: number, body: DedicatedServerSmsAlert}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', params: {serviceName: string, monitoringId: number, alertId: number, enabled?: boolean, fromHour?: number, language?: DedicatedServerAlertLanguageEnum, phoneNumberTo?: string, smsAccount?: string, toHour?: number}): Promise<void>;
   /**
   SPLA licenses management
   Alter this object properties
   **/
-  public put(path: '/dedicated/server/{serviceName}/spla/{id}', params: {serviceName: string, id: number, body: DedicatedServerSpla}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/spla/{id}', params: {serviceName: string, id: number, lastUpdate?: string, serialNumber?: string, status?: DedicatedServerSplaStatusEnum, type?: DedicatedServerSplaTypeEnum}): Promise<void>;
   public put(path: PathsDedicatedServerPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

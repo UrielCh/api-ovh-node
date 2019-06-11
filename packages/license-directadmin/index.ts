@@ -315,12 +315,12 @@ export class ApiLicenseDirectadmin extends OvhWrapper {
   Your DirectAdmin license
   Alter this object properties
   **/
-  public put(path: '/license/directadmin/{serviceName}', params: {serviceName: string, body: LicenseDirectadminDirectAdmin}): Promise<void>;
+  public put(path: '/license/directadmin/{serviceName}', params: {serviceName: string, clientId?: number, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, os?: LicenseDirectAdminOsEnum, status?: LicenseStateEnum, version?: LicenseDirectAdminVersionEnum}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/license/directadmin/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/license/directadmin/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsLicenseDirectadminPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

@@ -453,22 +453,22 @@ export class ApiRouter extends OvhWrapper {
   Network
   Alter this object properties
   **/
-  public put(path: '/router/{serviceName}/network/{ipNet}', params: {serviceName: string, ipNet: string, body: RouterNetwork}): Promise<void>;
+  public put(path: '/router/{serviceName}/network/{ipNet}', params: {serviceName: string, ipNet: string, creationDate?: string, description?: string, id?: number, status?: RouterIpStatusEnum, vlanTag?: number}): Promise<void>;
   /**
   Private Link to another service
   Alter this object properties
   **/
-  public put(path: '/router/{serviceName}/privateLink/{peerServiceName}', params: {serviceName: string, peerServiceName: string, body: RouterPrivateLink}): Promise<void>;
+  public put(path: '/router/{serviceName}/privateLink/{peerServiceName}', params: {serviceName: string, peerServiceName: string, creationDate?: string, id?: number, name?: string, status?: RouterStatusEnum}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/router/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/router/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Virtual Private Network
   Alter this object properties
   **/
-  public put(path: '/router/{serviceName}/vpn/{id}', params: {serviceName: string, id: number, body: RouterVpn}): Promise<void>;
+  public put(path: '/router/{serviceName}/vpn/{id}', params: {serviceName: string, id: number, clientIp?: string, clientPrivNet?: string, serverIp?: string, serverPrivNet?: string}): Promise<void>;
   public put(path: PathsRouterPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

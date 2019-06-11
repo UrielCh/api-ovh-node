@@ -335,17 +335,17 @@ export class ApiDedicatedNas extends OvhWrapper {
   Storage nas
   Alter this object properties
   **/
-  public put(path: '/dedicated/nas/{serviceName}', params: {serviceName: string, body: DedicatedNasNas}): Promise<void>;
+  public put(path: '/dedicated/nas/{serviceName}', params: {serviceName: string, canCreatePartition?: boolean, customName?: string, datacenter?: string, ip?: string, mountPath?: string, zpoolSize?: number}): Promise<void>;
   /**
   Storage partition
   Alter this object properties
   **/
-  public put(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string, body: DedicatedNasPartition}): Promise<void>;
+  public put(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string, protocol?: DedicatedStorageProtocolEnum, size?: number}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/dedicated/nas/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/dedicated/nas/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsDedicatedNasPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

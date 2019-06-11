@@ -1077,37 +1077,37 @@ export class ApiMsServices extends OvhWrapper {
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/msServices/sharepoint/{domain}/serviceInfos', params: {domain: string, body: ServicesService}): Promise<void>;
+  public put(path: '/msServices/sharepoint/{domain}/serviceInfos', params: {domain: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Active Directory organizational unit
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}', params: {serviceName: string, body: MsServicesActiveDirectoryOrganizationalUnit}): Promise<void>;
+  public put(path: '/msServices/{serviceName}', params: {serviceName: string, complexityEnabled?: boolean, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, minPasswordAge?: number, minPasswordLength?: number, name?: string, officeTenantServiceName?: string, state?: MsServicesServiceStateEnum, taskPendingId?: number}): Promise<void>;
   /**
   Active Directory Account
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}', params: {serviceName: string, userPrincipalName: string, body: MsServicesAccount}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}', params: {serviceName: string, userPrincipalName: string, SAMAccountName?: string, creationDate?: string, displayName?: string, firstName?: string, guid?: string, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, passwordLastUpdate?: string, state?: MsServicesObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
   Exchange mailbox information
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange', params: {serviceName: string, userPrincipalName: string, body: MsServicesExchangeInformation}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange', params: {serviceName: string, userPrincipalName: string, accountLicense?: MsServicesExchangeLicenceEnum, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL?: boolean, id?: number, litigation?: boolean, litigationPeriod?: number, mailingFilter?: MsServicesMailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: MsServicesRenewPeriodEnum, renewPeriod?: MsServicesRenewPeriodEnum, spamAndVirusConfiguration?: MsServicesSpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: MsServicesObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
   Sharepoint account information
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint', params: {serviceName: string, userPrincipalName: string, body: MsServicesSharepointInformation}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint', params: {serviceName: string, userPrincipalName: string, accessRights?: MsServicesSharepointAccountAccessRightsEnum, activeDirectoryAccountId?: number, configured?: boolean, currentUsage?: number, deleteAtExpiration?: boolean, id?: number, license?: MsServicesSharepointLicenseEnum, officeLicense?: boolean, quota?: number, state?: MsServicesObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
   Exchange service
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/exchange', params: {serviceName: string, body: MsServicesExchangeService}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/exchange', params: {serviceName: string, displayName?: string, domain?: string, hostname?: string, maxReceiveSize?: number, maxSendSize?: number, offer?: MsServicesServiceOfferEnum, spamAndVirusConfiguration?: MsServicesSpamAndVirusConfiguration, sslExpirationDate?: string, state?: MsServicesServiceStateEnum, taskPendingId?: number}): Promise<void>;
   /**
   Sharepoint service
   Alter this object properties
   **/
-  public put(path: '/msServices/{serviceName}/sharepoint', params: {serviceName: string, body: MsServicesSharepointService}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/sharepoint', params: {serviceName: string, currentUsage?: number, displayName?: string, domain?: string, farmUrl?: string, offer?: MsServicesSharepointServiceOfferEnum, quota?: number, state?: MsServicesServiceStateEnum, taskPendingId?: number, url?: string}): Promise<void>;
   public put(path: PathsMsServicesPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}

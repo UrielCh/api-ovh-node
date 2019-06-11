@@ -340,17 +340,17 @@ export class ApiFreefax extends OvhWrapper {
   Freefax properties
   Alter this object properties
   **/
-  public put(path: '/freefax/{serviceName}', params: {serviceName: string, body: FreefaxFreefaxProperties}): Promise<void>;
+  public put(path: '/freefax/{serviceName}', params: {serviceName: string, faxMaxCall?: TelephonyFaxSendingTries, faxQuality?: TelephonyFaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[]}): Promise<void>;
   /**
   Details about a Service
   Alter this object properties
   **/
-  public put(path: '/freefax/{serviceName}/serviceInfos', params: {serviceName: string, body: ServicesService}): Promise<void>;
+  public put(path: '/freefax/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
   Voicemail Properties
   Alter this object properties
   **/
-  public put(path: '/freefax/{serviceName}/voicemail', params: {serviceName: string, body: TelephonyVoicemailProperties}): Promise<void>;
+  public put(path: '/freefax/{serviceName}/voicemail', params: {serviceName: string, annouceMessage?: string, audioFormat?: TelephonyServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: TelephonyVoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: TelephonyServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
   public put(path: PathsFreefaxPUT, params?: OvhParamType) : Promise<any> {
     return super.put(path, params
   );}
