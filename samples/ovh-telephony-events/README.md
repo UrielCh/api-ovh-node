@@ -30,3 +30,11 @@ Options:
   --v1                         use Api V1 (by default use V2)
   -h, --help                   output usage information
 ```
+
+![ovh-telephony-events](https://github.com/UrielCh/api-ovh-node/blob/master/samples/ressources/ovh-telephony-events.gif?raw=true "preview")
+
+## install nodejs
+
+[samples doc](https://github.com/UrielCh/api-ovh-node/blob/master/samples/README.md)
+
+
