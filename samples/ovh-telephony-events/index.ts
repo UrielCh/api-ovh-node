@@ -6,6 +6,8 @@ import program from 'commander'
 import { gToken, gTokenGroup, EventSession, VoipEventV2, VoipEventV1Root, VoipEventV1 } from './model';
 import { createHandyClient, IHandyRedis } from 'handy-redis';
 import fse from 'fs-extra';
+
+// sample exec line:
 // ts-node index.ts --redis-host 127.0.0.1 --cache tokens.json --channel event-voip
 program
     .version('1.0.0')
@@ -44,7 +46,7 @@ async function feachToken(): Promise<gToken[]> {
 }
 
 async function loadTokens() {
-    const cachefile = program.cache;
+    const cachefile: string = program.cache;
     if (!cachefile) {
         return await feachToken();
     }
@@ -122,7 +124,7 @@ async function listenV2(tokens: gToken[], redis: IHandyRedis | null) {
         }
         last.groups.push(tokens[i]);
     }
-    console.log(`Grouped as ${groups2.length} groups`)
+    console.log(`${tokens.length} billingGroups grouped as ${groups2.length} groups`)
     for (const group of groups2) {
         const method = 'POST';
         let response = await fetch('https://events.voip.ovh.net/v2/session', { method, headers })
@@ -171,4 +173,4 @@ async function main() {
         await listenV2(tokens, redis);
     }
 }
-main().then(process.exit(0))
+main().then(console.log)
