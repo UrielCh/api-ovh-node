@@ -72,7 +72,6 @@ export interface Data {
     QueueMemberDNIS: string;
     QueueMemberUUID: string; // UUID
     Ts: string; // '1559904796"
-    debug?: string;
 }
 /**
  * V1 + V2
