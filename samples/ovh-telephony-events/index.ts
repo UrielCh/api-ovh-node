@@ -146,7 +146,7 @@ async function listenV2(tokens: gToken[], redis: IHandyRedis | null) {
                 let resp: VoipEventV2[] = await response.json();
                 if (resp && resp.length) {
                     if (redis) {
-                        console.log(`Post ${resp.length} event to ${channel}`);
+                        console.log(`${(new Date()).toISOString()} Send ${resp.length} event to ${channel}`);
                         for (const m of resp) {
                             delete m['token']; // hide token
                             await redis.publish(channel, JSON.stringify(m));
