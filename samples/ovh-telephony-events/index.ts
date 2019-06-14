@@ -95,7 +95,7 @@ async function listenV1(tokens: gToken[], redis: IHandyRedis | null) {
                 })
                 if (resp2 && resp2.length) {
                     if (redis) {
-                        console.log(`Post ${resp2.length} event to ${channel}`);
+                        console.log(`${(new Date()).toISOString()} Send ${resp2.length} event to ${channel}`);
                         for (const m of resp2) {
                             delete m['token']; // hide token
                             await redis.publish(channel, JSON.stringify(m));
