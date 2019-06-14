@@ -39,7 +39,7 @@ async function feachToken(): Promise<gToken[]> {
                 // 404: The requested object (eventToken) does not exist
                 (err) => api.post('/telephony/{billingAccount}/eventToken', { billingAccount, expiration: 'unlimited' })
                     .then(token => addToken(billingAccount, token))
-            ),
+            ).catch((err) => { console.log(`Error with ${billingAccount} ${err}`) }),
         { concurrency: 5 }
     );
     return tokens;
