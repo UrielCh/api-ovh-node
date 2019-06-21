@@ -1,10 +1,10 @@
-# ovh-bill-importer
+# ovh-telephony-events
 
 [![NPM Version](https://img.shields.io/npm/v/ovh-telephony-events.svg?style=flat)](https://www.npmjs.org/package/ovh-telephony-events)
 
 Import Api Events to a queueing service (Redis) so it can be easily integrate to your system.
 
-open Issue if you are interested in `RabbitMQ`, `Kafka`, `ZeroMQ` ...
+open Issue if you are interested in `RabbitMQ`, `Kafka`, `ZeroMQ` ... version
 
 This script use the npm packages `@ovh-api/api` and `@ovh-api/telephony`
 

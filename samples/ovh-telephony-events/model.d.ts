@@ -61,7 +61,6 @@ export interface Data {
     QueueMemberDNIS: string;
     QueueMemberUUID: string;
     Ts: string;
-    debug?: string;
 }
 /**
  * V1 + V2
