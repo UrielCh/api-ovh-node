@@ -17,7 +17,7 @@ npm install -g ovh-telephony-events
 ## Usage
 
 ```bash
-$ ovh-bill-importer --help
+$ ovh-telephony-events --help
 Usage: index.ts [options]
 
 Options:
@@ -29,6 +29,12 @@ Options:
   --cache <cacheFile.json>     store and cache tokens
   --v1                         use Api V1 (by default use V2)
   -h, --help                   output usage information
+```
+
+### example
+
+```
+ovh-telephony-events --redis-host 127.0.0.1 --cache tokens.json --channel event-voip
 ```
 
 ![ovh-telephony-events](https://github.com/UrielCh/api-ovh-node/blob/master/samples/ressources/ovh-telephony-events.gif?raw=true "preview")
