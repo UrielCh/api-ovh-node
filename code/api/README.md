@@ -5,9 +5,9 @@
 ## interactive usage:
 
 ```typescript
-import { ApiIp } from '@ovh-api/ip';
+import ApiIp from '@ovh-api/ip';
 import Ovh from '@ovh-api/api';
 const ovh = new Ovh({accessRules: 'GET /ip'});
-const api = new ApiIp(ovh);
-api.get('/ip').then(console.log);
+const apiIp = new ApiIp(ovh);
+apiIp.get('/ip').then(console.log);
 ```

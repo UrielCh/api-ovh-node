@@ -7,6 +7,7 @@
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "devDependencies": {
+    "@types/fs-extra": "^7.0.0",
     "ts-node": "^8.2.0",
     "typescript": "^3.4.5"
   },
@@ -24,5 +25,8 @@
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "build:watch": "tsc --watch"
   },
-  "gitHead": "b9fec53f25067fa01d341adc086a63ef2c2a5f62"
+  "gitHead": "b9fec53f25067fa01d341adc086a63ef2c2a5f62",
+  "dependencies": {
+    "fs-extra": "^8.0.1"
+  }
 }

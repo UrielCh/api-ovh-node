@@ -7,11 +7,13 @@
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "dependencies": {
-    "@ovh-api/common": "^1.2.2"
+    "@ovh-api/common": "^1.2.2",
+    "open": "^6.3.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.7",
+    "@types/open": "^6.1.0",
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
     "ts-node": "^8.2.0",

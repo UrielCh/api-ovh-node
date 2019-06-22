@@ -33,6 +33,7 @@ import { Schema, API } from './schema';
 import { RequestOptions } from 'http';
 import { endpoints } from './endpoints';
 import { OvhParamType, OvhRequestable } from '@ovh-api/common';
+import open from 'open';
 
 type DebugFnc = (...args: any[]) => any;
 
@@ -66,6 +67,11 @@ interface AccessRule {
     method: 'GET' | 'POST' | 'PUT' | 'DELETE';
     path: string;
 }
+/**
+ * simple wait promise generator
+ * @param duration wime to wait in ms
+ */
+const wait = (duration: number) => (args?: any) => new Promise(resolve => setTimeout(() => (resolve(args)), duration));
 
 export default class OvhApi implements OvhRequestable {
     appKey: string;
@@ -256,6 +262,8 @@ by default I will ask for all rights`);
             // set consumerKey
             ovhEngine.consumerKey = consumerKey;
             console.log(`[OVH] MISSING_CREDENTIAL issue a new one: ${consumerKey}\nValidate this cert with this url to continue:\n${validationUrl}`)
+            // try to open a brower
+            open(validationUrl).catch(() => { });
             let pass = 0;
             const checkCert = () => ovhEngine.request('GET', '/auth/currentCredential')
                 .then(({ status }) => {
@@ -286,14 +294,15 @@ by default I will ask for all rights`);
                 try {
                     response = JSON.parse(body);
                 } catch (e) {
-                    throw '[OVH] Unable to parse JSON reponse';
+                    //console.error('Failed to parse', body)
+                    throw `[OVH] Unable to parse ${httpMethod} ${path} JSON reponse:${body}`;
                 }
             } else {
                 response = null;
             }
 
             if (ovhEngine.debug) {
-                ovhEngine.debug(`[OVH] API response to ${options.method} ${options.path}: ${body}`);
+                ovhEngine.debug(`[OVH] API response to ${httpMethod} ${path}: ${body}`);
             }
             if (res.statusCode === 200) {
                 return response;
@@ -322,12 +331,23 @@ by default I will ask for all rights`);
                 throw 'ErrorCode ' + res.statusCode;
             throw res.statusCode + ': ' + response.message;
         }
+        let retryCnt = 0;
         // Promisify https.request
-        return new Promise((resolve, reject) => {
+        const makeRequest = () => new Promise((resolve, reject) => {
             let req = https.request(options, (res: IncomingMessage) => {
                 let body = '';
                 res.on('data', (chunk) => body += chunk)
-                    .on('end', () => handleResponse(res, body).then(resolve, reject))
+                    .on('end', () => {
+                        retryCnt++;
+                        // 504 Gateway Time-out
+                        if (res.statusCode == 504) {
+                            if (retryCnt < 5) {
+                                return
+                            }
+                            return wait(400)().then(makeRequest);
+                        }
+                        return handleResponse(res, body).then(resolve, reject)
+                    })
             }).on('error', (e) => reject(e.message || e));
 
             // mocked socket has no setTimeout
@@ -343,7 +363,9 @@ by default I will ask for all rights`);
                 req.write(reqBody);
             }
             req.end();
-        });// end return Query promise
+        });
+
+        return makeRequest();// end return Query promise
     }
 
     /**
