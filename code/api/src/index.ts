@@ -340,11 +340,12 @@ by default I will ask for all rights`);
                     .on('end', () => {
                         retryCnt++;
                         // 504 Gateway Time-out
-                        if (res.statusCode == 504) {
-                            if (retryCnt < 5) {
-                                return
-                            }
-                            return wait(400)().then(makeRequest);
+                        if (res.statusCode == 504 && retryCnt < 5) {
+                            console.log(`${retryCnt}/5) ${httpMethod} ${path} failed ${res.statusCode} ${res.statusMessage}`)
+                            return wait(400)()
+                                // .then(() => console.log('retry'))
+                                .then(makeRequest)
+                                .then(resolve, reject);
                         }
                         return handleResponse(res, body).then(resolve, reject)
                     })
