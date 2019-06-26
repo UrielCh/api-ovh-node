@@ -1,6 +1,6 @@
 {
   "name": "ovh-bill-importer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "typings": "index.d.ts",
   "license": "MIT",
@@ -21,8 +21,8 @@
     "build:watch": "tsc --watch"
   },
   "dependencies": {
-    "@ovh-api/api": "^1.2.2",
-    "@ovh-api/me": "^1.2.3",
+    "@ovh-api/api": "^1.2.4",
+    "@ovh-api/me": "^1.2.4",
     "bluebird": "^3.5.5",
     "commander": "^2.20.0",
     "fs-extra": "^8.0.1",
@@ -32,8 +32,8 @@
     "@types/bluebird": "^3.5.27",
     "@types/commander": "^2.12.2",
     "@types/fs-extra": "^7.0.0",
-    "@types/node-fetch": "^2.3.4",
-    "ts-node": "^8.1.0",
-    "typescript": "^3.4.5"
+    "@types/node-fetch": "^2.3.7",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.2"
   }
 }

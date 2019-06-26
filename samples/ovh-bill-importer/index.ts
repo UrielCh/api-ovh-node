@@ -1,11 +1,11 @@
 import { EOL } from 'os'
 import fse from 'fs-extra'
 import ApiMe, { NichandleNichandle, BillingBill } from '@ovh-api/me'
-import Ovh from '@ovh-api/api'
+import Ovh, { OvhParams } from '@ovh-api/api'
 import path from 'path'
 import fetch from 'node-fetch'
 import program from 'commander'
-import {Promise} from 'bluebird'
+import { Promise } from 'bluebird'
 
 program
   .version('1.0.0')
@@ -13,13 +13,14 @@ program
   .option('-d, --dest <path>', 'destination directory')
   .option('-s, --split <type>', 'hierarchy model year/month/none default is month', /^(month|year|none)$/i, 'month')
   .option('-c, --concurrency <number>', 'max concurent download', /^[0-9]+$/)
+  .option('--token <tokenfile>', 'save and reuse the certificat by storing them in a file')
   .parse(process.argv)
 
-  /**
-   * list all existing invoice
-   * @param root root directory
-   * @param type file extention
-   */
+/**
+ * list all existing invoice
+ * @param root root directory
+ * @param type file extention
+ */
 async function listDir(root: string, type: 'pdf' | 'html'): Promise<string[]> {
   let result: string[] = []
   let list = await fse.readdir(root)
@@ -51,9 +52,24 @@ interface CsvLine {
 }
 
 async function main(root: string, type: 'pdf' | 'html') {
-  let ovh = new Ovh({ accessRules: `GET /me, GET /me/bill, GET /me/bill/*` })
+  let token = null;
+  let param: OvhParams = { accessRules: `GET /me, GET /me/bill, GET /me/bill/*` };
+  try {
+    if (program.token) {
+      token = fse.readJson(program.token)
+      param = { ...param, ...token };
+      console.log(`Using previous token from ${program.token}`)
+      program.token = null;
+    }
+  } catch { }
+  let ovh = new Ovh(param)
   const apiMe = new ApiMe(ovh)
   const me: NichandleNichandle = await apiMe.get('/me')
+  if (program.token) {
+    console.log(`Saving generarted token for next time in ${program.token}`)
+    let { appKey, appSecret, consumerKey } = ovh
+    await fse.writeJSON(program.token, { appKey, appSecret, consumerKey })
+  }
   const dbInvoice = <Set<string>>new Set()
   let dest = path.join(root, me.nichandle)
   await fse.ensureDir(dest)
@@ -135,13 +151,13 @@ async function main(root: string, type: 'pdf' | 'html') {
   const concurrency = Number(program.concurrency) || 1
   if (concurrency > 3)
     console.error('Warning a hi concurrency may triger OVH query rate limit')
-  await Promise.map(billIds, (item, index, length) => getInvoice(item), {concurrency: Number(program.concurrency)})
+  await Promise.map(billIds, (item, index, length) => getInvoice(item), { concurrency: Number(program.concurrency) })
 
   if (billIds.length) {
     allInvoice.sort((a, b) => a.invoiceId.localeCompare(b.invoiceId))
     let db = allInvoice.map(({ invoiceId, date, HT, TVA, TTC, currency }) => `${invoiceId}\t${date}\t${HT}\t${TVA}\t${TTC}\t${currency}`)
     db.unshift('invoiceId\tdate\tHT\tTVA\tTTC\tcurrency')
-    await fse.writeFile(summaryFile, db.join(EOL), { encoding: 'utf8' });
+    await fse.writeFile(summaryFile, db.join(EOL), { encoding: 'utf8' })
     console.log('All done.')
   } else {
     console.log('No new invoice. Bye.')
