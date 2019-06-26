@@ -26,6 +26,7 @@ Options:
   -d, --dest <path>           destination directory
   -s, --split <type>          hierarchy model year/month/none default is month (default: "month")
   -c, --concurrency <number>  max concurent download
+  --token <tokenfile>         save and reuse the certificat by storing them in a file
   -h, --help                  output usage information
 ```
 
@@ -48,7 +49,20 @@ Provide a local path to save all invoice, a directory containing the nic-handle 
 
 Download multiple invoice un parallel, Do not ask for much concurrency, or Ovh will block your IP.
 
+
+## sample
+
+```bash
+npm install -g ovh-bill-importer
+ovh-bill-importer --dest=bill --split=month --concurrency=3 --token=token.json
+```
+
+![ovh-vps-config-failover on vps](https://github.com/UrielCh/api-ovh-node/blob/master/samples/ressources/ovh-bill-importer.gif?raw=true "preview")
+
+
 ## Tree
+
+``````
 
 The destination directory may look like that:
 
@@ -65,3 +79,6 @@ nichandle-ovh
         - 2019-03-15_FR123801_299.99EUR.pdf
         - 2019-03-25_FR123802_2.99EUR.pdf
 ```
+
+
+

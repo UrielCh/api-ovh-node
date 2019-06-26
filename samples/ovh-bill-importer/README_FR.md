@@ -48,6 +48,15 @@ Choisiser un chemin local pour sauvegarder toutes les factures, un répertoire c
 
 Téléchargez plusieurs factures en parallèle, n'utiliser pas de valeur trop élevée, sinon Ovh bloquera votre IP.
 
+## example
+
+```bash
+npm install -g ovh-bill-importer
+ovh-bill-importer --dest=bill --split=month --concurrency=3 --token=token.json
+```
+
+![ovh-vps-config-failover on vps](https://github.com/UrielCh/api-ovh-node/blob/master/samples/ressources/ovh-bill-importer.gif?raw=true "preview")
+
 ## Tree
 
 Le répertoire de destination peut ressembler à ça:

@@ -55,20 +55,20 @@ async function main(root: string, type: 'pdf' | 'html') {
   let token = null;
   let param: OvhParams = { accessRules: `GET /me, GET /me/bill, GET /me/bill/*` };
   try {
-    if (program.token) {
-      token = fse.readJson(program.token)
-      param = { ...param, ...token };
+    if (program.token && fse.existsSync(program.token)) {
+      token = await fse.readJson(program.token)
+      param = { ...param, ...token }
       console.log(`Using previous token from ${program.token}`)
-      program.token = null;
+      program.token = null
     }
-  } catch { }
+  } catch (e) { console.error(e) }
   let ovh = new Ovh(param)
   const apiMe = new ApiMe(ovh)
   const me: NichandleNichandle = await apiMe.get('/me')
   if (program.token) {
     console.log(`Saving generarted token for next time in ${program.token}`)
     let { appKey, appSecret, consumerKey } = ovh
-    await fse.writeJSON(program.token, { appKey, appSecret, consumerKey })
+    await fse.writeJSON(program.token, { appKey, appSecret, consumerKey }, {spaces: 2})
   }
   const dbInvoice = <Set<string>>new Set()
   let dest = path.join(root, me.nichandle)
