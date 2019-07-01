@@ -1101,6 +1101,11 @@ export interface DomainZoneZone {
    */
   lastUpdate: string;
   /**
+   * Zone name
+   *
+   */
+  name: string;
+  /**
    * Name servers that host the DNS zone
    *
    */

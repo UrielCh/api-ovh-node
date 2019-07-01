@@ -216,6 +216,16 @@ export interface HostingWebCronLanguageAvailable {
    *
    */
   php: HostingWebPhpVersionAvailableEnum[];
+  /**
+   * Python versions
+   *
+   */
+  python: HostingWebPythonVersionAvailableEnum[];
+  /**
+   * Ruby versions
+   *
+   */
+  ruby: HostingWebRubyVersionAvailableEnum[];
 }
 /**
  * Available datacenters
@@ -359,6 +369,10 @@ export type HostingWebPhpVersionAvailableEnum = 'phpfpm-5.6' | 'phpfpm-7.0' | 'p
  */
 export type HostingWebPhpVersionStateEnum = 'BETA' | 'END_OF_LIFE' | 'SECURITY_FIXES' | 'SUPPORTED';
 /**
+ * Different Python versions available
+ */
+export type HostingWebPythonVersionAvailableEnum = 'python-2' | 'python-3';
+/**
  * Types of action you can request for your web hosting
  */
 export type HostingWebRequestActionEnum = 'CHECK_QUOTA' | 'FLUSH_CACHE' | 'SCAN_ANTIHACK';
@@ -366,6 +380,10 @@ export type HostingWebRequestActionEnum = 'CHECK_QUOTA' | 'FLUSH_CACHE' | 'SCAN_
  * Hosting's type
  */
 export type HostingWebResourceEnum = 'bestEffort' | 'cloud' | 'dedicated' | 'shared';
+/**
+ * Different Ruby versions available
+ */
+export type HostingWebRubyVersionAvailableEnum = 'ruby-2.4' | 'ruby-2.5' | 'ruby-2.6';
 /**
  * Web Hosting
  */

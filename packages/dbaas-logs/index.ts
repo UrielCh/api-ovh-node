@@ -189,6 +189,21 @@ export interface DbaasLogsClusterAllowedNetwork {
   network: string;
 }
 /**
+ * null
+ */
+export interface DbaasLogsClusterAllowedNetworkCreation {
+  /**
+   * Flow type
+   *
+   */
+  flowType: DbaasLogsClusterAllowedNetworkFlowTypeEnum;
+  /**
+   * IP block
+   *
+   */
+  network: string;
+}
+/**
  * Possible values for ClusterAllowedNetworkFlowTypeEnum
  */
 export type DbaasLogsClusterAllowedNetworkFlowTypeEnum = 'ALL' | 'DIRECT_INPUT' | 'QUERY';
@@ -452,9 +467,139 @@ export interface DbaasLogsInputAction {
  */
 export type DbaasLogsInputActionTypeEnum = 'DESTROY' | 'END' | 'LOG' | 'RESTART' | 'START' | 'TEST';
 /**
+ * null
+ */
+export interface DbaasLogsInputAllowedNetworkCreation {
+  /**
+   * IP block
+   *
+   */
+  network: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsInputConfigurationFlowggerUpdate {
+  /**
+   * configuration log format
+   *
+   */
+  logFormat: DbaasLogsFlowggerConfigurationLogFormatEnum;
+  /**
+   * Log framing
+   *
+   */
+  logFraming: DbaasLogsFlowggerConfigurationLogFramingEnum;
+}
+/**
+ * null
+ */
+export interface DbaasLogsInputConfigurationLogstashUpdate {
+  /**
+   * Filter section
+   *
+   */
+  filterSection?: string;
+  /**
+   * Input section
+   *
+   */
+  inputSection: string;
+  /**
+   * Pattern section
+   *
+   */
+  patternSection?: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsInputCreation {
+  /**
+   * If set, automatically selects a compatible option
+   *
+   */
+  autoSelectOption?: boolean;
+  /**
+   * Description
+   *
+   */
+  description: string;
+  /**
+   * Engine ID
+   *
+   */
+  engineId: string;
+  /**
+   * Exposed port
+   *
+   */
+  exposedPort?: string;
+  /**
+   * Option ID
+   *
+   */
+  optionId?: string;
+  /**
+   * Indicate if input have only a single instance
+   *
+   */
+  singleInstanceEnabled?: boolean;
+  /**
+   * Stream ID
+   *
+   */
+  streamId: string;
+  /**
+   * Title
+   *
+   */
+  title: string;
+}
+/**
  * Possible values for InputStatusEnum
  */
 export type DbaasLogsInputStatusEnum = 'INIT' | 'PENDING' | 'PROCESSING' | 'RUNNING';
+/**
+ * null
+ */
+export interface DbaasLogsInputUpdate {
+  /**
+   * Description
+   *
+   */
+  description: string;
+  /**
+   * Engine ID
+   *
+   */
+  engineId: string;
+  /**
+   * Exposed port
+   *
+   */
+  exposedPort?: string;
+  /**
+   * Option ID
+   *
+   */
+  optionId?: string;
+  /**
+   * Indicate if input have only a single instance
+   *
+   */
+  singleInstanceEnabled?: boolean;
+  /**
+   * Stream ID
+   *
+   */
+  streamId: string;
+  /**
+   * Title
+   *
+   */
+  title: string;
+}
 /**
  * Logstash configuration
  */
@@ -734,6 +879,471 @@ export interface DbaasLogsOption {
  */
 export type DbaasLogsOptionStateEnum = 'DISABLED' | 'ENABLED';
 /**
+ * null
+ */
+export interface DbaasLogsOutputElasticsearchAliasCreation {
+  /**
+   * If set, automatically selects a compatible option
+   *
+   */
+  autoSelectOption?: boolean;
+  /**
+   * Description
+   *
+   */
+  description: string;
+  /**
+   * Option ID
+   *
+   */
+  optionId?: string;
+  /**
+   * Suffix
+   *
+   */
+  suffix: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsOutputElasticsearchAliasIndexCreation {
+  /**
+   * Index ID
+   *
+   */
+  indexId: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsOutputElasticsearchAliasStreamCreation {
+  /**
+   * Stream ID
+   *
+   */
+  streamId: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsOutputElasticsearchAliasUpdate {
+  /**
+   * Description
+   *
+   */
+  description: string;
+  /**
+   * Option ID
+   *
+   */
+  optionId?: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsOutputElasticsearchIndexCreation {
+  /**
+   * Alert notify enabled
+   *
+   */
+  alertNotifyEnabled?: boolean;
+  /**
+   * If set, automatically selects a compatible option
+   *
+   */
+  autoSelectOption?: boolean;
+  /**
+   * Description
+   *
+   */
+  description: string;
+  /**
+   * Option ID
+   *
+   */
+  optionId?: string;
+  /**
+   * Suffix
+   *
+   */
+  suffix: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsOutputElasticsearchIndexUpdate {
+  /**
+   * Alert notify enabled
+   *
+   */
+  alertNotifyEnabled?: boolean;
+  /**
+   * Description
+   *
+   */
+  description: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsOutputGraylogDashboardCreation {
+  /**
+   * If set, automatically selects a compatible option
+   *
+   */
+  autoSelectOption?: boolean;
+  /**
+   * Description
+   *
+   */
+  description: string;
+  /**
+   * Option ID
+   *
+   */
+  optionId?: string;
+  /**
+   * Title
+   *
+   */
+  title: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsOutputGraylogDashboardDuplicateCreation {
+  /**
+   * If set, automatically selects a compatible option
+   *
+   */
+  autoSelectOption?: boolean;
+  /**
+   * Description
+   *
+   */
+  description: string;
+  /**
+   * Option ID
+   *
+   */
+  optionId?: string;
+  /**
+   * Stream ID
+   *
+   */
+  streamId?: string;
+  /**
+   * Title
+   *
+   */
+  title: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsOutputGraylogDashboardUpdate {
+  /**
+   * Description
+   *
+   */
+  description: string;
+  /**
+   * Option ID
+   *
+   */
+  optionId?: string;
+  /**
+   * Title
+   *
+   */
+  title: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsOutputGraylogStreamAlertCreation {
+  /**
+   * Backlog
+   *
+   */
+  backlog: number;
+  /**
+   * Condition type
+   *
+   */
+  conditionType?: DbaasLogsStreamAlertConditionConditionTypeEnum;
+  /**
+   * Constraint type
+   *
+   */
+  constraintType?: DbaasLogsStreamAlertConditionConstraintTypeEnum;
+  /**
+   * Field
+   *
+   */
+  field?: string;
+  /**
+   * Grace period
+   *
+   */
+  grace: number;
+  /**
+   * Query filter
+   *
+   */
+  queryFilter?: string;
+  /**
+   * Repeat notifications enabled
+   *
+   */
+  repeatNotificationsEnabled?: boolean;
+  /**
+   * Threshold
+   *
+   */
+  threshold?: number;
+  /**
+   * Threshold type
+   *
+   */
+  thresholdType?: DbaasLogsStreamAlertConditionThresholdTypeEnum;
+  /**
+   * Time
+   *
+   */
+  time?: number;
+  /**
+   * Title
+   *
+   */
+  title: string;
+  /**
+   * Value
+   *
+   */
+  value?: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsOutputGraylogStreamAlertUpdate {
+  /**
+   * Backlog
+   *
+   */
+  backlog: number;
+  /**
+   * Condition type
+   *
+   */
+  conditionType?: DbaasLogsStreamAlertConditionConditionTypeEnum;
+  /**
+   * Constraint type
+   *
+   */
+  constraintType?: DbaasLogsStreamAlertConditionConstraintTypeEnum;
+  /**
+   * Field
+   *
+   */
+  field?: string;
+  /**
+   * Grace period
+   *
+   */
+  grace: number;
+  /**
+   * Query filter
+   *
+   */
+  queryFilter?: string;
+  /**
+   * Repeat notifications enabled
+   *
+   */
+  repeatNotificationsEnabled?: boolean;
+  /**
+   * Threshold
+   *
+   */
+  threshold?: number;
+  /**
+   * Threshold type
+   *
+   */
+  thresholdType?: DbaasLogsStreamAlertConditionThresholdTypeEnum;
+  /**
+   * Time
+   *
+   */
+  time?: number;
+  /**
+   * Title
+   *
+   */
+  title: string;
+  /**
+   * Value
+   *
+   */
+  value?: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsOutputGraylogStreamCreation {
+  /**
+   * If set, automatically selects a compatible option
+   *
+   */
+  autoSelectOption?: boolean;
+  /**
+   * Cold storage compression
+   *
+   */
+  coldStorageCompression?: DbaasLogsStreamColdStorageCompressionEnum;
+  /**
+   * Cold storage archive content
+   *
+   */
+  coldStorageContent?: DbaasLogsStreamColdStorageContentEnum;
+  /**
+   * Cold storage enabled
+   *
+   */
+  coldStorageEnabled?: boolean;
+  /**
+   * Cold storage notify enabled
+   *
+   */
+  coldStorageNotifyEnabled?: boolean;
+  /**
+   * Cold storage retention time
+   *
+   */
+  coldStorageRetention?: number;
+  /**
+   * Cold storage destination
+   *
+   */
+  coldStorageTarget?: DbaasLogsStreamColdStorageTargetEnum;
+  /**
+   * Description
+   *
+   */
+  description: string;
+  /**
+   * ES indexing enabled
+   *
+   */
+  indexingEnabled?: boolean;
+  /**
+   * Option ID
+   *
+   */
+  optionId?: string;
+  /**
+   * Parent stream id
+   *
+   */
+  parentStreamId?: string;
+  /**
+   * Title
+   *
+   */
+  title: string;
+  /**
+   * Web Socket enabled
+   *
+   */
+  webSocketEnabled?: boolean;
+}
+/**
+ * null
+ */
+export interface DbaasLogsOutputGraylogStreamRuleCreation {
+  /**
+   * Field name
+   *
+   */
+  field: string;
+  /**
+   * Invert condition
+   *
+   */
+  isInverted?: boolean;
+  /**
+   * Field operator
+   *
+   */
+  operator: DbaasLogsStreamRuleOperatorEnum;
+  /**
+   * Field value
+   *
+   */
+  value: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsOutputGraylogStreamUpdate {
+  /**
+   * Cold storage compression
+   *
+   */
+  coldStorageCompression?: DbaasLogsStreamColdStorageCompressionEnum;
+  /**
+   * Cold storage content
+   *
+   */
+  coldStorageContent?: DbaasLogsStreamColdStorageContentEnum;
+  /**
+   * Cold storage enabled
+   *
+   */
+  coldStorageEnabled?: boolean;
+  /**
+   * Cold storage notify enabled
+   *
+   */
+  coldStorageNotifyEnabled?: boolean;
+  /**
+   * Cold storage retention time
+   *
+   */
+  coldStorageRetention?: number;
+  /**
+   * Cold storage destination
+   *
+   */
+  coldStorageTarget?: DbaasLogsStreamColdStorageTargetEnum;
+  /**
+   * Description
+   *
+   */
+  description: string;
+  /**
+   * ES indexing enabled
+   *
+   */
+  indexingEnabled?: boolean;
+  /**
+   * Option ID
+   *
+   */
+  optionId?: string;
+  /**
+   * Title
+   *
+   */
+  title: string;
+  /**
+   * Web socket enabled
+   *
+   */
+  webSocketEnabled?: boolean;
+}
+/**
  * Role permission
  */
 export interface DbaasLogsPermission {
@@ -905,6 +1515,126 @@ export interface DbaasLogsRole {
    *
    */
   roleId: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsRoleCreation {
+  /**
+   * If set, automatically selects a compatible option
+   *
+   */
+  autoSelectOption?: boolean;
+  /**
+   * Description
+   *
+   */
+  description: string;
+  /**
+   * Name
+   *
+   */
+  name: string;
+  /**
+   * Option ID
+   *
+   */
+  optionId?: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsRoleMemberCreation {
+  /**
+   * Custom note
+   *
+   */
+  note?: string;
+  /**
+   * Username
+   *
+   */
+  username: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsRoleMemberUpdate {
+  /**
+   * Custom note
+   *
+   */
+  note?: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsRolePermissionAliasCreation {
+  /**
+   * Alias ID
+   *
+   */
+  aliasId: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsRolePermissionDashboardCreation {
+  /**
+   * Dashboard ID
+   *
+   */
+  dashboardId: string;
+  /**
+   * Permission type
+   *
+   */
+  permissionType?: DbaasLogsPermissionDashboardPermissionTypeEnum;
+}
+/**
+ * null
+ */
+export interface DbaasLogsRolePermissionIndexCreation {
+  /**
+   * Index ID
+   *
+   */
+  indexId: string;
+  /**
+   * Permission type
+   *
+   */
+  permissionType?: DbaasLogsPermissionIndexPermissionTypeEnum;
+}
+/**
+ * null
+ */
+export interface DbaasLogsRolePermissionStreamCreation {
+  /**
+   * Stream ID
+   *
+   */
+  streamId: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsRoleUpdate {
+  /**
+   * Description
+   *
+   */
+  description: string;
+  /**
+   * Name
+   *
+   */
+  name: string;
+  /**
+   * Option ID
+   *
+   */
+  optionId?: string;
 }
 /**
  * Service
@@ -1264,6 +1994,36 @@ export interface DbaasLogsToken {
   value: string;
 }
 /**
+ * null
+ */
+export interface DbaasLogsTokenCreation {
+  /**
+   * Cluster ID
+   *
+   */
+  clusterId?: string;
+  /**
+   * Token name
+   *
+   */
+  name: string;
+}
+/**
+ * null
+ */
+export interface DbaasLogsUpdate {
+  /**
+   * Service custom name
+   *
+   */
+  displayName?: string;
+  /**
+   * If set, block indexation when plan's limit is reached
+   *
+   */
+  isCapped?: boolean;
+}
+/**
  * Web address
  */
 export interface DbaasLogsUrl {
@@ -1282,6 +2042,16 @@ export interface DbaasLogsUrl {
  * Possible values for UrlTypeEnum
  */
 export type DbaasLogsUrlTypeEnum = 'CONSOLE' | 'ELASTICSEARCH_API' | 'GRAYLOG_API' | 'GRAYLOG_WEBUI' | 'HTTP_GELF' | 'HTTP_TLS_GELF' | 'KIBANA_WEBUI' | 'SERVICE_DOMAIN' | 'TCP_BEATS' | 'TCP_CAP_N_PROTO' | 'TCP_GELF' | 'TCP_LTSV_LINE' | 'TCP_LTSV_NUL' | 'TCP_RFC5424' | 'TCP_TLS_BEATS' | 'TCP_TLS_CAP_N_PROTO' | 'TCP_TLS_GELF' | 'TCP_TLS_LTSV_LINE' | 'TCP_TLS_LTSV_NUL' | 'TCP_TLS_RFC5424' | 'UDP_CAP_N_PROTO' | 'UDP_GELF' | 'UDP_LTSV_LINE' | 'UDP_LTSV_NUL' | 'UDP_RFC5424' | 'WEB_SOCKET';
+/**
+ * null
+ */
+export interface DbaasLogsUserChangePasswordCreation {
+  /**
+   * Password must be at least 12 characters long contain a number, an uppercase, a lowercase and a special letter
+   *
+   */
+  password: string;
+}
 /**
  * Map a possible renew for a specific service
  */
@@ -1317,7 +2087,7 @@ export interface ServiceRenewType {
  */
 export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
 /**
- * 
+ * null
  */
 export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
 /**
@@ -1532,7 +2302,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   Cluster allowed networks
   Returns details of an allowed network
   **/
-  public get(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}', params: {serviceName: string, clusterId: string, allowedNetworkId: string}): Promise<DbaasLogsClusterAllowedNetwork>;
+  public get(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}', params: {allowedNetworkId: string, serviceName: string, clusterId: string}): Promise<DbaasLogsClusterAllowedNetwork>;
   /**
   Inputs
   Returns the list of registered input attached to the logged user
@@ -1542,7 +2312,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   Input
   Returns details of specified input
   **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}', params: {serviceName: string, inputId: string}): Promise<DbaasLogsInput>;
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}', params: {inputId: string, serviceName: string}): Promise<DbaasLogsInput>;
   /**
   InputActions
   Returns actions of specified input
@@ -1552,17 +2322,17 @@ export class ApiDbaasLogs extends OvhWrapper {
   InputAllowedNetworks
   List all network ID allowed to join input
   **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', params: {serviceName: string, inputId: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', params: {inputId: string, serviceName: string}): Promise<string[]>;
   /**
   InputAllowedNetwork
   List all network ID allowed to join input
   **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {serviceName: string, inputId: string, allowedNetworkId: string}): Promise<DbaasLogsAllowedNetwork>;
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {inputId: string, serviceName: string, allowedNetworkId: string}): Promise<DbaasLogsAllowedNetwork>;
   /**
   InputConfigtestResult
   Returns the config test operation result
   **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/configtest/result', params: {serviceName: string, inputId: string}): Promise<DbaasLogsTestResult>;
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/configtest/result', params: {inputId: string, serviceName: string}): Promise<DbaasLogsTestResult>;
   /**
   FlowggerConfiguration
   Returns the flowgger configuration
@@ -1623,13 +2393,13 @@ export class ApiDbaasLogs extends OvhWrapper {
   Returns the list of elasticsearch indexes attached to specified
         elasticsearch alias
   **/
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', params: {serviceName: string, aliasId: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', params: {aliasId: string, serviceName: string}): Promise<string[]>;
   /**
   AliasStreams
   Returns the list of graylog streams attached to specified
         elasticsearch alias
   **/
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', params: {serviceName: string, aliasId: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', params: {aliasId: string, serviceName: string}): Promise<string[]>;
   /**
   StreamUrls
   Returns the list of urls of specified graylog stream
@@ -1684,7 +2454,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   StreamAlert
   Returns details of specified graylog stream alert
   **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {serviceName: string, streamId: string, alertId: string}): Promise<DbaasLogsStreamAlertCondition>;
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {streamId: string, serviceName: string, alertId: string}): Promise<DbaasLogsStreamAlertCondition>;
   /**
   StreamArchives
   Returns the list of archives
@@ -1699,12 +2469,12 @@ export class ApiDbaasLogs extends OvhWrapper {
   StreamRules
   Returns the list of rules of specified graylog stream
   **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {serviceName: string, streamId: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {streamId: string, serviceName: string}): Promise<string[]>;
   /**
   StreamRule
   Returns details of specified graylog stream rule
   **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', params: {serviceName: string, streamId: string, ruleId: string}): Promise<DbaasLogsStreamRule[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', params: {streamId: string, serviceName: string, ruleId: string}): Promise<DbaasLogsStreamRule[]>;
   /**
   StreamUrls
   Returns the list of urls of specified graylog stream
@@ -1734,7 +2504,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   RoleMember
   Returns the member metadata
   **/
-  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', params: {serviceName: string, roleId: string, username: string}): Promise<DbaasLogsMember>;
+  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', params: {roleId: string, username: string, serviceName: string}): Promise<DbaasLogsMember>;
   /**
   RolePermissions
   Returns the list of permissions of specified role
@@ -1777,52 +2547,52 @@ export class ApiDbaasLogs extends OvhWrapper {
   Input
   Update information of specified input object
   **/
-  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}', params: {serviceName: string, inputId: string, description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}', params: {inputId: string, serviceName: string, description?: string, engineId?: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId?: string, title?: string}): Promise<DbaasLogsOperation>;
   /**
   FlowggerConfiguration
   Update the flowgger configuration
   **/
-  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger', params: {serviceName: string, inputId: string, logFormat: DbaasLogsFlowggerConfigurationLogFormatEnum, logFraming: DbaasLogsFlowggerConfigurationLogFramingEnum}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger', params: {serviceName: string, inputId: string, logFormat?: DbaasLogsFlowggerConfigurationLogFormatEnum, logFraming?: DbaasLogsFlowggerConfigurationLogFramingEnum}): Promise<DbaasLogsOperation>;
   /**
   LogstashConfiguration
   Update the logstash configuration
   **/
-  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash', params: {serviceName: string, inputId: string, filterSection?: string, inputSection: string, patternSection?: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash', params: {serviceName: string, inputId: string, filterSection?: string, inputSection?: string, patternSection?: string}): Promise<DbaasLogsOperation>;
   /**
   Alias
   Update specified elasticsearch alias
   **/
-  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', params: {serviceName: string, aliasId: string, description: string, optionId?: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', params: {serviceName: string, aliasId: string, description?: string, optionId?: string}): Promise<DbaasLogsOperation>;
   /**
   Index
   Update specified elasticsearch index
   **/
-  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}', params: {serviceName: string, indexId: string, alertNotifyEnabled?: boolean, description: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}', params: {indexId: string, serviceName: string, alertNotifyEnabled?: boolean, description?: string}): Promise<DbaasLogsOperation>;
   /**
   Dashboard
   Update information of specified graylog dashboard
   **/
-  public put(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}', params: {serviceName: string, dashboardId: string, description: string, optionId?: string, title: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}', params: {serviceName: string, dashboardId: string, description?: string, optionId?: string, title?: string}): Promise<DbaasLogsOperation>;
   /**
   Stream
   Update information of specified graylog stream
   **/
-  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}', params: {serviceName: string, streamId: string, coldStorageCompression?: DbaasLogsStreamColdStorageCompressionEnum, coldStorageContent?: DbaasLogsStreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: DbaasLogsStreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, title: string, webSocketEnabled?: boolean}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}', params: {serviceName: string, streamId: string, coldStorageCompression?: DbaasLogsStreamColdStorageCompressionEnum, coldStorageContent?: DbaasLogsStreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: DbaasLogsStreamColdStorageTargetEnum, description?: string, indexingEnabled?: boolean, optionId?: string, title?: string, webSocketEnabled?: boolean}): Promise<DbaasLogsOperation>;
   /**
   StreamAlert
   Update alert information of specified graylog stream
   **/
-  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {serviceName: string, streamId: string, alertId: string, backlog: number, conditionType?: DbaasLogsStreamAlertConditionConditionTypeEnum, constraintType?: DbaasLogsStreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: DbaasLogsStreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {streamId: string, serviceName: string, alertId: string, backlog?: number, conditionType?: DbaasLogsStreamAlertConditionConditionTypeEnum, constraintType?: DbaasLogsStreamAlertConditionConstraintTypeEnum, field?: string, grace?: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: DbaasLogsStreamAlertConditionThresholdTypeEnum, time?: number, title?: string, value?: string}): Promise<DbaasLogsOperation>;
   /**
   Role
   Update information of specified role
   **/
-  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}', params: {serviceName: string, roleId: string, description: string, name: string, optionId?: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}', params: {serviceName: string, roleId: string, description?: string, name?: string, optionId?: string}): Promise<DbaasLogsOperation>;
   /**
   RoleMember
   Update the member metadata
   **/
-  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', params: {serviceName: string, roleId: string, username: string, note?: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', params: {username: string, serviceName: string, roleId: string, note?: string}): Promise<DbaasLogsOperation>;
   /**
   Details about a Service
   Alter this object properties
@@ -1840,17 +2610,17 @@ export class ApiDbaasLogs extends OvhWrapper {
   Cluster allowed networks
   Allow an IP to contact cluster
   **/
-  public post(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork', params: {serviceName: string, clusterId: string, flowType: DbaasLogsClusterAllowedNetworkFlowTypeEnum, network: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork', params: {serviceName: string, clusterId: string, flowType?: DbaasLogsClusterAllowedNetworkFlowTypeEnum, network?: string}): Promise<DbaasLogsOperation>;
   /**
   Inputs
   Register a new input object
   **/
-  public post(path: '/dbaas/logs/{serviceName}/input', params: {serviceName: string, autoSelectOption?: boolean, description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/input', params: {serviceName: string, autoSelectOption?: boolean, description?: string, engineId?: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId?: string, title?: string}): Promise<DbaasLogsOperation>;
   /**
   InputAllowedNetworks
   Allow an ip to join input
   **/
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', params: {serviceName: string, inputId: string, network: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', params: {serviceName: string, inputId: string, network?: string}): Promise<DbaasLogsOperation>;
   /**
   InputConfigtest
   Validate configuration of specified input
@@ -1865,7 +2635,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   InputLogs
   Generate a temporary url to retrieve input logs
   **/
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/logs/url', params: {serviceName: string, inputId: string}): Promise<DbaasLogsTemporaryLogsLink>;
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/logs/url', params: {inputId: string, serviceName: string}): Promise<DbaasLogsTemporaryLogsLink>;
   /**
   InputRestart
   Schedule the restart of specified input
@@ -1875,7 +2645,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   InputStart
   Schedule the start of specified input
   **/
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/start', params: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/start', params: {inputId: string, serviceName: string}): Promise<DbaasLogsOperation>;
   /**
   ServiceOption
   Remove the specified subscribed option
@@ -1885,42 +2655,42 @@ export class ApiDbaasLogs extends OvhWrapper {
   Aliases
   Register a new elasticsearch alias
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias', params: {serviceName: string, autoSelectOption?: boolean, description: string, optionId?: string, suffix: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias', params: {serviceName: string, autoSelectOption?: boolean, description?: string, optionId?: string, suffix?: string}): Promise<DbaasLogsOperation>;
   /**
   AliasStreams
   Attach a elasticsearch index to specified elasticsearch alias
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', params: {serviceName: string, aliasId: string, indexId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', params: {aliasId: string, serviceName: string, indexId?: string}): Promise<DbaasLogsOperation>;
   /**
   AliasStreams
   Attach a graylog stream to specified elasticsearch alias
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', params: {serviceName: string, aliasId: string, streamId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', params: {aliasId: string, serviceName: string, streamId?: string}): Promise<DbaasLogsOperation>;
   /**
   Indexes
   Register a new elasticsearch index
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index', params: {serviceName: string, alertNotifyEnabled?: boolean, autoSelectOption?: boolean, description: string, optionId?: string, suffix: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index', params: {serviceName: string, alertNotifyEnabled?: boolean, autoSelectOption?: boolean, description?: string, optionId?: string, suffix?: string}): Promise<DbaasLogsOperation>;
   /**
   Dashboards
   Register a new graylog dashboard
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard', params: {serviceName: string, autoSelectOption?: boolean, description: string, optionId?: string, title: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard', params: {serviceName: string, autoSelectOption?: boolean, description?: string, optionId?: string, title?: string}): Promise<DbaasLogsOperation>;
   /**
   DashboardClone
   Copy all widgets from specified dashboard to a new one
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate', params: {serviceName: string, dashboardId: string, autoSelectOption?: boolean, description: string, optionId?: string, streamId?: string, title: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate', params: {serviceName: string, dashboardId: string, autoSelectOption?: boolean, description?: string, optionId?: string, streamId?: string, title?: string}): Promise<DbaasLogsOperation>;
   /**
   Streams
   Register a new graylog stream
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream', params: {serviceName: string, autoSelectOption?: boolean, coldStorageCompression?: DbaasLogsStreamColdStorageCompressionEnum, coldStorageContent?: DbaasLogsStreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: DbaasLogsStreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, parentStreamId?: string, title: string, webSocketEnabled?: boolean}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream', params: {serviceName: string, autoSelectOption?: boolean, coldStorageCompression?: DbaasLogsStreamColdStorageCompressionEnum, coldStorageContent?: DbaasLogsStreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: DbaasLogsStreamColdStorageTargetEnum, description?: string, indexingEnabled?: boolean, optionId?: string, parentStreamId?: string, title?: string, webSocketEnabled?: boolean}): Promise<DbaasLogsOperation>;
   /**
   StreamAlerts
   Register a new alert on specified graylog stream
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert', params: {serviceName: string, streamId: string, backlog: number, conditionType?: DbaasLogsStreamAlertConditionConditionTypeEnum, constraintType?: DbaasLogsStreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: DbaasLogsStreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert', params: {serviceName: string, streamId: string, backlog?: number, conditionType?: DbaasLogsStreamAlertConditionConditionTypeEnum, constraintType?: DbaasLogsStreamAlertConditionConstraintTypeEnum, field?: string, grace?: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: DbaasLogsStreamAlertConditionThresholdTypeEnum, time?: number, title?: string, value?: string}): Promise<DbaasLogsOperation>;
   /**
   Streams
   Get a public temporary URL to access the archive
@@ -1930,47 +2700,47 @@ export class ApiDbaasLogs extends OvhWrapper {
   StreamRules
   Register a new rule on specified graylog stream
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {serviceName: string, streamId: string, field: string, isInverted?: boolean, operator: DbaasLogsStreamRuleOperatorEnum, value: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {streamId: string, serviceName: string, field?: string, isInverted?: boolean, operator?: DbaasLogsStreamRuleOperatorEnum, value?: string}): Promise<DbaasLogsOperation>;
   /**
   Roles
   Register a new role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role', params: {serviceName: string, autoSelectOption?: boolean, description: string, name: string, optionId?: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role', params: {serviceName: string, autoSelectOption?: boolean, description?: string, name?: string, optionId?: string}): Promise<DbaasLogsOperation>;
   /**
   RoleMembers
   Append user into the member list of specified role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/member', params: {serviceName: string, roleId: string, note?: string, username: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/member', params: {serviceName: string, roleId: string, note?: string, username?: string}): Promise<DbaasLogsOperation>;
   /**
   RolePermissionAlias
   Append a elasticsearch alias permission to role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/alias', params: {serviceName: string, roleId: string, aliasId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/alias', params: {roleId: string, serviceName: string, aliasId?: string}): Promise<DbaasLogsOperation>;
   /**
   RolePermissionIndex
   Append a graylog dashboard permission to role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard', params: {serviceName: string, roleId: string, dashboardId: string, permissionType?: DbaasLogsPermissionDashboardPermissionTypeEnum}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard', params: {roleId: string, serviceName: string, dashboardId?: string, permissionType?: DbaasLogsPermissionDashboardPermissionTypeEnum}): Promise<DbaasLogsOperation>;
   /**
   RolePermissionIndex
   Append a elasticsearch index permission to role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/index', params: {serviceName: string, roleId: string, indexId: string, permissionType?: DbaasLogsPermissionIndexPermissionTypeEnum}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/index', params: {serviceName: string, roleId: string, indexId?: string, permissionType?: DbaasLogsPermissionIndexPermissionTypeEnum}): Promise<DbaasLogsOperation>;
   /**
   RolePermissionIndex
   Append a graylog stream permission to role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/stream', params: {serviceName: string, roleId: string, streamId: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/stream', params: {serviceName: string, roleId: string, streamId?: string}): Promise<DbaasLogsOperation>;
   /**
   Tokens
   Add a new token
   **/
-  public post(path: '/dbaas/logs/{serviceName}/token', params: {serviceName: string, clusterId?: string, name: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/token', params: {serviceName: string, clusterId?: string, name?: string}): Promise<DbaasLogsOperation>;
   /**
   ServiceChangePassword
   Initiate a password change procedure.
   **/
-  public post(path: '/dbaas/logs/{serviceName}/user/changePassword', params: {serviceName: string, password: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/user/changePassword', params: {serviceName: string, password?: string}): Promise<DbaasLogsOperation>;
   public post(path: PathsDbaasLogsPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}
@@ -1988,7 +2758,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   InputAllowedNetwork
   Remove the specified IP from the list of allowed networks
   **/
-  public delete(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {serviceName: string, inputId: string, allowedNetworkId: string}): Promise<DbaasLogsOperation>;
+  public delete(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {inputId: string, serviceName: string, allowedNetworkId: string}): Promise<DbaasLogsOperation>;
   /**
   Alias
   Remove specified elasticsearch alias
@@ -1998,12 +2768,12 @@ export class ApiDbaasLogs extends OvhWrapper {
   AliasStream
   Detach a elasticsearch index from specified elasticsearch alias
   **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}', params: {serviceName: string, aliasId: string, indexId: string}): Promise<DbaasLogsOperation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}', params: {aliasId: string, serviceName: string, indexId: string}): Promise<DbaasLogsOperation>;
   /**
   AliasStream
   Detach a graylog stream from specified elasticsearch alias
   **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}', params: {serviceName: string, aliasId: string, streamId: string}): Promise<DbaasLogsOperation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}', params: {streamId: string, aliasId: string, serviceName: string}): Promise<DbaasLogsOperation>;
   /**
   Index
   Remove specified elasticsearch index
@@ -2023,12 +2793,12 @@ export class ApiDbaasLogs extends OvhWrapper {
   StreamAlert
   Remove alert from specified graylog stream
   **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {serviceName: string, streamId: string, alertId: string}): Promise<DbaasLogsOperation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {streamId: string, serviceName: string, alertId: string}): Promise<DbaasLogsOperation>;
   /**
   StreamRule
   Remove specified graylog stream rule
   **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', params: {serviceName: string, streamId: string, ruleId: string}): Promise<DbaasLogsOperation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', params: {streamId: string, serviceName: string, ruleId: string}): Promise<DbaasLogsOperation>;
   /**
   Role
   Remove specified role

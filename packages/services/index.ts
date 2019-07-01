@@ -11,14 +11,18 @@ export interface ComplexTypeSafeKeyValue<T> {
   value: T;
 }
 /**
- * Price with it's currency and textual representation
+ * Currency code
+ */
+export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL' | 'MAD' | 'N/A' | 'PLN' | 'SGD' | 'TND' | 'USD' | 'XOF' | 'points';
+/**
+ * Price with its currency and textual representation
  */
 export interface OrderPrice {
   /**
    * Currency code
    *
    */
-  currencyCode: PriceCurrencyCodeEnum;
+  currencyCode: OrderCurrencyCodeEnum;
   /**
    * Textual representation
    *
@@ -30,10 +34,6 @@ export interface OrderPrice {
    */
   value: number;
 }
-/**
- * Currency code
- */
-export type PriceCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL' | 'MAD' | 'N/A' | 'PLN' | 'SGD' | 'TND' | 'USD' | 'XOF' | 'points';
 /**
  * Description of an invoice
  */
@@ -127,6 +127,41 @@ export interface ServicesBillingEngagementEngagementPeriod {
    *
    */
   startDate: string;
+}
+/**
+ * Contact change request
+ */
+export interface ServicesContactsContactChangeRequest {
+  /**
+   * List of accounts you want to be considered as 'admin' of the service
+   *
+   */
+  admin: string[];
+  /**
+   * List of accounts you want to be considered as 'billing' contact
+   *
+   */
+  billing: string[];
+  /**
+   * List of accounts you want to be considered as 'technical' contact
+   *
+   */
+  technical: string[];
+}
+/**
+ * Contact change task
+ */
+export interface ServicesContactsTask {
+  /**
+   * Unique identifier of the Task
+   *
+   */
+  id: number;
+  /**
+   * Computed API route to fetch and manage the Task created
+   *
+   */
+  route: string;
 }
 /**
  * Billing informations of the service
@@ -242,6 +277,79 @@ export interface ServicesExpandedService {
    *
    */
   serviceId: number;
+}
+/**
+ * Confirm service termination request
+ */
+export interface ServicesTerminateConfirmServiceTerminationRequest {
+  /**
+   * Acknowledge potential fees regarding service termination. Fees can be deduced from GET /1.0/services/{serviceId}/terminate/fees
+   *
+   */
+  acknowledgePotentialFees: boolean;
+  /**
+   * Commentary about your termination request
+   *
+   */
+  comment: string;
+  /**
+   * What next after your termination request
+   *
+   */
+  futureUse: ServicesTerminateTerminationFutureUseEnum;
+  /**
+   * Reason of your termination request
+   *
+   */
+  reason: ServicesTerminateTerminationReasonEnum;
+  /**
+   * The termination token sent by mail to the admin contact
+   *
+   */
+  token: string;
+}
+/**
+ * Termination instructions
+ */
+export interface ServicesTerminateTerminationAnswer {
+  /**
+   * Termination instructions to be followed
+   *
+   */
+  message: string;
+}
+/**
+ * Termination fees
+ */
+export interface ServicesTerminateTerminationFees {
+  /**
+   * Duration (compliant with RFC3339) used to calculate your termination fees
+   *
+   */
+  durationLeft: string;
+  /**
+   * Price computed from the duration left
+   *
+   */
+  fees: OrderPrice;
+}
+/**
+ * Future uses you can provide for a service termination
+ */
+export type ServicesTerminateTerminationFutureUseEnum = 'NOT_REPLACING_SERVICE' | 'OTHER' | 'SUBSCRIBE_AN_OTHER_SERVICE' | 'SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR' | 'SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR';
+/**
+ * Reasons you can provide for a service termination
+ */
+export type ServicesTerminateTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PERFORMANCES' | 'MIGRATED_TO_ANOTHER_OVH_PRODUCT' | 'MIGRATED_TO_COMPETITOR' | 'NOT_NEEDED_ANYMORE' | 'NOT_RELIABLE' | 'NO_ANSWER' | 'OTHER' | 'TOO_EXPENSIVE' | 'TOO_HARD_TO_USE' | 'UNSATIFIED_BY_CUSTOMER_SUPPORT';
+/**
+ * Service termination request
+ */
+export interface ServicesTerminateTerminationRequest {
+  /**
+   * Acknowledge potential fees regarding service termination. Fees can be deduced from GET /1.0/services/{serviceId}/terminate/fees
+   *
+   */
+  acknowledgePotentialFees: boolean;
 }
 type PathsServicesGET = '/services' | 
 '/services/{serviceId}' | 

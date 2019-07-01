@@ -458,6 +458,11 @@ export interface ConnectivityEligibilityOfferProduct {
    */
   type: ConnectivityEligibilityOfferProductTypeEnum;
   /**
+   * Unbundling type : full or partial, for copper only
+   *
+   */
+  unbundlingType?: ConnectivityEligibilityOfferProductUnbundlingTypeEnum;
+  /**
    * Upload rate in Mb
    *
    */
@@ -471,6 +476,10 @@ export type ConnectivityEligibilityOfferProductProviderEnum = 'AXIONE' | 'KOSC' 
  * Offer product type
  */
 export type ConnectivityEligibilityOfferProductTypeEnum = 'ADSL' | 'FTTH' | 'SDSL' | 'VDSL';
+/**
+ * Offer product unbundling type
+ */
+export type ConnectivityEligibilityOfferProductUnbundlingTypeEnum = 'full' | 'partial';
 /**
  * Portability details of the line number
  */

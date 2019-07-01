@@ -4023,13 +4023,17 @@ type PathsMePOST = '/me/accessRestriction/backupCode' |
 '/me/ovhAccount/{ovhAccountId}/retrieveMoney' | 
 '/me/passwordRecover' | 
 '/me/payment/method' | 
+'/me/payment/method/{paymentMethodId}/challenge' | 
 '/me/payment/method/{paymentMethodId}/finalize' | 
 '/me/paymentMean/bankAccount' | 
+'/me/paymentMean/bankAccount/{id}/challenge' | 
 '/me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean' | 
 '/me/paymentMean/creditCard' | 
+'/me/paymentMean/creditCard/{id}/challenge' | 
 '/me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean' | 
 '/me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean' | 
 '/me/paymentMean/paypal' | 
+'/me/paymentMean/paypal/{id}/challenge' | 
 '/me/paymentMean/paypal/{id}/chooseAsDefaultPaymentMean' | 
 '/me/sla/{id}/apply' | 
 '/me/sshKey' | 
@@ -5338,6 +5342,11 @@ export class ApiMe extends OvhWrapper {
   **/
   public post(path: '/me/payment/method'): Promise<MePaymentMethodRegisterValidationResult>;
   /**
+  Challenge your payment method
+  Challenge one payment method
+  **/
+  public post(path: '/me/payment/method/{paymentMethodId}/challenge', params: {paymentMethodId: number, challenge: string}): Promise<MePaymentMethodPaymentMethod>;
+  /**
   Finalize one payment method registration
   Finalize one payment method registration
   **/
@@ -5348,6 +5357,11 @@ export class ApiMe extends OvhWrapper {
   **/
   public post(path: '/me/paymentMean/bankAccount'): Promise<BillingPaymentMeanValidation>;
   /**
+  challenge operations
+  Challenge your bank account
+  **/
+  public post(path: '/me/paymentMean/bankAccount/{id}/challenge', params: {id: number, challenge: string}): Promise<void>;
+  /**
   chooseAsDefaultPaymentMean operations
   Choose this bank account as your default payment mean. Will cancel the previous choice.
   **/
@@ -5357,6 +5371,11 @@ export class ApiMe extends OvhWrapper {
   Add a new credit card
   **/
   public post(path: '/me/paymentMean/creditCard'): Promise<BillingPaymentMeanValidation>;
+  /**
+  challenge operations
+  Challenge your bank account
+  **/
+  public post(path: '/me/paymentMean/creditCard/{id}/challenge', params: {id: number, challenge: string}): Promise<void>;
   /**
   chooseAsDefaultPaymentMean operations
   Choose this credit card as your default payment mean. Will cancel the previous choice.
@@ -5372,6 +5391,11 @@ export class ApiMe extends OvhWrapper {
   Enable payment through a new PayPal account
   **/
   public post(path: '/me/paymentMean/paypal'): Promise<BillingPaymentMeanValidation>;
+  /**
+  challenge operations
+  Challenge your bank account
+  **/
+  public post(path: '/me/paymentMean/paypal/{id}/challenge', params: {id: number, challenge: string}): Promise<void>;
   /**
   chooseAsDefaultPaymentMean operations
   Choose this Paypal agreement as your default payment mean. Will cancel the previous choice.

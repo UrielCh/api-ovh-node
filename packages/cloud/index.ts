@@ -1267,16 +1267,6 @@ export interface CloudContainerRegistryRegistryRegistry {
   version: string;
 }
 /**
- * Docker registry creation result
- */
-export interface CloudContainerRegistryRegistryRegistryCreationResult {
-  /**
-   * Registry ID
-   *
-   */
-  id: string;
-}
-/**
  * Status of the registry
  */
 export type CloudContainerRegistryRegistryStatusEnum = 'DELETED' | 'DELETING' | 'ERROR' | 'INSTALLING' | 'READY' | 'RESTORING' | 'SUSPENDED' | 'SUSPENDING' | 'UPDATING';
@@ -2640,7 +2630,7 @@ export interface CloudProjectNewProjectInfoError {
 /**
  * Possible values for error code on project creation
  */
-export type CloudProjectNewProjectInfoErrorCodeEnum = 'accountNotEligible' | 'invalidPaymentMean' | 'maxProjectsLimitReached' | 'paypalAccountNotVerified' | 'unpaidDebts';
+export type CloudProjectNewProjectInfoErrorCodeEnum = 'accountNotEligible' | 'challengePaymentMethodRequested' | 'invalidPaymentMean' | 'maxProjectsLimitReached' | 'paypalAccountNotVerified' | 'unpaidDebts';
 /**
  * Information about voucher
  */
@@ -2660,6 +2650,25 @@ export interface CloudProjectNewProjectInfoVoucher {
  * Possible values for new project status
  */
 export type CloudProjectNewProjectStatusEnum = 'creating' | 'ok' | 'validationPending' | 'waitingAgreementsValidation';
+/**
+ * Product agreements
+ */
+export interface CloudProjectProductAgreements {
+  /**
+   * Agreements to validate
+   *
+   */
+  agreementsToValidate?: number[];
+  /**
+   * Agreements already validated
+   *
+   */
+  agreementsValidated?: number[];
+}
+/**
+ * Possible values for cloud project product name
+ */
+export type CloudProjectProductNameEnum = 'registry';
 /**
  * Possible values for project status
  */
@@ -4010,6 +4019,7 @@ export interface ServicesService {
   status: ServiceStateEnum;
 }
 type PathsCloudGET = '/cloud' | 
+'/cloud/agreements' | 
 '/cloud/createProjectInfo' | 
 '/cloud/order' | 
 '/cloud/price' | 
@@ -4023,6 +4033,9 @@ type PathsCloudGET = '/cloud' |
 '/cloud/project/{serviceName}/alerting/{id}/alert/{alertId}' | 
 '/cloud/project/{serviceName}/bill' | 
 '/cloud/project/{serviceName}/consumption' | 
+'/cloud/project/{serviceName}/containerRegistry' | 
+'/cloud/project/{serviceName}/containerRegistry/{registryID}' | 
+'/cloud/project/{serviceName}/containerRegistry/{registryID}/users' | 
 '/cloud/project/{serviceName}/credit' | 
 '/cloud/project/{serviceName}/credit/{id}' | 
 '/cloud/project/{serviceName}/flavor' | 
@@ -4098,6 +4111,7 @@ type PathsCloudGET = '/cloud' |
 
 type PathsCloudPUT = '/cloud/project/{serviceName}' | 
 '/cloud/project/{serviceName}/alerting/{id}' | 
+'/cloud/project/{serviceName}/containerRegistry/{registryID}' | 
 '/cloud/project/{serviceName}/instance/{instanceId}' | 
 '/cloud/project/{serviceName}/kube/{kubeId}' | 
 '/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy' | 
@@ -4116,6 +4130,8 @@ type PathsCloudPOST = '/cloud/createProject' |
 '/cloud/project/{serviceName}/cancel' | 
 '/cloud/project/{serviceName}/changeContact' | 
 '/cloud/project/{serviceName}/confirmTermination' | 
+'/cloud/project/{serviceName}/containerRegistry' | 
+'/cloud/project/{serviceName}/containerRegistry/{registryID}/users' | 
 '/cloud/project/{serviceName}/credit' | 
 '/cloud/project/{serviceName}/instance' | 
 '/cloud/project/{serviceName}/instance/bulk' | 
@@ -4169,6 +4185,8 @@ type PathsCloudPOST = '/cloud/createProject' |
 
 type PathsCloudDELETE = '/cloud/project/{serviceName}/acl/{accountId}' | 
 '/cloud/project/{serviceName}/alerting/{id}' | 
+'/cloud/project/{serviceName}/containerRegistry/{registryID}' | 
+'/cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}' | 
 '/cloud/project/{serviceName}/instance/group/{groupId}' | 
 '/cloud/project/{serviceName}/instance/{instanceId}' | 
 '/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}' | 
@@ -4195,6 +4213,11 @@ export class ApiCloud extends OvhWrapper {
   List available services
   **/
   public get(path: '/cloud'): Promise<string[]>;
+  /**
+  Get agreements related to a product
+  Get agreements related to a product
+  **/
+  public get(path: '/cloud/agreements'): Promise<CloudProjectProductAgreements>;
   /**
   Get information about a cloud project creation
   Get information about a cloud project creation
@@ -4260,6 +4283,21 @@ export class ApiCloud extends OvhWrapper {
   Get your project consumption
   **/
   public get(path: '/cloud/project/{serviceName}/consumption', params: {serviceName: string, from: string, to: string}): Promise<CloudProjectProjectUsage>;
+  /**
+  Manage registries
+  List registries of the project
+  **/
+  public get(path: '/cloud/project/{serviceName}/containerRegistry', params: {serviceName: string}): Promise<CloudContainerRegistryRegistryRegistry[]>;
+  /**
+  Manage a Docker registry
+  Get the registry information
+  **/
+  public get(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}', params: {registryID: string, serviceName: string}): Promise<CloudContainerRegistryRegistryRegistry>;
+  /**
+  Manage users
+  List registry user
+  **/
+  public get(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}/users', params: {registryID: string, serviceName: string}): Promise<CloudContainerRegistryUserUser[]>;
   /**
   List the cloud.Credit objects
   Get your credit
@@ -4489,7 +4527,7 @@ export class ApiCloud extends OvhWrapper {
   Missing description
   Get storage container
   **/
-  public get(path: '/cloud/project/{serviceName}/storage/{containerId}', params: {containerId: string, serviceName: string}): Promise<CloudStorageContainerDetail>;
+  public get(path: '/cloud/project/{serviceName}/storage/{containerId}', params: {containerId: string, serviceName: string, noObjects?: boolean}): Promise<CloudStorageContainerDetail>;
   /**
   Missing description
   Get current usage
@@ -4634,6 +4672,11 @@ export class ApiCloud extends OvhWrapper {
   **/
   public put(path: '/cloud/project/{serviceName}/alerting/{id}', params: {serviceName: string, id: string, creationDate?: string, delay?: CloudAlertingDelayEnum, email?: string, formattedMonthlyThreshold?: OrderPrice, monthlyThreshold?: number}): Promise<void>;
   /**
+  Manage a Docker registry
+  Update the registry
+  **/
+  public put(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}', params: {registryID: string, serviceName: string, name: string}): Promise<void>;
+  /**
   Missing description
   Alter an instance
   **/
@@ -4721,6 +4764,16 @@ export class ApiCloud extends OvhWrapper {
   Confirm termination of your service
   **/
   public post(path: '/cloud/project/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
+  /**
+  Manage registries
+  Create a new registry
+  **/
+  public post(path: '/cloud/project/{serviceName}/containerRegistry', params: {serviceName: string, name: string, region: CloudContainerRegistryRegistryRegionEnum}): Promise<CloudContainerRegistryRegistryRegistry>;
+  /**
+  Manage users
+  Create a new registry user
+  **/
+  public post(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}/users', params: {registryID: string, serviceName: string, email?: string, login?: string}): Promise<CloudContainerRegistryUserUser>;
   /**
   List the cloud.Credit objects
   Add credit to your project
@@ -4984,6 +5037,16 @@ export class ApiCloud extends OvhWrapper {
   Delete alerting
   **/
   public delete(path: '/cloud/project/{serviceName}/alerting/{id}', params: {serviceName: string, id: string}): Promise<void>;
+  /**
+  Manage a Docker registry
+  Delete a registry
+  **/
+  public delete(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}', params: {registryID: string, serviceName: string}): Promise<void>;
+  /**
+  Manage users
+  Delete a registry user
+  **/
+  public delete(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}', params: {registryID: string, serviceName: string, userID: string}): Promise<void>;
   /**
   Missing description
   Delete a group

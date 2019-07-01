@@ -1174,6 +1174,9 @@ export interface XdslModemCapabilities {
   canReboot: boolean;
   /**
    */
+  canReconfigureVoip: boolean;
+  /**
+   */
   canRefreshConnectedDevices: boolean;
   /**
    */
@@ -3302,6 +3305,7 @@ type PathsXdslPOST = '/xdsl/eligibility/lines/active' |
 '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses' | 
 '/xdsl/{serviceName}/modem/portMappings' | 
 '/xdsl/{serviceName}/modem/reboot' | 
+'/xdsl/{serviceName}/modem/reconfigureVoip' | 
 '/xdsl/{serviceName}/modem/refreshConnectedDevices' | 
 '/xdsl/{serviceName}/modem/reset' | 
 '/xdsl/{serviceName}/modem/resetPortMappingConfig' | 
@@ -3915,6 +3919,11 @@ export class ApiXdsl extends OvhWrapper {
   Reboot the modem
   **/
   public post(path: '/xdsl/{serviceName}/modem/reboot', params: {serviceName: string, todoDate?: string}): Promise<XdslTask>;
+  /**
+  reconfigureVoip operations
+  Reconfigure voip line on modem
+  **/
+  public post(path: '/xdsl/{serviceName}/modem/reconfigureVoip', params: {serviceName: string}): Promise<void>;
   /**
   refreshConnectedDevices operations
   Refresh the list of connected devices on the modem

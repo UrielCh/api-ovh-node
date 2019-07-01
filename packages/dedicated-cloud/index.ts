@@ -1986,6 +1986,29 @@ export type DedicatedCloudRightUserObjectRightTypeEnum = 'cluster' | 'datastore'
  */
 export type DedicatedCloudRightVmNetworkRoleEnum = 'admin' | 'noAccess' | 'readonly';
 /**
+ * Service pack informations
+ */
+export interface DedicatedCloudServicePack {
+  /**
+   * Name of the service pack
+   *
+   */
+  name: DedicatedCloudServicePackEnum;
+  /**
+   * State of the service pack
+   *
+   */
+  state: DedicatedCloudServicePackStateEnum;
+}
+/**
+ * List of possible service pack
+ */
+export type DedicatedCloudServicePackEnum = 'default' | 'hds' | 'hipaa' | 'legacy' | 'nsx' | 'nsx-and-vrops' | 'pcidss' | 'vrops';
+/**
+ * List of possible state of the service pack
+ */
+export type DedicatedCloudServicePackStateEnum = 'activating' | 'active' | 'waitingForCustomer';
+/**
  * Trust IP which can bypass the two factor authentication
  */
 export interface DedicatedCloudTwoFAWhitelist {
@@ -2405,6 +2428,7 @@ type PathsDedicatedCloudGET = '/dedicatedCloud' |
 '/dedicatedCloud/{serviceName}/robot' | 
 '/dedicatedCloud/{serviceName}/robot/{name}' | 
 '/dedicatedCloud/{serviceName}/serviceInfos' | 
+'/dedicatedCloud/{serviceName}/servicePack' | 
 '/dedicatedCloud/{serviceName}/servicePacks' | 
 '/dedicatedCloud/{serviceName}/servicePacks/{name}' | 
 '/dedicatedCloud/{serviceName}/task' | 
@@ -2917,6 +2941,11 @@ export class ApiDedicatedCloud extends OvhWrapper {
   Get this object properties
   **/
   public get(path: '/dedicatedCloud/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  /**
+  servicePack operations
+  Retrieve the service pack informations
+  **/
+  public get(path: '/dedicatedCloud/{serviceName}/servicePack', params: {serviceName: string}): Promise<DedicatedCloudServicePack>;
   /**
   List the dedicatedCloud.ServicePack objects
   Service Pack compliant with the current Private Cloud

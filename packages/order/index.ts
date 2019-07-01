@@ -288,6 +288,16 @@ export interface HostingWebCronLanguageAvailable {
    *
    */
   php: HostingWebPhpVersionAvailableEnum[];
+  /**
+   * Python versions
+   *
+   */
+  python: HostingWebPythonVersionAvailableEnum[];
+  /**
+   * Ruby versions
+   *
+   */
+  ruby: HostingWebRubyVersionAvailableEnum[];
 }
 /**
  * Disk properties (size and type of disk)
@@ -333,6 +343,14 @@ export type HostingWebOfferEnum = 'CLOUDWEB_1' | 'CLOUDWEB_2' | 'CLOUDWEB_3' | '
  * Different PHP versions available
  */
 export type HostingWebPhpVersionAvailableEnum = 'phpfpm-5.6' | 'phpfpm-7.0' | 'phpfpm-7.1' | 'phpfpm-7.2' | 'phpfpm-7.3';
+/**
+ * Different Python versions available
+ */
+export type HostingWebPythonVersionAvailableEnum = 'python-2' | 'python-3';
+/**
+ * Different Ruby versions available
+ */
+export type HostingWebRubyVersionAvailableEnum = 'ruby-2.4' | 'ruby-2.5' | 'ruby-2.6';
 /**
  * Struct which describs quota and available for a specific type of database
  */
@@ -462,23 +480,29 @@ export type NichandleLegalFormEnum = 'administration' | 'association' | 'corpora
 /**
  * OVH subsidiaries
  */
-export type NichandleOvhSubsidiaryEnum = 'ASIA' | 'AU' | 'CA' | 'CZ' | 'DE' | 'ES' | 'EU' | 'FI' | 'FR' | 'GB' | 'IE' | 'IT' | 'LT' | 'MA' | 'NL' | 'PL' | 'PT' | 'QC' | 'SG' | 'SN' | 'TN' | 'US' | 'WE' | 'WS';
+export type NichandleOvhSubsidiaryEnum = 'CZ' | 'DE' | 'ES' | 'EU' | 'FI' | 'FR' | 'GB' | 'IE' | 'IT' | 'LT' | 'MA' | 'NL' | 'PL' | 'PT' | 'SN' | 'TN';
 /**
  * A contract
  */
 export interface OrderContract {
   /**
+   * Terms of the contract
+   *
    */
   content: string;
   /**
+   * Name of the contract
+   *
    */
   name: string;
   /**
+   * URL to download the contract
+   *
    */
   url: string;
 }
 /**
- * 
+ * Currency code
  */
 export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL' | 'MAD' | 'N/A' | 'PLN' | 'SGD' | 'TND' | 'USD' | 'XOF' | 'points';
 /**
@@ -486,18 +510,28 @@ export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL
  */
 export interface OrderOrder {
   /**
+   * List of contracts related to the order
+   *
    */
   contracts: OrderContract[];
   /**
+   * Details of the order
+   *
    */
   details: OrderOrderDetail[];
   /**
+   * Identifier of the order
+   *
    */
   orderId?: number;
   /**
+   * Prices of the order including with and without taxes
+   *
    */
   prices: OrderOrderPrices;
   /**
+   * URL to download the order
+   *
    */
   url?: string;
 }
@@ -506,21 +540,33 @@ export interface OrderOrder {
  */
 export interface OrderOrderDetail {
   /**
+   * Description of the detail
+   *
    */
   description: string;
   /**
+   * Type of detail
+   *
    */
   detailType?: OrderOrderDetailTypeEnum;
   /**
+   * Service name
+   *
    */
   domain: string;
   /**
+   * Quantity of the service
+   *
    */
   quantity: number;
   /**
+   * Price total of the services
+   *
    */
   totalPrice: OrderPrice;
   /**
+   * Unitary price of the service
+   *
    */
   unitPrice: OrderPrice;
 }
@@ -533,26 +579,38 @@ export type OrderOrderDetailTypeEnum = 'ACCESSORY' | 'CAUTION' | 'CHOOSED' | 'CO
  */
 export interface OrderOrderPrices {
   /**
+   * Tax amount
+   *
    */
   tax: OrderPrice;
   /**
+   * Price with tax
+   *
    */
   withTax: OrderPrice;
   /**
+   * Price without tax
+   *
    */
   withoutTax: OrderPrice;
 }
 /**
- * Price with it's currency and textual representation
+ * Price with its currency and textual representation
  */
 export interface OrderPrice {
   /**
+   * Currency code
+   *
    */
   currencyCode: OrderCurrencyCodeEnum;
   /**
+   * Textual representation
+   *
    */
   text: string;
   /**
+   * The effective price
+   *
    */
   value: number;
 }
@@ -585,6 +643,21 @@ export interface OrderCartCart {
    *
    */
   readOnly: boolean;
+}
+/**
+ * null
+ */
+export interface OrderCartCheckout {
+  /**
+   * Indicates that order will be automatically paid with preferred payment method
+   *
+   */
+  autoPayWithPreferredPaymentMethod: boolean;
+  /**
+   * Indicates that order will be processed with waiving retractation period
+   *
+   */
+  waiveRetractationPeriod: boolean;
 }
 /**
  * Representation of a configuration item for personalizing product
@@ -630,6 +703,66 @@ export interface OrderCartConfigurationRequirements {
    *
    */
   type: string;
+}
+/**
+ * null
+ */
+export interface OrderCartCouponCreation {
+  /**
+   * Coupon identifier
+   *
+   */
+  coupon: string;
+}
+/**
+ * null
+ */
+export interface OrderCartCreation {
+  /**
+   * Description of your cart
+   *
+   */
+  description: string;
+  /**
+   * Time of expiration of the cart
+   *
+   */
+  expire: string;
+  /**
+   * OVH Subsidiary where you want to order
+   *
+   */
+  ovhSubsidiary: NichandleOvhSubsidiaryEnum;
+}
+/**
+ * null
+ */
+export interface OrderCartDomainPacksCreation {
+  /**
+   * Domain name to order
+   *
+   */
+  domain: string;
+  /**
+   * Duration selected for the purchase of the product
+   *
+   */
+  duration: string;
+  /**
+   * Identifier of the Domain Packs offer (AllDom)
+   *
+   */
+  planCode: string;
+  /**
+   * Pricing mode selected for the purchase of the product
+   *
+   */
+  pricingMode: string;
+  /**
+   * Quantity of product desired
+   *
+   */
+  quantity: number;
 }
 /**
  * Specific details about domain packs offer
@@ -687,9 +820,149 @@ export interface OrderCartDomainSettings {
   domain: string;
 }
 /**
- * Unit that correspond to a duration range
+ * Unit corresponding to a duration range
  */
 export type OrderCartDurationUnitEnum = 'day' | 'month' | 'none';
+/**
+ * null
+ */
+export interface OrderCartGenericDedicatedCreation {
+  /**
+   * Duration selected for the purchase of the product
+   *
+   */
+  duration: string;
+  /**
+   * Identifier of a dedicated server offer
+   *
+   */
+  planCode: string;
+  /**
+   * Pricing mode selected for the purchase of the product
+   *
+   */
+  pricingMode: string;
+  /**
+   * Quantity of product desired
+   *
+   */
+  quantity: number;
+}
+/**
+ * null
+ */
+export interface OrderCartGenericDedicatedOptionsCreation {
+  /**
+   * Duration selected for the purchase of the product
+   *
+   */
+  duration: string;
+  /**
+   * Cart item to be linked
+   *
+   */
+  itemId: number;
+  /**
+   * Identifier of a dedicated server offer
+   *
+   */
+  planCode: string;
+  /**
+   * Pricing mode selected for the purchase of the product
+   *
+   */
+  pricingMode: string;
+  /**
+   * Quantity of product desired
+   *
+   */
+  quantity: number;
+}
+/**
+ * null
+ */
+export interface OrderCartGenericDomainCreation {
+  /**
+   * Domain name to order
+   *
+   */
+  domain: string;
+  /**
+   * Duration for the product
+   *
+   */
+  duration?: string;
+  /**
+   * Offer unique identifier
+   *
+   */
+  offerId?: string;
+  /**
+   * Quantity to order
+   *
+   */
+  quantity?: number;
+}
+/**
+ * null
+ */
+export interface OrderCartGenericDomainOptionsCreation {
+  /**
+   * Duration selected for the purchase of the product
+   *
+   */
+  duration: string;
+  /**
+   * Cart item to be linked
+   *
+   */
+  itemId: number;
+  /**
+   * Identifier of a domain name option offer
+   *
+   */
+  planCode: string;
+  /**
+   * Pricing mode selected for the purchase of the product
+   *
+   */
+  pricingMode: string;
+  /**
+   * Quantity of product desired
+   *
+   */
+  quantity: number;
+}
+/**
+ * null
+ */
+export interface OrderCartGenericOptionCreation {
+  /**
+   * Duration selected for the purchase of the product
+   *
+   */
+  duration: string;
+  /**
+   * Cart item to be linked
+   *
+   */
+  itemId: number;
+  /**
+   * Identifier of the option offer
+   *
+   */
+  planCode: string;
+  /**
+   * Pricing mode selected for the purchase of the product
+   *
+   */
+  pricingMode: string;
+  /**
+   * Quantity of product desired
+   *
+   */
+  quantity: number;
+}
 /**
  * Representation of a generic product option
  */
@@ -729,6 +1002,31 @@ export interface OrderCartGenericOptionDefinition {
    *
    */
   productType: OrderCartGenericProductTypeEnum;
+}
+/**
+ * null
+ */
+export interface OrderCartGenericProductCreation {
+  /**
+   * Duration selected for the purchase of the product
+   *
+   */
+  duration: string;
+  /**
+   * Identifier of the offer
+   *
+   */
+  planCode: string;
+  /**
+   * Pricing mode selected for the purchase of the product
+   *
+   */
+  pricingMode: string;
+  /**
+   * Quantity of product desired
+   *
+   */
+  quantity: number;
 }
 /**
  * Representation of a generic product
@@ -892,6 +1190,36 @@ export interface OrderCartItem {
   settings: OrderCartDomainSettings;
 }
 /**
+ * null
+ */
+export interface OrderCartItemConfigurationCreation {
+  /**
+   * Label for your configuration item
+   *
+   */
+  label: string;
+  /**
+   * Value or resource URL on API.OVH.COM of your configuration item
+   *
+   */
+  value: string;
+}
+/**
+ * null
+ */
+export interface OrderCartItemUpdate {
+  /**
+   * New duration for item
+   *
+   */
+  duration: string;
+  /**
+   * New quantity for item
+   *
+   */
+  quantity: number;
+}
+/**
  * Price informations with label
  */
 export interface OrderCartPrice {
@@ -964,6 +1292,21 @@ export interface OrderCartProductInformation {
    *
    */
   quantityMax: number;
+}
+/**
+ * null
+ */
+export interface OrderCartUpdate {
+  /**
+   * Description of your cart
+   *
+   */
+  description: string;
+  /**
+   * Time of expiration of the cart
+   *
+   */
+  expire: string;
 }
 /**
  * Information about a Web Hosting offer information
@@ -2532,6 +2875,8 @@ export type VrackBlockCountryEnum = 'be' | 'cz' | 'de' | 'es' | 'fi' | 'fr' | 'i
 export type VrackBlockSizeEnum = '128' | '16' | '256' | '32' | '4' | '64' | '8';
 type PathsOrderGET = '/order/cart' | 
 '/order/cart/{cartId}' | 
+'/order/cart/{cartId}/analytics' | 
+'/order/cart/{cartId}/analytics/options' | 
 '/order/cart/{cartId}/baremetalServers' | 
 '/order/cart/{cartId}/baremetalServers/options' | 
 '/order/cart/{cartId}/cdn' | 
@@ -2958,6 +3303,8 @@ type PathsOrderPUT = '/order/cart/{cartId}' |
 '/order/cart/{cartId}/item/{itemId}';
 
 type PathsOrderPOST = '/order/cart' | 
+'/order/cart/{cartId}/analytics' | 
+'/order/cart/{cartId}/analytics/options' | 
 '/order/cart/{cartId}/assign' | 
 '/order/cart/{cartId}/baremetalServers' | 
 '/order/cart/{cartId}/baremetalServers/options' | 
@@ -3213,6 +3560,16 @@ export class ApiOrder extends OvhWrapper {
   **/
   public get(path: '/order/cart/{cartId}', params: {cartId: string}): Promise<OrderCartCart>;
   /**
+  Create a analytics project
+  Get informations about analytics offers
+  **/
+  public get(path: '/order/cart/{cartId}/analytics', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
+  /**
+  List all addons possible for a analytics project
+  Get informations about analytics options
+  **/
+  public get(path: '/order/cart/{cartId}/analytics/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
+  /**
   Missing description
   Get informations about a baremetal server
   **/
@@ -3446,7 +3803,7 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Retrieve all required configuration item of the cart item
   **/
-  public get(path: '/order/cart/{cartId}/item/{itemId}/requiredConfiguration', params: {cartId: string, itemId: number}): Promise<OrderCartConfigurationRequirements[]>;
+  public get(path: '/order/cart/{cartId}/item/{itemId}/requiredConfiguration', params: {itemId: number, cartId: string}): Promise<OrderCartConfigurationRequirements[]>;
   /**
   Missing description
   Get informations about Kubernetes offers
@@ -3583,7 +3940,7 @@ export class ApiOrder extends OvhWrapper {
   **/
   public get(path: '/order/cart/{cartId}/otb/options', params: {cartId: string, planCode: string}): Promise<OrderCartGenericOptionDefinition[]>;
   /**
-  List of OVHcloud Connect product
+  Missing description
   Get informations about OVHcloud Connect offers
   **/
   public get(path: '/order/cart/{cartId}/ovhCloudConnect', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
@@ -3756,7 +4113,7 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Get informations about webHosting offers
   **/
-  public get(path: '/order/cart/{cartId}/webHosting', params: {cartId: string}): Promise<OrderCartWebHostingProductInformation[]>;
+  public get(path: '/order/cart/{cartId}/webHosting', params: {cartId: string}): Promise<OrderCartGenericProductDefinition[]>;
   /**
   Missing description
   Get informations about webHosting options
@@ -5339,6 +5696,16 @@ export class ApiOrder extends OvhWrapper {
   **/
   public post(path: '/order/cart'): Promise<OrderCartCart>;
   /**
+  Create a analytics project
+  Post a new analytics item in your cart
+  **/
+  public post(path: '/order/cart/{cartId}/analytics', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
+  /**
+  List all addons possible for a analytics project
+  Post a new analytics addon in your cart
+  **/
+  public post(path: '/order/cart/{cartId}/analytics/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
+  /**
   Missing description
   Assign a shopping cart to an loggedin client
   **/
@@ -5347,32 +5714,32 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Post a new baremetal server item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/baremetalServers', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/baremetalServers', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new baremetal server option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/baremetalServers/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/baremetalServers/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new CDN item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cdn', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cdn', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new CDN option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cdn/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cdn/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Ceph as a Service item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cephaas', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cephaas', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Ceph as a Service option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cephaas/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cephaas/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Validate your shopping and create order
@@ -5382,422 +5749,422 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Post a new Public Cloud item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cloud', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cloud', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Public Cloud option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cloud/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cloud/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Cloud Web item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cloudweb', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cloudweb', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Cloud Web option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/cloudweb/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/cloudweb/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Add a new coupon to cart
   **/
-  public post(path: '/order/cart/{cartId}/coupon', params: {cartId: string, coupon: string}): Promise<string[]>;
+  public post(path: '/order/cart/{cartId}/coupon', params: {cartId: string, coupon?: string}): Promise<string[]>;
   /**
   Missing description
   Post a new SaaS CSP2 offer item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/csp2', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/csp2', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SaaS CSP2 option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/csp2/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/csp2/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new timeseries offer item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dbaasTimeseries', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dbaasTimeseries', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new dedicated server item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dedicated', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dedicated', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new dedicated server option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dedicated/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dedicated/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new dedicated labs server item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dedicatedLabs', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dedicatedLabs', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new dedicated labs server option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dedicatedLabs/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dedicatedLabs/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new dedicated server item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dedicatedReseller', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dedicatedReseller', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new dedicated server option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dedicatedReseller/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dedicatedReseller/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Desk as a service item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/deskaas', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/deskaas', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Dedicated Discover server item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/discover', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/discover', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Dedicated Discover server option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/discover/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/discover/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new DNS zone item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/dns', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/dns', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new domain in your cart
   **/
-  public post(path: '/order/cart/{cartId}/domain', params: {cartId: string, domain: string, duration?: string, offerId?: string, quantity?: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/domain', params: {cartId: string, domain?: string, duration?: string, offerId?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new domain name option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/domain/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/domain/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Domain Packs item (AllDom) in your cart
   **/
-  public post(path: '/order/cart/{cartId}/domainPacks', params: {cartId: string, domain: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/domainPacks', params: {cartId: string, domain?: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new domain tranfer in your cart
   **/
-  public post(path: '/order/cart/{cartId}/domainTransfer', params: {cartId: string, domain: string, duration?: string, offerId?: string, quantity?: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/domainTransfer', params: {cartId: string, domain?: string, duration?: string, offerId?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new domain name transfer option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/domainTransfer/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/domainTransfer/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new EmailPro item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/emailpro', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/emailpro', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new EmailPro option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/emailpro/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/emailpro/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Exchange item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/exchange', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/exchange', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Exchange option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/exchange/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/exchange/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Exchange Enterprise item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/exchangeEnterprise', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/exchangeEnterprise', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Exchange Enterprise option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/exchangeEnterprise/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/exchangeEnterprise/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Hosting Reseller item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/hostingReseller', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/hostingReseller', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new IP addresses item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/ip', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/ip', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new IP addresses option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/ip/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/ip/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new IP Load-Balancing item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/ipLoadbalancing', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/ipLoadbalancing', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new IP Load-Balancing option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/ipLoadbalancing/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/ipLoadbalancing/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Setup configuration item for the product
   **/
-  public post(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {cartId: string, itemId: number, label: string, value: string}): Promise<OrderCartConfigurationItem>;
+  public post(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {itemId: number, cartId: string, label?: string, value?: string}): Promise<OrderCartConfigurationItem>;
   /**
   Missing description
   Post a new Kubernetes item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/kubernetes', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/kubernetes', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Kubernetes option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/kubernetes/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/kubernetes/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new CloudLinux license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licenseCloudLinux', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licenseCloudLinux', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Directadmin license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licenseDirectadmin', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licenseDirectadmin', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Plesk license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licensePlesk', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licensePlesk', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Plesk license option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licensePlesk/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licensePlesk/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SqlServer license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licenseSqlServer', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licenseSqlServer', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Virtuozzo license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licenseVirtuozzo', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licenseVirtuozzo', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Windows license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licenseWindows', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licenseWindows', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Worklight license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licenseWorklight', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licenseWorklight', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new cPanel license item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/licensecPanel', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/licensecPanel', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Logs item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/logs', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/logs', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Logs option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/logs/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/logs/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Managed Services item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/managedServices', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/managedServices', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Managed Services option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/managedServices/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/managedServices/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Metrics item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/metrics', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/metrics', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Metrics option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/metrics/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/metrics/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Microsoft offer item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/microsoft', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/microsoft', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Microsoft option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/microsoft/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/microsoft/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new NAS HA item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/nasha', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/nasha', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new NAS HA option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/nasha/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/nasha/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Office 365 item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/office365', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/office365', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Office 365 option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/office365/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/office365/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Office 365 Prepaid item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/office365Prepaid', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/office365Prepaid', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Office 365 Prepaid option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/office365Prepaid/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/office365Prepaid/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Over The Box item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/otb', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/otb', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Over The Box option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/otb/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/otb/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
-  List of OVHcloud Connect product
+  Missing description
   Post a new OVHcloud Connect item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/ovhCloudConnect', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/ovhCloudConnect', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new PaaS Monitoring item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/paasmon', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/paasmon', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud CDI item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudCDI', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudCDI', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud CDI option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudCDI/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudCDI/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud Dedicated Cloud item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudDC', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudDC', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud Dedicated Cloud option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudDC/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudDC/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud Reseller item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudReseller', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudReseller', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud Reseller option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudReseller/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudReseller/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud Reseller Enterprise item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudResellerEnterprise', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudResellerEnterprise', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud Reseller Enterprise option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudResellerEnterprise/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudResellerEnterprise/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud SDDC item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudSDDC', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudSDDC', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Private Cloud SDDC option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/privateCloudSDDC/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/privateCloudSDDC/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Reseller offer item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/reseller', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/reseller', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Sharepoint offer item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sharepoint', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sharepoint', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Sharepoint option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sharepoint/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sharepoint/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SMS item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sms', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sms', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SSL Comodo item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sslComodo', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sslComodo', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SSL Comodo option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sslComodo/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sslComodo/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SSL Gateway item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sslGateway', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sslGateway', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new SSL Gateway option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/sslGateway/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/sslGateway/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new VoIP item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/telephony', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/telephony', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new VoIP option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/telephony/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/telephony/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   List of OVHcloud Connect product
   Post a new OVHcloud Connect item in your cart
@@ -5807,72 +6174,72 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Post a new Horizon View item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/vdi', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/vdi', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Horizon View option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/vdi/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/vdi/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Veeam Enterprise item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/veeamEnterprise', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/veeamEnterprise', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Veeam Enterprise option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/veeamEnterprise/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/veeamEnterprise/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Veeam Cloud Connect item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/veeamcc', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/veeamcc', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new Veeam Cloud Connect option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/veeamcc/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/veeamcc/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new VPS item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/vps', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/vps', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new VPS option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/vps/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/vps/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new vRack item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/vrack', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/vrack', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new vRack item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/vrackReseller', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/vrackReseller', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new webHosting item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/webHosting', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/webHosting', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Missing description
   Post a new webHosting option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/webHosting/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/webHosting/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   List of xdsl product
   Post a new xdsl item in your cart
   **/
-  public post(path: '/order/cart/{cartId}/xdsl', params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/xdsl', params: {cartId: string, duration?: string, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   List of xdsl addon
   Post a new xdsl option in your cart
   **/
-  public post(path: '/order/cart/{cartId}/xdsl/options', params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<OrderCartItem>;
+  public post(path: '/order/cart/{cartId}/xdsl/options', params: {cartId: string, duration?: string, itemId?: number, planCode?: string, pricingMode?: string, quantity?: number}): Promise<OrderCartItem>;
   /**
   Listing offers /order/cartServiceOptions/cloud/#serviceName#
   Post an additional Cloud option in your cart
@@ -6525,7 +6892,7 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Delete an item from a cart
   **/
-  public delete(path: '/order/cart/{cartId}/item/{itemId}', params: {cartId: string, itemId: number}): Promise<void>;
+  public delete(path: '/order/cart/{cartId}/item/{itemId}', params: {itemId: number, cartId: string}): Promise<void>;
   /**
   Missing description
   Delete configuration item
