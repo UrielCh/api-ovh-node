@@ -337,7 +337,7 @@ export class ApiStore extends OvhWrapper {
   MarketPlaceContact
   Create a 'marketplace' contact for current nic
   **/
-  public post(path: '/store/contact'): Promise<MarketPlaceContact>;
+  public post(path: '/store/contact', params: {city?: string, country?: string, email: string, firstname: string, lastname: string, phone?: string, province?: string, street?: string, title: string, zip?: string}): Promise<MarketPlaceContact>;
   /**
   MarketPlaceContact.doc
   Add a document to a contact
@@ -347,17 +347,17 @@ export class ApiStore extends OvhWrapper {
   MarketPlaceDocument
   Create a document
   **/
-  public post(path: '/store/document'): Promise<MarketPlaceDocument>;
+  public post(path: '/store/document', params: {name: string, tags?: ComplexTypeSafeKeyValue<string>[]}): Promise<MarketPlaceDocument>;
   /**
   MarketPlaceDocument
   Add CORS support on your container
   **/
-  public post(path: '/store/document/cors'): Promise<void>;
+  public post(path: '/store/document/cors', params: {origin: string}): Promise<void>;
   /**
   MarketPlacePartner.search
   Create a 'marketplace' partner for current nic
   **/
-  public post(path: '/store/partner'): Promise<MarketPlacePartner>;
+  public post(path: '/store/partner', params: {category?: string, city: string, companyNationalIdentificationNumber?: string, contact?: string, country: string, description?: string, language?: string, legalForm: string, organisationDisplayName?: string, organisationName: string, otherDetails?: string, province: string, street: string, url?: string, vat?: string, zip: string}): Promise<MarketPlacePartner>;
   /**
   MarketPlacePartner.doc
   Add a document to a partner

@@ -5726,7 +5726,7 @@ export class ApiTelephony extends OvhWrapper {
   Get all available accessories
   Get all available accessories
   **/
-  public get(path: '/telephony/accessories'): Promise<TelephonyAccessoryOffer[]>;
+  public get(path: '/telephony/accessories', params: {country: TelephonyNumberCountryEnum}): Promise<TelephonyAccessoryOffer[]>;
   /**
   Operations about the VOIP service
   List available services
@@ -5746,7 +5746,7 @@ export class ApiTelephony extends OvhWrapper {
   Get all available SIP domains by country
   Get all available SIP domains by country
   **/
-  public get(path: '/telephony/availableDefaultSipDomains'): Promise<TelephonyDefaultSipDomains[]>;
+  public get(path: '/telephony/availableDefaultSipDomains', params: {type: TelephonySipDomainProductTypeEnum}): Promise<TelephonyDefaultSipDomains[]>;
   /**
   Get current order ids
   Get current order ids
@@ -5756,27 +5756,27 @@ export class ApiTelephony extends OvhWrapper {
   Get all zip codes compatible for a number
   Get all zip codes compatible for a number
   **/
-  public get(path: '/telephony/directories/availableZipCodes'): Promise<string[]>;
+  public get(path: '/telephony/directories/availableZipCodes', params: {country: TelephonyNumberCountryEnum, number: string}): Promise<string[]>;
   /**
   Get city informations from a zip code
   Get city informations from a zip code
   **/
-  public get(path: '/telephony/directories/cities'): Promise<TelephonyCity[]>;
+  public get(path: '/telephony/directories/cities', params: {country: TelephonyNumberCountryEnum, zipCode: string}): Promise<TelephonyCity[]>;
   /**
   Get all available fax offer compatible
   Get all available fax offer compatible
   **/
-  public get(path: '/telephony/fax/offers'): Promise<TelephonyLineOffer[]>;
+  public get(path: '/telephony/fax/offers', params: {country: TelephonyNumberCountryEnum}): Promise<TelephonyLineOffer[]>;
   /**
   Get all available phone brands compatible with lines
   Get all available phone brands compatible with lines
   **/
-  public get(path: '/telephony/line/offer/phones'): Promise<TelephonyLinePhone[]>;
+  public get(path: '/telephony/line/offer/phones', params: {country: TelephonyNumberCountryEnum, offer: string}): Promise<TelephonyLinePhone[]>;
   /**
   Get all available line offer compatible
   Get all available line offer compatible
   **/
-  public get(path: '/telephony/line/offers'): Promise<TelephonyLineOffer[]>;
+  public get(path: '/telephony/line/offers', params: {country: TelephonyNumberCountryEnum}): Promise<TelephonyLineOffer[]>;
   /**
   Operations about the VOIP service
   List available services
@@ -5796,27 +5796,27 @@ export class ApiTelephony extends OvhWrapper {
   Get all available geographic zone with some details, from a country
   Get all available geographic zone with some details, from a country
   **/
-  public get(path: '/telephony/number/detailedZones'): Promise<TelephonyNumberDetailedZone[]>;
+  public get(path: '/telephony/number/detailedZones', params: {axiom?: string, country: TelephonyNumberCountryEnum}): Promise<TelephonyNumberDetailedZone[]>;
   /**
   Get all available special range from a country
   Get all available special range from a country
   **/
-  public get(path: '/telephony/number/ranges'): Promise<string[]>;
+  public get(path: '/telephony/number/ranges', params: {country: TelephonyNumberCountryEnum}): Promise<string[]>;
   /**
   Get all available specific number from a country
   Get all available specific number from a country
   **/
-  public get(path: '/telephony/number/specificNumbers'): Promise<TelephonySpecificNumber[]>;
+  public get(path: '/telephony/number/specificNumbers', params: {country: TelephonyNumberCountryEnum, range?: string, type: TelephonyNumberTypeEnum, zone?: string}): Promise<TelephonySpecificNumber[]>;
   /**
   Get all available geographic zone from a country
   Get all available geographic zone from a country
   **/
-  public get(path: '/telephony/number/zones'): Promise<string[]>;
+  public get(path: '/telephony/number/zones', params: {axiom?: string, country: TelephonyNumberCountryEnum}): Promise<string[]>;
   /**
   Search a service with its domain, to get its billing account and type
   Search a service with its domain, to get its billing account and type
   **/
-  public get(path: '/telephony/searchServices'): Promise<TelephonyTelephonySearchService[]>;
+  public get(path: '/telephony/searchServices', params: {axiom: string}): Promise<TelephonyTelephonySearchService[]>;
   /**
   List the telephony.Sound objects
   Sounds attached to this telephony account
@@ -7517,12 +7517,12 @@ export class ApiTelephony extends OvhWrapper {
   Get all available SIP domains by country
   Get all available SIP domains by country
   **/
-  public post(path: '/telephony/setDefaultSipDomain'): Promise<void>;
+  public post(path: '/telephony/setDefaultSipDomain', params: {country: TelephonyNumberCountryEnum, domain: string, type: TelephonySipDomainProductTypeEnum}): Promise<void>;
   /**
   List the telephony.Sound objects
   Create a new sound
   **/
-  public post(path: '/telephony/sounds'): Promise<TelephonySound>;
+  public post(path: '/telephony/sounds', params: {description?: string, filename: string}): Promise<TelephonySound>;
   /**
   replace operations
   Replace the phone by its spare. The broken phone became a spare if it was bought. An RMA is created if the broken phone is under securitydeposit.

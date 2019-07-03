@@ -2527,12 +2527,12 @@ export class ApiHostingWeb extends OvhWrapper {
   Find hosting service linked to a domain
   Find hosting service linked to a domain
   **/
-  public get(path: '/hosting/web/attachedDomain'): Promise<string[]>;
+  public get(path: '/hosting/web/attachedDomain', params: {domain: string}): Promise<string[]>;
   /**
   Get available offer
   Get available offer
   **/
-  public get(path: '/hosting/web/availableOffer'): Promise<HostingWebOfferEnum[]>;
+  public get(path: '/hosting/web/availableOffer', params: {domain: string}): Promise<HostingWebOfferEnum[]>;
   /**
   Get current incident
   Get current incident
@@ -2542,22 +2542,22 @@ export class ApiHostingWeb extends OvhWrapper {
   Get list of directories associated to a local SEO offer and a country
   Get list of directories associated to a local SEO offer and a country
   **/
-  public get(path: '/hosting/web/localSeo/directoriesList'): Promise<HostingWebLocalSeoDirectoriesList>;
+  public get(path: '/hosting/web/localSeo/directoriesList', params: {country: HostingWebLocalSeoLocationCountryEnum, offer: HostingWebLocalSeoLocationOfferEnum}): Promise<HostingWebLocalSeoDirectoriesList>;
   /**
   Check email availability for a local SEO order
   Check email availability for a local SEO order
   **/
-  public get(path: '/hosting/web/localSeo/emailAvailability'): Promise<HostingWebLocalSeoEmailAvailability>;
+  public get(path: '/hosting/web/localSeo/emailAvailability', params: {email: string}): Promise<HostingWebLocalSeoEmailAvailability>;
   /**
   Get the result of a visibility check
   Get the result of a visibility check
   **/
-  public get(path: '/hosting/web/localSeo/visibilityCheckResult'): Promise<HostingWebLocalSeoVisibilityCheckResultResponse[]>;
+  public get(path: '/hosting/web/localSeo/visibilityCheckResult', params: {directory: string, id: number, token: string}): Promise<HostingWebLocalSeoVisibilityCheckResultResponse[]>;
   /**
   List the hosting.web.ModuleList objects
   IDs of all modules available
   **/
-  public get(path: '/hosting/web/moduleList'): Promise<number[]>;
+  public get(path: '/hosting/web/moduleList', params: {active?: boolean, branch?: HostingWebModuleBranchEnum, latest?: boolean}): Promise<number[]>;
   /**
   A module specifically packaged by OVH
   Get this object properties
@@ -2567,7 +2567,7 @@ export class ApiHostingWeb extends OvhWrapper {
   Get offer capabilities
   Get offer capabilities
   **/
-  public get(path: '/hosting/web/offerCapabilities'): Promise<HostingWebCapabilities>;
+  public get(path: '/hosting/web/offerCapabilities', params: {offer: HostingWebOfferCapabilitiesEnum}): Promise<HostingWebCapabilities>;
   /**
   Web Hosting
   Get this object properties
@@ -2963,7 +2963,7 @@ export class ApiHostingWeb extends OvhWrapper {
   Check visibility of a location
   Check visibility of a location
   **/
-  public post(path: '/hosting/web/localSeo/visibilityCheck'): Promise<HostingWebLocalSeoVisibilityCheckResponse>;
+  public post(path: '/hosting/web/localSeo/visibilityCheck', params: {country: HostingWebLocalSeoLocationCountryEnum, name: string, street: string, zip: string}): Promise<HostingWebLocalSeoVisibilityCheckResponse>;
   /**
   activatePrivateDatabase operations
   Activate an included private database on your hosting offer

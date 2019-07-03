@@ -3553,7 +3553,7 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   List of your OVH order carts
   **/
-  public get(path: '/order/cart'): Promise<string[]>;
+  public get(path: '/order/cart', params: {description?: string}): Promise<string[]>;
   /**
   Missing description
   Retrieve information about a specific cart
@@ -3793,12 +3793,12 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Retrieve all configuration item of the cart item
   **/
-  public get(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {cartId: string, itemId: number, label?: string}): Promise<number[]>;
+  public get(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {itemId: number, cartId: string, label?: string}): Promise<number[]>;
   /**
   Missing description
   Retrieve configuration item
   **/
-  public get(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}', params: {cartId: string, itemId: number, configurationId: number}): Promise<OrderCartConfigurationItem>;
+  public get(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}', params: {cartId: string, configurationId: number, itemId: number}): Promise<OrderCartConfigurationItem>;
   /**
   Missing description
   Retrieve all required configuration item of the cart item
@@ -4153,7 +4153,7 @@ export class ApiOrder extends OvhWrapper {
   Operations about the DOMAIN service
   List available services
   **/
-  public get(path: '/order/cartServiceOption/domain'): Promise<string[]>;
+  public get(path: '/order/cartServiceOption/domain', params: {whoisOwner?: string}): Promise<string[]>;
   /**
   Listing offers /order/cartServiceOptions/domain/#serviceName#
   Get informations about additional Domain offer for your service
@@ -4308,112 +4308,112 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Retrieve information of Public Cloud catalog
   **/
-  public get(path: '/order/catalog/formatted/cloud'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/cloud', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of dedicated server catalog
   **/
-  public get(path: '/order/catalog/formatted/dedicated'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/dedicated', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Desk as a service catalog
   **/
-  public get(path: '/order/catalog/formatted/deskaas'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/deskaas', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of dedicated discover offer server catalog
   **/
-  public get(path: '/order/catalog/formatted/discover'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/discover', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of IP addresses catalog
   **/
-  public get(path: '/order/catalog/formatted/ip'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/ip', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of CloudLinux licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licenseCloudLinux'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licenseCloudLinux', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Directadmin licenses offers catalog
   **/
-  public get(path: '/order/catalog/formatted/licenseDirectadmin'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licenseDirectadmin', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Plesk licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licensePlesk'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licensePlesk', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of SqlServer licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licenseSqlServer'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licenseSqlServer', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Virtuozzo licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licenseVirtuozzo'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licenseVirtuozzo', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Windows licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licenseWindows'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licenseWindows', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Worklight licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licenseWorklight'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licenseWorklight', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of cPanel licenses catalog
   **/
-  public get(path: '/order/catalog/formatted/licensecPanel'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/licensecPanel', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Logs Data Platform catalog
   **/
-  public get(path: '/order/catalog/formatted/logs'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/logs', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of Private Cloud CDI catalog
   **/
-  public get(path: '/order/catalog/formatted/privateCloudCDI'): Promise<OrderCatalogPrivateCloudCatalog>;
+  public get(path: '/order/catalog/formatted/privateCloudCDI', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogPrivateCloudCatalog>;
   /**
   Missing description
   Retrieve information of Private Cloud Dedicated Cloud catalog
   **/
-  public get(path: '/order/catalog/formatted/privateCloudDC'): Promise<OrderCatalogPrivateCloudCatalog>;
+  public get(path: '/order/catalog/formatted/privateCloudDC', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogPrivateCloudCatalog>;
   /**
   Missing description
   Retrieve information of Private Cloud Reseller catalog
   **/
-  public get(path: '/order/catalog/formatted/privateCloudReseller'): Promise<OrderCatalogPccCatalog>;
+  public get(path: '/order/catalog/formatted/privateCloudReseller', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogPccCatalog>;
   /**
   Missing description
   Retrieve information of Private Cloud Reseller Enterprise catalog
   **/
-  public get(path: '/order/catalog/formatted/privateCloudResellerEnterprise'): Promise<OrderCatalogPccCatalog>;
+  public get(path: '/order/catalog/formatted/privateCloudResellerEnterprise', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogPccCatalog>;
   /**
   Missing description
   Retrieve information of Private Cloud SDDC catalog
   **/
-  public get(path: '/order/catalog/formatted/privateCloudSDDC'): Promise<OrderCatalogPrivateCloudCatalog>;
+  public get(path: '/order/catalog/formatted/privateCloudSDDC', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogPrivateCloudCatalog>;
   /**
   Missing description
   Retrieve information of Reseller catalog
   **/
-  public get(path: '/order/catalog/formatted/reseller'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/reseller', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve information of VPS catalog
   **/
-  public get(path: '/order/catalog/formatted/vps'): Promise<OrderCatalogCatalog>;
+  public get(path: '/order/catalog/formatted/vps', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogCatalog>;
   /**
   Missing description
   Retrieve bare-metal servers catalog
   **/
-  public get(path: '/order/catalog/public/baremetalServers'): Promise<OrderCatalogPublicDedicatedServerCatalog>;
+  public get(path: '/order/catalog/public/baremetalServers', params: {ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderCatalogPublicDedicatedServerCatalog>;
   /**
   Operations about the CDNANYCAST service
   List available services
@@ -4533,7 +4533,7 @@ export class ApiOrder extends OvhWrapper {
   Order a new Nas HA
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/dedicated/nasha/new'): Promise<string[]>;
+  public get(path: '/order/dedicated/nasha/new', params: {datacenter: DedicatedNasHAZoneEnum, model: DedicatedNasHAOfferEnum}): Promise<string[]>;
   /**
   Order a new Nas HA
   Get prices and contracts information
@@ -4768,7 +4768,7 @@ export class ApiOrder extends OvhWrapper {
   Order a new DNS zone
   Get prices and contracts information
   **/
-  public get(path: '/order/domain/zone/new'): Promise<OrderOrder>;
+  public get(path: '/order/domain/zone/new', params: {minimized?: boolean, zoneName: string}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
@@ -4793,7 +4793,7 @@ export class ApiOrder extends OvhWrapper {
   Order a new mx plan
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/email/domain/new'): Promise<string[]>;
+  public get(path: '/order/email/domain/new', params: {domain: string, offer: EmailDomainOfferEnum}): Promise<string[]>;
   /**
   Order a new mx plan
   Get prices and contracts information
@@ -4883,7 +4883,7 @@ export class ApiOrder extends OvhWrapper {
   Credit freefax account pages
   Get prices and contracts information
   **/
-  public get(path: '/order/freefax/new'): Promise<OrderOrder>;
+  public get(path: '/order/freefax/new', params: {quantity: FreefaxQuantityEnum}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
@@ -4903,7 +4903,7 @@ export class ApiOrder extends OvhWrapper {
   Order new private database
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/hosting/privateDatabase/new'): Promise<string[]>;
+  public get(path: '/order/hosting/privateDatabase/new', params: {datacenter?: HostingPrivateDatabaseDatacenterEnum, offer?: HostingPrivateDatabaseOfferEnum, ram: HostingPrivateDatabaseAvailableRamSizeEnum, version: HostingPrivateDatabaseOrderableVersionEnum}): Promise<string[]>;
   /**
   Order new private database
   Get prices and contracts information
@@ -4933,7 +4933,7 @@ export class ApiOrder extends OvhWrapper {
   Order a new hosting account
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/hosting/web/new'): Promise<string[]>;
+  public get(path: '/order/hosting/web/new', params: {dnsZone?: HostingWebDnsZoneEnum, domain: string, module?: HostingWebModuleOrderableNameEnum, offer: HostingWebOfferEnum, waiveRetractationPeriod?: boolean}): Promise<string[]>;
   /**
   Order a new hosting account
   Get prices and contracts information
@@ -5018,7 +5018,7 @@ export class ApiOrder extends OvhWrapper {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/cloudLinux/new'): Promise<string[]>;
+  public get(path: '/order/license/cloudLinux/new', params: {ip: string, version: LicenseCloudLinuxVersionEnum}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
@@ -5028,7 +5028,7 @@ export class ApiOrder extends OvhWrapper {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/cpanel/new'): Promise<string[]>;
+  public get(path: '/order/license/cpanel/new', params: {ip: string, serviceType?: LicenseLicenseTypeEnum, version: LicenseOrderableCpanelVersionEnum}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
@@ -5038,7 +5038,7 @@ export class ApiOrder extends OvhWrapper {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/directadmin/new'): Promise<string[]>;
+  public get(path: '/order/license/directadmin/new', params: {ip: string, serviceType?: LicenseLicenseTypeEnum, version: LicenseOrderableDirectAdminVersionEnum}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
@@ -5048,7 +5048,7 @@ export class ApiOrder extends OvhWrapper {
   Create an order for an new office tenant
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/office/new'): Promise<string[]>;
+  public get(path: '/order/license/office/new', params: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<string[]>;
   /**
   Create an order for an new office tenant
   Get prices and contracts information
@@ -5063,7 +5063,7 @@ export class ApiOrder extends OvhWrapper {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/plesk/new'): Promise<string[]>;
+  public get(path: '/order/license/plesk/new', params: {antivirus?: LicenseOrderableAntivirusEnum, applicationSet?: LicensePleskApplicationSetEnum, domainNumber?: LicenseOrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: LicenseOrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: LicenseLicenseTypeEnum, version: LicensePleskVersionEnum, wordpressToolkit?: boolean}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
@@ -5093,7 +5093,7 @@ export class ApiOrder extends OvhWrapper {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/sqlserver/new'): Promise<string[]>;
+  public get(path: '/order/license/sqlserver/new', params: {ip: string, version: LicenseSqlServerVersionEnum}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
@@ -5123,7 +5123,7 @@ export class ApiOrder extends OvhWrapper {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/virtuozzo/new'): Promise<string[]>;
+  public get(path: '/order/license/virtuozzo/new', params: {containerNumber: LicenseOrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: LicenseLicenseTypeEnum, version: LicenseOrderableVirtuozzoVersionEnum}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
@@ -5153,7 +5153,7 @@ export class ApiOrder extends OvhWrapper {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/windows/new'): Promise<string[]>;
+  public get(path: '/order/license/windows/new', params: {ip: string, serviceType?: LicenseLicenseTypeEnum, sqlVersion?: LicenseWindowsSqlVersionEnum, version: LicenseWindowsOsVersionEnum}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
@@ -5183,7 +5183,7 @@ export class ApiOrder extends OvhWrapper {
   Order a new license on a given Ip with some given options
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/license/worklight/new'): Promise<string[]>;
+  public get(path: '/order/license/worklight/new', params: {ip: string, lessThan1000Users: boolean, version: LicenseWorkLightVersionEnum}): Promise<string[]>;
   /**
   Order a new license on a given Ip with some given options
   Get prices and contracts information
@@ -5213,7 +5213,7 @@ export class ApiOrder extends OvhWrapper {
   Subscribe to overTheBox service
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/overTheBox/new'): Promise<string[]>;
+  public get(path: '/order/overTheBox/new', params: {deviceId?: string, offer: string, voucher?: string}): Promise<string[]>;
   /**
   Subscribe to overTheBox service
   Get prices and contracts information
@@ -5233,7 +5233,7 @@ export class ApiOrder extends OvhWrapper {
   Order router vpn
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/router/new'): Promise<string[]>;
+  public get(path: '/order/router/new', params: {vrack: string}): Promise<string[]>;
   /**
   Order router vpn
   Get prices and contracts information
@@ -5243,7 +5243,7 @@ export class ApiOrder extends OvhWrapper {
   Create an order for a new office tenant
   Get allowed durations for 'new' option
   **/
-  public get(path: '/order/saas/csp2/new'): Promise<string[]>;
+  public get(path: '/order/saas/csp2/new', params: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<string[]>;
   /**
   Create an order for a new office tenant
   Get prices and contracts information
@@ -5258,7 +5258,7 @@ export class ApiOrder extends OvhWrapper {
   Create and credit a new SMS Account
   Get prices and contracts information
   **/
-  public get(path: '/order/sms/new'): Promise<OrderOrder>;
+  public get(path: '/order/sms/new', params: {quantity: number}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
@@ -5308,7 +5308,7 @@ export class ApiOrder extends OvhWrapper {
   Purchase spare phone
   Get prices and contracts information
   **/
-  public get(path: '/order/telephony/spare/new'): Promise<OrderOrder>;
+  public get(path: '/order/telephony/spare/new', params: {brand: string, mondialRelayId?: string, quantity: number, shippingContactId: number}): Promise<OrderOrder>;
   /**
   Operations about the VOIP service
   List available services
@@ -5663,7 +5663,7 @@ export class ApiOrder extends OvhWrapper {
   Order new vrack
   Get prices and contracts information
   **/
-  public get(path: '/order/vrack/new'): Promise<OrderOrder>;
+  public get(path: '/order/vrack/new', params: {quantity?: number}): Promise<OrderOrder>;
   /**
   List available options for this service
   Get allowed options
@@ -5673,7 +5673,7 @@ export class ApiOrder extends OvhWrapper {
   Purchase spare modem
   Get prices and contracts information
   **/
-  public get(path: '/order/xdsl/spare/new'): Promise<OrderOrder>;
+  public get(path: '/order/xdsl/spare/new', params: {brand: string, mondialRelayId?: string, quantity: number, shippingContactId: number}): Promise<OrderOrder>;
   public get(path: PathsOrderGET, params?: OvhParamType) : Promise<any> {
     return super.get(path, params
   );}
@@ -5694,7 +5694,7 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Create a new OVH order cart
   **/
-  public post(path: '/order/cart'): Promise<OrderCartCart>;
+  public post(path: '/order/cart', params: {description?: string, expire?: string, ovhSubsidiary?: NichandleOvhSubsidiaryEnum}): Promise<OrderCartCart>;
   /**
   Create a analytics project
   Post a new analytics item in your cart
@@ -5919,7 +5919,7 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Setup configuration item for the product
   **/
-  public post(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {cartId: string, itemId: number, label?: string, value?: string}): Promise<OrderCartConfigurationItem>;
+  public post(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {itemId: number, cartId: string, label?: string, value?: string}): Promise<OrderCartConfigurationItem>;
   /**
   Missing description
   Post a new Kubernetes item in your cart
@@ -6484,7 +6484,7 @@ export class ApiOrder extends OvhWrapper {
   Order a new DNS zone
   Create order
   **/
-  public post(path: '/order/domain/zone/new'): Promise<OrderOrder>;
+  public post(path: '/order/domain/zone/new', params: {minimized?: boolean, zoneName: string}): Promise<OrderOrder>;
   /**
   Order Anycast
   Create order
@@ -6529,7 +6529,7 @@ export class ApiOrder extends OvhWrapper {
   Credit freefax account pages
   Create order
   **/
-  public post(path: '/order/freefax/new'): Promise<OrderOrder>;
+  public post(path: '/order/freefax/new', params: {quantity: FreefaxQuantityEnum}): Promise<OrderOrder>;
   /**
   Convert the freefax service to a /telephony voicefax service
   Create order
@@ -6679,7 +6679,7 @@ export class ApiOrder extends OvhWrapper {
   Create and credit a new SMS Account
   Create order
   **/
-  public post(path: '/order/sms/new'): Promise<OrderOrder>;
+  public post(path: '/order/sms/new', params: {quantity: number}): Promise<OrderOrder>;
   /**
   Order credits on an existing SMS account
   Create order
@@ -6709,7 +6709,7 @@ export class ApiOrder extends OvhWrapper {
   Purchase spare phone
   Create order
   **/
-  public post(path: '/order/telephony/spare/new'): Promise<OrderOrder>;
+  public post(path: '/order/telephony/spare/new', params: {brand: string, mondialRelayId?: string, quantity: number, shippingContactId: number}): Promise<OrderOrder>;
   /**
   Add extra simultaneous lines for a specifical line
   Create order
@@ -6869,12 +6869,12 @@ export class ApiOrder extends OvhWrapper {
   Order new vrack
   Create order
   **/
-  public post(path: '/order/vrack/new'): Promise<OrderOrder>;
+  public post(path: '/order/vrack/new', params: {quantity?: number}): Promise<OrderOrder>;
   /**
   Purchase spare modem
   Create order
   **/
-  public post(path: '/order/xdsl/spare/new'): Promise<OrderOrder>;
+  public post(path: '/order/xdsl/spare/new', params: {brand: string, mondialRelayId?: string, quantity: number, shippingContactId: number}): Promise<OrderOrder>;
   public post(path: PathsOrderPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}
@@ -6892,12 +6892,12 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Delete an item from a cart
   **/
-  public delete(path: '/order/cart/{cartId}/item/{itemId}', params: {cartId: string, itemId: number}): Promise<void>;
+  public delete(path: '/order/cart/{cartId}/item/{itemId}', params: {itemId: number, cartId: string}): Promise<void>;
   /**
   Missing description
   Delete configuration item
   **/
-  public delete(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}', params: {cartId: string, itemId: number, configurationId: number}): Promise<void>;
+  public delete(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}', params: {itemId: number, cartId: string, configurationId: number}): Promise<void>;
   public delete(path: PathsOrderDELETE, params?: OvhParamType) : Promise<any> {
     return super.delete(path, params
   );}

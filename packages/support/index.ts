@@ -172,7 +172,7 @@ export class ApiSupport extends OvhWrapper {
   List support tickets identifiers for this service
   List support tickets identifiers for this service
   **/
-  public get(path: '/support/tickets'): Promise<number[]>;
+  public get(path: '/support/tickets', params: {archived?: boolean, category?: SupportTicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: SupportTicketProductEnum, serviceName?: string, status?: SupportTicketStatusEnum, subject?: string, ticketNumber?: string}): Promise<number[]>;
   /**
   Get ticket
   Get ticket
@@ -195,7 +195,7 @@ export class ApiSupport extends OvhWrapper {
   Create a new ticket
   Create a new ticket
   **/
-  public post(path: '/support/tickets/create'): Promise<SupportNewMessageInfo>;
+  public post(path: '/support/tickets/create', params: {body: string, category?: SupportTicketCategoryEnum, product?: SupportTicketProductEnum, serviceName?: string, subcategory?: SupportTicketSubCategoryEnum, subject: string, type: SupportTicketTypeEnum}): Promise<SupportNewMessageInfo>;
   /**
   Close ticket
   Close ticket

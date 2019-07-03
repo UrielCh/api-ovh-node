@@ -1390,7 +1390,7 @@ export class ApiDomain extends OvhWrapper {
   Operations about the DOMAIN service
   List available services
   **/
-  public get(path: '/domain'): Promise<string[]>;
+  public get(path: '/domain', params: {whoisOwner?: string}): Promise<string[]>;
   /**
   Missing description
   Retrieve all association information according to Afnic
@@ -1415,12 +1415,12 @@ export class ApiDomain extends OvhWrapper {
   Missing description
   Retrieve claim notices associated to a domain
   **/
-  public get(path: '/domain/data/claimNotice'): Promise<DomainDataClaimNoticeClaimNotice>;
+  public get(path: '/domain/data/claimNotice', params: {domain: string}): Promise<DomainDataClaimNoticeClaimNotice>;
   /**
   Missing description
   List all the extensions for a specific country
   **/
-  public get(path: '/domain/data/extension'): Promise<string[]>;
+  public get(path: '/domain/data/extension', params: {country: NichandleCountryEnum}): Promise<string[]>;
   /**
   Missing description
   Retrieve all your Pro Contact
@@ -1435,7 +1435,7 @@ export class ApiDomain extends OvhWrapper {
   Missing description
   List all your SMD files
   **/
-  public get(path: '/domain/data/smd'): Promise<number[]>;
+  public get(path: '/domain/data/smd', params: {'protectedLabels.label'?: string}): Promise<number[]>;
   /**
   Missing description
   Retrieve information about a SMD file
@@ -1445,7 +1445,7 @@ export class ApiDomain extends OvhWrapper {
   Rules for creating a domain
   List all the rules for a specific cartId/itemId
   **/
-  public get(path: '/domain/rules'): Promise<any>;
+  public get(path: '/domain/rules', params: {cartId: string, itemId: number}): Promise<any>;
   /**
   Operations about the HOSTING service
   List available services
@@ -1706,22 +1706,22 @@ export class ApiDomain extends OvhWrapper {
   Missing description
   Post a new association information according to Afnic
   **/
-  public post(path: '/domain/data/afnicAssociationInformation'): Promise<DomainDataAssociationContact>;
+  public post(path: '/domain/data/afnicAssociationInformation', params: {contactId: number, declarationDate: string, publicationDate: string, publicationNumber: string, publicationPageNumber: string}): Promise<DomainDataAssociationContact>;
   /**
   Missing description
   Post a new corporation trademark information according to Afnic
   **/
-  public post(path: '/domain/data/afnicCorporationTrademarkInformation'): Promise<DomainDataAfnicCorporationTrademarkContact>;
+  public post(path: '/domain/data/afnicCorporationTrademarkInformation', params: {contactId: number, inpiNumber: string, inpiTrademarkOwner: string}): Promise<DomainDataAfnicCorporationTrademarkContact>;
   /**
   Missing description
   Post new information about .pro contact information
   **/
-  public post(path: '/domain/data/proContact'): Promise<DomainDataProContact>;
+  public post(path: '/domain/data/proContact', params: {authority: string, authorityWebsite: string, contactId?: number, jobDescription: string, licenseNumber: string}): Promise<DomainDataProContact>;
   /**
   Missing description
   Post a new SMD file
   **/
-  public post(path: '/domain/data/smd'): Promise<DomainDataSmd>;
+  public post(path: '/domain/data/smd', params: {data: string}): Promise<DomainDataSmd>;
   /**
   Change the contacts of this service
   Launch a contact change procedure

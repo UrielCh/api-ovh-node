@@ -1136,7 +1136,7 @@ export class ApiSms extends OvhWrapper {
   Get informations about the given ptt code
   Get informations about the given ptt code
   **/
-  public get(path: '/sms/ptts'): Promise<SmsPttDetails>;
+  public get(path: '/sms/ptts', params: {ptt: number}): Promise<SmsPttDetails>;
   /**
   Operations about the VOIP service
   List available services

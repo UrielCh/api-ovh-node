@@ -916,7 +916,7 @@ export class ApiVps extends OvhWrapper {
   Missing description
   List all the datacenters for a specific country
   **/
-  public get(path: '/vps/datacenter'): Promise<string[]>;
+  public get(path: '/vps/datacenter', params: {country: NichandleCountryEnum}): Promise<string[]>;
   /**
   VPS Virtual Machine
   Get this object properties

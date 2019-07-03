@@ -1026,7 +1026,7 @@ export class ApiEmailDomain extends OvhWrapper {
   List the email.domain.AccountDelegated objects
   Delegated emails
   **/
-  public get(path: '/email/domain/delegatedAccount'): Promise<string[]>;
+  public get(path: '/email/domain/delegatedAccount', params: {accountName?: string, domain?: string}): Promise<string[]>;
   /**
   Account List
   Get this object properties
@@ -1061,7 +1061,7 @@ export class ApiEmailDomain extends OvhWrapper {
   Get limits of mailing list
   Get limits of mailing list
   **/
-  public get(path: '/email/domain/mailingListLimits'): Promise<DomainDomainMlLimits>;
+  public get(path: '/email/domain/mailingListLimits', params: {moderatorMessage: boolean}): Promise<DomainDomainMlLimits>;
   /**
   Domain service
   Get this object properties

@@ -3342,22 +3342,22 @@ export class ApiXdsl extends OvhWrapper {
   Get the cities from a zipCode
   Get the cities from a zipCode
   **/
-  public get(path: '/xdsl/eligibility/cities'): Promise<XdslEligibilityCity[]>;
+  public get(path: '/xdsl/eligibility/cities', params: {zipCode: string}): Promise<XdslEligibilityCity[]>;
   /**
   Search for meeting time slot
   Search for meeting time slot
   **/
-  public get(path: '/xdsl/eligibility/meetings'): Promise<XdslAsyncTask<XdslEligibilityMeetingSlots>>;
+  public get(path: '/xdsl/eligibility/meetings', params: {eligibilityId: string, offerLabel: string}): Promise<XdslAsyncTask<XdslEligibilityMeetingSlots>>;
   /**
   Get the streets from a city inseeCode and partial street name
   Get the streets from a city inseeCode and partial street name
   **/
-  public get(path: '/xdsl/eligibility/streets'): Promise<XdslEligibilityStreet[]>;
+  public get(path: '/xdsl/eligibility/streets', params: {inseeCode: string, partialName: string}): Promise<XdslEligibilityStreet[]>;
   /**
   Get an eligibility by its id
   Get an eligibility by its id
   **/
-  public get(path: '/xdsl/eligibility/test'): Promise<XdslEligibilityEligibility>;
+  public get(path: '/xdsl/eligibility/test', params: {id: string}): Promise<XdslEligibilityEligibility>;
   /**
   Operations about the XDSL service
   List available services
@@ -3372,7 +3372,7 @@ export class ApiXdsl extends OvhWrapper {
   List the xdsl.Incident objects
   List of incidents
   **/
-  public get(path: '/xdsl/incidents'): Promise<number[]>;
+  public get(path: '/xdsl/incidents', params: {creationDate?: string, endDate?: string}): Promise<number[]>;
   /**
   Detected incident
   Get this object properties
@@ -3753,47 +3753,47 @@ export class ApiXdsl extends OvhWrapper {
   Get the active lines at given address
   Get the active lines at given address
   **/
-  public post(path: '/xdsl/eligibility/lines/active'): Promise<XdslAsyncTaskArray<XdslEligibilityLine>>;
+  public post(path: '/xdsl/eligibility/lines/active', params: {city: XdslEligibilityCity, contactName: string, street: XdslEligibilityStreet, streetNumber?: string}): Promise<XdslAsyncTaskArray<XdslEligibilityLine>>;
   /**
   Get the inactive lines at given address
   Get the inactive lines at given address
   **/
-  public post(path: '/xdsl/eligibility/lines/inactive'): Promise<XdslAsyncTaskArray<XdslEligibilityLine>>;
+  public post(path: '/xdsl/eligibility/lines/inactive', params: {city: XdslEligibilityCity, contactName?: string, street: XdslEligibilityStreet, streetNumber?: string}): Promise<XdslAsyncTaskArray<XdslEligibilityLine>>;
   /**
   Get all buildings for a specific address
   Get all buildings for a specific address
   **/
-  public post(path: '/xdsl/eligibility/search/buildings'): Promise<XdslAsyncTaskArray<XdslEligibilityBuilding>>;
+  public post(path: '/xdsl/eligibility/search/buildings', params: {streetCode: string, streetNumber: string}): Promise<XdslAsyncTaskArray<XdslEligibilityBuilding>>;
   /**
   Get all localities linked to a zip code
   Get all localities linked to a zip code
   **/
-  public post(path: '/xdsl/eligibility/search/cities'): Promise<XdslAsyncTaskArray<XdslEligibilityCity>>;
+  public post(path: '/xdsl/eligibility/search/cities', params: {zipCode: string}): Promise<XdslAsyncTaskArray<XdslEligibilityCity>>;
   /**
   Get all street linked to a locality
   Get all street linked to a locality
   **/
-  public post(path: '/xdsl/eligibility/search/fiberStreets'): Promise<XdslAsyncTaskArray<XdslEligibilityFiberStreet>>;
+  public post(path: '/xdsl/eligibility/search/fiberStreets', params: {inseeCode: string}): Promise<XdslAsyncTaskArray<XdslEligibilityFiberStreet>>;
   /**
   Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)
   Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)
   **/
-  public post(path: '/xdsl/eligibility/search/streetNumbers'): Promise<XdslAsyncTaskArray<string>>;
+  public post(path: '/xdsl/eligibility/search/streetNumbers', params: {streetCode: string}): Promise<XdslAsyncTaskArray<string>>;
   /**
   Do an eligibility for an address, if no line exist
   Do an eligibility for an address, if no line exist
   **/
-  public post(path: '/xdsl/eligibility/test/address'): Promise<XdslAsyncTask<XdslEligibilityEligibility>>;
+  public post(path: '/xdsl/eligibility/test/address', params: {address: XdslEligibilityAddress}): Promise<XdslAsyncTask<XdslEligibilityEligibility>>;
   /**
   Perform a fiber eligibility for a building
   Perform a fiber eligibility for a building
   **/
-  public post(path: '/xdsl/eligibility/test/fiber/building'): Promise<XdslAsyncTask<XdslEligibilityFiberEligibility>>;
+  public post(path: '/xdsl/eligibility/test/fiber/building', params: {building: string}): Promise<XdslAsyncTask<XdslEligibilityFiberEligibility>>;
   /**
   Do an eligibility for a line
   Do an eligibility for a line
   **/
-  public post(path: '/xdsl/eligibility/test/line'): Promise<XdslAsyncTask<XdslEligibilityEligibility>>;
+  public post(path: '/xdsl/eligibility/test/line', params: {lineNumber: string, lineStatus: XdslEligibilityLandlineStatusEnum}): Promise<XdslAsyncTask<XdslEligibilityEligibility>>;
   /**
   changePassword operations
   Change the email password
@@ -3813,7 +3813,7 @@ export class ApiXdsl extends OvhWrapper {
   List the xdsl.TemplateModem objects
   Create new Modem Template from existing modem
   **/
-  public post(path: '/xdsl/templateModem'): Promise<XdslTemplateModem>;
+  public post(path: '/xdsl/templateModem', params: {name: string, serviceName: string}): Promise<XdslTemplateModem>;
   /**
   extraIpRangeMove operations
   Initiate the extra IP range migration

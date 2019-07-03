@@ -4217,22 +4217,22 @@ export class ApiCloud extends OvhWrapper {
   Get agreements related to a product
   Get agreements related to a product
   **/
-  public get(path: '/cloud/agreements'): Promise<CloudProjectProductAgreements>;
+  public get(path: '/cloud/agreements', params: {product: CloudProjectProductNameEnum}): Promise<CloudProjectProductAgreements>;
   /**
   Get information about a cloud project creation
   Get information about a cloud project creation
   **/
-  public get(path: '/cloud/createProjectInfo'): Promise<CloudProjectNewProjectInfo>;
+  public get(path: '/cloud/createProjectInfo', params: {voucher?: string}): Promise<CloudProjectNewProjectInfo>;
   /**
   Missing description
   Get all cloud pending orders
   **/
-  public get(path: '/cloud/order'): Promise<CloudOrderOrder[]>;
+  public get(path: '/cloud/order', params: {planCode?: string}): Promise<CloudOrderOrder[]>;
   /**
   Get services prices
   Get services prices
   **/
-  public get(path: '/cloud/price'): Promise<CloudPrice>;
+  public get(path: '/cloud/price', params: {flavorId?: string, region?: string}): Promise<CloudPrice>;
   /**
   Operations about the PUBLICCLOUD service
   List available services
@@ -4597,7 +4597,7 @@ export class ApiCloud extends OvhWrapper {
   Get services prices for a subsidiary
   Get services prices for a subsidiary
   **/
-  public get(path: '/cloud/subsidiaryPrice'): Promise<CloudPrice>;
+  public get(path: '/cloud/subsidiaryPrice', params: {flavorId?: string, ovhSubsidiary: NichandleOvhSubsidiaryEnum, region?: string}): Promise<CloudPrice>;
   /**
   Operations about the PUBLICCLOUD service
   List available services
@@ -4738,7 +4738,7 @@ export class ApiCloud extends OvhWrapper {
   Start a new cloud project
   Start a new cloud project
   **/
-  public post(path: '/cloud/createProject'): Promise<CloudProjectNewProject>;
+  public post(path: '/cloud/createProject', params: {credit?: number, description?: string, voucher?: string}): Promise<CloudProjectNewProject>;
   /**
   List the cloud.Acl objects
   Create new ACL

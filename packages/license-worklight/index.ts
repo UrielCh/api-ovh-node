@@ -258,7 +258,7 @@ export class ApiLicenseWorklight extends OvhWrapper {
   Get the orderable WorkLight versions
   Get the orderable WorkLight versions
   **/
-  public get(path: '/license/worklight/orderableVersions'): Promise<LicenseWorkLightOrderConfiguration[]>;
+  public get(path: '/license/worklight/orderableVersions', params: {ip: string}): Promise<LicenseWorkLightOrderConfiguration[]>;
   /**
   Your WorkLight license
   Get this object properties

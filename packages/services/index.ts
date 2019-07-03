@@ -363,7 +363,7 @@ export class ApiServices extends OvhWrapper {
   Get list of your service details
   List available services
   **/
-  public get(path: '/services'): Promise<number[]>;
+  public get(path: '/services', params: {orderBy?: string, routes?: string, sort?: string}): Promise<number[]>;
   /**
   Get list of your service details
   Get details about a service

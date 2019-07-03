@@ -333,7 +333,7 @@ export class ApiLicenseVirtuozzo extends OvhWrapper {
   Get the orderable Virtuozzo versions
   Get the orderable Virtuozzo versions
   **/
-  public get(path: '/license/virtuozzo/orderableVersions'): Promise<LicenseVirtuozzoOrderConfiguration[]>;
+  public get(path: '/license/virtuozzo/orderableVersions', params: {ip: string}): Promise<LicenseVirtuozzoOrderConfiguration[]>;
   /**
   Your Virtuozzo license
   Get this object properties

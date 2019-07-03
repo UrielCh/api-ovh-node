@@ -833,7 +833,7 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
   Get available order capacitie
   Get available order capacitie
   **/
-  public get(path: '/hosting/privateDatabase/availableOrderCapacities'): Promise<HostingPrivateDatabaseAvailableOrderCapacities>;
+  public get(path: '/hosting/privateDatabase/availableOrderCapacities', params: {offer: HostingPrivateDatabaseOfferEnum}): Promise<HostingPrivateDatabaseAvailableOrderCapacities>;
   /**
   Private database
   Get this object properties

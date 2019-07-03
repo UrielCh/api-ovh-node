@@ -4144,7 +4144,7 @@ export class ApiMe extends OvhWrapper {
   List the agreements.ContractAgreement objects
   List of contracts signed between you and OVH
   **/
-  public get(path: '/me/agreements'): Promise<number[]>;
+  public get(path: '/me/agreements', params: {agreed?: AgreementsAgreementStateEnum, contractId?: number}): Promise<number[]>;
   /**
   Contract agreement
   Get this object properties
@@ -4169,7 +4169,7 @@ export class ApiMe extends OvhWrapper {
   List the api.Credential objects
   List of your Api Credentials
   **/
-  public get(path: '/me/api/credential'): Promise<number[]>;
+  public get(path: '/me/api/credential', params: {applicationId?: number, status?: AuthCredentialStateEnum}): Promise<number[]>;
   /**
   API Credential
   Get this object properties
@@ -4214,7 +4214,7 @@ export class ApiMe extends OvhWrapper {
   List the billing.Bill objects
   List of all the bills the logged account has
   **/
-  public get(path: '/me/bill'): Promise<string[]>;
+  public get(path: '/me/bill', params: {'date.from'?: string, 'date.to'?: string, orderId?: number}): Promise<string[]>;
   /**
   Details about a Bill
   Get this object properties
@@ -4264,7 +4264,7 @@ export class ApiMe extends OvhWrapper {
   Get all certificates of the account
   Get all certificates of the account
   **/
-  public get(path: '/me/certificates'): Promise<string[]>;
+  public get(path: '/me/certificates', params: {name?: string}): Promise<string[]>;
   /**
   List all consent campaign available
   List all consent campaign available
@@ -4294,7 +4294,7 @@ export class ApiMe extends OvhWrapper {
   Missing description
   Get list of transactions between two dates
   **/
-  public get(path: '/me/consumption/usage/history'): Promise<MeConsumptionTransaction[]>;
+  public get(path: '/me/consumption/usage/history', params: {beginDate: string, endDate: string}): Promise<MeConsumptionTransaction[]>;
   /**
   Missing description
   Retrieve all contact that you created
@@ -4314,7 +4314,7 @@ export class ApiMe extends OvhWrapper {
   Retrieve credit balance names
   Retrieve credit balance names
   **/
-  public get(path: '/me/credit/balance'): Promise<string[]>;
+  public get(path: '/me/credit/balance', params: {type?: BillingCreditBalanceType}): Promise<string[]>;
   /**
   Retrieve a credit balance
   Retrieve a credit balance
@@ -4364,7 +4364,7 @@ export class ApiMe extends OvhWrapper {
   List the billing.Deposit objects
   List of all the deposits made to your prepaid account or debt account
   **/
-  public get(path: '/me/deposit'): Promise<string[]>;
+  public get(path: '/me/deposit', params: {'date.from'?: string, 'date.to'?: string, orderId?: number}): Promise<string[]>;
   /**
   Details about a deposit
   Get this object properties
@@ -4459,7 +4459,7 @@ export class ApiMe extends OvhWrapper {
   List the billing.FidelityMovement objects
   List of entries of the fidelity account
   **/
-  public get(path: '/me/fidelityAccount/movements'): Promise<number[]>;
+  public get(path: '/me/fidelityAccount/movements', params: {'date.from'?: string, 'date.to'?: string}): Promise<number[]>;
   /**
   Details about a fidelity account
   Get this object properties
@@ -4569,7 +4569,7 @@ export class ApiMe extends OvhWrapper {
   List the billing.Order objects
   List of all the orders the logged account has
   **/
-  public get(path: '/me/order'): Promise<number[]>;
+  public get(path: '/me/order', params: {'date.from'?: string, 'date.to'?: string}): Promise<number[]>;
   /**
   Details about an Order
   Get this object properties
@@ -4679,7 +4679,7 @@ export class ApiMe extends OvhWrapper {
   Manage payment method
   Retrieve payment method ID list
   **/
-  public get(path: '/me/payment/method'): Promise<number[]>;
+  public get(path: '/me/payment/method', params: {paymentType?: string, status?: MePaymentMethodPaymentMethodStatus}): Promise<number[]>;
   /**
   Manage payment method
   Get one payment method
@@ -4689,7 +4689,7 @@ export class ApiMe extends OvhWrapper {
   Retrieve payment method transaction ID list
   Retrieve associated payment method transaction ID list
   **/
-  public get(path: '/me/payment/transaction'): Promise<number[]>;
+  public get(path: '/me/payment/transaction', params: {paymentMethodId?: number, status?: MePaymentMethodTransactionStatus}): Promise<number[]>;
   /**
   Manage payment method transaction
   Get associated payment method transaction
@@ -4699,7 +4699,7 @@ export class ApiMe extends OvhWrapper {
   List the billing.BankAccount objects
   List of bank accounts
   **/
-  public get(path: '/me/paymentMean/bankAccount'): Promise<number[]>;
+  public get(path: '/me/paymentMean/bankAccount', params: {state?: BillingBankAccountStateEnum}): Promise<number[]>;
   /**
   SEPA bank account info
   Get this object properties
@@ -4739,7 +4739,7 @@ export class ApiMe extends OvhWrapper {
   List the billing.Refund objects
   List of all the refunds the logged account has
   **/
-  public get(path: '/me/refund'): Promise<string[]>;
+  public get(path: '/me/refund', params: {'date.from'?: string, 'date.to'?: string, orderId?: number}): Promise<string[]>;
   /**
   Details about a Refund
   Get this object properties
@@ -4824,7 +4824,7 @@ export class ApiMe extends OvhWrapper {
   List the nichandle.contactChange.Task objects
   List of service contact change tasks you are involved in
   **/
-  public get(path: '/me/task/contactChange'): Promise<number[]>;
+  public get(path: '/me/task/contactChange', params: {askingAccount?: string, state?: NichandleChangeContactTaskStateEnum, toAccount?: string}): Promise<number[]>;
   /**
   Task running a contact change on a service
   Get this object properties
@@ -4834,7 +4834,7 @@ export class ApiMe extends OvhWrapper {
   List the nichandle.DomainTask objects
   List of domain task
   **/
-  public get(path: '/me/task/domain'): Promise<number[]>;
+  public get(path: '/me/task/domain', params: {domain?: string, function?: DomainNicOperationFunctionEnum, status?: DomainOperationStatusEnum}): Promise<number[]>;
   /**
   Domain tasks
   Get this object properties
@@ -4859,7 +4859,7 @@ export class ApiMe extends OvhWrapper {
   List the nichandle.emailChange.Task objects
   List of email change tasks you are involved in
   **/
-  public get(path: '/me/task/emailChange'): Promise<number[]>;
+  public get(path: '/me/task/emailChange', params: {state?: NichandleChangeEmailTaskStateEnum}): Promise<number[]>;
   /**
   Task running an email change on an account
   Get this object properties
@@ -4889,7 +4889,7 @@ export class ApiMe extends OvhWrapper {
   List the billing.Withdrawal objects
   List of all the withdrawals made from your prepaid account
   **/
-  public get(path: '/me/withdrawal'): Promise<string[]>;
+  public get(path: '/me/withdrawal', params: {'date.from'?: string, 'date.to'?: string, orderId?: number}): Promise<string[]>;
   /**
   Details about a withdrawal
   Get this object properties
@@ -4922,12 +4922,12 @@ export class ApiMe extends OvhWrapper {
   Details about your OVH identifier
   Alter this object properties
   **/
-  public put(path: '/me'): Promise<void>;
+  public put(path: '/me', params: {address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: NichandleCountryEnum, currency?: NichandleCurrency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: NichandleLanguageEnum, legalform?: NichandleLegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: NichandleOvhCompanyEnum, ovhSubsidiary?: NichandleOvhSubsidiaryEnum, phone?: string, phoneCountry?: NichandleCountryEnum, sex?: NichandleGenderEnum, spareEmail?: string, state?: NichandleStateEnum, vat?: string, zip?: string}): Promise<void>;
   /**
   Login restrictions on a development version of the Manager
   Alter this object properties
   **/
-  public put(path: '/me/accessRestriction/developerMode'): Promise<void>;
+  public put(path: '/me/accessRestriction/developerMode', params: {enabled?: boolean}): Promise<void>;
   /**
   List of all IP Restrictions
   Alter this object properties
@@ -4937,7 +4937,7 @@ export class ApiMe extends OvhWrapper {
   IP Restriction default rule
   Alter this object properties
   **/
-  public put(path: '/me/accessRestriction/ipDefaultRule'): Promise<void>;
+  public put(path: '/me/accessRestriction/ipDefaultRule', params: {rule?: NichandleAccessRestrictionIpRestrictionRuleEnum, warning?: boolean}): Promise<void>;
   /**
   Sms Two-Factor Authentication
   Alter this object properties
@@ -4957,7 +4957,7 @@ export class ApiMe extends OvhWrapper {
   Auto renewal information
   Alter this object properties
   **/
-  public put(path: '/me/autorenew'): Promise<void>;
+  public put(path: '/me/autorenew', params: {active?: boolean, lastRenew?: string, renewDay?: number}): Promise<void>;
   /**
   Get decision value for a consent campaign
   Update decision of a consent campaign
@@ -4977,7 +4977,7 @@ export class ApiMe extends OvhWrapper {
   Balance of the fidelity account
   Alter this object properties
   **/
-  public put(path: '/me/fidelityAccount'): Promise<void>;
+  public put(path: '/me/fidelityAccount', params: {alertThreshold?: number, balance?: number, canBeCredited?: boolean, lastUpdate?: string, openDate?: string}): Promise<void>;
   /**
   A group linked to this account
   Alter a group
@@ -5075,27 +5075,27 @@ export class ApiMe extends OvhWrapper {
   disable operations
   Disable this SOTP account
   **/
-  public post(path: '/me/accessRestriction/backupCode/disable'): Promise<void>;
+  public post(path: '/me/accessRestriction/backupCode/disable', params: {code: string}): Promise<void>;
   /**
   enable operations
   Enable this SOTP account
   **/
-  public post(path: '/me/accessRestriction/backupCode/enable'): Promise<void>;
+  public post(path: '/me/accessRestriction/backupCode/enable', params: {code: string}): Promise<void>;
   /**
   validate operations
   Validate your SOTP account
   **/
-  public post(path: '/me/accessRestriction/backupCode/validate'): Promise<NichandleAccessRestrictionSOTPValidate>;
+  public post(path: '/me/accessRestriction/backupCode/validate', params: {code: string}): Promise<NichandleAccessRestrictionSOTPValidate>;
   /**
   List the nichandle.IpRestriction objects
   Add an IP access restriction
   **/
-  public post(path: '/me/accessRestriction/ip'): Promise<void>;
+  public post(path: '/me/accessRestriction/ip', params: {ip: string, rule: NichandleAccessRestrictionIpRestrictionRuleEnum, warning: boolean}): Promise<void>;
   /**
   List the nichandle.accessRestriction.SmsAccount objects
   Add a SMS access restriction
   **/
-  public post(path: '/me/accessRestriction/sms'): Promise<NichandleAccessRestrictionSmsSecret>;
+  public post(path: '/me/accessRestriction/sms', params: {phone: string}): Promise<NichandleAccessRestrictionSmsSecret>;
   /**
   disable operations
   Disable this SMS account
@@ -5170,7 +5170,7 @@ export class ApiMe extends OvhWrapper {
   Auto renewal information
   Activate auto renew for this nic
   **/
-  public post(path: '/me/autorenew'): Promise<void>;
+  public post(path: '/me/autorenew', params: {renewDay: number}): Promise<void>;
   /**
   pay operations
   Create an order in order to pay this order's debt
@@ -5180,12 +5180,12 @@ export class ApiMe extends OvhWrapper {
   invoicesByPostalMail operations
   Enable or disable invoices by postal mail
   **/
-  public post(path: '/me/billing/invoicesByPostalMail'): Promise<void>;
+  public post(path: '/me/billing/invoicesByPostalMail', params: {enable: boolean}): Promise<void>;
   /**
   changeEmail operations
   Initiate an email change procedure
   **/
-  public post(path: '/me/changeEmail'): Promise<NichandleEmailChangeTask>;
+  public post(path: '/me/changeEmail', params: {newEmail: string}): Promise<NichandleEmailChangeTask>;
   /**
   changePassword operations
   Initiate a password change procedure
@@ -5195,12 +5195,12 @@ export class ApiMe extends OvhWrapper {
   Missing description
   Create a new contact
   **/
-  public post(path: '/me/contact'): Promise<ContactContact>;
+  public post(path: '/me/contact', params: {address: ContactAddress, birthCity?: string, birthCountry?: NichandleCountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email: string, fax?: string, firstName: string, gender?: NichandleGenderEnum, language: NichandleLanguageEnum, lastName: string, legalForm: NichandleLegalFormEnum, nationalIdentificationNumber?: string, nationality?: NichandleCountryEnum, organisationName?: string, organisationType?: string, phone: string, vat?: string}): Promise<ContactContact>;
   /**
   Validate a code to generate associated credit
   Validate a code to generate associated credit movement
   **/
-  public post(path: '/me/credit/code'): Promise<BillingCreditBalanceMovement>;
+  public post(path: '/me/credit/code', params: {inputCode: string}): Promise<BillingCreditBalanceMovement>;
   /**
   pay operations
   Create an order in order to pay this order's debt
@@ -5220,22 +5220,22 @@ export class ApiMe extends OvhWrapper {
   List the nichandle.document.Document objects
   Create new document
   **/
-  public post(path: '/me/document'): Promise<NichandleDocumentDocument>;
+  public post(path: '/me/document', params: {name: string, tags?: ComplexTypeSafeKeyValue<string>[]}): Promise<NichandleDocumentDocument>;
   /**
   Add CORS support on your container
   Add CORS support on your container
   **/
-  public post(path: '/me/document/cors'): Promise<void>;
+  public post(path: '/me/document/cors', params: {origin: string}): Promise<void>;
   /**
   List the telephony.MailDomain2Service objects
   Create a custom domain for your fax services
   **/
-  public post(path: '/me/fax/customDomains'): Promise<TelephonyMailDomain2Service>;
+  public post(path: '/me/fax/customDomains', params: {domain: string}): Promise<TelephonyMailDomain2Service>;
   /**
   creditOrder operations
   Generate an order that can be paid in order to credit the fidelity account
   **/
-  public post(path: '/me/fidelityAccount/creditOrder'): Promise<BillingOrder>;
+  public post(path: '/me/fidelityAccount/creditOrder', params: {amount: number}): Promise<BillingOrder>;
   /**
   Route for getting visitor's country and continent
   Fetch visitor country & region
@@ -5245,12 +5245,12 @@ export class ApiMe extends OvhWrapper {
   Groups linked to this account
   Create a new group
   **/
-  public post(path: '/me/identity/group'): Promise<NichandleAuthenticationGroup>;
+  public post(path: '/me/identity/group', params: {description?: string, name: string, role?: NichandleAuthenticationRoleEnum}): Promise<NichandleAuthenticationGroup>;
   /**
   Users linked to this account
   Create a new user
   **/
-  public post(path: '/me/identity/user'): Promise<void>;
+  public post(path: '/me/identity/user', params: {description?: string, email: string, group?: string, login: string, password: string}): Promise<void>;
   /**
   A user linked to this account
   Disable this user
@@ -5265,7 +5265,7 @@ export class ApiMe extends OvhWrapper {
   List the dedicated.installationTemplate.Templates objects
   Create a template
   **/
-  public post(path: '/me/installationTemplate'): Promise<void>;
+  public post(path: '/me/installationTemplate', params: {baseTemplateName: string, defaultLanguage: DedicatedTemplateOsLanguageEnum, name: string}): Promise<void>;
   /**
   checkIntegrity operations
   Check the integrity of this template
@@ -5290,17 +5290,17 @@ export class ApiMe extends OvhWrapper {
   List the nichandle.Ipv4Org objects
   Add an organisation
   **/
-  public post(path: '/me/ipOrganisation'): Promise<void>;
+  public post(path: '/me/ipOrganisation', params: {abuse_mailbox: string, address: string, city: string, country: NichandleCountryEnum, firstname: string, lastname: string, phone: string, registry: NichandleIpRegistryEnum, state?: string, zip?: string}): Promise<void>;
   /**
   List the nichandle.ipxe objects
   Add an IPXE script
   **/
-  public post(path: '/me/ipxeScript'): Promise<NichandleIpxe>;
+  public post(path: '/me/ipxeScript', params: {description: string, name: string, script: string}): Promise<NichandleIpxe>;
   /**
   subscribe operations
   Subscribe an email to a restricted mailing list
   **/
-  public post(path: '/me/mailingList/subscribe'): Promise<void>;
+  public post(path: '/me/mailingList/subscribe', params: {email: string, mailingList: string}): Promise<void>;
   /**
   pay operations
   Create an order in order to pay this order's debt
@@ -5335,12 +5335,12 @@ export class ApiMe extends OvhWrapper {
   Request a password recover
   Request a password recover
   **/
-  public post(path: '/me/passwordRecover'): Promise<void>;
+  public post(path: '/me/passwordRecover', params: {ovhCompany: NichandleOvhCompanyEnum, ovhId: string}): Promise<void>;
   /**
   Manage payment method
   Pay an order and register a new payment method if necessary
   **/
-  public post(path: '/me/payment/method'): Promise<MePaymentMethodRegisterValidationResult>;
+  public post(path: '/me/payment/method', params: {callbackUrl: MePaymentMethodCallbackUrl, default?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean}): Promise<MePaymentMethodRegisterValidationResult>;
   /**
   Challenge your payment method
   Challenge one payment method
@@ -5355,7 +5355,7 @@ export class ApiMe extends OvhWrapper {
   List the billing.BankAccount objects
   Enable payment through a new account
   **/
-  public post(path: '/me/paymentMean/bankAccount'): Promise<BillingPaymentMeanValidation>;
+  public post(path: '/me/paymentMean/bankAccount', params: {bic: string, description?: string, iban: string, ownerAddress: string, ownerName: string, setDefault?: boolean}): Promise<BillingPaymentMeanValidation>;
   /**
   challenge operations
   Challenge your bank account
@@ -5370,7 +5370,7 @@ export class ApiMe extends OvhWrapper {
   List the billing.CreditCard objects
   Add a new credit card
   **/
-  public post(path: '/me/paymentMean/creditCard'): Promise<BillingPaymentMeanValidation>;
+  public post(path: '/me/paymentMean/creditCard', params: {description?: string, returnUrl?: string, setDefault?: boolean}): Promise<BillingPaymentMeanValidation>;
   /**
   challenge operations
   Challenge your bank account
@@ -5390,7 +5390,7 @@ export class ApiMe extends OvhWrapper {
   List the billing.Paypal objects
   Enable payment through a new PayPal account
   **/
-  public post(path: '/me/paymentMean/paypal'): Promise<BillingPaymentMeanValidation>;
+  public post(path: '/me/paymentMean/paypal', params: {description?: string, returnUrl?: string, setDefault?: boolean}): Promise<BillingPaymentMeanValidation>;
   /**
   challenge operations
   Challenge your bank account
@@ -5410,12 +5410,12 @@ export class ApiMe extends OvhWrapper {
   List the nichandle.sshKey objects
   Add a new public SSH key
   **/
-  public post(path: '/me/sshKey'): Promise<void>;
+  public post(path: '/me/sshKey', params: {key: string, keyName: string}): Promise<void>;
   /**
   List the nichandle.SubAccount objects
   Create a new sub-account
   **/
-  public post(path: '/me/subAccount'): Promise<number>;
+  public post(path: '/me/subAccount', params: {description?: string}): Promise<number>;
   /**
   createConsumerKey operations
   Create a consumer key for the current application
@@ -5465,22 +5465,22 @@ export class ApiMe extends OvhWrapper {
   List the telephony.DefaultIpRestriction objects
   Create a default IP restriction for your future VoIP lines
   **/
-  public post(path: '/me/telephony/defaultIpRestriction'): Promise<TelephonyDefaultIpRestriction>;
+  public post(path: '/me/telephony/defaultIpRestriction', params: {subnet: string, type: TelephonyProtocolEnum}): Promise<TelephonyDefaultIpRestriction>;
   /**
   settings operations
   Change the telephony settings linked to the customer account
   **/
-  public post(path: '/me/telephony/settings'): Promise<void>;
+  public post(path: '/me/telephony/settings', params: {settings: TelephonySettings}): Promise<void>;
   /**
   checkValidity operations
   Verify existing voucher
   **/
-  public post(path: '/me/voucher/checkValidity'): Promise<NichandleVoucherStatus>;
+  public post(path: '/me/voucher/checkValidity', params: {voucher: string}): Promise<NichandleVoucherStatus>;
   /**
   setting operations
   Change xdsl settings linked to the nichandle
   **/
-  public post(path: '/me/xdsl/setting'): Promise<void>;
+  public post(path: '/me/xdsl/setting', params: {resellerFastModemShipping?: boolean, resellerModemBasicConfig?: boolean}): Promise<void>;
   public post(path: PathsMePOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

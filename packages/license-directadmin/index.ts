@@ -277,7 +277,7 @@ export class ApiLicenseDirectadmin extends OvhWrapper {
   Get the orderable DirectAdmin versions
   Get the orderable DirectAdmin versions
   **/
-  public get(path: '/license/directadmin/orderableVersions'): Promise<LicenseDirectAdminOrderConfiguration[]>;
+  public get(path: '/license/directadmin/orderableVersions', params: {ip: string}): Promise<LicenseDirectAdminOrderConfiguration[]>;
   /**
   Your DirectAdmin license
   Get this object properties

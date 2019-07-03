@@ -354,7 +354,7 @@ export class ApiSslGateway extends OvhWrapper {
   Check domain eligibility. Return list of eligible IP(s) for this domain.
   Check domain eligibility. Return list of eligible IP(s) for this domain.
   **/
-  public get(path: '/sslGateway/eligibility'): Promise<SslGatewayEligibilityStatus>;
+  public get(path: '/sslGateway/eligibility', params: {domain: string}): Promise<SslGatewayEligibilityStatus>;
   /**
   Your SSL Gateway
   Get this object properties

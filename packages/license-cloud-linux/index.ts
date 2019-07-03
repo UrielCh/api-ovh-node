@@ -234,7 +234,7 @@ export class ApiLicenseCloudLinux extends OvhWrapper {
   Get the orderable CloudLinux versions
   Get the orderable CloudLinux versions
   **/
-  public get(path: '/license/cloudLinux/orderableVersions'): Promise<LicenseCloudLinuxOrderConfiguration[]>;
+  public get(path: '/license/cloudLinux/orderableVersions', params: {ip: string}): Promise<LicenseCloudLinuxOrderConfiguration[]>;
   /**
   Your CloudLinux license
   Get this object properties

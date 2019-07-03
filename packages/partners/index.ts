@@ -921,7 +921,7 @@ export class ApiPartners extends OvhWrapper {
   Company.list
   Created a new company for the inscription
   **/
-  public post(path: '/partners/register/company'): Promise<PartnerCompany>;
+  public post(path: '/partners/register/company', params: {OVHCertifications?: PartnerOVHCertifications, OVHCustomersAdvised: PartnerOVHCustomersAdvisedEnum, OVHKnowledgeResources: PartnerKnowledgeResourcesRangeEnum, OVHProductsUsed?: PartnerOVHProductsUsed, OVHTechnicalAdvancedResources: PartnerTechnicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources: PartnerTechnicalExpertResourcesRangeEnum, activitySectors?: PartnerActivitySectors, address: string, city: string, clientKinds?: PartnerClientKinds, commercialName: string, country: NichandleCountryEnum, description: string, email: string, employeesNumber: PartnerEmployeesNumberEnum, expertises?: PartnerExpertisesChoices, externalCertifications?: PartnerExternalCertifications, facebook?: string, linkedin?: string, logo: string, name: string, partnerKnowledges?: PartnerPartnerKnowledges, phone: string, productCountries?: PartnerProductCountries, registrationNumber?: string, revenue: PartnerRevenueRangeEnum, twitter?: string, website: string, zipCode: string}): Promise<PartnerCompany>;
   /**
   Application.create
   Submit application information for validation

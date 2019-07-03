@@ -234,7 +234,7 @@ export class ApiLicenseSqlserver extends OvhWrapper {
   Get the orderable Sql Server versions
   Get the orderable Sql Server versions
   **/
-  public get(path: '/license/sqlserver/orderableVersions'): Promise<LicenseSqlServerOrderConfiguration[]>;
+  public get(path: '/license/sqlserver/orderableVersions', params: {ip: string}): Promise<LicenseSqlServerOrderConfiguration[]>;
   /**
   Your SQL Server license
   Get this object properties

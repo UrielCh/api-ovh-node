@@ -2837,7 +2837,7 @@ export class ApiDedicatedServer extends OvhWrapper {
   List the availability of dedicated server
   List the availability of dedicated server
   **/
-  public get(path: '/dedicated/server/availabilities'): Promise<DedicatedAvailabilities[]>;
+  public get(path: '/dedicated/server/availabilities', params: {country: NichandleOvhSubsidiaryEnum, hardware?: string}): Promise<DedicatedAvailabilities[]>;
   /**
   List the availability of dedicated server (RAW)
   List the availability of dedicated server
@@ -2847,12 +2847,12 @@ export class ApiDedicatedServer extends OvhWrapper {
   List the availability of dedicated server
   List the availability of dedicated server
   **/
-  public get(path: '/dedicated/server/datacenter/availabilities'): Promise<DedicatedDatacenterAvailability[]>;
+  public get(path: '/dedicated/server/datacenter/availabilities', params: {datacenters?: string, excludeDatacenters?: boolean, memory?: string, planCode?: string, server?: string, storage?: string}): Promise<DedicatedDatacenterAvailability[]>;
   /**
   List the operating systems available for a specified hardware reference
   List the os available for a specified hardware reference
   **/
-  public get(path: '/dedicated/server/osAvailabilities'): Promise<DedicatedOsAvailabilitiesEnum[]>;
+  public get(path: '/dedicated/server/osAvailabilities', params: {hardware: string}): Promise<DedicatedOsAvailabilitiesEnum[]>;
   /**
   Get a VirtualNetworkInterface details
   Get VirtualNetworkInterface details

@@ -262,7 +262,7 @@ export class ApiLicenseCpanel extends OvhWrapper {
   Get the orderable CPanel versions
   Get the orderable CPanel versions
   **/
-  public get(path: '/license/cpanel/orderableVersions'): Promise<LicenseCpanelOrderConfiguration[]>;
+  public get(path: '/license/cpanel/orderableVersions', params: {ip: string}): Promise<LicenseCpanelOrderConfiguration[]>;
   /**
   Your Cpanel license
   Get this object properties

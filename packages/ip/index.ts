@@ -1170,7 +1170,7 @@ export class ApiIp extends OvhWrapper {
   List the ip.Ip objects
   Your OVH IPs
   **/
-  public get(path: '/ip'): Promise<string[]>;
+  public get(path: '/ip', params: {description?: string, ip?: string, 'routedTo.serviceName'?: string, type?: IpIpTypeEnum}): Promise<string[]>;
   /**
   Operations about the IP service
   List available services

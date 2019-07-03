@@ -286,7 +286,7 @@ export class ApiLicenseWindows extends OvhWrapper {
   Get the orderable Windows versions
   Get the orderable Windows versions
   **/
-  public get(path: '/license/windows/orderableVersions'): Promise<LicenseWindowsOrderConfiguration[]>;
+  public get(path: '/license/windows/orderableVersions', params: {ip: string}): Promise<LicenseWindowsOrderConfiguration[]>;
   /**
   Your Windows license
   Get this object properties

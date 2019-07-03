@@ -60,7 +60,7 @@ export class ApiContact extends OvhWrapper {
   Send form following characteristics of /contact/form
   Send form following characteristics of /contact/form
   **/
-  public post(path: '/contact/form/send'): Promise<void>;
+  public post(path: '/contact/form/send', params: {form: ComplexTypeSafeKeyValue<string>[], type: string}): Promise<void>;
   public post(path: PathsContactPOST, params?: OvhParamType) : Promise<any> {
     return super.post(path, params
   );}

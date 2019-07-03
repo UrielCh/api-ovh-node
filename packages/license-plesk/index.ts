@@ -364,7 +364,7 @@ export class ApiLicensePlesk extends OvhWrapper {
   Get the orderable Plesk versions and their associated compatibilities
   Get the orderable Plesk versions and their associated compatibilities
   **/
-  public get(path: '/license/plesk/orderableVersions'): Promise<LicensePleskOrderConfiguration[]>;
+  public get(path: '/license/plesk/orderableVersions', params: {ip: string}): Promise<LicensePleskOrderConfiguration[]>;
   /**
   Your Plesk license
   Get this object properties

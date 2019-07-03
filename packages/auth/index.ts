@@ -90,7 +90,7 @@ export class ApiAuth extends OvhWrapper {
   Operations with credentials
   Request a new credential for your application
   **/
-  public post(path: '/auth/credential'): Promise<AuthCredential>;
+  public post(path: '/auth/credential', params: {accessRules: AuthAccessRule[], redirection?: string}): Promise<AuthCredential>;
   /**
   Expire current credential
   Expire current credential
