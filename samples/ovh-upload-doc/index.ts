@@ -5,7 +5,7 @@ import { NichandleDocumentDocument } from '../../packages/me';
 import fse from 'fs-extra';
 import rp from 'request-promise'
 
-const ovh = new Ovh({ accessRules: 'GET /me/document, POST /me/document,GET /me/document/*' });
+const ovh = new Ovh({ accessRules: 'GET /me/document, POST /me/document,GET /me/document/*', certCache: '../../upload.json' });
 const apiMe = new ApiMe(ovh);
 
 async function main(documentName: string, filename: string) {

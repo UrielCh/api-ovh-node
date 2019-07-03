@@ -91,6 +91,7 @@ export default class OvhApi implements OvhRequestable {
     warn: DebugFnc;
     accessRules: string[];
     certCache: string;
+    updatingCert: boolean;
 
     constructor(params: OvhParams) {
         this.appKey = params.appKey || 'qCLhWaDgfbAkbuzN';
@@ -100,7 +101,7 @@ export default class OvhApi implements OvhRequestable {
         this.apiTimeDiff = params.apiTimeDiff || null;
         this.warn = console.log;
         this.certCache = params.certCache || '';
-
+        this.updatingCert = false;
         if (params.accessRules) {
             if (typeof (params.accessRules) === 'string')
                 this.accessRules = params.accessRules.split(/\s*[,;]\s*/);
@@ -332,7 +333,11 @@ by default I will ask for all rights`);
 
             const error: OvhError = <OvhError>response;
             if (error.errorCode === 'INVALID_CREDENTIAL' || error.message === 'You must login first') {
-                if (ovhEngine.consumerKey === null || ovhEngine.certCache) {
+                if (ovhEngine.certCache && !ovhEngine.updatingCert) {
+                    ovhEngine.updatingCert = true;
+                    ovhEngine.consumerKey = null;
+                }
+                if (ovhEngine.consumerKey === null) {
                     const rules = { accessRules: ovhEngine.toAccessRules.apply(this, ovhEngine.accessRules) };
                     let consumerKey, validationUrl;
                     try {
@@ -343,7 +348,9 @@ by default I will ask for all rights`);
                         throw `failed to request a credential with rule ${JSON.stringify(ovhEngine.accessRules)} ${e.message || e}`;
                     }
                     await waitForCertValidation(consumerKey, validationUrl);
-                    return ovhEngine.request(httpMethod, path, params);
+                    let resp = await ovhEngine.request(httpMethod, path, params);
+                    ovhEngine.updatingCert = false;
+                    return resp;
                 }
                 throw response;
             }
