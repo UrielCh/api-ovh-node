@@ -1993,7 +1993,7 @@ export interface DedicatedCloudServicePack {
    * Name of the service pack
    *
    */
-  name: DedicatedCloudServicePackEnum;
+  name: string;
   /**
    * State of the service pack
    *
