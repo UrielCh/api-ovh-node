@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/auth",
   "description": "Add typing to to ovh api auth",
-  "version": "1.2.3",
+  "version": "1.2.6",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",

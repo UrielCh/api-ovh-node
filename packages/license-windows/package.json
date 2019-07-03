@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/license-windows",
   "description": "Add typing to to ovh api license-windows",
-  "version": "1.2.4",
+  "version": "1.2.6",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",

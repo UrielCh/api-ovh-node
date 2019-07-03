@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/dbaas-logs",
   "description": "Add typing to to ovh api dbaas-logs",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
