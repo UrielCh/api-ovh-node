@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/order",
   "description": "Add typing to to ovh api order",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
