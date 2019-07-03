@@ -1,34 +1,27 @@
-import {OvhParams, default as Ovh} from '.';
+import Ovh, { OvhParams } from '.';
 
-import { ApiIp, IpIp } from '@ovh-api/ip';
+import ApiMe from '@ovh-api/me';
 import { assert } from 'chai';
 // import { describe } from 'mocha';
 // import { debug } from 'util';
 
 const config: OvhParams = {
-//  appKey: String(process.env.APP_KEY),
-//  appSecret: String(process.env.APP_SECRET),
-  consumerKey: String(process.env.CONSUMER_KEY),
-  /// debug: true,
-  accessRules: 'GET /ip'  
+  // appKey: String(process.env.APP_KEY),
+  // appSecret: String(process.env.APP_SECRET),
+  // consumerKey: String(process.env.CONSUMER_KEY),
+  accessRules: 'GET /me',
+  certCache: '../../tokenTest.json'
   // apis: ['ip'],
 };
 const ovhEngine = new Ovh(config);
-const api = new ApiIp(ovhEngine);
+const api = new ApiMe(ovhEngine);
 
-const test1 = async () => {
-  let ips: string[] | void;
-  
-  ips = await api.get('/ip').catch(console.error);
-  assert.isNotNull(ips)
-  if (ips && ips.length) {
-    let ip0 = api.get('/ip/{ip}', {ip:ips[0]});
-    ip0.then((value:IpIp) => {console.log(value)}, console.error)
-  }
-};
+describe('OvhMe', () => {
+  it('retrive nichandler', async (done) => {
+    let constact = await api.get('/me');
+    assert.match(constact.nichandle, /[a-z]{2}[0-9]+-ovh/, 'have nichandle');
+    done();
+  }).timeout(60000);
+});
 
-test1();
-//describe('Call OVH api', () => {
-//  it('should be able to List IP' , test1);
-//});
 

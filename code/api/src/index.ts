@@ -29,11 +29,12 @@ import { IncomingMessage } from 'http';
 import * as https from 'https';
 import * as querystring from 'querystring';
 import { createHash } from 'crypto';
-import { Schema, API } from './schema';
+import { Schema } from './schema';
 import { RequestOptions } from 'http';
 import { endpoints } from './endpoints';
 import { OvhParamType, OvhRequestable } from '@ovh-api/common';
 import open from 'open';
+import { writeFile, readFileSync } from 'fs';
 
 type DebugFnc = (...args: any[]) => any;
 
@@ -61,6 +62,10 @@ export interface OvhParams {
     apis?: string[];
     debug?: boolean | DebugFnc,
     accessRules?: string[] | string;
+    /**
+     * certCache store ans use generated certificate in a file
+     */
+    certCache?: string;
 }
 
 interface AccessRule {
@@ -85,6 +90,7 @@ export default class OvhApi implements OvhRequestable {
     debug?: DebugFnc;
     warn: DebugFnc;
     accessRules: string[];
+    certCache: string;
 
     constructor(params: OvhParams) {
         this.appKey = params.appKey || 'qCLhWaDgfbAkbuzN';
@@ -93,6 +99,7 @@ export default class OvhApi implements OvhRequestable {
         this.timeout = params.timeout;
         this.apiTimeDiff = params.apiTimeDiff || null;
         this.warn = console.log;
+        this.certCache = params.certCache || '';
 
         if (params.accessRules) {
             if (typeof (params.accessRules) === 'string')
@@ -103,6 +110,17 @@ export default class OvhApi implements OvhRequestable {
             this.accessRules = ['GET /*', 'POST /*', 'PUT /*', 'DELETE /*'];
         }
 
+        if (this.certCache) {
+            let cached = '';
+            try {
+                cached = readFileSync(this.certCache, { encoding: 'utf-8' })
+                let data = JSON.parse(cached);
+                let { appKey, appSecret, consumerKey } = data;
+                this.appKey = appKey;
+                this.appSecret = appSecret;
+                this.consumerKey = consumerKey;
+            } catch { }
+        }
         if (!params.appKey && !params.appSecret) {
             if (!this.consumerKey && !params.accessRules) {
                 this.warn(`Initializing Api OVH without appKey / appSecret: using Default Certificat
@@ -262,14 +280,18 @@ by default I will ask for all rights`);
             // set consumerKey
             ovhEngine.consumerKey = consumerKey;
             console.log(`[OVH] MISSING_CREDENTIAL issue a new one: ${consumerKey}\nValidate this cert with this url to continue:\n${validationUrl}`)
-            // try to open a brower
+            // try to open a brower, ignorring error
             open(validationUrl).catch(() => { });
             let pass = 0;
             const checkCert = () => ovhEngine.request('GET', '/auth/currentCredential')
                 .then(({ status }) => {
                     if (status === 'validated') {
                         console.log('consumerKey Authorized!')
-                        done();
+                        if (ovhEngine.certCache) {
+                            let { appKey, appSecret, consumerKey } = ovhEngine;
+                            writeFile(ovhEngine.certCache, JSON.stringify({ appKey, appSecret, consumerKey }, null, 2), { encoding: 'utf-8', mode: 0o600 }, done);
+                        } else
+                            done();
                         return false;
                     }
                     setTimeout(checkCert, 2000);
@@ -310,7 +332,7 @@ by default I will ask for all rights`);
 
             const error: OvhError = <OvhError>response;
             if (error.errorCode === 'INVALID_CREDENTIAL' || error.message === 'You must login first') {
-                if (ovhEngine.consumerKey === null) {
+                if (ovhEngine.consumerKey === null || ovhEngine.certCache) {
                     const rules = { accessRules: ovhEngine.toAccessRules.apply(this, ovhEngine.accessRules) };
                     let consumerKey, validationUrl;
                     try {
