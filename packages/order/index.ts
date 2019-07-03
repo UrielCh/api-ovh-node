@@ -3803,7 +3803,7 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Retrieve all required configuration item of the cart item
   **/
-  public get(path: '/order/cart/{cartId}/item/{itemId}/requiredConfiguration', params: {itemId: number, cartId: string}): Promise<OrderCartConfigurationRequirements[]>;
+  public get(path: '/order/cart/{cartId}/item/{itemId}/requiredConfiguration', params: {cartId: string, itemId: number}): Promise<OrderCartConfigurationRequirements[]>;
   /**
   Missing description
   Get informations about Kubernetes offers
@@ -5919,7 +5919,7 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Setup configuration item for the product
   **/
-  public post(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {itemId: number, cartId: string, label?: string, value?: string}): Promise<OrderCartConfigurationItem>;
+  public post(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {cartId: string, itemId: number, label?: string, value?: string}): Promise<OrderCartConfigurationItem>;
   /**
   Missing description
   Post a new Kubernetes item in your cart
@@ -6892,7 +6892,7 @@ export class ApiOrder extends OvhWrapper {
   Missing description
   Delete an item from a cart
   **/
-  public delete(path: '/order/cart/{cartId}/item/{itemId}', params: {itemId: number, cartId: string}): Promise<void>;
+  public delete(path: '/order/cart/{cartId}/item/{itemId}', params: {cartId: string, itemId: number}): Promise<void>;
   /**
   Missing description
   Delete configuration item

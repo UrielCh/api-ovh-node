@@ -372,6 +372,11 @@ export interface DbaasLogsIndex {
  */
 export interface DbaasLogsInput {
   /**
+   * If set, automatically selects a compatible option
+   *
+   */
+  autoSelectOption?: boolean;
+  /**
    * Input creation
    *
    */
@@ -624,6 +629,11 @@ export interface DbaasLogsLogstashConfiguration {
  * Member
  */
 export interface DbaasLogsMember {
+  /**
+   * Membership creation
+   *
+   */
+  createdAt: string;
   /**
    * Custom note
    *
@@ -1496,6 +1506,11 @@ export interface DbaasLogsQuota {
  */
 export interface DbaasLogsRole {
   /**
+   * Role creation
+   *
+   */
+  createdAt: string;
+  /**
    * Role description
    *
    */
@@ -1515,6 +1530,11 @@ export interface DbaasLogsRole {
    *
    */
   roleId: string;
+  /**
+   * Role last update
+   *
+   */
+  updatedAt?: string;
 }
 /**
  * null
@@ -2302,7 +2322,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   Cluster allowed networks
   Returns details of an allowed network
   **/
-  public get(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}', params: {allowedNetworkId: string, serviceName: string, clusterId: string}): Promise<DbaasLogsClusterAllowedNetwork>;
+  public get(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}', params: {serviceName: string, clusterId: string, allowedNetworkId: string}): Promise<DbaasLogsClusterAllowedNetwork>;
   /**
   Inputs
   Returns the list of registered input attached to the logged user
@@ -2312,7 +2332,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   Input
   Returns details of specified input
   **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}', params: {inputId: string, serviceName: string}): Promise<DbaasLogsInput>;
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}', params: {serviceName: string, inputId: string}): Promise<DbaasLogsInput>;
   /**
   InputActions
   Returns actions of specified input
@@ -2322,17 +2342,17 @@ export class ApiDbaasLogs extends OvhWrapper {
   InputAllowedNetworks
   List all network ID allowed to join input
   **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', params: {inputId: string, serviceName: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', params: {serviceName: string, inputId: string}): Promise<string[]>;
   /**
   InputAllowedNetwork
   List all network ID allowed to join input
   **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {inputId: string, serviceName: string, allowedNetworkId: string}): Promise<DbaasLogsAllowedNetwork>;
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {inputId: string, allowedNetworkId: string, serviceName: string}): Promise<DbaasLogsAllowedNetwork>;
   /**
   InputConfigtestResult
   Returns the config test operation result
   **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/configtest/result', params: {inputId: string, serviceName: string}): Promise<DbaasLogsTestResult>;
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/configtest/result', params: {serviceName: string, inputId: string}): Promise<DbaasLogsTestResult>;
   /**
   FlowggerConfiguration
   Returns the flowgger configuration
@@ -2342,7 +2362,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   LogstashConfiguration
   Returns the logstash configuration
   **/
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash', params: {serviceName: string, inputId: string}): Promise<DbaasLogsLogstashConfiguration>;
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash', params: {inputId: string, serviceName: string}): Promise<DbaasLogsLogstashConfiguration>;
   /**
   InputUrls
   Returns the list of urls of specified input
@@ -2387,19 +2407,19 @@ export class ApiDbaasLogs extends OvhWrapper {
   Alias
   Returns specified elasticsearch alias
   **/
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', params: {serviceName: string, aliasId: string}): Promise<DbaasLogsAlias>;
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', params: {aliasId: string, serviceName: string}): Promise<DbaasLogsAlias>;
   /**
   AliasStreams
   Returns the list of elasticsearch indexes attached to specified
         elasticsearch alias
   **/
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', params: {aliasId: string, serviceName: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', params: {serviceName: string, aliasId: string}): Promise<string[]>;
   /**
   AliasStreams
   Returns the list of graylog streams attached to specified
         elasticsearch alias
   **/
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', params: {aliasId: string, serviceName: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', params: {serviceName: string, aliasId: string}): Promise<string[]>;
   /**
   StreamUrls
   Returns the list of urls of specified graylog stream
@@ -2464,22 +2484,22 @@ export class ApiDbaasLogs extends OvhWrapper {
   StreamArchive
   Returns details of specified archive
   **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}', params: {serviceName: string, streamId: string, archiveId: string}): Promise<DbaasLogsArchive>;
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}', params: {streamId: string, archiveId: string, serviceName: string}): Promise<DbaasLogsArchive>;
   /**
   StreamRules
   Returns the list of rules of specified graylog stream
   **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {streamId: string, serviceName: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {serviceName: string, streamId: string}): Promise<string[]>;
   /**
   StreamRule
   Returns details of specified graylog stream rule
   **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', params: {streamId: string, serviceName: string, ruleId: string}): Promise<DbaasLogsStreamRule[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', params: {streamId: string, ruleId: string, serviceName: string}): Promise<DbaasLogsStreamRule[]>;
   /**
   StreamUrls
   Returns the list of urls of specified graylog stream
   **/
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/url', params: {serviceName: string, streamId: string}): Promise<DbaasLogsUrl[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/url', params: {streamId: string, serviceName: string}): Promise<DbaasLogsUrl[]>;
   /**
   ServiceQuota
   Returns the overall quota limits
@@ -2494,7 +2514,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   Role
   Returns details of specified role
   **/
-  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}', params: {serviceName: string, roleId: string}): Promise<DbaasLogsRole>;
+  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}', params: {roleId: string, serviceName: string}): Promise<DbaasLogsRole>;
   /**
   RoleMembers
   Returns the member list of specified role
@@ -2504,17 +2524,17 @@ export class ApiDbaasLogs extends OvhWrapper {
   RoleMember
   Returns the member metadata
   **/
-  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', params: {roleId: string, username: string, serviceName: string}): Promise<DbaasLogsMember>;
+  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', params: {serviceName: string, roleId: string, username: string}): Promise<DbaasLogsMember>;
   /**
   RolePermissions
   Returns the list of permissions of specified role
   **/
-  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission', params: {serviceName: string, roleId: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission', params: {roleId: string, serviceName: string}): Promise<string[]>;
   /**
   RolePermission
   Returns details of specified permission
   **/
-  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}', params: {serviceName: string, roleId: string, permissionId: string}): Promise<DbaasLogsPermission[]>;
+  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}', params: {roleId: string, serviceName: string, permissionId: string}): Promise<DbaasLogsPermission[]>;
   /**
   Details about a Service
   Get this object properties
@@ -2547,7 +2567,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   Input
   Update information of specified input object
   **/
-  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}', params: {inputId: string, serviceName: string, description?: string, engineId?: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId?: string, title?: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}', params: {serviceName: string, inputId: string, description?: string, engineId?: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId?: string, title?: string}): Promise<DbaasLogsOperation>;
   /**
   FlowggerConfiguration
   Update the flowgger configuration
@@ -2567,7 +2587,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   Index
   Update specified elasticsearch index
   **/
-  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}', params: {indexId: string, serviceName: string, alertNotifyEnabled?: boolean, description?: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}', params: {serviceName: string, indexId: string, alertNotifyEnabled?: boolean, description?: string}): Promise<DbaasLogsOperation>;
   /**
   Dashboard
   Update information of specified graylog dashboard
@@ -2592,7 +2612,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   RoleMember
   Update the member metadata
   **/
-  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', params: {username: string, serviceName: string, roleId: string, note?: string}): Promise<DbaasLogsOperation>;
+  public put(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', params: {serviceName: string, roleId: string, username: string, note?: string}): Promise<DbaasLogsOperation>;
   /**
   Details about a Service
   Alter this object properties
@@ -2620,7 +2640,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   InputAllowedNetworks
   Allow an ip to join input
   **/
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', params: {serviceName: string, inputId: string, network?: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', params: {inputId: string, serviceName: string, network?: string}): Promise<DbaasLogsOperation>;
   /**
   InputConfigtest
   Validate configuration of specified input
@@ -2635,7 +2655,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   InputLogs
   Generate a temporary url to retrieve input logs
   **/
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/logs/url', params: {inputId: string, serviceName: string}): Promise<DbaasLogsTemporaryLogsLink>;
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/logs/url', params: {serviceName: string, inputId: string}): Promise<DbaasLogsTemporaryLogsLink>;
   /**
   InputRestart
   Schedule the restart of specified input
@@ -2645,7 +2665,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   InputStart
   Schedule the start of specified input
   **/
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/start', params: {inputId: string, serviceName: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/start', params: {serviceName: string, inputId: string}): Promise<DbaasLogsOperation>;
   /**
   ServiceOption
   Remove the specified subscribed option
@@ -2660,12 +2680,12 @@ export class ApiDbaasLogs extends OvhWrapper {
   AliasStreams
   Attach a elasticsearch index to specified elasticsearch alias
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', params: {aliasId: string, serviceName: string, indexId?: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', params: {serviceName: string, aliasId: string, indexId?: string}): Promise<DbaasLogsOperation>;
   /**
   AliasStreams
   Attach a graylog stream to specified elasticsearch alias
   **/
-  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', params: {aliasId: string, serviceName: string, streamId?: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream', params: {serviceName: string, aliasId: string, streamId?: string}): Promise<DbaasLogsOperation>;
   /**
   Indexes
   Register a new elasticsearch index
@@ -2730,7 +2750,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   RolePermissionIndex
   Append a graylog stream permission to role
   **/
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/stream', params: {serviceName: string, roleId: string, streamId?: string}): Promise<DbaasLogsOperation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/stream', params: {roleId: string, serviceName: string, streamId?: string}): Promise<DbaasLogsOperation>;
   /**
   Tokens
   Add a new token
@@ -2758,22 +2778,22 @@ export class ApiDbaasLogs extends OvhWrapper {
   InputAllowedNetwork
   Remove the specified IP from the list of allowed networks
   **/
-  public delete(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {inputId: string, serviceName: string, allowedNetworkId: string}): Promise<DbaasLogsOperation>;
+  public delete(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {inputId: string, allowedNetworkId: string, serviceName: string}): Promise<DbaasLogsOperation>;
   /**
   Alias
   Remove specified elasticsearch alias
   **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', params: {serviceName: string, aliasId: string}): Promise<DbaasLogsOperation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', params: {aliasId: string, serviceName: string}): Promise<DbaasLogsOperation>;
   /**
   AliasStream
   Detach a elasticsearch index from specified elasticsearch alias
   **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}', params: {aliasId: string, serviceName: string, indexId: string}): Promise<DbaasLogsOperation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}', params: {aliasId: string, indexId: string, serviceName: string}): Promise<DbaasLogsOperation>;
   /**
   AliasStream
   Detach a graylog stream from specified elasticsearch alias
   **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}', params: {streamId: string, aliasId: string, serviceName: string}): Promise<DbaasLogsOperation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}', params: {aliasId: string, streamId: string, serviceName: string}): Promise<DbaasLogsOperation>;
   /**
   Index
   Remove specified elasticsearch index
@@ -2798,7 +2818,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   StreamRule
   Remove specified graylog stream rule
   **/
-  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', params: {streamId: string, serviceName: string, ruleId: string}): Promise<DbaasLogsOperation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', params: {serviceName: string, streamId: string, ruleId: string}): Promise<DbaasLogsOperation>;
   /**
   Role
   Remove specified role
@@ -2813,7 +2833,7 @@ export class ApiDbaasLogs extends OvhWrapper {
   RolePermission
   Remove specified permission
   **/
-  public delete(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}', params: {serviceName: string, roleId: string, permissionId: string}): Promise<DbaasLogsOperation>;
+  public delete(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}', params: {roleId: string, serviceName: string, permissionId: string}): Promise<DbaasLogsOperation>;
   /**
   Token
   Delete the specified token
