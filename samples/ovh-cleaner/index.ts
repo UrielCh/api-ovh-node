@@ -102,4 +102,5 @@ async function cleanDomain() {
     }
 }
 
+// cleanApiCert().then(() => console.log('fini'));
 cleanDomain().then(() => console.log('fini'));
