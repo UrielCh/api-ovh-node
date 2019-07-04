@@ -1,114 +1,70 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
+
+export namespace OVH {
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic?: boolean;
+        deleteAtExpiration?: boolean;
+        forced?: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration?: boolean;
+        contactAdmin?: string;
+        contactBilling?: string;
+        contactTech?: string;
+        creation?: string;
+        domain?: string;
+        engagedUpTo?: string;
+        expiration?: string;
+        possibleRenewPeriod?: number[];
+        renew?: OVH.service.RenewType;
+        renewalType?: OVH.service.RenewalTypeEnum;
+        serviceId?: number;
+        status?: OVH.service.StateEnum;
+    }
 }
-/**
- * Vip Service
- */
-export interface VipSupportVip {
-  /**
-   * Name of the VIP offer
-   *
-   */
-  serviceName: string;
-  /**
-   * VIP universes of this service
-   *
-   */
-  universe: VipUniverseEnum[];
+export namespace vip {
+    //vip.SupportVip
+    // fullName: vip.SupportVip.SupportVip
+    export interface SupportVip {
+        serviceName?: string;
+        universe?: OVH.vip.UniverseEnum[];
+    }
+    //vip.UniverseEnum
+    export type UniverseEnum = "cloud" | "dedicated" | "telecom" | "web"
 }
-/**
- * Available universe for VIP service
- */
-export type VipUniverseEnum = 'cloud' | 'dedicated' | 'telecom' | 'web';
-type PathsVipGET = '/vip' | 
-'/vip/{serviceName}' | 
-'/vip/{serviceName}/serviceInfos';
+// Apis harmony
+// path /vip
+export interface Vip {
+    // GET /vip
+    GET(): Promise<string[]>;
+    [keys: string]: {
+        // GET /vip/{serviceName}
+        GET(): Promise<vip.SupportVip>;
+        serviceInfos:  {
+            // GET /vip/{serviceName}/serviceInfos
+            GET(): Promise<services.Service>;
+            // PUT /vip/{serviceName}/serviceInfos
+            PUT(body?: {body: services.Service}): Promise<void>;
+        }
+    } | any
+}
+// Api
+type PathsVipGET = '/vip/{serviceName}' |
+  '/vip/{serviceName}/serviceInfos' |
+  '/vip';
 
 type PathsVipPUT = '/vip/{serviceName}/serviceInfos';
 
@@ -125,22 +81,22 @@ export class ApiVip extends OvhWrapper {
    * Vip Service
    * Get this object properties
    */
-  public get(path: '/vip/{serviceName}', params: {serviceName: string}): Promise<VipSupportVip>;
+  public get(path: '/vip/{serviceName}', params: {serviceName: string}): Promise<vip.SupportVip>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/vip/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/vip/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<services.Service>;
   public get(path: PathsVipGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+    return super.get(path, params);
+  }
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/vip/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
+  public put(path: '/vip/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
   public put(path: PathsVipPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+    return super.put(path, params);
+  }
 }
-export default ApiVip;
+}

@@ -14,7 +14,7 @@ async function main() {
     let apiSet = new Set(allApi);
 
     // debug gen a single API
-    if (true)
+    if (false)
         apis = apis.filter((api) => {
             // return ~api.indexOf('veeam')
             //if ('/price' == api)

@@ -1,284 +1,179 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Structure holding the consumption
- */
-export interface MetricsApiConsumption {
-  /**
-   * Current Daily data points
-   *
-   */
-  ddp: number;
-  /**
-   * Current monthly active data streams
-   *
-   */
-  mads: number;
-}
-/**
- * Structure holding the elements about a label
- */
-export interface MetricsApiLabel {
-  /**
-   * Label key
-   *
-   */
-  key: string;
-  /**
-   * Label value
-   *
-   */
-  value: string;
-}
-/**
- * Type of the service
- */
-export type MetricsApiOfferTypeEnum = 'cloud' | 'live';
-/**
- * Structure holding the options for a service
- */
-export interface MetricsApiOption {
-  /**
-   * Daily data points
-   *
-   */
-  ddp: number;
-  /**
-   * Time of last modification
-   *
-   */
-  lastModification: string;
-  /**
-   * Monthly active device streams
-   *
-   */
-  mads: number;
-}
-/**
- * Description not available
- */
-export type MetricsApiPermissionEnum = 'read' | 'write';
-/**
- * Structure holding the elements about a region
- */
-export interface MetricsApiRegion {
-  /**
-   * Description of a region
-   *
-   */
-  description: string;
-  /**
-   * Name of a region
-   *
-   */
-  name: string;
-}
-/**
- * Structure holding the elements about a service
- */
-export interface MetricsApiService {
-  /**
-   * Description of a service
-   *
-   */
-  description: string;
-  /**
-   * Name of a service
-   *
-   */
-  name: string;
-  /**
-   * Offer used for the service
-   *
-   */
-  offer: string;
-  /**
-   * Quota used for the service
-   *
-   */
-  quota: MetricsApiOption;
-  /**
-   * Region holding the service
-   *
-   */
-  region: MetricsApiRegion;
-  /**
-   * Indicator if the service should be upgraded based on current quota and offer
-   *
-   */
-  shouldUpgrade: boolean;
-  /**
-   * Status of a service
-   *
-   */
-  status: MetricsApiServiceStatusEnum;
-  /**
-   * Type of the service: cloud or live
-   *
-   */
-  type: MetricsApiOfferTypeEnum;
-}
-/**
- * Status of of the service
- */
-export type MetricsApiServiceStatusEnum = 'alive' | 'dead' | 'disabled' | 'new';
-/**
- * Structure holding the elements about a token
- */
-export interface MetricsApiToken {
-  /**
-   * The actual access token
-   *
-   */
-  access: string;
-  /**
-   * Token creation date
-   *
-   */
-  createdAt: string;
-  /**
-   * Description of the token
-   *
-   */
-  description: string;
-  /**
-   * Token expiration date
-   *
-   */
-  expiredAt: string;
-  /**
-   * Id of the token
-   *
-   */
-  id: string;
-  /**
-   * Is your token revoked?
-   *
-   */
-  isRevoked: boolean;
-  /**
-   * Labels for the token if set
-   *
-   */
-  labels: MetricsApiLabel[];
-  /**
-   * Token type: read or write
-   *
-   */
-  type: MetricsApiPermissionEnum;
-}
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * All future uses you can provide for a service termination
- */
-export type ServiceTerminationFutureUseEnum = 'NOT_REPLACING_SERVICE' | 'OTHER' | 'SUBSCRIBE_AN_OTHER_SERVICE' | 'SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR' | 'SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR';
-/**
- * All reasons you can provide for a service termination
- */
-export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PERFORMANCES' | 'MIGRATED_TO_ANOTHER_OVH_PRODUCT' | 'MIGRATED_TO_COMPETITOR' | 'NOT_NEEDED_ANYMORE' | 'NOT_RELIABLE' | 'NO_ANSWER' | 'OTHER' | 'TOO_EXPENSIVE' | 'TOO_HARD_TO_USE' | 'UNSATIFIED_BY_CUSTOMER_SUPPORT';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-type PathsMetricsGET = '/metrics' | 
-'/metrics/{serviceName}' | 
-'/metrics/{serviceName}/consumption' | 
-'/metrics/{serviceName}/serviceInfos' | 
-'/metrics/{serviceName}/token' | 
-'/metrics/{serviceName}/token/{tokenId}';
 
-type PathsMetricsPUT = '/metrics/{serviceName}' | 
-'/metrics/{serviceName}/quota' | 
-'/metrics/{serviceName}/serviceInfos' | 
-'/metrics/{serviceName}/token/{tokenId}';
+export namespace OVH {
+export namespace metrics {
+    export namespace api {
+        //metrics.api.Consumption
+        // fullName: metrics.api.Consumption.Consumption
+        export interface Consumption {
+            ddp?: number;
+            mads?: number;
+        }
+        //metrics.api.Label
+        // fullName: metrics.api.Label.Label
+        export interface Label {
+            key?: string;
+            value?: string;
+        }
+        //metrics.api.OfferTypeEnum
+        export type OfferTypeEnum = "cloud" | "live"
+        //metrics.api.Option
+        // fullName: metrics.api.Option.Option
+        export interface Option {
+            ddp?: number;
+            lastModification?: string;
+            mads?: number;
+        }
+        //metrics.api.PermissionEnum
+        export type PermissionEnum = "read" | "write"
+        //metrics.api.Region
+        // fullName: metrics.api.Region.Region
+        export interface Region {
+            description?: string;
+            name?: string;
+        }
+        //metrics.api.Service
+        // fullName: metrics.api.Service.Service
+        export interface Service {
+            description?: string;
+            name?: string;
+            offer?: string;
+            quota?: OVH.metrics.api.Option;
+            region?: OVH.metrics.api.Region;
+            shouldUpgrade?: boolean;
+            status?: OVH.metrics.api.ServiceStatusEnum;
+            type?: OVH.metrics.api.OfferTypeEnum;
+        }
+        //metrics.api.ServiceStatusEnum
+        export type ServiceStatusEnum = "new" | "alive" | "disabled" | "dead"
+        //metrics.api.Token
+        // fullName: metrics.api.Token.Token
+        export interface Token {
+            access?: string;
+            createdAt?: string;
+            description?: string;
+            expiredAt?: string;
+            id?: string;
+            isRevoked?: boolean;
+            labels?: OVH.metrics.api.Label[];
+            type?: OVH.metrics.api.PermissionEnum;
+        }
+    }
+}
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic?: boolean;
+        deleteAtExpiration?: boolean;
+        forced?: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+    //service.TerminationFutureUseEnum
+    export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
+    //service.TerminationReasonEnum
+    export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration?: boolean;
+        contactAdmin?: string;
+        contactBilling?: string;
+        contactTech?: string;
+        creation?: string;
+        domain?: string;
+        engagedUpTo?: string;
+        expiration?: string;
+        possibleRenewPeriod?: number[];
+        renew?: OVH.service.RenewType;
+        renewalType?: OVH.service.RenewalTypeEnum;
+        serviceId?: number;
+        status?: OVH.service.StateEnum;
+    }
+}
+// Apis harmony
+// path /metrics
+export interface Metrics {
+    // GET /metrics
+    GET(): Promise<string[]>;
+    [keys: string]: {
+        // GET /metrics/{serviceName}
+        GET(): Promise<metrics.api.Service>;
+        // PUT /metrics/{serviceName}
+        PUT(body?: {description?: string}): Promise<metrics.api.Service>;
+        consumption:  {
+            // GET /metrics/{serviceName}/consumption
+            GET(param?: {duration?: number}): Promise<metrics.api.Consumption>;
+        }
+        lookup:  {
+            token:  {
+                // POST /metrics/{serviceName}/lookup/token
+                POST(body?: {accessToken: string}): Promise<string[]>;
+            }
+        }
+        changeContact:  {
+            // POST /metrics/{serviceName}/changeContact
+            POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
+        }
+        confirmTermination:  {
+            // POST /metrics/{serviceName}/confirmTermination
+            POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
+        }
+        terminate:  {
+            // POST /metrics/{serviceName}/terminate
+            POST(): Promise<string>;
+        }
+        token:  {
+            // GET /metrics/{serviceName}/token
+            GET(): Promise<string[]>;
+            // POST /metrics/{serviceName}/token
+            POST(body?: {description?: string, labels?: metrics.api.Label[], permission: metrics.api.PermissionEnum}): Promise<metrics.api.Token>;
+            [keys: string]: {
+                // DELETE /metrics/{serviceName}/token/{tokenId}
+                DELETE(): Promise<void>;
+                // GET /metrics/{serviceName}/token/{tokenId}
+                GET(): Promise<metrics.api.Token>;
+                // PUT /metrics/{serviceName}/token/{tokenId}
+                PUT(body?: {description?: string}): Promise<metrics.api.Token>;
+            } | any
+        }
+        quota:  {
+            // PUT /metrics/{serviceName}/quota
+            PUT(body?: {quota: number}): Promise<string>;
+        }
+        serviceInfos:  {
+            // GET /metrics/{serviceName}/serviceInfos
+            GET(): Promise<services.Service>;
+            // PUT /metrics/{serviceName}/serviceInfos
+            PUT(body?: {body: services.Service}): Promise<void>;
+        }
+    } | any
+}
+// Api
+type PathsMetricsGET = '/metrics/{serviceName}/consumption' |
+  '/metrics/{serviceName}' |
+  '/metrics/{serviceName}/token/{tokenId}' |
+  '/metrics/{serviceName}/token' |
+  '/metrics/{serviceName}/serviceInfos' |
+  '/metrics';
 
-type PathsMetricsPOST = '/metrics/{serviceName}/changeContact' | 
-'/metrics/{serviceName}/confirmTermination' | 
-'/metrics/{serviceName}/lookup/token' | 
-'/metrics/{serviceName}/terminate' | 
-'/metrics/{serviceName}/token';
+type PathsMetricsPUT = '/metrics/{serviceName}' |
+  '/metrics/{serviceName}/token/{tokenId}' |
+  '/metrics/{serviceName}/quota' |
+  '/metrics/{serviceName}/serviceInfos';
+
+type PathsMetricsPOST = '/metrics/{serviceName}/lookup/token' |
+  '/metrics/{serviceName}/changeContact' |
+  '/metrics/{serviceName}/confirmTermination' |
+  '/metrics/{serviceName}/terminate' |
+  '/metrics/{serviceName}/token';
 
 type PathsMetricsDELETE = '/metrics/{serviceName}/token/{tokenId}';
 
@@ -295,17 +190,17 @@ export class ApiMetrics extends OvhWrapper {
    * Missing description
    * Get service
    */
-  public get(path: '/metrics/{serviceName}', params: {serviceName: string}): Promise<MetricsApiService>;
+  public get(path: '/metrics/{serviceName}', params: {serviceName: string}): Promise<metrics.api.Service>;
   /**
    * Missing description
    * Get consumption for your service
    */
-  public get(path: '/metrics/{serviceName}/consumption', params: {serviceName: string, duration?: number}): Promise<MetricsApiConsumption>;
+  public get(path: '/metrics/{serviceName}/consumption', params: {serviceName: string, duration?: number}): Promise<metrics.api.Consumption>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/metrics/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/metrics/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<services.Service>;
   /**
    * Missing description
    * Get list of tokens
@@ -315,15 +210,15 @@ export class ApiMetrics extends OvhWrapper {
    * Missing description
    * Get a specific token
    */
-  public get(path: '/metrics/{serviceName}/token/{tokenId}', params: {serviceName: string, tokenId: string}): Promise<MetricsApiToken>;
+  public get(path: '/metrics/{serviceName}/token/{tokenId}', params: {serviceName: string, tokenId: string}): Promise<metrics.api.Token>;
   public get(path: PathsMetricsGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+    return super.get(path, params);
+  }
   /**
    * Missing description
    * Modify service
    */
-  public put(path: '/metrics/{serviceName}', params: {serviceName: string, description?: string}): Promise<MetricsApiService>;
+  public put(path: '/metrics/{serviceName}', params: {serviceName: string, description?: string}): Promise<metrics.api.Service>;
   /**
    * Missing description
    * Set overquota
@@ -333,15 +228,15 @@ export class ApiMetrics extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/metrics/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
+  public put(path: '/metrics/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
   /**
    * Missing description
    * Modify a token
    */
-  public put(path: '/metrics/{serviceName}/token/{tokenId}', params: {serviceName: string, tokenId: string, description?: string}): Promise<MetricsApiToken>;
+  public put(path: '/metrics/{serviceName}/token/{tokenId}', params: {serviceName: string, tokenId: string, description?: string}): Promise<metrics.api.Token>;
   public put(path: PathsMetricsPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+    return super.put(path, params);
+  }
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
@@ -351,7 +246,7 @@ export class ApiMetrics extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/metrics/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/metrics/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * Missing description
    * Find TokenID for a specific token
@@ -366,17 +261,17 @@ export class ApiMetrics extends OvhWrapper {
    * Missing description
    * Create a token
    */
-  public post(path: '/metrics/{serviceName}/token', params: {serviceName: string, description?: string, labels?: MetricsApiLabel[], permission: MetricsApiPermissionEnum}): Promise<MetricsApiToken>;
+  public post(path: '/metrics/{serviceName}/token', params: {serviceName: string, description?: string, labels?: OVH.metrics.api.Label[], permission: OVH.metrics.api.PermissionEnum}): Promise<metrics.api.Token>;
   public post(path: PathsMetricsPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+    return super.post(path, params);
+  }
   /**
    * Missing description
    * Revoke a token
    */
   public delete(path: '/metrics/{serviceName}/token/{tokenId}', params: {serviceName: string, tokenId: string}): Promise<void>;
   public delete(path: PathsMetricsDELETE, params?: OvhParamType): Promise<any> {
-    return super.delete(path, params
-  );}
+    return super.delete(path, params);
+  }
 }
-export default ApiMetrics;
+}

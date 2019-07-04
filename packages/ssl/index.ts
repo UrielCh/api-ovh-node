@@ -1,210 +1,107 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
+
+export namespace OVH {
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic?: boolean;
+        deleteAtExpiration?: boolean;
+        forced?: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration?: boolean;
+        contactAdmin?: string;
+        contactBilling?: string;
+        contactTech?: string;
+        creation?: string;
+        domain?: string;
+        engagedUpTo?: string;
+        expiration?: string;
+        possibleRenewPeriod?: number[];
+        renew?: OVH.service.RenewType;
+        renewalType?: OVH.service.RenewalTypeEnum;
+        serviceId?: number;
+        status?: OVH.service.StateEnum;
+    }
 }
-/**
- * Certificate of an SSL customer
- */
-export interface SslCertificate {
-  /**
-   * The authority your certificate is issued from
-   *
-   */
-  authority: SslCertificateAuthorityEnum;
-  /**
-   * Your certificate
-   *
-   */
-  certificate?: string;
-  /**
-   * The issuer chain of your certificate
-   *
-   */
-  chain?: string;
-  /**
-   * The CN field in your certificate
-   *
-   */
-  commonName: string;
-  /**
-   * The CSR used to create your certificate
-   *
-   */
-  csr: string;
-  /**
-   * The internal name of your certificate offer
-   *
-   */
-  serviceName: string;
-  /**
-   * Current status of your certificate
-   *
-   */
-  status: SslCertificateStatusEnum;
-  /**
-   * The SAN field for multidomain certificate
-   *
-   */
-  subjectAltName: string[];
-  /**
-   * Type of your certificate
-   *
-   */
-  type: SslCertificateTypeEnum;
-  /**
-   * Your certificate is invalid from this date
-   *
-   */
-  validityEnd?: string;
-  /**
-   * Your certificate is valid from this date
-   *
-   */
-  validityStart?: string;
+export namespace ssl {
+    //ssl.Certificate
+    // fullName: ssl.Certificate.Certificate
+    export interface Certificate {
+        authority?: OVH.ssl.CertificateAuthorityEnum;
+        certificate?: string;
+        chain?: string;
+        commonName?: string;
+        csr?: string;
+        serviceName?: string;
+        status?: OVH.ssl.CertificateStatusEnum;
+        subjectAltName?: string[];
+        type?: OVH.ssl.CertificateTypeEnum;
+        validityEnd?: string;
+        validityStart?: string;
+    }
+    //ssl.CertificateAuthorityEnum
+    export type CertificateAuthorityEnum = "comodo" | "sectigo"
+    //ssl.CertificateStatusEnum
+    export type CertificateStatusEnum = "creating" | "error" | "ok" | "validating"
+    //ssl.CertificateTypeEnum
+    export type CertificateTypeEnum = "DV" | "EV" | "OV"
+    //ssl.Operation
+    // fullName: ssl.Operation.Operation
+    export interface Operation {
+        doneDate?: string;
+        function?: OVH.ssl.OperationFunctionEnum;
+        lastUpdate?: string;
+        startDate?: string;
+        status?: OVH.ssl.OperationStatusEnum;
+        taskId?: number;
+    }
+    //ssl.OperationFunctionEnum
+    export type OperationFunctionEnum = "createCertificate"
+    //ssl.OperationStatusEnum
+    export type OperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
 }
-/**
- * All authority a SSL certificate can be issued from
- */
-export type SslCertificateAuthorityEnum = 'comodo' | 'sectigo';
-/**
- * All status a SSL certificate can be in
- */
-export type SslCertificateStatusEnum = 'creating' | 'error' | 'ok' | 'validating';
-/**
- * All type a SSL certificate can be
- */
-export type SslCertificateTypeEnum = 'DV' | 'EV' | 'OV';
-/**
- * Task on a SSL
- */
-export interface SslOperation {
-  /**
-   * Completion date
-   *
-   */
-  doneDate?: string;
-  /**
-   * Task function name
-   *
-   */
-  function: SslOperationFunctionEnum;
-  /**
-   * Task last update
-   *
-   */
-  lastUpdate: string;
-  /**
-   * Task Creation date
-   *
-   */
-  startDate: string;
-  /**
-   * Task status
-   *
-   */
-  status: SslOperationStatusEnum;
-  /**
-   */
-  taskId: number;
+// Apis harmony
+// path /ssl
+export interface Ssl {
+    // GET /ssl
+    GET(): Promise<string[]>;
+    [keys: string]: {
+        // GET /ssl/{serviceName}
+        GET(): Promise<ssl.Certificate>;
+        serviceInfos:  {
+            // GET /ssl/{serviceName}/serviceInfos
+            GET(): Promise<services.Service>;
+            // PUT /ssl/{serviceName}/serviceInfos
+            PUT(body?: {body: services.Service}): Promise<void>;
+        }
+        tasks:  {
+            // GET /ssl/{serviceName}/tasks
+            GET(): Promise<number[]>;
+            [keys: string]: {
+                // GET /ssl/{serviceName}/tasks/{taskId}
+                GET(): Promise<ssl.Operation>;
+            } | any
+        }
+    } | any
 }
-/**
- * All functions a SSL operation can handle
- */
-export type SslOperationFunctionEnum = 'createCertificate';
-/**
- * All status a SSL operation can be in
- */
-export type SslOperationStatusEnum = 'cancelled' | 'doing' | 'done' | 'error' | 'todo';
-type PathsSslGET = '/ssl' | 
-'/ssl/{serviceName}' | 
-'/ssl/{serviceName}/serviceInfos' | 
-'/ssl/{serviceName}/tasks' | 
-'/ssl/{serviceName}/tasks/{taskId}';
+// Api
+type PathsSslGET = '/ssl/{serviceName}/serviceInfos' |
+  '/ssl/{serviceName}' |
+  '/ssl/{serviceName}/tasks/{taskId}' |
+  '/ssl/{serviceName}/tasks' |
+  '/ssl';
 
 type PathsSslPUT = '/ssl/{serviceName}/serviceInfos';
 
@@ -221,12 +118,12 @@ export class ApiSsl extends OvhWrapper {
    * Certificate of an SSL customer
    * Get this object properties
    */
-  public get(path: '/ssl/{serviceName}', params: {serviceName: string}): Promise<SslCertificate>;
+  public get(path: '/ssl/{serviceName}', params: {serviceName: string}): Promise<ssl.Certificate>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/ssl/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/ssl/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<services.Service>;
   /**
    * List the ssl.Operation objects
    * Tasks associated to this ssl
@@ -236,17 +133,17 @@ export class ApiSsl extends OvhWrapper {
    * Task on a SSL
    * Get this object properties
    */
-  public get(path: '/ssl/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<SslOperation>;
+  public get(path: '/ssl/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: string}): Promise<ssl.Operation>;
   public get(path: PathsSslGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+    return super.get(path, params);
+  }
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/ssl/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
+  public put(path: '/ssl/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
   public put(path: PathsSslPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+    return super.put(path, params);
+  }
 }
-export default ApiSsl;
+}

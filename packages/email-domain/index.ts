@@ -1,1017 +1,781 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Possible values for filter action
- */
-export type DomainDomainFilterActionEnum = 'accept' | 'account' | 'delete' | 'redirect';
-/**
- * Possible values for filter operation
- */
-export type DomainDomainFilterOperandEnum = 'checkspf' | 'contains' | 'noContains';
-/**
- * Possible values for MX filter
- */
-export type DomainDomainMXFilterEnum = 'CUSTOM' | 'FULL_FILTERING' | 'NO_FILTERING' | 'REDIRECT' | 'SIMPLE_FILTERING';
-/**
- * Possible values for mailing list language
- */
-export type DomainDomainMlLanguageEnum = 'de' | 'en' | 'es' | 'fr' | 'it' | 'nl' | 'pl' | 'pt';
-/**
- * Structure of mailinglist limits
- */
-export interface DomainDomainMlLimits {
-  /**
-   * Maximum number of subscribers
-   *
-   */
-  subscribers: number;
-}
-/**
- * Structure of imapCopy
- */
-export interface DomainDomainMlOptionsStruct {
-  /**
-   * If true, messages are moderate
-   *
-   */
-  moderatorMessage: boolean;
-  /**
-   * If true, enabled moderation for subscribe
-   *
-   */
-  subscribeByModerator: boolean;
-  /**
-   * If true, just user can post
-   *
-   */
-  usersPostOnly: boolean;
-}
-/**
- * Possible values for pop action task
- */
-export type DomainDomainPopActionEnum = 'addAccount' | 'changeAccount' | 'changePassword' | 'deleteAccount' | 'internalMigration' | 'migration' | 'temporaryTask' | 'unknown';
-/**
- * Values of quota account (pop, mailing list, redirection, responder and big pop)
- */
-export interface DomainDomainQuota {
-  /**
-   * Maximum number of mailboxes
-   *
-   */
-  account: number;
-  /**
-   * Maximum number of aliases
-   *
-   */
-  alias: number;
-  /**
-   * Maximum number of mailing lists
-   *
-   */
-  mailingList: number;
-  /**
-   * Maximum number of redirections
-   *
-   */
-  redirection: number;
-  /**
-   * Maximum number of responders
-   *
-   */
-  responder: number;
-}
-/**
- * Possible values for pop action task
- */
-export type DomainDomainSpecialAccountActionEnum = 'add' | 'change' | 'delete';
-/**
- * Possible type task
- */
-export type DomainDomainSpecialAccountTypeEnum = '25g' | 'alias' | 'delete' | 'filter' | 'forward' | 'responder';
-/**
- * Possible values for status domain
- */
-export type DomainDomainStatusEnum = 'close' | 'ok' | 'readOnly' | 'unknown';
-/**
- * Values of number account (account, mailing list, redirection and responder)
- */
-export interface DomainDomainSummary {
-  /**
-   * Number of mailboxes
-   *
-   */
-  account: number;
-  /**
-   * Number of mailing lists
-   *
-   */
-  mailingList: number;
-  /**
-   * Number of redirections
-   *
-   */
-  redirection: number;
-  /**
-   * Number of responders
-   *
-   */
-  responder: number;
-}
-/**
- * Structure of usage account
- */
-export interface DomainDomainUsageAccountStruct {
-  /**
-   * Timestamp
-   *
-   */
-  date?: string;
-  /**
-   * Number of message in mailbox
-   *
-   */
-  emailCount?: number;
-  /**
-   * Size of mailbox (bytes)
-   *
-   */
-  quota?: number;
-}
-/**
- * Zone resource records
- */
-export interface DomainZoneRecord {
-  /**
-   * Resource record Name
-   *
-   */
-  fieldType: ZoneNamedResolutionFieldTypeEnum;
-  /**
-   * Id of the zone resource record
-   *
-   */
-  id: number;
-  /**
-   * Resource record subdomain
-   *
-   */
-  subDomain?: string;
-  /**
-   * Resource record target
-   *
-   */
-  target: string;
-  /**
-   * Resource record ttl
-   *
-   */
-  ttl?: number;
-  /**
-   * Resource record zone
-   *
-   */
-  zone: string;
-}
-/**
- * Account List
- */
-export interface EmailDomainAccount {
-  /**
-   * Name of account
-   *
-   */
-  accountName: string;
-  /**
-   * Account description
-   *
-   */
-  description: string;
-  /**
-   * Name of domain
-   *
-   */
-  domain: string;
-  /**
-   * Email
-   *
-   */
-  email: string;
-  /**
-   * If true your account is blocked
-   *
-   */
-  isBlocked: boolean;
-  /**
-   * Size of your account in bytes
-   *
-   */
-  size: number;
-}
-/**
- * Account List
- */
-export interface EmailDomainAccountDelegated {
-  /**
-   * Name of account
-   *
-   */
-  accountName: string;
-  /**
-   * List of allowed sizes for this account in bytes
-   *
-   */
-  allowedAccountSize?: number[];
-  /**
-   * Account description
-   *
-   */
-  description: string;
-  /**
-   * Name of domain
-   *
-   */
-  domain: string;
-  /**
-   * Email
-   *
-   */
-  email: string;
-  /**
-   * If true your account is blocked
-   *
-   */
-  isBlocked: boolean;
-  /**
-   * Size of your account in bytes
-   *
-   */
-  size: number;
-}
-/**
- * Email ACL
- */
-export interface EmailDomainAcl {
-  /**
-   * OVH customer unique identifier
-   *
-   */
-  accountId: string;
-}
-/**
- * Delegation List
- */
-export interface EmailDomainDelegation {
-  /**
-   * OVH customer unique identifier
-   *
-   */
-  accountId: string;
-}
-/**
- * Email diagnoses
- */
-export interface EmailDomainDiagnose {
-  /**
-   * Creation date of diagnose
-   *
-   */
-  date: string;
-  /**
-   * Function of diagnose
-   *
-   */
-  function: EmailDomainDomainDiagnoseFunctionEnum;
-  /**
-   * Id of diagnose
-   *
-   */
-  id: number;
-  /**
-   * Name of account
-   *
-   */
-  name?: string;
-  /**
-   * Result of diagnose
-   *
-   */
-  result?: EmailDomainDomainDiagnoseResultEnum;
-  /**
-   * Trace of diagnose
-   *
-   */
-  trace?: EmailDomainDomainDiagnoseTraceStruct<EmailDomainDomainDiagnoseResultEnum>[];
-}
-/**
- * Function of diagnose
- */
-export type EmailDomainDomainDiagnoseFunctionEnum = 'MX';
-/**
- * Result of diagnose
- */
-export type EmailDomainDomainDiagnoseResultEnum = 'CUSTOM' | 'DEPRECATED' | 'KO' | 'OK';
-/**
- * Test and result, with proper test strings
- */
-export interface EmailDomainDomainDiagnoseTraceStruct<T> {
-  /**
-   */
-  result: T;
-  /**
-   */
-  test: string;
-}
-/**
- * Domain service
- */
-export interface EmailDomainDomainService {
-  /**
-   * List of allowed sizes for this domain in bytes
-   *
-   */
-  allowedAccountSize?: number[];
-  /**
-   * Creation date of domain
-   *
-   */
-  creationDate?: string;
-  /**
-   * Name of domain
-   *
-   */
-  domain: string;
-  /**
-   * Filerz of domain
-   *
-   */
-  filerz?: number;
-  /**
-   * Name of servicelinked with this domain
-   *
-   */
-  linkTo?: string;
-  /**
-   * Name of new MXPlan service
-   *
-   */
-  migratedMXPlanServiceName?: string;
-  /**
-   * Offer of email service
-   *
-   */
-  offer?: string;
-  /**
-   * Domain Status
-   *
-   */
-  status: DomainDomainStatusEnum;
-}
-/**
- * Filter List
- */
-export interface EmailDomainFilter {
-  /**
-   * Action of filter
-   *
-   */
-  action?: DomainDomainFilterActionEnum;
-  /**
-   * Action parameter of filter
-   *
-   */
-  actionParam?: string;
-  /**
-   * If true filter is active
-   *
-   */
-  active: boolean;
-  /**
-   * Domain name of filter
-   *
-   */
-  domain: string;
-  /**
-   * Filter name
-   *
-   */
-  name: string;
-  /**
-   * Account name of filter
-   *
-   */
-  pop: string;
-  /**
-   * Priority of filter
-   *
-   */
-  priority: number;
-}
-/**
- * Mailing List
- */
-export interface EmailDomainMailingList {
-  /**
-   * Id of mailing list
-   *
-   */
-  id: number;
-  /**
-   * Language of mailing list
-   *
-   */
-  language?: DomainDomainMlLanguageEnum;
-  /**
-   * Name of mailing list
-   *
-   */
-  name: string;
-  /**
-   * Subscribers number of mailing list
-   *
-   */
-  nbSubscribers?: number;
-  /**
-   * Last update subscribers
-   *
-   */
-  nbSubscribersUpdateDate?: string;
-  /**
-   * Options of mailing list
-   *
-   */
-  options: DomainDomainMlOptionsStruct;
-  /**
-   * Owner email of mailing list
-   *
-   */
-  ownerEmail: string;
-  /**
-   * Email to reply of mailing list
-   *
-   */
-  replyTo: string;
-}
-/**
- * Migration account
- */
-export interface EmailDomainMigrationAccount {
-  /**
-   * Destination account name
-   *
-   */
-  destinationEmailAddress: string;
-  /**
-   * Account maximum size
-   *
-   */
-  quota: number;
-}
-/**
- * Result code of check migration
- */
-export type EmailDomainMigrationCheckCodeEnum = 'ACCOUNT_EMPTY' | 'ACCOUNT_INPROGRESS' | 'DELEGATION_EXIST' | 'DOMAIN_EMPTY' | 'FILTER_EXIST' | 'FORWARD_EXIST' | 'FORWARD_LOCAL' | 'MAILINGLIST_EXIST' | 'MAILINGLIST_INPROGRESS' | 'MAILPROXY_BAD_INFRA' | 'MAILPROXY_EMPTY' | 'MAILPROXY_INPROGRESS' | 'MAILPROXY_RESERVATION' | 'REDIRECTION_INPROGRESS' | 'RESPONDER_EXIST' | 'RESPONDER_INPROGRESS' | 'UNKNOW';
-/**
- * Check Migration result
- */
-export interface EmailDomainMigrationCheckResultStruct {
-  /**
-   * Result code of check migration
-   *
-   */
-  code: EmailDomainMigrationCheckCodeEnum;
-  /**
-   * Details of result code
-   *
-   */
-  details?: string;
-}
-/**
- * Check Migration result
- */
-export interface EmailDomainMigrationCheckStruct {
-  /**
-   * List of aliases
-   *
-   */
-  alias?: string[];
-  /**
-   * List of errors
-   *
-   */
-  error?: EmailDomainMigrationCheckResultStruct[];
-  /**
-   * List of filters
-   *
-   */
-  filter?: string[];
-  /**
-   * List of forwards
-   *
-   */
-  forward?: string[];
-  /**
-   * List of warnings
-   *
-   */
-  warning?: EmailDomainMigrationCheckResultStruct[];
-}
-/**
- * Migration service
- */
-export interface EmailDomainMigrationService {
-  /**
-   * Admin contact of service
-   *
-   */
-  contactAdmin: string;
-  /**
-   * Billing contact of service
-   *
-   */
-  contactBilling: string;
-  /**
-   * Tech contact of service
-   *
-   */
-  contactTech: string;
-  /**
-   * Creation date of service
-   *
-   */
-  creation: string;
-  /**
-   * Service name allowed as migration destination
-   *
-   */
-  destinationServiceName: string;
-  /**
-   * Expiration date of service
-   *
-   */
-  expiration: string;
-  /**
-   * Offer type of service
-   *
-   */
-  type: EmailDomainMigrationServiceType;
-}
-/**
- * Types of migration service
- */
-export type EmailDomainMigrationServiceType = 'EMAIL PRO' | 'HOSTED EXCHANGE' | 'PRIVATE EXCHANGE' | 'PROVIDER EXCHANGE';
-/**
- * Moderators List
- */
-export interface EmailDomainModerator {
-  /**
-   */
-  domain: string;
-  /**
-   */
-  email: string;
-  /**
-   */
-  mailinglist: string;
-}
-/**
- * Global Redirection
- */
-export interface EmailDomainRedirectionGlobal {
-  /**
-   */
-  from: string;
-  /**
-   */
-  id: string;
-  /**
-   */
-  to: string;
-}
-/**
- * Responder
- */
-export interface EmailDomainResponder {
-  /**
-   * Name of account
-   *
-   */
-  account: string;
-  /**
-   * Content of responder
-   *
-   */
-  content: string;
-  /**
-   * If false, emails will be dropped. If true and copyTo field is empty, emails will be delivered to your mailbox. If true and copyTo is set with an address, emails will be delivered to this address
-   *
-   */
-  copy: boolean;
-  /**
-   * Account where copy emails
-   *
-   */
-  copyTo?: string;
-  /**
-   * Date of start responder
-   *
-   */
-  from?: string;
-  /**
-   * Date of end responder
-   *
-   */
-  to?: string;
-}
-/**
- * Responder of account
- */
-export interface EmailDomainResponderAccount {
-  /**
-   * Name of account
-   *
-   */
-  account: string;
-  /**
-   * Content of responder
-   *
-   */
-  content: string;
-  /**
-   * If true, emails will be copy to emailToCopy address
-   *
-   */
-  copy: boolean;
-  /**
-   * Account where copy emails
-   *
-   */
-  copyTo?: string;
-  /**
-   * Date of start responder
-   *
-   */
-  from?: string;
-  /**
-   * Date of end responder
-   *
-   */
-  to?: string;
-}
-/**
- * Rule List
- */
-export interface EmailDomainRule {
-  /**
-   * Header to be filtered
-   *
-   */
-  header: string;
-  /**
-   */
-  id: number;
-  /**
-   * Rule of filter
-   *
-   */
-  operand: DomainDomainFilterOperandEnum;
-  /**
-   * Rule parameter of filter
-   *
-   */
-  value: string;
-}
-/**
- * Subscribers List
- */
-export interface EmailDomainSubscriber {
-  /**
-   */
-  domain: string;
-  /**
-   */
-  email: string;
-  /**
-   */
-  mailinglist: string;
-}
-/**
- * Task filter List
- */
-export interface EmailDomainTaskFilter {
-  /**
-   * Account name of task
-   *
-   */
-  account: string;
-  /**
-   * Action of task
-   *
-   */
-  action: string;
-  /**
-   * Domain name of task
-   *
-   */
-  domain: string;
-  /**
-   * Id of task
-   *
-   */
-  id: number;
-  /**
-   * Creation date of task
-   *
-   */
-  timestamp: string;
-}
-/**
- * Task Mailing List
- */
-export interface EmailDomainTaskMl {
-  /**
-   */
-  account: string;
-  /**
-   */
-  action: string;
-  /**
-   */
-  date: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  id: number;
-  /**
-   */
-  language: DomainDomainMlLanguageEnum;
-}
-/**
- * Task Pop List
- */
-export interface EmailDomainTaskPop {
-  /**
-   * Action of task
-   *
-   */
-  action: DomainDomainPopActionEnum;
-  /**
-   * Creation date of task
-   *
-   */
-  date: string;
-  /**
-   * Domain name of task
-   *
-   */
-  domain: string;
-  /**
-   * Id of task
-   *
-   */
-  id: number;
-  /**
-   * Account name of task
-   *
-   */
-  name: string;
-}
-/**
- * Task special account List
- */
-export interface EmailDomainTaskSpecialAccount {
-  /**
-   * Account name of task
-   *
-   */
-  account: string;
-  /**
-   * Action of task
-   *
-   */
-  action: DomainDomainSpecialAccountActionEnum;
-  /**
-   * Creation date of task
-   *
-   */
-  date: string;
-  /**
-   * Domain name of task
-   *
-   */
-  domain: string;
-  /**
-   * Id of task
-   *
-   */
-  id: number;
-  /**
-   * Type of action filter
-   *
-   */
-  type: DomainDomainSpecialAccountTypeEnum;
-}
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * All reasons you can provide for a service termination
- */
-export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PERFORMANCES' | 'MIGRATED_TO_ANOTHER_OVH_PRODUCT' | 'MIGRATED_TO_COMPETITOR' | 'NOT_NEEDED_ANYMORE' | 'NOT_RELIABLE' | 'NO_ANSWER' | 'OTHER' | 'TOO_EXPENSIVE' | 'TOO_HARD_TO_USE' | 'UNSATIFIED_BY_CUSTOMER_SUPPORT';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-/**
- * Resource record fieldType
- */
-export type ZoneNamedResolutionFieldTypeEnum = 'A' | 'AAAA' | 'CAA' | 'CNAME' | 'DKIM' | 'DMARC' | 'LOC' | 'MX' | 'NAPTR' | 'NS' | 'PTR' | 'SPF' | 'SRV' | 'SSHFP' | 'TLSA' | 'TXT';
-type PathsEmailDomainGET = '/email/domain' | 
-'/email/domain/delegatedAccount' | 
-'/email/domain/delegatedAccount/{email}' | 
-'/email/domain/delegatedAccount/{email}/filter' | 
-'/email/domain/delegatedAccount/{email}/filter/{name}' | 
-'/email/domain/delegatedAccount/{email}/filter/{name}/rule' | 
-'/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}' | 
-'/email/domain/delegatedAccount/{email}/responder' | 
-'/email/domain/mailingListLimits' | 
-'/email/domain/{domain}' | 
-'/email/domain/{domain}/account' | 
-'/email/domain/{domain}/account/{accountName}' | 
-'/email/domain/{domain}/account/{accountName}/delegation' | 
-'/email/domain/{domain}/account/{accountName}/delegation/{accountId}' | 
-'/email/domain/{domain}/account/{accountName}/filter' | 
-'/email/domain/{domain}/account/{accountName}/filter/{name}' | 
-'/email/domain/{domain}/account/{accountName}/filter/{name}/rule' | 
-'/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}' | 
-'/email/domain/{domain}/account/{accountName}/migrate' | 
-'/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}' | 
-'/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress' | 
-'/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}' | 
-'/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate' | 
-'/email/domain/{domain}/account/{accountName}/usage' | 
-'/email/domain/{domain}/acl' | 
-'/email/domain/{domain}/acl/{accountId}' | 
-'/email/domain/{domain}/dnsMXFilter' | 
-'/email/domain/{domain}/dnsMXRecords' | 
-'/email/domain/{domain}/mailingList' | 
-'/email/domain/{domain}/mailingList/{name}' | 
-'/email/domain/{domain}/mailingList/{name}/moderator' | 
-'/email/domain/{domain}/mailingList/{name}/moderator/{email}' | 
-'/email/domain/{domain}/mailingList/{name}/subscriber' | 
-'/email/domain/{domain}/mailingList/{name}/subscriber/{email}' | 
-'/email/domain/{domain}/quota' | 
-'/email/domain/{domain}/recommendedDNSRecords' | 
-'/email/domain/{domain}/redirection' | 
-'/email/domain/{domain}/redirection/{id}' | 
-'/email/domain/{domain}/responder' | 
-'/email/domain/{domain}/responder/{account}' | 
-'/email/domain/{domain}/serviceInfos' | 
-'/email/domain/{domain}/summary' | 
-'/email/domain/{domain}/task/account' | 
-'/email/domain/{domain}/task/account/{id}' | 
-'/email/domain/{domain}/task/filter' | 
-'/email/domain/{domain}/task/filter/{id}' | 
-'/email/domain/{domain}/task/mailinglist' | 
-'/email/domain/{domain}/task/mailinglist/{id}' | 
-'/email/domain/{domain}/task/redirection' | 
-'/email/domain/{domain}/task/redirection/{id}' | 
-'/email/domain/{domain}/task/responder' | 
-'/email/domain/{domain}/task/responder/{id}';
 
-type PathsEmailDomainPUT = '/email/domain/delegatedAccount/{email}' | 
-'/email/domain/delegatedAccount/{email}/responder' | 
-'/email/domain/{domain}/account/{accountName}' | 
-'/email/domain/{domain}/mailingList/{name}' | 
-'/email/domain/{domain}/responder/{account}' | 
-'/email/domain/{domain}/serviceInfos';
+export namespace OVH {
+export namespace domain {
+    //domain.DomainFilterActionEnum
+    export type DomainFilterActionEnum = "accept" | "account" | "delete" | "redirect"
+    //domain.DomainFilterOperandEnum
+    export type DomainFilterOperandEnum = "checkspf" | "contains" | "noContains"
+    //domain.DomainMXFilterEnum
+    export type DomainMXFilterEnum = "CUSTOM" | "FULL_FILTERING" | "NO_FILTERING" | "REDIRECT" | "SIMPLE_FILTERING"
+    //domain.DomainMlLanguageEnum
+    export type DomainMlLanguageEnum = "de" | "en" | "es" | "fr" | "it" | "nl" | "pl" | "pt"
+    //domain.DomainMlLimits
+    // fullName: domain.DomainMlLimits.DomainMlLimits
+    export interface DomainMlLimits {
+        subscribers?: number;
+    }
+    //domain.DomainMlOptionsStruct
+    // fullName: domain.DomainMlOptionsStruct.DomainMlOptionsStruct
+    export interface DomainMlOptionsStruct {
+        moderatorMessage?: boolean;
+        subscribeByModerator?: boolean;
+        usersPostOnly?: boolean;
+    }
+    //domain.DomainPopActionEnum
+    export type DomainPopActionEnum = "addAccount" | "changeAccount" | "changePassword" | "deleteAccount" | "internalMigration" | "migration" | "temporaryTask" | "unknown"
+    //domain.DomainQuota
+    // fullName: domain.DomainQuota.DomainQuota
+    export interface DomainQuota {
+        account?: number;
+        alias?: number;
+        mailingList?: number;
+        redirection?: number;
+        responder?: number;
+    }
+    //domain.DomainSpecialAccountActionEnum
+    export type DomainSpecialAccountActionEnum = "add" | "change" | "delete"
+    //domain.DomainSpecialAccountTypeEnum
+    export type DomainSpecialAccountTypeEnum = "25g" | "alias" | "delete" | "filter" | "forward" | "responder"
+    //domain.DomainStatusEnum
+    export type DomainStatusEnum = "close" | "ok" | "readOnly" | "unknown"
+    //domain.DomainSummary
+    // fullName: domain.DomainSummary.DomainSummary
+    export interface DomainSummary {
+        account?: number;
+        mailingList?: number;
+        redirection?: number;
+        responder?: number;
+    }
+    //domain.DomainUsageAccountStruct
+    // fullName: domain.DomainUsageAccountStruct.DomainUsageAccountStruct
+    export interface DomainUsageAccountStruct {
+        date?: string;
+        emailCount?: number;
+        quota?: number;
+    }
+    export namespace zone {
+        //domain.zone.Record
+        // fullName: domain.zone.Record.Record
+        export interface Record {
+            fieldType?: OVH.zone.NamedResolutionFieldTypeEnum;
+            id?: number;
+            subDomain?: string;
+            target?: string;
+            ttl?: number;
+            zone?: string;
+        }
+    }
+}
+export namespace email {
+    export namespace domain {
+        //email.domain.Account
+        // fullName: email.domain.Account.Account
+        export interface Account {
+            accountName?: string;
+            description?: string;
+            domain?: string;
+            email?: string;
+            isBlocked?: boolean;
+            size?: number;
+        }
+        //email.domain.AccountDelegated
+        // fullName: email.domain.AccountDelegated.AccountDelegated
+        export interface AccountDelegated {
+            accountName?: string;
+            allowedAccountSize?: number[];
+            description?: string;
+            domain?: string;
+            email?: string;
+            isBlocked?: boolean;
+            size?: number;
+        }
+        //email.domain.Acl
+        // fullName: email.domain.Acl.Acl
+        export interface Acl {
+            accountId?: string;
+        }
+        //email.domain.Delegation
+        // fullName: email.domain.Delegation.Delegation
+        export interface Delegation {
+            accountId?: string;
+        }
+        //email.domain.Diagnose
+        // fullName: email.domain.Diagnose.Diagnose
+        export interface Diagnose {
+            date?: string;
+            function?: OVH.email.domain.DomainDiagnoseFunctionEnum;
+            id?: number;
+            name?: string;
+            result?: OVH.email.domain.DomainDiagnoseResultEnum;
+            trace?: OVH.email.domain.DomainDiagnoseTraceStruct<email.domain.DomainDiagnoseResultEnum>[];
+        }
+        //email.domain.DomainDiagnoseFunctionEnum
+        export type DomainDiagnoseFunctionEnum = "MX"
+        //email.domain.DomainDiagnoseResultEnum
+        export type DomainDiagnoseResultEnum = "CUSTOM" | "DEPRECATED" | "KO" | "OK"
+        //email.domain.DomainDiagnoseTraceStruct
+        // fullName: email.domain.DomainDiagnoseTraceStruct.DomainDiagnoseTraceStruct
+        export interface DomainDiagnoseTraceStruct<T> {
+            result?: T;
+            test?: string;
+        }
+        //email.domain.DomainService
+        // fullName: email.domain.DomainService.DomainService
+        export interface DomainService {
+            allowedAccountSize?: number[];
+            creationDate?: string;
+            domain?: string;
+            filerz?: number;
+            linkTo?: string;
+            migratedMXPlanServiceName?: string;
+            offer?: string;
+            status?: OVH.domain.DomainStatusEnum;
+        }
+        //email.domain.Filter
+        // fullName: email.domain.Filter.Filter
+        export interface Filter {
+            action?: OVH.domain.DomainFilterActionEnum;
+            actionParam?: string;
+            active?: boolean;
+            domain?: string;
+            name?: string;
+            pop?: string;
+            priority?: number;
+        }
+        //email.domain.MailingList
+        // fullName: email.domain.MailingList.MailingList
+        export interface MailingList {
+            id?: number;
+            language?: OVH.domain.DomainMlLanguageEnum;
+            name?: string;
+            nbSubscribers?: number;
+            nbSubscribersUpdateDate?: string;
+            options?: OVH.domain.DomainMlOptionsStruct;
+            ownerEmail?: string;
+            replyTo?: string;
+        }
+        //email.domain.MigrationAccount
+        // fullName: email.domain.MigrationAccount.MigrationAccount
+        export interface MigrationAccount {
+            destinationEmailAddress?: string;
+            quota?: number;
+        }
+        //email.domain.MigrationCheckCodeEnum
+        export type MigrationCheckCodeEnum = "ACCOUNT_EMPTY" | "ACCOUNT_INPROGRESS" | "DELEGATION_EXIST" | "DOMAIN_EMPTY" | "FILTER_EXIST" | "FORWARD_EXIST" | "FORWARD_LOCAL" | "MAILINGLIST_EXIST" | "MAILINGLIST_INPROGRESS" | "MAILPROXY_BAD_INFRA" | "MAILPROXY_EMPTY" | "MAILPROXY_INPROGRESS" | "MAILPROXY_RESERVATION" | "REDIRECTION_INPROGRESS" | "RESPONDER_EXIST" | "RESPONDER_INPROGRESS" | "UNKNOW"
+        //email.domain.MigrationCheckResultStruct
+        // fullName: email.domain.MigrationCheckResultStruct.MigrationCheckResultStruct
+        export interface MigrationCheckResultStruct {
+            code?: OVH.email.domain.MigrationCheckCodeEnum;
+            details?: string;
+        }
+        //email.domain.MigrationCheckStruct
+        // fullName: email.domain.MigrationCheckStruct.MigrationCheckStruct
+        export interface MigrationCheckStruct {
+            alias?: string[];
+            error?: OVH.email.domain.MigrationCheckResultStruct[];
+            filter?: string[];
+            forward?: string[];
+            warning?: OVH.email.domain.MigrationCheckResultStruct[];
+        }
+        //email.domain.MigrationService
+        // fullName: email.domain.MigrationService.MigrationService
+        export interface MigrationService {
+            contactAdmin?: string;
+            contactBilling?: string;
+            contactTech?: string;
+            creation?: string;
+            destinationServiceName?: string;
+            expiration?: string;
+            type?: OVH.email.domain.MigrationServiceType;
+        }
+        //email.domain.MigrationServiceType
+        export type MigrationServiceType = "EMAIL PRO" | "HOSTED EXCHANGE" | "PRIVATE EXCHANGE" | "PROVIDER EXCHANGE"
+        //email.domain.Moderator
+        // fullName: email.domain.Moderator.Moderator
+        export interface Moderator {
+            domain?: string;
+            email?: string;
+            mailinglist?: string;
+        }
+        //email.domain.RedirectionGlobal
+        // fullName: email.domain.RedirectionGlobal.RedirectionGlobal
+        export interface RedirectionGlobal {
+            from?: string;
+            id?: string;
+            to?: string;
+        }
+        //email.domain.Responder
+        // fullName: email.domain.Responder.Responder
+        export interface Responder {
+            account?: string;
+            content?: string;
+            copy?: boolean;
+            copyTo?: string;
+            from?: string;
+            to?: string;
+        }
+        //email.domain.ResponderAccount
+        // fullName: email.domain.ResponderAccount.ResponderAccount
+        export interface ResponderAccount {
+            account?: string;
+            content?: string;
+            copy?: boolean;
+            copyTo?: string;
+            from?: string;
+            to?: string;
+        }
+        //email.domain.Rule
+        // fullName: email.domain.Rule.Rule
+        export interface Rule {
+            header?: string;
+            id?: number;
+            operand?: OVH.domain.DomainFilterOperandEnum;
+            value?: string;
+        }
+        //email.domain.Subscriber
+        // fullName: email.domain.Subscriber.Subscriber
+        export interface Subscriber {
+            domain?: string;
+            email?: string;
+            mailinglist?: string;
+        }
+        //email.domain.TaskFilter
+        // fullName: email.domain.TaskFilter.TaskFilter
+        export interface TaskFilter {
+            account?: string;
+            action?: string;
+            domain?: string;
+            id?: number;
+            timestamp?: string;
+        }
+        //email.domain.TaskMl
+        // fullName: email.domain.TaskMl.TaskMl
+        export interface TaskMl {
+            account?: string;
+            action?: string;
+            date?: string;
+            domain?: string;
+            id?: number;
+            language?: OVH.domain.DomainMlLanguageEnum;
+        }
+        //email.domain.TaskPop
+        // fullName: email.domain.TaskPop.TaskPop
+        export interface TaskPop {
+            action?: OVH.domain.DomainPopActionEnum;
+            date?: string;
+            domain?: string;
+            id?: number;
+            name?: string;
+        }
+        //email.domain.TaskSpecialAccount
+        // fullName: email.domain.TaskSpecialAccount.TaskSpecialAccount
+        export interface TaskSpecialAccount {
+            account?: string;
+            action?: OVH.domain.DomainSpecialAccountActionEnum;
+            date?: string;
+            domain?: string;
+            id?: number;
+            type?: OVH.domain.DomainSpecialAccountTypeEnum;
+        }
+    }
+}
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic?: boolean;
+        deleteAtExpiration?: boolean;
+        forced?: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+    //service.TerminationReasonEnum
+    export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration?: boolean;
+        contactAdmin?: string;
+        contactBilling?: string;
+        contactTech?: string;
+        creation?: string;
+        domain?: string;
+        engagedUpTo?: string;
+        expiration?: string;
+        possibleRenewPeriod?: number[];
+        renew?: OVH.service.RenewType;
+        renewalType?: OVH.service.RenewalTypeEnum;
+        serviceId?: number;
+        status?: OVH.service.StateEnum;
+    }
+}
+export namespace zone {
+    //zone.NamedResolutionFieldTypeEnum
+    export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
+}
+// Apis harmony
+// path /email
+export interface Email {
+    domain:  {
+        // GET /email/domain
+        GET(): Promise<string[]>;
+        delegatedAccount:  {
+            // GET /email/domain/delegatedAccount
+            GET(param?: {accountName?: string, domain?: string}): Promise<string[]>;
+            [keys: string]: {
+                // GET /email/domain/delegatedAccount/{email}
+                GET(): Promise<email.domain.AccountDelegated>;
+                // PUT /email/domain/delegatedAccount/{email}
+                PUT(body?: {body: email.domain.AccountDelegated}): Promise<void>;
+                responder:  {
+                    // GET /email/domain/delegatedAccount/{email}/responder
+                    GET(): Promise<email.domain.ResponderAccount>;
+                    // PUT /email/domain/delegatedAccount/{email}/responder
+                    PUT(body?: {body: email.domain.ResponderAccount}): Promise<void>;
+                    // POST /email/domain/delegatedAccount/{email}/responder
+                    POST(body?: {content: string, to?: string, copy: boolean, copyTo?: string, from?: string}): Promise<email.domain.TaskSpecialAccount>;
+                    // DELETE /email/domain/delegatedAccount/{email}/responder
+                    DELETE(): Promise<email.domain.TaskSpecialAccount>;
+                }
+                filter:  {
+                    // GET /email/domain/delegatedAccount/{email}/filter
+                    GET(): Promise<string[]>;
+                    // POST /email/domain/delegatedAccount/{email}/filter
+                    POST(body?: {action: domain.DomainFilterActionEnum, operand: domain.DomainFilterOperandEnum, value: string, header: string, active: boolean, actionParam?: string, name: string, priority: number}): Promise<email.domain.TaskFilter>;
+                    [keys: string]: {
+                        // GET /email/domain/delegatedAccount/{email}/filter/{name}
+                        GET(): Promise<email.domain.Filter>;
+                        // DELETE /email/domain/delegatedAccount/{email}/filter/{name}
+                        DELETE(): Promise<email.domain.TaskFilter[]>;
+                        changePriority:  {
+                            // POST /email/domain/delegatedAccount/{email}/filter/{name}/changePriority
+                            POST(body?: {priority: number}): Promise<email.domain.TaskFilter>;
+                        }
+                        changeActivity:  {
+                            // POST /email/domain/delegatedAccount/{email}/filter/{name}/changeActivity
+                            POST(body?: {activity: boolean}): Promise<email.domain.TaskFilter>;
+                        }
+                        rule:  {
+                            // GET /email/domain/delegatedAccount/{email}/filter/{name}/rule
+                            GET(): Promise<number[]>;
+                            // POST /email/domain/delegatedAccount/{email}/filter/{name}/rule
+                            POST(body?: {header: string, value: string, operand: domain.DomainFilterOperandEnum}): Promise<email.domain.TaskFilter>;
+                            [keys: string]: {
+                                // GET /email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}
+                                GET(): Promise<email.domain.Rule>;
+                                // DELETE /email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}
+                                DELETE(): Promise<email.domain.TaskFilter[]>;
+                            } | any
+                        }
+                    } | any
+                }
+                updateUsage:  {
+                    // POST /email/domain/delegatedAccount/{email}/updateUsage
+                    POST(): Promise<void>;
+                }
+                changePassword:  {
+                    // POST /email/domain/delegatedAccount/{email}/changePassword
+                    POST(body?: {password: string}): Promise<email.domain.TaskPop>;
+                }
+                usage:  {
+                    // POST /email/domain/delegatedAccount/{email}/usage
+                    POST(): Promise<domain.DomainUsageAccountStruct>;
+                }
+            } | any
+        }
+        [keys: string]: {
+            // GET /email/domain/{domain}
+            GET(): Promise<email.domain.DomainService>;
+            changeDnsMXFilter:  {
+                // POST /email/domain/{domain}/changeDnsMXFilter
+                POST(body?: {subDomain?: string, mxFilter: domain.DomainMXFilterEnum, customTarget?: string}): Promise<void>;
+            }
+            changeContact:  {
+                // POST /email/domain/{domain}/changeContact
+                POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
+            }
+            redirection:  {
+                // GET /email/domain/{domain}/redirection
+                GET(param?: {from?: string, to?: string}): Promise<string[]>;
+                // POST /email/domain/{domain}/redirection
+                POST(body?: {to: string, localCopy: boolean, from: string}): Promise<email.domain.TaskSpecialAccount>;
+                [keys: string]: {
+                    // GET /email/domain/{domain}/redirection/{id}
+                    GET(): Promise<email.domain.RedirectionGlobal>;
+                    // DELETE /email/domain/{domain}/redirection/{id}
+                    DELETE(): Promise<email.domain.TaskSpecialAccount>;
+                    changeRedirection:  {
+                        // POST /email/domain/{domain}/redirection/{id}/changeRedirection
+                        POST(body?: {to: string}): Promise<email.domain.TaskSpecialAccount>;
+                    }
+                } | any
+            }
+            serviceInfos:  {
+                // GET /email/domain/{domain}/serviceInfos
+                GET(): Promise<services.Service>;
+                // PUT /email/domain/{domain}/serviceInfos
+                PUT(body?: {body: services.Service}): Promise<void>;
+            }
+            terminate:  {
+                // POST /email/domain/{domain}/terminate
+                POST(): Promise<string>;
+            }
+            recommendedDNSRecords:  {
+                // GET /email/domain/{domain}/recommendedDNSRecords
+                GET(): Promise<domain.zone.Record[]>;
+            }
+            account:  {
+                // GET /email/domain/{domain}/account
+                GET(param?: {description?: string, accountName?: string}): Promise<string[]>;
+                // POST /email/domain/{domain}/account
+                POST(body?: {password: string, accountName: string, description?: string, size?: number}): Promise<email.domain.TaskPop>;
+                [keys: string]: {
+                    // GET /email/domain/{domain}/account/{accountName}
+                    GET(): Promise<email.domain.Account>;
+                    // PUT /email/domain/{domain}/account/{accountName}
+                    PUT(body?: {body: email.domain.Account}): Promise<void>;
+                    // DELETE /email/domain/{domain}/account/{accountName}
+                    DELETE(): Promise<email.domain.TaskPop>;
+                    usage:  {
+                        // GET /email/domain/{domain}/account/{accountName}/usage
+                        GET(): Promise<domain.DomainUsageAccountStruct>;
+                    }
+                    changePassword:  {
+                        // POST /email/domain/{domain}/account/{accountName}/changePassword
+                        POST(body?: {password: string}): Promise<email.domain.TaskPop>;
+                    }
+                    updateUsage:  {
+                        // POST /email/domain/{domain}/account/{accountName}/updateUsage
+                        POST(): Promise<void>;
+                    }
+                    delegation:  {
+                        // GET /email/domain/{domain}/account/{accountName}/delegation
+                        GET(): Promise<string[]>;
+                        // POST /email/domain/{domain}/account/{accountName}/delegation
+                        POST(body?: {accountId: string}): Promise<string>;
+                        [keys: string]: {
+                            // GET /email/domain/{domain}/account/{accountName}/delegation/{accountId}
+                            GET(): Promise<email.domain.Delegation>;
+                            // DELETE /email/domain/{domain}/account/{accountName}/delegation/{accountId}
+                            DELETE(): Promise<string>;
+                        } | any
+                    }
+                    filter:  {
+                        // GET /email/domain/{domain}/account/{accountName}/filter
+                        GET(): Promise<string[]>;
+                        // POST /email/domain/{domain}/account/{accountName}/filter
+                        POST(body?: {action: domain.DomainFilterActionEnum, operand: domain.DomainFilterOperandEnum, value: string, header: string, active: boolean, actionParam?: string, name: string, priority: number}): Promise<email.domain.TaskFilter>;
+                        [keys: string]: {
+                            // GET /email/domain/{domain}/account/{accountName}/filter/{name}
+                            GET(): Promise<email.domain.Filter>;
+                            // DELETE /email/domain/{domain}/account/{accountName}/filter/{name}
+                            DELETE(): Promise<email.domain.TaskFilter[]>;
+                            changeActivity:  {
+                                // POST /email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity
+                                POST(body?: {activity: boolean}): Promise<email.domain.TaskFilter>;
+                            }
+                            rule:  {
+                                // GET /email/domain/{domain}/account/{accountName}/filter/{name}/rule
+                                GET(): Promise<number[]>;
+                                // POST /email/domain/{domain}/account/{accountName}/filter/{name}/rule
+                                POST(body?: {header: string, value: string, operand: domain.DomainFilterOperandEnum}): Promise<email.domain.TaskFilter>;
+                                [keys: string]: {
+                                    // GET /email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}
+                                    GET(): Promise<email.domain.Rule>;
+                                    // DELETE /email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}
+                                    DELETE(): Promise<email.domain.TaskFilter[]>;
+                                } | any
+                            }
+                            changePriority:  {
+                                // POST /email/domain/{domain}/account/{accountName}/filter/{name}/changePriority
+                                POST(body?: {priority: number}): Promise<email.domain.TaskFilter>;
+                            }
+                        } | any
+                    }
+                    migrate:  {
+                        // GET /email/domain/{domain}/account/{accountName}/migrate
+                        GET(param?: {type?: email.domain.MigrationServiceType}): Promise<string[]>;
+                        [keys: string]: {
+                            // GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}
+                            GET(): Promise<email.domain.MigrationService>;
+                            destinationEmailAddress:  {
+                                // GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress
+                                GET(param?: {quota?: number}): Promise<string[]>;
+                                [keys: string]: {
+                                    // GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}
+                                    GET(): Promise<email.domain.MigrationAccount>;
+                                    checkMigrate:  {
+                                        // GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate
+                                        GET(): Promise<email.domain.MigrationCheckStruct>;
+                                    }
+                                    migrate:  {
+                                        // POST /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate
+                                        POST(body?: {password: string}): Promise<email.domain.TaskPop>;
+                                    }
+                                } | any
+                            }
+                        } | any
+                    }
+                } | any
+            }
+            dnsMXRecords:  {
+                // GET /email/domain/{domain}/dnsMXRecords
+                GET(param?: {subDomain?: string}): Promise<string[]>;
+            }
+            mailingList:  {
+                // GET /email/domain/{domain}/mailingList
+                GET(param?: {name?: string}): Promise<string[]>;
+                // POST /email/domain/{domain}/mailingList
+                POST(body?: {options: domain.DomainMlOptionsStruct, language: domain.DomainMlLanguageEnum, name: string, replyTo?: string, ownerEmail: string}): Promise<email.domain.TaskMl>;
+                [keys: string]: {
+                    // GET /email/domain/{domain}/mailingList/{name}
+                    GET(): Promise<email.domain.MailingList>;
+                    // PUT /email/domain/{domain}/mailingList/{name}
+                    PUT(body?: {body: email.domain.MailingList}): Promise<void>;
+                    // DELETE /email/domain/{domain}/mailingList/{name}
+                    DELETE(): Promise<email.domain.TaskMl>;
+                    changeOptions:  {
+                        // POST /email/domain/{domain}/mailingList/{name}/changeOptions
+                        POST(body?: {options: domain.DomainMlOptionsStruct}): Promise<email.domain.TaskMl>;
+                    }
+                    moderator:  {
+                        // GET /email/domain/{domain}/mailingList/{name}/moderator
+                        GET(param?: {email?: string}): Promise<string[]>;
+                        // POST /email/domain/{domain}/mailingList/{name}/moderator
+                        POST(body?: {email: string}): Promise<email.domain.TaskMl>;
+                        [keys: string]: {
+                            // GET /email/domain/{domain}/mailingList/{name}/moderator/{email}
+                            GET(): Promise<email.domain.Moderator>;
+                            // DELETE /email/domain/{domain}/mailingList/{name}/moderator/{email}
+                            DELETE(): Promise<email.domain.TaskMl>;
+                        } | any
+                    }
+                    subscriber:  {
+                        // GET /email/domain/{domain}/mailingList/{name}/subscriber
+                        GET(param?: {email?: string}): Promise<string[]>;
+                        // POST /email/domain/{domain}/mailingList/{name}/subscriber
+                        POST(body?: {email: string}): Promise<email.domain.TaskMl>;
+                        [keys: string]: {
+                            // GET /email/domain/{domain}/mailingList/{name}/subscriber/{email}
+                            GET(): Promise<email.domain.Subscriber>;
+                            // DELETE /email/domain/{domain}/mailingList/{name}/subscriber/{email}
+                            DELETE(): Promise<email.domain.TaskMl>;
+                        } | any
+                    }
+                    sendListByEmail:  {
+                        // POST /email/domain/{domain}/mailingList/{name}/sendListByEmail
+                        POST(body?: {email: string}): Promise<email.domain.TaskMl>;
+                    }
+                } | any
+            }
+            dnsMXFilter:  {
+                // GET /email/domain/{domain}/dnsMXFilter
+                GET(param?: {subDomain?: string}): Promise<domain.DomainMXFilterEnum>;
+            }
+            quota:  {
+                // GET /email/domain/{domain}/quota
+                GET(): Promise<domain.DomainQuota>;
+            }
+            task:  {
+                account:  {
+                    // GET /email/domain/{domain}/task/account
+                    GET(param?: {name?: string}): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /email/domain/{domain}/task/account/{id}
+                        GET(): Promise<email.domain.TaskPop>;
+                    } | any
+                }
+                redirection:  {
+                    // GET /email/domain/{domain}/task/redirection
+                    GET(param?: {account?: string}): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /email/domain/{domain}/task/redirection/{id}
+                        GET(): Promise<email.domain.TaskSpecialAccount>;
+                    } | any
+                }
+                responder:  {
+                    // GET /email/domain/{domain}/task/responder
+                    GET(param?: {account?: string}): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /email/domain/{domain}/task/responder/{id}
+                        GET(): Promise<email.domain.TaskSpecialAccount>;
+                    } | any
+                }
+                mailinglist:  {
+                    // GET /email/domain/{domain}/task/mailinglist
+                    GET(param?: {account?: string}): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /email/domain/{domain}/task/mailinglist/{id}
+                        GET(): Promise<email.domain.TaskMl>;
+                    } | any
+                }
+                filter:  {
+                    // GET /email/domain/{domain}/task/filter
+                    GET(param?: {account?: string}): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /email/domain/{domain}/task/filter/{id}
+                        GET(): Promise<email.domain.TaskFilter>;
+                    } | any
+                }
+            }
+            migrateDelegationV3toV6:  {
+                // POST /email/domain/{domain}/migrateDelegationV3toV6
+                POST(): Promise<void>;
+            }
+            acl:  {
+                // GET /email/domain/{domain}/acl
+                GET(): Promise<string[]>;
+                // POST /email/domain/{domain}/acl
+                POST(body?: {accountId: string}): Promise<email.domain.Acl>;
+                [keys: string]: {
+                    // GET /email/domain/{domain}/acl/{accountId}
+                    GET(): Promise<email.domain.Acl>;
+                    // DELETE /email/domain/{domain}/acl/{accountId}
+                    DELETE(): Promise<void>;
+                } | any
+            }
+            confirmTermination:  {
+                // POST /email/domain/{domain}/confirmTermination
+                POST(body?: {token: string, reason?: service.TerminationReasonEnum, commentary?: string}): Promise<string>;
+            }
+            summary:  {
+                // GET /email/domain/{domain}/summary
+                GET(): Promise<domain.DomainSummary>;
+            }
+            responder:  {
+                // GET /email/domain/{domain}/responder
+                GET(param?: {account?: string}): Promise<string[]>;
+                // POST /email/domain/{domain}/responder
+                POST(body?: {account: string, content: string, from?: string, copyTo?: string, copy: boolean, to?: string}): Promise<email.domain.TaskSpecialAccount>;
+                [keys: string]: {
+                    // GET /email/domain/{domain}/responder/{account}
+                    GET(): Promise<email.domain.Responder>;
+                    // PUT /email/domain/{domain}/responder/{account}
+                    PUT(body?: {body: email.domain.Responder}): Promise<void>;
+                    // DELETE /email/domain/{domain}/responder/{account}
+                    DELETE(): Promise<email.domain.TaskSpecialAccount>;
+                } | any
+            }
+        } | any
+        mailingListLimits:  {
+            // GET /email/domain/mailingListLimits
+            GET(param?: {moderatorMessage: boolean}): Promise<domain.DomainMlLimits>;
+        }
+    }
+}
+// Api
+type PathsEmailDomainGET = '/email/domain/delegatedAccount/{email}/responder' |
+  '/email/domain/delegatedAccount/{email}/filter' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}/rule' |
+  '/email/domain/delegatedAccount/{email}' |
+  '/email/domain/delegatedAccount' |
+  '/email/domain/{domain}' |
+  '/email/domain/{domain}/redirection' |
+  '/email/domain/{domain}/redirection/{id}' |
+  '/email/domain/{domain}/serviceInfos' |
+  '/email/domain/{domain}/recommendedDNSRecords' |
+  '/email/domain/{domain}/account' |
+  '/email/domain/{domain}/account/{accountName}' |
+  '/email/domain/{domain}/account/{accountName}/usage' |
+  '/email/domain/{domain}/account/{accountName}/delegation' |
+  '/email/domain/{domain}/account/{accountName}/delegation/{accountId}' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}/rule' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}' |
+  '/email/domain/{domain}/account/{accountName}/filter' |
+  '/email/domain/{domain}/account/{accountName}/migrate' |
+  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress' |
+  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate' |
+  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}' |
+  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}' |
+  '/email/domain/{domain}/dnsMXRecords' |
+  '/email/domain/{domain}/mailingList' |
+  '/email/domain/{domain}/mailingList/{name}' |
+  '/email/domain/{domain}/mailingList/{name}/moderator' |
+  '/email/domain/{domain}/mailingList/{name}/moderator/{email}' |
+  '/email/domain/{domain}/mailingList/{name}/subscriber' |
+  '/email/domain/{domain}/mailingList/{name}/subscriber/{email}' |
+  '/email/domain/{domain}/dnsMXFilter' |
+  '/email/domain/{domain}/quota' |
+  '/email/domain/{domain}/task/account' |
+  '/email/domain/{domain}/task/account/{id}' |
+  '/email/domain/{domain}/task/redirection' |
+  '/email/domain/{domain}/task/redirection/{id}' |
+  '/email/domain/{domain}/task/responder' |
+  '/email/domain/{domain}/task/responder/{id}' |
+  '/email/domain/{domain}/task/mailinglist' |
+  '/email/domain/{domain}/task/mailinglist/{id}' |
+  '/email/domain/{domain}/task/filter/{id}' |
+  '/email/domain/{domain}/task/filter' |
+  '/email/domain/{domain}/acl' |
+  '/email/domain/{domain}/acl/{accountId}' |
+  '/email/domain/{domain}/summary' |
+  '/email/domain/{domain}/responder' |
+  '/email/domain/{domain}/responder/{account}' |
+  '/email/domain' |
+  '/email/domain/mailingListLimits';
 
-type PathsEmailDomainPOST = '/email/domain/delegatedAccount/{email}/changePassword' | 
-'/email/domain/delegatedAccount/{email}/filter' | 
-'/email/domain/delegatedAccount/{email}/filter/{name}/changeActivity' | 
-'/email/domain/delegatedAccount/{email}/filter/{name}/changePriority' | 
-'/email/domain/delegatedAccount/{email}/filter/{name}/rule' | 
-'/email/domain/delegatedAccount/{email}/responder' | 
-'/email/domain/delegatedAccount/{email}/updateUsage' | 
-'/email/domain/delegatedAccount/{email}/usage' | 
-'/email/domain/{domain}/account' | 
-'/email/domain/{domain}/account/{accountName}/changePassword' | 
-'/email/domain/{domain}/account/{accountName}/delegation' | 
-'/email/domain/{domain}/account/{accountName}/filter' | 
-'/email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity' | 
-'/email/domain/{domain}/account/{accountName}/filter/{name}/changePriority' | 
-'/email/domain/{domain}/account/{accountName}/filter/{name}/rule' | 
-'/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate' | 
-'/email/domain/{domain}/account/{accountName}/updateUsage' | 
-'/email/domain/{domain}/acl' | 
-'/email/domain/{domain}/changeContact' | 
-'/email/domain/{domain}/changeDnsMXFilter' | 
-'/email/domain/{domain}/confirmTermination' | 
-'/email/domain/{domain}/mailingList' | 
-'/email/domain/{domain}/mailingList/{name}/changeOptions' | 
-'/email/domain/{domain}/mailingList/{name}/moderator' | 
-'/email/domain/{domain}/mailingList/{name}/sendListByEmail' | 
-'/email/domain/{domain}/mailingList/{name}/subscriber' | 
-'/email/domain/{domain}/migrateDelegationV3toV6' | 
-'/email/domain/{domain}/redirection' | 
-'/email/domain/{domain}/redirection/{id}/changeRedirection' | 
-'/email/domain/{domain}/responder' | 
-'/email/domain/{domain}/terminate';
+type PathsEmailDomainPUT = '/email/domain/delegatedAccount/{email}/responder' |
+  '/email/domain/delegatedAccount/{email}' |
+  '/email/domain/{domain}/serviceInfos' |
+  '/email/domain/{domain}/account/{accountName}' |
+  '/email/domain/{domain}/mailingList/{name}' |
+  '/email/domain/{domain}/responder/{account}';
 
-type PathsEmailDomainDELETE = '/email/domain/delegatedAccount/{email}/filter/{name}' | 
-'/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}' | 
-'/email/domain/delegatedAccount/{email}/responder' | 
-'/email/domain/{domain}/account/{accountName}' | 
-'/email/domain/{domain}/account/{accountName}/delegation/{accountId}' | 
-'/email/domain/{domain}/account/{accountName}/filter/{name}' | 
-'/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}' | 
-'/email/domain/{domain}/acl/{accountId}' | 
-'/email/domain/{domain}/mailingList/{name}' | 
-'/email/domain/{domain}/mailingList/{name}/moderator/{email}' | 
-'/email/domain/{domain}/mailingList/{name}/subscriber/{email}' | 
-'/email/domain/{domain}/redirection/{id}' | 
-'/email/domain/{domain}/responder/{account}';
+type PathsEmailDomainPOST = '/email/domain/delegatedAccount/{email}/responder' |
+  '/email/domain/delegatedAccount/{email}/filter' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}/changePriority' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}/changeActivity' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}/rule' |
+  '/email/domain/delegatedAccount/{email}/updateUsage' |
+  '/email/domain/delegatedAccount/{email}/changePassword' |
+  '/email/domain/delegatedAccount/{email}/usage' |
+  '/email/domain/{domain}/changeDnsMXFilter' |
+  '/email/domain/{domain}/changeContact' |
+  '/email/domain/{domain}/redirection' |
+  '/email/domain/{domain}/redirection/{id}/changeRedirection' |
+  '/email/domain/{domain}/terminate' |
+  '/email/domain/{domain}/account' |
+  '/email/domain/{domain}/account/{accountName}/changePassword' |
+  '/email/domain/{domain}/account/{accountName}/updateUsage' |
+  '/email/domain/{domain}/account/{accountName}/delegation' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}/rule' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}/changePriority' |
+  '/email/domain/{domain}/account/{accountName}/filter' |
+  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate' |
+  '/email/domain/{domain}/mailingList' |
+  '/email/domain/{domain}/mailingList/{name}/changeOptions' |
+  '/email/domain/{domain}/mailingList/{name}/moderator' |
+  '/email/domain/{domain}/mailingList/{name}/subscriber' |
+  '/email/domain/{domain}/mailingList/{name}/sendListByEmail' |
+  '/email/domain/{domain}/migrateDelegationV3toV6' |
+  '/email/domain/{domain}/acl' |
+  '/email/domain/{domain}/confirmTermination' |
+  '/email/domain/{domain}/responder';
+
+type PathsEmailDomainDELETE = '/email/domain/delegatedAccount/{email}/responder' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}' |
+  '/email/domain/{domain}/redirection/{id}' |
+  '/email/domain/{domain}/account/{accountName}' |
+  '/email/domain/{domain}/account/{accountName}/delegation/{accountId}' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}' |
+  '/email/domain/{domain}/mailingList/{name}' |
+  '/email/domain/{domain}/mailingList/{name}/moderator/{email}' |
+  '/email/domain/{domain}/mailingList/{name}/subscriber/{email}' |
+  '/email/domain/{domain}/acl/{accountId}' |
+  '/email/domain/{domain}/responder/{account}';
 
 export class ApiEmailDomain extends OvhWrapper {
   constructor(engine: OvhRequestable) {
@@ -1023,50 +787,10 @@ export class ApiEmailDomain extends OvhWrapper {
    */
   public get(path: '/email/domain'): Promise<string[]>;
   /**
-   * List the email.domain.AccountDelegated objects
-   * Delegated emails
-   */
-  public get(path: '/email/domain/delegatedAccount', params: {accountName?: string, domain?: string}): Promise<string[]>;
-  /**
-   * Account List
-   * Get this object properties
-   */
-  public get(path: '/email/domain/delegatedAccount/{email}', params: {email: string}): Promise<EmailDomainAccountDelegated>;
-  /**
-   * List the email.domain.Filter objects
-   * Get filters
-   */
-  public get(path: '/email/domain/delegatedAccount/{email}/filter', params: {email: string}): Promise<string[]>;
-  /**
-   * Filter List
-   * Get this object properties
-   */
-  public get(path: '/email/domain/delegatedAccount/{email}/filter/{name}', params: {email: string, name: string}): Promise<EmailDomainFilter>;
-  /**
-   * List the email.domain.Rule objects
-   * Get rules
-   */
-  public get(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule', params: {email: string, name: string}): Promise<number[]>;
-  /**
-   * Rule List
-   * Get this object properties
-   */
-  public get(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}', params: {email: string, name: string, id: number}): Promise<EmailDomainRule>;
-  /**
-   * Responder of account
-   * Get this object properties
-   */
-  public get(path: '/email/domain/delegatedAccount/{email}/responder', params: {email: string}): Promise<EmailDomainResponderAccount>;
-  /**
-   * Get limits of mailing list
-   * Get limits of mailing list
-   */
-  public get(path: '/email/domain/mailingListLimits', params: {moderatorMessage: boolean}): Promise<DomainDomainMlLimits>;
-  /**
    * Domain service
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}', params: {domain: string}): Promise<EmailDomainDomainService>;
+  public get(path: '/email/domain/{domain}', params: {domain: string}): Promise<email.domain.DomainService>;
   /**
    * List the email.domain.Account objects
    * Get accounts
@@ -1076,7 +800,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Account List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string}): Promise<EmailDomainAccount>;
+  public get(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string}): Promise<email.domain.Account>;
   /**
    * List the email.domain.Delegation objects
    * Get delegations
@@ -1086,7 +810,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Delegation List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/delegation/{accountId}', params: {domain: string, accountName: string, accountId: string}): Promise<EmailDomainDelegation>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/delegation/{accountId}', params: {domain: string, accountName: string, accountId: string}): Promise<email.domain.Delegation>;
   /**
    * List the email.domain.Filter objects
    * Get filters
@@ -1096,7 +820,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Filter List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/filter/{name}', params: {domain: string, accountName: string, name: string}): Promise<EmailDomainFilter>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/filter/{name}', params: {domain: string, accountName: string, name: string}): Promise<email.domain.Filter>;
   /**
    * List the email.domain.Rule objects
    * Get rules
@@ -1106,17 +830,17 @@ export class ApiEmailDomain extends OvhWrapper {
    * Rule List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}', params: {domain: string, accountName: string, name: string, id: number}): Promise<EmailDomainRule>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}', params: {domain: string, accountName: string, name: string, id: string}): Promise<email.domain.Rule>;
   /**
    * List the email.domain.MigrationService objects
    * Get migration service
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/migrate', params: {domain: string, accountName: string, type?: EmailDomainMigrationServiceType}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/migrate', params: {domain: string, accountName: string, type?: OVH.email.domain.MigrationServiceType}): Promise<string[]>;
   /**
    * Migration service
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}', params: {domain: string, accountName: string, destinationServiceName: string}): Promise<EmailDomainMigrationService>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}', params: {domain: string, accountName: string, destinationServiceName: string}): Promise<email.domain.MigrationService>;
   /**
    * List the email.domain.MigrationAccount objects
    * List of email address available for migration
@@ -1126,17 +850,17 @@ export class ApiEmailDomain extends OvhWrapper {
    * Migration account
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}', params: {domain: string, accountName: string, destinationServiceName: string, destinationEmailAddress: string}): Promise<EmailDomainMigrationAccount>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}', params: {domain: string, accountName: string, destinationServiceName: string, destinationEmailAddress: string}): Promise<email.domain.MigrationAccount>;
   /**
    * checkMigrate operations
    * Check if it's possible to migrate
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate', params: {domain: string, accountName: string, destinationServiceName: string, destinationEmailAddress: string}): Promise<EmailDomainMigrationCheckStruct>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate', params: {domain: string, accountName: string, destinationServiceName: string, destinationEmailAddress: string}): Promise<email.domain.MigrationCheckStruct>;
   /**
    * usage operations
    * usage of account
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/usage', params: {domain: string, accountName: string}): Promise<DomainDomainUsageAccountStruct>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/usage', params: {domain: string, accountName: string}): Promise<domain.DomainUsageAccountStruct>;
   /**
    * List the email.domain.Acl objects
    * Get ACL on your domain
@@ -1146,12 +870,12 @@ export class ApiEmailDomain extends OvhWrapper {
    * Email ACL
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/acl/{accountId}', params: {domain: string, accountId: string}): Promise<EmailDomainAcl>;
+  public get(path: '/email/domain/{domain}/acl/{accountId}', params: {domain: string, accountId: string}): Promise<email.domain.Acl>;
   /**
    * dnsMXFilter operations
    * Domain MX filter
    */
-  public get(path: '/email/domain/{domain}/dnsMXFilter', params: {domain: string, subDomain?: string}): Promise<DomainDomainMXFilterEnum>;
+  public get(path: '/email/domain/{domain}/dnsMXFilter', params: {domain: string, subDomain?: string}): Promise<domain.DomainMXFilterEnum>;
   /**
    * dnsMXRecords operations
    * Domain MX records
@@ -1166,7 +890,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Mailing List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/mailingList/{name}', params: {domain: string, name: string}): Promise<EmailDomainMailingList>;
+  public get(path: '/email/domain/{domain}/mailingList/{name}', params: {domain: string, name: string}): Promise<email.domain.MailingList>;
   /**
    * List the email.domain.Moderator objects
    * List of moderators
@@ -1176,7 +900,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Moderators List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/mailingList/{name}/moderator/{email}', params: {domain: string, name: string, email: string}): Promise<EmailDomainModerator>;
+  public get(path: '/email/domain/{domain}/mailingList/{name}/moderator/{email}', params: {domain: string, name: string, email: string}): Promise<email.domain.Moderator>;
   /**
    * List the email.domain.Subscriber objects
    * List of subscribers
@@ -1186,17 +910,17 @@ export class ApiEmailDomain extends OvhWrapper {
    * Subscribers List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/mailingList/{name}/subscriber/{email}', params: {domain: string, name: string, email: string}): Promise<EmailDomainSubscriber>;
+  public get(path: '/email/domain/{domain}/mailingList/{name}/subscriber/{email}', params: {domain: string, name: string, email: string}): Promise<email.domain.Subscriber>;
   /**
    * quota operations
    * List all quotas for this domain
    */
-  public get(path: '/email/domain/{domain}/quota', params: {domain: string}): Promise<DomainDomainQuota>;
+  public get(path: '/email/domain/{domain}/quota', params: {domain: string}): Promise<domain.DomainQuota>;
   /**
    * recommendedDNSRecords operations
    * Recommended domain DNS records
    */
-  public get(path: '/email/domain/{domain}/recommendedDNSRecords', params: {domain: string}): Promise<DomainZoneRecord[]>;
+  public get(path: '/email/domain/{domain}/recommendedDNSRecords', params: {domain: string}): Promise<domain.zone.Record[]>;
   /**
    * List the email.domain.RedirectionGlobal objects
    * Get redirections
@@ -1206,7 +930,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Global Redirection
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/redirection/{id}', params: {domain: string, id: string}): Promise<EmailDomainRedirectionGlobal>;
+  public get(path: '/email/domain/{domain}/redirection/{id}', params: {domain: string, id: string}): Promise<email.domain.RedirectionGlobal>;
   /**
    * List the email.domain.Responder objects
    * Get responders
@@ -1216,17 +940,17 @@ export class ApiEmailDomain extends OvhWrapper {
    * Responder
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string}): Promise<EmailDomainResponder>;
+  public get(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string}): Promise<email.domain.Responder>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/serviceInfos', params: {domain: string}): Promise<ServicesService>;
+  public get(path: '/email/domain/{domain}/serviceInfos', params: {domain: string}): Promise<services.Service>;
   /**
    * summary operations
    * Summary for this domain
    */
-  public get(path: '/email/domain/{domain}/summary', params: {domain: string}): Promise<DomainDomainSummary>;
+  public get(path: '/email/domain/{domain}/summary', params: {domain: string}): Promise<domain.DomainSummary>;
   /**
    * List the email.domain.TaskPop objects
    * Get account tasks
@@ -1236,7 +960,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Task Pop List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/task/account/{id}', params: {domain: string, id: number}): Promise<EmailDomainTaskPop>;
+  public get(path: '/email/domain/{domain}/task/account/{id}', params: {domain: string, id: string}): Promise<email.domain.TaskPop>;
   /**
    * List the email.domain.TaskFilter objects
    * Get filter tasks
@@ -1246,7 +970,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Task filter List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/task/filter/{id}', params: {domain: string, id: number}): Promise<EmailDomainTaskFilter>;
+  public get(path: '/email/domain/{domain}/task/filter/{id}', params: {domain: string, id: string}): Promise<email.domain.TaskFilter>;
   /**
    * List the email.domain.TaskMl objects
    * Get Mailing List tasks
@@ -1256,7 +980,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Task Mailing List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/task/mailinglist/{id}', params: {domain: string, id: number}): Promise<EmailDomainTaskMl>;
+  public get(path: '/email/domain/{domain}/task/mailinglist/{id}', params: {domain: string, id: string}): Promise<email.domain.TaskMl>;
   /**
    * List the email.domain.TaskSpecialAccount objects
    * Get redirection tasks
@@ -1266,7 +990,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Task special account List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/task/redirection/{id}', params: {domain: string, id: number}): Promise<EmailDomainTaskSpecialAccount>;
+  public get(path: '/email/domain/{domain}/task/redirection/{id}', params: {domain: string, id: string}): Promise<email.domain.TaskSpecialAccount>;
   /**
    * List the email.domain.TaskSpecialAccount objects
    * Get responder tasks
@@ -1276,10 +1000,70 @@ export class ApiEmailDomain extends OvhWrapper {
    * Task special account List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/task/responder/{id}', params: {domain: string, id: number}): Promise<EmailDomainTaskSpecialAccount>;
+  public get(path: '/email/domain/{domain}/task/responder/{id}', params: {domain: string, id: string}): Promise<email.domain.TaskSpecialAccount>;
+  /**
+   * List the email.domain.AccountDelegated objects
+   * Delegated emails
+   */
+  public get(path: '/email/domain/delegatedAccount', params: {accountName?: string, domain?: string}): Promise<string[]>;
+  /**
+   * Account List
+   * Get this object properties
+   */
+  public get(path: '/email/domain/delegatedAccount/{email}', params: {email: string}): Promise<email.domain.AccountDelegated>;
+  /**
+   * List the email.domain.Filter objects
+   * Get filters
+   */
+  public get(path: '/email/domain/delegatedAccount/{email}/filter', params: {email: string}): Promise<string[]>;
+  /**
+   * Filter List
+   * Get this object properties
+   */
+  public get(path: '/email/domain/delegatedAccount/{email}/filter/{name}', params: {email: string, name: string}): Promise<email.domain.Filter>;
+  /**
+   * List the email.domain.Rule objects
+   * Get rules
+   */
+  public get(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule', params: {email: string, name: string}): Promise<number[]>;
+  /**
+   * Rule List
+   * Get this object properties
+   */
+  public get(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}', params: {email: string, name: string, id: string}): Promise<email.domain.Rule>;
+  /**
+   * Responder of account
+   * Get this object properties
+   */
+  public get(path: '/email/domain/delegatedAccount/{email}/responder', params: {email: string}): Promise<email.domain.ResponderAccount>;
+  /**
+   * Get limits of mailing list
+   * Get limits of mailing list
+   */
+  public get(path: '/email/domain/mailingListLimits', params: {moderatorMessage: boolean}): Promise<domain.DomainMlLimits>;
   public get(path: PathsEmailDomainGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+    return super.get(path, params);
+  }
+  /**
+   * Account List
+   * Alter this object properties
+   */
+  public put(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string, description?: string, email?: string, isBlocked?: boolean, size?: number}): Promise<void>;
+  /**
+   * Mailing List
+   * Alter this object properties
+   */
+  public put(path: '/email/domain/{domain}/mailingList/{name}', params: {domain: string, name: string, id?: number, language?: OVH.domain.DomainMlLanguageEnum, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options?: OVH.domain.DomainMlOptionsStruct, ownerEmail?: string, replyTo?: string}): Promise<void>;
+  /**
+   * Responder
+   * Alter this object properties
+   */
+  public put(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string}): Promise<void>;
+  /**
+   * Details about a Service
+   * Alter this object properties
+   */
+  public put(path: '/email/domain/{domain}/serviceInfos', params: {domain: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
   /**
    * Account List
    * Alter this object properties
@@ -1290,79 +1074,19 @@ export class ApiEmailDomain extends OvhWrapper {
    * Alter this object properties
    */
   public put(path: '/email/domain/delegatedAccount/{email}/responder', params: {email: string, account?: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string}): Promise<void>;
-  /**
-   * Account List
-   * Alter this object properties
-   */
-  public put(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string, description?: string, email?: string, isBlocked?: boolean, size?: number}): Promise<void>;
-  /**
-   * Mailing List
-   * Alter this object properties
-   */
-  public put(path: '/email/domain/{domain}/mailingList/{name}', params: {domain: string, name: string, id?: number, language?: DomainDomainMlLanguageEnum, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options?: DomainDomainMlOptionsStruct, ownerEmail?: string, replyTo?: string}): Promise<void>;
-  /**
-   * Responder
-   * Alter this object properties
-   */
-  public put(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string}): Promise<void>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  public put(path: '/email/domain/{domain}/serviceInfos', params: {domain: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   public put(path: PathsEmailDomainPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
-  /**
-   * changePassword operations
-   * Change mailbox password (length : [9;30], no space at begin and end, no accent)
-   */
-  public post(path: '/email/domain/delegatedAccount/{email}/changePassword', params: {email: string, password: string}): Promise<EmailDomainTaskPop>;
-  /**
-   * List the email.domain.Filter objects
-   * Create new filter for account
-   */
-  public post(path: '/email/domain/delegatedAccount/{email}/filter', params: {email: string, action: DomainDomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: DomainDomainFilterOperandEnum, priority: number, value: string}): Promise<EmailDomainTaskFilter>;
-  /**
-   * changeActivity operations
-   * Change filter activity
-   */
-  public post(path: '/email/domain/delegatedAccount/{email}/filter/{name}/changeActivity', params: {email: string, name: string, activity: boolean}): Promise<EmailDomainTaskFilter>;
-  /**
-   * changePriority operations
-   * Change filter priority
-   */
-  public post(path: '/email/domain/delegatedAccount/{email}/filter/{name}/changePriority', params: {email: string, name: string, priority: number}): Promise<EmailDomainTaskFilter>;
-  /**
-   * List the email.domain.Rule objects
-   * Create new rule for filter
-   */
-  public post(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule', params: {email: string, name: string, header: string, operand: DomainDomainFilterOperandEnum, value: string}): Promise<EmailDomainTaskFilter>;
-  /**
-   * Responder of account
-   * Create new responder in server
-   */
-  public post(path: '/email/domain/delegatedAccount/{email}/responder', params: {email: string, content: string, copy: boolean, copyTo?: string, from?: string, to?: string}): Promise<EmailDomainTaskSpecialAccount>;
-  /**
-   * updateUsage operations
-   * Update usage of account
-   */
-  public post(path: '/email/domain/delegatedAccount/{email}/updateUsage', params: {email: string}): Promise<void>;
-  /**
-   * usage operations
-   * usage of account
-   */
-  public post(path: '/email/domain/delegatedAccount/{email}/usage', params: {email: string}): Promise<DomainDomainUsageAccountStruct>;
+    return super.put(path, params);
+  }
   /**
    * List the email.domain.Account objects
    * Create new mailbox in server
    */
-  public post(path: '/email/domain/{domain}/account', params: {domain: string, accountName: string, description?: string, password: string, size?: number}): Promise<EmailDomainTaskPop>;
+  public post(path: '/email/domain/{domain}/account', params: {domain: string, accountName: string, description?: string, password: string, size?: number}): Promise<email.domain.TaskPop>;
   /**
    * changePassword operations
    * Change mailbox password (length : [9;30], no space at begin and end, no accent)
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/changePassword', params: {domain: string, accountName: string, password: string}): Promise<EmailDomainTaskPop>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/changePassword', params: {domain: string, accountName: string, password: string}): Promise<email.domain.TaskPop>;
   /**
    * List the email.domain.Delegation objects
    * Create delegation for this account
@@ -1372,27 +1096,27 @@ export class ApiEmailDomain extends OvhWrapper {
    * List the email.domain.Filter objects
    * Create new filter for account
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/filter', params: {domain: string, accountName: string, action: DomainDomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: DomainDomainFilterOperandEnum, priority: number, value: string}): Promise<EmailDomainTaskFilter>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/filter', params: {domain: string, accountName: string, action: OVH.domain.DomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: OVH.domain.DomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
   /**
    * changeActivity operations
    * Change filter activity
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity', params: {domain: string, accountName: string, name: string, activity: boolean}): Promise<EmailDomainTaskFilter>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity', params: {domain: string, accountName: string, name: string, activity: boolean}): Promise<email.domain.TaskFilter>;
   /**
    * changePriority operations
    * Change filter priority
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/changePriority', params: {domain: string, accountName: string, name: string, priority: number}): Promise<EmailDomainTaskFilter>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/changePriority', params: {domain: string, accountName: string, name: string, priority: number}): Promise<email.domain.TaskFilter>;
   /**
    * List the email.domain.Rule objects
    * Create new rule for filter
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule', params: {domain: string, accountName: string, name: string, header: string, operand: DomainDomainFilterOperandEnum, value: string}): Promise<EmailDomainTaskFilter>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule', params: {domain: string, accountName: string, name: string, header: string, operand: OVH.domain.DomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
   /**
    * migrate operations
    * Migrate account to destination account
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate', params: {domain: string, accountName: string, destinationServiceName: string, destinationEmailAddress: string, password: string}): Promise<EmailDomainTaskPop>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate', params: {domain: string, accountName: string, destinationServiceName: string, destinationEmailAddress: string, password: string}): Promise<email.domain.TaskPop>;
   /**
    * updateUsage operations
    * Update usage of account
@@ -1402,7 +1126,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * List the email.domain.Acl objects
    * Create new ACL
    */
-  public post(path: '/email/domain/{domain}/acl', params: {domain: string, accountId: string}): Promise<EmailDomainAcl>;
+  public post(path: '/email/domain/{domain}/acl', params: {domain: string, accountId: string}): Promise<email.domain.Acl>;
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
@@ -1412,37 +1136,37 @@ export class ApiEmailDomain extends OvhWrapper {
    * changeDnsMXFilter operations
    * Change MX filter, so change MX DNS records
    */
-  public post(path: '/email/domain/{domain}/changeDnsMXFilter', params: {domain: string, customTarget?: string, mxFilter: DomainDomainMXFilterEnum, subDomain?: string}): Promise<void>;
+  public post(path: '/email/domain/{domain}/changeDnsMXFilter', params: {domain: string, customTarget?: string, mxFilter: OVH.domain.DomainMXFilterEnum, subDomain?: string}): Promise<void>;
   /**
    * confirmTermination operations
    * Confirm termination of your email service
    */
-  public post(path: '/email/domain/{domain}/confirmTermination', params: {domain: string, commentary?: string, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/email/domain/{domain}/confirmTermination', params: {domain: string, commentary?: string, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * List the email.domain.MailingList objects
    * Create new mailingList
    */
-  public post(path: '/email/domain/{domain}/mailingList', params: {domain: string, language: DomainDomainMlLanguageEnum, name: string, options: DomainDomainMlOptionsStruct, ownerEmail: string, replyTo?: string}): Promise<EmailDomainTaskMl>;
+  public post(path: '/email/domain/{domain}/mailingList', params: {domain: string, language: OVH.domain.DomainMlLanguageEnum, name: string, options: OVH.domain.DomainMlOptionsStruct, ownerEmail: string, replyTo?: string}): Promise<email.domain.TaskMl>;
   /**
    * changeOptions operations
    * Change mailing list options
    */
-  public post(path: '/email/domain/{domain}/mailingList/{name}/changeOptions', params: {domain: string, name: string, options: DomainDomainMlOptionsStruct}): Promise<EmailDomainTaskMl>;
+  public post(path: '/email/domain/{domain}/mailingList/{name}/changeOptions', params: {domain: string, name: string, options: OVH.domain.DomainMlOptionsStruct}): Promise<email.domain.TaskMl>;
   /**
    * List the email.domain.Moderator objects
    * Add moderator to mailing list
    */
-  public post(path: '/email/domain/{domain}/mailingList/{name}/moderator', params: {domain: string, name: string, email: string}): Promise<EmailDomainTaskMl>;
+  public post(path: '/email/domain/{domain}/mailingList/{name}/moderator', params: {domain: string, name: string, email: string}): Promise<email.domain.TaskMl>;
   /**
    * sendListByEmail operations
    * Send moderators list and subscribers list of this mailing list by email
    */
-  public post(path: '/email/domain/{domain}/mailingList/{name}/sendListByEmail', params: {domain: string, name: string, email: string}): Promise<EmailDomainTaskMl>;
+  public post(path: '/email/domain/{domain}/mailingList/{name}/sendListByEmail', params: {domain: string, name: string, email: string}): Promise<email.domain.TaskMl>;
   /**
    * List the email.domain.Subscriber objects
    * Add subscriber to mailing list
    */
-  public post(path: '/email/domain/{domain}/mailingList/{name}/subscriber', params: {domain: string, name: string, email: string}): Promise<EmailDomainTaskMl>;
+  public post(path: '/email/domain/{domain}/mailingList/{name}/subscriber', params: {domain: string, name: string, email: string}): Promise<email.domain.TaskMl>;
   /**
    * migrateDelegationV3toV6 operations
    * Create delegation of domain with same nic than V3
@@ -1452,45 +1176,70 @@ export class ApiEmailDomain extends OvhWrapper {
    * List the email.domain.RedirectionGlobal objects
    * Create new redirection in server
    */
-  public post(path: '/email/domain/{domain}/redirection', params: {domain: string, from: string, localCopy: boolean, to: string}): Promise<EmailDomainTaskSpecialAccount>;
+  public post(path: '/email/domain/{domain}/redirection', params: {domain: string, from: string, localCopy: boolean, to: string}): Promise<email.domain.TaskSpecialAccount>;
   /**
    * changeRedirection operations
    * Change redirection
    */
-  public post(path: '/email/domain/{domain}/redirection/{id}/changeRedirection', params: {domain: string, id: string, to: string}): Promise<EmailDomainTaskSpecialAccount>;
+  public post(path: '/email/domain/{domain}/redirection/{id}/changeRedirection', params: {domain: string, id: string, to: string}): Promise<email.domain.TaskSpecialAccount>;
   /**
    * List the email.domain.Responder objects
    * Create new responder in server
    */
-  public post(path: '/email/domain/{domain}/responder', params: {domain: string, account: string, content: string, copy: boolean, copyTo?: string, from?: string, to?: string}): Promise<EmailDomainTaskSpecialAccount>;
+  public post(path: '/email/domain/{domain}/responder', params: {domain: string, account: string, content: string, copy: boolean, copyTo?: string, from?: string, to?: string}): Promise<email.domain.TaskSpecialAccount>;
   /**
    * terminate operations
    * Terminate your email service
    */
   public post(path: '/email/domain/{domain}/terminate', params: {domain: string}): Promise<string>;
-  public post(path: PathsEmailDomainPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
   /**
-   * Filter List
-   * Delete an existing filter
+   * changePassword operations
+   * Change mailbox password (length : [9;30], no space at begin and end, no accent)
    */
-  public delete(path: '/email/domain/delegatedAccount/{email}/filter/{name}', params: {email: string, name: string}): Promise<EmailDomainTaskFilter[]>;
+  public post(path: '/email/domain/delegatedAccount/{email}/changePassword', params: {email: string, password: string}): Promise<email.domain.TaskPop>;
   /**
-   * Rule List
-   * Delete an existing filter
+   * List the email.domain.Filter objects
+   * Create new filter for account
    */
-  public delete(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}', params: {email: string, name: string, id: number}): Promise<EmailDomainTaskFilter[]>;
+  public post(path: '/email/domain/delegatedAccount/{email}/filter', params: {email: string, action: OVH.domain.DomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: OVH.domain.DomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
+  /**
+   * changeActivity operations
+   * Change filter activity
+   */
+  public post(path: '/email/domain/delegatedAccount/{email}/filter/{name}/changeActivity', params: {email: string, name: string, activity: boolean}): Promise<email.domain.TaskFilter>;
+  /**
+   * changePriority operations
+   * Change filter priority
+   */
+  public post(path: '/email/domain/delegatedAccount/{email}/filter/{name}/changePriority', params: {email: string, name: string, priority: number}): Promise<email.domain.TaskFilter>;
+  /**
+   * List the email.domain.Rule objects
+   * Create new rule for filter
+   */
+  public post(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule', params: {email: string, name: string, header: string, operand: OVH.domain.DomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
   /**
    * Responder of account
-   * Delete an existing responder in server
+   * Create new responder in server
    */
-  public delete(path: '/email/domain/delegatedAccount/{email}/responder', params: {email: string}): Promise<EmailDomainTaskSpecialAccount>;
+  public post(path: '/email/domain/delegatedAccount/{email}/responder', params: {email: string, content: string, copy: boolean, copyTo?: string, from?: string, to?: string}): Promise<email.domain.TaskSpecialAccount>;
+  /**
+   * updateUsage operations
+   * Update usage of account
+   */
+  public post(path: '/email/domain/delegatedAccount/{email}/updateUsage', params: {email: string}): Promise<void>;
+  /**
+   * usage operations
+   * usage of account
+   */
+  public post(path: '/email/domain/delegatedAccount/{email}/usage', params: {email: string}): Promise<domain.DomainUsageAccountStruct>;
+  public post(path: PathsEmailDomainPOST, params?: OvhParamType): Promise<any> {
+    return super.post(path, params);
+  }
   /**
    * Account List
    * Delete an existing mailbox in server
    */
-  public delete(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string}): Promise<EmailDomainTaskPop>;
+  public delete(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string}): Promise<email.domain.TaskPop>;
   /**
    * Delegation List
    * Delete an existing delegation
@@ -1500,12 +1249,12 @@ export class ApiEmailDomain extends OvhWrapper {
    * Filter List
    * Delete an existing filter
    */
-  public delete(path: '/email/domain/{domain}/account/{accountName}/filter/{name}', params: {domain: string, accountName: string, name: string}): Promise<EmailDomainTaskFilter[]>;
+  public delete(path: '/email/domain/{domain}/account/{accountName}/filter/{name}', params: {domain: string, accountName: string, name: string}): Promise<email.domain.TaskFilter[]>;
   /**
    * Rule List
    * Delete an existing filter
    */
-  public delete(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}', params: {domain: string, accountName: string, name: string, id: number}): Promise<EmailDomainTaskFilter[]>;
+  public delete(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}', params: {domain: string, accountName: string, name: string, id: string}): Promise<email.domain.TaskFilter[]>;
   /**
    * Email ACL
    * Delete ACL
@@ -1515,29 +1264,44 @@ export class ApiEmailDomain extends OvhWrapper {
    * Mailing List
    * Delete existing Mailing list
    */
-  public delete(path: '/email/domain/{domain}/mailingList/{name}', params: {domain: string, name: string}): Promise<EmailDomainTaskMl>;
+  public delete(path: '/email/domain/{domain}/mailingList/{name}', params: {domain: string, name: string}): Promise<email.domain.TaskMl>;
   /**
    * Moderators List
    * Delete existing moderator
    */
-  public delete(path: '/email/domain/{domain}/mailingList/{name}/moderator/{email}', params: {domain: string, name: string, email: string}): Promise<EmailDomainTaskMl>;
+  public delete(path: '/email/domain/{domain}/mailingList/{name}/moderator/{email}', params: {domain: string, name: string, email: string}): Promise<email.domain.TaskMl>;
   /**
    * Subscribers List
    * Delete existing subscriber
    */
-  public delete(path: '/email/domain/{domain}/mailingList/{name}/subscriber/{email}', params: {domain: string, name: string, email: string}): Promise<EmailDomainTaskMl>;
+  public delete(path: '/email/domain/{domain}/mailingList/{name}/subscriber/{email}', params: {domain: string, name: string, email: string}): Promise<email.domain.TaskMl>;
   /**
    * Global Redirection
    * Delete an existing redirection in server
    */
-  public delete(path: '/email/domain/{domain}/redirection/{id}', params: {domain: string, id: string}): Promise<EmailDomainTaskSpecialAccount>;
+  public delete(path: '/email/domain/{domain}/redirection/{id}', params: {domain: string, id: string}): Promise<email.domain.TaskSpecialAccount>;
   /**
    * Responder
    * Delete an existing responder in server
    */
-  public delete(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string}): Promise<EmailDomainTaskSpecialAccount>;
+  public delete(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string}): Promise<email.domain.TaskSpecialAccount>;
+  /**
+   * Filter List
+   * Delete an existing filter
+   */
+  public delete(path: '/email/domain/delegatedAccount/{email}/filter/{name}', params: {email: string, name: string}): Promise<email.domain.TaskFilter[]>;
+  /**
+   * Rule List
+   * Delete an existing filter
+   */
+  public delete(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}', params: {email: string, name: string, id: string}): Promise<email.domain.TaskFilter[]>;
+  /**
+   * Responder of account
+   * Delete an existing responder in server
+   */
+  public delete(path: '/email/domain/delegatedAccount/{email}/responder', params: {email: string}): Promise<email.domain.TaskSpecialAccount>;
   public delete(path: PathsEmailDomainDELETE, params?: OvhParamType): Promise<any> {
-    return super.delete(path, params
-  );}
+    return super.delete(path, params);
+  }
 }
-export default ApiEmailDomain;
+}

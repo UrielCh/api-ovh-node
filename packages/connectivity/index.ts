@@ -1,675 +1,324 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Operator
- */
-export type ConnectivityOperatorEnum = 'AXIONE' | 'KOSC' | 'ORANGE' | 'OVH' | 'SFR';
-/**
- * Activation type, for copper only
- */
-export type ConnectivityEligibilityActivationTypeEnum = 'activate' | 'create' | 'createNeighbour';
-/**
- * Address
- */
-export interface ConnectivityEligibilityAddress {
-  /**
-   * Name of the building, if any
-   *
-   */
-  building?: string;
-  /**
-   * City name
-   *
-   */
-  city: string;
-  /**
-   * Identifier of the door, if any
-   *
-   */
-  door?: string;
-  /**
-   * Identifier of the floor, if any
-   *
-   */
-  floor?: string;
-  /**
-   * Name of the housing complex, if any
-   *
-   */
-  housingComplex?: string;
-  /**
-   * INSEE code
-   *
-   */
-  inseeCode: string;
-  /**
-   * Owner name, this information can be restricted
-   *
-   */
-  ownerName?: string;
-  /**
-   * Identifier of the stair, if any
-   *
-   */
-  stairs?: string;
-  /**
-   * Street code, an unique identifier of the street, hidden for unlisted number
-   *
-   */
-  streetCode?: string;
-  /**
-   * Street name, hidden for unlisted number
-   *
-   */
-  streetName?: string;
-  /**
-   * Street number, usually a number and an indication if applicable (B for bis, T for ter, etc...) and hidden for unlisted number
-   *
-   */
-  streetNumber?: string;
-  /**
-   * ZIP code
-   *
-   */
-  zipCode: string;
-}
-/**
- * Details of a Building
- */
-export interface ConnectivityEligibilityBuilding {
-  /**
-   * Building name
-   *
-   */
-  name: string;
-  /**
-   * Building NRO (Optical main distribution frame)
-   *
-   */
-  nro?: string;
-  /**
-   * Identifier which refer to a building uniquely
-   *
-   */
-  reference: string;
-  /**
-   * Stairs for this building
-   *
-   */
-  stairs: ConnectivityEligibilityBuildingStair[];
-  /**
-   * Building type
-   *
-   */
-  type: ConnectivityEligibilityBuildingTypeEnum;
-}
-/**
- * Stair details of a Building
- */
-export interface ConnectivityEligibilityBuildingStair {
-  /**
-   * List of floor indentifier, "_NA_" if no identifier is available
-   *
-   */
-  floors: string[];
-  /**
-   * Stair identifier, "_NA_" if no identifier is available
-   *
-   */
-  stair: string;
-}
-/**
- * Building type
- */
-export type ConnectivityEligibilityBuildingTypeEnum = 'BUILDING' | 'HOUSE';
-/**
- * Represent a city
- */
-export interface ConnectivityEligibilityCity {
-  /**
-   * Name of the city
-   *
-   */
-  city: string;
-  /**
-   * INSEE code of the city
-   *
-   */
-  inseeCode: string;
-  /**
-   * Locality (subset of a city)
-   *
-   */
-  locality?: string;
-  /**
-   * Zip code of the city
-   *
-   */
-  zipCode: string;
-}
-/**
- * Copper informations
- */
-export interface ConnectivityEligibilityCopperInfo {
-  /**
-   * Number of available pairs. This is given only for an eligibility test.
-   *
-   */
-  availablePairs?: number;
-  /**
-   * Number of maximun available pairs using desaturation. This is given only for an eligibility test.
-   *
-   */
-  maxAvailablePairs?: number;
-  /**
-   * NRA ("Nœud de raccordement abonné" in french) is an identifier of the building where is the Main Distribution Frames for the copper line. This is given only for an eligibility test.
-   *
-   */
-  nra?: string;
-  /**
-   * Sections lengths of the copper line. This is given only for an eligibility test.
-   *
-   */
-  sectionsLengths: ConnectivityEligibilitySectionLength[];
-  /**
-   * Status of the copper line
-   *
-   */
-  status: ConnectivityEligibilityLineStatusEnum;
-  /**
-   * Is the line under construction ? This is given only for an eligibility test.
-   *
-   */
-  underConstruction?: boolean;
-  /**
-   * Is the number unlisted ? ("sur liste rouge" in french)
-   *
-   */
-  unlistedNumber: boolean;
-}
-/**
- * Eligibility test results
- */
-export interface ConnectivityEligibilityEligibilityTest {
-  /**
-   * Eligibility unique reference
-   *
-   */
-  eligibilityReference: string;
-  /**
-   * Endpoint informations
-   *
-   */
-  endpoint: ConnectivityEligibilityEndpoint;
-  /**
-   * Offers informations
-   *
-   */
-  offers: ConnectivityEligibilityOffer[];
-}
-/**
- * Endpoint informations
- */
-export interface ConnectivityEligibilityEndpoint {
-  /**
-   * Address
-   *
-   */
-  address: ConnectivityEligibilityAddress;
-  /**
-   * Copper informations, if any
-   *
-   */
-  copperInfo?: ConnectivityEligibilityCopperInfo;
-  /**
-   * Fiber informations, if any
-   *
-   */
-  fiberInfo?: ConnectivityEligibilityFiberInfo;
-  /**
-   * Portability informations, for copper only
-   *
-   */
-  portability?: ConnectivityEligibilityPortability;
-  /**
-   * Reference of the endpoint
-   *
-   */
-  reference: string;
-  /**
-   * Reference type
-   *
-   */
-  referenceType: ConnectivityEligibilityEndpointReferenceTypeEnum;
-}
-/**
- * Endpoint reference type
- */
-export type ConnectivityEligibilityEndpointReferenceTypeEnum = 'building' | 'lineNumber' | 'otp';
-/**
- * Fiber informations
- */
-export interface ConnectivityEligibilityFiberInfo {
-  /**
-   * Building name
-   *
-   */
-  buildingName: string;
-  /**
-   * Building unique identifier
-   *
-   */
-  buildingReference: string;
-  /**
-   * Building type
-   *
-   */
-  buildingType: ConnectivityEligibilityBuildingTypeEnum;
-  /**
-   * NRO ("Nœud de raccordement optique" in french) is an identifier of the building where is the Optical Distribution Frame (ODF) of the fiber
-   *
-   */
-  nro?: string;
-  /**
-   * Operator code
-   *
-   */
-  operatorCode: string;
-  /**
-   * Operator name
-   *
-   */
-  operatorName: string;
-}
-/**
- * Copper line details
- */
-export interface ConnectivityEligibilityLine {
-  /**
-   * Line address
-   *
-   */
-  address: ConnectivityEligibilityAddress;
-  /**
-   * Copper informations
-   *
-   */
-  copperInfo: ConnectivityEligibilityCopperInfo;
-  /**
-   * Line number
-   *
-   */
-  lineNumber: string;
-}
-/**
- * Line status
- */
-export type ConnectivityEligibilityLineStatusEnum = 'active' | 'inactive';
-/**
- * Represents a time slot for a meeting
- */
-export interface ConnectivityEligibilityMeetingSlot {
-  /**
-   * End date
-   *
-   */
-  endDate: string;
-  /**
-   * Start date
-   *
-   */
-  startDate: string;
-  /**
-   * An opaque string that represents an intervention unit
-   *
-   */
-  uiCode: string;
-}
-/**
- * List of available meeting time slots
- */
-export interface ConnectivityEligibilityMeetings {
-  /**
-   * Whether or not it is possible to book a fake meeting
-   *
-   */
-  canBookFakeMeeting: boolean;
-  /**
-   * A time slot
-   *
-   */
-  meetingSlots: ConnectivityEligibilityMeetingSlot[];
-}
-/**
- * Message
- */
-export interface ConnectivityEligibilityMessage {
-  /**
-   * Availability date of the offer (if code of non eligibility is COPPER_NOT_YET_AVAILABLE, FIBER_NOT_YET_AVAILABLE or PRODUCT_NOT_YET_AVAILABLE)
-   *
-   */
-  availabilityDate?: string;
-  /**
-   * Code of the message
-   *
-   */
-  code: ConnectivityEligibilityMessageCodeEnum;
-  /**
-   * Message
-   *
-   */
-  message: string;
-}
-/**
- * Message codes
- */
-export type ConnectivityEligibilityMessageCodeEnum = '2006' | '2011' | '2102' | '2103' | '2104' | '2105' | '3009' | '3011' | '3012' | '3013' | '3014' | '3031' | '3040' | '3041' | '3043' | '3044' | '3045' | '3046' | '3047' | '3048' | '3049' | 'ATTENUATION_LIMIT' | 'COMPATIBILITY_CHECK' | 'COPPER_NOT_AVAILABLE' | 'COPPER_NOT_YET_AVAILABLE' | 'DELAY_30' | 'DELAY_7' | 'EXTERNAL_WS_UNREACHABLE' | 'FIBER_NOT_AVAILABLE' | 'FIBER_NOT_DEPLOYED_IN_BUILDING' | 'FIBER_NOT_YET_AVAILABLE' | 'FIBER_NOT_YET_DEPLOYED' | 'INCOMPATIBLE_LOCAL_LOOP' | 'NETWORK_SATURATED' | 'OTP_NOT_CONNECTABLE' | 'OTP_NOT_MARKETABLE' | 'PAIRS_SATURATION' | 'PRODUCT_NOT_AVAILABLE' | 'PRODUCT_NOT_YET_AVAILABLE' | 'TOO_MUCH_ATTENUATION' | 'UNCERTAIN_DATA';
-/**
- * Offer
- */
-export interface ConnectivityEligibilityOffer {
-  /**
-   * Eligibility result for the offer
-   *
-   */
-  eligibility: ConnectivityEligibilityOfferEligibility;
-  /**
-   * Product informations
-   *
-   */
-  product: ConnectivityEligibilityOfferProduct;
-}
-/**
- * Offer eligibility
- */
-export interface ConnectivityEligibilityOfferEligibility {
-  /**
-   * Activation type list, for copper only
-   *
-   */
-  activationTypes: ConnectivityEligibilityActivationTypeEnum[];
-  /**
-   * Is the endpoint eligible to this offer ?
-   *
-   */
-  eligible: boolean;
-  /**
-   * Estimated download rate, for copper and non guaranteed offers only
-   *
-   */
-  estimatedDownloadRate?: number;
-  /**
-   * Estimated upload rate, for copper and non guaranteed offers only
-   *
-   */
-  estimatedUploadRate?: number;
-  /**
-   * Reasons when not eligible, if any
-   *
-   */
-  reasons: ConnectivityEligibilityMessage[];
-  /**
-   * Warnings to consider when eligible, if any
-   *
-   */
-  underConditions: ConnectivityEligibilityMessage[];
-}
-/**
- * Offer product
- */
-export interface ConnectivityEligibilityOfferProduct {
-  /**
-   * Product code, an unique identifier for the product
-   *
-   */
-  code: string;
-  /**
-   * Download rate in Mb
-   *
-   */
-  downloadRate: number;
-  /**
-   * GRT (Guaranteed Restoration Time) available list
-   *
-   */
-  grt: string[];
-  /**
-   * Is the rates guaranteed ?
-   *
-   */
-  guaranteed: boolean;
-  /**
-   * Name
-   *
-   */
-  name: string;
-  /**
-   * Number of copper pairs required, for copper only
-   *
-   */
-  pairs?: number;
-  /**
-   * Provider
-   *
-   */
-  provider: ConnectivityEligibilityOfferProductProviderEnum;
-  /**
-   * Type of the product
-   *
-   */
-  type: ConnectivityEligibilityOfferProductTypeEnum;
-  /**
-   * Unbundling type : full or partial, for copper only
-   *
-   */
-  unbundlingType?: ConnectivityEligibilityOfferProductUnbundlingTypeEnum;
-  /**
-   * Upload rate in Mb
-   *
-   */
-  uploadRate: number;
-}
-/**
- * Offer product provider
- */
-export type ConnectivityEligibilityOfferProductProviderEnum = 'AXIONE' | 'KOSC' | 'ORANGE' | 'SFR';
-/**
- * Offer product type
- */
-export type ConnectivityEligibilityOfferProductTypeEnum = 'ADSL' | 'FTTH' | 'SDSL' | 'VDSL';
-/**
- * Offer product unbundling type
- */
-export type ConnectivityEligibilityOfferProductUnbundlingTypeEnum = 'full' | 'partial';
-/**
- * Portability details of the line number
- */
-export interface ConnectivityEligibilityPortability {
-  /**
-   * Eligibility informations
-   *
-   */
-  eligibility: ConnectivityEligibilityPortabilityEligibility;
-  /**
-   * Date of the end of quarantine, if any
-   *
-   */
-  quarantineEndDate?: string;
-  /**
-   * Portability type, if a portability is ongoing
-   *
-   */
-  type?: ConnectivityEligibilityPortabilityTypeEnum;
-}
-/**
- * Portability eligibility
- */
-export interface ConnectivityEligibilityPortabilityEligibility {
-  /**
-   * Is the portability eligible for this line ?
-   *
-   */
-  eligible: boolean;
-  /**
-   * Reasons when not eligible, if any
-   *
-   */
-  reasons: ConnectivityEligibilityMessage[];
-  /**
-   * Warnings to consider when eligible, if any
-   *
-   */
-  underConditions: ConnectivityEligibilityMessage[];
-}
-/**
- * Portability type
- */
-export type ConnectivityEligibilityPortabilityTypeEnum = 'portin' | 'portinback' | 'portout' | 'subsequent' | 'subsquentportin';
-/**
- * Section length of a copper line
- */
-export interface ConnectivityEligibilitySectionLength {
-  /**
-   * Diameter in millimeters of the copper line section
-   *
-   */
-  diameter: number;
-  /**
-   * Lenght in meters of the copper line section
-   *
-   */
-  length: number;
-}
-/**
- * Details of a street
- */
-export interface ConnectivityEligibilityStreet {
-  /**
-   * Identifier which refer to a street uniquely
-   *
-   */
-  streetCode: string;
-  /**
-   * Street name
-   *
-   */
-  streetName: string;
-}
-/**
- * Generic incident structure
- */
-export interface ConnectivityMonitoringGenericIncident {
-  /**
-   * Optional comment, that contains some informations and updates about the generic incident
-   *
-   */
-  comment?: string;
-  /**
-   * Creation date, the generic incident has been detected
-   *
-   */
-  creationDate: string;
-  /**
-   * List of impacted department codes
-   *
-   */
-  departments: string[];
-  /**
-   * End date, the generic incident is resolved and closed
-   *
-   */
-  endDate?: string;
-  /**
-   * Generic incident id
-   *
-   */
-  id: number;
-  /**
-   * List of impacted NRA/NRO
-   *
-   */
-  nra: string[];
-  /**
-   * List of impacted operators
-   *
-   */
-  operators: ConnectivityOperatorEnum[];
-  /**
-   * Status (detected: we detected a potential generic incident, validated: the operators or our tech teams have confirmed the generic incident, closed: the generic incident is resolved and closed)
-   *
-   */
-  status: ConnectivityMonitoringGenericIncidentStatusEnum;
-  /**
-   * Task id
-   *
-   */
-  taskId?: number;
-}
-/**
- * Generic incident status
- */
-export type ConnectivityMonitoringGenericIncidentStatusEnum = 'closed' | 'detected' | 'validated';
-/**
- * Async task
- */
-export interface XdslAsyncTask<T> {
-  /**
-   * Error
-   *
-   */
-  error?: string;
-  /**
-   * Result of the call
-   *
-   */
-  result?: T;
-  /**
-   * Status of the call
-   *
-   */
-  status: XdslAsyncTaskStatusEnum;
-}
-/**
- * Async task array
- */
-export interface XdslAsyncTaskArray<T> {
-  /**
-   * Error
-   *
-   */
-  error?: string;
-  /**
-   * Result of the call
-   *
-   */
-  result?: T[];
-  /**
-   * Status of the call
-   *
-   */
-  status: XdslAsyncTaskStatusEnum;
-}
-/**
- * AsyncTask status
- */
-export type XdslAsyncTaskStatusEnum = 'error' | 'ok' | 'pending';
-type PathsConnectivityGET = '/connectivity/eligibility/test' | 
-'/connectivity/monitoring/genericIncident/partners' | 
-'/connectivity/monitoring/genericIncident/public';
 
-type PathsConnectivityPOST = '/connectivity/eligibility/search/buildingDetails' | 
-'/connectivity/eligibility/search/buildings' | 
-'/connectivity/eligibility/search/buildingsByLine' | 
-'/connectivity/eligibility/search/cities' | 
-'/connectivity/eligibility/search/lines' | 
-'/connectivity/eligibility/search/meetings' | 
-'/connectivity/eligibility/search/streetNumbers' | 
-'/connectivity/eligibility/search/streets' | 
-'/connectivity/eligibility/test/address' | 
-'/connectivity/eligibility/test/address/partners' | 
-'/connectivity/eligibility/test/building' | 
-'/connectivity/eligibility/test/line' | 
-'/connectivity/eligibility/test/line/partners' | 
-'/connectivity/eligibility/test/otp';
+export namespace OVH {
+export namespace connectivity {
+    //connectivity.OperatorEnum
+    export type OperatorEnum = "OVH" | "KOSC" | "SFR" | "ORANGE" | "AXIONE"
+    export namespace eligibility {
+        //connectivity.eligibility.ActivationTypeEnum
+        export type ActivationTypeEnum = "activate" | "create" | "createNeighbour"
+        //connectivity.eligibility.Address
+        // fullName: connectivity.eligibility.Address.Address
+        export interface Address {
+            building?: string;
+            city?: string;
+            door?: string;
+            floor?: string;
+            housingComplex?: string;
+            inseeCode?: string;
+            ownerName?: string;
+            stairs?: string;
+            streetCode?: string;
+            streetName?: string;
+            streetNumber?: string;
+            zipCode?: string;
+        }
+        //connectivity.eligibility.Building
+        // fullName: connectivity.eligibility.Building.Building
+        export interface Building {
+            name?: string;
+            nro?: string;
+            reference?: string;
+            stairs?: OVH.connectivity.eligibility.BuildingStair[];
+            type?: OVH.connectivity.eligibility.BuildingTypeEnum;
+        }
+        //connectivity.eligibility.BuildingStair
+        // fullName: connectivity.eligibility.BuildingStair.BuildingStair
+        export interface BuildingStair {
+            floors?: string[];
+            stair?: string;
+        }
+        //connectivity.eligibility.BuildingTypeEnum
+        export type BuildingTypeEnum = "BUILDING" | "HOUSE"
+        //connectivity.eligibility.City
+        // fullName: connectivity.eligibility.City.City
+        export interface City {
+            city?: string;
+            inseeCode?: string;
+            locality?: string;
+            zipCode?: string;
+        }
+        //connectivity.eligibility.CopperInfo
+        // fullName: connectivity.eligibility.CopperInfo.CopperInfo
+        export interface CopperInfo {
+            availablePairs?: number;
+            maxAvailablePairs?: number;
+            nra?: string;
+            sectionsLengths?: OVH.connectivity.eligibility.SectionLength[];
+            status?: OVH.connectivity.eligibility.LineStatusEnum;
+            underConstruction?: boolean;
+            unlistedNumber?: boolean;
+        }
+        //connectivity.eligibility.EligibilityTest
+        // fullName: connectivity.eligibility.EligibilityTest.EligibilityTest
+        export interface EligibilityTest {
+            eligibilityReference?: string;
+            endpoint?: OVH.connectivity.eligibility.Endpoint;
+            offers?: OVH.connectivity.eligibility.Offer[];
+        }
+        //connectivity.eligibility.Endpoint
+        // fullName: connectivity.eligibility.Endpoint.Endpoint
+        export interface Endpoint {
+            address?: OVH.connectivity.eligibility.Address;
+            copperInfo?: OVH.connectivity.eligibility.CopperInfo;
+            fiberInfo?: OVH.connectivity.eligibility.FiberInfo;
+            portability?: OVH.connectivity.eligibility.Portability;
+            reference?: string;
+            referenceType?: OVH.connectivity.eligibility.EndpointReferenceTypeEnum;
+        }
+        //connectivity.eligibility.EndpointReferenceTypeEnum
+        export type EndpointReferenceTypeEnum = "building" | "lineNumber" | "otp"
+        //connectivity.eligibility.FiberInfo
+        // fullName: connectivity.eligibility.FiberInfo.FiberInfo
+        export interface FiberInfo {
+            buildingName?: string;
+            buildingReference?: string;
+            buildingType?: OVH.connectivity.eligibility.BuildingTypeEnum;
+            nro?: string;
+            operatorCode?: string;
+            operatorName?: string;
+        }
+        //connectivity.eligibility.Line
+        // fullName: connectivity.eligibility.Line.Line
+        export interface Line {
+            address?: OVH.connectivity.eligibility.Address;
+            copperInfo?: OVH.connectivity.eligibility.CopperInfo;
+            lineNumber?: string;
+        }
+        //connectivity.eligibility.LineStatusEnum
+        export type LineStatusEnum = "active" | "inactive"
+        //connectivity.eligibility.MeetingSlot
+        // fullName: connectivity.eligibility.MeetingSlot.MeetingSlot
+        export interface MeetingSlot {
+            endDate?: string;
+            startDate?: string;
+            uiCode?: string;
+        }
+        //connectivity.eligibility.Meetings
+        // fullName: connectivity.eligibility.Meetings.Meetings
+        export interface Meetings {
+            canBookFakeMeeting?: boolean;
+            meetingSlots?: OVH.connectivity.eligibility.MeetingSlot[];
+        }
+        //connectivity.eligibility.Message
+        // fullName: connectivity.eligibility.Message.Message
+        export interface Message {
+            availabilityDate?: string;
+            code?: OVH.connectivity.eligibility.MessageCodeEnum;
+            message?: string;
+        }
+        //connectivity.eligibility.MessageCodeEnum
+        export type MessageCodeEnum = "2006" | "2011" | "2102" | "2103" | "2104" | "2105" | "3009" | "3011" | "3012" | "3013" | "3014" | "3031" | "3040" | "3041" | "3043" | "3044" | "3045" | "3046" | "3047" | "3048" | "3049" | "ATTENUATION_LIMIT" | "COMPATIBILITY_CHECK" | "COPPER_NOT_AVAILABLE" | "COPPER_NOT_YET_AVAILABLE" | "DELAY_30" | "DELAY_7" | "EXTERNAL_WS_UNREACHABLE" | "FIBER_NOT_AVAILABLE" | "FIBER_NOT_DEPLOYED_IN_BUILDING" | "FIBER_NOT_YET_AVAILABLE" | "FIBER_NOT_YET_DEPLOYED" | "INCOMPATIBLE_LOCAL_LOOP" | "NETWORK_SATURATED" | "OTP_NOT_CONNECTABLE" | "OTP_NOT_MARKETABLE" | "PAIRS_SATURATION" | "PRODUCT_NOT_AVAILABLE" | "PRODUCT_NOT_YET_AVAILABLE" | "TOO_MUCH_ATTENUATION" | "UNCERTAIN_DATA"
+        //connectivity.eligibility.Offer
+        // fullName: connectivity.eligibility.Offer.Offer
+        export interface Offer {
+            eligibility?: OVH.connectivity.eligibility.OfferEligibility;
+            product?: OVH.connectivity.eligibility.OfferProduct;
+        }
+        //connectivity.eligibility.OfferEligibility
+        // fullName: connectivity.eligibility.OfferEligibility.OfferEligibility
+        export interface OfferEligibility {
+            activationTypes?: OVH.connectivity.eligibility.ActivationTypeEnum[];
+            eligible?: boolean;
+            estimatedDownloadRate?: number;
+            estimatedUploadRate?: number;
+            reasons?: OVH.connectivity.eligibility.Message[];
+            underConditions?: OVH.connectivity.eligibility.Message[];
+        }
+        //connectivity.eligibility.OfferProduct
+        // fullName: connectivity.eligibility.OfferProduct.OfferProduct
+        export interface OfferProduct {
+            code?: string;
+            downloadRate?: number;
+            grt?: string[];
+            guaranteed?: boolean;
+            name?: string;
+            pairs?: number;
+            provider?: OVH.connectivity.eligibility.OfferProductProviderEnum;
+            type?: OVH.connectivity.eligibility.OfferProductTypeEnum;
+            unbundlingType?: OVH.connectivity.eligibility.OfferProductUnbundlingTypeEnum;
+            uploadRate?: number;
+        }
+        //connectivity.eligibility.OfferProductProviderEnum
+        export type OfferProductProviderEnum = "AXIONE" | "KOSC" | "ORANGE" | "SFR"
+        //connectivity.eligibility.OfferProductTypeEnum
+        export type OfferProductTypeEnum = "ADSL" | "FTTH" | "SDSL" | "VDSL"
+        //connectivity.eligibility.OfferProductUnbundlingTypeEnum
+        export type OfferProductUnbundlingTypeEnum = "full" | "partial"
+        //connectivity.eligibility.Portability
+        // fullName: connectivity.eligibility.Portability.Portability
+        export interface Portability {
+            eligibility?: OVH.connectivity.eligibility.PortabilityEligibility;
+            quarantineEndDate?: string;
+            type?: OVH.connectivity.eligibility.PortabilityTypeEnum;
+        }
+        //connectivity.eligibility.PortabilityEligibility
+        // fullName: connectivity.eligibility.PortabilityEligibility.PortabilityEligibility
+        export interface PortabilityEligibility {
+            eligible?: boolean;
+            reasons?: OVH.connectivity.eligibility.Message[];
+            underConditions?: OVH.connectivity.eligibility.Message[];
+        }
+        //connectivity.eligibility.PortabilityTypeEnum
+        export type PortabilityTypeEnum = "portin" | "portinback" | "portout" | "subsequent" | "subsquentportin"
+        //connectivity.eligibility.SectionLength
+        // fullName: connectivity.eligibility.SectionLength.SectionLength
+        export interface SectionLength {
+            diameter?: number;
+            length?: number;
+        }
+        //connectivity.eligibility.Street
+        // fullName: connectivity.eligibility.Street.Street
+        export interface Street {
+            streetCode?: string;
+            streetName?: string;
+        }
+    }
+    export namespace monitoring {
+        //connectivity.monitoring.GenericIncident
+        // fullName: connectivity.monitoring.GenericIncident.GenericIncident
+        export interface GenericIncident {
+            comment?: string;
+            creationDate?: string;
+            departments?: string[];
+            endDate?: string;
+            id?: number;
+            nra?: string[];
+            operators?: OVH.connectivity.OperatorEnum[];
+            status?: OVH.connectivity.monitoring.GenericIncidentStatusEnum;
+            taskId?: number;
+        }
+        //connectivity.monitoring.GenericIncidentStatusEnum
+        export type GenericIncidentStatusEnum = "detected" | "validated" | "closed"
+    }
+}
+export namespace xdsl {
+    //xdsl.AsyncTask
+    // fullName: xdsl.AsyncTask.AsyncTask
+    export interface AsyncTask<T> {
+        error?: string;
+        result?: T;
+        status?: OVH.xdsl.AsyncTaskStatusEnum;
+    }
+    //xdsl.AsyncTaskArray
+    // fullName: xdsl.AsyncTaskArray.AsyncTaskArray
+    export interface AsyncTaskArray<T> {
+        error?: string;
+        result?: T[];
+        status?: OVH.xdsl.AsyncTaskStatusEnum;
+    }
+    //xdsl.AsyncTaskStatusEnum
+    export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
+}
+// Apis harmony
+// path /connectivity
+export interface Connectivity {
+    monitoring:  {
+        genericIncident:  {
+            partners:  {
+                // GET /connectivity/monitoring/genericIncident/partners
+                GET(param?: {status?: connectivity.monitoring.GenericIncidentStatusEnum, creationDate?: string, endDate?: string}): Promise<connectivity.monitoring.GenericIncident[]>;
+            }
+            public:  {
+                // GET /connectivity/monitoring/genericIncident/public
+                GET(param?: {status?: connectivity.monitoring.GenericIncidentStatusEnum, creationDate?: string, endDate?: string}): Promise<connectivity.monitoring.GenericIncident[]>;
+            }
+        }
+    }
+    eligibility:  {
+        test:  {
+            // GET /connectivity/eligibility/test
+            GET(param?: {eligibilityReference: string}): Promise<connectivity.eligibility.EligibilityTest>;
+            line:  {
+                // POST /connectivity/eligibility/test/line
+                POST(body?: {status: connectivity.eligibility.LineStatusEnum, lineNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                partners:  {
+                    // POST /connectivity/eligibility/test/line/partners
+                    POST(body?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                }
+            }
+            building:  {
+                // POST /connectivity/eligibility/test/building
+                POST(body?: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+            }
+            address:  {
+                // POST /connectivity/eligibility/test/address
+                POST(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                partners:  {
+                    // POST /connectivity/eligibility/test/address/partners
+                    POST(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                }
+            }
+            otp:  {
+                // POST /connectivity/eligibility/test/otp
+                POST(body?: {otp: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+            }
+        }
+        search:  {
+            buildingDetails:  {
+                // POST /connectivity/eligibility/search/buildingDetails
+                POST(body?: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Building>>;
+            }
+            buildings:  {
+                // POST /connectivity/eligibility/search/buildings
+                POST(body?: {streetNumber: string, streetCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
+            }
+            lines:  {
+                // POST /connectivity/eligibility/search/lines
+                POST(body?: {ownerName?: string, streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Line>>;
+            }
+            streetNumbers:  {
+                // POST /connectivity/eligibility/search/streetNumbers
+                POST(body?: {streetCode: string}): Promise<xdsl.AsyncTaskArray<string>>;
+            }
+            streets:  {
+                // POST /connectivity/eligibility/search/streets
+                POST(body?: {inseeCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Street>>;
+            }
+            buildingsByLine:  {
+                // POST /connectivity/eligibility/search/buildingsByLine
+                POST(body?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
+            }
+            meetings:  {
+                // POST /connectivity/eligibility/search/meetings
+                POST(body?: {productCode: string, eligibilityReference: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
+            }
+            cities:  {
+                // POST /connectivity/eligibility/search/cities
+                POST(body?: {zipCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.City>>;
+            }
+        }
+    }
+}
+// Api
+type PathsConnectivityGET = '/connectivity/monitoring/genericIncident/partners' |
+  '/connectivity/monitoring/genericIncident/public' |
+  '/connectivity/eligibility/test';
+
+type PathsConnectivityPOST = '/connectivity/eligibility/test/line/partners' |
+  '/connectivity/eligibility/test/line' |
+  '/connectivity/eligibility/test/building' |
+  '/connectivity/eligibility/test/address/partners' |
+  '/connectivity/eligibility/test/address' |
+  '/connectivity/eligibility/test/otp' |
+  '/connectivity/eligibility/search/buildingDetails' |
+  '/connectivity/eligibility/search/buildings' |
+  '/connectivity/eligibility/search/lines' |
+  '/connectivity/eligibility/search/streetNumbers' |
+  '/connectivity/eligibility/search/streets' |
+  '/connectivity/eligibility/search/buildingsByLine' |
+  '/connectivity/eligibility/search/meetings' |
+  '/connectivity/eligibility/search/cities';
 
 export class ApiConnectivity extends OvhWrapper {
   constructor(engine: OvhRequestable) {
@@ -679,92 +328,92 @@ export class ApiConnectivity extends OvhWrapper {
    * Get an eligibility by its reference
    * Get an eligibility by its reference
    */
-  public get(path: '/connectivity/eligibility/test', params: {eligibilityReference: string}): Promise<ConnectivityEligibilityEligibilityTest>;
+  public get(path: '/connectivity/eligibility/test', params: {eligibilityReference: string}): Promise<connectivity.eligibility.EligibilityTest>;
   /**
    * Missing description
    * List detected, validated and recently closed generic incidents. For partners only
    */
-  public get(path: '/connectivity/monitoring/genericIncident/partners', params: {creationDate?: string, endDate?: string, status?: ConnectivityMonitoringGenericIncidentStatusEnum}): Promise<ConnectivityMonitoringGenericIncident[]>;
+  public get(path: '/connectivity/monitoring/genericIncident/partners', params: {creationDate?: string, endDate?: string, status?: OVH.connectivity.monitoring.GenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
   /**
    * Missing description
    * List validated and recently closed generic incidents
    */
-  public get(path: '/connectivity/monitoring/genericIncident/public', params: {creationDate?: string, endDate?: string, status?: ConnectivityMonitoringGenericIncidentStatusEnum}): Promise<ConnectivityMonitoringGenericIncident[]>;
+  public get(path: '/connectivity/monitoring/genericIncident/public', params: {creationDate?: string, endDate?: string, status?: OVH.connectivity.monitoring.GenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
   public get(path: PathsConnectivityGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+    return super.get(path, params);
+  }
   /**
    * Get the details for a building
    * Get the details for a building
    */
-  public post(path: '/connectivity/eligibility/search/buildingDetails', params: {building: string}): Promise<XdslAsyncTask<ConnectivityEligibilityBuilding>>;
+  public post(path: '/connectivity/eligibility/search/buildingDetails', params: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Building>>;
   /**
    * Get all buildings for a specific address
    * Get all buildings for a specific address
    */
-  public post(path: '/connectivity/eligibility/search/buildings', params: {streetCode: string, streetNumber: string}): Promise<XdslAsyncTaskArray<ConnectivityEligibilityBuilding>>;
+  public post(path: '/connectivity/eligibility/search/buildings', params: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
   /**
    * Get building references from a given line number
    * Get building references from a given line number
    */
-  public post(path: '/connectivity/eligibility/search/buildingsByLine', params: {lineNumber: string, status: ConnectivityEligibilityLineStatusEnum}): Promise<XdslAsyncTaskArray<ConnectivityEligibilityBuilding>>;
+  public post(path: '/connectivity/eligibility/search/buildingsByLine', params: {lineNumber: string, status: OVH.connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
   /**
    * Get all localities linked to a zip code
    * Get all localities linked to a zip code
    */
-  public post(path: '/connectivity/eligibility/search/cities', params: {zipCode: string}): Promise<XdslAsyncTaskArray<ConnectivityEligibilityCity>>;
+  public post(path: '/connectivity/eligibility/search/cities', params: {zipCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.City>>;
   /**
    * Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified
    * Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified
    */
-  public post(path: '/connectivity/eligibility/search/lines', params: {ownerName?: string, streetCode: string, streetNumber: string}): Promise<XdslAsyncTaskArray<ConnectivityEligibilityLine>>;
+  public post(path: '/connectivity/eligibility/search/lines', params: {ownerName?: string, streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Line>>;
   /**
    * Search for available line creation meeting time slots, for copper only
    * Search for available line creation meeting time slots, for copper only
    */
-  public post(path: '/connectivity/eligibility/search/meetings', params: {eligibilityReference: string, productCode: string}): Promise<XdslAsyncTask<ConnectivityEligibilityMeetings>>;
+  public post(path: '/connectivity/eligibility/search/meetings', params: {eligibilityReference: string, productCode: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
   /**
    * Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
    * Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
    */
-  public post(path: '/connectivity/eligibility/search/streetNumbers', params: {streetCode: string}): Promise<XdslAsyncTaskArray<string>>;
+  public post(path: '/connectivity/eligibility/search/streetNumbers', params: {streetCode: string}): Promise<xdsl.AsyncTaskArray<string>>;
   /**
    * Get all street linked to a locality
    * Get all street linked to a locality
    */
-  public post(path: '/connectivity/eligibility/search/streets', params: {inseeCode: string}): Promise<XdslAsyncTaskArray<ConnectivityEligibilityStreet>>;
+  public post(path: '/connectivity/eligibility/search/streets', params: {inseeCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Street>>;
   /**
    * Do an eligibility for an address, if no line exist
    * Do an eligibility for an address, if no line exist
    */
-  public post(path: '/connectivity/eligibility/test/address', params: {streetCode: string, streetNumber: string}): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
+  public post(path: '/connectivity/eligibility/test/address', params: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
   /**
    * Do an eligibility for an address, if no line exist. Partners only.
    * Do an eligibility for an address, if no line exist. Partners only.
    */
-  public post(path: '/connectivity/eligibility/test/address/partners', params: {streetCode: string, streetNumber: string}): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
+  public post(path: '/connectivity/eligibility/test/address/partners', params: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
   /**
    * Do an eligibility test on a building, for fiber only
    * Do an eligibility test on a building, for fiber only
    */
-  public post(path: '/connectivity/eligibility/test/building', params: {building: string}): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
+  public post(path: '/connectivity/eligibility/test/building', params: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
   /**
    * Do an eligibility test on a line number, for copper only
    * Do an eligibility test on a line number, for copper only
    */
-  public post(path: '/connectivity/eligibility/test/line', params: {lineNumber: string, status: ConnectivityEligibilityLineStatusEnum}): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
+  public post(path: '/connectivity/eligibility/test/line', params: {lineNumber: string, status: OVH.connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
   /**
    * Do an eligibility test on a line number, for copper only. Partners only.
    * Do an eligibility test on a line number, for copper only. Partners only.
    */
-  public post(path: '/connectivity/eligibility/test/line/partners', params: {lineNumber: string, status: ConnectivityEligibilityLineStatusEnum}): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
+  public post(path: '/connectivity/eligibility/test/line/partners', params: {lineNumber: string, status: OVH.connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
   /**
    * Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
    * Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
    */
-  public post(path: '/connectivity/eligibility/test/otp', params: {otp: string}): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
+  public post(path: '/connectivity/eligibility/test/otp', params: {otp: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
   public post(path: PathsConnectivityPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+    return super.post(path, params);
+  }
 }
-export default ApiConnectivity;
+}

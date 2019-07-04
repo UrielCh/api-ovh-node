@@ -1,101 +1,54 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Description not available
- */
-export type OvhstatusTaskTaskImpactEnum = 'downtime' | 'fullUnavailability' | 'none' | 'partialUnavailability' | 'unknown';
-/**
- * Description not available
- */
-export type OvhstatusTaskTaskStatusEnum = 'finished' | 'inProgress' | 'planned';
-/**
- * Description not available
- */
-export type OvhstatusTaskTaskTypeEnum = 'incident' | 'maintenance' | 'upgrade';
-/**
- * A reply is useful to know the progress of a task
- */
-export interface StatusReply {
-  /**
-   * The comment of the reply
-   *
-   */
-  comment: string;
-  /**
-   * The date of the reply
-   *
-   */
-  date: string;
+
+export namespace OVH {
+export namespace ovhstatus {
+    export namespace task {
+        //ovhstatus.task.TaskImpactEnum
+        export type TaskImpactEnum = "partialUnavailability" | "fullUnavailability" | "downtime" | "none" | "unknown"
+        //ovhstatus.task.TaskStatusEnum
+        export type TaskStatusEnum = "planned" | "inProgress" | "finished"
+        //ovhstatus.task.TaskTypeEnum
+        export type TaskTypeEnum = "incident" | "maintenance" | "upgrade"
+    }
 }
-/**
- * A task linked to one of your services
- */
-export interface StatusTask {
-  /**
-   * The category of the task
-   *
-   */
-  category: string;
-  /**
-   * The end date of the task
-   *
-   */
-  endDate?: string;
-  /**
-   * The impact of the task
-   *
-   */
-  impact: OvhstatusTaskTaskImpactEnum;
-  /**
-   * Your impacted service linked to the task
-   *
-   */
-  impactedService: string;
-  /**
-   * The task progression from 0 to 100
-   *
-   */
-  progress: number;
-  /**
-   * The project of task
-   *
-   */
-  project: string;
-  /**
-   * The reference of the task
-   *
-   */
-  reference: string;
-  /**
-   * The replies of the task
-   *
-   */
-  replies: StatusReply[];
-  /**
-   * The start date of the task
-   *
-   */
-  startDate?: string;
-  /**
-   * The status of the task
-   *
-   */
-  status: OvhstatusTaskTaskStatusEnum;
-  /**
-   * The title of the task
-   *
-   */
-  title: string;
-  /**
-   * The type of the task
-   *
-   */
-  type: OvhstatusTaskTaskTypeEnum;
-  /**
-   * The task uuid
-   *
-   */
-  uuid: string;
+export namespace status {
+    export namespace Reply {
+        //status.Reply.Reply
+        // fullName: status.Reply.Reply.Reply
+        export interface Reply {
+            comment?: string;
+            date?: string;
+        }
+    }
+    export namespace Task {
+        //status.Task.Task
+        // fullName: status.Task.Task.Task
+        export interface Task {
+            category?: string;
+            endDate?: string;
+            impact?: OVH.ovhstatus.task.TaskImpactEnum;
+            impactedService?: string;
+            progress?: number;
+            project?: string;
+            reference?: string;
+            replies?: OVH.status.Reply.Reply[];
+            startDate?: string;
+            status?: OVH.ovhstatus.task.TaskStatusEnum;
+            title?: string;
+            type?: OVH.ovhstatus.task.TaskTypeEnum;
+            uuid?: string;
+        }
+    }
 }
+// Apis harmony
+// path /status
+export interface Status {
+    task:  {
+        // GET /status/task
+        GET(param?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}): Promise<status.Task.Task[]>;
+    }
+}
+// Api
 type PathsStatusGET = '/status/task';
 
 export class ApiStatus extends OvhWrapper {
@@ -106,9 +59,9 @@ export class ApiStatus extends OvhWrapper {
    * API to get incidents or maintenances linked to nichandle services
    * Find all the incidents or maintenances linked to your services
    */
-  public get(path: '/status/task', params: {impact?: OvhstatusTaskTaskImpactEnum, status?: OvhstatusTaskTaskStatusEnum, type?: OvhstatusTaskTaskTypeEnum}): Promise<StatusTask[]>;
+  public get(path: '/status/task', params: {impact?: OVH.ovhstatus.task.TaskImpactEnum, status?: OVH.ovhstatus.task.TaskStatusEnum, type?: OVH.ovhstatus.task.TaskTypeEnum}): Promise<status.Task.Task[]>;
   public get(path: PathsStatusGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+    return super.get(path, params);
+  }
 }
-export default ApiStatus;
+}

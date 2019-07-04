@@ -1,105 +1,75 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Pack of SIP trunk services
- */
-export interface PackSiptrunkPackSipTrunk {
-  /**
-   * Name of the SIP trunk pack
-   *
-   */
-  packName: string;
+
+export namespace OVH {
+export namespace pack {
+    export namespace siptrunk {
+        //pack.siptrunk.PackSipTrunk
+        // fullName: pack.siptrunk.PackSipTrunk.PackSipTrunk
+        export interface PackSipTrunk {
+            packName?: string;
+        }
+    }
 }
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic?: boolean;
+        deleteAtExpiration?: boolean;
+        forced?: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration?: boolean;
+        contactAdmin?: string;
+        contactBilling?: string;
+        contactTech?: string;
+        creation?: string;
+        domain?: string;
+        engagedUpTo?: string;
+        expiration?: string;
+        possibleRenewPeriod?: number[];
+        renew?: OVH.service.RenewType;
+        renewalType?: OVH.service.RenewalTypeEnum;
+        serviceId?: number;
+        status?: OVH.service.StateEnum;
+    }
 }
-type PathsPackSiptrunkGET = '/pack/siptrunk' | 
-'/pack/siptrunk/{packName}' | 
-'/pack/siptrunk/{packName}/serviceInfos';
+// Apis harmony
+// path /pack
+export interface Pack {
+    siptrunk:  {
+        // GET /pack/siptrunk
+        GET(): Promise<string[]>;
+        [keys: string]: {
+            // GET /pack/siptrunk/{packName}
+            GET(): Promise<pack.siptrunk.PackSipTrunk>;
+            serviceInfos:  {
+                // GET /pack/siptrunk/{packName}/serviceInfos
+                GET(): Promise<services.Service>;
+                // PUT /pack/siptrunk/{packName}/serviceInfos
+                PUT(body?: {body: services.Service}): Promise<void>;
+            }
+            changeContact:  {
+                // POST /pack/siptrunk/{packName}/changeContact
+                POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
+            }
+        } | any
+    }
+}
+// Api
+type PathsPackSiptrunkGET = '/pack/siptrunk' |
+  '/pack/siptrunk/{packName}/serviceInfos' |
+  '/pack/siptrunk/{packName}';
 
 type PathsPackSiptrunkPUT = '/pack/siptrunk/{packName}/serviceInfos';
 
@@ -118,30 +88,30 @@ export class ApiPackSiptrunk extends OvhWrapper {
    * Pack of SIP trunk services
    * Get this object properties
    */
-  public get(path: '/pack/siptrunk/{packName}', params: {packName: string}): Promise<PackSiptrunkPackSipTrunk>;
+  public get(path: '/pack/siptrunk/{packName}', params: {packName: string}): Promise<pack.siptrunk.PackSipTrunk>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/pack/siptrunk/{packName}/serviceInfos', params: {packName: string}): Promise<ServicesService>;
+  public get(path: '/pack/siptrunk/{packName}/serviceInfos', params: {packName: string}): Promise<services.Service>;
   public get(path: PathsPackSiptrunkGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+    return super.get(path, params);
+  }
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/pack/siptrunk/{packName}/serviceInfos', params: {packName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
+  public put(path: '/pack/siptrunk/{packName}/serviceInfos', params: {packName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
   public put(path: PathsPackSiptrunkPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+    return super.put(path, params);
+  }
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
    */
   public post(path: '/pack/siptrunk/{packName}/changeContact', params: {packName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   public post(path: PathsPackSiptrunkPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+    return super.post(path, params);
+  }
 }
-export default ApiPackSiptrunk;
+}

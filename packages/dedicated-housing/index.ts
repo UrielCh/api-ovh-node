@@ -1,433 +1,246 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * A numeric value tagged with its unit
- */
-export interface ComplexTypeUnitAndValue<T> {
-  /**
-   */
-  unit: string;
-  /**
-   */
-  value: T;
-}
-/**
- * different task operation
- */
-export type DedicatedTaskFunctionEnum = 'addVirtualMac' | 'addWindowSplaFromExistingSerial' | 'applyBackupFtpAcls' | 'applyBackupFtpQuota' | 'bypassAntiDDosGame' | 'changePasswordBackupFTP' | 'changeRipeOrg' | 'checkAndReleaseIp' | 'createBackupFTP' | 'createOrUpdateRipeOrg' | 'createPrivateNetwork' | 'disableFirewall' | 'enableFirewall' | 'genericMoveFloatingIp' | 'hardReboot' | 'migrateBackupFTP' | 'moveFloatingIp' | 'moveVirtualMac' | 'rebootPower8To' | 'reinstallServer' | 'releaseIp' | 'removeBackupFTP' | 'removeVirtualMac' | 'requestAccessIPMI' | 'resetIPMI' | 'resetIPMISession' | 'testIPMIhttp' | 'testIPMIpassword' | 'testIPMIping' | 'virtualMacAdd' | 'virtualMacDelete';
-/**
- * different task status
- */
-export type DedicatedTaskStatusEnum = 'cancelled' | 'customerError' | 'doing' | 'done' | 'init' | 'ovhError' | 'todo';
-/**
- * A structure describing informations for APC orderable for this housing bay
- */
-export interface DedicatedHousingApcOrderable {
-  /**
-   * Is this APC free
-   *
-   */
-  free: boolean;
-  /**
-   * Is an APC is orderable for this housing bay
-   *
-   */
-  orderable: boolean;
-}
-/**
- * Housing bay datacenters
- */
-export type DedicatedHousingDatacenterEnum = 'gsw' | 'pdc1';
-/**
- * Housing bay High Availablility offers
- */
-export type DedicatedHousingHaRoutingOfferEnum = 'ha2x2' | 'ha2x4';
-/**
- * A structure describing informations for High Availability routing service orderable for this housing bay
- */
-export interface DedicatedHousingHaRoutingOrderable {
-  /**
-   * High Availability routing service offers
-   *
-   */
-  offer: DedicatedHousingHaRoutingOfferEnum[];
-  /**
-   * Is a routing service is orderable for this housing bay
-   *
-   */
-  orderable: boolean;
-}
-/**
- * Housing bay
- */
-export interface DedicatedHousingHousing {
-  /**
-   * Housing bay datacenter
-   *
-   */
-  datacenter?: DedicatedHousingDatacenterEnum;
-  /**
-   * The name you give to the bay
-   *
-   */
-  name: string;
-  /**
-   * Housing bay network
-   *
-   */
-  network: DedicatedHousingNetworkInfo[];
-  /**
-   * Housing bay options
-   *
-   */
-  options: DedicatedHousingOptions;
-  /**
-   * The bay's description
-   *
-   */
-  rack: string;
-  /**
-   * Bay Security code
-   *
-   */
-  securityCode: string;
-}
-/**
- * A structure describing the Bay's network configuration
- */
-export interface DedicatedHousingIpInfo {
-  /**
-   * Network gateway of the bay
-   *
-   */
-  gateway?: string;
-  /**
-   * Network address of the bay
-   *
-   */
-  network: string;
-  /**
-   * Reserved addresses. You should not use them in your network
-   *
-   */
-  reservedAddresses?: string[];
-}
-/**
- * A structure describing the Bay`s link information
- */
-export interface DedicatedHousingLinkInfo {
-  /**
-   * Router port number
-   *
-   */
-  port: string;
-  /**
-   * Router in charge of your network
-   *
-   */
-  router: string;
-}
-/**
- * A structure describing the Bay`s network configuration
- */
-export interface DedicatedHousingNetworkInfo {
-  /**
-   * IPv4 network information
-   *
-   */
-  ipv4?: DedicatedHousingIpInfo;
-  /**
-   * IPv6 network information
-   *
-   */
-  ipv6?: DedicatedHousingIpInfo;
-  /**
-   * Router related information
-   *
-   */
-  link?: DedicatedHousingLinkInfo;
-}
-/**
- * A structure describing current housing options
- */
-export interface DedicatedHousingOptions {
-  /**
-   * Number of APC connected to this housing bay
-   *
-   */
-  apcCount: number;
-  /**
-   * Is this housing bay have handsneyes service
-   *
-   */
-  handsneyes: boolean;
-  /**
-   * High Availability routing service offer
-   *
-   */
-  highAvailabilityRouting: string;
-}
-/**
- * Housing tasks
- */
-export interface DedicatedHousingTask {
-  /**
-   * Details of this task
-   *
-   */
-  comment?: string;
-  /**
-   * Completion date
-   *
-   */
-  doneDate?: string;
-  /**
-   * Function name
-   *
-   */
-  function: DedicatedHousingTaskFunctionEnum;
-  /**
-   * last update
-   *
-   */
-  lastUpdate?: string;
-  /**
-   * Task Creation date
-   *
-   */
-  startDate: string;
-  /**
-   * Task status
-   *
-   */
-  status: DedicatedTaskStatusEnum;
-  /**
-   * the id of the task
-   *
-   */
-  taskId: number;
-}
-/**
- * Distincts task
- */
-export type DedicatedHousingTaskFunctionEnum = 'applyBackupFtpAcls' | 'applyBackupFtpQuota' | 'changePasswordBackupFTP' | 'createBackupFTP' | 'migrateBackupFTP' | 'removeBackupFTP';
-/**
- * Backup Ftp assigned to this server
- */
-export interface DedicatedServerBackupFtp {
-  /**
-   * The backup FTP server name
-   *
-   */
-  ftpBackupName: string;
-  /**
-   * The disk space available in gigabytes
-   *
-   */
-  quota?: ComplexTypeUnitAndValue<number>;
-  /**
-   * If not-null, gives the date since when your account was set in read-only mode because the quota was exceeded
-   *
-   */
-  readOnlyDate?: string;
-  /**
-   * The backup FTP type
-   *
-   */
-  type: DedicatedServerBackupStorageTypeEnum;
-  /**
-   * The disk space currently used on your backup FTP in percent
-   *
-   */
-  usage?: ComplexTypeUnitAndValue<number>;
-}
-/**
- * Backup Ftp ACL for this server and Backup Ftp
- */
-export interface DedicatedServerBackupFtpAcl {
-  /**
-   * Wether to allow the CIFS (SMB) protocol for this ACL
-   *
-   */
-  cifs: boolean;
-  /**
-   * Wether to allow the FTP protocol for this ACL
-   *
-   */
-  ftp: boolean;
-  /**
-   * The IP Block specific to this ACL
-   *
-   */
-  ipBlock: string;
-  /**
-   * Whether the rule has been applied on the Backup Ftp
-   *
-   */
-  isApplied: boolean;
-  /**
-   * Date of the last object modification
-   *
-   */
-  lastUpdate: string;
-  /**
-   * Wether to allow the NFS protocol for this ACL
-   *
-   */
-  nfs: boolean;
-}
-/**
- * Different backup storage type
- */
-export type DedicatedServerBackupStorageTypeEnum = 'included' | 'storage';
-/**
- * Server tasks
- */
-export interface DedicatedServerTask {
-  /**
-   * Details of this task
-   *
-   */
-  comment?: string;
-  /**
-   * Completion date
-   *
-   */
-  doneDate?: string;
-  /**
-   * Function name
-   *
-   */
-  function: DedicatedTaskFunctionEnum;
-  /**
-   * last update
-   *
-   */
-  lastUpdate?: string;
-  /**
-   * Task Creation date
-   *
-   */
-  startDate: string;
-  /**
-   * Task status
-   *
-   */
-  status: DedicatedTaskStatusEnum;
-  /**
-   * the id of the task
-   *
-   */
-  taskId: number;
-}
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-type PathsDedicatedHousingGET = '/dedicated/housing' | 
-'/dedicated/housing/{serviceName}' | 
-'/dedicated/housing/{serviceName}/features/backupFTP' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/access' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks' | 
-'/dedicated/housing/{serviceName}/orderable/APC' | 
-'/dedicated/housing/{serviceName}/serviceInfos' | 
-'/dedicated/housing/{serviceName}/task' | 
-'/dedicated/housing/{serviceName}/task/{taskId}';
 
-type PathsDedicatedHousingPUT = '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}' | 
-'/dedicated/housing/{serviceName}/serviceInfos';
+export namespace OVH {
+export namespace complexType {
+    //complexType.UnitAndValue
+    // fullName: complexType.UnitAndValue.UnitAndValue
+    export interface UnitAndValue<T> {
+        unit?: string;
+        value?: T;
+    }
+}
+export namespace dedicated {
+    //dedicated.TaskFunctionEnum
+    export type TaskFunctionEnum = "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
+    //dedicated.TaskStatusEnum
+    export type TaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
+    export namespace housing {
+        //dedicated.housing.ApcOrderable
+        // fullName: dedicated.housing.ApcOrderable.ApcOrderable
+        export interface ApcOrderable {
+            free?: boolean;
+            orderable?: boolean;
+        }
+        //dedicated.housing.DatacenterEnum
+        export type DatacenterEnum = "gsw" | "pdc1"
+        //dedicated.housing.HaRoutingOfferEnum
+        export type HaRoutingOfferEnum = "ha2x2" | "ha2x4"
+        //dedicated.housing.HaRoutingOrderable
+        // fullName: dedicated.housing.HaRoutingOrderable.HaRoutingOrderable
+        export interface HaRoutingOrderable {
+            offer?: OVH.dedicated.housing.HaRoutingOfferEnum[];
+            orderable?: boolean;
+        }
+        //dedicated.housing.Housing
+        // fullName: dedicated.housing.Housing.Housing
+        export interface Housing {
+            datacenter?: OVH.dedicated.housing.DatacenterEnum;
+            name?: string;
+            network?: OVH.dedicated.housing.NetworkInfo[];
+            options?: OVH.dedicated.housing.Options;
+            rack?: string;
+            securityCode?: string;
+        }
+        //dedicated.housing.IpInfo
+        // fullName: dedicated.housing.IpInfo.IpInfo
+        export interface IpInfo {
+            gateway?: string;
+            network?: string;
+            reservedAddresses?: string[];
+        }
+        //dedicated.housing.LinkInfo
+        // fullName: dedicated.housing.LinkInfo.LinkInfo
+        export interface LinkInfo {
+            port?: string;
+            router?: string;
+        }
+        //dedicated.housing.NetworkInfo
+        // fullName: dedicated.housing.NetworkInfo.NetworkInfo
+        export interface NetworkInfo {
+            ipv4?: OVH.dedicated.housing.IpInfo;
+            ipv6?: OVH.dedicated.housing.IpInfo;
+            link?: OVH.dedicated.housing.LinkInfo;
+        }
+        //dedicated.housing.Options
+        // fullName: dedicated.housing.Options.Options
+        export interface Options {
+            apcCount?: number;
+            handsneyes?: boolean;
+            highAvailabilityRouting?: string;
+        }
+        //dedicated.housing.Task
+        // fullName: dedicated.housing.Task.Task
+        export interface Task {
+            comment?: string;
+            doneDate?: string;
+            function?: OVH.dedicated.housing.TaskFunctionEnum;
+            lastUpdate?: string;
+            startDate?: string;
+            status?: OVH.dedicated.TaskStatusEnum;
+            taskId?: number;
+        }
+        //dedicated.housing.TaskFunctionEnum
+        export type TaskFunctionEnum = "applyBackupFtpAcls" | "applyBackupFtpQuota" | "changePasswordBackupFTP" | "createBackupFTP" | "migrateBackupFTP" | "removeBackupFTP"
+    }
+    export namespace server {
+        //dedicated.server.BackupFtp
+        // fullName: dedicated.server.BackupFtp.BackupFtp
+        export interface BackupFtp {
+            ftpBackupName?: string;
+            quota?: OVH.complexType.UnitAndValue<number>;
+            readOnlyDate?: string;
+            type?: OVH.dedicated.server.BackupStorageTypeEnum;
+            usage?: OVH.complexType.UnitAndValue<number>;
+        }
+        //dedicated.server.BackupFtpAcl
+        // fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
+        export interface BackupFtpAcl {
+            cifs?: boolean;
+            ftp?: boolean;
+            ipBlock?: string;
+            isApplied?: boolean;
+            lastUpdate?: string;
+            nfs?: boolean;
+        }
+        //dedicated.server.BackupStorageTypeEnum
+        export type BackupStorageTypeEnum = "included" | "storage"
+        //dedicated.server.Task
+        // fullName: dedicated.server.Task.Task
+        export interface Task {
+            comment?: string;
+            doneDate?: string;
+            function?: OVH.dedicated.TaskFunctionEnum;
+            lastUpdate?: string;
+            startDate?: string;
+            status?: OVH.dedicated.TaskStatusEnum;
+            taskId?: number;
+        }
+    }
+}
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic?: boolean;
+        deleteAtExpiration?: boolean;
+        forced?: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration?: boolean;
+        contactAdmin?: string;
+        contactBilling?: string;
+        contactTech?: string;
+        creation?: string;
+        domain?: string;
+        engagedUpTo?: string;
+        expiration?: string;
+        possibleRenewPeriod?: number[];
+        renew?: OVH.service.RenewType;
+        renewalType?: OVH.service.RenewalTypeEnum;
+        serviceId?: number;
+        status?: OVH.service.StateEnum;
+    }
+}
+// Apis harmony
+// path /dedicated
+export interface Dedicated {
+    housing:  {
+        // GET /dedicated/housing
+        GET(): Promise<string[]>;
+        [keys: string]: {
+            // GET /dedicated/housing/{serviceName}
+            GET(): Promise<dedicated.housing.Housing>;
+            task:  {
+                // GET /dedicated/housing/{serviceName}/task
+                GET(param?: {status?: dedicated.TaskStatusEnum, function_?: dedicated.housing.TaskFunctionEnum}): Promise<number[]>;
+                [keys: string]: {
+                    // GET /dedicated/housing/{serviceName}/task/{taskId}
+                    GET(): Promise<dedicated.housing.Task>;
+                    cancel:  {
+                        // POST /dedicated/housing/{serviceName}/task/{taskId}/cancel
+                        POST(): Promise<void>;
+                    }
+                } | any
+            }
+            orderable:  {
+                APC:  {
+                    // GET /dedicated/housing/{serviceName}/orderable/APC
+                    GET(): Promise<dedicated.housing.ApcOrderable>;
+                }
+            }
+            features:  {
+                backupFTP:  {
+                    // GET /dedicated/housing/{serviceName}/features/backupFTP
+                    GET(): Promise<dedicated.server.BackupFtp>;
+                    // POST /dedicated/housing/{serviceName}/features/backupFTP
+                    POST(): Promise<dedicated.server.Task>;
+                    // DELETE /dedicated/housing/{serviceName}/features/backupFTP
+                    DELETE(): Promise<dedicated.server.Task>;
+                    access:  {
+                        // GET /dedicated/housing/{serviceName}/features/backupFTP/access
+                        GET(): Promise<string[]>;
+                        // POST /dedicated/housing/{serviceName}/features/backupFTP/access
+                        POST(body?: {nfs: boolean, cifs: boolean, ftp?: boolean, ipBlock: string}): Promise<dedicated.server.Task>;
+                        [keys: string]: {
+                            // GET /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
+                            GET(): Promise<dedicated.server.BackupFtpAcl>;
+                            // PUT /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
+                            PUT(body?: {body: dedicated.server.BackupFtpAcl}): Promise<void>;
+                            // DELETE /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
+                            DELETE(): Promise<dedicated.server.Task>;
+                        } | any
+                    }
+                    password:  {
+                        // POST /dedicated/housing/{serviceName}/features/backupFTP/password
+                        POST(): Promise<dedicated.server.Task>;
+                    }
+                    authorizableBlocks:  {
+                        // GET /dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks
+                        GET(): Promise<string[]>;
+                    }
+                }
+            }
+            serviceInfos:  {
+                // GET /dedicated/housing/{serviceName}/serviceInfos
+                GET(): Promise<services.Service>;
+                // PUT /dedicated/housing/{serviceName}/serviceInfos
+                PUT(body?: {body: services.Service}): Promise<void>;
+            }
+        } | any
+    }
+}
+// Api
+type PathsDedicatedHousingGET = '/dedicated/housing/{serviceName}' |
+  '/dedicated/housing/{serviceName}/task' |
+  '/dedicated/housing/{serviceName}/task/{taskId}' |
+  '/dedicated/housing/{serviceName}/orderable/APC' |
+  '/dedicated/housing/{serviceName}/features/backupFTP' |
+  '/dedicated/housing/{serviceName}/features/backupFTP/access' |
+  '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}' |
+  '/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks' |
+  '/dedicated/housing/{serviceName}/serviceInfos' |
+  '/dedicated/housing';
 
-type PathsDedicatedHousingPOST = '/dedicated/housing/{serviceName}/features/backupFTP' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/access' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/password' | 
-'/dedicated/housing/{serviceName}/task/{taskId}/cancel';
+type PathsDedicatedHousingPUT = '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}' |
+  '/dedicated/housing/{serviceName}/serviceInfos';
 
-type PathsDedicatedHousingDELETE = '/dedicated/housing/{serviceName}/features/backupFTP' | 
-'/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}';
+type PathsDedicatedHousingPOST = '/dedicated/housing/{serviceName}/task/{taskId}/cancel' |
+  '/dedicated/housing/{serviceName}/features/backupFTP' |
+  '/dedicated/housing/{serviceName}/features/backupFTP/access' |
+  '/dedicated/housing/{serviceName}/features/backupFTP/password';
+
+type PathsDedicatedHousingDELETE = '/dedicated/housing/{serviceName}/features/backupFTP' |
+  '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}';
 
 export class ApiDedicatedHousing extends OvhWrapper {
   constructor(engine: OvhRequestable) {
@@ -442,12 +255,12 @@ export class ApiDedicatedHousing extends OvhWrapper {
    * Housing bay
    * Get this object properties
    */
-  public get(path: '/dedicated/housing/{serviceName}', params: {serviceName: string}): Promise<DedicatedHousingHousing>;
+  public get(path: '/dedicated/housing/{serviceName}', params: {serviceName: string}): Promise<dedicated.housing.Housing>;
   /**
    * Backup Ftp assigned to this server
    * Get this object properties
    */
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP', params: {serviceName: string}): Promise<DedicatedServerBackupFtp>;
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP', params: {serviceName: string}): Promise<dedicated.server.BackupFtp>;
   /**
    * List the dedicated.server.BackupFtpAcl objects
    * List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
@@ -457,7 +270,7 @@ export class ApiDedicatedHousing extends OvhWrapper {
    * Backup Ftp ACL for this server and Backup Ftp
    * Get this object properties
    */
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<DedicatedServerBackupFtpAcl>;
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<dedicated.server.BackupFtpAcl>;
   /**
    * authorizableBlocks operations
    * Get all IP blocks that can be used in the ACL
@@ -467,25 +280,25 @@ export class ApiDedicatedHousing extends OvhWrapper {
    * APC operations
    * Is an APC orderable for this housing bay
    */
-  public get(path: '/dedicated/housing/{serviceName}/orderable/APC', params: {serviceName: string}): Promise<DedicatedHousingApcOrderable>;
+  public get(path: '/dedicated/housing/{serviceName}/orderable/APC', params: {serviceName: string}): Promise<dedicated.housing.ApcOrderable>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/dedicated/housing/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/dedicated/housing/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<services.Service>;
   /**
    * List the dedicated.housing.Task objects
    * View task list
    */
-  public get(path: '/dedicated/housing/{serviceName}/task', params: {serviceName: string, function?: DedicatedHousingTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<number[]>;
+  public get(path: '/dedicated/housing/{serviceName}/task', params: {serviceName: string, function_?: OVH.dedicated.housing.TaskFunctionEnum, status?: OVH.dedicated.TaskStatusEnum}): Promise<number[]>;
   /**
    * Housing tasks
    * Get this object properties
    */
-  public get(path: '/dedicated/housing/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<DedicatedHousingTask>;
+  public get(path: '/dedicated/housing/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<dedicated.housing.Task>;
   public get(path: PathsDedicatedHousingGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+    return super.get(path, params);
+  }
   /**
    * Backup Ftp ACL for this server and Backup Ftp
    * Alter this object properties
@@ -495,45 +308,45 @@ export class ApiDedicatedHousing extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/dedicated/housing/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
+  public put(path: '/dedicated/housing/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
   public put(path: PathsDedicatedHousingPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+    return super.put(path, params);
+  }
   /**
    * Backup Ftp assigned to this server
    * Create a new Backup FTP space
    */
-  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP', params: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP', params: {serviceName: string}): Promise<dedicated.server.Task>;
   /**
    * List the dedicated.server.BackupFtpAcl objects
    * Create a new Backup FTP ACL
    */
-  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', params: {serviceName: string, cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/access', params: {serviceName: string, cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
   /**
    * password operations
    * Change your Backup FTP password
    */
-  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/password', params: {serviceName: string}): Promise<DedicatedServerTask>;
+  public post(path: '/dedicated/housing/{serviceName}/features/backupFTP/password', params: {serviceName: string}): Promise<dedicated.server.Task>;
   /**
    * cancel operations
    * this action stop the task progression if it's possible
    */
-  public post(path: '/dedicated/housing/{serviceName}/task/{taskId}/cancel', params: {serviceName: string, taskId: number}): Promise<void>;
+  public post(path: '/dedicated/housing/{serviceName}/task/{taskId}/cancel', params: {serviceName: string, taskId: string}): Promise<void>;
   public post(path: PathsDedicatedHousingPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+    return super.post(path, params);
+  }
   /**
    * Backup Ftp assigned to this server
    * Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED
    */
-  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP', params: {serviceName: string}): Promise<DedicatedServerTask>;
+  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP', params: {serviceName: string}): Promise<dedicated.server.Task>;
   /**
    * Backup Ftp ACL for this server and Backup Ftp
    * Revoke this ACL
    */
-  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<DedicatedServerTask>;
+  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<dedicated.server.Task>;
   public delete(path: PathsDedicatedHousingDELETE, params?: OvhParamType): Promise<any> {
-    return super.delete(path, params
-  );}
+    return super.delete(path, params);
+  }
 }
-export default ApiDedicatedHousing;
+}

@@ -1,361 +1,313 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Anycast IP of a CDN customer
- */
-export interface CdnanycastAnycast {
-  /**
-   */
-  anycast: string;
-  /**
-   */
-  backendLimit: number;
-  /**
-   */
-  backendUse: number;
-  /**
-   */
-  cacheRuleLimitPerDomain: number;
-  /**
-   */
-  lastQuotaOrder?: string;
-  /**
-   * URL for downloading daily log of your CDN
-   *
-   */
-  logUrl: string;
-  /**
-   */
-  offer?: string;
-  /**
-   */
-  quota: number;
-  /**
-   * The internal name of your CDN offer
-   *
-   */
-  service: string;
-}
-/**
- * Backend for a domain
- */
-export interface CdnanycastBackend {
-  /**
-   */
-  ip: string;
-}
-/**
- * CacheRules for a domain
- */
-export interface CdnanycastCacheRule {
-  /**
-   * Id for this cache rule
-   *
-   */
-  cacheRuleId: number;
-  /**
-   */
-  cacheType: CdnanycastCacheRuleCacheTypeEnum;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  fileMatch: string;
-  /**
-   */
-  fileType: CdnanycastCacheRuleFileTypeEnum;
-  /**
-   */
-  status: CdnanycastCacheRuleStatusEnum;
-  /**
-   */
-  ttl: number;
-}
-/**
- * All type a cache can be in
- */
-export type CdnanycastCacheRuleCacheTypeEnum = 'forceCache' | 'noCache';
-/**
- * All states an anycast pool can be in
- */
-export type CdnanycastCacheRuleFileTypeEnum = 'extension' | 'file' | 'folder';
-/**
- * All states a status can be in
- */
-export type CdnanycastCacheRuleStatusEnum = 'creating' | 'deleting' | 'error' | 'off' | 'on' | 'updating';
-/**
- * Domain on CDN
- */
-export interface CdnanycastDomain {
-  /**
-   */
-  cacheRuleUse: number;
-  /**
-   */
-  cname: string;
-  /**
-   * Domain of this object
-   *
-   */
-  domain: string;
-  /**
-   */
-  status: CdnanycastDomainStatusEnum;
-  /**
-   */
-  type: CdnanycastDomainTypeEnum;
-}
-/**
- * All states a status can be in
- */
-export type CdnanycastDomainStatusEnum = 'error' | 'off' | 'on' | 'removing';
-/**
- * All type of Domain
- */
-export type CdnanycastDomainTypeEnum = 'plain' | 'ssl';
-/**
- * URL to real time logs
- */
-export interface CdnanycastLogsURL {
-  /**
-   * URL expiration date
-   *
-   */
-  expirationDate: string;
-  /**
-   * URL to logs
-   *
-   */
-  url: string;
-}
-/**
- * CDN Pop
- */
-export interface CdnanycastPop {
-  /**
-   */
-  city: string;
-  /**
-   */
-  comment: string;
-  /**
-   * Name of the pop
-   *
-   */
-  name: string;
-  /**
-   */
-  status: CdnanycastPopStatusEnum;
-}
-/**
- * All Pop status
- */
-export type CdnanycastPopStatusEnum = 'down' | 'ok' | 'rerouted' | 'unknown';
-/**
- * CDN Ssl
- */
-export interface CdnanycastSsl {
-  /**
-   * Provider of the certificate installed on CDN
-   *
-   */
-  certificateProvider: string;
-  /**
-   */
-  certificateValidFrom?: string;
-  /**
-   */
-  certificateValidTo?: string;
-  /**
-   */
-  cn?: string;
-  /**
-   */
-  name: string;
-  /**
-   */
-  status: CdnanycastSslStateEnum;
-}
-/**
- * All states a CDN SSL can be in
- */
-export type CdnanycastSslStateEnum = 'checking' | 'creating' | 'error' | 'off' | 'on' | 'removing' | 'updating' | 'uploading';
-/**
- * A structure describing type of a stats hash
- */
-export interface CdnanycastStatsDataType {
-  /**
-   */
-  date: string;
-  /**
-   */
-  value?: number;
-}
-/**
- * Period of the statistics
- */
-export type CdnanycastStatsPeriodEnum = 'day' | 'month' | 'week';
-/**
- * Type of statistics related to cache
- */
-export type CdnanycastStatsTypeEnum = 'backend' | 'cdn' | 'threat';
-/**
- * Value bandwidth or request
- */
-export type CdnanycastStatsValueEnum = 'bandwidth' | 'request';
-/**
- * Task on a CDN
- */
-export interface CdnanycastTask {
-  /**
-   */
-  comment?: string;
-  /**
-   */
-  function: CdnanycastTaskFunctionEnum;
-  /**
-   */
-  status: CdnanycastTaskStateEnum;
-  /**
-   */
-  taskId: number;
-}
-/**
- * All function CDN task can be
- */
-export type CdnanycastTaskFunctionEnum = 'flush' | 'flushAll' | 'generateSsl' | 'installSsl' | 'reinstallSsl' | 'removeDomain' | 'uninstallSsl' | 'updateCacheRule';
-/**
- * All states a CDN task can be in
- */
-export type CdnanycastTaskStateEnum = 'cancelled' | 'doing' | 'done' | 'error' | 'todo';
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-type PathsCdnDedicatedGET = '/cdn/dedicated' | 
-'/cdn/dedicated/pops' | 
-'/cdn/dedicated/pops/{name}' | 
-'/cdn/dedicated/{serviceName}' | 
-'/cdn/dedicated/{serviceName}/domains' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/backends' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/statistics' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/tasks' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}' | 
-'/cdn/dedicated/{serviceName}/quota' | 
-'/cdn/dedicated/{serviceName}/serviceInfos' | 
-'/cdn/dedicated/{serviceName}/ssl' | 
-'/cdn/dedicated/{serviceName}/ssl/tasks' | 
-'/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}';
 
-type PathsCdnDedicatedPUT = '/cdn/dedicated/{serviceName}/domains/{domain}' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}' | 
-'/cdn/dedicated/{serviceName}/serviceInfos';
+export namespace OVH {
+export namespace cdnanycast {
+    //cdnanycast.Anycast
+    // fullName: cdnanycast.Anycast.Anycast
+    export interface Anycast {
+        anycast?: string;
+        backendLimit?: number;
+        backendUse?: number;
+        cacheRuleLimitPerDomain?: number;
+        lastQuotaOrder?: string;
+        logUrl?: string;
+        offer?: string;
+        quota?: number;
+        service?: string;
+    }
+    //cdnanycast.Backend
+    // fullName: cdnanycast.Backend.Backend
+    export interface Backend {
+        ip?: string;
+    }
+    //cdnanycast.CacheRule
+    // fullName: cdnanycast.CacheRule.CacheRule
+    export interface CacheRule {
+        cacheRuleId?: number;
+        cacheType?: OVH.cdnanycast.CacheRuleCacheTypeEnum;
+        domain?: string;
+        fileMatch?: string;
+        fileType?: OVH.cdnanycast.CacheRuleFileTypeEnum;
+        status?: OVH.cdnanycast.CacheRuleStatusEnum;
+        ttl?: number;
+    }
+    //cdnanycast.CacheRuleCacheTypeEnum
+    export type CacheRuleCacheTypeEnum = "forceCache" | "noCache"
+    //cdnanycast.CacheRuleFileTypeEnum
+    export type CacheRuleFileTypeEnum = "extension" | "file" | "folder"
+    //cdnanycast.CacheRuleStatusEnum
+    export type CacheRuleStatusEnum = "creating" | "deleting" | "error" | "off" | "on" | "updating"
+    //cdnanycast.Domain
+    // fullName: cdnanycast.Domain.Domain
+    export interface Domain {
+        cacheRuleUse?: number;
+        cname?: string;
+        domain?: string;
+        status?: OVH.cdnanycast.DomainStatusEnum;
+        type?: OVH.cdnanycast.DomainTypeEnum;
+    }
+    //cdnanycast.DomainStatusEnum
+    export type DomainStatusEnum = "error" | "off" | "on" | "removing"
+    //cdnanycast.DomainTypeEnum
+    export type DomainTypeEnum = "plain" | "ssl"
+    //cdnanycast.LogsURL
+    // fullName: cdnanycast.LogsURL.LogsURL
+    export interface LogsURL {
+        expirationDate?: string;
+        url?: string;
+    }
+    //cdnanycast.Pop
+    // fullName: cdnanycast.Pop.Pop
+    export interface Pop {
+        city?: string;
+        comment?: string;
+        name?: string;
+        status?: OVH.cdnanycast.PopStatusEnum;
+    }
+    //cdnanycast.PopStatusEnum
+    export type PopStatusEnum = "down" | "ok" | "rerouted" | "unknown"
+    //cdnanycast.Ssl
+    // fullName: cdnanycast.Ssl.Ssl
+    export interface Ssl {
+        certificateProvider?: string;
+        certificateValidFrom?: string;
+        certificateValidTo?: string;
+        cn?: string;
+        name?: string;
+        status?: OVH.cdnanycast.SslStateEnum;
+    }
+    //cdnanycast.SslStateEnum
+    export type SslStateEnum = "checking" | "creating" | "error" | "off" | "on" | "removing" | "updating" | "uploading"
+    //cdnanycast.StatsDataType
+    // fullName: cdnanycast.StatsDataType.StatsDataType
+    export interface StatsDataType {
+        date?: string;
+        value?: number;
+    }
+    //cdnanycast.StatsPeriodEnum
+    export type StatsPeriodEnum = "day" | "month" | "week"
+    //cdnanycast.StatsTypeEnum
+    export type StatsTypeEnum = "backend" | "cdn" | "threat"
+    //cdnanycast.StatsValueEnum
+    export type StatsValueEnum = "bandwidth" | "request"
+    //cdnanycast.Task
+    // fullName: cdnanycast.Task.Task
+    export interface Task {
+        comment?: string;
+        function?: OVH.cdnanycast.TaskFunctionEnum;
+        status?: OVH.cdnanycast.TaskStateEnum;
+        taskId?: number;
+    }
+    //cdnanycast.TaskFunctionEnum
+    export type TaskFunctionEnum = "flush" | "flushAll" | "generateSsl" | "installSsl" | "reinstallSsl" | "removeDomain" | "uninstallSsl" | "updateCacheRule"
+    //cdnanycast.TaskStateEnum
+    export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
+}
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic?: boolean;
+        deleteAtExpiration?: boolean;
+        forced?: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration?: boolean;
+        contactAdmin?: string;
+        contactBilling?: string;
+        contactTech?: string;
+        creation?: string;
+        domain?: string;
+        engagedUpTo?: string;
+        expiration?: string;
+        possibleRenewPeriod?: number[];
+        renew?: OVH.service.RenewType;
+        renewalType?: OVH.service.RenewalTypeEnum;
+        serviceId?: number;
+        status?: OVH.service.StateEnum;
+    }
+}
+// Apis harmony
+// path /cdn
+export interface Cdn {
+    dedicated:  {
+        // GET /cdn/dedicated
+        GET(): Promise<string[]>;
+        pops:  {
+            // GET /cdn/dedicated/pops
+            GET(): Promise<string[]>;
+            [keys: string]: {
+                // GET /cdn/dedicated/pops/{name}
+                GET(): Promise<cdnanycast.Pop>;
+            } | any
+        }
+        [keys: string]: {
+            // GET /cdn/dedicated/{serviceName}
+            GET(): Promise<cdnanycast.Anycast>;
+            serviceInfos:  {
+                // GET /cdn/dedicated/{serviceName}/serviceInfos
+                GET(): Promise<services.Service>;
+                // PUT /cdn/dedicated/{serviceName}/serviceInfos
+                PUT(body?: {body: services.Service}): Promise<void>;
+            }
+            logs:  {
+                // POST /cdn/dedicated/{serviceName}/logs
+                POST(): Promise<cdnanycast.LogsURL>;
+            }
+            ssl:  {
+                // GET /cdn/dedicated/{serviceName}/ssl
+                GET(): Promise<cdnanycast.Ssl>;
+                // POST /cdn/dedicated/{serviceName}/ssl
+                POST(body?: {name: string, chain?: string, key?: string, certificate?: string}): Promise<cdnanycast.Ssl>;
+                // DELETE /cdn/dedicated/{serviceName}/ssl
+                DELETE(): Promise<cdnanycast.Task>;
+                update:  {
+                    // POST /cdn/dedicated/{serviceName}/ssl/update
+                    POST(body?: {certificate: string, chain?: string, key: string}): Promise<cdnanycast.Task>;
+                }
+                tasks:  {
+                    // GET /cdn/dedicated/{serviceName}/ssl/tasks
+                    GET(param?: {function_?: cdnanycast.TaskFunctionEnum, status?: cdnanycast.TaskStateEnum}): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /cdn/dedicated/{serviceName}/ssl/tasks/{taskId}
+                        GET(): Promise<cdnanycast.Task>;
+                    } | any
+                }
+            }
+            changeContact:  {
+                // POST /cdn/dedicated/{serviceName}/changeContact
+                POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
+            }
+            quota:  {
+                // GET /cdn/dedicated/{serviceName}/quota
+                GET(param?: {period: cdnanycast.StatsPeriodEnum}): Promise<cdnanycast.StatsDataType[]>;
+            }
+            domains:  {
+                // GET /cdn/dedicated/{serviceName}/domains
+                GET(): Promise<string[]>;
+                // POST /cdn/dedicated/{serviceName}/domains
+                POST(body?: {domain: string}): Promise<cdnanycast.Domain>;
+                [keys: string]: {
+                    // GET /cdn/dedicated/{serviceName}/domains/{domain}
+                    GET(): Promise<cdnanycast.Domain>;
+                    // PUT /cdn/dedicated/{serviceName}/domains/{domain}
+                    PUT(body?: {body: cdnanycast.Domain}): Promise<void>;
+                    // DELETE /cdn/dedicated/{serviceName}/domains/{domain}
+                    DELETE(): Promise<cdnanycast.Task>;
+                    logs:  {
+                        // POST /cdn/dedicated/{serviceName}/domains/{domain}/logs
+                        POST(): Promise<cdnanycast.LogsURL>;
+                    }
+                    cacheRules:  {
+                        // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
+                        GET(param?: {fileMatch?: string}): Promise<number[]>;
+                        // POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
+                        POST(body?: {fileType: cdnanycast.CacheRuleFileTypeEnum, cacheType: cdnanycast.CacheRuleCacheTypeEnum, ttl: number, fileMatch: string}): Promise<cdnanycast.CacheRule>;
+                        [keys: string]: {
+                            // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
+                            GET(): Promise<cdnanycast.CacheRule>;
+                            // PUT /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
+                            PUT(body?: {body: cdnanycast.CacheRule}): Promise<void>;
+                            // DELETE /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
+                            DELETE(): Promise<cdnanycast.Task>;
+                            tasks:  {
+                                // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks
+                                GET(): Promise<number[]>;
+                                [keys: string]: {
+                                    // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}
+                                    GET(): Promise<cdnanycast.Task>;
+                                } | any
+                            }
+                            flush:  {
+                                // POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush
+                                POST(): Promise<cdnanycast.Task>;
+                            }
+                        } | any
+                    }
+                    backends:  {
+                        // GET /cdn/dedicated/{serviceName}/domains/{domain}/backends
+                        GET(): Promise<string[]>;
+                        // POST /cdn/dedicated/{serviceName}/domains/{domain}/backends
+                        POST(body?: {ip: string}): Promise<cdnanycast.Backend>;
+                        [keys: string]: {
+                            // GET /cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}
+                            GET(): Promise<cdnanycast.Backend>;
+                            // DELETE /cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}
+                            DELETE(): Promise<string>;
+                        } | any
+                    }
+                    tasks:  {
+                        // GET /cdn/dedicated/{serviceName}/domains/{domain}/tasks
+                        GET(): Promise<number[]>;
+                        [keys: string]: {
+                            // GET /cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}
+                            GET(): Promise<cdnanycast.Task>;
+                        } | any
+                    }
+                    flush:  {
+                        // POST /cdn/dedicated/{serviceName}/domains/{domain}/flush
+                        POST(): Promise<cdnanycast.Task>;
+                    }
+                    statistics:  {
+                        // GET /cdn/dedicated/{serviceName}/domains/{domain}/statistics
+                        GET(param?: {type: cdnanycast.StatsTypeEnum, value: cdnanycast.StatsValueEnum, period: cdnanycast.StatsPeriodEnum}): Promise<cdnanycast.StatsDataType[]>;
+                    }
+                } | any
+            }
+        } | any
+    }
+}
+// Api
+type PathsCdnDedicatedGET = '/cdn/dedicated' |
+  '/cdn/dedicated/pops' |
+  '/cdn/dedicated/pops/{name}' |
+  '/cdn/dedicated/{serviceName}' |
+  '/cdn/dedicated/{serviceName}/serviceInfos' |
+  '/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}' |
+  '/cdn/dedicated/{serviceName}/ssl/tasks' |
+  '/cdn/dedicated/{serviceName}/ssl' |
+  '/cdn/dedicated/{serviceName}/quota' |
+  '/cdn/dedicated/{serviceName}/domains' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/backends' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/tasks' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/statistics';
 
-type PathsCdnDedicatedPOST = '/cdn/dedicated/{serviceName}/changeContact' | 
-'/cdn/dedicated/{serviceName}/domains' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/backends' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/flush' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/logs' | 
-'/cdn/dedicated/{serviceName}/logs' | 
-'/cdn/dedicated/{serviceName}/ssl' | 
-'/cdn/dedicated/{serviceName}/ssl/update';
+type PathsCdnDedicatedPUT = '/cdn/dedicated/{serviceName}/serviceInfos' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}';
 
-type PathsCdnDedicatedDELETE = '/cdn/dedicated/{serviceName}/domains/{domain}' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}' | 
-'/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}' | 
-'/cdn/dedicated/{serviceName}/ssl';
+type PathsCdnDedicatedPOST = '/cdn/dedicated/{serviceName}/logs' |
+  '/cdn/dedicated/{serviceName}/ssl/update' |
+  '/cdn/dedicated/{serviceName}/ssl' |
+  '/cdn/dedicated/{serviceName}/changeContact' |
+  '/cdn/dedicated/{serviceName}/domains' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/logs' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/backends' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/flush';
+
+type PathsCdnDedicatedDELETE = '/cdn/dedicated/{serviceName}/ssl' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}';
 
 export class ApiCdnDedicated extends OvhWrapper {
   constructor(engine: OvhRequestable) {
@@ -367,20 +319,10 @@ export class ApiCdnDedicated extends OvhWrapper {
    */
   public get(path: '/cdn/dedicated'): Promise<string[]>;
   /**
-   * List the cdnanycast.Pop objects
-   * List of CDN Pops
-   */
-  public get(path: '/cdn/dedicated/pops'): Promise<string[]>;
-  /**
-   * CDN Pop
-   * Get this object properties
-   */
-  public get(path: '/cdn/dedicated/pops/{name}', params: {name: string}): Promise<CdnanycastPop>;
-  /**
    * Anycast IP of a CDN customer
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}', params: {serviceName: string}): Promise<CdnanycastAnycast>;
+  public get(path: '/cdn/dedicated/{serviceName}', params: {serviceName: string}): Promise<cdnanycast.Anycast>;
   /**
    * List the cdnanycast.Domain objects
    * Domains associated to this anycast
@@ -390,7 +332,7 @@ export class ApiCdnDedicated extends OvhWrapper {
    * Domain on CDN
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string}): Promise<CdnanycastDomain>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string}): Promise<cdnanycast.Domain>;
   /**
    * List the cdnanycast.Backend objects
    * Backend associated to the domain
@@ -400,7 +342,7 @@ export class ApiCdnDedicated extends OvhWrapper {
    * Backend for a domain
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}', params: {serviceName: string, domain: string, ip: string}): Promise<CdnanycastBackend>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}', params: {serviceName: string, domain: string, ip: string}): Promise<cdnanycast.Backend>;
   /**
    * List the cdnanycast.CacheRule objects
    * Cache rules associated to the domain
@@ -410,22 +352,22 @@ export class ApiCdnDedicated extends OvhWrapper {
    * CacheRules for a domain
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: number}): Promise<CdnanycastCacheRule>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: string}): Promise<cdnanycast.CacheRule>;
   /**
    * List the cdnanycast.Task objects
    * Task associated to the cache rule
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks', params: {serviceName: string, domain: string, cacheRuleId: number}): Promise<number[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks', params: {serviceName: string, domain: string, cacheRuleId: string}): Promise<number[]>;
   /**
    * Task on a CDN
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}', params: {serviceName: string, domain: string, cacheRuleId: number, taskId: number}): Promise<CdnanycastTask>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}', params: {serviceName: string, domain: string, cacheRuleId: string, taskId: string}): Promise<cdnanycast.Task>;
   /**
    * statistics operations
    * Return stats about a domain
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/statistics', params: {serviceName: string, domain: string, period: CdnanycastStatsPeriodEnum, type: CdnanycastStatsTypeEnum, value: CdnanycastStatsValueEnum}): Promise<CdnanycastStatsDataType[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/statistics', params: {serviceName: string, domain: string, period: OVH.cdnanycast.StatsPeriodEnum, type: OVH.cdnanycast.StatsTypeEnum, value: OVH.cdnanycast.StatsValueEnum}): Promise<cdnanycast.StatsDataType[]>;
   /**
    * List the cdnanycast.Task objects
    * Task associated to the domain
@@ -435,53 +377,63 @@ export class ApiCdnDedicated extends OvhWrapper {
    * Task on a CDN
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}', params: {serviceName: string, domain: string, taskId: number}): Promise<CdnanycastTask>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}', params: {serviceName: string, domain: string, taskId: string}): Promise<cdnanycast.Task>;
   /**
    * quota operations
    * Return quota history
    */
-  public get(path: '/cdn/dedicated/{serviceName}/quota', params: {serviceName: string, period: CdnanycastStatsPeriodEnum}): Promise<CdnanycastStatsDataType[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/quota', params: {serviceName: string, period: OVH.cdnanycast.StatsPeriodEnum}): Promise<cdnanycast.StatsDataType[]>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  public get(path: '/cdn/dedicated/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<services.Service>;
   /**
    * CDN Ssl
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/ssl', params: {serviceName: string}): Promise<CdnanycastSsl>;
+  public get(path: '/cdn/dedicated/{serviceName}/ssl', params: {serviceName: string}): Promise<cdnanycast.Ssl>;
   /**
    * List the cdnanycast.Task objects
    * Task associated to the ssl
    */
-  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks', params: {serviceName: string, function?: CdnanycastTaskFunctionEnum, status?: CdnanycastTaskStateEnum}): Promise<number[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks', params: {serviceName: string, function_?: OVH.cdnanycast.TaskFunctionEnum, status?: OVH.cdnanycast.TaskStateEnum}): Promise<number[]>;
   /**
    * Task on a CDN
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<CdnanycastTask>;
+  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}', params: {serviceName: string, taskId: string}): Promise<cdnanycast.Task>;
+  /**
+   * List the cdnanycast.Pop objects
+   * List of CDN Pops
+   */
+  public get(path: '/cdn/dedicated/pops'): Promise<string[]>;
+  /**
+   * CDN Pop
+   * Get this object properties
+   */
+  public get(path: '/cdn/dedicated/pops/{name}', params: {name: string}): Promise<cdnanycast.Pop>;
   public get(path: PathsCdnDedicatedGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+    return super.get(path, params);
+  }
   /**
    * Domain on CDN
    * Alter this object properties
    */
-  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string, cacheRuleUse?: number, cname?: string, status?: CdnanycastDomainStatusEnum, type?: CdnanycastDomainTypeEnum}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string, cacheRuleUse?: number, cname?: string, status?: OVH.cdnanycast.DomainStatusEnum, type?: OVH.cdnanycast.DomainTypeEnum}): Promise<void>;
   /**
    * CacheRules for a domain
    * Alter this object properties
    */
-  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: number, cacheType?: CdnanycastCacheRuleCacheTypeEnum, fileMatch?: string, fileType?: CdnanycastCacheRuleFileTypeEnum, status?: CdnanycastCacheRuleStatusEnum, ttl?: number}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: string, cacheType?: OVH.cdnanycast.CacheRuleCacheTypeEnum, fileMatch?: string, fileType?: OVH.cdnanycast.CacheRuleFileTypeEnum, status?: OVH.cdnanycast.CacheRuleStatusEnum, ttl?: number}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/cdn/dedicated/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
   public put(path: PathsCdnDedicatedPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+    return super.put(path, params);
+  }
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
@@ -491,55 +443,55 @@ export class ApiCdnDedicated extends OvhWrapper {
    * List the cdnanycast.Domain objects
    * Add a domain on CDN
    */
-  public post(path: '/cdn/dedicated/{serviceName}/domains', params: {serviceName: string, domain: string}): Promise<CdnanycastDomain>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains', params: {serviceName: string, domain: string}): Promise<cdnanycast.Domain>;
   /**
    * List the cdnanycast.Backend objects
    * Add a backend IP
    */
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', params: {serviceName: string, domain: string, ip: string}): Promise<CdnanycastBackend>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', params: {serviceName: string, domain: string, ip: string}): Promise<cdnanycast.Backend>;
   /**
    * List the cdnanycast.CacheRule objects
    * Add a cache rule to a domain
    */
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', params: {serviceName: string, domain: string, cacheType: CdnanycastCacheRuleCacheTypeEnum, fileMatch: string, fileType: CdnanycastCacheRuleFileTypeEnum, ttl: number}): Promise<CdnanycastCacheRule>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', params: {serviceName: string, domain: string, cacheType: OVH.cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: OVH.cdnanycast.CacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
   /**
    * flush operations
    * Flush the cache
    */
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush', params: {serviceName: string, domain: string, cacheRuleId: number}): Promise<CdnanycastTask>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush', params: {serviceName: string, domain: string, cacheRuleId: string}): Promise<cdnanycast.Task>;
   /**
    * flush operations
    * Flush all cache
    */
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/flush', params: {serviceName: string, domain: string}): Promise<CdnanycastTask>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/flush', params: {serviceName: string, domain: string}): Promise<cdnanycast.Task>;
   /**
    * logs operations
    * Generate URL to real time logs
    */
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/logs', params: {serviceName: string, domain: string}): Promise<CdnanycastLogsURL>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/logs', params: {serviceName: string, domain: string}): Promise<cdnanycast.LogsURL>;
   /**
    * logs operations
    * Generate URL to real time logs
    */
-  public post(path: '/cdn/dedicated/{serviceName}/logs', params: {serviceName: string}): Promise<CdnanycastLogsURL>;
+  public post(path: '/cdn/dedicated/{serviceName}/logs', params: {serviceName: string}): Promise<cdnanycast.LogsURL>;
   /**
    * CDN Ssl
    * Add a SSL on CDN or Generate a Lets Encrypt certificate
    */
-  public post(path: '/cdn/dedicated/{serviceName}/ssl', params: {serviceName: string, certificate?: string, chain?: string, key?: string, name: string}): Promise<CdnanycastSsl>;
+  public post(path: '/cdn/dedicated/{serviceName}/ssl', params: {serviceName: string, certificate?: string, chain?: string, key?: string, name: string}): Promise<cdnanycast.Ssl>;
   /**
    * update operations
    * Update an existing SSL with a custom certificate
    */
-  public post(path: '/cdn/dedicated/{serviceName}/ssl/update', params: {serviceName: string, certificate: string, chain?: string, key: string}): Promise<CdnanycastTask>;
+  public post(path: '/cdn/dedicated/{serviceName}/ssl/update', params: {serviceName: string, certificate: string, chain?: string, key: string}): Promise<cdnanycast.Task>;
   public post(path: PathsCdnDedicatedPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+    return super.post(path, params);
+  }
   /**
    * Domain on CDN
    * Remove a domain from the CDN
    */
-  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string}): Promise<CdnanycastTask>;
+  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string}): Promise<cdnanycast.Task>;
   /**
    * Backend for a domain
    * Remove a backend IP
@@ -549,14 +501,14 @@ export class ApiCdnDedicated extends OvhWrapper {
    * CacheRules for a domain
    * Remove cache rule
    */
-  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: number}): Promise<CdnanycastTask>;
+  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: string}): Promise<cdnanycast.Task>;
   /**
    * CDN Ssl
    * Remove SSL of the CDN
    */
-  public delete(path: '/cdn/dedicated/{serviceName}/ssl', params: {serviceName: string}): Promise<CdnanycastTask>;
+  public delete(path: '/cdn/dedicated/{serviceName}/ssl', params: {serviceName: string}): Promise<cdnanycast.Task>;
   public delete(path: PathsCdnDedicatedDELETE, params?: OvhParamType): Promise<any> {
-    return super.delete(path, params
-  );}
+    return super.delete(path, params);
+  }
 }
-export default ApiCdnDedicated;
+}
