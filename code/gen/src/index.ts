@@ -2,6 +2,7 @@ import { Parameter } from './schema';
 import fse from 'fs-extra'
 import Path from 'path'
 import GenApiTypes, { CacheApi, CacheModel } from './GenApiTypes';
+import Promise from 'bluebird';
 
 let gen = new GenApiTypes();
 let extraNS = '';
@@ -162,10 +163,10 @@ function dumpApi(depth: number, api: CacheApi, code: string): string {
                 code += `${ident0}[keys: string]:`;
                 EOB = `${ident0}} | any\n`
             } else {
-                code += `${ident0}${last}:`;
+                code += `${ident0}${protectFieldName(last)}: /* L165 */`;
             }
         } else {
-            code += `${ident0}// path ${api._path}\n`;
+            code += `${ident0}// path ${api._path} /* L168 */ \n`;
             code += `${ident0}export interface ${className(api._path)}`;
         }
         code += ` {\n`;
@@ -230,6 +231,11 @@ function dumpApi(depth: number, api: CacheApi, code: string): string {
  */
 function dumpModel(depth: number, cache: CacheModel, code: string, fullNS: string): string {
     let ident0 = indentGen(depth - 1);
+
+    if ((<any>cache)._DEBUG) {
+        console.log('DEBUUGG');
+    }
+
     if (cache._model) {
         const model = cache._model
         const name = filterReservedKw(model.id);
@@ -295,11 +301,21 @@ async function main() {
     let apis = await gen.listSchemas()
     // ['/me', '/domain']
     // await fse.mkdir('dist');
-    for (const api of apis) {
+
+    // debug gen a single API
+    if (true)
+        apis = apis.filter((api) => {
+            if ('/price' == api)
+                return true;
+            if ('/order' == api)
+                return true;
+            if ('/distribution/image' == api)
+                return true;
+            return false;
+        })
+
+    await Promise.map(apis, async (api) => {
         let flat = api.replace(/\//g, '');
-        // debug gen a single API
-        if ('/price' != api && '/order' != api )
-            continue;
         gen = new GenApiTypes();
         extraNS = `OVH${flat}.`;
         await gen.loadSchema(`${api}.json`)
@@ -311,7 +327,7 @@ async function main() {
         code += '}';
         console.log(`saving dist${Path.sep}${flat}.ts`);
         await fse.writeFile(`dist${Path.sep}${flat}.ts`, code);
-    }
+    }, { concurrency: 2 });
 }
 
 main().then(() => console.log);

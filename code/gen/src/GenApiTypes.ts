@@ -51,6 +51,28 @@ let loadJson = (options: https.RequestOptions): Promise<any> => {
     })
 }
 
+let filterReservedKw = (name: string) => {
+    if (!name)
+        return name;
+    if (name.indexOf('public')) {
+        if (name === 'public')
+            return 'publik';
+        name = name.replace('.public.', '.publik.')
+        name = name.replace(/\.public$/, '.publik')
+    }
+/*
+    if (name.indexOf('package')) {
+        if (name === 'package')
+            return 'pakage';
+        name = name.replace('.package.', '.pakage.')
+        name = name.replace(/\.package$/, '.pakage')
+    }
+*/
+    name = name.replace(/\.([0-9])/g, '._$1')
+    name = name.replace(/^([0-9])/g, '_$1')
+    return name;
+}
+
 export default class GenApiTypes {
     basePath: string; // '/1.0'
     apis: CacheApi;
@@ -103,20 +125,29 @@ export default class GenApiTypes {
         });
         // Entry Points
         schema.apis.map((api: API) => {
+            api.operations.forEach(op => {
+                op.responseType = filterReservedKw(op.responseType);
+                op.responseFullType = filterReservedKw(op.responseFullType);
+            })
             let apiPath = api.path.split('/');
             this.addApi(apiPath, api, this.apis);
         });
         // Model
-        for (const name of Object.keys(schema.models)) {
-            const model = schema.models[name];
+        for (const aliasName of Object.keys(schema.models)) {
+            const model = schema.models[aliasName];
+            // remove . from modelId
+
             if (~model.id.indexOf('.')) {
                 console.log('hardFixing typeId: ' + model.id)
                 model.id = model.id.replace(/\./g, '_');
             }
-            this.alias[name] = model.namespace + '.' + model.id;
-            //if (~name.indexOf('port'))
-            //    console.log(name + " " + model.namespace + '.' + model.id);
-            this.addModel(model, name, this.models);
+            if (model.id === 'Catalog' && model.namespace == 'order.catalog.public')
+                console.log(model.namespace + ' in Catalog.');
+            if (this.alias[aliasName]) {
+                console.log('COLISION ' + aliasName)
+            }
+            this.alias[aliasName] = model.namespace + '.' + model.id;
+            this.addModel(model, aliasName, this.models);
         }
     }
 
@@ -152,10 +183,11 @@ export default class GenApiTypes {
      * @param {Array} apiPath: Splited API path using '.'
      * @param {String} model: model data
      */
-    addModel(model: ModelsProp, alias: string, root: CacheModel): void {
+    addModel(model: ModelsProp, aliasName: string, root: CacheModel): void {
         // name: string, 
         let { namespace, id } = model;
         let path = namespace.split('.');
+        path = path.map(filterReservedKw)
         let current: CacheModel = root;
         for (const ns of path) {
             if (!current[ns]) {
@@ -164,28 +196,44 @@ export default class GenApiTypes {
             current = <CacheModel>current[ns];
         }
 
-        if (~alias.indexOf('<')) {
+        // inject missing generics
+        if (~aliasName.indexOf('<')) {
             if (model.generics) {
-                console.log('GENERIC ' + model.generics.join(',') + ' present for ' + alias );
+                console.log('GENERIC ' + model.generics.join(',') + ' present for ' + aliasName);
             } else {
-                let m = alias.match(/<([A-Z,]+)>/);
+                let m = aliasName.match(/<([A-Z,]+)>/);
                 if (m) {
                     model.generics = m[1].split(/,/);
-                    console.log('FIXING GENERIC ' + model.generics.join(',') + ' present for ' + alias );
+                    console.log('FIXING GENERIC ' + model.generics.join(',') + ' present for ' + aliasName);
                 } else {
-                    console.log('FAIL to fix GENERIC in ' + alias );
+                    console.log('FAIL to fix GENERIC in ' + aliasName);
                 }
             }
         }
-        model.generics
+        if (model.properties)
+            for (let k of Object.keys(model.properties)) {
+                let field = model.properties[k];
+                field.type = filterReservedKw(field.type);
+                if (field.fullType)
+                    field.fullType = filterReservedKw(field.fullType);
+            }
+        // model.id = filterReservedKw(model.id);
         let old = <CacheModel>current[id];
         if (old) {
-            // console.log('colision', current[id]);
-            old._name = id;
-            old._alias = alias;
-            old._model = model;
+            if (old._model) {
+                (<any>current)._DEBUG = 1;
+                //console.log('colision', current[id]);
+                id = id + '2';
+                model.id += '2';
+                current[id] = <CacheModel>{ _name: id, _alias: aliasName, _model: model };
+                console.log('colition To', current[id]);
+            } else {
+                old._name = id;
+                old._alias = aliasName;
+                old._model = model;
+            }
         } else {
-            current[id] = <CacheModel>{ _name: id, _alias: alias, _model: model };
+            current[id] = <CacheModel>{ _name: id, _alias: aliasName, _model: model };
         }
     }
 

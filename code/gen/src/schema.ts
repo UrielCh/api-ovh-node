@@ -18,10 +18,10 @@ export interface Operation {
     resellerOnly:     boolean;
     parameters:       Parameter[];
     responseType:     string;
+    responseFullType: string;
     apiStatus:        APIStatus;
     httpMethod:       "DELETE" | "GET" | "POST" | "PUT";
     noAuthentication: boolean;
-    responseFullType: string;
     description:      string;
 }
 

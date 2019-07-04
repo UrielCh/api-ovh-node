@@ -7,6 +7,7 @@
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "devDependencies": {
+    "@types/bluebird": "^3.5.27",
     "@types/fs-extra": "^8.0.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.2"
@@ -27,6 +28,7 @@
   },
   "gitHead": "b9fec53f25067fa01d341adc086a63ef2c2a5f62",
   "dependencies": {
+    "bluebird": "^3.5.5",
     "fs-extra": "^8.1.0"
   }
 }
