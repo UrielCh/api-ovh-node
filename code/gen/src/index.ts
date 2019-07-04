@@ -11,7 +11,7 @@ async function main() {
     // await fse.mkdir('dist');
 
     // debug gen a single API
-    if (true)
+    if (false)
         apis = apis.filter((api) => {
             //if ('/price' == api)
             //    return true;
@@ -30,7 +30,7 @@ async function main() {
         let fn = `dist${Path.sep}${flat}.ts`;
         let cg = new CodeGenerator(api);
         let code = await cg.generate()
-        console.log(`saving ${fn}`);
+        // console.log(`saving ${fn}`);
         await fse.writeFile(fn, code);
     }, { concurrency: 4 });
 }

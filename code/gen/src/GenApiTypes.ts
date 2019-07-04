@@ -138,13 +138,11 @@ export default class GenApiTypes {
             // remove . from modelId
 
             if (~model.id.indexOf('.')) {
-                console.log('hardFixing typeId: ' + model.id)
+                // console.log('hardFixing typeId: ' + model.id)
                 model.id = model.id.replace(/\./g, '_');
             }
-            if (model.id === 'Catalog' && model.namespace == 'order.catalog.public')
-                console.log(model.namespace + ' in Catalog.');
             if (this.alias[aliasName]) {
-                console.log('COLISION ' + aliasName)
+                console.log('COLISION aliasName:' + aliasName)
             }
             this.alias[aliasName] = model.namespace + '.' + model.id;
             this.addModel(model, aliasName, this.models);
@@ -200,7 +198,7 @@ export default class GenApiTypes {
         // inject missing generics
         if (~aliasName.indexOf('<')) {
             if (model.generics) {
-                console.log('GENERIC ' + model.generics.join(',') + ' present for ' + aliasName);
+                // console.log('GENERIC ' + model.generics.join(',') + ' present for ' + aliasName);
             } else {
                 let m = aliasName.match(/<([A-Z,]+)>/);
                 if (m) {
@@ -230,7 +228,7 @@ export default class GenApiTypes {
                 id = <string>aliasName.split('.').pop();
                 model.id = id;
                 current[id] = <CacheModel>{ _name: id, _alias: aliasName, _model: model };
-                console.log('colition To', current[id]);
+                // console.log('colition To', current[id]);
             } else {
                 old._name = id;
                 old._alias = aliasName;

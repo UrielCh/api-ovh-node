@@ -1,6 +1,7 @@
 import GenApiTypes, { CacheApi, CacheModel, filterReservedKw } from './GenApiTypes';
 import { indentGen, protectFieldName, className, protectJsonKey, rawRemapNode, formatUpperCamlCase } from './utils';
-import { Parameter, Schema } from './schema';
+import { Parameter, Schema, ModelsProp } from './schema';
+import { brotliCompressSync } from 'zlib';
 
 export class CodeGenerator {
     api: string;
@@ -18,7 +19,9 @@ export class CodeGenerator {
         let schema = await this.gen.loadSchema(`${this.api}.json`)
         // start generation
         // Add extra ROOT NameSpace
-        let code = `export namespace ${this.extraNS.replace('.', '')} {\n`;
+        let code = `import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';\n\n`;
+
+        code += `export namespace ${this.extraNS.replace('.', '')} {\n`;
         code = this.dumpModel(0, this.gen.models, code, '');
         code += this.dumpApiHarmony(0, this.gen.apis, '// Apis harmony\n');
         code += this.dumpApi(0, schema, this.gen.apis, '// Api\n');
@@ -54,7 +57,7 @@ export class CodeGenerator {
             } else if (model.properties) {
                 let props = Object.keys(model.properties).sort();
                 code += `${ident0}// fullName: ${fullNS}.${name}\n`;
-                code += `${ident0}export interface ${name}${generic} { /* L:255 */\n`;
+                code += `${ident0}export interface ${name}${generic} {\n`;
                 for (const pName of props) {
                     const prop = model.properties[pName];
                     // console.log(prop);
@@ -70,7 +73,7 @@ export class CodeGenerator {
                         type = this.extraNS + type;
                     type = type.replace('<long>', '<number>');
                     code += filterReservedKw(type);
-                    code += '; /* L:271 */ \n';
+                    code += ';\n';
                 }
                 code += `${ident0}}\n`;
             }
@@ -82,9 +85,9 @@ export class CodeGenerator {
                 return code;
             if (cache._namespace) {
                 // code += `${ident0}// ${JSON.stringify(keys)}\n`;
-                code += `${ident0}export namespace ${filterReservedKw(cache._namespace)} {/* L:283 */\n`;
+                code += `${ident0}export namespace ${filterReservedKw(cache._namespace)} {\n`;
             } else if (cache._name) {
-                code += `${ident0}export namespace ${cache._name} { /* L:285 */\n`;
+                code += `${ident0}export namespace ${cache._name} {\n`;
             }
             // drop _ prefixed fields
             // fullNS = fullNS ? fullNS + '.' + cache._name : cache._name;
@@ -147,7 +150,6 @@ export class CodeGenerator {
         return typename;
     }
 
-
     dumpApi(depth: number, schema: Schema, api: CacheApi, code: string): string {
         let avaliablePath = formatUpperCamlCase("Paths_" + this.api.replace(/\//g, '_'))
         let indexApi = { GET: [], PUT: [], POST: [], DELETE: [] };
@@ -166,12 +168,11 @@ export class CodeGenerator {
             code += `type ${avaliablePath}${mtd} = ` + arr.map((a: any) => `'${a}'`).join(' |\n  ')
             code += ';\n\n'
         }
-        code += `import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';\n\n`;
         code += `export class ${formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'))} extends OvhWrapper {\n`;
         code += `  constructor(engine: OvhRequestable) {\n    super(engine);\n  }\n`;
         for (let mtd of Object.keys(indexApi)) {
             let calls = 0;
-            schema.apis.forEach(api => {
+            schema.apis.sort((a, b) => a.path.localeCompare(b.path)).forEach(api => {
                 api.operations.filter(op => op.httpMethod === mtd).forEach(
                     op => {
                         calls++;
@@ -179,18 +180,65 @@ export class CodeGenerator {
                         code += `   * ${api.description}\n`;
                         code += `   * ${op.description}\n`;
                         code += '   */\n';
-                        code += `  public ${mtd.toLowerCase()}(`;
-                        let params = [`path: '${api.path}'`];
-                        params.push(...op.parameters.filter(p => p.paramType == 'path').map(p => `${p.name}: string`))
+                        code += `  public ${mtd.toLowerCase()}(path: '${api.path}'`;
+
+                        let done = new Set();
+
+                        let params = [];
+                        params.push(...op.parameters.filter(p => p.paramType == 'path').map(p => { done.add(p.name); return `${p.name}: string` }))
                         let paramType = (mtd == 'GET') ? 'query' : 'body';
                         let body = op.parameters.filter(p => p.paramType == paramType);
                         if (body.length == 1 && body[0].name == null) {
-                            params.push('body: any')
+                            // console.log(body[0]);
+                            let modelsProp = schema.models[body[0].fullType];
+                            if (modelsProp && modelsProp.properties) {
+                                for (let propName of Object.keys(modelsProp.properties).sort()) {
+                                    let p = modelsProp.properties[propName];
+                                    if (done.has(propName))
+                                        continue;
+                                    let param = `${protectJsonKey(propName)}`;
+                                    if (!p.required)
+                                        param += '?'
+                                    param += ': '
+                                    // this.fullTypeExp(p)
+                                    let type = p.fullType || p.type;
+                                    if (type.endsWith(':string'))
+                                        type = 'string'
+                                    type = this.aliasFilter(type);
+                                    if (~type.indexOf('.'))
+                                        type = this.extraNS + type;
+                                    type = type.replace('<long>', '<number>');
+                                    param += filterReservedKw(type);
+                                    params.push(param)
+                                }
+                            } else {
+                                console.log('ERORROOROR');
+                                params.push('body: any')
+                            }
                         } else {
-                            params.push(...body.map(p => `${p.name}: string`))
+                            body.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
+                            params.push(...body.map(p => {
+                                if (done.has(p.name))
+                                    return;
+                                let param = `${protectJsonKey(p.name || '')}`;
+                                if (!p.required)
+                                    param += '?'
+                                param += ': '
+                                let type = p.fullType;// || p.type;
+                                if (type.endsWith(':string'))
+                                    type = 'string'
+                                type = this.aliasFilter(type);
+                                if (~type.indexOf('.'))
+                                    type = this.extraNS + type;
+                                type = type.replace('<long>', '<number>');
+                                param += filterReservedKw(type);
+                                return param;
+                            }))
                         }
-                        code += params.join(', ');
-                        code += `): Promise<${op.responseType}>;\n`;
+                        if (params.length)
+                            code += `, params: {${params.join(', ')}}`;
+                        // typename = this.aliasFilter(typename);
+                        code += `): Promise<${this.aliasFilter(op.responseType)}>;\n`;
                     }
                 )
             })
@@ -200,6 +248,7 @@ export class CodeGenerator {
                 code += `  }\n`
             }
         }
+        code += `}\n`
         return code;
     }
 
@@ -225,11 +274,11 @@ export class CodeGenerator {
                     code += `${ident0}[keys: string]:`;
                     EOB = `${ident0}} | any\n`
                 } else {
-                    code += `${ident0}${protectFieldName(last)}: /* L:165 */`;
+                    code += `${ident0}${protectFieldName(last)}: `;
                 }
             } else {
-                code += `${ident0}// path ${api._path} /* L:168 */ \n`;
-                code += `${ident0}export interface ${className(api._path)} /* L:169*/`;
+                code += `${ident0}// path ${api._path}\n`;
+                code += `${ident0}export interface ${className(api._path)}`;
             }
             code += ` {\n`;
         }
@@ -268,7 +317,7 @@ export class CodeGenerator {
                 if (!retType)
                     retType = op.responseType;
                 retType = this.aliasFilter(retType);
-                code += `${retType};/* L208 */\n`; // DedicatedServerCatalog
+                code += `Promise<${retType}>;\n`; // DedicatedServerCatalog
             }
         }
 
