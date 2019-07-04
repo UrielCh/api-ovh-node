@@ -1,7 +1,7 @@
 import { Parameter } from './schema';
 import fse from 'fs-extra'
 import Path from 'path'
-import GenApiTypes, { CacheApi, CacheModel } from './GenApiTypes';
+import GenApiTypes, { CacheApi, CacheModel, filterReservedKw } from './GenApiTypes';
 
 let gen = new GenApiTypes();
 let extraNS = '';
@@ -24,15 +24,6 @@ const protectFieldName = (name: string): string => {
     if (~name.indexOf('-'))
         return `'${name}'`;
     return name;
-}
-
-const filterReservedKw = (word: string): string => {
-    // used in distributionimage
-    word = word.replace(/package/g, 'pakage');
-    // word = word.replace(/public/g, 'publik');
-    // used in store
-    //word = word.replace(/edit.response$/, 'editresponse');
-    return word;
 }
 
 const rawRemapNode: { [keys: string]: string } = {
@@ -162,11 +153,11 @@ function dumpApi(depth: number, api: CacheApi, code: string): string {
                 code += `${ident0}[keys: string]:`;
                 EOB = `${ident0}} | any\n`
             } else {
-                code += `${ident0}${protectFieldName(last)}: /* L165 */`;
+                code += `${ident0}${protectFieldName(last)}: /* L:165 */`;
             }
         } else {
-            code += `${ident0}// path ${api._path} /* L168 */ \n`;
-            code += `${ident0}export interface ${className(api._path)}`;
+            code += `${ident0}// path ${api._path} /* L:168 */ \n`;
+            code += `${ident0}export interface ${className(api._path)} /* L:169*/`;
         }
         code += ` {\n`;
     }
@@ -175,11 +166,11 @@ function dumpApi(depth: number, api: CacheApi, code: string): string {
     if (api._api) {
         for (const op of api._api.operations) {
             // code += `${ident}/**\n${ident} * ${op.description}\n${ident} */\n`;
+            code += `${ident}// ${op.httpMethod} ${api._path}\n`;
+
             code += `${ident}${op.httpMethod}(`;
             let params: Parameter[] = [];
             if (op.httpMethod == 'GET') {
-                //if (api._api.path == '/cloud/subsidiaryPrice')
-                //    console.log('GETTTTTTTTT ' + api._api.path);
                 params = op.parameters.filter(p => p.paramType === 'query')
                 if (params.length)
                     code += 'param?: {'
@@ -205,7 +196,7 @@ function dumpApi(depth: number, api: CacheApi, code: string): string {
             if (!retType)
                 retType = op.responseType;
             retType = aliasFilter(retType);
-            code += `${retType};\n`;
+            code += `${retType};/* L208 */\n`; // DedicatedServerCatalog
         }
     }
 
@@ -230,11 +221,9 @@ function dumpApi(depth: number, api: CacheApi, code: string): string {
  */
 function dumpModel(depth: number, cache: CacheModel, code: string, fullNS: string): string {
     let ident0 = indentGen(depth - 1);
-
-    if ((<any>cache)._DEBUG) {
-        console.log('DEBUUGG');
-    }
-
+    //if ((<any>cache)._DEBUG) {
+    //    console.log('DEBUUGG ' + (<any>cache)._DEBUG);
+    //}
     if (cache._model) {
         const model = cache._model
         const name = filterReservedKw(model.id);
@@ -252,7 +241,7 @@ function dumpModel(depth: number, cache: CacheModel, code: string, fullNS: strin
         } else if (model.properties) {
             let props = Object.keys(model.properties).sort();
             code += `${ident0}// fullName: ${fullNS}.${name}\n`;
-            code += `${ident0}export interface ${name}${generic} {\n`;
+            code += `${ident0}export interface ${name}${generic} { /* L:255 */\n`;
             for (const pName of props) {
                 const prop = model.properties[pName];
                 // console.log(prop);
@@ -268,7 +257,7 @@ function dumpModel(depth: number, cache: CacheModel, code: string, fullNS: strin
                     type = extraNS + type;
                 type = type.replace('<long>', '<number>');
                 code += filterReservedKw(type);
-                code += ';\n';
+                code += '; /* L:271 */ \n';
             }
             code += `${ident0}}\n`;
         }
@@ -280,9 +269,9 @@ function dumpModel(depth: number, cache: CacheModel, code: string, fullNS: strin
             return code;
         if (cache._namespace) {
             // code += `${ident0}// ${JSON.stringify(keys)}\n`;
-            code += `${ident0}export namespace ${cache._namespace} {\n`;
+            code += `${ident0}export namespace ${filterReservedKw(cache._namespace)} {/* L:283 */\n`;
         } else if (cache._name) {
-            code += `${ident0}export namespace ${cache._name} {\n`;
+            code += `${ident0}export namespace ${cache._name} { /* L:285 */\n`;
         }
         // drop _ prefixed fields
         // fullNS = fullNS ? fullNS + '.' + cache._name : cache._name;
@@ -304,19 +293,20 @@ async function main() {
     // debug gen a single API
     if (false)
         apis = apis.filter((api) => {
-            if ('/price' == api)
-                return true;
+            //if ('/price' == api)
+            //    return true;
             if ('/order' == api)
                 return true;
-            if ('/distribution/image' == api)
-                return true;
+            //if ('/distribution/image' == api)
+            //    return true;
             return false;
         })
 
     for (const api of apis) {
         let flat = api.replace(/\//g, '');
         gen = new GenApiTypes();
-        extraNS = `OVH${flat}.`;
+        //extraNS = `OVH${flat}.`;
+        extraNS = `OVH.`;
         await gen.loadSchema(`${api}.json`)
         // start generation
         // Add extra ROOT NameSpace

@@ -51,23 +51,23 @@ let loadJson = (options: https.RequestOptions): Promise<any> => {
     })
 }
 
-let filterReservedKw = (name: string) => {
+export let filterReservedKw = (name: string) => {
     if (!name)
         return name;
-    if (name.indexOf('public')) {
+    if (~name.indexOf('public')) {
         if (name === 'public')
             return 'publik';
-        name = name.replace('.public.', '.publik.')
+        name = name.replace(/.public([.\[])/, '.publik$1')
         name = name.replace(/\.public$/, '.publik')
     }
-/*
-    if (name.indexOf('package')) {
+
+    if (~name.indexOf('package')) {
         if (name === 'package')
             return 'pakage';
-        name = name.replace('.package.', '.pakage.')
+        name = name.replace(/\.package([.\[])/, '.pakage$1')
         name = name.replace(/\.package$/, '.pakage')
     }
-*/
+
     name = name.replace(/\.([0-9])/g, '._$1')
     name = name.replace(/^([0-9])/g, '_$1')
     return name;
@@ -221,10 +221,13 @@ export default class GenApiTypes {
         let old = <CacheModel>current[id];
         if (old) {
             if (old._model) {
-                (<any>current)._DEBUG = 1;
+                // Fix bug in /order
+                // order.catalog.publik.DedicatedServerCatalog
+                // vs
+                // order.catalog.publik.Catalog2
                 //console.log('colision', current[id]);
-                id = id + '2';
-                model.id += '2';
+                id = <string>aliasName.split('.').pop();
+                model.id = id;
                 current[id] = <CacheModel>{ _name: id, _alias: aliasName, _model: model };
                 console.log('colition To', current[id]);
             } else {
