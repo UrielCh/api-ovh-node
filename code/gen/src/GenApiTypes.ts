@@ -103,7 +103,7 @@ export default class GenApiTypes {
         this.models = <CacheModel>{ _name: '' }
     }
 
-    async listSchemas(): Promise<String[]> {
+    async listSchemas(): Promise<string[]> {
         let data: OvhIndex = await loadJson({ // https://eu.api.ovh.com/1.0/
             host: this.host, // eu.api.ovh.com
             port: this.port, // 443
