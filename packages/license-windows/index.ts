@@ -278,85 +278,85 @@ export class ApiLicenseWindows extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the LICENSE service
-  List available services
-  **/
+   * Operations about the LICENSE service
+   * List available services
+   */
   public get(path: '/license/windows'): Promise<string[]>;
   /**
-  Get the orderable Windows versions
-  Get the orderable Windows versions
-  **/
+   * Get the orderable Windows versions
+   * Get the orderable Windows versions
+   */
   public get(path: '/license/windows/orderableVersions', params: {ip: string}): Promise<LicenseWindowsOrderConfiguration[]>;
   /**
-  Your Windows license
-  Get this object properties
-  **/
+   * Your Windows license
+   * Get this object properties
+   */
   public get(path: '/license/windows/{serviceName}', params: {serviceName: string}): Promise<LicenseWindowsWindows>;
   /**
-  List the license.Option objects
-  options attached to this license
-  **/
+   * List the license.Option objects
+   * options attached to this license
+   */
   public get(path: '/license/windows/{serviceName}/option', params: {serviceName: string}): Promise<LicenseOptionLabel[]>;
   /**
-  Your License options
-  Get this object properties
-  **/
+   * Your License options
+   * Get this object properties
+   */
   public get(path: '/license/windows/{serviceName}/option/{label}', params: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseOption>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/license/windows/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the license.Task objects
-  tasks linked to this license
-  **/
+   * List the license.Task objects
+   * tasks linked to this license
+   */
   public get(path: '/license/windows/{serviceName}/tasks', params: {serviceName: string, action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<number[]>;
   /**
-  licenses Todos
-  Get this object properties
-  **/
+   * licenses Todos
+   * Get this object properties
+   */
   public get(path: '/license/windows/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<LicenseTask>;
-  public get(path: PathsLicenseWindowsGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsLicenseWindowsGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Your Windows license
-  Alter this object properties
-  **/
+   * Your Windows license
+   * Alter this object properties
+   */
   public put(path: '/license/windows/{serviceName}', params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: LicenseStateEnum, version?: LicenseWindowsOsVersionEnum}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/license/windows/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsLicenseWindowsPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsLicenseWindowsPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
+   * Confirm termination of your service
+   * Confirm termination of your service
+   */
   public post(path: '/license/windows/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
-  sqlServer operations
-  Link your own sql server license to this Windows license
-  **/
+   * sqlServer operations
+   * Link your own sql server license to this Windows license
+   */
   public post(path: '/license/windows/{serviceName}/sqlServer', params: {serviceName: string, licenseId: string, version: LicenseWindowsSqlVersionEnum}): Promise<LicenseTask>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
+   * Terminate your service
+   * Terminate your service
+   */
   public post(path: '/license/windows/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
-  public post(path: PathsLicenseWindowsPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsLicenseWindowsPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Your License options
-  release this Option
-  **/
+   * Your License options
+   * release this Option
+   */
   public delete(path: '/license/windows/{serviceName}/option/{label}', params: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseTask>;
-  public delete(path: PathsLicenseWindowsDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsLicenseWindowsDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

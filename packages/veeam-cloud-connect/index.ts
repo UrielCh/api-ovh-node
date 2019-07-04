@@ -275,85 +275,85 @@ export class ApiVeeamCloudConnect extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the VEEAMCC service
-  List available services
-  **/
+   * Operations about the VEEAMCC service
+   * List available services
+   */
   public get(path: '/veeamCloudConnect'): Promise<string[]>;
   /**
-  Veeam Cloud Connect account
-  Get this object properties
-  **/
+   * Veeam Cloud Connect account
+   * Get this object properties
+   */
   public get(path: '/veeamCloudConnect/{serviceName}', params: {serviceName: string}): Promise<VeeamCloudConnectAccount>;
   /**
-  List the veeamCloudConnect.BackupRepository objects
-  Veeam Backup Repository linked to this Veeam Cloud Connect account
-  **/
+   * List the veeamCloudConnect.BackupRepository objects
+   * Veeam Backup Repository linked to this Veeam Cloud Connect account
+   */
   public get(path: '/veeamCloudConnect/{serviceName}/backupRepository', params: {serviceName: string}): Promise<string[]>;
   /**
-  Veeam Backup Repository
-  Get this object properties
-  **/
+   * Veeam Backup Repository
+   * Get this object properties
+   */
   public get(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}', params: {serviceName: string, inventoryName: string}): Promise<VeeamCloudConnectBackupRepository>;
   /**
-  capabilities operations
-  Show capabilities of your current offer
-  **/
+   * capabilities operations
+   * Show capabilities of your current offer
+   */
   public get(path: '/veeamCloudConnect/{serviceName}/capabilities', params: {serviceName: string}): Promise<VeeamCloudConnectOfferCapabilities>;
   /**
-  orderableUpgrade operations
-  List the possible upgrades on your Veeam Cloud Connect account
-  **/
+   * orderableUpgrade operations
+   * List the possible upgrades on your Veeam Cloud Connect account
+   */
   public get(path: '/veeamCloudConnect/{serviceName}/orderableUpgrade', params: {serviceName: string}): Promise<VeeamCloudConnectOffer[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/veeamCloudConnect/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the veeamCloudConnect.Task objects
-  Tasks associated with Cloud Tenant
-  **/
+   * List the veeamCloudConnect.Task objects
+   * Tasks associated with Cloud Tenant
+   */
   public get(path: '/veeamCloudConnect/{serviceName}/task', params: {serviceName: string, name?: string, state?: VeeamCloudConnectTaskStateEnum}): Promise<number[]>;
   /**
-  Operation with the Cloud Tenant Account
-  Get this object properties
-  **/
+   * Operation with the Cloud Tenant Account
+   * Get this object properties
+   */
   public get(path: '/veeamCloudConnect/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<VeeamCloudConnectTask>;
-  public get(path: PathsVeeamCloudConnectGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsVeeamCloudConnectGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/veeamCloudConnect/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsVeeamCloudConnectPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsVeeamCloudConnectPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  List the veeamCloudConnect.BackupRepository objects
-  Add a new Backup Repository to your professional account
-  **/
+   * List the veeamCloudConnect.BackupRepository objects
+   * Add a new Backup Repository to your professional account
+   */
   public post(path: '/veeamCloudConnect/{serviceName}/backupRepository', params: {serviceName: string}): Promise<VeeamCloudConnectTask[]>;
   /**
-  upgradeQuota operations
-  Change your quota
-  **/
+   * upgradeQuota operations
+   * Change your quota
+   */
   public post(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota', params: {serviceName: string, inventoryName: string, newQuota: number}): Promise<VeeamCloudConnectTask[]>;
   /**
-  resetPassword operations
-  Reset your Cloud Tenant Password
-  **/
+   * resetPassword operations
+   * Reset your Cloud Tenant Password
+   */
   public post(path: '/veeamCloudConnect/{serviceName}/resetPassword', params: {serviceName: string}): Promise<VeeamCloudConnectTask>;
-  public post(path: PathsVeeamCloudConnectPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsVeeamCloudConnectPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Veeam Backup Repository
-  Delete this backup Repository. 
-  **/
+   * Veeam Backup Repository
+   * Delete this backup Repository. 
+   */
   public delete(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}', params: {serviceName: string, inventoryName: string}): Promise<VeeamCloudConnectTask[]>;
-  public delete(path: PathsVeeamCloudConnectDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsVeeamCloudConnectDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

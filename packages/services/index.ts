@@ -360,21 +360,21 @@ export class ApiServices extends OvhWrapper {
     super(engine);
   }
   /**
-  Get list of your service details
-  List available services
-  **/
+   * Get list of your service details
+   * List available services
+   */
   public get(path: '/services', params: {orderBy?: string, routes?: string, sort?: string}): Promise<number[]>;
   /**
-  Get list of your service details
-  Get details about a service
-  **/
+   * Get list of your service details
+   * Get details about a service
+   */
   public get(path: '/services/{serviceId}', params: {serviceId: number}): Promise<ServicesExpandedService>;
   /**
-  Engagement for a given service
-  Get engagement details
-  **/
+   * Engagement for a given service
+   * Get engagement details
+   */
   public get(path: '/services/{serviceId}/billing/engagement', params: {serviceId: number}): Promise<ServicesBillingEngagementEngagement>;
-  public get(path: PathsServicesGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsServicesGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
 }

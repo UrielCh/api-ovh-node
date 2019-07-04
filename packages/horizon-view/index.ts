@@ -452,230 +452,230 @@ export class ApiHorizonView extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the HORIZONVIEW service
-  List available services
-  **/
+   * Operations about the HORIZONVIEW service
+   * List available services
+   */
   public get(path: '/horizonView'): Promise<string[]>;
   /**
-  Cloud Desktop Infrastructure Datacenter
-  Get this object properties
-  **/
+   * Cloud Desktop Infrastructure Datacenter
+   * Get this object properties
+   */
   public get(path: '/horizonView/{serviceName}', params: {serviceName: string}): Promise<HorizonViewDatacenter>;
   /**
-  List the horizonView.Pool objects
-  Pool associated with this Datacenter
-  **/
+   * List the horizonView.Pool objects
+   * Pool associated with this Datacenter
+   */
   public get(path: '/horizonView/{serviceName}/accessPoint', params: {serviceName: string}): Promise<number[]>;
   /**
-  All informations about access point
-  Get this object properties
-  **/
+   * All informations about access point
+   * Get this object properties
+   */
   public get(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}', params: {serviceName: string, accessPointId: number}): Promise<HorizonViewPool>;
   /**
-  List the horizonView.CustomerNetworkPool objects
-  You can reach from the Desktops your private network
-  **/
+   * List the horizonView.CustomerNetworkPool objects
+   * You can reach from the Desktops your private network
+   */
   public get(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork', params: {serviceName: string, accessPointId: number}): Promise<number[]>;
   /**
-  You can reach from your virtual desktops, your customer network 
-  Get this object properties
-  **/
+   * You can reach from your virtual desktops, your customer network 
+   * Get this object properties
+   */
   public get(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}', params: {serviceName: string, accessPointId: number, customerNetworkId: number}): Promise<HorizonViewCustomerNetworkPool>;
   /**
-  List the horizonView.CustomerNetwork objects
-  You can reach from the Desktops your private network
-  **/
+   * List the horizonView.CustomerNetwork objects
+   * You can reach from the Desktops your private network
+   */
   public get(path: '/horizonView/{serviceName}/customerNetwork', params: {serviceName: string}): Promise<number[]>;
   /**
-  You can reach from your virtual desktops, your customer network 
-  Get this object properties
-  **/
+   * You can reach from your virtual desktops, your customer network 
+   * Get this object properties
+   */
   public get(path: '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}', params: {serviceName: string, customerNetworkId: number}): Promise<HorizonViewCustomerNetwork>;
   /**
-  Horizon View as a Service
-  Get this object properties
-  **/
+   * Horizon View as a Service
+   * Get this object properties
+   */
   public get(path: '/horizonView/{serviceName}/dedicatedHorizon', params: {serviceName: string}): Promise<HorizonViewDedicatedHorizon>;
   /**
-  List the horizonView.CustomerUser objects
-  Account to access to your pool
-  **/
+   * List the horizonView.CustomerUser objects
+   * Account to access to your pool
+   */
   public get(path: '/horizonView/{serviceName}/dedicatedHorizon/customerUser', params: {serviceName: string}): Promise<string[]>;
   /**
-  Horizon As A Service Customer  User
-  Get this object properties
-  **/
+   * Horizon As A Service Customer  User
+   * Get this object properties
+   */
   public get(path: '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}', params: {serviceName: string, username: string}): Promise<HorizonViewCustomerUser>;
   /**
-  List the horizonView.Task objects
-  Tasks associated with this Dedicated Horizon
-  **/
+   * List the horizonView.Task objects
+   * Tasks associated with this Dedicated Horizon
+   */
   public get(path: '/horizonView/{serviceName}/dedicatedHorizon/task', params: {serviceName: string, state?: HorizonViewTaskStateEnum}): Promise<number[]>;
   /**
-  Operation on a Horizon View component
-  Get this object properties
-  **/
+   * Operation on a Horizon View component
+   * Get this object properties
+   */
   public get(path: '/horizonView/{serviceName}/dedicatedHorizon/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<HorizonViewTask>;
   /**
-  Horizon As A Service User
-  Get this object properties
-  **/
+   * Horizon As A Service User
+   * Get this object properties
+   */
   public get(path: '/horizonView/{serviceName}/dedicatedHorizon/user', params: {serviceName: string}): Promise<HorizonViewUser>;
   /**
-  List the horizonView.DomainTrust objects
-  List all Active Directories linked to your CDI Active Directory
-  **/
+   * List the horizonView.DomainTrust objects
+   * List all Active Directories linked to your CDI Active Directory
+   */
   public get(path: '/horizonView/{serviceName}/domainTrust', params: {serviceName: string}): Promise<number[]>;
   /**
-  List all Active Directories linked to your CDI Active Directory
-  Get this object properties
-  **/
+   * List all Active Directories linked to your CDI Active Directory
+   * Get this object properties
+   */
   public get(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}', params: {serviceName: string, domainTrustId: number}): Promise<HorizonViewDomainTrust>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/horizonView/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsHorizonViewGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsHorizonViewGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/horizonView/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsHorizonViewPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsHorizonViewPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  List the horizonView.Pool objects
-  Add new access point to create a new network
-  **/
+   * List the horizonView.Pool objects
+   * Add new access point to create a new network
+   */
   public post(path: '/horizonView/{serviceName}/accessPoint', params: {serviceName: string, poolType: HorizonViewPoolType, privateBlock?: string, privateVlan?: number, vrouterPoolPublicIp?: string}): Promise<HorizonViewTask[]>;
   /**
-  changeSessionTimeout operations
-  Manage your session Timeout on Unified Access Gateway
-  **/
+   * changeSessionTimeout operations
+   * Manage your session Timeout on Unified Access Gateway
+   */
   public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout', params: {serviceName: string, accessPointId: number, expiration: number, onSingleAP?: HorizonViewAccessPointTypeEnum}): Promise<HorizonViewTask>;
   /**
-  List the horizonView.CustomerNetworkPool objects
-  Add a new network 
-  **/
+   * List the horizonView.CustomerNetworkPool objects
+   * Add a new network 
+   */
   public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork', params: {serviceName: string, accessPointId: number, network: string}): Promise<HorizonViewTask[]>;
   /**
-  disableTwoFA operations
-  Disable two factor authentication on your pool
-  **/
+   * disableTwoFA operations
+   * Disable two factor authentication on your pool
+   */
   public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA', params: {serviceName: string, accessPointId: number}): Promise<HorizonViewTask>;
   /**
-  disableWindowsUsernameOption operations
-  Disable windows Username option on Unified Access Gateway
-  **/
+   * disableWindowsUsernameOption operations
+   * Disable windows Username option on Unified Access Gateway
+   */
   public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption', params: {serviceName: string, accessPointId: number, onSingleAP?: HorizonViewAccessPointTypeEnum}): Promise<HorizonViewTask>;
   /**
-  enableTwoFA operations
-  Enable two factor authentication on your pool
-  **/
+   * enableTwoFA operations
+   * Enable two factor authentication on your pool
+   */
   public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA', params: {serviceName: string, accessPointId: number, onSingleAP?: HorizonViewAccessPointTypeEnum, radiusIp: string, secret: string}): Promise<HorizonViewTask>;
   /**
-  enableWindowsUsernameOption operations
-  Enable windows Username option on Unified Access Gateway
-  **/
+   * enableWindowsUsernameOption operations
+   * Enable windows Username option on Unified Access Gateway
+   */
   public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption', params: {serviceName: string, accessPointId: number, onSingleAP?: HorizonViewAccessPointTypeEnum}): Promise<HorizonViewTask>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
+   * Confirm termination of your service
+   * Confirm termination of your service
+   */
   public post(path: '/horizonView/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
-  List the horizonView.CustomerNetwork objects
-  Add a new network 
-  **/
+   * List the horizonView.CustomerNetwork objects
+   * Add a new network 
+   */
   public post(path: '/horizonView/{serviceName}/customerNetwork', params: {serviceName: string, name: string, network: string}): Promise<HorizonViewTask[]>;
   /**
-  List the horizonView.CustomerUser objects
-  Create a new customer user 
-  **/
+   * List the horizonView.CustomerUser objects
+   * Create a new customer user 
+   */
   public post(path: '/horizonView/{serviceName}/dedicatedHorizon/customerUser', params: {serviceName: string, email?: string, password?: string, username: string}): Promise<HorizonViewTask[]>;
   /**
-  changePassword operations
-  Change Horizon View Customer  user password
-  **/
+   * changePassword operations
+   * Change Horizon View Customer  user password
+   */
   public post(path: '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword', params: {serviceName: string, username: string, password?: string}): Promise<HorizonViewTask>;
   /**
-  disableStorageAccelerator operations
-  Disable the View Storage Accelerator option on VCenter
-  **/
+   * disableStorageAccelerator operations
+   * Disable the View Storage Accelerator option on VCenter
+   */
   public post(path: '/horizonView/{serviceName}/dedicatedHorizon/disableStorageAccelerator', params: {serviceName: string}): Promise<HorizonViewTask>;
   /**
-  enableStorageAccelerator operations
-  Enable the View Storage Accelerator option on VCenter
-  **/
+   * enableStorageAccelerator operations
+   * Enable the View Storage Accelerator option on VCenter
+   */
   public post(path: '/horizonView/{serviceName}/dedicatedHorizon/enableStorageAccelerator', params: {serviceName: string}): Promise<HorizonViewTask>;
   /**
-  changePassword operations
-  Change Horizon View user password
-  **/
+   * changePassword operations
+   * Change Horizon View user password
+   */
   public post(path: '/horizonView/{serviceName}/dedicatedHorizon/user/changePassword', params: {serviceName: string, password?: string}): Promise<HorizonViewTask>;
   /**
-  changeProperties operations
-  Change horizon view user properties
-  **/
+   * changeProperties operations
+   * Change horizon view user properties
+   */
   public post(path: '/horizonView/{serviceName}/dedicatedHorizon/user/changeProperties', params: {serviceName: string, email?: string}): Promise<HorizonViewTask>;
   /**
-  List the horizonView.DomainTrust objects
-  Link your Active Directory to your CDI Active Directory
-  **/
+   * List the horizonView.DomainTrust objects
+   * Link your Active Directory to your CDI Active Directory
+   */
   public post(path: '/horizonView/{serviceName}/domainTrust', params: {serviceName: string, activeDirectoryIP: string, dns1?: string, dns2?: string, domain: string}): Promise<HorizonViewTask[]>;
   /**
-  addChildDomain operations
-  Add a child domain for this domain.
-  **/
+   * addChildDomain operations
+   * Add a child domain for this domain.
+   */
   public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain', params: {serviceName: string, domainTrustId: number, activeDirectoryIP: string, domain: string, passphrase: string, serviceAccountPassword: string}): Promise<HorizonViewTask>;
   /**
-  addDomainController operations
-  Add a Domain Controller for this domain.
-  **/
+   * addDomainController operations
+   * Add a Domain Controller for this domain.
+   */
   public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController', params: {serviceName: string, domainTrustId: number, domain: string, domainControllerIp: string}): Promise<HorizonViewTask>;
   /**
-  addDomainUserOnComposer operations
-  Add a domain user to add your desktop in your Active Directory
-  **/
+   * addDomainUserOnComposer operations
+   * Add a domain user to add your desktop in your Active Directory
+   */
   public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer', params: {serviceName: string, domainTrustId: number, domain: string, password: string, username: string}): Promise<HorizonViewTask>;
   /**
-  createTrust operations
-  Change Horizon View user password
-  **/
+   * createTrust operations
+   * Change Horizon View user password
+   */
   public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust', params: {serviceName: string, domainTrustId: number, passphrase: string, serviceAccountPassword: string}): Promise<HorizonViewTask>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
+   * Terminate your service
+   * Terminate your service
+   */
   public post(path: '/horizonView/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
-  public post(path: PathsHorizonViewPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsHorizonViewPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  All informations about access point
-  Delete this access point 
-  **/
+   * All informations about access point
+   * Delete this access point 
+   */
   public delete(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}', params: {serviceName: string, accessPointId: number}): Promise<HorizonViewTask[]>;
   /**
-  You can reach from your virtual desktops, your customer network 
-  Delete this Customer Network
-  **/
+   * You can reach from your virtual desktops, your customer network 
+   * Delete this Customer Network
+   */
   public delete(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}', params: {serviceName: string, accessPointId: number, customerNetworkId: number}): Promise<HorizonViewTask[]>;
   /**
-  You can reach from your virtual desktops, your customer network 
-  Delete this Customer Network
-  **/
+   * You can reach from your virtual desktops, your customer network 
+   * Delete this Customer Network
+   */
   public delete(path: '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}', params: {serviceName: string, customerNetworkId: number}): Promise<HorizonViewTask[]>;
   /**
-  Horizon As A Service Customer  User
-  Delete this Customer User
-  **/
+   * Horizon As A Service Customer  User
+   * Delete this Customer User
+   */
   public delete(path: '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}', params: {serviceName: string, username: string}): Promise<HorizonViewTask[]>;
-  public delete(path: PathsHorizonViewDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsHorizonViewDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

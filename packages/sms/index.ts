@@ -1128,545 +1128,545 @@ export class ApiSms extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the VOIP service
-  List available services
-  **/
+   * Operations about the VOIP service
+   * List available services
+   */
   public get(path: '/sms'): Promise<string[]>;
   /**
-  Get informations about the given ptt code
-  Get informations about the given ptt code
-  **/
+   * Get informations about the given ptt code
+   * Get informations about the given ptt code
+   */
   public get(path: '/sms/ptts', params: {ptt: number}): Promise<SmsPttDetails>;
   /**
-  Operations about the VOIP service
-  List available services
-  **/
+   * Operations about the VOIP service
+   * List available services
+   */
   public get(path: '/sms/virtualNumbers'): Promise<string[]>;
   /**
-  Virtual numbers
-  Get this object properties
-  **/
+   * Virtual numbers
+   * Get this object properties
+   */
   public get(path: '/sms/virtualNumbers/{number}', params: {number: string}): Promise<SmsVirtualNumberGenericService>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/sms/virtualNumbers/{number}/serviceInfos', params: {number: string}): Promise<ServicesService>;
   /**
-  SMS details
-  Get this object properties
-  **/
+   * SMS details
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}', params: {serviceName: string}): Promise<SmsAccount>;
   /**
-  List the sms.Blacklist objects
-  Numbers blacklisted associated to the sms account
-  **/
+   * List the sms.Blacklist objects
+   * Numbers blacklisted associated to the sms account
+   */
   public get(path: '/sms/{serviceName}/blacklists', params: {serviceName: string}): Promise<string[]>;
   /**
-  SMS blacklist
-  Get this object properties
-  **/
+   * SMS blacklist
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/blacklists/{number}', params: {serviceName: string, number: string}): Promise<SmsBlacklist>;
   /**
-  document operations
-  Get the /me/document id generated
-  **/
+   * document operations
+   * Get the /me/document id generated
+   */
   public get(path: '/sms/{serviceName}/document', params: {serviceName: string, 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, tag?: string, wayType: SmsDocumentWayTypeEnum}): Promise<string>;
   /**
-  exceptions operations
-  Describe filter exceptions in sms sending from a specific receiver.
-  **/
+   * exceptions operations
+   * Describe filter exceptions in sms sending from a specific receiver.
+   */
   public get(path: '/sms/{serviceName}/exceptions', params: {serviceName: string, receiver: string}): Promise<SmsException[]>;
   /**
-  List the sms.HlrLookupNumber objects
-  Home Location Register informations. Give informations about a given cellular phone.
-  **/
+   * List the sms.HlrLookupNumber objects
+   * Home Location Register informations. Give informations about a given cellular phone.
+   */
   public get(path: '/sms/{serviceName}/hlr', params: {serviceName: string}): Promise<number[]>;
   /**
-  Home Location Register informations. Give informations about a given cellular phone.
-  Get this object properties
-  **/
+   * Home Location Register informations. Give informations about a given cellular phone.
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/hlr/{id}', params: {serviceName: string, id: number}): Promise<SmsHlrLookupNumber>;
   /**
-  Sms operator informations
-  Get this object properties
-  **/
+   * Sms operator informations
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/hlr/{id}/operator', params: {serviceName: string, id: number}): Promise<SmsHlr>;
   /**
-  List the sms.Incoming objects
-  Sms received associated to the sms account
-  **/
+   * List the sms.Incoming objects
+   * Sms received associated to the sms account
+   */
   public get(path: '/sms/{serviceName}/incoming', params: {serviceName: string, 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, sender?: string, tag?: string}): Promise<number[]>;
   /**
-  Sms history of sms incoming received
-  Get this object properties
-  **/
+   * Sms history of sms incoming received
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/incoming/{id}', params: {serviceName: string, id: number}): Promise<SmsIncoming>;
   /**
-  List the sms.Job objects
-  Sms in pending associated to the sms account
-  **/
+   * List the sms.Job objects
+   * Sms in pending associated to the sms account
+   */
   public get(path: '/sms/{serviceName}/jobs', params: {serviceName: string}): Promise<number[]>;
   /**
-  Sms job
-  Get this object properties
-  **/
+   * Sms job
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/jobs/{id}', params: {serviceName: string, id: number}): Promise<SmsJob>;
   /**
-  List the sms.Outgoing objects
-  Sms sent associated to the sms account
-  **/
+   * List the sms.Outgoing objects
+   * Sms sent associated to the sms account
+   */
   public get(path: '/sms/{serviceName}/outgoing', params: {serviceName: string, 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string}): Promise<number[]>;
   /**
-  Sms history of sms outgoing sent
-  Get this object properties
-  **/
+   * Sms history of sms outgoing sent
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/outgoing/{id}', params: {serviceName: string, id: number}): Promise<SmsOutgoing>;
   /**
-  Sms operator informations
-  Get this object properties
-  **/
+   * Sms operator informations
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/outgoing/{id}/hlr', params: {serviceName: string, id: number}): Promise<SmsHlr>;
   /**
-  List the sms.Phonebook objects
-  Return phonebooks associated to this account
-  **/
+   * List the sms.Phonebook objects
+   * Return phonebooks associated to this account
+   */
   public get(path: '/sms/{serviceName}/phonebooks', params: {serviceName: string}): Promise<string[]>;
   /**
-  Phone book
-  Get this object properties
-  **/
+   * Phone book
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/phonebooks/{bookKey}', params: {serviceName: string, bookKey: string}): Promise<SmsPhonebook>;
   /**
-  export operations
-  Export the phonebook's contacts
-  **/
+   * export operations
+   * Export the phonebook's contacts
+   */
   public get(path: '/sms/{serviceName}/phonebooks/{bookKey}/export', params: {serviceName: string, bookKey: string, format: TelephonyContactsExportFormatsEnum}): Promise<TelephonyPcsFile>;
   /**
-  List the sms.PhonebookContact objects
-  Phonebook contacts
-  **/
+   * List the sms.PhonebookContact objects
+   * Phonebook contacts
+   */
   public get(path: '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact', params: {serviceName: string, bookKey: string}): Promise<number[]>;
   /**
-  Phone book contact
-  Get this object properties
-  **/
+   * Phone book contact
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}', params: {serviceName: string, bookKey: string, id: number}): Promise<SmsPhonebookContact>;
   /**
-  List the sms.Receiver objects
-  Receivers preloaded from text or csv document file
-  **/
+   * List the sms.Receiver objects
+   * Receivers preloaded from text or csv document file
+   */
   public get(path: '/sms/{serviceName}/receivers', params: {serviceName: string}): Promise<number[]>;
   /**
-  Sms receivers preloaded
-  Get this object properties
-  **/
+   * Sms receivers preloaded
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/receivers/{slotId}', params: {serviceName: string, slotId: number}): Promise<SmsReceiver>;
   /**
-  csv operations
-  Get the document data container
-  **/
+   * csv operations
+   * Get the document data container
+   */
   public get(path: '/sms/{serviceName}/receivers/{slotId}/csv', params: {serviceName: string, slotId: number}): Promise<string>;
   /**
-  seeOffers operations
-  Describe SMS offers available.
-  **/
+   * seeOffers operations
+   * Describe SMS offers available.
+   */
   public get(path: '/sms/{serviceName}/seeOffers', params: {serviceName: string, countryCurrencyPrice: ReferenceCountryEnum, countryDestination: SmsCountryEnum, quantity: SmsPackQuantityEnum}): Promise<SmsPackOffer[]>;
   /**
-  List the sms.Sender objects
-  Senders allowed associated to the sms account
-  **/
+   * List the sms.Sender objects
+   * Senders allowed associated to the sms account
+   */
   public get(path: '/sms/{serviceName}/senders', params: {serviceName: string}): Promise<string[]>;
   /**
-  SMS senders
-  Get this object properties
-  **/
+   * SMS senders
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/senders/{sender}', params: {serviceName: string, sender: string}): Promise<SmsSender>;
   /**
-  sendersAvailableForValidation operations
-  The senders that are attached to your personal informations or OVH services and that can be automatically validated
-  **/
+   * sendersAvailableForValidation operations
+   * The senders that are attached to your personal informations or OVH services and that can be automatically validated
+   */
   public get(path: '/sms/{serviceName}/sendersAvailableForValidation', params: {serviceName: string, referer?: SmsSenderRefererEnum}): Promise<SmsSenderAvailable[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the sms.Task objects
-  Operations on a SMS service
-  **/
+   * List the sms.Task objects
+   * Operations on a SMS service
+   */
   public get(path: '/sms/{serviceName}/task', params: {serviceName: string, status?: TelephonyTaskStatusEnum}): Promise<number[]>;
   /**
-  Operation on a SMS service
-  Get this object properties
-  **/
+   * Operation on a SMS service
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<SmsTask>;
   /**
-  List the sms.TemplateControl objects
-  Template pattern filled up for moderation (Needed to send in US country)
-  **/
+   * List the sms.TemplateControl objects
+   * Template pattern filled up for moderation (Needed to send in US country)
+   */
   public get(path: '/sms/{serviceName}/templatesControl', params: {serviceName: string}): Promise<string[]>;
   /**
-  Sms template for moderation (Needed to send in US country)
-  Get this object properties
-  **/
+   * Sms template for moderation (Needed to send in US country)
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/templatesControl/{name}', params: {serviceName: string, name: string}): Promise<SmsTemplateControl>;
   /**
-  List the sms.User objects
-  Users associated to the sms account
-  **/
+   * List the sms.User objects
+   * Users associated to the sms account
+   */
   public get(path: '/sms/{serviceName}/users', params: {serviceName: string}): Promise<string[]>;
   /**
-  SMS users
-  Get this object properties
-  **/
+   * SMS users
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/users/{login}', params: {serviceName: string, login: string}): Promise<SmsUser>;
   /**
-  document operations
-  Get the /me/document id generated
-  **/
+   * document operations
+   * Get the /me/document id generated
+   */
   public get(path: '/sms/{serviceName}/users/{login}/document', params: {serviceName: string, login: string, 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, tag?: string, wayType: SmsDocumentWayTypeEnum}): Promise<string>;
   /**
-  List the sms.Incoming objects
-  Sms received associated to the sms user
-  **/
+   * List the sms.Incoming objects
+   * Sms received associated to the sms user
+   */
   public get(path: '/sms/{serviceName}/users/{login}/incoming', params: {serviceName: string, login: string, sender?: string, tag?: string}): Promise<number[]>;
   /**
-  Sms history of sms incoming received
-  Get this object properties
-  **/
+   * Sms history of sms incoming received
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/users/{login}/incoming/{id}', params: {serviceName: string, login: string, id: number}): Promise<SmsIncoming>;
   /**
-  List the sms.Job objects
-  Sms in pending associated to the sms user
-  **/
+   * List the sms.Job objects
+   * Sms in pending associated to the sms user
+   */
   public get(path: '/sms/{serviceName}/users/{login}/jobs', params: {serviceName: string, login: string}): Promise<number[]>;
   /**
-  Sms job
-  Get this object properties
-  **/
+   * Sms job
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/users/{login}/jobs/{id}', params: {serviceName: string, login: string, id: number}): Promise<SmsJob>;
   /**
-  List the sms.Outgoing objects
-  Sms sent associated to the sms user
-  **/
+   * List the sms.Outgoing objects
+   * Sms sent associated to the sms user
+   */
   public get(path: '/sms/{serviceName}/users/{login}/outgoing', params: {serviceName: string, login: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string}): Promise<number[]>;
   /**
-  Sms history of sms outgoing sent
-  Get this object properties
-  **/
+   * Sms history of sms outgoing sent
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/users/{login}/outgoing/{id}', params: {serviceName: string, login: string, id: number}): Promise<SmsOutgoing>;
   /**
-  Sms operator informations
-  Get this object properties
-  **/
+   * Sms operator informations
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/users/{login}/outgoing/{id}/hlr', params: {serviceName: string, login: string, id: number}): Promise<SmsHlr>;
   /**
-  List the sms.Receiver objects
-  Receivers preloaded from text or csv document file
-  **/
+   * List the sms.Receiver objects
+   * Receivers preloaded from text or csv document file
+   */
   public get(path: '/sms/{serviceName}/users/{login}/receivers', params: {serviceName: string, login: string}): Promise<number[]>;
   /**
-  Sms receivers preloaded
-  Get this object properties
-  **/
+   * Sms receivers preloaded
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/users/{login}/receivers/{slotId}', params: {serviceName: string, login: string, slotId: number}): Promise<SmsReceiver>;
   /**
-  csv operations
-  Get the document data container
-  **/
+   * csv operations
+   * Get the document data container
+   */
   public get(path: '/sms/{serviceName}/users/{login}/receivers/{slotId}/csv', params: {serviceName: string, login: string, slotId: number}): Promise<string>;
   /**
-  List the sms.VirtualNumber objects
-  Virtual numbers associated to the sms account
-  **/
+   * List the sms.VirtualNumber objects
+   * Virtual numbers associated to the sms account
+   */
   public get(path: '/sms/{serviceName}/virtualNumbers', params: {serviceName: string}): Promise<string[]>;
   /**
-  Virtual numbers
-  Get this object properties
-  **/
+   * Virtual numbers
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/virtualNumbers/{number}', params: {serviceName: string, number: string}): Promise<SmsVirtualNumber>;
   /**
-  The web access for your virtual number chat application
-  Get this object properties
-  **/
+   * The web access for your virtual number chat application
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/virtualNumbers/{number}/chatAccess', params: {serviceName: string, number: string}): Promise<SmsChatAccess>;
   /**
-  List the sms.Incoming objects
-  Sms received associated to the sms account
-  **/
+   * List the sms.Incoming objects
+   * Sms received associated to the sms account
+   */
   public get(path: '/sms/{serviceName}/virtualNumbers/{number}/incoming', params: {serviceName: string, number: string, 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, sender?: string, tag?: string}): Promise<number[]>;
   /**
-  Sms history of sms incoming received
-  Get this object properties
-  **/
+   * Sms history of sms incoming received
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/virtualNumbers/{number}/incoming/{id}', params: {serviceName: string, number: string, id: number}): Promise<SmsIncoming>;
   /**
-  List the sms.VirtualNumberJob objects
-  Sms in pending associated to the sms account
-  **/
+   * List the sms.VirtualNumberJob objects
+   * Sms in pending associated to the sms account
+   */
   public get(path: '/sms/{serviceName}/virtualNumbers/{number}/jobs', params: {serviceName: string, number: string}): Promise<number[]>;
   /**
-  Sms job
-  Get this object properties
-  **/
+   * Sms job
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/virtualNumbers/{number}/jobs/{id}', params: {serviceName: string, number: string, id: number}): Promise<SmsVirtualNumberJob>;
   /**
-  List the sms.Outgoing objects
-  Sms sent associated to the sms account
-  **/
+   * List the sms.Outgoing objects
+   * Sms sent associated to the sms account
+   */
   public get(path: '/sms/{serviceName}/virtualNumbers/{number}/outgoing', params: {serviceName: string, number: string, 'creationDatetime.from'?: string, 'creationDatetime.to'?: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string}): Promise<number[]>;
   /**
-  Sms history of sms outgoing sent
-  Get this object properties
-  **/
+   * Sms history of sms outgoing sent
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}', params: {serviceName: string, number: string, id: number}): Promise<SmsOutgoing>;
   /**
-  Sms operator informations
-  Get this object properties
-  **/
+   * Sms operator informations
+   * Get this object properties
+   */
   public get(path: '/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}/hlr', params: {serviceName: string, number: string, id: number}): Promise<SmsHlr>;
-  public get(path: PathsSmsGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsSmsGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/sms/virtualNumbers/{number}/serviceInfos', params: {number: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
-  SMS details
-  Alter this object properties
-  **/
+   * SMS details
+   * Alter this object properties
+   */
   public put(path: '/sms/{serviceName}', params: {serviceName: string, automaticRecreditAmount?: SmsPackQuantityAutomaticRecreditEnum, callBack?: string, creditThresholdForAutomaticRecredit?: number, creditsHoldByQuota?: number, creditsLeft?: number, description?: string, name?: string, smsResponse?: SmsResponse, status?: SmsStatusAccountEnum, stopCallBack?: string, templates?: SmsTemplates, userQuantityWithQuota?: number}): Promise<void>;
   /**
-  Phone book
-  Alter this object properties
-  **/
+   * Phone book
+   * Alter this object properties
+   */
   public put(path: '/sms/{serviceName}/phonebooks/{bookKey}', params: {serviceName: string, bookKey: string, name?: string, phoneKey?: string}): Promise<void>;
   /**
-  Phone book contact
-  Alter this object properties
-  **/
+   * Phone book contact
+   * Alter this object properties
+   */
   public put(path: '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}', params: {serviceName: string, bookKey: string, id: number, group?: string, homeMobile?: string, homePhone?: string, name?: string, surname?: string, workMobile?: string, workPhone?: string}): Promise<void>;
   /**
-  Sms receivers preloaded
-  Alter this object properties
-  **/
+   * Sms receivers preloaded
+   * Alter this object properties
+   */
   public put(path: '/sms/{serviceName}/receivers/{slotId}', params: {serviceName: string, slotId: number, autoUpdate?: boolean, canAutoUpdate?: boolean, datetime?: string, description?: string, records?: number}): Promise<void>;
   /**
-  SMS senders
-  Alter this object properties
-  **/
+   * SMS senders
+   * Alter this object properties
+   */
   public put(path: '/sms/{serviceName}/senders/{sender}', params: {serviceName: string, sender: string, comment?: string, description?: string, referer?: SmsRefererSenderEnum, status?: SmsStatusSenderEnum, type?: SmsTypeSenderEnum, validationMedia?: string}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/sms/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
-  Sms template for moderation (Needed to send in US country)
-  Alter this object properties
-  **/
+   * Sms template for moderation (Needed to send in US country)
+   * Alter this object properties
+   */
   public put(path: '/sms/{serviceName}/templatesControl/{name}', params: {serviceName: string, name: string, activity?: SmsTypeTemplateEnum, comment?: string, datetime?: string, description?: string, message?: string, status?: SmsStatusSenderEnum}): Promise<void>;
   /**
-  SMS users
-  Alter this object properties
-  **/
+   * SMS users
+   * Alter this object properties
+   */
   public put(path: '/sms/{serviceName}/users/{login}', params: {serviceName: string, login: string, alertThresholdInformations?: SmsAlertThreshold, callBack?: string, ipRestrictions?: string[], password?: string, quotaInformations?: SmsQuota, stopCallBack?: string}): Promise<void>;
   /**
-  Sms receivers preloaded
-  Alter this object properties
-  **/
+   * Sms receivers preloaded
+   * Alter this object properties
+   */
   public put(path: '/sms/{serviceName}/users/{login}/receivers/{slotId}', params: {serviceName: string, login: string, slotId: number, autoUpdate?: boolean, canAutoUpdate?: boolean, datetime?: string, description?: string, records?: number}): Promise<void>;
-  public put(path: PathsSmsPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsSmsPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  List the sms.HlrLookupNumber objects
-  Add one or several sending hlr lookup request
-  **/
+   * List the sms.HlrLookupNumber objects
+   * Add one or several sending hlr lookup request
+   */
   public post(path: '/sms/{serviceName}/hlr', params: {serviceName: string, receivers?: string[], receiversDocumentUrl?: string}): Promise<SmsSmsSendingReport>;
   /**
-  List the sms.Job objects
-  Add one or several sending jobs
-  **/
+   * List the sms.Job objects
+   * Add one or several sending jobs
+   */
   public post(path: '/sms/{serviceName}/jobs', params: {serviceName: string, charset?: SmsCharsetEnum, class?: SmsClassEnum, coding?: SmsCodingEnum, differedPeriod?: number, message: string, noStopClause?: boolean, priority?: SmsPriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, sender?: string, senderForResponse?: boolean, tag?: string, validityPeriod?: number}): Promise<SmsSmsSendingReport>;
   /**
-  List the sms.Phonebook objects
-  Add a phonebook. Return the bookKey.
-  **/
+   * List the sms.Phonebook objects
+   * Add a phonebook. Return the bookKey.
+   */
   public post(path: '/sms/{serviceName}/phonebooks', params: {serviceName: string, name: string}): Promise<string>;
   /**
-  import operations
-  Import a contacts file. Supported formats are Excel (.xls and .xlsx) and CSV
-  **/
+   * import operations
+   * Import a contacts file. Supported formats are Excel (.xls and .xlsx) and CSV
+   */
   public post(path: '/sms/{serviceName}/phonebooks/{bookKey}/import', params: {serviceName: string, bookKey: string, documentId: string}): Promise<TelephonyTask>;
   /**
-  List the sms.PhonebookContact objects
-  Create a phonebook contact. Return identifier of the phonebook contact.
-  **/
+   * List the sms.PhonebookContact objects
+   * Create a phonebook contact. Return identifier of the phonebook contact.
+   */
   public post(path: '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact', params: {serviceName: string, bookKey: string, group: string, homeMobile?: string, homePhone?: string, name: string, surname: string, workMobile?: string, workPhone?: string}): Promise<number>;
   /**
-  List the sms.Receiver objects
-  Add a new document of csv receivers
-  **/
+   * List the sms.Receiver objects
+   * Add a new document of csv receivers
+   */
   public post(path: '/sms/{serviceName}/receivers', params: {serviceName: string, autoUpdate: boolean, csvUrl?: string, description: string, documentId?: string, slotId: number}): Promise<SmsReceiver>;
   /**
-  clean operations
-  Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.
-  **/
+   * clean operations
+   * Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.
+   */
   public post(path: '/sms/{serviceName}/receivers/{slotId}/clean', params: {serviceName: string, slotId: number, freemium: boolean, priceOnly: boolean}): Promise<SmsReceiversAsynchronousCleanReport>;
   /**
-  List the sms.Sender objects
-  Create the sms sender given
-  **/
+   * List the sms.Sender objects
+   * Create the sms sender given
+   */
   public post(path: '/sms/{serviceName}/senders', params: {serviceName: string, description?: string, reason?: string, sender: string}): Promise<string>;
   /**
-  validate operations
-  Validate a given sender with an activation code.
-  **/
+   * validate operations
+   * Validate a given sender with an activation code.
+   */
   public post(path: '/sms/{serviceName}/senders/{sender}/validate', params: {serviceName: string, sender: string, code: string}): Promise<void>;
   /**
-  List the sms.TemplateControl objects
-  Create the sms template control given
-  **/
+   * List the sms.TemplateControl objects
+   * Create the sms template control given
+   */
   public post(path: '/sms/{serviceName}/templatesControl', params: {serviceName: string, activity: SmsTypeTemplateEnum, description?: string, message: string, name: string, reason?: string}): Promise<void>;
   /**
-  relaunchValidation operations
-  Attempt a new validation after moderation refusal
-  **/
+   * relaunchValidation operations
+   * Attempt a new validation after moderation refusal
+   */
   public post(path: '/sms/{serviceName}/templatesControl/{name}/relaunchValidation', params: {serviceName: string, name: string, description: string, message: string}): Promise<void>;
   /**
-  transferCredits operations
-  Credit transfer between two sms accounts.
-  **/
+   * transferCredits operations
+   * Credit transfer between two sms accounts.
+   */
   public post(path: '/sms/{serviceName}/transferCredits', params: {serviceName: string, credits: number, smsAccountTarget: string}): Promise<void>;
   /**
-  List the sms.User objects
-  Create a new user for an sms account
-  **/
+   * List the sms.User objects
+   * Create a new user for an sms account
+   */
   public post(path: '/sms/{serviceName}/users', params: {serviceName: string, login: string, password: string}): Promise<void>;
   /**
-  List the sms.Job objects
-  Add one or several sending jobs
-  **/
+   * List the sms.Job objects
+   * Add one or several sending jobs
+   */
   public post(path: '/sms/{serviceName}/users/{login}/jobs', params: {serviceName: string, login: string, charset?: SmsCharsetEnum, class?: SmsClassEnum, coding?: SmsCodingEnum, differedPeriod?: number, message: string, noStopClause?: boolean, priority?: SmsPriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, sender?: string, senderForResponse?: boolean, tag?: string, validityPeriod?: number}): Promise<SmsSmsSendingReport>;
   /**
-  List the sms.Receiver objects
-  Add a new document of csv receivers
-  **/
+   * List the sms.Receiver objects
+   * Add a new document of csv receivers
+   */
   public post(path: '/sms/{serviceName}/users/{login}/receivers', params: {serviceName: string, login: string, autoUpdate: boolean, csvUrl?: string, description: string, documentId?: string, slotId: number}): Promise<SmsReceiver>;
   /**
-  clean operations
-  Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.
-  **/
+   * clean operations
+   * Clean the invalid and inactive receivers in the document by requesting HLR on each receiver. A report is sent by e-mail at the end of the operation.
+   */
   public post(path: '/sms/{serviceName}/users/{login}/receivers/{slotId}/clean', params: {serviceName: string, login: string, slotId: number, freemium: boolean, priceOnly: boolean}): Promise<SmsReceiversAsynchronousCleanReport>;
   /**
-  The web access for your virtual number chat application
-  Create a new web access for this ressource
-  **/
+   * The web access for your virtual number chat application
+   * Create a new web access for this ressource
+   */
   public post(path: '/sms/{serviceName}/virtualNumbers/{number}/chatAccess', params: {serviceName: string, number: string}): Promise<SmsChatAccess>;
   /**
-  List the sms.VirtualNumberJob objects
-  Add one or several sending jobs
-  **/
+   * List the sms.VirtualNumberJob objects
+   * Add one or several sending jobs
+   */
   public post(path: '/sms/{serviceName}/virtualNumbers/{number}/jobs', params: {serviceName: string, number: string, charset?: SmsCharsetEnum, class?: SmsClassEnum, coding?: SmsCodingEnum, differedPeriod?: number, message: string, priority?: SmsPriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, tag?: string, validityPeriod?: number}): Promise<SmsSmsSendingReport>;
-  public post(path: PathsSmsPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsSmsPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  SMS blacklist
-  Delete the blacklisted sms number given
-  **/
+   * SMS blacklist
+   * Delete the blacklisted sms number given
+   */
   public delete(path: '/sms/{serviceName}/blacklists/{number}', params: {serviceName: string, number: string}): Promise<void>;
   /**
-  Sms history of sms incoming received
-  Delete the sms incoming history given
-  **/
+   * Sms history of sms incoming received
+   * Delete the sms incoming history given
+   */
   public delete(path: '/sms/{serviceName}/incoming/{id}', params: {serviceName: string, id: number}): Promise<void>;
   /**
-  Sms job
-  Delete the sms job given (stop sending)
-  **/
+   * Sms job
+   * Delete the sms job given (stop sending)
+   */
   public delete(path: '/sms/{serviceName}/jobs/{id}', params: {serviceName: string, id: number}): Promise<void>;
   /**
-  Sms history of sms outgoing sent
-  Delete the sms outgoing history given
-  **/
+   * Sms history of sms outgoing sent
+   * Delete the sms outgoing history given
+   */
   public delete(path: '/sms/{serviceName}/outgoing/{id}', params: {serviceName: string, id: number}): Promise<void>;
   /**
-  Phone book
-  Delete a phonebook
-  **/
+   * Phone book
+   * Delete a phonebook
+   */
   public delete(path: '/sms/{serviceName}/phonebooks/{bookKey}', params: {serviceName: string, bookKey: string}): Promise<void>;
   /**
-  Phone book contact
-  Delete a phonebook contact
-  **/
+   * Phone book contact
+   * Delete a phonebook contact
+   */
   public delete(path: '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}', params: {serviceName: string, bookKey: string, id: number}): Promise<void>;
   /**
-  Sms receivers preloaded
-  Delete the document from the slot
-  **/
+   * Sms receivers preloaded
+   * Delete the document from the slot
+   */
   public delete(path: '/sms/{serviceName}/receivers/{slotId}', params: {serviceName: string, slotId: number}): Promise<void>;
   /**
-  SMS senders
-  Delete the sms sender given
-  **/
+   * SMS senders
+   * Delete the sms sender given
+   */
   public delete(path: '/sms/{serviceName}/senders/{sender}', params: {serviceName: string, sender: string}): Promise<void>;
   /**
-  Sms template for moderation (Needed to send in US country)
-  Delete the sms template control
-  **/
+   * Sms template for moderation (Needed to send in US country)
+   * Delete the sms template control
+   */
   public delete(path: '/sms/{serviceName}/templatesControl/{name}', params: {serviceName: string, name: string}): Promise<void>;
   /**
-  SMS users
-  Delete the sms user given
-  **/
+   * SMS users
+   * Delete the sms user given
+   */
   public delete(path: '/sms/{serviceName}/users/{login}', params: {serviceName: string, login: string}): Promise<void>;
   /**
-  Sms history of sms incoming received
-  Delete the sms incoming history given
-  **/
+   * Sms history of sms incoming received
+   * Delete the sms incoming history given
+   */
   public delete(path: '/sms/{serviceName}/users/{login}/incoming/{id}', params: {serviceName: string, login: string, id: number}): Promise<void>;
   /**
-  Sms job
-  Delete the sms job given (stop sending)
-  **/
+   * Sms job
+   * Delete the sms job given (stop sending)
+   */
   public delete(path: '/sms/{serviceName}/users/{login}/jobs/{id}', params: {serviceName: string, login: string, id: number}): Promise<void>;
   /**
-  Sms history of sms outgoing sent
-  Delete the sms outgoing history given
-  **/
+   * Sms history of sms outgoing sent
+   * Delete the sms outgoing history given
+   */
   public delete(path: '/sms/{serviceName}/users/{login}/outgoing/{id}', params: {serviceName: string, login: string, id: number}): Promise<void>;
   /**
-  Sms receivers preloaded
-  Delete the document from the slot
-  **/
+   * Sms receivers preloaded
+   * Delete the document from the slot
+   */
   public delete(path: '/sms/{serviceName}/users/{login}/receivers/{slotId}', params: {serviceName: string, login: string, slotId: number}): Promise<void>;
   /**
-  The web access for your virtual number chat application
-  Delete the given web access
-  **/
+   * The web access for your virtual number chat application
+   * Delete the given web access
+   */
   public delete(path: '/sms/{serviceName}/virtualNumbers/{number}/chatAccess', params: {serviceName: string, number: string}): Promise<void>;
   /**
-  Sms history of sms incoming received
-  Delete the sms incoming history given
-  **/
+   * Sms history of sms incoming received
+   * Delete the sms incoming history given
+   */
   public delete(path: '/sms/{serviceName}/virtualNumbers/{number}/incoming/{id}', params: {serviceName: string, number: string, id: number}): Promise<void>;
   /**
-  Sms job
-  Delete the sms job given (stop sending)
-  **/
+   * Sms job
+   * Delete the sms job given (stop sending)
+   */
   public delete(path: '/sms/{serviceName}/virtualNumbers/{number}/jobs/{id}', params: {serviceName: string, number: string, id: number}): Promise<void>;
   /**
-  Sms history of sms outgoing sent
-  Delete the sms outgoing history given
-  **/
+   * Sms history of sms outgoing sent
+   * Delete the sms outgoing history given
+   */
   public delete(path: '/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}', params: {serviceName: string, number: string, id: number}): Promise<void>;
-  public delete(path: PathsSmsDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsSmsDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

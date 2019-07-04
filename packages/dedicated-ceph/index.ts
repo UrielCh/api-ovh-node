@@ -567,150 +567,150 @@ export class ApiDedicatedCeph extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the CEPH service
-  List available services
-  **/
+   * Operations about the CEPH service
+   * List available services
+   */
   public get(path: '/dedicated/ceph'): Promise<string[]>;
   /**
-  dedicated.ceph.clusterGet
-  Get cluster details
-  **/
+   * dedicated.ceph.clusterGet
+   * Get cluster details
+   */
   public get(path: '/dedicated/ceph/{serviceName}', params: {serviceName: string}): Promise<DedicatedCephClusterGetResponse>;
   /**
-  dedicated.ceph.aclCreate
-  Get list of all IP ACLs in a cluster
-  **/
+   * dedicated.ceph.aclCreate
+   * Get list of all IP ACLs in a cluster
+   */
   public get(path: '/dedicated/ceph/{serviceName}/acl', params: {serviceName: string}): Promise<DedicatedCephAclListResponse[]>;
   /**
-  dedicated.ceph.aclDeleteSingle
-  Get details about IP ACL
-  **/
+   * dedicated.ceph.aclDeleteSingle
+   * Get details about IP ACL
+   */
   public get(path: '/dedicated/ceph/{serviceName}/acl/{aclId}', params: {serviceName: string, aclId: string}): Promise<DedicatedCephAclGetResponse>;
   /**
-  dedicated.ceph.clusterHealth
-  Get cluster health
-  **/
+   * dedicated.ceph.clusterHealth
+   * Get cluster health
+   */
   public get(path: '/dedicated/ceph/{serviceName}/health', params: {serviceName: string}): Promise<DedicatedCephClusterHealthResponse>;
   /**
-  dedicated.ceph.poolCreate
-  Get list of all pools in a cluster
-  **/
+   * dedicated.ceph.poolCreate
+   * Get list of all pools in a cluster
+   */
   public get(path: '/dedicated/ceph/{serviceName}/pool', params: {serviceName: string}): Promise<DedicatedCephPoolListResponse[]>;
   /**
-  dedicated.ceph.poolDelete
-  Get details about an existing ceph pool
-  **/
+   * dedicated.ceph.poolDelete
+   * Get details about an existing ceph pool
+   */
   public get(path: '/dedicated/ceph/{serviceName}/pool/{poolName}', params: {serviceName: string, poolName: string}): Promise<DedicatedCephPoolGetResponse>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/dedicated/ceph/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  dedicated.ceph.taskList
-  List tasks in progress
-  **/
+   * dedicated.ceph.taskList
+   * List tasks in progress
+   */
   public get(path: '/dedicated/ceph/{serviceName}/task', params: {serviceName: string}): Promise<DedicatedCephTaskListResponse[]>;
   /**
-  dedicated.ceph.taskGet
-  Get task details
-  **/
+   * dedicated.ceph.taskGet
+   * Get task details
+   */
   public get(path: '/dedicated/ceph/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<DedicatedCephTaskGetResponse[]>;
   /**
-  dedicated.ceph.userCreate
-  Get list of all users in a cluster
-  **/
+   * dedicated.ceph.userCreate
+   * Get list of all users in a cluster
+   */
   public get(path: '/dedicated/ceph/{serviceName}/user', params: {serviceName: string}): Promise<DedicatedCephUserListResponse[]>;
   /**
-  dedicated.ceph.userDelete
-  Get details about a ceph user
-  **/
+   * dedicated.ceph.userDelete
+   * Get details about a ceph user
+   */
   public get(path: '/dedicated/ceph/{serviceName}/user/{userName}', params: {userName: string, serviceName: string}): Promise<DedicatedCephUserGetResponse>;
   /**
-  dedicated.ceph.userPoolPermList
-  List user-pool permissions
-  **/
+   * dedicated.ceph.userPoolPermList
+   * List user-pool permissions
+   */
   public get(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool', params: {userName: string, serviceName: string}): Promise<DedicatedCephUserPoolPermListResponse[]>;
-  public get(path: PathsDedicatedCephGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsDedicatedCephGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  dedicated.ceph.clusterGet
-  Update cluster details
-  **/
+   * dedicated.ceph.clusterGet
+   * Update cluster details
+   */
   public put(path: '/dedicated/ceph/{serviceName}', params: {serviceName: string, crushTunables: DedicatedCephClusterUpdateCrushTunablesEnum, label: string}): Promise<string>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/dedicated/ceph/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
-  dedicated.ceph.userPoolPermList
-  Update user-pool permission for single pool
-  **/
+   * dedicated.ceph.userPoolPermList
+   * Update user-pool permission for single pool
+   */
   public put(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool', params: {userName: string, serviceName: string, classRead: boolean, classWrite: boolean, execute: boolean, poolName: string, read: boolean, write: boolean}): Promise<string>;
-  public put(path: PathsDedicatedCephPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsDedicatedCephPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  dedicated.ceph.aclCreate
-  Create one or more new IP ACLs
-  **/
+   * dedicated.ceph.aclCreate
+   * Create one or more new IP ACLs
+   */
   public post(path: '/dedicated/ceph/{serviceName}/acl', params: {serviceName: string, aclList: string[]}): Promise<string>;
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
+   * Change the contacts of this service
+   * Launch a contact change procedure
+   */
   public post(path: '/dedicated/ceph/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
+   * Confirm termination of your service
+   * Confirm termination of your service
+   */
   public post(path: '/dedicated/ceph/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
-  dedicated.ceph.poolCreate
-  Create a new ceph pool
-  **/
+   * dedicated.ceph.poolCreate
+   * Create a new ceph pool
+   */
   public post(path: '/dedicated/ceph/{serviceName}/pool', params: {serviceName: string, poolName: string}): Promise<string>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
+   * Terminate your service
+   * Terminate your service
+   */
   public post(path: '/dedicated/ceph/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
   /**
-  dedicated.ceph.userCreate
-  Create a new ceph user
-  **/
+   * dedicated.ceph.userCreate
+   * Create a new ceph user
+   */
   public post(path: '/dedicated/ceph/{serviceName}/user', params: {serviceName: string, userName: string}): Promise<string>;
   /**
-  dedicated.ceph.userPoolPermList
-  Create new user-pool permissions. All old permissions will be cleared
-  **/
+   * dedicated.ceph.userPoolPermList
+   * Create new user-pool permissions. All old permissions will be cleared
+   */
   public post(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool', params: {userName: string, serviceName: string, permissions?: DedicatedCephUserPoolPermSetAllPermissions[]}): Promise<string>;
-  public post(path: PathsDedicatedCephPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsDedicatedCephPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  dedicated.ceph.aclDeleteSingle
-  Delete single IP ACL
-  **/
+   * dedicated.ceph.aclDeleteSingle
+   * Delete single IP ACL
+   */
   public delete(path: '/dedicated/ceph/{serviceName}/acl/{aclId}', params: {serviceName: string, aclId: string}): Promise<string>;
   /**
-  dedicated.ceph.poolDelete
-  Delete a single ceph pool
-  **/
+   * dedicated.ceph.poolDelete
+   * Delete a single ceph pool
+   */
   public delete(path: '/dedicated/ceph/{serviceName}/pool/{poolName}', params: {serviceName: string, poolName: string}): Promise<string>;
   /**
-  dedicated.ceph.userDelete
-  Delete an existing single ceph user
-  **/
+   * dedicated.ceph.userDelete
+   * Delete an existing single ceph user
+   */
   public delete(path: '/dedicated/ceph/{serviceName}/user/{userName}', params: {userName: string, serviceName: string}): Promise<string>;
   /**
-  dedicated.ceph.userPoolPermDelete
-  Clear user-pool permission for single pool
-  **/
+   * dedicated.ceph.userPoolPermDelete
+   * Clear user-pool permission for single pool
+   */
   public delete(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}', params: {userName: string, serviceName: string, poolName: string}): Promise<string>;
-  public delete(path: PathsDedicatedCephDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsDedicatedCephDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

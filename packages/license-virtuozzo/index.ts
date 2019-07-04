@@ -325,95 +325,95 @@ export class ApiLicenseVirtuozzo extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the LICENSE service
-  List available services
-  **/
+   * Operations about the LICENSE service
+   * List available services
+   */
   public get(path: '/license/virtuozzo'): Promise<string[]>;
   /**
-  Get the orderable Virtuozzo versions
-  Get the orderable Virtuozzo versions
-  **/
+   * Get the orderable Virtuozzo versions
+   * Get the orderable Virtuozzo versions
+   */
   public get(path: '/license/virtuozzo/orderableVersions', params: {ip: string}): Promise<LicenseVirtuozzoOrderConfiguration[]>;
   /**
-  Your Virtuozzo license
-  Get this object properties
-  **/
+   * Your Virtuozzo license
+   * Get this object properties
+   */
   public get(path: '/license/virtuozzo/{serviceName}', params: {serviceName: string}): Promise<LicenseVirtuozzoVirtuozzo>;
   /**
-  allowedDestinationIp operations
-  Returns an array of ips where the license can be moved to
-  **/
+   * allowedDestinationIp operations
+   * Returns an array of ips where the license can be moved to
+   */
   public get(path: '/license/virtuozzo/{serviceName}/allowedDestinationIp', params: {serviceName: string}): Promise<string[]>;
   /**
-  canLicenseBeMovedTo operations
-  Will tell if the ip can accept the license
-  **/
+   * canLicenseBeMovedTo operations
+   * Will tell if the ip can accept the license
+   */
   public get(path: '/license/virtuozzo/{serviceName}/canLicenseBeMovedTo', params: {serviceName: string, destinationIp: string}): Promise<LicenseChangeIpStatus>;
   /**
-  List the license.Option objects
-  Options linked to this license
-  **/
+   * List the license.Option objects
+   * Options linked to this license
+   */
   public get(path: '/license/virtuozzo/{serviceName}/option', params: {serviceName: string, label?: LicenseOptionLabel}): Promise<LicenseOptionLabel[]>;
   /**
-  Your License options
-  Get this object properties
-  **/
+   * Your License options
+   * Get this object properties
+   */
   public get(path: '/license/virtuozzo/{serviceName}/option/{label}', params: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseOption>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/license/virtuozzo/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the license.Task objects
-  tasks linked to this license
-  **/
+   * List the license.Task objects
+   * tasks linked to this license
+   */
   public get(path: '/license/virtuozzo/{serviceName}/tasks', params: {serviceName: string, action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<number[]>;
   /**
-  licenses Todos
-  Get this object properties
-  **/
+   * licenses Todos
+   * Get this object properties
+   */
   public get(path: '/license/virtuozzo/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<LicenseTask>;
-  public get(path: PathsLicenseVirtuozzoGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsLicenseVirtuozzoGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Your Virtuozzo license
-  Alter this object properties
-  **/
+   * Your Virtuozzo license
+   * Alter this object properties
+   */
   public put(path: '/license/virtuozzo/{serviceName}', params: {serviceName: string, containerNumber?: LicenseVirtuozzoContainerNumberEnum, creation?: string, deleteAtExpiration?: boolean, domain?: string, informationKey?: string, ip?: string, licenseId?: string, productKey?: string, status?: LicenseStateEnum, version?: LicenseVirtuozzoVersionEnum}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/license/virtuozzo/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsLicenseVirtuozzoPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsLicenseVirtuozzoPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  changeIp operations
-  Move this license to another Ip
-  **/
+   * changeIp operations
+   * Move this license to another Ip
+   */
   public post(path: '/license/virtuozzo/{serviceName}/changeIp', params: {serviceName: string, destinationIp: string}): Promise<LicenseTask>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
+   * Confirm termination of your service
+   * Confirm termination of your service
+   */
   public post(path: '/license/virtuozzo/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
+   * Terminate your service
+   * Terminate your service
+   */
   public post(path: '/license/virtuozzo/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
-  public post(path: PathsLicenseVirtuozzoPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsLicenseVirtuozzoPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Your License options
-  release this Option
-  **/
+   * Your License options
+   * release this Option
+   */
   public delete(path: '/license/virtuozzo/{serviceName}/option/{label}', params: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseTask>;
-  public delete(path: PathsLicenseVirtuozzoDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsLicenseVirtuozzoDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

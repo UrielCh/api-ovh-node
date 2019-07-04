@@ -269,82 +269,82 @@ export class ApiLicenseDirectadmin extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the LICENSE service
-  List available services
-  **/
+   * Operations about the LICENSE service
+   * List available services
+   */
   public get(path: '/license/directadmin'): Promise<string[]>;
   /**
-  Get the orderable DirectAdmin versions
-  Get the orderable DirectAdmin versions
-  **/
+   * Get the orderable DirectAdmin versions
+   * Get the orderable DirectAdmin versions
+   */
   public get(path: '/license/directadmin/orderableVersions', params: {ip: string}): Promise<LicenseDirectAdminOrderConfiguration[]>;
   /**
-  Your DirectAdmin license
-  Get this object properties
-  **/
+   * Your DirectAdmin license
+   * Get this object properties
+   */
   public get(path: '/license/directadmin/{serviceName}', params: {serviceName: string}): Promise<LicenseDirectadminDirectAdmin>;
   /**
-  allowedDestinationIp operations
-  Returns an array of ips where the license can be moved to
-  **/
+   * allowedDestinationIp operations
+   * Returns an array of ips where the license can be moved to
+   */
   public get(path: '/license/directadmin/{serviceName}/allowedDestinationIp', params: {serviceName: string}): Promise<string[]>;
   /**
-  canLicenseBeMovedTo operations
-  Will tell if the ip can accept the license
-  **/
+   * canLicenseBeMovedTo operations
+   * Will tell if the ip can accept the license
+   */
   public get(path: '/license/directadmin/{serviceName}/canLicenseBeMovedTo', params: {serviceName: string, destinationIp: string}): Promise<LicenseChangeIpStatus>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/license/directadmin/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the license.Task objects
-  tasks linked to this license
-  **/
+   * List the license.Task objects
+   * tasks linked to this license
+   */
   public get(path: '/license/directadmin/{serviceName}/tasks', params: {serviceName: string, action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<number[]>;
   /**
-  licenses Todos
-  Get this object properties
-  **/
+   * licenses Todos
+   * Get this object properties
+   */
   public get(path: '/license/directadmin/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<LicenseTask>;
-  public get(path: PathsLicenseDirectadminGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsLicenseDirectadminGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Your DirectAdmin license
-  Alter this object properties
-  **/
+   * Your DirectAdmin license
+   * Alter this object properties
+   */
   public put(path: '/license/directadmin/{serviceName}', params: {serviceName: string, clientId?: number, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, os?: LicenseDirectAdminOsEnum, status?: LicenseStateEnum, version?: LicenseDirectAdminVersionEnum}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/license/directadmin/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsLicenseDirectadminPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsLicenseDirectadminPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  changeIp operations
-  Move this license to another Ip
-  **/
+   * changeIp operations
+   * Move this license to another Ip
+   */
   public post(path: '/license/directadmin/{serviceName}/changeIp', params: {serviceName: string, destinationIp: string}): Promise<LicenseTask>;
   /**
-  changeOs operations
-  Change the Operating System for a license
-  **/
+   * changeOs operations
+   * Change the Operating System for a license
+   */
   public post(path: '/license/directadmin/{serviceName}/changeOs', params: {serviceName: string, os: LicenseDirectAdminOsEnum}): Promise<LicenseTask>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
+   * Confirm termination of your service
+   * Confirm termination of your service
+   */
   public post(path: '/license/directadmin/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
+   * Terminate your service
+   * Terminate your service
+   */
   public post(path: '/license/directadmin/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
-  public post(path: PathsLicenseDirectadminPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsLicenseDirectadminPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
 }

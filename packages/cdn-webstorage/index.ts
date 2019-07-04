@@ -157,39 +157,39 @@ export class ApiCdnWebstorage extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the CDNSTATIC service
-  List available services
-  **/
+   * Operations about the CDNSTATIC service
+   * List available services
+   */
   public get(path: '/cdn/webstorage'): Promise<string[]>;
   /**
-  Static CDN
-  Get this object properties
-  **/
+   * Static CDN
+   * Get this object properties
+   */
   public get(path: '/cdn/webstorage/{serviceName}', params: {serviceName: string}): Promise<CdnWebstorageAccount>;
   /**
-  credentials operations
-  Gives for customer credentials to accesss swift account
-  **/
+   * credentials operations
+   * Gives for customer credentials to accesss swift account
+   */
   public get(path: '/cdn/webstorage/{serviceName}/credentials', params: {serviceName: string}): Promise<CdnWebstorageAccountCredentials>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/cdn/webstorage/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  statistics operations
-  Return stats about bandwidth consumption
-  **/
+   * statistics operations
+   * Return stats about bandwidth consumption
+   */
   public get(path: '/cdn/webstorage/{serviceName}/statistics', params: {serviceName: string, period: CdnWebstorageStatsPeriodEnum, type: CdnWebstorageStatsTypeEnum}): Promise<CdnWebstorageStatsDataType[]>;
-  public get(path: PathsCdnWebstorageGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsCdnWebstorageGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/cdn/webstorage/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsCdnWebstoragePUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsCdnWebstoragePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
 }

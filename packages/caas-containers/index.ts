@@ -522,125 +522,125 @@ export class ApiCaasContainers extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the DOCKER service
-  List available services
-  **/
+   * Operations about the DOCKER service
+   * List available services
+   */
   public get(path: '/caas/containers'): Promise<string[]>;
   /**
-  Missing description
-  List the /cloud flavors available for the Docker PaaS slaves
-  **/
+   * Missing description
+   * List the /cloud flavors available for the Docker PaaS slaves
+   */
   public get(path: '/caas/containers/slaves/flavors'): Promise<string[]>;
   /**
-  Missing description
-  Inspect the argument slave flavor
-  **/
+   * Missing description
+   * Inspect the argument slave flavor
+   */
   public get(path: '/caas/containers/slaves/flavors/{flavorId}', params: {flavorId: string}): Promise<DockerSlaveFlavor>;
   /**
-  Missing description
-  Inspect the argument stack
-  **/
+   * Missing description
+   * Inspect the argument stack
+   */
   public get(path: '/caas/containers/{serviceName}', params: {serviceName: string}): Promise<DockerStack>;
   /**
-  Missing description
-  List all the installable Mesos frameworks
-  **/
+   * Missing description
+   * List all the installable Mesos frameworks
+   */
   public get(path: '/caas/containers/{serviceName}/availableFrameworks', params: {serviceName: string}): Promise<string[]>;
   /**
-  Missing description
-  List the frameworks installed on the argument stack
-  **/
+   * Missing description
+   * List the frameworks installed on the argument stack
+   */
   public get(path: '/caas/containers/{serviceName}/frameworks', params: {serviceName: string}): Promise<string[]>;
   /**
-  Missing description
-  Inspect the stack framework
-  **/
+   * Missing description
+   * Inspect the stack framework
+   */
   public get(path: '/caas/containers/{serviceName}/frameworks/{frameworkId}', params: {frameworkId: string, serviceName: string}): Promise<StackFramework>;
   /**
-  Missing description
-  List apps in the framework
-  **/
+   * Missing description
+   * List apps in the framework
+   */
   public get(path: '/caas/containers/{serviceName}/frameworks/{frameworkId}/apps', params: {frameworkId: string, serviceName: string}): Promise<StackFrameworkApplication>;
   /**
-  Missing description
-  List the registry credentials associated to the stack.
-  **/
+   * Missing description
+   * List the registry credentials associated to the stack.
+   */
   public get(path: '/caas/containers/{serviceName}/registry/credentials', params: {serviceName: string}): Promise<string[]>;
   /**
-  Missing description
-  Inspect the image registry credentials associated to the stack
-  **/
+   * Missing description
+   * Inspect the image registry credentials associated to the stack
+   */
   public get(path: '/caas/containers/{serviceName}/registry/credentials/{credentialsId}', params: {credentialsId: string, serviceName: string}): Promise<DockerStackRegistryCredentials>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/caas/containers/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  Missing description
-  List the id of the registered slave instances
-  **/
+   * Missing description
+   * List the id of the registered slave instances
+   */
   public get(path: '/caas/containers/{serviceName}/slaves', params: {serviceName: string}): Promise<string[]>;
   /**
-  Missing description
-  Inspect the argument user slave instance
-  **/
+   * Missing description
+   * Inspect the argument user slave instance
+   */
   public get(path: '/caas/containers/{serviceName}/slaves/{slaveId}', params: {slaveId: string, serviceName: string}): Promise<DockerSlave>;
   /**
-  Missing description
-  Inspect the custom SSL certificate and private
-  **/
+   * Missing description
+   * Inspect the custom SSL certificate and private
+   */
   public get(path: '/caas/containers/{serviceName}/ssl', params: {serviceName: string}): Promise<DockerStackCustomSsl>;
-  public get(path: PathsCaasContainersGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsCaasContainersGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Missing description
-  Update the framework access password
-  **/
+   * Missing description
+   * Update the framework access password
+   */
   public put(path: '/caas/containers/{serviceName}/frameworks/{frameworkId}/password', params: {frameworkId: string, serviceName: string, password?: string}): Promise<void>;
   /**
-  Missing description
-  Update the registry credentials.
-  **/
+   * Missing description
+   * Update the registry credentials.
+   */
   public put(path: '/caas/containers/{serviceName}/registry/credentials/{credentialsId}', params: {credentialsId: string, serviceName: string, certificate?: string, key?: string}): Promise<DockerStackRegistryCredentials>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/caas/containers/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
-  Missing description
-  Update the custom SSL certificate and private
-  **/
+   * Missing description
+   * Update the custom SSL certificate and private
+   */
   public put(path: '/caas/containers/{serviceName}/ssl', params: {serviceName: string, certificate?: string, key?: string}): Promise<DockerStackCustomSslMessage>;
-  public put(path: PathsCaasContainersPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsCaasContainersPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
+   * Change the contacts of this service
+   * Launch a contact change procedure
+   */
   public post(path: '/caas/containers/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
-  Missing description
-  Associate the stack with some credentials to an authenticated registry.
-  **/
+   * Missing description
+   * Associate the stack with some credentials to an authenticated registry.
+   */
   public post(path: '/caas/containers/{serviceName}/registry/credentials', params: {serviceName: string, certificate?: string, key?: string}): Promise<DockerStackRegistryCredentials>;
-  public post(path: PathsCaasContainersPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsCaasContainersPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Missing description
-  Delete the registry credentials.
-  **/
+   * Missing description
+   * Delete the registry credentials.
+   */
   public delete(path: '/caas/containers/{serviceName}/registry/credentials/{credentialsId}', params: {credentialsId: string, serviceName: string}): Promise<void>;
   /**
-  Missing description
-  Delete the custom SSL certificate and private key associated to the stack
-  **/
+   * Missing description
+   * Delete the custom SSL certificate and private key associated to the stack
+   */
   public delete(path: '/caas/containers/{serviceName}/ssl', params: {serviceName: string}): Promise<DockerStackCustomSslMessage>;
-  public delete(path: PathsCaasContainersDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsCaasContainersDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

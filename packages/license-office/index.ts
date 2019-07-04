@@ -379,95 +379,95 @@ export class ApiLicenseOffice extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the OFFICE service
-  List available services
-  **/
+   * Operations about the OFFICE service
+   * List available services
+   */
   public get(path: '/license/office'): Promise<string[]>;
   /**
-  Office tenant
-  Get this object properties
-  **/
+   * Office tenant
+   * Get this object properties
+   */
   public get(path: '/license/office/{serviceName}', params: {serviceName: string}): Promise<LicenseOfficeOfficeTenant>;
   /**
-  List the license.office.OfficeDomain objects
-  Domain associated to this office tenant
-  **/
+   * List the license.office.OfficeDomain objects
+   * Domain associated to this office tenant
+   */
   public get(path: '/license/office/{serviceName}/domain', params: {serviceName: string}): Promise<string[]>;
   /**
-  Office domain
-  Get this object properties
-  **/
+   * Office domain
+   * Get this object properties
+   */
   public get(path: '/license/office/{serviceName}/domain/{domainName}', params: {serviceName: string, domainName: string}): Promise<LicenseOfficeOfficeDomain>;
   /**
-  List the license.office.OfficeTask objects
-  Tasks associated to this office tenant
-  **/
+   * List the license.office.OfficeTask objects
+   * Tasks associated to this office tenant
+   */
   public get(path: '/license/office/{serviceName}/pendingTask', params: {serviceName: string}): Promise<number[]>;
   /**
-  Office task
-  Get this object properties
-  **/
+   * Office task
+   * Get this object properties
+   */
   public get(path: '/license/office/{serviceName}/pendingTask/{id}', params: {serviceName: string, id: number}): Promise<LicenseOfficeOfficeTask>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/license/office/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  usageStatistics operations
-  Shows the subscriptions' usage statistics for the given time period
-  **/
+   * usageStatistics operations
+   * Shows the subscriptions' usage statistics for the given time period
+   */
   public get(path: '/license/office/{serviceName}/usageStatistics', params: {serviceName: string, from: string, to: string}): Promise<LicenseOfficeStatistics[]>;
   /**
-  List the license.office.OfficeUser objects
-  Accounts associated to this office tenant
-  **/
+   * List the license.office.OfficeUser objects
+   * Accounts associated to this office tenant
+   */
   public get(path: '/license/office/{serviceName}/user', params: {serviceName: string, activationEmail?: string, firstName?: string, lastName?: string, licences?: LicenseOfficeLicenceEnum[]}): Promise<string[]>;
   /**
-  Office user
-  Get this object properties
-  **/
+   * Office user
+   * Get this object properties
+   */
   public get(path: '/license/office/{serviceName}/user/{activationEmail}', params: {serviceName: string, activationEmail: string}): Promise<LicenseOfficeOfficeUser>;
-  public get(path: PathsLicenseOfficeGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsLicenseOfficeGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Office tenant
-  Alter this object properties
-  **/
+   * Office tenant
+   * Alter this object properties
+   */
   public put(path: '/license/office/{serviceName}', params: {serviceName: string, address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: LicenseOfficeServiceTypeEnum, status?: LicenseOfficeServiceStateEnum, zipCode?: string}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/license/office/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
-  Office user
-  Alter this object properties
-  **/
+   * Office user
+   * Alter this object properties
+   */
   public put(path: '/license/office/{serviceName}/user/{activationEmail}', params: {serviceName: string, activationEmail: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: LicenseOfficeLicenceEnum[], status?: LicenseOfficeUserStateEnum, taskPendingId?: number}): Promise<void>;
-  public put(path: PathsLicenseOfficePUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsLicenseOfficePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  List the license.office.OfficeUser objects
-  Create new office user
-  **/
+   * List the license.office.OfficeUser objects
+   * Create new office user
+   */
   public post(path: '/license/office/{serviceName}/user', params: {serviceName: string, domain: string, firstName?: string, lastName?: string, licence: LicenseOfficeLicenceEnum, login: string}): Promise<LicenseOfficeOfficeTask>;
   /**
-  changePassword operations
-  Change or reset  user's password
-  **/
+   * changePassword operations
+   * Change or reset  user's password
+   */
   public post(path: '/license/office/{serviceName}/user/{activationEmail}/changePassword', params: {serviceName: string, activationEmail: string, notifyEmail?: string, password?: string, shouldSendMail: boolean}): Promise<LicenseOfficeOfficeTask>;
-  public post(path: PathsLicenseOfficePOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsLicenseOfficePOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Office user
-  Delete existing office user
-  **/
+   * Office user
+   * Delete existing office user
+   */
   public delete(path: '/license/office/{serviceName}/user/{activationEmail}', params: {serviceName: string, activationEmail: string}): Promise<LicenseOfficeOfficeTask>;
-  public delete(path: PathsLicenseOfficeDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsLicenseOfficeDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

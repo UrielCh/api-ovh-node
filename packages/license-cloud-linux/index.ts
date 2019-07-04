@@ -226,57 +226,57 @@ export class ApiLicenseCloudLinux extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the LICENSE service
-  List available services
-  **/
+   * Operations about the LICENSE service
+   * List available services
+   */
   public get(path: '/license/cloudLinux'): Promise<string[]>;
   /**
-  Get the orderable CloudLinux versions
-  Get the orderable CloudLinux versions
-  **/
+   * Get the orderable CloudLinux versions
+   * Get the orderable CloudLinux versions
+   */
   public get(path: '/license/cloudLinux/orderableVersions', params: {ip: string}): Promise<LicenseCloudLinuxOrderConfiguration[]>;
   /**
-  Your CloudLinux license
-  Get this object properties
-  **/
+   * Your CloudLinux license
+   * Get this object properties
+   */
   public get(path: '/license/cloudLinux/{serviceName}', params: {serviceName: string}): Promise<LicenseCloudLinuxCloudLinux>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/license/cloudLinux/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the license.Task objects
-  Tasks linked to this license
-  **/
+   * List the license.Task objects
+   * Tasks linked to this license
+   */
   public get(path: '/license/cloudLinux/{serviceName}/tasks', params: {serviceName: string, action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<number[]>;
   /**
-  licenses Todos
-  Get this object properties
-  **/
+   * licenses Todos
+   * Get this object properties
+   */
   public get(path: '/license/cloudLinux/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<LicenseTask>;
-  public get(path: PathsLicenseCloudLinuxGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsLicenseCloudLinuxGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/license/cloudLinux/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsLicenseCloudLinuxPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsLicenseCloudLinuxPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
+   * Confirm termination of your service
+   * Confirm termination of your service
+   */
   public post(path: '/license/cloudLinux/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
+   * Terminate your service
+   * Terminate your service
+   */
   public post(path: '/license/cloudLinux/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
-  public post(path: PathsLicenseCloudLinuxPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsLicenseCloudLinuxPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
 }

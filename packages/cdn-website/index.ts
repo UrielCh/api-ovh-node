@@ -226,130 +226,130 @@ export class ApiCdnWebsite extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the CDNWEBSITE service
-  List available services
-  **/
+   * Operations about the CDNWEBSITE service
+   * List available services
+   */
   public get(path: '/cdn/website'): Promise<string[]>;
   /**
-  Website CDN
-  Get this object properties
-  **/
+   * Website CDN
+   * Get this object properties
+   */
   public get(path: '/cdn/website/{serviceName}', params: {serviceName: string}): Promise<CdnWebsiteWebsite>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/cdn/website/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  Zone on CDN
-  Get this object properties
-  **/
+   * Zone on CDN
+   * Get this object properties
+   */
   public get(path: '/cdn/website/{serviceName}/zone', params: {serviceName: string}): Promise<CdnWebsiteZone>;
   /**
-  List the cdn.website.Backend objects
-  Backend associated to this zone
-  **/
+   * List the cdn.website.Backend objects
+   * Backend associated to this zone
+   */
   public get(path: '/cdn/website/{serviceName}/zone/backends', params: {serviceName: string}): Promise<string[]>;
   /**
-  Backend on zone
-  Get this object properties
-  **/
+   * Backend on zone
+   * Get this object properties
+   */
   public get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}', params: {serviceName: string, ipv4: string}): Promise<CdnWebsiteBackend>;
   /**
-  List the cdn.website.Task objects
-  Task associated to this backend
-  **/
+   * List the cdn.website.Task objects
+   * Task associated to this backend
+   */
   public get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks', params: {serviceName: string, ipv4: string}): Promise<number[]>;
   /**
-  Task on CDN
-  Get this object properties
-  **/
+   * Task on CDN
+   * Get this object properties
+   */
   public get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}', params: {serviceName: string, ipv4: string, taskId: number}): Promise<CdnWebsiteTask>;
   /**
-  List the cdn.website.Domain objects
-  Domain associated to this zone
-  **/
+   * List the cdn.website.Domain objects
+   * Domain associated to this zone
+   */
   public get(path: '/cdn/website/{serviceName}/zone/domains', params: {serviceName: string}): Promise<string[]>;
   /**
-  Domain on CDN
-  Get this object properties
-  **/
+   * Domain on CDN
+   * Get this object properties
+   */
   public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}', params: {serviceName: string, domain: string}): Promise<CdnWebsiteDomain>;
   /**
-  statistics operations
-  Get statistics about request on CDN, bandwidth value in Bytes
-  **/
+   * statistics operations
+   * Get statistics about request on CDN, bandwidth value in Bytes
+   */
   public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/statistics', params: {serviceName: string, domain: string, period: CdnWebsiteStatsPeriodEnum, type: CdnWebsiteStatsTypeEnum, value: CdnWebsiteStatsValueEnum}): Promise<CdnWebsiteStatsDataType[]>;
   /**
-  List the cdn.website.Task objects
-  Task associated to this domain
-  **/
+   * List the cdn.website.Task objects
+   * Task associated to this domain
+   */
   public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/tasks', params: {serviceName: string, domain: string}): Promise<number[]>;
   /**
-  Task on CDN
-  Get this object properties
-  **/
+   * Task on CDN
+   * Get this object properties
+   */
   public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}', params: {serviceName: string, domain: string, taskId: number}): Promise<CdnWebsiteTask>;
   /**
-  List the cdn.website.Task objects
-  Task associated to this zone
-  **/
+   * List the cdn.website.Task objects
+   * Task associated to this zone
+   */
   public get(path: '/cdn/website/{serviceName}/zone/tasks', params: {serviceName: string}): Promise<number[]>;
   /**
-  Task on CDN
-  Get this object properties
-  **/
+   * Task on CDN
+   * Get this object properties
+   */
   public get(path: '/cdn/website/{serviceName}/zone/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<CdnWebsiteTask>;
-  public get(path: PathsCdnWebsiteGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsCdnWebsiteGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/cdn/website/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsCdnWebsitePUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsCdnWebsitePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  Zone on CDN
-  Configure a zone on CDN
-  **/
+   * Zone on CDN
+   * Configure a zone on CDN
+   */
   public post(path: '/cdn/website/{serviceName}/zone', params: {serviceName: string, zone: string}): Promise<CdnWebsiteZone>;
   /**
-  List the cdn.website.Backend objects
-  Configure a backend on the zone
-  **/
+   * List the cdn.website.Backend objects
+   * Configure a backend on the zone
+   */
   public post(path: '/cdn/website/{serviceName}/zone/backends', params: {serviceName: string, ipv4: string}): Promise<CdnWebsiteTask>;
   /**
-  List the cdn.website.Domain objects
-  Configure a domain on CDN
-  **/
+   * List the cdn.website.Domain objects
+   * Configure a domain on CDN
+   */
   public post(path: '/cdn/website/{serviceName}/zone/domains', params: {serviceName: string, domain: string}): Promise<CdnWebsiteDomain>;
   /**
-  flush operations
-  Flush all cache
-  **/
+   * flush operations
+   * Flush all cache
+   */
   public post(path: '/cdn/website/{serviceName}/zone/domains/{domain}/flush', params: {serviceName: string, domain: string}): Promise<CdnWebsiteTask>;
-  public post(path: PathsCdnWebsitePOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsCdnWebsitePOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Zone on CDN
-  Remove a zone from the CDN
-  **/
+   * Zone on CDN
+   * Remove a zone from the CDN
+   */
   public delete(path: '/cdn/website/{serviceName}/zone', params: {serviceName: string}): Promise<CdnWebsiteTask>;
   /**
-  Backend on zone
-  Remove a backend from the zone
-  **/
+   * Backend on zone
+   * Remove a backend from the zone
+   */
   public delete(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}', params: {serviceName: string, ipv4: string}): Promise<CdnWebsiteTask>;
   /**
-  Domain on CDN
-  Remove a domain from the CDN
-  **/
+   * Domain on CDN
+   * Remove a domain from the CDN
+   */
   public delete(path: '/cdn/website/{serviceName}/zone/domains/{domain}', params: {serviceName: string, domain: string}): Promise<CdnWebsiteTask>;
-  public delete(path: PathsCdnWebsiteDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsCdnWebsiteDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

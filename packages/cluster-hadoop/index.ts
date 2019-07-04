@@ -405,230 +405,230 @@ export class ApiClusterHadoop extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the HADOOPCLUSTER service
-  List available services
-  **/
+   * Operations about the HADOOPCLUSTER service
+   * List available services
+   */
   public get(path: '/cluster/hadoop'): Promise<string[]>;
   /**
-  Get informations about the order of one cluster
-  Get informations about the order of one cluster
-  **/
+   * Get informations about the order of one cluster
+   * Get informations about the order of one cluster
+   */
   public get(path: '/cluster/hadoop/orderInformations'): Promise<ClusterHadoopOrderInformations>;
   /**
-  Get the orderable node profiles and their characteristics
-  Get the orderable node profiles and their characteristics
-  **/
+   * Get the orderable node profiles and their characteristics
+   * Get the orderable node profiles and their characteristics
+   */
   public get(path: '/cluster/hadoop/orderableNodeProfiles'): Promise<ClusterHadoopNodeBillingProfile[]>;
   /**
-  Managed Hadoop Cluster
-  Get this object properties
-  **/
+   * Managed Hadoop Cluster
+   * Get this object properties
+   */
   public get(path: '/cluster/hadoop/{serviceName}', params: {serviceName: string}): Promise<ClusterHadoopHadoop>;
   /**
-  consumptions operations
-  Get the current consumptions that you will billed for on the next bill
-  **/
+   * consumptions operations
+   * Get the current consumptions that you will billed for on the next bill
+   */
   public get(path: '/cluster/hadoop/{serviceName}/consumptions', params: {serviceName: string}): Promise<ClusterHadoopClusterConsumption>;
   /**
-  List the cluster.hadoop.NetworkAcl objects
-  Network ACL associated with this Hadoop Cluster
-  **/
+   * List the cluster.hadoop.NetworkAcl objects
+   * Network ACL associated with this Hadoop Cluster
+   */
   public get(path: '/cluster/hadoop/{serviceName}/networkAcl', params: {serviceName: string}): Promise<string[]>;
   /**
-  ACL for allowing ip blocks to access to your cluster
-  Get this object properties
-  **/
+   * ACL for allowing ip blocks to access to your cluster
+   * Get this object properties
+   */
   public get(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {serviceName: string, block: string}): Promise<ClusterHadoopNetworkAcl>;
   /**
-  List the cluster.hadoop.Node objects
-  Nodes of the Cluster
-  **/
+   * List the cluster.hadoop.Node objects
+   * Nodes of the Cluster
+   */
   public get(path: '/cluster/hadoop/{serviceName}/node', params: {serviceName: string, softwareProfile?: ClusterHadoopNodeProfileEnum}): Promise<string[]>;
   /**
-  Physical or Virtual Node
-  Get this object properties
-  **/
+   * Physical or Virtual Node
+   * Get this object properties
+   */
   public get(path: '/cluster/hadoop/{serviceName}/node/{hostname}', params: {serviceName: string, hostname: string}): Promise<ClusterHadoopNode>;
   /**
-  List the cluster.hadoop.Role objects
-  Roles (ie set of Hadoop services) of the Node
-  **/
+   * List the cluster.hadoop.Role objects
+   * Roles (ie set of Hadoop services) of the Node
+   */
   public get(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role', params: {serviceName: string, hostname: string}): Promise<ClusterHadoopRoleTypeEnum[]>;
   /**
-  Role (ie set of Hadoop services) of the Node
-  Get this object properties
-  **/
+   * Role (ie set of Hadoop services) of the Node
+   * Get this object properties
+   */
   public get(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}', params: {serviceName: string, hostname: string, type: ClusterHadoopRoleTypeEnum}): Promise<ClusterHadoopRole>;
   /**
-  nodeBillingProfiles operations
-  Detailed description for each Node profile
-  **/
+   * nodeBillingProfiles operations
+   * Detailed description for each Node profile
+   */
   public get(path: '/cluster/hadoop/{serviceName}/nodeBillingProfiles', params: {serviceName: string}): Promise<ClusterHadoopNodeBillingProfile[]>;
   /**
-  nodeConsumptions operations
-  Get the current node consumptions that you will billed for on the next bill
-  **/
+   * nodeConsumptions operations
+   * Get the current node consumptions that you will billed for on the next bill
+   */
   public get(path: '/cluster/hadoop/{serviceName}/nodeConsumptions', params: {serviceName: string}): Promise<ClusterHadoopNodeConsumption[]>;
   /**
-  orderableNodeProfiles operations
-  List of orderable Node profiles
-  **/
+   * orderableNodeProfiles operations
+   * List of orderable Node profiles
+   */
   public get(path: '/cluster/hadoop/{serviceName}/orderableNodeProfiles', params: {serviceName: string}): Promise<string[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/cluster/hadoop/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the cluster.hadoop.Task objects
-  Tasks associated with this Hadoop Cluster
-  **/
+   * List the cluster.hadoop.Task objects
+   * Tasks associated with this Hadoop Cluster
+   */
   public get(path: '/cluster/hadoop/{serviceName}/task', params: {serviceName: string, status?: ClusterHadoopOperationStateEnum}): Promise<number[]>;
   /**
-  Operation on a Hadoop Cluster component
-  Get this object properties
-  **/
+   * Operation on a Hadoop Cluster component
+   * Get this object properties
+   */
   public get(path: '/cluster/hadoop/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<ClusterHadoopTask>;
   /**
-  List the cluster.hadoop.User objects
-  Users associated with this Hadoop Cluster
-  **/
+   * List the cluster.hadoop.User objects
+   * Users associated with this Hadoop Cluster
+   */
   public get(path: '/cluster/hadoop/{serviceName}/user', params: {serviceName: string}): Promise<string[]>;
   /**
-  User allowed to access interfaces on your cluster
-  Get this object properties
-  **/
+   * User allowed to access interfaces on your cluster
+   * Get this object properties
+   */
   public get(path: '/cluster/hadoop/{serviceName}/user/{username}', params: {serviceName: string, username: string}): Promise<ClusterHadoopUser>;
-  public get(path: PathsClusterHadoopGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsClusterHadoopGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  ACL for allowing ip blocks to access to your cluster
-  Alter this object properties
-  **/
+   * ACL for allowing ip blocks to access to your cluster
+   * Alter this object properties
+   */
   public put(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {serviceName: string, block: string, description?: string, state?: ClusterHadoopNetworkAclStateEnum}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/cluster/hadoop/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
-  User allowed to access interfaces on your cluster
-  Alter this object properties
-  **/
+   * User allowed to access interfaces on your cluster
+   * Alter this object properties
+   */
   public put(path: '/cluster/hadoop/{serviceName}/user/{username}', params: {serviceName: string, username: string, clouderaManager?: boolean, httpFrontend?: boolean, hue?: boolean}): Promise<void>;
-  public put(path: PathsClusterHadoopPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsClusterHadoopPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  List the cluster.hadoop.NetworkAcl objects
-  Add an ACL to your cluster
-  **/
+   * List the cluster.hadoop.NetworkAcl objects
+   * Add an ACL to your cluster
+   */
   public post(path: '/cluster/hadoop/{serviceName}/networkAcl', params: {serviceName: string, block?: string, description?: string}): Promise<ClusterHadoopTask>;
   /**
-  decommission operations
-  Decommission the node and all the services on it
-  **/
+   * decommission operations
+   * Decommission the node and all the services on it
+   */
   public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/decommission', params: {serviceName: string, hostname: string}): Promise<ClusterHadoopTask>;
   /**
-  recommission operations
-  Recommission the node and all the services on it
-  **/
+   * recommission operations
+   * Recommission the node and all the services on it
+   */
   public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/recommission', params: {serviceName: string, hostname: string}): Promise<ClusterHadoopTask>;
   /**
-  List the cluster.hadoop.Role objects
-  Add the Role to the Node
-  **/
+   * List the cluster.hadoop.Role objects
+   * Add the Role to the Node
+   */
   public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role', params: {serviceName: string, hostname: string, type: ClusterHadoopRoleTypeEnum}): Promise<ClusterHadoopTask>;
   /**
-  restart operations
-  Restart the role on the node (THIS ACTION WILL RESTART OTHER DEPENDANT ROLES)
-  **/
+   * restart operations
+   * Restart the role on the node (THIS ACTION WILL RESTART OTHER DEPENDANT ROLES)
+   */
   public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart', params: {serviceName: string, hostname: string, type: ClusterHadoopRoleTypeEnum}): Promise<ClusterHadoopTask>;
   /**
-  start operations
-  Start the role on the node
-  **/
+   * start operations
+   * Start the role on the node
+   */
   public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start', params: {serviceName: string, hostname: string, type: ClusterHadoopRoleTypeEnum}): Promise<ClusterHadoopTask>;
   /**
-  stop operations
-  Stop the role on the node (THIS ACTION WILL STOP OTHER DEPENDANT ROLES)
-  **/
+   * stop operations
+   * Stop the role on the node (THIS ACTION WILL STOP OTHER DEPENDANT ROLES)
+   */
   public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop', params: {serviceName: string, hostname: string, type: ClusterHadoopRoleTypeEnum}): Promise<ClusterHadoopTask>;
   /**
-  orderNewNodeHourly operations
-  Order a new node in the cluster
-  **/
+   * orderNewNodeHourly operations
+   * Order a new node in the cluster
+   */
   public post(path: '/cluster/hadoop/{serviceName}/orderNewNodeHourly', params: {serviceName: string, nodeProfile: string}): Promise<ClusterHadoopTask>;
   /**
-  restart operations
-  Restart the Cloudera Manager Hadoop Cluster (THIS ACTION WILL RESTART EVERY SERVICE)
-  **/
+   * restart operations
+   * Restart the Cloudera Manager Hadoop Cluster (THIS ACTION WILL RESTART EVERY SERVICE)
+   */
   public post(path: '/cluster/hadoop/{serviceName}/restart', params: {serviceName: string}): Promise<ClusterHadoopTask>;
   /**
-  restart operations
-  Restart a Cloudera Manager service (THIS ACTION WILL RESTART OTHER DEPENDANT SERVICES)
-  **/
+   * restart operations
+   * Restart a Cloudera Manager service (THIS ACTION WILL RESTART OTHER DEPENDANT SERVICES)
+   */
   public post(path: '/cluster/hadoop/{serviceName}/service/restart', params: {serviceName: string, service: ClusterHadoopClusterServiceNameEnum}): Promise<ClusterHadoopTask>;
   /**
-  start operations
-  Start a Cloudera Manager service
-  **/
+   * start operations
+   * Start a Cloudera Manager service
+   */
   public post(path: '/cluster/hadoop/{serviceName}/service/start', params: {serviceName: string, service: ClusterHadoopClusterServiceNameEnum}): Promise<ClusterHadoopTask>;
   /**
-  stop operations
-  Stop a Cloudera Manager service (THIS ACTION WILL STOP OTHER DEPENDANT SERVICES)
-  **/
+   * stop operations
+   * Stop a Cloudera Manager service (THIS ACTION WILL STOP OTHER DEPENDANT SERVICES)
+   */
   public post(path: '/cluster/hadoop/{serviceName}/service/stop', params: {serviceName: string, service: ClusterHadoopClusterServiceNameEnum}): Promise<ClusterHadoopTask>;
   /**
-  start operations
-  Start the Cloudera Manager Hadoop Cluster
-  **/
+   * start operations
+   * Start the Cloudera Manager Hadoop Cluster
+   */
   public post(path: '/cluster/hadoop/{serviceName}/start', params: {serviceName: string}): Promise<ClusterHadoopTask>;
   /**
-  stop operations
-  Stop a Cloudera Manager Hadoop Cluster (THIS ACTION WILL STOP EVERY SERVICE)
-  **/
+   * stop operations
+   * Stop a Cloudera Manager Hadoop Cluster (THIS ACTION WILL STOP EVERY SERVICE)
+   */
   public post(path: '/cluster/hadoop/{serviceName}/stop', params: {serviceName: string}): Promise<ClusterHadoopTask>;
   /**
-  terminate operations
-  Terminate your service. THE CLUSTER WILL BE DELETED. ALL YOUR DATA WILL BE LOST
-  **/
+   * terminate operations
+   * Terminate your service. THE CLUSTER WILL BE DELETED. ALL YOUR DATA WILL BE LOST
+   */
   public post(path: '/cluster/hadoop/{serviceName}/terminate', params: {serviceName: string}): Promise<ClusterHadoopTask>;
   /**
-  List the cluster.hadoop.User objects
-  Add an User to your cluster
-  **/
+   * List the cluster.hadoop.User objects
+   * Add an User to your cluster
+   */
   public post(path: '/cluster/hadoop/{serviceName}/user', params: {serviceName: string, clouderaManager: boolean, httpFrontend: boolean, hue: boolean, password: string, username: string}): Promise<ClusterHadoopTask>;
   /**
-  resetPassword operations
-  Reset the password for a given Hadoop Cluster User
-  **/
+   * resetPassword operations
+   * Reset the password for a given Hadoop Cluster User
+   */
   public post(path: '/cluster/hadoop/{serviceName}/user/{username}/resetPassword', params: {serviceName: string, username: string, password: string}): Promise<ClusterHadoopTask>;
-  public post(path: PathsClusterHadoopPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsClusterHadoopPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  ACL for allowing ip blocks to access to your cluster
-  Remove this ACL
-  **/
+   * ACL for allowing ip blocks to access to your cluster
+   * Remove this ACL
+   */
   public delete(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {serviceName: string, block: string}): Promise<ClusterHadoopTask>;
   /**
-  Physical or Virtual Node
-  Remove this Node from the Cluster
-  **/
+   * Physical or Virtual Node
+   * Remove this Node from the Cluster
+   */
   public delete(path: '/cluster/hadoop/{serviceName}/node/{hostname}', params: {serviceName: string, hostname: string}): Promise<ClusterHadoopTask>;
   /**
-  Role (ie set of Hadoop services) of the Node
-  Remove this Role from the Node
-  **/
+   * Role (ie set of Hadoop services) of the Node
+   * Remove this Role from the Node
+   */
   public delete(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}', params: {serviceName: string, hostname: string, type: ClusterHadoopRoleTypeEnum}): Promise<ClusterHadoopTask>;
   /**
-  User allowed to access interfaces on your cluster
-  Remove this User
-  **/
+   * User allowed to access interfaces on your cluster
+   * Remove this User
+   */
   public delete(path: '/cluster/hadoop/{serviceName}/user/{username}', params: {serviceName: string, username: string}): Promise<ClusterHadoopTask>;
-  public delete(path: PathsClusterHadoopDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsClusterHadoopDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

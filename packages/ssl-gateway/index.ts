@@ -341,130 +341,130 @@ export class ApiSslGateway extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the SSLGATEWAY service
-  List available services
-  **/
+   * Operations about the SSLGATEWAY service
+   * List available services
+   */
   public get(path: '/sslGateway'): Promise<string[]>;
   /**
-  List of zone available for an SSL Gateway
-  List of zone available for an SSL Gateway
-  **/
+   * List of zone available for an SSL Gateway
+   * List of zone available for an SSL Gateway
+   */
   public get(path: '/sslGateway/availableZones'): Promise<string[]>;
   /**
-  Check domain eligibility. Return list of eligible IP(s) for this domain.
-  Check domain eligibility. Return list of eligible IP(s) for this domain.
-  **/
+   * Check domain eligibility. Return list of eligible IP(s) for this domain.
+   * Check domain eligibility. Return list of eligible IP(s) for this domain.
+   */
   public get(path: '/sslGateway/eligibility', params: {domain: string}): Promise<SslGatewayEligibilityStatus>;
   /**
-  Your SSL Gateway
-  Get this object properties
-  **/
+   * Your SSL Gateway
+   * Get this object properties
+   */
   public get(path: '/sslGateway/{serviceName}', params: {serviceName: string}): Promise<SslGatewaySslGateway>;
   /**
-  List the sslGateway.Domain objects
-  Domains attached to your SSL Gateway
-  **/
+   * List the sslGateway.Domain objects
+   * Domains attached to your SSL Gateway
+   */
   public get(path: '/sslGateway/{serviceName}/domain', params: {serviceName: string}): Promise<number[]>;
   /**
-  Domain attached to an SSL Gateway
-  Get this object properties
-  **/
+   * Domain attached to an SSL Gateway
+   * Get this object properties
+   */
   public get(path: '/sslGateway/{serviceName}/domain/{id}', params: {serviceName: string, id: number}): Promise<SslGatewayDomain>;
   /**
-  natIp operations
-  Ip subnet used by OVH to nat requests to your SSL Gateway backends.
-  **/
+   * natIp operations
+   * Ip subnet used by OVH to nat requests to your SSL Gateway backends.
+   */
   public get(path: '/sslGateway/{serviceName}/natIp', params: {serviceName: string}): Promise<SslGatewayNatIps[]>;
   /**
-  List the sslGateway.Server objects
-  Servers attached to your SSL Gateway
-  **/
+   * List the sslGateway.Server objects
+   * Servers attached to your SSL Gateway
+   */
   public get(path: '/sslGateway/{serviceName}/server', params: {serviceName: string}): Promise<number[]>;
   /**
-  Server attached to an SSL Gateway
-  Get this object properties
-  **/
+   * Server attached to an SSL Gateway
+   * Get this object properties
+   */
   public get(path: '/sslGateway/{serviceName}/server/{id}', params: {serviceName: string, id: number}): Promise<SslGatewayServer>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/sslGateway/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the sslGateway.Task objects
-  Task for this SSL Gateway
-  **/
+   * List the sslGateway.Task objects
+   * Task for this SSL Gateway
+   */
   public get(path: '/sslGateway/{serviceName}/task', params: {serviceName: string}): Promise<number[]>;
   /**
-  SSL Gateway tasks
-  Get this object properties
-  **/
+   * SSL Gateway tasks
+   * Get this object properties
+   */
   public get(path: '/sslGateway/{serviceName}/task/{id}', params: {serviceName: string, id: number}): Promise<SslGatewayTask>;
-  public get(path: PathsSslGatewayGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsSslGatewayGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Your SSL Gateway
-  Alter this object properties
-  **/
+   * Your SSL Gateway
+   * Alter this object properties
+   */
   public put(path: '/sslGateway/{serviceName}', params: {serviceName: string, allowedSource?: string[], displayName?: string, hsts?: boolean, httpsRedirect?: boolean, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: SslGatewayOfferEnum, reverse?: string, serverHttps?: boolean, sslConfiguration?: SslGatewaySslConfigurationEnum, state?: SslGatewayStateEnum, zones?: string[]}): Promise<void>;
   /**
-  Server attached to an SSL Gateway
-  Alter this object properties
-  **/
+   * Server attached to an SSL Gateway
+   * Alter this object properties
+   */
   public put(path: '/sslGateway/{serviceName}/server/{id}', params: {serviceName: string, id: number, address?: string, port?: number, state?: SslGatewayServerStateEnum}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/sslGateway/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsSslGatewayPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsSslGatewayPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
+   * Change the contacts of this service
+   * Launch a contact change procedure
+   */
   public post(path: '/sslGateway/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
+   * Confirm termination of your service
+   * Confirm termination of your service
+   */
   public post(path: '/sslGateway/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
-  List the sslGateway.Domain objects
-  Attach a new domain to your SSL Gateway
-  **/
+   * List the sslGateway.Domain objects
+   * Attach a new domain to your SSL Gateway
+   */
   public post(path: '/sslGateway/{serviceName}/domain', params: {serviceName: string, domain: string}): Promise<SslGatewayDomain>;
   /**
-  renewCertificate operations
-  Renew your SSL certificates
-  **/
+   * renewCertificate operations
+   * Renew your SSL certificates
+   */
   public post(path: '/sslGateway/{serviceName}/renewCertificate', params: {serviceName: string, domain?: string}): Promise<string[]>;
   /**
-  List the sslGateway.Server objects
-  Add a new server to your SSL Gateway
-  **/
+   * List the sslGateway.Server objects
+   * Add a new server to your SSL Gateway
+   */
   public post(path: '/sslGateway/{serviceName}/server', params: {serviceName: string, address: string, port: number}): Promise<SslGatewayServer>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
+   * Terminate your service
+   * Terminate your service
+   */
   public post(path: '/sslGateway/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
-  public post(path: PathsSslGatewayPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsSslGatewayPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Domain attached to an SSL Gateway
-  Detach a domain from your SSL Gateway
-  **/
+   * Domain attached to an SSL Gateway
+   * Detach a domain from your SSL Gateway
+   */
   public delete(path: '/sslGateway/{serviceName}/domain/{id}', params: {serviceName: string, id: number}): Promise<void>;
   /**
-  Server attached to an SSL Gateway
-  Remove a server
-  **/
+   * Server attached to an SSL Gateway
+   * Remove a server
+   */
   public delete(path: '/sslGateway/{serviceName}/server/{id}', params: {serviceName: string, id: number}): Promise<void>;
-  public delete(path: PathsSslGatewayDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsSslGatewayDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

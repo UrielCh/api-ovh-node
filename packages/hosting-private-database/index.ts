@@ -825,300 +825,300 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the SQLPRIVE service
-  List available services
-  **/
+   * Operations about the SQLPRIVE service
+   * List available services
+   */
   public get(path: '/hosting/privateDatabase'): Promise<string[]>;
   /**
-  Get available order capacitie
-  Get available order capacitie
-  **/
+   * Get available order capacitie
+   * Get available order capacitie
+   */
   public get(path: '/hosting/privateDatabase/availableOrderCapacities', params: {offer: HostingPrivateDatabaseOfferEnum}): Promise<HostingPrivateDatabaseAvailableOrderCapacities>;
   /**
-  Private database
-  Get this object properties
-  **/
+   * Private database
+   * Get this object properties
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}', params: {serviceName: string}): Promise<HostingPrivateDatabaseService>;
   /**
-  availableVersions operations
-  Get the availables versions for this private database
-  **/
+   * availableVersions operations
+   * Get the availables versions for this private database
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/availableVersions', params: {serviceName: string}): Promise<HostingPrivateDatabaseAvailableVersionEnum[]>;
   /**
-  Configuration
-  Get this object properties
-  **/
+   * Configuration
+   * Get this object properties
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/config', params: {serviceName: string}): Promise<HostingPrivateDatabaseConfiguration>;
   /**
-  List the hosting.privateDatabase.database objects
-  Databases linked to your private database service
-  **/
+   * List the hosting.privateDatabase.database objects
+   * Databases linked to your private database service
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/database', params: {serviceName: string}): Promise<string[]>;
   /**
-  Databases
-  Get this object properties
-  **/
+   * Databases
+   * Get this object properties
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}', params: {serviceName: string, databaseName: string}): Promise<HostingPrivateDatabaseDatabase>;
   /**
-  List the hosting.privateDatabase.database.dump objects
-  Dump available for your databases
-  **/
+   * List the hosting.privateDatabase.database.dump objects
+   * Dump available for your databases
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump', params: {serviceName: string, databaseName: string, creationDate?: string, deletionDate?: string}): Promise<number[]>;
   /**
-  Dump
-  Get this object properties
-  **/
+   * Dump
+   * Get this object properties
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}', params: {serviceName: string, databaseName: string, id: number}): Promise<HostingPrivateDatabaseDatabaseDump>;
   /**
-  List the hosting.privateDatabase.database.extension objects
-  Extensions linked to your database
-  **/
+   * List the hosting.privateDatabase.database.extension objects
+   * Extensions linked to your database
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension', params: {serviceName: string, databaseName: string, extensionName?: string, status?: HostingPrivateDatabaseDatabaseExtensionStatus}): Promise<string[]>;
   /**
-  Databases extension
-  Get this object properties
-  **/
+   * Databases extension
+   * Get this object properties
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}', params: {serviceName: string, databaseName: string, extensionName: string}): Promise<HostingPrivateDatabaseDatabaseExtension>;
   /**
-  List the hosting.privateDatabase.dump objects
-  Dumps available for your private database service
-  **/
+   * List the hosting.privateDatabase.dump objects
+   * Dumps available for your private database service
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/dump', params: {serviceName: string, databaseName?: string, orphan?: boolean}): Promise<number[]>;
   /**
-  Dump
-  Get this object properties
-  **/
+   * Dump
+   * Get this object properties
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/dump/{dumpId}', params: {serviceName: string, dumpId: number}): Promise<HostingPrivateDatabaseDump>;
   /**
-  oom operations
-  List of privatesql OOM kill
-  **/
+   * oom operations
+   * List of privatesql OOM kill
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/oom', params: {serviceName: string}): Promise<HostingPrivateDatabaseOom[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the hosting.privateDatabase.task objects
-  Tasks attached to your private database service
-  **/
+   * List the hosting.privateDatabase.task objects
+   * Tasks attached to your private database service
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/tasks', params: {serviceName: string, function?: HostingPrivateDatabaseTaskFunctionEnum, status?: HostingPrivateDatabaseTaskStatusEnum}): Promise<number[]>;
   /**
-  Tasks
-  Get this object properties
-  **/
+   * Tasks
+   * Get this object properties
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/tasks/{id}', params: {serviceName: string, id: number}): Promise<HostingPrivateDatabaseTask>;
   /**
-  List the hosting.privateDatabase.user objects
-  User allowed to connect on your databases
-  **/
+   * List the hosting.privateDatabase.user objects
+   * User allowed to connect on your databases
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/user', params: {serviceName: string}): Promise<string[]>;
   /**
-  Users
-  Get this object properties
-  **/
+   * Users
+   * Get this object properties
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/user/{userName}', params: {serviceName: string, userName: string}): Promise<HostingPrivateDatabaseUser>;
   /**
-  List the hosting.privateDatabase.grant objects
-  User grant's on your databases
-  **/
+   * List the hosting.privateDatabase.grant objects
+   * User grant's on your databases
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant', params: {serviceName: string, userName: string}): Promise<string[]>;
   /**
-  Grants
-  Get this object properties
-  **/
+   * Grants
+   * Get this object properties
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}', params: {serviceName: string, userName: string, databaseName: string}): Promise<HostingPrivateDatabaseGrant>;
   /**
-  webs operations
-  List linked webs
-  **/
+   * webs operations
+   * List linked webs
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/webs', params: {serviceName: string}): Promise<string[]>;
   /**
-  List the hosting.privateDatabase.whitelist objects
-  Whitelist allowed on your privatesql
-  **/
+   * List the hosting.privateDatabase.whitelist objects
+   * Whitelist allowed on your privatesql
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/whitelist', params: {serviceName: string, ip?: string, service?: boolean, sftp?: boolean}): Promise<string[]>;
   /**
-  IP whitelisting for your instance
-  Get this object properties
-  **/
+   * IP whitelisting for your instance
+   * Get this object properties
+   */
   public get(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {serviceName: string, ip: string}): Promise<HostingPrivateDatabaseWhitelist>;
-  public get(path: PathsHostingPrivateDatabaseGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsHostingPrivateDatabaseGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Private database
-  Alter this object properties
-  **/
+   * Private database
+   * Alter this object properties
+   */
   public put(path: '/hosting/privateDatabase/{serviceName}', params: {serviceName: string, capabilities?: HostingPrivateDatabaseCapability[], cpu?: number, datacenter?: HostingPrivateDatabaseDatacenterEnum, displayName?: string, graphEndpoint?: HostingPrivateDatabaseGraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: HostingPrivateDatabaseOfferEnum, port?: number, portFtp?: number, quotaSize?: ComplexTypeUnitAndValue<number>, quotaUsed?: ComplexTypeUnitAndValue<number>, ram?: ComplexTypeUnitAndValue<number>, server?: string, state?: HostingPrivateDatabaseStateEnum, tlsCa?: string, type?: HostingPrivateDatabaseTypeEnum, version?: HostingPrivateDatabaseAvailableVersionEnum, versionNumber?: number}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/hosting/privateDatabase/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
   /**
-  IP whitelisting for your instance
-  Alter this object properties
-  **/
+   * IP whitelisting for your instance
+   * Alter this object properties
+   */
   public put(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {serviceName: string, ip: string, creationDate?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: HostingPrivateDatabaseWhitelistStatus, taskId?: string}): Promise<void>;
-  public put(path: PathsHostingPrivateDatabasePUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsHostingPrivateDatabasePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
+   * Change the contacts of this service
+   * Launch a contact change procedure
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
-  changeFtpPassword operations
-  Change your ftp admin password
-  **/
+   * changeFtpPassword operations
+   * Change your ftp admin password
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/changeFtpPassword', params: {serviceName: string, password: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  changeVersion operations
-  Change the private database engine version
-  **/
+   * changeVersion operations
+   * Change the private database engine version
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/changeVersion', params: {serviceName: string, version: HostingPrivateDatabaseAvailableVersionEnum}): Promise<HostingPrivateDatabaseTask>;
   /**
-  update operations
-  Update the configuration
-  **/
+   * update operations
+   * Update the configuration
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/config/update', params: {serviceName: string, parameters: ComplexTypeSafeKeyValue<string>[]}): Promise<HostingPrivateDatabaseConfiguration>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
+   * Confirm termination of your service
+   * Confirm termination of your service
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
-  List the hosting.privateDatabase.database objects
-  Create a new database on your private database service
-  **/
+   * List the hosting.privateDatabase.database objects
+   * Create a new database on your private database service
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/database', params: {serviceName: string, databaseName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  List the hosting.privateDatabase.database.dump objects
-  Request the dump of this database ( an email will be send with a link available 30 days )
-  **/
+   * List the hosting.privateDatabase.database.dump objects
+   * Request the dump of this database ( an email will be send with a link available 30 days )
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump', params: {serviceName: string, databaseName: string, sendEmail?: boolean}): Promise<HostingPrivateDatabaseTask>;
   /**
-  restore operations
-  Request the restore from this dump
-  **/
+   * restore operations
+   * Request the restore from this dump
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore', params: {serviceName: string, databaseName: string, id: number}): Promise<HostingPrivateDatabaseTask>;
   /**
-  disable operations
-  Disable an extension from a database
-  **/
+   * disable operations
+   * Disable an extension from a database
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/disable', params: {serviceName: string, databaseName: string, extensionName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  enable operations
-  Enable an extension on a database
-  **/
+   * enable operations
+   * Enable an extension on a database
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/enable', params: {serviceName: string, databaseName: string, extensionName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  import operations
-  Request the import in this database
-  **/
+   * import operations
+   * Request the import in this database
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/import', params: {serviceName: string, databaseName: string, documentId: string, flushDatabase?: boolean, sendEmail?: boolean}): Promise<HostingPrivateDatabaseTask>;
   /**
-  databaseWizard operations
-  Create a new database/user and grant it
-  **/
+   * databaseWizard operations
+   * Create a new database/user and grant it
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/databaseWizard', params: {serviceName: string, databaseName: string, grant: HostingPrivateDatabaseGrantGrantEnum, password: string, userName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  restore operations
-  Request the restore from this dump
-  **/
+   * restore operations
+   * Request the restore from this dump
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore', params: {serviceName: string, dumpId: number, databaseName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  generateTemporaryLogsLink operations
-  Generate a temporary url to retrieve instance logs
-  **/
+   * generateTemporaryLogsLink operations
+   * Generate a temporary url to retrieve instance logs
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/generateTemporaryLogsLink', params: {serviceName: string}): Promise<HostingPrivateDatabaseTemporaryLogsLink>;
   /**
-  refresh operations
-  Synchronize your informations from your private database
-  **/
+   * refresh operations
+   * Synchronize your informations from your private database
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/refresh', params: {serviceName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  restart operations
-  Restart the private database
-  **/
+   * restart operations
+   * Restart the private database
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/restart', params: {serviceName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  start operations
-  Start the private database
-  **/
+   * start operations
+   * Start the private database
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/start', params: {serviceName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  stop operations
-  Stop the private database
-  **/
+   * stop operations
+   * Stop the private database
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/stop', params: {serviceName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
+   * Terminate your service
+   * Terminate your service
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
   /**
-  List the hosting.privateDatabase.user objects
-  Create a new user on your service
-  **/
+   * List the hosting.privateDatabase.user objects
+   * Create a new user on your service
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/user', params: {serviceName: string, password: string, userName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  changePassword operations
-  Request a change password for a user
-  **/
+   * changePassword operations
+   * Request a change password for a user
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/changePassword', params: {serviceName: string, userName: string, password: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  List the hosting.privateDatabase.grant objects
-  Add grant on a database
-  **/
+   * List the hosting.privateDatabase.grant objects
+   * Add grant on a database
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant', params: {serviceName: string, userName: string, databaseName: string, grant: HostingPrivateDatabaseGrantGrantEnum}): Promise<HostingPrivateDatabaseTask>;
   /**
-  update operations
-  Update user grant
-  **/
+   * update operations
+   * Update user grant
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update', params: {serviceName: string, userName: string, databaseName: string, grant: HostingPrivateDatabaseGrantGrantEnum}): Promise<HostingPrivateDatabaseTask>;
   /**
-  List the hosting.privateDatabase.whitelist objects
-  Create a new IP whitelist
-  **/
+   * List the hosting.privateDatabase.whitelist objects
+   * Create a new IP whitelist
+   */
   public post(path: '/hosting/privateDatabase/{serviceName}/whitelist', params: {serviceName: string, ip: string, name?: string, service?: boolean, sftp?: boolean}): Promise<HostingPrivateDatabaseTask>;
-  public post(path: PathsHostingPrivateDatabasePOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsHostingPrivateDatabasePOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Databases
-  Delete the database
-  **/
+   * Databases
+   * Delete the database
+   */
   public delete(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}', params: {serviceName: string, databaseName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  Dump
-  Delete dump before expiration date
-  **/
+   * Dump
+   * Delete dump before expiration date
+   */
   public delete(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}', params: {serviceName: string, databaseName: string, id: number}): Promise<HostingPrivateDatabaseTask>;
   /**
-  Dump
-  Delete dump before expiration date
-  **/
+   * Dump
+   * Delete dump before expiration date
+   */
   public delete(path: '/hosting/privateDatabase/{serviceName}/dump/{dumpId}', params: {serviceName: string, dumpId: number}): Promise<HostingPrivateDatabaseTask>;
   /**
-  Users
-  Delete a user
-  **/
+   * Users
+   * Delete a user
+   */
   public delete(path: '/hosting/privateDatabase/{serviceName}/user/{userName}', params: {serviceName: string, userName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  Grants
-  Delete a grant on a database
-  **/
+   * Grants
+   * Delete a grant on a database
+   */
   public delete(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}', params: {serviceName: string, userName: string, databaseName: string}): Promise<HostingPrivateDatabaseTask>;
   /**
-  IP whitelisting for your instance
-  Delete ain IP whitelist
-  **/
+   * IP whitelisting for your instance
+   * Delete ain IP whitelist
+   */
   public delete(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {serviceName: string, ip: string}): Promise<HostingPrivateDatabaseTask>;
-  public delete(path: PathsHostingPrivateDatabaseDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsHostingPrivateDatabaseDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

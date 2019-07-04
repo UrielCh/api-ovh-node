@@ -187,49 +187,49 @@ export class ApiNewAccount extends OvhWrapper {
     super(engine);
   }
   /**
-  All available areas for a given country
-  All available areas for a given country
-  **/
+   * All available areas for a given country
+   * All available areas for a given country
+   */
   public get(path: '/newAccount/area', params: {country: NichandleCountryEnum}): Promise<string[]>;
   /**
-  Returns the contracts that governs the creation of an OVH identifier
-  Returns the contracts that governs the creation of an OVH identifier
-  **/
+   * Returns the contracts that governs the creation of an OVH identifier
+   * Returns the contracts that governs the creation of an OVH identifier
+   */
   public get(path: '/newAccount/contracts', params: {company: NichandleOvhCompanyEnum, subsidiary: NichandleOvhSubsidiaryEnum}): Promise<OrderContract[]>;
   /**
-  All available corporation types for a given country
-  All available corporation types for a given country
-  **/
+   * All available corporation types for a given country
+   * All available corporation types for a given country
+   */
   public get(path: '/newAccount/corporationType', params: {country: NichandleCountryEnum}): Promise<string[]>;
   /**
-  All available countries for an ovh company and an ovh subsidiary
-  All available countries for an ovh company and an ovh subsidiary
-  **/
+   * All available countries for an ovh company and an ovh subsidiary
+   * All available countries for an ovh company and an ovh subsidiary
+   */
   public get(path: '/newAccount/countries', params: {ovhCompany: NichandleOvhCompanyEnum, ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<NichandleCountryEnum[]>;
   /**
-  Give all the rules to follow in order to create an OVH identifier
-  Give all the rules to follow in order to create an OVH identifier
-  **/
+   * Give all the rules to follow in order to create an OVH identifier
+   * Give all the rules to follow in order to create an OVH identifier
+   */
   public get(path: '/newAccount/creationRules', params: {country: NichandleCountryEnum, legalform: NichandleLegalFormEnum, ovhCompany: NichandleOvhCompanyEnum, ovhSubsidiary: NichandleOvhSubsidiaryEnum}): Promise<NichandleCreationRules>;
   /**
-  All available legal forms for a given country
-  All available legal forms for a given country
-  **/
+   * All available legal forms for a given country
+   * All available legal forms for a given country
+   */
   public get(path: '/newAccount/legalform', params: {country: NichandleCountryEnum}): Promise<string[]>;
-  public get(path: PathsNewAccountGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsNewAccountGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Create a new OVH identifier
-  Create a new OVH identifier
-  **/
+   * Create a new OVH identifier
+   * Create a new OVH identifier
+   */
   public post(path: '/newAccount', params: {address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country: NichandleCountryEnum, email: string, fax?: string, firstname?: string, italianSDI?: string, language?: NichandleLanguageEnum, legalform: NichandleLegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany: NichandleOvhCompanyEnum, ovhSubsidiary: NichandleOvhSubsidiaryEnum, phone?: string, phoneCountry?: NichandleCountryEnum, sex?: NichandleGenderEnum, spareEmail?: string, vat?: string, zip?: string}): Promise<NichandleNewAccountAndToken>;
   /**
-  Give all the rules to follow in order to create and update an OVH identifier
-  Give all the rules to follow in order to create and update an OVH identifier
-  **/
+   * Give all the rules to follow in order to create and update an OVH identifier
+   * Give all the rules to follow in order to create and update an OVH identifier
+   */
   public post(path: '/newAccount/rules', params: {action?: NichandleCreationRulesActionEnum, address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: NichandleCountryEnum, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: NichandleLanguageEnum, legalform?: NichandleLegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany?: NichandleOvhCompanyEnum, ovhSubsidiary?: NichandleOvhSubsidiaryEnum, phone?: string, phoneCountry?: NichandleCountryEnum, sex?: NichandleGenderEnum, spareEmail?: string, vat?: string, zip?: string}): Promise<NichandleCreationRule[]>;
-  public post(path: PathsNewAccountPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsNewAccountPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
 }

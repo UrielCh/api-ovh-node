@@ -117,29 +117,29 @@ export class ApiStackMis extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the GS service
-  List available services
-  **/
+   * Operations about the GS service
+   * List available services
+   */
   public get(path: '/stack/mis'): Promise<string[]>;
   /**
-  Stack MIS
-  Get this object properties
-  **/
+   * Stack MIS
+   * Get this object properties
+   */
   public get(path: '/stack/mis/{serviceName}', params: {serviceName: string}): Promise<StackMisProduct>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/stack/mis/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsStackMisGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsStackMisGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/stack/mis/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsStackMisPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsStackMisPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
 }

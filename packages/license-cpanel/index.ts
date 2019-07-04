@@ -254,77 +254,77 @@ export class ApiLicenseCpanel extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the LICENSE service
-  List available services
-  **/
+   * Operations about the LICENSE service
+   * List available services
+   */
   public get(path: '/license/cpanel'): Promise<string[]>;
   /**
-  Get the orderable CPanel versions
-  Get the orderable CPanel versions
-  **/
+   * Get the orderable CPanel versions
+   * Get the orderable CPanel versions
+   */
   public get(path: '/license/cpanel/orderableVersions', params: {ip: string}): Promise<LicenseCpanelOrderConfiguration[]>;
   /**
-  Your Cpanel license
-  Get this object properties
-  **/
+   * Your Cpanel license
+   * Get this object properties
+   */
   public get(path: '/license/cpanel/{serviceName}', params: {serviceName: string}): Promise<LicenseCpanelCpanel>;
   /**
-  allowedDestinationIp operations
-  Returns an array of ips where the license can be moved to
-  **/
+   * allowedDestinationIp operations
+   * Returns an array of ips where the license can be moved to
+   */
   public get(path: '/license/cpanel/{serviceName}/allowedDestinationIp', params: {serviceName: string}): Promise<string[]>;
   /**
-  canLicenseBeMovedTo operations
-  Will tell if the ip can accept the license
-  **/
+   * canLicenseBeMovedTo operations
+   * Will tell if the ip can accept the license
+   */
   public get(path: '/license/cpanel/{serviceName}/canLicenseBeMovedTo', params: {serviceName: string, destinationIp: string}): Promise<LicenseChangeIpStatus>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/license/cpanel/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the license.Task objects
-  tasks linked to this license
-  **/
+   * List the license.Task objects
+   * tasks linked to this license
+   */
   public get(path: '/license/cpanel/{serviceName}/tasks', params: {serviceName: string, action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<number[]>;
   /**
-  licenses Todos
-  Get this object properties
-  **/
+   * licenses Todos
+   * Get this object properties
+   */
   public get(path: '/license/cpanel/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<LicenseTask>;
-  public get(path: PathsLicenseCpanelGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsLicenseCpanelGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Your Cpanel license
-  Alter this object properties
-  **/
+   * Your Cpanel license
+   * Alter this object properties
+   */
   public put(path: '/license/cpanel/{serviceName}', params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: LicenseStateEnum, version?: LicenseCpanelVersionEnum}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/license/cpanel/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsLicenseCpanelPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsLicenseCpanelPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  changeIp operations
-  Move this license to another Ip
-  **/
+   * changeIp operations
+   * Move this license to another Ip
+   */
   public post(path: '/license/cpanel/{serviceName}/changeIp', params: {serviceName: string, destinationIp: string}): Promise<LicenseTask>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
+   * Confirm termination of your service
+   * Confirm termination of your service
+   */
   public post(path: '/license/cpanel/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
+   * Terminate your service
+   * Terminate your service
+   */
   public post(path: '/license/cpanel/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
-  public post(path: PathsLicenseCpanelPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsLicenseCpanelPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
 }

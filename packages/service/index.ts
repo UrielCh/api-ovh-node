@@ -480,52 +480,52 @@ export class ApiService extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the services
-  List available services
-  **/
+   * Operations about the services
+   * List available services
+   */
   public get(path: '/service'): Promise<number[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/service/{serviceId}', params: {serviceId: number}): Promise<ServiceListService>;
   /**
-  Missing description
-  List possible renews for this service
-  **/
+   * Missing description
+   * List possible renews for this service
+   */
   public get(path: '/service/{serviceId}/renew', params: {serviceId: string, includeOptions?: boolean}): Promise<ServiceRenewRenewDescription[]>;
-  public get(path: PathsServiceGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsServiceGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/service/{serviceId}', params: {serviceId: number, creationDate?: string, details?: ComplexTypeSafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: ServicePlan, quantity?: number, renew?: ServiceRenew, resource?: ServiceResource, route?: ServiceRoute, state?: ServiceBillingStateEnum}): Promise<void>;
-  public put(path: PathsServicePUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsServicePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  Missing description
-  Create a renew order
-  **/
+   * Missing description
+   * Create a renew order
+   */
   public post(path: '/service/{serviceId}/renew', params: {serviceId: string, dryRun?: boolean, duration: string, services: number[]}): Promise<ServiceRenewRenewOrder>;
   /**
-  reopen operations
-  Reopen a suspended service
-  **/
+   * reopen operations
+   * Reopen a suspended service
+   */
   public post(path: '/service/{serviceId}/reopen', params: {serviceId: number}): Promise<void>;
   /**
-  suspend operations
-  Suspend the service. The service won't be accessible, but you will still be charged for it
-  **/
+   * suspend operations
+   * Suspend the service. The service won't be accessible, but you will still be charged for it
+   */
   public post(path: '/service/{serviceId}/suspend', params: {serviceId: number}): Promise<void>;
   /**
-  terminate operations
-  Terminates a suspended service
-  **/
+   * terminate operations
+   * Terminates a suspended service
+   */
   public post(path: '/service/{serviceId}/terminate', params: {serviceId: number}): Promise<void>;
-  public post(path: PathsServicePOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsServicePOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
 }

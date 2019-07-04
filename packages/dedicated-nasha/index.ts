@@ -471,210 +471,210 @@ export class ApiDedicatedNasha extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the STORAGE service
-  List available services
-  **/
+   * Operations about the STORAGE service
+   * List available services
+   */
   public get(path: '/dedicated/nasha'): Promise<string[]>;
   /**
-  Get availabilities of nasha offer
-  Get availabilities of nasha offer
-  **/
+   * Get availabilities of nasha offer
+   * Get availabilities of nasha offer
+   */
   public get(path: '/dedicated/nasha/availabilities'): Promise<DedicatedNasHAAvailabilities[]>;
   /**
-  Storage nas HA
-  Get this object properties
-  **/
+   * Storage nas HA
+   * Get this object properties
+   */
   public get(path: '/dedicated/nasha/{serviceName}', params: {serviceName: string}): Promise<DedicatedNashaStorage>;
   /**
-  List the dedicated.nasha.Partition objects
-  Get partition list
-  **/
+   * List the dedicated.nasha.Partition objects
+   * Get partition list
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition', params: {serviceName: string}): Promise<string[]>;
   /**
-  Storage zpool partition
-  Get this object properties
-  **/
+   * Storage zpool partition
+   * Get this object properties
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string}): Promise<DedicatedNashaPartition>;
   /**
-  List the dedicated.nasha.Access objects
-  get ACL for this partition
-  **/
+   * List the dedicated.nasha.Access objects
+   * get ACL for this partition
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/access', params: {serviceName: string, partitionName: string}): Promise<string[]>;
   /**
-  Define Acl for partition
-  Get this object properties
-  **/
+   * Define Acl for partition
+   * Get this object properties
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/access/{ip}', params: {serviceName: string, partitionName: string, ip: string}): Promise<DedicatedNashaAccess>;
   /**
-  authorizableBlocks operations
-  Get all RIPE/ARIN blocks that can be used in the ACL
-  **/
+   * authorizableBlocks operations
+   * Get all RIPE/ARIN blocks that can be used in the ACL
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/authorizableBlocks', params: {serviceName: string, partitionName: string}): Promise<string[]>;
   /**
-  authorizableIps operations
-  Get all IPs that can be used in the ACL
-  **/
+   * authorizableIps operations
+   * Get all IPs that can be used in the ACL
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/authorizableIps', params: {serviceName: string, partitionName: string}): Promise<string[]>;
   /**
-  List the dedicated.nasha.customSnap objects
-  Get custom snapshots for this partition
-  **/
+   * List the dedicated.nasha.customSnap objects
+   * Get custom snapshots for this partition
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot', params: {serviceName: string, partitionName: string}): Promise<string[]>;
   /**
-  Custom Snapshot
-  Get this object properties
-  **/
+   * Custom Snapshot
+   * Get this object properties
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot/{name}', params: {serviceName: string, partitionName: string, name: string}): Promise<DedicatedNashaCustomSnap>;
   /**
-  Partition options
-  Get this object properties
-  **/
+   * Partition options
+   * Get this object properties
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/options', params: {serviceName: string, partitionName: string}): Promise<DedicatedNashaOptions>;
   /**
-  List the dedicated.nasha.Quota objects
-  Get quota for this partition
-  **/
+   * List the dedicated.nasha.Quota objects
+   * Get quota for this partition
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/quota', params: {serviceName: string, partitionName: string}): Promise<number[]>;
   /**
-  Partition Quota
-  Get this object properties
-  **/
+   * Partition Quota
+   * Get this object properties
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/quota/{uid}', params: {serviceName: string, partitionName: string, uid: number}): Promise<DedicatedNashaQuota>;
   /**
-  List the dedicated.nasha.Snapshot objects
-  Get scheduled snapshot types for this partition
-  **/
+   * List the dedicated.nasha.Snapshot objects
+   * Get scheduled snapshot types for this partition
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot', params: {serviceName: string, partitionName: string}): Promise<DedicatedStorageSnapshotEnum[]>;
   /**
-  Partition Snapshot
-  Get this object properties
-  **/
+   * Partition Snapshot
+   * Get this object properties
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}', params: {serviceName: string, partitionName: string, snapshotType: DedicatedStorageSnapshotEnum}): Promise<DedicatedNashaSnapshot>;
   /**
-  use operations
-  Return statistics about the partition
-  **/
+   * use operations
+   * Return statistics about the partition
+   */
   public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/use', params: {serviceName: string, partitionName: string, type: DedicatedStoragePartitionUsageTypeEnum}): Promise<ComplexTypeUnitAndValue<number>>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/dedicated/nasha/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the dedicated.nasTask.Task objects
-  View task list
-  **/
+   * List the dedicated.nasTask.Task objects
+   * View task list
+   */
   public get(path: '/dedicated/nasha/{serviceName}/task', params: {serviceName: string, operation?: DedicatedStorageTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<number[]>;
   /**
-  Storage task
-  Get this object properties
-  **/
+   * Storage task
+   * Get this object properties
+   */
   public get(path: '/dedicated/nasha/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<DedicatedNasTaskTask>;
   /**
-  use operations
-  Return statistics about the nas
-  **/
+   * use operations
+   * Return statistics about the nas
+   */
   public get(path: '/dedicated/nasha/{serviceName}/use', params: {serviceName: string, type: DedicatedStorageNasUsageTypeEnum}): Promise<ComplexTypeUnitAndValue<number>>;
-  public get(path: PathsDedicatedNashaGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsDedicatedNashaGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Storage nas HA
-  Alter this object properties
-  **/
+   * Storage nas HA
+   * Alter this object properties
+   */
   public put(path: '/dedicated/nasha/{serviceName}', params: {serviceName: string, canCreatePartition?: boolean, customName?: string, datacenter?: string, ip?: string, monitored?: boolean, zpoolCapacity?: number, zpoolSize?: number}): Promise<void>;
   /**
-  Storage zpool partition
-  Alter this object properties
-  **/
+   * Storage zpool partition
+   * Alter this object properties
+   */
   public put(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string, partitionCapacity?: number, protocol?: DedicatedStorageProtocolEnum, size?: number, usedBySnapshots?: number}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/dedicated/nasha/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsDedicatedNashaPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsDedicatedNashaPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
+   * Change the contacts of this service
+   * Launch a contact change procedure
+   */
   public post(path: '/dedicated/nasha/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
+   * Confirm termination of your service
+   * Confirm termination of your service
+   */
   public post(path: '/dedicated/nasha/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
-  List the dedicated.nasha.Partition objects
-  Create a new partition
-  **/
+   * List the dedicated.nasha.Partition objects
+   * Create a new partition
+   */
   public post(path: '/dedicated/nasha/{serviceName}/partition', params: {serviceName: string, partitionName: string, protocol: DedicatedStorageProtocolEnum, size: number}): Promise<DedicatedNasTaskTask>;
   /**
-  List the dedicated.nasha.Access objects
-  Add a new ACL entry
-  **/
+   * List the dedicated.nasha.Access objects
+   * Add a new ACL entry
+   */
   public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/access', params: {serviceName: string, partitionName: string, ip: string, type?: DedicatedStorageAclTypeEnum}): Promise<DedicatedNasTaskTask>;
   /**
-  List the dedicated.nasha.customSnap objects
-  Create a new snapshot
-  **/
+   * List the dedicated.nasha.customSnap objects
+   * Create a new snapshot
+   */
   public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot', params: {serviceName: string, partitionName: string, expiration?: string, name: string}): Promise<DedicatedNasTaskTask>;
   /**
-  Partition options
-  Setup options
-  **/
+   * Partition options
+   * Setup options
+   */
   public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/options', params: {serviceName: string, partitionName: string, atime?: DedicatedStorageAtimeEnum, recordsize?: DedicatedStorageRecordSizeEnum, sync?: DedicatedStorageSyncEnum}): Promise<DedicatedNasTaskTask>;
   /**
-  List the dedicated.nasha.Quota objects
-  Set a new quota
-  **/
+   * List the dedicated.nasha.Quota objects
+   * Set a new quota
+   */
   public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/quota', params: {serviceName: string, partitionName: string, size: number, uid: number}): Promise<DedicatedNasTaskTask>;
   /**
-  List the dedicated.nasha.Snapshot objects
-  Schedule a new snapshot type
-  **/
+   * List the dedicated.nasha.Snapshot objects
+   * Schedule a new snapshot type
+   */
   public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot', params: {serviceName: string, partitionName: string, snapshotType: DedicatedStorageSnapshotEnum}): Promise<DedicatedNasTaskTask>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
+   * Terminate your service
+   * Terminate your service
+   */
   public post(path: '/dedicated/nasha/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
-  public post(path: PathsDedicatedNashaPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsDedicatedNashaPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Storage zpool partition
-  Delete this partition
-  **/
+   * Storage zpool partition
+   * Delete this partition
+   */
   public delete(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string}): Promise<DedicatedNasTaskTask>;
   /**
-  Define Acl for partition
-  Delete an ACL entry
-  **/
+   * Define Acl for partition
+   * Delete an ACL entry
+   */
   public delete(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/access/{ip}', params: {serviceName: string, partitionName: string, ip: string}): Promise<DedicatedNasTaskTask>;
   /**
-  Custom Snapshot
-  Delete a given snapshot
-  **/
+   * Custom Snapshot
+   * Delete a given snapshot
+   */
   public delete(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot/{name}', params: {serviceName: string, partitionName: string, name: string}): Promise<DedicatedNasTaskTask>;
   /**
-  Partition Quota
-  Delete a given quota
-  **/
+   * Partition Quota
+   * Delete a given quota
+   */
   public delete(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/quota/{uid}', params: {serviceName: string, partitionName: string, uid: number}): Promise<DedicatedNasTaskTask>;
   /**
-  Partition Snapshot
-  Delete a given snapshot
-  **/
+   * Partition Snapshot
+   * Delete a given snapshot
+   */
   public delete(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}', params: {serviceName: string, partitionName: string, snapshotType: DedicatedStorageSnapshotEnum}): Promise<DedicatedNasTaskTask>;
   /**
-  Partition Vrack
-  Delete the vrack container
-  **/
+   * Partition Vrack
+   * Delete the vrack container
+   */
   public delete(path: '/dedicated/nasha/{serviceName}/vrack', params: {serviceName: string}): Promise<DedicatedNasTaskTask>;
-  public delete(path: PathsDedicatedNashaDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsDedicatedNashaDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

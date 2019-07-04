@@ -258,160 +258,160 @@ export class ApiStore extends OvhWrapper {
     super(engine);
   }
   /**
-  MarketPlaceContact
-  List current customer contacts
-  **/
+   * MarketPlaceContact
+   * List current customer contacts
+   */
   public get(path: '/store/contact'): Promise<MarketPlaceContact[]>;
   /**
-  MarketPlaceContact.contactId
-  Get contact details
-  **/
+   * MarketPlaceContact.contactId
+   * Get contact details
+   */
   public get(path: '/store/contact/{contactId}', params: {contactId: string}): Promise<MarketPlaceContact>;
   /**
-  MarketPlaceContact.doc
-  List document associated with contact
-  **/
+   * MarketPlaceContact.doc
+   * List document associated with contact
+   */
   public get(path: '/store/contact/{contactId}/document', params: {contactId: string}): Promise<string[]>;
   /**
-  MarketPlaceDocument
-  List current customer documents
-  **/
+   * MarketPlaceDocument
+   * List current customer documents
+   */
   public get(path: '/store/document'): Promise<MarketPlaceDocument[]>;
   /**
-  MarketPlaceDocument.documentId
-  Get document info
-  **/
+   * MarketPlaceDocument.documentId
+   * Get document info
+   */
   public get(path: '/store/document/{documentId}', params: {documentId: string}): Promise<MarketPlaceDocument>;
   /**
-  MarketPlacePartner.search
-  List current customer partners
-  **/
+   * MarketPlacePartner.search
+   * List current customer partners
+   */
   public get(path: '/store/partner'): Promise<MarketPlacePartner[]>;
   /**
-  MarketPlacePartner.get
-  Get partner info
-  **/
+   * MarketPlacePartner.get
+   * Get partner info
+   */
   public get(path: '/store/partner/{partnerId}', params: {partnerId: string}): Promise<MarketPlacePartner>;
   /**
-  MarketPlacePartner.doc
-  List document associated with partner
-  **/
+   * MarketPlacePartner.doc
+   * List document associated with partner
+   */
   public get(path: '/store/partner/{partnerId}/document', params: {partnerId: string}): Promise<string[]>;
   /**
-  MarketPlacePartnerProduct.search
-  List partner's products
-  **/
+   * MarketPlacePartnerProduct.search
+   * List partner's products
+   */
   public get(path: '/store/partner/{partnerId}/product', params: {partnerId: string}): Promise<MarketPlacePartnerProduct[]>;
   /**
-  MarketPlacePartnerProduct.get
-  Get partner info
-  **/
+   * MarketPlacePartnerProduct.get
+   * Get partner info
+   */
   public get(path: '/store/partner/{partnerId}/product/{productId}', params: {partnerId: string, productId: string}): Promise<MarketPlacePartnerProduct>;
   /**
-  MarketPlacePartnerProduct.doc
-  List document associated with product
-  **/
+   * MarketPlacePartnerProduct.doc
+   * List document associated with product
+   */
   public get(path: '/store/partner/{partnerId}/product/{productId}/document', params: {partnerId: string, productId: string}): Promise<string[]>;
-  public get(path: PathsStoreGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsStoreGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  MarketPlaceContact.contactId
-  Edit contact information
-  **/
+   * MarketPlaceContact.contactId
+   * Edit contact information
+   */
   public put(path: '/store/contact/{contactId}', params: {contactId: string, city?: string, country?: string, email?: string, firstname?: string, lastname?: string, phone?: string, province?: string, street?: string, title?: string, zip?: string}): Promise<MarketPlaceContact>;
   /**
-  MarketPlacePartner.get
-  Edit partner info
-  **/
+   * MarketPlacePartner.get
+   * Edit partner info
+   */
   public put(path: '/store/partner/{partnerId}', params: {partnerId: string, category?: string, city?: string, companyNationalIdentificationNumber?: string, contact?: string, country?: string, description?: string, language?: string, legalForm?: string, organisationDisplayName?: string, organisationName?: string, otherDetails?: string, province?: string, street?: string, url?: string, vat?: string, zip?: string}): Promise<MarketPlacePartner>;
   /**
-  MarketPlacePartnerProduct.get
-  Edit product info
-  **/
+   * MarketPlacePartnerProduct.get
+   * Edit product info
+   */
   public put(path: '/store/partner/{partnerId}/product/{productId}', params: {partnerId: string, productId: string, category?: string, description?: string, name?: string, otherDetails?: string}): Promise<MarketPlacePartnerProduct>;
-  public put(path: PathsStorePUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsStorePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  MarketPlaceContact
-  Create a 'marketplace' contact for current nic
-  **/
+   * MarketPlaceContact
+   * Create a 'marketplace' contact for current nic
+   */
   public post(path: '/store/contact', params: {city?: string, country?: string, email: string, firstname: string, lastname: string, phone?: string, province?: string, street?: string, title: string, zip?: string}): Promise<MarketPlaceContact>;
   /**
-  MarketPlaceContact.doc
-  Add a document to a contact
-  **/
+   * MarketPlaceContact.doc
+   * Add a document to a contact
+   */
   public post(path: '/store/contact/{contactId}/document', params: {contactId: string, documentId: string}): Promise<string[]>;
   /**
-  MarketPlaceDocument
-  Create a document
-  **/
+   * MarketPlaceDocument
+   * Create a document
+   */
   public post(path: '/store/document', params: {name: string, tags?: ComplexTypeSafeKeyValue<string>[]}): Promise<MarketPlaceDocument>;
   /**
-  MarketPlaceDocument
-  Add CORS support on your container
-  **/
+   * MarketPlaceDocument
+   * Add CORS support on your container
+   */
   public post(path: '/store/document/cors', params: {origin: string}): Promise<void>;
   /**
-  MarketPlacePartner.search
-  Create a 'marketplace' partner for current nic
-  **/
+   * MarketPlacePartner.search
+   * Create a 'marketplace' partner for current nic
+   */
   public post(path: '/store/partner', params: {category?: string, city: string, companyNationalIdentificationNumber?: string, contact?: string, country: string, description?: string, language?: string, legalForm: string, organisationDisplayName?: string, organisationName: string, otherDetails?: string, province: string, street: string, url?: string, vat?: string, zip: string}): Promise<MarketPlacePartner>;
   /**
-  MarketPlacePartner.doc
-  Add a document to a partner
-  **/
+   * MarketPlacePartner.doc
+   * Add a document to a partner
+   */
   public post(path: '/store/partner/{partnerId}/document', params: {partnerId: string, documentId: string}): Promise<string[]>;
   /**
-  MarketPlacePartnerProduct.search
-  Create a new product for partner
-  **/
+   * MarketPlacePartnerProduct.search
+   * Create a new product for partner
+   */
   public post(path: '/store/partner/{partnerId}/product', params: {partnerId: string, category: string, description: string, name: string, otherDetails?: string}): Promise<MarketPlacePartnerProduct>;
   /**
-  MarketPlacePartnerProduct.doc
-  Add a document to a product
-  **/
+   * MarketPlacePartnerProduct.doc
+   * Add a document to a product
+   */
   public post(path: '/store/partner/{partnerId}/product/{productId}/document', params: {partnerId: string, productId: string, documentId: string}): Promise<string[]>;
-  public post(path: PathsStorePOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsStorePOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  MarketPlaceContact.contactId
-  Remove an existing contact
-  **/
+   * MarketPlaceContact.contactId
+   * Remove an existing contact
+   */
   public delete(path: '/store/contact/{contactId}', params: {contactId: string}): Promise<string>;
   /**
-  MarketPlaceContact.doc_id
-  Unlink a document from a contact
-  **/
+   * MarketPlaceContact.doc_id
+   * Unlink a document from a contact
+   */
   public delete(path: '/store/contact/{contactId}/document/{documentId}', params: {contactId: string, documentId: string}): Promise<string[]>;
   /**
-  MarketPlaceDocument.documentId
-  Delete document
-  **/
+   * MarketPlaceDocument.documentId
+   * Delete document
+   */
   public delete(path: '/store/document/{documentId}', params: {documentId: string}): Promise<string>;
   /**
-  MarketPlacePartner.get
-  Delete partner
-  **/
+   * MarketPlacePartner.get
+   * Delete partner
+   */
   public delete(path: '/store/partner/{partnerId}', params: {partnerId: string}): Promise<string>;
   /**
-  MarketPlacePartner.doc_id
-  Unlink a document from a partner
-  **/
+   * MarketPlacePartner.doc_id
+   * Unlink a document from a partner
+   */
   public delete(path: '/store/partner/{partnerId}/document/{documentId}', params: {partnerId: string, documentId: string}): Promise<string[]>;
   /**
-  MarketPlacePartnerProduct.get
-  Delete product
-  **/
+   * MarketPlacePartnerProduct.get
+   * Delete product
+   */
   public delete(path: '/store/partner/{partnerId}/product/{productId}', params: {partnerId: string, productId: string}): Promise<string>;
   /**
-  MarketPlacePartnerProduct.doc_id
-  Unlink a document from a product
-  **/
+   * MarketPlacePartnerProduct.doc_id
+   * Unlink a document from a product
+   */
   public delete(path: '/store/partner/{partnerId}/product/{productId}/document/{documentId}', params: {partnerId: string, productId: string, documentId: string}): Promise<string[]>;
-  public delete(path: PathsStoreDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsStoreDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

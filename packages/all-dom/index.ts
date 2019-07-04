@@ -138,39 +138,39 @@ export class ApiAllDom extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the ALLDOM service
-  List available services
-  **/
+   * Operations about the ALLDOM service
+   * List available services
+   */
   public get(path: '/allDom'): Promise<string[]>;
   /**
-  AllDom administration
-  Get this object properties
-  **/
+   * AllDom administration
+   * Get this object properties
+   */
   public get(path: '/allDom/{serviceName}', params: {serviceName: string}): Promise<AllDomAllDom>;
   /**
-  List the allDom.AllDomDomain objects
-  Domains attached to this allDom
-  **/
+   * List the allDom.AllDomDomain objects
+   * Domains attached to this allDom
+   */
   public get(path: '/allDom/{serviceName}/domain', params: {serviceName: string, domain?: string}): Promise<string[]>;
   /**
-  Domain name of a allDom
-  Get this object properties
-  **/
+   * Domain name of a allDom
+   * Get this object properties
+   */
   public get(path: '/allDom/{serviceName}/domain/{domain}', params: {serviceName: string, domain: string}): Promise<AllDomAllDomDomain>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/allDom/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsAllDomGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsAllDomGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/allDom/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsAllDomPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsAllDomPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
 }

@@ -81,30 +81,6 @@ export interface OrderPrice {
   value: number;
 }
 /**
- * Async task
- */
-export interface PackXdslAsyncTask<T> {
-  /**
-   * Error
-   *
-   */
-  error?: string;
-  /**
-   * Result of the call
-   *
-   */
-  result?: T;
-  /**
-   * Status of the call
-   *
-   */
-  status: PackXdslAsyncTaskStatusEnum;
-}
-/**
- * AsyncTask status
- */
-export type PackXdslAsyncTaskStatusEnum = 'error' | 'ok' | 'pending';
-/**
  * Domain action
  */
 export type PackXdslDomainActionEnum = 'create' | 'trade' | 'transfer';
@@ -961,6 +937,30 @@ export interface ServicesService {
   status: ServiceStateEnum;
 }
 /**
+ * Async task
+ */
+export interface XdslAsyncTask<T> {
+  /**
+   * Error
+   *
+   */
+  error?: string;
+  /**
+   * Result of the call
+   *
+   */
+  result?: T;
+  /**
+   * Status of the call
+   *
+   */
+  status: XdslAsyncTaskStatusEnum;
+}
+/**
+ * AsyncTask status
+ */
+export type XdslAsyncTaskStatusEnum = 'error' | 'ok' | 'pending';
+/**
  * Deconsolidation of the line.
  */
 export type XdslDeconsolidationEnum = 'createNeighbour' | 'creation' | 'creationNeighbour' | 'partial' | 'total';
@@ -1266,347 +1266,347 @@ export class ApiPackXdsl extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the PACK service
-  List available services
-  **/
+   * Operations about the PACK service
+   * List available services
+   */
   public get(path: '/pack/xdsl'): Promise<string[]>;
   /**
-  Pack of xDSL services
-  Get this object properties
-  **/
+   * Pack of xDSL services
+   * Get this object properties
+   */
   public get(path: '/pack/xdsl/{packName}', params: {packName: string}): Promise<PackXdslPackAdsl>;
   /**
-  canCancelResiliation operations
-  Check if the resiliation can be cancelled
-  **/
+   * canCancelResiliation operations
+   * Check if the resiliation can be cancelled
+   */
   public get(path: '/pack/xdsl/{packName}/canCancelResiliation', params: {packName: string}): Promise<boolean>;
   /**
-  tlds operations
-  Get the available tlds for domain order
-  **/
+   * tlds operations
+   * Get the available tlds for domain order
+   */
   public get(path: '/pack/xdsl/{packName}/domain/options/tlds', params: {packName: string}): Promise<string[]>;
   /**
-  List the pack.xdsl.DomainService objects
-  Domain services
-  **/
+   * List the pack.xdsl.DomainService objects
+   * Domain services
+   */
   public get(path: '/pack/xdsl/{packName}/domain/services', params: {packName: string}): Promise<string[]>;
   /**
-  domains operations
-  List the available domains for the Email Pro service
-  **/
+   * domains operations
+   * List the available domains for the Email Pro service
+   */
   public get(path: '/pack/xdsl/{packName}/emailPro/options/domains', params: {packName: string}): Promise<string[]>;
   /**
-  isEmailAvailable operations
-  Check if the given email address is available for an Email Pro activation
-  **/
+   * isEmailAvailable operations
+   * Check if the given email address is available for an Email Pro activation
+   */
   public get(path: '/pack/xdsl/{packName}/emailPro/options/isEmailAvailable', params: {packName: string, email: string}): Promise<boolean>;
   /**
-  List the pack.xdsl.EmailProService objects
-  List the Email Pro services
-  **/
+   * List the pack.xdsl.EmailProService objects
+   * List the Email Pro services
+   */
   public get(path: '/pack/xdsl/{packName}/emailPro/services', params: {packName: string}): Promise<string[]>;
   /**
-  List the pack.xdsl.ExchangeAccountService objects
-  Exchange 2013 services
-  **/
+   * List the pack.xdsl.ExchangeAccountService objects
+   * Exchange 2013 services
+   */
   public get(path: '/pack/xdsl/{packName}/exchangeAccount/services', params: {packName: string}): Promise<string[]>;
   /**
-  Exchange 2013 service
-  Get this object properties
-  **/
+   * Exchange 2013 service
+   * Get this object properties
+   */
   public get(path: '/pack/xdsl/{packName}/exchangeAccount/services/{domain}', params: {packName: string, domain: string}): Promise<PackXdslExchangeAccountService>;
   /**
-  domains operations
-  Get the available domains
-  **/
+   * domains operations
+   * Get the available domains
+   */
   public get(path: '/pack/xdsl/{packName}/exchangeIndividual/options/domains', params: {packName: string}): Promise<string[]>;
   /**
-  isEmailAvailable operations
-  Check if the email address is available for service creation
-  **/
+   * isEmailAvailable operations
+   * Check if the email address is available for service creation
+   */
   public get(path: '/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable', params: {packName: string, email: string}): Promise<boolean>;
   /**
-  List the pack.xdsl.ExchangeIndividual objects
-  Exchange services
-  **/
+   * List the pack.xdsl.ExchangeIndividual objects
+   * Exchange services
+   */
   public get(path: '/pack/xdsl/{packName}/exchangeIndividual/services', params: {packName: string}): Promise<string[]>;
   /**
-  isEmailAvailable operations
-  Check if the email address is available for service creation
-  **/
+   * isEmailAvailable operations
+   * Check if the email address is available for service creation
+   */
   public get(path: '/pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable', params: {packName: string, email: string}): Promise<boolean>;
   /**
-  List the pack.xdsl.ExchangeLiteService objects
-  Exchange lite services
-  **/
+   * List the pack.xdsl.ExchangeLiteService objects
+   * Exchange lite services
+   */
   public get(path: '/pack/xdsl/{packName}/exchangeLite/services', params: {packName: string}): Promise<string[]>;
   /**
-  Exchange account service
-  Get this object properties
-  **/
+   * Exchange account service
+   * Get this object properties
+   */
   public get(path: '/pack/xdsl/{packName}/exchangeLite/services/{domain}', params: {packName: string, domain: string}): Promise<PackXdslExchangeLiteService>;
   /**
-  List the pack.xdsl.ExchangeOrganizationService objects
-  Exchange 2013 organization services
-  **/
+   * List the pack.xdsl.ExchangeOrganizationService objects
+   * Exchange 2013 organization services
+   */
   public get(path: '/pack/xdsl/{packName}/exchangeOrganization/services', params: {packName: string}): Promise<string[]>;
   /**
-  domains operations
-  Get the hostedemail available domains
-  **/
+   * domains operations
+   * Get the hostedemail available domains
+   */
   public get(path: '/pack/xdsl/{packName}/hostedEmail/options/domains', params: {packName: string}): Promise<string[]>;
   /**
-  List the pack.xdsl.HostedEmailService objects
-  Hosted email services
-  **/
+   * List the pack.xdsl.HostedEmailService objects
+   * Hosted email services
+   */
   public get(path: '/pack/xdsl/{packName}/hostedEmail/services', params: {packName: string}): Promise<string[]>;
   /**
-  List the pack.xdsl.Hubic objects
-  Hubic perso services
-  **/
+   * List the pack.xdsl.Hubic objects
+   * Hubic perso services
+   */
   public get(path: '/pack/xdsl/{packName}/hubic/services', params: {packName: string}): Promise<string[]>;
   /**
-  Hubic service
-  Get this object properties
-  **/
+   * Hubic service
+   * Get this object properties
+   */
   public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}', params: {packName: string, domain: string}): Promise<PackXdslHubic>;
   /**
-  details operations
-  Details associated to a voucher
-  **/
-  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', params: {packName: string, domain: string}): Promise<PackXdslAsyncTask<XdslHubicHubicDetailsResponse>>;
+   * details operations
+   * Details associated to a voucher
+   */
+  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', params: {packName: string, domain: string}): Promise<XdslAsyncTask<XdslHubicHubicDetailsResponse>>;
   /**
-  capabilities operations
-  Get informations about the promotion code generation
-  **/
+   * capabilities operations
+   * Get informations about the promotion code generation
+   */
   public get(path: '/pack/xdsl/{packName}/promotionCode/capabilities', params: {packName: string}): Promise<PackXdslPromotionCodeCapabilities>;
   /**
-  resiliationFollowUp operations
-  Get information about the ongoing resiliation
-  **/
+   * resiliationFollowUp operations
+   * Get information about the ongoing resiliation
+   */
   public get(path: '/pack/xdsl/{packName}/resiliationFollowUp', params: {packName: string}): Promise<PackXdslResiliationFollowUpDetail>;
   /**
-  resiliationTerms operations
-  Get resiliation terms
-  **/
+   * resiliationTerms operations
+   * Get resiliation terms
+   */
   public get(path: '/pack/xdsl/{packName}/resiliationTerms', params: {packName: string, resiliationDate?: string}): Promise<PackXdslResiliationTerms>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/pack/xdsl/{packName}/serviceInfos', params: {packName: string}): Promise<ServicesService>;
   /**
-  services operations
-  Informations about the services included in the pack
-  **/
+   * services operations
+   * Informations about the services included in the pack
+   */
   public get(path: '/pack/xdsl/{packName}/services', params: {packName: string}): Promise<PackXdslServiceInformation[]>;
   /**
-  shippingAddresses operations
-  Allowed shipping addresses given a context
-  **/
+   * shippingAddresses operations
+   * Allowed shipping addresses given a context
+   */
   public get(path: '/pack/xdsl/{packName}/shippingAddresses', params: {packName: string, context: PackXdslShippingAddressContextEnum}): Promise<PackXdslShippingAddress[]>;
   /**
-  domains operations
-  Get the available domains
-  **/
+   * domains operations
+   * Get the available domains
+   */
   public get(path: '/pack/xdsl/{packName}/siteBuilderFull/options/domains', params: {packName: string}): Promise<PackXdslSiteBuilderDomain[]>;
   /**
-  templates operations
-  Get the available templates
-  **/
+   * templates operations
+   * Get the available templates
+   */
   public get(path: '/pack/xdsl/{packName}/siteBuilderFull/options/templates', params: {packName: string}): Promise<PackXdslSiteBuilderTemplate[]>;
   /**
-  List the pack.xdsl.SiteBuilderFullService objects
-  Sitebuilder full services
-  **/
+   * List the pack.xdsl.SiteBuilderFullService objects
+   * Sitebuilder full services
+   */
   public get(path: '/pack/xdsl/{packName}/siteBuilderFull/services', params: {packName: string}): Promise<string[]>;
   /**
-  domains operations
-  Get the available domains
-  **/
+   * domains operations
+   * Get the available domains
+   */
   public get(path: '/pack/xdsl/{packName}/siteBuilderStart/options/domains', params: {packName: string}): Promise<PackXdslSiteBuilderDomain[]>;
   /**
-  templates operations
-  Get the available templates
-  **/
+   * templates operations
+   * Get the available templates
+   */
   public get(path: '/pack/xdsl/{packName}/siteBuilderStart/options/templates', params: {packName: string}): Promise<PackXdslSiteBuilderTemplate[]>;
   /**
-  List the pack.xdsl.SiteBuilderStartService objects
-  Sitebuilder start services
-  **/
+   * List the pack.xdsl.SiteBuilderStartService objects
+   * Sitebuilder start services
+   */
   public get(path: '/pack/xdsl/{packName}/siteBuilderStart/services', params: {packName: string}): Promise<string[]>;
   /**
-  List the pack.xdsl.Service objects
-  List services contained in the pack
-  **/
+   * List the pack.xdsl.Service objects
+   * List services contained in the pack
+   */
   public get(path: '/pack/xdsl/{packName}/subServices', params: {packName: string}): Promise<string[]>;
   /**
-  Service link to the pack
-  Get this object properties
-  **/
+   * Service link to the pack
+   * Get this object properties
+   */
   public get(path: '/pack/xdsl/{packName}/subServices/{domain}', params: {packName: string, domain: string}): Promise<PackXdslService>;
   /**
-  keepServiceTerms operations
-  Give the condition to unpack service from pack
-  **/
+   * keepServiceTerms operations
+   * Give the condition to unpack service from pack
+   */
   public get(path: '/pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms', params: {packName: string, domain: string}): Promise<PackXdslUnpackTerms>;
   /**
-  List the pack.xdsl.Task objects
-  Tasks scheduled for this pack
-  **/
+   * List the pack.xdsl.Task objects
+   * Tasks scheduled for this pack
+   */
   public get(path: '/pack/xdsl/{packName}/tasks', params: {packName: string, function?: string, status?: PackXdslTaskStatusEnum}): Promise<number[]>;
   /**
-  Describes the current status of a task
-  Get this object properties
-  **/
+   * Describes the current status of a task
+   * Get this object properties
+   */
   public get(path: '/pack/xdsl/{packName}/tasks/{id}', params: {packName: string, id: number}): Promise<PackXdslTask>;
   /**
-  List the pack.xdsl.BillingAccountService objects
-  VOIP billing accounts
-  **/
+   * List the pack.xdsl.BillingAccountService objects
+   * VOIP billing accounts
+   */
   public get(path: '/pack/xdsl/{packName}/voipBillingAccount/services', params: {packName: string}): Promise<string[]>;
   /**
-  List the pack.xdsl.VoipEcoFaxService objects
-  VOIP ecofax service
-  **/
+   * List the pack.xdsl.VoipEcoFaxService objects
+   * VOIP ecofax service
+   */
   public get(path: '/pack/xdsl/{packName}/voipEcofax/services', params: {packName: string}): Promise<string[]>;
   /**
-  hardwares operations
-  Get available hardwares
-  **/
+   * hardwares operations
+   * Get available hardwares
+   */
   public get(path: '/pack/xdsl/{packName}/voipLine/options/hardwares', params: {packName: string}): Promise<PackXdslVoIPHardware[]>;
   /**
-  shippingAddresses operations
-  Get available shipping addresses
-  **/
+   * shippingAddresses operations
+   * Get available shipping addresses
+   */
   public get(path: '/pack/xdsl/{packName}/voipLine/options/shippingAddresses', params: {packName: string}): Promise<PackXdslShippingAddress[]>;
   /**
-  List the pack.xdsl.VoipLineService objects
-  VOIP line services
-  **/
+   * List the pack.xdsl.VoipLineService objects
+   * VOIP line services
+   */
   public get(path: '/pack/xdsl/{packName}/voipLine/services', params: {packName: string}): Promise<string[]>;
   /**
-  VOIP line services
-  Get this object properties
-  **/
+   * VOIP line services
+   * Get this object properties
+   */
   public get(path: '/pack/xdsl/{packName}/voipLine/services/{domain}', params: {packName: string, domain: string}): Promise<PackXdslVoipLineService>;
   /**
-  List the pack.xdsl.XdslAccessService objects
-  xDSL access services
-  **/
+   * List the pack.xdsl.XdslAccessService objects
+   * xDSL access services
+   */
   public get(path: '/pack/xdsl/{packName}/xdslAccess/services', params: {packName: string}): Promise<string[]>;
-  public get(path: PathsPackXdslGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsPackXdslGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Pack of xDSL services
-  Alter this object properties
-  **/
+   * Pack of xDSL services
+   * Alter this object properties
+   */
   public put(path: '/pack/xdsl/{packName}', params: {packName: string, capabilities?: PackXdslPackCapabilities, description?: string, offerDescription?: string, offerPrice?: OrderPrice}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/pack/xdsl/{packName}/serviceInfos', params: {packName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsPackXdslPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsPackXdslPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  eligibility operations
-  Eligibility to move the access
-  **/
-  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', params: {packName: string, address?: XdslEligibilityAddress, lineNumber?: string}): Promise<PackXdslAsyncTask<PackXdslAddressMoveEligibility>>;
+   * eligibility operations
+   * Eligibility to move the access
+   */
+  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', params: {packName: string, address?: XdslEligibilityAddress, lineNumber?: string}): Promise<XdslAsyncTask<PackXdslAddressMoveEligibility>>;
   /**
-  move operations
-  Move the access to another address
-  **/
-  public post(path: '/pack/xdsl/{packName}/addressMove/move', params: {packName: string, creation?: PackXdslAddressMoveCreation, keepCurrentNumber: boolean, landline?: PackXdslAddressMoveLandline, moveOutDate?: string, offerCode: string, provider?: XdslEligibilityProviderEnum}): Promise<PackXdslAsyncTask<number>>;
+   * move operations
+   * Move the access to another address
+   */
+  public post(path: '/pack/xdsl/{packName}/addressMove/move', params: {packName: string, creation?: PackXdslAddressMoveCreation, keepCurrentNumber: boolean, landline?: PackXdslAddressMoveLandline, moveOutDate?: string, offerCode: string, provider?: XdslEligibilityProviderEnum}): Promise<XdslAsyncTask<number>>;
   /**
-  cancelResiliation operations
-  Cancel the ongoing resiliation
-  **/
+   * cancelResiliation operations
+   * Cancel the ongoing resiliation
+   */
   public post(path: '/pack/xdsl/{packName}/cancelResiliation', params: {packName: string}): Promise<void>;
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
+   * Change the contacts of this service
+   * Launch a contact change procedure
+   */
   public post(path: '/pack/xdsl/{packName}/changeContact', params: {packName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
-  List the pack.xdsl.DomainService objects
-  Activate a domain service
-  **/
+   * List the pack.xdsl.DomainService objects
+   * Activate a domain service
+   */
   public post(path: '/pack/xdsl/{packName}/domain/services', params: {packName: string, action: PackXdslDomainActionEnum, authInfo?: string, domain: string, tld: string}): Promise<PackXdslTask>;
   /**
-  List the pack.xdsl.EmailProService objects
-  Activate an Email Pro service
-  **/
+   * List the pack.xdsl.EmailProService objects
+   * Activate an Email Pro service
+   */
   public post(path: '/pack/xdsl/{packName}/emailPro/services', params: {packName: string, email: string, password: string}): Promise<PackXdslTask>;
   /**
-  List the pack.xdsl.ExchangeIndividual objects
-  Activate an exchange service
-  **/
+   * List the pack.xdsl.ExchangeIndividual objects
+   * Activate an exchange service
+   */
   public post(path: '/pack/xdsl/{packName}/exchangeIndividual/services', params: {packName: string, email: string, password: string}): Promise<PackXdslTask>;
   /**
-  List the pack.xdsl.ExchangeLiteService objects
-  Activate a exchange lite service
-  **/
+   * List the pack.xdsl.ExchangeLiteService objects
+   * Activate a exchange lite service
+   */
   public post(path: '/pack/xdsl/{packName}/exchangeLite/services', params: {packName: string, antispam?: boolean, displayName?: string, email: string, firstName?: string, initials?: string, lastName?: string, password: string}): Promise<PackXdslTask>;
   /**
-  List the pack.xdsl.HostedEmailService objects
-  Activate an hosted email service
-  **/
+   * List the pack.xdsl.HostedEmailService objects
+   * Activate an hosted email service
+   */
   public post(path: '/pack/xdsl/{packName}/hostedEmail/services', params: {packName: string, email: string, password: string}): Promise<PackXdslTask>;
   /**
-  migrate operations
-  Migrate to the selected offer
-  **/
+   * migrate operations
+   * Migrate to the selected offer
+   */
   public post(path: '/pack/xdsl/{packName}/migration/migrate', params: {packName: string, acceptContracts: boolean, buildingReference?: string, engageMonths?: number, floor?: string, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: PackXdslMigrationOfferOption[], otp?: boolean, otpReference?: string, stair?: string, subServicesToDelete?: PackXdslMigrationOfferServiceToDelete[]}): Promise<PackXdslTask>;
   /**
-  offers operations
-  Get the possibilities of migration offers available
-  **/
-  public post(path: '/pack/xdsl/{packName}/migration/offers', params: {packName: string}): Promise<PackXdslAsyncTask<PackXdslMigrationMigrationOfferResponse>>;
+   * offers operations
+   * Get the possibilities of migration offers available
+   */
+  public post(path: '/pack/xdsl/{packName}/migration/offers', params: {packName: string}): Promise<XdslAsyncTask<PackXdslMigrationMigrationOfferResponse>>;
   /**
-  servicesToDelete operations
-  Calculate services to delete with new offer and options
-  **/
+   * servicesToDelete operations
+   * Calculate services to delete with new offer and options
+   */
   public post(path: '/pack/xdsl/{packName}/migration/servicesToDelete', params: {packName: string, offerName: string, options?: PackXdslMigrationOfferOption[]}): Promise<PackXdslMigrationSubServiceToDelete[]>;
   /**
-  generate operations
-  Creates a task to generate a new promotion code
-  **/
+   * generate operations
+   * Creates a task to generate a new promotion code
+   */
   public post(path: '/pack/xdsl/{packName}/promotionCode/generate', params: {packName: string}): Promise<PackXdslTask>;
   /**
-  resiliate operations
-  Resiliate the pack
-  **/
+   * resiliate operations
+   * Resiliate the pack
+   */
   public post(path: '/pack/xdsl/{packName}/resiliate', params: {packName: string, resiliationDate?: string, resiliationSurvey: PackXdslResiliationSurvey, servicesToKeep?: number[]}): Promise<PackXdslResiliationFollowUpDetail>;
   /**
-  List the pack.xdsl.SiteBuilderFullService objects
-  Activate a sitebuilder full service
-  **/
+   * List the pack.xdsl.SiteBuilderFullService objects
+   * Activate a sitebuilder full service
+   */
   public post(path: '/pack/xdsl/{packName}/siteBuilderFull/services', params: {packName: string, domain: string, subdomain: string, templateId: number}): Promise<PackXdslTask>;
   /**
-  List the pack.xdsl.SiteBuilderStartService objects
-  Activate a sitebuilder full service
-  **/
+   * List the pack.xdsl.SiteBuilderStartService objects
+   * Activate a sitebuilder full service
+   */
   public post(path: '/pack/xdsl/{packName}/siteBuilderStart/services', params: {packName: string, domain: string, subdomain: string, templateId: number}): Promise<PackXdslTask>;
   /**
-  List the pack.xdsl.VoipEcoFaxService objects
-  Activate a voicefax service
-  **/
+   * List the pack.xdsl.VoipEcoFaxService objects
+   * Activate a voicefax service
+   */
   public post(path: '/pack/xdsl/{packName}/voipEcofax/services', params: {packName: string}): Promise<PackXdslTask>;
   /**
-  customShippingAddress operations
-  Create a new shippingId to be used for voipLine service creation
-  **/
+   * customShippingAddress operations
+   * Create a new shippingId to be used for voipLine service creation
+   */
   public post(path: '/pack/xdsl/{packName}/voipLine/options/customShippingAddress', params: {packName: string, address: string, cityName: string, firstName: string, lastName: string, zipCode: string}): Promise<number>;
   /**
-  List the pack.xdsl.VoipLineService objects
-  Activate a voip line service
-  **/
+   * List the pack.xdsl.VoipLineService objects
+   * Activate a voip line service
+   */
   public post(path: '/pack/xdsl/{packName}/voipLine/services', params: {packName: string, hardwareNames: string[], mondialRelayId?: string, shippingId?: string}): Promise<PackXdslVoIPLineOrder>;
-  public post(path: PathsPackXdslPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsPackXdslPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
 }

@@ -308,97 +308,97 @@ export class ApiHostingReseller extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the HOSTING_RESELLER service
-  List available services
-  **/
+   * Operations about the HOSTING_RESELLER service
+   * List available services
+   */
   public get(path: '/hosting/reseller'): Promise<string[]>;
   /**
-  Reseller
-  Get this object properties
-  **/
+   * Reseller
+   * Get this object properties
+   */
   public get(path: '/hosting/reseller/{serviceName}', params: {serviceName: string}): Promise<HostingResellerProduct>;
   /**
-  Reseller.resetPassword
-  Get reset instance password url
-  **/
+   * Reseller.resetPassword
+   * Get reset instance password url
+   */
   public get(path: '/hosting/reseller/{serviceName}/resetPasswordUrl', params: {serviceName: string}): Promise<string>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/hosting/reseller/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  Reseller.list_snapshot
-  List instance's current snapshots
-  **/
+   * Reseller.list_snapshot
+   * List instance's current snapshots
+   */
   public get(path: '/hosting/reseller/{serviceName}/snapshot', params: {serviceName: string}): Promise<ResellerSnapshot[]>;
   /**
-  Reseller.get_snapshot
-  Detail of a snapshot
-  **/
+   * Reseller.get_snapshot
+   * Detail of a snapshot
+   */
   public get(path: '/hosting/reseller/{serviceName}/snapshot/{snapshotId}', params: {serviceName: string, snapshotId: string}): Promise<ResellerSnapshot>;
   /**
-  Reseller.list_task
-  Get list of tasks
-  **/
+   * Reseller.list_task
+   * Get list of tasks
+   */
   public get(path: '/hosting/reseller/{serviceName}/task', params: {serviceName: string}): Promise<ResellerTask[]>;
   /**
-  Reseller.get_task
-  Get task information given its id
-  **/
+   * Reseller.get_task
+   * Get task information given its id
+   */
   public get(path: '/hosting/reseller/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<ResellerTask>;
-  public get(path: PathsHostingResellerGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsHostingResellerGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/hosting/reseller/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsHostingResellerPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsHostingResellerPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
+   * Change the contacts of this service
+   * Launch a contact change procedure
+   */
   public post(path: '/hosting/reseller/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
-  Reseller.change_email
-  Change user email
-  **/
+   * Reseller.change_email
+   * Change user email
+   */
   public post(path: '/hosting/reseller/{serviceName}/email', params: {serviceName: string, email: string}): Promise<string>;
   /**
-  Reseller.change_language
-  Change language of the Plesk instance
-  **/
+   * Reseller.change_language
+   * Change language of the Plesk instance
+   */
   public post(path: '/hosting/reseller/{serviceName}/language', params: {serviceName: string, language: ResellerPleskLanguageTypeEnum}): Promise<string>;
   /**
-  Reseller.reboot
-  Restart instance
-  **/
+   * Reseller.reboot
+   * Restart instance
+   */
   public post(path: '/hosting/reseller/{serviceName}/reboot', params: {serviceName: string}): Promise<string>;
   /**
-  Reseller.reinstall
-  Reinstall instance
-  **/
+   * Reseller.reinstall
+   * Reinstall instance
+   */
   public post(path: '/hosting/reseller/{serviceName}/reinstall', params: {serviceName: string}): Promise<string>;
   /**
-  Reseller.set_reverse
-  Set new reverse to ip
-  **/
+   * Reseller.set_reverse
+   * Set new reverse to ip
+   */
   public post(path: '/hosting/reseller/{serviceName}/reverse', params: {serviceName: string, reverse: string}): Promise<string>;
   /**
-  Reseller.list_snapshot
-  Make manual snapshot
-  **/
+   * Reseller.list_snapshot
+   * Make manual snapshot
+   */
   public post(path: '/hosting/reseller/{serviceName}/snapshot', params: {serviceName: string}): Promise<string>;
   /**
-  Reseller.restore_snapshot
-  Restore a snapshot
-  **/
+   * Reseller.restore_snapshot
+   * Restore a snapshot
+   */
   public post(path: '/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore', params: {serviceName: string, snapshotId: string}): Promise<string>;
-  public post(path: PathsHostingResellerPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsHostingResellerPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
 }

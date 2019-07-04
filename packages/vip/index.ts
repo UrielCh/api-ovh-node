@@ -117,29 +117,29 @@ export class ApiVip extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the SUPPORT_PLUS service
-  List available services
-  **/
+   * Operations about the SUPPORT_PLUS service
+   * List available services
+   */
   public get(path: '/vip'): Promise<string[]>;
   /**
-  Vip Service
-  Get this object properties
-  **/
+   * Vip Service
+   * Get this object properties
+   */
   public get(path: '/vip/{serviceName}', params: {serviceName: string}): Promise<VipSupportVip>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/vip/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsVipGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsVipGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/vip/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsVipPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsVipPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
 }

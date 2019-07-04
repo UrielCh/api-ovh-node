@@ -21,11 +21,11 @@ export class ApiSecret extends OvhWrapper {
     super(engine);
   }
   /**
-  Retrieve a secret sent by email
-  Retrieve a secret sent by email
-  **/
+   * Retrieve a secret sent by email
+   * Retrieve a secret sent by email
+   */
   public post(path: '/secret/retrieve', params: {id: string}): Promise<SecretSecret>;
-  public post(path: PathsSecretPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsSecretPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
 }

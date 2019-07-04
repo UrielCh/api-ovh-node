@@ -676,94 +676,94 @@ export class ApiConnectivity extends OvhWrapper {
     super(engine);
   }
   /**
-  Get an eligibility by its reference
-  Get an eligibility by its reference
-  **/
+   * Get an eligibility by its reference
+   * Get an eligibility by its reference
+   */
   public get(path: '/connectivity/eligibility/test', params: {eligibilityReference: string}): Promise<ConnectivityEligibilityEligibilityTest>;
   /**
-  Missing description
-  List detected, validated and recently closed generic incidents. For partners only
-  **/
+   * Missing description
+   * List detected, validated and recently closed generic incidents. For partners only
+   */
   public get(path: '/connectivity/monitoring/genericIncident/partners', params: {creationDate?: string, endDate?: string, status?: ConnectivityMonitoringGenericIncidentStatusEnum}): Promise<ConnectivityMonitoringGenericIncident[]>;
   /**
-  Missing description
-  List validated and recently closed generic incidents
-  **/
+   * Missing description
+   * List validated and recently closed generic incidents
+   */
   public get(path: '/connectivity/monitoring/genericIncident/public', params: {creationDate?: string, endDate?: string, status?: ConnectivityMonitoringGenericIncidentStatusEnum}): Promise<ConnectivityMonitoringGenericIncident[]>;
-  public get(path: PathsConnectivityGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsConnectivityGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Get the details for a building
-  Get the details for a building
-  **/
+   * Get the details for a building
+   * Get the details for a building
+   */
   public post(path: '/connectivity/eligibility/search/buildingDetails', params: {building: string}): Promise<XdslAsyncTask<ConnectivityEligibilityBuilding>>;
   /**
-  Get all buildings for a specific address
-  Get all buildings for a specific address
-  **/
+   * Get all buildings for a specific address
+   * Get all buildings for a specific address
+   */
   public post(path: '/connectivity/eligibility/search/buildings', params: {streetCode: string, streetNumber: string}): Promise<XdslAsyncTaskArray<ConnectivityEligibilityBuilding>>;
   /**
-  Get building references from a given line number
-  Get building references from a given line number
-  **/
+   * Get building references from a given line number
+   * Get building references from a given line number
+   */
   public post(path: '/connectivity/eligibility/search/buildingsByLine', params: {lineNumber: string, status: ConnectivityEligibilityLineStatusEnum}): Promise<XdslAsyncTaskArray<ConnectivityEligibilityBuilding>>;
   /**
-  Get all localities linked to a zip code
-  Get all localities linked to a zip code
-  **/
+   * Get all localities linked to a zip code
+   * Get all localities linked to a zip code
+   */
   public post(path: '/connectivity/eligibility/search/cities', params: {zipCode: string}): Promise<XdslAsyncTaskArray<ConnectivityEligibilityCity>>;
   /**
-  Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified
-  Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified
-  **/
+   * Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified
+   * Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified
+   */
   public post(path: '/connectivity/eligibility/search/lines', params: {ownerName?: string, streetCode: string, streetNumber: string}): Promise<XdslAsyncTaskArray<ConnectivityEligibilityLine>>;
   /**
-  Search for available line creation meeting time slots, for copper only
-  Search for available line creation meeting time slots, for copper only
-  **/
+   * Search for available line creation meeting time slots, for copper only
+   * Search for available line creation meeting time slots, for copper only
+   */
   public post(path: '/connectivity/eligibility/search/meetings', params: {eligibilityReference: string, productCode: string}): Promise<XdslAsyncTask<ConnectivityEligibilityMeetings>>;
   /**
-  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
-  Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
-  **/
+   * Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
+   * Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
+   */
   public post(path: '/connectivity/eligibility/search/streetNumbers', params: {streetCode: string}): Promise<XdslAsyncTaskArray<string>>;
   /**
-  Get all street linked to a locality
-  Get all street linked to a locality
-  **/
+   * Get all street linked to a locality
+   * Get all street linked to a locality
+   */
   public post(path: '/connectivity/eligibility/search/streets', params: {inseeCode: string}): Promise<XdslAsyncTaskArray<ConnectivityEligibilityStreet>>;
   /**
-  Do an eligibility for an address, if no line exist
-  Do an eligibility for an address, if no line exist
-  **/
+   * Do an eligibility for an address, if no line exist
+   * Do an eligibility for an address, if no line exist
+   */
   public post(path: '/connectivity/eligibility/test/address', params: {streetCode: string, streetNumber: string}): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
   /**
-  Do an eligibility for an address, if no line exist. Partners only.
-  Do an eligibility for an address, if no line exist. Partners only.
-  **/
+   * Do an eligibility for an address, if no line exist. Partners only.
+   * Do an eligibility for an address, if no line exist. Partners only.
+   */
   public post(path: '/connectivity/eligibility/test/address/partners', params: {streetCode: string, streetNumber: string}): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
   /**
-  Do an eligibility test on a building, for fiber only
-  Do an eligibility test on a building, for fiber only
-  **/
+   * Do an eligibility test on a building, for fiber only
+   * Do an eligibility test on a building, for fiber only
+   */
   public post(path: '/connectivity/eligibility/test/building', params: {building: string}): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
   /**
-  Do an eligibility test on a line number, for copper only
-  Do an eligibility test on a line number, for copper only
-  **/
+   * Do an eligibility test on a line number, for copper only
+   * Do an eligibility test on a line number, for copper only
+   */
   public post(path: '/connectivity/eligibility/test/line', params: {lineNumber: string, status: ConnectivityEligibilityLineStatusEnum}): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
   /**
-  Do an eligibility test on a line number, for copper only. Partners only.
-  Do an eligibility test on a line number, for copper only. Partners only.
-  **/
+   * Do an eligibility test on a line number, for copper only. Partners only.
+   * Do an eligibility test on a line number, for copper only. Partners only.
+   */
   public post(path: '/connectivity/eligibility/test/line/partners', params: {lineNumber: string, status: ConnectivityEligibilityLineStatusEnum}): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
   /**
-  Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
-  Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
-  **/
+   * Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
+   * Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
+   */
   public post(path: '/connectivity/eligibility/test/otp', params: {otp: string}): Promise<XdslAsyncTask<ConnectivityEligibilityEligibilityTest>>;
-  public post(path: PathsConnectivityPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsConnectivityPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
 }

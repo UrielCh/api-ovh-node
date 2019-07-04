@@ -1018,525 +1018,525 @@ export class ApiEmailDomain extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the MX service
-  List available services
-  **/
+   * Operations about the MX service
+   * List available services
+   */
   public get(path: '/email/domain'): Promise<string[]>;
   /**
-  List the email.domain.AccountDelegated objects
-  Delegated emails
-  **/
+   * List the email.domain.AccountDelegated objects
+   * Delegated emails
+   */
   public get(path: '/email/domain/delegatedAccount', params: {accountName?: string, domain?: string}): Promise<string[]>;
   /**
-  Account List
-  Get this object properties
-  **/
+   * Account List
+   * Get this object properties
+   */
   public get(path: '/email/domain/delegatedAccount/{email}', params: {email: string}): Promise<EmailDomainAccountDelegated>;
   /**
-  List the email.domain.Filter objects
-  Get filters
-  **/
+   * List the email.domain.Filter objects
+   * Get filters
+   */
   public get(path: '/email/domain/delegatedAccount/{email}/filter', params: {email: string}): Promise<string[]>;
   /**
-  Filter List
-  Get this object properties
-  **/
+   * Filter List
+   * Get this object properties
+   */
   public get(path: '/email/domain/delegatedAccount/{email}/filter/{name}', params: {email: string, name: string}): Promise<EmailDomainFilter>;
   /**
-  List the email.domain.Rule objects
-  Get rules
-  **/
+   * List the email.domain.Rule objects
+   * Get rules
+   */
   public get(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule', params: {email: string, name: string}): Promise<number[]>;
   /**
-  Rule List
-  Get this object properties
-  **/
+   * Rule List
+   * Get this object properties
+   */
   public get(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}', params: {email: string, name: string, id: number}): Promise<EmailDomainRule>;
   /**
-  Responder of account
-  Get this object properties
-  **/
+   * Responder of account
+   * Get this object properties
+   */
   public get(path: '/email/domain/delegatedAccount/{email}/responder', params: {email: string}): Promise<EmailDomainResponderAccount>;
   /**
-  Get limits of mailing list
-  Get limits of mailing list
-  **/
+   * Get limits of mailing list
+   * Get limits of mailing list
+   */
   public get(path: '/email/domain/mailingListLimits', params: {moderatorMessage: boolean}): Promise<DomainDomainMlLimits>;
   /**
-  Domain service
-  Get this object properties
-  **/
+   * Domain service
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}', params: {domain: string}): Promise<EmailDomainDomainService>;
   /**
-  List the email.domain.Account objects
-  Get accounts
-  **/
+   * List the email.domain.Account objects
+   * Get accounts
+   */
   public get(path: '/email/domain/{domain}/account', params: {domain: string, accountName?: string, description?: string}): Promise<string[]>;
   /**
-  Account List
-  Get this object properties
-  **/
+   * Account List
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string}): Promise<EmailDomainAccount>;
   /**
-  List the email.domain.Delegation objects
-  Get delegations
-  **/
+   * List the email.domain.Delegation objects
+   * Get delegations
+   */
   public get(path: '/email/domain/{domain}/account/{accountName}/delegation', params: {domain: string, accountName: string}): Promise<string[]>;
   /**
-  Delegation List
-  Get this object properties
-  **/
+   * Delegation List
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/account/{accountName}/delegation/{accountId}', params: {domain: string, accountName: string, accountId: string}): Promise<EmailDomainDelegation>;
   /**
-  List the email.domain.Filter objects
-  Get filters
-  **/
+   * List the email.domain.Filter objects
+   * Get filters
+   */
   public get(path: '/email/domain/{domain}/account/{accountName}/filter', params: {domain: string, accountName: string}): Promise<string[]>;
   /**
-  Filter List
-  Get this object properties
-  **/
+   * Filter List
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/account/{accountName}/filter/{name}', params: {domain: string, accountName: string, name: string}): Promise<EmailDomainFilter>;
   /**
-  List the email.domain.Rule objects
-  Get rules
-  **/
+   * List the email.domain.Rule objects
+   * Get rules
+   */
   public get(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule', params: {domain: string, accountName: string, name: string}): Promise<number[]>;
   /**
-  Rule List
-  Get this object properties
-  **/
+   * Rule List
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}', params: {domain: string, accountName: string, name: string, id: number}): Promise<EmailDomainRule>;
   /**
-  List the email.domain.MigrationService objects
-  Get migration service
-  **/
+   * List the email.domain.MigrationService objects
+   * Get migration service
+   */
   public get(path: '/email/domain/{domain}/account/{accountName}/migrate', params: {domain: string, accountName: string, type?: EmailDomainMigrationServiceType}): Promise<string[]>;
   /**
-  Migration service
-  Get this object properties
-  **/
+   * Migration service
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}', params: {domain: string, accountName: string, destinationServiceName: string}): Promise<EmailDomainMigrationService>;
   /**
-  List the email.domain.MigrationAccount objects
-  List of email address available for migration
-  **/
+   * List the email.domain.MigrationAccount objects
+   * List of email address available for migration
+   */
   public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress', params: {domain: string, accountName: string, destinationServiceName: string, quota?: number}): Promise<string[]>;
   /**
-  Migration account
-  Get this object properties
-  **/
+   * Migration account
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}', params: {domain: string, accountName: string, destinationServiceName: string, destinationEmailAddress: string}): Promise<EmailDomainMigrationAccount>;
   /**
-  checkMigrate operations
-  Check if it's possible to migrate
-  **/
+   * checkMigrate operations
+   * Check if it's possible to migrate
+   */
   public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate', params: {domain: string, accountName: string, destinationServiceName: string, destinationEmailAddress: string}): Promise<EmailDomainMigrationCheckStruct>;
   /**
-  usage operations
-  usage of account
-  **/
+   * usage operations
+   * usage of account
+   */
   public get(path: '/email/domain/{domain}/account/{accountName}/usage', params: {domain: string, accountName: string}): Promise<DomainDomainUsageAccountStruct>;
   /**
-  List the email.domain.Acl objects
-  Get ACL on your domain
-  **/
+   * List the email.domain.Acl objects
+   * Get ACL on your domain
+   */
   public get(path: '/email/domain/{domain}/acl', params: {domain: string}): Promise<string[]>;
   /**
-  Email ACL
-  Get this object properties
-  **/
+   * Email ACL
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/acl/{accountId}', params: {domain: string, accountId: string}): Promise<EmailDomainAcl>;
   /**
-  dnsMXFilter operations
-  Domain MX filter
-  **/
+   * dnsMXFilter operations
+   * Domain MX filter
+   */
   public get(path: '/email/domain/{domain}/dnsMXFilter', params: {domain: string, subDomain?: string}): Promise<DomainDomainMXFilterEnum>;
   /**
-  dnsMXRecords operations
-  Domain MX records
-  **/
+   * dnsMXRecords operations
+   * Domain MX records
+   */
   public get(path: '/email/domain/{domain}/dnsMXRecords', params: {domain: string, subDomain?: string}): Promise<string[]>;
   /**
-  List the email.domain.MailingList objects
-  Get mailing lists
-  **/
+   * List the email.domain.MailingList objects
+   * Get mailing lists
+   */
   public get(path: '/email/domain/{domain}/mailingList', params: {domain: string, name?: string}): Promise<string[]>;
   /**
-  Mailing List
-  Get this object properties
-  **/
+   * Mailing List
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/mailingList/{name}', params: {domain: string, name: string}): Promise<EmailDomainMailingList>;
   /**
-  List the email.domain.Moderator objects
-  List of moderators
-  **/
+   * List the email.domain.Moderator objects
+   * List of moderators
+   */
   public get(path: '/email/domain/{domain}/mailingList/{name}/moderator', params: {domain: string, name: string, email?: string}): Promise<string[]>;
   /**
-  Moderators List
-  Get this object properties
-  **/
+   * Moderators List
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/mailingList/{name}/moderator/{email}', params: {domain: string, name: string, email: string}): Promise<EmailDomainModerator>;
   /**
-  List the email.domain.Subscriber objects
-  List of subscribers
-  **/
+   * List the email.domain.Subscriber objects
+   * List of subscribers
+   */
   public get(path: '/email/domain/{domain}/mailingList/{name}/subscriber', params: {domain: string, name: string, email?: string}): Promise<string[]>;
   /**
-  Subscribers List
-  Get this object properties
-  **/
+   * Subscribers List
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/mailingList/{name}/subscriber/{email}', params: {domain: string, name: string, email: string}): Promise<EmailDomainSubscriber>;
   /**
-  quota operations
-  List all quotas for this domain
-  **/
+   * quota operations
+   * List all quotas for this domain
+   */
   public get(path: '/email/domain/{domain}/quota', params: {domain: string}): Promise<DomainDomainQuota>;
   /**
-  recommendedDNSRecords operations
-  Recommended domain DNS records
-  **/
+   * recommendedDNSRecords operations
+   * Recommended domain DNS records
+   */
   public get(path: '/email/domain/{domain}/recommendedDNSRecords', params: {domain: string}): Promise<DomainZoneRecord[]>;
   /**
-  List the email.domain.RedirectionGlobal objects
-  Get redirections
-  **/
+   * List the email.domain.RedirectionGlobal objects
+   * Get redirections
+   */
   public get(path: '/email/domain/{domain}/redirection', params: {domain: string, from?: string, to?: string}): Promise<string[]>;
   /**
-  Global Redirection
-  Get this object properties
-  **/
+   * Global Redirection
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/redirection/{id}', params: {domain: string, id: string}): Promise<EmailDomainRedirectionGlobal>;
   /**
-  List the email.domain.Responder objects
-  Get responders
-  **/
+   * List the email.domain.Responder objects
+   * Get responders
+   */
   public get(path: '/email/domain/{domain}/responder', params: {domain: string, account?: string}): Promise<string[]>;
   /**
-  Responder
-  Get this object properties
-  **/
+   * Responder
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string}): Promise<EmailDomainResponder>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/serviceInfos', params: {domain: string}): Promise<ServicesService>;
   /**
-  summary operations
-  Summary for this domain
-  **/
+   * summary operations
+   * Summary for this domain
+   */
   public get(path: '/email/domain/{domain}/summary', params: {domain: string}): Promise<DomainDomainSummary>;
   /**
-  List the email.domain.TaskPop objects
-  Get account tasks
-  **/
+   * List the email.domain.TaskPop objects
+   * Get account tasks
+   */
   public get(path: '/email/domain/{domain}/task/account', params: {domain: string, name?: string}): Promise<number[]>;
   /**
-  Task Pop List
-  Get this object properties
-  **/
+   * Task Pop List
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/task/account/{id}', params: {domain: string, id: number}): Promise<EmailDomainTaskPop>;
   /**
-  List the email.domain.TaskFilter objects
-  Get filter tasks
-  **/
+   * List the email.domain.TaskFilter objects
+   * Get filter tasks
+   */
   public get(path: '/email/domain/{domain}/task/filter', params: {domain: string, account?: string}): Promise<number[]>;
   /**
-  Task filter List
-  Get this object properties
-  **/
+   * Task filter List
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/task/filter/{id}', params: {domain: string, id: number}): Promise<EmailDomainTaskFilter>;
   /**
-  List the email.domain.TaskMl objects
-  Get Mailing List tasks
-  **/
+   * List the email.domain.TaskMl objects
+   * Get Mailing List tasks
+   */
   public get(path: '/email/domain/{domain}/task/mailinglist', params: {domain: string, account?: string}): Promise<number[]>;
   /**
-  Task Mailing List
-  Get this object properties
-  **/
+   * Task Mailing List
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/task/mailinglist/{id}', params: {domain: string, id: number}): Promise<EmailDomainTaskMl>;
   /**
-  List the email.domain.TaskSpecialAccount objects
-  Get redirection tasks
-  **/
+   * List the email.domain.TaskSpecialAccount objects
+   * Get redirection tasks
+   */
   public get(path: '/email/domain/{domain}/task/redirection', params: {domain: string, account?: string}): Promise<number[]>;
   /**
-  Task special account List
-  Get this object properties
-  **/
+   * Task special account List
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/task/redirection/{id}', params: {domain: string, id: number}): Promise<EmailDomainTaskSpecialAccount>;
   /**
-  List the email.domain.TaskSpecialAccount objects
-  Get responder tasks
-  **/
+   * List the email.domain.TaskSpecialAccount objects
+   * Get responder tasks
+   */
   public get(path: '/email/domain/{domain}/task/responder', params: {domain: string, account?: string}): Promise<number[]>;
   /**
-  Task special account List
-  Get this object properties
-  **/
+   * Task special account List
+   * Get this object properties
+   */
   public get(path: '/email/domain/{domain}/task/responder/{id}', params: {domain: string, id: number}): Promise<EmailDomainTaskSpecialAccount>;
-  public get(path: PathsEmailDomainGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsEmailDomainGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Account List
-  Alter this object properties
-  **/
+   * Account List
+   * Alter this object properties
+   */
   public put(path: '/email/domain/delegatedAccount/{email}', params: {email: string, accountName?: string, allowedAccountSize?: number[], description?: string, domain?: string, isBlocked?: boolean, size?: number}): Promise<void>;
   /**
-  Responder of account
-  Alter this object properties
-  **/
+   * Responder of account
+   * Alter this object properties
+   */
   public put(path: '/email/domain/delegatedAccount/{email}/responder', params: {email: string, account?: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string}): Promise<void>;
   /**
-  Account List
-  Alter this object properties
-  **/
+   * Account List
+   * Alter this object properties
+   */
   public put(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string, description?: string, email?: string, isBlocked?: boolean, size?: number}): Promise<void>;
   /**
-  Mailing List
-  Alter this object properties
-  **/
+   * Mailing List
+   * Alter this object properties
+   */
   public put(path: '/email/domain/{domain}/mailingList/{name}', params: {domain: string, name: string, id?: number, language?: DomainDomainMlLanguageEnum, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options?: DomainDomainMlOptionsStruct, ownerEmail?: string, replyTo?: string}): Promise<void>;
   /**
-  Responder
-  Alter this object properties
-  **/
+   * Responder
+   * Alter this object properties
+   */
   public put(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/email/domain/{domain}/serviceInfos', params: {domain: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsEmailDomainPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsEmailDomainPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  changePassword operations
-  Change mailbox password (length : [9;30], no space at begin and end, no accent)
-  **/
+   * changePassword operations
+   * Change mailbox password (length : [9;30], no space at begin and end, no accent)
+   */
   public post(path: '/email/domain/delegatedAccount/{email}/changePassword', params: {email: string, password: string}): Promise<EmailDomainTaskPop>;
   /**
-  List the email.domain.Filter objects
-  Create new filter for account
-  **/
+   * List the email.domain.Filter objects
+   * Create new filter for account
+   */
   public post(path: '/email/domain/delegatedAccount/{email}/filter', params: {email: string, action: DomainDomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: DomainDomainFilterOperandEnum, priority: number, value: string}): Promise<EmailDomainTaskFilter>;
   /**
-  changeActivity operations
-  Change filter activity
-  **/
+   * changeActivity operations
+   * Change filter activity
+   */
   public post(path: '/email/domain/delegatedAccount/{email}/filter/{name}/changeActivity', params: {email: string, name: string, activity: boolean}): Promise<EmailDomainTaskFilter>;
   /**
-  changePriority operations
-  Change filter priority
-  **/
+   * changePriority operations
+   * Change filter priority
+   */
   public post(path: '/email/domain/delegatedAccount/{email}/filter/{name}/changePriority', params: {email: string, name: string, priority: number}): Promise<EmailDomainTaskFilter>;
   /**
-  List the email.domain.Rule objects
-  Create new rule for filter
-  **/
+   * List the email.domain.Rule objects
+   * Create new rule for filter
+   */
   public post(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule', params: {email: string, name: string, header: string, operand: DomainDomainFilterOperandEnum, value: string}): Promise<EmailDomainTaskFilter>;
   /**
-  Responder of account
-  Create new responder in server
-  **/
+   * Responder of account
+   * Create new responder in server
+   */
   public post(path: '/email/domain/delegatedAccount/{email}/responder', params: {email: string, content: string, copy: boolean, copyTo?: string, from?: string, to?: string}): Promise<EmailDomainTaskSpecialAccount>;
   /**
-  updateUsage operations
-  Update usage of account
-  **/
+   * updateUsage operations
+   * Update usage of account
+   */
   public post(path: '/email/domain/delegatedAccount/{email}/updateUsage', params: {email: string}): Promise<void>;
   /**
-  usage operations
-  usage of account
-  **/
+   * usage operations
+   * usage of account
+   */
   public post(path: '/email/domain/delegatedAccount/{email}/usage', params: {email: string}): Promise<DomainDomainUsageAccountStruct>;
   /**
-  List the email.domain.Account objects
-  Create new mailbox in server
-  **/
+   * List the email.domain.Account objects
+   * Create new mailbox in server
+   */
   public post(path: '/email/domain/{domain}/account', params: {domain: string, accountName: string, description?: string, password: string, size?: number}): Promise<EmailDomainTaskPop>;
   /**
-  changePassword operations
-  Change mailbox password (length : [9;30], no space at begin and end, no accent)
-  **/
+   * changePassword operations
+   * Change mailbox password (length : [9;30], no space at begin and end, no accent)
+   */
   public post(path: '/email/domain/{domain}/account/{accountName}/changePassword', params: {domain: string, accountName: string, password: string}): Promise<EmailDomainTaskPop>;
   /**
-  List the email.domain.Delegation objects
-  Create delegation for this account
-  **/
+   * List the email.domain.Delegation objects
+   * Create delegation for this account
+   */
   public post(path: '/email/domain/{domain}/account/{accountName}/delegation', params: {domain: string, accountName: string, accountId: string}): Promise<string>;
   /**
-  List the email.domain.Filter objects
-  Create new filter for account
-  **/
+   * List the email.domain.Filter objects
+   * Create new filter for account
+   */
   public post(path: '/email/domain/{domain}/account/{accountName}/filter', params: {domain: string, accountName: string, action: DomainDomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: DomainDomainFilterOperandEnum, priority: number, value: string}): Promise<EmailDomainTaskFilter>;
   /**
-  changeActivity operations
-  Change filter activity
-  **/
+   * changeActivity operations
+   * Change filter activity
+   */
   public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity', params: {domain: string, accountName: string, name: string, activity: boolean}): Promise<EmailDomainTaskFilter>;
   /**
-  changePriority operations
-  Change filter priority
-  **/
+   * changePriority operations
+   * Change filter priority
+   */
   public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/changePriority', params: {domain: string, accountName: string, name: string, priority: number}): Promise<EmailDomainTaskFilter>;
   /**
-  List the email.domain.Rule objects
-  Create new rule for filter
-  **/
+   * List the email.domain.Rule objects
+   * Create new rule for filter
+   */
   public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule', params: {domain: string, accountName: string, name: string, header: string, operand: DomainDomainFilterOperandEnum, value: string}): Promise<EmailDomainTaskFilter>;
   /**
-  migrate operations
-  Migrate account to destination account
-  **/
+   * migrate operations
+   * Migrate account to destination account
+   */
   public post(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate', params: {domain: string, accountName: string, destinationServiceName: string, destinationEmailAddress: string, password: string}): Promise<EmailDomainTaskPop>;
   /**
-  updateUsage operations
-  Update usage of account
-  **/
+   * updateUsage operations
+   * Update usage of account
+   */
   public post(path: '/email/domain/{domain}/account/{accountName}/updateUsage', params: {domain: string, accountName: string}): Promise<void>;
   /**
-  List the email.domain.Acl objects
-  Create new ACL
-  **/
+   * List the email.domain.Acl objects
+   * Create new ACL
+   */
   public post(path: '/email/domain/{domain}/acl', params: {domain: string, accountId: string}): Promise<EmailDomainAcl>;
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
+   * Change the contacts of this service
+   * Launch a contact change procedure
+   */
   public post(path: '/email/domain/{domain}/changeContact', params: {domain: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
-  changeDnsMXFilter operations
-  Change MX filter, so change MX DNS records
-  **/
+   * changeDnsMXFilter operations
+   * Change MX filter, so change MX DNS records
+   */
   public post(path: '/email/domain/{domain}/changeDnsMXFilter', params: {domain: string, customTarget?: string, mxFilter: DomainDomainMXFilterEnum, subDomain?: string}): Promise<void>;
   /**
-  confirmTermination operations
-  Confirm termination of your email service
-  **/
+   * confirmTermination operations
+   * Confirm termination of your email service
+   */
   public post(path: '/email/domain/{domain}/confirmTermination', params: {domain: string, commentary?: string, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
-  List the email.domain.MailingList objects
-  Create new mailingList
-  **/
+   * List the email.domain.MailingList objects
+   * Create new mailingList
+   */
   public post(path: '/email/domain/{domain}/mailingList', params: {domain: string, language: DomainDomainMlLanguageEnum, name: string, options: DomainDomainMlOptionsStruct, ownerEmail: string, replyTo?: string}): Promise<EmailDomainTaskMl>;
   /**
-  changeOptions operations
-  Change mailing list options
-  **/
+   * changeOptions operations
+   * Change mailing list options
+   */
   public post(path: '/email/domain/{domain}/mailingList/{name}/changeOptions', params: {domain: string, name: string, options: DomainDomainMlOptionsStruct}): Promise<EmailDomainTaskMl>;
   /**
-  List the email.domain.Moderator objects
-  Add moderator to mailing list
-  **/
+   * List the email.domain.Moderator objects
+   * Add moderator to mailing list
+   */
   public post(path: '/email/domain/{domain}/mailingList/{name}/moderator', params: {domain: string, name: string, email: string}): Promise<EmailDomainTaskMl>;
   /**
-  sendListByEmail operations
-  Send moderators list and subscribers list of this mailing list by email
-  **/
+   * sendListByEmail operations
+   * Send moderators list and subscribers list of this mailing list by email
+   */
   public post(path: '/email/domain/{domain}/mailingList/{name}/sendListByEmail', params: {domain: string, name: string, email: string}): Promise<EmailDomainTaskMl>;
   /**
-  List the email.domain.Subscriber objects
-  Add subscriber to mailing list
-  **/
+   * List the email.domain.Subscriber objects
+   * Add subscriber to mailing list
+   */
   public post(path: '/email/domain/{domain}/mailingList/{name}/subscriber', params: {domain: string, name: string, email: string}): Promise<EmailDomainTaskMl>;
   /**
-  migrateDelegationV3toV6 operations
-  Create delegation of domain with same nic than V3
-  **/
+   * migrateDelegationV3toV6 operations
+   * Create delegation of domain with same nic than V3
+   */
   public post(path: '/email/domain/{domain}/migrateDelegationV3toV6', params: {domain: string}): Promise<void>;
   /**
-  List the email.domain.RedirectionGlobal objects
-  Create new redirection in server
-  **/
+   * List the email.domain.RedirectionGlobal objects
+   * Create new redirection in server
+   */
   public post(path: '/email/domain/{domain}/redirection', params: {domain: string, from: string, localCopy: boolean, to: string}): Promise<EmailDomainTaskSpecialAccount>;
   /**
-  changeRedirection operations
-  Change redirection
-  **/
+   * changeRedirection operations
+   * Change redirection
+   */
   public post(path: '/email/domain/{domain}/redirection/{id}/changeRedirection', params: {domain: string, id: string, to: string}): Promise<EmailDomainTaskSpecialAccount>;
   /**
-  List the email.domain.Responder objects
-  Create new responder in server
-  **/
+   * List the email.domain.Responder objects
+   * Create new responder in server
+   */
   public post(path: '/email/domain/{domain}/responder', params: {domain: string, account: string, content: string, copy: boolean, copyTo?: string, from?: string, to?: string}): Promise<EmailDomainTaskSpecialAccount>;
   /**
-  terminate operations
-  Terminate your email service
-  **/
+   * terminate operations
+   * Terminate your email service
+   */
   public post(path: '/email/domain/{domain}/terminate', params: {domain: string}): Promise<string>;
-  public post(path: PathsEmailDomainPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsEmailDomainPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Filter List
-  Delete an existing filter
-  **/
+   * Filter List
+   * Delete an existing filter
+   */
   public delete(path: '/email/domain/delegatedAccount/{email}/filter/{name}', params: {email: string, name: string}): Promise<EmailDomainTaskFilter[]>;
   /**
-  Rule List
-  Delete an existing filter
-  **/
+   * Rule List
+   * Delete an existing filter
+   */
   public delete(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}', params: {email: string, name: string, id: number}): Promise<EmailDomainTaskFilter[]>;
   /**
-  Responder of account
-  Delete an existing responder in server
-  **/
+   * Responder of account
+   * Delete an existing responder in server
+   */
   public delete(path: '/email/domain/delegatedAccount/{email}/responder', params: {email: string}): Promise<EmailDomainTaskSpecialAccount>;
   /**
-  Account List
-  Delete an existing mailbox in server
-  **/
+   * Account List
+   * Delete an existing mailbox in server
+   */
   public delete(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string}): Promise<EmailDomainTaskPop>;
   /**
-  Delegation List
-  Delete an existing delegation
-  **/
+   * Delegation List
+   * Delete an existing delegation
+   */
   public delete(path: '/email/domain/{domain}/account/{accountName}/delegation/{accountId}', params: {domain: string, accountName: string, accountId: string}): Promise<string>;
   /**
-  Filter List
-  Delete an existing filter
-  **/
+   * Filter List
+   * Delete an existing filter
+   */
   public delete(path: '/email/domain/{domain}/account/{accountName}/filter/{name}', params: {domain: string, accountName: string, name: string}): Promise<EmailDomainTaskFilter[]>;
   /**
-  Rule List
-  Delete an existing filter
-  **/
+   * Rule List
+   * Delete an existing filter
+   */
   public delete(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}', params: {domain: string, accountName: string, name: string, id: number}): Promise<EmailDomainTaskFilter[]>;
   /**
-  Email ACL
-  Delete ACL
-  **/
+   * Email ACL
+   * Delete ACL
+   */
   public delete(path: '/email/domain/{domain}/acl/{accountId}', params: {domain: string, accountId: string}): Promise<void>;
   /**
-  Mailing List
-  Delete existing Mailing list
-  **/
+   * Mailing List
+   * Delete existing Mailing list
+   */
   public delete(path: '/email/domain/{domain}/mailingList/{name}', params: {domain: string, name: string}): Promise<EmailDomainTaskMl>;
   /**
-  Moderators List
-  Delete existing moderator
-  **/
+   * Moderators List
+   * Delete existing moderator
+   */
   public delete(path: '/email/domain/{domain}/mailingList/{name}/moderator/{email}', params: {domain: string, name: string, email: string}): Promise<EmailDomainTaskMl>;
   /**
-  Subscribers List
-  Delete existing subscriber
-  **/
+   * Subscribers List
+   * Delete existing subscriber
+   */
   public delete(path: '/email/domain/{domain}/mailingList/{name}/subscriber/{email}', params: {domain: string, name: string, email: string}): Promise<EmailDomainTaskMl>;
   /**
-  Global Redirection
-  Delete an existing redirection in server
-  **/
+   * Global Redirection
+   * Delete an existing redirection in server
+   */
   public delete(path: '/email/domain/{domain}/redirection/{id}', params: {domain: string, id: string}): Promise<EmailDomainTaskSpecialAccount>;
   /**
-  Responder
-  Delete an existing responder in server
-  **/
+   * Responder
+   * Delete an existing responder in server
+   */
   public delete(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string}): Promise<EmailDomainTaskSpecialAccount>;
-  public delete(path: PathsEmailDomainDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsEmailDomainDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

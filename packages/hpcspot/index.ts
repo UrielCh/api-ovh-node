@@ -179,39 +179,39 @@ export class ApiHpcspot extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the HPCSPOT service
-  List available services
-  **/
+   * Operations about the HPCSPOT service
+   * List available services
+   */
   public get(path: '/hpcspot'): Promise<string[]>;
   /**
-  Account HPC Spot
-  Get this object properties
-  **/
+   * Account HPC Spot
+   * Get this object properties
+   */
   public get(path: '/hpcspot/{serviceName}', params: {serviceName: string}): Promise<HpcspotAccount>;
   /**
-  List the hpcspot.Consumption objects
-  Details of the consumption of your account
-  **/
+   * List the hpcspot.Consumption objects
+   * Details of the consumption of your account
+   */
   public get(path: '/hpcspot/{serviceName}/consumption', params: {serviceName: string, 'hpcspotItemEndDate.from'?: string, 'hpcspotItemEndDate.to'?: string, hpcspotItemId?: number, orderId?: number, type?: HpcspotConsumptionTypeEnum}): Promise<number[]>;
   /**
-  Detail of a HPC Spot consumtion
-  Get this object properties
-  **/
+   * Detail of a HPC Spot consumtion
+   * Get this object properties
+   */
   public get(path: '/hpcspot/{serviceName}/consumption/{id}', params: {serviceName: string, id: number}): Promise<HpcspotConsumption>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/hpcspot/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsHpcspotGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsHpcspotGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/hpcspot/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsHpcspotPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsHpcspotPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
 }

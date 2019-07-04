@@ -103,11 +103,11 @@ export class ApiStatus extends OvhWrapper {
     super(engine);
   }
   /**
-  API to get incidents or maintenances linked to nichandle services
-  Find all the incidents or maintenances linked to your services
-  **/
+   * API to get incidents or maintenances linked to nichandle services
+   * Find all the incidents or maintenances linked to your services
+   */
   public get(path: '/status/task', params: {impact?: OvhstatusTaskTaskImpactEnum, status?: OvhstatusTaskTaskStatusEnum, type?: OvhstatusTaskTaskTypeEnum}): Promise<StatusTask[]>;
-  public get(path: PathsStatusGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsStatusGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
 }

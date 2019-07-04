@@ -877,75 +877,75 @@ export class ApiPartners extends OvhWrapper {
     super(engine);
   }
   /**
-  Company.list
-  List created companies
-  **/
+   * Company.list
+   * List created companies
+   */
   public get(path: '/partners/register/company'): Promise<string[]>;
   /**
-  Company.get
-  Get information on a created company
-  **/
+   * Company.get
+   * Get information on a created company
+   */
   public get(path: '/partners/register/company/{companyId}', params: {companyId: string}): Promise<PartnerCompany>;
   /**
-  Application.create
-  Compute scoring score without submitting application
-  **/
+   * Application.create
+   * Compute scoring score without submitting application
+   */
   public get(path: '/partners/register/company/{companyId}/application', params: {companyId: string}): Promise<PartnerApplication>;
   /**
-  Contact.list
-  List created contacts
-  **/
+   * Contact.list
+   * List created contacts
+   */
   public get(path: '/partners/register/company/{companyId}/contact', params: {companyId: string}): Promise<string[]>;
   /**
-  Contact.get
-  Get information on a created contact
-  **/
+   * Contact.get
+   * Get information on a created contact
+   */
   public get(path: '/partners/register/company/{companyId}/contact/{contactId}', params: {companyId: string, contactId: string}): Promise<PartnerContact>;
-  public get(path: PathsPartnersGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsPartnersGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Company.get
-  Update some fields on a created company
-  **/
+   * Company.get
+   * Update some fields on a created company
+   */
   public put(path: '/partners/register/company/{companyId}', params: {companyId: string, OVHCertifications?: PartnerOVHCertifications, OVHCustomersAdvised?: PartnerOVHCustomersAdvisedEnum, OVHKnowledgeResources?: PartnerKnowledgeResourcesRangeEnum, OVHProductsUsed?: PartnerOVHProductsUsed, OVHTechnicalAdvancedResources?: PartnerTechnicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources?: PartnerTechnicalExpertResourcesRangeEnum, activitySectors?: PartnerActivitySectors, address?: string, city?: string, clientKinds?: PartnerClientKinds, commercialName?: string, country?: NichandleCountryEnum, description?: string, effective?: PartnerEmployeesNumberEnum, email?: string, expertises?: PartnerExpertisesChoices, externalCertifications?: PartnerExternalCertifications, facebook?: string, linkedin?: string, logo?: string, name?: string, partnerKnowledges?: PartnerPartnerKnowledges, phone?: string, productCountries?: PartnerProductCountries, registrationNumber?: string, revenue?: PartnerRevenueRangeEnum, twitter?: string, website?: string, zipCode?: string}): Promise<PartnerCompany>;
   /**
-  Contact.get
-  Update some fields on a created contact
-  **/
+   * Contact.get
+   * Update some fields on a created contact
+   */
   public put(path: '/partners/register/company/{companyId}/contact/{contactId}', params: {companyId: string, contactId: string, email?: string, facebook?: string, firstName?: string, lastName?: string, linkedin?: string, newsletter?: boolean, otherNics?: PartnerNic[], phone?: string, role?: string, twitter?: string}): Promise<PartnerContact>;
-  public put(path: PathsPartnersPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsPartnersPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  Company.list
-  Created a new company for the inscription
-  **/
+   * Company.list
+   * Created a new company for the inscription
+   */
   public post(path: '/partners/register/company', params: {OVHCertifications?: PartnerOVHCertifications, OVHCustomersAdvised: PartnerOVHCustomersAdvisedEnum, OVHKnowledgeResources: PartnerKnowledgeResourcesRangeEnum, OVHProductsUsed?: PartnerOVHProductsUsed, OVHTechnicalAdvancedResources: PartnerTechnicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources: PartnerTechnicalExpertResourcesRangeEnum, activitySectors?: PartnerActivitySectors, address: string, city: string, clientKinds?: PartnerClientKinds, commercialName: string, country: NichandleCountryEnum, description: string, email: string, employeesNumber: PartnerEmployeesNumberEnum, expertises?: PartnerExpertisesChoices, externalCertifications?: PartnerExternalCertifications, facebook?: string, linkedin?: string, logo: string, name: string, partnerKnowledges?: PartnerPartnerKnowledges, phone: string, productCountries?: PartnerProductCountries, registrationNumber?: string, revenue: PartnerRevenueRangeEnum, twitter?: string, website: string, zipCode: string}): Promise<PartnerCompany>;
   /**
-  Application.create
-  Submit application information for validation
-  **/
+   * Application.create
+   * Submit application information for validation
+   */
   public post(path: '/partners/register/company/{companyId}/application', params: {companyId: string, termsAndConditionsOfServiceAccepted: boolean}): Promise<PartnerApplication>;
   /**
-  Contact.list
-  Created a new contact for the inscription
-  **/
+   * Contact.list
+   * Created a new contact for the inscription
+   */
   public post(path: '/partners/register/company/{companyId}/contact', params: {companyId: string, email: string, facebook?: string, firstName: string, lastName: string, linkedin?: string, newsletter?: boolean, otherNics?: PartnerNic[], phone: string, role: string, twitter?: string}): Promise<PartnerContact>;
-  public post(path: PathsPartnersPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsPartnersPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Company.get
-  Remove a company
-  **/
+   * Company.get
+   * Remove a company
+   */
   public delete(path: '/partners/register/company/{companyId}', params: {companyId: string}): Promise<string>;
   /**
-  Contact.get
-  Remove a contact
-  **/
+   * Contact.get
+   * Remove a contact
+   */
   public delete(path: '/partners/register/company/{companyId}/contact/{contactId}', params: {companyId: string, contactId: string}): Promise<string>;
-  public delete(path: PathsPartnersDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsPartnersDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

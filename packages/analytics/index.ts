@@ -489,77 +489,77 @@ export class ApiAnalytics extends OvhWrapper {
     super(engine);
   }
   /**
-  
-  Platform capabilities
-  **/
+   * 
+   * Platform capabilities
+   */
   public get(path: '/analytics/capabilities/platforms'): Promise<AnalyticsPlatformCapability[]>;
   /**
-  
-  List available services
-  **/
+   * 
+   * List available services
+   */
   public get(path: '/analytics/platforms'): Promise<string[]>;
   /**
-  
-  Get details about a service
-  **/
+   * 
+   * Get details about a service
+   */
   public get(path: '/analytics/platforms/{serviceName}', params: {serviceName: string}): Promise<AnalyticsCluster>;
   /**
-  
-  Get activity logs
-  **/
+   * 
+   * Get activity logs
+   */
   public get(path: '/analytics/platforms/{serviceName}/activity', params: {serviceName: string}): Promise<AnalyticsClusterActivity[]>;
   /**
-  
-  List available nodes
-  **/
+   * 
+   * List available nodes
+   */
   public get(path: '/analytics/platforms/{serviceName}/nodes', params: {serviceName: string}): Promise<string[]>;
   /**
-  
-  Get details about nodes
-  **/
+   * 
+   * Get details about nodes
+   */
   public get(path: '/analytics/platforms/{serviceName}/nodes/{nodeId}', params: {serviceName: string, nodeId: string}): Promise<AnalyticsClusterNode>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/analytics/platforms/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  
-  Get cluster deployment status
-  **/
+   * 
+   * Get cluster deployment status
+   */
   public get(path: '/analytics/platforms/{serviceName}/status', params: {serviceName: string}): Promise<AnalyticsClusterDeployStatus[]>;
-  public get(path: PathsAnalyticsGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsAnalyticsGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/analytics/platforms/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsAnalyticsPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsAnalyticsPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
+   * Change the contacts of this service
+   * Launch a contact change procedure
+   */
   public post(path: '/analytics/platforms/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
+   * Confirm termination of your service
+   * Confirm termination of your service
+   */
   public post(path: '/analytics/platforms/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
-  
-  Deploy an Analytics Data Platform
-  **/
+   * 
+   * Deploy an Analytics Data Platform
+   */
   public post(path: '/analytics/platforms/{serviceName}/deploy', params: {serviceName: string, clusterName?: string, clusterType?: string, edgeNodeStorage?: number, hdfsEffectiveStorage?: number, hdfsReplicationFactor?: number, masterNodeStorage?: number, masterPassword?: string, nodes?: AnalyticsNodeDeploy[], osProjectId?: string, osProjectName?: string, osRegion?: string, osToken?: string, sshPublicKey?: string}): Promise<AnalyticsClusterDeploy>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
+   * Terminate your service
+   * Terminate your service
+   */
   public post(path: '/analytics/platforms/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
-  public post(path: PathsAnalyticsPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsAnalyticsPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
 }

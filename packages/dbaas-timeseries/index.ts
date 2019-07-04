@@ -448,110 +448,110 @@ export class ApiDbaasTimeseries extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the PAAS_TIMESERIES service
-  List available services
-  **/
+   * Operations about the PAAS_TIMESERIES service
+   * List available services
+   */
   public get(path: '/dbaas/timeseries'): Promise<string[]>;
   /**
-  Regions
-  Get available regions
-  **/
+   * Regions
+   * Get available regions
+   */
   public get(path: '/dbaas/timeseries/region'): Promise<PaasTimeseriesRegion[]>;
   /**
-  Timeseries project
-  Get this object properties
-  **/
+   * Timeseries project
+   * Get this object properties
+   */
   public get(path: '/dbaas/timeseries/{serviceName}', params: {serviceName: string}): Promise<TimeseriesProject>;
   /**
-  Consumption
-  Get consumption
-  **/
+   * Consumption
+   * Get consumption
+   */
   public get(path: '/dbaas/timeseries/{serviceName}/consumption', params: {serviceName: string}): Promise<PaasTimeseriesConsumption[]>;
   /**
-  Keys
-  Get keys for a project
-  **/
+   * Keys
+   * Get keys for a project
+   */
   public get(path: '/dbaas/timeseries/{serviceName}/key', params: {serviceName: string}): Promise<PaasTimeseriesKey[]>;
   /**
-  Key
-  Get a key
-  **/
+   * Key
+   * Get a key
+   */
   public get(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<PaasTimeseriesKey>;
   /**
-  Quotas
-  Get quotas
-  **/
+   * Quotas
+   * Get quotas
+   */
   public get(path: '/dbaas/timeseries/{serviceName}/quota', params: {serviceName: string}): Promise<PaasTimeseriesQuota[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/dbaas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  OpenTSDBTokens
-  Get OpenTSDB tokens
-  **/
+   * OpenTSDBTokens
+   * Get OpenTSDB tokens
+   */
   public get(path: '/dbaas/timeseries/{serviceName}/token/opentsdb', params: {serviceName: string}): Promise<PaasTimeseriesOpenTSDBToken[]>;
   /**
-  Key
-  Get a OpenTSDB token
-  **/
+   * Key
+   * Get a OpenTSDB token
+   */
   public get(path: '/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}', params: {serviceName: string, tokenId: string}): Promise<PaasTimeseriesOpenTSDBToken>;
-  public get(path: PathsDbaasTimeseriesGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsDbaasTimeseriesGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Timeseries project
-  Alter this object properties
-  **/
+   * Timeseries project
+   * Alter this object properties
+   */
   public put(path: '/dbaas/timeseries/{serviceName}', params: {serviceName: string, description?: string, displayName?: string, offerId?: string, regionId?: string, status?: TimeseriesStatusTypeEnum}): Promise<void>;
   /**
-  Key
-  Create a key
-  **/
+   * Key
+   * Create a key
+   */
   public put(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string, description?: string, permissions: PaasTimeseriesPermissionEnum[], tags: PaasTimeseriesTag[]}): Promise<PaasTimeseriesKey>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/dbaas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsDbaasTimeseriesPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsDbaasTimeseriesPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
+   * Change the contacts of this service
+   * Launch a contact change procedure
+   */
   public post(path: '/dbaas/timeseries/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
-  Keys
-  Create a key for a project
-  **/
+   * Keys
+   * Create a key for a project
+   */
   public post(path: '/dbaas/timeseries/{serviceName}/key', params: {serviceName: string, description?: string, permissions: string[], tags: PaasTimeseriesTag[]}): Promise<PaasTimeseriesKey>;
   /**
-  Setup your project on our platform
-  Setup a project
-  **/
+   * Setup your project on our platform
+   * Setup a project
+   */
   public post(path: '/dbaas/timeseries/{serviceName}/setup', params: {serviceName: string, description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string}): Promise<PaasTimeseriesProject>;
   /**
-  OpenTSDBTokens
-  Create a OpenTSDB token
-  **/
+   * OpenTSDBTokens
+   * Create a OpenTSDB token
+   */
   public post(path: '/dbaas/timeseries/{serviceName}/token/opentsdb', params: {serviceName: string, description?: string, permission: string, tags: PaasTimeseriesTag[]}): Promise<PaasTimeseriesOpenTSDBToken>;
-  public post(path: PathsDbaasTimeseriesPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsDbaasTimeseriesPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Key
-  Delete a OpenTSDB token
-  **/
+   * Key
+   * Delete a OpenTSDB token
+   */
   public delete(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<boolean>;
   /**
-  Key
-  Delete an OpenTSDB token
-  **/
+   * Key
+   * Delete an OpenTSDB token
+   */
   public delete(path: '/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}', params: {serviceName: string, tokenId: string}): Promise<boolean>;
-  public delete(path: PathsDbaasTimeseriesDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsDbaasTimeseriesDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

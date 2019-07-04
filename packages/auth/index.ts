@@ -74,29 +74,29 @@ export class ApiAuth extends OvhWrapper {
     super(engine);
   }
   /**
-  Get the current credential details
-  Get the current credential details
-  **/
+   * Get the current credential details
+   * Get the current credential details
+   */
   public get(path: '/auth/currentCredential'): Promise<ApiCredential>;
   /**
-  Get the time of OVH servers
-  Get the current time of the OVH servers, since UNIX epoch
-  **/
+   * Get the time of OVH servers
+   * Get the current time of the OVH servers, since UNIX epoch
+   */
   public get(path: '/auth/time'): Promise<number>;
-  public get(path: PathsAuthGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsAuthGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Operations with credentials
-  Request a new credential for your application
-  **/
+   * Operations with credentials
+   * Request a new credential for your application
+   */
   public post(path: '/auth/credential', params: {accessRules: AuthAccessRule[], redirection?: string}): Promise<AuthCredential>;
   /**
-  Expire current credential
-  Expire current credential
-  **/
+   * Expire current credential
+   * Expire current credential
+   */
   public post(path: '/auth/logout'): Promise<void>;
-  public post(path: PathsAuthPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsAuthPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
 }

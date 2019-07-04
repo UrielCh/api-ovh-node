@@ -189,11 +189,11 @@ export class ApiSupplyMondialRelay extends OvhWrapper {
     super(engine);
   }
   /**
-  Find the 10 nearest MondialRelay points from address or city.
-  Find the 10 nearest MondialRelay points from address or city.
-  **/
+   * Find the 10 nearest MondialRelay points from address or city.
+   * Find the 10 nearest MondialRelay points from address or city.
+   */
   public post(path: '/supply/mondialRelay', params: {address?: string, city?: string, country: CoreTypesCountryEnum, zipcode?: string}): Promise<SupplyMondialRelayReturn>;
-  public post(path: PathsSupplyMondialRelayPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsSupplyMondialRelayPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
 }

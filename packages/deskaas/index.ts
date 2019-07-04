@@ -310,112 +310,112 @@ export class ApiDeskaas extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the DESKAAS service
-  List available services
-  **/
+   * Operations about the DESKAAS service
+   * List available services
+   */
   public get(path: '/deskaas'): Promise<string[]>;
   /**
-  Desktop As A Service
-  Get this object properties
-  **/
+   * Desktop As A Service
+   * Get this object properties
+   */
   public get(path: '/deskaas/{serviceName}', params: {serviceName: string}): Promise<DeskaasDeskaas>;
   /**
-  passwordPolicy operations
-  Get the current password policy for your Desktop As A Service
-  **/
+   * passwordPolicy operations
+   * Get the current password policy for your Desktop As A Service
+   */
   public get(path: '/deskaas/{serviceName}/passwordPolicy', params: {serviceName: string}): Promise<DeskaasPasswordPolicy>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/deskaas/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the deskaas.Task objects
-  Tasks associated with this Desktop As A Service
-  **/
+   * List the deskaas.Task objects
+   * Tasks associated with this Desktop As A Service
+   */
   public get(path: '/deskaas/{serviceName}/task', params: {serviceName: string, state?: DeskaasTaskStateEnum}): Promise<number[]>;
   /**
-  Operation on a Desktop As A Service component
-  Get this object properties
-  **/
+   * Operation on a Desktop As A Service component
+   * Get this object properties
+   */
   public get(path: '/deskaas/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<DeskaasTask>;
   /**
-  Desktop As A Service User
-  Get this object properties
-  **/
+   * Desktop As A Service User
+   * Get this object properties
+   */
   public get(path: '/deskaas/{serviceName}/user', params: {serviceName: string}): Promise<DeskaasUser>;
   /**
-  List the deskaas.Task objects
-  Tasks associated with this User
-  **/
+   * List the deskaas.Task objects
+   * Tasks associated with this User
+   */
   public get(path: '/deskaas/{serviceName}/user/task', params: {serviceName: string, state?: DeskaasTaskStateEnum}): Promise<number[]>;
   /**
-  Operation on a Desktop As A Service component
-  Get this object properties
-  **/
+   * Operation on a Desktop As A Service component
+   * Get this object properties
+   */
   public get(path: '/deskaas/{serviceName}/user/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<DeskaasTask>;
-  public get(path: PathsDeskaasGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsDeskaasGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/deskaas/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsDeskaasPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsDeskaasPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  changeAlias operations
-  Change the Virtual Desktop alias
-  **/
+   * changeAlias operations
+   * Change the Virtual Desktop alias
+   */
   public post(path: '/deskaas/{serviceName}/changeAlias', params: {serviceName: string, alias: string}): Promise<DeskaasTask>;
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
+   * Change the contacts of this service
+   * Launch a contact change procedure
+   */
   public post(path: '/deskaas/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
-  Confirm termination of your service
-  Confirm termination of your service
-  **/
+   * Confirm termination of your service
+   * Confirm termination of your service
+   */
   public post(path: '/deskaas/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
   /**
-  console operations
-  New console access
-  **/
+   * console operations
+   * New console access
+   */
   public post(path: '/deskaas/{serviceName}/console', params: {serviceName: string}): Promise<DeskaasTask>;
   /**
-  reboot operations
-  Reboot the Operating system of the Cloud Desktop.
-  **/
+   * reboot operations
+   * Reboot the Operating system of the Cloud Desktop.
+   */
   public post(path: '/deskaas/{serviceName}/reboot', params: {serviceName: string}): Promise<DeskaasTask>;
   /**
-  refresh operations
-  Refresh the Operating system of the Desktop As A Service. All your personnal data are kept.
-  **/
+   * refresh operations
+   * Refresh the Operating system of the Desktop As A Service. All your personnal data are kept.
+   */
   public post(path: '/deskaas/{serviceName}/refresh', params: {serviceName: string}): Promise<DeskaasTask>;
   /**
-  Terminate your service
-  Terminate your service
-  **/
+   * Terminate your service
+   * Terminate your service
+   */
   public post(path: '/deskaas/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
   /**
-  upgrade operations
-  Upgrading the Desktop As A Service to another profile. The Virtual Desktop will not be available during upgrade and has to be restarted. You cannot downgrade a Virtual Desktop
-  **/
+   * upgrade operations
+   * Upgrading the Desktop As A Service to another profile. The Virtual Desktop will not be available during upgrade and has to be restarted. You cannot downgrade a Virtual Desktop
+   */
   public post(path: '/deskaas/{serviceName}/upgrade', params: {serviceName: string, newReference?: string, planCode?: string}): Promise<DeskaasTask>;
   /**
-  changePassword operations
-  Change Desktop As A Service user password
-  **/
+   * changePassword operations
+   * Change Desktop As A Service user password
+   */
   public post(path: '/deskaas/{serviceName}/user/changePassword', params: {serviceName: string, password?: string}): Promise<DeskaasTask>;
   /**
-  changeProperties operations
-  Change Desktop As A Service user properties
-  **/
+   * changeProperties operations
+   * Change Desktop As A Service user properties
+   */
   public post(path: '/deskaas/{serviceName}/user/changeProperties', params: {serviceName: string, email?: string}): Promise<DeskaasTask>;
-  public post(path: PathsDeskaasPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsDeskaasPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
 }

@@ -269,120 +269,120 @@ export class ApiDedicatedNas extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the STORAGE service
-  List available services
-  **/
+   * Operations about the STORAGE service
+   * List available services
+   */
   public get(path: '/dedicated/nas'): Promise<string[]>;
   /**
-  Storage nas
-  Get this object properties
-  **/
+   * Storage nas
+   * Get this object properties
+   */
   public get(path: '/dedicated/nas/{serviceName}', params: {serviceName: string}): Promise<DedicatedNasNas>;
   /**
-  List the dedicated.nas.Partition objects
-  Get partition list
-  **/
+   * List the dedicated.nas.Partition objects
+   * Get partition list
+   */
   public get(path: '/dedicated/nas/{serviceName}/partition', params: {serviceName: string}): Promise<string[]>;
   /**
-  Storage partition
-  Get this object properties
-  **/
+   * Storage partition
+   * Get this object properties
+   */
   public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string}): Promise<DedicatedNasPartition>;
   /**
-  List the dedicated.nas.Access objects
-  get ACL for this partition
-  **/
+   * List the dedicated.nas.Access objects
+   * get ACL for this partition
+   */
   public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access', params: {serviceName: string, partitionName: string}): Promise<string[]>;
   /**
-  Define Acl for partition
-  Get this object properties
-  **/
+   * Define Acl for partition
+   * Get this object properties
+   */
   public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}', params: {serviceName: string, partitionName: string, ip: string}): Promise<DedicatedNasAccess>;
   /**
-  authorizableIps operations
-  Get all IPs that can be used in the ACL
-  **/
+   * authorizableIps operations
+   * Get all IPs that can be used in the ACL
+   */
   public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps', params: {serviceName: string, partitionName: string}): Promise<string[]>;
   /**
-  List the dedicated.nas.Quota objects
-  Get quota for this partition
-  **/
+   * List the dedicated.nas.Quota objects
+   * Get quota for this partition
+   */
   public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota', params: {serviceName: string, partitionName: string}): Promise<number[]>;
   /**
-  Partition Quota
-  Get this object properties
-  **/
+   * Partition Quota
+   * Get this object properties
+   */
   public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}', params: {serviceName: string, partitionName: string, uid: number}): Promise<DedicatedNasQuota>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/dedicated/nas/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  List the dedicated.nasTask.Task objects
-  View task list
-  **/
+   * List the dedicated.nasTask.Task objects
+   * View task list
+   */
   public get(path: '/dedicated/nas/{serviceName}/task', params: {serviceName: string, operation?: DedicatedStorageTaskFunctionEnum, status?: DedicatedTaskStatusEnum}): Promise<number[]>;
   /**
-  Storage task
-  Get this object properties
-  **/
+   * Storage task
+   * Get this object properties
+   */
   public get(path: '/dedicated/nas/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<DedicatedNasTaskTask>;
-  public get(path: PathsDedicatedNasGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsDedicatedNasGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Storage nas
-  Alter this object properties
-  **/
+   * Storage nas
+   * Alter this object properties
+   */
   public put(path: '/dedicated/nas/{serviceName}', params: {serviceName: string, canCreatePartition?: boolean, customName?: string, datacenter?: string, ip?: string, mountPath?: string, zpoolSize?: number}): Promise<void>;
   /**
-  Storage partition
-  Alter this object properties
-  **/
+   * Storage partition
+   * Alter this object properties
+   */
   public put(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string, protocol?: DedicatedStorageProtocolEnum, size?: number}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/dedicated/nas/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsDedicatedNasPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsDedicatedNasPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  List the dedicated.nas.Partition objects
-  Create a  new partition
-  **/
+   * List the dedicated.nas.Partition objects
+   * Create a  new partition
+   */
   public post(path: '/dedicated/nas/{serviceName}/partition', params: {serviceName: string, partitionName: string, protocol: DedicatedStorageProtocolEnum, size: number}): Promise<DedicatedNasTaskTask>;
   /**
-  List the dedicated.nas.Access objects
-  Add an Acl to this  partition
-  **/
+   * List the dedicated.nas.Access objects
+   * Add an Acl to this  partition
+   */
   public post(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access', params: {serviceName: string, partitionName: string, ip: string}): Promise<DedicatedNasTaskTask>;
   /**
-  List the dedicated.nas.Quota objects
-  Set a new quota
-  **/
+   * List the dedicated.nas.Quota objects
+   * Set a new quota
+   */
   public post(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota', params: {serviceName: string, partitionName: string, size: number, uid: number}): Promise<DedicatedNasTaskTask>;
-  public post(path: PathsDedicatedNasPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsDedicatedNasPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Storage partition
-  Delete this partition
-  **/
+   * Storage partition
+   * Delete this partition
+   */
   public delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string}): Promise<DedicatedNasTaskTask>;
   /**
-  Define Acl for partition
-  Delete a given snapshot
-  **/
+   * Define Acl for partition
+   * Delete a given snapshot
+   */
   public delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}', params: {serviceName: string, partitionName: string, ip: string}): Promise<DedicatedNasTaskTask>;
   /**
-  Partition Quota
-  Delete a given quota
-  **/
+   * Partition Quota
+   * Delete a given quota
+   */
   public delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}', params: {serviceName: string, partitionName: string, uid: number}): Promise<DedicatedNasTaskTask>;
-  public delete(path: PathsDedicatedNasDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsDedicatedNasDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

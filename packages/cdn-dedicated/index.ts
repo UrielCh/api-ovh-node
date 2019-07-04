@@ -362,200 +362,200 @@ export class ApiCdnDedicated extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the CDNANYCAST service
-  List available services
-  **/
+   * Operations about the CDNANYCAST service
+   * List available services
+   */
   public get(path: '/cdn/dedicated'): Promise<string[]>;
   /**
-  List the cdnanycast.Pop objects
-  List of CDN Pops
-  **/
+   * List the cdnanycast.Pop objects
+   * List of CDN Pops
+   */
   public get(path: '/cdn/dedicated/pops'): Promise<string[]>;
   /**
-  CDN Pop
-  Get this object properties
-  **/
+   * CDN Pop
+   * Get this object properties
+   */
   public get(path: '/cdn/dedicated/pops/{name}', params: {name: string}): Promise<CdnanycastPop>;
   /**
-  Anycast IP of a CDN customer
-  Get this object properties
-  **/
+   * Anycast IP of a CDN customer
+   * Get this object properties
+   */
   public get(path: '/cdn/dedicated/{serviceName}', params: {serviceName: string}): Promise<CdnanycastAnycast>;
   /**
-  List the cdnanycast.Domain objects
-  Domains associated to this anycast
-  **/
+   * List the cdnanycast.Domain objects
+   * Domains associated to this anycast
+   */
   public get(path: '/cdn/dedicated/{serviceName}/domains', params: {serviceName: string}): Promise<string[]>;
   /**
-  Domain on CDN
-  Get this object properties
-  **/
+   * Domain on CDN
+   * Get this object properties
+   */
   public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string}): Promise<CdnanycastDomain>;
   /**
-  List the cdnanycast.Backend objects
-  Backend associated to the domain
-  **/
+   * List the cdnanycast.Backend objects
+   * Backend associated to the domain
+   */
   public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', params: {serviceName: string, domain: string}): Promise<string[]>;
   /**
-  Backend for a domain
-  Get this object properties
-  **/
+   * Backend for a domain
+   * Get this object properties
+   */
   public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}', params: {serviceName: string, domain: string, ip: string}): Promise<CdnanycastBackend>;
   /**
-  List the cdnanycast.CacheRule objects
-  Cache rules associated to the domain
-  **/
+   * List the cdnanycast.CacheRule objects
+   * Cache rules associated to the domain
+   */
   public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', params: {serviceName: string, domain: string, fileMatch?: string}): Promise<number[]>;
   /**
-  CacheRules for a domain
-  Get this object properties
-  **/
+   * CacheRules for a domain
+   * Get this object properties
+   */
   public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: number}): Promise<CdnanycastCacheRule>;
   /**
-  List the cdnanycast.Task objects
-  Task associated to the cache rule
-  **/
+   * List the cdnanycast.Task objects
+   * Task associated to the cache rule
+   */
   public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks', params: {serviceName: string, domain: string, cacheRuleId: number}): Promise<number[]>;
   /**
-  Task on a CDN
-  Get this object properties
-  **/
+   * Task on a CDN
+   * Get this object properties
+   */
   public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}', params: {serviceName: string, domain: string, cacheRuleId: number, taskId: number}): Promise<CdnanycastTask>;
   /**
-  statistics operations
-  Return stats about a domain
-  **/
+   * statistics operations
+   * Return stats about a domain
+   */
   public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/statistics', params: {serviceName: string, domain: string, period: CdnanycastStatsPeriodEnum, type: CdnanycastStatsTypeEnum, value: CdnanycastStatsValueEnum}): Promise<CdnanycastStatsDataType[]>;
   /**
-  List the cdnanycast.Task objects
-  Task associated to the domain
-  **/
+   * List the cdnanycast.Task objects
+   * Task associated to the domain
+   */
   public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/tasks', params: {serviceName: string, domain: string}): Promise<number[]>;
   /**
-  Task on a CDN
-  Get this object properties
-  **/
+   * Task on a CDN
+   * Get this object properties
+   */
   public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}', params: {serviceName: string, domain: string, taskId: number}): Promise<CdnanycastTask>;
   /**
-  quota operations
-  Return quota history
-  **/
+   * quota operations
+   * Return quota history
+   */
   public get(path: '/cdn/dedicated/{serviceName}/quota', params: {serviceName: string, period: CdnanycastStatsPeriodEnum}): Promise<CdnanycastStatsDataType[]>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/cdn/dedicated/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  CDN Ssl
-  Get this object properties
-  **/
+   * CDN Ssl
+   * Get this object properties
+   */
   public get(path: '/cdn/dedicated/{serviceName}/ssl', params: {serviceName: string}): Promise<CdnanycastSsl>;
   /**
-  List the cdnanycast.Task objects
-  Task associated to the ssl
-  **/
+   * List the cdnanycast.Task objects
+   * Task associated to the ssl
+   */
   public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks', params: {serviceName: string, function?: CdnanycastTaskFunctionEnum, status?: CdnanycastTaskStateEnum}): Promise<number[]>;
   /**
-  Task on a CDN
-  Get this object properties
-  **/
+   * Task on a CDN
+   * Get this object properties
+   */
   public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<CdnanycastTask>;
-  public get(path: PathsCdnDedicatedGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsCdnDedicatedGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  Domain on CDN
-  Alter this object properties
-  **/
+   * Domain on CDN
+   * Alter this object properties
+   */
   public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string, cacheRuleUse?: number, cname?: string, status?: CdnanycastDomainStatusEnum, type?: CdnanycastDomainTypeEnum}): Promise<void>;
   /**
-  CacheRules for a domain
-  Alter this object properties
-  **/
+   * CacheRules for a domain
+   * Alter this object properties
+   */
   public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: number, cacheType?: CdnanycastCacheRuleCacheTypeEnum, fileMatch?: string, fileType?: CdnanycastCacheRuleFileTypeEnum, status?: CdnanycastCacheRuleStatusEnum, ttl?: number}): Promise<void>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/cdn/dedicated/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsCdnDedicatedPUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsCdnDedicatedPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  Change the contacts of this service
-  Launch a contact change procedure
-  **/
+   * Change the contacts of this service
+   * Launch a contact change procedure
+   */
   public post(path: '/cdn/dedicated/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
   /**
-  List the cdnanycast.Domain objects
-  Add a domain on CDN
-  **/
+   * List the cdnanycast.Domain objects
+   * Add a domain on CDN
+   */
   public post(path: '/cdn/dedicated/{serviceName}/domains', params: {serviceName: string, domain: string}): Promise<CdnanycastDomain>;
   /**
-  List the cdnanycast.Backend objects
-  Add a backend IP
-  **/
+   * List the cdnanycast.Backend objects
+   * Add a backend IP
+   */
   public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', params: {serviceName: string, domain: string, ip: string}): Promise<CdnanycastBackend>;
   /**
-  List the cdnanycast.CacheRule objects
-  Add a cache rule to a domain
-  **/
+   * List the cdnanycast.CacheRule objects
+   * Add a cache rule to a domain
+   */
   public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', params: {serviceName: string, domain: string, cacheType: CdnanycastCacheRuleCacheTypeEnum, fileMatch: string, fileType: CdnanycastCacheRuleFileTypeEnum, ttl: number}): Promise<CdnanycastCacheRule>;
   /**
-  flush operations
-  Flush the cache
-  **/
+   * flush operations
+   * Flush the cache
+   */
   public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush', params: {serviceName: string, domain: string, cacheRuleId: number}): Promise<CdnanycastTask>;
   /**
-  flush operations
-  Flush all cache
-  **/
+   * flush operations
+   * Flush all cache
+   */
   public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/flush', params: {serviceName: string, domain: string}): Promise<CdnanycastTask>;
   /**
-  logs operations
-  Generate URL to real time logs
-  **/
+   * logs operations
+   * Generate URL to real time logs
+   */
   public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/logs', params: {serviceName: string, domain: string}): Promise<CdnanycastLogsURL>;
   /**
-  logs operations
-  Generate URL to real time logs
-  **/
+   * logs operations
+   * Generate URL to real time logs
+   */
   public post(path: '/cdn/dedicated/{serviceName}/logs', params: {serviceName: string}): Promise<CdnanycastLogsURL>;
   /**
-  CDN Ssl
-  Add a SSL on CDN or Generate a Lets Encrypt certificate
-  **/
+   * CDN Ssl
+   * Add a SSL on CDN or Generate a Lets Encrypt certificate
+   */
   public post(path: '/cdn/dedicated/{serviceName}/ssl', params: {serviceName: string, certificate?: string, chain?: string, key?: string, name: string}): Promise<CdnanycastSsl>;
   /**
-  update operations
-  Update an existing SSL with a custom certificate
-  **/
+   * update operations
+   * Update an existing SSL with a custom certificate
+   */
   public post(path: '/cdn/dedicated/{serviceName}/ssl/update', params: {serviceName: string, certificate: string, chain?: string, key: string}): Promise<CdnanycastTask>;
-  public post(path: PathsCdnDedicatedPOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsCdnDedicatedPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Domain on CDN
-  Remove a domain from the CDN
-  **/
+   * Domain on CDN
+   * Remove a domain from the CDN
+   */
   public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string}): Promise<CdnanycastTask>;
   /**
-  Backend for a domain
-  Remove a backend IP
-  **/
+   * Backend for a domain
+   * Remove a backend IP
+   */
   public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}', params: {serviceName: string, domain: string, ip: string}): Promise<string>;
   /**
-  CacheRules for a domain
-  Remove cache rule
-  **/
+   * CacheRules for a domain
+   * Remove cache rule
+   */
   public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: number}): Promise<CdnanycastTask>;
   /**
-  CDN Ssl
-  Remove SSL of the CDN
-  **/
+   * CDN Ssl
+   * Remove SSL of the CDN
+   */
   public delete(path: '/cdn/dedicated/{serviceName}/ssl', params: {serviceName: string}): Promise<CdnanycastTask>;
-  public delete(path: PathsCdnDedicatedDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsCdnDedicatedDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }

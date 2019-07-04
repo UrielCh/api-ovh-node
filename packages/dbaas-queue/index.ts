@@ -344,110 +344,110 @@ export class ApiDbaasQueue extends OvhWrapper {
     super(engine);
   }
   /**
-  Operations about the PAAS_QUEUE service
-  List available services
-  **/
+   * Operations about the PAAS_QUEUE service
+   * List available services
+   */
   public get(path: '/dbaas/queue'): Promise<string[]>;
   /**
-  App
-  Get an application
-  **/
+   * App
+   * Get an application
+   */
   public get(path: '/dbaas/queue/{serviceName}', params: {serviceName: string}): Promise<DbaasQueueApp>;
   /**
-  Key
-  List all keys of the application
-  **/
+   * Key
+   * List all keys of the application
+   */
   public get(path: '/dbaas/queue/{serviceName}/key', params: {serviceName: string}): Promise<string[]>;
   /**
-  Key
-  Get a key
-  **/
+   * Key
+   * Get a key
+   */
   public get(path: '/dbaas/queue/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<DbaasQueueKey>;
   /**
-  Metrics
-  Get metrics account
-  **/
+   * Metrics
+   * Get metrics account
+   */
   public get(path: '/dbaas/queue/{serviceName}/metrics/account', params: {serviceName: string}): Promise<DbaasQueueMetricsAccount>;
   /**
-  Region
-  List all regions ID
-  **/
+   * Region
+   * List all regions ID
+   */
   public get(path: '/dbaas/queue/{serviceName}/region', params: {serviceName: string}): Promise<string[]>;
   /**
-  Region
-  Get one region
-  **/
+   * Region
+   * Get one region
+   */
   public get(path: '/dbaas/queue/{serviceName}/region/{regionId}', params: {serviceName: string, regionId: string}): Promise<DbaasQueueRegion>;
   /**
-  Role
-  List all roles of the application
-  **/
+   * Role
+   * List all roles of the application
+   */
   public get(path: '/dbaas/queue/{serviceName}/role', params: {serviceName: string}): Promise<string[]>;
   /**
-  Role
-  Get a role
-  **/
+   * Role
+   * Get a role
+   */
   public get(path: '/dbaas/queue/{serviceName}/role/{roleName}', params: {serviceName: string, roleName: string}): Promise<DbaasQueueRole>;
   /**
-  Details about a Service
-  Get this object properties
-  **/
+   * Details about a Service
+   * Get this object properties
+   */
   public get(path: '/dbaas/queue/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
   /**
-  Topic
-  List all topics of the application
-  **/
+   * Topic
+   * List all topics of the application
+   */
   public get(path: '/dbaas/queue/{serviceName}/topic', params: {serviceName: string}): Promise<string[]>;
   /**
-  Topic
-  Get a topic
-  **/
+   * Topic
+   * Get a topic
+   */
   public get(path: '/dbaas/queue/{serviceName}/topic/{topicId}', params: {serviceName: string, topicId: string}): Promise<DbaasQueueTopic>;
   /**
-  User
-  List all users of the application
-  **/
+   * User
+   * List all users of the application
+   */
   public get(path: '/dbaas/queue/{serviceName}/user', params: {serviceName: string}): Promise<string[]>;
   /**
-  User
-  Get a user
-  **/
+   * User
+   * Get a user
+   */
   public get(path: '/dbaas/queue/{serviceName}/user/{userId}', params: {serviceName: string, userId: string}): Promise<DbaasQueueUser>;
   /**
-  User roles
-  Get user roles
-  **/
+   * User roles
+   * Get user roles
+   */
   public get(path: '/dbaas/queue/{serviceName}/user/{userId}/roles', params: {serviceName: string, userId: string}): Promise<string[]>;
-  public get(path: PathsDbaasQueueGET, params?: OvhParamType) : Promise<any> {
+  public get(path: PathsDbaasQueueGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params
   );}
   /**
-  App
-  Update an application
-  **/
+   * App
+   * Update an application
+   */
   public put(path: '/dbaas/queue/{serviceName}', params: {serviceName: string, name: string}): Promise<DbaasQueueApp>;
   /**
-  Details about a Service
-  Alter this object properties
-  **/
+   * Details about a Service
+   * Alter this object properties
+   */
   public put(path: '/dbaas/queue/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsDbaasQueuePUT, params?: OvhParamType) : Promise<any> {
+  public put(path: PathsDbaasQueuePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params
   );}
   /**
-  User
-  Generate a new user password
-  **/
+   * User
+   * Generate a new user password
+   */
   public post(path: '/dbaas/queue/{serviceName}/user/{userId}/changePassword', params: {serviceName: string, userId: string}): Promise<DbaasQueueUserWithPassword>;
-  public post(path: PathsDbaasQueuePOST, params?: OvhParamType) : Promise<any> {
+  public post(path: PathsDbaasQueuePOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params
   );}
   /**
-  Topic
-  Delete a topic
-  **/
+   * Topic
+   * Delete a topic
+   */
   public delete(path: '/dbaas/queue/{serviceName}/topic/{topicId}', params: {serviceName: string, topicId: string}): Promise<void>;
-  public delete(path: PathsDbaasQueueDELETE, params?: OvhParamType) : Promise<any> {
+  public delete(path: PathsDbaasQueueDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params
   );}
 }
