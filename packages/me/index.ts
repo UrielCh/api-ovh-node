@@ -1462,286 +1462,286 @@ export namespace xdsl {
 // path /me
 export interface Me {
     // GET /me
-    GET(): Promise<nichandle.Nichandle>;
+    $get(): Promise<nichandle.Nichandle>;
     // PUT /me
-    PUT(body?: {body: nichandle.Nichandle}): Promise<void>;
+    $put(body?: {body: nichandle.Nichandle}): Promise<void>;
     accessRestriction:  {
         backupCode:  {
             // GET /me/accessRestriction/backupCode
-            GET(): Promise<nichandle.accessRestriction.SOTPAccount>;
+            $get(): Promise<nichandle.accessRestriction.SOTPAccount>;
             // POST /me/accessRestriction/backupCode
-            POST(): Promise<nichandle.accessRestriction.SOTPSecret>;
+            $post(): Promise<nichandle.accessRestriction.SOTPSecret>;
             // DELETE /me/accessRestriction/backupCode
-            DELETE(): Promise<void>;
+            $delete(): Promise<void>;
             disable:  {
                 // POST /me/accessRestriction/backupCode/disable
-                POST(body?: {code: string}): Promise<void>;
+                $post(body?: {code: string}): Promise<void>;
             }
             enable:  {
                 // POST /me/accessRestriction/backupCode/enable
-                POST(body?: {code: string}): Promise<void>;
+                $post(body?: {code: string}): Promise<void>;
             }
             validate:  {
                 // POST /me/accessRestriction/backupCode/validate
-                POST(body?: {code: string}): Promise<nichandle.accessRestriction.SOTPValidate>;
+                $post(body?: {code: string}): Promise<nichandle.accessRestriction.SOTPValidate>;
             }
         }
         developerMode:  {
             // GET /me/accessRestriction/developerMode
-            GET(): Promise<nichandle.DeveloperModeRestriction>;
+            $get(): Promise<nichandle.DeveloperModeRestriction>;
             // PUT /me/accessRestriction/developerMode
-            PUT(body?: {body: nichandle.DeveloperModeRestriction}): Promise<void>;
+            $put(body?: {body: nichandle.DeveloperModeRestriction}): Promise<void>;
         }
         ip:  {
             // GET /me/accessRestriction/ip
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             // POST /me/accessRestriction/ip
-            POST(body?: {ip: string, warning: boolean, rule: nichandle.accessRestriction.IpRestrictionRuleEnum}): Promise<void>;
+            $post(body?: {ip: string, rule: nichandle.accessRestriction.IpRestrictionRuleEnum, warning: boolean}): Promise<void>;
             [keys: string]: {
                 // GET /me/accessRestriction/ip/{id}
-                GET(): Promise<nichandle.IpRestriction>;
+                $get(): Promise<nichandle.IpRestriction>;
                 // PUT /me/accessRestriction/ip/{id}
-                PUT(body?: {body: nichandle.IpRestriction}): Promise<void>;
+                $put(body?: {body: nichandle.IpRestriction}): Promise<void>;
                 // DELETE /me/accessRestriction/ip/{id}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
             } | any
         }
         ipDefaultRule:  {
             // GET /me/accessRestriction/ipDefaultRule
-            GET(): Promise<nichandle.IpRestrictionDefaultRule>;
+            $get(): Promise<nichandle.IpRestrictionDefaultRule>;
             // PUT /me/accessRestriction/ipDefaultRule
-            PUT(body?: {body: nichandle.IpRestrictionDefaultRule}): Promise<void>;
+            $put(body?: {body: nichandle.IpRestrictionDefaultRule}): Promise<void>;
         }
         sms:  {
             // GET /me/accessRestriction/sms
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             // POST /me/accessRestriction/sms
-            POST(body?: {phone: string}): Promise<nichandle.accessRestriction.SmsSecret>;
+            $post(body?: {phone: string}): Promise<nichandle.accessRestriction.SmsSecret>;
             [keys: string]: {
                 // GET /me/accessRestriction/sms/{id}
-                GET(): Promise<nichandle.accessRestriction.SmsAccount>;
+                $get(): Promise<nichandle.accessRestriction.SmsAccount>;
                 // PUT /me/accessRestriction/sms/{id}
-                PUT(body?: {body: nichandle.accessRestriction.SmsAccount}): Promise<void>;
+                $put(body?: {body: nichandle.accessRestriction.SmsAccount}): Promise<void>;
                 // DELETE /me/accessRestriction/sms/{id}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
                 disable:  {
                     // POST /me/accessRestriction/sms/{id}/disable
-                    POST(body?: {code: string}): Promise<void>;
+                    $post(body?: {code: string}): Promise<void>;
                 }
                 enable:  {
                     // POST /me/accessRestriction/sms/{id}/enable
-                    POST(body?: {code: string}): Promise<void>;
+                    $post(body?: {code: string}): Promise<void>;
                 }
                 sendCode:  {
                     // POST /me/accessRestriction/sms/{id}/sendCode
-                    POST(): Promise<nichandle.accessRestriction.SmsCode>;
+                    $post(): Promise<nichandle.accessRestriction.SmsCode>;
                 }
                 validate:  {
                     // POST /me/accessRestriction/sms/{id}/validate
-                    POST(body?: {code: string}): Promise<void>;
+                    $post(body?: {code: string}): Promise<void>;
                 }
             } | any
         }
         totp:  {
             // GET /me/accessRestriction/totp
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             // POST /me/accessRestriction/totp
-            POST(): Promise<nichandle.accessRestriction.TOTPSecret>;
+            $post(): Promise<nichandle.accessRestriction.TOTPSecret>;
             [keys: string]: {
                 // GET /me/accessRestriction/totp/{id}
-                GET(): Promise<nichandle.accessRestriction.TOTPAccount>;
+                $get(): Promise<nichandle.accessRestriction.TOTPAccount>;
                 // PUT /me/accessRestriction/totp/{id}
-                PUT(body?: {body: nichandle.accessRestriction.TOTPAccount}): Promise<void>;
+                $put(body?: {body: nichandle.accessRestriction.TOTPAccount}): Promise<void>;
                 // DELETE /me/accessRestriction/totp/{id}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
                 disable:  {
                     // POST /me/accessRestriction/totp/{id}/disable
-                    POST(body?: {code: string}): Promise<void>;
+                    $post(body?: {code: string}): Promise<void>;
                 }
                 enable:  {
                     // POST /me/accessRestriction/totp/{id}/enable
-                    POST(body?: {code: string}): Promise<void>;
+                    $post(body?: {code: string}): Promise<void>;
                 }
                 validate:  {
                     // POST /me/accessRestriction/totp/{id}/validate
-                    POST(body?: {code: string}): Promise<void>;
+                    $post(body?: {code: string}): Promise<void>;
                 }
             } | any
         }
         u2f:  {
             // GET /me/accessRestriction/u2f
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             // POST /me/accessRestriction/u2f
-            POST(): Promise<nichandle.accessRestriction.U2FRegisterChallenge>;
+            $post(): Promise<nichandle.accessRestriction.U2FRegisterChallenge>;
             [keys: string]: {
                 // GET /me/accessRestriction/u2f/{id}
-                GET(): Promise<nichandle.accessRestriction.U2FAccount>;
+                $get(): Promise<nichandle.accessRestriction.U2FAccount>;
                 // PUT /me/accessRestriction/u2f/{id}
-                PUT(body?: {body: nichandle.accessRestriction.U2FAccount}): Promise<void>;
+                $put(body?: {body: nichandle.accessRestriction.U2FAccount}): Promise<void>;
                 // DELETE /me/accessRestriction/u2f/{id}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
                 challenge:  {
                     // POST /me/accessRestriction/u2f/{id}/challenge
-                    POST(): Promise<nichandle.accessRestriction.U2FSignChallenge>;
+                    $post(): Promise<nichandle.accessRestriction.U2FSignChallenge>;
                 }
                 disable:  {
                     // POST /me/accessRestriction/u2f/{id}/disable
-                    POST(body?: {clientData: string, signatureData: string}): Promise<void>;
+                    $post(body?: {clientData: string, signatureData: string}): Promise<void>;
                 }
                 enable:  {
                     // POST /me/accessRestriction/u2f/{id}/enable
-                    POST(body?: {clientData: string, signatureData: string}): Promise<void>;
+                    $post(body?: {clientData: string, signatureData: string}): Promise<void>;
                 }
                 validate:  {
                     // POST /me/accessRestriction/u2f/{id}/validate
-                    POST(body?: {clientData: string, registrationData: string}): Promise<void>;
+                    $post(body?: {clientData: string, registrationData: string}): Promise<void>;
                 }
             } | any
         }
     }
     agreements:  {
         // GET /me/agreements
-        GET(param?: {agreed?: agreements.AgreementStateEnum, contractId?: number}): Promise<number[]>;
+        $get(param?: {contractId?: number, agreed?: agreements.AgreementStateEnum}): Promise<number[]>;
         [keys: string]: {
             // GET /me/agreements/{id}
-            GET(): Promise<agreements.ContractAgreement>;
+            $get(): Promise<agreements.ContractAgreement>;
             accept:  {
                 // POST /me/agreements/{id}/accept
-                POST(): Promise<string>;
+                $post(): Promise<string>;
             }
             contract:  {
                 // GET /me/agreements/{id}/contract
-                GET(): Promise<agreements.Contract>;
+                $get(): Promise<agreements.Contract>;
             }
         } | any
     }
     api:  {
         application:  {
             // GET /me/api/application
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             [keys: string]: {
                 // GET /me/api/application/{applicationId}
-                GET(): Promise<api.Application>;
+                $get(): Promise<api.Application>;
                 // DELETE /me/api/application/{applicationId}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
             } | any
         }
         credential:  {
             // GET /me/api/credential
-            GET(param?: {applicationId?: number, status?: auth.CredentialStateEnum}): Promise<number[]>;
+            $get(param?: {applicationId?: number, status?: auth.CredentialStateEnum}): Promise<number[]>;
             [keys: string]: {
                 // GET /me/api/credential/{credentialId}
-                GET(): Promise<api.Credential>;
+                $get(): Promise<api.Credential>;
                 // DELETE /me/api/credential/{credentialId}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
                 application:  {
                     // GET /me/api/credential/{credentialId}/application
-                    GET(): Promise<api.Application>;
+                    $get(): Promise<api.Application>;
                 }
             } | any
         }
         logs:  {
             self:  {
                 // GET /me/api/logs/self
-                GET(): Promise<number[]>;
+                $get(): Promise<number[]>;
                 [keys: string]: {
                     // GET /me/api/logs/self/{logId}
-                    GET(): Promise<api.Log>;
+                    $get(): Promise<api.Log>;
                 } | any
             }
             services:  {
                 // GET /me/api/logs/services
-                GET(): Promise<number[]>;
+                $get(): Promise<number[]>;
                 [keys: string]: {
                     // GET /me/api/logs/services/{logId}
-                    GET(): Promise<api.Log>;
+                    $get(): Promise<api.Log>;
                 } | any
             }
         }
     }
     autorenew:  {
         // GET /me/autorenew
-        GET(): Promise<nichandle.NicAutorenewInfos>;
+        $get(): Promise<nichandle.NicAutorenewInfos>;
         // PUT /me/autorenew
-        PUT(body?: {body: nichandle.NicAutorenewInfos}): Promise<void>;
+        $put(body?: {body: nichandle.NicAutorenewInfos}): Promise<void>;
         // POST /me/autorenew
-        POST(body?: {renewDay: number}): Promise<void>;
+        $post(body?: {renewDay: number}): Promise<void>;
     }
     availableAutomaticPaymentMeans:  {
         // GET /me/availableAutomaticPaymentMeans
-        GET(): Promise<billing.AutomaticPaymentMean>;
+        $get(): Promise<billing.AutomaticPaymentMean>;
     }
     bill:  {
         // GET /me/bill
-        GET(param?: {orderId?: number, date_from?: string, date_to?: string}): Promise<string[]>;
+        $get(param?: {orderId?: number, date_from?: string, date_to?: string}): Promise<string[]>;
         [keys: string]: {
             // GET /me/bill/{billId}
-            GET(): Promise<billing.Bill>;
+            $get(): Promise<billing.Bill>;
             debt:  {
                 // GET /me/bill/{billId}/debt
-                GET(): Promise<debt.Debt>;
+                $get(): Promise<debt.Debt>;
                 operation:  {
                     // GET /me/bill/{billId}/debt/operation
-                    GET(param?: {depositOrderId?: number}): Promise<number[]>;
+                    $get(param?: {depositOrderId?: number}): Promise<number[]>;
                     [keys: string]: {
                         // GET /me/bill/{billId}/debt/operation/{operationId}
-                        GET(): Promise<debt.Operation>;
+                        $get(): Promise<debt.Operation>;
                         associatedObject:  {
                             // GET /me/bill/{billId}/debt/operation/{operationId}/associatedObject
-                            GET(): Promise<debt.entry.AssociatedObject>;
+                            $get(): Promise<debt.entry.AssociatedObject>;
                         }
                     } | any
                 }
                 pay:  {
                     // POST /me/bill/{billId}/debt/pay
-                    POST(): Promise<billing.Order>;
+                    $post(): Promise<billing.Order>;
                 }
             }
             details:  {
                 // GET /me/bill/{billId}/details
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /me/bill/{billId}/details/{billDetailId}
-                    GET(): Promise<billing.BillDetail>;
+                    $get(): Promise<billing.BillDetail>;
                 } | any
             }
             payment:  {
                 // GET /me/bill/{billId}/payment
-                GET(): Promise<billing.Payment>;
+                $get(): Promise<billing.Payment>;
             }
         } | any
     }
     billing:  {
         invoicesByPostalMail:  {
-            // POST /me/billing/invoicesByPostalMail
-            POST(body?: {enable: boolean}): Promise<void>;
             // GET /me/billing/invoicesByPostalMail
-            GET(): Promise<boolean>;
+            $get(): Promise<boolean>;
+            // POST /me/billing/invoicesByPostalMail
+            $post(body?: {enable: boolean}): Promise<void>;
         }
     }
     certificates:  {
         // GET /me/certificates
-        GET(param?: {name?: string}): Promise<string[]>;
+        $get(param?: {name?: string}): Promise<string[]>;
     }
     changeEmail:  {
         // POST /me/changeEmail
-        POST(body?: {newEmail: string}): Promise<nichandle.emailChange.Task>;
+        $post(body?: {newEmail: string}): Promise<nichandle.emailChange.Task>;
     }
     changePassword:  {
         // POST /me/changePassword
-        POST(): Promise<void>;
+        $post(): Promise<void>;
     }
     consent:  {
         // GET /me/consent
-        GET(): Promise<me.consent.Campaign[]>;
+        $get(): Promise<me.consent.Campaign[]>;
         [keys: string]: {
             // GET /me/consent/{campaignName}
-            GET(): Promise<me.consent.Campaign>;
+            $get(): Promise<me.consent.Campaign>;
             decision:  {
                 // GET /me/consent/{campaignName}/decision
-                GET(): Promise<me.consent.Consent>;
+                $get(): Promise<me.consent.Consent>;
                 // PUT /me/consent/{campaignName}/decision
-                PUT(body?: {value: boolean}): Promise<void>;
+                $put(body?: {value: boolean}): Promise<void>;
             }
         } | any
     }
@@ -1749,298 +1749,298 @@ export interface Me {
         usage:  {
             current:  {
                 // GET /me/consumption/usage/current
-                GET(): Promise<me.consumption.Transaction[]>;
+                $get(): Promise<me.consumption.Transaction[]>;
             }
             forecast:  {
                 // GET /me/consumption/usage/forecast
-                GET(): Promise<me.consumption.Transaction[]>;
+                $get(): Promise<me.consumption.Transaction[]>;
             }
             history:  {
                 // GET /me/consumption/usage/history
-                GET(param?: {beginDate: string, endDate: string}): Promise<me.consumption.Transaction[]>;
+                $get(param?: {beginDate: string, endDate: string}): Promise<me.consumption.Transaction[]>;
             }
         }
     }
     contact:  {
         // GET /me/contact
-        GET(): Promise<number[]>;
+        $get(): Promise<number[]>;
         // POST /me/contact
-        POST(body?: {address: contact.Address, cellPhone?: string, phone: string, fax?: string, birthDay?: string, birthCity?: string, birthZip?: string, birthCountry?: nichandle.CountryEnum, vat?: string, companyNationalIdentificationNumber?: string, nationalIdentificationNumber?: string, organisationType?: string, organisationName?: string, email: string, firstName: string, gender?: nichandle.GenderEnum, language: nichandle.LanguageEnum, nationality?: nichandle.CountryEnum, lastName: string, legalForm: nichandle.LegalFormEnum}): Promise<contact.Contact>;
+        $post(body?: {address: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email: string, fax?: string, firstName: string, gender?: nichandle.GenderEnum, language: nichandle.LanguageEnum, lastName: string, legalForm: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone: string, vat?: string}): Promise<contact.Contact>;
         [keys: string]: {
             // GET /me/contact/{contactId}
-            GET(): Promise<contact.Contact>;
+            $get(): Promise<contact.Contact>;
             // PUT /me/contact/{contactId}
-            PUT(body?: {address?: contact.Address, cellPhone?: string, phone?: string, fax?: string, birthDay?: string, birthCity?: string, birthZip?: string, birthCountry?: nichandle.CountryEnum, vat?: string, companyNationalIdentificationNumber?: string, nationalIdentificationNumber?: string, organisationType?: string, organisationName?: string, email?: string, firstName?: string, gender?: nichandle.GenderEnum, language?: nichandle.LanguageEnum, nationality?: nichandle.CountryEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum}): Promise<contact.Contact>;
+            $put(body?: {address?: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, vat?: string}): Promise<contact.Contact>;
             fields:  {
                 // GET /me/contact/{contactId}/fields
-                GET(): Promise<contact.FieldInformation[]>;
+                $get(): Promise<contact.FieldInformation[]>;
             }
         } | any
     }
     credit:  {
         balance:  {
             // GET /me/credit/balance
-            GET(param?: {type?: billing.credit.balance.Type}): Promise<string[]>;
+            $get(param?: {type?: billing.credit.balance.Type}): Promise<string[]>;
             [keys: string]: {
                 // GET /me/credit/balance/{balanceName}
-                GET(): Promise<billing.credit.Balance>;
+                $get(): Promise<billing.credit.Balance>;
                 movement:  {
                     // GET /me/credit/balance/{balanceName}/movement
-                    GET(): Promise<number[]>;
+                    $get(): Promise<number[]>;
                     [keys: string]: {
                         // GET /me/credit/balance/{balanceName}/movement/{movementId}
-                        GET(): Promise<billing.credit.balance.Movement>;
+                        $get(): Promise<billing.credit.balance.Movement>;
                     } | any
                 }
             } | any
         }
         code:  {
             // POST /me/credit/code
-            POST(body?: {inputCode: string}): Promise<billing.credit.balance.Movement>;
+            $post(body?: {inputCode: string}): Promise<billing.credit.balance.Movement>;
         }
     }
     debtAccount:  {
         // GET /me/debtAccount
-        GET(): Promise<debt.Balance>;
+        $get(): Promise<debt.Balance>;
         debt:  {
             // GET /me/debtAccount/debt
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             [keys: string]: {
                 // GET /me/debtAccount/debt/{debtId}
-                GET(): Promise<debt.Debt>;
+                $get(): Promise<debt.Debt>;
                 operation:  {
                     // GET /me/debtAccount/debt/{debtId}/operation
-                    GET(param?: {depositOrderId?: number}): Promise<number[]>;
+                    $get(param?: {depositOrderId?: number}): Promise<number[]>;
                     [keys: string]: {
                         // GET /me/debtAccount/debt/{debtId}/operation/{operationId}
-                        GET(): Promise<debt.Operation>;
+                        $get(): Promise<debt.Operation>;
                         associatedObject:  {
                             // GET /me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject
-                            GET(): Promise<debt.entry.AssociatedObject>;
+                            $get(): Promise<debt.entry.AssociatedObject>;
                         }
                     } | any
                 }
                 pay:  {
                     // POST /me/debtAccount/debt/{debtId}/pay
-                    POST(): Promise<billing.Order>;
+                    $post(): Promise<billing.Order>;
                 }
             } | any
         }
         pay:  {
             // POST /me/debtAccount/pay
-            POST(): Promise<billing.Order>;
+            $post(): Promise<billing.Order>;
         }
     }
     deposit:  {
         // GET /me/deposit
-        GET(param?: {orderId?: number, date_to?: string, date_from?: string}): Promise<string[]>;
+        $get(param?: {orderId?: number, date_from?: string, date_to?: string}): Promise<string[]>;
         [keys: string]: {
             // GET /me/deposit/{depositId}
-            GET(): Promise<billing.Deposit>;
+            $get(): Promise<billing.Deposit>;
             details:  {
                 // GET /me/deposit/{depositId}/details
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /me/deposit/{depositId}/details/{depositDetailId}
-                    GET(): Promise<billing.DepositDetail>;
+                    $get(): Promise<billing.DepositDetail>;
                 } | any
             }
             paidBills:  {
                 // GET /me/deposit/{depositId}/paidBills
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /me/deposit/{depositId}/paidBills/{billId}
-                    GET(): Promise<billing.Bill>;
+                    $get(): Promise<billing.Bill>;
                     debt:  {
                         // GET /me/deposit/{depositId}/paidBills/{billId}/debt
-                        GET(): Promise<debt.Debt>;
+                        $get(): Promise<debt.Debt>;
                         operation:  {
                             // GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation
-                            GET(param?: {depositOrderId?: number}): Promise<number[]>;
+                            $get(param?: {depositOrderId?: number}): Promise<number[]>;
                             [keys: string]: {
                                 // GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}
-                                GET(): Promise<debt.Operation>;
+                                $get(): Promise<debt.Operation>;
                                 associatedObject:  {
                                     // GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject
-                                    GET(): Promise<debt.entry.AssociatedObject>;
+                                    $get(): Promise<debt.entry.AssociatedObject>;
                                 }
                             } | any
                         }
                         pay:  {
                             // POST /me/deposit/{depositId}/paidBills/{billId}/debt/pay
-                            POST(): Promise<billing.Order>;
+                            $post(): Promise<billing.Order>;
                         }
                     }
                     details:  {
                         // GET /me/deposit/{depositId}/paidBills/{billId}/details
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         [keys: string]: {
                             // GET /me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}
-                            GET(): Promise<billing.BillDetail>;
+                            $get(): Promise<billing.BillDetail>;
                         } | any
                     }
                     payment:  {
                         // GET /me/deposit/{depositId}/paidBills/{billId}/payment
-                        GET(): Promise<billing.Payment>;
+                        $get(): Promise<billing.Payment>;
                     }
                 } | any
             }
             payment:  {
                 // GET /me/deposit/{depositId}/payment
-                GET(): Promise<billing.Payment>;
+                $get(): Promise<billing.Payment>;
             }
         } | any
     }
     document:  {
         // GET /me/document
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         // POST /me/document
-        POST(body?: {tags?: complexType.SafeKeyValue<string>[], name: string}): Promise<nichandle.document.Document>;
+        $post(body?: {name: string, tags?: complexType.SafeKeyValue<string>[]}): Promise<nichandle.document.Document>;
         cors:  {
             // POST /me/document/cors
-            POST(body?: {origin: string}): Promise<void>;
+            $post(body?: {origin: string}): Promise<void>;
         }
         [keys: string]: {
             // GET /me/document/{id}
-            GET(): Promise<nichandle.document.Document>;
+            $get(): Promise<nichandle.document.Document>;
             // PUT /me/document/{id}
-            PUT(body?: {body: nichandle.document.Document}): Promise<void>;
+            $put(body?: {body: nichandle.document.Document}): Promise<void>;
             // DELETE /me/document/{id}
-            DELETE(): Promise<void>;
+            $delete(): Promise<void>;
         } | any
     }
     fax:  {
         customDomains:  {
             // GET /me/fax/customDomains
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             // POST /me/fax/customDomains
-            POST(body?: {domain: string}): Promise<telephony.MailDomain2Service>;
+            $post(body?: {domain: string}): Promise<telephony.MailDomain2Service>;
             [keys: string]: {
                 // GET /me/fax/customDomains/{id}
-                GET(): Promise<telephony.MailDomain2Service>;
+                $get(): Promise<telephony.MailDomain2Service>;
                 // DELETE /me/fax/customDomains/{id}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
             } | any
         }
     }
     fidelityAccount:  {
         // GET /me/fidelityAccount
-        GET(): Promise<billing.FidelityAccount>;
+        $get(): Promise<billing.FidelityAccount>;
         // PUT /me/fidelityAccount
-        PUT(body?: {body: billing.FidelityAccount}): Promise<void>;
+        $put(body?: {body: billing.FidelityAccount}): Promise<void>;
         creditOrder:  {
             // POST /me/fidelityAccount/creditOrder
-            POST(body?: {amount: number}): Promise<billing.Order>;
+            $post(body?: {amount: number}): Promise<billing.Order>;
         }
         movements:  {
             // GET /me/fidelityAccount/movements
-            GET(param?: {date_from?: string, date_to?: string}): Promise<number[]>;
+            $get(param?: {date_to?: string, date_from?: string}): Promise<number[]>;
             [keys: string]: {
                 // GET /me/fidelityAccount/movements/{movementId}
-                GET(): Promise<billing.FidelityMovement>;
+                $get(): Promise<billing.FidelityMovement>;
             } | any
         }
     }
     geolocation:  {
         // POST /me/geolocation
-        POST(): Promise<geolocation.ContinentCountryLocation>;
+        $post(): Promise<geolocation.ContinentCountryLocation>;
     }
     identity:  {
         group:  {
             // GET /me/identity/group
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             // POST /me/identity/group
-            POST(body?: {name: string, description?: string, role?: nichandle.RoleEnum}): Promise<nichandle.Authentication.Group>;
+            $post(body?: {description?: string, name: string, role?: nichandle.RoleEnum}): Promise<nichandle.Authentication.Group>;
             [keys: string]: {
                 // GET /me/identity/group/{group}
-                GET(): Promise<nichandle.Authentication.Group>;
+                $get(): Promise<nichandle.Authentication.Group>;
                 // DELETE /me/identity/group/{group}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
                 // PUT /me/identity/group/{group}
-                PUT(body?: {description?: string, role?: nichandle.RoleEnum}): Promise<void>;
+                $put(body?: {description?: string, role?: nichandle.RoleEnum}): Promise<void>;
             } | any
         }
         user:  {
             // GET /me/identity/user
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             // POST /me/identity/user
-            POST(body?: {login: string, description?: string, email: string, password: string, group?: string}): Promise<void>;
+            $post(body?: {description?: string, email: string, group?: string, login: string, password: string}): Promise<void>;
             [keys: string]: {
                 // GET /me/identity/user/{user}
-                GET(): Promise<nichandle.User>;
+                $get(): Promise<nichandle.User>;
                 // DELETE /me/identity/user/{user}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
                 // PUT /me/identity/user/{user}
-                PUT(body?: {email?: string, description?: string, group?: string}): Promise<void>;
+                $put(body?: {description?: string, email?: string, group?: string}): Promise<void>;
                 disable:  {
                     // POST /me/identity/user/{user}/disable
-                    POST(): Promise<void>;
+                    $post(): Promise<void>;
                 }
                 enable:  {
                     // POST /me/identity/user/{user}/enable
-                    POST(): Promise<void>;
+                    $post(): Promise<void>;
                 }
             } | any
         }
     }
     insight:  {
         // GET /me/insight
-        GET(): Promise<insight.Access>;
+        $get(): Promise<insight.Access>;
     }
     installationTemplate:  {
         // GET /me/installationTemplate
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         // POST /me/installationTemplate
-        POST(body?: {baseTemplateName: string, defaultLanguage: dedicated.TemplateOsLanguageEnum, name: string}): Promise<void>;
+        $post(body?: {baseTemplateName: string, defaultLanguage: dedicated.TemplateOsLanguageEnum, name: string}): Promise<void>;
         [keys: string]: {
             // GET /me/installationTemplate/{templateName}
-            GET(): Promise<dedicated.installationTemplate.Templates>;
+            $get(): Promise<dedicated.installationTemplate.Templates>;
             // PUT /me/installationTemplate/{templateName}
-            PUT(body?: {body: dedicated.installationTemplate.Templates}): Promise<void>;
+            $put(body?: {body: dedicated.installationTemplate.Templates}): Promise<void>;
             // DELETE /me/installationTemplate/{templateName}
-            DELETE(): Promise<void>;
+            $delete(): Promise<void>;
             checkIntegrity:  {
                 // POST /me/installationTemplate/{templateName}/checkIntegrity
-                POST(): Promise<void>;
+                $post(): Promise<void>;
             }
             partitionScheme:  {
                 // GET /me/installationTemplate/{templateName}/partitionScheme
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 // POST /me/installationTemplate/{templateName}/partitionScheme
-                POST(body?: {priority: number, name: string}): Promise<void>;
+                $post(body?: {name: string, priority: number}): Promise<void>;
                 [keys: string]: {
                     // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
-                    GET(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
+                    $get(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
                     // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
-                    PUT(body?: {body: dedicated.installationTemplate.templatePartitioningSchemes}): Promise<void>;
+                    $put(body?: {body: dedicated.installationTemplate.templatePartitioningSchemes}): Promise<void>;
                     // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
-                    DELETE(): Promise<void>;
+                    $delete(): Promise<void>;
                     hardwareRaid:  {
                         // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         // POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
-                        POST(body?: {disks: string[], mode: dedicated.TemplateOsHardwareRaidEnum, step: number, name: string}): Promise<void>;
+                        $post(body?: {disks: string[], mode: dedicated.TemplateOsHardwareRaidEnum, name: string, step: number}): Promise<void>;
                         [keys: string]: {
                             // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
-                            GET(): Promise<dedicated.installationTemplate.hardwareRaid>;
+                            $get(): Promise<dedicated.installationTemplate.hardwareRaid>;
                             // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
-                            PUT(body?: {body: dedicated.installationTemplate.hardwareRaid}): Promise<void>;
+                            $put(body?: {body: dedicated.installationTemplate.hardwareRaid}): Promise<void>;
                             // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
-                            DELETE(): Promise<void>;
+                            $delete(): Promise<void>;
                         } | any
                     }
                     partition:  {
                         // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         // POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
-                        POST(body?: {mountpoint: string, type: dedicated.TemplatePartitionTypeEnum, step: number, size: number, filesystem: dedicated.TemplateOsFileSystemEnum, raid?: number, volumeName?: string}): Promise<void>;
+                        $post(body?: {filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: number, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
                         [keys: string]: {
                             // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
-                            GET(): Promise<dedicated.installationTemplate.templatePartitions>;
+                            $get(): Promise<dedicated.installationTemplate.templatePartitions>;
                             // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
-                            PUT(body?: {body: dedicated.installationTemplate.templatePartitions}): Promise<void>;
+                            $put(body?: {body: dedicated.installationTemplate.templatePartitions}): Promise<void>;
                             // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
-                            DELETE(): Promise<void>;
+                            $delete(): Promise<void>;
                         } | any
                     }
                 } | any
@@ -2049,440 +2049,440 @@ export interface Me {
     }
     ipOrganisation:  {
         // GET /me/ipOrganisation
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         // POST /me/ipOrganisation
-        POST(body?: {city: string, state?: string, lastname: string, registry: nichandle.IpRegistryEnum, abuse_mailbox: string, phone: string, country: nichandle.CountryEnum, address: string, zip?: string, firstname: string}): Promise<void>;
+        $post(body?: {abuse_mailbox: string, address: string, city: string, country: nichandle.CountryEnum, firstname: string, lastname: string, phone: string, registry: nichandle.IpRegistryEnum, state?: string, zip?: string}): Promise<void>;
         [keys: string]: {
             // GET /me/ipOrganisation/{organisationId}
-            GET(): Promise<nichandle.Ipv4Org>;
+            $get(): Promise<nichandle.Ipv4Org>;
             // PUT /me/ipOrganisation/{organisationId}
-            PUT(body?: {body: nichandle.Ipv4Org}): Promise<void>;
+            $put(body?: {body: nichandle.Ipv4Org}): Promise<void>;
             // DELETE /me/ipOrganisation/{organisationId}
-            DELETE(): Promise<void>;
+            $delete(): Promise<void>;
         } | any
     }
     ipxeScript:  {
         // GET /me/ipxeScript
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         // POST /me/ipxeScript
-        POST(body?: {description: string, name: string, script: string}): Promise<nichandle.ipxe>;
+        $post(body?: {description: string, name: string, script: string}): Promise<nichandle.ipxe>;
         [keys: string]: {
             // GET /me/ipxeScript/{name}
-            GET(): Promise<nichandle.ipxe>;
+            $get(): Promise<nichandle.ipxe>;
             // DELETE /me/ipxeScript/{name}
-            DELETE(): Promise<void>;
+            $delete(): Promise<void>;
         } | any
     }
     mailingList:  {
         availableLists:  {
             // GET /me/mailingList/availableLists
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
         }
         subscribe:  {
             // POST /me/mailingList/subscribe
-            POST(body?: {mailingList: string, email: string}): Promise<void>;
+            $post(body?: {email: string, mailingList: string}): Promise<void>;
         }
     }
     notification:  {
         email:  {
             history:  {
                 // GET /me/notification/email/history
-                GET(): Promise<number[]>;
+                $get(): Promise<number[]>;
                 [keys: string]: {
                     // GET /me/notification/email/history/{id}
-                    GET(): Promise<nichandle.emailNotification>;
+                    $get(): Promise<nichandle.emailNotification>;
                 } | any
             }
         }
     }
     order:  {
         // GET /me/order
-        GET(param?: {date_to?: string, date_from?: string}): Promise<number[]>;
+        $get(param?: {date_from?: string, date_to?: string}): Promise<number[]>;
         [keys: string]: {
             // GET /me/order/{orderId}
-            GET(): Promise<billing.Order>;
+            $get(): Promise<billing.Order>;
             associatedObject:  {
                 // GET /me/order/{orderId}/associatedObject
-                GET(): Promise<billing.order.AssociatedObject>;
+                $get(): Promise<billing.order.AssociatedObject>;
             }
             availableRegisteredPaymentMean:  {
                 // GET /me/order/{orderId}/availableRegisteredPaymentMean
-                GET(): Promise<billing.order.RegisteredPaymentMean[]>;
+                $get(): Promise<billing.order.RegisteredPaymentMean[]>;
             }
             bill:  {
                 // GET /me/order/{orderId}/bill
-                GET(): Promise<billing.Bill>;
+                $get(): Promise<billing.Bill>;
             }
             debt:  {
                 // GET /me/order/{orderId}/debt
-                GET(): Promise<debt.Debt>;
+                $get(): Promise<debt.Debt>;
                 operation:  {
                     // GET /me/order/{orderId}/debt/operation
-                    GET(param?: {depositOrderId?: number}): Promise<number[]>;
+                    $get(param?: {depositOrderId?: number}): Promise<number[]>;
                     [keys: string]: {
                         // GET /me/order/{orderId}/debt/operation/{operationId}
-                        GET(): Promise<debt.Operation>;
+                        $get(): Promise<debt.Operation>;
                         associatedObject:  {
                             // GET /me/order/{orderId}/debt/operation/{operationId}/associatedObject
-                            GET(): Promise<debt.entry.AssociatedObject>;
+                            $get(): Promise<debt.entry.AssociatedObject>;
                         }
                     } | any
                 }
                 pay:  {
                     // POST /me/order/{orderId}/debt/pay
-                    POST(): Promise<billing.Order>;
+                    $post(): Promise<billing.Order>;
                 }
             }
             details:  {
                 // GET /me/order/{orderId}/details
-                GET(): Promise<number[]>;
+                $get(): Promise<number[]>;
                 [keys: string]: {
                     // GET /me/order/{orderId}/details/{orderDetailId}
-                    GET(): Promise<billing.OrderDetail>;
+                    $get(): Promise<billing.OrderDetail>;
                     extension:  {
                         // GET /me/order/{orderId}/details/{orderDetailId}/extension
-                        GET(): Promise<billing.ItemDetail>;
+                        $get(): Promise<billing.ItemDetail>;
                     }
                 } | any
             }
             pay:  {
                 // POST /me/order/{orderId}/pay
-                POST(body?: {paymentMethod: billing.order.PayWithPaymentMethod}): Promise<void>;
+                $post(body?: {paymentMethod: billing.order.PayWithPaymentMethod}): Promise<void>;
             }
             payWithRegisteredPaymentMean:  {
                 // POST /me/order/{orderId}/payWithRegisteredPaymentMean
-                POST(body?: {paymentMean: billing.ReusablePaymentMeanEnum, paymentMeanId?: number}): Promise<void>;
+                $post(body?: {paymentMean: billing.ReusablePaymentMeanEnum, paymentMeanId?: number}): Promise<void>;
             }
             payment:  {
                 // GET /me/order/{orderId}/payment
-                GET(): Promise<billing.Payment>;
+                $get(): Promise<billing.Payment>;
             }
             paymentMeans:  {
                 // GET /me/order/{orderId}/paymentMeans
-                GET(): Promise<billing.order.PaymentMeans>;
+                $get(): Promise<billing.order.PaymentMeans>;
             }
             paymentMethods:  {
                 // GET /me/order/{orderId}/paymentMethods
-                GET(): Promise<billing.order.PaymentMethods>;
+                $get(): Promise<billing.order.PaymentMethods>;
             }
             refund:  {
                 // GET /me/order/{orderId}/refund
-                GET(): Promise<billing.Refund>;
+                $get(): Promise<billing.Refund>;
             }
             retraction:  {
                 // POST /me/order/{orderId}/retraction
-                POST(body?: {comment?: string, reason: billing.order.RetractionReasonEnum}): Promise<void>;
+                $post(body?: {comment?: string, reason: billing.order.RetractionReasonEnum}): Promise<void>;
             }
             status:  {
                 // GET /me/order/{orderId}/status
-                GET(): Promise<billing.order.OrderStatusEnum>;
+                $get(): Promise<billing.order.OrderStatusEnum>;
             }
         } | any
     }
     ovhAccount:  {
         // GET /me/ovhAccount
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /me/ovhAccount/{ovhAccountId}
-            GET(): Promise<billing.OvhAccount>;
+            $get(): Promise<billing.OvhAccount>;
             // PUT /me/ovhAccount/{ovhAccountId}
-            PUT(body?: {body: billing.OvhAccount}): Promise<void>;
+            $put(body?: {body: billing.OvhAccount}): Promise<void>;
             creditOrder:  {
                 // POST /me/ovhAccount/{ovhAccountId}/creditOrder
-                POST(body?: {amount: number}): Promise<billing.Order>;
+                $post(body?: {amount: number}): Promise<billing.Order>;
             }
             movements:  {
                 // GET /me/ovhAccount/{ovhAccountId}/movements
-                GET(param?: {date_from?: string, date_to?: string}): Promise<number[]>;
+                $get(param?: {date_from?: string, date_to?: string}): Promise<number[]>;
                 [keys: string]: {
                     // GET /me/ovhAccount/{ovhAccountId}/movements/{movementId}
-                    GET(): Promise<billing.Movement>;
+                    $get(): Promise<billing.Movement>;
                 } | any
             }
             retrieveMoney:  {
                 // POST /me/ovhAccount/{ovhAccountId}/retrieveMoney
-                POST(body?: {amount: number, bankAccountId: number}): Promise<billing.Order>;
+                $post(body?: {amount: number, bankAccountId: number}): Promise<billing.Order>;
             }
         } | any
     }
     passwordRecover:  {
         // POST /me/passwordRecover
-        POST(body?: {ovhId: string, ovhCompany: nichandle.OvhCompanyEnum}): Promise<void>;
+        $post(body?: {ovhCompany: nichandle.OvhCompanyEnum, ovhId: string}): Promise<void>;
     }
     payment:  {
         availableMethods:  {
             // GET /me/payment/availableMethods
-            GET(): Promise<me.payment.method.AvailablePaymentMethod[]>;
+            $get(): Promise<me.payment.method.AvailablePaymentMethod[]>;
         }
         method:  {
             // GET /me/payment/method
-            GET(param?: {status?: me.payment.method.PaymentMethod.Status, paymentType?: string}): Promise<number[]>;
+            $get(param?: {status?: me.payment.method.PaymentMethod.Status, paymentType?: string}): Promise<number[]>;
             // POST /me/payment/method
-            POST(body?: {callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean}): Promise<me.payment.method.Register.ValidationResult>;
+            $post(body?: {callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean}): Promise<me.payment.method.Register.ValidationResult>;
             [keys: string]: {
                 // GET /me/payment/method/{paymentMethodId}
-                GET(): Promise<me.payment.method.PaymentMethod>;
+                $get(): Promise<me.payment.method.PaymentMethod>;
                 // PUT /me/payment/method/{paymentMethodId}
-                PUT(body?: {default_?: boolean, description?: string}): Promise<billing.PaymentMethod>;
+                $put(body?: {default_?: boolean, description?: string}): Promise<billing.PaymentMethod>;
                 // DELETE /me/payment/method/{paymentMethodId}
-                DELETE(): Promise<me.payment.method.PaymentMethod>;
+                $delete(): Promise<me.payment.method.PaymentMethod>;
                 challenge:  {
                     // POST /me/payment/method/{paymentMethodId}/challenge
-                    POST(body?: {challenge: string}): Promise<me.payment.method.PaymentMethod>;
+                    $post(body?: {challenge: string}): Promise<me.payment.method.PaymentMethod>;
                 }
                 finalize:  {
                     // POST /me/payment/method/{paymentMethodId}/finalize
-                    POST(body?: {expirationMonth?: number, expirationYear?: number, registrationId?: string}): Promise<me.payment.method.PaymentMethod>;
+                    $post(body?: {expirationMonth?: number, expirationYear?: number, registrationId?: string}): Promise<me.payment.method.PaymentMethod>;
                 }
             } | any
         }
         transaction:  {
             // GET /me/payment/transaction
-            GET(param?: {paymentMethodId?: number, status?: me.payment.method.Transaction.Status}): Promise<number[]>;
+            $get(param?: {paymentMethodId?: number, status?: me.payment.method.Transaction.Status}): Promise<number[]>;
             [keys: string]: {
                 // GET /me/payment/transaction/{transactionId}
-                GET(): Promise<me.payment.method.Transaction>;
+                $get(): Promise<me.payment.method.Transaction>;
             } | any
         }
     }
     paymentMean:  {
         bankAccount:  {
             // GET /me/paymentMean/bankAccount
-            GET(param?: {state?: billing.BankAccountStateEnum}): Promise<number[]>;
+            $get(param?: {state?: billing.BankAccountStateEnum}): Promise<number[]>;
             // POST /me/paymentMean/bankAccount
-            POST(body?: {setDefault?: boolean, bic: string, iban: string, ownerName: string, description?: string, ownerAddress: string}): Promise<billing.PaymentMeanValidation>;
+            $post(body?: {bic: string, description?: string, iban: string, ownerAddress: string, ownerName: string, setDefault?: boolean}): Promise<billing.PaymentMeanValidation>;
             [keys: string]: {
                 // GET /me/paymentMean/bankAccount/{id}
-                GET(): Promise<billing.BankAccount>;
+                $get(): Promise<billing.BankAccount>;
                 // PUT /me/paymentMean/bankAccount/{id}
-                PUT(body?: {body: billing.BankAccount}): Promise<void>;
+                $put(body?: {body: billing.BankAccount}): Promise<void>;
                 // DELETE /me/paymentMean/bankAccount/{id}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
                 challenge:  {
                     // POST /me/paymentMean/bankAccount/{id}/challenge
-                    POST(body?: {challenge: string}): Promise<void>;
+                    $post(body?: {challenge: string}): Promise<void>;
                 }
                 chooseAsDefaultPaymentMean:  {
                     // POST /me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean
-                    POST(): Promise<void>;
+                    $post(): Promise<void>;
                 }
             } | any
         }
         creditCard:  {
             // GET /me/paymentMean/creditCard
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             // POST /me/paymentMean/creditCard
-            POST(body?: {returnUrl?: string, description?: string, setDefault?: boolean}): Promise<billing.PaymentMeanValidation>;
+            $post(body?: {description?: string, returnUrl?: string, setDefault?: boolean}): Promise<billing.PaymentMeanValidation>;
             [keys: string]: {
                 // GET /me/paymentMean/creditCard/{id}
-                GET(): Promise<billing.CreditCard>;
+                $get(): Promise<billing.CreditCard>;
                 // PUT /me/paymentMean/creditCard/{id}
-                PUT(body?: {body: billing.CreditCard}): Promise<void>;
+                $put(body?: {body: billing.CreditCard}): Promise<void>;
                 // DELETE /me/paymentMean/creditCard/{id}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
                 challenge:  {
                     // POST /me/paymentMean/creditCard/{id}/challenge
-                    POST(body?: {challenge: string}): Promise<void>;
+                    $post(body?: {challenge: string}): Promise<void>;
                 }
                 chooseAsDefaultPaymentMean:  {
                     // POST /me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean
-                    POST(): Promise<void>;
+                    $post(): Promise<void>;
                 }
             } | any
         }
         deferredPaymentAccount:  {
             // GET /me/paymentMean/deferredPaymentAccount
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             [keys: string]: {
                 // GET /me/paymentMean/deferredPaymentAccount/{id}
-                GET(): Promise<billing.DeferredPaymentAccount>;
+                $get(): Promise<billing.DeferredPaymentAccount>;
                 // PUT /me/paymentMean/deferredPaymentAccount/{id}
-                PUT(body?: {body: billing.DeferredPaymentAccount}): Promise<void>;
+                $put(body?: {body: billing.DeferredPaymentAccount}): Promise<void>;
                 chooseAsDefaultPaymentMean:  {
                     // POST /me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean
-                    POST(): Promise<void>;
+                    $post(): Promise<void>;
                 }
             } | any
         }
         paypal:  {
             // GET /me/paymentMean/paypal
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             // POST /me/paymentMean/paypal
-            POST(body?: {description?: string, returnUrl?: string, setDefault?: boolean}): Promise<billing.PaymentMeanValidation>;
+            $post(body?: {description?: string, returnUrl?: string, setDefault?: boolean}): Promise<billing.PaymentMeanValidation>;
             [keys: string]: {
                 // GET /me/paymentMean/paypal/{id}
-                GET(): Promise<billing.Paypal>;
+                $get(): Promise<billing.Paypal>;
                 // PUT /me/paymentMean/paypal/{id}
-                PUT(body?: {body: billing.Paypal}): Promise<void>;
+                $put(body?: {body: billing.Paypal}): Promise<void>;
                 // DELETE /me/paymentMean/paypal/{id}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
                 challenge:  {
                     // POST /me/paymentMean/paypal/{id}/challenge
-                    POST(body?: {challenge: string}): Promise<void>;
+                    $post(body?: {challenge: string}): Promise<void>;
                 }
                 chooseAsDefaultPaymentMean:  {
                     // POST /me/paymentMean/paypal/{id}/chooseAsDefaultPaymentMean
-                    POST(): Promise<void>;
+                    $post(): Promise<void>;
                 }
             } | any
         }
     }
     refund:  {
         // GET /me/refund
-        GET(param?: {date_to?: string, date_from?: string, orderId?: number}): Promise<string[]>;
+        $get(param?: {orderId?: number, date_from?: string, date_to?: string}): Promise<string[]>;
         [keys: string]: {
             // GET /me/refund/{refundId}
-            GET(): Promise<billing.Refund>;
+            $get(): Promise<billing.Refund>;
             details:  {
                 // GET /me/refund/{refundId}/details
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /me/refund/{refundId}/details/{refundDetailId}
-                    GET(): Promise<billing.RefundDetail>;
+                    $get(): Promise<billing.RefundDetail>;
                 } | any
             }
             payment:  {
                 // GET /me/refund/{refundId}/payment
-                GET(): Promise<billing.Payment>;
+                $get(): Promise<billing.Payment>;
             }
         } | any
     }
     sla:  {
         // GET /me/sla
-        GET(): Promise<number[]>;
+        $get(): Promise<number[]>;
         [keys: string]: {
             // GET /me/sla/{id}
-            GET(): Promise<billing.SlaOperation>;
+            $get(): Promise<billing.SlaOperation>;
             apply:  {
                 // POST /me/sla/{id}/apply
-                POST(): Promise<void>;
+                $post(): Promise<void>;
             }
             canBeApplied:  {
                 // GET /me/sla/{id}/canBeApplied
-                GET(): Promise<boolean>;
+                $get(): Promise<boolean>;
             }
             services:  {
                 // GET /me/sla/{id}/services
-                GET(): Promise<billing.SlaOperationService[]>;
+                $get(): Promise<billing.SlaOperationService[]>;
             }
             status:  {
                 // GET /me/sla/{id}/status
-                GET(): Promise<string>;
+                $get(): Promise<string>;
             }
         } | any
     }
     sshKey:  {
         // GET /me/sshKey
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         // POST /me/sshKey
-        POST(body?: {keyName: string, key: string}): Promise<void>;
+        $post(body?: {key: string, keyName: string}): Promise<void>;
         [keys: string]: {
             // GET /me/sshKey/{keyName}
-            GET(): Promise<nichandle.sshKey>;
+            $get(): Promise<nichandle.sshKey>;
             // PUT /me/sshKey/{keyName}
-            PUT(body?: {body: nichandle.sshKey}): Promise<void>;
+            $put(body?: {body: nichandle.sshKey}): Promise<void>;
             // DELETE /me/sshKey/{keyName}
-            DELETE(): Promise<void>;
+            $delete(): Promise<void>;
         } | any
     }
     subAccount:  {
         // GET /me/subAccount
-        GET(): Promise<number[]>;
+        $get(): Promise<number[]>;
         // POST /me/subAccount
-        POST(body?: {description?: string}): Promise<number>;
+        $post(body?: {description?: string}): Promise<number>;
         [keys: string]: {
             // GET /me/subAccount/{id}
-            GET(): Promise<nichandle.SubAccount>;
+            $get(): Promise<nichandle.SubAccount>;
             // PUT /me/subAccount/{id}
-            PUT(body?: {body: nichandle.SubAccount}): Promise<void>;
+            $put(body?: {body: nichandle.SubAccount}): Promise<void>;
             createConsumerKey:  {
                 // POST /me/subAccount/{id}/createConsumerKey
-                POST(): Promise<nichandle.SubAccountConsumerKey>;
+                $post(): Promise<nichandle.SubAccountConsumerKey>;
             }
         } | any
     }
     subscription:  {
         // GET /me/subscription
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /me/subscription/{subscriptionType}
-            GET(): Promise<nichandle.Subscription>;
+            $get(): Promise<nichandle.Subscription>;
             // PUT /me/subscription/{subscriptionType}
-            PUT(body?: {body: nichandle.Subscription}): Promise<void>;
+            $put(body?: {body: nichandle.Subscription}): Promise<void>;
         } | any
     }
     supportLevel:  {
         // GET /me/supportLevel
-        GET(): Promise<me.SupportLevel.Level>;
+        $get(): Promise<me.SupportLevel.Level>;
     }
     task:  {
         contactChange:  {
             // GET /me/task/contactChange
-            GET(param?: {askingAccount?: string, toAccount?: string, state?: nichandle.changeContact.TaskStateEnum}): Promise<number[]>;
+            $get(param?: {state?: nichandle.changeContact.TaskStateEnum, askingAccount?: string, toAccount?: string}): Promise<number[]>;
             [keys: string]: {
                 // GET /me/task/contactChange/{id}
-                GET(): Promise<nichandle.contactChange.Task>;
+                $get(): Promise<nichandle.contactChange.Task>;
                 accept:  {
                     // POST /me/task/contactChange/{id}/accept
-                    POST(body?: {token: string}): Promise<void>;
+                    $post(body?: {token: string}): Promise<void>;
                 }
                 refuse:  {
                     // POST /me/task/contactChange/{id}/refuse
-                    POST(body?: {token: string}): Promise<void>;
+                    $post(body?: {token: string}): Promise<void>;
                 }
                 resendEmail:  {
                     // POST /me/task/contactChange/{id}/resendEmail
-                    POST(): Promise<void>;
+                    $post(): Promise<void>;
                 }
             } | any
         }
         domain:  {
             // GET /me/task/domain
-            GET(param?: {status?: domain.OperationStatusEnum, function_?: domain.NicOperationFunctionEnum, domain?: string}): Promise<number[]>;
+            $get(param?: {function_?: domain.NicOperationFunctionEnum, status?: domain.OperationStatusEnum, domain?: string}): Promise<number[]>;
             [keys: string]: {
                 // GET /me/task/domain/{id}
-                GET(): Promise<nichandle.DomainTask>;
+                $get(): Promise<nichandle.DomainTask>;
                 accelerate:  {
                     // POST /me/task/domain/{id}/accelerate
-                    POST(): Promise<void>;
+                    $post(): Promise<void>;
                 }
                 argument:  {
                     // GET /me/task/domain/{id}/argument
-                    GET(): Promise<string[]>;
+                    $get(): Promise<string[]>;
                     [keys: string]: {
                         // GET /me/task/domain/{id}/argument/{key}
-                        GET(): Promise<nichandle.DomainTaskArgument>;
+                        $get(): Promise<nichandle.DomainTaskArgument>;
                         // PUT /me/task/domain/{id}/argument/{key}
-                        PUT(body?: {body: nichandle.DomainTaskArgument}): Promise<void>;
+                        $put(body?: {body: nichandle.DomainTaskArgument}): Promise<void>;
                     } | any
                 }
                 cancel:  {
                     // POST /me/task/domain/{id}/cancel
-                    POST(): Promise<void>;
+                    $post(): Promise<void>;
                 }
                 progressbar:  {
                     // GET /me/task/domain/{id}/progressbar
-                    GET(): Promise<nichandle.DomainTaskProgressBar>;
+                    $get(): Promise<nichandle.DomainTaskProgressBar>;
                 }
                 relaunch:  {
                     // POST /me/task/domain/{id}/relaunch
-                    POST(): Promise<void>;
+                    $post(): Promise<void>;
                 }
             } | any
         }
         emailChange:  {
             // GET /me/task/emailChange
-            GET(param?: {state?: nichandle.changeEmail.TaskStateEnum}): Promise<number[]>;
+            $get(param?: {state?: nichandle.changeEmail.TaskStateEnum}): Promise<number[]>;
             [keys: string]: {
                 // GET /me/task/emailChange/{id}
-                GET(): Promise<nichandle.emailChange.Task>;
+                $get(): Promise<nichandle.emailChange.Task>;
                 accept:  {
                     // POST /me/task/emailChange/{id}/accept
-                    POST(body?: {token: string}): Promise<void>;
+                    $post(body?: {token: string}): Promise<void>;
                 }
                 refuse:  {
                     // POST /me/task/emailChange/{id}/refuse
-                    POST(body?: {token: string}): Promise<void>;
+                    $post(body?: {token: string}): Promise<void>;
                 }
             } | any
         }
@@ -2490,59 +2490,59 @@ export interface Me {
     telephony:  {
         defaultIpRestriction:  {
             // GET /me/telephony/defaultIpRestriction
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             // POST /me/telephony/defaultIpRestriction
-            POST(body?: {type: telephony.ProtocolEnum, subnet: string}): Promise<telephony.DefaultIpRestriction>;
+            $post(body?: {subnet: string, type: telephony.ProtocolEnum}): Promise<telephony.DefaultIpRestriction>;
             [keys: string]: {
                 // GET /me/telephony/defaultIpRestriction/{id}
-                GET(): Promise<telephony.DefaultIpRestriction>;
+                $get(): Promise<telephony.DefaultIpRestriction>;
                 // DELETE /me/telephony/defaultIpRestriction/{id}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
             } | any
         }
         settings:  {
             // POST /me/telephony/settings
-            POST(body?: {settings: telephony.Settings}): Promise<void>;
+            $post(body?: {settings: telephony.Settings}): Promise<void>;
             // GET /me/telephony/settings
-            GET(): Promise<telephony.Settings>;
+            $get(): Promise<telephony.Settings>;
         }
     }
     vipStatus:  {
         // GET /me/vipStatus
-        GET(): Promise<nichandle.VipStatus>;
+        $get(): Promise<nichandle.VipStatus>;
     }
     voucher:  {
         checkValidity:  {
             // POST /me/voucher/checkValidity
-            POST(body?: {voucher: string}): Promise<nichandle.VoucherStatus>;
+            $post(body?: {voucher: string}): Promise<nichandle.VoucherStatus>;
         }
     }
     withdrawal:  {
         // GET /me/withdrawal
-        GET(param?: {date_to?: string, date_from?: string, orderId?: number}): Promise<string[]>;
+        $get(param?: {date_from?: string, orderId?: number, date_to?: string}): Promise<string[]>;
         [keys: string]: {
             // GET /me/withdrawal/{withdrawalId}
-            GET(): Promise<billing.Withdrawal>;
+            $get(): Promise<billing.Withdrawal>;
             details:  {
                 // GET /me/withdrawal/{withdrawalId}/details
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /me/withdrawal/{withdrawalId}/details/{withdrawalDetailId}
-                    GET(): Promise<billing.WithdrawalDetail>;
+                    $get(): Promise<billing.WithdrawalDetail>;
                 } | any
             }
             payment:  {
                 // GET /me/withdrawal/{withdrawalId}/payment
-                GET(): Promise<billing.Payment>;
+                $get(): Promise<billing.Payment>;
             }
         } | any
     }
     xdsl:  {
         setting:  {
             // GET /me/xdsl/setting
-            GET(): Promise<xdsl.Setting>;
+            $get(): Promise<xdsl.Setting>;
             // POST /me/xdsl/setting
-            POST(body?: {resellerFastModemShipping?: boolean, resellerModemBasicConfig?: boolean}): Promise<void>;
+            $post(body?: {resellerFastModemShipping?: boolean, resellerModemBasicConfig?: boolean}): Promise<void>;
         }
     }
 }

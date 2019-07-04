@@ -49,27 +49,27 @@ export namespace services {
 export interface Pack {
     siptrunk:  {
         // GET /pack/siptrunk
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /pack/siptrunk/{packName}
-            GET(): Promise<pack.siptrunk.PackSipTrunk>;
+            $get(): Promise<pack.siptrunk.PackSipTrunk>;
             serviceInfos:  {
                 // GET /pack/siptrunk/{packName}/serviceInfos
-                GET(): Promise<services.Service>;
+                $get(): Promise<services.Service>;
                 // PUT /pack/siptrunk/{packName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {body: services.Service}): Promise<void>;
             }
             changeContact:  {
                 // POST /pack/siptrunk/{packName}/changeContact
-                POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
         } | any
     }
 }
 // Api
-type PathsPackSiptrunkGET = '/pack/siptrunk' |
-  '/pack/siptrunk/{packName}/serviceInfos' |
-  '/pack/siptrunk/{packName}';
+type PathsPackSiptrunkGET = '/pack/siptrunk/{packName}/serviceInfos' |
+  '/pack/siptrunk/{packName}' |
+  '/pack/siptrunk';
 
 type PathsPackSiptrunkPUT = '/pack/siptrunk/{packName}/serviceInfos';
 

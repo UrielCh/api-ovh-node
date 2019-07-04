@@ -1748,888 +1748,500 @@ export namespace telephony {
 // path /telephony
 export interface Telephony {
     // GET /telephony
-    GET(): Promise<string[]>;
-    setDefaultSipDomain:  {
-        // POST /telephony/setDefaultSipDomain
-        POST(body?: {domain: string, country: telephony.NumberCountryEnum, type: telephony.SipDomainProductTypeEnum}): Promise<void>;
-    }
-    searchServices:  {
-        // GET /telephony/searchServices
-        GET(param?: {axiom: string}): Promise<telephony.TelephonySearchService[]>;
-    }
-    trunks:  {
-        // GET /telephony/trunks
-        GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
+    spare:  {
+        // GET /telephony/spare
+        $get(): Promise<string[]>;
+        brands:  {
+            // GET /telephony/spare/brands
+            $get(): Promise<string[]>;
+        }
         [keys: string]: {
-            // GET /telephony/trunks/{serviceName}
-            GET(): Promise<telephony.TelephonyGenericService>;
-            changeContact:  {
-                // POST /telephony/trunks/{serviceName}/changeContact
-                POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
+            // GET /telephony/spare/{spare}
+            $get(): Promise<spare.telephony.TelephonySpare>;
+            // DELETE /telephony/spare/{spare}
+            $delete(): Promise<void>;
+            compatibleReplacement:  {
+                // GET /telephony/spare/{spare}/compatibleReplacement
+                $get(): Promise<string[]>;
             }
             serviceInfos:  {
-                // GET /telephony/trunks/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
-                // PUT /telephony/trunks/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                // GET /telephony/spare/{spare}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /telephony/spare/{spare}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
+            replace:  {
+                // POST /telephony/spare/{spare}/replace
+                $post(body?: {domain: string, ip: string}): Promise<void>;
             }
         } | any
-    }
-    aliases:  {
-        // GET /telephony/aliases
-        GET(): Promise<string[]>;
-        [keys: string]: {
-            // GET /telephony/aliases/{serviceName}
-            GET(): Promise<telephony.TelephonyGenericService>;
-            serviceInfos:  {
-                // GET /telephony/aliases/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
-                // PUT /telephony/aliases/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
-            }
-            changeContact:  {
-                // POST /telephony/aliases/{serviceName}/changeContact
-                POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
-            }
-        } | any
-    }
-    availableDefaultSipDomains:  {
-        // GET /telephony/availableDefaultSipDomains
-        GET(param?: {type: telephony.SipDomainProductTypeEnum}): Promise<telephony.DefaultSipDomains[]>;
     }
     [keys: string]: {
         // GET /telephony/{billingAccount}
-        GET(): Promise<telephony.BillingAccount>;
+        $get(): Promise<telephony.BillingAccount>;
         // PUT /telephony/{billingAccount}
-        PUT(body?: {body: telephony.BillingAccount}): Promise<void>;
+        $put(body?: {body: telephony.BillingAccount}): Promise<void>;
         // DELETE /telephony/{billingAccount}
-        DELETE(): Promise<void>;
-        vxml:  {
-            // GET /telephony/{billingAccount}/vxml
-            GET(): Promise<string[]>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/vxml/{serviceName}
-                GET(): Promise<telephony.Vxml>;
-                settings:  {
-                    // GET /telephony/{billingAccount}/vxml/{serviceName}/settings
-                    GET(): Promise<telephony.VxmlProperties>;
-                    // PUT /telephony/{billingAccount}/vxml/{serviceName}/settings
-                    PUT(body?: {body: telephony.VxmlProperties}): Promise<void>;
-                    logs:  {
-                        // POST /telephony/{billingAccount}/vxml/{serviceName}/settings/logs
-                        POST(): Promise<telephony.TemporaryLogsLink>;
-                    }
-                }
-            } | any
-        }
-        line:  {
-            // GET /telephony/{billingAccount}/line
-            GET(): Promise<string[]>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/line/{serviceName}
-                GET(): Promise<telephony.Line>;
-                // PUT /telephony/{billingAccount}/line/{serviceName}
-                PUT(body?: {body: telephony.Line}): Promise<void>;
-                phoneCanBeAssociable:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/phoneCanBeAssociable
-                    GET(): Promise<telephony.LinePhone[]>;
-                }
-                phone:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/phone
-                    GET(): Promise<telephony.Phone>;
-                    // PUT /telephony/{billingAccount}/line/{serviceName}/phone
-                    PUT(body?: {body: telephony.Phone}): Promise<void>;
-                    resetConfig:  {
-                        // POST /telephony/{billingAccount}/line/{serviceName}/phone/resetConfig
-                        POST(body?: {ip: string}): Promise<telephony.ResetPhoneInfo>;
-                    }
-                    functionKey:  {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/phone/functionKey
-                        GET(): Promise<number[]>;
-                        [keys: string]: {
-                            // GET /telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}
-                            GET(): Promise<telephony.FunctionKey>;
-                            // PUT /telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}
-                            PUT(body?: {body: telephony.FunctionKey}): Promise<void>;
-                            availableFunction:  {
-                                // GET /telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction
-                                GET(): Promise<string[]>;
-                            }
-                        } | any
-                    }
-                    adminCredentials:  {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/phone/adminCredentials
-                        GET(): Promise<telephony.PhoneCredentials>;
-                    }
-                    supportsPhonebook:  {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/phone/supportsPhonebook
-                        GET(): Promise<boolean>;
-                    }
-                    refreshScreen:  {
-                        // POST /telephony/{billingAccount}/line/{serviceName}/phone/refreshScreen
-                        POST(): Promise<telephony.Task>;
-                    }
-                    changePhoneConfiguration:  {
-                        // POST /telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration
-                        POST(body?: {newConfigurations?: complexType.SafeKeyValue<string>[], autoReboot?: boolean}): Promise<void>;
-                    }
-                    phonebook:  {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook
-                        GET(): Promise<string[]>;
-                        // POST /telephony/{billingAccount}/line/{serviceName}/phone/phonebook
-                        POST(body?: {name: string}): Promise<string>;
-                        [keys: string]: {
-                            // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}
-                            GET(): Promise<telephony.Phonebook>;
-                            // PUT /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}
-                            PUT(body?: {body: telephony.Phonebook}): Promise<void>;
-                            // DELETE /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}
-                            DELETE(): Promise<void>;
-                            phonebookContact:  {
-                                // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact
-                                GET(): Promise<number[]>;
-                                // POST /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact
-                                POST(body?: {surname: string, workMobile?: string, homeMobile?: string, group: string, homePhone?: string, workPhone?: string, name: string}): Promise<number>;
-                                [keys: string]: {
-                                    // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}
-                                    GET(): Promise<telephony.PhonebookContact>;
-                                    // PUT /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}
-                                    PUT(body?: {body: telephony.PhonebookContact}): Promise<void>;
-                                    // DELETE /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}
-                                    DELETE(): Promise<void>;
-                                } | any
-                            }
-                            export:  {
-                                // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export
-                                GET(param?: {format: telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
-                            }
-                            import:  {
-                                // POST /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/import
-                                POST(body?: {documentId: string}): Promise<telephony.Task>;
-                            }
-                        } | any
-                    }
-                    reboot:  {
-                        // POST /telephony/{billingAccount}/line/{serviceName}/phone/reboot
-                        POST(): Promise<telephony.Task>;
-                    }
-                    rma:  {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/phone/rma
-                        GET(): Promise<string[]>;
-                        // POST /telephony/{billingAccount}/line/{serviceName}/phone/rma
-                        POST(body?: {newMerchandise?: string, mondialRelayId?: string, shippingContactId?: number, type: telephony.RmaPublicTypeEnum}): Promise<telephony.RmaReturn>;
-                        [keys: string]: {
-                            // GET /telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}
-                            GET(): Promise<telephony.Rma>;
-                            // PUT /telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}
-                            PUT(body?: {body: telephony.Rma}): Promise<void>;
-                            // DELETE /telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}
-                            DELETE(): Promise<void>;
-                        } | any
-                    }
-                    merchandiseAvailable:  {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/phone/merchandiseAvailable
-                        GET(): Promise<telephony.HardwareOffer[]>;
-                    }
-                }
-                changePassword:  {
-                    // POST /telephony/{billingAccount}/line/{serviceName}/changePassword
-                    POST(body?: {password?: string}): Promise<void>;
-                }
-                trafficExtracts:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/trafficExtracts
-                    GET(): Promise<number[]>;
-                    // POST /telephony/{billingAccount}/line/{serviceName}/trafficExtracts
-                    POST(body?: {dateEnd: string, dateStart: string}): Promise<telephony.trafficExtract>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}
-                        GET(): Promise<telephony.trafficExtract>;
-                        // DELETE /telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}
-                        DELETE(): Promise<void>;
-                    } | any
-                }
-                unblock:  {
-                    // POST /telephony/{billingAccount}/line/{serviceName}/unblock
-                    POST(): Promise<void>;
-                }
-                canChangePassword:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/canChangePassword
-                    GET(): Promise<boolean>;
-                }
-                ips:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/ips
-                    GET(): Promise<telephony.DatetimeAndIpvalue[]>;
-                }
-                cancelConvertToNumber:  {
-                    // POST /telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber
-                    POST(): Promise<void>;
-                }
-                click2Call:  {
-                    // POST /telephony/{billingAccount}/line/{serviceName}/click2Call
-                    POST(body?: {intercom?: boolean, calledNumber: string, callingNumber?: string}): Promise<void>;
-                }
-                abbreviatedNumber:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber
-                    GET(): Promise<number[]>;
-                    // POST /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber
-                    POST(body?: {destinationNumber: string, name: string, surname: string, abbreviatedNumber: number}): Promise<telephony.AbbreviatedNumber>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}
-                        GET(): Promise<telephony.AbbreviatedNumber>;
-                        // PUT /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}
-                        PUT(body?: {body: telephony.AbbreviatedNumber}): Promise<void>;
-                        // DELETE /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}
-                        DELETE(): Promise<void>;
-                    } | any
-                }
-                antihack:  {
-                    // POST /telephony/{billingAccount}/line/{serviceName}/antihack
-                    POST(body?: {action: telephony.AntihackActionEnum, restricted?: string}): Promise<void>;
-                    // GET /telephony/{billingAccount}/line/{serviceName}/antihack
-                    GET(): Promise<string[]>;
-                }
-                automaticCall:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/automaticCall
-                    GET(): Promise<string[]>;
-                    // POST /telephony/{billingAccount}/line/{serviceName}/automaticCall
-                    POST(body?: {bridgeNumberDialplan?: string, playbackAudioFileDialplan?: string, timeout?: number, callingNumber?: string, dialplan: telephony.CallsGeneratorDialplanEnum, ttsTextDialplan?: string, calledNumber: string, isAnonymous: boolean}): Promise<string>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/automaticCall/{identifier}
-                        GET(): Promise<telephony.CallsGenerated>;
-                    } | any
-                }
-                removeSimultaneousLines:  {
-                    // POST /telephony/{billingAccount}/line/{serviceName}/removeSimultaneousLines
-                    POST(body?: {quantityRemove: number}): Promise<void>;
-                }
-                lastRegistrations:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/lastRegistrations
-                    GET(): Promise<telephony.RegistrationInformations[]>;
-                }
-                block:  {
-                    // POST /telephony/{billingAccount}/line/{serviceName}/block
-                    POST(body?: {mode?: telephony.LineBlockingMode}): Promise<void>;
-                }
-                click2CallUser:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/click2CallUser
-                    GET(): Promise<number[]>;
-                    // POST /telephony/{billingAccount}/line/{serviceName}/click2CallUser
-                    POST(body?: {password: string, login: string}): Promise<number>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}
-                        GET(): Promise<telephony.Click2CallUser>;
-                        // DELETE /telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}
-                        DELETE(): Promise<void>;
-                        changePassword:  {
-                            // POST /telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/changePassword
-                            POST(body?: {password: string}): Promise<void>;
-                        }
-                        click2Call:  {
-                            // POST /telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/click2Call
-                            POST(body?: {callingNumber?: string, calledNumber: string}): Promise<void>;
-                        }
-                    } | any
-                }
-                listAssociablePhones:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/listAssociablePhones
-                    GET(): Promise<telephony.LinePhoneAssociable[]>;
-                }
-                maximumAvailableSimultaneousLines:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/maximumAvailableSimultaneousLines
-                    GET(): Promise<number>;
-                }
-                offer:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/offer
-                    GET(): Promise<telephony.LineOffer>;
-                }
-                options:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/options
-                    GET(): Promise<telephony.LineOptions>;
-                    // PUT /telephony/{billingAccount}/line/{serviceName}/options
-                    PUT(body?: {body: telephony.LineOptions}): Promise<void>;
-                    availableCodecs:  {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/options/availableCodecs
-                        GET(): Promise<string[]>;
-                    }
-                    defaultCodecs:  {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/options/defaultCodecs
-                        GET(): Promise<string>;
-                    }
-                }
-                statistics:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/statistics
-                    GET(param?: {timeframe: telephony.StatisticsTimeframeEnum, type: telephony.LineStatisticsTypeEnum}): Promise<complexType.UnitAndValues<telephony.TimestampAndValue>>;
-                }
-                calls:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/calls
-                    GET(): Promise<number[]>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/calls/{id}
-                        GET(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
-                        whisper:  {
-                            // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper
-                            POST(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
-                        }
-                        intercept:  {
-                            // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/intercept
-                            POST(body?: {number: string}): Promise<telephony.Task>;
-                        }
-                        hangup:  {
-                            // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/hangup
-                            POST(): Promise<telephony.Task>;
-                        }
-                        transfer:  {
-                            // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/transfer
-                            POST(body?: {number: string}): Promise<telephony.Task>;
-                        }
-                        hold:  {
-                            // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/hold
-                            POST(): Promise<telephony.Task>;
-                        }
-                        eavesdrop:  {
-                            // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/eavesdrop
-                            POST(body?: {number: string}): Promise<telephony.Task>;
-                        }
-                    } | any
-                }
-                convertToNumber:  {
-                    // POST /telephony/{billingAccount}/line/{serviceName}/convertToNumber
-                    POST(): Promise<telephony.OfferTask>;
-                }
-                tones:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/tones
-                    GET(): Promise<telephony.Tones>;
-                    // PUT /telephony/{billingAccount}/line/{serviceName}/tones
-                    PUT(body?: {body: telephony.Tones}): Promise<void>;
-                    toneUpload:  {
-                        // POST /telephony/{billingAccount}/line/{serviceName}/tones/toneUpload
-                        POST(body?: {url?: string, documentId?: string, type: telephony.TonesTypeEnum}): Promise<telephony.Task>;
-                    }
-                }
-                activateNewPhone:  {
-                    // POST /telephony/{billingAccount}/line/{serviceName}/activateNewPhone
-                    POST(): Promise<void>;
-                    // GET /telephony/{billingAccount}/line/{serviceName}/activateNewPhone
-                    GET(): Promise<void>;
-                }
-                records:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/records
-                    GET(): Promise<number[]>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/line/{serviceName}/records/{id}
-                        GET(): Promise<telephony.OvhPabxRecord>;
-                        // DELETE /telephony/{billingAccount}/line/{serviceName}/records/{id}
-                        DELETE(): Promise<void>;
-                    } | any
-                }
-                associateDevice:  {
-                    // POST /telephony/{billingAccount}/line/{serviceName}/associateDevice
-                    POST(body?: {macAddress: string, ipAddress?: string}): Promise<void>;
-                }
-                availableSipDomains:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/availableSipDomains
-                    GET(): Promise<string[]>;
-                }
-                dissociateDevice:  {
-                    // POST /telephony/{billingAccount}/line/{serviceName}/dissociateDevice
-                    POST(body?: {macAddress: string, ipAddress?: string}): Promise<void>;
-                }
-                simultaneousChannelsDetails:  {
-                    // GET /telephony/{billingAccount}/line/{serviceName}/simultaneousChannelsDetails
-                    GET(): Promise<telephony.SimultaneousChannelsDetails>;
-                }
-            } | any
-        }
+        $delete(): Promise<void>;
         service:  {
             // GET /telephony/{billingAccount}/service
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             [keys: string]: {
                 // GET /telephony/{billingAccount}/service/{serviceName}
-                GET(): Promise<telephony.TelephonyService>;
+                $get(): Promise<telephony.TelephonyService>;
                 // PUT /telephony/{billingAccount}/service/{serviceName}
-                PUT(body?: {body: telephony.TelephonyService}): Promise<void>;
+                $put(body?: {body: telephony.TelephonyService}): Promise<void>;
                 // DELETE /telephony/{billingAccount}/service/{serviceName}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
+                changeOfBillingAccount:  {
+                    // POST /telephony/{billingAccount}/service/{serviceName}/changeOfBillingAccount
+                    $post(body?: {billingAccountDestination: string}): Promise<void>;
+                }
+                offerTask:  {
+                    // GET /telephony/{billingAccount}/service/{serviceName}/offerTask
+                    $get(param?: {status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum, action?: telephony.OfferTaskActionEnum}): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}
+                        $get(): Promise<telephony.OfferTask>;
+                        // PUT /telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}
+                        $put(body?: {body: telephony.OfferTask}): Promise<void>;
+                    } | any
+                }
+                eventToken:  {
+                    // GET /telephony/{billingAccount}/service/{serviceName}/eventToken
+                    $get(): Promise<telephony.EventToken>;
+                    // POST /telephony/{billingAccount}/service/{serviceName}/eventToken
+                    $post(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
+                    // DELETE /telephony/{billingAccount}/service/{serviceName}/eventToken
+                    $delete(): Promise<void>;
+                }
+                offerChange:  {
+                    // GET /telephony/{billingAccount}/service/{serviceName}/offerChange
+                    $get(): Promise<telephony.OfferChange>;
+                    // POST /telephony/{billingAccount}/service/{serviceName}/offerChange
+                    $post(body?: {offer: string}): Promise<void>;
+                    // DELETE /telephony/{billingAccount}/service/{serviceName}/offerChange
+                    $delete(): Promise<void>;
+                }
+                voiceConsumption:  {
+                    // GET /telephony/{billingAccount}/service/{serviceName}/voiceConsumption
+                    $get(param?: {planType?: telephony.VoiceConsumptionPlanTypeEnum, creationDatetime_to?: string, creationDatetime_from?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum}): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}
+                        $get(): Promise<telephony.VoiceConsumption>;
+                        callDiagnostics:  {
+                            // GET /telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}/callDiagnostics
+                            $get(): Promise<telephony.CallDiagnostics>;
+                        }
+                    } | any
+                }
+                diagnosticReports:  {
+                    // GET /telephony/{billingAccount}/service/{serviceName}/diagnosticReports
+                    $get(param?: {dayInterval: telephony.DiagnosticReportIndexEnum}): Promise<telephony.DiagnosticReport[]>;
+                }
+                faxConsumption:  {
+                    // GET /telephony/{billingAccount}/service/{serviceName}/faxConsumption
+                    $get(param?: {wayType?: telephony.FaxConsumptionWayTypeEnum, creationDatetime_from?: string, creationDatetime_to?: string}): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/service/{serviceName}/faxConsumption/{consumptionId}
+                        $get(): Promise<telephony.FaxConsumption>;
+                    } | any
+                }
                 directory:  {
                     // GET /telephony/{billingAccount}/service/{serviceName}/directory
-                    GET(): Promise<telephony.DirectoryInfo>;
+                    $get(): Promise<telephony.DirectoryInfo>;
                     // PUT /telephony/{billingAccount}/service/{serviceName}/directory
-                    PUT(body?: {body: telephony.DirectoryInfo}): Promise<void>;
-                    fetchEntrepriseInformations:  {
-                        // POST /telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations
-                        POST(body?: {entrepriseNumber: string}): Promise<telephony.EntrepriseNumberInformationsTask>;
-                    }
+                    $put(body?: {body: telephony.DirectoryInfo}): Promise<void>;
                     getWayTypes:  {
                         // GET /telephony/{billingAccount}/service/{serviceName}/directory/getWayTypes
-                        GET(): Promise<telephony.DirectoryWayType[]>;
+                        $get(): Promise<telephony.DirectoryWayType[]>;
                     }
                     getDirectoryServiceCode:  {
                         // GET /telephony/{billingAccount}/service/{serviceName}/directory/getDirectoryServiceCode
-                        GET(param?: {apeCode: string}): Promise<telephony.DirectoryHeadingPJ[]>;
+                        $get(param?: {apeCode: string}): Promise<telephony.DirectoryHeadingPJ[]>;
+                    }
+                    fetchEntrepriseInformations:  {
+                        // POST /telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations
+                        $post(body?: {entrepriseNumber: string}): Promise<telephony.EntrepriseNumberInformationsTask>;
                     }
                 }
-                previousVoiceConsumption:  {
-                    // GET /telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption
-                    GET(param?: {destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum, creationDatetime_from?: string, creationDatetime_to?: string, planType?: telephony.VoiceConsumptionPlanTypeEnum}): Promise<number[]>;
+                task:  {
+                    // GET /telephony/{billingAccount}/service/{serviceName}/task
+                    $get(param?: {action?: string, status?: telephony.TaskStatusEnum, serviceType?: string}): Promise<number[]>;
                     [keys: string]: {
-                        // GET /telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption/{consumptionId}
-                        GET(): Promise<telephony.PreviousVoiceConsumption>;
+                        // GET /telephony/{billingAccount}/service/{serviceName}/task/{taskId}
+                        $get(): Promise<telephony.Task>;
                     } | any
                 }
                 repaymentConsumption:  {
                     // GET /telephony/{billingAccount}/service/{serviceName}/repaymentConsumption
-                    GET(param?: {creationDatetime_from?: string, creationDatetime_to?: string}): Promise<number[]>;
+                    $get(param?: {creationDatetime_to?: string, creationDatetime_from?: string}): Promise<number[]>;
                     [keys: string]: {
                         // GET /telephony/{billingAccount}/service/{serviceName}/repaymentConsumption/{consumptionId}
-                        GET(): Promise<telephony.RepaymentConsumption>;
+                        $get(): Promise<telephony.RepaymentConsumption>;
                     } | any
-                }
-                faxConsumption:  {
-                    // GET /telephony/{billingAccount}/service/{serviceName}/faxConsumption
-                    GET(param?: {wayType?: telephony.FaxConsumptionWayTypeEnum, creationDatetime_from?: string, creationDatetime_to?: string}): Promise<number[]>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/service/{serviceName}/faxConsumption/{consumptionId}
-                        GET(): Promise<telephony.FaxConsumption>;
-                    } | any
-                }
-                changeOfBillingAccount:  {
-                    // POST /telephony/{billingAccount}/service/{serviceName}/changeOfBillingAccount
-                    POST(body?: {billingAccountDestination: string}): Promise<void>;
-                }
-                eventToken:  {
-                    // GET /telephony/{billingAccount}/service/{serviceName}/eventToken
-                    GET(): Promise<telephony.EventToken>;
-                    // POST /telephony/{billingAccount}/service/{serviceName}/eventToken
-                    POST(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
-                    // DELETE /telephony/{billingAccount}/service/{serviceName}/eventToken
-                    DELETE(): Promise<void>;
-                }
-                diagnosticReports:  {
-                    // GET /telephony/{billingAccount}/service/{serviceName}/diagnosticReports
-                    GET(param?: {dayInterval: telephony.DiagnosticReportIndexEnum}): Promise<telephony.DiagnosticReport[]>;
                 }
                 offerChanges:  {
                     // GET /telephony/{billingAccount}/service/{serviceName}/offerChanges
-                    GET(): Promise<telephony.LineOffer[]>;
-                }
-                offerTask:  {
-                    // GET /telephony/{billingAccount}/service/{serviceName}/offerTask
-                    GET(param?: {type?: telephony.OfferTaskTypeEnum, action?: telephony.OfferTaskActionEnum, status?: telephony.TaskStatusEnum}): Promise<number[]>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}
-                        GET(): Promise<telephony.OfferTask>;
-                        // PUT /telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}
-                        PUT(body?: {body: telephony.OfferTask}): Promise<void>;
-                    } | any
-                }
-                task:  {
-                    // GET /telephony/{billingAccount}/service/{serviceName}/task
-                    GET(param?: {serviceType?: string, action?: string, status?: telephony.TaskStatusEnum}): Promise<number[]>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/service/{serviceName}/task/{taskId}
-                        GET(): Promise<telephony.Task>;
-                    } | any
-                }
-                offerChange:  {
-                    // GET /telephony/{billingAccount}/service/{serviceName}/offerChange
-                    GET(): Promise<telephony.OfferChange>;
-                    // POST /telephony/{billingAccount}/service/{serviceName}/offerChange
-                    POST(body?: {offer: string}): Promise<void>;
-                    // DELETE /telephony/{billingAccount}/service/{serviceName}/offerChange
-                    DELETE(): Promise<void>;
+                    $get(): Promise<telephony.LineOffer[]>;
                 }
                 cancelTermination:  {
                     // POST /telephony/{billingAccount}/service/{serviceName}/cancelTermination
-                    POST(): Promise<void>;
+                    $post(): Promise<void>;
                 }
-                voiceConsumption:  {
-                    // GET /telephony/{billingAccount}/service/{serviceName}/voiceConsumption
-                    GET(param?: {creationDatetime_from?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum, planType?: telephony.VoiceConsumptionPlanTypeEnum, creationDatetime_to?: string}): Promise<number[]>;
+                previousVoiceConsumption:  {
+                    // GET /telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption
+                    $get(param?: {creationDatetime_to?: string, wayType?: telephony.VoiceConsumptionWayTypeEnum, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, creationDatetime_from?: string, planType?: telephony.VoiceConsumptionPlanTypeEnum}): Promise<number[]>;
                     [keys: string]: {
-                        // GET /telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}
-                        GET(): Promise<telephony.VoiceConsumption>;
-                        callDiagnostics:  {
-                            // GET /telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}/callDiagnostics
-                            GET(): Promise<telephony.CallDiagnostics>;
-                        }
+                        // GET /telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption/{consumptionId}
+                        $get(): Promise<telephony.PreviousVoiceConsumption>;
                     } | any
                 }
             } | any
         }
-        transferSecurityDeposit:  {
-            // POST /telephony/{billingAccount}/transferSecurityDeposit
-            POST(body?: {billingAccountDestination: string, amount: number}): Promise<void>;
-        }
-        number:  {
-            // GET /telephony/{billingAccount}/number
-            GET(): Promise<string[]>;
+        trunk:  {
+            // GET /telephony/{billingAccount}/trunk
+            $get(): Promise<string[]>;
             [keys: string]: {
-                // GET /telephony/{billingAccount}/number/{serviceName}
-                GET(): Promise<telephony.Number>;
-                // PUT /telephony/{billingAccount}/number/{serviceName}
-                PUT(body?: {body: telephony.Number}): Promise<void>;
-                changeFeatureType:  {
-                    // POST /telephony/{billingAccount}/number/{serviceName}/changeFeatureType
-                    POST(body?: {featureType: telephony.TypeEnum}): Promise<telephony.Task>;
+                // GET /telephony/{billingAccount}/trunk/{serviceName}
+                $get(): Promise<telephony.Trunk>;
+                externalDisplayedNumber:  {
+                    // GET /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber
+                    $get(): Promise<string[]>;
+                    // POST /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber
+                    $post(body?: {autoValidation?: boolean, number: string}): Promise<telephony.TrunkExternalDisplayedNumber>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}
+                        $get(): Promise<telephony.TrunkExternalDisplayedNumber>;
+                        // DELETE /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}
+                        $delete(): Promise<void>;
+                        validate:  {
+                            // POST /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}/validate
+                            $post(): Promise<telephony.TrunkExternalDisplayedNumberValidation>;
+                        }
+                    } | any
                 }
-                convertToLine:  {
-                    // POST /telephony/{billingAccount}/number/{serviceName}/convertToLine
-                    POST(body?: {offer: string}): Promise<telephony.OfferTask>;
-                }
-                convertToLineAvailableOffers:  {
-                    // GET /telephony/{billingAccount}/number/{serviceName}/convertToLineAvailableOffers
-                    GET(): Promise<telephony.LineOffersAndContracts>;
-                }
-                cancelConvertToLine:  {
-                    // POST /telephony/{billingAccount}/number/{serviceName}/cancelConvertToLine
-                    POST(): Promise<void>;
-                }
-            } | any
-        }
-        rsva:  {
-            // GET /telephony/{billingAccount}/rsva
-            GET(): Promise<string[]>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/rsva/{serviceName}
-                GET(): Promise<telephony.Rsva>;
-                // PUT /telephony/{billingAccount}/rsva/{serviceName}
-                PUT(body?: {body: telephony.Rsva}): Promise<void>;
-                scheduleRateCode:  {
-                    // POST /telephony/{billingAccount}/rsva/{serviceName}/scheduleRateCode
-                    POST(body?: {rateCode: string}): Promise<telephony.DetailedRateCodeInformation>;
-                }
-                allowedRateCodes:  {
-                    // GET /telephony/{billingAccount}/rsva/{serviceName}/allowedRateCodes
-                    GET(): Promise<telephony.RateCodeInformation[]>;
-                }
-                cancelScheduledRateCode:  {
-                    // POST /telephony/{billingAccount}/rsva/{serviceName}/cancelScheduledRateCode
-                    POST(): Promise<void>;
-                }
-                currentRateCode:  {
-                    // GET /telephony/{billingAccount}/rsva/{serviceName}/currentRateCode
-                    GET(): Promise<telephony.DetailedRateCodeInformation>;
-                }
-                scheduledRateCode:  {
-                    // GET /telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode
-                    GET(): Promise<telephony.DetailedRateCodeInformation>;
+                channelsPacksRepartition:  {
+                    // GET /telephony/{billingAccount}/trunk/{serviceName}/channelsPacksRepartition
+                    $get(param?: {quantity: number}): Promise<telephony.TrunkSimultaneousPacksRepartition>;
                 }
             } | any
         }
         ovhPabx:  {
             // GET /telephony/{billingAccount}/ovhPabx
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             [keys: string]: {
                 // GET /telephony/{billingAccount}/ovhPabx/{serviceName}
-                GET(): Promise<telephony.OvhPabx>;
+                $get(): Promise<telephony.OvhPabx>;
                 // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}
-                PUT(body?: {body: telephony.OvhPabx}): Promise<void>;
-                records:  {
-                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/records
-                    GET(): Promise<number[]>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}
-                        GET(): Promise<telephony.OvhPabxRecord>;
-                        // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}
-                        DELETE(): Promise<void>;
-                    } | any
-                }
+                $put(body?: {body: telephony.OvhPabx}): Promise<void>;
                 soundUpload:  {
                     // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/soundUpload
-                    POST(body?: {name?: string, documentId?: string, url?: string}): Promise<telephony.Task>;
-                }
-                hunting:  {
-                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting
-                    GET(): Promise<telephony.OvhPabxHunting>;
-                    // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting
-                    PUT(body?: {body: telephony.OvhPabxHunting}): Promise<void>;
-                    customStatus:  {
-                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus
-                        GET(): Promise<number[]>;
-                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus
-                        POST(body?: {color?: string, name: string, description?: string}): Promise<telephony.OvhPabxCustomStatus>;
-                        [keys: string]: {
-                            // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}
-                            GET(): Promise<telephony.OvhPabxCustomStatus>;
-                            // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}
-                            DELETE(): Promise<void>;
-                        } | any
-                    }
-                    agent:  {
-                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent
-                        GET(): Promise<number[]>;
-                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent
-                        POST(body?: {description?: string, status: telephony.OvhPabxHuntingAgentStatusEnum, wrapUpTime: number, simultaneousLines: number, timeout: number, number: string}): Promise<telephony.OvhPabxHuntingAgent>;
-                        [keys: string]: {
-                            // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}
-                            GET(): Promise<telephony.OvhPabxHuntingAgent>;
-                            // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}
-                            PUT(body?: {body: telephony.OvhPabxHuntingAgent}): Promise<void>;
-                            // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}
-                            DELETE(): Promise<void>;
-                            bannerAccess:  {
-                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess
-                                GET(): Promise<telephony.BannerAccess>;
-                                // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess
-                                POST(): Promise<telephony.BannerAccess>;
-                                // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess
-                                DELETE(): Promise<void>;
-                            }
-                            liveStatus:  {
-                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/liveStatus
-                                GET(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
-                            }
-                            eventToken:  {
-                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken
-                                GET(): Promise<telephony.EventToken>;
-                                // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken
-                                POST(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
-                                // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken
-                                DELETE(): Promise<void>;
-                            }
-                            calls:  {
-                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls
-                                GET(): Promise<number[]>;
-                                [keys: string]: {
-                                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}
-                                    GET(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
-                                    eavesdrop:  {
-                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop
-                                        POST(body?: {number: string}): Promise<telephony.Task>;
-                                    }
-                                    intercept:  {
-                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept
-                                        POST(body?: {number: string}): Promise<telephony.Task>;
-                                    }
-                                    whisper:  {
-                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper
-                                        POST(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
-                                    }
-                                    hangup:  {
-                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup
-                                        POST(): Promise<telephony.Task>;
-                                    }
-                                    transfer:  {
-                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer
-                                        POST(body?: {number: string}): Promise<telephony.Task>;
-                                    }
-                                    hold:  {
-                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold
-                                        POST(): Promise<telephony.Task>;
-                                    }
-                                } | any
-                            }
-                            queue:  {
-                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue
-                                GET(): Promise<number[]>;
-                                // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue
-                                POST(body?: {queueId: number, position: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
-                                [keys: string]: {
-                                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
-                                    GET(): Promise<telephony.OvhPabxHuntingAgentQueue>;
-                                    // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
-                                    PUT(body?: {body: telephony.OvhPabxHuntingAgentQueue}): Promise<void>;
-                                    // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
-                                    DELETE(): Promise<void>;
-                                    liveStatus:  {
-                                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus
-                                        GET(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
-                                    }
-                                } | any
-                            }
-                        } | any
-                    }
-                    eventToken:  {
-                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken
-                        GET(): Promise<telephony.EventToken>;
-                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken
-                        POST(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
-                        // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken
-                        DELETE(): Promise<void>;
-                    }
-                    queue:  {
-                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue
-                        GET(): Promise<number[]>;
-                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue
-                        POST(body?: {actionOnOverflowParam?: string, record?: boolean, strategy: telephony.OvhPabxHuntingQueueStrategyEnum, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, soundOnHold?: number, askForRecordDisabling?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, maxMember?: number, maxWaitTime?: number, actionOnClosure?: telephony.OvhPabxQueueActionEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, actionOnClosureParam?: string, description?: string}): Promise<telephony.OvhPabxHuntingQueue>;
-                        [keys: string]: {
-                            // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}
-                            GET(): Promise<telephony.OvhPabxHuntingQueue>;
-                            // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}
-                            PUT(body?: {body: telephony.OvhPabxHuntingQueue}): Promise<void>;
-                            // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}
-                            DELETE(): Promise<void>;
-                            liveCalls:  {
-                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls
-                                GET(): Promise<number[]>;
-                                [keys: string]: {
-                                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}
-                                    GET(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
-                                    transfer:  {
-                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer
-                                        POST(body?: {number: string}): Promise<telephony.Task>;
-                                    }
-                                    intercept:  {
-                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept
-                                        POST(body?: {number: string}): Promise<telephony.Task>;
-                                    }
-                                    whisper:  {
-                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper
-                                        POST(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
-                                    }
-                                    hangup:  {
-                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup
-                                        POST(): Promise<telephony.Task>;
-                                    }
-                                    hold:  {
-                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold
-                                        POST(): Promise<telephony.Task>;
-                                    }
-                                    eavesdrop:  {
-                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop
-                                        POST(body?: {number: string}): Promise<telephony.Task>;
-                                    }
-                                } | any
-                            }
-                            liveStatistics:  {
-                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveStatistics
-                                GET(): Promise<telephony.OvhPabxHuntingQueueLiveStatistics>;
-                            }
-                            agent:  {
-                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent
-                                GET(): Promise<number[]>;
-                                // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent
-                                POST(body?: {queueId: number, position: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
-                                [keys: string]: {
-                                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
-                                    GET(): Promise<telephony.OvhPabxHuntingAgentQueue>;
-                                    // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
-                                    PUT(body?: {body: telephony.OvhPabxHuntingAgentQueue}): Promise<void>;
-                                    // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
-                                    DELETE(): Promise<void>;
-                                    liveStatus:  {
-                                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus
-                                        GET(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
-                                    }
-                                } | any
-                            }
-                        } | any
-                    }
-                }
-                tts:  {
-                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/tts
-                    GET(): Promise<number[]>;
-                    // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/tts
-                    POST(body?: {text: string, voice?: telephony.OvhPabxTtsVoiceEnum}): Promise<void>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}
-                        GET(): Promise<telephony.OvhPabxTts>;
-                        // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}
-                        PUT(body?: {body: telephony.OvhPabxTts}): Promise<void>;
-                        // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}
-                        DELETE(): Promise<void>;
-                    } | any
+                    $post(body?: {documentId?: string, name?: string, url?: string}): Promise<telephony.Task>;
                 }
                 menu:  {
                     // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/menu
-                    GET(): Promise<number[]>;
+                    $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/menu
-                    POST(body?: {invalidSound?: number, greetSoundTts?: number, greetSound?: number, name: string, invalidSoundTts?: number}): Promise<telephony.OvhPabxMenu>;
+                    $post(body?: {greetSound?: number, greetSoundTts?: number, invalidSound?: number, invalidSoundTts?: number, name: string}): Promise<telephony.OvhPabxMenu>;
                     [keys: string]: {
                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}
-                        GET(): Promise<telephony.OvhPabxMenu>;
+                        $get(): Promise<telephony.OvhPabxMenu>;
                         // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}
-                        PUT(body?: {body: telephony.OvhPabxMenu}): Promise<void>;
+                        $put(body?: {body: telephony.OvhPabxMenu}): Promise<void>;
                         // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}
-                        DELETE(): Promise<void>;
+                        $delete(): Promise<void>;
                         entry:  {
                             // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry
-                            GET(): Promise<number[]>;
+                            $get(): Promise<number[]>;
                             // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry
-                            POST(body?: {actionParam?: string, action: telephony.OvhPabxIvrMenuEntryActionEnum, position: number, dtmf: string}): Promise<telephony.OvhPabxMenuEntry>;
+                            $post(body?: {action: telephony.OvhPabxIvrMenuEntryActionEnum, actionParam?: string, dtmf: string, position: number}): Promise<telephony.OvhPabxMenuEntry>;
                             [keys: string]: {
                                 // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}
-                                GET(): Promise<telephony.OvhPabxMenuEntry>;
+                                $get(): Promise<telephony.OvhPabxMenuEntry>;
                                 // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}
-                                PUT(body?: {body: telephony.OvhPabxMenuEntry}): Promise<void>;
+                                $put(body?: {body: telephony.OvhPabxMenuEntry}): Promise<void>;
                                 // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}
-                                DELETE(): Promise<void>;
+                                $delete(): Promise<void>;
                             } | any
                         }
                     } | any
                 }
+                hunting:  {
+                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting
+                    $get(): Promise<telephony.OvhPabxHunting>;
+                    // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting
+                    $put(body?: {body: telephony.OvhPabxHunting}): Promise<void>;
+                    eventToken:  {
+                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken
+                        $get(): Promise<telephony.EventToken>;
+                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken
+                        $post(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
+                        // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken
+                        $delete(): Promise<void>;
+                    }
+                    customStatus:  {
+                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus
+                        $get(): Promise<number[]>;
+                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus
+                        $post(body?: {color?: string, description?: string, name: string}): Promise<telephony.OvhPabxCustomStatus>;
+                        [keys: string]: {
+                            // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}
+                            $get(): Promise<telephony.OvhPabxCustomStatus>;
+                            // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}
+                            $delete(): Promise<void>;
+                        } | any
+                    }
+                    queue:  {
+                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue
+                        $get(): Promise<number[]>;
+                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue
+                        $post(body?: {actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<telephony.OvhPabxHuntingQueue>;
+                        [keys: string]: {
+                            // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}
+                            $get(): Promise<telephony.OvhPabxHuntingQueue>;
+                            // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}
+                            $put(body?: {body: telephony.OvhPabxHuntingQueue}): Promise<void>;
+                            // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}
+                            $delete(): Promise<void>;
+                            liveStatistics:  {
+                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveStatistics
+                                $get(): Promise<telephony.OvhPabxHuntingQueueLiveStatistics>;
+                            }
+                            agent:  {
+                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent
+                                $get(): Promise<number[]>;
+                                // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent
+                                $post(body?: {position: number, queueId: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
+                                [keys: string]: {
+                                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
+                                    $get(): Promise<telephony.OvhPabxHuntingAgentQueue>;
+                                    // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
+                                    $put(body?: {body: telephony.OvhPabxHuntingAgentQueue}): Promise<void>;
+                                    // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
+                                    $delete(): Promise<void>;
+                                    liveStatus:  {
+                                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus
+                                        $get(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
+                                    }
+                                } | any
+                            }
+                            liveCalls:  {
+                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls
+                                $get(): Promise<number[]>;
+                                [keys: string]: {
+                                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}
+                                    $get(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
+                                    hangup:  {
+                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup
+                                        $post(): Promise<telephony.Task>;
+                                    }
+                                    hold:  {
+                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold
+                                        $post(): Promise<telephony.Task>;
+                                    }
+                                    transfer:  {
+                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer
+                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                    }
+                                    eavesdrop:  {
+                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop
+                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                    }
+                                    whisper:  {
+                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper
+                                        $post(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+                                    }
+                                    intercept:  {
+                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept
+                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                    }
+                                } | any
+                            }
+                        } | any
+                    }
+                    agent:  {
+                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent
+                        $get(): Promise<number[]>;
+                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent
+                        $post(body?: {description?: string, number: string, simultaneousLines: number, status: telephony.OvhPabxHuntingAgentStatusEnum, timeout: number, wrapUpTime: number}): Promise<telephony.OvhPabxHuntingAgent>;
+                        [keys: string]: {
+                            // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}
+                            $get(): Promise<telephony.OvhPabxHuntingAgent>;
+                            // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}
+                            $put(body?: {body: telephony.OvhPabxHuntingAgent}): Promise<void>;
+                            // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}
+                            $delete(): Promise<void>;
+                            liveStatus:  {
+                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/liveStatus
+                                $get(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
+                            }
+                            queue:  {
+                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue
+                                $get(): Promise<number[]>;
+                                // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue
+                                $post(body?: {position: number, queueId: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
+                                [keys: string]: {
+                                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
+                                    $get(): Promise<telephony.OvhPabxHuntingAgentQueue>;
+                                    // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
+                                    $put(body?: {body: telephony.OvhPabxHuntingAgentQueue}): Promise<void>;
+                                    // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
+                                    $delete(): Promise<void>;
+                                    liveStatus:  {
+                                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus
+                                        $get(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
+                                    }
+                                } | any
+                            }
+                            eventToken:  {
+                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken
+                                $get(): Promise<telephony.EventToken>;
+                                // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken
+                                $post(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
+                                // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken
+                                $delete(): Promise<void>;
+                            }
+                            calls:  {
+                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls
+                                $get(): Promise<number[]>;
+                                [keys: string]: {
+                                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}
+                                    $get(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
+                                    eavesdrop:  {
+                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop
+                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                    }
+                                    whisper:  {
+                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper
+                                        $post(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+                                    }
+                                    intercept:  {
+                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept
+                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                    }
+                                    hangup:  {
+                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup
+                                        $post(): Promise<telephony.Task>;
+                                    }
+                                    hold:  {
+                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold
+                                        $post(): Promise<telephony.Task>;
+                                    }
+                                    transfer:  {
+                                        // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer
+                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                    }
+                                } | any
+                            }
+                            bannerAccess:  {
+                                // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess
+                                $get(): Promise<telephony.BannerAccess>;
+                                // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess
+                                $post(): Promise<telephony.BannerAccess>;
+                                // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess
+                                $delete(): Promise<void>;
+                            }
+                        } | any
+                    }
+                }
                 sound:  {
                     // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/sound
-                    GET(): Promise<number[]>;
+                    $get(): Promise<number[]>;
                     [keys: string]: {
                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}
-                        GET(): Promise<telephony.OvhPabxSound>;
+                        $get(): Promise<telephony.OvhPabxSound>;
                         // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}
-                        DELETE(): Promise<void>;
+                        $delete(): Promise<void>;
+                    } | any
+                }
+                tts:  {
+                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/tts
+                    $get(): Promise<number[]>;
+                    // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/tts
+                    $post(body?: {text: string, voice?: telephony.OvhPabxTtsVoiceEnum}): Promise<void>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}
+                        $get(): Promise<telephony.OvhPabxTts>;
+                        // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}
+                        $put(body?: {body: telephony.OvhPabxTts}): Promise<void>;
+                        // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}
+                        $delete(): Promise<void>;
+                    } | any
+                }
+                records:  {
+                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/records
+                    $get(): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}
+                        $get(): Promise<telephony.OvhPabxRecord>;
+                        // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}
+                        $delete(): Promise<void>;
                     } | any
                 }
                 dialplan:  {
                     // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan
-                    GET(): Promise<number[]>;
+                    $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan
-                    POST(body?: {showCallerNumber: telephony.OvhPabxDialplanNumberPresentationEnum, transferTimeout: number, name: string, anonymousRejection: boolean}): Promise<telephony.OvhPabxDialplan>;
+                    $post(body?: {anonymousRejection: boolean, name: string, showCallerNumber: telephony.OvhPabxDialplanNumberPresentationEnum, transferTimeout: number}): Promise<telephony.OvhPabxDialplan>;
                     [keys: string]: {
                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}
-                        GET(): Promise<telephony.OvhPabxDialplan>;
+                        $get(): Promise<telephony.OvhPabxDialplan>;
                         // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}
-                        PUT(body?: {body: telephony.OvhPabxDialplan}): Promise<void>;
+                        $put(body?: {body: telephony.OvhPabxDialplan}): Promise<void>;
                         // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}
-                        DELETE(): Promise<void>;
+                        $delete(): Promise<void>;
                         extension:  {
                             // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension
-                            GET(): Promise<number[]>;
+                            $get(): Promise<number[]>;
                             // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension
-                            POST(body?: {screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum, schedulerCategory?: telephony.SchedulerCategoryEnum, position: number, enable: boolean}): Promise<telephony.OvhPabxDialplanExtension>;
+                            $post(body?: {enable: boolean, position: number, schedulerCategory?: telephony.SchedulerCategoryEnum, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.OvhPabxDialplanExtension>;
                             [keys: string]: {
                                 // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}
-                                GET(): Promise<telephony.OvhPabxDialplanExtension>;
+                                $get(): Promise<telephony.OvhPabxDialplanExtension>;
                                 // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}
-                                PUT(body?: {body: telephony.OvhPabxDialplanExtension}): Promise<void>;
+                                $put(body?: {body: telephony.OvhPabxDialplanExtension}): Promise<void>;
                                 // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}
-                                DELETE(): Promise<void>;
-                                conditionScreenList:  {
-                                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList
-                                    GET(): Promise<number[]>;
-                                    // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList
-                                    POST(body?: {screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum, callerIdNumber?: string, destinationNumber?: string}): Promise<telephony.OvhPabxDialplanExtensionConditionScreenList>;
+                                $delete(): Promise<void>;
+                                conditionTime:  {
+                                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime
+                                    $get(): Promise<number[]>;
+                                    // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime
+                                    $post(body?: {timeFrom: string, timeTo: string, weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<telephony.OvhPabxDialplanExtensionConditionTime>;
                                     [keys: string]: {
-                                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}
-                                        GET(): Promise<telephony.OvhPabxDialplanExtensionConditionScreenList>;
-                                        // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}
-                                        DELETE(): Promise<void>;
+                                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}
+                                        $get(): Promise<telephony.OvhPabxDialplanExtensionConditionTime>;
+                                        // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}
+                                        $put(body?: {body: telephony.OvhPabxDialplanExtensionConditionTime}): Promise<void>;
+                                        // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}
+                                        $delete(): Promise<void>;
                                     } | any
                                 }
                                 rule:  {
                                     // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule
-                                    GET(): Promise<number[]>;
+                                    $get(): Promise<number[]>;
                                     // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule
-                                    POST(body?: {negativeAction: boolean, position: number, actionParam?: string, action: telephony.OvhPabxDialplanExtensionRuleActionEnum}): Promise<telephony.OvhPabxDialplanExtensionRule>;
+                                    $post(body?: {action: telephony.OvhPabxDialplanExtensionRuleActionEnum, actionParam?: string, negativeAction: boolean, position: number}): Promise<telephony.OvhPabxDialplanExtensionRule>;
                                     [keys: string]: {
                                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}
-                                        GET(): Promise<telephony.OvhPabxDialplanExtensionRule>;
+                                        $get(): Promise<telephony.OvhPabxDialplanExtensionRule>;
                                         // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}
-                                        PUT(body?: {body: telephony.OvhPabxDialplanExtensionRule}): Promise<void>;
+                                        $put(body?: {body: telephony.OvhPabxDialplanExtensionRule}): Promise<void>;
                                         // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}
-                                        DELETE(): Promise<void>;
+                                        $delete(): Promise<void>;
                                     } | any
                                 }
-                                conditionTime:  {
-                                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime
-                                    GET(): Promise<number[]>;
-                                    // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime
-                                    POST(body?: {timeFrom: string, weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum, timeTo: string}): Promise<telephony.OvhPabxDialplanExtensionConditionTime>;
+                                conditionScreenList:  {
+                                    // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList
+                                    $get(): Promise<number[]>;
+                                    // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList
+                                    $post(body?: {callerIdNumber?: string, destinationNumber?: string, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.OvhPabxDialplanExtensionConditionScreenList>;
                                     [keys: string]: {
-                                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}
-                                        GET(): Promise<telephony.OvhPabxDialplanExtensionConditionTime>;
-                                        // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}
-                                        PUT(body?: {body: telephony.OvhPabxDialplanExtensionConditionTime}): Promise<void>;
-                                        // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}
-                                        DELETE(): Promise<void>;
+                                        // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}
+                                        $get(): Promise<telephony.OvhPabxDialplanExtensionConditionScreenList>;
+                                        // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}
+                                        $delete(): Promise<void>;
                                     } | any
                                 }
                             } | any
@@ -2638,85 +2250,161 @@ export interface Telephony {
                 }
             } | any
         }
-        serviceInfos:  {
-            // GET /telephony/{billingAccount}/serviceInfos
-            GET(): Promise<services.Service>;
-            // PUT /telephony/{billingAccount}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
-        }
-        canTransferSecurityDeposit:  {
-            // POST /telephony/{billingAccount}/canTransferSecurityDeposit
-            POST(body?: {billingAccountDestination: string}): Promise<boolean>;
-        }
-        voicemail:  {
-            // GET /telephony/{billingAccount}/voicemail
-            GET(): Promise<string[]>;
+        easyPabx:  {
+            // GET /telephony/{billingAccount}/easyPabx
+            $get(): Promise<string[]>;
             [keys: string]: {
-                // GET /telephony/{billingAccount}/voicemail/{serviceName}
-                GET(): Promise<telephony.Voicemail>;
-                // PUT /telephony/{billingAccount}/voicemail/{serviceName}
-                PUT(body?: {body: telephony.Voicemail}): Promise<void>;
-                greetings:  {
-                    // GET /telephony/{billingAccount}/voicemail/{serviceName}/greetings
-                    GET(param?: {dir?: telephony.VoicemailMessageFolderGreetingEnum}): Promise<number[]>;
-                    // POST /telephony/{billingAccount}/voicemail/{serviceName}/greetings
-                    POST(body?: {documentId: string, dir: telephony.VoicemailMessageFolderGreetingEnum}): Promise<number>;
+                // GET /telephony/{billingAccount}/easyPabx/{serviceName}
+                $get(): Promise<telephony.EasyPabx>;
+                // PUT /telephony/{billingAccount}/easyPabx/{serviceName}
+                $put(body?: {body: telephony.EasyPabx}): Promise<void>;
+                hunting:  {
+                    // GET /telephony/{billingAccount}/easyPabx/{serviceName}/hunting
+                    $get(): Promise<telephony.EasyPabxHunting>;
+                    // PUT /telephony/{billingAccount}/easyPabx/{serviceName}/hunting
+                    $put(body?: {body: telephony.EasyPabxHunting}): Promise<void>;
+                    tones:  {
+                        // GET /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones
+                        $get(): Promise<telephony.Tones>;
+                        // PUT /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones
+                        $put(body?: {body: telephony.Tones}): Promise<void>;
+                        toneUpload:  {
+                            // POST /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload
+                            $post(body?: {documentId?: string, type: telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
+                        }
+                    }
+                    agent:  {
+                        // GET /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent
+                        $get(): Promise<string[]>;
+                        // POST /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent
+                        $post(body?: {agentNumber: string, logged: boolean, noReplyTimer: number, position: number}): Promise<telephony.EasyMiniPabxHuntingAgent>;
+                        [keys: string]: {
+                            // GET /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}
+                            $get(): Promise<telephony.EasyMiniPabxHuntingAgent>;
+                            // PUT /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}
+                            $put(body?: {body: telephony.EasyMiniPabxHuntingAgent}): Promise<void>;
+                            // DELETE /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}
+                            $delete(): Promise<void>;
+                        } | any
+                    }
+                }
+            } | any
+        }
+        screen:  {
+            // GET /telephony/{billingAccount}/screen
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/screen/{serviceName}
+                $get(): Promise<telephony.Screen>;
+                // PUT /telephony/{billingAccount}/screen/{serviceName}
+                $put(body?: {body: telephony.Screen}): Promise<void>;
+                screenLists:  {
+                    // GET /telephony/{billingAccount}/screen/{serviceName}/screenLists
+                    $get(): Promise<number[]>;
+                    // POST /telephony/{billingAccount}/screen/{serviceName}/screenLists
+                    $post(body?: {callNumber?: string, nature: telephony.ScreenListNatureEnum, type: telephony.ScreenListTypeEnum}): Promise<void>;
                     [keys: string]: {
-                        // GET /telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}
-                        GET(): Promise<telephony.VoicemailGreetings>;
-                        // DELETE /telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}
-                        DELETE(): Promise<void>;
-                        move:  {
-                            // POST /telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move
-                            POST(body?: {dir: telephony.VoicemailMessageFolderGreetingEnum}): Promise<void>;
-                        }
-                        download:  {
-                            // GET /telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download
-                            GET(param?: {format?: telephony.ServiceVoicemailAudioFormatEnum}): Promise<telephony.PcsFile>;
-                        }
+                        // GET /telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}
+                        $get(): Promise<telephony.ScreenList>;
+                        // DELETE /telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}
+                        $delete(): Promise<void>;
                     } | any
                 }
-                migrateOnNewVersion:  {
-                    // POST /telephony/{billingAccount}/voicemail/{serviceName}/migrateOnNewVersion
-                    POST(): Promise<void>;
+            } | any
+        }
+        historyTollfreeConsumption:  {
+            // GET /telephony/{billingAccount}/historyTollfreeConsumption
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/historyTollfreeConsumption/{date}
+                $get(): Promise<telephony.HistoryTollfreeConsumption>;
+                document:  {
+                    // GET /telephony/{billingAccount}/historyTollfreeConsumption/{date}/document
+                    $get(): Promise<telephony.PcsFile>;
                 }
+            } | any
+        }
+        oldPhone:  {
+            // GET /telephony/{billingAccount}/oldPhone
+            $get(): Promise<telephony.Phone[]>;
+        }
+        conference:  {
+            // GET /telephony/{billingAccount}/conference
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/conference/{serviceName}
+                $get(): Promise<telephony.Conference>;
                 settings:  {
-                    // GET /telephony/{billingAccount}/voicemail/{serviceName}/settings
-                    GET(): Promise<telephony.VoicemailProperties>;
-                    // PUT /telephony/{billingAccount}/voicemail/{serviceName}/settings
-                    PUT(body?: {body: telephony.VoicemailProperties}): Promise<void>;
-                    changeRouting:  {
-                        // POST /telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting
-                        POST(body?: {routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
-                    }
-                    routing:  {
-                        // GET /telephony/{billingAccount}/voicemail/{serviceName}/settings/routing
-                        GET(): Promise<telephony.VoicefaxRoutingEnum>;
-                    }
-                    changePassword:  {
-                        // POST /telephony/{billingAccount}/voicemail/{serviceName}/settings/changePassword
-                        POST(body?: {password: string}): Promise<void>;
-                    }
-                    voicemailNumbers:  {
-                        // GET /telephony/{billingAccount}/voicemail/{serviceName}/settings/voicemailNumbers
-                        GET(): Promise<telephony.VoicemailNumbers>;
-                    }
+                    // GET /telephony/{billingAccount}/conference/{serviceName}/settings
+                    $get(): Promise<telephony.ConferenceProperties>;
+                    // PUT /telephony/{billingAccount}/conference/{serviceName}/settings
+                    $put(body?: {body: telephony.ConferenceProperties}): Promise<void>;
                 }
-                directories:  {
-                    // GET /telephony/{billingAccount}/voicemail/{serviceName}/directories
-                    GET(param?: {dir?: telephony.VoicemailMessageFolderDirectoryEnum}): Promise<number[]>;
+                webAccess:  {
+                    // GET /telephony/{billingAccount}/conference/{serviceName}/webAccess
+                    $get(): Promise<number[]>;
+                    // POST /telephony/{billingAccount}/conference/{serviceName}/webAccess
+                    $post(body?: {type: telephony.ConferenceWebAccessTypeEnum}): Promise<telephony.ConferenceWebAccess>;
                     [keys: string]: {
-                        // GET /telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}
-                        GET(): Promise<telephony.VoicemailMessages>;
-                        // DELETE /telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}
-                        DELETE(): Promise<void>;
-                        move:  {
-                            // POST /telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move
-                            POST(body?: {dir: telephony.VoicemailMessageFolderDirectoryEnum}): Promise<void>;
+                        // GET /telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}
+                        $get(): Promise<telephony.ConferenceWebAccess>;
+                        // DELETE /telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}
+                        $delete(): Promise<void>;
+                    } | any
+                }
+                histories:  {
+                    // GET /telephony/{billingAccount}/conference/{serviceName}/histories
+                    $get(): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/conference/{serviceName}/histories/{id}
+                        $get(): Promise<telephony.ConferenceHistory>;
+                    } | any
+                }
+                lock:  {
+                    // POST /telephony/{billingAccount}/conference/{serviceName}/lock
+                    $post(): Promise<telephony.Task>;
+                }
+                unlock:  {
+                    // POST /telephony/{billingAccount}/conference/{serviceName}/unlock
+                    $post(): Promise<telephony.Task>;
+                }
+                announceUpload:  {
+                    // POST /telephony/{billingAccount}/conference/{serviceName}/announceUpload
+                    $post(body?: {documentId: string}): Promise<telephony.Task>;
+                }
+                informations:  {
+                    // GET /telephony/{billingAccount}/conference/{serviceName}/informations
+                    $get(): Promise<telephony.ConferenceInformations>;
+                }
+                participants:  {
+                    // GET /telephony/{billingAccount}/conference/{serviceName}/participants
+                    $get(): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/conference/{serviceName}/participants/{id}
+                        $get(): Promise<telephony.ConferenceParticipants>;
+                        undeaf:  {
+                            // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/undeaf
+                            $post(): Promise<telephony.Task>;
                         }
-                        download:  {
-                            // GET /telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download
-                            GET(param?: {format?: telephony.ServiceVoicemailAudioFormatEnum}): Promise<telephony.PcsFile>;
+                        mute:  {
+                            // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/mute
+                            $post(): Promise<telephony.Task>;
+                        }
+                        kick:  {
+                            // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/kick
+                            $post(): Promise<telephony.Task>;
+                        }
+                        unmute:  {
+                            // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/unmute
+                            $post(): Promise<telephony.Task>;
+                        }
+                        energy:  {
+                            // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/energy
+                            $post(body?: {value: number}): Promise<telephony.Task>;
+                        }
+                        deaf:  {
+                            // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/deaf
+                            $post(): Promise<telephony.Task>;
                         }
                     } | any
                 }
@@ -2724,446 +2412,660 @@ export interface Telephony {
         }
         cancelTermination:  {
             // POST /telephony/{billingAccount}/cancelTermination
-            POST(): Promise<void>;
+            $post(): Promise<void>;
         }
-        offerTask:  {
-            // GET /telephony/{billingAccount}/offerTask
-            GET(param?: {type?: telephony.OfferTaskTypeEnum, status?: telephony.TaskStatusEnum, action?: telephony.OfferTaskActionEnum}): Promise<number[]>;
+        allowedCreditThreshold:  {
+            // GET /telephony/{billingAccount}/allowedCreditThreshold
+            $get(): Promise<order.Price[]>;
+        }
+        portability:  {
+            // GET /telephony/{billingAccount}/portability
+            $get(): Promise<number[]>;
             [keys: string]: {
-                // GET /telephony/{billingAccount}/offerTask/{taskId}
-                GET(): Promise<telephony.OfferTask>;
-                // PUT /telephony/{billingAccount}/offerTask/{taskId}
-                PUT(body?: {body: telephony.OfferTask}): Promise<void>;
+                // GET /telephony/{billingAccount}/portability/{id}
+                $get(): Promise<telephony.Portability>;
+                dateCanBeChanged:  {
+                    // GET /telephony/{billingAccount}/portability/{id}/dateCanBeChanged
+                    $get(): Promise<boolean>;
+                }
+                changeDate:  {
+                    // POST /telephony/{billingAccount}/portability/{id}/changeDate
+                    $post(body?: {date: string}): Promise<void>;
+                }
+                execute:  {
+                    // POST /telephony/{billingAccount}/portability/{id}/execute
+                    $post(): Promise<void>;
+                }
+                canBeExecuted:  {
+                    // GET /telephony/{billingAccount}/portability/{id}/canBeExecuted
+                    $get(): Promise<boolean>;
+                }
+                canBeCancelled:  {
+                    // GET /telephony/{billingAccount}/portability/{id}/canBeCancelled
+                    $get(): Promise<boolean>;
+                }
+                relaunch:  {
+                    // GET /telephony/{billingAccount}/portability/{id}/relaunch
+                    $get(): Promise<telephony.PortabilityFixErrorPossibleParameters>;
+                    // POST /telephony/{billingAccount}/portability/{id}/relaunch
+                    $post(body?: {parameters: complexType.SafeKeyValue<string>[]}): Promise<void>;
+                }
+                cancel:  {
+                    // POST /telephony/{billingAccount}/portability/{id}/cancel
+                    $post(body?: {reason?: string}): Promise<void>;
+                }
+                status:  {
+                    // GET /telephony/{billingAccount}/portability/{id}/status
+                    $get(): Promise<telephony.PortabilityStep[]>;
+                }
+                document:  {
+                    // GET /telephony/{billingAccount}/portability/{id}/document
+                    $get(): Promise<number[]>;
+                    // POST /telephony/{billingAccount}/portability/{id}/document
+                    $post(body?: {description?: string, name: string}): Promise<telephony.PortabilityDocument>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/portability/{id}/document/{documentId}
+                        $get(): Promise<telephony.PortabilityDocument>;
+                        // PUT /telephony/{billingAccount}/portability/{id}/document/{documentId}
+                        $put(body?: {body: telephony.PortabilityDocument}): Promise<void>;
+                        // DELETE /telephony/{billingAccount}/portability/{id}/document/{documentId}
+                        $delete(): Promise<void>;
+                    } | any
+                }
             } | any
         }
         eventToken:  {
             // GET /telephony/{billingAccount}/eventToken
-            GET(): Promise<telephony.EventToken>;
+            $get(): Promise<telephony.EventToken>;
             // POST /telephony/{billingAccount}/eventToken
-            POST(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
+            $post(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
             // DELETE /telephony/{billingAccount}/eventToken
-            DELETE(): Promise<void>;
+            $delete(): Promise<void>;
         }
-        fax:  {
-            // GET /telephony/{billingAccount}/fax
-            GET(): Promise<string[]>;
+        offerTask:  {
+            // GET /telephony/{billingAccount}/offerTask
+            $get(param?: {status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum, action?: telephony.OfferTaskActionEnum}): Promise<number[]>;
             [keys: string]: {
-                // GET /telephony/{billingAccount}/fax/{serviceName}
-                GET(): Promise<telephony.Fax>;
-                // PUT /telephony/{billingAccount}/fax/{serviceName}
-                PUT(body?: {body: telephony.Fax}): Promise<void>;
-                campaigns:  {
-                    // GET /telephony/{billingAccount}/fax/{serviceName}/campaigns
-                    GET(): Promise<number[]>;
-                    // POST /telephony/{billingAccount}/fax/{serviceName}/campaigns
-                    POST(body?: {faxQuality?: telephony.FaxQualityEnum, sendDate?: string, documentId: string, sendType: telephony.FaxCampaignSendTypeEnum, recipientsType: telephony.FaxCampaignRecipientsTypeEnum, name: string, recipientsDocId?: string, recipientsList?: string[]}): Promise<telephony.FaxCampaign>;
+                // GET /telephony/{billingAccount}/offerTask/{taskId}
+                $get(): Promise<telephony.OfferTask>;
+                // PUT /telephony/{billingAccount}/offerTask/{taskId}
+                $put(body?: {body: telephony.OfferTask}): Promise<void>;
+            } | any
+        }
+        line:  {
+            // GET /telephony/{billingAccount}/line
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/line/{serviceName}
+                $get(): Promise<telephony.Line>;
+                // PUT /telephony/{billingAccount}/line/{serviceName}
+                $put(body?: {body: telephony.Line}): Promise<void>;
+                removeSimultaneousLines:  {
+                    // POST /telephony/{billingAccount}/line/{serviceName}/removeSimultaneousLines
+                    $post(body?: {quantityRemove: number}): Promise<void>;
+                }
+                activateNewPhone:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/activateNewPhone
+                    $get(): Promise<void>;
+                    // POST /telephony/{billingAccount}/line/{serviceName}/activateNewPhone
+                    $post(): Promise<void>;
+                }
+                click2CallUser:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/click2CallUser
+                    $get(): Promise<number[]>;
+                    // POST /telephony/{billingAccount}/line/{serviceName}/click2CallUser
+                    $post(body?: {login: string, password: string}): Promise<number>;
                     [keys: string]: {
-                        // GET /telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}
-                        GET(): Promise<telephony.FaxCampaign>;
-                        // DELETE /telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}
-                        DELETE(): Promise<void>;
-                        detail:  {
-                            // GET /telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/detail
-                            GET(): Promise<telephony.FaxCampaignDetail>;
+                        // GET /telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}
+                        $get(): Promise<telephony.Click2CallUser>;
+                        // DELETE /telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}
+                        $delete(): Promise<void>;
+                        click2Call:  {
+                            // POST /telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/click2Call
+                            $post(body?: {calledNumber: string, callingNumber?: string}): Promise<void>;
                         }
-                        stop:  {
-                            // POST /telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/stop
-                            POST(): Promise<void>;
-                        }
-                        start:  {
-                            // POST /telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/start
-                            POST(): Promise<void>;
+                        changePassword:  {
+                            // POST /telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/changePassword
+                            $post(body?: {password: string}): Promise<void>;
                         }
                     } | any
                 }
-                screenLists:  {
-                    // GET /telephony/{billingAccount}/fax/{serviceName}/screenLists
-                    GET(): Promise<telephony.FaxScreen>;
-                    // PUT /telephony/{billingAccount}/fax/{serviceName}/screenLists
-                    PUT(body?: {body: telephony.FaxScreen}): Promise<void>;
-                    // POST /telephony/{billingAccount}/fax/{serviceName}/screenLists
-                    POST(body?: {whitelistedNumbers?: string[], filteringList?: telephony.FaxScreenListTypeEnum, blacklistedTSI?: string[], whitelistedTSI?: string[], blacklistedNumbers?: string[]}): Promise<telephony.FaxScreen>;
-                    // DELETE /telephony/{billingAccount}/fax/{serviceName}/screenLists
-                    DELETE(): Promise<void>;
-                    reset:  {
-                        // POST /telephony/{billingAccount}/fax/{serviceName}/screenLists/reset
-                        POST(body?: {whitelistedNumbers?: boolean, blacklistedTSI?: boolean, whitelistedTSI?: boolean, blacklistedNumbers?: boolean}): Promise<void>;
-                    }
+                click2Call:  {
+                    // POST /telephony/{billingAccount}/line/{serviceName}/click2Call
+                    $post(body?: {calledNumber: string, callingNumber?: string, intercom?: boolean}): Promise<void>;
                 }
-                settings:  {
-                    // GET /telephony/{billingAccount}/fax/{serviceName}/settings
-                    GET(): Promise<telephony.FaxProperties>;
-                    // PUT /telephony/{billingAccount}/fax/{serviceName}/settings
-                    PUT(body?: {body: telephony.FaxProperties}): Promise<void>;
-                    changePassword:  {
-                        // POST /telephony/{billingAccount}/fax/{serviceName}/settings/changePassword
-                        POST(body?: {password?: string}): Promise<string>;
-                    }
-                    sendFax:  {
-                        // POST /telephony/{billingAccount}/fax/{serviceName}/settings/sendFax
-                        POST(body?: {dateSchedule?: string, recipients: string[], pdfUrl: string}): Promise<telephony.Task>;
-                    }
+                dissociateDevice:  {
+                    // POST /telephony/{billingAccount}/line/{serviceName}/dissociateDevice
+                    $post(body?: {ipAddress?: string, macAddress: string}): Promise<void>;
                 }
-            } | any
-        }
-        redirect:  {
-            // GET /telephony/{billingAccount}/redirect
-            GET(): Promise<string[]>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/redirect/{serviceName}
-                GET(): Promise<telephony.Redirect>;
-                // PUT /telephony/{billingAccount}/redirect/{serviceName}
-                PUT(body?: {body: telephony.Redirect}): Promise<void>;
-                changeDestination:  {
-                    // POST /telephony/{billingAccount}/redirect/{serviceName}/changeDestination
-                    POST(body?: {destination: string}): Promise<telephony.Task>;
+                associateDevice:  {
+                    // POST /telephony/{billingAccount}/line/{serviceName}/associateDevice
+                    $post(body?: {ipAddress?: string, macAddress: string}): Promise<void>;
                 }
-            } | any
-        }
-        easyPabx:  {
-            // GET /telephony/{billingAccount}/easyPabx
-            GET(): Promise<string[]>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/easyPabx/{serviceName}
-                GET(): Promise<telephony.EasyPabx>;
-                // PUT /telephony/{billingAccount}/easyPabx/{serviceName}
-                PUT(body?: {body: telephony.EasyPabx}): Promise<void>;
-                hunting:  {
-                    // GET /telephony/{billingAccount}/easyPabx/{serviceName}/hunting
-                    GET(): Promise<telephony.EasyPabxHunting>;
-                    // PUT /telephony/{billingAccount}/easyPabx/{serviceName}/hunting
-                    PUT(body?: {body: telephony.EasyPabxHunting}): Promise<void>;
-                    tones:  {
-                        // GET /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones
-                        GET(): Promise<telephony.Tones>;
-                        // PUT /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones
-                        PUT(body?: {body: telephony.Tones}): Promise<void>;
-                        toneUpload:  {
-                            // POST /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload
-                            POST(body?: {url?: string, documentId?: string, type: telephony.TonesTypeEnum}): Promise<telephony.Task>;
-                        }
-                    }
-                    agent:  {
-                        // GET /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent
-                        GET(): Promise<string[]>;
-                        // POST /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent
-                        POST(body?: {position: number, noReplyTimer: number, logged: boolean, agentNumber: string}): Promise<telephony.EasyMiniPabxHuntingAgent>;
-                        [keys: string]: {
-                            // GET /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}
-                            GET(): Promise<telephony.EasyMiniPabxHuntingAgent>;
-                            // PUT /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}
-                            PUT(body?: {body: telephony.EasyMiniPabxHuntingAgent}): Promise<void>;
-                            // DELETE /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}
-                            DELETE(): Promise<void>;
-                        } | any
-                    }
+                automaticCall:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/automaticCall
+                    $get(): Promise<string[]>;
+                    // POST /telephony/{billingAccount}/line/{serviceName}/automaticCall
+                    $post(body?: {bridgeNumberDialplan?: string, calledNumber: string, callingNumber?: string, dialplan: telephony.CallsGeneratorDialplanEnum, isAnonymous: boolean, playbackAudioFileDialplan?: string, timeout?: number, ttsTextDialplan?: string}): Promise<string>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/line/{serviceName}/automaticCall/{identifier}
+                        $get(): Promise<telephony.CallsGenerated>;
+                    } | any
                 }
-            } | any
-        }
-        miniPabx:  {
-            // GET /telephony/{billingAccount}/miniPabx
-            GET(): Promise<string[]>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/miniPabx/{serviceName}
-                GET(): Promise<telephony.MiniPabx>;
-                // PUT /telephony/{billingAccount}/miniPabx/{serviceName}
-                PUT(body?: {body: telephony.MiniPabx}): Promise<void>;
-                hunting:  {
-                    // GET /telephony/{billingAccount}/miniPabx/{serviceName}/hunting
-                    GET(): Promise<telephony.MiniPabxHunting>;
-                    // PUT /telephony/{billingAccount}/miniPabx/{serviceName}/hunting
-                    PUT(body?: {body: telephony.MiniPabxHunting}): Promise<void>;
-                    agent:  {
-                        // GET /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent
-                        GET(): Promise<string[]>;
-                        // POST /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent
-                        POST(body?: {position: number, noReplyTimer: number, logged: boolean, agentNumber: string}): Promise<telephony.EasyMiniPabxHuntingAgent>;
-                        [keys: string]: {
-                            // GET /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}
-                            GET(): Promise<telephony.EasyMiniPabxHuntingAgent>;
-                            // PUT /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}
-                            PUT(body?: {body: telephony.EasyMiniPabxHuntingAgent}): Promise<void>;
-                            // DELETE /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}
-                            DELETE(): Promise<void>;
-                        } | any
-                    }
+                trafficExtracts:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/trafficExtracts
+                    $get(): Promise<number[]>;
+                    // POST /telephony/{billingAccount}/line/{serviceName}/trafficExtracts
+                    $post(body?: {dateEnd: string, dateStart: string}): Promise<telephony.trafficExtract>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}
+                        $get(): Promise<telephony.trafficExtract>;
+                        // DELETE /telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}
+                        $delete(): Promise<void>;
+                    } | any
+                }
+                lastRegistrations:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/lastRegistrations
+                    $get(): Promise<telephony.RegistrationInformations[]>;
+                }
+                availableSipDomains:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/availableSipDomains
+                    $get(): Promise<string[]>;
+                }
+                convertToNumber:  {
+                    // POST /telephony/{billingAccount}/line/{serviceName}/convertToNumber
+                    $post(): Promise<telephony.OfferTask>;
+                }
+                offer:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/offer
+                    $get(): Promise<telephony.LineOffer>;
+                }
+                cancelConvertToNumber:  {
+                    // POST /telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber
+                    $post(): Promise<void>;
+                }
+                unblock:  {
+                    // POST /telephony/{billingAccount}/line/{serviceName}/unblock
+                    $post(): Promise<void>;
+                }
+                listAssociablePhones:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/listAssociablePhones
+                    $get(): Promise<telephony.LinePhoneAssociable[]>;
                 }
                 tones:  {
-                    // GET /telephony/{billingAccount}/miniPabx/{serviceName}/tones
-                    GET(): Promise<telephony.Tones>;
-                    // PUT /telephony/{billingAccount}/miniPabx/{serviceName}/tones
-                    PUT(body?: {body: telephony.Tones}): Promise<void>;
+                    // GET /telephony/{billingAccount}/line/{serviceName}/tones
+                    $get(): Promise<telephony.Tones>;
+                    // PUT /telephony/{billingAccount}/line/{serviceName}/tones
+                    $put(body?: {body: telephony.Tones}): Promise<void>;
                     toneUpload:  {
-                        // POST /telephony/{billingAccount}/miniPabx/{serviceName}/tones/toneUpload
-                        POST(body?: {url?: string, documentId?: string, type: telephony.TonesTypeEnum}): Promise<telephony.Task>;
+                        // POST /telephony/{billingAccount}/line/{serviceName}/tones/toneUpload
+                        $post(body?: {documentId?: string, type: telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
                     }
                 }
-            } | any
-        }
-        trunk:  {
-            // GET /telephony/{billingAccount}/trunk
-            GET(): Promise<string[]>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/trunk/{serviceName}
-                GET(): Promise<telephony.Trunk>;
-                externalDisplayedNumber:  {
-                    // GET /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber
-                    GET(): Promise<string[]>;
-                    // POST /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber
-                    POST(body?: {number: string, autoValidation?: boolean}): Promise<telephony.TrunkExternalDisplayedNumber>;
+                maximumAvailableSimultaneousLines:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/maximumAvailableSimultaneousLines
+                    $get(): Promise<number>;
+                }
+                canChangePassword:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/canChangePassword
+                    $get(): Promise<boolean>;
+                }
+                antihack:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/antihack
+                    $get(): Promise<string[]>;
+                    // POST /telephony/{billingAccount}/line/{serviceName}/antihack
+                    $post(body?: {action: telephony.AntihackActionEnum, restricted?: string}): Promise<void>;
+                }
+                changePassword:  {
+                    // POST /telephony/{billingAccount}/line/{serviceName}/changePassword
+                    $post(body?: {password?: string}): Promise<void>;
+                }
+                phoneCanBeAssociable:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/phoneCanBeAssociable
+                    $get(): Promise<telephony.LinePhone[]>;
+                }
+                ips:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/ips
+                    $get(): Promise<telephony.DatetimeAndIpvalue[]>;
+                }
+                abbreviatedNumber:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber
+                    $get(): Promise<number[]>;
+                    // POST /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber
+                    $post(body?: {abbreviatedNumber: number, destinationNumber: string, name: string, surname: string}): Promise<telephony.AbbreviatedNumber>;
                     [keys: string]: {
-                        // GET /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}
-                        GET(): Promise<telephony.TrunkExternalDisplayedNumber>;
-                        // DELETE /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}
-                        DELETE(): Promise<void>;
-                        validate:  {
-                            // POST /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}/validate
-                            POST(): Promise<telephony.TrunkExternalDisplayedNumberValidation>;
+                        // GET /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}
+                        $get(): Promise<telephony.AbbreviatedNumber>;
+                        // PUT /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}
+                        $put(body?: {body: telephony.AbbreviatedNumber}): Promise<void>;
+                        // DELETE /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}
+                        $delete(): Promise<void>;
+                    } | any
+                }
+                options:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/options
+                    $get(): Promise<telephony.LineOptions>;
+                    // PUT /telephony/{billingAccount}/line/{serviceName}/options
+                    $put(body?: {body: telephony.LineOptions}): Promise<void>;
+                    defaultCodecs:  {
+                        // GET /telephony/{billingAccount}/line/{serviceName}/options/defaultCodecs
+                        $get(): Promise<string>;
+                    }
+                    availableCodecs:  {
+                        // GET /telephony/{billingAccount}/line/{serviceName}/options/availableCodecs
+                        $get(): Promise<string[]>;
+                    }
+                }
+                statistics:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/statistics
+                    $get(param?: {type: telephony.LineStatisticsTypeEnum, timeframe: telephony.StatisticsTimeframeEnum}): Promise<complexType.UnitAndValues<telephony.TimestampAndValue>>;
+                }
+                simultaneousChannelsDetails:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/simultaneousChannelsDetails
+                    $get(): Promise<telephony.SimultaneousChannelsDetails>;
+                }
+                phone:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/phone
+                    $get(): Promise<telephony.Phone>;
+                    // PUT /telephony/{billingAccount}/line/{serviceName}/phone
+                    $put(body?: {body: telephony.Phone}): Promise<void>;
+                    adminCredentials:  {
+                        // GET /telephony/{billingAccount}/line/{serviceName}/phone/adminCredentials
+                        $get(): Promise<telephony.PhoneCredentials>;
+                    }
+                    reboot:  {
+                        // POST /telephony/{billingAccount}/line/{serviceName}/phone/reboot
+                        $post(): Promise<telephony.Task>;
+                    }
+                    rma:  {
+                        // GET /telephony/{billingAccount}/line/{serviceName}/phone/rma
+                        $get(): Promise<string[]>;
+                        // POST /telephony/{billingAccount}/line/{serviceName}/phone/rma
+                        $post(body?: {mondialRelayId?: string, newMerchandise?: string, shippingContactId?: number, type: telephony.RmaPublicTypeEnum}): Promise<telephony.RmaReturn>;
+                        [keys: string]: {
+                            // GET /telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}
+                            $get(): Promise<telephony.Rma>;
+                            // PUT /telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}
+                            $put(body?: {body: telephony.Rma}): Promise<void>;
+                            // DELETE /telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}
+                            $delete(): Promise<void>;
+                        } | any
+                    }
+                    changePhoneConfiguration:  {
+                        // POST /telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration
+                        $post(body?: {autoReboot?: boolean, newConfigurations?: complexType.SafeKeyValue<string>[]}): Promise<void>;
+                    }
+                    refreshScreen:  {
+                        // POST /telephony/{billingAccount}/line/{serviceName}/phone/refreshScreen
+                        $post(): Promise<telephony.Task>;
+                    }
+                    merchandiseAvailable:  {
+                        // GET /telephony/{billingAccount}/line/{serviceName}/phone/merchandiseAvailable
+                        $get(): Promise<telephony.HardwareOffer[]>;
+                    }
+                    resetConfig:  {
+                        // POST /telephony/{billingAccount}/line/{serviceName}/phone/resetConfig
+                        $post(body?: {ip: string}): Promise<telephony.ResetPhoneInfo>;
+                    }
+                    phonebook:  {
+                        // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook
+                        $get(): Promise<string[]>;
+                        // POST /telephony/{billingAccount}/line/{serviceName}/phone/phonebook
+                        $post(body?: {name: string}): Promise<string>;
+                        [keys: string]: {
+                            // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}
+                            $get(): Promise<telephony.Phonebook>;
+                            // PUT /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}
+                            $put(body?: {body: telephony.Phonebook}): Promise<void>;
+                            // DELETE /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}
+                            $delete(): Promise<void>;
+                            phonebookContact:  {
+                                // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact
+                                $get(): Promise<number[]>;
+                                // POST /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact
+                                $post(body?: {group: string, homeMobile?: string, homePhone?: string, name: string, surname: string, workMobile?: string, workPhone?: string}): Promise<number>;
+                                [keys: string]: {
+                                    // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}
+                                    $get(): Promise<telephony.PhonebookContact>;
+                                    // PUT /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}
+                                    $put(body?: {body: telephony.PhonebookContact}): Promise<void>;
+                                    // DELETE /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}
+                                    $delete(): Promise<void>;
+                                } | any
+                            }
+                            import:  {
+                                // POST /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/import
+                                $post(body?: {documentId: string}): Promise<telephony.Task>;
+                            }
+                            export:  {
+                                // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export
+                                $get(param?: {format: telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
+                            }
+                        } | any
+                    }
+                    functionKey:  {
+                        // GET /telephony/{billingAccount}/line/{serviceName}/phone/functionKey
+                        $get(): Promise<number[]>;
+                        [keys: string]: {
+                            // GET /telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}
+                            $get(): Promise<telephony.FunctionKey>;
+                            // PUT /telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}
+                            $put(body?: {body: telephony.FunctionKey}): Promise<void>;
+                            availableFunction:  {
+                                // GET /telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction
+                                $get(): Promise<string[]>;
+                            }
+                        } | any
+                    }
+                    supportsPhonebook:  {
+                        // GET /telephony/{billingAccount}/line/{serviceName}/phone/supportsPhonebook
+                        $get(): Promise<boolean>;
+                    }
+                }
+                calls:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/calls
+                    $get(): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/line/{serviceName}/calls/{id}
+                        $get(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
+                        hold:  {
+                            // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/hold
+                            $post(): Promise<telephony.Task>;
+                        }
+                        hangup:  {
+                            // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/hangup
+                            $post(): Promise<telephony.Task>;
+                        }
+                        transfer:  {
+                            // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/transfer
+                            $post(body?: {number: string}): Promise<telephony.Task>;
+                        }
+                        eavesdrop:  {
+                            // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/eavesdrop
+                            $post(body?: {number: string}): Promise<telephony.Task>;
+                        }
+                        whisper:  {
+                            // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper
+                            $post(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+                        }
+                        intercept:  {
+                            // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/intercept
+                            $post(body?: {number: string}): Promise<telephony.Task>;
                         }
                     } | any
                 }
-                channelsPacksRepartition:  {
-                    // GET /telephony/{billingAccount}/trunk/{serviceName}/channelsPacksRepartition
-                    GET(param?: {quantity: number}): Promise<telephony.TrunkSimultaneousPacksRepartition>;
+                block:  {
+                    // POST /telephony/{billingAccount}/line/{serviceName}/block
+                    $post(body?: {mode?: telephony.LineBlockingMode}): Promise<void>;
                 }
-            } | any
-        }
-        oldPhone:  {
-            // GET /telephony/{billingAccount}/oldPhone
-            GET(): Promise<telephony.Phone[]>;
-        }
-        task:  {
-            // GET /telephony/{billingAccount}/task
-            GET(param?: {status?: telephony.TaskStatusEnum, action?: string, serviceType?: string}): Promise<number[]>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/task/{taskId}
-                GET(): Promise<telephony.Task>;
-            } | any
-        }
-        ddi:  {
-            // GET /telephony/{billingAccount}/ddi
-            GET(): Promise<string[]>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/ddi/{serviceName}
-                GET(): Promise<telephony.Ddi>;
-                // PUT /telephony/{billingAccount}/ddi/{serviceName}
-                PUT(body?: {body: telephony.Ddi}): Promise<void>;
-                changeDestination:  {
-                    // POST /telephony/{billingAccount}/ddi/{serviceName}/changeDestination
-                    POST(body?: {destination: string}): Promise<telephony.Task>;
-                }
-            } | any
-        }
-        screen:  {
-            // GET /telephony/{billingAccount}/screen
-            GET(): Promise<string[]>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/screen/{serviceName}
-                GET(): Promise<telephony.Screen>;
-                // PUT /telephony/{billingAccount}/screen/{serviceName}
-                PUT(body?: {body: telephony.Screen}): Promise<void>;
-                screenLists:  {
-                    // GET /telephony/{billingAccount}/screen/{serviceName}/screenLists
-                    GET(): Promise<number[]>;
-                    // POST /telephony/{billingAccount}/screen/{serviceName}/screenLists
-                    POST(body?: {callNumber?: string, type: telephony.ScreenListTypeEnum, nature: telephony.ScreenListNatureEnum}): Promise<void>;
+                records:  {
+                    // GET /telephony/{billingAccount}/line/{serviceName}/records
+                    $get(): Promise<number[]>;
                     [keys: string]: {
-                        // GET /telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}
-                        GET(): Promise<telephony.ScreenList>;
-                        // DELETE /telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}
-                        DELETE(): Promise<void>;
+                        // GET /telephony/{billingAccount}/line/{serviceName}/records/{id}
+                        $get(): Promise<telephony.OvhPabxRecord>;
+                        // DELETE /telephony/{billingAccount}/line/{serviceName}/records/{id}
+                        $delete(): Promise<void>;
                     } | any
+                }
+            } | any
+        }
+        historyConsumption:  {
+            // GET /telephony/{billingAccount}/historyConsumption
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/historyConsumption/{date}
+                $get(): Promise<telephony.HistoryConsumption>;
+                file:  {
+                    // GET /telephony/{billingAccount}/historyConsumption/{date}/file
+                    $get(param?: {extension: telephony.BillDocument}): Promise<telephony.PcsFile>;
                 }
             } | any
         }
         historyRepaymentConsumption:  {
             // GET /telephony/{billingAccount}/historyRepaymentConsumption
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             // POST /telephony/{billingAccount}/historyRepaymentConsumption
-            POST(body?: {billingNumber?: string}): Promise<telephony.HistoryRepaymentConsumption>;
+            $post(body?: {billingNumber?: string}): Promise<telephony.HistoryRepaymentConsumption>;
             [keys: string]: {
                 // GET /telephony/{billingAccount}/historyRepaymentConsumption/{date}
-                GET(): Promise<telephony.HistoryRepaymentConsumption>;
+                $get(): Promise<telephony.HistoryRepaymentConsumption>;
                 document:  {
                     // GET /telephony/{billingAccount}/historyRepaymentConsumption/{date}/document
-                    GET(): Promise<telephony.PcsFile>;
+                    $get(): Promise<telephony.PcsFile>;
                 }
             } | any
         }
-        allowedCreditThreshold:  {
-            // GET /telephony/{billingAccount}/allowedCreditThreshold
-            GET(): Promise<order.Price[]>;
+        outplanNotification:  {
+            // GET /telephony/{billingAccount}/outplanNotification
+            $get(): Promise<number[]>;
+            // POST /telephony/{billingAccount}/outplanNotification
+            $post(body?: {block: telephony.OutplanNotificationBlockEnum, notifyEmail?: string, percentage: number}): Promise<telephony.ConsumptionThreshold>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/outplanNotification/{id}
+                $get(): Promise<telephony.ConsumptionThreshold>;
+                // DELETE /telephony/{billingAccount}/outplanNotification/{id}
+                $delete(): Promise<void>;
+            } | any
+        }
+        vxml:  {
+            // GET /telephony/{billingAccount}/vxml
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/vxml/{serviceName}
+                $get(): Promise<telephony.Vxml>;
+                settings:  {
+                    // GET /telephony/{billingAccount}/vxml/{serviceName}/settings
+                    $get(): Promise<telephony.VxmlProperties>;
+                    // PUT /telephony/{billingAccount}/vxml/{serviceName}/settings
+                    $put(body?: {body: telephony.VxmlProperties}): Promise<void>;
+                    logs:  {
+                        // POST /telephony/{billingAccount}/vxml/{serviceName}/settings/logs
+                        $post(): Promise<telephony.TemporaryLogsLink>;
+                    }
+                }
+            } | any
+        }
+        changeContact:  {
+            // POST /telephony/{billingAccount}/changeContact
+            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+        }
+        canTransferSecurityDeposit:  {
+            // POST /telephony/{billingAccount}/canTransferSecurityDeposit
+            $post(body?: {billingAccountDestination: string}): Promise<boolean>;
+        }
+        phonebook:  {
+            // GET /telephony/{billingAccount}/phonebook
+            $get(): Promise<string[]>;
+            // POST /telephony/{billingAccount}/phonebook
+            $post(body?: {name: string}): Promise<string>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/phonebook/{bookKey}
+                $get(): Promise<telephony.PhonebookMaster>;
+                // PUT /telephony/{billingAccount}/phonebook/{bookKey}
+                $put(body?: {body: telephony.PhonebookMaster}): Promise<void>;
+                // DELETE /telephony/{billingAccount}/phonebook/{bookKey}
+                $delete(): Promise<void>;
+                export:  {
+                    // GET /telephony/{billingAccount}/phonebook/{bookKey}/export
+                    $get(param?: {format: telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
+                }
+                import:  {
+                    // POST /telephony/{billingAccount}/phonebook/{bookKey}/import
+                    $post(body?: {documentId: string}): Promise<telephony.Task>;
+                }
+                phonebookContact:  {
+                    // GET /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact
+                    $get(): Promise<number[]>;
+                    // POST /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact
+                    $post(body?: {group: string, homeMobile?: string, homePhone?: string, name: string, surname: string, workMobile?: string, workPhone?: string}): Promise<number>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}
+                        $get(): Promise<telephony.PhonebookContact>;
+                        // PUT /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}
+                        $put(body?: {body: telephony.PhonebookContact}): Promise<void>;
+                        // DELETE /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}
+                        $delete(): Promise<void>;
+                    } | any
+                }
+            } | any
+        }
+        serviceInfos:  {
+            // GET /telephony/{billingAccount}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /telephony/{billingAccount}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
+        }
+        abbreviatedNumber:  {
+            // GET /telephony/{billingAccount}/abbreviatedNumber
+            $get(): Promise<number[]>;
+            // POST /telephony/{billingAccount}/abbreviatedNumber
+            $post(body?: {abbreviatedNumber: number, destinationNumber: string, name: string, surname: string}): Promise<telephony.AbbreviatedNumberGroup>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}
+                $get(): Promise<telephony.AbbreviatedNumberGroup>;
+                // PUT /telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}
+                $put(body?: {body: telephony.AbbreviatedNumberGroup}): Promise<void>;
+                // DELETE /telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}
+                $delete(): Promise<void>;
+            } | any
+        }
+        transferSecurityDeposit:  {
+            // POST /telephony/{billingAccount}/transferSecurityDeposit
+            $post(body?: {amount: number, billingAccountDestination: string}): Promise<void>;
+        }
+        amountSecurityDeposit:  {
+            // GET /telephony/{billingAccount}/amountSecurityDeposit
+            $get(): Promise<order.Price[]>;
         }
         easyHunting:  {
             // GET /telephony/{billingAccount}/easyHunting
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             [keys: string]: {
                 // GET /telephony/{billingAccount}/easyHunting/{serviceName}
-                GET(): Promise<telephony.EasyHunting>;
+                $get(): Promise<telephony.EasyHunting>;
                 // PUT /telephony/{billingAccount}/easyHunting/{serviceName}
-                PUT(body?: {body: telephony.EasyHunting}): Promise<void>;
+                $put(body?: {body: telephony.EasyHunting}): Promise<void>;
+                soundUpload:  {
+                    // POST /telephony/{billingAccount}/easyHunting/{serviceName}/soundUpload
+                    $post(body?: {documentId?: string, name?: string, url?: string}): Promise<telephony.Task>;
+                }
+                screenListConditions:  {
+                    // GET /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions
+                    $get(): Promise<telephony.EasyHuntingScreenListsConditionsSettings>;
+                    // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions
+                    $put(body?: {body: telephony.EasyHuntingScreenListsConditionsSettings}): Promise<void>;
+                    conditions:  {
+                        // GET /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions
+                        $get(param?: {screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<number[]>;
+                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions
+                        $post(body?: {callerIdNumber?: string, destinationNumber?: string, screenListType: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.EasyHuntingScreenListsConditions>;
+                        [keys: string]: {
+                            // GET /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}
+                            $get(): Promise<telephony.EasyHuntingScreenListsConditions>;
+                            // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}
+                            $put(body?: {body: telephony.EasyHuntingScreenListsConditions}): Promise<void>;
+                            // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}
+                            $delete(): Promise<void>;
+                        } | any
+                    }
+                }
+                records:  {
+                    // GET /telephony/{billingAccount}/easyHunting/{serviceName}/records
+                    $get(): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}
+                        $get(): Promise<telephony.OvhPabxRecord>;
+                        // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}
+                        $delete(): Promise<void>;
+                    } | any
+                }
                 sound:  {
                     // GET /telephony/{billingAccount}/easyHunting/{serviceName}/sound
-                    GET(): Promise<number[]>;
+                    $get(): Promise<number[]>;
                     [keys: string]: {
                         // GET /telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}
-                        GET(): Promise<telephony.OvhPabxSound>;
+                        $get(): Promise<telephony.OvhPabxSound>;
                         // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}
-                        DELETE(): Promise<void>;
+                        $delete(): Promise<void>;
                     } | any
                 }
                 hunting:  {
                     // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting
-                    GET(): Promise<telephony.OvhPabxHunting>;
+                    $get(): Promise<telephony.OvhPabxHunting>;
                     // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/hunting
-                    PUT(body?: {body: telephony.OvhPabxHunting}): Promise<void>;
+                    $put(body?: {body: telephony.OvhPabxHunting}): Promise<void>;
+                    eventToken:  {
+                        // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken
+                        $get(): Promise<telephony.EventToken>;
+                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken
+                        $post(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
+                        // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken
+                        $delete(): Promise<void>;
+                    }
                     queue:  {
                         // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue
-                        GET(): Promise<number[]>;
+                        $get(): Promise<number[]>;
                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue
-                        POST(body?: {actionOnOverflowParam?: string, record?: boolean, strategy: telephony.OvhPabxHuntingQueueStrategyEnum, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, soundOnHold?: number, askForRecordDisabling?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, maxMember?: number, maxWaitTime?: number, actionOnClosure?: telephony.OvhPabxQueueActionEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, actionOnClosureParam?: string, description?: string}): Promise<telephony.OvhPabxHuntingQueue>;
+                        $post(body?: {actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<telephony.OvhPabxHuntingQueue>;
                         [keys: string]: {
                             // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}
-                            GET(): Promise<telephony.OvhPabxHuntingQueue>;
+                            $get(): Promise<telephony.OvhPabxHuntingQueue>;
                             // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}
-                            PUT(body?: {body: telephony.OvhPabxHuntingQueue}): Promise<void>;
+                            $put(body?: {body: telephony.OvhPabxHuntingQueue}): Promise<void>;
                             // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}
-                            DELETE(): Promise<void>;
-                            liveCalls:  {
-                                // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls
-                                GET(): Promise<number[]>;
-                                [keys: string]: {
-                                    // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}
-                                    GET(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
-                                    whisper:  {
-                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper
-                                        POST(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
-                                    }
-                                    intercept:  {
-                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept
-                                        POST(body?: {number: string}): Promise<telephony.Task>;
-                                    }
-                                    hangup:  {
-                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup
-                                        POST(): Promise<telephony.Task>;
-                                    }
-                                    transfer:  {
-                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer
-                                        POST(body?: {number: string}): Promise<telephony.Task>;
-                                    }
-                                    hold:  {
-                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold
-                                        POST(): Promise<telephony.Task>;
-                                    }
-                                    eavesdrop:  {
-                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop
-                                        POST(body?: {number: string}): Promise<telephony.Task>;
-                                    }
-                                } | any
-                            }
+                            $delete(): Promise<void>;
                             liveStatistics:  {
                                 // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveStatistics
-                                GET(): Promise<telephony.OvhPabxHuntingQueueLiveStatistics>;
+                                $get(): Promise<telephony.OvhPabxHuntingQueueLiveStatistics>;
                             }
                             agent:  {
                                 // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent
-                                GET(): Promise<number[]>;
+                                $get(): Promise<number[]>;
                                 // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent
-                                POST(body?: {queueId: number, position: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
+                                $post(body?: {position: number, queueId: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
                                 [keys: string]: {
                                     // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
-                                    GET(): Promise<telephony.OvhPabxHuntingAgentQueue>;
+                                    $get(): Promise<telephony.OvhPabxHuntingAgentQueue>;
                                     // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
-                                    PUT(body?: {body: telephony.OvhPabxHuntingAgentQueue}): Promise<void>;
+                                    $put(body?: {body: telephony.OvhPabxHuntingAgentQueue}): Promise<void>;
                                     // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
-                                    DELETE(): Promise<void>;
+                                    $delete(): Promise<void>;
                                     liveStatus:  {
                                         // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus
-                                        GET(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
+                                        $get(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
                                     }
                                 } | any
                             }
-                        } | any
-                    }
-                    agent:  {
-                        // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent
-                        GET(): Promise<number[]>;
-                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent
-                        POST(body?: {description?: string, status: telephony.OvhPabxHuntingAgentStatusEnum, wrapUpTime: number, simultaneousLines: number, timeout: number, number: string}): Promise<telephony.OvhPabxHuntingAgent>;
-                        [keys: string]: {
-                            // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}
-                            GET(): Promise<telephony.OvhPabxHuntingAgent>;
-                            // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}
-                            PUT(body?: {body: telephony.OvhPabxHuntingAgent}): Promise<void>;
-                            // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}
-                            DELETE(): Promise<void>;
-                            eventToken:  {
-                                // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken
-                                GET(): Promise<telephony.EventToken>;
-                                // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken
-                                POST(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
-                                // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken
-                                DELETE(): Promise<void>;
-                            }
-                            bannerAccess:  {
-                                // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess
-                                GET(): Promise<telephony.BannerAccess>;
-                                // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess
-                                POST(): Promise<telephony.BannerAccess>;
-                                // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess
-                                DELETE(): Promise<void>;
-                            }
-                            liveStatus:  {
-                                // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/liveStatus
-                                GET(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
-                            }
-                            queue:  {
-                                // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue
-                                GET(): Promise<number[]>;
-                                // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue
-                                POST(body?: {queueId: number, position: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
+                            liveCalls:  {
+                                // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls
+                                $get(): Promise<number[]>;
                                 [keys: string]: {
-                                    // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
-                                    GET(): Promise<telephony.OvhPabxHuntingAgentQueue>;
-                                    // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
-                                    PUT(body?: {body: telephony.OvhPabxHuntingAgentQueue}): Promise<void>;
-                                    // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
-                                    DELETE(): Promise<void>;
-                                    liveStatus:  {
-                                        // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus
-                                        GET(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
-                                    }
-                                } | any
-                            }
-                            calls:  {
-                                // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls
-                                GET(): Promise<number[]>;
-                                [keys: string]: {
-                                    // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}
-                                    GET(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
-                                    transfer:  {
-                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer
-                                        POST(body?: {number: string}): Promise<telephony.Task>;
-                                    }
-                                    hangup:  {
-                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup
-                                        POST(): Promise<telephony.Task>;
-                                    }
+                                    // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}
+                                    $get(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
                                     intercept:  {
-                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept
-                                        POST(body?: {number: string}): Promise<telephony.Task>;
+                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept
+                                        $post(body?: {number: string}): Promise<telephony.Task>;
                                     }
                                     whisper:  {
-                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper
-                                        POST(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
-                                    }
-                                    hold:  {
-                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold
-                                        POST(): Promise<telephony.Task>;
+                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper
+                                        $post(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
                                     }
                                     eavesdrop:  {
-                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop
-                                        POST(body?: {number: string}): Promise<telephony.Task>;
+                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop
+                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                    }
+                                    transfer:  {
+                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer
+                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                    }
+                                    hold:  {
+                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold
+                                        $post(): Promise<telephony.Task>;
+                                    }
+                                    hangup:  {
+                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup
+                                        $post(): Promise<telephony.Task>;
                                     }
                                 } | any
                             }
@@ -3171,1063 +3073,1161 @@ export interface Telephony {
                     }
                     customStatus:  {
                         // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus
-                        GET(): Promise<number[]>;
+                        $get(): Promise<number[]>;
                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus
-                        POST(body?: {color?: string, name: string, description?: string}): Promise<telephony.OvhPabxCustomStatus>;
+                        $post(body?: {color?: string, description?: string, name: string}): Promise<telephony.OvhPabxCustomStatus>;
                         [keys: string]: {
                             // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}
-                            GET(): Promise<telephony.OvhPabxCustomStatus>;
+                            $get(): Promise<telephony.OvhPabxCustomStatus>;
                             // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}
-                            DELETE(): Promise<void>;
+                            $delete(): Promise<void>;
                         } | any
                     }
-                    eventToken:  {
-                        // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken
-                        GET(): Promise<telephony.EventToken>;
-                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken
-                        POST(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
-                        // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken
-                        DELETE(): Promise<void>;
-                    }
-                }
-                soundUpload:  {
-                    // POST /telephony/{billingAccount}/easyHunting/{serviceName}/soundUpload
-                    POST(body?: {name?: string, url?: string, documentId?: string}): Promise<telephony.Task>;
-                }
-                screenListConditions:  {
-                    // GET /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions
-                    GET(): Promise<telephony.EasyHuntingScreenListsConditionsSettings>;
-                    // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions
-                    PUT(body?: {body: telephony.EasyHuntingScreenListsConditionsSettings}): Promise<void>;
-                    conditions:  {
-                        // GET /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions
-                        GET(param?: {screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<number[]>;
-                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions
-                        POST(body?: {screenListType: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum, callerIdNumber?: string, destinationNumber?: string}): Promise<telephony.EasyHuntingScreenListsConditions>;
+                    agent:  {
+                        // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent
+                        $get(): Promise<number[]>;
+                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent
+                        $post(body?: {description?: string, number: string, simultaneousLines: number, status: telephony.OvhPabxHuntingAgentStatusEnum, timeout: number, wrapUpTime: number}): Promise<telephony.OvhPabxHuntingAgent>;
                         [keys: string]: {
-                            // GET /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}
-                            GET(): Promise<telephony.EasyHuntingScreenListsConditions>;
-                            // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}
-                            PUT(body?: {body: telephony.EasyHuntingScreenListsConditions}): Promise<void>;
-                            // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}
-                            DELETE(): Promise<void>;
+                            // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}
+                            $get(): Promise<telephony.OvhPabxHuntingAgent>;
+                            // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}
+                            $put(body?: {body: telephony.OvhPabxHuntingAgent}): Promise<void>;
+                            // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}
+                            $delete(): Promise<void>;
+                            eventToken:  {
+                                // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken
+                                $get(): Promise<telephony.EventToken>;
+                                // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken
+                                $post(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
+                                // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken
+                                $delete(): Promise<void>;
+                            }
+                            calls:  {
+                                // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls
+                                $get(): Promise<number[]>;
+                                [keys: string]: {
+                                    // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}
+                                    $get(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
+                                    transfer:  {
+                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer
+                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                    }
+                                    hold:  {
+                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold
+                                        $post(): Promise<telephony.Task>;
+                                    }
+                                    hangup:  {
+                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup
+                                        $post(): Promise<telephony.Task>;
+                                    }
+                                    intercept:  {
+                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept
+                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                    }
+                                    whisper:  {
+                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper
+                                        $post(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+                                    }
+                                    eavesdrop:  {
+                                        // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop
+                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                    }
+                                } | any
+                            }
+                            bannerAccess:  {
+                                // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess
+                                $get(): Promise<telephony.BannerAccess>;
+                                // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess
+                                $post(): Promise<telephony.BannerAccess>;
+                                // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess
+                                $delete(): Promise<void>;
+                            }
+                            liveStatus:  {
+                                // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/liveStatus
+                                $get(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
+                            }
+                            queue:  {
+                                // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue
+                                $get(): Promise<number[]>;
+                                // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue
+                                $post(body?: {position: number, queueId: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
+                                [keys: string]: {
+                                    // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
+                                    $get(): Promise<telephony.OvhPabxHuntingAgentQueue>;
+                                    // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
+                                    $put(body?: {body: telephony.OvhPabxHuntingAgentQueue}): Promise<void>;
+                                    // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
+                                    $delete(): Promise<void>;
+                                    liveStatus:  {
+                                        // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus
+                                        $get(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
+                                    }
+                                } | any
+                            }
                         } | any
                     }
                 }
                 timeConditions:  {
                     // GET /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions
-                    GET(): Promise<telephony.EasyHuntingTimeConditionsSettings>;
+                    $get(): Promise<telephony.EasyHuntingTimeConditionsSettings>;
                     // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions
-                    PUT(body?: {body: telephony.EasyHuntingTimeConditionsSettings}): Promise<void>;
+                    $put(body?: {body: telephony.EasyHuntingTimeConditionsSettings}): Promise<void>;
                     conditions:  {
                         // GET /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions
-                        GET(param?: {policy?: telephony.TimeConditionsPolicyEnum}): Promise<number[]>;
+                        $get(param?: {policy?: telephony.TimeConditionsPolicyEnum}): Promise<number[]>;
                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions
-                        POST(body?: {policy: telephony.TimeConditionsPolicyEnum, timeTo: string, weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum, timeFrom: string}): Promise<telephony.EasyHuntingTimeConditions>;
+                        $post(body?: {policy: telephony.TimeConditionsPolicyEnum, timeFrom: string, timeTo: string, weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<telephony.EasyHuntingTimeConditions>;
                         [keys: string]: {
                             // GET /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}
-                            GET(): Promise<telephony.EasyHuntingTimeConditions>;
+                            $get(): Promise<telephony.EasyHuntingTimeConditions>;
                             // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}
-                            PUT(body?: {body: telephony.EasyHuntingTimeConditions}): Promise<void>;
+                            $put(body?: {body: telephony.EasyHuntingTimeConditions}): Promise<void>;
                             // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}
-                            DELETE(): Promise<void>;
+                            $delete(): Promise<void>;
                         } | any
                     }
                 }
-                records:  {
-                    // GET /telephony/{billingAccount}/easyHunting/{serviceName}/records
-                    GET(): Promise<number[]>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}
-                        GET(): Promise<telephony.OvhPabxRecord>;
-                        // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}
-                        DELETE(): Promise<void>;
-                    } | any
+            } | any
+        }
+        redirect:  {
+            // GET /telephony/{billingAccount}/redirect
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/redirect/{serviceName}
+                $get(): Promise<telephony.Redirect>;
+                // PUT /telephony/{billingAccount}/redirect/{serviceName}
+                $put(body?: {body: telephony.Redirect}): Promise<void>;
+                changeDestination:  {
+                    // POST /telephony/{billingAccount}/redirect/{serviceName}/changeDestination
+                    $post(body?: {destination: string}): Promise<telephony.Task>;
                 }
             } | any
         }
-        phonebook:  {
-            // GET /telephony/{billingAccount}/phonebook
-            GET(): Promise<string[]>;
-            // POST /telephony/{billingAccount}/phonebook
-            POST(body?: {name: string}): Promise<string>;
+        miniPabx:  {
+            // GET /telephony/{billingAccount}/miniPabx
+            $get(): Promise<string[]>;
             [keys: string]: {
-                // GET /telephony/{billingAccount}/phonebook/{bookKey}
-                GET(): Promise<telephony.PhonebookMaster>;
-                // PUT /telephony/{billingAccount}/phonebook/{bookKey}
-                PUT(body?: {body: telephony.PhonebookMaster}): Promise<void>;
-                // DELETE /telephony/{billingAccount}/phonebook/{bookKey}
-                DELETE(): Promise<void>;
-                phonebookContact:  {
-                    // GET /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact
-                    GET(): Promise<number[]>;
-                    // POST /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact
-                    POST(body?: {surname: string, workMobile?: string, homeMobile?: string, group: string, homePhone?: string, workPhone?: string, name: string}): Promise<number>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}
-                        GET(): Promise<telephony.PhonebookContact>;
-                        // PUT /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}
-                        PUT(body?: {body: telephony.PhonebookContact}): Promise<void>;
-                        // DELETE /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}
-                        DELETE(): Promise<void>;
-                    } | any
+                // GET /telephony/{billingAccount}/miniPabx/{serviceName}
+                $get(): Promise<telephony.MiniPabx>;
+                // PUT /telephony/{billingAccount}/miniPabx/{serviceName}
+                $put(body?: {body: telephony.MiniPabx}): Promise<void>;
+                tones:  {
+                    // GET /telephony/{billingAccount}/miniPabx/{serviceName}/tones
+                    $get(): Promise<telephony.Tones>;
+                    // PUT /telephony/{billingAccount}/miniPabx/{serviceName}/tones
+                    $put(body?: {body: telephony.Tones}): Promise<void>;
+                    toneUpload:  {
+                        // POST /telephony/{billingAccount}/miniPabx/{serviceName}/tones/toneUpload
+                        $post(body?: {documentId?: string, type: telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
+                    }
                 }
-                export:  {
-                    // GET /telephony/{billingAccount}/phonebook/{bookKey}/export
-                    GET(param?: {format: telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
-                }
-                import:  {
-                    // POST /telephony/{billingAccount}/phonebook/{bookKey}/import
-                    POST(body?: {documentId: string}): Promise<telephony.Task>;
+                hunting:  {
+                    // GET /telephony/{billingAccount}/miniPabx/{serviceName}/hunting
+                    $get(): Promise<telephony.MiniPabxHunting>;
+                    // PUT /telephony/{billingAccount}/miniPabx/{serviceName}/hunting
+                    $put(body?: {body: telephony.MiniPabxHunting}): Promise<void>;
+                    agent:  {
+                        // GET /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent
+                        $get(): Promise<string[]>;
+                        // POST /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent
+                        $post(body?: {agentNumber: string, logged: boolean, noReplyTimer: number, position: number}): Promise<telephony.EasyMiniPabxHuntingAgent>;
+                        [keys: string]: {
+                            // GET /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}
+                            $get(): Promise<telephony.EasyMiniPabxHuntingAgent>;
+                            // PUT /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}
+                            $put(body?: {body: telephony.EasyMiniPabxHuntingAgent}): Promise<void>;
+                            // DELETE /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}
+                            $delete(): Promise<void>;
+                        } | any
+                    }
                 }
             } | any
         }
-        conference:  {
-            // GET /telephony/{billingAccount}/conference
-            GET(): Promise<string[]>;
+        voicemail:  {
+            // GET /telephony/{billingAccount}/voicemail
+            $get(): Promise<string[]>;
             [keys: string]: {
-                // GET /telephony/{billingAccount}/conference/{serviceName}
-                GET(): Promise<telephony.Conference>;
+                // GET /telephony/{billingAccount}/voicemail/{serviceName}
+                $get(): Promise<telephony.Voicemail>;
+                // PUT /telephony/{billingAccount}/voicemail/{serviceName}
+                $put(body?: {body: telephony.Voicemail}): Promise<void>;
+                migrateOnNewVersion:  {
+                    // POST /telephony/{billingAccount}/voicemail/{serviceName}/migrateOnNewVersion
+                    $post(): Promise<void>;
+                }
+                directories:  {
+                    // GET /telephony/{billingAccount}/voicemail/{serviceName}/directories
+                    $get(param?: {dir?: telephony.VoicemailMessageFolderDirectoryEnum}): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}
+                        $get(): Promise<telephony.VoicemailMessages>;
+                        // DELETE /telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}
+                        $delete(): Promise<void>;
+                        move:  {
+                            // POST /telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move
+                            $post(body?: {dir: telephony.VoicemailMessageFolderDirectoryEnum}): Promise<void>;
+                        }
+                        download:  {
+                            // GET /telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download
+                            $get(param?: {format?: telephony.ServiceVoicemailAudioFormatEnum}): Promise<telephony.PcsFile>;
+                        }
+                    } | any
+                }
+                greetings:  {
+                    // GET /telephony/{billingAccount}/voicemail/{serviceName}/greetings
+                    $get(param?: {dir?: telephony.VoicemailMessageFolderGreetingEnum}): Promise<number[]>;
+                    // POST /telephony/{billingAccount}/voicemail/{serviceName}/greetings
+                    $post(body?: {dir: telephony.VoicemailMessageFolderGreetingEnum, documentId: string}): Promise<number>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}
+                        $get(): Promise<telephony.VoicemailGreetings>;
+                        // DELETE /telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}
+                        $delete(): Promise<void>;
+                        move:  {
+                            // POST /telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move
+                            $post(body?: {dir: telephony.VoicemailMessageFolderGreetingEnum}): Promise<void>;
+                        }
+                        download:  {
+                            // GET /telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download
+                            $get(param?: {format?: telephony.ServiceVoicemailAudioFormatEnum}): Promise<telephony.PcsFile>;
+                        }
+                    } | any
+                }
                 settings:  {
-                    // GET /telephony/{billingAccount}/conference/{serviceName}/settings
-                    GET(): Promise<telephony.ConferenceProperties>;
-                    // PUT /telephony/{billingAccount}/conference/{serviceName}/settings
-                    PUT(body?: {body: telephony.ConferenceProperties}): Promise<void>;
-                }
-                informations:  {
-                    // GET /telephony/{billingAccount}/conference/{serviceName}/informations
-                    GET(): Promise<telephony.ConferenceInformations>;
-                }
-                participants:  {
-                    // GET /telephony/{billingAccount}/conference/{serviceName}/participants
-                    GET(): Promise<number[]>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/conference/{serviceName}/participants/{id}
-                        GET(): Promise<telephony.ConferenceParticipants>;
-                        deaf:  {
-                            // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/deaf
-                            POST(): Promise<telephony.Task>;
-                        }
-                        mute:  {
-                            // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/mute
-                            POST(): Promise<telephony.Task>;
-                        }
-                        undeaf:  {
-                            // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/undeaf
-                            POST(): Promise<telephony.Task>;
-                        }
-                        unmute:  {
-                            // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/unmute
-                            POST(): Promise<telephony.Task>;
-                        }
-                        energy:  {
-                            // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/energy
-                            POST(body?: {value: number}): Promise<telephony.Task>;
-                        }
-                        kick:  {
-                            // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/kick
-                            POST(): Promise<telephony.Task>;
-                        }
-                    } | any
-                }
-                lock:  {
-                    // POST /telephony/{billingAccount}/conference/{serviceName}/lock
-                    POST(): Promise<telephony.Task>;
-                }
-                unlock:  {
-                    // POST /telephony/{billingAccount}/conference/{serviceName}/unlock
-                    POST(): Promise<telephony.Task>;
-                }
-                announceUpload:  {
-                    // POST /telephony/{billingAccount}/conference/{serviceName}/announceUpload
-                    POST(body?: {documentId: string}): Promise<telephony.Task>;
-                }
-                histories:  {
-                    // GET /telephony/{billingAccount}/conference/{serviceName}/histories
-                    GET(): Promise<number[]>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/conference/{serviceName}/histories/{id}
-                        GET(): Promise<telephony.ConferenceHistory>;
-                    } | any
-                }
-                webAccess:  {
-                    // GET /telephony/{billingAccount}/conference/{serviceName}/webAccess
-                    GET(): Promise<number[]>;
-                    // POST /telephony/{billingAccount}/conference/{serviceName}/webAccess
-                    POST(body?: {type: telephony.ConferenceWebAccessTypeEnum}): Promise<telephony.ConferenceWebAccess>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}
-                        GET(): Promise<telephony.ConferenceWebAccess>;
-                        // DELETE /telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}
-                        DELETE(): Promise<void>;
-                    } | any
+                    // GET /telephony/{billingAccount}/voicemail/{serviceName}/settings
+                    $get(): Promise<telephony.VoicemailProperties>;
+                    // PUT /telephony/{billingAccount}/voicemail/{serviceName}/settings
+                    $put(body?: {body: telephony.VoicemailProperties}): Promise<void>;
+                    voicemailNumbers:  {
+                        // GET /telephony/{billingAccount}/voicemail/{serviceName}/settings/voicemailNumbers
+                        $get(): Promise<telephony.VoicemailNumbers>;
+                    }
+                    changeRouting:  {
+                        // POST /telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting
+                        $post(body?: {routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
+                    }
+                    changePassword:  {
+                        // POST /telephony/{billingAccount}/voicemail/{serviceName}/settings/changePassword
+                        $post(body?: {password: string}): Promise<void>;
+                    }
+                    routing:  {
+                        // GET /telephony/{billingAccount}/voicemail/{serviceName}/settings/routing
+                        $get(): Promise<telephony.VoicefaxRoutingEnum>;
+                    }
                 }
             } | any
         }
-        changeContact:  {
-            // POST /telephony/{billingAccount}/changeContact
-            POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
+        task:  {
+            // GET /telephony/{billingAccount}/task
+            $get(param?: {action?: string, status?: telephony.TaskStatusEnum, serviceType?: string}): Promise<number[]>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/task/{taskId}
+                $get(): Promise<telephony.Task>;
+            } | any
+        }
+        number:  {
+            // GET /telephony/{billingAccount}/number
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/number/{serviceName}
+                $get(): Promise<telephony.Number>;
+                // PUT /telephony/{billingAccount}/number/{serviceName}
+                $put(body?: {body: telephony.Number}): Promise<void>;
+                changeFeatureType:  {
+                    // POST /telephony/{billingAccount}/number/{serviceName}/changeFeatureType
+                    $post(body?: {featureType: telephony.TypeEnum}): Promise<telephony.Task>;
+                }
+                convertToLine:  {
+                    // POST /telephony/{billingAccount}/number/{serviceName}/convertToLine
+                    $post(body?: {offer: string}): Promise<telephony.OfferTask>;
+                }
+                convertToLineAvailableOffers:  {
+                    // GET /telephony/{billingAccount}/number/{serviceName}/convertToLineAvailableOffers
+                    $get(): Promise<telephony.LineOffersAndContracts>;
+                }
+                cancelConvertToLine:  {
+                    // POST /telephony/{billingAccount}/number/{serviceName}/cancelConvertToLine
+                    $post(): Promise<void>;
+                }
+            } | any
         }
         timeCondition:  {
             // GET /telephony/{billingAccount}/timeCondition
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             [keys: string]: {
                 // GET /telephony/{billingAccount}/timeCondition/{serviceName}
-                GET(): Promise<telephony.GenericScreen>;
+                $get(): Promise<telephony.GenericScreen>;
                 condition:  {
                     // GET /telephony/{billingAccount}/timeCondition/{serviceName}/condition
-                    GET(): Promise<number[]>;
+                    $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/timeCondition/{serviceName}/condition
-                    POST(body?: {day: telephony.TimeConditionsDayEnum, hourEnd: string, hourBegin: string, policy: telephony.TimeConditionsPolicyEnum}): Promise<telephony.TimeCondition>;
+                    $post(body?: {day: telephony.TimeConditionsDayEnum, hourBegin: string, hourEnd: string, policy: telephony.TimeConditionsPolicyEnum}): Promise<telephony.TimeCondition>;
                     [keys: string]: {
                         // GET /telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}
-                        GET(): Promise<telephony.TimeCondition>;
+                        $get(): Promise<telephony.TimeCondition>;
                         // PUT /telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}
-                        PUT(body?: {body: telephony.TimeCondition}): Promise<void>;
+                        $put(body?: {body: telephony.TimeCondition}): Promise<void>;
                         // DELETE /telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}
-                        DELETE(): Promise<void>;
+                        $delete(): Promise<void>;
                     } | any
                 }
                 options:  {
                     // GET /telephony/{billingAccount}/timeCondition/{serviceName}/options
-                    GET(): Promise<telephony.TimeConditionOptions>;
+                    $get(): Promise<telephony.TimeConditionOptions>;
                     // PUT /telephony/{billingAccount}/timeCondition/{serviceName}/options
-                    PUT(body?: {body: telephony.TimeConditionOptions}): Promise<void>;
+                    $put(body?: {body: telephony.TimeConditionOptions}): Promise<void>;
                 }
             } | any
-        }
-        amountSecurityDeposit:  {
-            // GET /telephony/{billingAccount}/amountSecurityDeposit
-            GET(): Promise<order.Price[]>;
         }
         billingAccountSite:  {
             // POST /telephony/{billingAccount}/billingAccountSite
-            POST(body?: {billingAccountSite: string}): Promise<void>;
+            $post(body?: {billingAccountSite: string}): Promise<void>;
             // GET /telephony/{billingAccount}/billingAccountSite
-            GET(): Promise<string>;
+            $get(): Promise<string>;
         }
-        historyTollfreeConsumption:  {
-            // GET /telephony/{billingAccount}/historyTollfreeConsumption
-            GET(): Promise<string[]>;
+        ddi:  {
+            // GET /telephony/{billingAccount}/ddi
+            $get(): Promise<string[]>;
             [keys: string]: {
-                // GET /telephony/{billingAccount}/historyTollfreeConsumption/{date}
-                GET(): Promise<telephony.HistoryTollfreeConsumption>;
-                document:  {
-                    // GET /telephony/{billingAccount}/historyTollfreeConsumption/{date}/document
-                    GET(): Promise<telephony.PcsFile>;
+                // GET /telephony/{billingAccount}/ddi/{serviceName}
+                $get(): Promise<telephony.Ddi>;
+                // PUT /telephony/{billingAccount}/ddi/{serviceName}
+                $put(body?: {body: telephony.Ddi}): Promise<void>;
+                changeDestination:  {
+                    // POST /telephony/{billingAccount}/ddi/{serviceName}/changeDestination
+                    $post(body?: {destination: string}): Promise<telephony.Task>;
                 }
-            } | any
-        }
-        outplanNotification:  {
-            // GET /telephony/{billingAccount}/outplanNotification
-            GET(): Promise<number[]>;
-            // POST /telephony/{billingAccount}/outplanNotification
-            POST(body?: {block: telephony.OutplanNotificationBlockEnum, percentage: number, notifyEmail?: string}): Promise<telephony.ConsumptionThreshold>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/outplanNotification/{id}
-                GET(): Promise<telephony.ConsumptionThreshold>;
-                // DELETE /telephony/{billingAccount}/outplanNotification/{id}
-                DELETE(): Promise<void>;
-            } | any
-        }
-        historyConsumption:  {
-            // GET /telephony/{billingAccount}/historyConsumption
-            GET(): Promise<string[]>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/historyConsumption/{date}
-                GET(): Promise<telephony.HistoryConsumption>;
-                file:  {
-                    // GET /telephony/{billingAccount}/historyConsumption/{date}/file
-                    GET(param?: {extension: telephony.BillDocument}): Promise<telephony.PcsFile>;
-                }
-            } | any
-        }
-        portability:  {
-            // GET /telephony/{billingAccount}/portability
-            GET(): Promise<number[]>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/portability/{id}
-                GET(): Promise<telephony.Portability>;
-                canBeExecuted:  {
-                    // GET /telephony/{billingAccount}/portability/{id}/canBeExecuted
-                    GET(): Promise<boolean>;
-                }
-                canBeCancelled:  {
-                    // GET /telephony/{billingAccount}/portability/{id}/canBeCancelled
-                    GET(): Promise<boolean>;
-                }
-                dateCanBeChanged:  {
-                    // GET /telephony/{billingAccount}/portability/{id}/dateCanBeChanged
-                    GET(): Promise<boolean>;
-                }
-                execute:  {
-                    // POST /telephony/{billingAccount}/portability/{id}/execute
-                    POST(): Promise<void>;
-                }
-                document:  {
-                    // GET /telephony/{billingAccount}/portability/{id}/document
-                    GET(): Promise<number[]>;
-                    // POST /telephony/{billingAccount}/portability/{id}/document
-                    POST(body?: {name: string, description?: string}): Promise<telephony.PortabilityDocument>;
-                    [keys: string]: {
-                        // GET /telephony/{billingAccount}/portability/{id}/document/{documentId}
-                        GET(): Promise<telephony.PortabilityDocument>;
-                        // PUT /telephony/{billingAccount}/portability/{id}/document/{documentId}
-                        PUT(body?: {body: telephony.PortabilityDocument}): Promise<void>;
-                        // DELETE /telephony/{billingAccount}/portability/{id}/document/{documentId}
-                        DELETE(): Promise<void>;
-                    } | any
-                }
-                relaunch:  {
-                    // POST /telephony/{billingAccount}/portability/{id}/relaunch
-                    POST(body?: {parameters: complexType.SafeKeyValue<string>[]}): Promise<void>;
-                    // GET /telephony/{billingAccount}/portability/{id}/relaunch
-                    GET(): Promise<telephony.PortabilityFixErrorPossibleParameters>;
-                }
-                status:  {
-                    // GET /telephony/{billingAccount}/portability/{id}/status
-                    GET(): Promise<telephony.PortabilityStep[]>;
-                }
-                cancel:  {
-                    // POST /telephony/{billingAccount}/portability/{id}/cancel
-                    POST(body?: {reason?: string}): Promise<void>;
-                }
-                changeDate:  {
-                    // POST /telephony/{billingAccount}/portability/{id}/changeDate
-                    POST(body?: {date: string}): Promise<void>;
-                }
-            } | any
-        }
-        abbreviatedNumber:  {
-            // GET /telephony/{billingAccount}/abbreviatedNumber
-            GET(): Promise<number[]>;
-            // POST /telephony/{billingAccount}/abbreviatedNumber
-            POST(body?: {destinationNumber: string, name: string, abbreviatedNumber: number, surname: string}): Promise<telephony.AbbreviatedNumberGroup>;
-            [keys: string]: {
-                // GET /telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}
-                GET(): Promise<telephony.AbbreviatedNumberGroup>;
-                // PUT /telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}
-                PUT(body?: {body: telephony.AbbreviatedNumberGroup}): Promise<void>;
-                // DELETE /telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}
-                DELETE(): Promise<void>;
             } | any
         }
         scheduler:  {
             // GET /telephony/{billingAccount}/scheduler
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             [keys: string]: {
                 // GET /telephony/{billingAccount}/scheduler/{serviceName}
-                GET(): Promise<telephony.Scheduler>;
+                $get(): Promise<telephony.Scheduler>;
                 // PUT /telephony/{billingAccount}/scheduler/{serviceName}
-                PUT(body?: {body: telephony.Scheduler}): Promise<void>;
+                $put(body?: {body: telephony.Scheduler}): Promise<void>;
                 importIcsCalendar:  {
                     // POST /telephony/{billingAccount}/scheduler/{serviceName}/importIcsCalendar
-                    POST(body?: {url: string}): Promise<telephony.Task>;
+                    $post(body?: {url: string}): Promise<telephony.Task>;
                 }
                 events:  {
                     // GET /telephony/{billingAccount}/scheduler/{serviceName}/events
-                    GET(param?: {dateEnd_from?: string, dateStart_to?: string, dateEnd_to?: string, dateStart_from?: string, categories?: telephony.SchedulerCategoryEnum}): Promise<string[]>;
+                    $get(param?: {categories?: telephony.SchedulerCategoryEnum, dateStart_to?: string, dateEnd_from?: string, dateEnd_to?: string, dateStart_from?: string}): Promise<string[]>;
                     // POST /telephony/{billingAccount}/scheduler/{serviceName}/events
-                    POST(body?: {dateStart: string, dateEnd: string, category: telephony.SchedulerCategoryEnum, uid?: string, title: string, description?: string}): Promise<void>;
+                    $post(body?: {category: telephony.SchedulerCategoryEnum, dateEnd: string, dateStart: string, description?: string, title: string, uid?: string}): Promise<void>;
                     [keys: string]: {
                         // GET /telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}
-                        GET(): Promise<telephony.SchedulerEvent>;
+                        $get(): Promise<telephony.SchedulerEvent>;
                         // PUT /telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}
-                        PUT(body?: {body: telephony.SchedulerEvent}): Promise<void>;
+                        $put(body?: {body: telephony.SchedulerEvent}): Promise<void>;
                         // DELETE /telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}
-                        DELETE(): Promise<void>;
+                        $delete(): Promise<void>;
                     } | any
                 }
             } | any
         }
+        fax:  {
+            // GET /telephony/{billingAccount}/fax
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/fax/{serviceName}
+                $get(): Promise<telephony.Fax>;
+                // PUT /telephony/{billingAccount}/fax/{serviceName}
+                $put(body?: {body: telephony.Fax}): Promise<void>;
+                screenLists:  {
+                    // GET /telephony/{billingAccount}/fax/{serviceName}/screenLists
+                    $get(): Promise<telephony.FaxScreen>;
+                    // PUT /telephony/{billingAccount}/fax/{serviceName}/screenLists
+                    $put(body?: {body: telephony.FaxScreen}): Promise<void>;
+                    // POST /telephony/{billingAccount}/fax/{serviceName}/screenLists
+                    $post(body?: {blacklistedNumbers?: string[], blacklistedTSI?: string[], filteringList?: telephony.FaxScreenListTypeEnum, whitelistedNumbers?: string[], whitelistedTSI?: string[]}): Promise<telephony.FaxScreen>;
+                    // DELETE /telephony/{billingAccount}/fax/{serviceName}/screenLists
+                    $delete(): Promise<void>;
+                    reset:  {
+                        // POST /telephony/{billingAccount}/fax/{serviceName}/screenLists/reset
+                        $post(body?: {blacklistedNumbers?: boolean, blacklistedTSI?: boolean, whitelistedNumbers?: boolean, whitelistedTSI?: boolean}): Promise<void>;
+                    }
+                }
+                campaigns:  {
+                    // GET /telephony/{billingAccount}/fax/{serviceName}/campaigns
+                    $get(): Promise<number[]>;
+                    // POST /telephony/{billingAccount}/fax/{serviceName}/campaigns
+                    $post(body?: {documentId: string, faxQuality?: telephony.FaxQualityEnum, name: string, recipientsDocId?: string, recipientsList?: string[], recipientsType: telephony.FaxCampaignRecipientsTypeEnum, sendDate?: string, sendType: telephony.FaxCampaignSendTypeEnum}): Promise<telephony.FaxCampaign>;
+                    [keys: string]: {
+                        // GET /telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}
+                        $get(): Promise<telephony.FaxCampaign>;
+                        // DELETE /telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}
+                        $delete(): Promise<void>;
+                        stop:  {
+                            // POST /telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/stop
+                            $post(): Promise<void>;
+                        }
+                        start:  {
+                            // POST /telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/start
+                            $post(): Promise<void>;
+                        }
+                        detail:  {
+                            // GET /telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/detail
+                            $get(): Promise<telephony.FaxCampaignDetail>;
+                        }
+                    } | any
+                }
+                settings:  {
+                    // GET /telephony/{billingAccount}/fax/{serviceName}/settings
+                    $get(): Promise<telephony.FaxProperties>;
+                    // PUT /telephony/{billingAccount}/fax/{serviceName}/settings
+                    $put(body?: {body: telephony.FaxProperties}): Promise<void>;
+                    sendFax:  {
+                        // POST /telephony/{billingAccount}/fax/{serviceName}/settings/sendFax
+                        $post(body?: {dateSchedule?: string, pdfUrl: string, recipients: string[]}): Promise<telephony.Task>;
+                    }
+                    changePassword:  {
+                        // POST /telephony/{billingAccount}/fax/{serviceName}/settings/changePassword
+                        $post(body?: {password?: string}): Promise<string>;
+                    }
+                }
+            } | any
+        }
+        rsva:  {
+            // GET /telephony/{billingAccount}/rsva
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /telephony/{billingAccount}/rsva/{serviceName}
+                $get(): Promise<telephony.Rsva>;
+                // PUT /telephony/{billingAccount}/rsva/{serviceName}
+                $put(body?: {body: telephony.Rsva}): Promise<void>;
+                cancelScheduledRateCode:  {
+                    // POST /telephony/{billingAccount}/rsva/{serviceName}/cancelScheduledRateCode
+                    $post(): Promise<void>;
+                }
+                scheduleRateCode:  {
+                    // POST /telephony/{billingAccount}/rsva/{serviceName}/scheduleRateCode
+                    $post(body?: {rateCode: string}): Promise<telephony.DetailedRateCodeInformation>;
+                }
+                scheduledRateCode:  {
+                    // GET /telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode
+                    $get(): Promise<telephony.DetailedRateCodeInformation>;
+                }
+                currentRateCode:  {
+                    // GET /telephony/{billingAccount}/rsva/{serviceName}/currentRateCode
+                    $get(): Promise<telephony.DetailedRateCodeInformation>;
+                }
+                allowedRateCodes:  {
+                    // GET /telephony/{billingAccount}/rsva/{serviceName}/allowedRateCodes
+                    $get(): Promise<telephony.RateCodeInformation[]>;
+                }
+            } | any
+        }
     } | any
-    directories:  {
-        availableZipCodes:  {
-            // GET /telephony/directories/availableZipCodes
-            GET(param?: {country: telephony.NumberCountryEnum, number: string}): Promise<string[]>;
-        }
-        cities:  {
-            // GET /telephony/directories/cities
-            GET(param?: {zipCode: string, country: telephony.NumberCountryEnum}): Promise<telephony.City[]>;
-        }
+    currentOrderIds:  {
+        // GET /telephony/currentOrderIds
+        $get(): Promise<number[]>;
     }
-    spare:  {
-        // GET /telephony/spare
-        GET(): Promise<string[]>;
+    trunks:  {
+        // GET /telephony/trunks
+        $get(): Promise<string[]>;
         [keys: string]: {
-            // GET /telephony/spare/{spare}
-            GET(): Promise<spare.telephony.TelephonySpare>;
-            // DELETE /telephony/spare/{spare}
-            DELETE(): Promise<void>;
-            replace:  {
-                // POST /telephony/spare/{spare}/replace
-                POST(body?: {ip: string, domain: string}): Promise<void>;
-            }
-            compatibleReplacement:  {
-                // GET /telephony/spare/{spare}/compatibleReplacement
-                GET(): Promise<string[]>;
+            // GET /telephony/trunks/{serviceName}
+            $get(): Promise<telephony.TelephonyGenericService>;
+            changeContact:  {
+                // POST /telephony/trunks/{serviceName}/changeContact
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
             serviceInfos:  {
-                // GET /telephony/spare/{spare}/serviceInfos
-                GET(): Promise<services.Service>;
-                // PUT /telephony/spare/{spare}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                // GET /telephony/trunks/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /telephony/trunks/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
             }
         } | any
-        brands:  {
-            // GET /telephony/spare/brands
-            GET(): Promise<string[]>;
+    }
+    aliases:  {
+        // GET /telephony/aliases
+        $get(): Promise<string[]>;
+        [keys: string]: {
+            // GET /telephony/aliases/{serviceName}
+            $get(): Promise<telephony.TelephonyGenericService>;
+            serviceInfos:  {
+                // GET /telephony/aliases/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /telephony/aliases/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
+            changeContact:  {
+                // POST /telephony/aliases/{serviceName}/changeContact
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            }
+        } | any
+    }
+    availableDefaultSipDomains:  {
+        // GET /telephony/availableDefaultSipDomains
+        $get(param?: {type: telephony.SipDomainProductTypeEnum}): Promise<telephony.DefaultSipDomains[]>;
+    }
+    directories:  {
+        cities:  {
+            // GET /telephony/directories/cities
+            $get(param?: {country: telephony.NumberCountryEnum, zipCode: string}): Promise<telephony.City[]>;
+        }
+        availableZipCodes:  {
+            // GET /telephony/directories/availableZipCodes
+            $get(param?: {number: string, country: telephony.NumberCountryEnum}): Promise<string[]>;
         }
     }
-    number:  {
-        specificNumbers:  {
-            // GET /telephony/number/specificNumbers
-            GET(param?: {zone?: string, range?: string, country: telephony.NumberCountryEnum, type: telephony.NumberTypeEnum}): Promise<telephony.SpecificNumber[]>;
-        }
-        ranges:  {
-            // GET /telephony/number/ranges
-            GET(param?: {country: telephony.NumberCountryEnum}): Promise<string[]>;
-        }
-        zones:  {
-            // GET /telephony/number/zones
-            GET(param?: {country: telephony.NumberCountryEnum, axiom?: string}): Promise<string[]>;
-        }
-        detailedZones:  {
-            // GET /telephony/number/detailedZones
-            GET(param?: {country: telephony.NumberCountryEnum, axiom?: string}): Promise<telephony.NumberDetailedZone[]>;
+    lines:  {
+        // GET /telephony/lines
+        $get(): Promise<string[]>;
+        [keys: string]: {
+            // GET /telephony/lines/{serviceName}
+            $get(): Promise<telephony.TelephonyGenericService>;
+            serviceInfos:  {
+                // GET /telephony/lines/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /telephony/lines/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
+            changeContact:  {
+                // POST /telephony/lines/{serviceName}/changeContact
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            }
+        } | any
+    }
+    fax:  {
+        offers:  {
+            // GET /telephony/fax/offers
+            $get(param?: {country: telephony.NumberCountryEnum}): Promise<telephony.LineOffer[]>;
         }
     }
     line:  {
         offer:  {
             phones:  {
                 // GET /telephony/line/offer/phones
-                GET(param?: {offer: string, country: telephony.NumberCountryEnum}): Promise<telephony.LinePhone[]>;
+                $get(param?: {country: telephony.NumberCountryEnum, offer: string}): Promise<telephony.LinePhone[]>;
             }
         }
         offers:  {
             // GET /telephony/line/offers
-            GET(param?: {country: telephony.NumberCountryEnum}): Promise<telephony.LineOffer[]>;
+            $get(param?: {country: telephony.NumberCountryEnum}): Promise<telephony.LineOffer[]>;
         }
     }
     sounds:  {
         // GET /telephony/sounds
-        GET(): Promise<number[]>;
+        $get(): Promise<number[]>;
         // POST /telephony/sounds
-        POST(body?: {filename: string, description?: string}): Promise<telephony.Sound>;
+        $post(body?: {description?: string, filename: string}): Promise<telephony.Sound>;
         [keys: string]: {
             // GET /telephony/sounds/{id}
-            GET(): Promise<telephony.Sound>;
+            $get(): Promise<telephony.Sound>;
             // PUT /telephony/sounds/{id}
-            PUT(body?: {body: telephony.Sound}): Promise<void>;
+            $put(body?: {body: telephony.Sound}): Promise<void>;
             // DELETE /telephony/sounds/{id}
-            DELETE(): Promise<void>;
+            $delete(): Promise<void>;
         } | any
     }
-    lines:  {
-        // GET /telephony/lines
-        GET(): Promise<string[]>;
-        [keys: string]: {
-            // GET /telephony/lines/{serviceName}
-            GET(): Promise<telephony.TelephonyGenericService>;
-            serviceInfos:  {
-                // GET /telephony/lines/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
-                // PUT /telephony/lines/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
-            }
-            changeContact:  {
-                // POST /telephony/lines/{serviceName}/changeContact
-                POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
-            }
-        } | any
+    setDefaultSipDomain:  {
+        // POST /telephony/setDefaultSipDomain
+        $post(body?: {country: telephony.NumberCountryEnum, domain: string, type: telephony.SipDomainProductTypeEnum}): Promise<void>;
+    }
+    number:  {
+        ranges:  {
+            // GET /telephony/number/ranges
+            $get(param?: {country: telephony.NumberCountryEnum}): Promise<string[]>;
+        }
+        zones:  {
+            // GET /telephony/number/zones
+            $get(param?: {country: telephony.NumberCountryEnum, axiom?: string}): Promise<string[]>;
+        }
+        specificNumbers:  {
+            // GET /telephony/number/specificNumbers
+            $get(param?: {zone?: string, country: telephony.NumberCountryEnum, type: telephony.NumberTypeEnum, range?: string}): Promise<telephony.SpecificNumber[]>;
+        }
+        detailedZones:  {
+            // GET /telephony/number/detailedZones
+            $get(param?: {axiom?: string, country: telephony.NumberCountryEnum}): Promise<telephony.NumberDetailedZone[]>;
+        }
     }
     accessories:  {
         // GET /telephony/accessories
-        GET(param?: {country: telephony.NumberCountryEnum}): Promise<telephony.AccessoryOffer[]>;
+        $get(param?: {country: telephony.NumberCountryEnum}): Promise<telephony.AccessoryOffer[]>;
     }
-    fax:  {
-        offers:  {
-            // GET /telephony/fax/offers
-            GET(param?: {country: telephony.NumberCountryEnum}): Promise<telephony.LineOffer[]>;
-        }
-    }
-    currentOrderIds:  {
-        // GET /telephony/currentOrderIds
-        GET(): Promise<number[]>;
+    searchServices:  {
+        // GET /telephony/searchServices
+        $get(param?: {axiom: string}): Promise<telephony.TelephonySearchService[]>;
     }
 }
 // Api
-type PathsTelephonyGET = '/telephony/searchServices' |
-  '/telephony/trunks/{serviceName}/serviceInfos' |
-  '/telephony/trunks/{serviceName}' |
-  '/telephony/trunks' |
-  '/telephony/aliases/{serviceName}' |
-  '/telephony/aliases/{serviceName}/serviceInfos' |
-  '/telephony/aliases' |
-  '/telephony/availableDefaultSipDomains' |
-  '/telephony/{billingAccount}/vxml' |
-  '/telephony/{billingAccount}/vxml/{serviceName}/settings' |
-  '/telephony/{billingAccount}/vxml/{serviceName}' |
-  '/telephony/{billingAccount}' |
-  '/telephony/{billingAccount}/line' |
-  '/telephony/{billingAccount}/line/{serviceName}/phoneCanBeAssociable' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/adminCredentials' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/supportsPhonebook' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/rma' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/merchandiseAvailable' |
-  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts' |
-  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/canChangePassword' |
-  '/telephony/{billingAccount}/line/{serviceName}/ips' |
-  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber' |
-  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' |
-  '/telephony/{billingAccount}/line/{serviceName}/antihack' |
-  '/telephony/{billingAccount}/line/{serviceName}/automaticCall/{identifier}' |
-  '/telephony/{billingAccount}/line/{serviceName}/automaticCall' |
-  '/telephony/{billingAccount}/line/{serviceName}/lastRegistrations' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/listAssociablePhones' |
-  '/telephony/{billingAccount}/line/{serviceName}/maximumAvailableSimultaneousLines' |
-  '/telephony/{billingAccount}/line/{serviceName}/offer' |
-  '/telephony/{billingAccount}/line/{serviceName}/options/availableCodecs' |
-  '/telephony/{billingAccount}/line/{serviceName}/options/defaultCodecs' |
-  '/telephony/{billingAccount}/line/{serviceName}/options' |
-  '/telephony/{billingAccount}/line/{serviceName}' |
-  '/telephony/{billingAccount}/line/{serviceName}/statistics' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/tones' |
-  '/telephony/{billingAccount}/line/{serviceName}/activateNewPhone' |
-  '/telephony/{billingAccount}/line/{serviceName}/records/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/records' |
-  '/telephony/{billingAccount}/line/{serviceName}/availableSipDomains' |
-  '/telephony/{billingAccount}/line/{serviceName}/simultaneousChannelsDetails' |
+type PathsTelephonyGET = '/telephony/spare/brands' |
+  '/telephony/spare/{spare}/compatibleReplacement' |
+  '/telephony/spare/{spare}/serviceInfos' |
+  '/telephony/spare/{spare}' |
+  '/telephony/spare' |
   '/telephony/{billingAccount}/service' |
-  '/telephony/{billingAccount}/service/{serviceName}/directory/getWayTypes' |
-  '/telephony/{billingAccount}/service/{serviceName}/directory' |
-  '/telephony/{billingAccount}/service/{serviceName}/directory/getDirectoryServiceCode' |
-  '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption/{consumptionId}' |
-  '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption' |
-  '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption/{consumptionId}' |
-  '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption' |
-  '/telephony/{billingAccount}/service/{serviceName}/faxConsumption' |
-  '/telephony/{billingAccount}/service/{serviceName}/faxConsumption/{consumptionId}' |
-  '/telephony/{billingAccount}/service/{serviceName}' |
-  '/telephony/{billingAccount}/service/{serviceName}/eventToken' |
-  '/telephony/{billingAccount}/service/{serviceName}/diagnosticReports' |
-  '/telephony/{billingAccount}/service/{serviceName}/offerChanges' |
   '/telephony/{billingAccount}/service/{serviceName}/offerTask' |
   '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}' |
-  '/telephony/{billingAccount}/service/{serviceName}/task/{taskId}' |
-  '/telephony/{billingAccount}/service/{serviceName}/task' |
+  '/telephony/{billingAccount}/service/{serviceName}/eventToken' |
+  '/telephony/{billingAccount}/service/{serviceName}' |
   '/telephony/{billingAccount}/service/{serviceName}/offerChange' |
   '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption' |
-  '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}/callDiagnostics' |
   '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}' |
-  '/telephony/{billingAccount}/number/{serviceName}/convertToLineAvailableOffers' |
-  '/telephony/{billingAccount}/number/{serviceName}' |
-  '/telephony/{billingAccount}/number' |
-  '/telephony/{billingAccount}/rsva/{serviceName}' |
-  '/telephony/{billingAccount}/rsva/{serviceName}/allowedRateCodes' |
-  '/telephony/{billingAccount}/rsva/{serviceName}/currentRateCode' |
-  '/telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode' |
-  '/telephony/{billingAccount}/rsva' |
-  '/telephony/{billingAccount}/ovhPabx' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/records' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}' |
+  '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}/callDiagnostics' |
+  '/telephony/{billingAccount}/service/{serviceName}/diagnosticReports' |
+  '/telephony/{billingAccount}/service/{serviceName}/faxConsumption/{consumptionId}' |
+  '/telephony/{billingAccount}/service/{serviceName}/faxConsumption' |
+  '/telephony/{billingAccount}/service/{serviceName}/directory/getWayTypes' |
+  '/telephony/{billingAccount}/service/{serviceName}/directory/getDirectoryServiceCode' |
+  '/telephony/{billingAccount}/service/{serviceName}/directory' |
+  '/telephony/{billingAccount}/service/{serviceName}/task/{taskId}' |
+  '/telephony/{billingAccount}/service/{serviceName}/task' |
+  '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption' |
+  '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption/{consumptionId}' |
+  '/telephony/{billingAccount}/service/{serviceName}/offerChanges' |
+  '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption/{consumptionId}' |
+  '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption' |
+  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber' |
+  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}' |
+  '/telephony/{billingAccount}/trunk/{serviceName}' |
+  '/telephony/{billingAccount}/trunk/{serviceName}/channelsPacksRepartition' |
+  '/telephony/{billingAccount}/trunk' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/liveStatus' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveStatistics' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveStatistics' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/liveStatus' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/records' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan' |
-  '/telephony/{billingAccount}/serviceInfos' |
-  '/telephony/{billingAccount}/voicemail' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/routing' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/settings' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/voicemailNumbers' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/directories' |
-  '/telephony/{billingAccount}/offerTask' |
-  '/telephony/{billingAccount}/offerTask/{taskId}' |
-  '/telephony/{billingAccount}/eventToken' |
-  '/telephony/{billingAccount}/fax' |
-  '/telephony/{billingAccount}/fax/{serviceName}' |
-  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}' |
-  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/detail' |
-  '/telephony/{billingAccount}/fax/{serviceName}/campaigns' |
-  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
-  '/telephony/{billingAccount}/fax/{serviceName}/settings' |
-  '/telephony/{billingAccount}/redirect/{serviceName}' |
-  '/telephony/{billingAccount}/redirect' |
+  '/telephony/{billingAccount}/ovhPabx' |
   '/telephony/{billingAccount}/easyPabx/{serviceName}' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting' |
   '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent' |
   '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting' |
   '/telephony/{billingAccount}/easyPabx' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/tones' |
-  '/telephony/{billingAccount}/miniPabx' |
-  '/telephony/{billingAccount}/trunk' |
-  '/telephony/{billingAccount}/trunk/{serviceName}' |
-  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber' |
-  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}' |
-  '/telephony/{billingAccount}/trunk/{serviceName}/channelsPacksRepartition' |
-  '/telephony/{billingAccount}/oldPhone' |
-  '/telephony/{billingAccount}/task/{taskId}' |
-  '/telephony/{billingAccount}/task' |
-  '/telephony/{billingAccount}/ddi/{serviceName}' |
-  '/telephony/{billingAccount}/ddi' |
   '/telephony/{billingAccount}/screen/{serviceName}/screenLists' |
   '/telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}' |
   '/telephony/{billingAccount}/screen/{serviceName}' |
   '/telephony/{billingAccount}/screen' |
+  '/telephony/{billingAccount}/historyTollfreeConsumption' |
+  '/telephony/{billingAccount}/historyTollfreeConsumption/{date}' |
+  '/telephony/{billingAccount}/historyTollfreeConsumption/{date}/document' |
+  '/telephony/{billingAccount}/oldPhone' |
+  '/telephony/{billingAccount}/conference' |
+  '/telephony/{billingAccount}/conference/{serviceName}/settings' |
+  '/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}' |
+  '/telephony/{billingAccount}/conference/{serviceName}/webAccess' |
+  '/telephony/{billingAccount}/conference/{serviceName}/histories' |
+  '/telephony/{billingAccount}/conference/{serviceName}/histories/{id}' |
+  '/telephony/{billingAccount}/conference/{serviceName}/informations' |
+  '/telephony/{billingAccount}/conference/{serviceName}' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants' |
+  '/telephony/{billingAccount}/allowedCreditThreshold' |
+  '/telephony/{billingAccount}/portability/{id}/dateCanBeChanged' |
+  '/telephony/{billingAccount}/portability/{id}/canBeExecuted' |
+  '/telephony/{billingAccount}/portability/{id}/canBeCancelled' |
+  '/telephony/{billingAccount}/portability/{id}/relaunch' |
+  '/telephony/{billingAccount}/portability/{id}/status' |
+  '/telephony/{billingAccount}/portability/{id}/document/{documentId}' |
+  '/telephony/{billingAccount}/portability/{id}/document' |
+  '/telephony/{billingAccount}/portability/{id}' |
+  '/telephony/{billingAccount}/portability' |
+  '/telephony/{billingAccount}/eventToken' |
+  '/telephony/{billingAccount}/offerTask/{taskId}' |
+  '/telephony/{billingAccount}/offerTask' |
+  '/telephony/{billingAccount}/line' |
+  '/telephony/{billingAccount}/line/{serviceName}/activateNewPhone' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/automaticCall/{identifier}' |
+  '/telephony/{billingAccount}/line/{serviceName}/automaticCall' |
+  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts' |
+  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/lastRegistrations' |
+  '/telephony/{billingAccount}/line/{serviceName}/availableSipDomains' |
+  '/telephony/{billingAccount}/line/{serviceName}/offer' |
+  '/telephony/{billingAccount}/line/{serviceName}/listAssociablePhones' |
+  '/telephony/{billingAccount}/line/{serviceName}/tones' |
+  '/telephony/{billingAccount}/line/{serviceName}' |
+  '/telephony/{billingAccount}/line/{serviceName}/maximumAvailableSimultaneousLines' |
+  '/telephony/{billingAccount}/line/{serviceName}/canChangePassword' |
+  '/telephony/{billingAccount}/line/{serviceName}/antihack' |
+  '/telephony/{billingAccount}/line/{serviceName}/phoneCanBeAssociable' |
+  '/telephony/{billingAccount}/line/{serviceName}/ips' |
+  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber' |
+  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' |
+  '/telephony/{billingAccount}/line/{serviceName}/options/defaultCodecs' |
+  '/telephony/{billingAccount}/line/{serviceName}/options' |
+  '/telephony/{billingAccount}/line/{serviceName}/options/availableCodecs' |
+  '/telephony/{billingAccount}/line/{serviceName}/statistics' |
+  '/telephony/{billingAccount}/line/{serviceName}/simultaneousChannelsDetails' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/adminCredentials' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/rma' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/merchandiseAvailable' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/supportsPhonebook' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls' |
+  '/telephony/{billingAccount}/line/{serviceName}/records/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/records' |
+  '/telephony/{billingAccount}/historyConsumption/{date}' |
+  '/telephony/{billingAccount}/historyConsumption/{date}/file' |
+  '/telephony/{billingAccount}/historyConsumption' |
   '/telephony/{billingAccount}/historyRepaymentConsumption' |
   '/telephony/{billingAccount}/historyRepaymentConsumption/{date}/document' |
   '/telephony/{billingAccount}/historyRepaymentConsumption/{date}' |
-  '/telephony/{billingAccount}/allowedCreditThreshold' |
-  '/telephony/{billingAccount}/easyHunting' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/sound' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveStatistics' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/liveStatus' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' |
+  '/telephony/{billingAccount}/outplanNotification' |
+  '/telephony/{billingAccount}/outplanNotification/{id}' |
+  '/telephony/{billingAccount}' |
+  '/telephony/{billingAccount}/vxml/{serviceName}/settings' |
+  '/telephony/{billingAccount}/vxml/{serviceName}' |
+  '/telephony/{billingAccount}/vxml' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}/export' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact' |
+  '/telephony/{billingAccount}/phonebook' |
+  '/telephony/{billingAccount}/serviceInfos' |
+  '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' |
+  '/telephony/{billingAccount}/abbreviatedNumber' |
+  '/telephony/{billingAccount}/amountSecurityDeposit' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/records' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/sound' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveStatistics' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/liveStatus' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/records' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}' |
-  '/telephony/{billingAccount}/phonebook' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}/export' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}' |
-  '/telephony/{billingAccount}/conference/{serviceName}/settings' |
-  '/telephony/{billingAccount}/conference/{serviceName}/informations' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}' |
-  '/telephony/{billingAccount}/conference/{serviceName}/histories/{id}' |
-  '/telephony/{billingAccount}/conference/{serviceName}/histories' |
-  '/telephony/{billingAccount}/conference/{serviceName}/webAccess' |
-  '/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}' |
-  '/telephony/{billingAccount}/conference/{serviceName}' |
-  '/telephony/{billingAccount}/conference' |
-  '/telephony/{billingAccount}/timeCondition' |
+  '/telephony/{billingAccount}/easyHunting' |
+  '/telephony/{billingAccount}/redirect' |
+  '/telephony/{billingAccount}/redirect/{serviceName}' |
+  '/telephony/{billingAccount}/miniPabx' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/tones' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}' |
+  '/telephony/{billingAccount}/voicemail' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/directories' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/settings' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/voicemailNumbers' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/routing' |
+  '/telephony/{billingAccount}/task/{taskId}' |
+  '/telephony/{billingAccount}/task' |
+  '/telephony/{billingAccount}/number/{serviceName}/convertToLineAvailableOffers' |
+  '/telephony/{billingAccount}/number/{serviceName}' |
+  '/telephony/{billingAccount}/number' |
   '/telephony/{billingAccount}/timeCondition/{serviceName}/condition' |
   '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' |
   '/telephony/{billingAccount}/timeCondition/{serviceName}/options' |
   '/telephony/{billingAccount}/timeCondition/{serviceName}' |
-  '/telephony/{billingAccount}/amountSecurityDeposit' |
+  '/telephony/{billingAccount}/timeCondition' |
   '/telephony/{billingAccount}/billingAccountSite' |
-  '/telephony/{billingAccount}/historyTollfreeConsumption/{date}/document' |
-  '/telephony/{billingAccount}/historyTollfreeConsumption/{date}' |
-  '/telephony/{billingAccount}/historyTollfreeConsumption' |
-  '/telephony/{billingAccount}/outplanNotification/{id}' |
-  '/telephony/{billingAccount}/outplanNotification' |
-  '/telephony/{billingAccount}/historyConsumption' |
-  '/telephony/{billingAccount}/historyConsumption/{date}' |
-  '/telephony/{billingAccount}/historyConsumption/{date}/file' |
-  '/telephony/{billingAccount}/portability' |
-  '/telephony/{billingAccount}/portability/{id}/canBeExecuted' |
-  '/telephony/{billingAccount}/portability/{id}/canBeCancelled' |
-  '/telephony/{billingAccount}/portability/{id}/dateCanBeChanged' |
-  '/telephony/{billingAccount}/portability/{id}/document' |
-  '/telephony/{billingAccount}/portability/{id}/document/{documentId}' |
-  '/telephony/{billingAccount}/portability/{id}/relaunch' |
-  '/telephony/{billingAccount}/portability/{id}/status' |
-  '/telephony/{billingAccount}/portability/{id}' |
-  '/telephony/{billingAccount}/abbreviatedNumber' |
-  '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' |
-  '/telephony/{billingAccount}/scheduler' |
-  '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' |
+  '/telephony/{billingAccount}/ddi/{serviceName}' |
+  '/telephony/{billingAccount}/ddi' |
   '/telephony/{billingAccount}/scheduler/{serviceName}/events' |
+  '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' |
   '/telephony/{billingAccount}/scheduler/{serviceName}' |
-  '/telephony/directories/availableZipCodes' |
+  '/telephony/{billingAccount}/scheduler' |
+  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
+  '/telephony/{billingAccount}/fax/{serviceName}' |
+  '/telephony/{billingAccount}/fax/{serviceName}/campaigns' |
+  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}' |
+  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/detail' |
+  '/telephony/{billingAccount}/fax/{serviceName}/settings' |
+  '/telephony/{billingAccount}/fax' |
+  '/telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode' |
+  '/telephony/{billingAccount}/rsva/{serviceName}/currentRateCode' |
+  '/telephony/{billingAccount}/rsva/{serviceName}/allowedRateCodes' |
+  '/telephony/{billingAccount}/rsva/{serviceName}' |
+  '/telephony/{billingAccount}/rsva' |
+  '/telephony/currentOrderIds' |
+  '/telephony/trunks' |
+  '/telephony/trunks/{serviceName}/serviceInfos' |
+  '/telephony/trunks/{serviceName}' |
+  '/telephony/aliases' |
+  '/telephony/aliases/{serviceName}/serviceInfos' |
+  '/telephony/aliases/{serviceName}' |
+  '/telephony/availableDefaultSipDomains' |
   '/telephony/directories/cities' |
-  '/telephony/spare' |
-  '/telephony/spare/{spare}/compatibleReplacement' |
-  '/telephony/spare/{spare}/serviceInfos' |
-  '/telephony/spare/{spare}' |
-  '/telephony/spare/brands' |
-  '/telephony/number/specificNumbers' |
-  '/telephony/number/ranges' |
-  '/telephony/number/zones' |
-  '/telephony/number/detailedZones' |
+  '/telephony/directories/availableZipCodes' |
+  '/telephony/lines/{serviceName}/serviceInfos' |
+  '/telephony/lines/{serviceName}' |
+  '/telephony/lines' |
+  '/telephony/fax/offers' |
   '/telephony' |
   '/telephony/line/offer/phones' |
   '/telephony/line/offers' |
-  '/telephony/sounds/{id}' |
   '/telephony/sounds' |
-  '/telephony/lines' |
-  '/telephony/lines/{serviceName}' |
-  '/telephony/lines/{serviceName}/serviceInfos' |
+  '/telephony/sounds/{id}' |
+  '/telephony/number/ranges' |
+  '/telephony/number/zones' |
+  '/telephony/number/specificNumbers' |
+  '/telephony/number/detailedZones' |
   '/telephony/accessories' |
-  '/telephony/fax/offers' |
-  '/telephony/currentOrderIds';
+  '/telephony/searchServices';
 
-type PathsTelephonyPUT = '/telephony/trunks/{serviceName}/serviceInfos' |
-  '/telephony/aliases/{serviceName}/serviceInfos' |
-  '/telephony/{billingAccount}/vxml/{serviceName}/settings' |
-  '/telephony/{billingAccount}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}' |
+type PathsTelephonyPUT = '/telephony/spare/{spare}/serviceInfos' |
+  '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}' |
+  '/telephony/{billingAccount}/service/{serviceName}' |
+  '/telephony/{billingAccount}/service/{serviceName}/directory' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/screen/{serviceName}' |
+  '/telephony/{billingAccount}/conference/{serviceName}/settings' |
+  '/telephony/{billingAccount}/portability/{id}/document/{documentId}' |
+  '/telephony/{billingAccount}/offerTask/{taskId}' |
+  '/telephony/{billingAccount}/line/{serviceName}/tones' |
+  '/telephony/{billingAccount}/line/{serviceName}' |
+  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' |
+  '/telephony/{billingAccount}/line/{serviceName}/options' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' |
   '/telephony/{billingAccount}/line/{serviceName}/phone' |
   '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' |
   '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' |
-  '/telephony/{billingAccount}/line/{serviceName}/options' |
-  '/telephony/{billingAccount}/line/{serviceName}' |
-  '/telephony/{billingAccount}/line/{serviceName}/tones' |
-  '/telephony/{billingAccount}/service/{serviceName}/directory' |
-  '/telephony/{billingAccount}/service/{serviceName}' |
-  '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}' |
-  '/telephony/{billingAccount}/number/{serviceName}' |
-  '/telephony/{billingAccount}/rsva/{serviceName}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}' |
+  '/telephony/{billingAccount}' |
+  '/telephony/{billingAccount}/vxml/{serviceName}/settings' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' |
   '/telephony/{billingAccount}/serviceInfos' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/settings' |
-  '/telephony/{billingAccount}/offerTask/{taskId}' |
-  '/telephony/{billingAccount}/fax/{serviceName}' |
-  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
-  '/telephony/{billingAccount}/fax/{serviceName}/settings' |
-  '/telephony/{billingAccount}/redirect/{serviceName}' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/tones' |
-  '/telephony/{billingAccount}/ddi/{serviceName}' |
-  '/telephony/{billingAccount}/screen/{serviceName}' |
+  '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}' |
-  '/telephony/{billingAccount}/conference/{serviceName}/settings' |
+  '/telephony/{billingAccount}/redirect/{serviceName}' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/tones' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/settings' |
+  '/telephony/{billingAccount}/number/{serviceName}' |
   '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' |
   '/telephony/{billingAccount}/timeCondition/{serviceName}/options' |
-  '/telephony/{billingAccount}/portability/{id}/document/{documentId}' |
-  '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' |
+  '/telephony/{billingAccount}/ddi/{serviceName}' |
   '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' |
   '/telephony/{billingAccount}/scheduler/{serviceName}' |
-  '/telephony/spare/{spare}/serviceInfos' |
-  '/telephony/sounds/{id}' |
-  '/telephony/lines/{serviceName}/serviceInfos';
+  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
+  '/telephony/{billingAccount}/fax/{serviceName}' |
+  '/telephony/{billingAccount}/fax/{serviceName}/settings' |
+  '/telephony/{billingAccount}/rsva/{serviceName}' |
+  '/telephony/trunks/{serviceName}/serviceInfos' |
+  '/telephony/aliases/{serviceName}/serviceInfos' |
+  '/telephony/lines/{serviceName}/serviceInfos' |
+  '/telephony/sounds/{id}';
 
-type PathsTelephonyPOST = '/telephony/setDefaultSipDomain' |
-  '/telephony/trunks/{serviceName}/changeContact' |
-  '/telephony/aliases/{serviceName}/changeContact' |
-  '/telephony/{billingAccount}/vxml/{serviceName}/settings/logs' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/resetConfig' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/refreshScreen' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/import' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/reboot' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/rma' |
-  '/telephony/{billingAccount}/line/{serviceName}/changePassword' |
-  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts' |
-  '/telephony/{billingAccount}/line/{serviceName}/unblock' |
-  '/telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2Call' |
-  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber' |
-  '/telephony/{billingAccount}/line/{serviceName}/antihack' |
-  '/telephony/{billingAccount}/line/{serviceName}/automaticCall' |
-  '/telephony/{billingAccount}/line/{serviceName}/removeSimultaneousLines' |
-  '/telephony/{billingAccount}/line/{serviceName}/block' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/changePassword' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/click2Call' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/intercept' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hangup' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/transfer' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hold' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/eavesdrop' |
-  '/telephony/{billingAccount}/line/{serviceName}/convertToNumber' |
-  '/telephony/{billingAccount}/line/{serviceName}/tones/toneUpload' |
-  '/telephony/{billingAccount}/line/{serviceName}/activateNewPhone' |
-  '/telephony/{billingAccount}/line/{serviceName}/associateDevice' |
-  '/telephony/{billingAccount}/line/{serviceName}/dissociateDevice' |
-  '/telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations' |
+type PathsTelephonyPOST = '/telephony/spare/{spare}/replace' |
   '/telephony/{billingAccount}/service/{serviceName}/changeOfBillingAccount' |
   '/telephony/{billingAccount}/service/{serviceName}/eventToken' |
   '/telephony/{billingAccount}/service/{serviceName}/offerChange' |
+  '/telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations' |
   '/telephony/{billingAccount}/service/{serviceName}/cancelTermination' |
-  '/telephony/{billingAccount}/transferSecurityDeposit' |
-  '/telephony/{billingAccount}/number/{serviceName}/changeFeatureType' |
-  '/telephony/{billingAccount}/number/{serviceName}/convertToLine' |
-  '/telephony/{billingAccount}/number/{serviceName}/cancelConvertToLine' |
-  '/telephony/{billingAccount}/rsva/{serviceName}/scheduleRateCode' |
-  '/telephony/{billingAccount}/rsva/{serviceName}/cancelScheduledRateCode' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/soundUpload' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan' |
-  '/telephony/{billingAccount}/canTransferSecurityDeposit' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/migrateOnNewVersion' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changePassword' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move' |
-  '/telephony/{billingAccount}/cancelTermination' |
-  '/telephony/{billingAccount}/eventToken' |
-  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/stop' |
-  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/start' |
-  '/telephony/{billingAccount}/fax/{serviceName}/campaigns' |
-  '/telephony/{billingAccount}/fax/{serviceName}/screenLists/reset' |
-  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
-  '/telephony/{billingAccount}/fax/{serviceName}/settings/changePassword' |
-  '/telephony/{billingAccount}/fax/{serviceName}/settings/sendFax' |
-  '/telephony/{billingAccount}/redirect/{serviceName}/changeDestination' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/tones/toneUpload' |
   '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber' |
   '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}/validate' |
-  '/telephony/{billingAccount}/ddi/{serviceName}/changeDestination' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/soundUpload' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent' |
   '/telephony/{billingAccount}/screen/{serviceName}/screenLists' |
-  '/telephony/{billingAccount}/historyRepaymentConsumption' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/soundUpload' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions' |
-  '/telephony/{billingAccount}/phonebook' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}/import' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/deaf' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/mute' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/undeaf' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/unmute' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/energy' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/kick' |
+  '/telephony/{billingAccount}/conference/{serviceName}/webAccess' |
   '/telephony/{billingAccount}/conference/{serviceName}/lock' |
   '/telephony/{billingAccount}/conference/{serviceName}/unlock' |
   '/telephony/{billingAccount}/conference/{serviceName}/announceUpload' |
-  '/telephony/{billingAccount}/conference/{serviceName}/webAccess' |
-  '/telephony/{billingAccount}/changeContact' |
-  '/telephony/{billingAccount}/timeCondition/{serviceName}/condition' |
-  '/telephony/{billingAccount}/billingAccountSite' |
-  '/telephony/{billingAccount}/outplanNotification' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/undeaf' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/mute' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/kick' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/unmute' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/energy' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/deaf' |
+  '/telephony/{billingAccount}/cancelTermination' |
+  '/telephony/{billingAccount}/portability/{id}/changeDate' |
   '/telephony/{billingAccount}/portability/{id}/execute' |
-  '/telephony/{billingAccount}/portability/{id}/document' |
   '/telephony/{billingAccount}/portability/{id}/relaunch' |
   '/telephony/{billingAccount}/portability/{id}/cancel' |
-  '/telephony/{billingAccount}/portability/{id}/changeDate' |
+  '/telephony/{billingAccount}/portability/{id}/document' |
+  '/telephony/{billingAccount}/eventToken' |
+  '/telephony/{billingAccount}/line/{serviceName}/removeSimultaneousLines' |
+  '/telephony/{billingAccount}/line/{serviceName}/activateNewPhone' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/click2Call' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/changePassword' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2Call' |
+  '/telephony/{billingAccount}/line/{serviceName}/dissociateDevice' |
+  '/telephony/{billingAccount}/line/{serviceName}/associateDevice' |
+  '/telephony/{billingAccount}/line/{serviceName}/automaticCall' |
+  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts' |
+  '/telephony/{billingAccount}/line/{serviceName}/convertToNumber' |
+  '/telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber' |
+  '/telephony/{billingAccount}/line/{serviceName}/unblock' |
+  '/telephony/{billingAccount}/line/{serviceName}/tones/toneUpload' |
+  '/telephony/{billingAccount}/line/{serviceName}/antihack' |
+  '/telephony/{billingAccount}/line/{serviceName}/changePassword' |
+  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/reboot' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/rma' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/refreshScreen' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/resetConfig' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/import' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hold' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hangup' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/transfer' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/eavesdrop' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/intercept' |
+  '/telephony/{billingAccount}/line/{serviceName}/block' |
+  '/telephony/{billingAccount}/historyRepaymentConsumption' |
+  '/telephony/{billingAccount}/outplanNotification' |
+  '/telephony/{billingAccount}/vxml/{serviceName}/settings/logs' |
+  '/telephony/{billingAccount}/changeContact' |
+  '/telephony/{billingAccount}/canTransferSecurityDeposit' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}/import' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact' |
+  '/telephony/{billingAccount}/phonebook' |
   '/telephony/{billingAccount}/abbreviatedNumber' |
+  '/telephony/{billingAccount}/transferSecurityDeposit' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/soundUpload' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions' |
+  '/telephony/{billingAccount}/redirect/{serviceName}/changeDestination' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/tones/toneUpload' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/migrateOnNewVersion' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changePassword' |
+  '/telephony/{billingAccount}/number/{serviceName}/changeFeatureType' |
+  '/telephony/{billingAccount}/number/{serviceName}/convertToLine' |
+  '/telephony/{billingAccount}/number/{serviceName}/cancelConvertToLine' |
+  '/telephony/{billingAccount}/timeCondition/{serviceName}/condition' |
+  '/telephony/{billingAccount}/billingAccountSite' |
+  '/telephony/{billingAccount}/ddi/{serviceName}/changeDestination' |
   '/telephony/{billingAccount}/scheduler/{serviceName}/importIcsCalendar' |
   '/telephony/{billingAccount}/scheduler/{serviceName}/events' |
-  '/telephony/spare/{spare}/replace' |
+  '/telephony/{billingAccount}/fax/{serviceName}/screenLists/reset' |
+  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
+  '/telephony/{billingAccount}/fax/{serviceName}/campaigns' |
+  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/stop' |
+  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/start' |
+  '/telephony/{billingAccount}/fax/{serviceName}/settings/sendFax' |
+  '/telephony/{billingAccount}/fax/{serviceName}/settings/changePassword' |
+  '/telephony/{billingAccount}/rsva/{serviceName}/cancelScheduledRateCode' |
+  '/telephony/{billingAccount}/rsva/{serviceName}/scheduleRateCode' |
+  '/telephony/trunks/{serviceName}/changeContact' |
+  '/telephony/aliases/{serviceName}/changeContact' |
+  '/telephony/lines/{serviceName}/changeContact' |
   '/telephony/sounds' |
-  '/telephony/lines/{serviceName}/changeContact';
+  '/telephony/setDefaultSipDomain';
 
-type PathsTelephonyDELETE = '/telephony/{billingAccount}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/records/{id}' |
-  '/telephony/{billingAccount}/service/{serviceName}' |
+type PathsTelephonyDELETE = '/telephony/spare/{spare}' |
   '/telephony/{billingAccount}/service/{serviceName}/eventToken' |
+  '/telephony/{billingAccount}/service/{serviceName}' |
   '/telephony/{billingAccount}/service/{serviceName}/offerChange' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' |
+  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}' |
-  '/telephony/{billingAccount}/eventToken' |
-  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}' |
-  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}' |
   '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' |
-  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}' |
   '/telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}' |
+  '/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}' |
+  '/telephony/{billingAccount}/portability/{id}/document/{documentId}' |
+  '/telephony/{billingAccount}/eventToken' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' |
+  '/telephony/{billingAccount}/line/{serviceName}/records/{id}' |
+  '/telephony/{billingAccount}/outplanNotification/{id}' |
+  '/telephony/{billingAccount}' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' |
+  '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}' |
-  '/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}' |
   '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' |
-  '/telephony/{billingAccount}/outplanNotification/{id}' |
-  '/telephony/{billingAccount}/portability/{id}/document/{documentId}' |
-  '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' |
   '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' |
-  '/telephony/spare/{spare}' |
+  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
+  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}' |
   '/telephony/sounds/{id}';
 
 export class ApiTelephony extends OvhWrapper {

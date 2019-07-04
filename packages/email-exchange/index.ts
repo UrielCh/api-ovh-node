@@ -548,471 +548,471 @@ export namespace services {
 export interface Email {
     exchange:  {
         // GET /email/exchange
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             service:  {
                 // GET /email/exchange/{organizationName}/service
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /email/exchange/{organizationName}/service/{exchangeService}
-                    GET(): Promise<email.exchange.ExchangeService>;
+                    $get(): Promise<email.exchange.ExchangeService>;
                     // PUT /email/exchange/{organizationName}/service/{exchangeService}
-                    PUT(body?: {body: email.exchange.ExchangeService}): Promise<void>;
-                    server:  {
-                        // GET /email/exchange/{organizationName}/service/{exchangeService}/server
-                        GET(): Promise<email.exchange.Server>;
-                        // PUT /email/exchange/{organizationName}/service/{exchangeService}/server
-                        PUT(body?: {body: email.exchange.Server}): Promise<void>;
+                    $put(body?: {body: email.exchange.ExchangeService}): Promise<void>;
+                    serviceInfos:  {
+                        // GET /email/exchange/{organizationName}/service/{exchangeService}/serviceInfos
+                        $get(): Promise<services.Service>;
+                        // PUT /email/exchange/{organizationName}/service/{exchangeService}/serviceInfos
+                        $put(body?: {body: services.Service}): Promise<void>;
                     }
-                    mailingList:  {
-                        // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList
-                        GET(param?: {mailingListAddress?: string}): Promise<string[]>;
-                        // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList
-                        POST(body?: {departRestriction: email.exchange.MailingListDepartRestrictionEnum, joinRestriction: email.exchange.MailingListJoinRestrictionEnum, senderAuthentification?: boolean, maxReceiveSize?: number, mailingListAddress: string, hiddenFromGAL?: boolean, maxSendSize?: number, displayName?: string}): Promise<email.exchange.Task>;
+                    updateDeviceList:  {
+                        // POST /email/exchange/{organizationName}/service/{exchangeService}/updateDeviceList
+                        $post(): Promise<email.exchange.Task>;
+                    }
+                    changeHostname:  {
+                        // POST /email/exchange/{organizationName}/service/{exchangeService}/changeHostname
+                        $post(body?: {dcvEmail: string, hostname: string, useDnsAssist: boolean}): Promise<email.exchange.Task>;
+                    }
+                    device:  {
+                        // GET /email/exchange/{organizationName}/service/{exchangeService}/device
+                        $get(param?: {identity?: string, deviceState?: email.exchange.DeviceActiveSyncStateEnum, IMEI?: string}): Promise<string[]>;
                         [keys: string]: {
-                            // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}
-                            GET(): Promise<email.exchange.mailingList>;
-                            // PUT /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}
-                            PUT(body?: {body: email.exchange.mailingList}): Promise<void>;
-                            // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}
-                            DELETE(): Promise<email.exchange.Task>;
-                            manager:  {
-                                account:  {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account
-                                    GET(): Promise<number[]>;
-                                    // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account
-                                    POST(body?: {managerAccountId: number}): Promise<email.exchange.Task>;
-                                    [keys: string]: {
-                                        // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}
-                                        GET(): Promise<email.exchange.exchangeDistributionGroupManager>;
-                                        // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}
-                                        DELETE(): Promise<email.exchange.Task>;
-                                    } | any
-                                }
-                            }
-                            member:  {
-                                account:  {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account
-                                    GET(): Promise<number[]>;
-                                    // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account
-                                    POST(body?: {memberAccountId?: number, memberContactId?: number}): Promise<email.exchange.Task>;
-                                    [keys: string]: {
-                                        // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}
-                                        GET(): Promise<email.exchange.exchangeDistributionGroupMember>;
-                                        // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}
-                                        DELETE(): Promise<email.exchange.Task>;
-                                    } | any
-                                }
-                                contact:  {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact
-                                    GET(): Promise<number[]>;
-                                    // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact
-                                    POST(body?: {memberAccountId?: number, memberContactId?: number}): Promise<email.exchange.Task>;
-                                    [keys: string]: {
-                                        // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}
-                                        GET(): Promise<email.exchange.exchangeDistributionGroupMember>;
-                                        // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}
-                                        DELETE(): Promise<email.exchange.Task>;
-                                    } | any
-                                }
-                            }
-                            sendAs:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs
-                                GET(): Promise<number[]>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs
-                                POST(body?: {allowAccountId: number}): Promise<email.exchange.Task>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}
-                                    GET(): Promise<email.exchange.exchangeDistributionGroupSendAs>;
-                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}
-                                    DELETE(): Promise<email.exchange.Task>;
-                                } | any
-                            }
-                            sendOnBehalfTo:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo
-                                GET(): Promise<number[]>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo
-                                POST(body?: {allowAccountId: number}): Promise<email.exchange.Task>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}
-                                    GET(): Promise<email.exchange.exchangeDistributionGroupSendOnBehalfTo>;
-                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}
-                                    DELETE(): Promise<email.exchange.Task>;
-                                } | any
-                            }
-                            alias:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias
-                                GET(): Promise<string[]>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias
-                                POST(body?: {alias: string}): Promise<email.exchange.Task>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}
-                                    GET(): Promise<email.exchange.exchangeMailingListAlias>;
-                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}
-                                    DELETE(): Promise<email.exchange.Task>;
-                                } | any
-                            }
-                        } | any
-                    }
-                    sharedAccountQuota:  {
-                        // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccountQuota
-                        GET(): Promise<email.exchange.SharedAccountQuota>;
-                    }
-                    task:  {
-                        // GET /email/exchange/{organizationName}/service/{exchangeService}/task
-                        GET(): Promise<number[]>;
-                        [keys: string]: {
-                            // GET /email/exchange/{organizationName}/service/{exchangeService}/task/{id}
-                            GET(): Promise<email.exchange.Task>;
-                        } | any
-                    }
-                    resourceAccount:  {
-                        // GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount
-                        GET(param?: {resourceEmailAddress?: string}): Promise<string[]>;
-                        // POST /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount
-                        POST(body?: {capacity: number, deleteComments?: boolean, displayName?: string, maximumDuration?: number, addOrganizerToSubject?: boolean, deleteSubject?: boolean, location?: string, type: email.exchange.ResourceTypeEnum, bookingWindow?: number, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, allowConflict?: boolean, resourceEmailAddress: string}): Promise<email.exchange.Task>;
-                        [keys: string]: {
-                            // GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}
-                            GET(): Promise<email.exchange.resourceAccount>;
-                            // PUT /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}
-                            PUT(body?: {body: email.exchange.resourceAccount}): Promise<void>;
-                            // DELETE /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}
-                            DELETE(): Promise<email.exchange.Task>;
-                            delegate:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate
-                                GET(): Promise<number[]>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate
-                                POST(body?: {allowedAccountId: number}): Promise<email.exchange.Task>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}
-                                    GET(): Promise<email.exchange.exchangeResourceAccountDelegate>;
-                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}
-                                    DELETE(): Promise<email.exchange.Task>;
-                                } | any
+                            // GET /email/exchange/{organizationName}/service/{exchangeService}/device/{identity}
+                            $get(): Promise<email.exchange.exchangeServiceDevice>;
+                            // PUT /email/exchange/{organizationName}/service/{exchangeService}/device/{identity}
+                            $put(body?: {body: email.exchange.exchangeServiceDevice}): Promise<void>;
+                            clearDevice:  {
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/device/{identity}/clearDevice
+                                $post(): Promise<email.exchange.Task>;
                             }
                         } | any
                     }
                     domain:  {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/domain
-                        GET(param?: {main?: boolean, state?: email.exchange.ObjectStateEnum}): Promise<string[]>;
+                        $get(param?: {main?: boolean, state?: email.exchange.ObjectStateEnum}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/domain
-                        POST(body?: {name: string, organization2010?: string, type: email.exchange.DomainTypeEnum, mxRelay?: string, main?: boolean, configureMx?: boolean, configureAutodiscover?: boolean}): Promise<email.exchange.Task>;
+                        $post(body?: {configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, type: email.exchange.DomainTypeEnum}): Promise<email.exchange.Task>;
                         [keys: string]: {
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}
-                            GET(): Promise<email.exchange.Domain>;
+                            $get(): Promise<email.exchange.Domain>;
                             // PUT /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}
-                            PUT(body?: {body: email.exchange.Domain}): Promise<void>;
+                            $put(body?: {body: email.exchange.Domain}): Promise<void>;
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}
-                            DELETE(): Promise<email.exchange.Task>;
+                            $delete(): Promise<email.exchange.Task>;
                             disclaimer:  {
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer
-                                GET(): Promise<email.exchange.disclaimer>;
+                                $get(): Promise<email.exchange.disclaimer>;
                                 // PUT /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer
-                                PUT(body?: {body: email.exchange.disclaimer}): Promise<void>;
+                                $put(body?: {body: email.exchange.disclaimer}): Promise<void>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer
-                                POST(body?: {outsideOnly?: boolean, content: string}): Promise<email.exchange.Task>;
+                                $post(body?: {content: string, outsideOnly?: boolean}): Promise<email.exchange.Task>;
                                 // DELETE /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer
-                                DELETE(): Promise<email.exchange.Task>;
+                                $delete(): Promise<email.exchange.Task>;
                             }
                             disclaimerAttribute:  {
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimerAttribute
-                                GET(): Promise<email.exchange.DisclaimerAttributeEnum[]>;
+                                $get(): Promise<email.exchange.DisclaimerAttributeEnum[]>;
                             }
                         } | any
                     }
-                    updateFlagsOnAllAccounts:  {
-                        // POST /email/exchange/{organizationName}/service/{exchangeService}/updateFlagsOnAllAccounts
-                        POST(): Promise<void>;
-                    }
                     protocol:  {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/protocol
-                        GET(): Promise<email.exchange.exchangeServiceProtocol>;
+                        $get(): Promise<email.exchange.exchangeServiceProtocol>;
                         // PUT /email/exchange/{organizationName}/service/{exchangeService}/protocol
-                        PUT(body?: {body: email.exchange.exchangeServiceProtocol}): Promise<void>;
+                        $put(body?: {body: email.exchange.exchangeServiceProtocol}): Promise<void>;
                         activeSyncMailNotification:  {
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification
-                            GET(): Promise<number[]>;
+                            $get(): Promise<number[]>;
                             // POST /email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification
-                            POST(body?: {notifiedAccountId: number}): Promise<email.exchange.Task>;
+                            $post(body?: {notifiedAccountId: number}): Promise<email.exchange.Task>;
                             [keys: string]: {
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification/{notifiedAccountId}
-                                GET(): Promise<email.exchange.exchangeServiceActiveSyncNotification>;
+                                $get(): Promise<email.exchange.exchangeServiceActiveSyncNotification>;
                                 // DELETE /email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification/{notifiedAccountId}
-                                DELETE(): Promise<email.exchange.Task>;
+                                $delete(): Promise<email.exchange.Task>;
                             } | any
                         }
                     }
-                    updateDeviceList:  {
-                        // POST /email/exchange/{organizationName}/service/{exchangeService}/updateDeviceList
-                        POST(): Promise<email.exchange.Task>;
+                    publicFolderQuota:  {
+                        // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolderQuota
+                        $get(): Promise<email.exchange.PublicFolderQuota>;
                     }
-                    device:  {
-                        // GET /email/exchange/{organizationName}/service/{exchangeService}/device
-                        GET(param?: {IMEI?: string, deviceState?: email.exchange.DeviceActiveSyncStateEnum, identity?: string}): Promise<string[]>;
+                    outlookAvailability:  {
+                        // GET /email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability
+                        $get(param?: {outlookVersion?: email.exchange.OutlookVersionEnum, outlookLanguage?: email.exchange.LanguageEnum}): Promise<email.exchange.OutlookVersions[]>;
+                    }
+                    mailingList:  {
+                        // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList
+                        $get(param?: {mailingListAddress?: string}): Promise<string[]>;
+                        // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList
+                        $post(body?: {departRestriction: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction: email.exchange.MailingListJoinRestrictionEnum, mailingListAddress: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean}): Promise<email.exchange.Task>;
                         [keys: string]: {
-                            // GET /email/exchange/{organizationName}/service/{exchangeService}/device/{identity}
-                            GET(): Promise<email.exchange.exchangeServiceDevice>;
-                            // PUT /email/exchange/{organizationName}/service/{exchangeService}/device/{identity}
-                            PUT(body?: {body: email.exchange.exchangeServiceDevice}): Promise<void>;
-                            clearDevice:  {
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/device/{identity}/clearDevice
-                                POST(): Promise<email.exchange.Task>;
+                            // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}
+                            $get(): Promise<email.exchange.mailingList>;
+                            // PUT /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}
+                            $put(body?: {body: email.exchange.mailingList}): Promise<void>;
+                            // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}
+                            $delete(): Promise<email.exchange.Task>;
+                            alias:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias
+                                $get(): Promise<string[]>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias
+                                $post(body?: {alias: string}): Promise<email.exchange.Task>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}
+                                    $get(): Promise<email.exchange.exchangeMailingListAlias>;
+                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}
+                                    $delete(): Promise<email.exchange.Task>;
+                                } | any
+                            }
+                            member:  {
+                                contact:  {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact
+                                    $get(): Promise<number[]>;
+                                    // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact
+                                    $post(body?: {memberAccountId?: number, memberContactId?: number}): Promise<email.exchange.Task>;
+                                    [keys: string]: {
+                                        // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}
+                                        $get(): Promise<email.exchange.exchangeDistributionGroupMember>;
+                                        // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}
+                                        $delete(): Promise<email.exchange.Task>;
+                                    } | any
+                                }
+                                account:  {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account
+                                    $get(): Promise<number[]>;
+                                    // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account
+                                    $post(body?: {memberAccountId?: number, memberContactId?: number}): Promise<email.exchange.Task>;
+                                    [keys: string]: {
+                                        // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}
+                                        $get(): Promise<email.exchange.exchangeDistributionGroupMember>;
+                                        // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}
+                                        $delete(): Promise<email.exchange.Task>;
+                                    } | any
+                                }
+                            }
+                            manager:  {
+                                account:  {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account
+                                    $get(): Promise<number[]>;
+                                    // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account
+                                    $post(body?: {managerAccountId: number}): Promise<email.exchange.Task>;
+                                    [keys: string]: {
+                                        // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}
+                                        $get(): Promise<email.exchange.exchangeDistributionGroupManager>;
+                                        // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}
+                                        $delete(): Promise<email.exchange.Task>;
+                                    } | any
+                                }
+                            }
+                            sendAs:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs
+                                $get(): Promise<number[]>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs
+                                $post(body?: {allowAccountId: number}): Promise<email.exchange.Task>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}
+                                    $get(): Promise<email.exchange.exchangeDistributionGroupSendAs>;
+                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}
+                                    $delete(): Promise<email.exchange.Task>;
+                                } | any
+                            }
+                            sendOnBehalfTo:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo
+                                $get(): Promise<number[]>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo
+                                $post(body?: {allowAccountId: number}): Promise<email.exchange.Task>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}
+                                    $get(): Promise<email.exchange.exchangeDistributionGroupSendOnBehalfTo>;
+                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}
+                                    $delete(): Promise<email.exchange.Task>;
+                                } | any
+                            }
+                        } | any
+                    }
+                    server:  {
+                        // GET /email/exchange/{organizationName}/service/{exchangeService}/server
+                        $get(): Promise<email.exchange.Server>;
+                        // PUT /email/exchange/{organizationName}/service/{exchangeService}/server
+                        $put(body?: {body: email.exchange.Server}): Promise<void>;
+                    }
+                    publicFolder:  {
+                        // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder
+                        $get(param?: {path?: string}): Promise<string[]>;
+                        // POST /email/exchange/{organizationName}/service/{exchangeService}/publicFolder
+                        $post(body?: {anonymousPermission?: email.exchange.PublicFolderRightTypeEnum, defaultPermission?: email.exchange.PublicFolderRightTypeEnum, path: string, quota: number, type: email.exchange.PublicFolderTypeEnum}): Promise<email.exchange.Task>;
+                        [keys: string]: {
+                            // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}
+                            $get(): Promise<email.exchange.publicFolder>;
+                            // PUT /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}
+                            $put(body?: {body: email.exchange.publicFolder}): Promise<void>;
+                            // DELETE /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}
+                            $delete(): Promise<email.exchange.Task>;
+                            permission:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission
+                                $get(): Promise<number[]>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission
+                                $post(body?: {accessRights: email.exchange.PublicFolderRightTypeEnum, allowedAccountId: number}): Promise<email.exchange.Task>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}
+                                    $get(): Promise<email.exchange.exchangePublicFolderPermission>;
+                                    // PUT /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}
+                                    $put(body?: {body: email.exchange.exchangePublicFolderPermission}): Promise<void>;
+                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}
+                                    $delete(): Promise<email.exchange.Task>;
+                                } | any
+                            }
+                        } | any
+                    }
+                    account:  {
+                        // GET /email/exchange/{organizationName}/service/{exchangeService}/account
+                        $get(param?: {accountLicense?: email.exchange.OvhLicenceEnum, primaryEmailAddress?: string, id?: number}): Promise<string[]>;
+                        // POST /email/exchange/{organizationName}/service/{exchangeService}/account
+                        $post(body?: {company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], outlookLicense?: boolean, password: string, SAMAccountName?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration}): Promise<email.exchange.Task>;
+                        [keys: string]: {
+                            // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
+                            $get(): Promise<email.exchange.Account>;
+                            // PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
+                            $put(body?: {body: email.exchange.Account}): Promise<void>;
+                            // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
+                            $delete(): Promise<email.exchange.Task>;
+                            exportURL:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/exportURL
+                                $get(): Promise<email.exchange.ExportUrl>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/exportURL
+                                $post(): Promise<email.exchange.Task>;
+                            }
+                            changePassword:  {
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/changePassword
+                                $post(body?: {password: string}): Promise<email.exchange.Task>;
+                            }
+                            export:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export
+                                $get(): Promise<email.exchange.Export>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export
+                                $post(): Promise<email.exchange.Task>;
+                                // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export
+                                $delete(): Promise<email.exchange.Task>;
+                            }
+                            fullAccess:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess
+                                $get(): Promise<number[]>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess
+                                $post(body?: {allowedAccountId: number}): Promise<email.exchange.Task>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}
+                                    $get(): Promise<email.exchange.exchangeAccountFullAccess>;
+                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}
+                                    $delete(): Promise<email.exchange.Task>;
+                                } | any
+                            }
+                            outlookURL:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL
+                                $get(): Promise<email.exchange.OutlookUrl>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL
+                                $post(body?: {language: email.exchange.LanguageEnum, version: email.exchange.OutlookVersionEnum}): Promise<email.exchange.Task>;
+                            }
+                            terminate:  {
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/terminate
+                                $post(): Promise<string>;
+                            }
+                            tasks:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks
+                                $get(): Promise<number[]>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks/{id}
+                                    $get(): Promise<email.exchange.Task>;
+                                } | any
+                            }
+                            alias:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias
+                                $get(): Promise<string[]>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias
+                                $post(body?: {alias: string}): Promise<email.exchange.Task>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}
+                                    $get(): Promise<email.exchange.exchangeAccountAlias>;
+                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}
+                                    $delete(): Promise<email.exchange.Task>;
+                                } | any
+                            }
+                            sendOnBehalfTo:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo
+                                $get(): Promise<number[]>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo
+                                $post(body?: {allowAccountId: number}): Promise<email.exchange.Task>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}
+                                    $get(): Promise<email.exchange.exchangeAccountSendOnBehalfTo>;
+                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}
+                                    $delete(): Promise<email.exchange.Task>;
+                                } | any
+                            }
+                            archive:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive
+                                $get(): Promise<email.exchange.exchangeAccountArchive>;
+                                // PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive
+                                $put(body?: {body: email.exchange.exchangeAccountArchive}): Promise<void>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive
+                                $post(body?: {quota?: number}): Promise<email.exchange.Task>;
+                                // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive
+                                $delete(): Promise<email.exchange.Task>;
+                            }
+                            sendAs:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs
+                                $get(): Promise<number[]>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs
+                                $post(body?: {allowAccountId: number}): Promise<email.exchange.Task>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs/{allowedAccountId}
+                                    $get(): Promise<email.exchange.exchangeAccountSendAs>;
+                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs/{allowedAccountId}
+                                    $delete(): Promise<email.exchange.Task>;
+                                } | any
+                            }
+                            diagnostics:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics
+                                $get(): Promise<email.exchange.exchangeAccountDiagnosis>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics
+                                $post(body?: {password: string}): Promise<email.exchange.Task>;
+                            }
+                            protocol:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol
+                                $get(): Promise<email.exchange.exchangeAccountProtocol>;
+                                // PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol
+                                $put(body?: {body: email.exchange.exchangeAccountProtocol}): Promise<void>;
+                            }
+                        } | any
+                    }
+                    dcvEmails:  {
+                        // GET /email/exchange/{organizationName}/service/{exchangeService}/dcvEmails
+                        $get(): Promise<string[]>;
+                    }
+                    resourceAccount:  {
+                        // GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount
+                        $get(param?: {resourceEmailAddress?: string}): Promise<string[]>;
+                        // POST /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount
+                        $post(body?: {addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity: number, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress: string, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, type: email.exchange.ResourceTypeEnum}): Promise<email.exchange.Task>;
+                        [keys: string]: {
+                            // GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}
+                            $get(): Promise<email.exchange.resourceAccount>;
+                            // PUT /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}
+                            $put(body?: {body: email.exchange.resourceAccount}): Promise<void>;
+                            // DELETE /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}
+                            $delete(): Promise<email.exchange.Task>;
+                            delegate:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate
+                                $get(): Promise<number[]>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate
+                                $post(body?: {allowedAccountId: number}): Promise<email.exchange.Task>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}
+                                    $get(): Promise<email.exchange.exchangeResourceAccountDelegate>;
+                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}
+                                    $delete(): Promise<email.exchange.Task>;
+                                } | any
+                            }
+                        } | any
+                    }
+                    task:  {
+                        // GET /email/exchange/{organizationName}/service/{exchangeService}/task
+                        $get(): Promise<number[]>;
+                        [keys: string]: {
+                            // GET /email/exchange/{organizationName}/service/{exchangeService}/task/{id}
+                            $get(): Promise<email.exchange.Task>;
+                        } | any
+                    }
+                    sharedAccount:  {
+                        // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount
+                        $get(param?: {sharedEmailAddress?: string}): Promise<string[]>;
+                        // POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount
+                        $post(body?: {displayName?: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, mailingFilter?: email.exchange.MailingFilterEnum[], quota: number, sharedEmailAddress: string}): Promise<email.exchange.Task>;
+                        [keys: string]: {
+                            // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}
+                            $get(): Promise<email.exchange.sharedAccount>;
+                            // PUT /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}
+                            $put(body?: {body: email.exchange.sharedAccount}): Promise<void>;
+                            // DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}
+                            $delete(): Promise<email.exchange.Task>;
+                            sendOnBehalfTo:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo
+                                $get(): Promise<number[]>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo
+                                $post(body?: {allowAccountId: number}): Promise<email.exchange.Task>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}
+                                    $get(): Promise<email.exchange.exchangeSharedAccountSendOnBehalfTo>;
+                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}
+                                    $delete(): Promise<email.exchange.Task>;
+                                } | any
+                            }
+                            fullAccess:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess
+                                $get(): Promise<number[]>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess
+                                $post(body?: {allowedAccountId: number}): Promise<email.exchange.Task>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}
+                                    $get(): Promise<email.exchange.exchangeSharedAccountFullAccess>;
+                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}
+                                    $delete(): Promise<email.exchange.Task>;
+                                } | any
+                            }
+                            sendAs:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs
+                                $get(): Promise<number[]>;
+                                // POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs
+                                $post(body?: {allowAccountId: number}): Promise<email.exchange.Task>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}
+                                    $get(): Promise<email.exchange.exchangeSharedAccountSendAs>;
+                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}
+                                    $delete(): Promise<email.exchange.Task>;
+                                } | any
+                            }
+                            tasks:  {
+                                // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks
+                                $get(): Promise<number[]>;
+                                [keys: string]: {
+                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks/{id}
+                                    $get(): Promise<email.exchange.Task>;
+                                } | any
                             }
                         } | any
                     }
                     renewSSL:  {
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/renewSSL
-                        POST(body?: {dcv: string}): Promise<email.exchange.Task>;
+                        $post(body?: {dcv: string}): Promise<email.exchange.Task>;
                     }
-                    publicFolder:  {
-                        // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder
-                        GET(param?: {path?: string}): Promise<string[]>;
-                        // POST /email/exchange/{organizationName}/service/{exchangeService}/publicFolder
-                        POST(body?: {type: email.exchange.PublicFolderTypeEnum, anonymousPermission?: email.exchange.PublicFolderRightTypeEnum, path: string, quota: number, defaultPermission?: email.exchange.PublicFolderRightTypeEnum}): Promise<email.exchange.Task>;
-                        [keys: string]: {
-                            // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}
-                            GET(): Promise<email.exchange.publicFolder>;
-                            // PUT /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}
-                            PUT(body?: {body: email.exchange.publicFolder}): Promise<void>;
-                            // DELETE /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}
-                            DELETE(): Promise<email.exchange.Task>;
-                            permission:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission
-                                GET(): Promise<number[]>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission
-                                POST(body?: {allowedAccountId: number, accessRights: email.exchange.PublicFolderRightTypeEnum}): Promise<email.exchange.Task>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}
-                                    GET(): Promise<email.exchange.exchangePublicFolderPermission>;
-                                    // PUT /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}
-                                    PUT(body?: {body: email.exchange.exchangePublicFolderPermission}): Promise<void>;
-                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}
-                                    DELETE(): Promise<email.exchange.Task>;
-                                } | any
-                            }
-                        } | any
-                    }
-                    sharedAccount:  {
-                        // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount
-                        GET(param?: {sharedEmailAddress?: string}): Promise<string[]>;
-                        // POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount
-                        POST(body?: {hiddenFromGAL?: boolean, initials?: string, sharedEmailAddress: string, lastName?: string, mailingFilter?: email.exchange.MailingFilterEnum[], displayName?: string, quota: number, firstName?: string}): Promise<email.exchange.Task>;
-                        [keys: string]: {
-                            // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}
-                            GET(): Promise<email.exchange.sharedAccount>;
-                            // PUT /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}
-                            PUT(body?: {body: email.exchange.sharedAccount}): Promise<void>;
-                            // DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}
-                            DELETE(): Promise<email.exchange.Task>;
-                            fullAccess:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess
-                                GET(): Promise<number[]>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess
-                                POST(body?: {allowedAccountId: number}): Promise<email.exchange.Task>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}
-                                    GET(): Promise<email.exchange.exchangeSharedAccountFullAccess>;
-                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}
-                                    DELETE(): Promise<email.exchange.Task>;
-                                } | any
-                            }
-                            tasks:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks
-                                GET(): Promise<number[]>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks/{id}
-                                    GET(): Promise<email.exchange.Task>;
-                                } | any
-                            }
-                            sendAs:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs
-                                GET(): Promise<number[]>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs
-                                POST(body?: {allowAccountId: number}): Promise<email.exchange.Task>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}
-                                    GET(): Promise<email.exchange.exchangeSharedAccountSendAs>;
-                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}
-                                    DELETE(): Promise<email.exchange.Task>;
-                                } | any
-                            }
-                            sendOnBehalfTo:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo
-                                GET(): Promise<number[]>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo
-                                POST(body?: {allowAccountId: number}): Promise<email.exchange.Task>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}
-                                    GET(): Promise<email.exchange.exchangeSharedAccountSendOnBehalfTo>;
-                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}
-                                    DELETE(): Promise<email.exchange.Task>;
-                                } | any
-                            }
-                        } | any
-                    }
-                    changeHostname:  {
-                        // POST /email/exchange/{organizationName}/service/{exchangeService}/changeHostname
-                        POST(body?: {dcvEmail: string, useDnsAssist: boolean, hostname: string}): Promise<email.exchange.Task>;
+                    updateFlagsOnAllAccounts:  {
+                        // POST /email/exchange/{organizationName}/service/{exchangeService}/updateFlagsOnAllAccounts
+                        $post(): Promise<void>;
                     }
                     externalContact:  {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/externalContact
-                        GET(param?: {displayName?: string, lastName?: string, id?: number, externalEmailAddress?: string, firstName?: string}): Promise<string[]>;
+                        $get(param?: {displayName?: string, lastName?: string, id?: number, externalEmailAddress?: string, firstName?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/externalContact
-                        POST(body?: {firstName?: string, hiddenFromGAL?: boolean, externalEmailAddress: string, initials?: string, organization2010?: string, lastName?: string, displayName?: string}): Promise<email.exchange.Task>;
+                        $post(body?: {displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, organization2010?: string}): Promise<email.exchange.Task>;
                         [keys: string]: {
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}
-                            GET(): Promise<email.exchange.exchangeExternalContact>;
+                            $get(): Promise<email.exchange.exchangeExternalContact>;
                             // PUT /email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}
-                            PUT(body?: {body: email.exchange.exchangeExternalContact}): Promise<void>;
+                            $put(body?: {body: email.exchange.exchangeExternalContact}): Promise<void>;
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}
-                            DELETE(): Promise<email.exchange.Task>;
+                            $delete(): Promise<email.exchange.Task>;
                         } | any
-                    }
-                    serviceInfos:  {
-                        // GET /email/exchange/{organizationName}/service/{exchangeService}/serviceInfos
-                        GET(): Promise<services.Service>;
-                        // PUT /email/exchange/{organizationName}/service/{exchangeService}/serviceInfos
-                        PUT(body?: {body: services.Service}): Promise<void>;
-                    }
-                    publicFolderQuota:  {
-                        // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolderQuota
-                        GET(): Promise<email.exchange.PublicFolderQuota>;
-                    }
-                    dcvEmails:  {
-                        // GET /email/exchange/{organizationName}/service/{exchangeService}/dcvEmails
-                        GET(): Promise<string[]>;
                     }
                     license:  {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/license
-                        GET(param?: {fromDate?: string, toDate?: string, license?: email.exchange.OvhLicenceEnum}): Promise<email.exchange.DailyLicense[]>;
-                    }
-                    account:  {
-                        // GET /email/exchange/{organizationName}/service/{exchangeService}/account
-                        GET(param?: {accountLicense?: email.exchange.OvhLicenceEnum, id?: number, primaryEmailAddress?: string}): Promise<string[]>;
-                        // POST /email/exchange/{organizationName}/service/{exchangeService}/account
-                        POST(body?: {mailingFilter?: email.exchange.MailingFilterEnum[], displayName?: string, litigation?: boolean, lastName?: string, hiddenFromGAL?: boolean, SAMAccountName?: string, license: email.exchange.OvhLicenceEnum, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, company?: string, initials?: string, outlookLicense?: boolean, litigationPeriod?: number, password: string, domain: string, firstName?: string, login: string}): Promise<email.exchange.Task>;
-                        [keys: string]: {
-                            // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
-                            GET(): Promise<email.exchange.Account>;
-                            // PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
-                            PUT(body?: {body: email.exchange.Account}): Promise<void>;
-                            // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
-                            DELETE(): Promise<email.exchange.Task>;
-                            diagnostics:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics
-                                GET(): Promise<email.exchange.exchangeAccountDiagnosis>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics
-                                POST(body?: {password: string}): Promise<email.exchange.Task>;
-                            }
-                            archive:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive
-                                GET(): Promise<email.exchange.exchangeAccountArchive>;
-                                // PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive
-                                PUT(body?: {body: email.exchange.exchangeAccountArchive}): Promise<void>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive
-                                POST(body?: {quota?: number}): Promise<email.exchange.Task>;
-                                // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive
-                                DELETE(): Promise<email.exchange.Task>;
-                            }
-                            exportURL:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/exportURL
-                                GET(): Promise<email.exchange.ExportUrl>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/exportURL
-                                POST(): Promise<email.exchange.Task>;
-                            }
-                            export:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export
-                                GET(): Promise<email.exchange.Export>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export
-                                POST(): Promise<email.exchange.Task>;
-                                // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export
-                                DELETE(): Promise<email.exchange.Task>;
-                            }
-                            terminate:  {
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/terminate
-                                POST(): Promise<string>;
-                            }
-                            outlookURL:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL
-                                GET(): Promise<email.exchange.OutlookUrl>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL
-                                POST(body?: {version: email.exchange.OutlookVersionEnum, language: email.exchange.LanguageEnum}): Promise<email.exchange.Task>;
-                            }
-                            changePassword:  {
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/changePassword
-                                POST(body?: {password: string}): Promise<email.exchange.Task>;
-                            }
-                            alias:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias
-                                GET(): Promise<string[]>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias
-                                POST(body?: {alias: string}): Promise<email.exchange.Task>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}
-                                    GET(): Promise<email.exchange.exchangeAccountAlias>;
-                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}
-                                    DELETE(): Promise<email.exchange.Task>;
-                                } | any
-                            }
-                            sendOnBehalfTo:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo
-                                GET(): Promise<number[]>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo
-                                POST(body?: {allowAccountId: number}): Promise<email.exchange.Task>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}
-                                    GET(): Promise<email.exchange.exchangeAccountSendOnBehalfTo>;
-                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}
-                                    DELETE(): Promise<email.exchange.Task>;
-                                } | any
-                            }
-                            protocol:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol
-                                GET(): Promise<email.exchange.exchangeAccountProtocol>;
-                                // PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol
-                                PUT(body?: {body: email.exchange.exchangeAccountProtocol}): Promise<void>;
-                            }
-                            fullAccess:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess
-                                GET(): Promise<number[]>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess
-                                POST(body?: {allowedAccountId: number}): Promise<email.exchange.Task>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}
-                                    GET(): Promise<email.exchange.exchangeAccountFullAccess>;
-                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}
-                                    DELETE(): Promise<email.exchange.Task>;
-                                } | any
-                            }
-                            sendAs:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs
-                                GET(): Promise<number[]>;
-                                // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs
-                                POST(body?: {allowAccountId: number}): Promise<email.exchange.Task>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs/{allowedAccountId}
-                                    GET(): Promise<email.exchange.exchangeAccountSendAs>;
-                                    // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs/{allowedAccountId}
-                                    DELETE(): Promise<email.exchange.Task>;
-                                } | any
-                            }
-                            tasks:  {
-                                // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks
-                                GET(): Promise<number[]>;
-                                [keys: string]: {
-                                    // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks/{id}
-                                    GET(): Promise<email.exchange.Task>;
-                                } | any
-                            }
-                        } | any
+                        $get(param?: {toDate?: string, license?: email.exchange.OvhLicenceEnum, fromDate?: string}): Promise<email.exchange.DailyLicense[]>;
                     }
                     activateSharepoint:  {
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/activateSharepoint
-                        POST(body?: {primaryEmailAddress: string, subDomain: string}): Promise<email.exchange.Task>;
+                        $post(body?: {primaryEmailAddress: string, subDomain: string}): Promise<email.exchange.Task>;
                     }
-                    outlookAvailability:  {
-                        // GET /email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability
-                        GET(param?: {outlookLanguage?: email.exchange.LanguageEnum, outlookVersion?: email.exchange.OutlookVersionEnum}): Promise<email.exchange.OutlookVersions[]>;
+                    sharedAccountQuota:  {
+                        // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccountQuota
+                        $get(): Promise<email.exchange.SharedAccountQuota>;
                     }
                 } | any
             }
@@ -1020,161 +1020,161 @@ export interface Email {
     }
 }
 // Api
-type PathsEmailExchangeGET = '/email/exchange/{organizationName}/service' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/server' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccountQuota' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/task' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/task/{id}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimerAttribute' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/protocol' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification/{notifiedAccountId}' |
+type PathsEmailExchangeGET = '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos' |
   '/email/exchange/{organizationName}/service/{exchangeService}/device' |
   '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimerAttribute' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/protocol' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification/{notifiedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolderQuota' |
+  '/email/exchange/{organizationName}/service/{exchangeService}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/server' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder' |
   '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission' |
   '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks/{id}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolderQuota' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/dcvEmails' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/license' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/exportURL' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks/{id}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks/{id}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/dcvEmails' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/task/{id}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/task' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks/{id}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/license' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccountQuota' |
+  '/email/exchange/{organizationName}/service' |
   '/email/exchange';
 
-type PathsEmailExchangePUT = '/email/exchange/{organizationName}/service/{exchangeService}/server' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}' |
+type PathsEmailExchangePUT = '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
   '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/protocol' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/server' |
   '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol';
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}';
 
-type PathsEmailExchangePOST = '/email/exchange/{organizationName}/service/{exchangeService}/mailingList' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account' |
+type PathsEmailExchangePOST = '/email/exchange/{organizationName}/service/{exchangeService}/updateDeviceList' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/changeHostname' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}/clearDevice' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias' |
   '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account' |
   '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs' |
   '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/updateFlagsOnAllAccounts' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/updateDeviceList' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}/clearDevice' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/renewSSL' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission' |
   '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/changeHostname' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/exportURL' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/terminate' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/changePassword' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/terminate' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/renewSSL' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/updateFlagsOnAllAccounts' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact' |
   '/email/exchange/{organizationName}/service/{exchangeService}/activateSharepoint';
 
-type PathsEmailExchangeDELETE = '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
+type PathsEmailExchangeDELETE = '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
   '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification/{notifiedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs/{allowedAccountId}';
+  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}';
 
 export class ApiEmailExchange extends OvhWrapper {
   constructor(engine: OvhRequestable) {

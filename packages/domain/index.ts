@@ -437,489 +437,489 @@ export namespace zone {
 // path /domain
 export interface Domain {
     // GET /domain
-    GET(param?: {whoisOwner?: string}): Promise<string[]>;
-    [keys: string]: {
-        // GET /domain/{serviceName}
-        GET(): Promise<domain.Domain>;
-        // PUT /domain/{serviceName}
-        PUT(body?: {body: domain.Domain}): Promise<void>;
-        task:  {
-            // GET /domain/{serviceName}/task
-            GET(param?: {function_?: string, status?: domain.OperationStatusEnum}): Promise<number[]>;
+    $get(param?: {whoisOwner?: string}): Promise<string[]>;
+    data:  {
+        afnicCorporationTrademarkInformation:  {
+            // GET /domain/data/afnicCorporationTrademarkInformation
+            $get(): Promise<number[]>;
+            // POST /domain/data/afnicCorporationTrademarkInformation
+            $post(body?: {contactId: number, inpiNumber: string, inpiTrademarkOwner: string}): Promise<domain.data.AfnicCorporationTrademarkContact>;
             [keys: string]: {
-                // GET /domain/{serviceName}/task/{id}
-                GET(): Promise<domain.Task>;
-                cancel:  {
-                    // POST /domain/{serviceName}/task/{id}/cancel
-                    POST(): Promise<void>;
-                }
-                relaunch:  {
-                    // POST /domain/{serviceName}/task/{id}/relaunch
-                    POST(): Promise<void>;
-                }
-                accelerate:  {
-                    // POST /domain/{serviceName}/task/{id}/accelerate
-                    POST(): Promise<void>;
-                }
+                // GET /domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}
+                $get(): Promise<domain.data.AfnicCorporationTrademarkContact>;
             } | any
         }
-        ukRegistrars:  {
-            // GET /domain/{serviceName}/ukRegistrars
-            GET(): Promise<domain.UkRegistrar[]>;
+        proContact:  {
+            // GET /domain/data/proContact
+            $get(): Promise<number[]>;
+            // POST /domain/data/proContact
+            $post(body?: {authority: string, authorityWebsite: string, contactId?: number, jobDescription: string, licenseNumber: string}): Promise<domain.data.ProContact>;
+            [keys: string]: {
+                // GET /domain/data/proContact/{proContactId}
+                $get(): Promise<domain.data.ProContact>;
+            } | any
+        }
+        claimNotice:  {
+            // GET /domain/data/claimNotice
+            $get(param?: {domain: string}): Promise<domain.data.claimNotice.ClaimNotice>;
+        }
+        extension:  {
+            // GET /domain/data/extension
+            $get(param?: {country: nichandle.CountryEnum}): Promise<string[]>;
+        }
+        afnicAssociationInformation:  {
+            // GET /domain/data/afnicAssociationInformation
+            $get(): Promise<number[]>;
+            // POST /domain/data/afnicAssociationInformation
+            $post(body?: {contactId: number, declarationDate: string, publicationDate: string, publicationNumber: string, publicationPageNumber: string}): Promise<domain.data.AssociationContact>;
+            [keys: string]: {
+                // GET /domain/data/afnicAssociationInformation/{associationInformationId}
+                $get(): Promise<domain.data.AssociationContact>;
+            } | any
+        }
+        smd:  {
+            // GET /domain/data/smd
+            $get(param?: {protectedLabels_label?: string}): Promise<number[]>;
+            // POST /domain/data/smd
+            $post(body?: {data: string}): Promise<domain.data.Smd>;
+            [keys: string]: {
+                // GET /domain/data/smd/{smdId}
+                $get(): Promise<domain.data.Smd>;
+                // PUT /domain/data/smd/{smdId}
+                $put(body?: {data: string}): Promise<domain.data.Smd>;
+                // DELETE /domain/data/smd/{smdId}
+                $delete(): Promise<void>;
+            } | any
+        }
+    }
+    [keys: string]: {
+        // GET /domain/{serviceName}
+        $get(): Promise<domain.Domain>;
+        // PUT /domain/{serviceName}
+        $put(body?: {body: domain.Domain}): Promise<void>;
+        ukOutgoingTransfer:  {
+            // POST /domain/{serviceName}/ukOutgoingTransfer
+            $post(body?: {tag: string}): Promise<domain.Task>;
         }
         dsRecord:  {
             // GET /domain/{serviceName}/dsRecord
-            GET(param?: {status?: dnssec.KeyStatusEnum, flags?: dnssec.KeyFlagEnum}): Promise<number[]>;
+            $get(param?: {status?: dnssec.KeyStatusEnum, flags?: dnssec.KeyFlagEnum}): Promise<number[]>;
             // POST /domain/{serviceName}/dsRecord
-            POST(body?: {keys: dnssec.Key[]}): Promise<domain.Task>;
+            $post(body?: {keys: dnssec.Key[]}): Promise<domain.Task>;
             [keys: string]: {
                 // GET /domain/{serviceName}/dsRecord/{id}
-                GET(): Promise<domain.DnssecKey>;
+                $get(): Promise<domain.DnssecKey>;
             } | any
+        }
+        option:  {
+            // GET /domain/{serviceName}/option
+            $get(): Promise<domain.DomainOptionEnum[]>;
+            [keys: string]: {
+                // GET /domain/{serviceName}/option/{option}
+                $get(): Promise<domain.Option>;
+                // DELETE /domain/{serviceName}/option/{option}
+                $delete(): Promise<void>;
+            } | any
+        }
+        authInfo:  {
+            // GET /domain/{serviceName}/authInfo
+            $get(): Promise<string>;
+        }
+        task:  {
+            // GET /domain/{serviceName}/task
+            $get(param?: {function_?: string, status?: domain.OperationStatusEnum}): Promise<number[]>;
+            [keys: string]: {
+                // GET /domain/{serviceName}/task/{id}
+                $get(): Promise<domain.Task>;
+                relaunch:  {
+                    // POST /domain/{serviceName}/task/{id}/relaunch
+                    $post(): Promise<void>;
+                }
+                cancel:  {
+                    // POST /domain/{serviceName}/task/{id}/cancel
+                    $post(): Promise<void>;
+                }
+                accelerate:  {
+                    // POST /domain/{serviceName}/task/{id}/accelerate
+                    $post(): Promise<void>;
+                }
+            } | any
+        }
+        activateZone:  {
+            // POST /domain/{serviceName}/activateZone
+            $post(body?: {minimized?: boolean}): Promise<void>;
+        }
+        nameServer:  {
+            // GET /domain/{serviceName}/nameServer
+            $get(): Promise<number[]>;
+            // POST /domain/{serviceName}/nameServer
+            $post(body?: {nameServer: domain.DomainNs[]}): Promise<domain.Task>;
+            [keys: string]: {
+                // GET /domain/{serviceName}/nameServer/{id}
+                $get(): Promise<domain.CurrentNameServer>;
+                // DELETE /domain/{serviceName}/nameServer/{id}
+                $delete(): Promise<domain.Task>;
+                status:  {
+                    // POST /domain/{serviceName}/nameServer/{id}/status
+                    $post(): Promise<domain.DomainNsStatus>;
+                }
+            } | any
+        }
+        glueRecord:  {
+            // GET /domain/{serviceName}/glueRecord
+            $get(param?: {host?: string}): Promise<string[]>;
+            // POST /domain/{serviceName}/glueRecord
+            $post(body?: {host: string, ips: string[]}): Promise<domain.Task>;
+            [keys: string]: {
+                // GET /domain/{serviceName}/glueRecord/{host}
+                $get(): Promise<domain.GlueRecord>;
+                // DELETE /domain/{serviceName}/glueRecord/{host}
+                $delete(): Promise<domain.Task>;
+                update:  {
+                    // POST /domain/{serviceName}/glueRecord/{host}/update
+                    $post(body?: {ips: string[]}): Promise<domain.Task>;
+                }
+            } | any
+        }
+        serviceInfos:  {
+            // GET /domain/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /domain/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
+        }
+        rules:  {
+            optin:  {
+                // GET /domain/{serviceName}/rules/optin
+                $get(): Promise<domain.rules.Optin[]>;
+            }
+            emailsObfuscation:  {
+                // GET /domain/{serviceName}/rules/emailsObfuscation
+                $get(): Promise<domain.ContactAllTypesEnum[]>;
+            }
         }
         configurations:  {
             optin:  {
                 // GET /domain/{serviceName}/configurations/optin
-                GET(): Promise<domain.configurations.Optin[]>;
+                $get(): Promise<domain.configurations.Optin[]>;
                 // PUT /domain/{serviceName}/configurations/optin
-                PUT(body?: {optin: domain.configurations.Optin[]}): Promise<domain.configurations.Optin[]>;
+                $put(body?: {optin: domain.configurations.Optin[]}): Promise<domain.configurations.Optin[]>;
             }
             obfuscatedEmails:  {
                 // GET /domain/{serviceName}/configurations/obfuscatedEmails
-                GET(): Promise<domain.configurations.ObfuscatedEmails[]>;
+                $get(): Promise<domain.configurations.ObfuscatedEmails[]>;
                 // PUT /domain/{serviceName}/configurations/obfuscatedEmails
-                PUT(body?: {contacts: domain.ContactAllTypesEnum[]}): Promise<domain.configurations.ObfuscatedEmails[]>;
+                $put(body?: {contacts: domain.ContactAllTypesEnum[]}): Promise<domain.configurations.ObfuscatedEmails[]>;
                 refresh:  {
                     // POST /domain/{serviceName}/configurations/obfuscatedEmails/refresh
-                    POST(body?: {contacts: domain.ContactAllTypesEnum[]}): Promise<void>;
+                    $post(body?: {contacts: domain.ContactAllTypesEnum[]}): Promise<void>;
                 }
             }
-        }
-        option:  {
-            // GET /domain/{serviceName}/option
-            GET(): Promise<domain.DomainOptionEnum[]>;
-            [keys: string]: {
-                // GET /domain/{serviceName}/option/{option}
-                GET(): Promise<domain.Option>;
-                // DELETE /domain/{serviceName}/option/{option}
-                DELETE(): Promise<void>;
-            } | any
-        }
-        owo:  {
-            // GET /domain/{serviceName}/owo
-            GET(param?: {field?: domain.WhoisObfuscatorFieldsEnum}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
-            // POST /domain/{serviceName}/owo
-            POST(body?: {fields: domain.WhoisObfuscatorFieldsEnum[]}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
-            [keys: string]: {
-                // GET /domain/{serviceName}/owo/{field}
-                GET(): Promise<domain.Owo>;
-                // DELETE /domain/{serviceName}/owo/{field}
-                DELETE(): Promise<void>;
-            } | any
-        }
-        nameServers:  {
-            update:  {
-                // POST /domain/{serviceName}/nameServers/update
-                POST(body?: {nameServers: domain.DomainNs[]}): Promise<domain.Task>;
-            }
-        }
-        changeContact:  {
-            // POST /domain/{serviceName}/changeContact
-            POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
-        }
-        authInfo:  {
-            // GET /domain/{serviceName}/authInfo
-            GET(): Promise<string>;
-        }
-        serviceInfos:  {
-            // GET /domain/{serviceName}/serviceInfos
-            GET(): Promise<services.Service>;
-            // PUT /domain/{serviceName}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
-        }
-        activateZone:  {
-            // POST /domain/{serviceName}/activateZone
-            POST(body?: {minimized?: boolean}): Promise<void>;
         }
         email:  {
             obfuscated:  {
                 refresh:  {
                     // POST /domain/{serviceName}/email/obfuscated/refresh
-                    POST(body?: {contactType: domain.DomainContactTypeEnum[]}): Promise<void>;
+                    $post(body?: {contactType: domain.DomainContactTypeEnum[]}): Promise<void>;
                 }
             }
         }
-        glueRecord:  {
-            // GET /domain/{serviceName}/glueRecord
-            GET(param?: {host?: string}): Promise<string[]>;
-            // POST /domain/{serviceName}/glueRecord
-            POST(body?: {ips: string[], host: string}): Promise<domain.Task>;
+        owo:  {
+            // GET /domain/{serviceName}/owo
+            $get(param?: {field?: domain.WhoisObfuscatorFieldsEnum}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
+            // POST /domain/{serviceName}/owo
+            $post(body?: {fields: domain.WhoisObfuscatorFieldsEnum[]}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
             [keys: string]: {
-                // GET /domain/{serviceName}/glueRecord/{host}
-                GET(): Promise<domain.GlueRecord>;
-                // DELETE /domain/{serviceName}/glueRecord/{host}
-                DELETE(): Promise<domain.Task>;
-                update:  {
-                    // POST /domain/{serviceName}/glueRecord/{host}/update
-                    POST(body?: {ips: string[]}): Promise<domain.Task>;
-                }
+                // GET /domain/{serviceName}/owo/{field}
+                $get(): Promise<domain.Owo>;
+                // DELETE /domain/{serviceName}/owo/{field}
+                $delete(): Promise<void>;
             } | any
         }
-        rules:  {
-            emailsObfuscation:  {
-                // GET /domain/{serviceName}/rules/emailsObfuscation
-                GET(): Promise<domain.ContactAllTypesEnum[]>;
-            }
-            optin:  {
-                // GET /domain/{serviceName}/rules/optin
-                GET(): Promise<domain.rules.Optin[]>;
+        nameServers:  {
+            update:  {
+                // POST /domain/{serviceName}/nameServers/update
+                $post(body?: {nameServers: domain.DomainNs[]}): Promise<domain.Task>;
             }
         }
-        ukOutgoingTransfer:  {
-            // POST /domain/{serviceName}/ukOutgoingTransfer
-            POST(body?: {tag: string}): Promise<domain.Task>;
+        ukRegistrars:  {
+            // GET /domain/{serviceName}/ukRegistrars
+            $get(): Promise<domain.UkRegistrar[]>;
         }
-        nameServer:  {
-            // GET /domain/{serviceName}/nameServer
-            GET(): Promise<number[]>;
-            // POST /domain/{serviceName}/nameServer
-            POST(body?: {nameServer: domain.DomainNs[]}): Promise<domain.Task>;
-            [keys: string]: {
-                // GET /domain/{serviceName}/nameServer/{id}
-                GET(): Promise<domain.CurrentNameServer>;
-                // DELETE /domain/{serviceName}/nameServer/{id}
-                DELETE(): Promise<domain.Task>;
-                status:  {
-                    // POST /domain/{serviceName}/nameServer/{id}/status
-                    POST(): Promise<domain.DomainNsStatus>;
-                }
-            } | any
+        changeContact:  {
+            // POST /domain/{serviceName}/changeContact
+            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
         }
     } | any
-    data:  {
-        proContact:  {
-            // GET /domain/data/proContact
-            GET(): Promise<number[]>;
-            // POST /domain/data/proContact
-            POST(body?: {jobDescription: string, authority: string, authorityWebsite: string, licenseNumber: string, contactId?: number}): Promise<domain.data.ProContact>;
-            [keys: string]: {
-                // GET /domain/data/proContact/{proContactId}
-                GET(): Promise<domain.data.ProContact>;
-            } | any
-        }
-        extension:  {
-            // GET /domain/data/extension
-            GET(param?: {country: nichandle.CountryEnum}): Promise<string[]>;
-        }
-        claimNotice:  {
-            // GET /domain/data/claimNotice
-            GET(param?: {domain: string}): Promise<domain.data.claimNotice.ClaimNotice>;
-        }
-        afnicAssociationInformation:  {
-            // GET /domain/data/afnicAssociationInformation
-            GET(): Promise<number[]>;
-            // POST /domain/data/afnicAssociationInformation
-            POST(body?: {declarationDate: string, publicationDate: string, publicationNumber: string, publicationPageNumber: string, contactId: number}): Promise<domain.data.AssociationContact>;
-            [keys: string]: {
-                // GET /domain/data/afnicAssociationInformation/{associationInformationId}
-                GET(): Promise<domain.data.AssociationContact>;
-            } | any
-        }
-        smd:  {
-            // GET /domain/data/smd
-            GET(param?: {protectedLabels_label?: string}): Promise<number[]>;
-            // POST /domain/data/smd
-            POST(body?: {data: string}): Promise<domain.data.Smd>;
-            [keys: string]: {
-                // GET /domain/data/smd/{smdId}
-                GET(): Promise<domain.data.Smd>;
-                // PUT /domain/data/smd/{smdId}
-                PUT(body?: {data: string}): Promise<domain.data.Smd>;
-                // DELETE /domain/data/smd/{smdId}
-                DELETE(): Promise<void>;
-            } | any
-        }
-        afnicCorporationTrademarkInformation:  {
-            // GET /domain/data/afnicCorporationTrademarkInformation
-            GET(): Promise<number[]>;
-            // POST /domain/data/afnicCorporationTrademarkInformation
-            POST(body?: {inpiNumber: string, inpiTrademarkOwner: string, contactId: number}): Promise<domain.data.AfnicCorporationTrademarkContact>;
-            [keys: string]: {
-                // GET /domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}
-                GET(): Promise<domain.data.AfnicCorporationTrademarkContact>;
-            } | any
-        }
-    }
     zone:  {
         // GET /domain/zone
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /domain/zone/{zoneName}
-            GET(): Promise<domain.zone.Zone>;
-            status:  {
-                // GET /domain/zone/{zoneName}/status
-                GET(): Promise<zone.Status>;
-            }
-            terminate:  {
-                // POST /domain/zone/{zoneName}/terminate
-                POST(): Promise<string>;
-            }
+            $get(): Promise<domain.zone.Zone>;
             refresh:  {
                 // POST /domain/zone/{zoneName}/refresh
-                POST(): Promise<void>;
+                $post(): Promise<void>;
+            }
+            dnssec:  {
+                // GET /domain/zone/{zoneName}/dnssec
+                $get(): Promise<domain.zone.Dnssec>;
+                // POST /domain/zone/{zoneName}/dnssec
+                $post(): Promise<void>;
+                // DELETE /domain/zone/{zoneName}/dnssec
+                $delete(): Promise<void>;
+            }
+            history:  {
+                // GET /domain/zone/{zoneName}/history
+                $get(param?: {creationDate_to?: string, creationDate_from?: string}): Promise<string[]>;
+                [keys: string]: {
+                    // GET /domain/zone/{zoneName}/history/{creationDate}
+                    $get(): Promise<domain.zone.ZoneRestorePoint>;
+                    restore:  {
+                        // POST /domain/zone/{zoneName}/history/{creationDate}/restore
+                        $post(): Promise<domain.zone.Task>;
+                    }
+                } | any
+            }
+            import:  {
+                // POST /domain/zone/{zoneName}/import
+                $post(body?: {zoneFile: string}): Promise<domain.zone.Task>;
             }
             task:  {
                 // GET /domain/zone/{zoneName}/task
-                GET(param?: {status?: domain.OperationStatusEnum, function_?: string}): Promise<number[]>;
+                $get(param?: {function_?: string, status?: domain.OperationStatusEnum}): Promise<number[]>;
                 [keys: string]: {
                     // GET /domain/zone/{zoneName}/task/{id}
-                    GET(): Promise<domain.zone.Task>;
-                    cancel:  {
-                        // POST /domain/zone/{zoneName}/task/{id}/cancel
-                        POST(): Promise<void>;
-                    }
+                    $get(): Promise<domain.zone.Task>;
                     relaunch:  {
                         // POST /domain/zone/{zoneName}/task/{id}/relaunch
-                        POST(): Promise<void>;
+                        $post(): Promise<void>;
+                    }
+                    cancel:  {
+                        // POST /domain/zone/{zoneName}/task/{id}/cancel
+                        $post(): Promise<void>;
                     }
                     accelerate:  {
                         // POST /domain/zone/{zoneName}/task/{id}/accelerate
-                        POST(): Promise<void>;
+                        $post(): Promise<void>;
                     }
+                } | any
+            }
+            confirmTermination:  {
+                // POST /domain/zone/{zoneName}/confirmTermination
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            }
+            serviceInfos:  {
+                // GET /domain/zone/{zoneName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /domain/zone/{zoneName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
+            record:  {
+                // GET /domain/zone/{zoneName}/record
+                $get(param?: {subDomain?: string, fieldType?: zone.NamedResolutionFieldTypeEnum}): Promise<number[]>;
+                // POST /domain/zone/{zoneName}/record
+                $post(body?: {fieldType: zone.NamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}): Promise<domain.zone.Record>;
+                [keys: string]: {
+                    // GET /domain/zone/{zoneName}/record/{id}
+                    $get(): Promise<domain.zone.Record>;
+                    // PUT /domain/zone/{zoneName}/record/{id}
+                    $put(body?: {body: domain.zone.Record}): Promise<void>;
+                    // DELETE /domain/zone/{zoneName}/record/{id}
+                    $delete(): Promise<void>;
                 } | any
             }
             export:  {
                 // GET /domain/zone/{zoneName}/export
-                GET(): Promise<string>;
-            }
-            soa:  {
-                // GET /domain/zone/{zoneName}/soa
-                GET(): Promise<domain.zone.Soa>;
-                // PUT /domain/zone/{zoneName}/soa
-                PUT(body?: {body: domain.zone.Soa}): Promise<void>;
+                $get(): Promise<string>;
             }
             redirection:  {
                 // GET /domain/zone/{zoneName}/redirection
-                GET(param?: {subDomain?: string}): Promise<number[]>;
+                $get(param?: {subDomain?: string}): Promise<number[]>;
                 // POST /domain/zone/{zoneName}/redirection
-                POST(body?: {description?: string, title?: string, subDomain?: string, keywords?: string, type: zone.RedirectionTypeEnum, target: string}): Promise<domain.zone.Redirection>;
+                $post(body?: {description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: zone.RedirectionTypeEnum}): Promise<domain.zone.Redirection>;
                 [keys: string]: {
                     // GET /domain/zone/{zoneName}/redirection/{id}
-                    GET(): Promise<domain.zone.Redirection>;
+                    $get(): Promise<domain.zone.Redirection>;
                     // PUT /domain/zone/{zoneName}/redirection/{id}
-                    PUT(body?: {body: domain.zone.Redirection}): Promise<void>;
+                    $put(body?: {body: domain.zone.Redirection}): Promise<void>;
                     // DELETE /domain/zone/{zoneName}/redirection/{id}
-                    DELETE(): Promise<void>;
+                    $delete(): Promise<void>;
                 } | any
-            }
-            dnssec:  {
-                // GET /domain/zone/{zoneName}/dnssec
-                GET(): Promise<domain.zone.Dnssec>;
-                // POST /domain/zone/{zoneName}/dnssec
-                POST(): Promise<void>;
-                // DELETE /domain/zone/{zoneName}/dnssec
-                DELETE(): Promise<void>;
-            }
-            dynHost:  {
-                record:  {
-                    // GET /domain/zone/{zoneName}/dynHost/record
-                    GET(param?: {subDomain?: string}): Promise<number[]>;
-                    // POST /domain/zone/{zoneName}/dynHost/record
-                    POST(body?: {ip: string, subDomain?: string}): Promise<domain.zone.DynHostRecord>;
-                    [keys: string]: {
-                        // GET /domain/zone/{zoneName}/dynHost/record/{id}
-                        GET(): Promise<domain.zone.DynHostRecord>;
-                        // PUT /domain/zone/{zoneName}/dynHost/record/{id}
-                        PUT(body?: {body: domain.zone.DynHostRecord}): Promise<void>;
-                        // DELETE /domain/zone/{zoneName}/dynHost/record/{id}
-                        DELETE(): Promise<void>;
-                    } | any
-                }
-                login:  {
-                    // GET /domain/zone/{zoneName}/dynHost/login
-                    GET(param?: {subDomain?: string, login?: string}): Promise<string[]>;
-                    // POST /domain/zone/{zoneName}/dynHost/login
-                    POST(body?: {subDomain: string, password: string, loginSuffix: string}): Promise<domain.zone.DynHostLogin>;
-                    [keys: string]: {
-                        // GET /domain/zone/{zoneName}/dynHost/login/{login}
-                        GET(): Promise<domain.zone.DynHostLogin>;
-                        // PUT /domain/zone/{zoneName}/dynHost/login/{login}
-                        PUT(body?: {body: domain.zone.DynHostLogin}): Promise<void>;
-                        // DELETE /domain/zone/{zoneName}/dynHost/login/{login}
-                        DELETE(): Promise<void>;
-                        changePassword:  {
-                            // POST /domain/zone/{zoneName}/dynHost/login/{login}/changePassword
-                            POST(body?: {password: string}): Promise<void>;
-                        }
-                    } | any
-                }
-            }
-            import:  {
-                // POST /domain/zone/{zoneName}/import
-                POST(body?: {zoneFile: string}): Promise<domain.zone.Task>;
             }
             reset:  {
                 // POST /domain/zone/{zoneName}/reset
-                POST(body?: {DnsRecords?: zone.ResetRecord[], minimized?: boolean}): Promise<void>;
+                $post(body?: {DnsRecords?: zone.ResetRecord[], minimized?: boolean}): Promise<void>;
             }
-            record:  {
-                // GET /domain/zone/{zoneName}/record
-                GET(param?: {fieldType?: zone.NamedResolutionFieldTypeEnum, subDomain?: string}): Promise<number[]>;
-                // POST /domain/zone/{zoneName}/record
-                POST(body?: {fieldType: zone.NamedResolutionFieldTypeEnum, ttl?: number, target: string, subDomain?: string}): Promise<domain.zone.Record>;
-                [keys: string]: {
-                    // GET /domain/zone/{zoneName}/record/{id}
-                    GET(): Promise<domain.zone.Record>;
-                    // PUT /domain/zone/{zoneName}/record/{id}
-                    PUT(body?: {body: domain.zone.Record}): Promise<void>;
-                    // DELETE /domain/zone/{zoneName}/record/{id}
-                    DELETE(): Promise<void>;
-                } | any
+            terminate:  {
+                // POST /domain/zone/{zoneName}/terminate
+                $post(): Promise<string>;
             }
-            history:  {
-                // GET /domain/zone/{zoneName}/history
-                GET(param?: {creationDate_from?: string, creationDate_to?: string}): Promise<string[]>;
-                [keys: string]: {
-                    // GET /domain/zone/{zoneName}/history/{creationDate}
-                    GET(): Promise<domain.zone.ZoneRestorePoint>;
-                    restore:  {
-                        // POST /domain/zone/{zoneName}/history/{creationDate}/restore
-                        POST(): Promise<domain.zone.Task>;
-                    }
-                } | any
+            dynHost:  {
+                login:  {
+                    // GET /domain/zone/{zoneName}/dynHost/login
+                    $get(param?: {subDomain?: string, login?: string}): Promise<string[]>;
+                    // POST /domain/zone/{zoneName}/dynHost/login
+                    $post(body?: {loginSuffix: string, password: string, subDomain: string}): Promise<domain.zone.DynHostLogin>;
+                    [keys: string]: {
+                        // GET /domain/zone/{zoneName}/dynHost/login/{login}
+                        $get(): Promise<domain.zone.DynHostLogin>;
+                        // PUT /domain/zone/{zoneName}/dynHost/login/{login}
+                        $put(body?: {body: domain.zone.DynHostLogin}): Promise<void>;
+                        // DELETE /domain/zone/{zoneName}/dynHost/login/{login}
+                        $delete(): Promise<void>;
+                        changePassword:  {
+                            // POST /domain/zone/{zoneName}/dynHost/login/{login}/changePassword
+                            $post(body?: {password: string}): Promise<void>;
+                        }
+                    } | any
+                }
+                record:  {
+                    // GET /domain/zone/{zoneName}/dynHost/record
+                    $get(param?: {subDomain?: string}): Promise<number[]>;
+                    // POST /domain/zone/{zoneName}/dynHost/record
+                    $post(body?: {ip: string, subDomain?: string}): Promise<domain.zone.DynHostRecord>;
+                    [keys: string]: {
+                        // GET /domain/zone/{zoneName}/dynHost/record/{id}
+                        $get(): Promise<domain.zone.DynHostRecord>;
+                        // PUT /domain/zone/{zoneName}/dynHost/record/{id}
+                        $put(body?: {body: domain.zone.DynHostRecord}): Promise<void>;
+                        // DELETE /domain/zone/{zoneName}/dynHost/record/{id}
+                        $delete(): Promise<void>;
+                    } | any
+                }
+            }
+            status:  {
+                // GET /domain/zone/{zoneName}/status
+                $get(): Promise<zone.Status>;
+            }
+            soa:  {
+                // GET /domain/zone/{zoneName}/soa
+                $get(): Promise<domain.zone.Soa>;
+                // PUT /domain/zone/{zoneName}/soa
+                $put(body?: {body: domain.zone.Soa}): Promise<void>;
             }
             changeContact:  {
                 // POST /domain/zone/{zoneName}/changeContact
-                POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
-            }
-            confirmTermination:  {
-                // POST /domain/zone/{zoneName}/confirmTermination
-                POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
-            }
-            serviceInfos:  {
-                // GET /domain/zone/{zoneName}/serviceInfos
-                GET(): Promise<services.Service>;
-                // PUT /domain/zone/{zoneName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
         } | any
     }
     rules:  {
         // GET /domain/rules
-        GET(param?: {cartId: string, itemId: number}): Promise<domain.Rule>;
+        $get(param?: {cartId: string, itemId: number}): Promise<domain.Rule>;
     }
 }
 // Api
-type PathsDomainGET = '/domain' |
-  '/domain/{serviceName}/task/{id}' |
-  '/domain/{serviceName}/task' |
-  '/domain/{serviceName}/ukRegistrars' |
-  '/domain/{serviceName}/dsRecord' |
-  '/domain/{serviceName}/dsRecord/{id}' |
-  '/domain/{serviceName}/configurations/optin' |
-  '/domain/{serviceName}/configurations/obfuscatedEmails' |
-  '/domain/{serviceName}/option' |
-  '/domain/{serviceName}/option/{option}' |
-  '/domain/{serviceName}/owo' |
-  '/domain/{serviceName}/owo/{field}' |
-  '/domain/{serviceName}' |
-  '/domain/{serviceName}/authInfo' |
-  '/domain/{serviceName}/serviceInfos' |
-  '/domain/{serviceName}/glueRecord/{host}' |
-  '/domain/{serviceName}/glueRecord' |
-  '/domain/{serviceName}/rules/emailsObfuscation' |
-  '/domain/{serviceName}/rules/optin' |
-  '/domain/{serviceName}/nameServer/{id}' |
-  '/domain/{serviceName}/nameServer' |
-  '/domain/data/proContact' |
+type PathsDomainGET = '/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}' |
+  '/domain/data/afnicCorporationTrademarkInformation' |
   '/domain/data/proContact/{proContactId}' |
-  '/domain/data/extension' |
+  '/domain/data/proContact' |
   '/domain/data/claimNotice' |
+  '/domain/data/extension' |
   '/domain/data/afnicAssociationInformation/{associationInformationId}' |
   '/domain/data/afnicAssociationInformation' |
   '/domain/data/smd/{smdId}' |
   '/domain/data/smd' |
-  '/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}' |
-  '/domain/data/afnicCorporationTrademarkInformation' |
-  '/domain/zone' |
-  '/domain/zone/{zoneName}/status' |
-  '/domain/zone/{zoneName}' |
-  '/domain/zone/{zoneName}/task/{id}' |
-  '/domain/zone/{zoneName}/task' |
-  '/domain/zone/{zoneName}/export' |
-  '/domain/zone/{zoneName}/soa' |
-  '/domain/zone/{zoneName}/redirection' |
-  '/domain/zone/{zoneName}/redirection/{id}' |
+  '/domain' |
+  '/domain/{serviceName}/dsRecord/{id}' |
+  '/domain/{serviceName}/dsRecord' |
+  '/domain/{serviceName}/option/{option}' |
+  '/domain/{serviceName}/option' |
+  '/domain/{serviceName}/authInfo' |
+  '/domain/{serviceName}/task' |
+  '/domain/{serviceName}/task/{id}' |
+  '/domain/{serviceName}/nameServer/{id}' |
+  '/domain/{serviceName}/nameServer' |
+  '/domain/{serviceName}' |
+  '/domain/{serviceName}/glueRecord' |
+  '/domain/{serviceName}/glueRecord/{host}' |
+  '/domain/{serviceName}/serviceInfos' |
+  '/domain/{serviceName}/rules/optin' |
+  '/domain/{serviceName}/rules/emailsObfuscation' |
+  '/domain/{serviceName}/configurations/optin' |
+  '/domain/{serviceName}/configurations/obfuscatedEmails' |
+  '/domain/{serviceName}/owo' |
+  '/domain/{serviceName}/owo/{field}' |
+  '/domain/{serviceName}/ukRegistrars' |
   '/domain/zone/{zoneName}/dnssec' |
-  '/domain/zone/{zoneName}/dynHost/record/{id}' |
-  '/domain/zone/{zoneName}/dynHost/record' |
-  '/domain/zone/{zoneName}/dynHost/login' |
-  '/domain/zone/{zoneName}/dynHost/login/{login}' |
-  '/domain/zone/{zoneName}/record' |
-  '/domain/zone/{zoneName}/record/{id}' |
   '/domain/zone/{zoneName}/history' |
   '/domain/zone/{zoneName}/history/{creationDate}' |
+  '/domain/zone/{zoneName}/task' |
+  '/domain/zone/{zoneName}/task/{id}' |
   '/domain/zone/{zoneName}/serviceInfos' |
+  '/domain/zone/{zoneName}' |
+  '/domain/zone/{zoneName}/record' |
+  '/domain/zone/{zoneName}/record/{id}' |
+  '/domain/zone/{zoneName}/export' |
+  '/domain/zone/{zoneName}/redirection/{id}' |
+  '/domain/zone/{zoneName}/redirection' |
+  '/domain/zone/{zoneName}/dynHost/login' |
+  '/domain/zone/{zoneName}/dynHost/login/{login}' |
+  '/domain/zone/{zoneName}/dynHost/record/{id}' |
+  '/domain/zone/{zoneName}/dynHost/record' |
+  '/domain/zone/{zoneName}/status' |
+  '/domain/zone/{zoneName}/soa' |
+  '/domain/zone' |
   '/domain/rules';
 
-type PathsDomainPUT = '/domain/{serviceName}/configurations/optin' |
-  '/domain/{serviceName}/configurations/obfuscatedEmails' |
+type PathsDomainPUT = '/domain/data/smd/{smdId}' |
   '/domain/{serviceName}' |
   '/domain/{serviceName}/serviceInfos' |
-  '/domain/data/smd/{smdId}' |
-  '/domain/zone/{zoneName}/soa' |
-  '/domain/zone/{zoneName}/redirection/{id}' |
-  '/domain/zone/{zoneName}/dynHost/record/{id}' |
-  '/domain/zone/{zoneName}/dynHost/login/{login}' |
+  '/domain/{serviceName}/configurations/optin' |
+  '/domain/{serviceName}/configurations/obfuscatedEmails' |
+  '/domain/zone/{zoneName}/serviceInfos' |
   '/domain/zone/{zoneName}/record/{id}' |
-  '/domain/zone/{zoneName}/serviceInfos';
+  '/domain/zone/{zoneName}/redirection/{id}' |
+  '/domain/zone/{zoneName}/dynHost/login/{login}' |
+  '/domain/zone/{zoneName}/dynHost/record/{id}' |
+  '/domain/zone/{zoneName}/soa';
 
-type PathsDomainPOST = '/domain/{serviceName}/task/{id}/cancel' |
-  '/domain/{serviceName}/task/{id}/relaunch' |
-  '/domain/{serviceName}/task/{id}/accelerate' |
-  '/domain/{serviceName}/dsRecord' |
-  '/domain/{serviceName}/configurations/obfuscatedEmails/refresh' |
-  '/domain/{serviceName}/owo' |
-  '/domain/{serviceName}/nameServers/update' |
-  '/domain/{serviceName}/changeContact' |
-  '/domain/{serviceName}/activateZone' |
-  '/domain/{serviceName}/email/obfuscated/refresh' |
-  '/domain/{serviceName}/glueRecord/{host}/update' |
-  '/domain/{serviceName}/glueRecord' |
-  '/domain/{serviceName}/ukOutgoingTransfer' |
-  '/domain/{serviceName}/nameServer/{id}/status' |
-  '/domain/{serviceName}/nameServer' |
+type PathsDomainPOST = '/domain/data/afnicCorporationTrademarkInformation' |
   '/domain/data/proContact' |
   '/domain/data/afnicAssociationInformation' |
   '/domain/data/smd' |
-  '/domain/data/afnicCorporationTrademarkInformation' |
-  '/domain/zone/{zoneName}/terminate' |
+  '/domain/{serviceName}/ukOutgoingTransfer' |
+  '/domain/{serviceName}/dsRecord' |
+  '/domain/{serviceName}/task/{id}/relaunch' |
+  '/domain/{serviceName}/task/{id}/cancel' |
+  '/domain/{serviceName}/task/{id}/accelerate' |
+  '/domain/{serviceName}/activateZone' |
+  '/domain/{serviceName}/nameServer/{id}/status' |
+  '/domain/{serviceName}/nameServer' |
+  '/domain/{serviceName}/glueRecord' |
+  '/domain/{serviceName}/glueRecord/{host}/update' |
+  '/domain/{serviceName}/configurations/obfuscatedEmails/refresh' |
+  '/domain/{serviceName}/email/obfuscated/refresh' |
+  '/domain/{serviceName}/owo' |
+  '/domain/{serviceName}/nameServers/update' |
+  '/domain/{serviceName}/changeContact' |
   '/domain/zone/{zoneName}/refresh' |
-  '/domain/zone/{zoneName}/task/{id}/cancel' |
-  '/domain/zone/{zoneName}/task/{id}/relaunch' |
-  '/domain/zone/{zoneName}/task/{id}/accelerate' |
-  '/domain/zone/{zoneName}/redirection' |
   '/domain/zone/{zoneName}/dnssec' |
-  '/domain/zone/{zoneName}/dynHost/record' |
+  '/domain/zone/{zoneName}/history/{creationDate}/restore' |
+  '/domain/zone/{zoneName}/import' |
+  '/domain/zone/{zoneName}/task/{id}/relaunch' |
+  '/domain/zone/{zoneName}/task/{id}/cancel' |
+  '/domain/zone/{zoneName}/task/{id}/accelerate' |
+  '/domain/zone/{zoneName}/confirmTermination' |
+  '/domain/zone/{zoneName}/record' |
+  '/domain/zone/{zoneName}/redirection' |
+  '/domain/zone/{zoneName}/reset' |
+  '/domain/zone/{zoneName}/terminate' |
   '/domain/zone/{zoneName}/dynHost/login' |
   '/domain/zone/{zoneName}/dynHost/login/{login}/changePassword' |
-  '/domain/zone/{zoneName}/import' |
-  '/domain/zone/{zoneName}/reset' |
-  '/domain/zone/{zoneName}/record' |
-  '/domain/zone/{zoneName}/history/{creationDate}/restore' |
-  '/domain/zone/{zoneName}/changeContact' |
-  '/domain/zone/{zoneName}/confirmTermination';
+  '/domain/zone/{zoneName}/dynHost/record' |
+  '/domain/zone/{zoneName}/changeContact';
 
-type PathsDomainDELETE = '/domain/{serviceName}/option/{option}' |
-  '/domain/{serviceName}/owo/{field}' |
-  '/domain/{serviceName}/glueRecord/{host}' |
+type PathsDomainDELETE = '/domain/data/smd/{smdId}' |
+  '/domain/{serviceName}/option/{option}' |
   '/domain/{serviceName}/nameServer/{id}' |
-  '/domain/data/smd/{smdId}' |
-  '/domain/zone/{zoneName}/redirection/{id}' |
+  '/domain/{serviceName}/glueRecord/{host}' |
+  '/domain/{serviceName}/owo/{field}' |
   '/domain/zone/{zoneName}/dnssec' |
-  '/domain/zone/{zoneName}/dynHost/record/{id}' |
+  '/domain/zone/{zoneName}/record/{id}' |
+  '/domain/zone/{zoneName}/redirection/{id}' |
   '/domain/zone/{zoneName}/dynHost/login/{login}' |
-  '/domain/zone/{zoneName}/record/{id}';
+  '/domain/zone/{zoneName}/dynHost/record/{id}';
 
 export class ApiDomain extends OvhWrapper {
   constructor(engine: OvhRequestable) {

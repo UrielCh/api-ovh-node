@@ -109,105 +109,105 @@ export namespace services {
 // path /deskaas
 export interface Deskaas {
     // GET /deskaas
-    GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
     [keys: string]: {
         // GET /deskaas/{serviceName}
-        GET(): Promise<deskaas.deskaas>;
-        upgrade:  {
-            // POST /deskaas/{serviceName}/upgrade
-            POST(body?: {planCode?: string, newReference?: string}): Promise<deskaas.Task>;
-        }
-        reboot:  {
-            // POST /deskaas/{serviceName}/reboot
-            POST(): Promise<deskaas.Task>;
-        }
-        task:  {
-            // GET /deskaas/{serviceName}/task
-            GET(param?: {state?: deskaas.TaskStateEnum}): Promise<number[]>;
-            [keys: string]: {
-                // GET /deskaas/{serviceName}/task/{taskId}
-                GET(): Promise<deskaas.Task>;
-            } | any
-        }
-        passwordPolicy:  {
-            // GET /deskaas/{serviceName}/passwordPolicy
-            GET(): Promise<deskaas.passwordPolicy>;
-        }
-        serviceInfos:  {
-            // GET /deskaas/{serviceName}/serviceInfos
-            GET(): Promise<services.Service>;
-            // PUT /deskaas/{serviceName}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
+        $get(): Promise<deskaas.deskaas>;
+        refresh:  {
+            // POST /deskaas/{serviceName}/refresh
+            $post(): Promise<deskaas.Task>;
         }
         terminate:  {
             // POST /deskaas/{serviceName}/terminate
-            POST(): Promise<string>;
+            $post(): Promise<string>;
         }
-        console:  {
-            // POST /deskaas/{serviceName}/console
-            POST(): Promise<deskaas.Task>;
+        task:  {
+            // GET /deskaas/{serviceName}/task
+            $get(param?: {state?: deskaas.TaskStateEnum}): Promise<number[]>;
+            [keys: string]: {
+                // GET /deskaas/{serviceName}/task/{taskId}
+                $get(): Promise<deskaas.Task>;
+            } | any
         }
-        confirmTermination:  {
-            // POST /deskaas/{serviceName}/confirmTermination
-            POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
-        }
-        user:  {
-            // GET /deskaas/{serviceName}/user
-            GET(): Promise<deskaas.User>;
-            changeProperties:  {
-                // POST /deskaas/{serviceName}/user/changeProperties
-                POST(body?: {email?: string}): Promise<deskaas.Task>;
-            }
-            task:  {
-                // GET /deskaas/{serviceName}/user/task
-                GET(param?: {state?: deskaas.TaskStateEnum}): Promise<number[]>;
-                [keys: string]: {
-                    // GET /deskaas/{serviceName}/user/task/{taskId}
-                    GET(): Promise<deskaas.Task>;
-                } | any
-            }
-            changePassword:  {
-                // POST /deskaas/{serviceName}/user/changePassword
-                POST(body?: {password?: string}): Promise<deskaas.Task>;
-            }
-        }
-        refresh:  {
-            // POST /deskaas/{serviceName}/refresh
-            POST(): Promise<deskaas.Task>;
+        upgrade:  {
+            // POST /deskaas/{serviceName}/upgrade
+            $post(body?: {newReference?: string, planCode?: string}): Promise<deskaas.Task>;
         }
         changeContact:  {
             // POST /deskaas/{serviceName}/changeContact
-            POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
+            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
         }
         changeAlias:  {
             // POST /deskaas/{serviceName}/changeAlias
-            POST(body?: {alias: string}): Promise<deskaas.Task>;
+            $post(body?: {alias: string}): Promise<deskaas.Task>;
+        }
+        user:  {
+            // GET /deskaas/{serviceName}/user
+            $get(): Promise<deskaas.User>;
+            task:  {
+                // GET /deskaas/{serviceName}/user/task
+                $get(param?: {state?: deskaas.TaskStateEnum}): Promise<number[]>;
+                [keys: string]: {
+                    // GET /deskaas/{serviceName}/user/task/{taskId}
+                    $get(): Promise<deskaas.Task>;
+                } | any
+            }
+            changeProperties:  {
+                // POST /deskaas/{serviceName}/user/changeProperties
+                $post(body?: {email?: string}): Promise<deskaas.Task>;
+            }
+            changePassword:  {
+                // POST /deskaas/{serviceName}/user/changePassword
+                $post(body?: {password?: string}): Promise<deskaas.Task>;
+            }
+        }
+        serviceInfos:  {
+            // GET /deskaas/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /deskaas/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
+        }
+        confirmTermination:  {
+            // POST /deskaas/{serviceName}/confirmTermination
+            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+        }
+        passwordPolicy:  {
+            // GET /deskaas/{serviceName}/passwordPolicy
+            $get(): Promise<deskaas.passwordPolicy>;
+        }
+        reboot:  {
+            // POST /deskaas/{serviceName}/reboot
+            $post(): Promise<deskaas.Task>;
+        }
+        console:  {
+            // POST /deskaas/{serviceName}/console
+            $post(): Promise<deskaas.Task>;
         }
     } | any
 }
 // Api
 type PathsDeskaasGET = '/deskaas/{serviceName}/task/{taskId}' |
   '/deskaas/{serviceName}/task' |
-  '/deskaas/{serviceName}/passwordPolicy' |
-  '/deskaas/{serviceName}/serviceInfos' |
-  '/deskaas/{serviceName}' |
-  '/deskaas/{serviceName}/user' |
   '/deskaas/{serviceName}/user/task/{taskId}' |
   '/deskaas/{serviceName}/user/task' |
+  '/deskaas/{serviceName}/user' |
+  '/deskaas/{serviceName}/serviceInfos' |
+  '/deskaas/{serviceName}/passwordPolicy' |
+  '/deskaas/{serviceName}' |
   '/deskaas';
 
 type PathsDeskaasPUT = '/deskaas/{serviceName}/serviceInfos';
 
-type PathsDeskaasPOST = '/deskaas/{serviceName}/upgrade' |
-  '/deskaas/{serviceName}/reboot' |
+type PathsDeskaasPOST = '/deskaas/{serviceName}/refresh' |
   '/deskaas/{serviceName}/terminate' |
-  '/deskaas/{serviceName}/console' |
-  '/deskaas/{serviceName}/confirmTermination' |
+  '/deskaas/{serviceName}/upgrade' |
+  '/deskaas/{serviceName}/changeContact' |
+  '/deskaas/{serviceName}/changeAlias' |
   '/deskaas/{serviceName}/user/changeProperties' |
   '/deskaas/{serviceName}/user/changePassword' |
-  '/deskaas/{serviceName}/refresh' |
-  '/deskaas/{serviceName}/changeContact' |
-  '/deskaas/{serviceName}/changeAlias';
+  '/deskaas/{serviceName}/confirmTermination' |
+  '/deskaas/{serviceName}/reboot' |
+  '/deskaas/{serviceName}/console';
 
 export class ApiDeskaas extends OvhWrapper {
   constructor(engine: OvhRequestable) {

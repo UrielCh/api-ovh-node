@@ -67,7 +67,7 @@ export namespace supply {
 export interface Supply {
     mondialRelay:  {
         // POST /supply/mondialRelay
-        POST(body?: {city?: string, country: coreTypes.CountryEnum, zipcode?: string, address?: string}): Promise<supply.MondialRelayReturn>;
+        $post(body?: {address?: string, city?: string, country: coreTypes.CountryEnum, zipcode?: string}): Promise<supply.MondialRelayReturn>;
     }
 }
 // Api

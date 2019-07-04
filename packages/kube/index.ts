@@ -95,85 +95,85 @@ export namespace services {
 // path /kube
 export interface Kube {
     // GET /kube
-    GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
     [keys: string]: {
         // GET /kube/{serviceName}
-        GET(): Promise<kube.Cluster>;
+        $get(): Promise<kube.Cluster>;
         // PUT /kube/{serviceName}
-        PUT(body?: {name: string}): Promise<void>;
-        terminate:  {
-            // POST /kube/{serviceName}/terminate
-            POST(): Promise<string>;
-        }
-        update:  {
-            // POST /kube/{serviceName}/update
-            POST(): Promise<void>;
-        }
-        kubeconfig:  {
-            // GET /kube/{serviceName}/kubeconfig
-            GET(): Promise<kube.Kubeconfig>;
-        }
-        changeContact:  {
-            // POST /kube/{serviceName}/changeContact
-            POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
+        $put(body?: {name: string}): Promise<void>;
+        updatePolicy:  {
+            // PUT /kube/{serviceName}/updatePolicy
+            $put(body?: {updatePolicy: kube.UpdatePolicy}): Promise<void>;
         }
         serviceInfos:  {
             // GET /kube/{serviceName}/serviceInfos
-            GET(): Promise<services.Service>;
+            $get(): Promise<services.Service>;
             // PUT /kube/{serviceName}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
+            $put(body?: {body: services.Service}): Promise<void>;
         }
-        confirmTermination:  {
-            // POST /kube/{serviceName}/confirmTermination
-            POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
+        terminate:  {
+            // POST /kube/{serviceName}/terminate
+            $post(): Promise<string>;
         }
-        publiccloud:  {
-            project:  {
-                // GET /kube/{serviceName}/publiccloud/project
-                GET(): Promise<kube.PublicCloudProject>;
-            }
-            node:  {
-                // GET /kube/{serviceName}/publiccloud/node
-                GET(): Promise<kube.Node[]>;
-                // POST /kube/{serviceName}/publiccloud/node
-                POST(body?: {flavorName: string, name?: string}): Promise<kube.Node>;
-                [keys: string]: {
-                    // DELETE /kube/{serviceName}/publiccloud/node/{nodeId}
-                    DELETE(): Promise<void>;
-                    // GET /kube/{serviceName}/publiccloud/node/{nodeId}
-                    GET(): Promise<kube.Node>;
-                } | any
-            }
+        update:  {
+            // POST /kube/{serviceName}/update
+            $post(): Promise<void>;
         }
         reset:  {
             // POST /kube/{serviceName}/reset
-            POST(body?: {version?: kube.Version, workerNodesPolicy?: kube.ResetWorkerNodesPolicy}): Promise<void>;
+            $post(body?: {version?: kube.Version, workerNodesPolicy?: kube.ResetWorkerNodesPolicy}): Promise<void>;
         }
-        updatePolicy:  {
-            // PUT /kube/{serviceName}/updatePolicy
-            PUT(body?: {updatePolicy: kube.UpdatePolicy}): Promise<void>;
+        confirmTermination:  {
+            // POST /kube/{serviceName}/confirmTermination
+            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+        }
+        kubeconfig:  {
+            // GET /kube/{serviceName}/kubeconfig
+            $get(): Promise<kube.Kubeconfig>;
+        }
+        changeContact:  {
+            // POST /kube/{serviceName}/changeContact
+            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+        }
+        publiccloud:  {
+            node:  {
+                // GET /kube/{serviceName}/publiccloud/node
+                $get(): Promise<kube.Node[]>;
+                // POST /kube/{serviceName}/publiccloud/node
+                $post(body?: {flavorName: string, name?: string}): Promise<kube.Node>;
+                [keys: string]: {
+                    // DELETE /kube/{serviceName}/publiccloud/node/{nodeId}
+                    $delete(): Promise<void>;
+                    // GET /kube/{serviceName}/publiccloud/node/{nodeId}
+                    $get(): Promise<kube.Node>;
+                } | any
+            }
+            project:  {
+                // GET /kube/{serviceName}/publiccloud/project
+                $get(): Promise<kube.PublicCloudProject>;
+            }
         }
     } | any
 }
 // Api
-type PathsKubeGET = '/kube/{serviceName}/kubeconfig' |
-  '/kube/{serviceName}/serviceInfos' |
-  '/kube/{serviceName}/publiccloud/project' |
+type PathsKubeGET = '/kube/{serviceName}/serviceInfos' |
+  '/kube/{serviceName}' |
+  '/kube/{serviceName}/kubeconfig' |
   '/kube/{serviceName}/publiccloud/node/{nodeId}' |
   '/kube/{serviceName}/publiccloud/node' |
-  '/kube/{serviceName}' |
+  '/kube/{serviceName}/publiccloud/project' |
   '/kube';
 
-type PathsKubePUT = '/kube/{serviceName}/serviceInfos' |
-  '/kube/{serviceName}' |
-  '/kube/{serviceName}/updatePolicy';
+type PathsKubePUT = '/kube/{serviceName}/updatePolicy' |
+  '/kube/{serviceName}/serviceInfos' |
+  '/kube/{serviceName}';
 
 type PathsKubePOST = '/kube/{serviceName}/terminate' |
   '/kube/{serviceName}/update' |
-  '/kube/{serviceName}/changeContact' |
+  '/kube/{serviceName}/reset' |
   '/kube/{serviceName}/confirmTermination' |
-  '/kube/{serviceName}/publiccloud/node' |
-  '/kube/{serviceName}/reset';
+  '/kube/{serviceName}/changeContact' |
+  '/kube/{serviceName}/publiccloud/node';
 
 type PathsKubeDELETE = '/kube/{serviceName}/publiccloud/node/{nodeId}';
 

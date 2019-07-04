@@ -155,206 +155,206 @@ export namespace vrack {
 // path /vrack
 export interface Vrack {
     // GET /vrack
-    GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
     [keys: string]: {
         // GET /vrack/{serviceName}
-        GET(): Promise<vrack.vrack>;
+        $get(): Promise<vrack.vrack>;
         // PUT /vrack/{serviceName}
-        PUT(body?: {body: vrack.vrack}): Promise<void>;
-        allowedServices:  {
-            // GET /vrack/{serviceName}/allowedServices
-            GET(): Promise<vrack.AllowedServices>;
+        $put(body?: {body: vrack.vrack}): Promise<void>;
+        serviceInfos:  {
+            // GET /vrack/{serviceName}/serviceInfos
+            $get(): Promise<services.NonExpiringService>;
         }
-        dedicatedServerInterface:  {
-            // GET /vrack/{serviceName}/dedicatedServerInterface
-            GET(): Promise<string[]>;
-            // POST /vrack/{serviceName}/dedicatedServerInterface
-            POST(body?: {dedicatedServerInterface: string}): Promise<vrack.Task>;
+        legacyVrack:  {
+            // GET /vrack/{serviceName}/legacyVrack
+            $get(): Promise<string[]>;
+            // POST /vrack/{serviceName}/legacyVrack
+            $post(body?: {legacyVrack: string}): Promise<vrack.Task>;
             [keys: string]: {
-                // GET /vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}
-                GET(): Promise<vrack.dedicatedServerInterface>;
-                // DELETE /vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}
-                DELETE(): Promise<vrack.Task>;
+                // GET /vrack/{serviceName}/legacyVrack/{legacyVrack}
+                $get(): Promise<vrack.legacyVrack>;
+                // DELETE /vrack/{serviceName}/legacyVrack/{legacyVrack}
+                $delete(): Promise<vrack.Task>;
+            } | any
+        }
+        dedicatedConnect:  {
+            // GET /vrack/{serviceName}/dedicatedConnect
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /vrack/{serviceName}/dedicatedConnect/{name}
+                $get(): Promise<vrack.dedicatedConnect>;
+                // PUT /vrack/{serviceName}/dedicatedConnect/{name}
+                $put(body?: {body: vrack.dedicatedConnect}): Promise<void>;
             } | any
         }
         dedicatedCloudDatacenter:  {
             // GET /vrack/{serviceName}/dedicatedCloudDatacenter
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             [keys: string]: {
                 // GET /vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}
-                GET(): Promise<vrack.pccDatacenter>;
-                allowedVrack:  {
-                    // GET /vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/allowedVrack
-                    GET(): Promise<string[]>;
-                }
+                $get(): Promise<vrack.pccDatacenter>;
                 move:  {
                     // POST /vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move
-                    POST(body?: {targetServiceName: string}): Promise<vrack.Task>;
+                    $post(body?: {targetServiceName: string}): Promise<vrack.Task>;
                 }
-            } | any
-        }
-        dedicatedServer:  {
-            // GET /vrack/{serviceName}/dedicatedServer
-            GET(): Promise<string[]>;
-            // POST /vrack/{serviceName}/dedicatedServer
-            POST(body?: {dedicatedServer: string}): Promise<vrack.Task>;
-            [keys: string]: {
-                // GET /vrack/{serviceName}/dedicatedServer/{dedicatedServer}
-                GET(): Promise<vrack.dedicatedServer>;
-                // DELETE /vrack/{serviceName}/dedicatedServer/{dedicatedServer}
-                DELETE(): Promise<vrack.Task>;
-                mrtg:  {
-                    // GET /vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg
-                    GET(param?: {period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
+                allowedVrack:  {
+                    // GET /vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/allowedVrack
+                    $get(): Promise<string[]>;
                 }
             } | any
         }
         cloudProject:  {
             // GET /vrack/{serviceName}/cloudProject
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             // POST /vrack/{serviceName}/cloudProject
-            POST(body?: {project: string}): Promise<vrack.Task>;
+            $post(body?: {project: string}): Promise<vrack.Task>;
             [keys: string]: {
                 // GET /vrack/{serviceName}/cloudProject/{project}
-                GET(): Promise<vrack.cloudProject>;
+                $get(): Promise<vrack.cloudProject>;
                 // DELETE /vrack/{serviceName}/cloudProject/{project}
-                DELETE(): Promise<vrack.Task>;
-            } | any
-        }
-        legacyVrack:  {
-            // GET /vrack/{serviceName}/legacyVrack
-            GET(): Promise<string[]>;
-            // POST /vrack/{serviceName}/legacyVrack
-            POST(body?: {legacyVrack: string}): Promise<vrack.Task>;
-            [keys: string]: {
-                // GET /vrack/{serviceName}/legacyVrack/{legacyVrack}
-                GET(): Promise<vrack.legacyVrack>;
-                // DELETE /vrack/{serviceName}/legacyVrack/{legacyVrack}
-                DELETE(): Promise<vrack.Task>;
+                $delete(): Promise<vrack.Task>;
             } | any
         }
         dedicatedServerInterfaceDetails:  {
             // GET /vrack/{serviceName}/dedicatedServerInterfaceDetails
-            GET(): Promise<vrack.AllowedDedicatedServerInterfaces[]>;
+            $get(): Promise<vrack.AllowedDedicatedServerInterfaces[]>;
         }
-        dedicatedCloud:  {
-            // GET /vrack/{serviceName}/dedicatedCloud
-            GET(): Promise<string[]>;
-            // POST /vrack/{serviceName}/dedicatedCloud
-            POST(body?: {dedicatedCloud: string}): Promise<vrack.Task>;
+        dedicatedServer:  {
+            // GET /vrack/{serviceName}/dedicatedServer
+            $get(): Promise<string[]>;
+            // POST /vrack/{serviceName}/dedicatedServer
+            $post(body?: {dedicatedServer: string}): Promise<vrack.Task>;
             [keys: string]: {
-                // GET /vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}
-                GET(): Promise<vrack.dedicatedCloud>;
-                // DELETE /vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}
-                DELETE(): Promise<vrack.Task>;
-            } | any
-        }
-        serviceInfos:  {
-            // GET /vrack/{serviceName}/serviceInfos
-            GET(): Promise<services.NonExpiringService>;
-        }
-        task:  {
-            // GET /vrack/{serviceName}/task
-            GET(): Promise<number[]>;
-            [keys: string]: {
-                // GET /vrack/{serviceName}/task/{taskId}
-                GET(): Promise<vrack.Task>;
+                // GET /vrack/{serviceName}/dedicatedServer/{dedicatedServer}
+                $get(): Promise<vrack.dedicatedServer>;
+                // DELETE /vrack/{serviceName}/dedicatedServer/{dedicatedServer}
+                $delete(): Promise<vrack.Task>;
+                mrtg:  {
+                    // GET /vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg
+                    $get(param?: {period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
+                }
             } | any
         }
         ipLoadbalancing:  {
             // GET /vrack/{serviceName}/ipLoadbalancing
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             // POST /vrack/{serviceName}/ipLoadbalancing
-            POST(body?: {ipLoadbalancing: string}): Promise<vrack.Task>;
+            $post(body?: {ipLoadbalancing: string}): Promise<vrack.Task>;
             [keys: string]: {
                 // GET /vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}
-                GET(): Promise<vrack.iplb>;
+                $get(): Promise<vrack.iplb>;
                 // DELETE /vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}
-                DELETE(): Promise<vrack.Task>;
+                $delete(): Promise<vrack.Task>;
             } | any
+        }
+        allowedServices:  {
+            // GET /vrack/{serviceName}/allowedServices
+            $get(): Promise<vrack.AllowedServices>;
         }
         ip:  {
             // GET /vrack/{serviceName}/ip
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             // POST /vrack/{serviceName}/ip
-            POST(body?: {block: string}): Promise<vrack.Task>;
+            $post(body?: {block: string}): Promise<vrack.Task>;
             [keys: string]: {
                 // GET /vrack/{serviceName}/ip/{ip}
-                GET(): Promise<vrack.ip>;
+                $get(): Promise<vrack.ip>;
                 // DELETE /vrack/{serviceName}/ip/{ip}
-                DELETE(): Promise<vrack.Task>;
+                $delete(): Promise<vrack.Task>;
                 announceInZone:  {
                     // POST /vrack/{serviceName}/ip/{ip}/announceInZone
-                    POST(body?: {zone: vrack.VrackZoneEnum}): Promise<vrack.Task>;
+                    $post(body?: {zone: vrack.VrackZoneEnum}): Promise<vrack.Task>;
                 }
                 availableZone:  {
                     // GET /vrack/{serviceName}/ip/{ip}/availableZone
-                    GET(): Promise<vrack.VrackZoneEnum[]>;
+                    $get(): Promise<vrack.VrackZoneEnum[]>;
                 }
             } | any
         }
-        dedicatedConnect:  {
-            // GET /vrack/{serviceName}/dedicatedConnect
-            GET(): Promise<string[]>;
+        task:  {
+            // GET /vrack/{serviceName}/task
+            $get(): Promise<number[]>;
             [keys: string]: {
-                // GET /vrack/{serviceName}/dedicatedConnect/{name}
-                GET(): Promise<vrack.dedicatedConnect>;
-                // PUT /vrack/{serviceName}/dedicatedConnect/{name}
-                PUT(body?: {body: vrack.dedicatedConnect}): Promise<void>;
+                // GET /vrack/{serviceName}/task/{taskId}
+                $get(): Promise<vrack.Task>;
+            } | any
+        }
+        dedicatedCloud:  {
+            // GET /vrack/{serviceName}/dedicatedCloud
+            $get(): Promise<string[]>;
+            // POST /vrack/{serviceName}/dedicatedCloud
+            $post(body?: {dedicatedCloud: string}): Promise<vrack.Task>;
+            [keys: string]: {
+                // GET /vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}
+                $get(): Promise<vrack.dedicatedCloud>;
+                // DELETE /vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}
+                $delete(): Promise<vrack.Task>;
+            } | any
+        }
+        dedicatedServerInterface:  {
+            // GET /vrack/{serviceName}/dedicatedServerInterface
+            $get(): Promise<string[]>;
+            // POST /vrack/{serviceName}/dedicatedServerInterface
+            $post(body?: {dedicatedServerInterface: string}): Promise<vrack.Task>;
+            [keys: string]: {
+                // GET /vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}
+                $get(): Promise<vrack.dedicatedServerInterface>;
+                // DELETE /vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}
+                $delete(): Promise<vrack.Task>;
             } | any
         }
     } | any
 }
 // Api
-type PathsVrackGET = '/vrack/{serviceName}/allowedServices' |
-  '/vrack/{serviceName}/dedicatedServerInterface' |
-  '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}' |
-  '/vrack/{serviceName}' |
+type PathsVrackGET = '/vrack' |
+  '/vrack/{serviceName}/serviceInfos' |
+  '/vrack/{serviceName}/legacyVrack/{legacyVrack}' |
+  '/vrack/{serviceName}/legacyVrack' |
+  '/vrack/{serviceName}/dedicatedConnect/{name}' |
+  '/vrack/{serviceName}/dedicatedConnect' |
   '/vrack/{serviceName}/dedicatedCloudDatacenter' |
   '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}' |
   '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/allowedVrack' |
+  '/vrack/{serviceName}/cloudProject/{project}' |
+  '/vrack/{serviceName}/cloudProject' |
+  '/vrack/{serviceName}/dedicatedServerInterfaceDetails' |
   '/vrack/{serviceName}/dedicatedServer' |
   '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}' |
   '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg' |
-  '/vrack/{serviceName}/cloudProject' |
-  '/vrack/{serviceName}/cloudProject/{project}' |
-  '/vrack/{serviceName}/legacyVrack/{legacyVrack}' |
-  '/vrack/{serviceName}/legacyVrack' |
-  '/vrack/{serviceName}/dedicatedServerInterfaceDetails' |
-  '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}' |
-  '/vrack/{serviceName}/dedicatedCloud' |
-  '/vrack/{serviceName}/serviceInfos' |
-  '/vrack/{serviceName}/task' |
-  '/vrack/{serviceName}/task/{taskId}' |
   '/vrack/{serviceName}/ipLoadbalancing' |
   '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}' |
+  '/vrack/{serviceName}/allowedServices' |
   '/vrack/{serviceName}/ip' |
   '/vrack/{serviceName}/ip/{ip}' |
   '/vrack/{serviceName}/ip/{ip}/availableZone' |
-  '/vrack/{serviceName}/dedicatedConnect/{name}' |
-  '/vrack/{serviceName}/dedicatedConnect' |
-  '/vrack';
-
-type PathsVrackPUT = '/vrack/{serviceName}' |
-  '/vrack/{serviceName}/dedicatedConnect/{name}';
-
-type PathsVrackPOST = '/vrack/{serviceName}/dedicatedServerInterface' |
-  '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move' |
-  '/vrack/{serviceName}/dedicatedServer' |
-  '/vrack/{serviceName}/cloudProject' |
-  '/vrack/{serviceName}/legacyVrack' |
+  '/vrack/{serviceName}/task/{taskId}' |
+  '/vrack/{serviceName}/task' |
   '/vrack/{serviceName}/dedicatedCloud' |
+  '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}' |
+  '/vrack/{serviceName}' |
+  '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}' |
+  '/vrack/{serviceName}/dedicatedServerInterface';
+
+type PathsVrackPUT = '/vrack/{serviceName}/dedicatedConnect/{name}' |
+  '/vrack/{serviceName}';
+
+type PathsVrackPOST = '/vrack/{serviceName}/legacyVrack' |
+  '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move' |
+  '/vrack/{serviceName}/cloudProject' |
+  '/vrack/{serviceName}/dedicatedServer' |
   '/vrack/{serviceName}/ipLoadbalancing' |
   '/vrack/{serviceName}/ip' |
-  '/vrack/{serviceName}/ip/{ip}/announceInZone';
+  '/vrack/{serviceName}/ip/{ip}/announceInZone' |
+  '/vrack/{serviceName}/dedicatedCloud' |
+  '/vrack/{serviceName}/dedicatedServerInterface';
 
-type PathsVrackDELETE = '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}' |
-  '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}' |
+type PathsVrackDELETE = '/vrack/{serviceName}/legacyVrack/{legacyVrack}' |
   '/vrack/{serviceName}/cloudProject/{project}' |
-  '/vrack/{serviceName}/legacyVrack/{legacyVrack}' |
-  '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}' |
+  '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}' |
   '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}' |
-  '/vrack/{serviceName}/ip/{ip}';
+  '/vrack/{serviceName}/ip/{ip}' |
+  '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}' |
+  '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}';
 
 export class ApiVrack extends OvhWrapper {
   constructor(engine: OvhRequestable) {

@@ -178,36 +178,36 @@ export namespace serviceList {
 // path /service
 export interface Service {
     // GET /service
-    GET(): Promise<number[]>;
+    $get(): Promise<number[]>;
     [keys: string]: {
         // GET /service/{serviceId}
-        GET(): Promise<serviceList.Service>;
+        $get(): Promise<serviceList.Service>;
         // PUT /service/{serviceId}
-        PUT(body?: {body: serviceList.Service}): Promise<void>;
+        $put(body?: {body: serviceList.Service}): Promise<void>;
         terminate:  {
             // POST /service/{serviceId}/terminate
-            POST(): Promise<void>;
+            $post(): Promise<void>;
         }
         suspend:  {
             // POST /service/{serviceId}/suspend
-            POST(): Promise<void>;
+            $post(): Promise<void>;
         }
         renew:  {
             // GET /service/{serviceId}/renew
-            GET(param?: {includeOptions?: boolean}): Promise<service.renew.RenewDescription[]>;
+            $get(param?: {includeOptions?: boolean}): Promise<service.renew.RenewDescription[]>;
             // POST /service/{serviceId}/renew
-            POST(body?: {dryRun?: boolean, duration: string, services: number[]}): Promise<service.renew.RenewOrder>;
+            $post(body?: {dryRun?: boolean, duration: string, services: number[]}): Promise<service.renew.RenewOrder>;
         }
         reopen:  {
             // POST /service/{serviceId}/reopen
-            POST(): Promise<void>;
+            $post(): Promise<void>;
         }
     } | any
 }
 // Api
-type PathsServiceGET = '/service' |
-  '/service/{serviceId}/renew' |
-  '/service/{serviceId}';
+type PathsServiceGET = '/service/{serviceId}/renew' |
+  '/service/{serviceId}' |
+  '/service';
 
 type PathsServicePUT = '/service/{serviceId}';
 

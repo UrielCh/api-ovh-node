@@ -164,52 +164,52 @@ export interface Analytics {
     capabilities:  {
         platforms:  {
             // GET /analytics/capabilities/platforms
-            GET(): Promise<analytics.platform.Capability[]>;
+            $get(): Promise<analytics.platform.Capability[]>;
         }
     }
     platforms:  {
         // GET /analytics/platforms
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /analytics/platforms/{serviceName}
-            GET(): Promise<analytics.Cluster>;
+            $get(): Promise<analytics.Cluster>;
             activity:  {
                 // GET /analytics/platforms/{serviceName}/activity
-                GET(): Promise<analytics.cluster.Activity[]>;
+                $get(): Promise<analytics.cluster.Activity[]>;
             }
             changeContact:  {
                 // POST /analytics/platforms/{serviceName}/changeContact
-                POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
             confirmTermination:  {
                 // POST /analytics/platforms/{serviceName}/confirmTermination
-                POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             deploy:  {
                 // POST /analytics/platforms/{serviceName}/deploy
-                POST(body?: {body: analytics.cluster.Deploy}): Promise<analytics.cluster.Deploy>;
+                $post(body?: {body: analytics.cluster.Deploy}): Promise<analytics.cluster.Deploy>;
             }
             nodes:  {
                 // GET /analytics/platforms/{serviceName}/nodes
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /analytics/platforms/{serviceName}/nodes/{nodeId}
-                    GET(): Promise<analytics.cluster.Node>;
+                    $get(): Promise<analytics.cluster.Node>;
                 } | any
             }
             serviceInfos:  {
                 // GET /analytics/platforms/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
+                $get(): Promise<services.Service>;
                 // PUT /analytics/platforms/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {body: services.Service}): Promise<void>;
             }
             status:  {
                 // GET /analytics/platforms/{serviceName}/status
-                GET(): Promise<analytics.cluster.deploy.Status[]>;
+                $get(): Promise<analytics.cluster.deploy.Status[]>;
             }
             terminate:  {
                 // POST /analytics/platforms/{serviceName}/terminate
-                POST(): Promise<string>;
+                $post(): Promise<string>;
             }
         } | any
     }

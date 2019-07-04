@@ -49,22 +49,22 @@ export namespace vip {
 // path /vip
 export interface Vip {
     // GET /vip
-    GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
     [keys: string]: {
         // GET /vip/{serviceName}
-        GET(): Promise<vip.SupportVip>;
+        $get(): Promise<vip.SupportVip>;
         serviceInfos:  {
             // GET /vip/{serviceName}/serviceInfos
-            GET(): Promise<services.Service>;
+            $get(): Promise<services.Service>;
             // PUT /vip/{serviceName}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
+            $put(body?: {body: services.Service}): Promise<void>;
         }
     } | any
 }
 // Api
-type PathsVipGET = '/vip/{serviceName}' |
-  '/vip/{serviceName}/serviceInfos' |
-  '/vip';
+type PathsVipGET = '/vip' |
+  '/vip/{serviceName}' |
+  '/vip/{serviceName}/serviceInfos';
 
 type PathsVipPUT = '/vip/{serviceName}/serviceInfos';
 

@@ -99,62 +99,62 @@ export namespace services {
 export interface License {
     worklight:  {
         // GET /license/worklight
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /license/worklight/{serviceName}
-            GET(): Promise<license.worklight.WorkLight>;
+            $get(): Promise<license.worklight.WorkLight>;
             // PUT /license/worklight/{serviceName}
-            PUT(body?: {body: license.worklight.WorkLight}): Promise<void>;
-            canLicenseBeMovedTo:  {
-                // GET /license/worklight/{serviceName}/canLicenseBeMovedTo
-                GET(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
+            $put(body?: {body: license.worklight.WorkLight}): Promise<void>;
+            allowedDestinationIp:  {
+                // GET /license/worklight/{serviceName}/allowedDestinationIp
+                $get(): Promise<string[]>;
             }
             terminate:  {
                 // POST /license/worklight/{serviceName}/terminate
-                POST(): Promise<string>;
+                $post(): Promise<string>;
             }
             changeIp:  {
                 // POST /license/worklight/{serviceName}/changeIp
-                POST(body?: {destinationIp: string}): Promise<license.Task>;
+                $post(body?: {destinationIp: string}): Promise<license.Task>;
             }
             serviceInfos:  {
                 // GET /license/worklight/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
+                $get(): Promise<services.Service>;
                 // PUT /license/worklight/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
+            canLicenseBeMovedTo:  {
+                // GET /license/worklight/{serviceName}/canLicenseBeMovedTo
+                $get(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
             tasks:  {
                 // GET /license/worklight/{serviceName}/tasks
-                GET(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
                 [keys: string]: {
                     // GET /license/worklight/{serviceName}/tasks/{taskId}
-                    GET(): Promise<license.Task>;
+                    $get(): Promise<license.Task>;
                 } | any
             }
             confirmTermination:  {
                 // POST /license/worklight/{serviceName}/confirmTermination
-                POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
-            }
-            allowedDestinationIp:  {
-                // GET /license/worklight/{serviceName}/allowedDestinationIp
-                GET(): Promise<string[]>;
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
         } | any
         orderableVersions:  {
             // GET /license/worklight/orderableVersions
-            GET(param?: {ip: string}): Promise<license.WorkLightOrderConfiguration[]>;
+            $get(param?: {ip: string}): Promise<license.WorkLightOrderConfiguration[]>;
         }
     }
 }
 // Api
-type PathsLicenseWorklightGET = '/license/worklight/{serviceName}/canLicenseBeMovedTo' |
+type PathsLicenseWorklightGET = '/license/worklight/{serviceName}/allowedDestinationIp' |
   '/license/worklight/{serviceName}' |
   '/license/worklight/{serviceName}/serviceInfos' |
+  '/license/worklight/{serviceName}/canLicenseBeMovedTo' |
   '/license/worklight/{serviceName}/tasks/{taskId}' |
   '/license/worklight/{serviceName}/tasks' |
-  '/license/worklight/{serviceName}/allowedDestinationIp' |
-  '/license/worklight/orderableVersions' |
-  '/license/worklight';
+  '/license/worklight' |
+  '/license/worklight/orderableVersions';
 
 type PathsLicenseWorklightPUT = '/license/worklight/{serviceName}' |
   '/license/worklight/{serviceName}/serviceInfos';

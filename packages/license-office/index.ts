@@ -129,53 +129,53 @@ export namespace services {
 export interface License {
     office:  {
         // GET /license/office
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /license/office/{serviceName}
-            GET(): Promise<license.office.OfficeTenant>;
+            $get(): Promise<license.office.OfficeTenant>;
             // PUT /license/office/{serviceName}
-            PUT(body?: {body: license.office.OfficeTenant}): Promise<void>;
+            $put(body?: {body: license.office.OfficeTenant}): Promise<void>;
             usageStatistics:  {
                 // GET /license/office/{serviceName}/usageStatistics
-                GET(param?: {to: string, from: string}): Promise<license.office.Statistics[]>;
+                $get(param?: {from: string, to: string}): Promise<license.office.Statistics[]>;
+            }
+            serviceInfos:  {
+                // GET /license/office/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /license/office/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
             }
             pendingTask:  {
                 // GET /license/office/{serviceName}/pendingTask
-                GET(): Promise<number[]>;
+                $get(): Promise<number[]>;
                 [keys: string]: {
                     // GET /license/office/{serviceName}/pendingTask/{id}
-                    GET(): Promise<license.office.OfficeTask>;
+                    $get(): Promise<license.office.OfficeTask>;
                 } | any
             }
             domain:  {
                 // GET /license/office/{serviceName}/domain
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /license/office/{serviceName}/domain/{domainName}
-                    GET(): Promise<license.office.OfficeDomain>;
+                    $get(): Promise<license.office.OfficeDomain>;
                 } | any
-            }
-            serviceInfos:  {
-                // GET /license/office/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
-                // PUT /license/office/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
             }
             user:  {
                 // GET /license/office/{serviceName}/user
-                GET(param?: {activationEmail?: string, lastName?: string, licences?: license.office.LicenceEnum[], firstName?: string}): Promise<string[]>;
+                $get(param?: {firstName?: string, lastName?: string, licences?: license.office.LicenceEnum[], activationEmail?: string}): Promise<string[]>;
                 // POST /license/office/{serviceName}/user
-                POST(body?: {licence: license.office.LicenceEnum, lastName?: string, login: string, firstName?: string, domain: string}): Promise<license.office.OfficeTask>;
+                $post(body?: {domain: string, firstName?: string, lastName?: string, licence: license.office.LicenceEnum, login: string}): Promise<license.office.OfficeTask>;
                 [keys: string]: {
                     // GET /license/office/{serviceName}/user/{activationEmail}
-                    GET(): Promise<license.office.OfficeUser>;
+                    $get(): Promise<license.office.OfficeUser>;
                     // PUT /license/office/{serviceName}/user/{activationEmail}
-                    PUT(body?: {body: license.office.OfficeUser}): Promise<void>;
+                    $put(body?: {body: license.office.OfficeUser}): Promise<void>;
                     // DELETE /license/office/{serviceName}/user/{activationEmail}
-                    DELETE(): Promise<license.office.OfficeTask>;
+                    $delete(): Promise<license.office.OfficeTask>;
                     changePassword:  {
                         // POST /license/office/{serviceName}/user/{activationEmail}/changePassword
-                        POST(body?: {shouldSendMail: boolean, password?: string, notifyEmail?: string}): Promise<license.office.OfficeTask>;
+                        $post(body?: {notifyEmail?: string, password?: string, shouldSendMail: boolean}): Promise<license.office.OfficeTask>;
                     }
                 } | any
             }
@@ -185,17 +185,17 @@ export interface License {
 // Api
 type PathsLicenseOfficeGET = '/license/office' |
   '/license/office/{serviceName}/usageStatistics' |
-  '/license/office/{serviceName}' |
+  '/license/office/{serviceName}/serviceInfos' |
   '/license/office/{serviceName}/pendingTask' |
   '/license/office/{serviceName}/pendingTask/{id}' |
-  '/license/office/{serviceName}/domain/{domainName}' |
+  '/license/office/{serviceName}' |
   '/license/office/{serviceName}/domain' |
-  '/license/office/{serviceName}/serviceInfos' |
+  '/license/office/{serviceName}/domain/{domainName}' |
   '/license/office/{serviceName}/user' |
   '/license/office/{serviceName}/user/{activationEmail}';
 
-type PathsLicenseOfficePUT = '/license/office/{serviceName}' |
-  '/license/office/{serviceName}/serviceInfos' |
+type PathsLicenseOfficePUT = '/license/office/{serviceName}/serviceInfos' |
+  '/license/office/{serviceName}' |
   '/license/office/{serviceName}/user/{activationEmail}';
 
 type PathsLicenseOfficePOST = '/license/office/{serviceName}/user' |

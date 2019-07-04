@@ -54,12 +54,12 @@ export namespace dedicated {
         //dedicated.ceph.response
         // fullName: dedicated.ceph.response.response
         export interface response {
-            backup?: boolean;
-            minActiveReplicas?: number;
-            name?: string;
-            poolType?: OVH.dedicated.ceph.poolGet.response.poolTypeEnum;
-            replicaCount?: number;
+            availableBytes?: number;
+            healthy?: boolean;
             serviceName?: string;
+            status?: string;
+            totalBytes?: number;
+            usedBytes?: number;
         }
         export namespace taskGet {
             export namespace response {
@@ -112,89 +112,89 @@ export namespace services {
 export interface Dedicated {
     ceph:  {
         // GET /dedicated/ceph
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /dedicated/ceph/{serviceName}
-            GET(): Promise<dedicated.ceph.response>;
+            $get(): Promise<dedicated.ceph.response>;
             // PUT /dedicated/ceph/{serviceName}
-            PUT(body?: {crushTunables: dedicated.ceph.clusterUpdate.crushTunablesEnum, label: string}): Promise<string>;
+            $put(body?: {crushTunables: dedicated.ceph.clusterUpdate.crushTunablesEnum, label: string}): Promise<string>;
             health:  {
                 // GET /dedicated/ceph/{serviceName}/health
-                GET(): Promise<dedicated.ceph.response>;
+                $get(): Promise<dedicated.ceph.response>;
             }
             user:  {
                 // POST /dedicated/ceph/{serviceName}/user
-                POST(body?: {userName: string}): Promise<string>;
+                $post(body?: {userName: string}): Promise<string>;
                 // GET /dedicated/ceph/{serviceName}/user
-                GET(): Promise<dedicated.ceph.response[]>;
+                $get(): Promise<dedicated.ceph.response[]>;
                 [keys: string]: {
                     // DELETE /dedicated/ceph/{serviceName}/user/{userName}
-                    DELETE(): Promise<string>;
+                    $delete(): Promise<string>;
                     // GET /dedicated/ceph/{serviceName}/user/{userName}
-                    GET(): Promise<dedicated.ceph.response>;
+                    $get(): Promise<dedicated.ceph.response>;
                     pool:  {
                         // GET /dedicated/ceph/{serviceName}/user/{userName}/pool
-                        GET(): Promise<dedicated.ceph.response[]>;
+                        $get(): Promise<dedicated.ceph.response[]>;
                         // PUT /dedicated/ceph/{serviceName}/user/{userName}/pool
-                        PUT(body?: {write: boolean, execute: boolean, classWrite: boolean, read: boolean, poolName: string, classRead: boolean}): Promise<string>;
+                        $put(body?: {classRead: boolean, classWrite: boolean, execute: boolean, poolName: string, read: boolean, write: boolean}): Promise<string>;
                         // POST /dedicated/ceph/{serviceName}/user/{userName}/pool
-                        POST(body?: {permissions?: dedicated.ceph.permissions[]}): Promise<string>;
+                        $post(body?: {permissions?: dedicated.ceph.permissions[]}): Promise<string>;
                         [keys: string]: {
                             // DELETE /dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}
-                            DELETE(): Promise<string>;
+                            $delete(): Promise<string>;
                         } | any
                     }
                 } | any
             }
             terminate:  {
                 // POST /dedicated/ceph/{serviceName}/terminate
-                POST(): Promise<string>;
+                $post(): Promise<string>;
             }
             task:  {
                 // GET /dedicated/ceph/{serviceName}/task
-                GET(): Promise<dedicated.ceph.response[]>;
+                $get(): Promise<dedicated.ceph.response[]>;
                 [keys: string]: {
                     // GET /dedicated/ceph/{serviceName}/task/{taskId}
-                    GET(): Promise<dedicated.ceph.response[]>;
+                    $get(): Promise<dedicated.ceph.response[]>;
                 } | any
             }
             serviceInfos:  {
                 // GET /dedicated/ceph/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
+                $get(): Promise<services.Service>;
                 // PUT /dedicated/ceph/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {body: services.Service}): Promise<void>;
             }
             confirmTermination:  {
                 // POST /dedicated/ceph/{serviceName}/confirmTermination
-                POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             pool:  {
                 // POST /dedicated/ceph/{serviceName}/pool
-                POST(body?: {poolName: string}): Promise<string>;
+                $post(body?: {poolName: string}): Promise<string>;
                 // GET /dedicated/ceph/{serviceName}/pool
-                GET(): Promise<dedicated.ceph.response[]>;
+                $get(): Promise<dedicated.ceph.response[]>;
                 [keys: string]: {
                     // DELETE /dedicated/ceph/{serviceName}/pool/{poolName}
-                    DELETE(): Promise<string>;
+                    $delete(): Promise<string>;
                     // GET /dedicated/ceph/{serviceName}/pool/{poolName}
-                    GET(): Promise<dedicated.ceph.response>;
+                    $get(): Promise<dedicated.ceph.response>;
                 } | any
             }
             acl:  {
                 // POST /dedicated/ceph/{serviceName}/acl
-                POST(body?: {aclList: string[]}): Promise<string>;
+                $post(body?: {aclList: string[]}): Promise<string>;
                 // GET /dedicated/ceph/{serviceName}/acl
-                GET(): Promise<dedicated.ceph.response[]>;
+                $get(): Promise<dedicated.ceph.response[]>;
                 [keys: string]: {
                     // DELETE /dedicated/ceph/{serviceName}/acl/{aclId}
-                    DELETE(): Promise<string>;
+                    $delete(): Promise<string>;
                     // GET /dedicated/ceph/{serviceName}/acl/{aclId}
-                    GET(): Promise<dedicated.ceph.response>;
+                    $get(): Promise<dedicated.ceph.response>;
                 } | any
             }
             changeContact:  {
                 // POST /dedicated/ceph/{serviceName}/changeContact
-                POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
         } | any
     }

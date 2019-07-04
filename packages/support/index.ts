@@ -55,52 +55,52 @@ export namespace support {
 export interface Support {
     tickets:  {
         // GET /support/tickets
-        GET(param?: {ticketNumber?: string, status?: support.TicketStatusEnum, serviceName?: string, minCreationDate?: string, maxCreationDate?: string, subject?: string, category?: support.TicketCategoryEnum, archived?: boolean, product?: support.TicketProductEnum}): Promise<number[]>;
-        create:  {
-            // POST /support/tickets/create
-            POST(body?: {body: string, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, product?: support.TicketProductEnum, category?: support.TicketCategoryEnum, subject: string, type: support.TicketTypeEnum}): Promise<support.NewMessageInfo>;
-        }
+        $get(param?: {maxCreationDate?: string, serviceName?: string, minCreationDate?: string, product?: support.TicketProductEnum, subject?: string, archived?: boolean, status?: support.TicketStatusEnum, category?: support.TicketCategoryEnum, ticketNumber?: string}): Promise<number[]>;
         [keys: string]: {
             // GET /support/tickets/{ticketId}
-            GET(): Promise<support.Ticket>;
+            $get(): Promise<support.Ticket>;
             close:  {
                 // POST /support/tickets/{ticketId}/close
-                POST(): Promise<void>;
-            }
-            messages:  {
-                // GET /support/tickets/{ticketId}/messages
-                GET(): Promise<support.Message[]>;
+                $post(): Promise<void>;
             }
             reply:  {
                 // POST /support/tickets/{ticketId}/reply
-                POST(body?: {body: string}): Promise<void>;
+                $post(body?: {body: string}): Promise<void>;
             }
-            reopen:  {
-                // POST /support/tickets/{ticketId}/reopen
-                POST(body?: {body: string}): Promise<void>;
+            messages:  {
+                // GET /support/tickets/{ticketId}/messages
+                $get(): Promise<support.Message[]>;
             }
             canBeScored:  {
                 // GET /support/tickets/{ticketId}/canBeScored
-                GET(): Promise<boolean>;
+                $get(): Promise<boolean>;
             }
             score:  {
                 // POST /support/tickets/{ticketId}/score
-                POST(body?: {score: string, scoreComment?: string}): Promise<void>;
+                $post(body?: {score: string, scoreComment?: string}): Promise<void>;
+            }
+            reopen:  {
+                // POST /support/tickets/{ticketId}/reopen
+                $post(body?: {body: string}): Promise<void>;
             }
         } | any
+        create:  {
+            // POST /support/tickets/create
+            $post(body?: {body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum}): Promise<support.NewMessageInfo>;
+        }
     }
 }
 // Api
-type PathsSupportGET = '/support/tickets' |
+type PathsSupportGET = '/support/tickets/{ticketId}' |
   '/support/tickets/{ticketId}/messages' |
   '/support/tickets/{ticketId}/canBeScored' |
-  '/support/tickets/{ticketId}';
+  '/support/tickets';
 
-type PathsSupportPOST = '/support/tickets/create' |
-  '/support/tickets/{ticketId}/close' |
+type PathsSupportPOST = '/support/tickets/{ticketId}/close' |
   '/support/tickets/{ticketId}/reply' |
+  '/support/tickets/{ticketId}/score' |
   '/support/tickets/{ticketId}/reopen' |
-  '/support/tickets/{ticketId}/score';
+  '/support/tickets/create';
 
 export class ApiSupport extends OvhWrapper {
   constructor(engine: OvhRequestable) {

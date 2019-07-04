@@ -52,23 +52,23 @@ export namespace stack {
 export interface Stack {
     mis:  {
         // GET /stack/mis
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /stack/mis/{serviceName}
-            GET(): Promise<stack.mis.product>;
+            $get(): Promise<stack.mis.product>;
             serviceInfos:  {
                 // GET /stack/mis/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
+                $get(): Promise<services.Service>;
                 // PUT /stack/mis/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {body: services.Service}): Promise<void>;
             }
         } | any
     }
 }
 // Api
 type PathsStackMisGET = '/stack/mis' |
-  '/stack/mis/{serviceName}/serviceInfos' |
-  '/stack/mis/{serviceName}';
+  '/stack/mis/{serviceName}' |
+  '/stack/mis/{serviceName}/serviceInfos';
 
 type PathsStackMisPUT = '/stack/mis/{serviceName}/serviceInfos';
 

@@ -103,71 +103,71 @@ export namespace telephony {
 // path /freefax
 export interface Freefax {
     // GET /freefax
-    GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
+    credits:  {
+        // GET /freefax/credits
+        $get(): Promise<freefax.BalanceInformations>;
+    }
     [keys: string]: {
         // GET /freefax/{serviceName}
-        GET(): Promise<freefax.FreefaxProperties>;
+        $get(): Promise<freefax.FreefaxProperties>;
         // PUT /freefax/{serviceName}
-        PUT(body?: {body: freefax.FreefaxProperties}): Promise<void>;
-        serviceInfos:  {
-            // GET /freefax/{serviceName}/serviceInfos
-            GET(): Promise<services.Service>;
-            // PUT /freefax/{serviceName}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
-        }
+        $put(body?: {body: freefax.FreefaxProperties}): Promise<void>;
         changePassword:  {
             // POST /freefax/{serviceName}/changePassword
-            POST(): Promise<string>;
+            $post(): Promise<string>;
         }
         mainService:  {
             // GET /freefax/{serviceName}/mainService
-            GET(): Promise<string>;
+            $get(): Promise<string>;
         }
         voicemail:  {
             // GET /freefax/{serviceName}/voicemail
-            GET(): Promise<telephony.VoicemailProperties>;
+            $get(): Promise<telephony.VoicemailProperties>;
             // PUT /freefax/{serviceName}/voicemail
-            PUT(body?: {body: telephony.VoicemailProperties}): Promise<void>;
+            $put(body?: {body: telephony.VoicemailProperties}): Promise<void>;
             voicemailNumbers:  {
                 // GET /freefax/{serviceName}/voicemail/voicemailNumbers
-                GET(): Promise<telephony.VoicemailNumbers>;
+                $get(): Promise<telephony.VoicemailNumbers>;
             }
             routing:  {
                 // GET /freefax/{serviceName}/voicemail/routing
-                GET(): Promise<telephony.VoicefaxRoutingEnum>;
-            }
-            changeRouting:  {
-                // POST /freefax/{serviceName}/voicemail/changeRouting
-                POST(body?: {routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
+                $get(): Promise<telephony.VoicefaxRoutingEnum>;
             }
             changePassword:  {
                 // POST /freefax/{serviceName}/voicemail/changePassword
-                POST(body?: {password: string}): Promise<void>;
+                $post(body?: {password: string}): Promise<void>;
+            }
+            changeRouting:  {
+                // POST /freefax/{serviceName}/voicemail/changeRouting
+                $post(body?: {routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
             }
         }
+        serviceInfos:  {
+            // GET /freefax/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /freefax/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
+        }
     } | any
-    credits:  {
-        // GET /freefax/credits
-        GET(): Promise<freefax.BalanceInformations>;
-    }
 }
 // Api
-type PathsFreefaxGET = '/freefax/{serviceName}' |
-  '/freefax/{serviceName}/serviceInfos' |
-  '/freefax/{serviceName}/mainService' |
-  '/freefax/{serviceName}/voicemail/voicemailNumbers' |
-  '/freefax/{serviceName}/voicemail' |
-  '/freefax/{serviceName}/voicemail/routing' |
+type PathsFreefaxGET = '/freefax/credits' |
   '/freefax' |
-  '/freefax/credits';
+  '/freefax/{serviceName}/mainService' |
+  '/freefax/{serviceName}' |
+  '/freefax/{serviceName}/voicemail/voicemailNumbers' |
+  '/freefax/{serviceName}/voicemail/routing' |
+  '/freefax/{serviceName}/voicemail' |
+  '/freefax/{serviceName}/serviceInfos';
 
 type PathsFreefaxPUT = '/freefax/{serviceName}' |
-  '/freefax/{serviceName}/serviceInfos' |
-  '/freefax/{serviceName}/voicemail';
+  '/freefax/{serviceName}/voicemail' |
+  '/freefax/{serviceName}/serviceInfos';
 
 type PathsFreefaxPOST = '/freefax/{serviceName}/changePassword' |
-  '/freefax/{serviceName}/voicemail/changeRouting' |
-  '/freefax/{serviceName}/voicemail/changePassword';
+  '/freefax/{serviceName}/voicemail/changePassword' |
+  '/freefax/{serviceName}/voicemail/changeRouting';
 
 export class ApiFreefax extends OvhWrapper {
   constructor(engine: OvhRequestable) {

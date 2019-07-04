@@ -70,55 +70,55 @@ export namespace veeamEnterprise {
 export interface Veeam {
     veeamEnterprise:  {
         // GET /veeam/veeamEnterprise
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /veeam/veeamEnterprise/{serviceName}
-            GET(): Promise<veeam.veeamEnterprise.Account>;
-            task:  {
-                // GET /veeam/veeamEnterprise/{serviceName}/task
-                GET(param?: {state?: veeamEnterprise.TaskStateEnum, name?: string}): Promise<number[]>;
-                [keys: string]: {
-                    // GET /veeam/veeamEnterprise/{serviceName}/task/{taskId}
-                    GET(): Promise<veeam.veeamEnterprise.Task>;
-                } | any
-            }
-            terminate:  {
-                // POST /veeam/veeamEnterprise/{serviceName}/terminate
-                POST(): Promise<string>;
-            }
-            confirmTermination:  {
-                // POST /veeam/veeamEnterprise/{serviceName}/confirmTermination
-                POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
-            }
+            $get(): Promise<veeam.veeamEnterprise.Account>;
             update:  {
                 // POST /veeam/veeamEnterprise/{serviceName}/update
-                POST(body?: {ip: string, port: number, password: string, username: string}): Promise<veeam.veeamEnterprise.Task[]>;
-            }
-            register:  {
-                // POST /veeam/veeamEnterprise/{serviceName}/register
-                POST(body?: {username: string, password: string, port: number, ip: string}): Promise<veeam.veeamEnterprise.Task[]>;
+                $post(body?: {ip: string, password: string, port: number, username: string}): Promise<veeam.veeamEnterprise.Task[]>;
             }
             serviceInfos:  {
                 // GET /veeam/veeamEnterprise/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
+                $get(): Promise<services.Service>;
                 // PUT /veeam/veeamEnterprise/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
+            terminate:  {
+                // POST /veeam/veeamEnterprise/{serviceName}/terminate
+                $post(): Promise<string>;
+            }
+            confirmTermination:  {
+                // POST /veeam/veeamEnterprise/{serviceName}/confirmTermination
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            }
+            register:  {
+                // POST /veeam/veeamEnterprise/{serviceName}/register
+                $post(body?: {ip: string, password: string, port: number, username: string}): Promise<veeam.veeamEnterprise.Task[]>;
+            }
+            task:  {
+                // GET /veeam/veeamEnterprise/{serviceName}/task
+                $get(param?: {name?: string, state?: veeamEnterprise.TaskStateEnum}): Promise<number[]>;
+                [keys: string]: {
+                    // GET /veeam/veeamEnterprise/{serviceName}/task/{taskId}
+                    $get(): Promise<veeam.veeamEnterprise.Task>;
+                } | any
             }
         } | any
     }
 }
 // Api
-type PathsVeeamVeeamEnterpriseGET = '/veeam/veeamEnterprise/{serviceName}/task' |
-  '/veeam/veeamEnterprise/{serviceName}/task/{taskId}' |
+type PathsVeeamVeeamEnterpriseGET = '/veeam/veeamEnterprise/{serviceName}' |
   '/veeam/veeamEnterprise/{serviceName}/serviceInfos' |
-  '/veeam/veeamEnterprise/{serviceName}' |
+  '/veeam/veeamEnterprise/{serviceName}/task' |
+  '/veeam/veeamEnterprise/{serviceName}/task/{taskId}' |
   '/veeam/veeamEnterprise';
 
 type PathsVeeamVeeamEnterprisePUT = '/veeam/veeamEnterprise/{serviceName}/serviceInfos';
 
-type PathsVeeamVeeamEnterprisePOST = '/veeam/veeamEnterprise/{serviceName}/terminate' |
+type PathsVeeamVeeamEnterprisePOST = '/veeam/veeamEnterprise/{serviceName}/update' |
+  '/veeam/veeamEnterprise/{serviceName}/terminate' |
   '/veeam/veeamEnterprise/{serviceName}/confirmTermination' |
-  '/veeam/veeamEnterprise/{serviceName}/update' |
   '/veeam/veeamEnterprise/{serviceName}/register';
 
 export class ApiVeeamVeeamEnterprise extends OvhWrapper {

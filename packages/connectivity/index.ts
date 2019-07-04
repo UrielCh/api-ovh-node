@@ -227,75 +227,75 @@ export interface Connectivity {
         genericIncident:  {
             partners:  {
                 // GET /connectivity/monitoring/genericIncident/partners
-                GET(param?: {status?: connectivity.monitoring.GenericIncidentStatusEnum, creationDate?: string, endDate?: string}): Promise<connectivity.monitoring.GenericIncident[]>;
+                $get(param?: {status?: connectivity.monitoring.GenericIncidentStatusEnum, creationDate?: string, endDate?: string}): Promise<connectivity.monitoring.GenericIncident[]>;
             }
             public:  {
                 // GET /connectivity/monitoring/genericIncident/public
-                GET(param?: {status?: connectivity.monitoring.GenericIncidentStatusEnum, creationDate?: string, endDate?: string}): Promise<connectivity.monitoring.GenericIncident[]>;
+                $get(param?: {status?: connectivity.monitoring.GenericIncidentStatusEnum, creationDate?: string, endDate?: string}): Promise<connectivity.monitoring.GenericIncident[]>;
             }
         }
     }
     eligibility:  {
         test:  {
             // GET /connectivity/eligibility/test
-            GET(param?: {eligibilityReference: string}): Promise<connectivity.eligibility.EligibilityTest>;
+            $get(param?: {eligibilityReference: string}): Promise<connectivity.eligibility.EligibilityTest>;
             line:  {
                 // POST /connectivity/eligibility/test/line
-                POST(body?: {status: connectivity.eligibility.LineStatusEnum, lineNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(body?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 partners:  {
                     // POST /connectivity/eligibility/test/line/partners
-                    POST(body?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                    $post(body?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 }
             }
             building:  {
                 // POST /connectivity/eligibility/test/building
-                POST(body?: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(body?: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
             }
             address:  {
                 // POST /connectivity/eligibility/test/address
-                POST(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 partners:  {
                     // POST /connectivity/eligibility/test/address/partners
-                    POST(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                    $post(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 }
             }
             otp:  {
                 // POST /connectivity/eligibility/test/otp
-                POST(body?: {otp: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(body?: {otp: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
             }
         }
         search:  {
             buildingDetails:  {
                 // POST /connectivity/eligibility/search/buildingDetails
-                POST(body?: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Building>>;
+                $post(body?: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Building>>;
             }
             buildings:  {
                 // POST /connectivity/eligibility/search/buildings
-                POST(body?: {streetNumber: string, streetCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
+                $post(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
             }
             lines:  {
                 // POST /connectivity/eligibility/search/lines
-                POST(body?: {ownerName?: string, streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Line>>;
+                $post(body?: {ownerName?: string, streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Line>>;
             }
             streetNumbers:  {
                 // POST /connectivity/eligibility/search/streetNumbers
-                POST(body?: {streetCode: string}): Promise<xdsl.AsyncTaskArray<string>>;
+                $post(body?: {streetCode: string}): Promise<xdsl.AsyncTaskArray<string>>;
             }
             streets:  {
                 // POST /connectivity/eligibility/search/streets
-                POST(body?: {inseeCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Street>>;
+                $post(body?: {inseeCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Street>>;
             }
             buildingsByLine:  {
                 // POST /connectivity/eligibility/search/buildingsByLine
-                POST(body?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
+                $post(body?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
             }
             meetings:  {
                 // POST /connectivity/eligibility/search/meetings
-                POST(body?: {productCode: string, eligibilityReference: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
+                $post(body?: {eligibilityReference: string, productCode: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
             }
             cities:  {
                 // POST /connectivity/eligibility/search/cities
-                POST(body?: {zipCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.City>>;
+                $post(body?: {zipCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.City>>;
             }
         }
     }

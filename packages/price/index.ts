@@ -136,496 +136,112 @@ export namespace price {
 // path /price
 export interface Price {
     dedicatedCloud:  {
-        '2014v1':  {
-            rbx2b:  {
-                enterprise:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2b/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2b/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2a:  {
-                enterprise:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            bhs1a:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                enterprise:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/bhs1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/bhs1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            sbg1a:  {
-                infrastructure:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                enterprise:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/sbg1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v1/sbg1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-        }
-        '2018v5':  {
-            sbg1a:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            eri1c:  {
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/eri1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/eri1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            bhs1a:  {
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            lim1c:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/lim1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/lim1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            waw1c:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/waw1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/waw1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2b:  {
-                infrastructure:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2a:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-        }
         '2016v1':  {
+            rbx2b:  {
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
             rbx2a:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
                 enterprise:  {
                     filer:  {
                         hourly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -633,75 +249,107 @@ export interface Price {
                         monthly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2016v1/rbx2a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2016v1/rbx2a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                 }
             }
-            rbx2b:  {
+            sbg1a:  {
                 enterprise:  {
                     host:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/rbx2b/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/rbx2b/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     filer:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure:  {
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            bhs1a:  {
+                enterprise:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -710,28 +358,216 @@ export interface Price {
                     host:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     filer:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2016v6':  {
+            rbx2b:  {
+                enterprise:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a:  {
+                enterprise:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -740,30 +576,30 @@ export interface Price {
             bhs1a:  {
                 infrastructure:  {
                     filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     host:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -772,90 +608,28 @@ export interface Price {
                     host:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/bhs1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/bhs1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     filer:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            sbg1a:  {
-                enterprise:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/sbg1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/sbg1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -864,374 +638,156 @@ export interface Price {
         }
         '2013v1':  {
             bhs1a:  {
-                filer:  {
-                    monthly:  {
-                        [keys: string]: {
-                            // GET /price/dedicatedCloud/2013v1/bhs1a/filer/monthly/{filerProfile}
-                            GET(): Promise<order.Price>;
-                        } | any
-                    }
-                    hourly:  {
-                        [keys: string]: {
-                            // GET /price/dedicatedCloud/2013v1/bhs1a/filer/hourly/{filerProfile}
-                            GET(): Promise<order.Price>;
-                        } | any
-                    }
-                }
                 host:  {
                     monthly:  {
                         [keys: string]: {
                             // GET /price/dedicatedCloud/2013v1/bhs1a/host/monthly/{hostProfile}
-                            GET(): Promise<order.Price>;
+                            $get(): Promise<order.Price>;
                         } | any
                     }
                     hourly:  {
                         [keys: string]: {
                             // GET /price/dedicatedCloud/2013v1/bhs1a/host/hourly/{hostProfile}
-                            GET(): Promise<order.Price>;
-                        } | any
-                    }
-                }
-            }
-            sbg1a:  {
-                host:  {
-                    hourly:  {
-                        [keys: string]: {
-                            // GET /price/dedicatedCloud/2013v1/sbg1a/host/hourly/{hostProfile}
-                            GET(): Promise<order.Price>;
-                        } | any
-                    }
-                    monthly:  {
-                        [keys: string]: {
-                            // GET /price/dedicatedCloud/2013v1/sbg1a/host/monthly/{hostProfile}
-                            GET(): Promise<order.Price>;
+                            $get(): Promise<order.Price>;
                         } | any
                     }
                 }
                 filer:  {
                     monthly:  {
                         [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/bhs1a/filer/monthly/{filerProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                    hourly:  {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/bhs1a/filer/hourly/{filerProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                }
+            }
+            sbg1a:  {
+                filer:  {
+                    monthly:  {
+                        [keys: string]: {
                             // GET /price/dedicatedCloud/2013v1/sbg1a/filer/monthly/{filerProfile}
-                            GET(): Promise<order.Price>;
+                            $get(): Promise<order.Price>;
                         } | any
                     }
                     hourly:  {
                         [keys: string]: {
                             // GET /price/dedicatedCloud/2013v1/sbg1a/filer/hourly/{filerProfile}
-                            GET(): Promise<order.Price>;
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                }
+                host:  {
+                    monthly:  {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/sbg1a/host/monthly/{hostProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                    hourly:  {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/sbg1a/host/hourly/{hostProfile}
+                            $get(): Promise<order.Price>;
                         } | any
                     }
                 }
             }
             rbx2a:  {
+                filer:  {
+                    hourly:  {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/rbx2a/filer/hourly/{filerProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                    monthly:  {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/rbx2a/filer/monthly/{filerProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                }
                 host:  {
                     hourly:  {
                         [keys: string]: {
                             // GET /price/dedicatedCloud/2013v1/rbx2a/host/hourly/{hostProfile}
-                            GET(): Promise<order.Price>;
+                            $get(): Promise<order.Price>;
                         } | any
                     }
                     monthly:  {
                         [keys: string]: {
                             // GET /price/dedicatedCloud/2013v1/rbx2a/host/monthly/{hostProfile}
-                            GET(): Promise<order.Price>;
-                        } | any
-                    }
-                }
-                filer:  {
-                    monthly:  {
-                        [keys: string]: {
-                            // GET /price/dedicatedCloud/2013v1/rbx2a/filer/monthly/{filerProfile}
-                            GET(): Promise<order.Price>;
-                        } | any
-                    }
-                    hourly:  {
-                        [keys: string]: {
-                            // GET /price/dedicatedCloud/2013v1/rbx2a/filer/hourly/{filerProfile}
-                            GET(): Promise<order.Price>;
+                            $get(): Promise<order.Price>;
                         } | any
                     }
                 }
             }
         }
-        '2016v5':  {
+        '2018v4':  {
+            bhs1a:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
             sbg1a:  {
                 infrastructure:  {
                     filer:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     host:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                enterprise:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/sbg1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/sbg1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            bhs1a:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                enterprise:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/bhs1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/bhs1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2b:  {
-                enterprise:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2b/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2b/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2a:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                enterprise:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v5/rbx2a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-        }
-        '2018v7':  {
-            rbx2b:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -1239,95 +795,31 @@ export interface Price {
             }
             waw1c:  {
                 infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
                     host:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/waw1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/waw1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2a:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
-                    }
-                }
-            }
-            lim1c:  {
-                infrastructure:  {
-                    host:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/lim1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/lim1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -1335,661 +827,31 @@ export interface Price {
             }
             eri1c:  {
                 infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
                     host:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/eri1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/eri1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/eri1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            sbg1a:  {
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/eri1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     filer:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            bhs1a:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-        }
-        '2016v2':  {
-            rbx2a:  {
-                enterprise:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2b:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                enterprise:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2b/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2b/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            bhs1a:  {
-                enterprise:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/bhs1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/bhs1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            sbg1a:  {
-                enterprise:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/sbg1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/sbg1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-        }
-        '2016v7':  {
-            rbx2a:  {
-                enterprise:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2b:  {
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                enterprise:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2b/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/rbx2b/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            sbg1a:  {
-                enterprise:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/sbg1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/sbg1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            bhs1a:  {
-                enterprise:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/bhs1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/bhs1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-        }
-        '2018v6':  {
-            waw1c:  {
-                infrastructure:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/waw1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/waw1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2b:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -1997,31 +859,31 @@ export interface Price {
             }
             rbx2a:  {
                 infrastructure:  {
-                    host:  {
+                    filer:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
-                    filer:  {
+                    host:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -2029,31 +891,97 @@ export interface Price {
             }
             lim1c:  {
                 infrastructure:  {
-                    filer:  {
+                    host:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v4/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2018v6':  {
+            rbx2a:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/lim1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/lim1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -2061,31 +989,31 @@ export interface Price {
             }
             sbg1a:  {
                 infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
                     filer:  {
                         monthly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -2093,31 +1021,63 @@ export interface Price {
             }
             bhs1a:  {
                 infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
                     filer:  {
                         monthly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            waw1c:  {
+                infrastructure:  {
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -2129,221 +1089,27 @@ export interface Price {
                         hourly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2018v6/eri1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2018v6/eri1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
                         hourly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-        }
-        '2018v3':  {
-            rbx2b:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            waw1c:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/waw1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/waw1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2a:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            eri1c:  {
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/eri1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/eri1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            sbg1a:  {
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            bhs1a:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -2351,445 +1117,31 @@ export interface Price {
             }
             lim1c:  {
                 infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/lim1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/lim1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-        }
-        '2018v1':  {
-            rbx2b:  {
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            waw1c:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/waw1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/waw1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
                     filer:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2a:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            lim1c:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/lim1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/lim1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            sbg1a:  {
-                infrastructure:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            eri1c:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/eri1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/eri1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            bhs1a:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     host:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v6/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-        }
-        '2016v4':  {
-            sbg1a:  {
-                enterprise:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/sbg1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/sbg1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            bhs1a:  {
-                enterprise:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/bhs1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/bhs1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2a:  {
-                enterprise:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v6/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -2800,534 +1152,28 @@ export interface Price {
                     host:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     filer:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                enterprise:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2b/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2b/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-        }
-        '2014v2':  {
-            rbx2b:  {
-                enterprise:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2b/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2b/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2a:  {
-                infrastructure:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                enterprise:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            sbg1a:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                enterprise:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/sbg1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/sbg1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            bhs1a:  {
-                enterprise:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/bhs1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/bhs1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-        }
-        '2018v2':  {
-            rbx2a:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            rbx2b:  {
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            waw1c:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/waw1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/waw1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            eri1c:  {
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/eri1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/eri1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            bhs1a:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            sbg1a:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            lim1c:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/lim1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/lim1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -3336,48 +1182,18 @@ export interface Price {
         }
         '2016v3':  {
             rbx2a:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
                 enterprise:  {
                     host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/rbx2a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
                         monthly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2016v3/rbx2a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -3385,13 +1201,167 @@ export interface Price {
                         monthly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a:  {
+                enterprise:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            bhs1a:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -3403,13 +1373,13 @@ export interface Price {
                         monthly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -3417,43 +1387,107 @@ export interface Price {
                         hourly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                 }
                 enterprise:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
                     filer:  {
                         hourly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
                                 // GET /price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
+                }
+            }
+        }
+        '2016v5':  {
+            rbx2b:  {
+                infrastructure:  {
                     host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/rbx2b/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/rbx2b/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -3461,221 +1495,219 @@ export interface Price {
             }
             sbg1a:  {
                 infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
                     filer:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                 }
                 enterprise:  {
                     host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/sbg1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/sbg1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     filer:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                 }
             }
             bhs1a:  {
-                infrastructure:  {
-                    filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
                 enterprise:  {
-                    filer:  {
+                    host:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/bhs1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
+                    filer:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v3/bhs1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                 }
-            }
-        }
-        '2018v4':  {
-            rbx2b:  {
                 infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
-                }
-            }
-            waw1c:  {
-                infrastructure:  {
-                    host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/waw1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/waw1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
                     filer:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                 }
             }
             rbx2a:  {
-                infrastructure:  {
-                    host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
+                enterprise:  {
                     filer:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2018v3':  {
+            rbx2b:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -3686,28 +1718,60 @@ export interface Price {
                     host:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/lim1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v3/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/lim1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v3/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     filer:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a:  {
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -3715,31 +1779,31 @@ export interface Price {
             }
             sbg1a:  {
                 infrastructure:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
+                    host:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
-                    host:  {
+                    filer:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -3748,30 +1812,62 @@ export interface Price {
             bhs1a:  {
                 infrastructure:  {
                     filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            waw1c:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v3/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -3779,95 +1875,571 @@ export interface Price {
             }
             eri1c:  {
                 infrastructure:  {
-                    filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
-                    }
                     host:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/eri1c/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v3/eri1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2018v4/eri1c/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v3/eri1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                 }
             }
         }
-        '2016v6':  {
-            sbg1a:  {
-                enterprise:  {
-                    filer:  {
+        '2018v7':  {
+            rbx2a:  {
+                infrastructure:  {
+                    host:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            eri1c:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/eri1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/eri1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            waw1c:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            bhs1a:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b:  {
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            lim1c:  {
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2014v1':  {
+            rbx2b:  {
+                enterprise:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure:  {
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     host:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/sbg1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/sbg1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            bhs1a:  {
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a:  {
+                enterprise:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure:  {
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a:  {
+                enterprise:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                 }
                 infrastructure:  {
                     host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     filer:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2014v2':  {
+            rbx2a:  {
+                infrastructure:  {
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -3876,60 +2448,540 @@ export interface Price {
             bhs1a:  {
                 enterprise:  {
                     host:  {
-                        hourly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/bhs1a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/bhs1a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     filer:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                 }
                 infrastructure:  {
-                    host:  {
+                    filer:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b:  {
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     filer:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2018v5':  {
+            sbg1a:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            eri1c:  {
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/eri1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/eri1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            waw1c:  {
+                infrastructure:  {
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            bhs1a:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            lim1c:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2018v1':  {
+            sbg1a:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            waw1c:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            bhs1a:  {
+                infrastructure:  {
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            eri1c:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/eri1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/eri1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -3940,90 +2992,126 @@ export interface Price {
                     filer:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     host:  {
-                        monthly:  {
-                            [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
-                            } | any
-                        }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                 }
-                enterprise:  {
-                    filer:  {
+            }
+            lim1c:  {
+                infrastructure:  {
+                    host:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v1/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v1/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
-                    host:  {
+                    filer:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2a/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2a/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                 }
             }
             rbx2b:  {
-                enterprise:  {
+                infrastructure:  {
                     filer:  {
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2b/enterprise/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2016v2':  {
+            rbx2a:  {
+                enterprise:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2b/enterprise/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
@@ -4032,156 +3120,944 @@ export interface Price {
                     filer:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/monthly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/hourly/{filerProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                     host:  {
                         monthly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/monthly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                         hourly:  {
                             [keys: string]: {
-                                // GET /price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/hourly/{hostProfile}
-                                GET(): Promise<order.Price>;
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a:  {
+                enterprise:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure:  {
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            bhs1a:  {
+                enterprise:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure:  {
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b:  {
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
                             } | any
                         }
                     }
                 }
             }
         }
-    }
-    hosting:  {
-        web:  {
-            ssl:  {
-                [keys: string]: {
-                    // GET /price/hosting/web/ssl/{sslName}
-                    GET(): Promise<order.Price>;
-                } | any
+        '2016v4':  {
+            sbg1a:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
             }
-            cdn:  {
-                [keys: string]: {
-                    // GET /price/hosting/web/cdn/{cdnName}
-                    GET(): Promise<order.Price>;
-                } | any
+            bhs1a:  {
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
             }
-            extraSqlPerso:  {
-                [keys: string]: {
-                    // GET /price/hosting/web/extraSqlPerso/{extraSqlPersoName}
-                    GET(): Promise<order.Price>;
-                } | any
+            rbx2a:  {
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
             }
         }
-        privateDatabase:  {
-            [keys: string]: {
-                // GET /price/hosting/privateDatabase/{privateDatabaseName}
-                GET(): Promise<order.Price>;
-            } | any
-        }
-    }
-    dedicated:  {
-        nasha:  {
-            model:  {
-                [keys: string]: {
-                    // GET /price/dedicated/nasha/model/{modelName}
-                    GET(): Promise<order.Price>;
-                } | any
+        '2016v7':  {
+            rbx2b:  {
+                enterprise:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a:  {
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a:  {
+                enterprise:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            bhs1a:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                enterprise:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
             }
         }
-        server:  {
-            backupStorage:  {
-                [keys: string]: {
-                    // GET /price/dedicated/server/backupStorage/{capacity}
-                    GET(): Promise<order.Price>;
-                } | any
+        '2018v2':  {
+            rbx2a:  {
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
             }
-            ip:  {
-                [keys: string]: {
-                    // GET /price/dedicated/server/ip/{routedTo}
-                    GET(): Promise<order.Price>;
-                } | any
+            bhs1a:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
             }
-            antiDDoSPro:  {
-                [keys: string]: {
-                    // GET /price/dedicated/server/antiDDoSPro/{commercialRange}
-                    GET(): Promise<order.Price>;
-                } | any
+            sbg1a:  {
+                infrastructure:  {
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
             }
-            firewall:  {
-                [keys: string]: {
-                    // GET /price/dedicated/server/firewall/{firewallModel}
-                    GET(): Promise<order.Price>;
-                } | any
+            waw1c:  {
+                infrastructure:  {
+                    filer:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
             }
-        }
-    }
-    overTheBox:  {
-        offer:  {
-            [keys: string]: {
-                // GET /price/overTheBox/offer/{offerName}
-                GET(): Promise<order.Price>;
-            } | any
-        }
-    }
-    xdsl:  {
-        addressMove:  {
-            fee:  {
-                [keys: string]: {
-                    // GET /price/xdsl/addressMove/fee/{option}
-                    GET(): Promise<order.Price>;
-                } | any
+            eri1c:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/eri1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/eri1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
             }
-        }
-        installation:  {
-            [keys: string]: {
-                // GET /price/xdsl/installation/{offer}
-                GET(): Promise<order.Price>;
-            } | any
-        }
-        offers:  {
-            [keys: string]: {
-                // GET /price/xdsl/offers/{offersName}
-                GET(): Promise<order.Price>;
-            } | any
-        }
-        options:  {
-            ipv4:  {
-                [keys: string]: {
-                    // GET /price/xdsl/options/ipv4/{ipRange}
-                    GET(): Promise<order.Price>;
-                } | any
+            rbx2b:  {
+                infrastructure:  {
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
             }
-            installation:  {
-                [keys: string]: {
-                    // GET /price/xdsl/options/installation/{option}
-                    GET(): Promise<order.Price>;
-                } | any
-            }
-            line:  {
-                [keys: string]: {
-                    // GET /price/xdsl/options/line/{lineAction}
-                    GET(): Promise<order.Price>;
-                } | any
-            }
-        }
-    }
-    domain:  {
-        zone:  {
-            option:  {
-                [keys: string]: {
-                    // GET /price/domain/zone/option/{optionName}
-                    GET(): Promise<order.Price>;
-                } | any
+            lim1c:  {
+                infrastructure:  {
+                    host:  {
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    filer:  {
+                        monthly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        hourly:  {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
             }
         }
     }
@@ -4190,7 +4066,51 @@ export interface Price {
             license:  {
                 [keys: string]: {
                     // GET /price/saas/csp2/license/{licenseName}
-                    GET(): Promise<order.Price>;
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+    }
+    overTheBox:  {
+        offer:  {
+            [keys: string]: {
+                // GET /price/overTheBox/offer/{offerName}
+                $get(): Promise<order.Price>;
+            } | any
+        }
+    }
+    dedicated:  {
+        nasha:  {
+            model:  {
+                [keys: string]: {
+                    // GET /price/dedicated/nasha/model/{modelName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+        server:  {
+            antiDDoSPro:  {
+                [keys: string]: {
+                    // GET /price/dedicated/server/antiDDoSPro/{commercialRange}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            firewall:  {
+                [keys: string]: {
+                    // GET /price/dedicated/server/firewall/{firewallModel}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            ip:  {
+                [keys: string]: {
+                    // GET /price/dedicated/server/ip/{routedTo}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            backupStorage:  {
+                [keys: string]: {
+                    // GET /price/dedicated/server/backupStorage/{capacity}
+                    $get(): Promise<order.Price>;
                 } | any
             }
         }
@@ -4200,60 +4120,104 @@ export interface Price {
             subscription:  {
                 [keys: string]: {
                     // GET /price/hpcspot/account/subscription/{subscriptionName}
-                    GET(): Promise<order.Price>;
+                    $get(): Promise<order.Price>;
                 } | any
             }
         }
         consumption:  {
-            job:  {
+            reservation:  {
                 [keys: string]: {
-                    // GET /price/hpcspot/consumption/job/{reference}
-                    GET(): Promise<order.Price>;
+                    // GET /price/hpcspot/consumption/reservation/{reference}
+                    $get(): Promise<order.Price>;
                 } | any
             }
             session:  {
                 [keys: string]: {
                     // GET /price/hpcspot/consumption/session/{reference}
-                    GET(): Promise<order.Price>;
+                    $get(): Promise<order.Price>;
                 } | any
             }
-            reservation:  {
+            job:  {
                 [keys: string]: {
-                    // GET /price/hpcspot/consumption/reservation/{reference}
-                    GET(): Promise<order.Price>;
+                    // GET /price/hpcspot/consumption/job/{reference}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+    }
+    xdsl:  {
+        offers:  {
+            [keys: string]: {
+                // GET /price/xdsl/offers/{offersName}
+                $get(): Promise<order.Price>;
+            } | any
+        }
+        addressMove:  {
+            fee:  {
+                [keys: string]: {
+                    // GET /price/xdsl/addressMove/fee/{option}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+        installation:  {
+            [keys: string]: {
+                // GET /price/xdsl/installation/{offer}
+                $get(): Promise<order.Price>;
+            } | any
+        }
+        options:  {
+            line:  {
+                [keys: string]: {
+                    // GET /price/xdsl/options/line/{lineAction}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            installation:  {
+                [keys: string]: {
+                    // GET /price/xdsl/options/installation/{option}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            ipv4:  {
+                [keys: string]: {
+                    // GET /price/xdsl/options/ipv4/{ipRange}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+    }
+    domain:  {
+        zone:  {
+            option:  {
+                [keys: string]: {
+                    // GET /price/domain/zone/option/{optionName}
+                    $get(): Promise<order.Price>;
                 } | any
             }
         }
     }
     vps:  {
-        classic:  {
-            model:  {
-                [keys: string]: {
-                    // GET /price/vps/classic/model/{modelName}
-                    GET(): Promise<order.Price>;
-                } | any
-            }
-        }
         '2013v1':  {
+            cloud:  {
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2013v1/cloud/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2013v1/cloud/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
             classic:  {
                 model:  {
                     [keys: string]: {
                         // GET /price/vps/2013v1/classic/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-            cloud:  {
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2013v1/cloud/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2013v1/cloud/option/{optionName}
-                        GET(): Promise<order.Price>;
+                        $get(): Promise<order.Price>;
                     } | any
                 }
             }
@@ -4261,7 +4225,221 @@ export interface Price {
                 model:  {
                     [keys: string]: {
                         // GET /price/vps/2013v1/lowlat/model/{modelName}
-                        GET(): Promise<order.Price>;
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+        }
+        classic:  {
+            model:  {
+                [keys: string]: {
+                    // GET /price/vps/classic/model/{modelName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+        '2018v2':  {
+            ssd:  {
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2018v2/ssd/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2018v2/ssd/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+        }
+        '2017v3':  {
+            cloud:  {
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2017v3/cloud/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2017v3/cloud/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            cloudram:  {
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2017v3/cloudram/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2017v3/cloudram/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            ssd:  {
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2017v3/ssd/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2017v3/ssd/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+        }
+        cloud:  {
+            option:  {
+                [keys: string]: {
+                    // GET /price/vps/cloud/option/{optionName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            model:  {
+                [keys: string]: {
+                    // GET /price/vps/cloud/model/{modelName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+        '2015v1':  {
+            cloudram:  {
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2015v1/cloudram/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2015v1/cloudram/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            ssd:  {
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2015v1/ssd/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2015v1/ssd/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            cloud:  {
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2015v1/cloud/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2015v1/cloud/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+        }
+        '2018v1':  {
+            cloudram:  {
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2018v1/cloudram/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2018v1/cloudram/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            ssd:  {
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2018v1/ssd/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2018v1/ssd/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            cloud:  {
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2018v1/cloud/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2018v1/cloud/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+        }
+        '2017v2':  {
+            cloud:  {
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2017v2/cloud/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2017v2/cloud/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            cloudram:  {
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2017v2/cloudram/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2017v2/cloudram/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            ssd:  {
+                model:  {
+                    [keys: string]: {
+                        // GET /price/vps/2017v2/ssd/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option:  {
+                    [keys: string]: {
+                        // GET /price/vps/2017v2/ssd/option/{optionName}
+                        $get(): Promise<order.Price>;
                     } | any
                 }
             }
@@ -4270,66 +4448,22 @@ export interface Price {
             model:  {
                 [keys: string]: {
                     // GET /price/vps/lowlat/model/{modelName}
-                    GET(): Promise<order.Price>;
+                    $get(): Promise<order.Price>;
                 } | any
             }
         }
-        '2017v3':  {
-            cloudram:  {
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v3/cloudram/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v3/cloudram/option/{optionName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-            ssd:  {
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v3/ssd/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v3/ssd/option/{optionName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-            cloud:  {
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v3/cloud/option/{optionName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v3/cloud/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-        }
-        '2018v2':  {
+        '2017v1':  {
             ssd:  {
                 option:  {
                     [keys: string]: {
-                        // GET /price/vps/2018v2/ssd/option/{optionName}
-                        GET(): Promise<order.Price>;
+                        // GET /price/vps/2017v1/ssd/option/{optionName}
+                        $get(): Promise<order.Price>;
                     } | any
                 }
                 model:  {
                     [keys: string]: {
-                        // GET /price/vps/2018v2/ssd/model/{modelName}
-                        GET(): Promise<order.Price>;
+                        // GET /price/vps/2017v1/ssd/model/{modelName}
+                        $get(): Promise<order.Price>;
                     } | any
                 }
             }
@@ -4339,13 +4473,13 @@ export interface Price {
                 model:  {
                     [keys: string]: {
                         // GET /price/vps/2014v1/cloud/model/{modelName}
-                        GET(): Promise<order.Price>;
+                        $get(): Promise<order.Price>;
                     } | any
                 }
                 option:  {
                     [keys: string]: {
                         // GET /price/vps/2014v1/cloud/option/{optionName}
-                        GET(): Promise<order.Price>;
+                        $get(): Promise<order.Price>;
                     } | any
                 }
             }
@@ -4353,169 +4487,7 @@ export interface Price {
                 model:  {
                     [keys: string]: {
                         // GET /price/vps/2014v1/classic/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-        }
-        '2015v1':  {
-            cloud:  {
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2015v1/cloud/option/{optionName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2015v1/cloud/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-            ssd:  {
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2015v1/ssd/option/{optionName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2015v1/ssd/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-            cloudram:  {
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2015v1/cloudram/option/{optionName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2015v1/cloudram/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-        }
-        '2017v2':  {
-            cloudram:  {
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v2/cloudram/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v2/cloudram/option/{optionName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-            ssd:  {
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v2/ssd/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v2/ssd/option/{optionName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-            cloud:  {
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v2/cloud/option/{optionName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v2/cloud/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-        }
-        '2018v1':  {
-            cloud:  {
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2018v1/cloud/option/{optionName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2018v1/cloud/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-            cloudram:  {
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2018v1/cloudram/option/{optionName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2018v1/cloudram/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-            ssd:  {
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2018v1/ssd/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2018v1/ssd/option/{optionName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-            }
-        }
-        cloud:  {
-            option:  {
-                [keys: string]: {
-                    // GET /price/vps/cloud/option/{optionName}
-                    GET(): Promise<order.Price>;
-                } | any
-            }
-            model:  {
-                [keys: string]: {
-                    // GET /price/vps/cloud/model/{modelName}
-                    GET(): Promise<order.Price>;
-                } | any
-            }
-        }
-        '2017v1':  {
-            ssd:  {
-                model:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v1/ssd/model/{modelName}
-                        GET(): Promise<order.Price>;
-                    } | any
-                }
-                option:  {
-                    [keys: string]: {
-                        // GET /price/vps/2017v1/ssd/option/{optionName}
-                        GET(): Promise<order.Price>;
+                        $get(): Promise<order.Price>;
                     } | any
                 }
             }
@@ -4525,570 +4497,598 @@ export interface Price {
         office:  {
             [keys: string]: {
                 // GET /price/license/office/{officeName}
-                GET(): Promise<order.Price>;
+                $get(): Promise<order.Price>;
+            } | any
+        }
+    }
+    hosting:  {
+        web:  {
+            ssl:  {
+                [keys: string]: {
+                    // GET /price/hosting/web/ssl/{sslName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            extraSqlPerso:  {
+                [keys: string]: {
+                    // GET /price/hosting/web/extraSqlPerso/{extraSqlPersoName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            cdn:  {
+                [keys: string]: {
+                    // GET /price/hosting/web/cdn/{cdnName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+        privateDatabase:  {
+            [keys: string]: {
+                // GET /price/hosting/privateDatabase/{privateDatabaseName}
+                $get(): Promise<order.Price>;
             } | any
         }
     }
 }
 // Api
-type PathsPriceGET = '/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v5/eri1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/eri1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v5/lim1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/lim1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v5/waw1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/waw1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+type PathsPriceGET = '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
   '/price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/monthly/{filerProfile}' |
   '/price/dedicatedCloud/2016v1/rbx2a/enterprise/host/monthly/{hostProfile}' |
   '/price/dedicatedCloud/2016v1/rbx2a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v1/rbx2b/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/rbx2b/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/monthly/{hostProfile}' |
   '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/bhs1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/bhs1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v1/sbg1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/sbg1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2013v1/bhs1a/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2013v1/bhs1a/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2013v1/bhs1a/host/monthly/{hostProfile}' |
   '/price/dedicatedCloud/2013v1/bhs1a/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2013v1/sbg1a/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2013v1/sbg1a/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2013v1/bhs1a/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2013v1/bhs1a/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2013v1/sbg1a/filer/monthly/{filerProfile}' |
   '/price/dedicatedCloud/2013v1/sbg1a/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2013v1/sbg1a/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2013v1/sbg1a/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2013v1/rbx2a/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2013v1/rbx2a/filer/monthly/{filerProfile}' |
   '/price/dedicatedCloud/2013v1/rbx2a/host/hourly/{hostProfile}' |
   '/price/dedicatedCloud/2013v1/rbx2a/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2013v1/rbx2a/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2013v1/rbx2a/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/monthly/{hostProfile}' |
   '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/hourly/{hostProfile}' |
   '/price/dedicatedCloud/2016v5/sbg1a/enterprise/host/monthly/{hostProfile}' |
   '/price/dedicatedCloud/2016v5/sbg1a/enterprise/host/hourly/{hostProfile}' |
   '/price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/monthly/{filerProfile}' |
   '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/monthly/{hostProfile}' |
   '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v5/bhs1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v5/bhs1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v5/rbx2b/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v5/rbx2b/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/monthly/{hostProfile}' |
   '/price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/monthly/{filerProfile}' |
   '/price/dedicatedCloud/2016v5/rbx2a/enterprise/host/monthly/{hostProfile}' |
   '/price/dedicatedCloud/2016v5/rbx2a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v7/waw1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/waw1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v7/lim1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/lim1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v7/eri1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/eri1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2b/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2b/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/bhs1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/bhs1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/sbg1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/sbg1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2b/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/rbx2b/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/sbg1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/sbg1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/bhs1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/bhs1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/waw1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/waw1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/lim1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/lim1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/eri1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/eri1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/hourly/{hostProfile}' |
   '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v3/waw1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v3/waw1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/monthly/{hostProfile}' |
   '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/hourly/{hostProfile}' |
   '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
   '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v3/eri1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v3/eri1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/hourly/{hostProfile}' |
   '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
   '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/monthly/{hostProfile}' |
   '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v3/lim1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v3/lim1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/waw1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v1/waw1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v1/lim1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v1/lim1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v1/eri1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v1/eri1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/sbg1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/sbg1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/bhs1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/bhs1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2b/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2b/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2014v2/rbx2b/enterprise/host/hourly/{hostProfile}' |
   '/price/dedicatedCloud/2014v2/rbx2b/enterprise/host/monthly/{hostProfile}' |
   '/price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/monthly/{filerProfile}' |
   '/price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/rbx2a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/rbx2a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/sbg1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/sbg1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/bhs1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/bhs1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/monthly/{filerProfile}' |
   '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v2/waw1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v2/waw1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v2/eri1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v2/eri1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/hourly/{hostProfile}' |
   '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
   '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v2/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/monthly/{hostProfile}' |
   '/price/dedicatedCloud/2018v2/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/lim1c/infrastructure/host/monthly/{hostProfile}' |
   '/price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/monthly/{filerProfile}' |
   '/price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2b/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/rbx2b/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/sbg1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/sbg1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v3/bhs1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v3/bhs1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/waw1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/waw1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/lim1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/lim1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2018v4/eri1c/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2018v4/eri1c/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/sbg1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/sbg1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/bhs1a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/bhs1a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2a/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2a/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2b/enterprise/host/hourly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2b/enterprise/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/monthly/{hostProfile}' |
-  '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/hourly/{hostProfile}' |
-  '/price/hosting/web/ssl/{sslName}' |
-  '/price/hosting/web/cdn/{cdnName}' |
-  '/price/hosting/web/extraSqlPerso/{extraSqlPersoName}' |
-  '/price/hosting/privateDatabase/{privateDatabaseName}' |
+  '/price/saas/csp2/license/{licenseName}' |
+  '/price/overTheBox/offer/{offerName}' |
   '/price/dedicated/nasha/model/{modelName}' |
-  '/price/dedicated/server/backupStorage/{capacity}' |
-  '/price/dedicated/server/ip/{routedTo}' |
   '/price/dedicated/server/antiDDoSPro/{commercialRange}' |
   '/price/dedicated/server/firewall/{firewallModel}' |
-  '/price/overTheBox/offer/{offerName}' |
+  '/price/dedicated/server/ip/{routedTo}' |
+  '/price/dedicated/server/backupStorage/{capacity}' |
+  '/price/hpcspot/account/subscription/{subscriptionName}' |
+  '/price/hpcspot/consumption/reservation/{reference}' |
+  '/price/hpcspot/consumption/session/{reference}' |
+  '/price/hpcspot/consumption/job/{reference}' |
+  '/price/xdsl/offers/{offersName}' |
   '/price/xdsl/addressMove/fee/{option}' |
   '/price/xdsl/installation/{offer}' |
-  '/price/xdsl/offers/{offersName}' |
-  '/price/xdsl/options/ipv4/{ipRange}' |
-  '/price/xdsl/options/installation/{option}' |
   '/price/xdsl/options/line/{lineAction}' |
+  '/price/xdsl/options/installation/{option}' |
+  '/price/xdsl/options/ipv4/{ipRange}' |
   '/price/domain/zone/option/{optionName}' |
-  '/price/saas/csp2/license/{licenseName}' |
-  '/price/hpcspot/account/subscription/{subscriptionName}' |
-  '/price/hpcspot/consumption/job/{reference}' |
-  '/price/hpcspot/consumption/session/{reference}' |
-  '/price/hpcspot/consumption/reservation/{reference}' |
-  '/price/vps/classic/model/{modelName}' |
-  '/price/vps/2013v1/classic/model/{modelName}' |
-  '/price/vps/2013v1/cloud/model/{modelName}' |
   '/price/vps/2013v1/cloud/option/{optionName}' |
+  '/price/vps/2013v1/cloud/model/{modelName}' |
+  '/price/vps/2013v1/classic/model/{modelName}' |
   '/price/vps/2013v1/lowlat/model/{modelName}' |
-  '/price/vps/lowlat/model/{modelName}' |
-  '/price/vps/2017v3/cloudram/model/{modelName}' |
+  '/price/vps/classic/model/{modelName}' |
+  '/price/vps/2018v2/ssd/model/{modelName}' |
+  '/price/vps/2018v2/ssd/option/{optionName}' |
+  '/price/vps/2017v3/cloud/model/{modelName}' |
+  '/price/vps/2017v3/cloud/option/{optionName}' |
   '/price/vps/2017v3/cloudram/option/{optionName}' |
+  '/price/vps/2017v3/cloudram/model/{modelName}' |
   '/price/vps/2017v3/ssd/model/{modelName}' |
   '/price/vps/2017v3/ssd/option/{optionName}' |
-  '/price/vps/2017v3/cloud/option/{optionName}' |
-  '/price/vps/2017v3/cloud/model/{modelName}' |
-  '/price/vps/2018v2/ssd/option/{optionName}' |
-  '/price/vps/2018v2/ssd/model/{modelName}' |
+  '/price/vps/cloud/option/{optionName}' |
+  '/price/vps/cloud/model/{modelName}' |
+  '/price/vps/2015v1/cloudram/option/{optionName}' |
+  '/price/vps/2015v1/cloudram/model/{modelName}' |
+  '/price/vps/2015v1/ssd/option/{optionName}' |
+  '/price/vps/2015v1/ssd/model/{modelName}' |
+  '/price/vps/2015v1/cloud/option/{optionName}' |
+  '/price/vps/2015v1/cloud/model/{modelName}' |
+  '/price/vps/2018v1/cloudram/model/{modelName}' |
+  '/price/vps/2018v1/cloudram/option/{optionName}' |
+  '/price/vps/2018v1/ssd/option/{optionName}' |
+  '/price/vps/2018v1/ssd/model/{modelName}' |
+  '/price/vps/2018v1/cloud/option/{optionName}' |
+  '/price/vps/2018v1/cloud/model/{modelName}' |
+  '/price/vps/2017v2/cloud/model/{modelName}' |
+  '/price/vps/2017v2/cloud/option/{optionName}' |
+  '/price/vps/2017v2/cloudram/option/{optionName}' |
+  '/price/vps/2017v2/cloudram/model/{modelName}' |
+  '/price/vps/2017v2/ssd/model/{modelName}' |
+  '/price/vps/2017v2/ssd/option/{optionName}' |
+  '/price/vps/lowlat/model/{modelName}' |
+  '/price/vps/2017v1/ssd/option/{optionName}' |
+  '/price/vps/2017v1/ssd/model/{modelName}' |
   '/price/vps/2014v1/cloud/model/{modelName}' |
   '/price/vps/2014v1/cloud/option/{optionName}' |
   '/price/vps/2014v1/classic/model/{modelName}' |
-  '/price/vps/2015v1/cloud/option/{optionName}' |
-  '/price/vps/2015v1/cloud/model/{modelName}' |
-  '/price/vps/2015v1/ssd/option/{optionName}' |
-  '/price/vps/2015v1/ssd/model/{modelName}' |
-  '/price/vps/2015v1/cloudram/option/{optionName}' |
-  '/price/vps/2015v1/cloudram/model/{modelName}' |
-  '/price/vps/2017v2/cloudram/model/{modelName}' |
-  '/price/vps/2017v2/cloudram/option/{optionName}' |
-  '/price/vps/2017v2/ssd/model/{modelName}' |
-  '/price/vps/2017v2/ssd/option/{optionName}' |
-  '/price/vps/2017v2/cloud/option/{optionName}' |
-  '/price/vps/2017v2/cloud/model/{modelName}' |
-  '/price/vps/2018v1/cloud/option/{optionName}' |
-  '/price/vps/2018v1/cloud/model/{modelName}' |
-  '/price/vps/2018v1/cloudram/option/{optionName}' |
-  '/price/vps/2018v1/cloudram/model/{modelName}' |
-  '/price/vps/2018v1/ssd/model/{modelName}' |
-  '/price/vps/2018v1/ssd/option/{optionName}' |
-  '/price/vps/cloud/option/{optionName}' |
-  '/price/vps/cloud/model/{modelName}' |
-  '/price/vps/2017v1/ssd/model/{modelName}' |
-  '/price/vps/2017v1/ssd/option/{optionName}' |
-  '/price/license/office/{officeName}';
+  '/price/license/office/{officeName}' |
+  '/price/hosting/web/ssl/{sslName}' |
+  '/price/hosting/web/extraSqlPerso/{extraSqlPersoName}' |
+  '/price/hosting/web/cdn/{cdnName}' |
+  '/price/hosting/privateDatabase/{privateDatabaseName}';
 
 export class ApiPrice extends OvhWrapper {
   constructor(engine: OvhRequestable) {

@@ -277,238 +277,238 @@ export namespace services {
 // path /msServices
 export interface MsServices {
     // GET /msServices
-    GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
     sharepoint:  {
         // GET /msServices/sharepoint
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /msServices/sharepoint/{domain}
-            GET(): Promise<msServices.SharepointServiceInfo>;
+            $get(): Promise<msServices.SharepointServiceInfo>;
             serviceInfos:  {
                 // GET /msServices/sharepoint/{domain}/serviceInfos
-                GET(): Promise<services.Service>;
+                $get(): Promise<services.Service>;
                 // PUT /msServices/sharepoint/{domain}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {body: services.Service}): Promise<void>;
             }
         } | any
     }
     [keys: string]: {
         // GET /msServices/{serviceName}
-        GET(): Promise<msServices.ActiveDirectoryOrganizationalUnit>;
+        $get(): Promise<msServices.ActiveDirectoryOrganizationalUnit>;
         // PUT /msServices/{serviceName}
-        PUT(body?: {body: msServices.ActiveDirectoryOrganizationalUnit}): Promise<void>;
+        $put(body?: {body: msServices.ActiveDirectoryOrganizationalUnit}): Promise<void>;
         upnSuffix:  {
             // GET /msServices/{serviceName}/upnSuffix
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             // POST /msServices/{serviceName}/upnSuffix
-            POST(body?: {suffix: string}): Promise<msServices.Task>;
+            $post(body?: {suffix: string}): Promise<msServices.Task>;
             [keys: string]: {
                 // GET /msServices/{serviceName}/upnSuffix/{suffix}
-                GET(): Promise<msServices.upnSuffix>;
+                $get(): Promise<msServices.upnSuffix>;
                 // DELETE /msServices/{serviceName}/upnSuffix/{suffix}
-                DELETE(): Promise<msServices.Task>;
+                $delete(): Promise<msServices.Task>;
             } | any
         }
         sync:  {
             // GET /msServices/{serviceName}/sync
-            GET(): Promise<msServices.SyncService>;
+            $get(): Promise<msServices.SyncService>;
             // DELETE /msServices/{serviceName}/sync
-            DELETE(): Promise<msServices.Task>;
-            changePassword:  {
-                // POST /msServices/{serviceName}/sync/changePassword
-                POST(body?: {password: string}): Promise<msServices.Task>;
-            }
+            $delete(): Promise<msServices.Task>;
             clientSoftwareURL:  {
                 // GET /msServices/{serviceName}/sync/clientSoftwareURL
-                GET(): Promise<msServices.ActiveDirectorySyncClientUrl>;
+                $get(): Promise<msServices.ActiveDirectorySyncClientUrl>;
                 // POST /msServices/{serviceName}/sync/clientSoftwareURL
-                POST(): Promise<msServices.Task>;
+                $post(): Promise<msServices.Task>;
+            }
+            changePassword:  {
+                // POST /msServices/{serviceName}/sync/changePassword
+                $post(body?: {password: string}): Promise<msServices.Task>;
             }
             license:  {
                 // GET /msServices/{serviceName}/sync/license
-                GET(param?: {license?: msServices.SyncLicenseEnum, period: msServices.LicensePeriodEnum}): Promise<msServices.SyncDailyLicense[]>;
+                $get(param?: {period: msServices.LicensePeriodEnum, license?: msServices.SyncLicenseEnum}): Promise<msServices.SyncDailyLicense[]>;
             }
         }
         sharepoint:  {
             // GET /msServices/{serviceName}/sharepoint
-            GET(): Promise<msServices.SharepointService>;
+            $get(): Promise<msServices.SharepointService>;
             // PUT /msServices/{serviceName}/sharepoint
-            PUT(body?: {body: msServices.SharepointService}): Promise<void>;
-            license:  {
-                // GET /msServices/{serviceName}/sharepoint/license
-                GET(param?: {license?: msServices.SharepointLicenseEnum, period: msServices.LicensePeriodEnum}): Promise<msServices.SharepointDailyLicense[]>;
-            }
+            $put(body?: {body: msServices.SharepointService}): Promise<void>;
             task:  {
                 // GET /msServices/{serviceName}/sharepoint/task
-                GET(param?: {status?: msServices.TaskStatusEnum, function_?: string}): Promise<number[]>;
+                $get(param?: {function_?: string, status?: msServices.TaskStatusEnum}): Promise<number[]>;
                 [keys: string]: {
                     // GET /msServices/{serviceName}/sharepoint/task/{id}
-                    GET(): Promise<msServices.sharepointTask>;
+                    $get(): Promise<msServices.sharepointTask>;
                 } | any
+            }
+            license:  {
+                // GET /msServices/{serviceName}/sharepoint/license
+                $get(param?: {license?: msServices.SharepointLicenseEnum, period: msServices.LicensePeriodEnum}): Promise<msServices.SharepointDailyLicense[]>;
             }
             billingMigrated:  {
                 // GET /msServices/{serviceName}/sharepoint/billingMigrated
-                GET(): Promise<boolean>;
+                $get(): Promise<boolean>;
             }
             restoreAdminRights:  {
                 // POST /msServices/{serviceName}/sharepoint/restoreAdminRights
-                POST(): Promise<msServices.sharepointTask>;
-            }
-        }
-        exchange:  {
-            // GET /msServices/{serviceName}/exchange
-            GET(): Promise<msServices.ExchangeService>;
-            // PUT /msServices/{serviceName}/exchange
-            PUT(body?: {body: msServices.ExchangeService}): Promise<void>;
-            task:  {
-                // GET /msServices/{serviceName}/exchange/task
-                GET(): Promise<number[]>;
-                [keys: string]: {
-                    // GET /msServices/{serviceName}/exchange/task/{id}
-                    GET(): Promise<msServices.exchangeTask>;
-                } | any
-            }
-            billingMigrated:  {
-                // GET /msServices/{serviceName}/exchange/billingMigrated
-                GET(): Promise<boolean>;
+                $post(): Promise<msServices.sharepointTask>;
             }
         }
         task:  {
             // GET /msServices/{serviceName}/task
-            GET(param?: {status?: msServices.TaskStatusEnum, function_?: msServices.TaskFunctionEnum}): Promise<number[]>;
+            $get(param?: {status?: msServices.TaskStatusEnum, function_?: msServices.TaskFunctionEnum}): Promise<number[]>;
             [keys: string]: {
                 // GET /msServices/{serviceName}/task/{id}
-                GET(): Promise<msServices.Task>;
+                $get(): Promise<msServices.Task>;
             } | any
         }
         account:  {
             // GET /msServices/{serviceName}/account
-            GET(param?: {id?: number, userPrincipalName?: string}): Promise<string[]>;
+            $get(param?: {userPrincipalName?: string, id?: number}): Promise<string[]>;
             [keys: string]: {
                 // GET /msServices/{serviceName}/account/{userPrincipalName}
-                GET(): Promise<msServices.Account>;
+                $get(): Promise<msServices.Account>;
                 // PUT /msServices/{serviceName}/account/{userPrincipalName}
-                PUT(body?: {body: msServices.Account}): Promise<void>;
-                sync:  {
-                    // GET /msServices/{serviceName}/account/{userPrincipalName}/sync
-                    GET(): Promise<msServices.SyncInformation>;
-                    // POST /msServices/{serviceName}/account/{userPrincipalName}/sync
-                    POST(body?: {license: msServices.SyncLicenseEnum}): Promise<msServices.Task>;
-                    // DELETE /msServices/{serviceName}/account/{userPrincipalName}/sync
-                    DELETE(): Promise<msServices.Task>;
+                $put(body?: {body: msServices.Account}): Promise<void>;
+                sharepoint:  {
+                    // GET /msServices/{serviceName}/account/{userPrincipalName}/sharepoint
+                    $get(): Promise<msServices.SharepointInformation>;
+                    // PUT /msServices/{serviceName}/account/{userPrincipalName}/sharepoint
+                    $put(body?: {body: msServices.SharepointInformation}): Promise<void>;
+                    clearSpace:  {
+                        // POST /msServices/{serviceName}/account/{userPrincipalName}/sharepoint/clearSpace
+                        $post(): Promise<msServices.sharepointTask>;
+                    }
                     configure:  {
-                        // POST /msServices/{serviceName}/account/{userPrincipalName}/sync/configure
-                        POST(): Promise<msServices.Task>;
+                        // POST /msServices/{serviceName}/account/{userPrincipalName}/sharepoint/configure
+                        $post(): Promise<msServices.sharepointTask>;
                     }
                 }
                 mfa:  {
                     // GET /msServices/{serviceName}/account/{userPrincipalName}/mfa
-                    GET(): Promise<msServices.MfaInformation>;
+                    $get(): Promise<msServices.MfaInformation>;
                     // POST /msServices/{serviceName}/account/{userPrincipalName}/mfa
-                    POST(): Promise<msServices.Task>;
+                    $post(): Promise<msServices.Task>;
                     // DELETE /msServices/{serviceName}/account/{userPrincipalName}/mfa
-                    DELETE(): Promise<msServices.Task>;
+                    $delete(): Promise<msServices.Task>;
                     reset:  {
                         // POST /msServices/{serviceName}/account/{userPrincipalName}/mfa/reset
-                        POST(): Promise<msServices.Task>;
+                        $post(): Promise<msServices.Task>;
                     }
                     enable:  {
                         // POST /msServices/{serviceName}/account/{userPrincipalName}/mfa/enable
-                        POST(): Promise<msServices.Task>;
+                        $post(): Promise<msServices.Task>;
                     }
                     disable:  {
                         // POST /msServices/{serviceName}/account/{userPrincipalName}/mfa/disable
-                        POST(body?: {period: number}): Promise<msServices.Task>;
+                        $post(body?: {period: number}): Promise<msServices.Task>;
+                    }
+                }
+                exchange:  {
+                    // GET /msServices/{serviceName}/account/{userPrincipalName}/exchange
+                    $get(): Promise<msServices.ExchangeInformation>;
+                    // PUT /msServices/{serviceName}/account/{userPrincipalName}/exchange
+                    $put(body?: {body: msServices.ExchangeInformation}): Promise<void>;
+                    configure:  {
+                        // POST /msServices/{serviceName}/account/{userPrincipalName}/exchange/configure
+                        $post(): Promise<msServices.exchangeTask>;
                     }
                 }
                 changePassword:  {
                     // POST /msServices/{serviceName}/account/{userPrincipalName}/changePassword
-                    POST(body?: {password: string}): Promise<msServices.Task>;
+                    $post(body?: {password: string}): Promise<msServices.Task>;
                 }
-                exchange:  {
-                    // GET /msServices/{serviceName}/account/{userPrincipalName}/exchange
-                    GET(): Promise<msServices.ExchangeInformation>;
-                    // PUT /msServices/{serviceName}/account/{userPrincipalName}/exchange
-                    PUT(body?: {body: msServices.ExchangeInformation}): Promise<void>;
+                sync:  {
+                    // GET /msServices/{serviceName}/account/{userPrincipalName}/sync
+                    $get(): Promise<msServices.SyncInformation>;
+                    // POST /msServices/{serviceName}/account/{userPrincipalName}/sync
+                    $post(body?: {license: msServices.SyncLicenseEnum}): Promise<msServices.Task>;
+                    // DELETE /msServices/{serviceName}/account/{userPrincipalName}/sync
+                    $delete(): Promise<msServices.Task>;
                     configure:  {
-                        // POST /msServices/{serviceName}/account/{userPrincipalName}/exchange/configure
-                        POST(): Promise<msServices.exchangeTask>;
-                    }
-                }
-                sharepoint:  {
-                    // GET /msServices/{serviceName}/account/{userPrincipalName}/sharepoint
-                    GET(): Promise<msServices.SharepointInformation>;
-                    // PUT /msServices/{serviceName}/account/{userPrincipalName}/sharepoint
-                    PUT(body?: {body: msServices.SharepointInformation}): Promise<void>;
-                    clearSpace:  {
-                        // POST /msServices/{serviceName}/account/{userPrincipalName}/sharepoint/clearSpace
-                        POST(): Promise<msServices.sharepointTask>;
-                    }
-                    configure:  {
-                        // POST /msServices/{serviceName}/account/{userPrincipalName}/sharepoint/configure
-                        POST(): Promise<msServices.sharepointTask>;
+                        // POST /msServices/{serviceName}/account/{userPrincipalName}/sync/configure
+                        $post(): Promise<msServices.Task>;
                     }
                 }
             } | any
         }
+        exchange:  {
+            // GET /msServices/{serviceName}/exchange
+            $get(): Promise<msServices.ExchangeService>;
+            // PUT /msServices/{serviceName}/exchange
+            $put(body?: {body: msServices.ExchangeService}): Promise<void>;
+            billingMigrated:  {
+                // GET /msServices/{serviceName}/exchange/billingMigrated
+                $get(): Promise<boolean>;
+            }
+            task:  {
+                // GET /msServices/{serviceName}/exchange/task
+                $get(): Promise<number[]>;
+                [keys: string]: {
+                    // GET /msServices/{serviceName}/exchange/task/{id}
+                    $get(): Promise<msServices.exchangeTask>;
+                } | any
+            }
+        }
     } | any
 }
 // Api
-type PathsMsServicesGET = '/msServices' |
-  '/msServices/sharepoint/{domain}/serviceInfos' |
+type PathsMsServicesGET = '/msServices/sharepoint/{domain}/serviceInfos' |
   '/msServices/sharepoint/{domain}' |
   '/msServices/sharepoint' |
-  '/msServices/{serviceName}/upnSuffix/{suffix}' |
+  '/msServices' |
   '/msServices/{serviceName}/upnSuffix' |
-  '/msServices/{serviceName}/sync' |
-  '/msServices/{serviceName}/sync/clientSoftwareURL' |
-  '/msServices/{serviceName}/sync/license' |
+  '/msServices/{serviceName}/upnSuffix/{suffix}' |
   '/msServices/{serviceName}' |
-  '/msServices/{serviceName}/sharepoint/license' |
+  '/msServices/{serviceName}/sync/clientSoftwareURL' |
+  '/msServices/{serviceName}/sync' |
+  '/msServices/{serviceName}/sync/license' |
   '/msServices/{serviceName}/sharepoint/task/{id}' |
   '/msServices/{serviceName}/sharepoint/task' |
+  '/msServices/{serviceName}/sharepoint/license' |
   '/msServices/{serviceName}/sharepoint/billingMigrated' |
   '/msServices/{serviceName}/sharepoint' |
-  '/msServices/{serviceName}/exchange/task/{id}' |
-  '/msServices/{serviceName}/exchange/task' |
-  '/msServices/{serviceName}/exchange' |
-  '/msServices/{serviceName}/exchange/billingMigrated' |
-  '/msServices/{serviceName}/task' |
   '/msServices/{serviceName}/task/{id}' |
-  '/msServices/{serviceName}/account' |
-  '/msServices/{serviceName}/account/{userPrincipalName}/sync' |
+  '/msServices/{serviceName}/task' |
+  '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint' |
   '/msServices/{serviceName}/account/{userPrincipalName}/mfa' |
   '/msServices/{serviceName}/account/{userPrincipalName}/exchange' |
   '/msServices/{serviceName}/account/{userPrincipalName}' |
-  '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint';
+  '/msServices/{serviceName}/account/{userPrincipalName}/sync' |
+  '/msServices/{serviceName}/account' |
+  '/msServices/{serviceName}/exchange' |
+  '/msServices/{serviceName}/exchange/billingMigrated' |
+  '/msServices/{serviceName}/exchange/task/{id}' |
+  '/msServices/{serviceName}/exchange/task';
 
 type PathsMsServicesPUT = '/msServices/sharepoint/{domain}/serviceInfos' |
   '/msServices/{serviceName}' |
   '/msServices/{serviceName}/sharepoint' |
-  '/msServices/{serviceName}/exchange' |
+  '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint' |
   '/msServices/{serviceName}/account/{userPrincipalName}/exchange' |
   '/msServices/{serviceName}/account/{userPrincipalName}' |
-  '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint';
+  '/msServices/{serviceName}/exchange';
 
 type PathsMsServicesPOST = '/msServices/{serviceName}/upnSuffix' |
-  '/msServices/{serviceName}/sync/changePassword' |
   '/msServices/{serviceName}/sync/clientSoftwareURL' |
+  '/msServices/{serviceName}/sync/changePassword' |
   '/msServices/{serviceName}/sharepoint/restoreAdminRights' |
-  '/msServices/{serviceName}/account/{userPrincipalName}/sync' |
-  '/msServices/{serviceName}/account/{userPrincipalName}/sync/configure' |
-  '/msServices/{serviceName}/account/{userPrincipalName}/mfa' |
+  '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/clearSpace' |
+  '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/configure' |
   '/msServices/{serviceName}/account/{userPrincipalName}/mfa/reset' |
+  '/msServices/{serviceName}/account/{userPrincipalName}/mfa' |
   '/msServices/{serviceName}/account/{userPrincipalName}/mfa/enable' |
   '/msServices/{serviceName}/account/{userPrincipalName}/mfa/disable' |
-  '/msServices/{serviceName}/account/{userPrincipalName}/changePassword' |
   '/msServices/{serviceName}/account/{userPrincipalName}/exchange/configure' |
-  '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/clearSpace' |
-  '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint/configure';
+  '/msServices/{serviceName}/account/{userPrincipalName}/changePassword' |
+  '/msServices/{serviceName}/account/{userPrincipalName}/sync/configure' |
+  '/msServices/{serviceName}/account/{userPrincipalName}/sync';
 
 type PathsMsServicesDELETE = '/msServices/{serviceName}/upnSuffix/{suffix}' |
   '/msServices/{serviceName}/sync' |
-  '/msServices/{serviceName}/account/{userPrincipalName}/sync' |
-  '/msServices/{serviceName}/account/{userPrincipalName}/mfa';
+  '/msServices/{serviceName}/account/{userPrincipalName}/mfa' |
+  '/msServices/{serviceName}/account/{userPrincipalName}/sync';
 
 export class ApiMsServices extends OvhWrapper {
   constructor(engine: OvhRequestable) {

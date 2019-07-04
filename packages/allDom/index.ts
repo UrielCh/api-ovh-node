@@ -59,32 +59,32 @@ export namespace services {
 // path /allDom
 export interface AllDom {
     // GET /allDom
-    GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
     [keys: string]: {
         // GET /allDom/{serviceName}
-        GET(): Promise<allDom.AllDom>;
-        domain:  {
-            // GET /allDom/{serviceName}/domain
-            GET(param?: {domain?: string}): Promise<string[]>;
-            [keys: string]: {
-                // GET /allDom/{serviceName}/domain/{domain}
-                GET(): Promise<allDom.AllDomDomain>;
-            } | any
-        }
+        $get(): Promise<allDom.AllDom>;
         serviceInfos:  {
             // GET /allDom/{serviceName}/serviceInfos
-            GET(): Promise<services.Service>;
+            $get(): Promise<services.Service>;
             // PUT /allDom/{serviceName}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
+            $put(body?: {body: services.Service}): Promise<void>;
+        }
+        domain:  {
+            // GET /allDom/{serviceName}/domain
+            $get(param?: {domain?: string}): Promise<string[]>;
+            [keys: string]: {
+                // GET /allDom/{serviceName}/domain/{domain}
+                $get(): Promise<allDom.AllDomDomain>;
+            } | any
         }
     } | any
 }
 // Api
-type PathsAllDomGET = '/allDom' |
+type PathsAllDomGET = '/allDom/{serviceName}/serviceInfos' |
+  '/allDom/{serviceName}' |
   '/allDom/{serviceName}/domain/{domain}' |
   '/allDom/{serviceName}/domain' |
-  '/allDom/{serviceName}' |
-  '/allDom/{serviceName}/serviceInfos';
+  '/allDom';
 
 type PathsAllDomPUT = '/allDom/{serviceName}/serviceInfos';
 

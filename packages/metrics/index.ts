@@ -102,78 +102,78 @@ export namespace services {
 // path /metrics
 export interface Metrics {
     // GET /metrics
-    GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
     [keys: string]: {
         // GET /metrics/{serviceName}
-        GET(): Promise<metrics.api.Service>;
+        $get(): Promise<metrics.api.Service>;
         // PUT /metrics/{serviceName}
-        PUT(body?: {description?: string}): Promise<metrics.api.Service>;
-        consumption:  {
-            // GET /metrics/{serviceName}/consumption
-            GET(param?: {duration?: number}): Promise<metrics.api.Consumption>;
+        $put(body?: {description?: string}): Promise<metrics.api.Service>;
+        terminate:  {
+            // POST /metrics/{serviceName}/terminate
+            $post(): Promise<string>;
+        }
+        serviceInfos:  {
+            // GET /metrics/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /metrics/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
+        }
+        quota:  {
+            // PUT /metrics/{serviceName}/quota
+            $put(body?: {quota: number}): Promise<string>;
+        }
+        changeContact:  {
+            // POST /metrics/{serviceName}/changeContact
+            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+        }
+        token:  {
+            // GET /metrics/{serviceName}/token
+            $get(): Promise<string[]>;
+            // POST /metrics/{serviceName}/token
+            $post(body?: {description?: string, labels?: metrics.api.Label[], permission: metrics.api.PermissionEnum}): Promise<metrics.api.Token>;
+            [keys: string]: {
+                // DELETE /metrics/{serviceName}/token/{tokenId}
+                $delete(): Promise<void>;
+                // GET /metrics/{serviceName}/token/{tokenId}
+                $get(): Promise<metrics.api.Token>;
+                // PUT /metrics/{serviceName}/token/{tokenId}
+                $put(body?: {description?: string}): Promise<metrics.api.Token>;
+            } | any
+        }
+        confirmTermination:  {
+            // POST /metrics/{serviceName}/confirmTermination
+            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
         lookup:  {
             token:  {
                 // POST /metrics/{serviceName}/lookup/token
-                POST(body?: {accessToken: string}): Promise<string[]>;
+                $post(body?: {accessToken: string}): Promise<string[]>;
             }
         }
-        changeContact:  {
-            // POST /metrics/{serviceName}/changeContact
-            POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
-        }
-        confirmTermination:  {
-            // POST /metrics/{serviceName}/confirmTermination
-            POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
-        }
-        terminate:  {
-            // POST /metrics/{serviceName}/terminate
-            POST(): Promise<string>;
-        }
-        token:  {
-            // GET /metrics/{serviceName}/token
-            GET(): Promise<string[]>;
-            // POST /metrics/{serviceName}/token
-            POST(body?: {description?: string, labels?: metrics.api.Label[], permission: metrics.api.PermissionEnum}): Promise<metrics.api.Token>;
-            [keys: string]: {
-                // DELETE /metrics/{serviceName}/token/{tokenId}
-                DELETE(): Promise<void>;
-                // GET /metrics/{serviceName}/token/{tokenId}
-                GET(): Promise<metrics.api.Token>;
-                // PUT /metrics/{serviceName}/token/{tokenId}
-                PUT(body?: {description?: string}): Promise<metrics.api.Token>;
-            } | any
-        }
-        quota:  {
-            // PUT /metrics/{serviceName}/quota
-            PUT(body?: {quota: number}): Promise<string>;
-        }
-        serviceInfos:  {
-            // GET /metrics/{serviceName}/serviceInfos
-            GET(): Promise<services.Service>;
-            // PUT /metrics/{serviceName}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
+        consumption:  {
+            // GET /metrics/{serviceName}/consumption
+            $get(param?: {duration?: number}): Promise<metrics.api.Consumption>;
         }
     } | any
 }
 // Api
-type PathsMetricsGET = '/metrics/{serviceName}/consumption' |
+type PathsMetricsGET = '/metrics/{serviceName}/serviceInfos' |
   '/metrics/{serviceName}' |
   '/metrics/{serviceName}/token/{tokenId}' |
   '/metrics/{serviceName}/token' |
-  '/metrics/{serviceName}/serviceInfos' |
+  '/metrics/{serviceName}/consumption' |
   '/metrics';
 
-type PathsMetricsPUT = '/metrics/{serviceName}' |
-  '/metrics/{serviceName}/token/{tokenId}' |
+type PathsMetricsPUT = '/metrics/{serviceName}/serviceInfos' |
   '/metrics/{serviceName}/quota' |
-  '/metrics/{serviceName}/serviceInfos';
+  '/metrics/{serviceName}' |
+  '/metrics/{serviceName}/token/{tokenId}';
 
-type PathsMetricsPOST = '/metrics/{serviceName}/lookup/token' |
+type PathsMetricsPOST = '/metrics/{serviceName}/terminate' |
   '/metrics/{serviceName}/changeContact' |
+  '/metrics/{serviceName}/token' |
   '/metrics/{serviceName}/confirmTermination' |
-  '/metrics/{serviceName}/terminate' |
-  '/metrics/{serviceName}/token';
+  '/metrics/{serviceName}/lookup/token';
 
 type PathsMetricsDELETE = '/metrics/{serviceName}/token/{tokenId}';
 

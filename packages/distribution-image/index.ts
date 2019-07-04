@@ -37,17 +37,17 @@ export interface Distribution {
     image:  {
         [keys: string]: {
             // GET /distribution/image/{serviceType}
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             [keys: string]: {
                 // GET /distribution/image/{serviceType}/{imageName}
-                GET(): Promise<distribution.image>;
+                $get(): Promise<distribution.image>;
             } | any
         } | any
     }
 }
 // Api
-type PathsDistributionImageGET = '/distribution/image/{serviceType}/{imageName}' |
-  '/distribution/image/{serviceType}';
+type PathsDistributionImageGET = '/distribution/image/{serviceType}' |
+  '/distribution/image/{serviceType}/{imageName}';
 
 export class ApiDistributionImage extends OvhWrapper {
   constructor(engine: OvhRequestable) {

@@ -234,225 +234,225 @@ export namespace services {
 export interface Email {
     pro:  {
         // GET /email/pro
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /email/pro/{service}
-            GET(): Promise<email.pro.Service>;
+            $get(): Promise<email.pro.Service>;
             // PUT /email/pro/{service}
-            PUT(body?: {body: email.pro.Service}): Promise<void>;
-            externalContact:  {
-                // GET /email/pro/{service}/externalContact
-                GET(param?: {id?: number, lastName?: string, displayName?: string, externalEmailAddress?: string, firstName?: string}): Promise<string[]>;
-                // POST /email/pro/{service}/externalContact
-                POST(body?: {displayName?: string, lastName?: string, externalEmailAddress: string, hiddenFromGAL?: boolean, initials?: string, firstName?: string}): Promise<email.pro.Task>;
-                [keys: string]: {
-                    // GET /email/pro/{service}/externalContact/{externalEmailAddress}
-                    GET(): Promise<email.pro.ExternalContact>;
-                    // PUT /email/pro/{service}/externalContact/{externalEmailAddress}
-                    PUT(body?: {body: email.pro.ExternalContact}): Promise<void>;
-                    // DELETE /email/pro/{service}/externalContact/{externalEmailAddress}
-                    DELETE(): Promise<email.pro.Task>;
-                } | any
-            }
-            updateFlagsOnAllAccounts:  {
-                // POST /email/pro/{service}/updateFlagsOnAllAccounts
-                POST(): Promise<void>;
-            }
-            serviceInfos:  {
-                // GET /email/pro/{service}/serviceInfos
-                GET(): Promise<services.Service>;
-                // PUT /email/pro/{service}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
-            }
-            domain:  {
-                // GET /email/pro/{service}/domain
-                GET(param?: {state?: email.pro.ObjectStateEnum}): Promise<string[]>;
-                // POST /email/pro/{service}/domain
-                POST(body?: {name: string, mxRelay?: string, configureAutodiscover?: boolean, configureMx?: boolean, type: email.pro.DomainTypeEnum}): Promise<email.pro.Task>;
-                [keys: string]: {
-                    // GET /email/pro/{service}/domain/{domainName}
-                    GET(): Promise<email.pro.Domain>;
-                    // PUT /email/pro/{service}/domain/{domainName}
-                    PUT(body?: {body: email.pro.Domain}): Promise<void>;
-                    // DELETE /email/pro/{service}/domain/{domainName}
-                    DELETE(): Promise<email.pro.Task>;
-                    disclaimerAttribute:  {
-                        // GET /email/pro/{service}/domain/{domainName}/disclaimerAttribute
-                        GET(): Promise<email.pro.DisclaimerAttributeEnum[]>;
-                    }
-                    disclaimer:  {
-                        // GET /email/pro/{service}/domain/{domainName}/disclaimer
-                        GET(): Promise<email.pro.disclaimer>;
-                        // PUT /email/pro/{service}/domain/{domainName}/disclaimer
-                        PUT(body?: {body: email.pro.disclaimer}): Promise<void>;
-                        // POST /email/pro/{service}/domain/{domainName}/disclaimer
-                        POST(body?: {outsideOnly?: boolean, content: string}): Promise<email.pro.Task>;
-                        // DELETE /email/pro/{service}/domain/{domainName}/disclaimer
-                        DELETE(): Promise<email.pro.Task>;
-                    }
-                } | any
-            }
-            task:  {
-                // GET /email/pro/{service}/task
-                GET(): Promise<number[]>;
-                [keys: string]: {
-                    // GET /email/pro/{service}/task/{id}
-                    GET(): Promise<email.pro.Task>;
-                } | any
+            $put(body?: {body: email.pro.Service}): Promise<void>;
+            server:  {
+                // GET /email/pro/{service}/server
+                $get(): Promise<email.pro.Server>;
             }
             billingPlan:  {
                 // GET /email/pro/{service}/billingPlan
-                GET(): Promise<string>;
+                $get(): Promise<string>;
+            }
+            task:  {
+                // GET /email/pro/{service}/task
+                $get(): Promise<number[]>;
+                [keys: string]: {
+                    // GET /email/pro/{service}/task/{id}
+                    $get(): Promise<email.pro.Task>;
+                } | any
             }
             billingMigrated:  {
                 // GET /email/pro/{service}/billingMigrated
-                GET(): Promise<boolean>;
+                $get(): Promise<boolean>;
             }
-            server:  {
-                // GET /email/pro/{service}/server
-                GET(): Promise<email.pro.Server>;
+            externalContact:  {
+                // GET /email/pro/{service}/externalContact
+                $get(param?: {externalEmailAddress?: string, firstName?: string, id?: number, lastName?: string, displayName?: string}): Promise<string[]>;
+                // POST /email/pro/{service}/externalContact
+                $post(body?: {displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string}): Promise<email.pro.Task>;
+                [keys: string]: {
+                    // GET /email/pro/{service}/externalContact/{externalEmailAddress}
+                    $get(): Promise<email.pro.ExternalContact>;
+                    // PUT /email/pro/{service}/externalContact/{externalEmailAddress}
+                    $put(body?: {body: email.pro.ExternalContact}): Promise<void>;
+                    // DELETE /email/pro/{service}/externalContact/{externalEmailAddress}
+                    $delete(): Promise<email.pro.Task>;
+                } | any
+            }
+            domain:  {
+                // GET /email/pro/{service}/domain
+                $get(param?: {state?: email.pro.ObjectStateEnum}): Promise<string[]>;
+                // POST /email/pro/{service}/domain
+                $post(body?: {configureAutodiscover?: boolean, configureMx?: boolean, mxRelay?: string, name: string, type: email.pro.DomainTypeEnum}): Promise<email.pro.Task>;
+                [keys: string]: {
+                    // GET /email/pro/{service}/domain/{domainName}
+                    $get(): Promise<email.pro.Domain>;
+                    // PUT /email/pro/{service}/domain/{domainName}
+                    $put(body?: {body: email.pro.Domain}): Promise<void>;
+                    // DELETE /email/pro/{service}/domain/{domainName}
+                    $delete(): Promise<email.pro.Task>;
+                    disclaimer:  {
+                        // GET /email/pro/{service}/domain/{domainName}/disclaimer
+                        $get(): Promise<email.pro.disclaimer>;
+                        // PUT /email/pro/{service}/domain/{domainName}/disclaimer
+                        $put(body?: {body: email.pro.disclaimer}): Promise<void>;
+                        // POST /email/pro/{service}/domain/{domainName}/disclaimer
+                        $post(body?: {content: string, outsideOnly?: boolean}): Promise<email.pro.Task>;
+                        // DELETE /email/pro/{service}/domain/{domainName}/disclaimer
+                        $delete(): Promise<email.pro.Task>;
+                    }
+                    disclaimerAttribute:  {
+                        // GET /email/pro/{service}/domain/{domainName}/disclaimerAttribute
+                        $get(): Promise<email.pro.DisclaimerAttributeEnum[]>;
+                    }
+                } | any
             }
             account:  {
                 // GET /email/pro/{service}/account
-                GET(param?: {primaryEmailAddress?: string, id?: number}): Promise<string[]>;
+                $get(param?: {id?: number, primaryEmailAddress?: string}): Promise<string[]>;
                 [keys: string]: {
                     // GET /email/pro/{service}/account/{email}
-                    GET(): Promise<email.pro.Account>;
+                    $get(): Promise<email.pro.Account>;
                     // PUT /email/pro/{service}/account/{email}
-                    PUT(body?: {body: email.pro.Account}): Promise<void>;
+                    $put(body?: {body: email.pro.Account}): Promise<void>;
                     // DELETE /email/pro/{service}/account/{email}
-                    DELETE(): Promise<email.pro.Task>;
-                    changePassword:  {
-                        // POST /email/pro/{service}/account/{email}/changePassword
-                        POST(body?: {password: string}): Promise<email.pro.Task>;
-                    }
+                    $delete(): Promise<email.pro.Task>;
                     fullAccess:  {
                         // GET /email/pro/{service}/account/{email}/fullAccess
-                        GET(): Promise<number[]>;
+                        $get(): Promise<number[]>;
                         // POST /email/pro/{service}/account/{email}/fullAccess
-                        POST(body?: {allowedAccountId: number}): Promise<email.pro.Task>;
+                        $post(body?: {allowedAccountId: number}): Promise<email.pro.Task>;
                         [keys: string]: {
                             // GET /email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}
-                            GET(): Promise<email.pro.AccountFullAccess>;
+                            $get(): Promise<email.pro.AccountFullAccess>;
                             // DELETE /email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}
-                            DELETE(): Promise<email.pro.Task>;
-                        } | any
-                    }
-                    terminate:  {
-                        // POST /email/pro/{service}/account/{email}/terminate
-                        POST(): Promise<string>;
-                    }
-                    alias:  {
-                        // GET /email/pro/{service}/account/{email}/alias
-                        GET(): Promise<string[]>;
-                        // POST /email/pro/{service}/account/{email}/alias
-                        POST(body?: {alias: string}): Promise<email.pro.Task>;
-                        [keys: string]: {
-                            // GET /email/pro/{service}/account/{email}/alias/{alias}
-                            GET(): Promise<email.pro.AccountAlias>;
-                            // DELETE /email/pro/{service}/account/{email}/alias/{alias}
-                            DELETE(): Promise<email.pro.Task>;
+                            $delete(): Promise<email.pro.Task>;
                         } | any
                     }
                     sendAs:  {
                         // GET /email/pro/{service}/account/{email}/sendAs
-                        GET(): Promise<number[]>;
+                        $get(): Promise<number[]>;
                         // POST /email/pro/{service}/account/{email}/sendAs
-                        POST(body?: {allowAccountId: number}): Promise<email.pro.Task>;
+                        $post(body?: {allowAccountId: number}): Promise<email.pro.Task>;
                         [keys: string]: {
                             // GET /email/pro/{service}/account/{email}/sendAs/{allowedAccountId}
-                            GET(): Promise<email.pro.AccountSendAs>;
+                            $get(): Promise<email.pro.AccountSendAs>;
                             // DELETE /email/pro/{service}/account/{email}/sendAs/{allowedAccountId}
-                            DELETE(): Promise<email.pro.Task>;
+                            $delete(): Promise<email.pro.Task>;
                         } | any
                     }
                     tasks:  {
                         // GET /email/pro/{service}/account/{email}/tasks
-                        GET(): Promise<number[]>;
+                        $get(): Promise<number[]>;
                         [keys: string]: {
                             // GET /email/pro/{service}/account/{email}/tasks/{id}
-                            GET(): Promise<email.pro.Task>;
+                            $get(): Promise<email.pro.Task>;
+                        } | any
+                    }
+                    changePassword:  {
+                        // POST /email/pro/{service}/account/{email}/changePassword
+                        $post(body?: {password: string}): Promise<email.pro.Task>;
+                    }
+                    alias:  {
+                        // GET /email/pro/{service}/account/{email}/alias
+                        $get(): Promise<string[]>;
+                        // POST /email/pro/{service}/account/{email}/alias
+                        $post(body?: {alias: string}): Promise<email.pro.Task>;
+                        [keys: string]: {
+                            // GET /email/pro/{service}/account/{email}/alias/{alias}
+                            $get(): Promise<email.pro.AccountAlias>;
+                            // DELETE /email/pro/{service}/account/{email}/alias/{alias}
+                            $delete(): Promise<email.pro.Task>;
                         } | any
                     }
                     sendOnBehalfTo:  {
                         // GET /email/pro/{service}/account/{email}/sendOnBehalfTo
-                        GET(): Promise<number[]>;
+                        $get(): Promise<number[]>;
                         // POST /email/pro/{service}/account/{email}/sendOnBehalfTo
-                        POST(body?: {allowAccountId: number}): Promise<email.pro.Task>;
+                        $post(body?: {allowAccountId: number}): Promise<email.pro.Task>;
                         [keys: string]: {
                             // GET /email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}
-                            GET(): Promise<email.pro.AccountSendOnBehalfTo>;
+                            $get(): Promise<email.pro.AccountSendOnBehalfTo>;
                             // DELETE /email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}
-                            DELETE(): Promise<email.pro.Task>;
+                            $delete(): Promise<email.pro.Task>;
                         } | any
+                    }
+                    terminate:  {
+                        // POST /email/pro/{service}/account/{email}/terminate
+                        $post(): Promise<string>;
                     }
                     diagnostics:  {
                         // GET /email/pro/{service}/account/{email}/diagnostics
-                        GET(): Promise<email.pro.AccountDiagnosis>;
+                        $get(): Promise<email.pro.AccountDiagnosis>;
                         // POST /email/pro/{service}/account/{email}/diagnostics
-                        POST(body?: {password: string}): Promise<email.pro.Task>;
+                        $post(body?: {password: string}): Promise<email.pro.Task>;
                     }
                 } | any
+            }
+            updateFlagsOnAllAccounts:  {
+                // POST /email/pro/{service}/updateFlagsOnAllAccounts
+                $post(): Promise<void>;
+            }
+            serviceInfos:  {
+                // GET /email/pro/{service}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /email/pro/{service}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
             }
         } | any
     }
 }
 // Api
-type PathsEmailProGET = '/email/pro/{service}/externalContact/{externalEmailAddress}' |
-  '/email/pro/{service}/externalContact' |
-  '/email/pro/{service}/serviceInfos' |
-  '/email/pro/{service}/domain' |
-  '/email/pro/{service}/domain/{domainName}/disclaimerAttribute' |
-  '/email/pro/{service}/domain/{domainName}/disclaimer' |
-  '/email/pro/{service}/domain/{domainName}' |
+type PathsEmailProGET = '/email/pro/{service}/server' |
+  '/email/pro/{service}/billingPlan' |
+  '/email/pro/{service}' |
   '/email/pro/{service}/task' |
   '/email/pro/{service}/task/{id}' |
-  '/email/pro/{service}/billingPlan' |
   '/email/pro/{service}/billingMigrated' |
-  '/email/pro/{service}/server' |
-  '/email/pro/{service}/account' |
-  '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}' |
+  '/email/pro/{service}/externalContact/{externalEmailAddress}' |
+  '/email/pro/{service}/externalContact' |
+  '/email/pro/{service}/domain' |
+  '/email/pro/{service}/domain/{domainName}' |
+  '/email/pro/{service}/domain/{domainName}/disclaimer' |
+  '/email/pro/{service}/domain/{domainName}/disclaimerAttribute' |
   '/email/pro/{service}/account/{email}/fullAccess' |
-  '/email/pro/{service}/account/{email}' |
-  '/email/pro/{service}/account/{email}/alias/{alias}' |
-  '/email/pro/{service}/account/{email}/alias' |
-  '/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}' |
+  '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}' |
   '/email/pro/{service}/account/{email}/sendAs' |
+  '/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}' |
   '/email/pro/{service}/account/{email}/tasks' |
   '/email/pro/{service}/account/{email}/tasks/{id}' |
+  '/email/pro/{service}/account/{email}/alias' |
+  '/email/pro/{service}/account/{email}/alias/{alias}' |
   '/email/pro/{service}/account/{email}/sendOnBehalfTo' |
   '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/pro/{service}/account/{email}' |
   '/email/pro/{service}/account/{email}/diagnostics' |
-  '/email/pro/{service}' |
+  '/email/pro/{service}/account' |
+  '/email/pro/{service}/serviceInfos' |
   '/email/pro';
 
-type PathsEmailProPUT = '/email/pro/{service}/externalContact/{externalEmailAddress}' |
-  '/email/pro/{service}/serviceInfos' |
-  '/email/pro/{service}/domain/{domainName}/disclaimer' |
+type PathsEmailProPUT = '/email/pro/{service}' |
+  '/email/pro/{service}/externalContact/{externalEmailAddress}' |
   '/email/pro/{service}/domain/{domainName}' |
+  '/email/pro/{service}/domain/{domainName}/disclaimer' |
   '/email/pro/{service}/account/{email}' |
-  '/email/pro/{service}';
+  '/email/pro/{service}/serviceInfos';
 
 type PathsEmailProPOST = '/email/pro/{service}/externalContact' |
-  '/email/pro/{service}/updateFlagsOnAllAccounts' |
   '/email/pro/{service}/domain' |
   '/email/pro/{service}/domain/{domainName}/disclaimer' |
-  '/email/pro/{service}/account/{email}/changePassword' |
   '/email/pro/{service}/account/{email}/fullAccess' |
-  '/email/pro/{service}/account/{email}/terminate' |
-  '/email/pro/{service}/account/{email}/alias' |
   '/email/pro/{service}/account/{email}/sendAs' |
+  '/email/pro/{service}/account/{email}/changePassword' |
+  '/email/pro/{service}/account/{email}/alias' |
   '/email/pro/{service}/account/{email}/sendOnBehalfTo' |
-  '/email/pro/{service}/account/{email}/diagnostics';
+  '/email/pro/{service}/account/{email}/terminate' |
+  '/email/pro/{service}/account/{email}/diagnostics' |
+  '/email/pro/{service}/updateFlagsOnAllAccounts';
 
 type PathsEmailProDELETE = '/email/pro/{service}/externalContact/{externalEmailAddress}' |
-  '/email/pro/{service}/domain/{domainName}/disclaimer' |
   '/email/pro/{service}/domain/{domainName}' |
+  '/email/pro/{service}/domain/{domainName}/disclaimer' |
   '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}' |
-  '/email/pro/{service}/account/{email}' |
-  '/email/pro/{service}/account/{email}/alias/{alias}' |
   '/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}' |
-  '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}';
+  '/email/pro/{service}/account/{email}/alias/{alias}' |
+  '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/pro/{service}/account/{email}';
 
 export class ApiEmailPro extends OvhWrapper {
   constructor(engine: OvhRequestable) {

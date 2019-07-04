@@ -668,151 +668,151 @@ export namespace services {
 export interface Dbaas {
     logs:  {
         // GET /dbaas/logs
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         input:  {
             engine:  {
                 // GET /dbaas/logs/input/engine
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /dbaas/logs/input/engine/{engineId}
-                    GET(): Promise<dbaas.logs.Engine>;
+                    $get(): Promise<dbaas.logs.Engine>;
                 } | any
             }
         }
         offer:  {
             [keys: string]: {
                 // GET /dbaas/logs/offer/{reference}
-                GET(): Promise<dbaas.logs.PublicOffer>;
+                $get(): Promise<dbaas.logs.PublicOffer>;
             } | any
         }
         [keys: string]: {
             // GET /dbaas/logs/{serviceName}
-            GET(): Promise<dbaas.logs.Service>;
+            $get(): Promise<dbaas.logs.Service>;
             // PUT /dbaas/logs/{serviceName}
-            PUT(body?: {body: dbaas.logs.Update}): Promise<dbaas.logs.Operation>;
+            $put(body?: {body: dbaas.logs.Update}): Promise<dbaas.logs.Operation>;
             changeContact:  {
                 // POST /dbaas/logs/{serviceName}/changeContact
-                POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
             cluster:  {
                 // GET /dbaas/logs/{serviceName}/cluster
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /dbaas/logs/{serviceName}/cluster/{clusterId}
-                    GET(): Promise<dbaas.logs.Cluster>;
+                    $get(): Promise<dbaas.logs.Cluster>;
                     allowedNetwork:  {
                         // GET /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork
-                        POST(body?: {body: dbaas.logs.ClusterAllowedNetworkCreation}): Promise<dbaas.logs.Operation>;
+                        $post(body?: {body: dbaas.logs.ClusterAllowedNetworkCreation}): Promise<dbaas.logs.Operation>;
                         [keys: string]: {
                             // DELETE /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}
-                            DELETE(): Promise<dbaas.logs.Operation>;
+                            $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}
-                            GET(): Promise<dbaas.logs.ClusterAllowedNetwork>;
+                            $get(): Promise<dbaas.logs.ClusterAllowedNetwork>;
                         } | any
                     }
                 } | any
             }
             input:  {
                 // GET /dbaas/logs/{serviceName}/input
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 // POST /dbaas/logs/{serviceName}/input
-                POST(body?: {body: dbaas.logs.InputCreation}): Promise<dbaas.logs.Operation>;
+                $post(body?: {body: dbaas.logs.InputCreation}): Promise<dbaas.logs.Operation>;
                 [keys: string]: {
                     // DELETE /dbaas/logs/{serviceName}/input/{inputId}
-                    DELETE(): Promise<dbaas.logs.Operation>;
+                    $delete(): Promise<dbaas.logs.Operation>;
                     // GET /dbaas/logs/{serviceName}/input/{inputId}
-                    GET(): Promise<dbaas.logs.Input>;
+                    $get(): Promise<dbaas.logs.Input>;
                     // PUT /dbaas/logs/{serviceName}/input/{inputId}
-                    PUT(body?: {body: dbaas.logs.InputUpdate}): Promise<dbaas.logs.Operation>;
+                    $put(body?: {body: dbaas.logs.InputUpdate}): Promise<dbaas.logs.Operation>;
                     action:  {
                         // GET /dbaas/logs/{serviceName}/input/{inputId}/action
-                        GET(): Promise<dbaas.logs.InputAction[]>;
+                        $get(): Promise<dbaas.logs.InputAction[]>;
                     }
                     allowedNetwork:  {
                         // GET /dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork
-                        POST(body?: {body: dbaas.logs.InputAllowedNetworkCreation}): Promise<dbaas.logs.Operation>;
+                        $post(body?: {body: dbaas.logs.InputAllowedNetworkCreation}): Promise<dbaas.logs.Operation>;
                         [keys: string]: {
                             // DELETE /dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}
-                            DELETE(): Promise<dbaas.logs.Operation>;
+                            $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}
-                            GET(): Promise<dbaas.logs.AllowedNetwork>;
+                            $get(): Promise<dbaas.logs.AllowedNetwork>;
                         } | any
                     }
                     configtest:  {
                         // POST /dbaas/logs/{serviceName}/input/{inputId}/configtest
-                        POST(): Promise<dbaas.logs.Operation>;
+                        $post(): Promise<dbaas.logs.Operation>;
                         result:  {
                             // GET /dbaas/logs/{serviceName}/input/{inputId}/configtest/result
-                            GET(): Promise<dbaas.logs.TestResult>;
+                            $get(): Promise<dbaas.logs.TestResult>;
                         }
                     }
                     configuration:  {
                         flowgger:  {
                             // GET /dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger
-                            GET(): Promise<dbaas.logs.FlowggerConfiguration>;
+                            $get(): Promise<dbaas.logs.FlowggerConfiguration>;
                             // PUT /dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger
-                            PUT(body?: {body: dbaas.logs.InputConfigurationFlowggerUpdate}): Promise<dbaas.logs.Operation>;
+                            $put(body?: {body: dbaas.logs.InputConfigurationFlowggerUpdate}): Promise<dbaas.logs.Operation>;
                         }
                         logstash:  {
                             // GET /dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash
-                            GET(): Promise<dbaas.logs.LogstashConfiguration>;
+                            $get(): Promise<dbaas.logs.LogstashConfiguration>;
                             // PUT /dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash
-                            PUT(body?: {body: dbaas.logs.InputConfigurationLogstashUpdate}): Promise<dbaas.logs.Operation>;
+                            $put(body?: {body: dbaas.logs.InputConfigurationLogstashUpdate}): Promise<dbaas.logs.Operation>;
                         }
                     }
                     end:  {
                         // POST /dbaas/logs/{serviceName}/input/{inputId}/end
-                        POST(): Promise<dbaas.logs.Operation>;
+                        $post(): Promise<dbaas.logs.Operation>;
                     }
                     logs:  {
                         url:  {
                             // POST /dbaas/logs/{serviceName}/input/{inputId}/logs/url
-                            POST(): Promise<dbaas.logs.TemporaryLogsLink>;
+                            $post(): Promise<dbaas.logs.TemporaryLogsLink>;
                         }
                     }
                     restart:  {
                         // POST /dbaas/logs/{serviceName}/input/{inputId}/restart
-                        POST(): Promise<dbaas.logs.Operation>;
+                        $post(): Promise<dbaas.logs.Operation>;
                     }
                     start:  {
                         // POST /dbaas/logs/{serviceName}/input/{inputId}/start
-                        POST(): Promise<dbaas.logs.Operation>;
+                        $post(): Promise<dbaas.logs.Operation>;
                     }
                     url:  {
                         // GET /dbaas/logs/{serviceName}/input/{inputId}/url
-                        GET(): Promise<dbaas.logs.Url[]>;
+                        $get(): Promise<dbaas.logs.Url[]>;
                     }
                 } | any
             }
             metrics:  {
                 // GET /dbaas/logs/{serviceName}/metrics
-                GET(): Promise<dbaas.logs.ServiceMetric>;
+                $get(): Promise<dbaas.logs.ServiceMetric>;
             }
             offer:  {
                 // GET /dbaas/logs/{serviceName}/offer
-                GET(): Promise<dbaas.logs.Offer>;
+                $get(): Promise<dbaas.logs.Offer>;
             }
             operation:  {
                 // GET /dbaas/logs/{serviceName}/operation
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /dbaas/logs/{serviceName}/operation/{operationId}
-                    GET(): Promise<dbaas.logs.Operation>;
+                    $get(): Promise<dbaas.logs.Operation>;
                 } | any
             }
             option:  {
                 // GET /dbaas/logs/{serviceName}/option
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /dbaas/logs/{serviceName}/option/{optionId}
-                    GET(): Promise<dbaas.logs.Option>;
+                    $get(): Promise<dbaas.logs.Option>;
                     terminate:  {
                         // POST /dbaas/logs/{serviceName}/option/{optionId}/terminate
-                        POST(): Promise<dbaas.logs.Operation>;
+                        $post(): Promise<dbaas.logs.Operation>;
                     }
                 } | any
             }
@@ -820,57 +820,57 @@ export interface Dbaas {
                 elasticsearch:  {
                     alias:  {
                         // GET /dbaas/logs/{serviceName}/output/elasticsearch/alias
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/output/elasticsearch/alias
-                        POST(body?: {body: dbaas.logs.OutputElasticsearchAliasCreation}): Promise<dbaas.logs.Operation>;
+                        $post(body?: {body: dbaas.logs.OutputElasticsearchAliasCreation}): Promise<dbaas.logs.Operation>;
                         [keys: string]: {
                             // DELETE /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}
-                            DELETE(): Promise<dbaas.logs.Operation>;
+                            $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}
-                            GET(): Promise<dbaas.logs.Alias>;
+                            $get(): Promise<dbaas.logs.Alias>;
                             // PUT /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}
-                            PUT(body?: {body: dbaas.logs.OutputElasticsearchAliasUpdate}): Promise<dbaas.logs.Operation>;
+                            $put(body?: {body: dbaas.logs.OutputElasticsearchAliasUpdate}): Promise<dbaas.logs.Operation>;
                             index:  {
                                 // GET /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index
-                                GET(): Promise<string[]>;
+                                $get(): Promise<string[]>;
                                 // POST /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index
-                                POST(body?: {body: dbaas.logs.OutputElasticsearchAliasIndexCreation}): Promise<dbaas.logs.Operation>;
+                                $post(body?: {body: dbaas.logs.OutputElasticsearchAliasIndexCreation}): Promise<dbaas.logs.Operation>;
                                 [keys: string]: {
                                     // DELETE /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}
-                                    DELETE(): Promise<dbaas.logs.Operation>;
+                                    $delete(): Promise<dbaas.logs.Operation>;
                                 } | any
                             }
                             stream:  {
                                 // GET /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream
-                                GET(): Promise<string[]>;
+                                $get(): Promise<string[]>;
                                 // POST /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream
-                                POST(body?: {body: dbaas.logs.OutputElasticsearchAliasStreamCreation}): Promise<dbaas.logs.Operation>;
+                                $post(body?: {body: dbaas.logs.OutputElasticsearchAliasStreamCreation}): Promise<dbaas.logs.Operation>;
                                 [keys: string]: {
                                     // DELETE /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}
-                                    DELETE(): Promise<dbaas.logs.Operation>;
+                                    $delete(): Promise<dbaas.logs.Operation>;
                                 } | any
                             }
                             url:  {
                                 // GET /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/url
-                                GET(): Promise<dbaas.logs.Url[]>;
+                                $get(): Promise<dbaas.logs.Url[]>;
                             }
                         } | any
                     }
                     index:  {
                         // GET /dbaas/logs/{serviceName}/output/elasticsearch/index
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/output/elasticsearch/index
-                        POST(body?: {body: dbaas.logs.OutputElasticsearchIndexCreation}): Promise<dbaas.logs.Operation>;
+                        $post(body?: {body: dbaas.logs.OutputElasticsearchIndexCreation}): Promise<dbaas.logs.Operation>;
                         [keys: string]: {
                             // DELETE /dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}
-                            DELETE(): Promise<dbaas.logs.Operation>;
+                            $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}
-                            GET(): Promise<dbaas.logs.Index>;
+                            $get(): Promise<dbaas.logs.Index>;
                             // PUT /dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}
-                            PUT(body?: {body: dbaas.logs.OutputElasticsearchIndexUpdate}): Promise<dbaas.logs.Operation>;
+                            $put(body?: {body: dbaas.logs.OutputElasticsearchIndexUpdate}): Promise<dbaas.logs.Operation>;
                             url:  {
                                 // GET /dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url
-                                GET(): Promise<dbaas.logs.Url[]>;
+                                $get(): Promise<dbaas.logs.Url[]>;
                             }
                         } | any
                     }
@@ -878,79 +878,79 @@ export interface Dbaas {
                 graylog:  {
                     dashboard:  {
                         // GET /dbaas/logs/{serviceName}/output/graylog/dashboard
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/output/graylog/dashboard
-                        POST(body?: {body: dbaas.logs.OutputGraylogDashboardCreation}): Promise<dbaas.logs.Operation>;
+                        $post(body?: {body: dbaas.logs.OutputGraylogDashboardCreation}): Promise<dbaas.logs.Operation>;
                         [keys: string]: {
                             // DELETE /dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}
-                            DELETE(): Promise<dbaas.logs.Operation>;
+                            $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}
-                            GET(): Promise<dbaas.logs.Dashboard>;
+                            $get(): Promise<dbaas.logs.Dashboard>;
                             // PUT /dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}
-                            PUT(body?: {body: dbaas.logs.OutputGraylogDashboardUpdate}): Promise<dbaas.logs.Operation>;
+                            $put(body?: {body: dbaas.logs.OutputGraylogDashboardUpdate}): Promise<dbaas.logs.Operation>;
                             duplicate:  {
                                 // POST /dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/duplicate
-                                POST(body?: {body: dbaas.logs.OutputGraylogDashboardDuplicateCreation}): Promise<dbaas.logs.Operation>;
+                                $post(body?: {body: dbaas.logs.OutputGraylogDashboardDuplicateCreation}): Promise<dbaas.logs.Operation>;
                             }
                             url:  {
                                 // GET /dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/url
-                                GET(): Promise<dbaas.logs.Url[]>;
+                                $get(): Promise<dbaas.logs.Url[]>;
                             }
                         } | any
                     }
                     stream:  {
                         // GET /dbaas/logs/{serviceName}/output/graylog/stream
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/output/graylog/stream
-                        POST(body?: {body: dbaas.logs.OutputGraylogStreamCreation}): Promise<dbaas.logs.Operation>;
+                        $post(body?: {body: dbaas.logs.OutputGraylogStreamCreation}): Promise<dbaas.logs.Operation>;
                         [keys: string]: {
                             // DELETE /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}
-                            DELETE(): Promise<dbaas.logs.Operation>;
+                            $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}
-                            GET(): Promise<dbaas.logs.Stream>;
+                            $get(): Promise<dbaas.logs.Stream>;
                             // PUT /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}
-                            PUT(body?: {body: dbaas.logs.OutputGraylogStreamUpdate}): Promise<dbaas.logs.Operation>;
+                            $put(body?: {body: dbaas.logs.OutputGraylogStreamUpdate}): Promise<dbaas.logs.Operation>;
                             alert:  {
                                 // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert
-                                GET(): Promise<string[]>;
+                                $get(): Promise<string[]>;
                                 // POST /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert
-                                POST(body?: {body: dbaas.logs.OutputGraylogStreamAlertCreation}): Promise<dbaas.logs.Operation>;
+                                $post(body?: {body: dbaas.logs.OutputGraylogStreamAlertCreation}): Promise<dbaas.logs.Operation>;
                                 [keys: string]: {
                                     // DELETE /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}
-                                    DELETE(): Promise<dbaas.logs.Operation>;
+                                    $delete(): Promise<dbaas.logs.Operation>;
                                     // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}
-                                    GET(): Promise<dbaas.logs.StreamAlertCondition>;
+                                    $get(): Promise<dbaas.logs.StreamAlertCondition>;
                                     // PUT /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}
-                                    PUT(body?: {body: dbaas.logs.OutputGraylogStreamAlertUpdate}): Promise<dbaas.logs.Operation>;
+                                    $put(body?: {body: dbaas.logs.OutputGraylogStreamAlertUpdate}): Promise<dbaas.logs.Operation>;
                                 } | any
                             }
                             archive:  {
                                 // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive
-                                GET(): Promise<string[]>;
+                                $get(): Promise<string[]>;
                                 [keys: string]: {
                                     // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}
-                                    GET(): Promise<dbaas.logs.Archive>;
+                                    $get(): Promise<dbaas.logs.Archive>;
                                     url:  {
                                         // POST /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/url
-                                        POST(): Promise<dbaas.logs.ArchiveUrl>;
+                                        $post(): Promise<dbaas.logs.ArchiveUrl>;
                                     }
                                 } | any
                             }
                             rule:  {
                                 // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule
-                                GET(): Promise<string[]>;
+                                $get(): Promise<string[]>;
                                 // POST /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule
-                                POST(body?: {body: dbaas.logs.OutputGraylogStreamRuleCreation}): Promise<dbaas.logs.Operation>;
+                                $post(body?: {body: dbaas.logs.OutputGraylogStreamRuleCreation}): Promise<dbaas.logs.Operation>;
                                 [keys: string]: {
                                     // DELETE /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}
-                                    DELETE(): Promise<dbaas.logs.Operation>;
+                                    $delete(): Promise<dbaas.logs.Operation>;
                                     // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}
-                                    GET(): Promise<dbaas.logs.StreamRule[]>;
+                                    $get(): Promise<dbaas.logs.StreamRule[]>;
                                 } | any
                             }
                             url:  {
                                 // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/url
-                                GET(): Promise<dbaas.logs.Url[]>;
+                                $get(): Promise<dbaas.logs.Url[]>;
                             }
                         } | any
                     }
@@ -958,88 +958,88 @@ export interface Dbaas {
             }
             quota:  {
                 // GET /dbaas/logs/{serviceName}/quota
-                GET(): Promise<dbaas.logs.Quota>;
+                $get(): Promise<dbaas.logs.Quota>;
             }
             role:  {
                 // GET /dbaas/logs/{serviceName}/role
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 // POST /dbaas/logs/{serviceName}/role
-                POST(body?: {body: dbaas.logs.RoleCreation}): Promise<dbaas.logs.Operation>;
+                $post(body?: {body: dbaas.logs.RoleCreation}): Promise<dbaas.logs.Operation>;
                 [keys: string]: {
                     // DELETE /dbaas/logs/{serviceName}/role/{roleId}
-                    DELETE(): Promise<dbaas.logs.Operation>;
+                    $delete(): Promise<dbaas.logs.Operation>;
                     // GET /dbaas/logs/{serviceName}/role/{roleId}
-                    GET(): Promise<dbaas.logs.Role>;
+                    $get(): Promise<dbaas.logs.Role>;
                     // PUT /dbaas/logs/{serviceName}/role/{roleId}
-                    PUT(body?: {body: dbaas.logs.RoleUpdate}): Promise<dbaas.logs.Operation>;
+                    $put(body?: {body: dbaas.logs.RoleUpdate}): Promise<dbaas.logs.Operation>;
                     member:  {
                         // GET /dbaas/logs/{serviceName}/role/{roleId}/member
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/role/{roleId}/member
-                        POST(body?: {body: dbaas.logs.RoleMemberCreation}): Promise<dbaas.logs.Operation>;
+                        $post(body?: {body: dbaas.logs.RoleMemberCreation}): Promise<dbaas.logs.Operation>;
                         [keys: string]: {
                             // DELETE /dbaas/logs/{serviceName}/role/{roleId}/member/{username}
-                            DELETE(): Promise<dbaas.logs.Operation>;
+                            $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/role/{roleId}/member/{username}
-                            GET(): Promise<dbaas.logs.Member>;
+                            $get(): Promise<dbaas.logs.Member>;
                             // PUT /dbaas/logs/{serviceName}/role/{roleId}/member/{username}
-                            PUT(body?: {body: dbaas.logs.RoleMemberUpdate}): Promise<dbaas.logs.Operation>;
+                            $put(body?: {body: dbaas.logs.RoleMemberUpdate}): Promise<dbaas.logs.Operation>;
                         } | any
                     }
                     permission:  {
                         // GET /dbaas/logs/{serviceName}/role/{roleId}/permission
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         alias:  {
                             // POST /dbaas/logs/{serviceName}/role/{roleId}/permission/alias
-                            POST(body?: {body: dbaas.logs.RolePermissionAliasCreation}): Promise<dbaas.logs.Operation>;
+                            $post(body?: {body: dbaas.logs.RolePermissionAliasCreation}): Promise<dbaas.logs.Operation>;
                         }
                         dashboard:  {
                             // POST /dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard
-                            POST(body?: {body: dbaas.logs.RolePermissionDashboardCreation}): Promise<dbaas.logs.Operation>;
+                            $post(body?: {body: dbaas.logs.RolePermissionDashboardCreation}): Promise<dbaas.logs.Operation>;
                         }
                         index:  {
                             // POST /dbaas/logs/{serviceName}/role/{roleId}/permission/index
-                            POST(body?: {body: dbaas.logs.RolePermissionIndexCreation}): Promise<dbaas.logs.Operation>;
+                            $post(body?: {body: dbaas.logs.RolePermissionIndexCreation}): Promise<dbaas.logs.Operation>;
                         }
                         stream:  {
                             // POST /dbaas/logs/{serviceName}/role/{roleId}/permission/stream
-                            POST(body?: {body: dbaas.logs.RolePermissionStreamCreation}): Promise<dbaas.logs.Operation>;
+                            $post(body?: {body: dbaas.logs.RolePermissionStreamCreation}): Promise<dbaas.logs.Operation>;
                         }
                         [keys: string]: {
                             // DELETE /dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}
-                            DELETE(): Promise<dbaas.logs.Operation>;
+                            $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}
-                            GET(): Promise<dbaas.logs.Permission[]>;
+                            $get(): Promise<dbaas.logs.Permission[]>;
                         } | any
                     }
                 } | any
             }
             serviceInfos:  {
                 // GET /dbaas/logs/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
+                $get(): Promise<services.Service>;
                 // PUT /dbaas/logs/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {body: services.Service}): Promise<void>;
             }
             token:  {
                 // GET /dbaas/logs/{serviceName}/token
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 // POST /dbaas/logs/{serviceName}/token
-                POST(body?: {body: dbaas.logs.TokenCreation}): Promise<dbaas.logs.Operation>;
+                $post(body?: {body: dbaas.logs.TokenCreation}): Promise<dbaas.logs.Operation>;
                 [keys: string]: {
                     // DELETE /dbaas/logs/{serviceName}/token/{tokenId}
-                    DELETE(): Promise<dbaas.logs.Operation>;
+                    $delete(): Promise<dbaas.logs.Operation>;
                     // GET /dbaas/logs/{serviceName}/token/{tokenId}
-                    GET(): Promise<dbaas.logs.Token>;
+                    $get(): Promise<dbaas.logs.Token>;
                 } | any
             }
             url:  {
                 // GET /dbaas/logs/{serviceName}/url
-                GET(): Promise<dbaas.logs.Url[]>;
+                $get(): Promise<dbaas.logs.Url[]>;
             }
             user:  {
                 changePassword:  {
                     // POST /dbaas/logs/{serviceName}/user/changePassword
-                    POST(body?: {body: dbaas.logs.UserChangePasswordCreation}): Promise<dbaas.logs.Operation>;
+                    $post(body?: {body: dbaas.logs.UserChangePasswordCreation}): Promise<dbaas.logs.Operation>;
                 }
             }
         } | any
@@ -1188,7 +1188,7 @@ export class ApiDbaasLogs extends OvhWrapper {
    * Cluster allowed networks
    * List all the network ID allowed to contact given cluster
    */
-  public get(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork', params: {serviceName: string, clusterId: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork', params: {clusterId: string, serviceName: string}): Promise<string[]>;
   /**
    * Cluster allowed networks
    * Returns details of an allowed network
@@ -1218,7 +1218,7 @@ export class ApiDbaasLogs extends OvhWrapper {
    * InputAllowedNetwork
    * List all network ID allowed to join input
    */
-  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {serviceName: string, inputId: string, allowedNetworkId: string}): Promise<dbaas.logs.AllowedNetwork>;
+  public get(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {allowedNetworkId: string, serviceName: string, inputId: string}): Promise<dbaas.logs.AllowedNetwork>;
   /**
    * InputConfigtestResult
    * Returns the config test operation result
@@ -1284,7 +1284,7 @@ export class ApiDbaasLogs extends OvhWrapper {
    * Returns the list of elasticsearch indexes attached to specified
         elasticsearch alias
    */
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', params: {serviceName: string, aliasId: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index', params: {aliasId: string, serviceName: string}): Promise<string[]>;
   /**
    * AliasStreams
    * Returns the list of graylog streams attached to specified
@@ -1310,7 +1310,7 @@ export class ApiDbaasLogs extends OvhWrapper {
    * StreamUrls
    * Returns the list of urls of specified graylog stream
    */
-  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url', params: {indexId: string, serviceName: string}): Promise<dbaas.logs.Url[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url', params: {serviceName: string, indexId: string}): Promise<dbaas.logs.Url[]>;
   /**
    * Dashboards
    * Returns the list of graylog dashboards
@@ -1345,27 +1345,27 @@ export class ApiDbaasLogs extends OvhWrapper {
    * StreamAlert
    * Returns details of specified graylog stream alert
    */
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {serviceName: string, streamId: string, alertId: string}): Promise<dbaas.logs.StreamAlertCondition>;
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {streamId: string, alertId: string, serviceName: string}): Promise<dbaas.logs.StreamAlertCondition>;
   /**
    * StreamArchives
    * Returns the list of archives
    */
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive', params: {serviceName: string, streamId: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive', params: {streamId: string, serviceName: string}): Promise<string[]>;
   /**
    * StreamArchive
    * Returns details of specified archive
    */
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}', params: {archiveId: string, serviceName: string, streamId: string}): Promise<dbaas.logs.Archive>;
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}', params: {streamId: string, serviceName: string, archiveId: string}): Promise<dbaas.logs.Archive>;
   /**
    * StreamRules
    * Returns the list of rules of specified graylog stream
    */
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {serviceName: string, streamId: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {streamId: string, serviceName: string}): Promise<string[]>;
   /**
    * StreamRule
    * Returns details of specified graylog stream rule
    */
-  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', params: {serviceName: string, streamId: string, ruleId: string}): Promise<dbaas.logs.StreamRule[]>;
+  public get(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', params: {streamId: string, serviceName: string, ruleId: string}): Promise<dbaas.logs.StreamRule[]>;
   /**
    * StreamUrls
    * Returns the list of urls of specified graylog stream
@@ -1390,12 +1390,12 @@ export class ApiDbaasLogs extends OvhWrapper {
    * RoleMembers
    * Returns the member list of specified role
    */
-  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/member', params: {roleId: string, serviceName: string}): Promise<string[]>;
+  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/member', params: {serviceName: string, roleId: string}): Promise<string[]>;
   /**
    * RoleMember
    * Returns the member metadata
    */
-  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', params: {roleId: string, username: string, serviceName: string}): Promise<dbaas.logs.Member>;
+  public get(path: '/dbaas/logs/{serviceName}/role/{roleId}/member/{username}', params: {serviceName: string, roleId: string, username: string}): Promise<dbaas.logs.Member>;
   /**
    * RolePermissions
    * Returns the list of permissions of specified role
@@ -1516,7 +1516,7 @@ export class ApiDbaasLogs extends OvhWrapper {
    * Cluster allowed networks
    * Allow an IP to contact cluster
    */
-  public post(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork', params: {serviceName: string, clusterId: string, flowType: OVH.dbaas.logs.ClusterAllowedNetworkFlowTypeEnum, network: string}): Promise<dbaas.logs.Operation>;
+  public post(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork', params: {clusterId: string, serviceName: string, flowType: OVH.dbaas.logs.ClusterAllowedNetworkFlowTypeEnum, network: string}): Promise<dbaas.logs.Operation>;
   /**
    * Inputs
    * Register a new input object
@@ -1526,12 +1526,12 @@ export class ApiDbaasLogs extends OvhWrapper {
    * InputAllowedNetworks
    * Allow an ip to join input
    */
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', params: {inputId: string, serviceName: string, network: string}): Promise<dbaas.logs.Operation>;
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork', params: {serviceName: string, inputId: string, network: string}): Promise<dbaas.logs.Operation>;
   /**
    * InputConfigtest
    * Validate configuration of specified input
    */
-  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/configtest', params: {inputId: string, serviceName: string}): Promise<dbaas.logs.Operation>;
+  public post(path: '/dbaas/logs/{serviceName}/input/{inputId}/configtest', params: {serviceName: string, inputId: string}): Promise<dbaas.logs.Operation>;
   /**
    * InputEnd
    * Schedule the end of specified input
@@ -1556,7 +1556,7 @@ export class ApiDbaasLogs extends OvhWrapper {
    * ServiceOption
    * Remove the specified subscribed option
    */
-  public post(path: '/dbaas/logs/{serviceName}/option/{optionId}/terminate', params: {serviceName: string, optionId: string}): Promise<dbaas.logs.Operation>;
+  public post(path: '/dbaas/logs/{serviceName}/option/{optionId}/terminate', params: {optionId: string, serviceName: string}): Promise<dbaas.logs.Operation>;
   /**
    * Aliases
    * Register a new elasticsearch alias
@@ -1601,12 +1601,12 @@ export class ApiDbaasLogs extends OvhWrapper {
    * Streams
    * Get a public temporary URL to access the archive
    */
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/url', params: {streamId: string, archiveId: string, serviceName: string}): Promise<dbaas.logs.ArchiveUrl>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/url', params: {streamId: string, serviceName: string, archiveId: string}): Promise<dbaas.logs.ArchiveUrl>;
   /**
    * StreamRules
    * Register a new rule on specified graylog stream
    */
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {serviceName: string, streamId: string, field: string, isInverted?: boolean, operator: OVH.dbaas.logs.StreamRuleOperatorEnum, value: string}): Promise<dbaas.logs.Operation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {streamId: string, serviceName: string, field: string, isInverted?: boolean, operator: OVH.dbaas.logs.StreamRuleOperatorEnum, value: string}): Promise<dbaas.logs.Operation>;
   /**
    * Roles
    * Register a new role
@@ -1664,22 +1664,22 @@ export class ApiDbaasLogs extends OvhWrapper {
    * InputAllowedNetwork
    * Remove the specified IP from the list of allowed networks
    */
-  public delete(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {inputId: string, allowedNetworkId: string, serviceName: string}): Promise<dbaas.logs.Operation>;
+  public delete(path: '/dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}', params: {serviceName: string, inputId: string, allowedNetworkId: string}): Promise<dbaas.logs.Operation>;
   /**
    * Alias
    * Remove specified elasticsearch alias
    */
-  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', params: {aliasId: string, serviceName: string}): Promise<dbaas.logs.Operation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}', params: {serviceName: string, aliasId: string}): Promise<dbaas.logs.Operation>;
   /**
    * AliasStream
    * Detach a elasticsearch index from specified elasticsearch alias
    */
-  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}', params: {serviceName: string, aliasId: string, indexId: string}): Promise<dbaas.logs.Operation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}', params: {aliasId: string, indexId: string, serviceName: string}): Promise<dbaas.logs.Operation>;
   /**
    * AliasStream
    * Detach a graylog stream from specified elasticsearch alias
    */
-  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}', params: {aliasId: string, streamId: string, serviceName: string}): Promise<dbaas.logs.Operation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}', params: {serviceName: string, aliasId: string, streamId: string}): Promise<dbaas.logs.Operation>;
   /**
    * Index
    * Remove specified elasticsearch index
@@ -1689,7 +1689,7 @@ export class ApiDbaasLogs extends OvhWrapper {
    * Dashboard
    * Remove specified graylog dashboard
    */
-  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}', params: {serviceName: string, dashboardId: string}): Promise<dbaas.logs.Operation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}', params: {dashboardId: string, serviceName: string}): Promise<dbaas.logs.Operation>;
   /**
    * Stream
    * Remove specified graylog stream
@@ -1699,17 +1699,17 @@ export class ApiDbaasLogs extends OvhWrapper {
    * StreamAlert
    * Remove alert from specified graylog stream
    */
-  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {alertId: string, serviceName: string, streamId: string}): Promise<dbaas.logs.Operation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {streamId: string, alertId: string, serviceName: string}): Promise<dbaas.logs.Operation>;
   /**
    * StreamRule
    * Remove specified graylog stream rule
    */
-  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', params: {streamId: string, ruleId: string, serviceName: string}): Promise<dbaas.logs.Operation>;
+  public delete(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}', params: {streamId: string, serviceName: string, ruleId: string}): Promise<dbaas.logs.Operation>;
   /**
    * Role
    * Remove specified role
    */
-  public delete(path: '/dbaas/logs/{serviceName}/role/{roleId}', params: {roleId: string, serviceName: string}): Promise<dbaas.logs.Operation>;
+  public delete(path: '/dbaas/logs/{serviceName}/role/{roleId}', params: {serviceName: string, roleId: string}): Promise<dbaas.logs.Operation>;
   /**
    * RoleMember
    * Remove user from the member list of specified role

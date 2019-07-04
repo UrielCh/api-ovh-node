@@ -97,96 +97,96 @@ export namespace services {
 export interface Dedicated {
     nas:  {
         // GET /dedicated/nas
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /dedicated/nas/{serviceName}
-            GET(): Promise<dedicated.nas.Nas>;
+            $get(): Promise<dedicated.nas.Nas>;
             // PUT /dedicated/nas/{serviceName}
-            PUT(body?: {body: dedicated.nas.Nas}): Promise<void>;
+            $put(body?: {body: dedicated.nas.Nas}): Promise<void>;
             serviceInfos:  {
                 // GET /dedicated/nas/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
+                $get(): Promise<services.Service>;
                 // PUT /dedicated/nas/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
-            }
-            task:  {
-                // GET /dedicated/nas/{serviceName}/task
-                GET(param?: {operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
-                [keys: string]: {
-                    // GET /dedicated/nas/{serviceName}/task/{taskId}
-                    GET(): Promise<dedicated.nasTask.Task>;
-                } | any
+                $put(body?: {body: services.Service}): Promise<void>;
             }
             partition:  {
                 // GET /dedicated/nas/{serviceName}/partition
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 // POST /dedicated/nas/{serviceName}/partition
-                POST(body?: {partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
+                $post(body?: {partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
                 [keys: string]: {
                     // GET /dedicated/nas/{serviceName}/partition/{partitionName}
-                    GET(): Promise<dedicated.nas.Partition>;
+                    $get(): Promise<dedicated.nas.Partition>;
                     // PUT /dedicated/nas/{serviceName}/partition/{partitionName}
-                    PUT(body?: {body: dedicated.nas.Partition}): Promise<void>;
+                    $put(body?: {body: dedicated.nas.Partition}): Promise<void>;
                     // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}
-                    DELETE(): Promise<dedicated.nasTask.Task>;
-                    quota:  {
-                        // GET /dedicated/nas/{serviceName}/partition/{partitionName}/quota
-                        GET(): Promise<number[]>;
-                        // POST /dedicated/nas/{serviceName}/partition/{partitionName}/quota
-                        POST(body?: {uid: number, size: number}): Promise<dedicated.nasTask.Task>;
-                        [keys: string]: {
-                            // GET /dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}
-                            GET(): Promise<dedicated.nas.Quota>;
-                            // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}
-                            DELETE(): Promise<dedicated.nasTask.Task>;
-                        } | any
-                    }
+                    $delete(): Promise<dedicated.nasTask.Task>;
                     access:  {
                         // GET /dedicated/nas/{serviceName}/partition/{partitionName}/access
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         // POST /dedicated/nas/{serviceName}/partition/{partitionName}/access
-                        POST(body?: {ip: string}): Promise<dedicated.nasTask.Task>;
+                        $post(body?: {ip: string}): Promise<dedicated.nasTask.Task>;
                         [keys: string]: {
                             // GET /dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}
-                            GET(): Promise<dedicated.nas.Access>;
+                            $get(): Promise<dedicated.nas.Access>;
                             // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}
-                            DELETE(): Promise<dedicated.nasTask.Task>;
+                            $delete(): Promise<dedicated.nasTask.Task>;
+                        } | any
+                    }
+                    quota:  {
+                        // GET /dedicated/nas/{serviceName}/partition/{partitionName}/quota
+                        $get(): Promise<number[]>;
+                        // POST /dedicated/nas/{serviceName}/partition/{partitionName}/quota
+                        $post(body?: {size: number, uid: number}): Promise<dedicated.nasTask.Task>;
+                        [keys: string]: {
+                            // GET /dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}
+                            $get(): Promise<dedicated.nas.Quota>;
+                            // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}
+                            $delete(): Promise<dedicated.nasTask.Task>;
                         } | any
                     }
                     authorizableIps:  {
                         // GET /dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                     }
+                } | any
+            }
+            task:  {
+                // GET /dedicated/nas/{serviceName}/task
+                $get(param?: {operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
+                [keys: string]: {
+                    // GET /dedicated/nas/{serviceName}/task/{taskId}
+                    $get(): Promise<dedicated.nasTask.Task>;
                 } | any
             }
         } | any
     }
 }
 // Api
-type PathsDedicatedNasGET = '/dedicated/nas/{serviceName}/serviceInfos' |
-  '/dedicated/nas/{serviceName}/task' |
-  '/dedicated/nas/{serviceName}/task/{taskId}' |
+type PathsDedicatedNasGET = '/dedicated/nas' |
+  '/dedicated/nas/{serviceName}/serviceInfos' |
   '/dedicated/nas/{serviceName}' |
   '/dedicated/nas/{serviceName}/partition' |
-  '/dedicated/nas/{serviceName}/partition/{partitionName}' |
+  '/dedicated/nas/{serviceName}/partition/{partitionName}/access' |
+  '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}' |
   '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}' |
   '/dedicated/nas/{serviceName}/partition/{partitionName}/quota' |
-  '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}' |
-  '/dedicated/nas/{serviceName}/partition/{partitionName}/access' |
   '/dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps' |
-  '/dedicated/nas';
+  '/dedicated/nas/{serviceName}/partition/{partitionName}' |
+  '/dedicated/nas/{serviceName}/task' |
+  '/dedicated/nas/{serviceName}/task/{taskId}';
 
 type PathsDedicatedNasPUT = '/dedicated/nas/{serviceName}/serviceInfos' |
   '/dedicated/nas/{serviceName}' |
   '/dedicated/nas/{serviceName}/partition/{partitionName}';
 
 type PathsDedicatedNasPOST = '/dedicated/nas/{serviceName}/partition' |
-  '/dedicated/nas/{serviceName}/partition/{partitionName}/quota' |
-  '/dedicated/nas/{serviceName}/partition/{partitionName}/access';
+  '/dedicated/nas/{serviceName}/partition/{partitionName}/access' |
+  '/dedicated/nas/{serviceName}/partition/{partitionName}/quota';
 
-type PathsDedicatedNasDELETE = '/dedicated/nas/{serviceName}/partition/{partitionName}' |
+type PathsDedicatedNasDELETE = '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}' |
   '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}' |
-  '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}';
+  '/dedicated/nas/{serviceName}/partition/{partitionName}';
 
 export class ApiDedicatedNas extends OvhWrapper {
   constructor(engine: OvhRequestable) {

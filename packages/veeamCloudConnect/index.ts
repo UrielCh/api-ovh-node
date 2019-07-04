@@ -97,70 +97,70 @@ export namespace veeamCloudConnect {
 // path /veeamCloudConnect
 export interface VeeamCloudConnect {
     // GET /veeamCloudConnect
-    GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
     [keys: string]: {
         // GET /veeamCloudConnect/{serviceName}
-        GET(): Promise<veeamCloudConnect.Account>;
+        $get(): Promise<veeamCloudConnect.Account>;
         orderableUpgrade:  {
             // GET /veeamCloudConnect/{serviceName}/orderableUpgrade
-            GET(): Promise<veeamCloudConnect.Offer[]>;
-        }
-        resetPassword:  {
-            // POST /veeamCloudConnect/{serviceName}/resetPassword
-            POST(): Promise<veeamCloudConnect.Task>;
+            $get(): Promise<veeamCloudConnect.Offer[]>;
         }
         serviceInfos:  {
             // GET /veeamCloudConnect/{serviceName}/serviceInfos
-            GET(): Promise<services.Service>;
+            $get(): Promise<services.Service>;
             // PUT /veeamCloudConnect/{serviceName}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
+            $put(body?: {body: services.Service}): Promise<void>;
         }
         backupRepository:  {
             // GET /veeamCloudConnect/{serviceName}/backupRepository
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             // POST /veeamCloudConnect/{serviceName}/backupRepository
-            POST(): Promise<veeamCloudConnect.Task[]>;
+            $post(): Promise<veeamCloudConnect.Task[]>;
             [keys: string]: {
                 // GET /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}
-                GET(): Promise<veeamCloudConnect.BackupRepository>;
+                $get(): Promise<veeamCloudConnect.BackupRepository>;
                 // DELETE /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}
-                DELETE(): Promise<veeamCloudConnect.Task[]>;
+                $delete(): Promise<veeamCloudConnect.Task[]>;
                 upgradeQuota:  {
                     // POST /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota
-                    POST(body?: {newQuota: number}): Promise<veeamCloudConnect.Task[]>;
+                    $post(body?: {newQuota: number}): Promise<veeamCloudConnect.Task[]>;
                 }
+            } | any
+        }
+        resetPassword:  {
+            // POST /veeamCloudConnect/{serviceName}/resetPassword
+            $post(): Promise<veeamCloudConnect.Task>;
+        }
+        task:  {
+            // GET /veeamCloudConnect/{serviceName}/task
+            $get(param?: {state?: veeamCloudConnect.TaskStateEnum, name?: string}): Promise<number[]>;
+            [keys: string]: {
+                // GET /veeamCloudConnect/{serviceName}/task/{taskId}
+                $get(): Promise<veeamCloudConnect.Task>;
             } | any
         }
         capabilities:  {
             // GET /veeamCloudConnect/{serviceName}/capabilities
-            GET(): Promise<veeamCloudConnect.offerCapabilities>;
-        }
-        task:  {
-            // GET /veeamCloudConnect/{serviceName}/task
-            GET(param?: {state?: veeamCloudConnect.TaskStateEnum, name?: string}): Promise<number[]>;
-            [keys: string]: {
-                // GET /veeamCloudConnect/{serviceName}/task/{taskId}
-                GET(): Promise<veeamCloudConnect.Task>;
-            } | any
+            $get(): Promise<veeamCloudConnect.offerCapabilities>;
         }
     } | any
 }
 // Api
 type PathsVeeamCloudConnectGET = '/veeamCloudConnect/{serviceName}/orderableUpgrade' |
   '/veeamCloudConnect/{serviceName}/serviceInfos' |
-  '/veeamCloudConnect/{serviceName}' |
-  '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}' |
   '/veeamCloudConnect/{serviceName}/backupRepository' |
-  '/veeamCloudConnect/{serviceName}/capabilities' |
+  '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}' |
+  '/veeamCloudConnect/{serviceName}' |
   '/veeamCloudConnect/{serviceName}/task' |
   '/veeamCloudConnect/{serviceName}/task/{taskId}' |
+  '/veeamCloudConnect/{serviceName}/capabilities' |
   '/veeamCloudConnect';
 
 type PathsVeeamCloudConnectPUT = '/veeamCloudConnect/{serviceName}/serviceInfos';
 
-type PathsVeeamCloudConnectPOST = '/veeamCloudConnect/{serviceName}/resetPassword' |
+type PathsVeeamCloudConnectPOST = '/veeamCloudConnect/{serviceName}/backupRepository' |
   '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota' |
-  '/veeamCloudConnect/{serviceName}/backupRepository';
+  '/veeamCloudConnect/{serviceName}/resetPassword';
 
 type PathsVeeamCloudConnectDELETE = '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}';
 

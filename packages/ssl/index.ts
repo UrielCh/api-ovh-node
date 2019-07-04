@@ -76,32 +76,32 @@ export namespace ssl {
 // path /ssl
 export interface Ssl {
     // GET /ssl
-    GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
     [keys: string]: {
         // GET /ssl/{serviceName}
-        GET(): Promise<ssl.Certificate>;
-        serviceInfos:  {
-            // GET /ssl/{serviceName}/serviceInfos
-            GET(): Promise<services.Service>;
-            // PUT /ssl/{serviceName}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
-        }
+        $get(): Promise<ssl.Certificate>;
         tasks:  {
             // GET /ssl/{serviceName}/tasks
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             [keys: string]: {
                 // GET /ssl/{serviceName}/tasks/{taskId}
-                GET(): Promise<ssl.Operation>;
+                $get(): Promise<ssl.Operation>;
             } | any
+        }
+        serviceInfos:  {
+            // GET /ssl/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /ssl/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
         }
     } | any
 }
 // Api
-type PathsSslGET = '/ssl/{serviceName}/serviceInfos' |
-  '/ssl/{serviceName}' |
-  '/ssl/{serviceName}/tasks/{taskId}' |
+type PathsSslGET = '/ssl' |
   '/ssl/{serviceName}/tasks' |
-  '/ssl';
+  '/ssl/{serviceName}/tasks/{taskId}' |
+  '/ssl/{serviceName}' |
+  '/ssl/{serviceName}/serviceInfos';
 
 type PathsSslPUT = '/ssl/{serviceName}/serviceInfos';
 

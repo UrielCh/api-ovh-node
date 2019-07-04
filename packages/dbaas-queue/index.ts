@@ -121,71 +121,71 @@ export namespace services {
 export interface Dbaas {
     queue:  {
         // GET /dbaas/queue
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /dbaas/queue/{serviceName}
-            GET(): Promise<dbaas.queue.App>;
+            $get(): Promise<dbaas.queue.App>;
             // PUT /dbaas/queue/{serviceName}
-            PUT(body?: {name: string}): Promise<dbaas.queue.App>;
-            role:  {
-                // GET /dbaas/queue/{serviceName}/role
-                GET(): Promise<string[]>;
+            $put(body?: {name: string}): Promise<dbaas.queue.App>;
+            metrics:  {
+                account:  {
+                    // GET /dbaas/queue/{serviceName}/metrics/account
+                    $get(): Promise<dbaas.queue.MetricsAccount>;
+                }
+            }
+            topic:  {
+                // GET /dbaas/queue/{serviceName}/topic
+                $get(): Promise<string[]>;
                 [keys: string]: {
-                    // GET /dbaas/queue/{serviceName}/role/{roleName}
-                    GET(): Promise<dbaas.queue.Role>;
+                    // GET /dbaas/queue/{serviceName}/topic/{topicId}
+                    $get(): Promise<dbaas.queue.Topic>;
+                    // DELETE /dbaas/queue/{serviceName}/topic/{topicId}
+                    $delete(): Promise<void>;
                 } | any
             }
             key:  {
                 // GET /dbaas/queue/{serviceName}/key
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /dbaas/queue/{serviceName}/key/{keyId}
-                    GET(): Promise<dbaas.queue.Key>;
+                    $get(): Promise<dbaas.queue.Key>;
+                } | any
+            }
+            role:  {
+                // GET /dbaas/queue/{serviceName}/role
+                $get(): Promise<string[]>;
+                [keys: string]: {
+                    // GET /dbaas/queue/{serviceName}/role/{roleName}
+                    $get(): Promise<dbaas.queue.Role>;
                 } | any
             }
             serviceInfos:  {
                 // GET /dbaas/queue/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
+                $get(): Promise<services.Service>;
                 // PUT /dbaas/queue/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
-            }
-            topic:  {
-                // GET /dbaas/queue/{serviceName}/topic
-                GET(): Promise<string[]>;
-                [keys: string]: {
-                    // GET /dbaas/queue/{serviceName}/topic/{topicId}
-                    GET(): Promise<dbaas.queue.Topic>;
-                    // DELETE /dbaas/queue/{serviceName}/topic/{topicId}
-                    DELETE(): Promise<void>;
-                } | any
-            }
-            metrics:  {
-                account:  {
-                    // GET /dbaas/queue/{serviceName}/metrics/account
-                    GET(): Promise<dbaas.queue.MetricsAccount>;
-                }
+                $put(body?: {body: services.Service}): Promise<void>;
             }
             region:  {
                 // GET /dbaas/queue/{serviceName}/region
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /dbaas/queue/{serviceName}/region/{regionId}
-                    GET(): Promise<dbaas.queue.Region>;
+                    $get(): Promise<dbaas.queue.Region>;
                 } | any
             }
             user:  {
                 // GET /dbaas/queue/{serviceName}/user
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /dbaas/queue/{serviceName}/user/{userId}
-                    GET(): Promise<dbaas.queue.User>;
+                    $get(): Promise<dbaas.queue.User>;
                     changePassword:  {
                         // POST /dbaas/queue/{serviceName}/user/{userId}/changePassword
-                        POST(): Promise<dbaas.queue.UserWithPassword>;
+                        $post(): Promise<dbaas.queue.UserWithPassword>;
                     }
                     roles:  {
                         // GET /dbaas/queue/{serviceName}/user/{userId}/roles
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                     }
                 } | any
             }
@@ -193,19 +193,19 @@ export interface Dbaas {
     }
 }
 // Api
-type PathsDbaasQueueGET = '/dbaas/queue/{serviceName}/role/{roleName}' |
-  '/dbaas/queue/{serviceName}/role' |
-  '/dbaas/queue/{serviceName}/key/{keyId}' |
-  '/dbaas/queue/{serviceName}/key' |
-  '/dbaas/queue/{serviceName}/serviceInfos' |
+type PathsDbaasQueueGET = '/dbaas/queue/{serviceName}/metrics/account' |
   '/dbaas/queue/{serviceName}/topic/{topicId}' |
   '/dbaas/queue/{serviceName}/topic' |
-  '/dbaas/queue/{serviceName}/metrics/account' |
-  '/dbaas/queue/{serviceName}/region/{regionId}' |
+  '/dbaas/queue/{serviceName}/key/{keyId}' |
+  '/dbaas/queue/{serviceName}/key' |
+  '/dbaas/queue/{serviceName}/role/{roleName}' |
+  '/dbaas/queue/{serviceName}/role' |
+  '/dbaas/queue/{serviceName}/serviceInfos' |
   '/dbaas/queue/{serviceName}/region' |
-  '/dbaas/queue/{serviceName}/user' |
+  '/dbaas/queue/{serviceName}/region/{regionId}' |
   '/dbaas/queue/{serviceName}/user/{userId}' |
   '/dbaas/queue/{serviceName}/user/{userId}/roles' |
+  '/dbaas/queue/{serviceName}/user' |
   '/dbaas/queue/{serviceName}' |
   '/dbaas/queue';
 

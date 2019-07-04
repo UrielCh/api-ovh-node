@@ -70,31 +70,31 @@ export namespace services {
 export interface Cdn {
     webstorage:  {
         // GET /cdn/webstorage
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /cdn/webstorage/{serviceName}
-            GET(): Promise<cdn.webstorage.Account>;
-            statistics:  {
-                // GET /cdn/webstorage/{serviceName}/statistics
-                GET(param?: {type: cdn.webstorage.StatsTypeEnum, period: cdn.webstorage.StatsPeriodEnum}): Promise<cdn.webstorage.StatsDataType[]>;
-            }
+            $get(): Promise<cdn.webstorage.Account>;
             serviceInfos:  {
                 // GET /cdn/webstorage/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
+                $get(): Promise<services.Service>;
                 // PUT /cdn/webstorage/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
+            statistics:  {
+                // GET /cdn/webstorage/{serviceName}/statistics
+                $get(param?: {period: cdn.webstorage.StatsPeriodEnum, type: cdn.webstorage.StatsTypeEnum}): Promise<cdn.webstorage.StatsDataType[]>;
             }
             credentials:  {
                 // GET /cdn/webstorage/{serviceName}/credentials
-                GET(): Promise<cdn.webstorage.AccountCredentials>;
+                $get(): Promise<cdn.webstorage.AccountCredentials>;
             }
         } | any
     }
 }
 // Api
-type PathsCdnWebstorageGET = '/cdn/webstorage/{serviceName}' |
+type PathsCdnWebstorageGET = '/cdn/webstorage/{serviceName}/serviceInfos' |
   '/cdn/webstorage/{serviceName}/statistics' |
-  '/cdn/webstorage/{serviceName}/serviceInfos' |
+  '/cdn/webstorage/{serviceName}' |
   '/cdn/webstorage/{serviceName}/credentials' |
   '/cdn/webstorage';
 

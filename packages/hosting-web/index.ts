@@ -803,655 +803,655 @@ export namespace services {
 export interface Hosting {
     web:  {
         // GET /hosting/web
-        GET(): Promise<string[]>;
-        incident:  {
-            // GET /hosting/web/incident
-            GET(): Promise<string[]>;
-        }
-        availableOffer:  {
-            // GET /hosting/web/availableOffer
-            GET(param?: {domain: string}): Promise<hosting.web.OfferEnum[]>;
+        $get(): Promise<string[]>;
+        localSeo:  {
+            emailAvailability:  {
+                // GET /hosting/web/localSeo/emailAvailability
+                $get(param?: {email: string}): Promise<hosting.web.localSeo.EmailAvailability>;
+            }
+            visibilityCheck:  {
+                // POST /hosting/web/localSeo/visibilityCheck
+                $post(body?: {country: hosting.web.localSeo.location.CountryEnum, name: string, street: string, zip: string}): Promise<hosting.web.localSeo.VisibilityCheckResponse>;
+            }
+            visibilityCheckResult:  {
+                // GET /hosting/web/localSeo/visibilityCheckResult
+                $get(param?: {id: number, directory: string, token: string}): Promise<hosting.web.localSeo.VisibilityCheckResultResponse[]>;
+            }
+            directoriesList:  {
+                // GET /hosting/web/localSeo/directoriesList
+                $get(param?: {country: hosting.web.localSeo.location.CountryEnum, offer: hosting.web.localSeo.location.OfferEnum}): Promise<hosting.web.localSeo.DirectoriesList>;
+            }
         }
         [keys: string]: {
             // GET /hosting/web/{serviceName}
-            GET(): Promise<hosting.web.Service>;
+            $get(): Promise<hosting.web.Service>;
             // PUT /hosting/web/{serviceName}
-            PUT(body?: {body: hosting.web.Service}): Promise<void>;
-            restoreSnapshot:  {
-                // POST /hosting/web/{serviceName}/restoreSnapshot
-                POST(body?: {backup: hosting.web.backup.TypeEnum}): Promise<hosting.web.task>;
+            $put(body?: {body: hosting.web.Service}): Promise<void>;
+            privateDatabases:  {
+                // GET /hosting/web/{serviceName}/privateDatabases
+                $get(): Promise<string[]>;
+            }
+            extraSqlPerso:  {
+                // GET /hosting/web/{serviceName}/extraSqlPerso
+                $get(): Promise<string[]>;
+                [keys: string]: {
+                    // GET /hosting/web/{serviceName}/extraSqlPerso/{name}
+                    $get(): Promise<hosting.web.extrasqlperso>;
+                    terminate:  {
+                        // POST /hosting/web/{serviceName}/extraSqlPerso/{name}/terminate
+                        $post(): Promise<string>;
+                    }
+                    serviceInfos:  {
+                        // GET /hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfos
+                        $get(): Promise<services.Service>;
+                    }
+                    databases:  {
+                        // GET /hosting/web/{serviceName}/extraSqlPerso/{name}/databases
+                        $get(): Promise<string[]>;
+                    }
+                    serviceInfosUpdate:  {
+                        // POST /hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate
+                        $post(body?: {renew: service.RenewType}): Promise<void>;
+                    }
+                } | any
             }
             request:  {
                 // POST /hosting/web/{serviceName}/request
-                POST(body?: {action: hosting.web.RequestActionEnum}): Promise<hosting.web.task>;
+                $post(body?: {action: hosting.web.RequestActionEnum}): Promise<hosting.web.task>;
+            }
+            ownLogs:  {
+                // GET /hosting/web/{serviceName}/ownLogs
+                $get(): Promise<number[]>;
+                [keys: string]: {
+                    // GET /hosting/web/{serviceName}/ownLogs/{id}
+                    $get(): Promise<hosting.web.ownLogs>;
+                    userLogs:  {
+                        // GET /hosting/web/{serviceName}/ownLogs/{id}/userLogs
+                        $get(param?: {login?: string}): Promise<string[]>;
+                        // POST /hosting/web/{serviceName}/ownLogs/{id}/userLogs
+                        $post(body?: {description: string, login: string, ownLogsId?: number, password: string}): Promise<string>;
+                        [keys: string]: {
+                            // GET /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
+                            $get(): Promise<hosting.web.userLogs>;
+                            // PUT /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
+                            $put(body?: {body: hosting.web.userLogs}): Promise<void>;
+                            // DELETE /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
+                            $delete(): Promise<string>;
+                            changePassword:  {
+                                // POST /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword
+                                $post(body?: {password: string}): Promise<string>;
+                            }
+                        } | any
+                    }
+                } | any
+            }
+            localSeo:  {
+                location:  {
+                    // GET /hosting/web/{serviceName}/localSeo/location
+                    $get(): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /hosting/web/{serviceName}/localSeo/location/{id}
+                        $get(): Promise<hosting.web.localSeo_location>;
+                        serviceInfosUpdate:  {
+                            // POST /hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate
+                            $post(body?: {renew: service.RenewType}): Promise<void>;
+                        }
+                        serviceInfos:  {
+                            // GET /hosting/web/{serviceName}/localSeo/location/{id}/serviceInfos
+                            $get(): Promise<services.Service>;
+                        }
+                        terminate:  {
+                            // POST /hosting/web/{serviceName}/localSeo/location/{id}/terminate
+                            $post(): Promise<string>;
+                        }
+                    } | any
+                }
+                emailAvailability:  {
+                    // GET /hosting/web/{serviceName}/localSeo/emailAvailability
+                    $get(param?: {email: string}): Promise<hosting.web.localSeo.EmailAvailability>;
+                }
+                account:  {
+                    // GET /hosting/web/{serviceName}/localSeo/account
+                    $get(param?: {email?: string}): Promise<number[]>;
+                    [keys: string]: {
+                        // GET /hosting/web/{serviceName}/localSeo/account/{id}
+                        $get(): Promise<hosting.web.localSeo_account>;
+                        login:  {
+                            // POST /hosting/web/{serviceName}/localSeo/account/{id}/login
+                            $post(): Promise<string>;
+                        }
+                    } | any
+                }
+            }
+            module:  {
+                // GET /hosting/web/{serviceName}/module
+                $get(): Promise<number[]>;
+                // POST /hosting/web/{serviceName}/module
+                $post(body?: {adminName?: string, adminPassword?: string, dependencies?: hosting.web.module.DependencyType[], domain?: string, language?: hosting.web.module.LanguageEnum, moduleId: number, path?: string}): Promise<hosting.web.task>;
+                [keys: string]: {
+                    // GET /hosting/web/{serviceName}/module/{id}
+                    $get(): Promise<hosting.web.module>;
+                    // DELETE /hosting/web/{serviceName}/module/{id}
+                    $delete(): Promise<hosting.web.task>;
+                    changePassword:  {
+                        // POST /hosting/web/{serviceName}/module/{id}/changePassword
+                        $post(): Promise<hosting.web.task>;
+                    }
+                } | any
+            }
+            databaseAvailableVersion:  {
+                // GET /hosting/web/{serviceName}/databaseAvailableVersion
+                $get(param?: {type: hosting.web.database.DatabaseTypeEnum}): Promise<hosting.web.database.AvailableVersionStruct>;
             }
             activatePrivateDatabase:  {
                 // POST /hosting/web/{serviceName}/activatePrivateDatabase
-                POST(body?: {ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum}): Promise<hosting.web.task>;
+                $post(body?: {ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum}): Promise<hosting.web.task>;
             }
-            dump:  {
-                // GET /hosting/web/{serviceName}/dump
-                GET(param?: {deletionDate?: string, databaseName?: string, orphan?: boolean, creationDate?: string}): Promise<number[]>;
+            restoreSnapshot:  {
+                // POST /hosting/web/{serviceName}/restoreSnapshot
+                $post(body?: {backup: hosting.web.backup.TypeEnum}): Promise<hosting.web.task>;
+            }
+            requestBoost:  {
+                // POST /hosting/web/{serviceName}/requestBoost
+                $post(body?: {offer?: hosting.web.OfferEnum}): Promise<hosting.web.task>;
+            }
+            attachedDomain:  {
+                // GET /hosting/web/{serviceName}/attachedDomain
+                $get(param?: {domain?: string, path?: string}): Promise<string[]>;
+                // POST /hosting/web/{serviceName}/attachedDomain
+                $post(body?: {cdn?: hosting.web.attachedDomain.CdnEnum, domain: string, firewall?: hosting.web.attachedDomain.FirewallEnum, ownLog?: string, path: string, runtimeId?: number, ssl?: boolean}): Promise<hosting.web.task>;
                 [keys: string]: {
-                    // GET /hosting/web/{serviceName}/dump/{id}
-                    GET(): Promise<hosting.web.dump>;
-                    // DELETE /hosting/web/{serviceName}/dump/{id}
-                    DELETE(): Promise<hosting.web.task>;
+                    // GET /hosting/web/{serviceName}/attachedDomain/{domain}
+                    $get(): Promise<hosting.web.attachedDomain>;
+                    // PUT /hosting/web/{serviceName}/attachedDomain/{domain}
+                    $put(body?: {body: hosting.web.attachedDomain}): Promise<void>;
+                    // DELETE /hosting/web/{serviceName}/attachedDomain/{domain}
+                    $delete(): Promise<hosting.web.task>;
+                    purgeCache:  {
+                        // POST /hosting/web/{serviceName}/attachedDomain/{domain}/purgeCache
+                        $post(): Promise<hosting.web.task>;
+                    }
+                    restart:  {
+                        // POST /hosting/web/{serviceName}/attachedDomain/{domain}/restart
+                        $post(): Promise<hosting.web.task>;
+                    }
                 } | any
+            }
+            userLogsToken:  {
+                // GET /hosting/web/{serviceName}/userLogsToken
+                $get(param?: {attachedDomain?: string, remoteCheck?: boolean, ttl?: number}): Promise<string>;
+            }
+            token:  {
+                // GET /hosting/web/{serviceName}/token
+                $get(): Promise<string>;
+            }
+            runtimeAvailableTypes:  {
+                // GET /hosting/web/{serviceName}/runtimeAvailableTypes
+                $get(param?: {language?: string}): Promise<hosting.web.runtime.TypeEnum[]>;
             }
             userLogs:  {
                 // GET /hosting/web/{serviceName}/userLogs
-                GET(param?: {login?: string}): Promise<string[]>;
+                $get(param?: {login?: string}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/userLogs
-                POST(body?: {ownLogsId?: number, description: string, login: string, password: string}): Promise<string>;
+                $post(body?: {description: string, login: string, ownLogsId?: number, password: string}): Promise<string>;
                 [keys: string]: {
                     // GET /hosting/web/{serviceName}/userLogs/{login}
-                    GET(): Promise<hosting.web.userLogs>;
+                    $get(): Promise<hosting.web.userLogs>;
                     // PUT /hosting/web/{serviceName}/userLogs/{login}
-                    PUT(body?: {body: hosting.web.userLogs}): Promise<void>;
+                    $put(body?: {body: hosting.web.userLogs}): Promise<void>;
                     // DELETE /hosting/web/{serviceName}/userLogs/{login}
-                    DELETE(): Promise<string>;
+                    $delete(): Promise<string>;
                     changePassword:  {
                         // POST /hosting/web/{serviceName}/userLogs/{login}/changePassword
-                        POST(body?: {password: string}): Promise<string>;
+                        $post(body?: {password: string}): Promise<string>;
                     }
                 } | any
             }
             statistics:  {
                 // GET /hosting/web/{serviceName}/statistics
-                GET(param?: {type: hosting.web.StatisticsTypeEnum, period: hosting.web.StatisticsPeriodEnum}): Promise<complexType.ChartSerie<complexType.ChartTimestampValue>[]>;
-            }
-            module:  {
-                // GET /hosting/web/{serviceName}/module
-                GET(): Promise<number[]>;
-                // POST /hosting/web/{serviceName}/module
-                POST(body?: {domain?: string, language?: hosting.web.module.LanguageEnum, path?: string, adminName?: string, adminPassword?: string, dependencies?: hosting.web.module.DependencyType[], moduleId: number}): Promise<hosting.web.task>;
-                [keys: string]: {
-                    // GET /hosting/web/{serviceName}/module/{id}
-                    GET(): Promise<hosting.web.module>;
-                    // DELETE /hosting/web/{serviceName}/module/{id}
-                    DELETE(): Promise<hosting.web.task>;
-                    changePassword:  {
-                        // POST /hosting/web/{serviceName}/module/{id}/changePassword
-                        POST(): Promise<hosting.web.task>;
-                    }
-                } | any
-            }
-            tasks:  {
-                // GET /hosting/web/{serviceName}/tasks
-                GET(param?: {status?: hosting.web.task.StatusEnum, function_?: string}): Promise<number[]>;
-                [keys: string]: {
-                    // GET /hosting/web/{serviceName}/tasks/{id}
-                    GET(): Promise<hosting.web.task>;
-                } | any
-            }
-            freedom:  {
-                // GET /hosting/web/{serviceName}/freedom
-                GET(param?: {status?: hosting.web.freedom.StatusEnum}): Promise<string[]>;
-                [keys: string]: {
-                    // GET /hosting/web/{serviceName}/freedom/{domain}
-                    GET(): Promise<hosting.web.freedom>;
-                    // DELETE /hosting/web/{serviceName}/freedom/{domain}
-                    DELETE(): Promise<void>;
-                } | any
-            }
-            ssl:  {
-                // GET /hosting/web/{serviceName}/ssl
-                GET(): Promise<hosting.web.ssl>;
-                // POST /hosting/web/{serviceName}/ssl
-                POST(body?: {certificate?: string, chain?: string, key?: string}): Promise<hosting.web.ssl>;
-                // DELETE /hosting/web/{serviceName}/ssl
-                DELETE(): Promise<hosting.web.ssl>;
-                domains:  {
-                    // GET /hosting/web/{serviceName}/ssl/domains
-                    GET(): Promise<string[]>;
-                }
-                report:  {
-                    // GET /hosting/web/{serviceName}/ssl/report
-                    GET(): Promise<hosting.web.ssl_report>;
-                }
-                regenerate:  {
-                    // POST /hosting/web/{serviceName}/ssl/regenerate
-                    POST(): Promise<hosting.web.ssl>;
-                }
-            }
-            ownLogs:  {
-                // GET /hosting/web/{serviceName}/ownLogs
-                GET(): Promise<number[]>;
-                [keys: string]: {
-                    // GET /hosting/web/{serviceName}/ownLogs/{id}
-                    GET(): Promise<hosting.web.ownLogs>;
-                    userLogs:  {
-                        // GET /hosting/web/{serviceName}/ownLogs/{id}/userLogs
-                        GET(param?: {login?: string}): Promise<string[]>;
-                        // POST /hosting/web/{serviceName}/ownLogs/{id}/userLogs
-                        POST(body?: {ownLogsId?: number, description: string, login: string, password: string}): Promise<string>;
-                        [keys: string]: {
-                            // GET /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
-                            GET(): Promise<hosting.web.userLogs>;
-                            // PUT /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
-                            PUT(body?: {body: hosting.web.userLogs}): Promise<void>;
-                            // DELETE /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
-                            DELETE(): Promise<string>;
-                            changePassword:  {
-                                // POST /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword
-                                POST(body?: {password: string}): Promise<string>;
-                            }
-                        } | any
-                    }
-                } | any
+                $get(param?: {type: hosting.web.StatisticsTypeEnum, period: hosting.web.StatisticsPeriodEnum}): Promise<complexType.ChartSerie<complexType.ChartTimestampValue>[]>;
             }
             email:  {
                 // GET /hosting/web/{serviceName}/email
-                GET(): Promise<hosting.web.email>;
+                $get(): Promise<hosting.web.email>;
                 // PUT /hosting/web/{serviceName}/email
-                PUT(body?: {body: hosting.web.email}): Promise<void>;
-                request:  {
-                    // POST /hosting/web/{serviceName}/email/request
-                    POST(body?: {action: hosting.web.mail.ActionEnum}): Promise<string>;
-                }
+                $put(body?: {body: hosting.web.email}): Promise<void>;
                 bounces:  {
                     // GET /hosting/web/{serviceName}/email/bounces
-                    GET(param?: {limit: number}): Promise<hosting.web.mail.Bounce[]>;
+                    $get(param?: {limit: number}): Promise<hosting.web.mail.Bounce[]>;
+                }
+                request:  {
+                    // POST /hosting/web/{serviceName}/email/request
+                    $post(body?: {action: hosting.web.mail.ActionEnum}): Promise<string>;
                 }
                 volumes:  {
                     // GET /hosting/web/{serviceName}/email/volumes
-                    GET(): Promise<hosting.web.mail.VolumeHistory[]>;
+                    $get(): Promise<hosting.web.mail.VolumeHistory[]>;
                 }
-            }
-            privateDatabaseCreationCapabilities:  {
-                // GET /hosting/web/{serviceName}/privateDatabaseCreationCapabilities
-                GET(): Promise<hosting.web.database.CreationDatabaseCapabilities[]>;
-            }
-            ovhConfig:  {
-                // GET /hosting/web/{serviceName}/ovhConfig
-                GET(param?: {path?: string, historical?: boolean}): Promise<number[]>;
-                [keys: string]: {
-                    // GET /hosting/web/{serviceName}/ovhConfig/{id}
-                    GET(): Promise<hosting.web.ovhConfig>;
-                    rollback:  {
-                        // POST /hosting/web/{serviceName}/ovhConfig/{id}/rollback
-                        POST(body?: {rollbackId: number}): Promise<hosting.web.task>;
-                    }
-                    changeConfiguration:  {
-                        // POST /hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration
-                        POST(body?: {container?: hosting.web.ovhconfig.ContainerEnum, engineName?: hosting.web.ovhConfig.EngineNameEnum, engineVersion?: hosting.web.ovhConfig.AvailableEngineVersionEnum, environment?: hosting.web.ovhConfig.EnvironmentEnum, httpFirewall?: hosting.web.ovhConfig.HttpFirewallEnum}): Promise<hosting.web.task>;
-                    }
-                } | any
-            }
-            privateDatabases:  {
-                // GET /hosting/web/{serviceName}/privateDatabases
-                GET(): Promise<string[]>;
-            }
-            user:  {
-                // GET /hosting/web/{serviceName}/user
-                GET(param?: {home?: string, login?: string}): Promise<string[]>;
-                // POST /hosting/web/{serviceName}/user
-                POST(body?: {sshState?: hosting.web.user.SshStateEnum, login: string, password: string, home: string}): Promise<hosting.web.task>;
-                [keys: string]: {
-                    // GET /hosting/web/{serviceName}/user/{login}
-                    GET(): Promise<hosting.web.user>;
-                    // PUT /hosting/web/{serviceName}/user/{login}
-                    PUT(body?: {body: hosting.web.user}): Promise<void>;
-                    // DELETE /hosting/web/{serviceName}/user/{login}
-                    DELETE(): Promise<hosting.web.task>;
-                    changePassword:  {
-                        // POST /hosting/web/{serviceName}/user/{login}/changePassword
-                        POST(body?: {password: string}): Promise<hosting.web.task>;
-                    }
-                } | any
-            }
-            token:  {
-                // GET /hosting/web/{serviceName}/token
-                GET(): Promise<string>;
-            }
-            ovhConfigRefresh:  {
-                // POST /hosting/web/{serviceName}/ovhConfigRefresh
-                POST(): Promise<hosting.web.task>;
             }
             databaseCreationCapabilities:  {
                 // GET /hosting/web/{serviceName}/databaseCreationCapabilities
-                GET(): Promise<hosting.web.database.CreationDatabaseCapabilities[]>;
+                $get(): Promise<hosting.web.database.CreationDatabaseCapabilities[]>;
             }
-            confirmTermination:  {
-                // POST /hosting/web/{serviceName}/confirmTermination
-                POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
-            }
-            requestBoost:  {
-                // POST /hosting/web/{serviceName}/requestBoost
-                POST(body?: {offer?: hosting.web.OfferEnum}): Promise<hosting.web.task>;
-            }
-            database:  {
-                // GET /hosting/web/{serviceName}/database
-                GET(param?: {type?: hosting.web.database.DatabaseTypeEnum, user?: string, server?: string, name?: string, mode?: hosting.web.database.ModeEnum}): Promise<string[]>;
-                // POST /hosting/web/{serviceName}/database
-                POST(body?: {version?: hosting.web.database.VersionEnum, quota?: hosting.web.database.ExtraSqlQuotaEnum, capabilitie: hosting.web.database.DatabaseCapabilitiesTypeEnum, password?: string, user: string, type: hosting.web.database.DatabaseTypeEnum}): Promise<hosting.web.task>;
+            tasks:  {
+                // GET /hosting/web/{serviceName}/tasks
+                $get(param?: {function_?: string, status?: hosting.web.task.StatusEnum}): Promise<number[]>;
                 [keys: string]: {
-                    // GET /hosting/web/{serviceName}/database/{name}
-                    GET(): Promise<hosting.web.database>;
-                    // DELETE /hosting/web/{serviceName}/database/{name}
-                    DELETE(): Promise<hosting.web.task>;
-                    dump:  {
-                        // GET /hosting/web/{serviceName}/database/{name}/dump
-                        GET(param?: {deletionDate?: string, creationDate?: string, type?: hosting.web.database.dump.DateEnum}): Promise<number[]>;
-                        // POST /hosting/web/{serviceName}/database/{name}/dump
-                        POST(body?: {date: hosting.web.database.dump.DateEnum, sendEmail?: boolean}): Promise<hosting.web.task>;
-                        [keys: string]: {
-                            // GET /hosting/web/{serviceName}/database/{name}/dump/{id}
-                            GET(): Promise<hosting.web.database_dump>;
-                            // DELETE /hosting/web/{serviceName}/database/{name}/dump/{id}
-                            DELETE(): Promise<hosting.web.task>;
-                            restore:  {
-                                // POST /hosting/web/{serviceName}/database/{name}/dump/{id}/restore
-                                POST(): Promise<hosting.web.task>;
-                            }
-                        } | any
-                    }
+                    // GET /hosting/web/{serviceName}/tasks/{id}
+                    $get(): Promise<hosting.web.task>;
+                } | any
+            }
+            databaseAvailableType:  {
+                // GET /hosting/web/{serviceName}/databaseAvailableType
+                $get(): Promise<hosting.web.database.DatabaseTypeEnum[]>;
+            }
+            indy:  {
+                // GET /hosting/web/{serviceName}/indy
+                $get(param?: {login?: string}): Promise<string[]>;
+                [keys: string]: {
+                    // GET /hosting/web/{serviceName}/indy/{login}
+                    $get(): Promise<hosting.web.indy>;
+                } | any
+            }
+            changeContact:  {
+                // POST /hosting/web/{serviceName}/changeContact
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            }
+            user:  {
+                // GET /hosting/web/{serviceName}/user
+                $get(param?: {login?: string, home?: string}): Promise<string[]>;
+                // POST /hosting/web/{serviceName}/user
+                $post(body?: {home: string, login: string, password: string, sshState?: hosting.web.user.SshStateEnum}): Promise<hosting.web.task>;
+                [keys: string]: {
+                    // GET /hosting/web/{serviceName}/user/{login}
+                    $get(): Promise<hosting.web.user>;
+                    // PUT /hosting/web/{serviceName}/user/{login}
+                    $put(body?: {body: hosting.web.user}): Promise<void>;
+                    // DELETE /hosting/web/{serviceName}/user/{login}
+                    $delete(): Promise<hosting.web.task>;
                     changePassword:  {
-                        // POST /hosting/web/{serviceName}/database/{name}/changePassword
-                        POST(body?: {password: string}): Promise<hosting.web.task>;
-                    }
-                    request:  {
-                        // POST /hosting/web/{serviceName}/database/{name}/request
-                        POST(body?: {action: hosting.web.database.RequestActionEnum}): Promise<hosting.web.task>;
-                    }
-                    import:  {
-                        // POST /hosting/web/{serviceName}/database/{name}/import
-                        POST(body?: {sendEmail?: boolean, flushDatabase?: boolean, documentId: string}): Promise<hosting.web.task>;
-                    }
-                    capabilities:  {
-                        // GET /hosting/web/{serviceName}/database/{name}/capabilities
-                        GET(): Promise<hosting.web.database.DatabaseCapabilities>;
-                    }
-                    restore:  {
-                        // POST /hosting/web/{serviceName}/database/{name}/restore
-                        POST(body?: {date: hosting.web.database.dump.DateEnum, sendEmail?: boolean}): Promise<hosting.web.task>;
-                    }
-                    statistics:  {
-                        // GET /hosting/web/{serviceName}/database/{name}/statistics
-                        GET(param?: {type: hosting.web.database.StatisticsTypeEnum, period: hosting.web.StatisticsPeriodEnum}): Promise<complexType.ChartSerie<complexType.ChartTimestampValue>[]>;
+                        // POST /hosting/web/{serviceName}/user/{login}/changePassword
+                        $post(body?: {password: string}): Promise<hosting.web.task>;
                     }
                 } | any
             }
             boostHistory:  {
                 // GET /hosting/web/{serviceName}/boostHistory
-                GET(param?: {date?: string}): Promise<string[]>;
+                $get(param?: {date?: string}): Promise<string[]>;
                 [keys: string]: {
                     // GET /hosting/web/{serviceName}/boostHistory/{date}
-                    GET(): Promise<hosting.web.boostHistory>;
+                    $get(): Promise<hosting.web.boostHistory>;
                 } | any
             }
-            runtime:  {
-                // GET /hosting/web/{serviceName}/runtime
-                GET(param?: {type?: hosting.web.runtime.TypeEnum, name?: string}): Promise<number[]>;
-                // POST /hosting/web/{serviceName}/runtime
-                POST(body?: {type?: hosting.web.runtime.TypeEnum, appBootstrap?: string, appEnv?: hosting.web.runtime.EnvEnum, name?: string, publicDir?: string, isDefault?: boolean, attachedDomains?: string[]}): Promise<hosting.web.task>;
+            freedom:  {
+                // GET /hosting/web/{serviceName}/freedom
+                $get(param?: {status?: hosting.web.freedom.StatusEnum}): Promise<string[]>;
                 [keys: string]: {
-                    // GET /hosting/web/{serviceName}/runtime/{id}
-                    GET(): Promise<hosting.web.runtime>;
-                    // PUT /hosting/web/{serviceName}/runtime/{id}
-                    PUT(body?: {body: hosting.web.runtime}): Promise<void>;
-                    // DELETE /hosting/web/{serviceName}/runtime/{id}
-                    DELETE(): Promise<hosting.web.task>;
-                    attachedDomains:  {
-                        // GET /hosting/web/{serviceName}/runtime/{id}/attachedDomains
-                        GET(): Promise<string[]>;
+                    // GET /hosting/web/{serviceName}/freedom/{domain}
+                    $get(): Promise<hosting.web.freedom>;
+                    // DELETE /hosting/web/{serviceName}/freedom/{domain}
+                    $delete(): Promise<void>;
+                } | any
+            }
+            confirmTermination:  {
+                // POST /hosting/web/{serviceName}/confirmTermination
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            }
+            cron:  {
+                // GET /hosting/web/{serviceName}/cron
+                $get(param?: {email?: string, language?: hosting.web.cron.LanguageEnum, command?: string, description?: string}): Promise<number[]>;
+                // POST /hosting/web/{serviceName}/cron
+                $post(body?: {command: string, description?: string, email?: string, frequency: string, language: hosting.web.cron.LanguageEnum, status?: hosting.web.cron.StatusEnum}): Promise<string>;
+                [keys: string]: {
+                    // GET /hosting/web/{serviceName}/cron/{id}
+                    $get(): Promise<hosting.web.cron>;
+                    // PUT /hosting/web/{serviceName}/cron/{id}
+                    $put(body?: {body: hosting.web.cron}): Promise<void>;
+                    // DELETE /hosting/web/{serviceName}/cron/{id}
+                    $delete(): Promise<string>;
+                } | any
+            }
+            ovhConfig:  {
+                // GET /hosting/web/{serviceName}/ovhConfig
+                $get(param?: {historical?: boolean, path?: string}): Promise<number[]>;
+                [keys: string]: {
+                    // GET /hosting/web/{serviceName}/ovhConfig/{id}
+                    $get(): Promise<hosting.web.ovhConfig>;
+                    rollback:  {
+                        // POST /hosting/web/{serviceName}/ovhConfig/{id}/rollback
+                        $post(body?: {rollbackId: number}): Promise<hosting.web.task>;
                     }
+                    changeConfiguration:  {
+                        // POST /hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration
+                        $post(body?: {container?: hosting.web.ovhconfig.ContainerEnum, engineName?: hosting.web.ovhConfig.EngineNameEnum, engineVersion?: hosting.web.ovhConfig.AvailableEngineVersionEnum, environment?: hosting.web.ovhConfig.EnvironmentEnum, httpFirewall?: hosting.web.ovhConfig.HttpFirewallEnum}): Promise<hosting.web.task>;
+                    }
+                } | any
+            }
+            ssl:  {
+                // GET /hosting/web/{serviceName}/ssl
+                $get(): Promise<hosting.web.ssl>;
+                // POST /hosting/web/{serviceName}/ssl
+                $post(body?: {certificate?: string, chain?: string, key?: string}): Promise<hosting.web.ssl>;
+                // DELETE /hosting/web/{serviceName}/ssl
+                $delete(): Promise<hosting.web.ssl>;
+                domains:  {
+                    // GET /hosting/web/{serviceName}/ssl/domains
+                    $get(): Promise<string[]>;
+                }
+                regenerate:  {
+                    // POST /hosting/web/{serviceName}/ssl/regenerate
+                    $post(): Promise<hosting.web.ssl>;
+                }
+                report:  {
+                    // GET /hosting/web/{serviceName}/ssl/report
+                    $get(): Promise<hosting.web.ssl_report>;
+                }
+            }
+            envVar:  {
+                // GET /hosting/web/{serviceName}/envVar
+                $get(param?: {type?: hosting.web.envVar.TypeEnum}): Promise<string[]>;
+                // POST /hosting/web/{serviceName}/envVar
+                $post(body?: {key: string, type: hosting.web.envVar.TypeEnum, value: string}): Promise<hosting.web.task>;
+                [keys: string]: {
+                    // GET /hosting/web/{serviceName}/envVar/{key}
+                    $get(): Promise<hosting.web.envVar>;
+                    // PUT /hosting/web/{serviceName}/envVar/{key}
+                    $put(body?: {body: hosting.web.envVar}): Promise<void>;
+                    // DELETE /hosting/web/{serviceName}/envVar/{key}
+                    $delete(): Promise<hosting.web.task>;
                 } | any
             }
             serviceInfos:  {
                 // GET /hosting/web/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
+                $get(): Promise<services.Service>;
                 // PUT /hosting/web/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {body: services.Service}): Promise<void>;
             }
-            terminate:  {
-                // POST /hosting/web/{serviceName}/terminate
-                POST(): Promise<string>;
+            ovhConfigRefresh:  {
+                // POST /hosting/web/{serviceName}/ovhConfigRefresh
+                $post(): Promise<hosting.web.task>;
             }
             cdn:  {
                 // GET /hosting/web/{serviceName}/cdn
-                GET(): Promise<hosting.web.cdn>;
+                $get(): Promise<hosting.web.cdn>;
                 terminate:  {
                     // POST /hosting/web/{serviceName}/cdn/terminate
-                    POST(): Promise<string>;
+                    $post(): Promise<string>;
                 }
                 serviceInfosUpdate:  {
                     // POST /hosting/web/{serviceName}/cdn/serviceInfosUpdate
-                    POST(body?: {renew: service.RenewType}): Promise<void>;
+                    $post(body?: {renew: service.RenewType}): Promise<void>;
                 }
                 serviceInfos:  {
                     // GET /hosting/web/{serviceName}/cdn/serviceInfos
-                    GET(): Promise<services.Service>;
+                    $get(): Promise<services.Service>;
                 }
             }
-            attachedDomain:  {
-                // GET /hosting/web/{serviceName}/attachedDomain
-                GET(param?: {path?: string, domain?: string}): Promise<string[]>;
-                // POST /hosting/web/{serviceName}/attachedDomain
-                POST(body?: {cdn?: hosting.web.attachedDomain.CdnEnum, domain: string, ssl?: boolean, runtimeId?: number, ownLog?: string, firewall?: hosting.web.attachedDomain.FirewallEnum, path: string}): Promise<hosting.web.task>;
+            runtime:  {
+                // GET /hosting/web/{serviceName}/runtime
+                $get(param?: {name?: string, type?: hosting.web.runtime.TypeEnum}): Promise<number[]>;
+                // POST /hosting/web/{serviceName}/runtime
+                $post(body?: {appBootstrap?: string, appEnv?: hosting.web.runtime.EnvEnum, attachedDomains?: string[], isDefault?: boolean, name?: string, publicDir?: string, type?: hosting.web.runtime.TypeEnum}): Promise<hosting.web.task>;
                 [keys: string]: {
-                    // GET /hosting/web/{serviceName}/attachedDomain/{domain}
-                    GET(): Promise<hosting.web.attachedDomain>;
-                    // PUT /hosting/web/{serviceName}/attachedDomain/{domain}
-                    PUT(body?: {body: hosting.web.attachedDomain}): Promise<void>;
-                    // DELETE /hosting/web/{serviceName}/attachedDomain/{domain}
-                    DELETE(): Promise<hosting.web.task>;
-                    purgeCache:  {
-                        // POST /hosting/web/{serviceName}/attachedDomain/{domain}/purgeCache
-                        POST(): Promise<hosting.web.task>;
+                    // GET /hosting/web/{serviceName}/runtime/{id}
+                    $get(): Promise<hosting.web.runtime>;
+                    // PUT /hosting/web/{serviceName}/runtime/{id}
+                    $put(body?: {body: hosting.web.runtime}): Promise<void>;
+                    // DELETE /hosting/web/{serviceName}/runtime/{id}
+                    $delete(): Promise<hosting.web.task>;
+                    attachedDomains:  {
+                        // GET /hosting/web/{serviceName}/runtime/{id}/attachedDomains
+                        $get(): Promise<string[]>;
                     }
-                    restart:  {
-                        // POST /hosting/web/{serviceName}/attachedDomain/{domain}/restart
-                        POST(): Promise<hosting.web.task>;
+                } | any
+            }
+            privateDatabaseCreationCapabilities:  {
+                // GET /hosting/web/{serviceName}/privateDatabaseCreationCapabilities
+                $get(): Promise<hosting.web.database.CreationDatabaseCapabilities[]>;
+            }
+            dump:  {
+                // GET /hosting/web/{serviceName}/dump
+                $get(param?: {orphan?: boolean, deletionDate?: string, databaseName?: string, creationDate?: string}): Promise<number[]>;
+                [keys: string]: {
+                    // GET /hosting/web/{serviceName}/dump/{id}
+                    $get(): Promise<hosting.web.dump>;
+                    // DELETE /hosting/web/{serviceName}/dump/{id}
+                    $delete(): Promise<hosting.web.task>;
+                } | any
+            }
+            terminate:  {
+                // POST /hosting/web/{serviceName}/terminate
+                $post(): Promise<string>;
+            }
+            database:  {
+                // GET /hosting/web/{serviceName}/database
+                $get(param?: {mode?: hosting.web.database.ModeEnum, server?: string, user?: string, type?: hosting.web.database.DatabaseTypeEnum, name?: string}): Promise<string[]>;
+                // POST /hosting/web/{serviceName}/database
+                $post(body?: {capabilitie: hosting.web.database.DatabaseCapabilitiesTypeEnum, password?: string, quota?: hosting.web.database.ExtraSqlQuotaEnum, type: hosting.web.database.DatabaseTypeEnum, user: string, version?: hosting.web.database.VersionEnum}): Promise<hosting.web.task>;
+                [keys: string]: {
+                    // GET /hosting/web/{serviceName}/database/{name}
+                    $get(): Promise<hosting.web.database>;
+                    // DELETE /hosting/web/{serviceName}/database/{name}
+                    $delete(): Promise<hosting.web.task>;
+                    dump:  {
+                        // GET /hosting/web/{serviceName}/database/{name}/dump
+                        $get(param?: {deletionDate?: string, creationDate?: string, type?: hosting.web.database.dump.DateEnum}): Promise<number[]>;
+                        // POST /hosting/web/{serviceName}/database/{name}/dump
+                        $post(body?: {date: hosting.web.database.dump.DateEnum, sendEmail?: boolean}): Promise<hosting.web.task>;
+                        [keys: string]: {
+                            // GET /hosting/web/{serviceName}/database/{name}/dump/{id}
+                            $get(): Promise<hosting.web.database_dump>;
+                            // DELETE /hosting/web/{serviceName}/database/{name}/dump/{id}
+                            $delete(): Promise<hosting.web.task>;
+                            restore:  {
+                                // POST /hosting/web/{serviceName}/database/{name}/dump/{id}/restore
+                                $post(): Promise<hosting.web.task>;
+                            }
+                        } | any
+                    }
+                    capabilities:  {
+                        // GET /hosting/web/{serviceName}/database/{name}/capabilities
+                        $get(): Promise<hosting.web.database.DatabaseCapabilities>;
+                    }
+                    restore:  {
+                        // POST /hosting/web/{serviceName}/database/{name}/restore
+                        $post(body?: {date: hosting.web.database.dump.DateEnum, sendEmail?: boolean}): Promise<hosting.web.task>;
+                    }
+                    request:  {
+                        // POST /hosting/web/{serviceName}/database/{name}/request
+                        $post(body?: {action: hosting.web.database.RequestActionEnum}): Promise<hosting.web.task>;
+                    }
+                    changePassword:  {
+                        // POST /hosting/web/{serviceName}/database/{name}/changePassword
+                        $post(body?: {password: string}): Promise<hosting.web.task>;
+                    }
+                    statistics:  {
+                        // GET /hosting/web/{serviceName}/database/{name}/statistics
+                        $get(param?: {period: hosting.web.StatisticsPeriodEnum, type: hosting.web.database.StatisticsTypeEnum}): Promise<complexType.ChartSerie<complexType.ChartTimestampValue>[]>;
+                    }
+                    import:  {
+                        // POST /hosting/web/{serviceName}/database/{name}/import
+                        $post(body?: {documentId: string, flushDatabase?: boolean, sendEmail?: boolean}): Promise<hosting.web.task>;
                     }
                 } | any
             }
             cronAvailableLanguage:  {
                 // GET /hosting/web/{serviceName}/cronAvailableLanguage
-                GET(): Promise<hosting.web.cron.LanguageEnum[]>;
-            }
-            extraSqlPerso:  {
-                // GET /hosting/web/{serviceName}/extraSqlPerso
-                GET(): Promise<string[]>;
-                [keys: string]: {
-                    // GET /hosting/web/{serviceName}/extraSqlPerso/{name}
-                    GET(): Promise<hosting.web.extrasqlperso>;
-                    terminate:  {
-                        // POST /hosting/web/{serviceName}/extraSqlPerso/{name}/terminate
-                        POST(): Promise<string>;
-                    }
-                    serviceInfosUpdate:  {
-                        // POST /hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate
-                        POST(body?: {renew: service.RenewType}): Promise<void>;
-                    }
-                    databases:  {
-                        // GET /hosting/web/{serviceName}/extraSqlPerso/{name}/databases
-                        GET(): Promise<string[]>;
-                    }
-                    serviceInfos:  {
-                        // GET /hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfos
-                        GET(): Promise<services.Service>;
-                    }
-                } | any
-            }
-            changeContact:  {
-                // POST /hosting/web/{serviceName}/changeContact
-                POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
-            }
-            databaseAvailableType:  {
-                // GET /hosting/web/{serviceName}/databaseAvailableType
-                GET(): Promise<hosting.web.database.DatabaseTypeEnum[]>;
-            }
-            cron:  {
-                // GET /hosting/web/{serviceName}/cron
-                GET(param?: {command?: string, description?: string, email?: string, language?: hosting.web.cron.LanguageEnum}): Promise<number[]>;
-                // POST /hosting/web/{serviceName}/cron
-                POST(body?: {language: hosting.web.cron.LanguageEnum, status?: hosting.web.cron.StatusEnum, email?: string, frequency: string, description?: string, command: string}): Promise<string>;
-                [keys: string]: {
-                    // GET /hosting/web/{serviceName}/cron/{id}
-                    GET(): Promise<hosting.web.cron>;
-                    // PUT /hosting/web/{serviceName}/cron/{id}
-                    PUT(body?: {body: hosting.web.cron}): Promise<void>;
-                    // DELETE /hosting/web/{serviceName}/cron/{id}
-                    DELETE(): Promise<string>;
-                } | any
-            }
-            indy:  {
-                // GET /hosting/web/{serviceName}/indy
-                GET(param?: {login?: string}): Promise<string[]>;
-                [keys: string]: {
-                    // GET /hosting/web/{serviceName}/indy/{login}
-                    GET(): Promise<hosting.web.indy>;
-                } | any
-            }
-            envVar:  {
-                // GET /hosting/web/{serviceName}/envVar
-                GET(param?: {type?: hosting.web.envVar.TypeEnum}): Promise<string[]>;
-                // POST /hosting/web/{serviceName}/envVar
-                POST(body?: {type: hosting.web.envVar.TypeEnum, value: string, key: string}): Promise<hosting.web.task>;
-                [keys: string]: {
-                    // GET /hosting/web/{serviceName}/envVar/{key}
-                    GET(): Promise<hosting.web.envVar>;
-                    // PUT /hosting/web/{serviceName}/envVar/{key}
-                    PUT(body?: {body: hosting.web.envVar}): Promise<void>;
-                    // DELETE /hosting/web/{serviceName}/envVar/{key}
-                    DELETE(): Promise<hosting.web.task>;
-                } | any
-            }
-            userLogsToken:  {
-                // GET /hosting/web/{serviceName}/userLogsToken
-                GET(param?: {attachedDomain?: string, ttl?: number, remoteCheck?: boolean}): Promise<string>;
-            }
-            databaseAvailableVersion:  {
-                // GET /hosting/web/{serviceName}/databaseAvailableVersion
-                GET(param?: {type: hosting.web.database.DatabaseTypeEnum}): Promise<hosting.web.database.AvailableVersionStruct>;
-            }
-            localSeo:  {
-                emailAvailability:  {
-                    // GET /hosting/web/{serviceName}/localSeo/emailAvailability
-                    GET(param?: {email: string}): Promise<hosting.web.localSeo.EmailAvailability>;
-                }
-                location:  {
-                    // GET /hosting/web/{serviceName}/localSeo/location
-                    GET(): Promise<number[]>;
-                    [keys: string]: {
-                        // GET /hosting/web/{serviceName}/localSeo/location/{id}
-                        GET(): Promise<hosting.web.localSeo_location>;
-                        serviceInfos:  {
-                            // GET /hosting/web/{serviceName}/localSeo/location/{id}/serviceInfos
-                            GET(): Promise<services.Service>;
-                        }
-                        terminate:  {
-                            // POST /hosting/web/{serviceName}/localSeo/location/{id}/terminate
-                            POST(): Promise<string>;
-                        }
-                        serviceInfosUpdate:  {
-                            // POST /hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate
-                            POST(body?: {renew: service.RenewType}): Promise<void>;
-                        }
-                    } | any
-                }
-                account:  {
-                    // GET /hosting/web/{serviceName}/localSeo/account
-                    GET(param?: {email?: string}): Promise<number[]>;
-                    [keys: string]: {
-                        // GET /hosting/web/{serviceName}/localSeo/account/{id}
-                        GET(): Promise<hosting.web.localSeo_account>;
-                        login:  {
-                            // POST /hosting/web/{serviceName}/localSeo/account/{id}/login
-                            POST(): Promise<string>;
-                        }
-                    } | any
-                }
-            }
-            runtimeAvailableTypes:  {
-                // GET /hosting/web/{serviceName}/runtimeAvailableTypes
-                GET(param?: {language?: string}): Promise<hosting.web.runtime.TypeEnum[]>;
+                $get(): Promise<hosting.web.cron.LanguageEnum[]>;
             }
         } | any
         moduleList:  {
             // GET /hosting/web/moduleList
-            GET(param?: {active?: boolean, branch?: hosting.web.module.BranchEnum, latest?: boolean}): Promise<number[]>;
+            $get(param?: {latest?: boolean, active?: boolean, branch?: hosting.web.module.BranchEnum}): Promise<number[]>;
             [keys: string]: {
                 // GET /hosting/web/moduleList/{id}
-                GET(): Promise<hosting.web.ModuleList>;
+                $get(): Promise<hosting.web.ModuleList>;
             } | any
         }
         attachedDomain:  {
             // GET /hosting/web/attachedDomain
-            GET(param?: {domain: string}): Promise<string[]>;
+            $get(param?: {domain: string}): Promise<string[]>;
+        }
+        incident:  {
+            // GET /hosting/web/incident
+            $get(): Promise<string[]>;
+        }
+        availableOffer:  {
+            // GET /hosting/web/availableOffer
+            $get(param?: {domain: string}): Promise<hosting.web.OfferEnum[]>;
         }
         offerCapabilities:  {
             // GET /hosting/web/offerCapabilities
-            GET(param?: {offer: hosting.web.OfferCapabilitiesEnum}): Promise<hosting.web.Capabilities>;
-        }
-        localSeo:  {
-            directoriesList:  {
-                // GET /hosting/web/localSeo/directoriesList
-                GET(param?: {offer: hosting.web.localSeo.location.OfferEnum, country: hosting.web.localSeo.location.CountryEnum}): Promise<hosting.web.localSeo.DirectoriesList>;
-            }
-            visibilityCheckResult:  {
-                // GET /hosting/web/localSeo/visibilityCheckResult
-                GET(param?: {directory: string, id: number, token: string}): Promise<hosting.web.localSeo.VisibilityCheckResultResponse[]>;
-            }
-            visibilityCheck:  {
-                // POST /hosting/web/localSeo/visibilityCheck
-                POST(body?: {name: string, zip: string, street: string, country: hosting.web.localSeo.location.CountryEnum}): Promise<hosting.web.localSeo.VisibilityCheckResponse>;
-            }
-            emailAvailability:  {
-                // GET /hosting/web/localSeo/emailAvailability
-                GET(param?: {email: string}): Promise<hosting.web.localSeo.EmailAvailability>;
-            }
+            $get(param?: {offer: hosting.web.OfferCapabilitiesEnum}): Promise<hosting.web.Capabilities>;
         }
     }
 }
 // Api
-type PathsHostingWebGET = '/hosting/web/incident' |
-  '/hosting/web/availableOffer' |
-  '/hosting/web/{serviceName}/dump' |
-  '/hosting/web/{serviceName}/dump/{id}' |
-  '/hosting/web/{serviceName}/userLogs/{login}' |
-  '/hosting/web/{serviceName}/userLogs' |
-  '/hosting/web/{serviceName}/statistics' |
-  '/hosting/web/{serviceName}/module' |
-  '/hosting/web/{serviceName}/module/{id}' |
-  '/hosting/web/{serviceName}/tasks' |
-  '/hosting/web/{serviceName}/tasks/{id}' |
-  '/hosting/web/{serviceName}/freedom' |
-  '/hosting/web/{serviceName}/freedom/{domain}' |
-  '/hosting/web/{serviceName}/ssl' |
-  '/hosting/web/{serviceName}/ssl/domains' |
-  '/hosting/web/{serviceName}/ssl/report' |
-  '/hosting/web/{serviceName}/ownLogs' |
+type PathsHostingWebGET = '/hosting/web/localSeo/emailAvailability' |
+  '/hosting/web/localSeo/visibilityCheckResult' |
+  '/hosting/web/localSeo/directoriesList' |
+  '/hosting/web/{serviceName}/privateDatabases' |
+  '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfos' |
+  '/hosting/web/{serviceName}/extraSqlPerso/{name}' |
+  '/hosting/web/{serviceName}/extraSqlPerso/{name}/databases' |
+  '/hosting/web/{serviceName}/extraSqlPerso' |
+  '/hosting/web/{serviceName}' |
   '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}' |
   '/hosting/web/{serviceName}/ownLogs/{id}/userLogs' |
   '/hosting/web/{serviceName}/ownLogs/{id}' |
-  '/hosting/web/{serviceName}/email' |
-  '/hosting/web/{serviceName}/email/bounces' |
-  '/hosting/web/{serviceName}/email/volumes' |
-  '/hosting/web/{serviceName}/privateDatabaseCreationCapabilities' |
-  '/hosting/web/{serviceName}/ovhConfig/{id}' |
-  '/hosting/web/{serviceName}/ovhConfig' |
-  '/hosting/web/{serviceName}/privateDatabases' |
-  '/hosting/web/{serviceName}/user/{login}' |
-  '/hosting/web/{serviceName}/user' |
-  '/hosting/web/{serviceName}' |
-  '/hosting/web/{serviceName}/token' |
-  '/hosting/web/{serviceName}/databaseCreationCapabilities' |
-  '/hosting/web/{serviceName}/database' |
-  '/hosting/web/{serviceName}/database/{name}/dump' |
-  '/hosting/web/{serviceName}/database/{name}/dump/{id}' |
-  '/hosting/web/{serviceName}/database/{name}' |
-  '/hosting/web/{serviceName}/database/{name}/capabilities' |
-  '/hosting/web/{serviceName}/database/{name}/statistics' |
-  '/hosting/web/{serviceName}/boostHistory' |
-  '/hosting/web/{serviceName}/boostHistory/{date}' |
-  '/hosting/web/{serviceName}/runtime/{id}' |
-  '/hosting/web/{serviceName}/runtime/{id}/attachedDomains' |
-  '/hosting/web/{serviceName}/runtime' |
-  '/hosting/web/{serviceName}/serviceInfos' |
-  '/hosting/web/{serviceName}/cdn' |
-  '/hosting/web/{serviceName}/cdn/serviceInfos' |
-  '/hosting/web/{serviceName}/attachedDomain' |
-  '/hosting/web/{serviceName}/attachedDomain/{domain}' |
-  '/hosting/web/{serviceName}/cronAvailableLanguage' |
-  '/hosting/web/{serviceName}/extraSqlPerso' |
-  '/hosting/web/{serviceName}/extraSqlPerso/{name}/databases' |
-  '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfos' |
-  '/hosting/web/{serviceName}/extraSqlPerso/{name}' |
-  '/hosting/web/{serviceName}/databaseAvailableType' |
-  '/hosting/web/{serviceName}/cron/{id}' |
-  '/hosting/web/{serviceName}/cron' |
-  '/hosting/web/{serviceName}/indy/{login}' |
-  '/hosting/web/{serviceName}/indy' |
-  '/hosting/web/{serviceName}/envVar' |
-  '/hosting/web/{serviceName}/envVar/{key}' |
-  '/hosting/web/{serviceName}/userLogsToken' |
-  '/hosting/web/{serviceName}/databaseAvailableVersion' |
-  '/hosting/web/{serviceName}/localSeo/emailAvailability' |
+  '/hosting/web/{serviceName}/ownLogs' |
   '/hosting/web/{serviceName}/localSeo/location' |
   '/hosting/web/{serviceName}/localSeo/location/{id}' |
   '/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfos' |
-  '/hosting/web/{serviceName}/localSeo/account' |
+  '/hosting/web/{serviceName}/localSeo/emailAvailability' |
   '/hosting/web/{serviceName}/localSeo/account/{id}' |
+  '/hosting/web/{serviceName}/localSeo/account' |
+  '/hosting/web/{serviceName}/module/{id}' |
+  '/hosting/web/{serviceName}/module' |
+  '/hosting/web/{serviceName}/databaseAvailableVersion' |
+  '/hosting/web/{serviceName}/attachedDomain' |
+  '/hosting/web/{serviceName}/attachedDomain/{domain}' |
+  '/hosting/web/{serviceName}/userLogsToken' |
+  '/hosting/web/{serviceName}/token' |
   '/hosting/web/{serviceName}/runtimeAvailableTypes' |
-  '/hosting/web' |
-  '/hosting/web/moduleList/{id}' |
+  '/hosting/web/{serviceName}/userLogs' |
+  '/hosting/web/{serviceName}/userLogs/{login}' |
+  '/hosting/web/{serviceName}/statistics' |
+  '/hosting/web/{serviceName}/email/bounces' |
+  '/hosting/web/{serviceName}/email' |
+  '/hosting/web/{serviceName}/email/volumes' |
+  '/hosting/web/{serviceName}/databaseCreationCapabilities' |
+  '/hosting/web/{serviceName}/tasks/{id}' |
+  '/hosting/web/{serviceName}/tasks' |
+  '/hosting/web/{serviceName}/databaseAvailableType' |
+  '/hosting/web/{serviceName}/indy/{login}' |
+  '/hosting/web/{serviceName}/indy' |
+  '/hosting/web/{serviceName}/user' |
+  '/hosting/web/{serviceName}/user/{login}' |
+  '/hosting/web/{serviceName}/boostHistory' |
+  '/hosting/web/{serviceName}/boostHistory/{date}' |
+  '/hosting/web/{serviceName}/freedom' |
+  '/hosting/web/{serviceName}/freedom/{domain}' |
+  '/hosting/web/{serviceName}/cron' |
+  '/hosting/web/{serviceName}/cron/{id}' |
+  '/hosting/web/{serviceName}/ovhConfig' |
+  '/hosting/web/{serviceName}/ovhConfig/{id}' |
+  '/hosting/web/{serviceName}/ssl/domains' |
+  '/hosting/web/{serviceName}/ssl/report' |
+  '/hosting/web/{serviceName}/ssl' |
+  '/hosting/web/{serviceName}/envVar' |
+  '/hosting/web/{serviceName}/envVar/{key}' |
+  '/hosting/web/{serviceName}/serviceInfos' |
+  '/hosting/web/{serviceName}/cdn' |
+  '/hosting/web/{serviceName}/cdn/serviceInfos' |
+  '/hosting/web/{serviceName}/runtime/{id}/attachedDomains' |
+  '/hosting/web/{serviceName}/runtime/{id}' |
+  '/hosting/web/{serviceName}/runtime' |
+  '/hosting/web/{serviceName}/privateDatabaseCreationCapabilities' |
+  '/hosting/web/{serviceName}/dump' |
+  '/hosting/web/{serviceName}/dump/{id}' |
+  '/hosting/web/{serviceName}/database/{name}/dump/{id}' |
+  '/hosting/web/{serviceName}/database/{name}/dump' |
+  '/hosting/web/{serviceName}/database/{name}/capabilities' |
+  '/hosting/web/{serviceName}/database/{name}' |
+  '/hosting/web/{serviceName}/database/{name}/statistics' |
+  '/hosting/web/{serviceName}/database' |
+  '/hosting/web/{serviceName}/cronAvailableLanguage' |
   '/hosting/web/moduleList' |
+  '/hosting/web/moduleList/{id}' |
   '/hosting/web/attachedDomain' |
+  '/hosting/web/incident' |
+  '/hosting/web/availableOffer' |
   '/hosting/web/offerCapabilities' |
-  '/hosting/web/localSeo/directoriesList' |
-  '/hosting/web/localSeo/visibilityCheckResult' |
-  '/hosting/web/localSeo/emailAvailability';
+  '/hosting/web';
 
-type PathsHostingWebPUT = '/hosting/web/{serviceName}/userLogs/{login}' |
+type PathsHostingWebPUT = '/hosting/web/{serviceName}' |
   '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}' |
+  '/hosting/web/{serviceName}/attachedDomain/{domain}' |
+  '/hosting/web/{serviceName}/userLogs/{login}' |
   '/hosting/web/{serviceName}/email' |
   '/hosting/web/{serviceName}/user/{login}' |
-  '/hosting/web/{serviceName}' |
-  '/hosting/web/{serviceName}/runtime/{id}' |
-  '/hosting/web/{serviceName}/serviceInfos' |
-  '/hosting/web/{serviceName}/attachedDomain/{domain}' |
   '/hosting/web/{serviceName}/cron/{id}' |
-  '/hosting/web/{serviceName}/envVar/{key}';
+  '/hosting/web/{serviceName}/envVar/{key}' |
+  '/hosting/web/{serviceName}/serviceInfos' |
+  '/hosting/web/{serviceName}/runtime/{id}';
 
-type PathsHostingWebPOST = '/hosting/web/{serviceName}/restoreSnapshot' |
+type PathsHostingWebPOST = '/hosting/web/localSeo/visibilityCheck' |
+  '/hosting/web/{serviceName}/extraSqlPerso/{name}/terminate' |
+  '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate' |
   '/hosting/web/{serviceName}/request' |
-  '/hosting/web/{serviceName}/activatePrivateDatabase' |
-  '/hosting/web/{serviceName}/userLogs/{login}/changePassword' |
-  '/hosting/web/{serviceName}/userLogs' |
-  '/hosting/web/{serviceName}/module' |
-  '/hosting/web/{serviceName}/module/{id}/changePassword' |
-  '/hosting/web/{serviceName}/ssl' |
-  '/hosting/web/{serviceName}/ssl/regenerate' |
   '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword' |
   '/hosting/web/{serviceName}/ownLogs/{id}/userLogs' |
-  '/hosting/web/{serviceName}/email/request' |
-  '/hosting/web/{serviceName}/ovhConfig/{id}/rollback' |
-  '/hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration' |
-  '/hosting/web/{serviceName}/user/{login}/changePassword' |
-  '/hosting/web/{serviceName}/user' |
-  '/hosting/web/{serviceName}/ovhConfigRefresh' |
-  '/hosting/web/{serviceName}/confirmTermination' |
+  '/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate' |
+  '/hosting/web/{serviceName}/localSeo/location/{id}/terminate' |
+  '/hosting/web/{serviceName}/localSeo/account/{id}/login' |
+  '/hosting/web/{serviceName}/module/{id}/changePassword' |
+  '/hosting/web/{serviceName}/module' |
+  '/hosting/web/{serviceName}/activatePrivateDatabase' |
+  '/hosting/web/{serviceName}/restoreSnapshot' |
   '/hosting/web/{serviceName}/requestBoost' |
-  '/hosting/web/{serviceName}/database' |
-  '/hosting/web/{serviceName}/database/{name}/dump' |
-  '/hosting/web/{serviceName}/database/{name}/dump/{id}/restore' |
-  '/hosting/web/{serviceName}/database/{name}/changePassword' |
-  '/hosting/web/{serviceName}/database/{name}/request' |
-  '/hosting/web/{serviceName}/database/{name}/import' |
-  '/hosting/web/{serviceName}/database/{name}/restore' |
-  '/hosting/web/{serviceName}/runtime' |
-  '/hosting/web/{serviceName}/terminate' |
-  '/hosting/web/{serviceName}/cdn/terminate' |
-  '/hosting/web/{serviceName}/cdn/serviceInfosUpdate' |
   '/hosting/web/{serviceName}/attachedDomain' |
   '/hosting/web/{serviceName}/attachedDomain/{domain}/purgeCache' |
   '/hosting/web/{serviceName}/attachedDomain/{domain}/restart' |
-  '/hosting/web/{serviceName}/extraSqlPerso/{name}/terminate' |
-  '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate' |
+  '/hosting/web/{serviceName}/userLogs' |
+  '/hosting/web/{serviceName}/userLogs/{login}/changePassword' |
+  '/hosting/web/{serviceName}/email/request' |
   '/hosting/web/{serviceName}/changeContact' |
+  '/hosting/web/{serviceName}/user' |
+  '/hosting/web/{serviceName}/user/{login}/changePassword' |
+  '/hosting/web/{serviceName}/confirmTermination' |
   '/hosting/web/{serviceName}/cron' |
-  '/hosting/web/{serviceName}/envVar' |
-  '/hosting/web/{serviceName}/localSeo/location/{id}/terminate' |
-  '/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate' |
-  '/hosting/web/{serviceName}/localSeo/account/{id}/login' |
-  '/hosting/web/localSeo/visibilityCheck';
-
-type PathsHostingWebDELETE = '/hosting/web/{serviceName}/dump/{id}' |
-  '/hosting/web/{serviceName}/userLogs/{login}' |
-  '/hosting/web/{serviceName}/module/{id}' |
-  '/hosting/web/{serviceName}/freedom/{domain}' |
+  '/hosting/web/{serviceName}/ovhConfig/{id}/rollback' |
+  '/hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration' |
+  '/hosting/web/{serviceName}/ssl/regenerate' |
   '/hosting/web/{serviceName}/ssl' |
-  '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}' |
-  '/hosting/web/{serviceName}/user/{login}' |
-  '/hosting/web/{serviceName}/database/{name}/dump/{id}' |
-  '/hosting/web/{serviceName}/database/{name}' |
-  '/hosting/web/{serviceName}/runtime/{id}' |
+  '/hosting/web/{serviceName}/envVar' |
+  '/hosting/web/{serviceName}/ovhConfigRefresh' |
+  '/hosting/web/{serviceName}/cdn/terminate' |
+  '/hosting/web/{serviceName}/cdn/serviceInfosUpdate' |
+  '/hosting/web/{serviceName}/runtime' |
+  '/hosting/web/{serviceName}/terminate' |
+  '/hosting/web/{serviceName}/database/{name}/dump/{id}/restore' |
+  '/hosting/web/{serviceName}/database/{name}/dump' |
+  '/hosting/web/{serviceName}/database/{name}/restore' |
+  '/hosting/web/{serviceName}/database/{name}/request' |
+  '/hosting/web/{serviceName}/database/{name}/changePassword' |
+  '/hosting/web/{serviceName}/database/{name}/import' |
+  '/hosting/web/{serviceName}/database';
+
+type PathsHostingWebDELETE = '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}' |
+  '/hosting/web/{serviceName}/module/{id}' |
   '/hosting/web/{serviceName}/attachedDomain/{domain}' |
+  '/hosting/web/{serviceName}/userLogs/{login}' |
+  '/hosting/web/{serviceName}/user/{login}' |
+  '/hosting/web/{serviceName}/freedom/{domain}' |
   '/hosting/web/{serviceName}/cron/{id}' |
-  '/hosting/web/{serviceName}/envVar/{key}';
+  '/hosting/web/{serviceName}/ssl' |
+  '/hosting/web/{serviceName}/envVar/{key}' |
+  '/hosting/web/{serviceName}/runtime/{id}' |
+  '/hosting/web/{serviceName}/dump/{id}' |
+  '/hosting/web/{serviceName}/database/{name}/dump/{id}' |
+  '/hosting/web/{serviceName}/database/{name}';
 
 export class ApiHostingWeb extends OvhWrapper {
   constructor(engine: OvhRequestable) {

@@ -143,206 +143,206 @@ export namespace services {
 export interface Cluster {
     hadoop:  {
         // GET /cluster/hadoop
-        GET(): Promise<string[]>;
-        orderableNodeProfiles:  {
-            // GET /cluster/hadoop/orderableNodeProfiles
-            GET(): Promise<cluster.hadoop.NodeBillingProfile[]>;
-        }
+        $get(): Promise<string[]>;
         orderInformations:  {
             // GET /cluster/hadoop/orderInformations
-            GET(): Promise<cluster.hadoop.OrderInformations>;
+            $get(): Promise<cluster.hadoop.OrderInformations>;
+        }
+        orderableNodeProfiles:  {
+            // GET /cluster/hadoop/orderableNodeProfiles
+            $get(): Promise<cluster.hadoop.NodeBillingProfile[]>;
         }
         [keys: string]: {
             // GET /cluster/hadoop/{serviceName}
-            GET(): Promise<cluster.hadoop.hadoop>;
-            nodeConsumptions:  {
-                // GET /cluster/hadoop/{serviceName}/nodeConsumptions
-                GET(): Promise<cluster.hadoop.NodeConsumption[]>;
-            }
+            $get(): Promise<cluster.hadoop.hadoop>;
             stop:  {
                 // POST /cluster/hadoop/{serviceName}/stop
-                POST(): Promise<cluster.hadoop.Task>;
+                $post(): Promise<cluster.hadoop.Task>;
             }
-            restart:  {
-                // POST /cluster/hadoop/{serviceName}/restart
-                POST(): Promise<cluster.hadoop.Task>;
+            orderableNodeProfiles:  {
+                // GET /cluster/hadoop/{serviceName}/orderableNodeProfiles
+                $get(): Promise<string[]>;
             }
             node:  {
                 // GET /cluster/hadoop/{serviceName}/node
-                GET(param?: {softwareProfile?: cluster.hadoop.NodeProfileEnum}): Promise<string[]>;
+                $get(param?: {softwareProfile?: cluster.hadoop.NodeProfileEnum}): Promise<string[]>;
                 [keys: string]: {
                     // GET /cluster/hadoop/{serviceName}/node/{hostname}
-                    GET(): Promise<cluster.hadoop.Node>;
+                    $get(): Promise<cluster.hadoop.Node>;
                     // DELETE /cluster/hadoop/{serviceName}/node/{hostname}
-                    DELETE(): Promise<cluster.hadoop.Task>;
-                    role:  {
-                        // GET /cluster/hadoop/{serviceName}/node/{hostname}/role
-                        GET(): Promise<cluster.hadoop.RoleTypeEnum[]>;
-                        // POST /cluster/hadoop/{serviceName}/node/{hostname}/role
-                        POST(body?: {type: cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
-                        [keys: string]: {
-                            // GET /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
-                            GET(): Promise<cluster.hadoop.Role>;
-                            // DELETE /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
-                            DELETE(): Promise<cluster.hadoop.Task>;
-                            start:  {
-                                // POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start
-                                POST(): Promise<cluster.hadoop.Task>;
-                            }
-                            stop:  {
-                                // POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop
-                                POST(): Promise<cluster.hadoop.Task>;
-                            }
-                            restart:  {
-                                // POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart
-                                POST(): Promise<cluster.hadoop.Task>;
-                            }
-                        } | any
-                    }
+                    $delete(): Promise<cluster.hadoop.Task>;
                     decommission:  {
                         // POST /cluster/hadoop/{serviceName}/node/{hostname}/decommission
-                        POST(): Promise<cluster.hadoop.Task>;
+                        $post(): Promise<cluster.hadoop.Task>;
                     }
                     recommission:  {
                         // POST /cluster/hadoop/{serviceName}/node/{hostname}/recommission
-                        POST(): Promise<cluster.hadoop.Task>;
+                        $post(): Promise<cluster.hadoop.Task>;
                     }
+                    role:  {
+                        // GET /cluster/hadoop/{serviceName}/node/{hostname}/role
+                        $get(): Promise<cluster.hadoop.RoleTypeEnum[]>;
+                        // POST /cluster/hadoop/{serviceName}/node/{hostname}/role
+                        $post(body?: {type: cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
+                        [keys: string]: {
+                            // GET /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
+                            $get(): Promise<cluster.hadoop.Role>;
+                            // DELETE /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
+                            $delete(): Promise<cluster.hadoop.Task>;
+                            start:  {
+                                // POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start
+                                $post(): Promise<cluster.hadoop.Task>;
+                            }
+                            stop:  {
+                                // POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop
+                                $post(): Promise<cluster.hadoop.Task>;
+                            }
+                            restart:  {
+                                // POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart
+                                $post(): Promise<cluster.hadoop.Task>;
+                            }
+                        } | any
+                    }
+                } | any
+            }
+            nodeConsumptions:  {
+                // GET /cluster/hadoop/{serviceName}/nodeConsumptions
+                $get(): Promise<cluster.hadoop.NodeConsumption[]>;
+            }
+            networkAcl:  {
+                // GET /cluster/hadoop/{serviceName}/networkAcl
+                $get(): Promise<string[]>;
+                // POST /cluster/hadoop/{serviceName}/networkAcl
+                $post(body?: {block?: string, description?: string}): Promise<cluster.hadoop.Task>;
+                [keys: string]: {
+                    // GET /cluster/hadoop/{serviceName}/networkAcl/{block}
+                    $get(): Promise<cluster.hadoop.NetworkAcl>;
+                    // PUT /cluster/hadoop/{serviceName}/networkAcl/{block}
+                    $put(body?: {body: cluster.hadoop.NetworkAcl}): Promise<void>;
+                    // DELETE /cluster/hadoop/{serviceName}/networkAcl/{block}
+                    $delete(): Promise<cluster.hadoop.Task>;
+                } | any
+            }
+            nodeBillingProfiles:  {
+                // GET /cluster/hadoop/{serviceName}/nodeBillingProfiles
+                $get(): Promise<cluster.hadoop.NodeBillingProfile[]>;
+            }
+            start:  {
+                // POST /cluster/hadoop/{serviceName}/start
+                $post(): Promise<cluster.hadoop.Task>;
+            }
+            serviceInfos:  {
+                // GET /cluster/hadoop/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /cluster/hadoop/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
+            consumptions:  {
+                // GET /cluster/hadoop/{serviceName}/consumptions
+                $get(): Promise<cluster.hadoop.ClusterConsumption>;
+            }
+            restart:  {
+                // POST /cluster/hadoop/{serviceName}/restart
+                $post(): Promise<cluster.hadoop.Task>;
+            }
+            orderNewNodeHourly:  {
+                // POST /cluster/hadoop/{serviceName}/orderNewNodeHourly
+                $post(body?: {nodeProfile: string}): Promise<cluster.hadoop.Task>;
+            }
+            user:  {
+                // GET /cluster/hadoop/{serviceName}/user
+                $get(): Promise<string[]>;
+                // POST /cluster/hadoop/{serviceName}/user
+                $post(body?: {clouderaManager: boolean, httpFrontend: boolean, hue: boolean, password: string, username: string}): Promise<cluster.hadoop.Task>;
+                [keys: string]: {
+                    // GET /cluster/hadoop/{serviceName}/user/{username}
+                    $get(): Promise<cluster.hadoop.User>;
+                    // PUT /cluster/hadoop/{serviceName}/user/{username}
+                    $put(body?: {body: cluster.hadoop.User}): Promise<void>;
+                    // DELETE /cluster/hadoop/{serviceName}/user/{username}
+                    $delete(): Promise<cluster.hadoop.Task>;
+                    resetPassword:  {
+                        // POST /cluster/hadoop/{serviceName}/user/{username}/resetPassword
+                        $post(body?: {password: string}): Promise<cluster.hadoop.Task>;
+                    }
+                } | any
+            }
+            terminate:  {
+                // POST /cluster/hadoop/{serviceName}/terminate
+                $post(): Promise<cluster.hadoop.Task>;
+            }
+            task:  {
+                // GET /cluster/hadoop/{serviceName}/task
+                $get(param?: {status?: cluster.hadoop.OperationStateEnum}): Promise<number[]>;
+                [keys: string]: {
+                    // GET /cluster/hadoop/{serviceName}/task/{taskId}
+                    $get(): Promise<cluster.hadoop.Task>;
                 } | any
             }
             service:  {
                 restart:  {
                     // POST /cluster/hadoop/{serviceName}/service/restart
-                    POST(body?: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
+                    $post(body?: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
                 }
                 stop:  {
                     // POST /cluster/hadoop/{serviceName}/service/stop
-                    POST(body?: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
+                    $post(body?: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
                 }
                 start:  {
                     // POST /cluster/hadoop/{serviceName}/service/start
-                    POST(body?: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
+                    $post(body?: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
                 }
-            }
-            orderableNodeProfiles:  {
-                // GET /cluster/hadoop/{serviceName}/orderableNodeProfiles
-                GET(): Promise<string[]>;
-            }
-            task:  {
-                // GET /cluster/hadoop/{serviceName}/task
-                GET(param?: {status?: cluster.hadoop.OperationStateEnum}): Promise<number[]>;
-                [keys: string]: {
-                    // GET /cluster/hadoop/{serviceName}/task/{taskId}
-                    GET(): Promise<cluster.hadoop.Task>;
-                } | any
-            }
-            nodeBillingProfiles:  {
-                // GET /cluster/hadoop/{serviceName}/nodeBillingProfiles
-                GET(): Promise<cluster.hadoop.NodeBillingProfile[]>;
-            }
-            start:  {
-                // POST /cluster/hadoop/{serviceName}/start
-                POST(): Promise<cluster.hadoop.Task>;
-            }
-            user:  {
-                // GET /cluster/hadoop/{serviceName}/user
-                GET(): Promise<string[]>;
-                // POST /cluster/hadoop/{serviceName}/user
-                POST(body?: {hue: boolean, username: string, clouderaManager: boolean, password: string, httpFrontend: boolean}): Promise<cluster.hadoop.Task>;
-                [keys: string]: {
-                    // GET /cluster/hadoop/{serviceName}/user/{username}
-                    GET(): Promise<cluster.hadoop.User>;
-                    // PUT /cluster/hadoop/{serviceName}/user/{username}
-                    PUT(body?: {body: cluster.hadoop.User}): Promise<void>;
-                    // DELETE /cluster/hadoop/{serviceName}/user/{username}
-                    DELETE(): Promise<cluster.hadoop.Task>;
-                    resetPassword:  {
-                        // POST /cluster/hadoop/{serviceName}/user/{username}/resetPassword
-                        POST(body?: {password: string}): Promise<cluster.hadoop.Task>;
-                    }
-                } | any
-            }
-            networkAcl:  {
-                // GET /cluster/hadoop/{serviceName}/networkAcl
-                GET(): Promise<string[]>;
-                // POST /cluster/hadoop/{serviceName}/networkAcl
-                POST(body?: {description?: string, block?: string}): Promise<cluster.hadoop.Task>;
-                [keys: string]: {
-                    // GET /cluster/hadoop/{serviceName}/networkAcl/{block}
-                    GET(): Promise<cluster.hadoop.NetworkAcl>;
-                    // PUT /cluster/hadoop/{serviceName}/networkAcl/{block}
-                    PUT(body?: {body: cluster.hadoop.NetworkAcl}): Promise<void>;
-                    // DELETE /cluster/hadoop/{serviceName}/networkAcl/{block}
-                    DELETE(): Promise<cluster.hadoop.Task>;
-                } | any
-            }
-            consumptions:  {
-                // GET /cluster/hadoop/{serviceName}/consumptions
-                GET(): Promise<cluster.hadoop.ClusterConsumption>;
-            }
-            orderNewNodeHourly:  {
-                // POST /cluster/hadoop/{serviceName}/orderNewNodeHourly
-                POST(body?: {nodeProfile: string}): Promise<cluster.hadoop.Task>;
-            }
-            terminate:  {
-                // POST /cluster/hadoop/{serviceName}/terminate
-                POST(): Promise<cluster.hadoop.Task>;
-            }
-            serviceInfos:  {
-                // GET /cluster/hadoop/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
-                // PUT /cluster/hadoop/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
             }
         } | any
     }
 }
 // Api
-type PathsClusterHadoopGET = '/cluster/hadoop' |
+type PathsClusterHadoopGET = '/cluster/hadoop/orderInformations' |
   '/cluster/hadoop/orderableNodeProfiles' |
-  '/cluster/hadoop/orderInformations' |
-  '/cluster/hadoop/{serviceName}/nodeConsumptions' |
-  '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}' |
-  '/cluster/hadoop/{serviceName}/node/{hostname}/role' |
-  '/cluster/hadoop/{serviceName}/node/{hostname}' |
-  '/cluster/hadoop/{serviceName}/node' |
+  '/cluster/hadoop/{serviceName}' |
   '/cluster/hadoop/{serviceName}/orderableNodeProfiles' |
-  '/cluster/hadoop/{serviceName}/task/{taskId}' |
-  '/cluster/hadoop/{serviceName}/task' |
+  '/cluster/hadoop/{serviceName}/node/{hostname}' |
+  '/cluster/hadoop/{serviceName}/node/{hostname}/role' |
+  '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}' |
+  '/cluster/hadoop/{serviceName}/node' |
+  '/cluster/hadoop/{serviceName}/nodeConsumptions' |
+  '/cluster/hadoop/{serviceName}/networkAcl' |
+  '/cluster/hadoop/{serviceName}/networkAcl/{block}' |
   '/cluster/hadoop/{serviceName}/nodeBillingProfiles' |
+  '/cluster/hadoop/{serviceName}/serviceInfos' |
+  '/cluster/hadoop/{serviceName}/consumptions' |
   '/cluster/hadoop/{serviceName}/user' |
   '/cluster/hadoop/{serviceName}/user/{username}' |
-  '/cluster/hadoop/{serviceName}/networkAcl/{block}' |
-  '/cluster/hadoop/{serviceName}/networkAcl' |
-  '/cluster/hadoop/{serviceName}/consumptions' |
-  '/cluster/hadoop/{serviceName}' |
-  '/cluster/hadoop/{serviceName}/serviceInfos';
+  '/cluster/hadoop/{serviceName}/task/{taskId}' |
+  '/cluster/hadoop/{serviceName}/task' |
+  '/cluster/hadoop';
 
-type PathsClusterHadoopPUT = '/cluster/hadoop/{serviceName}/user/{username}' |
-  '/cluster/hadoop/{serviceName}/networkAcl/{block}' |
-  '/cluster/hadoop/{serviceName}/serviceInfos';
+type PathsClusterHadoopPUT = '/cluster/hadoop/{serviceName}/networkAcl/{block}' |
+  '/cluster/hadoop/{serviceName}/serviceInfos' |
+  '/cluster/hadoop/{serviceName}/user/{username}';
 
 type PathsClusterHadoopPOST = '/cluster/hadoop/{serviceName}/stop' |
-  '/cluster/hadoop/{serviceName}/restart' |
+  '/cluster/hadoop/{serviceName}/node/{hostname}/decommission' |
+  '/cluster/hadoop/{serviceName}/node/{hostname}/recommission' |
+  '/cluster/hadoop/{serviceName}/node/{hostname}/role' |
   '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start' |
   '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop' |
   '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart' |
-  '/cluster/hadoop/{serviceName}/node/{hostname}/role' |
-  '/cluster/hadoop/{serviceName}/node/{hostname}/decommission' |
-  '/cluster/hadoop/{serviceName}/node/{hostname}/recommission' |
-  '/cluster/hadoop/{serviceName}/service/restart' |
-  '/cluster/hadoop/{serviceName}/service/stop' |
-  '/cluster/hadoop/{serviceName}/service/start' |
+  '/cluster/hadoop/{serviceName}/networkAcl' |
   '/cluster/hadoop/{serviceName}/start' |
+  '/cluster/hadoop/{serviceName}/restart' |
+  '/cluster/hadoop/{serviceName}/orderNewNodeHourly' |
   '/cluster/hadoop/{serviceName}/user' |
   '/cluster/hadoop/{serviceName}/user/{username}/resetPassword' |
-  '/cluster/hadoop/{serviceName}/networkAcl' |
-  '/cluster/hadoop/{serviceName}/orderNewNodeHourly' |
-  '/cluster/hadoop/{serviceName}/terminate';
+  '/cluster/hadoop/{serviceName}/terminate' |
+  '/cluster/hadoop/{serviceName}/service/restart' |
+  '/cluster/hadoop/{serviceName}/service/stop' |
+  '/cluster/hadoop/{serviceName}/service/start';
 
-type PathsClusterHadoopDELETE = '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}' |
-  '/cluster/hadoop/{serviceName}/node/{hostname}' |
-  '/cluster/hadoop/{serviceName}/user/{username}' |
-  '/cluster/hadoop/{serviceName}/networkAcl/{block}';
+type PathsClusterHadoopDELETE = '/cluster/hadoop/{serviceName}/node/{hostname}' |
+  '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}' |
+  '/cluster/hadoop/{serviceName}/networkAcl/{block}' |
+  '/cluster/hadoop/{serviceName}/user/{username}';
 
 export class ApiClusterHadoop extends OvhWrapper {
   constructor(engine: OvhRequestable) {

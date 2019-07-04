@@ -42,15 +42,6 @@ export namespace order {
 }
 export namespace pack {
     export namespace xdsl {
-        //pack.xdsl.AsyncTask
-        // fullName: pack.xdsl.AsyncTask.AsyncTask
-        export interface AsyncTask<T> {
-            error?: string;
-            result?: T;
-            status?: OVH.pack.xdsl.AsyncTaskStatusEnum;
-        }
-        //pack.xdsl.AsyncTaskStatusEnum
-        export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
         //pack.xdsl.DomainActionEnum
         export type DomainActionEnum = "create" | "trade" | "transfer"
         //pack.xdsl.ExchangeAccountService
@@ -362,6 +353,15 @@ export namespace services {
     }
 }
 export namespace xdsl {
+    //xdsl.AsyncTask
+    // fullName: xdsl.AsyncTask.AsyncTask
+    export interface AsyncTask<T> {
+        error?: string;
+        result?: T;
+        status?: OVH.xdsl.AsyncTaskStatusEnum;
+    }
+    //xdsl.AsyncTaskStatusEnum
+    export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
     //xdsl.DeconsolidationEnum
     export type DeconsolidationEnum = "createNeighbour" | "creation" | "creationNeighbour" | "partial" | "total"
     //xdsl.DslTypeEnum
@@ -453,371 +453,371 @@ export namespace xdsl {
 export interface Pack {
     xdsl:  {
         // GET /pack/xdsl
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /pack/xdsl/{packName}
-            GET(): Promise<pack.xdsl.PackAdsl>;
+            $get(): Promise<pack.xdsl.PackAdsl>;
             // PUT /pack/xdsl/{packName}
-            PUT(body?: {body: pack.xdsl.PackAdsl}): Promise<void>;
-            domain:  {
+            $put(body?: {body: pack.xdsl.PackAdsl}): Promise<void>;
+            xdslAccess:  {
                 services:  {
-                    // GET /pack/xdsl/{packName}/domain/services
-                    GET(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/domain/services
-                    POST(body?: {authInfo?: string, action: pack.xdsl.DomainActionEnum, tld: string, domain: string}): Promise<pack.xdsl.Task>;
-                }
-                options:  {
-                    tlds:  {
-                        // GET /pack/xdsl/{packName}/domain/options/tlds
-                        GET(): Promise<string[]>;
-                    }
-                }
-            }
-            shippingAddresses:  {
-                // GET /pack/xdsl/{packName}/shippingAddresses
-                GET(param?: {context: pack.xdsl.ShippingAddressContextEnum}): Promise<pack.xdsl.ShippingAddress[]>;
-            }
-            addressMove:  {
-                move:  {
-                    // POST /pack/xdsl/{packName}/addressMove/move
-                    POST(body?: {keepCurrentNumber: boolean, provider?: xdsl.eligibility.ProviderEnum, offerCode: string, moveOutDate?: string, landline?: pack.xdsl.addressMove.Landline, creation?: pack.xdsl.addressMove.Creation}): Promise<pack.xdsl.AsyncTask<number>>;
-                }
-                eligibility:  {
-                    // POST /pack/xdsl/{packName}/addressMove/eligibility
-                    POST(body?: {address?: xdsl.eligibility.Address, lineNumber?: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
-                }
-            }
-            hostedEmail:  {
-                services:  {
-                    // GET /pack/xdsl/{packName}/hostedEmail/services
-                    GET(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/hostedEmail/services
-                    POST(body?: {password: string, email: string}): Promise<pack.xdsl.Task>;
-                }
-                options:  {
-                    domains:  {
-                        // GET /pack/xdsl/{packName}/hostedEmail/options/domains
-                        GET(): Promise<string[]>;
-                    }
-                }
-            }
-            voipLine:  {
-                options:  {
-                    customShippingAddress:  {
-                        // POST /pack/xdsl/{packName}/voipLine/options/customShippingAddress
-                        POST(body?: {lastName: string, address: string, firstName: string, cityName: string, zipCode: string}): Promise<number>;
-                    }
-                    hardwares:  {
-                        // GET /pack/xdsl/{packName}/voipLine/options/hardwares
-                        GET(): Promise<pack.xdsl.VoIPHardware[]>;
-                    }
-                    shippingAddresses:  {
-                        // GET /pack/xdsl/{packName}/voipLine/options/shippingAddresses
-                        GET(): Promise<pack.xdsl.ShippingAddress[]>;
-                    }
-                }
-                services:  {
-                    // GET /pack/xdsl/{packName}/voipLine/services
-                    GET(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/voipLine/services
-                    POST(body?: {mondialRelayId?: string, shippingId?: string, hardwareNames: string[]}): Promise<pack.xdsl.VoIPLineOrder>;
-                    [keys: string]: {
-                        // GET /pack/xdsl/{packName}/voipLine/services/{domain}
-                        GET(): Promise<pack.xdsl.VoipLineService>;
-                    } | any
-                }
-            }
-            emailPro:  {
-                services:  {
-                    // GET /pack/xdsl/{packName}/emailPro/services
-                    GET(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/emailPro/services
-                    POST(body?: {email: string, password: string}): Promise<pack.xdsl.Task>;
-                }
-                options:  {
-                    domains:  {
-                        // GET /pack/xdsl/{packName}/emailPro/options/domains
-                        GET(): Promise<string[]>;
-                    }
-                    isEmailAvailable:  {
-                        // GET /pack/xdsl/{packName}/emailPro/options/isEmailAvailable
-                        GET(param?: {email: string}): Promise<boolean>;
-                    }
-                }
-            }
-            exchangeIndividual:  {
-                services:  {
-                    // GET /pack/xdsl/{packName}/exchangeIndividual/services
-                    GET(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/exchangeIndividual/services
-                    POST(body?: {email: string, password: string}): Promise<pack.xdsl.Task>;
-                }
-                options:  {
-                    isEmailAvailable:  {
-                        // GET /pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable
-                        GET(param?: {email: string}): Promise<boolean>;
-                    }
-                    domains:  {
-                        // GET /pack/xdsl/{packName}/exchangeIndividual/options/domains
-                        GET(): Promise<string[]>;
-                    }
-                }
-            }
-            siteBuilderFull:  {
-                options:  {
-                    templates:  {
-                        // GET /pack/xdsl/{packName}/siteBuilderFull/options/templates
-                        GET(): Promise<pack.xdsl.SiteBuilderTemplate[]>;
-                    }
-                    domains:  {
-                        // GET /pack/xdsl/{packName}/siteBuilderFull/options/domains
-                        GET(): Promise<pack.xdsl.SiteBuilderDomain[]>;
-                    }
-                }
-                services:  {
-                    // GET /pack/xdsl/{packName}/siteBuilderFull/services
-                    GET(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/siteBuilderFull/services
-                    POST(body?: {domain: string, templateId: number, subdomain: string}): Promise<pack.xdsl.Task>;
-                }
-            }
-            siteBuilderStart:  {
-                options:  {
-                    domains:  {
-                        // GET /pack/xdsl/{packName}/siteBuilderStart/options/domains
-                        GET(): Promise<pack.xdsl.SiteBuilderDomain[]>;
-                    }
-                    templates:  {
-                        // GET /pack/xdsl/{packName}/siteBuilderStart/options/templates
-                        GET(): Promise<pack.xdsl.SiteBuilderTemplate[]>;
-                    }
-                }
-                services:  {
-                    // GET /pack/xdsl/{packName}/siteBuilderStart/services
-                    GET(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/siteBuilderStart/services
-                    POST(body?: {subdomain: string, domain: string, templateId: number}): Promise<pack.xdsl.Task>;
-                }
-            }
-            tasks:  {
-                // GET /pack/xdsl/{packName}/tasks
-                GET(param?: {function_?: string, status?: pack.xdsl.TaskStatusEnum}): Promise<number[]>;
-                [keys: string]: {
-                    // GET /pack/xdsl/{packName}/tasks/{id}
-                    GET(): Promise<pack.xdsl.Task>;
-                } | any
-            }
-            changeContact:  {
-                // POST /pack/xdsl/{packName}/changeContact
-                POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
-            }
-            resiliationFollowUp:  {
-                // GET /pack/xdsl/{packName}/resiliationFollowUp
-                GET(): Promise<pack.xdsl.ResiliationFollowUpDetail>;
-            }
-            subServices:  {
-                // GET /pack/xdsl/{packName}/subServices
-                GET(): Promise<string[]>;
-                [keys: string]: {
-                    // GET /pack/xdsl/{packName}/subServices/{domain}
-                    GET(): Promise<pack.xdsl.Service>;
-                    keepServiceTerms:  {
-                        // GET /pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms
-                        GET(): Promise<pack.xdsl.UnpackTerms>;
-                    }
-                } | any
-            }
-            hubic:  {
-                services:  {
-                    // GET /pack/xdsl/{packName}/hubic/services
-                    GET(): Promise<string[]>;
-                    [keys: string]: {
-                        // GET /pack/xdsl/{packName}/hubic/services/{domain}
-                        GET(): Promise<pack.xdsl.Hubic>;
-                        details:  {
-                            // GET /pack/xdsl/{packName}/hubic/services/{domain}/details
-                            GET(): Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
-                        }
-                    } | any
+                    // GET /pack/xdsl/{packName}/xdslAccess/services
+                    $get(): Promise<string[]>;
                 }
             }
             exchangeAccount:  {
                 services:  {
                     // GET /pack/xdsl/{packName}/exchangeAccount/services
-                    GET(): Promise<string[]>;
+                    $get(): Promise<string[]>;
                     [keys: string]: {
                         // GET /pack/xdsl/{packName}/exchangeAccount/services/{domain}
-                        GET(): Promise<pack.xdsl.ExchangeAccountService>;
+                        $get(): Promise<pack.xdsl.ExchangeAccountService>;
                     } | any
+                }
+            }
+            shippingAddresses:  {
+                // GET /pack/xdsl/{packName}/shippingAddresses
+                $get(param?: {context: pack.xdsl.ShippingAddressContextEnum}): Promise<pack.xdsl.ShippingAddress[]>;
+            }
+            siteBuilderFull:  {
+                services:  {
+                    // GET /pack/xdsl/{packName}/siteBuilderFull/services
+                    $get(): Promise<string[]>;
+                    // POST /pack/xdsl/{packName}/siteBuilderFull/services
+                    $post(body?: {domain: string, subdomain: string, templateId: number}): Promise<pack.xdsl.Task>;
+                }
+                options:  {
+                    templates:  {
+                        // GET /pack/xdsl/{packName}/siteBuilderFull/options/templates
+                        $get(): Promise<pack.xdsl.SiteBuilderTemplate[]>;
+                    }
+                    domains:  {
+                        // GET /pack/xdsl/{packName}/siteBuilderFull/options/domains
+                        $get(): Promise<pack.xdsl.SiteBuilderDomain[]>;
+                    }
+                }
+            }
+            tasks:  {
+                // GET /pack/xdsl/{packName}/tasks
+                $get(param?: {function_?: string, status?: pack.xdsl.TaskStatusEnum}): Promise<number[]>;
+                [keys: string]: {
+                    // GET /pack/xdsl/{packName}/tasks/{id}
+                    $get(): Promise<pack.xdsl.Task>;
+                } | any
+            }
+            exchangeIndividual:  {
+                services:  {
+                    // GET /pack/xdsl/{packName}/exchangeIndividual/services
+                    $get(): Promise<string[]>;
+                    // POST /pack/xdsl/{packName}/exchangeIndividual/services
+                    $post(body?: {email: string, password: string}): Promise<pack.xdsl.Task>;
+                }
+                options:  {
+                    domains:  {
+                        // GET /pack/xdsl/{packName}/exchangeIndividual/options/domains
+                        $get(): Promise<string[]>;
+                    }
+                    isEmailAvailable:  {
+                        // GET /pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable
+                        $get(param?: {email: string}): Promise<boolean>;
+                    }
+                }
+            }
+            resiliationTerms:  {
+                // GET /pack/xdsl/{packName}/resiliationTerms
+                $get(param?: {resiliationDate?: string}): Promise<pack.xdsl.ResiliationTerms>;
+            }
+            resiliationFollowUp:  {
+                // GET /pack/xdsl/{packName}/resiliationFollowUp
+                $get(): Promise<pack.xdsl.ResiliationFollowUpDetail>;
+            }
+            promotionCode:  {
+                capabilities:  {
+                    // GET /pack/xdsl/{packName}/promotionCode/capabilities
+                    $get(): Promise<pack.xdsl.promotionCode.Capabilities>;
+                }
+                generate:  {
+                    // POST /pack/xdsl/{packName}/promotionCode/generate
+                    $post(): Promise<pack.xdsl.Task>;
+                }
+            }
+            addressMove:  {
+                move:  {
+                    // POST /pack/xdsl/{packName}/addressMove/move
+                    $post(body?: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsl.eligibility.ProviderEnum}): Promise<xdsl.AsyncTask<number>>;
+                }
+                eligibility:  {
+                    // POST /pack/xdsl/{packName}/addressMove/eligibility
+                    $post(body?: {address?: xdsl.eligibility.Address, lineNumber?: string}): Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+                }
+            }
+            cancelResiliation:  {
+                // POST /pack/xdsl/{packName}/cancelResiliation
+                $post(): Promise<void>;
+            }
+            siteBuilderStart:  {
+                services:  {
+                    // GET /pack/xdsl/{packName}/siteBuilderStart/services
+                    $get(): Promise<string[]>;
+                    // POST /pack/xdsl/{packName}/siteBuilderStart/services
+                    $post(body?: {domain: string, subdomain: string, templateId: number}): Promise<pack.xdsl.Task>;
+                }
+                options:  {
+                    domains:  {
+                        // GET /pack/xdsl/{packName}/siteBuilderStart/options/domains
+                        $get(): Promise<pack.xdsl.SiteBuilderDomain[]>;
+                    }
+                    templates:  {
+                        // GET /pack/xdsl/{packName}/siteBuilderStart/options/templates
+                        $get(): Promise<pack.xdsl.SiteBuilderTemplate[]>;
+                    }
                 }
             }
             voipEcofax:  {
                 services:  {
                     // GET /pack/xdsl/{packName}/voipEcofax/services
-                    GET(): Promise<string[]>;
+                    $get(): Promise<string[]>;
                     // POST /pack/xdsl/{packName}/voipEcofax/services
-                    POST(): Promise<pack.xdsl.Task>;
+                    $post(): Promise<pack.xdsl.Task>;
                 }
-            }
-            canCancelResiliation:  {
-                // GET /pack/xdsl/{packName}/canCancelResiliation
-                GET(): Promise<boolean>;
-            }
-            exchangeLite:  {
-                options:  {
-                    isEmailAvailable:  {
-                        // GET /pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable
-                        GET(param?: {email: string}): Promise<boolean>;
-                    }
-                }
-                services:  {
-                    // GET /pack/xdsl/{packName}/exchangeLite/services
-                    GET(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/exchangeLite/services
-                    POST(body?: {email: string, antispam?: boolean, firstName?: string, password: string, displayName?: string, initials?: string, lastName?: string}): Promise<pack.xdsl.Task>;
-                    [keys: string]: {
-                        // GET /pack/xdsl/{packName}/exchangeLite/services/{domain}
-                        GET(): Promise<pack.xdsl.ExchangeLiteService>;
-                    } | any
-                }
-            }
-            services:  {
-                // GET /pack/xdsl/{packName}/services
-                GET(): Promise<pack.xdsl.ServiceInformation[]>;
-            }
-            cancelResiliation:  {
-                // POST /pack/xdsl/{packName}/cancelResiliation
-                POST(): Promise<void>;
-            }
-            resiliationTerms:  {
-                // GET /pack/xdsl/{packName}/resiliationTerms
-                GET(param?: {resiliationDate?: string}): Promise<pack.xdsl.ResiliationTerms>;
             }
             resiliate:  {
                 // POST /pack/xdsl/{packName}/resiliate
-                POST(body?: {resiliationSurvey: pack.xdsl.ResiliationSurvey, servicesToKeep?: number[], resiliationDate?: string}): Promise<pack.xdsl.ResiliationFollowUpDetail>;
+                $post(body?: {resiliationDate?: string, resiliationSurvey: pack.xdsl.ResiliationSurvey, servicesToKeep?: number[]}): Promise<pack.xdsl.ResiliationFollowUpDetail>;
             }
-            promotionCode:  {
-                generate:  {
-                    // POST /pack/xdsl/{packName}/promotionCode/generate
-                    POST(): Promise<pack.xdsl.Task>;
+            voipLine:  {
+                options:  {
+                    hardwares:  {
+                        // GET /pack/xdsl/{packName}/voipLine/options/hardwares
+                        $get(): Promise<pack.xdsl.VoIPHardware[]>;
+                    }
+                    shippingAddresses:  {
+                        // GET /pack/xdsl/{packName}/voipLine/options/shippingAddresses
+                        $get(): Promise<pack.xdsl.ShippingAddress[]>;
+                    }
+                    customShippingAddress:  {
+                        // POST /pack/xdsl/{packName}/voipLine/options/customShippingAddress
+                        $post(body?: {address: string, cityName: string, firstName: string, lastName: string, zipCode: string}): Promise<number>;
+                    }
                 }
-                capabilities:  {
-                    // GET /pack/xdsl/{packName}/promotionCode/capabilities
-                    GET(): Promise<pack.xdsl.promotionCode.Capabilities>;
-                }
-            }
-            serviceInfos:  {
-                // GET /pack/xdsl/{packName}/serviceInfos
-                GET(): Promise<services.Service>;
-                // PUT /pack/xdsl/{packName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
-            }
-            voipBillingAccount:  {
                 services:  {
-                    // GET /pack/xdsl/{packName}/voipBillingAccount/services
-                    GET(): Promise<string[]>;
-                }
-            }
-            exchangeOrganization:  {
-                services:  {
-                    // GET /pack/xdsl/{packName}/exchangeOrganization/services
-                    GET(): Promise<string[]>;
+                    // GET /pack/xdsl/{packName}/voipLine/services
+                    $get(): Promise<string[]>;
+                    // POST /pack/xdsl/{packName}/voipLine/services
+                    $post(body?: {hardwareNames: string[], mondialRelayId?: string, shippingId?: string}): Promise<pack.xdsl.VoIPLineOrder>;
+                    [keys: string]: {
+                        // GET /pack/xdsl/{packName}/voipLine/services/{domain}
+                        $get(): Promise<pack.xdsl.VoipLineService>;
+                    } | any
                 }
             }
             migration:  {
                 servicesToDelete:  {
                     // POST /pack/xdsl/{packName}/migration/servicesToDelete
-                    POST(body?: {options?: pack.xdsl.migration.OfferOption[], offerName: string}): Promise<pack.xdsl.migration.SubServiceToDelete[]>;
+                    $post(body?: {offerName: string, options?: pack.xdsl.migration.OfferOption[]}): Promise<pack.xdsl.migration.SubServiceToDelete[]>;
                 }
                 offers:  {
                     // POST /pack/xdsl/{packName}/migration/offers
-                    POST(): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+                    $post(): Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
                 }
                 migrate:  {
                     // POST /pack/xdsl/{packName}/migration/migrate
-                    POST(body?: {nicShipping?: string, engageMonths?: number, otpReference?: string, acceptContracts: boolean, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[], floor?: string, buildingReference?: string, options?: pack.xdsl.migration.OfferOption[], offerName: string, stair?: string, otp?: boolean, mondialRelayId?: number}): Promise<pack.xdsl.Task>;
+                    $post(body?: {acceptContracts: boolean, buildingReference?: string, engageMonths?: number, floor?: string, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[]}): Promise<pack.xdsl.Task>;
                 }
             }
-            xdslAccess:  {
+            domain:  {
                 services:  {
-                    // GET /pack/xdsl/{packName}/xdslAccess/services
-                    GET(): Promise<string[]>;
+                    // GET /pack/xdsl/{packName}/domain/services
+                    $get(): Promise<string[]>;
+                    // POST /pack/xdsl/{packName}/domain/services
+                    $post(body?: {action: pack.xdsl.DomainActionEnum, authInfo?: string, domain: string, tld: string}): Promise<pack.xdsl.Task>;
                 }
+                options:  {
+                    tlds:  {
+                        // GET /pack/xdsl/{packName}/domain/options/tlds
+                        $get(): Promise<string[]>;
+                    }
+                }
+            }
+            serviceInfos:  {
+                // GET /pack/xdsl/{packName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /pack/xdsl/{packName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
+            exchangeOrganization:  {
+                services:  {
+                    // GET /pack/xdsl/{packName}/exchangeOrganization/services
+                    $get(): Promise<string[]>;
+                }
+            }
+            voipBillingAccount:  {
+                services:  {
+                    // GET /pack/xdsl/{packName}/voipBillingAccount/services
+                    $get(): Promise<string[]>;
+                }
+            }
+            hostedEmail:  {
+                services:  {
+                    // GET /pack/xdsl/{packName}/hostedEmail/services
+                    $get(): Promise<string[]>;
+                    // POST /pack/xdsl/{packName}/hostedEmail/services
+                    $post(body?: {email: string, password: string}): Promise<pack.xdsl.Task>;
+                }
+                options:  {
+                    domains:  {
+                        // GET /pack/xdsl/{packName}/hostedEmail/options/domains
+                        $get(): Promise<string[]>;
+                    }
+                }
+            }
+            hubic:  {
+                services:  {
+                    // GET /pack/xdsl/{packName}/hubic/services
+                    $get(): Promise<string[]>;
+                    [keys: string]: {
+                        // GET /pack/xdsl/{packName}/hubic/services/{domain}
+                        $get(): Promise<pack.xdsl.Hubic>;
+                        details:  {
+                            // GET /pack/xdsl/{packName}/hubic/services/{domain}/details
+                            $get(): Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+                        }
+                    } | any
+                }
+            }
+            emailPro:  {
+                options:  {
+                    isEmailAvailable:  {
+                        // GET /pack/xdsl/{packName}/emailPro/options/isEmailAvailable
+                        $get(param?: {email: string}): Promise<boolean>;
+                    }
+                    domains:  {
+                        // GET /pack/xdsl/{packName}/emailPro/options/domains
+                        $get(): Promise<string[]>;
+                    }
+                }
+                services:  {
+                    // GET /pack/xdsl/{packName}/emailPro/services
+                    $get(): Promise<string[]>;
+                    // POST /pack/xdsl/{packName}/emailPro/services
+                    $post(body?: {email: string, password: string}): Promise<pack.xdsl.Task>;
+                }
+            }
+            exchangeLite:  {
+                options:  {
+                    isEmailAvailable:  {
+                        // GET /pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable
+                        $get(param?: {email: string}): Promise<boolean>;
+                    }
+                }
+                services:  {
+                    // GET /pack/xdsl/{packName}/exchangeLite/services
+                    $get(): Promise<string[]>;
+                    // POST /pack/xdsl/{packName}/exchangeLite/services
+                    $post(body?: {antispam?: boolean, displayName?: string, email: string, firstName?: string, initials?: string, lastName?: string, password: string}): Promise<pack.xdsl.Task>;
+                    [keys: string]: {
+                        // GET /pack/xdsl/{packName}/exchangeLite/services/{domain}
+                        $get(): Promise<pack.xdsl.ExchangeLiteService>;
+                    } | any
+                }
+            }
+            subServices:  {
+                // GET /pack/xdsl/{packName}/subServices
+                $get(): Promise<string[]>;
+                [keys: string]: {
+                    // GET /pack/xdsl/{packName}/subServices/{domain}
+                    $get(): Promise<pack.xdsl.Service>;
+                    keepServiceTerms:  {
+                        // GET /pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms
+                        $get(): Promise<pack.xdsl.UnpackTerms>;
+                    }
+                } | any
+            }
+            services:  {
+                // GET /pack/xdsl/{packName}/services
+                $get(): Promise<pack.xdsl.ServiceInformation[]>;
+            }
+            canCancelResiliation:  {
+                // GET /pack/xdsl/{packName}/canCancelResiliation
+                $get(): Promise<boolean>;
+            }
+            changeContact:  {
+                // POST /pack/xdsl/{packName}/changeContact
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
         } | any
     }
 }
 // Api
 type PathsPackXdslGET = '/pack/xdsl' |
-  '/pack/xdsl/{packName}/domain/services' |
-  '/pack/xdsl/{packName}/domain/options/tlds' |
+  '/pack/xdsl/{packName}/xdslAccess/services' |
+  '/pack/xdsl/{packName}/exchangeAccount/services/{domain}' |
+  '/pack/xdsl/{packName}/exchangeAccount/services' |
   '/pack/xdsl/{packName}/shippingAddresses' |
-  '/pack/xdsl/{packName}/hostedEmail/services' |
-  '/pack/xdsl/{packName}/hostedEmail/options/domains' |
+  '/pack/xdsl/{packName}/siteBuilderFull/services' |
+  '/pack/xdsl/{packName}/siteBuilderFull/options/templates' |
+  '/pack/xdsl/{packName}/siteBuilderFull/options/domains' |
+  '/pack/xdsl/{packName}/tasks/{id}' |
+  '/pack/xdsl/{packName}/tasks' |
+  '/pack/xdsl/{packName}/exchangeIndividual/services' |
+  '/pack/xdsl/{packName}/exchangeIndividual/options/domains' |
+  '/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable' |
+  '/pack/xdsl/{packName}/resiliationTerms' |
+  '/pack/xdsl/{packName}/resiliationFollowUp' |
+  '/pack/xdsl/{packName}/promotionCode/capabilities' |
+  '/pack/xdsl/{packName}/siteBuilderStart/services' |
+  '/pack/xdsl/{packName}/siteBuilderStart/options/domains' |
+  '/pack/xdsl/{packName}/siteBuilderStart/options/templates' |
+  '/pack/xdsl/{packName}/voipEcofax/services' |
   '/pack/xdsl/{packName}/voipLine/options/hardwares' |
   '/pack/xdsl/{packName}/voipLine/options/shippingAddresses' |
   '/pack/xdsl/{packName}/voipLine/services/{domain}' |
   '/pack/xdsl/{packName}/voipLine/services' |
-  '/pack/xdsl/{packName}/emailPro/services' |
-  '/pack/xdsl/{packName}/emailPro/options/domains' |
-  '/pack/xdsl/{packName}/emailPro/options/isEmailAvailable' |
-  '/pack/xdsl/{packName}/exchangeIndividual/services' |
-  '/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable' |
-  '/pack/xdsl/{packName}/exchangeIndividual/options/domains' |
-  '/pack/xdsl/{packName}/siteBuilderFull/options/templates' |
-  '/pack/xdsl/{packName}/siteBuilderFull/options/domains' |
-  '/pack/xdsl/{packName}/siteBuilderFull/services' |
-  '/pack/xdsl/{packName}/siteBuilderStart/options/domains' |
-  '/pack/xdsl/{packName}/siteBuilderStart/options/templates' |
-  '/pack/xdsl/{packName}/siteBuilderStart/services' |
-  '/pack/xdsl/{packName}/tasks' |
-  '/pack/xdsl/{packName}/tasks/{id}' |
-  '/pack/xdsl/{packName}/resiliationFollowUp' |
-  '/pack/xdsl/{packName}/subServices/{domain}' |
-  '/pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms' |
-  '/pack/xdsl/{packName}/subServices' |
+  '/pack/xdsl/{packName}/domain/services' |
+  '/pack/xdsl/{packName}/domain/options/tlds' |
+  '/pack/xdsl/{packName}/serviceInfos' |
+  '/pack/xdsl/{packName}/exchangeOrganization/services' |
+  '/pack/xdsl/{packName}/voipBillingAccount/services' |
+  '/pack/xdsl/{packName}/hostedEmail/services' |
+  '/pack/xdsl/{packName}/hostedEmail/options/domains' |
   '/pack/xdsl/{packName}/hubic/services' |
   '/pack/xdsl/{packName}/hubic/services/{domain}' |
   '/pack/xdsl/{packName}/hubic/services/{domain}/details' |
-  '/pack/xdsl/{packName}/exchangeAccount/services' |
-  '/pack/xdsl/{packName}/exchangeAccount/services/{domain}' |
-  '/pack/xdsl/{packName}/voipEcofax/services' |
-  '/pack/xdsl/{packName}/canCancelResiliation' |
-  '/pack/xdsl/{packName}' |
+  '/pack/xdsl/{packName}/emailPro/options/isEmailAvailable' |
+  '/pack/xdsl/{packName}/emailPro/options/domains' |
+  '/pack/xdsl/{packName}/emailPro/services' |
   '/pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable' |
-  '/pack/xdsl/{packName}/exchangeLite/services' |
   '/pack/xdsl/{packName}/exchangeLite/services/{domain}' |
+  '/pack/xdsl/{packName}/exchangeLite/services' |
+  '/pack/xdsl/{packName}' |
+  '/pack/xdsl/{packName}/subServices/{domain}' |
+  '/pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms' |
+  '/pack/xdsl/{packName}/subServices' |
   '/pack/xdsl/{packName}/services' |
-  '/pack/xdsl/{packName}/resiliationTerms' |
-  '/pack/xdsl/{packName}/promotionCode/capabilities' |
-  '/pack/xdsl/{packName}/serviceInfos' |
-  '/pack/xdsl/{packName}/voipBillingAccount/services' |
-  '/pack/xdsl/{packName}/exchangeOrganization/services' |
-  '/pack/xdsl/{packName}/xdslAccess/services';
+  '/pack/xdsl/{packName}/canCancelResiliation';
 
-type PathsPackXdslPUT = '/pack/xdsl/{packName}' |
-  '/pack/xdsl/{packName}/serviceInfos';
+type PathsPackXdslPUT = '/pack/xdsl/{packName}/serviceInfos' |
+  '/pack/xdsl/{packName}';
 
-type PathsPackXdslPOST = '/pack/xdsl/{packName}/domain/services' |
+type PathsPackXdslPOST = '/pack/xdsl/{packName}/siteBuilderFull/services' |
+  '/pack/xdsl/{packName}/exchangeIndividual/services' |
+  '/pack/xdsl/{packName}/promotionCode/generate' |
   '/pack/xdsl/{packName}/addressMove/move' |
   '/pack/xdsl/{packName}/addressMove/eligibility' |
-  '/pack/xdsl/{packName}/hostedEmail/services' |
+  '/pack/xdsl/{packName}/cancelResiliation' |
+  '/pack/xdsl/{packName}/siteBuilderStart/services' |
+  '/pack/xdsl/{packName}/voipEcofax/services' |
+  '/pack/xdsl/{packName}/resiliate' |
   '/pack/xdsl/{packName}/voipLine/options/customShippingAddress' |
   '/pack/xdsl/{packName}/voipLine/services' |
-  '/pack/xdsl/{packName}/emailPro/services' |
-  '/pack/xdsl/{packName}/exchangeIndividual/services' |
-  '/pack/xdsl/{packName}/siteBuilderFull/services' |
-  '/pack/xdsl/{packName}/siteBuilderStart/services' |
-  '/pack/xdsl/{packName}/changeContact' |
-  '/pack/xdsl/{packName}/voipEcofax/services' |
-  '/pack/xdsl/{packName}/exchangeLite/services' |
-  '/pack/xdsl/{packName}/cancelResiliation' |
-  '/pack/xdsl/{packName}/resiliate' |
-  '/pack/xdsl/{packName}/promotionCode/generate' |
   '/pack/xdsl/{packName}/migration/servicesToDelete' |
   '/pack/xdsl/{packName}/migration/offers' |
-  '/pack/xdsl/{packName}/migration/migrate';
+  '/pack/xdsl/{packName}/migration/migrate' |
+  '/pack/xdsl/{packName}/domain/services' |
+  '/pack/xdsl/{packName}/hostedEmail/services' |
+  '/pack/xdsl/{packName}/emailPro/services' |
+  '/pack/xdsl/{packName}/exchangeLite/services' |
+  '/pack/xdsl/{packName}/changeContact';
 
 export class ApiPackXdsl extends OvhWrapper {
   constructor(engine: OvhRequestable) {
@@ -932,7 +932,7 @@ export class ApiPackXdsl extends OvhWrapper {
    * details operations
    * Details associated to a voucher
    */
-  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', params: {packName: string, domain: string}): Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', params: {packName: string, domain: string}): Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
   /**
    * capabilities operations
    * Get informations about the promotion code generation
@@ -1073,12 +1073,12 @@ export class ApiPackXdsl extends OvhWrapper {
    * eligibility operations
    * Eligibility to move the access
    */
-  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', params: {packName: string, address?: OVH.xdsl.eligibility.Address, lineNumber?: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', params: {packName: string, address?: OVH.xdsl.eligibility.Address, lineNumber?: string}): Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
   /**
    * move operations
    * Move the access to another address
    */
-  public post(path: '/pack/xdsl/{packName}/addressMove/move', params: {packName: string, creation?: OVH.pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: OVH.pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: OVH.xdsl.eligibility.ProviderEnum}): Promise<pack.xdsl.AsyncTask<number>>;
+  public post(path: '/pack/xdsl/{packName}/addressMove/move', params: {packName: string, creation?: OVH.pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: OVH.pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: OVH.xdsl.eligibility.ProviderEnum}): Promise<xdsl.AsyncTask<number>>;
   /**
    * cancelResiliation operations
    * Cancel the ongoing resiliation
@@ -1123,7 +1123,7 @@ export class ApiPackXdsl extends OvhWrapper {
    * offers operations
    * Get the possibilities of migration offers available
    */
-  public post(path: '/pack/xdsl/{packName}/migration/offers', params: {packName: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+  public post(path: '/pack/xdsl/{packName}/migration/offers', params: {packName: string}): Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
   /**
    * servicesToDelete operations
    * Calculate services to delete with new offer and options

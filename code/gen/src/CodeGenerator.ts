@@ -289,27 +289,25 @@ export class CodeGenerator {
                 // code += `${ident}/**\n${ident} * ${op.description}\n${ident} */\n`;
                 code += `${ident}// ${op.httpMethod} ${api._path}\n`;
 
-                code += `${ident}${op.httpMethod}(`;
+                code += `${ident}$${op.httpMethod.toLowerCase()}(`;
                 let params: Parameter[] = [];
                 if (op.httpMethod == 'GET') {
                     params = op.parameters.filter(p => p.paramType === 'query')
                     if (params.length)
                         code += 'param?: {'
                 } else {
-                    params = op.parameters.filter(p => p.paramType === 'body')
+                    params = op.parameters.filter(p => p.paramType === 'body').sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
                     if (params.length)
                         code += 'body?: {'
                 }
-                for (let i = 0; i < params.length; i++) {
-                    const param = params[i];
-                    if (i > 0)
-                        code += ', ';
-                    code += protectJsonKey(String(param.name || 'body'));
+
+                let array = params.map(param => {
+                    let text = protectJsonKey(String(param.name || 'body'));
                     if (!param.required)
-                        code += "?";
-                    code += ": ";
-                    code += this.fullTypeExp(param);
-                }
+                        text += "?";
+                    return `${text}: ${this.fullTypeExp(param)}`;
+                })
+                code += array.join(', ');
                 if (params.length)
                     code += '}'
                 code += `): `;

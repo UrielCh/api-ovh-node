@@ -115,106 +115,106 @@ export namespace sslGateway {
 // path /sslGateway
 export interface SslGateway {
     // GET /sslGateway
-    GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
+    availableZones:  {
+        // GET /sslGateway/availableZones
+        $get(): Promise<string[]>;
+    }
     [keys: string]: {
         // GET /sslGateway/{serviceName}
-        GET(): Promise<sslGateway.SslGateway>;
+        $get(): Promise<sslGateway.SslGateway>;
         // PUT /sslGateway/{serviceName}
-        PUT(body?: {body: sslGateway.SslGateway}): Promise<void>;
-        renewCertificate:  {
-            // POST /sslGateway/{serviceName}/renewCertificate
-            POST(body?: {domain?: string}): Promise<string[]>;
-        }
-        server:  {
-            // GET /sslGateway/{serviceName}/server
-            GET(): Promise<number[]>;
-            // POST /sslGateway/{serviceName}/server
-            POST(body?: {address: string, port: number}): Promise<sslGateway.Server>;
-            [keys: string]: {
-                // GET /sslGateway/{serviceName}/server/{id}
-                GET(): Promise<sslGateway.Server>;
-                // PUT /sslGateway/{serviceName}/server/{id}
-                PUT(body?: {body: sslGateway.Server}): Promise<void>;
-                // DELETE /sslGateway/{serviceName}/server/{id}
-                DELETE(): Promise<void>;
-            } | any
+        $put(body?: {body: sslGateway.SslGateway}): Promise<void>;
+        serviceInfos:  {
+            // GET /sslGateway/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /sslGateway/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
         }
         changeContact:  {
             // POST /sslGateway/{serviceName}/changeContact
-            POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
+            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
         }
-        task:  {
-            // GET /sslGateway/{serviceName}/task
-            GET(): Promise<number[]>;
+        server:  {
+            // GET /sslGateway/{serviceName}/server
+            $get(): Promise<number[]>;
+            // POST /sslGateway/{serviceName}/server
+            $post(body?: {address: string, port: number}): Promise<sslGateway.Server>;
             [keys: string]: {
-                // GET /sslGateway/{serviceName}/task/{id}
-                GET(): Promise<sslGateway.Task>;
+                // GET /sslGateway/{serviceName}/server/{id}
+                $get(): Promise<sslGateway.Server>;
+                // PUT /sslGateway/{serviceName}/server/{id}
+                $put(body?: {body: sslGateway.Server}): Promise<void>;
+                // DELETE /sslGateway/{serviceName}/server/{id}
+                $delete(): Promise<void>;
             } | any
         }
         domain:  {
             // GET /sslGateway/{serviceName}/domain
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             // POST /sslGateway/{serviceName}/domain
-            POST(body?: {domain: string}): Promise<sslGateway.Domain>;
+            $post(body?: {domain: string}): Promise<sslGateway.Domain>;
             [keys: string]: {
                 // GET /sslGateway/{serviceName}/domain/{id}
-                GET(): Promise<sslGateway.Domain>;
+                $get(): Promise<sslGateway.Domain>;
                 // DELETE /sslGateway/{serviceName}/domain/{id}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
             } | any
-        }
-        serviceInfos:  {
-            // GET /sslGateway/{serviceName}/serviceInfos
-            GET(): Promise<services.Service>;
-            // PUT /sslGateway/{serviceName}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
         }
         natIp:  {
             // GET /sslGateway/{serviceName}/natIp
-            GET(): Promise<sslGateway.NatIps[]>;
-        }
-        confirmTermination:  {
-            // POST /sslGateway/{serviceName}/confirmTermination
-            POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
+            $get(): Promise<sslGateway.NatIps[]>;
         }
         terminate:  {
             // POST /sslGateway/{serviceName}/terminate
-            POST(): Promise<string>;
+            $post(): Promise<string>;
+        }
+        renewCertificate:  {
+            // POST /sslGateway/{serviceName}/renewCertificate
+            $post(body?: {domain?: string}): Promise<string[]>;
+        }
+        confirmTermination:  {
+            // POST /sslGateway/{serviceName}/confirmTermination
+            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+        }
+        task:  {
+            // GET /sslGateway/{serviceName}/task
+            $get(): Promise<number[]>;
+            [keys: string]: {
+                // GET /sslGateway/{serviceName}/task/{id}
+                $get(): Promise<sslGateway.Task>;
+            } | any
         }
     } | any
-    availableZones:  {
-        // GET /sslGateway/availableZones
-        GET(): Promise<string[]>;
-    }
     eligibility:  {
         // GET /sslGateway/eligibility
-        GET(param?: {domain: string}): Promise<sslGateway.EligibilityStatus>;
+        $get(param?: {domain: string}): Promise<sslGateway.EligibilityStatus>;
     }
 }
 // Api
-type PathsSslGatewayGET = '/sslGateway/{serviceName}/server' |
+type PathsSslGatewayGET = '/sslGateway/availableZones' |
+  '/sslGateway' |
+  '/sslGateway/{serviceName}' |
+  '/sslGateway/{serviceName}/serviceInfos' |
+  '/sslGateway/{serviceName}/server' |
   '/sslGateway/{serviceName}/server/{id}' |
-  '/sslGateway/{serviceName}/task' |
-  '/sslGateway/{serviceName}/task/{id}' |
   '/sslGateway/{serviceName}/domain' |
   '/sslGateway/{serviceName}/domain/{id}' |
-  '/sslGateway/{serviceName}/serviceInfos' |
   '/sslGateway/{serviceName}/natIp' |
-  '/sslGateway/{serviceName}' |
-  '/sslGateway/availableZones' |
-  '/sslGateway' |
+  '/sslGateway/{serviceName}/task' |
+  '/sslGateway/{serviceName}/task/{id}' |
   '/sslGateway/eligibility';
 
-type PathsSslGatewayPUT = '/sslGateway/{serviceName}/server/{id}' |
+type PathsSslGatewayPUT = '/sslGateway/{serviceName}' |
   '/sslGateway/{serviceName}/serviceInfos' |
-  '/sslGateway/{serviceName}';
+  '/sslGateway/{serviceName}/server/{id}';
 
-type PathsSslGatewayPOST = '/sslGateway/{serviceName}/renewCertificate' |
+type PathsSslGatewayPOST = '/sslGateway/{serviceName}/changeContact' |
   '/sslGateway/{serviceName}/server' |
-  '/sslGateway/{serviceName}/changeContact' |
   '/sslGateway/{serviceName}/domain' |
-  '/sslGateway/{serviceName}/confirmTermination' |
-  '/sslGateway/{serviceName}/terminate';
+  '/sslGateway/{serviceName}/terminate' |
+  '/sslGateway/{serviceName}/renewCertificate' |
+  '/sslGateway/{serviceName}/confirmTermination';
 
 type PathsSslGatewayDELETE = '/sslGateway/{serviceName}/server/{id}' |
   '/sslGateway/{serviceName}/domain/{id}';

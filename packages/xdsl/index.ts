@@ -1059,261 +1059,329 @@ export namespace xdsl {
 // path /xdsl
 export interface Xdsl {
     // GET /xdsl
-    GET(): Promise<string[]>;
-    incidents:  {
-        // GET /xdsl/incidents
-        GET(param?: {creationDate?: string, endDate?: string}): Promise<number[]>;
-        [keys: string]: {
-            // GET /xdsl/incidents/{id}
-            GET(): Promise<xdsl.Incident>;
-        } | any
-    }
+    $get(): Promise<string[]>;
     eligibility:  {
-        test:  {
-            // GET /xdsl/eligibility/test
-            GET(param?: {id: string}): Promise<xdsl.eligibility.Eligibility>;
-            fiber:  {
-                building:  {
-                    // POST /xdsl/eligibility/test/fiber/building
-                    POST(body?: {building: string}): Promise<xdsl.AsyncTask<xdsl.eligibility.FiberEligibility>>;
-                }
-            }
-            address:  {
-                // POST /xdsl/eligibility/test/address
-                POST(body?: {address: xdsl.eligibility.Address}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
-            }
-            line:  {
-                // POST /xdsl/eligibility/test/line
-                POST(body?: {lineNumber: string, lineStatus: xdsl.eligibility.LandlineStatusEnum}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
-            }
-        }
-        cities:  {
-            // GET /xdsl/eligibility/cities
-            GET(param?: {zipCode: string}): Promise<xdsl.eligibility.City[]>;
-        }
         search:  {
-            buildings:  {
-                // POST /xdsl/eligibility/search/buildings
-                POST(body?: {streetNumber: string, streetCode: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Building>>;
-            }
-            cities:  {
-                // POST /xdsl/eligibility/search/cities
-                POST(body?: {zipCode: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.City>>;
+            streetNumbers:  {
+                // POST /xdsl/eligibility/search/streetNumbers
+                $post(body?: {streetCode: string}): Promise<xdsl.AsyncTaskArray<string>>;
             }
             fiberStreets:  {
                 // POST /xdsl/eligibility/search/fiberStreets
-                POST(body?: {inseeCode: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.FiberStreet>>;
+                $post(body?: {inseeCode: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.FiberStreet>>;
             }
-            streetNumbers:  {
-                // POST /xdsl/eligibility/search/streetNumbers
-                POST(body?: {streetCode: string}): Promise<xdsl.AsyncTaskArray<string>>;
+            cities:  {
+                // POST /xdsl/eligibility/search/cities
+                $post(body?: {zipCode: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.City>>;
+            }
+            buildings:  {
+                // POST /xdsl/eligibility/search/buildings
+                $post(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Building>>;
             }
         }
-        meetings:  {
-            // GET /xdsl/eligibility/meetings
-            GET(param?: {eligibilityId: string, offerLabel: string}): Promise<xdsl.AsyncTask<xdsl.eligibility.MeetingSlots>>;
-        }
-        lines:  {
-            inactive:  {
-                // POST /xdsl/eligibility/lines/inactive
-                POST(body?: {contactName?: string, street: xdsl.eligibility.Street, city: xdsl.eligibility.City, streetNumber?: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
+        test:  {
+            // GET /xdsl/eligibility/test
+            $get(param?: {id: string}): Promise<xdsl.eligibility.Eligibility>;
+            line:  {
+                // POST /xdsl/eligibility/test/line
+                $post(body?: {lineNumber: string, lineStatus: xdsl.eligibility.LandlineStatusEnum}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
             }
-            active:  {
-                // POST /xdsl/eligibility/lines/active
-                POST(body?: {streetNumber?: string, city: xdsl.eligibility.City, street: xdsl.eligibility.Street, contactName: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
+            address:  {
+                // POST /xdsl/eligibility/test/address
+                $post(body?: {address: xdsl.eligibility.Address}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
+            }
+            fiber:  {
+                building:  {
+                    // POST /xdsl/eligibility/test/fiber/building
+                    $post(body?: {building: string}): Promise<xdsl.AsyncTask<xdsl.eligibility.FiberEligibility>>;
+                }
             }
         }
         streets:  {
             // GET /xdsl/eligibility/streets
-            GET(param?: {partialName: string, inseeCode: string}): Promise<xdsl.eligibility.Street[]>;
+            $get(param?: {inseeCode: string, partialName: string}): Promise<xdsl.eligibility.Street[]>;
         }
+        meetings:  {
+            // GET /xdsl/eligibility/meetings
+            $get(param?: {offerLabel: string, eligibilityId: string}): Promise<xdsl.AsyncTask<xdsl.eligibility.MeetingSlots>>;
+        }
+        cities:  {
+            // GET /xdsl/eligibility/cities
+            $get(param?: {zipCode: string}): Promise<xdsl.eligibility.City[]>;
+        }
+        lines:  {
+            inactive:  {
+                // POST /xdsl/eligibility/lines/inactive
+                $post(body?: {city: xdsl.eligibility.City, contactName?: string, street: xdsl.eligibility.Street, streetNumber?: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
+            }
+            active:  {
+                // POST /xdsl/eligibility/lines/active
+                $post(body?: {city: xdsl.eligibility.City, contactName: string, street: xdsl.eligibility.Street, streetNumber?: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
+            }
+        }
+    }
+    incidents:  {
+        // GET /xdsl/incidents
+        $get(param?: {creationDate?: string, endDate?: string}): Promise<number[]>;
+        [keys: string]: {
+            // GET /xdsl/incidents/{id}
+            $get(): Promise<xdsl.Incident>;
+        } | any
     }
     email:  {
         pro:  {
             // GET /xdsl/email/pro
-            GET(): Promise<string[]>;
+            $get(): Promise<string[]>;
             [keys: string]: {
                 // GET /xdsl/email/pro/{email}
-                GET(): Promise<xdsl.xdslEmailPro>;
+                $get(): Promise<xdsl.xdslEmailPro>;
                 // PUT /xdsl/email/pro/{email}
-                PUT(body?: {body: xdsl.xdslEmailPro}): Promise<void>;
+                $put(body?: {body: xdsl.xdslEmailPro}): Promise<void>;
                 // DELETE /xdsl/email/pro/{email}
-                DELETE(): Promise<void>;
+                $delete(): Promise<void>;
                 changePassword:  {
                     // POST /xdsl/email/pro/{email}/changePassword
-                    POST(body?: {password: string}): Promise<xdsl.email.pro.Task>;
+                    $post(body?: {password: string}): Promise<xdsl.email.pro.Task>;
                 }
             } | any
         }
     }
+    templateModem:  {
+        // GET /xdsl/templateModem
+        $get(): Promise<string[]>;
+        // POST /xdsl/templateModem
+        $post(body?: {name: string, serviceName: string}): Promise<xdsl.TemplateModem>;
+        [keys: string]: {
+            // GET /xdsl/templateModem/{name}
+            $get(): Promise<xdsl.TemplateModem>;
+            // PUT /xdsl/templateModem/{name}
+            $put(body?: {body: xdsl.TemplateModem}): Promise<void>;
+            // DELETE /xdsl/templateModem/{name}
+            $delete(): Promise<void>;
+        } | any
+    }
+    spare:  {
+        // GET /xdsl/spare
+        $get(): Promise<string[]>;
+        [keys: string]: {
+            // GET /xdsl/spare/{spare}
+            $get(): Promise<spare.xdsl.XdslSpare>;
+            // DELETE /xdsl/spare/{spare}
+            $delete(): Promise<void>;
+            compatibleReplacement:  {
+                // GET /xdsl/spare/{spare}/compatibleReplacement
+                $get(): Promise<string[]>;
+            }
+            serviceInfos:  {
+                // GET /xdsl/spare/{spare}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /xdsl/spare/{spare}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
+            returnMerchandise:  {
+                // POST /xdsl/spare/{spare}/returnMerchandise
+                $post(): Promise<void>;
+            }
+            replace:  {
+                // POST /xdsl/spare/{spare}/replace
+                $post(body?: {domain: string}): Promise<void>;
+            }
+        } | any
+        brands:  {
+            // GET /xdsl/spare/brands
+            $get(): Promise<string[]>;
+        }
+    }
     [keys: string]: {
         // GET /xdsl/{serviceName}
-        GET(): Promise<xdsl.Access>;
+        $get(): Promise<xdsl.Access>;
         // PUT /xdsl/{serviceName}
-        PUT(body?: {body: xdsl.Access}): Promise<void>;
-        lines:  {
-            // GET /xdsl/{serviceName}/lines
-            GET(): Promise<string[]>;
+        $put(body?: {body: xdsl.Access}): Promise<void>;
+        radiusConnectionLogs:  {
+            // GET /xdsl/{serviceName}/radiusConnectionLogs
+            $get(): Promise<xdsl.RadiusConnectionLog[]>;
+        }
+        ips:  {
+            // GET /xdsl/{serviceName}/ips
+            $get(): Promise<string[]>;
+            // POST /xdsl/{serviceName}/ips
+            $post(): Promise<xdsl.Task>;
             [keys: string]: {
-                // GET /xdsl/{serviceName}/lines/{number}
-                GET(): Promise<xdsl.Line>;
-                dslamPort:  {
-                    // GET /xdsl/{serviceName}/lines/{number}/dslamPort
-                    GET(): Promise<xdsl.DslamPort>;
-                    reset:  {
-                        // POST /xdsl/{serviceName}/lines/{number}/dslamPort/reset
-                        POST(): Promise<xdsl.Task>;
-                    }
-                    logs:  {
-                        // GET /xdsl/{serviceName}/lines/{number}/dslamPort/logs
-                        GET(param?: {limit: number}): Promise<xdsl.DslamPortLog[]>;
-                    }
-                    availableProfiles:  {
-                        // GET /xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles
-                        GET(): Promise<xdsl.DslamLineProfile[]>;
-                    }
-                    changeProfile:  {
-                        // POST /xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile
-                        POST(body?: {dslamProfileId: number}): Promise<xdsl.Task>;
-                    }
-                }
-                diagnostic:  {
-                    cancel:  {
-                        // POST /xdsl/{serviceName}/lines/{number}/diagnostic/cancel
-                        POST(): Promise<void>;
-                    }
-                    run:  {
-                        // POST /xdsl/{serviceName}/lines/{number}/diagnostic/run
-                        POST(body?: {answers?: xdsl.lineDiagnostic.Answers, faultType: xdsl.lineDiagnostic.FaultTypeEnum, actionsDone?: xdsl.lineDiagnostic.CustomerActionsEnum[]}): Promise<xdsl.lineDiagnostic.Diagnostic>;
-                    }
-                }
-                statistics:  {
-                    // GET /xdsl/{serviceName}/lines/{number}/statistics
-                    GET(param?: {period: xdsl.StatisticsPeriodEnum, type: xdsl.LineStatisticsTypeEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
-                }
+                // GET /xdsl/{serviceName}/ips/{ip}
+                $get(): Promise<xdsl.IP>;
+                // DELETE /xdsl/{serviceName}/ips/{ip}
+                $delete(): Promise<void>;
             } | any
-        }
-        serviceInfos:  {
-            // GET /xdsl/{serviceName}/serviceInfos
-            GET(): Promise<services.Service>;
-            // PUT /xdsl/{serviceName}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
-        }
-        pendingAction:  {
-            // GET /xdsl/{serviceName}/pendingAction
-            GET(): Promise<xdsl.PendingAction>;
         }
         totalDeconsolidationTerms:  {
             // GET /xdsl/{serviceName}/totalDeconsolidationTerms
-            GET(): Promise<xdsl.DeconsolidationTerms>;
+            $get(): Promise<xdsl.DeconsolidationTerms>;
+        }
+        serviceInfos:  {
+            // GET /xdsl/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /xdsl/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
+        }
+        changeContact:  {
+            // POST /xdsl/{serviceName}/changeContact
+            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+        }
+        resiliate:  {
+            // POST /xdsl/{serviceName}/resiliate
+            $post(body?: {resiliationDate?: string, resiliationSurvey: xdsl.ResiliationSurvey}): Promise<xdsl.ResiliationFollowUpDetail>;
+        }
+        sendOrderToProvider:  {
+            // POST /xdsl/{serviceName}/sendOrderToProvider
+            $post(): Promise<void>;
+        }
+        antiSpams:  {
+            // GET /xdsl/{serviceName}/antiSpams
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /xdsl/{serviceName}/antiSpams/{ip}
+                $get(): Promise<xdsl.AntiSpam>;
+                evidences:  {
+                    // GET /xdsl/{serviceName}/antiSpams/{ip}/evidences
+                    $get(): Promise<xdsl.antiSpam.EvidencesInfo>;
+                }
+            } | any
+        }
+        tasks:  {
+            // GET /xdsl/{serviceName}/tasks
+            $get(param?: {status?: xdsl.TaskStatusEnum, function_?: string}): Promise<number[]>;
+            [keys: string]: {
+                // GET /xdsl/{serviceName}/tasks/{id}
+                $get(): Promise<xdsl.Task>;
+                archive:  {
+                    // POST /xdsl/{serviceName}/tasks/{id}/archive
+                    $post(): Promise<void>;
+                }
+            } | any
+        }
+        requestPPPLoginMail:  {
+            // POST /xdsl/{serviceName}/requestPPPLoginMail
+            $post(): Promise<void>;
+        }
+        statistics:  {
+            // GET /xdsl/{serviceName}/statistics
+            $get(param?: {type: xdsl.AccessStatisticsTypeEnum, period: xdsl.StatisticsPeriodEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
+        }
+        pendingAction:  {
+            // GET /xdsl/{serviceName}/pendingAction
+            $get(): Promise<xdsl.PendingAction>;
+        }
+        ipv6:  {
+            // POST /xdsl/{serviceName}/ipv6
+            $post(body?: {enabled: boolean}): Promise<xdsl.Task>;
+        }
+        updateInvalidOrMissingRio:  {
+            // POST /xdsl/{serviceName}/updateInvalidOrMissingRio
+            $post(body?: {relaunchWithoutPortability: boolean, rio?: string}): Promise<void>;
+        }
+        requestTotalDeconsolidation:  {
+            // POST /xdsl/{serviceName}/requestTotalDeconsolidation
+            $post(body?: {noPortability?: boolean, rio?: string}): Promise<xdsl.Task>;
+        }
+        resiliationTerms:  {
+            // GET /xdsl/{serviceName}/resiliationTerms
+            $get(param?: {resiliationDate?: string}): Promise<xdsl.ResiliationTerms>;
+        }
+        monitoringNotifications:  {
+            // GET /xdsl/{serviceName}/monitoringNotifications
+            $get(): Promise<number[]>;
+            // POST /xdsl/{serviceName}/monitoringNotifications
+            $post(body?: {allowIncident?: boolean, downThreshold?: number, email?: string, frequency: xdsl.monitoringNotifications.FrequencyEnum, phone?: string, smsAccount?: string, type: xdsl.monitoringNotifications.TypeEnum}): Promise<xdsl.MonitoringNotification>;
+            [keys: string]: {
+                // GET /xdsl/{serviceName}/monitoringNotifications/{id}
+                $get(): Promise<xdsl.MonitoringNotification>;
+                // PUT /xdsl/{serviceName}/monitoringNotifications/{id}
+                $put(body?: {body: xdsl.MonitoringNotification}): Promise<void>;
+                // DELETE /xdsl/{serviceName}/monitoringNotifications/{id}
+                $delete(): Promise<void>;
+            } | any
+        }
+        rma:  {
+            // GET /xdsl/{serviceName}/rma
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /xdsl/{serviceName}/rma/{id}
+                $get(): Promise<telephony.Rma>;
+                // PUT /xdsl/{serviceName}/rma/{id}
+                $put(body?: {body: telephony.Rma}): Promise<void>;
+                // DELETE /xdsl/{serviceName}/rma/{id}
+                $delete(): Promise<void>;
+            } | any
+        }
+        incident:  {
+            // GET /xdsl/{serviceName}/incident
+            $get(): Promise<xdsl.Incident>;
+        }
+        applyTemplateToModem:  {
+            // POST /xdsl/{serviceName}/applyTemplateToModem
+            $post(body?: {templateName: string}): Promise<xdsl.Task>;
+        }
+        resiliationFollowup:  {
+            // GET /xdsl/{serviceName}/resiliationFollowup
+            $get(): Promise<xdsl.ResiliationFollowUpDetail>;
+        }
+        diagnostic:  {
+            // GET /xdsl/{serviceName}/diagnostic
+            $get(): Promise<xdsl.AccessDiagnostic>;
+            // POST /xdsl/{serviceName}/diagnostic
+            $post(): Promise<xdsl.Task>;
         }
         modem:  {
             // GET /xdsl/{serviceName}/modem
-            GET(): Promise<xdsl.Modem>;
+            $get(): Promise<xdsl.Modem>;
             // PUT /xdsl/{serviceName}/modem
-            PUT(body?: {body: xdsl.Modem}): Promise<void>;
+            $put(body?: {body: xdsl.Modem}): Promise<void>;
+            reconfigureVoip:  {
+                // POST /xdsl/{serviceName}/modem/reconfigureVoip
+                $post(): Promise<void>;
+            }
+            firmware:  {
+                // POST /xdsl/{serviceName}/modem/firmware
+                $post(body?: {firmware: string, todoDate?: string}): Promise<xdsl.Task>;
+                // GET /xdsl/{serviceName}/modem/firmware
+                $get(): Promise<string>;
+            }
             connectedDevices:  {
                 // GET /xdsl/{serviceName}/modem/connectedDevices
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /xdsl/{serviceName}/modem/connectedDevices/{macAddress}
-                    GET(): Promise<xdsl.connectedDevice>;
+                    $get(): Promise<xdsl.connectedDevice>;
                 } | any
-            }
-            retrieveInfo:  {
-                // POST /xdsl/{serviceName}/modem/retrieveInfo
-                POST(): Promise<xdsl.AsyncTask<xdsl.ModemInfo>>;
-            }
-            refreshConnectedDevices:  {
-                // POST /xdsl/{serviceName}/modem/refreshConnectedDevices
-                POST(): Promise<xdsl.Task>;
-            }
-            resetPortMappingConfig:  {
-                // POST /xdsl/{serviceName}/modem/resetPortMappingConfig
-                POST(): Promise<void>;
-            }
-            upnp:  {
-                // GET /xdsl/{serviceName}/modem/upnp
-                GET(): Promise<xdsl.ServiceStatusEnum>;
-                // POST /xdsl/{serviceName}/modem/upnp
-                POST(body?: {upnp: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
-            }
-            contentSharing:  {
-                // GET /xdsl/{serviceName}/modem/contentSharing
-                GET(): Promise<xdsl.ServiceStatusEnum>;
-                // POST /xdsl/{serviceName}/modem/contentSharing
-                POST(body?: {contentSharing: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
-            }
-            firmwareAvailable:  {
-                // GET /xdsl/{serviceName}/modem/firmwareAvailable
-                GET(): Promise<string[]>;
-            }
-            reboot:  {
-                // POST /xdsl/{serviceName}/modem/reboot
-                POST(body?: {todoDate?: string}): Promise<xdsl.Task>;
-            }
-            sipAlg:  {
-                // GET /xdsl/{serviceName}/modem/sipAlg
-                GET(): Promise<xdsl.ServiceStatusEnum>;
-                // POST /xdsl/{serviceName}/modem/sipAlg
-                POST(body?: {sipAlg: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
-            }
-            portMappings:  {
-                // GET /xdsl/{serviceName}/modem/portMappings
-                GET(): Promise<string[]>;
-                // POST /xdsl/{serviceName}/modem/portMappings
-                POST(body?: {externalPortEnd?: number, internalPort: number, externalPortStart: number, protocol: xdsl.xdslModemConfig.ProtocolTypeEnum, allowedRemoteIp?: string, description?: string, name: string, internalClient: string}): Promise<xdsl.PortMapping>;
-                [keys: string]: {
-                    // GET /xdsl/{serviceName}/modem/portMappings/{name}
-                    GET(): Promise<xdsl.PortMapping>;
-                    // PUT /xdsl/{serviceName}/modem/portMappings/{name}
-                    PUT(body?: {body: xdsl.PortMapping}): Promise<void>;
-                    // DELETE /xdsl/{serviceName}/modem/portMappings/{name}
-                    DELETE(): Promise<xdsl.Task>;
-                } | any
-            }
-            availableWLANChannel:  {
-                // GET /xdsl/{serviceName}/modem/availableWLANChannel
-                GET(param?: {frequency: xdsl.WLANFrequencyEnum}): Promise<number[]>;
-            }
-            duplicatePortMappingConfig:  {
-                // POST /xdsl/{serviceName}/modem/duplicatePortMappingConfig
-                POST(body?: {accessName: string}): Promise<void>;
-            }
-            ftp:  {
-                // POST /xdsl/{serviceName}/modem/ftp
-                POST(body?: {ftp: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
-                // GET /xdsl/{serviceName}/modem/ftp
-                GET(): Promise<xdsl.ServiceStatusEnum>;
             }
             lan:  {
                 // GET /xdsl/{serviceName}/modem/lan
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /xdsl/{serviceName}/modem/lan/{lanName}
-                    GET(): Promise<xdsl.LAN>;
+                    $get(): Promise<xdsl.LAN>;
                     // PUT /xdsl/{serviceName}/modem/lan/{lanName}
-                    PUT(body?: {body: xdsl.LAN}): Promise<void>;
+                    $put(body?: {body: xdsl.LAN}): Promise<void>;
                     dhcp:  {
                         // GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         [keys: string]: {
                             // GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}
-                            GET(): Promise<xdsl.DHCP>;
+                            $get(): Promise<xdsl.DHCP>;
                             // PUT /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}
-                            PUT(body?: {body: xdsl.DHCP}): Promise<void>;
+                            $put(body?: {body: xdsl.DHCP}): Promise<void>;
                             DHCPStaticAddresses:  {
                                 // GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses
-                                GET(): Promise<string[]>;
+                                $get(): Promise<string[]>;
                                 // POST /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses
-                                POST(body?: {MACAddress: string, name?: string, IPAddress: string}): Promise<xdsl.DHCPStaticAddress>;
+                                $post(body?: {IPAddress: string, MACAddress: string, name?: string}): Promise<xdsl.DHCPStaticAddress>;
                                 [keys: string]: {
                                     // GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}
-                                    GET(): Promise<xdsl.DHCPStaticAddress>;
+                                    $get(): Promise<xdsl.DHCPStaticAddress>;
                                     // PUT /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}
-                                    PUT(body?: {body: xdsl.DHCPStaticAddress}): Promise<void>;
+                                    $put(body?: {body: xdsl.DHCPStaticAddress}): Promise<void>;
                                     // DELETE /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}
-                                    DELETE(): Promise<xdsl.Task>;
+                                    $delete(): Promise<xdsl.Task>;
                                 } | any
                             }
                         } | any
@@ -1322,379 +1390,311 @@ export interface Xdsl {
             }
             callWaiting:  {
                 // GET /xdsl/{serviceName}/modem/callWaiting
-                GET(): Promise<xdsl.ServiceStatusEnum>;
+                $get(): Promise<xdsl.ServiceStatusEnum>;
                 // POST /xdsl/{serviceName}/modem/callWaiting
-                POST(body?: {callWaiting: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+                $post(body?: {callWaiting: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
             }
-            ipsecAlg:  {
-                // POST /xdsl/{serviceName}/modem/ipsecAlg
-                POST(body?: {ipsecAlg: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
-                // GET /xdsl/{serviceName}/modem/ipsecAlg
-                GET(): Promise<xdsl.ServiceStatusEnum>;
+            reboot:  {
+                // POST /xdsl/{serviceName}/modem/reboot
+                $post(body?: {todoDate?: string}): Promise<xdsl.Task>;
             }
-            firmware:  {
-                // POST /xdsl/{serviceName}/modem/firmware
-                POST(body?: {firmware: string, todoDate?: string}): Promise<xdsl.Task>;
-                // GET /xdsl/{serviceName}/modem/firmware
-                GET(): Promise<string>;
-            }
-            reconfigureVoip:  {
-                // POST /xdsl/{serviceName}/modem/reconfigureVoip
-                POST(): Promise<void>;
-            }
-            blocIp:  {
-                // POST /xdsl/{serviceName}/modem/blocIp
-                POST(body?: {status: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
-                // GET /xdsl/{serviceName}/modem/blocIp
-                GET(): Promise<xdsl.ServiceStatusEnum>;
+            retrieveInfo:  {
+                // POST /xdsl/{serviceName}/modem/retrieveInfo
+                $post(): Promise<xdsl.AsyncTask<xdsl.ModemInfo>>;
             }
             reset:  {
                 // POST /xdsl/{serviceName}/modem/reset
-                POST(body?: {resetOvhConfig?: boolean}): Promise<xdsl.Task>;
+                $post(body?: {resetOvhConfig?: boolean}): Promise<xdsl.Task>;
             }
             wifi:  {
                 // GET /xdsl/{serviceName}/modem/wifi
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /xdsl/{serviceName}/modem/wifi/{wifiName}
-                    GET(): Promise<xdsl.WLAN>;
+                    $get(): Promise<xdsl.WLAN>;
                     // PUT /xdsl/{serviceName}/modem/wifi/{wifiName}
-                    PUT(body?: {body: xdsl.WLAN}): Promise<void>;
+                    $put(body?: {body: xdsl.WLAN}): Promise<void>;
                 } | any
             }
-        }
-        ipv6:  {
-            // POST /xdsl/{serviceName}/ipv6
-            POST(body?: {enabled: boolean}): Promise<xdsl.Task>;
-        }
-        orderFollowup:  {
-            // GET /xdsl/{serviceName}/orderFollowup
-            GET(): Promise<xdsl.orderFollowup.Step[]>;
-        }
-        sendOrderToProvider:  {
-            // POST /xdsl/{serviceName}/sendOrderToProvider
-            POST(): Promise<void>;
-        }
-        canCancelResiliation:  {
-            // GET /xdsl/{serviceName}/canCancelResiliation
-            GET(): Promise<boolean>;
-        }
-        changeContact:  {
-            // POST /xdsl/{serviceName}/changeContact
-            POST(body?: {contactAdmin?: string, contactTech?: string, contactBilling?: string}): Promise<number[]>;
-        }
-        requestTotalDeconsolidation:  {
-            // POST /xdsl/{serviceName}/requestTotalDeconsolidation
-            POST(body?: {noPortability?: boolean, rio?: string}): Promise<xdsl.Task>;
-        }
-        antiSpams:  {
-            // GET /xdsl/{serviceName}/antiSpams
-            GET(): Promise<string[]>;
-            [keys: string]: {
-                // GET /xdsl/{serviceName}/antiSpams/{ip}
-                GET(): Promise<xdsl.AntiSpam>;
-                evidences:  {
-                    // GET /xdsl/{serviceName}/antiSpams/{ip}/evidences
-                    GET(): Promise<xdsl.antiSpam.EvidencesInfo>;
-                }
-            } | any
-        }
-        resiliationFollowup:  {
-            // GET /xdsl/{serviceName}/resiliationFollowup
-            GET(): Promise<xdsl.ResiliationFollowUpDetail>;
-        }
-        monitoringNotifications:  {
-            // GET /xdsl/{serviceName}/monitoringNotifications
-            GET(): Promise<number[]>;
-            // POST /xdsl/{serviceName}/monitoringNotifications
-            POST(body?: {smsAccount?: string, allowIncident?: boolean, email?: string, frequency: xdsl.monitoringNotifications.FrequencyEnum, downThreshold?: number, type: xdsl.monitoringNotifications.TypeEnum, phone?: string}): Promise<xdsl.MonitoringNotification>;
-            [keys: string]: {
-                // GET /xdsl/{serviceName}/monitoringNotifications/{id}
-                GET(): Promise<xdsl.MonitoringNotification>;
-                // PUT /xdsl/{serviceName}/monitoringNotifications/{id}
-                PUT(body?: {body: xdsl.MonitoringNotification}): Promise<void>;
-                // DELETE /xdsl/{serviceName}/monitoringNotifications/{id}
-                DELETE(): Promise<void>;
-            } | any
-        }
-        ips:  {
-            // GET /xdsl/{serviceName}/ips
-            GET(): Promise<string[]>;
-            // POST /xdsl/{serviceName}/ips
-            POST(): Promise<xdsl.Task>;
-            [keys: string]: {
-                // GET /xdsl/{serviceName}/ips/{ip}
-                GET(): Promise<xdsl.IP>;
-                // DELETE /xdsl/{serviceName}/ips/{ip}
-                DELETE(): Promise<void>;
-            } | any
-        }
-        updateInvalidOrMissingRio:  {
-            // POST /xdsl/{serviceName}/updateInvalidOrMissingRio
-            POST(body?: {relaunchWithoutPortability: boolean, rio?: string}): Promise<void>;
-        }
-        requestPPPLoginMail:  {
-            // POST /xdsl/{serviceName}/requestPPPLoginMail
-            POST(): Promise<void>;
-        }
-        tasks:  {
-            // GET /xdsl/{serviceName}/tasks
-            GET(param?: {function_?: string, status?: xdsl.TaskStatusEnum}): Promise<number[]>;
-            [keys: string]: {
-                // GET /xdsl/{serviceName}/tasks/{id}
-                GET(): Promise<xdsl.Task>;
-                archive:  {
-                    // POST /xdsl/{serviceName}/tasks/{id}/archive
-                    POST(): Promise<void>;
-                }
-            } | any
-        }
-        diagnostic:  {
-            // GET /xdsl/{serviceName}/diagnostic
-            GET(): Promise<xdsl.AccessDiagnostic>;
-            // POST /xdsl/{serviceName}/diagnostic
-            POST(): Promise<xdsl.Task>;
-        }
-        resiliationTerms:  {
-            // GET /xdsl/{serviceName}/resiliationTerms
-            GET(param?: {resiliationDate?: string}): Promise<xdsl.ResiliationTerms>;
-        }
-        applyTemplateToModem:  {
-            // POST /xdsl/{serviceName}/applyTemplateToModem
-            POST(body?: {templateName: string}): Promise<xdsl.Task>;
-        }
-        statistics:  {
-            // GET /xdsl/{serviceName}/statistics
-            GET(param?: {type: xdsl.AccessStatisticsTypeEnum, period: xdsl.StatisticsPeriodEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
-        }
-        radiusConnectionLogs:  {
-            // GET /xdsl/{serviceName}/radiusConnectionLogs
-            GET(): Promise<xdsl.RadiusConnectionLog[]>;
-        }
-        resiliate:  {
-            // POST /xdsl/{serviceName}/resiliate
-            POST(body?: {resiliationDate?: string, resiliationSurvey: xdsl.ResiliationSurvey}): Promise<xdsl.ResiliationFollowUpDetail>;
-        }
-        incident:  {
-            // GET /xdsl/{serviceName}/incident
-            GET(): Promise<xdsl.Incident>;
+            firmwareAvailable:  {
+                // GET /xdsl/{serviceName}/modem/firmwareAvailable
+                $get(): Promise<string[]>;
+            }
+            blocIp:  {
+                // POST /xdsl/{serviceName}/modem/blocIp
+                $post(body?: {status: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+                // GET /xdsl/{serviceName}/modem/blocIp
+                $get(): Promise<xdsl.ServiceStatusEnum>;
+            }
+            ftp:  {
+                // POST /xdsl/{serviceName}/modem/ftp
+                $post(body?: {ftp: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+                // GET /xdsl/{serviceName}/modem/ftp
+                $get(): Promise<xdsl.ServiceStatusEnum>;
+            }
+            ipsecAlg:  {
+                // GET /xdsl/{serviceName}/modem/ipsecAlg
+                $get(): Promise<xdsl.ServiceStatusEnum>;
+                // POST /xdsl/{serviceName}/modem/ipsecAlg
+                $post(body?: {ipsecAlg: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+            }
+            resetPortMappingConfig:  {
+                // POST /xdsl/{serviceName}/modem/resetPortMappingConfig
+                $post(): Promise<void>;
+            }
+            upnp:  {
+                // GET /xdsl/{serviceName}/modem/upnp
+                $get(): Promise<xdsl.ServiceStatusEnum>;
+                // POST /xdsl/{serviceName}/modem/upnp
+                $post(body?: {upnp: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+            }
+            duplicatePortMappingConfig:  {
+                // POST /xdsl/{serviceName}/modem/duplicatePortMappingConfig
+                $post(body?: {accessName: string}): Promise<void>;
+            }
+            sipAlg:  {
+                // GET /xdsl/{serviceName}/modem/sipAlg
+                $get(): Promise<xdsl.ServiceStatusEnum>;
+                // POST /xdsl/{serviceName}/modem/sipAlg
+                $post(body?: {sipAlg: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+            }
+            contentSharing:  {
+                // POST /xdsl/{serviceName}/modem/contentSharing
+                $post(body?: {contentSharing: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+                // GET /xdsl/{serviceName}/modem/contentSharing
+                $get(): Promise<xdsl.ServiceStatusEnum>;
+            }
+            refreshConnectedDevices:  {
+                // POST /xdsl/{serviceName}/modem/refreshConnectedDevices
+                $post(): Promise<xdsl.Task>;
+            }
+            portMappings:  {
+                // GET /xdsl/{serviceName}/modem/portMappings
+                $get(): Promise<string[]>;
+                // POST /xdsl/{serviceName}/modem/portMappings
+                $post(body?: {allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart: number, internalClient: string, internalPort: number, name: string, protocol: xdsl.xdslModemConfig.ProtocolTypeEnum}): Promise<xdsl.PortMapping>;
+                [keys: string]: {
+                    // GET /xdsl/{serviceName}/modem/portMappings/{name}
+                    $get(): Promise<xdsl.PortMapping>;
+                    // PUT /xdsl/{serviceName}/modem/portMappings/{name}
+                    $put(body?: {body: xdsl.PortMapping}): Promise<void>;
+                    // DELETE /xdsl/{serviceName}/modem/portMappings/{name}
+                    $delete(): Promise<xdsl.Task>;
+                } | any
+            }
+            availableWLANChannel:  {
+                // GET /xdsl/{serviceName}/modem/availableWLANChannel
+                $get(param?: {frequency: xdsl.WLANFrequencyEnum}): Promise<number[]>;
+            }
         }
         addressMove:  {
-            extraIpRange:  {
-                // GET /xdsl/{serviceName}/addressMove/extraIpRange
-                GET(): Promise<xdsl.ExtraIpRangeMove>;
-            }
             extraIpRangeMove:  {
                 // POST /xdsl/{serviceName}/addressMove/extraIpRangeMove
-                POST(): Promise<xdsl.Task>;
+                $post(): Promise<xdsl.Task>;
             }
-        }
-        rma:  {
-            // GET /xdsl/{serviceName}/rma
-            GET(): Promise<string[]>;
-            [keys: string]: {
-                // GET /xdsl/{serviceName}/rma/{id}
-                GET(): Promise<telephony.Rma>;
-                // PUT /xdsl/{serviceName}/rma/{id}
-                PUT(body?: {body: telephony.Rma}): Promise<void>;
-                // DELETE /xdsl/{serviceName}/rma/{id}
-                DELETE(): Promise<void>;
-            } | any
+            extraIpRange:  {
+                // GET /xdsl/{serviceName}/addressMove/extraIpRange
+                $get(): Promise<xdsl.ExtraIpRangeMove>;
+            }
         }
         cancelResiliation:  {
             // POST /xdsl/{serviceName}/cancelResiliation
-            POST(): Promise<void>;
+            $post(): Promise<void>;
+        }
+        lines:  {
+            // GET /xdsl/{serviceName}/lines
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // GET /xdsl/{serviceName}/lines/{number}
+                $get(): Promise<xdsl.Line>;
+                statistics:  {
+                    // GET /xdsl/{serviceName}/lines/{number}/statistics
+                    $get(param?: {type: xdsl.LineStatisticsTypeEnum, period: xdsl.StatisticsPeriodEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
+                }
+                dslamPort:  {
+                    // GET /xdsl/{serviceName}/lines/{number}/dslamPort
+                    $get(): Promise<xdsl.DslamPort>;
+                    logs:  {
+                        // GET /xdsl/{serviceName}/lines/{number}/dslamPort/logs
+                        $get(param?: {limit: number}): Promise<xdsl.DslamPortLog[]>;
+                    }
+                    reset:  {
+                        // POST /xdsl/{serviceName}/lines/{number}/dslamPort/reset
+                        $post(): Promise<xdsl.Task>;
+                    }
+                    changeProfile:  {
+                        // POST /xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile
+                        $post(body?: {dslamProfileId: number}): Promise<xdsl.Task>;
+                    }
+                    availableProfiles:  {
+                        // GET /xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles
+                        $get(): Promise<xdsl.DslamLineProfile[]>;
+                    }
+                }
+                diagnostic:  {
+                    run:  {
+                        // POST /xdsl/{serviceName}/lines/{number}/diagnostic/run
+                        $post(body?: {actionsDone?: xdsl.lineDiagnostic.CustomerActionsEnum[], answers?: xdsl.lineDiagnostic.Answers, faultType: xdsl.lineDiagnostic.FaultTypeEnum}): Promise<xdsl.lineDiagnostic.Diagnostic>;
+                    }
+                    cancel:  {
+                        // POST /xdsl/{serviceName}/lines/{number}/diagnostic/cancel
+                        $post(): Promise<void>;
+                    }
+                }
+            } | any
+        }
+        orderFollowup:  {
+            // GET /xdsl/{serviceName}/orderFollowup
+            $get(): Promise<xdsl.orderFollowup.Step[]>;
+        }
+        canCancelResiliation:  {
+            // GET /xdsl/{serviceName}/canCancelResiliation
+            $get(): Promise<boolean>;
         }
     } | any
-    spare:  {
-        // GET /xdsl/spare
-        GET(): Promise<string[]>;
-        [keys: string]: {
-            // GET /xdsl/spare/{spare}
-            GET(): Promise<spare.xdsl.XdslSpare>;
-            // DELETE /xdsl/spare/{spare}
-            DELETE(): Promise<void>;
-            replace:  {
-                // POST /xdsl/spare/{spare}/replace
-                POST(body?: {domain: string}): Promise<void>;
-            }
-            compatibleReplacement:  {
-                // GET /xdsl/spare/{spare}/compatibleReplacement
-                GET(): Promise<string[]>;
-            }
-            serviceInfos:  {
-                // GET /xdsl/spare/{spare}/serviceInfos
-                GET(): Promise<services.Service>;
-                // PUT /xdsl/spare/{spare}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
-            }
-            returnMerchandise:  {
-                // POST /xdsl/spare/{spare}/returnMerchandise
-                POST(): Promise<void>;
-            }
-        } | any
-        brands:  {
-            // GET /xdsl/spare/brands
-            GET(): Promise<string[]>;
-        }
-    }
-    templateModem:  {
-        // GET /xdsl/templateModem
-        GET(): Promise<string[]>;
-        // POST /xdsl/templateModem
-        POST(body?: {serviceName: string, name: string}): Promise<xdsl.TemplateModem>;
-        [keys: string]: {
-            // GET /xdsl/templateModem/{name}
-            GET(): Promise<xdsl.TemplateModem>;
-            // PUT /xdsl/templateModem/{name}
-            PUT(body?: {body: xdsl.TemplateModem}): Promise<void>;
-            // DELETE /xdsl/templateModem/{name}
-            DELETE(): Promise<void>;
-        } | any
-    }
 }
 // Api
-type PathsXdslGET = '/xdsl/incidents' |
-  '/xdsl/incidents/{id}' |
-  '/xdsl' |
-  '/xdsl/eligibility/test' |
-  '/xdsl/eligibility/cities' |
-  '/xdsl/eligibility/meetings' |
+type PathsXdslGET = '/xdsl/eligibility/test' |
   '/xdsl/eligibility/streets' |
-  '/xdsl/email/pro' |
+  '/xdsl/eligibility/meetings' |
+  '/xdsl/eligibility/cities' |
+  '/xdsl/incidents/{id}' |
+  '/xdsl/incidents' |
   '/xdsl/email/pro/{email}' |
-  '/xdsl/{serviceName}/lines/{number}/dslamPort/logs' |
-  '/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles' |
-  '/xdsl/{serviceName}/lines/{number}/dslamPort' |
-  '/xdsl/{serviceName}/lines/{number}' |
-  '/xdsl/{serviceName}/lines/{number}/statistics' |
-  '/xdsl/{serviceName}/lines' |
-  '/xdsl/{serviceName}/serviceInfos' |
-  '/xdsl/{serviceName}/pendingAction' |
+  '/xdsl/email/pro' |
+  '/xdsl/templateModem/{name}' |
+  '/xdsl/templateModem' |
+  '/xdsl/spare/{spare}/compatibleReplacement' |
+  '/xdsl/spare/{spare}' |
+  '/xdsl/spare/{spare}/serviceInfos' |
+  '/xdsl/spare/brands' |
+  '/xdsl/spare' |
+  '/xdsl/{serviceName}/radiusConnectionLogs' |
+  '/xdsl/{serviceName}/ips' |
+  '/xdsl/{serviceName}/ips/{ip}' |
   '/xdsl/{serviceName}/totalDeconsolidationTerms' |
-  '/xdsl/{serviceName}/modem/connectedDevices/{macAddress}' |
-  '/xdsl/{serviceName}/modem/connectedDevices' |
-  '/xdsl/{serviceName}/modem/upnp' |
-  '/xdsl/{serviceName}/modem/contentSharing' |
-  '/xdsl/{serviceName}/modem/firmwareAvailable' |
-  '/xdsl/{serviceName}/modem/sipAlg' |
-  '/xdsl/{serviceName}/modem/portMappings' |
-  '/xdsl/{serviceName}/modem/portMappings/{name}' |
-  '/xdsl/{serviceName}/modem/availableWLANChannel' |
-  '/xdsl/{serviceName}/modem/ftp' |
-  '/xdsl/{serviceName}/modem/lan' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}' |
-  '/xdsl/{serviceName}/modem/callWaiting' |
-  '/xdsl/{serviceName}/modem/ipsecAlg' |
-  '/xdsl/{serviceName}/modem/firmware' |
-  '/xdsl/{serviceName}/modem' |
-  '/xdsl/{serviceName}/modem/blocIp' |
-  '/xdsl/{serviceName}/modem/wifi' |
-  '/xdsl/{serviceName}/modem/wifi/{wifiName}' |
-  '/xdsl/{serviceName}/orderFollowup' |
-  '/xdsl/{serviceName}' |
-  '/xdsl/{serviceName}/canCancelResiliation' |
+  '/xdsl/{serviceName}/serviceInfos' |
   '/xdsl/{serviceName}/antiSpams/{ip}/evidences' |
   '/xdsl/{serviceName}/antiSpams/{ip}' |
   '/xdsl/{serviceName}/antiSpams' |
-  '/xdsl/{serviceName}/resiliationFollowup' |
-  '/xdsl/{serviceName}/monitoringNotifications' |
-  '/xdsl/{serviceName}/monitoringNotifications/{id}' |
-  '/xdsl/{serviceName}/ips/{ip}' |
-  '/xdsl/{serviceName}/ips' |
-  '/xdsl/{serviceName}/tasks/{id}' |
   '/xdsl/{serviceName}/tasks' |
-  '/xdsl/{serviceName}/diagnostic' |
-  '/xdsl/{serviceName}/resiliationTerms' |
+  '/xdsl/{serviceName}/tasks/{id}' |
   '/xdsl/{serviceName}/statistics' |
-  '/xdsl/{serviceName}/radiusConnectionLogs' |
-  '/xdsl/{serviceName}/incident' |
-  '/xdsl/{serviceName}/addressMove/extraIpRange' |
-  '/xdsl/{serviceName}/rma' |
+  '/xdsl/{serviceName}/pendingAction' |
+  '/xdsl/{serviceName}/resiliationTerms' |
+  '/xdsl/{serviceName}/monitoringNotifications/{id}' |
+  '/xdsl/{serviceName}/monitoringNotifications' |
   '/xdsl/{serviceName}/rma/{id}' |
-  '/xdsl/spare' |
-  '/xdsl/spare/{spare}/compatibleReplacement' |
-  '/xdsl/spare/{spare}/serviceInfos' |
-  '/xdsl/spare/{spare}' |
-  '/xdsl/spare/brands' |
-  '/xdsl/templateModem/{name}' |
-  '/xdsl/templateModem';
+  '/xdsl/{serviceName}/rma' |
+  '/xdsl/{serviceName}/incident' |
+  '/xdsl/{serviceName}' |
+  '/xdsl/{serviceName}/resiliationFollowup' |
+  '/xdsl/{serviceName}/diagnostic' |
+  '/xdsl/{serviceName}/modem/firmware' |
+  '/xdsl/{serviceName}/modem/connectedDevices' |
+  '/xdsl/{serviceName}/modem/connectedDevices/{macAddress}' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}' |
+  '/xdsl/{serviceName}/modem/lan' |
+  '/xdsl/{serviceName}/modem/callWaiting' |
+  '/xdsl/{serviceName}/modem/wifi/{wifiName}' |
+  '/xdsl/{serviceName}/modem/wifi' |
+  '/xdsl/{serviceName}/modem/firmwareAvailable' |
+  '/xdsl/{serviceName}/modem/blocIp' |
+  '/xdsl/{serviceName}/modem/ftp' |
+  '/xdsl/{serviceName}/modem/ipsecAlg' |
+  '/xdsl/{serviceName}/modem/upnp' |
+  '/xdsl/{serviceName}/modem/sipAlg' |
+  '/xdsl/{serviceName}/modem/contentSharing' |
+  '/xdsl/{serviceName}/modem/portMappings/{name}' |
+  '/xdsl/{serviceName}/modem/portMappings' |
+  '/xdsl/{serviceName}/modem/availableWLANChannel' |
+  '/xdsl/{serviceName}/modem' |
+  '/xdsl/{serviceName}/addressMove/extraIpRange' |
+  '/xdsl/{serviceName}/lines/{number}/statistics' |
+  '/xdsl/{serviceName}/lines/{number}' |
+  '/xdsl/{serviceName}/lines/{number}/dslamPort/logs' |
+  '/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles' |
+  '/xdsl/{serviceName}/lines/{number}/dslamPort' |
+  '/xdsl/{serviceName}/lines' |
+  '/xdsl/{serviceName}/orderFollowup' |
+  '/xdsl/{serviceName}/canCancelResiliation' |
+  '/xdsl';
 
 type PathsXdslPUT = '/xdsl/email/pro/{email}' |
+  '/xdsl/templateModem/{name}' |
+  '/xdsl/spare/{spare}/serviceInfos' |
   '/xdsl/{serviceName}/serviceInfos' |
-  '/xdsl/{serviceName}/modem/portMappings/{name}' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}' |
-  '/xdsl/{serviceName}/modem' |
-  '/xdsl/{serviceName}/modem/wifi/{wifiName}' |
-  '/xdsl/{serviceName}' |
   '/xdsl/{serviceName}/monitoringNotifications/{id}' |
   '/xdsl/{serviceName}/rma/{id}' |
-  '/xdsl/spare/{spare}/serviceInfos' |
-  '/xdsl/templateModem/{name}';
+  '/xdsl/{serviceName}' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}' |
+  '/xdsl/{serviceName}/modem/wifi/{wifiName}' |
+  '/xdsl/{serviceName}/modem/portMappings/{name}' |
+  '/xdsl/{serviceName}/modem';
 
-type PathsXdslPOST = '/xdsl/eligibility/test/fiber/building' |
-  '/xdsl/eligibility/test/address' |
-  '/xdsl/eligibility/test/line' |
-  '/xdsl/eligibility/search/buildings' |
-  '/xdsl/eligibility/search/cities' |
+type PathsXdslPOST = '/xdsl/eligibility/search/streetNumbers' |
   '/xdsl/eligibility/search/fiberStreets' |
-  '/xdsl/eligibility/search/streetNumbers' |
+  '/xdsl/eligibility/search/cities' |
+  '/xdsl/eligibility/search/buildings' |
+  '/xdsl/eligibility/test/line' |
+  '/xdsl/eligibility/test/address' |
+  '/xdsl/eligibility/test/fiber/building' |
   '/xdsl/eligibility/lines/inactive' |
   '/xdsl/eligibility/lines/active' |
   '/xdsl/email/pro/{email}/changePassword' |
-  '/xdsl/{serviceName}/lines/{number}/dslamPort/reset' |
-  '/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile' |
-  '/xdsl/{serviceName}/lines/{number}/diagnostic/cancel' |
-  '/xdsl/{serviceName}/lines/{number}/diagnostic/run' |
-  '/xdsl/{serviceName}/modem/retrieveInfo' |
-  '/xdsl/{serviceName}/modem/refreshConnectedDevices' |
-  '/xdsl/{serviceName}/modem/resetPortMappingConfig' |
-  '/xdsl/{serviceName}/modem/upnp' |
-  '/xdsl/{serviceName}/modem/contentSharing' |
-  '/xdsl/{serviceName}/modem/reboot' |
-  '/xdsl/{serviceName}/modem/sipAlg' |
-  '/xdsl/{serviceName}/modem/portMappings' |
-  '/xdsl/{serviceName}/modem/duplicatePortMappingConfig' |
-  '/xdsl/{serviceName}/modem/ftp' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses' |
-  '/xdsl/{serviceName}/modem/callWaiting' |
-  '/xdsl/{serviceName}/modem/ipsecAlg' |
-  '/xdsl/{serviceName}/modem/firmware' |
-  '/xdsl/{serviceName}/modem/reconfigureVoip' |
-  '/xdsl/{serviceName}/modem/blocIp' |
-  '/xdsl/{serviceName}/modem/reset' |
-  '/xdsl/{serviceName}/ipv6' |
-  '/xdsl/{serviceName}/sendOrderToProvider' |
+  '/xdsl/templateModem' |
+  '/xdsl/spare/{spare}/returnMerchandise' |
+  '/xdsl/spare/{spare}/replace' |
+  '/xdsl/{serviceName}/ips' |
   '/xdsl/{serviceName}/changeContact' |
+  '/xdsl/{serviceName}/resiliate' |
+  '/xdsl/{serviceName}/sendOrderToProvider' |
+  '/xdsl/{serviceName}/tasks/{id}/archive' |
+  '/xdsl/{serviceName}/requestPPPLoginMail' |
+  '/xdsl/{serviceName}/ipv6' |
+  '/xdsl/{serviceName}/updateInvalidOrMissingRio' |
   '/xdsl/{serviceName}/requestTotalDeconsolidation' |
   '/xdsl/{serviceName}/monitoringNotifications' |
-  '/xdsl/{serviceName}/ips' |
-  '/xdsl/{serviceName}/updateInvalidOrMissingRio' |
-  '/xdsl/{serviceName}/requestPPPLoginMail' |
-  '/xdsl/{serviceName}/tasks/{id}/archive' |
-  '/xdsl/{serviceName}/diagnostic' |
   '/xdsl/{serviceName}/applyTemplateToModem' |
-  '/xdsl/{serviceName}/resiliate' |
+  '/xdsl/{serviceName}/diagnostic' |
+  '/xdsl/{serviceName}/modem/reconfigureVoip' |
+  '/xdsl/{serviceName}/modem/firmware' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses' |
+  '/xdsl/{serviceName}/modem/callWaiting' |
+  '/xdsl/{serviceName}/modem/reboot' |
+  '/xdsl/{serviceName}/modem/retrieveInfo' |
+  '/xdsl/{serviceName}/modem/reset' |
+  '/xdsl/{serviceName}/modem/blocIp' |
+  '/xdsl/{serviceName}/modem/ftp' |
+  '/xdsl/{serviceName}/modem/ipsecAlg' |
+  '/xdsl/{serviceName}/modem/resetPortMappingConfig' |
+  '/xdsl/{serviceName}/modem/upnp' |
+  '/xdsl/{serviceName}/modem/duplicatePortMappingConfig' |
+  '/xdsl/{serviceName}/modem/sipAlg' |
+  '/xdsl/{serviceName}/modem/contentSharing' |
+  '/xdsl/{serviceName}/modem/refreshConnectedDevices' |
+  '/xdsl/{serviceName}/modem/portMappings' |
   '/xdsl/{serviceName}/addressMove/extraIpRangeMove' |
   '/xdsl/{serviceName}/cancelResiliation' |
-  '/xdsl/spare/{spare}/replace' |
-  '/xdsl/spare/{spare}/returnMerchandise' |
-  '/xdsl/templateModem';
+  '/xdsl/{serviceName}/lines/{number}/dslamPort/reset' |
+  '/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile' |
+  '/xdsl/{serviceName}/lines/{number}/diagnostic/run' |
+  '/xdsl/{serviceName}/lines/{number}/diagnostic/cancel';
 
 type PathsXdslDELETE = '/xdsl/email/pro/{email}' |
-  '/xdsl/{serviceName}/modem/portMappings/{name}' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' |
-  '/xdsl/{serviceName}/monitoringNotifications/{id}' |
-  '/xdsl/{serviceName}/ips/{ip}' |
-  '/xdsl/{serviceName}/rma/{id}' |
+  '/xdsl/templateModem/{name}' |
   '/xdsl/spare/{spare}' |
-  '/xdsl/templateModem/{name}';
+  '/xdsl/{serviceName}/ips/{ip}' |
+  '/xdsl/{serviceName}/monitoringNotifications/{id}' |
+  '/xdsl/{serviceName}/rma/{id}' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' |
+  '/xdsl/{serviceName}/modem/portMappings/{name}';
 
 export class ApiXdsl extends OvhWrapper {
   constructor(engine: OvhRequestable) {

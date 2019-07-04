@@ -71,32 +71,32 @@ export namespace services {
 // path /hpcspot
 export interface Hpcspot {
     // GET /hpcspot
-    GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
     [keys: string]: {
         // GET /hpcspot/{serviceName}
-        GET(): Promise<hpcspot.Account>;
-        serviceInfos:  {
-            // GET /hpcspot/{serviceName}/serviceInfos
-            GET(): Promise<services.Service>;
-            // PUT /hpcspot/{serviceName}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
-        }
+        $get(): Promise<hpcspot.Account>;
         consumption:  {
             // GET /hpcspot/{serviceName}/consumption
-            GET(param?: {hpcspotItemEndDate_to?: string, orderId?: number, hpcspotItemEndDate_from?: string, hpcspotItemId?: number, type?: hpcspot.ConsumptionTypeEnum}): Promise<number[]>;
+            $get(param?: {hpcspotItemId?: number, orderId?: number, type?: hpcspot.ConsumptionTypeEnum, hpcspotItemEndDate_to?: string, hpcspotItemEndDate_from?: string}): Promise<number[]>;
             [keys: string]: {
                 // GET /hpcspot/{serviceName}/consumption/{id}
-                GET(): Promise<hpcspot.Consumption>;
+                $get(): Promise<hpcspot.Consumption>;
             } | any
+        }
+        serviceInfos:  {
+            // GET /hpcspot/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /hpcspot/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
         }
     } | any
 }
 // Api
 type PathsHpcspotGET = '/hpcspot' |
   '/hpcspot/{serviceName}' |
-  '/hpcspot/{serviceName}/serviceInfos' |
+  '/hpcspot/{serviceName}/consumption/{id}' |
   '/hpcspot/{serviceName}/consumption' |
-  '/hpcspot/{serviceName}/consumption/{id}';
+  '/hpcspot/{serviceName}/serviceInfos';
 
 type PathsHpcspotPUT = '/hpcspot/{serviceName}/serviceInfos';
 

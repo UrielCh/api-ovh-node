@@ -151,14 +151,14 @@ export namespace services {
 // path /services
 export interface Services {
     // GET /services
-    GET(param?: {routes?: string, orderBy?: string, sort?: string}): Promise<number[]>;
+    $get(param?: {routes?: string, orderBy?: string, sort?: string}): Promise<number[]>;
     [keys: string]: {
         // GET /services/{serviceId}
-        GET(): Promise<services.expanded.Service>;
+        $get(): Promise<services.expanded.Service>;
         billing:  {
             engagement:  {
                 // GET /services/{serviceId}/billing/engagement
-                GET(): Promise<services.billing.engagement.Engagement>;
+                $get(): Promise<services.billing.engagement.Engagement>;
             }
         }
     } | any

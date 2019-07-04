@@ -98,30 +98,30 @@ export namespace dedicated {
 export interface Dedicated {
     installationTemplate:  {
         // GET /dedicated/installationTemplate
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /dedicated/installationTemplate/{templateName}
-            GET(): Promise<dedicated.installationTemplate.Templates>;
+            $get(): Promise<dedicated.installationTemplate.Templates>;
             partitionScheme:  {
                 // GET /dedicated/installationTemplate/{templateName}/partitionScheme
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}
-                    GET(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
+                    $get(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
                     partition:  {
                         // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         [keys: string]: {
                             // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
-                            GET(): Promise<dedicated.installationTemplate.templatePartitions>;
+                            $get(): Promise<dedicated.installationTemplate.templatePartitions>;
                         } | any
                     }
                     hardwareRaid:  {
                         // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
-                        GET(): Promise<string[]>;
+                        $get(): Promise<string[]>;
                         [keys: string]: {
                             // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
-                            GET(): Promise<dedicated.installationTemplate.hardwareRaid>;
+                            $get(): Promise<dedicated.installationTemplate.hardwareRaid>;
                         } | any
                     }
                 } | any
@@ -130,13 +130,13 @@ export interface Dedicated {
     }
 }
 // Api
-type PathsDedicatedInstallationTemplateGET = '/dedicated/installationTemplate/{templateName}' |
-  '/dedicated/installationTemplate/{templateName}/partitionScheme' |
+type PathsDedicatedInstallationTemplateGET = '/dedicated/installationTemplate/{templateName}/partitionScheme' |
   '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition' |
   '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}' |
-  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}' |
-  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid' |
   '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}' |
+  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid' |
+  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}' |
+  '/dedicated/installationTemplate/{templateName}' |
   '/dedicated/installationTemplate';
 
 export class ApiDedicatedInstallationTemplate extends OvhWrapper {

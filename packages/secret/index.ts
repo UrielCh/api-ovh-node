@@ -14,7 +14,7 @@ export namespace secret {
 export interface Secret {
     retrieve:  {
         // POST /secret/retrieve
-        POST(body?: {id: string}): Promise<secret.Secret>;
+        $post(body?: {id: string}): Promise<secret.Secret>;
     }
 }
 // Api

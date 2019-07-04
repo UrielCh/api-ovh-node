@@ -123,81 +123,81 @@ export namespace services {
 export interface License {
     virtuozzo:  {
         // GET /license/virtuozzo
-        GET(): Promise<string[]>;
-        orderableVersions:  {
-            // GET /license/virtuozzo/orderableVersions
-            GET(param?: {ip: string}): Promise<license.VirtuozzoOrderConfiguration[]>;
-        }
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /license/virtuozzo/{serviceName}
-            GET(): Promise<license.virtuozzo.Virtuozzo>;
+            $get(): Promise<license.virtuozzo.Virtuozzo>;
             // PUT /license/virtuozzo/{serviceName}
-            PUT(body?: {body: license.virtuozzo.Virtuozzo}): Promise<void>;
-            confirmTermination:  {
-                // POST /license/virtuozzo/{serviceName}/confirmTermination
-                POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
-            }
-            allowedDestinationIp:  {
-                // GET /license/virtuozzo/{serviceName}/allowedDestinationIp
-                GET(): Promise<string[]>;
-            }
-            option:  {
-                // GET /license/virtuozzo/{serviceName}/option
-                GET(param?: {label?: license.OptionLabel}): Promise<license.OptionLabel[]>;
-                [keys: string]: {
-                    // GET /license/virtuozzo/{serviceName}/option/{label}
-                    GET(): Promise<license.Option>;
-                    // DELETE /license/virtuozzo/{serviceName}/option/{label}
-                    DELETE(): Promise<license.Task>;
-                } | any
-            }
+            $put(body?: {body: license.virtuozzo.Virtuozzo}): Promise<void>;
             canLicenseBeMovedTo:  {
                 // GET /license/virtuozzo/{serviceName}/canLicenseBeMovedTo
-                GET(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
-            }
-            tasks:  {
-                // GET /license/virtuozzo/{serviceName}/tasks
-                GET(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]: {
-                    // GET /license/virtuozzo/{serviceName}/tasks/{taskId}
-                    GET(): Promise<license.Task>;
-                } | any
-            }
-            serviceInfos:  {
-                // GET /license/virtuozzo/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
-                // PUT /license/virtuozzo/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
-            }
-            terminate:  {
-                // POST /license/virtuozzo/{serviceName}/terminate
-                POST(): Promise<string>;
+                $get(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
             changeIp:  {
                 // POST /license/virtuozzo/{serviceName}/changeIp
-                POST(body?: {destinationIp: string}): Promise<license.Task>;
+                $post(body?: {destinationIp: string}): Promise<license.Task>;
+            }
+            serviceInfos:  {
+                // GET /license/virtuozzo/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /license/virtuozzo/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
+            confirmTermination:  {
+                // POST /license/virtuozzo/{serviceName}/confirmTermination
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            }
+            allowedDestinationIp:  {
+                // GET /license/virtuozzo/{serviceName}/allowedDestinationIp
+                $get(): Promise<string[]>;
+            }
+            terminate:  {
+                // POST /license/virtuozzo/{serviceName}/terminate
+                $post(): Promise<string>;
+            }
+            tasks:  {
+                // GET /license/virtuozzo/{serviceName}/tasks
+                $get(param?: {status?: license.TaskStateEnum, action?: license.ActionType}): Promise<number[]>;
+                [keys: string]: {
+                    // GET /license/virtuozzo/{serviceName}/tasks/{taskId}
+                    $get(): Promise<license.Task>;
+                } | any
+            }
+            option:  {
+                // GET /license/virtuozzo/{serviceName}/option
+                $get(param?: {label?: license.OptionLabel}): Promise<license.OptionLabel[]>;
+                [keys: string]: {
+                    // GET /license/virtuozzo/{serviceName}/option/{label}
+                    $get(): Promise<license.Option>;
+                    // DELETE /license/virtuozzo/{serviceName}/option/{label}
+                    $delete(): Promise<license.Task>;
+                } | any
             }
         } | any
+        orderableVersions:  {
+            // GET /license/virtuozzo/orderableVersions
+            $get(param?: {ip: string}): Promise<license.VirtuozzoOrderConfiguration[]>;
+        }
     }
 }
 // Api
-type PathsLicenseVirtuozzoGET = '/license/virtuozzo' |
-  '/license/virtuozzo/orderableVersions' |
+type PathsLicenseVirtuozzoGET = '/license/virtuozzo/{serviceName}/canLicenseBeMovedTo' |
+  '/license/virtuozzo/{serviceName}' |
+  '/license/virtuozzo/{serviceName}/serviceInfos' |
   '/license/virtuozzo/{serviceName}/allowedDestinationIp' |
+  '/license/virtuozzo/{serviceName}/tasks' |
+  '/license/virtuozzo/{serviceName}/tasks/{taskId}' |
   '/license/virtuozzo/{serviceName}/option' |
   '/license/virtuozzo/{serviceName}/option/{label}' |
-  '/license/virtuozzo/{serviceName}' |
-  '/license/virtuozzo/{serviceName}/canLicenseBeMovedTo' |
-  '/license/virtuozzo/{serviceName}/tasks/{taskId}' |
-  '/license/virtuozzo/{serviceName}/tasks' |
-  '/license/virtuozzo/{serviceName}/serviceInfos';
+  '/license/virtuozzo/orderableVersions' |
+  '/license/virtuozzo';
 
 type PathsLicenseVirtuozzoPUT = '/license/virtuozzo/{serviceName}' |
   '/license/virtuozzo/{serviceName}/serviceInfos';
 
-type PathsLicenseVirtuozzoPOST = '/license/virtuozzo/{serviceName}/confirmTermination' |
-  '/license/virtuozzo/{serviceName}/terminate' |
-  '/license/virtuozzo/{serviceName}/changeIp';
+type PathsLicenseVirtuozzoPOST = '/license/virtuozzo/{serviceName}/changeIp' |
+  '/license/virtuozzo/{serviceName}/confirmTermination' |
+  '/license/virtuozzo/{serviceName}/terminate';
 
 type PathsLicenseVirtuozzoDELETE = '/license/virtuozzo/{serviceName}/option/{label}';
 

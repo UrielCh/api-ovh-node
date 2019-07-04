@@ -90,46 +90,46 @@ export namespace services {
 export interface License {
     cloudLinux:  {
         // GET /license/cloudLinux
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
+        orderableVersions:  {
+            // GET /license/cloudLinux/orderableVersions
+            $get(param?: {ip: string}): Promise<license.CloudLinuxOrderConfiguration[]>;
+        }
         [keys: string]: {
             // GET /license/cloudLinux/{serviceName}
-            GET(): Promise<license.cloudLinux.CloudLinux>;
+            $get(): Promise<license.cloudLinux.CloudLinux>;
             tasks:  {
                 // GET /license/cloudLinux/{serviceName}/tasks
-                GET(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
                 [keys: string]: {
                     // GET /license/cloudLinux/{serviceName}/tasks/{taskId}
-                    GET(): Promise<license.Task>;
+                    $get(): Promise<license.Task>;
                 } | any
-            }
-            terminate:  {
-                // POST /license/cloudLinux/{serviceName}/terminate
-                POST(): Promise<string>;
             }
             serviceInfos:  {
                 // GET /license/cloudLinux/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
+                $get(): Promise<services.Service>;
                 // PUT /license/cloudLinux/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
+            terminate:  {
+                // POST /license/cloudLinux/{serviceName}/terminate
+                $post(): Promise<string>;
             }
             confirmTermination:  {
                 // POST /license/cloudLinux/{serviceName}/confirmTermination
-                POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
         } | any
-        orderableVersions:  {
-            // GET /license/cloudLinux/orderableVersions
-            GET(param?: {ip: string}): Promise<license.CloudLinuxOrderConfiguration[]>;
-        }
     }
 }
 // Api
-type PathsLicenseCloudLinuxGET = '/license/cloudLinux/{serviceName}' |
+type PathsLicenseCloudLinuxGET = '/license/cloudLinux' |
+  '/license/cloudLinux/orderableVersions' |
+  '/license/cloudLinux/{serviceName}' |
   '/license/cloudLinux/{serviceName}/tasks/{taskId}' |
   '/license/cloudLinux/{serviceName}/tasks' |
-  '/license/cloudLinux/{serviceName}/serviceInfos' |
-  '/license/cloudLinux' |
-  '/license/cloudLinux/orderableVersions';
+  '/license/cloudLinux/{serviceName}/serviceInfos';
 
 type PathsLicenseCloudLinuxPUT = '/license/cloudLinux/{serviceName}/serviceInfos';
 

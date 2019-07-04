@@ -105,73 +105,73 @@ export namespace services {
 export interface License {
     directadmin:  {
         // GET /license/directadmin
-        GET(): Promise<string[]>;
+        $get(): Promise<string[]>;
         [keys: string]: {
             // GET /license/directadmin/{serviceName}
-            GET(): Promise<license.directadmin.DirectAdmin>;
+            $get(): Promise<license.directadmin.DirectAdmin>;
             // PUT /license/directadmin/{serviceName}
-            PUT(body?: {body: license.directadmin.DirectAdmin}): Promise<void>;
-            terminate:  {
-                // POST /license/directadmin/{serviceName}/terminate
-                POST(): Promise<string>;
-            }
-            canLicenseBeMovedTo:  {
-                // GET /license/directadmin/{serviceName}/canLicenseBeMovedTo
-                GET(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
-            }
+            $put(body?: {body: license.directadmin.DirectAdmin}): Promise<void>;
             confirmTermination:  {
                 // POST /license/directadmin/{serviceName}/confirmTermination
-                POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             allowedDestinationIp:  {
                 // GET /license/directadmin/{serviceName}/allowedDestinationIp
-                GET(): Promise<string[]>;
+                $get(): Promise<string[]>;
+            }
+            canLicenseBeMovedTo:  {
+                // GET /license/directadmin/{serviceName}/canLicenseBeMovedTo
+                $get(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
             changeOs:  {
                 // POST /license/directadmin/{serviceName}/changeOs
-                POST(body?: {os: license.DirectAdminOsEnum}): Promise<license.Task>;
-            }
-            changeIp:  {
-                // POST /license/directadmin/{serviceName}/changeIp
-                POST(body?: {destinationIp: string}): Promise<license.Task>;
-            }
-            serviceInfos:  {
-                // GET /license/directadmin/{serviceName}/serviceInfos
-                GET(): Promise<services.Service>;
-                // PUT /license/directadmin/{serviceName}/serviceInfos
-                PUT(body?: {body: services.Service}): Promise<void>;
+                $post(body?: {os: license.DirectAdminOsEnum}): Promise<license.Task>;
             }
             tasks:  {
                 // GET /license/directadmin/{serviceName}/tasks
-                GET(param?: {status?: license.TaskStateEnum, action?: license.ActionType}): Promise<number[]>;
+                $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
                 [keys: string]: {
                     // GET /license/directadmin/{serviceName}/tasks/{taskId}
-                    GET(): Promise<license.Task>;
+                    $get(): Promise<license.Task>;
                 } | any
+            }
+            terminate:  {
+                // POST /license/directadmin/{serviceName}/terminate
+                $post(): Promise<string>;
+            }
+            serviceInfos:  {
+                // GET /license/directadmin/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /license/directadmin/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
+            changeIp:  {
+                // POST /license/directadmin/{serviceName}/changeIp
+                $post(body?: {destinationIp: string}): Promise<license.Task>;
             }
         } | any
         orderableVersions:  {
             // GET /license/directadmin/orderableVersions
-            GET(param?: {ip: string}): Promise<license.DirectAdminOrderConfiguration[]>;
+            $get(param?: {ip: string}): Promise<license.DirectAdminOrderConfiguration[]>;
         }
     }
 }
 // Api
-type PathsLicenseDirectadminGET = '/license/directadmin/{serviceName}/canLicenseBeMovedTo' |
+type PathsLicenseDirectadminGET = '/license/directadmin/{serviceName}/allowedDestinationIp' |
   '/license/directadmin/{serviceName}' |
-  '/license/directadmin/{serviceName}/allowedDestinationIp' |
-  '/license/directadmin/{serviceName}/serviceInfos' |
+  '/license/directadmin/{serviceName}/canLicenseBeMovedTo' |
   '/license/directadmin/{serviceName}/tasks/{taskId}' |
   '/license/directadmin/{serviceName}/tasks' |
+  '/license/directadmin/{serviceName}/serviceInfos' |
   '/license/directadmin/orderableVersions' |
   '/license/directadmin';
 
 type PathsLicenseDirectadminPUT = '/license/directadmin/{serviceName}' |
   '/license/directadmin/{serviceName}/serviceInfos';
 
-type PathsLicenseDirectadminPOST = '/license/directadmin/{serviceName}/terminate' |
-  '/license/directadmin/{serviceName}/confirmTermination' |
+type PathsLicenseDirectadminPOST = '/license/directadmin/{serviceName}/confirmTermination' |
   '/license/directadmin/{serviceName}/changeOs' |
+  '/license/directadmin/{serviceName}/terminate' |
   '/license/directadmin/{serviceName}/changeIp';
 
 export class ApiLicenseDirectadmin extends OvhWrapper {

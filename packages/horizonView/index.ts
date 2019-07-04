@@ -139,203 +139,203 @@ export namespace services {
 // path /horizonView
 export interface HorizonView {
     // GET /horizonView
-    GET(): Promise<string[]>;
+    $get(): Promise<string[]>;
     [keys: string]: {
         // GET /horizonView/{serviceName}
-        GET(): Promise<horizonView.Datacenter>;
+        $get(): Promise<horizonView.Datacenter>;
         accessPoint:  {
             // GET /horizonView/{serviceName}/accessPoint
-            GET(): Promise<number[]>;
+            $get(): Promise<number[]>;
             // POST /horizonView/{serviceName}/accessPoint
-            POST(body?: {poolType: horizonView.PoolType, privateVlan?: number, vrouterPoolPublicIp?: string, privateBlock?: string}): Promise<horizonView.Task[]>;
+            $post(body?: {poolType: horizonView.PoolType, privateBlock?: string, privateVlan?: number, vrouterPoolPublicIp?: string}): Promise<horizonView.Task[]>;
             [keys: string]: {
                 // GET /horizonView/{serviceName}/accessPoint/{accessPointId}
-                GET(): Promise<horizonView.Pool>;
+                $get(): Promise<horizonView.Pool>;
                 // DELETE /horizonView/{serviceName}/accessPoint/{accessPointId}
-                DELETE(): Promise<horizonView.Task[]>;
+                $delete(): Promise<horizonView.Task[]>;
+                disableWindowsUsernameOption:  {
+                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption
+                    $post(body?: {onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
+                }
                 enableWindowsUsernameOption:  {
                     // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption
-                    POST(body?: {onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
-                }
-                customerNetwork:  {
-                    // GET /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork
-                    GET(): Promise<number[]>;
-                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork
-                    POST(body?: {network: string}): Promise<horizonView.Task[]>;
-                    [keys: string]: {
-                        // GET /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}
-                        GET(): Promise<horizonView.CustomerNetworkPool>;
-                        // DELETE /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}
-                        DELETE(): Promise<horizonView.Task[]>;
-                    } | any
+                    $post(body?: {onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
                 }
                 disableTwoFA:  {
                     // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA
-                    POST(): Promise<horizonView.Task>;
+                    $post(): Promise<horizonView.Task>;
                 }
                 enableTwoFA:  {
                     // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA
-                    POST(body?: {radiusIp: string, secret: string, onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
+                    $post(body?: {onSingleAP?: horizonView.AccessPointTypeEnum, radiusIp: string, secret: string}): Promise<horizonView.Task>;
                 }
                 changeSessionTimeout:  {
                     // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout
-                    POST(body?: {onSingleAP?: horizonView.AccessPointTypeEnum, expiration: number}): Promise<horizonView.Task>;
+                    $post(body?: {expiration: number, onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
                 }
-                disableWindowsUsernameOption:  {
-                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption
-                    POST(body?: {onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
+                customerNetwork:  {
+                    // GET /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork
+                    $get(): Promise<number[]>;
+                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork
+                    $post(body?: {network: string}): Promise<horizonView.Task[]>;
+                    [keys: string]: {
+                        // GET /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}
+                        $get(): Promise<horizonView.CustomerNetworkPool>;
+                        // DELETE /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}
+                        $delete(): Promise<horizonView.Task[]>;
+                    } | any
+                }
+            } | any
+        }
+        customerNetwork:  {
+            // GET /horizonView/{serviceName}/customerNetwork
+            $get(): Promise<number[]>;
+            // POST /horizonView/{serviceName}/customerNetwork
+            $post(body?: {name: string, network: string}): Promise<horizonView.Task[]>;
+            [keys: string]: {
+                // GET /horizonView/{serviceName}/customerNetwork/{customerNetworkId}
+                $get(): Promise<horizonView.CustomerNetwork>;
+                // DELETE /horizonView/{serviceName}/customerNetwork/{customerNetworkId}
+                $delete(): Promise<horizonView.Task[]>;
+            } | any
+        }
+        terminate:  {
+            // POST /horizonView/{serviceName}/terminate
+            $post(): Promise<string>;
+        }
+        serviceInfos:  {
+            // GET /horizonView/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /horizonView/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
+        }
+        dedicatedHorizon:  {
+            // GET /horizonView/{serviceName}/dedicatedHorizon
+            $get(): Promise<horizonView.DedicatedHorizon>;
+            user:  {
+                // GET /horizonView/{serviceName}/dedicatedHorizon/user
+                $get(): Promise<horizonView.User>;
+                changeProperties:  {
+                    // POST /horizonView/{serviceName}/dedicatedHorizon/user/changeProperties
+                    $post(body?: {email?: string}): Promise<horizonView.Task>;
+                }
+                changePassword:  {
+                    // POST /horizonView/{serviceName}/dedicatedHorizon/user/changePassword
+                    $post(body?: {password?: string}): Promise<horizonView.Task>;
+                }
+            }
+            disableStorageAccelerator:  {
+                // POST /horizonView/{serviceName}/dedicatedHorizon/disableStorageAccelerator
+                $post(): Promise<horizonView.Task>;
+            }
+            task:  {
+                // GET /horizonView/{serviceName}/dedicatedHorizon/task
+                $get(param?: {state?: horizonView.TaskStateEnum}): Promise<number[]>;
+                [keys: string]: {
+                    // GET /horizonView/{serviceName}/dedicatedHorizon/task/{taskId}
+                    $get(): Promise<horizonView.Task>;
+                } | any
+            }
+            enableStorageAccelerator:  {
+                // POST /horizonView/{serviceName}/dedicatedHorizon/enableStorageAccelerator
+                $post(): Promise<horizonView.Task>;
+            }
+            customerUser:  {
+                // GET /horizonView/{serviceName}/dedicatedHorizon/customerUser
+                $get(): Promise<string[]>;
+                // POST /horizonView/{serviceName}/dedicatedHorizon/customerUser
+                $post(body?: {email?: string, password?: string, username: string}): Promise<horizonView.Task[]>;
+                [keys: string]: {
+                    // GET /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
+                    $get(): Promise<horizonView.CustomerUser>;
+                    // DELETE /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
+                    $delete(): Promise<horizonView.Task[]>;
+                    changePassword:  {
+                        // POST /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword
+                        $post(body?: {password?: string}): Promise<horizonView.Task>;
+                    }
+                } | any
+            }
+        }
+        domainTrust:  {
+            // GET /horizonView/{serviceName}/domainTrust
+            $get(): Promise<number[]>;
+            // POST /horizonView/{serviceName}/domainTrust
+            $post(body?: {activeDirectoryIP: string, dns1?: string, dns2?: string, domain: string}): Promise<horizonView.Task[]>;
+            [keys: string]: {
+                // GET /horizonView/{serviceName}/domainTrust/{domainTrustId}
+                $get(): Promise<horizonView.DomainTrust>;
+                addDomainUserOnComposer:  {
+                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer
+                    $post(body?: {domain: string, password: string, username: string}): Promise<horizonView.Task>;
+                }
+                addDomainController:  {
+                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController
+                    $post(body?: {domain: string, domainControllerIp: string}): Promise<horizonView.Task>;
+                }
+                addChildDomain:  {
+                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain
+                    $post(body?: {activeDirectoryIP: string, domain: string, passphrase: string, serviceAccountPassword: string}): Promise<horizonView.Task>;
+                }
+                createTrust:  {
+                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust
+                    $post(body?: {passphrase: string, serviceAccountPassword: string}): Promise<horizonView.Task>;
                 }
             } | any
         }
         confirmTermination:  {
             // POST /horizonView/{serviceName}/confirmTermination
-            POST(body?: {futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, commentary?: string, token: string}): Promise<string>;
-        }
-        dedicatedHorizon:  {
-            // GET /horizonView/{serviceName}/dedicatedHorizon
-            GET(): Promise<horizonView.DedicatedHorizon>;
-            user:  {
-                // GET /horizonView/{serviceName}/dedicatedHorizon/user
-                GET(): Promise<horizonView.User>;
-                changeProperties:  {
-                    // POST /horizonView/{serviceName}/dedicatedHorizon/user/changeProperties
-                    POST(body?: {email?: string}): Promise<horizonView.Task>;
-                }
-                changePassword:  {
-                    // POST /horizonView/{serviceName}/dedicatedHorizon/user/changePassword
-                    POST(body?: {password?: string}): Promise<horizonView.Task>;
-                }
-            }
-            disableStorageAccelerator:  {
-                // POST /horizonView/{serviceName}/dedicatedHorizon/disableStorageAccelerator
-                POST(): Promise<horizonView.Task>;
-            }
-            enableStorageAccelerator:  {
-                // POST /horizonView/{serviceName}/dedicatedHorizon/enableStorageAccelerator
-                POST(): Promise<horizonView.Task>;
-            }
-            task:  {
-                // GET /horizonView/{serviceName}/dedicatedHorizon/task
-                GET(param?: {state?: horizonView.TaskStateEnum}): Promise<number[]>;
-                [keys: string]: {
-                    // GET /horizonView/{serviceName}/dedicatedHorizon/task/{taskId}
-                    GET(): Promise<horizonView.Task>;
-                } | any
-            }
-            customerUser:  {
-                // GET /horizonView/{serviceName}/dedicatedHorizon/customerUser
-                GET(): Promise<string[]>;
-                // POST /horizonView/{serviceName}/dedicatedHorizon/customerUser
-                POST(body?: {email?: string, username: string, password?: string}): Promise<horizonView.Task[]>;
-                [keys: string]: {
-                    // GET /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
-                    GET(): Promise<horizonView.CustomerUser>;
-                    // DELETE /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
-                    DELETE(): Promise<horizonView.Task[]>;
-                    changePassword:  {
-                        // POST /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword
-                        POST(body?: {password?: string}): Promise<horizonView.Task>;
-                    }
-                } | any
-            }
-        }
-        customerNetwork:  {
-            // GET /horizonView/{serviceName}/customerNetwork
-            GET(): Promise<number[]>;
-            // POST /horizonView/{serviceName}/customerNetwork
-            POST(body?: {name: string, network: string}): Promise<horizonView.Task[]>;
-            [keys: string]: {
-                // GET /horizonView/{serviceName}/customerNetwork/{customerNetworkId}
-                GET(): Promise<horizonView.CustomerNetwork>;
-                // DELETE /horizonView/{serviceName}/customerNetwork/{customerNetworkId}
-                DELETE(): Promise<horizonView.Task[]>;
-            } | any
-        }
-        serviceInfos:  {
-            // GET /horizonView/{serviceName}/serviceInfos
-            GET(): Promise<services.Service>;
-            // PUT /horizonView/{serviceName}/serviceInfos
-            PUT(body?: {body: services.Service}): Promise<void>;
-        }
-        terminate:  {
-            // POST /horizonView/{serviceName}/terminate
-            POST(): Promise<string>;
-        }
-        domainTrust:  {
-            // GET /horizonView/{serviceName}/domainTrust
-            GET(): Promise<number[]>;
-            // POST /horizonView/{serviceName}/domainTrust
-            POST(body?: {dns2?: string, domain: string, activeDirectoryIP: string, dns1?: string}): Promise<horizonView.Task[]>;
-            [keys: string]: {
-                // GET /horizonView/{serviceName}/domainTrust/{domainTrustId}
-                GET(): Promise<horizonView.DomainTrust>;
-                addDomainController:  {
-                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController
-                    POST(body?: {domainControllerIp: string, domain: string}): Promise<horizonView.Task>;
-                }
-                createTrust:  {
-                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust
-                    POST(body?: {passphrase: string, serviceAccountPassword: string}): Promise<horizonView.Task>;
-                }
-                addChildDomain:  {
-                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain
-                    POST(body?: {passphrase: string, activeDirectoryIP: string, domain: string, serviceAccountPassword: string}): Promise<horizonView.Task>;
-                }
-                addDomainUserOnComposer:  {
-                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer
-                    POST(body?: {domain: string, password: string, username: string}): Promise<horizonView.Task>;
-                }
-            } | any
+            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
     } | any
 }
 // Api
-type PathsHorizonViewGET = '/horizonView' |
+type PathsHorizonViewGET = '/horizonView/{serviceName}/accessPoint' |
   '/horizonView/{serviceName}/accessPoint/{accessPointId}' |
   '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}' |
   '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork' |
-  '/horizonView/{serviceName}/accessPoint' |
+  '/horizonView/{serviceName}/customerNetwork' |
+  '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}' |
   '/horizonView/{serviceName}' |
+  '/horizonView/{serviceName}/serviceInfos' |
   '/horizonView/{serviceName}/dedicatedHorizon/user' |
+  '/horizonView/{serviceName}/dedicatedHorizon' |
   '/horizonView/{serviceName}/dedicatedHorizon/task' |
   '/horizonView/{serviceName}/dedicatedHorizon/task/{taskId}' |
-  '/horizonView/{serviceName}/dedicatedHorizon' |
-  '/horizonView/{serviceName}/dedicatedHorizon/customerUser' |
   '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}' |
-  '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}' |
-  '/horizonView/{serviceName}/customerNetwork' |
-  '/horizonView/{serviceName}/serviceInfos' |
+  '/horizonView/{serviceName}/dedicatedHorizon/customerUser' |
   '/horizonView/{serviceName}/domainTrust/{domainTrustId}' |
-  '/horizonView/{serviceName}/domainTrust';
+  '/horizonView/{serviceName}/domainTrust' |
+  '/horizonView';
 
 type PathsHorizonViewPUT = '/horizonView/{serviceName}/serviceInfos';
 
-type PathsHorizonViewPOST = '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption' |
-  '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork' |
+type PathsHorizonViewPOST = '/horizonView/{serviceName}/accessPoint' |
+  '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption' |
+  '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption' |
   '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA' |
   '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA' |
   '/horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout' |
-  '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption' |
-  '/horizonView/{serviceName}/accessPoint' |
-  '/horizonView/{serviceName}/confirmTermination' |
+  '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork' |
+  '/horizonView/{serviceName}/customerNetwork' |
+  '/horizonView/{serviceName}/terminate' |
   '/horizonView/{serviceName}/dedicatedHorizon/user/changeProperties' |
   '/horizonView/{serviceName}/dedicatedHorizon/user/changePassword' |
   '/horizonView/{serviceName}/dedicatedHorizon/disableStorageAccelerator' |
   '/horizonView/{serviceName}/dedicatedHorizon/enableStorageAccelerator' |
-  '/horizonView/{serviceName}/dedicatedHorizon/customerUser' |
   '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword' |
-  '/horizonView/{serviceName}/customerNetwork' |
-  '/horizonView/{serviceName}/terminate' |
-  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController' |
-  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust' |
-  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain' |
+  '/horizonView/{serviceName}/dedicatedHorizon/customerUser' |
   '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer' |
-  '/horizonView/{serviceName}/domainTrust';
+  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController' |
+  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain' |
+  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust' |
+  '/horizonView/{serviceName}/domainTrust' |
+  '/horizonView/{serviceName}/confirmTermination';
 
 type PathsHorizonViewDELETE = '/horizonView/{serviceName}/accessPoint/{accessPointId}' |
   '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}' |
-  '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}' |
-  '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}';
+  '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}' |
+  '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}';
 
 export class ApiHorizonView extends OvhWrapper {
   constructor(engine: OvhRequestable) {

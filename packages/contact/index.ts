@@ -28,10 +28,10 @@ export namespace contact {
 export interface Contact {
     form:  {
         // GET /contact/form
-        GET(): Promise<contact.FormCharacteristic[]>;
+        $get(): Promise<contact.FormCharacteristic[]>;
         send:  {
             // POST /contact/form/send
-            POST(body?: {type: string, form: complexType.SafeKeyValue<string>[]}): Promise<void>;
+            $post(body?: {form: complexType.SafeKeyValue<string>[], type: string}): Promise<void>;
         }
     }
 }
