@@ -2,7 +2,6 @@ import { Parameter } from './schema';
 import fse from 'fs-extra'
 import Path from 'path'
 import GenApiTypes, { CacheApi, CacheModel } from './GenApiTypes';
-import Promise from 'bluebird';
 
 let gen = new GenApiTypes();
 let extraNS = '';
@@ -303,7 +302,7 @@ async function main() {
     // await fse.mkdir('dist');
 
     // debug gen a single API
-    if (true)
+    if (false)
         apis = apis.filter((api) => {
             if ('/price' == api)
                 return true;
@@ -314,12 +313,13 @@ async function main() {
             return false;
         })
 
-    await Promise.map(apis, async (api) => {
+    for (const api of apis) {
         let flat = api.replace(/\//g, '');
         gen = new GenApiTypes();
         extraNS = `OVH${flat}.`;
         await gen.loadSchema(`${api}.json`)
         // start generation
+        // Add extra ROOT NameSpace
         let code = `export namespace ${extraNS.replace('.', '')} {\n`;
 
         code = dumpModel(0, gen.models, code, '');
@@ -327,7 +327,7 @@ async function main() {
         code += '}';
         console.log(`saving dist${Path.sep}${flat}.ts`);
         await fse.writeFile(`dist${Path.sep}${flat}.ts`, code);
-    }, { concurrency: 2 });
+    }
 }
 
 main().then(() => console.log);
