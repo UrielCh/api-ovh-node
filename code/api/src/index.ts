@@ -35,6 +35,7 @@ import { endpoints } from './endpoints';
 import { OvhParamType, OvhRequestable } from '@ovh-api/common';
 import open from 'open';
 import { writeFile, readFileSync } from 'fs';
+import { EventEmitter } from 'events';
 
 type DebugFnc = (...args: any[]) => any;
 
@@ -78,7 +79,12 @@ interface AccessRule {
  */
 const wait = (duration: number) => (args?: any) => new Promise(resolve => setTimeout(() => (resolve(args)), duration));
 
-export default class OvhApi implements OvhRequestable {
+export interface OvhApiEvent {
+    on(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): this;
+    once(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): this;
+}
+
+export default class OvhApi extends EventEmitter implements OvhRequestable, OvhApiEvent {
     appKey: string;
     appSecret: string;
     consumerKey: string | null;
@@ -94,6 +100,7 @@ export default class OvhApi implements OvhRequestable {
     updatingCert: boolean;
 
     constructor(params: OvhParams) {
+        super();
         this.appKey = params.appKey || 'qCLhWaDgfbAkbuzN';
         this.appSecret = params.appSecret || '8moT8ezpp5kaK2mBSEyazP1oQfEvMPu0';
         this.consumerKey = params.consumerKey || null;
@@ -107,6 +114,8 @@ export default class OvhApi implements OvhRequestable {
                 this.accessRules = params.accessRules.split(/\s*[,;]\s*/);
             else
                 this.accessRules = params.accessRules;
+            // replace {variables} by *
+            this.accessRules.map(rule => rule.replace(/{[^}]*}/g, '*'))
         } else {
             this.accessRules = ['GET /*', 'POST /*', 'PUT /*', 'DELETE /*'];
         }
@@ -200,16 +209,18 @@ by default I will ask for all rights`);
      * Execute a request on the API
      *
      * @param {String} httpMethod: The HTTP method
-     * @param {String} path: The request path
+     * @param {String} pathTemplate: The request path
      * @param {Object} params: The request parameters (passed as query string or
      *                         body params)
      * @param {Function} callback
      * @param {Object} refer: The parent proxied object
      */
-    async request(httpMethod: string, path: string, params?: any): Promise<any> {
+    async request(httpMethod: string, pathTemplate: string, params?: any): Promise<any> {
         const ovhEngine = this;
-        // Time drift
-        if (ovhEngine.apiTimeDiff === null && path !== '/auth/time') {
+        /**
+         * Time drift
+         */
+        if (ovhEngine.apiTimeDiff === null && pathTemplate !== '/auth/time') {
             try {
                 const time: number = await ovhEngine.request('GET', '/auth/time', {})
                 ovhEngine.apiTimeDiff = time - Math.round(Date.now() / 1000);
@@ -217,15 +228,21 @@ by default I will ask for all rights`);
                 throw '[OVH] Unable to fetch OVH API time' + err.message
             }
         }
-        let path0 = path;
+        /**
+         * replace Path variable
+         */
+        let path = pathTemplate;
         let m: RegExpMatchArray | null = null;
         while (m = path.match(/{([^}]+)}/)) {
             let val = params[m[1]];
             if (val === undefined)
-                return <Promise<any>>Promise.reject(`${m[1]} param must be provide to ${path0}`);
+                return <Promise<any>>Promise.reject(`${m[1]} param must be provide to ${pathTemplate}`);
             delete params[m[1]];
             path = path.replace(m[0], String(val));
         }
+        /**
+         * build Request
+         */
         let options: RequestOptions = {
             host: ovhEngine.host,
             port: ovhEngine.port,
@@ -239,13 +256,18 @@ by default I will ask for all rights`);
             'X-Ovh-Application': ovhEngine.appKey,
         };
 
-        // Remove undefined values
+        /**
+         * Remove undefined values
+         */
         for (let k in params) {
             if (params.hasOwnProperty(k) && params[k] == null) {
                 delete params[k];
             }
         }
 
+        /**
+         * Append parameters
+         */
         let reqBody: string = '';
         if (typeof (params) === 'object' && Object.keys(params).length > 0) {
             if (httpMethod === 'PUT' || httpMethod === 'POST') {
@@ -258,7 +280,10 @@ by default I will ask for all rights`);
                 options.path += `?${querystring.stringify(params)}`;
             }
         }
-        // signe operation if /auth service
+
+        /**
+         * signe operation if non /auth service
+         */
         if (path !== '/auth/credential' && path !== '/auth/time') {
             const XOvhTimestamp: number = Math.round(Date.now() / 1000) + Number(ovhEngine.apiTimeDiff);
             options.headers['X-Ovh-Timestamp'] = XOvhTimestamp;
@@ -272,7 +297,9 @@ by default I will ask for all rights`);
                 );
             }
         }
-
+        if (ovhEngine.listenerCount('request')) {
+            ovhEngine.emit('request', { method: httpMethod, path, pathTemplate })
+        }
         if (ovhEngine.debug) {
             ovhEngine.debug(`[OVH] API call: ${options.method} ${options.path} ${reqBody}`);
         }

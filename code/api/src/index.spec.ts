@@ -18,6 +18,10 @@ const api = new ApiMe(ovhEngine);
 
 describe('OvhMe', () => {
   it('retrive nichandler', async () => {
+    //ovhEngine.addListener()
+    ovhEngine.on('request', ({method, path, pathTemplate}) => {
+      console.log(`sending request ${method} ${pathTemplate}`);
+    });
     let constact = await api.get('/me');
     assert.match(constact.nichandle, /[a-z]{2}[0-9]+-ovh/, 'have nichandle');
   }).timeout(60000);
