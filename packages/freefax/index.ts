@@ -152,18 +152,18 @@ export interface Freefax {
     } | any
 }
 // Api
-type PathsFreefaxGET = '/freefax/credits' |
-  '/freefax' |
-  '/freefax/{serviceName}/mainService' |
+type PathsFreefaxGET = '/freefax' |
+  '/freefax/credits' |
   '/freefax/{serviceName}' |
-  '/freefax/{serviceName}/voicemail/voicemailNumbers' |
-  '/freefax/{serviceName}/voicemail/routing' |
+  '/freefax/{serviceName}/mainService' |
+  '/freefax/{serviceName}/serviceInfos' |
   '/freefax/{serviceName}/voicemail' |
-  '/freefax/{serviceName}/serviceInfos';
+  '/freefax/{serviceName}/voicemail/routing' |
+  '/freefax/{serviceName}/voicemail/voicemailNumbers';
 
 type PathsFreefaxPUT = '/freefax/{serviceName}' |
-  '/freefax/{serviceName}/voicemail' |
-  '/freefax/{serviceName}/serviceInfos';
+  '/freefax/{serviceName}/serviceInfos' |
+  '/freefax/{serviceName}/voicemail';
 
 type PathsFreefaxPOST = '/freefax/{serviceName}/changePassword' |
   '/freefax/{serviceName}/voicemail/changePassword' |

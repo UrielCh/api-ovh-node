@@ -77,7 +77,7 @@ export interface Hpcspot {
         $get(): Promise<hpcspot.Account>;
         consumption:  {
             // GET /hpcspot/{serviceName}/consumption
-            $get(param?: {hpcspotItemEndDate_to?: string, hpcspotItemId?: number, orderId?: number, hpcspotItemEndDate_from?: string, type?: hpcspot.ConsumptionTypeEnum}): Promise<number[]>;
+            $get(param?: {hpcspotItemEndDate_from?: string, hpcspotItemEndDate_to?: string, hpcspotItemId?: number, orderId?: number, type?: hpcspot.ConsumptionTypeEnum}): Promise<number[]>;
             [keys: string]: {
                 // GET /hpcspot/{serviceName}/consumption/{id}
                 $get(): Promise<hpcspot.Consumption>;
@@ -92,11 +92,11 @@ export interface Hpcspot {
     } | any
 }
 // Api
-type PathsHpcspotGET = '/hpcspot/{serviceName}' |
-  '/hpcspot/{serviceName}/consumption/{id}' |
+type PathsHpcspotGET = '/hpcspot' |
+  '/hpcspot/{serviceName}' |
   '/hpcspot/{serviceName}/consumption' |
-  '/hpcspot/{serviceName}/serviceInfos' |
-  '/hpcspot';
+  '/hpcspot/{serviceName}/consumption/{id}' |
+  '/hpcspot/{serviceName}/serviceInfos';
 
 type PathsHpcspotPUT = '/hpcspot/{serviceName}/serviceInfos';
 

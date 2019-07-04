@@ -215,7 +215,7 @@ export interface Email {
             $put(body?: {body: email.mxplan.Service}): Promise<void>;
             account:  {
                 // GET /email/mxplan/{service}/account
-                $get(param?: {primaryEmailAddress?: string, id?: number}): Promise<string[]>;
+                $get(param?: {id?: number, primaryEmailAddress?: string}): Promise<string[]>;
                 [keys: string]: {
                     // DELETE /email/mxplan/{service}/account/{email}
                     $delete(): Promise<email.pro.Task>;
@@ -321,7 +321,7 @@ export interface Email {
             }
             externalContact:  {
                 // GET /email/mxplan/{service}/externalContact
-                $get(param?: {externalEmailAddress?: string, firstName?: string, displayName?: string, id?: number, lastName?: string}): Promise<string[]>;
+                $get(param?: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: number, lastName?: string}): Promise<string[]>;
                 // POST /email/mxplan/{service}/externalContact
                 $post(body?: {displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string}): Promise<email.pro.Task>;
                 [keys: string]: {
@@ -353,53 +353,53 @@ export interface Email {
     }
 }
 // Api
-type PathsEmailMxplanGET = '/email/mxplan/{service}' |
-  '/email/mxplan/{service}/task/{id}' |
-  '/email/mxplan/{service}/task' |
-  '/email/mxplan/{service}/server' |
+type PathsEmailMxplanGET = '/email/mxplan' |
+  '/email/mxplan/{service}' |
   '/email/mxplan/{service}/account' |
-  '/email/mxplan/{service}/account/{email}/sendOnBehalfTo' |
-  '/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/mxplan/{service}/account/{email}/diagnostic' |
-  '/email/mxplan/{service}/account/{email}/capabilities' |
-  '/email/mxplan/{service}/account/{email}/sendAs' |
-  '/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}' |
-  '/email/mxplan/{service}/account/{email}/task' |
-  '/email/mxplan/{service}/account/{email}/task/{id}' |
+  '/email/mxplan/{service}/account/{email}' |
   '/email/mxplan/{service}/account/{email}/alias' |
   '/email/mxplan/{service}/account/{email}/alias/{alias}' |
-  '/email/mxplan/{service}/account/{email}' |
-  '/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}' |
+  '/email/mxplan/{service}/account/{email}/capabilities' |
+  '/email/mxplan/{service}/account/{email}/diagnostic' |
   '/email/mxplan/{service}/account/{email}/fullAccess' |
+  '/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}' |
+  '/email/mxplan/{service}/account/{email}/sendAs' |
+  '/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}' |
+  '/email/mxplan/{service}/account/{email}/sendOnBehalfTo' |
+  '/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/mxplan/{service}/account/{email}/task' |
+  '/email/mxplan/{service}/account/{email}/task/{id}' |
   '/email/mxplan/{service}/domain' |
-  '/email/mxplan/{service}/domain/{domainName}/disclaimer' |
   '/email/mxplan/{service}/domain/{domainName}' |
+  '/email/mxplan/{service}/domain/{domainName}/disclaimer' |
   '/email/mxplan/{service}/domain/{domainName}/disclaimerAttribute' |
-  '/email/mxplan/{service}/externalContact/{externalEmailAddress}' |
   '/email/mxplan/{service}/externalContact' |
-  '/email/mxplan';
+  '/email/mxplan/{service}/externalContact/{externalEmailAddress}' |
+  '/email/mxplan/{service}/server' |
+  '/email/mxplan/{service}/task' |
+  '/email/mxplan/{service}/task/{id}';
 
 type PathsEmailMxplanPUT = '/email/mxplan/{service}' |
   '/email/mxplan/{service}/account/{email}' |
-  '/email/mxplan/{service}/domain/{domainName}/disclaimer' |
   '/email/mxplan/{service}/domain/{domainName}' |
+  '/email/mxplan/{service}/domain/{domainName}/disclaimer' |
   '/email/mxplan/{service}/externalContact/{externalEmailAddress}';
 
-type PathsEmailMxplanPOST = '/email/mxplan/{service}/account/{email}/sendOnBehalfTo' |
-  '/email/mxplan/{service}/account/{email}/diagnostic' |
-  '/email/mxplan/{service}/account/{email}/sendAs' |
-  '/email/mxplan/{service}/account/{email}/alias' |
+type PathsEmailMxplanPOST = '/email/mxplan/{service}/account/{email}/alias' |
   '/email/mxplan/{service}/account/{email}/changePassword' |
+  '/email/mxplan/{service}/account/{email}/diagnostic' |
   '/email/mxplan/{service}/account/{email}/fullAccess' |
+  '/email/mxplan/{service}/account/{email}/sendAs' |
+  '/email/mxplan/{service}/account/{email}/sendOnBehalfTo' |
   '/email/mxplan/{service}/domain/{domainName}/disclaimer' |
-  '/email/mxplan/{service}/updateFlagsOnAllAccounts' |
-  '/email/mxplan/{service}/externalContact';
+  '/email/mxplan/{service}/externalContact' |
+  '/email/mxplan/{service}/updateFlagsOnAllAccounts';
 
-type PathsEmailMxplanDELETE = '/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}' |
+type PathsEmailMxplanDELETE = '/email/mxplan/{service}/account/{email}' |
   '/email/mxplan/{service}/account/{email}/alias/{alias}' |
-  '/email/mxplan/{service}/account/{email}' |
   '/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}' |
+  '/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}' |
+  '/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
   '/email/mxplan/{service}/domain/{domainName}/disclaimer' |
   '/email/mxplan/{service}/externalContact/{externalEmailAddress}';
 

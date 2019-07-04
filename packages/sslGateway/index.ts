@@ -192,32 +192,32 @@ export interface SslGateway {
     } | any
 }
 // Api
-type PathsSslGatewayGET = '/sslGateway/{serviceName}/natIp' |
+type PathsSslGatewayGET = '/sslGateway' |
+  '/sslGateway/availableZones' |
+  '/sslGateway/eligibility' |
   '/sslGateway/{serviceName}' |
+  '/sslGateway/{serviceName}/domain' |
+  '/sslGateway/{serviceName}/domain/{id}' |
+  '/sslGateway/{serviceName}/natIp' |
   '/sslGateway/{serviceName}/server' |
   '/sslGateway/{serviceName}/server/{id}' |
-  '/sslGateway/{serviceName}/domain/{id}' |
-  '/sslGateway/{serviceName}/domain' |
-  '/sslGateway/{serviceName}/task/{id}' |
-  '/sslGateway/{serviceName}/task' |
   '/sslGateway/{serviceName}/serviceInfos' |
-  '/sslGateway/eligibility' |
-  '/sslGateway/availableZones' |
-  '/sslGateway';
+  '/sslGateway/{serviceName}/task' |
+  '/sslGateway/{serviceName}/task/{id}';
 
 type PathsSslGatewayPUT = '/sslGateway/{serviceName}' |
   '/sslGateway/{serviceName}/server/{id}' |
   '/sslGateway/{serviceName}/serviceInfos';
 
-type PathsSslGatewayPOST = '/sslGateway/{serviceName}/server' |
-  '/sslGateway/{serviceName}/changeContact' |
+type PathsSslGatewayPOST = '/sslGateway/{serviceName}/changeContact' |
   '/sslGateway/{serviceName}/confirmTermination' |
   '/sslGateway/{serviceName}/domain' |
-  '/sslGateway/{serviceName}/terminate' |
-  '/sslGateway/{serviceName}/renewCertificate';
+  '/sslGateway/{serviceName}/renewCertificate' |
+  '/sslGateway/{serviceName}/server' |
+  '/sslGateway/{serviceName}/terminate';
 
-type PathsSslGatewayDELETE = '/sslGateway/{serviceName}/server/{id}' |
-  '/sslGateway/{serviceName}/domain/{id}';
+type PathsSslGatewayDELETE = '/sslGateway/{serviceName}/domain/{id}' |
+  '/sslGateway/{serviceName}/server/{id}';
 
 export class ApiSslGateway extends OvhWrapper {
   constructor(engine: OvhRequestable) {

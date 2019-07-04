@@ -205,15 +205,15 @@ export interface Service {
     } | any
 }
 // Api
-type PathsServiceGET = '/service/{serviceId}' |
-  '/service/{serviceId}/renew' |
-  '/service';
+type PathsServiceGET = '/service' |
+  '/service/{serviceId}' |
+  '/service/{serviceId}/renew';
 
 type PathsServicePUT = '/service/{serviceId}';
 
-type PathsServicePOST = '/service/{serviceId}/reopen' |
+type PathsServicePOST = '/service/{serviceId}/renew' |
+  '/service/{serviceId}/reopen' |
   '/service/{serviceId}/suspend' |
-  '/service/{serviceId}/renew' |
   '/service/{serviceId}/terminate';
 
 export class ApiService extends OvhWrapper {

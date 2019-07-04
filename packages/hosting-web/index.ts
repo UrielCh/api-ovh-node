@@ -819,7 +819,7 @@ export interface Hosting {
         localSeo:  {
             directoriesList:  {
                 // GET /hosting/web/localSeo/directoriesList
-                $get(param?: {offer: hosting.web.localSeo.location.OfferEnum, country: hosting.web.localSeo.location.CountryEnum}): Promise<hosting.web.localSeo.DirectoriesList>;
+                $get(param?: {country: hosting.web.localSeo.location.CountryEnum, offer: hosting.web.localSeo.location.OfferEnum}): Promise<hosting.web.localSeo.DirectoriesList>;
             }
             emailAvailability:  {
                 // GET /hosting/web/localSeo/emailAvailability
@@ -831,12 +831,12 @@ export interface Hosting {
             }
             visibilityCheckResult:  {
                 // GET /hosting/web/localSeo/visibilityCheckResult
-                $get(param?: {token: string, directory: string, id: number}): Promise<hosting.web.localSeo.VisibilityCheckResultResponse[]>;
+                $get(param?: {directory: string, id: number, token: string}): Promise<hosting.web.localSeo.VisibilityCheckResultResponse[]>;
             }
         }
         moduleList:  {
             // GET /hosting/web/moduleList
-            $get(param?: {latest?: boolean, branch?: hosting.web.module.BranchEnum, active?: boolean}): Promise<number[]>;
+            $get(param?: {active?: boolean, branch?: hosting.web.module.BranchEnum, latest?: boolean}): Promise<number[]>;
             [keys: string]: {
                 // GET /hosting/web/moduleList/{id}
                 $get(): Promise<hosting.web.ModuleList>;
@@ -857,7 +857,7 @@ export interface Hosting {
             }
             attachedDomain:  {
                 // GET /hosting/web/{serviceName}/attachedDomain
-                $get(param?: {path?: string, domain?: string}): Promise<string[]>;
+                $get(param?: {domain?: string, path?: string}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/attachedDomain
                 $post(body?: {cdn?: hosting.web.attachedDomain.CdnEnum, domain: string, firewall?: hosting.web.attachedDomain.FirewallEnum, ownLog?: string, path: string, runtimeId?: number, ssl?: boolean}): Promise<hosting.web.task>;
                 [keys: string]: {
@@ -911,7 +911,7 @@ export interface Hosting {
             }
             cron:  {
                 // GET /hosting/web/{serviceName}/cron
-                $get(param?: {language?: hosting.web.cron.LanguageEnum, command?: string, email?: string, description?: string}): Promise<number[]>;
+                $get(param?: {command?: string, description?: string, email?: string, language?: hosting.web.cron.LanguageEnum}): Promise<number[]>;
                 // POST /hosting/web/{serviceName}/cron
                 $post(body?: {command: string, description?: string, email?: string, frequency: string, language: hosting.web.cron.LanguageEnum, status?: hosting.web.cron.StatusEnum}): Promise<string>;
                 [keys: string]: {
@@ -929,7 +929,7 @@ export interface Hosting {
             }
             database:  {
                 // GET /hosting/web/{serviceName}/database
-                $get(param?: {type?: hosting.web.database.DatabaseTypeEnum, server?: string, user?: string, mode?: hosting.web.database.ModeEnum, name?: string}): Promise<string[]>;
+                $get(param?: {mode?: hosting.web.database.ModeEnum, name?: string, server?: string, type?: hosting.web.database.DatabaseTypeEnum, user?: string}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/database
                 $post(body?: {capabilitie: hosting.web.database.DatabaseCapabilitiesTypeEnum, password?: string, quota?: hosting.web.database.ExtraSqlQuotaEnum, type: hosting.web.database.DatabaseTypeEnum, user: string, version?: hosting.web.database.VersionEnum}): Promise<hosting.web.task>;
                 [keys: string]: {
@@ -947,7 +947,7 @@ export interface Hosting {
                     }
                     dump:  {
                         // GET /hosting/web/{serviceName}/database/{name}/dump
-                        $get(param?: {type?: hosting.web.database.dump.DateEnum, creationDate?: string, deletionDate?: string}): Promise<number[]>;
+                        $get(param?: {creationDate?: string, deletionDate?: string, type?: hosting.web.database.dump.DateEnum}): Promise<number[]>;
                         // POST /hosting/web/{serviceName}/database/{name}/dump
                         $post(body?: {date: hosting.web.database.dump.DateEnum, sendEmail?: boolean}): Promise<hosting.web.task>;
                         [keys: string]: {
@@ -975,7 +975,7 @@ export interface Hosting {
                     }
                     statistics:  {
                         // GET /hosting/web/{serviceName}/database/{name}/statistics
-                        $get(param?: {type: hosting.web.database.StatisticsTypeEnum, period: hosting.web.StatisticsPeriodEnum}): Promise<complexType.ChartSerie<complexType.ChartTimestampValue>[]>;
+                        $get(param?: {period: hosting.web.StatisticsPeriodEnum, type: hosting.web.database.StatisticsTypeEnum}): Promise<complexType.ChartSerie<complexType.ChartTimestampValue>[]>;
                     }
                 } | any
             }
@@ -993,7 +993,7 @@ export interface Hosting {
             }
             dump:  {
                 // GET /hosting/web/{serviceName}/dump
-                $get(param?: {databaseName?: string, creationDate?: string, deletionDate?: string, orphan?: boolean}): Promise<number[]>;
+                $get(param?: {creationDate?: string, databaseName?: string, deletionDate?: string, orphan?: boolean}): Promise<number[]>;
                 [keys: string]: {
                     // DELETE /hosting/web/{serviceName}/dump/{id}
                     $delete(): Promise<hosting.web.task>;
@@ -1197,7 +1197,7 @@ export interface Hosting {
             }
             runtime:  {
                 // GET /hosting/web/{serviceName}/runtime
-                $get(param?: {type?: hosting.web.runtime.TypeEnum, name?: string}): Promise<number[]>;
+                $get(param?: {name?: string, type?: hosting.web.runtime.TypeEnum}): Promise<number[]>;
                 // POST /hosting/web/{serviceName}/runtime
                 $post(body?: {appBootstrap?: string, appEnv?: hosting.web.runtime.EnvEnum, attachedDomains?: string[], isDefault?: boolean, name?: string, publicDir?: string, type?: hosting.web.runtime.TypeEnum}): Promise<hosting.web.task>;
                 [keys: string]: {
@@ -1245,11 +1245,11 @@ export interface Hosting {
             }
             statistics:  {
                 // GET /hosting/web/{serviceName}/statistics
-                $get(param?: {type: hosting.web.StatisticsTypeEnum, period: hosting.web.StatisticsPeriodEnum}): Promise<complexType.ChartSerie<complexType.ChartTimestampValue>[]>;
+                $get(param?: {period: hosting.web.StatisticsPeriodEnum, type: hosting.web.StatisticsTypeEnum}): Promise<complexType.ChartSerie<complexType.ChartTimestampValue>[]>;
             }
             tasks:  {
                 // GET /hosting/web/{serviceName}/tasks
-                $get(param?: {status?: hosting.web.task.StatusEnum, function_?: string}): Promise<number[]>;
+                $get(param?: {function_?: string, status?: hosting.web.task.StatusEnum}): Promise<number[]>;
                 [keys: string]: {
                     // GET /hosting/web/{serviceName}/tasks/{id}
                     $get(): Promise<hosting.web.task>;
@@ -1265,7 +1265,7 @@ export interface Hosting {
             }
             user:  {
                 // GET /hosting/web/{serviceName}/user
-                $get(param?: {login?: string, home?: string}): Promise<string[]>;
+                $get(param?: {home?: string, login?: string}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/user
                 $post(body?: {home: string, login: string, password: string, sshState?: hosting.web.user.SshStateEnum}): Promise<hosting.web.task>;
                 [keys: string]: {
@@ -1301,157 +1301,157 @@ export interface Hosting {
             }
             userLogsToken:  {
                 // GET /hosting/web/{serviceName}/userLogsToken
-                $get(param?: {attachedDomain?: string, ttl?: number, remoteCheck?: boolean}): Promise<string>;
+                $get(param?: {attachedDomain?: string, remoteCheck?: boolean, ttl?: number}): Promise<string>;
             }
         } | any
     }
 }
 // Api
-type PathsHostingWebGET = '/hosting/web/incident' |
+type PathsHostingWebGET = '/hosting/web' |
+  '/hosting/web/attachedDomain' |
+  '/hosting/web/availableOffer' |
+  '/hosting/web/incident' |
+  '/hosting/web/localSeo/directoriesList' |
+  '/hosting/web/localSeo/emailAvailability' |
+  '/hosting/web/localSeo/visibilityCheckResult' |
   '/hosting/web/moduleList' |
   '/hosting/web/moduleList/{id}' |
   '/hosting/web/offerCapabilities' |
-  '/hosting/web/{serviceName}/ovhConfig/{id}' |
-  '/hosting/web/{serviceName}/ovhConfig' |
-  '/hosting/web/{serviceName}/serviceInfos' |
-  '/hosting/web/{serviceName}/privateDatabases' |
-  '/hosting/web/{serviceName}/email/volumes' |
-  '/hosting/web/{serviceName}/email' |
-  '/hosting/web/{serviceName}/email/bounces' |
+  '/hosting/web/{serviceName}' |
   '/hosting/web/{serviceName}/attachedDomain' |
   '/hosting/web/{serviceName}/attachedDomain/{domain}' |
   '/hosting/web/{serviceName}/boostHistory' |
   '/hosting/web/{serviceName}/boostHistory/{date}' |
+  '/hosting/web/{serviceName}/cdn' |
+  '/hosting/web/{serviceName}/cdn/serviceInfos' |
+  '/hosting/web/{serviceName}/cron' |
+  '/hosting/web/{serviceName}/cron/{id}' |
+  '/hosting/web/{serviceName}/cronAvailableLanguage' |
+  '/hosting/web/{serviceName}/database' |
+  '/hosting/web/{serviceName}/database/{name}' |
+  '/hosting/web/{serviceName}/database/{name}/capabilities' |
+  '/hosting/web/{serviceName}/database/{name}/dump' |
+  '/hosting/web/{serviceName}/database/{name}/dump/{id}' |
+  '/hosting/web/{serviceName}/database/{name}/statistics' |
   '/hosting/web/{serviceName}/databaseAvailableType' |
   '/hosting/web/{serviceName}/databaseAvailableVersion' |
-  '/hosting/web/{serviceName}/freedom/{domain}' |
-  '/hosting/web/{serviceName}/freedom' |
-  '/hosting/web/{serviceName}/runtime/{id}/attachedDomains' |
-  '/hosting/web/{serviceName}/runtime/{id}' |
-  '/hosting/web/{serviceName}/runtime' |
-  '/hosting/web/{serviceName}/userLogs' |
-  '/hosting/web/{serviceName}/userLogs/{login}' |
-  '/hosting/web/{serviceName}/ssl/domains' |
-  '/hosting/web/{serviceName}/ssl/report' |
-  '/hosting/web/{serviceName}/ssl' |
-  '/hosting/web/{serviceName}/user/{login}' |
-  '/hosting/web/{serviceName}/user' |
-  '/hosting/web/{serviceName}/tasks/{id}' |
-  '/hosting/web/{serviceName}/tasks' |
-  '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfos' |
-  '/hosting/web/{serviceName}/extraSqlPerso/{name}' |
-  '/hosting/web/{serviceName}/extraSqlPerso/{name}/databases' |
-  '/hosting/web/{serviceName}/extraSqlPerso' |
-  '/hosting/web/{serviceName}/privateDatabaseCreationCapabilities' |
-  '/hosting/web/{serviceName}/cron/{id}' |
-  '/hosting/web/{serviceName}/cron' |
+  '/hosting/web/{serviceName}/databaseCreationCapabilities' |
+  '/hosting/web/{serviceName}/dump' |
+  '/hosting/web/{serviceName}/dump/{id}' |
+  '/hosting/web/{serviceName}/email' |
+  '/hosting/web/{serviceName}/email/bounces' |
+  '/hosting/web/{serviceName}/email/volumes' |
   '/hosting/web/{serviceName}/envVar' |
   '/hosting/web/{serviceName}/envVar/{key}' |
-  '/hosting/web/{serviceName}/cdn/serviceInfos' |
-  '/hosting/web/{serviceName}/cdn' |
-  '/hosting/web/{serviceName}/localSeo/emailAvailability' |
-  '/hosting/web/{serviceName}/localSeo/account/{id}' |
+  '/hosting/web/{serviceName}/extraSqlPerso' |
+  '/hosting/web/{serviceName}/extraSqlPerso/{name}' |
+  '/hosting/web/{serviceName}/extraSqlPerso/{name}/databases' |
+  '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfos' |
+  '/hosting/web/{serviceName}/freedom' |
+  '/hosting/web/{serviceName}/freedom/{domain}' |
+  '/hosting/web/{serviceName}/indy' |
+  '/hosting/web/{serviceName}/indy/{login}' |
   '/hosting/web/{serviceName}/localSeo/account' |
+  '/hosting/web/{serviceName}/localSeo/account/{id}' |
+  '/hosting/web/{serviceName}/localSeo/emailAvailability' |
+  '/hosting/web/{serviceName}/localSeo/location' |
   '/hosting/web/{serviceName}/localSeo/location/{id}' |
   '/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfos' |
-  '/hosting/web/{serviceName}/localSeo/location' |
-  '/hosting/web/{serviceName}/cronAvailableLanguage' |
+  '/hosting/web/{serviceName}/module' |
+  '/hosting/web/{serviceName}/module/{id}' |
+  '/hosting/web/{serviceName}/ovhConfig' |
+  '/hosting/web/{serviceName}/ovhConfig/{id}' |
   '/hosting/web/{serviceName}/ownLogs' |
   '/hosting/web/{serviceName}/ownLogs/{id}' |
   '/hosting/web/{serviceName}/ownLogs/{id}/userLogs' |
   '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}' |
-  '/hosting/web/{serviceName}/database' |
-  '/hosting/web/{serviceName}/database/{name}/dump' |
-  '/hosting/web/{serviceName}/database/{name}/dump/{id}' |
-  '/hosting/web/{serviceName}/database/{name}/capabilities' |
-  '/hosting/web/{serviceName}/database/{name}/statistics' |
-  '/hosting/web/{serviceName}/database/{name}' |
-  '/hosting/web/{serviceName}/databaseCreationCapabilities' |
-  '/hosting/web/{serviceName}/dump' |
-  '/hosting/web/{serviceName}/dump/{id}' |
-  '/hosting/web/{serviceName}/module/{id}' |
-  '/hosting/web/{serviceName}/module' |
-  '/hosting/web/{serviceName}/token' |
-  '/hosting/web/{serviceName}/runtimeAvailableTypes' |
-  '/hosting/web/{serviceName}/userLogsToken' |
-  '/hosting/web/{serviceName}/indy/{login}' |
-  '/hosting/web/{serviceName}/indy' |
-  '/hosting/web/{serviceName}/statistics' |
-  '/hosting/web/{serviceName}' |
-  '/hosting/web/attachedDomain' |
-  '/hosting/web/availableOffer' |
-  '/hosting/web/localSeo/visibilityCheckResult' |
-  '/hosting/web/localSeo/emailAvailability' |
-  '/hosting/web/localSeo/directoriesList' |
-  '/hosting/web';
-
-type PathsHostingWebPUT = '/hosting/web/{serviceName}/serviceInfos' |
-  '/hosting/web/{serviceName}/email' |
-  '/hosting/web/{serviceName}/attachedDomain/{domain}' |
+  '/hosting/web/{serviceName}/privateDatabaseCreationCapabilities' |
+  '/hosting/web/{serviceName}/privateDatabases' |
+  '/hosting/web/{serviceName}/runtime' |
   '/hosting/web/{serviceName}/runtime/{id}' |
-  '/hosting/web/{serviceName}/userLogs/{login}' |
+  '/hosting/web/{serviceName}/runtime/{id}/attachedDomains' |
+  '/hosting/web/{serviceName}/runtimeAvailableTypes' |
+  '/hosting/web/{serviceName}/serviceInfos' |
+  '/hosting/web/{serviceName}/ssl' |
+  '/hosting/web/{serviceName}/ssl/domains' |
+  '/hosting/web/{serviceName}/ssl/report' |
+  '/hosting/web/{serviceName}/statistics' |
+  '/hosting/web/{serviceName}/tasks' |
+  '/hosting/web/{serviceName}/tasks/{id}' |
+  '/hosting/web/{serviceName}/token' |
+  '/hosting/web/{serviceName}/user' |
   '/hosting/web/{serviceName}/user/{login}' |
+  '/hosting/web/{serviceName}/userLogs' |
+  '/hosting/web/{serviceName}/userLogs/{login}' |
+  '/hosting/web/{serviceName}/userLogsToken';
+
+type PathsHostingWebPUT = '/hosting/web/{serviceName}' |
+  '/hosting/web/{serviceName}/attachedDomain/{domain}' |
   '/hosting/web/{serviceName}/cron/{id}' |
+  '/hosting/web/{serviceName}/email' |
   '/hosting/web/{serviceName}/envVar/{key}' |
   '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}' |
-  '/hosting/web/{serviceName}';
+  '/hosting/web/{serviceName}/runtime/{id}' |
+  '/hosting/web/{serviceName}/serviceInfos' |
+  '/hosting/web/{serviceName}/user/{login}' |
+  '/hosting/web/{serviceName}/userLogs/{login}';
 
-type PathsHostingWebPOST = '/hosting/web/{serviceName}/confirmTermination' |
-  '/hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration' |
-  '/hosting/web/{serviceName}/ovhConfig/{id}/rollback' |
-  '/hosting/web/{serviceName}/email/request' |
+type PathsHostingWebPOST = '/hosting/web/localSeo/visibilityCheck' |
+  '/hosting/web/{serviceName}/activatePrivateDatabase' |
   '/hosting/web/{serviceName}/attachedDomain' |
   '/hosting/web/{serviceName}/attachedDomain/{domain}/purgeCache' |
   '/hosting/web/{serviceName}/attachedDomain/{domain}/restart' |
-  '/hosting/web/{serviceName}/changeContact' |
-  '/hosting/web/{serviceName}/terminate' |
-  '/hosting/web/{serviceName}/runtime' |
-  '/hosting/web/{serviceName}/userLogs' |
-  '/hosting/web/{serviceName}/userLogs/{login}/changePassword' |
-  '/hosting/web/{serviceName}/ssl/regenerate' |
-  '/hosting/web/{serviceName}/ssl' |
-  '/hosting/web/{serviceName}/user/{login}/changePassword' |
-  '/hosting/web/{serviceName}/user' |
-  '/hosting/web/{serviceName}/ovhConfigRefresh' |
-  '/hosting/web/{serviceName}/requestBoost' |
-  '/hosting/web/{serviceName}/extraSqlPerso/{name}/terminate' |
-  '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate' |
-  '/hosting/web/{serviceName}/cron' |
-  '/hosting/web/{serviceName}/envVar' |
-  '/hosting/web/{serviceName}/cdn/terminate' |
   '/hosting/web/{serviceName}/cdn/serviceInfosUpdate' |
+  '/hosting/web/{serviceName}/cdn/terminate' |
+  '/hosting/web/{serviceName}/changeContact' |
+  '/hosting/web/{serviceName}/confirmTermination' |
+  '/hosting/web/{serviceName}/cron' |
+  '/hosting/web/{serviceName}/database' |
+  '/hosting/web/{serviceName}/database/{name}/changePassword' |
+  '/hosting/web/{serviceName}/database/{name}/dump' |
+  '/hosting/web/{serviceName}/database/{name}/dump/{id}/restore' |
+  '/hosting/web/{serviceName}/database/{name}/import' |
+  '/hosting/web/{serviceName}/database/{name}/request' |
+  '/hosting/web/{serviceName}/database/{name}/restore' |
+  '/hosting/web/{serviceName}/email/request' |
+  '/hosting/web/{serviceName}/envVar' |
+  '/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate' |
+  '/hosting/web/{serviceName}/extraSqlPerso/{name}/terminate' |
   '/hosting/web/{serviceName}/localSeo/account/{id}/login' |
   '/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate' |
   '/hosting/web/{serviceName}/localSeo/location/{id}/terminate' |
+  '/hosting/web/{serviceName}/module' |
+  '/hosting/web/{serviceName}/module/{id}/changePassword' |
+  '/hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration' |
+  '/hosting/web/{serviceName}/ovhConfig/{id}/rollback' |
+  '/hosting/web/{serviceName}/ovhConfigRefresh' |
   '/hosting/web/{serviceName}/ownLogs/{id}/userLogs' |
   '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword' |
-  '/hosting/web/{serviceName}/activatePrivateDatabase' |
-  '/hosting/web/{serviceName}/database' |
-  '/hosting/web/{serviceName}/database/{name}/dump' |
-  '/hosting/web/{serviceName}/database/{name}/dump/{id}/restore' |
-  '/hosting/web/{serviceName}/database/{name}/request' |
-  '/hosting/web/{serviceName}/database/{name}/import' |
-  '/hosting/web/{serviceName}/database/{name}/restore' |
-  '/hosting/web/{serviceName}/database/{name}/changePassword' |
-  '/hosting/web/{serviceName}/module/{id}/changePassword' |
-  '/hosting/web/{serviceName}/module' |
   '/hosting/web/{serviceName}/request' |
+  '/hosting/web/{serviceName}/requestBoost' |
   '/hosting/web/{serviceName}/restoreSnapshot' |
-  '/hosting/web/localSeo/visibilityCheck';
+  '/hosting/web/{serviceName}/runtime' |
+  '/hosting/web/{serviceName}/ssl' |
+  '/hosting/web/{serviceName}/ssl/regenerate' |
+  '/hosting/web/{serviceName}/terminate' |
+  '/hosting/web/{serviceName}/user' |
+  '/hosting/web/{serviceName}/user/{login}/changePassword' |
+  '/hosting/web/{serviceName}/userLogs' |
+  '/hosting/web/{serviceName}/userLogs/{login}/changePassword';
 
 type PathsHostingWebDELETE = '/hosting/web/{serviceName}/attachedDomain/{domain}' |
+  '/hosting/web/{serviceName}/cron/{id}' |
+  '/hosting/web/{serviceName}/database/{name}' |
+  '/hosting/web/{serviceName}/database/{name}/dump/{id}' |
+  '/hosting/web/{serviceName}/dump/{id}' |
+  '/hosting/web/{serviceName}/envVar/{key}' |
   '/hosting/web/{serviceName}/freedom/{domain}' |
+  '/hosting/web/{serviceName}/module/{id}' |
+  '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}' |
   '/hosting/web/{serviceName}/runtime/{id}' |
-  '/hosting/web/{serviceName}/userLogs/{login}' |
   '/hosting/web/{serviceName}/ssl' |
   '/hosting/web/{serviceName}/user/{login}' |
-  '/hosting/web/{serviceName}/cron/{id}' |
-  '/hosting/web/{serviceName}/envVar/{key}' |
-  '/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}' |
-  '/hosting/web/{serviceName}/database/{name}/dump/{id}' |
-  '/hosting/web/{serviceName}/database/{name}' |
-  '/hosting/web/{serviceName}/dump/{id}' |
-  '/hosting/web/{serviceName}/module/{id}';
+  '/hosting/web/{serviceName}/userLogs/{login}';
 
 export class ApiHostingWeb extends OvhWrapper {
   constructor(engine: OvhRequestable) {

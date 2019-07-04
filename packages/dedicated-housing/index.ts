@@ -206,7 +206,7 @@ export interface Dedicated {
             }
             task:  {
                 // GET /dedicated/housing/{serviceName}/task
-                $get(param?: {status?: dedicated.TaskStatusEnum, function_?: dedicated.housing.TaskFunctionEnum}): Promise<number[]>;
+                $get(param?: {function_?: dedicated.housing.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
                 [keys: string]: {
                     // GET /dedicated/housing/{serviceName}/task/{taskId}
                     $get(): Promise<dedicated.housing.Task>;
@@ -220,24 +220,24 @@ export interface Dedicated {
     }
 }
 // Api
-type PathsDedicatedHousingGET = '/dedicated/housing/{serviceName}/orderable/APC' |
-  '/dedicated/housing/{serviceName}/task/{taskId}' |
-  '/dedicated/housing/{serviceName}/task' |
+type PathsDedicatedHousingGET = '/dedicated/housing' |
   '/dedicated/housing/{serviceName}' |
   '/dedicated/housing/{serviceName}/features/backupFTP' |
-  '/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks' |
   '/dedicated/housing/{serviceName}/features/backupFTP/access' |
   '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}' |
+  '/dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks' |
+  '/dedicated/housing/{serviceName}/orderable/APC' |
   '/dedicated/housing/{serviceName}/serviceInfos' |
-  '/dedicated/housing';
+  '/dedicated/housing/{serviceName}/task' |
+  '/dedicated/housing/{serviceName}/task/{taskId}';
 
 type PathsDedicatedHousingPUT = '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}' |
   '/dedicated/housing/{serviceName}/serviceInfos';
 
-type PathsDedicatedHousingPOST = '/dedicated/housing/{serviceName}/task/{taskId}/cancel' |
-  '/dedicated/housing/{serviceName}/features/backupFTP' |
+type PathsDedicatedHousingPOST = '/dedicated/housing/{serviceName}/features/backupFTP' |
+  '/dedicated/housing/{serviceName}/features/backupFTP/access' |
   '/dedicated/housing/{serviceName}/features/backupFTP/password' |
-  '/dedicated/housing/{serviceName}/features/backupFTP/access';
+  '/dedicated/housing/{serviceName}/task/{taskId}/cancel';
 
 type PathsDedicatedHousingDELETE = '/dedicated/housing/{serviceName}/features/backupFTP' |
   '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}';

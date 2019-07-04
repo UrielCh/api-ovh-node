@@ -290,47 +290,47 @@ export interface HorizonView {
     } | any
 }
 // Api
-type PathsHorizonViewGET = '/horizonView/{serviceName}/accessPoint' |
+type PathsHorizonViewGET = '/horizonView' |
+  '/horizonView/{serviceName}' |
+  '/horizonView/{serviceName}/accessPoint' |
   '/horizonView/{serviceName}/accessPoint/{accessPointId}' |
-  '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}' |
   '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork' |
+  '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}' |
   '/horizonView/{serviceName}/customerNetwork' |
   '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}' |
-  '/horizonView/{serviceName}' |
-  '/horizonView/{serviceName}/serviceInfos' |
-  '/horizonView/{serviceName}/dedicatedHorizon/user' |
   '/horizonView/{serviceName}/dedicatedHorizon' |
+  '/horizonView/{serviceName}/dedicatedHorizon/customerUser' |
+  '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}' |
   '/horizonView/{serviceName}/dedicatedHorizon/task' |
   '/horizonView/{serviceName}/dedicatedHorizon/task/{taskId}' |
-  '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}' |
-  '/horizonView/{serviceName}/dedicatedHorizon/customerUser' |
-  '/horizonView/{serviceName}/domainTrust/{domainTrustId}' |
+  '/horizonView/{serviceName}/dedicatedHorizon/user' |
   '/horizonView/{serviceName}/domainTrust' |
-  '/horizonView';
+  '/horizonView/{serviceName}/domainTrust/{domainTrustId}' |
+  '/horizonView/{serviceName}/serviceInfos';
 
 type PathsHorizonViewPUT = '/horizonView/{serviceName}/serviceInfos';
 
 type PathsHorizonViewPOST = '/horizonView/{serviceName}/accessPoint' |
-  '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption' |
-  '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption' |
-  '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA' |
-  '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA' |
   '/horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout' |
   '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork' |
+  '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA' |
+  '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption' |
+  '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA' |
+  '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption' |
+  '/horizonView/{serviceName}/confirmTermination' |
   '/horizonView/{serviceName}/customerNetwork' |
-  '/horizonView/{serviceName}/terminate' |
-  '/horizonView/{serviceName}/dedicatedHorizon/user/changeProperties' |
-  '/horizonView/{serviceName}/dedicatedHorizon/user/changePassword' |
+  '/horizonView/{serviceName}/dedicatedHorizon/customerUser' |
+  '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword' |
   '/horizonView/{serviceName}/dedicatedHorizon/disableStorageAccelerator' |
   '/horizonView/{serviceName}/dedicatedHorizon/enableStorageAccelerator' |
-  '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword' |
-  '/horizonView/{serviceName}/dedicatedHorizon/customerUser' |
-  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer' |
-  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController' |
-  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain' |
-  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust' |
+  '/horizonView/{serviceName}/dedicatedHorizon/user/changePassword' |
+  '/horizonView/{serviceName}/dedicatedHorizon/user/changeProperties' |
   '/horizonView/{serviceName}/domainTrust' |
-  '/horizonView/{serviceName}/confirmTermination';
+  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain' |
+  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController' |
+  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer' |
+  '/horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust' |
+  '/horizonView/{serviceName}/terminate';
 
 type PathsHorizonViewDELETE = '/horizonView/{serviceName}/accessPoint/{accessPointId}' |
   '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}' |

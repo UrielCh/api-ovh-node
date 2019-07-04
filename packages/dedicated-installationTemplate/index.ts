@@ -131,13 +131,13 @@ export interface Dedicated {
 }
 // Api
 type PathsDedicatedInstallationTemplateGET = '/dedicated/installationTemplate' |
-  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition' |
-  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}' |
-  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}' |
-  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid' |
-  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}' |
+  '/dedicated/installationTemplate/{templateName}' |
   '/dedicated/installationTemplate/{templateName}/partitionScheme' |
-  '/dedicated/installationTemplate/{templateName}';
+  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}' |
+  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid' |
+  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}' |
+  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition' |
+  '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}';
 
 export class ApiDedicatedInstallationTemplate extends OvhWrapper {
   constructor(engine: OvhRequestable) {

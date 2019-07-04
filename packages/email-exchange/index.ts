@@ -560,7 +560,7 @@ export interface Email {
                     $put(body?: {body: email.exchange.ExchangeService}): Promise<void>;
                     account:  {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/account
-                        $get(param?: {accountLicense?: email.exchange.OvhLicenceEnum, primaryEmailAddress?: string, id?: number}): Promise<string[]>;
+                        $get(param?: {accountLicense?: email.exchange.OvhLicenceEnum, id?: number, primaryEmailAddress?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/account
                         $post(body?: {company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], outlookLicense?: boolean, password: string, SAMAccountName?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration}): Promise<email.exchange.Task>;
                         [keys: string]: {
@@ -692,7 +692,7 @@ export interface Email {
                     }
                     device:  {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/device
-                        $get(param?: {identity?: string, deviceState?: email.exchange.DeviceActiveSyncStateEnum, IMEI?: string}): Promise<string[]>;
+                        $get(param?: {deviceState?: email.exchange.DeviceActiveSyncStateEnum, identity?: string, IMEI?: string}): Promise<string[]>;
                         [keys: string]: {
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/device/{identity}
                             $get(): Promise<email.exchange.exchangeServiceDevice>;
@@ -734,7 +734,7 @@ export interface Email {
                     }
                     externalContact:  {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/externalContact
-                        $get(param?: {displayName?: string, lastName?: string, id?: number, externalEmailAddress?: string, firstName?: string}): Promise<string[]>;
+                        $get(param?: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: number, lastName?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/externalContact
                         $post(body?: {displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, organization2010?: string}): Promise<email.exchange.Task>;
                         [keys: string]: {
@@ -748,7 +748,7 @@ export interface Email {
                     }
                     license:  {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/license
-                        $get(param?: {toDate?: string, license?: email.exchange.OvhLicenceEnum, fromDate?: string}): Promise<email.exchange.DailyLicense[]>;
+                        $get(param?: {fromDate?: string, license?: email.exchange.OvhLicenceEnum, toDate?: string}): Promise<email.exchange.DailyLicense[]>;
                     }
                     mailingList:  {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList
@@ -842,7 +842,7 @@ export interface Email {
                     }
                     outlookAvailability:  {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability
-                        $get(param?: {outlookVersion?: email.exchange.OutlookVersionEnum, outlookLanguage?: email.exchange.LanguageEnum}): Promise<email.exchange.OutlookVersions[]>;
+                        $get(param?: {outlookLanguage?: email.exchange.LanguageEnum, outlookVersion?: email.exchange.OutlookVersionEnum}): Promise<email.exchange.OutlookVersions[]>;
                     }
                     protocol:  {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/protocol
@@ -1020,161 +1020,161 @@ export interface Email {
     }
 }
 // Api
-type PathsEmailExchangeGET = '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/device' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimerAttribute' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/protocol' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification/{notifiedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolderQuota' |
+type PathsEmailExchangeGET = '/email/exchange' |
+  '/email/exchange/{organizationName}/service' |
   '/email/exchange/{organizationName}/service/{exchangeService}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/server' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/exportURL' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/exportURL' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks/{id}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/tasks/{id}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/dcvEmails' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/task/{id}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/task' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks/{id}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/device' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimerAttribute' |
   '/email/exchange/{organizationName}/service/{exchangeService}/externalContact' |
   '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/license' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccountQuota' |
-  '/email/exchange/{organizationName}/service' |
-  '/email/exchange';
-
-type PathsEmailExchangePUT = '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/protocol' |
-  '/email/exchange/{organizationName}/service/{exchangeService}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/server' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}';
-
-type PathsEmailExchangePOST = '/email/exchange/{organizationName}/service/{exchangeService}/updateDeviceList' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/changeHostname' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}/clearDevice' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification' |
   '/email/exchange/{organizationName}/service/{exchangeService}/mailingList' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/protocol' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification/{notifiedAccountId}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/exportURL' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolderQuota' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/server' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/tasks/{id}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccountQuota' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/task' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/task/{id}';
+
+type PathsEmailExchangePUT = '/email/exchange/{organizationName}/service/{exchangeService}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/protocol' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/server' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}';
+
+type PathsEmailExchangePOST = '/email/exchange/{organizationName}/service/{exchangeService}/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/changePassword' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/exportURL' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/terminate' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/terminate' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/activateSharepoint' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/changeHostname' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}/clearDevice' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/renewSSL' |
   '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount' |
   '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate' |
   '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo' |
   '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess' |
   '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/renewSSL' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/updateFlagsOnAllAccounts' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/activateSharepoint';
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/updateDeviceList' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/updateFlagsOnAllAccounts';
 
-type PathsEmailExchangeDELETE = '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification/{notifiedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}' |
+type PathsEmailExchangeDELETE = '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive' |
   '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/account/{memberAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/member/contact/{memberContactId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification/{notifiedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}' |
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}' |
   '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}' |
-  '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}';
+  '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}';
 
 export class ApiEmailExchange extends OvhWrapper {
   constructor(engine: OvhRequestable) {

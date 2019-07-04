@@ -55,7 +55,7 @@ export namespace support {
 export interface Support {
     tickets:  {
         // GET /support/tickets
-        $get(param?: {minCreationDate?: string, archived?: boolean, product?: support.TicketProductEnum, subject?: string, maxCreationDate?: string, ticketNumber?: string, category?: support.TicketCategoryEnum, serviceName?: string, status?: support.TicketStatusEnum}): Promise<number[]>;
+        $get(param?: {archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string}): Promise<number[]>;
         create:  {
             // POST /support/tickets/create
             $post(body?: {body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum}): Promise<support.NewMessageInfo>;
@@ -93,14 +93,14 @@ export interface Support {
 // Api
 type PathsSupportGET = '/support/tickets' |
   '/support/tickets/{ticketId}' |
-  '/support/tickets/{ticketId}/messages' |
-  '/support/tickets/{ticketId}/canBeScored';
+  '/support/tickets/{ticketId}/canBeScored' |
+  '/support/tickets/{ticketId}/messages';
 
 type PathsSupportPOST = '/support/tickets/create' |
-  '/support/tickets/{ticketId}/reopen' |
   '/support/tickets/{ticketId}/close' |
-  '/support/tickets/{ticketId}/score' |
-  '/support/tickets/{ticketId}/reply';
+  '/support/tickets/{ticketId}/reopen' |
+  '/support/tickets/{ticketId}/reply' |
+  '/support/tickets/{ticketId}/score';
 
 export class ApiSupport extends OvhWrapper {
   constructor(engine: OvhRequestable) {

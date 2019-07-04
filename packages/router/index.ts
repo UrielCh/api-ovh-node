@@ -235,38 +235,38 @@ export interface Router {
 }
 // Api
 type PathsRouterGET = '/router' |
+  '/router/{serviceName}' |
+  '/router/{serviceName}/network' |
+  '/router/{serviceName}/network/{ipNet}' |
+  '/router/{serviceName}/privateLink' |
+  '/router/{serviceName}/privateLink/{peerServiceName}' |
+  '/router/{serviceName}/privateLink/{peerServiceName}/request' |
   '/router/{serviceName}/privateLink/{peerServiceName}/route' |
   '/router/{serviceName}/privateLink/{peerServiceName}/route/{network}' |
-  '/router/{serviceName}/privateLink/{peerServiceName}/request' |
-  '/router/{serviceName}/privateLink/{peerServiceName}' |
-  '/router/{serviceName}/privateLink' |
-  '/router/{serviceName}/task/{id}' |
+  '/router/{serviceName}/serviceInfos' |
   '/router/{serviceName}/task' |
-  '/router/{serviceName}/vpn/{id}' |
+  '/router/{serviceName}/task/{id}' |
   '/router/{serviceName}/vpn' |
-  '/router/{serviceName}/serviceInfos' |
-  '/router/{serviceName}' |
-  '/router/{serviceName}/network/{ipNet}' |
-  '/router/{serviceName}/network';
+  '/router/{serviceName}/vpn/{id}';
 
-type PathsRouterPUT = '/router/{serviceName}/privateLink/{peerServiceName}' |
-  '/router/{serviceName}/vpn/{id}' |
-  '/router/{serviceName}/serviceInfos' |
-  '/router/{serviceName}/network/{ipNet}';
-
-type PathsRouterPOST = '/router/{serviceName}/privateLink/{peerServiceName}/route' |
-  '/router/{serviceName}/privateLink/{peerServiceName}/request/manage' |
-  '/router/{serviceName}/privateLink' |
-  '/router/{serviceName}/confirmTermination' |
-  '/router/{serviceName}/vpn/{id}/setPsk' |
-  '/router/{serviceName}/vpn' |
-  '/router/{serviceName}/terminate' |
-  '/router/{serviceName}/network';
-
-type PathsRouterDELETE = '/router/{serviceName}/privateLink/{peerServiceName}/route/{network}' |
+type PathsRouterPUT = '/router/{serviceName}/network/{ipNet}' |
   '/router/{serviceName}/privateLink/{peerServiceName}' |
-  '/router/{serviceName}/vpn/{id}' |
-  '/router/{serviceName}/network/{ipNet}';
+  '/router/{serviceName}/serviceInfos' |
+  '/router/{serviceName}/vpn/{id}';
+
+type PathsRouterPOST = '/router/{serviceName}/confirmTermination' |
+  '/router/{serviceName}/network' |
+  '/router/{serviceName}/privateLink' |
+  '/router/{serviceName}/privateLink/{peerServiceName}/request/manage' |
+  '/router/{serviceName}/privateLink/{peerServiceName}/route' |
+  '/router/{serviceName}/terminate' |
+  '/router/{serviceName}/vpn' |
+  '/router/{serviceName}/vpn/{id}/setPsk';
+
+type PathsRouterDELETE = '/router/{serviceName}/network/{ipNet}' |
+  '/router/{serviceName}/privateLink/{peerServiceName}' |
+  '/router/{serviceName}/privateLink/{peerServiceName}/route/{network}' |
+  '/router/{serviceName}/vpn/{id}';
 
 export class ApiRouter extends OvhWrapper {
   constructor(engine: OvhRequestable) {

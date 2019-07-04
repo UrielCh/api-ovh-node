@@ -156,24 +156,24 @@ export interface Kube {
     } | any
 }
 // Api
-type PathsKubeGET = '/kube/{serviceName}/kubeconfig' |
-  '/kube/{serviceName}/publiccloud/project' |
+type PathsKubeGET = '/kube' |
+  '/kube/{serviceName}' |
+  '/kube/{serviceName}/kubeconfig' |
   '/kube/{serviceName}/publiccloud/node' |
   '/kube/{serviceName}/publiccloud/node/{nodeId}' |
-  '/kube/{serviceName}' |
-  '/kube/{serviceName}/serviceInfos' |
-  '/kube';
-
-type PathsKubePUT = '/kube/{serviceName}/updatePolicy' |
-  '/kube/{serviceName}' |
+  '/kube/{serviceName}/publiccloud/project' |
   '/kube/{serviceName}/serviceInfos';
 
-type PathsKubePOST = '/kube/{serviceName}/publiccloud/node' |
+type PathsKubePUT = '/kube/{serviceName}' |
+  '/kube/{serviceName}/serviceInfos' |
+  '/kube/{serviceName}/updatePolicy';
+
+type PathsKubePOST = '/kube/{serviceName}/changeContact' |
   '/kube/{serviceName}/confirmTermination' |
-  '/kube/{serviceName}/update' |
+  '/kube/{serviceName}/publiccloud/node' |
   '/kube/{serviceName}/reset' |
   '/kube/{serviceName}/terminate' |
-  '/kube/{serviceName}/changeContact';
+  '/kube/{serviceName}/update';
 
 type PathsKubeDELETE = '/kube/{serviceName}/publiccloud/node/{nodeId}';
 

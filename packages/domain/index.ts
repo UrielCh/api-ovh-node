@@ -558,7 +558,7 @@ export interface Domain {
             }
             history:  {
                 // GET /domain/zone/{zoneName}/history
-                $get(param?: {creationDate_to?: string, creationDate_from?: string}): Promise<string[]>;
+                $get(param?: {creationDate_from?: string, creationDate_to?: string}): Promise<string[]>;
                 [keys: string]: {
                     // GET /domain/zone/{zoneName}/history/{creationDate}
                     $get(): Promise<domain.zone.ZoneRestorePoint>;
@@ -574,7 +574,7 @@ export interface Domain {
             }
             record:  {
                 // GET /domain/zone/{zoneName}/record
-                $get(param?: {subDomain?: string, fieldType?: zone.NamedResolutionFieldTypeEnum}): Promise<number[]>;
+                $get(param?: {fieldType?: zone.NamedResolutionFieldTypeEnum, subDomain?: string}): Promise<number[]>;
                 // POST /domain/zone/{zoneName}/record
                 $post(body?: {fieldType: zone.NamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}): Promise<domain.zone.Record>;
                 [keys: string]: {
@@ -687,7 +687,7 @@ export interface Domain {
         }
         dsRecord:  {
             // GET /domain/{serviceName}/dsRecord
-            $get(param?: {status?: dnssec.KeyStatusEnum, flags?: dnssec.KeyFlagEnum}): Promise<number[]>;
+            $get(param?: {flags?: dnssec.KeyFlagEnum, status?: dnssec.KeyStatusEnum}): Promise<number[]>;
             // POST /domain/{serviceName}/dsRecord
             $post(body?: {keys: dnssec.Key[]}): Promise<domain.Task>;
             [keys: string]: {
@@ -810,116 +810,116 @@ export interface Domain {
     } | any
 }
 // Api
-type PathsDomainGET = '/domain/{serviceName}/option/{option}' |
-  '/domain/{serviceName}/option' |
-  '/domain/{serviceName}/nameServer/{id}' |
-  '/domain/{serviceName}/nameServer' |
-  '/domain/{serviceName}/authInfo' |
-  '/domain/{serviceName}/ukRegistrars' |
-  '/domain/{serviceName}/serviceInfos' |
-  '/domain/{serviceName}' |
-  '/domain/{serviceName}/dsRecord/{id}' |
-  '/domain/{serviceName}/dsRecord' |
-  '/domain/{serviceName}/configurations/obfuscatedEmails' |
-  '/domain/{serviceName}/configurations/optin' |
-  '/domain/{serviceName}/rules/optin' |
-  '/domain/{serviceName}/rules/emailsObfuscation' |
-  '/domain/{serviceName}/task/{id}' |
-  '/domain/{serviceName}/task' |
-  '/domain/{serviceName}/owo' |
-  '/domain/{serviceName}/owo/{field}' |
-  '/domain/{serviceName}/glueRecord' |
-  '/domain/{serviceName}/glueRecord/{host}' |
-  '/domain/zone' |
-  '/domain/zone/{zoneName}/task/{id}' |
-  '/domain/zone/{zoneName}/task' |
-  '/domain/zone/{zoneName}/dynHost/record/{id}' |
-  '/domain/zone/{zoneName}/dynHost/record' |
-  '/domain/zone/{zoneName}/dynHost/login/{login}' |
-  '/domain/zone/{zoneName}/dynHost/login' |
-  '/domain/zone/{zoneName}/soa' |
-  '/domain/zone/{zoneName}/history' |
-  '/domain/zone/{zoneName}/history/{creationDate}' |
-  '/domain/zone/{zoneName}/dnssec' |
-  '/domain/zone/{zoneName}/serviceInfos' |
-  '/domain/zone/{zoneName}' |
-  '/domain/zone/{zoneName}/redirection' |
-  '/domain/zone/{zoneName}/redirection/{id}' |
-  '/domain/zone/{zoneName}/status' |
-  '/domain/zone/{zoneName}/record/{id}' |
-  '/domain/zone/{zoneName}/record' |
-  '/domain/zone/{zoneName}/export' |
-  '/domain/data/claimNotice' |
-  '/domain/data/smd' |
-  '/domain/data/smd/{smdId}' |
-  '/domain/data/afnicAssociationInformation/{associationInformationId}' |
+type PathsDomainGET = '/domain' |
   '/domain/data/afnicAssociationInformation' |
+  '/domain/data/afnicAssociationInformation/{associationInformationId}' |
+  '/domain/data/afnicCorporationTrademarkInformation' |
+  '/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}' |
+  '/domain/data/claimNotice' |
   '/domain/data/extension' |
   '/domain/data/proContact' |
   '/domain/data/proContact/{proContactId}' |
-  '/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}' |
-  '/domain/data/afnicCorporationTrademarkInformation' |
-  '/domain' |
-  '/domain/rules';
+  '/domain/data/smd' |
+  '/domain/data/smd/{smdId}' |
+  '/domain/rules' |
+  '/domain/zone' |
+  '/domain/zone/{zoneName}' |
+  '/domain/zone/{zoneName}/dnssec' |
+  '/domain/zone/{zoneName}/dynHost/login' |
+  '/domain/zone/{zoneName}/dynHost/login/{login}' |
+  '/domain/zone/{zoneName}/dynHost/record' |
+  '/domain/zone/{zoneName}/dynHost/record/{id}' |
+  '/domain/zone/{zoneName}/export' |
+  '/domain/zone/{zoneName}/history' |
+  '/domain/zone/{zoneName}/history/{creationDate}' |
+  '/domain/zone/{zoneName}/record' |
+  '/domain/zone/{zoneName}/record/{id}' |
+  '/domain/zone/{zoneName}/redirection' |
+  '/domain/zone/{zoneName}/redirection/{id}' |
+  '/domain/zone/{zoneName}/serviceInfos' |
+  '/domain/zone/{zoneName}/soa' |
+  '/domain/zone/{zoneName}/status' |
+  '/domain/zone/{zoneName}/task' |
+  '/domain/zone/{zoneName}/task/{id}' |
+  '/domain/{serviceName}' |
+  '/domain/{serviceName}/authInfo' |
+  '/domain/{serviceName}/configurations/obfuscatedEmails' |
+  '/domain/{serviceName}/configurations/optin' |
+  '/domain/{serviceName}/dsRecord' |
+  '/domain/{serviceName}/dsRecord/{id}' |
+  '/domain/{serviceName}/glueRecord' |
+  '/domain/{serviceName}/glueRecord/{host}' |
+  '/domain/{serviceName}/nameServer' |
+  '/domain/{serviceName}/nameServer/{id}' |
+  '/domain/{serviceName}/option' |
+  '/domain/{serviceName}/option/{option}' |
+  '/domain/{serviceName}/owo' |
+  '/domain/{serviceName}/owo/{field}' |
+  '/domain/{serviceName}/rules/emailsObfuscation' |
+  '/domain/{serviceName}/rules/optin' |
+  '/domain/{serviceName}/serviceInfos' |
+  '/domain/{serviceName}/task' |
+  '/domain/{serviceName}/task/{id}' |
+  '/domain/{serviceName}/ukRegistrars';
 
-type PathsDomainPUT = '/domain/{serviceName}/serviceInfos' |
+type PathsDomainPUT = '/domain/data/smd/{smdId}' |
+  '/domain/zone/{zoneName}/dynHost/login/{login}' |
+  '/domain/zone/{zoneName}/dynHost/record/{id}' |
+  '/domain/zone/{zoneName}/record/{id}' |
+  '/domain/zone/{zoneName}/redirection/{id}' |
+  '/domain/zone/{zoneName}/serviceInfos' |
+  '/domain/zone/{zoneName}/soa' |
   '/domain/{serviceName}' |
   '/domain/{serviceName}/configurations/obfuscatedEmails' |
   '/domain/{serviceName}/configurations/optin' |
-  '/domain/zone/{zoneName}/dynHost/record/{id}' |
-  '/domain/zone/{zoneName}/dynHost/login/{login}' |
-  '/domain/zone/{zoneName}/soa' |
-  '/domain/zone/{zoneName}/serviceInfos' |
-  '/domain/zone/{zoneName}/redirection/{id}' |
-  '/domain/zone/{zoneName}/record/{id}' |
-  '/domain/data/smd/{smdId}';
+  '/domain/{serviceName}/serviceInfos';
 
-type PathsDomainPOST = '/domain/{serviceName}/email/obfuscated/refresh' |
-  '/domain/{serviceName}/nameServer/{id}/status' |
-  '/domain/{serviceName}/nameServer' |
-  '/domain/{serviceName}/nameServers/update' |
-  '/domain/{serviceName}/changeContact' |
-  '/domain/{serviceName}/dsRecord' |
-  '/domain/{serviceName}/configurations/obfuscatedEmails/refresh' |
-  '/domain/{serviceName}/activateZone' |
-  '/domain/{serviceName}/ukOutgoingTransfer' |
-  '/domain/{serviceName}/task/{id}/relaunch' |
-  '/domain/{serviceName}/task/{id}/cancel' |
-  '/domain/{serviceName}/task/{id}/accelerate' |
-  '/domain/{serviceName}/owo' |
-  '/domain/{serviceName}/glueRecord' |
-  '/domain/{serviceName}/glueRecord/{host}/update' |
-  '/domain/zone/{zoneName}/task/{id}/accelerate' |
-  '/domain/zone/{zoneName}/task/{id}/relaunch' |
-  '/domain/zone/{zoneName}/task/{id}/cancel' |
-  '/domain/zone/{zoneName}/refresh' |
-  '/domain/zone/{zoneName}/dynHost/record' |
-  '/domain/zone/{zoneName}/dynHost/login/{login}/changePassword' |
-  '/domain/zone/{zoneName}/dynHost/login' |
-  '/domain/zone/{zoneName}/confirmTermination' |
-  '/domain/zone/{zoneName}/history/{creationDate}/restore' |
-  '/domain/zone/{zoneName}/dnssec' |
-  '/domain/zone/{zoneName}/terminate' |
+type PathsDomainPOST = '/domain/data/afnicAssociationInformation' |
+  '/domain/data/afnicCorporationTrademarkInformation' |
+  '/domain/data/proContact' |
+  '/domain/data/smd' |
   '/domain/zone/{zoneName}/changeContact' |
-  '/domain/zone/{zoneName}/redirection' |
+  '/domain/zone/{zoneName}/confirmTermination' |
+  '/domain/zone/{zoneName}/dnssec' |
+  '/domain/zone/{zoneName}/dynHost/login' |
+  '/domain/zone/{zoneName}/dynHost/login/{login}/changePassword' |
+  '/domain/zone/{zoneName}/dynHost/record' |
+  '/domain/zone/{zoneName}/history/{creationDate}/restore' |
   '/domain/zone/{zoneName}/import' |
   '/domain/zone/{zoneName}/record' |
+  '/domain/zone/{zoneName}/redirection' |
+  '/domain/zone/{zoneName}/refresh' |
   '/domain/zone/{zoneName}/reset' |
-  '/domain/data/smd' |
-  '/domain/data/afnicAssociationInformation' |
-  '/domain/data/proContact' |
-  '/domain/data/afnicCorporationTrademarkInformation';
+  '/domain/zone/{zoneName}/task/{id}/accelerate' |
+  '/domain/zone/{zoneName}/task/{id}/cancel' |
+  '/domain/zone/{zoneName}/task/{id}/relaunch' |
+  '/domain/zone/{zoneName}/terminate' |
+  '/domain/{serviceName}/activateZone' |
+  '/domain/{serviceName}/changeContact' |
+  '/domain/{serviceName}/configurations/obfuscatedEmails/refresh' |
+  '/domain/{serviceName}/dsRecord' |
+  '/domain/{serviceName}/email/obfuscated/refresh' |
+  '/domain/{serviceName}/glueRecord' |
+  '/domain/{serviceName}/glueRecord/{host}/update' |
+  '/domain/{serviceName}/nameServer' |
+  '/domain/{serviceName}/nameServer/{id}/status' |
+  '/domain/{serviceName}/nameServers/update' |
+  '/domain/{serviceName}/owo' |
+  '/domain/{serviceName}/task/{id}/accelerate' |
+  '/domain/{serviceName}/task/{id}/cancel' |
+  '/domain/{serviceName}/task/{id}/relaunch' |
+  '/domain/{serviceName}/ukOutgoingTransfer';
 
-type PathsDomainDELETE = '/domain/{serviceName}/option/{option}' |
-  '/domain/{serviceName}/nameServer/{id}' |
-  '/domain/{serviceName}/owo/{field}' |
-  '/domain/{serviceName}/glueRecord/{host}' |
-  '/domain/zone/{zoneName}/dynHost/record/{id}' |
-  '/domain/zone/{zoneName}/dynHost/login/{login}' |
+type PathsDomainDELETE = '/domain/data/smd/{smdId}' |
   '/domain/zone/{zoneName}/dnssec' |
-  '/domain/zone/{zoneName}/redirection/{id}' |
+  '/domain/zone/{zoneName}/dynHost/login/{login}' |
+  '/domain/zone/{zoneName}/dynHost/record/{id}' |
   '/domain/zone/{zoneName}/record/{id}' |
-  '/domain/data/smd/{smdId}';
+  '/domain/zone/{zoneName}/redirection/{id}' |
+  '/domain/{serviceName}/glueRecord/{host}' |
+  '/domain/{serviceName}/nameServer/{id}' |
+  '/domain/{serviceName}/option/{option}' |
+  '/domain/{serviceName}/owo/{field}';
 
 export class ApiDomain extends OvhWrapper {
   constructor(engine: OvhRequestable) {

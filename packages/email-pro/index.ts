@@ -242,7 +242,7 @@ export interface Email {
             $put(body?: {body: email.pro.Service}): Promise<void>;
             account:  {
                 // GET /email/pro/{service}/account
-                $get(param?: {primaryEmailAddress?: string, id?: number}): Promise<string[]>;
+                $get(param?: {id?: number, primaryEmailAddress?: string}): Promise<string[]>;
                 [keys: string]: {
                     // DELETE /email/pro/{service}/account/{email}
                     $delete(): Promise<email.pro.Task>;
@@ -360,7 +360,7 @@ export interface Email {
             }
             externalContact:  {
                 // GET /email/pro/{service}/externalContact
-                $get(param?: {id?: number, firstName?: string, lastName?: string, externalEmailAddress?: string, displayName?: string}): Promise<string[]>;
+                $get(param?: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: number, lastName?: string}): Promise<string[]>;
                 // POST /email/pro/{service}/externalContact
                 $post(body?: {displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string}): Promise<email.pro.Task>;
                 [keys: string]: {
@@ -399,60 +399,60 @@ export interface Email {
 }
 // Api
 type PathsEmailProGET = '/email/pro' |
-  '/email/pro/{service}/task/{id}' |
-  '/email/pro/{service}/task' |
-  '/email/pro/{service}/server' |
-  '/email/pro/{service}/serviceInfos' |
-  '/email/pro/{service}/externalContact' |
-  '/email/pro/{service}/externalContact/{externalEmailAddress}' |
+  '/email/pro/{service}' |
+  '/email/pro/{service}/account' |
+  '/email/pro/{service}/account/{email}' |
+  '/email/pro/{service}/account/{email}/alias' |
+  '/email/pro/{service}/account/{email}/alias/{alias}' |
   '/email/pro/{service}/account/{email}/diagnostics' |
+  '/email/pro/{service}/account/{email}/fullAccess' |
+  '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}' |
+  '/email/pro/{service}/account/{email}/sendAs' |
+  '/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}' |
+  '/email/pro/{service}/account/{email}/sendOnBehalfTo' |
+  '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
   '/email/pro/{service}/account/{email}/tasks' |
   '/email/pro/{service}/account/{email}/tasks/{id}' |
-  '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/pro/{service}/account/{email}/sendOnBehalfTo' |
-  '/email/pro/{service}/account/{email}/sendAs' |
-  '/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}' |
-  '/email/pro/{service}/account/{email}/fullAccess' |
-  '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}' |
-  '/email/pro/{service}/account/{email}/alias' |
-  '/email/pro/{service}/account/{email}/alias/{alias}' |
-  '/email/pro/{service}/account/{email}' |
-  '/email/pro/{service}/account' |
-  '/email/pro/{service}' |
-  '/email/pro/{service}/billingPlan' |
   '/email/pro/{service}/billingMigrated' |
+  '/email/pro/{service}/billingPlan' |
   '/email/pro/{service}/domain' |
   '/email/pro/{service}/domain/{domainName}' |
+  '/email/pro/{service}/domain/{domainName}/disclaimer' |
   '/email/pro/{service}/domain/{domainName}/disclaimerAttribute' |
-  '/email/pro/{service}/domain/{domainName}/disclaimer';
-
-type PathsEmailProPUT = '/email/pro/{service}/serviceInfos' |
+  '/email/pro/{service}/externalContact' |
   '/email/pro/{service}/externalContact/{externalEmailAddress}' |
-  '/email/pro/{service}/account/{email}' |
-  '/email/pro/{service}' |
-  '/email/pro/{service}/domain/{domainName}' |
-  '/email/pro/{service}/domain/{domainName}/disclaimer';
+  '/email/pro/{service}/server' |
+  '/email/pro/{service}/serviceInfos' |
+  '/email/pro/{service}/task' |
+  '/email/pro/{service}/task/{id}';
 
-type PathsEmailProPOST = '/email/pro/{service}/externalContact' |
-  '/email/pro/{service}/account/{email}/terminate' |
-  '/email/pro/{service}/account/{email}/diagnostics' |
+type PathsEmailProPUT = '/email/pro/{service}' |
+  '/email/pro/{service}/account/{email}' |
+  '/email/pro/{service}/domain/{domainName}' |
+  '/email/pro/{service}/domain/{domainName}/disclaimer' |
+  '/email/pro/{service}/externalContact/{externalEmailAddress}' |
+  '/email/pro/{service}/serviceInfos';
+
+type PathsEmailProPOST = '/email/pro/{service}/account/{email}/alias' |
   '/email/pro/{service}/account/{email}/changePassword' |
-  '/email/pro/{service}/account/{email}/sendOnBehalfTo' |
-  '/email/pro/{service}/account/{email}/sendAs' |
+  '/email/pro/{service}/account/{email}/diagnostics' |
   '/email/pro/{service}/account/{email}/fullAccess' |
-  '/email/pro/{service}/account/{email}/alias' |
+  '/email/pro/{service}/account/{email}/sendAs' |
+  '/email/pro/{service}/account/{email}/sendOnBehalfTo' |
+  '/email/pro/{service}/account/{email}/terminate' |
   '/email/pro/{service}/domain' |
   '/email/pro/{service}/domain/{domainName}/disclaimer' |
+  '/email/pro/{service}/externalContact' |
   '/email/pro/{service}/updateFlagsOnAllAccounts';
 
-type PathsEmailProDELETE = '/email/pro/{service}/externalContact/{externalEmailAddress}' |
-  '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}' |
-  '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}' |
+type PathsEmailProDELETE = '/email/pro/{service}/account/{email}' |
   '/email/pro/{service}/account/{email}/alias/{alias}' |
-  '/email/pro/{service}/account/{email}' |
+  '/email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}' |
+  '/email/pro/{service}/account/{email}/sendAs/{allowedAccountId}' |
+  '/email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
   '/email/pro/{service}/domain/{domainName}' |
-  '/email/pro/{service}/domain/{domainName}/disclaimer';
+  '/email/pro/{service}/domain/{domainName}/disclaimer' |
+  '/email/pro/{service}/externalContact/{externalEmailAddress}';
 
 export class ApiEmailPro extends OvhWrapper {
   constructor(engine: OvhRequestable) {

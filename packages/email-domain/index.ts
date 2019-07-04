@@ -328,7 +328,7 @@ export interface Email {
         $get(): Promise<string[]>;
         delegatedAccount:  {
             // GET /email/domain/delegatedAccount
-            $get(param?: {domain?: string, accountName?: string}): Promise<string[]>;
+            $get(param?: {accountName?: string, domain?: string}): Promise<string[]>;
             [keys: string]: {
                 // GET /email/domain/delegatedAccount/{email}
                 $get(): Promise<email.domain.AccountDelegated>;
@@ -672,110 +672,110 @@ export interface Email {
 }
 // Api
 type PathsEmailDomainGET = '/email/domain' |
-  '/email/domain/{domain}/serviceInfos' |
+  '/email/domain/delegatedAccount' |
+  '/email/domain/delegatedAccount/{email}' |
+  '/email/domain/delegatedAccount/{email}/filter' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}/rule' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}' |
+  '/email/domain/delegatedAccount/{email}/responder' |
+  '/email/domain/mailingListLimits' |
   '/email/domain/{domain}' |
-  '/email/domain/{domain}/dnsMXRecords' |
-  '/email/domain/{domain}/quota' |
-  '/email/domain/{domain}/dnsMXFilter' |
+  '/email/domain/{domain}/account' |
+  '/email/domain/{domain}/account/{accountName}' |
+  '/email/domain/{domain}/account/{accountName}/delegation' |
+  '/email/domain/{domain}/account/{accountName}/delegation/{accountId}' |
+  '/email/domain/{domain}/account/{accountName}/filter' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}/rule' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}' |
+  '/email/domain/{domain}/account/{accountName}/migrate' |
+  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}' |
+  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress' |
+  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}' |
+  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate' |
+  '/email/domain/{domain}/account/{accountName}/usage' |
   '/email/domain/{domain}/acl' |
   '/email/domain/{domain}/acl/{accountId}' |
-  '/email/domain/{domain}/redirection/{id}' |
-  '/email/domain/{domain}/redirection' |
+  '/email/domain/{domain}/dnsMXFilter' |
+  '/email/domain/{domain}/dnsMXRecords' |
   '/email/domain/{domain}/mailingList' |
+  '/email/domain/{domain}/mailingList/{name}' |
   '/email/domain/{domain}/mailingList/{name}/moderator' |
   '/email/domain/{domain}/mailingList/{name}/moderator/{email}' |
-  '/email/domain/{domain}/mailingList/{name}' |
-  '/email/domain/{domain}/mailingList/{name}/subscriber/{email}' |
   '/email/domain/{domain}/mailingList/{name}/subscriber' |
-  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate' |
-  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}' |
-  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress' |
-  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}' |
-  '/email/domain/{domain}/account/{accountName}/migrate' |
-  '/email/domain/{domain}/account/{accountName}' |
-  '/email/domain/{domain}/account/{accountName}/delegation/{accountId}' |
-  '/email/domain/{domain}/account/{accountName}/delegation' |
-  '/email/domain/{domain}/account/{accountName}/filter/{name}' |
-  '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}' |
-  '/email/domain/{domain}/account/{accountName}/filter/{name}/rule' |
-  '/email/domain/{domain}/account/{accountName}/filter' |
-  '/email/domain/{domain}/account/{accountName}/usage' |
-  '/email/domain/{domain}/account' |
+  '/email/domain/{domain}/mailingList/{name}/subscriber/{email}' |
+  '/email/domain/{domain}/quota' |
   '/email/domain/{domain}/recommendedDNSRecords' |
+  '/email/domain/{domain}/redirection' |
+  '/email/domain/{domain}/redirection/{id}' |
   '/email/domain/{domain}/responder' |
   '/email/domain/{domain}/responder/{account}' |
+  '/email/domain/{domain}/serviceInfos' |
+  '/email/domain/{domain}/summary' |
   '/email/domain/{domain}/task/account' |
   '/email/domain/{domain}/task/account/{id}' |
-  '/email/domain/{domain}/task/filter/{id}' |
   '/email/domain/{domain}/task/filter' |
-  '/email/domain/{domain}/task/redirection/{id}' |
-  '/email/domain/{domain}/task/redirection' |
-  '/email/domain/{domain}/task/responder' |
-  '/email/domain/{domain}/task/responder/{id}' |
+  '/email/domain/{domain}/task/filter/{id}' |
   '/email/domain/{domain}/task/mailinglist' |
   '/email/domain/{domain}/task/mailinglist/{id}' |
-  '/email/domain/{domain}/summary' |
-  '/email/domain/delegatedAccount/{email}/filter' |
-  '/email/domain/delegatedAccount/{email}/filter/{name}' |
-  '/email/domain/delegatedAccount/{email}/filter/{name}/rule' |
-  '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}' |
-  '/email/domain/delegatedAccount/{email}' |
+  '/email/domain/{domain}/task/redirection' |
+  '/email/domain/{domain}/task/redirection/{id}' |
+  '/email/domain/{domain}/task/responder' |
+  '/email/domain/{domain}/task/responder/{id}';
+
+type PathsEmailDomainPUT = '/email/domain/delegatedAccount/{email}' |
   '/email/domain/delegatedAccount/{email}/responder' |
-  '/email/domain/delegatedAccount' |
-  '/email/domain/mailingListLimits';
-
-type PathsEmailDomainPUT = '/email/domain/{domain}/serviceInfos' |
-  '/email/domain/{domain}/mailingList/{name}' |
   '/email/domain/{domain}/account/{accountName}' |
+  '/email/domain/{domain}/mailingList/{name}' |
   '/email/domain/{domain}/responder/{account}' |
-  '/email/domain/delegatedAccount/{email}' |
-  '/email/domain/delegatedAccount/{email}/responder';
+  '/email/domain/{domain}/serviceInfos';
 
-type PathsEmailDomainPOST = '/email/domain/{domain}/confirmTermination' |
-  '/email/domain/{domain}/changeContact' |
-  '/email/domain/{domain}/acl' |
-  '/email/domain/{domain}/migrateDelegationV3toV6' |
-  '/email/domain/{domain}/terminate' |
-  '/email/domain/{domain}/changeDnsMXFilter' |
-  '/email/domain/{domain}/redirection/{id}/changeRedirection' |
-  '/email/domain/{domain}/redirection' |
-  '/email/domain/{domain}/mailingList' |
-  '/email/domain/{domain}/mailingList/{name}/sendListByEmail' |
-  '/email/domain/{domain}/mailingList/{name}/moderator' |
-  '/email/domain/{domain}/mailingList/{name}/changeOptions' |
-  '/email/domain/{domain}/mailingList/{name}/subscriber' |
-  '/email/domain/{domain}/account/{accountName}/updateUsage' |
-  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate' |
+type PathsEmailDomainPOST = '/email/domain/delegatedAccount/{email}/changePassword' |
+  '/email/domain/delegatedAccount/{email}/filter' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}/changeActivity' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}/changePriority' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}/rule' |
+  '/email/domain/delegatedAccount/{email}/responder' |
+  '/email/domain/delegatedAccount/{email}/updateUsage' |
+  '/email/domain/delegatedAccount/{email}/usage' |
+  '/email/domain/{domain}/account' |
   '/email/domain/{domain}/account/{accountName}/changePassword' |
   '/email/domain/{domain}/account/{accountName}/delegation' |
-  '/email/domain/{domain}/account/{accountName}/filter/{name}/changePriority' |
-  '/email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity' |
-  '/email/domain/{domain}/account/{accountName}/filter/{name}/rule' |
   '/email/domain/{domain}/account/{accountName}/filter' |
-  '/email/domain/{domain}/account' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}/changePriority' |
+  '/email/domain/{domain}/account/{accountName}/filter/{name}/rule' |
+  '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate' |
+  '/email/domain/{domain}/account/{accountName}/updateUsage' |
+  '/email/domain/{domain}/acl' |
+  '/email/domain/{domain}/changeContact' |
+  '/email/domain/{domain}/changeDnsMXFilter' |
+  '/email/domain/{domain}/confirmTermination' |
+  '/email/domain/{domain}/mailingList' |
+  '/email/domain/{domain}/mailingList/{name}/changeOptions' |
+  '/email/domain/{domain}/mailingList/{name}/moderator' |
+  '/email/domain/{domain}/mailingList/{name}/sendListByEmail' |
+  '/email/domain/{domain}/mailingList/{name}/subscriber' |
+  '/email/domain/{domain}/migrateDelegationV3toV6' |
+  '/email/domain/{domain}/redirection' |
+  '/email/domain/{domain}/redirection/{id}/changeRedirection' |
   '/email/domain/{domain}/responder' |
-  '/email/domain/delegatedAccount/{email}/filter' |
-  '/email/domain/delegatedAccount/{email}/filter/{name}/changePriority' |
-  '/email/domain/delegatedAccount/{email}/filter/{name}/changeActivity' |
-  '/email/domain/delegatedAccount/{email}/filter/{name}/rule' |
-  '/email/domain/delegatedAccount/{email}/usage' |
-  '/email/domain/delegatedAccount/{email}/changePassword' |
-  '/email/domain/delegatedAccount/{email}/updateUsage' |
-  '/email/domain/delegatedAccount/{email}/responder';
+  '/email/domain/{domain}/terminate';
 
-type PathsEmailDomainDELETE = '/email/domain/{domain}/acl/{accountId}' |
-  '/email/domain/{domain}/redirection/{id}' |
-  '/email/domain/{domain}/mailingList/{name}/moderator/{email}' |
-  '/email/domain/{domain}/mailingList/{name}' |
-  '/email/domain/{domain}/mailingList/{name}/subscriber/{email}' |
+type PathsEmailDomainDELETE = '/email/domain/delegatedAccount/{email}/filter/{name}' |
+  '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}' |
+  '/email/domain/delegatedAccount/{email}/responder' |
   '/email/domain/{domain}/account/{accountName}' |
   '/email/domain/{domain}/account/{accountName}/delegation/{accountId}' |
   '/email/domain/{domain}/account/{accountName}/filter/{name}' |
   '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}' |
-  '/email/domain/{domain}/responder/{account}' |
-  '/email/domain/delegatedAccount/{email}/filter/{name}' |
-  '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}' |
-  '/email/domain/delegatedAccount/{email}/responder';
+  '/email/domain/{domain}/acl/{accountId}' |
+  '/email/domain/{domain}/mailingList/{name}' |
+  '/email/domain/{domain}/mailingList/{name}/moderator/{email}' |
+  '/email/domain/{domain}/mailingList/{name}/subscriber/{email}' |
+  '/email/domain/{domain}/redirection/{id}' |
+  '/email/domain/{domain}/responder/{account}';
 
 export class ApiEmailDomain extends OvhWrapper {
   constructor(engine: OvhRequestable) {

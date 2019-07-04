@@ -326,7 +326,7 @@ export interface Hosting {
                     $get(): Promise<hosting.privateDatabase.database>;
                     dump:  {
                         // GET /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump
-                        $get(param?: {deletionDate?: string, creationDate?: string}): Promise<number[]>;
+                        $get(param?: {creationDate?: string, deletionDate?: string}): Promise<number[]>;
                         // POST /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump
                         $post(body?: {sendEmail?: boolean}): Promise<hosting.privateDatabase.task>;
                         [keys: string]: {
@@ -412,7 +412,7 @@ export interface Hosting {
             }
             tasks:  {
                 // GET /hosting/privateDatabase/{serviceName}/tasks
-                $get(param?: {status?: hosting.PrivateDatabase.task.StatusEnum, function_?: hosting.PrivateDatabase.task.FunctionEnum}): Promise<number[]>;
+                $get(param?: {function_?: hosting.PrivateDatabase.task.FunctionEnum, status?: hosting.PrivateDatabase.task.StatusEnum}): Promise<number[]>;
                 [keys: string]: {
                     // GET /hosting/privateDatabase/{serviceName}/tasks/{id}
                     $get(): Promise<hosting.privateDatabase.task>;
@@ -460,7 +460,7 @@ export interface Hosting {
             }
             whitelist:  {
                 // GET /hosting/privateDatabase/{serviceName}/whitelist
-                $get(param?: {service?: boolean, ip?: string, sftp?: boolean}): Promise<string[]>;
+                $get(param?: {ip?: string, service?: boolean, sftp?: boolean}): Promise<string[]>;
                 // POST /hosting/privateDatabase/{serviceName}/whitelist
                 $post(body?: {ip: string, name?: string, service?: boolean, sftp?: boolean}): Promise<hosting.privateDatabase.task>;
                 [keys: string]: {
@@ -477,65 +477,65 @@ export interface Hosting {
 }
 // Api
 type PathsHostingPrivateDatabaseGET = '/hosting/privateDatabase' |
-  '/hosting/privateDatabase/{serviceName}/oom' |
-  '/hosting/privateDatabase/{serviceName}/user/{userName}' |
-  '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}' |
-  '/hosting/privateDatabase/{serviceName}/user/{userName}/grant' |
-  '/hosting/privateDatabase/{serviceName}/user' |
+  '/hosting/privateDatabase/availableOrderCapacities' |
   '/hosting/privateDatabase/{serviceName}' |
-  '/hosting/privateDatabase/{serviceName}/serviceInfos' |
-  '/hosting/privateDatabase/{serviceName}/config' |
-  '/hosting/privateDatabase/{serviceName}/tasks/{id}' |
-  '/hosting/privateDatabase/{serviceName}/tasks' |
-  '/hosting/privateDatabase/{serviceName}/whitelist' |
-  '/hosting/privateDatabase/{serviceName}/whitelist/{ip}' |
   '/hosting/privateDatabase/{serviceName}/availableVersions' |
-  '/hosting/privateDatabase/{serviceName}/dump' |
-  '/hosting/privateDatabase/{serviceName}/dump/{dumpId}' |
-  '/hosting/privateDatabase/{serviceName}/webs' |
+  '/hosting/privateDatabase/{serviceName}/config' |
   '/hosting/privateDatabase/{serviceName}/database' |
   '/hosting/privateDatabase/{serviceName}/database/{databaseName}' |
-  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}' |
-  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension' |
-  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}' |
   '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump' |
-  '/hosting/privateDatabase/availableOrderCapacities';
+  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}' |
+  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension' |
+  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}' |
+  '/hosting/privateDatabase/{serviceName}/dump' |
+  '/hosting/privateDatabase/{serviceName}/dump/{dumpId}' |
+  '/hosting/privateDatabase/{serviceName}/oom' |
+  '/hosting/privateDatabase/{serviceName}/serviceInfos' |
+  '/hosting/privateDatabase/{serviceName}/tasks' |
+  '/hosting/privateDatabase/{serviceName}/tasks/{id}' |
+  '/hosting/privateDatabase/{serviceName}/user' |
+  '/hosting/privateDatabase/{serviceName}/user/{userName}' |
+  '/hosting/privateDatabase/{serviceName}/user/{userName}/grant' |
+  '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}' |
+  '/hosting/privateDatabase/{serviceName}/webs' |
+  '/hosting/privateDatabase/{serviceName}/whitelist' |
+  '/hosting/privateDatabase/{serviceName}/whitelist/{ip}';
 
 type PathsHostingPrivateDatabasePUT = '/hosting/privateDatabase/{serviceName}' |
   '/hosting/privateDatabase/{serviceName}/serviceInfos' |
   '/hosting/privateDatabase/{serviceName}/whitelist/{ip}';
 
-type PathsHostingPrivateDatabasePOST = '/hosting/privateDatabase/{serviceName}/restart' |
-  '/hosting/privateDatabase/{serviceName}/confirmTermination' |
-  '/hosting/privateDatabase/{serviceName}/refresh' |
-  '/hosting/privateDatabase/{serviceName}/user/{userName}/changePassword' |
-  '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update' |
-  '/hosting/privateDatabase/{serviceName}/user/{userName}/grant' |
-  '/hosting/privateDatabase/{serviceName}/user' |
-  '/hosting/privateDatabase/{serviceName}/start' |
-  '/hosting/privateDatabase/{serviceName}/changeContact' |
-  '/hosting/privateDatabase/{serviceName}/terminate' |
-  '/hosting/privateDatabase/{serviceName}/config/update' |
-  '/hosting/privateDatabase/{serviceName}/whitelist' |
-  '/hosting/privateDatabase/{serviceName}/changeVersion' |
-  '/hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore' |
+type PathsHostingPrivateDatabasePOST = '/hosting/privateDatabase/{serviceName}/changeContact' |
   '/hosting/privateDatabase/{serviceName}/changeFtpPassword' |
-  '/hosting/privateDatabase/{serviceName}/generateTemporaryLogsLink' |
-  '/hosting/privateDatabase/{serviceName}/stop' |
+  '/hosting/privateDatabase/{serviceName}/changeVersion' |
+  '/hosting/privateDatabase/{serviceName}/config/update' |
+  '/hosting/privateDatabase/{serviceName}/confirmTermination' |
   '/hosting/privateDatabase/{serviceName}/database' |
-  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/enable' |
-  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/disable' |
-  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore' |
   '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump' |
+  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore' |
+  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/disable' |
+  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/enable' |
   '/hosting/privateDatabase/{serviceName}/database/{databaseName}/import' |
-  '/hosting/privateDatabase/{serviceName}/databaseWizard';
+  '/hosting/privateDatabase/{serviceName}/databaseWizard' |
+  '/hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore' |
+  '/hosting/privateDatabase/{serviceName}/generateTemporaryLogsLink' |
+  '/hosting/privateDatabase/{serviceName}/refresh' |
+  '/hosting/privateDatabase/{serviceName}/restart' |
+  '/hosting/privateDatabase/{serviceName}/start' |
+  '/hosting/privateDatabase/{serviceName}/stop' |
+  '/hosting/privateDatabase/{serviceName}/terminate' |
+  '/hosting/privateDatabase/{serviceName}/user' |
+  '/hosting/privateDatabase/{serviceName}/user/{userName}/changePassword' |
+  '/hosting/privateDatabase/{serviceName}/user/{userName}/grant' |
+  '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update' |
+  '/hosting/privateDatabase/{serviceName}/whitelist';
 
-type PathsHostingPrivateDatabaseDELETE = '/hosting/privateDatabase/{serviceName}/user/{userName}' |
-  '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}' |
-  '/hosting/privateDatabase/{serviceName}/whitelist/{ip}' |
+type PathsHostingPrivateDatabaseDELETE = '/hosting/privateDatabase/{serviceName}/database/{databaseName}' |
+  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}' |
   '/hosting/privateDatabase/{serviceName}/dump/{dumpId}' |
-  '/hosting/privateDatabase/{serviceName}/database/{databaseName}' |
-  '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}';
+  '/hosting/privateDatabase/{serviceName}/user/{userName}' |
+  '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}' |
+  '/hosting/privateDatabase/{serviceName}/whitelist/{ip}';
 
 export class ApiHostingPrivateDatabase extends OvhWrapper {
   constructor(engine: OvhRequestable) {

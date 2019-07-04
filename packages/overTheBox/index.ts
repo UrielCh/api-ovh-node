@@ -293,7 +293,7 @@ export interface OverTheBox {
         }
         tasks:  {
             // GET /overTheBox/{serviceName}/tasks
-            $get(param?: {status?: overTheBox.TaskStatusEnum, name?: string}): Promise<string[]>;
+            $get(param?: {name?: string, status?: overTheBox.TaskStatusEnum}): Promise<string[]>;
             [keys: string]: {
                 // GET /overTheBox/{serviceName}/tasks/{taskId}
                 $get(): Promise<overTheBox.Task>;
@@ -302,40 +302,40 @@ export interface OverTheBox {
     } | any
 }
 // Api
-type PathsOverTheBoxGET = '/overTheBox/{serviceName}/serviceInfos' |
-  '/overTheBox/{serviceName}/availableReleaseChannels' |
+type PathsOverTheBoxGET = '/overTheBox' |
+  '/overTheBox/availableOffers' |
   '/overTheBox/{serviceName}' |
-  '/overTheBox/{serviceName}/backups/{backupId}' |
+  '/overTheBox/{serviceName}/availableReleaseChannels' |
   '/overTheBox/{serviceName}/backups' |
-  '/overTheBox/{serviceName}/remoteAccesses' |
-  '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}' |
-  '/overTheBox/{serviceName}/tasks' |
-  '/overTheBox/{serviceName}/tasks/{taskId}' |
-  '/overTheBox/{serviceName}/migration/offers' |
+  '/overTheBox/{serviceName}/backups/{backupId}' |
+  '/overTheBox/{serviceName}/device' |
   '/overTheBox/{serviceName}/device/actions' |
   '/overTheBox/{serviceName}/device/actions/{actionId}' |
-  '/overTheBox/{serviceName}/device' |
   '/overTheBox/{serviceName}/device/availableActions' |
-  '/overTheBox' |
-  '/overTheBox/availableOffers';
+  '/overTheBox/{serviceName}/migration/offers' |
+  '/overTheBox/{serviceName}/remoteAccesses' |
+  '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}' |
+  '/overTheBox/{serviceName}/serviceInfos' |
+  '/overTheBox/{serviceName}/tasks' |
+  '/overTheBox/{serviceName}/tasks/{taskId}';
 
-type PathsOverTheBoxPUT = '/overTheBox/{serviceName}/serviceInfos' |
-  '/overTheBox/{serviceName}';
+type PathsOverTheBoxPUT = '/overTheBox/{serviceName}' |
+  '/overTheBox/{serviceName}/serviceInfos';
 
 type PathsOverTheBoxPOST = '/overTheBox/devices' |
-  '/overTheBox/{serviceName}/changeContact' |
-  '/overTheBox/{serviceName}/remoteAccesses' |
-  '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize' |
-  '/overTheBox/{serviceName}/linkDevice' |
   '/overTheBox/{serviceName}/cancelResiliation' |
+  '/overTheBox/{serviceName}/changeContact' |
   '/overTheBox/{serviceName}/device/actions' |
-  '/overTheBox/{serviceName}/device/restoreBackup' |
   '/overTheBox/{serviceName}/device/backup' |
-  '/overTheBox/{serviceName}/device/logs';
+  '/overTheBox/{serviceName}/device/logs' |
+  '/overTheBox/{serviceName}/device/restoreBackup' |
+  '/overTheBox/{serviceName}/linkDevice' |
+  '/overTheBox/{serviceName}/remoteAccesses' |
+  '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize';
 
 type PathsOverTheBoxDELETE = '/overTheBox/{serviceName}' |
-  '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}' |
-  '/overTheBox/{serviceName}/device';
+  '/overTheBox/{serviceName}/device' |
+  '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}';
 
 export class ApiOverTheBox extends OvhWrapper {
   constructor(engine: OvhRequestable) {

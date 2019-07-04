@@ -1673,7 +1673,7 @@ export interface Me {
     }
     bill:  {
         // GET /me/bill
-        $get(param?: {orderId?: number, date_from?: string, date_to?: string}): Promise<string[]>;
+        $get(param?: {date_from?: string, date_to?: string, orderId?: number}): Promise<string[]>;
         [keys: string]: {
             // GET /me/bill/{billId}
             $get(): Promise<billing.Bill>;
@@ -1833,7 +1833,7 @@ export interface Me {
     }
     deposit:  {
         // GET /me/deposit
-        $get(param?: {orderId?: number, date_to?: string, date_from?: string}): Promise<string[]>;
+        $get(param?: {date_from?: string, date_to?: string, orderId?: number}): Promise<string[]>;
         [keys: string]: {
             // GET /me/deposit/{depositId}
             $get(): Promise<billing.Deposit>;
@@ -2097,7 +2097,7 @@ export interface Me {
     }
     order:  {
         // GET /me/order
-        $get(param?: {date_to?: string, date_from?: string}): Promise<number[]>;
+        $get(param?: {date_from?: string, date_to?: string}): Promise<number[]>;
         [keys: string]: {
             // GET /me/order/{orderId}
             $get(): Promise<billing.Order>;
@@ -2216,7 +2216,7 @@ export interface Me {
         }
         method:  {
             // GET /me/payment/method
-            $get(param?: {status?: me.payment.method.PaymentMethod.Status, paymentType?: string}): Promise<number[]>;
+            $get(param?: {paymentType?: string, status?: me.payment.method.PaymentMethod.Status}): Promise<number[]>;
             // POST /me/payment/method
             $post(body?: {callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean}): Promise<me.payment.method.Register.ValidationResult>;
             [keys: string]: {
@@ -2329,7 +2329,7 @@ export interface Me {
     }
     refund:  {
         // GET /me/refund
-        $get(param?: {date_to?: string, date_from?: string, orderId?: number}): Promise<string[]>;
+        $get(param?: {date_from?: string, date_to?: string, orderId?: number}): Promise<string[]>;
         [keys: string]: {
             // GET /me/refund/{refundId}
             $get(): Promise<billing.Refund>;
@@ -2418,7 +2418,7 @@ export interface Me {
     task:  {
         contactChange:  {
             // GET /me/task/contactChange
-            $get(param?: {askingAccount?: string, toAccount?: string, state?: nichandle.changeContact.TaskStateEnum}): Promise<number[]>;
+            $get(param?: {askingAccount?: string, state?: nichandle.changeContact.TaskStateEnum, toAccount?: string}): Promise<number[]>;
             [keys: string]: {
                 // GET /me/task/contactChange/{id}
                 $get(): Promise<nichandle.contactChange.Task>;
@@ -2438,7 +2438,7 @@ export interface Me {
         }
         domain:  {
             // GET /me/task/domain
-            $get(param?: {status?: domain.OperationStatusEnum, function_?: domain.NicOperationFunctionEnum, domain?: string}): Promise<number[]>;
+            $get(param?: {domain?: string, function_?: domain.NicOperationFunctionEnum, status?: domain.OperationStatusEnum}): Promise<number[]>;
             [keys: string]: {
                 // GET /me/task/domain/{id}
                 $get(): Promise<nichandle.DomainTask>;
@@ -2519,7 +2519,7 @@ export interface Me {
     }
     withdrawal:  {
         // GET /me/withdrawal
-        $get(param?: {date_to?: string, date_from?: string, orderId?: number}): Promise<string[]>;
+        $get(param?: {date_from?: string, date_to?: string, orderId?: number}): Promise<string[]>;
         [keys: string]: {
             // GET /me/withdrawal/{withdrawalId}
             $get(): Promise<billing.Withdrawal>;

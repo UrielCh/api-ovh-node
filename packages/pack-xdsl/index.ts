@@ -749,75 +749,75 @@ export interface Pack {
     }
 }
 // Api
-type PathsPackXdslGET = '/pack/xdsl/{packName}/exchangeIndividual/services' |
-  '/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable' |
-  '/pack/xdsl/{packName}/exchangeIndividual/options/domains' |
-  '/pack/xdsl/{packName}/domain/services' |
+type PathsPackXdslGET = '/pack/xdsl' |
+  '/pack/xdsl/{packName}' |
+  '/pack/xdsl/{packName}/canCancelResiliation' |
   '/pack/xdsl/{packName}/domain/options/tlds' |
-  '/pack/xdsl/{packName}/exchangeLite/services/{domain}' |
-  '/pack/xdsl/{packName}/exchangeLite/services' |
+  '/pack/xdsl/{packName}/domain/services' |
+  '/pack/xdsl/{packName}/emailPro/options/domains' |
+  '/pack/xdsl/{packName}/emailPro/options/isEmailAvailable' |
+  '/pack/xdsl/{packName}/emailPro/services' |
+  '/pack/xdsl/{packName}/exchangeAccount/services' |
+  '/pack/xdsl/{packName}/exchangeAccount/services/{domain}' |
+  '/pack/xdsl/{packName}/exchangeIndividual/options/domains' |
+  '/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable' |
+  '/pack/xdsl/{packName}/exchangeIndividual/services' |
   '/pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable' |
+  '/pack/xdsl/{packName}/exchangeLite/services' |
+  '/pack/xdsl/{packName}/exchangeLite/services/{domain}' |
+  '/pack/xdsl/{packName}/exchangeOrganization/services' |
+  '/pack/xdsl/{packName}/hostedEmail/options/domains' |
+  '/pack/xdsl/{packName}/hostedEmail/services' |
+  '/pack/xdsl/{packName}/hubic/services' |
+  '/pack/xdsl/{packName}/hubic/services/{domain}' |
+  '/pack/xdsl/{packName}/hubic/services/{domain}/details' |
+  '/pack/xdsl/{packName}/promotionCode/capabilities' |
+  '/pack/xdsl/{packName}/resiliationFollowUp' |
+  '/pack/xdsl/{packName}/resiliationTerms' |
+  '/pack/xdsl/{packName}/serviceInfos' |
+  '/pack/xdsl/{packName}/services' |
+  '/pack/xdsl/{packName}/shippingAddresses' |
   '/pack/xdsl/{packName}/siteBuilderFull/options/domains' |
   '/pack/xdsl/{packName}/siteBuilderFull/options/templates' |
   '/pack/xdsl/{packName}/siteBuilderFull/services' |
-  '/pack/xdsl/{packName}/services' |
-  '/pack/xdsl/{packName}/resiliationFollowUp' |
-  '/pack/xdsl/{packName}/promotionCode/capabilities' |
-  '/pack/xdsl/{packName}/voipBillingAccount/services' |
-  '/pack/xdsl/{packName}/exchangeOrganization/services' |
-  '/pack/xdsl/{packName}/voipEcofax/services' |
-  '/pack/xdsl/{packName}' |
-  '/pack/xdsl/{packName}/xdslAccess/services' |
-  '/pack/xdsl/{packName}/exchangeAccount/services/{domain}' |
-  '/pack/xdsl/{packName}/exchangeAccount/services' |
-  '/pack/xdsl/{packName}/emailPro/services' |
-  '/pack/xdsl/{packName}/emailPro/options/isEmailAvailable' |
-  '/pack/xdsl/{packName}/emailPro/options/domains' |
-  '/pack/xdsl/{packName}/hubic/services/{domain}/details' |
-  '/pack/xdsl/{packName}/hubic/services/{domain}' |
-  '/pack/xdsl/{packName}/hubic/services' |
-  '/pack/xdsl/{packName}/hostedEmail/options/domains' |
-  '/pack/xdsl/{packName}/hostedEmail/services' |
-  '/pack/xdsl/{packName}/serviceInfos' |
-  '/pack/xdsl/{packName}/tasks/{id}' |
-  '/pack/xdsl/{packName}/tasks' |
-  '/pack/xdsl/{packName}/resiliationTerms' |
+  '/pack/xdsl/{packName}/siteBuilderStart/options/domains' |
+  '/pack/xdsl/{packName}/siteBuilderStart/options/templates' |
+  '/pack/xdsl/{packName}/siteBuilderStart/services' |
   '/pack/xdsl/{packName}/subServices' |
   '/pack/xdsl/{packName}/subServices/{domain}' |
   '/pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms' |
+  '/pack/xdsl/{packName}/tasks' |
+  '/pack/xdsl/{packName}/tasks/{id}' |
+  '/pack/xdsl/{packName}/voipBillingAccount/services' |
+  '/pack/xdsl/{packName}/voipEcofax/services' |
   '/pack/xdsl/{packName}/voipLine/options/hardwares' |
   '/pack/xdsl/{packName}/voipLine/options/shippingAddresses' |
   '/pack/xdsl/{packName}/voipLine/services' |
   '/pack/xdsl/{packName}/voipLine/services/{domain}' |
-  '/pack/xdsl/{packName}/canCancelResiliation' |
-  '/pack/xdsl/{packName}/siteBuilderStart/services' |
-  '/pack/xdsl/{packName}/siteBuilderStart/options/domains' |
-  '/pack/xdsl/{packName}/siteBuilderStart/options/templates' |
-  '/pack/xdsl/{packName}/shippingAddresses' |
-  '/pack/xdsl';
+  '/pack/xdsl/{packName}/xdslAccess/services';
 
 type PathsPackXdslPUT = '/pack/xdsl/{packName}' |
   '/pack/xdsl/{packName}/serviceInfos';
 
-type PathsPackXdslPOST = '/pack/xdsl/{packName}/migration/servicesToDelete' |
+type PathsPackXdslPOST = '/pack/xdsl/{packName}/addressMove/eligibility' |
+  '/pack/xdsl/{packName}/addressMove/move' |
+  '/pack/xdsl/{packName}/cancelResiliation' |
+  '/pack/xdsl/{packName}/changeContact' |
+  '/pack/xdsl/{packName}/domain/services' |
+  '/pack/xdsl/{packName}/emailPro/services' |
+  '/pack/xdsl/{packName}/exchangeIndividual/services' |
+  '/pack/xdsl/{packName}/exchangeLite/services' |
+  '/pack/xdsl/{packName}/hostedEmail/services' |
   '/pack/xdsl/{packName}/migration/migrate' |
   '/pack/xdsl/{packName}/migration/offers' |
-  '/pack/xdsl/{packName}/cancelResiliation' |
-  '/pack/xdsl/{packName}/exchangeIndividual/services' |
-  '/pack/xdsl/{packName}/domain/services' |
-  '/pack/xdsl/{packName}/exchangeLite/services' |
-  '/pack/xdsl/{packName}/siteBuilderFull/services' |
+  '/pack/xdsl/{packName}/migration/servicesToDelete' |
   '/pack/xdsl/{packName}/promotionCode/generate' |
-  '/pack/xdsl/{packName}/voipEcofax/services' |
   '/pack/xdsl/{packName}/resiliate' |
-  '/pack/xdsl/{packName}/emailPro/services' |
-  '/pack/xdsl/{packName}/changeContact' |
-  '/pack/xdsl/{packName}/hostedEmail/services' |
-  '/pack/xdsl/{packName}/voipLine/options/customShippingAddress' |
-  '/pack/xdsl/{packName}/voipLine/services' |
+  '/pack/xdsl/{packName}/siteBuilderFull/services' |
   '/pack/xdsl/{packName}/siteBuilderStart/services' |
-  '/pack/xdsl/{packName}/addressMove/move' |
-  '/pack/xdsl/{packName}/addressMove/eligibility';
+  '/pack/xdsl/{packName}/voipEcofax/services' |
+  '/pack/xdsl/{packName}/voipLine/options/customShippingAddress' |
+  '/pack/xdsl/{packName}/voipLine/services';
 
 export class ApiPackXdsl extends OvhWrapper {
   constructor(engine: OvhRequestable) {

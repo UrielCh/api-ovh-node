@@ -306,54 +306,54 @@ export interface Vrack {
     } | any
 }
 // Api
-type PathsVrackGET = '/vrack/{serviceName}/dedicatedServerInterfaceDetails' |
-  '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}' |
-  '/vrack/{serviceName}/ipLoadbalancing' |
+type PathsVrackGET = '/vrack' |
+  '/vrack/{serviceName}' |
+  '/vrack/{serviceName}/allowedServices' |
   '/vrack/{serviceName}/cloudProject' |
   '/vrack/{serviceName}/cloudProject/{project}' |
+  '/vrack/{serviceName}/dedicatedCloud' |
+  '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}' |
+  '/vrack/{serviceName}/dedicatedCloudDatacenter' |
   '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}' |
   '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/allowedVrack' |
-  '/vrack/{serviceName}/dedicatedCloudDatacenter' |
-  '/vrack/{serviceName}/task/{taskId}' |
-  '/vrack/{serviceName}/task' |
-  '/vrack/{serviceName}/serviceInfos' |
-  '/vrack/{serviceName}/dedicatedConnect/{name}' |
   '/vrack/{serviceName}/dedicatedConnect' |
-  '/vrack/{serviceName}/dedicatedCloud' |
-  '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}' |
-  '/vrack/{serviceName}/ip' |
-  '/vrack/{serviceName}/ip/{ip}/availableZone' |
-  '/vrack/{serviceName}/ip/{ip}' |
-  '/vrack/{serviceName}/allowedServices' |
-  '/vrack/{serviceName}' |
+  '/vrack/{serviceName}/dedicatedConnect/{name}' |
   '/vrack/{serviceName}/dedicatedServer' |
-  '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg' |
   '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}' |
+  '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg' |
   '/vrack/{serviceName}/dedicatedServerInterface' |
   '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}' |
-  '/vrack/{serviceName}/legacyVrack/{legacyVrack}' |
+  '/vrack/{serviceName}/dedicatedServerInterfaceDetails' |
+  '/vrack/{serviceName}/ip' |
+  '/vrack/{serviceName}/ip/{ip}' |
+  '/vrack/{serviceName}/ip/{ip}/availableZone' |
+  '/vrack/{serviceName}/ipLoadbalancing' |
+  '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}' |
   '/vrack/{serviceName}/legacyVrack' |
-  '/vrack';
+  '/vrack/{serviceName}/legacyVrack/{legacyVrack}' |
+  '/vrack/{serviceName}/serviceInfos' |
+  '/vrack/{serviceName}/task' |
+  '/vrack/{serviceName}/task/{taskId}';
 
-type PathsVrackPUT = '/vrack/{serviceName}/dedicatedConnect/{name}' |
-  '/vrack/{serviceName}';
+type PathsVrackPUT = '/vrack/{serviceName}' |
+  '/vrack/{serviceName}/dedicatedConnect/{name}';
 
-type PathsVrackPOST = '/vrack/{serviceName}/ipLoadbalancing' |
-  '/vrack/{serviceName}/cloudProject' |
-  '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move' |
+type PathsVrackPOST = '/vrack/{serviceName}/cloudProject' |
   '/vrack/{serviceName}/dedicatedCloud' |
+  '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move' |
+  '/vrack/{serviceName}/dedicatedServer' |
+  '/vrack/{serviceName}/dedicatedServerInterface' |
   '/vrack/{serviceName}/ip' |
   '/vrack/{serviceName}/ip/{ip}/announceInZone' |
-  '/vrack/{serviceName}/dedicatedServer' |
-  '/vrack/{serviceName}/dedicatedServerInterface' |
+  '/vrack/{serviceName}/ipLoadbalancing' |
   '/vrack/{serviceName}/legacyVrack';
 
-type PathsVrackDELETE = '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}' |
-  '/vrack/{serviceName}/cloudProject/{project}' |
+type PathsVrackDELETE = '/vrack/{serviceName}/cloudProject/{project}' |
   '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}' |
-  '/vrack/{serviceName}/ip/{ip}' |
   '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}' |
   '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}' |
+  '/vrack/{serviceName}/ip/{ip}' |
+  '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}' |
   '/vrack/{serviceName}/legacyVrack/{legacyVrack}';
 
 export class ApiVrack extends OvhWrapper {

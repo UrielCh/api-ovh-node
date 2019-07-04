@@ -157,22 +157,22 @@ export interface License {
     }
 }
 // Api
-type PathsLicenseDirectadminGET = '/license/directadmin/{serviceName}/allowedDestinationIp' |
-  '/license/directadmin/{serviceName}' |
-  '/license/directadmin/{serviceName}/canLicenseBeMovedTo' |
-  '/license/directadmin/{serviceName}/tasks/{taskId}' |
-  '/license/directadmin/{serviceName}/tasks' |
-  '/license/directadmin/{serviceName}/serviceInfos' |
+type PathsLicenseDirectadminGET = '/license/directadmin' |
   '/license/directadmin/orderableVersions' |
-  '/license/directadmin';
+  '/license/directadmin/{serviceName}' |
+  '/license/directadmin/{serviceName}/allowedDestinationIp' |
+  '/license/directadmin/{serviceName}/canLicenseBeMovedTo' |
+  '/license/directadmin/{serviceName}/serviceInfos' |
+  '/license/directadmin/{serviceName}/tasks' |
+  '/license/directadmin/{serviceName}/tasks/{taskId}';
 
 type PathsLicenseDirectadminPUT = '/license/directadmin/{serviceName}' |
   '/license/directadmin/{serviceName}/serviceInfos';
 
-type PathsLicenseDirectadminPOST = '/license/directadmin/{serviceName}/confirmTermination' |
+type PathsLicenseDirectadminPOST = '/license/directadmin/{serviceName}/changeIp' |
   '/license/directadmin/{serviceName}/changeOs' |
-  '/license/directadmin/{serviceName}/terminate' |
-  '/license/directadmin/{serviceName}/changeIp';
+  '/license/directadmin/{serviceName}/confirmTermination' |
+  '/license/directadmin/{serviceName}/terminate';
 
 export class ApiLicenseDirectadmin extends OvhWrapper {
   constructor(engine: OvhRequestable) {

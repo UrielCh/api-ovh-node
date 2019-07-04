@@ -67,9 +67,9 @@ export interface Pack {
     }
 }
 // Api
-type PathsPackSiptrunkGET = '/pack/siptrunk/{packName}' |
-  '/pack/siptrunk/{packName}/serviceInfos' |
-  '/pack/siptrunk';
+type PathsPackSiptrunkGET = '/pack/siptrunk' |
+  '/pack/siptrunk/{packName}' |
+  '/pack/siptrunk/{packName}/serviceInfos';
 
 type PathsPackSiptrunkPUT = '/pack/siptrunk/{packName}/serviceInfos';
 

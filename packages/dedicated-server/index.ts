@@ -965,7 +965,7 @@ export interface Dedicated {
         datacenter:  {
             availabilities:  {
                 // GET /dedicated/server/datacenter/availabilities
-                $get(param?: {planCode?: string, server?: string, memory?: string, storage?: string, datacenters?: string, excludeDatacenters?: boolean}): Promise<dedicated.DatacenterAvailability[]>;
+                $get(param?: {datacenters?: string, excludeDatacenters?: boolean, memory?: string, planCode?: string, server?: string, storage?: string}): Promise<dedicated.DatacenterAvailability[]>;
             }
         }
         osAvailabilities:  {
@@ -1126,7 +1126,7 @@ export interface Dedicated {
                 }
                 hardwareRaidSize:  {
                     // GET /dedicated/server/{serviceName}/install/hardwareRaidSize
-                    $get(param?: {templateName: string, partitionSchemeName: string}): Promise<dedicated.server.HardwareRaidSize>;
+                    $get(param?: {partitionSchemeName: string, templateName: string}): Promise<dedicated.server.HardwareRaidSize>;
                 }
                 start:  {
                     // POST /dedicated/server/{serviceName}/install/start
@@ -1347,7 +1347,7 @@ export interface Dedicated {
             }
             spla:  {
                 // GET /dedicated/server/{serviceName}/spla
-                $get(param?: {type?: dedicated.server.SplaTypeEnum, status?: dedicated.server.SplaStatusEnum}): Promise<number[]>;
+                $get(param?: {status?: dedicated.server.SplaStatusEnum, type?: dedicated.server.SplaTypeEnum}): Promise<number[]>;
                 // POST /dedicated/server/{serviceName}/spla
                 $post(body?: {serialNumber: string, type: dedicated.server.SplaTypeEnum}): Promise<number>;
                 [keys: string]: {
@@ -1497,7 +1497,7 @@ export interface Dedicated {
             }
             virtualNetworkInterface:  {
                 // GET /dedicated/server/{serviceName}/virtualNetworkInterface
-                $get(param?: {name?: string, vrack?: string, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum}): Promise<string[]>;
+                $get(param?: {mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, vrack?: string}): Promise<string[]>;
                 [keys: string]: {
                     // GET /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}
                     $get(): Promise<dedicated.virtualNetworkInterface.VirtualNetworkInterface>;
@@ -1521,159 +1521,159 @@ export interface Dedicated {
     }
 }
 // Api
-type PathsDedicatedServerGET = '/dedicated/server/virtualNetworkInterface/{uuid}' |
+type PathsDedicatedServerGET = '/dedicated/server' |
+  '/dedicated/server/availabilities' |
+  '/dedicated/server/availabilities/raw' |
+  '/dedicated/server/datacenter/availabilities' |
   '/dedicated/server/osAvailabilities' |
-  '/dedicated/server/{serviceName}/license/compliantWindowsSqlServer' |
-  '/dedicated/server/{serviceName}/license/compliantWindows' |
-  '/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable' |
-  '/dedicated/server/{serviceName}/mrtg' |
+  '/dedicated/server/virtualNetworkInterface/{uuid}' |
+  '/dedicated/server/{serviceName}' |
   '/dedicated/server/{serviceName}/backupCloudOfferDetails' |
-  '/dedicated/server/{serviceName}/orderable/feature' |
-  '/dedicated/server/{serviceName}/orderable/usbKey' |
-  '/dedicated/server/{serviceName}/orderable/bandwidth' |
-  '/dedicated/server/{serviceName}/orderable/professionalUse' |
-  '/dedicated/server/{serviceName}/orderable/traffic' |
-  '/dedicated/server/{serviceName}/orderable/bandwidthvRack' |
-  '/dedicated/server/{serviceName}/orderable/kvm' |
-  '/dedicated/server/{serviceName}/orderable/kvmExpress' |
-  '/dedicated/server/{serviceName}/orderable/backupStorage' |
-  '/dedicated/server/{serviceName}/orderable/ip' |
-  '/dedicated/server/{serviceName}/secondaryDnsDomains' |
-  '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer' |
-  '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' |
   '/dedicated/server/{serviceName}/boot' |
   '/dedicated/server/{serviceName}/boot/{bootId}' |
-  '/dedicated/server/{serviceName}/boot/{bootId}/option/{option}' |
   '/dedicated/server/{serviceName}/boot/{bootId}/option' |
-  '/dedicated/server/{serviceName}/specifications/hardware' |
-  '/dedicated/server/{serviceName}/specifications/network' |
-  '/dedicated/server/{serviceName}/specifications/ip' |
-  '/dedicated/server/{serviceName}/ipCountryAvailable' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring' |
-  '/dedicated/server/{serviceName}/statistics/load' |
-  '/dedicated/server/{serviceName}/statistics/memory' |
-  '/dedicated/server/{serviceName}/statistics/cpu' |
-  '/dedicated/server/{serviceName}/statistics/connection' |
-  '/dedicated/server/{serviceName}/statistics/os' |
-  '/dedicated/server/{serviceName}/statistics/partition/{partition}/chart' |
-  '/dedicated/server/{serviceName}/statistics/partition/{partition}' |
-  '/dedicated/server/{serviceName}/statistics/partition' |
-  '/dedicated/server/{serviceName}/statistics/raid' |
-  '/dedicated/server/{serviceName}/statistics/raid/{unit}' |
-  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}' |
-  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port' |
-  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}' |
-  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume' |
-  '/dedicated/server/{serviceName}/statistics/process' |
-  '/dedicated/server/{serviceName}/statistics' |
-  '/dedicated/server/{serviceName}/statistics/motherboard' |
-  '/dedicated/server/{serviceName}/statistics/chart' |
-  '/dedicated/server/{serviceName}/statistics/pci' |
-  '/dedicated/server/{serviceName}/statistics/disk' |
-  '/dedicated/server/{serviceName}/statistics/disk/{disk}' |
-  '/dedicated/server/{serviceName}/statistics/disk/{disk}/smart' |
-  '/dedicated/server/{serviceName}/serviceInfos' |
-  '/dedicated/server/{serviceName}/firewall/binary/link' |
+  '/dedicated/server/{serviceName}/boot/{bootId}/option/{option}' |
+  '/dedicated/server/{serviceName}/burst' |
+  '/dedicated/server/{serviceName}/features/backupCloud' |
+  '/dedicated/server/{serviceName}/features/backupFTP' |
+  '/dedicated/server/{serviceName}/features/backupFTP/access' |
+  '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' |
+  '/dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks' |
+  '/dedicated/server/{serviceName}/features/firewall' |
+  '/dedicated/server/{serviceName}/features/ipmi' |
+  '/dedicated/server/{serviceName}/features/ipmi/access' |
+  '/dedicated/server/{serviceName}/features/ipmi/test' |
+  '/dedicated/server/{serviceName}/features/kvm' |
   '/dedicated/server/{serviceName}/firewall/binary/compatible' |
-  '/dedicated/server/{serviceName}/intervention' |
-  '/dedicated/server/{serviceName}/intervention/{interventionId}' |
-  '/dedicated/server/{serviceName}/virtualNetworkInterface' |
-  '/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}' |
-  '/dedicated/server/{serviceName}/install/status' |
+  '/dedicated/server/{serviceName}/firewall/binary/link' |
   '/dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes' |
   '/dedicated/server/{serviceName}/install/compatibleTemplates' |
-  '/dedicated/server/{serviceName}/install/hardwareRaidSize' |
   '/dedicated/server/{serviceName}/install/hardwareRaidProfile' |
+  '/dedicated/server/{serviceName}/install/hardwareRaidSize' |
+  '/dedicated/server/{serviceName}/install/status' |
   '/dedicated/server/{serviceName}/install/templateCapabilities' |
-  '/dedicated/server/{serviceName}' |
-  '/dedicated/server/{serviceName}/features/firewall' |
-  '/dedicated/server/{serviceName}/features/backupCloud' |
-  '/dedicated/server/{serviceName}/features/ipmi' |
-  '/dedicated/server/{serviceName}/features/ipmi/test' |
-  '/dedicated/server/{serviceName}/features/ipmi/access' |
-  '/dedicated/server/{serviceName}/features/kvm' |
-  '/dedicated/server/{serviceName}/features/backupFTP' |
-  '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' |
-  '/dedicated/server/{serviceName}/features/backupFTP/access' |
-  '/dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks' |
-  '/dedicated/server/{serviceName}/secondaryDnsNameDomainToken' |
-  '/dedicated/server/{serviceName}/task/{taskId}' |
-  '/dedicated/server/{serviceName}/task' |
-  '/dedicated/server/{serviceName}/ips' |
-  '/dedicated/server/{serviceName}/option/{option}' |
-  '/dedicated/server/{serviceName}/option' |
+  '/dedicated/server/{serviceName}/intervention' |
+  '/dedicated/server/{serviceName}/intervention/{interventionId}' |
   '/dedicated/server/{serviceName}/ipCanBeMovedTo' |
-  '/dedicated/server/{serviceName}/spla' |
-  '/dedicated/server/{serviceName}/spla/{id}' |
-  '/dedicated/server/{serviceName}/burst' |
-  '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress' |
-  '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}' |
-  '/dedicated/server/{serviceName}/virtualMac/{macAddress}' |
-  '/dedicated/server/{serviceName}/virtualMac' |
-  '/dedicated/server/{serviceName}/vrack/{vrack}/mrtg' |
-  '/dedicated/server/{serviceName}/vrack/{vrack}' |
-  '/dedicated/server/{serviceName}/vrack' |
+  '/dedicated/server/{serviceName}/ipCountryAvailable' |
+  '/dedicated/server/{serviceName}/ips' |
+  '/dedicated/server/{serviceName}/license/compliantWindows' |
+  '/dedicated/server/{serviceName}/license/compliantWindowsSqlServer' |
+  '/dedicated/server/{serviceName}/mrtg' |
   '/dedicated/server/{serviceName}/networkInterfaceController' |
   '/dedicated/server/{serviceName}/networkInterfaceController/{mac}' |
   '/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg' |
-  '/dedicated/server/availabilities/raw' |
-  '/dedicated/server/availabilities' |
-  '/dedicated/server/datacenter/availabilities' |
-  '/dedicated/server';
+  '/dedicated/server/{serviceName}/option' |
+  '/dedicated/server/{serviceName}/option/{option}' |
+  '/dedicated/server/{serviceName}/orderable/backupStorage' |
+  '/dedicated/server/{serviceName}/orderable/bandwidth' |
+  '/dedicated/server/{serviceName}/orderable/bandwidthvRack' |
+  '/dedicated/server/{serviceName}/orderable/feature' |
+  '/dedicated/server/{serviceName}/orderable/ip' |
+  '/dedicated/server/{serviceName}/orderable/kvm' |
+  '/dedicated/server/{serviceName}/orderable/kvmExpress' |
+  '/dedicated/server/{serviceName}/orderable/professionalUse' |
+  '/dedicated/server/{serviceName}/orderable/traffic' |
+  '/dedicated/server/{serviceName}/orderable/usbKey' |
+  '/dedicated/server/{serviceName}/secondaryDnsDomains' |
+  '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' |
+  '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer' |
+  '/dedicated/server/{serviceName}/secondaryDnsNameDomainToken' |
+  '/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable' |
+  '/dedicated/server/{serviceName}/serviceInfos' |
+  '/dedicated/server/{serviceName}/serviceMonitoring' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' |
+  '/dedicated/server/{serviceName}/specifications/hardware' |
+  '/dedicated/server/{serviceName}/specifications/ip' |
+  '/dedicated/server/{serviceName}/specifications/network' |
+  '/dedicated/server/{serviceName}/spla' |
+  '/dedicated/server/{serviceName}/spla/{id}' |
+  '/dedicated/server/{serviceName}/statistics' |
+  '/dedicated/server/{serviceName}/statistics/chart' |
+  '/dedicated/server/{serviceName}/statistics/connection' |
+  '/dedicated/server/{serviceName}/statistics/cpu' |
+  '/dedicated/server/{serviceName}/statistics/disk' |
+  '/dedicated/server/{serviceName}/statistics/disk/{disk}' |
+  '/dedicated/server/{serviceName}/statistics/disk/{disk}/smart' |
+  '/dedicated/server/{serviceName}/statistics/load' |
+  '/dedicated/server/{serviceName}/statistics/memory' |
+  '/dedicated/server/{serviceName}/statistics/motherboard' |
+  '/dedicated/server/{serviceName}/statistics/os' |
+  '/dedicated/server/{serviceName}/statistics/partition' |
+  '/dedicated/server/{serviceName}/statistics/partition/{partition}' |
+  '/dedicated/server/{serviceName}/statistics/partition/{partition}/chart' |
+  '/dedicated/server/{serviceName}/statistics/pci' |
+  '/dedicated/server/{serviceName}/statistics/process' |
+  '/dedicated/server/{serviceName}/statistics/raid' |
+  '/dedicated/server/{serviceName}/statistics/raid/{unit}' |
+  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume' |
+  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}' |
+  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port' |
+  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}' |
+  '/dedicated/server/{serviceName}/task' |
+  '/dedicated/server/{serviceName}/task/{taskId}' |
+  '/dedicated/server/{serviceName}/virtualMac' |
+  '/dedicated/server/{serviceName}/virtualMac/{macAddress}' |
+  '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress' |
+  '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}' |
+  '/dedicated/server/{serviceName}/virtualNetworkInterface' |
+  '/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}' |
+  '/dedicated/server/{serviceName}/vrack' |
+  '/dedicated/server/{serviceName}/vrack/{vrack}' |
+  '/dedicated/server/{serviceName}/vrack/{vrack}/mrtg';
 
-type PathsDedicatedServerPUT = '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' |
+type PathsDedicatedServerPUT = '/dedicated/server/{serviceName}' |
+  '/dedicated/server/{serviceName}/burst' |
+  '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' |
+  '/dedicated/server/{serviceName}/features/firewall' |
+  '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' |
+  '/dedicated/server/{serviceName}/serviceInfos' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' |
   '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' |
   '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' |
-  '/dedicated/server/{serviceName}/serviceInfos' |
-  '/dedicated/server/{serviceName}' |
-  '/dedicated/server/{serviceName}/features/firewall' |
-  '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' |
-  '/dedicated/server/{serviceName}/spla/{id}' |
-  '/dedicated/server/{serviceName}/burst';
+  '/dedicated/server/{serviceName}/spla/{id}';
 
-type PathsDedicatedServerPOST = '/dedicated/server/{serviceName}/license/windows' |
-  '/dedicated/server/{serviceName}/authenticationSecret' |
-  '/dedicated/server/{serviceName}/secondaryDnsDomains' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms' |
-  '/dedicated/server/{serviceName}/serviceMonitoring' |
-  '/dedicated/server/{serviceName}/ipMove' |
-  '/dedicated/server/{serviceName}/support/replace/hardDiskDrive' |
+type PathsDedicatedServerPOST = '/dedicated/server/{serviceName}/authenticationSecret' |
+  '/dedicated/server/{serviceName}/changeContact' |
   '/dedicated/server/{serviceName}/confirmTermination' |
-  '/dedicated/server/{serviceName}/install/start' |
-  '/dedicated/server/{serviceName}/terminate' |
-  '/dedicated/server/{serviceName}/ipBlockMerge' |
-  '/dedicated/server/{serviceName}/reboot' |
   '/dedicated/server/{serviceName}/features/backupCloud' |
   '/dedicated/server/{serviceName}/features/backupCloud/password' |
-  '/dedicated/server/{serviceName}/features/ipmi/test' |
-  '/dedicated/server/{serviceName}/features/ipmi/resetSessions' |
+  '/dedicated/server/{serviceName}/features/backupFTP' |
+  '/dedicated/server/{serviceName}/features/backupFTP/access' |
+  '/dedicated/server/{serviceName}/features/backupFTP/password' |
   '/dedicated/server/{serviceName}/features/ipmi/access' |
   '/dedicated/server/{serviceName}/features/ipmi/resetInterface' |
-  '/dedicated/server/{serviceName}/features/backupFTP' |
-  '/dedicated/server/{serviceName}/features/backupFTP/password' |
-  '/dedicated/server/{serviceName}/features/backupFTP/access' |
-  '/dedicated/server/{serviceName}/changeContact' |
-  '/dedicated/server/{serviceName}/task/{taskId}/cancel' |
+  '/dedicated/server/{serviceName}/features/ipmi/resetSessions' |
+  '/dedicated/server/{serviceName}/features/ipmi/test' |
+  '/dedicated/server/{serviceName}/install/start' |
+  '/dedicated/server/{serviceName}/ipBlockMerge' |
+  '/dedicated/server/{serviceName}/ipMove' |
+  '/dedicated/server/{serviceName}/license/windows' |
+  '/dedicated/server/{serviceName}/reboot' |
+  '/dedicated/server/{serviceName}/secondaryDnsDomains' |
+  '/dedicated/server/{serviceName}/serviceMonitoring' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms' |
   '/dedicated/server/{serviceName}/spla' |
   '/dedicated/server/{serviceName}/spla/{id}/revoke' |
-  '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress' |
-  '/dedicated/server/{serviceName}/virtualMac';
+  '/dedicated/server/{serviceName}/support/replace/hardDiskDrive' |
+  '/dedicated/server/{serviceName}/task/{taskId}/cancel' |
+  '/dedicated/server/{serviceName}/terminate' |
+  '/dedicated/server/{serviceName}/virtualMac' |
+  '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress';
 
-type PathsDedicatedServerDELETE = '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' |
-  '/dedicated/server/{serviceName}/features/backupCloud' |
+type PathsDedicatedServerDELETE = '/dedicated/server/{serviceName}/features/backupCloud' |
   '/dedicated/server/{serviceName}/features/backupFTP' |
   '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' |
   '/dedicated/server/{serviceName}/option/{option}' |
+  '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' |
   '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}' |
   '/dedicated/server/{serviceName}/vrack/{vrack}';
 

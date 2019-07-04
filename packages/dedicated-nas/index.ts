@@ -164,29 +164,29 @@ export interface Dedicated {
 }
 // Api
 type PathsDedicatedNasGET = '/dedicated/nas' |
-  '/dedicated/nas/{serviceName}/serviceInfos' |
   '/dedicated/nas/{serviceName}' |
   '/dedicated/nas/{serviceName}/partition' |
+  '/dedicated/nas/{serviceName}/partition/{partitionName}' |
   '/dedicated/nas/{serviceName}/partition/{partitionName}/access' |
   '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}' |
-  '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}' |
-  '/dedicated/nas/{serviceName}/partition/{partitionName}/quota' |
   '/dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps' |
-  '/dedicated/nas/{serviceName}/partition/{partitionName}' |
+  '/dedicated/nas/{serviceName}/partition/{partitionName}/quota' |
+  '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}' |
+  '/dedicated/nas/{serviceName}/serviceInfos' |
   '/dedicated/nas/{serviceName}/task' |
   '/dedicated/nas/{serviceName}/task/{taskId}';
 
-type PathsDedicatedNasPUT = '/dedicated/nas/{serviceName}/serviceInfos' |
-  '/dedicated/nas/{serviceName}' |
-  '/dedicated/nas/{serviceName}/partition/{partitionName}';
+type PathsDedicatedNasPUT = '/dedicated/nas/{serviceName}' |
+  '/dedicated/nas/{serviceName}/partition/{partitionName}' |
+  '/dedicated/nas/{serviceName}/serviceInfos';
 
 type PathsDedicatedNasPOST = '/dedicated/nas/{serviceName}/partition' |
   '/dedicated/nas/{serviceName}/partition/{partitionName}/access' |
   '/dedicated/nas/{serviceName}/partition/{partitionName}/quota';
 
-type PathsDedicatedNasDELETE = '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}' |
-  '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}' |
-  '/dedicated/nas/{serviceName}/partition/{partitionName}';
+type PathsDedicatedNasDELETE = '/dedicated/nas/{serviceName}/partition/{partitionName}' |
+  '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}' |
+  '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}';
 
 export class ApiDedicatedNas extends OvhWrapper {
   constructor(engine: OvhRequestable) {

@@ -55,11 +55,11 @@ export interface Auth {
     }
 }
 // Api
-type PathsAuthGET = '/auth/time' |
-  '/auth/currentCredential';
+type PathsAuthGET = '/auth/currentCredential' |
+  '/auth/time';
 
-type PathsAuthPOST = '/auth/logout' |
-  '/auth/credential';
+type PathsAuthPOST = '/auth/credential' |
+  '/auth/logout';
 
 export class ApiAuth extends OvhWrapper {
   constructor(engine: OvhRequestable) {

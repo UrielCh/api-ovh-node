@@ -1299,7 +1299,7 @@ export interface Xdsl {
                 }
                 statistics:  {
                     // GET /xdsl/{serviceName}/lines/{number}/statistics
-                    $get(param?: {type: xdsl.LineStatisticsTypeEnum, period: xdsl.StatisticsPeriodEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
+                    $get(param?: {period: xdsl.StatisticsPeriodEnum, type: xdsl.LineStatisticsTypeEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
                 }
             } | any
         }
@@ -1554,147 +1554,147 @@ export interface Xdsl {
     } | any
 }
 // Api
-type PathsXdslGET = '/xdsl/templateModem' |
-  '/xdsl/templateModem/{name}' |
+type PathsXdslGET = '/xdsl' |
+  '/xdsl/eligibility/cities' |
+  '/xdsl/eligibility/meetings' |
+  '/xdsl/eligibility/streets' |
+  '/xdsl/eligibility/test' |
   '/xdsl/email/pro' |
   '/xdsl/email/pro/{email}' |
-  '/xdsl/{serviceName}' |
-  '/xdsl/{serviceName}/canCancelResiliation' |
-  '/xdsl/{serviceName}/addressMove/extraIpRange' |
-  '/xdsl/{serviceName}/orderFollowup' |
-  '/xdsl/{serviceName}/pendingAction' |
-  '/xdsl/{serviceName}/totalDeconsolidationTerms' |
-  '/xdsl/{serviceName}/radiusConnectionLogs' |
-  '/xdsl/{serviceName}/serviceInfos' |
-  '/xdsl/{serviceName}/antiSpams' |
-  '/xdsl/{serviceName}/antiSpams/{ip}' |
-  '/xdsl/{serviceName}/antiSpams/{ip}/evidences' |
-  '/xdsl/{serviceName}/diagnostic' |
-  '/xdsl/{serviceName}/statistics' |
-  '/xdsl/{serviceName}/ips/{ip}' |
-  '/xdsl/{serviceName}/ips' |
-  '/xdsl/{serviceName}/monitoringNotifications/{id}' |
-  '/xdsl/{serviceName}/monitoringNotifications' |
-  '/xdsl/{serviceName}/lines' |
-  '/xdsl/{serviceName}/lines/{number}/dslamPort/logs' |
-  '/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles' |
-  '/xdsl/{serviceName}/lines/{number}/dslamPort' |
-  '/xdsl/{serviceName}/lines/{number}' |
-  '/xdsl/{serviceName}/lines/{number}/statistics' |
-  '/xdsl/{serviceName}/rma/{id}' |
-  '/xdsl/{serviceName}/rma' |
-  '/xdsl/{serviceName}/incident' |
-  '/xdsl/{serviceName}/tasks/{id}' |
-  '/xdsl/{serviceName}/tasks' |
-  '/xdsl/{serviceName}/resiliationTerms' |
-  '/xdsl/{serviceName}/modem' |
-  '/xdsl/{serviceName}/modem/wifi' |
-  '/xdsl/{serviceName}/modem/wifi/{wifiName}' |
-  '/xdsl/{serviceName}/modem/blocIp' |
-  '/xdsl/{serviceName}/modem/callWaiting' |
-  '/xdsl/{serviceName}/modem/contentSharing' |
-  '/xdsl/{serviceName}/modem/sipAlg' |
-  '/xdsl/{serviceName}/modem/lan' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}' |
-  '/xdsl/{serviceName}/modem/connectedDevices' |
-  '/xdsl/{serviceName}/modem/connectedDevices/{macAddress}' |
-  '/xdsl/{serviceName}/modem/upnp' |
-  '/xdsl/{serviceName}/modem/ftp' |
-  '/xdsl/{serviceName}/modem/availableWLANChannel' |
-  '/xdsl/{serviceName}/modem/firmwareAvailable' |
-  '/xdsl/{serviceName}/modem/portMappings' |
-  '/xdsl/{serviceName}/modem/portMappings/{name}' |
-  '/xdsl/{serviceName}/modem/firmware' |
-  '/xdsl/{serviceName}/modem/ipsecAlg' |
-  '/xdsl/{serviceName}/resiliationFollowup' |
-  '/xdsl/spare/brands' |
+  '/xdsl/incidents' |
+  '/xdsl/incidents/{id}' |
   '/xdsl/spare' |
+  '/xdsl/spare/brands' |
   '/xdsl/spare/{spare}' |
   '/xdsl/spare/{spare}/compatibleReplacement' |
   '/xdsl/spare/{spare}/serviceInfos' |
-  '/xdsl/incidents/{id}' |
-  '/xdsl/incidents' |
-  '/xdsl/eligibility/test' |
-  '/xdsl/eligibility/streets' |
-  '/xdsl/eligibility/meetings' |
-  '/xdsl/eligibility/cities' |
-  '/xdsl';
-
-type PathsXdslPUT = '/xdsl/templateModem/{name}' |
-  '/xdsl/email/pro/{email}' |
+  '/xdsl/templateModem' |
+  '/xdsl/templateModem/{name}' |
   '/xdsl/{serviceName}' |
+  '/xdsl/{serviceName}/addressMove/extraIpRange' |
+  '/xdsl/{serviceName}/antiSpams' |
+  '/xdsl/{serviceName}/antiSpams/{ip}' |
+  '/xdsl/{serviceName}/antiSpams/{ip}/evidences' |
+  '/xdsl/{serviceName}/canCancelResiliation' |
+  '/xdsl/{serviceName}/diagnostic' |
+  '/xdsl/{serviceName}/incident' |
+  '/xdsl/{serviceName}/ips' |
+  '/xdsl/{serviceName}/ips/{ip}' |
+  '/xdsl/{serviceName}/lines' |
+  '/xdsl/{serviceName}/lines/{number}' |
+  '/xdsl/{serviceName}/lines/{number}/dslamPort' |
+  '/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles' |
+  '/xdsl/{serviceName}/lines/{number}/dslamPort/logs' |
+  '/xdsl/{serviceName}/lines/{number}/statistics' |
+  '/xdsl/{serviceName}/modem' |
+  '/xdsl/{serviceName}/modem/availableWLANChannel' |
+  '/xdsl/{serviceName}/modem/blocIp' |
+  '/xdsl/{serviceName}/modem/callWaiting' |
+  '/xdsl/{serviceName}/modem/connectedDevices' |
+  '/xdsl/{serviceName}/modem/connectedDevices/{macAddress}' |
+  '/xdsl/{serviceName}/modem/contentSharing' |
+  '/xdsl/{serviceName}/modem/firmware' |
+  '/xdsl/{serviceName}/modem/firmwareAvailable' |
+  '/xdsl/{serviceName}/modem/ftp' |
+  '/xdsl/{serviceName}/modem/ipsecAlg' |
+  '/xdsl/{serviceName}/modem/lan' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' |
+  '/xdsl/{serviceName}/modem/portMappings' |
+  '/xdsl/{serviceName}/modem/portMappings/{name}' |
+  '/xdsl/{serviceName}/modem/sipAlg' |
+  '/xdsl/{serviceName}/modem/upnp' |
+  '/xdsl/{serviceName}/modem/wifi' |
+  '/xdsl/{serviceName}/modem/wifi/{wifiName}' |
+  '/xdsl/{serviceName}/monitoringNotifications' |
+  '/xdsl/{serviceName}/monitoringNotifications/{id}' |
+  '/xdsl/{serviceName}/orderFollowup' |
+  '/xdsl/{serviceName}/pendingAction' |
+  '/xdsl/{serviceName}/radiusConnectionLogs' |
+  '/xdsl/{serviceName}/resiliationFollowup' |
+  '/xdsl/{serviceName}/resiliationTerms' |
+  '/xdsl/{serviceName}/rma' |
+  '/xdsl/{serviceName}/rma/{id}' |
   '/xdsl/{serviceName}/serviceInfos' |
+  '/xdsl/{serviceName}/statistics' |
+  '/xdsl/{serviceName}/tasks' |
+  '/xdsl/{serviceName}/tasks/{id}' |
+  '/xdsl/{serviceName}/totalDeconsolidationTerms';
+
+type PathsXdslPUT = '/xdsl/email/pro/{email}' |
+  '/xdsl/spare/{spare}/serviceInfos' |
+  '/xdsl/templateModem/{name}' |
+  '/xdsl/{serviceName}' |
+  '/xdsl/{serviceName}/modem' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}' |
+  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' |
+  '/xdsl/{serviceName}/modem/portMappings/{name}' |
+  '/xdsl/{serviceName}/modem/wifi/{wifiName}' |
   '/xdsl/{serviceName}/monitoringNotifications/{id}' |
   '/xdsl/{serviceName}/rma/{id}' |
-  '/xdsl/{serviceName}/modem' |
-  '/xdsl/{serviceName}/modem/wifi/{wifiName}' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}' |
-  '/xdsl/{serviceName}/modem/lan/{lanName}' |
-  '/xdsl/{serviceName}/modem/portMappings/{name}' |
-  '/xdsl/spare/{spare}/serviceInfos';
+  '/xdsl/{serviceName}/serviceInfos';
 
-type PathsXdslPOST = '/xdsl/templateModem' |
+type PathsXdslPOST = '/xdsl/eligibility/lines/active' |
+  '/xdsl/eligibility/lines/inactive' |
+  '/xdsl/eligibility/search/buildings' |
+  '/xdsl/eligibility/search/cities' |
+  '/xdsl/eligibility/search/fiberStreets' |
+  '/xdsl/eligibility/search/streetNumbers' |
+  '/xdsl/eligibility/test/address' |
+  '/xdsl/eligibility/test/fiber/building' |
+  '/xdsl/eligibility/test/line' |
   '/xdsl/email/pro/{email}/changePassword' |
-  '/xdsl/{serviceName}/changeContact' |
+  '/xdsl/spare/{spare}/replace' |
+  '/xdsl/spare/{spare}/returnMerchandise' |
+  '/xdsl/templateModem' |
   '/xdsl/{serviceName}/addressMove/extraIpRangeMove' |
-  '/xdsl/{serviceName}/cancelResiliation' |
   '/xdsl/{serviceName}/applyTemplateToModem' |
-  '/xdsl/{serviceName}/requestTotalDeconsolidation' |
+  '/xdsl/{serviceName}/cancelResiliation' |
+  '/xdsl/{serviceName}/changeContact' |
   '/xdsl/{serviceName}/diagnostic' |
-  '/xdsl/{serviceName}/resiliate' |
-  '/xdsl/{serviceName}/requestPPPLoginMail' |
-  '/xdsl/{serviceName}/sendOrderToProvider' |
-  '/xdsl/{serviceName}/ipv6' |
   '/xdsl/{serviceName}/ips' |
-  '/xdsl/{serviceName}/monitoringNotifications' |
-  '/xdsl/{serviceName}/lines/{number}/dslamPort/reset' |
-  '/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile' |
-  '/xdsl/{serviceName}/lines/{number}/diagnostic/run' |
+  '/xdsl/{serviceName}/ipv6' |
   '/xdsl/{serviceName}/lines/{number}/diagnostic/cancel' |
-  '/xdsl/{serviceName}/updateInvalidOrMissingRio' |
-  '/xdsl/{serviceName}/tasks/{id}/archive' |
-  '/xdsl/{serviceName}/modem/duplicatePortMappingConfig' |
-  '/xdsl/{serviceName}/modem/reboot' |
+  '/xdsl/{serviceName}/lines/{number}/diagnostic/run' |
+  '/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile' |
+  '/xdsl/{serviceName}/lines/{number}/dslamPort/reset' |
   '/xdsl/{serviceName}/modem/blocIp' |
   '/xdsl/{serviceName}/modem/callWaiting' |
   '/xdsl/{serviceName}/modem/contentSharing' |
-  '/xdsl/{serviceName}/modem/reset' |
-  '/xdsl/{serviceName}/modem/sipAlg' |
+  '/xdsl/{serviceName}/modem/duplicatePortMappingConfig' |
+  '/xdsl/{serviceName}/modem/firmware' |
+  '/xdsl/{serviceName}/modem/ftp' |
+  '/xdsl/{serviceName}/modem/ipsecAlg' |
   '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses' |
-  '/xdsl/{serviceName}/modem/retrieveInfo' |
+  '/xdsl/{serviceName}/modem/portMappings' |
+  '/xdsl/{serviceName}/modem/reboot' |
   '/xdsl/{serviceName}/modem/reconfigureVoip' |
   '/xdsl/{serviceName}/modem/refreshConnectedDevices' |
-  '/xdsl/{serviceName}/modem/upnp' |
-  '/xdsl/{serviceName}/modem/ftp' |
-  '/xdsl/{serviceName}/modem/portMappings' |
-  '/xdsl/{serviceName}/modem/firmware' |
+  '/xdsl/{serviceName}/modem/reset' |
   '/xdsl/{serviceName}/modem/resetPortMappingConfig' |
-  '/xdsl/{serviceName}/modem/ipsecAlg' |
-  '/xdsl/spare/{spare}/replace' |
-  '/xdsl/spare/{spare}/returnMerchandise' |
-  '/xdsl/eligibility/lines/active' |
-  '/xdsl/eligibility/lines/inactive' |
-  '/xdsl/eligibility/test/fiber/building' |
-  '/xdsl/eligibility/test/line' |
-  '/xdsl/eligibility/test/address' |
-  '/xdsl/eligibility/search/cities' |
-  '/xdsl/eligibility/search/streetNumbers' |
-  '/xdsl/eligibility/search/fiberStreets' |
-  '/xdsl/eligibility/search/buildings';
+  '/xdsl/{serviceName}/modem/retrieveInfo' |
+  '/xdsl/{serviceName}/modem/sipAlg' |
+  '/xdsl/{serviceName}/modem/upnp' |
+  '/xdsl/{serviceName}/monitoringNotifications' |
+  '/xdsl/{serviceName}/requestPPPLoginMail' |
+  '/xdsl/{serviceName}/requestTotalDeconsolidation' |
+  '/xdsl/{serviceName}/resiliate' |
+  '/xdsl/{serviceName}/sendOrderToProvider' |
+  '/xdsl/{serviceName}/tasks/{id}/archive' |
+  '/xdsl/{serviceName}/updateInvalidOrMissingRio';
 
-type PathsXdslDELETE = '/xdsl/templateModem/{name}' |
-  '/xdsl/email/pro/{email}' |
+type PathsXdslDELETE = '/xdsl/email/pro/{email}' |
+  '/xdsl/spare/{spare}' |
+  '/xdsl/templateModem/{name}' |
   '/xdsl/{serviceName}/ips/{ip}' |
-  '/xdsl/{serviceName}/monitoringNotifications/{id}' |
-  '/xdsl/{serviceName}/rma/{id}' |
   '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}' |
   '/xdsl/{serviceName}/modem/portMappings/{name}' |
-  '/xdsl/spare/{spare}';
+  '/xdsl/{serviceName}/monitoringNotifications/{id}' |
+  '/xdsl/{serviceName}/rma/{id}';
 
 export class ApiXdsl extends OvhWrapper {
   constructor(engine: OvhRequestable) {

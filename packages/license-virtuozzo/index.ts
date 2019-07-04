@@ -167,7 +167,7 @@ export interface License {
             }
             tasks:  {
                 // GET /license/virtuozzo/{serviceName}/tasks
-                $get(param?: {status?: license.TaskStateEnum, action?: license.ActionType}): Promise<number[]>;
+                $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
                 [keys: string]: {
                     // GET /license/virtuozzo/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
@@ -181,23 +181,23 @@ export interface License {
     }
 }
 // Api
-type PathsLicenseVirtuozzoGET = '/license/virtuozzo/{serviceName}/serviceInfos' |
-  '/license/virtuozzo/{serviceName}/tasks/{taskId}' |
-  '/license/virtuozzo/{serviceName}/tasks' |
-  '/license/virtuozzo/{serviceName}/canLicenseBeMovedTo' |
-  '/license/virtuozzo/{serviceName}/allowedDestinationIp' |
-  '/license/virtuozzo/{serviceName}/option/{label}' |
-  '/license/virtuozzo/{serviceName}/option' |
+type PathsLicenseVirtuozzoGET = '/license/virtuozzo' |
+  '/license/virtuozzo/orderableVersions' |
   '/license/virtuozzo/{serviceName}' |
-  '/license/virtuozzo' |
-  '/license/virtuozzo/orderableVersions';
+  '/license/virtuozzo/{serviceName}/allowedDestinationIp' |
+  '/license/virtuozzo/{serviceName}/canLicenseBeMovedTo' |
+  '/license/virtuozzo/{serviceName}/option' |
+  '/license/virtuozzo/{serviceName}/option/{label}' |
+  '/license/virtuozzo/{serviceName}/serviceInfos' |
+  '/license/virtuozzo/{serviceName}/tasks' |
+  '/license/virtuozzo/{serviceName}/tasks/{taskId}';
 
-type PathsLicenseVirtuozzoPUT = '/license/virtuozzo/{serviceName}/serviceInfos' |
-  '/license/virtuozzo/{serviceName}';
+type PathsLicenseVirtuozzoPUT = '/license/virtuozzo/{serviceName}' |
+  '/license/virtuozzo/{serviceName}/serviceInfos';
 
-type PathsLicenseVirtuozzoPOST = '/license/virtuozzo/{serviceName}/terminate' |
+type PathsLicenseVirtuozzoPOST = '/license/virtuozzo/{serviceName}/changeIp' |
   '/license/virtuozzo/{serviceName}/confirmTermination' |
-  '/license/virtuozzo/{serviceName}/changeIp';
+  '/license/virtuozzo/{serviceName}/terminate';
 
 type PathsLicenseVirtuozzoDELETE = '/license/virtuozzo/{serviceName}/option/{label}';
 

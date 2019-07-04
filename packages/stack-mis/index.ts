@@ -66,9 +66,9 @@ export interface Stack {
     }
 }
 // Api
-type PathsStackMisGET = '/stack/mis/{serviceName}' |
-  '/stack/mis/{serviceName}/serviceInfos' |
-  '/stack/mis';
+type PathsStackMisGET = '/stack/mis' |
+  '/stack/mis/{serviceName}' |
+  '/stack/mis/{serviceName}/serviceInfos';
 
 type PathsStackMisPUT = '/stack/mis/{serviceName}/serviceInfos';
 

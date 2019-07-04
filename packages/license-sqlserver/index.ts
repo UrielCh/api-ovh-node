@@ -126,15 +126,15 @@ export interface License {
 // Api
 type PathsLicenseSqlserverGET = '/license/sqlserver' |
   '/license/sqlserver/orderableVersions' |
+  '/license/sqlserver/{serviceName}' |
   '/license/sqlserver/{serviceName}/serviceInfos' |
   '/license/sqlserver/{serviceName}/tasks' |
-  '/license/sqlserver/{serviceName}/tasks/{taskId}' |
-  '/license/sqlserver/{serviceName}';
+  '/license/sqlserver/{serviceName}/tasks/{taskId}';
 
 type PathsLicenseSqlserverPUT = '/license/sqlserver/{serviceName}/serviceInfos';
 
-type PathsLicenseSqlserverPOST = '/license/sqlserver/{serviceName}/terminate' |
-  '/license/sqlserver/{serviceName}/confirmTermination';
+type PathsLicenseSqlserverPOST = '/license/sqlserver/{serviceName}/confirmTermination' |
+  '/license/sqlserver/{serviceName}/terminate';
 
 export class ApiLicenseSqlserver extends OvhWrapper {
   constructor(engine: OvhRequestable) {

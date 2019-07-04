@@ -135,7 +135,7 @@ export interface License {
             }
             tasks:  {
                 // GET /license/cpanel/{serviceName}/tasks
-                $get(param?: {status?: license.TaskStateEnum, action?: license.ActionType}): Promise<number[]>;
+                $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
                 [keys: string]: {
                     // GET /license/cpanel/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
@@ -151,12 +151,12 @@ export interface License {
 // Api
 type PathsLicenseCpanelGET = '/license/cpanel' |
   '/license/cpanel/orderableVersions' |
-  '/license/cpanel/{serviceName}/tasks/{taskId}' |
-  '/license/cpanel/{serviceName}/tasks' |
   '/license/cpanel/{serviceName}' |
-  '/license/cpanel/{serviceName}/canLicenseBeMovedTo' |
   '/license/cpanel/{serviceName}/allowedDestinationIp' |
-  '/license/cpanel/{serviceName}/serviceInfos';
+  '/license/cpanel/{serviceName}/canLicenseBeMovedTo' |
+  '/license/cpanel/{serviceName}/serviceInfos' |
+  '/license/cpanel/{serviceName}/tasks' |
+  '/license/cpanel/{serviceName}/tasks/{taskId}';
 
 type PathsLicenseCpanelPUT = '/license/cpanel/{serviceName}' |
   '/license/cpanel/{serviceName}/serviceInfos';

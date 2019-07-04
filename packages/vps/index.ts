@@ -592,7 +592,7 @@ export interface Vps {
         }
         tasks:  {
             // GET /vps/{serviceName}/tasks
-            $get(param?: {type?: vps.TaskTypeEnum, state?: vps.TaskStateEnum}): Promise<number[]>;
+            $get(param?: {state?: vps.TaskStateEnum, type?: vps.TaskTypeEnum}): Promise<number[]>;
             [keys: string]: {
                 // GET /vps/{serviceName}/tasks/{id}
                 $get(): Promise<vps.Task>;
@@ -647,85 +647,85 @@ export interface Vps {
     } | any
 }
 // Api
-type PathsVpsGET = '/vps/datacenter' |
-  '/vps/{serviceName}/veeam/restoredBackup' |
-  '/vps/{serviceName}/veeam/restorePoints/{id}' |
-  '/vps/{serviceName}/veeam/restorePoints' |
-  '/vps/{serviceName}/veeam' |
-  '/vps/{serviceName}/ips/{ipAddress}' |
-  '/vps/{serviceName}/ips' |
-  '/vps/{serviceName}/status' |
-  '/vps/{serviceName}/templates' |
-  '/vps/{serviceName}/templates/{id}/software' |
-  '/vps/{serviceName}/templates/{id}/software/{softwareId}' |
-  '/vps/{serviceName}/templates/{id}' |
-  '/vps/{serviceName}/snapshot' |
+type PathsVpsGET = '/vps' |
+  '/vps/datacenter' |
   '/vps/{serviceName}' |
-  '/vps/{serviceName}/backupftp/authorizableBlocks' |
-  '/vps/{serviceName}/backupftp/access' |
-  '/vps/{serviceName}/backupftp/access/{ipBlock}' |
-  '/vps/{serviceName}/backupftp' |
-  '/vps/{serviceName}/ipCountryAvailable' |
-  '/vps/{serviceName}/models' |
-  '/vps/{serviceName}/monitoring' |
-  '/vps/{serviceName}/use' |
   '/vps/{serviceName}/activeOptions' |
-  '/vps/{serviceName}/option/{option}' |
-  '/vps/{serviceName}/option' |
-  '/vps/{serviceName}/serviceInfos' |
-  '/vps/{serviceName}/secondaryDnsNameServerAvailable' |
-  '/vps/{serviceName}/distribution/software' |
-  '/vps/{serviceName}/distribution/software/{softwareId}' |
-  '/vps/{serviceName}/distribution' |
-  '/vps/{serviceName}/disks/{id}/monitoring' |
-  '/vps/{serviceName}/disks/{id}' |
-  '/vps/{serviceName}/disks/{id}/use' |
-  '/vps/{serviceName}/disks' |
   '/vps/{serviceName}/automatedBackup' |
   '/vps/{serviceName}/automatedBackup/attachedBackup' |
   '/vps/{serviceName}/automatedBackup/restorePoints' |
-  '/vps/{serviceName}/datacenter' |
-  '/vps/{serviceName}/tasks/{id}' |
-  '/vps/{serviceName}/tasks' |
-  '/vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer' |
-  '/vps/{serviceName}/secondaryDnsDomains/{domain}' |
-  '/vps/{serviceName}/secondaryDnsDomains' |
   '/vps/{serviceName}/availableUpgrade' |
-  '/vps';
-
-type PathsVpsPUT = '/vps/{serviceName}/ips/{ipAddress}' |
-  '/vps/{serviceName}/snapshot' |
-  '/vps/{serviceName}' |
-  '/vps/{serviceName}/backupftp/access/{ipBlock}' |
-  '/vps/{serviceName}/serviceInfos' |
-  '/vps/{serviceName}/disks/{id}' |
-  '/vps/{serviceName}/secondaryDnsDomains/{domain}';
-
-type PathsVpsPOST = '/vps/{serviceName}/veeam/restorePoints/{id}/restore' |
-  '/vps/{serviceName}/snapshot/revert' |
-  '/vps/{serviceName}/backupftp/password' |
+  '/vps/{serviceName}/backupftp' |
   '/vps/{serviceName}/backupftp/access' |
-  '/vps/{serviceName}/reboot' |
-  '/vps/{serviceName}/getConsoleUrl' |
-  '/vps/{serviceName}/stop' |
-  '/vps/{serviceName}/createSnapshot' |
-  '/vps/{serviceName}/start' |
-  '/vps/{serviceName}/reinstall' |
-  '/vps/{serviceName}/openConsoleAccess' |
-  '/vps/{serviceName}/terminate' |
+  '/vps/{serviceName}/backupftp/access/{ipBlock}' |
+  '/vps/{serviceName}/backupftp/authorizableBlocks' |
+  '/vps/{serviceName}/datacenter' |
+  '/vps/{serviceName}/disks' |
+  '/vps/{serviceName}/disks/{id}' |
+  '/vps/{serviceName}/disks/{id}/monitoring' |
+  '/vps/{serviceName}/disks/{id}/use' |
+  '/vps/{serviceName}/distribution' |
+  '/vps/{serviceName}/distribution/software' |
+  '/vps/{serviceName}/distribution/software/{softwareId}' |
+  '/vps/{serviceName}/ipCountryAvailable' |
+  '/vps/{serviceName}/ips' |
+  '/vps/{serviceName}/ips/{ipAddress}' |
+  '/vps/{serviceName}/models' |
+  '/vps/{serviceName}/monitoring' |
+  '/vps/{serviceName}/option' |
+  '/vps/{serviceName}/option/{option}' |
+  '/vps/{serviceName}/secondaryDnsDomains' |
+  '/vps/{serviceName}/secondaryDnsDomains/{domain}' |
+  '/vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer' |
+  '/vps/{serviceName}/secondaryDnsNameServerAvailable' |
+  '/vps/{serviceName}/serviceInfos' |
+  '/vps/{serviceName}/snapshot' |
+  '/vps/{serviceName}/status' |
+  '/vps/{serviceName}/tasks' |
+  '/vps/{serviceName}/tasks/{id}' |
+  '/vps/{serviceName}/templates' |
+  '/vps/{serviceName}/templates/{id}' |
+  '/vps/{serviceName}/templates/{id}/software' |
+  '/vps/{serviceName}/templates/{id}/software/{softwareId}' |
+  '/vps/{serviceName}/use' |
+  '/vps/{serviceName}/veeam' |
+  '/vps/{serviceName}/veeam/restorePoints' |
+  '/vps/{serviceName}/veeam/restorePoints/{id}' |
+  '/vps/{serviceName}/veeam/restoredBackup';
+
+type PathsVpsPUT = '/vps/{serviceName}' |
+  '/vps/{serviceName}/backupftp/access/{ipBlock}' |
+  '/vps/{serviceName}/disks/{id}' |
+  '/vps/{serviceName}/ips/{ipAddress}' |
+  '/vps/{serviceName}/secondaryDnsDomains/{domain}' |
+  '/vps/{serviceName}/serviceInfos' |
+  '/vps/{serviceName}/snapshot';
+
+type PathsVpsPOST = '/vps/{serviceName}/automatedBackup/detachBackup' |
+  '/vps/{serviceName}/automatedBackup/restore' |
+  '/vps/{serviceName}/backupftp/access' |
+  '/vps/{serviceName}/backupftp/password' |
   '/vps/{serviceName}/changeContact' |
   '/vps/{serviceName}/confirmTermination' |
+  '/vps/{serviceName}/createSnapshot' |
+  '/vps/{serviceName}/getConsoleUrl' |
+  '/vps/{serviceName}/openConsoleAccess' |
+  '/vps/{serviceName}/reboot' |
+  '/vps/{serviceName}/reinstall' |
+  '/vps/{serviceName}/secondaryDnsDomains' |
   '/vps/{serviceName}/setPassword' |
-  '/vps/{serviceName}/automatedBackup/detachBackup' |
-  '/vps/{serviceName}/automatedBackup/restore' |
-  '/vps/{serviceName}/secondaryDnsDomains';
+  '/vps/{serviceName}/snapshot/revert' |
+  '/vps/{serviceName}/start' |
+  '/vps/{serviceName}/stop' |
+  '/vps/{serviceName}/terminate' |
+  '/vps/{serviceName}/veeam/restorePoints/{id}/restore';
 
-type PathsVpsDELETE = '/vps/{serviceName}/veeam/restoredBackup' |
+type PathsVpsDELETE = '/vps/{serviceName}/backupftp/access/{ipBlock}' |
   '/vps/{serviceName}/ips/{ipAddress}' |
-  '/vps/{serviceName}/snapshot' |
-  '/vps/{serviceName}/backupftp/access/{ipBlock}' |
   '/vps/{serviceName}/option/{option}' |
-  '/vps/{serviceName}/secondaryDnsDomains/{domain}';
+  '/vps/{serviceName}/secondaryDnsDomains/{domain}' |
+  '/vps/{serviceName}/snapshot' |
+  '/vps/{serviceName}/veeam/restoredBackup';
 
 export class ApiVps extends OvhWrapper {
   constructor(engine: OvhRequestable) {

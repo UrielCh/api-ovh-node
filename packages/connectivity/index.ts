@@ -291,34 +291,34 @@ export interface Connectivity {
         genericIncident:  {
             partners:  {
                 // GET /connectivity/monitoring/genericIncident/partners
-                $get(param?: {status?: connectivity.monitoring.GenericIncidentStatusEnum, creationDate?: string, endDate?: string}): Promise<connectivity.monitoring.GenericIncident[]>;
+                $get(param?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
             }
             public:  {
                 // GET /connectivity/monitoring/genericIncident/public
-                $get(param?: {status?: connectivity.monitoring.GenericIncidentStatusEnum, creationDate?: string, endDate?: string}): Promise<connectivity.monitoring.GenericIncident[]>;
+                $get(param?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
             }
         }
     }
 }
 // Api
 type PathsConnectivityGET = '/connectivity/eligibility/test' |
-  '/connectivity/monitoring/genericIncident/public' |
-  '/connectivity/monitoring/genericIncident/partners';
+  '/connectivity/monitoring/genericIncident/partners' |
+  '/connectivity/monitoring/genericIncident/public';
 
-type PathsConnectivityPOST = '/connectivity/eligibility/search/streets' |
+type PathsConnectivityPOST = '/connectivity/eligibility/search/buildingDetails' |
+  '/connectivity/eligibility/search/buildings' |
+  '/connectivity/eligibility/search/buildingsByLine' |
   '/connectivity/eligibility/search/cities' |
-  '/connectivity/eligibility/search/buildingDetails' |
-  '/connectivity/eligibility/search/streetNumbers' |
   '/connectivity/eligibility/search/lines' |
   '/connectivity/eligibility/search/meetings' |
-  '/connectivity/eligibility/search/buildingsByLine' |
-  '/connectivity/eligibility/search/buildings' |
+  '/connectivity/eligibility/search/streetNumbers' |
+  '/connectivity/eligibility/search/streets' |
+  '/connectivity/eligibility/test/address' |
+  '/connectivity/eligibility/test/address/partners' |
+  '/connectivity/eligibility/test/building' |
   '/connectivity/eligibility/test/line' |
   '/connectivity/eligibility/test/line/partners' |
-  '/connectivity/eligibility/test/address/partners' |
-  '/connectivity/eligibility/test/address' |
-  '/connectivity/eligibility/test/otp' |
-  '/connectivity/eligibility/test/building';
+  '/connectivity/eligibility/test/otp';
 
 export class ApiConnectivity extends OvhWrapper {
   constructor(engine: OvhRequestable) {

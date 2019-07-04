@@ -432,7 +432,7 @@ export interface Sms {
         }
         document:  {
             // GET /sms/{serviceName}/document
-            $get(param?: {wayType: sms.DocumentWayTypeEnum, creationDatetime_to?: string, tag?: string, creationDatetime_from?: string}): Promise<string>;
+            $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, tag?: string, wayType: sms.DocumentWayTypeEnum}): Promise<string>;
         }
         exceptions:  {
             // GET /sms/{serviceName}/exceptions
@@ -454,7 +454,7 @@ export interface Sms {
         }
         incoming:  {
             // GET /sms/{serviceName}/incoming
-            $get(param?: {creationDatetime_from?: string, tag?: string, creationDatetime_to?: string, sender?: string}): Promise<number[]>;
+            $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, sender?: string, tag?: string}): Promise<number[]>;
             [keys: string]: {
                 // DELETE /sms/{serviceName}/incoming/{id}
                 $delete(): Promise<void>;
@@ -476,7 +476,7 @@ export interface Sms {
         }
         outgoing:  {
             // GET /sms/{serviceName}/outgoing
-            $get(param?: {sender?: string, ptt?: number, tag?: string, receiver?: string, creationDatetime_from?: string, creationDatetime_to?: string, differedDelivery?: number, deliveryReceipt?: number}): Promise<number[]>;
+            $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string}): Promise<number[]>;
             [keys: string]: {
                 // DELETE /sms/{serviceName}/outgoing/{id}
                 $delete(): Promise<void>;
@@ -548,7 +548,7 @@ export interface Sms {
         }
         seeOffers:  {
             // GET /sms/{serviceName}/seeOffers
-            $get(param?: {quantity: sms.PackQuantityEnum, countryCurrencyPrice: reference.CountryEnum, countryDestination: sms.CountryEnum}): Promise<sms.PackOffer[]>;
+            $get(param?: {countryCurrencyPrice: reference.CountryEnum, countryDestination: sms.CountryEnum, quantity: sms.PackQuantityEnum}): Promise<sms.PackOffer[]>;
         }
         senders:  {
             // GET /sms/{serviceName}/senders
@@ -622,7 +622,7 @@ export interface Sms {
                 $put(body?: {body: sms.User}): Promise<void>;
                 document:  {
                     // GET /sms/{serviceName}/users/{login}/document
-                    $get(param?: {tag?: string, creationDatetime_from?: string, wayType: sms.DocumentWayTypeEnum, creationDatetime_to?: string}): Promise<string>;
+                    $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, tag?: string, wayType: sms.DocumentWayTypeEnum}): Promise<string>;
                 }
                 incoming:  {
                     // GET /sms/{serviceName}/users/{login}/incoming
@@ -648,7 +648,7 @@ export interface Sms {
                 }
                 outgoing:  {
                     // GET /sms/{serviceName}/users/{login}/outgoing
-                    $get(param?: {sender?: string, ptt?: number, differedDelivery?: number, tag?: string, receiver?: string, deliveryReceipt?: number}): Promise<number[]>;
+                    $get(param?: {deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string}): Promise<number[]>;
                     [keys: string]: {
                         // DELETE /sms/{serviceName}/users/{login}/outgoing/{id}
                         $delete(): Promise<void>;
@@ -700,7 +700,7 @@ export interface Sms {
                 }
                 incoming:  {
                     // GET /sms/{serviceName}/virtualNumbers/{number}/incoming
-                    $get(param?: {sender?: string, creationDatetime_to?: string, tag?: string, creationDatetime_from?: string}): Promise<number[]>;
+                    $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, sender?: string, tag?: string}): Promise<number[]>;
                     [keys: string]: {
                         // DELETE /sms/{serviceName}/virtualNumbers/{number}/incoming/{id}
                         $delete(): Promise<void>;
@@ -722,7 +722,7 @@ export interface Sms {
                 }
                 outgoing:  {
                     // GET /sms/{serviceName}/virtualNumbers/{number}/outgoing
-                    $get(param?: {differedDelivery?: number, deliveryReceipt?: number, creationDatetime_to?: string, creationDatetime_from?: string, ptt?: number, receiver?: string, tag?: string, sender?: string}): Promise<number[]>;
+                    $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string}): Promise<number[]>;
                     [keys: string]: {
                         // DELETE /sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}
                         $delete(): Promise<void>;
@@ -739,115 +739,115 @@ export interface Sms {
     } | any
 }
 // Api
-type PathsSmsGET = '/sms/{serviceName}/jobs/{id}' |
-  '/sms/{serviceName}/jobs' |
-  '/sms/{serviceName}/task' |
-  '/sms/{serviceName}/task/{taskId}' |
-  '/sms/{serviceName}/virtualNumbers' |
-  '/sms/{serviceName}/virtualNumbers/{number}/incoming/{id}' |
-  '/sms/{serviceName}/virtualNumbers/{number}/incoming' |
-  '/sms/{serviceName}/virtualNumbers/{number}/outgoing' |
-  '/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}' |
-  '/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}/hlr' |
-  '/sms/{serviceName}/virtualNumbers/{number}' |
-  '/sms/{serviceName}/virtualNumbers/{number}/chatAccess' |
-  '/sms/{serviceName}/virtualNumbers/{number}/jobs' |
-  '/sms/{serviceName}/virtualNumbers/{number}/jobs/{id}' |
+type PathsSmsGET = '/sms' |
+  '/sms/ptts' |
+  '/sms/virtualNumbers' |
+  '/sms/virtualNumbers/{number}' |
+  '/sms/virtualNumbers/{number}/serviceInfos' |
+  '/sms/{serviceName}' |
+  '/sms/{serviceName}/blacklists' |
+  '/sms/{serviceName}/blacklists/{number}' |
+  '/sms/{serviceName}/document' |
+  '/sms/{serviceName}/exceptions' |
+  '/sms/{serviceName}/hlr' |
+  '/sms/{serviceName}/hlr/{id}' |
+  '/sms/{serviceName}/hlr/{id}/operator' |
   '/sms/{serviceName}/incoming' |
   '/sms/{serviceName}/incoming/{id}' |
+  '/sms/{serviceName}/jobs' |
+  '/sms/{serviceName}/jobs/{id}' |
+  '/sms/{serviceName}/outgoing' |
+  '/sms/{serviceName}/outgoing/{id}' |
+  '/sms/{serviceName}/outgoing/{id}/hlr' |
+  '/sms/{serviceName}/phonebooks' |
+  '/sms/{serviceName}/phonebooks/{bookKey}' |
+  '/sms/{serviceName}/phonebooks/{bookKey}/export' |
+  '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact' |
+  '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}' |
+  '/sms/{serviceName}/receivers' |
+  '/sms/{serviceName}/receivers/{slotId}' |
+  '/sms/{serviceName}/receivers/{slotId}/csv' |
+  '/sms/{serviceName}/seeOffers' |
+  '/sms/{serviceName}/senders' |
+  '/sms/{serviceName}/senders/{sender}' |
   '/sms/{serviceName}/sendersAvailableForValidation' |
-  '/sms/{serviceName}/templatesControl/{name}' |
+  '/sms/{serviceName}/serviceInfos' |
+  '/sms/{serviceName}/task' |
+  '/sms/{serviceName}/task/{taskId}' |
   '/sms/{serviceName}/templatesControl' |
-  '/sms/{serviceName}/exceptions' |
+  '/sms/{serviceName}/templatesControl/{name}' |
   '/sms/{serviceName}/users' |
   '/sms/{serviceName}/users/{login}' |
-  '/sms/{serviceName}/users/{login}/jobs/{id}' |
-  '/sms/{serviceName}/users/{login}/jobs' |
-  '/sms/{serviceName}/users/{login}/outgoing' |
-  '/sms/{serviceName}/users/{login}/outgoing/{id}/hlr' |
-  '/sms/{serviceName}/users/{login}/outgoing/{id}' |
+  '/sms/{serviceName}/users/{login}/document' |
   '/sms/{serviceName}/users/{login}/incoming' |
   '/sms/{serviceName}/users/{login}/incoming/{id}' |
-  '/sms/{serviceName}/users/{login}/document' |
+  '/sms/{serviceName}/users/{login}/jobs' |
+  '/sms/{serviceName}/users/{login}/jobs/{id}' |
+  '/sms/{serviceName}/users/{login}/outgoing' |
+  '/sms/{serviceName}/users/{login}/outgoing/{id}' |
+  '/sms/{serviceName}/users/{login}/outgoing/{id}/hlr' |
   '/sms/{serviceName}/users/{login}/receivers' |
   '/sms/{serviceName}/users/{login}/receivers/{slotId}' |
   '/sms/{serviceName}/users/{login}/receivers/{slotId}/csv' |
-  '/sms/{serviceName}/receivers' |
-  '/sms/{serviceName}/receivers/{slotId}/csv' |
-  '/sms/{serviceName}/receivers/{slotId}' |
-  '/sms/{serviceName}/document' |
-  '/sms/{serviceName}/senders' |
-  '/sms/{serviceName}/senders/{sender}' |
-  '/sms/{serviceName}/blacklists/{number}' |
-  '/sms/{serviceName}/blacklists' |
-  '/sms/{serviceName}/serviceInfos' |
-  '/sms/{serviceName}/seeOffers' |
-  '/sms/{serviceName}' |
-  '/sms/{serviceName}/phonebooks' |
-  '/sms/{serviceName}/phonebooks/{bookKey}/export' |
-  '/sms/{serviceName}/phonebooks/{bookKey}' |
-  '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}' |
-  '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact' |
-  '/sms/{serviceName}/hlr/{id}' |
-  '/sms/{serviceName}/hlr/{id}/operator' |
-  '/sms/{serviceName}/hlr' |
-  '/sms/{serviceName}/outgoing/{id}' |
-  '/sms/{serviceName}/outgoing/{id}/hlr' |
-  '/sms/{serviceName}/outgoing' |
-  '/sms/ptts' |
-  '/sms' |
-  '/sms/virtualNumbers/{number}/serviceInfos' |
-  '/sms/virtualNumbers/{number}' |
-  '/sms/virtualNumbers';
-
-type PathsSmsPUT = '/sms/{serviceName}/templatesControl/{name}' |
-  '/sms/{serviceName}/users/{login}' |
-  '/sms/{serviceName}/users/{login}/receivers/{slotId}' |
-  '/sms/{serviceName}/receivers/{slotId}' |
-  '/sms/{serviceName}/senders/{sender}' |
-  '/sms/{serviceName}/serviceInfos' |
-  '/sms/{serviceName}' |
-  '/sms/{serviceName}/phonebooks/{bookKey}' |
-  '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}' |
-  '/sms/virtualNumbers/{number}/serviceInfos';
-
-type PathsSmsPOST = '/sms/{serviceName}/jobs' |
+  '/sms/{serviceName}/virtualNumbers' |
+  '/sms/{serviceName}/virtualNumbers/{number}' |
   '/sms/{serviceName}/virtualNumbers/{number}/chatAccess' |
+  '/sms/{serviceName}/virtualNumbers/{number}/incoming' |
+  '/sms/{serviceName}/virtualNumbers/{number}/incoming/{id}' |
   '/sms/{serviceName}/virtualNumbers/{number}/jobs' |
-  '/sms/{serviceName}/transferCredits' |
-  '/sms/{serviceName}/templatesControl/{name}/relaunchValidation' |
-  '/sms/{serviceName}/templatesControl' |
-  '/sms/{serviceName}/users' |
-  '/sms/{serviceName}/users/{login}/jobs' |
-  '/sms/{serviceName}/users/{login}/receivers' |
-  '/sms/{serviceName}/users/{login}/receivers/{slotId}/clean' |
+  '/sms/{serviceName}/virtualNumbers/{number}/jobs/{id}' |
+  '/sms/{serviceName}/virtualNumbers/{number}/outgoing' |
+  '/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}' |
+  '/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}/hlr';
+
+type PathsSmsPUT = '/sms/virtualNumbers/{number}/serviceInfos' |
+  '/sms/{serviceName}' |
+  '/sms/{serviceName}/phonebooks/{bookKey}' |
+  '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}' |
+  '/sms/{serviceName}/receivers/{slotId}' |
+  '/sms/{serviceName}/senders/{sender}' |
+  '/sms/{serviceName}/serviceInfos' |
+  '/sms/{serviceName}/templatesControl/{name}' |
+  '/sms/{serviceName}/users/{login}' |
+  '/sms/{serviceName}/users/{login}/receivers/{slotId}';
+
+type PathsSmsPOST = '/sms/{serviceName}/hlr' |
+  '/sms/{serviceName}/jobs' |
+  '/sms/{serviceName}/phonebooks' |
+  '/sms/{serviceName}/phonebooks/{bookKey}/import' |
+  '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact' |
   '/sms/{serviceName}/receivers' |
   '/sms/{serviceName}/receivers/{slotId}/clean' |
   '/sms/{serviceName}/senders' |
   '/sms/{serviceName}/senders/{sender}/validate' |
-  '/sms/{serviceName}/phonebooks' |
-  '/sms/{serviceName}/phonebooks/{bookKey}/import' |
-  '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact' |
-  '/sms/{serviceName}/hlr';
-
-type PathsSmsDELETE = '/sms/{serviceName}/jobs/{id}' |
-  '/sms/{serviceName}/virtualNumbers/{number}/incoming/{id}' |
-  '/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}' |
+  '/sms/{serviceName}/templatesControl' |
+  '/sms/{serviceName}/templatesControl/{name}/relaunchValidation' |
+  '/sms/{serviceName}/transferCredits' |
+  '/sms/{serviceName}/users' |
+  '/sms/{serviceName}/users/{login}/jobs' |
+  '/sms/{serviceName}/users/{login}/receivers' |
+  '/sms/{serviceName}/users/{login}/receivers/{slotId}/clean' |
   '/sms/{serviceName}/virtualNumbers/{number}/chatAccess' |
-  '/sms/{serviceName}/virtualNumbers/{number}/jobs/{id}' |
+  '/sms/{serviceName}/virtualNumbers/{number}/jobs';
+
+type PathsSmsDELETE = '/sms/{serviceName}/blacklists/{number}' |
   '/sms/{serviceName}/incoming/{id}' |
-  '/sms/{serviceName}/templatesControl/{name}' |
-  '/sms/{serviceName}/users/{login}' |
-  '/sms/{serviceName}/users/{login}/jobs/{id}' |
-  '/sms/{serviceName}/users/{login}/outgoing/{id}' |
-  '/sms/{serviceName}/users/{login}/incoming/{id}' |
-  '/sms/{serviceName}/users/{login}/receivers/{slotId}' |
-  '/sms/{serviceName}/receivers/{slotId}' |
-  '/sms/{serviceName}/senders/{sender}' |
-  '/sms/{serviceName}/blacklists/{number}' |
+  '/sms/{serviceName}/jobs/{id}' |
+  '/sms/{serviceName}/outgoing/{id}' |
   '/sms/{serviceName}/phonebooks/{bookKey}' |
   '/sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}' |
-  '/sms/{serviceName}/outgoing/{id}';
+  '/sms/{serviceName}/receivers/{slotId}' |
+  '/sms/{serviceName}/senders/{sender}' |
+  '/sms/{serviceName}/templatesControl/{name}' |
+  '/sms/{serviceName}/users/{login}' |
+  '/sms/{serviceName}/users/{login}/incoming/{id}' |
+  '/sms/{serviceName}/users/{login}/jobs/{id}' |
+  '/sms/{serviceName}/users/{login}/outgoing/{id}' |
+  '/sms/{serviceName}/users/{login}/receivers/{slotId}' |
+  '/sms/{serviceName}/virtualNumbers/{number}/chatAccess' |
+  '/sms/{serviceName}/virtualNumbers/{number}/incoming/{id}' |
+  '/sms/{serviceName}/virtualNumbers/{number}/jobs/{id}' |
+  '/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}';
 
 export class ApiSms extends OvhWrapper {
   constructor(engine: OvhRequestable) {

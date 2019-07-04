@@ -97,11 +97,11 @@ export interface Ssl {
     } | any
 }
 // Api
-type PathsSslGET = '/ssl/{serviceName}/serviceInfos' |
+type PathsSslGET = '/ssl' |
   '/ssl/{serviceName}' |
-  '/ssl/{serviceName}/tasks/{taskId}' |
+  '/ssl/{serviceName}/serviceInfos' |
   '/ssl/{serviceName}/tasks' |
-  '/ssl';
+  '/ssl/{serviceName}/tasks/{taskId}';
 
 type PathsSslPUT = '/ssl/{serviceName}/serviceInfos';
 

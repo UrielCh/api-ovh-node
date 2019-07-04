@@ -159,11 +159,11 @@ export interface License {
             }
             usageStatistics:  {
                 // GET /license/office/{serviceName}/usageStatistics
-                $get(param?: {to: string, from: string}): Promise<license.office.Statistics[]>;
+                $get(param?: {from: string, to: string}): Promise<license.office.Statistics[]>;
             }
             user:  {
                 // GET /license/office/{serviceName}/user
-                $get(param?: {lastName?: string, firstName?: string, licences?: license.office.LicenceEnum[], activationEmail?: string}): Promise<string[]>;
+                $get(param?: {activationEmail?: string, firstName?: string, lastName?: string, licences?: license.office.LicenceEnum[]}): Promise<string[]>;
                 // POST /license/office/{serviceName}/user
                 $post(body?: {domain: string, firstName?: string, lastName?: string, licence: license.office.LicenceEnum, login: string}): Promise<license.office.OfficeTask>;
                 [keys: string]: {
@@ -183,20 +183,20 @@ export interface License {
     }
 }
 // Api
-type PathsLicenseOfficeGET = '/license/office/{serviceName}/domain' |
+type PathsLicenseOfficeGET = '/license/office' |
+  '/license/office/{serviceName}' |
+  '/license/office/{serviceName}/domain' |
   '/license/office/{serviceName}/domain/{domainName}' |
-  '/license/office/{serviceName}/usageStatistics' |
   '/license/office/{serviceName}/pendingTask' |
   '/license/office/{serviceName}/pendingTask/{id}' |
-  '/license/office/{serviceName}' |
-  '/license/office/{serviceName}/user' |
-  '/license/office/{serviceName}/user/{activationEmail}' |
   '/license/office/{serviceName}/serviceInfos' |
-  '/license/office';
+  '/license/office/{serviceName}/usageStatistics' |
+  '/license/office/{serviceName}/user' |
+  '/license/office/{serviceName}/user/{activationEmail}';
 
 type PathsLicenseOfficePUT = '/license/office/{serviceName}' |
-  '/license/office/{serviceName}/user/{activationEmail}' |
-  '/license/office/{serviceName}/serviceInfos';
+  '/license/office/{serviceName}/serviceInfos' |
+  '/license/office/{serviceName}/user/{activationEmail}';
 
 type PathsLicenseOfficePOST = '/license/office/{serviceName}/user' |
   '/license/office/{serviceName}/user/{activationEmail}/changePassword';

@@ -1782,7 +1782,7 @@ export interface Telephony {
     directories:  {
         availableZipCodes:  {
             // GET /telephony/directories/availableZipCodes
-            $get(param?: {number: string, country: telephony.NumberCountryEnum}): Promise<string[]>;
+            $get(param?: {country: telephony.NumberCountryEnum, number: string}): Promise<string[]>;
         }
         cities:  {
             // GET /telephony/directories/cities
@@ -1836,11 +1836,11 @@ export interface Telephony {
         }
         specificNumbers:  {
             // GET /telephony/number/specificNumbers
-            $get(param?: {zone?: string, country: telephony.NumberCountryEnum, type: telephony.NumberTypeEnum, range?: string}): Promise<telephony.SpecificNumber[]>;
+            $get(param?: {country: telephony.NumberCountryEnum, range?: string, type: telephony.NumberTypeEnum, zone?: string}): Promise<telephony.SpecificNumber[]>;
         }
         zones:  {
             // GET /telephony/number/zones
-            $get(param?: {country: telephony.NumberCountryEnum, axiom?: string}): Promise<string[]>;
+            $get(param?: {axiom?: string, country: telephony.NumberCountryEnum}): Promise<string[]>;
         }
     }
     searchServices:  {
@@ -2742,7 +2742,7 @@ export interface Telephony {
                 }
                 statistics:  {
                     // GET /telephony/{billingAccount}/line/{serviceName}/statistics
-                    $get(param?: {type: telephony.LineStatisticsTypeEnum, timeframe: telephony.StatisticsTimeframeEnum}): Promise<complexType.UnitAndValues<telephony.TimestampAndValue>>;
+                    $get(param?: {timeframe: telephony.StatisticsTimeframeEnum, type: telephony.LineStatisticsTypeEnum}): Promise<complexType.UnitAndValues<telephony.TimestampAndValue>>;
                 }
                 tones:  {
                     // GET /telephony/{billingAccount}/line/{serviceName}/tones
@@ -2840,7 +2840,7 @@ export interface Telephony {
         }
         offerTask:  {
             // GET /telephony/{billingAccount}/offerTask
-            $get(param?: {status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum, action?: telephony.OfferTaskActionEnum}): Promise<number[]>;
+            $get(param?: {action?: telephony.OfferTaskActionEnum, status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum}): Promise<number[]>;
             [keys: string]: {
                 // GET /telephony/{billingAccount}/offerTask/{taskId}
                 $get(): Promise<telephony.OfferTask>;
@@ -3332,7 +3332,7 @@ export interface Telephony {
                 $put(body?: {body: telephony.Scheduler}): Promise<void>;
                 events:  {
                     // GET /telephony/{billingAccount}/scheduler/{serviceName}/events
-                    $get(param?: {categories?: telephony.SchedulerCategoryEnum, dateStart_to?: string, dateEnd_from?: string, dateEnd_to?: string, dateStart_from?: string}): Promise<string[]>;
+                    $get(param?: {categories?: telephony.SchedulerCategoryEnum, dateEnd_from?: string, dateEnd_to?: string, dateStart_from?: string, dateStart_to?: string}): Promise<string[]>;
                     // POST /telephony/{billingAccount}/scheduler/{serviceName}/events
                     $post(body?: {category: telephony.SchedulerCategoryEnum, dateEnd: string, dateStart: string, description?: string, title: string, uid?: string}): Promise<void>;
                     [keys: string]: {
@@ -3422,7 +3422,7 @@ export interface Telephony {
                 }
                 faxConsumption:  {
                     // GET /telephony/{billingAccount}/service/{serviceName}/faxConsumption
-                    $get(param?: {wayType?: telephony.FaxConsumptionWayTypeEnum, creationDatetime_from?: string, creationDatetime_to?: string}): Promise<number[]>;
+                    $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, wayType?: telephony.FaxConsumptionWayTypeEnum}): Promise<number[]>;
                     [keys: string]: {
                         // GET /telephony/{billingAccount}/service/{serviceName}/faxConsumption/{consumptionId}
                         $get(): Promise<telephony.FaxConsumption>;
@@ -3442,7 +3442,7 @@ export interface Telephony {
                 }
                 offerTask:  {
                     // GET /telephony/{billingAccount}/service/{serviceName}/offerTask
-                    $get(param?: {status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum, action?: telephony.OfferTaskActionEnum}): Promise<number[]>;
+                    $get(param?: {action?: telephony.OfferTaskActionEnum, status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum}): Promise<number[]>;
                     [keys: string]: {
                         // GET /telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}
                         $get(): Promise<telephony.OfferTask>;
@@ -3452,7 +3452,7 @@ export interface Telephony {
                 }
                 previousVoiceConsumption:  {
                     // GET /telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption
-                    $get(param?: {creationDatetime_to?: string, wayType?: telephony.VoiceConsumptionWayTypeEnum, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, creationDatetime_from?: string, planType?: telephony.VoiceConsumptionPlanTypeEnum}): Promise<number[]>;
+                    $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, planType?: telephony.VoiceConsumptionPlanTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum}): Promise<number[]>;
                     [keys: string]: {
                         // GET /telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption/{consumptionId}
                         $get(): Promise<telephony.PreviousVoiceConsumption>;
@@ -3460,7 +3460,7 @@ export interface Telephony {
                 }
                 repaymentConsumption:  {
                     // GET /telephony/{billingAccount}/service/{serviceName}/repaymentConsumption
-                    $get(param?: {creationDatetime_to?: string, creationDatetime_from?: string}): Promise<number[]>;
+                    $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string}): Promise<number[]>;
                     [keys: string]: {
                         // GET /telephony/{billingAccount}/service/{serviceName}/repaymentConsumption/{consumptionId}
                         $get(): Promise<telephony.RepaymentConsumption>;
@@ -3468,7 +3468,7 @@ export interface Telephony {
                 }
                 task:  {
                     // GET /telephony/{billingAccount}/service/{serviceName}/task
-                    $get(param?: {action?: string, status?: telephony.TaskStatusEnum, serviceType?: string}): Promise<number[]>;
+                    $get(param?: {action?: string, serviceType?: string, status?: telephony.TaskStatusEnum}): Promise<number[]>;
                     [keys: string]: {
                         // GET /telephony/{billingAccount}/service/{serviceName}/task/{taskId}
                         $get(): Promise<telephony.Task>;
@@ -3476,7 +3476,7 @@ export interface Telephony {
                 }
                 voiceConsumption:  {
                     // GET /telephony/{billingAccount}/service/{serviceName}/voiceConsumption
-                    $get(param?: {planType?: telephony.VoiceConsumptionPlanTypeEnum, creationDatetime_to?: string, creationDatetime_from?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum}): Promise<number[]>;
+                    $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, planType?: telephony.VoiceConsumptionPlanTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum}): Promise<number[]>;
                     [keys: string]: {
                         // GET /telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}
                         $get(): Promise<telephony.VoiceConsumption>;
@@ -3496,7 +3496,7 @@ export interface Telephony {
         }
         task:  {
             // GET /telephony/{billingAccount}/task
-            $get(param?: {action?: string, status?: telephony.TaskStatusEnum, serviceType?: string}): Promise<number[]>;
+            $get(param?: {action?: string, serviceType?: string, status?: telephony.TaskStatusEnum}): Promise<number[]>;
             [keys: string]: {
                 // GET /telephony/{billingAccount}/task/{taskId}
                 $get(): Promise<telephony.Task>;
@@ -3657,578 +3657,578 @@ export interface Telephony {
     } | any
 }
 // Api
-type PathsTelephonyGET = '/telephony/spare/brands' |
+type PathsTelephonyGET = '/telephony' |
+  '/telephony/accessories' |
+  '/telephony/aliases' |
+  '/telephony/aliases/{serviceName}' |
+  '/telephony/aliases/{serviceName}/serviceInfos' |
+  '/telephony/availableDefaultSipDomains' |
+  '/telephony/currentOrderIds' |
+  '/telephony/directories/availableZipCodes' |
+  '/telephony/directories/cities' |
+  '/telephony/fax/offers' |
+  '/telephony/line/offer/phones' |
+  '/telephony/line/offers' |
+  '/telephony/lines' |
+  '/telephony/lines/{serviceName}' |
+  '/telephony/lines/{serviceName}/serviceInfos' |
+  '/telephony/number/detailedZones' |
+  '/telephony/number/ranges' |
+  '/telephony/number/specificNumbers' |
+  '/telephony/number/zones' |
+  '/telephony/searchServices' |
+  '/telephony/sounds' |
+  '/telephony/sounds/{id}' |
+  '/telephony/spare' |
+  '/telephony/spare/brands' |
+  '/telephony/spare/{spare}' |
   '/telephony/spare/{spare}/compatibleReplacement' |
   '/telephony/spare/{spare}/serviceInfos' |
-  '/telephony/spare/{spare}' |
-  '/telephony/spare' |
-  '/telephony/{billingAccount}/service' |
-  '/telephony/{billingAccount}/service/{serviceName}/offerTask' |
-  '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}' |
-  '/telephony/{billingAccount}/service/{serviceName}/eventToken' |
-  '/telephony/{billingAccount}/service/{serviceName}' |
-  '/telephony/{billingAccount}/service/{serviceName}/offerChange' |
-  '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption' |
-  '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}' |
-  '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}/callDiagnostics' |
-  '/telephony/{billingAccount}/service/{serviceName}/diagnosticReports' |
-  '/telephony/{billingAccount}/service/{serviceName}/faxConsumption/{consumptionId}' |
-  '/telephony/{billingAccount}/service/{serviceName}/faxConsumption' |
-  '/telephony/{billingAccount}/service/{serviceName}/directory/getWayTypes' |
-  '/telephony/{billingAccount}/service/{serviceName}/directory/getDirectoryServiceCode' |
-  '/telephony/{billingAccount}/service/{serviceName}/directory' |
-  '/telephony/{billingAccount}/service/{serviceName}/task/{taskId}' |
-  '/telephony/{billingAccount}/service/{serviceName}/task' |
-  '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption' |
-  '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption/{consumptionId}' |
-  '/telephony/{billingAccount}/service/{serviceName}/offerChanges' |
-  '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption/{consumptionId}' |
-  '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption' |
-  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber' |
-  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}' |
-  '/telephony/{billingAccount}/trunk/{serviceName}' |
-  '/telephony/{billingAccount}/trunk/{serviceName}/channelsPacksRepartition' |
-  '/telephony/{billingAccount}/trunk' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveStatistics' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/liveStatus' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/records' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan' |
-  '/telephony/{billingAccount}/ovhPabx' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting' |
-  '/telephony/{billingAccount}/easyPabx' |
-  '/telephony/{billingAccount}/screen/{serviceName}/screenLists' |
-  '/telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}' |
-  '/telephony/{billingAccount}/screen/{serviceName}' |
-  '/telephony/{billingAccount}/screen' |
-  '/telephony/{billingAccount}/historyTollfreeConsumption' |
-  '/telephony/{billingAccount}/historyTollfreeConsumption/{date}' |
-  '/telephony/{billingAccount}/historyTollfreeConsumption/{date}/document' |
-  '/telephony/{billingAccount}/oldPhone' |
+  '/telephony/trunks' |
+  '/telephony/trunks/{serviceName}' |
+  '/telephony/trunks/{serviceName}/serviceInfos' |
+  '/telephony/{billingAccount}' |
+  '/telephony/{billingAccount}/abbreviatedNumber' |
+  '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' |
+  '/telephony/{billingAccount}/allowedCreditThreshold' |
+  '/telephony/{billingAccount}/amountSecurityDeposit' |
+  '/telephony/{billingAccount}/billingAccountSite' |
   '/telephony/{billingAccount}/conference' |
-  '/telephony/{billingAccount}/conference/{serviceName}/settings' |
-  '/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}' |
-  '/telephony/{billingAccount}/conference/{serviceName}/webAccess' |
+  '/telephony/{billingAccount}/conference/{serviceName}' |
   '/telephony/{billingAccount}/conference/{serviceName}/histories' |
   '/telephony/{billingAccount}/conference/{serviceName}/histories/{id}' |
   '/telephony/{billingAccount}/conference/{serviceName}/informations' |
-  '/telephony/{billingAccount}/conference/{serviceName}' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}' |
   '/telephony/{billingAccount}/conference/{serviceName}/participants' |
-  '/telephony/{billingAccount}/allowedCreditThreshold' |
-  '/telephony/{billingAccount}/portability/{id}/dateCanBeChanged' |
-  '/telephony/{billingAccount}/portability/{id}/canBeExecuted' |
-  '/telephony/{billingAccount}/portability/{id}/canBeCancelled' |
-  '/telephony/{billingAccount}/portability/{id}/relaunch' |
-  '/telephony/{billingAccount}/portability/{id}/status' |
-  '/telephony/{billingAccount}/portability/{id}/document/{documentId}' |
-  '/telephony/{billingAccount}/portability/{id}/document' |
-  '/telephony/{billingAccount}/portability/{id}' |
-  '/telephony/{billingAccount}/portability' |
-  '/telephony/{billingAccount}/eventToken' |
-  '/telephony/{billingAccount}/offerTask/{taskId}' |
-  '/telephony/{billingAccount}/offerTask' |
-  '/telephony/{billingAccount}/line' |
-  '/telephony/{billingAccount}/line/{serviceName}/activateNewPhone' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/automaticCall/{identifier}' |
-  '/telephony/{billingAccount}/line/{serviceName}/automaticCall' |
-  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts' |
-  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/lastRegistrations' |
-  '/telephony/{billingAccount}/line/{serviceName}/availableSipDomains' |
-  '/telephony/{billingAccount}/line/{serviceName}/offer' |
-  '/telephony/{billingAccount}/line/{serviceName}/listAssociablePhones' |
-  '/telephony/{billingAccount}/line/{serviceName}/tones' |
-  '/telephony/{billingAccount}/line/{serviceName}' |
-  '/telephony/{billingAccount}/line/{serviceName}/maximumAvailableSimultaneousLines' |
-  '/telephony/{billingAccount}/line/{serviceName}/canChangePassword' |
-  '/telephony/{billingAccount}/line/{serviceName}/antihack' |
-  '/telephony/{billingAccount}/line/{serviceName}/phoneCanBeAssociable' |
-  '/telephony/{billingAccount}/line/{serviceName}/ips' |
-  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber' |
-  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' |
-  '/telephony/{billingAccount}/line/{serviceName}/options/defaultCodecs' |
-  '/telephony/{billingAccount}/line/{serviceName}/options' |
-  '/telephony/{billingAccount}/line/{serviceName}/options/availableCodecs' |
-  '/telephony/{billingAccount}/line/{serviceName}/statistics' |
-  '/telephony/{billingAccount}/line/{serviceName}/simultaneousChannelsDetails' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/adminCredentials' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/rma' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/merchandiseAvailable' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/supportsPhonebook' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls' |
-  '/telephony/{billingAccount}/line/{serviceName}/records/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/records' |
-  '/telephony/{billingAccount}/historyConsumption/{date}' |
-  '/telephony/{billingAccount}/historyConsumption/{date}/file' |
-  '/telephony/{billingAccount}/historyConsumption' |
-  '/telephony/{billingAccount}/historyRepaymentConsumption' |
-  '/telephony/{billingAccount}/historyRepaymentConsumption/{date}/document' |
-  '/telephony/{billingAccount}/historyRepaymentConsumption/{date}' |
-  '/telephony/{billingAccount}/outplanNotification' |
-  '/telephony/{billingAccount}/outplanNotification/{id}' |
-  '/telephony/{billingAccount}' |
-  '/telephony/{billingAccount}/vxml/{serviceName}/settings' |
-  '/telephony/{billingAccount}/vxml/{serviceName}' |
-  '/telephony/{billingAccount}/vxml' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}/export' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact' |
-  '/telephony/{billingAccount}/phonebook' |
-  '/telephony/{billingAccount}/serviceInfos' |
-  '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' |
-  '/telephony/{billingAccount}/abbreviatedNumber' |
-  '/telephony/{billingAccount}/amountSecurityDeposit' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}' |
+  '/telephony/{billingAccount}/conference/{serviceName}/settings' |
+  '/telephony/{billingAccount}/conference/{serviceName}/webAccess' |
+  '/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}' |
+  '/telephony/{billingAccount}/ddi' |
+  '/telephony/{billingAccount}/ddi/{serviceName}' |
+  '/telephony/{billingAccount}/easyHunting' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/records' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/sound' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveStatistics' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/liveStatus' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveStatistics' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/records' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/sound' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions' |
-  '/telephony/{billingAccount}/easyHunting' |
-  '/telephony/{billingAccount}/redirect' |
-  '/telephony/{billingAccount}/redirect/{serviceName}' |
-  '/telephony/{billingAccount}/miniPabx' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/tones' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}' |
-  '/telephony/{billingAccount}/voicemail' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/directories' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/settings' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/voicemailNumbers' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/routing' |
-  '/telephony/{billingAccount}/task/{taskId}' |
-  '/telephony/{billingAccount}/task' |
-  '/telephony/{billingAccount}/number/{serviceName}/convertToLineAvailableOffers' |
-  '/telephony/{billingAccount}/number/{serviceName}' |
-  '/telephony/{billingAccount}/number' |
-  '/telephony/{billingAccount}/timeCondition/{serviceName}/condition' |
-  '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' |
-  '/telephony/{billingAccount}/timeCondition/{serviceName}/options' |
-  '/telephony/{billingAccount}/timeCondition/{serviceName}' |
-  '/telephony/{billingAccount}/timeCondition' |
-  '/telephony/{billingAccount}/billingAccountSite' |
-  '/telephony/{billingAccount}/ddi/{serviceName}' |
-  '/telephony/{billingAccount}/ddi' |
-  '/telephony/{billingAccount}/scheduler/{serviceName}/events' |
-  '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' |
-  '/telephony/{billingAccount}/scheduler/{serviceName}' |
-  '/telephony/{billingAccount}/scheduler' |
-  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}' |
+  '/telephony/{billingAccount}/easyPabx' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones' |
+  '/telephony/{billingAccount}/eventToken' |
+  '/telephony/{billingAccount}/fax' |
   '/telephony/{billingAccount}/fax/{serviceName}' |
   '/telephony/{billingAccount}/fax/{serviceName}/campaigns' |
   '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}' |
   '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/detail' |
+  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
   '/telephony/{billingAccount}/fax/{serviceName}/settings' |
-  '/telephony/{billingAccount}/fax' |
-  '/telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode' |
-  '/telephony/{billingAccount}/rsva/{serviceName}/currentRateCode' |
-  '/telephony/{billingAccount}/rsva/{serviceName}/allowedRateCodes' |
-  '/telephony/{billingAccount}/rsva/{serviceName}' |
-  '/telephony/{billingAccount}/rsva' |
-  '/telephony/currentOrderIds' |
-  '/telephony/trunks' |
-  '/telephony/trunks/{serviceName}/serviceInfos' |
-  '/telephony/trunks/{serviceName}' |
-  '/telephony/aliases' |
-  '/telephony/aliases/{serviceName}/serviceInfos' |
-  '/telephony/aliases/{serviceName}' |
-  '/telephony/availableDefaultSipDomains' |
-  '/telephony/directories/cities' |
-  '/telephony/directories/availableZipCodes' |
-  '/telephony/lines/{serviceName}/serviceInfos' |
-  '/telephony/lines/{serviceName}' |
-  '/telephony/lines' |
-  '/telephony/fax/offers' |
-  '/telephony' |
-  '/telephony/line/offer/phones' |
-  '/telephony/line/offers' |
-  '/telephony/sounds' |
-  '/telephony/sounds/{id}' |
-  '/telephony/number/ranges' |
-  '/telephony/number/zones' |
-  '/telephony/number/specificNumbers' |
-  '/telephony/number/detailedZones' |
-  '/telephony/accessories' |
-  '/telephony/searchServices';
-
-type PathsTelephonyPUT = '/telephony/spare/{spare}/serviceInfos' |
-  '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}' |
-  '/telephony/{billingAccount}/service/{serviceName}' |
-  '/telephony/{billingAccount}/service/{serviceName}/directory' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting' |
-  '/telephony/{billingAccount}/screen/{serviceName}' |
-  '/telephony/{billingAccount}/conference/{serviceName}/settings' |
-  '/telephony/{billingAccount}/portability/{id}/document/{documentId}' |
-  '/telephony/{billingAccount}/offerTask/{taskId}' |
+  '/telephony/{billingAccount}/historyConsumption' |
+  '/telephony/{billingAccount}/historyConsumption/{date}' |
+  '/telephony/{billingAccount}/historyConsumption/{date}/file' |
+  '/telephony/{billingAccount}/historyRepaymentConsumption' |
+  '/telephony/{billingAccount}/historyRepaymentConsumption/{date}' |
+  '/telephony/{billingAccount}/historyRepaymentConsumption/{date}/document' |
+  '/telephony/{billingAccount}/historyTollfreeConsumption' |
+  '/telephony/{billingAccount}/historyTollfreeConsumption/{date}' |
+  '/telephony/{billingAccount}/historyTollfreeConsumption/{date}/document' |
+  '/telephony/{billingAccount}/line' |
+  '/telephony/{billingAccount}/line/{serviceName}' |
+  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber' |
+  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' |
+  '/telephony/{billingAccount}/line/{serviceName}/activateNewPhone' |
+  '/telephony/{billingAccount}/line/{serviceName}/antihack' |
+  '/telephony/{billingAccount}/line/{serviceName}/automaticCall' |
+  '/telephony/{billingAccount}/line/{serviceName}/automaticCall/{identifier}' |
+  '/telephony/{billingAccount}/line/{serviceName}/availableSipDomains' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/canChangePassword' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/ips' |
+  '/telephony/{billingAccount}/line/{serviceName}/lastRegistrations' |
+  '/telephony/{billingAccount}/line/{serviceName}/listAssociablePhones' |
+  '/telephony/{billingAccount}/line/{serviceName}/maximumAvailableSimultaneousLines' |
+  '/telephony/{billingAccount}/line/{serviceName}/offer' |
+  '/telephony/{billingAccount}/line/{serviceName}/options' |
+  '/telephony/{billingAccount}/line/{serviceName}/options/availableCodecs' |
+  '/telephony/{billingAccount}/line/{serviceName}/options/defaultCodecs' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/adminCredentials' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/merchandiseAvailable' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/rma' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/supportsPhonebook' |
+  '/telephony/{billingAccount}/line/{serviceName}/phoneCanBeAssociable' |
+  '/telephony/{billingAccount}/line/{serviceName}/records' |
+  '/telephony/{billingAccount}/line/{serviceName}/records/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/simultaneousChannelsDetails' |
+  '/telephony/{billingAccount}/line/{serviceName}/statistics' |
   '/telephony/{billingAccount}/line/{serviceName}/tones' |
+  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts' |
+  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}' |
+  '/telephony/{billingAccount}/miniPabx' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/tones' |
+  '/telephony/{billingAccount}/number' |
+  '/telephony/{billingAccount}/number/{serviceName}' |
+  '/telephony/{billingAccount}/number/{serviceName}/convertToLineAvailableOffers' |
+  '/telephony/{billingAccount}/offerTask' |
+  '/telephony/{billingAccount}/offerTask/{taskId}' |
+  '/telephony/{billingAccount}/oldPhone' |
+  '/telephony/{billingAccount}/outplanNotification' |
+  '/telephony/{billingAccount}/outplanNotification/{id}' |
+  '/telephony/{billingAccount}/ovhPabx' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/liveStatus' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveStatistics' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/records' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' |
+  '/telephony/{billingAccount}/phonebook' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}/export' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' |
+  '/telephony/{billingAccount}/portability' |
+  '/telephony/{billingAccount}/portability/{id}' |
+  '/telephony/{billingAccount}/portability/{id}/canBeCancelled' |
+  '/telephony/{billingAccount}/portability/{id}/canBeExecuted' |
+  '/telephony/{billingAccount}/portability/{id}/dateCanBeChanged' |
+  '/telephony/{billingAccount}/portability/{id}/document' |
+  '/telephony/{billingAccount}/portability/{id}/document/{documentId}' |
+  '/telephony/{billingAccount}/portability/{id}/relaunch' |
+  '/telephony/{billingAccount}/portability/{id}/status' |
+  '/telephony/{billingAccount}/redirect' |
+  '/telephony/{billingAccount}/redirect/{serviceName}' |
+  '/telephony/{billingAccount}/rsva' |
+  '/telephony/{billingAccount}/rsva/{serviceName}' |
+  '/telephony/{billingAccount}/rsva/{serviceName}/allowedRateCodes' |
+  '/telephony/{billingAccount}/rsva/{serviceName}/currentRateCode' |
+  '/telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode' |
+  '/telephony/{billingAccount}/scheduler' |
+  '/telephony/{billingAccount}/scheduler/{serviceName}' |
+  '/telephony/{billingAccount}/scheduler/{serviceName}/events' |
+  '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' |
+  '/telephony/{billingAccount}/screen' |
+  '/telephony/{billingAccount}/screen/{serviceName}' |
+  '/telephony/{billingAccount}/screen/{serviceName}/screenLists' |
+  '/telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}' |
+  '/telephony/{billingAccount}/service' |
+  '/telephony/{billingAccount}/service/{serviceName}' |
+  '/telephony/{billingAccount}/service/{serviceName}/diagnosticReports' |
+  '/telephony/{billingAccount}/service/{serviceName}/directory' |
+  '/telephony/{billingAccount}/service/{serviceName}/directory/getDirectoryServiceCode' |
+  '/telephony/{billingAccount}/service/{serviceName}/directory/getWayTypes' |
+  '/telephony/{billingAccount}/service/{serviceName}/eventToken' |
+  '/telephony/{billingAccount}/service/{serviceName}/faxConsumption' |
+  '/telephony/{billingAccount}/service/{serviceName}/faxConsumption/{consumptionId}' |
+  '/telephony/{billingAccount}/service/{serviceName}/offerChange' |
+  '/telephony/{billingAccount}/service/{serviceName}/offerChanges' |
+  '/telephony/{billingAccount}/service/{serviceName}/offerTask' |
+  '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}' |
+  '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption' |
+  '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption/{consumptionId}' |
+  '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption' |
+  '/telephony/{billingAccount}/service/{serviceName}/repaymentConsumption/{consumptionId}' |
+  '/telephony/{billingAccount}/service/{serviceName}/task' |
+  '/telephony/{billingAccount}/service/{serviceName}/task/{taskId}' |
+  '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption' |
+  '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}' |
+  '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}/callDiagnostics' |
+  '/telephony/{billingAccount}/serviceInfos' |
+  '/telephony/{billingAccount}/task' |
+  '/telephony/{billingAccount}/task/{taskId}' |
+  '/telephony/{billingAccount}/timeCondition' |
+  '/telephony/{billingAccount}/timeCondition/{serviceName}' |
+  '/telephony/{billingAccount}/timeCondition/{serviceName}/condition' |
+  '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' |
+  '/telephony/{billingAccount}/timeCondition/{serviceName}/options' |
+  '/telephony/{billingAccount}/trunk' |
+  '/telephony/{billingAccount}/trunk/{serviceName}' |
+  '/telephony/{billingAccount}/trunk/{serviceName}/channelsPacksRepartition' |
+  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber' |
+  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}' |
+  '/telephony/{billingAccount}/voicemail' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/directories' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/settings' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/routing' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/voicemailNumbers' |
+  '/telephony/{billingAccount}/vxml' |
+  '/telephony/{billingAccount}/vxml/{serviceName}' |
+  '/telephony/{billingAccount}/vxml/{serviceName}/settings';
+
+type PathsTelephonyPUT = '/telephony/aliases/{serviceName}/serviceInfos' |
+  '/telephony/lines/{serviceName}/serviceInfos' |
+  '/telephony/sounds/{id}' |
+  '/telephony/spare/{spare}/serviceInfos' |
+  '/telephony/trunks/{serviceName}/serviceInfos' |
+  '/telephony/{billingAccount}' |
+  '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' |
+  '/telephony/{billingAccount}/conference/{serviceName}/settings' |
+  '/telephony/{billingAccount}/ddi/{serviceName}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones' |
+  '/telephony/{billingAccount}/fax/{serviceName}' |
+  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
+  '/telephony/{billingAccount}/fax/{serviceName}/settings' |
   '/telephony/{billingAccount}/line/{serviceName}' |
   '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' |
   '/telephony/{billingAccount}/line/{serviceName}/options' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' |
   '/telephony/{billingAccount}/line/{serviceName}/phone' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' |
   '/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}' |
-  '/telephony/{billingAccount}' |
-  '/telephony/{billingAccount}/vxml/{serviceName}/settings' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' |
-  '/telephony/{billingAccount}/serviceInfos' |
-  '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions' |
-  '/telephony/{billingAccount}/redirect/{serviceName}' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/tones' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/tones' |
   '/telephony/{billingAccount}/miniPabx/{serviceName}' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/settings' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/tones' |
   '/telephony/{billingAccount}/number/{serviceName}' |
-  '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' |
-  '/telephony/{billingAccount}/timeCondition/{serviceName}/options' |
-  '/telephony/{billingAccount}/ddi/{serviceName}' |
-  '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' |
-  '/telephony/{billingAccount}/scheduler/{serviceName}' |
-  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
-  '/telephony/{billingAccount}/fax/{serviceName}' |
-  '/telephony/{billingAccount}/fax/{serviceName}/settings' |
-  '/telephony/{billingAccount}/rsva/{serviceName}' |
-  '/telephony/trunks/{serviceName}/serviceInfos' |
-  '/telephony/aliases/{serviceName}/serviceInfos' |
-  '/telephony/lines/{serviceName}/serviceInfos' |
-  '/telephony/sounds/{id}';
-
-type PathsTelephonyPOST = '/telephony/spare/{spare}/replace' |
-  '/telephony/{billingAccount}/service/{serviceName}/changeOfBillingAccount' |
-  '/telephony/{billingAccount}/service/{serviceName}/eventToken' |
-  '/telephony/{billingAccount}/service/{serviceName}/offerChange' |
-  '/telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations' |
-  '/telephony/{billingAccount}/service/{serviceName}/cancelTermination' |
-  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber' |
-  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}/validate' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/soundUpload' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/screen/{serviceName}/screenLists' |
-  '/telephony/{billingAccount}/conference/{serviceName}/webAccess' |
-  '/telephony/{billingAccount}/conference/{serviceName}/lock' |
-  '/telephony/{billingAccount}/conference/{serviceName}/unlock' |
-  '/telephony/{billingAccount}/conference/{serviceName}/announceUpload' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/undeaf' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/mute' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/kick' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/unmute' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/energy' |
-  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/deaf' |
-  '/telephony/{billingAccount}/cancelTermination' |
-  '/telephony/{billingAccount}/portability/{id}/changeDate' |
-  '/telephony/{billingAccount}/portability/{id}/execute' |
-  '/telephony/{billingAccount}/portability/{id}/relaunch' |
-  '/telephony/{billingAccount}/portability/{id}/cancel' |
-  '/telephony/{billingAccount}/portability/{id}/document' |
-  '/telephony/{billingAccount}/eventToken' |
-  '/telephony/{billingAccount}/line/{serviceName}/removeSimultaneousLines' |
-  '/telephony/{billingAccount}/line/{serviceName}/activateNewPhone' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/click2Call' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/changePassword' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2Call' |
-  '/telephony/{billingAccount}/line/{serviceName}/dissociateDevice' |
-  '/telephony/{billingAccount}/line/{serviceName}/associateDevice' |
-  '/telephony/{billingAccount}/line/{serviceName}/automaticCall' |
-  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts' |
-  '/telephony/{billingAccount}/line/{serviceName}/convertToNumber' |
-  '/telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber' |
-  '/telephony/{billingAccount}/line/{serviceName}/unblock' |
-  '/telephony/{billingAccount}/line/{serviceName}/tones/toneUpload' |
-  '/telephony/{billingAccount}/line/{serviceName}/antihack' |
-  '/telephony/{billingAccount}/line/{serviceName}/changePassword' |
-  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/reboot' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/rma' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/refreshScreen' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/resetConfig' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/import' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hold' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hangup' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/transfer' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/eavesdrop' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper' |
-  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/intercept' |
-  '/telephony/{billingAccount}/line/{serviceName}/block' |
-  '/telephony/{billingAccount}/historyRepaymentConsumption' |
-  '/telephony/{billingAccount}/outplanNotification' |
-  '/telephony/{billingAccount}/vxml/{serviceName}/settings/logs' |
-  '/telephony/{billingAccount}/changeContact' |
-  '/telephony/{billingAccount}/canTransferSecurityDeposit' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}/import' |
-  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact' |
-  '/telephony/{billingAccount}/phonebook' |
-  '/telephony/{billingAccount}/abbreviatedNumber' |
-  '/telephony/{billingAccount}/transferSecurityDeposit' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/soundUpload' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions' |
-  '/telephony/{billingAccount}/redirect/{serviceName}/changeDestination' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/tones/toneUpload' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/migrateOnNewVersion' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changePassword' |
-  '/telephony/{billingAccount}/number/{serviceName}/changeFeatureType' |
-  '/telephony/{billingAccount}/number/{serviceName}/convertToLine' |
-  '/telephony/{billingAccount}/number/{serviceName}/cancelConvertToLine' |
-  '/telephony/{billingAccount}/timeCondition/{serviceName}/condition' |
-  '/telephony/{billingAccount}/billingAccountSite' |
-  '/telephony/{billingAccount}/ddi/{serviceName}/changeDestination' |
-  '/telephony/{billingAccount}/scheduler/{serviceName}/importIcsCalendar' |
-  '/telephony/{billingAccount}/scheduler/{serviceName}/events' |
-  '/telephony/{billingAccount}/fax/{serviceName}/screenLists/reset' |
-  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
-  '/telephony/{billingAccount}/fax/{serviceName}/campaigns' |
-  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/stop' |
-  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/start' |
-  '/telephony/{billingAccount}/fax/{serviceName}/settings/sendFax' |
-  '/telephony/{billingAccount}/fax/{serviceName}/settings/changePassword' |
-  '/telephony/{billingAccount}/rsva/{serviceName}/cancelScheduledRateCode' |
-  '/telephony/{billingAccount}/rsva/{serviceName}/scheduleRateCode' |
-  '/telephony/trunks/{serviceName}/changeContact' |
-  '/telephony/aliases/{serviceName}/changeContact' |
-  '/telephony/lines/{serviceName}/changeContact' |
-  '/telephony/sounds' |
-  '/telephony/setDefaultSipDomain';
-
-type PathsTelephonyDELETE = '/telephony/spare/{spare}' |
-  '/telephony/{billingAccount}/service/{serviceName}/eventToken' |
-  '/telephony/{billingAccount}/service/{serviceName}' |
-  '/telephony/{billingAccount}/service/{serviceName}/offerChange' |
-  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}' |
+  '/telephony/{billingAccount}/offerTask/{taskId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}' |
   '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' |
-  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}' |
-  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' |
-  '/telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}' |
-  '/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}' |
-  '/telephony/{billingAccount}/portability/{id}/document/{documentId}' |
-  '/telephony/{billingAccount}/eventToken' |
-  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' |
-  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' |
-  '/telephony/{billingAccount}/line/{serviceName}/records/{id}' |
-  '/telephony/{billingAccount}/outplanNotification/{id}' |
-  '/telephony/{billingAccount}' |
   '/telephony/{billingAccount}/phonebook/{bookKey}' |
   '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' |
+  '/telephony/{billingAccount}/portability/{id}/document/{documentId}' |
+  '/telephony/{billingAccount}/redirect/{serviceName}' |
+  '/telephony/{billingAccount}/rsva/{serviceName}' |
+  '/telephony/{billingAccount}/scheduler/{serviceName}' |
+  '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' |
+  '/telephony/{billingAccount}/screen/{serviceName}' |
+  '/telephony/{billingAccount}/service/{serviceName}' |
+  '/telephony/{billingAccount}/service/{serviceName}/directory' |
+  '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}' |
+  '/telephony/{billingAccount}/serviceInfos' |
+  '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' |
+  '/telephony/{billingAccount}/timeCondition/{serviceName}/options' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/settings' |
+  '/telephony/{billingAccount}/vxml/{serviceName}/settings';
+
+type PathsTelephonyPOST = '/telephony/aliases/{serviceName}/changeContact' |
+  '/telephony/lines/{serviceName}/changeContact' |
+  '/telephony/setDefaultSipDomain' |
+  '/telephony/sounds' |
+  '/telephony/spare/{spare}/replace' |
+  '/telephony/trunks/{serviceName}/changeContact' |
+  '/telephony/{billingAccount}/abbreviatedNumber' |
+  '/telephony/{billingAccount}/billingAccountSite' |
+  '/telephony/{billingAccount}/canTransferSecurityDeposit' |
+  '/telephony/{billingAccount}/cancelTermination' |
+  '/telephony/{billingAccount}/changeContact' |
+  '/telephony/{billingAccount}/conference/{serviceName}/announceUpload' |
+  '/telephony/{billingAccount}/conference/{serviceName}/lock' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/deaf' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/energy' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/kick' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/mute' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/undeaf' |
+  '/telephony/{billingAccount}/conference/{serviceName}/participants/{id}/unmute' |
+  '/telephony/{billingAccount}/conference/{serviceName}/unlock' |
+  '/telephony/{billingAccount}/conference/{serviceName}/webAccess' |
+  '/telephony/{billingAccount}/ddi/{serviceName}/changeDestination' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/soundUpload' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload' |
+  '/telephony/{billingAccount}/eventToken' |
+  '/telephony/{billingAccount}/fax/{serviceName}/campaigns' |
+  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/start' |
+  '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}/stop' |
+  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
+  '/telephony/{billingAccount}/fax/{serviceName}/screenLists/reset' |
+  '/telephony/{billingAccount}/fax/{serviceName}/settings/changePassword' |
+  '/telephony/{billingAccount}/fax/{serviceName}/settings/sendFax' |
+  '/telephony/{billingAccount}/historyRepaymentConsumption' |
+  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber' |
+  '/telephony/{billingAccount}/line/{serviceName}/activateNewPhone' |
+  '/telephony/{billingAccount}/line/{serviceName}/antihack' |
+  '/telephony/{billingAccount}/line/{serviceName}/associateDevice' |
+  '/telephony/{billingAccount}/line/{serviceName}/automaticCall' |
+  '/telephony/{billingAccount}/line/{serviceName}/block' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/eavesdrop' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hangup' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/hold' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/intercept' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/transfer' |
+  '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper' |
+  '/telephony/{billingAccount}/line/{serviceName}/cancelConvertToNumber' |
+  '/telephony/{billingAccount}/line/{serviceName}/changePassword' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2Call' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/changePassword' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/click2Call' |
+  '/telephony/{billingAccount}/line/{serviceName}/convertToNumber' |
+  '/telephony/{billingAccount}/line/{serviceName}/dissociateDevice' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/import' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/reboot' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/refreshScreen' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/resetConfig' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/rma' |
+  '/telephony/{billingAccount}/line/{serviceName}/removeSimultaneousLines' |
+  '/telephony/{billingAccount}/line/{serviceName}/tones/toneUpload' |
+  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts' |
+  '/telephony/{billingAccount}/line/{serviceName}/unblock' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/tones/toneUpload' |
+  '/telephony/{billingAccount}/number/{serviceName}/cancelConvertToLine' |
+  '/telephony/{billingAccount}/number/{serviceName}/changeFeatureType' |
+  '/telephony/{billingAccount}/number/{serviceName}/convertToLine' |
+  '/telephony/{billingAccount}/outplanNotification' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hold' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/soundUpload' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts' |
+  '/telephony/{billingAccount}/phonebook' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}/import' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact' |
+  '/telephony/{billingAccount}/portability/{id}/cancel' |
+  '/telephony/{billingAccount}/portability/{id}/changeDate' |
+  '/telephony/{billingAccount}/portability/{id}/document' |
+  '/telephony/{billingAccount}/portability/{id}/execute' |
+  '/telephony/{billingAccount}/portability/{id}/relaunch' |
+  '/telephony/{billingAccount}/redirect/{serviceName}/changeDestination' |
+  '/telephony/{billingAccount}/rsva/{serviceName}/cancelScheduledRateCode' |
+  '/telephony/{billingAccount}/rsva/{serviceName}/scheduleRateCode' |
+  '/telephony/{billingAccount}/scheduler/{serviceName}/events' |
+  '/telephony/{billingAccount}/scheduler/{serviceName}/importIcsCalendar' |
+  '/telephony/{billingAccount}/screen/{serviceName}/screenLists' |
+  '/telephony/{billingAccount}/service/{serviceName}/cancelTermination' |
+  '/telephony/{billingAccount}/service/{serviceName}/changeOfBillingAccount' |
+  '/telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations' |
+  '/telephony/{billingAccount}/service/{serviceName}/eventToken' |
+  '/telephony/{billingAccount}/service/{serviceName}/offerChange' |
+  '/telephony/{billingAccount}/timeCondition/{serviceName}/condition' |
+  '/telephony/{billingAccount}/transferSecurityDeposit' |
+  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber' |
+  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}/validate' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/migrateOnNewVersion' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changePassword' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting' |
+  '/telephony/{billingAccount}/vxml/{serviceName}/settings/logs';
+
+type PathsTelephonyDELETE = '/telephony/sounds/{id}' |
+  '/telephony/spare/{spare}' |
+  '/telephony/{billingAccount}' |
   '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}' |
+  '/telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
-  '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/records/{id}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}' |
+  '/telephony/{billingAccount}/easyHunting/{serviceName}/sound/{soundId}' |
   '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}' |
-  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}' |
-  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}' |
-  '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' |
-  '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' |
-  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
+  '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}' |
+  '/telephony/{billingAccount}/eventToken' |
   '/telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}' |
-  '/telephony/sounds/{id}';
+  '/telephony/{billingAccount}/fax/{serviceName}/screenLists' |
+  '/telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}' |
+  '/telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/records/{id}' |
+  '/telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}' |
+  '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}' |
+  '/telephony/{billingAccount}/outplanNotification/{id}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/records/{id}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/sound/{soundId}' |
+  '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}' |
+  '/telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}' |
+  '/telephony/{billingAccount}/portability/{id}/document/{documentId}' |
+  '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}' |
+  '/telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}' |
+  '/telephony/{billingAccount}/service/{serviceName}' |
+  '/telephony/{billingAccount}/service/{serviceName}/eventToken' |
+  '/telephony/{billingAccount}/service/{serviceName}/offerChange' |
+  '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}' |
+  '/telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}' |
+  '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}';
 
 export class ApiTelephony extends OvhWrapper {
   constructor(engine: OvhRequestable) {

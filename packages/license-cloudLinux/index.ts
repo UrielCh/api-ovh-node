@@ -127,14 +127,14 @@ export interface License {
 type PathsLicenseCloudLinuxGET = '/license/cloudLinux' |
   '/license/cloudLinux/orderableVersions' |
   '/license/cloudLinux/{serviceName}' |
-  '/license/cloudLinux/{serviceName}/tasks/{taskId}' |
+  '/license/cloudLinux/{serviceName}/serviceInfos' |
   '/license/cloudLinux/{serviceName}/tasks' |
-  '/license/cloudLinux/{serviceName}/serviceInfos';
+  '/license/cloudLinux/{serviceName}/tasks/{taskId}';
 
 type PathsLicenseCloudLinuxPUT = '/license/cloudLinux/{serviceName}/serviceInfos';
 
-type PathsLicenseCloudLinuxPOST = '/license/cloudLinux/{serviceName}/terminate' |
-  '/license/cloudLinux/{serviceName}/confirmTermination';
+type PathsLicenseCloudLinuxPOST = '/license/cloudLinux/{serviceName}/confirmTermination' |
+  '/license/cloudLinux/{serviceName}/terminate';
 
 export class ApiLicenseCloudLinux extends OvhWrapper {
   constructor(engine: OvhRequestable) {

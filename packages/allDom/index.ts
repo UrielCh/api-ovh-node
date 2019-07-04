@@ -81,10 +81,10 @@ export interface AllDom {
 }
 // Api
 type PathsAllDomGET = '/allDom' |
-  '/allDom/{serviceName}/serviceInfos' |
+  '/allDom/{serviceName}' |
   '/allDom/{serviceName}/domain' |
   '/allDom/{serviceName}/domain/{domain}' |
-  '/allDom/{serviceName}';
+  '/allDom/{serviceName}/serviceInfos';
 
 type PathsAllDomPUT = '/allDom/{serviceName}/serviceInfos';
 

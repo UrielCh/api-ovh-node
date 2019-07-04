@@ -162,38 +162,38 @@ export interface Store {
     }
 }
 // Api
-type PathsStoreGET = '/store/document' |
-  '/store/document/{documentId}' |
-  '/store/partner/{partnerId}/document' |
-  '/store/partner/{partnerId}/product/{productId}/document' |
-  '/store/partner/{partnerId}/product/{productId}' |
-  '/store/partner/{partnerId}/product' |
-  '/store/partner/{partnerId}' |
-  '/store/partner' |
-  '/store/contact/{contactId}/document' |
+type PathsStoreGET = '/store/contact' |
   '/store/contact/{contactId}' |
-  '/store/contact';
-
-type PathsStorePUT = '/store/partner/{partnerId}/product/{productId}' |
-  '/store/partner/{partnerId}' |
-  '/store/contact/{contactId}';
-
-type PathsStorePOST = '/store/document' |
-  '/store/document/cors' |
-  '/store/partner/{partnerId}/document' |
-  '/store/partner/{partnerId}/product/{productId}/document' |
-  '/store/partner/{partnerId}/product' |
-  '/store/partner' |
   '/store/contact/{contactId}/document' |
-  '/store/contact';
-
-type PathsStoreDELETE = '/store/document/{documentId}' |
-  '/store/partner/{partnerId}/document/{documentId}' |
-  '/store/partner/{partnerId}/product/{productId}/document/{documentId}' |
-  '/store/partner/{partnerId}/product/{productId}' |
+  '/store/document' |
+  '/store/document/{documentId}' |
+  '/store/partner' |
   '/store/partner/{partnerId}' |
+  '/store/partner/{partnerId}/document' |
+  '/store/partner/{partnerId}/product' |
+  '/store/partner/{partnerId}/product/{productId}' |
+  '/store/partner/{partnerId}/product/{productId}/document';
+
+type PathsStorePUT = '/store/contact/{contactId}' |
+  '/store/partner/{partnerId}' |
+  '/store/partner/{partnerId}/product/{productId}';
+
+type PathsStorePOST = '/store/contact' |
+  '/store/contact/{contactId}/document' |
+  '/store/document' |
+  '/store/document/cors' |
+  '/store/partner' |
+  '/store/partner/{partnerId}/document' |
+  '/store/partner/{partnerId}/product' |
+  '/store/partner/{partnerId}/product/{productId}/document';
+
+type PathsStoreDELETE = '/store/contact/{contactId}' |
   '/store/contact/{contactId}/document/{documentId}' |
-  '/store/contact/{contactId}';
+  '/store/document/{documentId}' |
+  '/store/partner/{partnerId}' |
+  '/store/partner/{partnerId}/document/{documentId}' |
+  '/store/partner/{partnerId}/product/{productId}' |
+  '/store/partner/{partnerId}/product/{productId}/document/{documentId}';
 
 export class ApiStore extends OvhWrapper {
   constructor(engine: OvhRequestable) {

@@ -194,23 +194,23 @@ export interface Dbaas {
 }
 // Api
 type PathsDbaasQueueGET = '/dbaas/queue' |
+  '/dbaas/queue/{serviceName}' |
+  '/dbaas/queue/{serviceName}/key' |
+  '/dbaas/queue/{serviceName}/key/{keyId}' |
+  '/dbaas/queue/{serviceName}/metrics/account' |
   '/dbaas/queue/{serviceName}/region' |
   '/dbaas/queue/{serviceName}/region/{regionId}' |
-  '/dbaas/queue/{serviceName}/metrics/account' |
   '/dbaas/queue/{serviceName}/role' |
   '/dbaas/queue/{serviceName}/role/{roleName}' |
+  '/dbaas/queue/{serviceName}/serviceInfos' |
   '/dbaas/queue/{serviceName}/topic' |
   '/dbaas/queue/{serviceName}/topic/{topicId}' |
-  '/dbaas/queue/{serviceName}/serviceInfos' |
-  '/dbaas/queue/{serviceName}' |
   '/dbaas/queue/{serviceName}/user' |
-  '/dbaas/queue/{serviceName}/user/{userId}/roles' |
   '/dbaas/queue/{serviceName}/user/{userId}' |
-  '/dbaas/queue/{serviceName}/key/{keyId}' |
-  '/dbaas/queue/{serviceName}/key';
+  '/dbaas/queue/{serviceName}/user/{userId}/roles';
 
-type PathsDbaasQueuePUT = '/dbaas/queue/{serviceName}/serviceInfos' |
-  '/dbaas/queue/{serviceName}';
+type PathsDbaasQueuePUT = '/dbaas/queue/{serviceName}' |
+  '/dbaas/queue/{serviceName}/serviceInfos';
 
 type PathsDbaasQueuePOST = '/dbaas/queue/{serviceName}/user/{userId}/changePassword';
 

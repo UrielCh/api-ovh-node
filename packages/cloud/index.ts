@@ -1985,7 +1985,7 @@ export interface Cloud {
     }
     subsidiaryPrice:  {
         // GET /cloud/subsidiaryPrice
-        $get(param?: {region?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, flavorId?: string}): Promise<cloud.Price>;
+        $get(param?: {flavorId?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, region?: string}): Promise<cloud.Price>;
     }
     [keys: string]: {
         pca:  {
@@ -2036,7 +2036,7 @@ export interface Cloud {
                 }
                 tasks:  {
                     // GET /cloud/{serviceName}/pca/{pcaServiceName}/tasks
-                    $get(param?: {todoDate_from?: string, todoDate_to?: string, function_?: cloud.pca.FunctionTypeEnum, status?: cloud.pca.TaskStateEnum}): Promise<string[]>;
+                    $get(param?: {function_?: cloud.pca.FunctionTypeEnum, status?: cloud.pca.TaskStateEnum, todoDate_from?: string, todoDate_to?: string}): Promise<string[]>;
                     // POST /cloud/{serviceName}/pca/{pcaServiceName}/tasks
                     $post(body?: {fileIds: string[], sessionId: string, taskFunction: cloud.pca.TaskTypeEnum}): Promise<pca.Task>;
                     [keys: string]: {
@@ -2053,190 +2053,190 @@ export interface Cloud {
     } | any
 }
 // Api
-type PathsCloudGET = '/cloud/order' |
+type PathsCloudGET = '/cloud' |
+  '/cloud/agreements' |
+  '/cloud/createProjectInfo' |
+  '/cloud/order' |
+  '/cloud/price' |
   '/cloud/project' |
-  '/cloud/project/{serviceName}/sshkey' |
-  '/cloud/project/{serviceName}/sshkey/{keyId}' |
-  '/cloud/project/{serviceName}/storage/access' |
-  '/cloud/project/{serviceName}/storage' |
-  '/cloud/project/{serviceName}/storage/{containerId}' |
-  '/cloud/project/{serviceName}/regionAvailable' |
-  '/cloud/project/{serviceName}/vrack' |
-  '/cloud/project/{serviceName}/consumption' |
-  '/cloud/project/{serviceName}/forecast' |
-  '/cloud/project/{serviceName}/usage/forecast' |
-  '/cloud/project/{serviceName}/usage/current' |
-  '/cloud/project/{serviceName}/usage/history' |
-  '/cloud/project/{serviceName}/usage/history/{usageId}' |
-  '/cloud/project/{serviceName}/quota' |
-  '/cloud/project/{serviceName}/bill' |
-  '/cloud/project/{serviceName}/network/public' |
-  '/cloud/project/{serviceName}/network/private' |
-  '/cloud/project/{serviceName}/network/private/{networkId}/subnet' |
-  '/cloud/project/{serviceName}/network/private/{networkId}' |
-  '/cloud/project/{serviceName}/user' |
-  '/cloud/project/{serviceName}/user/{userId}/openrc' |
-  '/cloud/project/{serviceName}/user/{userId}/rclone' |
-  '/cloud/project/{serviceName}/user/{userId}' |
-  '/cloud/project/{serviceName}/operation/{operationId}' |
-  '/cloud/project/{serviceName}/operation' |
-  '/cloud/project/{serviceName}/snapshot' |
-  '/cloud/project/{serviceName}/snapshot/{snapshotId}' |
-  '/cloud/project/{serviceName}/migration' |
-  '/cloud/project/{serviceName}/migration/{migrationId}' |
   '/cloud/project/{serviceName}' |
-  '/cloud/project/{serviceName}/credit/{id}' |
-  '/cloud/project/{serviceName}/credit' |
-  '/cloud/project/{serviceName}/alerting' |
-  '/cloud/project/{serviceName}/alerting/{id}' |
-  '/cloud/project/{serviceName}/alerting/{id}/alert/{alertId}' |
-  '/cloud/project/{serviceName}/alerting/{id}/alert' |
-  '/cloud/project/{serviceName}/containerRegistry/{registryID}/users' |
-  '/cloud/project/{serviceName}/containerRegistry/{registryID}' |
-  '/cloud/project/{serviceName}/containerRegistry' |
   '/cloud/project/{serviceName}/acl' |
   '/cloud/project/{serviceName}/acl/{accountId}' |
-  '/cloud/project/{serviceName}/volume/snapshot/{snapshotId}' |
-  '/cloud/project/{serviceName}/volume/snapshot' |
-  '/cloud/project/{serviceName}/volume/{volumeId}' |
-  '/cloud/project/{serviceName}/volume' |
-  '/cloud/project/{serviceName}/region' |
-  '/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}' |
-  '/cloud/project/{serviceName}/region/{regionName}/workflow/backup' |
-  '/cloud/project/{serviceName}/region/{regionName}' |
-  '/cloud/project/{serviceName}/image/{imageId}' |
-  '/cloud/project/{serviceName}/image' |
-  '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}' |
-  '/cloud/project/{serviceName}/kube/{kubeId}/node' |
-  '/cloud/project/{serviceName}/kube/{kubeId}' |
-  '/cloud/project/{serviceName}/kube/regions' |
-  '/cloud/project/{serviceName}/kube' |
-  '/cloud/project/{serviceName}/stack' |
-  '/cloud/project/{serviceName}/stack/{stackId}' |
+  '/cloud/project/{serviceName}/alerting' |
+  '/cloud/project/{serviceName}/alerting/{id}' |
+  '/cloud/project/{serviceName}/alerting/{id}/alert' |
+  '/cloud/project/{serviceName}/alerting/{id}/alert/{alertId}' |
+  '/cloud/project/{serviceName}/bill' |
+  '/cloud/project/{serviceName}/consumption' |
+  '/cloud/project/{serviceName}/containerRegistry' |
+  '/cloud/project/{serviceName}/containerRegistry/{registryID}' |
+  '/cloud/project/{serviceName}/containerRegistry/{registryID}/users' |
+  '/cloud/project/{serviceName}/credit' |
+  '/cloud/project/{serviceName}/credit/{id}' |
   '/cloud/project/{serviceName}/flavor' |
   '/cloud/project/{serviceName}/flavor/{flavorId}' |
+  '/cloud/project/{serviceName}/forecast' |
+  '/cloud/project/{serviceName}/image' |
+  '/cloud/project/{serviceName}/image/{imageId}' |
   '/cloud/project/{serviceName}/instance' |
-  '/cloud/project/{serviceName}/instance/group/{groupId}' |
   '/cloud/project/{serviceName}/instance/group' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/interface' |
+  '/cloud/project/{serviceName}/instance/group/{groupId}' |
   '/cloud/project/{serviceName}/instance/{instanceId}' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/interface' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}' |
   '/cloud/project/{serviceName}/instance/{instanceId}/monitoring' |
-  '/cloud/project/{serviceName}/serviceInfos' |
   '/cloud/project/{serviceName}/ip' |
-  '/cloud/project/{serviceName}/ip/failover/{id}' |
   '/cloud/project/{serviceName}/ip/failover' |
-  '/cloud' |
-  '/cloud/agreements' |
+  '/cloud/project/{serviceName}/ip/failover/{id}' |
+  '/cloud/project/{serviceName}/kube' |
+  '/cloud/project/{serviceName}/kube/regions' |
+  '/cloud/project/{serviceName}/kube/{kubeId}' |
+  '/cloud/project/{serviceName}/kube/{kubeId}/node' |
+  '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}' |
+  '/cloud/project/{serviceName}/migration' |
+  '/cloud/project/{serviceName}/migration/{migrationId}' |
+  '/cloud/project/{serviceName}/network/private' |
+  '/cloud/project/{serviceName}/network/private/{networkId}' |
+  '/cloud/project/{serviceName}/network/private/{networkId}/subnet' |
+  '/cloud/project/{serviceName}/network/public' |
+  '/cloud/project/{serviceName}/operation' |
+  '/cloud/project/{serviceName}/operation/{operationId}' |
+  '/cloud/project/{serviceName}/quota' |
+  '/cloud/project/{serviceName}/region' |
+  '/cloud/project/{serviceName}/region/{regionName}' |
+  '/cloud/project/{serviceName}/region/{regionName}/workflow/backup' |
+  '/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}' |
+  '/cloud/project/{serviceName}/regionAvailable' |
+  '/cloud/project/{serviceName}/serviceInfos' |
+  '/cloud/project/{serviceName}/snapshot' |
+  '/cloud/project/{serviceName}/snapshot/{snapshotId}' |
+  '/cloud/project/{serviceName}/sshkey' |
+  '/cloud/project/{serviceName}/sshkey/{keyId}' |
+  '/cloud/project/{serviceName}/stack' |
+  '/cloud/project/{serviceName}/stack/{stackId}' |
+  '/cloud/project/{serviceName}/storage' |
+  '/cloud/project/{serviceName}/storage/access' |
+  '/cloud/project/{serviceName}/storage/{containerId}' |
+  '/cloud/project/{serviceName}/usage/current' |
+  '/cloud/project/{serviceName}/usage/forecast' |
+  '/cloud/project/{serviceName}/usage/history' |
+  '/cloud/project/{serviceName}/usage/history/{usageId}' |
+  '/cloud/project/{serviceName}/user' |
+  '/cloud/project/{serviceName}/user/{userId}' |
+  '/cloud/project/{serviceName}/user/{userId}/openrc' |
+  '/cloud/project/{serviceName}/user/{userId}/rclone' |
+  '/cloud/project/{serviceName}/volume' |
+  '/cloud/project/{serviceName}/volume/snapshot' |
+  '/cloud/project/{serviceName}/volume/snapshot/{snapshotId}' |
+  '/cloud/project/{serviceName}/volume/{volumeId}' |
+  '/cloud/project/{serviceName}/vrack' |
   '/cloud/subsidiaryPrice' |
-  '/cloud/createProjectInfo' |
-  '/cloud/price' |
   '/cloud/{serviceName}/pca' |
-  '/cloud/{serviceName}/pca/{pcaServiceName}/sessions' |
-  '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}' |
-  '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files/{fileId}' |
-  '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files' |
-  '/cloud/{serviceName}/pca/{pcaServiceName}/usage' |
+  '/cloud/{serviceName}/pca/{pcaServiceName}' |
   '/cloud/{serviceName}/pca/{pcaServiceName}/billing' |
   '/cloud/{serviceName}/pca/{pcaServiceName}/billing/{billingId}' |
   '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos' |
+  '/cloud/{serviceName}/pca/{pcaServiceName}/sessions' |
+  '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}' |
+  '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files' |
+  '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files/{fileId}' |
   '/cloud/{serviceName}/pca/{pcaServiceName}/tasks' |
   '/cloud/{serviceName}/pca/{pcaServiceName}/tasks/{taskId}' |
-  '/cloud/{serviceName}/pca/{pcaServiceName}';
+  '/cloud/{serviceName}/pca/{pcaServiceName}/usage';
 
-type PathsCloudPUT = '/cloud/project/{serviceName}/storage/{containerId}' |
-  '/cloud/project/{serviceName}/network/private/{networkId}' |
-  '/cloud/project/{serviceName}/migration/{migrationId}' |
-  '/cloud/project/{serviceName}' |
+type PathsCloudPUT = '/cloud/project/{serviceName}' |
   '/cloud/project/{serviceName}/alerting/{id}' |
   '/cloud/project/{serviceName}/containerRegistry/{registryID}' |
-  '/cloud/project/{serviceName}/volume/{volumeId}' |
+  '/cloud/project/{serviceName}/instance/{instanceId}' |
   '/cloud/project/{serviceName}/kube/{kubeId}' |
   '/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy' |
-  '/cloud/project/{serviceName}/instance/{instanceId}' |
+  '/cloud/project/{serviceName}/migration/{migrationId}' |
+  '/cloud/project/{serviceName}/network/private/{networkId}' |
   '/cloud/project/{serviceName}/serviceInfos' |
-  '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}' |
+  '/cloud/project/{serviceName}/storage/{containerId}' |
+  '/cloud/project/{serviceName}/volume/{volumeId}' |
+  '/cloud/{serviceName}/pca/{pcaServiceName}' |
   '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos' |
-  '/cloud/{serviceName}/pca/{pcaServiceName}';
+  '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}';
 
-type PathsCloudPOST = '/cloud/project/{serviceName}/sshkey' |
-  '/cloud/project/{serviceName}/storage/access' |
-  '/cloud/project/{serviceName}/storage' |
-  '/cloud/project/{serviceName}/storage/{containerId}/cors' |
-  '/cloud/project/{serviceName}/storage/{containerId}/static' |
-  '/cloud/project/{serviceName}/storage/{containerId}/user' |
-  '/cloud/project/{serviceName}/storage/{containerId}/publicUrl' |
-  '/cloud/project/{serviceName}/openstackClient' |
-  '/cloud/project/{serviceName}/vrack' |
-  '/cloud/project/{serviceName}/network/private' |
-  '/cloud/project/{serviceName}/network/private/{networkId}/subnet' |
-  '/cloud/project/{serviceName}/network/private/{networkId}/region' |
-  '/cloud/project/{serviceName}/user' |
-  '/cloud/project/{serviceName}/user/{userId}/regeneratePassword' |
-  '/cloud/project/{serviceName}/user/{userId}/token' |
-  '/cloud/project/{serviceName}/retain' |
-  '/cloud/project/{serviceName}/credit' |
+type PathsCloudPOST = '/cloud/createProject' |
+  '/cloud/project/{serviceName}/acl' |
   '/cloud/project/{serviceName}/alerting' |
   '/cloud/project/{serviceName}/cancel' |
+  '/cloud/project/{serviceName}/changeContact' |
   '/cloud/project/{serviceName}/confirmTermination' |
-  '/cloud/project/{serviceName}/containerRegistry/{registryID}/users' |
   '/cloud/project/{serviceName}/containerRegistry' |
-  '/cloud/project/{serviceName}/acl' |
-  '/cloud/project/{serviceName}/volume/{volumeId}/snapshot' |
-  '/cloud/project/{serviceName}/volume/{volumeId}/upsize' |
-  '/cloud/project/{serviceName}/volume/{volumeId}/detach' |
-  '/cloud/project/{serviceName}/volume/{volumeId}/attach' |
-  '/cloud/project/{serviceName}/volume' |
-  '/cloud/project/{serviceName}/unleash' |
-  '/cloud/project/{serviceName}/region' |
-  '/cloud/project/{serviceName}/region/{regionName}/workflow/backup' |
-  '/cloud/project/{serviceName}/kube/{kubeId}/update' |
+  '/cloud/project/{serviceName}/containerRegistry/{registryID}/users' |
+  '/cloud/project/{serviceName}/credit' |
+  '/cloud/project/{serviceName}/instance' |
+  '/cloud/project/{serviceName}/instance/bulk' |
+  '/cloud/project/{serviceName}/instance/group' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/activeMonthlyBilling' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/applicationAccess' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/interface' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/reboot' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/reinstall' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/rescueMode' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/resize' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/resume' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/snapshot' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/start' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/stop' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/vnc' |
+  '/cloud/project/{serviceName}/ip/failover/{id}/attach' |
+  '/cloud/project/{serviceName}/kube' |
   '/cloud/project/{serviceName}/kube/{kubeId}/kubeconfig' |
   '/cloud/project/{serviceName}/kube/{kubeId}/node' |
   '/cloud/project/{serviceName}/kube/{kubeId}/reset' |
-  '/cloud/project/{serviceName}/kube' |
+  '/cloud/project/{serviceName}/kube/{kubeId}/update' |
+  '/cloud/project/{serviceName}/network/private' |
+  '/cloud/project/{serviceName}/network/private/{networkId}/region' |
+  '/cloud/project/{serviceName}/network/private/{networkId}/subnet' |
+  '/cloud/project/{serviceName}/openstackClient' |
+  '/cloud/project/{serviceName}/region' |
+  '/cloud/project/{serviceName}/region/{regionName}/workflow/backup' |
+  '/cloud/project/{serviceName}/retain' |
+  '/cloud/project/{serviceName}/sshkey' |
   '/cloud/project/{serviceName}/stack/{stackId}/client' |
-  '/cloud/project/{serviceName}/instance' |
-  '/cloud/project/{serviceName}/instance/group' |
-  '/cloud/project/{serviceName}/instance/bulk' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/snapshot' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/applicationAccess' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/reinstall' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/interface' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/reboot' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/rescueMode' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/resume' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/vnc' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/activeMonthlyBilling' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/stop' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/start' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/resize' |
+  '/cloud/project/{serviceName}/storage' |
+  '/cloud/project/{serviceName}/storage/access' |
+  '/cloud/project/{serviceName}/storage/{containerId}/cors' |
+  '/cloud/project/{serviceName}/storage/{containerId}/publicUrl' |
+  '/cloud/project/{serviceName}/storage/{containerId}/static' |
+  '/cloud/project/{serviceName}/storage/{containerId}/user' |
   '/cloud/project/{serviceName}/terminate' |
-  '/cloud/project/{serviceName}/changeContact' |
-  '/cloud/project/{serviceName}/ip/failover/{id}/attach' |
-  '/cloud/createProject' |
+  '/cloud/project/{serviceName}/unleash' |
+  '/cloud/project/{serviceName}/user' |
+  '/cloud/project/{serviceName}/user/{userId}/regeneratePassword' |
+  '/cloud/project/{serviceName}/user/{userId}/token' |
+  '/cloud/project/{serviceName}/volume' |
+  '/cloud/project/{serviceName}/volume/{volumeId}/attach' |
+  '/cloud/project/{serviceName}/volume/{volumeId}/detach' |
+  '/cloud/project/{serviceName}/volume/{volumeId}/snapshot' |
+  '/cloud/project/{serviceName}/volume/{volumeId}/upsize' |
+  '/cloud/project/{serviceName}/vrack' |
   '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/restore' |
   '/cloud/{serviceName}/pca/{pcaServiceName}/tasks';
 
-type PathsCloudDELETE = '/cloud/project/{serviceName}/sshkey/{keyId}' |
-  '/cloud/project/{serviceName}/storage/{containerId}/cors' |
-  '/cloud/project/{serviceName}/storage/{containerId}' |
-  '/cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}' |
-  '/cloud/project/{serviceName}/network/private/{networkId}' |
-  '/cloud/project/{serviceName}/user/{userId}' |
-  '/cloud/project/{serviceName}/snapshot/{snapshotId}' |
+type PathsCloudDELETE = '/cloud/project/{serviceName}/acl/{accountId}' |
   '/cloud/project/{serviceName}/alerting/{id}' |
-  '/cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}' |
   '/cloud/project/{serviceName}/containerRegistry/{registryID}' |
-  '/cloud/project/{serviceName}/acl/{accountId}' |
+  '/cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}' |
+  '/cloud/project/{serviceName}/instance/group/{groupId}' |
+  '/cloud/project/{serviceName}/instance/{instanceId}' |
+  '/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}' |
+  '/cloud/project/{serviceName}/kube/{kubeId}' |
+  '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}' |
+  '/cloud/project/{serviceName}/network/private/{networkId}' |
+  '/cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}' |
+  '/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}' |
+  '/cloud/project/{serviceName}/snapshot/{snapshotId}' |
+  '/cloud/project/{serviceName}/sshkey/{keyId}' |
+  '/cloud/project/{serviceName}/storage/{containerId}' |
+  '/cloud/project/{serviceName}/storage/{containerId}/cors' |
+  '/cloud/project/{serviceName}/user/{userId}' |
   '/cloud/project/{serviceName}/volume/snapshot/{snapshotId}' |
   '/cloud/project/{serviceName}/volume/{volumeId}' |
-  '/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}' |
-  '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}' |
-  '/cloud/project/{serviceName}/kube/{kubeId}' |
-  '/cloud/project/{serviceName}/instance/group/{groupId}' |
-  '/cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}' |
-  '/cloud/project/{serviceName}/instance/{instanceId}' |
   '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}';
 
 export class ApiCloud extends OvhWrapper {

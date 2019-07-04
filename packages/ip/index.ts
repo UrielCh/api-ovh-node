@@ -399,7 +399,7 @@ export namespace services {
 // path /ip
 export interface Ip {
     // GET /ip
-    $get(param?: {type?: ip.IpTypeEnum, ip?: string, routedTo_serviceName?: string, description?: string}): Promise<string[]>;
+    $get(param?: {description?: string, ip?: string, routedTo_serviceName?: string, type?: ip.IpTypeEnum}): Promise<string[]>;
     loadBalancing:  {
         // GET /ip/loadBalancing
         $get(): Promise<string[]>;
@@ -557,7 +557,7 @@ export interface Ip {
         }
         firewall:  {
             // GET /ip/{ip}/firewall
-            $get(param?: {state?: ip.FirewallStateEnum, enabled?: boolean}): Promise<string[]>;
+            $get(param?: {enabled?: boolean, state?: ip.FirewallStateEnum}): Promise<string[]>;
             // POST /ip/{ip}/firewall
             $post(body?: {ipOnFirewall: string}): Promise<ip.FirewallIp>;
             [keys: string]: {
@@ -645,7 +645,7 @@ export interface Ip {
         }
         mitigation:  {
             // GET /ip/{ip}/mitigation
-            $get(param?: {state?: ip.MitigationStateEnum, auto?: boolean}): Promise<string[]>;
+            $get(param?: {auto?: boolean, state?: ip.MitigationStateEnum}): Promise<string[]>;
             // POST /ip/{ip}/mitigation
             $post(body?: {ipOnMitigation: string}): Promise<ip.MitigationIp>;
             [keys: string]: {
@@ -657,11 +657,11 @@ export interface Ip {
                 $put(body?: {body: ip.MitigationIp}): Promise<void>;
                 stats:  {
                     // GET /ip/{ip}/mitigation/{ipOnMitigation}/stats
-                    $get(param?: {from: string, to: string, scale: ip.MitigationStatsScaleEnum}): Promise<ip.MitigationStats[]>;
+                    $get(param?: {from: string, scale: ip.MitigationStatsScaleEnum, to: string}): Promise<ip.MitigationStats[]>;
                 }
                 topStream:  {
                     // GET /ip/{ip}/mitigation/{ipOnMitigation}/topStream
-                    $get(param?: {scale: ip.MitigationStatsScaleEnum, date: string}): Promise<ip.MitigationDetailedStats[]>;
+                    $get(param?: {date: string, scale: ip.MitigationStatsScaleEnum}): Promise<ip.MitigationDetailedStats[]>;
                 }
             } | any
         }
@@ -723,7 +723,7 @@ export interface Ip {
                 $get(): Promise<ip.SpamIp>;
                 stats:  {
                     // GET /ip/{ip}/spam/{ipSpamming}/stats
-                    $get(param?: {to: string, from: string}): Promise<ip.SpamStats[]>;
+                    $get(param?: {from: string, to: string}): Promise<ip.SpamStats[]>;
                 }
                 unblock:  {
                     // POST /ip/{ip}/spam/{ipSpamming}/unblock
@@ -746,107 +746,107 @@ export interface Ip {
     } | any
 }
 // Api
-type PathsIpGET = '/ip/loadBalancing' |
-  '/ip/loadBalancing/{serviceName}/internalNatIp' |
-  '/ip/loadBalancing/{serviceName}/allowedBackends' |
+type PathsIpGET = '/ip' |
+  '/ip/loadBalancing' |
   '/ip/loadBalancing/{serviceName}' |
+  '/ip/loadBalancing/{serviceName}/allowedBackends' |
+  '/ip/loadBalancing/{serviceName}/backend' |
+  '/ip/loadBalancing/{serviceName}/backend/{backend}' |
+  '/ip/loadBalancing/{serviceName}/internalNatIp' |
   '/ip/loadBalancing/{serviceName}/portsRedirection' |
   '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}' |
   '/ip/loadBalancing/{serviceName}/probeIp' |
-  '/ip/loadBalancing/{serviceName}/backend' |
-  '/ip/loadBalancing/{serviceName}/backend/{backend}' |
   '/ip/loadBalancing/{serviceName}/serviceInfos' |
-  '/ip/loadBalancing/{serviceName}/task/{taskId}' |
   '/ip/loadBalancing/{serviceName}/task' |
-  '/ip' |
-  '/ip/{ip}/task' |
-  '/ip/{ip}/task/{taskId}' |
-  '/ip/{ip}/ripe' |
-  '/ip/{ip}/move' |
+  '/ip/loadBalancing/{serviceName}/task/{taskId}' |
+  '/ip/service' |
+  '/ip/service/{serviceName}' |
+  '/ip/service/{serviceName}/serviceInfos' |
+  '/ip/{ip}' |
   '/ip/{ip}/antihack' |
   '/ip/{ip}/antihack/{ipBlocked}' |
+  '/ip/{ip}/arp' |
+  '/ip/{ip}/arp/{ipBlocked}' |
+  '/ip/{ip}/delegation' |
+  '/ip/{ip}/delegation/{target}' |
+  '/ip/{ip}/firewall' |
   '/ip/{ip}/firewall/{ipOnFirewall}' |
   '/ip/{ip}/firewall/{ipOnFirewall}/rule' |
   '/ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}' |
-  '/ip/{ip}/firewall' |
   '/ip/{ip}/game' |
   '/ip/{ip}/game/{ipOnGame}' |
   '/ip/{ip}/game/{ipOnGame}/rule' |
   '/ip/{ip}/game/{ipOnGame}/rule/{id}' |
-  '/ip/{ip}/arp' |
-  '/ip/{ip}/arp/{ipBlocked}' |
-  '/ip/{ip}/spam/{ipSpamming}/stats' |
-  '/ip/{ip}/spam/{ipSpamming}' |
-  '/ip/{ip}/spam' |
-  '/ip/{ip}/phishing' |
-  '/ip/{ip}/phishing/{id}' |
-  '/ip/{ip}/delegation/{target}' |
-  '/ip/{ip}/delegation' |
   '/ip/{ip}/license/cloudLinux' |
   '/ip/{ip}/license/cpanel' |
-  '/ip/{ip}/license/worklight' |
   '/ip/{ip}/license/directadmin' |
-  '/ip/{ip}/license/sqlserver' |
   '/ip/{ip}/license/plesk' |
-  '/ip/{ip}/license/windows' |
+  '/ip/{ip}/license/sqlserver' |
   '/ip/{ip}/license/virtuozzo' |
-  '/ip/{ip}/mitigation' |
-  '/ip/{ip}/mitigation/{ipOnMitigation}/topStream' |
-  '/ip/{ip}/mitigation/{ipOnMitigation}/stats' |
-  '/ip/{ip}/mitigation/{ipOnMitigation}' |
-  '/ip/{ip}' |
+  '/ip/{ip}/license/windows' |
+  '/ip/{ip}/license/worklight' |
   '/ip/{ip}/migrationToken' |
+  '/ip/{ip}/mitigation' |
+  '/ip/{ip}/mitigation/{ipOnMitigation}' |
+  '/ip/{ip}/mitigation/{ipOnMitigation}/stats' |
+  '/ip/{ip}/mitigation/{ipOnMitigation}/topStream' |
   '/ip/{ip}/mitigationProfiles' |
   '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}' |
-  '/ip/{ip}/reverse/{ipReverse}' |
+  '/ip/{ip}/move' |
+  '/ip/{ip}/phishing' |
+  '/ip/{ip}/phishing/{id}' |
   '/ip/{ip}/reverse' |
-  '/ip/service' |
-  '/ip/service/{serviceName}/serviceInfos' |
-  '/ip/service/{serviceName}';
+  '/ip/{ip}/reverse/{ipReverse}' |
+  '/ip/{ip}/ripe' |
+  '/ip/{ip}/spam' |
+  '/ip/{ip}/spam/{ipSpamming}' |
+  '/ip/{ip}/spam/{ipSpamming}/stats' |
+  '/ip/{ip}/task' |
+  '/ip/{ip}/task/{taskId}';
 
 type PathsIpPUT = '/ip/loadBalancing/{serviceName}/backend/{backend}' |
   '/ip/loadBalancing/{serviceName}/serviceInfos' |
-  '/ip/{ip}/ripe' |
+  '/ip/service/{serviceName}' |
+  '/ip/{ip}' |
   '/ip/{ip}/firewall/{ipOnFirewall}' |
   '/ip/{ip}/game/{ipOnGame}' |
   '/ip/{ip}/mitigation/{ipOnMitigation}' |
-  '/ip/{ip}' |
   '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}' |
-  '/ip/service/{serviceName}';
+  '/ip/{ip}/ripe';
 
-type PathsIpPOST = '/ip/loadBalancing/{serviceName}/restoreSsl' |
-  '/ip/loadBalancing/{serviceName}/importCustomSsl' |
-  '/ip/loadBalancing/{serviceName}/switchToIplbNextGenerationApi' |
-  '/ip/loadBalancing/{serviceName}/stickiness' |
-  '/ip/loadBalancing/{serviceName}/portsRedirection' |
-  '/ip/loadBalancing/{serviceName}/backend' |
+type PathsIpPOST = '/ip/loadBalancing/{serviceName}/backend' |
   '/ip/loadBalancing/{serviceName}/backend/{backend}/backupState' |
   '/ip/loadBalancing/{serviceName}/backend/{backend}/setWeight' |
-  '/ip/{ip}/move' |
-  '/ip/{ip}/antihack/{ipBlocked}/unblock' |
-  '/ip/{ip}/firewall/{ipOnFirewall}/rule' |
-  '/ip/{ip}/firewall' |
-  '/ip/{ip}/game/{ipOnGame}/rule' |
-  '/ip/{ip}/arp/{ipBlocked}/unblock' |
-  '/ip/{ip}/park' |
-  '/ip/{ip}/spam/{ipSpamming}/unblock' |
-  '/ip/{ip}/delegation' |
-  '/ip/{ip}/changeOrg' |
-  '/ip/{ip}/terminate' |
-  '/ip/{ip}/mitigation' |
-  '/ip/{ip}/migrationToken' |
-  '/ip/{ip}/mitigationProfiles' |
-  '/ip/{ip}/reverse' |
+  '/ip/loadBalancing/{serviceName}/importCustomSsl' |
+  '/ip/loadBalancing/{serviceName}/portsRedirection' |
+  '/ip/loadBalancing/{serviceName}/restoreSsl' |
+  '/ip/loadBalancing/{serviceName}/stickiness' |
+  '/ip/loadBalancing/{serviceName}/switchToIplbNextGenerationApi' |
   '/ip/service/{serviceName}/changeContact' |
   '/ip/service/{serviceName}/confirmTermination' |
-  '/ip/service/{serviceName}/terminate';
+  '/ip/service/{serviceName}/terminate' |
+  '/ip/{ip}/antihack/{ipBlocked}/unblock' |
+  '/ip/{ip}/arp/{ipBlocked}/unblock' |
+  '/ip/{ip}/changeOrg' |
+  '/ip/{ip}/delegation' |
+  '/ip/{ip}/firewall' |
+  '/ip/{ip}/firewall/{ipOnFirewall}/rule' |
+  '/ip/{ip}/game/{ipOnGame}/rule' |
+  '/ip/{ip}/migrationToken' |
+  '/ip/{ip}/mitigation' |
+  '/ip/{ip}/mitigationProfiles' |
+  '/ip/{ip}/move' |
+  '/ip/{ip}/park' |
+  '/ip/{ip}/reverse' |
+  '/ip/{ip}/spam/{ipSpamming}/unblock' |
+  '/ip/{ip}/terminate';
 
-type PathsIpDELETE = '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}' |
-  '/ip/loadBalancing/{serviceName}/backend/{backend}' |
+type PathsIpDELETE = '/ip/loadBalancing/{serviceName}/backend/{backend}' |
+  '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}' |
+  '/ip/{ip}/delegation/{target}' |
   '/ip/{ip}/firewall/{ipOnFirewall}' |
   '/ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}' |
   '/ip/{ip}/game/{ipOnGame}/rule/{id}' |
-  '/ip/{ip}/delegation/{target}' |
   '/ip/{ip}/mitigation/{ipOnMitigation}' |
   '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}' |
   '/ip/{ip}/reverse/{ipReverse}';

@@ -227,24 +227,24 @@ export interface Dbaas {
     }
 }
 // Api
-type PathsDbaasTimeseriesGET = '/dbaas/timeseries/{serviceName}/quota' |
-  '/dbaas/timeseries/{serviceName}/key/{keyId}' |
-  '/dbaas/timeseries/{serviceName}/key' |
-  '/dbaas/timeseries/{serviceName}/serviceInfos' |
-  '/dbaas/timeseries/{serviceName}' |
-  '/dbaas/timeseries/{serviceName}/token/opentsdb' |
-  '/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}' |
-  '/dbaas/timeseries/{serviceName}/consumption' |
+type PathsDbaasTimeseriesGET = '/dbaas/timeseries' |
   '/dbaas/timeseries/region' |
-  '/dbaas/timeseries';
-
-type PathsDbaasTimeseriesPUT = '/dbaas/timeseries/{serviceName}/key/{keyId}' |
+  '/dbaas/timeseries/{serviceName}' |
+  '/dbaas/timeseries/{serviceName}/consumption' |
+  '/dbaas/timeseries/{serviceName}/key' |
+  '/dbaas/timeseries/{serviceName}/key/{keyId}' |
+  '/dbaas/timeseries/{serviceName}/quota' |
   '/dbaas/timeseries/{serviceName}/serviceInfos' |
-  '/dbaas/timeseries/{serviceName}';
+  '/dbaas/timeseries/{serviceName}/token/opentsdb' |
+  '/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}';
 
-type PathsDbaasTimeseriesPOST = '/dbaas/timeseries/{serviceName}/key' |
+type PathsDbaasTimeseriesPUT = '/dbaas/timeseries/{serviceName}' |
+  '/dbaas/timeseries/{serviceName}/key/{keyId}' |
+  '/dbaas/timeseries/{serviceName}/serviceInfos';
+
+type PathsDbaasTimeseriesPOST = '/dbaas/timeseries/{serviceName}/changeContact' |
+  '/dbaas/timeseries/{serviceName}/key' |
   '/dbaas/timeseries/{serviceName}/setup' |
-  '/dbaas/timeseries/{serviceName}/changeContact' |
   '/dbaas/timeseries/{serviceName}/token/opentsdb';
 
 type PathsDbaasTimeseriesDELETE = '/dbaas/timeseries/{serviceName}/key/{keyId}' |

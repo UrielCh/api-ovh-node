@@ -164,7 +164,7 @@ export class CodeGenerator {
                 continue;
             if (!arr.length)
                 continue;
-            code += `type ${avaliablePath}${mtd} = ` + arr.map((a: any) => `'${a}'`).join(' |\n  ')
+            code += `type ${avaliablePath}${mtd} = ` + arr.sort().map((a: any) => `'${a}'`).join(' |\n  ')
             code += ';\n\n'
         }
         code += `export class ${formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'))} extends OvhWrapper {\n`;
@@ -299,7 +299,7 @@ export class CodeGenerator {
                     if (params.length)
                         code += 'body?: {'
                 }
-
+                params = params.sort((a,b) => (<string>a.name).localeCompare(<string>b.name))
                 let array = params.map(param => {
                     let text = protectJsonKey(String(param.name || 'body'));
                     if (!param.required)

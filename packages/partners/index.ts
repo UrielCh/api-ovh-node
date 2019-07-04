@@ -287,18 +287,18 @@ export interface Partners {
     }
 }
 // Api
-type PathsPartnersGET = '/partners/register/company/{companyId}' |
+type PathsPartnersGET = '/partners/register/company' |
+  '/partners/register/company/{companyId}' |
   '/partners/register/company/{companyId}/application' |
   '/partners/register/company/{companyId}/contact' |
-  '/partners/register/company/{companyId}/contact/{contactId}' |
-  '/partners/register/company';
+  '/partners/register/company/{companyId}/contact/{contactId}';
 
 type PathsPartnersPUT = '/partners/register/company/{companyId}' |
   '/partners/register/company/{companyId}/contact/{contactId}';
 
-type PathsPartnersPOST = '/partners/register/company/{companyId}/application' |
-  '/partners/register/company/{companyId}/contact' |
-  '/partners/register/company';
+type PathsPartnersPOST = '/partners/register/company' |
+  '/partners/register/company/{companyId}/application' |
+  '/partners/register/company/{companyId}/contact';
 
 type PathsPartnersDELETE = '/partners/register/company/{companyId}' |
   '/partners/register/company/{companyId}/contact/{contactId}';

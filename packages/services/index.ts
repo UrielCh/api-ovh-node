@@ -151,7 +151,7 @@ export namespace services {
 // path /services
 export interface Services {
     // GET /services
-    $get(param?: {routes?: string, orderBy?: string, sort?: string}): Promise<number[]>;
+    $get(param?: {orderBy?: string, routes?: string, sort?: string}): Promise<number[]>;
     [keys: string]: {
         // GET /services/{serviceId}
         $get(): Promise<services.expanded.Service>;

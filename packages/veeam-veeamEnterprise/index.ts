@@ -108,18 +108,18 @@ export interface Veeam {
     }
 }
 // Api
-type PathsVeeamVeeamEnterpriseGET = '/veeam/veeamEnterprise/{serviceName}' |
+type PathsVeeamVeeamEnterpriseGET = '/veeam/veeamEnterprise' |
+  '/veeam/veeamEnterprise/{serviceName}' |
   '/veeam/veeamEnterprise/{serviceName}/serviceInfos' |
   '/veeam/veeamEnterprise/{serviceName}/task' |
-  '/veeam/veeamEnterprise/{serviceName}/task/{taskId}' |
-  '/veeam/veeamEnterprise';
+  '/veeam/veeamEnterprise/{serviceName}/task/{taskId}';
 
 type PathsVeeamVeeamEnterprisePUT = '/veeam/veeamEnterprise/{serviceName}/serviceInfos';
 
-type PathsVeeamVeeamEnterprisePOST = '/veeam/veeamEnterprise/{serviceName}/update' |
+type PathsVeeamVeeamEnterprisePOST = '/veeam/veeamEnterprise/{serviceName}/confirmTermination' |
+  '/veeam/veeamEnterprise/{serviceName}/register' |
   '/veeam/veeamEnterprise/{serviceName}/terminate' |
-  '/veeam/veeamEnterprise/{serviceName}/confirmTermination' |
-  '/veeam/veeamEnterprise/{serviceName}/register';
+  '/veeam/veeamEnterprise/{serviceName}/update';
 
 export class ApiVeeamVeeamEnterprise extends OvhWrapper {
   constructor(engine: OvhRequestable) {

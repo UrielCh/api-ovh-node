@@ -875,7 +875,7 @@ export interface DedicatedCloud {
                 $put(body?: {body: dedicatedCloud.AllowedNetwork}): Promise<dedicatedCloud.Task>;
                 task:  {
                     // GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task
-                    $get(param?: {state?: dedicatedCloud.TaskStateEnum, name?: string}): Promise<number[]>;
+                    $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
                     [keys: string]: {
                         // GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
@@ -999,7 +999,7 @@ export interface DedicatedCloud {
                         }
                         task:  {
                             // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task
-                            $get(param?: {state?: dedicatedCloud.TaskStateEnum, name?: string}): Promise<number[]>;
+                            $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
                             [keys: string]: {
                                 // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}
                                 $get(): Promise<dedicatedCloud.Task>;
@@ -1069,7 +1069,7 @@ export interface DedicatedCloud {
                 }
                 task:  {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task
-                    $get(param?: {state?: dedicatedCloud.TaskStateEnum, name?: string}): Promise<number[]>;
+                    $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
                     [keys: string]: {
                         // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
@@ -1175,7 +1175,7 @@ export interface DedicatedCloud {
                 }
                 task:  {
                     // GET /dedicatedCloud/{serviceName}/filer/{filerId}/task
-                    $get(param?: {state?: dedicatedCloud.TaskStateEnum, name?: string}): Promise<number[]>;
+                    $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
                     [keys: string]: {
                         // GET /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
@@ -1193,7 +1193,7 @@ export interface DedicatedCloud {
         }
         globalTasks:  {
             // GET /dedicatedCloud/{serviceName}/globalTasks
-            $get(param?: {userId?: number, executionDate_to?: string, orderId?: number, datacenterId?: number, lastModificationDate_from?: string, endDate_to?: string, vlanId?: number, parentTaskId?: number, executionDate_from?: string, networkAccessId?: number, hostId?: number, filerId?: number, state?: dedicatedCloud.TaskStateEnum[], name?: string, lastModificationDate_to?: string, endDate_from?: string}): Promise<number[]>;
+            $get(param?: {datacenterId?: number, endDate_from?: string, endDate_to?: string, executionDate_from?: string, executionDate_to?: string, filerId?: number, hostId?: number, lastModificationDate_from?: string, lastModificationDate_to?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: dedicatedCloud.TaskStateEnum[], userId?: number, vlanId?: number}): Promise<number[]>;
         }
         hcx:  {
             // GET /dedicatedCloud/{serviceName}/hcx
@@ -1267,7 +1267,7 @@ export interface DedicatedCloud {
                 }
                 task:  {
                     // GET /dedicatedCloud/{serviceName}/ip/{network}/task
-                    $get(param?: {state?: dedicatedCloud.TaskStateEnum, name?: string}): Promise<number[]>;
+                    $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
                     [keys: string]: {
                         // GET /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
@@ -1371,7 +1371,7 @@ export interface DedicatedCloud {
         }
         task:  {
             // GET /dedicatedCloud/{serviceName}/task
-            $get(param?: {state?: dedicatedCloud.TaskStateEnum, name?: string}): Promise<number[]>;
+            $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
             [keys: string]: {
                 // GET /dedicatedCloud/{serviceName}/task/{taskId}
                 $get(): Promise<dedicatedCloud.Task>;
@@ -1459,7 +1459,7 @@ export interface DedicatedCloud {
                 }
                 task:  {
                     // GET /dedicatedCloud/{serviceName}/user/{userId}/task
-                    $get(param?: {state?: dedicatedCloud.TaskStateEnum, name?: string}): Promise<number[]>;
+                    $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
                     [keys: string]: {
                         // GET /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
@@ -1548,202 +1548,202 @@ export interface DedicatedCloud {
     } | any
 }
 // Api
-type PathsDedicatedCloudGET = '/dedicatedCloud/location' |
-  '/dedicatedCloud/location/{pccZone}/hypervisor/{shortName}' |
-  '/dedicatedCloud/location/{pccZone}/hypervisor' |
+type PathsDedicatedCloudGET = '/dedicatedCloud' |
+  '/dedicatedCloud/commercialRange' |
+  '/dedicatedCloud/commercialRange/{commercialRangeName}' |
+  '/dedicatedCloud/location' |
+  '/dedicatedCloud/location/{pccZone}' |
   '/dedicatedCloud/location/{pccZone}/hostProfile' |
   '/dedicatedCloud/location/{pccZone}/hostProfile/{id}' |
+  '/dedicatedCloud/location/{pccZone}/hypervisor' |
+  '/dedicatedCloud/location/{pccZone}/hypervisor/{shortName}' |
   '/dedicatedCloud/location/{pccZone}/stock/host' |
-  '/dedicatedCloud/location/{pccZone}/stock/zpool' |
   '/dedicatedCloud/location/{pccZone}/stock/pcc' |
-  '/dedicatedCloud/location/{pccZone}' |
-  '/dedicatedCloud/{serviceName}/hcx' |
-  '/dedicatedCloud/{serviceName}/hcx/canBeEnabled' |
-  '/dedicatedCloud/{serviceName}/hcx/canBeDisabled' |
-  '/dedicatedCloud/{serviceName}/hds' |
-  '/dedicatedCloud/{serviceName}/hds/canBeDisabled' |
-  '/dedicatedCloud/{serviceName}/hds/canBeEnabled' |
-  '/dedicatedCloud/{serviceName}/task' |
-  '/dedicatedCloud/{serviceName}/task/{taskId}' |
-  '/dedicatedCloud/{serviceName}/vrops/canBeEnabled' |
-  '/dedicatedCloud/{serviceName}/vrops/canBeDisabled' |
-  '/dedicatedCloud/{serviceName}/vrops' |
-  '/dedicatedCloud/{serviceName}/servicePack' |
-  '/dedicatedCloud/{serviceName}/orderableIpCountries' |
+  '/dedicatedCloud/location/{pccZone}/stock/zpool' |
+  '/dedicatedCloud/{serviceName}' |
+  '/dedicatedCloud/{serviceName}/allowedNetwork' |
+  '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}' |
+  '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task' |
+  '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}' |
+  '/dedicatedCloud/{serviceName}/capabilities' |
+  '/dedicatedCloud/{serviceName}/commercialRange/compliance' |
+  '/dedicatedCloud/{serviceName}/commercialRange/orderable' |
   '/dedicatedCloud/{serviceName}/datacenter' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/defaultLocalVraNetwork' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/hourlyConsumption' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/hourlyConsumption' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/hourlyConsumption' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}' |
+  '/dedicatedCloud/{serviceName}/federation' |
+  '/dedicatedCloud/{serviceName}/federation/activeDirectory' |
+  '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}' |
+  '/dedicatedCloud/{serviceName}/filer' |
+  '/dedicatedCloud/{serviceName}/filer/{filerId}' |
+  '/dedicatedCloud/{serviceName}/filer/{filerId}/hourlyConsumption' |
+  '/dedicatedCloud/{serviceName}/filer/{filerId}/task' |
+  '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}' |
+  '/dedicatedCloud/{serviceName}/globalTasks' |
+  '/dedicatedCloud/{serviceName}/hcx' |
+  '/dedicatedCloud/{serviceName}/hcx/canBeDisabled' |
+  '/dedicatedCloud/{serviceName}/hcx/canBeEnabled' |
+  '/dedicatedCloud/{serviceName}/hds' |
+  '/dedicatedCloud/{serviceName}/hds/canBeDisabled' |
+  '/dedicatedCloud/{serviceName}/hds/canBeEnabled' |
+  '/dedicatedCloud/{serviceName}/hipaa' |
+  '/dedicatedCloud/{serviceName}/hipaa/canBeDisabled' |
+  '/dedicatedCloud/{serviceName}/hipaa/canBeEnabled' |
+  '/dedicatedCloud/{serviceName}/ip' |
+  '/dedicatedCloud/{serviceName}/ip/{network}' |
+  '/dedicatedCloud/{serviceName}/ip/{network}/details' |
+  '/dedicatedCloud/{serviceName}/ip/{network}/task' |
+  '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}' |
+  '/dedicatedCloud/{serviceName}/newPrices' |
+  '/dedicatedCloud/{serviceName}/nsx' |
+  '/dedicatedCloud/{serviceName}/nsx/canBeDisabled' |
+  '/dedicatedCloud/{serviceName}/nsx/canBeEnabled' |
+  '/dedicatedCloud/{serviceName}/orderableIpCountries' |
+  '/dedicatedCloud/{serviceName}/passwordPolicy' |
+  '/dedicatedCloud/{serviceName}/pcidss' |
+  '/dedicatedCloud/{serviceName}/pcidss/canBeDisabled' |
+  '/dedicatedCloud/{serviceName}/pcidss/canBeEnabled' |
+  '/dedicatedCloud/{serviceName}/robot' |
+  '/dedicatedCloud/{serviceName}/robot/{name}' |
+  '/dedicatedCloud/{serviceName}/serviceInfos' |
+  '/dedicatedCloud/{serviceName}/servicePack' |
+  '/dedicatedCloud/{serviceName}/servicePacks' |
+  '/dedicatedCloud/{serviceName}/servicePacks/{name}' |
+  '/dedicatedCloud/{serviceName}/task' |
+  '/dedicatedCloud/{serviceName}/task/{taskId}' |
+  '/dedicatedCloud/{serviceName}/twoFAWhitelist' |
+  '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}' |
+  '/dedicatedCloud/{serviceName}/user' |
+  '/dedicatedCloud/{serviceName}/user/{userId}' |
+  '/dedicatedCloud/{serviceName}/user/{userId}/objectRight' |
+  '/dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}' |
+  '/dedicatedCloud/{serviceName}/user/{userId}/right' |
+  '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}' |
+  '/dedicatedCloud/{serviceName}/user/{userId}/task' |
+  '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}' |
+  '/dedicatedCloud/{serviceName}/vendor' |
+  '/dedicatedCloud/{serviceName}/vlan' |
+  '/dedicatedCloud/{serviceName}/vlan/{vlanId}' |
   '/dedicatedCloud/{serviceName}/vmEncryption' |
   '/dedicatedCloud/{serviceName}/vmEncryption/kms' |
   '/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}' |
   '/dedicatedCloud/{serviceName}/vrack' |
   '/dedicatedCloud/{serviceName}/vrack/{vrack}' |
-  '/dedicatedCloud/{serviceName}/allowedNetwork' |
+  '/dedicatedCloud/{serviceName}/vrops' |
+  '/dedicatedCloud/{serviceName}/vrops/canBeDisabled' |
+  '/dedicatedCloud/{serviceName}/vrops/canBeEnabled';
+
+type PathsDedicatedCloudPUT = '/dedicatedCloud/{serviceName}' |
   '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}' |
-  '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task' |
-  '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}' |
-  '/dedicatedCloud/{serviceName}/passwordPolicy' |
-  '/dedicatedCloud/{serviceName}/ip/{network}/task' |
-  '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}' |
-  '/dedicatedCloud/{serviceName}/ip/{network}/details' |
-  '/dedicatedCloud/{serviceName}/ip/{network}' |
-  '/dedicatedCloud/{serviceName}/ip' |
-  '/dedicatedCloud/{serviceName}/user' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/right' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}' |
-  '/dedicatedCloud/{serviceName}/user/{userId}' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/task' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/objectRight' |
-  '/dedicatedCloud/{serviceName}/pcidss/canBeEnabled' |
-  '/dedicatedCloud/{serviceName}/pcidss/canBeDisabled' |
-  '/dedicatedCloud/{serviceName}/pcidss' |
-  '/dedicatedCloud/{serviceName}/vendor' |
-  '/dedicatedCloud/{serviceName}/commercialRange/orderable' |
-  '/dedicatedCloud/{serviceName}/commercialRange/compliance' |
-  '/dedicatedCloud/{serviceName}/robot' |
-  '/dedicatedCloud/{serviceName}/robot/{name}' |
-  '/dedicatedCloud/{serviceName}/newPrices' |
-  '/dedicatedCloud/{serviceName}/servicePacks/{name}' |
-  '/dedicatedCloud/{serviceName}/servicePacks' |
-  '/dedicatedCloud/{serviceName}/vlan/{vlanId}' |
-  '/dedicatedCloud/{serviceName}/vlan' |
-  '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}' |
-  '/dedicatedCloud/{serviceName}/twoFAWhitelist' |
-  '/dedicatedCloud/{serviceName}' |
-  '/dedicatedCloud/{serviceName}/nsx' |
-  '/dedicatedCloud/{serviceName}/nsx/canBeDisabled' |
-  '/dedicatedCloud/{serviceName}/nsx/canBeEnabled' |
-  '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}' |
-  '/dedicatedCloud/{serviceName}/federation/activeDirectory' |
-  '/dedicatedCloud/{serviceName}/federation' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}' |
   '/dedicatedCloud/{serviceName}/serviceInfos' |
-  '/dedicatedCloud/{serviceName}/hipaa' |
-  '/dedicatedCloud/{serviceName}/hipaa/canBeEnabled' |
-  '/dedicatedCloud/{serviceName}/hipaa/canBeDisabled' |
-  '/dedicatedCloud/{serviceName}/globalTasks' |
-  '/dedicatedCloud/{serviceName}/filer/{filerId}' |
-  '/dedicatedCloud/{serviceName}/filer/{filerId}/hourlyConsumption' |
-  '/dedicatedCloud/{serviceName}/filer/{filerId}/task' |
-  '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}' |
-  '/dedicatedCloud/{serviceName}/filer' |
-  '/dedicatedCloud/{serviceName}/capabilities' |
-  '/dedicatedCloud/commercialRange' |
-  '/dedicatedCloud/commercialRange/{commercialRangeName}' |
-  '/dedicatedCloud';
+  '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}';
 
-type PathsDedicatedCloudPUT = '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}' |
-  '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}' |
-  '/dedicatedCloud/{serviceName}' |
-  '/dedicatedCloud/{serviceName}/serviceInfos';
-
-type PathsDedicatedCloudPOST = '/dedicatedCloud/{serviceName}/hcx/enable' |
-  '/dedicatedCloud/{serviceName}/hcx/disable' |
-  '/dedicatedCloud/{serviceName}/hds/disable' |
-  '/dedicatedCloud/{serviceName}/hds/enable' |
-  '/dedicatedCloud/{serviceName}/orderNewFilerHourly' |
+type PathsDedicatedCloudPOST = '/dedicatedCloud/{serviceName}/allowedNetwork' |
+  '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/changeMaintenanceExecutionDate' |
+  '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState' |
+  '/dedicatedCloud/{serviceName}/changeContact' |
   '/dedicatedCloud/{serviceName}/changeProperties' |
-  '/dedicatedCloud/{serviceName}/task/{taskId}/resetTaskState' |
-  '/dedicatedCloud/{serviceName}/task/{taskId}/changeMaintenanceExecutionDate' |
-  '/dedicatedCloud/{serviceName}/vrops/disable' |
-  '/dedicatedCloud/{serviceName}/vrops/enable' |
+  '/dedicatedCloud/{serviceName}/confirmTermination' |
   '/dedicatedCloud/{serviceName}/datacenter' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/disable' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewFilerHourly' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/disable' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/enable' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/generateZsspPassword' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/disable' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/state' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/configureVpn' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/disable' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/changeMaintenanceExecutionDate' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/remove' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}/restore' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/disable' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableBackup' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/resetTaskState' |
-  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/changeMaintenanceExecutionDate' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/remove' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate' |
   '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/resetTaskState' |
-  '/dedicatedCloud/{serviceName}/vmEncryption/kms' |
-  '/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}/changeProperties' |
-  '/dedicatedCloud/{serviceName}/allowedNetwork' |
-  '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/changeMaintenanceExecutionDate' |
-  '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState' |
-  '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/changeMaintenanceExecutionDate' |
-  '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/resetTaskState' |
-  '/dedicatedCloud/{serviceName}/user' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/enable' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/changeProperties' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/changePassword' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/resetTaskState' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/changeMaintenanceExecutionDate' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/disable' |
-  '/dedicatedCloud/{serviceName}/user/{userId}/objectRight' |
-  '/dedicatedCloud/{serviceName}/confirmTermination' |
-  '/dedicatedCloud/{serviceName}/pcidss/enable' |
-  '/dedicatedCloud/{serviceName}/pcidss/disable' |
-  '/dedicatedCloud/{serviceName}/vendor/objectType' |
-  '/dedicatedCloud/{serviceName}/vendor/ovhId' |
-  '/dedicatedCloud/{serviceName}/resetTriggeredAlarm' |
-  '/dedicatedCloud/{serviceName}/upgradeHypervisor' |
-  '/dedicatedCloud/{serviceName}/terminate' |
-  '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}/changeProperties' |
-  '/dedicatedCloud/{serviceName}/twoFAWhitelist' |
-  '/dedicatedCloud/{serviceName}/nsx/disable' |
-  '/dedicatedCloud/{serviceName}/nsx/enable' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/remove' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/changeMaintenanceExecutionDate' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewFilerHourly' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/changeMaintenanceExecutionDate' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/resetTaskState' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/disable' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}/restore' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableBackup' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup' |
+  '/dedicatedCloud/{serviceName}/federation/activeDirectory' |
   '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties' |
   '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryUser' |
-  '/dedicatedCloud/{serviceName}/federation/activeDirectory' |
-  '/dedicatedCloud/{serviceName}/hipaa/disable' |
-  '/dedicatedCloud/{serviceName}/hipaa/enable' |
   '/dedicatedCloud/{serviceName}/filer/{filerId}/remove' |
   '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate' |
   '/dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/resetTaskState' |
-  '/dedicatedCloud/{serviceName}/changeContact';
+  '/dedicatedCloud/{serviceName}/hcx/disable' |
+  '/dedicatedCloud/{serviceName}/hcx/enable' |
+  '/dedicatedCloud/{serviceName}/hds/disable' |
+  '/dedicatedCloud/{serviceName}/hds/enable' |
+  '/dedicatedCloud/{serviceName}/hipaa/disable' |
+  '/dedicatedCloud/{serviceName}/hipaa/enable' |
+  '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/changeMaintenanceExecutionDate' |
+  '/dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/resetTaskState' |
+  '/dedicatedCloud/{serviceName}/nsx/disable' |
+  '/dedicatedCloud/{serviceName}/nsx/enable' |
+  '/dedicatedCloud/{serviceName}/orderNewFilerHourly' |
+  '/dedicatedCloud/{serviceName}/pcidss/disable' |
+  '/dedicatedCloud/{serviceName}/pcidss/enable' |
+  '/dedicatedCloud/{serviceName}/resetTriggeredAlarm' |
+  '/dedicatedCloud/{serviceName}/task/{taskId}/changeMaintenanceExecutionDate' |
+  '/dedicatedCloud/{serviceName}/task/{taskId}/resetTaskState' |
+  '/dedicatedCloud/{serviceName}/terminate' |
+  '/dedicatedCloud/{serviceName}/twoFAWhitelist' |
+  '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}/changeProperties' |
+  '/dedicatedCloud/{serviceName}/upgradeHypervisor' |
+  '/dedicatedCloud/{serviceName}/user' |
+  '/dedicatedCloud/{serviceName}/user/{userId}/changePassword' |
+  '/dedicatedCloud/{serviceName}/user/{userId}/changeProperties' |
+  '/dedicatedCloud/{serviceName}/user/{userId}/disable' |
+  '/dedicatedCloud/{serviceName}/user/{userId}/enable' |
+  '/dedicatedCloud/{serviceName}/user/{userId}/objectRight' |
+  '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/changeMaintenanceExecutionDate' |
+  '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/resetTaskState' |
+  '/dedicatedCloud/{serviceName}/vendor/objectType' |
+  '/dedicatedCloud/{serviceName}/vendor/ovhId' |
+  '/dedicatedCloud/{serviceName}/vmEncryption/kms' |
+  '/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}/changeProperties' |
+  '/dedicatedCloud/{serviceName}/vrops/disable' |
+  '/dedicatedCloud/{serviceName}/vrops/enable';
 
-type PathsDedicatedCloudDELETE = '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}' |
-  '/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}' |
-  '/dedicatedCloud/{serviceName}/vrack/{vrack}' |
-  '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}' |
+type PathsDedicatedCloudDELETE = '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}' |
+  '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}' |
+  '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}' |
+  '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}' |
   '/dedicatedCloud/{serviceName}/user/{userId}' |
   '/dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}' |
-  '/dedicatedCloud/{serviceName}/twoFAWhitelist/{id}' |
-  '/dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}';
+  '/dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}' |
+  '/dedicatedCloud/{serviceName}/vrack/{vrack}';
 
 export class ApiDedicatedCloud extends OvhWrapper {
   constructor(engine: OvhRequestable) {

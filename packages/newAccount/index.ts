@@ -95,7 +95,7 @@ export interface NewAccount {
     }
     creationRules:  {
         // GET /newAccount/creationRules
-        $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum, legalform: nichandle.LegalFormEnum, country: nichandle.CountryEnum, ovhCompany: nichandle.OvhCompanyEnum}): Promise<nichandle.CreationRules>;
+        $get(param?: {country: nichandle.CountryEnum, legalform: nichandle.LegalFormEnum, ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<nichandle.CreationRules>;
     }
     legalform:  {
         // GET /newAccount/legalform
@@ -107,11 +107,11 @@ export interface NewAccount {
     }
 }
 // Api
-type PathsNewAccountGET = '/newAccount/creationRules' |
-  '/newAccount/corporationType' |
+type PathsNewAccountGET = '/newAccount/area' |
   '/newAccount/contracts' |
-  '/newAccount/area' |
+  '/newAccount/corporationType' |
   '/newAccount/countries' |
+  '/newAccount/creationRules' |
   '/newAccount/legalform';
 
 type PathsNewAccountPOST = '/newAccount' |

@@ -155,20 +155,20 @@ export interface License {
     }
 }
 // Api
-type PathsLicenseWindowsGET = '/license/windows/{serviceName}/serviceInfos' |
+type PathsLicenseWindowsGET = '/license/windows' |
+  '/license/windows/orderableVersions' |
   '/license/windows/{serviceName}' |
-  '/license/windows/{serviceName}/tasks' |
-  '/license/windows/{serviceName}/tasks/{taskId}' |
-  '/license/windows/{serviceName}/option/{label}' |
   '/license/windows/{serviceName}/option' |
-  '/license/windows' |
-  '/license/windows/orderableVersions';
+  '/license/windows/{serviceName}/option/{label}' |
+  '/license/windows/{serviceName}/serviceInfos' |
+  '/license/windows/{serviceName}/tasks' |
+  '/license/windows/{serviceName}/tasks/{taskId}';
 
-type PathsLicenseWindowsPUT = '/license/windows/{serviceName}/serviceInfos' |
-  '/license/windows/{serviceName}';
+type PathsLicenseWindowsPUT = '/license/windows/{serviceName}' |
+  '/license/windows/{serviceName}/serviceInfos';
 
-type PathsLicenseWindowsPOST = '/license/windows/{serviceName}/sqlServer' |
-  '/license/windows/{serviceName}/confirmTermination' |
+type PathsLicenseWindowsPOST = '/license/windows/{serviceName}/confirmTermination' |
+  '/license/windows/{serviceName}/sqlServer' |
   '/license/windows/{serviceName}/terminate';
 
 type PathsLicenseWindowsDELETE = '/license/windows/{serviceName}/option/{label}';

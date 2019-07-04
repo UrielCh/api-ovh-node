@@ -271,31 +271,31 @@ export interface Caas {
     }
 }
 // Api
-type PathsCaasContainersGET = '/caas/containers/{serviceName}' |
-  '/caas/containers/{serviceName}/availableFrameworks' |
-  '/caas/containers/{serviceName}/frameworks' |
-  '/caas/containers/{serviceName}/frameworks/{frameworkId}/apps' |
-  '/caas/containers/{serviceName}/frameworks/{frameworkId}' |
-  '/caas/containers/{serviceName}/ssl' |
-  '/caas/containers/{serviceName}/slaves/{slaveId}' |
-  '/caas/containers/{serviceName}/slaves' |
-  '/caas/containers/{serviceName}/serviceInfos' |
-  '/caas/containers/{serviceName}/registry/credentials' |
-  '/caas/containers/{serviceName}/registry/credentials/{credentialsId}' |
+type PathsCaasContainersGET = '/caas/containers' |
   '/caas/containers/slaves/flavors' |
   '/caas/containers/slaves/flavors/{flavorId}' |
-  '/caas/containers';
+  '/caas/containers/{serviceName}' |
+  '/caas/containers/{serviceName}/availableFrameworks' |
+  '/caas/containers/{serviceName}/frameworks' |
+  '/caas/containers/{serviceName}/frameworks/{frameworkId}' |
+  '/caas/containers/{serviceName}/frameworks/{frameworkId}/apps' |
+  '/caas/containers/{serviceName}/registry/credentials' |
+  '/caas/containers/{serviceName}/registry/credentials/{credentialsId}' |
+  '/caas/containers/{serviceName}/serviceInfos' |
+  '/caas/containers/{serviceName}/slaves' |
+  '/caas/containers/{serviceName}/slaves/{slaveId}' |
+  '/caas/containers/{serviceName}/ssl';
 
 type PathsCaasContainersPUT = '/caas/containers/{serviceName}/frameworks/{frameworkId}/password' |
-  '/caas/containers/{serviceName}/ssl' |
+  '/caas/containers/{serviceName}/registry/credentials/{credentialsId}' |
   '/caas/containers/{serviceName}/serviceInfos' |
-  '/caas/containers/{serviceName}/registry/credentials/{credentialsId}';
+  '/caas/containers/{serviceName}/ssl';
 
 type PathsCaasContainersPOST = '/caas/containers/{serviceName}/changeContact' |
   '/caas/containers/{serviceName}/registry/credentials';
 
-type PathsCaasContainersDELETE = '/caas/containers/{serviceName}/ssl' |
-  '/caas/containers/{serviceName}/registry/credentials/{credentialsId}';
+type PathsCaasContainersDELETE = '/caas/containers/{serviceName}/registry/credentials/{credentialsId}' |
+  '/caas/containers/{serviceName}/ssl';
 
 export class ApiCaasContainers extends OvhWrapper {
   constructor(engine: OvhRequestable) {

@@ -171,23 +171,23 @@ export interface Hosting {
 // Api
 type PathsHostingResellerGET = '/hosting/reseller' |
   '/hosting/reseller/{serviceName}' |
-  '/hosting/reseller/{serviceName}/task/{taskId}' |
-  '/hosting/reseller/{serviceName}/task' |
-  '/hosting/reseller/{serviceName}/serviceInfos' |
   '/hosting/reseller/{serviceName}/resetPasswordUrl' |
+  '/hosting/reseller/{serviceName}/serviceInfos' |
+  '/hosting/reseller/{serviceName}/snapshot' |
   '/hosting/reseller/{serviceName}/snapshot/{snapshotId}' |
-  '/hosting/reseller/{serviceName}/snapshot';
+  '/hosting/reseller/{serviceName}/task' |
+  '/hosting/reseller/{serviceName}/task/{taskId}';
 
 type PathsHostingResellerPUT = '/hosting/reseller/{serviceName}/serviceInfos';
 
-type PathsHostingResellerPOST = '/hosting/reseller/{serviceName}/reverse' |
-  '/hosting/reseller/{serviceName}/changeContact' |
+type PathsHostingResellerPOST = '/hosting/reseller/{serviceName}/changeContact' |
   '/hosting/reseller/{serviceName}/email' |
-  '/hosting/reseller/{serviceName}/reboot' |
   '/hosting/reseller/{serviceName}/language' |
+  '/hosting/reseller/{serviceName}/reboot' |
   '/hosting/reseller/{serviceName}/reinstall' |
-  '/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore' |
-  '/hosting/reseller/{serviceName}/snapshot';
+  '/hosting/reseller/{serviceName}/reverse' |
+  '/hosting/reseller/{serviceName}/snapshot' |
+  '/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore';
 
 export class ApiHostingReseller extends OvhWrapper {
   constructor(engine: OvhRequestable) {

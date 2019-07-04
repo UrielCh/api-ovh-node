@@ -157,23 +157,23 @@ export interface Metrics {
     } | any
 }
 // Api
-type PathsMetricsGET = '/metrics/{serviceName}/token' |
-  '/metrics/{serviceName}/token/{tokenId}' |
-  '/metrics/{serviceName}/serviceInfos' |
+type PathsMetricsGET = '/metrics' |
   '/metrics/{serviceName}' |
   '/metrics/{serviceName}/consumption' |
-  '/metrics';
+  '/metrics/{serviceName}/serviceInfos' |
+  '/metrics/{serviceName}/token' |
+  '/metrics/{serviceName}/token/{tokenId}';
 
-type PathsMetricsPUT = '/metrics/{serviceName}/token/{tokenId}' |
+type PathsMetricsPUT = '/metrics/{serviceName}' |
   '/metrics/{serviceName}/quota' |
   '/metrics/{serviceName}/serviceInfos' |
-  '/metrics/{serviceName}';
+  '/metrics/{serviceName}/token/{tokenId}';
 
-type PathsMetricsPOST = '/metrics/{serviceName}/token' |
+type PathsMetricsPOST = '/metrics/{serviceName}/changeContact' |
   '/metrics/{serviceName}/confirmTermination' |
-  '/metrics/{serviceName}/terminate' |
   '/metrics/{serviceName}/lookup/token' |
-  '/metrics/{serviceName}/changeContact';
+  '/metrics/{serviceName}/terminate' |
+  '/metrics/{serviceName}/token';
 
 type PathsMetricsDELETE = '/metrics/{serviceName}/token/{tokenId}';
 

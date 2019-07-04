@@ -54,12 +54,10 @@ export namespace dedicated {
         //dedicated.ceph.response
         // fullName: dedicated.ceph.response.response
         export interface response {
-            key?: string;
-            mdsCaps?: string;
-            monCaps?: string;
-            name?: string;
-            osdCaps?: string;
-            serviceName?: string;
+            family?: OVH.dedicated.ceph.aclList.response.familyEnum;
+            id?: number;
+            netmask?: string;
+            network?: string;
         }
         export namespace taskGet {
             export namespace response {
@@ -202,34 +200,34 @@ export interface Dedicated {
 // Api
 type PathsDedicatedCephGET = '/dedicated/ceph' |
   '/dedicated/ceph/{serviceName}' |
-  '/dedicated/ceph/{serviceName}/user/{userName}/pool' |
-  '/dedicated/ceph/{serviceName}/user/{userName}' |
-  '/dedicated/ceph/{serviceName}/user' |
-  '/dedicated/ceph/{serviceName}/task/{taskId}' |
-  '/dedicated/ceph/{serviceName}/task' |
-  '/dedicated/ceph/{serviceName}/health' |
-  '/dedicated/ceph/{serviceName}/pool/{poolName}' |
-  '/dedicated/ceph/{serviceName}/pool' |
-  '/dedicated/ceph/{serviceName}/serviceInfos' |
   '/dedicated/ceph/{serviceName}/acl' |
-  '/dedicated/ceph/{serviceName}/acl/{aclId}';
+  '/dedicated/ceph/{serviceName}/acl/{aclId}' |
+  '/dedicated/ceph/{serviceName}/health' |
+  '/dedicated/ceph/{serviceName}/pool' |
+  '/dedicated/ceph/{serviceName}/pool/{poolName}' |
+  '/dedicated/ceph/{serviceName}/serviceInfos' |
+  '/dedicated/ceph/{serviceName}/task' |
+  '/dedicated/ceph/{serviceName}/task/{taskId}' |
+  '/dedicated/ceph/{serviceName}/user' |
+  '/dedicated/ceph/{serviceName}/user/{userName}' |
+  '/dedicated/ceph/{serviceName}/user/{userName}/pool';
 
 type PathsDedicatedCephPUT = '/dedicated/ceph/{serviceName}' |
-  '/dedicated/ceph/{serviceName}/user/{userName}/pool' |
-  '/dedicated/ceph/{serviceName}/serviceInfos';
+  '/dedicated/ceph/{serviceName}/serviceInfos' |
+  '/dedicated/ceph/{serviceName}/user/{userName}/pool';
 
-type PathsDedicatedCephPOST = '/dedicated/ceph/{serviceName}/user/{userName}/pool' |
-  '/dedicated/ceph/{serviceName}/user' |
+type PathsDedicatedCephPOST = '/dedicated/ceph/{serviceName}/acl' |
+  '/dedicated/ceph/{serviceName}/changeContact' |
+  '/dedicated/ceph/{serviceName}/confirmTermination' |
   '/dedicated/ceph/{serviceName}/pool' |
   '/dedicated/ceph/{serviceName}/terminate' |
-  '/dedicated/ceph/{serviceName}/confirmTermination' |
-  '/dedicated/ceph/{serviceName}/changeContact' |
-  '/dedicated/ceph/{serviceName}/acl';
+  '/dedicated/ceph/{serviceName}/user' |
+  '/dedicated/ceph/{serviceName}/user/{userName}/pool';
 
-type PathsDedicatedCephDELETE = '/dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}' |
-  '/dedicated/ceph/{serviceName}/user/{userName}' |
+type PathsDedicatedCephDELETE = '/dedicated/ceph/{serviceName}/acl/{aclId}' |
   '/dedicated/ceph/{serviceName}/pool/{poolName}' |
-  '/dedicated/ceph/{serviceName}/acl/{aclId}';
+  '/dedicated/ceph/{serviceName}/user/{userName}' |
+  '/dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}';
 
 export class ApiDedicatedCeph extends OvhWrapper {
   constructor(engine: OvhRequestable) {

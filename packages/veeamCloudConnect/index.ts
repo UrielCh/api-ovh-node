@@ -147,20 +147,20 @@ export interface VeeamCloudConnect {
 }
 // Api
 type PathsVeeamCloudConnectGET = '/veeamCloudConnect' |
-  '/veeamCloudConnect/{serviceName}/task/{taskId}' |
-  '/veeamCloudConnect/{serviceName}/task' |
-  '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}' |
-  '/veeamCloudConnect/{serviceName}/backupRepository' |
-  '/veeamCloudConnect/{serviceName}/capabilities' |
   '/veeamCloudConnect/{serviceName}' |
+  '/veeamCloudConnect/{serviceName}/backupRepository' |
+  '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}' |
+  '/veeamCloudConnect/{serviceName}/capabilities' |
   '/veeamCloudConnect/{serviceName}/orderableUpgrade' |
-  '/veeamCloudConnect/{serviceName}/serviceInfos';
+  '/veeamCloudConnect/{serviceName}/serviceInfos' |
+  '/veeamCloudConnect/{serviceName}/task' |
+  '/veeamCloudConnect/{serviceName}/task/{taskId}';
 
 type PathsVeeamCloudConnectPUT = '/veeamCloudConnect/{serviceName}/serviceInfos';
 
-type PathsVeeamCloudConnectPOST = '/veeamCloudConnect/{serviceName}/resetPassword' |
+type PathsVeeamCloudConnectPOST = '/veeamCloudConnect/{serviceName}/backupRepository' |
   '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota' |
-  '/veeamCloudConnect/{serviceName}/backupRepository';
+  '/veeamCloudConnect/{serviceName}/resetPassword';
 
 type PathsVeeamCloudConnectDELETE = '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}';
 

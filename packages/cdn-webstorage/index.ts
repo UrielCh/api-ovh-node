@@ -86,17 +86,17 @@ export interface Cdn {
             }
             statistics:  {
                 // GET /cdn/webstorage/{serviceName}/statistics
-                $get(param?: {type: cdn.webstorage.StatsTypeEnum, period: cdn.webstorage.StatsPeriodEnum}): Promise<cdn.webstorage.StatsDataType[]>;
+                $get(param?: {period: cdn.webstorage.StatsPeriodEnum, type: cdn.webstorage.StatsTypeEnum}): Promise<cdn.webstorage.StatsDataType[]>;
             }
         } | any
     }
 }
 // Api
-type PathsCdnWebstorageGET = '/cdn/webstorage/{serviceName}' |
+type PathsCdnWebstorageGET = '/cdn/webstorage' |
+  '/cdn/webstorage/{serviceName}' |
   '/cdn/webstorage/{serviceName}/credentials' |
-  '/cdn/webstorage/{serviceName}/statistics' |
   '/cdn/webstorage/{serviceName}/serviceInfos' |
-  '/cdn/webstorage';
+  '/cdn/webstorage/{serviceName}/statistics';
 
 type PathsCdnWebstoragePUT = '/cdn/webstorage/{serviceName}/serviceInfos';
 
