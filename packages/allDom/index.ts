@@ -63,12 +63,6 @@ export interface AllDom {
     [keys: string]: {
         // GET /allDom/{serviceName}
         $get(): Promise<allDom.AllDom>;
-        serviceInfos:  {
-            // GET /allDom/{serviceName}/serviceInfos
-            $get(): Promise<services.Service>;
-            // PUT /allDom/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
-        }
         domain:  {
             // GET /allDom/{serviceName}/domain
             $get(param?: {domain?: string}): Promise<string[]>;
@@ -77,14 +71,20 @@ export interface AllDom {
                 $get(): Promise<allDom.AllDomDomain>;
             } | any
         }
+        serviceInfos:  {
+            // GET /allDom/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /allDom/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
+        }
     } | any
 }
 // Api
-type PathsAllDomGET = '/allDom/{serviceName}/serviceInfos' |
-  '/allDom/{serviceName}' |
-  '/allDom/{serviceName}/domain/{domain}' |
+type PathsAllDomGET = '/allDom' |
+  '/allDom/{serviceName}/serviceInfos' |
   '/allDom/{serviceName}/domain' |
-  '/allDom';
+  '/allDom/{serviceName}/domain/{domain}' |
+  '/allDom/{serviceName}';
 
 type PathsAllDomPUT = '/allDom/{serviceName}/serviceInfos';
 

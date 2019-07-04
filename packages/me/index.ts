@@ -1467,12 +1467,12 @@ export interface Me {
     $put(body?: {body: nichandle.Nichandle}): Promise<void>;
     accessRestriction:  {
         backupCode:  {
+            // DELETE /me/accessRestriction/backupCode
+            $delete(): Promise<void>;
             // GET /me/accessRestriction/backupCode
             $get(): Promise<nichandle.accessRestriction.SOTPAccount>;
             // POST /me/accessRestriction/backupCode
             $post(): Promise<nichandle.accessRestriction.SOTPSecret>;
-            // DELETE /me/accessRestriction/backupCode
-            $delete(): Promise<void>;
             disable:  {
                 // POST /me/accessRestriction/backupCode/disable
                 $post(body?: {code: string}): Promise<void>;
@@ -1498,12 +1498,12 @@ export interface Me {
             // POST /me/accessRestriction/ip
             $post(body?: {ip: string, rule: nichandle.accessRestriction.IpRestrictionRuleEnum, warning: boolean}): Promise<void>;
             [keys: string]: {
+                // DELETE /me/accessRestriction/ip/{id}
+                $delete(): Promise<void>;
                 // GET /me/accessRestriction/ip/{id}
                 $get(): Promise<nichandle.IpRestriction>;
                 // PUT /me/accessRestriction/ip/{id}
                 $put(body?: {body: nichandle.IpRestriction}): Promise<void>;
-                // DELETE /me/accessRestriction/ip/{id}
-                $delete(): Promise<void>;
             } | any
         }
         ipDefaultRule:  {
@@ -1518,12 +1518,12 @@ export interface Me {
             // POST /me/accessRestriction/sms
             $post(body?: {phone: string}): Promise<nichandle.accessRestriction.SmsSecret>;
             [keys: string]: {
+                // DELETE /me/accessRestriction/sms/{id}
+                $delete(): Promise<void>;
                 // GET /me/accessRestriction/sms/{id}
                 $get(): Promise<nichandle.accessRestriction.SmsAccount>;
                 // PUT /me/accessRestriction/sms/{id}
                 $put(body?: {body: nichandle.accessRestriction.SmsAccount}): Promise<void>;
-                // DELETE /me/accessRestriction/sms/{id}
-                $delete(): Promise<void>;
                 disable:  {
                     // POST /me/accessRestriction/sms/{id}/disable
                     $post(body?: {code: string}): Promise<void>;
@@ -1548,12 +1548,12 @@ export interface Me {
             // POST /me/accessRestriction/totp
             $post(): Promise<nichandle.accessRestriction.TOTPSecret>;
             [keys: string]: {
+                // DELETE /me/accessRestriction/totp/{id}
+                $delete(): Promise<void>;
                 // GET /me/accessRestriction/totp/{id}
                 $get(): Promise<nichandle.accessRestriction.TOTPAccount>;
                 // PUT /me/accessRestriction/totp/{id}
                 $put(body?: {body: nichandle.accessRestriction.TOTPAccount}): Promise<void>;
-                // DELETE /me/accessRestriction/totp/{id}
-                $delete(): Promise<void>;
                 disable:  {
                     // POST /me/accessRestriction/totp/{id}/disable
                     $post(body?: {code: string}): Promise<void>;
@@ -1574,12 +1574,12 @@ export interface Me {
             // POST /me/accessRestriction/u2f
             $post(): Promise<nichandle.accessRestriction.U2FRegisterChallenge>;
             [keys: string]: {
+                // DELETE /me/accessRestriction/u2f/{id}
+                $delete(): Promise<void>;
                 // GET /me/accessRestriction/u2f/{id}
                 $get(): Promise<nichandle.accessRestriction.U2FAccount>;
                 // PUT /me/accessRestriction/u2f/{id}
                 $put(body?: {body: nichandle.accessRestriction.U2FAccount}): Promise<void>;
-                // DELETE /me/accessRestriction/u2f/{id}
-                $delete(): Promise<void>;
                 challenge:  {
                     // POST /me/accessRestriction/u2f/{id}/challenge
                     $post(): Promise<nichandle.accessRestriction.U2FSignChallenge>;
@@ -1601,7 +1601,7 @@ export interface Me {
     }
     agreements:  {
         // GET /me/agreements
-        $get(param?: {contractId?: number, agreed?: agreements.AgreementStateEnum}): Promise<number[]>;
+        $get(param?: {agreed?: agreements.AgreementStateEnum, contractId?: number}): Promise<number[]>;
         [keys: string]: {
             // GET /me/agreements/{id}
             $get(): Promise<agreements.ContractAgreement>;
@@ -1620,20 +1620,20 @@ export interface Me {
             // GET /me/api/application
             $get(): Promise<number[]>;
             [keys: string]: {
-                // GET /me/api/application/{applicationId}
-                $get(): Promise<api.Application>;
                 // DELETE /me/api/application/{applicationId}
                 $delete(): Promise<void>;
+                // GET /me/api/application/{applicationId}
+                $get(): Promise<api.Application>;
             } | any
         }
         credential:  {
             // GET /me/api/credential
             $get(param?: {applicationId?: number, status?: auth.CredentialStateEnum}): Promise<number[]>;
             [keys: string]: {
-                // GET /me/api/credential/{credentialId}
-                $get(): Promise<api.Credential>;
                 // DELETE /me/api/credential/{credentialId}
                 $delete(): Promise<void>;
+                // GET /me/api/credential/{credentialId}
+                $get(): Promise<api.Credential>;
                 application:  {
                     // GET /me/api/credential/{credentialId}/application
                     $get(): Promise<api.Application>;
@@ -1662,10 +1662,10 @@ export interface Me {
     autorenew:  {
         // GET /me/autorenew
         $get(): Promise<nichandle.NicAutorenewInfos>;
-        // PUT /me/autorenew
-        $put(body?: {body: nichandle.NicAutorenewInfos}): Promise<void>;
         // POST /me/autorenew
         $post(body?: {renewDay: number}): Promise<void>;
+        // PUT /me/autorenew
+        $put(body?: {body: nichandle.NicAutorenewInfos}): Promise<void>;
     }
     availableAutomaticPaymentMeans:  {
         // GET /me/availableAutomaticPaymentMeans
@@ -1833,7 +1833,7 @@ export interface Me {
     }
     deposit:  {
         // GET /me/deposit
-        $get(param?: {orderId?: number, date_from?: string, date_to?: string}): Promise<string[]>;
+        $get(param?: {orderId?: number, date_to?: string, date_from?: string}): Promise<string[]>;
         [keys: string]: {
             // GET /me/deposit/{depositId}
             $get(): Promise<billing.Deposit>;
@@ -1901,12 +1901,12 @@ export interface Me {
             $post(body?: {origin: string}): Promise<void>;
         }
         [keys: string]: {
+            // DELETE /me/document/{id}
+            $delete(): Promise<void>;
             // GET /me/document/{id}
             $get(): Promise<nichandle.document.Document>;
             // PUT /me/document/{id}
             $put(body?: {body: nichandle.document.Document}): Promise<void>;
-            // DELETE /me/document/{id}
-            $delete(): Promise<void>;
         } | any
     }
     fax:  {
@@ -1916,10 +1916,10 @@ export interface Me {
             // POST /me/fax/customDomains
             $post(body?: {domain: string}): Promise<telephony.MailDomain2Service>;
             [keys: string]: {
-                // GET /me/fax/customDomains/{id}
-                $get(): Promise<telephony.MailDomain2Service>;
                 // DELETE /me/fax/customDomains/{id}
                 $delete(): Promise<void>;
+                // GET /me/fax/customDomains/{id}
+                $get(): Promise<telephony.MailDomain2Service>;
             } | any
         }
     }
@@ -1934,7 +1934,7 @@ export interface Me {
         }
         movements:  {
             // GET /me/fidelityAccount/movements
-            $get(param?: {date_to?: string, date_from?: string}): Promise<number[]>;
+            $get(param?: {date_from?: string, date_to?: string}): Promise<number[]>;
             [keys: string]: {
                 // GET /me/fidelityAccount/movements/{movementId}
                 $get(): Promise<billing.FidelityMovement>;
@@ -1952,10 +1952,10 @@ export interface Me {
             // POST /me/identity/group
             $post(body?: {description?: string, name: string, role?: nichandle.RoleEnum}): Promise<nichandle.Authentication.Group>;
             [keys: string]: {
-                // GET /me/identity/group/{group}
-                $get(): Promise<nichandle.Authentication.Group>;
                 // DELETE /me/identity/group/{group}
                 $delete(): Promise<void>;
+                // GET /me/identity/group/{group}
+                $get(): Promise<nichandle.Authentication.Group>;
                 // PUT /me/identity/group/{group}
                 $put(body?: {description?: string, role?: nichandle.RoleEnum}): Promise<void>;
             } | any
@@ -1966,10 +1966,10 @@ export interface Me {
             // POST /me/identity/user
             $post(body?: {description?: string, email: string, group?: string, login: string, password: string}): Promise<void>;
             [keys: string]: {
-                // GET /me/identity/user/{user}
-                $get(): Promise<nichandle.User>;
                 // DELETE /me/identity/user/{user}
                 $delete(): Promise<void>;
+                // GET /me/identity/user/{user}
+                $get(): Promise<nichandle.User>;
                 // PUT /me/identity/user/{user}
                 $put(body?: {description?: string, email?: string, group?: string}): Promise<void>;
                 disable:  {
@@ -1993,12 +1993,12 @@ export interface Me {
         // POST /me/installationTemplate
         $post(body?: {baseTemplateName: string, defaultLanguage: dedicated.TemplateOsLanguageEnum, name: string}): Promise<void>;
         [keys: string]: {
+            // DELETE /me/installationTemplate/{templateName}
+            $delete(): Promise<void>;
             // GET /me/installationTemplate/{templateName}
             $get(): Promise<dedicated.installationTemplate.Templates>;
             // PUT /me/installationTemplate/{templateName}
             $put(body?: {body: dedicated.installationTemplate.Templates}): Promise<void>;
-            // DELETE /me/installationTemplate/{templateName}
-            $delete(): Promise<void>;
             checkIntegrity:  {
                 // POST /me/installationTemplate/{templateName}/checkIntegrity
                 $post(): Promise<void>;
@@ -2009,24 +2009,24 @@ export interface Me {
                 // POST /me/installationTemplate/{templateName}/partitionScheme
                 $post(body?: {name: string, priority: number}): Promise<void>;
                 [keys: string]: {
+                    // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
+                    $delete(): Promise<void>;
                     // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
                     $get(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
                     // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
                     $put(body?: {body: dedicated.installationTemplate.templatePartitioningSchemes}): Promise<void>;
-                    // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
-                    $delete(): Promise<void>;
                     hardwareRaid:  {
                         // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
                         $get(): Promise<string[]>;
                         // POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
                         $post(body?: {disks: string[], mode: dedicated.TemplateOsHardwareRaidEnum, name: string, step: number}): Promise<void>;
                         [keys: string]: {
+                            // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
+                            $delete(): Promise<void>;
                             // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
                             $get(): Promise<dedicated.installationTemplate.hardwareRaid>;
                             // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
                             $put(body?: {body: dedicated.installationTemplate.hardwareRaid}): Promise<void>;
-                            // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
-                            $delete(): Promise<void>;
                         } | any
                     }
                     partition:  {
@@ -2035,12 +2035,12 @@ export interface Me {
                         // POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                         $post(body?: {filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: number, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
                         [keys: string]: {
+                            // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
+                            $delete(): Promise<void>;
                             // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                             $get(): Promise<dedicated.installationTemplate.templatePartitions>;
                             // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                             $put(body?: {body: dedicated.installationTemplate.templatePartitions}): Promise<void>;
-                            // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
-                            $delete(): Promise<void>;
                         } | any
                     }
                 } | any
@@ -2053,12 +2053,12 @@ export interface Me {
         // POST /me/ipOrganisation
         $post(body?: {abuse_mailbox: string, address: string, city: string, country: nichandle.CountryEnum, firstname: string, lastname: string, phone: string, registry: nichandle.IpRegistryEnum, state?: string, zip?: string}): Promise<void>;
         [keys: string]: {
+            // DELETE /me/ipOrganisation/{organisationId}
+            $delete(): Promise<void>;
             // GET /me/ipOrganisation/{organisationId}
             $get(): Promise<nichandle.Ipv4Org>;
             // PUT /me/ipOrganisation/{organisationId}
             $put(body?: {body: nichandle.Ipv4Org}): Promise<void>;
-            // DELETE /me/ipOrganisation/{organisationId}
-            $delete(): Promise<void>;
         } | any
     }
     ipxeScript:  {
@@ -2067,10 +2067,10 @@ export interface Me {
         // POST /me/ipxeScript
         $post(body?: {description: string, name: string, script: string}): Promise<nichandle.ipxe>;
         [keys: string]: {
-            // GET /me/ipxeScript/{name}
-            $get(): Promise<nichandle.ipxe>;
             // DELETE /me/ipxeScript/{name}
             $delete(): Promise<void>;
+            // GET /me/ipxeScript/{name}
+            $get(): Promise<nichandle.ipxe>;
         } | any
     }
     mailingList:  {
@@ -2097,7 +2097,7 @@ export interface Me {
     }
     order:  {
         // GET /me/order
-        $get(param?: {date_from?: string, date_to?: string}): Promise<number[]>;
+        $get(param?: {date_to?: string, date_from?: string}): Promise<number[]>;
         [keys: string]: {
             // GET /me/order/{orderId}
             $get(): Promise<billing.Order>;
@@ -2220,12 +2220,12 @@ export interface Me {
             // POST /me/payment/method
             $post(body?: {callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean}): Promise<me.payment.method.Register.ValidationResult>;
             [keys: string]: {
+                // DELETE /me/payment/method/{paymentMethodId}
+                $delete(): Promise<me.payment.method.PaymentMethod>;
                 // GET /me/payment/method/{paymentMethodId}
                 $get(): Promise<me.payment.method.PaymentMethod>;
                 // PUT /me/payment/method/{paymentMethodId}
                 $put(body?: {default_?: boolean, description?: string}): Promise<billing.PaymentMethod>;
-                // DELETE /me/payment/method/{paymentMethodId}
-                $delete(): Promise<me.payment.method.PaymentMethod>;
                 challenge:  {
                     // POST /me/payment/method/{paymentMethodId}/challenge
                     $post(body?: {challenge: string}): Promise<me.payment.method.PaymentMethod>;
@@ -2252,12 +2252,12 @@ export interface Me {
             // POST /me/paymentMean/bankAccount
             $post(body?: {bic: string, description?: string, iban: string, ownerAddress: string, ownerName: string, setDefault?: boolean}): Promise<billing.PaymentMeanValidation>;
             [keys: string]: {
+                // DELETE /me/paymentMean/bankAccount/{id}
+                $delete(): Promise<void>;
                 // GET /me/paymentMean/bankAccount/{id}
                 $get(): Promise<billing.BankAccount>;
                 // PUT /me/paymentMean/bankAccount/{id}
                 $put(body?: {body: billing.BankAccount}): Promise<void>;
-                // DELETE /me/paymentMean/bankAccount/{id}
-                $delete(): Promise<void>;
                 challenge:  {
                     // POST /me/paymentMean/bankAccount/{id}/challenge
                     $post(body?: {challenge: string}): Promise<void>;
@@ -2274,12 +2274,12 @@ export interface Me {
             // POST /me/paymentMean/creditCard
             $post(body?: {description?: string, returnUrl?: string, setDefault?: boolean}): Promise<billing.PaymentMeanValidation>;
             [keys: string]: {
+                // DELETE /me/paymentMean/creditCard/{id}
+                $delete(): Promise<void>;
                 // GET /me/paymentMean/creditCard/{id}
                 $get(): Promise<billing.CreditCard>;
                 // PUT /me/paymentMean/creditCard/{id}
                 $put(body?: {body: billing.CreditCard}): Promise<void>;
-                // DELETE /me/paymentMean/creditCard/{id}
-                $delete(): Promise<void>;
                 challenge:  {
                     // POST /me/paymentMean/creditCard/{id}/challenge
                     $post(body?: {challenge: string}): Promise<void>;
@@ -2310,12 +2310,12 @@ export interface Me {
             // POST /me/paymentMean/paypal
             $post(body?: {description?: string, returnUrl?: string, setDefault?: boolean}): Promise<billing.PaymentMeanValidation>;
             [keys: string]: {
+                // DELETE /me/paymentMean/paypal/{id}
+                $delete(): Promise<void>;
                 // GET /me/paymentMean/paypal/{id}
                 $get(): Promise<billing.Paypal>;
                 // PUT /me/paymentMean/paypal/{id}
                 $put(body?: {body: billing.Paypal}): Promise<void>;
-                // DELETE /me/paymentMean/paypal/{id}
-                $delete(): Promise<void>;
                 challenge:  {
                     // POST /me/paymentMean/paypal/{id}/challenge
                     $post(body?: {challenge: string}): Promise<void>;
@@ -2329,7 +2329,7 @@ export interface Me {
     }
     refund:  {
         // GET /me/refund
-        $get(param?: {orderId?: number, date_from?: string, date_to?: string}): Promise<string[]>;
+        $get(param?: {date_to?: string, date_from?: string, orderId?: number}): Promise<string[]>;
         [keys: string]: {
             // GET /me/refund/{refundId}
             $get(): Promise<billing.Refund>;
@@ -2377,12 +2377,12 @@ export interface Me {
         // POST /me/sshKey
         $post(body?: {key: string, keyName: string}): Promise<void>;
         [keys: string]: {
+            // DELETE /me/sshKey/{keyName}
+            $delete(): Promise<void>;
             // GET /me/sshKey/{keyName}
             $get(): Promise<nichandle.sshKey>;
             // PUT /me/sshKey/{keyName}
             $put(body?: {body: nichandle.sshKey}): Promise<void>;
-            // DELETE /me/sshKey/{keyName}
-            $delete(): Promise<void>;
         } | any
     }
     subAccount:  {
@@ -2418,7 +2418,7 @@ export interface Me {
     task:  {
         contactChange:  {
             // GET /me/task/contactChange
-            $get(param?: {state?: nichandle.changeContact.TaskStateEnum, askingAccount?: string, toAccount?: string}): Promise<number[]>;
+            $get(param?: {askingAccount?: string, toAccount?: string, state?: nichandle.changeContact.TaskStateEnum}): Promise<number[]>;
             [keys: string]: {
                 // GET /me/task/contactChange/{id}
                 $get(): Promise<nichandle.contactChange.Task>;
@@ -2438,7 +2438,7 @@ export interface Me {
         }
         domain:  {
             // GET /me/task/domain
-            $get(param?: {function_?: domain.NicOperationFunctionEnum, status?: domain.OperationStatusEnum, domain?: string}): Promise<number[]>;
+            $get(param?: {status?: domain.OperationStatusEnum, function_?: domain.NicOperationFunctionEnum, domain?: string}): Promise<number[]>;
             [keys: string]: {
                 // GET /me/task/domain/{id}
                 $get(): Promise<nichandle.DomainTask>;
@@ -2494,17 +2494,17 @@ export interface Me {
             // POST /me/telephony/defaultIpRestriction
             $post(body?: {subnet: string, type: telephony.ProtocolEnum}): Promise<telephony.DefaultIpRestriction>;
             [keys: string]: {
-                // GET /me/telephony/defaultIpRestriction/{id}
-                $get(): Promise<telephony.DefaultIpRestriction>;
                 // DELETE /me/telephony/defaultIpRestriction/{id}
                 $delete(): Promise<void>;
+                // GET /me/telephony/defaultIpRestriction/{id}
+                $get(): Promise<telephony.DefaultIpRestriction>;
             } | any
         }
         settings:  {
-            // POST /me/telephony/settings
-            $post(body?: {settings: telephony.Settings}): Promise<void>;
             // GET /me/telephony/settings
             $get(): Promise<telephony.Settings>;
+            // POST /me/telephony/settings
+            $post(body?: {settings: telephony.Settings}): Promise<void>;
         }
     }
     vipStatus:  {
@@ -2519,7 +2519,7 @@ export interface Me {
     }
     withdrawal:  {
         // GET /me/withdrawal
-        $get(param?: {date_from?: string, orderId?: number, date_to?: string}): Promise<string[]>;
+        $get(param?: {date_to?: string, date_from?: string, orderId?: number}): Promise<string[]>;
         [keys: string]: {
             // GET /me/withdrawal/{withdrawalId}
             $get(): Promise<billing.Withdrawal>;

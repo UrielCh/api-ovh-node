@@ -127,28 +127,26 @@ export interface Dbaas {
             $get(): Promise<dbaas.queue.App>;
             // PUT /dbaas/queue/{serviceName}
             $put(body?: {name: string}): Promise<dbaas.queue.App>;
-            metrics:  {
-                account:  {
-                    // GET /dbaas/queue/{serviceName}/metrics/account
-                    $get(): Promise<dbaas.queue.MetricsAccount>;
-                }
-            }
-            topic:  {
-                // GET /dbaas/queue/{serviceName}/topic
-                $get(): Promise<string[]>;
-                [keys: string]: {
-                    // GET /dbaas/queue/{serviceName}/topic/{topicId}
-                    $get(): Promise<dbaas.queue.Topic>;
-                    // DELETE /dbaas/queue/{serviceName}/topic/{topicId}
-                    $delete(): Promise<void>;
-                } | any
-            }
             key:  {
                 // GET /dbaas/queue/{serviceName}/key
                 $get(): Promise<string[]>;
                 [keys: string]: {
                     // GET /dbaas/queue/{serviceName}/key/{keyId}
                     $get(): Promise<dbaas.queue.Key>;
+                } | any
+            }
+            metrics:  {
+                account:  {
+                    // GET /dbaas/queue/{serviceName}/metrics/account
+                    $get(): Promise<dbaas.queue.MetricsAccount>;
+                }
+            }
+            region:  {
+                // GET /dbaas/queue/{serviceName}/region
+                $get(): Promise<string[]>;
+                [keys: string]: {
+                    // GET /dbaas/queue/{serviceName}/region/{regionId}
+                    $get(): Promise<dbaas.queue.Region>;
                 } | any
             }
             role:  {
@@ -165,12 +163,14 @@ export interface Dbaas {
                 // PUT /dbaas/queue/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            region:  {
-                // GET /dbaas/queue/{serviceName}/region
+            topic:  {
+                // GET /dbaas/queue/{serviceName}/topic
                 $get(): Promise<string[]>;
                 [keys: string]: {
-                    // GET /dbaas/queue/{serviceName}/region/{regionId}
-                    $get(): Promise<dbaas.queue.Region>;
+                    // DELETE /dbaas/queue/{serviceName}/topic/{topicId}
+                    $delete(): Promise<void>;
+                    // GET /dbaas/queue/{serviceName}/topic/{topicId}
+                    $get(): Promise<dbaas.queue.Topic>;
                 } | any
             }
             user:  {
@@ -193,21 +193,21 @@ export interface Dbaas {
     }
 }
 // Api
-type PathsDbaasQueueGET = '/dbaas/queue/{serviceName}/metrics/account' |
-  '/dbaas/queue/{serviceName}/topic/{topicId}' |
-  '/dbaas/queue/{serviceName}/topic' |
-  '/dbaas/queue/{serviceName}/key/{keyId}' |
-  '/dbaas/queue/{serviceName}/key' |
-  '/dbaas/queue/{serviceName}/role/{roleName}' |
-  '/dbaas/queue/{serviceName}/role' |
-  '/dbaas/queue/{serviceName}/serviceInfos' |
+type PathsDbaasQueueGET = '/dbaas/queue' |
   '/dbaas/queue/{serviceName}/region' |
   '/dbaas/queue/{serviceName}/region/{regionId}' |
-  '/dbaas/queue/{serviceName}/user/{userId}' |
-  '/dbaas/queue/{serviceName}/user/{userId}/roles' |
-  '/dbaas/queue/{serviceName}/user' |
+  '/dbaas/queue/{serviceName}/metrics/account' |
+  '/dbaas/queue/{serviceName}/role' |
+  '/dbaas/queue/{serviceName}/role/{roleName}' |
+  '/dbaas/queue/{serviceName}/topic' |
+  '/dbaas/queue/{serviceName}/topic/{topicId}' |
+  '/dbaas/queue/{serviceName}/serviceInfos' |
   '/dbaas/queue/{serviceName}' |
-  '/dbaas/queue';
+  '/dbaas/queue/{serviceName}/user' |
+  '/dbaas/queue/{serviceName}/user/{userId}/roles' |
+  '/dbaas/queue/{serviceName}/user/{userId}' |
+  '/dbaas/queue/{serviceName}/key/{keyId}' |
+  '/dbaas/queue/{serviceName}/key';
 
 type PathsDbaasQueuePUT = '/dbaas/queue/{serviceName}/serviceInfos' |
   '/dbaas/queue/{serviceName}';

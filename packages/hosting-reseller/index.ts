@@ -109,9 +109,39 @@ export interface Hosting {
         [keys: string]: {
             // GET /hosting/reseller/{serviceName}
             $get(): Promise<hosting.reseller.product>;
+            changeContact:  {
+                // POST /hosting/reseller/{serviceName}/changeContact
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            }
+            email:  {
+                // POST /hosting/reseller/{serviceName}/email
+                $post(body?: {email: string}): Promise<string>;
+            }
+            language:  {
+                // POST /hosting/reseller/{serviceName}/language
+                $post(body?: {language: reseller.pleskLanguageTypeEnum}): Promise<string>;
+            }
             reboot:  {
                 // POST /hosting/reseller/{serviceName}/reboot
                 $post(): Promise<string>;
+            }
+            reinstall:  {
+                // POST /hosting/reseller/{serviceName}/reinstall
+                $post(): Promise<string>;
+            }
+            resetPasswordUrl:  {
+                // GET /hosting/reseller/{serviceName}/resetPasswordUrl
+                $get(): Promise<string>;
+            }
+            reverse:  {
+                // POST /hosting/reseller/{serviceName}/reverse
+                $post(body?: {reverse: string}): Promise<string>;
+            }
+            serviceInfos:  {
+                // GET /hosting/reseller/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /hosting/reseller/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
             }
             snapshot:  {
                 // GET /hosting/reseller/{serviceName}/snapshot
@@ -127,22 +157,6 @@ export interface Hosting {
                     }
                 } | any
             }
-            language:  {
-                // POST /hosting/reseller/{serviceName}/language
-                $post(body?: {language: reseller.pleskLanguageTypeEnum}): Promise<string>;
-            }
-            reverse:  {
-                // POST /hosting/reseller/{serviceName}/reverse
-                $post(body?: {reverse: string}): Promise<string>;
-            }
-            reinstall:  {
-                // POST /hosting/reseller/{serviceName}/reinstall
-                $post(): Promise<string>;
-            }
-            resetPasswordUrl:  {
-                // GET /hosting/reseller/{serviceName}/resetPasswordUrl
-                $get(): Promise<string>;
-            }
             task:  {
                 // GET /hosting/reseller/{serviceName}/task
                 $get(): Promise<reseller.task[]>;
@@ -151,43 +165,29 @@ export interface Hosting {
                     $get(): Promise<reseller.task>;
                 } | any
             }
-            email:  {
-                // POST /hosting/reseller/{serviceName}/email
-                $post(body?: {email: string}): Promise<string>;
-            }
-            changeContact:  {
-                // POST /hosting/reseller/{serviceName}/changeContact
-                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
-            }
-            serviceInfos:  {
-                // GET /hosting/reseller/{serviceName}/serviceInfos
-                $get(): Promise<services.Service>;
-                // PUT /hosting/reseller/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
-            }
         } | any
     }
 }
 // Api
-type PathsHostingResellerGET = '/hosting/reseller/{serviceName}/snapshot' |
-  '/hosting/reseller/{serviceName}/snapshot/{snapshotId}' |
+type PathsHostingResellerGET = '/hosting/reseller' |
   '/hosting/reseller/{serviceName}' |
-  '/hosting/reseller/{serviceName}/resetPasswordUrl' |
-  '/hosting/reseller/{serviceName}/task' |
   '/hosting/reseller/{serviceName}/task/{taskId}' |
+  '/hosting/reseller/{serviceName}/task' |
   '/hosting/reseller/{serviceName}/serviceInfos' |
-  '/hosting/reseller';
+  '/hosting/reseller/{serviceName}/resetPasswordUrl' |
+  '/hosting/reseller/{serviceName}/snapshot/{snapshotId}' |
+  '/hosting/reseller/{serviceName}/snapshot';
 
 type PathsHostingResellerPUT = '/hosting/reseller/{serviceName}/serviceInfos';
 
-type PathsHostingResellerPOST = '/hosting/reseller/{serviceName}/reboot' |
-  '/hosting/reseller/{serviceName}/snapshot' |
-  '/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore' |
-  '/hosting/reseller/{serviceName}/language' |
-  '/hosting/reseller/{serviceName}/reverse' |
-  '/hosting/reseller/{serviceName}/reinstall' |
+type PathsHostingResellerPOST = '/hosting/reseller/{serviceName}/reverse' |
+  '/hosting/reseller/{serviceName}/changeContact' |
   '/hosting/reseller/{serviceName}/email' |
-  '/hosting/reseller/{serviceName}/changeContact';
+  '/hosting/reseller/{serviceName}/reboot' |
+  '/hosting/reseller/{serviceName}/language' |
+  '/hosting/reseller/{serviceName}/reinstall' |
+  '/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore' |
+  '/hosting/reseller/{serviceName}/snapshot';
 
 export class ApiHostingReseller extends OvhWrapper {
   constructor(engine: OvhRequestable) {

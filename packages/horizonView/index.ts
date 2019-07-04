@@ -149,26 +149,10 @@ export interface HorizonView {
             // POST /horizonView/{serviceName}/accessPoint
             $post(body?: {poolType: horizonView.PoolType, privateBlock?: string, privateVlan?: number, vrouterPoolPublicIp?: string}): Promise<horizonView.Task[]>;
             [keys: string]: {
-                // GET /horizonView/{serviceName}/accessPoint/{accessPointId}
-                $get(): Promise<horizonView.Pool>;
                 // DELETE /horizonView/{serviceName}/accessPoint/{accessPointId}
                 $delete(): Promise<horizonView.Task[]>;
-                disableWindowsUsernameOption:  {
-                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption
-                    $post(body?: {onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
-                }
-                enableWindowsUsernameOption:  {
-                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption
-                    $post(body?: {onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
-                }
-                disableTwoFA:  {
-                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA
-                    $post(): Promise<horizonView.Task>;
-                }
-                enableTwoFA:  {
-                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA
-                    $post(body?: {onSingleAP?: horizonView.AccessPointTypeEnum, radiusIp: string, secret: string}): Promise<horizonView.Task>;
-                }
+                // GET /horizonView/{serviceName}/accessPoint/{accessPointId}
+                $get(): Promise<horizonView.Pool>;
                 changeSessionTimeout:  {
                     // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout
                     $post(body?: {expiration: number, onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
@@ -179,13 +163,33 @@ export interface HorizonView {
                     // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork
                     $post(body?: {network: string}): Promise<horizonView.Task[]>;
                     [keys: string]: {
-                        // GET /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}
-                        $get(): Promise<horizonView.CustomerNetworkPool>;
                         // DELETE /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}
                         $delete(): Promise<horizonView.Task[]>;
+                        // GET /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}
+                        $get(): Promise<horizonView.CustomerNetworkPool>;
                     } | any
                 }
+                disableTwoFA:  {
+                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA
+                    $post(): Promise<horizonView.Task>;
+                }
+                disableWindowsUsernameOption:  {
+                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption
+                    $post(body?: {onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
+                }
+                enableTwoFA:  {
+                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA
+                    $post(body?: {onSingleAP?: horizonView.AccessPointTypeEnum, radiusIp: string, secret: string}): Promise<horizonView.Task>;
+                }
+                enableWindowsUsernameOption:  {
+                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption
+                    $post(body?: {onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
+                }
             } | any
+        }
+        confirmTermination:  {
+            // POST /horizonView/{serviceName}/confirmTermination
+            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
         customerNetwork:  {
             // GET /horizonView/{serviceName}/customerNetwork
@@ -193,39 +197,37 @@ export interface HorizonView {
             // POST /horizonView/{serviceName}/customerNetwork
             $post(body?: {name: string, network: string}): Promise<horizonView.Task[]>;
             [keys: string]: {
-                // GET /horizonView/{serviceName}/customerNetwork/{customerNetworkId}
-                $get(): Promise<horizonView.CustomerNetwork>;
                 // DELETE /horizonView/{serviceName}/customerNetwork/{customerNetworkId}
                 $delete(): Promise<horizonView.Task[]>;
+                // GET /horizonView/{serviceName}/customerNetwork/{customerNetworkId}
+                $get(): Promise<horizonView.CustomerNetwork>;
             } | any
-        }
-        terminate:  {
-            // POST /horizonView/{serviceName}/terminate
-            $post(): Promise<string>;
-        }
-        serviceInfos:  {
-            // GET /horizonView/{serviceName}/serviceInfos
-            $get(): Promise<services.Service>;
-            // PUT /horizonView/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
         }
         dedicatedHorizon:  {
             // GET /horizonView/{serviceName}/dedicatedHorizon
             $get(): Promise<horizonView.DedicatedHorizon>;
-            user:  {
-                // GET /horizonView/{serviceName}/dedicatedHorizon/user
-                $get(): Promise<horizonView.User>;
-                changeProperties:  {
-                    // POST /horizonView/{serviceName}/dedicatedHorizon/user/changeProperties
-                    $post(body?: {email?: string}): Promise<horizonView.Task>;
-                }
-                changePassword:  {
-                    // POST /horizonView/{serviceName}/dedicatedHorizon/user/changePassword
-                    $post(body?: {password?: string}): Promise<horizonView.Task>;
-                }
+            customerUser:  {
+                // GET /horizonView/{serviceName}/dedicatedHorizon/customerUser
+                $get(): Promise<string[]>;
+                // POST /horizonView/{serviceName}/dedicatedHorizon/customerUser
+                $post(body?: {email?: string, password?: string, username: string}): Promise<horizonView.Task[]>;
+                [keys: string]: {
+                    // DELETE /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
+                    $delete(): Promise<horizonView.Task[]>;
+                    // GET /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
+                    $get(): Promise<horizonView.CustomerUser>;
+                    changePassword:  {
+                        // POST /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword
+                        $post(body?: {password?: string}): Promise<horizonView.Task>;
+                    }
+                } | any
             }
             disableStorageAccelerator:  {
                 // POST /horizonView/{serviceName}/dedicatedHorizon/disableStorageAccelerator
+                $post(): Promise<horizonView.Task>;
+            }
+            enableStorageAccelerator:  {
+                // POST /horizonView/{serviceName}/dedicatedHorizon/enableStorageAccelerator
                 $post(): Promise<horizonView.Task>;
             }
             task:  {
@@ -236,25 +238,17 @@ export interface HorizonView {
                     $get(): Promise<horizonView.Task>;
                 } | any
             }
-            enableStorageAccelerator:  {
-                // POST /horizonView/{serviceName}/dedicatedHorizon/enableStorageAccelerator
-                $post(): Promise<horizonView.Task>;
-            }
-            customerUser:  {
-                // GET /horizonView/{serviceName}/dedicatedHorizon/customerUser
-                $get(): Promise<string[]>;
-                // POST /horizonView/{serviceName}/dedicatedHorizon/customerUser
-                $post(body?: {email?: string, password?: string, username: string}): Promise<horizonView.Task[]>;
-                [keys: string]: {
-                    // GET /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
-                    $get(): Promise<horizonView.CustomerUser>;
-                    // DELETE /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
-                    $delete(): Promise<horizonView.Task[]>;
-                    changePassword:  {
-                        // POST /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword
-                        $post(body?: {password?: string}): Promise<horizonView.Task>;
-                    }
-                } | any
+            user:  {
+                // GET /horizonView/{serviceName}/dedicatedHorizon/user
+                $get(): Promise<horizonView.User>;
+                changePassword:  {
+                    // POST /horizonView/{serviceName}/dedicatedHorizon/user/changePassword
+                    $post(body?: {password?: string}): Promise<horizonView.Task>;
+                }
+                changeProperties:  {
+                    // POST /horizonView/{serviceName}/dedicatedHorizon/user/changeProperties
+                    $post(body?: {email?: string}): Promise<horizonView.Task>;
+                }
             }
         }
         domainTrust:  {
@@ -265,17 +259,17 @@ export interface HorizonView {
             [keys: string]: {
                 // GET /horizonView/{serviceName}/domainTrust/{domainTrustId}
                 $get(): Promise<horizonView.DomainTrust>;
-                addDomainUserOnComposer:  {
-                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer
-                    $post(body?: {domain: string, password: string, username: string}): Promise<horizonView.Task>;
+                addChildDomain:  {
+                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain
+                    $post(body?: {activeDirectoryIP: string, domain: string, passphrase: string, serviceAccountPassword: string}): Promise<horizonView.Task>;
                 }
                 addDomainController:  {
                     // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController
                     $post(body?: {domain: string, domainControllerIp: string}): Promise<horizonView.Task>;
                 }
-                addChildDomain:  {
-                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain
-                    $post(body?: {activeDirectoryIP: string, domain: string, passphrase: string, serviceAccountPassword: string}): Promise<horizonView.Task>;
+                addDomainUserOnComposer:  {
+                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer
+                    $post(body?: {domain: string, password: string, username: string}): Promise<horizonView.Task>;
                 }
                 createTrust:  {
                     // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust
@@ -283,9 +277,15 @@ export interface HorizonView {
                 }
             } | any
         }
-        confirmTermination:  {
-            // POST /horizonView/{serviceName}/confirmTermination
-            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+        serviceInfos:  {
+            // GET /horizonView/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /horizonView/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
+        }
+        terminate:  {
+            // POST /horizonView/{serviceName}/terminate
+            $post(): Promise<string>;
         }
     } | any
 }

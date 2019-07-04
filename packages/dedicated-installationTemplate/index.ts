@@ -108,14 +108,6 @@ export interface Dedicated {
                 [keys: string]: {
                     // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}
                     $get(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
-                    partition:  {
-                        // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
-                        $get(): Promise<string[]>;
-                        [keys: string]: {
-                            // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
-                            $get(): Promise<dedicated.installationTemplate.templatePartitions>;
-                        } | any
-                    }
                     hardwareRaid:  {
                         // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
                         $get(): Promise<string[]>;
@@ -124,20 +116,28 @@ export interface Dedicated {
                             $get(): Promise<dedicated.installationTemplate.hardwareRaid>;
                         } | any
                     }
+                    partition:  {
+                        // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
+                        $get(): Promise<string[]>;
+                        [keys: string]: {
+                            // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
+                            $get(): Promise<dedicated.installationTemplate.templatePartitions>;
+                        } | any
+                    }
                 } | any
             }
         } | any
     }
 }
 // Api
-type PathsDedicatedInstallationTemplateGET = '/dedicated/installationTemplate/{templateName}/partitionScheme' |
+type PathsDedicatedInstallationTemplateGET = '/dedicated/installationTemplate' |
   '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition' |
   '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}' |
   '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}' |
   '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid' |
   '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}' |
-  '/dedicated/installationTemplate/{templateName}' |
-  '/dedicated/installationTemplate';
+  '/dedicated/installationTemplate/{templateName}/partitionScheme' |
+  '/dedicated/installationTemplate/{templateName}';
 
 export class ApiDedicatedInstallationTemplate extends OvhWrapper {
   constructor(engine: OvhRequestable) {

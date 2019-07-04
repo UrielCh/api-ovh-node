@@ -72,66 +72,18 @@ export namespace complexType {
 // Apis harmony
 // path /store
 export interface Store {
-    partner:  {
-        // GET /store/partner
-        $get(): Promise<MarketPlace.Partner[]>;
-        // POST /store/partner
-        $post(body?: {category?: string, city: string, companyNationalIdentificationNumber?: string, contact?: string, country: string, description?: string, language?: string, legalForm: string, organisationDisplayName?: string, organisationName: string, otherDetails?: string, province: string, street: string, url?: string, vat?: string, zip: string}): Promise<MarketPlace.Partner>;
-        [keys: string]: {
-            // GET /store/partner/{partnerId}
-            $get(): Promise<MarketPlace.Partner>;
-            // PUT /store/partner/{partnerId}
-            $put(body?: {category?: string, city?: string, companyNationalIdentificationNumber?: string, contact?: string, country?: string, description?: string, language?: string, legalForm?: string, organisationDisplayName?: string, organisationName?: string, otherDetails?: string, province?: string, street?: string, url?: string, vat?: string, zip?: string}): Promise<MarketPlace.Partner>;
-            // DELETE /store/partner/{partnerId}
-            $delete(): Promise<string>;
-            document:  {
-                // GET /store/partner/{partnerId}/document
-                $get(): Promise<string[]>;
-                // POST /store/partner/{partnerId}/document
-                $post(body?: {documentId: string}): Promise<string[]>;
-                [keys: string]: {
-                    // DELETE /store/partner/{partnerId}/document/{documentId}
-                    $delete(): Promise<string[]>;
-                } | any
-            }
-            product:  {
-                // GET /store/partner/{partnerId}/product
-                $get(): Promise<MarketPlacePartnerProduct.edit_response[]>;
-                // POST /store/partner/{partnerId}/product
-                $post(body?: {category: string, description: string, name: string, otherDetails?: string}): Promise<MarketPlacePartnerProduct.edit_response>;
-                [keys: string]: {
-                    // GET /store/partner/{partnerId}/product/{productId}
-                    $get(): Promise<MarketPlacePartnerProduct.edit_response>;
-                    // PUT /store/partner/{partnerId}/product/{productId}
-                    $put(body?: {category?: string, description?: string, name?: string, otherDetails?: string}): Promise<MarketPlacePartnerProduct.edit_response>;
-                    // DELETE /store/partner/{partnerId}/product/{productId}
-                    $delete(): Promise<string>;
-                    document:  {
-                        // GET /store/partner/{partnerId}/product/{productId}/document
-                        $get(): Promise<string[]>;
-                        // POST /store/partner/{partnerId}/product/{productId}/document
-                        $post(body?: {documentId: string}): Promise<string[]>;
-                        [keys: string]: {
-                            // DELETE /store/partner/{partnerId}/product/{productId}/document/{documentId}
-                            $delete(): Promise<string[]>;
-                        } | any
-                    }
-                } | any
-            }
-        } | any
-    }
     contact:  {
         // GET /store/contact
         $get(): Promise<MarketPlaceContact.Contact[]>;
         // POST /store/contact
         $post(body?: {city?: string, country?: string, email: string, firstname: string, lastname: string, phone?: string, province?: string, street?: string, title: string, zip?: string}): Promise<MarketPlaceContact.Contact>;
         [keys: string]: {
+            // DELETE /store/contact/{contactId}
+            $delete(): Promise<string>;
             // GET /store/contact/{contactId}
             $get(): Promise<MarketPlaceContact.Contact>;
             // PUT /store/contact/{contactId}
             $put(body?: {city?: string, country?: string, email?: string, firstname?: string, lastname?: string, phone?: string, province?: string, street?: string, title?: string, zip?: string}): Promise<MarketPlaceContact.Contact>;
-            // DELETE /store/contact/{contactId}
-            $delete(): Promise<string>;
             document:  {
                 // GET /store/contact/{contactId}/document
                 $get(): Promise<string[]>;
@@ -149,51 +101,99 @@ export interface Store {
         $get(): Promise<MarketPlace.Document[]>;
         // POST /store/document
         $post(body?: {name: string, tags?: complexType.SafeKeyValue<string>[]}): Promise<MarketPlace.Document>;
-        [keys: string]: {
-            // GET /store/document/{documentId}
-            $get(): Promise<MarketPlace.Document>;
-            // DELETE /store/document/{documentId}
-            $delete(): Promise<string>;
-        } | any
         cors:  {
             // POST /store/document/cors
             $post(body?: {origin: string}): Promise<void>;
         }
+        [keys: string]: {
+            // DELETE /store/document/{documentId}
+            $delete(): Promise<string>;
+            // GET /store/document/{documentId}
+            $get(): Promise<MarketPlace.Document>;
+        } | any
+    }
+    partner:  {
+        // GET /store/partner
+        $get(): Promise<MarketPlace.Partner[]>;
+        // POST /store/partner
+        $post(body?: {category?: string, city: string, companyNationalIdentificationNumber?: string, contact?: string, country: string, description?: string, language?: string, legalForm: string, organisationDisplayName?: string, organisationName: string, otherDetails?: string, province: string, street: string, url?: string, vat?: string, zip: string}): Promise<MarketPlace.Partner>;
+        [keys: string]: {
+            // DELETE /store/partner/{partnerId}
+            $delete(): Promise<string>;
+            // GET /store/partner/{partnerId}
+            $get(): Promise<MarketPlace.Partner>;
+            // PUT /store/partner/{partnerId}
+            $put(body?: {category?: string, city?: string, companyNationalIdentificationNumber?: string, contact?: string, country?: string, description?: string, language?: string, legalForm?: string, organisationDisplayName?: string, organisationName?: string, otherDetails?: string, province?: string, street?: string, url?: string, vat?: string, zip?: string}): Promise<MarketPlace.Partner>;
+            document:  {
+                // GET /store/partner/{partnerId}/document
+                $get(): Promise<string[]>;
+                // POST /store/partner/{partnerId}/document
+                $post(body?: {documentId: string}): Promise<string[]>;
+                [keys: string]: {
+                    // DELETE /store/partner/{partnerId}/document/{documentId}
+                    $delete(): Promise<string[]>;
+                } | any
+            }
+            product:  {
+                // GET /store/partner/{partnerId}/product
+                $get(): Promise<MarketPlacePartnerProduct.edit_response[]>;
+                // POST /store/partner/{partnerId}/product
+                $post(body?: {category: string, description: string, name: string, otherDetails?: string}): Promise<MarketPlacePartnerProduct.edit_response>;
+                [keys: string]: {
+                    // DELETE /store/partner/{partnerId}/product/{productId}
+                    $delete(): Promise<string>;
+                    // GET /store/partner/{partnerId}/product/{productId}
+                    $get(): Promise<MarketPlacePartnerProduct.edit_response>;
+                    // PUT /store/partner/{partnerId}/product/{productId}
+                    $put(body?: {category?: string, description?: string, name?: string, otherDetails?: string}): Promise<MarketPlacePartnerProduct.edit_response>;
+                    document:  {
+                        // GET /store/partner/{partnerId}/product/{productId}/document
+                        $get(): Promise<string[]>;
+                        // POST /store/partner/{partnerId}/product/{productId}/document
+                        $post(body?: {documentId: string}): Promise<string[]>;
+                        [keys: string]: {
+                            // DELETE /store/partner/{partnerId}/product/{productId}/document/{documentId}
+                            $delete(): Promise<string[]>;
+                        } | any
+                    }
+                } | any
+            }
+        } | any
     }
 }
 // Api
-type PathsStoreGET = '/store/partner/{partnerId}/document' |
-  '/store/partner/{partnerId}' |
-  '/store/partner/{partnerId}/product' |
-  '/store/partner/{partnerId}/product/{productId}' |
+type PathsStoreGET = '/store/document' |
+  '/store/document/{documentId}' |
+  '/store/partner/{partnerId}/document' |
   '/store/partner/{partnerId}/product/{productId}/document' |
+  '/store/partner/{partnerId}/product/{productId}' |
+  '/store/partner/{partnerId}/product' |
+  '/store/partner/{partnerId}' |
   '/store/partner' |
   '/store/contact/{contactId}/document' |
   '/store/contact/{contactId}' |
-  '/store/contact' |
-  '/store/document' |
-  '/store/document/{documentId}';
+  '/store/contact';
 
-type PathsStorePUT = '/store/partner/{partnerId}' |
-  '/store/partner/{partnerId}/product/{productId}' |
+type PathsStorePUT = '/store/partner/{partnerId}/product/{productId}' |
+  '/store/partner/{partnerId}' |
   '/store/contact/{contactId}';
 
-type PathsStorePOST = '/store/partner/{partnerId}/document' |
-  '/store/partner/{partnerId}/product' |
+type PathsStorePOST = '/store/document' |
+  '/store/document/cors' |
+  '/store/partner/{partnerId}/document' |
   '/store/partner/{partnerId}/product/{productId}/document' |
+  '/store/partner/{partnerId}/product' |
   '/store/partner' |
   '/store/contact/{contactId}/document' |
-  '/store/contact' |
-  '/store/document' |
-  '/store/document/cors';
+  '/store/contact';
 
-type PathsStoreDELETE = '/store/partner/{partnerId}/document/{documentId}' |
-  '/store/partner/{partnerId}' |
-  '/store/partner/{partnerId}/product/{productId}' |
+type PathsStoreDELETE = '/store/document/{documentId}' |
+  '/store/partner/{partnerId}/document/{documentId}' |
   '/store/partner/{partnerId}/product/{productId}/document/{documentId}' |
+  '/store/partner/{partnerId}/product/{productId}' |
+  '/store/partner/{partnerId}' |
   '/store/contact/{contactId}/document/{documentId}' |
-  '/store/contact/{contactId}' |
-  '/store/document/{documentId}';
+  '/store/contact/{contactId}';
 
 export class ApiStore extends OvhWrapper {
   constructor(engine: OvhRequestable) {

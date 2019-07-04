@@ -121,19 +121,17 @@ export interface Freefax {
             // GET /freefax/{serviceName}/mainService
             $get(): Promise<string>;
         }
+        serviceInfos:  {
+            // GET /freefax/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /freefax/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
+        }
         voicemail:  {
             // GET /freefax/{serviceName}/voicemail
             $get(): Promise<telephony.VoicemailProperties>;
             // PUT /freefax/{serviceName}/voicemail
             $put(body?: {body: telephony.VoicemailProperties}): Promise<void>;
-            voicemailNumbers:  {
-                // GET /freefax/{serviceName}/voicemail/voicemailNumbers
-                $get(): Promise<telephony.VoicemailNumbers>;
-            }
-            routing:  {
-                // GET /freefax/{serviceName}/voicemail/routing
-                $get(): Promise<telephony.VoicefaxRoutingEnum>;
-            }
             changePassword:  {
                 // POST /freefax/{serviceName}/voicemail/changePassword
                 $post(body?: {password: string}): Promise<void>;
@@ -142,12 +140,14 @@ export interface Freefax {
                 // POST /freefax/{serviceName}/voicemail/changeRouting
                 $post(body?: {routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
             }
-        }
-        serviceInfos:  {
-            // GET /freefax/{serviceName}/serviceInfos
-            $get(): Promise<services.Service>;
-            // PUT /freefax/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
+            routing:  {
+                // GET /freefax/{serviceName}/voicemail/routing
+                $get(): Promise<telephony.VoicefaxRoutingEnum>;
+            }
+            voicemailNumbers:  {
+                // GET /freefax/{serviceName}/voicemail/voicemailNumbers
+                $get(): Promise<telephony.VoicemailNumbers>;
+            }
         }
     } | any
 }

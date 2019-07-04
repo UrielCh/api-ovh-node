@@ -954,260 +954,42 @@ export interface Dedicated {
     server:  {
         // GET /dedicated/server
         $get(): Promise<string[]>;
+        availabilities:  {
+            // GET /dedicated/server/availabilities
+            $get(param?: {country: nichandle.OvhSubsidiaryEnum, hardware?: string}): Promise<dedicated.Availabilities[]>;
+            raw:  {
+                // GET /dedicated/server/availabilities/raw
+                $get(): Promise<dedicated.AvailabilitiesRaw[]>;
+            }
+        }
+        datacenter:  {
+            availabilities:  {
+                // GET /dedicated/server/datacenter/availabilities
+                $get(param?: {planCode?: string, server?: string, memory?: string, storage?: string, datacenters?: string, excludeDatacenters?: boolean}): Promise<dedicated.DatacenterAvailability[]>;
+            }
+        }
+        osAvailabilities:  {
+            // GET /dedicated/server/osAvailabilities
+            $get(param?: {hardware: string}): Promise<dedicated.OsAvailabilitiesEnum[]>;
+        }
+        virtualNetworkInterface:  {
+            [keys: string]: {
+                // GET /dedicated/server/virtualNetworkInterface/{uuid}
+                $get(): Promise<dedicated.virtualNetworkInterface.VirtualNetworkInterface>;
+            } | any
+        }
         [keys: string]: {
             // GET /dedicated/server/{serviceName}
             $get(): Promise<dedicated.server.Dedicated>;
             // PUT /dedicated/server/{serviceName}
             $put(body?: {body: dedicated.server.Dedicated}): Promise<void>;
-            serviceInfos:  {
-                // GET /dedicated/server/{serviceName}/serviceInfos
-                $get(): Promise<services.Service>;
-                // PUT /dedicated/server/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
-            }
-            changeContact:  {
-                // POST /dedicated/server/{serviceName}/changeContact
-                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
-            }
-            mrtg:  {
-                // GET /dedicated/server/{serviceName}/mrtg
-                $get(param?: {type: dedicated.server.MrtgTypeEnum, period: dedicated.server.MrtgPeriodEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
-            }
-            features:  {
-                firewall:  {
-                    // GET /dedicated/server/{serviceName}/features/firewall
-                    $get(): Promise<dedicated.server.Firewall>;
-                    // PUT /dedicated/server/{serviceName}/features/firewall
-                    $put(body?: {body: dedicated.server.Firewall}): Promise<void>;
-                }
-                backupCloud:  {
-                    // GET /dedicated/server/{serviceName}/features/backupCloud
-                    $get(): Promise<dedicated.server.BackupCloud>;
-                    // POST /dedicated/server/{serviceName}/features/backupCloud
-                    $post(body?: {cloudProjectId?: string, projectDescription?: string}): Promise<dedicated.server.BackupCloud>;
-                    // DELETE /dedicated/server/{serviceName}/features/backupCloud
-                    $delete(): Promise<void>;
-                    password:  {
-                        // POST /dedicated/server/{serviceName}/features/backupCloud/password
-                        $post(): Promise<dedicated.server.backup.BackupPassword>;
-                    }
-                }
-                ipmi:  {
-                    // GET /dedicated/server/{serviceName}/features/ipmi
-                    $get(): Promise<dedicated.server.Ipmi>;
-                    test:  {
-                        // POST /dedicated/server/{serviceName}/features/ipmi/test
-                        $post(body?: {ttl: dedicated.server.CacheTTLEnum, type: dedicated.server.IpmiTestTypeEnum}): Promise<dedicated.server.Task>;
-                        // GET /dedicated/server/{serviceName}/features/ipmi/test
-                        $get(param?: {type: dedicated.server.IpmiTestTypeEnum}): Promise<dedicated.server.IpmiTestResult>;
-                    }
-                    resetInterface:  {
-                        // POST /dedicated/server/{serviceName}/features/ipmi/resetInterface
-                        $post(): Promise<dedicated.server.Task>;
-                    }
-                    access:  {
-                        // POST /dedicated/server/{serviceName}/features/ipmi/access
-                        $post(body?: {ipToAllow?: string, sshKey?: string, ttl: dedicated.server.CacheTTLEnum, type: dedicated.server.IpmiAccessTypeEnum}): Promise<dedicated.server.Task>;
-                        // GET /dedicated/server/{serviceName}/features/ipmi/access
-                        $get(param?: {type: dedicated.server.IpmiAccessTypeEnum}): Promise<dedicated.server.IpmiAccessValue>;
-                    }
-                    resetSessions:  {
-                        // POST /dedicated/server/{serviceName}/features/ipmi/resetSessions
-                        $post(): Promise<dedicated.server.Task>;
-                    }
-                }
-                kvm:  {
-                    // GET /dedicated/server/{serviceName}/features/kvm
-                    $get(): Promise<dedicated.server.kvm>;
-                }
-                backupFTP:  {
-                    // GET /dedicated/server/{serviceName}/features/backupFTP
-                    $get(): Promise<dedicated.server.BackupFtp>;
-                    // POST /dedicated/server/{serviceName}/features/backupFTP
-                    $post(): Promise<dedicated.server.Task>;
-                    // DELETE /dedicated/server/{serviceName}/features/backupFTP
-                    $delete(): Promise<dedicated.server.Task>;
-                    password:  {
-                        // POST /dedicated/server/{serviceName}/features/backupFTP/password
-                        $post(): Promise<dedicated.server.Task>;
-                    }
-                    authorizableBlocks:  {
-                        // GET /dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks
-                        $get(): Promise<string[]>;
-                    }
-                    access:  {
-                        // GET /dedicated/server/{serviceName}/features/backupFTP/access
-                        $get(): Promise<string[]>;
-                        // POST /dedicated/server/{serviceName}/features/backupFTP/access
-                        $post(body?: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
-                        [keys: string]: {
-                            // GET /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
-                            $get(): Promise<dedicated.server.BackupFtpAcl>;
-                            // PUT /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
-                            $put(body?: {body: dedicated.server.BackupFtpAcl}): Promise<void>;
-                            // DELETE /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
-                            $delete(): Promise<dedicated.server.Task>;
-                        } | any
-                    }
-                }
-            }
-            burst:  {
-                // GET /dedicated/server/{serviceName}/burst
-                $get(): Promise<dedicated.server.ServerBurst>;
-                // PUT /dedicated/server/{serviceName}/burst
-                $put(body?: {body: dedicated.server.ServerBurst}): Promise<void>;
-            }
-            ipCountryAvailable:  {
-                // GET /dedicated/server/{serviceName}/ipCountryAvailable
-                $get(): Promise<dedicated.server.IpCountryEnum[]>;
-            }
-            support:  {
-                replace:  {
-                    hardDiskDrive:  {
-                        // POST /dedicated/server/{serviceName}/support/replace/hardDiskDrive
-                        $post(body?: {comment: string, disks: dedicated.server.SupportReplaceHddInfo[], inverse: boolean}): Promise<support.NewMessageInfo>;
-                    }
-                }
-            }
-            vrack:  {
-                // GET /dedicated/server/{serviceName}/vrack
-                $get(): Promise<string[]>;
-                [keys: string]: {
-                    // GET /dedicated/server/{serviceName}/vrack/{vrack}
-                    $get(): Promise<vrack.dedicatedServer>;
-                    // DELETE /dedicated/server/{serviceName}/vrack/{vrack}
-                    $delete(): Promise<vrack.Task>;
-                    mrtg:  {
-                        // GET /dedicated/server/{serviceName}/vrack/{vrack}/mrtg
-                        $get(param?: {period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
-                    }
-                } | any
-            }
-            ips:  {
-                // GET /dedicated/server/{serviceName}/ips
-                $get(): Promise<string[]>;
+            authenticationSecret:  {
+                // POST /dedicated/server/{serviceName}/authenticationSecret
+                $post(): Promise<dedicated.server.Access[]>;
             }
             backupCloudOfferDetails:  {
                 // GET /dedicated/server/{serviceName}/backupCloudOfferDetails
                 $get(): Promise<dedicated.server.backup.BackupOffer>;
-            }
-            secondaryDnsDomains:  {
-                // GET /dedicated/server/{serviceName}/secondaryDnsDomains
-                $get(): Promise<string[]>;
-                // POST /dedicated/server/{serviceName}/secondaryDnsDomains
-                $post(body?: {domain: string, ip?: string}): Promise<void>;
-                [keys: string]: {
-                    // GET /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
-                    $get(): Promise<secondaryDns.SecondaryDNS>;
-                    // PUT /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
-                    $put(body?: {body: secondaryDns.SecondaryDNS}): Promise<void>;
-                    // DELETE /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
-                    $delete(): Promise<void>;
-                    dnsServer:  {
-                        // GET /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer
-                        $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
-                    }
-                } | any
-            }
-            firewall:  {
-                binary:  {
-                    link:  {
-                        // GET /dedicated/server/{serviceName}/firewall/binary/link
-                        $get(param?: {binaryName: string}): Promise<dedicated.BinaryFirewallLink>;
-                    }
-                    compatible:  {
-                        // GET /dedicated/server/{serviceName}/firewall/binary/compatible
-                        $get(): Promise<dedicated.BinaryFirewall>;
-                    }
-                }
-            }
-            ipCanBeMovedTo:  {
-                // GET /dedicated/server/{serviceName}/ipCanBeMovedTo
-                $get(param?: {ip: string}): Promise<void>;
-            }
-            specifications:  {
-                hardware:  {
-                    // GET /dedicated/server/{serviceName}/specifications/hardware
-                    $get(): Promise<dedicated.server.HardwareSpecifications>;
-                }
-                ip:  {
-                    // GET /dedicated/server/{serviceName}/specifications/ip
-                    $get(): Promise<dedicated.server.IpOrderable>;
-                }
-                network:  {
-                    // GET /dedicated/server/{serviceName}/specifications/network
-                    $get(): Promise<dedicated.server.NetworkSpecifications>;
-                }
-            }
-            orderable:  {
-                kvm:  {
-                    // GET /dedicated/server/{serviceName}/orderable/kvm
-                    $get(): Promise<boolean>;
-                }
-                usbKey:  {
-                    // GET /dedicated/server/{serviceName}/orderable/usbKey
-                    $get(): Promise<dedicated.server.UsbKeyOrderableDetails>;
-                }
-                kvmExpress:  {
-                    // GET /dedicated/server/{serviceName}/orderable/kvmExpress
-                    $get(): Promise<boolean>;
-                }
-                bandwidthvRack:  {
-                    // GET /dedicated/server/{serviceName}/orderable/bandwidthvRack
-                    $get(): Promise<dedicated.server.BandwidthvRackOrderable>;
-                }
-                ip:  {
-                    // GET /dedicated/server/{serviceName}/orderable/ip
-                    $get(): Promise<dedicated.server.IpOrderable>;
-                }
-                professionalUse:  {
-                    // GET /dedicated/server/{serviceName}/orderable/professionalUse
-                    $get(): Promise<boolean>;
-                }
-                backupStorage:  {
-                    // GET /dedicated/server/{serviceName}/orderable/backupStorage
-                    $get(): Promise<dedicated.server.BackupStorageOrderable>;
-                }
-                bandwidth:  {
-                    // GET /dedicated/server/{serviceName}/orderable/bandwidth
-                    $get(): Promise<dedicated.server.BandwidthOrderable>;
-                }
-                feature:  {
-                    // GET /dedicated/server/{serviceName}/orderable/feature
-                    $get(param?: {feature: dedicated.server.OrderableSysFeatureEnum}): Promise<boolean>;
-                }
-                traffic:  {
-                    // GET /dedicated/server/{serviceName}/orderable/traffic
-                    $get(): Promise<dedicated.server.TrafficOrderable>;
-                }
-            }
-            ipBlockMerge:  {
-                // POST /dedicated/server/{serviceName}/ipBlockMerge
-                $post(body?: {block: string}): Promise<dedicated.server.Task>;
-            }
-            secondaryDnsNameDomainToken:  {
-                // GET /dedicated/server/{serviceName}/secondaryDnsNameDomainToken
-                $get(param?: {domain: string}): Promise<secondaryDns.SecondaryDNSCheckField>;
-            }
-            intervention:  {
-                // GET /dedicated/server/{serviceName}/intervention
-                $get(): Promise<number[]>;
-                [keys: string]: {
-                    // GET /dedicated/server/{serviceName}/intervention/{interventionId}
-                    $get(): Promise<dedicated.server.Intervention>;
-                } | any
-            }
-            networkInterfaceController:  {
-                // GET /dedicated/server/{serviceName}/networkInterfaceController
-                $get(param?: {linkType?: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum}): Promise<string[]>;
-                [keys: string]: {
-                    // GET /dedicated/server/{serviceName}/networkInterfaceController/{mac}
-                    $get(): Promise<dedicated.networkInterfaceController.NetworkInterfaceController>;
-                    mrtg:  {
-                        // GET /dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg
-                        $get(param?: {type: dedicated.server.MrtgTypeEnum, period: dedicated.server.MrtgPeriodEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
-                    }
-                } | any
             }
             boot:  {
                 // GET /dedicated/server/{serviceName}/boot
@@ -1225,31 +1007,285 @@ export interface Dedicated {
                     }
                 } | any
             }
+            burst:  {
+                // GET /dedicated/server/{serviceName}/burst
+                $get(): Promise<dedicated.server.ServerBurst>;
+                // PUT /dedicated/server/{serviceName}/burst
+                $put(body?: {body: dedicated.server.ServerBurst}): Promise<void>;
+            }
+            changeContact:  {
+                // POST /dedicated/server/{serviceName}/changeContact
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            }
+            confirmTermination:  {
+                // POST /dedicated/server/{serviceName}/confirmTermination
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            }
+            features:  {
+                backupCloud:  {
+                    // DELETE /dedicated/server/{serviceName}/features/backupCloud
+                    $delete(): Promise<void>;
+                    // GET /dedicated/server/{serviceName}/features/backupCloud
+                    $get(): Promise<dedicated.server.BackupCloud>;
+                    // POST /dedicated/server/{serviceName}/features/backupCloud
+                    $post(body?: {cloudProjectId?: string, projectDescription?: string}): Promise<dedicated.server.BackupCloud>;
+                    password:  {
+                        // POST /dedicated/server/{serviceName}/features/backupCloud/password
+                        $post(): Promise<dedicated.server.backup.BackupPassword>;
+                    }
+                }
+                backupFTP:  {
+                    // DELETE /dedicated/server/{serviceName}/features/backupFTP
+                    $delete(): Promise<dedicated.server.Task>;
+                    // GET /dedicated/server/{serviceName}/features/backupFTP
+                    $get(): Promise<dedicated.server.BackupFtp>;
+                    // POST /dedicated/server/{serviceName}/features/backupFTP
+                    $post(): Promise<dedicated.server.Task>;
+                    access:  {
+                        // GET /dedicated/server/{serviceName}/features/backupFTP/access
+                        $get(): Promise<string[]>;
+                        // POST /dedicated/server/{serviceName}/features/backupFTP/access
+                        $post(body?: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
+                        [keys: string]: {
+                            // DELETE /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
+                            $delete(): Promise<dedicated.server.Task>;
+                            // GET /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
+                            $get(): Promise<dedicated.server.BackupFtpAcl>;
+                            // PUT /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
+                            $put(body?: {body: dedicated.server.BackupFtpAcl}): Promise<void>;
+                        } | any
+                    }
+                    authorizableBlocks:  {
+                        // GET /dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks
+                        $get(): Promise<string[]>;
+                    }
+                    password:  {
+                        // POST /dedicated/server/{serviceName}/features/backupFTP/password
+                        $post(): Promise<dedicated.server.Task>;
+                    }
+                }
+                firewall:  {
+                    // GET /dedicated/server/{serviceName}/features/firewall
+                    $get(): Promise<dedicated.server.Firewall>;
+                    // PUT /dedicated/server/{serviceName}/features/firewall
+                    $put(body?: {body: dedicated.server.Firewall}): Promise<void>;
+                }
+                ipmi:  {
+                    // GET /dedicated/server/{serviceName}/features/ipmi
+                    $get(): Promise<dedicated.server.Ipmi>;
+                    access:  {
+                        // GET /dedicated/server/{serviceName}/features/ipmi/access
+                        $get(param?: {type: dedicated.server.IpmiAccessTypeEnum}): Promise<dedicated.server.IpmiAccessValue>;
+                        // POST /dedicated/server/{serviceName}/features/ipmi/access
+                        $post(body?: {ipToAllow?: string, sshKey?: string, ttl: dedicated.server.CacheTTLEnum, type: dedicated.server.IpmiAccessTypeEnum}): Promise<dedicated.server.Task>;
+                    }
+                    resetInterface:  {
+                        // POST /dedicated/server/{serviceName}/features/ipmi/resetInterface
+                        $post(): Promise<dedicated.server.Task>;
+                    }
+                    resetSessions:  {
+                        // POST /dedicated/server/{serviceName}/features/ipmi/resetSessions
+                        $post(): Promise<dedicated.server.Task>;
+                    }
+                    test:  {
+                        // GET /dedicated/server/{serviceName}/features/ipmi/test
+                        $get(param?: {type: dedicated.server.IpmiTestTypeEnum}): Promise<dedicated.server.IpmiTestResult>;
+                        // POST /dedicated/server/{serviceName}/features/ipmi/test
+                        $post(body?: {ttl: dedicated.server.CacheTTLEnum, type: dedicated.server.IpmiTestTypeEnum}): Promise<dedicated.server.Task>;
+                    }
+                }
+                kvm:  {
+                    // GET /dedicated/server/{serviceName}/features/kvm
+                    $get(): Promise<dedicated.server.kvm>;
+                }
+            }
+            firewall:  {
+                binary:  {
+                    compatible:  {
+                        // GET /dedicated/server/{serviceName}/firewall/binary/compatible
+                        $get(): Promise<dedicated.BinaryFirewall>;
+                    }
+                    link:  {
+                        // GET /dedicated/server/{serviceName}/firewall/binary/link
+                        $get(param?: {binaryName: string}): Promise<dedicated.BinaryFirewallLink>;
+                    }
+                }
+            }
+            install:  {
+                compatibleTemplatePartitionSchemes:  {
+                    // GET /dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes
+                    $get(param?: {templateName: string}): Promise<string[]>;
+                }
+                compatibleTemplates:  {
+                    // GET /dedicated/server/{serviceName}/install/compatibleTemplates
+                    $get(): Promise<dedicated.server.InstallTemplate>;
+                }
+                hardwareRaidProfile:  {
+                    // GET /dedicated/server/{serviceName}/install/hardwareRaidProfile
+                    $get(): Promise<dedicated.server.HardwareRaidProfile>;
+                }
+                hardwareRaidSize:  {
+                    // GET /dedicated/server/{serviceName}/install/hardwareRaidSize
+                    $get(param?: {templateName: string, partitionSchemeName: string}): Promise<dedicated.server.HardwareRaidSize>;
+                }
+                start:  {
+                    // POST /dedicated/server/{serviceName}/install/start
+                    $post(body?: {details?: dedicated.server.InstallCustom, partitionSchemeName?: string, templateName: string}): Promise<dedicated.server.Task>;
+                }
+                status:  {
+                    // GET /dedicated/server/{serviceName}/install/status
+                    $get(): Promise<dedicated.server.InstallationProgressStatus>;
+                }
+                templateCapabilities:  {
+                    // GET /dedicated/server/{serviceName}/install/templateCapabilities
+                    $get(param?: {templateName: string}): Promise<dedicated.server.TemplateCaps>;
+                }
+            }
+            intervention:  {
+                // GET /dedicated/server/{serviceName}/intervention
+                $get(): Promise<number[]>;
+                [keys: string]: {
+                    // GET /dedicated/server/{serviceName}/intervention/{interventionId}
+                    $get(): Promise<dedicated.server.Intervention>;
+                } | any
+            }
+            ipBlockMerge:  {
+                // POST /dedicated/server/{serviceName}/ipBlockMerge
+                $post(body?: {block: string}): Promise<dedicated.server.Task>;
+            }
+            ipCanBeMovedTo:  {
+                // GET /dedicated/server/{serviceName}/ipCanBeMovedTo
+                $get(param?: {ip: string}): Promise<void>;
+            }
+            ipCountryAvailable:  {
+                // GET /dedicated/server/{serviceName}/ipCountryAvailable
+                $get(): Promise<dedicated.server.IpCountryEnum[]>;
+            }
             ipMove:  {
                 // POST /dedicated/server/{serviceName}/ipMove
                 $post(body?: {ip: string}): Promise<dedicated.server.Task>;
             }
-            virtualMac:  {
-                // GET /dedicated/server/{serviceName}/virtualMac
+            ips:  {
+                // GET /dedicated/server/{serviceName}/ips
                 $get(): Promise<string[]>;
-                // POST /dedicated/server/{serviceName}/virtualMac
-                $post(body?: {ipAddress: string, type: dedicated.server.VmacTypeEnum, virtualMachineName: string}): Promise<dedicated.server.Task>;
+            }
+            license:  {
+                compliantWindows:  {
+                    // GET /dedicated/server/{serviceName}/license/compliantWindows
+                    $get(): Promise<license.WindowsOsVersionEnum[]>;
+                }
+                compliantWindowsSqlServer:  {
+                    // GET /dedicated/server/{serviceName}/license/compliantWindowsSqlServer
+                    $get(): Promise<license.WindowsSqlVersionEnum[]>;
+                }
+                windows:  {
+                    // POST /dedicated/server/{serviceName}/license/windows
+                    $post(body?: {licenseId: string, version: license.WindowsOsVersionEnum}): Promise<dedicated.server.Task>;
+                }
+            }
+            mrtg:  {
+                // GET /dedicated/server/{serviceName}/mrtg
+                $get(param?: {period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
+            }
+            networkInterfaceController:  {
+                // GET /dedicated/server/{serviceName}/networkInterfaceController
+                $get(param?: {linkType?: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum}): Promise<string[]>;
                 [keys: string]: {
-                    // GET /dedicated/server/{serviceName}/virtualMac/{macAddress}
-                    $get(): Promise<dedicated.server.VirtualMac>;
-                    virtualAddress:  {
-                        // GET /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress
-                        $get(): Promise<string[]>;
-                        // POST /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress
-                        $post(body?: {ipAddress: string, virtualMachineName: string}): Promise<dedicated.server.Task>;
-                        [keys: string]: {
-                            // GET /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}
-                            $get(): Promise<dedicated.server.VirtualMacManagement>;
-                            // DELETE /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}
-                            $delete(): Promise<dedicated.server.Task>;
-                        } | any
+                    // GET /dedicated/server/{serviceName}/networkInterfaceController/{mac}
+                    $get(): Promise<dedicated.networkInterfaceController.NetworkInterfaceController>;
+                    mrtg:  {
+                        // GET /dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg
+                        $get(param?: {period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
                     }
                 } | any
+            }
+            option:  {
+                // GET /dedicated/server/{serviceName}/option
+                $get(): Promise<dedicated.server.OptionEnum[]>;
+                [keys: string]: {
+                    // DELETE /dedicated/server/{serviceName}/option/{option}
+                    $delete(): Promise<void>;
+                    // GET /dedicated/server/{serviceName}/option/{option}
+                    $get(): Promise<dedicated.server.Option>;
+                } | any
+            }
+            orderable:  {
+                backupStorage:  {
+                    // GET /dedicated/server/{serviceName}/orderable/backupStorage
+                    $get(): Promise<dedicated.server.BackupStorageOrderable>;
+                }
+                bandwidth:  {
+                    // GET /dedicated/server/{serviceName}/orderable/bandwidth
+                    $get(): Promise<dedicated.server.BandwidthOrderable>;
+                }
+                bandwidthvRack:  {
+                    // GET /dedicated/server/{serviceName}/orderable/bandwidthvRack
+                    $get(): Promise<dedicated.server.BandwidthvRackOrderable>;
+                }
+                feature:  {
+                    // GET /dedicated/server/{serviceName}/orderable/feature
+                    $get(param?: {feature: dedicated.server.OrderableSysFeatureEnum}): Promise<boolean>;
+                }
+                ip:  {
+                    // GET /dedicated/server/{serviceName}/orderable/ip
+                    $get(): Promise<dedicated.server.IpOrderable>;
+                }
+                kvm:  {
+                    // GET /dedicated/server/{serviceName}/orderable/kvm
+                    $get(): Promise<boolean>;
+                }
+                kvmExpress:  {
+                    // GET /dedicated/server/{serviceName}/orderable/kvmExpress
+                    $get(): Promise<boolean>;
+                }
+                professionalUse:  {
+                    // GET /dedicated/server/{serviceName}/orderable/professionalUse
+                    $get(): Promise<boolean>;
+                }
+                traffic:  {
+                    // GET /dedicated/server/{serviceName}/orderable/traffic
+                    $get(): Promise<dedicated.server.TrafficOrderable>;
+                }
+                usbKey:  {
+                    // GET /dedicated/server/{serviceName}/orderable/usbKey
+                    $get(): Promise<dedicated.server.UsbKeyOrderableDetails>;
+                }
+            }
+            reboot:  {
+                // POST /dedicated/server/{serviceName}/reboot
+                $post(): Promise<dedicated.server.Task>;
+            }
+            secondaryDnsDomains:  {
+                // GET /dedicated/server/{serviceName}/secondaryDnsDomains
+                $get(): Promise<string[]>;
+                // POST /dedicated/server/{serviceName}/secondaryDnsDomains
+                $post(body?: {domain: string, ip?: string}): Promise<void>;
+                [keys: string]: {
+                    // DELETE /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
+                    $delete(): Promise<void>;
+                    // GET /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
+                    $get(): Promise<secondaryDns.SecondaryDNS>;
+                    // PUT /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
+                    $put(body?: {body: secondaryDns.SecondaryDNS}): Promise<void>;
+                    dnsServer:  {
+                        // GET /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer
+                        $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
+                    }
+                } | any
+            }
+            secondaryDnsNameDomainToken:  {
+                // GET /dedicated/server/{serviceName}/secondaryDnsNameDomainToken
+                $get(param?: {domain: string}): Promise<secondaryDns.SecondaryDNSCheckField>;
+            }
+            secondaryDnsNameServerAvailable:  {
+                // GET /dedicated/server/{serviceName}/secondaryDnsNameServerAvailable
+                $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
+            }
+            serviceInfos:  {
+                // GET /dedicated/server/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /dedicated/server/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
             }
             serviceMonitoring:  {
                 // GET /dedicated/server/{serviceName}/serviceMonitoring
@@ -1257,55 +1293,61 @@ export interface Dedicated {
                 // POST /dedicated/server/{serviceName}/serviceMonitoring
                 $post(body?: {challengeText?: string, enabled: boolean, interval: dedicated.server.MonitoringIntervalEnum, ip: string, port: number, protocol: dedicated.server.MonitoringProtocolEnum, url?: string}): Promise<dedicated.server.serviceMonitoring>;
                 [keys: string]: {
+                    // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
+                    $delete(): Promise<void>;
                     // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
                     $get(): Promise<dedicated.server.serviceMonitoring>;
                     // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
                     $put(body?: {body: dedicated.server.serviceMonitoring}): Promise<void>;
-                    // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
-                    $delete(): Promise<void>;
                     alert:  {
-                        sms:  {
-                            // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
-                            $get(): Promise<number[]>;
-                            // POST /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
-                            $post(body?: {fromHour?: number, language: dedicated.server.AlertLanguageEnum, phoneNumberTo: string, smsAccount: string, toHour?: number}): Promise<dedicated.server.smsAlert>;
-                            [keys: string]: {
-                                // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
-                                $get(): Promise<dedicated.server.smsAlert>;
-                                // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
-                                $put(body?: {body: dedicated.server.smsAlert}): Promise<void>;
-                                // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
-                                $delete(): Promise<void>;
-                            } | any
-                        }
                         email:  {
                             // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email
                             $get(): Promise<number[]>;
                             // POST /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email
                             $post(body?: {email: string, language: dedicated.server.AlertLanguageEnum}): Promise<dedicated.server.emailAlert>;
                             [keys: string]: {
+                                // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
+                                $delete(): Promise<void>;
                                 // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
                                 $get(): Promise<dedicated.server.emailAlert>;
                                 // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
                                 $put(body?: {body: dedicated.server.emailAlert}): Promise<void>;
-                                // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
+                            } | any
+                        }
+                        sms:  {
+                            // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
+                            $get(): Promise<number[]>;
+                            // POST /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
+                            $post(body?: {fromHour?: number, language: dedicated.server.AlertLanguageEnum, phoneNumberTo: string, smsAccount: string, toHour?: number}): Promise<dedicated.server.smsAlert>;
+                            [keys: string]: {
+                                // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
                                 $delete(): Promise<void>;
+                                // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
+                                $get(): Promise<dedicated.server.smsAlert>;
+                                // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
+                                $put(body?: {body: dedicated.server.smsAlert}): Promise<void>;
                             } | any
                         }
                     }
                 } | any
             }
-            authenticationSecret:  {
-                // POST /dedicated/server/{serviceName}/authenticationSecret
-                $post(): Promise<dedicated.server.Access[]>;
-            }
-            terminate:  {
-                // POST /dedicated/server/{serviceName}/terminate
-                $post(): Promise<string>;
+            specifications:  {
+                hardware:  {
+                    // GET /dedicated/server/{serviceName}/specifications/hardware
+                    $get(): Promise<dedicated.server.HardwareSpecifications>;
+                }
+                ip:  {
+                    // GET /dedicated/server/{serviceName}/specifications/ip
+                    $get(): Promise<dedicated.server.IpOrderable>;
+                }
+                network:  {
+                    // GET /dedicated/server/{serviceName}/specifications/network
+                    $get(): Promise<dedicated.server.NetworkSpecifications>;
+                }
             }
             spla:  {
                 // GET /dedicated/server/{serviceName}/spla
-                $get(param?: {status?: dedicated.server.SplaStatusEnum, type?: dedicated.server.SplaTypeEnum}): Promise<number[]>;
+                $get(param?: {type?: dedicated.server.SplaTypeEnum, status?: dedicated.server.SplaStatusEnum}): Promise<number[]>;
                 // POST /dedicated/server/{serviceName}/spla
                 $post(body?: {serialNumber: string, type: dedicated.server.SplaTypeEnum}): Promise<number>;
                 [keys: string]: {
@@ -1322,33 +1364,17 @@ export interface Dedicated {
             statistics:  {
                 // GET /dedicated/server/{serviceName}/statistics
                 $get(): Promise<dedicated.server.Rtm>;
-                partition:  {
-                    // GET /dedicated/server/{serviceName}/statistics/partition
-                    $get(): Promise<string[]>;
-                    [keys: string]: {
-                        // GET /dedicated/server/{serviceName}/statistics/partition/{partition}
-                        $get(): Promise<dedicated.server.RtmPartition>;
-                        chart:  {
-                            // GET /dedicated/server/{serviceName}/statistics/partition/{partition}/chart
-                            $get(param?: {period: dedicated.server.RtmChartPeriodEnum}): Promise<complexType.ChartReturn>;
-                        }
-                    } | any
-                }
-                os:  {
-                    // GET /dedicated/server/{serviceName}/statistics/os
-                    $get(): Promise<dedicated.server.RtmOs>;
+                chart:  {
+                    // GET /dedicated/server/{serviceName}/statistics/chart
+                    $get(param?: {period: dedicated.server.RtmChartPeriodEnum, type: dedicated.server.RtmChartTypeEnum}): Promise<complexType.ChartReturn>;
                 }
                 connection:  {
                     // GET /dedicated/server/{serviceName}/statistics/connection
                     $get(): Promise<dedicated.server.RtmConnection[]>;
                 }
-                chart:  {
-                    // GET /dedicated/server/{serviceName}/statistics/chart
-                    $get(param?: {period: dedicated.server.RtmChartPeriodEnum, type: dedicated.server.RtmChartTypeEnum}): Promise<complexType.ChartReturn>;
-                }
-                pci:  {
-                    // GET /dedicated/server/{serviceName}/statistics/pci
-                    $get(): Promise<dedicated.server.RtmPci[]>;
+                cpu:  {
+                    // GET /dedicated/server/{serviceName}/statistics/cpu
+                    $get(): Promise<dedicated.server.RtmCpu>;
                 }
                 disk:  {
                     // GET /dedicated/server/{serviceName}/statistics/disk
@@ -1361,6 +1387,42 @@ export interface Dedicated {
                             $get(): Promise<dedicated.server.RtmDiskSmart>;
                         }
                     } | any
+                }
+                load:  {
+                    // GET /dedicated/server/{serviceName}/statistics/load
+                    $get(): Promise<dedicated.server.RtmLoad>;
+                }
+                memory:  {
+                    // GET /dedicated/server/{serviceName}/statistics/memory
+                    $get(): Promise<dedicated.server.RtmMemory[]>;
+                }
+                motherboard:  {
+                    // GET /dedicated/server/{serviceName}/statistics/motherboard
+                    $get(): Promise<dedicated.server.RtmMotherboardHw>;
+                }
+                os:  {
+                    // GET /dedicated/server/{serviceName}/statistics/os
+                    $get(): Promise<dedicated.server.RtmOs>;
+                }
+                partition:  {
+                    // GET /dedicated/server/{serviceName}/statistics/partition
+                    $get(): Promise<string[]>;
+                    [keys: string]: {
+                        // GET /dedicated/server/{serviceName}/statistics/partition/{partition}
+                        $get(): Promise<dedicated.server.RtmPartition>;
+                        chart:  {
+                            // GET /dedicated/server/{serviceName}/statistics/partition/{partition}/chart
+                            $get(param?: {period: dedicated.server.RtmChartPeriodEnum}): Promise<complexType.ChartReturn>;
+                        }
+                    } | any
+                }
+                pci:  {
+                    // GET /dedicated/server/{serviceName}/statistics/pci
+                    $get(): Promise<dedicated.server.RtmPci[]>;
+                }
+                process:  {
+                    // GET /dedicated/server/{serviceName}/statistics/process
+                    $get(): Promise<dedicated.server.RtmCommandSize[]>;
                 }
                 raid:  {
                     // GET /dedicated/server/{serviceName}/statistics/raid
@@ -1386,90 +1448,14 @@ export interface Dedicated {
                         }
                     } | any
                 }
-                motherboard:  {
-                    // GET /dedicated/server/{serviceName}/statistics/motherboard
-                    $get(): Promise<dedicated.server.RtmMotherboardHw>;
-                }
-                cpu:  {
-                    // GET /dedicated/server/{serviceName}/statistics/cpu
-                    $get(): Promise<dedicated.server.RtmCpu>;
-                }
-                process:  {
-                    // GET /dedicated/server/{serviceName}/statistics/process
-                    $get(): Promise<dedicated.server.RtmCommandSize[]>;
-                }
-                load:  {
-                    // GET /dedicated/server/{serviceName}/statistics/load
-                    $get(): Promise<dedicated.server.RtmLoad>;
-                }
-                memory:  {
-                    // GET /dedicated/server/{serviceName}/statistics/memory
-                    $get(): Promise<dedicated.server.RtmMemory[]>;
-                }
             }
-            reboot:  {
-                // POST /dedicated/server/{serviceName}/reboot
-                $post(): Promise<dedicated.server.Task>;
-            }
-            license:  {
-                compliantWindowsSqlServer:  {
-                    // GET /dedicated/server/{serviceName}/license/compliantWindowsSqlServer
-                    $get(): Promise<license.WindowsSqlVersionEnum[]>;
+            support:  {
+                replace:  {
+                    hardDiskDrive:  {
+                        // POST /dedicated/server/{serviceName}/support/replace/hardDiskDrive
+                        $post(body?: {comment: string, disks: dedicated.server.SupportReplaceHddInfo[], inverse: boolean}): Promise<support.NewMessageInfo>;
+                    }
                 }
-                compliantWindows:  {
-                    // GET /dedicated/server/{serviceName}/license/compliantWindows
-                    $get(): Promise<license.WindowsOsVersionEnum[]>;
-                }
-                windows:  {
-                    // POST /dedicated/server/{serviceName}/license/windows
-                    $post(body?: {licenseId: string, version: license.WindowsOsVersionEnum}): Promise<dedicated.server.Task>;
-                }
-            }
-            virtualNetworkInterface:  {
-                // GET /dedicated/server/{serviceName}/virtualNetworkInterface
-                $get(param?: {vrack?: string, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string}): Promise<string[]>;
-                [keys: string]: {
-                    // GET /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}
-                    $get(): Promise<dedicated.virtualNetworkInterface.VirtualNetworkInterface>;
-                } | any
-            }
-            install:  {
-                hardwareRaidProfile:  {
-                    // GET /dedicated/server/{serviceName}/install/hardwareRaidProfile
-                    $get(): Promise<dedicated.server.HardwareRaidProfile>;
-                }
-                compatibleTemplatePartitionSchemes:  {
-                    // GET /dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes
-                    $get(param?: {templateName: string}): Promise<string[]>;
-                }
-                status:  {
-                    // GET /dedicated/server/{serviceName}/install/status
-                    $get(): Promise<dedicated.server.InstallationProgressStatus>;
-                }
-                start:  {
-                    // POST /dedicated/server/{serviceName}/install/start
-                    $post(body?: {details?: dedicated.server.InstallCustom, partitionSchemeName?: string, templateName: string}): Promise<dedicated.server.Task>;
-                }
-                compatibleTemplates:  {
-                    // GET /dedicated/server/{serviceName}/install/compatibleTemplates
-                    $get(): Promise<dedicated.server.InstallTemplate>;
-                }
-                templateCapabilities:  {
-                    // GET /dedicated/server/{serviceName}/install/templateCapabilities
-                    $get(param?: {templateName: string}): Promise<dedicated.server.TemplateCaps>;
-                }
-                hardwareRaidSize:  {
-                    // GET /dedicated/server/{serviceName}/install/hardwareRaidSize
-                    $get(param?: {templateName: string, partitionSchemeName: string}): Promise<dedicated.server.HardwareRaidSize>;
-                }
-            }
-            confirmTermination:  {
-                // POST /dedicated/server/{serviceName}/confirmTermination
-                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
-            }
-            secondaryDnsNameServerAvailable:  {
-                // GET /dedicated/server/{serviceName}/secondaryDnsNameServerAvailable
-                $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
             }
             task:  {
                 // GET /dedicated/server/{serviceName}/task
@@ -1483,199 +1469,213 @@ export interface Dedicated {
                     }
                 } | any
             }
-            option:  {
-                // GET /dedicated/server/{serviceName}/option
-                $get(): Promise<dedicated.server.OptionEnum[]>;
+            terminate:  {
+                // POST /dedicated/server/{serviceName}/terminate
+                $post(): Promise<string>;
+            }
+            virtualMac:  {
+                // GET /dedicated/server/{serviceName}/virtualMac
+                $get(): Promise<string[]>;
+                // POST /dedicated/server/{serviceName}/virtualMac
+                $post(body?: {ipAddress: string, type: dedicated.server.VmacTypeEnum, virtualMachineName: string}): Promise<dedicated.server.Task>;
                 [keys: string]: {
-                    // GET /dedicated/server/{serviceName}/option/{option}
-                    $get(): Promise<dedicated.server.Option>;
-                    // DELETE /dedicated/server/{serviceName}/option/{option}
-                    $delete(): Promise<void>;
+                    // GET /dedicated/server/{serviceName}/virtualMac/{macAddress}
+                    $get(): Promise<dedicated.server.VirtualMac>;
+                    virtualAddress:  {
+                        // GET /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress
+                        $get(): Promise<string[]>;
+                        // POST /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress
+                        $post(body?: {ipAddress: string, virtualMachineName: string}): Promise<dedicated.server.Task>;
+                        [keys: string]: {
+                            // DELETE /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}
+                            $delete(): Promise<dedicated.server.Task>;
+                            // GET /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}
+                            $get(): Promise<dedicated.server.VirtualMacManagement>;
+                        } | any
+                    }
+                } | any
+            }
+            virtualNetworkInterface:  {
+                // GET /dedicated/server/{serviceName}/virtualNetworkInterface
+                $get(param?: {name?: string, vrack?: string, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum}): Promise<string[]>;
+                [keys: string]: {
+                    // GET /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}
+                    $get(): Promise<dedicated.virtualNetworkInterface.VirtualNetworkInterface>;
+                } | any
+            }
+            vrack:  {
+                // GET /dedicated/server/{serviceName}/vrack
+                $get(): Promise<string[]>;
+                [keys: string]: {
+                    // DELETE /dedicated/server/{serviceName}/vrack/{vrack}
+                    $delete(): Promise<vrack.Task>;
+                    // GET /dedicated/server/{serviceName}/vrack/{vrack}
+                    $get(): Promise<vrack.dedicatedServer>;
+                    mrtg:  {
+                        // GET /dedicated/server/{serviceName}/vrack/{vrack}/mrtg
+                        $get(param?: {period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
+                    }
                 } | any
             }
         } | any
-        virtualNetworkInterface:  {
-            [keys: string]: {
-                // GET /dedicated/server/virtualNetworkInterface/{uuid}
-                $get(): Promise<dedicated.virtualNetworkInterface.VirtualNetworkInterface>;
-            } | any
-        }
-        availabilities:  {
-            // GET /dedicated/server/availabilities
-            $get(param?: {country: nichandle.OvhSubsidiaryEnum, hardware?: string}): Promise<dedicated.Availabilities[]>;
-            raw:  {
-                // GET /dedicated/server/availabilities/raw
-                $get(): Promise<dedicated.AvailabilitiesRaw[]>;
-            }
-        }
-        datacenter:  {
-            availabilities:  {
-                // GET /dedicated/server/datacenter/availabilities
-                $get(param?: {planCode?: string, server?: string, memory?: string, storage?: string, datacenters?: string, excludeDatacenters?: boolean}): Promise<dedicated.DatacenterAvailability[]>;
-            }
-        }
-        osAvailabilities:  {
-            // GET /dedicated/server/osAvailabilities
-            $get(param?: {hardware: string}): Promise<dedicated.OsAvailabilitiesEnum[]>;
-        }
     }
 }
 // Api
-type PathsDedicatedServerGET = '/dedicated/server' |
-  '/dedicated/server/{serviceName}/serviceInfos' |
+type PathsDedicatedServerGET = '/dedicated/server/virtualNetworkInterface/{uuid}' |
+  '/dedicated/server/osAvailabilities' |
+  '/dedicated/server/{serviceName}/license/compliantWindowsSqlServer' |
+  '/dedicated/server/{serviceName}/license/compliantWindows' |
+  '/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable' |
   '/dedicated/server/{serviceName}/mrtg' |
-  '/dedicated/server/{serviceName}/features/firewall' |
-  '/dedicated/server/{serviceName}/features/backupCloud' |
-  '/dedicated/server/{serviceName}/features/ipmi/test' |
-  '/dedicated/server/{serviceName}/features/ipmi' |
-  '/dedicated/server/{serviceName}/features/ipmi/access' |
-  '/dedicated/server/{serviceName}/features/kvm' |
-  '/dedicated/server/{serviceName}/features/backupFTP' |
-  '/dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks' |
-  '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' |
-  '/dedicated/server/{serviceName}/features/backupFTP/access' |
-  '/dedicated/server/{serviceName}/burst' |
-  '/dedicated/server/{serviceName}/ipCountryAvailable' |
-  '/dedicated/server/{serviceName}/vrack' |
-  '/dedicated/server/{serviceName}/vrack/{vrack}/mrtg' |
-  '/dedicated/server/{serviceName}/vrack/{vrack}' |
-  '/dedicated/server/{serviceName}/ips' |
   '/dedicated/server/{serviceName}/backupCloudOfferDetails' |
+  '/dedicated/server/{serviceName}/orderable/feature' |
+  '/dedicated/server/{serviceName}/orderable/usbKey' |
+  '/dedicated/server/{serviceName}/orderable/bandwidth' |
+  '/dedicated/server/{serviceName}/orderable/professionalUse' |
+  '/dedicated/server/{serviceName}/orderable/traffic' |
+  '/dedicated/server/{serviceName}/orderable/bandwidthvRack' |
+  '/dedicated/server/{serviceName}/orderable/kvm' |
+  '/dedicated/server/{serviceName}/orderable/kvmExpress' |
+  '/dedicated/server/{serviceName}/orderable/backupStorage' |
+  '/dedicated/server/{serviceName}/orderable/ip' |
   '/dedicated/server/{serviceName}/secondaryDnsDomains' |
   '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer' |
   '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' |
+  '/dedicated/server/{serviceName}/boot' |
+  '/dedicated/server/{serviceName}/boot/{bootId}' |
+  '/dedicated/server/{serviceName}/boot/{bootId}/option/{option}' |
+  '/dedicated/server/{serviceName}/boot/{bootId}/option' |
+  '/dedicated/server/{serviceName}/specifications/hardware' |
+  '/dedicated/server/{serviceName}/specifications/network' |
+  '/dedicated/server/{serviceName}/specifications/ip' |
+  '/dedicated/server/{serviceName}/ipCountryAvailable' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring' |
+  '/dedicated/server/{serviceName}/statistics/load' |
+  '/dedicated/server/{serviceName}/statistics/memory' |
+  '/dedicated/server/{serviceName}/statistics/cpu' |
+  '/dedicated/server/{serviceName}/statistics/connection' |
+  '/dedicated/server/{serviceName}/statistics/os' |
+  '/dedicated/server/{serviceName}/statistics/partition/{partition}/chart' |
+  '/dedicated/server/{serviceName}/statistics/partition/{partition}' |
+  '/dedicated/server/{serviceName}/statistics/partition' |
+  '/dedicated/server/{serviceName}/statistics/raid' |
+  '/dedicated/server/{serviceName}/statistics/raid/{unit}' |
+  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}' |
+  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port' |
+  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}' |
+  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume' |
+  '/dedicated/server/{serviceName}/statistics/process' |
+  '/dedicated/server/{serviceName}/statistics' |
+  '/dedicated/server/{serviceName}/statistics/motherboard' |
+  '/dedicated/server/{serviceName}/statistics/chart' |
+  '/dedicated/server/{serviceName}/statistics/pci' |
+  '/dedicated/server/{serviceName}/statistics/disk' |
+  '/dedicated/server/{serviceName}/statistics/disk/{disk}' |
+  '/dedicated/server/{serviceName}/statistics/disk/{disk}/smart' |
+  '/dedicated/server/{serviceName}/serviceInfos' |
   '/dedicated/server/{serviceName}/firewall/binary/link' |
   '/dedicated/server/{serviceName}/firewall/binary/compatible' |
-  '/dedicated/server/{serviceName}' |
-  '/dedicated/server/{serviceName}/ipCanBeMovedTo' |
-  '/dedicated/server/{serviceName}/specifications/hardware' |
-  '/dedicated/server/{serviceName}/specifications/ip' |
-  '/dedicated/server/{serviceName}/specifications/network' |
-  '/dedicated/server/{serviceName}/orderable/kvm' |
-  '/dedicated/server/{serviceName}/orderable/usbKey' |
-  '/dedicated/server/{serviceName}/orderable/kvmExpress' |
-  '/dedicated/server/{serviceName}/orderable/bandwidthvRack' |
-  '/dedicated/server/{serviceName}/orderable/ip' |
-  '/dedicated/server/{serviceName}/orderable/professionalUse' |
-  '/dedicated/server/{serviceName}/orderable/backupStorage' |
-  '/dedicated/server/{serviceName}/orderable/bandwidth' |
-  '/dedicated/server/{serviceName}/orderable/feature' |
-  '/dedicated/server/{serviceName}/orderable/traffic' |
-  '/dedicated/server/{serviceName}/secondaryDnsNameDomainToken' |
   '/dedicated/server/{serviceName}/intervention' |
   '/dedicated/server/{serviceName}/intervention/{interventionId}' |
+  '/dedicated/server/{serviceName}/virtualNetworkInterface' |
+  '/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}' |
+  '/dedicated/server/{serviceName}/install/status' |
+  '/dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes' |
+  '/dedicated/server/{serviceName}/install/compatibleTemplates' |
+  '/dedicated/server/{serviceName}/install/hardwareRaidSize' |
+  '/dedicated/server/{serviceName}/install/hardwareRaidProfile' |
+  '/dedicated/server/{serviceName}/install/templateCapabilities' |
+  '/dedicated/server/{serviceName}' |
+  '/dedicated/server/{serviceName}/features/firewall' |
+  '/dedicated/server/{serviceName}/features/backupCloud' |
+  '/dedicated/server/{serviceName}/features/ipmi' |
+  '/dedicated/server/{serviceName}/features/ipmi/test' |
+  '/dedicated/server/{serviceName}/features/ipmi/access' |
+  '/dedicated/server/{serviceName}/features/kvm' |
+  '/dedicated/server/{serviceName}/features/backupFTP' |
+  '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' |
+  '/dedicated/server/{serviceName}/features/backupFTP/access' |
+  '/dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks' |
+  '/dedicated/server/{serviceName}/secondaryDnsNameDomainToken' |
+  '/dedicated/server/{serviceName}/task/{taskId}' |
+  '/dedicated/server/{serviceName}/task' |
+  '/dedicated/server/{serviceName}/ips' |
+  '/dedicated/server/{serviceName}/option/{option}' |
+  '/dedicated/server/{serviceName}/option' |
+  '/dedicated/server/{serviceName}/ipCanBeMovedTo' |
+  '/dedicated/server/{serviceName}/spla' |
+  '/dedicated/server/{serviceName}/spla/{id}' |
+  '/dedicated/server/{serviceName}/burst' |
+  '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress' |
+  '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}' |
+  '/dedicated/server/{serviceName}/virtualMac/{macAddress}' |
+  '/dedicated/server/{serviceName}/virtualMac' |
+  '/dedicated/server/{serviceName}/vrack/{vrack}/mrtg' |
+  '/dedicated/server/{serviceName}/vrack/{vrack}' |
+  '/dedicated/server/{serviceName}/vrack' |
   '/dedicated/server/{serviceName}/networkInterfaceController' |
   '/dedicated/server/{serviceName}/networkInterfaceController/{mac}' |
   '/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg' |
-  '/dedicated/server/{serviceName}/boot' |
-  '/dedicated/server/{serviceName}/boot/{bootId}/option/{option}' |
-  '/dedicated/server/{serviceName}/boot/{bootId}/option' |
-  '/dedicated/server/{serviceName}/boot/{bootId}' |
-  '/dedicated/server/{serviceName}/virtualMac' |
-  '/dedicated/server/{serviceName}/virtualMac/{macAddress}' |
-  '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}' |
-  '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email' |
-  '/dedicated/server/{serviceName}/serviceMonitoring' |
-  '/dedicated/server/{serviceName}/spla/{id}' |
-  '/dedicated/server/{serviceName}/spla' |
-  '/dedicated/server/{serviceName}/statistics/partition/{partition}' |
-  '/dedicated/server/{serviceName}/statistics/partition/{partition}/chart' |
-  '/dedicated/server/{serviceName}/statistics/partition' |
-  '/dedicated/server/{serviceName}/statistics/os' |
-  '/dedicated/server/{serviceName}/statistics/connection' |
-  '/dedicated/server/{serviceName}/statistics' |
-  '/dedicated/server/{serviceName}/statistics/chart' |
-  '/dedicated/server/{serviceName}/statistics/pci' |
-  '/dedicated/server/{serviceName}/statistics/disk/{disk}' |
-  '/dedicated/server/{serviceName}/statistics/disk/{disk}/smart' |
-  '/dedicated/server/{serviceName}/statistics/disk' |
-  '/dedicated/server/{serviceName}/statistics/raid/{unit}' |
-  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume' |
-  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}' |
-  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port' |
-  '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}' |
-  '/dedicated/server/{serviceName}/statistics/raid' |
-  '/dedicated/server/{serviceName}/statistics/motherboard' |
-  '/dedicated/server/{serviceName}/statistics/cpu' |
-  '/dedicated/server/{serviceName}/statistics/process' |
-  '/dedicated/server/{serviceName}/statistics/load' |
-  '/dedicated/server/{serviceName}/statistics/memory' |
-  '/dedicated/server/{serviceName}/license/compliantWindowsSqlServer' |
-  '/dedicated/server/{serviceName}/license/compliantWindows' |
-  '/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}' |
-  '/dedicated/server/{serviceName}/virtualNetworkInterface' |
-  '/dedicated/server/{serviceName}/install/hardwareRaidProfile' |
-  '/dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes' |
-  '/dedicated/server/{serviceName}/install/status' |
-  '/dedicated/server/{serviceName}/install/compatibleTemplates' |
-  '/dedicated/server/{serviceName}/install/templateCapabilities' |
-  '/dedicated/server/{serviceName}/install/hardwareRaidSize' |
-  '/dedicated/server/{serviceName}/secondaryDnsNameServerAvailable' |
-  '/dedicated/server/{serviceName}/task' |
-  '/dedicated/server/{serviceName}/task/{taskId}' |
-  '/dedicated/server/{serviceName}/option/{option}' |
-  '/dedicated/server/{serviceName}/option' |
-  '/dedicated/server/virtualNetworkInterface/{uuid}' |
   '/dedicated/server/availabilities/raw' |
   '/dedicated/server/availabilities' |
   '/dedicated/server/datacenter/availabilities' |
-  '/dedicated/server/osAvailabilities';
+  '/dedicated/server';
 
-type PathsDedicatedServerPUT = '/dedicated/server/{serviceName}/serviceInfos' |
+type PathsDedicatedServerPUT = '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' |
+  '/dedicated/server/{serviceName}/serviceInfos' |
+  '/dedicated/server/{serviceName}' |
   '/dedicated/server/{serviceName}/features/firewall' |
   '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' |
-  '/dedicated/server/{serviceName}/burst' |
-  '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' |
-  '/dedicated/server/{serviceName}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' |
-  '/dedicated/server/{serviceName}/spla/{id}';
+  '/dedicated/server/{serviceName}/spla/{id}' |
+  '/dedicated/server/{serviceName}/burst';
 
-type PathsDedicatedServerPOST = '/dedicated/server/{serviceName}/changeContact' |
+type PathsDedicatedServerPOST = '/dedicated/server/{serviceName}/license/windows' |
+  '/dedicated/server/{serviceName}/authenticationSecret' |
+  '/dedicated/server/{serviceName}/secondaryDnsDomains' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms' |
+  '/dedicated/server/{serviceName}/serviceMonitoring' |
+  '/dedicated/server/{serviceName}/ipMove' |
+  '/dedicated/server/{serviceName}/support/replace/hardDiskDrive' |
+  '/dedicated/server/{serviceName}/confirmTermination' |
+  '/dedicated/server/{serviceName}/install/start' |
+  '/dedicated/server/{serviceName}/terminate' |
+  '/dedicated/server/{serviceName}/ipBlockMerge' |
+  '/dedicated/server/{serviceName}/reboot' |
   '/dedicated/server/{serviceName}/features/backupCloud' |
   '/dedicated/server/{serviceName}/features/backupCloud/password' |
   '/dedicated/server/{serviceName}/features/ipmi/test' |
-  '/dedicated/server/{serviceName}/features/ipmi/resetInterface' |
-  '/dedicated/server/{serviceName}/features/ipmi/access' |
   '/dedicated/server/{serviceName}/features/ipmi/resetSessions' |
+  '/dedicated/server/{serviceName}/features/ipmi/access' |
+  '/dedicated/server/{serviceName}/features/ipmi/resetInterface' |
   '/dedicated/server/{serviceName}/features/backupFTP' |
   '/dedicated/server/{serviceName}/features/backupFTP/password' |
   '/dedicated/server/{serviceName}/features/backupFTP/access' |
-  '/dedicated/server/{serviceName}/support/replace/hardDiskDrive' |
-  '/dedicated/server/{serviceName}/secondaryDnsDomains' |
-  '/dedicated/server/{serviceName}/ipBlockMerge' |
-  '/dedicated/server/{serviceName}/ipMove' |
-  '/dedicated/server/{serviceName}/virtualMac' |
-  '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email' |
-  '/dedicated/server/{serviceName}/serviceMonitoring' |
-  '/dedicated/server/{serviceName}/authenticationSecret' |
-  '/dedicated/server/{serviceName}/terminate' |
-  '/dedicated/server/{serviceName}/spla/{id}/revoke' |
+  '/dedicated/server/{serviceName}/changeContact' |
+  '/dedicated/server/{serviceName}/task/{taskId}/cancel' |
   '/dedicated/server/{serviceName}/spla' |
-  '/dedicated/server/{serviceName}/reboot' |
-  '/dedicated/server/{serviceName}/license/windows' |
-  '/dedicated/server/{serviceName}/install/start' |
-  '/dedicated/server/{serviceName}/confirmTermination' |
-  '/dedicated/server/{serviceName}/task/{taskId}/cancel';
+  '/dedicated/server/{serviceName}/spla/{id}/revoke' |
+  '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress' |
+  '/dedicated/server/{serviceName}/virtualMac';
 
-type PathsDedicatedServerDELETE = '/dedicated/server/{serviceName}/features/backupCloud' |
+type PathsDedicatedServerDELETE = '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' |
+  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' |
+  '/dedicated/server/{serviceName}/features/backupCloud' |
   '/dedicated/server/{serviceName}/features/backupFTP' |
   '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}' |
-  '/dedicated/server/{serviceName}/vrack/{vrack}' |
-  '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}' |
+  '/dedicated/server/{serviceName}/option/{option}' |
   '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}' |
-  '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}' |
-  '/dedicated/server/{serviceName}/option/{option}';
+  '/dedicated/server/{serviceName}/vrack/{vrack}';
 
 export class ApiDedicatedServer extends OvhWrapper {
   constructor(engine: OvhRequestable) {

@@ -115,11 +115,29 @@ export interface License {
             $get(): Promise<license.windows.Windows>;
             // PUT /license/windows/{serviceName}
             $put(body?: {body: license.windows.Windows}): Promise<void>;
+            confirmTermination:  {
+                // POST /license/windows/{serviceName}/confirmTermination
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            }
+            option:  {
+                // GET /license/windows/{serviceName}/option
+                $get(): Promise<license.OptionLabel[]>;
+                [keys: string]: {
+                    // DELETE /license/windows/{serviceName}/option/{label}
+                    $delete(): Promise<license.Task>;
+                    // GET /license/windows/{serviceName}/option/{label}
+                    $get(): Promise<license.Option>;
+                } | any
+            }
             serviceInfos:  {
                 // GET /license/windows/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/windows/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
+            }
+            sqlServer:  {
+                // POST /license/windows/{serviceName}/sqlServer
+                $post(body?: {licenseId: string, version: license.WindowsSqlVersionEnum}): Promise<license.Task>;
             }
             tasks:  {
                 // GET /license/windows/{serviceName}/tasks
@@ -129,47 +147,29 @@ export interface License {
                     $get(): Promise<license.Task>;
                 } | any
             }
-            sqlServer:  {
-                // POST /license/windows/{serviceName}/sqlServer
-                $post(body?: {licenseId: string, version: license.WindowsSqlVersionEnum}): Promise<license.Task>;
-            }
             terminate:  {
                 // POST /license/windows/{serviceName}/terminate
                 $post(): Promise<string>;
-            }
-            confirmTermination:  {
-                // POST /license/windows/{serviceName}/confirmTermination
-                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
-            }
-            option:  {
-                // GET /license/windows/{serviceName}/option
-                $get(): Promise<license.OptionLabel[]>;
-                [keys: string]: {
-                    // GET /license/windows/{serviceName}/option/{label}
-                    $get(): Promise<license.Option>;
-                    // DELETE /license/windows/{serviceName}/option/{label}
-                    $delete(): Promise<license.Task>;
-                } | any
             }
         } | any
     }
 }
 // Api
-type PathsLicenseWindowsGET = '/license/windows/orderableVersions' |
-  '/license/windows/{serviceName}/serviceInfos' |
+type PathsLicenseWindowsGET = '/license/windows/{serviceName}/serviceInfos' |
   '/license/windows/{serviceName}' |
-  '/license/windows/{serviceName}/tasks/{taskId}' |
   '/license/windows/{serviceName}/tasks' |
+  '/license/windows/{serviceName}/tasks/{taskId}' |
   '/license/windows/{serviceName}/option/{label}' |
   '/license/windows/{serviceName}/option' |
-  '/license/windows';
+  '/license/windows' |
+  '/license/windows/orderableVersions';
 
 type PathsLicenseWindowsPUT = '/license/windows/{serviceName}/serviceInfos' |
   '/license/windows/{serviceName}';
 
 type PathsLicenseWindowsPOST = '/license/windows/{serviceName}/sqlServer' |
-  '/license/windows/{serviceName}/terminate' |
-  '/license/windows/{serviceName}/confirmTermination';
+  '/license/windows/{serviceName}/confirmTermination' |
+  '/license/windows/{serviceName}/terminate';
 
 type PathsLicenseWindowsDELETE = '/license/windows/{serviceName}/option/{label}';
 

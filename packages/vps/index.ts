@@ -375,11 +375,229 @@ export namespace vps {
 export interface Vps {
     // GET /vps
     $get(): Promise<string[]>;
+    datacenter:  {
+        // GET /vps/datacenter
+        $get(param?: {country: nichandle.CountryEnum}): Promise<string[]>;
+    }
     [keys: string]: {
         // GET /vps/{serviceName}
         $get(): Promise<vps.VPS>;
         // PUT /vps/{serviceName}
         $put(body?: {body: vps.VPS}): Promise<void>;
+        activeOptions:  {
+            // GET /vps/{serviceName}/activeOptions
+            $get(): Promise<vps.VpsOptionEnum[]>;
+        }
+        automatedBackup:  {
+            // GET /vps/{serviceName}/automatedBackup
+            $get(): Promise<vps.AutomatedBackup>;
+            attachedBackup:  {
+                // GET /vps/{serviceName}/automatedBackup/attachedBackup
+                $get(): Promise<vps.automatedBackup.Attached[]>;
+            }
+            detachBackup:  {
+                // POST /vps/{serviceName}/automatedBackup/detachBackup
+                $post(body?: {restorePoint: string}): Promise<vps.Task>;
+            }
+            restore:  {
+                // POST /vps/{serviceName}/automatedBackup/restore
+                $post(body?: {changePassword?: boolean, restorePoint: string, type: vps.RestoreTypeEnum}): Promise<vps.Task>;
+            }
+            restorePoints:  {
+                // GET /vps/{serviceName}/automatedBackup/restorePoints
+                $get(param?: {state: vps.RestoreStateEnum}): Promise<string[]>;
+            }
+        }
+        availableUpgrade:  {
+            // GET /vps/{serviceName}/availableUpgrade
+            $get(): Promise<vps.Model[]>;
+        }
+        backupftp:  {
+            // GET /vps/{serviceName}/backupftp
+            $get(): Promise<vps.BackupFtp>;
+            access:  {
+                // GET /vps/{serviceName}/backupftp/access
+                $get(): Promise<string[]>;
+                // POST /vps/{serviceName}/backupftp/access
+                $post(body?: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
+                [keys: string]: {
+                    // DELETE /vps/{serviceName}/backupftp/access/{ipBlock}
+                    $delete(): Promise<dedicated.server.Task>;
+                    // GET /vps/{serviceName}/backupftp/access/{ipBlock}
+                    $get(): Promise<dedicated.server.BackupFtpAcl>;
+                    // PUT /vps/{serviceName}/backupftp/access/{ipBlock}
+                    $put(body?: {body: dedicated.server.BackupFtpAcl}): Promise<void>;
+                } | any
+            }
+            authorizableBlocks:  {
+                // GET /vps/{serviceName}/backupftp/authorizableBlocks
+                $get(): Promise<string[]>;
+            }
+            password:  {
+                // POST /vps/{serviceName}/backupftp/password
+                $post(): Promise<dedicated.server.Task>;
+            }
+        }
+        changeContact:  {
+            // POST /vps/{serviceName}/changeContact
+            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+        }
+        confirmTermination:  {
+            // POST /vps/{serviceName}/confirmTermination
+            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+        }
+        createSnapshot:  {
+            // POST /vps/{serviceName}/createSnapshot
+            $post(body?: {description?: string}): Promise<vps.Task>;
+        }
+        datacenter:  {
+            // GET /vps/{serviceName}/datacenter
+            $get(): Promise<vps.Datacenter>;
+        }
+        disks:  {
+            // GET /vps/{serviceName}/disks
+            $get(): Promise<number[]>;
+            [keys: string]: {
+                // GET /vps/{serviceName}/disks/{id}
+                $get(): Promise<vps.Disk>;
+                // PUT /vps/{serviceName}/disks/{id}
+                $put(body?: {body: vps.Disk}): Promise<void>;
+                monitoring:  {
+                    // GET /vps/{serviceName}/disks/{id}/monitoring
+                    $get(param?: {period: vps.VpsMonitoringPeriodEnum, type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+                }
+                use:  {
+                    // GET /vps/{serviceName}/disks/{id}/use
+                    $get(param?: {type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
+                }
+            } | any
+        }
+        distribution:  {
+            // GET /vps/{serviceName}/distribution
+            $get(): Promise<vps.Template>;
+            software:  {
+                // GET /vps/{serviceName}/distribution/software
+                $get(): Promise<number[]>;
+                [keys: string]: {
+                    // GET /vps/{serviceName}/distribution/software/{softwareId}
+                    $get(): Promise<vps.Software>;
+                } | any
+            }
+        }
+        getConsoleUrl:  {
+            // POST /vps/{serviceName}/getConsoleUrl
+            $post(): Promise<string>;
+        }
+        ipCountryAvailable:  {
+            // GET /vps/{serviceName}/ipCountryAvailable
+            $get(): Promise<vps.ip.GeolocationEnum[]>;
+        }
+        ips:  {
+            // GET /vps/{serviceName}/ips
+            $get(): Promise<string[]>;
+            [keys: string]: {
+                // DELETE /vps/{serviceName}/ips/{ipAddress}
+                $delete(): Promise<void>;
+                // GET /vps/{serviceName}/ips/{ipAddress}
+                $get(): Promise<vps.Ip>;
+                // PUT /vps/{serviceName}/ips/{ipAddress}
+                $put(body?: {body: vps.Ip}): Promise<void>;
+            } | any
+        }
+        models:  {
+            // GET /vps/{serviceName}/models
+            $get(): Promise<vps.Model[]>;
+        }
+        monitoring:  {
+            // GET /vps/{serviceName}/monitoring
+            $get(param?: {period: vps.VpsMonitoringPeriodEnum, type: vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+        }
+        openConsoleAccess:  {
+            // POST /vps/{serviceName}/openConsoleAccess
+            $post(body?: {protocol?: vps.VncProtocolEnum}): Promise<vps.Vnc>;
+        }
+        option:  {
+            // GET /vps/{serviceName}/option
+            $get(): Promise<vps.VpsOptionEnum[]>;
+            [keys: string]: {
+                // DELETE /vps/{serviceName}/option/{option}
+                $delete(): Promise<void>;
+                // GET /vps/{serviceName}/option/{option}
+                $get(): Promise<vps.Option>;
+            } | any
+        }
+        reboot:  {
+            // POST /vps/{serviceName}/reboot
+            $post(): Promise<vps.Task>;
+        }
+        reinstall:  {
+            // POST /vps/{serviceName}/reinstall
+            $post(body?: {doNotSendPassword?: boolean, language?: string, softwareId?: number[], sshKey?: string[], templateId: number}): Promise<vps.Task>;
+        }
+        secondaryDnsDomains:  {
+            // GET /vps/{serviceName}/secondaryDnsDomains
+            $get(): Promise<string[]>;
+            // POST /vps/{serviceName}/secondaryDnsDomains
+            $post(body?: {domain: string, ip?: string}): Promise<void>;
+            [keys: string]: {
+                // DELETE /vps/{serviceName}/secondaryDnsDomains/{domain}
+                $delete(): Promise<void>;
+                // GET /vps/{serviceName}/secondaryDnsDomains/{domain}
+                $get(): Promise<secondaryDns.SecondaryDNS>;
+                // PUT /vps/{serviceName}/secondaryDnsDomains/{domain}
+                $put(body?: {body: secondaryDns.SecondaryDNS}): Promise<void>;
+                dnsServer:  {
+                    // GET /vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer
+                    $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
+                }
+            } | any
+        }
+        secondaryDnsNameServerAvailable:  {
+            // GET /vps/{serviceName}/secondaryDnsNameServerAvailable
+            $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
+        }
+        serviceInfos:  {
+            // GET /vps/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /vps/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
+        }
+        setPassword:  {
+            // POST /vps/{serviceName}/setPassword
+            $post(): Promise<vps.Task>;
+        }
+        snapshot:  {
+            // DELETE /vps/{serviceName}/snapshot
+            $delete(): Promise<vps.Task>;
+            // GET /vps/{serviceName}/snapshot
+            $get(): Promise<vps.Snapshot>;
+            // PUT /vps/{serviceName}/snapshot
+            $put(body?: {body: vps.Snapshot}): Promise<void>;
+            revert:  {
+                // POST /vps/{serviceName}/snapshot/revert
+                $post(): Promise<vps.Task>;
+            }
+        }
+        start:  {
+            // POST /vps/{serviceName}/start
+            $post(): Promise<vps.Task>;
+        }
+        status:  {
+            // GET /vps/{serviceName}/status
+            $get(): Promise<vps.ip.ServiceStatus>;
+        }
+        stop:  {
+            // POST /vps/{serviceName}/stop
+            $post(): Promise<vps.Task>;
+        }
+        tasks:  {
+            // GET /vps/{serviceName}/tasks
+            $get(param?: {type?: vps.TaskTypeEnum, state?: vps.TaskStateEnum}): Promise<number[]>;
+            [keys: string]: {
+                // GET /vps/{serviceName}/tasks/{id}
+                $get(): Promise<vps.Task>;
+            } | any
+        }
         templates:  {
             // GET /vps/{serviceName}/templates
             $get(): Promise<number[]>;
@@ -396,217 +614,17 @@ export interface Vps {
                 }
             } | any
         }
-        availableUpgrade:  {
-            // GET /vps/{serviceName}/availableUpgrade
-            $get(): Promise<vps.Model[]>;
-        }
-        option:  {
-            // GET /vps/{serviceName}/option
-            $get(): Promise<vps.VpsOptionEnum[]>;
-            [keys: string]: {
-                // GET /vps/{serviceName}/option/{option}
-                $get(): Promise<vps.Option>;
-                // DELETE /vps/{serviceName}/option/{option}
-                $delete(): Promise<void>;
-            } | any
-        }
-        secondaryDnsNameServerAvailable:  {
-            // GET /vps/{serviceName}/secondaryDnsNameServerAvailable
-            $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
-        }
-        models:  {
-            // GET /vps/{serviceName}/models
-            $get(): Promise<vps.Model[]>;
-        }
-        confirmTermination:  {
-            // POST /vps/{serviceName}/confirmTermination
-            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
-        }
-        getConsoleUrl:  {
-            // POST /vps/{serviceName}/getConsoleUrl
-            $post(): Promise<string>;
-        }
-        backupftp:  {
-            // GET /vps/{serviceName}/backupftp
-            $get(): Promise<vps.BackupFtp>;
-            access:  {
-                // GET /vps/{serviceName}/backupftp/access
-                $get(): Promise<string[]>;
-                // POST /vps/{serviceName}/backupftp/access
-                $post(body?: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
-                [keys: string]: {
-                    // GET /vps/{serviceName}/backupftp/access/{ipBlock}
-                    $get(): Promise<dedicated.server.BackupFtpAcl>;
-                    // PUT /vps/{serviceName}/backupftp/access/{ipBlock}
-                    $put(body?: {body: dedicated.server.BackupFtpAcl}): Promise<void>;
-                    // DELETE /vps/{serviceName}/backupftp/access/{ipBlock}
-                    $delete(): Promise<dedicated.server.Task>;
-                } | any
-            }
-            password:  {
-                // POST /vps/{serviceName}/backupftp/password
-                $post(): Promise<dedicated.server.Task>;
-            }
-            authorizableBlocks:  {
-                // GET /vps/{serviceName}/backupftp/authorizableBlocks
-                $get(): Promise<string[]>;
-            }
-        }
-        monitoring:  {
-            // GET /vps/{serviceName}/monitoring
-            $get(param?: {type: vps.VpsStatisticTypeEnum, period: vps.VpsMonitoringPeriodEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
-        }
-        ipCountryAvailable:  {
-            // GET /vps/{serviceName}/ipCountryAvailable
-            $get(): Promise<vps.ip.GeolocationEnum[]>;
-        }
-        start:  {
-            // POST /vps/{serviceName}/start
-            $post(): Promise<vps.Task>;
-        }
-        status:  {
-            // GET /vps/{serviceName}/status
-            $get(): Promise<vps.ip.ServiceStatus>;
-        }
-        serviceInfos:  {
-            // GET /vps/{serviceName}/serviceInfos
-            $get(): Promise<services.Service>;
-            // PUT /vps/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
-        }
-        secondaryDnsDomains:  {
-            // GET /vps/{serviceName}/secondaryDnsDomains
-            $get(): Promise<string[]>;
-            // POST /vps/{serviceName}/secondaryDnsDomains
-            $post(body?: {domain: string, ip?: string}): Promise<void>;
-            [keys: string]: {
-                // GET /vps/{serviceName}/secondaryDnsDomains/{domain}
-                $get(): Promise<secondaryDns.SecondaryDNS>;
-                // PUT /vps/{serviceName}/secondaryDnsDomains/{domain}
-                $put(body?: {body: secondaryDns.SecondaryDNS}): Promise<void>;
-                // DELETE /vps/{serviceName}/secondaryDnsDomains/{domain}
-                $delete(): Promise<void>;
-                dnsServer:  {
-                    // GET /vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer
-                    $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
-                }
-            } | any
-        }
-        setPassword:  {
-            // POST /vps/{serviceName}/setPassword
-            $post(): Promise<vps.Task>;
-        }
-        ips:  {
-            // GET /vps/{serviceName}/ips
-            $get(): Promise<string[]>;
-            [keys: string]: {
-                // GET /vps/{serviceName}/ips/{ipAddress}
-                $get(): Promise<vps.Ip>;
-                // PUT /vps/{serviceName}/ips/{ipAddress}
-                $put(body?: {body: vps.Ip}): Promise<void>;
-                // DELETE /vps/{serviceName}/ips/{ipAddress}
-                $delete(): Promise<void>;
-            } | any
-        }
-        automatedBackup:  {
-            // GET /vps/{serviceName}/automatedBackup
-            $get(): Promise<vps.AutomatedBackup>;
-            attachedBackup:  {
-                // GET /vps/{serviceName}/automatedBackup/attachedBackup
-                $get(): Promise<vps.automatedBackup.Attached[]>;
-            }
-            restore:  {
-                // POST /vps/{serviceName}/automatedBackup/restore
-                $post(body?: {changePassword?: boolean, restorePoint: string, type: vps.RestoreTypeEnum}): Promise<vps.Task>;
-            }
-            restorePoints:  {
-                // GET /vps/{serviceName}/automatedBackup/restorePoints
-                $get(param?: {state: vps.RestoreStateEnum}): Promise<string[]>;
-            }
-            detachBackup:  {
-                // POST /vps/{serviceName}/automatedBackup/detachBackup
-                $post(body?: {restorePoint: string}): Promise<vps.Task>;
-            }
-        }
-        stop:  {
-            // POST /vps/{serviceName}/stop
-            $post(): Promise<vps.Task>;
-        }
-        changeContact:  {
-            // POST /vps/{serviceName}/changeContact
-            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
-        }
-        snapshot:  {
-            // GET /vps/{serviceName}/snapshot
-            $get(): Promise<vps.Snapshot>;
-            // PUT /vps/{serviceName}/snapshot
-            $put(body?: {body: vps.Snapshot}): Promise<void>;
-            // DELETE /vps/{serviceName}/snapshot
-            $delete(): Promise<vps.Task>;
-            revert:  {
-                // POST /vps/{serviceName}/snapshot/revert
-                $post(): Promise<vps.Task>;
-            }
-        }
-        tasks:  {
-            // GET /vps/{serviceName}/tasks
-            $get(param?: {state?: vps.TaskStateEnum, type?: vps.TaskTypeEnum}): Promise<number[]>;
-            [keys: string]: {
-                // GET /vps/{serviceName}/tasks/{id}
-                $get(): Promise<vps.Task>;
-            } | any
-        }
         terminate:  {
             // POST /vps/{serviceName}/terminate
             $post(): Promise<string>;
-        }
-        disks:  {
-            // GET /vps/{serviceName}/disks
-            $get(): Promise<number[]>;
-            [keys: string]: {
-                // GET /vps/{serviceName}/disks/{id}
-                $get(): Promise<vps.Disk>;
-                // PUT /vps/{serviceName}/disks/{id}
-                $put(body?: {body: vps.Disk}): Promise<void>;
-                monitoring:  {
-                    // GET /vps/{serviceName}/disks/{id}/monitoring
-                    $get(param?: {type: vps.disk.StatisticTypeEnum, period: vps.VpsMonitoringPeriodEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
-                }
-                use:  {
-                    // GET /vps/{serviceName}/disks/{id}/use
-                    $get(param?: {type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
-                }
-            } | any
-        }
-        reinstall:  {
-            // POST /vps/{serviceName}/reinstall
-            $post(body?: {doNotSendPassword?: boolean, language?: string, softwareId?: number[], sshKey?: string[], templateId: number}): Promise<vps.Task>;
-        }
-        createSnapshot:  {
-            // POST /vps/{serviceName}/createSnapshot
-            $post(body?: {description?: string}): Promise<vps.Task>;
-        }
-        activeOptions:  {
-            // GET /vps/{serviceName}/activeOptions
-            $get(): Promise<vps.VpsOptionEnum[]>;
         }
         use:  {
             // GET /vps/{serviceName}/use
             $get(param?: {type: vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
         }
-        reboot:  {
-            // POST /vps/{serviceName}/reboot
-            $post(): Promise<vps.Task>;
-        }
         veeam:  {
             // GET /vps/{serviceName}/veeam
             $get(): Promise<vps.Veeam>;
-            restoredBackup:  {
-                // GET /vps/{serviceName}/veeam/restoredBackup
-                $get(): Promise<vps.veeam.RestoredBackup>;
-                // DELETE /vps/{serviceName}/veeam/restoredBackup
-                $delete(): Promise<vps.Task>;
-            }
             restorePoints:  {
                 // GET /vps/{serviceName}/veeam/restorePoints
                 $get(param?: {creationTime?: string}): Promise<number[]>;
@@ -619,113 +637,95 @@ export interface Vps {
                     }
                 } | any
             }
-        }
-        datacenter:  {
-            // GET /vps/{serviceName}/datacenter
-            $get(): Promise<vps.Datacenter>;
-        }
-        distribution:  {
-            // GET /vps/{serviceName}/distribution
-            $get(): Promise<vps.Template>;
-            software:  {
-                // GET /vps/{serviceName}/distribution/software
-                $get(): Promise<number[]>;
-                [keys: string]: {
-                    // GET /vps/{serviceName}/distribution/software/{softwareId}
-                    $get(): Promise<vps.Software>;
-                } | any
+            restoredBackup:  {
+                // DELETE /vps/{serviceName}/veeam/restoredBackup
+                $delete(): Promise<vps.Task>;
+                // GET /vps/{serviceName}/veeam/restoredBackup
+                $get(): Promise<vps.veeam.RestoredBackup>;
             }
         }
-        openConsoleAccess:  {
-            // POST /vps/{serviceName}/openConsoleAccess
-            $post(body?: {protocol?: vps.VncProtocolEnum}): Promise<vps.Vnc>;
-        }
     } | any
-    datacenter:  {
-        // GET /vps/datacenter
-        $get(param?: {country: nichandle.CountryEnum}): Promise<string[]>;
-    }
 }
 // Api
-type PathsVpsGET = '/vps/{serviceName}/templates' |
+type PathsVpsGET = '/vps/datacenter' |
+  '/vps/{serviceName}/veeam/restoredBackup' |
+  '/vps/{serviceName}/veeam/restorePoints/{id}' |
+  '/vps/{serviceName}/veeam/restorePoints' |
+  '/vps/{serviceName}/veeam' |
+  '/vps/{serviceName}/ips/{ipAddress}' |
+  '/vps/{serviceName}/ips' |
+  '/vps/{serviceName}/status' |
+  '/vps/{serviceName}/templates' |
   '/vps/{serviceName}/templates/{id}/software' |
   '/vps/{serviceName}/templates/{id}/software/{softwareId}' |
   '/vps/{serviceName}/templates/{id}' |
-  '/vps/{serviceName}/availableUpgrade' |
+  '/vps/{serviceName}/snapshot' |
+  '/vps/{serviceName}' |
+  '/vps/{serviceName}/backupftp/authorizableBlocks' |
+  '/vps/{serviceName}/backupftp/access' |
+  '/vps/{serviceName}/backupftp/access/{ipBlock}' |
+  '/vps/{serviceName}/backupftp' |
+  '/vps/{serviceName}/ipCountryAvailable' |
+  '/vps/{serviceName}/models' |
+  '/vps/{serviceName}/monitoring' |
+  '/vps/{serviceName}/use' |
+  '/vps/{serviceName}/activeOptions' |
   '/vps/{serviceName}/option/{option}' |
   '/vps/{serviceName}/option' |
-  '/vps/{serviceName}' |
-  '/vps/{serviceName}/secondaryDnsNameServerAvailable' |
-  '/vps/{serviceName}/models' |
-  '/vps/{serviceName}/backupftp/access/{ipBlock}' |
-  '/vps/{serviceName}/backupftp/access' |
-  '/vps/{serviceName}/backupftp/authorizableBlocks' |
-  '/vps/{serviceName}/backupftp' |
-  '/vps/{serviceName}/monitoring' |
-  '/vps/{serviceName}/ipCountryAvailable' |
-  '/vps/{serviceName}/status' |
   '/vps/{serviceName}/serviceInfos' |
-  '/vps/{serviceName}/secondaryDnsDomains/{domain}' |
-  '/vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer' |
-  '/vps/{serviceName}/secondaryDnsDomains' |
-  '/vps/{serviceName}/ips' |
-  '/vps/{serviceName}/ips/{ipAddress}' |
-  '/vps/{serviceName}/automatedBackup/attachedBackup' |
-  '/vps/{serviceName}/automatedBackup' |
-  '/vps/{serviceName}/automatedBackup/restorePoints' |
-  '/vps/{serviceName}/snapshot' |
-  '/vps/{serviceName}/tasks/{id}' |
-  '/vps/{serviceName}/tasks' |
-  '/vps/{serviceName}/disks' |
-  '/vps/{serviceName}/disks/{id}/monitoring' |
-  '/vps/{serviceName}/disks/{id}/use' |
-  '/vps/{serviceName}/disks/{id}' |
-  '/vps/{serviceName}/activeOptions' |
-  '/vps/{serviceName}/use' |
-  '/vps/{serviceName}/veeam/restoredBackup' |
-  '/vps/{serviceName}/veeam/restorePoints' |
-  '/vps/{serviceName}/veeam/restorePoints/{id}' |
-  '/vps/{serviceName}/veeam' |
-  '/vps/{serviceName}/datacenter' |
-  '/vps/{serviceName}/distribution' |
+  '/vps/{serviceName}/secondaryDnsNameServerAvailable' |
   '/vps/{serviceName}/distribution/software' |
   '/vps/{serviceName}/distribution/software/{softwareId}' |
-  '/vps/datacenter' |
+  '/vps/{serviceName}/distribution' |
+  '/vps/{serviceName}/disks/{id}/monitoring' |
+  '/vps/{serviceName}/disks/{id}' |
+  '/vps/{serviceName}/disks/{id}/use' |
+  '/vps/{serviceName}/disks' |
+  '/vps/{serviceName}/automatedBackup' |
+  '/vps/{serviceName}/automatedBackup/attachedBackup' |
+  '/vps/{serviceName}/automatedBackup/restorePoints' |
+  '/vps/{serviceName}/datacenter' |
+  '/vps/{serviceName}/tasks/{id}' |
+  '/vps/{serviceName}/tasks' |
+  '/vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer' |
+  '/vps/{serviceName}/secondaryDnsDomains/{domain}' |
+  '/vps/{serviceName}/secondaryDnsDomains' |
+  '/vps/{serviceName}/availableUpgrade' |
   '/vps';
 
-type PathsVpsPUT = '/vps/{serviceName}' |
+type PathsVpsPUT = '/vps/{serviceName}/ips/{ipAddress}' |
+  '/vps/{serviceName}/snapshot' |
+  '/vps/{serviceName}' |
   '/vps/{serviceName}/backupftp/access/{ipBlock}' |
   '/vps/{serviceName}/serviceInfos' |
-  '/vps/{serviceName}/secondaryDnsDomains/{domain}' |
-  '/vps/{serviceName}/ips/{ipAddress}' |
-  '/vps/{serviceName}/snapshot' |
-  '/vps/{serviceName}/disks/{id}';
+  '/vps/{serviceName}/disks/{id}' |
+  '/vps/{serviceName}/secondaryDnsDomains/{domain}';
 
-type PathsVpsPOST = '/vps/{serviceName}/confirmTermination' |
-  '/vps/{serviceName}/getConsoleUrl' |
-  '/vps/{serviceName}/backupftp/access' |
-  '/vps/{serviceName}/backupftp/password' |
-  '/vps/{serviceName}/start' |
-  '/vps/{serviceName}/secondaryDnsDomains' |
-  '/vps/{serviceName}/setPassword' |
-  '/vps/{serviceName}/automatedBackup/restore' |
-  '/vps/{serviceName}/automatedBackup/detachBackup' |
-  '/vps/{serviceName}/stop' |
-  '/vps/{serviceName}/changeContact' |
+type PathsVpsPOST = '/vps/{serviceName}/veeam/restorePoints/{id}/restore' |
   '/vps/{serviceName}/snapshot/revert' |
-  '/vps/{serviceName}/terminate' |
-  '/vps/{serviceName}/reinstall' |
-  '/vps/{serviceName}/createSnapshot' |
+  '/vps/{serviceName}/backupftp/password' |
+  '/vps/{serviceName}/backupftp/access' |
   '/vps/{serviceName}/reboot' |
-  '/vps/{serviceName}/veeam/restorePoints/{id}/restore' |
-  '/vps/{serviceName}/openConsoleAccess';
+  '/vps/{serviceName}/getConsoleUrl' |
+  '/vps/{serviceName}/stop' |
+  '/vps/{serviceName}/createSnapshot' |
+  '/vps/{serviceName}/start' |
+  '/vps/{serviceName}/reinstall' |
+  '/vps/{serviceName}/openConsoleAccess' |
+  '/vps/{serviceName}/terminate' |
+  '/vps/{serviceName}/changeContact' |
+  '/vps/{serviceName}/confirmTermination' |
+  '/vps/{serviceName}/setPassword' |
+  '/vps/{serviceName}/automatedBackup/detachBackup' |
+  '/vps/{serviceName}/automatedBackup/restore' |
+  '/vps/{serviceName}/secondaryDnsDomains';
 
-type PathsVpsDELETE = '/vps/{serviceName}/option/{option}' |
-  '/vps/{serviceName}/backupftp/access/{ipBlock}' |
-  '/vps/{serviceName}/secondaryDnsDomains/{domain}' |
+type PathsVpsDELETE = '/vps/{serviceName}/veeam/restoredBackup' |
   '/vps/{serviceName}/ips/{ipAddress}' |
   '/vps/{serviceName}/snapshot' |
-  '/vps/{serviceName}/veeam/restoredBackup';
+  '/vps/{serviceName}/backupftp/access/{ipBlock}' |
+  '/vps/{serviceName}/option/{option}' |
+  '/vps/{serviceName}/secondaryDnsDomains/{domain}';
 
 export class ApiVps extends OvhWrapper {
   constructor(engine: OvhRequestable) {

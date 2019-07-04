@@ -53,22 +53,22 @@ export interface Pack {
         [keys: string]: {
             // GET /pack/siptrunk/{packName}
             $get(): Promise<pack.siptrunk.PackSipTrunk>;
+            changeContact:  {
+                // POST /pack/siptrunk/{packName}/changeContact
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            }
             serviceInfos:  {
                 // GET /pack/siptrunk/{packName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /pack/siptrunk/{packName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            changeContact:  {
-                // POST /pack/siptrunk/{packName}/changeContact
-                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
-            }
         } | any
     }
 }
 // Api
-type PathsPackSiptrunkGET = '/pack/siptrunk/{packName}/serviceInfos' |
-  '/pack/siptrunk/{packName}' |
+type PathsPackSiptrunkGET = '/pack/siptrunk/{packName}' |
+  '/pack/siptrunk/{packName}/serviceInfos' |
   '/pack/siptrunk';
 
 type PathsPackSiptrunkPUT = '/pack/siptrunk/{packName}/serviceInfos';

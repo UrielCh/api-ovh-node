@@ -140,28 +140,22 @@ export interface Paas {
     timeseries:  {
         // GET /paas/timeseries
         $get(): Promise<string[]>;
+        region:  {
+            // GET /paas/timeseries/region
+            $get(): Promise<paas.timeseries.Region[]>;
+        }
         [keys: string]: {
             // GET /paas/timeseries/{serviceName}
             $get(): Promise<timeseries.Project>;
             // PUT /paas/timeseries/{serviceName}
             $put(body?: {body: timeseries.Project}): Promise<void>;
-            consumption:  {
-                // GET /paas/timeseries/{serviceName}/consumption
-                $get(): Promise<paas.timeseries.Consumption[]>;
-            }
-            serviceInfos:  {
-                // GET /paas/timeseries/{serviceName}/serviceInfos
-                $get(): Promise<services.Service>;
-                // PUT /paas/timeseries/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
-            }
-            quota:  {
-                // GET /paas/timeseries/{serviceName}/quota
-                $get(): Promise<paas.timeseries.Quota[]>;
-            }
             changeContact:  {
                 // POST /paas/timeseries/{serviceName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            }
+            consumption:  {
+                // GET /paas/timeseries/{serviceName}/consumption
+                $get(): Promise<paas.timeseries.Consumption[]>;
             }
             key:  {
                 // GET /paas/timeseries/{serviceName}/key
@@ -169,42 +163,48 @@ export interface Paas {
                 // POST /paas/timeseries/{serviceName}/key
                 $post(body?: {description?: string, permissions: string[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
                 [keys: string]: {
+                    // DELETE /paas/timeseries/{serviceName}/key/{keyId}
+                    $delete(): Promise<boolean>;
                     // GET /paas/timeseries/{serviceName}/key/{keyId}
                     $get(): Promise<paas.timeseries.Key>;
                     // PUT /paas/timeseries/{serviceName}/key/{keyId}
                     $put(body?: {description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
-                    // DELETE /paas/timeseries/{serviceName}/key/{keyId}
-                    $delete(): Promise<boolean>;
                 } | any
+            }
+            quota:  {
+                // GET /paas/timeseries/{serviceName}/quota
+                $get(): Promise<paas.timeseries.Quota[]>;
+            }
+            serviceInfos:  {
+                // GET /paas/timeseries/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /paas/timeseries/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
             }
             setup:  {
                 // POST /paas/timeseries/{serviceName}/setup
                 $post(body?: {description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string}): Promise<paas.timeseries.Project>;
             }
         } | any
-        region:  {
-            // GET /paas/timeseries/region
-            $get(): Promise<paas.timeseries.Region[]>;
-        }
     }
 }
 // Api
 type PathsPaasTimeseriesGET = '/paas/timeseries' |
-  '/paas/timeseries/{serviceName}/consumption' |
   '/paas/timeseries/{serviceName}' |
+  '/paas/timeseries/{serviceName}/key/{keyId}' |
+  '/paas/timeseries/{serviceName}/key' |
   '/paas/timeseries/{serviceName}/serviceInfos' |
   '/paas/timeseries/{serviceName}/quota' |
-  '/paas/timeseries/{serviceName}/key' |
-  '/paas/timeseries/{serviceName}/key/{keyId}' |
+  '/paas/timeseries/{serviceName}/consumption' |
   '/paas/timeseries/region';
 
 type PathsPaasTimeseriesPUT = '/paas/timeseries/{serviceName}' |
-  '/paas/timeseries/{serviceName}/serviceInfos' |
-  '/paas/timeseries/{serviceName}/key/{keyId}';
+  '/paas/timeseries/{serviceName}/key/{keyId}' |
+  '/paas/timeseries/{serviceName}/serviceInfos';
 
 type PathsPaasTimeseriesPOST = '/paas/timeseries/{serviceName}/changeContact' |
-  '/paas/timeseries/{serviceName}/key' |
-  '/paas/timeseries/{serviceName}/setup';
+  '/paas/timeseries/{serviceName}/setup' |
+  '/paas/timeseries/{serviceName}/key';
 
 type PathsPaasTimeseriesDELETE = '/paas/timeseries/{serviceName}/key/{keyId}';
 

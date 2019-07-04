@@ -62,9 +62,9 @@ export interface Vip {
     } | any
 }
 // Api
-type PathsVipGET = '/vip' |
+type PathsVipGET = '/vip/{serviceName}/serviceInfos' |
   '/vip/{serviceName}' |
-  '/vip/{serviceName}/serviceInfos';
+  '/vip';
 
 type PathsVipPUT = '/vip/{serviceName}/serviceInfos';
 

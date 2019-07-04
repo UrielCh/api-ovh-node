@@ -98,6 +98,16 @@ export interface License {
         [keys: string]: {
             // GET /license/cloudLinux/{serviceName}
             $get(): Promise<license.cloudLinux.CloudLinux>;
+            confirmTermination:  {
+                // POST /license/cloudLinux/{serviceName}/confirmTermination
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            }
+            serviceInfos:  {
+                // GET /license/cloudLinux/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /license/cloudLinux/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
             tasks:  {
                 // GET /license/cloudLinux/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
@@ -106,19 +116,9 @@ export interface License {
                     $get(): Promise<license.Task>;
                 } | any
             }
-            serviceInfos:  {
-                // GET /license/cloudLinux/{serviceName}/serviceInfos
-                $get(): Promise<services.Service>;
-                // PUT /license/cloudLinux/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
-            }
             terminate:  {
                 // POST /license/cloudLinux/{serviceName}/terminate
                 $post(): Promise<string>;
-            }
-            confirmTermination:  {
-                // POST /license/cloudLinux/{serviceName}/confirmTermination
-                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
         } | any
     }

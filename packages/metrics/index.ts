@@ -108,9 +108,27 @@ export interface Metrics {
         $get(): Promise<metrics.api.Service>;
         // PUT /metrics/{serviceName}
         $put(body?: {description?: string}): Promise<metrics.api.Service>;
-        terminate:  {
-            // POST /metrics/{serviceName}/terminate
-            $post(): Promise<string>;
+        changeContact:  {
+            // POST /metrics/{serviceName}/changeContact
+            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+        }
+        confirmTermination:  {
+            // POST /metrics/{serviceName}/confirmTermination
+            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+        }
+        consumption:  {
+            // GET /metrics/{serviceName}/consumption
+            $get(param?: {duration?: number}): Promise<metrics.api.Consumption>;
+        }
+        lookup:  {
+            token:  {
+                // POST /metrics/{serviceName}/lookup/token
+                $post(body?: {accessToken: string}): Promise<string[]>;
+            }
+        }
+        quota:  {
+            // PUT /metrics/{serviceName}/quota
+            $put(body?: {quota: number}): Promise<string>;
         }
         serviceInfos:  {
             // GET /metrics/{serviceName}/serviceInfos
@@ -118,13 +136,9 @@ export interface Metrics {
             // PUT /metrics/{serviceName}/serviceInfos
             $put(body?: {body: services.Service}): Promise<void>;
         }
-        quota:  {
-            // PUT /metrics/{serviceName}/quota
-            $put(body?: {quota: number}): Promise<string>;
-        }
-        changeContact:  {
-            // POST /metrics/{serviceName}/changeContact
-            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+        terminate:  {
+            // POST /metrics/{serviceName}/terminate
+            $post(): Promise<string>;
         }
         token:  {
             // GET /metrics/{serviceName}/token
@@ -140,40 +154,26 @@ export interface Metrics {
                 $put(body?: {description?: string}): Promise<metrics.api.Token>;
             } | any
         }
-        confirmTermination:  {
-            // POST /metrics/{serviceName}/confirmTermination
-            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
-        }
-        lookup:  {
-            token:  {
-                // POST /metrics/{serviceName}/lookup/token
-                $post(body?: {accessToken: string}): Promise<string[]>;
-            }
-        }
-        consumption:  {
-            // GET /metrics/{serviceName}/consumption
-            $get(param?: {duration?: number}): Promise<metrics.api.Consumption>;
-        }
     } | any
 }
 // Api
-type PathsMetricsGET = '/metrics/{serviceName}/serviceInfos' |
-  '/metrics/{serviceName}' |
+type PathsMetricsGET = '/metrics/{serviceName}/token' |
   '/metrics/{serviceName}/token/{tokenId}' |
-  '/metrics/{serviceName}/token' |
+  '/metrics/{serviceName}/serviceInfos' |
+  '/metrics/{serviceName}' |
   '/metrics/{serviceName}/consumption' |
   '/metrics';
 
-type PathsMetricsPUT = '/metrics/{serviceName}/serviceInfos' |
+type PathsMetricsPUT = '/metrics/{serviceName}/token/{tokenId}' |
   '/metrics/{serviceName}/quota' |
-  '/metrics/{serviceName}' |
-  '/metrics/{serviceName}/token/{tokenId}';
+  '/metrics/{serviceName}/serviceInfos' |
+  '/metrics/{serviceName}';
 
-type PathsMetricsPOST = '/metrics/{serviceName}/terminate' |
-  '/metrics/{serviceName}/changeContact' |
-  '/metrics/{serviceName}/token' |
+type PathsMetricsPOST = '/metrics/{serviceName}/token' |
   '/metrics/{serviceName}/confirmTermination' |
-  '/metrics/{serviceName}/lookup/token';
+  '/metrics/{serviceName}/terminate' |
+  '/metrics/{serviceName}/lookup/token' |
+  '/metrics/{serviceName}/changeContact';
 
 type PathsMetricsDELETE = '/metrics/{serviceName}/token/{tokenId}';
 

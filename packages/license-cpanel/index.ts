@@ -111,13 +111,21 @@ export interface License {
             $get(): Promise<license.cpanel.Cpanel>;
             // PUT /license/cpanel/{serviceName}
             $put(body?: {body: license.cpanel.Cpanel}): Promise<void>;
-            tasks:  {
-                // GET /license/cpanel/{serviceName}/tasks
-                $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]: {
-                    // GET /license/cpanel/{serviceName}/tasks/{taskId}
-                    $get(): Promise<license.Task>;
-                } | any
+            allowedDestinationIp:  {
+                // GET /license/cpanel/{serviceName}/allowedDestinationIp
+                $get(): Promise<string[]>;
+            }
+            canLicenseBeMovedTo:  {
+                // GET /license/cpanel/{serviceName}/canLicenseBeMovedTo
+                $get(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
+            }
+            changeIp:  {
+                // POST /license/cpanel/{serviceName}/changeIp
+                $post(body?: {destinationIp: string}): Promise<license.Task>;
+            }
+            confirmTermination:  {
+                // POST /license/cpanel/{serviceName}/confirmTermination
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             serviceInfos:  {
                 // GET /license/cpanel/{serviceName}/serviceInfos
@@ -125,25 +133,17 @@ export interface License {
                 // PUT /license/cpanel/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
+            tasks:  {
+                // GET /license/cpanel/{serviceName}/tasks
+                $get(param?: {status?: license.TaskStateEnum, action?: license.ActionType}): Promise<number[]>;
+                [keys: string]: {
+                    // GET /license/cpanel/{serviceName}/tasks/{taskId}
+                    $get(): Promise<license.Task>;
+                } | any
+            }
             terminate:  {
                 // POST /license/cpanel/{serviceName}/terminate
                 $post(): Promise<string>;
-            }
-            changeIp:  {
-                // POST /license/cpanel/{serviceName}/changeIp
-                $post(body?: {destinationIp: string}): Promise<license.Task>;
-            }
-            canLicenseBeMovedTo:  {
-                // GET /license/cpanel/{serviceName}/canLicenseBeMovedTo
-                $get(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
-            }
-            allowedDestinationIp:  {
-                // GET /license/cpanel/{serviceName}/allowedDestinationIp
-                $get(): Promise<string[]>;
-            }
-            confirmTermination:  {
-                // POST /license/cpanel/{serviceName}/confirmTermination
-                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
         } | any
     }
@@ -151,19 +151,19 @@ export interface License {
 // Api
 type PathsLicenseCpanelGET = '/license/cpanel' |
   '/license/cpanel/orderableVersions' |
-  '/license/cpanel/{serviceName}/tasks' |
   '/license/cpanel/{serviceName}/tasks/{taskId}' |
-  '/license/cpanel/{serviceName}/serviceInfos' |
+  '/license/cpanel/{serviceName}/tasks' |
   '/license/cpanel/{serviceName}' |
   '/license/cpanel/{serviceName}/canLicenseBeMovedTo' |
-  '/license/cpanel/{serviceName}/allowedDestinationIp';
+  '/license/cpanel/{serviceName}/allowedDestinationIp' |
+  '/license/cpanel/{serviceName}/serviceInfos';
 
-type PathsLicenseCpanelPUT = '/license/cpanel/{serviceName}/serviceInfos' |
-  '/license/cpanel/{serviceName}';
+type PathsLicenseCpanelPUT = '/license/cpanel/{serviceName}' |
+  '/license/cpanel/{serviceName}/serviceInfos';
 
-type PathsLicenseCpanelPOST = '/license/cpanel/{serviceName}/terminate' |
-  '/license/cpanel/{serviceName}/changeIp' |
-  '/license/cpanel/{serviceName}/confirmTermination';
+type PathsLicenseCpanelPOST = '/license/cpanel/{serviceName}/changeIp' |
+  '/license/cpanel/{serviceName}/confirmTermination' |
+  '/license/cpanel/{serviceName}/terminate';
 
 export class ApiLicenseCpanel extends OvhWrapper {
   constructor(engine: OvhRequestable) {

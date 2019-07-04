@@ -154,11 +154,81 @@ export interface Cdn {
         [keys: string]: {
             // GET /cdn/dedicated/{serviceName}
             $get(): Promise<cdnanycast.Anycast>;
-            serviceInfos:  {
-                // GET /cdn/dedicated/{serviceName}/serviceInfos
-                $get(): Promise<services.Service>;
-                // PUT /cdn/dedicated/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+            changeContact:  {
+                // POST /cdn/dedicated/{serviceName}/changeContact
+                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            }
+            domains:  {
+                // GET /cdn/dedicated/{serviceName}/domains
+                $get(): Promise<string[]>;
+                // POST /cdn/dedicated/{serviceName}/domains
+                $post(body?: {domain: string}): Promise<cdnanycast.Domain>;
+                [keys: string]: {
+                    // DELETE /cdn/dedicated/{serviceName}/domains/{domain}
+                    $delete(): Promise<cdnanycast.Task>;
+                    // GET /cdn/dedicated/{serviceName}/domains/{domain}
+                    $get(): Promise<cdnanycast.Domain>;
+                    // PUT /cdn/dedicated/{serviceName}/domains/{domain}
+                    $put(body?: {body: cdnanycast.Domain}): Promise<void>;
+                    backends:  {
+                        // GET /cdn/dedicated/{serviceName}/domains/{domain}/backends
+                        $get(): Promise<string[]>;
+                        // POST /cdn/dedicated/{serviceName}/domains/{domain}/backends
+                        $post(body?: {ip: string}): Promise<cdnanycast.Backend>;
+                        [keys: string]: {
+                            // DELETE /cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}
+                            $delete(): Promise<string>;
+                            // GET /cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}
+                            $get(): Promise<cdnanycast.Backend>;
+                        } | any
+                    }
+                    cacheRules:  {
+                        // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
+                        $get(param?: {fileMatch?: string}): Promise<number[]>;
+                        // POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
+                        $post(body?: {cacheType: cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: cdnanycast.CacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
+                        [keys: string]: {
+                            // DELETE /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
+                            $delete(): Promise<cdnanycast.Task>;
+                            // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
+                            $get(): Promise<cdnanycast.CacheRule>;
+                            // PUT /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
+                            $put(body?: {body: cdnanycast.CacheRule}): Promise<void>;
+                            flush:  {
+                                // POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush
+                                $post(): Promise<cdnanycast.Task>;
+                            }
+                            tasks:  {
+                                // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks
+                                $get(): Promise<number[]>;
+                                [keys: string]: {
+                                    // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}
+                                    $get(): Promise<cdnanycast.Task>;
+                                } | any
+                            }
+                        } | any
+                    }
+                    flush:  {
+                        // POST /cdn/dedicated/{serviceName}/domains/{domain}/flush
+                        $post(): Promise<cdnanycast.Task>;
+                    }
+                    logs:  {
+                        // POST /cdn/dedicated/{serviceName}/domains/{domain}/logs
+                        $post(): Promise<cdnanycast.LogsURL>;
+                    }
+                    statistics:  {
+                        // GET /cdn/dedicated/{serviceName}/domains/{domain}/statistics
+                        $get(param?: {period: cdnanycast.StatsPeriodEnum, value: cdnanycast.StatsValueEnum, type: cdnanycast.StatsTypeEnum}): Promise<cdnanycast.StatsDataType[]>;
+                    }
+                    tasks:  {
+                        // GET /cdn/dedicated/{serviceName}/domains/{domain}/tasks
+                        $get(): Promise<number[]>;
+                        [keys: string]: {
+                            // GET /cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}
+                            $get(): Promise<cdnanycast.Task>;
+                        } | any
+                    }
+                } | any
             }
             logs:  {
                 // POST /cdn/dedicated/{serviceName}/logs
@@ -168,20 +238,22 @@ export interface Cdn {
                 // GET /cdn/dedicated/{serviceName}/quota
                 $get(param?: {period: cdnanycast.StatsPeriodEnum}): Promise<cdnanycast.StatsDataType[]>;
             }
-            changeContact:  {
-                // POST /cdn/dedicated/{serviceName}/changeContact
-                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            serviceInfos:  {
+                // GET /cdn/dedicated/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /cdn/dedicated/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
             }
             ssl:  {
+                // DELETE /cdn/dedicated/{serviceName}/ssl
+                $delete(): Promise<cdnanycast.Task>;
                 // GET /cdn/dedicated/{serviceName}/ssl
                 $get(): Promise<cdnanycast.Ssl>;
                 // POST /cdn/dedicated/{serviceName}/ssl
                 $post(body?: {certificate?: string, chain?: string, key?: string, name: string}): Promise<cdnanycast.Ssl>;
-                // DELETE /cdn/dedicated/{serviceName}/ssl
-                $delete(): Promise<cdnanycast.Task>;
                 tasks:  {
                     // GET /cdn/dedicated/{serviceName}/ssl/tasks
-                    $get(param?: {status?: cdnanycast.TaskStateEnum, function_?: cdnanycast.TaskFunctionEnum}): Promise<number[]>;
+                    $get(param?: {function_?: cdnanycast.TaskFunctionEnum, status?: cdnanycast.TaskStateEnum}): Promise<number[]>;
                     [keys: string]: {
                         // GET /cdn/dedicated/{serviceName}/ssl/tasks/{taskId}
                         $get(): Promise<cdnanycast.Task>;
@@ -192,122 +264,50 @@ export interface Cdn {
                     $post(body?: {certificate: string, chain?: string, key: string}): Promise<cdnanycast.Task>;
                 }
             }
-            domains:  {
-                // GET /cdn/dedicated/{serviceName}/domains
-                $get(): Promise<string[]>;
-                // POST /cdn/dedicated/{serviceName}/domains
-                $post(body?: {domain: string}): Promise<cdnanycast.Domain>;
-                [keys: string]: {
-                    // GET /cdn/dedicated/{serviceName}/domains/{domain}
-                    $get(): Promise<cdnanycast.Domain>;
-                    // PUT /cdn/dedicated/{serviceName}/domains/{domain}
-                    $put(body?: {body: cdnanycast.Domain}): Promise<void>;
-                    // DELETE /cdn/dedicated/{serviceName}/domains/{domain}
-                    $delete(): Promise<cdnanycast.Task>;
-                    tasks:  {
-                        // GET /cdn/dedicated/{serviceName}/domains/{domain}/tasks
-                        $get(): Promise<number[]>;
-                        [keys: string]: {
-                            // GET /cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}
-                            $get(): Promise<cdnanycast.Task>;
-                        } | any
-                    }
-                    backends:  {
-                        // GET /cdn/dedicated/{serviceName}/domains/{domain}/backends
-                        $get(): Promise<string[]>;
-                        // POST /cdn/dedicated/{serviceName}/domains/{domain}/backends
-                        $post(body?: {ip: string}): Promise<cdnanycast.Backend>;
-                        [keys: string]: {
-                            // GET /cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}
-                            $get(): Promise<cdnanycast.Backend>;
-                            // DELETE /cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}
-                            $delete(): Promise<string>;
-                        } | any
-                    }
-                    statistics:  {
-                        // GET /cdn/dedicated/{serviceName}/domains/{domain}/statistics
-                        $get(param?: {value: cdnanycast.StatsValueEnum, period: cdnanycast.StatsPeriodEnum, type: cdnanycast.StatsTypeEnum}): Promise<cdnanycast.StatsDataType[]>;
-                    }
-                    logs:  {
-                        // POST /cdn/dedicated/{serviceName}/domains/{domain}/logs
-                        $post(): Promise<cdnanycast.LogsURL>;
-                    }
-                    flush:  {
-                        // POST /cdn/dedicated/{serviceName}/domains/{domain}/flush
-                        $post(): Promise<cdnanycast.Task>;
-                    }
-                    cacheRules:  {
-                        // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
-                        $get(param?: {fileMatch?: string}): Promise<number[]>;
-                        // POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
-                        $post(body?: {cacheType: cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: cdnanycast.CacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
-                        [keys: string]: {
-                            // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
-                            $get(): Promise<cdnanycast.CacheRule>;
-                            // PUT /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
-                            $put(body?: {body: cdnanycast.CacheRule}): Promise<void>;
-                            // DELETE /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
-                            $delete(): Promise<cdnanycast.Task>;
-                            tasks:  {
-                                // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks
-                                $get(): Promise<number[]>;
-                                [keys: string]: {
-                                    // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}
-                                    $get(): Promise<cdnanycast.Task>;
-                                } | any
-                            }
-                            flush:  {
-                                // POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush
-                                $post(): Promise<cdnanycast.Task>;
-                            }
-                        } | any
-                    }
-                } | any
-            }
         } | any
     }
 }
 // Api
-type PathsCdnDedicatedGET = '/cdn/dedicated' |
-  '/cdn/dedicated/pops/{name}' |
-  '/cdn/dedicated/pops' |
-  '/cdn/dedicated/{serviceName}/serviceInfos' |
-  '/cdn/dedicated/{serviceName}/quota' |
-  '/cdn/dedicated/{serviceName}' |
+type PathsCdnDedicatedGET = '/cdn/dedicated/{serviceName}/domains/{domain}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/backends' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/tasks' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/statistics' |
+  '/cdn/dedicated/{serviceName}/domains' |
   '/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}' |
   '/cdn/dedicated/{serviceName}/ssl/tasks' |
   '/cdn/dedicated/{serviceName}/ssl' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/tasks' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/backends' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/statistics' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}' |
+  '/cdn/dedicated/{serviceName}/serviceInfos' |
+  '/cdn/dedicated/{serviceName}' |
+  '/cdn/dedicated/{serviceName}/quota' |
+  '/cdn/dedicated/pops/{name}' |
+  '/cdn/dedicated/pops' |
+  '/cdn/dedicated';
+
+type PathsCdnDedicatedPUT = '/cdn/dedicated/{serviceName}/domains/{domain}' |
   '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}' |
-  '/cdn/dedicated/{serviceName}/domains';
+  '/cdn/dedicated/{serviceName}/serviceInfos';
 
-type PathsCdnDedicatedPUT = '/cdn/dedicated/{serviceName}/serviceInfos' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}';
-
-type PathsCdnDedicatedPOST = '/cdn/dedicated/{serviceName}/logs' |
-  '/cdn/dedicated/{serviceName}/changeContact' |
-  '/cdn/dedicated/{serviceName}/ssl' |
-  '/cdn/dedicated/{serviceName}/ssl/update' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/backends' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/logs' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/flush' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules' |
+type PathsCdnDedicatedPOST = '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules' |
   '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush' |
-  '/cdn/dedicated/{serviceName}/domains';
+  '/cdn/dedicated/{serviceName}/domains/{domain}/backends' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/flush' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/logs' |
+  '/cdn/dedicated/{serviceName}/domains' |
+  '/cdn/dedicated/{serviceName}/logs' |
+  '/cdn/dedicated/{serviceName}/changeContact' |
+  '/cdn/dedicated/{serviceName}/ssl/update' |
+  '/cdn/dedicated/{serviceName}/ssl';
 
-type PathsCdnDedicatedDELETE = '/cdn/dedicated/{serviceName}/ssl' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}' |
+type PathsCdnDedicatedDELETE = '/cdn/dedicated/{serviceName}/domains/{domain}' |
+  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}' |
   '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}' |
-  '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}';
+  '/cdn/dedicated/{serviceName}/ssl';
 
 export class ApiCdnDedicated extends OvhWrapper {
   constructor(engine: OvhRequestable) {

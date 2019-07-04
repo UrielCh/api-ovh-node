@@ -80,6 +80,12 @@ export interface Ssl {
     [keys: string]: {
         // GET /ssl/{serviceName}
         $get(): Promise<ssl.Certificate>;
+        serviceInfos:  {
+            // GET /ssl/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /ssl/{serviceName}/serviceInfos
+            $put(body?: {body: services.Service}): Promise<void>;
+        }
         tasks:  {
             // GET /ssl/{serviceName}/tasks
             $get(): Promise<number[]>;
@@ -88,20 +94,14 @@ export interface Ssl {
                 $get(): Promise<ssl.Operation>;
             } | any
         }
-        serviceInfos:  {
-            // GET /ssl/{serviceName}/serviceInfos
-            $get(): Promise<services.Service>;
-            // PUT /ssl/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
-        }
     } | any
 }
 // Api
-type PathsSslGET = '/ssl' |
-  '/ssl/{serviceName}/tasks' |
-  '/ssl/{serviceName}/tasks/{taskId}' |
+type PathsSslGET = '/ssl/{serviceName}/serviceInfos' |
   '/ssl/{serviceName}' |
-  '/ssl/{serviceName}/serviceInfos';
+  '/ssl/{serviceName}/tasks/{taskId}' |
+  '/ssl/{serviceName}/tasks' |
+  '/ssl';
 
 type PathsSslPUT = '/ssl/{serviceName}/serviceInfos';
 

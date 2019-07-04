@@ -184,14 +184,6 @@ export interface Service {
         $get(): Promise<serviceList.Service>;
         // PUT /service/{serviceId}
         $put(body?: {body: serviceList.Service}): Promise<void>;
-        terminate:  {
-            // POST /service/{serviceId}/terminate
-            $post(): Promise<void>;
-        }
-        suspend:  {
-            // POST /service/{serviceId}/suspend
-            $post(): Promise<void>;
-        }
         renew:  {
             // GET /service/{serviceId}/renew
             $get(param?: {includeOptions?: boolean}): Promise<service.renew.RenewDescription[]>;
@@ -202,19 +194,27 @@ export interface Service {
             // POST /service/{serviceId}/reopen
             $post(): Promise<void>;
         }
+        suspend:  {
+            // POST /service/{serviceId}/suspend
+            $post(): Promise<void>;
+        }
+        terminate:  {
+            // POST /service/{serviceId}/terminate
+            $post(): Promise<void>;
+        }
     } | any
 }
 // Api
-type PathsServiceGET = '/service/{serviceId}/renew' |
-  '/service/{serviceId}' |
+type PathsServiceGET = '/service/{serviceId}' |
+  '/service/{serviceId}/renew' |
   '/service';
 
 type PathsServicePUT = '/service/{serviceId}';
 
-type PathsServicePOST = '/service/{serviceId}/terminate' |
+type PathsServicePOST = '/service/{serviceId}/reopen' |
   '/service/{serviceId}/suspend' |
   '/service/{serviceId}/renew' |
-  '/service/{serviceId}/reopen';
+  '/service/{serviceId}/terminate';
 
 export class ApiService extends OvhWrapper {
   constructor(engine: OvhRequestable) {

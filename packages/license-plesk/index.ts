@@ -152,14 +152,22 @@ export interface License {
                 // GET /license/plesk/{serviceName}/canLicenseBeMovedTo
                 $get(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
+            changeIp:  {
+                // POST /license/plesk/{serviceName}/changeIp
+                $post(body?: {destinationIp: string}): Promise<license.Task>;
+            }
+            confirmTermination:  {
+                // POST /license/plesk/{serviceName}/confirmTermination
+                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            }
             option:  {
                 // GET /license/plesk/{serviceName}/option
                 $get(): Promise<license.OptionLabel[]>;
                 [keys: string]: {
-                    // GET /license/plesk/{serviceName}/option/{label}
-                    $get(): Promise<license.Option>;
                     // DELETE /license/plesk/{serviceName}/option/{label}
                     $delete(): Promise<license.Task>;
+                    // GET /license/plesk/{serviceName}/option/{label}
+                    $get(): Promise<license.Option>;
                 } | any
             }
             serviceInfos:  {
@@ -168,47 +176,39 @@ export interface License {
                 // PUT /license/plesk/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            confirmTermination:  {
-                // POST /license/plesk/{serviceName}/confirmTermination
-                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
-            }
-            changeIp:  {
-                // POST /license/plesk/{serviceName}/changeIp
-                $post(body?: {destinationIp: string}): Promise<license.Task>;
-            }
-            terminate:  {
-                // POST /license/plesk/{serviceName}/terminate
-                $post(): Promise<string>;
-            }
             tasks:  {
                 // GET /license/plesk/{serviceName}/tasks
-                $get(param?: {status?: license.TaskStateEnum, action?: license.ActionType}): Promise<number[]>;
+                $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
                 [keys: string]: {
                     // GET /license/plesk/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
                 } | any
             }
+            terminate:  {
+                // POST /license/plesk/{serviceName}/terminate
+                $post(): Promise<string>;
+            }
         } | any
     }
 }
 // Api
-type PathsLicensePleskGET = '/license/plesk/orderableVersions' |
-  '/license/plesk' |
-  '/license/plesk/{serviceName}/allowedDestinationIp' |
-  '/license/plesk/{serviceName}/canLicenseBeMovedTo' |
-  '/license/plesk/{serviceName}' |
-  '/license/plesk/{serviceName}/option' |
+type PathsLicensePleskGET = '/license/plesk/{serviceName}/allowedDestinationIp' |
   '/license/plesk/{serviceName}/option/{label}' |
-  '/license/plesk/{serviceName}/serviceInfos' |
+  '/license/plesk/{serviceName}/option' |
   '/license/plesk/{serviceName}/tasks/{taskId}' |
-  '/license/plesk/{serviceName}/tasks';
+  '/license/plesk/{serviceName}/tasks' |
+  '/license/plesk/{serviceName}/serviceInfos' |
+  '/license/plesk/{serviceName}' |
+  '/license/plesk/{serviceName}/canLicenseBeMovedTo' |
+  '/license/plesk/orderableVersions' |
+  '/license/plesk';
 
-type PathsLicensePleskPUT = '/license/plesk/{serviceName}' |
-  '/license/plesk/{serviceName}/serviceInfos';
+type PathsLicensePleskPUT = '/license/plesk/{serviceName}/serviceInfos' |
+  '/license/plesk/{serviceName}';
 
 type PathsLicensePleskPOST = '/license/plesk/{serviceName}/confirmTermination' |
-  '/license/plesk/{serviceName}/changeIp' |
-  '/license/plesk/{serviceName}/terminate';
+  '/license/plesk/{serviceName}/terminate' |
+  '/license/plesk/{serviceName}/changeIp';
 
 type PathsLicensePleskDELETE = '/license/plesk/{serviceName}/option/{label}';
 

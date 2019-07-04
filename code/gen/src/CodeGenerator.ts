@@ -134,7 +134,6 @@ export class CodeGenerator {
         return rawType;
     }
 
-
     fullTypeExp(param: Parameter) {
         // final String prefix = data.getNodeProject();
         let typename = param.fullType;
@@ -285,7 +284,7 @@ export class CodeGenerator {
 
         let ident = indentGen(depth);
         if (api._api) {
-            for (const op of api._api.operations) {
+            for (const op of api._api.operations.sort((a,b) => a.httpMethod.localeCompare(b.httpMethod))) {
                 // code += `${ident}/**\n${ident} * ${op.description}\n${ident} */\n`;
                 code += `${ident}// ${op.httpMethod} ${api._path}\n`;
 
@@ -319,7 +318,7 @@ export class CodeGenerator {
             }
         }
 
-        for (const k of keys) {
+        for (const k of keys.sort()) {
             const value: any = api[k];
             // API | string | CacheApi | undefined
             // console.log(indent(depth), value._path, value);

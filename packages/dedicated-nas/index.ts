@@ -103,35 +103,33 @@ export interface Dedicated {
             $get(): Promise<dedicated.nas.Nas>;
             // PUT /dedicated/nas/{serviceName}
             $put(body?: {body: dedicated.nas.Nas}): Promise<void>;
-            serviceInfos:  {
-                // GET /dedicated/nas/{serviceName}/serviceInfos
-                $get(): Promise<services.Service>;
-                // PUT /dedicated/nas/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
-            }
             partition:  {
                 // GET /dedicated/nas/{serviceName}/partition
                 $get(): Promise<string[]>;
                 // POST /dedicated/nas/{serviceName}/partition
                 $post(body?: {partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
                 [keys: string]: {
+                    // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}
+                    $delete(): Promise<dedicated.nasTask.Task>;
                     // GET /dedicated/nas/{serviceName}/partition/{partitionName}
                     $get(): Promise<dedicated.nas.Partition>;
                     // PUT /dedicated/nas/{serviceName}/partition/{partitionName}
                     $put(body?: {body: dedicated.nas.Partition}): Promise<void>;
-                    // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}
-                    $delete(): Promise<dedicated.nasTask.Task>;
                     access:  {
                         // GET /dedicated/nas/{serviceName}/partition/{partitionName}/access
                         $get(): Promise<string[]>;
                         // POST /dedicated/nas/{serviceName}/partition/{partitionName}/access
                         $post(body?: {ip: string}): Promise<dedicated.nasTask.Task>;
                         [keys: string]: {
-                            // GET /dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}
-                            $get(): Promise<dedicated.nas.Access>;
                             // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}
                             $delete(): Promise<dedicated.nasTask.Task>;
+                            // GET /dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}
+                            $get(): Promise<dedicated.nas.Access>;
                         } | any
+                    }
+                    authorizableIps:  {
+                        // GET /dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps
+                        $get(): Promise<string[]>;
                     }
                     quota:  {
                         // GET /dedicated/nas/{serviceName}/partition/{partitionName}/quota
@@ -139,17 +137,19 @@ export interface Dedicated {
                         // POST /dedicated/nas/{serviceName}/partition/{partitionName}/quota
                         $post(body?: {size: number, uid: number}): Promise<dedicated.nasTask.Task>;
                         [keys: string]: {
-                            // GET /dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}
-                            $get(): Promise<dedicated.nas.Quota>;
                             // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}
                             $delete(): Promise<dedicated.nasTask.Task>;
+                            // GET /dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}
+                            $get(): Promise<dedicated.nas.Quota>;
                         } | any
                     }
-                    authorizableIps:  {
-                        // GET /dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps
-                        $get(): Promise<string[]>;
-                    }
                 } | any
+            }
+            serviceInfos:  {
+                // GET /dedicated/nas/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /dedicated/nas/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
             }
             task:  {
                 // GET /dedicated/nas/{serviceName}/task

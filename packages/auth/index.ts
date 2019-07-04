@@ -37,29 +37,29 @@ export namespace auth {
 // Apis harmony
 // path /auth
 export interface Auth {
-    time:  {
-        // GET /auth/time
-        $get(): Promise<number>;
-    }
     credential:  {
         // POST /auth/credential
         $post(body?: {accessRules: auth.AccessRule[], redirection?: string}): Promise<auth.Credential>;
+    }
+    currentCredential:  {
+        // GET /auth/currentCredential
+        $get(): Promise<api.Credential>;
     }
     logout:  {
         // POST /auth/logout
         $post(): Promise<void>;
     }
-    currentCredential:  {
-        // GET /auth/currentCredential
-        $get(): Promise<api.Credential>;
+    time:  {
+        // GET /auth/time
+        $get(): Promise<number>;
     }
 }
 // Api
 type PathsAuthGET = '/auth/time' |
   '/auth/currentCredential';
 
-type PathsAuthPOST = '/auth/credential' |
-  '/auth/logout';
+type PathsAuthPOST = '/auth/logout' |
+  '/auth/credential';
 
 export class ApiAuth extends OvhWrapper {
   constructor(engine: OvhRequestable) {

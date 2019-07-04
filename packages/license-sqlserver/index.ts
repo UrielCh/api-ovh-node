@@ -102,9 +102,15 @@ export interface License {
                 // POST /license/sqlserver/{serviceName}/confirmTermination
                 $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
+            serviceInfos:  {
+                // GET /license/sqlserver/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /license/sqlserver/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
             tasks:  {
                 // GET /license/sqlserver/{serviceName}/tasks
-                $get(param?: {status?: license.TaskStateEnum, action?: license.ActionType}): Promise<number[]>;
+                $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
                 [keys: string]: {
                     // GET /license/sqlserver/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
@@ -114,27 +120,21 @@ export interface License {
                 // POST /license/sqlserver/{serviceName}/terminate
                 $post(): Promise<string>;
             }
-            serviceInfos:  {
-                // GET /license/sqlserver/{serviceName}/serviceInfos
-                $get(): Promise<services.Service>;
-                // PUT /license/sqlserver/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
-            }
         } | any
     }
 }
 // Api
-type PathsLicenseSqlserverGET = '/license/sqlserver/orderableVersions' |
-  '/license/sqlserver' |
+type PathsLicenseSqlserverGET = '/license/sqlserver' |
+  '/license/sqlserver/orderableVersions' |
+  '/license/sqlserver/{serviceName}/serviceInfos' |
   '/license/sqlserver/{serviceName}/tasks' |
   '/license/sqlserver/{serviceName}/tasks/{taskId}' |
-  '/license/sqlserver/{serviceName}/serviceInfos' |
   '/license/sqlserver/{serviceName}';
 
 type PathsLicenseSqlserverPUT = '/license/sqlserver/{serviceName}/serviceInfos';
 
-type PathsLicenseSqlserverPOST = '/license/sqlserver/{serviceName}/confirmTermination' |
-  '/license/sqlserver/{serviceName}/terminate';
+type PathsLicenseSqlserverPOST = '/license/sqlserver/{serviceName}/terminate' |
+  '/license/sqlserver/{serviceName}/confirmTermination';
 
 export class ApiLicenseSqlserver extends OvhWrapper {
   constructor(engine: OvhRequestable) {

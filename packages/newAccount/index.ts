@@ -81,9 +81,9 @@ export interface NewAccount {
         // GET /newAccount/area
         $get(param?: {country: nichandle.CountryEnum}): Promise<string[]>;
     }
-    rules:  {
-        // POST /newAccount/rules
-        $post(body?: {action?: nichandle.CreationRulesActionEnum, address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, vat?: string, zip?: string}): Promise<nichandle.CreationRule[]>;
+    contracts:  {
+        // GET /newAccount/contracts
+        $get(param?: {company: nichandle.OvhCompanyEnum, subsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.Contract[]>;
     }
     corporationType:  {
         // GET /newAccount/corporationType
@@ -91,31 +91,31 @@ export interface NewAccount {
     }
     countries:  {
         // GET /newAccount/countries
-        $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum, ovhCompany: nichandle.OvhCompanyEnum}): Promise<nichandle.CountryEnum[]>;
+        $get(param?: {ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<nichandle.CountryEnum[]>;
     }
     creationRules:  {
         // GET /newAccount/creationRules
-        $get(param?: {legalform: nichandle.LegalFormEnum, ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, country: nichandle.CountryEnum}): Promise<nichandle.CreationRules>;
-    }
-    contracts:  {
-        // GET /newAccount/contracts
-        $get(param?: {subsidiary: nichandle.OvhSubsidiaryEnum, company: nichandle.OvhCompanyEnum}): Promise<order.Contract[]>;
+        $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum, legalform: nichandle.LegalFormEnum, country: nichandle.CountryEnum, ovhCompany: nichandle.OvhCompanyEnum}): Promise<nichandle.CreationRules>;
     }
     legalform:  {
         // GET /newAccount/legalform
         $get(param?: {country: nichandle.CountryEnum}): Promise<string[]>;
     }
+    rules:  {
+        // POST /newAccount/rules
+        $post(body?: {action?: nichandle.CreationRulesActionEnum, address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, vat?: string, zip?: string}): Promise<nichandle.CreationRule[]>;
+    }
 }
 // Api
-type PathsNewAccountGET = '/newAccount/area' |
+type PathsNewAccountGET = '/newAccount/creationRules' |
   '/newAccount/corporationType' |
-  '/newAccount/countries' |
-  '/newAccount/creationRules' |
   '/newAccount/contracts' |
+  '/newAccount/area' |
+  '/newAccount/countries' |
   '/newAccount/legalform';
 
-type PathsNewAccountPOST = '/newAccount/rules' |
-  '/newAccount';
+type PathsNewAccountPOST = '/newAccount' |
+  '/newAccount/rules';
 
 export class ApiNewAccount extends OvhWrapper {
   constructor(engine: OvhRequestable) {

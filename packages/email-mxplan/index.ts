@@ -213,47 +213,53 @@ export interface Email {
             $get(): Promise<email.mxplan.Service>;
             // PUT /email/mxplan/{service}
             $put(body?: {body: email.mxplan.Service}): Promise<void>;
-            task:  {
-                // GET /email/mxplan/{service}/task
-                $get(): Promise<number[]>;
-                [keys: string]: {
-                    // GET /email/mxplan/{service}/task/{id}
-                    $get(): Promise<email.pro.Task>;
-                } | any
-            }
-            updateFlagsOnAllAccounts:  {
-                // POST /email/mxplan/{service}/updateFlagsOnAllAccounts
-                $post(): Promise<void>;
-            }
             account:  {
                 // GET /email/mxplan/{service}/account
-                $get(param?: {id?: number, primaryEmailAddress?: string}): Promise<string[]>;
+                $get(param?: {primaryEmailAddress?: string, id?: number}): Promise<string[]>;
                 [keys: string]: {
+                    // DELETE /email/mxplan/{service}/account/{email}
+                    $delete(): Promise<email.pro.Task>;
                     // GET /email/mxplan/{service}/account/{email}
                     $get(): Promise<email.mxplan.Account>;
                     // PUT /email/mxplan/{service}/account/{email}
                     $put(body?: {body: email.mxplan.Account}): Promise<void>;
-                    // DELETE /email/mxplan/{service}/account/{email}
-                    $delete(): Promise<email.pro.Task>;
-                    changePassword:  {
-                        // POST /email/mxplan/{service}/account/{email}/changePassword
-                        $post(body?: {password: string}): Promise<email.pro.Task>;
-                    }
                     alias:  {
                         // GET /email/mxplan/{service}/account/{email}/alias
                         $get(): Promise<string[]>;
                         // POST /email/mxplan/{service}/account/{email}/alias
                         $post(body?: {alias: string}): Promise<email.pro.Task>;
                         [keys: string]: {
-                            // GET /email/mxplan/{service}/account/{email}/alias/{alias}
-                            $get(): Promise<email.mxplan.AccountAlias>;
                             // DELETE /email/mxplan/{service}/account/{email}/alias/{alias}
                             $delete(): Promise<email.pro.Task>;
+                            // GET /email/mxplan/{service}/account/{email}/alias/{alias}
+                            $get(): Promise<email.mxplan.AccountAlias>;
                         } | any
                     }
                     capabilities:  {
                         // GET /email/mxplan/{service}/account/{email}/capabilities
                         $get(): Promise<email.mxplan.accountCapabilities>;
+                    }
+                    changePassword:  {
+                        // POST /email/mxplan/{service}/account/{email}/changePassword
+                        $post(body?: {password: string}): Promise<email.pro.Task>;
+                    }
+                    diagnostic:  {
+                        // GET /email/mxplan/{service}/account/{email}/diagnostic
+                        $get(): Promise<email.mxplan.AccountDiagnosis>;
+                        // POST /email/mxplan/{service}/account/{email}/diagnostic
+                        $post(body?: {password: string}): Promise<email.pro.Task>;
+                    }
+                    fullAccess:  {
+                        // GET /email/mxplan/{service}/account/{email}/fullAccess
+                        $get(): Promise<number[]>;
+                        // POST /email/mxplan/{service}/account/{email}/fullAccess
+                        $post(body?: {allowedAccountId: number}): Promise<email.pro.Task>;
+                        [keys: string]: {
+                            // DELETE /email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}
+                            $delete(): Promise<email.pro.Task>;
+                            // GET /email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}
+                            $get(): Promise<email.mxplan.AccountFullAccess>;
+                        } | any
                     }
                     sendAs:  {
                         // GET /email/mxplan/{service}/account/{email}/sendAs
@@ -261,10 +267,10 @@ export interface Email {
                         // POST /email/mxplan/{service}/account/{email}/sendAs
                         $post(body?: {allowAccountId: number}): Promise<email.pro.Task>;
                         [keys: string]: {
-                            // GET /email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}
-                            $get(): Promise<email.mxplan.AccountSendAs>;
                             // DELETE /email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}
                             $delete(): Promise<email.pro.Task>;
+                            // GET /email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}
+                            $get(): Promise<email.mxplan.AccountSendAs>;
                         } | any
                     }
                     sendOnBehalfTo:  {
@@ -273,17 +279,11 @@ export interface Email {
                         // POST /email/mxplan/{service}/account/{email}/sendOnBehalfTo
                         $post(body?: {allowAccountId: number}): Promise<email.pro.Task>;
                         [keys: string]: {
-                            // GET /email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}
-                            $get(): Promise<email.mxplan.AccountSendOnBehalfTo>;
                             // DELETE /email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}
                             $delete(): Promise<email.pro.Task>;
+                            // GET /email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}
+                            $get(): Promise<email.mxplan.AccountSendOnBehalfTo>;
                         } | any
-                    }
-                    diagnostic:  {
-                        // GET /email/mxplan/{service}/account/{email}/diagnostic
-                        $get(): Promise<email.mxplan.AccountDiagnosis>;
-                        // POST /email/mxplan/{service}/account/{email}/diagnostic
-                        $post(body?: {password: string}): Promise<email.pro.Task>;
                     }
                     task:  {
                         // GET /email/mxplan/{service}/account/{email}/task
@@ -291,18 +291,6 @@ export interface Email {
                         [keys: string]: {
                             // GET /email/mxplan/{service}/account/{email}/task/{id}
                             $get(): Promise<email.pro.Task>;
-                        } | any
-                    }
-                    fullAccess:  {
-                        // GET /email/mxplan/{service}/account/{email}/fullAccess
-                        $get(): Promise<number[]>;
-                        // POST /email/mxplan/{service}/account/{email}/fullAccess
-                        $post(body?: {allowedAccountId: number}): Promise<email.pro.Task>;
-                        [keys: string]: {
-                            // GET /email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}
-                            $get(): Promise<email.mxplan.AccountFullAccess>;
-                            // DELETE /email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}
-                            $delete(): Promise<email.pro.Task>;
                         } | any
                     }
                 } | any
@@ -315,90 +303,102 @@ export interface Email {
                     $get(): Promise<email.mxplan.Domain>;
                     // PUT /email/mxplan/{service}/domain/{domainName}
                     $put(body?: {body: email.mxplan.Domain}): Promise<void>;
+                    disclaimer:  {
+                        // DELETE /email/mxplan/{service}/domain/{domainName}/disclaimer
+                        $delete(): Promise<email.pro.Task>;
+                        // GET /email/mxplan/{service}/domain/{domainName}/disclaimer
+                        $get(): Promise<email.pro.disclaimer>;
+                        // POST /email/mxplan/{service}/domain/{domainName}/disclaimer
+                        $post(body?: {content: string, outsideOnly?: boolean}): Promise<email.pro.Task>;
+                        // PUT /email/mxplan/{service}/domain/{domainName}/disclaimer
+                        $put(body?: {body: email.pro.disclaimer}): Promise<void>;
+                    }
                     disclaimerAttribute:  {
                         // GET /email/mxplan/{service}/domain/{domainName}/disclaimerAttribute
                         $get(): Promise<email.pro.DisclaimerAttributeEnum[]>;
-                    }
-                    disclaimer:  {
-                        // GET /email/mxplan/{service}/domain/{domainName}/disclaimer
-                        $get(): Promise<email.pro.disclaimer>;
-                        // PUT /email/mxplan/{service}/domain/{domainName}/disclaimer
-                        $put(body?: {body: email.pro.disclaimer}): Promise<void>;
-                        // POST /email/mxplan/{service}/domain/{domainName}/disclaimer
-                        $post(body?: {content: string, outsideOnly?: boolean}): Promise<email.pro.Task>;
-                        // DELETE /email/mxplan/{service}/domain/{domainName}/disclaimer
-                        $delete(): Promise<email.pro.Task>;
                     }
                 } | any
             }
             externalContact:  {
                 // GET /email/mxplan/{service}/externalContact
-                $get(param?: {externalEmailAddress?: string, lastName?: string, id?: number, firstName?: string, displayName?: string}): Promise<string[]>;
+                $get(param?: {externalEmailAddress?: string, firstName?: string, displayName?: string, id?: number, lastName?: string}): Promise<string[]>;
                 // POST /email/mxplan/{service}/externalContact
                 $post(body?: {displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string}): Promise<email.pro.Task>;
                 [keys: string]: {
+                    // DELETE /email/mxplan/{service}/externalContact/{externalEmailAddress}
+                    $delete(): Promise<email.pro.Task>;
                     // GET /email/mxplan/{service}/externalContact/{externalEmailAddress}
                     $get(): Promise<email.mxplan.ExternalContact>;
                     // PUT /email/mxplan/{service}/externalContact/{externalEmailAddress}
                     $put(body?: {body: email.mxplan.ExternalContact}): Promise<void>;
-                    // DELETE /email/mxplan/{service}/externalContact/{externalEmailAddress}
-                    $delete(): Promise<email.pro.Task>;
                 } | any
             }
             server:  {
                 // GET /email/mxplan/{service}/server
                 $get(): Promise<email.mxplan.Server>;
             }
+            task:  {
+                // GET /email/mxplan/{service}/task
+                $get(): Promise<number[]>;
+                [keys: string]: {
+                    // GET /email/mxplan/{service}/task/{id}
+                    $get(): Promise<email.pro.Task>;
+                } | any
+            }
+            updateFlagsOnAllAccounts:  {
+                // POST /email/mxplan/{service}/updateFlagsOnAllAccounts
+                $post(): Promise<void>;
+            }
         } | any
     }
 }
 // Api
-type PathsEmailMxplanGET = '/email/mxplan/{service}/task' |
+type PathsEmailMxplanGET = '/email/mxplan/{service}' |
   '/email/mxplan/{service}/task/{id}' |
+  '/email/mxplan/{service}/task' |
+  '/email/mxplan/{service}/server' |
+  '/email/mxplan/{service}/account' |
+  '/email/mxplan/{service}/account/{email}/sendOnBehalfTo' |
+  '/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/mxplan/{service}/account/{email}/diagnostic' |
+  '/email/mxplan/{service}/account/{email}/capabilities' |
+  '/email/mxplan/{service}/account/{email}/sendAs' |
+  '/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}' |
+  '/email/mxplan/{service}/account/{email}/task' |
+  '/email/mxplan/{service}/account/{email}/task/{id}' |
   '/email/mxplan/{service}/account/{email}/alias' |
   '/email/mxplan/{service}/account/{email}/alias/{alias}' |
-  '/email/mxplan/{service}/account/{email}/capabilities' |
   '/email/mxplan/{service}/account/{email}' |
-  '/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}' |
-  '/email/mxplan/{service}/account/{email}/sendAs' |
-  '/email/mxplan/{service}/account/{email}/sendOnBehalfTo' |
-  '/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
-  '/email/mxplan/{service}/account/{email}/diagnostic' |
-  '/email/mxplan/{service}/account/{email}/task/{id}' |
-  '/email/mxplan/{service}/account/{email}/task' |
-  '/email/mxplan/{service}/account/{email}/fullAccess' |
   '/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}' |
-  '/email/mxplan/{service}/account' |
+  '/email/mxplan/{service}/account/{email}/fullAccess' |
+  '/email/mxplan/{service}/domain' |
+  '/email/mxplan/{service}/domain/{domainName}/disclaimer' |
   '/email/mxplan/{service}/domain/{domainName}' |
   '/email/mxplan/{service}/domain/{domainName}/disclaimerAttribute' |
-  '/email/mxplan/{service}/domain/{domainName}/disclaimer' |
-  '/email/mxplan/{service}/domain' |
   '/email/mxplan/{service}/externalContact/{externalEmailAddress}' |
   '/email/mxplan/{service}/externalContact' |
-  '/email/mxplan/{service}/server' |
-  '/email/mxplan/{service}' |
   '/email/mxplan';
 
-type PathsEmailMxplanPUT = '/email/mxplan/{service}/account/{email}' |
-  '/email/mxplan/{service}/domain/{domainName}' |
+type PathsEmailMxplanPUT = '/email/mxplan/{service}' |
+  '/email/mxplan/{service}/account/{email}' |
   '/email/mxplan/{service}/domain/{domainName}/disclaimer' |
-  '/email/mxplan/{service}/externalContact/{externalEmailAddress}' |
-  '/email/mxplan/{service}';
+  '/email/mxplan/{service}/domain/{domainName}' |
+  '/email/mxplan/{service}/externalContact/{externalEmailAddress}';
 
-type PathsEmailMxplanPOST = '/email/mxplan/{service}/updateFlagsOnAllAccounts' |
-  '/email/mxplan/{service}/account/{email}/changePassword' |
-  '/email/mxplan/{service}/account/{email}/alias' |
-  '/email/mxplan/{service}/account/{email}/sendAs' |
-  '/email/mxplan/{service}/account/{email}/sendOnBehalfTo' |
+type PathsEmailMxplanPOST = '/email/mxplan/{service}/account/{email}/sendOnBehalfTo' |
   '/email/mxplan/{service}/account/{email}/diagnostic' |
+  '/email/mxplan/{service}/account/{email}/sendAs' |
+  '/email/mxplan/{service}/account/{email}/alias' |
+  '/email/mxplan/{service}/account/{email}/changePassword' |
   '/email/mxplan/{service}/account/{email}/fullAccess' |
   '/email/mxplan/{service}/domain/{domainName}/disclaimer' |
+  '/email/mxplan/{service}/updateFlagsOnAllAccounts' |
   '/email/mxplan/{service}/externalContact';
 
-type PathsEmailMxplanDELETE = '/email/mxplan/{service}/account/{email}/alias/{alias}' |
-  '/email/mxplan/{service}/account/{email}' |
+type PathsEmailMxplanDELETE = '/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
   '/email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}' |
-  '/email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}' |
+  '/email/mxplan/{service}/account/{email}/alias/{alias}' |
+  '/email/mxplan/{service}/account/{email}' |
   '/email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}' |
   '/email/mxplan/{service}/domain/{domainName}/disclaimer' |
   '/email/mxplan/{service}/externalContact/{externalEmailAddress}';

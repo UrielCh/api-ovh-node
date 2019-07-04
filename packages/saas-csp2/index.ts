@@ -133,49 +133,17 @@ export interface Saas {
             $get(): Promise<saas.csp2.OfficeTenant>;
             // PUT /saas/csp2/{serviceName}
             $put(body?: {body: saas.csp2.OfficeTenant}): Promise<void>;
-            subscription:  {
-                // GET /saas/csp2/{serviceName}/subscription
-                $get(): Promise<number[]>;
-                // POST /saas/csp2/{serviceName}/subscription
-                $post(body?: {licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
-                [keys: string]: {
-                    // GET /saas/csp2/{serviceName}/subscription/{id}
-                    $get(): Promise<saas.csp2.OfficeSubscription>;
-                    // DELETE /saas/csp2/{serviceName}/subscription/{id}
-                    $delete(): Promise<saas.csp2.OfficeTask>;
-                    availableAddonLicenses:  {
-                        // GET /saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses
-                        $get(): Promise<number[]>;
-                    }
-                    addonsSubscriptionIds:  {
-                        // GET /saas/csp2/{serviceName}/subscription/{id}/addonsSubscriptionIds
-                        $get(): Promise<number[]>;
-                    }
-                    orderAddon:  {
-                        // POST /saas/csp2/{serviceName}/subscription/{id}/orderAddon
-                        $post(body?: {licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
-                    }
-                    changeQuantity:  {
-                        // POST /saas/csp2/{serviceName}/subscription/{id}/changeQuantity
-                        $post(body?: {quantity: number}): Promise<saas.csp2.OfficeTask>;
-                    }
-                } | any
+            billingPeriodPeaks:  {
+                // GET /saas/csp2/{serviceName}/billingPeriodPeaks
+                $get(): Promise<saas.csp2.BillingStatistics>;
             }
             changeAdministratorPassword:  {
                 // POST /saas/csp2/{serviceName}/changeAdministratorPassword
                 $post(body?: {newPassword: string}): Promise<saas.csp2.OfficeTask>;
             }
-            usageStatistics:  {
-                // GET /saas/csp2/{serviceName}/usageStatistics
-                $get(param?: {timePeriod: msServices.LicensePeriodEnum}): Promise<saas.csp2.Statistics[]>;
-            }
-            task:  {
-                // GET /saas/csp2/{serviceName}/task
-                $get(): Promise<number[]>;
-                [keys: string]: {
-                    // GET /saas/csp2/{serviceName}/task/{id}
-                    $get(): Promise<saas.csp2.OfficeTask>;
-                } | any
+            configureDomain:  {
+                // POST /saas/csp2/{serviceName}/configureDomain
+                $post(body?: {domain: string, supportedServices: saas.csp2.SupportedServiceEnum[]}): Promise<saas.csp2.OfficeTask>;
             }
             orderableLicenses:  {
                 // GET /saas/csp2/{serviceName}/orderableLicenses
@@ -185,46 +153,78 @@ export interface Saas {
                     $get(): Promise<saas.csp2.OfficeLicence>;
                 } | any
             }
-            billingPeriodPeaks:  {
-                // GET /saas/csp2/{serviceName}/billingPeriodPeaks
-                $get(): Promise<saas.csp2.BillingStatistics>;
-            }
             serviceInfos:  {
                 // GET /saas/csp2/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /saas/csp2/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            configureDomain:  {
-                // POST /saas/csp2/{serviceName}/configureDomain
-                $post(body?: {domain: string, supportedServices: saas.csp2.SupportedServiceEnum[]}): Promise<saas.csp2.OfficeTask>;
+            subscription:  {
+                // GET /saas/csp2/{serviceName}/subscription
+                $get(): Promise<number[]>;
+                // POST /saas/csp2/{serviceName}/subscription
+                $post(body?: {licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
+                [keys: string]: {
+                    // DELETE /saas/csp2/{serviceName}/subscription/{id}
+                    $delete(): Promise<saas.csp2.OfficeTask>;
+                    // GET /saas/csp2/{serviceName}/subscription/{id}
+                    $get(): Promise<saas.csp2.OfficeSubscription>;
+                    addonsSubscriptionIds:  {
+                        // GET /saas/csp2/{serviceName}/subscription/{id}/addonsSubscriptionIds
+                        $get(): Promise<number[]>;
+                    }
+                    availableAddonLicenses:  {
+                        // GET /saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses
+                        $get(): Promise<number[]>;
+                    }
+                    changeQuantity:  {
+                        // POST /saas/csp2/{serviceName}/subscription/{id}/changeQuantity
+                        $post(body?: {quantity: number}): Promise<saas.csp2.OfficeTask>;
+                    }
+                    orderAddon:  {
+                        // POST /saas/csp2/{serviceName}/subscription/{id}/orderAddon
+                        $post(body?: {licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
+                    }
+                } | any
+            }
+            task:  {
+                // GET /saas/csp2/{serviceName}/task
+                $get(): Promise<number[]>;
+                [keys: string]: {
+                    // GET /saas/csp2/{serviceName}/task/{id}
+                    $get(): Promise<saas.csp2.OfficeTask>;
+                } | any
+            }
+            usageStatistics:  {
+                // GET /saas/csp2/{serviceName}/usageStatistics
+                $get(param?: {timePeriod: msServices.LicensePeriodEnum}): Promise<saas.csp2.Statistics[]>;
             }
         } | any
     }
 }
 // Api
-type PathsSaasCsp2GET = '/saas/csp2/{serviceName}/subscription' |
-  '/saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses' |
-  '/saas/csp2/{serviceName}/subscription/{id}' |
-  '/saas/csp2/{serviceName}/subscription/{id}/addonsSubscriptionIds' |
-  '/saas/csp2/{serviceName}/usageStatistics' |
-  '/saas/csp2/{serviceName}/task' |
-  '/saas/csp2/{serviceName}/task/{id}' |
-  '/saas/csp2/{serviceName}' |
-  '/saas/csp2/{serviceName}/orderableLicenses/{id}' |
-  '/saas/csp2/{serviceName}/orderableLicenses' |
-  '/saas/csp2/{serviceName}/billingPeriodPeaks' |
+type PathsSaasCsp2GET = '/saas/csp2' |
   '/saas/csp2/{serviceName}/serviceInfos' |
-  '/saas/csp2';
+  '/saas/csp2/{serviceName}/task/{id}' |
+  '/saas/csp2/{serviceName}/task' |
+  '/saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses' |
+  '/saas/csp2/{serviceName}/subscription/{id}/addonsSubscriptionIds' |
+  '/saas/csp2/{serviceName}/subscription/{id}' |
+  '/saas/csp2/{serviceName}/subscription' |
+  '/saas/csp2/{serviceName}' |
+  '/saas/csp2/{serviceName}/billingPeriodPeaks' |
+  '/saas/csp2/{serviceName}/usageStatistics' |
+  '/saas/csp2/{serviceName}/orderableLicenses' |
+  '/saas/csp2/{serviceName}/orderableLicenses/{id}';
 
-type PathsSaasCsp2PUT = '/saas/csp2/{serviceName}' |
-  '/saas/csp2/{serviceName}/serviceInfos';
+type PathsSaasCsp2PUT = '/saas/csp2/{serviceName}/serviceInfos' |
+  '/saas/csp2/{serviceName}';
 
-type PathsSaasCsp2POST = '/saas/csp2/{serviceName}/subscription' |
+type PathsSaasCsp2POST = '/saas/csp2/{serviceName}/configureDomain' |
   '/saas/csp2/{serviceName}/subscription/{id}/orderAddon' |
   '/saas/csp2/{serviceName}/subscription/{id}/changeQuantity' |
-  '/saas/csp2/{serviceName}/changeAdministratorPassword' |
-  '/saas/csp2/{serviceName}/configureDomain';
+  '/saas/csp2/{serviceName}/subscription' |
+  '/saas/csp2/{serviceName}/changeAdministratorPassword';
 
 type PathsSaasCsp2DELETE = '/saas/csp2/{serviceName}/subscription/{id}';
 

@@ -103,23 +103,29 @@ export interface Cdn {
         [keys: string]: {
             // GET /cdn/website/{serviceName}
             $get(): Promise<cdn.website.Website>;
+            serviceInfos:  {
+                // GET /cdn/website/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /cdn/website/{serviceName}/serviceInfos
+                $put(body?: {body: services.Service}): Promise<void>;
+            }
             zone:  {
+                // DELETE /cdn/website/{serviceName}/zone
+                $delete(): Promise<cdn.website.Task>;
                 // GET /cdn/website/{serviceName}/zone
                 $get(): Promise<cdn.website.Zone>;
                 // POST /cdn/website/{serviceName}/zone
                 $post(body?: {zone: string}): Promise<cdn.website.Zone>;
-                // DELETE /cdn/website/{serviceName}/zone
-                $delete(): Promise<cdn.website.Task>;
                 backends:  {
                     // GET /cdn/website/{serviceName}/zone/backends
                     $get(): Promise<string[]>;
                     // POST /cdn/website/{serviceName}/zone/backends
                     $post(body?: {ipv4: string}): Promise<cdn.website.Task>;
                     [keys: string]: {
-                        // GET /cdn/website/{serviceName}/zone/backends/{ipv4}
-                        $get(): Promise<cdn.website.Backend>;
                         // DELETE /cdn/website/{serviceName}/zone/backends/{ipv4}
                         $delete(): Promise<cdn.website.Task>;
+                        // GET /cdn/website/{serviceName}/zone/backends/{ipv4}
+                        $get(): Promise<cdn.website.Backend>;
                         tasks:  {
                             // GET /cdn/website/{serviceName}/zone/backends/{ipv4}/tasks
                             $get(): Promise<number[]>;
@@ -136,17 +142,17 @@ export interface Cdn {
                     // POST /cdn/website/{serviceName}/zone/domains
                     $post(body?: {domain: string}): Promise<cdn.website.Domain>;
                     [keys: string]: {
-                        // GET /cdn/website/{serviceName}/zone/domains/{domain}
-                        $get(): Promise<cdn.website.Domain>;
                         // DELETE /cdn/website/{serviceName}/zone/domains/{domain}
                         $delete(): Promise<cdn.website.Task>;
-                        statistics:  {
-                            // GET /cdn/website/{serviceName}/zone/domains/{domain}/statistics
-                            $get(param?: {value: cdn.website.StatsValueEnum, period: cdn.website.StatsPeriodEnum, type: cdn.website.StatsTypeEnum}): Promise<cdn.website.StatsDataType[]>;
-                        }
+                        // GET /cdn/website/{serviceName}/zone/domains/{domain}
+                        $get(): Promise<cdn.website.Domain>;
                         flush:  {
                             // POST /cdn/website/{serviceName}/zone/domains/{domain}/flush
                             $post(): Promise<cdn.website.Task>;
+                        }
+                        statistics:  {
+                            // GET /cdn/website/{serviceName}/zone/domains/{domain}/statistics
+                            $get(param?: {period: cdn.website.StatsPeriodEnum, type: cdn.website.StatsTypeEnum, value: cdn.website.StatsValueEnum}): Promise<cdn.website.StatsDataType[]>;
                         }
                         tasks:  {
                             // GET /cdn/website/{serviceName}/zone/domains/{domain}/tasks
@@ -167,42 +173,36 @@ export interface Cdn {
                     } | any
                 }
             }
-            serviceInfos:  {
-                // GET /cdn/website/{serviceName}/serviceInfos
-                $get(): Promise<services.Service>;
-                // PUT /cdn/website/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
-            }
         } | any
     }
 }
 // Api
-type PathsCdnWebsiteGET = '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks' |
-  '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}' |
-  '/cdn/website/{serviceName}/zone/backends/{ipv4}' |
-  '/cdn/website/{serviceName}/zone/backends' |
-  '/cdn/website/{serviceName}/zone/domains' |
-  '/cdn/website/{serviceName}/zone/domains/{domain}/statistics' |
-  '/cdn/website/{serviceName}/zone/domains/{domain}' |
-  '/cdn/website/{serviceName}/zone/domains/{domain}/tasks' |
-  '/cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}' |
-  '/cdn/website/{serviceName}/zone/tasks/{taskId}' |
-  '/cdn/website/{serviceName}/zone/tasks' |
-  '/cdn/website/{serviceName}/zone' |
-  '/cdn/website/{serviceName}' |
+type PathsCdnWebsiteGET = '/cdn/website' |
   '/cdn/website/{serviceName}/serviceInfos' |
-  '/cdn/website';
+  '/cdn/website/{serviceName}' |
+  '/cdn/website/{serviceName}/zone' |
+  '/cdn/website/{serviceName}/zone/tasks' |
+  '/cdn/website/{serviceName}/zone/tasks/{taskId}' |
+  '/cdn/website/{serviceName}/zone/domains' |
+  '/cdn/website/{serviceName}/zone/domains/{domain}' |
+  '/cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}' |
+  '/cdn/website/{serviceName}/zone/domains/{domain}/tasks' |
+  '/cdn/website/{serviceName}/zone/domains/{domain}/statistics' |
+  '/cdn/website/{serviceName}/zone/backends/{ipv4}' |
+  '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}' |
+  '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks' |
+  '/cdn/website/{serviceName}/zone/backends';
 
 type PathsCdnWebsitePUT = '/cdn/website/{serviceName}/serviceInfos';
 
-type PathsCdnWebsitePOST = '/cdn/website/{serviceName}/zone/backends' |
+type PathsCdnWebsitePOST = '/cdn/website/{serviceName}/zone' |
   '/cdn/website/{serviceName}/zone/domains' |
   '/cdn/website/{serviceName}/zone/domains/{domain}/flush' |
-  '/cdn/website/{serviceName}/zone';
+  '/cdn/website/{serviceName}/zone/backends';
 
-type PathsCdnWebsiteDELETE = '/cdn/website/{serviceName}/zone/backends/{ipv4}' |
+type PathsCdnWebsiteDELETE = '/cdn/website/{serviceName}/zone' |
   '/cdn/website/{serviceName}/zone/domains/{domain}' |
-  '/cdn/website/{serviceName}/zone';
+  '/cdn/website/{serviceName}/zone/backends/{ipv4}';
 
 export class ApiCdnWebsite extends OvhWrapper {
   constructor(engine: OvhRequestable) {
