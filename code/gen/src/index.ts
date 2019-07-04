@@ -11,7 +11,7 @@ async function main() {
     // await fse.mkdir('dist');
 
     // debug gen a single API
-    if (false)
+    if (true)
         apis = apis.filter((api) => {
             //if ('/price' == api)
             //    return true;

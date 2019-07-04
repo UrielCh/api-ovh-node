@@ -116,7 +116,7 @@ export default class GenApiTypes {
      *
      * @param {String} path
      */
-    async loadSchema(path: string): Promise<any> {
+    async loadSchema(path: string): Promise<Schema> {
         // Fetch all APIs
         let schema: Schema = await loadJson({ // https://eu.api.ovh.com/1.0/
             host: this.host, // eu.api.ovh.com
@@ -149,6 +149,7 @@ export default class GenApiTypes {
             this.alias[aliasName] = model.namespace + '.' + model.id;
             this.addModel(model, aliasName, this.models);
         }
+        return schema;
     }
 
     /**

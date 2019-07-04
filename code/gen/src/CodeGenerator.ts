@@ -1,6 +1,6 @@
 import GenApiTypes, { CacheApi, CacheModel, filterReservedKw } from './GenApiTypes';
-import { indentGen, protectFieldName, className, protectJsonKey, rawRemapNode } from './utils';
-import { Parameter } from './schema';
+import { indentGen, protectFieldName, className, protectJsonKey, rawRemapNode, formatUpperCamlCase } from './utils';
+import { Parameter, Schema } from './schema';
 
 export class CodeGenerator {
     api: string;
@@ -15,12 +15,14 @@ export class CodeGenerator {
 
     async generate(): Promise<string> {
         //extraNS = `OVH${fat}.`;
-        await this.gen.loadSchema(`${this.api}.json`)
+        let schema = await this.gen.loadSchema(`${this.api}.json`)
         // start generation
         // Add extra ROOT NameSpace
         let code = `export namespace ${this.extraNS.replace('.', '')} {\n`;
         code = this.dumpModel(0, this.gen.models, code, '');
-        code += this.dumpApi(0, this.gen.apis, '// Apis\n');
+        code += this.dumpApiHarmony(0, this.gen.apis, '// Apis harmony\n');
+        code += this.dumpApi(0, schema, this.gen.apis, '// Api\n');
+
         code += '}';
         return code;
     }
@@ -145,12 +147,68 @@ export class CodeGenerator {
         return typename;
     }
 
+
+    dumpApi(depth: number, schema: Schema, api: CacheApi, code: string): string {
+        let avaliablePath = formatUpperCamlCase("Paths_" + this.api.replace(/\//g, '_'))
+        let indexApi = { GET: [], PUT: [], POST: [], DELETE: [] };
+        schema.apis.forEach(
+            api => api.operations.forEach(
+                op => (<any>indexApi[op.httpMethod]).push(api.path)
+            )
+        );
+
+        for (let mtd of Object.keys(indexApi)) {
+            let arr = (<any>indexApi)[mtd];
+            if (!arr)
+                continue;
+            if (!arr.length)
+                continue;
+            code += `type ${avaliablePath}${mtd} = ` + arr.map((a: any) => `'${a}'`).join(' |\n  ')
+            code += ';\n\n'
+        }
+        code += `import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';\n\n`;
+        code += `export class ${formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'))} extends OvhWrapper {\n`;
+        code += `  constructor(engine: OvhRequestable) {\n    super(engine);\n  }\n`;
+        for (let mtd of Object.keys(indexApi)) {
+            let calls = 0;
+            schema.apis.forEach(api => {
+                api.operations.filter(op => op.httpMethod === mtd).forEach(
+                    op => {
+                        calls++;
+                        code += '  /**\n';
+                        code += `   * ${api.description}\n`;
+                        code += `   * ${op.description}\n`;
+                        code += '   */\n';
+                        code += `  public ${mtd.toLowerCase()}(`;
+                        let params = [`path: '${api.path}'`];
+                        params.push(...op.parameters.filter(p => p.paramType == 'path').map(p => `${p.name}: string`))
+                        let paramType = (mtd == 'GET') ? 'query' : 'body';
+                        let body = op.parameters.filter(p => p.paramType == paramType);
+                        if (body.length == 1 && body[0].name == null) {
+                            params.push('body: any')
+                        } else {
+                            params.push(...body.map(p => `${p.name}: string`))
+                        }
+                        code += params.join(', ');
+                        code += `): Promise<${op.responseType}>;\n`;
+                    }
+                )
+            })
+            if (calls) {
+                code += `  public ${mtd.toLowerCase()}(path: ${avaliablePath}${mtd}, params?: OvhParamType): Promise<any> {\n`;
+                code += `    return super.${mtd.toLowerCase()}(path, params);\n`
+                code += `  }\n`
+            }
+        }
+        return code;
+    }
+
     /**
     * @param depth 
     * @param api 
     * @param code 
     */
-    dumpApi(depth: number, api: CacheApi, code: string): string {
+    dumpApiHarmony(depth: number, api: CacheApi, code: string): string {
         let ident0 = indentGen(depth - 1);
         // drop _ prefixed fields
         const keys = Object.keys(api).filter(k => !k.startsWith('_'))
@@ -219,7 +277,7 @@ export class CodeGenerator {
             // API | string | CacheApi | undefined
             // console.log(indent(depth), value._path, value);
             if (value['_path']) {
-                code = this.dumpApi(depth + 1, value, code);
+                code = this.dumpApiHarmony(depth + 1, value, code);
             } else {
                 console.log('Done ', keys);
             }

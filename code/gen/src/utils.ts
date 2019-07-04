@@ -30,7 +30,7 @@ export function protectJsonKey(key: string): string {
     return key;
 }
 
-function formatUpperCamlCase(name: string) {
+export function formatUpperCamlCase(name: string) {
     let sb = '';
     let upper = true;
     for (let i = 0; i < name.length; i++) {
