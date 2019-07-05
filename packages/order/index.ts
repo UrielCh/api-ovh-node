@@ -273,17 +273,17 @@ export namespace order {
         detailType?: order.OrderDetailTypeEnum;
         domain: string;
         quantity: number;
-        totalPrice: order.Price;
-        unitPrice: order.Price;
+        totalPrice: orderPrice;
+        unitPrice: orderPrice;
     }
     //order.OrderDetailTypeEnum
     export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
     //order.OrderPrices
     // fullName: order.OrderPrices.OrderPrices
     export interface OrderPrices {
-        tax: order.Price;
-        withTax: order.Price;
-        withoutTax: order.Price;
+        tax: orderPrice;
+        withTax: orderPrice;
+        withoutTax: orderPrice;
     }
     //order.Price
     // fullName: order.Price.Price
@@ -450,7 +450,7 @@ export namespace order {
             maximumRepeat?: number;
             minimumQuantity: number;
             minimumRepeat: number;
-            price: order.Price;
+            price: orderPrice;
             priceInUcents: number;
             pricingMode: string;
             pricingType: order.cart.GenericProductPricingTypeEnum;
@@ -493,7 +493,7 @@ export namespace order {
         // fullName: order.cart.Price.Price
         export interface Price {
             label: order.cart.PriceLabelEnum;
-            price: order.Price;
+            price: orderPrice;
         }
         //order.cart.PriceLabelEnum
         export type PriceLabelEnum = "PRICE" | "DISCOUNT" | "FEE" | "TOTAL" | "RENEW"
@@ -575,7 +575,7 @@ export namespace order {
             minimumQuantity: number;
             minimumRepeat: number;
             mustBeCompleted: boolean;
-            price: order.Price;
+            price: orderPrice;
             priceCapInUcents?: number;
             priceInUcents: number;
             pricingStrategy: string;
@@ -7314,3 +7314,4 @@ export class ApiOrder extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+type orderPrice = order.Price;

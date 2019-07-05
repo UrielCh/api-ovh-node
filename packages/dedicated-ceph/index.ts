@@ -53,12 +53,17 @@ export namespace dedicated {
         //dedicated.ceph.response
         // fullName: dedicated.ceph.response.response
         export interface response {
-            backup: boolean;
-            minActiveReplicas: number;
-            name: string;
-            poolType: dedicated.ceph.poolList.response.poolTypeEnum;
-            replicaCount: number;
+            cephMons: string[];
+            cephVersion: string;
+            createDate: string;
+            crushTunables: dedicated.ceph.clusterGet.response.crushTunablesEnum;
+            label: string;
+            region: string;
             serviceName: string;
+            size: number;
+            state: dedicated.ceph.clusterGet.response.stateEnum;
+            status: dedicated.ceph.clusterGet.response.statusEnum;
+            updateDate: string;
         }
         export namespace taskGet {
             export namespace response {

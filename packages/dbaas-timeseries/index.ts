@@ -28,15 +28,15 @@ export namespace paas {
             generated: string;
             items: paas.timeseries.ConsumptionItem[];
             to: string;
-            total: order.Price;
+            total: orderPrice;
         }
         //paas.timeseries.ConsumptionItem
         // fullName: paas.timeseries.ConsumptionItem.ConsumptionItem
         export interface ConsumptionItem {
             metricName: tsaas.MetricNameEnum;
-            price: order.Price;
+            price: orderPrice;
             quantity: complexType.UnitAndValue<number>;
-            unitPrice: order.Price;
+            unitPrice: orderPrice;
         }
         //paas.timeseries.Key
         // fullName: paas.timeseries.Key.Key
@@ -361,3 +361,4 @@ export class ApiDbaasTimeseries extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+type orderPrice = order.Price;

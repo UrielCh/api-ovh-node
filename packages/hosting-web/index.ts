@@ -39,7 +39,7 @@ export namespace hosting {
         // fullName: hosting.web.AvailableOfferStruct.AvailableOfferStruct
         export interface AvailableOfferStruct {
             offer: hosting.web.OfferEnum;
-            price: order.Price;
+            price: orderPrice;
         }
         //hosting.web.Capabilities
         // fullName: hosting.web.Capabilities.Capabilities
@@ -2179,3 +2179,4 @@ export class ApiHostingWeb extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+type orderPrice = order.Price;

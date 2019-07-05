@@ -862,7 +862,7 @@ export namespace secondaryDns {
     //secondaryDns.SecondaryDNSCheckField
     // fullName: secondaryDns.SecondaryDNSCheckField.SecondaryDNSCheckField
     export interface SecondaryDNSCheckField {
-        fieldType: zone.NamedResolutionFieldTypeEnum;
+        fieldType: zoneNamedResolutionFieldTypeEnum;
         fieldValue: string;
         subDomain: string;
     }
@@ -2453,3 +2453,4 @@ export class ApiDedicatedServer extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;

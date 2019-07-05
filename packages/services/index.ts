@@ -34,10 +34,10 @@ export namespace services {
             description: string;
             periodEnd?: string;
             periodStart?: string;
-            price: order.Price;
+            price: orderPrice;
             quantity: number;
             serviceName: string;
-            totalPrice: order.Price;
+            totalPrice: orderPrice;
             type?: services.billing.InvoiceLineTypeEnum;
         }
         //services.billing.InvoiceLineTypeEnum
@@ -133,7 +133,7 @@ export namespace services {
         // fullName: services.terminate.TerminationFees.TerminationFees
         export interface TerminationFees {
             durationLeft: string;
-            fees: order.Price;
+            fees: orderPrice;
         }
         //services.terminate.TerminationFutureUseEnum
         export type TerminationFutureUseEnum = "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "NOT_REPLACING_SERVICE" | "OTHER"
@@ -190,3 +190,4 @@ export class ApiServices extends OvhWrapper {
     return super.get(path, params);
   }
 }
+type orderPrice = order.Price;

@@ -23,12 +23,12 @@ export namespace overTheBox {
     //overTheBox.AvailableMigrationOffer
     // fullName: overTheBox.AvailableMigrationOffer.AvailableMigrationOffer
     export interface AvailableMigrationOffer {
-        currentOfferPrice: order.Price;
+        currentOfferPrice: orderPrice;
         description: string;
         engagementMonths: number;
         hardwareAvailable: boolean;
         offer: string;
-        price: order.Price;
+        price: orderPrice;
     }
     //overTheBox.Backup
     // fullName: overTheBox.Backup.Backup
@@ -508,3 +508,4 @@ export class ApiOverTheBox extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+type orderPrice = order.Price;

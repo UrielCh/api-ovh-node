@@ -63,7 +63,7 @@ export namespace service {
             endDate?: string;
             id?: number;
             lastUpdate?: string;
-            price: order.Price;
+            price: orderPrice;
             serviceId: number;
         }
         export namespace transaction {
@@ -72,7 +72,7 @@ export namespace service {
             export interface Element {
                 details: service.consumption.transaction.Element.Detail[];
                 planCode: string;
-                price: order.Price;
+                price: orderPrice;
                 quantity: number;
             }
             export namespace Element {
@@ -115,15 +115,15 @@ export namespace service {
             description?: string;
             quantity: number;
             serviceName: string;
-            totalPrice: order.Price;
-            unitPrice: order.Price;
+            totalPrice: orderPrice;
+            unitPrice: orderPrice;
         }
         //service.renew.RenewForecastDetailPrices
         // fullName: service.renew.RenewForecastDetailPrices.RenewForecastDetailPrices
         export interface RenewForecastDetailPrices {
-            tax: order.Price;
-            withTax: order.Price;
-            withoutTax: order.Price;
+            tax: orderPrice;
+            withTax: orderPrice;
+            withoutTax: orderPrice;
         }
         //service.renew.RenewOrder
         // fullName: service.renew.RenewOrder.RenewOrder
@@ -133,16 +133,16 @@ export namespace service {
             orderId: number;
             password: string;
             pdfUrl: string;
-            priceWithTax: order.Price;
-            priceWithoutTax: order.Price;
+            priceWithTax: orderPrice;
+            priceWithoutTax: orderPrice;
             retractionDate?: string;
-            tax: order.Price;
+            tax: orderPrice;
             url: string;
         }
         //service.renew.RenewStrategy
         // fullName: service.renew.RenewStrategy.RenewStrategy
         export interface RenewStrategy {
-            price: order.Price;
+            price: orderPrice;
             priceInUcents: number;
             services: number[];
             servicesDetails: service.renew.Service[];
@@ -269,3 +269,4 @@ export class ApiService extends OvhWrapper {
     return super.post(path, params);
   }
 }
+type orderPrice = order.Price;

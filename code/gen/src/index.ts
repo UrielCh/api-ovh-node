@@ -16,7 +16,18 @@ async function main() {
     // debug gen a single API
     if (false)
         apis = apis.filter((api) => {
-            return ~api.indexOf('veeam')
+            //return ~api.indexOf('veeam')
+            if ('/cloud' == api)
+                return true;
+            if ('/domain' == api)
+                return true;
+            if ('/email/domain' == api)
+                return true;
+            if ('/me' == api)
+                return true;
+            // if (this.api == '/cloud' || this.api == '/domain' || this.api == '/email/domain' || this.api == '/me'
+            // || this.api == '/pack/xdsl' || this.api == '/veeam/veeamEnterprise' || this.api == '/telephony' || this.api == '/xdsl')
+
             //if ('/price' == api)
             //    return true;
             //if ('/order' == api)

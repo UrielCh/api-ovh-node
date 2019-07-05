@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace cloud {
     //cloud.AccessTypeEnum
     export type AccessTypeEnum = "full" | "restricted"
@@ -8,7 +7,7 @@ export namespace cloud {
     // fullName: cloud.Acl.Acl
     export interface Acl {
         accountId: string;
-        type: OVH.cloud.AclTypeEnum;
+        type: cloud.AclTypeEnum;
     }
     //cloud.AclTypeEnum
     export type AclTypeEnum = "readOnly" | "readWrite"
@@ -16,9 +15,9 @@ export namespace cloud {
     // fullName: cloud.Alerting.Alerting
     export interface Alerting {
         creationDate: string;
-        delay: OVH.cloud.AlertingDelayEnum;
+        delay: cloud.AlertingDelayEnum;
         email: string;
-        formattedMonthlyThreshold: OVH.order.Price;
+        formattedMonthlyThreshold: orderPrice;
         id: string;
         monthlyThreshold: number;
     }
@@ -34,13 +33,13 @@ export namespace cloud {
     //cloud.ArchiveStoragePrice
     // fullName: cloud.ArchiveStoragePrice.ArchiveStoragePrice
     export interface ArchiveStoragePrice {
-        monthlyPrice: OVH.order.Price;
+        monthlyPrice: orderPrice;
         region: string;
     }
     //cloud.AvailableRegion
     // fullName: cloud.AvailableRegion.AvailableRegion
     export interface AvailableRegion {
-        continentCode: OVH.cloud.RegionContinent;
+        continentCode: cloud.RegionContinent;
         datacenterLocation: string;
         name: string;
     }
@@ -50,7 +49,7 @@ export namespace cloud {
         backupName: string;
         createdAt: string;
         cron: string;
-        executions?: OVH.cloud.Execution[];
+        executions?: cloud.Execution[];
         id: string;
         instanceId: string;
         name: string;
@@ -58,33 +57,33 @@ export namespace cloud {
     //cloud.BandwidthStoragePrice
     // fullName: cloud.BandwidthStoragePrice.BandwidthStoragePrice
     export interface BandwidthStoragePrice {
-        price: OVH.order.Price;
+        price: orderPrice;
         region: string;
     }
     //cloud.Component
     // fullName: cloud.Component.Component
     export interface Component {
         name: string;
-        status: OVH.cloud.ServiceStatus;
+        status: cloud.ServiceStatus;
     }
     //cloud.Credit
     // fullName: cloud.Credit.Credit
     export interface Credit {
-        available_credit: OVH.order.Price;
+        available_credit: orderPrice;
         bill?: string;
         description?: string;
         id: number;
         products?: string[];
-        total_credit: OVH.order.Price;
-        used_credit: OVH.order.Price;
-        validity?: OVH.cloud.common.VoucherValidity;
+        total_credit: orderPrice;
+        used_credit: orderPrice;
+        validity?: cloud.common.VoucherValidity;
         voucher?: string;
     }
     //cloud.Execution
     // fullName: cloud.Execution.Execution
     export interface Execution {
         executedAt: string;
-        state: OVH.cloud.ExecutionState;
+        state: cloud.ExecutionState;
         stateInfo: string;
     }
     //cloud.ExecutionState
@@ -94,8 +93,8 @@ export namespace cloud {
     export interface FlavorPrice {
         flavorId: string;
         flavorName: string;
-        monthlyPrice?: OVH.order.Price;
-        price: OVH.order.Price;
+        monthlyPrice?: orderPrice;
+        price: orderPrice;
         region: string;
     }
     //cloud.IpCountryEnum
@@ -110,45 +109,45 @@ export namespace cloud {
         progress: number;
         regions?: string[];
         startedAt?: string;
-        status: OVH.cloud.OperationStatus;
+        status: cloud.OperationStatus;
     }
     //cloud.OperationStatus
     export type OperationStatus = "created" | "in-progress" | "completed" | "in-error" | "unknown"
     //cloud.Price
     // fullName: cloud.Price.Price
     export interface Price {
-        archive: OVH.cloud.ArchiveStoragePrice[];
-        bandwidthArchiveIn: OVH.cloud.BandwidthStoragePrice[];
-        bandwidthArchiveOut: OVH.cloud.BandwidthStoragePrice[];
-        bandwidthStorage: OVH.cloud.BandwidthStoragePrice[];
-        instances: OVH.cloud.FlavorPrice[];
-        projectCreation: OVH.order.Price;
-        snapshots: OVH.cloud.SnapshotPrice[];
-        storage: OVH.cloud.StoragePrice[];
-        volumes: OVH.cloud.VolumePrice[];
+        archive: cloud.ArchiveStoragePrice[];
+        bandwidthArchiveIn: cloud.BandwidthStoragePrice[];
+        bandwidthArchiveOut: cloud.BandwidthStoragePrice[];
+        bandwidthStorage: cloud.BandwidthStoragePrice[];
+        instances: cloud.FlavorPrice[];
+        projectCreation: orderPrice;
+        snapshots: cloud.SnapshotPrice[];
+        storage: cloud.StoragePrice[];
+        volumes: cloud.VolumePrice[];
     }
     //cloud.Project
     // fullName: cloud.Project.Project
     export interface Project {
-        access: OVH.cloud.AccessTypeEnum;
+        access: cloud.AccessTypeEnum;
         creationDate: string;
         description?: string;
         expiration?: string;
         orderId?: number;
         planCode: string;
         project_id: string;
-        status: OVH.cloud.project.ProjectStatus;
+        status: cloud.project.ProjectStatus;
         unleash: boolean;
     }
     //cloud.Region
     // fullName: cloud.Region.Region
     export interface Region {
-        continentCode: OVH.cloud.RegionContinent;
+        continentCode: cloud.RegionContinent;
         datacenterLocation: string;
-        ipCountries: OVH.cloud.IpCountryEnum[];
+        ipCountries: cloud.IpCountryEnum[];
         name: string;
-        services: OVH.cloud.Component[];
-        status: OVH.cloud.RegionStatus;
+        services: cloud.Component[];
+        status: cloud.RegionStatus;
     }
     //cloud.RegionContinent
     export type RegionContinent = "EU" | "NA" | "US" | "ASIA"
@@ -159,22 +158,22 @@ export namespace cloud {
     //cloud.SnapshotPrice
     // fullName: cloud.SnapshotPrice.SnapshotPrice
     export interface SnapshotPrice {
-        monthlyPrice: OVH.order.Price;
-        price: OVH.order.Price;
+        monthlyPrice: orderPrice;
+        price: orderPrice;
         region: string;
     }
     //cloud.StoragePrice
     // fullName: cloud.StoragePrice.StoragePrice
     export interface StoragePrice {
-        monthlyPrice: OVH.order.Price;
-        price: OVH.order.Price;
+        monthlyPrice: orderPrice;
+        price: orderPrice;
         region: string;
     }
     //cloud.VolumePrice
     // fullName: cloud.VolumePrice.VolumePrice
     export interface VolumePrice {
-        monthlyPrice: OVH.order.Price;
-        price: OVH.order.Price;
+        monthlyPrice: orderPrice;
+        price: orderPrice;
         region: string;
         volumeName: string;
     }
@@ -189,7 +188,7 @@ export namespace cloud {
         //cloud.authentication.Catalog
         // fullName: cloud.authentication.Catalog.Catalog
         export interface Catalog {
-            endpoints: OVH.cloud.authentication.Endpoint[];
+            endpoints: cloud.authentication.Endpoint[];
             id: string;
             type: string;
         }
@@ -211,13 +210,13 @@ export namespace cloud {
         //cloud.authentication.OpenstackToken
         // fullName: cloud.authentication.OpenstackToken.OpenstackToken
         export interface OpenstackToken {
-            catalog: OVH.cloud.authentication.Catalog[];
+            catalog: cloud.authentication.Catalog[];
             expires_at: string;
             issued_at: string;
             methods: string[];
-            project: OVH.cloud.authentication.TokenProject;
-            roles: OVH.cloud.authentication.Role[];
-            user: OVH.cloud.authentication.UserToken;
+            project: cloud.authentication.TokenProject;
+            roles: cloud.authentication.Role[];
+            user: cloud.authentication.UserToken;
         }
         //cloud.authentication.Role
         // fullName: cloud.authentication.Role.Role
@@ -229,19 +228,19 @@ export namespace cloud {
         // fullName: cloud.authentication.Token.Token
         export interface Token {
             'X-Auth-Token': string;
-            token: OVH.cloud.authentication.OpenstackToken;
+            token: cloud.authentication.OpenstackToken;
         }
         //cloud.authentication.TokenProject
         // fullName: cloud.authentication.TokenProject.TokenProject
         export interface TokenProject {
-            domain: OVH.cloud.authentication.Domain;
+            domain: cloud.authentication.Domain;
             id: string;
             name: string;
         }
         //cloud.authentication.UserToken
         // fullName: cloud.authentication.UserToken.UserToken
         export interface UserToken {
-            domain: OVH.cloud.authentication.Domain;
+            domain: cloud.authentication.Domain;
             id: string;
             name: string;
         }
@@ -250,20 +249,20 @@ export namespace cloud {
         //cloud.billingView.BandwidthInstance
         // fullName: cloud.billingView.BandwidthInstance.BandwidthInstance
         export interface BandwidthInstance {
-            quantity: OVH.cloud.billingView.Quantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
         //cloud.billingView.BandwidthStorage
         // fullName: cloud.billingView.BandwidthStorage.BandwidthStorage
         export interface BandwidthStorage {
-            quantity: OVH.cloud.billingView.Quantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
         //cloud.billingView.HourlyInstance
         // fullName: cloud.billingView.HourlyInstance.HourlyInstance
         export interface HourlyInstance {
-            details: OVH.cloud.billingView.HourlyInstanceDetail[];
-            quantity: OVH.cloud.billingView.Quantity;
+            details: cloud.billingView.HourlyInstanceDetail[];
+            quantity: cloud.billingView.Quantity;
             reference: string;
             region: string;
             totalPrice: number;
@@ -271,8 +270,8 @@ export namespace cloud {
         //cloud.billingView.HourlyInstanceBandwidth
         // fullName: cloud.billingView.HourlyInstanceBandwidth.HourlyInstanceBandwidth
         export interface HourlyInstanceBandwidth {
-            incomingBandwidth?: OVH.cloud.billingView.BandwidthInstance;
-            outgoingBandwidth?: OVH.cloud.billingView.BandwidthInstance;
+            incomingBandwidth?: cloud.billingView.BandwidthInstance;
+            outgoingBandwidth?: cloud.billingView.BandwidthInstance;
             region: string;
             totalPrice: number;
         }
@@ -280,14 +279,14 @@ export namespace cloud {
         // fullName: cloud.billingView.HourlyInstanceDetail.HourlyInstanceDetail
         export interface HourlyInstanceDetail {
             instanceId: string;
-            quantity: OVH.cloud.billingView.Quantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
         //cloud.billingView.HourlyInstanceOption
         // fullName: cloud.billingView.HourlyInstanceOption.HourlyInstanceOption
         export interface HourlyInstanceOption {
-            details: OVH.cloud.billingView.HourlyInstanceOptionDetail[];
-            quantity: OVH.cloud.billingView.Quantity;
+            details: cloud.billingView.HourlyInstanceOptionDetail[];
+            quantity: cloud.billingView.Quantity;
             reference: string;
             region: string;
             totalPrice: number;
@@ -296,42 +295,42 @@ export namespace cloud {
         // fullName: cloud.billingView.HourlyInstanceOptionDetail.HourlyInstanceOptionDetail
         export interface HourlyInstanceOptionDetail {
             instanceId: string;
-            quantity: OVH.cloud.billingView.Quantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
         //cloud.billingView.HourlyResources
         // fullName: cloud.billingView.HourlyResources.HourlyResources
         export interface HourlyResources {
-            instance: OVH.cloud.billingView.HourlyInstance[];
-            instanceBandwidth: OVH.cloud.billingView.HourlyInstanceBandwidth[];
-            instanceOption: OVH.cloud.billingView.HourlyInstanceOption[];
-            snapshot: OVH.cloud.billingView.HourlySnapshot[];
-            storage: OVH.cloud.billingView.HourlyStorage[];
-            volume: OVH.cloud.billingView.HourlyVolume[];
+            instance: cloud.billingView.HourlyInstance[];
+            instanceBandwidth: cloud.billingView.HourlyInstanceBandwidth[];
+            instanceOption: cloud.billingView.HourlyInstanceOption[];
+            snapshot: cloud.billingView.HourlySnapshot[];
+            storage: cloud.billingView.HourlyStorage[];
+            volume: cloud.billingView.HourlyVolume[];
         }
         //cloud.billingView.HourlySnapshot
         // fullName: cloud.billingView.HourlySnapshot.HourlySnapshot
         export interface HourlySnapshot {
-            instance?: OVH.cloud.billingView.InstanceSnapshot;
+            instance?: cloud.billingView.InstanceSnapshot;
             region: string;
             totalPrice: number;
-            volume?: OVH.cloud.billingView.VolumeSnapshot;
+            volume?: cloud.billingView.VolumeSnapshot;
         }
         //cloud.billingView.HourlyStorage
         // fullName: cloud.billingView.HourlyStorage.HourlyStorage
         export interface HourlyStorage {
-            incomingBandwidth?: OVH.cloud.billingView.BandwidthStorage;
-            outgoingBandwidth?: OVH.cloud.billingView.BandwidthStorage;
+            incomingBandwidth?: cloud.billingView.BandwidthStorage;
+            outgoingBandwidth?: cloud.billingView.BandwidthStorage;
             region: string;
-            stored?: OVH.cloud.billingView.StoredStorage;
+            stored?: cloud.billingView.StoredStorage;
             totalPrice: number;
-            type: OVH.cloud.billingView.StorageTypeEnum;
+            type: cloud.billingView.StorageTypeEnum;
         }
         //cloud.billingView.HourlyVolume
         // fullName: cloud.billingView.HourlyVolume.HourlyVolume
         export interface HourlyVolume {
-            details: OVH.cloud.billingView.HourlyVolumeDetail[];
-            quantity: OVH.cloud.billingView.Quantity;
+            details: cloud.billingView.HourlyVolumeDetail[];
+            quantity: cloud.billingView.Quantity;
             region: string;
             totalPrice: number;
             type: string;
@@ -339,20 +338,20 @@ export namespace cloud {
         //cloud.billingView.HourlyVolumeDetail
         // fullName: cloud.billingView.HourlyVolumeDetail.HourlyVolumeDetail
         export interface HourlyVolumeDetail {
-            quantity: OVH.cloud.billingView.Quantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
             volumeId: string;
         }
         //cloud.billingView.InstanceSnapshot
         // fullName: cloud.billingView.InstanceSnapshot.InstanceSnapshot
         export interface InstanceSnapshot {
-            quantity: OVH.cloud.billingView.Quantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
         //cloud.billingView.MonthlyInstance
         // fullName: cloud.billingView.MonthlyInstance.MonthlyInstance
         export interface MonthlyInstance {
-            details: OVH.cloud.billingView.MonthlyInstanceDetail[];
+            details: cloud.billingView.MonthlyInstanceDetail[];
             reference: string;
             region: string;
             totalPrice: number;
@@ -367,7 +366,7 @@ export namespace cloud {
         //cloud.billingView.MonthlyInstanceOption
         // fullName: cloud.billingView.MonthlyInstanceOption.MonthlyInstanceOption
         export interface MonthlyInstanceOption {
-            details: OVH.cloud.billingView.MonthlyInstanceOptionDetail[];
+            details: cloud.billingView.MonthlyInstanceOptionDetail[];
             reference: string;
             region: string;
             totalPrice: number;
@@ -381,13 +380,13 @@ export namespace cloud {
         //cloud.billingView.MonthlyResources
         // fullName: cloud.billingView.MonthlyResources.MonthlyResources
         export interface MonthlyResources {
-            instance: OVH.cloud.billingView.MonthlyInstance[];
-            instanceOption: OVH.cloud.billingView.MonthlyInstanceOption[];
+            instance: cloud.billingView.MonthlyInstance[];
+            instanceOption: cloud.billingView.MonthlyInstanceOption[];
         }
         //cloud.billingView.Quantity
         // fullName: cloud.billingView.Quantity.Quantity
         export interface Quantity {
-            unit: OVH.cloud.billingView.UnitQuantity;
+            unit: cloud.billingView.UnitQuantity;
             value: number;
         }
         //cloud.billingView.StorageTypeEnum
@@ -395,7 +394,7 @@ export namespace cloud {
         //cloud.billingView.StoredStorage
         // fullName: cloud.billingView.StoredStorage.StoredStorage
         export interface StoredStorage {
-            quantity: OVH.cloud.billingView.Quantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
         //cloud.billingView.UnitQuantity
@@ -410,13 +409,13 @@ export namespace cloud {
         //cloud.billingView.UsedCredits
         // fullName: cloud.billingView.UsedCredits.UsedCredits
         export interface UsedCredits {
-            details: OVH.cloud.billingView.UsedCredit[];
+            details: cloud.billingView.UsedCredit[];
             totalCredit: number;
         }
         //cloud.billingView.VolumeSnapshot
         // fullName: cloud.billingView.VolumeSnapshot.VolumeSnapshot
         export interface VolumeSnapshot {
-            quantity: OVH.cloud.billingView.Quantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
     }
@@ -439,8 +438,8 @@ export namespace cloud {
                 id: string;
                 name: string;
                 projectID: string;
-                region: OVH.cloud.containerRegistry.registry.RegionEnum;
-                status: OVH.cloud.containerRegistry.registry.StatusEnum;
+                region: cloud.containerRegistry.registry.RegionEnum;
+                status: cloud.containerRegistry.registry.StatusEnum;
                 updatedAt: string;
                 url: string;
                 version: string;
@@ -470,7 +469,7 @@ export namespace cloud {
             name: string;
             osType: string;
             outboundBandwidth?: number;
-            planCodes: OVH.cloud.flavor.FlavorPlanCodes;
+            planCodes: cloud.flavor.FlavorPlanCodes;
             ram: number;
             region: string;
             type: string;
@@ -488,7 +487,7 @@ export namespace cloud {
         // fullName: cloud.forecast.ProjectForecast.ProjectForecast
         export interface ProjectForecast {
             lastMetric: string;
-            projectForecast: OVH.order.Price;
+            projectForecast: orderPrice;
         }
     }
     export namespace image {
@@ -525,8 +524,8 @@ export namespace cloud {
         //cloud.instance.ApplicationAccess
         // fullName: cloud.instance.ApplicationAccess.ApplicationAccess
         export interface ApplicationAccess {
-            accesses: OVH.cloud.instance.Access[];
-            status: OVH.cloud.instance.ApplicationAccessStateEnum;
+            accesses: cloud.instance.Access[];
+            status: cloud.instance.ApplicationAccessStateEnum;
         }
         //cloud.instance.ApplicationAccessStateEnum
         export type ApplicationAccessStateEnum = "installing" | "ok"
@@ -537,34 +536,34 @@ export namespace cloud {
             flavorId: string;
             id: string;
             imageId: string;
-            ipAddresses: OVH.cloud.instance.IpAddress[];
-            monthlyBilling?: OVH.cloud.instance.MonthlyBilling;
+            ipAddresses: cloud.instance.IpAddress[];
+            monthlyBilling?: cloud.instance.MonthlyBilling;
             name: string;
             planCode?: string;
             region: string;
             sshKeyId?: string;
-            status: OVH.cloud.instance.InstanceStatusEnum;
+            status: cloud.instance.InstanceStatusEnum;
         }
         //cloud.instance.InstanceDetail
         // fullName: cloud.instance.InstanceDetail.InstanceDetail
         export interface InstanceDetail {
             created: string;
-            flavor: OVH.cloud.flavor.Flavor;
+            flavor: cloud.flavor.Flavor;
             id: string;
-            image: OVH.cloud.image.Image;
-            ipAddresses: OVH.cloud.instance.IpAddress[];
-            monthlyBilling?: OVH.cloud.instance.MonthlyBilling;
+            image: cloud.image.Image;
+            ipAddresses: cloud.instance.IpAddress[];
+            monthlyBilling?: cloud.instance.MonthlyBilling;
             name: string;
             planCode?: string;
             region: string;
-            sshKey: OVH.cloud.sshkey.SshKeyDetail;
-            status: OVH.cloud.instance.InstanceStatusEnum;
+            sshKey: cloud.sshkey.SshKeyDetail;
+            status: cloud.instance.InstanceStatusEnum;
         }
         //cloud.instance.InstanceMetrics
         // fullName: cloud.instance.InstanceMetrics.InstanceMetrics
         export interface InstanceMetrics {
             unit: string;
-            values: OVH.cloud.instance.InstanceMetricsValue[];
+            values: cloud.instance.InstanceMetricsValue[];
         }
         //cloud.instance.InstanceMetricsValue
         // fullName: cloud.instance.InstanceMetricsValue.InstanceMetricsValue
@@ -597,7 +596,7 @@ export namespace cloud {
         // fullName: cloud.instance.MonthlyBilling.MonthlyBilling
         export interface MonthlyBilling {
             since: string;
-            status: OVH.cloud.instance.MonthlyBillingStatusEnum;
+            status: cloud.instance.MonthlyBillingStatusEnum;
         }
         //cloud.instance.MonthlyBillingStatusEnum
         export type MonthlyBillingStatusEnum = "activationPending" | "ok"
@@ -630,7 +629,7 @@ export namespace cloud {
         //cloud.instanceInterface.Interface
         // fullName: cloud.instanceInterface.Interface.Interface
         export interface Interface {
-            fixedIps: OVH.cloud.instanceInterface.FixedIp[];
+            fixedIps: cloud.instanceInterface.FixedIp[];
             id: string;
             macAddress: string;
             networkId: string;
@@ -646,7 +645,7 @@ export namespace cloud {
             instance_ids: string[];
             name: string;
             region: string;
-            type: OVH.cloud.instancegroup.InstanceGroupTypeEnum;
+            type: cloud.instancegroup.InstanceGroupTypeEnum;
         }
         //cloud.instancegroup.InstanceGroupTypeEnum
         export type InstanceGroupTypeEnum = "affinity" | "anti-affinity"
@@ -657,7 +656,7 @@ export namespace cloud {
         export interface CloudIp {
             id: string;
             ip?: string;
-            status: OVH.cloud.ip.IpStatusEnum;
+            status: cloud.ip.IpStatusEnum;
             type: string;
         }
         //cloud.ip.FailoverIp
@@ -670,8 +669,8 @@ export namespace cloud {
             ip?: string;
             progress: number;
             routedTo: string;
-            status: OVH.cloud.ip.IpStatusEnum;
-            subType: OVH.cloud.ip.IpSubTypeEnum;
+            status: cloud.ip.IpStatusEnum;
+            subType: cloud.ip.IpSubTypeEnum;
         }
         //cloud.ip.IpStatusEnum
         export type IpStatusEnum = "ok" | "operationPending"
@@ -688,7 +687,7 @@ export namespace cloud {
             isUpToDate: boolean;
             name: string;
             nodesUrl: string;
-            status: OVH.cloud.kube.ClusterStatus;
+            status: cloud.kube.ClusterStatus;
             updatePolicy: string;
             updatedAt: string;
             url: string;
@@ -710,7 +709,7 @@ export namespace cloud {
             instanceId?: string;
             isUpToDate: boolean;
             name?: string;
-            status: OVH.cloud.kube.NodeStatus;
+            status: cloud.kube.NodeStatus;
             updatedAt: string;
             version: string;
         }
@@ -732,7 +731,7 @@ export namespace cloud {
             date: string;
             migrationId: string;
             resourceId: string;
-            resourceType: OVH.cloud.migration.ResourceTypeEnum;
+            resourceType: cloud.migration.ResourceTypeEnum;
         }
         //cloud.migration.ResourceTypeEnum
         export type ResourceTypeEnum = "instance"
@@ -752,16 +751,16 @@ export namespace cloud {
         export interface Network {
             id: string;
             name: string;
-            regions: OVH.cloud.network.NetworkRegion[];
-            status: OVH.cloud.network.NetworkStatusEnum;
-            type?: OVH.cloud.network.NetworkTypeEnum;
+            regions: cloud.network.NetworkRegion[];
+            status: cloud.network.NetworkStatusEnum;
+            type?: cloud.network.NetworkTypeEnum;
             vlanId: number;
         }
         //cloud.network.NetworkRegion
         // fullName: cloud.network.NetworkRegion.NetworkRegion
         export interface NetworkRegion {
             region: string;
-            status: OVH.cloud.network.NetworkRegionStatusEnum;
+            status: cloud.network.NetworkRegionStatusEnum;
         }
         //cloud.network.NetworkRegionStatusEnum
         export type NetworkRegionStatusEnum = "ACTIVE" | "BUILDING"
@@ -775,7 +774,7 @@ export namespace cloud {
             cidr: string;
             gatewayIp?: string;
             id: string;
-            ipPools: OVH.cloud.network.IPPool[];
+            ipPools: cloud.network.IPPool[];
         }
     }
     export namespace openstackClient {
@@ -789,7 +788,7 @@ export namespace cloud {
         export interface Session {
             expires: string;
             id: string;
-            profile: OVH.cloud.openstackClient.Profile;
+            profile: cloud.openstackClient.Profile;
             websocket: string;
         }
     }
@@ -801,7 +800,7 @@ export namespace cloud {
             orderId: number;
             planCode: string;
             serviceName?: string;
-            status: OVH.cloud.order.StatusEnum;
+            status: cloud.order.StatusEnum;
         }
         //cloud.order.StatusEnum
         export type StatusEnum = "unpaid" | "delivering" | "delivered" | "unknown"
@@ -834,7 +833,7 @@ export namespace cloud {
         export interface TransferState {
             agreements?: number[];
             projectId: string;
-            state: OVH.cloud.pca.TransferStateEnum;
+            state: cloud.pca.TransferStateEnum;
             transferDate?: string;
         }
         //cloud.pca.TransferStateEnum
@@ -846,56 +845,56 @@ export namespace cloud {
         export interface BandwidthStorageUsage {
             downloadedBytes: number;
             region: string;
-            total: OVH.order.Price;
+            total: orderPrice;
         }
         //cloud.project.Bill
         // fullName: cloud.project.Bill.Bill
         export interface Bill {
             billId: string;
-            type: OVH.cloud.project.BillTypeEnum;
+            type: cloud.project.BillTypeEnum;
         }
         //cloud.project.BillTypeEnum
         export type BillTypeEnum = "creditPurchased" | "monthlyConsumption" | "monthlyInstanceActivation"
         //cloud.project.CurrentUsage
         // fullName: cloud.project.CurrentUsage.CurrentUsage
         export interface CurrentUsage {
-            instances: OVH.cloud.project.InstancesUsage;
-            snapshots: OVH.cloud.project.SnapshotsUsage;
-            storage: OVH.cloud.project.StorageUsage;
-            total: OVH.order.Price;
-            volumeSnapshots: OVH.cloud.project.SnapshotsUsage;
-            volumes: OVH.cloud.project.VolumesUsage;
+            instances: cloud.project.InstancesUsage;
+            snapshots: cloud.project.SnapshotsUsage;
+            storage: cloud.project.StorageUsage;
+            total: orderPrice;
+            volumeSnapshots: cloud.project.SnapshotsUsage;
+            volumes: cloud.project.VolumesUsage;
         }
         //cloud.project.InstanceMonthlyBilling
         // fullName: cloud.project.InstanceMonthlyBilling.InstanceMonthlyBilling
         export interface InstanceMonthlyBilling {
             activatedOn: string;
-            cost: OVH.order.Price;
+            cost: orderPrice;
         }
         //cloud.project.InstanceUsageDetail
         // fullName: cloud.project.InstanceUsageDetail.InstanceUsageDetail
         export interface InstanceUsageDetail {
-            hourly?: OVH.order.Price;
+            hourly?: orderPrice;
             instanceId: string;
-            monthly?: OVH.cloud.project.InstanceMonthlyBilling;
+            monthly?: cloud.project.InstanceMonthlyBilling;
             monthlyBilling: boolean;
             reference: string;
         }
         //cloud.project.InstancesUsage
         // fullName: cloud.project.InstancesUsage.InstancesUsage
         export interface InstancesUsage {
-            detail: OVH.cloud.project.InstanceUsageDetail[];
-            total: OVH.order.Price;
+            detail: cloud.project.InstanceUsageDetail[];
+            total: orderPrice;
         }
         //cloud.project.NewProject
         // fullName: cloud.project.NewProject.NewProject
         export interface NewProject {
             agreements?: number[];
-            credit?: OVH.cloud.project.NewProjectCredit;
+            credit?: cloud.project.NewProjectCredit;
             description?: string;
             orderId?: number;
             project?: string;
-            status: OVH.cloud.project.NewProjectStatusEnum;
+            status: cloud.project.NewProjectStatusEnum;
         }
         //cloud.project.NewProjectCredit
         // fullName: cloud.project.NewProjectCredit.NewProjectCredit
@@ -903,21 +902,21 @@ export namespace cloud {
             description?: string;
             id: number;
             products?: string[];
-            total_credit: OVH.order.Price;
-            validity?: OVH.cloud.common.VoucherValidity;
+            total_credit: orderPrice;
+            validity?: cloud.common.VoucherValidity;
         }
         //cloud.project.NewProjectInfo
         // fullName: cloud.project.NewProjectInfo.NewProjectInfo
         export interface NewProjectInfo {
             agreements?: number[];
-            error?: OVH.cloud.project.NewProjectInfoError;
-            order?: OVH.order.Price;
-            voucher?: OVH.cloud.project.NewProjectInfoVoucher;
+            error?: cloud.project.NewProjectInfoError;
+            order?: orderPrice;
+            voucher?: cloud.project.NewProjectInfoVoucher;
         }
         //cloud.project.NewProjectInfoError
         // fullName: cloud.project.NewProjectInfoError.NewProjectInfoError
         export interface NewProjectInfoError {
-            code: OVH.cloud.project.NewProjectInfoErrorCodeEnum;
+            code: cloud.project.NewProjectInfoErrorCodeEnum;
             message: string;
         }
         //cloud.project.NewProjectInfoErrorCodeEnum
@@ -925,7 +924,7 @@ export namespace cloud {
         //cloud.project.NewProjectInfoVoucher
         // fullName: cloud.project.NewProjectInfoVoucher.NewProjectInfoVoucher
         export interface NewProjectInfoVoucher {
-            credit: OVH.order.Price;
+            credit: orderPrice;
             paymentMethodRequired: boolean;
         }
         //cloud.project.NewProjectStatusEnum
@@ -943,50 +942,50 @@ export namespace cloud {
         //cloud.project.ProjectUsage
         // fullName: cloud.project.ProjectUsage.ProjectUsage
         export interface ProjectUsage {
-            current: OVH.cloud.project.CurrentUsage;
+            current: cloud.project.CurrentUsage;
         }
         //cloud.project.SnapshotUsageDetail
         // fullName: cloud.project.SnapshotUsageDetail.SnapshotUsageDetail
         export interface SnapshotUsageDetail {
-            price: OVH.order.Price;
+            price: orderPrice;
             region: string;
-            storedSize: OVH.complexType.UnitAndValue<number>;
+            storedSize: complexType.UnitAndValue<number>;
         }
         //cloud.project.SnapshotsUsage
         // fullName: cloud.project.SnapshotsUsage.SnapshotsUsage
         export interface SnapshotsUsage {
-            detail: OVH.cloud.project.SnapshotUsageDetail[];
-            total: OVH.order.Price;
+            detail: cloud.project.SnapshotUsageDetail[];
+            total: orderPrice;
         }
         //cloud.project.StorageUsage
         // fullName: cloud.project.StorageUsage.StorageUsage
         export interface StorageUsage {
-            bandwidth: OVH.cloud.project.BandwidthStorageUsage[];
-            total: OVH.order.Price;
-            volume: OVH.cloud.project.StorageVolumeUsage[];
+            bandwidth: cloud.project.BandwidthStorageUsage[];
+            total: orderPrice;
+            volume: cloud.project.StorageVolumeUsage[];
         }
         //cloud.project.StorageVolumeUsage
         // fullName: cloud.project.StorageVolumeUsage.StorageVolumeUsage
         export interface StorageVolumeUsage {
             region: string;
             storedBytes: number;
-            total: OVH.order.Price;
+            total: orderPrice;
         }
         //cloud.project.VolumeType
         export type VolumeType = "classic" | "high-speed"
         //cloud.project.VolumeUsageDetail
         // fullName: cloud.project.VolumeUsageDetail.VolumeUsageDetail
         export interface VolumeUsageDetail {
-            price: OVH.order.Price;
-            volumeCapacity: OVH.complexType.UnitAndValue<number>;
+            price: orderPrice;
+            volumeCapacity: complexType.UnitAndValue<number>;
             volumeId: string;
-            volumeType: OVH.cloud.project.VolumeType;
+            volumeType: cloud.project.VolumeType;
         }
         //cloud.project.VolumesUsage
         // fullName: cloud.project.VolumesUsage.VolumesUsage
         export interface VolumesUsage {
-            detail: OVH.cloud.project.VolumeUsageDetail[];
-            total: OVH.order.Price;
+            detail: cloud.project.VolumeUsageDetail[];
+            total: orderPrice;
         }
     }
     export namespace quota {
@@ -1008,10 +1007,10 @@ export namespace cloud {
         //cloud.quota.Quotas
         // fullName: cloud.quota.Quotas.Quotas
         export interface Quotas {
-            instance: OVH.cloud.quota.InstanceQuotas;
-            keypair: OVH.cloud.quota.KeypairQuotas;
+            instance: cloud.quota.InstanceQuotas;
+            keypair: cloud.quota.KeypairQuotas;
             region: string;
-            volume: OVH.cloud.quota.VolumeQuotas;
+            volume: cloud.quota.VolumeQuotas;
         }
         //cloud.quota.VolumeQuotas
         // fullName: cloud.quota.VolumeQuotas.VolumeQuotas
@@ -1039,14 +1038,14 @@ export namespace cloud {
         //cloud.role.Roles
         // fullName: cloud.role.Roles.Roles
         export interface Roles {
-            roles: OVH.cloud.role.Role[];
-            services: OVH.cloud.role.Service[];
+            roles: cloud.role.Role[];
+            services: cloud.role.Service[];
         }
         //cloud.role.Service
         // fullName: cloud.role.Service.Service
         export interface Service {
             name: string;
-            permissions: OVH.cloud.role.Permission[];
+            permissions: cloud.role.Permission[];
         }
     }
     export namespace sshkey {
@@ -1078,16 +1077,16 @@ export namespace cloud {
         //cloud.stack.InstructionGuide
         // fullName: cloud.stack.InstructionGuide.InstructionGuide
         export interface InstructionGuide {
-            content: OVH.cloud.stack.Content[];
+            content: cloud.stack.Content[];
             language: string;
-            sections: OVH.cloud.stack.Section[];
+            sections: cloud.stack.Section[];
             title: string;
         }
         //cloud.stack.Section
         // fullName: cloud.stack.Section.Section
         export interface Section {
-            content: OVH.cloud.stack.Content[];
-            steps: OVH.cloud.stack.Step[];
+            content: cloud.stack.Content[];
+            steps: cloud.stack.Step[];
             title: string;
         }
         //cloud.stack.Stack
@@ -1096,7 +1095,7 @@ export namespace cloud {
             commit: string;
             description: string;
             gitRepository: string;
-            instructions: OVH.cloud.stack.InstructionGuide[];
+            instructions: cloud.stack.InstructionGuide[];
             name: string;
             release: string;
             uuid: string;
@@ -1104,7 +1103,7 @@ export namespace cloud {
         //cloud.stack.Step
         // fullName: cloud.stack.Step.Step
         export interface Step {
-            content: OVH.cloud.stack.Content[];
+            content: cloud.stack.Content[];
             title: string;
         }
     }
@@ -1121,17 +1120,17 @@ export namespace cloud {
         //cloud.storage.ContainerAccess
         // fullName: cloud.storage.ContainerAccess.ContainerAccess
         export interface ContainerAccess {
-            endpoints: OVH.cloud.storage.Endpoint[];
+            endpoints: cloud.storage.Endpoint[];
             token: string;
         }
         //cloud.storage.ContainerDetail
         // fullName: cloud.storage.ContainerDetail.ContainerDetail
         export interface ContainerDetail {
             archive: boolean;
-            containerType: OVH.cloud.storage.TypeEnum;
+            containerType: cloud.storage.TypeEnum;
             cors: string[];
             name: string;
-            objects: OVH.cloud.storage.ContainerObject[];
+            objects: cloud.storage.ContainerObject[];
             public: boolean;
             region: string;
             staticUrl: string;
@@ -1145,7 +1144,7 @@ export namespace cloud {
             lastModified: string;
             name: string;
             retrievalDelay: number;
-            retrievalState: OVH.cloud.storage.RetrievalStateEnum;
+            retrievalState: cloud.storage.RetrievalStateEnum;
             size: number;
         }
         //cloud.storage.ContainerObjectTempURL
@@ -1182,51 +1181,51 @@ export namespace cloud {
             bill_id: string;
             credit: number;
             part: number;
-            payment_type: OVH.cloud.usage.PaymentTypeEnum;
+            payment_type: cloud.usage.PaymentTypeEnum;
             total: number;
         }
         //cloud.usage.UsageCurrent
         // fullName: cloud.usage.UsageCurrent.UsageCurrent
         export interface UsageCurrent {
-            hourlyUsage?: OVH.cloud.billingView.HourlyResources;
+            hourlyUsage?: cloud.billingView.HourlyResources;
             lastUpdate: string;
-            monthlyUsage?: OVH.cloud.billingView.MonthlyResources;
-            period: OVH.cloud.usage.Period;
+            monthlyUsage?: cloud.billingView.MonthlyResources;
+            period: cloud.usage.Period;
         }
         //cloud.usage.UsageCurrentBills
         // fullName: cloud.usage.UsageCurrentBills.UsageCurrentBills
         export interface UsageCurrentBills {
-            bills: OVH.cloud.usage.UsageBill[];
+            bills: cloud.usage.UsageBill[];
         }
         //cloud.usage.UsageForecast
         // fullName: cloud.usage.UsageForecast.UsageForecast
         export interface UsageForecast {
-            hourlyUsage?: OVH.cloud.billingView.HourlyResources;
+            hourlyUsage?: cloud.billingView.HourlyResources;
             lastUpdate: string;
-            monthlyUsage?: OVH.cloud.billingView.MonthlyResources;
-            period: OVH.cloud.usage.Period;
-            usableCredits?: OVH.cloud.billingView.UsedCredits;
+            monthlyUsage?: cloud.billingView.MonthlyResources;
+            period: cloud.usage.Period;
+            usableCredits?: cloud.billingView.UsedCredits;
         }
         //cloud.usage.UsageHistory
         // fullName: cloud.usage.UsageHistory.UsageHistory
         export interface UsageHistory {
             id: string;
             lastUpdate: string;
-            period: OVH.cloud.usage.Period;
+            period: cloud.usage.Period;
         }
         //cloud.usage.UsageHistoryDetail
         // fullName: cloud.usage.UsageHistoryDetail.UsageHistoryDetail
         export interface UsageHistoryDetail {
-            hourlyUsage?: OVH.cloud.billingView.HourlyResources;
+            hourlyUsage?: cloud.billingView.HourlyResources;
             id: string;
             lastUpdate: string;
-            monthlyUsage?: OVH.cloud.billingView.MonthlyResources;
-            period: OVH.cloud.usage.Period;
+            monthlyUsage?: cloud.billingView.MonthlyResources;
+            period: cloud.usage.Period;
         }
         //cloud.usage.UsageHistoryDetailBills
         // fullName: cloud.usage.UsageHistoryDetailBills.UsageHistoryDetailBills
         export interface UsageHistoryDetailBills {
-            bills: OVH.cloud.usage.UsageBill[];
+            bills: cloud.usage.UsageBill[];
         }
     }
     export namespace user {
@@ -1250,7 +1249,7 @@ export namespace cloud {
             creationDate: string;
             description: string;
             id: number;
-            status: OVH.cloud.user.UserStatusEnum;
+            status: cloud.user.UserStatusEnum;
             username: string;
         }
         //cloud.user.UserDetail
@@ -1260,7 +1259,7 @@ export namespace cloud {
             description: string;
             id: number;
             password: string;
-            status: OVH.cloud.user.UserStatusEnum;
+            status: cloud.user.UserStatusEnum;
             username: string;
         }
         //cloud.user.UserStatusEnum
@@ -1277,7 +1276,7 @@ export namespace cloud {
             planCode?: string;
             region: string;
             size: number;
-            status: OVH.cloud.volume.SnapshotStatusEnum;
+            status: cloud.volume.SnapshotStatusEnum;
             volumeId: string;
         }
         //cloud.volume.SnapshotStatusEnum
@@ -1295,7 +1294,7 @@ export namespace cloud {
             region: string;
             size: number;
             status: string;
-            type: OVH.cloud.volume.VolumeTypeEnum;
+            type: cloud.volume.VolumeTypeEnum;
         }
         //cloud.volume.VolumeTypeEnum
         export type VolumeTypeEnum = "classic" | "high-speed"
@@ -1319,7 +1318,7 @@ export namespace order {
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode: OVH.order.CurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -1341,7 +1340,7 @@ export namespace pca {
         date: string;
         id: number;
         quantity: number;
-        reference: OVH.cloud.pca.BillingRefEnum;
+        reference: cloud.pca.BillingRefEnum;
         total: number;
     }
     //pca.File
@@ -1366,17 +1365,17 @@ export namespace pca {
         size: number;
         srcIp?: string;
         startDate: string;
-        state: OVH.cloud.pca.SessionStateEnum;
+        state: cloud.pca.SessionStateEnum;
     }
     //pca.Task
     // fullName: pca.Task.Task
     export interface Task {
         comment?: string;
-        function: OVH.cloud.pca.FunctionTypeEnum;
+        function: cloud.pca.FunctionTypeEnum;
         id: string;
         ipAddress?: string;
         login: string;
-        status: OVH.cloud.pca.TaskStateEnum;
+        status: cloud.pca.TaskStateEnum;
         todoDate: string;
     }
 }
@@ -1412,10 +1411,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -2297,7 +2296,7 @@ export class ApiCloud extends OvhWrapper {
    * List the pca.Task objects
    * cloud archives tasks for account
    */
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', params: {pcaServiceName: string, serviceName: string, function_?: OVH.cloud.pca.FunctionTypeEnum, status?: OVH.cloud.pca.TaskStateEnum, todoDate_from?: string, todoDate_to?: string}): Promise<string[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', params: {pcaServiceName: string, serviceName: string, function_?: cloud.pca.FunctionTypeEnum, status?: cloud.pca.TaskStateEnum, todoDate_from?: string, todoDate_to?: string}): Promise<string[]>;
   /**
    * cloud archives tasks
    * Get this object properties
@@ -2312,7 +2311,7 @@ export class ApiCloud extends OvhWrapper {
    * Get agreements related to a product
    * Get agreements related to a product
    */
-  public get(path: '/cloud/agreements', params: {product: OVH.cloud.project.ProductNameEnum}): Promise<cloud.project.ProductAgreements>;
+  public get(path: '/cloud/agreements', params: {product: cloud.project.ProductNameEnum}): Promise<cloud.project.ProductAgreements>;
   /**
    * Get information about a cloud project creation
    * Get information about a cloud project creation
@@ -2342,7 +2341,7 @@ export class ApiCloud extends OvhWrapper {
    * List the cloud.Acl objects
    * Get ACL on your cloud project
    */
-  public get(path: '/cloud/project/{serviceName}/acl', params: {serviceName: string, type?: OVH.cloud.AclTypeEnum}): Promise<string[]>;
+  public get(path: '/cloud/project/{serviceName}/acl', params: {serviceName: string, type?: cloud.AclTypeEnum}): Promise<string[]>;
   /**
    * Cloud ACL
    * Get this object properties
@@ -2422,7 +2421,7 @@ export class ApiCloud extends OvhWrapper {
    * Missing description
    * Get images
    */
-  public get(path: '/cloud/project/{serviceName}/image', params: {serviceName: string, flavorType?: string, osType?: OVH.cloud.image.OSTypeEnum, region?: string}): Promise<cloud.image.Image[]>;
+  public get(path: '/cloud/project/{serviceName}/image', params: {serviceName: string, flavorType?: string, osType?: cloud.image.OSTypeEnum, region?: string}): Promise<cloud.image.Image[]>;
   /**
    * Missing description
    * Get image
@@ -2452,7 +2451,7 @@ export class ApiCloud extends OvhWrapper {
    * Missing description
    * Return many statistics about the virtual machine for a given period
    */
-  public get(path: '/cloud/project/{serviceName}/instance/{instanceId}/monitoring', params: {instanceId: string, serviceName: string, period: OVH.cloud.instance.MetricsPeriod, type: OVH.cloud.instance.MetricsType}): Promise<cloud.instance.InstanceMetrics>;
+  public get(path: '/cloud/project/{serviceName}/instance/{instanceId}/monitoring', params: {instanceId: string, serviceName: string, period: cloud.instance.MetricsPeriod, type: cloud.instance.MetricsType}): Promise<cloud.instance.InstanceMetrics>;
   /**
    * Missing description
    * Get the detail of a group
@@ -2657,7 +2656,7 @@ export class ApiCloud extends OvhWrapper {
    * Missing description
    * Get RC file of OpenStack
    */
-  public get(path: '/cloud/project/{serviceName}/user/{userId}/openrc', params: {serviceName: string, userId: number, region: string, version?: OVH.cloud.user.OpenrcVersionEnum}): Promise<cloud.user.Openrc>;
+  public get(path: '/cloud/project/{serviceName}/user/{userId}/openrc', params: {serviceName: string, userId: number, region: string, version?: cloud.user.OpenrcVersionEnum}): Promise<cloud.user.Openrc>;
   /**
    * Missing description
    * Get rclone configuration file
@@ -2692,7 +2691,7 @@ export class ApiCloud extends OvhWrapper {
    * Get services prices for a subsidiary
    * Get services prices for a subsidiary
    */
-  public get(path: '/cloud/subsidiaryPrice', params: {flavorId?: string, ovhSubsidiary: OVH.nichandle.OvhSubsidiaryEnum, region?: string}): Promise<cloud.Price>;
+  public get(path: '/cloud/subsidiaryPrice', params: {flavorId?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, region?: string}): Promise<cloud.Price>;
   public get(path: PathsCloudGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
@@ -2705,22 +2704,22 @@ export class ApiCloud extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', params: {pcaServiceName: string, serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', params: {pcaServiceName: string, serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * cloud archives sessions
    * Alter this object properties
    */
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {pcaServiceName: string, serviceName: string, sessionId: string, endDate?: string, id?: string, login?: string, name?: string, size?: number, srcIp?: string, startDate?: string, state?: OVH.cloud.pca.SessionStateEnum}): Promise<void>;
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {pcaServiceName: string, serviceName: string, sessionId: string, endDate?: string, id?: string, login?: string, name?: string, size?: number, srcIp?: string, startDate?: string, state?: cloud.pca.SessionStateEnum}): Promise<void>;
   /**
    * Project
    * Alter this object properties
    */
-  public put(path: '/cloud/project/{serviceName}', params: {serviceName: string, access?: OVH.cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: OVH.cloud.project.ProjectStatus, unleash?: boolean}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}', params: {serviceName: string, access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatus, unleash?: boolean}): Promise<void>;
   /**
    * Cloud alerting consumption
    * Alter this object properties
    */
-  public put(path: '/cloud/project/{serviceName}/alerting/{id}', params: {id: string, serviceName: string, creationDate?: string, delay?: OVH.cloud.AlertingDelayEnum, email?: string, formattedMonthlyThreshold?: OVH.order.Price, monthlyThreshold?: number}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/alerting/{id}', params: {id: string, serviceName: string, creationDate?: string, delay?: cloud.AlertingDelayEnum, email?: string, formattedMonthlyThreshold?: orderPrice, monthlyThreshold?: number}): Promise<void>;
   /**
    * Manage a Docker registry
    * Update the registry
@@ -2740,7 +2739,7 @@ export class ApiCloud extends OvhWrapper {
    * Manage the update policy of your cluster
    * Change the update policy of your cluster
    */
-  public put(path: '/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy', params: {kubeId: string, serviceName: string, updatePolicy: OVH.cloud.kube.UpdatePolicy}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy', params: {kubeId: string, serviceName: string, updatePolicy: cloud.kube.UpdatePolicy}): Promise<void>;
   /**
    * Missing description
    * Update planned migration
@@ -2755,12 +2754,12 @@ export class ApiCloud extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/cloud/project/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Missing description
    * Update your storage container
    */
-  public put(path: '/cloud/project/{serviceName}/storage/{containerId}', params: {containerId: string, serviceName: string, containerType?: OVH.cloud.storage.TypeEnum}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/storage/{containerId}', params: {containerId: string, serviceName: string, containerType?: cloud.storage.TypeEnum}): Promise<void>;
   /**
    * Missing description
    * Update a volume
@@ -2778,7 +2777,7 @@ export class ApiCloud extends OvhWrapper {
    * List the pca.Task objects
    * Create a cloud archives task
    */
-  public post(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', params: {pcaServiceName: string, serviceName: string, fileIds: string[], sessionId: string, taskFunction: OVH.cloud.pca.TaskTypeEnum}): Promise<pca.Task>;
+  public post(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', params: {pcaServiceName: string, serviceName: string, fileIds: string[], sessionId: string, taskFunction: cloud.pca.TaskTypeEnum}): Promise<pca.Task>;
   /**
    * Start a new cloud project
    * Start a new cloud project
@@ -2788,12 +2787,12 @@ export class ApiCloud extends OvhWrapper {
    * List the cloud.Acl objects
    * Create new ACL
    */
-  public post(path: '/cloud/project/{serviceName}/acl', params: {serviceName: string, accountId: string, type: OVH.cloud.AclTypeEnum}): Promise<cloud.Acl>;
+  public post(path: '/cloud/project/{serviceName}/acl', params: {serviceName: string, accountId: string, type: cloud.AclTypeEnum}): Promise<cloud.Acl>;
   /**
    * List the cloud.Alerting objects
    * Add new alert
    */
-  public post(path: '/cloud/project/{serviceName}/alerting', params: {serviceName: string, delay: OVH.cloud.AlertingDelayEnum, email: string, monthlyThreshold: number}): Promise<cloud.Alerting>;
+  public post(path: '/cloud/project/{serviceName}/alerting', params: {serviceName: string, delay: cloud.AlertingDelayEnum, email: string, monthlyThreshold: number}): Promise<cloud.Alerting>;
   /**
    * cancel operations
    * Cancel project creation
@@ -2808,12 +2807,12 @@ export class ApiCloud extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/cloud/project/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/cloud/project/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * Manage registries
    * Create a new registry
    */
-  public post(path: '/cloud/project/{serviceName}/containerRegistry', params: {serviceName: string, name: string, region: OVH.cloud.containerRegistry.registry.RegionEnum}): Promise<cloud.containerRegistry.registry.Registry>;
+  public post(path: '/cloud/project/{serviceName}/containerRegistry', params: {serviceName: string, name: string, region: cloud.containerRegistry.registry.RegionEnum}): Promise<cloud.containerRegistry.registry.Registry>;
   /**
    * Manage users
    * Create a new registry user
@@ -2828,7 +2827,7 @@ export class ApiCloud extends OvhWrapper {
    * Missing description
    * Create a new instance
    */
-  public post(path: '/cloud/project/{serviceName}/instance', params: {serviceName: string, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: OVH.cloud.instance.NetworkParams[], region: string, sshKeyId?: string, userData?: string, volumeId?: string}): Promise<cloud.instance.InstanceDetail>;
+  public post(path: '/cloud/project/{serviceName}/instance', params: {serviceName: string, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkParams[], region: string, sshKeyId?: string, userData?: string, volumeId?: string}): Promise<cloud.instance.InstanceDetail>;
   /**
    * Missing description
    * Active monthly billing on instance
@@ -2848,7 +2847,7 @@ export class ApiCloud extends OvhWrapper {
    * Missing description
    * Reboot an instance
    */
-  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/reboot', params: {instanceId: string, serviceName: string, type: OVH.cloud.instance.RebootTypeEnum}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/instance/{instanceId}/reboot', params: {instanceId: string, serviceName: string, type: cloud.instance.RebootTypeEnum}): Promise<void>;
   /**
    * Missing description
    * Reinstall an instance
@@ -2893,12 +2892,12 @@ export class ApiCloud extends OvhWrapper {
    * Missing description
    * Create multiple instances
    */
-  public post(path: '/cloud/project/{serviceName}/instance/bulk', params: {serviceName: string, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: OVH.cloud.instance.NetworkBulkParams[], number: number, region: string, sshKeyId?: string, userData?: string, volumeId?: string}): Promise<cloud.instance.Instance[]>;
+  public post(path: '/cloud/project/{serviceName}/instance/bulk', params: {serviceName: string, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkBulkParams[], number: number, region: string, sshKeyId?: string, userData?: string, volumeId?: string}): Promise<cloud.instance.Instance[]>;
   /**
    * Missing description
    * Create a group
    */
-  public post(path: '/cloud/project/{serviceName}/instance/group', params: {serviceName: string, name: string, region: string, type: OVH.cloud.instancegroup.InstanceGroupTypeEnum}): Promise<cloud.instancegroup.InstanceGroup>;
+  public post(path: '/cloud/project/{serviceName}/instance/group', params: {serviceName: string, name: string, region: string, type: cloud.instancegroup.InstanceGroupTypeEnum}): Promise<cloud.instancegroup.InstanceGroup>;
   /**
    * Missing description
    * Attach failover ip to an instance
@@ -2908,7 +2907,7 @@ export class ApiCloud extends OvhWrapper {
    * Manage your clusters
    * Create a new managed Kubernetes cluster
    */
-  public post(path: '/cloud/project/{serviceName}/kube', params: {serviceName: string, name?: string, region: OVH.cloud.kube.Region, version?: OVH.cloud.kube.Version}): Promise<cloud.kube.Cluster>;
+  public post(path: '/cloud/project/{serviceName}/kube', params: {serviceName: string, name?: string, region: cloud.kube.Region, version?: cloud.kube.Version}): Promise<cloud.kube.Cluster>;
   /**
    * Get your cluster configuration
    * Generate kubeconfig file
@@ -2923,7 +2922,7 @@ export class ApiCloud extends OvhWrapper {
    * Reset your cluster
    * Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
    */
-  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/reset', params: {kubeId: string, serviceName: string, version?: OVH.cloud.kube.Version, workerNodesPolicy?: OVH.cloud.kube.ResetWorkerNodesPolicy}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/reset', params: {kubeId: string, serviceName: string, version?: cloud.kube.Version, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicy}): Promise<void>;
   /**
    * Update cluster
    * Update cluster to the latest patch version
@@ -2998,7 +2997,7 @@ export class ApiCloud extends OvhWrapper {
    * Missing description
    * Create openstack user with only access to this container
    */
-  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/user', params: {containerId: string, serviceName: string, description?: string, right: OVH.cloud.storage.RightEnum}): Promise<cloud.user.UserDetail>;
+  public post(path: '/cloud/project/{serviceName}/storage/{containerId}/user', params: {containerId: string, serviceName: string, description?: string, right: cloud.storage.RightEnum}): Promise<cloud.user.UserDetail>;
   /**
    * Missing description
    * Access to storage API
@@ -3018,7 +3017,7 @@ export class ApiCloud extends OvhWrapper {
    * Missing description
    * Create user
    */
-  public post(path: '/cloud/project/{serviceName}/user', params: {serviceName: string, description?: string, role?: OVH.cloud.user.RoleEnum}): Promise<cloud.user.UserDetail>;
+  public post(path: '/cloud/project/{serviceName}/user', params: {serviceName: string, description?: string, role?: cloud.user.RoleEnum}): Promise<cloud.user.UserDetail>;
   /**
    * Missing description
    * Regenerate user password
@@ -3033,7 +3032,7 @@ export class ApiCloud extends OvhWrapper {
    * Missing description
    * Create a volume
    */
-  public post(path: '/cloud/project/{serviceName}/volume', params: {serviceName: string, description?: string, imageId?: string, name?: string, region: string, size: number, snapshotId?: string, type: OVH.cloud.volume.VolumeTypeEnum}): Promise<cloud.volume.Volume>;
+  public post(path: '/cloud/project/{serviceName}/volume', params: {serviceName: string, description?: string, imageId?: string, name?: string, region: string, size: number, snapshotId?: string, type: cloud.volume.VolumeTypeEnum}): Promise<cloud.volume.Volume>;
   /**
    * Missing description
    * Attach a volume on an instance
@@ -3166,4 +3165,4 @@ export class ApiCloud extends OvhWrapper {
     return super.delete(path, params);
   }
 }
-}
+type orderPrice = order.Price;

@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace domain {
     //domain.DomainFilterActionEnum
     export type DomainFilterActionEnum = "accept" | "account" | "delete" | "redirect"
@@ -58,7 +57,7 @@ export namespace domain {
         //domain.zone.Record
         // fullName: domain.zone.Record.Record
         export interface Record {
-            fieldType: OVH.zone.NamedResolutionFieldTypeEnum;
+            fieldType: zoneNamedResolutionFieldTypeEnum;
             id: number;
             subDomain?: string;
             target: string;
@@ -104,11 +103,11 @@ export namespace email {
         // fullName: email.domain.Diagnose.Diagnose
         export interface Diagnose {
             date: string;
-            function: OVH.email.domain.DomainDiagnoseFunctionEnum;
+            function: email.domain.DomainDiagnoseFunctionEnum;
             id: number;
             name?: string;
-            result?: OVH.email.domain.DomainDiagnoseResultEnum;
-            trace?: OVH.email.domain.DomainDiagnoseTraceStruct<email.domain.DomainDiagnoseResultEnum>[];
+            result?: email.domain.DomainDiagnoseResultEnum;
+            trace?: email.domain.DomainDiagnoseTraceStruct<email.domain.DomainDiagnoseResultEnum>[];
         }
         //email.domain.DomainDiagnoseFunctionEnum
         export type DomainDiagnoseFunctionEnum = "MX"
@@ -130,12 +129,12 @@ export namespace email {
             linkTo?: string;
             migratedMXPlanServiceName?: string;
             offer?: string;
-            status: OVH.domain.DomainStatusEnum;
+            status: domainDomainStatusEnum;
         }
         //email.domain.Filter
         // fullName: email.domain.Filter.Filter
         export interface Filter {
-            action?: OVH.domain.DomainFilterActionEnum;
+            action?: domainDomainFilterActionEnum;
             actionParam?: string;
             active: boolean;
             domain: string;
@@ -147,11 +146,11 @@ export namespace email {
         // fullName: email.domain.MailingList.MailingList
         export interface MailingList {
             id: number;
-            language?: OVH.domain.DomainMlLanguageEnum;
+            language?: domainDomainMlLanguageEnum;
             name: string;
             nbSubscribers?: number;
             nbSubscribersUpdateDate?: string;
-            options: OVH.domain.DomainMlOptionsStruct;
+            options: domainDomainMlOptionsStruct;
             ownerEmail: string;
             replyTo: string;
         }
@@ -166,17 +165,17 @@ export namespace email {
         //email.domain.MigrationCheckResultStruct
         // fullName: email.domain.MigrationCheckResultStruct.MigrationCheckResultStruct
         export interface MigrationCheckResultStruct {
-            code: OVH.email.domain.MigrationCheckCodeEnum;
+            code: email.domain.MigrationCheckCodeEnum;
             details?: string;
         }
         //email.domain.MigrationCheckStruct
         // fullName: email.domain.MigrationCheckStruct.MigrationCheckStruct
         export interface MigrationCheckStruct {
             alias?: string[];
-            error?: OVH.email.domain.MigrationCheckResultStruct[];
+            error?: email.domain.MigrationCheckResultStruct[];
             filter?: string[];
             forward?: string[];
-            warning?: OVH.email.domain.MigrationCheckResultStruct[];
+            warning?: email.domain.MigrationCheckResultStruct[];
         }
         //email.domain.MigrationService
         // fullName: email.domain.MigrationService.MigrationService
@@ -187,7 +186,7 @@ export namespace email {
             creation: string;
             destinationServiceName: string;
             expiration: string;
-            type: OVH.email.domain.MigrationServiceType;
+            type: email.domain.MigrationServiceType;
         }
         //email.domain.MigrationServiceType
         export type MigrationServiceType = "EMAIL PRO" | "HOSTED EXCHANGE" | "PRIVATE EXCHANGE" | "PROVIDER EXCHANGE"
@@ -230,7 +229,7 @@ export namespace email {
         export interface Rule {
             header: string;
             id: number;
-            operand: OVH.domain.DomainFilterOperandEnum;
+            operand: domainDomainFilterOperandEnum;
             value: string;
         }
         //email.domain.Subscriber
@@ -257,12 +256,12 @@ export namespace email {
             date: string;
             domain: string;
             id: number;
-            language: OVH.domain.DomainMlLanguageEnum;
+            language: domainDomainMlLanguageEnum;
         }
         //email.domain.TaskPop
         // fullName: email.domain.TaskPop.TaskPop
         export interface TaskPop {
-            action: OVH.domain.DomainPopActionEnum;
+            action: domainDomainPopActionEnum;
             date: string;
             domain: string;
             id: number;
@@ -272,11 +271,11 @@ export namespace email {
         // fullName: email.domain.TaskSpecialAccount.TaskSpecialAccount
         export interface TaskSpecialAccount {
             account: string;
-            action: OVH.domain.DomainSpecialAccountActionEnum;
+            action: domainDomainSpecialAccountActionEnum;
             date: string;
             domain: string;
             id: number;
-            type: OVH.domain.DomainSpecialAccountTypeEnum;
+            type: domainDomainSpecialAccountTypeEnum;
         }
     }
 }
@@ -310,10 +309,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace zone {
@@ -835,7 +834,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * List the email.domain.MigrationService objects
    * Get migration service
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/migrate', params: {accountName: string, domain: string, type?: OVH.email.domain.MigrationServiceType}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/migrate', params: {accountName: string, domain: string, type?: email.domain.MigrationServiceType}): Promise<string[]>;
   /**
    * Migration service
    * Get this object properties
@@ -1053,7 +1052,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Mailing List
    * Alter this object properties
    */
-  public put(path: '/email/domain/{domain}/mailingList/{name}', params: {domain: string, name: string, id?: number, language?: OVH.domain.DomainMlLanguageEnum, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options?: OVH.domain.DomainMlOptionsStruct, ownerEmail?: string, replyTo?: string}): Promise<void>;
+  public put(path: '/email/domain/{domain}/mailingList/{name}', params: {domain: string, name: string, id?: number, language?: domainDomainMlLanguageEnum, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options?: domainDomainMlOptionsStruct, ownerEmail?: string, replyTo?: string}): Promise<void>;
   /**
    * Responder
    * Alter this object properties
@@ -1063,7 +1062,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/email/domain/{domain}/serviceInfos', params: {domain: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/email/domain/{domain}/serviceInfos', params: {domain: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Account List
    * Alter this object properties
@@ -1096,7 +1095,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * List the email.domain.Filter objects
    * Create new filter for account
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/filter', params: {accountName: string, domain: string, action: OVH.domain.DomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: OVH.domain.DomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/filter', params: {accountName: string, domain: string, action: domainDomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domainDomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
   /**
    * changeActivity operations
    * Change filter activity
@@ -1111,7 +1110,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * List the email.domain.Rule objects
    * Create new rule for filter
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule', params: {accountName: string, domain: string, name: string, header: string, operand: OVH.domain.DomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule', params: {accountName: string, domain: string, name: string, header: string, operand: domainDomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
   /**
    * migrate operations
    * Migrate account to destination account
@@ -1136,22 +1135,22 @@ export class ApiEmailDomain extends OvhWrapper {
    * changeDnsMXFilter operations
    * Change MX filter, so change MX DNS records
    */
-  public post(path: '/email/domain/{domain}/changeDnsMXFilter', params: {domain: string, customTarget?: string, mxFilter: OVH.domain.DomainMXFilterEnum, subDomain?: string}): Promise<void>;
+  public post(path: '/email/domain/{domain}/changeDnsMXFilter', params: {domain: string, customTarget?: string, mxFilter: domain.DomainMXFilterEnum, subDomain?: string}): Promise<void>;
   /**
    * confirmTermination operations
    * Confirm termination of your email service
    */
-  public post(path: '/email/domain/{domain}/confirmTermination', params: {domain: string, commentary?: string, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/email/domain/{domain}/confirmTermination', params: {domain: string, commentary?: string, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * List the email.domain.MailingList objects
    * Create new mailingList
    */
-  public post(path: '/email/domain/{domain}/mailingList', params: {domain: string, language: OVH.domain.DomainMlLanguageEnum, name: string, options: OVH.domain.DomainMlOptionsStruct, ownerEmail: string, replyTo?: string}): Promise<email.domain.TaskMl>;
+  public post(path: '/email/domain/{domain}/mailingList', params: {domain: string, language: domainDomainMlLanguageEnum, name: string, options: domainDomainMlOptionsStruct, ownerEmail: string, replyTo?: string}): Promise<email.domain.TaskMl>;
   /**
    * changeOptions operations
    * Change mailing list options
    */
-  public post(path: '/email/domain/{domain}/mailingList/{name}/changeOptions', params: {domain: string, name: string, options: OVH.domain.DomainMlOptionsStruct}): Promise<email.domain.TaskMl>;
+  public post(path: '/email/domain/{domain}/mailingList/{name}/changeOptions', params: {domain: string, name: string, options: domainDomainMlOptionsStruct}): Promise<email.domain.TaskMl>;
   /**
    * List the email.domain.Moderator objects
    * Add moderator to mailing list
@@ -1201,7 +1200,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * List the email.domain.Filter objects
    * Create new filter for account
    */
-  public post(path: '/email/domain/delegatedAccount/{email}/filter', params: {email: string, action: OVH.domain.DomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: OVH.domain.DomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
+  public post(path: '/email/domain/delegatedAccount/{email}/filter', params: {email: string, action: domainDomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domainDomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
   /**
    * changeActivity operations
    * Change filter activity
@@ -1216,7 +1215,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * List the email.domain.Rule objects
    * Create new rule for filter
    */
-  public post(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule', params: {email: string, name: string, header: string, operand: OVH.domain.DomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
+  public post(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule', params: {email: string, name: string, header: string, operand: domainDomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
   /**
    * Responder of account
    * Create new responder in server
@@ -1304,4 +1303,12 @@ export class ApiEmailDomain extends OvhWrapper {
     return super.delete(path, params);
   }
 }
-}
+type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;
+type domainDomainStatusEnum = domain.DomainStatusEnum;
+type domainDomainFilterActionEnum = domain.DomainFilterActionEnum;
+type domainDomainMlLanguageEnum = domain.DomainMlLanguageEnum;
+type domainDomainMlOptionsStruct = domain.DomainMlOptionsStruct;
+type domainDomainFilterOperandEnum = domain.DomainFilterOperandEnum;
+type domainDomainPopActionEnum = domain.DomainPopActionEnum;
+type domainDomainSpecialAccountActionEnum = domain.DomainSpecialAccountActionEnum;
+type domainDomainSpecialAccountTypeEnum = domain.DomainSpecialAccountTypeEnum;

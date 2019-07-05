@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace agreements {
     //agreements.AgreementStateEnum
     export type AgreementStateEnum = "ko" | "obsolete" | "ok" | "todo"
@@ -16,7 +15,7 @@ export namespace agreements {
     //agreements.ContractAgreement
     // fullName: agreements.ContractAgreement.ContractAgreement
     export interface ContractAgreement {
-        agreed: OVH.agreements.AgreementStateEnum;
+        agreed: agreements.AgreementStateEnum;
         contractId: number;
         date: string;
         id: number;
@@ -30,7 +29,7 @@ export namespace api {
         applicationKey: string;
         description: string;
         name: string;
-        status: OVH.api.ApplicationStatusEnum;
+        status: api.ApplicationStatusEnum;
     }
     //api.ApplicationStatusEnum
     export type ApplicationStatusEnum = "active" | "blocked" | "inactive" | "trusted"
@@ -43,8 +42,8 @@ export namespace api {
         expiration?: string;
         lastUse?: string;
         ovhSupport: boolean;
-        rules: OVH.auth.AccessRule[];
-        status: OVH.auth.CredentialStateEnum;
+        rules: auth.AccessRule[];
+        status: auth.CredentialStateEnum;
     }
     //api.Log
     // fullName: api.Log.Log
@@ -53,7 +52,7 @@ export namespace api {
         date: string;
         ip?: string;
         logId: number;
-        method: OVH.http.MethodEnum;
+        method: http.MethodEnum;
         path: string;
         route: string;
     }
@@ -62,7 +61,7 @@ export namespace auth {
     //auth.AccessRule
     // fullName: auth.AccessRule.AccessRule
     export interface AccessRule {
-        method: OVH.auth.MethodEnum;
+        method: auth.MethodEnum;
         path: string;
     }
     //auth.CredentialStateEnum
@@ -91,7 +90,7 @@ export namespace billing {
         mandateSignatureDate?: string;
         ownerAddress: string;
         ownerName: string;
-        state: OVH.billing.BankAccountStateEnum;
+        state: billing.BankAccountStateEnum;
         uniqueReference: string;
         validationDocumentLink?: string;
     }
@@ -105,9 +104,9 @@ export namespace billing {
         orderId: number;
         password: string;
         pdfUrl: string;
-        priceWithTax: OVH.order.Price;
-        priceWithoutTax: OVH.order.Price;
-        tax: OVH.order.Price;
+        priceWithTax: orderPrice;
+        priceWithoutTax: orderPrice;
+        tax: orderPrice;
         url: string;
     }
     //billing.BillDetail
@@ -119,15 +118,15 @@ export namespace billing {
         periodEnd?: string;
         periodStart?: string;
         quantity: string;
-        totalPrice: OVH.order.Price;
-        unitPrice: OVH.order.Price;
+        totalPrice: orderPrice;
+        unitPrice: orderPrice;
     }
     //billing.BillingTaskStatusEnum
     export type BillingTaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
     //billing.CreditBalance
     // fullName: billing.CreditBalance.CreditBalance
     export interface CreditBalance {
-        amount: OVH.order.Price;
+        amount: orderPrice;
         balanceName: string;
     }
     //billing.CreditCard
@@ -138,7 +137,7 @@ export namespace billing {
         expirationDate: string;
         id: number;
         number: string;
-        state: OVH.billing.CreditCardStateEnum;
+        state: billing.CreditCardStateEnum;
         threeDsValidated: boolean;
         type: string;
     }
@@ -152,19 +151,19 @@ export namespace billing {
         description?: string;
         id: number;
         label?: string;
-        state: OVH.billing.DeferredPaymentAccountStatusEnum;
+        state: billing.DeferredPaymentAccountStatusEnum;
     }
     //billing.DeferredPaymentAccountStatusEnum
     export type DeferredPaymentAccountStatusEnum = "valid"
     //billing.Deposit
     // fullName: billing.Deposit.Deposit
     export interface Deposit {
-        amount: OVH.order.Price;
+        amount: orderPrice;
         date: string;
         depositId: string;
         orderId: number;
         password: string;
-        paymentInfo?: OVH.debt.associatedObject.PaymentInfo;
+        paymentInfo?: debt.associatedObject.PaymentInfo;
         pdfUrl: string;
         url: string;
     }
@@ -175,8 +174,8 @@ export namespace billing {
         description: string;
         domain: string;
         quantity: string;
-        totalPrice: OVH.order.Price;
-        unitPrice: OVH.order.Price;
+        totalPrice: orderPrice;
+        unitPrice: orderPrice;
     }
     //billing.FidelityAccount
     // fullName: billing.FidelityAccount.FidelityAccount
@@ -195,22 +194,22 @@ export namespace billing {
         date: string;
         description: string;
         movementId: number;
-        operation: OVH.billing.fidelityAccount.OperationEnum;
+        operation: billing.fidelityAccount.OperationEnum;
         order: number;
         previousBalance: number;
     }
     //billing.ItemDetail
     // fullName: billing.ItemDetail.ItemDetail
     export interface ItemDetail {
-        order: OVH.billing.ItemDetail.Order;
+        order: billing.ItemDetail.Order;
     }
     export namespace ItemDetail {
         //billing.ItemDetail.Order
         // fullName: billing.ItemDetail.Order.Order
         export interface Order {
-            action?: OVH.billing.ItemDetail.OrderActionEnum;
-            configurations: OVH.billing.ItemDetail.OrderConfiguration[];
-            plan: OVH.billing.ItemDetail.OrderPlan;
+            action?: billing.ItemDetail.OrderActionEnum;
+            configurations: billing.ItemDetail.OrderConfiguration[];
+            plan: billing.ItemDetail.OrderPlan;
         }
         //billing.ItemDetail.OrderActionEnum
         export type OrderActionEnum = "consumption" | "installation" | "renew" | "upgrade"
@@ -226,7 +225,7 @@ export namespace billing {
             code?: string;
             duration?: string;
             pricingMode?: string;
-            product: OVH.billing.ItemDetail.OrderPlanProduct;
+            product: billing.ItemDetail.OrderPlanProduct;
             quantity?: number;
         }
         //billing.ItemDetail.OrderPlanProduct
@@ -240,19 +239,19 @@ export namespace billing {
     export interface ManualDomainPaymentStatus {
         domainsToMigrate?: number;
         migratedDomains?: number;
-        status: OVH.billing.BillingTaskStatusEnum;
+        status: billing.BillingTaskStatusEnum;
     }
     //billing.Movement
     // fullName: billing.Movement.Movement
     export interface Movement {
-        amount: OVH.order.Price;
-        balance: OVH.order.Price;
+        amount: orderPrice;
+        balance: orderPrice;
         date: string;
         description: string;
         movementId: number;
-        operation: OVH.billing.ovhAccount.OperationEnum;
+        operation: billing.ovhAccount.OperationEnum;
         order: number;
-        previousBalance: OVH.order.Price;
+        previousBalance: orderPrice;
     }
     //billing.Order
     // fullName: billing.Order.Order
@@ -262,10 +261,10 @@ export namespace billing {
         orderId: number;
         password: string;
         pdfUrl: string;
-        priceWithTax: OVH.order.Price;
-        priceWithoutTax: OVH.order.Price;
+        priceWithTax: orderPrice;
+        priceWithoutTax: orderPrice;
         retractionDate?: string;
-        tax: OVH.order.Price;
+        tax: orderPrice;
         url: string;
     }
     //billing.OrderDetail
@@ -276,14 +275,14 @@ export namespace billing {
         domain: string;
         orderDetailId: number;
         quantity: string;
-        totalPrice: OVH.order.Price;
-        unitPrice: OVH.order.Price;
+        totalPrice: orderPrice;
+        unitPrice: orderPrice;
     }
     //billing.OvhAccount
     // fullName: billing.OvhAccount.OvhAccount
     export interface OvhAccount {
         alertThreshold?: number;
-        balance: OVH.order.Price;
+        balance: orderPrice;
         canBeCredited: boolean;
         isActive: boolean;
         lastUpdate: string;
@@ -295,7 +294,7 @@ export namespace billing {
     export interface Payment {
         paymentDate: string;
         paymentIdentifier?: string;
-        paymentType: OVH.billing.PaymentMeanEnum;
+        paymentType: billing.PaymentMeanEnum;
     }
     //billing.PaymentMeanEnum
     export type PaymentMeanEnum = "cash" | "chargeback" | "cheque" | "creditAccount" | "creditCard" | "debtAccount" | "deposit" | "digitalLaunchPad" | "edinar" | "fidelityPoints" | "free" | "ideal" | "incubatorAccount" | "mandat" | "multibanco" | "none" | "ovhAccount" | "paymentMandate" | "paypal" | "payu" | "platnosci" | "refund" | "transfer" | "withdrawal"
@@ -305,7 +304,7 @@ export namespace billing {
         id: number;
         submitUrl?: string;
         url: string;
-        validationType: OVH.billing.PaymentMeanValidationType;
+        validationType: billing.PaymentMeanValidationType;
     }
     //billing.PaymentMeanValidationType
     export type PaymentMeanValidationType = "creditAccount" | "documentToSend" | "simpleValidation"
@@ -317,10 +316,10 @@ export namespace billing {
         default?: boolean;
         description: string;
         id: number;
-        paymentSubType?: OVH.billing.paymentMethod.PaymentSubTypeEnum;
-        paymentType: OVH.billing.paymentMethod.PaymentTypeEnum;
+        paymentSubType?: billing.paymentMethod.PaymentSubTypeEnum;
+        paymentType: billing.paymentMethod.PaymentTypeEnum;
         publicLabel: string;
-        status: OVH.billing.paymentMethod.StatusEnum;
+        status: billing.paymentMethod.StatusEnum;
     }
     //billing.Paypal
     // fullName: billing.Paypal.Paypal
@@ -331,7 +330,7 @@ export namespace billing {
         description?: string;
         email: string;
         id: number;
-        state: OVH.billing.PaypalStateEnum;
+        state: billing.PaypalStateEnum;
     }
     //billing.PaypalStateEnum
     export type PaypalStateEnum = "tooManyFailures" | "valid"
@@ -343,10 +342,10 @@ export namespace billing {
         originalBillId?: string;
         password: string;
         pdfUrl: string;
-        priceWithTax: OVH.order.Price;
-        priceWithoutTax: OVH.order.Price;
+        priceWithTax: orderPrice;
+        priceWithoutTax: orderPrice;
         refundId: string;
-        tax: OVH.order.Price;
+        tax: orderPrice;
         url: string;
     }
     //billing.RefundDetail
@@ -358,8 +357,8 @@ export namespace billing {
         reference: string;
         refundDetailId: string;
         refundId: string;
-        totalPrice: OVH.order.Price;
-        unitPrice: OVH.order.Price;
+        totalPrice: orderPrice;
+        unitPrice: orderPrice;
     }
     //billing.ReusablePaymentMeanEnum
     export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "fidelityAccount" | "ovhAccount" | "paypal"
@@ -384,7 +383,7 @@ export namespace billing {
     //billing.VoucherAccount
     // fullName: billing.VoucherAccount.VoucherAccount
     export interface VoucherAccount {
-        balance: OVH.order.Price;
+        balance: orderPrice;
         lastUpdate: string;
         openDate: string;
         voucherAccountId: string;
@@ -392,19 +391,19 @@ export namespace billing {
     //billing.VoucherMovement
     // fullName: billing.VoucherMovement.VoucherMovement
     export interface VoucherMovement {
-        amount: OVH.order.Price;
-        balance: OVH.order.Price;
+        amount: orderPrice;
+        balance: orderPrice;
         date: string;
         description: string;
         movementId: number;
-        operation: OVH.billing.voucherAccount.OperationEnum;
+        operation: billing.voucherAccount.OperationEnum;
         order: number;
-        previousBalance: OVH.order.Price;
+        previousBalance: orderPrice;
     }
     //billing.Withdrawal
     // fullName: billing.Withdrawal.Withdrawal
     export interface Withdrawal {
-        amount: OVH.order.Price;
+        amount: orderPrice;
         country: string;
         date: string;
         orderId: number;
@@ -419,50 +418,50 @@ export namespace billing {
         description: string;
         domain: string;
         quantity: string;
-        totalPrice: OVH.order.Price;
-        unitPrice: OVH.order.Price;
+        totalPrice: orderPrice;
+        unitPrice: orderPrice;
         withdrawalDetailId: string;
     }
     export namespace credit {
         //billing.credit.Balance
         // fullName: billing.credit.Balance.Balance
         export interface Balance {
-            amount: OVH.order.Price;
+            amount: orderPrice;
             balanceName: string;
-            booked: OVH.billing.credit.balance.BookedMovement[];
+            booked: billing.credit.balance.BookedMovement[];
             creationDate: string;
-            expiring: OVH.billing.credit.balance.ExpiringMovement[];
-            expiringSummary: OVH.billing.credit.balance.ExpiringMovement[];
+            expiring: billing.credit.balance.ExpiringMovement[];
+            expiringSummary: billing.credit.balance.ExpiringMovement[];
             lastUpdate: string;
-            type: OVH.billing.credit.balance.Type;
+            type: billing.credit.balance.Type;
         }
         export namespace balance {
             //billing.credit.balance.BookedMovement
             // fullName: billing.credit.balance.BookedMovement.BookedMovement
             export interface BookedMovement {
-                amount: OVH.order.Price;
+                amount: orderPrice;
                 orderId: number;
             }
             //billing.credit.balance.ExpiringMovement
             // fullName: billing.credit.balance.ExpiringMovement.ExpiringMovement
             export interface ExpiringMovement {
-                amount: OVH.order.Price;
+                amount: orderPrice;
                 creationDate: string;
                 expirationDate: string;
                 lastUpdate: string;
-                sourceObject: OVH.billing.credit.balance.movement.SubObject;
+                sourceObject: billing.credit.balance.movement.SubObject;
             }
             //billing.credit.balance.Movement
             // fullName: billing.credit.balance.Movement.Movement
             export interface Movement {
-                amount: OVH.order.Price;
+                amount: orderPrice;
                 balanceName: string;
                 creationDate: string;
                 expirationDate?: string;
                 lastUpdate: string;
                 movementId: number;
                 orderId?: number;
-                sourceObject: OVH.billing.credit.balance.movement.SubObject;
+                sourceObject: billing.credit.balance.movement.SubObject;
                 type: string;
             }
             //billing.credit.balance.Type
@@ -486,7 +485,7 @@ export namespace billing {
         // fullName: billing.order.AssociatedObject.AssociatedObject
         export interface AssociatedObject {
             id?: string;
-            type?: OVH.billing.order.associatedObject.TypeEnum;
+            type?: billing.order.associatedObject.TypeEnum;
         }
         //billing.order.OrderStatusEnum
         export type OrderStatusEnum = "cancelled" | "cancelling" | "checking" | "delivered" | "delivering" | "documentsRequested" | "notPaid" | "unknown"
@@ -502,32 +501,32 @@ export namespace billing {
             htmlForm?: string;
             httpMethod: string;
             logo?: string;
-            parameters: OVH.billing.order.paymentMean.HttpParameter[];
+            parameters: billing.order.paymentMean.HttpParameter[];
             subType?: string;
             url: string;
         }
         //billing.order.PaymentMeans
         // fullName: billing.order.PaymentMeans.PaymentMeans
         export interface PaymentMeans {
-            creditCard?: OVH.billing.order.PaymentMean[];
-            edinar?: OVH.billing.order.PaymentMean[];
-            fidelityPoints?: OVH.billing.order.PaymentMean[];
-            ideal?: OVH.billing.order.PaymentMean[];
-            multibanco?: OVH.billing.order.PaymentMean[];
-            ovhAccount?: OVH.billing.order.PaymentMean[];
-            paypal?: OVH.billing.order.PaymentMean[];
-            promotion?: OVH.billing.order.PaymentMean[];
+            creditCard?: billing.order.PaymentMean[];
+            edinar?: billing.order.PaymentMean[];
+            fidelityPoints?: billing.order.PaymentMean[];
+            ideal?: billing.order.PaymentMean[];
+            multibanco?: billing.order.PaymentMean[];
+            ovhAccount?: billing.order.PaymentMean[];
+            paypal?: billing.order.PaymentMean[];
+            promotion?: billing.order.PaymentMean[];
         }
         //billing.order.PaymentMethods
         // fullName: billing.order.PaymentMethods.PaymentMethods
         export interface PaymentMethods {
-            available: OVH.payment.method.AvailablePaymentMethod[];
+            available: payment.method.AvailablePaymentMethod[];
             registered: number[];
         }
         //billing.order.RegisteredPaymentMean
         // fullName: billing.order.RegisteredPaymentMean.RegisteredPaymentMean
         export interface RegisteredPaymentMean {
-            paymentMean: OVH.billing.ReusablePaymentMeanEnum;
+            paymentMean: billing.ReusablePaymentMeanEnum;
         }
         //billing.order.RetractionReasonEnum
         export type RetractionReasonEnum = "competitor" | "difficulty" | "expensive" | "other" | "performance" | "reliability" | "unused"
@@ -539,7 +538,7 @@ export namespace billing {
             //billing.order.paymentMean.HttpParameter
             // fullName: billing.order.paymentMean.HttpParameter.HttpParameter
             export interface HttpParameter {
-                choice?: OVH.billing.order.paymentMean.HttpParameterChoice[];
+                choice?: billing.order.paymentMean.HttpParameterChoice[];
                 name: string;
                 value?: string;
             }
@@ -587,7 +586,7 @@ export namespace contact {
     // fullName: contact.Address.Address
     export interface Address {
         city: string;
-        country: OVH.nichandle.CountryEnum;
+        country: nichandle.CountryEnum;
         line1: string;
         line2?: string;
         line3?: string;
@@ -598,9 +597,9 @@ export namespace contact {
     //contact.Contact
     // fullName: contact.Contact.Contact
     export interface Contact {
-        address: OVH.contact.Address;
+        address: contact.Address;
         birthCity?: string;
-        birthCountry?: OVH.nichandle.CountryEnum;
+        birthCountry?: nichandle.CountryEnum;
         birthDay?: string;
         birthZip?: string;
         cellPhone?: string;
@@ -608,13 +607,13 @@ export namespace contact {
         email: string;
         fax?: string;
         firstName: string;
-        gender?: OVH.nichandle.GenderEnum;
+        gender?: nichandle.GenderEnum;
         id: number;
-        language: OVH.nichandle.LanguageEnum;
+        language: nichandle.LanguageEnum;
         lastName: string;
-        legalForm: OVH.nichandle.LegalFormEnum;
+        legalForm: nichandle.LegalFormEnum;
         nationalIdentificationNumber?: string;
-        nationality?: OVH.nichandle.CountryEnum;
+        nationality?: nichandle.CountryEnum;
         organisationName?: string;
         organisationType?: string;
         phone?: string;
@@ -640,40 +639,40 @@ export namespace debt {
     // fullName: debt.Balance.Balance
     export interface Balance {
         active: boolean;
-        dueAmount: OVH.order.Price;
-        pendingAmount: OVH.order.Price;
-        todoAmount: OVH.order.Price;
-        unmaturedAmount: OVH.order.Price;
+        dueAmount: orderPrice;
+        pendingAmount: orderPrice;
+        todoAmount: orderPrice;
+        unmaturedAmount: orderPrice;
     }
     //debt.Debt
     // fullName: debt.Debt.Debt
     export interface Debt {
-        amount: OVH.order.Price;
+        amount: orderPrice;
         date: string;
         debtId: number;
-        dueAmount: OVH.order.Price;
+        dueAmount: orderPrice;
         dueDate?: string;
         orderId: number;
-        pendingAmount: OVH.order.Price;
-        todoAmount: OVH.order.Price;
-        unmaturedAmount: OVH.order.Price;
+        pendingAmount: orderPrice;
+        todoAmount: orderPrice;
+        unmaturedAmount: orderPrice;
     }
     //debt.Operation
     // fullName: debt.Operation.Operation
     export interface Operation {
-        amount: OVH.order.Price;
+        amount: orderPrice;
         date: string;
         depositOrderId: number;
         operationId: number;
-        status: OVH.debt.entry.StatusEnum;
-        type?: OVH.debt.entry.OperationEnum;
+        status: debt.entry.StatusEnum;
+        type?: debt.entry.OperationEnum;
     }
     export namespace associatedObject {
         //debt.associatedObject.PaymentInfo
         // fullName: debt.associatedObject.PaymentInfo.PaymentInfo
         export interface PaymentInfo {
             description?: string;
-            paymentType: OVH.billing.PaymentMeanEnum;
+            paymentType: billing.PaymentMeanEnum;
             publicLabel?: string;
         }
         //debt.associatedObject.TypeEnum
@@ -684,9 +683,9 @@ export namespace debt {
         // fullName: debt.entry.AssociatedObject.AssociatedObject
         export interface AssociatedObject {
             id?: string;
-            paymentInfo?: OVH.debt.associatedObject.PaymentInfo;
+            paymentInfo?: debt.associatedObject.PaymentInfo;
             subId?: string;
-            type?: OVH.debt.associatedObject.TypeEnum;
+            type?: debt.associatedObject.TypeEnum;
         }
         //debt.entry.OperationEnum
         export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "EDINAR_MANUAL" | "IDEAL_MANUAL" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_LOSS" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_SEPA" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "SEPA_AUTOMATIC" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_PAYPAL" | "UNPAID_SEPA" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WITHDRAW_AUTOMATIC"
@@ -722,17 +721,17 @@ export namespace dedicated {
         //dedicated.installationTemplate.Templates
         // fullName: dedicated.installationTemplate.Templates.Templates
         export interface Templates {
-            availableLanguages: OVH.dedicated.TemplateOsLanguageEnum[];
+            availableLanguages: dedicated.TemplateOsLanguageEnum[];
             beta?: boolean;
-            bitFormat: OVH.dedicated.server.BitFormatEnum;
-            category: OVH.dedicated.TemplateOsUsageEnum;
-            customization?: OVH.dedicated.TemplateOsProperties;
-            defaultLanguage: OVH.dedicated.TemplateOsLanguageEnum;
+            bitFormat: dedicated.server.BitFormatEnum;
+            category: dedicated.TemplateOsUsageEnum;
+            customization?: dedicated.TemplateOsProperties;
+            defaultLanguage: dedicated.TemplateOsLanguageEnum;
             deprecated?: boolean;
             description: string;
             distribution: string;
-            family: OVH.dedicated.TemplateOsTypeEnum;
-            filesystems: OVH.dedicated.TemplateOsFileSystemEnum[];
+            family: dedicated.TemplateOsTypeEnum;
+            filesystems: dedicated.TemplateOsFileSystemEnum[];
             hardRaidConfiguration?: boolean;
             lastModification?: string;
             lvmReady?: boolean;
@@ -740,14 +739,14 @@ export namespace dedicated {
             supportsGptLabel?: boolean;
             supportsRTM: boolean;
             supportsSqlServer?: boolean;
-            supportsUEFI?: OVH.dedicated.server.SupportsUEFIEnum;
+            supportsUEFI?: dedicated.server.SupportsUEFIEnum;
             templateName: string;
         }
         //dedicated.installationTemplate.hardwareRaid
         // fullName: dedicated.installationTemplate.hardwareRaid.hardwareRaid
         export interface hardwareRaid {
             disks: string[];
-            mode: OVH.dedicated.TemplateOsHardwareRaidEnum;
+            mode: dedicated.TemplateOsHardwareRaidEnum;
             name: string;
             step: number;
         }
@@ -760,12 +759,12 @@ export namespace dedicated {
         //dedicated.installationTemplate.templatePartitions
         // fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
         export interface templatePartitions {
-            filesystem: OVH.dedicated.TemplateOsFileSystemEnum;
+            filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
             order: number;
-            raid?: OVH.dedicated.server.PartitionRaidEnum;
-            size: OVH.complexType.UnitAndValue<number>;
-            type: OVH.dedicated.TemplatePartitionTypeEnum;
+            raid?: dedicated.server.PartitionRaidEnum;
+            size: complexType.UnitAndValue<number>;
+            type: dedicated.TemplatePartitionTypeEnum;
             volumeName?: string;
         }
     }
@@ -799,8 +798,8 @@ export namespace geolocation {
     //geolocation.ContinentCountryLocation
     // fullName: geolocation.ContinentCountryLocation.ContinentCountryLocation
     export interface ContinentCountryLocation {
-        continent: OVH.coreTypes.ContinentEnum;
-        countryCode: OVH.coreTypes.CountryEnum;
+        continent: coreTypes.ContinentEnum;
+        countryCode: coreTypes.CountryEnum;
         ip: string;
     }
 }
@@ -822,7 +821,7 @@ export namespace me {
         //me.SupportLevel.Level
         // fullName: me.SupportLevel.Level.Level
         export interface Level {
-            level: OVH.me.SupportLevel.LevelTypeEnum;
+            level: me.SupportLevel.LevelTypeEnum;
         }
         //me.SupportLevel.LevelTypeEnum
         export type LevelTypeEnum = "standard" | "premium" | "premium-accredited" | "business" | "enterprise"
@@ -833,7 +832,7 @@ export namespace me {
         export interface Campaign {
             description: string;
             name: string;
-            type: OVH.me.consent.CampaignTypeEnum;
+            type: me.consent.CampaignTypeEnum;
         }
         //me.consent.CampaignTypeEnum
         export type CampaignTypeEnum = "OPTIN" | "OPTOUT"
@@ -841,8 +840,8 @@ export namespace me {
         // fullName: me.consent.Consent.Consent
         export interface Consent {
             campaign: string;
-            history: OVH.me.consent.Decision[];
-            type: OVH.me.consent.CampaignTypeEnum;
+            history: me.consent.Decision[];
+            type: me.consent.CampaignTypeEnum;
             value: boolean;
         }
         //me.consent.Decision
@@ -856,7 +855,7 @@ export namespace me {
         //me.consumption.Price
         // fullName: me.consumption.Price.Price
         export interface Price {
-            currencyCode: OVH.order.CurrencyCodeEnum;
+            currencyCode: order.CurrencyCodeEnum;
             text: string;
             value: number;
             valueInUcents: number;
@@ -866,28 +865,28 @@ export namespace me {
         export interface Transaction {
             beginDate: string;
             creationDate?: string;
-            elements: OVH.me.consumption.transaction.Element[];
+            elements: me.consumption.transaction.Element[];
             endDate?: string;
             id?: number;
             lastUpdate?: string;
-            price: OVH.me.consumption.Price;
+            price: me.consumption.Price;
             serviceId: number;
         }
         export namespace transaction {
             //me.consumption.transaction.Element
             // fullName: me.consumption.transaction.Element.Element
             export interface Element {
-                details: OVH.me.consumption.transaction.Element.Detail[];
+                details: me.consumption.transaction.Element.Detail[];
                 planCode: string;
                 planFamily: string;
-                price: OVH.me.consumption.Price;
+                price: me.consumption.Price;
                 quantity: number;
             }
             export namespace Element {
                 //me.consumption.transaction.Element.Detail
                 // fullName: me.consumption.transaction.Element.Detail.Detail
                 export interface Detail {
-                    price: OVH.me.consumption.Price;
+                    price: me.consumption.Price;
                     quantity: number;
                     unique_id?: string;
                 }
@@ -899,7 +898,7 @@ export namespace me {
             //me.payment.method.AvailablePaymentMethod
             // fullName: me.payment.method.AvailablePaymentMethod.AvailablePaymentMethod
             export interface AvailablePaymentMethod {
-                icon: OVH.me.payment.method.Icon;
+                icon: me.payment.method.Icon;
                 oneshot: boolean;
                 paymentType: string;
                 registerable: boolean;
@@ -927,14 +926,14 @@ export namespace me {
                 default: boolean;
                 description?: string;
                 expirationDate?: string;
-                icon: OVH.me.payment.method.Icon;
+                icon: me.payment.method.Icon;
                 label?: string;
                 lastUpdate: string;
                 paymentMeanId?: number;
                 paymentMethodId: number;
                 paymentSubType?: string;
                 paymentType: string;
-                status: OVH.me.payment.method.PaymentMethod.Status;
+                status: me.payment.method.PaymentMethod.Status;
             }
             export namespace PaymentMethod {
                 //me.payment.method.PaymentMethod.Status
@@ -946,7 +945,7 @@ export namespace me {
                 export interface ValidationResult {
                     paymentMethodId: number;
                     url?: string;
-                    validationType: OVH.me.payment.method.Register.ValidationType;
+                    validationType: me.payment.method.Register.ValidationType;
                 }
                 //me.payment.method.Register.ValidationType
                 export type ValidationType = "DONE" | "REDIRECT" | "IFRAME_VANTIV"
@@ -954,11 +953,11 @@ export namespace me {
             //me.payment.method.Transaction
             // fullName: me.payment.method.Transaction.Transaction
             export interface Transaction {
-                amount: OVH.order.Price;
+                amount: orderPrice;
                 creationDate: string;
-                status: OVH.me.payment.method.Transaction.Status;
+                status: me.payment.method.Transaction.Status;
                 transactionId: number;
-                type: OVH.me.payment.method.Transaction.Type;
+                type: me.payment.method.Transaction.Type;
             }
             export namespace Transaction {
                 //me.payment.method.Transaction.Status
@@ -985,14 +984,14 @@ export namespace nichandle {
             description: string;
             lastUpdate: string;
             name: string;
-            role: OVH.nichandle.RoleEnum;
+            role: nichandle.RoleEnum;
         }
         //nichandle.Authentication.Provider
         // fullName: nichandle.Authentication.Provider.Provider
         export interface Provider {
             creation: string;
             groupAttributeName: string;
-            idpSigningCertificate: OVH.nichandle.Authentication.Certificate;
+            idpSigningCertificate: nichandle.Authentication.Certificate;
             lastUpdate: string;
             ssoServiceUrl: string;
         }
@@ -1002,7 +1001,7 @@ export namespace nichandle {
     export interface BillingCapacities {
         canUseDebtSystem: boolean;
         canUsePostalMailForInvoices: boolean;
-        requiredPaymentMethod: OVH.nichandle.RequiredPaymentMethodEnum;
+        requiredPaymentMethod: nichandle.RequiredPaymentMethodEnum;
     }
     //nichandle.CountryEnum
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
@@ -1027,19 +1026,19 @@ export namespace nichandle {
         creationDate: string;
         domain: string;
         doneDate?: string;
-        function: OVH.domain.NicOperationFunctionEnum;
+        function: domain.NicOperationFunctionEnum;
         id: number;
         lastUpdate: string;
-        status: OVH.domain.OperationStatusEnum;
+        status: domain.OperationStatusEnum;
         todoDate: string;
     }
     //nichandle.DomainTaskArgument
     // fullName: nichandle.DomainTaskArgument.DomainTaskArgument
     export interface DomainTaskArgument {
-        acceptedFormats?: OVH.domain.DocumentFormatsEnum[];
+        acceptedFormats?: domain.DocumentFormatsEnum[];
         acceptedValues?: string[];
         description?: string;
-        fields?: OVH.xander.ContactFieldEnum[];
+        fields?: xander.ContactFieldEnum[];
         key: string;
         maximumSize?: number;
         minimumSize?: number;
@@ -1051,13 +1050,13 @@ export namespace nichandle {
     //nichandle.DomainTaskProgressBar
     // fullName: nichandle.DomainTaskProgressBar.DomainTaskProgressBar
     export interface DomainTaskProgressBar {
-        currentStep: OVH.domain.OperationStep;
+        currentStep: domain.OperationStep;
         expectedDoneDate?: string;
-        followUpSteps?: OVH.domain.OperationStep[];
+        followUpSteps?: domain.OperationStep[];
         lastUpdateDate?: string;
         progress: number;
-        taskActions: OVH.domain.OperationActionEnum[];
-        taskStatus: OVH.domain.OperationStatusEnum;
+        taskActions: domain.OperationActionEnum[];
+        taskStatus: domain.OperationStatusEnum;
     }
     //nichandle.GenderEnum
     export type GenderEnum = "female" | "male"
@@ -1068,13 +1067,13 @@ export namespace nichandle {
     export interface IpRestriction {
         id: number;
         ip: string;
-        rule: OVH.nichandle.accessRestriction.IpRestrictionRuleEnum;
+        rule: nichandle.accessRestriction.IpRestrictionRuleEnum;
         warning: boolean;
     }
     //nichandle.IpRestrictionDefaultRule
     // fullName: nichandle.IpRestrictionDefaultRule.IpRestrictionDefaultRule
     export interface IpRestrictionDefaultRule {
-        rule: OVH.nichandle.accessRestriction.IpRestrictionRuleEnum;
+        rule: nichandle.accessRestriction.IpRestrictionRuleEnum;
         warning: boolean;
     }
     //nichandle.Ipv4Org
@@ -1083,12 +1082,12 @@ export namespace nichandle {
         abuse_mailbox: string;
         address: string;
         city: string;
-        country: OVH.nichandle.CountryEnum;
+        country: nichandle.CountryEnum;
         firstname: string;
         lastname: string;
         organisationId: string;
         phone: string;
-        registry: OVH.nichandle.IpRegistryEnum;
+        registry: nichandle.IpRegistryEnum;
         state?: string;
         zip?: string;
     }
@@ -1119,26 +1118,26 @@ export namespace nichandle {
         city?: string;
         companyNationalIdentificationNumber?: string;
         corporationType?: string;
-        country: OVH.nichandle.CountryEnum;
-        currency: OVH.nichandle.Currency;
+        country: nichandle.CountryEnum;
+        currency: nichandle.Currency;
         customerCode?: string;
         email: string;
         fax?: string;
         firstname?: string;
         italianSDI?: string;
-        language?: OVH.nichandle.LanguageEnum;
-        legalform: OVH.nichandle.LegalFormEnum;
+        language?: nichandle.LanguageEnum;
+        legalform: nichandle.LegalFormEnum;
         name?: string;
         nationalIdentificationNumber?: string;
         nichandle: string;
         organisation?: string;
-        ovhCompany: OVH.nichandle.OvhCompanyEnum;
-        ovhSubsidiary: OVH.nichandle.OvhSubsidiaryEnum;
+        ovhCompany: nichandle.OvhCompanyEnum;
+        ovhSubsidiary: nichandle.OvhSubsidiaryEnum;
         phone?: string;
-        phoneCountry?: OVH.nichandle.CountryEnum;
-        sex?: OVH.nichandle.GenderEnum;
+        phoneCountry?: nichandle.CountryEnum;
+        sex?: nichandle.GenderEnum;
         spareEmail?: string;
-        state: OVH.nichandle.StateEnum;
+        state: nichandle.StateEnum;
         vat?: string;
         zip?: string;
     }
@@ -1148,7 +1147,7 @@ export namespace nichandle {
         abuse: boolean;
         creationDate: string;
         phoneNumber: string;
-        status: OVH.nichandle.NotificationStatusEnum;
+        status: nichandle.NotificationStatusEnum;
         updateDate?: string;
     }
     //nichandle.NotificationStatusEnum
@@ -1191,7 +1190,7 @@ export namespace nichandle {
         lastUpdate: string;
         login: string;
         passwordLastUpdate: string;
-        status: OVH.nichandle.UserStatus;
+        status: nichandle.UserStatus;
     }
     //nichandle.UserStatus
     export type UserStatus = "OK" | "DISABLED" | "PASSWORD_CHANGE_REQUIRED"
@@ -1217,7 +1216,7 @@ export namespace nichandle {
             creationDate: string;
             lastUsedDate?: string;
             remaining: number;
-            status: OVH.nichandle.accessRestriction.SOTPStatusEnum;
+            status: nichandle.accessRestriction.SOTPStatusEnum;
         }
         //nichandle.accessRestriction.SOTPSecret
         // fullName: nichandle.accessRestriction.SOTPSecret.SOTPSecret
@@ -1239,7 +1238,7 @@ export namespace nichandle {
             id: number;
             lastUsedDate?: string;
             phoneNumber: string;
-            status: OVH.nichandle.accessRestriction.SmsStatusEnum;
+            status: nichandle.accessRestriction.SmsStatusEnum;
         }
         //nichandle.accessRestriction.SmsCode
         // fullName: nichandle.accessRestriction.SmsCode.SmsCode
@@ -1261,7 +1260,7 @@ export namespace nichandle {
             description: string;
             id: number;
             lastUsedDate?: string;
-            status: OVH.nichandle.accessRestriction.TOTPStatusEnum;
+            status: nichandle.accessRestriction.TOTPStatusEnum;
         }
         //nichandle.accessRestriction.TOTPSecret
         // fullName: nichandle.accessRestriction.TOTPSecret.TOTPSecret
@@ -1279,14 +1278,14 @@ export namespace nichandle {
             description: string;
             id: number;
             lastUsedDate?: string;
-            status: OVH.nichandle.accessRestriction.U2FStatusEnum;
+            status: nichandle.accessRestriction.U2FStatusEnum;
         }
         //nichandle.accessRestriction.U2FRegisterChallenge
         // fullName: nichandle.accessRestriction.U2FRegisterChallenge.U2FRegisterChallenge
         export interface U2FRegisterChallenge {
             applicationId: string;
             id: number;
-            request: OVH.nichandle.accessRestriction.U2FRegistrationRequest;
+            request: nichandle.accessRestriction.U2FRegistrationRequest;
         }
         //nichandle.accessRestriction.U2FRegistrationRequest
         // fullName: nichandle.accessRestriction.U2FRegistrationRequest.U2FRegistrationRequest
@@ -1298,7 +1297,7 @@ export namespace nichandle {
         // fullName: nichandle.accessRestriction.U2FSignChallenge.U2FSignChallenge
         export interface U2FSignChallenge {
             applicationId: string;
-            request: OVH.nichandle.accessRestriction.U2FSignRequest;
+            request: nichandle.accessRestriction.U2FSignRequest;
         }
         //nichandle.accessRestriction.U2FSignRequest
         // fullName: nichandle.accessRestriction.U2FSignRequest.U2FSignRequest
@@ -1325,13 +1324,13 @@ export namespace nichandle {
         // fullName: nichandle.contactChange.Task.Task
         export interface Task {
             askingAccount?: string;
-            contactTypes: OVH.nichandle.changeContact.ContactTypeEnum[];
+            contactTypes: nichandle.changeContact.ContactTypeEnum[];
             dateDone?: string;
             dateRequest: string;
             fromAccount: string;
             id: number;
             serviceDomain?: string;
-            state: OVH.nichandle.changeContact.TaskStateEnum;
+            state: nichandle.changeContact.TaskStateEnum;
             toAccount: string;
         }
     }
@@ -1346,7 +1345,7 @@ export namespace nichandle {
             name: string;
             putUrl: string;
             size: number;
-            tags: OVH.complexType.SafeKeyValue<string>[];
+            tags: complexType.SafeKeyValue<string>[];
             validationDate?: string;
         }
     }
@@ -1358,7 +1357,7 @@ export namespace nichandle {
             dateRequest: string;
             id: number;
             newEmail: string;
-            state: OVH.nichandle.changeEmail.TaskStateEnum;
+            state: nichandle.changeEmail.TaskStateEnum;
         }
     }
     //nichandle.emailNotification
@@ -1389,7 +1388,7 @@ export namespace order {
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode: OVH.order.CurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -1399,7 +1398,7 @@ export namespace payment {
         //payment.method.AvailablePaymentMethod
         // fullName: payment.method.AvailablePaymentMethod.AvailablePaymentMethod
         export interface AvailablePaymentMethod {
-            icon: OVH.payment.method.Icon;
+            icon: payment.method.Icon;
             oneshot: boolean;
             paymentType: string;
             registerable: boolean;
@@ -1423,7 +1422,7 @@ export namespace telephony {
     export interface DefaultIpRestriction {
         id: number;
         subnet: string;
-        type: OVH.telephony.ProtocolEnum;
+        type: telephony.ProtocolEnum;
     }
     //telephony.LineDescriptionSettings
     // fullName: telephony.LineDescriptionSettings.LineDescriptionSettings
@@ -1442,8 +1441,8 @@ export namespace telephony {
     //telephony.Settings
     // fullName: telephony.Settings.Settings
     export interface Settings {
-        billingPolicies: OVH.telephony.BillingSettings;
-        lineDescriptionPolicies: OVH.telephony.LineDescriptionSettings;
+        billingPolicies: telephony.BillingSettings;
+        lineDescriptionPolicies: telephony.LineDescriptionSettings;
     }
 }
 export namespace xander {
@@ -2921,7 +2920,7 @@ export class ApiMe extends OvhWrapper {
    * List the agreements.ContractAgreement objects
    * List of contracts signed between you and OVH
    */
-  public get(path: '/me/agreements', params: {agreed?: OVH.agreements.AgreementStateEnum, contractId?: number}): Promise<number[]>;
+  public get(path: '/me/agreements', params: {agreed?: agreements.AgreementStateEnum, contractId?: number}): Promise<number[]>;
   /**
    * Contract agreement
    * Get this object properties
@@ -2946,7 +2945,7 @@ export class ApiMe extends OvhWrapper {
    * List the api.Credential objects
    * List of your Api Credentials
    */
-  public get(path: '/me/api/credential', params: {applicationId?: number, status?: OVH.auth.CredentialStateEnum}): Promise<number[]>;
+  public get(path: '/me/api/credential', params: {applicationId?: number, status?: auth.CredentialStateEnum}): Promise<number[]>;
   /**
    * API Credential
    * Get this object properties
@@ -3091,7 +3090,7 @@ export class ApiMe extends OvhWrapper {
    * Retrieve credit balance names
    * Retrieve credit balance names
    */
-  public get(path: '/me/credit/balance', params: {type?: OVH.billing.credit.balance.Type}): Promise<string[]>;
+  public get(path: '/me/credit/balance', params: {type?: billing.credit.balance.Type}): Promise<string[]>;
   /**
    * Retrieve a credit balance
    * Retrieve a credit balance
@@ -3456,7 +3455,7 @@ export class ApiMe extends OvhWrapper {
    * Manage payment method
    * Retrieve payment method ID list
    */
-  public get(path: '/me/payment/method', params: {paymentType?: string, status?: OVH.me.payment.method.PaymentMethod.Status}): Promise<number[]>;
+  public get(path: '/me/payment/method', params: {paymentType?: string, status?: me.payment.method.PaymentMethod.Status}): Promise<number[]>;
   /**
    * Manage payment method
    * Get one payment method
@@ -3466,7 +3465,7 @@ export class ApiMe extends OvhWrapper {
    * Retrieve payment method transaction ID list
    * Retrieve associated payment method transaction ID list
    */
-  public get(path: '/me/payment/transaction', params: {paymentMethodId?: number, status?: OVH.me.payment.method.Transaction.Status}): Promise<number[]>;
+  public get(path: '/me/payment/transaction', params: {paymentMethodId?: number, status?: me.payment.method.Transaction.Status}): Promise<number[]>;
   /**
    * Manage payment method transaction
    * Get associated payment method transaction
@@ -3476,7 +3475,7 @@ export class ApiMe extends OvhWrapper {
    * List the billing.BankAccount objects
    * List of bank accounts
    */
-  public get(path: '/me/paymentMean/bankAccount', params: {state?: OVH.billing.BankAccountStateEnum}): Promise<number[]>;
+  public get(path: '/me/paymentMean/bankAccount', params: {state?: billing.BankAccountStateEnum}): Promise<number[]>;
   /**
    * SEPA bank account info
    * Get this object properties
@@ -3601,7 +3600,7 @@ export class ApiMe extends OvhWrapper {
    * List the nichandle.contactChange.Task objects
    * List of service contact change tasks you are involved in
    */
-  public get(path: '/me/task/contactChange', params: {askingAccount?: string, state?: OVH.nichandle.changeContact.TaskStateEnum, toAccount?: string}): Promise<number[]>;
+  public get(path: '/me/task/contactChange', params: {askingAccount?: string, state?: nichandle.changeContact.TaskStateEnum, toAccount?: string}): Promise<number[]>;
   /**
    * Task running a contact change on a service
    * Get this object properties
@@ -3611,7 +3610,7 @@ export class ApiMe extends OvhWrapper {
    * List the nichandle.DomainTask objects
    * List of domain task
    */
-  public get(path: '/me/task/domain', params: {domain?: string, function_?: OVH.domain.NicOperationFunctionEnum, status?: OVH.domain.OperationStatusEnum}): Promise<number[]>;
+  public get(path: '/me/task/domain', params: {domain?: string, function_?: domain.NicOperationFunctionEnum, status?: domain.OperationStatusEnum}): Promise<number[]>;
   /**
    * Domain tasks
    * Get this object properties
@@ -3636,7 +3635,7 @@ export class ApiMe extends OvhWrapper {
    * List the nichandle.emailChange.Task objects
    * List of email change tasks you are involved in
    */
-  public get(path: '/me/task/emailChange', params: {state?: OVH.nichandle.changeEmail.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/me/task/emailChange', params: {state?: nichandle.changeEmail.TaskStateEnum}): Promise<number[]>;
   /**
    * Task running an email change on an account
    * Get this object properties
@@ -3699,7 +3698,7 @@ export class ApiMe extends OvhWrapper {
    * Details about your OVH identifier
    * Alter this object properties
    */
-  public put(path: '/me', params: {address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: OVH.nichandle.CountryEnum, currency?: OVH.nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: OVH.nichandle.LanguageEnum, legalform?: OVH.nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: OVH.nichandle.OvhCompanyEnum, ovhSubsidiary?: OVH.nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: OVH.nichandle.CountryEnum, sex?: OVH.nichandle.GenderEnum, spareEmail?: string, state?: OVH.nichandle.StateEnum, vat?: string, zip?: string}): Promise<void>;
+  public put(path: '/me', params: {address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string}): Promise<void>;
   /**
    * Login restrictions on a development version of the Manager
    * Alter this object properties
@@ -3709,27 +3708,27 @@ export class ApiMe extends OvhWrapper {
    * List of all IP Restrictions
    * Alter this object properties
    */
-  public put(path: '/me/accessRestriction/ip/{id}', params: {id: number, ip?: string, rule?: OVH.nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean}): Promise<void>;
+  public put(path: '/me/accessRestriction/ip/{id}', params: {id: number, ip?: string, rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean}): Promise<void>;
   /**
    * IP Restriction default rule
    * Alter this object properties
    */
-  public put(path: '/me/accessRestriction/ipDefaultRule', params: {rule?: OVH.nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean}): Promise<void>;
+  public put(path: '/me/accessRestriction/ipDefaultRule', params: {rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean}): Promise<void>;
   /**
    * Sms Two-Factor Authentication
    * Alter this object properties
    */
-  public put(path: '/me/accessRestriction/sms/{id}', params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, phoneNumber?: string, status?: OVH.nichandle.accessRestriction.SmsStatusEnum}): Promise<void>;
+  public put(path: '/me/accessRestriction/sms/{id}', params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, phoneNumber?: string, status?: nichandle.accessRestriction.SmsStatusEnum}): Promise<void>;
   /**
    * TOTP Two-Factor Authentication
    * Alter this object properties
    */
-  public put(path: '/me/accessRestriction/totp/{id}', params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, status?: OVH.nichandle.accessRestriction.TOTPStatusEnum}): Promise<void>;
+  public put(path: '/me/accessRestriction/totp/{id}', params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, status?: nichandle.accessRestriction.TOTPStatusEnum}): Promise<void>;
   /**
    * U2F Two-Factor Authentication
    * Alter this object properties
    */
-  public put(path: '/me/accessRestriction/u2f/{id}', params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, status?: OVH.nichandle.accessRestriction.U2FStatusEnum}): Promise<void>;
+  public put(path: '/me/accessRestriction/u2f/{id}', params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, status?: nichandle.accessRestriction.U2FStatusEnum}): Promise<void>;
   /**
    * Auto renewal information
    * Alter this object properties
@@ -3744,12 +3743,12 @@ export class ApiMe extends OvhWrapper {
    * Missing description
    * Update an existing contact
    */
-  public put(path: '/me/contact/{contactId}', params: {contactId: number, address?: OVH.contact.Address, birthCity?: string, birthCountry?: OVH.nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: OVH.nichandle.GenderEnum, language?: OVH.nichandle.LanguageEnum, lastName?: string, legalForm?: OVH.nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: OVH.nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, vat?: string}): Promise<contact.Contact>;
+  public put(path: '/me/contact/{contactId}', params: {contactId: number, address?: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, vat?: string}): Promise<contact.Contact>;
   /**
    * List of documents added on your account
    * Alter this object properties
    */
-  public put(path: '/me/document/{id}', params: {id: string, creationDate?: string, expirationDate?: string, getUrl?: string, name?: string, putUrl?: string, size?: number, tags?: OVH.complexType.SafeKeyValue<string>[], validationDate?: string}): Promise<void>;
+  public put(path: '/me/document/{id}', params: {id: string, creationDate?: string, expirationDate?: string, getUrl?: string, name?: string, putUrl?: string, size?: number, tags?: complexType.SafeKeyValue<string>[], validationDate?: string}): Promise<void>;
   /**
    * Balance of the fidelity account
    * Alter this object properties
@@ -3759,7 +3758,7 @@ export class ApiMe extends OvhWrapper {
    * A group linked to this account
    * Alter a group
    */
-  public put(path: '/me/identity/group/{group}', params: {group: string, description?: string, role?: OVH.nichandle.RoleEnum}): Promise<void>;
+  public put(path: '/me/identity/group/{group}', params: {group: string, description?: string, role?: nichandle.RoleEnum}): Promise<void>;
   /**
    * A user linked to this account
    * Alter a user
@@ -3769,7 +3768,7 @@ export class ApiMe extends OvhWrapper {
    * Available installation templates
    * Alter this object properties
    */
-  public put(path: '/me/installationTemplate/{templateName}', params: {templateName: string, availableLanguages?: OVH.dedicated.TemplateOsLanguageEnum[], beta?: boolean, bitFormat?: OVH.dedicated.server.BitFormatEnum, category?: OVH.dedicated.TemplateOsUsageEnum, customization?: OVH.dedicated.TemplateOsProperties, defaultLanguage?: OVH.dedicated.TemplateOsLanguageEnum, deprecated?: boolean, description?: string, distribution?: string, family?: OVH.dedicated.TemplateOsTypeEnum, filesystems?: OVH.dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, lvmReady?: boolean, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: OVH.dedicated.server.SupportsUEFIEnum}): Promise<void>;
+  public put(path: '/me/installationTemplate/{templateName}', params: {templateName: string, availableLanguages?: dedicated.TemplateOsLanguageEnum[], beta?: boolean, bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, deprecated?: boolean, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, lvmReady?: boolean, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum}): Promise<void>;
   /**
    * Partitioning schemes available on this template
    * Alter this object properties
@@ -3779,22 +3778,22 @@ export class ApiMe extends OvhWrapper {
    * Hardware RAID defined in this partitioning scheme
    * Alter this object properties
    */
-  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', params: {name: string, schemeName: string, templateName: string, disks?: string[], mode?: OVH.dedicated.TemplateOsHardwareRaidEnum, step?: number}): Promise<void>;
+  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', params: {name: string, schemeName: string, templateName: string, disks?: string[], mode?: dedicated.TemplateOsHardwareRaidEnum, step?: number}): Promise<void>;
   /**
    *  Partitions defined in this partitioning scheme
    * Alter this object properties
    */
-  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', params: {mountpoint: string, schemeName: string, templateName: string, filesystem?: OVH.dedicated.TemplateOsFileSystemEnum, order?: number, raid?: OVH.dedicated.server.PartitionRaidEnum, size?: OVH.complexType.UnitAndValue<number>, type?: OVH.dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
+  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', params: {mountpoint: string, schemeName: string, templateName: string, filesystem?: dedicated.TemplateOsFileSystemEnum, order?: number, raid?: dedicated.server.PartitionRaidEnum, size?: complexType.UnitAndValue<number>, type?: dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
   /**
    * Details about an IP block organisation
    * Alter this object properties
    */
-  public put(path: '/me/ipOrganisation/{organisationId}', params: {organisationId: string, abuse_mailbox?: string, address?: string, city?: string, country?: OVH.nichandle.CountryEnum, firstname?: string, lastname?: string, phone?: string, registry?: OVH.nichandle.IpRegistryEnum, state?: string, zip?: string}): Promise<void>;
+  public put(path: '/me/ipOrganisation/{organisationId}', params: {organisationId: string, abuse_mailbox?: string, address?: string, city?: string, country?: nichandle.CountryEnum, firstname?: string, lastname?: string, phone?: string, registry?: nichandle.IpRegistryEnum, state?: string, zip?: string}): Promise<void>;
   /**
    * Details about an OVH account
    * Alter this object properties
    */
-  public put(path: '/me/ovhAccount/{ovhAccountId}', params: {ovhAccountId: string, alertThreshold?: number, balance?: OVH.order.Price, canBeCredited?: boolean, isActive?: boolean, lastUpdate?: string, openDate?: string}): Promise<void>;
+  public put(path: '/me/ovhAccount/{ovhAccountId}', params: {ovhAccountId: string, alertThreshold?: number, balance?: orderPrice, canBeCredited?: boolean, isActive?: boolean, lastUpdate?: string, openDate?: string}): Promise<void>;
   /**
    * Manage payment method
    * Edit payment method
@@ -3804,22 +3803,22 @@ export class ApiMe extends OvhWrapper {
    * SEPA bank account info
    * Alter this object properties
    */
-  public put(path: '/me/paymentMean/bankAccount/{id}', params: {id: number, bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: OVH.billing.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string}): Promise<void>;
+  public put(path: '/me/paymentMean/bankAccount/{id}', params: {id: number, bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: billing.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string}): Promise<void>;
   /**
    * Credit card informations
    * Alter this object properties
    */
-  public put(path: '/me/paymentMean/creditCard/{id}', params: {id: number, defaultPaymentMean?: boolean, description?: string, expirationDate?: string, number?: string, state?: OVH.billing.CreditCardStateEnum, threeDsValidated?: boolean, type?: string}): Promise<void>;
+  public put(path: '/me/paymentMean/creditCard/{id}', params: {id: number, defaultPaymentMean?: boolean, description?: string, expirationDate?: string, number?: string, state?: billing.CreditCardStateEnum, threeDsValidated?: boolean, type?: string}): Promise<void>;
   /**
    * Deferred payment account info
    * Alter this object properties
    */
-  public put(path: '/me/paymentMean/deferredPaymentAccount/{id}', params: {id: number, creationDate?: string, defaultPaymentMean?: boolean, description?: string, label?: string, state?: OVH.billing.DeferredPaymentAccountStatusEnum}): Promise<void>;
+  public put(path: '/me/paymentMean/deferredPaymentAccount/{id}', params: {id: number, creationDate?: string, defaultPaymentMean?: boolean, description?: string, label?: string, state?: billing.DeferredPaymentAccountStatusEnum}): Promise<void>;
   /**
    * Paypal account info
    * Alter this object properties
    */
-  public put(path: '/me/paymentMean/paypal/{id}', params: {id: number, agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, state?: OVH.billing.PaypalStateEnum}): Promise<void>;
+  public put(path: '/me/paymentMean/paypal/{id}', params: {id: number, agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, state?: billing.PaypalStateEnum}): Promise<void>;
   /**
    * Customer public SSH key, can be used for rescue netboot or server access after reinstallation
    * Alter this object properties
@@ -3839,7 +3838,7 @@ export class ApiMe extends OvhWrapper {
    * Domain operation argument
    * Alter this object properties
    */
-  public put(path: '/me/task/domain/{id}/argument/{key}', params: {id: number, key: string, acceptedFormats?: OVH.domain.DocumentFormatsEnum[], acceptedValues?: string[], description?: string, fields?: OVH.xander.ContactFieldEnum[], maximumSize?: number, minimumSize?: number, readOnly?: boolean, template?: string, type?: string, value?: string}): Promise<void>;
+  public put(path: '/me/task/domain/{id}/argument/{key}', params: {id: number, key: string, acceptedFormats?: domain.DocumentFormatsEnum[], acceptedValues?: string[], description?: string, fields?: xander.ContactFieldEnum[], maximumSize?: number, minimumSize?: number, readOnly?: boolean, template?: string, type?: string, value?: string}): Promise<void>;
   public put(path: PathsMePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -3867,7 +3866,7 @@ export class ApiMe extends OvhWrapper {
    * List the nichandle.IpRestriction objects
    * Add an IP access restriction
    */
-  public post(path: '/me/accessRestriction/ip', params: {ip: string, rule: OVH.nichandle.accessRestriction.IpRestrictionRuleEnum, warning: boolean}): Promise<void>;
+  public post(path: '/me/accessRestriction/ip', params: {ip: string, rule: nichandle.accessRestriction.IpRestrictionRuleEnum, warning: boolean}): Promise<void>;
   /**
    * List the nichandle.accessRestriction.SmsAccount objects
    * Add a SMS access restriction
@@ -3972,7 +3971,7 @@ export class ApiMe extends OvhWrapper {
    * Missing description
    * Create a new contact
    */
-  public post(path: '/me/contact', params: {address: OVH.contact.Address, birthCity?: string, birthCountry?: OVH.nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email: string, fax?: string, firstName: string, gender?: OVH.nichandle.GenderEnum, language: OVH.nichandle.LanguageEnum, lastName: string, legalForm: OVH.nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: OVH.nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone: string, vat?: string}): Promise<contact.Contact>;
+  public post(path: '/me/contact', params: {address: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email: string, fax?: string, firstName: string, gender?: nichandle.GenderEnum, language: nichandle.LanguageEnum, lastName: string, legalForm: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone: string, vat?: string}): Promise<contact.Contact>;
   /**
    * Validate a code to generate associated credit
    * Validate a code to generate associated credit movement
@@ -3997,7 +3996,7 @@ export class ApiMe extends OvhWrapper {
    * List the nichandle.document.Document objects
    * Create new document
    */
-  public post(path: '/me/document', params: {name: string, tags?: OVH.complexType.SafeKeyValue<string>[]}): Promise<nichandle.document.Document>;
+  public post(path: '/me/document', params: {name: string, tags?: complexType.SafeKeyValue<string>[]}): Promise<nichandle.document.Document>;
   /**
    * Add CORS support on your container
    * Add CORS support on your container
@@ -4022,7 +4021,7 @@ export class ApiMe extends OvhWrapper {
    * Groups linked to this account
    * Create a new group
    */
-  public post(path: '/me/identity/group', params: {description?: string, name: string, role?: OVH.nichandle.RoleEnum}): Promise<nichandle.Authentication.Group>;
+  public post(path: '/me/identity/group', params: {description?: string, name: string, role?: nichandle.RoleEnum}): Promise<nichandle.Authentication.Group>;
   /**
    * Users linked to this account
    * Create a new user
@@ -4042,7 +4041,7 @@ export class ApiMe extends OvhWrapper {
    * List the dedicated.installationTemplate.Templates objects
    * Create a template
    */
-  public post(path: '/me/installationTemplate', params: {baseTemplateName: string, defaultLanguage: OVH.dedicated.TemplateOsLanguageEnum, name: string}): Promise<void>;
+  public post(path: '/me/installationTemplate', params: {baseTemplateName: string, defaultLanguage: dedicated.TemplateOsLanguageEnum, name: string}): Promise<void>;
   /**
    * checkIntegrity operations
    * Check the integrity of this template
@@ -4057,17 +4056,17 @@ export class ApiMe extends OvhWrapper {
    * List the dedicated.installationTemplate.hardwareRaid objects
    * Add an hardware RAID in this partitioning scheme
    */
-  public post(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid', params: {schemeName: string, templateName: string, disks: string[], mode: OVH.dedicated.TemplateOsHardwareRaidEnum, name: string, step: number}): Promise<void>;
+  public post(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid', params: {schemeName: string, templateName: string, disks: string[], mode: dedicated.TemplateOsHardwareRaidEnum, name: string, step: number}): Promise<void>;
   /**
    * List the dedicated.installationTemplate.templatePartitions objects
    * Add a partition in this partitioning scheme
    */
-  public post(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', params: {schemeName: string, templateName: string, filesystem: OVH.dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: number, size: number, step: number, type: OVH.dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
+  public post(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', params: {schemeName: string, templateName: string, filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: number, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
   /**
    * List the nichandle.Ipv4Org objects
    * Add an organisation
    */
-  public post(path: '/me/ipOrganisation', params: {abuse_mailbox: string, address: string, city: string, country: OVH.nichandle.CountryEnum, firstname: string, lastname: string, phone: string, registry: OVH.nichandle.IpRegistryEnum, state?: string, zip?: string}): Promise<void>;
+  public post(path: '/me/ipOrganisation', params: {abuse_mailbox: string, address: string, city: string, country: nichandle.CountryEnum, firstname: string, lastname: string, phone: string, registry: nichandle.IpRegistryEnum, state?: string, zip?: string}): Promise<void>;
   /**
    * List the nichandle.ipxe objects
    * Add an IPXE script
@@ -4087,17 +4086,17 @@ export class ApiMe extends OvhWrapper {
    * pay operations
    * Pay with a payment method reference
    */
-  public post(path: '/me/order/{orderId}/pay', params: {orderId: number, paymentMethod: OVH.billing.order.PayWithPaymentMethod}): Promise<void>;
+  public post(path: '/me/order/{orderId}/pay', params: {orderId: number, paymentMethod: billing.order.PayWithPaymentMethod}): Promise<void>;
   /**
    * payWithRegisteredPaymentMean operations
    * Pay with an already registered payment mean
    */
-  public post(path: '/me/order/{orderId}/payWithRegisteredPaymentMean', params: {orderId: number, paymentMean: OVH.billing.ReusablePaymentMeanEnum, paymentMeanId?: number}): Promise<void>;
+  public post(path: '/me/order/{orderId}/payWithRegisteredPaymentMean', params: {orderId: number, paymentMean: billing.ReusablePaymentMeanEnum, paymentMeanId?: number}): Promise<void>;
   /**
    * retraction operations
    * Request retraction of order
    */
-  public post(path: '/me/order/{orderId}/retraction', params: {orderId: number, comment?: string, reason: OVH.billing.order.RetractionReasonEnum}): Promise<void>;
+  public post(path: '/me/order/{orderId}/retraction', params: {orderId: number, comment?: string, reason: billing.order.RetractionReasonEnum}): Promise<void>;
   /**
    * creditOrder operations
    * Generate an order that can be paid in order to credit the OVH account
@@ -4112,12 +4111,12 @@ export class ApiMe extends OvhWrapper {
    * Request a password recover
    * Request a password recover
    */
-  public post(path: '/me/passwordRecover', params: {ovhCompany: OVH.nichandle.OvhCompanyEnum, ovhId: string}): Promise<void>;
+  public post(path: '/me/passwordRecover', params: {ovhCompany: nichandle.OvhCompanyEnum, ovhId: string}): Promise<void>;
   /**
    * Manage payment method
    * Pay an order and register a new payment method if necessary
    */
-  public post(path: '/me/payment/method', params: {callbackUrl: OVH.me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean}): Promise<me.payment.method.Register.ValidationResult>;
+  public post(path: '/me/payment/method', params: {callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean}): Promise<me.payment.method.Register.ValidationResult>;
   /**
    * Challenge your payment method
    * Challenge one payment method
@@ -4242,12 +4241,12 @@ export class ApiMe extends OvhWrapper {
    * List the telephony.DefaultIpRestriction objects
    * Create a default IP restriction for your future VoIP lines
    */
-  public post(path: '/me/telephony/defaultIpRestriction', params: {subnet: string, type: OVH.telephony.ProtocolEnum}): Promise<telephony.DefaultIpRestriction>;
+  public post(path: '/me/telephony/defaultIpRestriction', params: {subnet: string, type: telephony.ProtocolEnum}): Promise<telephony.DefaultIpRestriction>;
   /**
    * settings operations
    * Change the telephony settings linked to the customer account
    */
-  public post(path: '/me/telephony/settings', params: {settings: OVH.telephony.Settings}): Promise<void>;
+  public post(path: '/me/telephony/settings', params: {settings: telephony.Settings}): Promise<void>;
   /**
    * checkValidity operations
    * Verify existing voucher
@@ -4380,4 +4379,4 @@ export class ApiMe extends OvhWrapper {
     return super.delete(path, params);
   }
 }
-}
+type orderPrice = order.Price;

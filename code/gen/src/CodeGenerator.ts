@@ -2,19 +2,47 @@ import GenApiTypes, { CacheApi, CacheModel, filterReservedKw } from './GenApiTyp
 import { indentGen, protectModelField, className, protectJsonKey, rawRemapNode, formatUpperCamlCase, protectHarmonyField } from './utils';
 import { Parameter, Schema, FieldProp } from './schema';
 
+
+let commonNSColision: { [key: string]: string } = {
+    'order.Price': 'orderPrice',
+    'zone.NamedResolutionFieldTypeEnum': 'zoneNamedResolutionFieldTypeEnum',
+    'domain.DomainStatusEnum': 'domainDomainStatusEnum',
+    'domain.DomainMlLanguageEnum': 'domainDomainMlLanguageEnum',
+    'domain.DomainMlOptionsStruct': 'domainDomainMlOptionsStruct',
+    'domain.DomainFilterActionEnum': 'domainDomainFilterActionEnum',
+    'domain.DomainFilterOperandEnum': 'domainDomainFilterOperandEnum',
+    'domain.DomainSpecialAccountActionEnum': 'domainDomainSpecialAccountActionEnum',
+    'domain.DomainPopActionEnum': 'domainDomainPopActionEnum',
+    'domain.DomainSpecialAccountTypeEnum': 'domainDomainSpecialAccountTypeEnum',
+    'zone.RedirectionTypeEnum': 'zoneRedirectionTypeEnum',
+    'xdsl.DslTypeEnum': 'xdslDslTypeEnum',
+    'xdsl.eligibility.Address': 'xdsleligibilityAddress',
+    'xdsl.eligibility.BookMeetingSlot': 'xdsleligibilityBookMeetingSlot',
+    'xdsl.eligibility.LandlineStatusEnum': 'xdsleligibilityLandlineStatusEnum',
+    'xdsl.DeconsolidationEnum': 'xdslDeconsolidationEnum',
+    'xdsl.LineSectionLength': 'xdslLineSectionLength',
+    'xdsl.eligibility.Portability': 'xdsleligibilityPortability',
+    'xdsl.eligibility.MeetingSlots': 'xdsleligibilityMeetingSlots',
+    'xdsl.eligibility.ProviderEnum': 'xdsleligibilityProviderEnum',
+    'email.pro.ObjectStateEnum': 'emailproObjectStateEnum',
+    'veeamEnterprise.TaskStateEnum': 'veeamEnterpriseTaskStateEnum',
+    'telephony.ProtocolEnum': 'telephonyProtocolEnum',
+}
+
 export class CodeGenerator {
     api: string;
     gen: GenApiTypes;
     extraNS: string;
+    NSCollision = new Set<string>();
 
     constructor(api: string) {
         this.api = api;
         this.gen = new GenApiTypes();
-        if (this.api == '/cloud' || this.api == '/domain' || this.api == '/email/domain' || this.api == '/me'
-         || this.api == '/pack/xdsl' || this.api == '/veeam/veeamEnterprise' || this.api == '/telephony' || this.api == '/xdsl')
-            this.extraNS = `OVH.`;
-        else
-            this.extraNS = '';
+        //if (this.api == '/cloud' || this.api == '/domain' || this.api == '/email/domain' || this.api == '/me'
+        // || this.api == '/pack/xdsl' || this.api == '/veeam/veeamEnterprise' || this.api == '/telephony' || this.api == '/xdsl')
+        //    this.extraNS = `OVH.`;
+        //else
+        this.extraNS = '';
     }
 
     async generate(): Promise<string> {
@@ -32,7 +60,12 @@ export class CodeGenerator {
         code += this.dumpApi(0, schema, this.gen.apis, '// Api\n');
 
         if (this.extraNS)
-            code += '}';
+            code += '}\n';
+
+        for (let type of this.NSCollision) {
+            code += `type ${commonNSColision[type]} = ${type};\n`
+        }
+
         return code;
     }
 
@@ -44,6 +77,12 @@ export class CodeGenerator {
         if (~type.indexOf('.'))
             type = this.extraNS + type;
         type = type.replace('<long>', '<number>');
+        // deal with namespace colision       
+        let colistion = commonNSColision[type];
+        if (colistion) {
+            this.NSCollision.add(type);
+            type = colistion;
+        }
         return filterReservedKw(type);
     }
 

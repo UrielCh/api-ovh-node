@@ -621,8 +621,8 @@ export namespace dedicatedCloud {
         billingType: dedicatedCloud.ressources.BillingTypeEnum;
         changed: boolean;
         name: string;
-        newPrice: order.Price;
-        oldPrice: order.Price;
+        newPrice: orderPrice;
+        oldPrice: orderPrice;
         resourceType: dedicatedCloud.ressources.ResourceTypeEnum;
     }
     export namespace ressources {
@@ -2726,3 +2726,4 @@ export class ApiDedicatedCloud extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+type orderPrice = order.Price;

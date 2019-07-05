@@ -1,14 +1,13 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace dnssec {
     //dnssec.DnssecStatusEnum
     export type DnssecStatusEnum = "disableInProgress" | "disabled" | "enableInProgress" | "enabled"
     //dnssec.Key
     // fullName: dnssec.Key.Key
     export interface Key {
-        algorithm: OVH.dnssec.KeyAlgorithmEnum;
-        flags: OVH.dnssec.KeyFlagEnum;
+        algorithm: dnssec.KeyAlgorithmEnum;
+        flags: dnssec.KeyFlagEnum;
         publicKey: string;
         tag: number;
     }
@@ -34,11 +33,11 @@ export namespace domain {
     //domain.DnssecKey
     // fullName: domain.DnssecKey.DnssecKey
     export interface DnssecKey {
-        algorithm: OVH.dnssec.KeyAlgorithmEnum;
-        flags: OVH.dnssec.KeyFlagEnum;
+        algorithm: dnssec.KeyAlgorithmEnum;
+        flags: dnssec.KeyFlagEnum;
         id: number;
         publicKey: string;
-        status: OVH.dnssec.KeyStatusEnum;
+        status: dnssec.KeyStatusEnum;
         tag: number;
     }
     //domain.Domain
@@ -49,11 +48,11 @@ export namespace domain {
         glueRecordIpv6Supported: boolean;
         glueRecordMultiIpSupported: boolean;
         lastUpdate: string;
-        nameServerType: OVH.domain.DomainNsTypeEnum;
-        offer: OVH.domain.OfferEnum;
+        nameServerType: domain.DomainNsTypeEnum;
+        offer: domain.OfferEnum;
         owoSupported: boolean;
-        parentService?: OVH.domain.ParentService;
-        transferLockStatus: OVH.domain.DomainLockStatusEnum;
+        parentService?: domain.ParentService;
+        transferLockStatus: domain.DomainLockStatusEnum;
         whoisOwner: string;
     }
     //domain.DomainContactTypeEnum
@@ -71,8 +70,8 @@ export namespace domain {
     //domain.DomainNsStatus
     // fullName: domain.DomainNsStatus.DomainNsStatus
     export interface DomainNsStatus {
-        state: OVH.domain.DomainNsStateEnum;
-        type: OVH.domain.DomainNsTypeEnum;
+        state: domain.DomainNsStateEnum;
+        type: domain.DomainNsTypeEnum;
         usedSince?: string;
     }
     //domain.DomainNsTypeEnum
@@ -96,19 +95,19 @@ export namespace domain {
     //domain.Option
     // fullName: domain.Option.Option
     export interface Option {
-        option: OVH.domain.DomainOptionEnum;
-        state: OVH.domain.DomainOptionStateEnum;
+        option: domain.DomainOptionEnum;
+        state: domain.DomainOptionStateEnum;
     }
     //domain.Owo
     // fullName: domain.Owo.Owo
     export interface Owo {
-        field: OVH.domain.WhoisObfuscatorFieldsEnum;
+        field: domain.WhoisObfuscatorFieldsEnum;
     }
     //domain.ParentService
     // fullName: domain.ParentService.ParentService
     export interface ParentService {
         name: string;
-        type: OVH.domain.ParentServiceTypeEnum;
+        type: domain.ParentServiceTypeEnum;
     }
     //domain.ParentServiceTypeEnum
     export type ParentServiceTypeEnum = "/allDom"
@@ -118,7 +117,7 @@ export namespace domain {
         allowedValues?: string[];
         description: string;
         fields?: string[];
-        innerConfigurations?: OVH.domain.Rule[];
+        innerConfigurations?: domain.Rule[];
         label?: string;
         required?: boolean;
         type: string;
@@ -135,7 +134,7 @@ export namespace domain {
         function: string;
         id: number;
         lastUpdate: string;
-        status: OVH.domain.OperationStatusEnum;
+        status: domain.OperationStatusEnum;
         todoDate: string;
     }
     //domain.UkRegistrar
@@ -150,14 +149,14 @@ export namespace domain {
         //domain.configurations.ObfuscatedEmails
         // fullName: domain.configurations.ObfuscatedEmails.ObfuscatedEmails
         export interface ObfuscatedEmails {
-            type: OVH.domain.ContactAllTypesEnum;
+            type: domain.ContactAllTypesEnum;
             value: string;
         }
         //domain.configurations.Optin
         // fullName: domain.configurations.Optin.Optin
         export interface Optin {
-            fields: OVH.domain.OptinFieldsEnum[];
-            type: OVH.domain.ContactAllTypesEnum;
+            fields: domain.OptinFieldsEnum[];
+            type: domain.ContactAllTypesEnum;
         }
     }
     export namespace data {
@@ -195,7 +194,7 @@ export namespace domain {
             id: number;
             notAfter?: string;
             notBefore?: string;
-            protectedLabels: OVH.domain.data.SmdLabel[];
+            protectedLabels: domain.data.SmdLabel[];
             smdId?: string;
         }
         //domain.data.SmdLabel
@@ -209,7 +208,7 @@ export namespace domain {
             // fullName: domain.data.claimNotice.Address.Address
             export interface Address {
                 city?: string;
-                countryCode?: OVH.nichandle.CountryEnum;
+                countryCode?: nichandle.CountryEnum;
                 fax?: string;
                 faxExtension?: string;
                 postalCode?: string;
@@ -221,25 +220,25 @@ export namespace domain {
             //domain.data.claimNotice.ClaimNotice
             // fullName: domain.data.claimNotice.ClaimNotice.ClaimNotice
             export interface ClaimNotice {
-                claims?: OVH.domain.data.claimNotice.ClaimNoticeDecision[];
+                claims?: domain.data.claimNotice.ClaimNoticeDecision[];
                 endingDate: string;
                 id: string;
                 label: string;
                 startingDate?: string;
-                type?: OVH.domain.data.claimNotice.ClaimNoticeTypeEnum;
+                type?: domain.data.claimNotice.ClaimNoticeTypeEnum;
             }
             //domain.data.claimNotice.ClaimNoticeDecision
             // fullName: domain.data.claimNotice.ClaimNoticeDecision.ClaimNoticeDecision
             export interface ClaimNoticeDecision {
-                classifications: OVH.domain.data.claimNotice.Classification[];
-                courtDecisions: OVH.domain.data.claimNotice.CourtDecision[];
+                classifications: domain.data.claimNotice.Classification[];
+                courtDecisions: domain.data.claimNotice.CourtDecision[];
                 goodsAndServices: string;
                 jurisdiction: string;
                 jurisdictionCountryCode: string;
                 markName: string;
-                trademarkContacts: OVH.domain.data.claimNotice.Contact[];
-                trademarkHolders: OVH.domain.data.claimNotice.Contact[];
-                trademarkUDRP: OVH.domain.data.claimNotice.UDRP[];
+                trademarkContacts: domain.data.claimNotice.Contact[];
+                trademarkHolders: domain.data.claimNotice.Contact[];
+                trademarkUDRP: domain.data.claimNotice.UDRP[];
             }
             //domain.data.claimNotice.ClaimNoticeTypeEnum
             export type ClaimNoticeTypeEnum = "UK" | "TRADEMARK"
@@ -252,7 +251,7 @@ export namespace domain {
             //domain.data.claimNotice.Contact
             // fullName: domain.data.claimNotice.Contact.Contact
             export interface Contact {
-                address: OVH.domain.data.claimNotice.Address;
+                address: domain.data.claimNotice.Address;
                 email?: string;
                 entitlement?: string;
                 name?: string;
@@ -279,15 +278,15 @@ export namespace domain {
         //domain.rules.Optin
         // fullName: domain.rules.Optin.Optin
         export interface Optin {
-            fields: OVH.domain.OptinFieldsEnum[];
-            type: OVH.domain.ContactAllTypesEnum;
+            fields: domain.OptinFieldsEnum[];
+            type: domain.ContactAllTypesEnum;
         }
     }
     export namespace zone {
         //domain.zone.Dnssec
         // fullName: domain.zone.Dnssec.Dnssec
         export interface Dnssec {
-            status: OVH.dnssec.DnssecStatusEnum;
+            status: dnssec.DnssecStatusEnum;
         }
         //domain.zone.DynHostLogin
         // fullName: domain.zone.DynHostLogin.DynHostLogin
@@ -308,7 +307,7 @@ export namespace domain {
         //domain.zone.Record
         // fullName: domain.zone.Record.Record
         export interface Record {
-            fieldType: OVH.zone.NamedResolutionFieldTypeEnum;
+            fieldType: zoneNamedResolutionFieldTypeEnum;
             id: number;
             subDomain?: string;
             target: string;
@@ -324,7 +323,7 @@ export namespace domain {
             subDomain?: string;
             target: string;
             title?: string;
-            type: OVH.zone.RedirectionTypeEnum;
+            type: zoneRedirectionTypeEnum;
             zone: string;
         }
         //domain.zone.Soa
@@ -350,7 +349,7 @@ export namespace domain {
             function: string;
             id: number;
             lastUpdate: string;
-            status: OVH.domain.OperationStatusEnum;
+            status: domain.OperationStatusEnum;
             todoDate: string;
         }
         //domain.zone.Zone
@@ -406,10 +405,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace zone {
@@ -420,7 +419,7 @@ export namespace zone {
     //zone.ResetRecord
     // fullName: zone.ResetRecord.ResetRecord
     export interface ResetRecord {
-        fieldType: OVH.zone.ResettableNamedResolutionFieldTypeEnum;
+        fieldType: zone.ResettableNamedResolutionFieldTypeEnum;
         target: string;
     }
     //zone.ResettableNamedResolutionFieldTypeEnum
@@ -954,7 +953,7 @@ export class ApiDomain extends OvhWrapper {
    * List the domain.DnssecKey objects
    * List of domain's DS Records
    */
-  public get(path: '/domain/{serviceName}/dsRecord', params: {serviceName: string, flags?: OVH.dnssec.KeyFlagEnum, status?: OVH.dnssec.KeyStatusEnum}): Promise<number[]>;
+  public get(path: '/domain/{serviceName}/dsRecord', params: {serviceName: string, flags?: dnssec.KeyFlagEnum, status?: dnssec.KeyStatusEnum}): Promise<number[]>;
   /**
    * Domain's DNSSEC Key
    * Get this object properties
@@ -989,17 +988,17 @@ export class ApiDomain extends OvhWrapper {
    * Information about the options of a domain
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/option/{option}', params: {option: OVH.domain.DomainOptionEnum, serviceName: string}): Promise<domain.Option>;
+  public get(path: '/domain/{serviceName}/option/{option}', params: {option: domain.DomainOptionEnum, serviceName: string}): Promise<domain.Option>;
   /**
    * List the domain.Owo objects
    * List of whois obfuscators
    */
-  public get(path: '/domain/{serviceName}/owo', params: {serviceName: string, field?: OVH.domain.WhoisObfuscatorFieldsEnum}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
+  public get(path: '/domain/{serviceName}/owo', params: {serviceName: string, field?: domain.WhoisObfuscatorFieldsEnum}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
   /**
    * Obfuscate whois
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/owo/{field}', params: {field: OVH.domain.WhoisObfuscatorFieldsEnum, serviceName: string}): Promise<domain.Owo>;
+  public get(path: '/domain/{serviceName}/owo/{field}', params: {field: domain.WhoisObfuscatorFieldsEnum, serviceName: string}): Promise<domain.Owo>;
   /**
    * Missing description
    * Retrieve emails obfuscation rule
@@ -1019,7 +1018,7 @@ export class ApiDomain extends OvhWrapper {
    * List the domain.Task objects
    * Domain pending tasks
    */
-  public get(path: '/domain/{serviceName}/task', params: {serviceName: string, function_?: string, status?: OVH.domain.OperationStatusEnum}): Promise<number[]>;
+  public get(path: '/domain/{serviceName}/task', params: {serviceName: string, function_?: string, status?: domain.OperationStatusEnum}): Promise<number[]>;
   /**
    * Tasks associated to domain
    * Get this object properties
@@ -1059,7 +1058,7 @@ export class ApiDomain extends OvhWrapper {
    * Missing description
    * List all the extensions for a specific country
    */
-  public get(path: '/domain/data/extension', params: {country: OVH.nichandle.CountryEnum}): Promise<string[]>;
+  public get(path: '/domain/data/extension', params: {country: nichandle.CountryEnum}): Promise<string[]>;
   /**
    * Missing description
    * Retrieve all your Pro Contact
@@ -1139,7 +1138,7 @@ export class ApiDomain extends OvhWrapper {
    * List the domain.zone.Record objects
    * Records of the zone
    */
-  public get(path: '/domain/zone/{zoneName}/record', params: {zoneName: string, fieldType?: OVH.zone.NamedResolutionFieldTypeEnum, subDomain?: string}): Promise<number[]>;
+  public get(path: '/domain/zone/{zoneName}/record', params: {zoneName: string, fieldType?: zoneNamedResolutionFieldTypeEnum, subDomain?: string}): Promise<number[]>;
   /**
    * Zone resource records
    * Get this object properties
@@ -1174,7 +1173,7 @@ export class ApiDomain extends OvhWrapper {
    * List the domain.zone.Task objects
    * Domain pending tasks
    */
-  public get(path: '/domain/zone/{zoneName}/task', params: {zoneName: string, function_?: string, status?: OVH.domain.OperationStatusEnum}): Promise<number[]>;
+  public get(path: '/domain/zone/{zoneName}/task', params: {zoneName: string, function_?: string, status?: domain.OperationStatusEnum}): Promise<number[]>;
   /**
    * Tasks associated to a zone
    * Get this object properties
@@ -1187,22 +1186,22 @@ export class ApiDomain extends OvhWrapper {
    * Domain name administration
    * Alter this object properties
    */
-  public put(path: '/domain/{serviceName}', params: {serviceName: string, dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: OVH.domain.DomainNsTypeEnum, offer?: OVH.domain.OfferEnum, owoSupported?: boolean, parentService?: OVH.domain.ParentService, transferLockStatus?: OVH.domain.DomainLockStatusEnum, whoisOwner?: string}): Promise<void>;
+  public put(path: '/domain/{serviceName}', params: {serviceName: string, dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: domain.DomainNsTypeEnum, offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, transferLockStatus?: domain.DomainLockStatusEnum, whoisOwner?: string}): Promise<void>;
   /**
    * Missing description
    * Save a new obfuscated emails configuration
    */
-  public put(path: '/domain/{serviceName}/configurations/obfuscatedEmails', params: {serviceName: string, contacts: OVH.domain.ContactAllTypesEnum[]}): Promise<domain.configurations.ObfuscatedEmails[]>;
+  public put(path: '/domain/{serviceName}/configurations/obfuscatedEmails', params: {serviceName: string, contacts: domain.ContactAllTypesEnum[]}): Promise<domain.configurations.ObfuscatedEmails[]>;
   /**
    * Missing description
    * Save a new optin configuration
    */
-  public put(path: '/domain/{serviceName}/configurations/optin', params: {serviceName: string, optin: OVH.domain.configurations.Optin[]}): Promise<domain.configurations.Optin[]>;
+  public put(path: '/domain/{serviceName}/configurations/optin', params: {serviceName: string, optin: domain.configurations.Optin[]}): Promise<domain.configurations.Optin[]>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/domain/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/domain/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Missing description
    * Modify an existing SMD file
@@ -1222,17 +1221,17 @@ export class ApiDomain extends OvhWrapper {
    * Zone resource records
    * Alter this object properties
    */
-  public put(path: '/domain/zone/{zoneName}/record/{id}', params: {id: number, zoneName: string, fieldType?: OVH.zone.NamedResolutionFieldTypeEnum, subDomain?: string, target?: string, ttl?: number, zone?: string}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/record/{id}', params: {id: number, zoneName: string, fieldType?: zoneNamedResolutionFieldTypeEnum, subDomain?: string, target?: string, ttl?: number, zone?: string}): Promise<void>;
   /**
    * Redirection
    * Alter this object properties
    */
-  public put(path: '/domain/zone/{zoneName}/redirection/{id}', params: {id: number, zoneName: string, description?: string, keywords?: string, subDomain?: string, target?: string, title?: string, type?: OVH.zone.RedirectionTypeEnum, zone?: string}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/redirection/{id}', params: {id: number, zoneName: string, description?: string, keywords?: string, subDomain?: string, target?: string, title?: string, type?: zoneRedirectionTypeEnum, zone?: string}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/domain/zone/{zoneName}/serviceInfos', params: {zoneName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/serviceInfos', params: {zoneName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Zone Start Of Authority
    * Alter this object properties
@@ -1255,17 +1254,17 @@ export class ApiDomain extends OvhWrapper {
    * Missing description
    * Refresh an obfuscated emails configuration
    */
-  public post(path: '/domain/{serviceName}/configurations/obfuscatedEmails/refresh', params: {serviceName: string, contacts: OVH.domain.ContactAllTypesEnum[]}): Promise<void>;
+  public post(path: '/domain/{serviceName}/configurations/obfuscatedEmails/refresh', params: {serviceName: string, contacts: domain.ContactAllTypesEnum[]}): Promise<void>;
   /**
    * List the domain.DnssecKey objects
    * Update DS records
    */
-  public post(path: '/domain/{serviceName}/dsRecord', params: {serviceName: string, keys: OVH.dnssec.Key[]}): Promise<domain.Task>;
+  public post(path: '/domain/{serviceName}/dsRecord', params: {serviceName: string, keys: dnssec.Key[]}): Promise<domain.Task>;
   /**
    * refresh operations
    * Regenerate the obfuscated email address
    */
-  public post(path: '/domain/{serviceName}/email/obfuscated/refresh', params: {serviceName: string, contactType: OVH.domain.DomainContactTypeEnum[]}): Promise<void>;
+  public post(path: '/domain/{serviceName}/email/obfuscated/refresh', params: {serviceName: string, contactType: domain.DomainContactTypeEnum[]}): Promise<void>;
   /**
    * List the domain.GlueRecord objects
    * Create a glue record
@@ -1280,7 +1279,7 @@ export class ApiDomain extends OvhWrapper {
    * List the domain.CurrentNameServer objects
    * Add new name server
    */
-  public post(path: '/domain/{serviceName}/nameServer', params: {serviceName: string, nameServer: OVH.domain.DomainNs[]}): Promise<domain.Task>;
+  public post(path: '/domain/{serviceName}/nameServer', params: {serviceName: string, nameServer: domain.DomainNs[]}): Promise<domain.Task>;
   /**
    * status operations
    * Get name server status
@@ -1290,12 +1289,12 @@ export class ApiDomain extends OvhWrapper {
    * update operations
    * Update DNS servers
    */
-  public post(path: '/domain/{serviceName}/nameServers/update', params: {serviceName: string, nameServers: OVH.domain.DomainNs[]}): Promise<domain.Task>;
+  public post(path: '/domain/{serviceName}/nameServers/update', params: {serviceName: string, nameServers: domain.DomainNs[]}): Promise<domain.Task>;
   /**
    * List the domain.Owo objects
    * Add whois obfuscators
    */
-  public post(path: '/domain/{serviceName}/owo', params: {serviceName: string, fields: OVH.domain.WhoisObfuscatorFieldsEnum[]}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
+  public post(path: '/domain/{serviceName}/owo', params: {serviceName: string, fields: domain.WhoisObfuscatorFieldsEnum[]}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
   /**
    * accelerate operations
    * Accelerate the task
@@ -1345,7 +1344,7 @@ export class ApiDomain extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/domain/zone/{zoneName}/confirmTermination', params: {zoneName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/domain/zone/{zoneName}/confirmTermination', params: {zoneName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * Manage Dnssec for this zone
    * Enable Dnssec
@@ -1380,12 +1379,12 @@ export class ApiDomain extends OvhWrapper {
    * List the domain.zone.Record objects
    * Create a new DNS record (Don't forget to refresh the zone)
    */
-  public post(path: '/domain/zone/{zoneName}/record', params: {zoneName: string, fieldType: OVH.zone.NamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}): Promise<domain.zone.Record>;
+  public post(path: '/domain/zone/{zoneName}/record', params: {zoneName: string, fieldType: zoneNamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}): Promise<domain.zone.Record>;
   /**
    * List the domain.zone.Redirection objects
    * Create a new redirection (Don't forget to refresh the zone)
    */
-  public post(path: '/domain/zone/{zoneName}/redirection', params: {zoneName: string, description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: OVH.zone.RedirectionTypeEnum}): Promise<domain.zone.Redirection>;
+  public post(path: '/domain/zone/{zoneName}/redirection', params: {zoneName: string, description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: zoneRedirectionTypeEnum}): Promise<domain.zone.Redirection>;
   /**
    * refresh operations
    * Apply zone modification on DNS servers
@@ -1395,7 +1394,7 @@ export class ApiDomain extends OvhWrapper {
    * reset operations
    * Reset the DNS zone
    */
-  public post(path: '/domain/zone/{zoneName}/reset', params: {zoneName: string, DnsRecords?: OVH.zone.ResetRecord[], minimized?: boolean}): Promise<void>;
+  public post(path: '/domain/zone/{zoneName}/reset', params: {zoneName: string, DnsRecords?: zone.ResetRecord[], minimized?: boolean}): Promise<void>;
   /**
    * accelerate operations
    * Accelerate the task
@@ -1433,12 +1432,12 @@ export class ApiDomain extends OvhWrapper {
    * Information about the options of a domain
    * Release a given option
    */
-  public delete(path: '/domain/{serviceName}/option/{option}', params: {option: OVH.domain.DomainOptionEnum, serviceName: string}): Promise<void>;
+  public delete(path: '/domain/{serviceName}/option/{option}', params: {option: domain.DomainOptionEnum, serviceName: string}): Promise<void>;
   /**
    * Obfuscate whois
    * Delete a whois obfuscator
    */
-  public delete(path: '/domain/{serviceName}/owo/{field}', params: {field: OVH.domain.WhoisObfuscatorFieldsEnum, serviceName: string}): Promise<void>;
+  public delete(path: '/domain/{serviceName}/owo/{field}', params: {field: domain.WhoisObfuscatorFieldsEnum, serviceName: string}): Promise<void>;
   /**
    * Missing description
    * Delete a SMD file
@@ -1473,4 +1472,5 @@ export class ApiDomain extends OvhWrapper {
     return super.delete(path, params);
   }
 }
-}
+type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;
+type zoneRedirectionTypeEnum = zone.RedirectionTypeEnum;
