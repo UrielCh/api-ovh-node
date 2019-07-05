@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
@@ -33,10 +32,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace veeam {
@@ -56,7 +55,7 @@ export namespace veeam {
             name: string;
             progress: number;
             startDate?: string;
-            state: OVH.veeamEnterprise.TaskStateEnum;
+            state: veeamEnterpriseTaskStateEnum;
             taskId: number;
         }
     }
@@ -144,7 +143,7 @@ export class ApiVeeamVeeamEnterprise extends OvhWrapper {
    * List the veeam.veeamEnterprise.Task objects
    * Tasks associated with Veeam Enterprise
    */
-  public get(path: '/veeam/veeamEnterprise/{serviceName}/task', params: {serviceName: string, name?: string, state?: OVH.veeamEnterprise.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/veeam/veeamEnterprise/{serviceName}/task', params: {serviceName: string, name?: string, state?: veeamEnterpriseTaskStateEnum}): Promise<number[]>;
   /**
    * Operation with the Enterprise Account
    * Get this object properties
@@ -157,7 +156,7 @@ export class ApiVeeamVeeamEnterprise extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsVeeamVeeamEnterprisePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -165,7 +164,7 @@ export class ApiVeeamVeeamEnterprise extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/veeam/veeamEnterprise/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/veeam/veeamEnterprise/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * register operations
    * Register Veeam Backup Server to Veeam Enterprise
@@ -185,4 +184,4 @@ export class ApiVeeamVeeamEnterprise extends OvhWrapper {
     return super.post(path, params);
   }
 }
-}
+type veeamEnterpriseTaskStateEnum = veeamEnterprise.TaskStateEnum;

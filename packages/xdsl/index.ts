@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
@@ -33,7 +32,7 @@ export namespace order {
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode: OVH.order.CurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -66,10 +65,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace spare {
@@ -88,7 +87,7 @@ export namespace telephony {
     export interface Contact {
         address?: string;
         city?: string;
-        country?: OVH.coreTypes.CountryEnum;
+        country?: coreTypes.CountryEnum;
         email?: string;
         firstname?: string;
         name?: string;
@@ -104,15 +103,15 @@ export namespace telephony {
         equipmentReference: string;
         id: string;
         newMerchandise?: string;
-        offerTypeNew?: OVH.telephony.RmaOfferTypeEnum;
-        offerTypeOld: OVH.telephony.RmaOfferTypeEnum;
-        process: OVH.telephony.RmaReplaceTypeEnum;
+        offerTypeNew?: telephony.RmaOfferTypeEnum;
+        offerTypeOld: telephony.RmaOfferTypeEnum;
+        process: telephony.RmaReplaceTypeEnum;
         receptionDatetime?: string;
-        shippingContact: OVH.telephony.Contact;
-        status: OVH.telephony.RmaStatusEnum;
-        steps: OVH.telephony.RmaStep[];
+        shippingContact: telephony.Contact;
+        status: telephony.RmaStatusEnum;
+        steps: telephony.RmaStep[];
         terminationDatetime?: string;
-        type: OVH.telephony.RmaTypeEnum;
+        type: telephony.RmaTypeEnum;
     }
     //telephony.RmaOfferTypeEnum
     export type RmaOfferTypeEnum = "deposit" | "loan" | "purchase"
@@ -126,8 +125,8 @@ export namespace telephony {
         description: string;
         doneDate?: string;
         infos?: string;
-        name: OVH.telephony.RmaStepNameEnum;
-        status: OVH.telephony.RmaStepStatusEnum;
+        name: telephony.RmaStepNameEnum;
+        status: telephony.RmaStepStatusEnum;
     }
     //telephony.RmaStepNameEnum
     export type RmaStepNameEnum = "dispatchJustification" | "equipmentSending" | "equipmentTesting" | "opening" | "parcelReception" | "parcelValidation" | "validation"
@@ -141,17 +140,17 @@ export namespace xdsl {
     // fullName: xdsl.Access.Access
     export interface Access {
         accessName: string;
-        accessType: OVH.xdsl.DslTypeEnum;
-        address: OVH.xdsl.AddressDetail;
-        capabilities: OVH.xdsl.AccessCapabilities;
+        accessType: xdslDslTypeEnum;
+        address: xdsl.AddressDetail;
+        capabilities: xdsl.AccessCapabilities;
         description: string;
         ipv6Enabled: boolean;
         lnsRateLimit?: number;
         monitoring: boolean;
         nra: string;
         pairsNumber: number;
-        role: OVH.xdsl.AccessRoleEnum;
-        status: OVH.xdsl.AccessStatusEnum;
+        role: xdsl.AccessRoleEnum;
+        status: xdsl.AccessStatusEnum;
     }
     //xdsl.AccessCapabilities
     // fullName: xdsl.AccessCapabilities.AccessCapabilities
@@ -166,12 +165,12 @@ export namespace xdsl {
     //xdsl.AccessDiagnostic
     // fullName: xdsl.AccessDiagnostic.AccessDiagnostic
     export interface AccessDiagnostic {
-        capabilities: OVH.xdsl.AccessDiagnosticCapabilities;
+        capabilities: xdsl.AccessDiagnosticCapabilities;
         diagnosticTime: string;
         incident?: boolean;
         isActiveOnLns?: boolean;
         isModemConnected?: boolean;
-        lineDetails?: OVH.xdsl.LineDiagnostic[];
+        lineDetails?: xdsl.LineDiagnostic[];
         ping?: boolean;
         remaining: number;
     }
@@ -215,21 +214,21 @@ export namespace xdsl {
         date: string;
         ip: string;
         lastSpamDetected: string;
-        status: OVH.xdsl.antiSpam.AntiSpamStatusEnum;
+        status: xdsl.antiSpam.AntiSpamStatusEnum;
     }
     //xdsl.AsyncTask
     // fullName: xdsl.AsyncTask.AsyncTask
     export interface AsyncTask<T> {
         error?: string;
         result?: T;
-        status: OVH.xdsl.AsyncTaskStatusEnum;
+        status: xdsl.AsyncTaskStatusEnum;
     }
     //xdsl.AsyncTaskArray
     // fullName: xdsl.AsyncTaskArray.AsyncTaskArray
     export interface AsyncTaskArray<T> {
         error?: string;
         result?: T[];
-        status: OVH.xdsl.AsyncTaskStatusEnum;
+        status: xdsl.AsyncTaskStatusEnum;
     }
     //xdsl.AsyncTaskStatusEnum
     export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
@@ -262,8 +261,8 @@ export namespace xdsl {
     // fullName: xdsl.DeconsolidationTerms.DeconsolidationTerms
     export interface DeconsolidationTerms {
         engagement: number;
-        monthlyPrice: OVH.order.Price;
-        price: OVH.order.Price;
+        monthlyPrice: orderPrice;
+        price: orderPrice;
     }
     //xdsl.DeviceModemInfo
     // fullName: xdsl.DeviceModemInfo.DeviceModemInfo
@@ -293,8 +292,8 @@ export namespace xdsl {
     export interface DslamPort {
         lastDesyncDate?: string;
         lastSyncDate?: string;
-        profile?: OVH.xdsl.DslamLineProfile;
-        status: OVH.xdsl.DslamPortStatusEnum;
+        profile?: xdsl.DslamLineProfile;
+        status: xdsl.DslamPortStatusEnum;
     }
     //xdsl.DslamPortLog
     // fullName: xdsl.DslamPortLog.DslamPortLog
@@ -323,8 +322,8 @@ export namespace xdsl {
         dnsList: string[];
         ip: string;
         range: number;
-        status: OVH.xdsl.IpStatusEnum;
-        version: OVH.coreTypes.IpVersionEnum;
+        status: xdsl.IpStatusEnum;
+        version: coreTypes.IpVersionEnum;
     }
     //xdsl.Incident
     // fullName: xdsl.Incident.Incident
@@ -335,7 +334,7 @@ export namespace xdsl {
         endDate?: string;
         id: number;
         nra: string[];
-        operators: OVH.xdsl.OperatorTypeEnum[];
+        operators: xdsl.OperatorTypeEnum[];
         taskId?: number;
     }
     //xdsl.IpStatusEnum
@@ -344,7 +343,7 @@ export namespace xdsl {
     // fullName: xdsl.LAN.LAN
     export interface LAN {
         IPAddress: string;
-        addressingType: OVH.xdsl.xdslModemConfig.AddressingTypeEnum;
+        addressingType: xdsl.xdslModemConfig.AddressingTypeEnum;
         lanName: string;
         subnetMask: string;
         taskId?: number;
@@ -359,12 +358,12 @@ export namespace xdsl {
     //xdsl.Line
     // fullName: xdsl.Line.Line
     export interface Line {
-        concentrationPoint?: OVH.xdsl.LandlineConcentrationPoint;
-        deconsolidation: OVH.xdsl.DeconsolidationEnum;
+        concentrationPoint?: xdsl.LandlineConcentrationPoint;
+        deconsolidation: xdslDeconsolidationEnum;
         directDistribution?: boolean;
         distance: number;
-        faultRepairTime: OVH.xdsl.FaultRepairTimeEnum;
-        lineSectionsLength: OVH.xdsl.LineSectionLength[];
+        faultRepairTime: xdsl.FaultRepairTimeEnum;
+        lineSectionsLength: xdsl.LineSectionLength[];
         mitigation: number;
         number: string;
         originalNumber?: string;
@@ -375,7 +374,7 @@ export namespace xdsl {
     //xdsl.LineDiagnostic
     // fullName: xdsl.LineDiagnostic.LineDiagnostic
     export interface LineDiagnostic {
-        lineTest?: OVH.xdsl.LineTestEnum;
+        lineTest?: xdsl.LineTestEnum;
         lineTestTime?: string;
         number: string;
         proposedProfileId?: number;
@@ -395,16 +394,16 @@ export namespace xdsl {
     // fullName: xdsl.Modem.Modem
     export interface Modem {
         brandName: string;
-        capabilities: OVH.xdsl.ModemCapabilities;
+        capabilities: xdsl.ModemCapabilities;
         dmzIP?: string;
-        easyFirewallLevel?: OVH.xdsl.xdslModemConfig.EasyFirewallLevelEnum;
+        easyFirewallLevel?: xdsl.xdslModemConfig.EasyFirewallLevelEnum;
         ipv6Support: boolean;
         isBridged: boolean;
         lastCwmpRequestDate?: string;
         macAddress: string;
         managedByOvh: boolean;
         model: string;
-        mtuSize?: OVH.xdsl.xdslModemConfig.MTUSizeEnum;
+        mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum;
     }
     //xdsl.ModemCapabilities
     // fullName: xdsl.ModemCapabilities.ModemCapabilities
@@ -428,8 +427,8 @@ export namespace xdsl {
     //xdsl.ModemInfo
     // fullName: xdsl.ModemInfo.ModemInfo
     export interface ModemInfo {
-        device: OVH.xdsl.DeviceModemInfo;
-        statistics: OVH.xdsl.StatsModemInfo;
+        device: xdsl.DeviceModemInfo;
+        statistics: xdsl.StatsModemInfo;
     }
     //xdsl.MonitoringNotification
     // fullName: xdsl.MonitoringNotification.MonitoringNotification
@@ -438,11 +437,11 @@ export namespace xdsl {
         downThreshold: number;
         email?: string;
         enabled: boolean;
-        frequency: OVH.xdsl.monitoringNotifications.FrequencyEnum;
+        frequency: xdsl.monitoringNotifications.FrequencyEnum;
         id: number;
         phone?: string;
         smsAccount?: string;
-        type: OVH.xdsl.monitoringNotifications.TypeEnum;
+        type: xdsl.monitoringNotifications.TypeEnum;
     }
     //xdsl.OperatorTypeEnum
     export type OperatorTypeEnum = "collect" | "kosc" | "ovh"
@@ -463,7 +462,7 @@ export namespace xdsl {
         internalClient: string;
         internalPort: number;
         name: string;
-        protocol: OVH.xdsl.xdslModemConfig.ProtocolTypeEnum;
+        protocol: xdsl.xdslModemConfig.ProtocolTypeEnum;
         taskId?: number;
     }
     //xdsl.RadiusConnectionLog
@@ -488,16 +487,16 @@ export namespace xdsl {
     // fullName: xdsl.ResiliationSurvey.ResiliationSurvey
     export interface ResiliationSurvey {
         comment?: string;
-        type: OVH.xdsl.ResiliationReasonEnum;
+        type: xdsl.ResiliationReasonEnum;
     }
     //xdsl.ResiliationTerms
     // fullName: xdsl.ResiliationTerms.ResiliationTerms
     export interface ResiliationTerms {
-        due: OVH.order.Price;
+        due: orderPrice;
         engageDate?: string;
         minResiliationDate: string;
         resiliationDate: string;
-        resiliationReasons: OVH.xdsl.ResiliationReasonEnum[];
+        resiliationReasons: xdsl.ResiliationReasonEnum[];
     }
     //xdsl.ServiceStatusEnum
     export type ServiceStatusEnum = "disabled" | "enabled"
@@ -525,7 +524,7 @@ export namespace xdsl {
     export interface Task {
         function: string;
         id: number;
-        status: OVH.xdsl.TaskStatusEnum;
+        status: xdsl.TaskStatusEnum;
         todoDate: string;
         updateDate: string;
     }
@@ -534,16 +533,16 @@ export namespace xdsl {
     //xdsl.TemplateModem
     // fullName: xdsl.TemplateModem.TemplateModem
     export interface TemplateModem {
-        DHCP: OVH.xdsl.templateModem.DHCP[];
-        LAN: OVH.xdsl.templateModem.LAN[];
-        WLAN: OVH.xdsl.templateModem.WLAN[];
+        DHCP: xdsl.templateModem.DHCP[];
+        LAN: xdsl.templateModem.LAN[];
+        WLAN: xdsl.templateModem.WLAN[];
         capabilities: string;
         creationDate: string;
         dmzIP?: string;
-        mtuSize?: OVH.xdsl.xdslModemConfig.MTUSizeEnum;
+        mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum;
         name: string;
-        parametersToIgnore?: OVH.xdsl.templateModem.ParametersToIgnore;
-        portMapping: OVH.xdsl.templateModem.PortMapping[];
+        parametersToIgnore?: xdsl.templateModem.ParametersToIgnore;
+        portMapping: xdsl.templateModem.PortMapping[];
     }
     //xdsl.TimestampAndValue
     // fullName: xdsl.TimestampAndValue.TimestampAndValue
@@ -558,12 +557,12 @@ export namespace xdsl {
         SSIDAdvertisementEnabled: boolean;
         bandSteering: boolean;
         channel: number;
-        channelMode: OVH.xdsl.xdslModemConfig.ChannelModeEnum;
+        channelMode: xdsl.xdslModemConfig.ChannelModeEnum;
         enabled: boolean;
-        frequency: OVH.xdsl.xdslModemConfig.FrequencyEnum;
+        frequency: xdsl.xdslModemConfig.FrequencyEnum;
         guest: boolean;
         securityKey: string;
-        securityType: OVH.xdsl.xdslModemConfig.SecurityTypeEnum;
+        securityType: xdsl.xdslModemConfig.SecurityTypeEnum;
         taskId?: number;
         wifiName: string;
     }
@@ -576,8 +575,8 @@ export namespace xdsl {
         // fullName: xdsl.antiSpam.EvidencesInfo.EvidencesInfo
         export interface EvidencesInfo {
             error?: string;
-            result?: OVH.xdsl.antiSpam.EvidencesInfoDetail[];
-            status: OVH.xdsl.antiSpam.EvidencesInfoStatusEnum;
+            result?: xdsl.antiSpam.EvidencesInfoDetail[];
+            status: xdsl.antiSpam.EvidencesInfoStatusEnum;
         }
         //xdsl.antiSpam.EvidencesInfoDetail
         // fullName: xdsl.antiSpam.EvidencesInfoDetail.EvidencesInfoDetail
@@ -593,7 +592,7 @@ export namespace xdsl {
     // fullName: xdsl.connectedDevice.connectedDevice
     export interface connectedDevice {
         active: boolean;
-        addressSource: OVH.xdsl.xdslModemConfig.ConnectedDeviceAddressSourceEnum;
+        addressSource: xdsl.xdslModemConfig.ConnectedDeviceAddressSourceEnum;
         hostName: string;
         informationDate: string;
         interfaceType: string;
@@ -606,14 +605,14 @@ export namespace xdsl {
         // fullName: xdsl.eligibility.Address.Address
         export interface Address {
             building?: string;
-            city: OVH.xdsl.eligibility.City;
+            city: xdsl.eligibility.City;
             door?: string;
             floor?: string;
             logo?: string;
             owner?: string;
             residence?: string;
             stair?: string;
-            street?: OVH.xdsl.eligibility.Street;
+            street?: xdsl.eligibility.Street;
             streetNumber?: string;
         }
         //xdsl.eligibility.Building
@@ -622,7 +621,7 @@ export namespace xdsl {
             name: string;
             nro: string;
             reference: string;
-            type: OVH.xdsl.eligibility.BuildingTypeEnum;
+            type: xdsl.eligibility.BuildingTypeEnum;
         }
         //xdsl.eligibility.BuildingTypeEnum
         export type BuildingTypeEnum = "BUILDING" | "HOUSE"
@@ -643,19 +642,19 @@ export namespace xdsl {
         //xdsl.eligibility.Eligibility
         // fullName: xdsl.eligibility.Eligibility.Eligibility
         export interface Eligibility {
-            address?: OVH.xdsl.eligibility.Address;
-            characteristics: OVH.xdsl.eligibility.LineCharacteristics;
-            endpoint: OVH.xdsl.eligibility.LineEndpointEnum;
+            address?: xdsleligibilityAddress;
+            characteristics: xdsl.eligibility.LineCharacteristics;
+            endpoint: xdsl.eligibility.LineEndpointEnum;
             id: string;
-            infos: OVH.xdsl.eligibility.LineInfos;
-            offers: OVH.xdsl.eligibility.Offer[];
-            portability: OVH.xdsl.eligibility.Portability;
+            infos: xdsl.eligibility.LineInfos;
+            offers: xdsl.eligibility.Offer[];
+            portability: xdsleligibilityPortability;
         }
         //xdsl.eligibility.FiberEligibility
         // fullName: xdsl.eligibility.FiberEligibility.FiberEligibility
         export interface FiberEligibility {
             id: string;
-            offers: OVH.xdsl.eligibility.FiberOffer[];
+            offers: xdsl.eligibility.FiberOffer[];
         }
         //xdsl.eligibility.FiberOffer
         // fullName: xdsl.eligibility.FiberOffer.FiberOffer
@@ -663,11 +662,11 @@ export namespace xdsl {
             availibilityDate?: string;
             downloadRate?: number;
             eligible: boolean;
-            gtr: OVH.xdsl.GtrEnum[];
+            gtr: xdsl.GtrEnum[];
             guaranteed: boolean;
             label: string;
             reason?: string;
-            type: OVH.xdsl.DslTypeEnum;
+            type: xdslDslTypeEnum;
             uploadRate?: number;
         }
         //xdsl.eligibility.FiberStreet
@@ -681,15 +680,15 @@ export namespace xdsl {
         //xdsl.eligibility.Line
         // fullName: xdsl.eligibility.Line.Line
         export interface Line {
-            address: OVH.xdsl.eligibility.Address;
+            address: xdsleligibilityAddress;
             contactName: string;
             lineNumber: string;
-            lineStatus: OVH.xdsl.eligibility.LandlineStatusEnum;
+            lineStatus: xdsleligibilityLandlineStatusEnum;
         }
         //xdsl.eligibility.LineCharacteristics
         // fullName: xdsl.eligibility.LineCharacteristics.LineCharacteristics
         export interface LineCharacteristics {
-            calibration: OVH.xdsl.eligibility.LineSectionCalibration[];
+            calibration: xdsl.eligibility.LineSectionCalibration[];
             desaturationFreePairs: number;
             distance: number;
             freePairs: number;
@@ -704,7 +703,7 @@ export namespace xdsl {
         export interface LineInfos {
             createNeighbour: boolean;
             lineNumber?: string;
-            lineStatus?: OVH.xdsl.eligibility.LandlineStatusEnum;
+            lineStatus?: xdsleligibilityLandlineStatusEnum;
             unlistedNumber: boolean;
         }
         //xdsl.eligibility.LineSectionCalibration
@@ -724,30 +723,30 @@ export namespace xdsl {
         // fullName: xdsl.eligibility.MeetingSlots.MeetingSlots
         export interface MeetingSlots {
             canBookFakeMeeting: boolean;
-            meetingSlots: OVH.xdsl.eligibility.MeetingSlot[];
+            meetingSlots: xdsl.eligibility.MeetingSlot[];
         }
         //xdsl.eligibility.Offer
         // fullName: xdsl.eligibility.Offer.Offer
         export interface Offer {
             desaturation?: boolean;
             downloadRate?: number;
-            gtr: OVH.xdsl.GtrEnum[];
+            gtr: xdsl.GtrEnum[];
             guaranteed: boolean;
             label: string;
             pairs?: number;
-            provider?: OVH.xdsl.eligibility.ProviderEnum;
+            provider?: xdsleligibilityProviderEnum;
             rate?: number;
-            type: OVH.xdsl.DslTypeEnum;
-            unbundling?: OVH.xdsl.DeconsolidationEnum[];
+            type: xdslDslTypeEnum;
+            unbundling?: xdsl.DeconsolidationEnum[];
             uploadRate?: number;
         }
         //xdsl.eligibility.Portability
         // fullName: xdsl.eligibility.Portability.Portability
         export interface Portability {
-            comments: OVH.xdsl.eligibility.CodeAndMessage[];
+            comments: xdsl.eligibility.CodeAndMessage[];
             eligible: boolean;
             underCondition: boolean;
-            warnings: OVH.xdsl.eligibility.CodeAndMessage[];
+            warnings: xdsl.eligibility.CodeAndMessage[];
         }
         //xdsl.eligibility.ProviderEnum
         export type ProviderEnum = "axione" | "ft" | "kosc" | "ovh" | "sfr"
@@ -765,7 +764,7 @@ export namespace xdsl {
             export interface Task {
                 finishDate?: string;
                 function: string;
-                status: OVH.xdsl.email.pro.TaskStatusEnum;
+                status: xdsl.email.pro.TaskStatusEnum;
                 todoDate: string;
             }
             //xdsl.email.pro.TaskStatusEnum
@@ -776,7 +775,7 @@ export namespace xdsl {
         //xdsl.lineDiagnostic.Answers
         // fullName: xdsl.lineDiagnostic.Answers.Answers
         export interface Answers {
-            bandwidthTestUnit?: OVH.xdsl.lineDiagnostic.BandwidthTestUnitEnum;
+            bandwidthTestUnit?: xdsl.lineDiagnostic.BandwidthTestUnitEnum;
             comment?: string;
             conditionsAccepted?: boolean;
             contactPhone?: string;
@@ -793,7 +792,7 @@ export namespace xdsl {
             modemStillSynchronized?: boolean;
             modemType?: string;
             ovhTicket?: string;
-            problemType?: OVH.xdsl.lineDiagnostic.ProblemTypeEnum;
+            problemType?: xdsl.lineDiagnostic.ProblemTypeEnum;
             resolvedAfterTests?: boolean;
             secureSite?: boolean;
             severalInternetConnections?: boolean;
@@ -823,34 +822,34 @@ export namespace xdsl {
         // fullName: xdsl.lineDiagnostic.CustomerActionToDo.CustomerActionToDo
         export interface CustomerActionToDo {
             description: string;
-            name: OVH.xdsl.lineDiagnostic.CustomerActionsEnum;
+            name: xdsl.lineDiagnostic.CustomerActionsEnum;
         }
         //xdsl.lineDiagnostic.CustomerActionsEnum
         export type CustomerActionsEnum = "bePreparedToCheckModemSynchronization" | "changeDslFilterAndPlugInDti" | "changeExtensionCable" | "changeProfile" | "checkConnectionCable" | "checkConnectionLoginAndParameters" | "checkFilter" | "connectModemToOtherPlugs" | "neutralTest" | "rebootModem" | "resetModem" | "unplugEveryModems" | "unplugModem"
         //xdsl.lineDiagnostic.Diagnostic
         // fullName: xdsl.lineDiagnostic.Diagnostic.Diagnostic
         export interface Diagnostic {
-            data: OVH.xdsl.lineDiagnostic.DiagnosticData;
-            faultType: OVH.xdsl.lineDiagnostic.FaultTypeEnum;
+            data: xdsl.lineDiagnostic.DiagnosticData;
+            faultType: xdsl.lineDiagnostic.FaultTypeEnum;
             id: number;
-            status: OVH.xdsl.lineDiagnostic.DiagnosticStatusEnum;
+            status: xdsl.lineDiagnostic.DiagnosticStatusEnum;
         }
         //xdsl.lineDiagnostic.DiagnosticData
         // fullName: xdsl.lineDiagnostic.DiagnosticData.DiagnosticData
         export interface DiagnosticData {
-            actionsDone: OVH.xdsl.lineDiagnostic.CustomerActionsEnum[];
-            actionsToDo: OVH.xdsl.lineDiagnostic.CustomerActionToDo[];
-            answers: OVH.xdsl.lineDiagnostic.Answers;
+            actionsDone: xdsl.lineDiagnostic.CustomerActionsEnum[];
+            actionsToDo: xdsl.lineDiagnostic.CustomerActionToDo[];
+            answers: xdsl.lineDiagnostic.Answers;
             comment?: string;
             creationDate: string;
             diagnosticDoneDate?: string;
             error: string;
             lastUpdate: string;
-            lineDetails: OVH.xdsl.lineDiagnostic.LineDetails;
-            robotAction?: OVH.xdsl.lineDiagnostic.RobotActionsEnum;
-            seltTest: OVH.xdsl.lineDiagnostic.SeltResult;
+            lineDetails: xdsl.lineDiagnostic.LineDetails;
+            robotAction?: xdsl.lineDiagnostic.RobotActionsEnum;
+            seltTest: xdsl.lineDiagnostic.SeltResult;
             timeout: number;
-            toAnswer: OVH.xdsl.lineDiagnostic.Question[];
+            toAnswer: xdsl.lineDiagnostic.Question[];
         }
         //xdsl.lineDiagnostic.DiagnosticStatusEnum
         export type DiagnosticStatusEnum = "cancelled" | "connectionProblem" | "genericIncidentPending" | "haveToConnectModemOnTheRightPlug" | "init" | "interventionRequested" | "noBandwidthFault" | "noProblemAnymore" | "noSyncFaultDiagnosticRequired" | "problem" | "resolvedAfterTests" | "sleeping" | "validationRefused" | "waitingHuman" | "waitingRobot" | "waitingValidation"
@@ -870,18 +869,18 @@ export namespace xdsl {
             accessName: string;
             accessPing?: boolean;
             address?: string;
-            connectionInfo?: OVH.xdsl.lineDiagnostic.ConnectionInformations;
+            connectionInfo?: xdsl.lineDiagnostic.ConnectionInformations;
             contactPhone?: string;
             description?: string;
             dslamIsSynchronized?: boolean;
             gtr: boolean;
             length: number;
-            lineCapabilities?: OVH.xdsl.lineDiagnostic.LineCapabilities;
-            lineType: OVH.xdsl.DslTypeEnum;
+            lineCapabilities?: xdsl.lineDiagnostic.LineCapabilities;
+            lineType: xdslDslTypeEnum;
             nra?: string;
             number: string;
-            operator: OVH.xdsl.lineDiagnostic.ProviderEnum;
-            sections?: OVH.xdsl.lineDiagnostic.Section[];
+            operator: xdsl.lineDiagnostic.ProviderEnum;
+            sections?: xdsl.lineDiagnostic.Section[];
         }
         //xdsl.lineDiagnostic.PossibleValue
         // fullName: xdsl.lineDiagnostic.PossibleValue.PossibleValue
@@ -900,8 +899,8 @@ export namespace xdsl {
             defaultValue?: string;
             description: string;
             enumValues?: string[];
-            name: OVH.xdsl.lineDiagnostic.QuestionsEnum;
-            possibleValues?: OVH.xdsl.lineDiagnostic.PossibleValue[];
+            name: xdsl.lineDiagnostic.QuestionsEnum;
+            possibleValues?: xdsl.lineDiagnostic.PossibleValue[];
             required?: boolean;
             type: string;
         }
@@ -922,9 +921,9 @@ export namespace xdsl {
         export interface SeltResult {
             date?: string;
             distance?: number;
-            preloc?: OVH.xdsl.lineDiagnostic.SeltPrelocEnum;
-            state?: OVH.xdsl.lineDiagnostic.SeltStateEnum;
-            status?: OVH.xdsl.lineDiagnostic.SeltStatusEnum;
+            preloc?: xdsl.lineDiagnostic.SeltPrelocEnum;
+            state?: xdsl.lineDiagnostic.SeltStateEnum;
+            status?: xdsl.lineDiagnostic.SeltStatusEnum;
         }
         //xdsl.lineDiagnostic.SeltStateEnum
         export type SeltStateEnum = "open" | "short" | "synced" | "unknown"
@@ -945,10 +944,10 @@ export namespace xdsl {
         export interface Step {
             comments: string[];
             doneDate?: string;
-            durationUnit: OVH.xdsl.orderFollowup.DurationUnitEnum;
+            durationUnit: xdsl.orderFollowup.DurationUnitEnum;
             expectedDuration: number;
-            name: OVH.xdsl.orderFollowup.StepNameEnum;
-            status: OVH.xdsl.orderFollowup.StepStatusEnum;
+            name: xdsl.orderFollowup.StepNameEnum;
+            status: xdsl.orderFollowup.StepStatusEnum;
         }
         //xdsl.orderFollowup.StepNameEnum
         export type StepNameEnum = "accessIsOperational" | "checkInfrastructure" | "configureAccessOnOVH" | "orderPayed" | "orderReceived" | "orderTreatment" | "sendModem" | "sendOrderToProvider" | "setupCustomerPremisesEquipment" | "waitingForProviderInstallReport" | "waitingForWithdrawalPeriodToBeOver"
@@ -974,7 +973,7 @@ export namespace xdsl {
         // fullName: xdsl.templateModem.LAN.LAN
         export interface LAN {
             IPAddress: string;
-            addressingType: OVH.xdsl.xdslModemConfig.AddressingTypeEnum;
+            addressingType: xdsl.xdslModemConfig.AddressingTypeEnum;
             lanName: string;
             subnetMask: string;
         }
@@ -997,7 +996,7 @@ export namespace xdsl {
             internalClient: string;
             internalPort: number;
             name: string;
-            protocol: OVH.xdsl.xdslModemConfig.ProtocolTypeEnum;
+            protocol: xdsl.xdslModemConfig.ProtocolTypeEnum;
         }
         //xdsl.templateModem.SecurityTypeEnum
         export type SecurityTypeEnum = "None" | "WPA" | "WPA2" | "WPAandWPA2"
@@ -1008,19 +1007,19 @@ export namespace xdsl {
             SSIDAdvertisementEnabled: boolean;
             bandSteering: boolean;
             channel: number;
-            channelMode: OVH.xdsl.xdslModemConfig.ChannelModeEnum;
+            channelMode: xdsl.xdslModemConfig.ChannelModeEnum;
             enabled: boolean;
-            frequency: OVH.xdsl.xdslModemConfig.FrequencyEnum;
+            frequency: xdsl.xdslModemConfig.FrequencyEnum;
             guest: boolean;
             securityKey: string;
-            securityType: OVH.xdsl.templateModem.SecurityTypeEnum;
+            securityType: xdsl.templateModem.SecurityTypeEnum;
             wifiName: string;
         }
     }
     //xdsl.xdslEmailPro
     // fullName: xdsl.xdslEmailPro.xdslEmailPro
     export interface xdslEmailPro {
-        currentUsage: OVH.complexType.UnitAndValue<number>;
+        currentUsage: complexType.UnitAndValue<number>;
         displayName?: string;
         domain: string;
         firstName?: string;
@@ -1032,8 +1031,8 @@ export namespace xdsl {
         login: string;
         passwordLastUpdate?: string;
         primaryEmailAddress: string;
-        quota: OVH.complexType.UnitAndValue<number>;
-        state: OVH.email.pro.ObjectStateEnum;
+        quota: complexType.UnitAndValue<number>;
+        state: emailproObjectStateEnum;
         taskPendingId?: number;
     }
     export namespace xdslModemConfig {
@@ -1784,7 +1783,7 @@ export class ApiXdsl extends OvhWrapper {
    * statistics operations
    * Get various statistics about the line
    */
-  public get(path: '/xdsl/{serviceName}/lines/{number}/statistics', params: {number: string, serviceName: string, period: OVH.xdsl.StatisticsPeriodEnum, type: OVH.xdsl.LineStatisticsTypeEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
+  public get(path: '/xdsl/{serviceName}/lines/{number}/statistics', params: {number: string, serviceName: string, period: xdsl.StatisticsPeriodEnum, type: xdsl.LineStatisticsTypeEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
   /**
    * Modem
    * Get this object properties
@@ -1794,7 +1793,7 @@ export class ApiXdsl extends OvhWrapper {
    * availableWLANChannel operations
    * List available WLAN channel for this modem
    */
-  public get(path: '/xdsl/{serviceName}/modem/availableWLANChannel', params: {serviceName: string, frequency: OVH.xdsl.WLANFrequencyEnum}): Promise<number[]>;
+  public get(path: '/xdsl/{serviceName}/modem/availableWLANChannel', params: {serviceName: string, frequency: xdsl.WLANFrequencyEnum}): Promise<number[]>;
   /**
    * blocIp operations
    * Get the status of the Bloc IP on modem
@@ -1954,12 +1953,12 @@ export class ApiXdsl extends OvhWrapper {
    * statistics operations
    * Get various statistics about this access
    */
-  public get(path: '/xdsl/{serviceName}/statistics', params: {serviceName: string, period: OVH.xdsl.StatisticsPeriodEnum, type: OVH.xdsl.AccessStatisticsTypeEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
+  public get(path: '/xdsl/{serviceName}/statistics', params: {serviceName: string, period: xdsl.StatisticsPeriodEnum, type: xdsl.AccessStatisticsTypeEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
   /**
    * List the xdsl.Task objects
    * Tasks scheduled for this access
    */
-  public get(path: '/xdsl/{serviceName}/tasks', params: {serviceName: string, function_?: string, status?: OVH.xdsl.TaskStatusEnum}): Promise<number[]>;
+  public get(path: '/xdsl/{serviceName}/tasks', params: {serviceName: string, function_?: string, status?: xdsl.TaskStatusEnum}): Promise<number[]>;
   /**
    * Describes the current status of a task
    * Get this object properties
@@ -2052,17 +2051,17 @@ export class ApiXdsl extends OvhWrapper {
    * XDSL Access
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}', params: {serviceName: string, accessName?: string, accessType?: OVH.xdsl.DslTypeEnum, address?: OVH.xdsl.AddressDetail, capabilities?: OVH.xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, pairsNumber?: number, role?: OVH.xdsl.AccessRoleEnum, status?: OVH.xdsl.AccessStatusEnum}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}', params: {serviceName: string, accessName?: string, accessType?: xdslDslTypeEnum, address?: xdsl.AddressDetail, capabilities?: xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, pairsNumber?: number, role?: xdsl.AccessRoleEnum, status?: xdsl.AccessStatusEnum}): Promise<void>;
   /**
    * Modem
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}/modem', params: {serviceName: string, brandName?: string, capabilities?: OVH.xdsl.ModemCapabilities, dmzIP?: string, easyFirewallLevel?: OVH.xdsl.xdslModemConfig.EasyFirewallLevelEnum, ipv6Support?: boolean, isBridged?: boolean, lastCwmpRequestDate?: string, macAddress?: string, managedByOvh?: boolean, model?: string, mtuSize?: OVH.xdsl.xdslModemConfig.MTUSizeEnum}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem', params: {serviceName: string, brandName?: string, capabilities?: xdsl.ModemCapabilities, dmzIP?: string, easyFirewallLevel?: xdsl.xdslModemConfig.EasyFirewallLevelEnum, ipv6Support?: boolean, isBridged?: boolean, lastCwmpRequestDate?: string, macAddress?: string, managedByOvh?: boolean, model?: string, mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum}): Promise<void>;
   /**
    * LAN Configuration of the Modem
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}', params: {lanName: string, serviceName: string, IPAddress?: string, addressingType?: OVH.xdsl.xdslModemConfig.AddressingTypeEnum, subnetMask?: string, taskId?: number}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}', params: {lanName: string, serviceName: string, IPAddress?: string, addressingType?: xdsl.xdslModemConfig.AddressingTypeEnum, subnetMask?: string, taskId?: number}): Promise<void>;
   /**
    * DHCP Configuration of the Modem
    * Alter this object properties
@@ -2077,42 +2076,42 @@ export class ApiXdsl extends OvhWrapper {
    * Port Mappings
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}/modem/portMappings/{name}', params: {name: string, serviceName: string, allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart?: number, id?: number, internalClient?: string, internalPort?: number, protocol?: OVH.xdsl.xdslModemConfig.ProtocolTypeEnum, taskId?: number}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/portMappings/{name}', params: {name: string, serviceName: string, allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart?: number, id?: number, internalClient?: string, internalPort?: number, protocol?: xdsl.xdslModemConfig.ProtocolTypeEnum, taskId?: number}): Promise<void>;
   /**
    * WLAN Configuration of the Modem
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}/modem/wifi/{wifiName}', params: {serviceName: string, wifiName: string, SSID?: string, SSIDAdvertisementEnabled?: boolean, bandSteering?: boolean, channel?: number, channelMode?: OVH.xdsl.xdslModemConfig.ChannelModeEnum, enabled?: boolean, frequency?: OVH.xdsl.xdslModemConfig.FrequencyEnum, guest?: boolean, securityKey?: string, securityType?: OVH.xdsl.xdslModemConfig.SecurityTypeEnum, taskId?: number}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/wifi/{wifiName}', params: {serviceName: string, wifiName: string, SSID?: string, SSIDAdvertisementEnabled?: boolean, bandSteering?: boolean, channel?: number, channelMode?: xdsl.xdslModemConfig.ChannelModeEnum, enabled?: boolean, frequency?: xdsl.xdslModemConfig.FrequencyEnum, guest?: boolean, securityKey?: string, securityType?: xdsl.xdslModemConfig.SecurityTypeEnum, taskId?: number}): Promise<void>;
   /**
    * Defines where and how the notifications will be sent
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', params: {id: number, serviceName: string, allowIncident?: boolean, downThreshold?: number, email?: string, enabled?: boolean, frequency?: OVH.xdsl.monitoringNotifications.FrequencyEnum, phone?: string, smsAccount?: string, type?: OVH.xdsl.monitoringNotifications.TypeEnum}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', params: {id: number, serviceName: string, allowIncident?: boolean, downThreshold?: number, email?: string, enabled?: boolean, frequency?: xdsl.monitoringNotifications.FrequencyEnum, phone?: string, smsAccount?: string, type?: xdsl.monitoringNotifications.TypeEnum}): Promise<void>;
   /**
    * Current Return Merchandise Authorisation
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}/rma/{id}', params: {id: string, serviceName: string, cancellable?: boolean, creationDatetime?: string, equipmentReference?: string, newMerchandise?: string, offerTypeNew?: OVH.telephony.RmaOfferTypeEnum, offerTypeOld?: OVH.telephony.RmaOfferTypeEnum, process?: OVH.telephony.RmaReplaceTypeEnum, receptionDatetime?: string, shippingContact?: OVH.telephony.Contact, status?: OVH.telephony.RmaStatusEnum, steps?: OVH.telephony.RmaStep[], terminationDatetime?: string, type?: OVH.telephony.RmaTypeEnum}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/rma/{id}', params: {id: string, serviceName: string, cancellable?: boolean, creationDatetime?: string, equipmentReference?: string, newMerchandise?: string, offerTypeNew?: telephony.RmaOfferTypeEnum, offerTypeOld?: telephony.RmaOfferTypeEnum, process?: telephony.RmaReplaceTypeEnum, receptionDatetime?: string, shippingContact?: telephony.Contact, status?: telephony.RmaStatusEnum, steps?: telephony.RmaStep[], terminationDatetime?: string, type?: telephony.RmaTypeEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * XDSL Email Pro
    * Alter this object properties
    */
-  public put(path: '/xdsl/email/pro/{email}', params: {email: string, currentUsage?: OVH.complexType.UnitAndValue<number>, displayName?: string, domain?: string, firstName?: string, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, login?: string, passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: OVH.complexType.UnitAndValue<number>, state?: OVH.email.pro.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/xdsl/email/pro/{email}', params: {email: string, currentUsage?: complexType.UnitAndValue<number>, displayName?: string, domain?: string, firstName?: string, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, login?: string, passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: complexType.UnitAndValue<number>, state?: emailproObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/xdsl/spare/{spare}/serviceInfos', params: {spare: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/xdsl/spare/{spare}/serviceInfos', params: {spare: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Modem Template
    * Alter this object properties
    */
-  public put(path: '/xdsl/templateModem/{name}', params: {name: string, DHCP?: OVH.xdsl.templateModem.DHCP[], LAN?: OVH.xdsl.templateModem.LAN[], WLAN?: OVH.xdsl.templateModem.WLAN[], capabilities?: string, creationDate?: string, dmzIP?: string, mtuSize?: OVH.xdsl.xdslModemConfig.MTUSizeEnum, parametersToIgnore?: OVH.xdsl.templateModem.ParametersToIgnore, portMapping?: OVH.xdsl.templateModem.PortMapping[]}): Promise<void>;
+  public put(path: '/xdsl/templateModem/{name}', params: {name: string, DHCP?: xdsl.templateModem.DHCP[], LAN?: xdsl.templateModem.LAN[], WLAN?: xdsl.templateModem.WLAN[], capabilities?: string, creationDate?: string, dmzIP?: string, mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum, parametersToIgnore?: xdsl.templateModem.ParametersToIgnore, portMapping?: xdsl.templateModem.PortMapping[]}): Promise<void>;
   public put(path: PathsXdslPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -2160,7 +2159,7 @@ export class ApiXdsl extends OvhWrapper {
    * run operations
    * Update and get advanced diagnostic of the line
    */
-  public post(path: '/xdsl/{serviceName}/lines/{number}/diagnostic/run', params: {number: string, serviceName: string, actionsDone?: OVH.xdsl.lineDiagnostic.CustomerActionsEnum[], answers?: OVH.xdsl.lineDiagnostic.Answers, faultType: OVH.xdsl.lineDiagnostic.FaultTypeEnum}): Promise<xdsl.lineDiagnostic.Diagnostic>;
+  public post(path: '/xdsl/{serviceName}/lines/{number}/diagnostic/run', params: {number: string, serviceName: string, actionsDone?: xdsl.lineDiagnostic.CustomerActionsEnum[], answers?: xdsl.lineDiagnostic.Answers, faultType: xdsl.lineDiagnostic.FaultTypeEnum}): Promise<xdsl.lineDiagnostic.Diagnostic>;
   /**
    * changeProfile operations
    * Change the profile of the port
@@ -2175,17 +2174,17 @@ export class ApiXdsl extends OvhWrapper {
    * blocIp operations
    * Change the status of the Bloc IP on modem
    */
-  public post(path: '/xdsl/{serviceName}/modem/blocIp', params: {serviceName: string, status: OVH.xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+  public post(path: '/xdsl/{serviceName}/modem/blocIp', params: {serviceName: string, status: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
   /**
    * callWaiting operations
    * Change the status of callWaiting on modem
    */
-  public post(path: '/xdsl/{serviceName}/modem/callWaiting', params: {serviceName: string, callWaiting: OVH.xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+  public post(path: '/xdsl/{serviceName}/modem/callWaiting', params: {serviceName: string, callWaiting: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
   /**
    * contentSharing operations
    * Change the status of contentSharing on modem
    */
-  public post(path: '/xdsl/{serviceName}/modem/contentSharing', params: {serviceName: string, contentSharing: OVH.xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+  public post(path: '/xdsl/{serviceName}/modem/contentSharing', params: {serviceName: string, contentSharing: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
   /**
    * duplicatePortMappingConfig operations
    * Remove all the current port mapping rules and set the same config as the access given in parameters
@@ -2200,12 +2199,12 @@ export class ApiXdsl extends OvhWrapper {
    * ftp operations
    * Change the status of the ftp service on modem
    */
-  public post(path: '/xdsl/{serviceName}/modem/ftp', params: {serviceName: string, ftp: OVH.xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+  public post(path: '/xdsl/{serviceName}/modem/ftp', params: {serviceName: string, ftp: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
   /**
    * ipsecAlg operations
    * Change the status of the ipsec alg service on modem
    */
-  public post(path: '/xdsl/{serviceName}/modem/ipsecAlg', params: {serviceName: string, ipsecAlg: OVH.xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+  public post(path: '/xdsl/{serviceName}/modem/ipsecAlg', params: {serviceName: string, ipsecAlg: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
   /**
    * List the xdsl.DHCPStaticAddress objects
    * Add a DHCP static lease
@@ -2215,7 +2214,7 @@ export class ApiXdsl extends OvhWrapper {
    * List the xdsl.PortMapping objects
    * Add a port mapping
    */
-  public post(path: '/xdsl/{serviceName}/modem/portMappings', params: {serviceName: string, allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart: number, internalClient: string, internalPort: number, name: string, protocol: OVH.xdsl.xdslModemConfig.ProtocolTypeEnum}): Promise<xdsl.PortMapping>;
+  public post(path: '/xdsl/{serviceName}/modem/portMappings', params: {serviceName: string, allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart: number, internalClient: string, internalPort: number, name: string, protocol: xdsl.xdslModemConfig.ProtocolTypeEnum}): Promise<xdsl.PortMapping>;
   /**
    * reboot operations
    * Reboot the modem
@@ -2250,17 +2249,17 @@ export class ApiXdsl extends OvhWrapper {
    * sipAlg operations
    * Change the status of the sip alg service on modem
    */
-  public post(path: '/xdsl/{serviceName}/modem/sipAlg', params: {serviceName: string, sipAlg: OVH.xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+  public post(path: '/xdsl/{serviceName}/modem/sipAlg', params: {serviceName: string, sipAlg: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
   /**
    * upnp operations
    * Change the status of the Upnp on modem
    */
-  public post(path: '/xdsl/{serviceName}/modem/upnp', params: {serviceName: string, upnp: OVH.xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
+  public post(path: '/xdsl/{serviceName}/modem/upnp', params: {serviceName: string, upnp: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
   /**
    * List the xdsl.MonitoringNotification objects
    * Add a notification
    */
-  public post(path: '/xdsl/{serviceName}/monitoringNotifications', params: {serviceName: string, allowIncident?: boolean, downThreshold?: number, email?: string, frequency: OVH.xdsl.monitoringNotifications.FrequencyEnum, phone?: string, smsAccount?: string, type: OVH.xdsl.monitoringNotifications.TypeEnum}): Promise<xdsl.MonitoringNotification>;
+  public post(path: '/xdsl/{serviceName}/monitoringNotifications', params: {serviceName: string, allowIncident?: boolean, downThreshold?: number, email?: string, frequency: xdsl.monitoringNotifications.FrequencyEnum, phone?: string, smsAccount?: string, type: xdsl.monitoringNotifications.TypeEnum}): Promise<xdsl.MonitoringNotification>;
   /**
    * requestPPPLoginMail operations
    * Renew PPP password and send the PPP login informations to the e-mail of the nicAdmin
@@ -2275,7 +2274,7 @@ export class ApiXdsl extends OvhWrapper {
    * resiliate operations
    * Resiliate the access
    */
-  public post(path: '/xdsl/{serviceName}/resiliate', params: {serviceName: string, resiliationDate?: string, resiliationSurvey: OVH.xdsl.ResiliationSurvey}): Promise<xdsl.ResiliationFollowUpDetail>;
+  public post(path: '/xdsl/{serviceName}/resiliate', params: {serviceName: string, resiliationDate?: string, resiliationSurvey: xdsl.ResiliationSurvey}): Promise<xdsl.ResiliationFollowUpDetail>;
   /**
    * sendOrderToProvider operations
    * Unlock order in "waitingCustomer" status. It only concerns orders whose modem is sent before anything have been forwarded to our provider
@@ -2295,12 +2294,12 @@ export class ApiXdsl extends OvhWrapper {
    * Get the active lines at given address
    * Get the active lines at given address
    */
-  public post(path: '/xdsl/eligibility/lines/active', params: {city: OVH.xdsl.eligibility.City, contactName: string, street: OVH.xdsl.eligibility.Street, streetNumber?: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
+  public post(path: '/xdsl/eligibility/lines/active', params: {city: xdsl.eligibility.City, contactName: string, street: xdsl.eligibility.Street, streetNumber?: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
   /**
    * Get the inactive lines at given address
    * Get the inactive lines at given address
    */
-  public post(path: '/xdsl/eligibility/lines/inactive', params: {city: OVH.xdsl.eligibility.City, contactName?: string, street: OVH.xdsl.eligibility.Street, streetNumber?: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
+  public post(path: '/xdsl/eligibility/lines/inactive', params: {city: xdsl.eligibility.City, contactName?: string, street: xdsl.eligibility.Street, streetNumber?: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
   /**
    * Get all buildings for a specific address
    * Get all buildings for a specific address
@@ -2325,7 +2324,7 @@ export class ApiXdsl extends OvhWrapper {
    * Do an eligibility for an address, if no line exist
    * Do an eligibility for an address, if no line exist
    */
-  public post(path: '/xdsl/eligibility/test/address', params: {address: OVH.xdsl.eligibility.Address}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
+  public post(path: '/xdsl/eligibility/test/address', params: {address: xdsleligibilityAddress}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
   /**
    * Perform a fiber eligibility for a building
    * Perform a fiber eligibility for a building
@@ -2335,7 +2334,7 @@ export class ApiXdsl extends OvhWrapper {
    * Do an eligibility for a line
    * Do an eligibility for a line
    */
-  public post(path: '/xdsl/eligibility/test/line', params: {lineNumber: string, lineStatus: OVH.xdsl.eligibility.LandlineStatusEnum}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
+  public post(path: '/xdsl/eligibility/test/line', params: {lineNumber: string, lineStatus: xdsleligibilityLandlineStatusEnum}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
   /**
    * changePassword operations
    * Change the email password
@@ -2403,4 +2402,11 @@ export class ApiXdsl extends OvhWrapper {
     return super.delete(path, params);
   }
 }
-}
+type xdslDslTypeEnum = xdsl.DslTypeEnum;
+type orderPrice = order.Price;
+type xdslDeconsolidationEnum = xdsl.DeconsolidationEnum;
+type xdsleligibilityAddress = xdsl.eligibility.Address;
+type xdsleligibilityPortability = xdsl.eligibility.Portability;
+type xdsleligibilityLandlineStatusEnum = xdsl.eligibility.LandlineStatusEnum;
+type xdsleligibilityProviderEnum = xdsl.eligibility.ProviderEnum;
+type emailproObjectStateEnum = email.pro.ObjectStateEnum;

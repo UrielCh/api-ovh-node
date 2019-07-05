@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.Range
     // fullName: complexType.Range.Range
@@ -44,7 +43,7 @@ export namespace order {
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode: OVH.order.CurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -77,10 +76,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace spare {
@@ -90,7 +89,7 @@ export namespace spare {
         export interface TelephonySpare {
             brand: string;
             macAddress: string;
-            protocol: OVH.telephony.ProtocolEnum;
+            protocol: telephonyProtocolEnum;
         }
     }
 }
@@ -116,7 +115,7 @@ export namespace telephony {
     export interface AccessoryOffer {
         description?: string;
         name: string;
-        price: OVH.order.Price;
+        price: orderPrice;
         url?: string;
     }
     //telephony.AntihackActionEnum
@@ -135,15 +134,15 @@ export namespace telephony {
     //telephony.BillingAccount
     // fullName: telephony.BillingAccount.BillingAccount
     export interface BillingAccount {
-        allowedOutplan: OVH.order.Price;
+        allowedOutplan: orderPrice;
         billingAccount: string;
-        creditThreshold: OVH.order.Price;
-        currentOutplan: OVH.order.Price;
+        creditThreshold: orderPrice;
+        currentOutplan: orderPrice;
         description: string;
         hiddenExternalNumber: boolean;
         overrideDisplayedNumber: boolean;
-        securityDeposit: OVH.order.Price;
-        status: OVH.telephony.BillingAccountStatusEnum;
+        securityDeposit: orderPrice;
+        status: telephony.BillingAccountStatusEnum;
         trusted: boolean;
     }
     //telephony.BillingAccountStatusEnum
@@ -152,7 +151,7 @@ export namespace telephony {
     // fullName: telephony.CallDiagnosticCallQuality.CallDiagnosticCallQuality
     export interface CallDiagnosticCallQuality {
         callId: string;
-        codec: OVH.telephony.CallDiagnosticCodecEnum;
+        codec: telephony.CallDiagnosticCodecEnum;
         flowId: number;
         ipDst: string;
         ipSrc: string;
@@ -170,15 +169,15 @@ export namespace telephony {
     //telephony.CallDiagnosticCdrs
     // fullName: telephony.CallDiagnosticCdrs.CallDiagnosticCdrs
     export interface CallDiagnosticCdrs {
-        basic: OVH.telephony.CallDiagnosticCdrsBasic;
+        basic: telephony.CallDiagnosticCdrsBasic;
         timestamp: string;
     }
     //telephony.CallDiagnosticCdrsBasic
     // fullName: telephony.CallDiagnosticCdrsBasic.CallDiagnosticCdrsBasic
     export interface CallDiagnosticCdrsBasic {
-        cause: OVH.telephony.CallDiagnosticCauseEnum;
+        cause: telephony.CallDiagnosticCauseEnum;
         causeDescription: string;
-        releaseLocation: OVH.telephony.ReleaseLocationEnum;
+        releaseLocation: telephony.ReleaseLocationEnum;
     }
     //telephony.CallDiagnosticCodecEnum
     export type CallDiagnosticCodecEnum = "G722" | "G729" | "PCMA" | "PCMU"
@@ -200,11 +199,11 @@ export namespace telephony {
     //telephony.CallDiagnostics
     // fullName: telephony.CallDiagnostics.CallDiagnostics
     export interface CallDiagnostics {
-        callQuality: OVH.telephony.CallDiagnosticCallQuality[];
-        cdrs: OVH.telephony.CallDiagnosticCdrs[];
-        reporting: OVH.telephony.CallDiagnosticReporting[];
-        sip: OVH.telephony.CallDiagnosticSip[];
-        status: OVH.telephony.CallDiagnosticStatusEnum;
+        callQuality: telephony.CallDiagnosticCallQuality[];
+        cdrs: telephony.CallDiagnosticCdrs[];
+        reporting: telephony.CallDiagnosticReporting[];
+        sip: telephony.CallDiagnosticSip[];
+        status: telephony.CallDiagnosticStatusEnum;
     }
     //telephony.CallsGenerated
     // fullName: telephony.CallsGenerated.CallsGenerated
@@ -218,7 +217,7 @@ export namespace telephony {
         callee?: string;
         caller?: string;
         dtmf?: string;
-        hangupCause?: OVH.telephony.CallsGeneratorHangupCauseEnum;
+        hangupCause?: telephony.CallsGeneratorHangupCauseEnum;
         hangupDatetime?: string;
         identifier: string;
         transferFrom?: string;
@@ -248,7 +247,7 @@ export namespace telephony {
         description: string;
         offers: string[];
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
+        serviceType: telephony.TypeServiceEnum;
     }
     //telephony.ConferenceHistory
     // fullName: telephony.ConferenceHistory.ConferenceHistory
@@ -258,7 +257,7 @@ export namespace telephony {
         dateBegin: string;
         dateEnd: string;
         duration: number;
-        events: OVH.telephony.ConferenceHistoryEvent[];
+        events: telephony.ConferenceHistoryEvent[];
         id: number;
         recordUrl?: string;
     }
@@ -300,11 +299,11 @@ export namespace telephony {
         anonymousRejection: boolean;
         enterMuted: boolean;
         eventsChannel: string;
-        language: OVH.telephony.ConferenceLanguageEnum;
+        language: telephony.ConferenceLanguageEnum;
         pin: string;
         recordStatus: boolean;
         reportEmail?: string;
-        reportStatus: OVH.telephony.ConferenceReportStatusEnum;
+        reportStatus: telephony.ConferenceReportStatusEnum;
         whiteLabelReport: boolean;
     }
     //telephony.ConferenceReportStatusEnum
@@ -313,7 +312,7 @@ export namespace telephony {
     // fullName: telephony.ConferenceWebAccess.ConferenceWebAccess
     export interface ConferenceWebAccess {
         id: number;
-        type: OVH.telephony.ConferenceWebAccessTypeEnum;
+        type: telephony.ConferenceWebAccessTypeEnum;
         url: string;
     }
     //telephony.ConferenceWebAccessTypeEnum
@@ -321,7 +320,7 @@ export namespace telephony {
     //telephony.ConsumptionThreshold
     // fullName: telephony.ConsumptionThreshold.ConsumptionThreshold
     export interface ConsumptionThreshold {
-        block: OVH.telephony.OutplanNotificationBlockEnum;
+        block: telephony.OutplanNotificationBlockEnum;
         id: number;
         notifyEmail: string;
         percentage: number;
@@ -331,7 +330,7 @@ export namespace telephony {
     export interface Contact {
         address?: string;
         city?: string;
-        country?: OVH.coreTypes.CountryEnum;
+        country?: coreTypes.CountryEnum;
         email?: string;
         firstname?: string;
         name?: string;
@@ -352,38 +351,38 @@ export namespace telephony {
     export interface Ddi {
         description: string;
         destination?: string;
-        featureType: OVH.telephony.TypeEnum;
+        featureType: telephony.TypeEnum;
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
+        serviceType: telephony.TypeServiceEnum;
     }
     //telephony.DefaultSipDomains
     // fullName: telephony.DefaultSipDomains.DefaultSipDomains
     export interface DefaultSipDomains {
-        country: OVH.telephony.NumberCountryEnum;
+        country: telephony.NumberCountryEnum;
         currentDomain: string;
         list: string[];
-        productType: OVH.telephony.SipDomainProductTypeEnum;
+        productType: telephony.SipDomainProductTypeEnum;
     }
     //telephony.DetailedRateCodeInformation
     // fullName: telephony.DetailedRateCodeInformation.DetailedRateCodeInformation
     export interface DetailedRateCodeInformation {
         cancelLimitDatetime?: string;
         effectiveDatetime?: string;
-        pricePerCallWithoutTax: OVH.order.Price;
-        pricePerMinuteWithoutTax: OVH.order.Price;
+        pricePerCallWithoutTax: orderPrice;
+        pricePerMinuteWithoutTax: orderPrice;
         rateCode: string;
-        repaymentPricePerCallWithoutTax: OVH.order.Price;
-        repaymentPricePerMinuteWithoutTax: OVH.order.Price;
-        updateRateCodePriceWithoutTax?: OVH.order.Price;
+        repaymentPricePerCallWithoutTax: orderPrice;
+        repaymentPricePerMinuteWithoutTax: orderPrice;
+        updateRateCodePriceWithoutTax?: orderPrice;
     }
     //telephony.DiagnosticReport
     // fullName: telephony.DiagnosticReport.DiagnosticReport
     export interface DiagnosticReport {
         callId: string;
-        category: OVH.telephony.DiagnosticReportCategoryEnum;
+        category: telephony.DiagnosticReportCategoryEnum;
         datetime: string;
         description: string;
-        level: OVH.telephony.DiagnosticReportLevelEnum;
+        level: telephony.DiagnosticReportLevelEnum;
         name: string;
         report: string;
     }
@@ -422,7 +421,7 @@ export namespace telephony {
         displayUniversalDirectory: boolean;
         email: string;
         firstName: string;
-        gender?: OVH.nichandle.GenderEnum;
+        gender?: nichandle.GenderEnum;
         inseeCode: number;
         legalForm: string;
         lineDescription: string;
@@ -455,15 +454,15 @@ export namespace telephony {
     export interface EasyHunting {
         anonymousRejection: boolean;
         description: string;
-        featureType: OVH.telephony.TypeEnum;
+        featureType: telephony.TypeEnum;
         isCCS: boolean;
         maxWaitTime: number;
         queueSize: number;
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
-        showCallerNumber: OVH.telephony.OvhPabxDialplanNumberPresentationEnum;
+        serviceType: telephony.TypeServiceEnum;
+        showCallerNumber: telephony.OvhPabxDialplanNumberPresentationEnum;
         statusIvrEnabled: boolean;
-        strategy: OVH.telephony.OvhPabxHuntingQueueStrategyEnum;
+        strategy: telephony.OvhPabxHuntingQueueStrategyEnum;
         toneOnClosing?: number;
         toneOnHold?: number;
         toneOnOpening?: number;
@@ -475,12 +474,12 @@ export namespace telephony {
         callerIdNumber?: string;
         conditionId: number;
         destinationNumber?: string;
-        screenListType: OVH.telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum;
+        screenListType: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum;
     }
     //telephony.EasyHuntingScreenListsConditionsSettings
     // fullName: telephony.EasyHuntingScreenListsConditionsSettings.EasyHuntingScreenListsConditionsSettings
     export interface EasyHuntingScreenListsConditionsSettings {
-        status: OVH.telephony.EasyHuntingScreenListsConditionsStatusEnum;
+        status: telephony.EasyHuntingScreenListsConditionsStatusEnum;
     }
     //telephony.EasyHuntingScreenListsConditionsStatusEnum
     export type EasyHuntingScreenListsConditionsStatusEnum = "disabled" | "incomingBlackList" | "incomingWhiteList"
@@ -488,23 +487,23 @@ export namespace telephony {
     // fullName: telephony.EasyHuntingTimeConditions.EasyHuntingTimeConditions
     export interface EasyHuntingTimeConditions {
         conditionId: number;
-        policy: OVH.telephony.TimeConditionsPolicyEnum;
+        policy: telephony.TimeConditionsPolicyEnum;
         timeFrom: string;
         timeTo: string;
-        weekDay: OVH.telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum;
+        weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum;
     }
     //telephony.EasyHuntingTimeConditionsSettings
     // fullName: telephony.EasyHuntingTimeConditionsSettings.EasyHuntingTimeConditionsSettings
     export interface EasyHuntingTimeConditionsSettings {
         enable: boolean;
         slot1Number?: string;
-        slot1Type?: OVH.telephony.TimeConditionsSettingsForwardTypeEnum;
+        slot1Type?: telephony.TimeConditionsSettingsForwardTypeEnum;
         slot2Number?: string;
-        slot2Type?: OVH.telephony.TimeConditionsSettingsForwardTypeEnum;
+        slot2Type?: telephony.TimeConditionsSettingsForwardTypeEnum;
         slot3Number?: string;
-        slot3Type?: OVH.telephony.TimeConditionsSettingsForwardTypeEnum;
+        slot3Type?: telephony.TimeConditionsSettingsForwardTypeEnum;
         unavailableNumber?: string;
-        unavailableType?: OVH.telephony.TimeConditionsSettingsForwardTypeEnum;
+        unavailableType?: telephony.TimeConditionsSettingsForwardTypeEnum;
     }
     //telephony.EasyMiniPabxHuntingAgent
     // fullName: telephony.EasyMiniPabxHuntingAgent.EasyMiniPabxHuntingAgent
@@ -522,9 +521,9 @@ export namespace telephony {
     // fullName: telephony.EasyPabx.EasyPabx
     export interface EasyPabx {
         description: string;
-        featureType: OVH.telephony.TypeEnum;
+        featureType: telephony.TypeEnum;
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
+        serviceType: telephony.TypeServiceEnum;
     }
     //telephony.EasyPabxHunting
     // fullName: telephony.EasyPabxHunting.EasyPabxHunting
@@ -533,8 +532,8 @@ export namespace telephony {
         name: string;
         noReplyTimer: number;
         numberOfCalls: number;
-        pattern: OVH.telephony.EasyMiniPabxHuntingPatternEnum;
-        strategy: OVH.telephony.EasyMiniPabxHuntingStrategyEnum;
+        pattern: telephony.EasyMiniPabxHuntingPatternEnum;
+        strategy: telephony.EasyMiniPabxHuntingStrategyEnum;
         toneOnClosure: boolean;
         toneOnClosureSoundId?: number;
         toneOnHold: boolean;
@@ -557,8 +556,8 @@ export namespace telephony {
     //telephony.EntrepriseNumberInformationsTask
     // fullName: telephony.EntrepriseNumberInformationsTask.EntrepriseNumberInformationsTask
     export interface EntrepriseNumberInformationsTask {
-        informations: OVH.telephony.EntrepriseNumberInformations;
-        status: OVH.telephony.TaskStatusEnum;
+        informations: telephony.EntrepriseNumberInformations;
+        status: telephony.TaskStatusEnum;
     }
     //telephony.Event
     // fullName: telephony.Event.Event
@@ -566,11 +565,11 @@ export namespace telephony {
         calledIdentifier: string;
         callingIdentifier: string;
         dateTime: string;
-        direction: OVH.telephony.RealtimeEventDirection;
+        direction: telephony.RealtimeEventDirection;
         duration: number;
-        eventType: OVH.telephony.RealtimeEventType;
+        eventType: telephony.RealtimeEventType;
         id: string;
-        protocol: OVH.telephony.RealtimeEventProtocol;
+        protocol: telephony.RealtimeEventProtocol;
     }
     //telephony.EventCallback
     // fullName: telephony.EventCallback.EventCallback
@@ -587,10 +586,10 @@ export namespace telephony {
     // fullName: telephony.Fax.Fax
     export interface Fax {
         description: string;
-        notifications?: OVH.telephony.LineNotificationsOptions;
+        notifications?: telephony.LineNotificationsOptions;
         offers: string[];
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
+        serviceType: telephony.TypeServiceEnum;
     }
     //telephony.FaxCampaign
     // fullName: telephony.FaxCampaign.FaxCampaign
@@ -624,8 +623,8 @@ export namespace telephony {
         consumptionId: number;
         creationDatetime: string;
         pages: number;
-        priceWithoutTax: OVH.order.Price;
-        wayType: OVH.telephony.FaxConsumptionWayTypeEnum;
+        priceWithoutTax: orderPrice;
+        wayType: telephony.FaxConsumptionWayTypeEnum;
     }
     //telephony.FaxConsumptionWayTypeEnum
     export type FaxConsumptionWayTypeEnum = "received" | "sent"
@@ -636,12 +635,12 @@ export namespace telephony {
     export interface FaxProperties {
         callNumber: string;
         countryCode: string;
-        faxMaxCall: OVH.telephony.FaxSendingTries;
-        faxQuality: OVH.telephony.FaxQualityEnum;
+        faxMaxCall: telephony.FaxSendingTries;
+        faxQuality: telephony.FaxQualityEnum;
         faxTagLine: string;
         fromEmail: string;
         fromName: string;
-        mailFormat: OVH.telephony.FaxMailFormatEnum;
+        mailFormat: telephony.FaxMailFormatEnum;
         receiver: string;
         redirectionEmail: string[];
         rejectAnonymous: boolean;
@@ -656,7 +655,7 @@ export namespace telephony {
         blacklistedTSI?: string[];
         callNumber: string;
         countryCode: string;
-        filteringList?: OVH.telephony.FaxScreenListTypeEnum;
+        filteringList?: telephony.FaxScreenListTypeEnum;
         serviceName: string;
         whitelistedNumbers?: string[];
         whitelistedTSI?: string[];
@@ -685,44 +684,44 @@ export namespace telephony {
     export interface HardwareOffer {
         description?: string;
         name: string;
-        price: OVH.order.Price;
+        price: orderPrice;
         url?: string;
     }
     //telephony.HistoryConsumption
     // fullName: telephony.HistoryConsumption.HistoryConsumption
     export interface HistoryConsumption {
         date: string;
-        price: OVH.order.Price;
-        priceOutplan: OVH.order.Price;
-        status: OVH.telephony.BillStatusEnum;
+        price: orderPrice;
+        priceOutplan: orderPrice;
+        status: telephony.BillStatusEnum;
     }
     //telephony.HistoryRepaymentConsumption
     // fullName: telephony.HistoryRepaymentConsumption.HistoryRepaymentConsumption
     export interface HistoryRepaymentConsumption {
         billingNumber: string;
         date: string;
-        price: OVH.order.Price;
-        status: OVH.telephony.BillStatusEnum;
+        price: orderPrice;
+        status: telephony.BillStatusEnum;
     }
     //telephony.HistoryTollfreeConsumption
     // fullName: telephony.HistoryTollfreeConsumption.HistoryTollfreeConsumption
     export interface HistoryTollfreeConsumption {
         date: string;
-        price: OVH.order.Price;
-        status: OVH.telephony.BillStatusEnum;
+        price: orderPrice;
+        status: telephony.BillStatusEnum;
     }
     //telephony.Line
     // fullName: telephony.Line.Line
     export interface Line {
         canChangePassword: boolean;
         description: string;
-        getPublicOffer: OVH.telephony.LineOffer;
+        getPublicOffer: telephony.LineOffer;
         infrastructure: string;
         isAttachedToOtherLinesPhone: boolean;
-        notifications?: OVH.telephony.LineNotificationsOptions;
+        notifications?: telephony.LineNotificationsOptions;
         offers: string[];
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
+        serviceType: telephony.TypeServiceEnum;
         simultaneousLines: number;
     }
     //telephony.LineBlockingMode
@@ -733,26 +732,26 @@ export namespace telephony {
     // fullName: telephony.LineNotificationsLogsOptions.LineNotificationsLogsOptions
     export interface LineNotificationsLogsOptions {
         email?: string;
-        frequency?: OVH.telephony.LineNotificationsLogsFrequencyEnum;
+        frequency?: telephony.LineNotificationsLogsFrequencyEnum;
         sendIfNull?: boolean;
     }
     //telephony.LineNotificationsOptions
     // fullName: telephony.LineNotificationsOptions.LineNotificationsOptions
     export interface LineNotificationsOptions {
-        logs?: OVH.telephony.LineNotificationsLogsOptions;
+        logs?: telephony.LineNotificationsLogsOptions;
     }
     //telephony.LineOffer
     // fullName: telephony.LineOffer.LineOffer
     export interface LineOffer {
         description: string;
         name: string;
-        price?: OVH.order.Price;
+        price?: orderPrice;
     }
     //telephony.LineOffersAndContracts
     // fullName: telephony.LineOffersAndContracts.LineOffersAndContracts
     export interface LineOffersAndContracts {
-        contracts: OVH.order.Contract[];
-        offers: OVH.telephony.LineOffer[];
+        contracts: order.Contract[];
+        offers: telephony.LineOffer[];
     }
     //telephony.LineOptionForwardNatureTypeEnum
     export type LineOptionForwardNatureTypeEnum = "fax" | "number" | "voicemail"
@@ -774,22 +773,22 @@ export namespace telephony {
         doNotDisturb: boolean;
         domain: string;
         forwardBackup: boolean;
-        forwardBackupNature: OVH.telephony.LineOptionForwardNatureTypeEnum;
+        forwardBackupNature: telephony.LineOptionForwardNatureTypeEnum;
         forwardBackupNumber: string;
         forwardBusy: boolean;
-        forwardBusyNature: OVH.telephony.LineOptionForwardNatureTypeEnum;
+        forwardBusyNature: telephony.LineOptionForwardNatureTypeEnum;
         forwardBusyNumber: string;
         forwardNoReply: boolean;
         forwardNoReplyDelay: number;
-        forwardNoReplyNature: OVH.telephony.LineOptionForwardNatureTypeEnum;
+        forwardNoReplyNature: telephony.LineOptionForwardNatureTypeEnum;
         forwardNoReplyNumber: string;
         forwardUnconditional: boolean;
-        forwardUnconditionalNature: OVH.telephony.LineOptionForwardNatureTypeEnum;
+        forwardUnconditionalNature: telephony.LineOptionForwardNatureTypeEnum;
         forwardUnconditionalNumber: string;
         identificationRestriction: boolean;
-        intercom: OVH.telephony.LineOptionIntercomEnum;
+        intercom: telephony.LineOptionIntercomEnum;
         ipRestrictions: string[];
-        language: OVH.telephony.LineOptionLanguageEnum;
+        language: telephony.LineOptionLanguageEnum;
         lockOutCall: boolean;
         lockOutCallPassword?: string;
         recordOutgoingCallsBeta: boolean;
@@ -805,16 +804,16 @@ export namespace telephony {
         brand: string;
         description: string;
         maxline: number;
-        price: OVH.order.Price;
-        protocol: OVH.telephony.ProtocolEnum;
+        price: orderPrice;
+        protocol: telephonyProtocolEnum;
     }
     //telephony.LinePhoneAssociable
     // fullName: telephony.LinePhoneAssociable.LinePhoneAssociable
     export interface LinePhoneAssociable {
-        associatedLines: OVH.telephony.LinePhoneAssociableConfiguredLines[];
+        associatedLines: telephony.LinePhoneAssociableConfiguredLines[];
         brand: string;
         maxLines: number;
-        protocol: OVH.telephony.ProtocolEnum;
+        protocol: telephonyProtocolEnum;
     }
     //telephony.LinePhoneAssociableConfiguredLines
     // fullName: telephony.LinePhoneAssociableConfiguredLines.LinePhoneAssociableConfiguredLines
@@ -828,9 +827,9 @@ export namespace telephony {
     // fullName: telephony.MiniPabx.MiniPabx
     export interface MiniPabx {
         description: string;
-        featureType: OVH.telephony.TypeEnum;
+        featureType: telephony.TypeEnum;
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
+        serviceType: telephony.TypeServiceEnum;
     }
     //telephony.MiniPabxHunting
     // fullName: telephony.MiniPabxHunting.MiniPabxHunting
@@ -839,9 +838,9 @@ export namespace telephony {
         name: string;
         numberOfCalls: number;
         onHoldTimer: number;
-        pattern: OVH.telephony.EasyMiniPabxHuntingPatternEnum;
+        pattern: telephony.EasyMiniPabxHuntingPatternEnum;
         queueSize: number;
-        strategy: OVH.telephony.EasyMiniPabxHuntingStrategyEnum;
+        strategy: telephony.EasyMiniPabxHuntingStrategyEnum;
         toneOnClosure: boolean;
         toneOnClosureSoundId?: number;
         toneOnHold: boolean;
@@ -853,10 +852,10 @@ export namespace telephony {
     // fullName: telephony.Number.Number
     export interface Number {
         description: string;
-        featureType: OVH.telephony.TypeEnum;
+        featureType: telephony.TypeEnum;
         partOfPool?: string;
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
+        serviceType: telephony.TypeServiceEnum;
     }
     //telephony.NumberCountryCodeEnum
     export type NumberCountryCodeEnum = 32 | 33 | 34 | 39 | 41 | 44 | 49
@@ -867,12 +866,12 @@ export namespace telephony {
     export interface NumberDetailedZone {
         askedCity?: string;
         city: string;
-        country: OVH.telephony.NumberCountryEnum;
+        country: telephony.NumberCountryEnum;
         internationalNumber: string;
-        matchingCriteria?: OVH.telephony.NumberDetailedZoneMatchingCriteriaEnum;
+        matchingCriteria?: telephony.NumberDetailedZoneMatchingCriteriaEnum;
         number: string;
-        prefix: OVH.telephony.NumberCountryCodeEnum;
-        type: OVH.telephony.NumberDetailedZoneTypeEnum;
+        prefix: telephony.NumberCountryCodeEnum;
+        type: telephony.NumberDetailedZoneTypeEnum;
         zipCode?: string;
         zneList: string[];
     }
@@ -890,11 +889,11 @@ export namespace telephony {
     //telephony.OfferTask
     // fullName: telephony.OfferTask.OfferTask
     export interface OfferTask {
-        action: OVH.telephony.OfferTaskActionEnum;
+        action: telephony.OfferTaskActionEnum;
         executionDate: string;
-        status: OVH.telephony.TaskStatusEnum;
+        status: telephony.TaskStatusEnum;
         taskId: number;
-        type: OVH.telephony.OfferTaskTypeEnum;
+        type: telephony.OfferTaskTypeEnum;
     }
     //telephony.OfferTaskActionEnum
     export type OfferTaskActionEnum = "convertToAlias" | "convertToSip" | "migrateToNewVoicemail" | "removeSimltaneousLines" | "switchServer" | "termination" | "updateFirmware" | "upgrade"
@@ -906,10 +905,10 @@ export namespace telephony {
     // fullName: telephony.OvhPabx.OvhPabx
     export interface OvhPabx {
         description: string;
-        featureType: OVH.telephony.TypeEnum;
+        featureType: telephony.TypeEnum;
         isCCS: boolean;
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
+        serviceType: telephony.TypeServiceEnum;
     }
     //telephony.OvhPabxCustomStatus
     // fullName: telephony.OvhPabxCustomStatus.OvhPabxCustomStatus
@@ -926,7 +925,7 @@ export namespace telephony {
         dialplanId: number;
         lastUpdate: string;
         name: string;
-        showCallerNumber: OVH.telephony.OvhPabxDialplanNumberPresentationEnum;
+        showCallerNumber: telephony.OvhPabxDialplanNumberPresentationEnum;
         transferTimeout: number;
     }
     //telephony.OvhPabxDialplanExtension
@@ -935,8 +934,8 @@ export namespace telephony {
         enabled: boolean;
         extensionId: number;
         position: number;
-        schedulerCategory?: OVH.telephony.SchedulerCategoryEnum;
-        screenListType?: OVH.telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum;
+        schedulerCategory?: telephony.SchedulerCategoryEnum;
+        screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum;
     }
     //telephony.OvhPabxDialplanExtensionConditionScreenList
     // fullName: telephony.OvhPabxDialplanExtensionConditionScreenList.OvhPabxDialplanExtensionConditionScreenList
@@ -944,7 +943,7 @@ export namespace telephony {
         callerIdNumber?: string;
         conditionId: number;
         destinationNumber?: string;
-        screenListType?: OVH.telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum;
+        screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum;
     }
     //telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum
     export type OvhPabxDialplanExtensionConditionScreenListTypeEnum = "destinationBlackList" | "destinationWhiteList" | "incomingBlackList" | "incomingWhiteList"
@@ -954,14 +953,14 @@ export namespace telephony {
         conditionId: number;
         timeFrom: string;
         timeTo: string;
-        weekDay: OVH.telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum;
+        weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum;
     }
     //telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum
     export type OvhPabxDialplanExtensionConditionTimeWeekDayEnum = "friday" | "monday" | "saturday" | "sunday" | "thursday" | "tuesday" | "wednesday"
     //telephony.OvhPabxDialplanExtensionRule
     // fullName: telephony.OvhPabxDialplanExtensionRule.OvhPabxDialplanExtensionRule
     export interface OvhPabxDialplanExtensionRule {
-        action: OVH.telephony.OvhPabxDialplanExtensionRuleActionEnum;
+        action: telephony.OvhPabxDialplanExtensionRuleActionEnum;
         actionParam?: string;
         negativeAction: boolean;
         position: number;
@@ -987,9 +986,9 @@ export namespace telephony {
         description?: string;
         number: string;
         simultaneousLines: number;
-        status: OVH.telephony.OvhPabxHuntingAgentStatusEnum;
+        status: telephony.OvhPabxHuntingAgentStatusEnum;
         timeout: number;
-        type: OVH.telephony.OvhPabxHuntingAgentTypeEnum;
+        type: telephony.OvhPabxHuntingAgentTypeEnum;
         wrapUpTime: number;
     }
     //telephony.OvhPabxHuntingAgentLiveStatus
@@ -997,7 +996,7 @@ export namespace telephony {
     export interface OvhPabxHuntingAgentLiveStatus {
         answeredCalls: number;
         lastStatusChange: string;
-        status: OVH.telephony.OvhPabxHuntingLiveAgentStatusEnum;
+        status: telephony.OvhPabxHuntingLiveAgentStatusEnum;
         totalCallDuration: number;
     }
     //telephony.OvhPabxHuntingAgentQueue
@@ -1018,9 +1017,9 @@ export namespace telephony {
     //telephony.OvhPabxHuntingQueue
     // fullName: telephony.OvhPabxHuntingQueue.OvhPabxHuntingQueue
     export interface OvhPabxHuntingQueue {
-        actionOnClosure?: OVH.telephony.OvhPabxQueueActionEnum;
+        actionOnClosure?: telephony.OvhPabxQueueActionEnum;
         actionOnClosureParam?: string;
-        actionOnOverflow?: OVH.telephony.OvhPabxQueueActionEnum;
+        actionOnOverflow?: telephony.OvhPabxQueueActionEnum;
         actionOnOverflowParam?: string;
         askForRecordDisabling?: boolean;
         description?: string;
@@ -1029,10 +1028,10 @@ export namespace telephony {
         maxWaitTime: number;
         queueId: number;
         record?: boolean;
-        recordDisablingDigit?: OVH.telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum;
-        recordDisablingLanguage?: OVH.telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum;
+        recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum;
+        recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum;
         soundOnHold?: number;
-        strategy: OVH.telephony.OvhPabxHuntingQueueStrategyEnum;
+        strategy: telephony.OvhPabxHuntingQueueStrategyEnum;
     }
     //telephony.OvhPabxHuntingQueueLiveCalls
     // fullName: telephony.OvhPabxHuntingQueueLiveCalls.OvhPabxHuntingQueueLiveCalls
@@ -1047,7 +1046,7 @@ export namespace telephony {
         id: number;
         onHold?: boolean;
         queue: string;
-        state: OVH.telephony.OvhPabxHuntingLiveCallsStateEnum;
+        state: telephony.OvhPabxHuntingLiveCallsStateEnum;
     }
     //telephony.OvhPabxHuntingQueueLiveStatistics
     // fullName: telephony.OvhPabxHuntingQueueLiveStatistics.OvhPabxHuntingQueueLiveStatistics
@@ -1080,7 +1079,7 @@ export namespace telephony {
     //telephony.OvhPabxMenuEntry
     // fullName: telephony.OvhPabxMenuEntry.OvhPabxMenuEntry
     export interface OvhPabxMenuEntry {
-        action: OVH.telephony.OvhPabxIvrMenuEntryActionEnum;
+        action: telephony.OvhPabxIvrMenuEntryActionEnum;
         actionParam: string;
         dtmf: string;
         entryId: number;
@@ -1112,7 +1111,7 @@ export namespace telephony {
     export interface OvhPabxTts {
         id: number;
         text: string;
-        voice: OVH.telephony.OvhPabxTtsVoiceEnum;
+        voice: telephony.OvhPabxTtsVoiceEnum;
     }
     //telephony.OvhPabxTtsVoiceEnum
     export type OvhPabxTtsVoiceEnum = "Bruce" | "Helene" | "Jenny" | "Loic"
@@ -1122,7 +1121,7 @@ export namespace telephony {
     // fullName: telephony.PcsFile.PcsFile
     export interface PcsFile {
         filename: string;
-        status: OVH.telephony.PcsFileStatusEnum;
+        status: telephony.PcsFileStatusEnum;
         url: string;
         urlExpirationDatetime: string;
     }
@@ -1136,8 +1135,8 @@ export namespace telephony {
         macAddress: string;
         maxline: number;
         mgcpIpRestriction?: string;
-        phoneConfiguration: OVH.telephony.PhoneConfigurationProperty[];
-        protocol: OVH.telephony.ProtocolEnum;
+        phoneConfiguration: telephony.PhoneConfigurationProperty[];
+        protocol: telephonyProtocolEnum;
         userPassword?: string;
     }
     //telephony.PhoneConfigurationLevelEnum
@@ -1149,11 +1148,11 @@ export namespace telephony {
         description?: string;
         enum?: string[];
         group?: string;
-        level?: OVH.telephony.PhoneConfigurationLevelEnum;
+        level?: telephony.PhoneConfigurationLevelEnum;
         maxlength?: number;
         name?: string;
-        rangeValue?: OVH.complexType.Range<number>;
-        type?: OVH.telephony.PhoneConfigurationTypeEnum;
+        rangeValue?: complexType.Range<number>;
+        type?: telephony.PhoneConfigurationTypeEnum;
         value?: string;
     }
     //telephony.PhoneConfigurationTypeEnum
@@ -1195,7 +1194,7 @@ export namespace telephony {
     export interface Portability {
         billingAccount: string;
         creationDate: string;
-        customerInfos: OVH.telephony.PortabilityCustomerInfos;
+        customerInfos: telephony.PortabilityCustomerInfos;
         desiredExecutionDate?: string;
         error: boolean;
         errorCodes: string[];
@@ -1204,7 +1203,7 @@ export namespace telephony {
         numbersList: string[];
         operator: string;
         orderId: number;
-        portabilityCountry: OVH.telephony.PortabilityCountryEnum;
+        portabilityCountry: telephony.PortabilityCountryEnum;
     }
     //telephony.PortabilityCountryEnum
     export type PortabilityCountryEnum = "belgium" | "france" | "switzerland"
@@ -1243,16 +1242,16 @@ export namespace telephony {
     export interface PortabilityStep {
         description?: string;
         doneDate?: string;
-        duration: OVH.telephony.PortabilityStepDuration;
-        infos?: OVH.telephony.PortabilityStepInfos;
-        name: OVH.telephony.PortabilityStepNameEnum;
-        status: OVH.telephony.PortabilityStepStatusEnum;
+        duration: telephony.PortabilityStepDuration;
+        infos?: telephony.PortabilityStepInfos;
+        name: telephony.PortabilityStepNameEnum;
+        status: telephony.PortabilityStepStatusEnum;
     }
     //telephony.PortabilityStepDuration
     // fullName: telephony.PortabilityStepDuration.PortabilityStepDuration
     export interface PortabilityStepDuration {
         quantity: number;
-        unit: OVH.telephony.PortabilityStepDurationUnitEnum;
+        unit: telephony.PortabilityStepDurationUnitEnum;
     }
     //telephony.PortabilityStepDurationUnitEnum
     export type PortabilityStepDurationUnitEnum = "NA" | "day" | "hour" | "openday"
@@ -1276,12 +1275,12 @@ export namespace telephony {
         countrySuffix: string;
         creationDatetime: string;
         designation: string;
-        destinationType: OVH.telephony.VoiceConsumptionDestinationTypeEnum;
+        destinationType: telephony.VoiceConsumptionDestinationTypeEnum;
         duration: number;
         hangupNature?: string;
-        planType: OVH.telephony.VoiceConsumptionPlanTypeEnum;
-        priceWithoutTax: OVH.order.Price;
-        wayType: OVH.telephony.VoiceConsumptionWayTypeEnum;
+        planType: telephony.VoiceConsumptionPlanTypeEnum;
+        priceWithoutTax: orderPrice;
+        wayType: telephony.VoiceConsumptionWayTypeEnum;
     }
     //telephony.PropertyEnum
     export type PropertyEnum = "xdsl"
@@ -1291,8 +1290,8 @@ export namespace telephony {
     // fullName: telephony.RateCodeInformation.RateCodeInformation
     export interface RateCodeInformation {
         code: string;
-        pricePerCallWithoutTax: OVH.order.Price;
-        pricePerMinuteWithoutTax: OVH.order.Price;
+        pricePerCallWithoutTax: orderPrice;
+        pricePerMinuteWithoutTax: orderPrice;
     }
     //telephony.RealtimeEventDirection
     export type RealtimeEventDirection = "incoming" | "outgoing"
@@ -1305,9 +1304,9 @@ export namespace telephony {
     export interface Redirect {
         description: string;
         destination?: string;
-        featureType: OVH.telephony.TypeEnum;
+        featureType: telephony.TypeEnum;
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
+        serviceType: telephony.TypeServiceEnum;
     }
     //telephony.RegistrationInformations
     // fullName: telephony.RegistrationInformations.RegistrationInformations
@@ -1345,8 +1344,8 @@ export namespace telephony {
     //telephony.ResetPhoneInfo
     // fullName: telephony.ResetPhoneInfo.ResetPhoneInfo
     export interface ResetPhoneInfo {
-        resetCodeInfo?: OVH.telephony.ResetPhoneCodeInfo;
-        resetPhoneMethod: OVH.telephony.ResetPhoneMethodEnum;
+        resetCodeInfo?: telephony.ResetPhoneCodeInfo;
+        resetPhoneMethod: telephony.ResetPhoneMethodEnum;
     }
     //telephony.ResetPhoneMethodEnum
     export type ResetPhoneMethodEnum = "code" | "http"
@@ -1358,15 +1357,15 @@ export namespace telephony {
         equipmentReference: string;
         id: string;
         newMerchandise?: string;
-        offerTypeNew?: OVH.telephony.RmaOfferTypeEnum;
-        offerTypeOld: OVH.telephony.RmaOfferTypeEnum;
-        process: OVH.telephony.RmaReplaceTypeEnum;
+        offerTypeNew?: telephony.RmaOfferTypeEnum;
+        offerTypeOld: telephony.RmaOfferTypeEnum;
+        process: telephony.RmaReplaceTypeEnum;
         receptionDatetime?: string;
-        shippingContact: OVH.telephony.Contact;
-        status: OVH.telephony.RmaStatusEnum;
-        steps: OVH.telephony.RmaStep[];
+        shippingContact: telephony.Contact;
+        status: telephony.RmaStatusEnum;
+        steps: telephony.RmaStep[];
         terminationDatetime?: string;
-        type: OVH.telephony.RmaTypeEnum;
+        type: telephony.RmaTypeEnum;
     }
     //telephony.RmaOfferTypeEnum
     export type RmaOfferTypeEnum = "deposit" | "loan" | "purchase"
@@ -1387,8 +1386,8 @@ export namespace telephony {
         description: string;
         doneDate?: string;
         infos?: string;
-        name: OVH.telephony.RmaStepNameEnum;
-        status: OVH.telephony.RmaStepStatusEnum;
+        name: telephony.RmaStepNameEnum;
+        status: telephony.RmaStepStatusEnum;
     }
     //telephony.RmaStepNameEnum
     export type RmaStepNameEnum = "dispatchJustification" | "equipmentSending" | "equipmentTesting" | "opening" | "parcelReception" | "parcelValidation" | "validation"
@@ -1400,20 +1399,20 @@ export namespace telephony {
     // fullName: telephony.Rsva.Rsva
     export interface Rsva {
         serviceName: string;
-        typology?: OVH.telephony.portability.SpecialNumberCategoryEnum;
+        typology?: telephony.portability.SpecialNumberCategoryEnum;
     }
     //telephony.Scheduler
     // fullName: telephony.Scheduler.Scheduler
     export interface Scheduler {
         serviceName: string;
-        timeZone: OVH.telephony.timeZone;
+        timeZone: telephony.timeZone;
     }
     //telephony.SchedulerCategoryEnum
     export type SchedulerCategoryEnum = "holidays" | "scheduler1" | "scheduler2" | "scheduler3"
     //telephony.SchedulerEvent
     // fullName: telephony.SchedulerEvent.SchedulerEvent
     export interface SchedulerEvent {
-        categories: OVH.telephony.SchedulerCategoryEnum;
+        categories: telephony.SchedulerCategoryEnum;
         dateEnd: string;
         dateStart: string;
         description?: string;
@@ -1423,8 +1422,8 @@ export namespace telephony {
     //telephony.Screen
     // fullName: telephony.Screen.Screen
     export interface Screen {
-        incomingScreenList: OVH.telephony.ScreenListChoosingEnum;
-        outgoingScreenList: OVH.telephony.ScreenListChoosingEnum;
+        incomingScreenList: telephony.ScreenListChoosingEnum;
+        outgoingScreenList: telephony.ScreenListChoosingEnum;
         serviceName: string;
     }
     //telephony.ScreenList
@@ -1432,9 +1431,9 @@ export namespace telephony {
     export interface ScreenList {
         callNumber: string;
         id: number;
-        nature: OVH.telephony.ScreenListNatureEnum;
+        nature: telephony.ScreenListNatureEnum;
         status: string;
-        type: OVH.telephony.ScreenListTypeEnum;
+        type: telephony.ScreenListTypeEnum;
     }
     //telephony.ScreenListChoosingEnum
     export type ScreenListChoosingEnum = "blacklist" | "disabled" | "whitelist"
@@ -1450,7 +1449,7 @@ export namespace telephony {
     // fullName: telephony.ServiceVoicemailNotifications.ServiceVoicemailNotifications
     export interface ServiceVoicemailNotifications {
         email: string;
-        type: OVH.telephony.ServiceVoicemailMailOptionEnum;
+        type: telephony.ServiceVoicemailMailOptionEnum;
     }
     //telephony.SimultaneousChannelsDetails
     // fullName: telephony.SimultaneousChannelsDetails.SimultaneousChannelsDetails
@@ -1489,7 +1488,7 @@ export namespace telephony {
         message?: string;
         objectCreated?: string;
         serviceType: string;
-        status: OVH.telephony.TaskStatusEnum;
+        status: telephony.TaskStatusEnum;
         taskId: number;
     }
     //telephony.TaskStatusEnum
@@ -1504,25 +1503,25 @@ export namespace telephony {
     export interface TelephonySearchService {
         billingAccount?: string;
         domain: string;
-        type: OVH.telephony.TelephonySearchServiceTypeEnum;
+        type: telephony.TelephonySearchServiceTypeEnum;
     }
     //telephony.TelephonySearchServiceTypeEnum
     export type TelephonySearchServiceTypeEnum = "alias" | "line"
     //telephony.TelephonyService
     // fullName: telephony.TelephonyService.TelephonyService
     export interface TelephonyService {
-        country: OVH.telephony.NumberCountryEnum;
-        countryCode: OVH.telephony.NumberCountryCodeEnum;
-        currentOutplan: OVH.order.Price;
+        country: telephony.NumberCountryEnum;
+        countryCode: telephony.NumberCountryCodeEnum;
+        currentOutplan: orderPrice;
         description: string;
-        featureType: OVH.telephony.TypeEnum;
-        getPublicOffer: OVH.telephony.LineOffer;
+        featureType: telephony.TypeEnum;
+        getPublicOffer: telephony.LineOffer;
         hasFaxCapabilities: boolean;
         offers: string[];
-        properties: OVH.telephony.PropertyEnum[];
+        properties: telephony.PropertyEnum[];
         rio: string;
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
+        serviceType: telephony.TypeServiceEnum;
         simultaneousLines: number;
     }
     //telephony.TemporaryLogsLink
@@ -1536,26 +1535,26 @@ export namespace telephony {
     //telephony.TimeCondition
     // fullName: telephony.TimeCondition.TimeCondition
     export interface TimeCondition {
-        day: OVH.telephony.TimeConditionsDayEnum;
+        day: telephony.TimeConditionsDayEnum;
         hourBegin: string;
         hourEnd: string;
         id: number;
-        policy: OVH.telephony.TimeConditionsPolicyEnum;
+        policy: telephony.TimeConditionsPolicyEnum;
         status: string;
     }
     //telephony.TimeConditionOptions
     // fullName: telephony.TimeConditionOptions.TimeConditionOptions
     export interface TimeConditionOptions {
         slot1Number: string;
-        slot1Type: OVH.telephony.TimeConditionsSlotTypeEnum;
+        slot1Type: telephony.TimeConditionsSlotTypeEnum;
         slot2Number: string;
-        slot2Type: OVH.telephony.TimeConditionsSlotTypeEnum;
+        slot2Type: telephony.TimeConditionsSlotTypeEnum;
         slot3Number: string;
-        slot3Type: OVH.telephony.TimeConditionsSlotTypeEnum;
-        status: OVH.telephony.TimeConditionsGlobalStatusEnum;
-        timeout?: OVH.telephony.TimeConditionsTimeoutEnum;
+        slot3Type: telephony.TimeConditionsSlotTypeEnum;
+        status: telephony.TimeConditionsGlobalStatusEnum;
+        timeout?: telephony.TimeConditionsTimeoutEnum;
         unavailableNumber: string;
-        unavailableType: OVH.telephony.TimeConditionsSlotTypeEnum;
+        unavailableType: telephony.TimeConditionsSlotTypeEnum;
     }
     //telephony.TimeConditionsDayEnum
     export type TimeConditionsDayEnum = "friday" | "holiday" | "monday" | "saturday" | "sunday" | "thursday" | "tuesday" | "wednesday"
@@ -1580,10 +1579,10 @@ export namespace telephony {
     //telephony.Tones
     // fullName: telephony.Tones.Tones
     export interface Tones {
-        callWaiting: OVH.telephony.TonesEnum;
-        endCall: OVH.telephony.TonesEnum;
-        onHold: OVH.telephony.TonesOnHoldEnum;
-        ringback: OVH.telephony.TonesEnum;
+        callWaiting: telephony.TonesEnum;
+        endCall: telephony.TonesEnum;
+        onHold: telephony.TonesOnHoldEnum;
+        ringback: telephony.TonesEnum;
     }
     //telephony.TonesEnum
     export type TonesEnum = "Custom sound" | "None"
@@ -1596,14 +1595,14 @@ export namespace telephony {
     export interface Trunk {
         description: string;
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
+        serviceType: telephony.TypeServiceEnum;
     }
     //telephony.TrunkExternalDisplayedNumber
     // fullName: telephony.TrunkExternalDisplayedNumber.TrunkExternalDisplayedNumber
     export interface TrunkExternalDisplayedNumber {
         createdAt: string;
         number: string;
-        status: OVH.telephony.TrunkExternalDisplayedNumberStatusEnum;
+        status: telephony.TrunkExternalDisplayedNumberStatusEnum;
         validatedAt?: string;
     }
     //telephony.TrunkExternalDisplayedNumberStatusEnum
@@ -1619,14 +1618,14 @@ export namespace telephony {
     export interface TrunkSimultaneousPack {
         channels: number;
         quantity: number;
-        unitPrice: OVH.order.Price;
+        unitPrice: orderPrice;
     }
     //telephony.TrunkSimultaneousPacksRepartition
     // fullName: telephony.TrunkSimultaneousPacksRepartition.TrunkSimultaneousPacksRepartition
     export interface TrunkSimultaneousPacksRepartition {
         optimizedChannelsQuantity: number;
-        packsRepartition: OVH.telephony.TrunkSimultaneousPack[];
-        totalPrice: OVH.order.Price;
+        packsRepartition: telephony.TrunkSimultaneousPack[];
+        totalPrice: orderPrice;
     }
     //telephony.TypeEnum
     export type TypeEnum = "cloudHunting" | "cloudIvr" | "conference" | "contactCenterSolution" | "contactCenterSolutionExpert" | "ddi" | "easyHunting" | "easyPabx" | "empty" | "fax" | "freefax" | "mgcp" | "miniPabx" | "oldConference" | "plugAndFax" | "redirect" | "sip" | "svi" | "voicefax" | "voicemail" | "vxml"
@@ -1641,13 +1640,13 @@ export namespace telephony {
         countrySuffix: string;
         creationDatetime: string;
         designation: string;
-        destinationType: OVH.telephony.VoiceConsumptionDestinationTypeEnum;
+        destinationType: telephony.VoiceConsumptionDestinationTypeEnum;
         dialed?: string;
         duration: number;
         hangupNature?: string;
-        planType: OVH.telephony.VoiceConsumptionPlanTypeEnum;
-        priceWithoutTax: OVH.order.Price;
-        wayType: OVH.telephony.VoiceConsumptionWayTypeEnum;
+        planType: telephony.VoiceConsumptionPlanTypeEnum;
+        priceWithoutTax: orderPrice;
+        wayType: telephony.VoiceConsumptionWayTypeEnum;
     }
     //telephony.VoiceConsumptionDestinationTypeEnum
     export type VoiceConsumptionDestinationTypeEnum = "landline" | "mobile" | "special"
@@ -1663,7 +1662,7 @@ export namespace telephony {
         description: string;
         offers: string[];
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
+        serviceType: telephony.TypeServiceEnum;
     }
     //telephony.VoicemailGreetingEnum
     export type VoicemailGreetingEnum = "default" | "full" | "short"
@@ -1671,7 +1670,7 @@ export namespace telephony {
     // fullName: telephony.VoicemailGreetings.VoicemailGreetings
     export interface VoicemailGreetings {
         callee: string;
-        dir: OVH.telephony.VoicemailMessageFolderGreetingEnum;
+        dir: telephony.VoicemailMessageFolderGreetingEnum;
         id: number;
     }
     //telephony.VoicemailMessageFolderDirectoryEnum
@@ -1684,7 +1683,7 @@ export namespace telephony {
         callee: string;
         caller: string;
         creationDatetime: string;
-        dir: OVH.telephony.VoicemailMessageFolderDirectoryEnum;
+        dir: telephony.VoicemailMessageFolderDirectoryEnum;
         duration: number;
         id: number;
     }
@@ -1698,16 +1697,16 @@ export namespace telephony {
     // fullName: telephony.VoicemailProperties.VoicemailProperties
     export interface VoicemailProperties {
         annouceMessage: string;
-        audioFormat: OVH.telephony.ServiceVoicemailAudioFormatEnum;
+        audioFormat: telephony.ServiceVoicemailAudioFormatEnum;
         doNotRecord: boolean;
         forcePassword: boolean;
         fromEmail: string;
         fromName: string;
         fullGreetingSoundId?: number;
-        greetingType: OVH.telephony.VoicemailGreetingEnum;
+        greetingType: telephony.VoicemailGreetingEnum;
         isNewVersion: boolean;
         keepMessage: boolean;
-        redirectionEmails: OVH.telephony.ServiceVoicemailNotifications[];
+        redirectionEmails: telephony.ServiceVoicemailNotifications[];
         shortGreetingSoundId?: number;
         temporaryGreetingActivated: boolean;
         temporaryGreetingSoundId?: number;
@@ -1719,7 +1718,7 @@ export namespace telephony {
         description: string;
         offers: string[];
         serviceName: string;
-        serviceType: OVH.telephony.TypeServiceEnum;
+        serviceType: telephony.TypeServiceEnum;
     }
     //telephony.VxmlProperties
     // fullName: telephony.VxmlProperties.VxmlProperties
@@ -1741,7 +1740,7 @@ export namespace telephony {
         fileSize: number;
         fileUrl: string;
         id: number;
-        status: OVH.telephony.TaskStatusEnum;
+        status: telephony.TaskStatusEnum;
     }
 }
 // Apis harmony
@@ -4468,7 +4467,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.EasyHuntingScreenListsConditions objects
    * Screen lists conditions checked when a call is received
    */
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions', params: {billingAccount: string, serviceName: string, screenListType?: OVH.telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<number[]>;
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions', params: {billingAccount: string, serviceName: string, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<number[]>;
   /**
    * Screenlist condition
    * Get this object properties
@@ -4493,7 +4492,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.EasyHuntingTimeConditions objects
    * Time conditions checked when a call is received
    */
-  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions', params: {billingAccount: string, serviceName: string, policy?: OVH.telephony.TimeConditionsPolicyEnum}): Promise<number[]>;
+  public get(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions', params: {billingAccount: string, serviceName: string, policy?: telephony.TimeConditionsPolicyEnum}): Promise<number[]>;
   /**
    * Easy hunting time conditions
    * Get this object properties
@@ -4583,7 +4582,7 @@ export class ApiTelephony extends OvhWrapper {
    * file operations
    * Previous billed consumption files
    */
-  public get(path: '/telephony/{billingAccount}/historyConsumption/{date}/file', params: {billingAccount: string, date: string, extension: OVH.telephony.BillDocument}): Promise<telephony.PcsFile>;
+  public get(path: '/telephony/{billingAccount}/historyConsumption/{date}/file', params: {billingAccount: string, date: string, extension: telephony.BillDocument}): Promise<telephony.PcsFile>;
   /**
    * List the telephony.HistoryRepaymentConsumption objects
    * Previous repayment bill
@@ -4768,7 +4767,7 @@ export class ApiTelephony extends OvhWrapper {
    * export operations
    * Export the phonebook's contacts
    */
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export', params: {billingAccount: string, bookKey: string, serviceName: string, format: OVH.telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export', params: {billingAccount: string, bookKey: string, serviceName: string, format: telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
   /**
    * List the telephony.PhonebookContact objects
    * Phonebook contacts
@@ -4818,7 +4817,7 @@ export class ApiTelephony extends OvhWrapper {
    * statistics operations
    * Get statistics of the current line
    */
-  public get(path: '/telephony/{billingAccount}/line/{serviceName}/statistics', params: {billingAccount: string, serviceName: string, timeframe: OVH.telephony.StatisticsTimeframeEnum, type: OVH.telephony.LineStatisticsTypeEnum}): Promise<complexType.UnitAndValues<telephony.TimestampAndValue>>;
+  public get(path: '/telephony/{billingAccount}/line/{serviceName}/statistics', params: {billingAccount: string, serviceName: string, timeframe: telephony.StatisticsTimeframeEnum, type: telephony.LineStatisticsTypeEnum}): Promise<complexType.UnitAndValues<telephony.TimestampAndValue>>;
   /**
    * Line tones
    * Get this object properties
@@ -4883,7 +4882,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.OfferTask objects
    * Operations on a telephony service's offer
    */
-  public get(path: '/telephony/{billingAccount}/offerTask', params: {billingAccount: string, action?: OVH.telephony.OfferTaskActionEnum, status?: OVH.telephony.TaskStatusEnum, type?: OVH.telephony.OfferTaskTypeEnum}): Promise<number[]>;
+  public get(path: '/telephony/{billingAccount}/offerTask', params: {billingAccount: string, action?: telephony.OfferTaskActionEnum, status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum}): Promise<number[]>;
   /**
    * Operation on a telephony offer
    * Get this object properties
@@ -5138,7 +5137,7 @@ export class ApiTelephony extends OvhWrapper {
    * export operations
    * Export the phonebook's contacts
    */
-  public get(path: '/telephony/{billingAccount}/phonebook/{bookKey}/export', params: {billingAccount: string, bookKey: string, format: OVH.telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
+  public get(path: '/telephony/{billingAccount}/phonebook/{bookKey}/export', params: {billingAccount: string, bookKey: string, format: telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
   /**
    * List the telephony.PhonebookContact objects
    * Phonebook contacts
@@ -5243,7 +5242,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.SchedulerEvent objects
    * Custom events scheduled
    */
-  public get(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events', params: {billingAccount: string, serviceName: string, categories?: OVH.telephony.SchedulerCategoryEnum, dateEnd_from?: string, dateEnd_to?: string, dateStart_from?: string, dateStart_to?: string}): Promise<string[]>;
+  public get(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events', params: {billingAccount: string, serviceName: string, categories?: telephony.SchedulerCategoryEnum, dateEnd_from?: string, dateEnd_to?: string, dateStart_from?: string, dateStart_to?: string}): Promise<string[]>;
   /**
    * Scheduled event
    * Get this object properties
@@ -5283,7 +5282,7 @@ export class ApiTelephony extends OvhWrapper {
    * diagnosticReports operations
    * Get Relevant informations of the service detected from the MOS or the signal leg in SIP/MGCP protocol.
    */
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/diagnosticReports', params: {billingAccount: string, serviceName: string, dayInterval: OVH.telephony.DiagnosticReportIndexEnum}): Promise<telephony.DiagnosticReport[]>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/diagnosticReports', params: {billingAccount: string, serviceName: string, dayInterval: telephony.DiagnosticReportIndexEnum}): Promise<telephony.DiagnosticReport[]>;
   /**
    * Directory Informations
    * Get this object properties
@@ -5308,7 +5307,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.FaxConsumption objects
    * Fax delivery records.
    */
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/faxConsumption', params: {billingAccount: string, serviceName: string, creationDatetime_from?: string, creationDatetime_to?: string, wayType?: OVH.telephony.FaxConsumptionWayTypeEnum}): Promise<number[]>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/faxConsumption', params: {billingAccount: string, serviceName: string, creationDatetime_from?: string, creationDatetime_to?: string, wayType?: telephony.FaxConsumptionWayTypeEnum}): Promise<number[]>;
   /**
    * Fax delivery record
    * Get this object properties
@@ -5328,7 +5327,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.OfferTask objects
    * Operations on a telephony service's offer
    */
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/offerTask', params: {billingAccount: string, serviceName: string, action?: OVH.telephony.OfferTaskActionEnum, status?: OVH.telephony.TaskStatusEnum, type?: OVH.telephony.OfferTaskTypeEnum}): Promise<number[]>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/offerTask', params: {billingAccount: string, serviceName: string, action?: telephony.OfferTaskActionEnum, status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum}): Promise<number[]>;
   /**
    * Operation on a telephony offer
    * Get this object properties
@@ -5338,7 +5337,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.PreviousVoiceConsumption objects
    * Call delivery records of the previous month.
    */
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption', params: {billingAccount: string, serviceName: string, creationDatetime_from?: string, creationDatetime_to?: string, destinationType?: OVH.telephony.VoiceConsumptionDestinationTypeEnum, planType?: OVH.telephony.VoiceConsumptionPlanTypeEnum, wayType?: OVH.telephony.VoiceConsumptionWayTypeEnum}): Promise<number[]>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption', params: {billingAccount: string, serviceName: string, creationDatetime_from?: string, creationDatetime_to?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, planType?: telephony.VoiceConsumptionPlanTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum}): Promise<number[]>;
   /**
    * Call delivery record of the previous month
    * Get this object properties
@@ -5358,7 +5357,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.Task objects
    * Operations on a telephony service
    */
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/task', params: {billingAccount: string, serviceName: string, action?: string, serviceType?: string, status?: OVH.telephony.TaskStatusEnum}): Promise<number[]>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/task', params: {billingAccount: string, serviceName: string, action?: string, serviceType?: string, status?: telephony.TaskStatusEnum}): Promise<number[]>;
   /**
    * Operation on a telephony service
    * Get this object properties
@@ -5368,7 +5367,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.VoiceConsumption objects
    * Call delivery records.
    */
-  public get(path: '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption', params: {billingAccount: string, serviceName: string, creationDatetime_from?: string, creationDatetime_to?: string, destinationType?: OVH.telephony.VoiceConsumptionDestinationTypeEnum, planType?: OVH.telephony.VoiceConsumptionPlanTypeEnum, wayType?: OVH.telephony.VoiceConsumptionWayTypeEnum}): Promise<number[]>;
+  public get(path: '/telephony/{billingAccount}/service/{serviceName}/voiceConsumption', params: {billingAccount: string, serviceName: string, creationDatetime_from?: string, creationDatetime_to?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, planType?: telephony.VoiceConsumptionPlanTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum}): Promise<number[]>;
   /**
    * Call delivery record
    * Get this object properties
@@ -5388,7 +5387,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.Task objects
    * Operations on a telephony billing account
    */
-  public get(path: '/telephony/{billingAccount}/task', params: {billingAccount: string, action?: string, serviceType?: string, status?: OVH.telephony.TaskStatusEnum}): Promise<number[]>;
+  public get(path: '/telephony/{billingAccount}/task', params: {billingAccount: string, action?: string, serviceType?: string, status?: telephony.TaskStatusEnum}): Promise<number[]>;
   /**
    * Operation on a telephony service
    * Get this object properties
@@ -5458,7 +5457,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.VoicemailMessages objects
    * Voicemail directory messages
    */
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories', params: {billingAccount: string, serviceName: string, dir?: OVH.telephony.VoicemailMessageFolderDirectoryEnum}): Promise<number[]>;
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories', params: {billingAccount: string, serviceName: string, dir?: telephony.VoicemailMessageFolderDirectoryEnum}): Promise<number[]>;
   /**
    * Voicemail message
    * Get this object properties
@@ -5468,12 +5467,12 @@ export class ApiTelephony extends OvhWrapper {
    * download operations
    * Get a url to download the sound file
    */
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download', params: {billingAccount: string, id: number, serviceName: string, format?: OVH.telephony.ServiceVoicemailAudioFormatEnum}): Promise<telephony.PcsFile>;
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download', params: {billingAccount: string, id: number, serviceName: string, format?: telephony.ServiceVoicemailAudioFormatEnum}): Promise<telephony.PcsFile>;
   /**
    * List the telephony.VoicemailGreetings objects
    * Voicemail greeting message properties
    */
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings', params: {billingAccount: string, serviceName: string, dir?: OVH.telephony.VoicemailMessageFolderGreetingEnum}): Promise<number[]>;
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings', params: {billingAccount: string, serviceName: string, dir?: telephony.VoicemailMessageFolderGreetingEnum}): Promise<number[]>;
   /**
    * Voicemail greeting
    * Get this object properties
@@ -5483,7 +5482,7 @@ export class ApiTelephony extends OvhWrapper {
    * download operations
    * Get a url to download the sound file
    */
-  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download', params: {billingAccount: string, id: number, serviceName: string, format?: OVH.telephony.ServiceVoicemailAudioFormatEnum}): Promise<telephony.PcsFile>;
+  public get(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download', params: {billingAccount: string, id: number, serviceName: string, format?: telephony.ServiceVoicemailAudioFormatEnum}): Promise<telephony.PcsFile>;
   /**
    * Voicemail Properties
    * Get this object properties
@@ -5518,7 +5517,7 @@ export class ApiTelephony extends OvhWrapper {
    * Get all available accessories
    * Get all available accessories
    */
-  public get(path: '/telephony/accessories', params: {country: OVH.telephony.NumberCountryEnum}): Promise<telephony.AccessoryOffer[]>;
+  public get(path: '/telephony/accessories', params: {country: telephony.NumberCountryEnum}): Promise<telephony.AccessoryOffer[]>;
   /**
    * Operations about the VOIP service
    * List available services
@@ -5538,7 +5537,7 @@ export class ApiTelephony extends OvhWrapper {
    * Get all available SIP domains by country
    * Get all available SIP domains by country
    */
-  public get(path: '/telephony/availableDefaultSipDomains', params: {type: OVH.telephony.SipDomainProductTypeEnum}): Promise<telephony.DefaultSipDomains[]>;
+  public get(path: '/telephony/availableDefaultSipDomains', params: {type: telephony.SipDomainProductTypeEnum}): Promise<telephony.DefaultSipDomains[]>;
   /**
    * Get current order ids
    * Get current order ids
@@ -5548,27 +5547,27 @@ export class ApiTelephony extends OvhWrapper {
    * Get all zip codes compatible for a number
    * Get all zip codes compatible for a number
    */
-  public get(path: '/telephony/directories/availableZipCodes', params: {country: OVH.telephony.NumberCountryEnum, number: string}): Promise<string[]>;
+  public get(path: '/telephony/directories/availableZipCodes', params: {country: telephony.NumberCountryEnum, number: string}): Promise<string[]>;
   /**
    * Get city informations from a zip code
    * Get city informations from a zip code
    */
-  public get(path: '/telephony/directories/cities', params: {country: OVH.telephony.NumberCountryEnum, zipCode: string}): Promise<telephony.City[]>;
+  public get(path: '/telephony/directories/cities', params: {country: telephony.NumberCountryEnum, zipCode: string}): Promise<telephony.City[]>;
   /**
    * Get all available fax offer compatible
    * Get all available fax offer compatible
    */
-  public get(path: '/telephony/fax/offers', params: {country: OVH.telephony.NumberCountryEnum}): Promise<telephony.LineOffer[]>;
+  public get(path: '/telephony/fax/offers', params: {country: telephony.NumberCountryEnum}): Promise<telephony.LineOffer[]>;
   /**
    * Get all available phone brands compatible with lines
    * Get all available phone brands compatible with lines
    */
-  public get(path: '/telephony/line/offer/phones', params: {country: OVH.telephony.NumberCountryEnum, offer: string}): Promise<telephony.LinePhone[]>;
+  public get(path: '/telephony/line/offer/phones', params: {country: telephony.NumberCountryEnum, offer: string}): Promise<telephony.LinePhone[]>;
   /**
    * Get all available line offer compatible
    * Get all available line offer compatible
    */
-  public get(path: '/telephony/line/offers', params: {country: OVH.telephony.NumberCountryEnum}): Promise<telephony.LineOffer[]>;
+  public get(path: '/telephony/line/offers', params: {country: telephony.NumberCountryEnum}): Promise<telephony.LineOffer[]>;
   /**
    * Operations about the VOIP service
    * List available services
@@ -5588,22 +5587,22 @@ export class ApiTelephony extends OvhWrapper {
    * Get all available geographic zone with some details, from a country
    * Get all available geographic zone with some details, from a country
    */
-  public get(path: '/telephony/number/detailedZones', params: {axiom?: string, country: OVH.telephony.NumberCountryEnum}): Promise<telephony.NumberDetailedZone[]>;
+  public get(path: '/telephony/number/detailedZones', params: {axiom?: string, country: telephony.NumberCountryEnum}): Promise<telephony.NumberDetailedZone[]>;
   /**
    * Get all available special range from a country
    * Get all available special range from a country
    */
-  public get(path: '/telephony/number/ranges', params: {country: OVH.telephony.NumberCountryEnum}): Promise<string[]>;
+  public get(path: '/telephony/number/ranges', params: {country: telephony.NumberCountryEnum}): Promise<string[]>;
   /**
    * Get all available specific number from a country
    * Get all available specific number from a country
    */
-  public get(path: '/telephony/number/specificNumbers', params: {country: OVH.telephony.NumberCountryEnum, range?: string, type: OVH.telephony.NumberTypeEnum, zone?: string}): Promise<telephony.SpecificNumber[]>;
+  public get(path: '/telephony/number/specificNumbers', params: {country: telephony.NumberCountryEnum, range?: string, type: telephony.NumberTypeEnum, zone?: string}): Promise<telephony.SpecificNumber[]>;
   /**
    * Get all available geographic zone from a country
    * Get all available geographic zone from a country
    */
-  public get(path: '/telephony/number/zones', params: {axiom?: string, country: OVH.telephony.NumberCountryEnum}): Promise<string[]>;
+  public get(path: '/telephony/number/zones', params: {axiom?: string, country: telephony.NumberCountryEnum}): Promise<string[]>;
   /**
    * Search a service with its domain, to get its billing account and type
    * Search a service with its domain, to get its billing account and type
@@ -5666,7 +5665,7 @@ export class ApiTelephony extends OvhWrapper {
    * Billing Account
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}', params: {billingAccount: string, allowedOutplan?: OVH.order.Price, creditThreshold?: OVH.order.Price, currentOutplan?: OVH.order.Price, description?: string, hiddenExternalNumber?: boolean, overrideDisplayedNumber?: boolean, securityDeposit?: OVH.order.Price, status?: OVH.telephony.BillingAccountStatusEnum, trusted?: boolean}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}', params: {billingAccount: string, allowedOutplan?: orderPrice, creditThreshold?: orderPrice, currentOutplan?: orderPrice, description?: string, hiddenExternalNumber?: boolean, overrideDisplayedNumber?: boolean, securityDeposit?: orderPrice, status?: telephony.BillingAccountStatusEnum, trusted?: boolean}): Promise<void>;
   /**
    * Abbreviated number
    * Alter this object properties
@@ -5676,17 +5675,17 @@ export class ApiTelephony extends OvhWrapper {
    * Conference properties
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/conference/{serviceName}/settings', params: {billingAccount: string, serviceName: string, announceFile?: boolean, announceFilename?: string, announceSoundId?: number, anonymousRejection?: boolean, enterMuted?: boolean, eventsChannel?: string, language?: OVH.telephony.ConferenceLanguageEnum, pin?: string, recordStatus?: boolean, reportEmail?: string, reportStatus?: OVH.telephony.ConferenceReportStatusEnum, whiteLabelReport?: boolean}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/conference/{serviceName}/settings', params: {billingAccount: string, serviceName: string, announceFile?: boolean, announceFilename?: string, announceSoundId?: number, anonymousRejection?: boolean, enterMuted?: boolean, eventsChannel?: string, language?: telephony.ConferenceLanguageEnum, pin?: string, recordStatus?: boolean, reportEmail?: string, reportStatus?: telephony.ConferenceReportStatusEnum, whiteLabelReport?: boolean}): Promise<void>;
   /**
    * DDI (direct dial-in) service
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/ddi/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, destination?: string, featureType?: OVH.telephony.TypeEnum, serviceType?: OVH.telephony.TypeServiceEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/ddi/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, destination?: string, featureType?: telephony.TypeEnum, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
   /**
    * OVH easy calls queues
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}', params: {billingAccount: string, serviceName: string, anonymousRejection?: boolean, description?: string, featureType?: OVH.telephony.TypeEnum, isCCS?: boolean, maxWaitTime?: number, queueSize?: number, serviceType?: OVH.telephony.TypeServiceEnum, showCallerNumber?: OVH.telephony.OvhPabxDialplanNumberPresentationEnum, statusIvrEnabled?: boolean, strategy?: OVH.telephony.OvhPabxHuntingQueueStrategyEnum, toneOnClosing?: number, toneOnHold?: number, toneOnOpening?: number, voicemail?: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}', params: {billingAccount: string, serviceName: string, anonymousRejection?: boolean, description?: string, featureType?: telephony.TypeEnum, isCCS?: boolean, maxWaitTime?: number, queueSize?: number, serviceType?: telephony.TypeServiceEnum, showCallerNumber?: telephony.OvhPabxDialplanNumberPresentationEnum, statusIvrEnabled?: boolean, strategy?: telephony.OvhPabxHuntingQueueStrategyEnum, toneOnClosing?: number, toneOnHold?: number, toneOnOpening?: number, voicemail?: string}): Promise<void>;
   /**
    * PABX Hunting
    * Alter this object properties
@@ -5696,7 +5695,7 @@ export class ApiTelephony extends OvhWrapper {
    * Calls agent
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}', params: {agentId: number, billingAccount: string, serviceName: string, breakStatus?: number, description?: string, number?: string, simultaneousLines?: number, status?: OVH.telephony.OvhPabxHuntingAgentStatusEnum, timeout?: number, type?: OVH.telephony.OvhPabxHuntingAgentTypeEnum, wrapUpTime?: number}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}', params: {agentId: number, billingAccount: string, serviceName: string, breakStatus?: number, description?: string, number?: string, simultaneousLines?: number, status?: telephony.OvhPabxHuntingAgentStatusEnum, timeout?: number, type?: telephony.OvhPabxHuntingAgentTypeEnum, wrapUpTime?: number}): Promise<void>;
   /**
    * Agent assigned to a queue
    * Alter this object properties
@@ -5706,7 +5705,7 @@ export class ApiTelephony extends OvhWrapper {
    * Calls queue
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}', params: {billingAccount: string, queueId: number, serviceName: string, actionOnClosure?: OVH.telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: OVH.telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, followCallForwards?: boolean, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: OVH.telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: OVH.telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy?: OVH.telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}', params: {billingAccount: string, queueId: number, serviceName: string, actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, followCallForwards?: boolean, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy?: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<void>;
   /**
    * Agent assigned to a queue
    * Alter this object properties
@@ -5716,32 +5715,32 @@ export class ApiTelephony extends OvhWrapper {
    * Easy hunting screen lists conditions options
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions', params: {billingAccount: string, serviceName: string, status?: OVH.telephony.EasyHuntingScreenListsConditionsStatusEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions', params: {billingAccount: string, serviceName: string, status?: telephony.EasyHuntingScreenListsConditionsStatusEnum}): Promise<void>;
   /**
    * Screenlist condition
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}', params: {billingAccount: string, conditionId: number, serviceName: string, callerIdNumber?: string, destinationNumber?: string, screenListType?: OVH.telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}', params: {billingAccount: string, conditionId: number, serviceName: string, callerIdNumber?: string, destinationNumber?: string, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<void>;
   /**
    * Easy hunting time conditions options
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions', params: {billingAccount: string, serviceName: string, enable?: boolean, slot1Number?: string, slot1Type?: OVH.telephony.TimeConditionsSettingsForwardTypeEnum, slot2Number?: string, slot2Type?: OVH.telephony.TimeConditionsSettingsForwardTypeEnum, slot3Number?: string, slot3Type?: OVH.telephony.TimeConditionsSettingsForwardTypeEnum, unavailableNumber?: string, unavailableType?: OVH.telephony.TimeConditionsSettingsForwardTypeEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions', params: {billingAccount: string, serviceName: string, enable?: boolean, slot1Number?: string, slot1Type?: telephony.TimeConditionsSettingsForwardTypeEnum, slot2Number?: string, slot2Type?: telephony.TimeConditionsSettingsForwardTypeEnum, slot3Number?: string, slot3Type?: telephony.TimeConditionsSettingsForwardTypeEnum, unavailableNumber?: string, unavailableType?: telephony.TimeConditionsSettingsForwardTypeEnum}): Promise<void>;
   /**
    * Easy hunting time conditions
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}', params: {billingAccount: string, conditionId: number, serviceName: string, policy?: OVH.telephony.TimeConditionsPolicyEnum, timeFrom?: string, timeTo?: string, weekDay?: OVH.telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}', params: {billingAccount: string, conditionId: number, serviceName: string, policy?: telephony.TimeConditionsPolicyEnum, timeFrom?: string, timeTo?: string, weekDay?: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<void>;
   /**
    * EasyPabx
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, featureType?: OVH.telephony.TypeEnum, serviceType?: OVH.telephony.TypeServiceEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, featureType?: telephony.TypeEnum, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
   /**
    * EasyPabx Hunting
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting', params: {billingAccount: string, serviceName: string, anonymousCallRejection?: boolean, name?: string, noReplyTimer?: number, numberOfCalls?: number, pattern?: OVH.telephony.EasyMiniPabxHuntingPatternEnum, strategy?: OVH.telephony.EasyMiniPabxHuntingStrategyEnum, toneOnClosure?: boolean, toneOnClosureSoundId?: number, toneOnHold?: boolean, toneOnHoldSoundId?: number, toneRingback?: boolean, toneRingbackSoundId?: number, voicemail?: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting', params: {billingAccount: string, serviceName: string, anonymousCallRejection?: boolean, name?: string, noReplyTimer?: number, numberOfCalls?: number, pattern?: telephony.EasyMiniPabxHuntingPatternEnum, strategy?: telephony.EasyMiniPabxHuntingStrategyEnum, toneOnClosure?: boolean, toneOnClosureSoundId?: number, toneOnHold?: boolean, toneOnHoldSoundId?: number, toneRingback?: boolean, toneRingbackSoundId?: number, voicemail?: string}): Promise<void>;
   /**
    * Easy/Mini PABX agent
    * Alter this object properties
@@ -5751,27 +5750,27 @@ export class ApiTelephony extends OvhWrapper {
    * Line tones
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones', params: {billingAccount: string, serviceName: string, callWaiting?: OVH.telephony.TonesEnum, endCall?: OVH.telephony.TonesEnum, onHold?: OVH.telephony.TonesOnHoldEnum, ringback?: OVH.telephony.TonesEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones', params: {billingAccount: string, serviceName: string, callWaiting?: telephony.TonesEnum, endCall?: telephony.TonesEnum, onHold?: telephony.TonesOnHoldEnum, ringback?: telephony.TonesEnum}): Promise<void>;
   /**
    * Fax service
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/fax/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, notifications?: OVH.telephony.LineNotificationsOptions, offers?: string[], serviceType?: OVH.telephony.TypeServiceEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/fax/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, notifications?: telephony.LineNotificationsOptions, offers?: string[], serviceType?: telephony.TypeServiceEnum}): Promise<void>;
   /**
    * Fax ScreenLists
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/fax/{serviceName}/screenLists', params: {billingAccount: string, serviceName: string, blacklistedNumbers?: string[], blacklistedTSI?: string[], callNumber?: string, countryCode?: string, filteringList?: OVH.telephony.FaxScreenListTypeEnum, whitelistedNumbers?: string[], whitelistedTSI?: string[]}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/fax/{serviceName}/screenLists', params: {billingAccount: string, serviceName: string, blacklistedNumbers?: string[], blacklistedTSI?: string[], callNumber?: string, countryCode?: string, filteringList?: telephony.FaxScreenListTypeEnum, whitelistedNumbers?: string[], whitelistedTSI?: string[]}): Promise<void>;
   /**
    * Fax properties
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/fax/{serviceName}/settings', params: {billingAccount: string, serviceName: string, callNumber?: string, countryCode?: string, faxMaxCall?: OVH.telephony.FaxSendingTries, faxQuality?: OVH.telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, mailFormat?: OVH.telephony.FaxMailFormatEnum, receiver?: string, redirectionEmail?: string[], rejectAnonymous?: boolean, sender?: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/fax/{serviceName}/settings', params: {billingAccount: string, serviceName: string, callNumber?: string, countryCode?: string, faxMaxCall?: telephony.FaxSendingTries, faxQuality?: telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, mailFormat?: telephony.FaxMailFormatEnum, receiver?: string, redirectionEmail?: string[], rejectAnonymous?: boolean, sender?: string}): Promise<void>;
   /**
    * Line service
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}', params: {billingAccount: string, serviceName: string, canChangePassword?: boolean, description?: string, getPublicOffer?: OVH.telephony.LineOffer, infrastructure?: string, isAttachedToOtherLinesPhone?: boolean, notifications?: OVH.telephony.LineNotificationsOptions, offers?: string[], serviceType?: OVH.telephony.TypeServiceEnum, simultaneousLines?: number}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}', params: {billingAccount: string, serviceName: string, canChangePassword?: boolean, description?: string, getPublicOffer?: telephony.LineOffer, infrastructure?: string, isAttachedToOtherLinesPhone?: boolean, notifications?: telephony.LineNotificationsOptions, offers?: string[], serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}): Promise<void>;
   /**
    * Abbreviated number
    * Alter this object properties
@@ -5781,12 +5780,12 @@ export class ApiTelephony extends OvhWrapper {
    * Line options
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}/options', params: {billingAccount: string, serviceName: string, absentSubscriber?: boolean, anonymousCallRejection?: boolean, callRestrictionIncoming?: boolean, callRestrictionOutgoing?: boolean, callWaiting?: boolean, codecs?: string, defaultVoicemail?: string, displayNumber?: string, doNotDisturb?: boolean, domain?: string, forwardBackup?: boolean, forwardBackupNature?: OVH.telephony.LineOptionForwardNatureTypeEnum, forwardBackupNumber?: string, forwardBusy?: boolean, forwardBusyNature?: OVH.telephony.LineOptionForwardNatureTypeEnum, forwardBusyNumber?: string, forwardNoReply?: boolean, forwardNoReplyDelay?: number, forwardNoReplyNature?: OVH.telephony.LineOptionForwardNatureTypeEnum, forwardNoReplyNumber?: string, forwardUnconditional?: boolean, forwardUnconditionalNature?: OVH.telephony.LineOptionForwardNatureTypeEnum, forwardUnconditionalNumber?: string, identificationRestriction?: boolean, intercom?: OVH.telephony.LineOptionIntercomEnum, ipRestrictions?: string[], language?: OVH.telephony.LineOptionLanguageEnum, lockOutCall?: boolean, lockOutCallPassword?: string, recordOutgoingCallsBeta?: boolean, toneOnCallWaitingSoundId?: number, toneOnHoldSoundId?: number, toneRingbackSoundId?: number, voicemailExternalNumber?: string, voicemailInternalNumber?: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}/options', params: {billingAccount: string, serviceName: string, absentSubscriber?: boolean, anonymousCallRejection?: boolean, callRestrictionIncoming?: boolean, callRestrictionOutgoing?: boolean, callWaiting?: boolean, codecs?: string, defaultVoicemail?: string, displayNumber?: string, doNotDisturb?: boolean, domain?: string, forwardBackup?: boolean, forwardBackupNature?: telephony.LineOptionForwardNatureTypeEnum, forwardBackupNumber?: string, forwardBusy?: boolean, forwardBusyNature?: telephony.LineOptionForwardNatureTypeEnum, forwardBusyNumber?: string, forwardNoReply?: boolean, forwardNoReplyDelay?: number, forwardNoReplyNature?: telephony.LineOptionForwardNatureTypeEnum, forwardNoReplyNumber?: string, forwardUnconditional?: boolean, forwardUnconditionalNature?: telephony.LineOptionForwardNatureTypeEnum, forwardUnconditionalNumber?: string, identificationRestriction?: boolean, intercom?: telephony.LineOptionIntercomEnum, ipRestrictions?: string[], language?: telephony.LineOptionLanguageEnum, lockOutCall?: boolean, lockOutCallPassword?: string, recordOutgoingCallsBeta?: boolean, toneOnCallWaitingSoundId?: number, toneOnHoldSoundId?: number, toneRingbackSoundId?: number, voicemailExternalNumber?: string, voicemailInternalNumber?: string}): Promise<void>;
   /**
    * Plug & Phone
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone', params: {billingAccount: string, serviceName: string, brand?: string, description?: string, macAddress?: string, maxline?: number, mgcpIpRestriction?: string, phoneConfiguration?: OVH.telephony.PhoneConfigurationProperty[], protocol?: OVH.telephony.ProtocolEnum, userPassword?: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone', params: {billingAccount: string, serviceName: string, brand?: string, description?: string, macAddress?: string, maxline?: number, mgcpIpRestriction?: string, phoneConfiguration?: telephony.PhoneConfigurationProperty[], protocol?: telephonyProtocolEnum, userPassword?: string}): Promise<void>;
   /**
    * Plug & Phone function key
    * Alter this object properties
@@ -5806,22 +5805,22 @@ export class ApiTelephony extends OvhWrapper {
    * Current Return Merchandise Authorisation
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}', params: {billingAccount: string, id: string, serviceName: string, cancellable?: boolean, creationDatetime?: string, equipmentReference?: string, newMerchandise?: string, offerTypeNew?: OVH.telephony.RmaOfferTypeEnum, offerTypeOld?: OVH.telephony.RmaOfferTypeEnum, process?: OVH.telephony.RmaReplaceTypeEnum, receptionDatetime?: string, shippingContact?: OVH.telephony.Contact, status?: OVH.telephony.RmaStatusEnum, steps?: OVH.telephony.RmaStep[], terminationDatetime?: string, type?: OVH.telephony.RmaTypeEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}', params: {billingAccount: string, id: string, serviceName: string, cancellable?: boolean, creationDatetime?: string, equipmentReference?: string, newMerchandise?: string, offerTypeNew?: telephony.RmaOfferTypeEnum, offerTypeOld?: telephony.RmaOfferTypeEnum, process?: telephony.RmaReplaceTypeEnum, receptionDatetime?: string, shippingContact?: telephony.Contact, status?: telephony.RmaStatusEnum, steps?: telephony.RmaStep[], terminationDatetime?: string, type?: telephony.RmaTypeEnum}): Promise<void>;
   /**
    * Line tones
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/line/{serviceName}/tones', params: {billingAccount: string, serviceName: string, callWaiting?: OVH.telephony.TonesEnum, endCall?: OVH.telephony.TonesEnum, onHold?: OVH.telephony.TonesOnHoldEnum, ringback?: OVH.telephony.TonesEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/line/{serviceName}/tones', params: {billingAccount: string, serviceName: string, callWaiting?: telephony.TonesEnum, endCall?: telephony.TonesEnum, onHold?: telephony.TonesOnHoldEnum, ringback?: telephony.TonesEnum}): Promise<void>;
   /**
    * MiniPabx
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/miniPabx/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, featureType?: OVH.telephony.TypeEnum, serviceType?: OVH.telephony.TypeServiceEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/miniPabx/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, featureType?: telephony.TypeEnum, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
   /**
    * MiniPabx Hunting
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting', params: {billingAccount: string, serviceName: string, anonymousCallRejection?: boolean, name?: string, numberOfCalls?: number, onHoldTimer?: number, pattern?: OVH.telephony.EasyMiniPabxHuntingPatternEnum, queueSize?: number, strategy?: OVH.telephony.EasyMiniPabxHuntingStrategyEnum, toneOnClosure?: boolean, toneOnClosureSoundId?: number, toneOnHold?: boolean, toneOnHoldSoundId?: number, toneRingback?: boolean, toneRingbackSoundId?: number}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/hunting', params: {billingAccount: string, serviceName: string, anonymousCallRejection?: boolean, name?: string, numberOfCalls?: number, onHoldTimer?: number, pattern?: telephony.EasyMiniPabxHuntingPatternEnum, queueSize?: number, strategy?: telephony.EasyMiniPabxHuntingStrategyEnum, toneOnClosure?: boolean, toneOnClosureSoundId?: number, toneOnHold?: boolean, toneOnHoldSoundId?: number, toneRingback?: boolean, toneRingbackSoundId?: number}): Promise<void>;
   /**
    * Easy/Mini PABX agent
    * Alter this object properties
@@ -5831,42 +5830,42 @@ export class ApiTelephony extends OvhWrapper {
    * Line tones
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/tones', params: {billingAccount: string, serviceName: string, callWaiting?: OVH.telephony.TonesEnum, endCall?: OVH.telephony.TonesEnum, onHold?: OVH.telephony.TonesOnHoldEnum, ringback?: OVH.telephony.TonesEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/tones', params: {billingAccount: string, serviceName: string, callWaiting?: telephony.TonesEnum, endCall?: telephony.TonesEnum, onHold?: telephony.TonesOnHoldEnum, ringback?: telephony.TonesEnum}): Promise<void>;
   /**
    * Additional number
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/number/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, featureType?: OVH.telephony.TypeEnum, partOfPool?: string, serviceType?: OVH.telephony.TypeServiceEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/number/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, featureType?: telephony.TypeEnum, partOfPool?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
   /**
    * Operation on a telephony offer
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/offerTask/{taskId}', params: {billingAccount: string, taskId: number, action?: OVH.telephony.OfferTaskActionEnum, executionDate?: string, status?: OVH.telephony.TaskStatusEnum, type?: OVH.telephony.OfferTaskTypeEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/offerTask/{taskId}', params: {billingAccount: string, taskId: number, action?: telephony.OfferTaskActionEnum, executionDate?: string, status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum}): Promise<void>;
   /**
    * OVH calls queues and OVH IVRs (Interactive Voice Response)
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, featureType?: OVH.telephony.TypeEnum, isCCS?: boolean, serviceType?: OVH.telephony.TypeServiceEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, featureType?: telephony.TypeEnum, isCCS?: boolean, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
   /**
    * Dialplan
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}', params: {billingAccount: string, dialplanId: number, serviceName: string, anonymousRejection?: boolean, lastUpdate?: string, name?: string, showCallerNumber?: OVH.telephony.OvhPabxDialplanNumberPresentationEnum, transferTimeout?: number}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}', params: {billingAccount: string, dialplanId: number, serviceName: string, anonymousRejection?: boolean, lastUpdate?: string, name?: string, showCallerNumber?: telephony.OvhPabxDialplanNumberPresentationEnum, transferTimeout?: number}): Promise<void>;
   /**
    * Dialplan extension
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}', params: {billingAccount: string, dialplanId: number, extensionId: number, serviceName: string, enabled?: boolean, position?: number, schedulerCategory?: OVH.telephony.SchedulerCategoryEnum, screenListType?: OVH.telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}', params: {billingAccount: string, dialplanId: number, extensionId: number, serviceName: string, enabled?: boolean, position?: number, schedulerCategory?: telephony.SchedulerCategoryEnum, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<void>;
   /**
    * Time condition
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}', params: {billingAccount: string, conditionId: number, dialplanId: number, extensionId: number, serviceName: string, timeFrom?: string, timeTo?: string, weekDay?: OVH.telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}', params: {billingAccount: string, conditionId: number, dialplanId: number, extensionId: number, serviceName: string, timeFrom?: string, timeTo?: string, weekDay?: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<void>;
   /**
    * Dialplan rule
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}', params: {billingAccount: string, dialplanId: number, extensionId: number, ruleId: number, serviceName: string, action?: OVH.telephony.OvhPabxDialplanExtensionRuleActionEnum, actionParam?: string, negativeAction?: boolean, position?: number}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}', params: {billingAccount: string, dialplanId: number, extensionId: number, ruleId: number, serviceName: string, action?: telephony.OvhPabxDialplanExtensionRuleActionEnum, actionParam?: string, negativeAction?: boolean, position?: number}): Promise<void>;
   /**
    * PABX Hunting
    * Alter this object properties
@@ -5876,7 +5875,7 @@ export class ApiTelephony extends OvhWrapper {
    * Calls agent
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}', params: {agentId: number, billingAccount: string, serviceName: string, breakStatus?: number, description?: string, number?: string, simultaneousLines?: number, status?: OVH.telephony.OvhPabxHuntingAgentStatusEnum, timeout?: number, type?: OVH.telephony.OvhPabxHuntingAgentTypeEnum, wrapUpTime?: number}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}', params: {agentId: number, billingAccount: string, serviceName: string, breakStatus?: number, description?: string, number?: string, simultaneousLines?: number, status?: telephony.OvhPabxHuntingAgentStatusEnum, timeout?: number, type?: telephony.OvhPabxHuntingAgentTypeEnum, wrapUpTime?: number}): Promise<void>;
   /**
    * Agent assigned to a queue
    * Alter this object properties
@@ -5886,7 +5885,7 @@ export class ApiTelephony extends OvhWrapper {
    * Calls queue
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}', params: {billingAccount: string, queueId: number, serviceName: string, actionOnClosure?: OVH.telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: OVH.telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, followCallForwards?: boolean, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: OVH.telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: OVH.telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy?: OVH.telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}', params: {billingAccount: string, queueId: number, serviceName: string, actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, followCallForwards?: boolean, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy?: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<void>;
   /**
    * Agent assigned to a queue
    * Alter this object properties
@@ -5901,12 +5900,12 @@ export class ApiTelephony extends OvhWrapper {
    * IVR menu entry
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}', params: {billingAccount: string, entryId: number, menuId: number, serviceName: string, action?: OVH.telephony.OvhPabxIvrMenuEntryActionEnum, actionParam?: string, dtmf?: string, position?: number}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}', params: {billingAccount: string, entryId: number, menuId: number, serviceName: string, action?: telephony.OvhPabxIvrMenuEntryActionEnum, actionParam?: string, dtmf?: string, position?: number}): Promise<void>;
   /**
    * The PABX Text To Speech sounds
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}', params: {billingAccount: string, id: number, serviceName: string, text?: string, voice?: OVH.telephony.OvhPabxTtsVoiceEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}', params: {billingAccount: string, id: number, serviceName: string, text?: string, voice?: telephony.OvhPabxTtsVoiceEnum}): Promise<void>;
   /**
    * Phone book on group
    * Alter this object properties
@@ -5926,67 +5925,67 @@ export class ApiTelephony extends OvhWrapper {
    * Redirect service
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/redirect/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, destination?: string, featureType?: OVH.telephony.TypeEnum, serviceType?: OVH.telephony.TypeServiceEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/redirect/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, destination?: string, featureType?: telephony.TypeEnum, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
   /**
    * French value added services subject to the RSVA reform (Référentiel des numéros SVA)
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/rsva/{serviceName}', params: {billingAccount: string, serviceName: string, typology?: OVH.telephony.portability.SpecialNumberCategoryEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/rsva/{serviceName}', params: {billingAccount: string, serviceName: string, typology?: telephony.portability.SpecialNumberCategoryEnum}): Promise<void>;
   /**
    * Scheduler capable services
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/scheduler/{serviceName}', params: {billingAccount: string, serviceName: string, timeZone?: OVH.telephony.timeZone}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/scheduler/{serviceName}', params: {billingAccount: string, serviceName: string, timeZone?: telephony.timeZone}): Promise<void>;
   /**
    * Scheduled event
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}', params: {billingAccount: string, serviceName: string, uid: string, categories?: OVH.telephony.SchedulerCategoryEnum, dateEnd?: string, dateStart?: string, description?: string, title?: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}', params: {billingAccount: string, serviceName: string, uid: string, categories?: telephony.SchedulerCategoryEnum, dateEnd?: string, dateStart?: string, description?: string, title?: string}): Promise<void>;
   /**
    * ScreenList capable services
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/screen/{serviceName}', params: {billingAccount: string, serviceName: string, incomingScreenList?: OVH.telephony.ScreenListChoosingEnum, outgoingScreenList?: OVH.telephony.ScreenListChoosingEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/screen/{serviceName}', params: {billingAccount: string, serviceName: string, incomingScreenList?: telephony.ScreenListChoosingEnum, outgoingScreenList?: telephony.ScreenListChoosingEnum}): Promise<void>;
   /**
    * Telephony service
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/service/{serviceName}', params: {billingAccount: string, serviceName: string, country?: OVH.telephony.NumberCountryEnum, countryCode?: OVH.telephony.NumberCountryCodeEnum, currentOutplan?: OVH.order.Price, description?: string, featureType?: OVH.telephony.TypeEnum, getPublicOffer?: OVH.telephony.LineOffer, hasFaxCapabilities?: boolean, offers?: string[], properties?: OVH.telephony.PropertyEnum[], rio?: string, serviceType?: OVH.telephony.TypeServiceEnum, simultaneousLines?: number}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/service/{serviceName}', params: {billingAccount: string, serviceName: string, country?: telephony.NumberCountryEnum, countryCode?: telephony.NumberCountryCodeEnum, currentOutplan?: orderPrice, description?: string, featureType?: telephony.TypeEnum, getPublicOffer?: telephony.LineOffer, hasFaxCapabilities?: boolean, offers?: string[], properties?: telephony.PropertyEnum[], rio?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}): Promise<void>;
   /**
    * Directory Informations
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/service/{serviceName}/directory', params: {billingAccount: string, serviceName: string, PJSocialNomination?: string, address?: string, addressExtra?: string, ape?: string, areaCode?: number, birthDate?: string, cedex?: string, city?: string, country?: string, directoryServiceCode?: string, displayFirstName?: boolean, displayMarketingDirectory?: boolean, displayOnlyCity?: boolean, displaySearchReverse?: boolean, displayUniversalDirectory?: boolean, email?: string, firstName?: string, gender?: OVH.nichandle.GenderEnum, inseeCode?: number, legalForm?: string, lineDescription?: string, modificationDate?: string, modificationType?: string, name?: string, number?: string, occupation?: string, postBox?: string, postCode?: string, receivePJDirectory?: boolean, siret?: string, socialNomination?: string, socialNominationExtra?: string, status?: string, urbanDistrict?: string, wayName?: string, wayNumber?: string, wayNumberExtra?: string, wayType?: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/service/{serviceName}/directory', params: {billingAccount: string, serviceName: string, PJSocialNomination?: string, address?: string, addressExtra?: string, ape?: string, areaCode?: number, birthDate?: string, cedex?: string, city?: string, country?: string, directoryServiceCode?: string, displayFirstName?: boolean, displayMarketingDirectory?: boolean, displayOnlyCity?: boolean, displaySearchReverse?: boolean, displayUniversalDirectory?: boolean, email?: string, firstName?: string, gender?: nichandle.GenderEnum, inseeCode?: number, legalForm?: string, lineDescription?: string, modificationDate?: string, modificationType?: string, name?: string, number?: string, occupation?: string, postBox?: string, postCode?: string, receivePJDirectory?: boolean, siret?: string, socialNomination?: string, socialNominationExtra?: string, status?: string, urbanDistrict?: string, wayName?: string, wayNumber?: string, wayNumberExtra?: string, wayType?: string}): Promise<void>;
   /**
    * Operation on a telephony offer
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}', params: {billingAccount: string, serviceName: string, taskId: number, action?: OVH.telephony.OfferTaskActionEnum, executionDate?: string, status?: OVH.telephony.TaskStatusEnum, type?: OVH.telephony.OfferTaskTypeEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}', params: {billingAccount: string, serviceName: string, taskId: number, action?: telephony.OfferTaskActionEnum, executionDate?: string, status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/serviceInfos', params: {billingAccount: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/serviceInfos', params: {billingAccount: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Time conditions
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}', params: {billingAccount: string, id: number, serviceName: string, day?: OVH.telephony.TimeConditionsDayEnum, hourBegin?: string, hourEnd?: string, policy?: OVH.telephony.TimeConditionsPolicyEnum, status?: string}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}', params: {billingAccount: string, id: number, serviceName: string, day?: telephony.TimeConditionsDayEnum, hourBegin?: string, hourEnd?: string, policy?: telephony.TimeConditionsPolicyEnum, status?: string}): Promise<void>;
   /**
    * Time conditions options
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/options', params: {billingAccount: string, serviceName: string, slot1Number?: string, slot1Type?: OVH.telephony.TimeConditionsSlotTypeEnum, slot2Number?: string, slot2Type?: OVH.telephony.TimeConditionsSlotTypeEnum, slot3Number?: string, slot3Type?: OVH.telephony.TimeConditionsSlotTypeEnum, status?: OVH.telephony.TimeConditionsGlobalStatusEnum, timeout?: OVH.telephony.TimeConditionsTimeoutEnum, unavailableNumber?: string, unavailableType?: OVH.telephony.TimeConditionsSlotTypeEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/options', params: {billingAccount: string, serviceName: string, slot1Number?: string, slot1Type?: telephony.TimeConditionsSlotTypeEnum, slot2Number?: string, slot2Type?: telephony.TimeConditionsSlotTypeEnum, slot3Number?: string, slot3Type?: telephony.TimeConditionsSlotTypeEnum, status?: telephony.TimeConditionsGlobalStatusEnum, timeout?: telephony.TimeConditionsTimeoutEnum, unavailableNumber?: string, unavailableType?: telephony.TimeConditionsSlotTypeEnum}): Promise<void>;
   /**
    * Voicemail service
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/voicemail/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, offers?: string[], serviceType?: OVH.telephony.TypeServiceEnum}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/voicemail/{serviceName}', params: {billingAccount: string, serviceName: string, description?: string, offers?: string[], serviceType?: telephony.TypeServiceEnum}): Promise<void>;
   /**
    * Voicemail Properties
    * Alter this object properties
    */
-  public put(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings', params: {billingAccount: string, serviceName: string, annouceMessage?: string, audioFormat?: OVH.telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: OVH.telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: OVH.telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
+  public put(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings', params: {billingAccount: string, serviceName: string, annouceMessage?: string, audioFormat?: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
   /**
    * Vxml Properties
    * Alter this object properties
@@ -5996,12 +5995,12 @@ export class ApiTelephony extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/telephony/aliases/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/telephony/aliases/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/telephony/lines/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/telephony/lines/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Sounds attached to this telephony account
    * Alter this object properties
@@ -6011,12 +6010,12 @@ export class ApiTelephony extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/telephony/spare/{spare}/serviceInfos', params: {spare: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/telephony/spare/{spare}/serviceInfos', params: {spare: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/telephony/trunks/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/telephony/trunks/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsTelephonyPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -6094,7 +6093,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.ConferenceWebAccess objects
    * Add a public web access to your conference
    */
-  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/webAccess', params: {billingAccount: string, serviceName: string, type: OVH.telephony.ConferenceWebAccessTypeEnum}): Promise<telephony.ConferenceWebAccess>;
+  public post(path: '/telephony/{billingAccount}/conference/{serviceName}/webAccess', params: {billingAccount: string, serviceName: string, type: telephony.ConferenceWebAccessTypeEnum}): Promise<telephony.ConferenceWebAccess>;
   /**
    * changeDestination operations
    * Change the destination of the DDI
@@ -6104,7 +6103,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.OvhPabxHuntingAgent objects
    * Create a new agent
    */
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent', params: {billingAccount: string, serviceName: string, description?: string, number: string, simultaneousLines: number, status: OVH.telephony.OvhPabxHuntingAgentStatusEnum, timeout: number, wrapUpTime: number}): Promise<telephony.OvhPabxHuntingAgent>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent', params: {billingAccount: string, serviceName: string, description?: string, number: string, simultaneousLines: number, status: telephony.OvhPabxHuntingAgentStatusEnum, timeout: number, wrapUpTime: number}): Promise<telephony.OvhPabxHuntingAgent>;
   /**
    * The web access for your cloudpabx
    * Create a new web access for this ressource
@@ -6139,12 +6138,12 @@ export class ApiTelephony extends OvhWrapper {
    * whisper operations
    * Whisper on a call
    */
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper', params: {agentId: number, billingAccount: string, id: number, serviceName: string, number: string, whisperingMode: OVH.telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper', params: {agentId: number, billingAccount: string, id: number, serviceName: string, number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
   /**
    * Token associated to the service for live event
    * Create a new token
    */
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken', params: {agentId: number, billingAccount: string, serviceName: string, expiration: OVH.telephony.TokenExpirationEnum}): Promise<string>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken', params: {agentId: number, billingAccount: string, serviceName: string, expiration: telephony.TokenExpirationEnum}): Promise<string>;
   /**
    * List the telephony.OvhPabxHuntingAgentQueue objects
    * Create a new skill for an agent (it adds the agent in a queue)
@@ -6159,12 +6158,12 @@ export class ApiTelephony extends OvhWrapper {
    * Token associated to the service for live event
    * Create a new token
    */
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken', params: {billingAccount: string, serviceName: string, expiration: OVH.telephony.TokenExpirationEnum}): Promise<string>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken', params: {billingAccount: string, serviceName: string, expiration: telephony.TokenExpirationEnum}): Promise<string>;
   /**
    * List the telephony.OvhPabxHuntingQueue objects
    * Create a new queue
    */
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue', params: {billingAccount: string, serviceName: string, actionOnClosure?: OVH.telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: OVH.telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: OVH.telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: OVH.telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy: OVH.telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<telephony.OvhPabxHuntingQueue>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue', params: {billingAccount: string, serviceName: string, actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<telephony.OvhPabxHuntingQueue>;
   /**
    * List the telephony.OvhPabxHuntingAgentQueue objects
    * Create a new skill for an agent (it adds the agent in a queue)
@@ -6199,12 +6198,12 @@ export class ApiTelephony extends OvhWrapper {
    * whisper operations
    * Whisper on a call
    */
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper', params: {billingAccount: string, id: number, queueId: number, serviceName: string, number: string, whisperingMode: OVH.telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper', params: {billingAccount: string, id: number, queueId: number, serviceName: string, number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
   /**
    * List the telephony.EasyHuntingScreenListsConditions objects
    * Create a new screenlist condition for an extension
    */
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions', params: {billingAccount: string, serviceName: string, callerIdNumber?: string, destinationNumber?: string, screenListType: OVH.telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.EasyHuntingScreenListsConditions>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions', params: {billingAccount: string, serviceName: string, callerIdNumber?: string, destinationNumber?: string, screenListType: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.EasyHuntingScreenListsConditions>;
   /**
    * soundUpload operations
    * Upload new sound file
@@ -6214,7 +6213,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.EasyHuntingTimeConditions objects
    * Create a new time condition
    */
-  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions', params: {billingAccount: string, serviceName: string, policy: OVH.telephony.TimeConditionsPolicyEnum, timeFrom: string, timeTo: string, weekDay: OVH.telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<telephony.EasyHuntingTimeConditions>;
+  public post(path: '/telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions', params: {billingAccount: string, serviceName: string, policy: telephony.TimeConditionsPolicyEnum, timeFrom: string, timeTo: string, weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<telephony.EasyHuntingTimeConditions>;
   /**
    * List the telephony.EasyMiniPabxHuntingAgent objects
    * Create a new agent
@@ -6224,17 +6223,17 @@ export class ApiTelephony extends OvhWrapper {
    * toneUpload operations
    * Upload new tone file
    */
-  public post(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload', params: {billingAccount: string, serviceName: string, documentId?: string, type: OVH.telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
+  public post(path: '/telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload', params: {billingAccount: string, serviceName: string, documentId?: string, type: telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
   /**
    * Token associated to the service for live event
    * Create a new token
    */
-  public post(path: '/telephony/{billingAccount}/eventToken', params: {billingAccount: string, expiration: OVH.telephony.TokenExpirationEnum}): Promise<string>;
+  public post(path: '/telephony/{billingAccount}/eventToken', params: {billingAccount: string, expiration: telephony.TokenExpirationEnum}): Promise<string>;
   /**
    * List the telephony.FaxCampaign objects
    * Create a new fax campaign
    */
-  public post(path: '/telephony/{billingAccount}/fax/{serviceName}/campaigns', params: {billingAccount: string, serviceName: string, documentId: string, faxQuality?: OVH.telephony.FaxQualityEnum, name: string, recipientsDocId?: string, recipientsList?: string[], recipientsType: OVH.telephony.FaxCampaignRecipientsTypeEnum, sendDate?: string, sendType: OVH.telephony.FaxCampaignSendTypeEnum}): Promise<telephony.FaxCampaign>;
+  public post(path: '/telephony/{billingAccount}/fax/{serviceName}/campaigns', params: {billingAccount: string, serviceName: string, documentId: string, faxQuality?: telephony.FaxQualityEnum, name: string, recipientsDocId?: string, recipientsList?: string[], recipientsType: telephony.FaxCampaignRecipientsTypeEnum, sendDate?: string, sendType: telephony.FaxCampaignSendTypeEnum}): Promise<telephony.FaxCampaign>;
   /**
    * start operations
    * Start a fax campaign
@@ -6249,7 +6248,7 @@ export class ApiTelephony extends OvhWrapper {
    * Fax ScreenLists
    * Create a new fax ScreenLists
    */
-  public post(path: '/telephony/{billingAccount}/fax/{serviceName}/screenLists', params: {billingAccount: string, serviceName: string, blacklistedNumbers?: string[], blacklistedTSI?: string[], filteringList?: OVH.telephony.FaxScreenListTypeEnum, whitelistedNumbers?: string[], whitelistedTSI?: string[]}): Promise<telephony.FaxScreen>;
+  public post(path: '/telephony/{billingAccount}/fax/{serviceName}/screenLists', params: {billingAccount: string, serviceName: string, blacklistedNumbers?: string[], blacklistedTSI?: string[], filteringList?: telephony.FaxScreenListTypeEnum, whitelistedNumbers?: string[], whitelistedTSI?: string[]}): Promise<telephony.FaxScreen>;
   /**
    * reset operations
    * Reset a specifical fax screenList
@@ -6284,7 +6283,7 @@ export class ApiTelephony extends OvhWrapper {
    * antihack operations
    * Clean the antihack or add it on active filter screen list
    */
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/antihack', params: {billingAccount: string, serviceName: string, action: OVH.telephony.AntihackActionEnum, restricted?: string}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/antihack', params: {billingAccount: string, serviceName: string, action: telephony.AntihackActionEnum, restricted?: string}): Promise<void>;
   /**
    * associateDevice operations
    * Associate a device to the current line with the device mac address
@@ -6294,12 +6293,12 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.CallsGenerated objects
    * Make an automatic phone call. Return generated call identifier
    */
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/automaticCall', params: {billingAccount: string, serviceName: string, bridgeNumberDialplan?: string, calledNumber: string, callingNumber?: string, dialplan: OVH.telephony.CallsGeneratorDialplanEnum, isAnonymous: boolean, playbackAudioFileDialplan?: string, timeout?: number, ttsTextDialplan?: string}): Promise<string>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/automaticCall', params: {billingAccount: string, serviceName: string, bridgeNumberDialplan?: string, calledNumber: string, callingNumber?: string, dialplan: telephony.CallsGeneratorDialplanEnum, isAnonymous: boolean, playbackAudioFileDialplan?: string, timeout?: number, ttsTextDialplan?: string}): Promise<string>;
   /**
    * block operations
    * Block the line. By default it will block incoming and outgoing calls (except for emergency numbers)
    */
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/block', params: {billingAccount: string, serviceName: string, mode?: OVH.telephony.LineBlockingMode}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/block', params: {billingAccount: string, serviceName: string, mode?: telephony.LineBlockingMode}): Promise<void>;
   /**
    * eavesdrop operations
    * Eavesdrop on a call
@@ -6329,7 +6328,7 @@ export class ApiTelephony extends OvhWrapper {
    * whisper operations
    * Whisper on a call
    */
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper', params: {billingAccount: string, id: number, serviceName: string, number: string, whisperingMode: OVH.telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper', params: {billingAccount: string, id: number, serviceName: string, number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
   /**
    * cancelConvertToNumber operations
    * Cancel a scheduled conversion to number
@@ -6374,7 +6373,7 @@ export class ApiTelephony extends OvhWrapper {
    * changePhoneConfiguration operations
    * Edit configuration of the phone remotely by provisioning
    */
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration', params: {billingAccount: string, serviceName: string, autoReboot?: boolean, newConfigurations?: OVH.complexType.SafeKeyValue<string>[]}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration', params: {billingAccount: string, serviceName: string, autoReboot?: boolean, newConfigurations?: complexType.SafeKeyValue<string>[]}): Promise<void>;
   /**
    * List the telephony.Phonebook objects
    * Add a phonebook. Return the bookKey.
@@ -6409,7 +6408,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.Rma objects
    * Create a specific rma
    */
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma', params: {billingAccount: string, serviceName: string, mondialRelayId?: string, newMerchandise?: string, shippingContactId?: number, type: OVH.telephony.RmaPublicTypeEnum}): Promise<telephony.RmaReturn>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/phone/rma', params: {billingAccount: string, serviceName: string, mondialRelayId?: string, newMerchandise?: string, shippingContactId?: number, type: telephony.RmaPublicTypeEnum}): Promise<telephony.RmaReturn>;
   /**
    * removeSimultaneousLines operations
    * Remove extra simultaneous lines
@@ -6419,7 +6418,7 @@ export class ApiTelephony extends OvhWrapper {
    * toneUpload operations
    * Upload new tone file
    */
-  public post(path: '/telephony/{billingAccount}/line/{serviceName}/tones/toneUpload', params: {billingAccount: string, serviceName: string, documentId?: string, type: OVH.telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
+  public post(path: '/telephony/{billingAccount}/line/{serviceName}/tones/toneUpload', params: {billingAccount: string, serviceName: string, documentId?: string, type: telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
   /**
    * List the telephony.trafficExtract objects
    * Launch a traffic extract on your line
@@ -6439,7 +6438,7 @@ export class ApiTelephony extends OvhWrapper {
    * toneUpload operations
    * Upload new tone file
    */
-  public post(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/tones/toneUpload', params: {billingAccount: string, serviceName: string, documentId?: string, type: OVH.telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
+  public post(path: '/telephony/{billingAccount}/miniPabx/{serviceName}/tones/toneUpload', params: {billingAccount: string, serviceName: string, documentId?: string, type: telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
   /**
    * cancelConvertToLine operations
    * Cancel a scheduled conversion to line
@@ -6449,7 +6448,7 @@ export class ApiTelephony extends OvhWrapper {
    * changeFeatureType operations
    * Change the feature type of the phone number
    */
-  public post(path: '/telephony/{billingAccount}/number/{serviceName}/changeFeatureType', params: {billingAccount: string, serviceName: string, featureType: OVH.telephony.TypeEnum}): Promise<telephony.Task>;
+  public post(path: '/telephony/{billingAccount}/number/{serviceName}/changeFeatureType', params: {billingAccount: string, serviceName: string, featureType: telephony.TypeEnum}): Promise<telephony.Task>;
   /**
    * convertToLine operations
    * Schedule a conversion to line
@@ -6459,37 +6458,37 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.ConsumptionThreshold objects
    * Add an outplan notification on the billing account
    */
-  public post(path: '/telephony/{billingAccount}/outplanNotification', params: {billingAccount: string, block: OVH.telephony.OutplanNotificationBlockEnum, notifyEmail?: string, percentage: number}): Promise<telephony.ConsumptionThreshold>;
+  public post(path: '/telephony/{billingAccount}/outplanNotification', params: {billingAccount: string, block: telephony.OutplanNotificationBlockEnum, notifyEmail?: string, percentage: number}): Promise<telephony.ConsumptionThreshold>;
   /**
    * List the telephony.OvhPabxDialplan objects
    * Create a new dialplan
    */
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan', params: {billingAccount: string, serviceName: string, anonymousRejection: boolean, name: string, showCallerNumber: OVH.telephony.OvhPabxDialplanNumberPresentationEnum, transferTimeout: number}): Promise<telephony.OvhPabxDialplan>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan', params: {billingAccount: string, serviceName: string, anonymousRejection: boolean, name: string, showCallerNumber: telephony.OvhPabxDialplanNumberPresentationEnum, transferTimeout: number}): Promise<telephony.OvhPabxDialplan>;
   /**
    * List the telephony.OvhPabxDialplanExtension objects
    * Create a new extension for a dialplan
    */
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension', params: {billingAccount: string, dialplanId: number, serviceName: string, enable: boolean, position: number, schedulerCategory?: OVH.telephony.SchedulerCategoryEnum, screenListType?: OVH.telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.OvhPabxDialplanExtension>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension', params: {billingAccount: string, dialplanId: number, serviceName: string, enable: boolean, position: number, schedulerCategory?: telephony.SchedulerCategoryEnum, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.OvhPabxDialplanExtension>;
   /**
    * List the telephony.OvhPabxDialplanExtensionConditionScreenList objects
    * Create a new screenlist condition for an extension
    */
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList', params: {billingAccount: string, dialplanId: number, extensionId: number, serviceName: string, callerIdNumber?: string, destinationNumber?: string, screenListType?: OVH.telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.OvhPabxDialplanExtensionConditionScreenList>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList', params: {billingAccount: string, dialplanId: number, extensionId: number, serviceName: string, callerIdNumber?: string, destinationNumber?: string, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.OvhPabxDialplanExtensionConditionScreenList>;
   /**
    * List the telephony.OvhPabxDialplanExtensionConditionTime objects
    * Create a new time condition for an extension
    */
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime', params: {billingAccount: string, dialplanId: number, extensionId: number, serviceName: string, timeFrom: string, timeTo: string, weekDay: OVH.telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<telephony.OvhPabxDialplanExtensionConditionTime>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime', params: {billingAccount: string, dialplanId: number, extensionId: number, serviceName: string, timeFrom: string, timeTo: string, weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<telephony.OvhPabxDialplanExtensionConditionTime>;
   /**
    * List the telephony.OvhPabxDialplanExtensionRule objects
    * Create a new rule for an extension
    */
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule', params: {billingAccount: string, dialplanId: number, extensionId: number, serviceName: string, action: OVH.telephony.OvhPabxDialplanExtensionRuleActionEnum, actionParam?: string, negativeAction: boolean, position: number}): Promise<telephony.OvhPabxDialplanExtensionRule>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule', params: {billingAccount: string, dialplanId: number, extensionId: number, serviceName: string, action: telephony.OvhPabxDialplanExtensionRuleActionEnum, actionParam?: string, negativeAction: boolean, position: number}): Promise<telephony.OvhPabxDialplanExtensionRule>;
   /**
    * List the telephony.OvhPabxHuntingAgent objects
    * Create a new agent
    */
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent', params: {billingAccount: string, serviceName: string, description?: string, number: string, simultaneousLines: number, status: OVH.telephony.OvhPabxHuntingAgentStatusEnum, timeout: number, wrapUpTime: number}): Promise<telephony.OvhPabxHuntingAgent>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent', params: {billingAccount: string, serviceName: string, description?: string, number: string, simultaneousLines: number, status: telephony.OvhPabxHuntingAgentStatusEnum, timeout: number, wrapUpTime: number}): Promise<telephony.OvhPabxHuntingAgent>;
   /**
    * The web access for your cloudpabx
    * Create a new web access for this ressource
@@ -6524,12 +6523,12 @@ export class ApiTelephony extends OvhWrapper {
    * whisper operations
    * Whisper on a call
    */
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper', params: {agentId: number, billingAccount: string, id: number, serviceName: string, number: string, whisperingMode: OVH.telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper', params: {agentId: number, billingAccount: string, id: number, serviceName: string, number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
   /**
    * Token associated to the service for live event
    * Create a new token
    */
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken', params: {agentId: number, billingAccount: string, serviceName: string, expiration: OVH.telephony.TokenExpirationEnum}): Promise<string>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken', params: {agentId: number, billingAccount: string, serviceName: string, expiration: telephony.TokenExpirationEnum}): Promise<string>;
   /**
    * List the telephony.OvhPabxHuntingAgentQueue objects
    * Create a new skill for an agent (it adds the agent in a queue)
@@ -6544,12 +6543,12 @@ export class ApiTelephony extends OvhWrapper {
    * Token associated to the service for live event
    * Create a new token
    */
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken', params: {billingAccount: string, serviceName: string, expiration: OVH.telephony.TokenExpirationEnum}): Promise<string>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken', params: {billingAccount: string, serviceName: string, expiration: telephony.TokenExpirationEnum}): Promise<string>;
   /**
    * List the telephony.OvhPabxHuntingQueue objects
    * Create a new queue
    */
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue', params: {billingAccount: string, serviceName: string, actionOnClosure?: OVH.telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: OVH.telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: OVH.telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: OVH.telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy: OVH.telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<telephony.OvhPabxHuntingQueue>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue', params: {billingAccount: string, serviceName: string, actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<telephony.OvhPabxHuntingQueue>;
   /**
    * List the telephony.OvhPabxHuntingAgentQueue objects
    * Create a new skill for an agent (it adds the agent in a queue)
@@ -6584,7 +6583,7 @@ export class ApiTelephony extends OvhWrapper {
    * whisper operations
    * Whisper on a call
    */
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper', params: {billingAccount: string, id: number, queueId: number, serviceName: string, number: string, whisperingMode: OVH.telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper', params: {billingAccount: string, id: number, queueId: number, serviceName: string, number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
   /**
    * List the telephony.OvhPabxMenu objects
    * Create a new menu
@@ -6594,7 +6593,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.OvhPabxMenuEntry objects
    * Create a new menu entry
    */
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry', params: {billingAccount: string, menuId: number, serviceName: string, action: OVH.telephony.OvhPabxIvrMenuEntryActionEnum, actionParam?: string, dtmf: string, position: number}): Promise<telephony.OvhPabxMenuEntry>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry', params: {billingAccount: string, menuId: number, serviceName: string, action: telephony.OvhPabxIvrMenuEntryActionEnum, actionParam?: string, dtmf: string, position: number}): Promise<telephony.OvhPabxMenuEntry>;
   /**
    * soundUpload operations
    * Upload new sound file
@@ -6604,7 +6603,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.OvhPabxTts objects
    * Create a new text to speech
    */
-  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts', params: {billingAccount: string, serviceName: string, text: string, voice?: OVH.telephony.OvhPabxTtsVoiceEnum}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/ovhPabx/{serviceName}/tts', params: {billingAccount: string, serviceName: string, text: string, voice?: telephony.OvhPabxTtsVoiceEnum}): Promise<void>;
   /**
    * List the telephony.PhonebookMaster objects
    * Add a phonebook on group. Return the bookKey.
@@ -6644,7 +6643,7 @@ export class ApiTelephony extends OvhWrapper {
    * relaunch operations
    * Fix error and relaunch portability
    */
-  public post(path: '/telephony/{billingAccount}/portability/{id}/relaunch', params: {billingAccount: string, id: number, parameters: OVH.complexType.SafeKeyValue<string>[]}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/portability/{id}/relaunch', params: {billingAccount: string, id: number, parameters: complexType.SafeKeyValue<string>[]}): Promise<void>;
   /**
    * changeDestination operations
    * Change the destination of the redirect
@@ -6664,7 +6663,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.SchedulerEvent objects
    * Add a scheduler event
    */
-  public post(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events', params: {billingAccount: string, serviceName: string, category: OVH.telephony.SchedulerCategoryEnum, dateEnd: string, dateStart: string, description?: string, title: string, uid?: string}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/scheduler/{serviceName}/events', params: {billingAccount: string, serviceName: string, category: telephony.SchedulerCategoryEnum, dateEnd: string, dateStart: string, description?: string, title: string, uid?: string}): Promise<void>;
   /**
    * importIcsCalendar operations
    * Add scheduler events in ICS format
@@ -6674,7 +6673,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.ScreenList objects
    * Create a new screen list rule
    */
-  public post(path: '/telephony/{billingAccount}/screen/{serviceName}/screenLists', params: {billingAccount: string, serviceName: string, callNumber?: string, nature: OVH.telephony.ScreenListNatureEnum, type: OVH.telephony.ScreenListTypeEnum}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/screen/{serviceName}/screenLists', params: {billingAccount: string, serviceName: string, callNumber?: string, nature: telephony.ScreenListNatureEnum, type: telephony.ScreenListTypeEnum}): Promise<void>;
   /**
    * cancelTermination operations
    * Cancel the service termination
@@ -6694,7 +6693,7 @@ export class ApiTelephony extends OvhWrapper {
    * Token associated to the service for live event
    * Create a new token
    */
-  public post(path: '/telephony/{billingAccount}/service/{serviceName}/eventToken', params: {billingAccount: string, serviceName: string, expiration: OVH.telephony.TokenExpirationEnum}): Promise<string>;
+  public post(path: '/telephony/{billingAccount}/service/{serviceName}/eventToken', params: {billingAccount: string, serviceName: string, expiration: telephony.TokenExpirationEnum}): Promise<string>;
   /**
    * Offer change
    * Add a new offer change
@@ -6704,7 +6703,7 @@ export class ApiTelephony extends OvhWrapper {
    * List the telephony.TimeCondition objects
    * Create a new time condition rule
    */
-  public post(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition', params: {billingAccount: string, serviceName: string, day: OVH.telephony.TimeConditionsDayEnum, hourBegin: string, hourEnd: string, policy: OVH.telephony.TimeConditionsPolicyEnum}): Promise<telephony.TimeCondition>;
+  public post(path: '/telephony/{billingAccount}/timeCondition/{serviceName}/condition', params: {billingAccount: string, serviceName: string, day: telephony.TimeConditionsDayEnum, hourBegin: string, hourEnd: string, policy: telephony.TimeConditionsPolicyEnum}): Promise<telephony.TimeCondition>;
   /**
    * transferSecurityDeposit operations
    * Transfer security deposit between two billing accounts
@@ -6724,17 +6723,17 @@ export class ApiTelephony extends OvhWrapper {
    * move operations
    * Move the message to another directory
    */
-  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move', params: {billingAccount: string, id: number, serviceName: string, dir: OVH.telephony.VoicemailMessageFolderDirectoryEnum}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move', params: {billingAccount: string, id: number, serviceName: string, dir: telephony.VoicemailMessageFolderDirectoryEnum}): Promise<void>;
   /**
    * List the telephony.VoicemailGreetings objects
    * Upload a new sound for a specific greeting. Return a task id.
    */
-  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings', params: {billingAccount: string, serviceName: string, dir: OVH.telephony.VoicemailMessageFolderGreetingEnum, documentId: string}): Promise<number>;
+  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings', params: {billingAccount: string, serviceName: string, dir: telephony.VoicemailMessageFolderGreetingEnum, documentId: string}): Promise<number>;
   /**
    * move operations
    * Move the message to another directory
    */
-  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move', params: {billingAccount: string, id: number, serviceName: string, dir: OVH.telephony.VoicemailMessageFolderGreetingEnum}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move', params: {billingAccount: string, id: number, serviceName: string, dir: telephony.VoicemailMessageFolderGreetingEnum}): Promise<void>;
   /**
    * migrateOnNewVersion operations
    * Change the voicemail on a new version to manager greetings, directories and extra settings.
@@ -6749,7 +6748,7 @@ export class ApiTelephony extends OvhWrapper {
    * changeRouting operations
    * Disable/Enable voicemail. Available only if the line has fax capabilities
    */
-  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting', params: {billingAccount: string, serviceName: string, routing: OVH.telephony.VoicefaxRoutingEnum}): Promise<void>;
+  public post(path: '/telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting', params: {billingAccount: string, serviceName: string, routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
   /**
    * logs operations
    * Generate a temporary url to retrieve device logs
@@ -6769,7 +6768,7 @@ export class ApiTelephony extends OvhWrapper {
    * Get all available SIP domains by country
    * Get all available SIP domains by country
    */
-  public post(path: '/telephony/setDefaultSipDomain', params: {country: OVH.telephony.NumberCountryEnum, domain: string, type: OVH.telephony.SipDomainProductTypeEnum}): Promise<void>;
+  public post(path: '/telephony/setDefaultSipDomain', params: {country: telephony.NumberCountryEnum, domain: string, type: telephony.SipDomainProductTypeEnum}): Promise<void>;
   /**
    * List the telephony.Sound objects
    * Create a new sound
@@ -7092,4 +7091,5 @@ export class ApiTelephony extends OvhWrapper {
     return super.delete(path, params);
   }
 }
-}
+type telephonyProtocolEnum = telephony.ProtocolEnum;
+type orderPrice = order.Price;

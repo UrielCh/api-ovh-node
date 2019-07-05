@@ -1422,7 +1422,7 @@ export namespace telephony {
     export interface DefaultIpRestriction {
         id: number;
         subnet: string;
-        type: telephony.ProtocolEnum;
+        type: telephonyProtocolEnum;
     }
     //telephony.LineDescriptionSettings
     // fullName: telephony.LineDescriptionSettings.LineDescriptionSettings
@@ -4241,7 +4241,7 @@ export class ApiMe extends OvhWrapper {
    * List the telephony.DefaultIpRestriction objects
    * Create a default IP restriction for your future VoIP lines
    */
-  public post(path: '/me/telephony/defaultIpRestriction', params: {subnet: string, type: telephony.ProtocolEnum}): Promise<telephony.DefaultIpRestriction>;
+  public post(path: '/me/telephony/defaultIpRestriction', params: {subnet: string, type: telephonyProtocolEnum}): Promise<telephony.DefaultIpRestriction>;
   /**
    * settings operations
    * Change the telephony settings linked to the customer account
@@ -4380,3 +4380,4 @@ export class ApiMe extends OvhWrapper {
   }
 }
 type orderPrice = order.Price;
+type telephonyProtocolEnum = telephony.ProtocolEnum;
