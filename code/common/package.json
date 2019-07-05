@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/common",
   "description": "common class used by new syntax",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
