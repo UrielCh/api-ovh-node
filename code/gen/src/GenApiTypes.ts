@@ -128,6 +128,10 @@ export default class GenApiTypes {
             api.operations.forEach(op => {
                 op.responseType = filterReservedKw(op.responseType);
                 op.responseFullType = filterReservedKw(op.responseFullType);
+                op.parameters.forEach(p => {
+                    p.dataType = filterReservedKw(p.dataType);
+                    p.fullType = filterReservedKw(p.fullType);
+                })
             })
             let apiPath = api.path.split('/');
             this.addApi(apiPath, api, this.apis);

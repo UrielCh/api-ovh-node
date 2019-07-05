@@ -5,7 +5,7 @@ import Promise from 'bluebird'
 import dns from 'dns';
 import Ovh from '@ovh-api/api';
 
-const ovh = new Ovh({ accessRules: 'GET /hosting/web, GET /hosting/web/*, GET /domain, POST /hosting/web/*/terminate, GET /me/api*, DELETE /me/api*' });
+const ovh = new Ovh({ accessRules: 'GET /hosting/web, GET /hosting/web/*, GET /domain, POST /hosting/web/*/terminate, GET /me/api*, DELETE /me/api*', certCache: '../../cleanToken.json' });
 const apiWeb = proxyHostingWeb(ovh);
 const apiDom = proxyDomain(ovh);
 const apiMe = proxyMe(ovh);

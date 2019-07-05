@@ -53,12 +53,12 @@ export namespace dedicated {
         //dedicated.ceph.response
         // fullName: dedicated.ceph.response.response
         export interface response {
-            key: string;
-            mdsCaps: string;
-            monCaps: string;
-            name: string;
-            osdCaps: string;
-            serviceName: string;
+            classRead: boolean;
+            classWrite: boolean;
+            execute: boolean;
+            poolName: string;
+            read: boolean;
+            write: boolean;
         }
         export namespace taskGet {
             export namespace response {

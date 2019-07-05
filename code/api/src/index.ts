@@ -217,6 +217,7 @@ by default I will ask for all rights`);
      */
     async request(httpMethod: string, pathTemplate: string, params?: any): Promise<any> {
         const ovhEngine = this;
+        httpMethod = httpMethod.toUpperCase();
         /**
          * Time drift
          */
