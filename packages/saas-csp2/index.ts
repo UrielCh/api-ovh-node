@@ -256,7 +256,7 @@ export class ApiSaasCsp2 extends OvhWrapper {
    * Office licence
    * Get this object properties
    */
-  public get(path: '/saas/csp2/{serviceName}/orderableLicenses/{id}', params: {serviceName: string, id: string}): Promise<saas.csp2.OfficeLicence>;
+  public get(path: '/saas/csp2/{serviceName}/orderableLicenses/{id}', params: {id: number, serviceName: string}): Promise<saas.csp2.OfficeLicence>;
   /**
    * Details about a Service
    * Get this object properties
@@ -271,17 +271,17 @@ export class ApiSaasCsp2 extends OvhWrapper {
    * Office subscription
    * Get this object properties
    */
-  public get(path: '/saas/csp2/{serviceName}/subscription/{id}', params: {serviceName: string, id: string}): Promise<saas.csp2.OfficeSubscription>;
+  public get(path: '/saas/csp2/{serviceName}/subscription/{id}', params: {id: number, serviceName: string}): Promise<saas.csp2.OfficeSubscription>;
   /**
    * addonsSubscriptionIds operations
    * Addon subscriptions associated to this office subscription
    */
-  public get(path: '/saas/csp2/{serviceName}/subscription/{id}/addonsSubscriptionIds', params: {serviceName: string, id: string}): Promise<number[]>;
+  public get(path: '/saas/csp2/{serviceName}/subscription/{id}/addonsSubscriptionIds', params: {id: number, serviceName: string}): Promise<number[]>;
   /**
    * availableAddonLicenses operations
    * Gives a list of licenses ids that can be ordered as an addon for this subscription
    */
-  public get(path: '/saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses', params: {serviceName: string, id: string}): Promise<number[]>;
+  public get(path: '/saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses', params: {id: number, serviceName: string}): Promise<number[]>;
   /**
    * List the saas.csp2.OfficeTask objects
    * Pending tasks of this tenant
@@ -291,7 +291,7 @@ export class ApiSaasCsp2 extends OvhWrapper {
    * Office task
    * Get this object properties
    */
-  public get(path: '/saas/csp2/{serviceName}/task/{id}', params: {serviceName: string, id: string}): Promise<saas.csp2.OfficeTask>;
+  public get(path: '/saas/csp2/{serviceName}/task/{id}', params: {id: number, serviceName: string}): Promise<saas.csp2.OfficeTask>;
   /**
    * usageStatistics operations
    * Get the usage statistics over the chose period
@@ -332,12 +332,12 @@ export class ApiSaasCsp2 extends OvhWrapper {
    * changeQuantity operations
    * Change the quantity of seats in the subscription
    */
-  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/changeQuantity', params: {serviceName: string, id: string, quantity: number}): Promise<saas.csp2.OfficeTask>;
+  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/changeQuantity', params: {id: number, serviceName: string, quantity: number}): Promise<saas.csp2.OfficeTask>;
   /**
    * orderAddon operations
    * Creates a new subscription as an addon for this subscription
    */
-  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/orderAddon', params: {serviceName: string, id: string, licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
+  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/orderAddon', params: {id: number, serviceName: string, licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
   public post(path: PathsSaasCsp2POST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
@@ -345,7 +345,7 @@ export class ApiSaasCsp2 extends OvhWrapper {
    * Office subscription
    * Delete a subscription from this tenant
    */
-  public delete(path: '/saas/csp2/{serviceName}/subscription/{id}', params: {serviceName: string, id: string}): Promise<saas.csp2.OfficeTask>;
+  public delete(path: '/saas/csp2/{serviceName}/subscription/{id}', params: {id: number, serviceName: string}): Promise<saas.csp2.OfficeTask>;
   public delete(path: PathsSaasCsp2DELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

@@ -236,7 +236,7 @@ export class ApiPaasTimeseries extends OvhWrapper {
    * Key
    * Get a key
    */
-  public get(path: '/paas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<paas.timeseries.Key>;
+  public get(path: '/paas/timeseries/{serviceName}/key/{keyId}', params: {keyId: string, serviceName: string}): Promise<paas.timeseries.Key>;
   /**
    * Quotas
    * Get quotas
@@ -264,7 +264,7 @@ export class ApiPaasTimeseries extends OvhWrapper {
    * Key
    * Create a key
    */
-  public put(path: '/paas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string, description?: string, permissions: OVH.tsaas.PermissionEnum[], tags: OVH.paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
+  public put(path: '/paas/timeseries/{serviceName}/key/{keyId}', params: {keyId: string, serviceName: string, description?: string, permissions: OVH.tsaas.PermissionEnum[], tags: OVH.paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -295,7 +295,7 @@ export class ApiPaasTimeseries extends OvhWrapper {
    * Key
    * Delete a OpenTSDB token
    */
-  public delete(path: '/paas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<boolean>;
+  public delete(path: '/paas/timeseries/{serviceName}/key/{keyId}', params: {keyId: string, serviceName: string}): Promise<boolean>;
   public delete(path: PathsPaasTimeseriesDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

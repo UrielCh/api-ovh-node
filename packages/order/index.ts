@@ -4201,22 +4201,22 @@ export class ApiOrder extends OvhWrapper {
    * Missing description
    * Retrieve information about a specific item of a cart
    */
-  public get(path: '/order/cart/{cartId}/item/{itemId}', params: {cartId: string, itemId: string}): Promise<order.cart.Item>;
+  public get(path: '/order/cart/{cartId}/item/{itemId}', params: {cartId: string, itemId: number}): Promise<order.cart.Item>;
   /**
    * Missing description
    * Retrieve all configuration item of the cart item
    */
-  public get(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {cartId: string, itemId: string, label?: string}): Promise<number[]>;
+  public get(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {cartId: string, itemId: number, label?: string}): Promise<number[]>;
   /**
    * Missing description
    * Retrieve configuration item
    */
-  public get(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}', params: {cartId: string, itemId: string, configurationId: string}): Promise<order.cart.ConfigurationItem>;
+  public get(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}', params: {cartId: string, configurationId: number, itemId: number}): Promise<order.cart.ConfigurationItem>;
   /**
    * Missing description
    * Retrieve all required configuration item of the cart item
    */
-  public get(path: '/order/cart/{cartId}/item/{itemId}/requiredConfiguration', params: {cartId: string, itemId: string}): Promise<order.cart.ConfigurationRequirements[]>;
+  public get(path: '/order/cart/{cartId}/item/{itemId}/requiredConfiguration', params: {cartId: string, itemId: number}): Promise<order.cart.ConfigurationRequirements[]>;
   /**
    * Missing description
    * Get informations about Kubernetes offers
@@ -4846,7 +4846,7 @@ export class ApiOrder extends OvhWrapper {
    * Order Backend Option
    * Get prices and contracts information
    */
-  public get(path: '/order/cdn/dedicated/{serviceName}/backend/{duration}', params: {serviceName: string, duration: string, backend: number}): Promise<order.Order>;
+  public get(path: '/order/cdn/dedicated/{serviceName}/backend/{duration}', params: {duration: string, serviceName: string, backend: number}): Promise<order.Order>;
   /**
    * Upgrade cacheRule Option
    * Get allowed durations for 'cacheRule' option
@@ -4856,7 +4856,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade cacheRule Option
    * Get prices and contracts information
    */
-  public get(path: '/order/cdn/dedicated/{serviceName}/cacheRule/{duration}', params: {serviceName: string, duration: string, cacheRule: OVH.cdnanycast.OrderCacheRuleEnum}): Promise<order.Order>;
+  public get(path: '/order/cdn/dedicated/{serviceName}/cacheRule/{duration}', params: {duration: string, serviceName: string, cacheRule: OVH.cdnanycast.OrderCacheRuleEnum}): Promise<order.Order>;
   /**
    * Order Quota
    * Get allowed durations for 'quota' option
@@ -4866,7 +4866,7 @@ export class ApiOrder extends OvhWrapper {
    * Order Quota
    * Get prices and contracts information
    */
-  public get(path: '/order/cdn/dedicated/{serviceName}/quota/{duration}', params: {serviceName: string, duration: string, quota: OVH.cdnanycast.OrderQuotaEnum}): Promise<order.Order>;
+  public get(path: '/order/cdn/dedicated/{serviceName}/quota/{duration}', params: {duration: string, serviceName: string, quota: OVH.cdnanycast.OrderQuotaEnum}): Promise<order.Order>;
   /**
    * Order a New Dedicated CDN Service
    * Get allowed durations for 'new' option
@@ -4896,7 +4896,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade Storage Option
    * Get prices and contracts information
    */
-  public get(path: '/order/cdn/webstorage/{serviceName}/storage/{duration}', params: {serviceName: string, duration: string, storage: OVH.cdn.webstorage.OrderStorageEnum}): Promise<order.Order>;
+  public get(path: '/order/cdn/webstorage/{serviceName}/storage/{duration}', params: {duration: string, serviceName: string, storage: OVH.cdn.webstorage.OrderStorageEnum}): Promise<order.Order>;
   /**
    * Order Traffic
    * Get prices and contracts information
@@ -4941,7 +4941,7 @@ export class ApiOrder extends OvhWrapper {
    * Order an APC for this bay
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/housing/{serviceName}/APC/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public get(path: '/order/dedicated/housing/{serviceName}/APC/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order a new Nas HA
    * Get allowed durations for 'new' option
@@ -4971,7 +4971,7 @@ export class ApiOrder extends OvhWrapper {
    * Order a backup storage for this server
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/backupStorage/{duration}', params: {serviceName: string, duration: string, capacity: OVH.dedicated.server.BackupStorageCapacityEnum}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/backupStorage/{duration}', params: {duration: string, serviceName: string, capacity: OVH.dedicated.server.BackupStorageCapacityEnum}): Promise<order.Order>;
   /**
    * Order bandwidth for this server
    * Get allowed durations for 'bandwidth' option
@@ -4981,7 +4981,7 @@ export class ApiOrder extends OvhWrapper {
    * Order bandwidth for this server
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/bandwidth/{duration}', params: {serviceName: string, duration: string, bandwidth: OVH.dedicated.server.BandwidthOrderEnum, type: OVH.dedicated.server.BandwidthOrderTypeEnum}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/bandwidth/{duration}', params: {duration: string, serviceName: string, bandwidth: OVH.dedicated.server.BandwidthOrderEnum, type: OVH.dedicated.server.BandwidthOrderTypeEnum}): Promise<order.Order>;
   /**
    * Order vRack bandwidth for this server
    * Get allowed durations for 'bandwidthvRack' option
@@ -4991,7 +4991,7 @@ export class ApiOrder extends OvhWrapper {
    * Order vRack bandwidth for this server
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/bandwidthvRack/{duration}', params: {serviceName: string, duration: string, bandwidth: OVH.dedicated.server.BandwidthvRackOrderEnum}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/bandwidthvRack/{duration}', params: {duration: string, serviceName: string, bandwidth: OVH.dedicated.server.BandwidthvRackOrderEnum}): Promise<order.Order>;
   /**
    * Order a failover IP for this server
    * Get allowed durations for 'failoverIP' option
@@ -5001,7 +5001,7 @@ export class ApiOrder extends OvhWrapper {
    * Order a failover IP for this server
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/failoverIP/{duration}', params: {serviceName: string, duration: string, country: OVH.dedicated.server.IpCountryEnum}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/failoverIP/{duration}', params: {duration: string, serviceName: string, country: OVH.dedicated.server.IpCountryEnum}): Promise<order.Order>;
   /**
    * Order a feature for this server
    * Get allowed durations for 'feature' option
@@ -5011,7 +5011,7 @@ export class ApiOrder extends OvhWrapper {
    * Order a feature for this server
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/feature/{duration}', params: {serviceName: string, duration: string, feature: OVH.dedicated.server.OrderableSysFeatureEnum}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/feature/{duration}', params: {duration: string, serviceName: string, feature: OVH.dedicated.server.OrderableSysFeatureEnum}): Promise<order.Order>;
   /**
    * order a Firewall for this server
    * Get allowed durations for 'firewall' option
@@ -5021,7 +5021,7 @@ export class ApiOrder extends OvhWrapper {
    * order a Firewall for this server
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/firewall/{duration}', params: {serviceName: string, duration: string, firewallModel: OVH.dedicated.server.FirewallModelEnum}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/firewall/{duration}', params: {duration: string, serviceName: string, firewallModel: OVH.dedicated.server.FirewallModelEnum}): Promise<order.Order>;
   /**
    * Order IP for this server
    * Get allowed durations for 'ip' option
@@ -5031,7 +5031,7 @@ export class ApiOrder extends OvhWrapper {
    * Order IP for this server
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/ip/{duration}', params: {serviceName: string, duration: string, blockSize: OVH.dedicated.server.IpBlockSizeEnum, country?: OVH.dedicated.server.IpCountryEnum, organisationId?: string, type: OVH.dedicated.server.IpTypeOrderableEnum}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/ip/{duration}', params: {duration: string, serviceName: string, blockSize: OVH.dedicated.server.IpBlockSizeEnum, country?: OVH.dedicated.server.IpCountryEnum, organisationId?: string, type: OVH.dedicated.server.IpTypeOrderableEnum}): Promise<order.Order>;
   /**
    * Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted
    * Get allowed durations for 'ipMigration' option
@@ -5041,7 +5041,7 @@ export class ApiOrder extends OvhWrapper {
    * Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/ipMigration/{duration}', params: {serviceName: string, duration: string, ip: string, token: string}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/ipMigration/{duration}', params: {duration: string, serviceName: string, ip: string, token: string}): Promise<order.Order>;
   /**
    * Order a kvm for this server
    * Get allowed durations for 'kvm' option
@@ -5051,7 +5051,7 @@ export class ApiOrder extends OvhWrapper {
    * Order a kvm for this server
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/kvm/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/kvm/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order a kvmip express for this server
    * Get allowed durations for 'kvmExpress' option
@@ -5061,7 +5061,7 @@ export class ApiOrder extends OvhWrapper {
    * Order a kvmip express for this server
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/kvmExpress/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/kvmExpress/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order professional use option
    * Get allowed durations for 'professionalUse' option
@@ -5071,7 +5071,7 @@ export class ApiOrder extends OvhWrapper {
    * Order professional use option
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/professionalUse/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/professionalUse/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order a static IP for this server
    * Get allowed durations for 'staticIP' option
@@ -5081,7 +5081,7 @@ export class ApiOrder extends OvhWrapper {
    * Order a static IP for this server
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/staticIP/{duration}', params: {serviceName: string, duration: string, country: OVH.dedicated.server.IpStaticCountryEnum}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/staticIP/{duration}', params: {duration: string, serviceName: string, country: OVH.dedicated.server.IpStaticCountryEnum}): Promise<order.Order>;
   /**
    * Order additionall traffic for this server
    * Get allowed durations for 'traffic' option
@@ -5091,7 +5091,7 @@ export class ApiOrder extends OvhWrapper {
    * Order additionall traffic for this server
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/traffic/{duration}', params: {serviceName: string, duration: string, traffic: OVH.dedicated.server.TrafficOrderEnum}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/traffic/{duration}', params: {duration: string, serviceName: string, traffic: OVH.dedicated.server.TrafficOrderEnum}): Promise<order.Order>;
   /**
    * Order an USB key for this server
    * Get allowed durations for 'usbKey' option
@@ -5101,7 +5101,7 @@ export class ApiOrder extends OvhWrapper {
    * Order an USB key for this server
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicated/server/{serviceName}/usbKey/{duration}', params: {serviceName: string, duration: string, capacity: OVH.dedicated.server.UsbKeyCapacityEnum}): Promise<order.Order>;
+  public get(path: '/order/dedicated/server/{serviceName}/usbKey/{duration}', params: {duration: string, serviceName: string, capacity: OVH.dedicated.server.UsbKeyCapacityEnum}): Promise<order.Order>;
   /**
    * Operations about the PCC service
    * List available services
@@ -5121,7 +5121,7 @@ export class ApiOrder extends OvhWrapper {
    * Order additional bandwidth in your Private Cloud
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicatedCloud/{serviceName}/additionalBandwidth/{duration}', params: {serviceName: string, duration: string, bandwidth: OVH.dedicatedCloud.AdditionalBandwidthEnum}): Promise<order.Order>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/additionalBandwidth/{duration}', params: {duration: string, serviceName: string, bandwidth: OVH.dedicatedCloud.AdditionalBandwidthEnum}): Promise<order.Order>;
   /**
    * Order a new Filer in a given Datacenter (available filers are given in /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)
    * Get allowed durations for 'filer' option
@@ -5131,7 +5131,7 @@ export class ApiOrder extends OvhWrapper {
    * Order a new Filer in a given Datacenter (available filers are given in /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicatedCloud/{serviceName}/filer/{duration}', params: {serviceName: string, duration: string, datacenterId?: number, name: string, quantity?: number}): Promise<order.Order>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/filer/{duration}', params: {duration: string, serviceName: string, datacenterId?: number, name: string, quantity?: number}): Promise<order.Order>;
   /**
    * Order a new Host in a given Datacenter  (orderable hosts are given by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)
    * Get allowed durations for 'host' option
@@ -5141,7 +5141,7 @@ export class ApiOrder extends OvhWrapper {
    * Order a new Host in a given Datacenter  (orderable hosts are given by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicatedCloud/{serviceName}/host/{duration}', params: {serviceName: string, duration: string, datacenterId: number, name: string, quantity?: number}): Promise<order.Order>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/host/{duration}', params: {duration: string, serviceName: string, datacenterId: number, name: string, quantity?: number}): Promise<order.Order>;
   /**
    * Order an IP block for your Private Cloud
    * Get allowed durations for 'ip' option
@@ -5151,7 +5151,7 @@ export class ApiOrder extends OvhWrapper {
    * Order an IP block for your Private Cloud
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicatedCloud/{serviceName}/ip/{duration}', params: {serviceName: string, duration: string, country: OVH.dedicatedCloud.IpCountriesEnum, description: string, estimatedClientsNumber: number, networkName: string, size: OVH.dedicatedCloud.OrderableIpBlockRangeEnum, usage: string}): Promise<order.Order>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/ip/{duration}', params: {duration: string, serviceName: string, country: OVH.dedicatedCloud.IpCountriesEnum, description: string, estimatedClientsNumber: number, networkName: string, size: OVH.dedicatedCloud.OrderableIpBlockRangeEnum, usage: string}): Promise<order.Order>;
   /**
    * Enable windows templates (SPLA) in your Private Cloud
    * Get prices and contracts information
@@ -5166,7 +5166,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade ressources billing type. For hourlyToMonthly, already consumed hours will be billed at the end of the month
    * Get prices and contracts information
    */
-  public get(path: '/order/dedicatedCloud/{serviceName}/upgradeRessource/{duration}', params: {serviceName: string, duration: string, upgradedRessourceId?: number, upgradedRessourceType: OVH.dedicatedCloud.ressources.UpgradeRessourceTypeEnum, upgradeType: OVH.dedicatedCloud.ressources.UpgradeTypeEnum}): Promise<order.Order>;
+  public get(path: '/order/dedicatedCloud/{serviceName}/upgradeRessource/{duration}', params: {duration: string, serviceName: string, upgradedRessourceId?: number, upgradedRessourceType: OVH.dedicatedCloud.ressources.UpgradeRessourceTypeEnum, upgradeType: OVH.dedicatedCloud.ressources.UpgradeTypeEnum}): Promise<order.Order>;
   /**
    * Order VDI option in a given Datacenter
    * Get prices and contracts information
@@ -5191,7 +5191,7 @@ export class ApiOrder extends OvhWrapper {
    * Order Anycast
    * Get prices and contracts information
    */
-  public get(path: '/order/domain/zone/{zoneName}/dnsAnycast/{duration}', params: {zoneName: string, duration: string}): Promise<order.Order>;
+  public get(path: '/order/domain/zone/{zoneName}/dnsAnycast/{duration}', params: {duration: string, zoneName: string}): Promise<order.Order>;
   /**
    * Order a new DNS zone
    * Get prices and contracts information
@@ -5226,47 +5226,47 @@ export class ApiOrder extends OvhWrapper {
    * List available options for this service
    * Get allowed options
    */
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}', params: {organizationName: string, exchangeService: string}): Promise<string[]>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}', params: {exchangeService: string, organizationName: string}): Promise<string[]>;
   /**
    * Create an order for an exchange account
    * Get allowed durations for 'account' option
    */
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/account', params: {organizationName: string, exchangeService: string, licence: OVH.email.exchange.OvhLicenceEnum, number: number, storageQuota?: OVH.email.exchange.accountQuotaEnum}): Promise<string[]>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/account', params: {exchangeService: string, organizationName: string, licence: OVH.email.exchange.OvhLicenceEnum, number: number, storageQuota?: OVH.email.exchange.accountQuotaEnum}): Promise<string[]>;
   /**
    * Create an order for an exchange account
    * Get prices and contracts information
    */
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/account/{duration}', params: {organizationName: string, exchangeService: string, duration: string, licence: OVH.email.exchange.OvhLicenceEnum, number: number, storageQuota?: OVH.email.exchange.accountQuotaEnum}): Promise<order.Order>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/account/{duration}', params: {duration: string, exchangeService: string, organizationName: string, licence: OVH.email.exchange.OvhLicenceEnum, number: number, storageQuota?: OVH.email.exchange.accountQuotaEnum}): Promise<order.Order>;
   /**
    * Create an order to upgrade your hosted account storage
    * Get allowed durations for 'accountUpgrade' option
    */
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade', params: {organizationName: string, exchangeService: string, newQuota: OVH.email.exchange.accountQuotaEnum, primaryEmailAddress: string}): Promise<string[]>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade', params: {exchangeService: string, organizationName: string, newQuota: OVH.email.exchange.accountQuotaEnum, primaryEmailAddress: string}): Promise<string[]>;
   /**
    * Create an order to upgrade your hosted account storage
    * Get prices and contracts information
    */
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade/{duration}', params: {organizationName: string, exchangeService: string, duration: string, newQuota: OVH.email.exchange.accountQuotaEnum, primaryEmailAddress: string}): Promise<order.Order>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade/{duration}', params: {duration: string, exchangeService: string, organizationName: string, newQuota: OVH.email.exchange.accountQuotaEnum, primaryEmailAddress: string}): Promise<order.Order>;
   /**
    * Create an order for a additional 50GB of space (Exchange 2010 reseller only)
    * Get prices and contracts information
    */
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/diskSpace', params: {organizationName: string, exchangeService: string}): Promise<order.Order>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/diskSpace', params: {exchangeService: string, organizationName: string}): Promise<order.Order>;
   /**
    * Create an order for a outlook licence.
    * Get allowed durations for 'outlook' option
    */
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/outlook', params: {organizationName: string, exchangeService: string, licence: OVH.email.exchange.OutlookVersionEnum, primaryEmailAddress: string}): Promise<string[]>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/outlook', params: {exchangeService: string, organizationName: string, licence: OVH.email.exchange.OutlookVersionEnum, primaryEmailAddress: string}): Promise<string[]>;
   /**
    * Create an order for a outlook licence.
    * Get prices and contracts information
    */
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/outlook/{duration}', params: {organizationName: string, exchangeService: string, duration: string, licence: OVH.email.exchange.OutlookVersionEnum, primaryEmailAddress: string}): Promise<order.Order>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/outlook/{duration}', params: {duration: string, exchangeService: string, organizationName: string, licence: OVH.email.exchange.OutlookVersionEnum, primaryEmailAddress: string}): Promise<order.Order>;
   /**
    * Upgrade infrustruction to newest offer (Exchange 2013 to Exchange 2016)
    * Get prices and contracts information
    */
-  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/upgrade', params: {organizationName: string, exchangeService: string}): Promise<order.Order>;
+  public get(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/upgrade', params: {exchangeService: string, organizationName: string}): Promise<order.Order>;
   /**
    * Operations about the PROEMAIL service
    * List available services
@@ -5286,7 +5286,7 @@ export class ApiOrder extends OvhWrapper {
    * Create an order for a pro account
    * Get prices and contracts information
    */
-  public get(path: '/order/email/pro/{service}/account/{duration}', params: {service: string, duration: string, number: number}): Promise<order.Order>;
+  public get(path: '/order/email/pro/{service}/account/{duration}', params: {duration: string, service: string, number: number}): Promise<order.Order>;
   /**
    * Operations about the VOIP service
    * List available services
@@ -5326,7 +5326,7 @@ export class ApiOrder extends OvhWrapper {
    * Create an order for change ram size on your private database
    * Get prices and contracts information
    */
-  public get(path: '/order/hosting/privateDatabase/{serviceName}/ram/{duration}', params: {serviceName: string, duration: string, ram: OVH.hosting.PrivateDatabase.AvailableRamSizeEnum}): Promise<order.Order>;
+  public get(path: '/order/hosting/privateDatabase/{serviceName}/ram/{duration}', params: {duration: string, serviceName: string, ram: OVH.hosting.PrivateDatabase.AvailableRamSizeEnum}): Promise<order.Order>;
   /**
    * Order new private database
    * Get allowed durations for 'new' option
@@ -5356,7 +5356,7 @@ export class ApiOrder extends OvhWrapper {
    * Order additional bandwidth
    * Get prices and contracts information
    */
-  public get(path: '/order/hosting/web/{serviceName}/bandwidth/{duration}', params: {serviceName: string, duration: string, traffic: OVH.hosting.web.BandwidthOfferEnum}): Promise<order.Order>;
+  public get(path: '/order/hosting/web/{serviceName}/bandwidth/{duration}', params: {duration: string, serviceName: string, traffic: OVH.hosting.web.BandwidthOfferEnum}): Promise<order.Order>;
   /**
    * Create an order for cdn option
    * Get allowed durations for 'cdn' option
@@ -5366,7 +5366,7 @@ export class ApiOrder extends OvhWrapper {
    * Create an order for cdn option
    * Get prices and contracts information
    */
-  public get(path: '/order/hosting/web/{serviceName}/cdn/{duration}', params: {serviceName: string, duration: string, offer: OVH.hosting.web.CdnOfferEnum}): Promise<order.Order>;
+  public get(path: '/order/hosting/web/{serviceName}/cdn/{duration}', params: {duration: string, serviceName: string, offer: OVH.hosting.web.CdnOfferEnum}): Promise<order.Order>;
   /**
    * Create an order for change the hosting main domain
    * Get allowed durations for 'changeMainDomain' option
@@ -5376,7 +5376,7 @@ export class ApiOrder extends OvhWrapper {
    * Create an order for change the hosting main domain
    * Get prices and contracts information
    */
-  public get(path: '/order/hosting/web/{serviceName}/changeMainDomain/{duration}', params: {serviceName: string, duration: string, domain: string, mxplan: OVH.hosting.web.order.MxPlanEnum}): Promise<order.Order>;
+  public get(path: '/order/hosting/web/{serviceName}/changeMainDomain/{duration}', params: {duration: string, serviceName: string, domain: string, mxplan: OVH.hosting.web.order.MxPlanEnum}): Promise<order.Order>;
   /**
    * Create an order for extra sql perso
    * Get allowed durations for 'extraSqlPerso' option
@@ -5386,7 +5386,7 @@ export class ApiOrder extends OvhWrapper {
    * Create an order for extra sql perso
    * Get prices and contracts information
    */
-  public get(path: '/order/hosting/web/{serviceName}/extraSqlPerso/{duration}', params: {serviceName: string, duration: string, offer: OVH.hosting.web.database.SqlPersoOfferEnum}): Promise<order.Order>;
+  public get(path: '/order/hosting/web/{serviceName}/extraSqlPerso/{duration}', params: {duration: string, serviceName: string, offer: OVH.hosting.web.database.SqlPersoOfferEnum}): Promise<order.Order>;
   /**
    * Create an order for hosted ssl option
    * Get allowed durations for 'ssl' option
@@ -5396,7 +5396,7 @@ export class ApiOrder extends OvhWrapper {
    * Create an order for hosted ssl option
    * Get prices and contracts information
    */
-  public get(path: '/order/hosting/web/{serviceName}/ssl/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public get(path: '/order/hosting/web/{serviceName}/ssl/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Create an order for upgrade your hosting account
    * Get allowed durations for 'upgrade' option
@@ -5406,7 +5406,7 @@ export class ApiOrder extends OvhWrapper {
    * Create an order for upgrade your hosting account
    * Get prices and contracts information
    */
-  public get(path: '/order/hosting/web/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, offer: OVH.hosting.web.OfferEnum, startTime?: string, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
+  public get(path: '/order/hosting/web/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, offer: OVH.hosting.web.OfferEnum, startTime?: string, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
   /**
    * Order a new hosting account
    * Get allowed durations for 'new' option
@@ -5486,7 +5486,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade this license with some given options
    * Get prices and contracts information
    */
-  public get(path: '/order/license/plesk/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, antispam?: OVH.license.OrderableAntispamEnum, antivirus?: OVH.license.OrderableAntivirusEnum, applicationSet?: OVH.license.PleskApplicationSetEnum, domainNumber?: OVH.license.OrderablePleskDomainNumberEnum, languagePackNumber?: OVH.license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: OVH.license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
+  public get(path: '/order/license/plesk/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, antispam?: OVH.license.OrderableAntispamEnum, antivirus?: OVH.license.OrderableAntivirusEnum, applicationSet?: OVH.license.PleskApplicationSetEnum, domainNumber?: OVH.license.OrderablePleskDomainNumberEnum, languagePackNumber?: OVH.license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: OVH.license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
   /**
    * Order a new license on a given Ip with some given options
    * Get allowed durations for 'new' option
@@ -5516,7 +5516,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade this license with some given options
    * Get prices and contracts information
    */
-  public get(path: '/order/license/sqlserver/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, version: OVH.license.SqlServerVersionEnum}): Promise<order.Order>;
+  public get(path: '/order/license/sqlserver/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, version: OVH.license.SqlServerVersionEnum}): Promise<order.Order>;
   /**
    * Order a new license on a given Ip with some given options
    * Get allowed durations for 'new' option
@@ -5546,7 +5546,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade this license with some given options
    * Get prices and contracts information
    */
-  public get(path: '/order/license/virtuozzo/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, containerNumber: OVH.license.OrderableVirtuozzoContainerNumberEnum}): Promise<order.Order>;
+  public get(path: '/order/license/virtuozzo/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, containerNumber: OVH.license.OrderableVirtuozzoContainerNumberEnum}): Promise<order.Order>;
   /**
    * Order a new license on a given Ip with some given options
    * Get allowed durations for 'new' option
@@ -5576,7 +5576,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade this license with some given options
    * Get prices and contracts information
    */
-  public get(path: '/order/license/windows/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, sqlVersion?: OVH.license.WindowsSqlVersionEnum, version?: OVH.license.WindowsOsVersionEnum}): Promise<order.Order>;
+  public get(path: '/order/license/windows/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, sqlVersion?: OVH.license.WindowsSqlVersionEnum, version?: OVH.license.WindowsOsVersionEnum}): Promise<order.Order>;
   /**
    * Order a new license on a given Ip with some given options
    * Get allowed durations for 'new' option
@@ -5606,7 +5606,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade this license with some given options
    * Get prices and contracts information
    */
-  public get(path: '/order/license/worklight/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, version: OVH.license.WorkLightVersionEnum}): Promise<order.Order>;
+  public get(path: '/order/license/worklight/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, version: OVH.license.WorkLightVersionEnum}): Promise<order.Order>;
   /**
    * Order a new license on a given Ip with some given options
    * Get allowed durations for 'new' option
@@ -5956,7 +5956,7 @@ export class ApiOrder extends OvhWrapper {
    * Order an upgrade upon your Veeam Cloud Connect account
    * Get prices and contracts information
    */
-  public get(path: '/order/veeamCloudConnect/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, offer: OVH.veeamCloudConnect.Offer}): Promise<order.Order>;
+  public get(path: '/order/veeamCloudConnect/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, offer: OVH.veeamCloudConnect.Offer}): Promise<order.Order>;
   /**
    * Operations about the VPS service
    * List available services
@@ -5976,7 +5976,7 @@ export class ApiOrder extends OvhWrapper {
    * Order additional disk
    * Get prices and contracts information
    */
-  public get(path: '/order/vps/{serviceName}/additionalDisk/{duration}', params: {serviceName: string, duration: string, additionalDiskSize: OVH.vps.additionalDisk.AdditionalDiskSizeEnum}): Promise<order.Order>;
+  public get(path: '/order/vps/{serviceName}/additionalDisk/{duration}', params: {duration: string, serviceName: string, additionalDiskSize: OVH.vps.additionalDisk.AdditionalDiskSizeEnum}): Promise<order.Order>;
   /**
    * Order Automated Backup Option (vps Cloud only)
    * Get allowed durations for 'automatedBackup' option
@@ -5986,7 +5986,7 @@ export class ApiOrder extends OvhWrapper {
    * Order Automated Backup Option (vps Cloud only)
    * Get prices and contracts information
    */
-  public get(path: '/order/vps/{serviceName}/automatedBackup/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public get(path: '/order/vps/{serviceName}/automatedBackup/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Create an order for a cPanel license
    * Get allowed durations for 'cpanel' option
@@ -5996,7 +5996,7 @@ export class ApiOrder extends OvhWrapper {
    * Create an order for a cPanel license
    * Get prices and contracts information
    */
-  public get(path: '/order/vps/{serviceName}/cpanel/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public get(path: '/order/vps/{serviceName}/cpanel/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order FtpBackup Option
    * Get allowed durations for 'ftpbackup' option
@@ -6006,7 +6006,7 @@ export class ApiOrder extends OvhWrapper {
    * Order FtpBackup Option
    * Get prices and contracts information
    */
-  public get(path: '/order/vps/{serviceName}/ftpbackup/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public get(path: '/order/vps/{serviceName}/ftpbackup/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order Additional IP
    * Get allowed durations for 'ip' option
@@ -6016,7 +6016,7 @@ export class ApiOrder extends OvhWrapper {
    * Order Additional IP
    * Get prices and contracts information
    */
-  public get(path: '/order/vps/{serviceName}/ip/{duration}', params: {serviceName: string, duration: string, country?: OVH.vps.ip.GeolocationEnum, number: number}): Promise<order.Order>;
+  public get(path: '/order/vps/{serviceName}/ip/{duration}', params: {duration: string, serviceName: string, country?: OVH.vps.ip.GeolocationEnum, number: number}): Promise<order.Order>;
   /**
    * Create an order for a PLESK license
    * Get allowed durations for 'plesk' option
@@ -6026,7 +6026,7 @@ export class ApiOrder extends OvhWrapper {
    * Create an order for a PLESK license
    * Get prices and contracts information
    */
-  public get(path: '/order/vps/{serviceName}/plesk/{duration}', params: {serviceName: string, duration: string, domainNumber: OVH.vps.PleskLicenseDomainNumberEnum}): Promise<order.Order>;
+  public get(path: '/order/vps/{serviceName}/plesk/{duration}', params: {duration: string, serviceName: string, domainNumber: OVH.vps.PleskLicenseDomainNumberEnum}): Promise<order.Order>;
   /**
    * Order Snapshot Option
    * Get allowed durations for 'snapshot' option
@@ -6036,7 +6036,7 @@ export class ApiOrder extends OvhWrapper {
    * Order Snapshot Option
    * Get prices and contracts information
    */
-  public get(path: '/order/vps/{serviceName}/snapshot/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public get(path: '/order/vps/{serviceName}/snapshot/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order Upgrade
    * Get allowed durations for 'upgrade' option
@@ -6046,7 +6046,7 @@ export class ApiOrder extends OvhWrapper {
    * Order Upgrade
    * Get prices and contracts information
    */
-  public get(path: '/order/vps/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, model: string}): Promise<order.Order>;
+  public get(path: '/order/vps/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, model: string}): Promise<order.Order>;
   /**
    * Order Veeam Option
    * Get allowed durations for 'veeam' option
@@ -6056,7 +6056,7 @@ export class ApiOrder extends OvhWrapper {
    * Order Veeam Option
    * Get prices and contracts information
    */
-  public get(path: '/order/vps/{serviceName}/veeam/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public get(path: '/order/vps/{serviceName}/veeam/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order Windows Option (2015 only)
    * Get allowed durations for 'windows' option
@@ -6066,7 +6066,7 @@ export class ApiOrder extends OvhWrapper {
    * Order Windows Option (2015 only)
    * Get prices and contracts information
    */
-  public get(path: '/order/vps/{serviceName}/windows/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public get(path: '/order/vps/{serviceName}/windows/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Operations about the VRACK service
    * List available services
@@ -6099,7 +6099,7 @@ export class ApiOrder extends OvhWrapper {
    * Missing description
    * Update some values on a cart item
    */
-  public put(path: '/order/cart/{cartId}/item/{itemId}', params: {itemId: string, cartId: string, duration?: string, quantity?: number}): Promise<order.cart.Item>;
+  public put(path: '/order/cart/{cartId}/item/{itemId}', params: {cartId: string, itemId: number, duration?: string, quantity?: number}): Promise<order.cart.Item>;
   public put(path: PathsOrderPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -6332,7 +6332,7 @@ export class ApiOrder extends OvhWrapper {
    * Missing description
    * Setup configuration item for the product
    */
-  public post(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {cartId: string, itemId: string, label: string, value: string}): Promise<order.cart.ConfigurationItem>;
+  public post(path: '/order/cart/{cartId}/item/{itemId}/configuration', params: {cartId: string, itemId: number, label: string, value: string}): Promise<order.cart.ConfigurationItem>;
   /**
    * Missing description
    * Post a new Kubernetes item in your cart
@@ -6742,17 +6742,17 @@ export class ApiOrder extends OvhWrapper {
    * Order Backend Option
    * Create order
    */
-  public post(path: '/order/cdn/dedicated/{serviceName}/backend/{duration}', params: {serviceName: string, duration: string, backend: number}): Promise<order.Order>;
+  public post(path: '/order/cdn/dedicated/{serviceName}/backend/{duration}', params: {duration: string, serviceName: string, backend: number}): Promise<order.Order>;
   /**
    * Upgrade cacheRule Option
    * Create order
    */
-  public post(path: '/order/cdn/dedicated/{serviceName}/cacheRule/{duration}', params: {serviceName: string, duration: string, cacheRule: OVH.cdnanycast.OrderCacheRuleEnum}): Promise<order.Order>;
+  public post(path: '/order/cdn/dedicated/{serviceName}/cacheRule/{duration}', params: {duration: string, serviceName: string, cacheRule: OVH.cdnanycast.OrderCacheRuleEnum}): Promise<order.Order>;
   /**
    * Order Quota
    * Create order
    */
-  public post(path: '/order/cdn/dedicated/{serviceName}/quota/{duration}', params: {serviceName: string, duration: string, quota: OVH.cdnanycast.OrderQuotaEnum}): Promise<order.Order>;
+  public post(path: '/order/cdn/dedicated/{serviceName}/quota/{duration}', params: {duration: string, serviceName: string, quota: OVH.cdnanycast.OrderQuotaEnum}): Promise<order.Order>;
   /**
    * Order a New Dedicated CDN Service
    * Create order
@@ -6762,7 +6762,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade Storage Option
    * Create order
    */
-  public post(path: '/order/cdn/webstorage/{serviceName}/storage/{duration}', params: {serviceName: string, duration: string, storage: OVH.cdn.webstorage.OrderStorageEnum}): Promise<order.Order>;
+  public post(path: '/order/cdn/webstorage/{serviceName}/storage/{duration}', params: {duration: string, serviceName: string, storage: OVH.cdn.webstorage.OrderStorageEnum}): Promise<order.Order>;
   /**
    * Order Traffic
    * Create order
@@ -6782,7 +6782,7 @@ export class ApiOrder extends OvhWrapper {
    * Order an APC for this bay
    * Create order
    */
-  public post(path: '/order/dedicated/housing/{serviceName}/APC/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public post(path: '/order/dedicated/housing/{serviceName}/APC/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order a new Nas HA
    * Create order
@@ -6792,92 +6792,92 @@ export class ApiOrder extends OvhWrapper {
    * Order a backup storage for this server
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/backupStorage/{duration}', params: {serviceName: string, duration: string, capacity: OVH.dedicated.server.BackupStorageCapacityEnum}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/backupStorage/{duration}', params: {duration: string, serviceName: string, capacity: OVH.dedicated.server.BackupStorageCapacityEnum}): Promise<order.Order>;
   /**
    * Order bandwidth for this server
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/bandwidth/{duration}', params: {serviceName: string, duration: string, bandwidth: OVH.dedicated.server.BandwidthOrderEnum, type: OVH.dedicated.server.BandwidthOrderTypeEnum}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/bandwidth/{duration}', params: {duration: string, serviceName: string, bandwidth: OVH.dedicated.server.BandwidthOrderEnum, type: OVH.dedicated.server.BandwidthOrderTypeEnum}): Promise<order.Order>;
   /**
    * Order vRack bandwidth for this server
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/bandwidthvRack/{duration}', params: {serviceName: string, duration: string, bandwidth: OVH.dedicated.server.BandwidthvRackOrderEnum}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/bandwidthvRack/{duration}', params: {duration: string, serviceName: string, bandwidth: OVH.dedicated.server.BandwidthvRackOrderEnum}): Promise<order.Order>;
   /**
    * Order a failover IP for this server
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/failoverIP/{duration}', params: {serviceName: string, duration: string, country: OVH.dedicated.server.IpCountryEnum}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/failoverIP/{duration}', params: {duration: string, serviceName: string, country: OVH.dedicated.server.IpCountryEnum}): Promise<order.Order>;
   /**
    * Order a feature for this server
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/feature/{duration}', params: {serviceName: string, duration: string, feature: OVH.dedicated.server.OrderableSysFeatureEnum}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/feature/{duration}', params: {duration: string, serviceName: string, feature: OVH.dedicated.server.OrderableSysFeatureEnum}): Promise<order.Order>;
   /**
    * order a Firewall for this server
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/firewall/{duration}', params: {serviceName: string, duration: string, firewallModel: OVH.dedicated.server.FirewallModelEnum}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/firewall/{duration}', params: {duration: string, serviceName: string, firewallModel: OVH.dedicated.server.FirewallModelEnum}): Promise<order.Order>;
   /**
    * Order IP for this server
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/ip/{duration}', params: {serviceName: string, duration: string, blockSize: OVH.dedicated.server.IpBlockSizeEnum, country?: OVH.dedicated.server.IpCountryEnum, organisationId?: string, type: OVH.dedicated.server.IpTypeOrderableEnum}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/ip/{duration}', params: {duration: string, serviceName: string, blockSize: OVH.dedicated.server.IpBlockSizeEnum, country?: OVH.dedicated.server.IpCountryEnum, organisationId?: string, type: OVH.dedicated.server.IpTypeOrderableEnum}): Promise<order.Order>;
   /**
    * Migrate an IP from So you Start to OVH server, this operation is one-way only and can't be reverted
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/ipMigration/{duration}', params: {serviceName: string, duration: string, ip: string, token: string}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/ipMigration/{duration}', params: {duration: string, serviceName: string, ip: string, token: string}): Promise<order.Order>;
   /**
    * Order a kvm for this server
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/kvm/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/kvm/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order a kvmip express for this server
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/kvmExpress/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/kvmExpress/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order professional use option
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/professionalUse/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/professionalUse/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order a static IP for this server
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/staticIP/{duration}', params: {serviceName: string, duration: string, country: OVH.dedicated.server.IpStaticCountryEnum}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/staticIP/{duration}', params: {duration: string, serviceName: string, country: OVH.dedicated.server.IpStaticCountryEnum}): Promise<order.Order>;
   /**
    * Order additionall traffic for this server
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/traffic/{duration}', params: {serviceName: string, duration: string, traffic: OVH.dedicated.server.TrafficOrderEnum}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/traffic/{duration}', params: {duration: string, serviceName: string, traffic: OVH.dedicated.server.TrafficOrderEnum}): Promise<order.Order>;
   /**
    * Order an USB key for this server
    * Create order
    */
-  public post(path: '/order/dedicated/server/{serviceName}/usbKey/{duration}', params: {serviceName: string, duration: string, capacity: OVH.dedicated.server.UsbKeyCapacityEnum}): Promise<order.Order>;
+  public post(path: '/order/dedicated/server/{serviceName}/usbKey/{duration}', params: {duration: string, serviceName: string, capacity: OVH.dedicated.server.UsbKeyCapacityEnum}): Promise<order.Order>;
   /**
    * Order additional bandwidth in your Private Cloud
    * Create order
    */
-  public post(path: '/order/dedicatedCloud/{serviceName}/additionalBandwidth/{duration}', params: {serviceName: string, duration: string, bandwidth: OVH.dedicatedCloud.AdditionalBandwidthEnum}): Promise<order.Order>;
+  public post(path: '/order/dedicatedCloud/{serviceName}/additionalBandwidth/{duration}', params: {duration: string, serviceName: string, bandwidth: OVH.dedicatedCloud.AdditionalBandwidthEnum}): Promise<order.Order>;
   /**
    * Order a new Filer in a given Datacenter (available filers are given in /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles)
    * Create order
    */
-  public post(path: '/order/dedicatedCloud/{serviceName}/filer/{duration}', params: {serviceName: string, duration: string, datacenterId?: number, name: string, quantity?: number}): Promise<order.Order>;
+  public post(path: '/order/dedicatedCloud/{serviceName}/filer/{duration}', params: {duration: string, serviceName: string, datacenterId?: number, name: string, quantity?: number}): Promise<order.Order>;
   /**
    * Order a new Host in a given Datacenter  (orderable hosts are given by /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles)
    * Create order
    */
-  public post(path: '/order/dedicatedCloud/{serviceName}/host/{duration}', params: {serviceName: string, duration: string, datacenterId: number, name: string, quantity?: number}): Promise<order.Order>;
+  public post(path: '/order/dedicatedCloud/{serviceName}/host/{duration}', params: {duration: string, serviceName: string, datacenterId: number, name: string, quantity?: number}): Promise<order.Order>;
   /**
    * Order an IP block for your Private Cloud
    * Create order
    */
-  public post(path: '/order/dedicatedCloud/{serviceName}/ip/{duration}', params: {serviceName: string, duration: string, country: OVH.dedicatedCloud.IpCountriesEnum, description: string, estimatedClientsNumber: number, networkName: string, size: OVH.dedicatedCloud.OrderableIpBlockRangeEnum, usage: string}): Promise<order.Order>;
+  public post(path: '/order/dedicatedCloud/{serviceName}/ip/{duration}', params: {duration: string, serviceName: string, country: OVH.dedicatedCloud.IpCountriesEnum, description: string, estimatedClientsNumber: number, networkName: string, size: OVH.dedicatedCloud.OrderableIpBlockRangeEnum, usage: string}): Promise<order.Order>;
   /**
    * Enable windows templates (SPLA) in your Private Cloud
    * Create order
@@ -6887,7 +6887,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade ressources billing type. For hourlyToMonthly, already consumed hours will be billed at the end of the month
    * Create order
    */
-  public post(path: '/order/dedicatedCloud/{serviceName}/upgradeRessource/{duration}', params: {serviceName: string, duration: string, upgradedRessourceId?: number, upgradedRessourceType: OVH.dedicatedCloud.ressources.UpgradeRessourceTypeEnum, upgradeType: OVH.dedicatedCloud.ressources.UpgradeTypeEnum}): Promise<order.Order>;
+  public post(path: '/order/dedicatedCloud/{serviceName}/upgradeRessource/{duration}', params: {duration: string, serviceName: string, upgradedRessourceId?: number, upgradedRessourceType: OVH.dedicatedCloud.ressources.UpgradeRessourceTypeEnum, upgradeType: OVH.dedicatedCloud.ressources.UpgradeTypeEnum}): Promise<order.Order>;
   /**
    * Order VDI option in a given Datacenter
    * Create order
@@ -6897,7 +6897,7 @@ export class ApiOrder extends OvhWrapper {
    * Order Anycast
    * Create order
    */
-  public post(path: '/order/domain/zone/{zoneName}/dnsAnycast/{duration}', params: {zoneName: string, duration: string}): Promise<order.Order>;
+  public post(path: '/order/domain/zone/{zoneName}/dnsAnycast/{duration}', params: {duration: string, zoneName: string}): Promise<order.Order>;
   /**
    * Order a new DNS zone
    * Create order
@@ -6912,32 +6912,32 @@ export class ApiOrder extends OvhWrapper {
    * Create an order for an exchange account
    * Create order
    */
-  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/account/{duration}', params: {organizationName: string, exchangeService: string, duration: string, licence: OVH.email.exchange.OvhLicenceEnum, number: number, storageQuota?: OVH.email.exchange.accountQuotaEnum}): Promise<order.Order>;
+  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/account/{duration}', params: {duration: string, exchangeService: string, organizationName: string, licence: OVH.email.exchange.OvhLicenceEnum, number: number, storageQuota?: OVH.email.exchange.accountQuotaEnum}): Promise<order.Order>;
   /**
    * Create an order to upgrade your hosted account storage
    * Create order
    */
-  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade/{duration}', params: {organizationName: string, exchangeService: string, duration: string, newQuota: OVH.email.exchange.accountQuotaEnum, primaryEmailAddress: string}): Promise<order.Order>;
+  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade/{duration}', params: {duration: string, exchangeService: string, organizationName: string, newQuota: OVH.email.exchange.accountQuotaEnum, primaryEmailAddress: string}): Promise<order.Order>;
   /**
    * Create an order for a additional 50GB of space (Exchange 2010 reseller only)
    * Create order
    */
-  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/diskSpace', params: {organizationName: string, exchangeService: string}): Promise<order.Order>;
+  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/diskSpace', params: {exchangeService: string, organizationName: string}): Promise<order.Order>;
   /**
    * Create an order for a outlook licence.
    * Create order
    */
-  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/outlook/{duration}', params: {organizationName: string, exchangeService: string, duration: string, licence: OVH.email.exchange.OutlookVersionEnum, primaryEmailAddress: string}): Promise<order.Order>;
+  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/outlook/{duration}', params: {duration: string, exchangeService: string, organizationName: string, licence: OVH.email.exchange.OutlookVersionEnum, primaryEmailAddress: string}): Promise<order.Order>;
   /**
    * Upgrade infrustruction to newest offer (Exchange 2013 to Exchange 2016)
    * Create order
    */
-  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/upgrade', params: {organizationName: string, exchangeService: string}): Promise<order.Order>;
+  public post(path: '/order/email/exchange/{organizationName}/service/{exchangeService}/upgrade', params: {exchangeService: string, organizationName: string}): Promise<order.Order>;
   /**
    * Create an order for a pro account
    * Create order
    */
-  public post(path: '/order/email/pro/{service}/account/{duration}', params: {service: string, duration: string, number: number}): Promise<order.Order>;
+  public post(path: '/order/email/pro/{service}/account/{duration}', params: {duration: string, service: string, number: number}): Promise<order.Order>;
   /**
    * Convert the freefax service to a /telephony voicefax service
    * Create order
@@ -6952,7 +6952,7 @@ export class ApiOrder extends OvhWrapper {
    * Create an order for change ram size on your private database
    * Create order
    */
-  public post(path: '/order/hosting/privateDatabase/{serviceName}/ram/{duration}', params: {serviceName: string, duration: string, ram: OVH.hosting.PrivateDatabase.AvailableRamSizeEnum}): Promise<order.Order>;
+  public post(path: '/order/hosting/privateDatabase/{serviceName}/ram/{duration}', params: {duration: string, serviceName: string, ram: OVH.hosting.PrivateDatabase.AvailableRamSizeEnum}): Promise<order.Order>;
   /**
    * Order new private database
    * Create order
@@ -6962,32 +6962,32 @@ export class ApiOrder extends OvhWrapper {
    * Order additional bandwidth
    * Create order
    */
-  public post(path: '/order/hosting/web/{serviceName}/bandwidth/{duration}', params: {serviceName: string, duration: string, traffic: OVH.hosting.web.BandwidthOfferEnum}): Promise<order.Order>;
+  public post(path: '/order/hosting/web/{serviceName}/bandwidth/{duration}', params: {duration: string, serviceName: string, traffic: OVH.hosting.web.BandwidthOfferEnum}): Promise<order.Order>;
   /**
    * Create an order for cdn option
    * Create order
    */
-  public post(path: '/order/hosting/web/{serviceName}/cdn/{duration}', params: {serviceName: string, duration: string, offer: OVH.hosting.web.CdnOfferEnum}): Promise<order.Order>;
+  public post(path: '/order/hosting/web/{serviceName}/cdn/{duration}', params: {duration: string, serviceName: string, offer: OVH.hosting.web.CdnOfferEnum}): Promise<order.Order>;
   /**
    * Create an order for change the hosting main domain
    * Create order
    */
-  public post(path: '/order/hosting/web/{serviceName}/changeMainDomain/{duration}', params: {serviceName: string, duration: string, domain: string, mxplan: OVH.hosting.web.order.MxPlanEnum}): Promise<order.Order>;
+  public post(path: '/order/hosting/web/{serviceName}/changeMainDomain/{duration}', params: {duration: string, serviceName: string, domain: string, mxplan: OVH.hosting.web.order.MxPlanEnum}): Promise<order.Order>;
   /**
    * Create an order for extra sql perso
    * Create order
    */
-  public post(path: '/order/hosting/web/{serviceName}/extraSqlPerso/{duration}', params: {serviceName: string, duration: string, offer: OVH.hosting.web.database.SqlPersoOfferEnum}): Promise<order.Order>;
+  public post(path: '/order/hosting/web/{serviceName}/extraSqlPerso/{duration}', params: {duration: string, serviceName: string, offer: OVH.hosting.web.database.SqlPersoOfferEnum}): Promise<order.Order>;
   /**
    * Create an order for hosted ssl option
    * Create order
    */
-  public post(path: '/order/hosting/web/{serviceName}/ssl/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public post(path: '/order/hosting/web/{serviceName}/ssl/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Create an order for upgrade your hosting account
    * Create order
    */
-  public post(path: '/order/hosting/web/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, offer: OVH.hosting.web.OfferEnum, startTime?: string, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
+  public post(path: '/order/hosting/web/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, offer: OVH.hosting.web.OfferEnum, startTime?: string, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
   /**
    * Order a new hosting account
    * Create order
@@ -7022,7 +7022,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade this license with some given options
    * Create order
    */
-  public post(path: '/order/license/plesk/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, antispam?: OVH.license.OrderableAntispamEnum, antivirus?: OVH.license.OrderableAntivirusEnum, applicationSet?: OVH.license.PleskApplicationSetEnum, domainNumber?: OVH.license.OrderablePleskDomainNumberEnum, languagePackNumber?: OVH.license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: OVH.license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
+  public post(path: '/order/license/plesk/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, antispam?: OVH.license.OrderableAntispamEnum, antivirus?: OVH.license.OrderableAntivirusEnum, applicationSet?: OVH.license.PleskApplicationSetEnum, domainNumber?: OVH.license.OrderablePleskDomainNumberEnum, languagePackNumber?: OVH.license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: OVH.license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
   /**
    * Order a new license on a given Ip with some given options
    * Create order
@@ -7032,7 +7032,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade this license with some given options
    * Create order
    */
-  public post(path: '/order/license/sqlserver/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, version: OVH.license.SqlServerVersionEnum}): Promise<order.Order>;
+  public post(path: '/order/license/sqlserver/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, version: OVH.license.SqlServerVersionEnum}): Promise<order.Order>;
   /**
    * Order a new license on a given Ip with some given options
    * Create order
@@ -7042,7 +7042,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade this license with some given options
    * Create order
    */
-  public post(path: '/order/license/virtuozzo/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, containerNumber: OVH.license.OrderableVirtuozzoContainerNumberEnum}): Promise<order.Order>;
+  public post(path: '/order/license/virtuozzo/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, containerNumber: OVH.license.OrderableVirtuozzoContainerNumberEnum}): Promise<order.Order>;
   /**
    * Order a new license on a given Ip with some given options
    * Create order
@@ -7052,7 +7052,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade this license with some given options
    * Create order
    */
-  public post(path: '/order/license/windows/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, sqlVersion?: OVH.license.WindowsSqlVersionEnum, version?: OVH.license.WindowsOsVersionEnum}): Promise<order.Order>;
+  public post(path: '/order/license/windows/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, sqlVersion?: OVH.license.WindowsSqlVersionEnum, version?: OVH.license.WindowsOsVersionEnum}): Promise<order.Order>;
   /**
    * Order a new license on a given Ip with some given options
    * Create order
@@ -7062,7 +7062,7 @@ export class ApiOrder extends OvhWrapper {
    * Upgrade this license with some given options
    * Create order
    */
-  public post(path: '/order/license/worklight/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, version: OVH.license.WorkLightVersionEnum}): Promise<order.Order>;
+  public post(path: '/order/license/worklight/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, version: OVH.license.WorkLightVersionEnum}): Promise<order.Order>;
   /**
    * Order a new license on a given Ip with some given options
    * Create order
@@ -7227,57 +7227,57 @@ export class ApiOrder extends OvhWrapper {
    * Order an upgrade upon your Veeam Cloud Connect account
    * Create order
    */
-  public post(path: '/order/veeamCloudConnect/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, offer: OVH.veeamCloudConnect.Offer}): Promise<order.Order>;
+  public post(path: '/order/veeamCloudConnect/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, offer: OVH.veeamCloudConnect.Offer}): Promise<order.Order>;
   /**
    * Order additional disk
    * Create order
    */
-  public post(path: '/order/vps/{serviceName}/additionalDisk/{duration}', params: {serviceName: string, duration: string, additionalDiskSize: OVH.vps.additionalDisk.AdditionalDiskSizeEnum}): Promise<order.Order>;
+  public post(path: '/order/vps/{serviceName}/additionalDisk/{duration}', params: {duration: string, serviceName: string, additionalDiskSize: OVH.vps.additionalDisk.AdditionalDiskSizeEnum}): Promise<order.Order>;
   /**
    * Order Automated Backup Option (vps Cloud only)
    * Create order
    */
-  public post(path: '/order/vps/{serviceName}/automatedBackup/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public post(path: '/order/vps/{serviceName}/automatedBackup/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Create an order for a cPanel license
    * Create order
    */
-  public post(path: '/order/vps/{serviceName}/cpanel/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public post(path: '/order/vps/{serviceName}/cpanel/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order FtpBackup Option
    * Create order
    */
-  public post(path: '/order/vps/{serviceName}/ftpbackup/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public post(path: '/order/vps/{serviceName}/ftpbackup/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order Additional IP
    * Create order
    */
-  public post(path: '/order/vps/{serviceName}/ip/{duration}', params: {serviceName: string, duration: string, country?: OVH.vps.ip.GeolocationEnum, number: number}): Promise<order.Order>;
+  public post(path: '/order/vps/{serviceName}/ip/{duration}', params: {duration: string, serviceName: string, country?: OVH.vps.ip.GeolocationEnum, number: number}): Promise<order.Order>;
   /**
    * Create an order for a PLESK license
    * Create order
    */
-  public post(path: '/order/vps/{serviceName}/plesk/{duration}', params: {serviceName: string, duration: string, domainNumber: OVH.vps.PleskLicenseDomainNumberEnum}): Promise<order.Order>;
+  public post(path: '/order/vps/{serviceName}/plesk/{duration}', params: {duration: string, serviceName: string, domainNumber: OVH.vps.PleskLicenseDomainNumberEnum}): Promise<order.Order>;
   /**
    * Order Snapshot Option
    * Create order
    */
-  public post(path: '/order/vps/{serviceName}/snapshot/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public post(path: '/order/vps/{serviceName}/snapshot/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order Upgrade
    * Create order
    */
-  public post(path: '/order/vps/{serviceName}/upgrade/{duration}', params: {serviceName: string, duration: string, model: string}): Promise<order.Order>;
+  public post(path: '/order/vps/{serviceName}/upgrade/{duration}', params: {duration: string, serviceName: string, model: string}): Promise<order.Order>;
   /**
    * Order Veeam Option
    * Create order
    */
-  public post(path: '/order/vps/{serviceName}/veeam/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public post(path: '/order/vps/{serviceName}/veeam/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order Windows Option (2015 only)
    * Create order
    */
-  public post(path: '/order/vps/{serviceName}/windows/{duration}', params: {serviceName: string, duration: string}): Promise<order.Order>;
+  public post(path: '/order/vps/{serviceName}/windows/{duration}', params: {duration: string, serviceName: string}): Promise<order.Order>;
   /**
    * Order new vrack
    * Create order
@@ -7305,12 +7305,12 @@ export class ApiOrder extends OvhWrapper {
    * Missing description
    * Delete an item from a cart
    */
-  public delete(path: '/order/cart/{cartId}/item/{itemId}', params: {cartId: string, itemId: string}): Promise<void>;
+  public delete(path: '/order/cart/{cartId}/item/{itemId}', params: {cartId: string, itemId: number}): Promise<void>;
   /**
    * Missing description
    * Delete configuration item
    */
-  public delete(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}', params: {cartId: string, itemId: string, configurationId: string}): Promise<void>;
+  public delete(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}', params: {cartId: string, configurationId: number, itemId: number}): Promise<void>;
   public delete(path: PathsOrderDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

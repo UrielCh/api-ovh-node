@@ -372,7 +372,7 @@ export class ApiClusterHadoop extends OvhWrapper {
    * ACL for allowing ip blocks to access to your cluster
    * Get this object properties
    */
-  public get(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {serviceName: string, block: string}): Promise<cluster.hadoop.NetworkAcl>;
+  public get(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {block: string, serviceName: string}): Promise<cluster.hadoop.NetworkAcl>;
   /**
    * List the cluster.hadoop.Node objects
    * Nodes of the Cluster
@@ -382,17 +382,17 @@ export class ApiClusterHadoop extends OvhWrapper {
    * Physical or Virtual Node
    * Get this object properties
    */
-  public get(path: '/cluster/hadoop/{serviceName}/node/{hostname}', params: {serviceName: string, hostname: string}): Promise<cluster.hadoop.Node>;
+  public get(path: '/cluster/hadoop/{serviceName}/node/{hostname}', params: {hostname: string, serviceName: string}): Promise<cluster.hadoop.Node>;
   /**
    * List the cluster.hadoop.Role objects
    * Roles (ie set of Hadoop services) of the Node
    */
-  public get(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role', params: {serviceName: string, hostname: string}): Promise<cluster.hadoop.RoleTypeEnum[]>;
+  public get(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role', params: {hostname: string, serviceName: string}): Promise<cluster.hadoop.RoleTypeEnum[]>;
   /**
    * Role (ie set of Hadoop services) of the Node
    * Get this object properties
    */
-  public get(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}', params: {serviceName: string, hostname: string, type: string}): Promise<cluster.hadoop.Role>;
+  public get(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}', params: {hostname: string, serviceName: string, type: OVH.cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Role>;
   /**
    * nodeBillingProfiles operations
    * Detailed description for each Node profile
@@ -422,7 +422,7 @@ export class ApiClusterHadoop extends OvhWrapper {
    * Operation on a Hadoop Cluster component
    * Get this object properties
    */
-  public get(path: '/cluster/hadoop/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<cluster.hadoop.Task>;
+  public get(path: '/cluster/hadoop/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<cluster.hadoop.Task>;
   /**
    * List the cluster.hadoop.User objects
    * Users associated with this Hadoop Cluster
@@ -450,7 +450,7 @@ export class ApiClusterHadoop extends OvhWrapper {
    * ACL for allowing ip blocks to access to your cluster
    * Alter this object properties
    */
-  public put(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {serviceName: string, block: string, description?: string, state?: OVH.cluster.hadoop.NetworkAclStateEnum}): Promise<void>;
+  public put(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {block: string, serviceName: string, description?: string, state?: OVH.cluster.hadoop.NetworkAclStateEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -473,32 +473,32 @@ export class ApiClusterHadoop extends OvhWrapper {
    * decommission operations
    * Decommission the node and all the services on it
    */
-  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/decommission', params: {serviceName: string, hostname: string}): Promise<cluster.hadoop.Task>;
+  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/decommission', params: {hostname: string, serviceName: string}): Promise<cluster.hadoop.Task>;
   /**
    * recommission operations
    * Recommission the node and all the services on it
    */
-  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/recommission', params: {serviceName: string, hostname: string}): Promise<cluster.hadoop.Task>;
+  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/recommission', params: {hostname: string, serviceName: string}): Promise<cluster.hadoop.Task>;
   /**
    * List the cluster.hadoop.Role objects
    * Add the Role to the Node
    */
-  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role', params: {serviceName: string, hostname: string, type: OVH.cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
+  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role', params: {hostname: string, serviceName: string, type: OVH.cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
   /**
    * restart operations
    * Restart the role on the node (THIS ACTION WILL RESTART OTHER DEPENDANT ROLES)
    */
-  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart', params: {serviceName: string, hostname: string, type: string}): Promise<cluster.hadoop.Task>;
+  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart', params: {hostname: string, serviceName: string, type: OVH.cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
   /**
    * start operations
    * Start the role on the node
    */
-  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start', params: {serviceName: string, hostname: string, type: string}): Promise<cluster.hadoop.Task>;
+  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start', params: {hostname: string, serviceName: string, type: OVH.cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
   /**
    * stop operations
    * Stop the role on the node (THIS ACTION WILL STOP OTHER DEPENDANT ROLES)
    */
-  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop', params: {serviceName: string, hostname: string, type: string}): Promise<cluster.hadoop.Task>;
+  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop', params: {hostname: string, serviceName: string, type: OVH.cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
   /**
    * orderNewNodeHourly operations
    * Order a new node in the cluster
@@ -556,17 +556,17 @@ export class ApiClusterHadoop extends OvhWrapper {
    * ACL for allowing ip blocks to access to your cluster
    * Remove this ACL
    */
-  public delete(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {serviceName: string, block: string}): Promise<cluster.hadoop.Task>;
+  public delete(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {block: string, serviceName: string}): Promise<cluster.hadoop.Task>;
   /**
    * Physical or Virtual Node
    * Remove this Node from the Cluster
    */
-  public delete(path: '/cluster/hadoop/{serviceName}/node/{hostname}', params: {serviceName: string, hostname: string}): Promise<cluster.hadoop.Task>;
+  public delete(path: '/cluster/hadoop/{serviceName}/node/{hostname}', params: {hostname: string, serviceName: string}): Promise<cluster.hadoop.Task>;
   /**
    * Role (ie set of Hadoop services) of the Node
    * Remove this Role from the Node
    */
-  public delete(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}', params: {serviceName: string, hostname: string, type: string}): Promise<cluster.hadoop.Task>;
+  public delete(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}', params: {hostname: string, serviceName: string, type: OVH.cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
   /**
    * User allowed to access interfaces on your cluster
    * Remove this User

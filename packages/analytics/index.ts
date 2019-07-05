@@ -264,7 +264,7 @@ export class ApiAnalytics extends OvhWrapper {
    * 
    * Get details about nodes
    */
-  public get(path: '/analytics/platforms/{serviceName}/nodes/{nodeId}', params: {serviceName: string, nodeId: string}): Promise<analytics.cluster.Node>;
+  public get(path: '/analytics/platforms/{serviceName}/nodes/{nodeId}', params: {nodeId: string, serviceName: string}): Promise<analytics.cluster.Node>;
   /**
    * Details about a Service
    * Get this object properties

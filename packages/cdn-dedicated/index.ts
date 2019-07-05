@@ -332,52 +332,52 @@ export class ApiCdnDedicated extends OvhWrapper {
    * Domain on CDN
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string}): Promise<cdnanycast.Domain>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {domain: string, serviceName: string}): Promise<cdnanycast.Domain>;
   /**
    * List the cdnanycast.Backend objects
    * Backend associated to the domain
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', params: {serviceName: string, domain: string}): Promise<string[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', params: {domain: string, serviceName: string}): Promise<string[]>;
   /**
    * Backend for a domain
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}', params: {serviceName: string, domain: string, ip: string}): Promise<cdnanycast.Backend>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}', params: {domain: string, ip: string, serviceName: string}): Promise<cdnanycast.Backend>;
   /**
    * List the cdnanycast.CacheRule objects
    * Cache rules associated to the domain
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', params: {serviceName: string, domain: string, fileMatch?: string}): Promise<number[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', params: {domain: string, serviceName: string, fileMatch?: string}): Promise<number[]>;
   /**
    * CacheRules for a domain
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: string}): Promise<cdnanycast.CacheRule>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {cacheRuleId: number, domain: string, serviceName: string}): Promise<cdnanycast.CacheRule>;
   /**
    * List the cdnanycast.Task objects
    * Task associated to the cache rule
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks', params: {serviceName: string, domain: string, cacheRuleId: string}): Promise<number[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks', params: {cacheRuleId: number, domain: string, serviceName: string}): Promise<number[]>;
   /**
    * Task on a CDN
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}', params: {serviceName: string, domain: string, cacheRuleId: string, taskId: string}): Promise<cdnanycast.Task>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}', params: {cacheRuleId: number, domain: string, serviceName: string, taskId: number}): Promise<cdnanycast.Task>;
   /**
    * statistics operations
    * Return stats about a domain
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/statistics', params: {serviceName: string, domain: string, period: OVH.cdnanycast.StatsPeriodEnum, type: OVH.cdnanycast.StatsTypeEnum, value: OVH.cdnanycast.StatsValueEnum}): Promise<cdnanycast.StatsDataType[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/statistics', params: {domain: string, serviceName: string, period: OVH.cdnanycast.StatsPeriodEnum, type: OVH.cdnanycast.StatsTypeEnum, value: OVH.cdnanycast.StatsValueEnum}): Promise<cdnanycast.StatsDataType[]>;
   /**
    * List the cdnanycast.Task objects
    * Task associated to the domain
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/tasks', params: {serviceName: string, domain: string}): Promise<number[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/tasks', params: {domain: string, serviceName: string}): Promise<number[]>;
   /**
    * Task on a CDN
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}', params: {serviceName: string, domain: string, taskId: string}): Promise<cdnanycast.Task>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}', params: {domain: string, serviceName: string, taskId: number}): Promise<cdnanycast.Task>;
   /**
    * quota operations
    * Return quota history
@@ -402,7 +402,7 @@ export class ApiCdnDedicated extends OvhWrapper {
    * Task on a CDN
    * Get this object properties
    */
-  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}', params: {serviceName: string, taskId: string}): Promise<cdnanycast.Task>;
+  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<cdnanycast.Task>;
   /**
    * List the cdnanycast.Pop objects
    * List of CDN Pops
@@ -420,12 +420,12 @@ export class ApiCdnDedicated extends OvhWrapper {
    * Domain on CDN
    * Alter this object properties
    */
-  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string, cacheRuleUse?: number, cname?: string, status?: OVH.cdnanycast.DomainStatusEnum, type?: OVH.cdnanycast.DomainTypeEnum}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {domain: string, serviceName: string, cacheRuleUse?: number, cname?: string, status?: OVH.cdnanycast.DomainStatusEnum, type?: OVH.cdnanycast.DomainTypeEnum}): Promise<void>;
   /**
    * CacheRules for a domain
    * Alter this object properties
    */
-  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: string, cacheType?: OVH.cdnanycast.CacheRuleCacheTypeEnum, fileMatch?: string, fileType?: OVH.cdnanycast.CacheRuleFileTypeEnum, status?: OVH.cdnanycast.CacheRuleStatusEnum, ttl?: number}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {cacheRuleId: number, domain: string, serviceName: string, cacheType?: OVH.cdnanycast.CacheRuleCacheTypeEnum, fileMatch?: string, fileType?: OVH.cdnanycast.CacheRuleFileTypeEnum, status?: OVH.cdnanycast.CacheRuleStatusEnum, ttl?: number}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -448,27 +448,27 @@ export class ApiCdnDedicated extends OvhWrapper {
    * List the cdnanycast.Backend objects
    * Add a backend IP
    */
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', params: {serviceName: string, domain: string, ip: string}): Promise<cdnanycast.Backend>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends', params: {domain: string, serviceName: string, ip: string}): Promise<cdnanycast.Backend>;
   /**
    * List the cdnanycast.CacheRule objects
    * Add a cache rule to a domain
    */
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', params: {serviceName: string, domain: string, cacheType: OVH.cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: OVH.cdnanycast.CacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', params: {domain: string, serviceName: string, cacheType: OVH.cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: OVH.cdnanycast.CacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
   /**
    * flush operations
    * Flush the cache
    */
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush', params: {serviceName: string, domain: string, cacheRuleId: string}): Promise<cdnanycast.Task>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush', params: {cacheRuleId: number, domain: string, serviceName: string}): Promise<cdnanycast.Task>;
   /**
    * flush operations
    * Flush all cache
    */
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/flush', params: {serviceName: string, domain: string}): Promise<cdnanycast.Task>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/flush', params: {domain: string, serviceName: string}): Promise<cdnanycast.Task>;
   /**
    * logs operations
    * Generate URL to real time logs
    */
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/logs', params: {serviceName: string, domain: string}): Promise<cdnanycast.LogsURL>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/logs', params: {domain: string, serviceName: string}): Promise<cdnanycast.LogsURL>;
   /**
    * logs operations
    * Generate URL to real time logs
@@ -491,17 +491,17 @@ export class ApiCdnDedicated extends OvhWrapper {
    * Domain on CDN
    * Remove a domain from the CDN
    */
-  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {serviceName: string, domain: string}): Promise<cdnanycast.Task>;
+  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {domain: string, serviceName: string}): Promise<cdnanycast.Task>;
   /**
    * Backend for a domain
    * Remove a backend IP
    */
-  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}', params: {serviceName: string, domain: string, ip: string}): Promise<string>;
+  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}', params: {domain: string, ip: string, serviceName: string}): Promise<string>;
   /**
    * CacheRules for a domain
    * Remove cache rule
    */
-  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {serviceName: string, domain: string, cacheRuleId: string}): Promise<cdnanycast.Task>;
+  public delete(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {cacheRuleId: number, domain: string, serviceName: string}): Promise<cdnanycast.Task>;
   /**
    * CDN Ssl
    * Remove SSL of the CDN

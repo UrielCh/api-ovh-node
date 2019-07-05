@@ -229,7 +229,7 @@ export class ApiService extends OvhWrapper {
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/service/{serviceId}', params: {serviceId: string}): Promise<serviceList.Service>;
+  public get(path: '/service/{serviceId}', params: {serviceId: number}): Promise<serviceList.Service>;
   /**
    * Missing description
    * List possible renews for this service
@@ -242,7 +242,7 @@ export class ApiService extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/service/{serviceId}', params: {serviceId: string, creationDate?: string, details?: OVH.complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: OVH.service.Plan, quantity?: number, renew?: OVH.service.Renew, resource?: OVH.service.Resource, route?: OVH.service.Route, state?: OVH.service.BillingStateEnum}): Promise<void>;
+  public put(path: '/service/{serviceId}', params: {serviceId: number, creationDate?: string, details?: OVH.complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: OVH.service.Plan, quantity?: number, renew?: OVH.service.Renew, resource?: OVH.service.Resource, route?: OVH.service.Route, state?: OVH.service.BillingStateEnum}): Promise<void>;
   public put(path: PathsServicePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -255,17 +255,17 @@ export class ApiService extends OvhWrapper {
    * reopen operations
    * Reopen a suspended service
    */
-  public post(path: '/service/{serviceId}/reopen', params: {serviceId: string}): Promise<void>;
+  public post(path: '/service/{serviceId}/reopen', params: {serviceId: number}): Promise<void>;
   /**
    * suspend operations
    * Suspend the service. The service won't be accessible, but you will still be charged for it
    */
-  public post(path: '/service/{serviceId}/suspend', params: {serviceId: string}): Promise<void>;
+  public post(path: '/service/{serviceId}/suspend', params: {serviceId: number}): Promise<void>;
   /**
    * terminate operations
    * Terminates a suspended service
    */
-  public post(path: '/service/{serviceId}/terminate', params: {serviceId: string}): Promise<void>;
+  public post(path: '/service/{serviceId}/terminate', params: {serviceId: number}): Promise<void>;
   public post(path: PathsServicePOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }

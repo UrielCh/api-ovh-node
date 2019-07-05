@@ -111,7 +111,7 @@ export class ApiAllDom extends OvhWrapper {
    * Domain name of a allDom
    * Get this object properties
    */
-  public get(path: '/allDom/{serviceName}/domain/{domain}', params: {serviceName: string, domain: string}): Promise<allDom.AllDomDomain>;
+  public get(path: '/allDom/{serviceName}/domain/{domain}', params: {domain: string, serviceName: string}): Promise<allDom.AllDomDomain>;
   /**
    * Details about a Service
    * Get this object properties

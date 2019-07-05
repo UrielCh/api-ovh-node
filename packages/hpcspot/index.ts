@@ -123,7 +123,7 @@ export class ApiHpcspot extends OvhWrapper {
    * Detail of a HPC Spot consumtion
    * Get this object properties
    */
-  public get(path: '/hpcspot/{serviceName}/consumption/{id}', params: {serviceName: string, id: string}): Promise<hpcspot.Consumption>;
+  public get(path: '/hpcspot/{serviceName}/consumption/{id}', params: {id: number, serviceName: string}): Promise<hpcspot.Consumption>;
   /**
    * Details about a Service
    * Get this object properties

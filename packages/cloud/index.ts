@@ -2257,57 +2257,57 @@ export class ApiCloud extends OvhWrapper {
    * Cloud Archives Account
    * Get this object properties
    */
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}', params: {serviceName: string, pcaServiceName: string}): Promise<pca.Account>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}', params: {pcaServiceName: string, serviceName: string}): Promise<pca.Account>;
   /**
    * List the pca.Billing objects
    * cloud Archives billing items
    */
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/billing', params: {serviceName: string, pcaServiceName: string, billed?: boolean, date_from?: string, date_to?: string}): Promise<number[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/billing', params: {pcaServiceName: string, serviceName: string, billed?: boolean, date_from?: string, date_to?: string}): Promise<number[]>;
   /**
    * cloud archives billing
    * Get this object properties
    */
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/billing/{billingId}', params: {serviceName: string, pcaServiceName: string, billingId: string}): Promise<pca.Billing>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/billing/{billingId}', params: {billingId: number, pcaServiceName: string, serviceName: string}): Promise<pca.Billing>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', params: {serviceName: string, pcaServiceName: string}): Promise<services.Service>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', params: {pcaServiceName: string, serviceName: string}): Promise<services.Service>;
   /**
    * List the pca.Session objects
    * cloud archives sessions for account
    */
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions', params: {serviceName: string, pcaServiceName: string, name?: string}): Promise<string[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions', params: {pcaServiceName: string, serviceName: string, name?: string}): Promise<string[]>;
   /**
    * cloud archives sessions
    * Get this object properties
    */
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {serviceName: string, pcaServiceName: string, sessionId: string}): Promise<pca.Session>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {pcaServiceName: string, serviceName: string, sessionId: string}): Promise<pca.Session>;
   /**
    * List the pca.File objects
    * cloud archives files in session
    */
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files', params: {serviceName: string, pcaServiceName: string, sessionId: string, name?: string}): Promise<string[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files', params: {pcaServiceName: string, serviceName: string, sessionId: string, name?: string}): Promise<string[]>;
   /**
    * cloud archives files
    * Get this object properties
    */
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files/{fileId}', params: {serviceName: string, pcaServiceName: string, sessionId: string, fileId: string}): Promise<pca.File>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files/{fileId}', params: {fileId: string, pcaServiceName: string, serviceName: string, sessionId: string}): Promise<pca.File>;
   /**
    * List the pca.Task objects
    * cloud archives tasks for account
    */
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', params: {serviceName: string, pcaServiceName: string, function_?: OVH.cloud.pca.FunctionTypeEnum, status?: OVH.cloud.pca.TaskStateEnum, todoDate_from?: string, todoDate_to?: string}): Promise<string[]>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', params: {pcaServiceName: string, serviceName: string, function_?: OVH.cloud.pca.FunctionTypeEnum, status?: OVH.cloud.pca.TaskStateEnum, todoDate_from?: string, todoDate_to?: string}): Promise<string[]>;
   /**
    * cloud archives tasks
    * Get this object properties
    */
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks/{taskId}', params: {serviceName: string, pcaServiceName: string, taskId: string}): Promise<pca.Task>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks/{taskId}', params: {pcaServiceName: string, serviceName: string, taskId: string}): Promise<pca.Task>;
   /**
    * usage operations
    * View account current total sessions usage (bytes)
    */
-  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/usage', params: {serviceName: string, pcaServiceName: string}): Promise<number>;
+  public get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/usage', params: {pcaServiceName: string, serviceName: string}): Promise<number>;
   /**
    * Get agreements related to a product
    * Get agreements related to a product
@@ -2347,7 +2347,7 @@ export class ApiCloud extends OvhWrapper {
    * Cloud ACL
    * Get this object properties
    */
-  public get(path: '/cloud/project/{serviceName}/acl/{accountId}', params: {serviceName: string, accountId: string}): Promise<cloud.Acl>;
+  public get(path: '/cloud/project/{serviceName}/acl/{accountId}', params: {accountId: string, serviceName: string}): Promise<cloud.Acl>;
   /**
    * List the cloud.Alerting objects
    * Manage alerts on your consumption
@@ -2357,17 +2357,17 @@ export class ApiCloud extends OvhWrapper {
    * Cloud alerting consumption
    * Get this object properties
    */
-  public get(path: '/cloud/project/{serviceName}/alerting/{id}', params: {serviceName: string, id: string}): Promise<cloud.Alerting>;
+  public get(path: '/cloud/project/{serviceName}/alerting/{id}', params: {id: string, serviceName: string}): Promise<cloud.Alerting>;
   /**
    * List the cloud.AlertingAlert objects
    * See alerts
    */
-  public get(path: '/cloud/project/{serviceName}/alerting/{id}/alert', params: {serviceName: string, id: string}): Promise<number[]>;
+  public get(path: '/cloud/project/{serviceName}/alerting/{id}/alert', params: {id: string, serviceName: string}): Promise<number[]>;
   /**
    * Cloud alert on your consumption
    * Get this object properties
    */
-  public get(path: '/cloud/project/{serviceName}/alerting/{id}/alert/{alertId}', params: {serviceName: string, id: string, alertId: string}): Promise<cloud.AlertingAlert>;
+  public get(path: '/cloud/project/{serviceName}/alerting/{id}/alert/{alertId}', params: {alertId: number, id: string, serviceName: string}): Promise<cloud.AlertingAlert>;
   /**
    * bill operations
    * Get your project bills
@@ -2402,7 +2402,7 @@ export class ApiCloud extends OvhWrapper {
    * Cloud credit
    * Get this object properties
    */
-  public get(path: '/cloud/project/{serviceName}/credit/{id}', params: {serviceName: string, id: string}): Promise<cloud.Credit>;
+  public get(path: '/cloud/project/{serviceName}/credit/{id}', params: {id: number, serviceName: string}): Promise<cloud.Credit>;
   /**
    * Missing description
    * Get flavors
@@ -2487,17 +2487,17 @@ export class ApiCloud extends OvhWrapper {
    * Manage your cluster
    * Get information about your managed Kubernetes cluster
    */
-  public get(path: '/cloud/project/{serviceName}/kube/{kubeId}', params: {serviceName: string, kubeId: string}): Promise<cloud.kube.Cluster>;
+  public get(path: '/cloud/project/{serviceName}/kube/{kubeId}', params: {kubeId: string, serviceName: string}): Promise<cloud.kube.Cluster>;
   /**
    * Manage your nodes
    * List your nodes
    */
-  public get(path: '/cloud/project/{serviceName}/kube/{kubeId}/node', params: {serviceName: string, kubeId: string}): Promise<cloud.kube.Node[]>;
+  public get(path: '/cloud/project/{serviceName}/kube/{kubeId}/node', params: {kubeId: string, serviceName: string}): Promise<cloud.kube.Node[]>;
   /**
    * Manage a single node on your cluster
    * Get information on a specific node on your cluster
    */
-  public get(path: '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}', params: {serviceName: string, nodeId: string, kubeId: string}): Promise<cloud.kube.Node>;
+  public get(path: '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}', params: {kubeId: string, nodeId: string, serviceName: string}): Promise<cloud.kube.Node>;
   /**
    * List Kubernetes available regions
    * List Kubernetes available regions
@@ -2652,17 +2652,17 @@ export class ApiCloud extends OvhWrapper {
    * Missing description
    * Get user details
    */
-  public get(path: '/cloud/project/{serviceName}/user/{userId}', params: {serviceName: string, userId: string}): Promise<cloud.user.User>;
+  public get(path: '/cloud/project/{serviceName}/user/{userId}', params: {serviceName: string, userId: number}): Promise<cloud.user.User>;
   /**
    * Missing description
    * Get RC file of OpenStack
    */
-  public get(path: '/cloud/project/{serviceName}/user/{userId}/openrc', params: {serviceName: string, userId: string, region: string, version?: OVH.cloud.user.OpenrcVersionEnum}): Promise<cloud.user.Openrc>;
+  public get(path: '/cloud/project/{serviceName}/user/{userId}/openrc', params: {serviceName: string, userId: number, region: string, version?: OVH.cloud.user.OpenrcVersionEnum}): Promise<cloud.user.Openrc>;
   /**
    * Missing description
    * Get rclone configuration file
    */
-  public get(path: '/cloud/project/{serviceName}/user/{userId}/rclone', params: {serviceName: string, userId: string, region: string}): Promise<cloud.user.Rclone>;
+  public get(path: '/cloud/project/{serviceName}/user/{userId}/rclone', params: {serviceName: string, userId: number, region: string}): Promise<cloud.user.Rclone>;
   /**
    * Missing description
    * Get volumes
@@ -2700,17 +2700,17 @@ export class ApiCloud extends OvhWrapper {
    * Cloud Archives Account
    * Alter this object properties
    */
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}', params: {serviceName: string, pcaServiceName: string, domain?: string, host?: string, login?: string, password?: string, sshkey?: string}): Promise<void>;
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}', params: {pcaServiceName: string, serviceName: string, domain?: string, host?: string, login?: string, password?: string, sshkey?: string}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', params: {serviceName: string, pcaServiceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos', params: {pcaServiceName: string, serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
   /**
    * cloud archives sessions
    * Alter this object properties
    */
-  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {serviceName: string, pcaServiceName: string, sessionId: string, endDate?: string, id?: string, login?: string, name?: string, size?: number, srcIp?: string, startDate?: string, state?: OVH.cloud.pca.SessionStateEnum}): Promise<void>;
+  public put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {pcaServiceName: string, serviceName: string, sessionId: string, endDate?: string, id?: string, login?: string, name?: string, size?: number, srcIp?: string, startDate?: string, state?: OVH.cloud.pca.SessionStateEnum}): Promise<void>;
   /**
    * Project
    * Alter this object properties
@@ -2720,7 +2720,7 @@ export class ApiCloud extends OvhWrapper {
    * Cloud alerting consumption
    * Alter this object properties
    */
-  public put(path: '/cloud/project/{serviceName}/alerting/{id}', params: {serviceName: string, id: string, creationDate?: string, delay?: OVH.cloud.AlertingDelayEnum, email?: string, formattedMonthlyThreshold?: OVH.order.Price, monthlyThreshold?: number}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/alerting/{id}', params: {id: string, serviceName: string, creationDate?: string, delay?: OVH.cloud.AlertingDelayEnum, email?: string, formattedMonthlyThreshold?: OVH.order.Price, monthlyThreshold?: number}): Promise<void>;
   /**
    * Manage a Docker registry
    * Update the registry
@@ -2735,12 +2735,12 @@ export class ApiCloud extends OvhWrapper {
    * Manage your cluster
    * Update information about your managed Kubernetes cluster
    */
-  public put(path: '/cloud/project/{serviceName}/kube/{kubeId}', params: {serviceName: string, kubeId: string, name: string}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/kube/{kubeId}', params: {kubeId: string, serviceName: string, name: string}): Promise<void>;
   /**
    * Manage the update policy of your cluster
    * Change the update policy of your cluster
    */
-  public put(path: '/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy', params: {serviceName: string, kubeId: string, updatePolicy: OVH.cloud.kube.UpdatePolicy}): Promise<void>;
+  public put(path: '/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy', params: {kubeId: string, serviceName: string, updatePolicy: OVH.cloud.kube.UpdatePolicy}): Promise<void>;
   /**
    * Missing description
    * Update planned migration
@@ -2773,12 +2773,12 @@ export class ApiCloud extends OvhWrapper {
    * restore operations
    * Create a restore task for session
    */
-  public post(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/restore', params: {serviceName: string, pcaServiceName: string, sessionId: string}): Promise<pca.Task>;
+  public post(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/restore', params: {pcaServiceName: string, serviceName: string, sessionId: string}): Promise<pca.Task>;
   /**
    * List the pca.Task objects
    * Create a cloud archives task
    */
-  public post(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', params: {serviceName: string, pcaServiceName: string, fileIds: string[], sessionId: string, taskFunction: OVH.cloud.pca.TaskTypeEnum}): Promise<pca.Task>;
+  public post(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks', params: {pcaServiceName: string, serviceName: string, fileIds: string[], sessionId: string, taskFunction: OVH.cloud.pca.TaskTypeEnum}): Promise<pca.Task>;
   /**
    * Start a new cloud project
    * Start a new cloud project
@@ -2913,22 +2913,22 @@ export class ApiCloud extends OvhWrapper {
    * Get your cluster configuration
    * Generate kubeconfig file
    */
-  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/kubeconfig', params: {serviceName: string, kubeId: string}): Promise<cloud.kube.Kubeconfig>;
+  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/kubeconfig', params: {kubeId: string, serviceName: string}): Promise<cloud.kube.Kubeconfig>;
   /**
    * Manage your nodes
    * Deploy a node for your cluster
    */
-  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/node', params: {serviceName: string, kubeId: string, flavorName: string, name?: string}): Promise<cloud.kube.Node>;
+  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/node', params: {kubeId: string, serviceName: string, flavorName: string, name?: string}): Promise<cloud.kube.Node>;
   /**
    * Reset your cluster
    * Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
    */
-  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/reset', params: {serviceName: string, kubeId: string, version?: OVH.cloud.kube.Version, workerNodesPolicy?: OVH.cloud.kube.ResetWorkerNodesPolicy}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/reset', params: {kubeId: string, serviceName: string, version?: OVH.cloud.kube.Version, workerNodesPolicy?: OVH.cloud.kube.ResetWorkerNodesPolicy}): Promise<void>;
   /**
    * Update cluster
    * Update cluster to the latest patch version
    */
-  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/update', params: {serviceName: string, kubeId: string}): Promise<void>;
+  public post(path: '/cloud/project/{serviceName}/kube/{kubeId}/update', params: {kubeId: string, serviceName: string}): Promise<void>;
   /**
    * Missing description
    * Create a new network
@@ -3023,12 +3023,12 @@ export class ApiCloud extends OvhWrapper {
    * Missing description
    * Regenerate user password
    */
-  public post(path: '/cloud/project/{serviceName}/user/{userId}/regeneratePassword', params: {serviceName: string, userId: string}): Promise<cloud.user.UserDetail>;
+  public post(path: '/cloud/project/{serviceName}/user/{userId}/regeneratePassword', params: {serviceName: string, userId: number}): Promise<cloud.user.UserDetail>;
   /**
    * Missing description
    * Get token for user
    */
-  public post(path: '/cloud/project/{serviceName}/user/{userId}/token', params: {serviceName: string, userId: string, password: string}): Promise<cloud.authentication.Token>;
+  public post(path: '/cloud/project/{serviceName}/user/{userId}/token', params: {serviceName: string, userId: number, password: string}): Promise<cloud.authentication.Token>;
   /**
    * Missing description
    * Create a volume
@@ -3066,17 +3066,17 @@ export class ApiCloud extends OvhWrapper {
    * cloud archives sessions
    * Create a delete task for all files in session
    */
-  public delete(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {serviceName: string, pcaServiceName: string, sessionId: string}): Promise<pca.Task>;
+  public delete(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}', params: {pcaServiceName: string, serviceName: string, sessionId: string}): Promise<pca.Task>;
   /**
    * Cloud ACL
    * Delete ACL
    */
-  public delete(path: '/cloud/project/{serviceName}/acl/{accountId}', params: {serviceName: string, accountId: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/acl/{accountId}', params: {accountId: string, serviceName: string}): Promise<void>;
   /**
    * Cloud alerting consumption
    * Delete alerting
    */
-  public delete(path: '/cloud/project/{serviceName}/alerting/{id}', params: {serviceName: string, id: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/alerting/{id}', params: {id: string, serviceName: string}): Promise<void>;
   /**
    * Manage a Docker registry
    * Delete a registry
@@ -3106,12 +3106,12 @@ export class ApiCloud extends OvhWrapper {
    * Manage your cluster
    * Delete your managed Kubernetes cluster
    */
-  public delete(path: '/cloud/project/{serviceName}/kube/{kubeId}', params: {serviceName: string, kubeId: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/kube/{kubeId}', params: {kubeId: string, serviceName: string}): Promise<void>;
   /**
    * Manage a single node on your cluster
    * Delete a node on your cluster
    */
-  public delete(path: '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}', params: {serviceName: string, nodeId: string, kubeId: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}', params: {kubeId: string, nodeId: string, serviceName: string}): Promise<void>;
   /**
    * Missing description
    * Delete private network
@@ -3151,7 +3151,7 @@ export class ApiCloud extends OvhWrapper {
    * Missing description
    * Delete user
    */
-  public delete(path: '/cloud/project/{serviceName}/user/{userId}', params: {serviceName: string, userId: string}): Promise<void>;
+  public delete(path: '/cloud/project/{serviceName}/user/{userId}', params: {serviceName: string, userId: number}): Promise<void>;
   /**
    * Missing description
    * Delete a volume

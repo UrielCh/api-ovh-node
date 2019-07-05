@@ -226,7 +226,7 @@ export class ApiLicenseOffice extends OvhWrapper {
    * Office domain
    * Get this object properties
    */
-  public get(path: '/license/office/{serviceName}/domain/{domainName}', params: {serviceName: string, domainName: string}): Promise<license.office.OfficeDomain>;
+  public get(path: '/license/office/{serviceName}/domain/{domainName}', params: {domainName: string, serviceName: string}): Promise<license.office.OfficeDomain>;
   /**
    * List the license.office.OfficeTask objects
    * Tasks associated to this office tenant
@@ -236,7 +236,7 @@ export class ApiLicenseOffice extends OvhWrapper {
    * Office task
    * Get this object properties
    */
-  public get(path: '/license/office/{serviceName}/pendingTask/{id}', params: {serviceName: string, id: string}): Promise<license.office.OfficeTask>;
+  public get(path: '/license/office/{serviceName}/pendingTask/{id}', params: {id: number, serviceName: string}): Promise<license.office.OfficeTask>;
   /**
    * Details about a Service
    * Get this object properties
@@ -256,7 +256,7 @@ export class ApiLicenseOffice extends OvhWrapper {
    * Office user
    * Get this object properties
    */
-  public get(path: '/license/office/{serviceName}/user/{activationEmail}', params: {serviceName: string, activationEmail: string}): Promise<license.office.OfficeUser>;
+  public get(path: '/license/office/{serviceName}/user/{activationEmail}', params: {activationEmail: string, serviceName: string}): Promise<license.office.OfficeUser>;
   public get(path: PathsLicenseOfficeGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
@@ -274,7 +274,7 @@ export class ApiLicenseOffice extends OvhWrapper {
    * Office user
    * Alter this object properties
    */
-  public put(path: '/license/office/{serviceName}/user/{activationEmail}', params: {serviceName: string, activationEmail: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: OVH.license.office.LicenceEnum[], status?: OVH.license.office.UserStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/license/office/{serviceName}/user/{activationEmail}', params: {activationEmail: string, serviceName: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: OVH.license.office.LicenceEnum[], status?: OVH.license.office.UserStateEnum, taskPendingId?: number}): Promise<void>;
   public put(path: PathsLicenseOfficePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -287,7 +287,7 @@ export class ApiLicenseOffice extends OvhWrapper {
    * changePassword operations
    * Change or reset  user's password
    */
-  public post(path: '/license/office/{serviceName}/user/{activationEmail}/changePassword', params: {serviceName: string, activationEmail: string, notifyEmail?: string, password?: string, shouldSendMail: boolean}): Promise<license.office.OfficeTask>;
+  public post(path: '/license/office/{serviceName}/user/{activationEmail}/changePassword', params: {activationEmail: string, serviceName: string, notifyEmail?: string, password?: string, shouldSendMail: boolean}): Promise<license.office.OfficeTask>;
   public post(path: PathsLicenseOfficePOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
@@ -295,7 +295,7 @@ export class ApiLicenseOffice extends OvhWrapper {
    * Office user
    * Delete existing office user
    */
-  public delete(path: '/license/office/{serviceName}/user/{activationEmail}', params: {serviceName: string, activationEmail: string}): Promise<license.office.OfficeTask>;
+  public delete(path: '/license/office/{serviceName}/user/{activationEmail}', params: {activationEmail: string, serviceName: string}): Promise<license.office.OfficeTask>;
   public delete(path: PathsLicenseOfficeDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

@@ -355,7 +355,7 @@ export class ApiCaasContainers extends OvhWrapper {
    * Missing description
    * Inspect the argument user slave instance
    */
-  public get(path: '/caas/containers/{serviceName}/slaves/{slaveId}', params: {slaveId: string, serviceName: string}): Promise<docker.slave>;
+  public get(path: '/caas/containers/{serviceName}/slaves/{slaveId}', params: {serviceName: string, slaveId: string}): Promise<docker.slave>;
   /**
    * Missing description
    * Inspect the custom SSL certificate and private

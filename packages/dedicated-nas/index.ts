@@ -211,32 +211,32 @@ export class ApiDedicatedNas extends OvhWrapper {
    * Storage partition
    * Get this object properties
    */
-  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string}): Promise<dedicated.nas.Partition>;
+  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {partitionName: string, serviceName: string}): Promise<dedicated.nas.Partition>;
   /**
    * List the dedicated.nas.Access objects
    * get ACL for this partition
    */
-  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access', params: {serviceName: string, partitionName: string}): Promise<string[]>;
+  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access', params: {partitionName: string, serviceName: string}): Promise<string[]>;
   /**
    * Define Acl for partition
    * Get this object properties
    */
-  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}', params: {serviceName: string, partitionName: string, ip: string}): Promise<dedicated.nas.Access>;
+  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}', params: {ip: string, partitionName: string, serviceName: string}): Promise<dedicated.nas.Access>;
   /**
    * authorizableIps operations
    * Get all IPs that can be used in the ACL
    */
-  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps', params: {serviceName: string, partitionName: string}): Promise<string[]>;
+  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps', params: {partitionName: string, serviceName: string}): Promise<string[]>;
   /**
    * List the dedicated.nas.Quota objects
    * Get quota for this partition
    */
-  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota', params: {serviceName: string, partitionName: string}): Promise<number[]>;
+  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota', params: {partitionName: string, serviceName: string}): Promise<number[]>;
   /**
    * Partition Quota
    * Get this object properties
    */
-  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}', params: {serviceName: string, partitionName: string, uid: string}): Promise<dedicated.nas.Quota>;
+  public get(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}', params: {partitionName: string, serviceName: string, uid: number}): Promise<dedicated.nas.Quota>;
   /**
    * Details about a Service
    * Get this object properties
@@ -251,7 +251,7 @@ export class ApiDedicatedNas extends OvhWrapper {
    * Storage task
    * Get this object properties
    */
-  public get(path: '/dedicated/nas/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<dedicated.nasTask.Task>;
+  public get(path: '/dedicated/nas/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<dedicated.nasTask.Task>;
   public get(path: PathsDedicatedNasGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
@@ -264,7 +264,7 @@ export class ApiDedicatedNas extends OvhWrapper {
    * Storage partition
    * Alter this object properties
    */
-  public put(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string, protocol?: OVH.dedicated.storage.ProtocolEnum, size?: number}): Promise<void>;
+  public put(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {partitionName: string, serviceName: string, protocol?: OVH.dedicated.storage.ProtocolEnum, size?: number}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -282,12 +282,12 @@ export class ApiDedicatedNas extends OvhWrapper {
    * List the dedicated.nas.Access objects
    * Add an Acl to this  partition
    */
-  public post(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access', params: {serviceName: string, partitionName: string, ip: string}): Promise<dedicated.nasTask.Task>;
+  public post(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access', params: {partitionName: string, serviceName: string, ip: string}): Promise<dedicated.nasTask.Task>;
   /**
    * List the dedicated.nas.Quota objects
    * Set a new quota
    */
-  public post(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota', params: {serviceName: string, partitionName: string, size: number, uid: number}): Promise<dedicated.nasTask.Task>;
+  public post(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota', params: {partitionName: string, serviceName: string, size: number, uid: number}): Promise<dedicated.nasTask.Task>;
   public post(path: PathsDedicatedNasPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
@@ -295,17 +295,17 @@ export class ApiDedicatedNas extends OvhWrapper {
    * Storage partition
    * Delete this partition
    */
-  public delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {serviceName: string, partitionName: string}): Promise<dedicated.nasTask.Task>;
+  public delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {partitionName: string, serviceName: string}): Promise<dedicated.nasTask.Task>;
   /**
    * Define Acl for partition
    * Delete a given snapshot
    */
-  public delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}', params: {serviceName: string, partitionName: string, ip: string}): Promise<dedicated.nasTask.Task>;
+  public delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}', params: {ip: string, partitionName: string, serviceName: string}): Promise<dedicated.nasTask.Task>;
   /**
    * Partition Quota
    * Delete a given quota
    */
-  public delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}', params: {serviceName: string, partitionName: string, uid: string}): Promise<dedicated.nasTask.Task>;
+  public delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}', params: {partitionName: string, serviceName: string, uid: number}): Promise<dedicated.nasTask.Task>;
   public delete(path: PathsDedicatedNasDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

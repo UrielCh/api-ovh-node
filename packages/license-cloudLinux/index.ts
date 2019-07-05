@@ -164,7 +164,7 @@ export class ApiLicenseCloudLinux extends OvhWrapper {
    * licenses Todos
    * Get this object properties
    */
-  public get(path: '/license/cloudLinux/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: string}): Promise<license.Task>;
+  public get(path: '/license/cloudLinux/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<license.Task>;
   /**
    * Get the orderable CloudLinux versions
    * Get the orderable CloudLinux versions

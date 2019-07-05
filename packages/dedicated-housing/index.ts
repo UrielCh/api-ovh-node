@@ -270,7 +270,7 @@ export class ApiDedicatedHousing extends OvhWrapper {
    * Backup Ftp ACL for this server and Backup Ftp
    * Get this object properties
    */
-  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<dedicated.server.BackupFtpAcl>;
+  public get(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {ipBlock: string, serviceName: string}): Promise<dedicated.server.BackupFtpAcl>;
   /**
    * authorizableBlocks operations
    * Get all IP blocks that can be used in the ACL
@@ -295,7 +295,7 @@ export class ApiDedicatedHousing extends OvhWrapper {
    * Housing tasks
    * Get this object properties
    */
-  public get(path: '/dedicated/housing/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<dedicated.housing.Task>;
+  public get(path: '/dedicated/housing/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<dedicated.housing.Task>;
   public get(path: PathsDedicatedHousingGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
@@ -303,7 +303,7 @@ export class ApiDedicatedHousing extends OvhWrapper {
    * Backup Ftp ACL for this server and Backup Ftp
    * Alter this object properties
    */
-  public put(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string, cifs?: boolean, ftp?: boolean, isApplied?: boolean, lastUpdate?: string, nfs?: boolean}): Promise<void>;
+  public put(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {ipBlock: string, serviceName: string, cifs?: boolean, ftp?: boolean, isApplied?: boolean, lastUpdate?: string, nfs?: boolean}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -331,7 +331,7 @@ export class ApiDedicatedHousing extends OvhWrapper {
    * cancel operations
    * this action stop the task progression if it's possible
    */
-  public post(path: '/dedicated/housing/{serviceName}/task/{taskId}/cancel', params: {serviceName: string, taskId: string}): Promise<void>;
+  public post(path: '/dedicated/housing/{serviceName}/task/{taskId}/cancel', params: {serviceName: string, taskId: number}): Promise<void>;
   public post(path: PathsDedicatedHousingPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
@@ -344,7 +344,7 @@ export class ApiDedicatedHousing extends OvhWrapper {
    * Backup Ftp ACL for this server and Backup Ftp
    * Revoke this ACL
    */
-  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<dedicated.server.Task>;
+  public delete(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}', params: {ipBlock: string, serviceName: string}): Promise<dedicated.server.Task>;
   public delete(path: PathsDedicatedHousingDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

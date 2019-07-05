@@ -800,67 +800,67 @@ export class ApiEmailDomain extends OvhWrapper {
    * Account List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string}): Promise<email.domain.Account>;
+  public get(path: '/email/domain/{domain}/account/{accountName}', params: {accountName: string, domain: string}): Promise<email.domain.Account>;
   /**
    * List the email.domain.Delegation objects
    * Get delegations
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/delegation', params: {domain: string, accountName: string}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/delegation', params: {accountName: string, domain: string}): Promise<string[]>;
   /**
    * Delegation List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/delegation/{accountId}', params: {domain: string, accountName: string, accountId: string}): Promise<email.domain.Delegation>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/delegation/{accountId}', params: {accountId: string, accountName: string, domain: string}): Promise<email.domain.Delegation>;
   /**
    * List the email.domain.Filter objects
    * Get filters
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/filter', params: {domain: string, accountName: string}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/filter', params: {accountName: string, domain: string}): Promise<string[]>;
   /**
    * Filter List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/filter/{name}', params: {domain: string, accountName: string, name: string}): Promise<email.domain.Filter>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/filter/{name}', params: {accountName: string, domain: string, name: string}): Promise<email.domain.Filter>;
   /**
    * List the email.domain.Rule objects
    * Get rules
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule', params: {domain: string, accountName: string, name: string}): Promise<number[]>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule', params: {accountName: string, domain: string, name: string}): Promise<number[]>;
   /**
    * Rule List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}', params: {domain: string, accountName: string, name: string, id: string}): Promise<email.domain.Rule>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}', params: {accountName: string, domain: string, id: number, name: string}): Promise<email.domain.Rule>;
   /**
    * List the email.domain.MigrationService objects
    * Get migration service
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/migrate', params: {domain: string, accountName: string, type?: OVH.email.domain.MigrationServiceType}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/migrate', params: {accountName: string, domain: string, type?: OVH.email.domain.MigrationServiceType}): Promise<string[]>;
   /**
    * Migration service
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}', params: {domain: string, accountName: string, destinationServiceName: string}): Promise<email.domain.MigrationService>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}', params: {accountName: string, destinationServiceName: string, domain: string}): Promise<email.domain.MigrationService>;
   /**
    * List the email.domain.MigrationAccount objects
    * List of email address available for migration
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress', params: {domain: string, accountName: string, destinationServiceName: string, quota?: number}): Promise<string[]>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress', params: {accountName: string, destinationServiceName: string, domain: string, quota?: number}): Promise<string[]>;
   /**
    * Migration account
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}', params: {domain: string, accountName: string, destinationServiceName: string, destinationEmailAddress: string}): Promise<email.domain.MigrationAccount>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}', params: {accountName: string, destinationEmailAddress: string, destinationServiceName: string, domain: string}): Promise<email.domain.MigrationAccount>;
   /**
    * checkMigrate operations
    * Check if it's possible to migrate
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate', params: {domain: string, accountName: string, destinationServiceName: string, destinationEmailAddress: string}): Promise<email.domain.MigrationCheckStruct>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate', params: {accountName: string, destinationEmailAddress: string, destinationServiceName: string, domain: string}): Promise<email.domain.MigrationCheckStruct>;
   /**
    * usage operations
    * usage of account
    */
-  public get(path: '/email/domain/{domain}/account/{accountName}/usage', params: {domain: string, accountName: string}): Promise<domain.DomainUsageAccountStruct>;
+  public get(path: '/email/domain/{domain}/account/{accountName}/usage', params: {accountName: string, domain: string}): Promise<domain.DomainUsageAccountStruct>;
   /**
    * List the email.domain.Acl objects
    * Get ACL on your domain
@@ -870,7 +870,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Email ACL
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/acl/{accountId}', params: {domain: string, accountId: string}): Promise<email.domain.Acl>;
+  public get(path: '/email/domain/{domain}/acl/{accountId}', params: {accountId: string, domain: string}): Promise<email.domain.Acl>;
   /**
    * dnsMXFilter operations
    * Domain MX filter
@@ -900,7 +900,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Moderators List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/mailingList/{name}/moderator/{email}', params: {domain: string, name: string, email: string}): Promise<email.domain.Moderator>;
+  public get(path: '/email/domain/{domain}/mailingList/{name}/moderator/{email}', params: {domain: string, email: string, name: string}): Promise<email.domain.Moderator>;
   /**
    * List the email.domain.Subscriber objects
    * List of subscribers
@@ -910,7 +910,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Subscribers List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/mailingList/{name}/subscriber/{email}', params: {domain: string, name: string, email: string}): Promise<email.domain.Subscriber>;
+  public get(path: '/email/domain/{domain}/mailingList/{name}/subscriber/{email}', params: {domain: string, email: string, name: string}): Promise<email.domain.Subscriber>;
   /**
    * quota operations
    * List all quotas for this domain
@@ -940,7 +940,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Responder
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string}): Promise<email.domain.Responder>;
+  public get(path: '/email/domain/{domain}/responder/{account}', params: {account: string, domain: string}): Promise<email.domain.Responder>;
   /**
    * Details about a Service
    * Get this object properties
@@ -960,7 +960,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Task Pop List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/task/account/{id}', params: {domain: string, id: string}): Promise<email.domain.TaskPop>;
+  public get(path: '/email/domain/{domain}/task/account/{id}', params: {domain: string, id: number}): Promise<email.domain.TaskPop>;
   /**
    * List the email.domain.TaskFilter objects
    * Get filter tasks
@@ -970,7 +970,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Task filter List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/task/filter/{id}', params: {domain: string, id: string}): Promise<email.domain.TaskFilter>;
+  public get(path: '/email/domain/{domain}/task/filter/{id}', params: {domain: string, id: number}): Promise<email.domain.TaskFilter>;
   /**
    * List the email.domain.TaskMl objects
    * Get Mailing List tasks
@@ -980,7 +980,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Task Mailing List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/task/mailinglist/{id}', params: {domain: string, id: string}): Promise<email.domain.TaskMl>;
+  public get(path: '/email/domain/{domain}/task/mailinglist/{id}', params: {domain: string, id: number}): Promise<email.domain.TaskMl>;
   /**
    * List the email.domain.TaskSpecialAccount objects
    * Get redirection tasks
@@ -990,7 +990,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Task special account List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/task/redirection/{id}', params: {domain: string, id: string}): Promise<email.domain.TaskSpecialAccount>;
+  public get(path: '/email/domain/{domain}/task/redirection/{id}', params: {domain: string, id: number}): Promise<email.domain.TaskSpecialAccount>;
   /**
    * List the email.domain.TaskSpecialAccount objects
    * Get responder tasks
@@ -1000,7 +1000,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Task special account List
    * Get this object properties
    */
-  public get(path: '/email/domain/{domain}/task/responder/{id}', params: {domain: string, id: string}): Promise<email.domain.TaskSpecialAccount>;
+  public get(path: '/email/domain/{domain}/task/responder/{id}', params: {domain: string, id: number}): Promise<email.domain.TaskSpecialAccount>;
   /**
    * List the email.domain.AccountDelegated objects
    * Delegated emails
@@ -1030,7 +1030,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Rule List
    * Get this object properties
    */
-  public get(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}', params: {email: string, name: string, id: string}): Promise<email.domain.Rule>;
+  public get(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}', params: {email: string, id: number, name: string}): Promise<email.domain.Rule>;
   /**
    * Responder of account
    * Get this object properties
@@ -1048,7 +1048,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Account List
    * Alter this object properties
    */
-  public put(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string, description?: string, email?: string, isBlocked?: boolean, size?: number}): Promise<void>;
+  public put(path: '/email/domain/{domain}/account/{accountName}', params: {accountName: string, domain: string, description?: string, email?: string, isBlocked?: boolean, size?: number}): Promise<void>;
   /**
    * Mailing List
    * Alter this object properties
@@ -1058,7 +1058,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Responder
    * Alter this object properties
    */
-  public put(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string}): Promise<void>;
+  public put(path: '/email/domain/{domain}/responder/{account}', params: {account: string, domain: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -1086,42 +1086,42 @@ export class ApiEmailDomain extends OvhWrapper {
    * changePassword operations
    * Change mailbox password (length : [9;30], no space at begin and end, no accent)
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/changePassword', params: {domain: string, accountName: string, password: string}): Promise<email.domain.TaskPop>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/changePassword', params: {accountName: string, domain: string, password: string}): Promise<email.domain.TaskPop>;
   /**
    * List the email.domain.Delegation objects
    * Create delegation for this account
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/delegation', params: {domain: string, accountName: string, accountId: string}): Promise<string>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/delegation', params: {accountName: string, domain: string, accountId: string}): Promise<string>;
   /**
    * List the email.domain.Filter objects
    * Create new filter for account
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/filter', params: {domain: string, accountName: string, action: OVH.domain.DomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: OVH.domain.DomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/filter', params: {accountName: string, domain: string, action: OVH.domain.DomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: OVH.domain.DomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
   /**
    * changeActivity operations
    * Change filter activity
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity', params: {domain: string, accountName: string, name: string, activity: boolean}): Promise<email.domain.TaskFilter>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity', params: {accountName: string, domain: string, name: string, activity: boolean}): Promise<email.domain.TaskFilter>;
   /**
    * changePriority operations
    * Change filter priority
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/changePriority', params: {domain: string, accountName: string, name: string, priority: number}): Promise<email.domain.TaskFilter>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/changePriority', params: {accountName: string, domain: string, name: string, priority: number}): Promise<email.domain.TaskFilter>;
   /**
    * List the email.domain.Rule objects
    * Create new rule for filter
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule', params: {domain: string, accountName: string, name: string, header: string, operand: OVH.domain.DomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule', params: {accountName: string, domain: string, name: string, header: string, operand: OVH.domain.DomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
   /**
    * migrate operations
    * Migrate account to destination account
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate', params: {domain: string, accountName: string, destinationServiceName: string, destinationEmailAddress: string, password: string}): Promise<email.domain.TaskPop>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate', params: {accountName: string, destinationEmailAddress: string, destinationServiceName: string, domain: string, password: string}): Promise<email.domain.TaskPop>;
   /**
    * updateUsage operations
    * Update usage of account
    */
-  public post(path: '/email/domain/{domain}/account/{accountName}/updateUsage', params: {domain: string, accountName: string}): Promise<void>;
+  public post(path: '/email/domain/{domain}/account/{accountName}/updateUsage', params: {accountName: string, domain: string}): Promise<void>;
   /**
    * List the email.domain.Acl objects
    * Create new ACL
@@ -1239,27 +1239,27 @@ export class ApiEmailDomain extends OvhWrapper {
    * Account List
    * Delete an existing mailbox in server
    */
-  public delete(path: '/email/domain/{domain}/account/{accountName}', params: {domain: string, accountName: string}): Promise<email.domain.TaskPop>;
+  public delete(path: '/email/domain/{domain}/account/{accountName}', params: {accountName: string, domain: string}): Promise<email.domain.TaskPop>;
   /**
    * Delegation List
    * Delete an existing delegation
    */
-  public delete(path: '/email/domain/{domain}/account/{accountName}/delegation/{accountId}', params: {domain: string, accountName: string, accountId: string}): Promise<string>;
+  public delete(path: '/email/domain/{domain}/account/{accountName}/delegation/{accountId}', params: {accountId: string, accountName: string, domain: string}): Promise<string>;
   /**
    * Filter List
    * Delete an existing filter
    */
-  public delete(path: '/email/domain/{domain}/account/{accountName}/filter/{name}', params: {domain: string, accountName: string, name: string}): Promise<email.domain.TaskFilter[]>;
+  public delete(path: '/email/domain/{domain}/account/{accountName}/filter/{name}', params: {accountName: string, domain: string, name: string}): Promise<email.domain.TaskFilter[]>;
   /**
    * Rule List
    * Delete an existing filter
    */
-  public delete(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}', params: {domain: string, accountName: string, name: string, id: string}): Promise<email.domain.TaskFilter[]>;
+  public delete(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}', params: {accountName: string, domain: string, id: number, name: string}): Promise<email.domain.TaskFilter[]>;
   /**
    * Email ACL
    * Delete ACL
    */
-  public delete(path: '/email/domain/{domain}/acl/{accountId}', params: {domain: string, accountId: string}): Promise<void>;
+  public delete(path: '/email/domain/{domain}/acl/{accountId}', params: {accountId: string, domain: string}): Promise<void>;
   /**
    * Mailing List
    * Delete existing Mailing list
@@ -1269,12 +1269,12 @@ export class ApiEmailDomain extends OvhWrapper {
    * Moderators List
    * Delete existing moderator
    */
-  public delete(path: '/email/domain/{domain}/mailingList/{name}/moderator/{email}', params: {domain: string, name: string, email: string}): Promise<email.domain.TaskMl>;
+  public delete(path: '/email/domain/{domain}/mailingList/{name}/moderator/{email}', params: {domain: string, email: string, name: string}): Promise<email.domain.TaskMl>;
   /**
    * Subscribers List
    * Delete existing subscriber
    */
-  public delete(path: '/email/domain/{domain}/mailingList/{name}/subscriber/{email}', params: {domain: string, name: string, email: string}): Promise<email.domain.TaskMl>;
+  public delete(path: '/email/domain/{domain}/mailingList/{name}/subscriber/{email}', params: {domain: string, email: string, name: string}): Promise<email.domain.TaskMl>;
   /**
    * Global Redirection
    * Delete an existing redirection in server
@@ -1284,7 +1284,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Responder
    * Delete an existing responder in server
    */
-  public delete(path: '/email/domain/{domain}/responder/{account}', params: {domain: string, account: string}): Promise<email.domain.TaskSpecialAccount>;
+  public delete(path: '/email/domain/{domain}/responder/{account}', params: {account: string, domain: string}): Promise<email.domain.TaskSpecialAccount>;
   /**
    * Filter List
    * Delete an existing filter
@@ -1294,7 +1294,7 @@ export class ApiEmailDomain extends OvhWrapper {
    * Rule List
    * Delete an existing filter
    */
-  public delete(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}', params: {email: string, name: string, id: string}): Promise<email.domain.TaskFilter[]>;
+  public delete(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}', params: {email: string, id: number, name: string}): Promise<email.domain.TaskFilter[]>;
   /**
    * Responder of account
    * Delete an existing responder in server

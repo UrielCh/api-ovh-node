@@ -149,7 +149,7 @@ export class ApiVeeamVeeamEnterprise extends OvhWrapper {
    * Operation with the Enterprise Account
    * Get this object properties
    */
-  public get(path: '/veeam/veeamEnterprise/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<veeam.veeamEnterprise.Task>;
+  public get(path: '/veeam/veeamEnterprise/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<veeam.veeamEnterprise.Task>;
   public get(path: PathsVeeamVeeamEnterpriseGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }

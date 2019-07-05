@@ -914,7 +914,7 @@ export class ApiIp extends OvhWrapper {
    * Rule on ip
    * Get this object properties
    */
-  public get(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}', params: {ip: string, ipOnFirewall: string, sequence: string}): Promise<ip.FirewallNetworkRule>;
+  public get(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}', params: {ip: string, ipOnFirewall: string, sequence: number}): Promise<ip.FirewallNetworkRule>;
   /**
    * List the ip.GameMitigation objects
    * Ip under game anti-ddos
@@ -934,7 +934,7 @@ export class ApiIp extends OvhWrapper {
    * Rule on ip:ports
    * Get this object properties
    */
-  public get(path: '/ip/{ip}/game/{ipOnGame}/rule/{id}', params: {ip: string, ipOnGame: string, id: string}): Promise<ip.GameMitigationRule>;
+  public get(path: '/ip/{ip}/game/{ipOnGame}/rule/{id}', params: {id: number, ip: string, ipOnGame: string}): Promise<ip.GameMitigationRule>;
   /**
    * List the license.cloudLinux.CloudLinux objects
    * Cloud Linux licenses associated to this IP
@@ -1024,7 +1024,7 @@ export class ApiIp extends OvhWrapper {
    * Phishing URLs hosted on your IP
    * Get this object properties
    */
-  public get(path: '/ip/{ip}/phishing/{id}', params: {ip: string, id: string}): Promise<ip.Antiphishing>;
+  public get(path: '/ip/{ip}/phishing/{id}', params: {id: number, ip: string}): Promise<ip.Antiphishing>;
   /**
    * List the ip.ReverseIp objects
    * Reverse on your ip
@@ -1064,7 +1064,7 @@ export class ApiIp extends OvhWrapper {
    * IP tasks
    * Get this object properties
    */
-  public get(path: '/ip/{ip}/task/{taskId}', params: {ip: string, taskId: string}): Promise<ip.IpTask>;
+  public get(path: '/ip/{ip}/task/{taskId}', params: {ip: string, taskId: number}): Promise<ip.IpTask>;
   /**
    * Operations about the IP service
    * List available services
@@ -1089,7 +1089,7 @@ export class ApiIp extends OvhWrapper {
    * Backends attached to your IP load balancing
    * Get this object properties
    */
-  public get(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', params: {serviceName: string, backend: string}): Promise<ip.LoadBalancingBackendIp>;
+  public get(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', params: {backend: string, serviceName: string}): Promise<ip.LoadBalancingBackendIp>;
   /**
    * internalNatIp operations
    * Ip subnet used by OVH to nat requests on your ip lb to your backends. You must ensure that your backends are not part of a network that overlap with this one.
@@ -1104,7 +1104,7 @@ export class ApiIp extends OvhWrapper {
    * Port redirections
    * Get the value for the given srcPort
    */
-  public get(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}', params: {serviceName: string, srcPort: string}): Promise<ip.LoadBalancingIp.LoadBalancingPort>;
+  public get(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}', params: {serviceName: string, srcPort: OVH.ip.LoadBalancingAdditionalPortEnum}): Promise<ip.LoadBalancingIp.LoadBalancingPort>;
   /**
    * probeIp operations
    * Ip subnet used to send probes to your backends
@@ -1124,7 +1124,7 @@ export class ApiIp extends OvhWrapper {
    * List of tasks associated with your IP load balancing
    * Get this object properties
    */
-  public get(path: '/ip/loadBalancing/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<ip.LoadBalancingTask>;
+  public get(path: '/ip/loadBalancing/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<ip.LoadBalancingTask>;
   /**
    * Operations about the IP service
    * List available services
@@ -1177,7 +1177,7 @@ export class ApiIp extends OvhWrapper {
    * Backends attached to your IP load balancing
    * Alter this object properties
    */
-  public put(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', params: {serviceName: string, backend: string, mainBackendIp?: string, probe?: OVH.ip.LoadBalancingBackendProbeEnum, weight?: number, zone?: OVH.ip.LoadBalancingZoneEnum}): Promise<void>;
+  public put(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', params: {backend: string, serviceName: string, mainBackendIp?: string, probe?: OVH.ip.LoadBalancingBackendProbeEnum, weight?: number, zone?: OVH.ip.LoadBalancingZoneEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -1275,12 +1275,12 @@ export class ApiIp extends OvhWrapper {
    * backupState operations
    * Set or unset the backend as a backup of another backend. Requests will be directed to the backup only if the main backend is in probe fail
    */
-  public post(path: '/ip/loadBalancing/{serviceName}/backend/{backend}/backupState', params: {serviceName: string, backend: string, backupStateSet: boolean, mainBackendIp?: string}): Promise<ip.LoadBalancingTask>;
+  public post(path: '/ip/loadBalancing/{serviceName}/backend/{backend}/backupState', params: {backend: string, serviceName: string, backupStateSet: boolean, mainBackendIp?: string}): Promise<ip.LoadBalancingTask>;
   /**
    * setWeight operations
    * Set the weight of a backend. For instance, if backend A has a weight of 8 and backup B was a weight of 16, backend B will receive twice more connections as backend A. Backends must be on the same POP for the weight parameter to take effect between them.
    */
-  public post(path: '/ip/loadBalancing/{serviceName}/backend/{backend}/setWeight', params: {serviceName: string, backend: string, weight: number}): Promise<ip.LoadBalancingTask>;
+  public post(path: '/ip/loadBalancing/{serviceName}/backend/{backend}/setWeight', params: {backend: string, serviceName: string, weight: number}): Promise<ip.LoadBalancingTask>;
   /**
    * importCustomSsl operations
    * Import your own ssl certificate on your IP load balancing. Ssl option is needed to use this url.
@@ -1338,12 +1338,12 @@ export class ApiIp extends OvhWrapper {
    * Rule on ip
    * AntiDDOS option. Delete rule
    */
-  public delete(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}', params: {ip: string, ipOnFirewall: string, sequence: string}): Promise<ip.FirewallNetworkRule>;
+  public delete(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}', params: {ip: string, ipOnFirewall: string, sequence: number}): Promise<ip.FirewallNetworkRule>;
   /**
    * Rule on ip:ports
    * Delete rule
    */
-  public delete(path: '/ip/{ip}/game/{ipOnGame}/rule/{id}', params: {ip: string, ipOnGame: string, id: string}): Promise<ip.GameMitigationRule>;
+  public delete(path: '/ip/{ip}/game/{ipOnGame}/rule/{id}', params: {id: number, ip: string, ipOnGame: string}): Promise<ip.GameMitigationRule>;
   /**
    * Your IP on mitigation
    * AntiDDOS option. Delete IP from mitigation
@@ -1363,12 +1363,12 @@ export class ApiIp extends OvhWrapper {
    * Backends attached to your IP load balancing
    * Remove a backend IP
    */
-  public delete(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', params: {serviceName: string, backend: string}): Promise<ip.LoadBalancingTask>;
+  public delete(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', params: {backend: string, serviceName: string}): Promise<ip.LoadBalancingTask>;
   /**
    * Port redirections
    * Delete a port redirection
    */
-  public delete(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}', params: {serviceName: string, srcPort: string}): Promise<ip.LoadBalancingTask>;
+  public delete(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}', params: {serviceName: string, srcPort: OVH.ip.LoadBalancingAdditionalPortEnum}): Promise<ip.LoadBalancingTask>;
   public delete(path: PathsIpDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

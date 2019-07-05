@@ -242,7 +242,7 @@ export class ApiSslGateway extends OvhWrapper {
    * Domain attached to an SSL Gateway
    * Get this object properties
    */
-  public get(path: '/sslGateway/{serviceName}/domain/{id}', params: {serviceName: string, id: string}): Promise<sslGateway.Domain>;
+  public get(path: '/sslGateway/{serviceName}/domain/{id}', params: {id: number, serviceName: string}): Promise<sslGateway.Domain>;
   /**
    * natIp operations
    * Ip subnet used by OVH to nat requests to your SSL Gateway backends.
@@ -257,7 +257,7 @@ export class ApiSslGateway extends OvhWrapper {
    * Server attached to an SSL Gateway
    * Get this object properties
    */
-  public get(path: '/sslGateway/{serviceName}/server/{id}', params: {serviceName: string, id: string}): Promise<sslGateway.Server>;
+  public get(path: '/sslGateway/{serviceName}/server/{id}', params: {id: number, serviceName: string}): Promise<sslGateway.Server>;
   /**
    * Details about a Service
    * Get this object properties
@@ -272,7 +272,7 @@ export class ApiSslGateway extends OvhWrapper {
    * SSL Gateway tasks
    * Get this object properties
    */
-  public get(path: '/sslGateway/{serviceName}/task/{id}', params: {serviceName: string, id: string}): Promise<sslGateway.Task>;
+  public get(path: '/sslGateway/{serviceName}/task/{id}', params: {id: number, serviceName: string}): Promise<sslGateway.Task>;
   /**
    * List of zone available for an SSL Gateway
    * List of zone available for an SSL Gateway
@@ -295,7 +295,7 @@ export class ApiSslGateway extends OvhWrapper {
    * Server attached to an SSL Gateway
    * Alter this object properties
    */
-  public put(path: '/sslGateway/{serviceName}/server/{id}', params: {serviceName: string, id: string, address?: string, port?: number, state?: OVH.sslGateway.ServerStateEnum}): Promise<void>;
+  public put(path: '/sslGateway/{serviceName}/server/{id}', params: {id: number, serviceName: string, address?: string, port?: number, state?: OVH.sslGateway.ServerStateEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -341,12 +341,12 @@ export class ApiSslGateway extends OvhWrapper {
    * Domain attached to an SSL Gateway
    * Detach a domain from your SSL Gateway
    */
-  public delete(path: '/sslGateway/{serviceName}/domain/{id}', params: {serviceName: string, id: string}): Promise<void>;
+  public delete(path: '/sslGateway/{serviceName}/domain/{id}', params: {id: number, serviceName: string}): Promise<void>;
   /**
    * Server attached to an SSL Gateway
    * Remove a server
    */
-  public delete(path: '/sslGateway/{serviceName}/server/{id}', params: {serviceName: string, id: string}): Promise<void>;
+  public delete(path: '/sslGateway/{serviceName}/server/{id}', params: {id: number, serviceName: string}): Promise<void>;
   public delete(path: PathsSslGatewayDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

@@ -234,7 +234,7 @@ export class ApiLicenseVirtuozzo extends OvhWrapper {
    * Your License options
    * Get this object properties
    */
-  public get(path: '/license/virtuozzo/{serviceName}/option/{label}', params: {serviceName: string, label: string}): Promise<license.Option>;
+  public get(path: '/license/virtuozzo/{serviceName}/option/{label}', params: {label: OVH.license.OptionLabel, serviceName: string}): Promise<license.Option>;
   /**
    * Details about a Service
    * Get this object properties
@@ -249,7 +249,7 @@ export class ApiLicenseVirtuozzo extends OvhWrapper {
    * licenses Todos
    * Get this object properties
    */
-  public get(path: '/license/virtuozzo/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: string}): Promise<license.Task>;
+  public get(path: '/license/virtuozzo/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<license.Task>;
   /**
    * Get the orderable Virtuozzo versions
    * Get the orderable Virtuozzo versions
@@ -293,7 +293,7 @@ export class ApiLicenseVirtuozzo extends OvhWrapper {
    * Your License options
    * release this Option
    */
-  public delete(path: '/license/virtuozzo/{serviceName}/option/{label}', params: {serviceName: string, label: string}): Promise<license.Task>;
+  public delete(path: '/license/virtuozzo/{serviceName}/option/{label}', params: {label: OVH.license.OptionLabel, serviceName: string}): Promise<license.Task>;
   public delete(path: PathsLicenseVirtuozzoDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

@@ -1,6 +1,6 @@
 import GenApiTypes, { CacheApi, CacheModel, filterReservedKw } from './GenApiTypes';
 import { indentGen, protectFieldName, className, protectJsonKey, rawRemapNode, formatUpperCamlCase } from './utils';
-import { Parameter, Schema, ModelsProp } from './schema';
+import { Parameter, Schema, ModelsProp, FieldProp } from './schema';
 import { brotliCompressSync } from 'zlib';
 
 export class CodeGenerator {
@@ -183,8 +183,19 @@ export class CodeGenerator {
 
                         let done = new Set();
 
+                        let typeFromParameter = (p: Parameter | FieldProp): string => {
+                            let type = p.fullType || (<any>p).type;
+                            if (type.endsWith(':string'))
+                                type = 'string'
+                            type = this.aliasFilter(type);
+                            if (~type.indexOf('.'))
+                                type = this.extraNS + type;
+                            type = type.replace('<long>', '<number>');
+                            return filterReservedKw(type);
+                        }
+
                         let params = [];
-                        params.push(...op.parameters.filter(p => p.paramType == 'path').map(p => { done.add(p.name); return `${p.name}: string` }))
+                        params.push(...op.parameters.filter(p => p.paramType == 'path').map(p => { done.add(p.name); return `${p.name}: ${typeFromParameter(p)}` }).sort())
                         let paramType = (mtd == 'GET') ? 'query' : 'body';
                         let body = op.parameters.filter(p => p.paramType == paramType);
                         if (body.length == 1 && body[0].name == null) {
@@ -198,16 +209,7 @@ export class CodeGenerator {
                                     let param = `${protectJsonKey(propName)}`;
                                     if (!p.required)
                                         param += '?'
-                                    param += ': '
-                                    // this.fullTypeExp(p)
-                                    let type = p.fullType || p.type;
-                                    if (type.endsWith(':string'))
-                                        type = 'string'
-                                    type = this.aliasFilter(type);
-                                    if (~type.indexOf('.'))
-                                        type = this.extraNS + type;
-                                    type = type.replace('<long>', '<number>');
-                                    param += filterReservedKw(type);
+                                    param += ': ' + typeFromParameter(p);
                                     params.push(param)
                                 }
                             } else {
@@ -222,15 +224,7 @@ export class CodeGenerator {
                                 let param = `${protectJsonKey(p.name || '')}`;
                                 if (!p.required)
                                     param += '?'
-                                param += ': '
-                                let type = p.fullType;// || p.type;
-                                if (type.endsWith(':string'))
-                                    type = 'string'
-                                type = this.aliasFilter(type);
-                                if (~type.indexOf('.'))
-                                    type = this.extraNS + type;
-                                type = type.replace('<long>', '<number>');
-                                param += filterReservedKw(type);
+                                param += ': ' + typeFromParameter(p);
                                 return param;
                             }))
                         }

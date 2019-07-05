@@ -360,17 +360,17 @@ export class ApiHorizonView extends OvhWrapper {
    * All informations about access point
    * Get this object properties
    */
-  public get(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}', params: {serviceName: string, accessPointId: string}): Promise<horizonView.Pool>;
+  public get(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}', params: {accessPointId: number, serviceName: string}): Promise<horizonView.Pool>;
   /**
    * List the horizonView.CustomerNetworkPool objects
    * You can reach from the Desktops your private network
    */
-  public get(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork', params: {serviceName: string, accessPointId: string}): Promise<number[]>;
+  public get(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork', params: {accessPointId: number, serviceName: string}): Promise<number[]>;
   /**
    * You can reach from your virtual desktops, your customer network 
    * Get this object properties
    */
-  public get(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}', params: {serviceName: string, accessPointId: string, customerNetworkId: string}): Promise<horizonView.CustomerNetworkPool>;
+  public get(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}', params: {accessPointId: number, customerNetworkId: number, serviceName: string}): Promise<horizonView.CustomerNetworkPool>;
   /**
    * List the horizonView.CustomerNetwork objects
    * You can reach from the Desktops your private network
@@ -380,7 +380,7 @@ export class ApiHorizonView extends OvhWrapper {
    * You can reach from your virtual desktops, your customer network 
    * Get this object properties
    */
-  public get(path: '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}', params: {serviceName: string, customerNetworkId: string}): Promise<horizonView.CustomerNetwork>;
+  public get(path: '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}', params: {customerNetworkId: number, serviceName: string}): Promise<horizonView.CustomerNetwork>;
   /**
    * Horizon View as a Service
    * Get this object properties
@@ -405,7 +405,7 @@ export class ApiHorizonView extends OvhWrapper {
    * Operation on a Horizon View component
    * Get this object properties
    */
-  public get(path: '/horizonView/{serviceName}/dedicatedHorizon/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<horizonView.Task>;
+  public get(path: '/horizonView/{serviceName}/dedicatedHorizon/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<horizonView.Task>;
   /**
    * Horizon As A Service User
    * Get this object properties
@@ -420,7 +420,7 @@ export class ApiHorizonView extends OvhWrapper {
    * List all Active Directories linked to your CDI Active Directory
    * Get this object properties
    */
-  public get(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}', params: {serviceName: string, domainTrustId: string}): Promise<horizonView.DomainTrust>;
+  public get(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}', params: {domainTrustId: number, serviceName: string}): Promise<horizonView.DomainTrust>;
   /**
    * Details about a Service
    * Get this object properties
@@ -446,32 +446,32 @@ export class ApiHorizonView extends OvhWrapper {
    * changeSessionTimeout operations
    * Manage your session Timeout on Unified Access Gateway
    */
-  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout', params: {serviceName: string, accessPointId: string, expiration: number, onSingleAP?: OVH.horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
+  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout', params: {accessPointId: number, serviceName: string, expiration: number, onSingleAP?: OVH.horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
   /**
    * List the horizonView.CustomerNetworkPool objects
    * Add a new network 
    */
-  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork', params: {serviceName: string, accessPointId: string, network: string}): Promise<horizonView.Task[]>;
+  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork', params: {accessPointId: number, serviceName: string, network: string}): Promise<horizonView.Task[]>;
   /**
    * disableTwoFA operations
    * Disable two factor authentication on your pool
    */
-  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA', params: {serviceName: string, accessPointId: string}): Promise<horizonView.Task>;
+  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA', params: {accessPointId: number, serviceName: string}): Promise<horizonView.Task>;
   /**
    * disableWindowsUsernameOption operations
    * Disable windows Username option on Unified Access Gateway
    */
-  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption', params: {serviceName: string, accessPointId: string, onSingleAP?: OVH.horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
+  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption', params: {accessPointId: number, serviceName: string, onSingleAP?: OVH.horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
   /**
    * enableTwoFA operations
    * Enable two factor authentication on your pool
    */
-  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA', params: {serviceName: string, accessPointId: string, onSingleAP?: OVH.horizonView.AccessPointTypeEnum, radiusIp: string, secret: string}): Promise<horizonView.Task>;
+  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA', params: {accessPointId: number, serviceName: string, onSingleAP?: OVH.horizonView.AccessPointTypeEnum, radiusIp: string, secret: string}): Promise<horizonView.Task>;
   /**
    * enableWindowsUsernameOption operations
    * Enable windows Username option on Unified Access Gateway
    */
-  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption', params: {serviceName: string, accessPointId: string, onSingleAP?: OVH.horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
+  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption', params: {accessPointId: number, serviceName: string, onSingleAP?: OVH.horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
   /**
    * Confirm termination of your service
    * Confirm termination of your service
@@ -521,22 +521,22 @@ export class ApiHorizonView extends OvhWrapper {
    * addChildDomain operations
    * Add a child domain for this domain.
    */
-  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain', params: {serviceName: string, domainTrustId: string, activeDirectoryIP: string, domain: string, passphrase: string, serviceAccountPassword: string}): Promise<horizonView.Task>;
+  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain', params: {domainTrustId: number, serviceName: string, activeDirectoryIP: string, domain: string, passphrase: string, serviceAccountPassword: string}): Promise<horizonView.Task>;
   /**
    * addDomainController operations
    * Add a Domain Controller for this domain.
    */
-  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController', params: {serviceName: string, domainTrustId: string, domain: string, domainControllerIp: string}): Promise<horizonView.Task>;
+  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController', params: {domainTrustId: number, serviceName: string, domain: string, domainControllerIp: string}): Promise<horizonView.Task>;
   /**
    * addDomainUserOnComposer operations
    * Add a domain user to add your desktop in your Active Directory
    */
-  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer', params: {serviceName: string, domainTrustId: string, domain: string, password: string, username: string}): Promise<horizonView.Task>;
+  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer', params: {domainTrustId: number, serviceName: string, domain: string, password: string, username: string}): Promise<horizonView.Task>;
   /**
    * createTrust operations
    * Change Horizon View user password
    */
-  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust', params: {serviceName: string, domainTrustId: string, passphrase: string, serviceAccountPassword: string}): Promise<horizonView.Task>;
+  public post(path: '/horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust', params: {domainTrustId: number, serviceName: string, passphrase: string, serviceAccountPassword: string}): Promise<horizonView.Task>;
   /**
    * Terminate your service
    * Terminate your service
@@ -549,17 +549,17 @@ export class ApiHorizonView extends OvhWrapper {
    * All informations about access point
    * Delete this access point 
    */
-  public delete(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}', params: {serviceName: string, accessPointId: string}): Promise<horizonView.Task[]>;
+  public delete(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}', params: {accessPointId: number, serviceName: string}): Promise<horizonView.Task[]>;
   /**
    * You can reach from your virtual desktops, your customer network 
    * Delete this Customer Network
    */
-  public delete(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}', params: {serviceName: string, accessPointId: string, customerNetworkId: string}): Promise<horizonView.Task[]>;
+  public delete(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}', params: {accessPointId: number, customerNetworkId: number, serviceName: string}): Promise<horizonView.Task[]>;
   /**
    * You can reach from your virtual desktops, your customer network 
    * Delete this Customer Network
    */
-  public delete(path: '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}', params: {serviceName: string, customerNetworkId: string}): Promise<horizonView.Task[]>;
+  public delete(path: '/horizonView/{serviceName}/customerNetwork/{customerNetworkId}', params: {customerNetworkId: number, serviceName: string}): Promise<horizonView.Task[]>;
   /**
    * Horizon As A Service Customer  User
    * Delete this Customer User

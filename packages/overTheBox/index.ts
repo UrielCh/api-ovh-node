@@ -365,7 +365,7 @@ export class ApiOverTheBox extends OvhWrapper {
    * Backup
    * Get this object properties
    */
-  public get(path: '/overTheBox/{serviceName}/backups/{backupId}', params: {serviceName: string, backupId: string}): Promise<overTheBox.Backup>;
+  public get(path: '/overTheBox/{serviceName}/backups/{backupId}', params: {backupId: string, serviceName: string}): Promise<overTheBox.Backup>;
   /**
    * Device
    * Get this object properties
@@ -380,7 +380,7 @@ export class ApiOverTheBox extends OvhWrapper {
    * Device action
    * Get this object properties
    */
-  public get(path: '/overTheBox/{serviceName}/device/actions/{actionId}', params: {serviceName: string, actionId: string}): Promise<overTheBox.DeviceAction>;
+  public get(path: '/overTheBox/{serviceName}/device/actions/{actionId}', params: {actionId: string, serviceName: string}): Promise<overTheBox.DeviceAction>;
   /**
    * availableActions operations
    * List the available device actions
@@ -400,7 +400,7 @@ export class ApiOverTheBox extends OvhWrapper {
    * If authorized, a remote access will expose a port, allowing an access to the device remotely
    * Get this object properties
    */
-  public get(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}', params: {serviceName: string, remoteAccessId: string}): Promise<overTheBox.RemoteAccess>;
+  public get(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}', params: {remoteAccessId: string, serviceName: string}): Promise<overTheBox.RemoteAccess>;
   /**
    * Details about a Service
    * Get this object properties
@@ -481,7 +481,7 @@ export class ApiOverTheBox extends OvhWrapper {
    * authorize operations
    * Authorize the remote access
    */
-  public post(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize', params: {serviceName: string, remoteAccessId: string}): Promise<void>;
+  public post(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize', params: {remoteAccessId: string, serviceName: string}): Promise<void>;
   /**
    * Get the list of devices connected from the same IP address
    * Get the list of devices connected from the same IP address
@@ -504,7 +504,7 @@ export class ApiOverTheBox extends OvhWrapper {
    * If authorized, a remote access will expose a port, allowing an access to the device remotely
    * Delete a remote access
    */
-  public delete(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}', params: {serviceName: string, remoteAccessId: string}): Promise<void>;
+  public delete(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}', params: {remoteAccessId: string, serviceName: string}): Promise<void>;
   public delete(path: PathsOverTheBoxDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

@@ -212,7 +212,7 @@ export class ApiLicenseDirectadmin extends OvhWrapper {
    * licenses Todos
    * Get this object properties
    */
-  public get(path: '/license/directadmin/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: string}): Promise<license.Task>;
+  public get(path: '/license/directadmin/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<license.Task>;
   /**
    * Get the orderable DirectAdmin versions
    * Get the orderable DirectAdmin versions

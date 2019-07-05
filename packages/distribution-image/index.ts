@@ -57,12 +57,12 @@ export class ApiDistributionImage extends OvhWrapper {
    * Missing description
    * List images for a service
    */
-  public get(path: '/distribution/image/{serviceType}', params: {serviceType: string}): Promise<string[]>;
+  public get(path: '/distribution/image/{serviceType}', params: {serviceType: OVH.distribution.image.service}): Promise<string[]>;
   /**
    * Missing description
    * Show image details
    */
-  public get(path: '/distribution/image/{serviceType}/{imageName}', params: {serviceType: string, imageName: string}): Promise<distribution.image>;
+  public get(path: '/distribution/image/{serviceType}/{imageName}', params: {imageName: string, serviceType: OVH.distribution.image.service}): Promise<distribution.image>;
   public get(path: PathsDistributionImageGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }

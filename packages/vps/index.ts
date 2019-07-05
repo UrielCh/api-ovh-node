@@ -780,7 +780,7 @@ export class ApiVps extends OvhWrapper {
    * Backup Ftp ACL for this server and Backup Ftp
    * Get this object properties
    */
-  public get(path: '/vps/{serviceName}/backupftp/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<dedicated.server.BackupFtpAcl>;
+  public get(path: '/vps/{serviceName}/backupftp/access/{ipBlock}', params: {ipBlock: string, serviceName: string}): Promise<dedicated.server.BackupFtpAcl>;
   /**
    * authorizableBlocks operations
    * Get all IP blocks that can be used in the ACL
@@ -800,17 +800,17 @@ export class ApiVps extends OvhWrapper {
    * Information about a disk of a VPS Virtual Machine
    * Get this object properties
    */
-  public get(path: '/vps/{serviceName}/disks/{id}', params: {serviceName: string, id: string}): Promise<vps.Disk>;
+  public get(path: '/vps/{serviceName}/disks/{id}', params: {id: number, serviceName: string}): Promise<vps.Disk>;
   /**
    * monitoring operations
    * Return many statistics about the disk for a given period
    */
-  public get(path: '/vps/{serviceName}/disks/{id}/monitoring', params: {serviceName: string, id: string, period: OVH.vps.VpsMonitoringPeriodEnum, type: OVH.vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+  public get(path: '/vps/{serviceName}/disks/{id}/monitoring', params: {id: number, serviceName: string, period: OVH.vps.VpsMonitoringPeriodEnum, type: OVH.vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
   /**
    * use operations
    * Return many statistics about the disk at that time
    */
-  public get(path: '/vps/{serviceName}/disks/{id}/use', params: {serviceName: string, id: string, type: OVH.vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
+  public get(path: '/vps/{serviceName}/disks/{id}/use', params: {id: number, serviceName: string, type: OVH.vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
   /**
    * Installation template for a VPS Virtual Machine
    * Get this object properties
@@ -825,7 +825,7 @@ export class ApiVps extends OvhWrapper {
    * Available softwares on a Template
    * Get this object properties
    */
-  public get(path: '/vps/{serviceName}/distribution/software/{softwareId}', params: {serviceName: string, softwareId: string}): Promise<vps.Software>;
+  public get(path: '/vps/{serviceName}/distribution/software/{softwareId}', params: {serviceName: string, softwareId: number}): Promise<vps.Software>;
   /**
    * ipCountryAvailable operations
    * Get the countries you can select for your IPs geolocation
@@ -840,7 +840,7 @@ export class ApiVps extends OvhWrapper {
    * Information about an IP address for a VPS Virtual Machine
    * Get this object properties
    */
-  public get(path: '/vps/{serviceName}/ips/{ipAddress}', params: {serviceName: string, ipAddress: string}): Promise<vps.Ip>;
+  public get(path: '/vps/{serviceName}/ips/{ipAddress}', params: {ipAddress: string, serviceName: string}): Promise<vps.Ip>;
   /**
    * models operations
    * Return all models for the range of the virtual server
@@ -860,7 +860,7 @@ export class ApiVps extends OvhWrapper {
    * Information about the options of a VPS Virtual Machine
    * Get this object properties
    */
-  public get(path: '/vps/{serviceName}/option/{option}', params: {serviceName: string, option: string}): Promise<vps.Option>;
+  public get(path: '/vps/{serviceName}/option/{option}', params: {option: OVH.vps.VpsOptionEnum, serviceName: string}): Promise<vps.Option>;
   /**
    * List the secondaryDns.SecondaryDNS objects
    * List of secondary dns domain name
@@ -870,12 +870,12 @@ export class ApiVps extends OvhWrapper {
    * Secondary dns infos
    * Get this object properties
    */
-  public get(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string}): Promise<secondaryDns.SecondaryDNS>;
+  public get(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}', params: {domain: string, serviceName: string}): Promise<secondaryDns.SecondaryDNS>;
   /**
    * dnsServer operations
    * domain name server informations
    */
-  public get(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer', params: {serviceName: string, domain: string}): Promise<secondaryDns.SecondaryDNSNameServer>;
+  public get(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer', params: {domain: string, serviceName: string}): Promise<secondaryDns.SecondaryDNSNameServer>;
   /**
    * secondaryDnsNameServerAvailable operations
    * Secondary nameServer available for your Server
@@ -905,7 +905,7 @@ export class ApiVps extends OvhWrapper {
    * Operation on a VPS Virtual Machine
    * Get this object properties
    */
-  public get(path: '/vps/{serviceName}/tasks/{id}', params: {serviceName: string, id: string}): Promise<vps.Task>;
+  public get(path: '/vps/{serviceName}/tasks/{id}', params: {id: number, serviceName: string}): Promise<vps.Task>;
   /**
    * List the vps.Template objects
    * Templates available for this virtual server
@@ -915,17 +915,17 @@ export class ApiVps extends OvhWrapper {
    * Installation template for a VPS Virtual Machine
    * Get this object properties
    */
-  public get(path: '/vps/{serviceName}/templates/{id}', params: {serviceName: string, id: string}): Promise<vps.Template>;
+  public get(path: '/vps/{serviceName}/templates/{id}', params: {id: number, serviceName: string}): Promise<vps.Template>;
   /**
    * List the vps.Software objects
    * List available softwares for this template Id
    */
-  public get(path: '/vps/{serviceName}/templates/{id}/software', params: {serviceName: string, id: string}): Promise<number[]>;
+  public get(path: '/vps/{serviceName}/templates/{id}/software', params: {id: number, serviceName: string}): Promise<number[]>;
   /**
    * Available softwares on a Template
    * Get this object properties
    */
-  public get(path: '/vps/{serviceName}/templates/{id}/software/{softwareId}', params: {serviceName: string, id: string, softwareId: string}): Promise<vps.Software>;
+  public get(path: '/vps/{serviceName}/templates/{id}/software/{softwareId}', params: {id: number, serviceName: string, softwareId: number}): Promise<vps.Software>;
   /**
    * use operations
    * Return many statistics about the virtual machine at that time
@@ -950,7 +950,7 @@ export class ApiVps extends OvhWrapper {
    * Informations about a VPS Veeam restore points
    * Get this object properties
    */
-  public get(path: '/vps/{serviceName}/veeam/restorePoints/{id}', params: {serviceName: string, id: string}): Promise<vps.veeam.RestorePoint>;
+  public get(path: '/vps/{serviceName}/veeam/restorePoints/{id}', params: {id: number, serviceName: string}): Promise<vps.veeam.RestorePoint>;
   /**
    * Missing description
    * List all the datacenters for a specific country
@@ -968,22 +968,22 @@ export class ApiVps extends OvhWrapper {
    * Backup Ftp ACL for this server and Backup Ftp
    * Alter this object properties
    */
-  public put(path: '/vps/{serviceName}/backupftp/access/{ipBlock}', params: {serviceName: string, ipBlock: string, cifs?: boolean, ftp?: boolean, isApplied?: boolean, lastUpdate?: string, nfs?: boolean}): Promise<void>;
+  public put(path: '/vps/{serviceName}/backupftp/access/{ipBlock}', params: {ipBlock: string, serviceName: string, cifs?: boolean, ftp?: boolean, isApplied?: boolean, lastUpdate?: string, nfs?: boolean}): Promise<void>;
   /**
    * Information about a disk of a VPS Virtual Machine
    * Alter this object properties
    */
-  public put(path: '/vps/{serviceName}/disks/{id}', params: {serviceName: string, id: string, bandwidthLimit?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: OVH.vps.disk.StateEnum, type?: OVH.vps.disk.TypeEnum}): Promise<void>;
+  public put(path: '/vps/{serviceName}/disks/{id}', params: {id: number, serviceName: string, bandwidthLimit?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: OVH.vps.disk.StateEnum, type?: OVH.vps.disk.TypeEnum}): Promise<void>;
   /**
    * Information about an IP address for a VPS Virtual Machine
    * Alter this object properties
    */
-  public put(path: '/vps/{serviceName}/ips/{ipAddress}', params: {serviceName: string, ipAddress: string, gateway?: string, geolocation?: OVH.vps.ip.GeolocationEnum, macAddress?: string, reverse?: string, type?: OVH.vps.ip.TypeEnum, version?: OVH.coreTypes.IpVersionEnum}): Promise<void>;
+  public put(path: '/vps/{serviceName}/ips/{ipAddress}', params: {ipAddress: string, serviceName: string, gateway?: string, geolocation?: OVH.vps.ip.GeolocationEnum, macAddress?: string, reverse?: string, type?: OVH.vps.ip.TypeEnum, version?: OVH.coreTypes.IpVersionEnum}): Promise<void>;
   /**
    * Secondary dns infos
    * Alter this object properties
    */
-  public put(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string, creationDate?: string, dns?: string, ipMaster?: string}): Promise<void>;
+  public put(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}', params: {domain: string, serviceName: string, creationDate?: string, dns?: string, ipMaster?: string}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -1086,7 +1086,7 @@ export class ApiVps extends OvhWrapper {
    * restore operations
    * Creates a VPS.Task that will restore the given restorePoint
    */
-  public post(path: '/vps/{serviceName}/veeam/restorePoints/{id}/restore', params: {serviceName: string, id: string, changePassword?: boolean, export?: OVH.vps.veeam.ExportTypeEnum, full: boolean}): Promise<vps.Task>;
+  public post(path: '/vps/{serviceName}/veeam/restorePoints/{id}/restore', params: {id: number, serviceName: string, changePassword?: boolean, export?: OVH.vps.veeam.ExportTypeEnum, full: boolean}): Promise<vps.Task>;
   public post(path: PathsVpsPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
@@ -1094,22 +1094,22 @@ export class ApiVps extends OvhWrapper {
    * Backup Ftp ACL for this server and Backup Ftp
    * Revoke this ACL
    */
-  public delete(path: '/vps/{serviceName}/backupftp/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<dedicated.server.Task>;
+  public delete(path: '/vps/{serviceName}/backupftp/access/{ipBlock}', params: {ipBlock: string, serviceName: string}): Promise<dedicated.server.Task>;
   /**
    * Information about an IP address for a VPS Virtual Machine
    * Release a given Ip (Additional Ip)
    */
-  public delete(path: '/vps/{serviceName}/ips/{ipAddress}', params: {serviceName: string, ipAddress: string}): Promise<void>;
+  public delete(path: '/vps/{serviceName}/ips/{ipAddress}', params: {ipAddress: string, serviceName: string}): Promise<void>;
   /**
    * Information about the options of a VPS Virtual Machine
    * Release a given option
    */
-  public delete(path: '/vps/{serviceName}/option/{option}', params: {serviceName: string, option: string}): Promise<void>;
+  public delete(path: '/vps/{serviceName}/option/{option}', params: {option: OVH.vps.VpsOptionEnum, serviceName: string}): Promise<void>;
   /**
    * Secondary dns infos
    * remove this domain
    */
-  public delete(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string}): Promise<void>;
+  public delete(path: '/vps/{serviceName}/secondaryDnsDomains/{domain}', params: {domain: string, serviceName: string}): Promise<void>;
   /**
    * Information about the snapshot of a VPS Virtual Machine
    * Creates a vps.Task that will delete the Snapshot

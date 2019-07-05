@@ -1724,12 +1724,12 @@ export class ApiXdsl extends OvhWrapper {
    * Spams detected from xdsl access
    * Get this object properties
    */
-  public get(path: '/xdsl/{serviceName}/antiSpams/{ip}', params: {serviceName: string, ip: string}): Promise<xdsl.AntiSpam>;
+  public get(path: '/xdsl/{serviceName}/antiSpams/{ip}', params: {ip: string, serviceName: string}): Promise<xdsl.AntiSpam>;
   /**
    * evidences operations
    * List of evidences stored on PCS for this ip
    */
-  public get(path: '/xdsl/{serviceName}/antiSpams/{ip}/evidences', params: {serviceName: string, ip: string}): Promise<xdsl.antiSpam.EvidencesInfo>;
+  public get(path: '/xdsl/{serviceName}/antiSpams/{ip}/evidences', params: {ip: string, serviceName: string}): Promise<xdsl.antiSpam.EvidencesInfo>;
   /**
    * canCancelResiliation operations
    * Get information about the ongoing resiliation
@@ -1754,7 +1754,7 @@ export class ApiXdsl extends OvhWrapper {
    * Informations about an IP address
    * Get this object properties
    */
-  public get(path: '/xdsl/{serviceName}/ips/{ip}', params: {serviceName: string, ip: string}): Promise<xdsl.IP>;
+  public get(path: '/xdsl/{serviceName}/ips/{ip}', params: {ip: string, serviceName: string}): Promise<xdsl.IP>;
   /**
    * List the xdsl.Line objects
    * The lines of the access
@@ -1764,27 +1764,27 @@ export class ApiXdsl extends OvhWrapper {
    * Information about the physical copper line
    * Get this object properties
    */
-  public get(path: '/xdsl/{serviceName}/lines/{number}', params: {serviceName: string, number: string}): Promise<xdsl.Line>;
+  public get(path: '/xdsl/{serviceName}/lines/{number}', params: {number: string, serviceName: string}): Promise<xdsl.Line>;
   /**
    * Information about the port on the DSLAM
    * Get this object properties
    */
-  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort', params: {serviceName: string, number: string}): Promise<xdsl.DslamPort>;
+  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort', params: {number: string, serviceName: string}): Promise<xdsl.DslamPort>;
   /**
    * availableProfiles operations
    * List all availables profiles for this port
    */
-  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles', params: {serviceName: string, number: string}): Promise<xdsl.DslamLineProfile[]>;
+  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles', params: {number: string, serviceName: string}): Promise<xdsl.DslamLineProfile[]>;
   /**
    * logs operations
    * Get the logs emitted by the DSLAM for this port
    */
-  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/logs', params: {serviceName: string, number: string, limit: number}): Promise<xdsl.DslamPortLog[]>;
+  public get(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/logs', params: {number: string, serviceName: string, limit: number}): Promise<xdsl.DslamPortLog[]>;
   /**
    * statistics operations
    * Get various statistics about the line
    */
-  public get(path: '/xdsl/{serviceName}/lines/{number}/statistics', params: {serviceName: string, number: string, period: OVH.xdsl.StatisticsPeriodEnum, type: OVH.xdsl.LineStatisticsTypeEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
+  public get(path: '/xdsl/{serviceName}/lines/{number}/statistics', params: {number: string, serviceName: string, period: OVH.xdsl.StatisticsPeriodEnum, type: OVH.xdsl.LineStatisticsTypeEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
   /**
    * Modem
    * Get this object properties
@@ -1814,7 +1814,7 @@ export class ApiXdsl extends OvhWrapper {
    * Connected Device
    * Get this object properties
    */
-  public get(path: '/xdsl/{serviceName}/modem/connectedDevices/{macAddress}', params: {serviceName: string, macAddress: string}): Promise<xdsl.connectedDevice>;
+  public get(path: '/xdsl/{serviceName}/modem/connectedDevices/{macAddress}', params: {macAddress: string, serviceName: string}): Promise<xdsl.connectedDevice>;
   /**
    * contentSharing operations
    * Get the status of contentSharing on modem
@@ -1849,27 +1849,27 @@ export class ApiXdsl extends OvhWrapper {
    * LAN Configuration of the Modem
    * Get this object properties
    */
-  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}', params: {serviceName: string, lanName: string}): Promise<xdsl.LAN>;
+  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}', params: {lanName: string, serviceName: string}): Promise<xdsl.LAN>;
   /**
    * List the xdsl.DHCP objects
    * List of DHCP on this modem
    */
-  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp', params: {serviceName: string, lanName: string}): Promise<string[]>;
+  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp', params: {lanName: string, serviceName: string}): Promise<string[]>;
   /**
    * DHCP Configuration of the Modem
    * Get this object properties
    */
-  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}', params: {serviceName: string, lanName: string, dhcpName: string}): Promise<xdsl.DHCP>;
+  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}', params: {dhcpName: string, lanName: string, serviceName: string}): Promise<xdsl.DHCP>;
   /**
    * List the xdsl.DHCPStaticAddress objects
    * List of DHCP Static Address of this modem
    */
-  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses', params: {serviceName: string, lanName: string, dhcpName: string}): Promise<string[]>;
+  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses', params: {dhcpName: string, lanName: string, serviceName: string}): Promise<string[]>;
   /**
    * DHCP Static Address
    * Get this object properties
    */
-  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', params: {serviceName: string, lanName: string, dhcpName: string, MACAddress: string}): Promise<xdsl.DHCPStaticAddress>;
+  public get(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', params: {MACAddress: string, dhcpName: string, lanName: string, serviceName: string}): Promise<xdsl.DHCPStaticAddress>;
   /**
    * List the xdsl.PortMapping objects
    * List of PortMappings on this modem
@@ -1879,7 +1879,7 @@ export class ApiXdsl extends OvhWrapper {
    * Port Mappings
    * Get this object properties
    */
-  public get(path: '/xdsl/{serviceName}/modem/portMappings/{name}', params: {serviceName: string, name: string}): Promise<xdsl.PortMapping>;
+  public get(path: '/xdsl/{serviceName}/modem/portMappings/{name}', params: {name: string, serviceName: string}): Promise<xdsl.PortMapping>;
   /**
    * sipAlg operations
    * Get the status of sip alg service on modem
@@ -1909,7 +1909,7 @@ export class ApiXdsl extends OvhWrapper {
    * Defines where and how the notifications will be sent
    * Get this object properties
    */
-  public get(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', params: {serviceName: string, id: string}): Promise<xdsl.MonitoringNotification>;
+  public get(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', params: {id: number, serviceName: string}): Promise<xdsl.MonitoringNotification>;
   /**
    * orderFollowup operations
    * Get the status of the order
@@ -1944,7 +1944,7 @@ export class ApiXdsl extends OvhWrapper {
    * Current Return Merchandise Authorisation
    * Get this object properties
    */
-  public get(path: '/xdsl/{serviceName}/rma/{id}', params: {serviceName: string, id: string}): Promise<telephony.Rma>;
+  public get(path: '/xdsl/{serviceName}/rma/{id}', params: {id: string, serviceName: string}): Promise<telephony.Rma>;
   /**
    * Details about a Service
    * Get this object properties
@@ -1964,7 +1964,7 @@ export class ApiXdsl extends OvhWrapper {
    * Describes the current status of a task
    * Get this object properties
    */
-  public get(path: '/xdsl/{serviceName}/tasks/{id}', params: {serviceName: string, id: string}): Promise<xdsl.Task>;
+  public get(path: '/xdsl/{serviceName}/tasks/{id}', params: {id: number, serviceName: string}): Promise<xdsl.Task>;
   /**
    * totalDeconsolidationTerms operations
    * Give the price to requestTotalDeconsolidation on the access
@@ -2009,7 +2009,7 @@ export class ApiXdsl extends OvhWrapper {
    * Detected incident
    * Get this object properties
    */
-  public get(path: '/xdsl/incidents/{id}', params: {id: string}): Promise<xdsl.Incident>;
+  public get(path: '/xdsl/incidents/{id}', params: {id: number}): Promise<xdsl.Incident>;
   /**
    * Operations about the XDSL service
    * List available services
@@ -2062,22 +2062,22 @@ export class ApiXdsl extends OvhWrapper {
    * LAN Configuration of the Modem
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}', params: {serviceName: string, lanName: string, IPAddress?: string, addressingType?: OVH.xdsl.xdslModemConfig.AddressingTypeEnum, subnetMask?: string, taskId?: number}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}', params: {lanName: string, serviceName: string, IPAddress?: string, addressingType?: OVH.xdsl.xdslModemConfig.AddressingTypeEnum, subnetMask?: string, taskId?: number}): Promise<void>;
   /**
    * DHCP Configuration of the Modem
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}', params: {serviceName: string, lanName: string, dhcpName: string, defaultGateway?: string, domainName?: string, endAddress?: string, leaseTime?: number, primaryDNS?: string, secondaryDNS?: string, serverEnabled?: boolean, startAddress?: string, subnetMask?: string, taskId?: number}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}', params: {dhcpName: string, lanName: string, serviceName: string, defaultGateway?: string, domainName?: string, endAddress?: string, leaseTime?: number, primaryDNS?: string, secondaryDNS?: string, serverEnabled?: boolean, startAddress?: string, subnetMask?: string, taskId?: number}): Promise<void>;
   /**
    * DHCP Static Address
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', params: {serviceName: string, lanName: string, dhcpName: string, MACAddress: string, IPAddress?: string, name?: string, taskId?: number}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', params: {MACAddress: string, dhcpName: string, lanName: string, serviceName: string, IPAddress?: string, name?: string, taskId?: number}): Promise<void>;
   /**
    * Port Mappings
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}/modem/portMappings/{name}', params: {serviceName: string, name: string, allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart?: number, id?: number, internalClient?: string, internalPort?: number, protocol?: OVH.xdsl.xdslModemConfig.ProtocolTypeEnum, taskId?: number}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/modem/portMappings/{name}', params: {name: string, serviceName: string, allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart?: number, id?: number, internalClient?: string, internalPort?: number, protocol?: OVH.xdsl.xdslModemConfig.ProtocolTypeEnum, taskId?: number}): Promise<void>;
   /**
    * WLAN Configuration of the Modem
    * Alter this object properties
@@ -2087,12 +2087,12 @@ export class ApiXdsl extends OvhWrapper {
    * Defines where and how the notifications will be sent
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', params: {serviceName: string, id: string, allowIncident?: boolean, downThreshold?: number, email?: string, enabled?: boolean, frequency?: OVH.xdsl.monitoringNotifications.FrequencyEnum, phone?: string, smsAccount?: string, type?: OVH.xdsl.monitoringNotifications.TypeEnum}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', params: {id: number, serviceName: string, allowIncident?: boolean, downThreshold?: number, email?: string, enabled?: boolean, frequency?: OVH.xdsl.monitoringNotifications.FrequencyEnum, phone?: string, smsAccount?: string, type?: OVH.xdsl.monitoringNotifications.TypeEnum}): Promise<void>;
   /**
    * Current Return Merchandise Authorisation
    * Alter this object properties
    */
-  public put(path: '/xdsl/{serviceName}/rma/{id}', params: {serviceName: string, id: string, cancellable?: boolean, creationDatetime?: string, equipmentReference?: string, newMerchandise?: string, offerTypeNew?: OVH.telephony.RmaOfferTypeEnum, offerTypeOld?: OVH.telephony.RmaOfferTypeEnum, process?: OVH.telephony.RmaReplaceTypeEnum, receptionDatetime?: string, shippingContact?: OVH.telephony.Contact, status?: OVH.telephony.RmaStatusEnum, steps?: OVH.telephony.RmaStep[], terminationDatetime?: string, type?: OVH.telephony.RmaTypeEnum}): Promise<void>;
+  public put(path: '/xdsl/{serviceName}/rma/{id}', params: {id: string, serviceName: string, cancellable?: boolean, creationDatetime?: string, equipmentReference?: string, newMerchandise?: string, offerTypeNew?: OVH.telephony.RmaOfferTypeEnum, offerTypeOld?: OVH.telephony.RmaOfferTypeEnum, process?: OVH.telephony.RmaReplaceTypeEnum, receptionDatetime?: string, shippingContact?: OVH.telephony.Contact, status?: OVH.telephony.RmaStatusEnum, steps?: OVH.telephony.RmaStep[], terminationDatetime?: string, type?: OVH.telephony.RmaTypeEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -2155,22 +2155,22 @@ export class ApiXdsl extends OvhWrapper {
    * cancel operations
    * Cancel line diagnostic if possible
    */
-  public post(path: '/xdsl/{serviceName}/lines/{number}/diagnostic/cancel', params: {serviceName: string, number: string}): Promise<void>;
+  public post(path: '/xdsl/{serviceName}/lines/{number}/diagnostic/cancel', params: {number: string, serviceName: string}): Promise<void>;
   /**
    * run operations
    * Update and get advanced diagnostic of the line
    */
-  public post(path: '/xdsl/{serviceName}/lines/{number}/diagnostic/run', params: {serviceName: string, number: string, actionsDone?: OVH.xdsl.lineDiagnostic.CustomerActionsEnum[], answers?: OVH.xdsl.lineDiagnostic.Answers, faultType: OVH.xdsl.lineDiagnostic.FaultTypeEnum}): Promise<xdsl.lineDiagnostic.Diagnostic>;
+  public post(path: '/xdsl/{serviceName}/lines/{number}/diagnostic/run', params: {number: string, serviceName: string, actionsDone?: OVH.xdsl.lineDiagnostic.CustomerActionsEnum[], answers?: OVH.xdsl.lineDiagnostic.Answers, faultType: OVH.xdsl.lineDiagnostic.FaultTypeEnum}): Promise<xdsl.lineDiagnostic.Diagnostic>;
   /**
    * changeProfile operations
    * Change the profile of the port
    */
-  public post(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile', params: {serviceName: string, number: string, dslamProfileId: number}): Promise<xdsl.Task>;
+  public post(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile', params: {number: string, serviceName: string, dslamProfileId: number}): Promise<xdsl.Task>;
   /**
    * reset operations
    * Reset the port on the DSLAM
    */
-  public post(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/reset', params: {serviceName: string, number: string}): Promise<xdsl.Task>;
+  public post(path: '/xdsl/{serviceName}/lines/{number}/dslamPort/reset', params: {number: string, serviceName: string}): Promise<xdsl.Task>;
   /**
    * blocIp operations
    * Change the status of the Bloc IP on modem
@@ -2210,7 +2210,7 @@ export class ApiXdsl extends OvhWrapper {
    * List the xdsl.DHCPStaticAddress objects
    * Add a DHCP static lease
    */
-  public post(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses', params: {serviceName: string, lanName: string, dhcpName: string, IPAddress: string, MACAddress: string, name?: string}): Promise<xdsl.DHCPStaticAddress>;
+  public post(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses', params: {dhcpName: string, lanName: string, serviceName: string, IPAddress: string, MACAddress: string, name?: string}): Promise<xdsl.DHCPStaticAddress>;
   /**
    * List the xdsl.PortMapping objects
    * Add a port mapping
@@ -2285,7 +2285,7 @@ export class ApiXdsl extends OvhWrapper {
    * archive operations
    * Delete the task in problem from the results
    */
-  public post(path: '/xdsl/{serviceName}/tasks/{id}/archive', params: {serviceName: string, id: string}): Promise<void>;
+  public post(path: '/xdsl/{serviceName}/tasks/{id}/archive', params: {id: number, serviceName: string}): Promise<void>;
   /**
    * updateInvalidOrMissingRio operations
    * Update RIO, or disable portability, for order in error because of missing or invalid RIO
@@ -2363,27 +2363,27 @@ export class ApiXdsl extends OvhWrapper {
    * Informations about an IP address
    * Stop renewing this extra IPv4 option
    */
-  public delete(path: '/xdsl/{serviceName}/ips/{ip}', params: {serviceName: string, ip: string}): Promise<void>;
+  public delete(path: '/xdsl/{serviceName}/ips/{ip}', params: {ip: string, serviceName: string}): Promise<void>;
   /**
    * DHCP Static Address
    * Delete this port mapping
    */
-  public delete(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', params: {serviceName: string, lanName: string, dhcpName: string, MACAddress: string}): Promise<xdsl.Task>;
+  public delete(path: '/xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}', params: {MACAddress: string, dhcpName: string, lanName: string, serviceName: string}): Promise<xdsl.Task>;
   /**
    * Port Mappings
    * Delete this port mapping
    */
-  public delete(path: '/xdsl/{serviceName}/modem/portMappings/{name}', params: {serviceName: string, name: string}): Promise<xdsl.Task>;
+  public delete(path: '/xdsl/{serviceName}/modem/portMappings/{name}', params: {name: string, serviceName: string}): Promise<xdsl.Task>;
   /**
    * Defines where and how the notifications will be sent
    * Delete this notification
    */
-  public delete(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', params: {serviceName: string, id: string}): Promise<void>;
+  public delete(path: '/xdsl/{serviceName}/monitoringNotifications/{id}', params: {id: number, serviceName: string}): Promise<void>;
   /**
    * Current Return Merchandise Authorisation
    * Cancel the rma
    */
-  public delete(path: '/xdsl/{serviceName}/rma/{id}', params: {serviceName: string, id: string}): Promise<void>;
+  public delete(path: '/xdsl/{serviceName}/rma/{id}', params: {id: string, serviceName: string}): Promise<void>;
   /**
    * XDSL Email Pro
    * Delete the email

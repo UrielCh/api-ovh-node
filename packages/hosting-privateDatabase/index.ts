@@ -570,27 +570,27 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * Databases
    * Get this object properties
    */
-  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}', params: {serviceName: string, databaseName: string}): Promise<hosting.privateDatabase.database>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}', params: {databaseName: string, serviceName: string}): Promise<hosting.privateDatabase.database>;
   /**
    * List the hosting.privateDatabase.database.dump objects
    * Dump available for your databases
    */
-  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump', params: {serviceName: string, databaseName: string, creationDate?: string, deletionDate?: string}): Promise<number[]>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump', params: {databaseName: string, serviceName: string, creationDate?: string, deletionDate?: string}): Promise<number[]>;
   /**
    * Dump
    * Get this object properties
    */
-  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}', params: {serviceName: string, databaseName: string, id: string}): Promise<hosting.privateDatabase.database_dump>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}', params: {databaseName: string, id: number, serviceName: string}): Promise<hosting.privateDatabase.database_dump>;
   /**
    * List the hosting.privateDatabase.database.extension objects
    * Extensions linked to your database
    */
-  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension', params: {serviceName: string, databaseName: string, extensionName?: string, status?: OVH.hosting.PrivateDatabase.Database.Extension.Status}): Promise<string[]>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension', params: {databaseName: string, serviceName: string, extensionName?: string, status?: OVH.hosting.PrivateDatabase.Database.Extension.Status}): Promise<string[]>;
   /**
    * Databases extension
    * Get this object properties
    */
-  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}', params: {serviceName: string, databaseName: string, extensionName: string}): Promise<hosting.privateDatabase.database_extension>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}', params: {databaseName: string, extensionName: string, serviceName: string}): Promise<hosting.privateDatabase.database_extension>;
   /**
    * List the hosting.privateDatabase.dump objects
    * Dumps available for your private database service
@@ -600,7 +600,7 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * Dump
    * Get this object properties
    */
-  public get(path: '/hosting/privateDatabase/{serviceName}/dump/{dumpId}', params: {serviceName: string, dumpId: string}): Promise<hosting.privateDatabase.dump>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/dump/{dumpId}', params: {dumpId: number, serviceName: string}): Promise<hosting.privateDatabase.dump>;
   /**
    * oom operations
    * List of privatesql OOM kill
@@ -620,7 +620,7 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * Tasks
    * Get this object properties
    */
-  public get(path: '/hosting/privateDatabase/{serviceName}/tasks/{id}', params: {serviceName: string, id: string}): Promise<hosting.privateDatabase.task>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/tasks/{id}', params: {id: number, serviceName: string}): Promise<hosting.privateDatabase.task>;
   /**
    * List the hosting.privateDatabase.user objects
    * User allowed to connect on your databases
@@ -640,7 +640,7 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * Grants
    * Get this object properties
    */
-  public get(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}', params: {serviceName: string, userName: string, databaseName: string}): Promise<hosting.privateDatabase.grant>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}', params: {databaseName: string, serviceName: string, userName: string}): Promise<hosting.privateDatabase.grant>;
   /**
    * webs operations
    * List linked webs
@@ -655,7 +655,7 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * IP whitelisting for your instance
    * Get this object properties
    */
-  public get(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {serviceName: string, ip: string}): Promise<hosting.privateDatabase.whitelist>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {ip: string, serviceName: string}): Promise<hosting.privateDatabase.whitelist>;
   /**
    * Get available order capacitie
    * Get available order capacitie
@@ -678,7 +678,7 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * IP whitelisting for your instance
    * Alter this object properties
    */
-  public put(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {serviceName: string, ip: string, creationDate?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: OVH.hosting.PrivateDatabase.Whitelist.Status, taskId?: string}): Promise<void>;
+  public put(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {ip: string, serviceName: string, creationDate?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: OVH.hosting.PrivateDatabase.Whitelist.Status, taskId?: string}): Promise<void>;
   public put(path: PathsHostingPrivateDatabasePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -716,27 +716,27 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * List the hosting.privateDatabase.database.dump objects
    * Request the dump of this database ( an email will be send with a link available 30 days )
    */
-  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump', params: {serviceName: string, databaseName: string, sendEmail?: boolean}): Promise<hosting.privateDatabase.task>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump', params: {databaseName: string, serviceName: string, sendEmail?: boolean}): Promise<hosting.privateDatabase.task>;
   /**
    * restore operations
    * Request the restore from this dump
    */
-  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore', params: {serviceName: string, databaseName: string, id: string}): Promise<hosting.privateDatabase.task>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore', params: {databaseName: string, id: number, serviceName: string}): Promise<hosting.privateDatabase.task>;
   /**
    * disable operations
    * Disable an extension from a database
    */
-  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/disable', params: {serviceName: string, databaseName: string, extensionName: string}): Promise<hosting.privateDatabase.task>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/disable', params: {databaseName: string, extensionName: string, serviceName: string}): Promise<hosting.privateDatabase.task>;
   /**
    * enable operations
    * Enable an extension on a database
    */
-  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/enable', params: {serviceName: string, databaseName: string, extensionName: string}): Promise<hosting.privateDatabase.task>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/enable', params: {databaseName: string, extensionName: string, serviceName: string}): Promise<hosting.privateDatabase.task>;
   /**
    * import operations
    * Request the import in this database
    */
-  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/import', params: {serviceName: string, databaseName: string, documentId: string, flushDatabase?: boolean, sendEmail?: boolean}): Promise<hosting.privateDatabase.task>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/import', params: {databaseName: string, serviceName: string, documentId: string, flushDatabase?: boolean, sendEmail?: boolean}): Promise<hosting.privateDatabase.task>;
   /**
    * databaseWizard operations
    * Create a new database/user and grant it
@@ -746,7 +746,7 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * restore operations
    * Request the restore from this dump
    */
-  public post(path: '/hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore', params: {serviceName: string, dumpId: string, databaseName: string}): Promise<hosting.privateDatabase.task>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore', params: {dumpId: number, serviceName: string, databaseName: string}): Promise<hosting.privateDatabase.task>;
   /**
    * generateTemporaryLogsLink operations
    * Generate a temporary url to retrieve instance logs
@@ -796,7 +796,7 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * update operations
    * Update user grant
    */
-  public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update', params: {serviceName: string, userName: string, databaseName: string, grant: OVH.hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update', params: {databaseName: string, serviceName: string, userName: string, grant: OVH.hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
   /**
    * List the hosting.privateDatabase.whitelist objects
    * Create a new IP whitelist
@@ -809,17 +809,17 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * Databases
    * Delete the database
    */
-  public delete(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}', params: {serviceName: string, databaseName: string}): Promise<hosting.privateDatabase.task>;
+  public delete(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}', params: {databaseName: string, serviceName: string}): Promise<hosting.privateDatabase.task>;
   /**
    * Dump
    * Delete dump before expiration date
    */
-  public delete(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}', params: {serviceName: string, databaseName: string, id: string}): Promise<hosting.privateDatabase.task>;
+  public delete(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}', params: {databaseName: string, id: number, serviceName: string}): Promise<hosting.privateDatabase.task>;
   /**
    * Dump
    * Delete dump before expiration date
    */
-  public delete(path: '/hosting/privateDatabase/{serviceName}/dump/{dumpId}', params: {serviceName: string, dumpId: string}): Promise<hosting.privateDatabase.task>;
+  public delete(path: '/hosting/privateDatabase/{serviceName}/dump/{dumpId}', params: {dumpId: number, serviceName: string}): Promise<hosting.privateDatabase.task>;
   /**
    * Users
    * Delete a user
@@ -829,12 +829,12 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * Grants
    * Delete a grant on a database
    */
-  public delete(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}', params: {serviceName: string, userName: string, databaseName: string}): Promise<hosting.privateDatabase.task>;
+  public delete(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}', params: {databaseName: string, serviceName: string, userName: string}): Promise<hosting.privateDatabase.task>;
   /**
    * IP whitelisting for your instance
    * Delete ain IP whitelist
    */
-  public delete(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {serviceName: string, ip: string}): Promise<hosting.privateDatabase.task>;
+  public delete(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {ip: string, serviceName: string}): Promise<hosting.privateDatabase.task>;
   public delete(path: PathsHostingPrivateDatabaseDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

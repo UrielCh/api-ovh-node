@@ -133,7 +133,7 @@ export class ApiSsl extends OvhWrapper {
    * Task on a SSL
    * Get this object properties
    */
-  public get(path: '/ssl/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: string}): Promise<ssl.Operation>;
+  public get(path: '/ssl/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<ssl.Operation>;
   public get(path: PathsSslGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }

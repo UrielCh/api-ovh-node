@@ -237,17 +237,17 @@ export class ApiCdnWebsite extends OvhWrapper {
    * Backend on zone
    * Get this object properties
    */
-  public get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}', params: {serviceName: string, ipv4: string}): Promise<cdn.website.Backend>;
+  public get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}', params: {ipv4: string, serviceName: string}): Promise<cdn.website.Backend>;
   /**
    * List the cdn.website.Task objects
    * Task associated to this backend
    */
-  public get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks', params: {serviceName: string, ipv4: string}): Promise<number[]>;
+  public get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks', params: {ipv4: string, serviceName: string}): Promise<number[]>;
   /**
    * Task on CDN
    * Get this object properties
    */
-  public get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}', params: {serviceName: string, ipv4: string, taskId: string}): Promise<cdn.website.Task>;
+  public get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}', params: {ipv4: string, serviceName: string, taskId: number}): Promise<cdn.website.Task>;
   /**
    * List the cdn.website.Domain objects
    * Domain associated to this zone
@@ -257,22 +257,22 @@ export class ApiCdnWebsite extends OvhWrapper {
    * Domain on CDN
    * Get this object properties
    */
-  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}', params: {serviceName: string, domain: string}): Promise<cdn.website.Domain>;
+  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}', params: {domain: string, serviceName: string}): Promise<cdn.website.Domain>;
   /**
    * statistics operations
    * Get statistics about request on CDN, bandwidth value in Bytes
    */
-  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/statistics', params: {serviceName: string, domain: string, period: OVH.cdn.website.StatsPeriodEnum, type: OVH.cdn.website.StatsTypeEnum, value: OVH.cdn.website.StatsValueEnum}): Promise<cdn.website.StatsDataType[]>;
+  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/statistics', params: {domain: string, serviceName: string, period: OVH.cdn.website.StatsPeriodEnum, type: OVH.cdn.website.StatsTypeEnum, value: OVH.cdn.website.StatsValueEnum}): Promise<cdn.website.StatsDataType[]>;
   /**
    * List the cdn.website.Task objects
    * Task associated to this domain
    */
-  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/tasks', params: {serviceName: string, domain: string}): Promise<number[]>;
+  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/tasks', params: {domain: string, serviceName: string}): Promise<number[]>;
   /**
    * Task on CDN
    * Get this object properties
    */
-  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}', params: {serviceName: string, domain: string, taskId: string}): Promise<cdn.website.Task>;
+  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}', params: {domain: string, serviceName: string, taskId: number}): Promise<cdn.website.Task>;
   /**
    * List the cdn.website.Task objects
    * Task associated to this zone
@@ -282,7 +282,7 @@ export class ApiCdnWebsite extends OvhWrapper {
    * Task on CDN
    * Get this object properties
    */
-  public get(path: '/cdn/website/{serviceName}/zone/tasks/{taskId}', params: {serviceName: string, taskId: string}): Promise<cdn.website.Task>;
+  public get(path: '/cdn/website/{serviceName}/zone/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<cdn.website.Task>;
   public get(path: PathsCdnWebsiteGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
@@ -313,7 +313,7 @@ export class ApiCdnWebsite extends OvhWrapper {
    * flush operations
    * Flush all cache
    */
-  public post(path: '/cdn/website/{serviceName}/zone/domains/{domain}/flush', params: {serviceName: string, domain: string}): Promise<cdn.website.Task>;
+  public post(path: '/cdn/website/{serviceName}/zone/domains/{domain}/flush', params: {domain: string, serviceName: string}): Promise<cdn.website.Task>;
   public post(path: PathsCdnWebsitePOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
@@ -326,12 +326,12 @@ export class ApiCdnWebsite extends OvhWrapper {
    * Backend on zone
    * Remove a backend from the zone
    */
-  public delete(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}', params: {serviceName: string, ipv4: string}): Promise<cdn.website.Task>;
+  public delete(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}', params: {ipv4: string, serviceName: string}): Promise<cdn.website.Task>;
   /**
    * Domain on CDN
    * Remove a domain from the CDN
    */
-  public delete(path: '/cdn/website/{serviceName}/zone/domains/{domain}', params: {serviceName: string, domain: string}): Promise<cdn.website.Task>;
+  public delete(path: '/cdn/website/{serviceName}/zone/domains/{domain}', params: {domain: string, serviceName: string}): Promise<cdn.website.Task>;
   public delete(path: PathsCdnWebsiteDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

@@ -384,7 +384,7 @@ export class ApiVrack extends OvhWrapper {
    * PublicCloud project in vrack
    * Get this object properties
    */
-  public get(path: '/vrack/{serviceName}/cloudProject/{project}', params: {serviceName: string, project: string}): Promise<vrack.cloudProject>;
+  public get(path: '/vrack/{serviceName}/cloudProject/{project}', params: {project: string, serviceName: string}): Promise<vrack.cloudProject>;
   /**
    * List the vrack.dedicatedCloud objects
    * vrack dedicated cloud (VmNetwork)
@@ -394,7 +394,7 @@ export class ApiVrack extends OvhWrapper {
    * vrack dedicated cloud interface
    * Get this object properties
    */
-  public get(path: '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}', params: {serviceName: string, dedicatedCloud: string}): Promise<vrack.dedicatedCloud>;
+  public get(path: '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}', params: {dedicatedCloud: string, serviceName: string}): Promise<vrack.dedicatedCloud>;
   /**
    * List the vrack.pccDatacenter objects
    * vrack dedicated cloud datacenter
@@ -404,12 +404,12 @@ export class ApiVrack extends OvhWrapper {
    * vrack datacenter interface
    * Get this object properties
    */
-  public get(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}', params: {serviceName: string, datacenter: string}): Promise<vrack.pccDatacenter>;
+  public get(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}', params: {datacenter: string, serviceName: string}): Promise<vrack.pccDatacenter>;
   /**
    * allowedVrack operations
    * Vracks allowed for your dedicatedCloud datacenter
    */
-  public get(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/allowedVrack', params: {serviceName: string, datacenter: string}): Promise<string[]>;
+  public get(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/allowedVrack', params: {datacenter: string, serviceName: string}): Promise<string[]>;
   /**
    * List the vrack.dedicatedConnect objects
    * vrack dedicated connect
@@ -419,7 +419,7 @@ export class ApiVrack extends OvhWrapper {
    * vrack dedicated connect interface
    * Get this object properties
    */
-  public get(path: '/vrack/{serviceName}/dedicatedConnect/{name}', params: {serviceName: string, name: string}): Promise<vrack.dedicatedConnect>;
+  public get(path: '/vrack/{serviceName}/dedicatedConnect/{name}', params: {name: string, serviceName: string}): Promise<vrack.dedicatedConnect>;
   /**
    * List the vrack.dedicatedServer objects
    * vrack for dedicated server
@@ -429,12 +429,12 @@ export class ApiVrack extends OvhWrapper {
    * vrack dedicated server interfaces
    * Get this object properties
    */
-  public get(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}', params: {serviceName: string, dedicatedServer: string}): Promise<vrack.dedicatedServer>;
+  public get(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}', params: {dedicatedServer: string, serviceName: string}): Promise<vrack.dedicatedServer>;
   /**
    * mrtg operations
    * Retrieve vrack traffic graph values
    */
-  public get(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg', params: {serviceName: string, dedicatedServer: string, period: OVH.dedicated.server.MrtgPeriodEnum, type: OVH.dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
+  public get(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg', params: {dedicatedServer: string, serviceName: string, period: OVH.dedicated.server.MrtgPeriodEnum, type: OVH.dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
   /**
    * List the vrack.dedicatedServerInterface objects
    * vrack for dedicated server interface
@@ -444,7 +444,7 @@ export class ApiVrack extends OvhWrapper {
    * vrack dedicated server interfaces
    * Get this object properties
    */
-  public get(path: '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}', params: {serviceName: string, dedicatedServerInterface: string}): Promise<vrack.dedicatedServerInterface>;
+  public get(path: '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}', params: {dedicatedServerInterface: string, serviceName: string}): Promise<vrack.dedicatedServerInterface>;
   /**
    * dedicatedServerInterfaceDetails operations
    * Details for all dedicated server interfaces in this vrack
@@ -459,12 +459,12 @@ export class ApiVrack extends OvhWrapper {
    * IP block in vrack
    * Get this object properties
    */
-  public get(path: '/vrack/{serviceName}/ip/{ip}', params: {serviceName: string, ip: string}): Promise<vrack.ip>;
+  public get(path: '/vrack/{serviceName}/ip/{ip}', params: {ip: string, serviceName: string}): Promise<vrack.ip>;
   /**
    * availableZone operations
    * Zone available to announce your block
    */
-  public get(path: '/vrack/{serviceName}/ip/{ip}/availableZone', params: {serviceName: string, ip: string}): Promise<vrack.VrackZoneEnum[]>;
+  public get(path: '/vrack/{serviceName}/ip/{ip}/availableZone', params: {ip: string, serviceName: string}): Promise<vrack.VrackZoneEnum[]>;
   /**
    * List the vrack.iplb objects
    * vrack for ipLoadbalancing
@@ -474,7 +474,7 @@ export class ApiVrack extends OvhWrapper {
    * ipLoadbalancing in vrack
    * Get this object properties
    */
-  public get(path: '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}', params: {serviceName: string, ipLoadbalancing: string}): Promise<vrack.iplb>;
+  public get(path: '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}', params: {ipLoadbalancing: string, serviceName: string}): Promise<vrack.iplb>;
   /**
    * List the vrack.legacyVrack objects
    * vrack for legacy vrack
@@ -484,7 +484,7 @@ export class ApiVrack extends OvhWrapper {
    * interface between legacy vrack (vrackXXXX) and vrack (pn-XXXX)
    * Get this object properties
    */
-  public get(path: '/vrack/{serviceName}/legacyVrack/{legacyVrack}', params: {serviceName: string, legacyVrack: string}): Promise<vrack.legacyVrack>;
+  public get(path: '/vrack/{serviceName}/legacyVrack/{legacyVrack}', params: {legacyVrack: string, serviceName: string}): Promise<vrack.legacyVrack>;
   /**
    * Details about a non-expiring Service
    * Get this object properties
@@ -499,7 +499,7 @@ export class ApiVrack extends OvhWrapper {
    * vrack tasks
    * Get this object properties
    */
-  public get(path: '/vrack/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<vrack.Task>;
+  public get(path: '/vrack/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<vrack.Task>;
   public get(path: PathsVrackGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
@@ -512,7 +512,7 @@ export class ApiVrack extends OvhWrapper {
    * vrack dedicated connect interface
    * Alter this object properties
    */
-  public put(path: '/vrack/{serviceName}/dedicatedConnect/{name}', params: {serviceName: string, name: string}): Promise<void>;
+  public put(path: '/vrack/{serviceName}/dedicatedConnect/{name}', params: {name: string, serviceName: string}): Promise<void>;
   public put(path: PathsVrackPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -530,7 +530,7 @@ export class ApiVrack extends OvhWrapper {
    * move operations
    * Move your dedicatedCloud datacenter from a Vrack to another
    */
-  public post(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move', params: {serviceName: string, datacenter: string, targetServiceName: string}): Promise<vrack.Task>;
+  public post(path: '/vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move', params: {datacenter: string, serviceName: string, targetServiceName: string}): Promise<vrack.Task>;
   /**
    * List the vrack.dedicatedServer objects
    * add a dedicated server to this vrack
@@ -550,7 +550,7 @@ export class ApiVrack extends OvhWrapper {
    * announceInZone operations
    * Announce IP to zone for vrack
    */
-  public post(path: '/vrack/{serviceName}/ip/{ip}/announceInZone', params: {serviceName: string, ip: string, zone: OVH.vrack.VrackZoneEnum}): Promise<vrack.Task>;
+  public post(path: '/vrack/{serviceName}/ip/{ip}/announceInZone', params: {ip: string, serviceName: string, zone: OVH.vrack.VrackZoneEnum}): Promise<vrack.Task>;
   /**
    * List the vrack.iplb objects
    * add an ipLoadbalancing to this vrack
@@ -568,37 +568,37 @@ export class ApiVrack extends OvhWrapper {
    * PublicCloud project in vrack
    * remove this publicCloud project from this vrack
    */
-  public delete(path: '/vrack/{serviceName}/cloudProject/{project}', params: {serviceName: string, project: string}): Promise<vrack.Task>;
+  public delete(path: '/vrack/{serviceName}/cloudProject/{project}', params: {project: string, serviceName: string}): Promise<vrack.Task>;
   /**
    * vrack dedicated cloud interface
    * remove this dedicatedCloud (VmNetwork) from this vrack
    */
-  public delete(path: '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}', params: {serviceName: string, dedicatedCloud: string}): Promise<vrack.Task>;
+  public delete(path: '/vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}', params: {dedicatedCloud: string, serviceName: string}): Promise<vrack.Task>;
   /**
    * vrack dedicated server interfaces
    * remove this server from this vrack
    */
-  public delete(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}', params: {serviceName: string, dedicatedServer: string}): Promise<vrack.Task>;
+  public delete(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}', params: {dedicatedServer: string, serviceName: string}): Promise<vrack.Task>;
   /**
    * vrack dedicated server interfaces
    * remove this server interface from this vrack
    */
-  public delete(path: '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}', params: {serviceName: string, dedicatedServerInterface: string}): Promise<vrack.Task>;
+  public delete(path: '/vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}', params: {dedicatedServerInterface: string, serviceName: string}): Promise<vrack.Task>;
   /**
    * IP block in vrack
    * remove this IP block from this vrack
    */
-  public delete(path: '/vrack/{serviceName}/ip/{ip}', params: {serviceName: string, ip: string}): Promise<vrack.Task>;
+  public delete(path: '/vrack/{serviceName}/ip/{ip}', params: {ip: string, serviceName: string}): Promise<vrack.Task>;
   /**
    * ipLoadbalancing in vrack
    * remove this ipLoadbalancing from this vrack
    */
-  public delete(path: '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}', params: {serviceName: string, ipLoadbalancing: string}): Promise<vrack.Task>;
+  public delete(path: '/vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}', params: {ipLoadbalancing: string, serviceName: string}): Promise<vrack.Task>;
   /**
    * interface between legacy vrack (vrackXXXX) and vrack (pn-XXXX)
    * remove this legacy vrack (vrackXXXX) from this vrack (pn-XXXX)
    */
-  public delete(path: '/vrack/{serviceName}/legacyVrack/{legacyVrack}', params: {serviceName: string, legacyVrack: string}): Promise<vrack.Task>;
+  public delete(path: '/vrack/{serviceName}/legacyVrack/{legacyVrack}', params: {legacyVrack: string, serviceName: string}): Promise<vrack.Task>;
   public delete(path: PathsVrackDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

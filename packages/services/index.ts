@@ -181,12 +181,12 @@ export class ApiServices extends OvhWrapper {
    * Get list of your service details
    * Get details about a service
    */
-  public get(path: '/services/{serviceId}', params: {serviceId: string}): Promise<services.expanded.Service>;
+  public get(path: '/services/{serviceId}', params: {serviceId: number}): Promise<services.expanded.Service>;
   /**
    * Engagement for a given service
    * Get engagement details
    */
-  public get(path: '/services/{serviceId}/billing/engagement', params: {serviceId: string}): Promise<services.billing.engagement.Engagement>;
+  public get(path: '/services/{serviceId}/billing/engagement', params: {serviceId: number}): Promise<services.billing.engagement.Engagement>;
   public get(path: PathsServicesGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }

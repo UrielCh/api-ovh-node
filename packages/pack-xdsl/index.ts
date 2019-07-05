@@ -872,7 +872,7 @@ export class ApiPackXdsl extends OvhWrapper {
    * Exchange 2013 service
    * Get this object properties
    */
-  public get(path: '/pack/xdsl/{packName}/exchangeAccount/services/{domain}', params: {packName: string, domain: string}): Promise<pack.xdsl.ExchangeAccountService>;
+  public get(path: '/pack/xdsl/{packName}/exchangeAccount/services/{domain}', params: {domain: string, packName: string}): Promise<pack.xdsl.ExchangeAccountService>;
   /**
    * domains operations
    * Get the available domains
@@ -902,7 +902,7 @@ export class ApiPackXdsl extends OvhWrapper {
    * Exchange account service
    * Get this object properties
    */
-  public get(path: '/pack/xdsl/{packName}/exchangeLite/services/{domain}', params: {packName: string, domain: string}): Promise<pack.xdsl.ExchangeLiteService>;
+  public get(path: '/pack/xdsl/{packName}/exchangeLite/services/{domain}', params: {domain: string, packName: string}): Promise<pack.xdsl.ExchangeLiteService>;
   /**
    * List the pack.xdsl.ExchangeOrganizationService objects
    * Exchange 2013 organization services
@@ -927,12 +927,12 @@ export class ApiPackXdsl extends OvhWrapper {
    * Hubic service
    * Get this object properties
    */
-  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}', params: {packName: string, domain: string}): Promise<pack.xdsl.Hubic>;
+  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}', params: {domain: string, packName: string}): Promise<pack.xdsl.Hubic>;
   /**
    * details operations
    * Details associated to a voucher
    */
-  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', params: {packName: string, domain: string}): Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', params: {domain: string, packName: string}): Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
   /**
    * capabilities operations
    * Get informations about the promotion code generation
@@ -1002,12 +1002,12 @@ export class ApiPackXdsl extends OvhWrapper {
    * Service link to the pack
    * Get this object properties
    */
-  public get(path: '/pack/xdsl/{packName}/subServices/{domain}', params: {packName: string, domain: string}): Promise<pack.xdsl.Service>;
+  public get(path: '/pack/xdsl/{packName}/subServices/{domain}', params: {domain: string, packName: string}): Promise<pack.xdsl.Service>;
   /**
    * keepServiceTerms operations
    * Give the condition to unpack service from pack
    */
-  public get(path: '/pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms', params: {packName: string, domain: string}): Promise<pack.xdsl.UnpackTerms>;
+  public get(path: '/pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms', params: {domain: string, packName: string}): Promise<pack.xdsl.UnpackTerms>;
   /**
    * List the pack.xdsl.Task objects
    * Tasks scheduled for this pack
@@ -1017,7 +1017,7 @@ export class ApiPackXdsl extends OvhWrapper {
    * Describes the current status of a task
    * Get this object properties
    */
-  public get(path: '/pack/xdsl/{packName}/tasks/{id}', params: {packName: string, id: string}): Promise<pack.xdsl.Task>;
+  public get(path: '/pack/xdsl/{packName}/tasks/{id}', params: {id: number, packName: string}): Promise<pack.xdsl.Task>;
   /**
    * List the pack.xdsl.BillingAccountService objects
    * VOIP billing accounts
@@ -1047,7 +1047,7 @@ export class ApiPackXdsl extends OvhWrapper {
    * VOIP line services
    * Get this object properties
    */
-  public get(path: '/pack/xdsl/{packName}/voipLine/services/{domain}', params: {packName: string, domain: string}): Promise<pack.xdsl.VoipLineService>;
+  public get(path: '/pack/xdsl/{packName}/voipLine/services/{domain}', params: {domain: string, packName: string}): Promise<pack.xdsl.VoipLineService>;
   /**
    * List the pack.xdsl.XdslAccessService objects
    * xDSL access services

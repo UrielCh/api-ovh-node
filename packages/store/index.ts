@@ -342,7 +342,7 @@ export class ApiStore extends OvhWrapper {
    * MarketPlacePartner.doc_id
    * Unlink a document from a partner
    */
-  public delete(path: '/store/partner/{partnerId}/document/{documentId}', params: {partnerId: string, documentId: string}): Promise<string[]>;
+  public delete(path: '/store/partner/{partnerId}/document/{documentId}', params: {documentId: string, partnerId: string}): Promise<string[]>;
   /**
    * MarketPlacePartnerProduct.get
    * Delete product
@@ -352,7 +352,7 @@ export class ApiStore extends OvhWrapper {
    * MarketPlacePartnerProduct.doc_id
    * Unlink a document from a product
    */
-  public delete(path: '/store/partner/{partnerId}/product/{productId}/document/{documentId}', params: {partnerId: string, productId: string, documentId: string}): Promise<string[]>;
+  public delete(path: '/store/partner/{partnerId}/product/{productId}/document/{documentId}', params: {documentId: string, partnerId: string, productId: string}): Promise<string[]>;
   public delete(path: PathsStoreDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

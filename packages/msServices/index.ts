@@ -573,7 +573,7 @@ export class ApiMsServices extends OvhWrapper {
    * Exchange task details
    * Get this object properties
    */
-  public get(path: '/msServices/{serviceName}/exchange/task/{id}', params: {serviceName: string, id: string}): Promise<msServices.exchangeTask>;
+  public get(path: '/msServices/{serviceName}/exchange/task/{id}', params: {id: number, serviceName: string}): Promise<msServices.exchangeTask>;
   /**
    * Sharepoint service
    * Get this object properties
@@ -598,7 +598,7 @@ export class ApiMsServices extends OvhWrapper {
    * Sharepoint task details
    * Get this object properties
    */
-  public get(path: '/msServices/{serviceName}/sharepoint/task/{id}', params: {serviceName: string, id: string}): Promise<msServices.sharepointTask>;
+  public get(path: '/msServices/{serviceName}/sharepoint/task/{id}', params: {id: number, serviceName: string}): Promise<msServices.sharepointTask>;
   /**
    * Sync service
    * Get this object properties
@@ -623,7 +623,7 @@ export class ApiMsServices extends OvhWrapper {
    * Active Directory task details
    * Get this object properties
    */
-  public get(path: '/msServices/{serviceName}/task/{id}', params: {serviceName: string, id: string}): Promise<msServices.Task>;
+  public get(path: '/msServices/{serviceName}/task/{id}', params: {id: number, serviceName: string}): Promise<msServices.Task>;
   /**
    * List the msServices.upnSuffix objects
    * active directory UPN suffix

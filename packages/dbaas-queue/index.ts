@@ -239,7 +239,7 @@ export class ApiDbaasQueue extends OvhWrapper {
    * Key
    * Get a key
    */
-  public get(path: '/dbaas/queue/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<dbaas.queue.Key>;
+  public get(path: '/dbaas/queue/{serviceName}/key/{keyId}', params: {keyId: string, serviceName: string}): Promise<dbaas.queue.Key>;
   /**
    * Metrics
    * Get metrics account
@@ -254,7 +254,7 @@ export class ApiDbaasQueue extends OvhWrapper {
    * Region
    * Get one region
    */
-  public get(path: '/dbaas/queue/{serviceName}/region/{regionId}', params: {serviceName: string, regionId: string}): Promise<dbaas.queue.Region>;
+  public get(path: '/dbaas/queue/{serviceName}/region/{regionId}', params: {regionId: string, serviceName: string}): Promise<dbaas.queue.Region>;
   /**
    * Role
    * List all roles of the application
@@ -264,7 +264,7 @@ export class ApiDbaasQueue extends OvhWrapper {
    * Role
    * Get a role
    */
-  public get(path: '/dbaas/queue/{serviceName}/role/{roleName}', params: {serviceName: string, roleName: string}): Promise<dbaas.queue.Role>;
+  public get(path: '/dbaas/queue/{serviceName}/role/{roleName}', params: {roleName: string, serviceName: string}): Promise<dbaas.queue.Role>;
   /**
    * Details about a Service
    * Get this object properties

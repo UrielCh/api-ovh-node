@@ -2881,7 +2881,7 @@ export class ApiMe extends OvhWrapper {
    * List of all IP Restrictions
    * Get this object properties
    */
-  public get(path: '/me/accessRestriction/ip/{id}', params: {id: string}): Promise<nichandle.IpRestriction>;
+  public get(path: '/me/accessRestriction/ip/{id}', params: {id: number}): Promise<nichandle.IpRestriction>;
   /**
    * IP Restriction default rule
    * Get this object properties
@@ -2896,7 +2896,7 @@ export class ApiMe extends OvhWrapper {
    * Sms Two-Factor Authentication
    * Get this object properties
    */
-  public get(path: '/me/accessRestriction/sms/{id}', params: {id: string}): Promise<nichandle.accessRestriction.SmsAccount>;
+  public get(path: '/me/accessRestriction/sms/{id}', params: {id: number}): Promise<nichandle.accessRestriction.SmsAccount>;
   /**
    * List the nichandle.accessRestriction.TOTPAccount objects
    * List of TOTP accounts
@@ -2906,7 +2906,7 @@ export class ApiMe extends OvhWrapper {
    * TOTP Two-Factor Authentication
    * Get this object properties
    */
-  public get(path: '/me/accessRestriction/totp/{id}', params: {id: string}): Promise<nichandle.accessRestriction.TOTPAccount>;
+  public get(path: '/me/accessRestriction/totp/{id}', params: {id: number}): Promise<nichandle.accessRestriction.TOTPAccount>;
   /**
    * List the nichandle.accessRestriction.U2FAccount objects
    * List of U2F accounts
@@ -2916,7 +2916,7 @@ export class ApiMe extends OvhWrapper {
    * U2F Two-Factor Authentication
    * Get this object properties
    */
-  public get(path: '/me/accessRestriction/u2f/{id}', params: {id: string}): Promise<nichandle.accessRestriction.U2FAccount>;
+  public get(path: '/me/accessRestriction/u2f/{id}', params: {id: number}): Promise<nichandle.accessRestriction.U2FAccount>;
   /**
    * List the agreements.ContractAgreement objects
    * List of contracts signed between you and OVH
@@ -2926,12 +2926,12 @@ export class ApiMe extends OvhWrapper {
    * Contract agreement
    * Get this object properties
    */
-  public get(path: '/me/agreements/{id}', params: {id: string}): Promise<agreements.ContractAgreement>;
+  public get(path: '/me/agreements/{id}', params: {id: number}): Promise<agreements.ContractAgreement>;
   /**
    * Contract of service
    * Get this object properties
    */
-  public get(path: '/me/agreements/{id}/contract', params: {id: string}): Promise<agreements.Contract>;
+  public get(path: '/me/agreements/{id}/contract', params: {id: number}): Promise<agreements.Contract>;
   /**
    * List the api.Application objects
    * List of your Api Application
@@ -2941,7 +2941,7 @@ export class ApiMe extends OvhWrapper {
    * API Application
    * Get this object properties
    */
-  public get(path: '/me/api/application/{applicationId}', params: {applicationId: string}): Promise<api.Application>;
+  public get(path: '/me/api/application/{applicationId}', params: {applicationId: number}): Promise<api.Application>;
   /**
    * List the api.Credential objects
    * List of your Api Credentials
@@ -2951,12 +2951,12 @@ export class ApiMe extends OvhWrapper {
    * API Credential
    * Get this object properties
    */
-  public get(path: '/me/api/credential/{credentialId}', params: {credentialId: string}): Promise<api.Credential>;
+  public get(path: '/me/api/credential/{credentialId}', params: {credentialId: number}): Promise<api.Credential>;
   /**
    * API Application
    * Get this object properties
    */
-  public get(path: '/me/api/credential/{credentialId}/application', params: {credentialId: string}): Promise<api.Application>;
+  public get(path: '/me/api/credential/{credentialId}/application', params: {credentialId: number}): Promise<api.Application>;
   /**
    * List the api.Log objects
    * List of Api calls done with your account
@@ -2966,7 +2966,7 @@ export class ApiMe extends OvhWrapper {
    * API Log
    * Get this object properties
    */
-  public get(path: '/me/api/logs/self/{logId}', params: {logId: string}): Promise<api.Log>;
+  public get(path: '/me/api/logs/self/{logId}', params: {logId: number}): Promise<api.Log>;
   /**
    * List the api.Log objects
    * List of Api calls done on services you have access to
@@ -2976,7 +2976,7 @@ export class ApiMe extends OvhWrapper {
    * API Log
    * Get this object properties
    */
-  public get(path: '/me/api/logs/services/{logId}', params: {logId: string}): Promise<api.Log>;
+  public get(path: '/me/api/logs/services/{logId}', params: {logId: number}): Promise<api.Log>;
   /**
    * Auto renewal information
    * Get this object properties
@@ -3011,12 +3011,12 @@ export class ApiMe extends OvhWrapper {
    * Operation that happend on a debt
    * Get this object properties
    */
-  public get(path: '/me/bill/{billId}/debt/operation/{operationId}', params: {billId: string, operationId: string}): Promise<debt.Operation>;
+  public get(path: '/me/bill/{billId}/debt/operation/{operationId}', params: {billId: string, operationId: number}): Promise<debt.Operation>;
   /**
    * associatedObject operations
    * Return main data about the object related to this debt operation
    */
-  public get(path: '/me/bill/{billId}/debt/operation/{operationId}/associatedObject', params: {billId: string, operationId: string}): Promise<debt.entry.AssociatedObject>;
+  public get(path: '/me/bill/{billId}/debt/operation/{operationId}/associatedObject', params: {billId: string, operationId: number}): Promise<debt.entry.AssociatedObject>;
   /**
    * List the billing.BillDetail objects
    * Give access to all entries of the bill
@@ -3026,7 +3026,7 @@ export class ApiMe extends OvhWrapper {
    * Information about a Bill entry
    * Get this object properties
    */
-  public get(path: '/me/bill/{billId}/details/{billDetailId}', params: {billId: string, billDetailId: string}): Promise<billing.BillDetail>;
+  public get(path: '/me/bill/{billId}/details/{billDetailId}', params: {billDetailId: string, billId: string}): Promise<billing.BillDetail>;
   /**
    * Details about a payment
    * Get this object properties
@@ -3081,12 +3081,12 @@ export class ApiMe extends OvhWrapper {
    * Missing description
    * Retrieve information about a contact
    */
-  public get(path: '/me/contact/{contactId}', params: {contactId: string}): Promise<contact.Contact>;
+  public get(path: '/me/contact/{contactId}', params: {contactId: number}): Promise<contact.Contact>;
   /**
    * Missing description
    * Display mandatory/read-only informations of a contact
    */
-  public get(path: '/me/contact/{contactId}/fields', params: {contactId: string}): Promise<contact.FieldInformation[]>;
+  public get(path: '/me/contact/{contactId}/fields', params: {contactId: number}): Promise<contact.FieldInformation[]>;
   /**
    * Retrieve credit balance names
    * Retrieve credit balance names
@@ -3106,7 +3106,7 @@ export class ApiMe extends OvhWrapper {
    * Retrieve a specific movement for a credit balance
    * Retrieve a specific movement for a credit balance
    */
-  public get(path: '/me/credit/balance/{balanceName}/movement/{movementId}', params: {balanceName: string, movementId: string}): Promise<billing.credit.balance.Movement>;
+  public get(path: '/me/credit/balance/{balanceName}/movement/{movementId}', params: {balanceName: string, movementId: number}): Promise<billing.credit.balance.Movement>;
   /**
    * Debt balance of the account
    * Get this object properties
@@ -3121,22 +3121,22 @@ export class ApiMe extends OvhWrapper {
    * State of a debt
    * Get this object properties
    */
-  public get(path: '/me/debtAccount/debt/{debtId}', params: {debtId: string}): Promise<debt.Debt>;
+  public get(path: '/me/debtAccount/debt/{debtId}', params: {debtId: number}): Promise<debt.Debt>;
   /**
    * List the debt.Operation objects
    * All operations related to these debts
    */
-  public get(path: '/me/debtAccount/debt/{debtId}/operation', params: {debtId: string, depositOrderId?: number}): Promise<number[]>;
+  public get(path: '/me/debtAccount/debt/{debtId}/operation', params: {debtId: number, depositOrderId?: number}): Promise<number[]>;
   /**
    * Operation that happend on a debt
    * Get this object properties
    */
-  public get(path: '/me/debtAccount/debt/{debtId}/operation/{operationId}', params: {debtId: string, operationId: string}): Promise<debt.Operation>;
+  public get(path: '/me/debtAccount/debt/{debtId}/operation/{operationId}', params: {debtId: number, operationId: number}): Promise<debt.Operation>;
   /**
    * associatedObject operations
    * Return main data about the object related to this debt operation
    */
-  public get(path: '/me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject', params: {debtId: string, operationId: string}): Promise<debt.entry.AssociatedObject>;
+  public get(path: '/me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject', params: {debtId: number, operationId: number}): Promise<debt.entry.AssociatedObject>;
   /**
    * List the billing.Deposit objects
    * List of all the deposits made to your prepaid account or debt account
@@ -3156,7 +3156,7 @@ export class ApiMe extends OvhWrapper {
    * Information about a Deposit entry
    * Get this object properties
    */
-  public get(path: '/me/deposit/{depositId}/details/{depositDetailId}', params: {depositId: string, depositDetailId: string}): Promise<billing.DepositDetail>;
+  public get(path: '/me/deposit/{depositId}/details/{depositDetailId}', params: {depositDetailId: string, depositId: string}): Promise<billing.DepositDetail>;
   /**
    * List the billing.Bill objects
    * Get invoices paid by this deposit
@@ -3166,42 +3166,42 @@ export class ApiMe extends OvhWrapper {
    * Details about a Bill
    * Get this object properties
    */
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}', params: {depositId: string, billId: string}): Promise<billing.Bill>;
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}', params: {billId: string, depositId: string}): Promise<billing.Bill>;
   /**
    * State of a debt
    * Get this object properties
    */
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt', params: {depositId: string, billId: string}): Promise<debt.Debt>;
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt', params: {billId: string, depositId: string}): Promise<debt.Debt>;
   /**
    * List the debt.Operation objects
    * All operations related to these debts
    */
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/operation', params: {depositId: string, billId: string, depositOrderId?: number}): Promise<number[]>;
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/operation', params: {billId: string, depositId: string, depositOrderId?: number}): Promise<number[]>;
   /**
    * Operation that happend on a debt
    * Get this object properties
    */
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}', params: {depositId: string, billId: string, operationId: string}): Promise<debt.Operation>;
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}', params: {billId: string, depositId: string, operationId: number}): Promise<debt.Operation>;
   /**
    * associatedObject operations
    * Return main data about the object related to this debt operation
    */
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject', params: {depositId: string, billId: string, operationId: string}): Promise<debt.entry.AssociatedObject>;
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject', params: {billId: string, depositId: string, operationId: number}): Promise<debt.entry.AssociatedObject>;
   /**
    * List the billing.BillDetail objects
    * Give access to all entries of the bill
    */
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/details', params: {depositId: string, billId: string}): Promise<string[]>;
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/details', params: {billId: string, depositId: string}): Promise<string[]>;
   /**
    * Information about a Bill entry
    * Get this object properties
    */
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}', params: {depositId: string, billId: string, billDetailId: string}): Promise<billing.BillDetail>;
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}', params: {billDetailId: string, billId: string, depositId: string}): Promise<billing.BillDetail>;
   /**
    * Details about a payment
    * Get this object properties
    */
-  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/payment', params: {depositId: string, billId: string}): Promise<billing.Payment>;
+  public get(path: '/me/deposit/{depositId}/paidBills/{billId}/payment', params: {billId: string, depositId: string}): Promise<billing.Payment>;
   /**
    * Details about a payment
    * Get this object properties
@@ -3226,7 +3226,7 @@ export class ApiMe extends OvhWrapper {
    * Custom domains of your fax services
    * Get this object properties
    */
-  public get(path: '/me/fax/customDomains/{id}', params: {id: string}): Promise<telephony.MailDomain2Service>;
+  public get(path: '/me/fax/customDomains/{id}', params: {id: number}): Promise<telephony.MailDomain2Service>;
   /**
    * Balance of the fidelity account
    * Get this object properties
@@ -3241,7 +3241,7 @@ export class ApiMe extends OvhWrapper {
    * Details about a fidelity account
    * Get this object properties
    */
-  public get(path: '/me/fidelityAccount/movements/{movementId}', params: {movementId: string}): Promise<billing.FidelityMovement>;
+  public get(path: '/me/fidelityAccount/movements/{movementId}', params: {movementId: number}): Promise<billing.FidelityMovement>;
   /**
    * Groups linked to this account
    * Retrieve all groups of this account
@@ -3286,27 +3286,27 @@ export class ApiMe extends OvhWrapper {
    * Partitioning schemes available on this template
    * Get this object properties
    */
-  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}', params: {templateName: string, schemeName: string}): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
+  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}', params: {schemeName: string, templateName: string}): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
   /**
    * List the dedicated.installationTemplate.hardwareRaid objects
    * Hardware RAIDs defined in this partitioning scheme
    */
-  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid', params: {templateName: string, schemeName: string}): Promise<string[]>;
+  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid', params: {schemeName: string, templateName: string}): Promise<string[]>;
   /**
    * Hardware RAID defined in this partitioning scheme
    * Get this object properties
    */
-  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', params: {templateName: string, schemeName: string, name: string}): Promise<dedicated.installationTemplate.hardwareRaid>;
+  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', params: {name: string, schemeName: string, templateName: string}): Promise<dedicated.installationTemplate.hardwareRaid>;
   /**
    * List the dedicated.installationTemplate.templatePartitions objects
    * Partitions defined in this partitioning scheme
    */
-  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', params: {templateName: string, schemeName: string}): Promise<string[]>;
+  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', params: {schemeName: string, templateName: string}): Promise<string[]>;
   /**
    *  Partitions defined in this partitioning scheme
    * Get this object properties
    */
-  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', params: {templateName: string, schemeName: string, mountpoint: string}): Promise<dedicated.installationTemplate.templatePartitions>;
+  public get(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', params: {mountpoint: string, schemeName: string, templateName: string}): Promise<dedicated.installationTemplate.templatePartitions>;
   /**
    * List the nichandle.Ipv4Org objects
    * List of organisations
@@ -3341,7 +3341,7 @@ export class ApiMe extends OvhWrapper {
    * Email notification
    * Get this object properties
    */
-  public get(path: '/me/notification/email/history/{id}', params: {id: string}): Promise<nichandle.emailNotification>;
+  public get(path: '/me/notification/email/history/{id}', params: {id: number}): Promise<nichandle.emailNotification>;
   /**
    * List the billing.Order objects
    * List of all the orders the logged account has
@@ -3351,82 +3351,82 @@ export class ApiMe extends OvhWrapper {
    * Details about an Order
    * Get this object properties
    */
-  public get(path: '/me/order/{orderId}', params: {orderId: string}): Promise<billing.Order>;
+  public get(path: '/me/order/{orderId}', params: {orderId: number}): Promise<billing.Order>;
   /**
    * associatedObject operations
    * Return main data about the object the processing of the order generated
    */
-  public get(path: '/me/order/{orderId}/associatedObject', params: {orderId: string}): Promise<billing.order.AssociatedObject>;
+  public get(path: '/me/order/{orderId}/associatedObject', params: {orderId: number}): Promise<billing.order.AssociatedObject>;
   /**
    * availableRegisteredPaymentMean operations
    * List of registered payment mean you can use to pay this order
    */
-  public get(path: '/me/order/{orderId}/availableRegisteredPaymentMean', params: {orderId: string}): Promise<billing.order.RegisteredPaymentMean[]>;
+  public get(path: '/me/order/{orderId}/availableRegisteredPaymentMean', params: {orderId: number}): Promise<billing.order.RegisteredPaymentMean[]>;
   /**
    * Details about a Bill
    * Get this object properties
    */
-  public get(path: '/me/order/{orderId}/bill', params: {orderId: string}): Promise<billing.Bill>;
+  public get(path: '/me/order/{orderId}/bill', params: {orderId: number}): Promise<billing.Bill>;
   /**
    * State of a debt
    * Get this object properties
    */
-  public get(path: '/me/order/{orderId}/debt', params: {orderId: string}): Promise<debt.Debt>;
+  public get(path: '/me/order/{orderId}/debt', params: {orderId: number}): Promise<debt.Debt>;
   /**
    * List the debt.Operation objects
    * All operations related to these debts
    */
-  public get(path: '/me/order/{orderId}/debt/operation', params: {orderId: string, depositOrderId?: number}): Promise<number[]>;
+  public get(path: '/me/order/{orderId}/debt/operation', params: {orderId: number, depositOrderId?: number}): Promise<number[]>;
   /**
    * Operation that happend on a debt
    * Get this object properties
    */
-  public get(path: '/me/order/{orderId}/debt/operation/{operationId}', params: {orderId: string, operationId: string}): Promise<debt.Operation>;
+  public get(path: '/me/order/{orderId}/debt/operation/{operationId}', params: {operationId: number, orderId: number}): Promise<debt.Operation>;
   /**
    * associatedObject operations
    * Return main data about the object related to this debt operation
    */
-  public get(path: '/me/order/{orderId}/debt/operation/{operationId}/associatedObject', params: {orderId: string, operationId: string}): Promise<debt.entry.AssociatedObject>;
+  public get(path: '/me/order/{orderId}/debt/operation/{operationId}/associatedObject', params: {operationId: number, orderId: number}): Promise<debt.entry.AssociatedObject>;
   /**
    * List the billing.OrderDetail objects
    * Give access to all entries of the order
    */
-  public get(path: '/me/order/{orderId}/details', params: {orderId: string}): Promise<number[]>;
+  public get(path: '/me/order/{orderId}/details', params: {orderId: number}): Promise<number[]>;
   /**
    * Information about a Bill entry
    * Get this object properties
    */
-  public get(path: '/me/order/{orderId}/details/{orderDetailId}', params: {orderId: string, orderDetailId: string}): Promise<billing.OrderDetail>;
+  public get(path: '/me/order/{orderId}/details/{orderDetailId}', params: {orderDetailId: number, orderId: number}): Promise<billing.OrderDetail>;
   /**
    * Extensions of a detail
    * Get this object properties
    */
-  public get(path: '/me/order/{orderId}/details/{orderDetailId}/extension', params: {orderId: string, orderDetailId: string}): Promise<billing.ItemDetail>;
+  public get(path: '/me/order/{orderId}/details/{orderDetailId}/extension', params: {orderDetailId: number, orderId: number}): Promise<billing.ItemDetail>;
   /**
    * Details about a payment
    * Get this object properties
    */
-  public get(path: '/me/order/{orderId}/payment', params: {orderId: string}): Promise<billing.Payment>;
+  public get(path: '/me/order/{orderId}/payment', params: {orderId: number}): Promise<billing.Payment>;
   /**
    * paymentMeans operations
    * Return main data about the object the processing of the order generated
    */
-  public get(path: '/me/order/{orderId}/paymentMeans', params: {orderId: string}): Promise<billing.order.PaymentMeans>;
+  public get(path: '/me/order/{orderId}/paymentMeans', params: {orderId: number}): Promise<billing.order.PaymentMeans>;
   /**
    * paymentMethods operations
    * List of registered payment method you can use to pay this order
    */
-  public get(path: '/me/order/{orderId}/paymentMethods', params: {orderId: string}): Promise<billing.order.PaymentMethods>;
+  public get(path: '/me/order/{orderId}/paymentMethods', params: {orderId: number}): Promise<billing.order.PaymentMethods>;
   /**
    * Details about a Refund
    * Get this object properties
    */
-  public get(path: '/me/order/{orderId}/refund', params: {orderId: string}): Promise<billing.Refund>;
+  public get(path: '/me/order/{orderId}/refund', params: {orderId: number}): Promise<billing.Refund>;
   /**
    * status operations
    * Return status of order
    */
-  public get(path: '/me/order/{orderId}/status', params: {orderId: string}): Promise<billing.order.OrderStatusEnum>;
+  public get(path: '/me/order/{orderId}/status', params: {orderId: number}): Promise<billing.order.OrderStatusEnum>;
   /**
    * List the billing.OvhAccount objects
    * List of OVH accounts the logged account has
@@ -3446,7 +3446,7 @@ export class ApiMe extends OvhWrapper {
    * Details about an OVH account
    * Get this object properties
    */
-  public get(path: '/me/ovhAccount/{ovhAccountId}/movements/{movementId}', params: {ovhAccountId: string, movementId: string}): Promise<billing.Movement>;
+  public get(path: '/me/ovhAccount/{ovhAccountId}/movements/{movementId}', params: {movementId: number, ovhAccountId: string}): Promise<billing.Movement>;
   /**
    * Available payment methods
    * Retrieve available payment method
@@ -3461,7 +3461,7 @@ export class ApiMe extends OvhWrapper {
    * Manage payment method
    * Get one payment method
    */
-  public get(path: '/me/payment/method/{paymentMethodId}', params: {paymentMethodId: string}): Promise<me.payment.method.PaymentMethod>;
+  public get(path: '/me/payment/method/{paymentMethodId}', params: {paymentMethodId: number}): Promise<me.payment.method.PaymentMethod>;
   /**
    * Retrieve payment method transaction ID list
    * Retrieve associated payment method transaction ID list
@@ -3471,7 +3471,7 @@ export class ApiMe extends OvhWrapper {
    * Manage payment method transaction
    * Get associated payment method transaction
    */
-  public get(path: '/me/payment/transaction/{transactionId}', params: {transactionId: string}): Promise<me.payment.method.Transaction>;
+  public get(path: '/me/payment/transaction/{transactionId}', params: {transactionId: number}): Promise<me.payment.method.Transaction>;
   /**
    * List the billing.BankAccount objects
    * List of bank accounts
@@ -3481,7 +3481,7 @@ export class ApiMe extends OvhWrapper {
    * SEPA bank account info
    * Get this object properties
    */
-  public get(path: '/me/paymentMean/bankAccount/{id}', params: {id: string}): Promise<billing.BankAccount>;
+  public get(path: '/me/paymentMean/bankAccount/{id}', params: {id: number}): Promise<billing.BankAccount>;
   /**
    * List the billing.CreditCard objects
    * List of credit cards
@@ -3491,7 +3491,7 @@ export class ApiMe extends OvhWrapper {
    * Credit card informations
    * Get this object properties
    */
-  public get(path: '/me/paymentMean/creditCard/{id}', params: {id: string}): Promise<billing.CreditCard>;
+  public get(path: '/me/paymentMean/creditCard/{id}', params: {id: number}): Promise<billing.CreditCard>;
   /**
    * List the billing.DeferredPaymentAccount objects
    * List of authorized deferred payment account for this customer
@@ -3501,7 +3501,7 @@ export class ApiMe extends OvhWrapper {
    * Deferred payment account info
    * Get this object properties
    */
-  public get(path: '/me/paymentMean/deferredPaymentAccount/{id}', params: {id: string}): Promise<billing.DeferredPaymentAccount>;
+  public get(path: '/me/paymentMean/deferredPaymentAccount/{id}', params: {id: number}): Promise<billing.DeferredPaymentAccount>;
   /**
    * List the billing.Paypal objects
    * List of Paypal accounts usable for payments on this account
@@ -3511,7 +3511,7 @@ export class ApiMe extends OvhWrapper {
    * Paypal account info
    * Get this object properties
    */
-  public get(path: '/me/paymentMean/paypal/{id}', params: {id: string}): Promise<billing.Paypal>;
+  public get(path: '/me/paymentMean/paypal/{id}', params: {id: number}): Promise<billing.Paypal>;
   /**
    * List the billing.Refund objects
    * List of all the refunds the logged account has
@@ -3531,7 +3531,7 @@ export class ApiMe extends OvhWrapper {
    * Information about a Bill entry
    * Get this object properties
    */
-  public get(path: '/me/refund/{refundId}/details/{refundDetailId}', params: {refundId: string, refundDetailId: string}): Promise<billing.RefundDetail>;
+  public get(path: '/me/refund/{refundId}/details/{refundDetailId}', params: {refundDetailId: string, refundId: string}): Promise<billing.RefundDetail>;
   /**
    * Details about a payment
    * Get this object properties
@@ -3546,22 +3546,22 @@ export class ApiMe extends OvhWrapper {
    * SLA properties
    * Get this object properties
    */
-  public get(path: '/me/sla/{id}', params: {id: string}): Promise<billing.SlaOperation>;
+  public get(path: '/me/sla/{id}', params: {id: number}): Promise<billing.SlaOperation>;
   /**
    * canBeApplied operations
    * Check whether this SLA can be applied on your services
    */
-  public get(path: '/me/sla/{id}/canBeApplied', params: {id: string}): Promise<boolean>;
+  public get(path: '/me/sla/{id}/canBeApplied', params: {id: number}): Promise<boolean>;
   /**
    * services operations
    * Get services impacted by this SLA
    */
-  public get(path: '/me/sla/{id}/services', params: {id: string}): Promise<billing.SlaOperationService[]>;
+  public get(path: '/me/sla/{id}/services', params: {id: number}): Promise<billing.SlaOperationService[]>;
   /**
    * status operations
    * Get the status request of this SLA
    */
-  public get(path: '/me/sla/{id}/status', params: {id: string}): Promise<string>;
+  public get(path: '/me/sla/{id}/status', params: {id: number}): Promise<string>;
   /**
    * List the nichandle.sshKey objects
    * List of your public SSH keys
@@ -3581,7 +3581,7 @@ export class ApiMe extends OvhWrapper {
    * Sub Account
    * Get this object properties
    */
-  public get(path: '/me/subAccount/{id}', params: {id: string}): Promise<nichandle.SubAccount>;
+  public get(path: '/me/subAccount/{id}', params: {id: number}): Promise<nichandle.SubAccount>;
   /**
    * List the nichandle.Subscription objects
    * List of all OVH things you can subscribe to
@@ -3606,7 +3606,7 @@ export class ApiMe extends OvhWrapper {
    * Task running a contact change on a service
    * Get this object properties
    */
-  public get(path: '/me/task/contactChange/{id}', params: {id: string}): Promise<nichandle.contactChange.Task>;
+  public get(path: '/me/task/contactChange/{id}', params: {id: number}): Promise<nichandle.contactChange.Task>;
   /**
    * List the nichandle.DomainTask objects
    * List of domain task
@@ -3616,22 +3616,22 @@ export class ApiMe extends OvhWrapper {
    * Domain tasks
    * Get this object properties
    */
-  public get(path: '/me/task/domain/{id}', params: {id: string}): Promise<nichandle.DomainTask>;
+  public get(path: '/me/task/domain/{id}', params: {id: number}): Promise<nichandle.DomainTask>;
   /**
    * List the nichandle.DomainTaskArgument objects
    * List of arguments
    */
-  public get(path: '/me/task/domain/{id}/argument', params: {id: string}): Promise<string[]>;
+  public get(path: '/me/task/domain/{id}/argument', params: {id: number}): Promise<string[]>;
   /**
    * Domain operation argument
    * Get this object properties
    */
-  public get(path: '/me/task/domain/{id}/argument/{key}', params: {id: string, key: string}): Promise<nichandle.DomainTaskArgument>;
+  public get(path: '/me/task/domain/{id}/argument/{key}', params: {id: number, key: string}): Promise<nichandle.DomainTaskArgument>;
   /**
    * Domain operation progress
    * Get this object properties
    */
-  public get(path: '/me/task/domain/{id}/progressbar', params: {id: string}): Promise<nichandle.DomainTaskProgressBar>;
+  public get(path: '/me/task/domain/{id}/progressbar', params: {id: number}): Promise<nichandle.DomainTaskProgressBar>;
   /**
    * List the nichandle.emailChange.Task objects
    * List of email change tasks you are involved in
@@ -3641,7 +3641,7 @@ export class ApiMe extends OvhWrapper {
    * Task running an email change on an account
    * Get this object properties
    */
-  public get(path: '/me/task/emailChange/{id}', params: {id: string}): Promise<nichandle.emailChange.Task>;
+  public get(path: '/me/task/emailChange/{id}', params: {id: number}): Promise<nichandle.emailChange.Task>;
   /**
    * List the telephony.DefaultIpRestriction objects
    * The default SIP IP restictions for your future VoIP lines
@@ -3651,7 +3651,7 @@ export class ApiMe extends OvhWrapper {
    * Default IP restriction of a VoIP line
    * Get this object properties
    */
-  public get(path: '/me/telephony/defaultIpRestriction/{id}', params: {id: string}): Promise<telephony.DefaultIpRestriction>;
+  public get(path: '/me/telephony/defaultIpRestriction/{id}', params: {id: number}): Promise<telephony.DefaultIpRestriction>;
   /**
    * settings operations
    * Get the telephony settings linked to the customer account
@@ -3681,7 +3681,7 @@ export class ApiMe extends OvhWrapper {
    * Information about a Withdrawal entry
    * Get this object properties
    */
-  public get(path: '/me/withdrawal/{withdrawalId}/details/{withdrawalDetailId}', params: {withdrawalId: string, withdrawalDetailId: string}): Promise<billing.WithdrawalDetail>;
+  public get(path: '/me/withdrawal/{withdrawalId}/details/{withdrawalDetailId}', params: {withdrawalDetailId: string, withdrawalId: string}): Promise<billing.WithdrawalDetail>;
   /**
    * Details about a payment
    * Get this object properties
@@ -3709,7 +3709,7 @@ export class ApiMe extends OvhWrapper {
    * List of all IP Restrictions
    * Alter this object properties
    */
-  public put(path: '/me/accessRestriction/ip/{id}', params: {id: string, ip?: string, rule?: OVH.nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean}): Promise<void>;
+  public put(path: '/me/accessRestriction/ip/{id}', params: {id: number, ip?: string, rule?: OVH.nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean}): Promise<void>;
   /**
    * IP Restriction default rule
    * Alter this object properties
@@ -3719,17 +3719,17 @@ export class ApiMe extends OvhWrapper {
    * Sms Two-Factor Authentication
    * Alter this object properties
    */
-  public put(path: '/me/accessRestriction/sms/{id}', params: {id: string, creationDate?: string, description?: string, lastUsedDate?: string, phoneNumber?: string, status?: OVH.nichandle.accessRestriction.SmsStatusEnum}): Promise<void>;
+  public put(path: '/me/accessRestriction/sms/{id}', params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, phoneNumber?: string, status?: OVH.nichandle.accessRestriction.SmsStatusEnum}): Promise<void>;
   /**
    * TOTP Two-Factor Authentication
    * Alter this object properties
    */
-  public put(path: '/me/accessRestriction/totp/{id}', params: {id: string, creationDate?: string, description?: string, lastUsedDate?: string, status?: OVH.nichandle.accessRestriction.TOTPStatusEnum}): Promise<void>;
+  public put(path: '/me/accessRestriction/totp/{id}', params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, status?: OVH.nichandle.accessRestriction.TOTPStatusEnum}): Promise<void>;
   /**
    * U2F Two-Factor Authentication
    * Alter this object properties
    */
-  public put(path: '/me/accessRestriction/u2f/{id}', params: {id: string, creationDate?: string, description?: string, lastUsedDate?: string, status?: OVH.nichandle.accessRestriction.U2FStatusEnum}): Promise<void>;
+  public put(path: '/me/accessRestriction/u2f/{id}', params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, status?: OVH.nichandle.accessRestriction.U2FStatusEnum}): Promise<void>;
   /**
    * Auto renewal information
    * Alter this object properties
@@ -3744,7 +3744,7 @@ export class ApiMe extends OvhWrapper {
    * Missing description
    * Update an existing contact
    */
-  public put(path: '/me/contact/{contactId}', params: {contactId: string, address?: OVH.contact.Address, birthCity?: string, birthCountry?: OVH.nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: OVH.nichandle.GenderEnum, language?: OVH.nichandle.LanguageEnum, lastName?: string, legalForm?: OVH.nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: OVH.nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, vat?: string}): Promise<contact.Contact>;
+  public put(path: '/me/contact/{contactId}', params: {contactId: number, address?: OVH.contact.Address, birthCity?: string, birthCountry?: OVH.nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: OVH.nichandle.GenderEnum, language?: OVH.nichandle.LanguageEnum, lastName?: string, legalForm?: OVH.nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: OVH.nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, vat?: string}): Promise<contact.Contact>;
   /**
    * List of documents added on your account
    * Alter this object properties
@@ -3774,17 +3774,17 @@ export class ApiMe extends OvhWrapper {
    * Partitioning schemes available on this template
    * Alter this object properties
    */
-  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}', params: {templateName: string, schemeName: string, name?: string, priority?: number}): Promise<void>;
+  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}', params: {schemeName: string, templateName: string, name?: string, priority?: number}): Promise<void>;
   /**
    * Hardware RAID defined in this partitioning scheme
    * Alter this object properties
    */
-  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', params: {templateName: string, schemeName: string, name: string, disks?: string[], mode?: OVH.dedicated.TemplateOsHardwareRaidEnum, step?: number}): Promise<void>;
+  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', params: {name: string, schemeName: string, templateName: string, disks?: string[], mode?: OVH.dedicated.TemplateOsHardwareRaidEnum, step?: number}): Promise<void>;
   /**
    *  Partitions defined in this partitioning scheme
    * Alter this object properties
    */
-  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', params: {templateName: string, schemeName: string, mountpoint: string, filesystem?: OVH.dedicated.TemplateOsFileSystemEnum, order?: number, raid?: OVH.dedicated.server.PartitionRaidEnum, size?: OVH.complexType.UnitAndValue<number>, type?: OVH.dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
+  public put(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', params: {mountpoint: string, schemeName: string, templateName: string, filesystem?: OVH.dedicated.TemplateOsFileSystemEnum, order?: number, raid?: OVH.dedicated.server.PartitionRaidEnum, size?: OVH.complexType.UnitAndValue<number>, type?: OVH.dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
   /**
    * Details about an IP block organisation
    * Alter this object properties
@@ -3799,27 +3799,27 @@ export class ApiMe extends OvhWrapper {
    * Manage payment method
    * Edit payment method
    */
-  public put(path: '/me/payment/method/{paymentMethodId}', params: {paymentMethodId: string, default_?: boolean, description?: string}): Promise<billing.PaymentMethod>;
+  public put(path: '/me/payment/method/{paymentMethodId}', params: {paymentMethodId: number, default_?: boolean, description?: string}): Promise<billing.PaymentMethod>;
   /**
    * SEPA bank account info
    * Alter this object properties
    */
-  public put(path: '/me/paymentMean/bankAccount/{id}', params: {id: string, bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: OVH.billing.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string}): Promise<void>;
+  public put(path: '/me/paymentMean/bankAccount/{id}', params: {id: number, bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: OVH.billing.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string}): Promise<void>;
   /**
    * Credit card informations
    * Alter this object properties
    */
-  public put(path: '/me/paymentMean/creditCard/{id}', params: {id: string, defaultPaymentMean?: boolean, description?: string, expirationDate?: string, number?: string, state?: OVH.billing.CreditCardStateEnum, threeDsValidated?: boolean, type?: string}): Promise<void>;
+  public put(path: '/me/paymentMean/creditCard/{id}', params: {id: number, defaultPaymentMean?: boolean, description?: string, expirationDate?: string, number?: string, state?: OVH.billing.CreditCardStateEnum, threeDsValidated?: boolean, type?: string}): Promise<void>;
   /**
    * Deferred payment account info
    * Alter this object properties
    */
-  public put(path: '/me/paymentMean/deferredPaymentAccount/{id}', params: {id: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, label?: string, state?: OVH.billing.DeferredPaymentAccountStatusEnum}): Promise<void>;
+  public put(path: '/me/paymentMean/deferredPaymentAccount/{id}', params: {id: number, creationDate?: string, defaultPaymentMean?: boolean, description?: string, label?: string, state?: OVH.billing.DeferredPaymentAccountStatusEnum}): Promise<void>;
   /**
    * Paypal account info
    * Alter this object properties
    */
-  public put(path: '/me/paymentMean/paypal/{id}', params: {id: string, agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, state?: OVH.billing.PaypalStateEnum}): Promise<void>;
+  public put(path: '/me/paymentMean/paypal/{id}', params: {id: number, agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, state?: OVH.billing.PaypalStateEnum}): Promise<void>;
   /**
    * Customer public SSH key, can be used for rescue netboot or server access after reinstallation
    * Alter this object properties
@@ -3829,7 +3829,7 @@ export class ApiMe extends OvhWrapper {
    * Sub Account
    * Alter this object properties
    */
-  public put(path: '/me/subAccount/{id}', params: {id: string, creationDate?: string, description?: string}): Promise<void>;
+  public put(path: '/me/subAccount/{id}', params: {id: number, creationDate?: string, description?: string}): Promise<void>;
   /**
    * List of all OVH things you can subscribe to
    * Alter this object properties
@@ -3839,7 +3839,7 @@ export class ApiMe extends OvhWrapper {
    * Domain operation argument
    * Alter this object properties
    */
-  public put(path: '/me/task/domain/{id}/argument/{key}', params: {id: string, key: string, acceptedFormats?: OVH.domain.DocumentFormatsEnum[], acceptedValues?: string[], description?: string, fields?: OVH.xander.ContactFieldEnum[], maximumSize?: number, minimumSize?: number, readOnly?: boolean, template?: string, type?: string, value?: string}): Promise<void>;
+  public put(path: '/me/task/domain/{id}/argument/{key}', params: {id: number, key: string, acceptedFormats?: OVH.domain.DocumentFormatsEnum[], acceptedValues?: string[], description?: string, fields?: OVH.xander.ContactFieldEnum[], maximumSize?: number, minimumSize?: number, readOnly?: boolean, template?: string, type?: string, value?: string}): Promise<void>;
   public put(path: PathsMePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -3877,22 +3877,22 @@ export class ApiMe extends OvhWrapper {
    * disable operations
    * Disable this SMS account
    */
-  public post(path: '/me/accessRestriction/sms/{id}/disable', params: {id: string, code: string}): Promise<void>;
+  public post(path: '/me/accessRestriction/sms/{id}/disable', params: {id: number, code: string}): Promise<void>;
   /**
    * enable operations
    * Enable this SMS account
    */
-  public post(path: '/me/accessRestriction/sms/{id}/enable', params: {id: string, code: string}): Promise<void>;
+  public post(path: '/me/accessRestriction/sms/{id}/enable', params: {id: number, code: string}): Promise<void>;
   /**
    * sendCode operations
    * Send a SMS to this account
    */
-  public post(path: '/me/accessRestriction/sms/{id}/sendCode', params: {id: string}): Promise<nichandle.accessRestriction.SmsCode>;
+  public post(path: '/me/accessRestriction/sms/{id}/sendCode', params: {id: number}): Promise<nichandle.accessRestriction.SmsCode>;
   /**
    * validate operations
    * Validate your SMS account
    */
-  public post(path: '/me/accessRestriction/sms/{id}/validate', params: {id: string, code: string}): Promise<void>;
+  public post(path: '/me/accessRestriction/sms/{id}/validate', params: {id: number, code: string}): Promise<void>;
   /**
    * List the nichandle.accessRestriction.TOTPAccount objects
    * Add a TOTP access restriction
@@ -3902,17 +3902,17 @@ export class ApiMe extends OvhWrapper {
    * disable operations
    * Disable this TOTP account
    */
-  public post(path: '/me/accessRestriction/totp/{id}/disable', params: {id: string, code: string}): Promise<void>;
+  public post(path: '/me/accessRestriction/totp/{id}/disable', params: {id: number, code: string}): Promise<void>;
   /**
    * enable operations
    * Enable this TOTP account
    */
-  public post(path: '/me/accessRestriction/totp/{id}/enable', params: {id: string, code: string}): Promise<void>;
+  public post(path: '/me/accessRestriction/totp/{id}/enable', params: {id: number, code: string}): Promise<void>;
   /**
    * validate operations
    * Validate your TOTP account
    */
-  public post(path: '/me/accessRestriction/totp/{id}/validate', params: {id: string, code: string}): Promise<void>;
+  public post(path: '/me/accessRestriction/totp/{id}/validate', params: {id: number, code: string}): Promise<void>;
   /**
    * List the nichandle.accessRestriction.U2FAccount objects
    * Add a U2F access restriction
@@ -3922,27 +3922,27 @@ export class ApiMe extends OvhWrapper {
    * challenge operations
    * Get an U2F Challenge
    */
-  public post(path: '/me/accessRestriction/u2f/{id}/challenge', params: {id: string}): Promise<nichandle.accessRestriction.U2FSignChallenge>;
+  public post(path: '/me/accessRestriction/u2f/{id}/challenge', params: {id: number}): Promise<nichandle.accessRestriction.U2FSignChallenge>;
   /**
    * disable operations
    * Disable this U2F account
    */
-  public post(path: '/me/accessRestriction/u2f/{id}/disable', params: {id: string, clientData: string, signatureData: string}): Promise<void>;
+  public post(path: '/me/accessRestriction/u2f/{id}/disable', params: {id: number, clientData: string, signatureData: string}): Promise<void>;
   /**
    * enable operations
    * Enable this U2F account
    */
-  public post(path: '/me/accessRestriction/u2f/{id}/enable', params: {id: string, clientData: string, signatureData: string}): Promise<void>;
+  public post(path: '/me/accessRestriction/u2f/{id}/enable', params: {id: number, clientData: string, signatureData: string}): Promise<void>;
   /**
    * validate operations
    * Validate your U2F account
    */
-  public post(path: '/me/accessRestriction/u2f/{id}/validate', params: {id: string, clientData: string, registrationData: string}): Promise<void>;
+  public post(path: '/me/accessRestriction/u2f/{id}/validate', params: {id: number, clientData: string, registrationData: string}): Promise<void>;
   /**
    * accept operations
    * Accept this contract
    */
-  public post(path: '/me/agreements/{id}/accept', params: {id: string}): Promise<string>;
+  public post(path: '/me/agreements/{id}/accept', params: {id: number}): Promise<string>;
   /**
    * Auto renewal information
    * Activate auto renew for this nic
@@ -3982,7 +3982,7 @@ export class ApiMe extends OvhWrapper {
    * pay operations
    * Create an order in order to pay this order's debt
    */
-  public post(path: '/me/debtAccount/debt/{debtId}/pay', params: {debtId: string}): Promise<billing.Order>;
+  public post(path: '/me/debtAccount/debt/{debtId}/pay', params: {debtId: number}): Promise<billing.Order>;
   /**
    * pay operations
    * Create an order in order to pay all your due debts
@@ -3992,7 +3992,7 @@ export class ApiMe extends OvhWrapper {
    * pay operations
    * Create an order in order to pay this order's debt
    */
-  public post(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/pay', params: {depositId: string, billId: string}): Promise<billing.Order>;
+  public post(path: '/me/deposit/{depositId}/paidBills/{billId}/debt/pay', params: {billId: string, depositId: string}): Promise<billing.Order>;
   /**
    * List the nichandle.document.Document objects
    * Create new document
@@ -4057,12 +4057,12 @@ export class ApiMe extends OvhWrapper {
    * List the dedicated.installationTemplate.hardwareRaid objects
    * Add an hardware RAID in this partitioning scheme
    */
-  public post(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid', params: {templateName: string, schemeName: string, disks: string[], mode: OVH.dedicated.TemplateOsHardwareRaidEnum, name: string, step: number}): Promise<void>;
+  public post(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid', params: {schemeName: string, templateName: string, disks: string[], mode: OVH.dedicated.TemplateOsHardwareRaidEnum, name: string, step: number}): Promise<void>;
   /**
    * List the dedicated.installationTemplate.templatePartitions objects
    * Add a partition in this partitioning scheme
    */
-  public post(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', params: {templateName: string, schemeName: string, filesystem: OVH.dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: number, size: number, step: number, type: OVH.dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
+  public post(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition', params: {schemeName: string, templateName: string, filesystem: OVH.dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: number, size: number, step: number, type: OVH.dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
   /**
    * List the nichandle.Ipv4Org objects
    * Add an organisation
@@ -4082,22 +4082,22 @@ export class ApiMe extends OvhWrapper {
    * pay operations
    * Create an order in order to pay this order's debt
    */
-  public post(path: '/me/order/{orderId}/debt/pay', params: {orderId: string}): Promise<billing.Order>;
+  public post(path: '/me/order/{orderId}/debt/pay', params: {orderId: number}): Promise<billing.Order>;
   /**
    * pay operations
    * Pay with a payment method reference
    */
-  public post(path: '/me/order/{orderId}/pay', params: {orderId: string, paymentMethod: OVH.billing.order.PayWithPaymentMethod}): Promise<void>;
+  public post(path: '/me/order/{orderId}/pay', params: {orderId: number, paymentMethod: OVH.billing.order.PayWithPaymentMethod}): Promise<void>;
   /**
    * payWithRegisteredPaymentMean operations
    * Pay with an already registered payment mean
    */
-  public post(path: '/me/order/{orderId}/payWithRegisteredPaymentMean', params: {orderId: string, paymentMean: OVH.billing.ReusablePaymentMeanEnum, paymentMeanId?: number}): Promise<void>;
+  public post(path: '/me/order/{orderId}/payWithRegisteredPaymentMean', params: {orderId: number, paymentMean: OVH.billing.ReusablePaymentMeanEnum, paymentMeanId?: number}): Promise<void>;
   /**
    * retraction operations
    * Request retraction of order
    */
-  public post(path: '/me/order/{orderId}/retraction', params: {orderId: string, comment?: string, reason: OVH.billing.order.RetractionReasonEnum}): Promise<void>;
+  public post(path: '/me/order/{orderId}/retraction', params: {orderId: number, comment?: string, reason: OVH.billing.order.RetractionReasonEnum}): Promise<void>;
   /**
    * creditOrder operations
    * Generate an order that can be paid in order to credit the OVH account
@@ -4122,12 +4122,12 @@ export class ApiMe extends OvhWrapper {
    * Challenge your payment method
    * Challenge one payment method
    */
-  public post(path: '/me/payment/method/{paymentMethodId}/challenge', params: {paymentMethodId: string, challenge: string}): Promise<me.payment.method.PaymentMethod>;
+  public post(path: '/me/payment/method/{paymentMethodId}/challenge', params: {paymentMethodId: number, challenge: string}): Promise<me.payment.method.PaymentMethod>;
   /**
    * Finalize one payment method registration
    * Finalize one payment method registration
    */
-  public post(path: '/me/payment/method/{paymentMethodId}/finalize', params: {paymentMethodId: string, expirationMonth?: number, expirationYear?: number, registrationId?: string}): Promise<me.payment.method.PaymentMethod>;
+  public post(path: '/me/payment/method/{paymentMethodId}/finalize', params: {paymentMethodId: number, expirationMonth?: number, expirationYear?: number, registrationId?: string}): Promise<me.payment.method.PaymentMethod>;
   /**
    * List the billing.BankAccount objects
    * Enable payment through a new account
@@ -4137,12 +4137,12 @@ export class ApiMe extends OvhWrapper {
    * challenge operations
    * Challenge your bank account
    */
-  public post(path: '/me/paymentMean/bankAccount/{id}/challenge', params: {id: string, challenge: string}): Promise<void>;
+  public post(path: '/me/paymentMean/bankAccount/{id}/challenge', params: {id: number, challenge: string}): Promise<void>;
   /**
    * chooseAsDefaultPaymentMean operations
    * Choose this bank account as your default payment mean. Will cancel the previous choice.
    */
-  public post(path: '/me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean', params: {id: string}): Promise<void>;
+  public post(path: '/me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean', params: {id: number}): Promise<void>;
   /**
    * List the billing.CreditCard objects
    * Add a new credit card
@@ -4152,17 +4152,17 @@ export class ApiMe extends OvhWrapper {
    * challenge operations
    * Challenge your bank account
    */
-  public post(path: '/me/paymentMean/creditCard/{id}/challenge', params: {id: string, challenge: string}): Promise<void>;
+  public post(path: '/me/paymentMean/creditCard/{id}/challenge', params: {id: number, challenge: string}): Promise<void>;
   /**
    * chooseAsDefaultPaymentMean operations
    * Choose this credit card as your default payment mean. Will cancel the previous choice.
    */
-  public post(path: '/me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean', params: {id: string}): Promise<void>;
+  public post(path: '/me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean', params: {id: number}): Promise<void>;
   /**
    * chooseAsDefaultPaymentMean operations
    * Allow you to use deferred payment. Will cancel the previous choice.
    */
-  public post(path: '/me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean', params: {id: string}): Promise<void>;
+  public post(path: '/me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean', params: {id: number}): Promise<void>;
   /**
    * List the billing.Paypal objects
    * Enable payment through a new PayPal account
@@ -4172,17 +4172,17 @@ export class ApiMe extends OvhWrapper {
    * challenge operations
    * Challenge your bank account
    */
-  public post(path: '/me/paymentMean/paypal/{id}/challenge', params: {id: string, challenge: string}): Promise<void>;
+  public post(path: '/me/paymentMean/paypal/{id}/challenge', params: {id: number, challenge: string}): Promise<void>;
   /**
    * chooseAsDefaultPaymentMean operations
    * Choose this Paypal agreement as your default payment mean. Will cancel the previous choice.
    */
-  public post(path: '/me/paymentMean/paypal/{id}/chooseAsDefaultPaymentMean', params: {id: string}): Promise<void>;
+  public post(path: '/me/paymentMean/paypal/{id}/chooseAsDefaultPaymentMean', params: {id: number}): Promise<void>;
   /**
    * apply operations
    * Ask for SLA application
    */
-  public post(path: '/me/sla/{id}/apply', params: {id: string}): Promise<void>;
+  public post(path: '/me/sla/{id}/apply', params: {id: number}): Promise<void>;
   /**
    * List the nichandle.sshKey objects
    * Add a new public SSH key
@@ -4197,47 +4197,47 @@ export class ApiMe extends OvhWrapper {
    * createConsumerKey operations
    * Create a consumer key for the current application
    */
-  public post(path: '/me/subAccount/{id}/createConsumerKey', params: {id: string}): Promise<nichandle.SubAccountConsumerKey>;
+  public post(path: '/me/subAccount/{id}/createConsumerKey', params: {id: number}): Promise<nichandle.SubAccountConsumerKey>;
   /**
    * accept operations
    * Accept this change request
    */
-  public post(path: '/me/task/contactChange/{id}/accept', params: {id: string, token: string}): Promise<void>;
+  public post(path: '/me/task/contactChange/{id}/accept', params: {id: number, token: string}): Promise<void>;
   /**
    * refuse operations
    * Refuse this change request
    */
-  public post(path: '/me/task/contactChange/{id}/refuse', params: {id: string, token: string}): Promise<void>;
+  public post(path: '/me/task/contactChange/{id}/refuse', params: {id: number, token: string}): Promise<void>;
   /**
    * resendEmail operations
    * This call will send you a new email, containing a new token
    */
-  public post(path: '/me/task/contactChange/{id}/resendEmail', params: {id: string}): Promise<void>;
+  public post(path: '/me/task/contactChange/{id}/resendEmail', params: {id: number}): Promise<void>;
   /**
    * accelerate operations
    * Accelerate the task
    */
-  public post(path: '/me/task/domain/{id}/accelerate', params: {id: string}): Promise<void>;
+  public post(path: '/me/task/domain/{id}/accelerate', params: {id: number}): Promise<void>;
   /**
    * cancel operations
    * Cancel the task
    */
-  public post(path: '/me/task/domain/{id}/cancel', params: {id: string}): Promise<void>;
+  public post(path: '/me/task/domain/{id}/cancel', params: {id: number}): Promise<void>;
   /**
    * relaunch operations
    * Relaunch the task
    */
-  public post(path: '/me/task/domain/{id}/relaunch', params: {id: string}): Promise<void>;
+  public post(path: '/me/task/domain/{id}/relaunch', params: {id: number}): Promise<void>;
   /**
    * accept operations
    * Accept this change request
    */
-  public post(path: '/me/task/emailChange/{id}/accept', params: {id: string, token: string}): Promise<void>;
+  public post(path: '/me/task/emailChange/{id}/accept', params: {id: number, token: string}): Promise<void>;
   /**
    * refuse operations
    * Refuse this change request
    */
-  public post(path: '/me/task/emailChange/{id}/refuse', params: {id: string, token: string}): Promise<void>;
+  public post(path: '/me/task/emailChange/{id}/refuse', params: {id: number, token: string}): Promise<void>;
   /**
    * List the telephony.DefaultIpRestriction objects
    * Create a default IP restriction for your future VoIP lines
@@ -4270,32 +4270,32 @@ export class ApiMe extends OvhWrapper {
    * List of all IP Restrictions
    * Delete this restriction rule
    */
-  public delete(path: '/me/accessRestriction/ip/{id}', params: {id: string}): Promise<void>;
+  public delete(path: '/me/accessRestriction/ip/{id}', params: {id: number}): Promise<void>;
   /**
    * Sms Two-Factor Authentication
    * Delete this Two-Factor
    */
-  public delete(path: '/me/accessRestriction/sms/{id}', params: {id: string}): Promise<void>;
+  public delete(path: '/me/accessRestriction/sms/{id}', params: {id: number}): Promise<void>;
   /**
    * TOTP Two-Factor Authentication
    * Delete this Two-Factor
    */
-  public delete(path: '/me/accessRestriction/totp/{id}', params: {id: string}): Promise<void>;
+  public delete(path: '/me/accessRestriction/totp/{id}', params: {id: number}): Promise<void>;
   /**
    * U2F Two-Factor Authentication
    * Delete this Two-Factor
    */
-  public delete(path: '/me/accessRestriction/u2f/{id}', params: {id: string}): Promise<void>;
+  public delete(path: '/me/accessRestriction/u2f/{id}', params: {id: number}): Promise<void>;
   /**
    * API Application
    * Remove this application. It will revoke all credential belonging to this application.
    */
-  public delete(path: '/me/api/application/{applicationId}', params: {applicationId: string}): Promise<void>;
+  public delete(path: '/me/api/application/{applicationId}', params: {applicationId: number}): Promise<void>;
   /**
    * API Credential
    * Remove this credential
    */
-  public delete(path: '/me/api/credential/{credentialId}', params: {credentialId: string}): Promise<void>;
+  public delete(path: '/me/api/credential/{credentialId}', params: {credentialId: number}): Promise<void>;
   /**
    * List of documents added on your account
    * Delete a document
@@ -4305,7 +4305,7 @@ export class ApiMe extends OvhWrapper {
    * Custom domains of your fax services
    * Delete a custom domain of your fax services
    */
-  public delete(path: '/me/fax/customDomains/{id}', params: {id: string}): Promise<void>;
+  public delete(path: '/me/fax/customDomains/{id}', params: {id: number}): Promise<void>;
   /**
    * A group linked to this account
    * Delete this object
@@ -4325,17 +4325,17 @@ export class ApiMe extends OvhWrapper {
    * Partitioning schemes available on this template
    * remove this scheme of partition
    */
-  public delete(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}', params: {templateName: string, schemeName: string}): Promise<void>;
+  public delete(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}', params: {schemeName: string, templateName: string}): Promise<void>;
   /**
    * Hardware RAID defined in this partitioning scheme
    * Remove this RAID
    */
-  public delete(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', params: {templateName: string, schemeName: string, name: string}): Promise<void>;
+  public delete(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}', params: {name: string, schemeName: string, templateName: string}): Promise<void>;
   /**
    *  Partitions defined in this partitioning scheme
    * remove this partition
    */
-  public delete(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', params: {templateName: string, schemeName: string, mountpoint: string}): Promise<void>;
+  public delete(path: '/me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}', params: {mountpoint: string, schemeName: string, templateName: string}): Promise<void>;
   /**
    * Details about an IP block organisation
    * Delete this organisation
@@ -4350,22 +4350,22 @@ export class ApiMe extends OvhWrapper {
    * Manage payment method
    * Cancel one payment method
    */
-  public delete(path: '/me/payment/method/{paymentMethodId}', params: {paymentMethodId: string}): Promise<me.payment.method.PaymentMethod>;
+  public delete(path: '/me/payment/method/{paymentMethodId}', params: {paymentMethodId: number}): Promise<me.payment.method.PaymentMethod>;
   /**
    * SEPA bank account info
    * Disable payment through this account
    */
-  public delete(path: '/me/paymentMean/bankAccount/{id}', params: {id: string}): Promise<void>;
+  public delete(path: '/me/paymentMean/bankAccount/{id}', params: {id: number}): Promise<void>;
   /**
    * Credit card informations
    * Disable payment through this credit card
    */
-  public delete(path: '/me/paymentMean/creditCard/{id}', params: {id: string}): Promise<void>;
+  public delete(path: '/me/paymentMean/creditCard/{id}', params: {id: number}): Promise<void>;
   /**
    * Paypal account info
    * Disable payment through this PayPal account
    */
-  public delete(path: '/me/paymentMean/paypal/{id}', params: {id: string}): Promise<void>;
+  public delete(path: '/me/paymentMean/paypal/{id}', params: {id: number}): Promise<void>;
   /**
    * Customer public SSH key, can be used for rescue netboot or server access after reinstallation
    * Remove this public SSH key
@@ -4375,7 +4375,7 @@ export class ApiMe extends OvhWrapper {
    * Default IP restriction of a VoIP line
    * Delete a default IP restriction for your future VoIP lines
    */
-  public delete(path: '/me/telephony/defaultIpRestriction/{id}', params: {id: string}): Promise<void>;
+  public delete(path: '/me/telephony/defaultIpRestriction/{id}', params: {id: number}): Promise<void>;
   public delete(path: PathsMeDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

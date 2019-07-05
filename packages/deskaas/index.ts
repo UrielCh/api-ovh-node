@@ -242,7 +242,7 @@ export class ApiDeskaas extends OvhWrapper {
    * Operation on a Desktop As A Service component
    * Get this object properties
    */
-  public get(path: '/deskaas/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<deskaas.Task>;
+  public get(path: '/deskaas/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<deskaas.Task>;
   /**
    * Desktop As A Service User
    * Get this object properties
@@ -257,7 +257,7 @@ export class ApiDeskaas extends OvhWrapper {
    * Operation on a Desktop As A Service component
    * Get this object properties
    */
-  public get(path: '/deskaas/{serviceName}/user/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<deskaas.Task>;
+  public get(path: '/deskaas/{serviceName}/user/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<deskaas.Task>;
   public get(path: PathsDeskaasGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }

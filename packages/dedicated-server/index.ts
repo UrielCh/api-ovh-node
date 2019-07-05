@@ -1705,17 +1705,17 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Available boots
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/boot/{bootId}', params: {serviceName: string, bootId: string}): Promise<dedicated.server.Netboot>;
+  public get(path: '/dedicated/server/{serviceName}/boot/{bootId}', params: {bootId: number, serviceName: string}): Promise<dedicated.server.Netboot>;
   /**
    * List the dedicated.server.netbootOption objects
    * Option used on this netboot
    */
-  public get(path: '/dedicated/server/{serviceName}/boot/{bootId}/option', params: {serviceName: string, bootId: string}): Promise<dedicated.server.BootOptionEnum[]>;
+  public get(path: '/dedicated/server/{serviceName}/boot/{bootId}/option', params: {bootId: number, serviceName: string}): Promise<dedicated.server.BootOptionEnum[]>;
   /**
    * Available boot options
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/boot/{bootId}/option/{option}', params: {serviceName: string, bootId: string, option: string}): Promise<dedicated.server.netbootOption>;
+  public get(path: '/dedicated/server/{serviceName}/boot/{bootId}/option/{option}', params: {bootId: number, option: OVH.dedicated.server.BootOptionEnum, serviceName: string}): Promise<dedicated.server.netbootOption>;
   /**
    * Server bandwidth burst details
    * Get this object properties
@@ -1740,7 +1740,7 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Backup Ftp ACL for this server and Backup Ftp
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<dedicated.server.BackupFtpAcl>;
+  public get(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', params: {ipBlock: string, serviceName: string}): Promise<dedicated.server.BackupFtpAcl>;
   /**
    * authorizableBlocks operations
    * Get all IP blocks that can be used in the ACL
@@ -1820,7 +1820,7 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Intervention made on this server
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/intervention/{interventionId}', params: {serviceName: string, interventionId: string}): Promise<dedicated.server.Intervention>;
+  public get(path: '/dedicated/server/{serviceName}/intervention/{interventionId}', params: {interventionId: number, serviceName: string}): Promise<dedicated.server.Intervention>;
   /**
    * ipCanBeMovedTo operations
    * Check if given IP can be moved to this server
@@ -1860,12 +1860,12 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Your networkInterfaceController
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController/{mac}', params: {serviceName: string, mac: string}): Promise<dedicated.networkInterfaceController.NetworkInterfaceController>;
+  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController/{mac}', params: {mac: string, serviceName: string}): Promise<dedicated.networkInterfaceController.NetworkInterfaceController>;
   /**
    * mrtg operations
    * Retrieve traffic graph values
    */
-  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg', params: {serviceName: string, mac: string, period: OVH.dedicated.server.MrtgPeriodEnum, type: OVH.dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
+  public get(path: '/dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg', params: {mac: string, serviceName: string, period: OVH.dedicated.server.MrtgPeriodEnum, type: OVH.dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
   /**
    * List the dedicated.server.Option objects
    * List of dedicated server options
@@ -1875,7 +1875,7 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Information about the options of a dedicated server
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/option/{option}', params: {serviceName: string, option: string}): Promise<dedicated.server.Option>;
+  public get(path: '/dedicated/server/{serviceName}/option/{option}', params: {option: OVH.dedicated.server.OptionEnum, serviceName: string}): Promise<dedicated.server.Option>;
   /**
    * backupStorage operations
    * Get the backup storage orderable with your server.
@@ -1935,12 +1935,12 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Secondary dns infos
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string}): Promise<secondaryDns.SecondaryDNS>;
+  public get(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', params: {domain: string, serviceName: string}): Promise<secondaryDns.SecondaryDNS>;
   /**
    * dnsServer operations
    * domain name server informations
    */
-  public get(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer', params: {serviceName: string, domain: string}): Promise<secondaryDns.SecondaryDNSNameServer>;
+  public get(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer', params: {domain: string, serviceName: string}): Promise<secondaryDns.SecondaryDNSNameServer>;
   /**
    * secondaryDnsNameDomainToken operations
    * DNS field to temporarily add to your zone so that we can verify you are the owner of this domain
@@ -1965,27 +1965,27 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Service monitoring details
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', params: {serviceName: string, monitoringId: string}): Promise<dedicated.server.serviceMonitoring>;
+  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', params: {monitoringId: number, serviceName: string}): Promise<dedicated.server.serviceMonitoring>;
   /**
    * List the dedicated.server.emailAlert objects
    * Service monitoring alert by email
    */
-  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email', params: {serviceName: string, monitoringId: string}): Promise<number[]>;
+  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email', params: {monitoringId: number, serviceName: string}): Promise<number[]>;
   /**
    * Service monitoring Email alert
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', params: {serviceName: string, monitoringId: string, alertId: string}): Promise<dedicated.server.emailAlert>;
+  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', params: {alertId: number, monitoringId: number, serviceName: string}): Promise<dedicated.server.emailAlert>;
   /**
    * List the dedicated.server.smsAlert objects
    * Service monitoring alert by SMS
    */
-  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms', params: {serviceName: string, monitoringId: string}): Promise<number[]>;
+  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms', params: {monitoringId: number, serviceName: string}): Promise<number[]>;
   /**
    * Monitoring SMS alert details, This service is currently not supported for servers at BHS 
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', params: {serviceName: string, monitoringId: string, alertId: string}): Promise<dedicated.server.smsAlert>;
+  public get(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', params: {alertId: number, monitoringId: number, serviceName: string}): Promise<dedicated.server.smsAlert>;
   /**
    * hardware operations
    * Retrieve hardware informations about this dedicated server
@@ -2010,7 +2010,7 @@ export class ApiDedicatedServer extends OvhWrapper {
    * SPLA licenses management
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/spla/{id}', params: {serviceName: string, id: string}): Promise<dedicated.server.spla>;
+  public get(path: '/dedicated/server/{serviceName}/spla/{id}', params: {id: number, serviceName: string}): Promise<dedicated.server.spla>;
   /**
    * Servers statistics sent by RTM (Real Time Monitoring)
    * Get this object properties
@@ -2040,12 +2040,12 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Server disks informations
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/statistics/disk/{disk}', params: {serviceName: string, disk: string}): Promise<dedicated.server.RtmDisk>;
+  public get(path: '/dedicated/server/{serviceName}/statistics/disk/{disk}', params: {disk: string, serviceName: string}): Promise<dedicated.server.RtmDisk>;
   /**
    * smart operations
    * Get disk smart informations
    */
-  public get(path: '/dedicated/server/{serviceName}/statistics/disk/{disk}/smart', params: {serviceName: string, disk: string}): Promise<dedicated.server.RtmDiskSmart>;
+  public get(path: '/dedicated/server/{serviceName}/statistics/disk/{disk}/smart', params: {disk: string, serviceName: string}): Promise<dedicated.server.RtmDiskSmart>;
   /**
    * load operations
    * Get server load
@@ -2075,12 +2075,12 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Server partitions informations
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/statistics/partition/{partition}', params: {serviceName: string, partition: string}): Promise<dedicated.server.RtmPartition>;
+  public get(path: '/dedicated/server/{serviceName}/statistics/partition/{partition}', params: {partition: string, serviceName: string}): Promise<dedicated.server.RtmPartition>;
   /**
    * chart operations
    * Retrieve partition charts
    */
-  public get(path: '/dedicated/server/{serviceName}/statistics/partition/{partition}/chart', params: {serviceName: string, partition: string, period: OVH.dedicated.server.RtmChartPeriodEnum}): Promise<complexType.ChartReturn>;
+  public get(path: '/dedicated/server/{serviceName}/statistics/partition/{partition}/chart', params: {partition: string, serviceName: string, period: OVH.dedicated.server.RtmChartPeriodEnum}): Promise<complexType.ChartReturn>;
   /**
    * pci operations
    * Get server PCI devices informations
@@ -2120,7 +2120,7 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Server raid volume port informations
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}', params: {serviceName: string, unit: string, volume: string, port: string}): Promise<dedicated.server.RtmRaidVolumePort>;
+  public get(path: '/dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}', params: {port: string, serviceName: string, unit: string, volume: string}): Promise<dedicated.server.RtmRaidVolumePort>;
   /**
    * List the dedicated.server.Task objects
    * Dedicated server todos
@@ -2130,7 +2130,7 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Server tasks
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<dedicated.server.Task>;
+  public get(path: '/dedicated/server/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<dedicated.server.Task>;
   /**
    * List the dedicated.server.VirtualMac objects
    * Virtual MAC addresses of the server
@@ -2140,17 +2140,17 @@ export class ApiDedicatedServer extends OvhWrapper {
    * A virtual MAC address associated to one or more IPs
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}', params: {serviceName: string, macAddress: string}): Promise<dedicated.server.VirtualMac>;
+  public get(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}', params: {macAddress: string, serviceName: string}): Promise<dedicated.server.VirtualMac>;
   /**
    * List the dedicated.server.VirtualMacManagement objects
    * List of IPs associated to this Virtual MAC
    */
-  public get(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress', params: {serviceName: string, macAddress: string}): Promise<string[]>;
+  public get(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress', params: {macAddress: string, serviceName: string}): Promise<string[]>;
   /**
    *  ip address linked with this virtual mac address
    * Get this object properties
    */
-  public get(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}', params: {serviceName: string, macAddress: string, ipAddress: string}): Promise<dedicated.server.VirtualMacManagement>;
+  public get(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}', params: {ipAddress: string, macAddress: string, serviceName: string}): Promise<dedicated.server.VirtualMacManagement>;
   /**
    * List the dedicated.virtualNetworkInterface.VirtualNetworkInterface objects
    * List server VirtualNetworkInterfaces
@@ -2218,7 +2218,7 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Backup Ftp ACL for this server and Backup Ftp
    * Alter this object properties
    */
-  public put(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string, cifs?: boolean, ftp?: boolean, isApplied?: boolean, lastUpdate?: string, nfs?: boolean}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', params: {ipBlock: string, serviceName: string, cifs?: boolean, ftp?: boolean, isApplied?: boolean, lastUpdate?: string, nfs?: boolean}): Promise<void>;
   /**
    * Firewall attached to this server
    * Alter this object properties
@@ -2228,7 +2228,7 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Secondary dns infos
    * Alter this object properties
    */
-  public put(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string, creationDate?: string, dns?: string, ipMaster?: string}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', params: {domain: string, serviceName: string, creationDate?: string, dns?: string, ipMaster?: string}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -2238,22 +2238,22 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Service monitoring details
    * Alter this object properties
    */
-  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', params: {serviceName: string, monitoringId: string, challengeText?: string, enabled?: boolean, interval?: OVH.dedicated.server.MonitoringIntervalEnum, ip?: string, port?: number, protocol?: OVH.dedicated.server.MonitoringProtocolEnum, url?: string}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', params: {monitoringId: number, serviceName: string, challengeText?: string, enabled?: boolean, interval?: OVH.dedicated.server.MonitoringIntervalEnum, ip?: string, port?: number, protocol?: OVH.dedicated.server.MonitoringProtocolEnum, url?: string}): Promise<void>;
   /**
    * Service monitoring Email alert
    * Alter this object properties
    */
-  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', params: {serviceName: string, monitoringId: string, alertId: string, email?: string, enabled?: boolean, language?: OVH.dedicated.server.AlertLanguageEnum}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', params: {alertId: number, monitoringId: number, serviceName: string, email?: string, enabled?: boolean, language?: OVH.dedicated.server.AlertLanguageEnum}): Promise<void>;
   /**
    * Monitoring SMS alert details, This service is currently not supported for servers at BHS 
    * Alter this object properties
    */
-  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', params: {serviceName: string, monitoringId: string, alertId: string, enabled?: boolean, fromHour?: number, language?: OVH.dedicated.server.AlertLanguageEnum, phoneNumberTo?: string, smsAccount?: string, toHour?: number}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', params: {alertId: number, monitoringId: number, serviceName: string, enabled?: boolean, fromHour?: number, language?: OVH.dedicated.server.AlertLanguageEnum, phoneNumberTo?: string, smsAccount?: string, toHour?: number}): Promise<void>;
   /**
    * SPLA licenses management
    * Alter this object properties
    */
-  public put(path: '/dedicated/server/{serviceName}/spla/{id}', params: {serviceName: string, id: string, lastUpdate?: string, serialNumber?: string, status?: OVH.dedicated.server.SplaStatusEnum, type?: OVH.dedicated.server.SplaTypeEnum}): Promise<void>;
+  public put(path: '/dedicated/server/{serviceName}/spla/{id}', params: {id: number, serviceName: string, lastUpdate?: string, serialNumber?: string, status?: OVH.dedicated.server.SplaStatusEnum, type?: OVH.dedicated.server.SplaTypeEnum}): Promise<void>;
   public put(path: PathsDedicatedServerPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -2356,12 +2356,12 @@ export class ApiDedicatedServer extends OvhWrapper {
    * List the dedicated.server.emailAlert objects
    * Add a new email alert
    */
-  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email', params: {serviceName: string, monitoringId: string, email: string, language: OVH.dedicated.server.AlertLanguageEnum}): Promise<dedicated.server.emailAlert>;
+  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email', params: {monitoringId: number, serviceName: string, email: string, language: OVH.dedicated.server.AlertLanguageEnum}): Promise<dedicated.server.emailAlert>;
   /**
    * List the dedicated.server.smsAlert objects
    * Create a SMS alert
    */
-  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms', params: {serviceName: string, monitoringId: string, fromHour?: number, language: OVH.dedicated.server.AlertLanguageEnum, phoneNumberTo: string, smsAccount: string, toHour?: number}): Promise<dedicated.server.smsAlert>;
+  public post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms', params: {monitoringId: number, serviceName: string, fromHour?: number, language: OVH.dedicated.server.AlertLanguageEnum, phoneNumberTo: string, smsAccount: string, toHour?: number}): Promise<dedicated.server.smsAlert>;
   /**
    * List the dedicated.server.spla objects
    * Add a new SPLA license
@@ -2371,7 +2371,7 @@ export class ApiDedicatedServer extends OvhWrapper {
    * revoke operations
    * Revoke an SPLA license
    */
-  public post(path: '/dedicated/server/{serviceName}/spla/{id}/revoke', params: {serviceName: string, id: string}): Promise<void>;
+  public post(path: '/dedicated/server/{serviceName}/spla/{id}/revoke', params: {id: number, serviceName: string}): Promise<void>;
   /**
    * hardDiskDrive operations
    * Ask for a broken HDD replacement
@@ -2381,7 +2381,7 @@ export class ApiDedicatedServer extends OvhWrapper {
    * cancel operations
    * this action stop the task progression if it's possible
    */
-  public post(path: '/dedicated/server/{serviceName}/task/{taskId}/cancel', params: {serviceName: string, taskId: string}): Promise<void>;
+  public post(path: '/dedicated/server/{serviceName}/task/{taskId}/cancel', params: {serviceName: string, taskId: number}): Promise<void>;
   /**
    * Terminate your service
    * Terminate your service
@@ -2396,7 +2396,7 @@ export class ApiDedicatedServer extends OvhWrapper {
    * List the dedicated.server.VirtualMacManagement objects
    * Add an IP to this Virtual MAC
    */
-  public post(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress', params: {serviceName: string, macAddress: string, ipAddress: string, virtualMachineName: string}): Promise<dedicated.server.Task>;
+  public post(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress', params: {macAddress: string, serviceName: string, ipAddress: string, virtualMachineName: string}): Promise<dedicated.server.Task>;
   public post(path: PathsDedicatedServerPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
@@ -2414,37 +2414,37 @@ export class ApiDedicatedServer extends OvhWrapper {
    * Backup Ftp ACL for this server and Backup Ftp
    * Revoke this ACL
    */
-  public delete(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', params: {serviceName: string, ipBlock: string}): Promise<dedicated.server.Task>;
+  public delete(path: '/dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}', params: {ipBlock: string, serviceName: string}): Promise<dedicated.server.Task>;
   /**
    * Information about the options of a dedicated server
    * Release a given option
    */
-  public delete(path: '/dedicated/server/{serviceName}/option/{option}', params: {serviceName: string, option: string}): Promise<void>;
+  public delete(path: '/dedicated/server/{serviceName}/option/{option}', params: {option: OVH.dedicated.server.OptionEnum, serviceName: string}): Promise<void>;
   /**
    * Secondary dns infos
    * remove this domain
    */
-  public delete(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', params: {serviceName: string, domain: string}): Promise<void>;
+  public delete(path: '/dedicated/server/{serviceName}/secondaryDnsDomains/{domain}', params: {domain: string, serviceName: string}): Promise<void>;
   /**
    * Service monitoring details
    * Remove this service monitoring
    */
-  public delete(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', params: {serviceName: string, monitoringId: string}): Promise<void>;
+  public delete(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}', params: {monitoringId: number, serviceName: string}): Promise<void>;
   /**
    * Service monitoring Email alert
    * Remove this Email alert monitoring
    */
-  public delete(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', params: {serviceName: string, monitoringId: string, alertId: string}): Promise<void>;
+  public delete(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}', params: {alertId: number, monitoringId: number, serviceName: string}): Promise<void>;
   /**
    * Monitoring SMS alert details, This service is currently not supported for servers at BHS 
    * Remove this SMS alert
    */
-  public delete(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', params: {serviceName: string, monitoringId: string, alertId: string}): Promise<void>;
+  public delete(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}', params: {alertId: number, monitoringId: number, serviceName: string}): Promise<void>;
   /**
    *  ip address linked with this virtual mac address
    * Remove this ip from virtual mac , if you remove the last linked Ip, virtualmac will be deleted
    */
-  public delete(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}', params: {serviceName: string, macAddress: string, ipAddress: string}): Promise<dedicated.server.Task>;
+  public delete(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}', params: {ipAddress: string, macAddress: string, serviceName: string}): Promise<dedicated.server.Task>;
   /**
    * vrack dedicated server interfaces
    * remove this server from this vrack

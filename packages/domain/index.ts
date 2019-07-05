@@ -959,7 +959,7 @@ export class ApiDomain extends OvhWrapper {
    * Domain's DNSSEC Key
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/dsRecord/{id}', params: {serviceName: string, id: string}): Promise<domain.DnssecKey>;
+  public get(path: '/domain/{serviceName}/dsRecord/{id}', params: {id: number, serviceName: string}): Promise<domain.DnssecKey>;
   /**
    * List the domain.GlueRecord objects
    * List of glue record
@@ -969,7 +969,7 @@ export class ApiDomain extends OvhWrapper {
    * Glue record
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/glueRecord/{host}', params: {serviceName: string, host: string}): Promise<domain.GlueRecord>;
+  public get(path: '/domain/{serviceName}/glueRecord/{host}', params: {host: string, serviceName: string}): Promise<domain.GlueRecord>;
   /**
    * List the domain.CurrentNameServer objects
    * List of current name servers
@@ -979,7 +979,7 @@ export class ApiDomain extends OvhWrapper {
    * CurrentNameServer
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/nameServer/{id}', params: {serviceName: string, id: string}): Promise<domain.CurrentNameServer>;
+  public get(path: '/domain/{serviceName}/nameServer/{id}', params: {id: number, serviceName: string}): Promise<domain.CurrentNameServer>;
   /**
    * List the domain.Option objects
    * List of domain options
@@ -989,7 +989,7 @@ export class ApiDomain extends OvhWrapper {
    * Information about the options of a domain
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/option/{option}', params: {serviceName: string, option: string}): Promise<domain.Option>;
+  public get(path: '/domain/{serviceName}/option/{option}', params: {option: OVH.domain.DomainOptionEnum, serviceName: string}): Promise<domain.Option>;
   /**
    * List the domain.Owo objects
    * List of whois obfuscators
@@ -999,7 +999,7 @@ export class ApiDomain extends OvhWrapper {
    * Obfuscate whois
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/owo/{field}', params: {serviceName: string, field: string}): Promise<domain.Owo>;
+  public get(path: '/domain/{serviceName}/owo/{field}', params: {field: OVH.domain.WhoisObfuscatorFieldsEnum, serviceName: string}): Promise<domain.Owo>;
   /**
    * Missing description
    * Retrieve emails obfuscation rule
@@ -1024,7 +1024,7 @@ export class ApiDomain extends OvhWrapper {
    * Tasks associated to domain
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/task/{id}', params: {serviceName: string, id: string}): Promise<domain.Task>;
+  public get(path: '/domain/{serviceName}/task/{id}', params: {id: number, serviceName: string}): Promise<domain.Task>;
   /**
    * ukRegistrars operations
    * Return the list of all .uk registrars
@@ -1039,7 +1039,7 @@ export class ApiDomain extends OvhWrapper {
    * Missing description
    * Retrieve an association information according to Afnic
    */
-  public get(path: '/domain/data/afnicAssociationInformation/{associationInformationId}', params: {associationInformationId: string}): Promise<domain.data.AssociationContact>;
+  public get(path: '/domain/data/afnicAssociationInformation/{associationInformationId}', params: {associationInformationId: number}): Promise<domain.data.AssociationContact>;
   /**
    * Missing description
    * Retrieve all corporation trademark information according to Afnic
@@ -1049,7 +1049,7 @@ export class ApiDomain extends OvhWrapper {
    * Missing description
    * Retrieve a corporation trademark information according to Afnic
    */
-  public get(path: '/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}', params: {afnicCorporationTrademarkId: string}): Promise<domain.data.AfnicCorporationTrademarkContact>;
+  public get(path: '/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}', params: {afnicCorporationTrademarkId: number}): Promise<domain.data.AfnicCorporationTrademarkContact>;
   /**
    * Missing description
    * Retrieve claim notices associated to a domain
@@ -1069,7 +1069,7 @@ export class ApiDomain extends OvhWrapper {
    * Missing description
    * Retrieve information about a Pro Contact
    */
-  public get(path: '/domain/data/proContact/{proContactId}', params: {proContactId: string}): Promise<domain.data.ProContact>;
+  public get(path: '/domain/data/proContact/{proContactId}', params: {proContactId: number}): Promise<domain.data.ProContact>;
   /**
    * Missing description
    * List all your SMD files
@@ -1079,7 +1079,7 @@ export class ApiDomain extends OvhWrapper {
    * Missing description
    * Retrieve information about a SMD file
    */
-  public get(path: '/domain/data/smd/{smdId}', params: {smdId: string}): Promise<domain.data.Smd>;
+  public get(path: '/domain/data/smd/{smdId}', params: {smdId: number}): Promise<domain.data.Smd>;
   /**
    * Rules for creating a domain
    * List all the rules for a specific cartId/itemId
@@ -1109,7 +1109,7 @@ export class ApiDomain extends OvhWrapper {
    * Manage DynHost login
    * Get this object properties
    */
-  public get(path: '/domain/zone/{zoneName}/dynHost/login/{login}', params: {zoneName: string, login: string}): Promise<domain.zone.DynHostLogin>;
+  public get(path: '/domain/zone/{zoneName}/dynHost/login/{login}', params: {login: string, zoneName: string}): Promise<domain.zone.DynHostLogin>;
   /**
    * List the domain.zone.DynHostRecord objects
    * DynHost' records
@@ -1119,7 +1119,7 @@ export class ApiDomain extends OvhWrapper {
    * DynHost record
    * Get this object properties
    */
-  public get(path: '/domain/zone/{zoneName}/dynHost/record/{id}', params: {zoneName: string, id: string}): Promise<domain.zone.DynHostRecord>;
+  public get(path: '/domain/zone/{zoneName}/dynHost/record/{id}', params: {id: number, zoneName: string}): Promise<domain.zone.DynHostRecord>;
   /**
    * export operations
    * Export zone
@@ -1134,7 +1134,7 @@ export class ApiDomain extends OvhWrapper {
    * Zone restore point
    * Get this object properties
    */
-  public get(path: '/domain/zone/{zoneName}/history/{creationDate}', params: {zoneName: string, creationDate: string}): Promise<domain.zone.ZoneRestorePoint>;
+  public get(path: '/domain/zone/{zoneName}/history/{creationDate}', params: {creationDate: string, zoneName: string}): Promise<domain.zone.ZoneRestorePoint>;
   /**
    * List the domain.zone.Record objects
    * Records of the zone
@@ -1144,7 +1144,7 @@ export class ApiDomain extends OvhWrapper {
    * Zone resource records
    * Get this object properties
    */
-  public get(path: '/domain/zone/{zoneName}/record/{id}', params: {zoneName: string, id: string}): Promise<domain.zone.Record>;
+  public get(path: '/domain/zone/{zoneName}/record/{id}', params: {id: number, zoneName: string}): Promise<domain.zone.Record>;
   /**
    * List the domain.zone.Redirection objects
    * Redirections
@@ -1154,7 +1154,7 @@ export class ApiDomain extends OvhWrapper {
    * Redirection
    * Get this object properties
    */
-  public get(path: '/domain/zone/{zoneName}/redirection/{id}', params: {zoneName: string, id: string}): Promise<domain.zone.Redirection>;
+  public get(path: '/domain/zone/{zoneName}/redirection/{id}', params: {id: number, zoneName: string}): Promise<domain.zone.Redirection>;
   /**
    * Details about a Service
    * Get this object properties
@@ -1179,7 +1179,7 @@ export class ApiDomain extends OvhWrapper {
    * Tasks associated to a zone
    * Get this object properties
    */
-  public get(path: '/domain/zone/{zoneName}/task/{id}', params: {zoneName: string, id: string}): Promise<domain.zone.Task>;
+  public get(path: '/domain/zone/{zoneName}/task/{id}', params: {id: number, zoneName: string}): Promise<domain.zone.Task>;
   public get(path: PathsDomainGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
@@ -1207,27 +1207,27 @@ export class ApiDomain extends OvhWrapper {
    * Missing description
    * Modify an existing SMD file
    */
-  public put(path: '/domain/data/smd/{smdId}', params: {smdId: string, data: string}): Promise<domain.data.Smd>;
+  public put(path: '/domain/data/smd/{smdId}', params: {smdId: number, data: string}): Promise<domain.data.Smd>;
   /**
    * Manage DynHost login
    * Alter this object properties
    */
-  public put(path: '/domain/zone/{zoneName}/dynHost/login/{login}', params: {zoneName: string, login: string, subDomain?: string, zone?: string}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/dynHost/login/{login}', params: {login: string, zoneName: string, subDomain?: string, zone?: string}): Promise<void>;
   /**
    * DynHost record
    * Alter this object properties
    */
-  public put(path: '/domain/zone/{zoneName}/dynHost/record/{id}', params: {zoneName: string, id: string, ip?: string, subDomain?: string, ttl?: number, zone?: string}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/dynHost/record/{id}', params: {id: number, zoneName: string, ip?: string, subDomain?: string, ttl?: number, zone?: string}): Promise<void>;
   /**
    * Zone resource records
    * Alter this object properties
    */
-  public put(path: '/domain/zone/{zoneName}/record/{id}', params: {zoneName: string, id: string, fieldType?: OVH.zone.NamedResolutionFieldTypeEnum, subDomain?: string, target?: string, ttl?: number, zone?: string}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/record/{id}', params: {id: number, zoneName: string, fieldType?: OVH.zone.NamedResolutionFieldTypeEnum, subDomain?: string, target?: string, ttl?: number, zone?: string}): Promise<void>;
   /**
    * Redirection
    * Alter this object properties
    */
-  public put(path: '/domain/zone/{zoneName}/redirection/{id}', params: {zoneName: string, id: string, description?: string, keywords?: string, subDomain?: string, target?: string, title?: string, type?: OVH.zone.RedirectionTypeEnum, zone?: string}): Promise<void>;
+  public put(path: '/domain/zone/{zoneName}/redirection/{id}', params: {id: number, zoneName: string, description?: string, keywords?: string, subDomain?: string, target?: string, title?: string, type?: OVH.zone.RedirectionTypeEnum, zone?: string}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -1275,7 +1275,7 @@ export class ApiDomain extends OvhWrapper {
    * update operations
    * Update the glue record
    */
-  public post(path: '/domain/{serviceName}/glueRecord/{host}/update', params: {serviceName: string, host: string, ips: string[]}): Promise<domain.Task>;
+  public post(path: '/domain/{serviceName}/glueRecord/{host}/update', params: {host: string, serviceName: string, ips: string[]}): Promise<domain.Task>;
   /**
    * List the domain.CurrentNameServer objects
    * Add new name server
@@ -1285,7 +1285,7 @@ export class ApiDomain extends OvhWrapper {
    * status operations
    * Get name server status
    */
-  public post(path: '/domain/{serviceName}/nameServer/{id}/status', params: {serviceName: string, id: string}): Promise<domain.DomainNsStatus>;
+  public post(path: '/domain/{serviceName}/nameServer/{id}/status', params: {id: number, serviceName: string}): Promise<domain.DomainNsStatus>;
   /**
    * update operations
    * Update DNS servers
@@ -1300,17 +1300,17 @@ export class ApiDomain extends OvhWrapper {
    * accelerate operations
    * Accelerate the task
    */
-  public post(path: '/domain/{serviceName}/task/{id}/accelerate', params: {serviceName: string, id: string}): Promise<void>;
+  public post(path: '/domain/{serviceName}/task/{id}/accelerate', params: {id: number, serviceName: string}): Promise<void>;
   /**
    * cancel operations
    * Cancel the task
    */
-  public post(path: '/domain/{serviceName}/task/{id}/cancel', params: {serviceName: string, id: string}): Promise<void>;
+  public post(path: '/domain/{serviceName}/task/{id}/cancel', params: {id: number, serviceName: string}): Promise<void>;
   /**
    * relaunch operations
    * Relaunch the task
    */
-  public post(path: '/domain/{serviceName}/task/{id}/relaunch', params: {serviceName: string, id: string}): Promise<void>;
+  public post(path: '/domain/{serviceName}/task/{id}/relaunch', params: {id: number, serviceName: string}): Promise<void>;
   /**
    * ukOutgoingTransfer operations
    * Schedule an outgoing transfer task for this domain (.uk only)
@@ -1360,7 +1360,7 @@ export class ApiDomain extends OvhWrapper {
    * changePassword operations
    * Change password of the DynHost login
    */
-  public post(path: '/domain/zone/{zoneName}/dynHost/login/{login}/changePassword', params: {zoneName: string, login: string, password: string}): Promise<void>;
+  public post(path: '/domain/zone/{zoneName}/dynHost/login/{login}/changePassword', params: {login: string, zoneName: string, password: string}): Promise<void>;
   /**
    * List the domain.zone.DynHostRecord objects
    * Create a new DynHost record (Don't forget to refresh the zone)
@@ -1370,7 +1370,7 @@ export class ApiDomain extends OvhWrapper {
    * restore operations
    * Restore the DNS zone
    */
-  public post(path: '/domain/zone/{zoneName}/history/{creationDate}/restore', params: {zoneName: string, creationDate: string}): Promise<domain.zone.Task>;
+  public post(path: '/domain/zone/{zoneName}/history/{creationDate}/restore', params: {creationDate: string, zoneName: string}): Promise<domain.zone.Task>;
   /**
    * import operations
    * Import zone
@@ -1400,17 +1400,17 @@ export class ApiDomain extends OvhWrapper {
    * accelerate operations
    * Accelerate the task
    */
-  public post(path: '/domain/zone/{zoneName}/task/{id}/accelerate', params: {zoneName: string, id: string}): Promise<void>;
+  public post(path: '/domain/zone/{zoneName}/task/{id}/accelerate', params: {id: number, zoneName: string}): Promise<void>;
   /**
    * cancel operations
    * Cancel the task
    */
-  public post(path: '/domain/zone/{zoneName}/task/{id}/cancel', params: {zoneName: string, id: string}): Promise<void>;
+  public post(path: '/domain/zone/{zoneName}/task/{id}/cancel', params: {id: number, zoneName: string}): Promise<void>;
   /**
    * relaunch operations
    * Relaunch the task
    */
-  public post(path: '/domain/zone/{zoneName}/task/{id}/relaunch', params: {zoneName: string, id: string}): Promise<void>;
+  public post(path: '/domain/zone/{zoneName}/task/{id}/relaunch', params: {id: number, zoneName: string}): Promise<void>;
   /**
    * Terminate your service
    * Terminate your service
@@ -1423,27 +1423,27 @@ export class ApiDomain extends OvhWrapper {
    * Glue record
    * Delete the glue record
    */
-  public delete(path: '/domain/{serviceName}/glueRecord/{host}', params: {serviceName: string, host: string}): Promise<domain.Task>;
+  public delete(path: '/domain/{serviceName}/glueRecord/{host}', params: {host: string, serviceName: string}): Promise<domain.Task>;
   /**
    * CurrentNameServer
    * Delete a name server
    */
-  public delete(path: '/domain/{serviceName}/nameServer/{id}', params: {serviceName: string, id: string}): Promise<domain.Task>;
+  public delete(path: '/domain/{serviceName}/nameServer/{id}', params: {id: number, serviceName: string}): Promise<domain.Task>;
   /**
    * Information about the options of a domain
    * Release a given option
    */
-  public delete(path: '/domain/{serviceName}/option/{option}', params: {serviceName: string, option: string}): Promise<void>;
+  public delete(path: '/domain/{serviceName}/option/{option}', params: {option: OVH.domain.DomainOptionEnum, serviceName: string}): Promise<void>;
   /**
    * Obfuscate whois
    * Delete a whois obfuscator
    */
-  public delete(path: '/domain/{serviceName}/owo/{field}', params: {serviceName: string, field: string}): Promise<void>;
+  public delete(path: '/domain/{serviceName}/owo/{field}', params: {field: OVH.domain.WhoisObfuscatorFieldsEnum, serviceName: string}): Promise<void>;
   /**
    * Missing description
    * Delete a SMD file
    */
-  public delete(path: '/domain/data/smd/{smdId}', params: {smdId: string}): Promise<void>;
+  public delete(path: '/domain/data/smd/{smdId}', params: {smdId: number}): Promise<void>;
   /**
    * Manage Dnssec for this zone
    * Disable Dnssec
@@ -1453,22 +1453,22 @@ export class ApiDomain extends OvhWrapper {
    * Manage DynHost login
    * Delete a DynHost login
    */
-  public delete(path: '/domain/zone/{zoneName}/dynHost/login/{login}', params: {zoneName: string, login: string}): Promise<void>;
+  public delete(path: '/domain/zone/{zoneName}/dynHost/login/{login}', params: {login: string, zoneName: string}): Promise<void>;
   /**
    * DynHost record
    * Delete a DynHost record (Don't forget to refresh the zone)
    */
-  public delete(path: '/domain/zone/{zoneName}/dynHost/record/{id}', params: {zoneName: string, id: string}): Promise<void>;
+  public delete(path: '/domain/zone/{zoneName}/dynHost/record/{id}', params: {id: number, zoneName: string}): Promise<void>;
   /**
    * Zone resource records
    * Delete a DNS record (Don't forget to refresh the zone)
    */
-  public delete(path: '/domain/zone/{zoneName}/record/{id}', params: {zoneName: string, id: string}): Promise<void>;
+  public delete(path: '/domain/zone/{zoneName}/record/{id}', params: {id: number, zoneName: string}): Promise<void>;
   /**
    * Redirection
    * Delete a redirection (Don't forget to refresh the zone)
    */
-  public delete(path: '/domain/zone/{zoneName}/redirection/{id}', params: {zoneName: string, id: string}): Promise<void>;
+  public delete(path: '/domain/zone/{zoneName}/redirection/{id}', params: {id: number, zoneName: string}): Promise<void>;
   public delete(path: PathsDomainDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

@@ -187,7 +187,7 @@ export class ApiVeeamCloudConnect extends OvhWrapper {
    * Veeam Backup Repository
    * Get this object properties
    */
-  public get(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}', params: {serviceName: string, inventoryName: string}): Promise<veeamCloudConnect.BackupRepository>;
+  public get(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}', params: {inventoryName: string, serviceName: string}): Promise<veeamCloudConnect.BackupRepository>;
   /**
    * capabilities operations
    * Show capabilities of your current offer
@@ -212,7 +212,7 @@ export class ApiVeeamCloudConnect extends OvhWrapper {
    * Operation with the Cloud Tenant Account
    * Get this object properties
    */
-  public get(path: '/veeamCloudConnect/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: string}): Promise<veeamCloudConnect.Task>;
+  public get(path: '/veeamCloudConnect/{serviceName}/task/{taskId}', params: {serviceName: string, taskId: number}): Promise<veeamCloudConnect.Task>;
   public get(path: PathsVeeamCloudConnectGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
@@ -233,7 +233,7 @@ export class ApiVeeamCloudConnect extends OvhWrapper {
    * upgradeQuota operations
    * Change your quota
    */
-  public post(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota', params: {serviceName: string, inventoryName: string, newQuota: number}): Promise<veeamCloudConnect.Task[]>;
+  public post(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota', params: {inventoryName: string, serviceName: string, newQuota: number}): Promise<veeamCloudConnect.Task[]>;
   /**
    * resetPassword operations
    * Reset your Cloud Tenant Password
@@ -246,7 +246,7 @@ export class ApiVeeamCloudConnect extends OvhWrapper {
    * Veeam Backup Repository
    * Delete this backup Repository. 
    */
-  public delete(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}', params: {serviceName: string, inventoryName: string}): Promise<veeamCloudConnect.Task[]>;
+  public delete(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}', params: {inventoryName: string, serviceName: string}): Promise<veeamCloudConnect.Task[]>;
   public delete(path: PathsVeeamCloudConnectDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }

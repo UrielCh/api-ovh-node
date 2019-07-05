@@ -201,7 +201,7 @@ export class ApiLicenseWorklight extends OvhWrapper {
    * licenses Todos
    * Get this object properties
    */
-  public get(path: '/license/worklight/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: string}): Promise<license.Task>;
+  public get(path: '/license/worklight/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<license.Task>;
   /**
    * Get the orderable WorkLight versions
    * Get the orderable WorkLight versions

@@ -164,7 +164,7 @@ export class ApiLicenseSqlserver extends OvhWrapper {
    * licenses Todos
    * Get this object properties
    */
-  public get(path: '/license/sqlserver/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: string}): Promise<license.Task>;
+  public get(path: '/license/sqlserver/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<license.Task>;
   /**
    * Get the orderable Sql Server versions
    * Get the orderable Sql Server versions
