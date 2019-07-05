@@ -90,9 +90,9 @@ export class CodeGenerator {
                 return code;
             if (cache._namespace) {
                 // code += `${ident0}// ${JSON.stringify(keys)}\n`;
-                code += `${ident0}export namespace ${filterReservedKw(cache._namespace)} { //  ${keys.join(', ')}\n`;
+                code += `${ident0}export namespace ${filterReservedKw(cache._namespace)} {\n`; //  //  ${keys.join(', ')}
             } else if (cache._name) {
-                code += `${ident0}export namespace ${cache._name} { // ${keys.join(', ')}\n`;
+                code += `${ident0}export namespace ${cache._name} {\n`; //  //  ${keys.join(', ')}
             }
             // drop _ prefixed fields
             // fullNS = fullNS ? fullNS + '.' + cache._name : cache._name;
@@ -260,7 +260,7 @@ export class CodeGenerator {
                     code += `${ident0}[keys: string]:`;
                     EOB = `${ident0}} | any\n`
                 } else {
-                    code += `${ident0}${protectHarmonyField(last)}: /* 260 */`;
+                    code += `${ident0}${protectHarmonyField(last)}: `; //  /* 260 */
                 }
             } else {
                 code += `${ident0}// path ${api._path}\n`;

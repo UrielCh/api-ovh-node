@@ -54,17 +54,12 @@ export namespace dedicated {
         //dedicated.ceph.response
         // fullName: dedicated.ceph.response.response
         export interface response {
-            cephMons?: string[];
-            cephVersion?: string;
-            createDate?: string;
-            crushTunables?: OVH.dedicated.ceph.clusterGet.response.crushTunablesEnum;
-            label?: string;
-            region?: string;
+            key?: string;
+            mdsCaps?: string;
+            monCaps?: string;
+            name?: string;
+            osdCaps?: string;
             serviceName?: string;
-            size?: number;
-            state?: OVH.dedicated.ceph.clusterGet.response.stateEnum;
-            status?: OVH.dedicated.ceph.clusterGet.response.statusEnum;
-            updateDate?: string;
         }
         export namespace taskGet {
             export namespace response {
