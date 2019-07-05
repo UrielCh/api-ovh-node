@@ -6,16 +6,16 @@ export namespace cdn {
         //cdn.website.Backend
         // fullName: cdn.website.Backend.Backend
         export interface Backend {
-            ipv4?: string;
-            status?: OVH.cdn.website.BackendStatusEnum;
+            ipv4: string;
+            status: OVH.cdn.website.BackendStatusEnum;
         }
         //cdn.website.BackendStatusEnum
         export type BackendStatusEnum = "creating" | "error" | "on" | "removing"
         //cdn.website.Domain
         // fullName: cdn.website.Domain.Domain
         export interface Domain {
-            domain?: string;
-            status?: OVH.cdn.website.DomainStatusEnum;
+            domain: string;
+            status: OVH.cdn.website.DomainStatusEnum;
         }
         //cdn.website.DomainStatusEnum
         export type DomainStatusEnum = "error" | "on" | "removing"
@@ -24,8 +24,8 @@ export namespace cdn {
         //cdn.website.StatsDataType
         // fullName: cdn.website.StatsDataType.StatsDataType
         export interface StatsDataType {
-            date?: string;
-            value?: number;
+            date: string;
+            value: number;
         }
         //cdn.website.StatsPeriodEnum
         export type StatsPeriodEnum = "day" | "month" | "week"
@@ -37,9 +37,9 @@ export namespace cdn {
         // fullName: cdn.website.Task.Task
         export interface Task {
             comment?: string;
-            function?: OVH.cdn.website.TaskFunctionEnum;
-            status?: OVH.cdn.website.TaskStateEnum;
-            taskId?: number;
+            function: OVH.cdn.website.TaskFunctionEnum;
+            status: OVH.cdn.website.TaskStateEnum;
+            taskId: number;
         }
         //cdn.website.TaskFunctionEnum
         export type TaskFunctionEnum = "flushAll" | "installBackend" | "removeBackend" | "removeDomain" | "removeZone"
@@ -48,15 +48,15 @@ export namespace cdn {
         //cdn.website.Website
         // fullName: cdn.website.Website.Website
         export interface Website {
-            anycast?: string;
-            offer?: string;
-            service?: string;
+            anycast: string;
+            offer: string;
+            service: string;
         }
         //cdn.website.Zone
         // fullName: cdn.website.Zone.Zone
         export interface Zone {
-            status?: OVH.cdn.website.DomainZoneStatusEnum;
-            zone?: string;
+            status: OVH.cdn.website.DomainZoneStatusEnum;
+            zone: string;
         }
     }
 }
@@ -64,9 +64,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -79,19 +79,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

@@ -6,79 +6,79 @@ export namespace dbaas {
         //dbaas.queue.App
         // fullName: dbaas.queue.App.App
         export interface App {
-            humanId?: string;
-            id?: string;
-            name?: string;
-            regionId?: string;
-            status?: OVH.dbaas.queue.AppStatus;
+            humanId: string;
+            id: string;
+            name: string;
+            regionId: string;
+            status: OVH.dbaas.queue.AppStatus;
         }
         //dbaas.queue.AppConfiguration
         // fullName: dbaas.queue.AppConfiguration.AppConfiguration
         export interface AppConfiguration {
-            app?: OVH.dbaas.queue.App;
-            metricsAccount?: OVH.dbaas.queue.MetricsAccount;
-            roles?: OVH.dbaas.queue.Role[];
-            users?: OVH.dbaas.queue.UserWithPassword[];
+            app: OVH.dbaas.queue.App;
+            metricsAccount: OVH.dbaas.queue.MetricsAccount;
+            roles: OVH.dbaas.queue.Role[];
+            users: OVH.dbaas.queue.UserWithPassword[];
         }
         //dbaas.queue.AppStatus
         export type AppStatus = "not_configured" | "active" | "deleted"
         //dbaas.queue.Key
         // fullName: dbaas.queue.Key.Key
         export interface Key {
-            humanAppId?: string;
-            id?: string;
-            name?: string;
+            humanAppId: string;
+            id: string;
+            name: string;
         }
         //dbaas.queue.KeyWithSecret
         // fullName: dbaas.queue.KeyWithSecret.KeyWithSecret
         export interface KeyWithSecret {
-            humanAppId?: string;
-            id?: string;
-            name?: string;
-            secret?: string;
+            humanAppId: string;
+            id: string;
+            name: string;
+            secret: string;
         }
         //dbaas.queue.MetricsAccount
         // fullName: dbaas.queue.MetricsAccount.MetricsAccount
         export interface MetricsAccount {
-            host?: string;
-            token?: string;
+            host: string;
+            token: string;
         }
         //dbaas.queue.Region
         // fullName: dbaas.queue.Region.Region
         export interface Region {
-            id?: string;
-            name?: string;
-            url?: string;
+            id: string;
+            name: string;
+            url: string;
         }
         //dbaas.queue.Role
         // fullName: dbaas.queue.Role.Role
         export interface Role {
-            autoCreateAcl?: boolean;
-            name?: string;
-            readAcl?: string[];
-            writeAcl?: string[];
+            autoCreateAcl: boolean;
+            name: string;
+            readAcl: string[];
+            writeAcl: string[];
         }
         //dbaas.queue.Topic
         // fullName: dbaas.queue.Topic.Topic
         export interface Topic {
-            id?: string;
-            partitions?: number;
-            replicationFactor?: number;
+            id: string;
+            partitions: number;
+            replicationFactor: number;
         }
         //dbaas.queue.User
         // fullName: dbaas.queue.User.User
         export interface User {
-            id?: string;
-            name?: string;
-            roles?: string[];
+            id: string;
+            name: string;
+            roles: string[];
         }
         //dbaas.queue.UserWithPassword
         // fullName: dbaas.queue.UserWithPassword.UserWithPassword
         export interface UserWithPassword {
-            id?: string;
-            name?: string;
-            password?: string;
-            roles?: string[];
+            id: string;
+            name: string;
+            password: string;
+            roles: string[];
         }
     }
 }
@@ -86,9 +86,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -101,19 +101,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

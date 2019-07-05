@@ -9,31 +9,31 @@ export namespace supply {
     //supply.MondialRelay
     // fullName: supply.MondialRelay.MondialRelay
     export interface MondialRelay {
-        address?: string;
-        city?: string;
+        address: string;
+        city: string;
         closing?: OVH.supply.MondialRelayClosingPeriod[];
-        country?: OVH.coreTypes.CountryEnum;
+        country: OVH.coreTypes.CountryEnum;
         distance?: number;
-        id?: string;
-        lat?: number;
-        lng?: number;
+        id: string;
+        lat: number;
+        lng: number;
         mapUrl?: string;
-        name?: string;
-        opening?: OVH.supply.MondialRelayOpening;
+        name: string;
+        opening: OVH.supply.MondialRelayOpening;
         pictureUrl?: string;
-        zipcode?: string;
+        zipcode: string;
     }
     //supply.MondialRelayClosingPeriod
     // fullName: supply.MondialRelayClosingPeriod.MondialRelayClosingPeriod
     export interface MondialRelayClosingPeriod {
-        end?: string;
-        start?: string;
+        end: string;
+        start: string;
     }
     //supply.MondialRelayDayPeriod
     // fullName: supply.MondialRelayDayPeriod.MondialRelayDayPeriod
     export interface MondialRelayDayPeriod {
-        end?: string;
-        start?: string;
+        end: string;
+        start: string;
     }
     //supply.MondialRelayOpening
     // fullName: supply.MondialRelayOpening.MondialRelayOpening
@@ -49,15 +49,15 @@ export namespace supply {
     //supply.MondialRelayResult
     // fullName: supply.MondialRelayResult.MondialRelayResult
     export interface MondialRelayResult {
-        referenceAddress?: string;
-        relayPoints?: OVH.supply.MondialRelay[];
+        referenceAddress: string;
+        relayPoints: OVH.supply.MondialRelay[];
     }
     //supply.MondialRelayReturn
     // fullName: supply.MondialRelayReturn.MondialRelayReturn
     export interface MondialRelayReturn {
         error?: string;
         result?: OVH.supply.MondialRelayResult;
-        status?: OVH.supply.Status;
+        status: OVH.supply.Status;
     }
     //supply.Status
     export type Status = "error" | "ok" | "pending"

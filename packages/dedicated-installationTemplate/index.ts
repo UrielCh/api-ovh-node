@@ -5,8 +5,8 @@ export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
 }
 export namespace dedicated {
@@ -37,50 +37,50 @@ export namespace dedicated {
         //dedicated.installationTemplate.Templates
         // fullName: dedicated.installationTemplate.Templates.Templates
         export interface Templates {
-            availableLanguages?: OVH.dedicated.TemplateOsLanguageEnum[];
+            availableLanguages: OVH.dedicated.TemplateOsLanguageEnum[];
             beta?: boolean;
-            bitFormat?: OVH.dedicated.server.BitFormatEnum;
-            category?: OVH.dedicated.TemplateOsUsageEnum;
+            bitFormat: OVH.dedicated.server.BitFormatEnum;
+            category: OVH.dedicated.TemplateOsUsageEnum;
             customization?: OVH.dedicated.TemplateOsProperties;
-            defaultLanguage?: OVH.dedicated.TemplateOsLanguageEnum;
+            defaultLanguage: OVH.dedicated.TemplateOsLanguageEnum;
             deprecated?: boolean;
-            description?: string;
-            distribution?: string;
-            family?: OVH.dedicated.TemplateOsTypeEnum;
-            filesystems?: OVH.dedicated.TemplateOsFileSystemEnum[];
+            description: string;
+            distribution: string;
+            family: OVH.dedicated.TemplateOsTypeEnum;
+            filesystems: OVH.dedicated.TemplateOsFileSystemEnum[];
             hardRaidConfiguration?: boolean;
             lastModification?: string;
             lvmReady?: boolean;
             supportsDistributionKernel?: boolean;
             supportsGptLabel?: boolean;
-            supportsRTM?: boolean;
+            supportsRTM: boolean;
             supportsSqlServer?: boolean;
             supportsUEFI?: OVH.dedicated.server.SupportsUEFIEnum;
-            templateName?: string;
+            templateName: string;
         }
         //dedicated.installationTemplate.hardwareRaid
         // fullName: dedicated.installationTemplate.hardwareRaid.hardwareRaid
         export interface hardwareRaid {
-            disks?: string[];
-            mode?: OVH.dedicated.TemplateOsHardwareRaidEnum;
-            name?: string;
-            step?: number;
+            disks: string[];
+            mode: OVH.dedicated.TemplateOsHardwareRaidEnum;
+            name: string;
+            step: number;
         }
         //dedicated.installationTemplate.templatePartitioningSchemes
         // fullName: dedicated.installationTemplate.templatePartitioningSchemes.templatePartitioningSchemes
         export interface templatePartitioningSchemes {
-            name?: string;
-            priority?: number;
+            name: string;
+            priority: number;
         }
         //dedicated.installationTemplate.templatePartitions
         // fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
         export interface templatePartitions {
-            filesystem?: OVH.dedicated.TemplateOsFileSystemEnum;
-            mountpoint?: string;
-            order?: number;
+            filesystem: OVH.dedicated.TemplateOsFileSystemEnum;
+            mountpoint: string;
+            order: number;
             raid?: OVH.dedicated.server.PartitionRaidEnum;
-            size?: OVH.complexType.UnitAndValue<number>;
-            type?: OVH.dedicated.TemplatePartitionTypeEnum;
+            size: OVH.complexType.UnitAndValue<number>;
+            type: OVH.dedicated.TemplatePartitionTypeEnum;
             volumeName?: string;
         }
     }

@@ -5,12 +5,12 @@ export namespace registry {
     //registry.image
     // fullName: registry.image.image
     export interface image {
-        createdAt?: string;
-        id?: string;
-        name?: string;
-        public?: boolean;
-        status?: OVH.registry.image.status;
-        updatedAt?: string;
+        createdAt: string;
+        id: string;
+        name: string;
+        public: boolean;
+        status: OVH.registry.image.status;
+        updatedAt: string;
     }
     export namespace image {
         //registry.image.status
@@ -19,35 +19,35 @@ export namespace registry {
     //registry.inputImage
     // fullName: registry.inputImage.inputImage
     export interface inputImage {
-        public?: boolean;
+        public: boolean;
     }
     //registry.inputNamespace
     // fullName: registry.inputNamespace.inputNamespace
     export interface inputNamespace {
-        name?: string;
+        name: string;
     }
     //registry.inputPermissions
     // fullName: registry.inputPermissions.inputPermissions
     export interface inputPermissions {
-        canRead?: boolean;
-        canWrite?: boolean;
-        isAdmin?: boolean;
-        status?: OVH.registry.permission.status;
-        userId?: string;
+        canRead: boolean;
+        canWrite: boolean;
+        isAdmin: boolean;
+        status: OVH.registry.permission.status;
+        userId: string;
     }
     //registry.inputUser
     // fullName: registry.inputUser.inputUser
     export interface inputUser {
-        description?: string;
+        description: string;
     }
     //registry.namespace
     // fullName: registry.namespace.namespace
     export interface namespace {
-        createdAt?: string;
-        id?: string;
-        name?: string;
-        status?: OVH.registry.namespace.status;
-        updatedAt?: string;
+        createdAt: string;
+        id: string;
+        name: string;
+        status: OVH.registry.namespace.status;
+        updatedAt: string;
     }
     export namespace namespace {
         //registry.namespace.status
@@ -60,43 +60,43 @@ export namespace registry {
     //registry.permissions
     // fullName: registry.permissions.permissions
     export interface permissions {
-        canRead?: boolean;
-        canWrite?: boolean;
-        createdAt?: string;
-        id?: string;
-        isAdmin?: boolean;
-        status?: OVH.registry.permission.status;
-        updatedAt?: string;
-        userId?: string;
+        canRead: boolean;
+        canWrite: boolean;
+        createdAt: string;
+        id: string;
+        isAdmin: boolean;
+        status: OVH.registry.permission.status;
+        updatedAt: string;
+        userId: string;
     }
     //registry.service
     // fullName: registry.service.service
     export interface service {
-        createdAt?: string;
-        endpoint?: string;
-        id?: string;
-        maxNamespaces?: number;
-        maxUsers?: number;
-        updatedAt?: string;
-        zone?: string;
+        createdAt: string;
+        endpoint: string;
+        id: string;
+        maxNamespaces: number;
+        maxUsers: number;
+        updatedAt: string;
+        zone: string;
     }
     //registry.tag
     // fullName: registry.tag.tag
     export interface tag {
-        createdAt?: string;
-        id?: string;
-        name?: string;
-        updatedAt?: string;
+        createdAt: string;
+        id: string;
+        name: string;
+        updatedAt: string;
     }
     //registry.user
     // fullName: registry.user.user
     export interface user {
-        createdAt?: string;
-        description?: boolean;
-        id?: string;
-        status?: OVH.registry.user.status;
-        updatedAt?: string;
-        username?: string;
+        createdAt: string;
+        description: boolean;
+        id: string;
+        status: OVH.registry.user.status;
+        updatedAt: string;
+        username: string;
     }
     export namespace user {
         //registry.user.status
@@ -107,9 +107,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -122,19 +122,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

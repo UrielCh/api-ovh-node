@@ -5,14 +5,14 @@ export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
     //complexType.UnitAndValues
     // fullName: complexType.UnitAndValues.UnitAndValues
     export interface UnitAndValues<T> {
-        unit?: string;
-        values?: T[];
+        unit: string;
+        values: T[];
     }
 }
 export namespace coreTypes {
@@ -30,23 +30,23 @@ export namespace dedicated {
         //dedicated.server.BackupFtpAcl
         // fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
         export interface BackupFtpAcl {
-            cifs?: boolean;
-            ftp?: boolean;
-            ipBlock?: string;
-            isApplied?: boolean;
-            lastUpdate?: string;
-            nfs?: boolean;
+            cifs: boolean;
+            ftp: boolean;
+            ipBlock: string;
+            isApplied: boolean;
+            lastUpdate: string;
+            nfs: boolean;
         }
         //dedicated.server.Task
         // fullName: dedicated.server.Task.Task
         export interface Task {
             comment?: string;
             doneDate?: string;
-            function?: OVH.dedicated.TaskFunctionEnum;
+            function: OVH.dedicated.TaskFunctionEnum;
             lastUpdate?: string;
-            startDate?: string;
-            status?: OVH.dedicated.TaskStatusEnum;
-            taskId?: number;
+            startDate: string;
+            status: OVH.dedicated.TaskStatusEnum;
+            taskId: number;
         }
     }
 }
@@ -58,16 +58,16 @@ export namespace secondaryDns {
     //secondaryDns.SecondaryDNS
     // fullName: secondaryDns.SecondaryDNS.SecondaryDNS
     export interface SecondaryDNS {
-        creationDate?: string;
-        dns?: string;
-        domain?: string;
-        ipMaster?: string;
+        creationDate: string;
+        dns: string;
+        domain: string;
+        ipMaster: string;
     }
     //secondaryDns.SecondaryDNSNameServer
     // fullName: secondaryDns.SecondaryDNSNameServer.SecondaryDNSNameServer
     export interface SecondaryDNSNameServer {
-        hostname?: string;
-        ip?: string;
+        hostname: string;
+        ip: string;
         ipv6?: string;
     }
 }
@@ -75,9 +75,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -94,19 +94,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace vps {
@@ -114,15 +114,15 @@ export namespace vps {
     // fullName: vps.AutomatedBackup.AutomatedBackup
     export interface AutomatedBackup {
         schedule?: string;
-        state?: OVH.vps.BackupStateEnum;
+        state: OVH.vps.BackupStateEnum;
     }
     //vps.BackupFtp
     // fullName: vps.BackupFtp.BackupFtp
     export interface BackupFtp {
-        ftpBackupName?: string;
+        ftpBackupName: string;
         quota?: OVH.complexType.UnitAndValue<number>;
         readOnlyDate?: string;
-        type?: string;
+        type: string;
         usage?: OVH.complexType.UnitAndValue<number>;
     }
     //vps.BackupStateEnum
@@ -130,55 +130,55 @@ export namespace vps {
     //vps.Datacenter
     // fullName: vps.Datacenter.Datacenter
     export interface Datacenter {
-        longName?: string;
-        name?: string;
+        longName: string;
+        name: string;
     }
     //vps.Disk
     // fullName: vps.Disk.Disk
     export interface Disk {
-        bandwidthLimit?: number;
-        id?: number;
+        bandwidthLimit: number;
+        id: number;
         lowFreeSpaceThreshold?: number;
         monitoring?: boolean;
-        size?: number;
-        state?: OVH.vps.disk.StateEnum;
-        type?: OVH.vps.disk.TypeEnum;
+        size: number;
+        state: OVH.vps.disk.StateEnum;
+        type: OVH.vps.disk.TypeEnum;
     }
     //vps.Image
     // fullName: vps.Image.Image
     export interface Image {
-        id?: string;
-        name?: string;
+        id: string;
+        name: string;
     }
     //vps.Ip
     // fullName: vps.Ip.Ip
     export interface Ip {
         gateway?: string;
-        geolocation?: OVH.vps.ip.GeolocationEnum;
-        ipAddress?: string;
+        geolocation: OVH.vps.ip.GeolocationEnum;
+        ipAddress: string;
         macAddress?: string;
         reverse?: string;
-        type?: OVH.vps.ip.TypeEnum;
-        version?: OVH.coreTypes.IpVersionEnum;
+        type: OVH.vps.ip.TypeEnum;
+        version: OVH.coreTypes.IpVersionEnum;
     }
     //vps.Model
     // fullName: vps.Model.Model
     export interface Model {
-        availableOptions?: OVH.vps.VpsOptionEnum[];
-        datacenter?: string[];
-        disk?: number;
-        maximumAdditionnalIp?: number;
-        memory?: number;
-        name?: string;
-        offer?: string;
-        vcore?: number;
-        version?: OVH.vps.VpsVersionEnum;
+        availableOptions: OVH.vps.VpsOptionEnum[];
+        datacenter: string[];
+        disk: number;
+        maximumAdditionnalIp: number;
+        memory: number;
+        name: string;
+        offer: string;
+        vcore: number;
+        version: OVH.vps.VpsVersionEnum;
     }
     //vps.Option
     // fullName: vps.Option.Option
     export interface Option {
-        option?: OVH.vps.VpsOptionEnum;
-        state?: OVH.vps.VpsOptionStateEnum;
+        option: OVH.vps.VpsOptionEnum;
+        state: OVH.vps.VpsOptionStateEnum;
     }
     //vps.RestoreStateEnum
     export type RestoreStateEnum = "available" | "restored" | "restoring"
@@ -187,16 +187,16 @@ export namespace vps {
     //vps.Snapshot
     // fullName: vps.Snapshot.Snapshot
     export interface Snapshot {
-        creationDate?: string;
-        description?: string;
+        creationDate: string;
+        description: string;
     }
     //vps.Software
     // fullName: vps.Software.Software
     export interface Software {
-        id?: number;
-        name?: string;
-        status?: OVH.vps.SoftwareStatusEnum;
-        type?: OVH.vps.SoftwareTypeEnum;
+        id: number;
+        name: string;
+        status: OVH.vps.SoftwareStatusEnum;
+        type: OVH.vps.SoftwareTypeEnum;
     }
     //vps.SoftwareStatusEnum
     export type SoftwareStatusEnum = "deprecated" | "stable" | "testing"
@@ -205,10 +205,10 @@ export namespace vps {
     //vps.Task
     // fullName: vps.Task.Task
     export interface Task {
-        id?: number;
-        progress?: number;
-        state?: OVH.vps.TaskStateEnum;
-        type?: OVH.vps.TaskTypeEnum;
+        id: number;
+        progress: number;
+        state: OVH.vps.TaskStateEnum;
+        type: OVH.vps.TaskTypeEnum;
     }
     //vps.TaskStateEnum
     export type TaskStateEnum = "blocked" | "cancelled" | "doing" | "done" | "error" | "paused" | "todo" | "waitingAck"
@@ -217,50 +217,50 @@ export namespace vps {
     //vps.Template
     // fullName: vps.Template.Template
     export interface Template {
-        availableLanguage?: string[];
-        bitFormat?: OVH.vps.TemplateBitFormatEnum;
-        distribution?: string;
-        id?: number;
-        locale?: string;
-        name?: string;
+        availableLanguage: string[];
+        bitFormat: OVH.vps.TemplateBitFormatEnum;
+        distribution: string;
+        id: number;
+        locale: string;
+        name: string;
     }
     //vps.TemplateBitFormatEnum
     export type TemplateBitFormatEnum = 32 | 64
     //vps.VPS
     // fullName: vps.VPS.VPS
     export interface VPS {
-        cluster?: string;
+        cluster: string;
         displayName?: string;
         keymap?: OVH.vps.VpsKeymapEnum;
-        memoryLimit?: number;
-        model?: OVH.vps.Model;
-        monitoringIpBlocks?: string[];
-        name?: string;
-        netbootMode?: OVH.vps.VpsNetbootEnum;
-        offerType?: OVH.vps.VpsOfferEnum;
+        memoryLimit: number;
+        model: OVH.vps.Model;
+        monitoringIpBlocks: string[];
+        name: string;
+        netbootMode: OVH.vps.VpsNetbootEnum;
+        offerType: OVH.vps.VpsOfferEnum;
         slaMonitoring?: boolean;
-        state?: OVH.vps.VpsStateEnum;
-        vcore?: number;
-        zone?: string;
+        state: OVH.vps.VpsStateEnum;
+        vcore: number;
+        zone: string;
     }
     //vps.Veeam
     // fullName: vps.Veeam.Veeam
     export interface Veeam {
-        backup?: boolean;
+        backup: boolean;
     }
     //vps.Vnc
     // fullName: vps.Vnc.Vnc
     export interface Vnc {
-        host?: string;
-        password?: string;
-        port?: number;
+        host: string;
+        password: string;
+        port: number;
     }
     //vps.VncProtocolEnum
     export type VncProtocolEnum = "VNC" | "VNCOverWebSocket"
     //vps.VpsBillingVersion
     // fullName: vps.VpsBillingVersion.VpsBillingVersion
     export interface VpsBillingVersion {
-        version?: number;
+        version: number;
     }
     //vps.VpsKeymapEnum
     export type VpsKeymapEnum = "fr" | "us"
@@ -281,7 +281,7 @@ export namespace vps {
     //vps.VpsTimestampValue
     // fullName: vps.VpsTimestampValue.VpsTimestampValue
     export interface VpsTimestampValue {
-        timestamp?: number;
+        timestamp: number;
         value?: number;
     }
     //vps.VpsVersionEnum
@@ -290,8 +290,8 @@ export namespace vps {
         //vps.automatedBackup.Attached
         // fullName: vps.automatedBackup.Attached.Attached
         export interface Attached {
-            access?: OVH.vps.automatedBackup.attached.Infos;
-            restorePoint?: string;
+            access: OVH.vps.automatedBackup.attached.Infos;
+            restorePoint: string;
         }
         export namespace attached {
             //vps.automatedBackup.attached.Infos
@@ -317,19 +317,19 @@ export namespace vps {
         //vps.ip.ServiceStatus
         // fullName: vps.ip.ServiceStatus.ServiceStatus
         export interface ServiceStatus {
-            dns?: OVH.vps.ip.ServiceStatusService;
-            http?: OVH.vps.ip.ServiceStatusService;
-            https?: OVH.vps.ip.ServiceStatusService;
-            ping?: OVH.vps.ip.ServiceStatusStateEnum;
-            smtp?: OVH.vps.ip.ServiceStatusService;
-            ssh?: OVH.vps.ip.ServiceStatusService;
+            dns: OVH.vps.ip.ServiceStatusService;
+            http: OVH.vps.ip.ServiceStatusService;
+            https: OVH.vps.ip.ServiceStatusService;
+            ping: OVH.vps.ip.ServiceStatusStateEnum;
+            smtp: OVH.vps.ip.ServiceStatusService;
+            ssh: OVH.vps.ip.ServiceStatusService;
             tools?: OVH.vps.ip.ServiceStatusStateEnum;
         }
         //vps.ip.ServiceStatusService
         // fullName: vps.ip.ServiceStatusService.ServiceStatusService
         export interface ServiceStatusService {
-            port?: number;
-            state?: OVH.vps.ip.ServiceStatusStateEnum;
+            port: number;
+            state: OVH.vps.ip.ServiceStatusStateEnum;
         }
         //vps.ip.ServiceStatusStateEnum
         export type ServiceStatusStateEnum = "down" | "up"
@@ -340,8 +340,8 @@ export namespace vps {
         //vps.migration.Migration
         // fullName: vps.migration.Migration.Migration
         export interface Migration {
-            date?: string;
-            id?: string;
+            date: string;
+            id: string;
         }
     }
     export namespace veeam {
@@ -350,21 +350,21 @@ export namespace vps {
         //vps.veeam.Infos
         // fullName: vps.veeam.Infos.Infos
         export interface Infos {
-            nfs?: string;
-            smb?: string;
+            nfs: string;
+            smb: string;
         }
         //vps.veeam.RestorePoint
         // fullName: vps.veeam.RestorePoint.RestorePoint
         export interface RestorePoint {
-            creationTime?: string;
-            id?: number;
+            creationTime: string;
+            id: number;
         }
         //vps.veeam.RestoredBackup
         // fullName: vps.veeam.RestoredBackup.RestoredBackup
         export interface RestoredBackup {
-            accessInfos?: OVH.vps.veeam.Infos;
-            restorePointId?: number;
-            state?: OVH.vps.veeam.StateEnum;
+            accessInfos: OVH.vps.veeam.Infos;
+            restorePointId: number;
+            state: OVH.vps.veeam.StateEnum;
         }
         //vps.veeam.StateEnum
         export type StateEnum = "mounted" | "restoring" | "unmounted" | "unmounting"

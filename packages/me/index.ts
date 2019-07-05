@@ -7,63 +7,63 @@ export namespace agreements {
     //agreements.Contract
     // fullName: agreements.Contract.Contract
     export interface Contract {
-        active?: boolean;
-        date?: string;
-        name?: string;
-        pdf?: string;
-        text?: string;
+        active: boolean;
+        date: string;
+        name: string;
+        pdf: string;
+        text: string;
     }
     //agreements.ContractAgreement
     // fullName: agreements.ContractAgreement.ContractAgreement
     export interface ContractAgreement {
-        agreed?: OVH.agreements.AgreementStateEnum;
-        contractId?: number;
-        date?: string;
-        id?: number;
+        agreed: OVH.agreements.AgreementStateEnum;
+        contractId: number;
+        date: string;
+        id: number;
     }
 }
 export namespace api {
     //api.Application
     // fullName: api.Application.Application
     export interface Application {
-        applicationId?: number;
-        applicationKey?: string;
-        description?: string;
-        name?: string;
-        status?: OVH.api.ApplicationStatusEnum;
+        applicationId: number;
+        applicationKey: string;
+        description: string;
+        name: string;
+        status: OVH.api.ApplicationStatusEnum;
     }
     //api.ApplicationStatusEnum
     export type ApplicationStatusEnum = "active" | "blocked" | "inactive" | "trusted"
     //api.Credential
     // fullName: api.Credential.Credential
     export interface Credential {
-        applicationId?: number;
-        creation?: string;
-        credentialId?: number;
+        applicationId: number;
+        creation: string;
+        credentialId: number;
         expiration?: string;
         lastUse?: string;
-        ovhSupport?: boolean;
-        rules?: OVH.auth.AccessRule[];
-        status?: OVH.auth.CredentialStateEnum;
+        ovhSupport: boolean;
+        rules: OVH.auth.AccessRule[];
+        status: OVH.auth.CredentialStateEnum;
     }
     //api.Log
     // fullName: api.Log.Log
     export interface Log {
-        account?: string;
-        date?: string;
+        account: string;
+        date: string;
         ip?: string;
-        logId?: number;
-        method?: OVH.http.MethodEnum;
-        path?: string;
-        route?: string;
+        logId: number;
+        method: OVH.http.MethodEnum;
+        path: string;
+        route: string;
     }
 }
 export namespace auth {
     //auth.AccessRule
     // fullName: auth.AccessRule.AccessRule
     export interface AccessRule {
-        method?: OVH.auth.MethodEnum;
-        path?: string;
+        method: OVH.auth.MethodEnum;
+        path: string;
     }
     //auth.CredentialStateEnum
     export type CredentialStateEnum = "expired" | "pendingValidation" | "refused" | "validated"
@@ -74,25 +74,25 @@ export namespace billing {
     //billing.AutomaticPaymentMean
     // fullName: billing.AutomaticPaymentMean.AutomaticPaymentMean
     export interface AutomaticPaymentMean {
-        bankAccount?: boolean;
-        creditCard?: boolean;
-        deferredPaymentAccount?: boolean;
-        paypal?: boolean;
+        bankAccount: boolean;
+        creditCard: boolean;
+        deferredPaymentAccount: boolean;
+        paypal: boolean;
     }
     //billing.BankAccount
     // fullName: billing.BankAccount.BankAccount
     export interface BankAccount {
-        bic?: string;
-        creationDate?: string;
-        defaultPaymentMean?: boolean;
+        bic: string;
+        creationDate: string;
+        defaultPaymentMean: boolean;
         description?: string;
-        iban?: string;
-        id?: number;
+        iban: string;
+        id: number;
         mandateSignatureDate?: string;
-        ownerAddress?: string;
-        ownerName?: string;
-        state?: OVH.billing.BankAccountStateEnum;
-        uniqueReference?: string;
+        ownerAddress: string;
+        ownerName: string;
+        state: OVH.billing.BankAccountStateEnum;
+        uniqueReference: string;
         validationDocumentLink?: string;
     }
     //billing.BankAccountStateEnum
@@ -100,125 +100,125 @@ export namespace billing {
     //billing.Bill
     // fullName: billing.Bill.Bill
     export interface Bill {
-        billId?: string;
-        date?: string;
-        orderId?: number;
-        password?: string;
-        pdfUrl?: string;
-        priceWithTax?: OVH.order.Price;
-        priceWithoutTax?: OVH.order.Price;
-        tax?: OVH.order.Price;
-        url?: string;
+        billId: string;
+        date: string;
+        orderId: number;
+        password: string;
+        pdfUrl: string;
+        priceWithTax: OVH.order.Price;
+        priceWithoutTax: OVH.order.Price;
+        tax: OVH.order.Price;
+        url: string;
     }
     //billing.BillDetail
     // fullName: billing.BillDetail.BillDetail
     export interface BillDetail {
-        billDetailId?: string;
-        description?: string;
-        domain?: string;
+        billDetailId: string;
+        description: string;
+        domain: string;
         periodEnd?: string;
         periodStart?: string;
-        quantity?: string;
-        totalPrice?: OVH.order.Price;
-        unitPrice?: OVH.order.Price;
+        quantity: string;
+        totalPrice: OVH.order.Price;
+        unitPrice: OVH.order.Price;
     }
     //billing.BillingTaskStatusEnum
     export type BillingTaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
     //billing.CreditBalance
     // fullName: billing.CreditBalance.CreditBalance
     export interface CreditBalance {
-        amount?: OVH.order.Price;
-        balanceName?: string;
+        amount: OVH.order.Price;
+        balanceName: string;
     }
     //billing.CreditCard
     // fullName: billing.CreditCard.CreditCard
     export interface CreditCard {
-        defaultPaymentMean?: boolean;
+        defaultPaymentMean: boolean;
         description?: string;
-        expirationDate?: string;
-        id?: number;
-        number?: string;
-        state?: OVH.billing.CreditCardStateEnum;
-        threeDsValidated?: boolean;
-        type?: string;
+        expirationDate: string;
+        id: number;
+        number: string;
+        state: OVH.billing.CreditCardStateEnum;
+        threeDsValidated: boolean;
+        type: string;
     }
     //billing.CreditCardStateEnum
     export type CreditCardStateEnum = "expired" | "tooManyFailures" | "valid"
     //billing.DeferredPaymentAccount
     // fullName: billing.DeferredPaymentAccount.DeferredPaymentAccount
     export interface DeferredPaymentAccount {
-        creationDate?: string;
-        defaultPaymentMean?: boolean;
+        creationDate: string;
+        defaultPaymentMean: boolean;
         description?: string;
-        id?: number;
+        id: number;
         label?: string;
-        state?: OVH.billing.DeferredPaymentAccountStatusEnum;
+        state: OVH.billing.DeferredPaymentAccountStatusEnum;
     }
     //billing.DeferredPaymentAccountStatusEnum
     export type DeferredPaymentAccountStatusEnum = "valid"
     //billing.Deposit
     // fullName: billing.Deposit.Deposit
     export interface Deposit {
-        amount?: OVH.order.Price;
-        date?: string;
-        depositId?: string;
-        orderId?: number;
-        password?: string;
+        amount: OVH.order.Price;
+        date: string;
+        depositId: string;
+        orderId: number;
+        password: string;
         paymentInfo?: OVH.debt.associatedObject.PaymentInfo;
-        pdfUrl?: string;
-        url?: string;
+        pdfUrl: string;
+        url: string;
     }
     //billing.DepositDetail
     // fullName: billing.DepositDetail.DepositDetail
     export interface DepositDetail {
-        depositDetailId?: string;
-        description?: string;
-        domain?: string;
-        quantity?: string;
-        totalPrice?: OVH.order.Price;
-        unitPrice?: OVH.order.Price;
+        depositDetailId: string;
+        description: string;
+        domain: string;
+        quantity: string;
+        totalPrice: OVH.order.Price;
+        unitPrice: OVH.order.Price;
     }
     //billing.FidelityAccount
     // fullName: billing.FidelityAccount.FidelityAccount
     export interface FidelityAccount {
         alertThreshold?: number;
-        balance?: number;
-        canBeCredited?: boolean;
-        lastUpdate?: string;
-        openDate?: string;
+        balance: number;
+        canBeCredited: boolean;
+        lastUpdate: string;
+        openDate: string;
     }
     //billing.FidelityMovement
     // fullName: billing.FidelityMovement.FidelityMovement
     export interface FidelityMovement {
-        amount?: number;
-        balance?: number;
-        date?: string;
-        description?: string;
-        movementId?: number;
-        operation?: OVH.billing.fidelityAccount.OperationEnum;
-        order?: number;
-        previousBalance?: number;
+        amount: number;
+        balance: number;
+        date: string;
+        description: string;
+        movementId: number;
+        operation: OVH.billing.fidelityAccount.OperationEnum;
+        order: number;
+        previousBalance: number;
     }
     //billing.ItemDetail
     // fullName: billing.ItemDetail.ItemDetail
     export interface ItemDetail {
-        order?: OVH.billing.ItemDetail.Order;
+        order: OVH.billing.ItemDetail.Order;
     }
     export namespace ItemDetail {
         //billing.ItemDetail.Order
         // fullName: billing.ItemDetail.Order.Order
         export interface Order {
             action?: OVH.billing.ItemDetail.OrderActionEnum;
-            configurations?: OVH.billing.ItemDetail.OrderConfiguration[];
-            plan?: OVH.billing.ItemDetail.OrderPlan;
+            configurations: OVH.billing.ItemDetail.OrderConfiguration[];
+            plan: OVH.billing.ItemDetail.OrderPlan;
         }
         //billing.ItemDetail.OrderActionEnum
         export type OrderActionEnum = "consumption" | "installation" | "renew" | "upgrade"
         //billing.ItemDetail.OrderConfiguration
         // fullName: billing.ItemDetail.OrderConfiguration.OrderConfiguration
         export interface OrderConfiguration {
-            label?: string;
-            value?: string;
+            label: string;
+            value: string;
         }
         //billing.ItemDetail.OrderPlan
         // fullName: billing.ItemDetail.OrderPlan.OrderPlan
@@ -226,7 +226,7 @@ export namespace billing {
             code?: string;
             duration?: string;
             pricingMode?: string;
-            product?: OVH.billing.ItemDetail.OrderPlanProduct;
+            product: OVH.billing.ItemDetail.OrderPlanProduct;
             quantity?: number;
         }
         //billing.ItemDetail.OrderPlanProduct
@@ -240,230 +240,230 @@ export namespace billing {
     export interface ManualDomainPaymentStatus {
         domainsToMigrate?: number;
         migratedDomains?: number;
-        status?: OVH.billing.BillingTaskStatusEnum;
+        status: OVH.billing.BillingTaskStatusEnum;
     }
     //billing.Movement
     // fullName: billing.Movement.Movement
     export interface Movement {
-        amount?: OVH.order.Price;
-        balance?: OVH.order.Price;
-        date?: string;
-        description?: string;
-        movementId?: number;
-        operation?: OVH.billing.ovhAccount.OperationEnum;
-        order?: number;
-        previousBalance?: OVH.order.Price;
+        amount: OVH.order.Price;
+        balance: OVH.order.Price;
+        date: string;
+        description: string;
+        movementId: number;
+        operation: OVH.billing.ovhAccount.OperationEnum;
+        order: number;
+        previousBalance: OVH.order.Price;
     }
     //billing.Order
     // fullName: billing.Order.Order
     export interface Order {
         date?: string;
         expirationDate?: string;
-        orderId?: number;
-        password?: string;
-        pdfUrl?: string;
-        priceWithTax?: OVH.order.Price;
-        priceWithoutTax?: OVH.order.Price;
+        orderId: number;
+        password: string;
+        pdfUrl: string;
+        priceWithTax: OVH.order.Price;
+        priceWithoutTax: OVH.order.Price;
         retractionDate?: string;
-        tax?: OVH.order.Price;
-        url?: string;
+        tax: OVH.order.Price;
+        url: string;
     }
     //billing.OrderDetail
     // fullName: billing.OrderDetail.OrderDetail
     export interface OrderDetail {
-        cancelled?: boolean;
-        description?: string;
-        domain?: string;
-        orderDetailId?: number;
-        quantity?: string;
-        totalPrice?: OVH.order.Price;
-        unitPrice?: OVH.order.Price;
+        cancelled: boolean;
+        description: string;
+        domain: string;
+        orderDetailId: number;
+        quantity: string;
+        totalPrice: OVH.order.Price;
+        unitPrice: OVH.order.Price;
     }
     //billing.OvhAccount
     // fullName: billing.OvhAccount.OvhAccount
     export interface OvhAccount {
         alertThreshold?: number;
-        balance?: OVH.order.Price;
-        canBeCredited?: boolean;
-        isActive?: boolean;
-        lastUpdate?: string;
-        openDate?: string;
-        ovhAccountId?: string;
+        balance: OVH.order.Price;
+        canBeCredited: boolean;
+        isActive: boolean;
+        lastUpdate: string;
+        openDate: string;
+        ovhAccountId: string;
     }
     //billing.Payment
     // fullName: billing.Payment.Payment
     export interface Payment {
-        paymentDate?: string;
+        paymentDate: string;
         paymentIdentifier?: string;
-        paymentType?: OVH.billing.PaymentMeanEnum;
+        paymentType: OVH.billing.PaymentMeanEnum;
     }
     //billing.PaymentMeanEnum
     export type PaymentMeanEnum = "cash" | "chargeback" | "cheque" | "creditAccount" | "creditCard" | "debtAccount" | "deposit" | "digitalLaunchPad" | "edinar" | "fidelityPoints" | "free" | "ideal" | "incubatorAccount" | "mandat" | "multibanco" | "none" | "ovhAccount" | "paymentMandate" | "paypal" | "payu" | "platnosci" | "refund" | "transfer" | "withdrawal"
     //billing.PaymentMeanValidation
     // fullName: billing.PaymentMeanValidation.PaymentMeanValidation
     export interface PaymentMeanValidation {
-        id?: number;
+        id: number;
         submitUrl?: string;
-        url?: string;
-        validationType?: OVH.billing.PaymentMeanValidationType;
+        url: string;
+        validationType: OVH.billing.PaymentMeanValidationType;
     }
     //billing.PaymentMeanValidationType
     export type PaymentMeanValidationType = "creditAccount" | "documentToSend" | "simpleValidation"
     //billing.PaymentMethod
     // fullName: billing.PaymentMethod.PaymentMethod
     export interface PaymentMethod {
-        billingContactId?: number;
-        creationDate?: string;
+        billingContactId: number;
+        creationDate: string;
         default?: boolean;
-        description?: string;
-        id?: number;
+        description: string;
+        id: number;
         paymentSubType?: OVH.billing.paymentMethod.PaymentSubTypeEnum;
-        paymentType?: OVH.billing.paymentMethod.PaymentTypeEnum;
-        publicLabel?: string;
-        status?: OVH.billing.paymentMethod.StatusEnum;
+        paymentType: OVH.billing.paymentMethod.PaymentTypeEnum;
+        publicLabel: string;
+        status: OVH.billing.paymentMethod.StatusEnum;
     }
     //billing.Paypal
     // fullName: billing.Paypal.Paypal
     export interface Paypal {
-        agreementId?: string;
-        creationDate?: string;
-        defaultPaymentMean?: boolean;
+        agreementId: string;
+        creationDate: string;
+        defaultPaymentMean: boolean;
         description?: string;
-        email?: string;
-        id?: number;
-        state?: OVH.billing.PaypalStateEnum;
+        email: string;
+        id: number;
+        state: OVH.billing.PaypalStateEnum;
     }
     //billing.PaypalStateEnum
     export type PaypalStateEnum = "tooManyFailures" | "valid"
     //billing.Refund
     // fullName: billing.Refund.Refund
     export interface Refund {
-        date?: string;
-        orderId?: number;
+        date: string;
+        orderId: number;
         originalBillId?: string;
-        password?: string;
-        pdfUrl?: string;
-        priceWithTax?: OVH.order.Price;
-        priceWithoutTax?: OVH.order.Price;
-        refundId?: string;
-        tax?: OVH.order.Price;
-        url?: string;
+        password: string;
+        pdfUrl: string;
+        priceWithTax: OVH.order.Price;
+        priceWithoutTax: OVH.order.Price;
+        refundId: string;
+        tax: OVH.order.Price;
+        url: string;
     }
     //billing.RefundDetail
     // fullName: billing.RefundDetail.RefundDetail
     export interface RefundDetail {
-        description?: string;
-        domain?: string;
-        quantity?: string;
-        reference?: string;
-        refundDetailId?: string;
-        refundId?: string;
-        totalPrice?: OVH.order.Price;
-        unitPrice?: OVH.order.Price;
+        description: string;
+        domain: string;
+        quantity: string;
+        reference: string;
+        refundDetailId: string;
+        refundId: string;
+        totalPrice: OVH.order.Price;
+        unitPrice: OVH.order.Price;
     }
     //billing.ReusablePaymentMeanEnum
     export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "fidelityAccount" | "ovhAccount" | "paypal"
     //billing.SlaOperation
     // fullName: billing.SlaOperation.SlaOperation
     export interface SlaOperation {
-        date?: string;
-        description?: string;
+        date: string;
+        description: string;
         endDate?: string;
-        id?: number;
-        name?: string;
-        startDate?: string;
+        id: number;
+        name: string;
+        startDate: string;
     }
     //billing.SlaOperationService
     // fullName: billing.SlaOperationService.SlaOperationService
     export interface SlaOperationService {
-        description?: string;
-        serviceName?: string;
-        slaApplication?: string;
-        slaPlan?: string;
+        description: string;
+        serviceName: string;
+        slaApplication: string;
+        slaPlan: string;
     }
     //billing.VoucherAccount
     // fullName: billing.VoucherAccount.VoucherAccount
     export interface VoucherAccount {
-        balance?: OVH.order.Price;
-        lastUpdate?: string;
-        openDate?: string;
-        voucherAccountId?: string;
+        balance: OVH.order.Price;
+        lastUpdate: string;
+        openDate: string;
+        voucherAccountId: string;
     }
     //billing.VoucherMovement
     // fullName: billing.VoucherMovement.VoucherMovement
     export interface VoucherMovement {
-        amount?: OVH.order.Price;
-        balance?: OVH.order.Price;
-        date?: string;
-        description?: string;
-        movementId?: number;
-        operation?: OVH.billing.voucherAccount.OperationEnum;
-        order?: number;
-        previousBalance?: OVH.order.Price;
+        amount: OVH.order.Price;
+        balance: OVH.order.Price;
+        date: string;
+        description: string;
+        movementId: number;
+        operation: OVH.billing.voucherAccount.OperationEnum;
+        order: number;
+        previousBalance: OVH.order.Price;
     }
     //billing.Withdrawal
     // fullName: billing.Withdrawal.Withdrawal
     export interface Withdrawal {
-        amount?: OVH.order.Price;
-        country?: string;
-        date?: string;
-        orderId?: number;
-        password?: string;
-        pdfUrl?: string;
-        url?: string;
-        withdrawalId?: string;
+        amount: OVH.order.Price;
+        country: string;
+        date: string;
+        orderId: number;
+        password: string;
+        pdfUrl: string;
+        url: string;
+        withdrawalId: string;
     }
     //billing.WithdrawalDetail
     // fullName: billing.WithdrawalDetail.WithdrawalDetail
     export interface WithdrawalDetail {
-        description?: string;
-        domain?: string;
-        quantity?: string;
-        totalPrice?: OVH.order.Price;
-        unitPrice?: OVH.order.Price;
-        withdrawalDetailId?: string;
+        description: string;
+        domain: string;
+        quantity: string;
+        totalPrice: OVH.order.Price;
+        unitPrice: OVH.order.Price;
+        withdrawalDetailId: string;
     }
     export namespace credit {
         //billing.credit.Balance
         // fullName: billing.credit.Balance.Balance
         export interface Balance {
-            amount?: OVH.order.Price;
-            balanceName?: string;
-            booked?: OVH.billing.credit.balance.BookedMovement[];
-            creationDate?: string;
-            expiring?: OVH.billing.credit.balance.ExpiringMovement[];
-            expiringSummary?: OVH.billing.credit.balance.ExpiringMovement[];
-            lastUpdate?: string;
-            type?: OVH.billing.credit.balance.Type;
+            amount: OVH.order.Price;
+            balanceName: string;
+            booked: OVH.billing.credit.balance.BookedMovement[];
+            creationDate: string;
+            expiring: OVH.billing.credit.balance.ExpiringMovement[];
+            expiringSummary: OVH.billing.credit.balance.ExpiringMovement[];
+            lastUpdate: string;
+            type: OVH.billing.credit.balance.Type;
         }
         export namespace balance {
             //billing.credit.balance.BookedMovement
             // fullName: billing.credit.balance.BookedMovement.BookedMovement
             export interface BookedMovement {
-                amount?: OVH.order.Price;
-                orderId?: number;
+                amount: OVH.order.Price;
+                orderId: number;
             }
             //billing.credit.balance.ExpiringMovement
             // fullName: billing.credit.balance.ExpiringMovement.ExpiringMovement
             export interface ExpiringMovement {
-                amount?: OVH.order.Price;
-                creationDate?: string;
-                expirationDate?: string;
-                lastUpdate?: string;
-                sourceObject?: OVH.billing.credit.balance.movement.SubObject;
+                amount: OVH.order.Price;
+                creationDate: string;
+                expirationDate: string;
+                lastUpdate: string;
+                sourceObject: OVH.billing.credit.balance.movement.SubObject;
             }
             //billing.credit.balance.Movement
             // fullName: billing.credit.balance.Movement.Movement
             export interface Movement {
-                amount?: OVH.order.Price;
-                balanceName?: string;
-                creationDate?: string;
+                amount: OVH.order.Price;
+                balanceName: string;
+                creationDate: string;
                 expirationDate?: string;
-                lastUpdate?: string;
-                movementId?: number;
+                lastUpdate: string;
+                movementId: number;
                 orderId?: number;
-                sourceObject?: OVH.billing.credit.balance.movement.SubObject;
-                type?: string;
+                sourceObject: OVH.billing.credit.balance.movement.SubObject;
+                type: string;
             }
             //billing.credit.balance.Type
             export type Type = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
@@ -493,18 +493,18 @@ export namespace billing {
         //billing.order.PayWithPaymentMethod
         // fullName: billing.order.PayWithPaymentMethod.PayWithPaymentMethod
         export interface PayWithPaymentMethod {
-            id?: number;
+            id: number;
         }
         //billing.order.PaymentMean
         // fullName: billing.order.PaymentMean.PaymentMean
         export interface PaymentMean {
-            fee?: number;
+            fee: number;
             htmlForm?: string;
-            httpMethod?: string;
+            httpMethod: string;
             logo?: string;
-            parameters?: OVH.billing.order.paymentMean.HttpParameter[];
+            parameters: OVH.billing.order.paymentMean.HttpParameter[];
             subType?: string;
-            url?: string;
+            url: string;
         }
         //billing.order.PaymentMeans
         // fullName: billing.order.PaymentMeans.PaymentMeans
@@ -521,13 +521,13 @@ export namespace billing {
         //billing.order.PaymentMethods
         // fullName: billing.order.PaymentMethods.PaymentMethods
         export interface PaymentMethods {
-            available?: OVH.payment.method.AvailablePaymentMethod[];
-            registered?: number[];
+            available: OVH.payment.method.AvailablePaymentMethod[];
+            registered: number[];
         }
         //billing.order.RegisteredPaymentMean
         // fullName: billing.order.RegisteredPaymentMean.RegisteredPaymentMean
         export interface RegisteredPaymentMean {
-            paymentMean?: OVH.billing.ReusablePaymentMeanEnum;
+            paymentMean: OVH.billing.ReusablePaymentMeanEnum;
         }
         //billing.order.RetractionReasonEnum
         export type RetractionReasonEnum = "competitor" | "difficulty" | "expensive" | "other" | "performance" | "reliability" | "unused"
@@ -540,14 +540,14 @@ export namespace billing {
             // fullName: billing.order.paymentMean.HttpParameter.HttpParameter
             export interface HttpParameter {
                 choice?: OVH.billing.order.paymentMean.HttpParameterChoice[];
-                name?: string;
+                name: string;
                 value?: string;
             }
             //billing.order.paymentMean.HttpParameterChoice
             // fullName: billing.order.paymentMean.HttpParameterChoice.HttpParameterChoice
             export interface HttpParameterChoice {
-                name?: string;
-                value?: string;
+                name: string;
+                value: string;
             }
         }
     }
@@ -572,47 +572,47 @@ export namespace complexType {
     //complexType.SafeKeyValue
     // fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
-        key?: string;
-        value?: T;
+        key: string;
+        value: T;
     }
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
 }
 export namespace contact {
     //contact.Address
     // fullName: contact.Address.Address
     export interface Address {
-        city?: string;
-        country?: OVH.nichandle.CountryEnum;
-        line1?: string;
+        city: string;
+        country: OVH.nichandle.CountryEnum;
+        line1: string;
         line2?: string;
         line3?: string;
         otherDetails?: string;
         province?: string;
-        zip?: string;
+        zip: string;
     }
     //contact.Contact
     // fullName: contact.Contact.Contact
     export interface Contact {
-        address?: OVH.contact.Address;
+        address: OVH.contact.Address;
         birthCity?: string;
         birthCountry?: OVH.nichandle.CountryEnum;
         birthDay?: string;
         birthZip?: string;
         cellPhone?: string;
         companyNationalIdentificationNumber?: string;
-        email?: string;
+        email: string;
         fax?: string;
-        firstName?: string;
+        firstName: string;
         gender?: OVH.nichandle.GenderEnum;
-        id?: number;
-        language?: OVH.nichandle.LanguageEnum;
-        lastName?: string;
-        legalForm?: OVH.nichandle.LegalFormEnum;
+        id: number;
+        language: OVH.nichandle.LanguageEnum;
+        lastName: string;
+        legalForm: OVH.nichandle.LegalFormEnum;
         nationalIdentificationNumber?: string;
         nationality?: OVH.nichandle.CountryEnum;
         organisationName?: string;
@@ -624,9 +624,9 @@ export namespace contact {
     //contact.FieldInformation
     // fullName: contact.FieldInformation.FieldInformation
     export interface FieldInformation {
-        fieldName?: string;
-        mandatory?: boolean;
-        readOnly?: boolean;
+        fieldName: string;
+        mandatory: boolean;
+        readOnly: boolean;
     }
 }
 export namespace coreTypes {
@@ -639,33 +639,33 @@ export namespace debt {
     //debt.Balance
     // fullName: debt.Balance.Balance
     export interface Balance {
-        active?: boolean;
-        dueAmount?: OVH.order.Price;
-        pendingAmount?: OVH.order.Price;
-        todoAmount?: OVH.order.Price;
-        unmaturedAmount?: OVH.order.Price;
+        active: boolean;
+        dueAmount: OVH.order.Price;
+        pendingAmount: OVH.order.Price;
+        todoAmount: OVH.order.Price;
+        unmaturedAmount: OVH.order.Price;
     }
     //debt.Debt
     // fullName: debt.Debt.Debt
     export interface Debt {
-        amount?: OVH.order.Price;
-        date?: string;
-        debtId?: number;
-        dueAmount?: OVH.order.Price;
+        amount: OVH.order.Price;
+        date: string;
+        debtId: number;
+        dueAmount: OVH.order.Price;
         dueDate?: string;
-        orderId?: number;
-        pendingAmount?: OVH.order.Price;
-        todoAmount?: OVH.order.Price;
-        unmaturedAmount?: OVH.order.Price;
+        orderId: number;
+        pendingAmount: OVH.order.Price;
+        todoAmount: OVH.order.Price;
+        unmaturedAmount: OVH.order.Price;
     }
     //debt.Operation
     // fullName: debt.Operation.Operation
     export interface Operation {
-        amount?: OVH.order.Price;
-        date?: string;
-        depositOrderId?: number;
-        operationId?: number;
-        status?: OVH.debt.entry.StatusEnum;
+        amount: OVH.order.Price;
+        date: string;
+        depositOrderId: number;
+        operationId: number;
+        status: OVH.debt.entry.StatusEnum;
         type?: OVH.debt.entry.OperationEnum;
     }
     export namespace associatedObject {
@@ -673,7 +673,7 @@ export namespace debt {
         // fullName: debt.associatedObject.PaymentInfo.PaymentInfo
         export interface PaymentInfo {
             description?: string;
-            paymentType?: OVH.billing.PaymentMeanEnum;
+            paymentType: OVH.billing.PaymentMeanEnum;
             publicLabel?: string;
         }
         //debt.associatedObject.TypeEnum
@@ -722,50 +722,50 @@ export namespace dedicated {
         //dedicated.installationTemplate.Templates
         // fullName: dedicated.installationTemplate.Templates.Templates
         export interface Templates {
-            availableLanguages?: OVH.dedicated.TemplateOsLanguageEnum[];
+            availableLanguages: OVH.dedicated.TemplateOsLanguageEnum[];
             beta?: boolean;
-            bitFormat?: OVH.dedicated.server.BitFormatEnum;
-            category?: OVH.dedicated.TemplateOsUsageEnum;
+            bitFormat: OVH.dedicated.server.BitFormatEnum;
+            category: OVH.dedicated.TemplateOsUsageEnum;
             customization?: OVH.dedicated.TemplateOsProperties;
-            defaultLanguage?: OVH.dedicated.TemplateOsLanguageEnum;
+            defaultLanguage: OVH.dedicated.TemplateOsLanguageEnum;
             deprecated?: boolean;
-            description?: string;
-            distribution?: string;
-            family?: OVH.dedicated.TemplateOsTypeEnum;
-            filesystems?: OVH.dedicated.TemplateOsFileSystemEnum[];
+            description: string;
+            distribution: string;
+            family: OVH.dedicated.TemplateOsTypeEnum;
+            filesystems: OVH.dedicated.TemplateOsFileSystemEnum[];
             hardRaidConfiguration?: boolean;
             lastModification?: string;
             lvmReady?: boolean;
             supportsDistributionKernel?: boolean;
             supportsGptLabel?: boolean;
-            supportsRTM?: boolean;
+            supportsRTM: boolean;
             supportsSqlServer?: boolean;
             supportsUEFI?: OVH.dedicated.server.SupportsUEFIEnum;
-            templateName?: string;
+            templateName: string;
         }
         //dedicated.installationTemplate.hardwareRaid
         // fullName: dedicated.installationTemplate.hardwareRaid.hardwareRaid
         export interface hardwareRaid {
-            disks?: string[];
-            mode?: OVH.dedicated.TemplateOsHardwareRaidEnum;
-            name?: string;
-            step?: number;
+            disks: string[];
+            mode: OVH.dedicated.TemplateOsHardwareRaidEnum;
+            name: string;
+            step: number;
         }
         //dedicated.installationTemplate.templatePartitioningSchemes
         // fullName: dedicated.installationTemplate.templatePartitioningSchemes.templatePartitioningSchemes
         export interface templatePartitioningSchemes {
-            name?: string;
-            priority?: number;
+            name: string;
+            priority: number;
         }
         //dedicated.installationTemplate.templatePartitions
         // fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
         export interface templatePartitions {
-            filesystem?: OVH.dedicated.TemplateOsFileSystemEnum;
-            mountpoint?: string;
-            order?: number;
+            filesystem: OVH.dedicated.TemplateOsFileSystemEnum;
+            mountpoint: string;
+            order: number;
             raid?: OVH.dedicated.server.PartitionRaidEnum;
-            size?: OVH.complexType.UnitAndValue<number>;
-            type?: OVH.dedicated.TemplatePartitionTypeEnum;
+            size: OVH.complexType.UnitAndValue<number>;
+            type: OVH.dedicated.TemplatePartitionTypeEnum;
             volumeName?: string;
         }
     }
@@ -790,18 +790,18 @@ export namespace domain {
     //domain.OperationStep
     // fullName: domain.OperationStep.OperationStep
     export interface OperationStep {
-        description?: string;
-        executionDuration?: number;
-        step?: string;
+        description: string;
+        executionDuration: number;
+        step: string;
     }
 }
 export namespace geolocation {
     //geolocation.ContinentCountryLocation
     // fullName: geolocation.ContinentCountryLocation.ContinentCountryLocation
     export interface ContinentCountryLocation {
-        continent?: OVH.coreTypes.ContinentEnum;
-        countryCode?: OVH.coreTypes.CountryEnum;
-        ip?: string;
+        continent: OVH.coreTypes.ContinentEnum;
+        countryCode: OVH.coreTypes.CountryEnum;
+        ip: string;
     }
 }
 export namespace http {
@@ -812,9 +812,9 @@ export namespace insight {
     //insight.Access
     // fullName: insight.Access.Access
     export interface Access {
-        access?: string;
-        createdAt?: string;
-        expireAt?: string;
+        access: string;
+        createdAt: string;
+        expireAt: string;
     }
 }
 export namespace me {
@@ -822,7 +822,7 @@ export namespace me {
         //me.SupportLevel.Level
         // fullName: me.SupportLevel.Level.Level
         export interface Level {
-            level?: OVH.me.SupportLevel.LevelTypeEnum;
+            level: OVH.me.SupportLevel.LevelTypeEnum;
         }
         //me.SupportLevel.LevelTypeEnum
         export type LevelTypeEnum = "standard" | "premium" | "premium-accredited" | "business" | "enterprise"
@@ -831,64 +831,64 @@ export namespace me {
         //me.consent.Campaign
         // fullName: me.consent.Campaign.Campaign
         export interface Campaign {
-            description?: string;
-            name?: string;
-            type?: OVH.me.consent.CampaignTypeEnum;
+            description: string;
+            name: string;
+            type: OVH.me.consent.CampaignTypeEnum;
         }
         //me.consent.CampaignTypeEnum
         export type CampaignTypeEnum = "OPTIN" | "OPTOUT"
         //me.consent.Consent
         // fullName: me.consent.Consent.Consent
         export interface Consent {
-            campaign?: string;
-            history?: OVH.me.consent.Decision[];
-            type?: OVH.me.consent.CampaignTypeEnum;
-            value?: boolean;
+            campaign: string;
+            history: OVH.me.consent.Decision[];
+            type: OVH.me.consent.CampaignTypeEnum;
+            value: boolean;
         }
         //me.consent.Decision
         // fullName: me.consent.Decision.Decision
         export interface Decision {
-            timestamp?: string;
-            value?: boolean;
+            timestamp: string;
+            value: boolean;
         }
     }
     export namespace consumption {
         //me.consumption.Price
         // fullName: me.consumption.Price.Price
         export interface Price {
-            currencyCode?: OVH.order.CurrencyCodeEnum;
-            text?: string;
-            value?: number;
-            valueInUcents?: number;
+            currencyCode: OVH.order.CurrencyCodeEnum;
+            text: string;
+            value: number;
+            valueInUcents: number;
         }
         //me.consumption.Transaction
         // fullName: me.consumption.Transaction.Transaction
         export interface Transaction {
-            beginDate?: string;
+            beginDate: string;
             creationDate?: string;
-            elements?: OVH.me.consumption.transaction.Element[];
+            elements: OVH.me.consumption.transaction.Element[];
             endDate?: string;
             id?: number;
             lastUpdate?: string;
-            price?: OVH.me.consumption.Price;
-            serviceId?: number;
+            price: OVH.me.consumption.Price;
+            serviceId: number;
         }
         export namespace transaction {
             //me.consumption.transaction.Element
             // fullName: me.consumption.transaction.Element.Element
             export interface Element {
-                details?: OVH.me.consumption.transaction.Element.Detail[];
-                planCode?: string;
-                planFamily?: string;
-                price?: OVH.me.consumption.Price;
-                quantity?: number;
+                details: OVH.me.consumption.transaction.Element.Detail[];
+                planCode: string;
+                planFamily: string;
+                price: OVH.me.consumption.Price;
+                quantity: number;
             }
             export namespace Element {
                 //me.consumption.transaction.Element.Detail
                 // fullName: me.consumption.transaction.Element.Detail.Detail
                 export interface Detail {
-                    price?: OVH.me.consumption.Price;
-                    quantity?: number;
+                    price: OVH.me.consumption.Price;
+                    quantity: number;
                     unique_id?: string;
                 }
             }
@@ -899,19 +899,19 @@ export namespace me {
             //me.payment.method.AvailablePaymentMethod
             // fullName: me.payment.method.AvailablePaymentMethod.AvailablePaymentMethod
             export interface AvailablePaymentMethod {
-                icon?: OVH.me.payment.method.Icon;
-                oneshot?: boolean;
-                paymentType?: string;
-                registerable?: boolean;
+                icon: OVH.me.payment.method.Icon;
+                oneshot: boolean;
+                paymentType: string;
+                registerable: boolean;
             }
             //me.payment.method.CallbackUrl
             // fullName: me.payment.method.CallbackUrl.CallbackUrl
             export interface CallbackUrl {
-                cancel?: string;
-                error?: string;
-                failure?: string;
-                pending?: string;
-                success?: string;
+                cancel: string;
+                error: string;
+                failure: string;
+                pending: string;
+                success: string;
             }
             //me.payment.method.Icon
             // fullName: me.payment.method.Icon.Icon
@@ -923,18 +923,18 @@ export namespace me {
             // fullName: me.payment.method.PaymentMethod.PaymentMethod
             export interface PaymentMethod {
                 billingContactId?: number;
-                creationDate?: string;
-                default?: boolean;
+                creationDate: string;
+                default: boolean;
                 description?: string;
                 expirationDate?: string;
-                icon?: OVH.me.payment.method.Icon;
+                icon: OVH.me.payment.method.Icon;
                 label?: string;
-                lastUpdate?: string;
+                lastUpdate: string;
                 paymentMeanId?: number;
-                paymentMethodId?: number;
+                paymentMethodId: number;
                 paymentSubType?: string;
-                paymentType?: string;
-                status?: OVH.me.payment.method.PaymentMethod.Status;
+                paymentType: string;
+                status: OVH.me.payment.method.PaymentMethod.Status;
             }
             export namespace PaymentMethod {
                 //me.payment.method.PaymentMethod.Status
@@ -944,9 +944,9 @@ export namespace me {
                 //me.payment.method.Register.ValidationResult
                 // fullName: me.payment.method.Register.ValidationResult.ValidationResult
                 export interface ValidationResult {
-                    paymentMethodId?: number;
+                    paymentMethodId: number;
                     url?: string;
-                    validationType?: OVH.me.payment.method.Register.ValidationType;
+                    validationType: OVH.me.payment.method.Register.ValidationType;
                 }
                 //me.payment.method.Register.ValidationType
                 export type ValidationType = "DONE" | "REDIRECT" | "IFRAME_VANTIV"
@@ -954,11 +954,11 @@ export namespace me {
             //me.payment.method.Transaction
             // fullName: me.payment.method.Transaction.Transaction
             export interface Transaction {
-                amount?: OVH.order.Price;
-                creationDate?: string;
-                status?: OVH.me.payment.method.Transaction.Status;
-                transactionId?: number;
-                type?: OVH.me.payment.method.Transaction.Type;
+                amount: OVH.order.Price;
+                creationDate: string;
+                status: OVH.me.payment.method.Transaction.Status;
+                transactionId: number;
+                type: OVH.me.payment.method.Transaction.Type;
             }
             export namespace Transaction {
                 //me.payment.method.Transaction.Status
@@ -974,64 +974,64 @@ export namespace nichandle {
         //nichandle.Authentication.Certificate
         // fullName: nichandle.Authentication.Certificate.Certificate
         export interface Certificate {
-            expiration?: string;
-            subject?: string;
+            expiration: string;
+            subject: string;
         }
         //nichandle.Authentication.Group
         // fullName: nichandle.Authentication.Group.Group
         export interface Group {
-            creation?: string;
-            defaultGroup?: boolean;
-            description?: string;
-            lastUpdate?: string;
-            name?: string;
-            role?: OVH.nichandle.RoleEnum;
+            creation: string;
+            defaultGroup: boolean;
+            description: string;
+            lastUpdate: string;
+            name: string;
+            role: OVH.nichandle.RoleEnum;
         }
         //nichandle.Authentication.Provider
         // fullName: nichandle.Authentication.Provider.Provider
         export interface Provider {
-            creation?: string;
-            groupAttributeName?: string;
-            idpSigningCertificate?: OVH.nichandle.Authentication.Certificate;
-            lastUpdate?: string;
-            ssoServiceUrl?: string;
+            creation: string;
+            groupAttributeName: string;
+            idpSigningCertificate: OVH.nichandle.Authentication.Certificate;
+            lastUpdate: string;
+            ssoServiceUrl: string;
         }
     }
     //nichandle.BillingCapacities
     // fullName: nichandle.BillingCapacities.BillingCapacities
     export interface BillingCapacities {
-        canUseDebtSystem?: boolean;
-        canUsePostalMailForInvoices?: boolean;
-        requiredPaymentMethod?: OVH.nichandle.RequiredPaymentMethodEnum;
+        canUseDebtSystem: boolean;
+        canUsePostalMailForInvoices: boolean;
+        requiredPaymentMethod: OVH.nichandle.RequiredPaymentMethodEnum;
     }
     //nichandle.CountryEnum
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
     //nichandle.Currency
     // fullName: nichandle.Currency.Currency
     export interface Currency {
-        code?: string;
-        symbol?: string;
+        code: string;
+        symbol: string;
     }
     //nichandle.DeveloperModeRestriction
     // fullName: nichandle.DeveloperModeRestriction.DeveloperModeRestriction
     export interface DeveloperModeRestriction {
-        enabled?: boolean;
+        enabled: boolean;
     }
     //nichandle.DomainTask
     // fullName: nichandle.DomainTask.DomainTask
     export interface DomainTask {
-        canAccelerate?: boolean;
-        canCancel?: boolean;
-        canRelaunch?: boolean;
+        canAccelerate: boolean;
+        canCancel: boolean;
+        canRelaunch: boolean;
         comment?: string;
-        creationDate?: string;
-        domain?: string;
+        creationDate: string;
+        domain: string;
         doneDate?: string;
-        function?: OVH.domain.NicOperationFunctionEnum;
-        id?: number;
-        lastUpdate?: string;
-        status?: OVH.domain.OperationStatusEnum;
-        todoDate?: string;
+        function: OVH.domain.NicOperationFunctionEnum;
+        id: number;
+        lastUpdate: string;
+        status: OVH.domain.OperationStatusEnum;
+        todoDate: string;
     }
     //nichandle.DomainTaskArgument
     // fullName: nichandle.DomainTaskArgument.DomainTaskArgument
@@ -1040,24 +1040,24 @@ export namespace nichandle {
         acceptedValues?: string[];
         description?: string;
         fields?: OVH.xander.ContactFieldEnum[];
-        key?: string;
+        key: string;
         maximumSize?: number;
         minimumSize?: number;
-        readOnly?: boolean;
+        readOnly: boolean;
         template?: string;
-        type?: string;
+        type: string;
         value?: string;
     }
     //nichandle.DomainTaskProgressBar
     // fullName: nichandle.DomainTaskProgressBar.DomainTaskProgressBar
     export interface DomainTaskProgressBar {
-        currentStep?: OVH.domain.OperationStep;
+        currentStep: OVH.domain.OperationStep;
         expectedDoneDate?: string;
         followUpSteps?: OVH.domain.OperationStep[];
         lastUpdateDate?: string;
-        progress?: number;
-        taskActions?: OVH.domain.OperationActionEnum[];
-        taskStatus?: OVH.domain.OperationStatusEnum;
+        progress: number;
+        taskActions: OVH.domain.OperationActionEnum[];
+        taskStatus: OVH.domain.OperationStatusEnum;
     }
     //nichandle.GenderEnum
     export type GenderEnum = "female" | "male"
@@ -1066,29 +1066,29 @@ export namespace nichandle {
     //nichandle.IpRestriction
     // fullName: nichandle.IpRestriction.IpRestriction
     export interface IpRestriction {
-        id?: number;
-        ip?: string;
-        rule?: OVH.nichandle.accessRestriction.IpRestrictionRuleEnum;
-        warning?: boolean;
+        id: number;
+        ip: string;
+        rule: OVH.nichandle.accessRestriction.IpRestrictionRuleEnum;
+        warning: boolean;
     }
     //nichandle.IpRestrictionDefaultRule
     // fullName: nichandle.IpRestrictionDefaultRule.IpRestrictionDefaultRule
     export interface IpRestrictionDefaultRule {
-        rule?: OVH.nichandle.accessRestriction.IpRestrictionRuleEnum;
-        warning?: boolean;
+        rule: OVH.nichandle.accessRestriction.IpRestrictionRuleEnum;
+        warning: boolean;
     }
     //nichandle.Ipv4Org
     // fullName: nichandle.Ipv4Org.Ipv4Org
     export interface Ipv4Org {
-        abuse_mailbox?: string;
-        address?: string;
-        city?: string;
-        country?: OVH.nichandle.CountryEnum;
-        firstname?: string;
-        lastname?: string;
-        organisationId?: string;
-        phone?: string;
-        registry?: OVH.nichandle.IpRegistryEnum;
+        abuse_mailbox: string;
+        address: string;
+        city: string;
+        country: OVH.nichandle.CountryEnum;
+        firstname: string;
+        lastname: string;
+        organisationId: string;
+        phone: string;
+        registry: OVH.nichandle.IpRegistryEnum;
         state?: string;
         zip?: string;
     }
@@ -1099,15 +1099,15 @@ export namespace nichandle {
     //nichandle.ManagerPreference
     // fullName: nichandle.ManagerPreference.ManagerPreference
     export interface ManagerPreference {
-        key?: string;
-        value?: string;
+        key: string;
+        value: string;
     }
     //nichandle.NicAutorenewInfos
     // fullName: nichandle.NicAutorenewInfos.NicAutorenewInfos
     export interface NicAutorenewInfos {
-        active?: boolean;
+        active: boolean;
         lastRenew?: string;
-        renewDay?: number;
+        renewDay: number;
     }
     //nichandle.Nichandle
     // fullName: nichandle.Nichandle.Nichandle
@@ -1119,36 +1119,36 @@ export namespace nichandle {
         city?: string;
         companyNationalIdentificationNumber?: string;
         corporationType?: string;
-        country?: OVH.nichandle.CountryEnum;
-        currency?: OVH.nichandle.Currency;
+        country: OVH.nichandle.CountryEnum;
+        currency: OVH.nichandle.Currency;
         customerCode?: string;
-        email?: string;
+        email: string;
         fax?: string;
         firstname?: string;
         italianSDI?: string;
         language?: OVH.nichandle.LanguageEnum;
-        legalform?: OVH.nichandle.LegalFormEnum;
+        legalform: OVH.nichandle.LegalFormEnum;
         name?: string;
         nationalIdentificationNumber?: string;
-        nichandle?: string;
+        nichandle: string;
         organisation?: string;
-        ovhCompany?: OVH.nichandle.OvhCompanyEnum;
-        ovhSubsidiary?: OVH.nichandle.OvhSubsidiaryEnum;
+        ovhCompany: OVH.nichandle.OvhCompanyEnum;
+        ovhSubsidiary: OVH.nichandle.OvhSubsidiaryEnum;
         phone?: string;
         phoneCountry?: OVH.nichandle.CountryEnum;
         sex?: OVH.nichandle.GenderEnum;
         spareEmail?: string;
-        state?: OVH.nichandle.StateEnum;
+        state: OVH.nichandle.StateEnum;
         vat?: string;
         zip?: string;
     }
     //nichandle.NichandleSmsNotification
     // fullName: nichandle.NichandleSmsNotification.NichandleSmsNotification
     export interface NichandleSmsNotification {
-        abuse?: boolean;
-        creationDate?: string;
-        phoneNumber?: string;
-        status?: OVH.nichandle.NotificationStatusEnum;
+        abuse: boolean;
+        creationDate: string;
+        phoneNumber: string;
+        status: OVH.nichandle.NotificationStatusEnum;
         updateDate?: string;
     }
     //nichandle.NotificationStatusEnum
@@ -1166,47 +1166,47 @@ export namespace nichandle {
     //nichandle.SubAccount
     // fullName: nichandle.SubAccount.SubAccount
     export interface SubAccount {
-        creationDate?: string;
+        creationDate: string;
         description?: string;
-        id?: number;
+        id: number;
     }
     //nichandle.SubAccountConsumerKey
     // fullName: nichandle.SubAccountConsumerKey.SubAccountConsumerKey
     export interface SubAccountConsumerKey {
-        consumerKey?: string;
+        consumerKey: string;
     }
     //nichandle.Subscription
     // fullName: nichandle.Subscription.Subscription
     export interface Subscription {
         registered?: boolean;
-        type?: string;
+        type: string;
     }
     //nichandle.User
     // fullName: nichandle.User.User
     export interface User {
-        creation?: string;
-        description?: string;
-        email?: string;
-        group?: string;
-        lastUpdate?: string;
-        login?: string;
-        passwordLastUpdate?: string;
-        status?: OVH.nichandle.UserStatus;
+        creation: string;
+        description: string;
+        email: string;
+        group: string;
+        lastUpdate: string;
+        login: string;
+        passwordLastUpdate: string;
+        status: OVH.nichandle.UserStatus;
     }
     //nichandle.UserStatus
     export type UserStatus = "OK" | "DISABLED" | "PASSWORD_CHANGE_REQUIRED"
     //nichandle.VipStatus
     // fullName: nichandle.VipStatus.VipStatus
     export interface VipStatus {
-        cloud?: boolean;
-        dedicated?: boolean;
-        telecom?: boolean;
-        web?: boolean;
+        cloud: boolean;
+        dedicated: boolean;
+        telecom: boolean;
+        web: boolean;
     }
     //nichandle.VoucherStatus
     // fullName: nichandle.VoucherStatus.VoucherStatus
     export interface VoucherStatus {
-        validity?: boolean;
+        validity: boolean;
     }
     export namespace accessRestriction {
         //nichandle.accessRestriction.IpRestrictionRuleEnum
@@ -1214,98 +1214,98 @@ export namespace nichandle {
         //nichandle.accessRestriction.SOTPAccount
         // fullName: nichandle.accessRestriction.SOTPAccount.SOTPAccount
         export interface SOTPAccount {
-            creationDate?: string;
+            creationDate: string;
             lastUsedDate?: string;
-            remaining?: number;
-            status?: OVH.nichandle.accessRestriction.SOTPStatusEnum;
+            remaining: number;
+            status: OVH.nichandle.accessRestriction.SOTPStatusEnum;
         }
         //nichandle.accessRestriction.SOTPSecret
         // fullName: nichandle.accessRestriction.SOTPSecret.SOTPSecret
         export interface SOTPSecret {
-            codes?: string[];
+            codes: string[];
         }
         //nichandle.accessRestriction.SOTPStatusEnum
         export type SOTPStatusEnum = "disabled" | "enabled" | "needCodeValidation" | "needEmailValidation"
         //nichandle.accessRestriction.SOTPValidate
         // fullName: nichandle.accessRestriction.SOTPValidate.SOTPValidate
         export interface SOTPValidate {
-            remainingCodes?: number;
+            remainingCodes: number;
         }
         //nichandle.accessRestriction.SmsAccount
         // fullName: nichandle.accessRestriction.SmsAccount.SmsAccount
         export interface SmsAccount {
-            creationDate?: string;
-            description?: string;
-            id?: number;
+            creationDate: string;
+            description: string;
+            id: number;
             lastUsedDate?: string;
-            phoneNumber?: string;
-            status?: OVH.nichandle.accessRestriction.SmsStatusEnum;
+            phoneNumber: string;
+            status: OVH.nichandle.accessRestriction.SmsStatusEnum;
         }
         //nichandle.accessRestriction.SmsCode
         // fullName: nichandle.accessRestriction.SmsCode.SmsCode
         export interface SmsCode {
-            challenge?: string;
+            challenge: string;
         }
         //nichandle.accessRestriction.SmsSecret
         // fullName: nichandle.accessRestriction.SmsSecret.SmsSecret
         export interface SmsSecret {
-            id?: number;
-            remainingTry?: number;
+            id: number;
+            remainingTry: number;
         }
         //nichandle.accessRestriction.SmsStatusEnum
         export type SmsStatusEnum = "disabled" | "enabled" | "needCodeValidation" | "needEmailValidation"
         //nichandle.accessRestriction.TOTPAccount
         // fullName: nichandle.accessRestriction.TOTPAccount.TOTPAccount
         export interface TOTPAccount {
-            creationDate?: string;
-            description?: string;
-            id?: number;
+            creationDate: string;
+            description: string;
+            id: number;
             lastUsedDate?: string;
-            status?: OVH.nichandle.accessRestriction.TOTPStatusEnum;
+            status: OVH.nichandle.accessRestriction.TOTPStatusEnum;
         }
         //nichandle.accessRestriction.TOTPSecret
         // fullName: nichandle.accessRestriction.TOTPSecret.TOTPSecret
         export interface TOTPSecret {
-            id?: number;
-            qrcodeHelper?: string;
-            secret?: string;
+            id: number;
+            qrcodeHelper: string;
+            secret: string;
         }
         //nichandle.accessRestriction.TOTPStatusEnum
         export type TOTPStatusEnum = "disabled" | "enabled" | "needCodeValidation" | "needEmailValidation"
         //nichandle.accessRestriction.U2FAccount
         // fullName: nichandle.accessRestriction.U2FAccount.U2FAccount
         export interface U2FAccount {
-            creationDate?: string;
-            description?: string;
-            id?: number;
+            creationDate: string;
+            description: string;
+            id: number;
             lastUsedDate?: string;
-            status?: OVH.nichandle.accessRestriction.U2FStatusEnum;
+            status: OVH.nichandle.accessRestriction.U2FStatusEnum;
         }
         //nichandle.accessRestriction.U2FRegisterChallenge
         // fullName: nichandle.accessRestriction.U2FRegisterChallenge.U2FRegisterChallenge
         export interface U2FRegisterChallenge {
-            applicationId?: string;
-            id?: number;
-            request?: OVH.nichandle.accessRestriction.U2FRegistrationRequest;
+            applicationId: string;
+            id: number;
+            request: OVH.nichandle.accessRestriction.U2FRegistrationRequest;
         }
         //nichandle.accessRestriction.U2FRegistrationRequest
         // fullName: nichandle.accessRestriction.U2FRegistrationRequest.U2FRegistrationRequest
         export interface U2FRegistrationRequest {
-            challenge?: string;
-            version?: string;
+            challenge: string;
+            version: string;
         }
         //nichandle.accessRestriction.U2FSignChallenge
         // fullName: nichandle.accessRestriction.U2FSignChallenge.U2FSignChallenge
         export interface U2FSignChallenge {
-            applicationId?: string;
-            request?: OVH.nichandle.accessRestriction.U2FSignRequest;
+            applicationId: string;
+            request: OVH.nichandle.accessRestriction.U2FSignRequest;
         }
         //nichandle.accessRestriction.U2FSignRequest
         // fullName: nichandle.accessRestriction.U2FSignRequest.U2FSignRequest
         export interface U2FSignRequest {
-            challenge?: string;
-            keyHandle?: string;
-            version?: string;
+            challenge: string;
+            keyHandle: string;
+            version: string;
         }
         //nichandle.accessRestriction.U2FStatusEnum
         export type U2FStatusEnum = "disabled" | "enabled" | "needCodeValidation"
@@ -1325,28 +1325,28 @@ export namespace nichandle {
         // fullName: nichandle.contactChange.Task.Task
         export interface Task {
             askingAccount?: string;
-            contactTypes?: OVH.nichandle.changeContact.ContactTypeEnum[];
+            contactTypes: OVH.nichandle.changeContact.ContactTypeEnum[];
             dateDone?: string;
-            dateRequest?: string;
-            fromAccount?: string;
-            id?: number;
+            dateRequest: string;
+            fromAccount: string;
+            id: number;
             serviceDomain?: string;
-            state?: OVH.nichandle.changeContact.TaskStateEnum;
-            toAccount?: string;
+            state: OVH.nichandle.changeContact.TaskStateEnum;
+            toAccount: string;
         }
     }
     export namespace document {
         //nichandle.document.Document
         // fullName: nichandle.document.Document.Document
         export interface Document {
-            creationDate?: string;
+            creationDate: string;
             expirationDate?: string;
-            getUrl?: string;
-            id?: string;
-            name?: string;
-            putUrl?: string;
-            size?: number;
-            tags?: OVH.complexType.SafeKeyValue<string>[];
+            getUrl: string;
+            id: string;
+            name: string;
+            putUrl: string;
+            size: number;
+            tags: OVH.complexType.SafeKeyValue<string>[];
             validationDate?: string;
         }
     }
@@ -1355,32 +1355,32 @@ export namespace nichandle {
         // fullName: nichandle.emailChange.Task.Task
         export interface Task {
             dateDone?: string;
-            dateRequest?: string;
-            id?: number;
-            newEmail?: string;
-            state?: OVH.nichandle.changeEmail.TaskStateEnum;
+            dateRequest: string;
+            id: number;
+            newEmail: string;
+            state: OVH.nichandle.changeEmail.TaskStateEnum;
         }
     }
     //nichandle.emailNotification
     // fullName: nichandle.emailNotification.emailNotification
     export interface emailNotification {
-        body?: string;
-        date?: string;
-        id?: number;
-        subject?: string;
+        body: string;
+        date: string;
+        id: number;
+        subject: string;
     }
     //nichandle.ipxe
     // fullName: nichandle.ipxe.ipxe
     export interface ipxe {
-        name?: string;
-        script?: string;
+        name: string;
+        script: string;
     }
     //nichandle.sshKey
     // fullName: nichandle.sshKey.sshKey
     export interface sshKey {
-        default?: boolean;
-        key?: string;
-        keyName?: string;
+        default: boolean;
+        key: string;
+        keyName: string;
     }
 }
 export namespace order {
@@ -1389,9 +1389,9 @@ export namespace order {
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode?: OVH.order.CurrencyCodeEnum;
-        text?: string;
-        value?: number;
+        currencyCode: OVH.order.CurrencyCodeEnum;
+        text: string;
+        value: number;
     }
 }
 export namespace payment {
@@ -1399,10 +1399,10 @@ export namespace payment {
         //payment.method.AvailablePaymentMethod
         // fullName: payment.method.AvailablePaymentMethod.AvailablePaymentMethod
         export interface AvailablePaymentMethod {
-            icon?: OVH.payment.method.Icon;
-            oneshot?: boolean;
-            paymentType?: string;
-            registerable?: boolean;
+            icon: OVH.payment.method.Icon;
+            oneshot: boolean;
+            paymentType: string;
+            registerable: boolean;
         }
         //payment.method.Icon
         // fullName: payment.method.Icon.Icon
@@ -1416,34 +1416,34 @@ export namespace telephony {
     //telephony.BillingSettings
     // fullName: telephony.BillingSettings.BillingSettings
     export interface BillingSettings {
-        renewByBillingContact?: boolean;
+        renewByBillingContact: boolean;
     }
     //telephony.DefaultIpRestriction
     // fullName: telephony.DefaultIpRestriction.DefaultIpRestriction
     export interface DefaultIpRestriction {
-        id?: number;
-        subnet?: string;
-        type?: OVH.telephony.ProtocolEnum;
+        id: number;
+        subnet: string;
+        type: OVH.telephony.ProtocolEnum;
     }
     //telephony.LineDescriptionSettings
     // fullName: telephony.LineDescriptionSettings.LineDescriptionSettings
     export interface LineDescriptionSettings {
-        displayOnBill?: boolean;
-        displayOnIncomingCall?: boolean;
+        displayOnBill: boolean;
+        displayOnIncomingCall: boolean;
     }
     //telephony.MailDomain2Service
     // fullName: telephony.MailDomain2Service.MailDomain2Service
     export interface MailDomain2Service {
-        domain?: string;
-        id?: number;
+        domain: string;
+        id: number;
     }
     //telephony.ProtocolEnum
     export type ProtocolEnum = "mgcp" | "sip"
     //telephony.Settings
     // fullName: telephony.Settings.Settings
     export interface Settings {
-        billingPolicies?: OVH.telephony.BillingSettings;
-        lineDescriptionPolicies?: OVH.telephony.LineDescriptionSettings;
+        billingPolicies: OVH.telephony.BillingSettings;
+        lineDescriptionPolicies: OVH.telephony.LineDescriptionSettings;
     }
 }
 export namespace xander {
@@ -1454,8 +1454,8 @@ export namespace xdsl {
     //xdsl.Setting
     // fullName: xdsl.Setting.Setting
     export interface Setting {
-        resellerFastModemShipping?: boolean;
-        resellerModemBasicConfig?: boolean;
+        resellerFastModemShipping: boolean;
+        resellerModemBasicConfig: boolean;
     }
 }
 // Apis harmony

@@ -6,17 +6,17 @@ export namespace connectivity {
         //connectivity.eligibility.Building
         // fullName: connectivity.eligibility.Building.Building
         export interface Building {
-            name?: string;
+            name: string;
             nro?: string;
-            reference?: string;
-            stairs?: OVH.connectivity.eligibility.BuildingStair[];
-            type?: OVH.connectivity.eligibility.BuildingTypeEnum;
+            reference: string;
+            stairs: OVH.connectivity.eligibility.BuildingStair[];
+            type: OVH.connectivity.eligibility.BuildingTypeEnum;
         }
         //connectivity.eligibility.BuildingStair
         // fullName: connectivity.eligibility.BuildingStair.BuildingStair
         export interface BuildingStair {
-            floors?: string[];
-            stair?: string;
+            floors: string[];
+            stair: string;
         }
         //connectivity.eligibility.BuildingTypeEnum
         export type BuildingTypeEnum = "BUILDING" | "HOUSE"
@@ -26,76 +26,85 @@ export namespace order {
     //order.Contract
     // fullName: order.Contract.Contract
     export interface Contract {
-        content?: string;
-        name?: string;
-        url?: string;
+        content: string;
+        name: string;
+        url: string;
     }
     //order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode?: OVH.order.CurrencyCodeEnum;
-        text?: string;
-        value?: number;
+        currencyCode: OVH.order.CurrencyCodeEnum;
+        text: string;
+        value: number;
     }
 }
 export namespace pack {
     export namespace xdsl {
+        //pack.xdsl.AsyncTask
+        // fullName: pack.xdsl.AsyncTask.AsyncTask
+        export interface AsyncTask<T> {
+            error?: string;
+            result?: T;
+            status: OVH.pack.xdsl.AsyncTaskStatusEnum;
+        }
+        //pack.xdsl.AsyncTaskStatusEnum
+        export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
         //pack.xdsl.DomainActionEnum
         export type DomainActionEnum = "create" | "trade" | "transfer"
         //pack.xdsl.ExchangeAccountService
         // fullName: pack.xdsl.ExchangeAccountService.ExchangeAccountService
         export interface ExchangeAccountService {
-            domain?: string;
-            exchangeService?: string;
-            organizationName?: string;
+            domain: string;
+            exchangeService: string;
+            organizationName: string;
         }
         //pack.xdsl.ExchangeLiteService
         // fullName: pack.xdsl.ExchangeLiteService.ExchangeLiteService
         export interface ExchangeLiteService {
-            domain?: string;
+            domain: string;
         }
         //pack.xdsl.Hubic
         // fullName: pack.xdsl.Hubic.Hubic
         export interface Hubic {
-            bytes?: number;
-            domain?: string;
-            isUsed?: boolean;
-            size?: string;
+            bytes: number;
+            domain: string;
+            isUsed: boolean;
+            size: string;
             voucher?: string;
         }
         //pack.xdsl.PackAdsl
         // fullName: pack.xdsl.PackAdsl.PackAdsl
         export interface PackAdsl {
-            capabilities?: OVH.pack.xdsl.PackCapabilities;
+            capabilities: OVH.pack.xdsl.PackCapabilities;
             description?: string;
-            offerDescription?: string;
-            offerPrice?: OVH.order.Price;
-            packName?: string;
+            offerDescription: string;
+            offerPrice: OVH.order.Price;
+            packName: string;
         }
         //pack.xdsl.PackCapabilities
         // fullName: pack.xdsl.PackCapabilities.PackCapabilities
         export interface PackCapabilities {
-            canMoveAddress?: boolean;
-            isLegacyOffer?: boolean;
+            canMoveAddress: boolean;
+            isLegacyOffer: boolean;
         }
         //pack.xdsl.PackDetail
         // fullName: pack.xdsl.PackDetail.PackDetail
         export interface PackDetail {
-            accessname?: string;
-            description?: string;
-            number?: string;
-            packname?: string;
-            type?: OVH.xdsl.DslTypeEnum;
+            accessname: string;
+            description: string;
+            number: string;
+            packname: string;
+            type: OVH.xdsl.DslTypeEnum;
         }
         //pack.xdsl.ResiliationFollowUpDetail
         // fullName: pack.xdsl.ResiliationFollowUpDetail.ResiliationFollowUpDetail
         export interface ResiliationFollowUpDetail {
-            dateTodo?: string;
-            needModemReturn?: boolean;
-            registrationDate?: string;
-            status?: string;
+            dateTodo: string;
+            needModemReturn: boolean;
+            registrationDate: string;
+            status: string;
         }
         //pack.xdsl.ResiliationReasonEnum
         export type ResiliationReasonEnum = "addressMove" | "billingProblems" | "cessationOfActivity" | "changeOfTerms" | "ftth" | "goToCompetitor" | "other" | "technicalProblems"
@@ -103,215 +112,215 @@ export namespace pack {
         // fullName: pack.xdsl.ResiliationSurvey.ResiliationSurvey
         export interface ResiliationSurvey {
             comment?: string;
-            type?: OVH.pack.xdsl.ResiliationReasonEnum;
+            type: OVH.pack.xdsl.ResiliationReasonEnum;
         }
         //pack.xdsl.ResiliationTerms
         // fullName: pack.xdsl.ResiliationTerms.ResiliationTerms
         export interface ResiliationTerms {
-            due?: OVH.order.Price;
+            due: OVH.order.Price;
             engageDate?: string;
-            minResiliationDate?: string;
-            resiliationDate?: string;
-            resiliationReasons?: OVH.pack.xdsl.ResiliationReasonEnum[];
+            minResiliationDate: string;
+            resiliationDate: string;
+            resiliationReasons: OVH.pack.xdsl.ResiliationReasonEnum[];
         }
         //pack.xdsl.Service
         // fullName: pack.xdsl.Service.Service
         export interface Service {
-            domain?: string;
-            id?: number;
-            type?: OVH.pack.xdsl.ServiceNameEnum;
+            domain: string;
+            id: number;
+            type: OVH.pack.xdsl.ServiceNameEnum;
         }
         //pack.xdsl.ServiceInformation
         // fullName: pack.xdsl.ServiceInformation.ServiceInformation
         export interface ServiceInformation {
-            inCreation?: number;
-            name?: OVH.pack.xdsl.ServiceNameEnum;
-            total?: number;
-            used?: number;
+            inCreation: number;
+            name: OVH.pack.xdsl.ServiceNameEnum;
+            total: number;
+            used: number;
         }
         //pack.xdsl.ServiceNameEnum
         export type ServiceNameEnum = "domain" | "emailPro" | "exchangeAccount" | "exchangeIndividual" | "exchangeLite" | "exchangeOrganization" | "hostedEmail" | "hubic" | "modem" | "overTheBoxHardware" | "overTheBoxService" | "siteBuilderFull" | "siteBuilderStart" | "voipAlias" | "voipBillingAccount" | "voipEcoFax" | "voipLine" | "xdslAccess"
         //pack.xdsl.ShippingAddress
         // fullName: pack.xdsl.ShippingAddress.ShippingAddress
         export interface ShippingAddress {
-            address?: string;
-            cityName?: string;
-            countryCode?: string;
-            firstName?: string;
-            lastName?: string;
-            shippingId?: string;
-            zipCode?: string;
+            address: string;
+            cityName: string;
+            countryCode: string;
+            firstName: string;
+            lastName: string;
+            shippingId: string;
+            zipCode: string;
         }
         //pack.xdsl.ShippingAddressContextEnum
         export type ShippingAddressContextEnum = "migration" | "voipLine"
         //pack.xdsl.SiteBuilderDomain
         // fullName: pack.xdsl.SiteBuilderDomain.SiteBuilderDomain
         export interface SiteBuilderDomain {
-            defaultSubDomain?: string;
-            domain?: string;
+            defaultSubDomain: string;
+            domain: string;
         }
         //pack.xdsl.SiteBuilderTemplate
         // fullName: pack.xdsl.SiteBuilderTemplate.SiteBuilderTemplate
         export interface SiteBuilderTemplate {
-            bkId?: number;
-            id?: number;
-            name?: string;
-            previewImg?: string;
-            reference?: string;
-            thumbImage?: string;
+            bkId: number;
+            id: number;
+            name: string;
+            previewImg: string;
+            reference: string;
+            thumbImage: string;
         }
         //pack.xdsl.Task
         // fullName: pack.xdsl.Task.Task
         export interface Task {
-            function?: string;
-            id?: number;
-            status?: OVH.pack.xdsl.TaskStatusEnum;
-            updateDate?: string;
+            function: string;
+            id: number;
+            status: OVH.pack.xdsl.TaskStatusEnum;
+            updateDate: string;
         }
         //pack.xdsl.TaskStatusEnum
         export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo"
         //pack.xdsl.UnpackTerms
         // fullName: pack.xdsl.UnpackTerms.UnpackTerms
         export interface UnpackTerms {
-            isAllowed?: boolean;
-            price?: OVH.order.Price;
-            renewPeriod?: number;
-            renewPrice?: OVH.order.Price;
+            isAllowed: boolean;
+            price: OVH.order.Price;
+            renewPeriod: number;
+            renewPrice: OVH.order.Price;
         }
         //pack.xdsl.VoIPHardware
         // fullName: pack.xdsl.VoIPHardware.VoIPHardware
         export interface VoIPHardware {
             deposit?: OVH.order.Price;
             image?: string;
-            label?: string;
+            label: string;
             max?: number;
-            name?: string;
-            needShipping?: boolean;
+            name: string;
+            needShipping: boolean;
             url?: string;
         }
         //pack.xdsl.VoIPLineOrder
         // fullName: pack.xdsl.VoIPLineOrder.VoIPLineOrder
         export interface VoIPLineOrder {
-            needPayment?: boolean;
-            orderId?: number;
-            orderUrl?: string;
-            taskIds?: number[];
+            needPayment: boolean;
+            orderId: number;
+            orderUrl: string;
+            taskIds: number[];
         }
         //pack.xdsl.VoipLineService
         // fullName: pack.xdsl.VoipLineService.VoipLineService
         export interface VoipLineService {
-            billingAccount?: string;
-            domain?: string;
+            billingAccount: string;
+            domain: string;
         }
         export namespace addressMove {
             //pack.xdsl.addressMove.Creation
             // fullName: pack.xdsl.addressMove.Creation.Creation
             export interface Creation {
-                address?: OVH.xdsl.eligibility.Address;
-                meeting?: OVH.xdsl.eligibility.BookMeetingSlot;
+                address: OVH.xdsl.eligibility.Address;
+                meeting: OVH.xdsl.eligibility.BookMeetingSlot;
             }
             //pack.xdsl.addressMove.Eligibility
             // fullName: pack.xdsl.addressMove.Eligibility.Eligibility
             export interface Eligibility {
                 keepCurrentPortability?: OVH.xdsl.eligibility.Portability;
-                offers?: OVH.pack.xdsl.addressMove.Offer[];
+                offers: OVH.pack.xdsl.addressMove.Offer[];
             }
             //pack.xdsl.addressMove.Landline
             // fullName: pack.xdsl.addressMove.Landline.Landline
             export interface Landline {
-                lineNumber?: string;
-                portLineNumber?: boolean;
+                lineNumber: string;
+                portLineNumber: boolean;
                 rio?: string;
-                status?: OVH.xdsl.eligibility.LandlineStatusEnum;
-                unbundling?: OVH.xdsl.DeconsolidationEnum;
+                status: OVH.xdsl.eligibility.LandlineStatusEnum;
+                unbundling: OVH.xdsl.DeconsolidationEnum;
             }
             //pack.xdsl.addressMove.Offer
             // fullName: pack.xdsl.addressMove.Offer.Offer
             export interface Offer {
-                address?: OVH.xdsl.eligibility.Address;
-                estimatedDownload?: number;
-                estimatedUpload?: number;
-                lineSectionsLength?: OVH.xdsl.LineSectionLength[];
-                lineStatus?: OVH.xdsl.eligibility.LandlineStatusEnum;
+                address: OVH.xdsl.eligibility.Address;
+                estimatedDownload: number;
+                estimatedUpload: number;
+                lineSectionsLength: OVH.xdsl.LineSectionLength[];
+                lineStatus: OVH.xdsl.eligibility.LandlineStatusEnum;
                 meetingSlots?: OVH.xdsl.eligibility.MeetingSlots;
-                nra?: string;
-                offerCode?: string;
-                portability?: OVH.xdsl.eligibility.Portability;
-                price?: OVH.order.Price;
-                provider?: OVH.xdsl.eligibility.ProviderEnum;
-                reseller?: boolean;
-                syncDownload?: number;
-                syncUpload?: number;
-                type?: OVH.xdsl.DslTypeEnum;
-                unbundling?: OVH.xdsl.DeconsolidationEnum;
+                nra: string;
+                offerCode: string;
+                portability: OVH.xdsl.eligibility.Portability;
+                price: OVH.order.Price;
+                provider: OVH.xdsl.eligibility.ProviderEnum;
+                reseller: boolean;
+                syncDownload: number;
+                syncUpload: number;
+                type: OVH.xdsl.DslTypeEnum;
+                unbundling: OVH.xdsl.DeconsolidationEnum;
             }
         }
         export namespace migration {
             //pack.xdsl.migration.MigrationOffer
             // fullName: pack.xdsl.migration.MigrationOffer.MigrationOffer
             export interface MigrationOffer {
-                contractList?: string[];
-                contracts?: OVH.order.Contract[];
-                currentOfferPrice?: OVH.order.Price;
-                description?: string;
+                contractList: string[];
+                contracts: OVH.order.Contract[];
+                currentOfferPrice: OVH.order.Price;
+                description: string;
                 due?: OVH.order.Price;
                 engageMonths?: number;
-                engagementMonths?: number[];
+                engagementMonths: number[];
                 firstYearPromo?: OVH.order.Price;
                 installFees?: OVH.order.Price;
                 modemMacToReturn?: string;
                 modemRental?: OVH.order.Price;
-                needModem?: boolean;
-                needNewModem?: boolean;
-                offerName?: string;
-                options?: OVH.pack.xdsl.migration.OfferAvailableOption[];
-                price?: OVH.order.Price;
-                subServicesToDelete?: OVH.pack.xdsl.migration.SubServiceToDelete[];
-                url?: string;
+                needModem: boolean;
+                needNewModem: boolean;
+                offerName: string;
+                options: OVH.pack.xdsl.migration.OfferAvailableOption[];
+                price: OVH.order.Price;
+                subServicesToDelete: OVH.pack.xdsl.migration.SubServiceToDelete[];
+                url: string;
             }
             //pack.xdsl.migration.MigrationOfferResponse
             // fullName: pack.xdsl.migration.MigrationOfferResponse.MigrationOfferResponse
             export interface MigrationOfferResponse {
-                buildings?: OVH.connectivity.eligibility.Building[];
-                offers?: OVH.pack.xdsl.migration.MigrationOffer[];
+                buildings: OVH.connectivity.eligibility.Building[];
+                offers: OVH.pack.xdsl.migration.MigrationOffer[];
             }
             //pack.xdsl.migration.OfferAvailableOption
             // fullName: pack.xdsl.migration.OfferAvailableOption.OfferAvailableOption
             export interface OfferAvailableOption {
-                duration?: number;
-                included?: number;
-                name?: string;
-                optional?: number;
+                duration: number;
+                included: number;
+                name: string;
+                optional: number;
                 optionalPrice?: OVH.order.Price;
             }
             //pack.xdsl.migration.OfferOption
             // fullName: pack.xdsl.migration.OfferOption.OfferOption
             export interface OfferOption {
-                name?: string;
-                quantity?: number;
+                name: string;
+                quantity: number;
             }
             //pack.xdsl.migration.OfferServiceToDelete
             // fullName: pack.xdsl.migration.OfferServiceToDelete.OfferServiceToDelete
             export interface OfferServiceToDelete {
-                service?: string;
-                type?: OVH.pack.xdsl.ServiceNameEnum;
+                service: string;
+                type: OVH.pack.xdsl.ServiceNameEnum;
             }
             //pack.xdsl.migration.SubServiceToDelete
             // fullName: pack.xdsl.migration.SubServiceToDelete.SubServiceToDelete
             export interface SubServiceToDelete {
-                numberToDelete?: number;
-                services?: string[];
-                type?: OVH.pack.xdsl.ServiceNameEnum;
+                numberToDelete: number;
+                services: string[];
+                type: OVH.pack.xdsl.ServiceNameEnum;
             }
         }
         export namespace promotionCode {
             //pack.xdsl.promotionCode.Capabilities
             // fullName: pack.xdsl.promotionCode.Capabilities.Capabilities
             export interface Capabilities {
-                amount?: OVH.order.Price;
-                canGenerate?: boolean;
-                engagement?: number;
-                reasonCodes?: OVH.pack.xdsl.promotionCode.ReasonCodes[];
+                amount: OVH.order.Price;
+                canGenerate: boolean;
+                engagement: number;
+                reasonCodes: OVH.pack.xdsl.promotionCode.ReasonCodes[];
             }
             //pack.xdsl.promotionCode.ReasonCodes
             export type ReasonCodes = "noMoreAvailable" | "offerNotCompatible" | "serviceNotInOkState" | "stillEngaged" | "taskInProgress"
@@ -322,9 +331,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -337,31 +346,22 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace xdsl {
-    //xdsl.AsyncTask
-    // fullName: xdsl.AsyncTask.AsyncTask
-    export interface AsyncTask<T> {
-        error?: string;
-        result?: T;
-        status?: OVH.xdsl.AsyncTaskStatusEnum;
-    }
-    //xdsl.AsyncTaskStatusEnum
-    export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
     //xdsl.DeconsolidationEnum
     export type DeconsolidationEnum = "createNeighbour" | "creation" | "creationNeighbour" | "partial" | "total"
     //xdsl.DslTypeEnum
@@ -369,15 +369,15 @@ export namespace xdsl {
     //xdsl.LineSectionLength
     // fullName: xdsl.LineSectionLength.LineSectionLength
     export interface LineSectionLength {
-        diameter?: number;
-        length?: number;
+        diameter: number;
+        length: number;
     }
     export namespace eligibility {
         //xdsl.eligibility.Address
         // fullName: xdsl.eligibility.Address.Address
         export interface Address {
             building?: string;
-            city?: OVH.xdsl.eligibility.City;
+            city: OVH.xdsl.eligibility.City;
             door?: string;
             floor?: string;
             logo?: string;
@@ -390,61 +390,61 @@ export namespace xdsl {
         //xdsl.eligibility.BookMeetingSlot
         // fullName: xdsl.eligibility.BookMeetingSlot.BookMeetingSlot
         export interface BookMeetingSlot {
-            fakeMeeting?: boolean;
+            fakeMeeting: boolean;
             meetingSlot?: OVH.xdsl.eligibility.MeetingSlot;
-            name?: string;
+            name: string;
         }
         //xdsl.eligibility.City
         // fullName: xdsl.eligibility.City.City
         export interface City {
-            inseeCode?: string;
+            inseeCode: string;
             locality?: string;
-            name?: string;
-            zipCode?: string;
+            name: string;
+            zipCode: string;
         }
         //xdsl.eligibility.CodeAndMessage
         // fullName: xdsl.eligibility.CodeAndMessage.CodeAndMessage
         export interface CodeAndMessage {
-            code?: string;
-            message?: string;
+            code: string;
+            message: string;
         }
         //xdsl.eligibility.LandlineStatusEnum
         export type LandlineStatusEnum = "active" | "inactive"
         //xdsl.eligibility.MeetingSlot
         // fullName: xdsl.eligibility.MeetingSlot.MeetingSlot
         export interface MeetingSlot {
-            endDate?: string;
-            startDate?: string;
-            uiCode?: string;
+            endDate: string;
+            startDate: string;
+            uiCode: string;
         }
         //xdsl.eligibility.MeetingSlots
         // fullName: xdsl.eligibility.MeetingSlots.MeetingSlots
         export interface MeetingSlots {
-            canBookFakeMeeting?: boolean;
-            meetingSlots?: OVH.xdsl.eligibility.MeetingSlot[];
+            canBookFakeMeeting: boolean;
+            meetingSlots: OVH.xdsl.eligibility.MeetingSlot[];
         }
         //xdsl.eligibility.Portability
         // fullName: xdsl.eligibility.Portability.Portability
         export interface Portability {
-            comments?: OVH.xdsl.eligibility.CodeAndMessage[];
-            eligible?: boolean;
-            underCondition?: boolean;
-            warnings?: OVH.xdsl.eligibility.CodeAndMessage[];
+            comments: OVH.xdsl.eligibility.CodeAndMessage[];
+            eligible: boolean;
+            underCondition: boolean;
+            warnings: OVH.xdsl.eligibility.CodeAndMessage[];
         }
         //xdsl.eligibility.ProviderEnum
         export type ProviderEnum = "axione" | "ft" | "kosc" | "ovh" | "sfr"
         //xdsl.eligibility.Street
         // fullName: xdsl.eligibility.Street.Street
         export interface Street {
-            name?: string;
-            rivoliCode?: string;
+            name: string;
+            rivoliCode: string;
         }
     }
     export namespace hubic {
         //xdsl.hubic.HubicDetailsResponse
         // fullName: xdsl.hubic.HubicDetailsResponse.HubicDetailsResponse
         export interface HubicDetailsResponse {
-            email?: string;
+            email: string;
         }
     }
 }
@@ -462,11 +462,11 @@ export interface Pack{
             addressMove: {
                 eligibility: {
                     // POST /pack/xdsl/{packName}/addressMove/eligibility
-                    $post(body?: {address?: xdsl.eligibility.Address, lineNumber?: string}): Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+                    $post(body?: {address?: xdsl.eligibility.Address, lineNumber?: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
                 }
                 move: {
                     // POST /pack/xdsl/{packName}/addressMove/move
-                    $post(body?: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsl.eligibility.ProviderEnum}): Promise<xdsl.AsyncTask<number>>;
+                    $post(body?: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsl.eligibility.ProviderEnum}): Promise<pack.xdsl.AsyncTask<number>>;
                 }
             }
             canCancelResiliation: {
@@ -588,7 +588,7 @@ export interface Pack{
                         $get(): Promise<pack.xdsl.Hubic>;
                         details: {
                             // GET /pack/xdsl/{packName}/hubic/services/{domain}/details
-                            $get(): Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+                            $get(): Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
                         }
                     } | any
                 }
@@ -600,7 +600,7 @@ export interface Pack{
                 }
                 offers: {
                     // POST /pack/xdsl/{packName}/migration/offers
-                    $post(): Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+                    $post(): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
                 }
                 servicesToDelete: {
                     // POST /pack/xdsl/{packName}/migration/servicesToDelete
@@ -932,7 +932,7 @@ export class ApiPackXdsl extends OvhWrapper {
    * details operations
    * Details associated to a voucher
    */
-  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', params: {domain: string, packName: string}): Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', params: {domain: string, packName: string}): Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
   /**
    * capabilities operations
    * Get informations about the promotion code generation
@@ -1073,12 +1073,12 @@ export class ApiPackXdsl extends OvhWrapper {
    * eligibility operations
    * Eligibility to move the access
    */
-  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', params: {packName: string, address?: OVH.xdsl.eligibility.Address, lineNumber?: string}): Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', params: {packName: string, address?: OVH.xdsl.eligibility.Address, lineNumber?: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
   /**
    * move operations
    * Move the access to another address
    */
-  public post(path: '/pack/xdsl/{packName}/addressMove/move', params: {packName: string, creation?: OVH.pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: OVH.pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: OVH.xdsl.eligibility.ProviderEnum}): Promise<xdsl.AsyncTask<number>>;
+  public post(path: '/pack/xdsl/{packName}/addressMove/move', params: {packName: string, creation?: OVH.pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: OVH.pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: OVH.xdsl.eligibility.ProviderEnum}): Promise<pack.xdsl.AsyncTask<number>>;
   /**
    * cancelResiliation operations
    * Cancel the ongoing resiliation
@@ -1123,7 +1123,7 @@ export class ApiPackXdsl extends OvhWrapper {
    * offers operations
    * Get the possibilities of migration offers available
    */
-  public post(path: '/pack/xdsl/{packName}/migration/offers', params: {packName: string}): Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+  public post(path: '/pack/xdsl/{packName}/migration/offers', params: {packName: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
   /**
    * servicesToDelete operations
    * Calculate services to delete with new offer and options

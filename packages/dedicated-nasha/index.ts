@@ -5,22 +5,22 @@ export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
 }
 export namespace dedicated {
     //dedicated.NasHAAvailabilities
     // fullName: dedicated.NasHAAvailabilities.NasHAAvailabilities
     export interface NasHAAvailabilities {
-        datacenters?: OVH.dedicated.NasHAAvailabilityDatacenter[];
-        offer?: OVH.dedicated.NasHAOfferEnum;
+        datacenters: OVH.dedicated.NasHAAvailabilityDatacenter[];
+        offer: OVH.dedicated.NasHAOfferEnum;
     }
     //dedicated.NasHAAvailabilityDatacenter
     // fullName: dedicated.NasHAAvailabilityDatacenter.NasHAAvailabilityDatacenter
     export interface NasHAAvailabilityDatacenter {
-        availability?: OVH.dedicated.NasHAAvailabilityEnum;
-        datacenter?: OVH.dedicated.NasHAZoneEnum;
+        availability: OVH.dedicated.NasHAAvailabilityEnum;
+        datacenter: OVH.dedicated.NasHAZoneEnum;
     }
     //dedicated.NasHAAvailabilityEnum
     export type NasHAAvailabilityEnum = "1H" | "240H" | "24H" | "72H" | "unknown"
@@ -37,11 +37,11 @@ export namespace dedicated {
             details?: string;
             doneDate?: string;
             lastUpdate?: string;
-            operation?: OVH.dedicated.storage.TaskFunctionEnum;
+            operation: OVH.dedicated.storage.TaskFunctionEnum;
             partitionName?: string;
-            status?: OVH.dedicated.TaskStatusEnum;
+            status: OVH.dedicated.TaskStatusEnum;
             storageName?: string;
-            taskId?: number;
+            taskId: number;
             todoDate?: string;
         }
     }
@@ -49,63 +49,63 @@ export namespace dedicated {
         //dedicated.nasha.Access
         // fullName: dedicated.nasha.Access.Access
         export interface Access {
-            accessId?: number;
-            ip?: string;
-            type?: OVH.dedicated.storage.AclTypeEnum;
+            accessId: number;
+            ip: string;
+            type: OVH.dedicated.storage.AclTypeEnum;
         }
         //dedicated.nasha.Partition
         // fullName: dedicated.nasha.Partition.Partition
         export interface Partition {
             partitionCapacity?: number;
-            partitionName?: string;
-            protocol?: OVH.dedicated.storage.ProtocolEnum;
-            size?: number;
+            partitionName: string;
+            protocol: OVH.dedicated.storage.ProtocolEnum;
+            size: number;
             usedBySnapshots?: number;
         }
         //dedicated.nasha.Quota
         // fullName: dedicated.nasha.Quota.Quota
         export interface Quota {
-            size?: number;
-            uid?: number;
+            size: number;
+            uid: number;
         }
         //dedicated.nasha.Snapshot
         // fullName: dedicated.nasha.Snapshot.Snapshot
         export interface Snapshot {
-            snapshotType?: OVH.dedicated.storage.SnapshotEnum;
+            snapshotType: OVH.dedicated.storage.SnapshotEnum;
         }
         //dedicated.nasha.Storage
         // fullName: dedicated.nasha.Storage.Storage
         export interface Storage {
-            canCreatePartition?: boolean;
+            canCreatePartition: boolean;
             customName?: string;
             datacenter?: string;
             ip?: string;
-            monitored?: boolean;
-            serviceName?: string;
-            zpoolCapacity?: number;
-            zpoolSize?: number;
+            monitored: boolean;
+            serviceName: string;
+            zpoolCapacity: number;
+            zpoolSize: number;
         }
         //dedicated.nasha.Vrack
         // fullName: dedicated.nasha.Vrack.Vrack
         export interface Vrack {
-            id?: number;
-            serviceIp?: string;
-            type?: string;
-            vrackName?: string;
+            id: number;
+            serviceIp: string;
+            type: string;
+            vrackName: string;
         }
         //dedicated.nasha.customSnap
         // fullName: dedicated.nasha.customSnap.customSnap
         export interface customSnap {
             expiration?: string;
-            name?: string;
+            name: string;
         }
         //dedicated.nasha.options
         // fullName: dedicated.nasha.options.options
         export interface options {
-            atime?: string;
-            id?: number;
-            recordsize?: string;
-            sync?: string;
+            atime: string;
+            id: number;
+            recordsize: string;
+            sync: string;
         }
     }
     export namespace storage {
@@ -133,9 +133,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -152,19 +152,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

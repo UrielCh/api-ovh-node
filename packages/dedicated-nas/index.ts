@@ -8,32 +8,32 @@ export namespace dedicated {
         //dedicated.nas.Access
         // fullName: dedicated.nas.Access.Access
         export interface Access {
-            accessId?: number;
-            ip?: string;
+            accessId: number;
+            ip: string;
         }
         //dedicated.nas.Nas
         // fullName: dedicated.nas.Nas.Nas
         export interface Nas {
-            canCreatePartition?: boolean;
+            canCreatePartition: boolean;
             customName?: string;
             datacenter?: string;
             ip?: string;
-            mountPath?: string;
-            serviceName?: string;
-            zpoolSize?: number;
+            mountPath: string;
+            serviceName: string;
+            zpoolSize: number;
         }
         //dedicated.nas.Partition
         // fullName: dedicated.nas.Partition.Partition
         export interface Partition {
-            partitionName?: string;
-            protocol?: OVH.dedicated.storage.ProtocolEnum;
-            size?: number;
+            partitionName: string;
+            protocol: OVH.dedicated.storage.ProtocolEnum;
+            size: number;
         }
         //dedicated.nas.Quota
         // fullName: dedicated.nas.Quota.Quota
         export interface Quota {
-            size?: number;
-            uid?: number;
+            size: number;
+            uid: number;
         }
     }
     export namespace nasTask {
@@ -43,11 +43,11 @@ export namespace dedicated {
             details?: string;
             doneDate?: string;
             lastUpdate?: string;
-            operation?: OVH.dedicated.storage.TaskFunctionEnum;
+            operation: OVH.dedicated.storage.TaskFunctionEnum;
             partitionName?: string;
-            status?: OVH.dedicated.TaskStatusEnum;
+            status: OVH.dedicated.TaskStatusEnum;
             storageName?: string;
-            taskId?: number;
+            taskId: number;
             todoDate?: string;
         }
     }
@@ -62,9 +62,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -77,19 +77,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

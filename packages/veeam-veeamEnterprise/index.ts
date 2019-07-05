@@ -5,9 +5,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -24,19 +24,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace veeam {
@@ -46,18 +46,18 @@ export namespace veeam {
         export interface Account {
             ip?: string;
             port?: number;
-            serviceName?: string;
-            sourceIp?: string;
+            serviceName: string;
+            sourceIp: string;
         }
         //veeam.veeamEnterprise.Task
         // fullName: veeam.veeamEnterprise.Task.Task
         export interface Task {
             endDate?: string;
-            name?: string;
-            progress?: number;
+            name: string;
+            progress: number;
             startDate?: string;
-            state?: OVH.veeamEnterprise.TaskStateEnum;
-            taskId?: number;
+            state: OVH.veeamEnterprise.TaskStateEnum;
+            taskId: number;
         }
     }
 }

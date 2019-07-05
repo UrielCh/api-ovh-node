@@ -8,7 +8,7 @@ export namespace cluster {
         //cluster.hadoop.ClusterConsumption
         // fullName: cluster.hadoop.ClusterConsumption.ClusterConsumption
         export interface ClusterConsumption {
-            quantity?: OVH.complexType.UnitAndValue<number>;
+            quantity: OVH.complexType.UnitAndValue<number>;
         }
         //cluster.hadoop.ClusterServiceNameEnum
         export type ClusterServiceNameEnum = "HBase" | "HDFS" | "HUE" | "Hive" | "Oozie" | "Solr" | "Spark" | "Sqoop" | "YARN" | "ZooKeeper"
@@ -17,39 +17,39 @@ export namespace cluster {
         //cluster.hadoop.NetworkAcl
         // fullName: cluster.hadoop.NetworkAcl.NetworkAcl
         export interface NetworkAcl {
-            block?: string;
+            block: string;
             description?: string;
-            state?: OVH.cluster.hadoop.NetworkAclStateEnum;
+            state: OVH.cluster.hadoop.NetworkAclStateEnum;
         }
         //cluster.hadoop.NetworkAclStateEnum
         export type NetworkAclStateEnum = "disabled" | "enabled" | "pending"
         //cluster.hadoop.Node
         // fullName: cluster.hadoop.Node.Node
         export interface Node {
-            billingProfileName?: OVH.cluster.hadoop.BillingNameEnum;
-            hostname?: string;
-            ip?: string;
-            isRemovable?: boolean;
-            softwareProfile?: OVH.cluster.hadoop.NodeProfileEnum;
-            state?: OVH.cluster.hadoop.NodeStateEnum;
+            billingProfileName: OVH.cluster.hadoop.BillingNameEnum;
+            hostname: string;
+            ip: string;
+            isRemovable: boolean;
+            softwareProfile: OVH.cluster.hadoop.NodeProfileEnum;
+            state: OVH.cluster.hadoop.NodeStateEnum;
         }
         //cluster.hadoop.NodeBillingProfile
         // fullName: cluster.hadoop.NodeBillingProfile.NodeBillingProfile
         export interface NodeBillingProfile {
-            CPUFrequency?: OVH.complexType.UnitAndValue<number>;
-            diskCapacity?: OVH.complexType.UnitAndValue<number>;
-            nbCPUCores?: number;
-            nbCPUThreads?: number;
-            networkBandwidth?: OVH.complexType.UnitAndValue<number>;
-            nodeProfile?: string;
-            ramQuantity?: OVH.complexType.UnitAndValue<number>;
+            CPUFrequency: OVH.complexType.UnitAndValue<number>;
+            diskCapacity: OVH.complexType.UnitAndValue<number>;
+            nbCPUCores: number;
+            nbCPUThreads: number;
+            networkBandwidth: OVH.complexType.UnitAndValue<number>;
+            nodeProfile: string;
+            ramQuantity: OVH.complexType.UnitAndValue<number>;
         }
         //cluster.hadoop.NodeConsumption
         // fullName: cluster.hadoop.NodeConsumption.NodeConsumption
         export interface NodeConsumption {
-            hostname?: string;
-            nodeProfile?: OVH.cluster.hadoop.BillingNameEnum;
-            quantity?: OVH.complexType.UnitAndValue<number>;
+            hostname: string;
+            nodeProfile: OVH.cluster.hadoop.BillingNameEnum;
+            quantity: OVH.complexType.UnitAndValue<number>;
         }
         //cluster.hadoop.NodeProfileEnum
         export type NodeProfileEnum = "ApplicationServer" | "BasicNode" | "ClouderaManager" | "MasterServer" | "SecondaryServer"
@@ -60,39 +60,39 @@ export namespace cluster {
         //cluster.hadoop.OrderInformations
         // fullName: cluster.hadoop.OrderInformations.OrderInformations
         export interface OrderInformations {
-            maximumOrderableNodes?: number;
-            minimumOrderableNodes?: number;
+            maximumOrderableNodes: number;
+            minimumOrderableNodes: number;
         }
         //cluster.hadoop.Role
         // fullName: cluster.hadoop.Role.Role
         export interface Role {
-            id?: number;
-            type?: OVH.cluster.hadoop.RoleTypeEnum;
+            id: number;
+            type: OVH.cluster.hadoop.RoleTypeEnum;
         }
         //cluster.hadoop.RoleTypeEnum
         export type RoleTypeEnum = "cloudera_manager" | "data_node" | "elasticsearch_server" | "hbase_master" | "hbase_region_server" | "hive_server2" | "hue" | "impala_daemon" | "impala_server" | "map_reduce_history_server" | "name_node" | "oozie_server" | "open_tsdb" | "secondary_name_node" | "solr_server" | "spark_master" | "spark_worker" | "sqoop_server" | "yarn_node_manager" | "yarn_resource_manager" | "zoo_keeper"
         //cluster.hadoop.Task
         // fullName: cluster.hadoop.Task.Task
         export interface Task {
-            name?: string;
-            status?: OVH.cluster.hadoop.OperationStateEnum;
-            taskId?: number;
+            name: string;
+            status: OVH.cluster.hadoop.OperationStateEnum;
+            taskId: number;
         }
         //cluster.hadoop.User
         // fullName: cluster.hadoop.User.User
         export interface User {
-            clouderaManager?: boolean;
-            httpFrontend?: boolean;
-            hue?: boolean;
-            username?: string;
+            clouderaManager: boolean;
+            httpFrontend: boolean;
+            hue: boolean;
+            username: string;
         }
         //cluster.hadoop.hadoop
         // fullName: cluster.hadoop.hadoop.hadoop
         export interface hadoop {
-            clouderaVersion?: string;
-            maxOrderableNodes?: number;
-            name?: string;
-            state?: OVH.cluster.hadoop.ClusterStateEnum;
+            clouderaVersion: string;
+            maxOrderableNodes: number;
+            name: string;
+            state: OVH.cluster.hadoop.ClusterStateEnum;
         }
     }
 }
@@ -100,17 +100,17 @@ export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
 }
 export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -123,19 +123,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

@@ -16,27 +16,27 @@ export namespace status {
         //status.Reply.Reply
         // fullName: status.Reply.Reply.Reply
         export interface Reply {
-            comment?: string;
-            date?: string;
+            comment: string;
+            date: string;
         }
     }
     export namespace Task {
         //status.Task.Task
         // fullName: status.Task.Task.Task
         export interface Task {
-            category?: string;
+            category: string;
             endDate?: string;
-            impact?: OVH.ovhstatus.task.TaskImpactEnum;
-            impactedService?: string;
-            progress?: number;
-            project?: string;
-            reference?: string;
-            replies?: OVH.status.Reply.Reply[];
+            impact: OVH.ovhstatus.task.TaskImpactEnum;
+            impactedService: string;
+            progress: number;
+            project: string;
+            reference: string;
+            replies: OVH.status.Reply.Reply[];
             startDate?: string;
-            status?: OVH.ovhstatus.task.TaskStatusEnum;
-            title?: string;
-            type?: OVH.ovhstatus.task.TaskTypeEnum;
-            uuid?: string;
+            status: OVH.ovhstatus.task.TaskStatusEnum;
+            title: string;
+            type: OVH.ovhstatus.task.TaskTypeEnum;
+            uuid: string;
         }
     }
 }

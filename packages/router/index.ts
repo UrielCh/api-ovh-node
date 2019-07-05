@@ -6,23 +6,23 @@ export namespace router {
     // fullName: router.Dnat.Dnat
     export interface Dnat {
         destinationPort?: number;
-        id?: number;
-        newDestinationNet?: string;
+        id: number;
+        newDestinationNet: string;
         newDestinationPort?: number;
-        protocol?: OVH.router.ProtocolEnum;
+        protocol: OVH.router.ProtocolEnum;
         sourceNet?: string;
-        status?: OVH.router.StatusEnum;
+        status: OVH.router.StatusEnum;
     }
     //router.IpStatusEnum
     export type IpStatusEnum = "blacklisted" | "deleted" | "free" | "installing" | "ok" | "quarantined" | "removing" | "suspended"
     //router.Network
     // fullName: router.Network.Network
     export interface Network {
-        creationDate?: string;
+        creationDate: string;
         description?: string;
-        id?: number;
-        ipNet?: string;
-        status?: OVH.router.IpStatusEnum;
+        id: number;
+        ipNet: string;
+        status: OVH.router.IpStatusEnum;
         vlanTag?: number;
     }
     //router.PrivLinkReqActionEnum
@@ -32,56 +32,56 @@ export namespace router {
     //router.PrivateLink
     // fullName: router.PrivateLink.PrivateLink
     export interface PrivateLink {
-        creationDate?: string;
-        id?: number;
-        name?: string;
-        peerServiceName?: string;
-        status?: OVH.router.StatusEnum;
+        creationDate: string;
+        id: number;
+        name: string;
+        peerServiceName: string;
+        status: OVH.router.StatusEnum;
     }
     //router.PrivateLinkRequest
     // fullName: router.PrivateLinkRequest.PrivateLinkRequest
     export interface PrivateLinkRequest {
-        creationDate?: string;
-        status?: OVH.router.PrivLinkReqStatusEnum;
+        creationDate: string;
+        status: OVH.router.PrivLinkReqStatusEnum;
     }
     //router.PrivateLinkRoute
     // fullName: router.PrivateLinkRoute.PrivateLinkRoute
     export interface PrivateLinkRoute {
-        creationDate?: string;
-        id?: number;
-        network?: string;
-        status?: OVH.router.StatusEnum;
+        creationDate: string;
+        id: number;
+        network: string;
+        status: OVH.router.StatusEnum;
     }
     //router.ProtocolEnum
     export type ProtocolEnum = "any" | "tcp" | "udp"
     //router.Router
     // fullName: router.Router.Router
     export interface Router {
-        name?: string;
-        service?: string;
-        status?: OVH.router.StatusEnum;
+        name: string;
+        service: string;
+        status: OVH.router.StatusEnum;
     }
     //router.Snat
     // fullName: router.Snat.Snat
     export interface Snat {
         destinationNet?: string;
         destinationPort?: number;
-        id?: number;
-        newSourceNet?: string;
+        id: number;
+        newSourceNet: string;
         newSourcePort?: number;
-        protocol?: OVH.router.ProtocolEnum;
-        status?: OVH.router.StatusEnum;
+        protocol: OVH.router.ProtocolEnum;
+        status: OVH.router.StatusEnum;
     }
     //router.StatusEnum
     export type StatusEnum = "creating" | "error" | "off" | "on" | "removing" | "suspended"
     //router.Task
     // fullName: router.Task.Task
     export interface Task {
-        creationDate?: string;
+        creationDate: string;
         finishDate?: string;
-        function?: OVH.router.TaskFunctionEnum;
-        id?: number;
-        status?: OVH.router.TaskStatusEnum;
+        function: OVH.router.TaskFunctionEnum;
+        id: number;
+        status: OVH.router.TaskStatusEnum;
     }
     //router.TaskFunctionEnum
     export type TaskFunctionEnum = "addDnat" | "addDnatMaster" | "addNetwork" | "addNetworkMaster" | "addPrivateLink" | "addPrivateLinkMaster" | "addPrivateLinkRoute" | "addPrivateLinkRouteMaster" | "addSnat" | "addSnatMaster" | "delDnat" | "delDnatMaster" | "delNetwork" | "delNetworkMaster" | "delPrivateLink" | "delPrivateLinkMaster" | "delPrivateLinkRoute" | "delPrivateLinkRouteMaster" | "delSnat" | "delSnatMaster" | "vpnCreation" | "vpnDeletion" | "vpnSetConfig" | "vpnSetConfigMaster" | "vpnSetSecrets" | "vpnSetSecretsMaster"
@@ -91,19 +91,19 @@ export namespace router {
     // fullName: router.Vpn.Vpn
     export interface Vpn {
         clientIp?: string;
-        clientPrivNet?: string;
-        id?: number;
-        serverIp?: string;
-        serverPrivNet?: string;
+        clientPrivNet: string;
+        id: number;
+        serverIp: string;
+        serverPrivNet: string;
     }
 }
 export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -120,19 +120,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

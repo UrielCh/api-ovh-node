@@ -5,22 +5,22 @@ export namespace complexType {
     //complexType.SafeKeyValue
     // fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
-        key?: string;
-        value?: T;
+        key: string;
+        value: T;
     }
 }
 export namespace contact {
     //contact.FormCharacteristic
     // fullName: contact.FormCharacteristic.FormCharacteristic
     export interface FormCharacteristic {
-        keys?: OVH.contact.KeyFormCharacteristic[];
-        type?: string;
+        keys: OVH.contact.KeyFormCharacteristic[];
+        type: string;
     }
     //contact.KeyFormCharacteristic
     // fullName: contact.KeyFormCharacteristic.KeyFormCharacteristic
     export interface KeyFormCharacteristic {
-        key?: string;
-        required?: boolean;
+        key: string;
+        required: boolean;
     }
 }
 // Apis harmony

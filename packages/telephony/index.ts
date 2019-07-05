@@ -5,20 +5,20 @@ export namespace complexType {
     //complexType.Range
     // fullName: complexType.Range.Range
     export interface Range<T> {
-        from?: T;
-        to?: T;
+        from: T;
+        to: T;
     }
     //complexType.SafeKeyValue
     // fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
-        key?: string;
-        value?: T;
+        key: string;
+        value: T;
     }
     //complexType.UnitAndValues
     // fullName: complexType.UnitAndValues.UnitAndValues
     export interface UnitAndValues<T> {
-        unit?: string;
-        values?: T[];
+        unit: string;
+        values: T[];
     }
 }
 export namespace coreTypes {
@@ -35,27 +35,27 @@ export namespace order {
     //order.Contract
     // fullName: order.Contract.Contract
     export interface Contract {
-        content?: string;
-        name?: string;
-        url?: string;
+        content: string;
+        name: string;
+        url: string;
     }
     //order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode?: OVH.order.CurrencyCodeEnum;
-        text?: string;
-        value?: number;
+        currencyCode: OVH.order.CurrencyCodeEnum;
+        text: string;
+        value: number;
     }
 }
 export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -68,19 +68,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace spare {
@@ -88,9 +88,9 @@ export namespace spare {
         //spare.telephony.TelephonySpare
         // fullName: spare.telephony.TelephonySpare.TelephonySpare
         export interface TelephonySpare {
-            brand?: string;
-            macAddress?: string;
-            protocol?: OVH.telephony.ProtocolEnum;
+            brand: string;
+            macAddress: string;
+            protocol: OVH.telephony.ProtocolEnum;
         }
     }
 }
@@ -98,25 +98,25 @@ export namespace telephony {
     //telephony.AbbreviatedNumber
     // fullName: telephony.AbbreviatedNumber.AbbreviatedNumber
     export interface AbbreviatedNumber {
-        abbreviatedNumber?: number;
-        destinationNumber?: string;
-        name?: string;
-        surname?: string;
+        abbreviatedNumber: number;
+        destinationNumber: string;
+        name: string;
+        surname: string;
     }
     //telephony.AbbreviatedNumberGroup
     // fullName: telephony.AbbreviatedNumberGroup.AbbreviatedNumberGroup
     export interface AbbreviatedNumberGroup {
-        abbreviatedNumber?: number;
-        destinationNumber?: string;
-        name?: string;
-        surname?: string;
+        abbreviatedNumber: number;
+        destinationNumber: string;
+        name: string;
+        surname: string;
     }
     //telephony.AccessoryOffer
     // fullName: telephony.AccessoryOffer.AccessoryOffer
     export interface AccessoryOffer {
         description?: string;
-        name?: string;
-        price?: OVH.order.Price;
+        name: string;
+        price: OVH.order.Price;
         url?: string;
     }
     //telephony.AntihackActionEnum
@@ -124,9 +124,9 @@ export namespace telephony {
     //telephony.BannerAccess
     // fullName: telephony.BannerAccess.BannerAccess
     export interface BannerAccess {
-        creationDate?: string;
-        id?: number;
-        url?: string;
+        creationDate: string;
+        id: number;
+        url: string;
     }
     //telephony.BillDocument
     export type BillDocument = "csv" | "pdf" | "received.csv" | "xml"
@@ -135,76 +135,76 @@ export namespace telephony {
     //telephony.BillingAccount
     // fullName: telephony.BillingAccount.BillingAccount
     export interface BillingAccount {
-        allowedOutplan?: OVH.order.Price;
-        billingAccount?: string;
-        creditThreshold?: OVH.order.Price;
-        currentOutplan?: OVH.order.Price;
-        description?: string;
-        hiddenExternalNumber?: boolean;
-        overrideDisplayedNumber?: boolean;
-        securityDeposit?: OVH.order.Price;
-        status?: OVH.telephony.BillingAccountStatusEnum;
-        trusted?: boolean;
+        allowedOutplan: OVH.order.Price;
+        billingAccount: string;
+        creditThreshold: OVH.order.Price;
+        currentOutplan: OVH.order.Price;
+        description: string;
+        hiddenExternalNumber: boolean;
+        overrideDisplayedNumber: boolean;
+        securityDeposit: OVH.order.Price;
+        status: OVH.telephony.BillingAccountStatusEnum;
+        trusted: boolean;
     }
     //telephony.BillingAccountStatusEnum
     export type BillingAccountStatusEnum = "closed" | "deleted" | "enabled" | "expired"
     //telephony.CallDiagnosticCallQuality
     // fullName: telephony.CallDiagnosticCallQuality.CallDiagnosticCallQuality
     export interface CallDiagnosticCallQuality {
-        callId?: string;
-        codec?: OVH.telephony.CallDiagnosticCodecEnum;
-        flowId?: number;
-        ipDst?: string;
-        ipSrc?: string;
-        maxDelay?: number;
-        maxJitter?: number;
-        mos?: number;
-        packets?: number;
-        portDst?: number;
-        portSrc?: number;
-        rtpLost?: number;
-        timestamp?: string;
+        callId: string;
+        codec: OVH.telephony.CallDiagnosticCodecEnum;
+        flowId: number;
+        ipDst: string;
+        ipSrc: string;
+        maxDelay: number;
+        maxJitter: number;
+        mos: number;
+        packets: number;
+        portDst: number;
+        portSrc: number;
+        rtpLost: number;
+        timestamp: string;
     }
     //telephony.CallDiagnosticCauseEnum
     export type CallDiagnosticCauseEnum = "1" | "10" | "11" | "12" | "13" | "14" | "15" | "16" | "1a" | "1b" | "1c" | "1d" | "1e" | "1f" | "2" | "22" | "26" | "27" | "28" | "29" | "2a" | "2b" | "2c" | "2e" | "2f" | "3" | "30" | "31" | "32" | "33" | "34" | "35" | "37" | "39" | "3a" | "3e" | "3f" | "4" | "41" | "42" | "45" | "46" | "4f" | "5" | "51" | "52" | "53" | "54" | "55" | "56" | "57" | "58" | "5a" | "5b" | "5f" | "6" | "60" | "61" | "62" | "63" | "64" | "65" | "66" | "67" | "6e" | "6f" | "7" | "7f" | "8" | "9"
     //telephony.CallDiagnosticCdrs
     // fullName: telephony.CallDiagnosticCdrs.CallDiagnosticCdrs
     export interface CallDiagnosticCdrs {
-        basic?: OVH.telephony.CallDiagnosticCdrsBasic;
-        timestamp?: string;
+        basic: OVH.telephony.CallDiagnosticCdrsBasic;
+        timestamp: string;
     }
     //telephony.CallDiagnosticCdrsBasic
     // fullName: telephony.CallDiagnosticCdrsBasic.CallDiagnosticCdrsBasic
     export interface CallDiagnosticCdrsBasic {
-        cause?: OVH.telephony.CallDiagnosticCauseEnum;
-        causeDescription?: string;
-        releaseLocation?: OVH.telephony.ReleaseLocationEnum;
+        cause: OVH.telephony.CallDiagnosticCauseEnum;
+        causeDescription: string;
+        releaseLocation: OVH.telephony.ReleaseLocationEnum;
     }
     //telephony.CallDiagnosticCodecEnum
     export type CallDiagnosticCodecEnum = "G722" | "G729" | "PCMA" | "PCMU"
     //telephony.CallDiagnosticReporting
     // fullName: telephony.CallDiagnosticReporting.CallDiagnosticReporting
     export interface CallDiagnosticReporting {
-        message?: string;
+        message: string;
     }
     //telephony.CallDiagnosticSip
     // fullName: telephony.CallDiagnosticSip.CallDiagnosticSip
     export interface CallDiagnosticSip {
-        headers?: string;
+        headers: string;
         requestMethod?: string;
         response?: string;
-        timestamp?: string;
+        timestamp: string;
     }
     //telephony.CallDiagnosticStatusEnum
     export type CallDiagnosticStatusEnum = "doing" | "done" | "error" | "todo"
     //telephony.CallDiagnostics
     // fullName: telephony.CallDiagnostics.CallDiagnostics
     export interface CallDiagnostics {
-        callQuality?: OVH.telephony.CallDiagnosticCallQuality[];
-        cdrs?: OVH.telephony.CallDiagnosticCdrs[];
-        reporting?: OVH.telephony.CallDiagnosticReporting[];
-        sip?: OVH.telephony.CallDiagnosticSip[];
-        status?: OVH.telephony.CallDiagnosticStatusEnum;
+        callQuality: OVH.telephony.CallDiagnosticCallQuality[];
+        cdrs: OVH.telephony.CallDiagnosticCdrs[];
+        reporting: OVH.telephony.CallDiagnosticReporting[];
+        sip: OVH.telephony.CallDiagnosticSip[];
+        status: OVH.telephony.CallDiagnosticStatusEnum;
     }
     //telephony.CallsGenerated
     // fullName: telephony.CallsGenerated.CallsGenerated
@@ -212,7 +212,7 @@ export namespace telephony {
         answerDatetime?: string;
         application?: string;
         applicationResult?: string;
-        billingNumber?: string;
+        billingNumber: string;
         callCreatedDatetime?: string;
         callDuration?: number;
         callee?: string;
@@ -220,9 +220,9 @@ export namespace telephony {
         dtmf?: string;
         hangupCause?: OVH.telephony.CallsGeneratorHangupCauseEnum;
         hangupDatetime?: string;
-        identifier?: string;
+        identifier: string;
         transferFrom?: string;
-        uuid?: string;
+        uuid: string;
     }
     //telephony.CallsGeneratorDialplanEnum
     export type CallsGeneratorDialplanEnum = "PlayAudioFile" | "PlayAudioFileAndTransferCall" | "ReadText" | "RequestAppointmentConfirmation" | "RequestAppointmentConfirmationWithTransfer"
@@ -232,99 +232,99 @@ export namespace telephony {
     // fullName: telephony.City.City
     export interface City {
         administrationCode?: string;
-        name?: string;
-        zipCode?: string;
+        name: string;
+        zipCode: string;
     }
     //telephony.Click2CallUser
     // fullName: telephony.Click2CallUser.Click2CallUser
     export interface Click2CallUser {
-        creationDateTime?: string;
-        id?: number;
-        login?: string;
+        creationDateTime: string;
+        id: number;
+        login: string;
     }
     //telephony.Conference
     // fullName: telephony.Conference.Conference
     export interface Conference {
-        description?: string;
-        offers?: string[];
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
+        description: string;
+        offers: string[];
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
     }
     //telephony.ConferenceHistory
     // fullName: telephony.ConferenceHistory.ConferenceHistory
     export interface ConferenceHistory {
-        countConnections?: number;
-        countParticipants?: number;
-        dateBegin?: string;
-        dateEnd?: string;
-        duration?: number;
-        events?: OVH.telephony.ConferenceHistoryEvent[];
-        id?: number;
+        countConnections: number;
+        countParticipants: number;
+        dateBegin: string;
+        dateEnd: string;
+        duration: number;
+        events: OVH.telephony.ConferenceHistoryEvent[];
+        id: number;
         recordUrl?: string;
     }
     //telephony.ConferenceHistoryEvent
     // fullName: telephony.ConferenceHistoryEvent.ConferenceHistoryEvent
     export interface ConferenceHistoryEvent {
-        callerid?: string;
-        date?: string;
-        type?: string;
+        callerid: string;
+        date: string;
+        type: string;
     }
     //telephony.ConferenceInformations
     // fullName: telephony.ConferenceInformations.ConferenceInformations
     export interface ConferenceInformations {
-        dateStart?: string;
-        locked?: boolean;
-        membersCount?: number;
+        dateStart: string;
+        locked: boolean;
+        membersCount: number;
     }
     //telephony.ConferenceLanguageEnum
     export type ConferenceLanguageEnum = "de" | "en" | "es" | "fr" | "it"
     //telephony.ConferenceParticipants
     // fullName: telephony.ConferenceParticipants.ConferenceParticipants
     export interface ConferenceParticipants {
-        arrivalDateTime?: string;
-        callerName?: string;
-        callerNumber?: string;
-        energy?: number;
-        floor?: boolean;
-        hear?: boolean;
-        id?: number;
-        speak?: boolean;
-        talking?: boolean;
+        arrivalDateTime: string;
+        callerName: string;
+        callerNumber: string;
+        energy: number;
+        floor: boolean;
+        hear: boolean;
+        id: number;
+        speak: boolean;
+        talking: boolean;
     }
     //telephony.ConferenceProperties
     // fullName: telephony.ConferenceProperties.ConferenceProperties
     export interface ConferenceProperties {
-        announceFile?: boolean;
+        announceFile: boolean;
         announceFilename?: string;
         announceSoundId?: number;
-        anonymousRejection?: boolean;
-        enterMuted?: boolean;
-        eventsChannel?: string;
-        language?: OVH.telephony.ConferenceLanguageEnum;
-        pin?: string;
-        recordStatus?: boolean;
+        anonymousRejection: boolean;
+        enterMuted: boolean;
+        eventsChannel: string;
+        language: OVH.telephony.ConferenceLanguageEnum;
+        pin: string;
+        recordStatus: boolean;
         reportEmail?: string;
-        reportStatus?: OVH.telephony.ConferenceReportStatusEnum;
-        whiteLabelReport?: boolean;
+        reportStatus: OVH.telephony.ConferenceReportStatusEnum;
+        whiteLabelReport: boolean;
     }
     //telephony.ConferenceReportStatusEnum
     export type ConferenceReportStatusEnum = "customer" | "none" | "other"
     //telephony.ConferenceWebAccess
     // fullName: telephony.ConferenceWebAccess.ConferenceWebAccess
     export interface ConferenceWebAccess {
-        id?: number;
-        type?: OVH.telephony.ConferenceWebAccessTypeEnum;
-        url?: string;
+        id: number;
+        type: OVH.telephony.ConferenceWebAccessTypeEnum;
+        url: string;
     }
     //telephony.ConferenceWebAccessTypeEnum
     export type ConferenceWebAccessTypeEnum = "read" | "write"
     //telephony.ConsumptionThreshold
     // fullName: telephony.ConsumptionThreshold.ConsumptionThreshold
     export interface ConsumptionThreshold {
-        block?: OVH.telephony.OutplanNotificationBlockEnum;
-        id?: number;
-        notifyEmail?: string;
-        percentage?: number;
+        block: OVH.telephony.OutplanNotificationBlockEnum;
+        id: number;
+        notifyEmail: string;
+        percentage: number;
     }
     //telephony.Contact
     // fullName: telephony.Contact.Contact
@@ -344,48 +344,48 @@ export namespace telephony {
     //telephony.DatetimeAndIpvalue
     // fullName: telephony.DatetimeAndIpvalue.DatetimeAndIpvalue
     export interface DatetimeAndIpvalue {
-        datetime?: string;
+        datetime: string;
         ip?: string;
     }
     //telephony.Ddi
     // fullName: telephony.Ddi.Ddi
     export interface Ddi {
-        description?: string;
+        description: string;
         destination?: string;
-        featureType?: OVH.telephony.TypeEnum;
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
+        featureType: OVH.telephony.TypeEnum;
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
     }
     //telephony.DefaultSipDomains
     // fullName: telephony.DefaultSipDomains.DefaultSipDomains
     export interface DefaultSipDomains {
-        country?: OVH.telephony.NumberCountryEnum;
-        currentDomain?: string;
-        list?: string[];
-        productType?: OVH.telephony.SipDomainProductTypeEnum;
+        country: OVH.telephony.NumberCountryEnum;
+        currentDomain: string;
+        list: string[];
+        productType: OVH.telephony.SipDomainProductTypeEnum;
     }
     //telephony.DetailedRateCodeInformation
     // fullName: telephony.DetailedRateCodeInformation.DetailedRateCodeInformation
     export interface DetailedRateCodeInformation {
         cancelLimitDatetime?: string;
         effectiveDatetime?: string;
-        pricePerCallWithoutTax?: OVH.order.Price;
-        pricePerMinuteWithoutTax?: OVH.order.Price;
-        rateCode?: string;
-        repaymentPricePerCallWithoutTax?: OVH.order.Price;
-        repaymentPricePerMinuteWithoutTax?: OVH.order.Price;
+        pricePerCallWithoutTax: OVH.order.Price;
+        pricePerMinuteWithoutTax: OVH.order.Price;
+        rateCode: string;
+        repaymentPricePerCallWithoutTax: OVH.order.Price;
+        repaymentPricePerMinuteWithoutTax: OVH.order.Price;
         updateRateCodePriceWithoutTax?: OVH.order.Price;
     }
     //telephony.DiagnosticReport
     // fullName: telephony.DiagnosticReport.DiagnosticReport
     export interface DiagnosticReport {
-        callId?: string;
-        category?: OVH.telephony.DiagnosticReportCategoryEnum;
-        datetime?: string;
-        description?: string;
-        level?: OVH.telephony.DiagnosticReportLevelEnum;
-        name?: string;
-        report?: string;
+        callId: string;
+        category: OVH.telephony.DiagnosticReportCategoryEnum;
+        datetime: string;
+        description: string;
+        level: OVH.telephony.DiagnosticReportLevelEnum;
+        name: string;
+        report: string;
     }
     //telephony.DiagnosticReportCategoryEnum
     export type DiagnosticReportCategoryEnum = "dpi" | "signal"
@@ -396,74 +396,74 @@ export namespace telephony {
     //telephony.DirectoryHeadingPJ
     // fullName: telephony.DirectoryHeadingPJ.DirectoryHeadingPJ
     export interface DirectoryHeadingPJ {
-        apeCode?: string;
-        apeDescription?: string;
-        directoryServiceCode?: number;
-        directoryServiceDescription?: string;
-        notification?: string;
+        apeCode: string;
+        apeDescription: string;
+        directoryServiceCode: number;
+        directoryServiceDescription: string;
+        notification: string;
     }
     //telephony.DirectoryInfo
     // fullName: telephony.DirectoryInfo.DirectoryInfo
     export interface DirectoryInfo {
-        PJSocialNomination?: string;
-        address?: string;
-        addressExtra?: string;
-        ape?: string;
-        areaCode?: number;
+        PJSocialNomination: string;
+        address: string;
+        addressExtra: string;
+        ape: string;
+        areaCode: number;
         birthDate?: string;
-        cedex?: string;
-        city?: string;
-        country?: string;
-        directoryServiceCode?: string;
-        displayFirstName?: boolean;
-        displayMarketingDirectory?: boolean;
-        displayOnlyCity?: boolean;
-        displaySearchReverse?: boolean;
-        displayUniversalDirectory?: boolean;
-        email?: string;
-        firstName?: string;
+        cedex: string;
+        city: string;
+        country: string;
+        directoryServiceCode: string;
+        displayFirstName: boolean;
+        displayMarketingDirectory: boolean;
+        displayOnlyCity: boolean;
+        displaySearchReverse: boolean;
+        displayUniversalDirectory: boolean;
+        email: string;
+        firstName: string;
         gender?: OVH.nichandle.GenderEnum;
-        inseeCode?: number;
-        legalForm?: string;
-        lineDescription?: string;
-        modificationDate?: string;
-        modificationType?: string;
-        name?: string;
-        number?: string;
-        occupation?: string;
-        postBox?: string;
-        postCode?: string;
-        receivePJDirectory?: boolean;
-        siret?: string;
-        socialNomination?: string;
-        socialNominationExtra?: string;
-        status?: string;
-        urbanDistrict?: string;
-        wayName?: string;
-        wayNumber?: string;
-        wayNumberExtra?: string;
-        wayType?: string;
+        inseeCode: number;
+        legalForm: string;
+        lineDescription: string;
+        modificationDate: string;
+        modificationType: string;
+        name: string;
+        number: string;
+        occupation: string;
+        postBox: string;
+        postCode: string;
+        receivePJDirectory: boolean;
+        siret: string;
+        socialNomination: string;
+        socialNominationExtra: string;
+        status: string;
+        urbanDistrict: string;
+        wayName: string;
+        wayNumber: string;
+        wayNumberExtra: string;
+        wayType: string;
     }
     //telephony.DirectoryWayType
     // fullName: telephony.DirectoryWayType.DirectoryWayType
     export interface DirectoryWayType {
-        abbreviatedName?: string;
-        wayName?: string;
+        abbreviatedName: string;
+        wayName: string;
     }
     //telephony.EasyHunting
     // fullName: telephony.EasyHunting.EasyHunting
     export interface EasyHunting {
-        anonymousRejection?: boolean;
-        description?: string;
-        featureType?: OVH.telephony.TypeEnum;
-        isCCS?: boolean;
-        maxWaitTime?: number;
-        queueSize?: number;
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
-        showCallerNumber?: OVH.telephony.OvhPabxDialplanNumberPresentationEnum;
-        statusIvrEnabled?: boolean;
-        strategy?: OVH.telephony.OvhPabxHuntingQueueStrategyEnum;
+        anonymousRejection: boolean;
+        description: string;
+        featureType: OVH.telephony.TypeEnum;
+        isCCS: boolean;
+        maxWaitTime: number;
+        queueSize: number;
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
+        showCallerNumber: OVH.telephony.OvhPabxDialplanNumberPresentationEnum;
+        statusIvrEnabled: boolean;
+        strategy: OVH.telephony.OvhPabxHuntingQueueStrategyEnum;
         toneOnClosing?: number;
         toneOnHold?: number;
         toneOnOpening?: number;
@@ -473,30 +473,30 @@ export namespace telephony {
     // fullName: telephony.EasyHuntingScreenListsConditions.EasyHuntingScreenListsConditions
     export interface EasyHuntingScreenListsConditions {
         callerIdNumber?: string;
-        conditionId?: number;
+        conditionId: number;
         destinationNumber?: string;
-        screenListType?: OVH.telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum;
+        screenListType: OVH.telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum;
     }
     //telephony.EasyHuntingScreenListsConditionsSettings
     // fullName: telephony.EasyHuntingScreenListsConditionsSettings.EasyHuntingScreenListsConditionsSettings
     export interface EasyHuntingScreenListsConditionsSettings {
-        status?: OVH.telephony.EasyHuntingScreenListsConditionsStatusEnum;
+        status: OVH.telephony.EasyHuntingScreenListsConditionsStatusEnum;
     }
     //telephony.EasyHuntingScreenListsConditionsStatusEnum
     export type EasyHuntingScreenListsConditionsStatusEnum = "disabled" | "incomingBlackList" | "incomingWhiteList"
     //telephony.EasyHuntingTimeConditions
     // fullName: telephony.EasyHuntingTimeConditions.EasyHuntingTimeConditions
     export interface EasyHuntingTimeConditions {
-        conditionId?: number;
-        policy?: OVH.telephony.TimeConditionsPolicyEnum;
-        timeFrom?: string;
-        timeTo?: string;
-        weekDay?: OVH.telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum;
+        conditionId: number;
+        policy: OVH.telephony.TimeConditionsPolicyEnum;
+        timeFrom: string;
+        timeTo: string;
+        weekDay: OVH.telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum;
     }
     //telephony.EasyHuntingTimeConditionsSettings
     // fullName: telephony.EasyHuntingTimeConditionsSettings.EasyHuntingTimeConditionsSettings
     export interface EasyHuntingTimeConditionsSettings {
-        enable?: boolean;
+        enable: boolean;
         slot1Number?: string;
         slot1Type?: OVH.telephony.TimeConditionsSettingsForwardTypeEnum;
         slot2Number?: string;
@@ -509,10 +509,10 @@ export namespace telephony {
     //telephony.EasyMiniPabxHuntingAgent
     // fullName: telephony.EasyMiniPabxHuntingAgent.EasyMiniPabxHuntingAgent
     export interface EasyMiniPabxHuntingAgent {
-        agentNumber?: string;
-        logged?: boolean;
-        noReplyTimer?: number;
-        position?: number;
+        agentNumber: string;
+        logged: boolean;
+        noReplyTimer: number;
+        position: number;
     }
     //telephony.EasyMiniPabxHuntingPatternEnum
     export type EasyMiniPabxHuntingPatternEnum = "all-at-once" | "cumulated" | "sequential"
@@ -521,25 +521,25 @@ export namespace telephony {
     //telephony.EasyPabx
     // fullName: telephony.EasyPabx.EasyPabx
     export interface EasyPabx {
-        description?: string;
-        featureType?: OVH.telephony.TypeEnum;
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
+        description: string;
+        featureType: OVH.telephony.TypeEnum;
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
     }
     //telephony.EasyPabxHunting
     // fullName: telephony.EasyPabxHunting.EasyPabxHunting
     export interface EasyPabxHunting {
-        anonymousCallRejection?: boolean;
-        name?: string;
-        noReplyTimer?: number;
-        numberOfCalls?: number;
-        pattern?: OVH.telephony.EasyMiniPabxHuntingPatternEnum;
-        strategy?: OVH.telephony.EasyMiniPabxHuntingStrategyEnum;
-        toneOnClosure?: boolean;
+        anonymousCallRejection: boolean;
+        name: string;
+        noReplyTimer: number;
+        numberOfCalls: number;
+        pattern: OVH.telephony.EasyMiniPabxHuntingPatternEnum;
+        strategy: OVH.telephony.EasyMiniPabxHuntingStrategyEnum;
+        toneOnClosure: boolean;
         toneOnClosureSoundId?: number;
-        toneOnHold?: boolean;
+        toneOnHold: boolean;
         toneOnHoldSoundId?: number;
-        toneRingback?: boolean;
+        toneRingback: boolean;
         toneRingbackSoundId?: number;
         voicemail?: string;
     }
@@ -549,28 +549,28 @@ export namespace telephony {
         address?: string;
         ape?: string;
         brand?: string;
-        entrepriseNumber?: string;
-        isValid?: boolean;
-        name?: string;
+        entrepriseNumber: string;
+        isValid: boolean;
+        name: string;
         siren?: string;
     }
     //telephony.EntrepriseNumberInformationsTask
     // fullName: telephony.EntrepriseNumberInformationsTask.EntrepriseNumberInformationsTask
     export interface EntrepriseNumberInformationsTask {
-        informations?: OVH.telephony.EntrepriseNumberInformations;
-        status?: OVH.telephony.TaskStatusEnum;
+        informations: OVH.telephony.EntrepriseNumberInformations;
+        status: OVH.telephony.TaskStatusEnum;
     }
     //telephony.Event
     // fullName: telephony.Event.Event
     export interface Event {
-        calledIdentifier?: string;
-        callingIdentifier?: string;
-        dateTime?: string;
-        direction?: OVH.telephony.RealtimeEventDirection;
-        duration?: number;
-        eventType?: OVH.telephony.RealtimeEventType;
-        id?: string;
-        protocol?: OVH.telephony.RealtimeEventProtocol;
+        calledIdentifier: string;
+        callingIdentifier: string;
+        dateTime: string;
+        direction: OVH.telephony.RealtimeEventDirection;
+        duration: number;
+        eventType: OVH.telephony.RealtimeEventType;
+        id: string;
+        protocol: OVH.telephony.RealtimeEventProtocol;
     }
     //telephony.EventCallback
     // fullName: telephony.EventCallback.EventCallback
@@ -581,36 +581,36 @@ export namespace telephony {
     //telephony.EventToken
     // fullName: telephony.EventToken.EventToken
     export interface EventToken {
-        token?: string;
+        token: string;
     }
     //telephony.Fax
     // fullName: telephony.Fax.Fax
     export interface Fax {
-        description?: string;
+        description: string;
         notifications?: OVH.telephony.LineNotificationsOptions;
-        offers?: string[];
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
+        offers: string[];
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
     }
     //telephony.FaxCampaign
     // fullName: telephony.FaxCampaign.FaxCampaign
     export interface FaxCampaign {
-        countFailed?: number;
-        countSuccess?: number;
-        countTotal?: number;
+        countFailed: number;
+        countSuccess: number;
+        countTotal: number;
         dateEnd?: string;
         dateStart?: string;
-        id?: number;
-        name?: string;
-        reference?: string;
-        status?: string;
+        id: number;
+        name: string;
+        reference: string;
+        status: string;
     }
     //telephony.FaxCampaignDetail
     // fullName: telephony.FaxCampaignDetail.FaxCampaignDetail
     export interface FaxCampaignDetail {
-        failed?: string[];
-        success?: string[];
-        todo?: string[];
+        failed: string[];
+        success: string[];
+        todo: string[];
     }
     //telephony.FaxCampaignRecipientsTypeEnum
     export type FaxCampaignRecipientsTypeEnum = "document" | "list"
@@ -621,11 +621,11 @@ export namespace telephony {
     export interface FaxConsumption {
         called?: string;
         calling?: string;
-        consumptionId?: number;
-        creationDatetime?: string;
-        pages?: number;
-        priceWithoutTax?: OVH.order.Price;
-        wayType?: OVH.telephony.FaxConsumptionWayTypeEnum;
+        consumptionId: number;
+        creationDatetime: string;
+        pages: number;
+        priceWithoutTax: OVH.order.Price;
+        wayType: OVH.telephony.FaxConsumptionWayTypeEnum;
     }
     //telephony.FaxConsumptionWayTypeEnum
     export type FaxConsumptionWayTypeEnum = "received" | "sent"
@@ -634,18 +634,18 @@ export namespace telephony {
     //telephony.FaxProperties
     // fullName: telephony.FaxProperties.FaxProperties
     export interface FaxProperties {
-        callNumber?: string;
-        countryCode?: string;
-        faxMaxCall?: OVH.telephony.FaxSendingTries;
-        faxQuality?: OVH.telephony.FaxQualityEnum;
-        faxTagLine?: string;
-        fromEmail?: string;
-        fromName?: string;
-        mailFormat?: OVH.telephony.FaxMailFormatEnum;
-        receiver?: string;
-        redirectionEmail?: string[];
-        rejectAnonymous?: boolean;
-        sender?: string;
+        callNumber: string;
+        countryCode: string;
+        faxMaxCall: OVH.telephony.FaxSendingTries;
+        faxQuality: OVH.telephony.FaxQualityEnum;
+        faxTagLine: string;
+        fromEmail: string;
+        fromName: string;
+        mailFormat: OVH.telephony.FaxMailFormatEnum;
+        receiver: string;
+        redirectionEmail: string[];
+        rejectAnonymous: boolean;
+        sender: string;
     }
     //telephony.FaxQualityEnum
     export type FaxQualityEnum = "best" | "high" | "normal"
@@ -654,10 +654,10 @@ export namespace telephony {
     export interface FaxScreen {
         blacklistedNumbers?: string[];
         blacklistedTSI?: string[];
-        callNumber?: string;
-        countryCode?: string;
+        callNumber: string;
+        countryCode: string;
         filteringList?: OVH.telephony.FaxScreenListTypeEnum;
-        serviceName?: string;
+        serviceName: string;
         whitelistedNumbers?: string[];
         whitelistedTSI?: string[];
     }
@@ -670,60 +670,60 @@ export namespace telephony {
     export interface FunctionKey {
         default?: string;
         function?: string;
-        keyNum?: number;
-        label?: string;
+        keyNum: number;
+        label: string;
         parameter?: string;
-        type?: string;
+        type: string;
     }
     //telephony.GenericScreen
     // fullName: telephony.GenericScreen.GenericScreen
     export interface GenericScreen {
-        serviceName?: string;
+        serviceName: string;
     }
     //telephony.HardwareOffer
     // fullName: telephony.HardwareOffer.HardwareOffer
     export interface HardwareOffer {
         description?: string;
-        name?: string;
-        price?: OVH.order.Price;
+        name: string;
+        price: OVH.order.Price;
         url?: string;
     }
     //telephony.HistoryConsumption
     // fullName: telephony.HistoryConsumption.HistoryConsumption
     export interface HistoryConsumption {
-        date?: string;
-        price?: OVH.order.Price;
-        priceOutplan?: OVH.order.Price;
-        status?: OVH.telephony.BillStatusEnum;
+        date: string;
+        price: OVH.order.Price;
+        priceOutplan: OVH.order.Price;
+        status: OVH.telephony.BillStatusEnum;
     }
     //telephony.HistoryRepaymentConsumption
     // fullName: telephony.HistoryRepaymentConsumption.HistoryRepaymentConsumption
     export interface HistoryRepaymentConsumption {
-        billingNumber?: string;
-        date?: string;
-        price?: OVH.order.Price;
-        status?: OVH.telephony.BillStatusEnum;
+        billingNumber: string;
+        date: string;
+        price: OVH.order.Price;
+        status: OVH.telephony.BillStatusEnum;
     }
     //telephony.HistoryTollfreeConsumption
     // fullName: telephony.HistoryTollfreeConsumption.HistoryTollfreeConsumption
     export interface HistoryTollfreeConsumption {
-        date?: string;
-        price?: OVH.order.Price;
-        status?: OVH.telephony.BillStatusEnum;
+        date: string;
+        price: OVH.order.Price;
+        status: OVH.telephony.BillStatusEnum;
     }
     //telephony.Line
     // fullName: telephony.Line.Line
     export interface Line {
-        canChangePassword?: boolean;
-        description?: string;
-        getPublicOffer?: OVH.telephony.LineOffer;
-        infrastructure?: string;
-        isAttachedToOtherLinesPhone?: boolean;
+        canChangePassword: boolean;
+        description: string;
+        getPublicOffer: OVH.telephony.LineOffer;
+        infrastructure: string;
+        isAttachedToOtherLinesPhone: boolean;
         notifications?: OVH.telephony.LineNotificationsOptions;
-        offers?: string[];
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
-        simultaneousLines?: number;
+        offers: string[];
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
+        simultaneousLines: number;
     }
     //telephony.LineBlockingMode
     export type LineBlockingMode = "both" | "incoming" | "outgoing"
@@ -744,15 +744,15 @@ export namespace telephony {
     //telephony.LineOffer
     // fullName: telephony.LineOffer.LineOffer
     export interface LineOffer {
-        description?: string;
-        name?: string;
+        description: string;
+        name: string;
         price?: OVH.order.Price;
     }
     //telephony.LineOffersAndContracts
     // fullName: telephony.LineOffersAndContracts.LineOffersAndContracts
     export interface LineOffersAndContracts {
-        contracts?: OVH.order.Contract[];
-        offers?: OVH.telephony.LineOffer[];
+        contracts: OVH.order.Contract[];
+        offers: OVH.telephony.LineOffer[];
     }
     //telephony.LineOptionForwardNatureTypeEnum
     export type LineOptionForwardNatureTypeEnum = "fax" | "number" | "voicemail"
@@ -763,100 +763,100 @@ export namespace telephony {
     //telephony.LineOptions
     // fullName: telephony.LineOptions.LineOptions
     export interface LineOptions {
-        absentSubscriber?: boolean;
-        anonymousCallRejection?: boolean;
-        callRestrictionIncoming?: boolean;
-        callRestrictionOutgoing?: boolean;
-        callWaiting?: boolean;
-        codecs?: string;
-        defaultVoicemail?: string;
-        displayNumber?: string;
-        doNotDisturb?: boolean;
-        domain?: string;
-        forwardBackup?: boolean;
-        forwardBackupNature?: OVH.telephony.LineOptionForwardNatureTypeEnum;
-        forwardBackupNumber?: string;
-        forwardBusy?: boolean;
-        forwardBusyNature?: OVH.telephony.LineOptionForwardNatureTypeEnum;
-        forwardBusyNumber?: string;
-        forwardNoReply?: boolean;
-        forwardNoReplyDelay?: number;
-        forwardNoReplyNature?: OVH.telephony.LineOptionForwardNatureTypeEnum;
-        forwardNoReplyNumber?: string;
-        forwardUnconditional?: boolean;
-        forwardUnconditionalNature?: OVH.telephony.LineOptionForwardNatureTypeEnum;
-        forwardUnconditionalNumber?: string;
-        identificationRestriction?: boolean;
-        intercom?: OVH.telephony.LineOptionIntercomEnum;
-        ipRestrictions?: string[];
-        language?: OVH.telephony.LineOptionLanguageEnum;
-        lockOutCall?: boolean;
+        absentSubscriber: boolean;
+        anonymousCallRejection: boolean;
+        callRestrictionIncoming: boolean;
+        callRestrictionOutgoing: boolean;
+        callWaiting: boolean;
+        codecs: string;
+        defaultVoicemail: string;
+        displayNumber: string;
+        doNotDisturb: boolean;
+        domain: string;
+        forwardBackup: boolean;
+        forwardBackupNature: OVH.telephony.LineOptionForwardNatureTypeEnum;
+        forwardBackupNumber: string;
+        forwardBusy: boolean;
+        forwardBusyNature: OVH.telephony.LineOptionForwardNatureTypeEnum;
+        forwardBusyNumber: string;
+        forwardNoReply: boolean;
+        forwardNoReplyDelay: number;
+        forwardNoReplyNature: OVH.telephony.LineOptionForwardNatureTypeEnum;
+        forwardNoReplyNumber: string;
+        forwardUnconditional: boolean;
+        forwardUnconditionalNature: OVH.telephony.LineOptionForwardNatureTypeEnum;
+        forwardUnconditionalNumber: string;
+        identificationRestriction: boolean;
+        intercom: OVH.telephony.LineOptionIntercomEnum;
+        ipRestrictions: string[];
+        language: OVH.telephony.LineOptionLanguageEnum;
+        lockOutCall: boolean;
         lockOutCallPassword?: string;
-        recordOutgoingCallsBeta?: boolean;
+        recordOutgoingCallsBeta: boolean;
         toneOnCallWaitingSoundId?: number;
         toneOnHoldSoundId?: number;
         toneRingbackSoundId?: number;
-        voicemailExternalNumber?: string;
-        voicemailInternalNumber?: string;
+        voicemailExternalNumber: string;
+        voicemailInternalNumber: string;
     }
     //telephony.LinePhone
     // fullName: telephony.LinePhone.LinePhone
     export interface LinePhone {
-        brand?: string;
-        description?: string;
-        maxline?: number;
-        price?: OVH.order.Price;
-        protocol?: OVH.telephony.ProtocolEnum;
+        brand: string;
+        description: string;
+        maxline: number;
+        price: OVH.order.Price;
+        protocol: OVH.telephony.ProtocolEnum;
     }
     //telephony.LinePhoneAssociable
     // fullName: telephony.LinePhoneAssociable.LinePhoneAssociable
     export interface LinePhoneAssociable {
-        associatedLines?: OVH.telephony.LinePhoneAssociableConfiguredLines[];
-        brand?: string;
-        maxLines?: number;
-        protocol?: OVH.telephony.ProtocolEnum;
+        associatedLines: OVH.telephony.LinePhoneAssociableConfiguredLines[];
+        brand: string;
+        maxLines: number;
+        protocol: OVH.telephony.ProtocolEnum;
     }
     //telephony.LinePhoneAssociableConfiguredLines
     // fullName: telephony.LinePhoneAssociableConfiguredLines.LinePhoneAssociableConfiguredLines
     export interface LinePhoneAssociableConfiguredLines {
-        description?: string;
-        serviceName?: string;
+        description: string;
+        serviceName: string;
     }
     //telephony.LineStatisticsTypeEnum
     export type LineStatisticsTypeEnum = "maxDelay" | "maxJitter" | "rtpMos" | "sumRtpLost"
     //telephony.MiniPabx
     // fullName: telephony.MiniPabx.MiniPabx
     export interface MiniPabx {
-        description?: string;
-        featureType?: OVH.telephony.TypeEnum;
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
+        description: string;
+        featureType: OVH.telephony.TypeEnum;
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
     }
     //telephony.MiniPabxHunting
     // fullName: telephony.MiniPabxHunting.MiniPabxHunting
     export interface MiniPabxHunting {
-        anonymousCallRejection?: boolean;
-        name?: string;
-        numberOfCalls?: number;
-        onHoldTimer?: number;
-        pattern?: OVH.telephony.EasyMiniPabxHuntingPatternEnum;
-        queueSize?: number;
-        strategy?: OVH.telephony.EasyMiniPabxHuntingStrategyEnum;
-        toneOnClosure?: boolean;
+        anonymousCallRejection: boolean;
+        name: string;
+        numberOfCalls: number;
+        onHoldTimer: number;
+        pattern: OVH.telephony.EasyMiniPabxHuntingPatternEnum;
+        queueSize: number;
+        strategy: OVH.telephony.EasyMiniPabxHuntingStrategyEnum;
+        toneOnClosure: boolean;
         toneOnClosureSoundId?: number;
-        toneOnHold?: boolean;
+        toneOnHold: boolean;
         toneOnHoldSoundId?: number;
-        toneRingback?: boolean;
+        toneRingback: boolean;
         toneRingbackSoundId?: number;
     }
     //telephony.Number
     // fullName: telephony.Number.Number
     export interface Number {
-        description?: string;
-        featureType?: OVH.telephony.TypeEnum;
+        description: string;
+        featureType: OVH.telephony.TypeEnum;
         partOfPool?: string;
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
     }
     //telephony.NumberCountryCodeEnum
     export type NumberCountryCodeEnum = 32 | 33 | 34 | 39 | 41 | 44 | 49
@@ -866,15 +866,15 @@ export namespace telephony {
     // fullName: telephony.NumberDetailedZone.NumberDetailedZone
     export interface NumberDetailedZone {
         askedCity?: string;
-        city?: string;
-        country?: OVH.telephony.NumberCountryEnum;
-        internationalNumber?: string;
+        city: string;
+        country: OVH.telephony.NumberCountryEnum;
+        internationalNumber: string;
         matchingCriteria?: OVH.telephony.NumberDetailedZoneMatchingCriteriaEnum;
-        number?: string;
-        prefix?: OVH.telephony.NumberCountryCodeEnum;
-        type?: OVH.telephony.NumberDetailedZoneTypeEnum;
+        number: string;
+        prefix: OVH.telephony.NumberCountryCodeEnum;
+        type: OVH.telephony.NumberDetailedZoneTypeEnum;
         zipCode?: string;
-        zneList?: string[];
+        zneList: string[];
     }
     //telephony.NumberDetailedZoneMatchingCriteriaEnum
     export type NumberDetailedZoneMatchingCriteriaEnum = "city" | "internationalNumber" | "number" | "zne"
@@ -885,16 +885,16 @@ export namespace telephony {
     //telephony.OfferChange
     // fullName: telephony.OfferChange.OfferChange
     export interface OfferChange {
-        offer?: string;
+        offer: string;
     }
     //telephony.OfferTask
     // fullName: telephony.OfferTask.OfferTask
     export interface OfferTask {
-        action?: OVH.telephony.OfferTaskActionEnum;
-        executionDate?: string;
-        status?: OVH.telephony.TaskStatusEnum;
-        taskId?: number;
-        type?: OVH.telephony.OfferTaskTypeEnum;
+        action: OVH.telephony.OfferTaskActionEnum;
+        executionDate: string;
+        status: OVH.telephony.TaskStatusEnum;
+        taskId: number;
+        type: OVH.telephony.OfferTaskTypeEnum;
     }
     //telephony.OfferTaskActionEnum
     export type OfferTaskActionEnum = "convertToAlias" | "convertToSip" | "migrateToNewVoicemail" | "removeSimltaneousLines" | "switchServer" | "termination" | "updateFirmware" | "upgrade"
@@ -905,36 +905,36 @@ export namespace telephony {
     //telephony.OvhPabx
     // fullName: telephony.OvhPabx.OvhPabx
     export interface OvhPabx {
-        description?: string;
-        featureType?: OVH.telephony.TypeEnum;
-        isCCS?: boolean;
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
+        description: string;
+        featureType: OVH.telephony.TypeEnum;
+        isCCS: boolean;
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
     }
     //telephony.OvhPabxCustomStatus
     // fullName: telephony.OvhPabxCustomStatus.OvhPabxCustomStatus
     export interface OvhPabxCustomStatus {
         color?: string;
         description?: string;
-        id?: number;
-        name?: string;
+        id: number;
+        name: string;
     }
     //telephony.OvhPabxDialplan
     // fullName: telephony.OvhPabxDialplan.OvhPabxDialplan
     export interface OvhPabxDialplan {
-        anonymousRejection?: boolean;
-        dialplanId?: number;
-        lastUpdate?: string;
-        name?: string;
-        showCallerNumber?: OVH.telephony.OvhPabxDialplanNumberPresentationEnum;
-        transferTimeout?: number;
+        anonymousRejection: boolean;
+        dialplanId: number;
+        lastUpdate: string;
+        name: string;
+        showCallerNumber: OVH.telephony.OvhPabxDialplanNumberPresentationEnum;
+        transferTimeout: number;
     }
     //telephony.OvhPabxDialplanExtension
     // fullName: telephony.OvhPabxDialplanExtension.OvhPabxDialplanExtension
     export interface OvhPabxDialplanExtension {
-        enabled?: boolean;
-        extensionId?: number;
-        position?: number;
+        enabled: boolean;
+        extensionId: number;
+        position: number;
         schedulerCategory?: OVH.telephony.SchedulerCategoryEnum;
         screenListType?: OVH.telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum;
     }
@@ -942,7 +942,7 @@ export namespace telephony {
     // fullName: telephony.OvhPabxDialplanExtensionConditionScreenList.OvhPabxDialplanExtensionConditionScreenList
     export interface OvhPabxDialplanExtensionConditionScreenList {
         callerIdNumber?: string;
-        conditionId?: number;
+        conditionId: number;
         destinationNumber?: string;
         screenListType?: OVH.telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum;
     }
@@ -951,21 +951,21 @@ export namespace telephony {
     //telephony.OvhPabxDialplanExtensionConditionTime
     // fullName: telephony.OvhPabxDialplanExtensionConditionTime.OvhPabxDialplanExtensionConditionTime
     export interface OvhPabxDialplanExtensionConditionTime {
-        conditionId?: number;
-        timeFrom?: string;
-        timeTo?: string;
-        weekDay?: OVH.telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum;
+        conditionId: number;
+        timeFrom: string;
+        timeTo: string;
+        weekDay: OVH.telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum;
     }
     //telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum
     export type OvhPabxDialplanExtensionConditionTimeWeekDayEnum = "friday" | "monday" | "saturday" | "sunday" | "thursday" | "tuesday" | "wednesday"
     //telephony.OvhPabxDialplanExtensionRule
     // fullName: telephony.OvhPabxDialplanExtensionRule.OvhPabxDialplanExtensionRule
     export interface OvhPabxDialplanExtensionRule {
-        action?: OVH.telephony.OvhPabxDialplanExtensionRuleActionEnum;
+        action: OVH.telephony.OvhPabxDialplanExtensionRuleActionEnum;
         actionParam?: string;
-        negativeAction?: boolean;
-        position?: number;
-        ruleId?: number;
+        negativeAction: boolean;
+        position: number;
+        ruleId: number;
     }
     //telephony.OvhPabxDialplanExtensionRuleActionEnum
     export type OvhPabxDialplanExtensionRuleActionEnum = "bridge" | "endless_playback" | "hangup" | "hunting" | "ivr" | "playback" | "readDtmf" | "setCallerName" | "sleep" | "tts" | "voicemail"
@@ -976,36 +976,36 @@ export namespace telephony {
     export interface OvhPabxHunting {
         crmUrlTemplate?: string;
         g729?: boolean;
-        name?: string;
-        statusIvrEnabled?: boolean;
+        name: string;
+        statusIvrEnabled: boolean;
     }
     //telephony.OvhPabxHuntingAgent
     // fullName: telephony.OvhPabxHuntingAgent.OvhPabxHuntingAgent
     export interface OvhPabxHuntingAgent {
-        agentId?: number;
+        agentId: number;
         breakStatus?: number;
         description?: string;
-        number?: string;
-        simultaneousLines?: number;
-        status?: OVH.telephony.OvhPabxHuntingAgentStatusEnum;
-        timeout?: number;
-        type?: OVH.telephony.OvhPabxHuntingAgentTypeEnum;
-        wrapUpTime?: number;
+        number: string;
+        simultaneousLines: number;
+        status: OVH.telephony.OvhPabxHuntingAgentStatusEnum;
+        timeout: number;
+        type: OVH.telephony.OvhPabxHuntingAgentTypeEnum;
+        wrapUpTime: number;
     }
     //telephony.OvhPabxHuntingAgentLiveStatus
     // fullName: telephony.OvhPabxHuntingAgentLiveStatus.OvhPabxHuntingAgentLiveStatus
     export interface OvhPabxHuntingAgentLiveStatus {
-        answeredCalls?: number;
-        lastStatusChange?: string;
-        status?: OVH.telephony.OvhPabxHuntingLiveAgentStatusEnum;
-        totalCallDuration?: number;
+        answeredCalls: number;
+        lastStatusChange: string;
+        status: OVH.telephony.OvhPabxHuntingLiveAgentStatusEnum;
+        totalCallDuration: number;
     }
     //telephony.OvhPabxHuntingAgentQueue
     // fullName: telephony.OvhPabxHuntingAgentQueue.OvhPabxHuntingAgentQueue
     export interface OvhPabxHuntingAgentQueue {
-        agentId?: number;
-        position?: number;
-        queueId?: number;
+        agentId: number;
+        position: number;
+        queueId: number;
     }
     //telephony.OvhPabxHuntingAgentStatusEnum
     export type OvhPabxHuntingAgentStatusEnum = "available" | "loggedOut" | "onBreak"
@@ -1025,39 +1025,39 @@ export namespace telephony {
         askForRecordDisabling?: boolean;
         description?: string;
         followCallForwards?: boolean;
-        maxMember?: number;
-        maxWaitTime?: number;
-        queueId?: number;
+        maxMember: number;
+        maxWaitTime: number;
+        queueId: number;
         record?: boolean;
         recordDisablingDigit?: OVH.telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum;
         recordDisablingLanguage?: OVH.telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum;
         soundOnHold?: number;
-        strategy?: OVH.telephony.OvhPabxHuntingQueueStrategyEnum;
+        strategy: OVH.telephony.OvhPabxHuntingQueueStrategyEnum;
     }
     //telephony.OvhPabxHuntingQueueLiveCalls
     // fullName: telephony.OvhPabxHuntingQueueLiveCalls.OvhPabxHuntingQueueLiveCalls
     export interface OvhPabxHuntingQueueLiveCalls {
-        agent?: string;
+        agent: string;
         answered?: string;
-        begin?: string;
-        callerIdName?: string;
-        callerIdNumber?: string;
-        destinationNumber?: string;
+        begin: string;
+        callerIdName: string;
+        callerIdNumber: string;
+        destinationNumber: string;
         end?: string;
-        id?: number;
+        id: number;
         onHold?: boolean;
-        queue?: string;
-        state?: OVH.telephony.OvhPabxHuntingLiveCallsStateEnum;
+        queue: string;
+        state: OVH.telephony.OvhPabxHuntingLiveCallsStateEnum;
     }
     //telephony.OvhPabxHuntingQueueLiveStatistics
     // fullName: telephony.OvhPabxHuntingQueueLiveStatistics.OvhPabxHuntingQueueLiveStatistics
     export interface OvhPabxHuntingQueueLiveStatistics {
-        callsAnswered?: number;
-        callsLost?: number;
-        callsTotal?: number;
-        lastReset?: string;
-        totalCallDuration?: number;
-        totalWaitingDuration?: number;
+        callsAnswered: number;
+        callsLost: number;
+        callsTotal: number;
+        lastReset: string;
+        totalCallDuration: number;
+        totalWaitingDuration: number;
     }
     //telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum
     export type OvhPabxHuntingQueueRecordDisablingDigitEnum = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
@@ -1074,17 +1074,17 @@ export namespace telephony {
         greetSoundTts?: number;
         invalidSound?: number;
         invalidSoundTts?: number;
-        menuId?: number;
-        name?: string;
+        menuId: number;
+        name: string;
     }
     //telephony.OvhPabxMenuEntry
     // fullName: telephony.OvhPabxMenuEntry.OvhPabxMenuEntry
     export interface OvhPabxMenuEntry {
-        action?: OVH.telephony.OvhPabxIvrMenuEntryActionEnum;
-        actionParam?: string;
-        dtmf?: string;
-        entryId?: number;
-        position?: number;
+        action: OVH.telephony.OvhPabxIvrMenuEntryActionEnum;
+        actionParam: string;
+        dtmf: string;
+        entryId: number;
+        position: number;
     }
     //telephony.OvhPabxQueueActionEnum
     export type OvhPabxQueueActionEnum = "playback" | "voicemail"
@@ -1093,26 +1093,26 @@ export namespace telephony {
     export interface OvhPabxRecord {
         agent?: string;
         callEnd?: string;
-        callStart?: string;
-        callerIdName?: string;
-        callerIdNumber?: string;
+        callStart: string;
+        callerIdName: string;
+        callerIdNumber: string;
         destinationNumber?: string;
-        duration?: number;
-        fileUrl?: string;
-        id?: number;
+        duration: number;
+        fileUrl: string;
+        id: number;
     }
     //telephony.OvhPabxSound
     // fullName: telephony.OvhPabxSound.OvhPabxSound
     export interface OvhPabxSound {
-        name?: string;
-        soundId?: number;
+        name: string;
+        soundId: number;
     }
     //telephony.OvhPabxTts
     // fullName: telephony.OvhPabxTts.OvhPabxTts
     export interface OvhPabxTts {
-        id?: number;
-        text?: string;
-        voice?: OVH.telephony.OvhPabxTtsVoiceEnum;
+        id: number;
+        text: string;
+        voice: OVH.telephony.OvhPabxTtsVoiceEnum;
     }
     //telephony.OvhPabxTtsVoiceEnum
     export type OvhPabxTtsVoiceEnum = "Bruce" | "Helene" | "Jenny" | "Loic"
@@ -1121,23 +1121,23 @@ export namespace telephony {
     //telephony.PcsFile
     // fullName: telephony.PcsFile.PcsFile
     export interface PcsFile {
-        filename?: string;
-        status?: OVH.telephony.PcsFileStatusEnum;
-        url?: string;
-        urlExpirationDatetime?: string;
+        filename: string;
+        status: OVH.telephony.PcsFileStatusEnum;
+        url: string;
+        urlExpirationDatetime: string;
     }
     //telephony.PcsFileStatusEnum
     export type PcsFileStatusEnum = "doing" | "done" | "error" | "todo"
     //telephony.Phone
     // fullName: telephony.Phone.Phone
     export interface Phone {
-        brand?: string;
-        description?: string;
-        macAddress?: string;
-        maxline?: number;
+        brand: string;
+        description: string;
+        macAddress: string;
+        maxline: number;
         mgcpIpRestriction?: string;
-        phoneConfiguration?: OVH.telephony.PhoneConfigurationProperty[];
-        protocol?: OVH.telephony.ProtocolEnum;
+        phoneConfiguration: OVH.telephony.PhoneConfigurationProperty[];
+        protocol: OVH.telephony.ProtocolEnum;
         userPassword?: string;
     }
     //telephony.PhoneConfigurationLevelEnum
@@ -1162,49 +1162,49 @@ export namespace telephony {
     // fullName: telephony.PhoneCredentials.PhoneCredentials
     export interface PhoneCredentials {
         login?: string;
-        password?: string;
+        password: string;
     }
     //telephony.Phonebook
     // fullName: telephony.Phonebook.Phonebook
     export interface Phonebook {
-        bookKey?: string;
-        isReadonly?: boolean;
-        name?: string;
-        phoneKey?: string;
+        bookKey: string;
+        isReadonly: boolean;
+        name: string;
+        phoneKey: string;
     }
     //telephony.PhonebookContact
     // fullName: telephony.PhonebookContact.PhonebookContact
     export interface PhonebookContact {
-        group?: string;
+        group: string;
         homeMobile?: string;
         homePhone?: string;
-        id?: number;
-        name?: string;
-        surname?: string;
+        id: number;
+        name: string;
+        surname: string;
         workMobile?: string;
         workPhone?: string;
     }
     //telephony.PhonebookMaster
     // fullName: telephony.PhonebookMaster.PhonebookMaster
     export interface PhonebookMaster {
-        bookKey?: string;
-        name?: string;
+        bookKey: string;
+        name: string;
     }
     //telephony.Portability
     // fullName: telephony.Portability.Portability
     export interface Portability {
-        billingAccount?: string;
-        creationDate?: string;
-        customerInfos?: OVH.telephony.PortabilityCustomerInfos;
+        billingAccount: string;
+        creationDate: string;
+        customerInfos: OVH.telephony.PortabilityCustomerInfos;
         desiredExecutionDate?: string;
-        error?: boolean;
-        errorCodes?: string[];
-        id?: number;
+        error: boolean;
+        errorCodes: string[];
+        id: number;
         lineToRedirectTo?: string;
-        numbersList?: string[];
-        operator?: string;
-        orderId?: number;
-        portabilityCountry?: OVH.telephony.PortabilityCountryEnum;
+        numbersList: string[];
+        operator: string;
+        orderId: number;
+        portabilityCountry: OVH.telephony.PortabilityCountryEnum;
     }
     //telephony.PortabilityCountryEnum
     export type PortabilityCountryEnum = "belgium" | "france" | "switzerland"
@@ -1212,47 +1212,47 @@ export namespace telephony {
     // fullName: telephony.PortabilityCustomerInfos.PortabilityCustomerInfos
     export interface PortabilityCustomerInfos {
         building?: string;
-        city?: string;
+        city: string;
         door?: string;
         floor?: string;
-        name?: string;
+        name: string;
         siret?: string;
         stair?: string;
-        streetName?: string;
-        streetNumber?: string;
-        zip?: string;
+        streetName: string;
+        streetNumber: string;
+        zip: string;
     }
     //telephony.PortabilityDocument
     // fullName: telephony.PortabilityDocument.PortabilityDocument
     export interface PortabilityDocument {
         description?: string;
-        documentId?: number;
-        getUrl?: string;
-        name?: string;
+        documentId: number;
+        getUrl: string;
+        name: string;
         putUrl?: string;
-        size?: number;
+        size: number;
     }
     //telephony.PortabilityFixErrorPossibleParameters
     // fullName: telephony.PortabilityFixErrorPossibleParameters.PortabilityFixErrorPossibleParameters
     export interface PortabilityFixErrorPossibleParameters {
-        mandatoryParameters?: string[];
-        optionalParameters?: string[];
+        mandatoryParameters: string[];
+        optionalParameters: string[];
     }
     //telephony.PortabilityStep
     // fullName: telephony.PortabilityStep.PortabilityStep
     export interface PortabilityStep {
         description?: string;
         doneDate?: string;
-        duration?: OVH.telephony.PortabilityStepDuration;
+        duration: OVH.telephony.PortabilityStepDuration;
         infos?: OVH.telephony.PortabilityStepInfos;
-        name?: OVH.telephony.PortabilityStepNameEnum;
-        status?: OVH.telephony.PortabilityStepStatusEnum;
+        name: OVH.telephony.PortabilityStepNameEnum;
+        status: OVH.telephony.PortabilityStepStatusEnum;
     }
     //telephony.PortabilityStepDuration
     // fullName: telephony.PortabilityStepDuration.PortabilityStepDuration
     export interface PortabilityStepDuration {
-        quantity?: number;
-        unit?: OVH.telephony.PortabilityStepDurationUnitEnum;
+        quantity: number;
+        unit: OVH.telephony.PortabilityStepDurationUnitEnum;
     }
     //telephony.PortabilityStepDurationUnitEnum
     export type PortabilityStepDurationUnitEnum = "NA" | "day" | "hour" | "openday"
@@ -1272,16 +1272,16 @@ export namespace telephony {
     export interface PreviousVoiceConsumption {
         called?: string;
         calling?: string;
-        consumptionId?: number;
-        countrySuffix?: string;
-        creationDatetime?: string;
-        designation?: string;
-        destinationType?: OVH.telephony.VoiceConsumptionDestinationTypeEnum;
-        duration?: number;
+        consumptionId: number;
+        countrySuffix: string;
+        creationDatetime: string;
+        designation: string;
+        destinationType: OVH.telephony.VoiceConsumptionDestinationTypeEnum;
+        duration: number;
         hangupNature?: string;
-        planType?: OVH.telephony.VoiceConsumptionPlanTypeEnum;
-        priceWithoutTax?: OVH.order.Price;
-        wayType?: OVH.telephony.VoiceConsumptionWayTypeEnum;
+        planType: OVH.telephony.VoiceConsumptionPlanTypeEnum;
+        priceWithoutTax: OVH.order.Price;
+        wayType: OVH.telephony.VoiceConsumptionWayTypeEnum;
     }
     //telephony.PropertyEnum
     export type PropertyEnum = "xdsl"
@@ -1290,9 +1290,9 @@ export namespace telephony {
     //telephony.RateCodeInformation
     // fullName: telephony.RateCodeInformation.RateCodeInformation
     export interface RateCodeInformation {
-        code?: string;
-        pricePerCallWithoutTax?: OVH.order.Price;
-        pricePerMinuteWithoutTax?: OVH.order.Price;
+        code: string;
+        pricePerCallWithoutTax: OVH.order.Price;
+        pricePerMinuteWithoutTax: OVH.order.Price;
     }
     //telephony.RealtimeEventDirection
     export type RealtimeEventDirection = "incoming" | "outgoing"
@@ -1303,18 +1303,18 @@ export namespace telephony {
     //telephony.Redirect
     // fullName: telephony.Redirect.Redirect
     export interface Redirect {
-        description?: string;
+        description: string;
         destination?: string;
-        featureType?: OVH.telephony.TypeEnum;
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
+        featureType: OVH.telephony.TypeEnum;
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
     }
     //telephony.RegistrationInformations
     // fullName: telephony.RegistrationInformations.RegistrationInformations
     export interface RegistrationInformations {
-        datetime?: string;
+        datetime: string;
         domain?: string;
-        ip?: string;
+        ip: string;
         localIp?: string;
         localPort?: number;
         port?: number;
@@ -1327,7 +1327,7 @@ export namespace telephony {
     export interface RepaymentConsumption {
         called?: string;
         calling?: string;
-        consumptionId?: number;
+        consumptionId: number;
         creationDatetime?: string;
         dialed?: string;
         duration?: number;
@@ -1346,27 +1346,27 @@ export namespace telephony {
     // fullName: telephony.ResetPhoneInfo.ResetPhoneInfo
     export interface ResetPhoneInfo {
         resetCodeInfo?: OVH.telephony.ResetPhoneCodeInfo;
-        resetPhoneMethod?: OVH.telephony.ResetPhoneMethodEnum;
+        resetPhoneMethod: OVH.telephony.ResetPhoneMethodEnum;
     }
     //telephony.ResetPhoneMethodEnum
     export type ResetPhoneMethodEnum = "code" | "http"
     //telephony.Rma
     // fullName: telephony.Rma.Rma
     export interface Rma {
-        cancellable?: boolean;
-        creationDatetime?: string;
-        equipmentReference?: string;
-        id?: string;
+        cancellable: boolean;
+        creationDatetime: string;
+        equipmentReference: string;
+        id: string;
         newMerchandise?: string;
         offerTypeNew?: OVH.telephony.RmaOfferTypeEnum;
-        offerTypeOld?: OVH.telephony.RmaOfferTypeEnum;
-        process?: OVH.telephony.RmaReplaceTypeEnum;
+        offerTypeOld: OVH.telephony.RmaOfferTypeEnum;
+        process: OVH.telephony.RmaReplaceTypeEnum;
         receptionDatetime?: string;
-        shippingContact?: OVH.telephony.Contact;
-        status?: OVH.telephony.RmaStatusEnum;
-        steps?: OVH.telephony.RmaStep[];
+        shippingContact: OVH.telephony.Contact;
+        status: OVH.telephony.RmaStatusEnum;
+        steps: OVH.telephony.RmaStep[];
         terminationDatetime?: string;
-        type?: OVH.telephony.RmaTypeEnum;
+        type: OVH.telephony.RmaTypeEnum;
     }
     //telephony.RmaOfferTypeEnum
     export type RmaOfferTypeEnum = "deposit" | "loan" | "purchase"
@@ -1377,18 +1377,18 @@ export namespace telephony {
     //telephony.RmaReturn
     // fullName: telephony.RmaReturn.RmaReturn
     export interface RmaReturn {
-        id?: string;
+        id: string;
     }
     //telephony.RmaStatusEnum
     export type RmaStatusEnum = "closed" | "open" | "received"
     //telephony.RmaStep
     // fullName: telephony.RmaStep.RmaStep
     export interface RmaStep {
-        description?: string;
+        description: string;
         doneDate?: string;
         infos?: string;
-        name?: OVH.telephony.RmaStepNameEnum;
-        status?: OVH.telephony.RmaStepStatusEnum;
+        name: OVH.telephony.RmaStepNameEnum;
+        status: OVH.telephony.RmaStepStatusEnum;
     }
     //telephony.RmaStepNameEnum
     export type RmaStepNameEnum = "dispatchJustification" | "equipmentSending" | "equipmentTesting" | "opening" | "parcelReception" | "parcelValidation" | "validation"
@@ -1399,42 +1399,42 @@ export namespace telephony {
     //telephony.Rsva
     // fullName: telephony.Rsva.Rsva
     export interface Rsva {
-        serviceName?: string;
+        serviceName: string;
         typology?: OVH.telephony.portability.SpecialNumberCategoryEnum;
     }
     //telephony.Scheduler
     // fullName: telephony.Scheduler.Scheduler
     export interface Scheduler {
-        serviceName?: string;
-        timeZone?: OVH.telephony.timeZone;
+        serviceName: string;
+        timeZone: OVH.telephony.timeZone;
     }
     //telephony.SchedulerCategoryEnum
     export type SchedulerCategoryEnum = "holidays" | "scheduler1" | "scheduler2" | "scheduler3"
     //telephony.SchedulerEvent
     // fullName: telephony.SchedulerEvent.SchedulerEvent
     export interface SchedulerEvent {
-        categories?: OVH.telephony.SchedulerCategoryEnum;
-        dateEnd?: string;
-        dateStart?: string;
+        categories: OVH.telephony.SchedulerCategoryEnum;
+        dateEnd: string;
+        dateStart: string;
         description?: string;
-        title?: string;
-        uid?: string;
+        title: string;
+        uid: string;
     }
     //telephony.Screen
     // fullName: telephony.Screen.Screen
     export interface Screen {
-        incomingScreenList?: OVH.telephony.ScreenListChoosingEnum;
-        outgoingScreenList?: OVH.telephony.ScreenListChoosingEnum;
-        serviceName?: string;
+        incomingScreenList: OVH.telephony.ScreenListChoosingEnum;
+        outgoingScreenList: OVH.telephony.ScreenListChoosingEnum;
+        serviceName: string;
     }
     //telephony.ScreenList
     // fullName: telephony.ScreenList.ScreenList
     export interface ScreenList {
-        callNumber?: string;
-        id?: number;
-        nature?: OVH.telephony.ScreenListNatureEnum;
-        status?: string;
-        type?: OVH.telephony.ScreenListTypeEnum;
+        callNumber: string;
+        id: number;
+        nature: OVH.telephony.ScreenListNatureEnum;
+        status: string;
+        type: OVH.telephony.ScreenListTypeEnum;
     }
     //telephony.ScreenListChoosingEnum
     export type ScreenListChoosingEnum = "blacklist" | "disabled" | "whitelist"
@@ -1449,113 +1449,113 @@ export namespace telephony {
     //telephony.ServiceVoicemailNotifications
     // fullName: telephony.ServiceVoicemailNotifications.ServiceVoicemailNotifications
     export interface ServiceVoicemailNotifications {
-        email?: string;
-        type?: OVH.telephony.ServiceVoicemailMailOptionEnum;
+        email: string;
+        type: OVH.telephony.ServiceVoicemailMailOptionEnum;
     }
     //telephony.SimultaneousChannelsDetails
     // fullName: telephony.SimultaneousChannelsDetails.SimultaneousChannelsDetails
     export interface SimultaneousChannelsDetails {
-        basic?: number;
-        current?: number;
-        extra?: number;
-        maximum?: number;
-        toBeDeleted?: number;
+        basic: number;
+        current: number;
+        extra: number;
+        maximum: number;
+        toBeDeleted: number;
     }
     //telephony.SipDomainProductTypeEnum
     export type SipDomainProductTypeEnum = "sip" | "trunk"
     //telephony.Sound
     // fullName: telephony.Sound.Sound
     export interface Sound {
-        creationDate?: string;
+        creationDate: string;
         description?: string;
-        filename?: string;
-        getUrl?: string;
-        id?: number;
+        filename: string;
+        getUrl: string;
+        id: number;
         putUrl?: string;
-        size?: number;
+        size: number;
     }
     //telephony.SpecificNumber
     // fullName: telephony.SpecificNumber.SpecificNumber
     export interface SpecificNumber {
-        isPremium?: boolean;
-        number?: string;
+        isPremium: boolean;
+        number: string;
     }
     //telephony.StatisticsTimeframeEnum
     export type StatisticsTimeframeEnum = "daily" | "hourly" | "monthly" | "weekly" | "yearly"
     //telephony.Task
     // fullName: telephony.Task.Task
     export interface Task {
-        action?: string;
+        action: string;
         message?: string;
         objectCreated?: string;
-        serviceType?: string;
-        status?: OVH.telephony.TaskStatusEnum;
-        taskId?: number;
+        serviceType: string;
+        status: OVH.telephony.TaskStatusEnum;
+        taskId: number;
     }
     //telephony.TaskStatusEnum
     export type TaskStatusEnum = "doing" | "done" | "error" | "pause" | "todo"
     //telephony.TelephonyGenericService
     // fullName: telephony.TelephonyGenericService.TelephonyGenericService
     export interface TelephonyGenericService {
-        serviceName?: string;
+        serviceName: string;
     }
     //telephony.TelephonySearchService
     // fullName: telephony.TelephonySearchService.TelephonySearchService
     export interface TelephonySearchService {
         billingAccount?: string;
-        domain?: string;
-        type?: OVH.telephony.TelephonySearchServiceTypeEnum;
+        domain: string;
+        type: OVH.telephony.TelephonySearchServiceTypeEnum;
     }
     //telephony.TelephonySearchServiceTypeEnum
     export type TelephonySearchServiceTypeEnum = "alias" | "line"
     //telephony.TelephonyService
     // fullName: telephony.TelephonyService.TelephonyService
     export interface TelephonyService {
-        country?: OVH.telephony.NumberCountryEnum;
-        countryCode?: OVH.telephony.NumberCountryCodeEnum;
-        currentOutplan?: OVH.order.Price;
-        description?: string;
-        featureType?: OVH.telephony.TypeEnum;
-        getPublicOffer?: OVH.telephony.LineOffer;
-        hasFaxCapabilities?: boolean;
-        offers?: string[];
-        properties?: OVH.telephony.PropertyEnum[];
-        rio?: string;
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
-        simultaneousLines?: number;
+        country: OVH.telephony.NumberCountryEnum;
+        countryCode: OVH.telephony.NumberCountryCodeEnum;
+        currentOutplan: OVH.order.Price;
+        description: string;
+        featureType: OVH.telephony.TypeEnum;
+        getPublicOffer: OVH.telephony.LineOffer;
+        hasFaxCapabilities: boolean;
+        offers: string[];
+        properties: OVH.telephony.PropertyEnum[];
+        rio: string;
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
+        simultaneousLines: number;
     }
     //telephony.TemporaryLogsLink
     // fullName: telephony.TemporaryLogsLink.TemporaryLogsLink
     export interface TemporaryLogsLink {
-        expirationDate?: string;
-        url?: string;
+        expirationDate: string;
+        url: string;
     }
     //telephony.TerminationReasonEnum
     export type TerminationReasonEnum = "addresseMove" | "billingDifficulties" | "cessationOfActivity" | "missingOptions" | "moveToCompetitor" | "other" | "plugAndPhoneDifficulties" | "technicalDifficulties"
     //telephony.TimeCondition
     // fullName: telephony.TimeCondition.TimeCondition
     export interface TimeCondition {
-        day?: OVH.telephony.TimeConditionsDayEnum;
-        hourBegin?: string;
-        hourEnd?: string;
-        id?: number;
-        policy?: OVH.telephony.TimeConditionsPolicyEnum;
-        status?: string;
+        day: OVH.telephony.TimeConditionsDayEnum;
+        hourBegin: string;
+        hourEnd: string;
+        id: number;
+        policy: OVH.telephony.TimeConditionsPolicyEnum;
+        status: string;
     }
     //telephony.TimeConditionOptions
     // fullName: telephony.TimeConditionOptions.TimeConditionOptions
     export interface TimeConditionOptions {
-        slot1Number?: string;
-        slot1Type?: OVH.telephony.TimeConditionsSlotTypeEnum;
-        slot2Number?: string;
-        slot2Type?: OVH.telephony.TimeConditionsSlotTypeEnum;
-        slot3Number?: string;
-        slot3Type?: OVH.telephony.TimeConditionsSlotTypeEnum;
-        status?: OVH.telephony.TimeConditionsGlobalStatusEnum;
+        slot1Number: string;
+        slot1Type: OVH.telephony.TimeConditionsSlotTypeEnum;
+        slot2Number: string;
+        slot2Type: OVH.telephony.TimeConditionsSlotTypeEnum;
+        slot3Number: string;
+        slot3Type: OVH.telephony.TimeConditionsSlotTypeEnum;
+        status: OVH.telephony.TimeConditionsGlobalStatusEnum;
         timeout?: OVH.telephony.TimeConditionsTimeoutEnum;
-        unavailableNumber?: string;
-        unavailableType?: OVH.telephony.TimeConditionsSlotTypeEnum;
+        unavailableNumber: string;
+        unavailableType: OVH.telephony.TimeConditionsSlotTypeEnum;
     }
     //telephony.TimeConditionsDayEnum
     export type TimeConditionsDayEnum = "friday" | "holiday" | "monday" | "saturday" | "sunday" | "thursday" | "tuesday" | "wednesday"
@@ -1572,7 +1572,7 @@ export namespace telephony {
     //telephony.TimestampAndValue
     // fullName: telephony.TimestampAndValue.TimestampAndValue
     export interface TimestampAndValue {
-        timestamp?: number;
+        timestamp: number;
         value?: number;
     }
     //telephony.TokenExpirationEnum
@@ -1580,10 +1580,10 @@ export namespace telephony {
     //telephony.Tones
     // fullName: telephony.Tones.Tones
     export interface Tones {
-        callWaiting?: OVH.telephony.TonesEnum;
-        endCall?: OVH.telephony.TonesEnum;
-        onHold?: OVH.telephony.TonesOnHoldEnum;
-        ringback?: OVH.telephony.TonesEnum;
+        callWaiting: OVH.telephony.TonesEnum;
+        endCall: OVH.telephony.TonesEnum;
+        onHold: OVH.telephony.TonesOnHoldEnum;
+        ringback: OVH.telephony.TonesEnum;
     }
     //telephony.TonesEnum
     export type TonesEnum = "Custom sound" | "None"
@@ -1594,16 +1594,16 @@ export namespace telephony {
     //telephony.Trunk
     // fullName: telephony.Trunk.Trunk
     export interface Trunk {
-        description?: string;
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
+        description: string;
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
     }
     //telephony.TrunkExternalDisplayedNumber
     // fullName: telephony.TrunkExternalDisplayedNumber.TrunkExternalDisplayedNumber
     export interface TrunkExternalDisplayedNumber {
-        createdAt?: string;
-        number?: string;
-        status?: OVH.telephony.TrunkExternalDisplayedNumberStatusEnum;
+        createdAt: string;
+        number: string;
+        status: OVH.telephony.TrunkExternalDisplayedNumberStatusEnum;
         validatedAt?: string;
     }
     //telephony.TrunkExternalDisplayedNumberStatusEnum
@@ -1611,22 +1611,22 @@ export namespace telephony {
     //telephony.TrunkExternalDisplayedNumberValidation
     // fullName: telephony.TrunkExternalDisplayedNumberValidation.TrunkExternalDisplayedNumberValidation
     export interface TrunkExternalDisplayedNumberValidation {
-        phoneCallTaskId?: number;
-        validationCode?: string;
+        phoneCallTaskId: number;
+        validationCode: string;
     }
     //telephony.TrunkSimultaneousPack
     // fullName: telephony.TrunkSimultaneousPack.TrunkSimultaneousPack
     export interface TrunkSimultaneousPack {
-        channels?: number;
-        quantity?: number;
-        unitPrice?: OVH.order.Price;
+        channels: number;
+        quantity: number;
+        unitPrice: OVH.order.Price;
     }
     //telephony.TrunkSimultaneousPacksRepartition
     // fullName: telephony.TrunkSimultaneousPacksRepartition.TrunkSimultaneousPacksRepartition
     export interface TrunkSimultaneousPacksRepartition {
-        optimizedChannelsQuantity?: number;
-        packsRepartition?: OVH.telephony.TrunkSimultaneousPack[];
-        totalPrice?: OVH.order.Price;
+        optimizedChannelsQuantity: number;
+        packsRepartition: OVH.telephony.TrunkSimultaneousPack[];
+        totalPrice: OVH.order.Price;
     }
     //telephony.TypeEnum
     export type TypeEnum = "cloudHunting" | "cloudIvr" | "conference" | "contactCenterSolution" | "contactCenterSolutionExpert" | "ddi" | "easyHunting" | "easyPabx" | "empty" | "fax" | "freefax" | "mgcp" | "miniPabx" | "oldConference" | "plugAndFax" | "redirect" | "sip" | "svi" | "voicefax" | "voicemail" | "vxml"
@@ -1637,17 +1637,17 @@ export namespace telephony {
     export interface VoiceConsumption {
         called?: string;
         calling?: string;
-        consumptionId?: number;
-        countrySuffix?: string;
-        creationDatetime?: string;
-        designation?: string;
-        destinationType?: OVH.telephony.VoiceConsumptionDestinationTypeEnum;
+        consumptionId: number;
+        countrySuffix: string;
+        creationDatetime: string;
+        designation: string;
+        destinationType: OVH.telephony.VoiceConsumptionDestinationTypeEnum;
         dialed?: string;
-        duration?: number;
+        duration: number;
         hangupNature?: string;
-        planType?: OVH.telephony.VoiceConsumptionPlanTypeEnum;
-        priceWithoutTax?: OVH.order.Price;
-        wayType?: OVH.telephony.VoiceConsumptionWayTypeEnum;
+        planType: OVH.telephony.VoiceConsumptionPlanTypeEnum;
+        priceWithoutTax: OVH.order.Price;
+        wayType: OVH.telephony.VoiceConsumptionWayTypeEnum;
     }
     //telephony.VoiceConsumptionDestinationTypeEnum
     export type VoiceConsumptionDestinationTypeEnum = "landline" | "mobile" | "special"
@@ -1660,19 +1660,19 @@ export namespace telephony {
     //telephony.Voicemail
     // fullName: telephony.Voicemail.Voicemail
     export interface Voicemail {
-        description?: string;
-        offers?: string[];
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
+        description: string;
+        offers: string[];
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
     }
     //telephony.VoicemailGreetingEnum
     export type VoicemailGreetingEnum = "default" | "full" | "short"
     //telephony.VoicemailGreetings
     // fullName: telephony.VoicemailGreetings.VoicemailGreetings
     export interface VoicemailGreetings {
-        callee?: string;
-        dir?: OVH.telephony.VoicemailMessageFolderGreetingEnum;
-        id?: number;
+        callee: string;
+        dir: OVH.telephony.VoicemailMessageFolderGreetingEnum;
+        id: number;
     }
     //telephony.VoicemailMessageFolderDirectoryEnum
     export type VoicemailMessageFolderDirectoryEnum = "family" | "friends" | "inbox" | "old" | "urgent" | "work"
@@ -1681,51 +1681,51 @@ export namespace telephony {
     //telephony.VoicemailMessages
     // fullName: telephony.VoicemailMessages.VoicemailMessages
     export interface VoicemailMessages {
-        callee?: string;
-        caller?: string;
-        creationDatetime?: string;
-        dir?: OVH.telephony.VoicemailMessageFolderDirectoryEnum;
-        duration?: number;
-        id?: number;
+        callee: string;
+        caller: string;
+        creationDatetime: string;
+        dir: OVH.telephony.VoicemailMessageFolderDirectoryEnum;
+        duration: number;
+        id: number;
     }
     //telephony.VoicemailNumbers
     // fullName: telephony.VoicemailNumbers.VoicemailNumbers
     export interface VoicemailNumbers {
-        external?: string;
-        internal?: string;
+        external: string;
+        internal: string;
     }
     //telephony.VoicemailProperties
     // fullName: telephony.VoicemailProperties.VoicemailProperties
     export interface VoicemailProperties {
-        annouceMessage?: string;
-        audioFormat?: OVH.telephony.ServiceVoicemailAudioFormatEnum;
-        doNotRecord?: boolean;
-        forcePassword?: boolean;
-        fromEmail?: string;
-        fromName?: string;
+        annouceMessage: string;
+        audioFormat: OVH.telephony.ServiceVoicemailAudioFormatEnum;
+        doNotRecord: boolean;
+        forcePassword: boolean;
+        fromEmail: string;
+        fromName: string;
         fullGreetingSoundId?: number;
-        greetingType?: OVH.telephony.VoicemailGreetingEnum;
-        isNewVersion?: boolean;
-        keepMessage?: boolean;
-        redirectionEmails?: OVH.telephony.ServiceVoicemailNotifications[];
+        greetingType: OVH.telephony.VoicemailGreetingEnum;
+        isNewVersion: boolean;
+        keepMessage: boolean;
+        redirectionEmails: OVH.telephony.ServiceVoicemailNotifications[];
         shortGreetingSoundId?: number;
-        temporaryGreetingActivated?: boolean;
+        temporaryGreetingActivated: boolean;
         temporaryGreetingSoundId?: number;
-        unreadMessages?: number;
+        unreadMessages: number;
     }
     //telephony.Vxml
     // fullName: telephony.Vxml.Vxml
     export interface Vxml {
-        description?: string;
-        offers?: string[];
-        serviceName?: string;
-        serviceType?: OVH.telephony.TypeServiceEnum;
+        description: string;
+        offers: string[];
+        serviceName: string;
+        serviceType: OVH.telephony.TypeServiceEnum;
     }
     //telephony.VxmlProperties
     // fullName: telephony.VxmlProperties.VxmlProperties
     export interface VxmlProperties {
-        url?: string;
-        urlRecord?: string;
+        url: string;
+        urlRecord: string;
     }
     export namespace portability {
         //telephony.portability.SpecialNumberCategoryEnum
@@ -1736,12 +1736,12 @@ export namespace telephony {
     //telephony.trafficExtract
     // fullName: telephony.trafficExtract.trafficExtract
     export interface trafficExtract {
-        dateEnd?: string;
-        dateStart?: string;
-        fileSize?: number;
-        fileUrl?: string;
-        id?: number;
-        status?: OVH.telephony.TaskStatusEnum;
+        dateEnd: string;
+        dateStart: string;
+        fileSize: number;
+        fileUrl: string;
+        id: number;
+        status: OVH.telephony.TaskStatusEnum;
     }
 }
 // Apis harmony

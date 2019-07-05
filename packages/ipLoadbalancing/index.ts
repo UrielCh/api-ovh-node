@@ -24,76 +24,76 @@ export namespace ipLoadbalancing {
     //ipLoadbalancing.DefinedFarm
     // fullName: ipLoadbalancing.DefinedFarm.DefinedFarm
     export interface DefinedFarm {
-        id?: number;
-        type?: string;
+        id: number;
+        type: string;
     }
     //ipLoadbalancing.DefinedFrontend
     // fullName: ipLoadbalancing.DefinedFrontend.DefinedFrontend
     export interface DefinedFrontend {
-        id?: number;
-        type?: string;
+        id: number;
+        type: string;
     }
     //ipLoadbalancing.DefinedRoute
     // fullName: ipLoadbalancing.DefinedRoute.DefinedRoute
     export interface DefinedRoute {
         displayName?: string;
-        routeId?: number;
-        type?: string;
+        routeId: number;
+        type: string;
     }
     //ipLoadbalancing.FarmAvailableProbe
     // fullName: ipLoadbalancing.FarmAvailableProbe.FarmAvailableProbe
     export interface FarmAvailableProbe {
-        matches?: string[];
+        matches: string[];
         method?: string[];
-        negatableMatches?: string[];
-        port?: boolean;
-        type?: string;
-        url?: boolean;
+        negatableMatches: string[];
+        port: boolean;
+        type: string;
+        url: boolean;
     }
     //ipLoadbalancing.InstancesState
     // fullName: ipLoadbalancing.InstancesState.InstancesState
     export interface InstancesState {
-        internalId?: number;
-        lastUpdateDate?: string;
-        state?: string;
-        zone?: string;
+        internalId: number;
+        lastUpdateDate: string;
+        state: string;
+        zone: string;
     }
     //ipLoadbalancing.Ip
     // fullName: ipLoadbalancing.Ip.Ip
     export interface Ip {
         displayName?: string;
-        ipLoadbalancing?: string;
+        ipLoadbalancing: string;
         ipv4?: string;
         ipv6?: string;
         metricsToken?: string;
-        offer?: string;
-        orderableZone?: OVH.ipLoadbalancing.OrderableZone[];
-        serviceName?: string;
+        offer: string;
+        orderableZone: OVH.ipLoadbalancing.OrderableZone[];
+        serviceName: string;
         sslConfiguration?: OVH.ipLoadbalancing.SslConfigurationEnum;
-        state?: OVH.ipLoadbalancing.IpStateEnum;
-        vrackEligibility?: boolean;
+        state: OVH.ipLoadbalancing.IpStateEnum;
+        vrackEligibility: boolean;
         vrackName?: string;
-        zone?: string[];
+        zone: string[];
     }
     //ipLoadbalancing.IpStateEnum
     export type IpStateEnum = "blacklisted" | "deleted" | "free" | "ok" | "quarantined" | "suspended"
     //ipLoadbalancing.NatIps
     // fullName: ipLoadbalancing.NatIps.NatIps
     export interface NatIps {
-        ip?: string[];
-        zone?: string;
+        ip: string[];
+        zone: string;
     }
     //ipLoadbalancing.OrderableZone
     // fullName: ipLoadbalancing.OrderableZone.OrderableZone
     export interface OrderableZone {
-        name?: string;
-        planCode?: string;
+        name: string;
+        planCode: string;
     }
     //ipLoadbalancing.PendingChanges
     // fullName: ipLoadbalancing.PendingChanges.PendingChanges
     export interface PendingChanges {
-        number?: number;
-        zone?: string;
+        number: number;
+        zone: string;
     }
     //ipLoadbalancing.ProbeExpectMatchEnum
     export type ProbeExpectMatchEnum = "contains" | "default" | "internal" | "matches" | "status"
@@ -112,50 +112,50 @@ export namespace ipLoadbalancing {
             lastUpdateDate?: string;
             resetDate?: string;
             total?: number;
-            zone?: string;
+            zone: string;
         }
     }
     export namespace QuotaHistory {
         //ipLoadbalancing.QuotaHistory.QuotaHistory
         // fullName: ipLoadbalancing.QuotaHistory.QuotaHistory.QuotaHistory
         export interface QuotaHistory {
-            historizedDate?: string;
-            id?: number;
-            lastUpdateDate?: string;
-            resetDate?: string;
-            total?: number;
-            zone?: string;
+            historizedDate: string;
+            id: number;
+            lastUpdateDate: string;
+            resetDate: string;
+            total: number;
+            zone: string;
         }
     }
     //ipLoadbalancing.RouteAvailableAction
     // fullName: ipLoadbalancing.RouteAvailableAction.RouteAvailableAction
     export interface RouteAvailableAction {
         destination?: string;
-        name?: string;
+        name: string;
         status?: number[];
-        type?: string;
+        type: string;
     }
     //ipLoadbalancing.RouteAvailableRule
     // fullName: ipLoadbalancing.RouteAvailableRule.RouteAvailableRule
     export interface RouteAvailableRule {
         enum?: string[];
-        hasSubField?: boolean;
-        matches?: string[];
-        name?: string;
-        pattern?: string;
-        type?: string;
+        hasSubField: boolean;
+        matches: string[];
+        name: string;
+        pattern: string;
+        type: string;
     }
     export namespace RouteHttp {
         //ipLoadbalancing.RouteHttp.RouteHttp
         // fullName: ipLoadbalancing.RouteHttp.RouteHttp.RouteHttp
         export interface RouteHttp {
-            action?: OVH.ipLoadbalancing.RouteHttpAction;
+            action: OVH.ipLoadbalancing.RouteHttpAction;
             displayName?: string;
             frontendId?: number;
-            routeId?: number;
-            rules?: OVH.ipLoadbalancing.RouteRule[];
-            status?: OVH.ipLoadbalancing.RouteStatusEnum;
-            weight?: number;
+            routeId: number;
+            rules: OVH.ipLoadbalancing.RouteRule[];
+            status: OVH.ipLoadbalancing.RouteStatusEnum;
+            weight: number;
         }
     }
     //ipLoadbalancing.RouteHttpAction
@@ -163,16 +163,16 @@ export namespace ipLoadbalancing {
     export interface RouteHttpAction {
         status?: number;
         target?: string;
-        type?: string;
+        type: string;
     }
     //ipLoadbalancing.RouteRule
     // fullName: ipLoadbalancing.RouteRule.RouteRule
     export interface RouteRule {
-        field?: string;
-        match?: OVH.ipLoadbalancing.RouteRuleMatchesEnum;
-        negate?: boolean;
+        field: string;
+        match: OVH.ipLoadbalancing.RouteRuleMatchesEnum;
+        negate: boolean;
         pattern?: string;
-        ruleId?: number;
+        ruleId: number;
         subField?: string;
     }
     export namespace RouteRule {
@@ -180,11 +180,11 @@ export namespace ipLoadbalancing {
         // fullName: ipLoadbalancing.RouteRule.RouteRule.RouteRule
         export interface RouteRule {
             displayName?: string;
-            field?: string;
-            match?: OVH.ipLoadbalancing.RouteRuleMatchesEnum;
-            negate?: boolean;
+            field: string;
+            match: OVH.ipLoadbalancing.RouteRuleMatchesEnum;
+            negate: boolean;
             pattern?: string;
-            ruleId?: number;
+            ruleId: number;
             subField?: string;
         }
     }
@@ -196,20 +196,20 @@ export namespace ipLoadbalancing {
         //ipLoadbalancing.RouteTcp.RouteTcp
         // fullName: ipLoadbalancing.RouteTcp.RouteTcp.RouteTcp
         export interface RouteTcp {
-            action?: OVH.ipLoadbalancing.RouteTcpAction;
+            action: OVH.ipLoadbalancing.RouteTcpAction;
             displayName?: string;
             frontendId?: number;
-            routeId?: number;
-            rules?: OVH.ipLoadbalancing.RouteRule[];
-            status?: OVH.ipLoadbalancing.RouteStatusEnum;
-            weight?: number;
+            routeId: number;
+            rules: OVH.ipLoadbalancing.RouteRule[];
+            status: OVH.ipLoadbalancing.RouteStatusEnum;
+            weight: number;
         }
     }
     //ipLoadbalancing.RouteTcpAction
     // fullName: ipLoadbalancing.RouteTcpAction.RouteTcpAction
     export interface RouteTcpAction {
         target?: string;
-        type?: string;
+        type: string;
     }
     //ipLoadbalancing.ServerState
     // fullName: ipLoadbalancing.ServerState.ServerState
@@ -217,7 +217,7 @@ export namespace ipLoadbalancing {
         checkCode?: string;
         checkStatus?: string;
         checkTime?: string;
-        instanceId?: number;
+        instanceId: number;
         lastCheckContent?: string;
         status?: string;
     }
@@ -226,12 +226,12 @@ export namespace ipLoadbalancing {
         // fullName: ipLoadbalancing.Ssl.Ssl.Ssl
         export interface Ssl {
             displayName?: string;
-            expireDate?: string;
-            fingerprint?: string;
-            id?: number;
-            san?: string[];
-            serial?: string;
-            subject?: string;
+            expireDate: string;
+            fingerprint: string;
+            id: number;
+            san: string[];
+            serial: string;
+            subject: string;
             type?: OVH.ipLoadbalancing.SslTypeEnum;
         }
     }
@@ -242,10 +242,10 @@ export namespace ipLoadbalancing {
     //ipLoadbalancing.Status
     // fullName: ipLoadbalancing.Status.Status
     export interface Status {
-        farms?: OVH.ipLoadbalancing.status.Component;
-        frontends?: OVH.ipLoadbalancing.status.Component;
-        servers?: OVH.ipLoadbalancing.status.Component;
-        service?: OVH.ipLoadbalancing.status.Service;
+        farms: OVH.ipLoadbalancing.status.Component;
+        frontends: OVH.ipLoadbalancing.status.Component;
+        servers: OVH.ipLoadbalancing.status.Component;
+        service: OVH.ipLoadbalancing.status.Service;
     }
     //ipLoadbalancing.StickinessHTTPEnum
     export type StickinessHTTPEnum = "cookie" | "sourceIp"
@@ -255,13 +255,13 @@ export namespace ipLoadbalancing {
         //ipLoadbalancing.Task.Task
         // fullName: ipLoadbalancing.Task.Task.Task
         export interface Task {
-            action?: OVH.ipLoadbalancing.TaskActionEnum;
-            creationDate?: string;
+            action: OVH.ipLoadbalancing.TaskActionEnum;
+            creationDate: string;
             doneDate?: string;
-            id?: number;
-            progress?: number;
-            status?: OVH.ipLoadbalancing.TaskStatusEnum;
-            zones?: string[];
+            id: number;
+            progress: number;
+            status: OVH.ipLoadbalancing.TaskStatusEnum;
+            zones: string[];
         }
     }
     //ipLoadbalancing.TaskActionEnum
@@ -271,8 +271,8 @@ export namespace ipLoadbalancing {
     //ipLoadbalancing.VrackInformation
     // fullName: ipLoadbalancing.VrackInformation.VrackInformation
     export interface VrackInformation {
-        state?: OVH.ipLoadbalancing.VrackStateEnum;
-        task?: number[];
+        state: OVH.ipLoadbalancing.VrackStateEnum;
+        task: number[];
         vrackName?: string;
     }
     export namespace VrackNetwork {
@@ -280,46 +280,46 @@ export namespace ipLoadbalancing {
         // fullName: ipLoadbalancing.VrackNetwork.VrackNetwork.VrackNetwork
         export interface VrackNetwork {
             displayName?: string;
-            farmId?: OVH.ipLoadbalancing.DefinedFarm[];
-            natIp?: string;
-            subnet?: string;
-            vlan?: number;
-            vrackNetworkId?: number;
+            farmId: OVH.ipLoadbalancing.DefinedFarm[];
+            natIp: string;
+            subnet: string;
+            vlan: number;
+            vrackNetworkId: number;
         }
     }
     //ipLoadbalancing.VrackNetworkCreationRules
     // fullName: ipLoadbalancing.VrackNetworkCreationRules.VrackNetworkCreationRules
     export interface VrackNetworkCreationRules {
-        minNatIps?: number;
-        remainingNetworks?: number;
-        vrackName?: string;
+        minNatIps: number;
+        remainingNetworks: number;
+        vrackName: string;
     }
     //ipLoadbalancing.VrackStateEnum
     export type VrackStateEnum = "activating" | "active" | "deactivating" | "inactive"
     //ipLoadbalancing.VrackTransparentGateways
     // fullName: ipLoadbalancing.VrackTransparentGateways.VrackTransparentGateways
     export interface VrackTransparentGateways {
-        address?: string;
-        gateway?: string;
-        vlan?: number;
+        address: string;
+        gateway: string;
+        vlan: number;
     }
     export namespace VrackTransparentIp {
         //ipLoadbalancing.VrackTransparentIp.VrackTransparentIp
         // fullName: ipLoadbalancing.VrackTransparentIp.VrackTransparentIp.VrackTransparentIp
         export interface VrackTransparentIp {
-            address?: string;
-            farmId?: number;
-            id?: number;
-            serverId?: number;
-            slotId?: number;
+            address: string;
+            farmId: number;
+            id: number;
+            serverId: number;
+            slotId: number;
         }
     }
     export namespace Zone {
         //ipLoadbalancing.Zone.Zone
         // fullName: ipLoadbalancing.Zone.Zone.Zone
         export interface Zone {
-            name?: string;
-            state?: string;
+            name: string;
+            state: string;
         }
     }
     export namespace backendHttp {
@@ -328,31 +328,31 @@ export namespace ipLoadbalancing {
         export interface BackendHttp {
             balance?: OVH.ipLoadbalancing.BalanceHTTPEnum;
             displayName?: string;
-            farmId?: number;
+            farmId: number;
             port?: number;
             probe?: OVH.ipLoadbalancing.BackendProbe;
             stickiness?: OVH.ipLoadbalancing.StickinessHTTPEnum;
             vrackNetworkId?: number;
-            zone?: string;
+            zone: string;
         }
     }
     export namespace backendHttpCustomerServer {
         //ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer
         // fullName: ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer.BackendHTTPServer
         export interface BackendHTTPServer {
-            address?: string;
-            backendId?: number;
-            backup?: boolean;
+            address: string;
+            backendId: number;
+            backup: boolean;
             chain?: string;
             cookie?: string;
             displayName?: string;
             port?: number;
-            probe?: boolean;
+            probe: boolean;
             proxyProtocolVersion?: OVH.ipLoadbalancing.ProxyProtocolVersionEnum;
-            serverId?: number;
-            serverState?: OVH.ipLoadbalancing.ServerState[];
-            ssl?: boolean;
-            status?: OVH.ipLoadbalancing.BackendCustomerServerStatusEnum;
+            serverId: number;
+            serverState: OVH.ipLoadbalancing.ServerState[];
+            ssl: boolean;
+            status: OVH.ipLoadbalancing.BackendCustomerServerStatusEnum;
             weight?: number;
         }
     }
@@ -362,30 +362,30 @@ export namespace ipLoadbalancing {
         export interface BackendTcp {
             balance?: OVH.ipLoadbalancing.BalanceTCPEnum;
             displayName?: string;
-            farmId?: number;
+            farmId: number;
             port?: number;
             probe?: OVH.ipLoadbalancing.BackendProbe;
             stickiness?: OVH.ipLoadbalancing.StickinessTCPEnum;
             vrackNetworkId?: number;
-            zone?: string;
+            zone: string;
         }
     }
     export namespace backendTcpCustomerServer {
         //ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer
         // fullName: ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer.BackendTCPServer
         export interface BackendTCPServer {
-            address?: string;
-            backendId?: number;
-            backup?: boolean;
+            address: string;
+            backendId: number;
+            backup: boolean;
             chain?: string;
             displayName?: string;
             port?: number;
-            probe?: boolean;
+            probe: boolean;
             proxyProtocolVersion?: OVH.ipLoadbalancing.ProxyProtocolVersionEnum;
-            serverId?: number;
-            serverState?: OVH.ipLoadbalancing.ServerState[];
-            ssl?: boolean;
-            status?: OVH.ipLoadbalancing.BackendCustomerServerStatusEnum;
+            serverId: number;
+            serverState: OVH.ipLoadbalancing.ServerState[];
+            ssl: boolean;
+            status: OVH.ipLoadbalancing.BackendCustomerServerStatusEnum;
             weight?: number;
         }
     }
@@ -394,22 +394,22 @@ export namespace ipLoadbalancing {
         // fullName: ipLoadbalancing.backendUdp.BackendUdp.BackendUdp
         export interface BackendUdp {
             displayName?: string;
-            farmId?: number;
-            port?: number;
+            farmId: number;
+            port: number;
             vrackNetworkId?: number;
-            zone?: string;
+            zone: string;
         }
     }
     export namespace backendUdpCustomerServer {
         //ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer
         // fullName: ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer.BackendUDPServer
         export interface BackendUDPServer {
-            address?: string;
-            backendId?: number;
+            address: string;
+            backendId: number;
             displayName?: string;
             port?: number;
-            serverId?: number;
-            status?: OVH.ipLoadbalancing.BackendCustomerServerStatusEnum;
+            serverId: number;
+            status: OVH.ipLoadbalancing.BackendCustomerServerStatusEnum;
         }
     }
     export namespace frontendHttp {
@@ -420,15 +420,15 @@ export namespace ipLoadbalancing {
             dedicatedIpfo?: string[];
             defaultFarmId?: number;
             defaultSslId?: number;
-            disabled?: boolean;
+            disabled: boolean;
             displayName?: string;
-            frontendId?: number;
-            hsts?: boolean;
+            frontendId: number;
+            hsts: boolean;
             httpHeader?: string[];
-            port?: string;
+            port: string;
             redirectLocation?: string;
-            ssl?: boolean;
-            zone?: string;
+            ssl: boolean;
+            zone: string;
         }
     }
     export namespace frontendTcp {
@@ -439,12 +439,12 @@ export namespace ipLoadbalancing {
             dedicatedIpfo?: string[];
             defaultFarmId?: number;
             defaultSslId?: number;
-            disabled?: boolean;
+            disabled: boolean;
             displayName?: string;
-            frontendId?: number;
-            port?: string;
-            ssl?: boolean;
-            zone?: string;
+            frontendId: number;
+            port: string;
+            ssl: boolean;
+            zone: string;
         }
     }
     export namespace frontendUdp {
@@ -453,34 +453,34 @@ export namespace ipLoadbalancing {
         export interface FrontendUdp {
             dedicatedIpfo?: string[];
             defaultFarmId?: number;
-            disabled?: boolean;
+            disabled: boolean;
             displayName?: string;
-            frontendId?: number;
-            port?: string;
-            zone?: string;
+            frontendId: number;
+            port: string;
+            zone: string;
         }
     }
     export namespace status {
         //ipLoadbalancing.status.Component
         // fullName: ipLoadbalancing.status.Component.Component
         export interface Component {
-            status?: OVH.ipLoadbalancing.status.ComponentStatus;
-            total?: number;
+            status: OVH.ipLoadbalancing.status.ComponentStatus;
+            total: number;
         }
         //ipLoadbalancing.status.ComponentStatus
         // fullName: ipLoadbalancing.status.ComponentStatus.ComponentStatus
         export interface ComponentStatus {
-            error?: number;
-            ok?: number;
-            unknown?: number;
-            warn?: number;
+            error: number;
+            ok: number;
+            unknown: number;
+            warn: number;
         }
         //ipLoadbalancing.status.Enum
         export type Enum = "error" | "ok" | "unknown" | "warn"
         //ipLoadbalancing.status.Service
         // fullName: ipLoadbalancing.status.Service.Service
         export interface Service {
-            status?: OVH.ipLoadbalancing.status.Enum;
+            status: OVH.ipLoadbalancing.status.Enum;
         }
     }
 }
@@ -488,9 +488,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -507,19 +507,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

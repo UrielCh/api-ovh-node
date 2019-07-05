@@ -5,8 +5,8 @@ export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
 }
 export namespace dedicated {
@@ -18,8 +18,8 @@ export namespace dedicated {
         //dedicated.housing.ApcOrderable
         // fullName: dedicated.housing.ApcOrderable.ApcOrderable
         export interface ApcOrderable {
-            free?: boolean;
-            orderable?: boolean;
+            free: boolean;
+            orderable: boolean;
         }
         //dedicated.housing.DatacenterEnum
         export type DatacenterEnum = "gsw" | "pdc1"
@@ -28,31 +28,31 @@ export namespace dedicated {
         //dedicated.housing.HaRoutingOrderable
         // fullName: dedicated.housing.HaRoutingOrderable.HaRoutingOrderable
         export interface HaRoutingOrderable {
-            offer?: OVH.dedicated.housing.HaRoutingOfferEnum[];
-            orderable?: boolean;
+            offer: OVH.dedicated.housing.HaRoutingOfferEnum[];
+            orderable: boolean;
         }
         //dedicated.housing.Housing
         // fullName: dedicated.housing.Housing.Housing
         export interface Housing {
             datacenter?: OVH.dedicated.housing.DatacenterEnum;
-            name?: string;
-            network?: OVH.dedicated.housing.NetworkInfo[];
-            options?: OVH.dedicated.housing.Options;
-            rack?: string;
-            securityCode?: string;
+            name: string;
+            network: OVH.dedicated.housing.NetworkInfo[];
+            options: OVH.dedicated.housing.Options;
+            rack: string;
+            securityCode: string;
         }
         //dedicated.housing.IpInfo
         // fullName: dedicated.housing.IpInfo.IpInfo
         export interface IpInfo {
             gateway?: string;
-            network?: string;
+            network: string;
             reservedAddresses?: string[];
         }
         //dedicated.housing.LinkInfo
         // fullName: dedicated.housing.LinkInfo.LinkInfo
         export interface LinkInfo {
-            port?: string;
-            router?: string;
+            port: string;
+            router: string;
         }
         //dedicated.housing.NetworkInfo
         // fullName: dedicated.housing.NetworkInfo.NetworkInfo
@@ -64,20 +64,20 @@ export namespace dedicated {
         //dedicated.housing.Options
         // fullName: dedicated.housing.Options.Options
         export interface Options {
-            apcCount?: number;
-            handsneyes?: boolean;
-            highAvailabilityRouting?: string;
+            apcCount: number;
+            handsneyes: boolean;
+            highAvailabilityRouting: string;
         }
         //dedicated.housing.Task
         // fullName: dedicated.housing.Task.Task
         export interface Task {
             comment?: string;
             doneDate?: string;
-            function?: OVH.dedicated.housing.TaskFunctionEnum;
+            function: OVH.dedicated.housing.TaskFunctionEnum;
             lastUpdate?: string;
-            startDate?: string;
-            status?: OVH.dedicated.TaskStatusEnum;
-            taskId?: number;
+            startDate: string;
+            status: OVH.dedicated.TaskStatusEnum;
+            taskId: number;
         }
         //dedicated.housing.TaskFunctionEnum
         export type TaskFunctionEnum = "applyBackupFtpAcls" | "applyBackupFtpQuota" | "changePasswordBackupFTP" | "createBackupFTP" | "migrateBackupFTP" | "removeBackupFTP"
@@ -86,21 +86,21 @@ export namespace dedicated {
         //dedicated.server.BackupFtp
         // fullName: dedicated.server.BackupFtp.BackupFtp
         export interface BackupFtp {
-            ftpBackupName?: string;
+            ftpBackupName: string;
             quota?: OVH.complexType.UnitAndValue<number>;
             readOnlyDate?: string;
-            type?: OVH.dedicated.server.BackupStorageTypeEnum;
+            type: OVH.dedicated.server.BackupStorageTypeEnum;
             usage?: OVH.complexType.UnitAndValue<number>;
         }
         //dedicated.server.BackupFtpAcl
         // fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
         export interface BackupFtpAcl {
-            cifs?: boolean;
-            ftp?: boolean;
-            ipBlock?: string;
-            isApplied?: boolean;
-            lastUpdate?: string;
-            nfs?: boolean;
+            cifs: boolean;
+            ftp: boolean;
+            ipBlock: string;
+            isApplied: boolean;
+            lastUpdate: string;
+            nfs: boolean;
         }
         //dedicated.server.BackupStorageTypeEnum
         export type BackupStorageTypeEnum = "included" | "storage"
@@ -109,11 +109,11 @@ export namespace dedicated {
         export interface Task {
             comment?: string;
             doneDate?: string;
-            function?: OVH.dedicated.TaskFunctionEnum;
+            function: OVH.dedicated.TaskFunctionEnum;
             lastUpdate?: string;
-            startDate?: string;
-            status?: OVH.dedicated.TaskStatusEnum;
-            taskId?: number;
+            startDate: string;
+            status: OVH.dedicated.TaskStatusEnum;
+            taskId: number;
         }
     }
 }
@@ -121,9 +121,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -136,19 +136,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

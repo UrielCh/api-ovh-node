@@ -11,42 +11,42 @@ export namespace connectivity {
         // fullName: connectivity.eligibility.Address.Address
         export interface Address {
             building?: string;
-            city?: string;
+            city: string;
             door?: string;
             floor?: string;
             housingComplex?: string;
-            inseeCode?: string;
+            inseeCode: string;
             ownerName?: string;
             stairs?: string;
             streetCode?: string;
             streetName?: string;
             streetNumber?: string;
-            zipCode?: string;
+            zipCode: string;
         }
         //connectivity.eligibility.Building
         // fullName: connectivity.eligibility.Building.Building
         export interface Building {
-            name?: string;
+            name: string;
             nro?: string;
-            reference?: string;
-            stairs?: OVH.connectivity.eligibility.BuildingStair[];
-            type?: OVH.connectivity.eligibility.BuildingTypeEnum;
+            reference: string;
+            stairs: OVH.connectivity.eligibility.BuildingStair[];
+            type: OVH.connectivity.eligibility.BuildingTypeEnum;
         }
         //connectivity.eligibility.BuildingStair
         // fullName: connectivity.eligibility.BuildingStair.BuildingStair
         export interface BuildingStair {
-            floors?: string[];
-            stair?: string;
+            floors: string[];
+            stair: string;
         }
         //connectivity.eligibility.BuildingTypeEnum
         export type BuildingTypeEnum = "BUILDING" | "HOUSE"
         //connectivity.eligibility.City
         // fullName: connectivity.eligibility.City.City
         export interface City {
-            city?: string;
-            inseeCode?: string;
+            city: string;
+            inseeCode: string;
             locality?: string;
-            zipCode?: string;
+            zipCode: string;
         }
         //connectivity.eligibility.CopperInfo
         // fullName: connectivity.eligibility.CopperInfo.CopperInfo
@@ -54,100 +54,100 @@ export namespace connectivity {
             availablePairs?: number;
             maxAvailablePairs?: number;
             nra?: string;
-            sectionsLengths?: OVH.connectivity.eligibility.SectionLength[];
-            status?: OVH.connectivity.eligibility.LineStatusEnum;
+            sectionsLengths: OVH.connectivity.eligibility.SectionLength[];
+            status: OVH.connectivity.eligibility.LineStatusEnum;
             underConstruction?: boolean;
-            unlistedNumber?: boolean;
+            unlistedNumber: boolean;
         }
         //connectivity.eligibility.EligibilityTest
         // fullName: connectivity.eligibility.EligibilityTest.EligibilityTest
         export interface EligibilityTest {
-            eligibilityReference?: string;
-            endpoint?: OVH.connectivity.eligibility.Endpoint;
-            offers?: OVH.connectivity.eligibility.Offer[];
+            eligibilityReference: string;
+            endpoint: OVH.connectivity.eligibility.Endpoint;
+            offers: OVH.connectivity.eligibility.Offer[];
         }
         //connectivity.eligibility.Endpoint
         // fullName: connectivity.eligibility.Endpoint.Endpoint
         export interface Endpoint {
-            address?: OVH.connectivity.eligibility.Address;
+            address: OVH.connectivity.eligibility.Address;
             copperInfo?: OVH.connectivity.eligibility.CopperInfo;
             fiberInfo?: OVH.connectivity.eligibility.FiberInfo;
             portability?: OVH.connectivity.eligibility.Portability;
-            reference?: string;
-            referenceType?: OVH.connectivity.eligibility.EndpointReferenceTypeEnum;
+            reference: string;
+            referenceType: OVH.connectivity.eligibility.EndpointReferenceTypeEnum;
         }
         //connectivity.eligibility.EndpointReferenceTypeEnum
         export type EndpointReferenceTypeEnum = "building" | "lineNumber" | "otp"
         //connectivity.eligibility.FiberInfo
         // fullName: connectivity.eligibility.FiberInfo.FiberInfo
         export interface FiberInfo {
-            buildingName?: string;
-            buildingReference?: string;
-            buildingType?: OVH.connectivity.eligibility.BuildingTypeEnum;
+            buildingName: string;
+            buildingReference: string;
+            buildingType: OVH.connectivity.eligibility.BuildingTypeEnum;
             nro?: string;
-            operatorCode?: string;
-            operatorName?: string;
+            operatorCode: string;
+            operatorName: string;
         }
         //connectivity.eligibility.Line
         // fullName: connectivity.eligibility.Line.Line
         export interface Line {
-            address?: OVH.connectivity.eligibility.Address;
-            copperInfo?: OVH.connectivity.eligibility.CopperInfo;
-            lineNumber?: string;
+            address: OVH.connectivity.eligibility.Address;
+            copperInfo: OVH.connectivity.eligibility.CopperInfo;
+            lineNumber: string;
         }
         //connectivity.eligibility.LineStatusEnum
         export type LineStatusEnum = "active" | "inactive"
         //connectivity.eligibility.MeetingSlot
         // fullName: connectivity.eligibility.MeetingSlot.MeetingSlot
         export interface MeetingSlot {
-            endDate?: string;
-            startDate?: string;
-            uiCode?: string;
+            endDate: string;
+            startDate: string;
+            uiCode: string;
         }
         //connectivity.eligibility.Meetings
         // fullName: connectivity.eligibility.Meetings.Meetings
         export interface Meetings {
-            canBookFakeMeeting?: boolean;
-            meetingSlots?: OVH.connectivity.eligibility.MeetingSlot[];
+            canBookFakeMeeting: boolean;
+            meetingSlots: OVH.connectivity.eligibility.MeetingSlot[];
         }
         //connectivity.eligibility.Message
         // fullName: connectivity.eligibility.Message.Message
         export interface Message {
             availabilityDate?: string;
-            code?: OVH.connectivity.eligibility.MessageCodeEnum;
-            message?: string;
+            code: OVH.connectivity.eligibility.MessageCodeEnum;
+            message: string;
         }
         //connectivity.eligibility.MessageCodeEnum
         export type MessageCodeEnum = "2006" | "2011" | "2102" | "2103" | "2104" | "2105" | "3009" | "3011" | "3012" | "3013" | "3014" | "3031" | "3040" | "3041" | "3043" | "3044" | "3045" | "3046" | "3047" | "3048" | "3049" | "ATTENUATION_LIMIT" | "COMPATIBILITY_CHECK" | "COPPER_NOT_AVAILABLE" | "COPPER_NOT_YET_AVAILABLE" | "DELAY_30" | "DELAY_7" | "EXTERNAL_WS_UNREACHABLE" | "FIBER_NOT_AVAILABLE" | "FIBER_NOT_DEPLOYED_IN_BUILDING" | "FIBER_NOT_YET_AVAILABLE" | "FIBER_NOT_YET_DEPLOYED" | "INCOMPATIBLE_LOCAL_LOOP" | "NETWORK_SATURATED" | "OTP_NOT_CONNECTABLE" | "OTP_NOT_MARKETABLE" | "PAIRS_SATURATION" | "PRODUCT_NOT_AVAILABLE" | "PRODUCT_NOT_YET_AVAILABLE" | "TOO_MUCH_ATTENUATION" | "UNCERTAIN_DATA"
         //connectivity.eligibility.Offer
         // fullName: connectivity.eligibility.Offer.Offer
         export interface Offer {
-            eligibility?: OVH.connectivity.eligibility.OfferEligibility;
-            product?: OVH.connectivity.eligibility.OfferProduct;
+            eligibility: OVH.connectivity.eligibility.OfferEligibility;
+            product: OVH.connectivity.eligibility.OfferProduct;
         }
         //connectivity.eligibility.OfferEligibility
         // fullName: connectivity.eligibility.OfferEligibility.OfferEligibility
         export interface OfferEligibility {
-            activationTypes?: OVH.connectivity.eligibility.ActivationTypeEnum[];
-            eligible?: boolean;
+            activationTypes: OVH.connectivity.eligibility.ActivationTypeEnum[];
+            eligible: boolean;
             estimatedDownloadRate?: number;
             estimatedUploadRate?: number;
-            reasons?: OVH.connectivity.eligibility.Message[];
-            underConditions?: OVH.connectivity.eligibility.Message[];
+            reasons: OVH.connectivity.eligibility.Message[];
+            underConditions: OVH.connectivity.eligibility.Message[];
         }
         //connectivity.eligibility.OfferProduct
         // fullName: connectivity.eligibility.OfferProduct.OfferProduct
         export interface OfferProduct {
-            code?: string;
-            downloadRate?: number;
-            grt?: string[];
-            guaranteed?: boolean;
-            name?: string;
+            code: string;
+            downloadRate: number;
+            grt: string[];
+            guaranteed: boolean;
+            name: string;
             pairs?: number;
-            provider?: OVH.connectivity.eligibility.OfferProductProviderEnum;
-            type?: OVH.connectivity.eligibility.OfferProductTypeEnum;
+            provider: OVH.connectivity.eligibility.OfferProductProviderEnum;
+            type: OVH.connectivity.eligibility.OfferProductTypeEnum;
             unbundlingType?: OVH.connectivity.eligibility.OfferProductUnbundlingTypeEnum;
-            uploadRate?: number;
+            uploadRate: number;
         }
         //connectivity.eligibility.OfferProductProviderEnum
         export type OfferProductProviderEnum = "AXIONE" | "KOSC" | "ORANGE" | "SFR"
@@ -158,30 +158,30 @@ export namespace connectivity {
         //connectivity.eligibility.Portability
         // fullName: connectivity.eligibility.Portability.Portability
         export interface Portability {
-            eligibility?: OVH.connectivity.eligibility.PortabilityEligibility;
+            eligibility: OVH.connectivity.eligibility.PortabilityEligibility;
             quarantineEndDate?: string;
             type?: OVH.connectivity.eligibility.PortabilityTypeEnum;
         }
         //connectivity.eligibility.PortabilityEligibility
         // fullName: connectivity.eligibility.PortabilityEligibility.PortabilityEligibility
         export interface PortabilityEligibility {
-            eligible?: boolean;
-            reasons?: OVH.connectivity.eligibility.Message[];
-            underConditions?: OVH.connectivity.eligibility.Message[];
+            eligible: boolean;
+            reasons: OVH.connectivity.eligibility.Message[];
+            underConditions: OVH.connectivity.eligibility.Message[];
         }
         //connectivity.eligibility.PortabilityTypeEnum
         export type PortabilityTypeEnum = "portin" | "portinback" | "portout" | "subsequent" | "subsquentportin"
         //connectivity.eligibility.SectionLength
         // fullName: connectivity.eligibility.SectionLength.SectionLength
         export interface SectionLength {
-            diameter?: number;
-            length?: number;
+            diameter: number;
+            length: number;
         }
         //connectivity.eligibility.Street
         // fullName: connectivity.eligibility.Street.Street
         export interface Street {
-            streetCode?: string;
-            streetName?: string;
+            streetCode: string;
+            streetName: string;
         }
     }
     export namespace monitoring {
@@ -189,13 +189,13 @@ export namespace connectivity {
         // fullName: connectivity.monitoring.GenericIncident.GenericIncident
         export interface GenericIncident {
             comment?: string;
-            creationDate?: string;
-            departments?: string[];
+            creationDate: string;
+            departments: string[];
             endDate?: string;
-            id?: number;
-            nra?: string[];
-            operators?: OVH.connectivity.OperatorEnum[];
-            status?: OVH.connectivity.monitoring.GenericIncidentStatusEnum;
+            id: number;
+            nra: string[];
+            operators: OVH.connectivity.OperatorEnum[];
+            status: OVH.connectivity.monitoring.GenericIncidentStatusEnum;
             taskId?: number;
         }
         //connectivity.monitoring.GenericIncidentStatusEnum
@@ -208,14 +208,14 @@ export namespace xdsl {
     export interface AsyncTask<T> {
         error?: string;
         result?: T;
-        status?: OVH.xdsl.AsyncTaskStatusEnum;
+        status: OVH.xdsl.AsyncTaskStatusEnum;
     }
     //xdsl.AsyncTaskArray
     // fullName: xdsl.AsyncTaskArray.AsyncTaskArray
     export interface AsyncTaskArray<T> {
         error?: string;
         result?: T[];
-        status?: OVH.xdsl.AsyncTaskStatusEnum;
+        status: OVH.xdsl.AsyncTaskStatusEnum;
     }
     //xdsl.AsyncTaskStatusEnum
     export type AsyncTaskStatusEnum = "error" | "ok" | "pending"

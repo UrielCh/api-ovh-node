@@ -5,8 +5,8 @@ export namespace secret {
     //secret.Secret
     // fullName: secret.Secret.Secret
     export interface Secret {
-        expiration?: string;
-        secret?: string;
+        expiration: string;
+        secret: string;
     }
 }
 // Apis harmony

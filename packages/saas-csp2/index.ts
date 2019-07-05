@@ -10,77 +10,77 @@ export namespace saas {
         //saas.csp2.BillingStatistics
         // fullName: saas.csp2.BillingStatistics.BillingStatistics
         export interface BillingStatistics {
-            endDate?: string;
-            lines?: OVH.saas.csp2.BillingStatisticsLine[];
-            startDate?: string;
+            endDate: string;
+            lines: OVH.saas.csp2.BillingStatisticsLine[];
+            startDate: string;
         }
         //saas.csp2.BillingStatisticsLine
         // fullName: saas.csp2.BillingStatisticsLine.BillingStatisticsLine
         export interface BillingStatisticsLine {
-            licenceId?: number;
-            licenceName?: string;
-            peakCount?: number;
+            licenceId: number;
+            licenceName: string;
+            peakCount: number;
         }
         //saas.csp2.LicenseTypeEnum
         export type LicenseTypeEnum = "ADDON" | "NON-SPECIFIC"
         //saas.csp2.OfficeLicence
         // fullName: saas.csp2.OfficeLicence.OfficeLicence
         export interface OfficeLicence {
-            id?: number;
-            licenceType?: OVH.saas.csp2.LicenseTypeEnum;
+            id: number;
+            licenceType: OVH.saas.csp2.LicenseTypeEnum;
             limit?: number;
-            name?: string;
+            name: string;
         }
         //saas.csp2.OfficeSubscription
         // fullName: saas.csp2.OfficeSubscription.OfficeSubscription
         export interface OfficeSubscription {
-            creationDate?: string;
-            id?: number;
+            creationDate: string;
+            id: number;
             lastUpdate?: string;
-            licenseId?: number;
-            quantity?: number;
-            status?: string;
-            taskPendingId?: number;
+            licenseId: number;
+            quantity: number;
+            status: string;
+            taskPendingId: number;
         }
         //saas.csp2.OfficeTask
         // fullName: saas.csp2.OfficeTask.OfficeTask
         export interface OfficeTask {
             finishDate?: string;
-            function?: string;
-            id?: number;
-            status?: OVH.saas.csp2.TaskStatusEnum;
-            todoDate?: string;
+            function: string;
+            id: number;
+            status: OVH.saas.csp2.TaskStatusEnum;
+            todoDate: string;
         }
         //saas.csp2.OfficeTenant
         // fullName: saas.csp2.OfficeTenant.OfficeTenant
         export interface OfficeTenant {
-            address?: string;
-            city?: string;
-            creationDate?: string;
-            displayName?: string;
-            email?: string;
-            firstName?: string;
-            lastName?: string;
-            phone?: string;
-            serviceName?: string;
-            status?: OVH.saas.csp2.ServiceStateEnum;
-            zipCode?: string;
+            address: string;
+            city: string;
+            creationDate: string;
+            displayName: string;
+            email: string;
+            firstName: string;
+            lastName: string;
+            phone: string;
+            serviceName: string;
+            status: OVH.saas.csp2.ServiceStateEnum;
+            zipCode: string;
         }
         //saas.csp2.ServiceStateEnum
         export type ServiceStateEnum = "creating" | "inMaintenance" | "ok" | "suspended"
         //saas.csp2.Statistics
         // fullName: saas.csp2.Statistics.Statistics
         export interface Statistics {
-            date?: string;
-            lines?: OVH.saas.csp2.StatisticsLine[];
+            date: string;
+            lines: OVH.saas.csp2.StatisticsLine[];
         }
         //saas.csp2.StatisticsLine
         // fullName: saas.csp2.StatisticsLine.StatisticsLine
         export interface StatisticsLine {
-            endOfDayCount?: number;
-            licenceId?: number;
-            licenceName?: string;
-            peakCount?: number;
+            endOfDayCount: number;
+            licenceId: number;
+            licenceName: string;
+            peakCount: number;
         }
         //saas.csp2.SupportedServiceEnum
         export type SupportedServiceEnum = "Email" | "Intune" | "OfficeCommunicationsOnline"
@@ -92,9 +92,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -107,19 +107,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

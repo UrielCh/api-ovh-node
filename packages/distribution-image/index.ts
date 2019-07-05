@@ -5,23 +5,23 @@ export namespace distribution {
     //distribution.image
     // fullName: distribution.image.image
     export interface image {
-        name?: string;
-        packages?: OVH.distribution.image.pakage[];
-        properties?: OVH.distribution.image.properties;
-        service?: OVH.distribution.image.service;
+        name: string;
+        packages: OVH.distribution.image.pakage[];
+        properties: OVH.distribution.image.properties;
+        service: OVH.distribution.image.service;
     }
     export namespace image {
         //distribution.image.package
         // fullName: distribution.image.package.pakage
         export interface pakage {
-            alias?: string;
-            name?: string;
-            version?: string;
+            alias: string;
+            name: string;
+            version: string;
         }
         //distribution.image.properties
         // fullName: distribution.image.properties.properties
         export interface properties {
-            category?: OVH.distribution.image.properties.category;
+            category: OVH.distribution.image.properties.category;
         }
         export namespace properties {
             //distribution.image.properties.category

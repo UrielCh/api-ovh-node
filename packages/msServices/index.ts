@@ -10,43 +10,43 @@ export namespace msServices {
         displayName?: string;
         firstName?: string;
         guid?: string;
-        id?: number;
+        id: number;
         initials?: string;
         lastLogoffDate?: string;
         lastLogonDate?: string;
         lastName?: string;
         lastUpdateDate?: string;
         passwordLastUpdate?: string;
-        state?: OVH.msServices.ObjectStateEnum;
-        taskPendingId?: number;
-        userPrincipalName?: string;
+        state: OVH.msServices.ObjectStateEnum;
+        taskPendingId: number;
+        userPrincipalName: string;
     }
     //msServices.ActiveDirectoryOrganizationalUnit
     // fullName: msServices.ActiveDirectoryOrganizationalUnit.ActiveDirectoryOrganizationalUnit
     export interface ActiveDirectoryOrganizationalUnit {
-        complexityEnabled?: boolean;
-        lockoutDuration?: number;
-        lockoutObservationWindow?: number;
+        complexityEnabled: boolean;
+        lockoutDuration: number;
+        lockoutObservationWindow: number;
         lockoutThreshold?: number;
         maxPasswordAge?: number;
         minPasswordAge?: number;
         minPasswordLength?: number;
-        name?: string;
+        name: string;
         officeTenantServiceName?: string;
-        state?: OVH.msServices.ServiceStateEnum;
-        taskPendingId?: number;
+        state: OVH.msServices.ServiceStateEnum;
+        taskPendingId: number;
     }
     //msServices.ActiveDirectorySyncClientUrl
     // fullName: msServices.ActiveDirectorySyncClientUrl.ActiveDirectorySyncClientUrl
     export interface ActiveDirectorySyncClientUrl {
-        expiration?: string;
-        url?: string;
+        expiration: string;
+        url: string;
     }
     //msServices.ExchangeInformation
     // fullName: msServices.ExchangeInformation.ExchangeInformation
     export interface ExchangeInformation {
-        accountLicense?: OVH.msServices.ExchangeLicenceEnum;
-        configured?: boolean;
+        accountLicense: OVH.msServices.ExchangeLicenceEnum;
+        configured: boolean;
         creationDate?: string;
         currentUsage?: number;
         deleteAtExpiration?: boolean;
@@ -54,22 +54,22 @@ export namespace msServices {
         exchangeGuid?: string;
         expirationDate?: string;
         expirationOutlookDate?: string;
-        hiddenFromGAL?: boolean;
-        id?: number;
-        litigation?: boolean;
+        hiddenFromGAL: boolean;
+        id: number;
+        litigation: boolean;
         litigationPeriod?: number;
         mailingFilter?: OVH.msServices.MailingFilterEnum[];
-        outlookLicense?: boolean;
-        owaLimited?: boolean;
-        primaryEmailAddress?: string;
-        quota?: number;
+        outlookLicense: boolean;
+        owaLimited: boolean;
+        primaryEmailAddress: string;
+        quota: number;
         renewOutlookPeriod?: OVH.msServices.RenewPeriodEnum;
         renewPeriod?: OVH.msServices.RenewPeriodEnum;
-        spamAndVirusConfiguration?: OVH.msServices.SpamAndVirusConfiguration;
-        spamDetected?: boolean;
+        spamAndVirusConfiguration: OVH.msServices.SpamAndVirusConfiguration;
+        spamDetected: boolean;
         spamTicketNumber?: number;
-        state?: OVH.msServices.ObjectStateEnum;
-        taskPendingId?: number;
+        state: OVH.msServices.ObjectStateEnum;
+        taskPendingId: number;
     }
     //msServices.ExchangeLicenceEnum
     export type ExchangeLicenceEnum = "basic" | "enterprise" | "standard"
@@ -77,15 +77,15 @@ export namespace msServices {
     // fullName: msServices.ExchangeService.ExchangeService
     export interface ExchangeService {
         displayName?: string;
-        domain?: string;
+        domain: string;
         hostname?: string;
-        maxReceiveSize?: number;
-        maxSendSize?: number;
-        offer?: OVH.msServices.ServiceOfferEnum;
-        spamAndVirusConfiguration?: OVH.msServices.SpamAndVirusConfiguration;
+        maxReceiveSize: number;
+        maxSendSize: number;
+        offer: OVH.msServices.ServiceOfferEnum;
+        spamAndVirusConfiguration: OVH.msServices.SpamAndVirusConfiguration;
         sslExpirationDate?: string;
-        state?: OVH.msServices.ServiceStateEnum;
-        taskPendingId?: number;
+        state: OVH.msServices.ServiceStateEnum;
+        taskPendingId: number;
     }
     //msServices.LicensePeriodEnum
     export type LicensePeriodEnum = "lastMonth" | "lastQuarter" | "lastWeek" | "lastYear"
@@ -94,9 +94,9 @@ export namespace msServices {
     //msServices.MfaInformation
     // fullName: msServices.MfaInformation.MfaInformation
     export interface MfaInformation {
-        activated?: boolean;
-        state?: OVH.msServices.ObjectStateEnum;
-        taskPendingId?: number;
+        activated: boolean;
+        state: OVH.msServices.ObjectStateEnum;
+        taskPendingId: number;
     }
     //msServices.ObjectStateEnum
     export type ObjectStateEnum = "creating" | "deleting" | "modifying" | "ok" | "reopening" | "suspended" | "suspending"
@@ -111,29 +111,29 @@ export namespace msServices {
     //msServices.SharepointAccountLicense
     // fullName: msServices.SharepointAccountLicense.SharepointAccountLicense
     export interface SharepointAccountLicense {
-        license?: OVH.msServices.SharepointLicenseEnum;
-        licenseQuantity?: number;
+        license: OVH.msServices.SharepointLicenseEnum;
+        licenseQuantity: number;
     }
     //msServices.SharepointDailyLicense
     // fullName: msServices.SharepointDailyLicense.SharepointDailyLicense
     export interface SharepointDailyLicense {
-        accountLicense?: OVH.msServices.SharepointAccountLicense[];
-        date?: string;
+        accountLicense: OVH.msServices.SharepointAccountLicense[];
+        date: string;
     }
     //msServices.SharepointInformation
     // fullName: msServices.SharepointInformation.SharepointInformation
     export interface SharepointInformation {
-        accessRights?: OVH.msServices.SharepointAccountAccessRightsEnum;
-        activeDirectoryAccountId?: number;
-        configured?: boolean;
+        accessRights: OVH.msServices.SharepointAccountAccessRightsEnum;
+        activeDirectoryAccountId: number;
+        configured: boolean;
         currentUsage?: number;
         deleteAtExpiration?: boolean;
-        id?: number;
-        license?: OVH.msServices.SharepointLicenseEnum;
-        officeLicense?: boolean;
-        quota?: number;
-        state?: OVH.msServices.ObjectStateEnum;
-        taskPendingId?: number;
+        id: number;
+        license: OVH.msServices.SharepointLicenseEnum;
+        officeLicense: boolean;
+        quota: number;
+        state: OVH.msServices.ObjectStateEnum;
+        taskPendingId: number;
     }
     //msServices.SharepointLicenseEnum
     export type SharepointLicenseEnum = "foundation" | "standard"
@@ -142,68 +142,68 @@ export namespace msServices {
     export interface SharepointService {
         currentUsage?: number;
         displayName?: string;
-        domain?: string;
-        farmUrl?: string;
-        offer?: OVH.msServices.SharepointServiceOfferEnum;
-        quota?: number;
-        state?: OVH.msServices.ServiceStateEnum;
-        taskPendingId?: number;
+        domain: string;
+        farmUrl: string;
+        offer: OVH.msServices.SharepointServiceOfferEnum;
+        quota: number;
+        state: OVH.msServices.ServiceStateEnum;
+        taskPendingId: number;
         url?: string;
     }
     //msServices.SharepointServiceInfo
     // fullName: msServices.SharepointServiceInfo.SharepointServiceInfo
     export interface SharepointServiceInfo {
-        domain?: string;
+        domain: string;
     }
     //msServices.SharepointServiceOfferEnum
     export type SharepointServiceOfferEnum = "hosted" | "provider"
     //msServices.SpamAndVirusConfiguration
     // fullName: msServices.SpamAndVirusConfiguration.SpamAndVirusConfiguration
     export interface SpamAndVirusConfiguration {
-        checkDKIM?: boolean;
-        checkSPF?: boolean;
-        deleteSpam?: boolean;
-        deleteVirus?: boolean;
-        putInJunk?: boolean;
-        tagSpam?: boolean;
-        tagVirus?: boolean;
+        checkDKIM: boolean;
+        checkSPF: boolean;
+        deleteSpam: boolean;
+        deleteVirus: boolean;
+        putInJunk: boolean;
+        tagSpam: boolean;
+        tagVirus: boolean;
     }
     //msServices.SyncAccountLicense
     // fullName: msServices.SyncAccountLicense.SyncAccountLicense
     export interface SyncAccountLicense {
-        license?: OVH.msServices.SyncLicenseEnum;
-        licenseQuantity?: number;
+        license: OVH.msServices.SyncLicenseEnum;
+        licenseQuantity: number;
     }
     //msServices.SyncDailyLicense
     // fullName: msServices.SyncDailyLicense.SyncDailyLicense
     export interface SyncDailyLicense {
-        accountLicense?: OVH.msServices.SyncAccountLicense[];
-        date?: string;
+        accountLicense: OVH.msServices.SyncAccountLicense[];
+        date: string;
     }
     //msServices.SyncInformation
     // fullName: msServices.SyncInformation.SyncInformation
     export interface SyncInformation {
-        configured?: boolean;
-        license?: OVH.msServices.SyncLicenseEnum;
-        state?: OVH.msServices.ObjectStateEnum;
-        taskPendingId?: number;
+        configured: boolean;
+        license: OVH.msServices.SyncLicenseEnum;
+        state: OVH.msServices.ObjectStateEnum;
+        taskPendingId: number;
     }
     //msServices.SyncLicenseEnum
     export type SyncLicenseEnum = "standard" | "standardFree"
     //msServices.SyncService
     // fullName: msServices.SyncService.SyncService
     export interface SyncService {
-        state?: OVH.msServices.ServiceStateEnum;
-        taskPendingId?: number;
+        state: OVH.msServices.ServiceStateEnum;
+        taskPendingId: number;
     }
     //msServices.Task
     // fullName: msServices.Task.Task
     export interface Task {
         finishDate?: string;
-        function?: OVH.msServices.TaskFunctionEnum;
-        id?: number;
-        status?: OVH.msServices.TaskStatusEnum;
-        todoDate?: string;
+        function: OVH.msServices.TaskFunctionEnum;
+        id: number;
+        status: OVH.msServices.TaskStatusEnum;
+        todoDate: string;
     }
     //msServices.TaskFunctionEnum
     export type TaskFunctionEnum = "activateADSync" | "activateSharepoint" | "addADAccount" | "addADOU" | "addADSyncAccount" | "addADUPNSuffix" | "changeADPassword" | "changeADSyncPassword" | "deactivateADSync" | "delADOU" | "deleteADAccount" | "deleteADSyncAccount" | "deleteADUPNSuffix" | "disableADAccountMfa" | "disableADAccountMfaTemporary" | "enableADAccountMfa" | "enableADSyncAccount" | "generateADSyncClientUrl" | "resetADAccountMfa" | "setADAccount" | "setPasswordPolicy"
@@ -215,37 +215,37 @@ export namespace msServices {
     // fullName: msServices.exchangeTask.exchangeTask
     export interface exchangeTask {
         finishDate?: string;
-        function?: string;
-        id?: number;
-        status?: OVH.msServices.TaskStatusEnum;
-        todoDate?: string;
+        function: string;
+        id: number;
+        status: OVH.msServices.TaskStatusEnum;
+        todoDate: string;
     }
     //msServices.sharepointTask
     // fullName: msServices.sharepointTask.sharepointTask
     export interface sharepointTask {
         finishDate?: string;
-        function?: string;
-        id?: number;
-        status?: OVH.msServices.TaskStatusEnum;
-        todoDate?: string;
+        function: string;
+        id: number;
+        status: OVH.msServices.TaskStatusEnum;
+        todoDate: string;
     }
     //msServices.upnSuffix
     // fullName: msServices.upnSuffix.upnSuffix
     export interface upnSuffix {
         cnameToCheck?: string;
-        ownershipValidated?: boolean;
-        state?: OVH.msServices.UPNStateEnum;
-        suffix?: string;
-        taskPendingId?: number;
+        ownershipValidated: boolean;
+        state: OVH.msServices.UPNStateEnum;
+        suffix: string;
+        taskPendingId: number;
     }
 }
 export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -258,19 +258,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

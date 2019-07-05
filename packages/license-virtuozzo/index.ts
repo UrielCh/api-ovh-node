@@ -9,8 +9,8 @@ export namespace license {
     //license.ChangeIpStatus
     // fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message?: OVH.license.ChangeIpMessageEnum;
-        success?: boolean;
+        message: OVH.license.ChangeIpMessageEnum;
+        success: boolean;
     }
     //license.LicenseTypeEnum
     export type LicenseTypeEnum = "dedicated" | "dedicatedCloud" | "dedicatedFailover" | "failover" | "vm" | "vps" | "vps_ceph" | "vps_classic" | "vps_cloud" | "vps_cloud_2016" | "vps_ssd"
@@ -18,9 +18,9 @@ export namespace license {
     // fullName: license.Option.Option
     export interface Option {
         amount?: string;
-        canBeDeleted?: boolean;
-        expirationDate?: string;
-        label?: OVH.license.OptionLabel;
+        canBeDeleted: boolean;
+        expirationDate: string;
+        label: OVH.license.OptionLabel;
         version?: string;
     }
     //license.OptionLabel
@@ -28,9 +28,9 @@ export namespace license {
     //license.OrderableVirtuozzoCompatibilityInfos
     // fullName: license.OrderableVirtuozzoCompatibilityInfos.OrderableVirtuozzoCompatibilityInfos
     export interface OrderableVirtuozzoCompatibilityInfos {
-        compliantContainers?: OVH.license.OrderableVirtuozzoContainerNumberEnum[];
-        potentialProblems?: OVH.license.PotentialProblemVirtuozzoEnum[];
-        version?: OVH.license.OrderableVirtuozzoVersionEnum;
+        compliantContainers: OVH.license.OrderableVirtuozzoContainerNumberEnum[];
+        potentialProblems: OVH.license.PotentialProblemVirtuozzoEnum[];
+        version: OVH.license.OrderableVirtuozzoVersionEnum;
     }
     //license.OrderableVirtuozzoContainerNumberEnum
     export type OrderableVirtuozzoContainerNumberEnum = "2_CPU_001_CONTAINER" | "2_CPU_003_CONTAINER" | "2_CPU_010_CONTAINER" | "2_CPU_030_CONTAINER" | "2_CPU_060_CONTAINER" | "2_CPU_100_CONTAINER"
@@ -43,13 +43,13 @@ export namespace license {
     //license.Task
     // fullName: license.Task.Task
     export interface Task {
-        action?: OVH.license.ActionType;
+        action: OVH.license.ActionType;
         doneDate?: string;
-        lastUpdate?: string;
-        name?: string;
-        status?: OVH.license.TaskStateEnum;
-        taskId?: number;
-        todoDate?: string;
+        lastUpdate: string;
+        name: string;
+        status: OVH.license.TaskStateEnum;
+        taskId: number;
+        todoDate: string;
     }
     //license.TaskStateEnum
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
@@ -58,8 +58,8 @@ export namespace license {
     //license.VirtuozzoOrderConfiguration
     // fullName: license.VirtuozzoOrderConfiguration.VirtuozzoOrderConfiguration
     export interface VirtuozzoOrderConfiguration {
-        orderableVersions?: OVH.license.OrderableVirtuozzoCompatibilityInfos[];
-        serviceType?: OVH.license.LicenseTypeEnum;
+        orderableVersions: OVH.license.OrderableVirtuozzoCompatibilityInfos[];
+        serviceType: OVH.license.LicenseTypeEnum;
     }
     //license.VirtuozzoVersionEnum
     export type VirtuozzoVersionEnum = "VIRTUOZZO_CONTAINERS_4_FOR_LINUX" | "VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS"
@@ -67,16 +67,16 @@ export namespace license {
         //license.virtuozzo.Virtuozzo
         // fullName: license.virtuozzo.Virtuozzo.Virtuozzo
         export interface Virtuozzo {
-            containerNumber?: OVH.license.VirtuozzoContainerNumberEnum;
-            creation?: string;
-            deleteAtExpiration?: boolean;
-            domain?: string;
+            containerNumber: OVH.license.VirtuozzoContainerNumberEnum;
+            creation: string;
+            deleteAtExpiration: boolean;
+            domain: string;
             informationKey?: string;
-            ip?: string;
-            licenseId?: string;
+            ip: string;
+            licenseId: string;
             productKey?: string;
-            status?: OVH.license.StateEnum;
-            version?: OVH.license.VirtuozzoVersionEnum;
+            status: OVH.license.StateEnum;
+            version: OVH.license.VirtuozzoVersionEnum;
         }
     }
 }
@@ -84,9 +84,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -103,19 +103,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

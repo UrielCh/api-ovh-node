@@ -7,58 +7,58 @@ export namespace email {
         // fullName: email.exchange.Account.Account
         export interface Account {
             SAMAccountName?: string;
-            accountLicense?: OVH.email.exchange.OvhLicenceEnum;
+            accountLicense: OVH.email.exchange.OvhLicenceEnum;
             company?: string;
-            configured?: boolean;
+            configured: boolean;
             creationDate?: string;
             currentUsage?: number;
             deleteAtExpiration?: boolean;
             deleteOutlookAtExpiration?: boolean;
             displayName?: string;
-            domain?: string;
+            domain: string;
             exchangeGuid?: string;
             expirationDate?: string;
             expirationOutlookDate?: string;
             firstName?: string;
             guid?: string;
-            hiddenFromGAL?: boolean;
-            id?: number;
+            hiddenFromGAL: boolean;
+            id: number;
             initial?: string;
             lastLogoffDate?: string;
             lastLogonDate?: string;
             lastName?: string;
             lastUpdateDate?: string;
-            litigation?: boolean;
+            litigation: boolean;
             litigationPeriod?: number;
-            login?: string;
+            login: string;
             mailingFilter?: OVH.email.exchange.MailingFilterEnum[];
-            outlookLicense?: boolean;
-            owaLimited?: boolean;
+            outlookLicense: boolean;
+            owaLimited: boolean;
             passwordLastUpdate?: string;
-            primaryEmailAddress?: string;
-            quota?: number;
+            primaryEmailAddress: string;
+            quota: number;
             renewOutlookPeriod?: OVH.email.exchange.renewPeriodEnum;
             renewPeriod?: OVH.email.exchange.renewPeriodEnum;
-            spamAndVirusConfiguration?: OVH.email.exchange.spamAndVirusConfiguration;
-            spamDetected?: boolean;
+            spamAndVirusConfiguration: OVH.email.exchange.spamAndVirusConfiguration;
+            spamDetected: boolean;
             spamTicketNumber?: number;
-            state?: OVH.email.exchange.ObjectStateEnum;
-            taskPendingId?: number;
+            state: OVH.email.exchange.ObjectStateEnum;
+            taskPendingId: number;
         }
         //email.exchange.AccountLicense
         // fullName: email.exchange.AccountLicense.AccountLicense
         export interface AccountLicense {
-            license?: OVH.email.exchange.OvhLicenceEnum;
-            licenseQuantity?: number;
+            license: OVH.email.exchange.OvhLicenceEnum;
+            licenseQuantity: number;
         }
         //email.exchange.ActiveSyncPolicyEnum
         export type ActiveSyncPolicyEnum = "allow" | "block" | "quarantine"
         //email.exchange.DailyLicense
         // fullName: email.exchange.DailyLicense.DailyLicense
         export interface DailyLicense {
-            accountLicense?: OVH.email.exchange.AccountLicense[];
-            date?: string;
-            outlookQuantity?: number;
+            accountLicense: OVH.email.exchange.AccountLicense[];
+            date: string;
+            outlookQuantity: number;
         }
         //email.exchange.DeviceActiveSyncStateEnum
         export type DeviceActiveSyncStateEnum = "allowed" | "blocked" | "deviceDiscovery" | "quarantined"
@@ -68,59 +68,59 @@ export namespace email {
         // fullName: email.exchange.Domain.Domain
         export interface Domain {
             cnameToCheck?: string;
-            domainAliases?: string[];
-            domainValidated?: boolean;
-            isAliasDomain?: boolean;
+            domainAliases: string[];
+            domainValidated: boolean;
+            isAliasDomain: boolean;
             main?: boolean;
-            mxIsValid?: boolean;
+            mxIsValid: boolean;
             mxRecord?: string[];
             mxRelay?: string;
-            name?: string;
+            name: string;
             organization2010?: string;
-            srvIsValid?: boolean;
+            srvIsValid: boolean;
             srvRecord?: string[];
-            state?: OVH.email.exchange.ObjectStateEnum;
-            taskPendingId?: number;
-            type?: OVH.email.exchange.DomainTypeEnum;
+            state: OVH.email.exchange.ObjectStateEnum;
+            taskPendingId: number;
+            type: OVH.email.exchange.DomainTypeEnum;
         }
         //email.exchange.DomainTypeEnum
         export type DomainTypeEnum = "authoritative" | "nonAuthoritative"
         //email.exchange.ExchangeService
         // fullName: email.exchange.ExchangeService.ExchangeService
         export interface ExchangeService {
-            complexityEnabled?: boolean;
+            complexityEnabled: boolean;
             displayName?: string;
-            domain?: string;
+            domain: string;
             hostname?: string;
             lastUpdateDate?: string;
-            lockoutDuration?: number;
-            lockoutObservationWindow?: number;
+            lockoutDuration: number;
+            lockoutObservationWindow: number;
             lockoutThreshold?: number;
             maxPasswordAge?: number;
-            maxReceiveSize?: number;
-            maxSendSize?: number;
+            maxReceiveSize: number;
+            maxSendSize: number;
             minPasswordAge?: number;
             minPasswordLength?: number;
-            offer?: OVH.email.exchange.ServiceOfferEnum;
+            offer: OVH.email.exchange.ServiceOfferEnum;
             passwordHistoryCount?: number;
-            spamAndVirusConfiguration?: OVH.email.exchange.spamAndVirusConfiguration;
+            spamAndVirusConfiguration: OVH.email.exchange.spamAndVirusConfiguration;
             sslExpirationDate?: string;
-            state?: OVH.email.exchange.ServiceStateEnum;
-            taskPendingId?: number;
+            state: OVH.email.exchange.ServiceStateEnum;
+            taskPendingId: number;
             webUrl?: string;
         }
         //email.exchange.Export
         // fullName: email.exchange.Export.Export
         export interface Export {
-            creationDate?: string;
-            percentComplete?: number;
-            taskPendingId?: number;
+            creationDate: string;
+            percentComplete: number;
+            taskPendingId: number;
         }
         //email.exchange.ExportUrl
         // fullName: email.exchange.ExportUrl.ExportUrl
         export interface ExportUrl {
-            expiration?: string;
-            url?: string;
+            expiration: string;
+            url: string;
         }
         //email.exchange.LanguageEnum
         export type LanguageEnum = "ar" | "bg" | "cz" | "da" | "de" | "el" | "en" | "es" | "et" | "fi" | "fr" | "he" | "hi" | "hr" | "hu" | "id" | "in" | "it" | "ja" | "ko" | "kz" | "lt" | "lv" | "ms" | "nb" | "nl" | "pl" | "pt" | "pt-BR" | "ro" | "rs" | "ru" | "sk" | "sl" | "sv" | "th" | "tr" | "uk" | "vi" | "zh-CN"
@@ -135,27 +135,27 @@ export namespace email {
         //email.exchange.OutlookUrl
         // fullName: email.exchange.OutlookUrl.OutlookUrl
         export interface OutlookUrl {
-            expiration?: string;
-            serial?: string;
-            url?: string;
+            expiration: string;
+            serial: string;
+            url: string;
         }
         //email.exchange.OutlookVersionEnum
         export type OutlookVersionEnum = "mac_x86_2011" | "mac_x86_2016" | "windows_x64_2013" | "windows_x64_2016" | "windows_x86_2013" | "windows_x86_2016"
         //email.exchange.OutlookVersions
         // fullName: email.exchange.OutlookVersions.OutlookVersions
         export interface OutlookVersions {
-            outlookLanguage?: OVH.email.exchange.LanguageEnum;
-            outlookVersion?: OVH.email.exchange.OutlookVersionEnum;
-            status?: boolean;
+            outlookLanguage: OVH.email.exchange.LanguageEnum;
+            outlookVersion: OVH.email.exchange.OutlookVersionEnum;
+            status: boolean;
         }
         //email.exchange.OvhLicenceEnum
         export type OvhLicenceEnum = "basic" | "enterprise" | "standard"
         //email.exchange.PublicFolderQuota
         // fullName: email.exchange.PublicFolderQuota.PublicFolderQuota
         export interface PublicFolderQuota {
-            quotaLimit?: number;
-            quotaReserved?: number;
-            quotaUsed?: number;
+            quotaLimit: number;
+            quotaReserved: number;
+            quotaUsed: number;
         }
         //email.exchange.PublicFolderRightTypeEnum
         export type PublicFolderRightTypeEnum = "editor" | "none" | "reviewer"
@@ -166,19 +166,19 @@ export namespace email {
         //email.exchange.Server
         // fullName: email.exchange.Server.Server
         export interface Server {
-            commercialVersion?: OVH.email.exchange.exchangeCommercialVersionEnum;
+            commercialVersion: OVH.email.exchange.exchangeCommercialVersionEnum;
             currentDiskUsage?: number;
             diskSize?: number;
-            individual2010?: boolean;
-            ip?: string;
+            individual2010: boolean;
+            ip: string;
             ipV6?: string;
-            isAValid?: boolean;
-            isAaaaValid?: boolean;
-            isPtrV6Valid?: boolean;
-            isPtrValid?: boolean;
-            owaMfa?: boolean;
-            state?: OVH.email.exchange.ServerStateEnum;
-            taskPendingId?: number;
+            isAValid: boolean;
+            isAaaaValid: boolean;
+            isPtrV6Valid: boolean;
+            isPtrValid: boolean;
+            owaMfa: boolean;
+            state: OVH.email.exchange.ServerStateEnum;
+            taskPendingId: number;
             version?: number;
         }
         //email.exchange.ServerStateEnum
@@ -190,9 +190,9 @@ export namespace email {
         //email.exchange.SharedAccountQuota
         // fullName: email.exchange.SharedAccountQuota.SharedAccountQuota
         export interface SharedAccountQuota {
-            quotaLimit?: number;
-            quotaReserved?: number;
-            quotaUsed?: number;
+            quotaLimit: number;
+            quotaReserved: number;
+            quotaUsed: number;
         }
         //email.exchange.ShowMeetingDetailsEnum
         export type ShowMeetingDetailsEnum = "availabilityOnly" | "limitedDetails" | "reviewer"
@@ -200,10 +200,10 @@ export namespace email {
         // fullName: email.exchange.Task.Task
         export interface Task {
             finishDate?: string;
-            function?: OVH.email.exchange.TaskFunctionEnum;
-            id?: number;
-            status?: OVH.email.exchange.TaskStatusEnum;
-            todoDate?: string;
+            function: OVH.email.exchange.TaskFunctionEnum;
+            id: number;
+            status: OVH.email.exchange.TaskStatusEnum;
+            todoDate: string;
         }
         //email.exchange.TaskFunctionEnum
         export type TaskFunctionEnum = "activateSharepoint" | "addAccount" | "addAccountArchive" | "addActiveSyncMailNotification" | "addAlias" | "addDistributionGroup" | "addDistributionGroupManager" | "addDistributionGroupMember" | "addDistributionGroupSendAs" | "addDistributionGroupSendOnBehalfTo" | "addDomain" | "addDomainDisclaimer" | "addExchangeServiceAuthorizedIp" | "addExportPstRequest" | "addExternalContact" | "addFullAccess" | "addOutlookLicense" | "addPublicFolder" | "addPublicFolderPermission" | "addResourceAccount" | "addResourceDelegate" | "addSendAs" | "addSendOnBehalfTo" | "addSharedAccount" | "addSharedAccountFullAccess" | "addSharedAccountSendAs" | "addSharedAccountSendOnBehalfTo" | "changeHostname" | "changePassword" | "clearDataOnDevice" | "cloneTemplateExchangePrivate" | "configureExchangeCustomer" | "deleteAccount" | "deleteAccountArchive" | "deleteActiveSyncMailNotification" | "deleteAlias" | "deleteDistributionGroup" | "deleteDistributionGroupManager" | "deleteDistributionGroupMember" | "deleteDistributionGroupSendAs" | "deleteDistributionGroupSendOnBehalfTo" | "deleteDomain" | "deleteDomainDisclaimer" | "deleteExchangeService" | "deleteExchangeServiceAuthorizedIp" | "deleteExportPstRequest" | "deleteExternalContact" | "deleteFullAccess" | "deleteOutlookLicense" | "deletePublicFolder" | "deletePublicFolderPermission" | "deleteResourceAccount" | "deleteResourceDelegate" | "deleteSendAs" | "deleteSendOnBehalfTo" | "deleteSharedAccount" | "deleteSharedAccountFullAccess" | "deleteSharedAccountSendAs" | "deleteSharedAccountSendOnBehalfTo" | "destroyPrivateVm" | "diagnoseAccount" | "expandDrive" | "generateOutlookUrl" | "generatePstUrl" | "installExchange" | "installSSL" | "maintenance" | "migrationAccount" | "migrationDisclaimer" | "migrationExternalContact" | "migrationHistory" | "migrationMailingList" | "migrationResourceAccount" | "migrationService" | "reOpenHostedAccount" | "reOpenOutlookLicense" | "reOpenPrivateAccount" | "reOpenPrivateVm" | "setAccount" | "setAccountArchive" | "setAlias" | "setDistributionGroup" | "setDns" | "setDomain" | "setDomainDisclaimer" | "setExchangeAccountProtocol" | "setExchangeServiceDevice" | "setExternalContact" | "setPublicFolder" | "setPublicFolderPermission" | "setResourceAccount" | "setService" | "setSharedAccount" | "suspendAccount" | "suspendExchangeService" | "suspendHostedAccount" | "suspendOutlookLicense" | "suspendPrivateAccount" | "suspendPrivateVm" | "unsuspendAccount" | "unsuspendExchangeService" | "unsuspendHostedAccount" | "updateExchangeServiceDevice" | "upgrade2016"
@@ -216,264 +216,264 @@ export namespace email {
         //email.exchange.disclaimer
         // fullName: email.exchange.disclaimer.disclaimer
         export interface disclaimer {
-            content?: string;
-            creationDate?: string;
-            name?: string;
-            outsideOnly?: boolean;
-            taskPendingId?: number;
+            content: string;
+            creationDate: string;
+            name: string;
+            outsideOnly: boolean;
+            taskPendingId: number;
         }
         //email.exchange.exchangeAccountAlias
         // fullName: email.exchange.exchangeAccountAlias.exchangeAccountAlias
         export interface exchangeAccountAlias {
-            alias?: string;
-            creationDate?: string;
-            taskPendingId?: number;
+            alias: string;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.exchange.exchangeAccountArchive
         // fullName: email.exchange.exchangeAccountArchive.exchangeAccountArchive
         export interface exchangeAccountArchive {
-            creationDate?: string;
+            creationDate: string;
             currentUsage?: number;
             guid?: string;
-            quota?: number;
-            state?: OVH.email.exchange.ObjectStateEnum;
+            quota: number;
+            state: OVH.email.exchange.ObjectStateEnum;
             taskPendingId?: number;
         }
         //email.exchange.exchangeAccountDiagnosis
         // fullName: email.exchange.exchangeAccountDiagnosis.exchangeAccountDiagnosis
         export interface exchangeAccountDiagnosis {
-            canReceiveEmail?: boolean;
-            canSendEmail?: boolean;
-            connectiveOWA?: boolean;
-            isLocked?: boolean;
-            isMxValid?: boolean;
-            isSpammer?: boolean;
-            isSrvValid?: boolean;
-            isSuspended?: boolean;
-            lastCheck?: string;
+            canReceiveEmail: boolean;
+            canSendEmail: boolean;
+            connectiveOWA: boolean;
+            isLocked: boolean;
+            isMxValid: boolean;
+            isSpammer: boolean;
+            isSrvValid: boolean;
+            isSuspended: boolean;
+            lastCheck: string;
         }
         //email.exchange.exchangeAccountFullAccess
         // fullName: email.exchange.exchangeAccountFullAccess.exchangeAccountFullAccess
         export interface exchangeAccountFullAccess {
-            allowedAccountId?: number;
-            creationDate?: string;
-            taskPendingId?: number;
+            allowedAccountId: number;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.exchange.exchangeAccountProtocol
         // fullName: email.exchange.exchangeAccountProtocol.exchangeAccountProtocol
         export interface exchangeAccountProtocol {
-            IMAP?: boolean;
-            POP?: boolean;
-            activeSync?: boolean;
-            creationDate?: string;
+            IMAP: boolean;
+            POP: boolean;
+            activeSync: boolean;
+            creationDate: string;
             lastUpdate?: string;
-            taskPendingId?: number;
-            webMail?: boolean;
+            taskPendingId: number;
+            webMail: boolean;
         }
         //email.exchange.exchangeAccountSendAs
         // fullName: email.exchange.exchangeAccountSendAs.exchangeAccountSendAs
         export interface exchangeAccountSendAs {
-            allowedAccountId?: number;
-            creationDate?: string;
-            taskPendingId?: number;
+            allowedAccountId: number;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.exchange.exchangeAccountSendOnBehalfTo
         // fullName: email.exchange.exchangeAccountSendOnBehalfTo.exchangeAccountSendOnBehalfTo
         export interface exchangeAccountSendOnBehalfTo {
-            allowedAccountId?: number;
-            creationDate?: string;
-            taskPendingId?: number;
+            allowedAccountId: number;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.exchange.exchangeCommercialVersionEnum
         export type exchangeCommercialVersionEnum = "2010" | "2013" | "2016"
         //email.exchange.exchangeDistributionGroupManager
         // fullName: email.exchange.exchangeDistributionGroupManager.exchangeDistributionGroupManager
         export interface exchangeDistributionGroupManager {
-            creationDate?: string;
-            managerAccountId?: number;
-            managerEmailAddress?: string;
-            taskPendingId?: number;
+            creationDate: string;
+            managerAccountId: number;
+            managerEmailAddress: string;
+            taskPendingId: number;
         }
         //email.exchange.exchangeDistributionGroupMember
         // fullName: email.exchange.exchangeDistributionGroupMember.exchangeDistributionGroupMember
         export interface exchangeDistributionGroupMember {
-            creationDate?: string;
+            creationDate: string;
             memberAccountId?: number;
             memberContactId?: number;
-            memberEmailAddress?: string;
-            taskPendingId?: number;
+            memberEmailAddress: string;
+            taskPendingId: number;
         }
         //email.exchange.exchangeDistributionGroupSendAs
         // fullName: email.exchange.exchangeDistributionGroupSendAs.exchangeDistributionGroupSendAs
         export interface exchangeDistributionGroupSendAs {
-            allowedAccountId?: number;
-            creationDate?: string;
-            taskPendingId?: number;
+            allowedAccountId: number;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.exchange.exchangeDistributionGroupSendOnBehalfTo
         // fullName: email.exchange.exchangeDistributionGroupSendOnBehalfTo.exchangeDistributionGroupSendOnBehalfTo
         export interface exchangeDistributionGroupSendOnBehalfTo {
-            allowedAccountId?: number;
-            creationDate?: string;
-            taskPendingId?: number;
+            allowedAccountId: number;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.exchange.exchangeExternalContact
         // fullName: email.exchange.exchangeExternalContact.exchangeExternalContact
         export interface exchangeExternalContact {
-            creationDate?: string;
-            displayName?: string;
-            externalEmailAddress?: string;
+            creationDate: string;
+            displayName: string;
+            externalEmailAddress: string;
             firstName?: string;
-            hiddenFromGAL?: boolean;
-            id?: number;
+            hiddenFromGAL: boolean;
+            id: number;
             initials?: string;
             lastName?: string;
             organization2010?: string;
-            state?: OVH.email.exchange.ObjectStateEnum;
-            taskPendingId?: number;
+            state: OVH.email.exchange.ObjectStateEnum;
+            taskPendingId: number;
         }
         //email.exchange.exchangeMailingListAlias
         // fullName: email.exchange.exchangeMailingListAlias.exchangeMailingListAlias
         export interface exchangeMailingListAlias {
-            alias?: string;
-            creationDate?: string;
-            taskPendingId?: number;
+            alias: string;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.exchange.exchangePublicFolderPermission
         // fullName: email.exchange.exchangePublicFolderPermission.exchangePublicFolderPermission
         export interface exchangePublicFolderPermission {
-            accessRights?: OVH.email.exchange.PublicFolderRightTypeEnum;
-            allowedAccountId?: number;
-            creationDate?: string;
-            state?: OVH.email.exchange.ObjectStateEnum;
-            taskPendingId?: number;
+            accessRights: OVH.email.exchange.PublicFolderRightTypeEnum;
+            allowedAccountId: number;
+            creationDate: string;
+            state: OVH.email.exchange.ObjectStateEnum;
+            taskPendingId: number;
         }
         //email.exchange.exchangeResourceAccountDelegate
         // fullName: email.exchange.exchangeResourceAccountDelegate.exchangeResourceAccountDelegate
         export interface exchangeResourceAccountDelegate {
-            allowedAccountId?: number;
+            allowedAccountId: number;
             creationDate?: string;
-            delegateEmailAddress?: string;
-            taskPendingId?: number;
+            delegateEmailAddress: string;
+            taskPendingId: number;
         }
         //email.exchange.exchangeServiceActiveSyncNotification
         // fullName: email.exchange.exchangeServiceActiveSyncNotification.exchangeServiceActiveSyncNotification
         export interface exchangeServiceActiveSyncNotification {
-            creationDate?: string;
-            notifiedAccountId?: number;
-            primaryEmailAddress?: string;
-            state?: OVH.email.exchange.activeSyncNotificationStateEnum;
+            creationDate: string;
+            notifiedAccountId: number;
+            primaryEmailAddress: string;
+            state: OVH.email.exchange.activeSyncNotificationStateEnum;
         }
         //email.exchange.exchangeServiceAuthorizedIp
         // fullName: email.exchange.exchangeServiceAuthorizedIp.exchangeServiceAuthorizedIp
         export interface exchangeServiceAuthorizedIp {
-            creationDate?: string;
-            ip?: string;
-            status?: OVH.email.exchange.authorizedIpStatusEnum;
+            creationDate: string;
+            ip: string;
+            status: OVH.email.exchange.authorizedIpStatusEnum;
         }
         //email.exchange.exchangeServiceDevice
         // fullName: email.exchange.exchangeServiceDevice.exchangeServiceDevice
         export interface exchangeServiceDevice {
-            IMEI?: string;
-            creationDate?: string;
-            deviceId?: string;
-            deviceModel?: string;
-            deviceState?: OVH.email.exchange.DeviceActiveSyncStateEnum;
-            guid?: string;
-            identity?: string;
+            IMEI: string;
+            creationDate: string;
+            deviceId: string;
+            deviceModel: string;
+            deviceState: OVH.email.exchange.DeviceActiveSyncStateEnum;
+            guid: string;
+            identity: string;
             lastUpdate?: string;
-            taskPendingId?: number;
+            taskPendingId: number;
         }
         //email.exchange.exchangeServiceProtocol
         // fullName: email.exchange.exchangeServiceProtocol.exchangeServiceProtocol
         export interface exchangeServiceProtocol {
-            IMAP?: boolean;
-            POP?: boolean;
-            activeSync?: boolean;
-            activeSyncPolicy?: OVH.email.exchange.ActiveSyncPolicyEnum;
-            creationDate?: string;
+            IMAP: boolean;
+            POP: boolean;
+            activeSync: boolean;
+            activeSyncPolicy: OVH.email.exchange.ActiveSyncPolicyEnum;
+            creationDate: string;
             lastUpdate?: string;
-            taskPendingId?: number;
-            webMail?: boolean;
+            taskPendingId: number;
+            webMail: boolean;
         }
         //email.exchange.exchangeSharedAccountFullAccess
         // fullName: email.exchange.exchangeSharedAccountFullAccess.exchangeSharedAccountFullAccess
         export interface exchangeSharedAccountFullAccess {
-            allowedAccountId?: number;
-            creationDate?: string;
-            taskPendingId?: number;
+            allowedAccountId: number;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.exchange.exchangeSharedAccountSendAs
         // fullName: email.exchange.exchangeSharedAccountSendAs.exchangeSharedAccountSendAs
         export interface exchangeSharedAccountSendAs {
-            allowedAccountId?: number;
-            creationDate?: string;
-            taskPendingId?: number;
+            allowedAccountId: number;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.exchange.exchangeSharedAccountSendOnBehalfTo
         // fullName: email.exchange.exchangeSharedAccountSendOnBehalfTo.exchangeSharedAccountSendOnBehalfTo
         export interface exchangeSharedAccountSendOnBehalfTo {
-            allowedAccountId?: number;
-            creationDate?: string;
-            taskPendingId?: number;
+            allowedAccountId: number;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.exchange.mailingList
         // fullName: email.exchange.mailingList.mailingList
         export interface mailingList {
-            creationDate?: string;
-            departRestriction?: OVH.email.exchange.MailingListDepartRestrictionEnum;
+            creationDate: string;
+            departRestriction: OVH.email.exchange.MailingListDepartRestrictionEnum;
             displayName?: string;
-            hiddenFromGAL?: boolean;
-            joinRestriction?: OVH.email.exchange.MailingListJoinRestrictionEnum;
+            hiddenFromGAL: boolean;
+            joinRestriction: OVH.email.exchange.MailingListJoinRestrictionEnum;
             lastUpdateDate?: string;
-            mailingListAddress?: string;
+            mailingListAddress: string;
             maxReceiveSize?: number;
             maxSendSize?: number;
-            senderAuthentification?: boolean;
-            spamDetected?: boolean;
+            senderAuthentification: boolean;
+            spamDetected: boolean;
             spamTicketNumber?: number;
-            state?: OVH.email.exchange.ObjectStateEnum;
-            taskPendingId?: number;
+            state: OVH.email.exchange.ObjectStateEnum;
+            taskPendingId: number;
         }
         //email.exchange.publicFolder
         // fullName: email.exchange.publicFolder.publicFolder
         export interface publicFolder {
-            anonymousPermission?: OVH.email.exchange.PublicFolderRightTypeEnum;
+            anonymousPermission: OVH.email.exchange.PublicFolderRightTypeEnum;
             creationDate?: string;
-            defaultPermission?: OVH.email.exchange.PublicFolderRightTypeEnum;
+            defaultPermission: OVH.email.exchange.PublicFolderRightTypeEnum;
             hasSubFolders?: boolean;
             itemCount?: number;
             lastAccessTime?: string;
             lastModificationTime?: string;
             lastUserAccessTime?: string;
             lastUserModificationTime?: string;
-            path?: string;
-            quota?: number;
-            state?: OVH.email.exchange.ObjectStateEnum;
-            taskPendingId?: number;
+            path: string;
+            quota: number;
+            state: OVH.email.exchange.ObjectStateEnum;
+            taskPendingId: number;
             totalItemSize?: number;
-            type?: OVH.email.exchange.PublicFolderTypeEnum;
+            type: OVH.email.exchange.PublicFolderTypeEnum;
         }
         //email.exchange.renewPeriodEnum
         export type renewPeriodEnum = "monthly" | "yearly"
         //email.exchange.resourceAccount
         // fullName: email.exchange.resourceAccount.resourceAccount
         export interface resourceAccount {
-            addOrganizerToSubject?: boolean;
-            allowConflict?: boolean;
-            bookingWindow?: number;
-            capacity?: number;
+            addOrganizerToSubject: boolean;
+            allowConflict: boolean;
+            bookingWindow: number;
+            capacity: number;
             creationDate?: string;
-            deleteComments?: boolean;
-            deleteSubject?: boolean;
-            displayName?: string;
-            location?: string;
-            maximumDuration?: number;
-            resourceEmailAddress?: string;
-            showMeetingDetails?: OVH.email.exchange.ShowMeetingDetailsEnum;
-            state?: OVH.email.exchange.ObjectStateEnum;
-            taskPendingId?: number;
-            type?: OVH.email.exchange.ResourceTypeEnum;
+            deleteComments: boolean;
+            deleteSubject: boolean;
+            displayName: string;
+            location: string;
+            maximumDuration: number;
+            resourceEmailAddress: string;
+            showMeetingDetails: OVH.email.exchange.ShowMeetingDetailsEnum;
+            state: OVH.email.exchange.ObjectStateEnum;
+            taskPendingId: number;
+            type: OVH.email.exchange.ResourceTypeEnum;
         }
         //email.exchange.sharedAccount
         // fullName: email.exchange.sharedAccount.sharedAccount
@@ -482,30 +482,30 @@ export namespace email {
             currentUsage?: number;
             displayName?: string;
             firstName?: string;
-            hiddenFromGAL?: boolean;
-            id?: number;
+            hiddenFromGAL: boolean;
+            id: number;
             initials?: string;
             lastLogoffDate?: string;
             lastLogonDate?: string;
             lastName?: string;
             mailingFilter?: OVH.email.exchange.MailingFilterEnum[];
-            quota?: number;
-            sharedEmailAddress?: string;
-            spamDetected?: boolean;
+            quota: number;
+            sharedEmailAddress: string;
+            spamDetected: boolean;
             spamTicketNumber?: number;
-            state?: OVH.email.exchange.ObjectStateEnum;
-            taskPendingId?: number;
+            state: OVH.email.exchange.ObjectStateEnum;
+            taskPendingId: number;
         }
         //email.exchange.spamAndVirusConfiguration
         // fullName: email.exchange.spamAndVirusConfiguration.spamAndVirusConfiguration
         export interface spamAndVirusConfiguration {
-            checkDKIM?: boolean;
-            checkSPF?: boolean;
-            deleteSpam?: boolean;
-            deleteVirus?: boolean;
-            putInJunk?: boolean;
-            tagSpam?: boolean;
-            tagVirus?: boolean;
+            checkDKIM: boolean;
+            checkSPF: boolean;
+            deleteSpam: boolean;
+            deleteVirus: boolean;
+            putInJunk: boolean;
+            tagSpam: boolean;
+            tagVirus: boolean;
         }
     }
 }
@@ -513,9 +513,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -528,19 +528,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

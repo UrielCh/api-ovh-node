@@ -5,28 +5,28 @@ export namespace freefax {
     //freefax.BalanceInformations
     // fullName: freefax.BalanceInformations.BalanceInformations
     export interface BalanceInformations {
-        faxs?: number;
-        points?: number;
+        faxs: number;
+        points: number;
     }
     //freefax.FreefaxProperties
     // fullName: freefax.FreefaxProperties.FreefaxProperties
     export interface FreefaxProperties {
-        faxMaxCall?: OVH.telephony.FaxSendingTries;
-        faxQuality?: OVH.telephony.FaxQualityEnum;
-        faxTagLine?: string;
-        fromEmail?: string;
-        fromName?: string;
-        number?: string;
-        redirectionEmail?: string[];
+        faxMaxCall: OVH.telephony.FaxSendingTries;
+        faxQuality: OVH.telephony.FaxQualityEnum;
+        faxTagLine: string;
+        fromEmail: string;
+        fromName: string;
+        number: string;
+        redirectionEmail: string[];
     }
 }
 export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -39,19 +39,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace telephony {
@@ -66,8 +66,8 @@ export namespace telephony {
     //telephony.ServiceVoicemailNotifications
     // fullName: telephony.ServiceVoicemailNotifications.ServiceVoicemailNotifications
     export interface ServiceVoicemailNotifications {
-        email?: string;
-        type?: OVH.telephony.ServiceVoicemailMailOptionEnum;
+        email: string;
+        type: OVH.telephony.ServiceVoicemailMailOptionEnum;
     }
     //telephony.VoicefaxRoutingEnum
     export type VoicefaxRoutingEnum = "fax" | "voicemail"
@@ -76,27 +76,27 @@ export namespace telephony {
     //telephony.VoicemailNumbers
     // fullName: telephony.VoicemailNumbers.VoicemailNumbers
     export interface VoicemailNumbers {
-        external?: string;
-        internal?: string;
+        external: string;
+        internal: string;
     }
     //telephony.VoicemailProperties
     // fullName: telephony.VoicemailProperties.VoicemailProperties
     export interface VoicemailProperties {
-        annouceMessage?: string;
-        audioFormat?: OVH.telephony.ServiceVoicemailAudioFormatEnum;
-        doNotRecord?: boolean;
-        forcePassword?: boolean;
-        fromEmail?: string;
-        fromName?: string;
+        annouceMessage: string;
+        audioFormat: OVH.telephony.ServiceVoicemailAudioFormatEnum;
+        doNotRecord: boolean;
+        forcePassword: boolean;
+        fromEmail: string;
+        fromName: string;
         fullGreetingSoundId?: number;
-        greetingType?: OVH.telephony.VoicemailGreetingEnum;
-        isNewVersion?: boolean;
-        keepMessage?: boolean;
-        redirectionEmails?: OVH.telephony.ServiceVoicemailNotifications[];
+        greetingType: OVH.telephony.VoicemailGreetingEnum;
+        isNewVersion: boolean;
+        keepMessage: boolean;
+        redirectionEmails: OVH.telephony.ServiceVoicemailNotifications[];
         shortGreetingSoundId?: number;
-        temporaryGreetingActivated?: boolean;
+        temporaryGreetingActivated: boolean;
         temporaryGreetingSoundId?: number;
-        unreadMessages?: number;
+        unreadMessages: number;
     }
 }
 // Apis harmony

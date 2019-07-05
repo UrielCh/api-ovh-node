@@ -6,47 +6,47 @@ export namespace docker {
         //docker.framework.password
         // fullName: docker.framework.password.password
         export interface password {
-            password?: string;
+            password: string;
         }
     }
     //docker.slave
     // fullName: docker.slave.slave
     export interface slave {
-        createdAt?: string;
-        flavorId?: string;
-        id?: string;
-        metrics?: OVH.docker.slave.metrics;
-        name?: string;
-        region?: string;
-        stack?: string;
-        state?: OVH.docker.slave.status;
-        updatedAt?: string;
+        createdAt: string;
+        flavorId: string;
+        id: string;
+        metrics: OVH.docker.slave.metrics;
+        name: string;
+        region: string;
+        stack: string;
+        state: OVH.docker.slave.status;
+        updatedAt: string;
     }
     export namespace slave {
         //docker.slave.flavor
         // fullName: docker.slave.flavor.flavor
         export interface flavor {
-            bandwidth?: number;
-            cpus?: number;
-            disk?: number;
-            diskHa?: boolean;
-            id?: string;
-            isVm?: boolean;
-            ram?: number;
+            bandwidth: number;
+            cpus: number;
+            disk: number;
+            diskHa: boolean;
+            id: string;
+            isVm: boolean;
+            ram: number;
         }
         export namespace framework {
             //docker.slave.framework.app
             // fullName: docker.slave.framework.app.app
             export interface app {
                 cpu?: number;
-                env?: OVH.docker.slave.framework.app.environment[];
+                env: OVH.docker.slave.framework.app.environment[];
                 id?: string;
                 image?: string;
                 instances?: number;
                 mem?: number;
-                ports?: OVH.docker.slave.framework.app.port[];
+                ports: OVH.docker.slave.framework.app.port[];
                 status?: string;
-                volumes?: OVH.docker.slave.framework.app.volume[];
+                volumes: OVH.docker.slave.framework.app.volume[];
             }
             export namespace app {
                 //docker.slave.framework.app.environment
@@ -74,8 +74,8 @@ export namespace docker {
         //docker.slave.metrics
         // fullName: docker.slave.metrics.metrics
         export interface metrics {
-            resources?: OVH.docker.slave.metrics.resources;
-            usedResources?: OVH.docker.slave.metrics.usedResources;
+            resources: OVH.docker.slave.metrics.resources;
+            usedResources: OVH.docker.slave.metrics.usedResources;
         }
         export namespace metrics {
             //docker.slave.metrics.resources
@@ -98,39 +98,39 @@ export namespace docker {
     // fullName: docker.stack.stack
     export interface stack {
         cluster?: string;
-        createdAt?: string;
-        loadBalancer?: string;
-        metrics?: OVH.docker.slave.metrics;
-        name?: string;
-        slaves?: string[];
-        updatedAt?: string;
+        createdAt: string;
+        loadBalancer: string;
+        metrics: OVH.docker.slave.metrics;
+        name: string;
+        slaves: string[];
+        updatedAt: string;
     }
     export namespace stack {
         //docker.stack.customSsl
         // fullName: docker.stack.customSsl.customSsl
         export interface customSsl {
-            certificate?: string;
-            createdAt?: string;
-            updatedAt?: string;
+            certificate: string;
+            createdAt: string;
+            updatedAt: string;
         }
         //docker.stack.customSslMessage
         // fullName: docker.stack.customSslMessage.customSslMessage
         export interface customSslMessage {
-            message?: string;
+            message: string;
         }
         //docker.stack.inputCustomSsl
         // fullName: docker.stack.inputCustomSsl.inputCustomSsl
         export interface inputCustomSsl {
-            certificate?: string;
-            key?: string;
+            certificate: string;
+            key: string;
         }
         //docker.stack.registryCredentials
         // fullName: docker.stack.registryCredentials.registryCredentials
         export interface registryCredentials {
-            createdAt?: string;
-            registryUrl?: string;
-            updatedAt?: string;
-            username?: string;
+            createdAt: string;
+            registryUrl: string;
+            updatedAt: string;
+            username: string;
         }
     }
 }
@@ -138,9 +138,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -153,36 +153,36 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace stack {
     //stack.framework
     // fullName: stack.framework.framework
     export interface framework {
-        accessUrl?: string;
-        createdAt?: string;
-        id?: string;
-        name?: string;
-        updatedAt?: string;
+        accessUrl: string;
+        createdAt: string;
+        id: string;
+        name: string;
+        updatedAt: string;
     }
     export namespace framework {
         //stack.framework.application
         // fullName: stack.framework.application.application
         export interface application {
-            apps?: OVH.docker.slave.framework.app[];
+            apps: OVH.docker.slave.framework.app[];
         }
     }
 }

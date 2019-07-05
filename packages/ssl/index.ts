@@ -5,9 +5,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -20,34 +20,34 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace ssl {
     //ssl.Certificate
     // fullName: ssl.Certificate.Certificate
     export interface Certificate {
-        authority?: OVH.ssl.CertificateAuthorityEnum;
+        authority: OVH.ssl.CertificateAuthorityEnum;
         certificate?: string;
         chain?: string;
-        commonName?: string;
-        csr?: string;
-        serviceName?: string;
-        status?: OVH.ssl.CertificateStatusEnum;
-        subjectAltName?: string[];
-        type?: OVH.ssl.CertificateTypeEnum;
+        commonName: string;
+        csr: string;
+        serviceName: string;
+        status: OVH.ssl.CertificateStatusEnum;
+        subjectAltName: string[];
+        type: OVH.ssl.CertificateTypeEnum;
         validityEnd?: string;
         validityStart?: string;
     }
@@ -61,11 +61,11 @@ export namespace ssl {
     // fullName: ssl.Operation.Operation
     export interface Operation {
         doneDate?: string;
-        function?: OVH.ssl.OperationFunctionEnum;
-        lastUpdate?: string;
-        startDate?: string;
-        status?: OVH.ssl.OperationStatusEnum;
-        taskId?: number;
+        function: OVH.ssl.OperationFunctionEnum;
+        lastUpdate: string;
+        startDate: string;
+        status: OVH.ssl.OperationStatusEnum;
+        taskId: number;
     }
     //ssl.OperationFunctionEnum
     export type OperationFunctionEnum = "createCertificate"

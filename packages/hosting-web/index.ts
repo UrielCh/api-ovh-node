@@ -5,21 +5,21 @@ export namespace complexType {
     //complexType.ChartSerie
     // fullName: complexType.ChartSerie.ChartSerie
     export interface ChartSerie<T> {
-        serieName?: string;
-        unit?: string;
-        values?: T[];
+        serieName: string;
+        unit: string;
+        values: T[];
     }
     //complexType.ChartTimestampValue
     // fullName: complexType.ChartTimestampValue.ChartTimestampValue
     export interface ChartTimestampValue {
-        timestamp?: number;
+        timestamp: number;
         value?: number;
     }
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
 }
 export namespace hosting {
@@ -33,41 +33,41 @@ export namespace hosting {
         //hosting.web.Address
         // fullName: hosting.web.Address.Address
         export interface Address {
-            port?: number;
-            url?: string;
+            port: number;
+            url: string;
         }
         //hosting.web.AvailableOfferStruct
         // fullName: hosting.web.AvailableOfferStruct.AvailableOfferStruct
         export interface AvailableOfferStruct {
-            offer?: OVH.hosting.web.OfferEnum;
-            price?: OVH.order.Price;
+            offer: OVH.hosting.web.OfferEnum;
+            price: OVH.order.Price;
         }
         //hosting.web.Capabilities
         // fullName: hosting.web.Capabilities.Capabilities
         export interface Capabilities {
-            attachedDomains?: number;
-            crontab?: boolean;
-            databaseEngines?: number;
-            databases?: OVH.hosting.web.database.CreationDatabaseCapabilities[];
+            attachedDomains: number;
+            crontab: boolean;
+            databaseEngines: number;
+            databases: OVH.hosting.web.database.CreationDatabaseCapabilities[];
             disk?: OVH.hosting.web.DiskType;
-            emails?: OVH.hosting.web.CreationEmailCapabilities;
-            envVars?: number;
-            extraUsers?: number;
-            filesBrowser?: boolean;
+            emails: OVH.hosting.web.CreationEmailCapabilities;
+            envVars: number;
+            extraUsers: number;
+            filesBrowser: boolean;
             highlight?: OVH.hosting.web.HighLightEnum;
-            languages?: OVH.hosting.web.CronLanguageAvailable;
-            moduleOneClick?: boolean;
-            privateDatabases?: OVH.hosting.web.database.CreationDatabaseCapabilities[];
-            runtimes?: number;
+            languages: OVH.hosting.web.CronLanguageAvailable;
+            moduleOneClick: boolean;
+            privateDatabases: OVH.hosting.web.database.CreationDatabaseCapabilities[];
+            runtimes: number;
             sitesRecommended?: number;
-            ssh?: boolean;
+            ssh: boolean;
             traffic?: OVH.complexType.UnitAndValue<number>;
         }
         //hosting.web.CountriesIp
         // fullName: hosting.web.CountriesIp.CountriesIp
         export interface CountriesIp {
-            country?: OVH.hosting.web.CountryEnum;
-            ip?: string;
+            country: OVH.hosting.web.CountryEnum;
+            ip: string;
             ipv6?: string;
         }
         //hosting.web.CountryEnum
@@ -75,25 +75,25 @@ export namespace hosting {
         //hosting.web.CreationEmailCapabilities
         // fullName: hosting.web.CreationEmailCapabilities.CreationEmailCapabilities
         export interface CreationEmailCapabilities {
-            available?: number;
-            quota?: OVH.complexType.UnitAndValue<number>;
+            available: number;
+            quota: OVH.complexType.UnitAndValue<number>;
         }
         //hosting.web.CronLanguageAvailable
         // fullName: hosting.web.CronLanguageAvailable.CronLanguageAvailable
         export interface CronLanguageAvailable {
-            nodejs?: OVH.hosting.web.NodejsVersionAvailableEnum[];
-            php?: OVH.hosting.web.PhpVersionAvailableEnum[];
-            python?: OVH.hosting.web.PythonVersionAvailableEnum[];
-            ruby?: OVH.hosting.web.RubyVersionAvailableEnum[];
+            nodejs: OVH.hosting.web.NodejsVersionAvailableEnum[];
+            php: OVH.hosting.web.PhpVersionAvailableEnum[];
+            python: OVH.hosting.web.PythonVersionAvailableEnum[];
+            ruby: OVH.hosting.web.RubyVersionAvailableEnum[];
         }
         //hosting.web.DatacenterEnum
         export type DatacenterEnum = "gra1" | "gra2" | "p19"
         //hosting.web.DiskType
         // fullName: hosting.web.DiskType.DiskType
         export interface DiskType {
-            type?: OVH.hosting.web.DiskTypeEnum;
-            unit?: string;
-            value?: number;
+            type: OVH.hosting.web.DiskTypeEnum;
+            unit: string;
+            value: number;
         }
         //hosting.web.DiskTypeEnum
         export type DiskTypeEnum = "HDD" | "SSD"
@@ -102,19 +102,19 @@ export namespace hosting {
         //hosting.web.ModuleList
         // fullName: hosting.web.ModuleList.ModuleList
         export interface ModuleList {
-            active?: boolean;
-            adminNameType?: OVH.hosting.web.module.AdminNameTypeEnum;
-            author?: string;
-            branch?: OVH.hosting.web.module.BranchEnum;
-            id?: number;
-            keywords?: string[];
-            language?: OVH.hosting.web.module.LanguageEnum[];
-            languageRequirement?: OVH.complexType.UnitAndValue<string>;
-            latest?: boolean;
-            name?: string;
-            size?: OVH.complexType.UnitAndValue<number>;
-            upgradeFrom?: number[];
-            version?: string;
+            active: boolean;
+            adminNameType: OVH.hosting.web.module.AdminNameTypeEnum;
+            author: string;
+            branch: OVH.hosting.web.module.BranchEnum;
+            id: number;
+            keywords: string[];
+            language: OVH.hosting.web.module.LanguageEnum[];
+            languageRequirement: OVH.complexType.UnitAndValue<string>;
+            latest: boolean;
+            name: string;
+            size: OVH.complexType.UnitAndValue<number>;
+            upgradeFrom: number[];
+            version: string;
         }
         //hosting.web.NodejsVersionAvailableEnum
         export type NodejsVersionAvailableEnum = "nodejs-10" | "nodejs-11" | "nodejs-8" | "nodejs-9"
@@ -127,8 +127,8 @@ export namespace hosting {
         //hosting.web.PhpVersion
         // fullName: hosting.web.PhpVersion.PhpVersion
         export interface PhpVersion {
-            support?: OVH.hosting.web.PhpVersionStateEnum;
-            version?: string;
+            support: OVH.hosting.web.PhpVersionStateEnum;
+            version: string;
         }
         //hosting.web.PhpVersionAvailableEnum
         export type PhpVersionAvailableEnum = "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3"
@@ -145,43 +145,43 @@ export namespace hosting {
         //hosting.web.Service
         // fullName: hosting.web.Service.Service
         export interface Service {
-            availableBoostOffer?: OVH.hosting.web.AvailableOfferStruct[];
+            availableBoostOffer: OVH.hosting.web.AvailableOfferStruct[];
             boostOffer?: OVH.hosting.web.OfferCapabilitiesEnum;
-            cluster?: string;
+            cluster: string;
             clusterIp?: string;
             clusterIpv6?: string;
             countriesIp?: OVH.hosting.web.CountriesIp[];
-            datacenter?: OVH.hosting.web.DatacenterEnum;
+            datacenter: OVH.hosting.web.DatacenterEnum;
             displayName?: string;
             filer?: string;
             hasCdn?: boolean;
             hasHostedSsl?: boolean;
-            home?: string;
+            home: string;
             hostingIp?: string;
             hostingIpv6?: string;
             lastOvhConfigScan?: string;
-            offer?: OVH.hosting.web.OfferCapabilitiesEnum;
-            operatingSystem?: OVH.hosting.web.OperatingSystemEnum;
-            phpVersions?: OVH.hosting.web.PhpVersion[];
-            primaryLogin?: string;
-            quotaSize?: OVH.complexType.UnitAndValue<number>;
+            offer: OVH.hosting.web.OfferCapabilitiesEnum;
+            operatingSystem: OVH.hosting.web.OperatingSystemEnum;
+            phpVersions: OVH.hosting.web.PhpVersion[];
+            primaryLogin: string;
+            quotaSize: OVH.complexType.UnitAndValue<number>;
             quotaUsed?: OVH.complexType.UnitAndValue<number>;
             recommendedOffer?: OVH.hosting.web.OfferEnum;
-            resourceType?: OVH.hosting.web.ResourceEnum;
-            serviceManagementAccess?: OVH.hosting.web.ServiceAccess;
-            serviceName?: string;
-            state?: OVH.hosting.web.StateEnum;
+            resourceType: OVH.hosting.web.ResourceEnum;
+            serviceManagementAccess: OVH.hosting.web.ServiceAccess;
+            serviceName: string;
+            state: OVH.hosting.web.StateEnum;
             token?: string;
             trafficQuotaSize?: OVH.complexType.UnitAndValue<number>;
             trafficQuotaUsed?: OVH.complexType.UnitAndValue<number>;
-            updates?: string[];
+            updates: string[];
         }
         //hosting.web.ServiceAccess
         // fullName: hosting.web.ServiceAccess.ServiceAccess
         export interface ServiceAccess {
-            ftp?: OVH.hosting.web.Address;
-            http?: OVH.hosting.web.Address;
-            ssh?: OVH.hosting.web.Address;
+            ftp: OVH.hosting.web.Address;
+            http: OVH.hosting.web.Address;
+            ssh: OVH.hosting.web.Address;
         }
         //hosting.web.StateEnum
         export type StateEnum = "active" | "bloqued" | "maintenance"
@@ -192,15 +192,15 @@ export namespace hosting {
         //hosting.web.attachedDomain
         // fullName: hosting.web.attachedDomain.attachedDomain
         export interface attachedDomain {
-            cdn?: OVH.hosting.web.attachedDomain.CdnEnum;
-            domain?: string;
-            firewall?: OVH.hosting.web.attachedDomain.FirewallEnum;
+            cdn: OVH.hosting.web.attachedDomain.CdnEnum;
+            domain: string;
+            firewall: OVH.hosting.web.attachedDomain.FirewallEnum;
             ipLocation?: OVH.hosting.web.CountryEnum;
             ownLog?: string;
-            path?: string;
+            path: string;
             runtimeId?: number;
             ssl?: boolean;
-            status?: OVH.hosting.web.attachedDomain.StatusEnum;
+            status: OVH.hosting.web.attachedDomain.StatusEnum;
             taskId?: number;
         }
         export namespace attachedDomain {
@@ -218,20 +218,20 @@ export namespace hosting {
         //hosting.web.boostHistory
         // fullName: hosting.web.boostHistory.boostHistory
         export interface boostHistory {
-            accountId?: string;
+            accountId: string;
             boostOffer?: OVH.hosting.web.OfferCapabilitiesEnum;
-            date?: string;
-            offer?: OVH.hosting.web.OfferCapabilitiesEnum;
+            date: string;
+            offer: OVH.hosting.web.OfferCapabilitiesEnum;
         }
         //hosting.web.cdn
         // fullName: hosting.web.cdn.cdn
         export interface cdn {
-            domain?: string;
-            free?: boolean;
-            status?: OVH.hosting.web.cdn.StatusEnum;
+            domain: string;
+            free: boolean;
+            status: OVH.hosting.web.cdn.StatusEnum;
             taskId?: number;
-            type?: string;
-            version?: string;
+            type: string;
+            version: string;
         }
         export namespace cdn {
             //hosting.web.cdn.StatusEnum
@@ -240,13 +240,13 @@ export namespace hosting {
         //hosting.web.cron
         // fullName: hosting.web.cron.cron
         export interface cron {
-            command?: string;
+            command: string;
             description?: string;
             email?: string;
-            frequency?: string;
-            id?: number;
-            language?: OVH.hosting.web.cron.LanguageEnum;
-            status?: OVH.hosting.web.cron.StatusEnum;
+            frequency: string;
+            id: number;
+            language: OVH.hosting.web.cron.LanguageEnum;
+            status: OVH.hosting.web.cron.StatusEnum;
         }
         export namespace cron {
             //hosting.web.cron.LanguageEnum
@@ -257,51 +257,51 @@ export namespace hosting {
         //hosting.web.database
         // fullName: hosting.web.database.database
         export interface database {
-            dumps?: number;
+            dumps: number;
             guiURL?: string;
             lastCheck?: string;
-            mode?: OVH.hosting.web.database.ModeEnum;
-            name?: string;
-            port?: number;
-            quotaSize?: OVH.complexType.UnitAndValue<number>;
-            quotaUsed?: OVH.complexType.UnitAndValue<number>;
+            mode: OVH.hosting.web.database.ModeEnum;
+            name: string;
+            port: number;
+            quotaSize: OVH.complexType.UnitAndValue<number>;
+            quotaUsed: OVH.complexType.UnitAndValue<number>;
             server?: string;
-            state?: OVH.hosting.web.database.StateEnum;
-            status?: OVH.hosting.web.database.StatusEnum;
+            state: OVH.hosting.web.database.StateEnum;
+            status: OVH.hosting.web.database.StatusEnum;
             taskId?: number;
-            type?: OVH.hosting.web.database.DatabaseTypeEnum;
-            user?: string;
-            version?: OVH.hosting.web.database.VersionEnum;
-            versionSupport?: OVH.hosting.web.database.SupportedVersionEnum;
+            type: OVH.hosting.web.database.DatabaseTypeEnum;
+            user: string;
+            version: OVH.hosting.web.database.VersionEnum;
+            versionSupport: OVH.hosting.web.database.SupportedVersionEnum;
         }
         export namespace database {
             //hosting.web.database.AvailableVersionStruct
             // fullName: hosting.web.database.AvailableVersionStruct.AvailableVersionStruct
             export interface AvailableVersionStruct {
-                default?: OVH.hosting.web.database.VersionEnum;
-                list?: OVH.hosting.web.database.VersionEnum[];
+                default: OVH.hosting.web.database.VersionEnum;
+                list: OVH.hosting.web.database.VersionEnum[];
             }
             //hosting.web.database.CreationDatabaseCapabilities
             // fullName: hosting.web.database.CreationDatabaseCapabilities.CreationDatabaseCapabilities
             export interface CreationDatabaseCapabilities {
-                available?: number;
-                engines?: OVH.hosting.web.database.DatabaseTypeEnum[];
-                isolation?: OVH.hosting.web.database.DatabaseIsolationEnum;
-                quota?: OVH.complexType.UnitAndValue<number>;
-                type?: OVH.hosting.web.database.DatabaseCapabilitiesTypeEnum;
+                available: number;
+                engines: OVH.hosting.web.database.DatabaseTypeEnum[];
+                isolation: OVH.hosting.web.database.DatabaseIsolationEnum;
+                quota: OVH.complexType.UnitAndValue<number>;
+                type: OVH.hosting.web.database.DatabaseCapabilitiesTypeEnum;
             }
             //hosting.web.database.DatabaseCapabilities
             // fullName: hosting.web.database.DatabaseCapabilities.DatabaseCapabilities
             export interface DatabaseCapabilities {
-                changePassword?: boolean;
-                changeRight?: boolean;
-                delete?: boolean;
-                dump?: boolean;
-                getQuota?: boolean;
-                getRight?: boolean;
-                guiURL?: string;
-                optimize?: boolean;
-                restore?: boolean;
+                changePassword: boolean;
+                changeRight: boolean;
+                delete: boolean;
+                dump: boolean;
+                getQuota: boolean;
+                getRight: boolean;
+                guiURL: string;
+                optimize: boolean;
+                restore: boolean;
             }
             //hosting.web.database.DatabaseCapabilitiesTypeEnum
             export type DatabaseCapabilitiesTypeEnum = "extraSqlPerso" | "local" | "privateDatabase" | "sqlLocal" | "sqlPerso" | "sqlPro"
@@ -335,45 +335,45 @@ export namespace hosting {
         //hosting.web.database_dump
         // fullName: hosting.web.database_dump.database_dump
         export interface database_dump {
-            creationDate?: string;
-            deletionDate?: string;
-            id?: number;
-            status?: OVH.hosting.web.database.dump.StatusEnum;
+            creationDate: string;
+            deletionDate: string;
+            id: number;
+            status: OVH.hosting.web.database.dump.StatusEnum;
             taskId?: number;
-            type?: OVH.hosting.web.database.dump.DateEnum;
+            type: OVH.hosting.web.database.dump.DateEnum;
             url?: string;
         }
         //hosting.web.dump
         // fullName: hosting.web.dump.dump
         export interface dump {
-            creationDate?: string;
-            databaseName?: string;
-            deletionDate?: string;
-            id?: number;
-            orphan?: boolean;
-            status?: OVH.hosting.web.database.dump.StatusEnum;
+            creationDate: string;
+            databaseName: string;
+            deletionDate: string;
+            id: number;
+            orphan: boolean;
+            status: OVH.hosting.web.database.dump.StatusEnum;
             taskId?: number;
-            type?: OVH.hosting.web.database.dump.DateEnum;
+            type: OVH.hosting.web.database.dump.DateEnum;
             url?: string;
         }
         //hosting.web.email
         // fullName: hosting.web.email.email
         export interface email {
-            bounce?: number;
+            bounce: number;
             email?: string;
-            maxPerDay?: number;
-            sent?: number;
-            sentToday?: number;
-            state?: OVH.hosting.web.mail.StateEnum;
+            maxPerDay: number;
+            sent: number;
+            sentToday: number;
+            state: OVH.hosting.web.mail.StateEnum;
         }
         //hosting.web.envVar
         // fullName: hosting.web.envVar.envVar
         export interface envVar {
-            key?: string;
-            status?: OVH.hosting.web.envVar.StatusEnum;
+            key: string;
+            status: OVH.hosting.web.envVar.StatusEnum;
             taskId?: number;
-            type?: OVH.hosting.web.envVar.TypeEnum;
-            value?: string;
+            type: OVH.hosting.web.envVar.TypeEnum;
+            value: string;
         }
         export namespace envVar {
             //hosting.web.envVar.StatusEnum
@@ -384,18 +384,18 @@ export namespace hosting {
         //hosting.web.extrasqlperso
         // fullName: hosting.web.extrasqlperso.extrasqlperso
         export interface extrasqlperso {
-            database?: number;
-            name?: string;
-            size?: OVH.complexType.UnitAndValue<number>;
-            status?: string;
+            database: number;
+            name: string;
+            size: OVH.complexType.UnitAndValue<number>;
+            status: string;
             taskId?: number;
         }
         //hosting.web.freedom
         // fullName: hosting.web.freedom.freedom
         export interface freedom {
-            domain?: string;
-            status?: OVH.hosting.web.freedom.StatusEnum;
-            type?: string;
+            domain: string;
+            status: OVH.hosting.web.freedom.StatusEnum;
+            type: string;
         }
         export namespace freedom {
             //hosting.web.freedom.StatusEnum
@@ -410,29 +410,29 @@ export namespace hosting {
         //hosting.web.indy
         // fullName: hosting.web.indy.indy
         export interface indy {
-            attachedDomains?: string[];
-            home?: string;
-            login?: string;
-            state?: OVH.hosting.web.user.StateEnum;
+            attachedDomains: string[];
+            home: string;
+            login: string;
+            state: OVH.hosting.web.user.StateEnum;
         }
         export namespace localSeo {
             //hosting.web.localSeo.DirectoriesList
             // fullName: hosting.web.localSeo.DirectoriesList.DirectoriesList
             export interface DirectoriesList {
-                navigationSystems?: OVH.hosting.web.localSeo.Directory[];
-                searchEngines?: OVH.hosting.web.localSeo.Directory[];
-                socialNetworks?: OVH.hosting.web.localSeo.Directory[];
+                navigationSystems: OVH.hosting.web.localSeo.Directory[];
+                searchEngines: OVH.hosting.web.localSeo.Directory[];
+                socialNetworks: OVH.hosting.web.localSeo.Directory[];
             }
             //hosting.web.localSeo.Directory
             // fullName: hosting.web.localSeo.Directory.Directory
             export interface Directory {
-                code?: string;
-                displayName?: string;
+                code: string;
+                displayName: string;
             }
             //hosting.web.localSeo.EmailAvailability
             // fullName: hosting.web.localSeo.EmailAvailability.EmailAvailability
             export interface EmailAvailability {
-                availability?: OVH.hosting.web.localSeo.account.EmailAvailabilityEnum;
+                availability: OVH.hosting.web.localSeo.account.EmailAvailabilityEnum;
                 serviceName?: string;
             }
             //hosting.web.localSeo.FieldStatusEnum
@@ -444,21 +444,21 @@ export namespace hosting {
             //hosting.web.localSeo.SearchData
             // fullName: hosting.web.localSeo.SearchData.SearchData
             export interface SearchData {
-                city?: string;
-                country?: string;
-                id?: number;
-                name?: string;
+                city: string;
+                country: string;
+                id: number;
+                name: string;
                 province?: string;
-                street?: string;
-                streetNo?: string;
-                token?: string;
-                zip?: string;
+                street: string;
+                streetNo: string;
+                token: string;
+                zip: string;
             }
             //hosting.web.localSeo.VisibilityCheckResponse
             // fullName: hosting.web.localSeo.VisibilityCheckResponse.VisibilityCheckResponse
             export interface VisibilityCheckResponse {
                 alreadyManaged?: boolean;
-                searchData?: OVH.hosting.web.localSeo.SearchData;
+                searchData: OVH.hosting.web.localSeo.SearchData;
             }
             //hosting.web.localSeo.VisibilityCheckResultResponse
             // fullName: hosting.web.localSeo.VisibilityCheckResultResponse.VisibilityCheckResultResponse
@@ -512,11 +512,11 @@ export namespace hosting {
         //hosting.web.localSeo_account
         // fullName: hosting.web.localSeo_account.localSeo_account
         export interface localSeo_account {
-            creationDate?: string;
-            email?: string;
-            id?: number;
-            lastUpdate?: string;
-            status?: OVH.hosting.web.localSeo.account.StatusEnum;
+            creationDate: string;
+            email: string;
+            id: number;
+            lastUpdate: string;
+            status: OVH.hosting.web.localSeo.account.StatusEnum;
             taskId?: number;
         }
         //hosting.web.localSeo_location
@@ -524,13 +524,13 @@ export namespace hosting {
         export interface localSeo_location {
             accountId?: number;
             address?: string;
-            country?: OVH.hosting.web.localSeo.location.CountryEnum;
-            creationDate?: string;
-            id?: number;
-            lastUpdate?: string;
+            country: OVH.hosting.web.localSeo.location.CountryEnum;
+            creationDate: string;
+            id: number;
+            lastUpdate: string;
             name?: string;
-            offer?: OVH.hosting.web.localSeo.location.OfferEnum;
-            status?: OVH.hosting.web.localSeo.location.StatusEnum;
+            offer: OVH.hosting.web.localSeo.location.OfferEnum;
+            status: OVH.hosting.web.localSeo.location.StatusEnum;
             taskId?: number;
         }
         export namespace mail {
@@ -539,7 +539,7 @@ export namespace hosting {
             //hosting.web.mail.Bounce
             // fullName: hosting.web.mail.Bounce.Bounce
             export interface Bounce {
-                date?: string;
+                date: string;
                 message?: string;
                 to?: string;
             }
@@ -548,24 +548,24 @@ export namespace hosting {
             //hosting.web.mail.VolumeHistory
             // fullName: hosting.web.mail.VolumeHistory.VolumeHistory
             export interface VolumeHistory {
-                date?: string;
+                date: string;
                 volume?: number;
             }
         }
         //hosting.web.module
         // fullName: hosting.web.module.module
         export interface module {
-            adminFolder?: string;
-            adminName?: string;
-            creationDate?: string;
-            dependencies?: OVH.hosting.web.module.DependencyType[];
-            id?: number;
-            language?: OVH.hosting.web.module.LanguageEnum;
-            lastUpdate?: string;
-            moduleId?: number;
-            path?: string;
-            status?: OVH.hosting.web.module.StatusEnum;
-            targetUrl?: string;
+            adminFolder: string;
+            adminName: string;
+            creationDate: string;
+            dependencies: OVH.hosting.web.module.DependencyType[];
+            id: number;
+            language: OVH.hosting.web.module.LanguageEnum;
+            lastUpdate: string;
+            moduleId: number;
+            path: string;
+            status: OVH.hosting.web.module.StatusEnum;
+            targetUrl: string;
             taskId?: number;
         }
         export namespace module {
@@ -581,7 +581,7 @@ export namespace hosting {
                 port?: number;
                 prefix?: string;
                 server?: string;
-                type?: OVH.hosting.web.module.DependencyTypeEnum;
+                type: OVH.hosting.web.module.DependencyTypeEnum;
                 user?: string;
             }
             //hosting.web.module.DependencyTypeEnum
@@ -594,17 +594,17 @@ export namespace hosting {
         //hosting.web.ovhConfig
         // fullName: hosting.web.ovhConfig.ovhConfig
         export interface ovhConfig {
-            container?: string;
-            creationDate?: string;
-            engineName?: OVH.hosting.web.ovhConfig.EngineNameEnum;
-            engineVersion?: OVH.hosting.web.ovhConfig.EngineVersionEnum;
-            environment?: OVH.hosting.web.ovhConfig.EnvironmentEnum;
-            fileExist?: boolean;
+            container: string;
+            creationDate: string;
+            engineName: OVH.hosting.web.ovhConfig.EngineNameEnum;
+            engineVersion: OVH.hosting.web.ovhConfig.EngineVersionEnum;
+            environment: OVH.hosting.web.ovhConfig.EnvironmentEnum;
+            fileExist: boolean;
             historical?: boolean;
-            httpFirewall?: OVH.hosting.web.ovhConfig.HttpFirewallEnum;
-            id?: number;
+            httpFirewall: OVH.hosting.web.ovhConfig.HttpFirewallEnum;
+            id: number;
             path?: string;
-            status?: OVH.hosting.web.ovhConfig.StatusEnum;
+            status: OVH.hosting.web.ovhConfig.StatusEnum;
             taskId?: number;
         }
         export namespace ovhConfig {
@@ -628,9 +628,9 @@ export namespace hosting {
         //hosting.web.ownLogs
         // fullName: hosting.web.ownLogs.ownLogs
         export interface ownLogs {
-            fqdn?: string;
-            id?: number;
-            status?: OVH.hosting.web.ownLogs.StatusEnum;
+            fqdn: string;
+            id: number;
+            status: OVH.hosting.web.ownLogs.StatusEnum;
             taskId?: number;
         }
         export namespace ownLogs {
@@ -641,17 +641,17 @@ export namespace hosting {
         // fullName: hosting.web.runtime.runtime
         export interface runtime {
             appBootstrap?: string;
-            appEnv?: OVH.hosting.web.runtime.EnvEnum;
-            creationDate?: string;
-            id?: number;
-            isDefault?: boolean;
-            isDeletable?: boolean;
-            lastUpdate?: string;
+            appEnv: OVH.hosting.web.runtime.EnvEnum;
+            creationDate: string;
+            id: number;
+            isDefault: boolean;
+            isDeletable: boolean;
+            lastUpdate: string;
             name?: string;
             publicDir?: string;
-            status?: OVH.hosting.web.runtime.StateEnum;
+            status: OVH.hosting.web.runtime.StateEnum;
             taskId?: number;
-            type?: OVH.hosting.web.runtime.TypeEnum;
+            type: OVH.hosting.web.runtime.TypeEnum;
         }
         export namespace runtime {
             //hosting.web.runtime.EnvEnum
@@ -664,35 +664,35 @@ export namespace hosting {
         //hosting.web.ssl
         // fullName: hosting.web.ssl.ssl
         export interface ssl {
-            isReportable?: boolean;
-            provider?: string;
-            regenerable?: boolean;
-            status?: OVH.hosting.web.hostedssl.StatusEnum;
+            isReportable: boolean;
+            provider: string;
+            regenerable: boolean;
+            status: OVH.hosting.web.hostedssl.StatusEnum;
             taskId?: number;
-            type?: string;
+            type: string;
         }
         //hosting.web.ssl_report
         // fullName: hosting.web.ssl_report.ssl_report
         export interface ssl_report {
-            certificateSigningRequestStatus?: OVH.hosting.web.hostedssl.ReportValueEnum;
-            domainControlValidationStatus?: OVH.hosting.web.hostedssl.ReportValueEnum;
-            organizationValidationStatus?: OVH.hosting.web.hostedssl.ReportValueEnum;
-            phoneCallApprovalStatus?: OVH.hosting.web.hostedssl.ReportValueEnum;
-            providerOrderId?: string;
-            termsAndConditionsAcceptanceStatus?: OVH.hosting.web.hostedssl.ReportValueEnum;
-            tradeNameVerificationStatus?: OVH.hosting.web.hostedssl.ReportValueEnum;
+            certificateSigningRequestStatus: OVH.hosting.web.hostedssl.ReportValueEnum;
+            domainControlValidationStatus: OVH.hosting.web.hostedssl.ReportValueEnum;
+            organizationValidationStatus: OVH.hosting.web.hostedssl.ReportValueEnum;
+            phoneCallApprovalStatus: OVH.hosting.web.hostedssl.ReportValueEnum;
+            providerOrderId: string;
+            termsAndConditionsAcceptanceStatus: OVH.hosting.web.hostedssl.ReportValueEnum;
+            tradeNameVerificationStatus: OVH.hosting.web.hostedssl.ReportValueEnum;
         }
         //hosting.web.task
         // fullName: hosting.web.task.task
         export interface task {
             doneDate?: string;
-            function?: string;
-            id?: number;
+            function: string;
+            id: number;
             lastUpdate?: string;
             objectId?: string;
             objectType?: OVH.hosting.web.task.ObjectTypeEnum;
-            startDate?: string;
-            status?: OVH.hosting.web.task.StatusEnum;
+            startDate: string;
+            status: OVH.hosting.web.task.StatusEnum;
         }
         export namespace task {
             //hosting.web.task.ObjectTypeEnum
@@ -703,28 +703,28 @@ export namespace hosting {
         //hosting.web.user
         // fullName: hosting.web.user.user
         export interface user {
-            home?: string;
-            isPrimaryAccount?: boolean;
-            login?: string;
-            serviceManagementCredentials?: OVH.hosting.web.user.ServiceCredentials;
-            sshState?: OVH.hosting.web.user.SshStateEnum;
-            state?: OVH.hosting.web.user.StateEnum;
-            status?: OVH.hosting.web.user.StatusEnum;
+            home: string;
+            isPrimaryAccount: boolean;
+            login: string;
+            serviceManagementCredentials: OVH.hosting.web.user.ServiceCredentials;
+            sshState: OVH.hosting.web.user.SshStateEnum;
+            state: OVH.hosting.web.user.StateEnum;
+            status: OVH.hosting.web.user.StatusEnum;
             taskId?: number;
         }
         export namespace user {
             //hosting.web.user.Credentials
             // fullName: hosting.web.user.Credentials.Credentials
             export interface Credentials {
-                port?: number;
-                url?: string;
-                user?: string;
+                port: number;
+                url: string;
+                user: string;
             }
             //hosting.web.user.ServiceCredentials
             // fullName: hosting.web.user.ServiceCredentials.ServiceCredentials
             export interface ServiceCredentials {
-                ftp?: OVH.hosting.web.user.Credentials;
-                ssh?: OVH.hosting.web.user.Credentials;
+                ftp: OVH.hosting.web.user.Credentials;
+                ssh: OVH.hosting.web.user.Credentials;
             }
             //hosting.web.user.SshStateEnum
             export type SshStateEnum = "active" | "none" | "sftponly"
@@ -736,11 +736,11 @@ export namespace hosting {
         //hosting.web.userLogs
         // fullName: hosting.web.userLogs.userLogs
         export interface userLogs {
-            creationDate?: string;
+            creationDate: string;
             description?: string;
-            login?: string;
+            login: string;
             ownLogsId?: number;
-            status?: OVH.hosting.web.userLogs.StatusEnum;
+            status: OVH.hosting.web.userLogs.StatusEnum;
             taskId?: number;
         }
         export namespace userLogs {
@@ -755,18 +755,18 @@ export namespace order {
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode?: OVH.order.CurrencyCodeEnum;
-        text?: string;
-        value?: number;
+        currencyCode: OVH.order.CurrencyCodeEnum;
+        text: string;
+        value: number;
     }
 }
 export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -783,19 +783,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

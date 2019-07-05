@@ -7,9 +7,9 @@ export namespace order {
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode?: OVH.order.CurrencyCodeEnum;
-        text?: string;
-        value?: number;
+        currencyCode: OVH.order.CurrencyCodeEnum;
+        text: string;
+        value: number;
     }
 }
 export namespace overTheBox {
@@ -18,54 +18,54 @@ export namespace overTheBox {
     //overTheBox.AvailableDeviceAction
     // fullName: overTheBox.AvailableDeviceAction.AvailableDeviceAction
     export interface AvailableDeviceAction {
-        description?: string;
-        name?: string;
+        description: string;
+        name: string;
     }
     //overTheBox.AvailableMigrationOffer
     // fullName: overTheBox.AvailableMigrationOffer.AvailableMigrationOffer
     export interface AvailableMigrationOffer {
-        currentOfferPrice?: OVH.order.Price;
-        description?: string;
-        engagementMonths?: number;
-        hardwareAvailable?: boolean;
-        offer?: string;
-        price?: OVH.order.Price;
+        currentOfferPrice: OVH.order.Price;
+        description: string;
+        engagementMonths: number;
+        hardwareAvailable: boolean;
+        offer: string;
+        price: OVH.order.Price;
     }
     //overTheBox.Backup
     // fullName: overTheBox.Backup.Backup
     export interface Backup {
-        backupId?: string;
-        createdAt?: string;
+        backupId: string;
+        createdAt: string;
         deviceActionId?: string;
     }
     //overTheBox.Device
     // fullName: overTheBox.Device.Device
     export interface Device {
-        activated?: boolean;
-        deviceId?: string;
-        lastSeen?: string;
-        networkInterfaces?: OVH.overTheBox.DeviceInterface[];
-        publicIp?: string;
-        systemVersion?: string;
-        version?: string;
+        activated: boolean;
+        deviceId: string;
+        lastSeen: string;
+        networkInterfaces: OVH.overTheBox.DeviceInterface[];
+        publicIp: string;
+        systemVersion: string;
+        version: string;
     }
     //overTheBox.DeviceAction
     // fullName: overTheBox.DeviceAction.DeviceAction
     export interface DeviceAction {
-        actionId?: string;
-        createdAt?: string;
-        details?: string;
-        name?: string;
-        status?: OVH.overTheBox.ActionStatusEnum;
-        todoDate?: string;
-        updatedAt?: string;
+        actionId: string;
+        createdAt: string;
+        details: string;
+        name: string;
+        status: OVH.overTheBox.ActionStatusEnum;
+        todoDate: string;
+        updatedAt: string;
     }
     //overTheBox.DeviceForRegistration
     // fullName: overTheBox.DeviceForRegistration.DeviceForRegistration
     export interface DeviceForRegistration {
-        activated?: boolean;
-        deviceId?: string;
-        lastSeen?: string;
+        activated: boolean;
+        deviceId: string;
+        lastSeen: string;
     }
     //overTheBox.DeviceInterface
     // fullName: overTheBox.DeviceInterface.DeviceInterface
@@ -74,32 +74,32 @@ export namespace overTheBox {
         dnsServers?: string[];
         gateway?: string;
         ip?: string;
-        multipathStatus?: OVH.overTheBox.MultipathStatusEnum;
-        name?: string;
+        multipathStatus: OVH.overTheBox.MultipathStatusEnum;
+        name: string;
         netmask?: string;
         publicIp?: string;
     }
     //overTheBox.GraphEndpoint
     // fullName: overTheBox.GraphEndpoint.GraphEndpoint
     export interface GraphEndpoint {
-        host?: string;
-        readToken?: string;
-        readTokenID?: string;
+        host: string;
+        readToken: string;
+        readTokenID: string;
     }
     //overTheBox.MultipathStatusEnum
     export type MultipathStatusEnum = "backup" | "handover" | "master" | "off" | "on"
     //overTheBox.RemoteAccess
     // fullName: overTheBox.RemoteAccess.RemoteAccess
     export interface RemoteAccess {
-        accepted?: boolean;
-        askDate?: string;
+        accepted: boolean;
+        askDate: string;
         authorizedBy?: string;
-        connectionInfos?: OVH.overTheBox.RemoteAccessConnectionInfos;
-        expirationDate?: string;
-        exposedPort?: number;
-        remoteAccessId?: string;
-        remoteUserInfos?: OVH.overTheBox.RemoteAccessUserInfos;
-        status?: OVH.overTheBox.RemoteAccessStatusEnum;
+        connectionInfos: OVH.overTheBox.RemoteAccessConnectionInfos;
+        expirationDate: string;
+        exposedPort: number;
+        remoteAccessId: string;
+        remoteUserInfos: OVH.overTheBox.RemoteAccessUserInfos;
+        status: OVH.overTheBox.RemoteAccessStatusEnum;
     }
     //overTheBox.RemoteAccessConnectionInfos
     // fullName: overTheBox.RemoteAccessConnectionInfos.RemoteAccessConnectionInfos
@@ -112,37 +112,37 @@ export namespace overTheBox {
     //overTheBox.RemoteAccessUserInfos
     // fullName: overTheBox.RemoteAccessUserInfos.RemoteAccessUserInfos
     export interface RemoteAccessUserInfos {
-        ip?: string;
+        ip: string;
         publicKey?: string;
-        user?: string;
+        user: string;
     }
     //overTheBox.Service
     // fullName: overTheBox.Service.Service
     export interface Service {
-        SOCKSProxyEnabled?: boolean;
+        SOCKSProxyEnabled: boolean;
         customerDescription?: string;
         graphEndpoint?: OVH.overTheBox.GraphEndpoint;
-        releaseChannel?: string;
-        serviceName?: string;
-        status?: OVH.overTheBox.ServiceStatusEnum;
-        tunnelMode?: OVH.overTheBox.TunnelModeEnum;
+        releaseChannel: string;
+        serviceName: string;
+        status: OVH.overTheBox.ServiceStatusEnum;
+        tunnelMode: OVH.overTheBox.TunnelModeEnum;
     }
     //overTheBox.ServiceStatusEnum
     export type ServiceStatusEnum = "active" | "creating" | "deleted" | "suspended" | "toCreate" | "toDelete"
     //overTheBox.Task
     // fullName: overTheBox.Task.Task
     export interface Task {
-        name?: string;
-        status?: OVH.overTheBox.TaskStatusEnum;
-        taskId?: string;
+        name: string;
+        status: OVH.overTheBox.TaskStatusEnum;
+        taskId: string;
     }
     //overTheBox.TaskStatusEnum
     export type TaskStatusEnum = "doing" | "done" | "error" | "todo"
     //overTheBox.TemporaryLogsLink
     // fullName: overTheBox.TemporaryLogsLink.TemporaryLogsLink
     export interface TemporaryLogsLink {
-        expirationDate?: string;
-        url?: string;
+        expirationDate: string;
+        url: string;
     }
     //overTheBox.TunnelModeEnum
     export type TunnelModeEnum = "glorytun" | "glorytun_hybrid" | "glorytun_mud"
@@ -157,9 +157,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -172,19 +172,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

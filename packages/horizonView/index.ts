@@ -7,71 +7,71 @@ export namespace horizonView {
     //horizonView.CustomerNetwork
     // fullName: horizonView.CustomerNetwork.CustomerNetwork
     export interface CustomerNetwork {
-        customerNetworkId?: number;
-        name?: string;
-        network?: string;
+        customerNetworkId: number;
+        name: string;
+        network: string;
     }
     //horizonView.CustomerNetworkPool
     // fullName: horizonView.CustomerNetworkPool.CustomerNetworkPool
     export interface CustomerNetworkPool {
-        customerNetworkId?: number;
-        name?: string;
-        network?: string;
+        customerNetworkId: number;
+        name: string;
+        network: string;
     }
     //horizonView.CustomerUser
     // fullName: horizonView.CustomerUser.CustomerUser
     export interface CustomerUser {
         email?: string;
-        id?: number;
-        username?: string;
+        id: number;
+        username: string;
     }
     //horizonView.Datacenter
     // fullName: horizonView.Datacenter.Datacenter
     export interface Datacenter {
-        activeDirectoryIP?: string;
-        adminDomain?: string;
-        adminNetworkNextHop?: string;
-        adminPrivateNetwork?: string;
-        customerIntercoIP?: string;
-        customerIntercoMask?: string;
-        customerIntercoVlanId?: number;
-        datacenterId?: number;
-        name?: string;
-        serviceName?: string;
+        activeDirectoryIP: string;
+        adminDomain: string;
+        adminNetworkNextHop: string;
+        adminPrivateNetwork: string;
+        customerIntercoIP: string;
+        customerIntercoMask: string;
+        customerIntercoVlanId: number;
+        datacenterId: number;
+        name: string;
+        serviceName: string;
     }
     //horizonView.DedicatedHorizon
     // fullName: horizonView.DedicatedHorizon.DedicatedHorizon
     export interface DedicatedHorizon {
-        masterZone?: OVH.horizonView.Zone;
-        privateCloudName?: string;
-        privateCloudZone?: OVH.horizonView.Zone;
-        publicUrl?: string;
-        state?: OVH.horizonView.StateEnum;
-        storageAccelerator?: boolean;
-        version?: string;
+        masterZone: OVH.horizonView.Zone;
+        privateCloudName: string;
+        privateCloudZone: OVH.horizonView.Zone;
+        publicUrl: string;
+        state: OVH.horizonView.StateEnum;
+        storageAccelerator: boolean;
+        version: string;
     }
     //horizonView.DomainTrust
     // fullName: horizonView.DomainTrust.DomainTrust
     export interface DomainTrust {
-        activeDirectoryIP?: string;
+        activeDirectoryIP: string;
         dns1?: string;
         dns2?: string;
-        domain?: string;
-        domainTrustId?: number;
+        domain: string;
+        domainTrustId: number;
     }
     //horizonView.Pool
     // fullName: horizonView.Pool.Pool
     export interface Pool {
-        accessPointId?: number;
-        dhcpNetmask?: string;
-        dhcpNetwork?: string;
-        externalUrl?: string;
+        accessPointId: number;
+        dhcpNetmask: string;
+        dhcpNetwork: string;
+        externalUrl: string;
         intercoNextHop?: string;
         intercoPrivateNextHop?: string;
-        portGroupId?: string;
-        state?: OVH.horizonView.StateEnum;
-        twoFA?: boolean;
-        type?: OVH.horizonView.PoolType;
+        portGroupId: string;
+        state: OVH.horizonView.StateEnum;
+        twoFA: boolean;
+        type: OVH.horizonView.PoolType;
     }
     //horizonView.PoolType
     export type PoolType = "hybridPool" | "privatePool" | "publicPool"
@@ -82,17 +82,17 @@ export namespace horizonView {
     export interface Task {
         description?: string;
         lastModificationDate?: string;
-        name?: string;
-        progress?: number;
-        state?: OVH.horizonView.TaskStateEnum;
-        taskId?: number;
+        name: string;
+        progress: number;
+        state: OVH.horizonView.TaskStateEnum;
+        taskId: number;
     }
     //horizonView.TaskStateEnum
     export type TaskStateEnum = "canceled" | "doing" | "done" | "error" | "fixing" | "toCancel" | "toCreate" | "todo" | "unknown" | "waitingForChilds" | "waitingTodo"
     //horizonView.User
     // fullName: horizonView.User.User
     export interface User {
-        username?: string;
+        username: string;
     }
     //horizonView.Zone
     export type Zone = "Beauharnois" | "Roubaix" | "Strasbourg"
@@ -101,9 +101,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -120,19 +120,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

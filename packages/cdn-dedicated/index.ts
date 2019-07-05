@@ -5,31 +5,31 @@ export namespace cdnanycast {
     //cdnanycast.Anycast
     // fullName: cdnanycast.Anycast.Anycast
     export interface Anycast {
-        anycast?: string;
-        backendLimit?: number;
-        backendUse?: number;
-        cacheRuleLimitPerDomain?: number;
+        anycast: string;
+        backendLimit: number;
+        backendUse: number;
+        cacheRuleLimitPerDomain: number;
         lastQuotaOrder?: string;
-        logUrl?: string;
+        logUrl: string;
         offer?: string;
-        quota?: number;
-        service?: string;
+        quota: number;
+        service: string;
     }
     //cdnanycast.Backend
     // fullName: cdnanycast.Backend.Backend
     export interface Backend {
-        ip?: string;
+        ip: string;
     }
     //cdnanycast.CacheRule
     // fullName: cdnanycast.CacheRule.CacheRule
     export interface CacheRule {
-        cacheRuleId?: number;
-        cacheType?: OVH.cdnanycast.CacheRuleCacheTypeEnum;
-        domain?: string;
-        fileMatch?: string;
-        fileType?: OVH.cdnanycast.CacheRuleFileTypeEnum;
-        status?: OVH.cdnanycast.CacheRuleStatusEnum;
-        ttl?: number;
+        cacheRuleId: number;
+        cacheType: OVH.cdnanycast.CacheRuleCacheTypeEnum;
+        domain: string;
+        fileMatch: string;
+        fileType: OVH.cdnanycast.CacheRuleFileTypeEnum;
+        status: OVH.cdnanycast.CacheRuleStatusEnum;
+        ttl: number;
     }
     //cdnanycast.CacheRuleCacheTypeEnum
     export type CacheRuleCacheTypeEnum = "forceCache" | "noCache"
@@ -40,11 +40,11 @@ export namespace cdnanycast {
     //cdnanycast.Domain
     // fullName: cdnanycast.Domain.Domain
     export interface Domain {
-        cacheRuleUse?: number;
-        cname?: string;
-        domain?: string;
-        status?: OVH.cdnanycast.DomainStatusEnum;
-        type?: OVH.cdnanycast.DomainTypeEnum;
+        cacheRuleUse: number;
+        cname: string;
+        domain: string;
+        status: OVH.cdnanycast.DomainStatusEnum;
+        type: OVH.cdnanycast.DomainTypeEnum;
     }
     //cdnanycast.DomainStatusEnum
     export type DomainStatusEnum = "error" | "off" | "on" | "removing"
@@ -53,35 +53,35 @@ export namespace cdnanycast {
     //cdnanycast.LogsURL
     // fullName: cdnanycast.LogsURL.LogsURL
     export interface LogsURL {
-        expirationDate?: string;
-        url?: string;
+        expirationDate: string;
+        url: string;
     }
     //cdnanycast.Pop
     // fullName: cdnanycast.Pop.Pop
     export interface Pop {
-        city?: string;
-        comment?: string;
-        name?: string;
-        status?: OVH.cdnanycast.PopStatusEnum;
+        city: string;
+        comment: string;
+        name: string;
+        status: OVH.cdnanycast.PopStatusEnum;
     }
     //cdnanycast.PopStatusEnum
     export type PopStatusEnum = "down" | "ok" | "rerouted" | "unknown"
     //cdnanycast.Ssl
     // fullName: cdnanycast.Ssl.Ssl
     export interface Ssl {
-        certificateProvider?: string;
+        certificateProvider: string;
         certificateValidFrom?: string;
         certificateValidTo?: string;
         cn?: string;
-        name?: string;
-        status?: OVH.cdnanycast.SslStateEnum;
+        name: string;
+        status: OVH.cdnanycast.SslStateEnum;
     }
     //cdnanycast.SslStateEnum
     export type SslStateEnum = "checking" | "creating" | "error" | "off" | "on" | "removing" | "updating" | "uploading"
     //cdnanycast.StatsDataType
     // fullName: cdnanycast.StatsDataType.StatsDataType
     export interface StatsDataType {
-        date?: string;
+        date: string;
         value?: number;
     }
     //cdnanycast.StatsPeriodEnum
@@ -94,9 +94,9 @@ export namespace cdnanycast {
     // fullName: cdnanycast.Task.Task
     export interface Task {
         comment?: string;
-        function?: OVH.cdnanycast.TaskFunctionEnum;
-        status?: OVH.cdnanycast.TaskStateEnum;
-        taskId?: number;
+        function: OVH.cdnanycast.TaskFunctionEnum;
+        status: OVH.cdnanycast.TaskStateEnum;
+        taskId: number;
     }
     //cdnanycast.TaskFunctionEnum
     export type TaskFunctionEnum = "flush" | "flushAll" | "generateSsl" | "installSsl" | "reinstallSsl" | "removeDomain" | "uninstallSsl" | "updateCacheRule"
@@ -107,9 +107,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -122,19 +122,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

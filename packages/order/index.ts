@@ -19,14 +19,14 @@ export namespace complexType {
     //complexType.SafeKeyValue
     // fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
-        key?: string;
-        value?: T;
+        key: string;
+        value: T;
     }
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
 }
 export namespace coreTypes {
@@ -120,22 +120,22 @@ export namespace hosting {
         //hosting.web.Capabilities
         // fullName: hosting.web.Capabilities.Capabilities
         export interface Capabilities {
-            attachedDomains?: number;
-            crontab?: boolean;
-            databaseEngines?: number;
-            databases?: OVH.hosting.web.database.CreationDatabaseCapabilities[];
+            attachedDomains: number;
+            crontab: boolean;
+            databaseEngines: number;
+            databases: OVH.hosting.web.database.CreationDatabaseCapabilities[];
             disk?: OVH.hosting.web.DiskType;
-            emails?: OVH.hosting.web.CreationEmailCapabilities;
-            envVars?: number;
-            extraUsers?: number;
-            filesBrowser?: boolean;
+            emails: OVH.hosting.web.CreationEmailCapabilities;
+            envVars: number;
+            extraUsers: number;
+            filesBrowser: boolean;
             highlight?: OVH.hosting.web.HighLightEnum;
-            languages?: OVH.hosting.web.CronLanguageAvailable;
-            moduleOneClick?: boolean;
-            privateDatabases?: OVH.hosting.web.database.CreationDatabaseCapabilities[];
-            runtimes?: number;
+            languages: OVH.hosting.web.CronLanguageAvailable;
+            moduleOneClick: boolean;
+            privateDatabases: OVH.hosting.web.database.CreationDatabaseCapabilities[];
+            runtimes: number;
             sitesRecommended?: number;
-            ssh?: boolean;
+            ssh: boolean;
             traffic?: OVH.complexType.UnitAndValue<number>;
         }
         //hosting.web.CdnOfferEnum
@@ -143,23 +143,23 @@ export namespace hosting {
         //hosting.web.CreationEmailCapabilities
         // fullName: hosting.web.CreationEmailCapabilities.CreationEmailCapabilities
         export interface CreationEmailCapabilities {
-            available?: number;
-            quota?: OVH.complexType.UnitAndValue<number>;
+            available: number;
+            quota: OVH.complexType.UnitAndValue<number>;
         }
         //hosting.web.CronLanguageAvailable
         // fullName: hosting.web.CronLanguageAvailable.CronLanguageAvailable
         export interface CronLanguageAvailable {
-            nodejs?: OVH.hosting.web.NodejsVersionAvailableEnum[];
-            php?: OVH.hosting.web.PhpVersionAvailableEnum[];
-            python?: OVH.hosting.web.PythonVersionAvailableEnum[];
-            ruby?: OVH.hosting.web.RubyVersionAvailableEnum[];
+            nodejs: OVH.hosting.web.NodejsVersionAvailableEnum[];
+            php: OVH.hosting.web.PhpVersionAvailableEnum[];
+            python: OVH.hosting.web.PythonVersionAvailableEnum[];
+            ruby: OVH.hosting.web.RubyVersionAvailableEnum[];
         }
         //hosting.web.DiskType
         // fullName: hosting.web.DiskType.DiskType
         export interface DiskType {
-            type?: OVH.hosting.web.DiskTypeEnum;
-            unit?: string;
-            value?: number;
+            type: OVH.hosting.web.DiskTypeEnum;
+            unit: string;
+            value: number;
         }
         //hosting.web.DiskTypeEnum
         export type DiskTypeEnum = "HDD" | "SSD"
@@ -181,11 +181,11 @@ export namespace hosting {
             //hosting.web.database.CreationDatabaseCapabilities
             // fullName: hosting.web.database.CreationDatabaseCapabilities.CreationDatabaseCapabilities
             export interface CreationDatabaseCapabilities {
-                available?: number;
-                engines?: OVH.hosting.web.database.DatabaseTypeEnum[];
-                isolation?: OVH.hosting.web.database.DatabaseIsolationEnum;
-                quota?: OVH.complexType.UnitAndValue<number>;
-                type?: OVH.hosting.web.database.DatabaseCapabilitiesTypeEnum;
+                available: number;
+                engines: OVH.hosting.web.database.DatabaseTypeEnum[];
+                isolation: OVH.hosting.web.database.DatabaseIsolationEnum;
+                quota: OVH.complexType.UnitAndValue<number>;
+                type: OVH.hosting.web.database.DatabaseCapabilitiesTypeEnum;
             }
             //hosting.web.database.DatabaseCapabilitiesTypeEnum
             export type DatabaseCapabilitiesTypeEnum = "extraSqlPerso" | "local" | "privateDatabase" | "sqlLocal" | "sqlPerso" | "sqlPro"
@@ -252,77 +252,77 @@ export namespace order {
     //order.Contract
     // fullName: order.Contract.Contract
     export interface Contract {
-        content?: string;
-        name?: string;
-        url?: string;
+        content: string;
+        name: string;
+        url: string;
     }
     //order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     //order.Order
     // fullName: order.Order.Order
     export interface Order {
-        contracts?: OVH.order.Contract[];
-        details?: OVH.order.OrderDetail[];
+        contracts: OVH.order.Contract[];
+        details: OVH.order.OrderDetail[];
         orderId?: number;
-        prices?: OVH.order.OrderPrices;
+        prices: OVH.order.OrderPrices;
         url?: string;
     }
     //order.OrderDetail
     // fullName: order.OrderDetail.OrderDetail
     export interface OrderDetail {
-        description?: string;
+        description: string;
         detailType?: OVH.order.OrderDetailTypeEnum;
-        domain?: string;
-        quantity?: number;
-        totalPrice?: OVH.order.Price;
-        unitPrice?: OVH.order.Price;
+        domain: string;
+        quantity: number;
+        totalPrice: OVH.order.Price;
+        unitPrice: OVH.order.Price;
     }
     //order.OrderDetailTypeEnum
     export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
     //order.OrderPrices
     // fullName: order.OrderPrices.OrderPrices
     export interface OrderPrices {
-        tax?: OVH.order.Price;
-        withTax?: OVH.order.Price;
-        withoutTax?: OVH.order.Price;
+        tax: OVH.order.Price;
+        withTax: OVH.order.Price;
+        withoutTax: OVH.order.Price;
     }
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode?: OVH.order.CurrencyCodeEnum;
-        text?: string;
-        value?: number;
+        currencyCode: OVH.order.CurrencyCodeEnum;
+        text: string;
+        value: number;
     }
     export namespace cart {
         //order.cart.Cart
         // fullName: order.cart.Cart.Cart
         export interface Cart {
-            cartId?: string;
-            description?: string;
+            cartId: string;
+            description: string;
             expire?: string;
-            items?: number[];
-            readOnly?: boolean;
+            items: number[];
+            readOnly: boolean;
         }
         //order.cart.Checkout
         // fullName: order.cart.Checkout.Checkout
         export interface Checkout {
-            autoPayWithPreferredPaymentMethod?: boolean;
-            waiveRetractationPeriod?: boolean;
+            autoPayWithPreferredPaymentMethod: boolean;
+            waiveRetractationPeriod: boolean;
         }
         //order.cart.ConfigurationItem
         // fullName: order.cart.ConfigurationItem.ConfigurationItem
         export interface ConfigurationItem {
-            id?: number;
-            label?: string;
-            value?: string;
+            id: number;
+            label: string;
+            value: string;
         }
         //order.cart.ConfigurationRequirements
         // fullName: order.cart.ConfigurationRequirements.ConfigurationRequirements
         export interface ConfigurationRequirements {
             fields?: string[];
-            label?: string;
-            required?: boolean;
-            type?: string;
+            label: string;
+            required: boolean;
+            type: string;
         }
         //order.cart.CouponCreation
         // fullName: order.cart.CouponCreation.CouponCreation
@@ -332,8 +332,8 @@ export namespace order {
         //order.cart.Creation
         // fullName: order.cart.Creation.Creation
         export interface Creation {
-            description?: string;
-            expire?: string;
+            description: string;
+            expire: string;
             ovhSubsidiary: OVH.nichandle.OvhSubsidiaryEnum;
         }
         //order.cart.DomainPacksCreation
@@ -348,25 +348,25 @@ export namespace order {
         //order.cart.DomainPacksDescription
         // fullName: order.cart.DomainPacksDescription.DomainPacksDescription
         export interface DomainPacksDescription {
-            domains?: OVH.order.cart.DomainPacksDescriptionItem[];
+            domains: OVH.order.cart.DomainPacksDescriptionItem[];
         }
         //order.cart.DomainPacksDescriptionItem
         // fullName: order.cart.DomainPacksDescriptionItem.DomainPacksDescriptionItem
         export interface DomainPacksDescriptionItem {
-            available?: boolean;
-            domain?: string;
+            available: boolean;
+            domain: string;
         }
         //order.cart.DomainPacksProductInformation
         // fullName: order.cart.DomainPacksProductInformation.DomainPacksProductInformation
         export interface DomainPacksProductInformation {
-            description?: OVH.order.cart.DomainPacksDescription;
-            planCode?: string;
-            prices?: OVH.order.cart.GenericProductPricing[];
+            description: OVH.order.cart.DomainPacksDescription;
+            planCode: string;
+            prices: OVH.order.cart.GenericProductPricing[];
         }
         //order.cart.DomainSettings
         // fullName: order.cart.DomainSettings.DomainSettings
         export interface DomainSettings {
-            domain?: string;
+            domain: string;
         }
         //order.cart.DurationUnitEnum
         export type DurationUnitEnum = "month" | "day" | "none"
@@ -416,13 +416,13 @@ export namespace order {
         //order.cart.GenericOptionDefinition
         // fullName: order.cart.GenericOptionDefinition.GenericOptionDefinition
         export interface GenericOptionDefinition {
-            exclusive?: boolean;
-            family?: string;
-            mandatory?: boolean;
-            planCode?: string;
-            prices?: OVH.order.cart.GenericProductPricing[];
-            productName?: string;
-            productType?: OVH.order.cart.GenericProductTypeEnum;
+            exclusive: boolean;
+            family: string;
+            mandatory: boolean;
+            planCode: string;
+            prices: OVH.order.cart.GenericProductPricing[];
+            productName: string;
+            productType: OVH.order.cart.GenericProductTypeEnum;
         }
         //order.cart.GenericProductCreation
         // fullName: order.cart.GenericProductCreation.GenericProductCreation
@@ -435,26 +435,26 @@ export namespace order {
         //order.cart.GenericProductDefinition
         // fullName: order.cart.GenericProductDefinition.GenericProductDefinition
         export interface GenericProductDefinition {
-            planCode?: string;
-            prices?: OVH.order.cart.GenericProductPricing[];
-            productName?: string;
-            productType?: OVH.order.cart.GenericProductTypeEnum;
+            planCode: string;
+            prices: OVH.order.cart.GenericProductPricing[];
+            productName: string;
+            productType: OVH.order.cart.GenericProductTypeEnum;
         }
         //order.cart.GenericProductPricing
         // fullName: order.cart.GenericProductPricing.GenericProductPricing
         export interface GenericProductPricing {
-            capacities?: OVH.order.cart.GenericProductPricingCapacitiesEnum[];
-            description?: string;
-            duration?: string;
-            interval?: number;
-            maximumQuantity?: number;
+            capacities: OVH.order.cart.GenericProductPricingCapacitiesEnum[];
+            description: string;
+            duration: string;
+            interval: number;
+            maximumQuantity: number;
             maximumRepeat?: number;
-            minimumQuantity?: number;
-            minimumRepeat?: number;
-            price?: OVH.order.Price;
-            priceInUcents?: number;
-            pricingMode?: string;
-            pricingType?: OVH.order.cart.GenericProductPricingTypeEnum;
+            minimumQuantity: number;
+            minimumRepeat: number;
+            price: OVH.order.Price;
+            priceInUcents: number;
+            pricingMode: string;
+            pricingType: OVH.order.cart.GenericProductPricingTypeEnum;
         }
         //order.cart.GenericProductPricingCapacitiesEnum
         export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade"
@@ -467,16 +467,16 @@ export namespace order {
         //order.cart.Item
         // fullName: order.cart.Item.Item
         export interface Item {
-            cartId?: string;
+            cartId: string;
             configurations?: number[];
             duration?: string;
-            itemId?: number;
-            offerId?: string;
-            options?: number[];
+            itemId: number;
+            offerId: string;
+            options: number[];
             parentItemId?: number;
-            prices?: OVH.order.cart.Price[];
-            productId?: string;
-            settings?: OVH.order.cart.DomainSettings;
+            prices: OVH.order.cart.Price[];
+            productId: string;
+            settings: OVH.order.cart.DomainSettings;
         }
         //order.cart.ItemConfigurationCreation
         // fullName: order.cart.ItemConfigurationCreation.ItemConfigurationCreation
@@ -487,352 +487,352 @@ export namespace order {
         //order.cart.ItemUpdate
         // fullName: order.cart.ItemUpdate.ItemUpdate
         export interface ItemUpdate {
-            duration?: string;
-            quantity?: number;
+            duration: string;
+            quantity: number;
         }
         //order.cart.Price
         // fullName: order.cart.Price.Price
         export interface Price {
-            label?: OVH.order.cart.PriceLabelEnum;
-            price?: OVH.order.Price;
+            label: OVH.order.cart.PriceLabelEnum;
+            price: OVH.order.Price;
         }
         //order.cart.PriceLabelEnum
         export type PriceLabelEnum = "PRICE" | "DISCOUNT" | "FEE" | "TOTAL" | "RENEW"
         //order.cart.ProductInformation
         // fullName: order.cart.ProductInformation.ProductInformation
         export interface ProductInformation {
-            configurations?: OVH.order.cart.ConfigurationRequirements[];
-            deliveryTime?: string;
-            duration?: string[];
+            configurations: OVH.order.cart.ConfigurationRequirements[];
+            deliveryTime: string;
+            duration: string[];
             offer?: string;
-            orderable?: boolean;
-            phase?: string;
+            orderable: boolean;
+            phase: string;
             prices?: OVH.order.cart.Price[];
-            pricingMode?: string;
-            productId?: string;
-            quantityMax?: number;
+            pricingMode: string;
+            productId: string;
+            quantityMax: number;
         }
         //order.cart.Update
         // fullName: order.cart.Update.Update
         export interface Update {
-            description?: string;
-            expire?: string;
+            description: string;
+            expire: string;
         }
         //order.cart.WebHostingProductInformation
         // fullName: order.cart.WebHostingProductInformation.WebHostingProductInformation
         export interface WebHostingProductInformation {
-            description?: OVH.hosting.web.Capabilities;
-            planCode?: string;
-            prices?: OVH.order.cart.GenericProductPricing[];
+            description: OVH.hosting.web.Capabilities;
+            planCode: string;
+            prices: OVH.order.cart.GenericProductPricing[];
         }
     }
     export namespace catalog {
         //order.catalog.AddonItem
         // fullName: order.catalog.AddonItem.AddonItem
         export interface AddonItem {
-            addons?: OVH.order.catalog.AddonOffer[];
-            exclusive?: boolean;
-            family?: string;
-            mandatory?: boolean;
+            addons: OVH.order.catalog.AddonOffer[];
+            exclusive: boolean;
+            family: string;
+            mandatory: boolean;
         }
         //order.catalog.AddonOffer
         // fullName: order.catalog.AddonOffer.AddonOffer
         export interface AddonOffer {
-            invoiceName?: string;
-            plan?: OVH.order.catalog.ProductPlan;
+            invoiceName: string;
+            plan: OVH.order.catalog.ProductPlan;
         }
         //order.catalog.Catalog
         // fullName: order.catalog.Catalog.Catalog
         export interface Catalog {
-            catalogId?: number;
-            merchantCode?: string;
-            plansFamily?: OVH.order.catalog.PlansItem[];
+            catalogId: number;
+            merchantCode: string;
+            plansFamily: OVH.order.catalog.PlansItem[];
         }
         //order.catalog.ConfigurationItem
         // fullName: order.catalog.ConfigurationItem.ConfigurationItem
         export interface ConfigurationItem {
             defaultValue?: string;
-            isCustom?: boolean;
-            isMandatory?: boolean;
-            name?: string;
-            values?: string[];
+            isCustom: boolean;
+            isMandatory: boolean;
+            name: string;
+            values: string[];
         }
         //order.catalog.PlansItem
         // fullName: order.catalog.PlansItem.PlansItem
         export interface PlansItem {
-            family?: string;
-            plans?: OVH.order.catalog.ProductPlan[];
+            family: string;
+            plans: OVH.order.catalog.ProductPlan[];
         }
         //order.catalog.Pricing
         // fullName: order.catalog.Pricing.Pricing
         export interface Pricing {
-            capacities?: string[];
-            commitment?: number;
-            description?: string;
-            interval?: number;
-            intervalUnit?: string;
+            capacities: string[];
+            commitment: number;
+            description: string;
+            interval: number;
+            intervalUnit: string;
             maximumQuantity?: number;
             maximumRepeat?: number;
-            minimumQuantity?: number;
-            minimumRepeat?: number;
-            mustBeCompleted?: boolean;
-            price?: OVH.order.Price;
+            minimumQuantity: number;
+            minimumRepeat: number;
+            mustBeCompleted: boolean;
+            price: OVH.order.Price;
             priceCapInUcents?: number;
-            priceInUcents?: number;
-            pricingStrategy?: string;
+            priceInUcents: number;
+            pricingStrategy: string;
         }
         //order.catalog.PricingDefault
         // fullName: order.catalog.PricingDefault.PricingDefault
         export interface PricingDefault {
-            default?: OVH.order.catalog.Pricing[];
+            default: OVH.order.catalog.Pricing[];
         }
         //order.catalog.Product
         // fullName: order.catalog.Product.Product
         export interface Product {
-            configurations?: OVH.order.catalog.ConfigurationItem[];
-            description?: string;
-            name?: string;
+            configurations: OVH.order.catalog.ConfigurationItem[];
+            description: string;
+            name: string;
             technicalDetails?: OVH.complexType.SafeKeyValue<string>[];
         }
         //order.catalog.ProductOfferDetails
         // fullName: order.catalog.ProductOfferDetails.ProductOfferDetails
         export interface ProductOfferDetails {
-            metadatas?: OVH.complexType.SafeKeyValue<string>[];
-            pricings?: OVH.order.catalog.PricingDefault;
-            product?: OVH.order.catalog.Product;
+            metadatas: OVH.complexType.SafeKeyValue<string>[];
+            pricings: OVH.order.catalog.PricingDefault;
+            product: OVH.order.catalog.Product;
         }
         //order.catalog.ProductPlan
         // fullName: order.catalog.ProductPlan.ProductPlan
         export interface ProductPlan {
-            addonsFamily?: OVH.order.catalog.AddonItem[];
+            addonsFamily: OVH.order.catalog.AddonItem[];
             consumptionBillingStrategy?: string;
-            details?: OVH.order.catalog.ProductOfferDetails;
-            invoiceName?: string;
-            planCode?: string;
-            pricingType?: string;
+            details: OVH.order.catalog.ProductOfferDetails;
+            invoiceName: string;
+            planCode: string;
+            pricingType: string;
         }
         export namespace pcc {
             //order.catalog.pcc.Catalog
             // fullName: order.catalog.pcc.Catalog.Catalog
             export interface Catalog {
-                catalogId?: number;
-                catalogName?: string;
-                commercialRanges?: OVH.order.catalog.pcc.CommercialRange[];
-                merchantCode?: string;
-                plans?: OVH.order.catalog.ProductPlan[];
+                catalogId: number;
+                catalogName: string;
+                commercialRanges: OVH.order.catalog.pcc.CommercialRange[];
+                merchantCode: string;
+                plans: OVH.order.catalog.ProductPlan[];
             }
             //order.catalog.pcc.CommercialRange
             // fullName: order.catalog.pcc.CommercialRange.CommercialRange
             export interface CommercialRange {
-                datacenters?: OVH.order.catalog.pcc.Datacenter[];
-                defaultZone?: string;
-                name?: string;
+                datacenters: OVH.order.catalog.pcc.Datacenter[];
+                defaultZone: string;
+                name: string;
             }
             //order.catalog.pcc.Datacenter
             // fullName: order.catalog.pcc.Datacenter.Datacenter
             export interface Datacenter {
-                cityCode?: string;
-                cityName?: string;
-                countryCode?: OVH.nichandle.CountryEnum;
-                defaultHypervisor?: string;
-                hypervisors?: OVH.order.catalog.pcc.Hypervisor[];
-                mainPlan?: string;
-                orderable?: boolean;
-                orderableOptions?: boolean;
-                orderableResources?: boolean;
-                storagesNoPack?: string[];
-                zoneFullName?: string;
-                zoneName?: string;
+                cityCode: string;
+                cityName: string;
+                countryCode: OVH.nichandle.CountryEnum;
+                defaultHypervisor: string;
+                hypervisors: OVH.order.catalog.pcc.Hypervisor[];
+                mainPlan: string;
+                orderable: boolean;
+                orderableOptions: boolean;
+                orderableResources: boolean;
+                storagesNoPack: string[];
+                zoneFullName: string;
+                zoneName: string;
             }
             //order.catalog.pcc.Host
             // fullName: order.catalog.pcc.Host.Host
             export interface Host {
-                name?: string;
-                onInitialOrder?: boolean;
-                onUpgradeOrder?: boolean;
-                planCode?: string;
-                specifications?: OVH.order.catalog.pcc.HostSpecifications;
-                storagesPack?: string[];
+                name: string;
+                onInitialOrder: boolean;
+                onUpgradeOrder: boolean;
+                planCode: string;
+                specifications: OVH.order.catalog.pcc.HostSpecifications;
+                storagesPack: string[];
             }
             //order.catalog.pcc.HostCpuSpecifications
             // fullName: order.catalog.pcc.HostCpuSpecifications.HostCpuSpecifications
             export interface HostCpuSpecifications {
-                cores?: number;
-                frequency?: OVH.complexType.UnitAndValue<number>;
-                generation?: string;
-                model?: string;
-                socket?: number;
-                threads?: number;
+                cores: number;
+                frequency: OVH.complexType.UnitAndValue<number>;
+                generation: string;
+                model: string;
+                socket: number;
+                threads: number;
             }
             //order.catalog.pcc.HostMemorySpecifications
             // fullName: order.catalog.pcc.HostMemorySpecifications.HostMemorySpecifications
             export interface HostMemorySpecifications {
-                ram?: OVH.complexType.UnitAndValue<number>;
+                ram: OVH.complexType.UnitAndValue<number>;
             }
             //order.catalog.pcc.HostNetworkSpecifications
             // fullName: order.catalog.pcc.HostNetworkSpecifications.HostNetworkSpecifications
             export interface HostNetworkSpecifications {
-                nics?: number;
-                speed?: OVH.complexType.UnitAndValue<number>;
+                nics: number;
+                speed: OVH.complexType.UnitAndValue<number>;
             }
             //order.catalog.pcc.HostSpecifications
             // fullName: order.catalog.pcc.HostSpecifications.HostSpecifications
             export interface HostSpecifications {
-                cpu?: OVH.order.catalog.pcc.HostCpuSpecifications;
-                memory?: OVH.order.catalog.pcc.HostMemorySpecifications;
-                network?: OVH.order.catalog.pcc.HostNetworkSpecifications[];
+                cpu: OVH.order.catalog.pcc.HostCpuSpecifications;
+                memory: OVH.order.catalog.pcc.HostMemorySpecifications;
+                network: OVH.order.catalog.pcc.HostNetworkSpecifications[];
             }
             //order.catalog.pcc.Hypervisor
             // fullName: order.catalog.pcc.Hypervisor.Hypervisor
             export interface Hypervisor {
-                hosts?: OVH.order.catalog.pcc.Host[];
-                name?: string;
-                options?: OVH.order.catalog.pcc.Option[];
-                orderable?: boolean;
-                servicePacks?: OVH.order.catalog.pcc.ServicePack[];
-                shortName?: string;
-                storages?: OVH.order.catalog.pcc.Storage[];
-                type?: string;
+                hosts: OVH.order.catalog.pcc.Host[];
+                name: string;
+                options: OVH.order.catalog.pcc.Option[];
+                orderable: boolean;
+                servicePacks: OVH.order.catalog.pcc.ServicePack[];
+                shortName: string;
+                storages: OVH.order.catalog.pcc.Storage[];
+                type: string;
             }
             //order.catalog.pcc.Option
             // fullName: order.catalog.pcc.Option.Option
             export interface Option {
-                maxInitialQuantity?: number;
-                name?: string;
-                onInitialOrder?: boolean;
-                onUpgradeOrder?: boolean;
-                planCode?: string;
-                type?: string;
+                maxInitialQuantity: number;
+                name: string;
+                onInitialOrder: boolean;
+                onUpgradeOrder: boolean;
+                planCode: string;
+                type: string;
             }
             //order.catalog.pcc.ServicePack
             // fullName: order.catalog.pcc.ServicePack.ServicePack
             export interface ServicePack {
-                name?: string;
-                options?: OVH.order.catalog.pcc.ServicePackOption[];
-                planCode?: string;
-                upgradableTo?: string[];
+                name: string;
+                options: OVH.order.catalog.pcc.ServicePackOption[];
+                planCode: string;
+                upgradableTo: string[];
             }
             //order.catalog.pcc.ServicePackOption
             // fullName: order.catalog.pcc.ServicePackOption.ServicePackOption
             export interface ServicePackOption {
-                name?: string;
-                planCode?: string;
-                type?: string;
+                name: string;
+                planCode: string;
+                type: string;
             }
             //order.catalog.pcc.Storage
             // fullName: order.catalog.pcc.Storage.Storage
             export interface Storage {
-                name?: string;
-                onInitialOrder?: boolean;
-                onUpgradeOrder?: boolean;
-                planCode?: string;
-                specifications?: OVH.order.catalog.pcc.StorageSpecifications;
+                name: string;
+                onInitialOrder: boolean;
+                onUpgradeOrder: boolean;
+                planCode: string;
+                specifications: OVH.order.catalog.pcc.StorageSpecifications;
             }
             //order.catalog.pcc.StorageSpecifications
             // fullName: order.catalog.pcc.StorageSpecifications.StorageSpecifications
             export interface StorageSpecifications {
-                size?: OVH.complexType.UnitAndValue<number>;
-                type?: string;
+                size: OVH.complexType.UnitAndValue<number>;
+                type: string;
             }
         }
         export namespace privateCloud {
             //order.catalog.privateCloud.Capabilities
             // fullName: order.catalog.privateCloud.Capabilities.Capabilities
             export interface Capabilities {
-                hds?: boolean;
-                hipaa?: boolean;
-                nsx?: boolean;
-                pcidss?: boolean;
-                vrops?: boolean;
+                hds: boolean;
+                hipaa: boolean;
+                nsx: boolean;
+                pcidss: boolean;
+                vrops: boolean;
             }
             //order.catalog.privateCloud.CapabilitiesListing
             // fullName: order.catalog.privateCloud.CapabilitiesListing.CapabilitiesListing
             export interface CapabilitiesListing {
-                '2016v1'?: OVH.order.catalog.privateCloud.Capabilities;
-                '2016v2'?: OVH.order.catalog.privateCloud.Capabilities;
-                '2016v3'?: OVH.order.catalog.privateCloud.Capabilities;
-                '2016v4'?: OVH.order.catalog.privateCloud.Capabilities;
-                '2016v5'?: OVH.order.catalog.privateCloud.Capabilities;
-                '2016v6'?: OVH.order.catalog.privateCloud.Capabilities;
-                '2016v7'?: OVH.order.catalog.privateCloud.Capabilities;
-                default?: OVH.order.catalog.privateCloud.Capabilities;
+                '2016v1': OVH.order.catalog.privateCloud.Capabilities;
+                '2016v2': OVH.order.catalog.privateCloud.Capabilities;
+                '2016v3': OVH.order.catalog.privateCloud.Capabilities;
+                '2016v4': OVH.order.catalog.privateCloud.Capabilities;
+                '2016v5': OVH.order.catalog.privateCloud.Capabilities;
+                '2016v6': OVH.order.catalog.privateCloud.Capabilities;
+                '2016v7': OVH.order.catalog.privateCloud.Capabilities;
+                default: OVH.order.catalog.privateCloud.Capabilities;
             }
             //order.catalog.privateCloud.Catalog
             // fullName: order.catalog.privateCloud.Catalog.Catalog
             export interface Catalog {
-                catalogId?: number;
-                catalogName?: string;
-                defaultHypervisor?: string;
-                defaultZone?: string;
-                merchantCode?: string;
-                options?: OVH.order.catalog.privateCloud.CapabilitiesListing;
-                zones?: OVH.order.catalog.privateCloud.ZonesListing;
+                catalogId: number;
+                catalogName: string;
+                defaultHypervisor: string;
+                defaultZone: string;
+                merchantCode: string;
+                options: OVH.order.catalog.privateCloud.CapabilitiesListing;
+                zones: OVH.order.catalog.privateCloud.ZonesListing;
             }
             //order.catalog.privateCloud.Zone
             // fullName: order.catalog.privateCloud.Zone.Zone
             export interface Zone {
-                cityName?: string;
-                country?: string;
-                defaultHypervisor?: string;
-                defaultVersion?: string;
-                internalName?: string;
-                plans?: OVH.order.catalog.ProductPlan[];
+                cityName: string;
+                country: string;
+                defaultHypervisor: string;
+                defaultVersion: string;
+                internalName: string;
+                plans: OVH.order.catalog.ProductPlan[];
             }
             //order.catalog.privateCloud.ZonesListing
             // fullName: order.catalog.privateCloud.ZonesListing.ZonesListing
             export interface ZonesListing {
-                bhs?: OVH.order.catalog.privateCloud.Zone;
-                eri?: OVH.order.catalog.privateCloud.Zone;
-                lim?: OVH.order.catalog.privateCloud.Zone;
-                rbx?: OVH.order.catalog.privateCloud.Zone;
-                sbg?: OVH.order.catalog.privateCloud.Zone;
-                waw?: OVH.order.catalog.privateCloud.Zone;
+                bhs: OVH.order.catalog.privateCloud.Zone;
+                eri: OVH.order.catalog.privateCloud.Zone;
+                lim: OVH.order.catalog.privateCloud.Zone;
+                rbx: OVH.order.catalog.privateCloud.Zone;
+                sbg: OVH.order.catalog.privateCloud.Zone;
+                waw: OVH.order.catalog.privateCloud.Zone;
             }
         }
         export namespace publik {
             //order.catalog.publik.AddonFamily
             // fullName: order.catalog.publik.AddonFamily.AddonFamily
             export interface AddonFamily {
-                addons?: string[];
+                addons: string[];
                 default?: string;
-                exclusive?: boolean;
-                mandatory?: boolean;
-                name?: string;
+                exclusive: boolean;
+                mandatory: boolean;
+                name: string;
             }
             //order.catalog.publik.Catalog
             // fullName: order.catalog.publik.Catalog.Catalog
             export interface Catalog {
-                addons?: OVH.order.catalog.publik.Plan[];
-                catalogId?: number;
-                locale?: OVH.order.catalog.publik.Locale;
-                planFamilies?: OVH.order.catalog.publik.PlanFamily[];
-                plans?: OVH.order.catalog.publik.Plan[];
-                products?: OVH.order.catalog.publik.Product[];
+                addons: OVH.order.catalog.publik.Plan[];
+                catalogId: number;
+                locale: OVH.order.catalog.publik.Locale;
+                planFamilies: OVH.order.catalog.publik.PlanFamily[];
+                plans: OVH.order.catalog.publik.Plan[];
+                products: OVH.order.catalog.publik.Product[];
             }
             //order.catalog.publik.Configuration
             // fullName: order.catalog.publik.Configuration.Configuration
             export interface Configuration {
-                isCustom?: boolean;
-                isMandatory?: boolean;
-                name?: string;
-                values?: string[];
+                isCustom: boolean;
+                isMandatory: boolean;
+                name: string;
+                values: string[];
             }
             //order.catalog.publik.DedicatedServerCatalog
             // fullName: order.catalog.publik.DedicatedServerCatalog.DedicatedServerCatalog
             export interface DedicatedServerCatalog {
-                addons?: OVH.order.catalog.publik.Plan[];
-                catalogId?: number;
-                locale?: OVH.order.catalog.publik.Locale;
-                planFamilies?: OVH.order.catalog.publik.AddonFamily[];
-                plans?: OVH.order.catalog.publik.Plan[];
-                products?: OVH.order.catalog.publik.DedicatedServerProduct[];
+                addons: OVH.order.catalog.publik.Plan[];
+                catalogId: number;
+                locale: OVH.order.catalog.publik.Locale;
+                planFamilies: OVH.order.catalog.publik.AddonFamily[];
+                plans: OVH.order.catalog.publik.Plan[];
+                products: OVH.order.catalog.publik.DedicatedServerProduct[];
             }
             //order.catalog.publik.DedicatedServerProduct
             // fullName: order.catalog.publik.DedicatedServerProduct.DedicatedServerProduct
             export interface DedicatedServerProduct {
                 blobs?: OVH.order.catalog.publik.DedicatedServerProductBlob;
-                description?: string;
-                name?: string;
+                description: string;
+                name: string;
             }
             //order.catalog.publik.DedicatedServerProductBlob
             // fullName: order.catalog.publik.DedicatedServerProductBlob.DedicatedServerProductBlob
@@ -853,116 +853,116 @@ export namespace order {
             //order.catalog.publik.DedicatedServerProductBlobTechnicalCPU
             // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU.DedicatedServerProductBlobTechnicalCPU
             export interface DedicatedServerProductBlobTechnicalCPU {
-                boost?: number;
-                brand?: string;
-                cores?: number;
-                frequency?: number;
-                model?: string;
-                score?: number;
-                threads?: number;
+                boost: number;
+                brand: string;
+                cores: number;
+                frequency: number;
+                model: string;
+                score: number;
+                threads: number;
             }
             //order.catalog.publik.DedicatedServerProductBlobTechnicalDisk
             // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalDisk.DedicatedServerProductBlobTechnicalDisk
             export interface DedicatedServerProductBlobTechnicalDisk {
-                capacity?: number;
-                interface?: string;
-                number?: number;
-                specs?: string;
-                technology?: string;
+                capacity: number;
+                interface: string;
+                number: number;
+                specs: string;
+                technology: string;
             }
             //order.catalog.publik.DedicatedServerProductBlobTechnicalFrame
             // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalFrame.DedicatedServerProductBlobTechnicalFrame
             export interface DedicatedServerProductBlobTechnicalFrame {
-                model?: string;
-                size?: string;
+                model: string;
+                size: string;
             }
             //order.catalog.publik.DedicatedServerProductBlobTechnicalGPU
             // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalGPU.DedicatedServerProductBlobTechnicalGPU
             export interface DedicatedServerProductBlobTechnicalGPU {
-                memory?: number;
+                memory: number;
             }
             //order.catalog.publik.DedicatedServerProductBlobTechnicalMemory
             // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalMemory.DedicatedServerProductBlobTechnicalMemory
             export interface DedicatedServerProductBlobTechnicalMemory {
-                ecc?: boolean;
-                frequency?: number;
-                ramType?: string;
-                size?: number;
+                ecc: boolean;
+                frequency: number;
+                ramType: string;
+                size: number;
             }
             //order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork
             // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork.DedicatedServerProductBlobTechnicalNetwork
             export interface DedicatedServerProductBlobTechnicalNetwork {
                 burst?: number;
-                guaranteed?: boolean;
-                level?: number;
+                guaranteed: boolean;
+                level: number;
                 limit?: number;
             }
             //order.catalog.publik.DedicatedServerProductBlobTechnicalServer
             // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalServer.DedicatedServerProductBlobTechnicalServer
             export interface DedicatedServerProductBlobTechnicalServer {
-                cpu?: OVH.order.catalog.publik.DedicatedServerProductBlobTechnicalCPU;
-                frame?: OVH.order.catalog.publik.DedicatedServerProductBlobTechnicalFrame;
-                range?: string;
+                cpu: OVH.order.catalog.publik.DedicatedServerProductBlobTechnicalCPU;
+                frame: OVH.order.catalog.publik.DedicatedServerProductBlobTechnicalFrame;
+                range: string;
             }
             //order.catalog.publik.DedicatedServerProductBlobTechnicalStorage
             // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalStorage.DedicatedServerProductBlobTechnicalStorage
             export interface DedicatedServerProductBlobTechnicalStorage {
-                disks?: OVH.order.catalog.publik.DedicatedServerProductBlobTechnicalDisk[];
-                raid?: string;
+                disks: OVH.order.catalog.publik.DedicatedServerProductBlobTechnicalDisk[];
+                raid: string;
             }
             //order.catalog.publik.Locale
             // fullName: order.catalog.publik.Locale.Locale
             export interface Locale {
-                currencyCode?: OVH.order.CurrencyCodeEnum;
-                subsidiary?: OVH.nichandle.OvhSubsidiaryEnum;
-                taxRate?: number;
+                currencyCode: OVH.order.CurrencyCodeEnum;
+                subsidiary: OVH.nichandle.OvhSubsidiaryEnum;
+                taxRate: number;
             }
             //order.catalog.publik.Plan
             // fullName: order.catalog.publik.Plan.Plan
             export interface Plan {
-                addonFamilies?: OVH.order.catalog.publik.AddonFamily[];
-                configurations?: OVH.order.catalog.publik.Configuration[];
+                addonFamilies: OVH.order.catalog.publik.AddonFamily[];
+                configurations: OVH.order.catalog.publik.Configuration[];
                 family?: string;
-                invoiceName?: string;
-                planCode?: string;
-                pricingType?: OVH.order.cart.GenericProductPricingTypeEnum;
-                pricings?: OVH.order.catalog.publik.Pricing[];
-                product?: string;
+                invoiceName: string;
+                planCode: string;
+                pricingType: OVH.order.cart.GenericProductPricingTypeEnum;
+                pricings: OVH.order.catalog.publik.Pricing[];
+                product: string;
             }
             //order.catalog.publik.PlanFamily
             // fullName: order.catalog.publik.PlanFamily.PlanFamily
             export interface PlanFamily {
-                name?: string;
+                name: string;
             }
             //order.catalog.publik.Pricing
             // fullName: order.catalog.publik.Pricing.Pricing
             export interface Pricing {
-                capacities?: OVH.order.cart.GenericProductPricingCapacitiesEnum[];
-                commitment?: number;
-                description?: string;
-                interval?: number;
-                intervalUnit?: OVH.order.cart.DurationUnitEnum;
-                mode?: string;
-                mustBeCompleted?: boolean;
-                phase?: number;
-                price?: number;
-                quantity?: OVH.order.catalog.publik.PricingMinMax;
-                repeat?: OVH.order.catalog.publik.PricingMinMax;
-                strategy?: OVH.order.cart.GenericProductPricingStrategyEnum;
-                tax?: number;
-                type?: OVH.order.cart.GenericProductPricingTypeEnum;
+                capacities: OVH.order.cart.GenericProductPricingCapacitiesEnum[];
+                commitment: number;
+                description: string;
+                interval: number;
+                intervalUnit: OVH.order.cart.DurationUnitEnum;
+                mode: string;
+                mustBeCompleted: boolean;
+                phase: number;
+                price: number;
+                quantity: OVH.order.catalog.publik.PricingMinMax;
+                repeat: OVH.order.catalog.publik.PricingMinMax;
+                strategy: OVH.order.cart.GenericProductPricingStrategyEnum;
+                tax: number;
+                type: OVH.order.cart.GenericProductPricingTypeEnum;
             }
             //order.catalog.publik.PricingMinMax
             // fullName: order.catalog.publik.PricingMinMax.PricingMinMax
             export interface PricingMinMax {
                 max?: number;
-                min?: number;
+                min: number;
             }
             //order.catalog.publik.Product
             // fullName: order.catalog.publik.Product.Product
             export interface Product {
-                description?: string;
-                name?: string;
+                description: string;
+                name: string;
             }
         }
     }
@@ -970,16 +970,16 @@ export namespace order {
         //order.upgrade.Operation
         // fullName: order.upgrade.Operation.Operation
         export interface Operation {
-            id?: number;
-            product?: OVH.order.upgrade.OperationProduct;
-            status?: OVH.order.upgrade.OperationStatusEnum;
-            type?: OVH.order.upgrade.OperationTypeEnum;
+            id: number;
+            product: OVH.order.upgrade.OperationProduct;
+            status: OVH.order.upgrade.OperationStatusEnum;
+            type: OVH.order.upgrade.OperationTypeEnum;
         }
         //order.upgrade.OperationProduct
         // fullName: order.upgrade.OperationProduct.OperationProduct
         export interface OperationProduct {
-            description?: string;
-            name?: string;
+            description: string;
+            name: string;
         }
         //order.upgrade.OperationStatusEnum
         export type OperationStatusEnum = "TODO" | "DOING" | "DONE" | "ERROR" | "DELAYED" | "CANCELLED" | "SCHEDULED"

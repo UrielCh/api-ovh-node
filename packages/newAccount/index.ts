@@ -11,38 +11,38 @@ export namespace nichandle {
         examples?: string[];
         fieldName?: string;
         in?: string[];
-        mandatory?: boolean;
+        mandatory: boolean;
         prefix?: string;
         regularExpression?: string;
     }
     //nichandle.CreationRules
     // fullName: nichandle.CreationRules.CreationRules
     export interface CreationRules {
-        address?: OVH.nichandle.CreationRule;
-        area?: OVH.nichandle.CreationRule;
-        birthCity?: OVH.nichandle.CreationRule;
-        birthDay?: OVH.nichandle.CreationRule;
-        city?: OVH.nichandle.CreationRule;
-        companyNationalIdentificationNumber?: OVH.nichandle.CreationRule;
-        corporationType?: OVH.nichandle.CreationRule;
-        country?: OVH.nichandle.CreationRule;
-        email?: OVH.nichandle.CreationRule;
-        fax?: OVH.nichandle.CreationRule;
-        firstname?: OVH.nichandle.CreationRule;
-        italianSDI?: OVH.nichandle.CreationRule;
-        language?: OVH.nichandle.CreationRule;
-        legalform?: OVH.nichandle.CreationRule;
-        name?: OVH.nichandle.CreationRule;
-        nationalIdentificationNumber?: OVH.nichandle.CreationRule;
-        organisation?: OVH.nichandle.CreationRule;
-        ovhCompany?: OVH.nichandle.CreationRule;
-        ovhSubsidiary?: OVH.nichandle.CreationRule;
-        phone?: OVH.nichandle.CreationRule;
-        phoneCountry?: OVH.nichandle.CreationRule;
-        sex?: OVH.nichandle.CreationRule;
-        spareEmail?: OVH.nichandle.CreationRule;
-        vat?: OVH.nichandle.CreationRule;
-        zip?: OVH.nichandle.CreationRule;
+        address: OVH.nichandle.CreationRule;
+        area: OVH.nichandle.CreationRule;
+        birthCity: OVH.nichandle.CreationRule;
+        birthDay: OVH.nichandle.CreationRule;
+        city: OVH.nichandle.CreationRule;
+        companyNationalIdentificationNumber: OVH.nichandle.CreationRule;
+        corporationType: OVH.nichandle.CreationRule;
+        country: OVH.nichandle.CreationRule;
+        email: OVH.nichandle.CreationRule;
+        fax: OVH.nichandle.CreationRule;
+        firstname: OVH.nichandle.CreationRule;
+        italianSDI: OVH.nichandle.CreationRule;
+        language: OVH.nichandle.CreationRule;
+        legalform: OVH.nichandle.CreationRule;
+        name: OVH.nichandle.CreationRule;
+        nationalIdentificationNumber: OVH.nichandle.CreationRule;
+        organisation: OVH.nichandle.CreationRule;
+        ovhCompany: OVH.nichandle.CreationRule;
+        ovhSubsidiary: OVH.nichandle.CreationRule;
+        phone: OVH.nichandle.CreationRule;
+        phoneCountry: OVH.nichandle.CreationRule;
+        sex: OVH.nichandle.CreationRule;
+        spareEmail: OVH.nichandle.CreationRule;
+        vat: OVH.nichandle.CreationRule;
+        zip: OVH.nichandle.CreationRule;
     }
     //nichandle.CreationRulesActionEnum
     export type CreationRulesActionEnum = "create" | "update"
@@ -56,7 +56,7 @@ export namespace nichandle {
     // fullName: nichandle.NewAccountAndToken.NewAccountAndToken
     export interface NewAccountAndToken {
         consumerKey?: string;
-        ovhIdentifier?: string;
+        ovhIdentifier: string;
     }
     //nichandle.OvhCompanyEnum
     export type OvhCompanyEnum = "kimsufi" | "ovh" | "soyoustart"
@@ -67,9 +67,9 @@ export namespace order {
     //order.Contract
     // fullName: order.Contract.Contract
     export interface Contract {
-        content?: string;
-        name?: string;
-        url?: string;
+        content: string;
+        name: string;
+        url: string;
     }
 }
 // Apis harmony

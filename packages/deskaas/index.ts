@@ -5,8 +5,8 @@ export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
 }
 export namespace deskaas {
@@ -17,48 +17,48 @@ export namespace deskaas {
     export interface Task {
         description?: string;
         lastModificationDate?: string;
-        name?: string;
-        progress?: number;
-        state?: OVH.deskaas.TaskStateEnum;
-        taskId?: number;
+        name: string;
+        progress: number;
+        state: OVH.deskaas.TaskStateEnum;
+        taskId: number;
     }
     //deskaas.TaskStateEnum
     export type TaskStateEnum = "canceled" | "doing" | "done" | "error" | "fixing" | "toCancel" | "toCreate" | "todo" | "unknown" | "waitingForChilds" | "waitingTodo"
     //deskaas.User
     // fullName: deskaas.User.User
     export interface User {
-        activationState?: OVH.deskaas.user.ActivationStateEnum;
-        email?: string;
-        name?: string;
-        state?: OVH.deskaas.user.StateEnum;
-        userId?: number;
+        activationState: OVH.deskaas.user.ActivationStateEnum;
+        email: string;
+        name: string;
+        state: OVH.deskaas.user.StateEnum;
+        userId: number;
     }
     //deskaas.deskaas
     // fullName: deskaas.deskaas.deskaas
     export interface deskaas {
-        alias?: string;
-        dataDisk?: OVH.complexType.UnitAndValue<number>;
+        alias: string;
+        dataDisk: OVH.complexType.UnitAndValue<number>;
         ip?: string;
-        os?: string;
-        planCode?: string;
-        ram?: OVH.complexType.UnitAndValue<number>;
-        reference?: string;
-        serviceName?: string;
-        state?: OVH.deskaas.StateEnum;
+        os: string;
+        planCode: string;
+        ram: OVH.complexType.UnitAndValue<number>;
+        reference: string;
+        serviceName: string;
+        state: OVH.deskaas.StateEnum;
         url?: string;
-        vcpu?: number;
+        vcpu: number;
     }
     //deskaas.passwordPolicy
     // fullName: deskaas.passwordPolicy.passwordPolicy
     export interface passwordPolicy {
-        deniedChars?: string[];
-        digitMandatory?: boolean;
-        letterMandatory?: boolean;
-        lowercaseLetterMandatory?: boolean;
-        maxLength?: number;
-        minLength?: number;
-        specialMandatory?: boolean;
-        uppercaseLetterMandatory?: boolean;
+        deniedChars: string[];
+        digitMandatory: boolean;
+        letterMandatory: boolean;
+        lowercaseLetterMandatory: boolean;
+        maxLength: number;
+        minLength: number;
+        specialMandatory: boolean;
+        uppercaseLetterMandatory: boolean;
     }
     export namespace user {
         //deskaas.user.ActivationStateEnum
@@ -71,9 +71,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -90,19 +90,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

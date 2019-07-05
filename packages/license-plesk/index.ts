@@ -9,8 +9,8 @@ export namespace license {
     //license.ChangeIpStatus
     // fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message?: OVH.license.ChangeIpMessageEnum;
-        success?: boolean;
+        message: OVH.license.ChangeIpMessageEnum;
+        success: boolean;
     }
     //license.DomainNumberEnum
     export type DomainNumberEnum = "0" | "1" | "10" | "100" | "30" | "300" | "unlimited"
@@ -20,9 +20,9 @@ export namespace license {
     // fullName: license.Option.Option
     export interface Option {
         amount?: string;
-        canBeDeleted?: boolean;
-        expirationDate?: string;
-        label?: OVH.license.OptionLabel;
+        canBeDeleted: boolean;
+        expirationDate: string;
+        label: OVH.license.OptionLabel;
         version?: string;
     }
     //license.OptionLabel
@@ -32,15 +32,15 @@ export namespace license {
     //license.OrderablePleskCompatibilityInfos
     // fullName: license.OrderablePleskCompatibilityInfos.OrderablePleskCompatibilityInfos
     export interface OrderablePleskCompatibilityInfos {
-        canHavePowerPack?: boolean;
-        canHaveResellerManagement?: boolean;
-        canHaveWordpressToolkit?: boolean;
-        compliantAntivirus?: OVH.license.OrderableAntivirusEnum[];
-        compliantApplicationSets?: OVH.license.PleskApplicationSetEnum[];
-        compliantDomains?: OVH.license.OrderablePleskDomainNumberEnum[];
-        compliantLanguagePack?: OVH.license.OrderablePleskLanguagePackEnum[];
-        potentialProblems?: OVH.license.PotentialProblemPleskEnum[];
-        version?: OVH.license.PleskVersionEnum;
+        canHavePowerPack: boolean;
+        canHaveResellerManagement: boolean;
+        canHaveWordpressToolkit: boolean;
+        compliantAntivirus: OVH.license.OrderableAntivirusEnum[];
+        compliantApplicationSets: OVH.license.PleskApplicationSetEnum[];
+        compliantDomains: OVH.license.OrderablePleskDomainNumberEnum[];
+        compliantLanguagePack: OVH.license.OrderablePleskLanguagePackEnum[];
+        potentialProblems: OVH.license.PotentialProblemPleskEnum[];
+        version: OVH.license.PleskVersionEnum;
     }
     //license.OrderablePleskDomainNumberEnum
     export type OrderablePleskDomainNumberEnum = "10" | "100" | "30" | "300" | "hostingsuite" | "unlimited"
@@ -51,8 +51,8 @@ export namespace license {
     //license.PleskOrderConfiguration
     // fullName: license.PleskOrderConfiguration.PleskOrderConfiguration
     export interface PleskOrderConfiguration {
-        orderableVersions?: OVH.license.OrderablePleskCompatibilityInfos[];
-        serviceType?: OVH.license.LicenseTypeEnum;
+        orderableVersions: OVH.license.OrderablePleskCompatibilityInfos[];
+        serviceType: OVH.license.LicenseTypeEnum;
     }
     //license.PleskVersionEnum
     export type PleskVersionEnum = "PLESK_10_AND_LATER" | "PLESK_10_AND_LATER_FOR_KVM" | "PLESK_10_AND_LATER_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN_FOR_XEN" | "PLESK_10_AND_LATER_FOR_XEN" | "PLESK_12_VPS_WEB_ADMIN" | "PLESK_12_VPS_WEB_APP" | "PLESK_12_VPS_WEB_HOST" | "PLESK_12_VPS_WEB_HOST_CLNX" | "PLESK_12_VPS_WEB_PRO" | "PLESK_12_VPS_WEB_PRO_CLNX" | "PLESK_12_WEB_ADMIN" | "PLESK_12_WEB_APP" | "PLESK_12_WEB_HOST" | "PLESK_12_WEB_HOST_CLNX" | "PLESK_12_WEB_PRO" | "PLESK_12_WEB_PRO_CLNX" | "PLESK_75_RELOADED" | "PLESK_80" | "PLESK_80_FOR_VZ" | "PLESK_81_FOR_WIN" | "PLESK_9" | "PLESK_95" | "PLESK_95_FOR_VZ" | "PLESK_95_FOR_WIN" | "PLESK_9_FOR_VZ" | "PLESK_9_FOR_WIN" | "PLESK_ONYX_VPS_WEB_ADMIN" | "PLESK_ONYX_VPS_WEB_APP" | "PLESK_ONYX_VPS_WEB_HOST" | "PLESK_ONYX_VPS_WEB_HOST_CLNX" | "PLESK_ONYX_VPS_WEB_PRO" | "PLESK_ONYX_VPS_WEB_PRO_CLNX" | "PLESK_ONYX_WEB_ADMIN" | "PLESK_ONYX_WEB_APP" | "PLESK_ONYX_WEB_HOST" | "PLESK_ONYX_WEB_HOST_CLNX" | "PLESK_ONYX_WEB_PRO" | "PLESK_ONYX_WEB_PRO_CLNX" | "plesk-12-webadmin-for-vps" | "plesk-12-webhost" | "plesk-12-webhost-for-vps" | "plesk-12-webpro" | "plesk-12-webpro-for-vps"
@@ -63,13 +63,13 @@ export namespace license {
     //license.Task
     // fullName: license.Task.Task
     export interface Task {
-        action?: OVH.license.ActionType;
+        action: OVH.license.ActionType;
         doneDate?: string;
-        lastUpdate?: string;
-        name?: string;
-        status?: OVH.license.TaskStateEnum;
-        taskId?: number;
-        todoDate?: string;
+        lastUpdate: string;
+        name: string;
+        status: OVH.license.TaskStateEnum;
+        taskId: number;
+        todoDate: string;
     }
     //license.TaskStateEnum
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
@@ -77,17 +77,17 @@ export namespace license {
         //license.plesk.Plesk
         // fullName: license.plesk.Plesk.Plesk
         export interface Plesk {
-            creation?: string;
-            deleteAtExpiration?: boolean;
-            domain?: string;
+            creation: string;
+            deleteAtExpiration: boolean;
+            domain: string;
             domainNumber?: OVH.license.DomainNumberEnum;
             informationKey?: string;
-            ip?: string;
-            key?: string;
-            licenseId?: string;
+            ip: string;
+            key: string;
+            licenseId: string;
             productKey?: string;
-            status?: OVH.license.StateEnum;
-            version?: OVH.license.PleskVersionEnum;
+            status: OVH.license.StateEnum;
+            version: OVH.license.PleskVersionEnum;
         }
     }
 }
@@ -95,9 +95,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -114,19 +114,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

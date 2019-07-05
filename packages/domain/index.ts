@@ -7,10 +7,10 @@ export namespace dnssec {
     //dnssec.Key
     // fullName: dnssec.Key.Key
     export interface Key {
-        algorithm?: OVH.dnssec.KeyAlgorithmEnum;
-        flags?: OVH.dnssec.KeyFlagEnum;
-        publicKey?: string;
-        tag?: number;
+        algorithm: OVH.dnssec.KeyAlgorithmEnum;
+        flags: OVH.dnssec.KeyFlagEnum;
+        publicKey: string;
+        tag: number;
     }
     //dnssec.KeyAlgorithmEnum
     export type KeyAlgorithmEnum = 10 | 13 | 14 | 3 | 5 | 6 | 7 | 8
@@ -25,36 +25,36 @@ export namespace domain {
     //domain.CurrentNameServer
     // fullName: domain.CurrentNameServer.CurrentNameServer
     export interface CurrentNameServer {
-        host?: string;
-        id?: number;
+        host: string;
+        id: number;
         ip?: string;
-        isUsed?: boolean;
-        toDelete?: boolean;
+        isUsed: boolean;
+        toDelete: boolean;
     }
     //domain.DnssecKey
     // fullName: domain.DnssecKey.DnssecKey
     export interface DnssecKey {
-        algorithm?: OVH.dnssec.KeyAlgorithmEnum;
-        flags?: OVH.dnssec.KeyFlagEnum;
-        id?: number;
-        publicKey?: string;
-        status?: OVH.dnssec.KeyStatusEnum;
-        tag?: number;
+        algorithm: OVH.dnssec.KeyAlgorithmEnum;
+        flags: OVH.dnssec.KeyFlagEnum;
+        id: number;
+        publicKey: string;
+        status: OVH.dnssec.KeyStatusEnum;
+        tag: number;
     }
     //domain.Domain
     // fullName: domain.Domain.Domain
     export interface Domain {
-        dnssecSupported?: boolean;
-        domain?: string;
-        glueRecordIpv6Supported?: boolean;
-        glueRecordMultiIpSupported?: boolean;
-        lastUpdate?: string;
-        nameServerType?: OVH.domain.DomainNsTypeEnum;
-        offer?: OVH.domain.OfferEnum;
-        owoSupported?: boolean;
+        dnssecSupported: boolean;
+        domain: string;
+        glueRecordIpv6Supported: boolean;
+        glueRecordMultiIpSupported: boolean;
+        lastUpdate: string;
+        nameServerType: OVH.domain.DomainNsTypeEnum;
+        offer: OVH.domain.OfferEnum;
+        owoSupported: boolean;
         parentService?: OVH.domain.ParentService;
-        transferLockStatus?: OVH.domain.DomainLockStatusEnum;
-        whoisOwner?: string;
+        transferLockStatus: OVH.domain.DomainLockStatusEnum;
+        whoisOwner: string;
     }
     //domain.DomainContactTypeEnum
     export type DomainContactTypeEnum = "admin" | "billing" | "owner" | "tech"
@@ -63,7 +63,7 @@ export namespace domain {
     //domain.DomainNs
     // fullName: domain.DomainNs.DomainNs
     export interface DomainNs {
-        host?: string;
+        host: string;
         ip?: string;
     }
     //domain.DomainNsStateEnum
@@ -71,8 +71,8 @@ export namespace domain {
     //domain.DomainNsStatus
     // fullName: domain.DomainNsStatus.DomainNsStatus
     export interface DomainNsStatus {
-        state?: OVH.domain.DomainNsStateEnum;
-        type?: OVH.domain.DomainNsTypeEnum;
+        state: OVH.domain.DomainNsStateEnum;
+        type: OVH.domain.DomainNsTypeEnum;
         usedSince?: string;
     }
     //domain.DomainNsTypeEnum
@@ -84,8 +84,8 @@ export namespace domain {
     //domain.GlueRecord
     // fullName: domain.GlueRecord.GlueRecord
     export interface GlueRecord {
-        host?: string;
-        ips?: string[];
+        host: string;
+        ips: string[];
     }
     //domain.OfferEnum
     export type OfferEnum = "diamond" | "gold" | "platinum"
@@ -96,19 +96,19 @@ export namespace domain {
     //domain.Option
     // fullName: domain.Option.Option
     export interface Option {
-        option?: OVH.domain.DomainOptionEnum;
-        state?: OVH.domain.DomainOptionStateEnum;
+        option: OVH.domain.DomainOptionEnum;
+        state: OVH.domain.DomainOptionStateEnum;
     }
     //domain.Owo
     // fullName: domain.Owo.Owo
     export interface Owo {
-        field?: OVH.domain.WhoisObfuscatorFieldsEnum;
+        field: OVH.domain.WhoisObfuscatorFieldsEnum;
     }
     //domain.ParentService
     // fullName: domain.ParentService.ParentService
     export interface ParentService {
-        name?: string;
-        type?: OVH.domain.ParentServiceTypeEnum;
+        name: string;
+        type: OVH.domain.ParentServiceTypeEnum;
     }
     //domain.ParentServiceTypeEnum
     export type ParentServiceTypeEnum = "/allDom"
@@ -116,33 +116,33 @@ export namespace domain {
     // fullName: domain.Rule.Rule
     export interface Rule {
         allowedValues?: string[];
-        description?: string;
+        description: string;
         fields?: string[];
         innerConfigurations?: OVH.domain.Rule[];
         label?: string;
         required?: boolean;
-        type?: string;
+        type: string;
     }
     //domain.Task
     // fullName: domain.Task.Task
     export interface Task {
-        canAccelerate?: boolean;
-        canCancel?: boolean;
-        canRelaunch?: boolean;
+        canAccelerate: boolean;
+        canCancel: boolean;
+        canRelaunch: boolean;
         comment?: string;
-        creationDate?: string;
+        creationDate: string;
         doneDate?: string;
-        function?: string;
-        id?: number;
-        lastUpdate?: string;
-        status?: OVH.domain.OperationStatusEnum;
-        todoDate?: string;
+        function: string;
+        id: number;
+        lastUpdate: string;
+        status: OVH.domain.OperationStatusEnum;
+        todoDate: string;
     }
     //domain.UkRegistrar
     // fullName: domain.UkRegistrar.UkRegistrar
     export interface UkRegistrar {
-        name?: string;
-        tag?: string;
+        name: string;
+        tag: string;
     }
     //domain.WhoisObfuscatorFieldsEnum
     export type WhoisObfuscatorFieldsEnum = "address" | "email" | "phone"
@@ -150,59 +150,59 @@ export namespace domain {
         //domain.configurations.ObfuscatedEmails
         // fullName: domain.configurations.ObfuscatedEmails.ObfuscatedEmails
         export interface ObfuscatedEmails {
-            type?: OVH.domain.ContactAllTypesEnum;
-            value?: string;
+            type: OVH.domain.ContactAllTypesEnum;
+            value: string;
         }
         //domain.configurations.Optin
         // fullName: domain.configurations.Optin.Optin
         export interface Optin {
-            fields?: OVH.domain.OptinFieldsEnum[];
-            type?: OVH.domain.ContactAllTypesEnum;
+            fields: OVH.domain.OptinFieldsEnum[];
+            type: OVH.domain.ContactAllTypesEnum;
         }
     }
     export namespace data {
         //domain.data.AfnicCorporationTrademarkContact
         // fullName: domain.data.AfnicCorporationTrademarkContact.AfnicCorporationTrademarkContact
         export interface AfnicCorporationTrademarkContact {
-            contactId?: number;
-            id?: number;
-            inpiNumber?: string;
-            inpiTrademarkOwner?: string;
+            contactId: number;
+            id: number;
+            inpiNumber: string;
+            inpiTrademarkOwner: string;
         }
         //domain.data.AssociationContact
         // fullName: domain.data.AssociationContact.AssociationContact
         export interface AssociationContact {
-            contactId?: number;
-            declarationDate?: string;
-            id?: number;
-            publicationDate?: string;
-            publicationNumber?: string;
-            publicationPageNumber?: string;
+            contactId: number;
+            declarationDate: string;
+            id: number;
+            publicationDate: string;
+            publicationNumber: string;
+            publicationPageNumber: string;
         }
         //domain.data.ProContact
         // fullName: domain.data.ProContact.ProContact
         export interface ProContact {
-            authority?: string;
-            authorityWebsite?: string;
-            id?: number;
-            jobDescription?: string;
-            licenseNumber?: string;
+            authority: string;
+            authorityWebsite: string;
+            id: number;
+            jobDescription: string;
+            licenseNumber: string;
         }
         //domain.data.Smd
         // fullName: domain.data.Smd.Smd
         export interface Smd {
-            data?: string;
-            id?: number;
+            data: string;
+            id: number;
             notAfter?: string;
             notBefore?: string;
-            protectedLabels?: OVH.domain.data.SmdLabel[];
+            protectedLabels: OVH.domain.data.SmdLabel[];
             smdId?: string;
         }
         //domain.data.SmdLabel
         // fullName: domain.data.SmdLabel.SmdLabel
         export interface SmdLabel {
-            label?: string;
-            trademark?: string;
+            label: string;
+            trademark: string;
         }
         export namespace claimNotice {
             //domain.data.claimNotice.Address
@@ -214,7 +214,7 @@ export namespace domain {
                 faxExtension?: string;
                 postalCode?: string;
                 stateOrProvince?: string;
-                streets?: string[];
+                streets: string[];
                 voice?: string;
                 voiceExtension?: string;
             }
@@ -222,37 +222,37 @@ export namespace domain {
             // fullName: domain.data.claimNotice.ClaimNotice.ClaimNotice
             export interface ClaimNotice {
                 claims?: OVH.domain.data.claimNotice.ClaimNoticeDecision[];
-                endingDate?: string;
-                id?: string;
-                label?: string;
+                endingDate: string;
+                id: string;
+                label: string;
                 startingDate?: string;
                 type?: OVH.domain.data.claimNotice.ClaimNoticeTypeEnum;
             }
             //domain.data.claimNotice.ClaimNoticeDecision
             // fullName: domain.data.claimNotice.ClaimNoticeDecision.ClaimNoticeDecision
             export interface ClaimNoticeDecision {
-                classifications?: OVH.domain.data.claimNotice.Classification[];
-                courtDecisions?: OVH.domain.data.claimNotice.CourtDecision[];
-                goodsAndServices?: string;
-                jurisdiction?: string;
-                jurisdictionCountryCode?: string;
-                markName?: string;
-                trademarkContacts?: OVH.domain.data.claimNotice.Contact[];
-                trademarkHolders?: OVH.domain.data.claimNotice.Contact[];
-                trademarkUDRP?: OVH.domain.data.claimNotice.UDRP[];
+                classifications: OVH.domain.data.claimNotice.Classification[];
+                courtDecisions: OVH.domain.data.claimNotice.CourtDecision[];
+                goodsAndServices: string;
+                jurisdiction: string;
+                jurisdictionCountryCode: string;
+                markName: string;
+                trademarkContacts: OVH.domain.data.claimNotice.Contact[];
+                trademarkHolders: OVH.domain.data.claimNotice.Contact[];
+                trademarkUDRP: OVH.domain.data.claimNotice.UDRP[];
             }
             //domain.data.claimNotice.ClaimNoticeTypeEnum
             export type ClaimNoticeTypeEnum = "UK" | "TRADEMARK"
             //domain.data.claimNotice.Classification
             // fullName: domain.data.claimNotice.Classification.Classification
             export interface Classification {
-                description?: string;
-                number?: string;
+                description: string;
+                number: string;
             }
             //domain.data.claimNotice.Contact
             // fullName: domain.data.claimNotice.Contact.Contact
             export interface Contact {
-                address?: OVH.domain.data.claimNotice.Address;
+                address: OVH.domain.data.claimNotice.Address;
                 email?: string;
                 entitlement?: string;
                 name?: string;
@@ -262,16 +262,16 @@ export namespace domain {
             //domain.data.claimNotice.CourtDecision
             // fullName: domain.data.claimNotice.CourtDecision.CourtDecision
             export interface CourtDecision {
-                countryCode?: string;
-                courtName?: string;
-                referenceNumber?: string;
-                regions?: string[];
+                countryCode: string;
+                courtName: string;
+                referenceNumber: string;
+                regions: string[];
             }
             //domain.data.claimNotice.UDRP
             // fullName: domain.data.claimNotice.UDRP.UDRP
             export interface UDRP {
-                caseNumber?: string;
-                udrpProvider?: string;
+                caseNumber: string;
+                udrpProvider: string;
             }
         }
     }
@@ -279,94 +279,94 @@ export namespace domain {
         //domain.rules.Optin
         // fullName: domain.rules.Optin.Optin
         export interface Optin {
-            fields?: OVH.domain.OptinFieldsEnum[];
-            type?: OVH.domain.ContactAllTypesEnum;
+            fields: OVH.domain.OptinFieldsEnum[];
+            type: OVH.domain.ContactAllTypesEnum;
         }
     }
     export namespace zone {
         //domain.zone.Dnssec
         // fullName: domain.zone.Dnssec.Dnssec
         export interface Dnssec {
-            status?: OVH.dnssec.DnssecStatusEnum;
+            status: OVH.dnssec.DnssecStatusEnum;
         }
         //domain.zone.DynHostLogin
         // fullName: domain.zone.DynHostLogin.DynHostLogin
         export interface DynHostLogin {
-            login?: string;
-            subDomain?: string;
-            zone?: string;
+            login: string;
+            subDomain: string;
+            zone: string;
         }
         //domain.zone.DynHostRecord
         // fullName: domain.zone.DynHostRecord.DynHostRecord
         export interface DynHostRecord {
-            id?: number;
-            ip?: string;
+            id: number;
+            ip: string;
             subDomain?: string;
             ttl?: number;
-            zone?: string;
+            zone: string;
         }
         //domain.zone.Record
         // fullName: domain.zone.Record.Record
         export interface Record {
-            fieldType?: OVH.zone.NamedResolutionFieldTypeEnum;
-            id?: number;
+            fieldType: OVH.zone.NamedResolutionFieldTypeEnum;
+            id: number;
             subDomain?: string;
-            target?: string;
+            target: string;
             ttl?: number;
-            zone?: string;
+            zone: string;
         }
         //domain.zone.Redirection
         // fullName: domain.zone.Redirection.Redirection
         export interface Redirection {
             description?: string;
-            id?: number;
+            id: number;
             keywords?: string;
             subDomain?: string;
-            target?: string;
+            target: string;
             title?: string;
-            type?: OVH.zone.RedirectionTypeEnum;
-            zone?: string;
+            type: OVH.zone.RedirectionTypeEnum;
+            zone: string;
         }
         //domain.zone.Soa
         // fullName: domain.zone.Soa.Soa
         export interface Soa {
-            email?: string;
-            expire?: number;
-            nxDomainTtl?: number;
-            refresh?: number;
-            serial?: number;
-            server?: string;
-            ttl?: number;
+            email: string;
+            expire: number;
+            nxDomainTtl: number;
+            refresh: number;
+            serial: number;
+            server: string;
+            ttl: number;
         }
         //domain.zone.Task
         // fullName: domain.zone.Task.Task
         export interface Task {
-            canAccelerate?: boolean;
-            canCancel?: boolean;
-            canRelaunch?: boolean;
+            canAccelerate: boolean;
+            canCancel: boolean;
+            canRelaunch: boolean;
             comment?: string;
-            creationDate?: string;
+            creationDate: string;
             doneDate?: string;
-            function?: string;
-            id?: number;
-            lastUpdate?: string;
-            status?: OVH.domain.OperationStatusEnum;
-            todoDate?: string;
+            function: string;
+            id: number;
+            lastUpdate: string;
+            status: OVH.domain.OperationStatusEnum;
+            todoDate: string;
         }
         //domain.zone.Zone
         // fullName: domain.zone.Zone.Zone
         export interface Zone {
-            dnssecSupported?: boolean;
-            hasDnsAnycast?: boolean;
-            lastUpdate?: string;
-            name?: string;
-            nameServers?: string[];
+            dnssecSupported: boolean;
+            hasDnsAnycast: boolean;
+            lastUpdate: string;
+            name: string;
+            nameServers: string[];
         }
         //domain.zone.ZoneRestorePoint
         // fullName: domain.zone.ZoneRestorePoint.ZoneRestorePoint
         export interface ZoneRestorePoint {
-            creationDate?: string;
-            zoneFileUrl?: string;
+            creationDate: string;
+            zoneFileUrl: string;
         }
     }
 }
@@ -378,9 +378,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -397,19 +397,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace zone {
@@ -420,8 +420,8 @@ export namespace zone {
     //zone.ResetRecord
     // fullName: zone.ResetRecord.ResetRecord
     export interface ResetRecord {
-        fieldType?: OVH.zone.ResettableNamedResolutionFieldTypeEnum;
-        target?: string;
+        fieldType: OVH.zone.ResettableNamedResolutionFieldTypeEnum;
+        target: string;
     }
     //zone.ResettableNamedResolutionFieldTypeEnum
     export type ResettableNamedResolutionFieldTypeEnum = "A" | "MX"
@@ -429,7 +429,7 @@ export namespace zone {
     // fullName: zone.Status.Status
     export interface Status {
         errors?: string[];
-        isDeployed?: boolean;
+        isDeployed: boolean;
         warnings?: string[];
     }
 }

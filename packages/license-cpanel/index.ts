@@ -9,14 +9,14 @@ export namespace license {
     //license.ChangeIpStatus
     // fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message?: OVH.license.ChangeIpMessageEnum;
-        success?: boolean;
+        message: OVH.license.ChangeIpMessageEnum;
+        success: boolean;
     }
     //license.CpanelOrderConfiguration
     // fullName: license.CpanelOrderConfiguration.CpanelOrderConfiguration
     export interface CpanelOrderConfiguration {
-        orderableVersions?: OVH.license.OrderableCpanelCompatibilityInfos[];
-        serviceType?: OVH.license.LicenseTypeEnum;
+        orderableVersions: OVH.license.OrderableCpanelCompatibilityInfos[];
+        serviceType: OVH.license.LicenseTypeEnum;
     }
     //license.CpanelVersionEnum
     export type CpanelVersionEnum = "VERSION_11_FOR_LINUX" | "VERSION_11_FOR_VIRTUOZZO" | "VERSION_11_FOR_VPS" | "cpanel-license-version-11" | "cpanel-license-version-11-for-virtuozzo" | "cpanel-license-version-11-for-vps"
@@ -25,7 +25,7 @@ export namespace license {
     //license.OrderableCpanelCompatibilityInfos
     // fullName: license.OrderableCpanelCompatibilityInfos.OrderableCpanelCompatibilityInfos
     export interface OrderableCpanelCompatibilityInfos {
-        version?: OVH.license.OrderableCpanelVersionEnum;
+        version: OVH.license.OrderableCpanelVersionEnum;
     }
     //license.OrderableCpanelVersionEnum
     export type OrderableCpanelVersionEnum = "VERSION_11_FOR_LINUX" | "VERSION_11_FOR_VIRTUOZZO" | "VERSION_11_FOR_VPS" | "cpanel-license-version-11" | "cpanel-license-version-11-for-virtuozzo" | "cpanel-license-version-11-for-vps"
@@ -34,13 +34,13 @@ export namespace license {
     //license.Task
     // fullName: license.Task.Task
     export interface Task {
-        action?: OVH.license.ActionType;
+        action: OVH.license.ActionType;
         doneDate?: string;
-        lastUpdate?: string;
-        name?: string;
-        status?: OVH.license.TaskStateEnum;
-        taskId?: number;
-        todoDate?: string;
+        lastUpdate: string;
+        name: string;
+        status: OVH.license.TaskStateEnum;
+        taskId: number;
+        todoDate: string;
     }
     //license.TaskStateEnum
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
@@ -48,13 +48,13 @@ export namespace license {
         //license.cpanel.Cpanel
         // fullName: license.cpanel.Cpanel.Cpanel
         export interface Cpanel {
-            creation?: string;
-            deleteAtExpiration?: boolean;
-            domain?: string;
-            ip?: string;
-            licenseId?: string;
-            status?: OVH.license.StateEnum;
-            version?: OVH.license.CpanelVersionEnum;
+            creation: string;
+            deleteAtExpiration: boolean;
+            domain: string;
+            ip: string;
+            licenseId: string;
+            status: OVH.license.StateEnum;
+            version: OVH.license.CpanelVersionEnum;
         }
     }
 }
@@ -62,9 +62,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -81,19 +81,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

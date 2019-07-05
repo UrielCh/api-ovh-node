@@ -32,12 +32,12 @@ export namespace dedicated {
         //dedicated.ceph.permissions
         // fullName: dedicated.ceph.permissions.permissions
         export interface permissions {
-            classRead?: boolean;
-            classWrite?: boolean;
-            execute?: boolean;
-            poolName?: string;
-            read?: boolean;
-            write?: boolean;
+            classRead: boolean;
+            classWrite: boolean;
+            execute: boolean;
+            poolName: string;
+            read: boolean;
+            write: boolean;
         }
         export namespace poolGet {
             export namespace response {
@@ -54,12 +54,10 @@ export namespace dedicated {
         //dedicated.ceph.response
         // fullName: dedicated.ceph.response.response
         export interface response {
-            availableBytes?: number;
-            healthy?: boolean;
-            serviceName?: string;
-            status?: string;
-            totalBytes?: number;
-            usedBytes?: number;
+            family: OVH.dedicated.ceph.aclGet.response.familyEnum;
+            id: number;
+            netmask: string;
+            network: string;
         }
         export namespace taskGet {
             export namespace response {
@@ -73,9 +71,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -92,19 +90,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

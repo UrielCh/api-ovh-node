@@ -6,59 +6,59 @@ export namespace dbaas {
         //dbaas.logs.Alias
         // fullName: dbaas.logs.Alias.Alias
         export interface Alias {
-            aliasId?: string;
-            createdAt?: string;
+            aliasId: string;
+            createdAt: string;
             description?: string;
-            isEditable?: boolean;
-            isShareable?: boolean;
-            name?: string;
+            isEditable: boolean;
+            isShareable: boolean;
+            name: string;
             optionId?: string;
             updatedAt?: string;
         }
         //dbaas.logs.AllowedNetwork
         // fullName: dbaas.logs.AllowedNetwork.AllowedNetwork
         export interface AllowedNetwork {
-            allowedNetworkId?: string;
-            network?: string;
+            allowedNetworkId: string;
+            network: string;
         }
         //dbaas.logs.Archive
         // fullName: dbaas.logs.Archive.Archive
         export interface Archive {
-            archiveId?: string;
+            archiveId: string;
             createdAt?: string;
-            filename?: string;
-            md5?: string;
-            retrievalDelay?: number;
-            retrievalState?: OVH.dbaas.logs.ArchiveRetrievalStateEnum;
-            sha256?: string;
-            size?: number;
+            filename: string;
+            md5: string;
+            retrievalDelay: number;
+            retrievalState: OVH.dbaas.logs.ArchiveRetrievalStateEnum;
+            sha256: string;
+            size: number;
         }
         //dbaas.logs.ArchiveRetrievalStateEnum
         export type ArchiveRetrievalStateEnum = "sealed" | "unsealing" | "unsealed"
         //dbaas.logs.ArchiveUrl
         // fullName: dbaas.logs.ArchiveUrl.ArchiveUrl
         export interface ArchiveUrl {
-            expirationDate?: string;
-            url?: string;
+            expirationDate: string;
+            url: string;
         }
         //dbaas.logs.Cluster
         // fullName: dbaas.logs.Cluster.Cluster
         export interface Cluster {
-            clusterId?: string;
-            clusterType?: OVH.dbaas.logs.ClusterClusterTypeEnum;
-            dedicatedInputPEM?: string;
-            directInputPEM?: string;
-            hostname?: string;
-            isDefault?: boolean;
-            isUnlocked?: boolean;
-            region?: OVH.dbaas.logs.ClusterRegionEnum;
+            clusterId: string;
+            clusterType: OVH.dbaas.logs.ClusterClusterTypeEnum;
+            dedicatedInputPEM: string;
+            directInputPEM: string;
+            hostname: string;
+            isDefault: boolean;
+            isUnlocked: boolean;
+            region: OVH.dbaas.logs.ClusterRegionEnum;
         }
         //dbaas.logs.ClusterAllowedNetwork
         // fullName: dbaas.logs.ClusterAllowedNetwork.ClusterAllowedNetwork
         export interface ClusterAllowedNetwork {
-            allowedNetworkId?: string;
-            flowType?: OVH.dbaas.logs.ClusterAllowedNetworkFlowTypeEnum;
-            network?: string;
+            allowedNetworkId: string;
+            flowType: OVH.dbaas.logs.ClusterAllowedNetworkFlowTypeEnum;
+            network: string;
         }
         //dbaas.logs.ClusterAllowedNetworkCreation
         // fullName: dbaas.logs.ClusterAllowedNetworkCreation.ClusterAllowedNetworkCreation
@@ -75,30 +75,30 @@ export namespace dbaas {
         //dbaas.logs.Dashboard
         // fullName: dbaas.logs.Dashboard.Dashboard
         export interface Dashboard {
-            createdAt?: string;
-            dashboardId?: string;
-            description?: string;
-            isEditable?: boolean;
-            isShareable?: boolean;
+            createdAt: string;
+            dashboardId: string;
+            description: string;
+            isEditable: boolean;
+            isShareable: boolean;
             optionId?: string;
-            title?: string;
+            title: string;
             updatedAt?: string;
         }
         //dbaas.logs.Engine
         // fullName: dbaas.logs.Engine.Engine
         export interface Engine {
-            engineId?: string;
-            isDeprecated?: boolean;
-            name?: OVH.dbaas.logs.EngineNameEnum;
-            version?: string;
+            engineId: string;
+            isDeprecated: boolean;
+            name: OVH.dbaas.logs.EngineNameEnum;
+            version: string;
         }
         //dbaas.logs.EngineNameEnum
         export type EngineNameEnum = "FLOWGGER" | "LOGSTASH" | "TEST"
         //dbaas.logs.FlowggerConfiguration
         // fullName: dbaas.logs.FlowggerConfiguration.FlowggerConfiguration
         export interface FlowggerConfiguration {
-            logFormat?: OVH.dbaas.logs.FlowggerConfigurationLogFormatEnum;
-            logFraming?: OVH.dbaas.logs.FlowggerConfigurationLogFramingEnum;
+            logFormat: OVH.dbaas.logs.FlowggerConfigurationLogFormatEnum;
+            logFraming: OVH.dbaas.logs.FlowggerConfigurationLogFramingEnum;
         }
         //dbaas.logs.FlowggerConfigurationLogFormatEnum
         export type FlowggerConfigurationLogFormatEnum = "RFC5424" | "LTSV" | "GELF" | "CAPNP"
@@ -108,13 +108,13 @@ export namespace dbaas {
         // fullName: dbaas.logs.Index.Index
         export interface Index {
             alertNotifyEnabled?: boolean;
-            createdAt?: string;
+            createdAt: string;
             description?: string;
-            indexId?: string;
-            isEditable?: boolean;
-            isShareable?: boolean;
-            maxSize?: number;
-            name?: string;
+            indexId: string;
+            isEditable: boolean;
+            isShareable: boolean;
+            maxSize: number;
+            name: string;
             optionId?: string;
             updatedAt?: string;
         }
@@ -122,27 +122,27 @@ export namespace dbaas {
         // fullName: dbaas.logs.Input.Input
         export interface Input {
             autoSelectOption?: boolean;
-            createdAt?: string;
-            description?: string;
-            engineId?: string;
+            createdAt: string;
+            description: string;
+            engineId: string;
             exposedPort?: string;
-            hostname?: string;
-            inputId?: string;
-            isRestartRequired?: boolean;
+            hostname: string;
+            inputId: string;
+            isRestartRequired: boolean;
             optionId?: string;
-            publicAddress?: string;
+            publicAddress: string;
             singleInstanceEnabled?: boolean;
-            sslCertificate?: string;
-            status?: OVH.dbaas.logs.InputStatusEnum;
-            streamId?: string;
-            title?: string;
+            sslCertificate: string;
+            status: OVH.dbaas.logs.InputStatusEnum;
+            streamId: string;
+            title: string;
             updatedAt?: string;
         }
         //dbaas.logs.InputAction
         // fullName: dbaas.logs.InputAction.InputAction
         export interface InputAction {
-            isAllowed?: boolean;
-            type?: OVH.dbaas.logs.InputActionTypeEnum;
+            isAllowed: boolean;
+            type: OVH.dbaas.logs.InputActionTypeEnum;
         }
         //dbaas.logs.InputActionTypeEnum
         export type InputActionTypeEnum = "END" | "LOG" | "START" | "TEST" | "DESTROY" | "RESTART"
@@ -193,47 +193,47 @@ export namespace dbaas {
         // fullName: dbaas.logs.LogstashConfiguration.LogstashConfiguration
         export interface LogstashConfiguration {
             filterSection?: string;
-            inputSection?: string;
+            inputSection: string;
             patternSection?: string;
         }
         //dbaas.logs.Member
         // fullName: dbaas.logs.Member.Member
         export interface Member {
-            createdAt?: string;
+            createdAt: string;
             note?: string;
-            username?: string;
+            username: string;
         }
         //dbaas.logs.Offer
         // fullName: dbaas.logs.Offer.Offer
         export interface Offer {
-            curNbAlias?: number;
-            curNbDashboard?: number;
-            curNbIndex?: number;
-            curNbInput?: number;
-            curNbRole?: number;
-            curNbStream?: number;
+            curNbAlias: number;
+            curNbDashboard: number;
+            curNbIndex: number;
+            curNbInput: number;
+            curNbRole: number;
+            curNbStream: number;
             esStorage?: number;
-            maxNbAlias?: number;
-            maxNbDashboard?: number;
-            maxNbIndex?: number;
-            maxNbInput?: number;
-            maxNbRole?: number;
-            maxNbStream?: number;
-            reference?: string;
+            maxNbAlias: number;
+            maxNbDashboard: number;
+            maxNbIndex: number;
+            maxNbInput: number;
+            maxNbRole: number;
+            maxNbStream: number;
+            reference: string;
             retention?: number;
         }
         //dbaas.logs.Operation
         // fullName: dbaas.logs.Operation.Operation
         export interface Operation {
             aliasId?: string;
-            createdAt?: string;
+            createdAt: string;
             dashboardId?: string;
             indexId?: string;
             inputId?: string;
-            operationId?: string;
+            operationId: string;
             optionId?: string;
             roleId?: string;
-            state?: OVH.dbaas.logs.OperationStateEnum;
+            state: OVH.dbaas.logs.OperationStateEnum;
             streamId?: string;
             updatedAt?: string;
         }
@@ -242,23 +242,23 @@ export namespace dbaas {
         //dbaas.logs.Option
         // fullName: dbaas.logs.Option.Option
         export interface Option {
-            createdAt?: string;
-            curNbAlias?: number;
-            curNbDashboard?: number;
-            curNbIndex?: number;
-            curNbInput?: number;
-            curNbRole?: number;
-            curNbStream?: number;
+            createdAt: string;
+            curNbAlias: number;
+            curNbDashboard: number;
+            curNbIndex: number;
+            curNbInput: number;
+            curNbRole: number;
+            curNbStream: number;
             indexSize?: number;
-            maxNbAlias?: number;
-            maxNbDashboard?: number;
-            maxNbIndex?: number;
-            maxNbInput?: number;
-            maxNbRole?: number;
-            maxNbStream?: number;
-            optionId?: string;
-            reference?: string;
-            state?: OVH.dbaas.logs.OptionStateEnum;
+            maxNbAlias: number;
+            maxNbDashboard: number;
+            maxNbIndex: number;
+            maxNbInput: number;
+            maxNbRole: number;
+            maxNbStream: number;
+            optionId: string;
+            reference: string;
+            state: OVH.dbaas.logs.OptionStateEnum;
             updatedAt?: string;
         }
         //dbaas.logs.OptionStateEnum
@@ -404,7 +404,7 @@ export namespace dbaas {
             aliasId?: string;
             dashboardId?: string;
             indexId?: string;
-            permissionId?: string;
+            permissionId: string;
             streamId?: string;
         }
         //dbaas.logs.PermissionDashboardPermissionTypeEnum
@@ -414,39 +414,39 @@ export namespace dbaas {
         //dbaas.logs.PublicOffer
         // fullName: dbaas.logs.PublicOffer.PublicOffer
         export interface PublicOffer {
-            esStorage?: number;
-            maxNbAlias?: number;
-            maxNbDashboard?: number;
-            maxNbIndex?: number;
-            maxNbInput?: number;
-            maxNbRole?: number;
-            maxNbStream?: number;
-            reference?: string;
+            esStorage: number;
+            maxNbAlias: number;
+            maxNbDashboard: number;
+            maxNbIndex: number;
+            maxNbInput: number;
+            maxNbRole: number;
+            maxNbStream: number;
+            reference: string;
         }
         //dbaas.logs.Quota
         // fullName: dbaas.logs.Quota.Quota
         export interface Quota {
-            curNbAlias?: number;
-            curNbDashboard?: number;
-            curNbIndex?: number;
-            curNbInput?: number;
-            curNbRole?: number;
-            curNbStream?: number;
-            maxNbAlias?: number;
-            maxNbDashboard?: number;
-            maxNbIndex?: number;
-            maxNbInput?: number;
-            maxNbRole?: number;
-            maxNbStream?: number;
+            curNbAlias: number;
+            curNbDashboard: number;
+            curNbIndex: number;
+            curNbInput: number;
+            curNbRole: number;
+            curNbStream: number;
+            maxNbAlias: number;
+            maxNbDashboard: number;
+            maxNbIndex: number;
+            maxNbInput: number;
+            maxNbRole: number;
+            maxNbStream: number;
         }
         //dbaas.logs.Role
         // fullName: dbaas.logs.Role.Role
         export interface Role {
-            createdAt?: string;
-            description?: string;
-            name?: string;
+            createdAt: string;
+            description: string;
+            name: string;
             optionId?: string;
-            roleId?: string;
+            roleId: string;
             updatedAt?: string;
         }
         //dbaas.logs.RoleCreation
@@ -500,60 +500,60 @@ export namespace dbaas {
         //dbaas.logs.Service
         // fullName: dbaas.logs.Service.Service
         export interface Service {
-            createdAt?: string;
+            createdAt: string;
             displayName?: string;
-            isCapped?: boolean;
-            serviceName?: string;
+            isCapped: boolean;
+            serviceName: string;
             state?: OVH.dbaas.logs.ServiceStateEnum;
             updatedAt?: string;
-            username?: string;
+            username: string;
         }
         //dbaas.logs.ServiceMetric
         // fullName: dbaas.logs.ServiceMetric.ServiceMetric
         export interface ServiceMetric {
-            host?: string;
-            token?: string;
+            host: string;
+            token: string;
         }
         //dbaas.logs.ServiceStateEnum
         export type ServiceStateEnum = "INIT" | "TO_CONFIG" | "ENABLED" | "DISABLED"
         //dbaas.logs.Stream
         // fullName: dbaas.logs.Stream.Stream
         export interface Stream {
-            canAlert?: boolean;
+            canAlert: boolean;
             coldStorageCompression?: OVH.dbaas.logs.StreamColdStorageCompressionEnum;
             coldStorageContent?: OVH.dbaas.logs.StreamColdStorageContentEnum;
             coldStorageEnabled?: boolean;
             coldStorageNotifyEnabled?: boolean;
             coldStorageRetention?: number;
             coldStorageTarget?: OVH.dbaas.logs.StreamColdStorageTargetEnum;
-            createdAt?: string;
-            description?: string;
+            createdAt: string;
+            description: string;
             indexingEnabled?: boolean;
-            isEditable?: boolean;
-            isShareable?: boolean;
-            nbArchive?: number;
+            isEditable: boolean;
+            isShareable: boolean;
+            nbArchive: number;
             optionId?: string;
             parentStreamId?: string;
-            streamId?: string;
-            title?: string;
+            streamId: string;
+            title: string;
             updatedAt?: string;
             webSocketEnabled?: boolean;
         }
         //dbaas.logs.StreamAlertCondition
         // fullName: dbaas.logs.StreamAlertCondition.StreamAlertCondition
         export interface StreamAlertCondition {
-            alertId?: string;
-            backlog?: number;
+            alertId: string;
+            backlog: number;
             conditionType?: OVH.dbaas.logs.StreamAlertConditionConditionTypeEnum;
             constraintType?: OVH.dbaas.logs.StreamAlertConditionConstraintTypeEnum;
             field?: string;
-            grace?: number;
+            grace: number;
             queryFilter?: string;
             repeatNotificationsEnabled?: boolean;
             threshold?: number;
             thresholdType?: OVH.dbaas.logs.StreamAlertConditionThresholdTypeEnum;
             time?: number;
-            title?: string;
+            title: string;
             value?: string;
         }
         //dbaas.logs.StreamAlertConditionConditionTypeEnum
@@ -571,19 +571,19 @@ export namespace dbaas {
         //dbaas.logs.StreamRule
         // fullName: dbaas.logs.StreamRule.StreamRule
         export interface StreamRule {
-            field?: string;
+            field: string;
             isInverted?: boolean;
             operator?: OVH.dbaas.logs.StreamRuleOperatorEnum;
-            ruleId?: string;
-            value?: string;
+            ruleId: string;
+            value: string;
         }
         //dbaas.logs.StreamRuleOperatorEnum
         export type StreamRuleOperatorEnum = "MATCH_EXACTLY" | "GREATER_THAN" | "SMALLER_THAN" | "FIELD_PRESENCE"
         //dbaas.logs.TemporaryLogsLink
         // fullName: dbaas.logs.TemporaryLogsLink.TemporaryLogsLink
         export interface TemporaryLogsLink {
-            expirationDate?: string;
-            url?: string;
+            expirationDate: string;
+            url: string;
         }
         //dbaas.logs.TestResult
         // fullName: dbaas.logs.TestResult.TestResult
@@ -596,11 +596,11 @@ export namespace dbaas {
         // fullName: dbaas.logs.Token.Token
         export interface Token {
             clusterId?: string;
-            createdAt?: string;
-            name?: string;
-            tokenId?: string;
+            createdAt: string;
+            name: string;
+            tokenId: string;
             updatedAt?: string;
-            value?: string;
+            value: string;
         }
         //dbaas.logs.TokenCreation
         // fullName: dbaas.logs.TokenCreation.TokenCreation
@@ -617,8 +617,8 @@ export namespace dbaas {
         //dbaas.logs.Url
         // fullName: dbaas.logs.Url.Url
         export interface Url {
-            address?: string;
-            type?: OVH.dbaas.logs.UrlTypeEnum;
+            address: string;
+            type: OVH.dbaas.logs.UrlTypeEnum;
         }
         //dbaas.logs.UrlTypeEnum
         export type UrlTypeEnum = "GRAYLOG_WEBUI" | "GRAYLOG_API" | "ELASTICSEARCH_API" | "KIBANA_WEBUI" | "CONSOLE" | "WEB_SOCKET" | "SERVICE_DOMAIN" | "TCP_TLS_GELF" | "TCP_GELF" | "UDP_GELF" | "TCP_TLS_RFC5424" | "TCP_RFC5424" | "UDP_RFC5424" | "TCP_TLS_LTSV_LINE" | "TCP_TLS_LTSV_NUL" | "TCP_LTSV_LINE" | "TCP_LTSV_NUL" | "TCP_TLS_CAP_N_PROTO" | "TCP_CAP_N_PROTO" | "UDP_LTSV_NUL" | "UDP_LTSV_LINE" | "UDP_CAP_N_PROTO" | "HTTP_GELF" | "HTTP_TLS_GELF" | "TCP_BEATS" | "TCP_TLS_BEATS"
@@ -633,9 +633,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -648,19 +648,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

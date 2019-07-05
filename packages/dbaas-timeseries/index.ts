@@ -5,8 +5,8 @@ export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
 }
 export namespace order {
@@ -15,9 +15,9 @@ export namespace order {
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode?: OVH.order.CurrencyCodeEnum;
-        text?: string;
-        value?: number;
+        currencyCode: OVH.order.CurrencyCodeEnum;
+        text: string;
+        value: number;
     }
 }
 export namespace paas {
@@ -25,56 +25,56 @@ export namespace paas {
         //paas.timeseries.Consumption
         // fullName: paas.timeseries.Consumption.Consumption
         export interface Consumption {
-            from?: string;
-            generated?: string;
-            items?: OVH.paas.timeseries.ConsumptionItem[];
-            to?: string;
-            total?: OVH.order.Price;
+            from: string;
+            generated: string;
+            items: OVH.paas.timeseries.ConsumptionItem[];
+            to: string;
+            total: OVH.order.Price;
         }
         //paas.timeseries.ConsumptionItem
         // fullName: paas.timeseries.ConsumptionItem.ConsumptionItem
         export interface ConsumptionItem {
-            metricName?: OVH.tsaas.MetricNameEnum;
-            price?: OVH.order.Price;
-            quantity?: OVH.complexType.UnitAndValue<number>;
-            unitPrice?: OVH.order.Price;
+            metricName: OVH.tsaas.MetricNameEnum;
+            price: OVH.order.Price;
+            quantity: OVH.complexType.UnitAndValue<number>;
+            unitPrice: OVH.order.Price;
         }
         //paas.timeseries.Key
         // fullName: paas.timeseries.Key.Key
         export interface Key {
-            description?: string;
-            id?: string;
-            permissions?: OVH.tsaas.PermissionEnum[];
-            secret?: string;
-            tags?: OVH.paas.timeseries.Tag[];
+            description: string;
+            id: string;
+            permissions: OVH.tsaas.PermissionEnum[];
+            secret: string;
+            tags: OVH.paas.timeseries.Tag[];
         }
         //paas.timeseries.Project
         // fullName: paas.timeseries.Project.Project
         export interface Project {
             description?: string;
-            displayName?: string;
-            region?: OVH.paas.timeseries.Region;
-            serviceName?: string;
+            displayName: string;
+            region: OVH.paas.timeseries.Region;
+            serviceName: string;
         }
         //paas.timeseries.Quota
         // fullName: paas.timeseries.Quota.Quota
         export interface Quota {
-            current?: number;
-            max?: number;
-            type?: OVH.tsaas.QuotaTypeEnum;
+            current: number;
+            max: number;
+            type: OVH.tsaas.QuotaTypeEnum;
         }
         //paas.timeseries.Region
         // fullName: paas.timeseries.Region.Region
         export interface Region {
-            displayName?: string;
-            id?: string;
-            url?: string;
+            displayName: string;
+            id: string;
+            url: string;
         }
         //paas.timeseries.Tag
         // fullName: paas.timeseries.Tag.Tag
         export interface Tag {
-            key?: string;
-            value?: string;
+            key: string;
+            value: string;
         }
     }
 }
@@ -82,9 +82,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -97,19 +97,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace timeseries {
@@ -120,7 +120,7 @@ export namespace timeseries {
         displayName?: string;
         offerId?: string;
         regionId?: string;
-        serviceName?: string;
+        serviceName: string;
         status?: OVH.timeseries.StatusTypeEnum;
     }
     //timeseries.StatusTypeEnum
@@ -132,12 +132,12 @@ export namespace tsaas {
     //tsaas.OpenTSDBToken
     // fullName: tsaas.OpenTSDBToken.OpenTSDBToken
     export interface OpenTSDBToken {
-        description?: string;
-        id?: string;
-        permission?: string;
-        protocol?: string;
-        secret?: string;
-        tags?: OVH.paas.timeseries.Tag[];
+        description: string;
+        id: string;
+        permission: string;
+        protocol: string;
+        secret: string;
+        tags: OVH.paas.timeseries.Tag[];
     }
     //tsaas.PermissionEnum
     export type PermissionEnum = "READ" | "WRITE"
@@ -146,16 +146,16 @@ export namespace tsaas {
     //tsaas.Warp10Token
     // fullName: tsaas.Warp10Token.Warp10Token
     export interface Warp10Token {
-        description?: string;
-        expiryTimestamp?: string;
-        id?: string;
-        maxFetch?: number;
-        maxGts?: number;
-        maxOps?: number;
-        permissions?: string;
-        protocol?: string;
-        queryToken?: string;
-        secret?: string;
+        description: string;
+        expiryTimestamp: string;
+        id: string;
+        maxFetch: number;
+        maxGts: number;
+        maxOps: number;
+        permissions: string;
+        protocol: string;
+        queryToken: string;
+        secret: string;
     }
 }
 // Apis harmony

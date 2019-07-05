@@ -5,14 +5,14 @@ export namespace allDom {
     //allDom.AllDom
     // fullName: allDom.AllDom.AllDom
     export interface AllDom {
-        name?: string;
-        offer?: OVH.domain.OfferEnum;
-        type?: OVH.allDom.TypeEnum;
+        name: string;
+        offer: OVH.domain.OfferEnum;
+        type: OVH.allDom.TypeEnum;
     }
     //allDom.AllDomDomain
     // fullName: allDom.AllDomDomain.AllDomDomain
     export interface AllDomDomain {
-        domain?: string;
+        domain: string;
     }
     //allDom.TypeEnum
     export type TypeEnum = "french" | "french+international" | "international"
@@ -25,9 +25,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -40,19 +40,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

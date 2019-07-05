@@ -5,28 +5,28 @@ export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
 }
 export namespace hpcspot {
     //hpcspot.Account
     // fullName: hpcspot.Account.Account
     export interface Account {
-        name?: string;
+        name: string;
     }
     //hpcspot.Consumption
     // fullName: hpcspot.Consumption.Consumption
     export interface Consumption {
         description?: string;
-        hpcspotItemEndDate?: string;
-        hpcspotItemId?: number;
+        hpcspotItemEndDate: string;
+        hpcspotItemId: number;
         hpcspotUrl?: string;
-        id?: number;
+        id: number;
         orderId?: number;
-        quantity?: OVH.complexType.UnitAndValue<number>;
-        reference?: OVH.hpcspot.ConsumptionReferenceEnum;
-        type?: OVH.hpcspot.ConsumptionTypeEnum;
+        quantity: OVH.complexType.UnitAndValue<number>;
+        reference: OVH.hpcspot.ConsumptionReferenceEnum;
+        type: OVH.hpcspot.ConsumptionTypeEnum;
     }
     //hpcspot.ConsumptionReferenceEnum
     export type ConsumptionReferenceEnum = "12core.60gb.quadrok4000" | "16core.64gb" | "1core.4gb" | "1core.4gb.quadrok4000" | "2core.8gb" | "2core.8gb.quadrok4000" | "4core.15gb" | "4core.15gb.quadrok4000" | "4core.32gb" | "8core.30gb" | "8core.30gb.quadrok4000" | "8core.32gb.1teslak20"
@@ -37,9 +37,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -52,19 +52,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

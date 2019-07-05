@@ -14,14 +14,14 @@ export namespace analytics {
         nodes?: OVH.analytics.cluster.Node[];
         osProjectId?: string;
         osRegion?: string;
-        serviceName?: string;
-        status?: OVH.analytics.Status;
+        serviceName: string;
+        status: OVH.analytics.Status;
     }
     //analytics.Component
     // fullName: analytics.Component.Component
     export interface Component {
-        name?: string;
-        version?: string;
+        name: string;
+        version: string;
     }
     //analytics.Status
     export type Status = "PENDING" | "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | "DONE" | "ERROR" | "UNKNOWN" | "OK" | "TO_DEPLOY" | "DEPLOYING" | "DEPLOYED" | "TO_DESTROY" | "DESTROYED" | "INITIALIZED"
@@ -29,9 +29,9 @@ export namespace analytics {
         //analytics.cluster.Activity
         // fullName: analytics.cluster.Activity.Activity
         export interface Activity {
-            description?: string;
-            status?: OVH.analytics.Status;
-            timestamp?: string;
+            description: string;
+            status: OVH.analytics.Status;
+            timestamp: string;
             user?: string;
         }
         //analytics.cluster.Deploy
@@ -59,19 +59,19 @@ export namespace analytics {
             flavor?: string;
             hostname?: string;
             ip?: string;
-            nodeId?: string;
-            nodeType?: OVH.analytics.node.Type;
+            nodeId: string;
+            nodeType: OVH.analytics.node.Type;
             osRegion?: string;
-            status?: OVH.analytics.Status;
+            status: OVH.analytics.Status;
             storage?: number;
         }
         export namespace deploy {
             //analytics.cluster.deploy.Status
             // fullName: analytics.cluster.deploy.Status.Status
             export interface Status {
-                percentage?: number;
-                status?: OVH.analytics.Status;
-                task?: string;
+                percentage: number;
+                status: OVH.analytics.Status;
+                task: string;
             }
         }
     }
@@ -79,11 +79,11 @@ export namespace analytics {
         //analytics.node.Capability
         // fullName: analytics.node.Capability.Capability
         export interface Capability {
-            instanceMax?: number;
-            instanceMin?: number;
-            instanceType?: string[];
-            rawStorageMaxGb?: number;
-            rawStorageMinGb?: number;
+            instanceMax: number;
+            instanceMin: number;
+            instanceType: string[];
+            rawStorageMaxGb: number;
+            rawStorageMinGb: number;
         }
         //analytics.node.Deploy
         // fullName: analytics.node.Deploy.Deploy
@@ -98,24 +98,24 @@ export namespace analytics {
         //analytics.platform.Capability
         // fullName: analytics.platform.Capability.Capability
         export interface Capability {
-            availableRegion?: string[];
-            bastionNode?: OVH.analytics.node.Capability;
-            components?: OVH.analytics.Component[];
-            edgeNode?: OVH.analytics.node.Capability;
-            hdfsReplicationFactor?: number;
-            masterNode?: OVH.analytics.node.Capability;
+            availableRegion: string[];
+            bastionNode: OVH.analytics.node.Capability;
+            components: OVH.analytics.Component[];
+            edgeNode: OVH.analytics.node.Capability;
+            hdfsReplicationFactor: number;
+            masterNode: OVH.analytics.node.Capability;
             requirements?: OVH.analytics.platform.Capability.Requirement[];
-            utilityNode?: OVH.analytics.node.Capability;
-            version?: string;
-            versionDescription?: string;
-            workerNode?: OVH.analytics.node.Capability;
+            utilityNode: OVH.analytics.node.Capability;
+            version: string;
+            versionDescription: string;
+            workerNode: OVH.analytics.node.Capability;
         }
         export namespace Capability {
             //analytics.platform.Capability.Requirement
             // fullName: analytics.platform.Capability.Requirement.Requirement
             export interface Requirement {
-                display?: boolean;
-                fieldName?: string;
+                display: boolean;
+                fieldName: string;
             }
         }
     }
@@ -124,9 +124,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -143,19 +143,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

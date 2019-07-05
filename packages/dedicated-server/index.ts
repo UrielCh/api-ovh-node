@@ -11,14 +11,14 @@ export namespace complexType {
     //complexType.ChartTimestampValue
     // fullName: complexType.ChartTimestampValue.ChartTimestampValue
     export interface ChartTimestampValue {
-        timestamp?: number;
+        timestamp: number;
         value?: number;
     }
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
 }
 export namespace coreTypes {
@@ -29,31 +29,31 @@ export namespace dedicated {
     //dedicated.Availabilities
     // fullName: dedicated.Availabilities.Availabilities
     export interface Availabilities {
-        datacenters?: OVH.dedicated.AvailabilityDatacenter[];
+        datacenters: OVH.dedicated.AvailabilityDatacenter[];
         hardware?: string;
         region?: OVH.dedicated.AvailabilityRegionEnum;
     }
     //dedicated.AvailabilitiesRaw
     // fullName: dedicated.AvailabilitiesRaw.AvailabilitiesRaw
     export interface AvailabilitiesRaw {
-        availability?: OVH.dedicated.AvailabilityEnum;
-        available?: number;
-        incomingDatacenter?: number;
+        availability: OVH.dedicated.AvailabilityEnum;
+        available: number;
+        incomingDatacenter: number;
         lastRule?: string;
-        ordered?: number;
-        orderedCheck?: number;
-        parentAvailable?: number;
-        reference?: string;
-        trueAvailable?: number;
-        trueAvailable24H?: number;
-        trueAvailable4H?: number;
-        zone?: OVH.dedicated.AvailabilityRegionEnum;
+        ordered: number;
+        orderedCheck: number;
+        parentAvailable: number;
+        reference: string;
+        trueAvailable: number;
+        trueAvailable24H: number;
+        trueAvailable4H: number;
+        zone: OVH.dedicated.AvailabilityRegionEnum;
     }
     //dedicated.AvailabilityDatacenter
     // fullName: dedicated.AvailabilityDatacenter.AvailabilityDatacenter
     export interface AvailabilityDatacenter {
-        availability?: OVH.dedicated.AvailabilityEnum;
-        datacenter?: OVH.dedicated.AvailabilityDatacenterEnum;
+        availability: OVH.dedicated.AvailabilityEnum;
+        datacenter: OVH.dedicated.AvailabilityDatacenterEnum;
     }
     //dedicated.AvailabilityDatacenterEnum
     export type AvailabilityDatacenterEnum = "bhs" | "default" | "fra" | "gra" | "hil" | "lon" | "rbx" | "rbx-hz" | "sbg" | "sgp" | "syd" | "vin" | "waw"
@@ -64,23 +64,23 @@ export namespace dedicated {
     //dedicated.BinaryFirewall
     // fullName: dedicated.BinaryFirewall.BinaryFirewall
     export interface BinaryFirewall {
-        asa?: string[];
-        asdm?: string[];
-        type?: OVH.dedicated.ProfileFirewallEnum;
+        asa: string[];
+        asdm: string[];
+        type: OVH.dedicated.ProfileFirewallEnum;
     }
     //dedicated.BinaryFirewallLink
     // fullName: dedicated.BinaryFirewallLink.BinaryFirewallLink
     export interface BinaryFirewallLink {
-        url?: string;
+        url: string;
     }
     //dedicated.DatacenterAvailability
     // fullName: dedicated.DatacenterAvailability.DatacenterAvailability
     export interface DatacenterAvailability {
-        datacenters?: OVH.dedicated.AvailabilityDatacenter[];
-        fqn?: string;
+        datacenters: OVH.dedicated.AvailabilityDatacenter[];
+        fqn: string;
         memory?: string;
-        planCode?: string;
-        server?: string;
+        planCode: string;
+        server: string;
         storage?: string;
     }
     //dedicated.DatacenterEnum
@@ -99,8 +99,8 @@ export namespace dedicated {
         //dedicated.networkInterfaceController.NetworkInterfaceController
         // fullName: dedicated.networkInterfaceController.NetworkInterfaceController.NetworkInterfaceController
         export interface NetworkInterfaceController {
-            linkType?: OVH.dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum;
-            mac?: string;
+            linkType: OVH.dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum;
+            mac: string;
         }
         //dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum
         export type NetworkInterfaceControllerLinkTypeEnum = "private" | "public"
@@ -109,8 +109,8 @@ export namespace dedicated {
         //dedicated.server.Access
         // fullName: dedicated.server.Access.Access
         export interface Access {
-            password?: string;
-            type?: OVH.dedicated.server.AccessTypeEnum;
+            password: string;
+            type: OVH.dedicated.server.AccessTypeEnum;
             url?: string;
             user?: string;
         }
@@ -123,27 +123,27 @@ export namespace dedicated {
         export interface BackupCloud {
             agreements?: number[];
             archive?: OVH.dedicated.server.backup.BackupContainer;
-            status?: OVH.dedicated.server.backup.BackupStatus;
+            status: OVH.dedicated.server.backup.BackupStatus;
             storage?: OVH.dedicated.server.backup.BackupContainer;
         }
         //dedicated.server.BackupFtp
         // fullName: dedicated.server.BackupFtp.BackupFtp
         export interface BackupFtp {
-            ftpBackupName?: string;
+            ftpBackupName: string;
             quota?: OVH.complexType.UnitAndValue<number>;
             readOnlyDate?: string;
-            type?: OVH.dedicated.server.BackupStorageTypeEnum;
+            type: OVH.dedicated.server.BackupStorageTypeEnum;
             usage?: OVH.complexType.UnitAndValue<number>;
         }
         //dedicated.server.BackupFtpAcl
         // fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
         export interface BackupFtpAcl {
-            cifs?: boolean;
-            ftp?: boolean;
-            ipBlock?: string;
-            isApplied?: boolean;
-            lastUpdate?: string;
-            nfs?: boolean;
+            cifs: boolean;
+            ftp: boolean;
+            ipBlock: string;
+            isApplied: boolean;
+            lastUpdate: string;
+            nfs: boolean;
         }
         //dedicated.server.BackupStorageCapacityEnum
         export type BackupStorageCapacityEnum = 1000 | 10000 | 500 | 5000
@@ -151,7 +151,7 @@ export namespace dedicated {
         // fullName: dedicated.server.BackupStorageOrderable.BackupStorageOrderable
         export interface BackupStorageOrderable {
             capacities?: OVH.dedicated.server.BackupStorageCapacityEnum[];
-            orderable?: boolean;
+            orderable: boolean;
         }
         //dedicated.server.BackupStorageTypeEnum
         export type BackupStorageTypeEnum = "included" | "storage"
@@ -168,7 +168,7 @@ export namespace dedicated {
         //dedicated.server.BandwidthOrderable
         // fullName: dedicated.server.BandwidthOrderable.BandwidthOrderable
         export interface BandwidthOrderable {
-            orderable?: boolean;
+            orderable: boolean;
             platinum?: OVH.dedicated.server.BandwidthOrderEnum[];
             premium?: OVH.dedicated.server.BandwidthOrderEnum[];
             ultimate?: OVH.dedicated.server.BandwidthOrderEnum[];
@@ -186,7 +186,7 @@ export namespace dedicated {
         //dedicated.server.BandwidthvRackOrderable
         // fullName: dedicated.server.BandwidthvRackOrderable.BandwidthvRackOrderable
         export interface BandwidthvRackOrderable {
-            orderable?: boolean;
+            orderable: boolean;
             vrack?: OVH.dedicated.server.BandwidthvRackOrderEnum[];
         }
         //dedicated.server.BandwidthvRackTypeEnum
@@ -208,30 +208,30 @@ export namespace dedicated {
         export interface Dedicated {
             bootId?: number;
             commercialRange?: string;
-            datacenter?: OVH.dedicated.DatacenterEnum;
-            ip?: string;
+            datacenter: OVH.dedicated.DatacenterEnum;
+            ip: string;
             linkSpeed?: number;
-            monitoring?: boolean;
-            name?: string;
-            os?: string;
-            professionalUse?: boolean;
-            rack?: string;
+            monitoring: boolean;
+            name: string;
+            os: string;
+            professionalUse: boolean;
+            rack: string;
             rescueMail?: string;
             reverse?: string;
             rootDevice?: string;
-            serverId?: number;
-            state?: OVH.dedicated.server.StateEnum;
-            supportLevel?: OVH.dedicated.server.SupportLevelEnum;
+            serverId: number;
+            state: OVH.dedicated.server.StateEnum;
+            supportLevel: OVH.dedicated.server.SupportLevelEnum;
         }
         //dedicated.server.DiskTypeEnum
         export type DiskTypeEnum = "NVMe" | "SAS" | "SATA" | "SSD" | "Unknown"
         //dedicated.server.Firewall
         // fullName: dedicated.server.Firewall.Firewall
         export interface Firewall {
-            enabled?: boolean;
-            firewall?: string;
-            ip?: string;
-            mode?: OVH.dedicated.server.FirewallModeEnum;
+            enabled: boolean;
+            firewall: string;
+            ip: string;
+            mode: OVH.dedicated.server.FirewallModeEnum;
             model?: OVH.dedicated.server.FirewallModelEnum;
         }
         //dedicated.server.FirewallModeEnum
@@ -243,43 +243,43 @@ export namespace dedicated {
         //dedicated.server.HardwareRaidConfiguration
         // fullName: dedicated.server.HardwareRaidConfiguration.HardwareRaidConfiguration
         export interface HardwareRaidConfiguration {
-            capacity?: OVH.complexType.UnitAndValue<number>;
-            diskCount?: number;
-            diskSize?: OVH.complexType.UnitAndValue<number>;
-            diskSpanSize?: number;
-            mode?: OVH.dedicated.server.HardwareSpecificationsRaidHardEnum;
-            name?: string;
-            type?: string;
+            capacity: OVH.complexType.UnitAndValue<number>;
+            diskCount: number;
+            diskSize: OVH.complexType.UnitAndValue<number>;
+            diskSpanSize: number;
+            mode: OVH.dedicated.server.HardwareSpecificationsRaidHardEnum;
+            name: string;
+            type: string;
         }
         //dedicated.server.HardwareRaidController
         // fullName: dedicated.server.HardwareRaidController.HardwareRaidController
         export interface HardwareRaidController {
-            disks?: OVH.dedicated.server.HardwareRaidDiskGroup[];
-            model?: string;
-            type?: string;
+            disks: OVH.dedicated.server.HardwareRaidDiskGroup[];
+            model: string;
+            type: string;
         }
         //dedicated.server.HardwareRaidDiskGroup
         // fullName: dedicated.server.HardwareRaidDiskGroup.HardwareRaidDiskGroup
         export interface HardwareRaidDiskGroup {
-            capacity?: OVH.complexType.UnitAndValue<number>;
-            names?: string[];
-            speed?: OVH.complexType.UnitAndValue<string>;
-            type?: OVH.dedicated.server.DiskTypeEnum;
+            capacity: OVH.complexType.UnitAndValue<number>;
+            names: string[];
+            speed: OVH.complexType.UnitAndValue<string>;
+            type: OVH.dedicated.server.DiskTypeEnum;
         }
         //dedicated.server.HardwareRaidProfile
         // fullName: dedicated.server.HardwareRaidProfile.HardwareRaidProfile
         export interface HardwareRaidProfile {
-            controllers?: OVH.dedicated.server.HardwareRaidController[];
+            controllers: OVH.dedicated.server.HardwareRaidController[];
         }
         //dedicated.server.HardwareRaidSize
         // fullName: dedicated.server.HardwareRaidSize.HardwareRaidSize
         export interface HardwareRaidSize {
-            configurations?: OVH.dedicated.server.HardwareRaidConfiguration[];
+            configurations: OVH.dedicated.server.HardwareRaidConfiguration[];
         }
         //dedicated.server.HardwareSpecifications
         // fullName: dedicated.server.HardwareSpecifications.HardwareSpecifications
         export interface HardwareSpecifications {
-            bootMode?: OVH.dedicated.server.BootModeEnum;
+            bootMode: OVH.dedicated.server.BootModeEnum;
             coresPerProcessor?: number;
             defaultHardwareRaidSize?: OVH.complexType.UnitAndValue<number>;
             defaultHardwareRaidType?: OVH.dedicated.server.HardwareSpecificationsRaidHardEnum;
@@ -310,8 +310,8 @@ export namespace dedicated {
         //dedicated.server.HardwareSpecificationsExpansionCard
         // fullName: dedicated.server.HardwareSpecificationsExpansionCard.HardwareSpecificationsExpansionCard
         export interface HardwareSpecificationsExpansionCard {
-            description?: string;
-            type?: OVH.dedicated.server.HardwareSpecificationsExpansionCardTypeEnum;
+            description: string;
+            type: OVH.dedicated.server.HardwareSpecificationsExpansionCardTypeEnum;
         }
         //dedicated.server.HardwareSpecificationsExpansionCardTypeEnum
         export type HardwareSpecificationsExpansionCardTypeEnum = "fpga" | "gpu"
@@ -342,7 +342,7 @@ export namespace dedicated {
         //dedicated.server.InstallationProgressStatus
         // fullName: dedicated.server.InstallationProgressStatus.InstallationProgressStatus
         export interface InstallationProgressStatus {
-            elapsedTime?: number;
+            elapsedTime: number;
             progress?: OVH.dedicated.server.InstallationProgressSteps[];
         }
         //dedicated.server.InstallationProgressStatusEnum
@@ -350,15 +350,15 @@ export namespace dedicated {
         //dedicated.server.InstallationProgressSteps
         // fullName: dedicated.server.InstallationProgressSteps.InstallationProgressSteps
         export interface InstallationProgressSteps {
-            comment?: string;
+            comment: string;
             error?: string;
-            status?: OVH.dedicated.server.InstallationProgressStatusEnum;
+            status: OVH.dedicated.server.InstallationProgressStatusEnum;
         }
         //dedicated.server.Intervention
         // fullName: dedicated.server.Intervention.Intervention
         export interface Intervention {
             date?: string;
-            interventionId?: number;
+            interventionId: number;
             type?: string;
         }
         //dedicated.server.IpBlockSizeEnum
@@ -374,20 +374,20 @@ export namespace dedicated {
         //dedicated.server.IpOrderableDetails
         // fullName: dedicated.server.IpOrderableDetails.IpOrderableDetails
         export interface IpOrderableDetails {
-            blockSizes?: OVH.dedicated.server.IpBlockSizeEnum[];
-            included?: boolean;
+            blockSizes: OVH.dedicated.server.IpBlockSizeEnum[];
+            included: boolean;
             ipNumber?: number;
-            number?: number;
+            number: number;
             optionRequired?: OVH.dedicated.server.OptionRequiredEnum;
-            type?: OVH.dedicated.server.IpTypeOrderableEnum;
+            type: OVH.dedicated.server.IpTypeOrderableEnum;
         }
         //dedicated.server.IpTypeOrderableEnum
         export type IpTypeOrderableEnum = "failover" | "static" | "unshielded"
         //dedicated.server.Ipmi
         // fullName: dedicated.server.Ipmi.Ipmi
         export interface Ipmi {
-            activated?: boolean;
-            supportedFeatures?: OVH.dedicated.server.IpmiSupportedFeatures;
+            activated: boolean;
+            supportedFeatures: OVH.dedicated.server.IpmiSupportedFeatures;
         }
         //dedicated.server.IpmiAccessTypeEnum
         export type IpmiAccessTypeEnum = "kvmipHtml5URL" | "kvmipJnlp" | "serialOverLanSshKey" | "serialOverLanURL"
@@ -400,10 +400,10 @@ export namespace dedicated {
         //dedicated.server.IpmiSupportedFeatures
         // fullName: dedicated.server.IpmiSupportedFeatures.IpmiSupportedFeatures
         export interface IpmiSupportedFeatures {
-            kvmipHtml5URL?: boolean;
-            kvmipJnlp?: boolean;
-            serialOverLanSshKey?: boolean;
-            serialOverLanURL?: boolean;
+            kvmipHtml5URL: boolean;
+            kvmipJnlp: boolean;
+            serialOverLanSshKey: boolean;
+            serialOverLanURL: boolean;
         }
         //dedicated.server.IpmiTestResult
         // fullName: dedicated.server.IpmiTestResult.IpmiTestResult
@@ -422,7 +422,7 @@ export namespace dedicated {
         //dedicated.server.MrtgTimestampValue
         // fullName: dedicated.server.MrtgTimestampValue.MrtgTimestampValue
         export interface MrtgTimestampValue {
-            timestamp?: number;
+            timestamp: number;
             value?: OVH.complexType.UnitAndValue<number>;
         }
         //dedicated.server.MrtgTypeEnum
@@ -430,10 +430,10 @@ export namespace dedicated {
         //dedicated.server.Netboot
         // fullName: dedicated.server.Netboot.Netboot
         export interface Netboot {
-            bootId?: number;
-            bootType?: OVH.dedicated.server.BootTypeEnum;
-            description?: string;
-            kernel?: string;
+            bootId: number;
+            bootType: OVH.dedicated.server.BootTypeEnum;
+            description: string;
+            kernel: string;
         }
         //dedicated.server.NetworkSpecifications
         // fullName: dedicated.server.NetworkSpecifications.NetworkSpecifications
@@ -448,8 +448,8 @@ export namespace dedicated {
         //dedicated.server.Option
         // fullName: dedicated.server.Option.Option
         export interface Option {
-            option?: OVH.dedicated.server.OptionEnum;
-            state?: OVH.dedicated.server.OptionStateEnum;
+            option: OVH.dedicated.server.OptionEnum;
+            state: OVH.dedicated.server.OptionStateEnum;
         }
         //dedicated.server.OptionEnum
         export type OptionEnum = "BACKUPPROTOCOL" | "BANDWIDTH" | "BANDWIDTH_VRACK" | "TRAFFIC" | "TRAFFIC_DISCOVER" | "TUNING" | "TUNING_FIREWALL" | "TUNING_KVM" | "USB_KVM_IP"
@@ -484,7 +484,7 @@ export namespace dedicated {
         export interface Rtm {
             currentVersion?: string;
             installedVersion?: string;
-            needsUpdate?: boolean;
+            needsUpdate: boolean;
         }
         //dedicated.server.RtmChartPeriodEnum
         export type RtmChartPeriodEnum = "daily" | "monthly" | "weekly" | "yearly"
@@ -521,7 +521,7 @@ export namespace dedicated {
         // fullName: dedicated.server.RtmDisk.RtmDisk
         export interface RtmDisk {
             capacity?: OVH.complexType.UnitAndValue<number>;
-            disk?: string;
+            disk: string;
             model?: string;
             temperature?: OVH.complexType.UnitAndValue<number>;
         }
@@ -576,7 +576,7 @@ export namespace dedicated {
         export interface RtmPartition {
             inodeUsage?: OVH.complexType.UnitAndValue<number>;
             mountPoint?: string;
-            partition?: string;
+            partition: string;
             usage?: OVH.complexType.UnitAndValue<number>;
         }
         //dedicated.server.RtmPci
@@ -588,7 +588,7 @@ export namespace dedicated {
         //dedicated.server.RtmRaid
         // fullName: dedicated.server.RtmRaid.RtmRaid
         export interface RtmRaid {
-            unit?: string;
+            unit: string;
         }
         //dedicated.server.RtmRaidStatusEnum
         export type RtmRaidStatusEnum = "KO" | "OK" | "REBUILDING" | "UNKNOWN"
@@ -621,7 +621,7 @@ export namespace dedicated {
         // fullName: dedicated.server.ServerBurst.ServerBurst
         export interface ServerBurst {
             capacity?: OVH.complexType.UnitAndValue<number>;
-            status?: OVH.dedicated.server.BurstStatusEnum;
+            status: OVH.dedicated.server.BurstStatusEnum;
         }
         //dedicated.server.SplaStatusEnum
         export type SplaStatusEnum = "terminated" | "used" | "waitingToCheck"
@@ -635,14 +635,14 @@ export namespace dedicated {
         // fullName: dedicated.server.SupportLevelOrderable.SupportLevelOrderable
         export interface SupportLevelOrderable {
             levels?: OVH.dedicated.server.SupportLevelOrderableEnum[];
-            orderable?: boolean;
+            orderable: boolean;
         }
         //dedicated.server.SupportLevelOrderableEnum
         export type SupportLevelOrderableEnum = "critical" | "fastpath" | "gs"
         //dedicated.server.SupportReplaceHddInfo
         // fullName: dedicated.server.SupportReplaceHddInfo.SupportReplaceHddInfo
         export interface SupportReplaceHddInfo {
-            disk_serial?: string;
+            disk_serial: string;
             slot_id?: number;
         }
         //dedicated.server.SwitchingDetails
@@ -655,16 +655,16 @@ export namespace dedicated {
         export interface Task {
             comment?: string;
             doneDate?: string;
-            function?: OVH.dedicated.TaskFunctionEnum;
+            function: OVH.dedicated.TaskFunctionEnum;
             lastUpdate?: string;
-            startDate?: string;
-            status?: OVH.dedicated.TaskStatusEnum;
-            taskId?: number;
+            startDate: string;
+            status: OVH.dedicated.TaskStatusEnum;
+            taskId: number;
         }
         //dedicated.server.TemplateCaps
         // fullName: dedicated.server.TemplateCaps.TemplateCaps
         export interface TemplateCaps {
-            hybridSupport?: boolean;
+            hybridSupport: boolean;
         }
         //dedicated.server.TrafficDetails
         // fullName: dedicated.server.TrafficDetails.TrafficDetails
@@ -681,7 +681,7 @@ export namespace dedicated {
         //dedicated.server.TrafficOrderable
         // fullName: dedicated.server.TrafficOrderable.TrafficOrderable
         export interface TrafficOrderable {
-            orderable?: boolean;
+            orderable: boolean;
             traffic?: OVH.dedicated.server.TrafficOrderEnum[];
         }
         //dedicated.server.UsbKeyCapacityEnum
@@ -689,22 +689,22 @@ export namespace dedicated {
         //dedicated.server.UsbKeyOrderableDetails
         // fullName: dedicated.server.UsbKeyOrderableDetails.UsbKeyOrderableDetails
         export interface UsbKeyOrderableDetails {
-            capacity?: OVH.dedicated.server.UsbKeyCapacityEnum[];
-            number?: number;
+            capacity: OVH.dedicated.server.UsbKeyCapacityEnum[];
+            number: number;
             optionRequired?: OVH.dedicated.server.OptionRequiredEnum;
-            orderable?: boolean;
+            orderable: boolean;
         }
         //dedicated.server.VirtualMac
         // fullName: dedicated.server.VirtualMac.VirtualMac
         export interface VirtualMac {
-            macAddress?: string;
-            type?: OVH.dedicated.server.VmacTypeEnum;
+            macAddress: string;
+            type: OVH.dedicated.server.VmacTypeEnum;
         }
         //dedicated.server.VirtualMacManagement
         // fullName: dedicated.server.VirtualMacManagement.VirtualMacManagement
         export interface VirtualMacManagement {
-            ipAddress?: string;
-            virtualMachineName?: string;
+            ipAddress: string;
+            virtualMachineName: string;
         }
         //dedicated.server.VmacTypeEnum
         export type VmacTypeEnum = "ovh" | "vmware"
@@ -760,7 +760,7 @@ export namespace dedicated {
             //dedicated.server.backup.BackupStatus
             // fullName: dedicated.server.backup.BackupStatus.BackupStatus
             export interface BackupStatus {
-                code?: OVH.dedicated.server.backup.BackupStatusCodeEnum;
+                code: OVH.dedicated.server.backup.BackupStatusCodeEnum;
                 reason?: string;
             }
             //dedicated.server.backup.BackupStatusCodeEnum
@@ -776,65 +776,65 @@ export namespace dedicated {
         //dedicated.server.emailAlert
         // fullName: dedicated.server.emailAlert.emailAlert
         export interface emailAlert {
-            alertId?: number;
-            email?: string;
-            enabled?: boolean;
-            language?: OVH.dedicated.server.AlertLanguageEnum;
+            alertId: number;
+            email: string;
+            enabled: boolean;
+            language: OVH.dedicated.server.AlertLanguageEnum;
         }
         //dedicated.server.kvm
         // fullName: dedicated.server.kvm.kvm
         export interface kvm {
-            expiration?: string;
+            expiration: string;
             ip?: string;
-            name?: string;
+            name: string;
         }
         //dedicated.server.netbootOption
         // fullName: dedicated.server.netbootOption.netbootOption
         export interface netbootOption {
-            option?: OVH.dedicated.server.BootOptionEnum;
-            value?: string;
+            option: OVH.dedicated.server.BootOptionEnum;
+            value: string;
         }
         //dedicated.server.serviceMonitoring
         // fullName: dedicated.server.serviceMonitoring.serviceMonitoring
         export interface serviceMonitoring {
             challengeText?: string;
-            enabled?: boolean;
-            interval?: OVH.dedicated.server.MonitoringIntervalEnum;
-            ip?: string;
-            monitoringId?: number;
-            port?: number;
-            protocol?: OVH.dedicated.server.MonitoringProtocolEnum;
+            enabled: boolean;
+            interval: OVH.dedicated.server.MonitoringIntervalEnum;
+            ip: string;
+            monitoringId: number;
+            port: number;
+            protocol: OVH.dedicated.server.MonitoringProtocolEnum;
             url?: string;
         }
         //dedicated.server.smsAlert
         // fullName: dedicated.server.smsAlert.smsAlert
         export interface smsAlert {
-            alertId?: number;
-            enabled?: boolean;
+            alertId: number;
+            enabled: boolean;
             fromHour?: number;
-            language?: OVH.dedicated.server.AlertLanguageEnum;
-            phoneNumberTo?: string;
-            smsAccount?: string;
+            language: OVH.dedicated.server.AlertLanguageEnum;
+            phoneNumberTo: string;
+            smsAccount: string;
             toHour?: number;
         }
         //dedicated.server.spla
         // fullName: dedicated.server.spla.spla
         export interface spla {
-            id?: number;
-            lastUpdate?: string;
-            serialNumber?: string;
-            status?: OVH.dedicated.server.SplaStatusEnum;
-            type?: OVH.dedicated.server.SplaTypeEnum;
+            id: number;
+            lastUpdate: string;
+            serialNumber: string;
+            status: OVH.dedicated.server.SplaStatusEnum;
+            type: OVH.dedicated.server.SplaTypeEnum;
         }
     }
     export namespace virtualNetworkInterface {
         //dedicated.virtualNetworkInterface.VirtualNetworkInterface
         // fullName: dedicated.virtualNetworkInterface.VirtualNetworkInterface.VirtualNetworkInterface
         export interface VirtualNetworkInterface {
-            mode?: OVH.dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum;
-            name?: string;
-            serverName?: string;
-            uuid?: string;
+            mode: OVH.dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum;
+            name: string;
+            serverName: string;
+            uuid: string;
             vrack?: string;
         }
         //dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum
@@ -855,23 +855,23 @@ export namespace secondaryDns {
     //secondaryDns.SecondaryDNS
     // fullName: secondaryDns.SecondaryDNS.SecondaryDNS
     export interface SecondaryDNS {
-        creationDate?: string;
-        dns?: string;
-        domain?: string;
-        ipMaster?: string;
+        creationDate: string;
+        dns: string;
+        domain: string;
+        ipMaster: string;
     }
     //secondaryDns.SecondaryDNSCheckField
     // fullName: secondaryDns.SecondaryDNSCheckField.SecondaryDNSCheckField
     export interface SecondaryDNSCheckField {
-        fieldType?: OVH.zone.NamedResolutionFieldTypeEnum;
-        fieldValue?: string;
-        subDomain?: string;
+        fieldType: OVH.zone.NamedResolutionFieldTypeEnum;
+        fieldValue: string;
+        subDomain: string;
     }
     //secondaryDns.SecondaryDNSNameServer
     // fullName: secondaryDns.SecondaryDNSNameServer.SecondaryDNSNameServer
     export interface SecondaryDNSNameServer {
-        hostname?: string;
-        ip?: string;
+        hostname: string;
+        ip: string;
         ipv6?: string;
     }
 }
@@ -879,9 +879,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -898,40 +898,40 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace support {
     //support.NewMessageInfo
     // fullName: support.NewMessageInfo.NewMessageInfo
     export interface NewMessageInfo {
-        messageId?: number;
-        ticketId?: number;
-        ticketNumber?: number;
+        messageId: number;
+        ticketId: number;
+        ticketNumber: number;
     }
 }
 export namespace vrack {
     //vrack.Task
     // fullName: vrack.Task.Task
     export interface Task {
-        function?: string;
-        id?: number;
+        function: string;
+        id: number;
         lastUpdate?: string;
         orderId?: number;
         serviceName?: string;
-        status?: OVH.vrack.TaskStatusEnum;
+        status: OVH.vrack.TaskStatusEnum;
         targetDomain?: string;
         todoDate?: string;
     }
@@ -940,8 +940,8 @@ export namespace vrack {
     //vrack.dedicatedServer
     // fullName: vrack.dedicatedServer.dedicatedServer
     export interface dedicatedServer {
-        dedicatedServer?: string;
-        vrack?: string;
+        dedicatedServer: string;
+        vrack: string;
     }
 }
 export namespace zone {

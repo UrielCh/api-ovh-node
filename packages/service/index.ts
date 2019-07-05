@@ -5,8 +5,8 @@ export namespace complexType {
     //complexType.SafeKeyValue
     // fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
-        key?: string;
-        value?: T;
+        key: string;
+        value: T;
     }
 }
 export namespace order {
@@ -15,9 +15,9 @@ export namespace order {
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode?: OVH.order.CurrencyCodeEnum;
-        text?: string;
-        value?: number;
+        currencyCode: OVH.order.CurrencyCodeEnum;
+        text: string;
+        value: number;
     }
 }
 export namespace service {
@@ -27,21 +27,21 @@ export namespace service {
     // fullName: service.Plan.Plan
     export interface Plan {
         code?: string;
-        product?: OVH.service.plan.Product;
+        product: OVH.service.plan.Product;
     }
     //service.Renew
     // fullName: service.Renew.Renew
     export interface Renew {
         dayOfMonth?: number;
         interval?: OVH.service.renew.Interval;
-        mode?: OVH.service.renew.Mode;
+        mode: OVH.service.renew.Mode;
         possibleIntervals?: OVH.service.renew.Interval[];
-        possibleModes?: OVH.service.renew.Mode[];
+        possibleModes: OVH.service.renew.Mode[];
     }
     //service.Resource
     // fullName: service.Resource.Resource
     export interface Resource {
-        displayName?: string;
+        displayName: string;
         name?: string;
         state?: OVH.service.ResourceStateEnum;
     }
@@ -52,35 +52,35 @@ export namespace service {
     export interface Route {
         path?: string;
         url?: string;
-        vars?: OVH.complexType.SafeKeyValue<string>[];
+        vars: OVH.complexType.SafeKeyValue<string>[];
     }
     export namespace consumption {
         //service.consumption.Transaction
         // fullName: service.consumption.Transaction.Transaction
         export interface Transaction {
-            beginDate?: string;
+            beginDate: string;
             creationDate?: string;
-            elements?: OVH.service.consumption.transaction.Element[];
+            elements: OVH.service.consumption.transaction.Element[];
             endDate?: string;
             id?: number;
             lastUpdate?: string;
-            price?: OVH.order.Price;
-            serviceId?: number;
+            price: OVH.order.Price;
+            serviceId: number;
         }
         export namespace transaction {
             //service.consumption.transaction.Element
             // fullName: service.consumption.transaction.Element.Element
             export interface Element {
-                details?: OVH.service.consumption.transaction.Element.Detail[];
-                planCode?: string;
-                price?: OVH.order.Price;
-                quantity?: number;
+                details: OVH.service.consumption.transaction.Element.Detail[];
+                planCode: string;
+                price: OVH.order.Price;
+                quantity: number;
             }
             export namespace Element {
                 //service.consumption.transaction.Element.Detail
                 // fullName: service.consumption.transaction.Element.Detail.Detail
                 export interface Detail {
-                    quantity?: number;
+                    quantity: number;
                     unique_id?: string;
                 }
             }
@@ -101,59 +101,59 @@ export namespace service {
         //service.renew.RenewDescription
         // fullName: service.renew.RenewDescription.RenewDescription
         export interface RenewDescription {
-            renewPeriod?: string;
-            strategies?: OVH.service.renew.RenewStrategy[];
+            renewPeriod: string;
+            strategies: OVH.service.renew.RenewStrategy[];
         }
         //service.renew.RenewForecast
         // fullName: service.renew.RenewForecast.RenewForecast
         export interface RenewForecast {
-            details?: OVH.service.renew.RenewForecastDetail[];
-            prices?: OVH.service.renew.RenewForecastDetailPrices;
+            details: OVH.service.renew.RenewForecastDetail[];
+            prices: OVH.service.renew.RenewForecastDetailPrices;
         }
         //service.renew.RenewForecastDetail
         // fullName: service.renew.RenewForecastDetail.RenewForecastDetail
         export interface RenewForecastDetail {
             description?: string;
-            quantity?: number;
-            serviceName?: string;
-            totalPrice?: OVH.order.Price;
-            unitPrice?: OVH.order.Price;
+            quantity: number;
+            serviceName: string;
+            totalPrice: OVH.order.Price;
+            unitPrice: OVH.order.Price;
         }
         //service.renew.RenewForecastDetailPrices
         // fullName: service.renew.RenewForecastDetailPrices.RenewForecastDetailPrices
         export interface RenewForecastDetailPrices {
-            tax?: OVH.order.Price;
-            withTax?: OVH.order.Price;
-            withoutTax?: OVH.order.Price;
+            tax: OVH.order.Price;
+            withTax: OVH.order.Price;
+            withoutTax: OVH.order.Price;
         }
         //service.renew.RenewOrder
         // fullName: service.renew.RenewOrder.RenewOrder
         export interface RenewOrder {
             date?: string;
             expirationDate?: string;
-            orderId?: number;
-            password?: string;
-            pdfUrl?: string;
-            priceWithTax?: OVH.order.Price;
-            priceWithoutTax?: OVH.order.Price;
+            orderId: number;
+            password: string;
+            pdfUrl: string;
+            priceWithTax: OVH.order.Price;
+            priceWithoutTax: OVH.order.Price;
             retractionDate?: string;
-            tax?: OVH.order.Price;
-            url?: string;
+            tax: OVH.order.Price;
+            url: string;
         }
         //service.renew.RenewStrategy
         // fullName: service.renew.RenewStrategy.RenewStrategy
         export interface RenewStrategy {
-            price?: OVH.order.Price;
-            priceInUcents?: number;
-            services?: number[];
-            servicesDetails?: OVH.service.renew.Service[];
+            price: OVH.order.Price;
+            priceInUcents: number;
+            services: number[];
+            servicesDetails: OVH.service.renew.Service[];
         }
         //service.renew.Service
         // fullName: service.renew.Service.Service
         export interface Service {
-            serviceId?: number;
-            serviceName?: string;
-            serviceType?: string;
+            serviceId: number;
+            serviceName: string;
+            serviceType: string;
         }
     }
 }
@@ -161,17 +161,17 @@ export namespace serviceList {
     //serviceList.Service
     // fullName: serviceList.Service.Service
     export interface Service {
-        creationDate?: string;
-        details?: OVH.complexType.SafeKeyValue<string>[];
+        creationDate: string;
+        details: OVH.complexType.SafeKeyValue<string>[];
         engagementDate?: string;
         expirationDate?: string;
         nextBillingDate?: string;
-        plan?: OVH.service.Plan;
-        quantity?: number;
+        plan: OVH.service.Plan;
+        quantity: number;
         renew?: OVH.service.Renew;
-        resource?: OVH.service.Resource;
-        route?: OVH.service.Route;
-        state?: OVH.service.BillingStateEnum;
+        resource: OVH.service.Resource;
+        route: OVH.service.Route;
+        state: OVH.service.BillingStateEnum;
     }
 }
 // Apis harmony

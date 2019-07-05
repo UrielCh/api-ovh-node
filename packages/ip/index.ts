@@ -5,8 +5,8 @@ export namespace complexType {
     //complexType.Range
     // fullName: complexType.Range.Range
     export interface Range<T> {
-        from?: T;
-        to?: T;
+        from: T;
+        to: T;
     }
 }
 export namespace coreTypes {
@@ -17,33 +17,33 @@ export namespace ip {
     //ip.Antiphishing
     // fullName: ip.Antiphishing.Antiphishing
     export interface Antiphishing {
-        creationDate?: string;
-        id?: number;
-        ipOnAntiphishing?: string;
-        state?: OVH.ip.AntiphishingStateEnum;
-        urlPhishing?: string;
+        creationDate: string;
+        id: number;
+        ipOnAntiphishing: string;
+        state: OVH.ip.AntiphishingStateEnum;
+        urlPhishing: string;
     }
     //ip.AntiphishingStateEnum
     export type AntiphishingStateEnum = "blocked" | "blocking" | "unblocked" | "unblocking"
     //ip.ArpBlockedIp
     // fullName: ip.ArpBlockedIp.ArpBlockedIp
     export interface ArpBlockedIp {
-        blockedSince?: string;
-        ipBlocked?: string;
+        blockedSince: string;
+        ipBlocked: string;
         logs?: string;
-        state?: OVH.ip.ArpStateEnum;
-        time?: number;
+        state: OVH.ip.ArpStateEnum;
+        time: number;
     }
     //ip.ArpStateEnum
     export type ArpStateEnum = "blocked" | "unblocking"
     //ip.BlockedIp
     // fullName: ip.BlockedIp.BlockedIp
     export interface BlockedIp {
-        blockedSince?: string;
-        ipBlocked?: string;
+        blockedSince: string;
+        ipBlocked: string;
         logs?: string;
-        state?: OVH.ip.BlockedIpStateEnum;
-        time?: number;
+        state: OVH.ip.BlockedIpStateEnum;
+        time: number;
     }
     //ip.BlockedIpStateEnum
     export type BlockedIpStateEnum = "blocked" | "unblocking"
@@ -51,7 +51,7 @@ export namespace ip {
     // fullName: ip.Destination.Destination
     export interface Destination {
         nexthop?: string[];
-        service?: string;
+        service: string;
     }
     //ip.Destinations
     // fullName: ip.Destinations.Destinations
@@ -68,24 +68,24 @@ export namespace ip {
     //ip.FirewallIp
     // fullName: ip.FirewallIp.FirewallIp
     export interface FirewallIp {
-        enabled?: boolean;
-        ipOnFirewall?: string;
-        state?: OVH.ip.FirewallStateEnum;
+        enabled: boolean;
+        ipOnFirewall: string;
+        state: OVH.ip.FirewallStateEnum;
     }
     //ip.FirewallNetworkRule
     // fullName: ip.FirewallNetworkRule.FirewallNetworkRule
     export interface FirewallNetworkRule {
-        action?: OVH.ip.FirewallActionEnum;
-        creationDate?: string;
-        destination?: string;
+        action: OVH.ip.FirewallActionEnum;
+        creationDate: string;
+        destination: string;
         destinationPort?: string;
         fragments?: boolean;
-        protocol?: OVH.ip.FirewallProtocolEnum;
-        rule?: string;
-        sequence?: number;
-        source?: string;
+        protocol: OVH.ip.FirewallProtocolEnum;
+        rule: string;
+        sequence: number;
+        source: string;
         sourcePort?: string;
-        state?: OVH.ip.FirewallRuleStateEnum;
+        state: OVH.ip.FirewallRuleStateEnum;
         tcpOption?: string;
     }
     //ip.FirewallOptionTCP
@@ -107,17 +107,17 @@ export namespace ip {
     //ip.GameMitigation
     // fullName: ip.GameMitigation.GameMitigation
     export interface GameMitigation {
-        firewallModeEnabled?: boolean;
-        ipOnGame?: string;
-        state?: OVH.ip.GameMitigationStateEnum;
+        firewallModeEnabled: boolean;
+        ipOnGame: string;
+        state: OVH.ip.GameMitigationStateEnum;
     }
     //ip.GameMitigationRule
     // fullName: ip.GameMitigationRule.GameMitigationRule
     export interface GameMitigationRule {
-        id?: number;
-        ports?: OVH.complexType.Range<number>;
-        protocol?: OVH.ip.GameMitigationRuleProtocolEnum;
-        state?: OVH.ip.GameMitigationRuleStateEnum;
+        id: number;
+        ports: OVH.complexType.Range<number>;
+        protocol: OVH.ip.GameMitigationRuleProtocolEnum;
+        state: OVH.ip.GameMitigationRuleStateEnum;
     }
     //ip.GameMitigationRuleProtocolEnum
     export type GameMitigationRuleProtocolEnum = "arkSurvivalEvolved" | "arma" | "gtaMultiTheftAutoSanAndreas" | "gtaSanAndreasMultiplayerMod" | "hl2Source" | "minecraftPocketEdition" | "minecraftQuery" | "mumble" | "other" | "rust" | "teamspeak2" | "teamspeak3" | "trackmaniaShootmania"
@@ -128,19 +128,19 @@ export namespace ip {
     //ip.Ip
     // fullName: ip.Ip.Ip
     export interface Ip {
-        canBeTerminated?: boolean;
+        canBeTerminated: boolean;
         country?: OVH.coreTypes.CountryEnum;
         description?: string;
-        ip?: string;
+        ip: string;
         organisationId?: string;
         routedTo?: OVH.ip.RoutedTo;
-        type?: OVH.ip.IpTypeEnum;
+        type: OVH.ip.IpTypeEnum;
     }
     //ip.IpMigrationToken
     // fullName: ip.IpMigrationToken.IpMigrationToken
     export interface IpMigrationToken {
-        customerId?: string;
-        token?: string;
+        customerId: string;
+        token: string;
     }
     //ip.IpTask
     // fullName: ip.IpTask.IpTask
@@ -148,11 +148,11 @@ export namespace ip {
         comment?: string;
         destination?: OVH.ip.RoutedTo;
         doneDate?: string;
-        function?: OVH.ip.TaskFunctionEnum;
+        function: OVH.ip.TaskFunctionEnum;
         lastUpdate?: string;
-        startDate?: string;
-        status?: OVH.ip.TaskStatusEnum;
-        taskId?: number;
+        startDate: string;
+        status: OVH.ip.TaskStatusEnum;
+        taskId: number;
     }
     //ip.IpTypeEnum
     export type IpTypeEnum = "cdn" | "cloud" | "dedicated" | "failover" | "hosted_ssl" | "housing" | "loadBalancing" | "mail" | "overthebox" | "pcc" | "pci" | "private" | "vpn" | "vps" | "vrack" | "xdsl"
@@ -161,30 +161,30 @@ export namespace ip {
     //ip.LoadBalancingBackendIp
     // fullName: ip.LoadBalancingBackendIp.LoadBalancingBackendIp
     export interface LoadBalancingBackendIp {
-        backend?: string;
+        backend: string;
         mainBackendIp?: string;
-        probe?: OVH.ip.LoadBalancingBackendProbeEnum;
-        weight?: number;
-        zone?: OVH.ip.LoadBalancingZoneEnum;
+        probe: OVH.ip.LoadBalancingBackendProbeEnum;
+        weight: number;
+        zone: OVH.ip.LoadBalancingZoneEnum;
     }
     //ip.LoadBalancingBackendProbeEnum
     export type LoadBalancingBackendProbeEnum = "http" | "icmp" | "none" | "oco"
     //ip.LoadBalancingIp
     // fullName: ip.LoadBalancingIp.LoadBalancingIp
     export interface LoadBalancingIp {
-        ipLoadBalancing?: string;
-        serviceName?: string;
-        ssl?: OVH.ip.LoadBalancingSslEnum;
-        state?: OVH.ip.LoadBalancingStateEnum;
-        stickiness?: OVH.ip.LoadBalancingStickinessEnum;
-        zone?: OVH.ip.LoadBalancingZoneEnum[];
+        ipLoadBalancing: string;
+        serviceName: string;
+        ssl: OVH.ip.LoadBalancingSslEnum;
+        state: OVH.ip.LoadBalancingStateEnum;
+        stickiness: OVH.ip.LoadBalancingStickinessEnum;
+        zone: OVH.ip.LoadBalancingZoneEnum[];
     }
     export namespace LoadBalancingIp {
         //ip.LoadBalancingIp.LoadBalancingPort
         // fullName: ip.LoadBalancingIp.LoadBalancingPort.LoadBalancingPort
         export interface LoadBalancingPort {
-            dstPort?: number;
-            srcPort?: OVH.ip.LoadBalancingAdditionalPortEnum;
+            dstPort: number;
+            srcPort: OVH.ip.LoadBalancingAdditionalPortEnum;
         }
     }
     //ip.LoadBalancingSslEnum
@@ -196,10 +196,10 @@ export namespace ip {
     //ip.LoadBalancingTask
     // fullName: ip.LoadBalancingTask.LoadBalancingTask
     export interface LoadBalancingTask {
-        action?: OVH.ip.LoadBalancingTaskActionEnum;
-        creationDate?: string;
-        id?: number;
-        status?: string;
+        action: OVH.ip.LoadBalancingTaskActionEnum;
+        creationDate: string;
+        id: number;
+        status: string;
     }
     //ip.LoadBalancingTaskActionEnum
     export type LoadBalancingTaskActionEnum = "activateSsl" | "addBackend" | "addIpToBackend" | "announceIpLoadBalancing" | "backupStateSet" | "backupStateUnset" | "changeProbe" | "delBackend" | "desactivateSsl" | "removeIpFromBackend" | "setPortRedirection" | "setStickiness" | "setWeight" | "unannounceIpLoadBalancing" | "unsetPortRedirection"
@@ -209,9 +209,9 @@ export namespace ip {
     // fullName: ip.MitigationAttack.MitigationAttack
     export interface MitigationAttack {
         endDate?: string;
-        idAttack?: number;
-        ipAttack?: string;
-        startDate?: string;
+        idAttack: number;
+        ipAttack: string;
+        startDate: string;
     }
     //ip.MitigationDetailedStats
     // fullName: ip.MitigationDetailedStats.MitigationDetailedStats
@@ -229,17 +229,17 @@ export namespace ip {
     //ip.MitigationIp
     // fullName: ip.MitigationIp.MitigationIp
     export interface MitigationIp {
-        auto?: boolean;
-        ipOnMitigation?: string;
-        permanent?: boolean;
-        state?: OVH.ip.MitigationStateEnum;
+        auto: boolean;
+        ipOnMitigation: string;
+        permanent: boolean;
+        state: OVH.ip.MitigationStateEnum;
     }
     //ip.MitigationProfile
     // fullName: ip.MitigationProfile.MitigationProfile
     export interface MitigationProfile {
-        autoMitigationTimeOut?: OVH.ip.MitigationProfileAutoMitigationTimeOutEnum;
-        ipMitigationProfile?: string;
-        state?: OVH.ip.MitigationProfileStateEnum;
+        autoMitigationTimeOut: OVH.ip.MitigationProfileAutoMitigationTimeOutEnum;
+        ipMitigationProfile: string;
+        state: OVH.ip.MitigationProfileStateEnum;
     }
     //ip.MitigationProfileAutoMitigationTimeOutEnum
     export type MitigationProfileAutoMitigationTimeOutEnum = 0 | 15 | 1560 | 360 | 60
@@ -252,26 +252,26 @@ export namespace ip {
     export interface MitigationStats {
         in?: OVH.ip.MitigationTraffic;
         out?: OVH.ip.MitigationTraffic;
-        timestamp?: number;
+        timestamp: number;
     }
     //ip.MitigationStatsScaleEnum
     export type MitigationStatsScaleEnum = "10s" | "1m" | "5m"
     //ip.MitigationTraffic
     // fullName: ip.MitigationTraffic.MitigationTraffic
     export interface MitigationTraffic {
-        bps?: number;
-        pps?: number;
+        bps: number;
+        pps: number;
     }
     //ip.ReverseDelegation
     // fullName: ip.ReverseDelegation.ReverseDelegation
     export interface ReverseDelegation {
-        target?: string;
+        target: string;
     }
     //ip.ReverseIp
     // fullName: ip.ReverseIp.ReverseIp
     export interface ReverseIp {
-        ipReverse?: string;
-        reverse?: string;
+        ipReverse: string;
+        reverse: string;
     }
     //ip.RipeInfos
     // fullName: ip.RipeInfos.RipeInfos
@@ -287,21 +287,21 @@ export namespace ip {
     //ip.ServiceIp
     // fullName: ip.ServiceIp.ServiceIp
     export interface ServiceIp {
-        canBeTerminated?: boolean;
+        canBeTerminated: boolean;
         country?: OVH.coreTypes.CountryEnum;
         description?: string;
-        ip?: string;
+        ip: string;
         organisationId?: string;
         routedTo?: OVH.ip.RoutedTo;
-        type?: OVH.ip.IpTypeEnum;
+        type: OVH.ip.IpTypeEnum;
     }
     //ip.SpamIp
     // fullName: ip.SpamIp.SpamIp
     export interface SpamIp {
-        date?: string;
-        ipSpamming?: string;
-        state?: OVH.ip.SpamStateEnum;
-        time?: number;
+        date: string;
+        ipSpamming: string;
+        state: OVH.ip.SpamStateEnum;
+        time: number;
     }
     //ip.SpamStateEnum
     export type SpamStateEnum = "blockedForSpam" | "unblocked" | "unblocking"
@@ -310,17 +310,17 @@ export namespace ip {
     export interface SpamStats {
         averageSpamscore?: number;
         detectedSpams?: OVH.ip.SpamTarget[];
-        numberOfSpams?: number;
-        timestamp?: number;
-        total?: number;
+        numberOfSpams: number;
+        timestamp: number;
+        total: number;
     }
     //ip.SpamTarget
     // fullName: ip.SpamTarget.SpamTarget
     export interface SpamTarget {
-        date?: number;
-        destinationIp?: string;
-        messageId?: string;
-        spamscore?: number;
+        date: number;
+        destinationIp: string;
+        messageId: string;
+        spamscore: number;
     }
     //ip.TaskFunctionEnum
     export type TaskFunctionEnum = "arinBlockReassign" | "changeRipeOrg" | "checkAndReleaseIp" | "genericMoveFloatingIp"
@@ -332,13 +332,13 @@ export namespace ipLoadbalancing {
         //ipLoadbalancing.Task.Task
         // fullName: ipLoadbalancing.Task.Task.Task
         export interface Task {
-            action?: OVH.ipLoadbalancing.TaskActionEnum;
-            creationDate?: string;
+            action: OVH.ipLoadbalancing.TaskActionEnum;
+            creationDate: string;
             doneDate?: string;
-            id?: number;
-            progress?: number;
-            status?: OVH.ipLoadbalancing.TaskStatusEnum;
-            zones?: string[];
+            id: number;
+            progress: number;
+            status: OVH.ipLoadbalancing.TaskStatusEnum;
+            zones: string[];
         }
     }
     //ipLoadbalancing.TaskActionEnum
@@ -350,9 +350,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -369,30 +369,30 @@ export namespace services {
     //services.NonExpiringService
     // fullName: services.NonExpiringService.NonExpiringService
     export interface NonExpiringService {
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

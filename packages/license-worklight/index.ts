@@ -9,36 +9,36 @@ export namespace license {
     //license.ChangeIpStatus
     // fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message?: OVH.license.ChangeIpMessageEnum;
-        success?: boolean;
+        message: OVH.license.ChangeIpMessageEnum;
+        success: boolean;
     }
     //license.LicenseTypeEnum
     export type LicenseTypeEnum = "dedicated" | "dedicatedCloud" | "dedicatedFailover" | "failover" | "vm" | "vps" | "vps_ceph" | "vps_classic" | "vps_cloud" | "vps_cloud_2016" | "vps_ssd"
     //license.OrderableWorkLightCompatibilityInfos
     // fullName: license.OrderableWorkLightCompatibilityInfos.OrderableWorkLightCompatibilityInfos
     export interface OrderableWorkLightCompatibilityInfos {
-        version?: OVH.license.WorkLightVersionEnum;
+        version: OVH.license.WorkLightVersionEnum;
     }
     //license.StateEnum
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
     //license.Task
     // fullName: license.Task.Task
     export interface Task {
-        action?: OVH.license.ActionType;
+        action: OVH.license.ActionType;
         doneDate?: string;
-        lastUpdate?: string;
-        name?: string;
-        status?: OVH.license.TaskStateEnum;
-        taskId?: number;
-        todoDate?: string;
+        lastUpdate: string;
+        name: string;
+        status: OVH.license.TaskStateEnum;
+        taskId: number;
+        todoDate: string;
     }
     //license.TaskStateEnum
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
     //license.WorkLightOrderConfiguration
     // fullName: license.WorkLightOrderConfiguration.WorkLightOrderConfiguration
     export interface WorkLightOrderConfiguration {
-        orderableVersions?: OVH.license.OrderableWorkLightCompatibilityInfos[];
-        serviceType?: OVH.license.LicenseTypeEnum;
+        orderableVersions: OVH.license.OrderableWorkLightCompatibilityInfos[];
+        serviceType: OVH.license.LicenseTypeEnum;
     }
     //license.WorkLightVersionEnum
     export type WorkLightVersionEnum = "VERSION-6.1U.1CPU" | "VERSION-6.1U.2CPU" | "VERSION-6.2U.1CPU" | "VERSION-6.2U.2CPU" | "VERSION-6.EVALUATION" | "worklight-license-version-6-1cpu-1u" | "worklight-license-version-6-1cpu-2u" | "worklight-license-version-6-2cpu-1u" | "worklight-license-version-6-2cpu-2u"
@@ -46,13 +46,13 @@ export namespace license {
         //license.worklight.WorkLight
         // fullName: license.worklight.WorkLight.WorkLight
         export interface WorkLight {
-            creation?: string;
-            deleteAtExpiration?: boolean;
-            domain?: string;
-            ip?: string;
-            licenseId?: string;
-            status?: OVH.license.StateEnum;
-            version?: OVH.license.WorkLightVersionEnum;
+            creation: string;
+            deleteAtExpiration: boolean;
+            domain: string;
+            ip: string;
+            licenseId: string;
+            status: OVH.license.StateEnum;
+            version: OVH.license.WorkLightVersionEnum;
         }
     }
 }
@@ -60,9 +60,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -79,19 +79,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

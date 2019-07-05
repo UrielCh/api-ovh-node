@@ -7,74 +7,74 @@ export namespace email {
         // fullName: email.pro.Account.Account
         export interface Account {
             SAMAccountName?: string;
-            configured?: boolean;
+            configured: boolean;
             creationDate?: string;
             currentUsage?: number;
             deleteAtExpiration?: boolean;
             displayName?: string;
-            domain?: string;
+            domain: string;
             expirationDate?: string;
             expirationOutlookDate?: string;
             firstName?: string;
-            hiddenFromGAL?: boolean;
-            id?: number;
+            hiddenFromGAL: boolean;
+            id: number;
             initial?: string;
             lastLogoffDate?: string;
             lastLogonDate?: string;
             lastName?: string;
             lastUpdateDate?: string;
-            login?: string;
+            login: string;
             mailingFilter?: OVH.email.pro.MailingFilterEnum[];
             passwordLastUpdate?: string;
-            primaryEmailAddress?: string;
-            quota?: number;
+            primaryEmailAddress: string;
+            quota: number;
             renewPeriod?: OVH.email.pro.renewPeriodEnum;
-            spamAndVirusConfiguration?: OVH.email.pro.spamAndVirusConfiguration;
-            spamDetected?: boolean;
+            spamAndVirusConfiguration: OVH.email.pro.spamAndVirusConfiguration;
+            spamDetected: boolean;
             spamTicketNumber?: number;
-            state?: OVH.email.pro.ObjectStateEnum;
-            taskPendingId?: number;
+            state: OVH.email.pro.ObjectStateEnum;
+            taskPendingId: number;
         }
         //email.pro.AccountAlias
         // fullName: email.pro.AccountAlias.AccountAlias
         export interface AccountAlias {
-            alias?: string;
-            creationDate?: string;
-            taskPendingId?: number;
+            alias: string;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.pro.AccountDiagnosis
         // fullName: email.pro.AccountDiagnosis.AccountDiagnosis
         export interface AccountDiagnosis {
-            canReceiveEmail?: boolean;
-            canSendEmail?: boolean;
-            connectiveWebmail?: boolean;
-            isLocked?: boolean;
-            isMxValid?: boolean;
-            isSpammer?: boolean;
-            isSrvValid?: boolean;
-            isSuspended?: boolean;
-            lastCheck?: string;
+            canReceiveEmail: boolean;
+            canSendEmail: boolean;
+            connectiveWebmail: boolean;
+            isLocked: boolean;
+            isMxValid: boolean;
+            isSpammer: boolean;
+            isSrvValid: boolean;
+            isSuspended: boolean;
+            lastCheck: string;
         }
         //email.pro.AccountFullAccess
         // fullName: email.pro.AccountFullAccess.AccountFullAccess
         export interface AccountFullAccess {
-            allowedAccountId?: number;
-            creationDate?: string;
-            taskPendingId?: number;
+            allowedAccountId: number;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.pro.AccountSendAs
         // fullName: email.pro.AccountSendAs.AccountSendAs
         export interface AccountSendAs {
-            allowedAccountId?: number;
-            creationDate?: string;
-            taskPendingId?: number;
+            allowedAccountId: number;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.pro.AccountSendOnBehalfTo
         // fullName: email.pro.AccountSendOnBehalfTo.AccountSendOnBehalfTo
         export interface AccountSendOnBehalfTo {
-            allowedAccountId?: number;
-            creationDate?: string;
-            taskPendingId?: number;
+            allowedAccountId: number;
+            creationDate: string;
+            taskPendingId: number;
         }
         //email.pro.DisclaimerAttributeEnum
         export type DisclaimerAttributeEnum = "City" | "Company" | "Country" | "Department" | "DisplayName" | "Email" | "FaxNumber" | "FirstName" | "HomePhoneNumber" | "Initials" | "LastName" | "Manager" | "MobileNumber" | "Notes" | "Office" | "OtherFaxNumber" | "OtherHomePhoneNumber" | "OtherPhoneNumber" | "PagerNumber" | "PhoneNumber" | "State" | "Street" | "Title" | "UserLogonName" | "ZipCode"
@@ -82,34 +82,34 @@ export namespace email {
         // fullName: email.pro.Domain.Domain
         export interface Domain {
             cnameToCheck?: string;
-            domainAliases?: string[];
-            domainValidated?: boolean;
-            isAliasDomain?: boolean;
-            mxIsValid?: boolean;
+            domainAliases: string[];
+            domainValidated: boolean;
+            isAliasDomain: boolean;
+            mxIsValid: boolean;
             mxRecord?: string[];
             mxRelay?: string;
-            name?: string;
-            srvIsValid?: boolean;
+            name: string;
+            srvIsValid: boolean;
             srvRecord?: string[];
-            state?: OVH.email.pro.ObjectStateEnum;
-            taskPendingId?: number;
-            type?: OVH.email.pro.DomainTypeEnum;
+            state: OVH.email.pro.ObjectStateEnum;
+            taskPendingId: number;
+            type: OVH.email.pro.DomainTypeEnum;
         }
         //email.pro.DomainTypeEnum
         export type DomainTypeEnum = "authoritative" | "nonAuthoritative"
         //email.pro.ExternalContact
         // fullName: email.pro.ExternalContact.ExternalContact
         export interface ExternalContact {
-            creationDate?: string;
-            displayName?: string;
-            externalEmailAddress?: string;
+            creationDate: string;
+            displayName: string;
+            externalEmailAddress: string;
             firstName?: string;
-            hiddenFromGAL?: boolean;
-            id?: number;
+            hiddenFromGAL: boolean;
+            id: number;
             initials?: string;
             lastName?: string;
-            state?: OVH.email.pro.ObjectStateEnum;
-            taskPendingId?: number;
+            state: OVH.email.pro.ObjectStateEnum;
+            taskPendingId: number;
         }
         //email.pro.MailingFilterEnum
         export type MailingFilterEnum = "vaderetro"
@@ -120,14 +120,14 @@ export namespace email {
         export interface Server {
             currentDiskUsage?: number;
             diskSize?: number;
-            ip?: string;
+            ip: string;
             ipV6?: string;
-            isAValid?: boolean;
-            isAaaaValid?: boolean;
-            isPtrV6Valid?: boolean;
-            isPtrValid?: boolean;
-            state?: OVH.email.pro.ServerStateEnum;
-            taskPendingId?: number;
+            isAValid: boolean;
+            isAaaaValid: boolean;
+            isPtrV6Valid: boolean;
+            isPtrValid: boolean;
+            state: OVH.email.pro.ServerStateEnum;
+            taskPendingId: number;
             version?: number;
         }
         //email.pro.ServerStateEnum
@@ -135,23 +135,23 @@ export namespace email {
         //email.pro.Service
         // fullName: email.pro.Service.Service
         export interface Service {
-            complexityEnabled?: boolean;
+            complexityEnabled: boolean;
             displayName?: string;
-            domain?: string;
+            domain: string;
             hostname?: string;
             lastUpdateDate?: string;
-            lockoutDuration?: number;
-            lockoutObservationWindow?: number;
+            lockoutDuration: number;
+            lockoutObservationWindow: number;
             lockoutThreshold?: number;
             maxPasswordAge?: number;
-            maxReceiveSize?: number;
-            maxSendSize?: number;
+            maxReceiveSize: number;
+            maxSendSize: number;
             minPasswordAge?: number;
             minPasswordLength?: number;
-            offer?: OVH.email.pro.ServiceOfferEnum;
-            spamAndVirusConfiguration?: OVH.email.pro.spamAndVirusConfiguration;
-            state?: OVH.email.pro.ServiceStateEnum;
-            taskPendingId?: number;
+            offer: OVH.email.pro.ServiceOfferEnum;
+            spamAndVirusConfiguration: OVH.email.pro.spamAndVirusConfiguration;
+            state: OVH.email.pro.ServiceStateEnum;
+            taskPendingId: number;
             webUrl?: string;
         }
         //email.pro.ServiceOfferEnum
@@ -162,10 +162,10 @@ export namespace email {
         // fullName: email.pro.Task.Task
         export interface Task {
             finishDate?: string;
-            function?: OVH.email.pro.TaskFunctionEnum;
-            id?: number;
-            status?: OVH.email.pro.TaskStatusEnum;
-            todoDate?: string;
+            function: OVH.email.pro.TaskFunctionEnum;
+            id: number;
+            status: OVH.email.pro.TaskStatusEnum;
+            todoDate: string;
         }
         //email.pro.TaskFunctionEnum
         export type TaskFunctionEnum = "addAccount" | "addAlias" | "addDomain" | "addDomainDisclaimer" | "addExternalContact" | "addFullAccess" | "addSendAs" | "addSendOnBehalfTo" | "addServiceAuthorizedIp" | "changeHostname" | "changePassword" | "configureCustomer" | "deleteAccount" | "deleteAlias" | "deleteDomain" | "deleteDomainDisclaimer" | "deleteExternalContact" | "deleteFullAccess" | "deleteSendAs" | "deleteSendOnBehalfTo" | "deleteService" | "deleteServiceAuthorizedIp" | "diagnoseAccount" | "expandDrive" | "installServer" | "maintenance" | "migrateAccountViaOMM" | "migrationAccount" | "migrationDisclaimer" | "migrationExternalContact" | "migrationHistory" | "migrationService" | "reOpenAccount" | "setAccount" | "setAlias" | "setDns" | "setDomain" | "setDomainDisclaimer" | "setExternalContact" | "setService" | "suspendAccount" | "suspendService" | "unknown" | "unsuspendAccount" | "unsuspendService"
@@ -174,24 +174,24 @@ export namespace email {
         //email.pro.disclaimer
         // fullName: email.pro.disclaimer.disclaimer
         export interface disclaimer {
-            content?: string;
-            creationDate?: string;
-            name?: string;
-            outsideOnly?: boolean;
-            taskPendingId?: number;
+            content: string;
+            creationDate: string;
+            name: string;
+            outsideOnly: boolean;
+            taskPendingId: number;
         }
         //email.pro.renewPeriodEnum
         export type renewPeriodEnum = "monthly" | "yearly"
         //email.pro.spamAndVirusConfiguration
         // fullName: email.pro.spamAndVirusConfiguration.spamAndVirusConfiguration
         export interface spamAndVirusConfiguration {
-            checkDKIM?: boolean;
-            checkSPF?: boolean;
-            deleteSpam?: boolean;
-            deleteVirus?: boolean;
-            putInJunk?: boolean;
-            tagSpam?: boolean;
-            tagVirus?: boolean;
+            checkDKIM: boolean;
+            checkSPF: boolean;
+            deleteSpam: boolean;
+            deleteVirus: boolean;
+            putInJunk: boolean;
+            tagSpam: boolean;
+            tagVirus: boolean;
         }
     }
 }
@@ -199,9 +199,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -214,19 +214,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

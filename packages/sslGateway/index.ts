@@ -5,9 +5,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -24,54 +24,54 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace sslGateway {
     //sslGateway.Domain
     // fullName: sslGateway.Domain.Domain
     export interface Domain {
-        domain?: string;
-        id?: number;
-        state?: OVH.sslGateway.DomainStateEnum;
+        domain: string;
+        id: number;
+        state: OVH.sslGateway.DomainStateEnum;
     }
     //sslGateway.DomainStateEnum
     export type DomainStateEnum = "creating" | "deleted" | "deleting" | "http-only" | "internal" | "ok"
     //sslGateway.EligibilityStatus
     // fullName: sslGateway.EligibilityStatus.EligibilityStatus
     export interface EligibilityStatus {
-        domain?: string;
-        ip6s?: string[];
-        ips?: string[];
-        isHostedByOvh?: boolean;
+        domain: string;
+        ip6s: string[];
+        ips: string[];
+        isHostedByOvh: boolean;
     }
     //sslGateway.NatIps
     // fullName: sslGateway.NatIps.NatIps
     export interface NatIps {
-        ip?: string[];
-        zone?: string;
+        ip: string[];
+        zone: string;
     }
     //sslGateway.OfferEnum
     export type OfferEnum = "advanced" | "enterprise" | "free" | "internal"
     //sslGateway.Server
     // fullName: sslGateway.Server.Server
     export interface Server {
-        address?: string;
-        id?: number;
-        port?: number;
-        state?: OVH.sslGateway.ServerStateEnum;
+        address: string;
+        id: number;
+        port: number;
+        state: OVH.sslGateway.ServerStateEnum;
     }
     //sslGateway.ServerStateEnum
     export type ServerStateEnum = "creating" | "deleted" | "deleting" | "internal" | "ok" | "updating"
@@ -82,29 +82,29 @@ export namespace sslGateway {
     export interface SslGateway {
         allowedSource?: string[];
         displayName?: string;
-        hsts?: boolean;
-        httpsRedirect?: boolean;
-        ipv4?: string;
+        hsts: boolean;
+        httpsRedirect: boolean;
+        ipv4: string;
         ipv6?: string;
         metricsToken?: string;
-        offer?: OVH.sslGateway.OfferEnum;
+        offer: OVH.sslGateway.OfferEnum;
         reverse?: string;
-        serverHttps?: boolean;
-        serviceName?: string;
+        serverHttps: boolean;
+        serviceName: string;
         sslConfiguration?: OVH.sslGateway.SslConfigurationEnum;
-        state?: OVH.sslGateway.StateEnum;
-        zones?: string[];
+        state: OVH.sslGateway.StateEnum;
+        zones: string[];
     }
     //sslGateway.StateEnum
     export type StateEnum = "creating" | "deleted" | "deleting" | "http-only" | "internal" | "ok" | "suspended" | "upgrading"
     //sslGateway.Task
     // fullName: sslGateway.Task.Task
     export interface Task {
-        action?: OVH.sslGateway.TaskActionEnum;
-        creationDate?: string;
-        id?: number;
-        progress?: number;
-        status?: OVH.sslGateway.TaskStatusEnum;
+        action: OVH.sslGateway.TaskActionEnum;
+        creationDate: string;
+        id: number;
+        progress: number;
+        status: OVH.sslGateway.TaskStatusEnum;
     }
     //sslGateway.TaskActionEnum
     export type TaskActionEnum = "addDomain" | "addPaidCertificate" | "addServer" | "createService" | "deleteDomain" | "deleteServer" | "deleteService" | "internalTask" | "updateServer" | "updateService" | "upgrade"

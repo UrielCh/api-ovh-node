@@ -13,25 +13,25 @@ export namespace domain {
     //domain.DomainMlLimits
     // fullName: domain.DomainMlLimits.DomainMlLimits
     export interface DomainMlLimits {
-        subscribers?: number;
+        subscribers: number;
     }
     //domain.DomainMlOptionsStruct
     // fullName: domain.DomainMlOptionsStruct.DomainMlOptionsStruct
     export interface DomainMlOptionsStruct {
-        moderatorMessage?: boolean;
-        subscribeByModerator?: boolean;
-        usersPostOnly?: boolean;
+        moderatorMessage: boolean;
+        subscribeByModerator: boolean;
+        usersPostOnly: boolean;
     }
     //domain.DomainPopActionEnum
     export type DomainPopActionEnum = "addAccount" | "changeAccount" | "changePassword" | "deleteAccount" | "internalMigration" | "migration" | "temporaryTask" | "unknown"
     //domain.DomainQuota
     // fullName: domain.DomainQuota.DomainQuota
     export interface DomainQuota {
-        account?: number;
-        alias?: number;
-        mailingList?: number;
-        redirection?: number;
-        responder?: number;
+        account: number;
+        alias: number;
+        mailingList: number;
+        redirection: number;
+        responder: number;
     }
     //domain.DomainSpecialAccountActionEnum
     export type DomainSpecialAccountActionEnum = "add" | "change" | "delete"
@@ -42,10 +42,10 @@ export namespace domain {
     //domain.DomainSummary
     // fullName: domain.DomainSummary.DomainSummary
     export interface DomainSummary {
-        account?: number;
-        mailingList?: number;
-        redirection?: number;
-        responder?: number;
+        account: number;
+        mailingList: number;
+        redirection: number;
+        responder: number;
     }
     //domain.DomainUsageAccountStruct
     // fullName: domain.DomainUsageAccountStruct.DomainUsageAccountStruct
@@ -58,12 +58,12 @@ export namespace domain {
         //domain.zone.Record
         // fullName: domain.zone.Record.Record
         export interface Record {
-            fieldType?: OVH.zone.NamedResolutionFieldTypeEnum;
-            id?: number;
+            fieldType: OVH.zone.NamedResolutionFieldTypeEnum;
+            id: number;
             subDomain?: string;
-            target?: string;
+            target: string;
             ttl?: number;
-            zone?: string;
+            zone: string;
         }
     }
 }
@@ -72,40 +72,40 @@ export namespace email {
         //email.domain.Account
         // fullName: email.domain.Account.Account
         export interface Account {
-            accountName?: string;
-            description?: string;
-            domain?: string;
-            email?: string;
-            isBlocked?: boolean;
-            size?: number;
+            accountName: string;
+            description: string;
+            domain: string;
+            email: string;
+            isBlocked: boolean;
+            size: number;
         }
         //email.domain.AccountDelegated
         // fullName: email.domain.AccountDelegated.AccountDelegated
         export interface AccountDelegated {
-            accountName?: string;
+            accountName: string;
             allowedAccountSize?: number[];
-            description?: string;
-            domain?: string;
-            email?: string;
-            isBlocked?: boolean;
-            size?: number;
+            description: string;
+            domain: string;
+            email: string;
+            isBlocked: boolean;
+            size: number;
         }
         //email.domain.Acl
         // fullName: email.domain.Acl.Acl
         export interface Acl {
-            accountId?: string;
+            accountId: string;
         }
         //email.domain.Delegation
         // fullName: email.domain.Delegation.Delegation
         export interface Delegation {
-            accountId?: string;
+            accountId: string;
         }
         //email.domain.Diagnose
         // fullName: email.domain.Diagnose.Diagnose
         export interface Diagnose {
-            date?: string;
-            function?: OVH.email.domain.DomainDiagnoseFunctionEnum;
-            id?: number;
+            date: string;
+            function: OVH.email.domain.DomainDiagnoseFunctionEnum;
+            id: number;
             name?: string;
             result?: OVH.email.domain.DomainDiagnoseResultEnum;
             trace?: OVH.email.domain.DomainDiagnoseTraceStruct<email.domain.DomainDiagnoseResultEnum>[];
@@ -117,56 +117,56 @@ export namespace email {
         //email.domain.DomainDiagnoseTraceStruct
         // fullName: email.domain.DomainDiagnoseTraceStruct.DomainDiagnoseTraceStruct
         export interface DomainDiagnoseTraceStruct<T> {
-            result?: T;
-            test?: string;
+            result: T;
+            test: string;
         }
         //email.domain.DomainService
         // fullName: email.domain.DomainService.DomainService
         export interface DomainService {
             allowedAccountSize?: number[];
             creationDate?: string;
-            domain?: string;
+            domain: string;
             filerz?: number;
             linkTo?: string;
             migratedMXPlanServiceName?: string;
             offer?: string;
-            status?: OVH.domain.DomainStatusEnum;
+            status: OVH.domain.DomainStatusEnum;
         }
         //email.domain.Filter
         // fullName: email.domain.Filter.Filter
         export interface Filter {
             action?: OVH.domain.DomainFilterActionEnum;
             actionParam?: string;
-            active?: boolean;
-            domain?: string;
-            name?: string;
-            pop?: string;
-            priority?: number;
+            active: boolean;
+            domain: string;
+            name: string;
+            pop: string;
+            priority: number;
         }
         //email.domain.MailingList
         // fullName: email.domain.MailingList.MailingList
         export interface MailingList {
-            id?: number;
+            id: number;
             language?: OVH.domain.DomainMlLanguageEnum;
-            name?: string;
+            name: string;
             nbSubscribers?: number;
             nbSubscribersUpdateDate?: string;
-            options?: OVH.domain.DomainMlOptionsStruct;
-            ownerEmail?: string;
-            replyTo?: string;
+            options: OVH.domain.DomainMlOptionsStruct;
+            ownerEmail: string;
+            replyTo: string;
         }
         //email.domain.MigrationAccount
         // fullName: email.domain.MigrationAccount.MigrationAccount
         export interface MigrationAccount {
-            destinationEmailAddress?: string;
-            quota?: number;
+            destinationEmailAddress: string;
+            quota: number;
         }
         //email.domain.MigrationCheckCodeEnum
         export type MigrationCheckCodeEnum = "ACCOUNT_EMPTY" | "ACCOUNT_INPROGRESS" | "DELEGATION_EXIST" | "DOMAIN_EMPTY" | "FILTER_EXIST" | "FORWARD_EXIST" | "FORWARD_LOCAL" | "MAILINGLIST_EXIST" | "MAILINGLIST_INPROGRESS" | "MAILPROXY_BAD_INFRA" | "MAILPROXY_EMPTY" | "MAILPROXY_INPROGRESS" | "MAILPROXY_RESERVATION" | "REDIRECTION_INPROGRESS" | "RESPONDER_EXIST" | "RESPONDER_INPROGRESS" | "UNKNOW"
         //email.domain.MigrationCheckResultStruct
         // fullName: email.domain.MigrationCheckResultStruct.MigrationCheckResultStruct
         export interface MigrationCheckResultStruct {
-            code?: OVH.email.domain.MigrationCheckCodeEnum;
+            code: OVH.email.domain.MigrationCheckCodeEnum;
             details?: string;
         }
         //email.domain.MigrationCheckStruct
@@ -181,36 +181,36 @@ export namespace email {
         //email.domain.MigrationService
         // fullName: email.domain.MigrationService.MigrationService
         export interface MigrationService {
-            contactAdmin?: string;
-            contactBilling?: string;
-            contactTech?: string;
-            creation?: string;
-            destinationServiceName?: string;
-            expiration?: string;
-            type?: OVH.email.domain.MigrationServiceType;
+            contactAdmin: string;
+            contactBilling: string;
+            contactTech: string;
+            creation: string;
+            destinationServiceName: string;
+            expiration: string;
+            type: OVH.email.domain.MigrationServiceType;
         }
         //email.domain.MigrationServiceType
         export type MigrationServiceType = "EMAIL PRO" | "HOSTED EXCHANGE" | "PRIVATE EXCHANGE" | "PROVIDER EXCHANGE"
         //email.domain.Moderator
         // fullName: email.domain.Moderator.Moderator
         export interface Moderator {
-            domain?: string;
-            email?: string;
-            mailinglist?: string;
+            domain: string;
+            email: string;
+            mailinglist: string;
         }
         //email.domain.RedirectionGlobal
         // fullName: email.domain.RedirectionGlobal.RedirectionGlobal
         export interface RedirectionGlobal {
-            from?: string;
-            id?: string;
-            to?: string;
+            from: string;
+            id: string;
+            to: string;
         }
         //email.domain.Responder
         // fullName: email.domain.Responder.Responder
         export interface Responder {
-            account?: string;
-            content?: string;
-            copy?: boolean;
+            account: string;
+            content: string;
+            copy: boolean;
             copyTo?: string;
             from?: string;
             to?: string;
@@ -218,9 +218,9 @@ export namespace email {
         //email.domain.ResponderAccount
         // fullName: email.domain.ResponderAccount.ResponderAccount
         export interface ResponderAccount {
-            account?: string;
-            content?: string;
-            copy?: boolean;
+            account: string;
+            content: string;
+            copy: boolean;
             copyTo?: string;
             from?: string;
             to?: string;
@@ -228,55 +228,55 @@ export namespace email {
         //email.domain.Rule
         // fullName: email.domain.Rule.Rule
         export interface Rule {
-            header?: string;
-            id?: number;
-            operand?: OVH.domain.DomainFilterOperandEnum;
-            value?: string;
+            header: string;
+            id: number;
+            operand: OVH.domain.DomainFilterOperandEnum;
+            value: string;
         }
         //email.domain.Subscriber
         // fullName: email.domain.Subscriber.Subscriber
         export interface Subscriber {
-            domain?: string;
-            email?: string;
-            mailinglist?: string;
+            domain: string;
+            email: string;
+            mailinglist: string;
         }
         //email.domain.TaskFilter
         // fullName: email.domain.TaskFilter.TaskFilter
         export interface TaskFilter {
-            account?: string;
-            action?: string;
-            domain?: string;
-            id?: number;
-            timestamp?: string;
+            account: string;
+            action: string;
+            domain: string;
+            id: number;
+            timestamp: string;
         }
         //email.domain.TaskMl
         // fullName: email.domain.TaskMl.TaskMl
         export interface TaskMl {
-            account?: string;
-            action?: string;
-            date?: string;
-            domain?: string;
-            id?: number;
-            language?: OVH.domain.DomainMlLanguageEnum;
+            account: string;
+            action: string;
+            date: string;
+            domain: string;
+            id: number;
+            language: OVH.domain.DomainMlLanguageEnum;
         }
         //email.domain.TaskPop
         // fullName: email.domain.TaskPop.TaskPop
         export interface TaskPop {
-            action?: OVH.domain.DomainPopActionEnum;
-            date?: string;
-            domain?: string;
-            id?: number;
-            name?: string;
+            action: OVH.domain.DomainPopActionEnum;
+            date: string;
+            domain: string;
+            id: number;
+            name: string;
         }
         //email.domain.TaskSpecialAccount
         // fullName: email.domain.TaskSpecialAccount.TaskSpecialAccount
         export interface TaskSpecialAccount {
-            account?: string;
-            action?: OVH.domain.DomainSpecialAccountActionEnum;
-            date?: string;
-            domain?: string;
-            id?: number;
-            type?: OVH.domain.DomainSpecialAccountTypeEnum;
+            account: string;
+            action: OVH.domain.DomainSpecialAccountActionEnum;
+            date: string;
+            domain: string;
+            id: number;
+            type: OVH.domain.DomainSpecialAccountTypeEnum;
         }
     }
 }
@@ -284,9 +284,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -301,19 +301,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace zone {

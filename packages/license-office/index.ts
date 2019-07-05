@@ -10,55 +10,55 @@ export namespace license {
         //license.office.OfficeDomain
         // fullName: license.office.OfficeDomain.OfficeDomain
         export interface OfficeDomain {
-            domainName?: string;
-            status?: OVH.license.office.DomainStateEnum;
-            txtEntry?: string;
+            domainName: string;
+            status: OVH.license.office.DomainStateEnum;
+            txtEntry: string;
         }
         //license.office.OfficeSubscription
         // fullName: license.office.OfficeSubscription.OfficeSubscription
         export interface OfficeSubscription {
-            creationDate?: string;
-            id?: number;
+            creationDate: string;
+            id: number;
             lastUpdate?: string;
-            licenseId?: number;
-            quantity?: number;
-            status?: string;
-            taskPendingId?: number;
+            licenseId: number;
+            quantity: number;
+            status: string;
+            taskPendingId: number;
         }
         //license.office.OfficeTask
         // fullName: license.office.OfficeTask.OfficeTask
         export interface OfficeTask {
             finishDate?: string;
-            function?: string;
-            id?: number;
-            status?: OVH.license.office.TaskStatusEnum;
-            todoDate?: string;
+            function: string;
+            id: number;
+            status: OVH.license.office.TaskStatusEnum;
+            todoDate: string;
         }
         //license.office.OfficeTenant
         // fullName: license.office.OfficeTenant.OfficeTenant
         export interface OfficeTenant {
-            address?: string;
-            city?: string;
-            creationDate?: string;
-            displayName?: string;
-            firstName?: string;
-            lastName?: string;
-            phone?: string;
-            serviceType?: OVH.license.office.ServiceTypeEnum;
-            status?: OVH.license.office.ServiceStateEnum;
-            zipCode?: string;
+            address: string;
+            city: string;
+            creationDate: string;
+            displayName: string;
+            firstName: string;
+            lastName: string;
+            phone: string;
+            serviceType: OVH.license.office.ServiceTypeEnum;
+            status: OVH.license.office.ServiceStateEnum;
+            zipCode: string;
         }
         //license.office.OfficeUser
         // fullName: license.office.OfficeUser.OfficeUser
         export interface OfficeUser {
-            activationEmail?: string;
-            deleteAtExpiration?: boolean;
-            firstName?: string;
-            isVirtual?: boolean;
-            lastName?: string;
-            licences?: OVH.license.office.LicenceEnum[];
-            status?: OVH.license.office.UserStateEnum;
-            taskPendingId?: number;
+            activationEmail: string;
+            deleteAtExpiration: boolean;
+            firstName: string;
+            isVirtual: boolean;
+            lastName: string;
+            licences: OVH.license.office.LicenceEnum[];
+            status: OVH.license.office.UserStateEnum;
+            taskPendingId: number;
         }
         //license.office.ServiceStateEnum
         export type ServiceStateEnum = "creating" | "inMaintenance" | "ok" | "suspended"
@@ -67,22 +67,22 @@ export namespace license {
         //license.office.Statistic
         // fullName: license.office.Statistic.Statistic
         export interface Statistic {
-            available?: number;
-            licenseId?: number;
-            used?: number;
+            available: number;
+            licenseId: number;
+            used: number;
         }
         //license.office.Statistics
         // fullName: license.office.Statistics.Statistics
         export interface Statistics {
-            date?: string;
-            lines?: OVH.license.office.StatisticsLine[];
+            date: string;
+            lines: OVH.license.office.StatisticsLine[];
         }
         //license.office.StatisticsLine
         // fullName: license.office.StatisticsLine.StatisticsLine
         export interface StatisticsLine {
-            endOfDayCount?: number;
-            licenceType?: OVH.license.office.LicenceEnum;
-            peakCount?: number;
+            endOfDayCount: number;
+            licenceType: OVH.license.office.LicenceEnum;
+            peakCount: number;
         }
         //license.office.TaskStatusEnum
         export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
@@ -94,9 +94,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -109,19 +109,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

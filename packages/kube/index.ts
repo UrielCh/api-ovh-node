@@ -5,46 +5,46 @@ export namespace kube {
     //kube.Cluster
     // fullName: kube.Cluster.Cluster
     export interface Cluster {
-        controlPlaneIsUpToDate?: boolean;
-        createdAt?: string;
-        id?: string;
-        isUpToDate?: boolean;
-        name?: string;
-        nodesUrl?: string;
-        status?: OVH.kube.ClusterStatus;
-        updatePolicy?: string;
-        updatedAt?: string;
-        url?: string;
-        version?: string;
+        controlPlaneIsUpToDate: boolean;
+        createdAt: string;
+        id: string;
+        isUpToDate: boolean;
+        name: string;
+        nodesUrl: string;
+        status: OVH.kube.ClusterStatus;
+        updatePolicy: string;
+        updatedAt: string;
+        url: string;
+        version: string;
     }
     //kube.ClusterStatus
     export type ClusterStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
     //kube.Kubeconfig
     // fullName: kube.Kubeconfig.Kubeconfig
     export interface Kubeconfig {
-        content?: string;
+        content: string;
     }
     //kube.Node
     // fullName: kube.Node.Node
     export interface Node {
-        createdAt?: string;
-        flavor?: string;
-        id?: string;
+        createdAt: string;
+        flavor: string;
+        id: string;
         instanceId?: string;
-        isUpToDate?: boolean;
+        isUpToDate: boolean;
         name?: string;
-        projectId?: string;
-        status?: OVH.kube.NodeStatus;
-        updatedAt?: string;
-        version?: string;
+        projectId: string;
+        status: OVH.kube.NodeStatus;
+        updatedAt: string;
+        version: string;
     }
     //kube.NodeStatus
     export type NodeStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
     //kube.PublicCloudProject
     // fullName: kube.PublicCloudProject.PublicCloudProject
     export interface PublicCloudProject {
-        projectId?: string;
-        region?: string;
+        projectId: string;
+        region: string;
     }
     //kube.ResetWorkerNodesPolicy
     export type ResetWorkerNodesPolicy = "reinstall" | "delete"
@@ -57,9 +57,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -76,19 +76,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

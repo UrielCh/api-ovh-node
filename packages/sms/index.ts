@@ -9,9 +9,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -24,19 +24,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace sms {
@@ -45,39 +45,39 @@ export namespace sms {
     export interface Account {
         automaticRecreditAmount?: OVH.sms.PackQuantityAutomaticRecreditEnum;
         callBack?: string;
-        creditThresholdForAutomaticRecredit?: number;
-        creditsHoldByQuota?: number;
-        creditsLeft?: number;
-        description?: string;
-        name?: string;
-        smsResponse?: OVH.sms.Response;
-        status?: OVH.sms.StatusAccountEnum;
+        creditThresholdForAutomaticRecredit: number;
+        creditsHoldByQuota: number;
+        creditsLeft: number;
+        description: string;
+        name: string;
+        smsResponse: OVH.sms.Response;
+        status: OVH.sms.StatusAccountEnum;
         stopCallBack?: string;
-        templates?: OVH.sms.Templates;
-        userQuantityWithQuota?: number;
+        templates: OVH.sms.Templates;
+        userQuantityWithQuota: number;
     }
     //sms.AlertThreshold
     // fullName: sms.AlertThreshold.AlertThreshold
     export interface AlertThreshold {
-        alertEmail?: string;
-        alertNumber?: string;
-        alertThreshold?: number;
-        support?: OVH.sms.SupportEnum;
+        alertEmail: string;
+        alertNumber: string;
+        alertThreshold: number;
+        support: OVH.sms.SupportEnum;
     }
     //sms.Blacklist
     // fullName: sms.Blacklist.Blacklist
     export interface Blacklist {
-        dateCreation?: string;
-        number?: string;
+        dateCreation: string;
+        number: string;
     }
     //sms.CharsetEnum
     export type CharsetEnum = "UTF-8"
     //sms.ChatAccess
     // fullName: sms.ChatAccess.ChatAccess
     export interface ChatAccess {
-        creationDate?: string;
-        id?: number;
-        url?: string;
+        creationDate: string;
+        id: number;
+        url: string;
     }
     //sms.ClassEnum
     export type ClassEnum = "flash" | "phoneDisplay" | "sim" | "toolkit"
@@ -90,88 +90,88 @@ export namespace sms {
     //sms.Exception
     // fullName: sms.Exception.Exception
     export interface Exception {
-        countrySuffixe?: string;
-        messages?: string[];
-        operators?: string;
-        restrictionCode?: OVH.sms.RestrictionCodeEnum;
+        countrySuffixe: string;
+        messages: string[];
+        operators: string;
+        restrictionCode: OVH.sms.RestrictionCodeEnum;
         substitution?: string;
     }
     //sms.Hlr
     // fullName: sms.Hlr.Hlr
     export interface Hlr {
-        country?: string;
-        countryCode?: string;
-        network?: string;
-        operator?: string;
-        region?: string;
+        country: string;
+        countryCode: string;
+        network: string;
+        operator: string;
+        region: string;
     }
     //sms.HlrLookupNumber
     // fullName: sms.HlrLookupNumber.HlrLookupNumber
     export interface HlrLookupNumber {
-        datetime?: string;
-        id?: number;
-        msisdn?: string;
-        operatorCode?: string;
-        ported?: boolean;
-        reachable?: boolean;
-        roaming?: boolean;
-        status?: OVH.sms.HlrStatuses;
-        valid?: boolean;
+        datetime: string;
+        id: number;
+        msisdn: string;
+        operatorCode: string;
+        ported: boolean;
+        reachable: boolean;
+        roaming: boolean;
+        status: OVH.sms.HlrStatuses;
+        valid: boolean;
     }
     //sms.HlrStatuses
     export type HlrStatuses = "doing" | "done" | "error" | "todo"
     //sms.Incoming
     // fullName: sms.Incoming.Incoming
     export interface Incoming {
-        creationDatetime?: string;
-        credits?: number;
-        id?: number;
-        message?: string;
-        sender?: string;
-        tag?: string;
+        creationDatetime: string;
+        credits: number;
+        id: number;
+        message: string;
+        sender: string;
+        tag: string;
     }
     //sms.Job
     // fullName: sms.Job.Job
     export interface Job {
-        creationDatetime?: string;
-        credits?: number;
-        deliveryReceipt?: number;
-        differedDelivery?: number;
-        id?: number;
-        message?: string;
-        messageLength?: number;
-        numberOfSms?: number;
-        ptt?: number;
-        receiver?: string;
-        sender?: string;
+        creationDatetime: string;
+        credits: number;
+        deliveryReceipt: number;
+        differedDelivery: number;
+        id: number;
+        message: string;
+        messageLength: number;
+        numberOfSms: number;
+        ptt: number;
+        receiver: string;
+        sender: string;
     }
     //sms.Outgoing
     // fullName: sms.Outgoing.Outgoing
     export interface Outgoing {
-        creationDatetime?: string;
-        credits?: number;
-        deliveryReceipt?: number;
-        differedDelivery?: number;
-        id?: number;
-        message?: string;
-        messageLength?: number;
-        numberOfSms?: number;
-        ptt?: number;
-        receiver?: string;
-        sender?: string;
-        tag?: string;
-        tariffCode?: string;
+        creationDatetime: string;
+        credits: number;
+        deliveryReceipt: number;
+        differedDelivery: number;
+        id: number;
+        message: string;
+        messageLength: number;
+        numberOfSms: number;
+        ptt: number;
+        receiver: string;
+        sender: string;
+        tag: string;
+        tariffCode: string;
     }
     //sms.PackOffer
     // fullName: sms.PackOffer.PackOffer
     export interface PackOffer {
-        countryDestination?: string;
+        countryDestination: string;
         giftPrice?: number;
         giftQuantity?: number;
-        language?: string;
-        price?: number;
-        quantity?: number;
-        smsQuantity?: number;
+        language: string;
+        price: number;
+        quantity: number;
+        smsQuantity: number;
         totalPrice?: number;
     }
     //sms.PackQuantityAutomaticRecreditEnum
@@ -181,19 +181,19 @@ export namespace sms {
     //sms.Phonebook
     // fullName: sms.Phonebook.Phonebook
     export interface Phonebook {
-        bookKey?: string;
-        name?: string;
-        phoneKey?: string;
+        bookKey: string;
+        name: string;
+        phoneKey: string;
     }
     //sms.PhonebookContact
     // fullName: sms.PhonebookContact.PhonebookContact
     export interface PhonebookContact {
-        group?: string;
+        group: string;
         homeMobile?: string;
         homePhone?: string;
-        id?: number;
-        name?: string;
-        surname?: string;
+        id: number;
+        name: string;
+        surname: string;
         workMobile?: string;
         workPhone?: string;
     }
@@ -202,35 +202,35 @@ export namespace sms {
     //sms.PttDetails
     // fullName: sms.PttDetails.PttDetails
     export interface PttDetails {
-        comment?: string;
-        description?: string;
-        duration?: OVH.sms.PttDurationTypeEnum;
+        comment: string;
+        description: string;
+        duration: OVH.sms.PttDurationTypeEnum;
     }
     //sms.PttDurationTypeEnum
     export type PttDurationTypeEnum = "indeterminated" | "permanent" | "temporary"
     //sms.Quota
     // fullName: sms.Quota.Quota
     export interface Quota {
-        quotaLeft?: number;
-        quotaStatus?: OVH.sms.QuotaStatusUserEnum;
+        quotaLeft: number;
+        quotaStatus: OVH.sms.QuotaStatusUserEnum;
     }
     //sms.QuotaStatusUserEnum
     export type QuotaStatusUserEnum = "active" | "inactive"
     //sms.Receiver
     // fullName: sms.Receiver.Receiver
     export interface Receiver {
-        autoUpdate?: boolean;
-        canAutoUpdate?: boolean;
-        datetime?: string;
-        description?: string;
-        records?: number;
-        slotId?: number;
+        autoUpdate: boolean;
+        canAutoUpdate: boolean;
+        datetime: string;
+        description: string;
+        records: number;
+        slotId: number;
     }
     //sms.ReceiversAsynchronousCleanReport
     // fullName: sms.ReceiversAsynchronousCleanReport.ReceiversAsynchronousCleanReport
     export interface ReceiversAsynchronousCleanReport {
-        taskId?: number;
-        totalCreditsRemoved?: number;
+        taskId: number;
+        totalCreditsRemoved: number;
     }
     //sms.RefererSenderEnum
     export type RefererSenderEnum = "custom" | "domain" | "line" | "nic" | "owner" | "virtual"
@@ -238,7 +238,7 @@ export namespace sms {
     // fullName: sms.Response.Response
     export interface Response {
         cgiUrl?: string;
-        responseType?: OVH.sms.ResponseTypeEnum;
+        responseType: OVH.sms.ResponseTypeEnum;
         text?: string;
         trackingDefaultSmsSender?: string;
         trackingOptions?: OVH.sms.ResponseTrackingOptions[];
@@ -248,9 +248,9 @@ export namespace sms {
     //sms.ResponseTrackingOptions
     // fullName: sms.ResponseTrackingOptions.ResponseTrackingOptions
     export interface ResponseTrackingOptions {
-        media?: OVH.sms.ResponseTrackingMediaEnum;
-        sender?: string;
-        target?: string;
+        media: OVH.sms.ResponseTrackingMediaEnum;
+        sender: string;
+        target: string;
     }
     //sms.ResponseTypeEnum
     export type ResponseTypeEnum = "cgi" | "none" | "text"
@@ -260,28 +260,28 @@ export namespace sms {
     // fullName: sms.Sender.Sender
     export interface Sender {
         comment?: string;
-        description?: string;
-        referer?: OVH.sms.RefererSenderEnum;
-        sender?: string;
-        status?: OVH.sms.StatusSenderEnum;
+        description: string;
+        referer: OVH.sms.RefererSenderEnum;
+        sender: string;
+        status: OVH.sms.StatusSenderEnum;
         type?: OVH.sms.TypeSenderEnum;
         validationMedia?: string;
     }
     //sms.SenderAvailable
     // fullName: sms.SenderAvailable.SenderAvailable
     export interface SenderAvailable {
-        referer?: OVH.sms.SenderRefererEnum;
-        sender?: string;
+        referer: OVH.sms.SenderRefererEnum;
+        sender: string;
     }
     //sms.SenderRefererEnum
     export type SenderRefererEnum = "domain" | "nichandle"
     //sms.SmsSendingReport
     // fullName: sms.SmsSendingReport.SmsSendingReport
     export interface SmsSendingReport {
-        ids?: number[];
-        invalidReceivers?: string[];
-        totalCreditsRemoved?: number;
-        validReceivers?: string[];
+        ids: number[];
+        invalidReceivers: string[];
+        totalCreditsRemoved: number;
+        validReceivers: string[];
     }
     //sms.StatusAccountEnum
     export type StatusAccountEnum = "disable" | "enable"
@@ -292,27 +292,27 @@ export namespace sms {
     //sms.Task
     // fullName: sms.Task.Task
     export interface Task {
-        function?: OVH.sms.TodoGeneralPublicFunctionsEnum;
-        status?: OVH.telephony.TaskStatusEnum;
-        step?: OVH.sms.TodoGeneralPublicStepsEnum;
-        taskId?: number;
+        function: OVH.sms.TodoGeneralPublicFunctionsEnum;
+        status: OVH.telephony.TaskStatusEnum;
+        step: OVH.sms.TodoGeneralPublicStepsEnum;
+        taskId: number;
     }
     //sms.TemplateControl
     // fullName: sms.TemplateControl.TemplateControl
     export interface TemplateControl {
-        activity?: OVH.sms.TypeTemplateEnum;
-        comment?: string;
-        datetime?: string;
-        description?: string;
-        message?: string;
-        name?: string;
-        status?: OVH.sms.StatusSenderEnum;
+        activity: OVH.sms.TypeTemplateEnum;
+        comment: string;
+        datetime: string;
+        description: string;
+        message: string;
+        name: string;
+        status: OVH.sms.StatusSenderEnum;
     }
     //sms.Templates
     // fullName: sms.Templates.Templates
     export interface Templates {
-        customizedEmailMode?: boolean;
-        customizedSmsMode?: boolean;
+        customizedEmailMode: boolean;
+        customizedSmsMode: boolean;
         emailBody?: string;
         emailFrom?: string;
         emailSubject?: string;
@@ -329,41 +329,41 @@ export namespace sms {
     //sms.User
     // fullName: sms.User.User
     export interface User {
-        alertThresholdInformations?: OVH.sms.AlertThreshold;
+        alertThresholdInformations: OVH.sms.AlertThreshold;
         callBack?: string;
-        ipRestrictions?: string[];
-        login?: string;
-        password?: string;
-        quotaInformations?: OVH.sms.Quota;
+        ipRestrictions: string[];
+        login: string;
+        password: string;
+        quotaInformations: OVH.sms.Quota;
         stopCallBack?: string;
     }
     //sms.VirtualNumber
     // fullName: sms.VirtualNumber.VirtualNumber
     export interface VirtualNumber {
-        countryCode?: OVH.sms.VirtualNumberIsoCountryCodeEnum;
-        number?: string;
+        countryCode: OVH.sms.VirtualNumberIsoCountryCodeEnum;
+        number: string;
     }
     //sms.VirtualNumberGenericService
     // fullName: sms.VirtualNumberGenericService.VirtualNumberGenericService
     export interface VirtualNumberGenericService {
-        countryCode?: OVH.sms.VirtualNumberIsoCountryCodeEnum;
-        number?: string;
+        countryCode: OVH.sms.VirtualNumberIsoCountryCodeEnum;
+        number: string;
     }
     //sms.VirtualNumberIsoCountryCodeEnum
     export type VirtualNumberIsoCountryCodeEnum = "be" | "ch" | "de" | "es" | "fr" | "uk"
     //sms.VirtualNumberJob
     // fullName: sms.VirtualNumberJob.VirtualNumberJob
     export interface VirtualNumberJob {
-        creationDatetime?: string;
-        credits?: number;
-        deliveryReceipt?: number;
-        differedDelivery?: number;
-        id?: number;
-        message?: string;
-        messageLength?: number;
-        numberOfSms?: number;
-        ptt?: number;
-        receiver?: string;
+        creationDatetime: string;
+        credits: number;
+        deliveryReceipt: number;
+        differedDelivery: number;
+        id: number;
+        message: string;
+        messageLength: number;
+        numberOfSms: number;
+        ptt: number;
+        receiver: string;
     }
 }
 export namespace telephony {
@@ -372,22 +372,22 @@ export namespace telephony {
     //telephony.PcsFile
     // fullName: telephony.PcsFile.PcsFile
     export interface PcsFile {
-        filename?: string;
-        status?: OVH.telephony.PcsFileStatusEnum;
-        url?: string;
-        urlExpirationDatetime?: string;
+        filename: string;
+        status: OVH.telephony.PcsFileStatusEnum;
+        url: string;
+        urlExpirationDatetime: string;
     }
     //telephony.PcsFileStatusEnum
     export type PcsFileStatusEnum = "doing" | "done" | "error" | "todo"
     //telephony.Task
     // fullName: telephony.Task.Task
     export interface Task {
-        action?: string;
+        action: string;
         message?: string;
         objectCreated?: string;
-        serviceType?: string;
-        status?: OVH.telephony.TaskStatusEnum;
-        taskId?: number;
+        serviceType: string;
+        status: OVH.telephony.TaskStatusEnum;
+        taskId: number;
     }
     //telephony.TaskStatusEnum
     export type TaskStatusEnum = "doing" | "done" | "error" | "pause" | "todo"

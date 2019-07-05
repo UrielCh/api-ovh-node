@@ -5,28 +5,28 @@ export namespace api {
     //api.Credential
     // fullName: api.Credential.Credential
     export interface Credential {
-        applicationId?: number;
-        creation?: string;
-        credentialId?: number;
+        applicationId: number;
+        creation: string;
+        credentialId: number;
         expiration?: string;
         lastUse?: string;
-        ovhSupport?: boolean;
-        rules?: OVH.auth.AccessRule[];
-        status?: OVH.auth.CredentialStateEnum;
+        ovhSupport: boolean;
+        rules: OVH.auth.AccessRule[];
+        status: OVH.auth.CredentialStateEnum;
     }
 }
 export namespace auth {
     //auth.AccessRule
     // fullName: auth.AccessRule.AccessRule
     export interface AccessRule {
-        method?: OVH.auth.MethodEnum;
-        path?: string;
+        method: OVH.auth.MethodEnum;
+        path: string;
     }
     //auth.Credential
     // fullName: auth.Credential.Credential
     export interface Credential {
-        consumerKey?: string;
-        state?: OVH.auth.CredentialStateEnum;
+        consumerKey: string;
+        state: OVH.auth.CredentialStateEnum;
         validationUrl?: string;
     }
     //auth.CredentialStateEnum

@@ -5,39 +5,39 @@ export namespace support {
     //support.Message
     // fullName: support.Message.Message
     export interface Message {
-        body?: string;
-        creationDate?: string;
-        from?: OVH.support.MessageSenderEnum;
-        messageId?: number;
-        ticketId?: number;
-        updateDate?: string;
+        body: string;
+        creationDate: string;
+        from: OVH.support.MessageSenderEnum;
+        messageId: number;
+        ticketId: number;
+        updateDate: string;
     }
     //support.MessageSenderEnum
     export type MessageSenderEnum = "customer" | "support"
     //support.NewMessageInfo
     // fullName: support.NewMessageInfo.NewMessageInfo
     export interface NewMessageInfo {
-        messageId?: number;
-        ticketId?: number;
-        ticketNumber?: number;
+        messageId: number;
+        ticketId: number;
+        ticketNumber: number;
     }
     //support.Ticket
     // fullName: support.Ticket.Ticket
     export interface Ticket {
-        accountId?: string;
-        canBeClosed?: boolean;
+        accountId: string;
+        canBeClosed: boolean;
         category?: OVH.support.TicketCategoryEnum;
-        creationDate?: string;
-        lastMessageFrom?: OVH.support.MessageSenderEnum;
+        creationDate: string;
+        lastMessageFrom: OVH.support.MessageSenderEnum;
         product?: OVH.support.TicketProductEnum;
-        score?: string;
+        score: string;
         serviceName?: string;
-        state?: OVH.support.TicketStatusEnum;
-        subject?: string;
-        ticketId?: number;
-        ticketNumber?: number;
-        type?: OVH.support.TicketTypeEnum;
-        updateDate?: string;
+        state: OVH.support.TicketStatusEnum;
+        subject: string;
+        ticketId: number;
+        ticketNumber: number;
+        type: OVH.support.TicketTypeEnum;
+        updateDate: string;
     }
     //support.TicketCategoryEnum
     export type TicketCategoryEnum = "assistance" | "billing" | "incident"

@@ -6,57 +6,57 @@ export namespace metrics {
         //metrics.api.Consumption
         // fullName: metrics.api.Consumption.Consumption
         export interface Consumption {
-            ddp?: number;
-            mads?: number;
+            ddp: number;
+            mads: number;
         }
         //metrics.api.Label
         // fullName: metrics.api.Label.Label
         export interface Label {
-            key?: string;
-            value?: string;
+            key: string;
+            value: string;
         }
         //metrics.api.OfferTypeEnum
         export type OfferTypeEnum = "cloud" | "live"
         //metrics.api.Option
         // fullName: metrics.api.Option.Option
         export interface Option {
-            ddp?: number;
-            lastModification?: string;
-            mads?: number;
+            ddp: number;
+            lastModification: string;
+            mads: number;
         }
         //metrics.api.PermissionEnum
         export type PermissionEnum = "read" | "write"
         //metrics.api.Region
         // fullName: metrics.api.Region.Region
         export interface Region {
-            description?: string;
-            name?: string;
+            description: string;
+            name: string;
         }
         //metrics.api.Service
         // fullName: metrics.api.Service.Service
         export interface Service {
-            description?: string;
-            name?: string;
-            offer?: string;
-            quota?: OVH.metrics.api.Option;
-            region?: OVH.metrics.api.Region;
-            shouldUpgrade?: boolean;
-            status?: OVH.metrics.api.ServiceStatusEnum;
-            type?: OVH.metrics.api.OfferTypeEnum;
+            description: string;
+            name: string;
+            offer: string;
+            quota: OVH.metrics.api.Option;
+            region: OVH.metrics.api.Region;
+            shouldUpgrade: boolean;
+            status: OVH.metrics.api.ServiceStatusEnum;
+            type: OVH.metrics.api.OfferTypeEnum;
         }
         //metrics.api.ServiceStatusEnum
         export type ServiceStatusEnum = "new" | "alive" | "disabled" | "dead"
         //metrics.api.Token
         // fullName: metrics.api.Token.Token
         export interface Token {
-            access?: string;
-            createdAt?: string;
-            description?: string;
-            expiredAt?: string;
-            id?: string;
-            isRevoked?: boolean;
-            labels?: OVH.metrics.api.Label[];
-            type?: OVH.metrics.api.PermissionEnum;
+            access: string;
+            createdAt: string;
+            description: string;
+            expiredAt: string;
+            id: string;
+            isRevoked: boolean;
+            labels: OVH.metrics.api.Label[];
+            type: OVH.metrics.api.PermissionEnum;
         }
     }
 }
@@ -64,9 +64,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -83,19 +83,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

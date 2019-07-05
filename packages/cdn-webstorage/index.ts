@@ -6,24 +6,24 @@ export namespace cdn {
         //cdn.webstorage.Account
         // fullName: cdn.webstorage.Account.Account
         export interface Account {
-            domain?: string;
-            server?: string;
-            storageLimit?: number;
-            storageUsage?: number;
+            domain: string;
+            server: string;
+            storageLimit: number;
+            storageUsage: number;
         }
         //cdn.webstorage.AccountCredentials
         // fullName: cdn.webstorage.AccountCredentials.AccountCredentials
         export interface AccountCredentials {
-            endpoint?: string;
-            login?: string;
-            password?: string;
-            tenant?: string;
+            endpoint: string;
+            login: string;
+            password: string;
+            tenant: string;
         }
         //cdn.webstorage.StatsDataType
         // fullName: cdn.webstorage.StatsDataType.StatsDataType
         export interface StatsDataType {
-            date?: string;
-            value?: number;
+            date: string;
+            value: number;
         }
         //cdn.webstorage.StatsPeriodEnum
         export type StatsPeriodEnum = "day" | "month" | "week"
@@ -35,9 +35,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -50,19 +50,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

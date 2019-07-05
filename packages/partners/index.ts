@@ -5,60 +5,60 @@ export namespace Partner {
     //Partner.Application
     // fullName: Partner.Application.Application
     export interface Application {
-        tieringLevel?: string;
+        tieringLevel: string;
     }
     //Partner.Company
     // fullName: Partner.Company.Company
     export interface Company {
-        OVHCertifications?: OVH.Partner.OVHCertifications;
-        OVHCustomersAdvised?: string;
-        OVHKnowledgeResources?: string;
-        OVHProductsUsed?: OVH.Partner.OVHProductsUsed;
-        OVHTechnicalAdvancedResources?: string;
-        OVHTechnicalExpertResources?: string;
-        activitySectors?: OVH.Partner.activitySectors;
-        address?: string;
-        city?: string;
-        clientKinds?: OVH.Partner.clientKinds;
-        commercialName?: string;
-        country?: string;
-        description?: string;
-        email?: string;
-        employeesNumber?: string;
-        expertises?: OVH.Partner.expertisesChoices;
-        externalCertifications?: OVH.Partner.externalCertifications;
-        facebook?: string;
-        linkedin?: string;
-        logo?: string;
-        name?: string;
-        partnerKnowledges?: OVH.Partner.partnerKnowledges;
-        phone?: string;
-        productCountries?: OVH.Partner.productCountries;
-        registrationNumber?: string;
-        revenue?: string;
-        status?: OVH.Partner.companyStatusEnum;
-        twitter?: string;
-        website?: string;
-        zipCode?: string;
+        OVHCertifications: OVH.Partner.OVHCertifications;
+        OVHCustomersAdvised: string;
+        OVHKnowledgeResources: string;
+        OVHProductsUsed: OVH.Partner.OVHProductsUsed;
+        OVHTechnicalAdvancedResources: string;
+        OVHTechnicalExpertResources: string;
+        activitySectors: OVH.Partner.activitySectors;
+        address: string;
+        city: string;
+        clientKinds: OVH.Partner.clientKinds;
+        commercialName: string;
+        country: string;
+        description: string;
+        email: string;
+        employeesNumber: string;
+        expertises: OVH.Partner.expertisesChoices;
+        externalCertifications: OVH.Partner.externalCertifications;
+        facebook: string;
+        linkedin: string;
+        logo: string;
+        name: string;
+        partnerKnowledges: OVH.Partner.partnerKnowledges;
+        phone: string;
+        productCountries: OVH.Partner.productCountries;
+        registrationNumber: string;
+        revenue: string;
+        status: OVH.Partner.companyStatusEnum;
+        twitter: string;
+        website: string;
+        zipCode: string;
     }
     //Partner.Contact
     // fullName: Partner.Contact.Contact
     export interface Contact {
-        email?: string;
+        email: string;
         facebook?: string;
-        firstName?: string;
-        lastName?: string;
+        firstName: string;
+        lastName: string;
         linkedin?: string;
-        newsletter?: string;
-        otherNics?: string[];
-        phone?: string;
-        role?: string;
+        newsletter: string;
+        otherNics: string[];
+        phone: string;
+        role: string;
         twitter?: string;
     }
     //Partner.Nic
     // fullName: Partner.Nic.Nic
     export interface Nic {
-        nic?: string;
+        nic: string;
     }
     //Partner.OVHCertifications
     // fullName: Partner.OVHCertifications.OVHCertifications
@@ -72,77 +72,77 @@ export namespace Partner {
     //Partner.OVHProductsUsed
     // fullName: Partner.OVHProductsUsed.OVHProductsUsed
     export interface OVHProductsUsed {
-        cloud?: OVH.Partner.OVHProductsUsedCloud;
-        mobileHosting?: OVH.Partner.OVHProductsUsedMobileHosting;
-        telecom?: OVH.Partner.OVHProductsUsedTelecom;
-        web?: OVH.Partner.OVHProductsUsedWeb;
+        cloud: OVH.Partner.OVHProductsUsedCloud;
+        mobileHosting: OVH.Partner.OVHProductsUsedMobileHosting;
+        telecom: OVH.Partner.OVHProductsUsedTelecom;
+        web: OVH.Partner.OVHProductsUsedWeb;
     }
     //Partner.OVHProductsUsedCloud
     // fullName: Partner.OVHProductsUsedCloud.OVHProductsUsedCloud
     export interface OVHProductsUsedCloud {
-        cloudDesktop?: boolean;
-        cloudDesktopInfrastructure?: boolean;
-        dedicated?: boolean;
-        nas?: boolean;
-        networkAndSecurity?: boolean;
-        privateCloud?: boolean;
-        publicCloud?: boolean;
-        vps?: boolean;
-        vrack?: boolean;
+        cloudDesktop: boolean;
+        cloudDesktopInfrastructure: boolean;
+        dedicated: boolean;
+        nas: boolean;
+        networkAndSecurity: boolean;
+        privateCloud: boolean;
+        publicCloud: boolean;
+        vps: boolean;
+        vrack: boolean;
     }
     //Partner.OVHProductsUsedMobileHosting
     // fullName: Partner.OVHProductsUsedMobileHosting.OVHProductsUsedMobileHosting
     export interface OVHProductsUsedMobileHosting {
-        logs?: boolean;
-        metrics?: boolean;
+        logs: boolean;
+        metrics: boolean;
     }
     //Partner.OVHProductsUsedTelecom
     // fullName: Partner.OVHProductsUsedTelecom.OVHProductsUsedTelecom
     export interface OVHProductsUsedTelecom {
-        dsl?: boolean;
-        fax?: boolean;
-        overTheBox?: boolean;
-        sms?: boolean;
-        voip?: boolean;
+        dsl: boolean;
+        fax: boolean;
+        overTheBox: boolean;
+        sms: boolean;
+        voip: boolean;
     }
     //Partner.OVHProductsUsedWeb
     // fullName: Partner.OVHProductsUsedWeb.OVHProductsUsedWeb
     export interface OVHProductsUsedWeb {
-        domainName?: boolean;
-        exchange?: boolean;
-        office?: boolean;
-        sharepoint?: boolean;
-        webHosting?: boolean;
+        domainName: boolean;
+        exchange: boolean;
+        office: boolean;
+        sharepoint: boolean;
+        webHosting: boolean;
     }
     //Partner.activitySectors
     // fullName: Partner.activitySectors.activitySectors
     export interface activitySectors {
-        bankInsuranceFinance?: boolean;
-        businessServiceOrIndividuals?: boolean;
-        communicationOrMedia?: boolean;
-        digitalServicesCompanies?: boolean;
-        ecommerce?: boolean;
-        health?: boolean;
-        industryTransportationEnegy?: boolean;
+        bankInsuranceFinance: boolean;
+        businessServiceOrIndividuals: boolean;
+        communicationOrMedia: boolean;
+        digitalServicesCompanies: boolean;
+        ecommerce: boolean;
+        health: boolean;
+        industryTransportationEnegy: boolean;
         other?: string;
-        otherITOrTelecom?: boolean;
-        publicSectorOrEducation?: boolean;
-        resellerITOrTelecom?: boolean;
-        softwareEditor?: boolean;
-        tradeTradingDistribution?: boolean;
-        videoGames?: boolean;
-        webAgency?: boolean;
+        otherITOrTelecom: boolean;
+        publicSectorOrEducation: boolean;
+        resellerITOrTelecom: boolean;
+        softwareEditor: boolean;
+        tradeTradingDistribution: boolean;
+        videoGames: boolean;
+        webAgency: boolean;
     }
     //Partner.clientKinds
     // fullName: Partner.clientKinds.clientKinds
     export interface clientKinds {
-        association?: boolean;
-        individual?: boolean;
-        largeGroup?: boolean;
-        mediumBusiness?: boolean;
+        association: boolean;
+        individual: boolean;
+        largeGroup: boolean;
+        mediumBusiness: boolean;
         other?: string;
-        publicSector?: boolean;
-        startup?: boolean;
+        publicSector: boolean;
+        startup: boolean;
     }
     //Partner.companyStatusEnum
     export type companyStatusEnum = "draft" | "submitted" | "validated" | "rejected"
@@ -151,89 +151,89 @@ export namespace Partner {
     //Partner.expertisesChoices
     // fullName: Partner.expertisesChoices.expertisesChoices
     export interface expertisesChoices {
-        consulting?: OVH.Partner.expertisesChoicesConsulting;
-        installationAndIntegration?: OVH.Partner.expertisesChoicesInstallationAndIntegration;
-        outsourcingAndMaintenance?: OVH.Partner.expertisesChoicesOutsourcingAndMaintenance;
-        softwareAndDevelopment?: OVH.Partner.expertisesChoicesSoftwareAndDevelopment;
+        consulting: OVH.Partner.expertisesChoicesConsulting;
+        installationAndIntegration: OVH.Partner.expertisesChoicesInstallationAndIntegration;
+        outsourcingAndMaintenance: OVH.Partner.expertisesChoicesOutsourcingAndMaintenance;
+        softwareAndDevelopment: OVH.Partner.expertisesChoicesSoftwareAndDevelopment;
     }
     //Partner.expertisesChoicesConsulting
     // fullName: Partner.expertisesChoicesConsulting.expertisesChoicesConsulting
     export interface expertisesChoicesConsulting {
-        ITSecurity?: boolean;
-        auditAndConsulting?: boolean;
-        infrastructureArchitecture?: boolean;
-        marketingCommerceAndCommunication?: boolean;
-        searchEngineOptimization?: boolean;
+        ITSecurity: boolean;
+        auditAndConsulting: boolean;
+        infrastructureArchitecture: boolean;
+        marketingCommerceAndCommunication: boolean;
+        searchEngineOptimization: boolean;
     }
     //Partner.expertisesChoicesInstallationAndIntegration
     // fullName: Partner.expertisesChoicesInstallationAndIntegration.expertisesChoicesInstallationAndIntegration
     export interface expertisesChoicesInstallationAndIntegration {
-        cloudInfrastructure?: boolean;
-        networkEquipment?: boolean;
-        peripheralsAndMobilitySolutions?: boolean;
-        telecomEquipmentAndInfrastructure?: boolean;
+        cloudInfrastructure: boolean;
+        networkEquipment: boolean;
+        peripheralsAndMobilitySolutions: boolean;
+        telecomEquipmentAndInfrastructure: boolean;
     }
     //Partner.expertisesChoicesOutsourcingAndMaintenance
     // fullName: Partner.expertisesChoicesOutsourcingAndMaintenance.expertisesChoicesOutsourcingAndMaintenance
     export interface expertisesChoicesOutsourcingAndMaintenance {
-        cmputerSupport?: boolean;
-        maintenanceOfNetworkEquipment?: boolean;
-        outsourcing?: boolean;
+        cmputerSupport: boolean;
+        maintenanceOfNetworkEquipment: boolean;
+        outsourcing: boolean;
     }
     //Partner.expertisesChoicesSoftwareAndDevelopment
     // fullName: Partner.expertisesChoicesSoftwareAndDevelopment.expertisesChoicesSoftwareAndDevelopment
     export interface expertisesChoicesSoftwareAndDevelopment {
-        adviceAndexpertises?: boolean;
-        maintenanceOrApplicationManagement?: boolean;
-        networkEquipment?: boolean;
-        softwareSolutions?: boolean;
+        adviceAndexpertises: boolean;
+        maintenanceOrApplicationManagement: boolean;
+        networkEquipment: boolean;
+        softwareSolutions: boolean;
     }
     //Partner.externalCertifications
     // fullName: Partner.externalCertifications.externalCertifications
     export interface externalCertifications {
-        aws?: boolean;
-        cisco?: boolean;
-        intel?: boolean;
-        microsoft?: boolean;
+        aws: boolean;
+        cisco: boolean;
+        intel: boolean;
+        microsoft: boolean;
         other?: string;
-        vmware?: boolean;
+        vmware: boolean;
     }
     //Partner.knowledgeResourcesRangeEnum
     export type knowledgeResourcesRangeEnum = "none" | "from1To3" | "from4To10" | "moreThan10"
     //Partner.partnerKnowledges
     // fullName: Partner.partnerKnowledges.partnerKnowledges
     export interface partnerKnowledges {
-        events?: boolean;
-        forum?: boolean;
-        media?: boolean;
+        events: boolean;
+        forum: boolean;
+        media: boolean;
         other?: string;
-        searchEngine?: boolean;
-        socialNetwork?: boolean;
-        website?: boolean;
+        searchEngine: boolean;
+        socialNetwork: boolean;
+        website: boolean;
     }
     //Partner.productCountries
     // fullName: Partner.productCountries.productCountries
     export interface productCountries {
-        australia?: boolean;
-        brazil?: boolean;
-        canada?: boolean;
-        czechRepublic?: boolean;
-        finland?: boolean;
-        france?: boolean;
-        germany?: boolean;
-        ireland?: boolean;
-        italy?: boolean;
-        lithuania?: boolean;
-        morocco?: boolean;
-        netherlands?: boolean;
+        australia: boolean;
+        brazil: boolean;
+        canada: boolean;
+        czechRepublic: boolean;
+        finland: boolean;
+        france: boolean;
+        germany: boolean;
+        ireland: boolean;
+        italy: boolean;
+        lithuania: boolean;
+        morocco: boolean;
+        netherlands: boolean;
         other?: string;
-        poland?: boolean;
-        portugal?: boolean;
-        senegal?: boolean;
-        singapore?: boolean;
-        spain?: boolean;
-        tunisia?: boolean;
-        uk?: boolean;
+        poland: boolean;
+        portugal: boolean;
+        senegal: boolean;
+        singapore: boolean;
+        spain: boolean;
+        tunisia: boolean;
+        uk: boolean;
     }
     //Partner.revenueRangeEnum
     export type revenueRangeEnum = "lessThan50000Euros" | "from50000To500000Euros" | "from500000To5000000Euros" | "moreThan5000000Euros" | "IDoNotWishToDiscloseThisInformation"

@@ -7,7 +7,7 @@ export namespace MarketPlace {
     export interface Document {
         creationDate?: string;
         getUrl?: string;
-        id?: string;
+        id: string;
         name?: string;
         putUrl?: string;
         size?: string;
@@ -40,14 +40,14 @@ export namespace MarketPlaceContact {
     export interface Contact {
         city?: string;
         country?: string;
-        email?: string;
-        firstname?: string;
-        id?: string;
-        lastname?: string;
+        email: string;
+        firstname: string;
+        id: string;
+        lastname: string;
         phone?: string;
         province?: string;
         street?: string;
-        title?: string;
+        title: string;
         zip?: string;
     }
 }
@@ -55,9 +55,9 @@ export namespace MarketPlacePartnerProduct {
     //MarketPlacePartnerProduct.edit_response
     // fullName: MarketPlacePartnerProduct.edit_response.edit_response
     export interface edit_response {
-        category?: string;
-        description?: string;
-        name?: string;
+        category: string;
+        description: string;
+        name: string;
         otherDetails?: string;
     }
 }
@@ -65,8 +65,8 @@ export namespace complexType {
     //complexType.SafeKeyValue
     // fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
-        key?: string;
-        value?: T;
+        key: string;
+        value: T;
     }
 }
 // Apis harmony

@@ -6,33 +6,33 @@ export namespace hosting {
         //hosting.reseller.metaType
         // fullName: hosting.reseller.metaType.metaType
         export interface metaType {
-            email?: string;
-            region?: string;
+            email: string;
+            region: string;
         }
         //hosting.reseller.product
         // fullName: hosting.reseller.product.product
         export interface product {
             action?: string;
             ip?: string;
-            meta?: OVH.hosting.reseller.metaType;
+            meta: OVH.hosting.reseller.metaType;
             progress?: number;
-            status?: string;
-            type?: OVH.hosting.reseller.resellerTypeEnum;
-            typeDetail?: OVH.hosting.reseller.productType;
+            status: string;
+            type: OVH.hosting.reseller.resellerTypeEnum;
+            typeDetail: OVH.hosting.reseller.productType;
             url?: string;
         }
         //hosting.reseller.productType
         // fullName: hosting.reseller.productType.productType
         export interface productType {
-            consumers?: number;
-            cpu?: string;
-            databases?: number;
-            diskSize?: number;
-            emailAccounts?: number;
-            ram?: number;
-            type?: string;
-            vCores?: number;
-            websites?: number;
+            consumers: number;
+            cpu: string;
+            databases: number;
+            diskSize: number;
+            emailAccounts: number;
+            ram: number;
+            type: string;
+            vCores: number;
+            websites: number;
         }
         //hosting.reseller.resellerTypeEnum
         export type resellerTypeEnum = "TYPE1" | "TYPE2" | "TYPE3" | "TYPE4" | "TYPE5"
@@ -44,24 +44,24 @@ export namespace reseller {
     //reseller.snapshot
     // fullName: reseller.snapshot.snapshot
     export interface snapshot {
-        creationDate?: string;
-        id?: string;
-        snashotName?: string;
-        type?: OVH.reseller.snapshotTypeEnum;
+        creationDate: string;
+        id: string;
+        snashotName: string;
+        type: OVH.reseller.snapshotTypeEnum;
     }
     //reseller.snapshotTypeEnum
     export type snapshotTypeEnum = "automatic" | "manual"
     //reseller.task
     // fullName: reseller.task.task
     export interface task {
-        currentStep?: string;
+        currentStep: string;
         expectedDoneDate?: string;
-        id?: string;
+        id: string;
         lastUpdateDate?: string;
-        productDomain?: string;
-        progress?: number;
-        taskName?: string;
-        taskStatus?: OVH.reseller.taskTypeEnum;
+        productDomain: string;
+        progress: number;
+        taskName: string;
+        taskStatus: OVH.reseller.taskTypeEnum;
     }
     //reseller.taskTypeEnum
     export type taskTypeEnum = "done" | "error" | "doing" | "todo" | "unknown"
@@ -70,9 +70,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -85,19 +85,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

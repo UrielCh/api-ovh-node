@@ -75,7 +75,7 @@ export class CodeGenerator {
                     const prop = model.properties[pName];
                     // console.log(prop);
                     code += `${ident0}    ${protectModelField(pName)}`;
-                    if (!prop.required)
+                    if (!prop.required && prop.canBeNull)
                         code += '?';
                     code += ': ' + this.typeFromParameter(prop);
                     code += ';\n';
@@ -156,6 +156,7 @@ export class CodeGenerator {
 
     dumpApi(depth: number, schema: Schema, api: CacheApi, code: string): string {
         let avaliablePath = formatUpperCamlCase("Paths_" + this.api.replace(/\//g, '_'))
+        let mainClass = formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'));
         let indexApi = { GET: [], PUT: [], POST: [], DELETE: [] };
         schema.apis.forEach(
             api => api.operations.forEach(
@@ -172,7 +173,7 @@ export class CodeGenerator {
             code += `type ${avaliablePath}${mtd} = ` + arr.sort().map((a: any) => `'${a}'`).join(' |\n  ')
             code += ';\n\n'
         }
-        code += `export class ${formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'))} extends OvhWrapper {\n`;
+        code += `export class ${mainClass} extends OvhWrapper {\n`;
         code += `  constructor(engine: OvhRequestable) {\n    super(engine);\n  }\n`;
         for (let mtd of Object.keys(indexApi)) {
             let calls = 0;
@@ -235,6 +236,7 @@ export class CodeGenerator {
             }
         }
         code += `}\n`
+        // code += `export default ${mainClass};\n`
         return code;
     }
 

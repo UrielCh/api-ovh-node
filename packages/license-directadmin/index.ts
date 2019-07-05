@@ -9,14 +9,14 @@ export namespace license {
     //license.ChangeIpStatus
     // fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message?: OVH.license.ChangeIpMessageEnum;
-        success?: boolean;
+        message: OVH.license.ChangeIpMessageEnum;
+        success: boolean;
     }
     //license.DirectAdminOrderConfiguration
     // fullName: license.DirectAdminOrderConfiguration.DirectAdminOrderConfiguration
     export interface DirectAdminOrderConfiguration {
-        orderableVersions?: OVH.license.OrderableDirectAdminCompatibilityInfos[];
-        serviceType?: OVH.license.LicenseTypeEnum;
+        orderableVersions: OVH.license.OrderableDirectAdminCompatibilityInfos[];
+        serviceType: OVH.license.LicenseTypeEnum;
     }
     //license.DirectAdminOsEnum
     export type DirectAdminOsEnum = "CentOs_5.0_32" | "CentOs_5.0_64" | "CentOs_6_32" | "CentOs_6_64" | "CentOs_7_64" | "Debian_5.0_32" | "Debian_5.0_64" | "Debian_6.0_32" | "Debian_6.0_64" | "Debian_7.0_32" | "Debian_7.0_64" | "Debian_8.0_64" | "FreeBSD_7.x_32" | "FreeBSD_7.x_64" | "FreeBSD_8.x_64" | "FreeBSD_9.x_64"
@@ -27,7 +27,7 @@ export namespace license {
     //license.OrderableDirectAdminCompatibilityInfos
     // fullName: license.OrderableDirectAdminCompatibilityInfos.OrderableDirectAdminCompatibilityInfos
     export interface OrderableDirectAdminCompatibilityInfos {
-        version?: OVH.license.OrderableDirectAdminVersionEnum;
+        version: OVH.license.OrderableDirectAdminVersionEnum;
     }
     //license.OrderableDirectAdminVersionEnum
     export type OrderableDirectAdminVersionEnum = "DIRECTADMIN_1" | "directadmin-license"
@@ -36,13 +36,13 @@ export namespace license {
     //license.Task
     // fullName: license.Task.Task
     export interface Task {
-        action?: OVH.license.ActionType;
+        action: OVH.license.ActionType;
         doneDate?: string;
-        lastUpdate?: string;
-        name?: string;
-        status?: OVH.license.TaskStateEnum;
-        taskId?: number;
-        todoDate?: string;
+        lastUpdate: string;
+        name: string;
+        status: OVH.license.TaskStateEnum;
+        taskId: number;
+        todoDate: string;
     }
     //license.TaskStateEnum
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
@@ -50,15 +50,15 @@ export namespace license {
         //license.directadmin.DirectAdmin
         // fullName: license.directadmin.DirectAdmin.DirectAdmin
         export interface DirectAdmin {
-            clientId?: number;
-            creation?: string;
-            deleteAtExpiration?: boolean;
-            domain?: string;
-            ip?: string;
-            licenseId?: string;
-            os?: OVH.license.DirectAdminOsEnum;
-            status?: OVH.license.StateEnum;
-            version?: OVH.license.DirectAdminVersionEnum;
+            clientId: number;
+            creation: string;
+            deleteAtExpiration: boolean;
+            domain: string;
+            ip: string;
+            licenseId: string;
+            os: OVH.license.DirectAdminOsEnum;
+            status: OVH.license.StateEnum;
+            version: OVH.license.DirectAdminVersionEnum;
         }
     }
 }
@@ -66,9 +66,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -85,19 +85,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

@@ -7,8 +7,8 @@ export namespace license {
     //license.CloudLinuxOrderConfiguration
     // fullName: license.CloudLinuxOrderConfiguration.CloudLinuxOrderConfiguration
     export interface CloudLinuxOrderConfiguration {
-        orderableVersions?: OVH.license.OrderableCloudLinuxCompatibilityInfos[];
-        serviceType?: OVH.license.LicenseTypeEnum;
+        orderableVersions: OVH.license.OrderableCloudLinuxCompatibilityInfos[];
+        serviceType: OVH.license.LicenseTypeEnum;
     }
     //license.CloudLinuxVersionEnum
     export type CloudLinuxVersionEnum = "SINGLE" | "WITH_CPANEL" | "WITH_PLESK12" | "cloudlinux-license"
@@ -17,20 +17,20 @@ export namespace license {
     //license.OrderableCloudLinuxCompatibilityInfos
     // fullName: license.OrderableCloudLinuxCompatibilityInfos.OrderableCloudLinuxCompatibilityInfos
     export interface OrderableCloudLinuxCompatibilityInfos {
-        version?: OVH.license.CloudLinuxVersionEnum;
+        version: OVH.license.CloudLinuxVersionEnum;
     }
     //license.StateEnum
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
     //license.Task
     // fullName: license.Task.Task
     export interface Task {
-        action?: OVH.license.ActionType;
+        action: OVH.license.ActionType;
         doneDate?: string;
-        lastUpdate?: string;
-        name?: string;
-        status?: OVH.license.TaskStateEnum;
-        taskId?: number;
-        todoDate?: string;
+        lastUpdate: string;
+        name: string;
+        status: OVH.license.TaskStateEnum;
+        taskId: number;
+        todoDate: string;
     }
     //license.TaskStateEnum
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
@@ -38,12 +38,12 @@ export namespace license {
         //license.cloudLinux.CloudLinux
         // fullName: license.cloudLinux.CloudLinux.CloudLinux
         export interface CloudLinux {
-            creation?: string;
-            domain?: string;
-            ip?: string;
-            licenseId?: string;
-            status?: OVH.license.StateEnum;
-            version?: OVH.license.CloudLinuxVersionEnum;
+            creation: string;
+            domain: string;
+            ip: string;
+            licenseId: string;
+            status: OVH.license.StateEnum;
+            version: OVH.license.CloudLinuxVersionEnum;
         }
     }
 }
@@ -51,9 +51,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -70,19 +70,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony

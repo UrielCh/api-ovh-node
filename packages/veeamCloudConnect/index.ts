@@ -5,17 +5,17 @@ export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
 }
 export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -28,38 +28,38 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 export namespace veeamCloudConnect {
     //veeamCloudConnect.Account
     // fullName: veeamCloudConnect.Account.Account
     export interface Account {
-        location?: OVH.veeamCloudConnect.Location;
-        productOffer?: OVH.veeamCloudConnect.Offer;
-        serviceName?: string;
+        location: OVH.veeamCloudConnect.Location;
+        productOffer: OVH.veeamCloudConnect.Offer;
+        serviceName: string;
         vmCount?: number;
     }
     //veeamCloudConnect.BackupRepository
     // fullName: veeamCloudConnect.BackupRepository.BackupRepository
     export interface BackupRepository {
-        inventoryName?: string;
-        quota?: OVH.complexType.UnitAndValue<number>;
+        inventoryName: string;
+        quota: OVH.complexType.UnitAndValue<number>;
         quotaUsed?: OVH.complexType.UnitAndValue<number>;
         replicationZone?: OVH.veeamCloudConnect.Location;
-        state?: OVH.veeamCloudConnect.BackupRepositoryStateEnum;
+        state: OVH.veeamCloudConnect.BackupRepositoryStateEnum;
         usage?: number;
     }
     //veeamCloudConnect.BackupRepositoryStateEnum
@@ -72,25 +72,25 @@ export namespace veeamCloudConnect {
     // fullName: veeamCloudConnect.Task.Task
     export interface Task {
         endDate?: string;
-        name?: string;
-        progress?: number;
+        name: string;
+        progress: number;
         startDate?: string;
-        state?: OVH.veeamCloudConnect.TaskStateEnum;
-        taskId?: number;
+        state: OVH.veeamCloudConnect.TaskStateEnum;
+        taskId: number;
     }
     //veeamCloudConnect.TaskStateEnum
     export type TaskStateEnum = "canceled" | "doing" | "done" | "error" | "fixing" | "problem" | "toCreate" | "todo" | "unknown" | "waitingTodo"
     //veeamCloudConnect.offerCapabilities
     // fullName: veeamCloudConnect.offerCapabilities.offerCapabilities
     export interface offerCapabilities {
-        defaultQuota?: number;
-        maxQuota?: number;
-        maxStoragesCount?: number;
-        minimumUsage?: number;
-        multiStorages?: boolean;
-        replication?: boolean;
-        vmCapacity?: number;
-        wanAccelerator?: boolean;
+        defaultQuota: number;
+        maxQuota: number;
+        maxStoragesCount: number;
+        minimumUsage: number;
+        multiStorages: boolean;
+        replication: boolean;
+        vmCapacity: number;
+        wanAccelerator: boolean;
     }
 }
 // Apis harmony

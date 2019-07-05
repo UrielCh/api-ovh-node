@@ -5,14 +5,14 @@ export namespace complexType {
     //complexType.SafeKeyValue
     // fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
-        key?: string;
-        value?: T;
+        key: string;
+        value: T;
     }
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
-        unit?: string;
-        value?: T;
+        unit: string;
+        value: T;
     }
 }
 export namespace hosting {
@@ -20,10 +20,10 @@ export namespace hosting {
         //hosting.PrivateDatabase.AvailableOrderCapacities
         // fullName: hosting.PrivateDatabase.AvailableOrderCapacities.AvailableOrderCapacities
         export interface AvailableOrderCapacities {
-            datacenter?: OVH.hosting.PrivateDatabase.DatacenterEnum[];
-            offer?: OVH.hosting.PrivateDatabase.OfferEnum;
-            ram?: OVH.hosting.PrivateDatabase.AvailableRamSizeEnum[];
-            version?: OVH.hosting.PrivateDatabase.AvailableVersionEnum[];
+            datacenter: OVH.hosting.PrivateDatabase.DatacenterEnum[];
+            offer: OVH.hosting.PrivateDatabase.OfferEnum;
+            ram: OVH.hosting.PrivateDatabase.AvailableRamSizeEnum[];
+            version: OVH.hosting.PrivateDatabase.AvailableVersionEnum[];
         }
         //hosting.PrivateDatabase.AvailableRamSizeEnum
         export type AvailableRamSizeEnum = "1024" | "2048" | "4096" | "512"
@@ -32,23 +32,23 @@ export namespace hosting {
         //hosting.PrivateDatabase.Capability
         // fullName: hosting.PrivateDatabase.Capability.Capability
         export interface Capability {
-            create?: boolean;
-            delete?: boolean;
-            object?: string;
-            update?: boolean;
+            create: boolean;
+            delete: boolean;
+            object: string;
+            update: boolean;
         }
         export namespace Configuration {
             //hosting.PrivateDatabase.Configuration.Detail
             // fullName: hosting.PrivateDatabase.Configuration.Detail.Detail
             export interface Detail {
-                availableValues?: string[];
-                defaultValue?: string;
-                description?: string;
-                key?: string;
-                lastUpdate?: string;
-                type?: OVH.hosting.PrivateDatabase.Configuration.DetailType;
+                availableValues: string[];
+                defaultValue: string;
+                description: string;
+                key: string;
+                lastUpdate: string;
+                type: OVH.hosting.PrivateDatabase.Configuration.DetailType;
                 unit?: string;
-                value?: string;
+                value: string;
             }
             //hosting.PrivateDatabase.Configuration.DetailType
             export type DetailType = "boolean" | "number" | "string"
@@ -63,9 +63,9 @@ export namespace hosting {
             //hosting.PrivateDatabase.Database.User
             // fullName: hosting.PrivateDatabase.Database.User.User
             export interface User {
-                grantId?: number;
-                grantType?: OVH.hosting.PrivateDatabase.grant.GrantEnum;
-                userName?: string;
+                grantId: number;
+                grantType: OVH.hosting.PrivateDatabase.grant.GrantEnum;
+                userName: string;
             }
         }
         //hosting.PrivateDatabase.DatacenterEnum
@@ -73,25 +73,25 @@ export namespace hosting {
         //hosting.PrivateDatabase.GraphEndpoint
         // fullName: hosting.PrivateDatabase.GraphEndpoint.GraphEndpoint
         export interface GraphEndpoint {
-            host?: string;
-            readToken?: string;
-            readTokenId?: string;
+            host: string;
+            readToken: string;
+            readTokenId: string;
         }
         //hosting.PrivateDatabase.OfferEnum
         export type OfferEnum = "classic" | "public"
         //hosting.PrivateDatabase.Oom
         // fullName: hosting.PrivateDatabase.Oom.Oom
         export interface Oom {
-            date?: string;
-            sizeReached?: number;
+            date: string;
+            sizeReached: number;
         }
         //hosting.PrivateDatabase.StateEnum
         export type StateEnum = "detached" | "restartPending" | "startPending" | "started" | "stopPending" | "stopped"
         //hosting.PrivateDatabase.TemporaryLogsLink
         // fullName: hosting.PrivateDatabase.TemporaryLogsLink.TemporaryLogsLink
         export interface TemporaryLogsLink {
-            expirationDate?: string;
-            url?: string;
+            expirationDate: string;
+            url: string;
         }
         //hosting.PrivateDatabase.TypeEnum
         export type TypeEnum = "mariadb" | "mongodb" | "mysql" | "postgresql" | "redis"
@@ -99,9 +99,9 @@ export namespace hosting {
             //hosting.PrivateDatabase.User.Database
             // fullName: hosting.PrivateDatabase.User.Database.Database
             export interface Database {
-                databaseName?: string;
-                grantId?: number;
-                grantType?: OVH.hosting.PrivateDatabase.grant.GrantEnum;
+                databaseName: string;
+                grantId: number;
+                grantType: OVH.hosting.PrivateDatabase.grant.GrantEnum;
             }
         }
         export namespace Whitelist {
@@ -123,81 +123,81 @@ export namespace hosting {
         //hosting.privateDatabase.Configuration
         // fullName: hosting.privateDatabase.Configuration.Configuration
         export interface Configuration {
-            details?: OVH.hosting.PrivateDatabase.Configuration.Detail[];
-            lastUpdate?: string;
-            status?: OVH.hosting.PrivateDatabase.Configuration.Status;
+            details: OVH.hosting.PrivateDatabase.Configuration.Detail[];
+            lastUpdate: string;
+            status: OVH.hosting.PrivateDatabase.Configuration.Status;
             taskId?: string;
         }
         //hosting.privateDatabase.Service
         // fullName: hosting.privateDatabase.Service.Service
         export interface Service {
-            capabilities?: OVH.hosting.PrivateDatabase.Capability[];
-            cpu?: number;
-            datacenter?: OVH.hosting.PrivateDatabase.DatacenterEnum;
+            capabilities: OVH.hosting.PrivateDatabase.Capability[];
+            cpu: number;
+            datacenter: OVH.hosting.PrivateDatabase.DatacenterEnum;
             displayName?: string;
             graphEndpoint?: OVH.hosting.PrivateDatabase.GraphEndpoint;
             guiURL?: string;
             hostname?: string;
             hostnameFtp?: string;
-            infrastructure?: string;
+            infrastructure: string;
             ip?: string;
-            lastCheck?: string;
-            offer?: OVH.hosting.PrivateDatabase.OfferEnum;
-            port?: number;
+            lastCheck: string;
+            offer: OVH.hosting.PrivateDatabase.OfferEnum;
+            port: number;
             portFtp?: number;
-            quotaSize?: OVH.complexType.UnitAndValue<number>;
-            quotaUsed?: OVH.complexType.UnitAndValue<number>;
-            ram?: OVH.complexType.UnitAndValue<number>;
+            quotaSize: OVH.complexType.UnitAndValue<number>;
+            quotaUsed: OVH.complexType.UnitAndValue<number>;
+            ram: OVH.complexType.UnitAndValue<number>;
             server?: string;
-            serviceName?: string;
-            state?: OVH.hosting.PrivateDatabase.StateEnum;
+            serviceName: string;
+            state: OVH.hosting.PrivateDatabase.StateEnum;
             tlsCa?: string;
-            type?: OVH.hosting.PrivateDatabase.TypeEnum;
-            version?: OVH.hosting.PrivateDatabase.AvailableVersionEnum;
-            versionNumber?: number;
+            type: OVH.hosting.PrivateDatabase.TypeEnum;
+            version: OVH.hosting.PrivateDatabase.AvailableVersionEnum;
+            versionNumber: number;
         }
         //hosting.privateDatabase.database
         // fullName: hosting.privateDatabase.database.database
         export interface database {
             backupTime?: string;
-            creationDate?: string;
-            databaseName?: string;
-            quotaUsed?: OVH.complexType.UnitAndValue<number>;
-            users?: OVH.hosting.PrivateDatabase.Database.User[];
+            creationDate: string;
+            databaseName: string;
+            quotaUsed: OVH.complexType.UnitAndValue<number>;
+            users: OVH.hosting.PrivateDatabase.Database.User[];
         }
         //hosting.privateDatabase.database_dump
         // fullName: hosting.privateDatabase.database_dump.database_dump
         export interface database_dump {
-            creationDate?: string;
-            databaseName?: string;
-            deletionDate?: string;
-            id?: number;
-            url?: string;
+            creationDate: string;
+            databaseName: string;
+            deletionDate: string;
+            id: number;
+            url: string;
         }
         //hosting.privateDatabase.database_extension
         // fullName: hosting.privateDatabase.database_extension.database_extension
         export interface database_extension {
-            description?: string;
-            extensionName?: string;
-            requiredExtensions?: string[];
-            status?: OVH.hosting.PrivateDatabase.Database.Extension.Status;
+            description: string;
+            extensionName: string;
+            requiredExtensions: string[];
+            status: OVH.hosting.PrivateDatabase.Database.Extension.Status;
         }
         //hosting.privateDatabase.dump
         // fullName: hosting.privateDatabase.dump.dump
         export interface dump {
-            creationDate?: string;
-            databaseName?: string;
-            deletionDate?: string;
-            dumpId?: number;
-            orphan?: boolean;
-            url?: string;
+            creationDate: string;
+            databaseName: string;
+            deletionDate: string;
+            dumpId: number;
+            orphan: boolean;
+            url: string;
         }
         //hosting.privateDatabase.grant
         // fullName: hosting.privateDatabase.grant.grant
         export interface grant {
-            creationDate?: string;
-            databaseName?: string;
-            grant?: OVH.hosting.PrivateDatabase.grant.GrantEnum;
+            creationDate: string;
+            databaseName: string;
+            grant: OVH.hosting.PrivateDatabase.grant.GrantEnum;
         }
         //hosting.privateDatabase.task
         // fullName: hosting.privateDatabase.task.task
@@ -205,30 +205,30 @@ export namespace hosting {
             databaseName?: string;
             doneDate?: string;
             dumpId?: number;
-            function?: OVH.hosting.PrivateDatabase.task.FunctionEnum;
-            id?: number;
+            function: OVH.hosting.PrivateDatabase.task.FunctionEnum;
+            id: number;
             lastUpdate?: string;
-            startDate?: string;
-            status?: OVH.hosting.PrivateDatabase.task.StatusEnum;
+            startDate: string;
+            status: OVH.hosting.PrivateDatabase.task.StatusEnum;
             userName?: string;
         }
         //hosting.privateDatabase.user
         // fullName: hosting.privateDatabase.user.user
         export interface user {
-            creationDate?: string;
-            databases?: OVH.hosting.PrivateDatabase.User.Database[];
-            userName?: string;
+            creationDate: string;
+            databases: OVH.hosting.PrivateDatabase.User.Database[];
+            userName: string;
         }
         //hosting.privateDatabase.whitelist
         // fullName: hosting.privateDatabase.whitelist.whitelist
         export interface whitelist {
-            creationDate?: string;
-            ip?: string;
-            lastUpdate?: string;
+            creationDate: string;
+            ip: string;
+            lastUpdate: string;
             name?: string;
-            service?: boolean;
-            sftp?: boolean;
-            status?: OVH.hosting.PrivateDatabase.Whitelist.Status;
+            service: boolean;
+            sftp: boolean;
+            status: OVH.hosting.PrivateDatabase.Whitelist.Status;
             taskId?: string;
         }
     }
@@ -237,9 +237,9 @@ export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
     export interface RenewType {
-        automatic?: boolean;
-        deleteAtExpiration?: boolean;
-        forced?: boolean;
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
         manualPayment?: boolean;
         period?: number;
     }
@@ -256,19 +256,19 @@ export namespace services {
     //services.Service
     // fullName: services.Service.Service
     export interface Service {
-        canDeleteAtExpiration?: boolean;
-        contactAdmin?: string;
-        contactBilling?: string;
-        contactTech?: string;
-        creation?: string;
-        domain?: string;
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
         engagedUpTo?: string;
-        expiration?: string;
+        expiration: string;
         possibleRenewPeriod?: number[];
         renew?: OVH.service.RenewType;
-        renewalType?: OVH.service.RenewalTypeEnum;
-        serviceId?: number;
-        status?: OVH.service.StateEnum;
+        renewalType: OVH.service.RenewalTypeEnum;
+        serviceId: number;
+        status: OVH.service.StateEnum;
     }
 }
 // Apis harmony
