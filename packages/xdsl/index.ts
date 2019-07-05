@@ -363,7 +363,7 @@ export namespace xdsl {
         directDistribution?: boolean;
         distance: number;
         faultRepairTime: xdsl.FaultRepairTimeEnum;
-        lineSectionsLength: xdsl.LineSectionLength[];
+        lineSectionsLength: xdslLineSectionLength[];
         mitigation: number;
         number: string;
         originalNumber?: string;
@@ -737,7 +737,7 @@ export namespace xdsl {
             provider?: xdsleligibilityProviderEnum;
             rate?: number;
             type: xdslDslTypeEnum;
-            unbundling?: xdsl.DeconsolidationEnum[];
+            unbundling?: xdslDeconsolidationEnum[];
             uploadRate?: number;
         }
         //xdsl.eligibility.Portability
@@ -2405,6 +2405,7 @@ export class ApiXdsl extends OvhWrapper {
 type xdslDslTypeEnum = xdsl.DslTypeEnum;
 type orderPrice = order.Price;
 type xdslDeconsolidationEnum = xdsl.DeconsolidationEnum;
+type xdslLineSectionLength = xdsl.LineSectionLength;
 type xdsleligibilityAddress = xdsl.eligibility.Address;
 type xdsleligibilityPortability = xdsl.eligibility.Portability;
 type xdsleligibilityLandlineStatusEnum = xdsl.eligibility.LandlineStatusEnum;

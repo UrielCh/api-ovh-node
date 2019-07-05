@@ -73,15 +73,29 @@ export class CodeGenerator {
         let type = p.fullType || (<any>p).type;
         if (type.endsWith(':string'))
             type = 'string'
-        type = this.aliasFilter(type);
         if (~type.indexOf('.'))
             type = this.extraNS + type;
+
+        type = this.aliasFilter(type);
+
         type = type.replace('<long>', '<number>');
-        // deal with namespace colision       
-        let colistion = commonNSColision[type];
-        if (colistion) {
-            this.NSCollision.add(type);
-            type = colistion;
+        // deal with namespace colision
+        {
+            let rawType = type;
+            let isArray = false;
+            if (type.endsWith("[]")) {
+                rawType = type.substring(0, type.length - 2);
+                isArray = true;
+            }
+
+            let colistion = commonNSColision[rawType];
+            if (colistion) {
+                this.NSCollision.add(rawType);
+                if (isArray)
+                    type = colistion + '[]';
+                else
+                    type = colistion;
+            }
         }
         return filterReservedKw(type);
     }
