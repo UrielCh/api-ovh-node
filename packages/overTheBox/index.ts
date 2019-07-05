@@ -1,13 +1,12 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace order {
     //order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode: OVH.order.CurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -24,12 +23,12 @@ export namespace overTheBox {
     //overTheBox.AvailableMigrationOffer
     // fullName: overTheBox.AvailableMigrationOffer.AvailableMigrationOffer
     export interface AvailableMigrationOffer {
-        currentOfferPrice: OVH.order.Price;
+        currentOfferPrice: order.Price;
         description: string;
         engagementMonths: number;
         hardwareAvailable: boolean;
         offer: string;
-        price: OVH.order.Price;
+        price: order.Price;
     }
     //overTheBox.Backup
     // fullName: overTheBox.Backup.Backup
@@ -44,7 +43,7 @@ export namespace overTheBox {
         activated: boolean;
         deviceId: string;
         lastSeen: string;
-        networkInterfaces: OVH.overTheBox.DeviceInterface[];
+        networkInterfaces: overTheBox.DeviceInterface[];
         publicIp: string;
         systemVersion: string;
         version: string;
@@ -56,7 +55,7 @@ export namespace overTheBox {
         createdAt: string;
         details: string;
         name: string;
-        status: OVH.overTheBox.ActionStatusEnum;
+        status: overTheBox.ActionStatusEnum;
         todoDate: string;
         updatedAt: string;
     }
@@ -74,7 +73,7 @@ export namespace overTheBox {
         dnsServers?: string[];
         gateway?: string;
         ip?: string;
-        multipathStatus: OVH.overTheBox.MultipathStatusEnum;
+        multipathStatus: overTheBox.MultipathStatusEnum;
         name: string;
         netmask?: string;
         publicIp?: string;
@@ -94,12 +93,12 @@ export namespace overTheBox {
         accepted: boolean;
         askDate: string;
         authorizedBy?: string;
-        connectionInfos: OVH.overTheBox.RemoteAccessConnectionInfos;
+        connectionInfos: overTheBox.RemoteAccessConnectionInfos;
         expirationDate: string;
         exposedPort: number;
         remoteAccessId: string;
-        remoteUserInfos: OVH.overTheBox.RemoteAccessUserInfos;
-        status: OVH.overTheBox.RemoteAccessStatusEnum;
+        remoteUserInfos: overTheBox.RemoteAccessUserInfos;
+        status: overTheBox.RemoteAccessStatusEnum;
     }
     //overTheBox.RemoteAccessConnectionInfos
     // fullName: overTheBox.RemoteAccessConnectionInfos.RemoteAccessConnectionInfos
@@ -121,11 +120,11 @@ export namespace overTheBox {
     export interface Service {
         SOCKSProxyEnabled: boolean;
         customerDescription?: string;
-        graphEndpoint?: OVH.overTheBox.GraphEndpoint;
+        graphEndpoint?: overTheBox.GraphEndpoint;
         releaseChannel: string;
         serviceName: string;
-        status: OVH.overTheBox.ServiceStatusEnum;
-        tunnelMode: OVH.overTheBox.TunnelModeEnum;
+        status: overTheBox.ServiceStatusEnum;
+        tunnelMode: overTheBox.TunnelModeEnum;
     }
     //overTheBox.ServiceStatusEnum
     export type ServiceStatusEnum = "active" | "creating" | "deleted" | "suspended" | "toCreate" | "toDelete"
@@ -133,7 +132,7 @@ export namespace overTheBox {
     // fullName: overTheBox.Task.Task
     export interface Task {
         name: string;
-        status: OVH.overTheBox.TaskStatusEnum;
+        status: overTheBox.TaskStatusEnum;
         taskId: string;
     }
     //overTheBox.TaskStatusEnum
@@ -181,10 +180,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -375,7 +374,7 @@ export class ApiOverTheBox extends OvhWrapper {
    * List the overTheBox.DeviceAction objects
    * List of actions scheduled for this device
    */
-  public get(path: '/overTheBox/{serviceName}/device/actions', params: {serviceName: string, name?: string, status?: OVH.overTheBox.ActionStatusEnum}): Promise<string[]>;
+  public get(path: '/overTheBox/{serviceName}/device/actions', params: {serviceName: string, name?: string, status?: overTheBox.ActionStatusEnum}): Promise<string[]>;
   /**
    * Device action
    * Get this object properties
@@ -410,7 +409,7 @@ export class ApiOverTheBox extends OvhWrapper {
    * List the overTheBox.Task objects
    * List of tasks scheduled for this service
    */
-  public get(path: '/overTheBox/{serviceName}/tasks', params: {serviceName: string, name?: string, status?: OVH.overTheBox.TaskStatusEnum}): Promise<string[]>;
+  public get(path: '/overTheBox/{serviceName}/tasks', params: {serviceName: string, name?: string, status?: overTheBox.TaskStatusEnum}): Promise<string[]>;
   /**
    * Task
    * Get this object properties
@@ -428,12 +427,12 @@ export class ApiOverTheBox extends OvhWrapper {
    * Service
    * Alter this object properties
    */
-  public put(path: '/overTheBox/{serviceName}', params: {serviceName: string, SOCKSProxyEnabled?: boolean, customerDescription?: string, graphEndpoint?: OVH.overTheBox.GraphEndpoint, releaseChannel?: string, status?: OVH.overTheBox.ServiceStatusEnum, tunnelMode?: OVH.overTheBox.TunnelModeEnum}): Promise<void>;
+  public put(path: '/overTheBox/{serviceName}', params: {serviceName: string, SOCKSProxyEnabled?: boolean, customerDescription?: string, graphEndpoint?: overTheBox.GraphEndpoint, releaseChannel?: string, status?: overTheBox.ServiceStatusEnum, tunnelMode?: overTheBox.TunnelModeEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/overTheBox/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/overTheBox/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsOverTheBoxPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -508,5 +507,4 @@ export class ApiOverTheBox extends OvhWrapper {
   public delete(path: PathsOverTheBoxDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

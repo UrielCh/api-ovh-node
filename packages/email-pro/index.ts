@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace email {
     export namespace pro {
         //email.pro.Account
@@ -24,15 +23,15 @@ export namespace email {
             lastName?: string;
             lastUpdateDate?: string;
             login: string;
-            mailingFilter?: OVH.email.pro.MailingFilterEnum[];
+            mailingFilter?: email.pro.MailingFilterEnum[];
             passwordLastUpdate?: string;
             primaryEmailAddress: string;
             quota: number;
-            renewPeriod?: OVH.email.pro.renewPeriodEnum;
-            spamAndVirusConfiguration: OVH.email.pro.spamAndVirusConfiguration;
+            renewPeriod?: email.pro.renewPeriodEnum;
+            spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration;
             spamDetected: boolean;
             spamTicketNumber?: number;
-            state: OVH.email.pro.ObjectStateEnum;
+            state: email.pro.ObjectStateEnum;
             taskPendingId: number;
         }
         //email.pro.AccountAlias
@@ -91,9 +90,9 @@ export namespace email {
             name: string;
             srvIsValid: boolean;
             srvRecord?: string[];
-            state: OVH.email.pro.ObjectStateEnum;
+            state: email.pro.ObjectStateEnum;
             taskPendingId: number;
-            type: OVH.email.pro.DomainTypeEnum;
+            type: email.pro.DomainTypeEnum;
         }
         //email.pro.DomainTypeEnum
         export type DomainTypeEnum = "authoritative" | "nonAuthoritative"
@@ -108,7 +107,7 @@ export namespace email {
             id: number;
             initials?: string;
             lastName?: string;
-            state: OVH.email.pro.ObjectStateEnum;
+            state: email.pro.ObjectStateEnum;
             taskPendingId: number;
         }
         //email.pro.MailingFilterEnum
@@ -126,7 +125,7 @@ export namespace email {
             isAaaaValid: boolean;
             isPtrV6Valid: boolean;
             isPtrValid: boolean;
-            state: OVH.email.pro.ServerStateEnum;
+            state: email.pro.ServerStateEnum;
             taskPendingId: number;
             version?: number;
         }
@@ -148,9 +147,9 @@ export namespace email {
             maxSendSize: number;
             minPasswordAge?: number;
             minPasswordLength?: number;
-            offer: OVH.email.pro.ServiceOfferEnum;
-            spamAndVirusConfiguration: OVH.email.pro.spamAndVirusConfiguration;
-            state: OVH.email.pro.ServiceStateEnum;
+            offer: email.pro.ServiceOfferEnum;
+            spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration;
+            state: email.pro.ServiceStateEnum;
             taskPendingId: number;
             webUrl?: string;
         }
@@ -162,9 +161,9 @@ export namespace email {
         // fullName: email.pro.Task.Task
         export interface Task {
             finishDate?: string;
-            function: OVH.email.pro.TaskFunctionEnum;
+            function: email.pro.TaskFunctionEnum;
             id: number;
-            status: OVH.email.pro.TaskStatusEnum;
+            status: email.pro.TaskStatusEnum;
             todoDate: string;
         }
         //email.pro.TaskFunctionEnum
@@ -223,10 +222,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -547,7 +546,7 @@ export class ApiEmailPro extends OvhWrapper {
    * List the email.pro.Domain objects
    * Domains associated to this service
    */
-  public get(path: '/email/pro/{service}/domain', params: {service: string, state?: OVH.email.pro.ObjectStateEnum}): Promise<string[]>;
+  public get(path: '/email/pro/{service}/domain', params: {service: string, state?: email.pro.ObjectStateEnum}): Promise<string[]>;
   /**
    * Domain
    * Get this object properties
@@ -600,17 +599,17 @@ export class ApiEmailPro extends OvhWrapper {
    * Email pro service
    * Alter this object properties
    */
-  public put(path: '/email/pro/{service}', params: {service: string, complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: OVH.email.pro.ServiceOfferEnum, spamAndVirusConfiguration?: OVH.email.pro.spamAndVirusConfiguration, state?: OVH.email.pro.ServiceStateEnum, taskPendingId?: number, webUrl?: string}): Promise<void>;
+  public put(path: '/email/pro/{service}', params: {service: string, complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.pro.ServiceOfferEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, state?: email.pro.ServiceStateEnum, taskPendingId?: number, webUrl?: string}): Promise<void>;
   /**
    * Mailbox
    * Alter this object properties
    */
-  public put(path: '/email/pro/{service}/account/{email}', params: {email: string, service: string, SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: OVH.email.pro.MailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: OVH.email.pro.renewPeriodEnum, spamAndVirusConfiguration?: OVH.email.pro.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: OVH.email.pro.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/email/pro/{service}/account/{email}', params: {email: string, service: string, SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: email.pro.MailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: email.pro.renewPeriodEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.pro.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Domain
    * Alter this object properties
    */
-  public put(path: '/email/pro/{service}/domain/{domainName}', params: {domainName: string, service: string, cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: OVH.email.pro.ObjectStateEnum, taskPendingId?: number, type?: OVH.email.pro.DomainTypeEnum}): Promise<void>;
+  public put(path: '/email/pro/{service}/domain/{domainName}', params: {domainName: string, service: string, cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.pro.ObjectStateEnum, taskPendingId?: number, type?: email.pro.DomainTypeEnum}): Promise<void>;
   /**
    * disclaimer
    * Alter this object properties
@@ -620,12 +619,12 @@ export class ApiEmailPro extends OvhWrapper {
    * External contact for this pro service
    * Alter this object properties
    */
-  public put(path: '/email/pro/{service}/externalContact/{externalEmailAddress}', params: {externalEmailAddress: string, service: string, creationDate?: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: OVH.email.pro.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/email/pro/{service}/externalContact/{externalEmailAddress}', params: {externalEmailAddress: string, service: string, creationDate?: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: email.pro.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/email/pro/{service}/serviceInfos', params: {service: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/email/pro/{service}/serviceInfos', params: {service: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsEmailProPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -668,7 +667,7 @@ export class ApiEmailPro extends OvhWrapper {
    * List the email.pro.Domain objects
    * Create new domain in pro services
    */
-  public post(path: '/email/pro/{service}/domain', params: {service: string, configureAutodiscover?: boolean, configureMx?: boolean, mxRelay?: string, name: string, type: OVH.email.pro.DomainTypeEnum}): Promise<email.pro.Task>;
+  public post(path: '/email/pro/{service}/domain', params: {service: string, configureAutodiscover?: boolean, configureMx?: boolean, mxRelay?: string, name: string, type: email.pro.DomainTypeEnum}): Promise<email.pro.Task>;
   /**
    * disclaimer
    * Create organization disclaimer of each email
@@ -730,5 +729,4 @@ export class ApiEmailPro extends OvhWrapper {
   public delete(path: PathsEmailProDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

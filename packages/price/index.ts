@@ -1,13 +1,12 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace order {
     //order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode: OVH.order.CurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -7164,2794 +7163,2793 @@ export class ApiPrice extends OvhWrapper {
    * Get the price of Nas HA offers
    * Get the price of Nas HA offers
    */
-  public get(path: '/price/dedicated/nasha/model/{modelName}', params: {modelName: OVH.price.Dedicated.Nasha.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicated/nasha/model/{modelName}', params: {modelName: price.Dedicated.Nasha.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of anti-DDos Pro option
    * Get price of anti-DDos Pro option
    */
-  public get(path: '/price/dedicated/server/antiDDoSPro/{commercialRange}', params: {commercialRange: OVH.price.Dedicated.Server.AntiDDoSProEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicated/server/antiDDoSPro/{commercialRange}', params: {commercialRange: price.Dedicated.Server.AntiDDoSProEnum}): Promise<order.Price>;
   /**
    * Get price of backup storage offer
    * Get price of backup storage offer
    */
-  public get(path: '/price/dedicated/server/backupStorage/{capacity}', params: {capacity: OVH.price.Dedicated.Server.BackupStorageEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicated/server/backupStorage/{capacity}', params: {capacity: price.Dedicated.Server.BackupStorageEnum}): Promise<order.Price>;
   /**
    * Get price of available firewall models
    * Get price of available firewall models
    */
-  public get(path: '/price/dedicated/server/firewall/{firewallModel}', params: {firewallModel: OVH.price.Dedicated.Server.FirewallEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicated/server/firewall/{firewallModel}', params: {firewallModel: price.Dedicated.Server.FirewallEnum}): Promise<order.Price>;
   /**
    * Get price of IPs
    * Get price of IPs
    */
-  public get(path: '/price/dedicated/server/ip/{routedTo}', params: {routedTo: OVH.price.Dedicated.Server.IpEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicated/server/ip/{routedTo}', params: {routedTo: price.Dedicated.Server.IpEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2013v1/bhs1a/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2013v1.Bhs1a.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2013v1/bhs1a/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2013v1.Bhs1a.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2013v1/bhs1a/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2013v1.Bhs1a.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2013v1/bhs1a/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2013v1.Bhs1a.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2013v1/bhs1a/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2013v1.Bhs1a.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2013v1/bhs1a/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2013v1.Bhs1a.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2013v1/bhs1a/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2013v1.Bhs1a.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2013v1/bhs1a/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2013v1.Bhs1a.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2013v1/rbx2a/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2013v1.Rbx2a.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2013v1/rbx2a/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2013v1.Rbx2a.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2013v1/rbx2a/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2013v1.Rbx2a.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2013v1/rbx2a/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2013v1.Rbx2a.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2013v1/rbx2a/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2013v1.Rbx2a.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2013v1/rbx2a/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2013v1.Rbx2a.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2013v1/rbx2a/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2013v1.Rbx2a.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2013v1/rbx2a/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2013v1.Rbx2a.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2013v1/sbg1a/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2013v1.Sbg1a.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2013v1/sbg1a/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2013v1.Sbg1a.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2013v1/sbg1a/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2013v1.Sbg1a.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2013v1/sbg1a/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2013v1.Sbg1a.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2013v1/sbg1a/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2013v1.Sbg1a.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2013v1/sbg1a/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2013v1.Sbg1a.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2013v1/sbg1a/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2013v1.Sbg1a.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2013v1/sbg1a/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2013v1.Sbg1a.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v1/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v1/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v2/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v2/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v3/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v3/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v4/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v4/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v5/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v5/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v6/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v6/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly filer ressources
    * Get price of dedicated Cloud hourly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly filer ressources
    * Get price of dedicated Cloud monthly filer ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud hourly host ressources
    * Get price of dedicated Cloud hourly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
   /**
    * Get price of dedicated Cloud monthly host ressources
    * Get price of dedicated Cloud monthly host ressources
    */
-  public get(path: '/price/dedicatedCloud/2018v7/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  public get(path: '/price/dedicatedCloud/2018v7/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
   /**
    * Get price of zone options
    * Get price of zone options
    */
-  public get(path: '/price/domain/zone/option/{optionName}', params: {optionName: OVH.price.Domain.Zone.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/domain/zone/option/{optionName}', params: {optionName: price.Domain.Zone.OptionEnum}): Promise<order.Price>;
   /**
    * Get the price for a private database
    * Get the price for a private database
    */
-  public get(path: '/price/hosting/privateDatabase/{privateDatabaseName}', params: {privateDatabaseName: OVH.price.Hosting.PrivateDatabaseEnum}): Promise<order.Price>;
+  public get(path: '/price/hosting/privateDatabase/{privateDatabaseName}', params: {privateDatabaseName: price.Hosting.PrivateDatabaseEnum}): Promise<order.Price>;
   /**
    * Get the price for cdn option
    * Get the price for cdn option
    */
-  public get(path: '/price/hosting/web/cdn/{cdnName}', params: {cdnName: OVH.price.Hosting.Web.CdnEnum}): Promise<order.Price>;
+  public get(path: '/price/hosting/web/cdn/{cdnName}', params: {cdnName: price.Hosting.Web.CdnEnum}): Promise<order.Price>;
   /**
    * Get the price for extra sql perso option
    * Get the price for extra sql perso option
    */
-  public get(path: '/price/hosting/web/extraSqlPerso/{extraSqlPersoName}', params: {extraSqlPersoName: OVH.price.Hosting.Web.ExtraSqlPersoEnum}): Promise<order.Price>;
+  public get(path: '/price/hosting/web/extraSqlPerso/{extraSqlPersoName}', params: {extraSqlPersoName: price.Hosting.Web.ExtraSqlPersoEnum}): Promise<order.Price>;
   /**
    * Get the price for hosted ssl option
    * Get the price for hosted ssl option
    */
-  public get(path: '/price/hosting/web/ssl/{sslName}', params: {sslName: OVH.price.Hosting.Web.SslEnum}): Promise<order.Price>;
+  public get(path: '/price/hosting/web/ssl/{sslName}', params: {sslName: price.Hosting.Web.SslEnum}): Promise<order.Price>;
   /**
    * Get the price of a HPC Spot Account for 1 month
    * Get the price of a HPC Spot Account for 1 month
    */
-  public get(path: '/price/hpcspot/account/subscription/{subscriptionName}', params: {subscriptionName: OVH.price.Hpcspot.Account.SubscriptionEnum}): Promise<order.Price>;
+  public get(path: '/price/hpcspot/account/subscription/{subscriptionName}', params: {subscriptionName: price.Hpcspot.Account.SubscriptionEnum}): Promise<order.Price>;
   /**
    * Get the price of a JOB consumption for 1 hour
    * Get the price of a JOB consumption for 1 hour
    */
-  public get(path: '/price/hpcspot/consumption/job/{reference}', params: {reference: OVH.price.Hpcspot.Consumption.JobEnum}): Promise<order.Price>;
+  public get(path: '/price/hpcspot/consumption/job/{reference}', params: {reference: price.Hpcspot.Consumption.JobEnum}): Promise<order.Price>;
   /**
    * Get the price of a RESERVATION consumption for 1 hour
    * Get the price of a RESERVATION consumption for 1 hour
    */
-  public get(path: '/price/hpcspot/consumption/reservation/{reference}', params: {reference: OVH.price.Hpcspot.Consumption.ReservationEnum}): Promise<order.Price>;
+  public get(path: '/price/hpcspot/consumption/reservation/{reference}', params: {reference: price.Hpcspot.Consumption.ReservationEnum}): Promise<order.Price>;
   /**
    * Get the price of a SESSION consumption for 1 hour
    * Get the price of a SESSION consumption for 1 hour
    */
-  public get(path: '/price/hpcspot/consumption/session/{reference}', params: {reference: OVH.price.Hpcspot.Consumption.SessionEnum}): Promise<order.Price>;
+  public get(path: '/price/hpcspot/consumption/session/{reference}', params: {reference: price.Hpcspot.Consumption.SessionEnum}): Promise<order.Price>;
   /**
    * Get the monthly price for an office license
    * Get the monthly price for an office license
    */
-  public get(path: '/price/license/office/{officeName}', params: {officeName: OVH.price.License.OfficeEnum}): Promise<order.Price>;
+  public get(path: '/price/license/office/{officeName}', params: {officeName: price.License.OfficeEnum}): Promise<order.Price>;
   /**
    * Get the price of overTheBox offers
    * Get the price of overTheBox offers
    */
-  public get(path: '/price/overTheBox/offer/{offerName}', params: {offerName: OVH.price.OverTheBox.OfferEnum}): Promise<order.Price>;
+  public get(path: '/price/overTheBox/offer/{offerName}', params: {offerName: price.OverTheBox.OfferEnum}): Promise<order.Price>;
   /**
    * Get the monthly price for an Office 365 license
    * Get the monthly price for an Office 365 license
    */
-  public get(path: '/price/saas/csp2/license/{licenseName}', params: {licenseName: OVH.price.Saas.Csp2.LicenseEnum}): Promise<order.Price>;
+  public get(path: '/price/saas/csp2/license/{licenseName}', params: {licenseName: price.Saas.Csp2.LicenseEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud 2013
    * Get price of VPS Cloud 2013
    */
-  public get(path: '/price/vps/2013v1/classic/model/{modelName}', params: {modelName: OVH.price.Vps._2013v1.Classic.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2013v1/classic/model/{modelName}', params: {modelName: price.Vps._2013v1.Classic.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Classic 2013
    * Get price of VPS Classic 2013
    */
-  public get(path: '/price/vps/2013v1/cloud/model/{modelName}', params: {modelName: OVH.price.Vps._2013v1.Cloud.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2013v1/cloud/model/{modelName}', params: {modelName: price.Vps._2013v1.Cloud.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud Options 2013
    * Get price of VPS Cloud Options 2013
    */
-  public get(path: '/price/vps/2013v1/cloud/option/{optionName}', params: {optionName: OVH.price.Vps._2013v1.Cloud.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2013v1/cloud/option/{optionName}', params: {optionName: price.Vps._2013v1.Cloud.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Low Latency 2013
    * Get price of VPS Low Latency 2013
    */
-  public get(path: '/price/vps/2013v1/lowlat/model/{modelName}', params: {modelName: OVH.price.Vps._2013v1.Lowlat.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2013v1/lowlat/model/{modelName}', params: {modelName: price.Vps._2013v1.Lowlat.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Classic 2014
    * Get price of VPS Classic 2014
    */
-  public get(path: '/price/vps/2014v1/classic/model/{modelName}', params: {modelName: OVH.price.Vps._2014v1.Classic.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2014v1/classic/model/{modelName}', params: {modelName: price.Vps._2014v1.Classic.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud 2014
    * Get price of VPS Cloud 2014
    */
-  public get(path: '/price/vps/2014v1/cloud/model/{modelName}', params: {modelName: OVH.price.Vps._2014v1.Cloud.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2014v1/cloud/model/{modelName}', params: {modelName: price.Vps._2014v1.Cloud.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud Options 2014
    * Get price of VPS Cloud Options 2014
    */
-  public get(path: '/price/vps/2014v1/cloud/option/{optionName}', params: {optionName: OVH.price.Vps._2014v1.Cloud.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2014v1/cloud/option/{optionName}', params: {optionName: price.Vps._2014v1.Cloud.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud 2015
    * Get price of VPS Cloud 2015
    */
-  public get(path: '/price/vps/2015v1/cloud/model/{modelName}', params: {modelName: OVH.price.Vps._2015v1.Cloud.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2015v1/cloud/model/{modelName}', params: {modelName: price.Vps._2015v1.Cloud.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud Options 2015/2016
    * Get price of VPS Cloud Options 2015/2016
    */
-  public get(path: '/price/vps/2015v1/cloud/option/{optionName}', params: {optionName: OVH.price.Vps._2015v1.Cloud.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2015v1/cloud/option/{optionName}', params: {optionName: price.Vps._2015v1.Cloud.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud RAM 2016
    * Get price of VPS Cloud RAM 2016
    */
-  public get(path: '/price/vps/2015v1/cloudram/model/{modelName}', params: {modelName: OVH.price.Vps._2015v1.Cloudram.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2015v1/cloudram/model/{modelName}', params: {modelName: price.Vps._2015v1.Cloudram.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud RAM Options 2015/2016
    * Get price of VPS Cloud RAM Options 2015/2016
    */
-  public get(path: '/price/vps/2015v1/cloudram/option/{optionName}', params: {optionName: OVH.price.Vps._2015v1.Cloudram.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2015v1/cloudram/option/{optionName}', params: {optionName: price.Vps._2015v1.Cloudram.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS SSD 2015
    * Get price of VPS SSD 2015
    */
-  public get(path: '/price/vps/2015v1/ssd/model/{modelName}', params: {modelName: OVH.price.Vps._2015v1.Ssd.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2015v1/ssd/model/{modelName}', params: {modelName: price.Vps._2015v1.Ssd.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS SSD Options 2015/2016
    * Get price of VPS SSD Options 2015/2016
    */
-  public get(path: '/price/vps/2015v1/ssd/option/{optionName}', params: {optionName: OVH.price.Vps._2015v1.Ssd.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2015v1/ssd/option/{optionName}', params: {optionName: price.Vps._2015v1.Ssd.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS SSD Discovery 2017
    * Get price of VPS SSD Discovery 2017
    */
-  public get(path: '/price/vps/2017v1/ssd/model/{modelName}', params: {modelName: OVH.price.Vps._2017v1.Ssd.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v1/ssd/model/{modelName}', params: {modelName: price.Vps._2017v1.Ssd.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS SSD Discovery Options 2017
    * Get price of VPS SSD Discovery Options 2017
    */
-  public get(path: '/price/vps/2017v1/ssd/option/{optionName}', params: {optionName: OVH.price.Vps._2017v1.Ssd.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v1/ssd/option/{optionName}', params: {optionName: price.Vps._2017v1.Ssd.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud 2017
    * Get price of VPS Cloud 2017
    */
-  public get(path: '/price/vps/2017v2/cloud/model/{modelName}', params: {modelName: OVH.price.Vps._2017v2.Cloud.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v2/cloud/model/{modelName}', params: {modelName: price.Vps._2017v2.Cloud.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud Options 2015/2016
    * Get price of VPS Cloud Options 2015/2016
    */
-  public get(path: '/price/vps/2017v2/cloud/option/{optionName}', params: {optionName: OVH.price.Vps._2017v2.Cloud.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v2/cloud/option/{optionName}', params: {optionName: price.Vps._2017v2.Cloud.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud RAM 2017
    * Get price of VPS Cloud RAM 2017
    */
-  public get(path: '/price/vps/2017v2/cloudram/model/{modelName}', params: {modelName: OVH.price.Vps._2017v2.Cloudram.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v2/cloudram/model/{modelName}', params: {modelName: price.Vps._2017v2.Cloudram.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud RAM Options 2015/2016
    * Get price of VPS Cloud RAM Options 2015/2016
    */
-  public get(path: '/price/vps/2017v2/cloudram/option/{optionName}', params: {optionName: OVH.price.Vps._2017v2.Cloudram.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v2/cloudram/option/{optionName}', params: {optionName: price.Vps._2017v2.Cloudram.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS SSD 2017
    * Get price of VPS SSD 2017
    */
-  public get(path: '/price/vps/2017v2/ssd/model/{modelName}', params: {modelName: OVH.price.Vps._2017v2.Ssd.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v2/ssd/model/{modelName}', params: {modelName: price.Vps._2017v2.Ssd.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS SSD Options 2015/2016
    * Get price of VPS SSD Options 2015/2016
    */
-  public get(path: '/price/vps/2017v2/ssd/option/{optionName}', params: {optionName: OVH.price.Vps._2017v2.Ssd.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v2/ssd/option/{optionName}', params: {optionName: price.Vps._2017v2.Ssd.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud 2017
    * Get price of VPS Cloud 2017
    */
-  public get(path: '/price/vps/2017v3/cloud/model/{modelName}', params: {modelName: OVH.price.Vps._2017v3.Cloud.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v3/cloud/model/{modelName}', params: {modelName: price.Vps._2017v3.Cloud.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud Options 2015/2016
    * Get price of VPS Cloud Options 2015/2016
    */
-  public get(path: '/price/vps/2017v3/cloud/option/{optionName}', params: {optionName: OVH.price.Vps._2017v3.Cloud.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v3/cloud/option/{optionName}', params: {optionName: price.Vps._2017v3.Cloud.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud RAM 2017
    * Get price of VPS Cloud RAM 2017
    */
-  public get(path: '/price/vps/2017v3/cloudram/model/{modelName}', params: {modelName: OVH.price.Vps._2017v3.Cloudram.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v3/cloudram/model/{modelName}', params: {modelName: price.Vps._2017v3.Cloudram.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud RAM Options 2015/2016
    * Get price of VPS Cloud RAM Options 2015/2016
    */
-  public get(path: '/price/vps/2017v3/cloudram/option/{optionName}', params: {optionName: OVH.price.Vps._2017v3.Cloudram.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v3/cloudram/option/{optionName}', params: {optionName: price.Vps._2017v3.Cloudram.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS SSD 2017
    * Get price of VPS SSD 2017
    */
-  public get(path: '/price/vps/2017v3/ssd/model/{modelName}', params: {modelName: OVH.price.Vps._2017v3.Ssd.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v3/ssd/model/{modelName}', params: {modelName: price.Vps._2017v3.Ssd.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS SSD Options 2015/2016
    * Get price of VPS SSD Options 2015/2016
    */
-  public get(path: '/price/vps/2017v3/ssd/option/{optionName}', params: {optionName: OVH.price.Vps._2017v3.Ssd.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2017v3/ssd/option/{optionName}', params: {optionName: price.Vps._2017v3.Ssd.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud 2017
    * Get price of VPS Cloud 2017
    */
-  public get(path: '/price/vps/2018v1/cloud/model/{modelName}', params: {modelName: OVH.price.Vps._2018v1.Cloud.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2018v1/cloud/model/{modelName}', params: {modelName: price.Vps._2018v1.Cloud.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud Options 2015/2016
    * Get price of VPS Cloud Options 2015/2016
    */
-  public get(path: '/price/vps/2018v1/cloud/option/{optionName}', params: {optionName: OVH.price.Vps._2018v1.Cloud.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2018v1/cloud/option/{optionName}', params: {optionName: price.Vps._2018v1.Cloud.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud RAM 2017
    * Get price of VPS Cloud RAM 2017
    */
-  public get(path: '/price/vps/2018v1/cloudram/model/{modelName}', params: {modelName: OVH.price.Vps._2018v1.Cloudram.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2018v1/cloudram/model/{modelName}', params: {modelName: price.Vps._2018v1.Cloudram.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud RAM Options 2015/2016
    * Get price of VPS Cloud RAM Options 2015/2016
    */
-  public get(path: '/price/vps/2018v1/cloudram/option/{optionName}', params: {optionName: OVH.price.Vps._2018v1.Cloudram.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2018v1/cloudram/option/{optionName}', params: {optionName: price.Vps._2018v1.Cloudram.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS SSD 2018
    * Get price of VPS SSD 2018
    */
-  public get(path: '/price/vps/2018v1/ssd/model/{modelName}', params: {modelName: OVH.price.Vps._2018v1.Ssd.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2018v1/ssd/model/{modelName}', params: {modelName: price.Vps._2018v1.Ssd.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS SSD Options 2015/2016
    * Get price of VPS SSD Options 2015/2016
    */
-  public get(path: '/price/vps/2018v1/ssd/option/{optionName}', params: {optionName: OVH.price.Vps._2018v1.Ssd.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2018v1/ssd/option/{optionName}', params: {optionName: price.Vps._2018v1.Ssd.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS SSD APAC
    * Get price of VPS SSD APAC
    */
-  public get(path: '/price/vps/2018v2/ssd/model/{modelName}', params: {modelName: OVH.price.Vps._2018v2.Ssd.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2018v2/ssd/model/{modelName}', params: {modelName: price.Vps._2018v2.Ssd.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS SSD APAC Options
    * Get price of VPS SSD APAC Options
    */
-  public get(path: '/price/vps/2018v2/ssd/option/{optionName}', params: {optionName: OVH.price.Vps._2018v2.Ssd.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/2018v2/ssd/option/{optionName}', params: {optionName: price.Vps._2018v2.Ssd.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Classic
    * Get price of VPS Classic
    */
-  public get(path: '/price/vps/classic/model/{modelName}', params: {modelName: OVH.price.Vps.Classic.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/classic/model/{modelName}', params: {modelName: price.Vps.Classic.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud
    * Get price of VPS Cloud
    */
-  public get(path: '/price/vps/cloud/model/{modelName}', params: {modelName: OVH.price.Vps.Cloud.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/cloud/model/{modelName}', params: {modelName: price.Vps.Cloud.ModelEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Cloud Options
    * Get price of VPS Cloud Options
    */
-  public get(path: '/price/vps/cloud/option/{optionName}', params: {optionName: OVH.price.Vps.Cloud.OptionEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/cloud/option/{optionName}', params: {optionName: price.Vps.Cloud.OptionEnum}): Promise<order.Price>;
   /**
    * Get price of VPS Low Latency
    * Get price of VPS Low Latency
    */
-  public get(path: '/price/vps/lowlat/model/{modelName}', params: {modelName: OVH.price.Vps.Lowlat.ModelEnum}): Promise<order.Price>;
+  public get(path: '/price/vps/lowlat/model/{modelName}', params: {modelName: price.Vps.Lowlat.ModelEnum}): Promise<order.Price>;
   /**
    * Get the price of address move option fee
    * Get the price of address move option fee
    */
-  public get(path: '/price/xdsl/addressMove/fee/{option}', params: {option: OVH.price.Xdsl.AddressMove.FeeEnum}): Promise<order.Price>;
+  public get(path: '/price/xdsl/addressMove/fee/{option}', params: {option: price.Xdsl.AddressMove.FeeEnum}): Promise<order.Price>;
   /**
    * Get the price of options installation fee
    * Get the price of options installation fee
    */
-  public get(path: '/price/xdsl/installation/{offer}', params: {offer: OVH.price.Xdsl.InstallationEnum}): Promise<order.Price>;
+  public get(path: '/price/xdsl/installation/{offer}', params: {offer: price.Xdsl.InstallationEnum}): Promise<order.Price>;
   /**
    * Get the price of xdsl offers
    * Get the price of xdsl offers
    */
-  public get(path: '/price/xdsl/offers/{offersName}', params: {offersName: OVH.price.Xdsl.OffersEnum}): Promise<order.Price>;
+  public get(path: '/price/xdsl/offers/{offersName}', params: {offersName: price.Xdsl.OffersEnum}): Promise<order.Price>;
   /**
    * Get the price of options installation fee
    * Get the price of options installation fee
    */
-  public get(path: '/price/xdsl/options/installation/{option}', params: {option: OVH.price.Xdsl.Options.InstallationEnum}): Promise<order.Price>;
+  public get(path: '/price/xdsl/options/installation/{option}', params: {option: price.Xdsl.Options.InstallationEnum}): Promise<order.Price>;
   /**
    * Get the price of IPv4 options
    * Get the price of IPv4 options
    */
-  public get(path: '/price/xdsl/options/ipv4/{ipRange}', params: {ipRange: OVH.price.Xdsl.Options.Ipv4Enum}): Promise<order.Price>;
+  public get(path: '/price/xdsl/options/ipv4/{ipRange}', params: {ipRange: price.Xdsl.Options.Ipv4Enum}): Promise<order.Price>;
   /**
    * Get the price of line action
    * Get the price of line action
    */
-  public get(path: '/price/xdsl/options/line/{lineAction}', params: {lineAction: OVH.price.Xdsl.Options.LineEnum}): Promise<order.Price>;
+  public get(path: '/price/xdsl/options/line/{lineAction}', params: {lineAction: price.Xdsl.Options.LineEnum}): Promise<order.Price>;
   public get(path: PathsPriceGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
-}
 }

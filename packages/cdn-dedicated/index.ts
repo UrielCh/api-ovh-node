@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace cdnanycast {
     //cdnanycast.Anycast
     // fullName: cdnanycast.Anycast.Anycast
@@ -24,11 +23,11 @@ export namespace cdnanycast {
     // fullName: cdnanycast.CacheRule.CacheRule
     export interface CacheRule {
         cacheRuleId: number;
-        cacheType: OVH.cdnanycast.CacheRuleCacheTypeEnum;
+        cacheType: cdnanycast.CacheRuleCacheTypeEnum;
         domain: string;
         fileMatch: string;
-        fileType: OVH.cdnanycast.CacheRuleFileTypeEnum;
-        status: OVH.cdnanycast.CacheRuleStatusEnum;
+        fileType: cdnanycast.CacheRuleFileTypeEnum;
+        status: cdnanycast.CacheRuleStatusEnum;
         ttl: number;
     }
     //cdnanycast.CacheRuleCacheTypeEnum
@@ -43,8 +42,8 @@ export namespace cdnanycast {
         cacheRuleUse: number;
         cname: string;
         domain: string;
-        status: OVH.cdnanycast.DomainStatusEnum;
-        type: OVH.cdnanycast.DomainTypeEnum;
+        status: cdnanycast.DomainStatusEnum;
+        type: cdnanycast.DomainTypeEnum;
     }
     //cdnanycast.DomainStatusEnum
     export type DomainStatusEnum = "error" | "off" | "on" | "removing"
@@ -62,7 +61,7 @@ export namespace cdnanycast {
         city: string;
         comment: string;
         name: string;
-        status: OVH.cdnanycast.PopStatusEnum;
+        status: cdnanycast.PopStatusEnum;
     }
     //cdnanycast.PopStatusEnum
     export type PopStatusEnum = "down" | "ok" | "rerouted" | "unknown"
@@ -74,7 +73,7 @@ export namespace cdnanycast {
         certificateValidTo?: string;
         cn?: string;
         name: string;
-        status: OVH.cdnanycast.SslStateEnum;
+        status: cdnanycast.SslStateEnum;
     }
     //cdnanycast.SslStateEnum
     export type SslStateEnum = "checking" | "creating" | "error" | "off" | "on" | "removing" | "updating" | "uploading"
@@ -94,8 +93,8 @@ export namespace cdnanycast {
     // fullName: cdnanycast.Task.Task
     export interface Task {
         comment?: string;
-        function: OVH.cdnanycast.TaskFunctionEnum;
-        status: OVH.cdnanycast.TaskStateEnum;
+        function: cdnanycast.TaskFunctionEnum;
+        status: cdnanycast.TaskStateEnum;
         taskId: number;
     }
     //cdnanycast.TaskFunctionEnum
@@ -131,10 +130,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -367,7 +366,7 @@ export class ApiCdnDedicated extends OvhWrapper {
    * statistics operations
    * Return stats about a domain
    */
-  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/statistics', params: {domain: string, serviceName: string, period: OVH.cdnanycast.StatsPeriodEnum, type: OVH.cdnanycast.StatsTypeEnum, value: OVH.cdnanycast.StatsValueEnum}): Promise<cdnanycast.StatsDataType[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/domains/{domain}/statistics', params: {domain: string, serviceName: string, period: cdnanycast.StatsPeriodEnum, type: cdnanycast.StatsTypeEnum, value: cdnanycast.StatsValueEnum}): Promise<cdnanycast.StatsDataType[]>;
   /**
    * List the cdnanycast.Task objects
    * Task associated to the domain
@@ -382,7 +381,7 @@ export class ApiCdnDedicated extends OvhWrapper {
    * quota operations
    * Return quota history
    */
-  public get(path: '/cdn/dedicated/{serviceName}/quota', params: {serviceName: string, period: OVH.cdnanycast.StatsPeriodEnum}): Promise<cdnanycast.StatsDataType[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/quota', params: {serviceName: string, period: cdnanycast.StatsPeriodEnum}): Promise<cdnanycast.StatsDataType[]>;
   /**
    * Details about a Service
    * Get this object properties
@@ -397,7 +396,7 @@ export class ApiCdnDedicated extends OvhWrapper {
    * List the cdnanycast.Task objects
    * Task associated to the ssl
    */
-  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks', params: {serviceName: string, function_?: OVH.cdnanycast.TaskFunctionEnum, status?: OVH.cdnanycast.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/cdn/dedicated/{serviceName}/ssl/tasks', params: {serviceName: string, function_?: cdnanycast.TaskFunctionEnum, status?: cdnanycast.TaskStateEnum}): Promise<number[]>;
   /**
    * Task on a CDN
    * Get this object properties
@@ -420,17 +419,17 @@ export class ApiCdnDedicated extends OvhWrapper {
    * Domain on CDN
    * Alter this object properties
    */
-  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {domain: string, serviceName: string, cacheRuleUse?: number, cname?: string, status?: OVH.cdnanycast.DomainStatusEnum, type?: OVH.cdnanycast.DomainTypeEnum}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}', params: {domain: string, serviceName: string, cacheRuleUse?: number, cname?: string, status?: cdnanycast.DomainStatusEnum, type?: cdnanycast.DomainTypeEnum}): Promise<void>;
   /**
    * CacheRules for a domain
    * Alter this object properties
    */
-  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {cacheRuleId: number, domain: string, serviceName: string, cacheType?: OVH.cdnanycast.CacheRuleCacheTypeEnum, fileMatch?: string, fileType?: OVH.cdnanycast.CacheRuleFileTypeEnum, status?: OVH.cdnanycast.CacheRuleStatusEnum, ttl?: number}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}', params: {cacheRuleId: number, domain: string, serviceName: string, cacheType?: cdnanycast.CacheRuleCacheTypeEnum, fileMatch?: string, fileType?: cdnanycast.CacheRuleFileTypeEnum, status?: cdnanycast.CacheRuleStatusEnum, ttl?: number}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/cdn/dedicated/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/cdn/dedicated/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsCdnDedicatedPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -453,7 +452,7 @@ export class ApiCdnDedicated extends OvhWrapper {
    * List the cdnanycast.CacheRule objects
    * Add a cache rule to a domain
    */
-  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', params: {domain: string, serviceName: string, cacheType: OVH.cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: OVH.cdnanycast.CacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
+  public post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules', params: {domain: string, serviceName: string, cacheType: cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: cdnanycast.CacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
   /**
    * flush operations
    * Flush the cache
@@ -510,5 +509,4 @@ export class ApiCdnDedicated extends OvhWrapper {
   public delete(path: PathsCdnDedicatedDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

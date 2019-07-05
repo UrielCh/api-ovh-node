@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.SafeKeyValue
     // fullName: complexType.SafeKeyValue.SafeKeyValue
@@ -15,7 +14,7 @@ export namespace order {
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode: OVH.order.CurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -27,7 +26,7 @@ export namespace services {
         export interface Invoice {
             date: string;
             id: string;
-            lines: OVH.services.billing.InvoiceLine[];
+            lines: services.billing.InvoiceLine[];
         }
         //services.billing.InvoiceLine
         // fullName: services.billing.InvoiceLine.InvoiceLine
@@ -35,11 +34,11 @@ export namespace services {
             description: string;
             periodEnd?: string;
             periodStart?: string;
-            price: OVH.order.Price;
+            price: order.Price;
             quantity: number;
             serviceName: string;
-            totalPrice: OVH.order.Price;
-            type?: OVH.services.billing.InvoiceLineTypeEnum;
+            totalPrice: order.Price;
+            type?: services.billing.InvoiceLineTypeEnum;
         }
         //services.billing.InvoiceLineTypeEnum
         export type InvoiceLineTypeEnum = "accessory" | "consumption" | "creation" | "deposit" | "duration" | "gift" | "installation" | "misc" | "other" | "outplan" | "quantity" | "special" | "voucher"
@@ -47,7 +46,7 @@ export namespace services {
             //services.billing.engagement.Engagement
             // fullName: services.billing.engagement.Engagement.Engagement
             export interface Engagement {
-                currentPeriod: OVH.services.billing.engagement.EngagementPeriod;
+                currentPeriod: services.billing.engagement.EngagementPeriod;
             }
             //services.billing.engagement.EngagementPeriod
             // fullName: services.billing.engagement.EngagementPeriod.EngagementPeriod
@@ -78,7 +77,7 @@ export namespace services {
         export interface Billing {
             expirationDate?: string;
             nextBillingDate?: string;
-            plan?: OVH.services.expanded.Plan;
+            plan?: services.expanded.Plan;
         }
         //services.expanded.Plan
         // fullName: services.expanded.Plan.Plan
@@ -97,21 +96,21 @@ export namespace services {
         export interface Resource {
             displayName: string;
             name: string;
-            product?: OVH.services.expanded.Product;
+            product?: services.expanded.Product;
         }
         //services.expanded.Route
         // fullName: services.expanded.Route.Route
         export interface Route {
             path?: string;
             url?: string;
-            vars: OVH.complexType.SafeKeyValue<string>[];
+            vars: complexType.SafeKeyValue<string>[];
         }
         //services.expanded.Service
         // fullName: services.expanded.Service.Service
         export interface Service {
-            billing: OVH.services.expanded.Billing;
-            resource: OVH.services.expanded.Resource;
-            route?: OVH.services.expanded.Route;
+            billing: services.expanded.Billing;
+            resource: services.expanded.Resource;
+            route?: services.expanded.Route;
             serviceId: number;
         }
     }
@@ -121,8 +120,8 @@ export namespace services {
         export interface ConfirmServiceTerminationRequest {
             acknowledgePotentialFees: boolean;
             comment: string;
-            futureUse: OVH.services.terminate.TerminationFutureUseEnum;
-            reason: OVH.services.terminate.TerminationReasonEnum;
+            futureUse: services.terminate.TerminationFutureUseEnum;
+            reason: services.terminate.TerminationReasonEnum;
             token: string;
         }
         //services.terminate.TerminationAnswer
@@ -134,7 +133,7 @@ export namespace services {
         // fullName: services.terminate.TerminationFees.TerminationFees
         export interface TerminationFees {
             durationLeft: string;
-            fees: OVH.order.Price;
+            fees: order.Price;
         }
         //services.terminate.TerminationFutureUseEnum
         export type TerminationFutureUseEnum = "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "NOT_REPLACING_SERVICE" | "OTHER"
@@ -190,5 +189,4 @@ export class ApiServices extends OvhWrapper {
   public get(path: PathsServicesGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
-}
 }

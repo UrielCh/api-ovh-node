@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.Range
     // fullName: complexType.Range.Range
@@ -20,7 +19,7 @@ export namespace ip {
         creationDate: string;
         id: number;
         ipOnAntiphishing: string;
-        state: OVH.ip.AntiphishingStateEnum;
+        state: ip.AntiphishingStateEnum;
         urlPhishing: string;
     }
     //ip.AntiphishingStateEnum
@@ -31,7 +30,7 @@ export namespace ip {
         blockedSince: string;
         ipBlocked: string;
         logs?: string;
-        state: OVH.ip.ArpStateEnum;
+        state: ip.ArpStateEnum;
         time: number;
     }
     //ip.ArpStateEnum
@@ -42,7 +41,7 @@ export namespace ip {
         blockedSince: string;
         ipBlocked: string;
         logs?: string;
-        state: OVH.ip.BlockedIpStateEnum;
+        state: ip.BlockedIpStateEnum;
         time: number;
     }
     //ip.BlockedIpStateEnum
@@ -56,12 +55,12 @@ export namespace ip {
     //ip.Destinations
     // fullName: ip.Destinations.Destinations
     export interface Destinations {
-        cloudProject?: OVH.ip.Destination[];
-        dedicatedCloud?: OVH.ip.Destination[];
-        dedicatedServer?: OVH.ip.Destination[];
-        hostingReseller?: OVH.ip.Destination[];
-        ipLoadbalancing?: OVH.ip.Destination[];
-        vps?: OVH.ip.Destination[];
+        cloudProject?: ip.Destination[];
+        dedicatedCloud?: ip.Destination[];
+        dedicatedServer?: ip.Destination[];
+        hostingReseller?: ip.Destination[];
+        ipLoadbalancing?: ip.Destination[];
+        vps?: ip.Destination[];
     }
     //ip.FirewallActionEnum
     export type FirewallActionEnum = "deny" | "permit"
@@ -70,29 +69,29 @@ export namespace ip {
     export interface FirewallIp {
         enabled: boolean;
         ipOnFirewall: string;
-        state: OVH.ip.FirewallStateEnum;
+        state: ip.FirewallStateEnum;
     }
     //ip.FirewallNetworkRule
     // fullName: ip.FirewallNetworkRule.FirewallNetworkRule
     export interface FirewallNetworkRule {
-        action: OVH.ip.FirewallActionEnum;
+        action: ip.FirewallActionEnum;
         creationDate: string;
         destination: string;
         destinationPort?: string;
         fragments?: boolean;
-        protocol: OVH.ip.FirewallProtocolEnum;
+        protocol: ip.FirewallProtocolEnum;
         rule: string;
         sequence: number;
         source: string;
         sourcePort?: string;
-        state: OVH.ip.FirewallRuleStateEnum;
+        state: ip.FirewallRuleStateEnum;
         tcpOption?: string;
     }
     //ip.FirewallOptionTCP
     // fullName: ip.FirewallOptionTCP.FirewallOptionTCP
     export interface FirewallOptionTCP {
         fragments?: boolean;
-        option?: OVH.ip.FirewallTCPOptionEnum;
+        option?: ip.FirewallTCPOptionEnum;
     }
     //ip.FirewallProtocolEnum
     export type FirewallProtocolEnum = "ah" | "esp" | "gre" | "icmp" | "ipv4" | "tcp" | "udp"
@@ -109,15 +108,15 @@ export namespace ip {
     export interface GameMitigation {
         firewallModeEnabled: boolean;
         ipOnGame: string;
-        state: OVH.ip.GameMitigationStateEnum;
+        state: ip.GameMitigationStateEnum;
     }
     //ip.GameMitigationRule
     // fullName: ip.GameMitigationRule.GameMitigationRule
     export interface GameMitigationRule {
         id: number;
-        ports: OVH.complexType.Range<number>;
-        protocol: OVH.ip.GameMitigationRuleProtocolEnum;
-        state: OVH.ip.GameMitigationRuleStateEnum;
+        ports: complexType.Range<number>;
+        protocol: ip.GameMitigationRuleProtocolEnum;
+        state: ip.GameMitigationRuleStateEnum;
     }
     //ip.GameMitigationRuleProtocolEnum
     export type GameMitigationRuleProtocolEnum = "arkSurvivalEvolved" | "arma" | "gtaMultiTheftAutoSanAndreas" | "gtaSanAndreasMultiplayerMod" | "hl2Source" | "minecraftPocketEdition" | "minecraftQuery" | "mumble" | "other" | "rust" | "teamspeak2" | "teamspeak3" | "trackmaniaShootmania"
@@ -129,12 +128,12 @@ export namespace ip {
     // fullName: ip.Ip.Ip
     export interface Ip {
         canBeTerminated: boolean;
-        country?: OVH.coreTypes.CountryEnum;
+        country?: coreTypes.CountryEnum;
         description?: string;
         ip: string;
         organisationId?: string;
-        routedTo?: OVH.ip.RoutedTo;
-        type: OVH.ip.IpTypeEnum;
+        routedTo?: ip.RoutedTo;
+        type: ip.IpTypeEnum;
     }
     //ip.IpMigrationToken
     // fullName: ip.IpMigrationToken.IpMigrationToken
@@ -146,12 +145,12 @@ export namespace ip {
     // fullName: ip.IpTask.IpTask
     export interface IpTask {
         comment?: string;
-        destination?: OVH.ip.RoutedTo;
+        destination?: ip.RoutedTo;
         doneDate?: string;
-        function: OVH.ip.TaskFunctionEnum;
+        function: ip.TaskFunctionEnum;
         lastUpdate?: string;
         startDate: string;
-        status: OVH.ip.TaskStatusEnum;
+        status: ip.TaskStatusEnum;
         taskId: number;
     }
     //ip.IpTypeEnum
@@ -163,9 +162,9 @@ export namespace ip {
     export interface LoadBalancingBackendIp {
         backend: string;
         mainBackendIp?: string;
-        probe: OVH.ip.LoadBalancingBackendProbeEnum;
+        probe: ip.LoadBalancingBackendProbeEnum;
         weight: number;
-        zone: OVH.ip.LoadBalancingZoneEnum;
+        zone: ip.LoadBalancingZoneEnum;
     }
     //ip.LoadBalancingBackendProbeEnum
     export type LoadBalancingBackendProbeEnum = "http" | "icmp" | "none" | "oco"
@@ -174,17 +173,17 @@ export namespace ip {
     export interface LoadBalancingIp {
         ipLoadBalancing: string;
         serviceName: string;
-        ssl: OVH.ip.LoadBalancingSslEnum;
-        state: OVH.ip.LoadBalancingStateEnum;
-        stickiness: OVH.ip.LoadBalancingStickinessEnum;
-        zone: OVH.ip.LoadBalancingZoneEnum[];
+        ssl: ip.LoadBalancingSslEnum;
+        state: ip.LoadBalancingStateEnum;
+        stickiness: ip.LoadBalancingStickinessEnum;
+        zone: ip.LoadBalancingZoneEnum[];
     }
     export namespace LoadBalancingIp {
         //ip.LoadBalancingIp.LoadBalancingPort
         // fullName: ip.LoadBalancingIp.LoadBalancingPort.LoadBalancingPort
         export interface LoadBalancingPort {
             dstPort: number;
-            srcPort: OVH.ip.LoadBalancingAdditionalPortEnum;
+            srcPort: ip.LoadBalancingAdditionalPortEnum;
         }
     }
     //ip.LoadBalancingSslEnum
@@ -196,7 +195,7 @@ export namespace ip {
     //ip.LoadBalancingTask
     // fullName: ip.LoadBalancingTask.LoadBalancingTask
     export interface LoadBalancingTask {
-        action: OVH.ip.LoadBalancingTaskActionEnum;
+        action: ip.LoadBalancingTaskActionEnum;
         creationDate: string;
         id: number;
         status: string;
@@ -220,8 +219,8 @@ export namespace ip {
         fragments?: boolean;
         icmpCode?: number;
         icmpType?: number;
-        in?: OVH.ip.MitigationTraffic;
-        out?: OVH.ip.MitigationTraffic;
+        in?: ip.MitigationTraffic;
+        out?: ip.MitigationTraffic;
         protocol?: number;
         srcPort?: number;
         syn?: boolean;
@@ -232,14 +231,14 @@ export namespace ip {
         auto: boolean;
         ipOnMitigation: string;
         permanent: boolean;
-        state: OVH.ip.MitigationStateEnum;
+        state: ip.MitigationStateEnum;
     }
     //ip.MitigationProfile
     // fullName: ip.MitigationProfile.MitigationProfile
     export interface MitigationProfile {
-        autoMitigationTimeOut: OVH.ip.MitigationProfileAutoMitigationTimeOutEnum;
+        autoMitigationTimeOut: ip.MitigationProfileAutoMitigationTimeOutEnum;
         ipMitigationProfile: string;
-        state: OVH.ip.MitigationProfileStateEnum;
+        state: ip.MitigationProfileStateEnum;
     }
     //ip.MitigationProfileAutoMitigationTimeOutEnum
     export type MitigationProfileAutoMitigationTimeOutEnum = 0 | 15 | 1560 | 360 | 60
@@ -250,8 +249,8 @@ export namespace ip {
     //ip.MitigationStats
     // fullName: ip.MitigationStats.MitigationStats
     export interface MitigationStats {
-        in?: OVH.ip.MitigationTraffic;
-        out?: OVH.ip.MitigationTraffic;
+        in?: ip.MitigationTraffic;
+        out?: ip.MitigationTraffic;
         timestamp: number;
     }
     //ip.MitigationStatsScaleEnum
@@ -288,19 +287,19 @@ export namespace ip {
     // fullName: ip.ServiceIp.ServiceIp
     export interface ServiceIp {
         canBeTerminated: boolean;
-        country?: OVH.coreTypes.CountryEnum;
+        country?: coreTypes.CountryEnum;
         description?: string;
         ip: string;
         organisationId?: string;
-        routedTo?: OVH.ip.RoutedTo;
-        type: OVH.ip.IpTypeEnum;
+        routedTo?: ip.RoutedTo;
+        type: ip.IpTypeEnum;
     }
     //ip.SpamIp
     // fullName: ip.SpamIp.SpamIp
     export interface SpamIp {
         date: string;
         ipSpamming: string;
-        state: OVH.ip.SpamStateEnum;
+        state: ip.SpamStateEnum;
         time: number;
     }
     //ip.SpamStateEnum
@@ -309,7 +308,7 @@ export namespace ip {
     // fullName: ip.SpamStats.SpamStats
     export interface SpamStats {
         averageSpamscore?: number;
-        detectedSpams?: OVH.ip.SpamTarget[];
+        detectedSpams?: ip.SpamTarget[];
         numberOfSpams: number;
         timestamp: number;
         total: number;
@@ -332,12 +331,12 @@ export namespace ipLoadbalancing {
         //ipLoadbalancing.Task.Task
         // fullName: ipLoadbalancing.Task.Task.Task
         export interface Task {
-            action: OVH.ipLoadbalancing.TaskActionEnum;
+            action: ipLoadbalancing.TaskActionEnum;
             creationDate: string;
             doneDate?: string;
             id: number;
             progress: number;
-            status: OVH.ipLoadbalancing.TaskStatusEnum;
+            status: ipLoadbalancing.TaskStatusEnum;
             zones: string[];
         }
     }
@@ -375,7 +374,7 @@ export namespace services {
         creation: string;
         domain: string;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
     //services.Service
     // fullName: services.Service.Service
@@ -389,10 +388,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -859,7 +858,7 @@ export class ApiIp extends OvhWrapper {
    * List the ip.Ip objects
    * Your OVH IPs
    */
-  public get(path: '/ip', params: {description?: string, ip?: string, routedTo_serviceName?: string, type?: OVH.ip.IpTypeEnum}): Promise<string[]>;
+  public get(path: '/ip', params: {description?: string, ip?: string, routedTo_serviceName?: string, type?: ip.IpTypeEnum}): Promise<string[]>;
   /**
    * Your IP
    * Get this object properties
@@ -869,7 +868,7 @@ export class ApiIp extends OvhWrapper {
    * List the ip.BlockedIp objects
    * Anti-Hack blocked IP
    */
-  public get(path: '/ip/{ip}/antihack', params: {ip: string, state?: OVH.ip.BlockedIpStateEnum}): Promise<string[]>;
+  public get(path: '/ip/{ip}/antihack', params: {ip: string, state?: ip.BlockedIpStateEnum}): Promise<string[]>;
   /**
    * Blocked IP information
    * Get this object properties
@@ -879,7 +878,7 @@ export class ApiIp extends OvhWrapper {
    * List the ip.ArpBlockedIp objects
    * ARP blocked IP
    */
-  public get(path: '/ip/{ip}/arp', params: {ip: string, state?: OVH.ip.ArpStateEnum}): Promise<string[]>;
+  public get(path: '/ip/{ip}/arp', params: {ip: string, state?: ip.ArpStateEnum}): Promise<string[]>;
   /**
    * ARP blocked IP information
    * Get this object properties
@@ -899,7 +898,7 @@ export class ApiIp extends OvhWrapper {
    * List the ip.FirewallIp objects
    * Ip under firewall
    */
-  public get(path: '/ip/{ip}/firewall', params: {ip: string, enabled?: boolean, state?: OVH.ip.FirewallStateEnum}): Promise<string[]>;
+  public get(path: '/ip/{ip}/firewall', params: {ip: string, enabled?: boolean, state?: ip.FirewallStateEnum}): Promise<string[]>;
   /**
    * Your IP on firewall
    * Get this object properties
@@ -909,7 +908,7 @@ export class ApiIp extends OvhWrapper {
    * List the ip.FirewallNetworkRule objects
    * Rules for this IP
    */
-  public get(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule', params: {ip: string, ipOnFirewall: string, state?: OVH.ip.FirewallRuleStateEnum}): Promise<number[]>;
+  public get(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule', params: {ip: string, ipOnFirewall: string, state?: ip.FirewallRuleStateEnum}): Promise<number[]>;
   /**
    * Rule on ip
    * Get this object properties
@@ -984,7 +983,7 @@ export class ApiIp extends OvhWrapper {
    * List the ip.MitigationIp objects
    * Ip under mitigation
    */
-  public get(path: '/ip/{ip}/mitigation', params: {ip: string, auto?: boolean, state?: OVH.ip.MitigationStateEnum}): Promise<string[]>;
+  public get(path: '/ip/{ip}/mitigation', params: {ip: string, auto?: boolean, state?: ip.MitigationStateEnum}): Promise<string[]>;
   /**
    * Your IP on mitigation
    * Get this object properties
@@ -994,12 +993,12 @@ export class ApiIp extends OvhWrapper {
    * stats operations
    * AntiDDOS option. Get statistics about your traffic in and out during this mitigation
    */
-  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/stats', params: {ip: string, ipOnMitigation: string, from: string, scale: OVH.ip.MitigationStatsScaleEnum, to: string}): Promise<ip.MitigationStats[]>;
+  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/stats', params: {ip: string, ipOnMitigation: string, from: string, scale: ip.MitigationStatsScaleEnum, to: string}): Promise<ip.MitigationStats[]>;
   /**
    * topStream operations
    * AntiDDOS option. Get top stream on your ip on a specific timestamp
    */
-  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/topStream', params: {ip: string, ipOnMitigation: string, date: string, scale: OVH.ip.MitigationStatsScaleEnum}): Promise<ip.MitigationDetailedStats[]>;
+  public get(path: '/ip/{ip}/mitigation/{ipOnMitigation}/topStream', params: {ip: string, ipOnMitigation: string, date: string, scale: ip.MitigationStatsScaleEnum}): Promise<ip.MitigationDetailedStats[]>;
   /**
    * List the ip.MitigationProfile objects
    * Manage mitigation profile on your IPs
@@ -1019,7 +1018,7 @@ export class ApiIp extends OvhWrapper {
    * List the ip.Antiphishing objects
    * Ip under anti-phishing
    */
-  public get(path: '/ip/{ip}/phishing', params: {ip: string, ipOnAntiphishing?: string, state?: OVH.ip.AntiphishingStateEnum}): Promise<number[]>;
+  public get(path: '/ip/{ip}/phishing', params: {ip: string, ipOnAntiphishing?: string, state?: ip.AntiphishingStateEnum}): Promise<number[]>;
   /**
    * Phishing URLs hosted on your IP
    * Get this object properties
@@ -1044,7 +1043,7 @@ export class ApiIp extends OvhWrapper {
    * List the ip.SpamIp objects
    * Ip spamming
    */
-  public get(path: '/ip/{ip}/spam', params: {ip: string, state?: OVH.ip.SpamStateEnum}): Promise<string[]>;
+  public get(path: '/ip/{ip}/spam', params: {ip: string, state?: ip.SpamStateEnum}): Promise<string[]>;
   /**
    * Your IP spam stats
    * Get this object properties
@@ -1059,7 +1058,7 @@ export class ApiIp extends OvhWrapper {
    * List the ip.IpTask objects
    * IP tasks
    */
-  public get(path: '/ip/{ip}/task', params: {ip: string, function_?: OVH.ip.TaskFunctionEnum, status?: OVH.ip.TaskStatusEnum}): Promise<number[]>;
+  public get(path: '/ip/{ip}/task', params: {ip: string, function_?: ip.TaskFunctionEnum, status?: ip.TaskStatusEnum}): Promise<number[]>;
   /**
    * IP tasks
    * Get this object properties
@@ -1094,7 +1093,7 @@ export class ApiIp extends OvhWrapper {
    * internalNatIp operations
    * Ip subnet used by OVH to nat requests on your ip lb to your backends. You must ensure that your backends are not part of a network that overlap with this one.
    */
-  public get(path: '/ip/loadBalancing/{serviceName}/internalNatIp', params: {serviceName: string, zone: OVH.ip.LoadBalancingZoneEnum}): Promise<string>;
+  public get(path: '/ip/loadBalancing/{serviceName}/internalNatIp', params: {serviceName: string, zone: ip.LoadBalancingZoneEnum}): Promise<string>;
   /**
    * List the portsRedirection objects
    * Get all srcPort
@@ -1104,12 +1103,12 @@ export class ApiIp extends OvhWrapper {
    * Port redirections
    * Get the value for the given srcPort
    */
-  public get(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}', params: {serviceName: string, srcPort: OVH.ip.LoadBalancingAdditionalPortEnum}): Promise<ip.LoadBalancingIp.LoadBalancingPort>;
+  public get(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}', params: {serviceName: string, srcPort: ip.LoadBalancingAdditionalPortEnum}): Promise<ip.LoadBalancingIp.LoadBalancingPort>;
   /**
    * probeIp operations
    * Ip subnet used to send probes to your backends
    */
-  public get(path: '/ip/loadBalancing/{serviceName}/probeIp', params: {serviceName: string, zone: OVH.ip.LoadBalancingZoneEnum}): Promise<string[]>;
+  public get(path: '/ip/loadBalancing/{serviceName}/probeIp', params: {serviceName: string, zone: ip.LoadBalancingZoneEnum}): Promise<string[]>;
   /**
    * Details about a Service
    * Get this object properties
@@ -1147,27 +1146,27 @@ export class ApiIp extends OvhWrapper {
    * Your IP
    * Alter this object properties
    */
-  public put(path: '/ip/{ip}', params: {ip: string, canBeTerminated?: boolean, country?: OVH.coreTypes.CountryEnum, description?: string, organisationId?: string, routedTo?: OVH.ip.RoutedTo, type?: OVH.ip.IpTypeEnum}): Promise<void>;
+  public put(path: '/ip/{ip}', params: {ip: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum}): Promise<void>;
   /**
    * Your IP on firewall
    * Alter this object properties
    */
-  public put(path: '/ip/{ip}/firewall/{ipOnFirewall}', params: {ip: string, ipOnFirewall: string, enabled?: boolean, state?: OVH.ip.FirewallStateEnum}): Promise<void>;
+  public put(path: '/ip/{ip}/firewall/{ipOnFirewall}', params: {ip: string, ipOnFirewall: string, enabled?: boolean, state?: ip.FirewallStateEnum}): Promise<void>;
   /**
    * GAME Anti-DDoS
    * Alter this object properties
    */
-  public put(path: '/ip/{ip}/game/{ipOnGame}', params: {ip: string, ipOnGame: string, firewallModeEnabled?: boolean, state?: OVH.ip.GameMitigationStateEnum}): Promise<void>;
+  public put(path: '/ip/{ip}/game/{ipOnGame}', params: {ip: string, ipOnGame: string, firewallModeEnabled?: boolean, state?: ip.GameMitigationStateEnum}): Promise<void>;
   /**
    * Your IP on mitigation
    * Alter this object properties
    */
-  public put(path: '/ip/{ip}/mitigation/{ipOnMitigation}', params: {ip: string, ipOnMitigation: string, auto?: boolean, permanent?: boolean, state?: OVH.ip.MitigationStateEnum}): Promise<void>;
+  public put(path: '/ip/{ip}/mitigation/{ipOnMitigation}', params: {ip: string, ipOnMitigation: string, auto?: boolean, permanent?: boolean, state?: ip.MitigationStateEnum}): Promise<void>;
   /**
    * Mitigation profile for your ip
    * Alter this object properties
    */
-  public put(path: '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}', params: {ip: string, ipMitigationProfile: string, autoMitigationTimeOut?: OVH.ip.MitigationProfileAutoMitigationTimeOutEnum, state?: OVH.ip.MitigationProfileStateEnum}): Promise<void>;
+  public put(path: '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}', params: {ip: string, ipMitigationProfile: string, autoMitigationTimeOut?: ip.MitigationProfileAutoMitigationTimeOutEnum, state?: ip.MitigationProfileStateEnum}): Promise<void>;
   /**
    * IP block RIPE informations
    * Alter this object properties
@@ -1177,17 +1176,17 @@ export class ApiIp extends OvhWrapper {
    * Backends attached to your IP load balancing
    * Alter this object properties
    */
-  public put(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', params: {backend: string, serviceName: string, mainBackendIp?: string, probe?: OVH.ip.LoadBalancingBackendProbeEnum, weight?: number, zone?: OVH.ip.LoadBalancingZoneEnum}): Promise<void>;
+  public put(path: '/ip/loadBalancing/{serviceName}/backend/{backend}', params: {backend: string, serviceName: string, mainBackendIp?: string, probe?: ip.LoadBalancingBackendProbeEnum, weight?: number, zone?: ip.LoadBalancingZoneEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/ip/loadBalancing/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/ip/loadBalancing/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Your IP linked to service
    * Alter this object properties
    */
-  public put(path: '/ip/service/{serviceName}', params: {serviceName: string, canBeTerminated?: boolean, country?: OVH.coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: OVH.ip.RoutedTo, type?: OVH.ip.IpTypeEnum}): Promise<void>;
+  public put(path: '/ip/service/{serviceName}', params: {serviceName: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum}): Promise<void>;
   public put(path: PathsIpPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -1220,12 +1219,12 @@ export class ApiIp extends OvhWrapper {
    * List the ip.FirewallNetworkRule objects
    * AntiDDOS option. Add new rule on your IP
    */
-  public post(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule', params: {ip: string, ipOnFirewall: string, action: OVH.ip.FirewallActionEnum, destinationPort?: number, protocol: OVH.ip.FirewallProtocolEnum, sequence: OVH.ip.FirewallSequenceRangeEnum, source?: string, sourcePort?: number, tcpOption?: OVH.ip.FirewallOptionTCP}): Promise<ip.FirewallNetworkRule>;
+  public post(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule', params: {ip: string, ipOnFirewall: string, action: ip.FirewallActionEnum, destinationPort?: number, protocol: ip.FirewallProtocolEnum, sequence: ip.FirewallSequenceRangeEnum, source?: string, sourcePort?: number, tcpOption?: ip.FirewallOptionTCP}): Promise<ip.FirewallNetworkRule>;
   /**
    * List the ip.GameMitigationRule objects
    * Add new rule on your IP
    */
-  public post(path: '/ip/{ip}/game/{ipOnGame}/rule', params: {ip: string, ipOnGame: string, ports: OVH.complexType.Range<number>, protocol: OVH.ip.GameMitigationRuleProtocolEnum}): Promise<ip.GameMitigationRule>;
+  public post(path: '/ip/{ip}/game/{ipOnGame}/rule', params: {ip: string, ipOnGame: string, ports: complexType.Range<number>, protocol: ip.GameMitigationRuleProtocolEnum}): Promise<ip.GameMitigationRule>;
   /**
    * IP migration to OVH
    * Generate a migration token
@@ -1240,7 +1239,7 @@ export class ApiIp extends OvhWrapper {
    * List the ip.MitigationProfile objects
    * Create new profile for one of your ip
    */
-  public post(path: '/ip/{ip}/mitigationProfiles', params: {ip: string, autoMitigationTimeOut: OVH.ip.MitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile: string}): Promise<ip.MitigationProfile>;
+  public post(path: '/ip/{ip}/mitigationProfiles', params: {ip: string, autoMitigationTimeOut: ip.MitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile: string}): Promise<ip.MitigationProfile>;
   /**
    * move operations
    * Move this IP to another service
@@ -1270,7 +1269,7 @@ export class ApiIp extends OvhWrapper {
    * List the ip.LoadBalancingBackendIp objects
    * Add a new backend on your IP load balancing
    */
-  public post(path: '/ip/loadBalancing/{serviceName}/backend', params: {serviceName: string, ipBackend: string, probe: OVH.ip.LoadBalancingBackendProbeEnum, weight?: number}): Promise<ip.LoadBalancingTask>;
+  public post(path: '/ip/loadBalancing/{serviceName}/backend', params: {serviceName: string, ipBackend: string, probe: ip.LoadBalancingBackendProbeEnum, weight?: number}): Promise<ip.LoadBalancingTask>;
   /**
    * backupState operations
    * Set or unset the backend as a backup of another backend. Requests will be directed to the backup only if the main backend is in probe fail
@@ -1290,7 +1289,7 @@ export class ApiIp extends OvhWrapper {
    * List the portsRedirection objects
    * Add a new port redirection
    */
-  public post(path: '/ip/loadBalancing/{serviceName}/portsRedirection', params: {serviceName: string, dstPort?: number, srcPort?: OVH.ip.LoadBalancingAdditionalPortEnum}): Promise<ip.LoadBalancingTask>;
+  public post(path: '/ip/loadBalancing/{serviceName}/portsRedirection', params: {serviceName: string, dstPort?: number, srcPort?: ip.LoadBalancingAdditionalPortEnum}): Promise<ip.LoadBalancingTask>;
   /**
    * restoreSsl operations
    * Restore OVH' ssl certificate on your IP load balancing. Ssl option is needed to use this url. (A DCV mail will be sent to postmaster@your-domain.abc)
@@ -1300,7 +1299,7 @@ export class ApiIp extends OvhWrapper {
    * stickiness operations
    * Set Stickiness type. 'ipSource' will stick clients to a backend by their source ip, 'cookie' will stick them by inserting a cookie, 'none' is to set no stickiness
    */
-  public post(path: '/ip/loadBalancing/{serviceName}/stickiness', params: {serviceName: string, stickiness: OVH.ip.LoadBalancingStickinessEnum}): Promise<ip.LoadBalancingTask>;
+  public post(path: '/ip/loadBalancing/{serviceName}/stickiness', params: {serviceName: string, stickiness: ip.LoadBalancingStickinessEnum}): Promise<ip.LoadBalancingTask>;
   /**
    * switchToIplbNextGenerationApi operations
    * Switch to ipLoadbalancing next-gen API. Benefits : additionnals probes, DDOS protection.
@@ -1315,7 +1314,7 @@ export class ApiIp extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/ip/service/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/ip/service/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * Terminate your service
    * Terminate your service
@@ -1368,9 +1367,8 @@ export class ApiIp extends OvhWrapper {
    * Port redirections
    * Delete a port redirection
    */
-  public delete(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}', params: {serviceName: string, srcPort: OVH.ip.LoadBalancingAdditionalPortEnum}): Promise<ip.LoadBalancingTask>;
+  public delete(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}', params: {serviceName: string, srcPort: ip.LoadBalancingAdditionalPortEnum}): Promise<ip.LoadBalancingTask>;
   public delete(path: PathsIpDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

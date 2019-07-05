@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace license {
     //license.ActionType
     export type ActionType = "addWindowFromExistingSerial" | "changeIp" | "changeOs" | "installLicense" | "optionUpgrade" | "releaseOption" | "versionUpgrade"
@@ -9,14 +8,14 @@ export namespace license {
     //license.ChangeIpStatus
     // fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message: OVH.license.ChangeIpMessageEnum;
+        message: license.ChangeIpMessageEnum;
         success: boolean;
     }
     //license.CpanelOrderConfiguration
     // fullName: license.CpanelOrderConfiguration.CpanelOrderConfiguration
     export interface CpanelOrderConfiguration {
-        orderableVersions: OVH.license.OrderableCpanelCompatibilityInfos[];
-        serviceType: OVH.license.LicenseTypeEnum;
+        orderableVersions: license.OrderableCpanelCompatibilityInfos[];
+        serviceType: license.LicenseTypeEnum;
     }
     //license.CpanelVersionEnum
     export type CpanelVersionEnum = "VERSION_11_FOR_LINUX" | "VERSION_11_FOR_VIRTUOZZO" | "VERSION_11_FOR_VPS" | "cpanel-license-version-11" | "cpanel-license-version-11-for-virtuozzo" | "cpanel-license-version-11-for-vps"
@@ -25,7 +24,7 @@ export namespace license {
     //license.OrderableCpanelCompatibilityInfos
     // fullName: license.OrderableCpanelCompatibilityInfos.OrderableCpanelCompatibilityInfos
     export interface OrderableCpanelCompatibilityInfos {
-        version: OVH.license.OrderableCpanelVersionEnum;
+        version: license.OrderableCpanelVersionEnum;
     }
     //license.OrderableCpanelVersionEnum
     export type OrderableCpanelVersionEnum = "VERSION_11_FOR_LINUX" | "VERSION_11_FOR_VIRTUOZZO" | "VERSION_11_FOR_VPS" | "cpanel-license-version-11" | "cpanel-license-version-11-for-virtuozzo" | "cpanel-license-version-11-for-vps"
@@ -34,11 +33,11 @@ export namespace license {
     //license.Task
     // fullName: license.Task.Task
     export interface Task {
-        action: OVH.license.ActionType;
+        action: license.ActionType;
         doneDate?: string;
         lastUpdate: string;
         name: string;
-        status: OVH.license.TaskStateEnum;
+        status: license.TaskStateEnum;
         taskId: number;
         todoDate: string;
     }
@@ -53,8 +52,8 @@ export namespace license {
             domain: string;
             ip: string;
             licenseId: string;
-            status: OVH.license.StateEnum;
-            version: OVH.license.CpanelVersionEnum;
+            status: license.StateEnum;
+            version: license.CpanelVersionEnum;
         }
     }
 }
@@ -90,10 +89,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -198,7 +197,7 @@ export class ApiLicenseCpanel extends OvhWrapper {
    * List the license.Task objects
    * tasks linked to this license
    */
-  public get(path: '/license/cpanel/{serviceName}/tasks', params: {serviceName: string, action?: OVH.license.ActionType, status?: OVH.license.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/license/cpanel/{serviceName}/tasks', params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
   /**
    * licenses Todos
    * Get this object properties
@@ -216,12 +215,12 @@ export class ApiLicenseCpanel extends OvhWrapper {
    * Your Cpanel license
    * Alter this object properties
    */
-  public put(path: '/license/cpanel/{serviceName}', params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: OVH.license.StateEnum, version?: OVH.license.CpanelVersionEnum}): Promise<void>;
+  public put(path: '/license/cpanel/{serviceName}', params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.CpanelVersionEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/license/cpanel/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/license/cpanel/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsLicenseCpanelPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -234,7 +233,7 @@ export class ApiLicenseCpanel extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/license/cpanel/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/license/cpanel/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * Terminate your service
    * Terminate your service
@@ -243,5 +242,4 @@ export class ApiLicenseCpanel extends OvhWrapper {
   public post(path: PathsLicenseCpanelPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

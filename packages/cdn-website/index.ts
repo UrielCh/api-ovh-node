@@ -1,13 +1,12 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace cdn {
     export namespace website {
         //cdn.website.Backend
         // fullName: cdn.website.Backend.Backend
         export interface Backend {
             ipv4: string;
-            status: OVH.cdn.website.BackendStatusEnum;
+            status: cdn.website.BackendStatusEnum;
         }
         //cdn.website.BackendStatusEnum
         export type BackendStatusEnum = "creating" | "error" | "on" | "removing"
@@ -15,7 +14,7 @@ export namespace cdn {
         // fullName: cdn.website.Domain.Domain
         export interface Domain {
             domain: string;
-            status: OVH.cdn.website.DomainStatusEnum;
+            status: cdn.website.DomainStatusEnum;
         }
         //cdn.website.DomainStatusEnum
         export type DomainStatusEnum = "error" | "on" | "removing"
@@ -37,8 +36,8 @@ export namespace cdn {
         // fullName: cdn.website.Task.Task
         export interface Task {
             comment?: string;
-            function: OVH.cdn.website.TaskFunctionEnum;
-            status: OVH.cdn.website.TaskStateEnum;
+            function: cdn.website.TaskFunctionEnum;
+            status: cdn.website.TaskStateEnum;
             taskId: number;
         }
         //cdn.website.TaskFunctionEnum
@@ -55,7 +54,7 @@ export namespace cdn {
         //cdn.website.Zone
         // fullName: cdn.website.Zone.Zone
         export interface Zone {
-            status: OVH.cdn.website.DomainZoneStatusEnum;
+            status: cdn.website.DomainZoneStatusEnum;
             zone: string;
         }
     }
@@ -88,10 +87,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -262,7 +261,7 @@ export class ApiCdnWebsite extends OvhWrapper {
    * statistics operations
    * Get statistics about request on CDN, bandwidth value in Bytes
    */
-  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/statistics', params: {domain: string, serviceName: string, period: OVH.cdn.website.StatsPeriodEnum, type: OVH.cdn.website.StatsTypeEnum, value: OVH.cdn.website.StatsValueEnum}): Promise<cdn.website.StatsDataType[]>;
+  public get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/statistics', params: {domain: string, serviceName: string, period: cdn.website.StatsPeriodEnum, type: cdn.website.StatsTypeEnum, value: cdn.website.StatsValueEnum}): Promise<cdn.website.StatsDataType[]>;
   /**
    * List the cdn.website.Task objects
    * Task associated to this domain
@@ -290,7 +289,7 @@ export class ApiCdnWebsite extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/cdn/website/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/cdn/website/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsCdnWebsitePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -335,5 +334,4 @@ export class ApiCdnWebsite extends OvhWrapper {
   public delete(path: PathsCdnWebsiteDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

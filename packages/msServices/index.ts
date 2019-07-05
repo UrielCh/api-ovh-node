@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace msServices {
     //msServices.Account
     // fullName: msServices.Account.Account
@@ -17,7 +16,7 @@ export namespace msServices {
         lastName?: string;
         lastUpdateDate?: string;
         passwordLastUpdate?: string;
-        state: OVH.msServices.ObjectStateEnum;
+        state: msServices.ObjectStateEnum;
         taskPendingId: number;
         userPrincipalName: string;
     }
@@ -33,7 +32,7 @@ export namespace msServices {
         minPasswordLength?: number;
         name: string;
         officeTenantServiceName?: string;
-        state: OVH.msServices.ServiceStateEnum;
+        state: msServices.ServiceStateEnum;
         taskPendingId: number;
     }
     //msServices.ActiveDirectorySyncClientUrl
@@ -45,7 +44,7 @@ export namespace msServices {
     //msServices.ExchangeInformation
     // fullName: msServices.ExchangeInformation.ExchangeInformation
     export interface ExchangeInformation {
-        accountLicense: OVH.msServices.ExchangeLicenceEnum;
+        accountLicense: msServices.ExchangeLicenceEnum;
         configured: boolean;
         creationDate?: string;
         currentUsage?: number;
@@ -58,17 +57,17 @@ export namespace msServices {
         id: number;
         litigation: boolean;
         litigationPeriod?: number;
-        mailingFilter?: OVH.msServices.MailingFilterEnum[];
+        mailingFilter?: msServices.MailingFilterEnum[];
         outlookLicense: boolean;
         owaLimited: boolean;
         primaryEmailAddress: string;
         quota: number;
-        renewOutlookPeriod?: OVH.msServices.RenewPeriodEnum;
-        renewPeriod?: OVH.msServices.RenewPeriodEnum;
-        spamAndVirusConfiguration: OVH.msServices.SpamAndVirusConfiguration;
+        renewOutlookPeriod?: msServices.RenewPeriodEnum;
+        renewPeriod?: msServices.RenewPeriodEnum;
+        spamAndVirusConfiguration: msServices.SpamAndVirusConfiguration;
         spamDetected: boolean;
         spamTicketNumber?: number;
-        state: OVH.msServices.ObjectStateEnum;
+        state: msServices.ObjectStateEnum;
         taskPendingId: number;
     }
     //msServices.ExchangeLicenceEnum
@@ -81,10 +80,10 @@ export namespace msServices {
         hostname?: string;
         maxReceiveSize: number;
         maxSendSize: number;
-        offer: OVH.msServices.ServiceOfferEnum;
-        spamAndVirusConfiguration: OVH.msServices.SpamAndVirusConfiguration;
+        offer: msServices.ServiceOfferEnum;
+        spamAndVirusConfiguration: msServices.SpamAndVirusConfiguration;
         sslExpirationDate?: string;
-        state: OVH.msServices.ServiceStateEnum;
+        state: msServices.ServiceStateEnum;
         taskPendingId: number;
     }
     //msServices.LicensePeriodEnum
@@ -95,7 +94,7 @@ export namespace msServices {
     // fullName: msServices.MfaInformation.MfaInformation
     export interface MfaInformation {
         activated: boolean;
-        state: OVH.msServices.ObjectStateEnum;
+        state: msServices.ObjectStateEnum;
         taskPendingId: number;
     }
     //msServices.ObjectStateEnum
@@ -111,28 +110,28 @@ export namespace msServices {
     //msServices.SharepointAccountLicense
     // fullName: msServices.SharepointAccountLicense.SharepointAccountLicense
     export interface SharepointAccountLicense {
-        license: OVH.msServices.SharepointLicenseEnum;
+        license: msServices.SharepointLicenseEnum;
         licenseQuantity: number;
     }
     //msServices.SharepointDailyLicense
     // fullName: msServices.SharepointDailyLicense.SharepointDailyLicense
     export interface SharepointDailyLicense {
-        accountLicense: OVH.msServices.SharepointAccountLicense[];
+        accountLicense: msServices.SharepointAccountLicense[];
         date: string;
     }
     //msServices.SharepointInformation
     // fullName: msServices.SharepointInformation.SharepointInformation
     export interface SharepointInformation {
-        accessRights: OVH.msServices.SharepointAccountAccessRightsEnum;
+        accessRights: msServices.SharepointAccountAccessRightsEnum;
         activeDirectoryAccountId: number;
         configured: boolean;
         currentUsage?: number;
         deleteAtExpiration?: boolean;
         id: number;
-        license: OVH.msServices.SharepointLicenseEnum;
+        license: msServices.SharepointLicenseEnum;
         officeLicense: boolean;
         quota: number;
-        state: OVH.msServices.ObjectStateEnum;
+        state: msServices.ObjectStateEnum;
         taskPendingId: number;
     }
     //msServices.SharepointLicenseEnum
@@ -144,9 +143,9 @@ export namespace msServices {
         displayName?: string;
         domain: string;
         farmUrl: string;
-        offer: OVH.msServices.SharepointServiceOfferEnum;
+        offer: msServices.SharepointServiceOfferEnum;
         quota: number;
-        state: OVH.msServices.ServiceStateEnum;
+        state: msServices.ServiceStateEnum;
         taskPendingId: number;
         url?: string;
     }
@@ -171,21 +170,21 @@ export namespace msServices {
     //msServices.SyncAccountLicense
     // fullName: msServices.SyncAccountLicense.SyncAccountLicense
     export interface SyncAccountLicense {
-        license: OVH.msServices.SyncLicenseEnum;
+        license: msServices.SyncLicenseEnum;
         licenseQuantity: number;
     }
     //msServices.SyncDailyLicense
     // fullName: msServices.SyncDailyLicense.SyncDailyLicense
     export interface SyncDailyLicense {
-        accountLicense: OVH.msServices.SyncAccountLicense[];
+        accountLicense: msServices.SyncAccountLicense[];
         date: string;
     }
     //msServices.SyncInformation
     // fullName: msServices.SyncInformation.SyncInformation
     export interface SyncInformation {
         configured: boolean;
-        license: OVH.msServices.SyncLicenseEnum;
-        state: OVH.msServices.ObjectStateEnum;
+        license: msServices.SyncLicenseEnum;
+        state: msServices.ObjectStateEnum;
         taskPendingId: number;
     }
     //msServices.SyncLicenseEnum
@@ -193,16 +192,16 @@ export namespace msServices {
     //msServices.SyncService
     // fullName: msServices.SyncService.SyncService
     export interface SyncService {
-        state: OVH.msServices.ServiceStateEnum;
+        state: msServices.ServiceStateEnum;
         taskPendingId: number;
     }
     //msServices.Task
     // fullName: msServices.Task.Task
     export interface Task {
         finishDate?: string;
-        function: OVH.msServices.TaskFunctionEnum;
+        function: msServices.TaskFunctionEnum;
         id: number;
-        status: OVH.msServices.TaskStatusEnum;
+        status: msServices.TaskStatusEnum;
         todoDate: string;
     }
     //msServices.TaskFunctionEnum
@@ -217,7 +216,7 @@ export namespace msServices {
         finishDate?: string;
         function: string;
         id: number;
-        status: OVH.msServices.TaskStatusEnum;
+        status: msServices.TaskStatusEnum;
         todoDate: string;
     }
     //msServices.sharepointTask
@@ -226,7 +225,7 @@ export namespace msServices {
         finishDate?: string;
         function: string;
         id: number;
-        status: OVH.msServices.TaskStatusEnum;
+        status: msServices.TaskStatusEnum;
         todoDate: string;
     }
     //msServices.upnSuffix
@@ -234,7 +233,7 @@ export namespace msServices {
     export interface upnSuffix {
         cnameToCheck?: string;
         ownershipValidated: boolean;
-        state: OVH.msServices.UPNStateEnum;
+        state: msServices.UPNStateEnum;
         suffix: string;
         taskPendingId: number;
     }
@@ -267,10 +266,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -588,12 +587,12 @@ export class ApiMsServices extends OvhWrapper {
    * license operations
    * Get active licenses for specific period of time
    */
-  public get(path: '/msServices/{serviceName}/sharepoint/license', params: {serviceName: string, license?: OVH.msServices.SharepointLicenseEnum, period: OVH.msServices.LicensePeriodEnum}): Promise<msServices.SharepointDailyLicense[]>;
+  public get(path: '/msServices/{serviceName}/sharepoint/license', params: {serviceName: string, license?: msServices.SharepointLicenseEnum, period: msServices.LicensePeriodEnum}): Promise<msServices.SharepointDailyLicense[]>;
   /**
    * List the msServices.sharepointTask objects
    * Pending actions
    */
-  public get(path: '/msServices/{serviceName}/sharepoint/task', params: {serviceName: string, function_?: string, status?: OVH.msServices.TaskStatusEnum}): Promise<number[]>;
+  public get(path: '/msServices/{serviceName}/sharepoint/task', params: {serviceName: string, function_?: string, status?: msServices.TaskStatusEnum}): Promise<number[]>;
   /**
    * Sharepoint task details
    * Get this object properties
@@ -613,12 +612,12 @@ export class ApiMsServices extends OvhWrapper {
    * license operations
    * Get active licenses for specific period of time
    */
-  public get(path: '/msServices/{serviceName}/sync/license', params: {serviceName: string, license?: OVH.msServices.SyncLicenseEnum, period: OVH.msServices.LicensePeriodEnum}): Promise<msServices.SyncDailyLicense[]>;
+  public get(path: '/msServices/{serviceName}/sync/license', params: {serviceName: string, license?: msServices.SyncLicenseEnum, period: msServices.LicensePeriodEnum}): Promise<msServices.SyncDailyLicense[]>;
   /**
    * List the msServices.Task objects
    * Pending actions
    */
-  public get(path: '/msServices/{serviceName}/task', params: {serviceName: string, function_?: OVH.msServices.TaskFunctionEnum, status?: OVH.msServices.TaskStatusEnum}): Promise<number[]>;
+  public get(path: '/msServices/{serviceName}/task', params: {serviceName: string, function_?: msServices.TaskFunctionEnum, status?: msServices.TaskStatusEnum}): Promise<number[]>;
   /**
    * Active Directory task details
    * Get this object properties
@@ -656,37 +655,37 @@ export class ApiMsServices extends OvhWrapper {
    * Active Directory organizational unit
    * Alter this object properties
    */
-  public put(path: '/msServices/{serviceName}', params: {serviceName: string, complexityEnabled?: boolean, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, minPasswordAge?: number, minPasswordLength?: number, name?: string, officeTenantServiceName?: string, state?: OVH.msServices.ServiceStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/msServices/{serviceName}', params: {serviceName: string, complexityEnabled?: boolean, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, minPasswordAge?: number, minPasswordLength?: number, name?: string, officeTenantServiceName?: string, state?: msServices.ServiceStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Active Directory Account
    * Alter this object properties
    */
-  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}', params: {serviceName: string, userPrincipalName: string, SAMAccountName?: string, creationDate?: string, displayName?: string, firstName?: string, guid?: string, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, passwordLastUpdate?: string, state?: OVH.msServices.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}', params: {serviceName: string, userPrincipalName: string, SAMAccountName?: string, creationDate?: string, displayName?: string, firstName?: string, guid?: string, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, passwordLastUpdate?: string, state?: msServices.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Exchange mailbox information
    * Alter this object properties
    */
-  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange', params: {serviceName: string, userPrincipalName: string, accountLicense?: OVH.msServices.ExchangeLicenceEnum, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL?: boolean, id?: number, litigation?: boolean, litigationPeriod?: number, mailingFilter?: OVH.msServices.MailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: OVH.msServices.RenewPeriodEnum, renewPeriod?: OVH.msServices.RenewPeriodEnum, spamAndVirusConfiguration?: OVH.msServices.SpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: OVH.msServices.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange', params: {serviceName: string, userPrincipalName: string, accountLicense?: msServices.ExchangeLicenceEnum, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL?: boolean, id?: number, litigation?: boolean, litigationPeriod?: number, mailingFilter?: msServices.MailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: msServices.RenewPeriodEnum, renewPeriod?: msServices.RenewPeriodEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Sharepoint account information
    * Alter this object properties
    */
-  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint', params: {serviceName: string, userPrincipalName: string, accessRights?: OVH.msServices.SharepointAccountAccessRightsEnum, activeDirectoryAccountId?: number, configured?: boolean, currentUsage?: number, deleteAtExpiration?: boolean, id?: number, license?: OVH.msServices.SharepointLicenseEnum, officeLicense?: boolean, quota?: number, state?: OVH.msServices.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint', params: {serviceName: string, userPrincipalName: string, accessRights?: msServices.SharepointAccountAccessRightsEnum, activeDirectoryAccountId?: number, configured?: boolean, currentUsage?: number, deleteAtExpiration?: boolean, id?: number, license?: msServices.SharepointLicenseEnum, officeLicense?: boolean, quota?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Exchange service
    * Alter this object properties
    */
-  public put(path: '/msServices/{serviceName}/exchange', params: {serviceName: string, displayName?: string, domain?: string, hostname?: string, maxReceiveSize?: number, maxSendSize?: number, offer?: OVH.msServices.ServiceOfferEnum, spamAndVirusConfiguration?: OVH.msServices.SpamAndVirusConfiguration, sslExpirationDate?: string, state?: OVH.msServices.ServiceStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/exchange', params: {serviceName: string, displayName?: string, domain?: string, hostname?: string, maxReceiveSize?: number, maxSendSize?: number, offer?: msServices.ServiceOfferEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, sslExpirationDate?: string, state?: msServices.ServiceStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Sharepoint service
    * Alter this object properties
    */
-  public put(path: '/msServices/{serviceName}/sharepoint', params: {serviceName: string, currentUsage?: number, displayName?: string, domain?: string, farmUrl?: string, offer?: OVH.msServices.SharepointServiceOfferEnum, quota?: number, state?: OVH.msServices.ServiceStateEnum, taskPendingId?: number, url?: string}): Promise<void>;
+  public put(path: '/msServices/{serviceName}/sharepoint', params: {serviceName: string, currentUsage?: number, displayName?: string, domain?: string, farmUrl?: string, offer?: msServices.SharepointServiceOfferEnum, quota?: number, state?: msServices.ServiceStateEnum, taskPendingId?: number, url?: string}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/msServices/sharepoint/{domain}/serviceInfos', params: {domain: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/msServices/sharepoint/{domain}/serviceInfos', params: {domain: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsMsServicesPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -734,7 +733,7 @@ export class ApiMsServices extends OvhWrapper {
    * Sync account information
    * Create new sync account
    */
-  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync', params: {serviceName: string, userPrincipalName: string, license: OVH.msServices.SyncLicenseEnum}): Promise<msServices.Task>;
+  public post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync', params: {serviceName: string, userPrincipalName: string, license: msServices.SyncLicenseEnum}): Promise<msServices.Task>;
   /**
    * configure operations
    * Configure sync account to be operational
@@ -786,5 +785,4 @@ export class ApiMsServices extends OvhWrapper {
   public delete(path: PathsMsServicesDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

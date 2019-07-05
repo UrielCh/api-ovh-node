@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace dedicated {
     //dedicated.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
@@ -26,7 +25,7 @@ export namespace dedicated {
         // fullName: dedicated.nas.Partition.Partition
         export interface Partition {
             partitionName: string;
-            protocol: OVH.dedicated.storage.ProtocolEnum;
+            protocol: dedicated.storage.ProtocolEnum;
             size: number;
         }
         //dedicated.nas.Quota
@@ -43,9 +42,9 @@ export namespace dedicated {
             details?: string;
             doneDate?: string;
             lastUpdate?: string;
-            operation: OVH.dedicated.storage.TaskFunctionEnum;
+            operation: dedicated.storage.TaskFunctionEnum;
             partitionName?: string;
-            status: OVH.dedicated.TaskStatusEnum;
+            status: dedicated.TaskStatusEnum;
             storageName?: string;
             taskId: number;
             todoDate?: string;
@@ -86,10 +85,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -246,7 +245,7 @@ export class ApiDedicatedNas extends OvhWrapper {
    * List the dedicated.nasTask.Task objects
    * View task list
    */
-  public get(path: '/dedicated/nas/{serviceName}/task', params: {serviceName: string, operation?: OVH.dedicated.storage.TaskFunctionEnum, status?: OVH.dedicated.TaskStatusEnum}): Promise<number[]>;
+  public get(path: '/dedicated/nas/{serviceName}/task', params: {serviceName: string, operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
   /**
    * Storage task
    * Get this object properties
@@ -264,12 +263,12 @@ export class ApiDedicatedNas extends OvhWrapper {
    * Storage partition
    * Alter this object properties
    */
-  public put(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {partitionName: string, serviceName: string, protocol?: OVH.dedicated.storage.ProtocolEnum, size?: number}): Promise<void>;
+  public put(path: '/dedicated/nas/{serviceName}/partition/{partitionName}', params: {partitionName: string, serviceName: string, protocol?: dedicated.storage.ProtocolEnum, size?: number}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/dedicated/nas/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/dedicated/nas/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsDedicatedNasPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -277,7 +276,7 @@ export class ApiDedicatedNas extends OvhWrapper {
    * List the dedicated.nas.Partition objects
    * Create a  new partition
    */
-  public post(path: '/dedicated/nas/{serviceName}/partition', params: {serviceName: string, partitionName: string, protocol: OVH.dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
+  public post(path: '/dedicated/nas/{serviceName}/partition', params: {serviceName: string, partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
   /**
    * List the dedicated.nas.Access objects
    * Add an Acl to this  partition
@@ -309,5 +308,4 @@ export class ApiDedicatedNas extends OvhWrapper {
   public delete(path: PathsDedicatedNasDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

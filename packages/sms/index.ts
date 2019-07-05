@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace reference {
     //reference.CountryEnum
     export type CountryEnum = "all" | "ca" | "cz" | "de" | "en" | "es" | "fi" | "fr" | "gb" | "ie" | "it" | "lt" | "ma" | "nl" | "pl" | "pp" | "pt" | "qc" | "ru" | "sk" | "sn" | "tn" | "we"
@@ -33,27 +32,27 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace sms {
     //sms.Account
     // fullName: sms.Account.Account
     export interface Account {
-        automaticRecreditAmount?: OVH.sms.PackQuantityAutomaticRecreditEnum;
+        automaticRecreditAmount?: sms.PackQuantityAutomaticRecreditEnum;
         callBack?: string;
         creditThresholdForAutomaticRecredit: number;
         creditsHoldByQuota: number;
         creditsLeft: number;
         description: string;
         name: string;
-        smsResponse: OVH.sms.Response;
-        status: OVH.sms.StatusAccountEnum;
+        smsResponse: sms.Response;
+        status: sms.StatusAccountEnum;
         stopCallBack?: string;
-        templates: OVH.sms.Templates;
+        templates: sms.Templates;
         userQuantityWithQuota: number;
     }
     //sms.AlertThreshold
@@ -62,7 +61,7 @@ export namespace sms {
         alertEmail: string;
         alertNumber: string;
         alertThreshold: number;
-        support: OVH.sms.SupportEnum;
+        support: sms.SupportEnum;
     }
     //sms.Blacklist
     // fullName: sms.Blacklist.Blacklist
@@ -93,7 +92,7 @@ export namespace sms {
         countrySuffixe: string;
         messages: string[];
         operators: string;
-        restrictionCode: OVH.sms.RestrictionCodeEnum;
+        restrictionCode: sms.RestrictionCodeEnum;
         substitution?: string;
     }
     //sms.Hlr
@@ -115,7 +114,7 @@ export namespace sms {
         ported: boolean;
         reachable: boolean;
         roaming: boolean;
-        status: OVH.sms.HlrStatuses;
+        status: sms.HlrStatuses;
         valid: boolean;
     }
     //sms.HlrStatuses
@@ -204,7 +203,7 @@ export namespace sms {
     export interface PttDetails {
         comment: string;
         description: string;
-        duration: OVH.sms.PttDurationTypeEnum;
+        duration: sms.PttDurationTypeEnum;
     }
     //sms.PttDurationTypeEnum
     export type PttDurationTypeEnum = "indeterminated" | "permanent" | "temporary"
@@ -212,7 +211,7 @@ export namespace sms {
     // fullName: sms.Quota.Quota
     export interface Quota {
         quotaLeft: number;
-        quotaStatus: OVH.sms.QuotaStatusUserEnum;
+        quotaStatus: sms.QuotaStatusUserEnum;
     }
     //sms.QuotaStatusUserEnum
     export type QuotaStatusUserEnum = "active" | "inactive"
@@ -238,17 +237,17 @@ export namespace sms {
     // fullName: sms.Response.Response
     export interface Response {
         cgiUrl?: string;
-        responseType: OVH.sms.ResponseTypeEnum;
+        responseType: sms.ResponseTypeEnum;
         text?: string;
         trackingDefaultSmsSender?: string;
-        trackingOptions?: OVH.sms.ResponseTrackingOptions[];
+        trackingOptions?: sms.ResponseTrackingOptions[];
     }
     //sms.ResponseTrackingMediaEnum
     export type ResponseTrackingMediaEnum = "email" | "sms" | "voice"
     //sms.ResponseTrackingOptions
     // fullName: sms.ResponseTrackingOptions.ResponseTrackingOptions
     export interface ResponseTrackingOptions {
-        media: OVH.sms.ResponseTrackingMediaEnum;
+        media: sms.ResponseTrackingMediaEnum;
         sender: string;
         target: string;
     }
@@ -261,16 +260,16 @@ export namespace sms {
     export interface Sender {
         comment?: string;
         description: string;
-        referer: OVH.sms.RefererSenderEnum;
+        referer: sms.RefererSenderEnum;
         sender: string;
-        status: OVH.sms.StatusSenderEnum;
-        type?: OVH.sms.TypeSenderEnum;
+        status: sms.StatusSenderEnum;
+        type?: sms.TypeSenderEnum;
         validationMedia?: string;
     }
     //sms.SenderAvailable
     // fullName: sms.SenderAvailable.SenderAvailable
     export interface SenderAvailable {
-        referer: OVH.sms.SenderRefererEnum;
+        referer: sms.SenderRefererEnum;
         sender: string;
     }
     //sms.SenderRefererEnum
@@ -292,21 +291,21 @@ export namespace sms {
     //sms.Task
     // fullName: sms.Task.Task
     export interface Task {
-        function: OVH.sms.TodoGeneralPublicFunctionsEnum;
-        status: OVH.telephony.TaskStatusEnum;
-        step: OVH.sms.TodoGeneralPublicStepsEnum;
+        function: sms.TodoGeneralPublicFunctionsEnum;
+        status: telephony.TaskStatusEnum;
+        step: sms.TodoGeneralPublicStepsEnum;
         taskId: number;
     }
     //sms.TemplateControl
     // fullName: sms.TemplateControl.TemplateControl
     export interface TemplateControl {
-        activity: OVH.sms.TypeTemplateEnum;
+        activity: sms.TypeTemplateEnum;
         comment: string;
         datetime: string;
         description: string;
         message: string;
         name: string;
-        status: OVH.sms.StatusSenderEnum;
+        status: sms.StatusSenderEnum;
     }
     //sms.Templates
     // fullName: sms.Templates.Templates
@@ -329,24 +328,24 @@ export namespace sms {
     //sms.User
     // fullName: sms.User.User
     export interface User {
-        alertThresholdInformations: OVH.sms.AlertThreshold;
+        alertThresholdInformations: sms.AlertThreshold;
         callBack?: string;
         ipRestrictions: string[];
         login: string;
         password: string;
-        quotaInformations: OVH.sms.Quota;
+        quotaInformations: sms.Quota;
         stopCallBack?: string;
     }
     //sms.VirtualNumber
     // fullName: sms.VirtualNumber.VirtualNumber
     export interface VirtualNumber {
-        countryCode: OVH.sms.VirtualNumberIsoCountryCodeEnum;
+        countryCode: sms.VirtualNumberIsoCountryCodeEnum;
         number: string;
     }
     //sms.VirtualNumberGenericService
     // fullName: sms.VirtualNumberGenericService.VirtualNumberGenericService
     export interface VirtualNumberGenericService {
-        countryCode: OVH.sms.VirtualNumberIsoCountryCodeEnum;
+        countryCode: sms.VirtualNumberIsoCountryCodeEnum;
         number: string;
     }
     //sms.VirtualNumberIsoCountryCodeEnum
@@ -373,7 +372,7 @@ export namespace telephony {
     // fullName: telephony.PcsFile.PcsFile
     export interface PcsFile {
         filename: string;
-        status: OVH.telephony.PcsFileStatusEnum;
+        status: telephony.PcsFileStatusEnum;
         url: string;
         urlExpirationDatetime: string;
     }
@@ -386,7 +385,7 @@ export namespace telephony {
         message?: string;
         objectCreated?: string;
         serviceType: string;
-        status: OVH.telephony.TaskStatusEnum;
+        status: telephony.TaskStatusEnum;
         taskId: number;
     }
     //telephony.TaskStatusEnum
@@ -877,7 +876,7 @@ export class ApiSms extends OvhWrapper {
    * document operations
    * Get the /me/document id generated
    */
-  public get(path: '/sms/{serviceName}/document', params: {serviceName: string, creationDatetime_from?: string, creationDatetime_to?: string, tag?: string, wayType: OVH.sms.DocumentWayTypeEnum}): Promise<string>;
+  public get(path: '/sms/{serviceName}/document', params: {serviceName: string, creationDatetime_from?: string, creationDatetime_to?: string, tag?: string, wayType: sms.DocumentWayTypeEnum}): Promise<string>;
   /**
    * exceptions operations
    * Describe filter exceptions in sms sending from a specific receiver.
@@ -947,7 +946,7 @@ export class ApiSms extends OvhWrapper {
    * export operations
    * Export the phonebook's contacts
    */
-  public get(path: '/sms/{serviceName}/phonebooks/{bookKey}/export', params: {bookKey: string, serviceName: string, format: OVH.telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
+  public get(path: '/sms/{serviceName}/phonebooks/{bookKey}/export', params: {bookKey: string, serviceName: string, format: telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
   /**
    * List the sms.PhonebookContact objects
    * Phonebook contacts
@@ -977,7 +976,7 @@ export class ApiSms extends OvhWrapper {
    * seeOffers operations
    * Describe SMS offers available.
    */
-  public get(path: '/sms/{serviceName}/seeOffers', params: {serviceName: string, countryCurrencyPrice: OVH.reference.CountryEnum, countryDestination: OVH.sms.CountryEnum, quantity: OVH.sms.PackQuantityEnum}): Promise<sms.PackOffer[]>;
+  public get(path: '/sms/{serviceName}/seeOffers', params: {serviceName: string, countryCurrencyPrice: reference.CountryEnum, countryDestination: sms.CountryEnum, quantity: sms.PackQuantityEnum}): Promise<sms.PackOffer[]>;
   /**
    * List the sms.Sender objects
    * Senders allowed associated to the sms account
@@ -992,7 +991,7 @@ export class ApiSms extends OvhWrapper {
    * sendersAvailableForValidation operations
    * The senders that are attached to your personal informations or OVH services and that can be automatically validated
    */
-  public get(path: '/sms/{serviceName}/sendersAvailableForValidation', params: {serviceName: string, referer?: OVH.sms.SenderRefererEnum}): Promise<sms.SenderAvailable[]>;
+  public get(path: '/sms/{serviceName}/sendersAvailableForValidation', params: {serviceName: string, referer?: sms.SenderRefererEnum}): Promise<sms.SenderAvailable[]>;
   /**
    * Details about a Service
    * Get this object properties
@@ -1002,7 +1001,7 @@ export class ApiSms extends OvhWrapper {
    * List the sms.Task objects
    * Operations on a SMS service
    */
-  public get(path: '/sms/{serviceName}/task', params: {serviceName: string, status?: OVH.telephony.TaskStatusEnum}): Promise<number[]>;
+  public get(path: '/sms/{serviceName}/task', params: {serviceName: string, status?: telephony.TaskStatusEnum}): Promise<number[]>;
   /**
    * Operation on a SMS service
    * Get this object properties
@@ -1032,7 +1031,7 @@ export class ApiSms extends OvhWrapper {
    * document operations
    * Get the /me/document id generated
    */
-  public get(path: '/sms/{serviceName}/users/{login}/document', params: {login: string, serviceName: string, creationDatetime_from?: string, creationDatetime_to?: string, tag?: string, wayType: OVH.sms.DocumentWayTypeEnum}): Promise<string>;
+  public get(path: '/sms/{serviceName}/users/{login}/document', params: {login: string, serviceName: string, creationDatetime_from?: string, creationDatetime_to?: string, tag?: string, wayType: sms.DocumentWayTypeEnum}): Promise<string>;
   /**
    * List the sms.Incoming objects
    * Sms received associated to the sms user
@@ -1160,7 +1159,7 @@ export class ApiSms extends OvhWrapper {
    * SMS details
    * Alter this object properties
    */
-  public put(path: '/sms/{serviceName}', params: {serviceName: string, automaticRecreditAmount?: OVH.sms.PackQuantityAutomaticRecreditEnum, callBack?: string, creditThresholdForAutomaticRecredit?: number, creditsHoldByQuota?: number, creditsLeft?: number, description?: string, name?: string, smsResponse?: OVH.sms.Response, status?: OVH.sms.StatusAccountEnum, stopCallBack?: string, templates?: OVH.sms.Templates, userQuantityWithQuota?: number}): Promise<void>;
+  public put(path: '/sms/{serviceName}', params: {serviceName: string, automaticRecreditAmount?: sms.PackQuantityAutomaticRecreditEnum, callBack?: string, creditThresholdForAutomaticRecredit?: number, creditsHoldByQuota?: number, creditsLeft?: number, description?: string, name?: string, smsResponse?: sms.Response, status?: sms.StatusAccountEnum, stopCallBack?: string, templates?: sms.Templates, userQuantityWithQuota?: number}): Promise<void>;
   /**
    * Phone book
    * Alter this object properties
@@ -1180,22 +1179,22 @@ export class ApiSms extends OvhWrapper {
    * SMS senders
    * Alter this object properties
    */
-  public put(path: '/sms/{serviceName}/senders/{sender}', params: {sender: string, serviceName: string, comment?: string, description?: string, referer?: OVH.sms.RefererSenderEnum, status?: OVH.sms.StatusSenderEnum, type?: OVH.sms.TypeSenderEnum, validationMedia?: string}): Promise<void>;
+  public put(path: '/sms/{serviceName}/senders/{sender}', params: {sender: string, serviceName: string, comment?: string, description?: string, referer?: sms.RefererSenderEnum, status?: sms.StatusSenderEnum, type?: sms.TypeSenderEnum, validationMedia?: string}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/sms/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/sms/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Sms template for moderation (Needed to send in US country)
    * Alter this object properties
    */
-  public put(path: '/sms/{serviceName}/templatesControl/{name}', params: {name: string, serviceName: string, activity?: OVH.sms.TypeTemplateEnum, comment?: string, datetime?: string, description?: string, message?: string, status?: OVH.sms.StatusSenderEnum}): Promise<void>;
+  public put(path: '/sms/{serviceName}/templatesControl/{name}', params: {name: string, serviceName: string, activity?: sms.TypeTemplateEnum, comment?: string, datetime?: string, description?: string, message?: string, status?: sms.StatusSenderEnum}): Promise<void>;
   /**
    * SMS users
    * Alter this object properties
    */
-  public put(path: '/sms/{serviceName}/users/{login}', params: {login: string, serviceName: string, alertThresholdInformations?: OVH.sms.AlertThreshold, callBack?: string, ipRestrictions?: string[], password?: string, quotaInformations?: OVH.sms.Quota, stopCallBack?: string}): Promise<void>;
+  public put(path: '/sms/{serviceName}/users/{login}', params: {login: string, serviceName: string, alertThresholdInformations?: sms.AlertThreshold, callBack?: string, ipRestrictions?: string[], password?: string, quotaInformations?: sms.Quota, stopCallBack?: string}): Promise<void>;
   /**
    * Sms receivers preloaded
    * Alter this object properties
@@ -1205,7 +1204,7 @@ export class ApiSms extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/sms/virtualNumbers/{number}/serviceInfos', params: {number: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/sms/virtualNumbers/{number}/serviceInfos', params: {number: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsSmsPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -1218,7 +1217,7 @@ export class ApiSms extends OvhWrapper {
    * List the sms.Job objects
    * Add one or several sending jobs
    */
-  public post(path: '/sms/{serviceName}/jobs', params: {serviceName: string, charset?: OVH.sms.CharsetEnum, class?: OVH.sms.ClassEnum, coding?: OVH.sms.CodingEnum, differedPeriod?: number, message: string, noStopClause?: boolean, priority?: OVH.sms.PriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, sender?: string, senderForResponse?: boolean, tag?: string, validityPeriod?: number}): Promise<sms.SmsSendingReport>;
+  public post(path: '/sms/{serviceName}/jobs', params: {serviceName: string, charset?: sms.CharsetEnum, class?: sms.ClassEnum, coding?: sms.CodingEnum, differedPeriod?: number, message: string, noStopClause?: boolean, priority?: sms.PriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, sender?: string, senderForResponse?: boolean, tag?: string, validityPeriod?: number}): Promise<sms.SmsSendingReport>;
   /**
    * List the sms.Phonebook objects
    * Add a phonebook. Return the bookKey.
@@ -1258,7 +1257,7 @@ export class ApiSms extends OvhWrapper {
    * List the sms.TemplateControl objects
    * Create the sms template control given
    */
-  public post(path: '/sms/{serviceName}/templatesControl', params: {serviceName: string, activity: OVH.sms.TypeTemplateEnum, description?: string, message: string, name: string, reason?: string}): Promise<void>;
+  public post(path: '/sms/{serviceName}/templatesControl', params: {serviceName: string, activity: sms.TypeTemplateEnum, description?: string, message: string, name: string, reason?: string}): Promise<void>;
   /**
    * relaunchValidation operations
    * Attempt a new validation after moderation refusal
@@ -1278,7 +1277,7 @@ export class ApiSms extends OvhWrapper {
    * List the sms.Job objects
    * Add one or several sending jobs
    */
-  public post(path: '/sms/{serviceName}/users/{login}/jobs', params: {login: string, serviceName: string, charset?: OVH.sms.CharsetEnum, class?: OVH.sms.ClassEnum, coding?: OVH.sms.CodingEnum, differedPeriod?: number, message: string, noStopClause?: boolean, priority?: OVH.sms.PriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, sender?: string, senderForResponse?: boolean, tag?: string, validityPeriod?: number}): Promise<sms.SmsSendingReport>;
+  public post(path: '/sms/{serviceName}/users/{login}/jobs', params: {login: string, serviceName: string, charset?: sms.CharsetEnum, class?: sms.ClassEnum, coding?: sms.CodingEnum, differedPeriod?: number, message: string, noStopClause?: boolean, priority?: sms.PriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, sender?: string, senderForResponse?: boolean, tag?: string, validityPeriod?: number}): Promise<sms.SmsSendingReport>;
   /**
    * List the sms.Receiver objects
    * Add a new document of csv receivers
@@ -1298,7 +1297,7 @@ export class ApiSms extends OvhWrapper {
    * List the sms.VirtualNumberJob objects
    * Add one or several sending jobs
    */
-  public post(path: '/sms/{serviceName}/virtualNumbers/{number}/jobs', params: {number: string, serviceName: string, charset?: OVH.sms.CharsetEnum, class?: OVH.sms.ClassEnum, coding?: OVH.sms.CodingEnum, differedPeriod?: number, message: string, priority?: OVH.sms.PriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, tag?: string, validityPeriod?: number}): Promise<sms.SmsSendingReport>;
+  public post(path: '/sms/{serviceName}/virtualNumbers/{number}/jobs', params: {number: string, serviceName: string, charset?: sms.CharsetEnum, class?: sms.ClassEnum, coding?: sms.CodingEnum, differedPeriod?: number, message: string, priority?: sms.PriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, tag?: string, validityPeriod?: number}): Promise<sms.SmsSendingReport>;
   public post(path: PathsSmsPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
@@ -1395,5 +1394,4 @@ export class ApiSms extends OvhWrapper {
   public delete(path: PathsSmsDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

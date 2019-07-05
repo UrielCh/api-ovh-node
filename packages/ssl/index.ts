@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
@@ -29,25 +28,25 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace ssl {
     //ssl.Certificate
     // fullName: ssl.Certificate.Certificate
     export interface Certificate {
-        authority: OVH.ssl.CertificateAuthorityEnum;
+        authority: ssl.CertificateAuthorityEnum;
         certificate?: string;
         chain?: string;
         commonName: string;
         csr: string;
         serviceName: string;
-        status: OVH.ssl.CertificateStatusEnum;
+        status: ssl.CertificateStatusEnum;
         subjectAltName: string[];
-        type: OVH.ssl.CertificateTypeEnum;
+        type: ssl.CertificateTypeEnum;
         validityEnd?: string;
         validityStart?: string;
     }
@@ -61,10 +60,10 @@ export namespace ssl {
     // fullName: ssl.Operation.Operation
     export interface Operation {
         doneDate?: string;
-        function: OVH.ssl.OperationFunctionEnum;
+        function: ssl.OperationFunctionEnum;
         lastUpdate: string;
         startDate: string;
-        status: OVH.ssl.OperationStatusEnum;
+        status: ssl.OperationStatusEnum;
         taskId: number;
     }
     //ssl.OperationFunctionEnum
@@ -141,9 +140,8 @@ export class ApiSsl extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/ssl/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/ssl/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsSslPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
-}
 }

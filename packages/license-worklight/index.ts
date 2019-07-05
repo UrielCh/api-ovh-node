@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace license {
     //license.ActionType
     export type ActionType = "addWindowFromExistingSerial" | "changeIp" | "changeOs" | "installLicense" | "optionUpgrade" | "releaseOption" | "versionUpgrade"
@@ -9,7 +8,7 @@ export namespace license {
     //license.ChangeIpStatus
     // fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message: OVH.license.ChangeIpMessageEnum;
+        message: license.ChangeIpMessageEnum;
         success: boolean;
     }
     //license.LicenseTypeEnum
@@ -17,18 +16,18 @@ export namespace license {
     //license.OrderableWorkLightCompatibilityInfos
     // fullName: license.OrderableWorkLightCompatibilityInfos.OrderableWorkLightCompatibilityInfos
     export interface OrderableWorkLightCompatibilityInfos {
-        version: OVH.license.WorkLightVersionEnum;
+        version: license.WorkLightVersionEnum;
     }
     //license.StateEnum
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
     //license.Task
     // fullName: license.Task.Task
     export interface Task {
-        action: OVH.license.ActionType;
+        action: license.ActionType;
         doneDate?: string;
         lastUpdate: string;
         name: string;
-        status: OVH.license.TaskStateEnum;
+        status: license.TaskStateEnum;
         taskId: number;
         todoDate: string;
     }
@@ -37,8 +36,8 @@ export namespace license {
     //license.WorkLightOrderConfiguration
     // fullName: license.WorkLightOrderConfiguration.WorkLightOrderConfiguration
     export interface WorkLightOrderConfiguration {
-        orderableVersions: OVH.license.OrderableWorkLightCompatibilityInfos[];
-        serviceType: OVH.license.LicenseTypeEnum;
+        orderableVersions: license.OrderableWorkLightCompatibilityInfos[];
+        serviceType: license.LicenseTypeEnum;
     }
     //license.WorkLightVersionEnum
     export type WorkLightVersionEnum = "VERSION-6.1U.1CPU" | "VERSION-6.1U.2CPU" | "VERSION-6.2U.1CPU" | "VERSION-6.2U.2CPU" | "VERSION-6.EVALUATION" | "worklight-license-version-6-1cpu-1u" | "worklight-license-version-6-1cpu-2u" | "worklight-license-version-6-2cpu-1u" | "worklight-license-version-6-2cpu-2u"
@@ -51,8 +50,8 @@ export namespace license {
             domain: string;
             ip: string;
             licenseId: string;
-            status: OVH.license.StateEnum;
-            version: OVH.license.WorkLightVersionEnum;
+            status: license.StateEnum;
+            version: license.WorkLightVersionEnum;
         }
     }
 }
@@ -88,10 +87,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -196,7 +195,7 @@ export class ApiLicenseWorklight extends OvhWrapper {
    * List the license.Task objects
    * Tasks linked to this license
    */
-  public get(path: '/license/worklight/{serviceName}/tasks', params: {serviceName: string, action?: OVH.license.ActionType, status?: OVH.license.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/license/worklight/{serviceName}/tasks', params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
   /**
    * licenses Todos
    * Get this object properties
@@ -214,12 +213,12 @@ export class ApiLicenseWorklight extends OvhWrapper {
    * Your WorkLight license
    * Alter this object properties
    */
-  public put(path: '/license/worklight/{serviceName}', params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: OVH.license.StateEnum, version?: OVH.license.WorkLightVersionEnum}): Promise<void>;
+  public put(path: '/license/worklight/{serviceName}', params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.WorkLightVersionEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/license/worklight/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/license/worklight/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsLicenseWorklightPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -232,7 +231,7 @@ export class ApiLicenseWorklight extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/license/worklight/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/license/worklight/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * Terminate your service
    * Terminate your service
@@ -241,5 +240,4 @@ export class ApiLicenseWorklight extends OvhWrapper {
   public post(path: PathsLicenseWorklightPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

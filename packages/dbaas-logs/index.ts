@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace dbaas {
     export namespace logs {
         //dbaas.logs.Alias
@@ -29,7 +28,7 @@ export namespace dbaas {
             filename: string;
             md5: string;
             retrievalDelay: number;
-            retrievalState: OVH.dbaas.logs.ArchiveRetrievalStateEnum;
+            retrievalState: dbaas.logs.ArchiveRetrievalStateEnum;
             sha256: string;
             size: number;
         }
@@ -45,25 +44,25 @@ export namespace dbaas {
         // fullName: dbaas.logs.Cluster.Cluster
         export interface Cluster {
             clusterId: string;
-            clusterType: OVH.dbaas.logs.ClusterClusterTypeEnum;
+            clusterType: dbaas.logs.ClusterClusterTypeEnum;
             dedicatedInputPEM: string;
             directInputPEM: string;
             hostname: string;
             isDefault: boolean;
             isUnlocked: boolean;
-            region: OVH.dbaas.logs.ClusterRegionEnum;
+            region: dbaas.logs.ClusterRegionEnum;
         }
         //dbaas.logs.ClusterAllowedNetwork
         // fullName: dbaas.logs.ClusterAllowedNetwork.ClusterAllowedNetwork
         export interface ClusterAllowedNetwork {
             allowedNetworkId: string;
-            flowType: OVH.dbaas.logs.ClusterAllowedNetworkFlowTypeEnum;
+            flowType: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum;
             network: string;
         }
         //dbaas.logs.ClusterAllowedNetworkCreation
         // fullName: dbaas.logs.ClusterAllowedNetworkCreation.ClusterAllowedNetworkCreation
         export interface ClusterAllowedNetworkCreation {
-            flowType: OVH.dbaas.logs.ClusterAllowedNetworkFlowTypeEnum;
+            flowType: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum;
             network: string;
         }
         //dbaas.logs.ClusterAllowedNetworkFlowTypeEnum
@@ -89,7 +88,7 @@ export namespace dbaas {
         export interface Engine {
             engineId: string;
             isDeprecated: boolean;
-            name: OVH.dbaas.logs.EngineNameEnum;
+            name: dbaas.logs.EngineNameEnum;
             version: string;
         }
         //dbaas.logs.EngineNameEnum
@@ -97,8 +96,8 @@ export namespace dbaas {
         //dbaas.logs.FlowggerConfiguration
         // fullName: dbaas.logs.FlowggerConfiguration.FlowggerConfiguration
         export interface FlowggerConfiguration {
-            logFormat: OVH.dbaas.logs.FlowggerConfigurationLogFormatEnum;
-            logFraming: OVH.dbaas.logs.FlowggerConfigurationLogFramingEnum;
+            logFormat: dbaas.logs.FlowggerConfigurationLogFormatEnum;
+            logFraming: dbaas.logs.FlowggerConfigurationLogFramingEnum;
         }
         //dbaas.logs.FlowggerConfigurationLogFormatEnum
         export type FlowggerConfigurationLogFormatEnum = "RFC5424" | "LTSV" | "GELF" | "CAPNP"
@@ -133,7 +132,7 @@ export namespace dbaas {
             publicAddress: string;
             singleInstanceEnabled?: boolean;
             sslCertificate: string;
-            status: OVH.dbaas.logs.InputStatusEnum;
+            status: dbaas.logs.InputStatusEnum;
             streamId: string;
             title: string;
             updatedAt?: string;
@@ -142,7 +141,7 @@ export namespace dbaas {
         // fullName: dbaas.logs.InputAction.InputAction
         export interface InputAction {
             isAllowed: boolean;
-            type: OVH.dbaas.logs.InputActionTypeEnum;
+            type: dbaas.logs.InputActionTypeEnum;
         }
         //dbaas.logs.InputActionTypeEnum
         export type InputActionTypeEnum = "END" | "LOG" | "START" | "TEST" | "DESTROY" | "RESTART"
@@ -154,8 +153,8 @@ export namespace dbaas {
         //dbaas.logs.InputConfigurationFlowggerUpdate
         // fullName: dbaas.logs.InputConfigurationFlowggerUpdate.InputConfigurationFlowggerUpdate
         export interface InputConfigurationFlowggerUpdate {
-            logFormat: OVH.dbaas.logs.FlowggerConfigurationLogFormatEnum;
-            logFraming: OVH.dbaas.logs.FlowggerConfigurationLogFramingEnum;
+            logFormat: dbaas.logs.FlowggerConfigurationLogFormatEnum;
+            logFraming: dbaas.logs.FlowggerConfigurationLogFramingEnum;
         }
         //dbaas.logs.InputConfigurationLogstashUpdate
         // fullName: dbaas.logs.InputConfigurationLogstashUpdate.InputConfigurationLogstashUpdate
@@ -233,7 +232,7 @@ export namespace dbaas {
             operationId: string;
             optionId?: string;
             roleId?: string;
-            state: OVH.dbaas.logs.OperationStateEnum;
+            state: dbaas.logs.OperationStateEnum;
             streamId?: string;
             updatedAt?: string;
         }
@@ -258,7 +257,7 @@ export namespace dbaas {
             maxNbStream: number;
             optionId: string;
             reference: string;
-            state: OVH.dbaas.logs.OptionStateEnum;
+            state: dbaas.logs.OptionStateEnum;
             updatedAt?: string;
         }
         //dbaas.logs.OptionStateEnum
@@ -330,14 +329,14 @@ export namespace dbaas {
         // fullName: dbaas.logs.OutputGraylogStreamAlertCreation.OutputGraylogStreamAlertCreation
         export interface OutputGraylogStreamAlertCreation {
             backlog: number;
-            conditionType?: OVH.dbaas.logs.StreamAlertConditionConditionTypeEnum;
-            constraintType?: OVH.dbaas.logs.StreamAlertConditionConstraintTypeEnum;
+            conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum;
+            constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum;
             field?: string;
             grace: number;
             queryFilter?: string;
             repeatNotificationsEnabled?: boolean;
             threshold?: number;
-            thresholdType?: OVH.dbaas.logs.StreamAlertConditionThresholdTypeEnum;
+            thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum;
             time?: number;
             title: string;
             value?: string;
@@ -346,14 +345,14 @@ export namespace dbaas {
         // fullName: dbaas.logs.OutputGraylogStreamAlertUpdate.OutputGraylogStreamAlertUpdate
         export interface OutputGraylogStreamAlertUpdate {
             backlog: number;
-            conditionType?: OVH.dbaas.logs.StreamAlertConditionConditionTypeEnum;
-            constraintType?: OVH.dbaas.logs.StreamAlertConditionConstraintTypeEnum;
+            conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum;
+            constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum;
             field?: string;
             grace: number;
             queryFilter?: string;
             repeatNotificationsEnabled?: boolean;
             threshold?: number;
-            thresholdType?: OVH.dbaas.logs.StreamAlertConditionThresholdTypeEnum;
+            thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum;
             time?: number;
             title: string;
             value?: string;
@@ -362,12 +361,12 @@ export namespace dbaas {
         // fullName: dbaas.logs.OutputGraylogStreamCreation.OutputGraylogStreamCreation
         export interface OutputGraylogStreamCreation {
             autoSelectOption?: boolean;
-            coldStorageCompression?: OVH.dbaas.logs.StreamColdStorageCompressionEnum;
-            coldStorageContent?: OVH.dbaas.logs.StreamColdStorageContentEnum;
+            coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum;
+            coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum;
             coldStorageEnabled?: boolean;
             coldStorageNotifyEnabled?: boolean;
             coldStorageRetention?: number;
-            coldStorageTarget?: OVH.dbaas.logs.StreamColdStorageTargetEnum;
+            coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum;
             description: string;
             indexingEnabled?: boolean;
             optionId?: string;
@@ -380,18 +379,18 @@ export namespace dbaas {
         export interface OutputGraylogStreamRuleCreation {
             field: string;
             isInverted?: boolean;
-            operator: OVH.dbaas.logs.StreamRuleOperatorEnum;
+            operator: dbaas.logs.StreamRuleOperatorEnum;
             value: string;
         }
         //dbaas.logs.OutputGraylogStreamUpdate
         // fullName: dbaas.logs.OutputGraylogStreamUpdate.OutputGraylogStreamUpdate
         export interface OutputGraylogStreamUpdate {
-            coldStorageCompression?: OVH.dbaas.logs.StreamColdStorageCompressionEnum;
-            coldStorageContent?: OVH.dbaas.logs.StreamColdStorageContentEnum;
+            coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum;
+            coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum;
             coldStorageEnabled?: boolean;
             coldStorageNotifyEnabled?: boolean;
             coldStorageRetention?: number;
-            coldStorageTarget?: OVH.dbaas.logs.StreamColdStorageTargetEnum;
+            coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum;
             description: string;
             indexingEnabled?: boolean;
             optionId?: string;
@@ -477,13 +476,13 @@ export namespace dbaas {
         // fullName: dbaas.logs.RolePermissionDashboardCreation.RolePermissionDashboardCreation
         export interface RolePermissionDashboardCreation {
             dashboardId: string;
-            permissionType?: OVH.dbaas.logs.PermissionDashboardPermissionTypeEnum;
+            permissionType?: dbaas.logs.PermissionDashboardPermissionTypeEnum;
         }
         //dbaas.logs.RolePermissionIndexCreation
         // fullName: dbaas.logs.RolePermissionIndexCreation.RolePermissionIndexCreation
         export interface RolePermissionIndexCreation {
             indexId: string;
-            permissionType?: OVH.dbaas.logs.PermissionIndexPermissionTypeEnum;
+            permissionType?: dbaas.logs.PermissionIndexPermissionTypeEnum;
         }
         //dbaas.logs.RolePermissionStreamCreation
         // fullName: dbaas.logs.RolePermissionStreamCreation.RolePermissionStreamCreation
@@ -504,7 +503,7 @@ export namespace dbaas {
             displayName?: string;
             isCapped: boolean;
             serviceName: string;
-            state?: OVH.dbaas.logs.ServiceStateEnum;
+            state?: dbaas.logs.ServiceStateEnum;
             updatedAt?: string;
             username: string;
         }
@@ -520,12 +519,12 @@ export namespace dbaas {
         // fullName: dbaas.logs.Stream.Stream
         export interface Stream {
             canAlert: boolean;
-            coldStorageCompression?: OVH.dbaas.logs.StreamColdStorageCompressionEnum;
-            coldStorageContent?: OVH.dbaas.logs.StreamColdStorageContentEnum;
+            coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum;
+            coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum;
             coldStorageEnabled?: boolean;
             coldStorageNotifyEnabled?: boolean;
             coldStorageRetention?: number;
-            coldStorageTarget?: OVH.dbaas.logs.StreamColdStorageTargetEnum;
+            coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum;
             createdAt: string;
             description: string;
             indexingEnabled?: boolean;
@@ -544,14 +543,14 @@ export namespace dbaas {
         export interface StreamAlertCondition {
             alertId: string;
             backlog: number;
-            conditionType?: OVH.dbaas.logs.StreamAlertConditionConditionTypeEnum;
-            constraintType?: OVH.dbaas.logs.StreamAlertConditionConstraintTypeEnum;
+            conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum;
+            constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum;
             field?: string;
             grace: number;
             queryFilter?: string;
             repeatNotificationsEnabled?: boolean;
             threshold?: number;
-            thresholdType?: OVH.dbaas.logs.StreamAlertConditionThresholdTypeEnum;
+            thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum;
             time?: number;
             title: string;
             value?: string;
@@ -573,7 +572,7 @@ export namespace dbaas {
         export interface StreamRule {
             field: string;
             isInverted?: boolean;
-            operator?: OVH.dbaas.logs.StreamRuleOperatorEnum;
+            operator?: dbaas.logs.StreamRuleOperatorEnum;
             ruleId: string;
             value: string;
         }
@@ -618,7 +617,7 @@ export namespace dbaas {
         // fullName: dbaas.logs.Url.Url
         export interface Url {
             address: string;
-            type: OVH.dbaas.logs.UrlTypeEnum;
+            type: dbaas.logs.UrlTypeEnum;
         }
         //dbaas.logs.UrlTypeEnum
         export type UrlTypeEnum = "GRAYLOG_WEBUI" | "GRAYLOG_API" | "ELASTICSEARCH_API" | "KIBANA_WEBUI" | "CONSOLE" | "WEB_SOCKET" | "SERVICE_DOMAIN" | "TCP_TLS_GELF" | "TCP_GELF" | "UDP_GELF" | "TCP_TLS_RFC5424" | "TCP_RFC5424" | "UDP_RFC5424" | "TCP_TLS_LTSV_LINE" | "TCP_TLS_LTSV_NUL" | "TCP_LTSV_LINE" | "TCP_LTSV_NUL" | "TCP_TLS_CAP_N_PROTO" | "TCP_CAP_N_PROTO" | "UDP_LTSV_NUL" | "UDP_LTSV_LINE" | "UDP_CAP_N_PROTO" | "HTTP_GELF" | "HTTP_TLS_GELF" | "TCP_BEATS" | "TCP_TLS_BEATS"
@@ -657,10 +656,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -1458,7 +1457,7 @@ export class ApiDbaasLogs extends OvhWrapper {
    * FlowggerConfiguration
    * Update the flowgger configuration
    */
-  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger', params: {inputId: string, serviceName: string, logFormat: OVH.dbaas.logs.FlowggerConfigurationLogFormatEnum, logFraming: OVH.dbaas.logs.FlowggerConfigurationLogFramingEnum}): Promise<dbaas.logs.Operation>;
+  public put(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger', params: {inputId: string, serviceName: string, logFormat: dbaas.logs.FlowggerConfigurationLogFormatEnum, logFraming: dbaas.logs.FlowggerConfigurationLogFramingEnum}): Promise<dbaas.logs.Operation>;
   /**
    * LogstashConfiguration
    * Update the logstash configuration
@@ -1483,12 +1482,12 @@ export class ApiDbaasLogs extends OvhWrapper {
    * Stream
    * Update information of specified graylog stream
    */
-  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}', params: {serviceName: string, streamId: string, coldStorageCompression?: OVH.dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: OVH.dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: OVH.dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, title: string, webSocketEnabled?: boolean}): Promise<dbaas.logs.Operation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}', params: {serviceName: string, streamId: string, coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, title: string, webSocketEnabled?: boolean}): Promise<dbaas.logs.Operation>;
   /**
    * StreamAlert
    * Update alert information of specified graylog stream
    */
-  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {alertId: string, serviceName: string, streamId: string, backlog: number, conditionType?: OVH.dbaas.logs.StreamAlertConditionConditionTypeEnum, constraintType?: OVH.dbaas.logs.StreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: OVH.dbaas.logs.StreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}): Promise<dbaas.logs.Operation>;
+  public put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}', params: {alertId: string, serviceName: string, streamId: string, backlog: number, conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum, constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}): Promise<dbaas.logs.Operation>;
   /**
    * Role
    * Update information of specified role
@@ -1503,7 +1502,7 @@ export class ApiDbaasLogs extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/dbaas/logs/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/dbaas/logs/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsDbaasLogsPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -1516,7 +1515,7 @@ export class ApiDbaasLogs extends OvhWrapper {
    * Cluster allowed networks
    * Allow an IP to contact cluster
    */
-  public post(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork', params: {clusterId: string, serviceName: string, flowType: OVH.dbaas.logs.ClusterAllowedNetworkFlowTypeEnum, network: string}): Promise<dbaas.logs.Operation>;
+  public post(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork', params: {clusterId: string, serviceName: string, flowType: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum, network: string}): Promise<dbaas.logs.Operation>;
   /**
    * Inputs
    * Register a new input object
@@ -1591,12 +1590,12 @@ export class ApiDbaasLogs extends OvhWrapper {
    * Streams
    * Register a new graylog stream
    */
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream', params: {serviceName: string, autoSelectOption?: boolean, coldStorageCompression?: OVH.dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: OVH.dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: OVH.dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, parentStreamId?: string, title: string, webSocketEnabled?: boolean}): Promise<dbaas.logs.Operation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream', params: {serviceName: string, autoSelectOption?: boolean, coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, parentStreamId?: string, title: string, webSocketEnabled?: boolean}): Promise<dbaas.logs.Operation>;
   /**
    * StreamAlerts
    * Register a new alert on specified graylog stream
    */
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert', params: {serviceName: string, streamId: string, backlog: number, conditionType?: OVH.dbaas.logs.StreamAlertConditionConditionTypeEnum, constraintType?: OVH.dbaas.logs.StreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: OVH.dbaas.logs.StreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}): Promise<dbaas.logs.Operation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert', params: {serviceName: string, streamId: string, backlog: number, conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum, constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}): Promise<dbaas.logs.Operation>;
   /**
    * Streams
    * Get a public temporary URL to access the archive
@@ -1606,7 +1605,7 @@ export class ApiDbaasLogs extends OvhWrapper {
    * StreamRules
    * Register a new rule on specified graylog stream
    */
-  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {serviceName: string, streamId: string, field: string, isInverted?: boolean, operator: OVH.dbaas.logs.StreamRuleOperatorEnum, value: string}): Promise<dbaas.logs.Operation>;
+  public post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule', params: {serviceName: string, streamId: string, field: string, isInverted?: boolean, operator: dbaas.logs.StreamRuleOperatorEnum, value: string}): Promise<dbaas.logs.Operation>;
   /**
    * Roles
    * Register a new role
@@ -1626,12 +1625,12 @@ export class ApiDbaasLogs extends OvhWrapper {
    * RolePermissionIndex
    * Append a graylog dashboard permission to role
    */
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard', params: {roleId: string, serviceName: string, dashboardId: string, permissionType?: OVH.dbaas.logs.PermissionDashboardPermissionTypeEnum}): Promise<dbaas.logs.Operation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard', params: {roleId: string, serviceName: string, dashboardId: string, permissionType?: dbaas.logs.PermissionDashboardPermissionTypeEnum}): Promise<dbaas.logs.Operation>;
   /**
    * RolePermissionIndex
    * Append a elasticsearch index permission to role
    */
-  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/index', params: {roleId: string, serviceName: string, indexId: string, permissionType?: OVH.dbaas.logs.PermissionIndexPermissionTypeEnum}): Promise<dbaas.logs.Operation>;
+  public post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/index', params: {roleId: string, serviceName: string, indexId: string, permissionType?: dbaas.logs.PermissionIndexPermissionTypeEnum}): Promise<dbaas.logs.Operation>;
   /**
    * RolePermissionIndex
    * Append a graylog stream permission to role
@@ -1728,5 +1727,4 @@ export class ApiDbaasLogs extends OvhWrapper {
   public delete(path: PathsDbaasLogsDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

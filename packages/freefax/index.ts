@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace freefax {
     //freefax.BalanceInformations
     // fullName: freefax.BalanceInformations.BalanceInformations
@@ -11,8 +10,8 @@ export namespace freefax {
     //freefax.FreefaxProperties
     // fullName: freefax.FreefaxProperties.FreefaxProperties
     export interface FreefaxProperties {
-        faxMaxCall: OVH.telephony.FaxSendingTries;
-        faxQuality: OVH.telephony.FaxQualityEnum;
+        faxMaxCall: telephony.FaxSendingTries;
+        faxQuality: telephony.FaxQualityEnum;
         faxTagLine: string;
         fromEmail: string;
         fromName: string;
@@ -48,10 +47,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace telephony {
@@ -67,7 +66,7 @@ export namespace telephony {
     // fullName: telephony.ServiceVoicemailNotifications.ServiceVoicemailNotifications
     export interface ServiceVoicemailNotifications {
         email: string;
-        type: OVH.telephony.ServiceVoicemailMailOptionEnum;
+        type: telephony.ServiceVoicemailMailOptionEnum;
     }
     //telephony.VoicefaxRoutingEnum
     export type VoicefaxRoutingEnum = "fax" | "voicemail"
@@ -83,16 +82,16 @@ export namespace telephony {
     // fullName: telephony.VoicemailProperties.VoicemailProperties
     export interface VoicemailProperties {
         annouceMessage: string;
-        audioFormat: OVH.telephony.ServiceVoicemailAudioFormatEnum;
+        audioFormat: telephony.ServiceVoicemailAudioFormatEnum;
         doNotRecord: boolean;
         forcePassword: boolean;
         fromEmail: string;
         fromName: string;
         fullGreetingSoundId?: number;
-        greetingType: OVH.telephony.VoicemailGreetingEnum;
+        greetingType: telephony.VoicemailGreetingEnum;
         isNewVersion: boolean;
         keepMessage: boolean;
-        redirectionEmails: OVH.telephony.ServiceVoicemailNotifications[];
+        redirectionEmails: telephony.ServiceVoicemailNotifications[];
         shortGreetingSoundId?: number;
         temporaryGreetingActivated: boolean;
         temporaryGreetingSoundId?: number;
@@ -220,17 +219,17 @@ export class ApiFreefax extends OvhWrapper {
    * Freefax properties
    * Alter this object properties
    */
-  public put(path: '/freefax/{serviceName}', params: {serviceName: string, faxMaxCall?: OVH.telephony.FaxSendingTries, faxQuality?: OVH.telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[]}): Promise<void>;
+  public put(path: '/freefax/{serviceName}', params: {serviceName: string, faxMaxCall?: telephony.FaxSendingTries, faxQuality?: telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[]}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/freefax/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/freefax/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Voicemail Properties
    * Alter this object properties
    */
-  public put(path: '/freefax/{serviceName}/voicemail', params: {serviceName: string, annouceMessage?: string, audioFormat?: OVH.telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: OVH.telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: OVH.telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
+  public put(path: '/freefax/{serviceName}/voicemail', params: {serviceName: string, annouceMessage?: string, audioFormat?: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
   public put(path: PathsFreefaxPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -248,9 +247,8 @@ export class ApiFreefax extends OvhWrapper {
    * changeRouting operations
    * Disable/Enable voicemail. Available only if the line has fax capabilities
    */
-  public post(path: '/freefax/{serviceName}/voicemail/changeRouting', params: {serviceName: string, routing: OVH.telephony.VoicefaxRoutingEnum}): Promise<void>;
+  public post(path: '/freefax/{serviceName}/voicemail/changeRouting', params: {serviceName: string, routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
   public post(path: PathsFreefaxPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

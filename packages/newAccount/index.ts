@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace nichandle {
     //nichandle.CountryEnum
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
@@ -18,31 +17,31 @@ export namespace nichandle {
     //nichandle.CreationRules
     // fullName: nichandle.CreationRules.CreationRules
     export interface CreationRules {
-        address: OVH.nichandle.CreationRule;
-        area: OVH.nichandle.CreationRule;
-        birthCity: OVH.nichandle.CreationRule;
-        birthDay: OVH.nichandle.CreationRule;
-        city: OVH.nichandle.CreationRule;
-        companyNationalIdentificationNumber: OVH.nichandle.CreationRule;
-        corporationType: OVH.nichandle.CreationRule;
-        country: OVH.nichandle.CreationRule;
-        email: OVH.nichandle.CreationRule;
-        fax: OVH.nichandle.CreationRule;
-        firstname: OVH.nichandle.CreationRule;
-        italianSDI: OVH.nichandle.CreationRule;
-        language: OVH.nichandle.CreationRule;
-        legalform: OVH.nichandle.CreationRule;
-        name: OVH.nichandle.CreationRule;
-        nationalIdentificationNumber: OVH.nichandle.CreationRule;
-        organisation: OVH.nichandle.CreationRule;
-        ovhCompany: OVH.nichandle.CreationRule;
-        ovhSubsidiary: OVH.nichandle.CreationRule;
-        phone: OVH.nichandle.CreationRule;
-        phoneCountry: OVH.nichandle.CreationRule;
-        sex: OVH.nichandle.CreationRule;
-        spareEmail: OVH.nichandle.CreationRule;
-        vat: OVH.nichandle.CreationRule;
-        zip: OVH.nichandle.CreationRule;
+        address: nichandle.CreationRule;
+        area: nichandle.CreationRule;
+        birthCity: nichandle.CreationRule;
+        birthDay: nichandle.CreationRule;
+        city: nichandle.CreationRule;
+        companyNationalIdentificationNumber: nichandle.CreationRule;
+        corporationType: nichandle.CreationRule;
+        country: nichandle.CreationRule;
+        email: nichandle.CreationRule;
+        fax: nichandle.CreationRule;
+        firstname: nichandle.CreationRule;
+        italianSDI: nichandle.CreationRule;
+        language: nichandle.CreationRule;
+        legalform: nichandle.CreationRule;
+        name: nichandle.CreationRule;
+        nationalIdentificationNumber: nichandle.CreationRule;
+        organisation: nichandle.CreationRule;
+        ovhCompany: nichandle.CreationRule;
+        ovhSubsidiary: nichandle.CreationRule;
+        phone: nichandle.CreationRule;
+        phoneCountry: nichandle.CreationRule;
+        sex: nichandle.CreationRule;
+        spareEmail: nichandle.CreationRule;
+        vat: nichandle.CreationRule;
+        zip: nichandle.CreationRule;
     }
     //nichandle.CreationRulesActionEnum
     export type CreationRulesActionEnum = "create" | "update"
@@ -125,32 +124,32 @@ export class ApiNewAccount extends OvhWrapper {
    * All available areas for a given country
    * All available areas for a given country
    */
-  public get(path: '/newAccount/area', params: {country: OVH.nichandle.CountryEnum}): Promise<string[]>;
+  public get(path: '/newAccount/area', params: {country: nichandle.CountryEnum}): Promise<string[]>;
   /**
    * Returns the contracts that governs the creation of an OVH identifier
    * Returns the contracts that governs the creation of an OVH identifier
    */
-  public get(path: '/newAccount/contracts', params: {company: OVH.nichandle.OvhCompanyEnum, subsidiary: OVH.nichandle.OvhSubsidiaryEnum}): Promise<order.Contract[]>;
+  public get(path: '/newAccount/contracts', params: {company: nichandle.OvhCompanyEnum, subsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.Contract[]>;
   /**
    * All available corporation types for a given country
    * All available corporation types for a given country
    */
-  public get(path: '/newAccount/corporationType', params: {country: OVH.nichandle.CountryEnum}): Promise<string[]>;
+  public get(path: '/newAccount/corporationType', params: {country: nichandle.CountryEnum}): Promise<string[]>;
   /**
    * All available countries for an ovh company and an ovh subsidiary
    * All available countries for an ovh company and an ovh subsidiary
    */
-  public get(path: '/newAccount/countries', params: {ovhCompany: OVH.nichandle.OvhCompanyEnum, ovhSubsidiary: OVH.nichandle.OvhSubsidiaryEnum}): Promise<nichandle.CountryEnum[]>;
+  public get(path: '/newAccount/countries', params: {ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<nichandle.CountryEnum[]>;
   /**
    * Give all the rules to follow in order to create an OVH identifier
    * Give all the rules to follow in order to create an OVH identifier
    */
-  public get(path: '/newAccount/creationRules', params: {country: OVH.nichandle.CountryEnum, legalform: OVH.nichandle.LegalFormEnum, ovhCompany: OVH.nichandle.OvhCompanyEnum, ovhSubsidiary: OVH.nichandle.OvhSubsidiaryEnum}): Promise<nichandle.CreationRules>;
+  public get(path: '/newAccount/creationRules', params: {country: nichandle.CountryEnum, legalform: nichandle.LegalFormEnum, ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<nichandle.CreationRules>;
   /**
    * All available legal forms for a given country
    * All available legal forms for a given country
    */
-  public get(path: '/newAccount/legalform', params: {country: OVH.nichandle.CountryEnum}): Promise<string[]>;
+  public get(path: '/newAccount/legalform', params: {country: nichandle.CountryEnum}): Promise<string[]>;
   public get(path: PathsNewAccountGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
@@ -158,14 +157,13 @@ export class ApiNewAccount extends OvhWrapper {
    * Create a new OVH identifier
    * Create a new OVH identifier
    */
-  public post(path: '/newAccount', params: {address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country: OVH.nichandle.CountryEnum, email: string, fax?: string, firstname?: string, italianSDI?: string, language?: OVH.nichandle.LanguageEnum, legalform: OVH.nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany: OVH.nichandle.OvhCompanyEnum, ovhSubsidiary: OVH.nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: OVH.nichandle.CountryEnum, sex?: OVH.nichandle.GenderEnum, spareEmail?: string, vat?: string, zip?: string}): Promise<nichandle.NewAccountAndToken>;
+  public post(path: '/newAccount', params: {address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country: nichandle.CountryEnum, email: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, vat?: string, zip?: string}): Promise<nichandle.NewAccountAndToken>;
   /**
    * Give all the rules to follow in order to create and update an OVH identifier
    * Give all the rules to follow in order to create and update an OVH identifier
    */
-  public post(path: '/newAccount/rules', params: {action?: OVH.nichandle.CreationRulesActionEnum, address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: OVH.nichandle.CountryEnum, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: OVH.nichandle.LanguageEnum, legalform?: OVH.nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany?: OVH.nichandle.OvhCompanyEnum, ovhSubsidiary?: OVH.nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: OVH.nichandle.CountryEnum, sex?: OVH.nichandle.GenderEnum, spareEmail?: string, vat?: string, zip?: string}): Promise<nichandle.CreationRule[]>;
+  public post(path: '/newAccount/rules', params: {action?: nichandle.CreationRulesActionEnum, address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, vat?: string, zip?: string}): Promise<nichandle.CreationRule[]>;
   public post(path: PathsNewAccountPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

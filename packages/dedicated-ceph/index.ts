@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace dedicated {
     export namespace ceph {
         export namespace aclGet {
@@ -54,10 +53,12 @@ export namespace dedicated {
         //dedicated.ceph.response
         // fullName: dedicated.ceph.response.response
         export interface response {
-            family: OVH.dedicated.ceph.aclGet.response.familyEnum;
-            id: number;
-            netmask: string;
-            network: string;
+            backup: boolean;
+            minActiveReplicas: number;
+            name: string;
+            poolType: dedicated.ceph.poolList.response.poolTypeEnum;
+            replicaCount: number;
+            serviceName: string;
         }
         export namespace taskGet {
             export namespace response {
@@ -99,10 +100,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -305,12 +306,12 @@ export class ApiDedicatedCeph extends OvhWrapper {
    * dedicated.ceph.clusterGet
    * Update cluster details
    */
-  public put(path: '/dedicated/ceph/{serviceName}', params: {serviceName: string, crushTunables: OVH.dedicated.ceph.clusterUpdate.crushTunablesEnum, label: string}): Promise<string>;
+  public put(path: '/dedicated/ceph/{serviceName}', params: {serviceName: string, crushTunables: dedicated.ceph.clusterUpdate.crushTunablesEnum, label: string}): Promise<string>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/dedicated/ceph/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/dedicated/ceph/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * dedicated.ceph.userPoolPermList
    * Update user-pool permission for single pool
@@ -333,7 +334,7 @@ export class ApiDedicatedCeph extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/dedicated/ceph/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/dedicated/ceph/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * dedicated.ceph.poolCreate
    * Create a new ceph pool
@@ -353,7 +354,7 @@ export class ApiDedicatedCeph extends OvhWrapper {
    * dedicated.ceph.userPoolPermList
    * Create new user-pool permissions. All old permissions will be cleared
    */
-  public post(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool', params: {serviceName: string, userName: string, permissions?: OVH.dedicated.ceph.permissions[]}): Promise<string>;
+  public post(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool', params: {serviceName: string, userName: string, permissions?: dedicated.ceph.permissions[]}): Promise<string>;
   public post(path: PathsDedicatedCephPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
@@ -380,5 +381,4 @@ export class ApiDedicatedCeph extends OvhWrapper {
   public delete(path: PathsDedicatedCephDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

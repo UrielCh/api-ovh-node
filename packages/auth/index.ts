@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace api {
     //api.Credential
     // fullName: api.Credential.Credential
@@ -11,22 +10,22 @@ export namespace api {
         expiration?: string;
         lastUse?: string;
         ovhSupport: boolean;
-        rules: OVH.auth.AccessRule[];
-        status: OVH.auth.CredentialStateEnum;
+        rules: auth.AccessRule[];
+        status: auth.CredentialStateEnum;
     }
 }
 export namespace auth {
     //auth.AccessRule
     // fullName: auth.AccessRule.AccessRule
     export interface AccessRule {
-        method: OVH.auth.MethodEnum;
+        method: auth.MethodEnum;
         path: string;
     }
     //auth.Credential
     // fullName: auth.Credential.Credential
     export interface Credential {
         consumerKey: string;
-        state: OVH.auth.CredentialStateEnum;
+        state: auth.CredentialStateEnum;
         validationUrl?: string;
     }
     //auth.CredentialStateEnum
@@ -82,7 +81,7 @@ export class ApiAuth extends OvhWrapper {
    * Operations with credentials
    * Request a new credential for your application
    */
-  public post(path: '/auth/credential', params: {accessRules: OVH.auth.AccessRule[], redirection?: string}): Promise<auth.Credential>;
+  public post(path: '/auth/credential', params: {accessRules: auth.AccessRule[], redirection?: string}): Promise<auth.Credential>;
   /**
    * Expire current credential
    * Expire current credential
@@ -91,5 +90,4 @@ export class ApiAuth extends OvhWrapper {
   public post(path: PathsAuthPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

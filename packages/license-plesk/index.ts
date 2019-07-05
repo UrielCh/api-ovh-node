@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace license {
     //license.ActionType
     export type ActionType = "addWindowFromExistingSerial" | "changeIp" | "changeOs" | "installLicense" | "optionUpgrade" | "releaseOption" | "versionUpgrade"
@@ -9,7 +8,7 @@ export namespace license {
     //license.ChangeIpStatus
     // fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message: OVH.license.ChangeIpMessageEnum;
+        message: license.ChangeIpMessageEnum;
         success: boolean;
     }
     //license.DomainNumberEnum
@@ -22,7 +21,7 @@ export namespace license {
         amount?: string;
         canBeDeleted: boolean;
         expirationDate: string;
-        label: OVH.license.OptionLabel;
+        label: license.OptionLabel;
         version?: string;
     }
     //license.OptionLabel
@@ -35,12 +34,12 @@ export namespace license {
         canHavePowerPack: boolean;
         canHaveResellerManagement: boolean;
         canHaveWordpressToolkit: boolean;
-        compliantAntivirus: OVH.license.OrderableAntivirusEnum[];
-        compliantApplicationSets: OVH.license.PleskApplicationSetEnum[];
-        compliantDomains: OVH.license.OrderablePleskDomainNumberEnum[];
-        compliantLanguagePack: OVH.license.OrderablePleskLanguagePackEnum[];
-        potentialProblems: OVH.license.PotentialProblemPleskEnum[];
-        version: OVH.license.PleskVersionEnum;
+        compliantAntivirus: license.OrderableAntivirusEnum[];
+        compliantApplicationSets: license.PleskApplicationSetEnum[];
+        compliantDomains: license.OrderablePleskDomainNumberEnum[];
+        compliantLanguagePack: license.OrderablePleskLanguagePackEnum[];
+        potentialProblems: license.PotentialProblemPleskEnum[];
+        version: license.PleskVersionEnum;
     }
     //license.OrderablePleskDomainNumberEnum
     export type OrderablePleskDomainNumberEnum = "10" | "100" | "30" | "300" | "hostingsuite" | "unlimited"
@@ -51,8 +50,8 @@ export namespace license {
     //license.PleskOrderConfiguration
     // fullName: license.PleskOrderConfiguration.PleskOrderConfiguration
     export interface PleskOrderConfiguration {
-        orderableVersions: OVH.license.OrderablePleskCompatibilityInfos[];
-        serviceType: OVH.license.LicenseTypeEnum;
+        orderableVersions: license.OrderablePleskCompatibilityInfos[];
+        serviceType: license.LicenseTypeEnum;
     }
     //license.PleskVersionEnum
     export type PleskVersionEnum = "PLESK_10_AND_LATER" | "PLESK_10_AND_LATER_FOR_KVM" | "PLESK_10_AND_LATER_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN_FOR_XEN" | "PLESK_10_AND_LATER_FOR_XEN" | "PLESK_12_VPS_WEB_ADMIN" | "PLESK_12_VPS_WEB_APP" | "PLESK_12_VPS_WEB_HOST" | "PLESK_12_VPS_WEB_HOST_CLNX" | "PLESK_12_VPS_WEB_PRO" | "PLESK_12_VPS_WEB_PRO_CLNX" | "PLESK_12_WEB_ADMIN" | "PLESK_12_WEB_APP" | "PLESK_12_WEB_HOST" | "PLESK_12_WEB_HOST_CLNX" | "PLESK_12_WEB_PRO" | "PLESK_12_WEB_PRO_CLNX" | "PLESK_75_RELOADED" | "PLESK_80" | "PLESK_80_FOR_VZ" | "PLESK_81_FOR_WIN" | "PLESK_9" | "PLESK_95" | "PLESK_95_FOR_VZ" | "PLESK_95_FOR_WIN" | "PLESK_9_FOR_VZ" | "PLESK_9_FOR_WIN" | "PLESK_ONYX_VPS_WEB_ADMIN" | "PLESK_ONYX_VPS_WEB_APP" | "PLESK_ONYX_VPS_WEB_HOST" | "PLESK_ONYX_VPS_WEB_HOST_CLNX" | "PLESK_ONYX_VPS_WEB_PRO" | "PLESK_ONYX_VPS_WEB_PRO_CLNX" | "PLESK_ONYX_WEB_ADMIN" | "PLESK_ONYX_WEB_APP" | "PLESK_ONYX_WEB_HOST" | "PLESK_ONYX_WEB_HOST_CLNX" | "PLESK_ONYX_WEB_PRO" | "PLESK_ONYX_WEB_PRO_CLNX" | "plesk-12-webadmin-for-vps" | "plesk-12-webhost" | "plesk-12-webhost-for-vps" | "plesk-12-webpro" | "plesk-12-webpro-for-vps"
@@ -63,11 +62,11 @@ export namespace license {
     //license.Task
     // fullName: license.Task.Task
     export interface Task {
-        action: OVH.license.ActionType;
+        action: license.ActionType;
         doneDate?: string;
         lastUpdate: string;
         name: string;
-        status: OVH.license.TaskStateEnum;
+        status: license.TaskStateEnum;
         taskId: number;
         todoDate: string;
     }
@@ -80,14 +79,14 @@ export namespace license {
             creation: string;
             deleteAtExpiration: boolean;
             domain: string;
-            domainNumber?: OVH.license.DomainNumberEnum;
+            domainNumber?: license.DomainNumberEnum;
             informationKey?: string;
             ip: string;
             key: string;
             licenseId: string;
             productKey?: string;
-            status: OVH.license.StateEnum;
-            version: OVH.license.PleskVersionEnum;
+            status: license.StateEnum;
+            version: license.PleskVersionEnum;
         }
     }
 }
@@ -123,10 +122,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -245,7 +244,7 @@ export class ApiLicensePlesk extends OvhWrapper {
    * Your License options
    * Get this object properties
    */
-  public get(path: '/license/plesk/{serviceName}/option/{label}', params: {label: OVH.license.OptionLabel, serviceName: string}): Promise<license.Option>;
+  public get(path: '/license/plesk/{serviceName}/option/{label}', params: {label: license.OptionLabel, serviceName: string}): Promise<license.Option>;
   /**
    * Details about a Service
    * Get this object properties
@@ -255,7 +254,7 @@ export class ApiLicensePlesk extends OvhWrapper {
    * List the license.Task objects
    * tasks linked to this license
    */
-  public get(path: '/license/plesk/{serviceName}/tasks', params: {serviceName: string, action?: OVH.license.ActionType, status?: OVH.license.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/license/plesk/{serviceName}/tasks', params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
   /**
    * licenses Todos
    * Get this object properties
@@ -273,12 +272,12 @@ export class ApiLicensePlesk extends OvhWrapper {
    * Your Plesk license
    * Alter this object properties
    */
-  public put(path: '/license/plesk/{serviceName}', params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, domainNumber?: OVH.license.DomainNumberEnum, informationKey?: string, ip?: string, key?: string, licenseId?: string, productKey?: string, status?: OVH.license.StateEnum, version?: OVH.license.PleskVersionEnum}): Promise<void>;
+  public put(path: '/license/plesk/{serviceName}', params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, domainNumber?: license.DomainNumberEnum, informationKey?: string, ip?: string, key?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.PleskVersionEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/license/plesk/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/license/plesk/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsLicensePleskPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -291,7 +290,7 @@ export class ApiLicensePlesk extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/license/plesk/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/license/plesk/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * Terminate your service
    * Terminate your service
@@ -304,9 +303,8 @@ export class ApiLicensePlesk extends OvhWrapper {
    * Your License options
    * release this Option
    */
-  public delete(path: '/license/plesk/{serviceName}/option/{label}', params: {label: OVH.license.OptionLabel, serviceName: string}): Promise<license.Task>;
+  public delete(path: '/license/plesk/{serviceName}/option/{label}', params: {label: license.OptionLabel, serviceName: string}): Promise<license.Task>;
   public delete(path: PathsLicensePleskDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

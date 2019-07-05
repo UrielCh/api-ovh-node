@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace router {
     //router.Dnat
     // fullName: router.Dnat.Dnat
@@ -9,9 +8,9 @@ export namespace router {
         id: number;
         newDestinationNet: string;
         newDestinationPort?: number;
-        protocol: OVH.router.ProtocolEnum;
+        protocol: router.ProtocolEnum;
         sourceNet?: string;
-        status: OVH.router.StatusEnum;
+        status: router.StatusEnum;
     }
     //router.IpStatusEnum
     export type IpStatusEnum = "blacklisted" | "deleted" | "free" | "installing" | "ok" | "quarantined" | "removing" | "suspended"
@@ -22,7 +21,7 @@ export namespace router {
         description?: string;
         id: number;
         ipNet: string;
-        status: OVH.router.IpStatusEnum;
+        status: router.IpStatusEnum;
         vlanTag?: number;
     }
     //router.PrivLinkReqActionEnum
@@ -36,13 +35,13 @@ export namespace router {
         id: number;
         name: string;
         peerServiceName: string;
-        status: OVH.router.StatusEnum;
+        status: router.StatusEnum;
     }
     //router.PrivateLinkRequest
     // fullName: router.PrivateLinkRequest.PrivateLinkRequest
     export interface PrivateLinkRequest {
         creationDate: string;
-        status: OVH.router.PrivLinkReqStatusEnum;
+        status: router.PrivLinkReqStatusEnum;
     }
     //router.PrivateLinkRoute
     // fullName: router.PrivateLinkRoute.PrivateLinkRoute
@@ -50,7 +49,7 @@ export namespace router {
         creationDate: string;
         id: number;
         network: string;
-        status: OVH.router.StatusEnum;
+        status: router.StatusEnum;
     }
     //router.ProtocolEnum
     export type ProtocolEnum = "any" | "tcp" | "udp"
@@ -59,7 +58,7 @@ export namespace router {
     export interface Router {
         name: string;
         service: string;
-        status: OVH.router.StatusEnum;
+        status: router.StatusEnum;
     }
     //router.Snat
     // fullName: router.Snat.Snat
@@ -69,8 +68,8 @@ export namespace router {
         id: number;
         newSourceNet: string;
         newSourcePort?: number;
-        protocol: OVH.router.ProtocolEnum;
-        status: OVH.router.StatusEnum;
+        protocol: router.ProtocolEnum;
+        status: router.StatusEnum;
     }
     //router.StatusEnum
     export type StatusEnum = "creating" | "error" | "off" | "on" | "removing" | "suspended"
@@ -79,9 +78,9 @@ export namespace router {
     export interface Task {
         creationDate: string;
         finishDate?: string;
-        function: OVH.router.TaskFunctionEnum;
+        function: router.TaskFunctionEnum;
         id: number;
-        status: OVH.router.TaskStatusEnum;
+        status: router.TaskStatusEnum;
     }
     //router.TaskFunctionEnum
     export type TaskFunctionEnum = "addDnat" | "addDnatMaster" | "addNetwork" | "addNetworkMaster" | "addPrivateLink" | "addPrivateLinkMaster" | "addPrivateLinkRoute" | "addPrivateLinkRouteMaster" | "addSnat" | "addSnatMaster" | "delDnat" | "delDnatMaster" | "delNetwork" | "delNetworkMaster" | "delPrivateLink" | "delPrivateLinkMaster" | "delPrivateLinkRoute" | "delPrivateLinkRouteMaster" | "delSnat" | "delSnatMaster" | "vpnCreation" | "vpnDeletion" | "vpnSetConfig" | "vpnSetConfigMaster" | "vpnSetSecrets" | "vpnSetSecretsMaster"
@@ -129,10 +128,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -326,7 +325,7 @@ export class ApiRouter extends OvhWrapper {
    * List the router.Task objects
    * Tasks for this Router
    */
-  public get(path: '/router/{serviceName}/task', params: {serviceName: string, function_?: OVH.router.TaskFunctionEnum, status?: OVH.router.TaskStatusEnum}): Promise<number[]>;
+  public get(path: '/router/{serviceName}/task', params: {serviceName: string, function_?: router.TaskFunctionEnum, status?: router.TaskStatusEnum}): Promise<number[]>;
   /**
    * Task
    * Get this object properties
@@ -349,17 +348,17 @@ export class ApiRouter extends OvhWrapper {
    * Network
    * Alter this object properties
    */
-  public put(path: '/router/{serviceName}/network/{ipNet}', params: {ipNet: string, serviceName: string, creationDate?: string, description?: string, id?: number, status?: OVH.router.IpStatusEnum, vlanTag?: number}): Promise<void>;
+  public put(path: '/router/{serviceName}/network/{ipNet}', params: {ipNet: string, serviceName: string, creationDate?: string, description?: string, id?: number, status?: router.IpStatusEnum, vlanTag?: number}): Promise<void>;
   /**
    * Private Link to another service
    * Alter this object properties
    */
-  public put(path: '/router/{serviceName}/privateLink/{peerServiceName}', params: {peerServiceName: string, serviceName: string, creationDate?: string, id?: number, name?: string, status?: OVH.router.StatusEnum}): Promise<void>;
+  public put(path: '/router/{serviceName}/privateLink/{peerServiceName}', params: {peerServiceName: string, serviceName: string, creationDate?: string, id?: number, name?: string, status?: router.StatusEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/router/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/router/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Virtual Private Network
    * Alter this object properties
@@ -372,7 +371,7 @@ export class ApiRouter extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/router/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/router/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * List the router.Network objects
    * Add a network to your router
@@ -387,7 +386,7 @@ export class ApiRouter extends OvhWrapper {
    * manage operations
    * Accept, reject or cancel a pending request
    */
-  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/request/manage', params: {peerServiceName: string, serviceName: string, action: OVH.router.PrivLinkReqActionEnum}): Promise<string>;
+  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/request/manage', params: {peerServiceName: string, serviceName: string, action: router.PrivLinkReqActionEnum}): Promise<string>;
   /**
    * List the router.PrivateLinkRoute objects
    * Add a new outgoing route to your router
@@ -434,5 +433,4 @@ export class ApiRouter extends OvhWrapper {
   public delete(path: PathsRouterDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

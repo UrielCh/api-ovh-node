@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace dbaas {
     export namespace queue {
         //dbaas.queue.App
@@ -10,15 +9,15 @@ export namespace dbaas {
             id: string;
             name: string;
             regionId: string;
-            status: OVH.dbaas.queue.AppStatus;
+            status: dbaas.queue.AppStatus;
         }
         //dbaas.queue.AppConfiguration
         // fullName: dbaas.queue.AppConfiguration.AppConfiguration
         export interface AppConfiguration {
-            app: OVH.dbaas.queue.App;
-            metricsAccount: OVH.dbaas.queue.MetricsAccount;
-            roles: OVH.dbaas.queue.Role[];
-            users: OVH.dbaas.queue.UserWithPassword[];
+            app: dbaas.queue.App;
+            metricsAccount: dbaas.queue.MetricsAccount;
+            roles: dbaas.queue.Role[];
+            users: dbaas.queue.UserWithPassword[];
         }
         //dbaas.queue.AppStatus
         export type AppStatus = "not_configured" | "active" | "deleted"
@@ -110,10 +109,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -307,7 +306,7 @@ export class ApiDbaasQueue extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/dbaas/queue/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/dbaas/queue/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsDbaasQueuePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -327,5 +326,4 @@ export class ApiDbaasQueue extends OvhWrapper {
   public delete(path: PathsDbaasQueueDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

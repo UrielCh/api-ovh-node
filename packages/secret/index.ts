@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace secret {
     //secret.Secret
     // fullName: secret.Secret.Secret
@@ -32,5 +31,4 @@ export class ApiSecret extends OvhWrapper {
   public post(path: PathsSecretPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

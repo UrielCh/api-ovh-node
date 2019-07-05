@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.SafeKeyValue
     // fullName: complexType.SafeKeyValue.SafeKeyValue
@@ -15,7 +14,7 @@ export namespace order {
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode: OVH.order.CurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -27,23 +26,23 @@ export namespace service {
     // fullName: service.Plan.Plan
     export interface Plan {
         code?: string;
-        product: OVH.service.plan.Product;
+        product: service.plan.Product;
     }
     //service.Renew
     // fullName: service.Renew.Renew
     export interface Renew {
         dayOfMonth?: number;
-        interval?: OVH.service.renew.Interval;
-        mode: OVH.service.renew.Mode;
-        possibleIntervals?: OVH.service.renew.Interval[];
-        possibleModes: OVH.service.renew.Mode[];
+        interval?: service.renew.Interval;
+        mode: service.renew.Mode;
+        possibleIntervals?: service.renew.Interval[];
+        possibleModes: service.renew.Mode[];
     }
     //service.Resource
     // fullName: service.Resource.Resource
     export interface Resource {
         displayName: string;
         name?: string;
-        state?: OVH.service.ResourceStateEnum;
+        state?: service.ResourceStateEnum;
     }
     //service.ResourceStateEnum
     export type ResourceStateEnum = "deleted" | "deleting" | "ok" | "opening" | "suspended" | "suspending" | "toDelete" | "toOpen" | "toSuspend"
@@ -52,7 +51,7 @@ export namespace service {
     export interface Route {
         path?: string;
         url?: string;
-        vars: OVH.complexType.SafeKeyValue<string>[];
+        vars: complexType.SafeKeyValue<string>[];
     }
     export namespace consumption {
         //service.consumption.Transaction
@@ -60,20 +59,20 @@ export namespace service {
         export interface Transaction {
             beginDate: string;
             creationDate?: string;
-            elements: OVH.service.consumption.transaction.Element[];
+            elements: service.consumption.transaction.Element[];
             endDate?: string;
             id?: number;
             lastUpdate?: string;
-            price: OVH.order.Price;
+            price: order.Price;
             serviceId: number;
         }
         export namespace transaction {
             //service.consumption.transaction.Element
             // fullName: service.consumption.transaction.Element.Element
             export interface Element {
-                details: OVH.service.consumption.transaction.Element.Detail[];
+                details: service.consumption.transaction.Element.Detail[];
                 planCode: string;
-                price: OVH.order.Price;
+                price: order.Price;
                 quantity: number;
             }
             export namespace Element {
@@ -102,13 +101,13 @@ export namespace service {
         // fullName: service.renew.RenewDescription.RenewDescription
         export interface RenewDescription {
             renewPeriod: string;
-            strategies: OVH.service.renew.RenewStrategy[];
+            strategies: service.renew.RenewStrategy[];
         }
         //service.renew.RenewForecast
         // fullName: service.renew.RenewForecast.RenewForecast
         export interface RenewForecast {
-            details: OVH.service.renew.RenewForecastDetail[];
-            prices: OVH.service.renew.RenewForecastDetailPrices;
+            details: service.renew.RenewForecastDetail[];
+            prices: service.renew.RenewForecastDetailPrices;
         }
         //service.renew.RenewForecastDetail
         // fullName: service.renew.RenewForecastDetail.RenewForecastDetail
@@ -116,15 +115,15 @@ export namespace service {
             description?: string;
             quantity: number;
             serviceName: string;
-            totalPrice: OVH.order.Price;
-            unitPrice: OVH.order.Price;
+            totalPrice: order.Price;
+            unitPrice: order.Price;
         }
         //service.renew.RenewForecastDetailPrices
         // fullName: service.renew.RenewForecastDetailPrices.RenewForecastDetailPrices
         export interface RenewForecastDetailPrices {
-            tax: OVH.order.Price;
-            withTax: OVH.order.Price;
-            withoutTax: OVH.order.Price;
+            tax: order.Price;
+            withTax: order.Price;
+            withoutTax: order.Price;
         }
         //service.renew.RenewOrder
         // fullName: service.renew.RenewOrder.RenewOrder
@@ -134,19 +133,19 @@ export namespace service {
             orderId: number;
             password: string;
             pdfUrl: string;
-            priceWithTax: OVH.order.Price;
-            priceWithoutTax: OVH.order.Price;
+            priceWithTax: order.Price;
+            priceWithoutTax: order.Price;
             retractionDate?: string;
-            tax: OVH.order.Price;
+            tax: order.Price;
             url: string;
         }
         //service.renew.RenewStrategy
         // fullName: service.renew.RenewStrategy.RenewStrategy
         export interface RenewStrategy {
-            price: OVH.order.Price;
+            price: order.Price;
             priceInUcents: number;
             services: number[];
-            servicesDetails: OVH.service.renew.Service[];
+            servicesDetails: service.renew.Service[];
         }
         //service.renew.Service
         // fullName: service.renew.Service.Service
@@ -162,16 +161,16 @@ export namespace serviceList {
     // fullName: serviceList.Service.Service
     export interface Service {
         creationDate: string;
-        details: OVH.complexType.SafeKeyValue<string>[];
+        details: complexType.SafeKeyValue<string>[];
         engagementDate?: string;
         expirationDate?: string;
         nextBillingDate?: string;
-        plan: OVH.service.Plan;
+        plan: service.Plan;
         quantity: number;
-        renew?: OVH.service.Renew;
-        resource: OVH.service.Resource;
-        route: OVH.service.Route;
-        state: OVH.service.BillingStateEnum;
+        renew?: service.Renew;
+        resource: service.Resource;
+        route: service.Route;
+        state: service.BillingStateEnum;
     }
 }
 // Apis harmony
@@ -242,7 +241,7 @@ export class ApiService extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/service/{serviceId}', params: {serviceId: number, creationDate?: string, details?: OVH.complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: OVH.service.Plan, quantity?: number, renew?: OVH.service.Renew, resource?: OVH.service.Resource, route?: OVH.service.Route, state?: OVH.service.BillingStateEnum}): Promise<void>;
+  public put(path: '/service/{serviceId}', params: {serviceId: number, creationDate?: string, details?: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: service.Plan, quantity?: number, renew?: service.Renew, resource?: service.Resource, route?: service.Route, state?: service.BillingStateEnum}): Promise<void>;
   public put(path: PathsServicePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -269,5 +268,4 @@ export class ApiService extends OvhWrapper {
   public post(path: PathsServicePOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

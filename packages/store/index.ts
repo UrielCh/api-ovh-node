@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace MarketPlace {
     //MarketPlace.Document
     // fullName: MarketPlace.Document.Document
@@ -11,7 +10,7 @@ export namespace MarketPlace {
         name?: string;
         putUrl?: string;
         size?: string;
-        tags?: OVH.complexType.SafeKeyValue<string>[];
+        tags?: complexType.SafeKeyValue<string>[];
     }
     //MarketPlace.Partner
     // fullName: MarketPlace.Partner.Partner
@@ -289,7 +288,7 @@ export class ApiStore extends OvhWrapper {
    * MarketPlaceDocument
    * Create a document
    */
-  public post(path: '/store/document', params: {name: string, tags?: OVH.complexType.SafeKeyValue<string>[]}): Promise<MarketPlace.Document>;
+  public post(path: '/store/document', params: {name: string, tags?: complexType.SafeKeyValue<string>[]}): Promise<MarketPlace.Document>;
   /**
    * MarketPlaceDocument
    * Add CORS support on your container
@@ -356,5 +355,4 @@ export class ApiStore extends OvhWrapper {
   public delete(path: PathsStoreDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

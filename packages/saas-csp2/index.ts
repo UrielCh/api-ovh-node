@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace msServices {
     //msServices.LicensePeriodEnum
     export type LicensePeriodEnum = "lastMonth" | "lastQuarter" | "lastWeek" | "lastYear"
@@ -11,7 +10,7 @@ export namespace saas {
         // fullName: saas.csp2.BillingStatistics.BillingStatistics
         export interface BillingStatistics {
             endDate: string;
-            lines: OVH.saas.csp2.BillingStatisticsLine[];
+            lines: saas.csp2.BillingStatisticsLine[];
             startDate: string;
         }
         //saas.csp2.BillingStatisticsLine
@@ -27,7 +26,7 @@ export namespace saas {
         // fullName: saas.csp2.OfficeLicence.OfficeLicence
         export interface OfficeLicence {
             id: number;
-            licenceType: OVH.saas.csp2.LicenseTypeEnum;
+            licenceType: saas.csp2.LicenseTypeEnum;
             limit?: number;
             name: string;
         }
@@ -48,7 +47,7 @@ export namespace saas {
             finishDate?: string;
             function: string;
             id: number;
-            status: OVH.saas.csp2.TaskStatusEnum;
+            status: saas.csp2.TaskStatusEnum;
             todoDate: string;
         }
         //saas.csp2.OfficeTenant
@@ -63,7 +62,7 @@ export namespace saas {
             lastName: string;
             phone: string;
             serviceName: string;
-            status: OVH.saas.csp2.ServiceStateEnum;
+            status: saas.csp2.ServiceStateEnum;
             zipCode: string;
         }
         //saas.csp2.ServiceStateEnum
@@ -72,7 +71,7 @@ export namespace saas {
         // fullName: saas.csp2.Statistics.Statistics
         export interface Statistics {
             date: string;
-            lines: OVH.saas.csp2.StatisticsLine[];
+            lines: saas.csp2.StatisticsLine[];
         }
         //saas.csp2.StatisticsLine
         // fullName: saas.csp2.StatisticsLine.StatisticsLine
@@ -116,10 +115,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -296,7 +295,7 @@ export class ApiSaasCsp2 extends OvhWrapper {
    * usageStatistics operations
    * Get the usage statistics over the chose period
    */
-  public get(path: '/saas/csp2/{serviceName}/usageStatistics', params: {serviceName: string, timePeriod: OVH.msServices.LicensePeriodEnum}): Promise<saas.csp2.Statistics[]>;
+  public get(path: '/saas/csp2/{serviceName}/usageStatistics', params: {serviceName: string, timePeriod: msServices.LicensePeriodEnum}): Promise<saas.csp2.Statistics[]>;
   public get(path: PathsSaasCsp2GET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
@@ -304,12 +303,12 @@ export class ApiSaasCsp2 extends OvhWrapper {
    * Office tenant
    * Alter this object properties
    */
-  public put(path: '/saas/csp2/{serviceName}', params: {serviceName: string, address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, status?: OVH.saas.csp2.ServiceStateEnum, zipCode?: string}): Promise<void>;
+  public put(path: '/saas/csp2/{serviceName}', params: {serviceName: string, address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, status?: saas.csp2.ServiceStateEnum, zipCode?: string}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/saas/csp2/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/saas/csp2/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsSaasCsp2PUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -322,7 +321,7 @@ export class ApiSaasCsp2 extends OvhWrapper {
    * configureDomain operations
    * Automatically sets up an OVH-hosted domain of yours for your office365 services. Note, this requires the domain to not have any interfering MX/SRV/TXT records
    */
-  public post(path: '/saas/csp2/{serviceName}/configureDomain', params: {serviceName: string, domain: string, supportedServices: OVH.saas.csp2.SupportedServiceEnum[]}): Promise<saas.csp2.OfficeTask>;
+  public post(path: '/saas/csp2/{serviceName}/configureDomain', params: {serviceName: string, domain: string, supportedServices: saas.csp2.SupportedServiceEnum[]}): Promise<saas.csp2.OfficeTask>;
   /**
    * List the saas.csp2.OfficeSubscription objects
    * Add a subscription to this tenant
@@ -349,5 +348,4 @@ export class ApiSaasCsp2 extends OvhWrapper {
   public delete(path: PathsSaasCsp2DELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

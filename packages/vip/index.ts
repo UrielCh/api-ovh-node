@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
@@ -29,10 +28,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace vip {
@@ -40,7 +39,7 @@ export namespace vip {
     // fullName: vip.SupportVip.SupportVip
     export interface SupportVip {
         serviceName: string;
-        universe: OVH.vip.UniverseEnum[];
+        universe: vip.UniverseEnum[];
     }
     //vip.UniverseEnum
     export type UniverseEnum = "cloud" | "dedicated" | "telecom" | "web"
@@ -94,9 +93,8 @@ export class ApiVip extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/vip/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/vip/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsVipPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
-}
 }

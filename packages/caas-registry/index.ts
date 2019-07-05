@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace registry {
     //registry.image
     // fullName: registry.image.image
@@ -9,7 +8,7 @@ export namespace registry {
         id: string;
         name: string;
         public: boolean;
-        status: OVH.registry.image.status;
+        status: registry.image.status;
         updatedAt: string;
     }
     export namespace image {
@@ -32,7 +31,7 @@ export namespace registry {
         canRead: boolean;
         canWrite: boolean;
         isAdmin: boolean;
-        status: OVH.registry.permission.status;
+        status: registry.permission.status;
         userId: string;
     }
     //registry.inputUser
@@ -46,7 +45,7 @@ export namespace registry {
         createdAt: string;
         id: string;
         name: string;
-        status: OVH.registry.namespace.status;
+        status: registry.namespace.status;
         updatedAt: string;
     }
     export namespace namespace {
@@ -65,7 +64,7 @@ export namespace registry {
         createdAt: string;
         id: string;
         isAdmin: boolean;
-        status: OVH.registry.permission.status;
+        status: registry.permission.status;
         updatedAt: string;
         userId: string;
     }
@@ -94,7 +93,7 @@ export namespace registry {
         createdAt: string;
         description: boolean;
         id: string;
-        status: OVH.registry.user.status;
+        status: registry.user.status;
         updatedAt: string;
         username: string;
     }
@@ -131,10 +130,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -355,7 +354,7 @@ export class ApiCaasRegistry extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/caas/registry/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/caas/registry/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsCaasRegistryPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -373,12 +372,12 @@ export class ApiCaasRegistry extends OvhWrapper {
    * Missing description
    * Create image permissions
    */
-  public post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions', params: {imageId: string, namespaceId: string, serviceName: string, canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: OVH.registry.permission.status, userId?: string}): Promise<registry.permissions>;
+  public post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions', params: {imageId: string, namespaceId: string, serviceName: string, canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registry.permission.status, userId?: string}): Promise<registry.permissions>;
   /**
    * Missing description
    * Create namespace permissions
    */
-  public post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions', params: {namespaceId: string, serviceName: string, canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: OVH.registry.permission.status, userId?: string}): Promise<registry.permissions>;
+  public post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions', params: {namespaceId: string, serviceName: string, canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registry.permission.status, userId?: string}): Promise<registry.permissions>;
   /**
    * Missing description
    * Create user
@@ -420,5 +419,4 @@ export class ApiCaasRegistry extends OvhWrapper {
   public delete(path: PathsCaasRegistryDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

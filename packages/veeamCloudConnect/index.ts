@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
@@ -37,18 +36,18 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace veeamCloudConnect {
     //veeamCloudConnect.Account
     // fullName: veeamCloudConnect.Account.Account
     export interface Account {
-        location: OVH.veeamCloudConnect.Location;
-        productOffer: OVH.veeamCloudConnect.Offer;
+        location: veeamCloudConnect.Location;
+        productOffer: veeamCloudConnect.Offer;
         serviceName: string;
         vmCount?: number;
     }
@@ -56,10 +55,10 @@ export namespace veeamCloudConnect {
     // fullName: veeamCloudConnect.BackupRepository.BackupRepository
     export interface BackupRepository {
         inventoryName: string;
-        quota: OVH.complexType.UnitAndValue<number>;
-        quotaUsed?: OVH.complexType.UnitAndValue<number>;
-        replicationZone?: OVH.veeamCloudConnect.Location;
-        state: OVH.veeamCloudConnect.BackupRepositoryStateEnum;
+        quota: complexType.UnitAndValue<number>;
+        quotaUsed?: complexType.UnitAndValue<number>;
+        replicationZone?: veeamCloudConnect.Location;
+        state: veeamCloudConnect.BackupRepositoryStateEnum;
         usage?: number;
     }
     //veeamCloudConnect.BackupRepositoryStateEnum
@@ -75,7 +74,7 @@ export namespace veeamCloudConnect {
         name: string;
         progress: number;
         startDate?: string;
-        state: OVH.veeamCloudConnect.TaskStateEnum;
+        state: veeamCloudConnect.TaskStateEnum;
         taskId: number;
     }
     //veeamCloudConnect.TaskStateEnum
@@ -207,7 +206,7 @@ export class ApiVeeamCloudConnect extends OvhWrapper {
    * List the veeamCloudConnect.Task objects
    * Tasks associated with Cloud Tenant
    */
-  public get(path: '/veeamCloudConnect/{serviceName}/task', params: {serviceName: string, name?: string, state?: OVH.veeamCloudConnect.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/veeamCloudConnect/{serviceName}/task', params: {serviceName: string, name?: string, state?: veeamCloudConnect.TaskStateEnum}): Promise<number[]>;
   /**
    * Operation with the Cloud Tenant Account
    * Get this object properties
@@ -220,7 +219,7 @@ export class ApiVeeamCloudConnect extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/veeamCloudConnect/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/veeamCloudConnect/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsVeeamCloudConnectPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -250,5 +249,4 @@ export class ApiVeeamCloudConnect extends OvhWrapper {
   public delete(path: PathsVeeamCloudConnectDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

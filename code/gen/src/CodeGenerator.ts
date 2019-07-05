@@ -1,7 +1,6 @@
 import GenApiTypes, { CacheApi, CacheModel, filterReservedKw } from './GenApiTypes';
 import { indentGen, protectModelField, className, protectJsonKey, rawRemapNode, formatUpperCamlCase, protectHarmonyField } from './utils';
 import { Parameter, Schema, FieldProp } from './schema';
-import { Hash } from 'crypto';
 
 export class CodeGenerator {
     api: string;
@@ -11,7 +10,11 @@ export class CodeGenerator {
     constructor(api: string) {
         this.api = api;
         this.gen = new GenApiTypes();
-        this.extraNS = `OVH.`;
+        if (this.api == '/cloud' || this.api == '/domain' || this.api == '/email/domain' || this.api == '/me'
+         || this.api == '/pack/xdsl' || this.api == '/veeam/veeamEnterprise' || this.api == '/telephony' || this.api == '/xdsl')
+            this.extraNS = `OVH.`;
+        else
+            this.extraNS = '';
     }
 
     async generate(): Promise<string> {
@@ -21,12 +24,15 @@ export class CodeGenerator {
         // Add extra ROOT NameSpace
         let code = `import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';\n\n`;
 
-        code += `export namespace ${this.extraNS.replace('.', '')} {\n`;
+        if (this.extraNS)
+            code += `export namespace ${this.extraNS.replace('.', '')} {\n`;
+
         code = this.dumpModel(0, this.gen.models, code, '');
         code += this.dumpApiHarmony(0, this.gen.apis, '// Apis harmony\n');
         code += this.dumpApi(0, schema, this.gen.apis, '// Api\n');
 
-        code += '}';
+        if (this.extraNS)
+            code += '}';
         return code;
     }
 

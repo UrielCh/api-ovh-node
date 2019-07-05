@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
@@ -24,9 +23,9 @@ export namespace hpcspot {
         hpcspotUrl?: string;
         id: number;
         orderId?: number;
-        quantity: OVH.complexType.UnitAndValue<number>;
-        reference: OVH.hpcspot.ConsumptionReferenceEnum;
-        type: OVH.hpcspot.ConsumptionTypeEnum;
+        quantity: complexType.UnitAndValue<number>;
+        reference: hpcspot.ConsumptionReferenceEnum;
+        type: hpcspot.ConsumptionTypeEnum;
     }
     //hpcspot.ConsumptionReferenceEnum
     export type ConsumptionReferenceEnum = "12core.60gb.quadrok4000" | "16core.64gb" | "1core.4gb" | "1core.4gb.quadrok4000" | "2core.8gb" | "2core.8gb.quadrok4000" | "4core.15gb" | "4core.15gb.quadrok4000" | "4core.32gb" | "8core.30gb" | "8core.30gb.quadrok4000" | "8core.32gb.1teslak20"
@@ -61,10 +60,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -118,7 +117,7 @@ export class ApiHpcspot extends OvhWrapper {
    * List the hpcspot.Consumption objects
    * Details of the consumption of your account
    */
-  public get(path: '/hpcspot/{serviceName}/consumption', params: {serviceName: string, hpcspotItemEndDate_from?: string, hpcspotItemEndDate_to?: string, hpcspotItemId?: number, orderId?: number, type?: OVH.hpcspot.ConsumptionTypeEnum}): Promise<number[]>;
+  public get(path: '/hpcspot/{serviceName}/consumption', params: {serviceName: string, hpcspotItemEndDate_from?: string, hpcspotItemEndDate_to?: string, hpcspotItemId?: number, orderId?: number, type?: hpcspot.ConsumptionTypeEnum}): Promise<number[]>;
   /**
    * Detail of a HPC Spot consumtion
    * Get this object properties
@@ -136,9 +135,8 @@ export class ApiHpcspot extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/hpcspot/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/hpcspot/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsHpcspotPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
-}
 }

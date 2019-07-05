@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
@@ -28,16 +27,16 @@ export namespace dedicated {
         //dedicated.housing.HaRoutingOrderable
         // fullName: dedicated.housing.HaRoutingOrderable.HaRoutingOrderable
         export interface HaRoutingOrderable {
-            offer: OVH.dedicated.housing.HaRoutingOfferEnum[];
+            offer: dedicated.housing.HaRoutingOfferEnum[];
             orderable: boolean;
         }
         //dedicated.housing.Housing
         // fullName: dedicated.housing.Housing.Housing
         export interface Housing {
-            datacenter?: OVH.dedicated.housing.DatacenterEnum;
+            datacenter?: dedicated.housing.DatacenterEnum;
             name: string;
-            network: OVH.dedicated.housing.NetworkInfo[];
-            options: OVH.dedicated.housing.Options;
+            network: dedicated.housing.NetworkInfo[];
+            options: dedicated.housing.Options;
             rack: string;
             securityCode: string;
         }
@@ -57,9 +56,9 @@ export namespace dedicated {
         //dedicated.housing.NetworkInfo
         // fullName: dedicated.housing.NetworkInfo.NetworkInfo
         export interface NetworkInfo {
-            ipv4?: OVH.dedicated.housing.IpInfo;
-            ipv6?: OVH.dedicated.housing.IpInfo;
-            link?: OVH.dedicated.housing.LinkInfo;
+            ipv4?: dedicated.housing.IpInfo;
+            ipv6?: dedicated.housing.IpInfo;
+            link?: dedicated.housing.LinkInfo;
         }
         //dedicated.housing.Options
         // fullName: dedicated.housing.Options.Options
@@ -73,10 +72,10 @@ export namespace dedicated {
         export interface Task {
             comment?: string;
             doneDate?: string;
-            function: OVH.dedicated.housing.TaskFunctionEnum;
+            function: dedicated.housing.TaskFunctionEnum;
             lastUpdate?: string;
             startDate: string;
-            status: OVH.dedicated.TaskStatusEnum;
+            status: dedicated.TaskStatusEnum;
             taskId: number;
         }
         //dedicated.housing.TaskFunctionEnum
@@ -87,10 +86,10 @@ export namespace dedicated {
         // fullName: dedicated.server.BackupFtp.BackupFtp
         export interface BackupFtp {
             ftpBackupName: string;
-            quota?: OVH.complexType.UnitAndValue<number>;
+            quota?: complexType.UnitAndValue<number>;
             readOnlyDate?: string;
-            type: OVH.dedicated.server.BackupStorageTypeEnum;
-            usage?: OVH.complexType.UnitAndValue<number>;
+            type: dedicated.server.BackupStorageTypeEnum;
+            usage?: complexType.UnitAndValue<number>;
         }
         //dedicated.server.BackupFtpAcl
         // fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
@@ -109,10 +108,10 @@ export namespace dedicated {
         export interface Task {
             comment?: string;
             doneDate?: string;
-            function: OVH.dedicated.TaskFunctionEnum;
+            function: dedicated.TaskFunctionEnum;
             lastUpdate?: string;
             startDate: string;
-            status: OVH.dedicated.TaskStatusEnum;
+            status: dedicated.TaskStatusEnum;
             taskId: number;
         }
     }
@@ -145,10 +144,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -290,7 +289,7 @@ export class ApiDedicatedHousing extends OvhWrapper {
    * List the dedicated.housing.Task objects
    * View task list
    */
-  public get(path: '/dedicated/housing/{serviceName}/task', params: {serviceName: string, function_?: OVH.dedicated.housing.TaskFunctionEnum, status?: OVH.dedicated.TaskStatusEnum}): Promise<number[]>;
+  public get(path: '/dedicated/housing/{serviceName}/task', params: {serviceName: string, function_?: dedicated.housing.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
   /**
    * Housing tasks
    * Get this object properties
@@ -308,7 +307,7 @@ export class ApiDedicatedHousing extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/dedicated/housing/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/dedicated/housing/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsDedicatedHousingPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -348,5 +347,4 @@ export class ApiDedicatedHousing extends OvhWrapper {
   public delete(path: PathsDedicatedHousingDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

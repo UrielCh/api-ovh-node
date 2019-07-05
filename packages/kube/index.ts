@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace kube {
     //kube.Cluster
     // fullName: kube.Cluster.Cluster
@@ -11,7 +10,7 @@ export namespace kube {
         isUpToDate: boolean;
         name: string;
         nodesUrl: string;
-        status: OVH.kube.ClusterStatus;
+        status: kube.ClusterStatus;
         updatePolicy: string;
         updatedAt: string;
         url: string;
@@ -34,7 +33,7 @@ export namespace kube {
         isUpToDate: boolean;
         name?: string;
         projectId: string;
-        status: OVH.kube.NodeStatus;
+        status: kube.NodeStatus;
         updatedAt: string;
         version: string;
     }
@@ -85,10 +84,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -228,12 +227,12 @@ export class ApiKube extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/kube/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/kube/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Manage the update policy of your cluster
    * Change the update policy of your cluster
    */
-  public put(path: '/kube/{serviceName}/updatePolicy', params: {serviceName: string, updatePolicy: OVH.kube.UpdatePolicy}): Promise<void>;
+  public put(path: '/kube/{serviceName}/updatePolicy', params: {serviceName: string, updatePolicy: kube.UpdatePolicy}): Promise<void>;
   public put(path: PathsKubePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -246,7 +245,7 @@ export class ApiKube extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/kube/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/kube/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * Manage your Public Cloud cluster nodes
    * Deploy a node for your cluster on Public Cloud
@@ -256,7 +255,7 @@ export class ApiKube extends OvhWrapper {
    * Reset your cluster
    * Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
    */
-  public post(path: '/kube/{serviceName}/reset', params: {serviceName: string, version?: OVH.kube.Version, workerNodesPolicy?: OVH.kube.ResetWorkerNodesPolicy}): Promise<void>;
+  public post(path: '/kube/{serviceName}/reset', params: {serviceName: string, version?: kube.Version, workerNodesPolicy?: kube.ResetWorkerNodesPolicy}): Promise<void>;
   /**
    * Terminate your service
    * Terminate your service
@@ -278,5 +277,4 @@ export class ApiKube extends OvhWrapper {
   public delete(path: PathsKubeDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

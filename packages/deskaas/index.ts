@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
@@ -19,7 +18,7 @@ export namespace deskaas {
         lastModificationDate?: string;
         name: string;
         progress: number;
-        state: OVH.deskaas.TaskStateEnum;
+        state: deskaas.TaskStateEnum;
         taskId: number;
     }
     //deskaas.TaskStateEnum
@@ -27,24 +26,24 @@ export namespace deskaas {
     //deskaas.User
     // fullName: deskaas.User.User
     export interface User {
-        activationState: OVH.deskaas.user.ActivationStateEnum;
+        activationState: deskaas.user.ActivationStateEnum;
         email: string;
         name: string;
-        state: OVH.deskaas.user.StateEnum;
+        state: deskaas.user.StateEnum;
         userId: number;
     }
     //deskaas.deskaas
     // fullName: deskaas.deskaas.deskaas
     export interface deskaas {
         alias: string;
-        dataDisk: OVH.complexType.UnitAndValue<number>;
+        dataDisk: complexType.UnitAndValue<number>;
         ip?: string;
         os: string;
         planCode: string;
-        ram: OVH.complexType.UnitAndValue<number>;
+        ram: complexType.UnitAndValue<number>;
         reference: string;
         serviceName: string;
-        state: OVH.deskaas.StateEnum;
+        state: deskaas.StateEnum;
         url?: string;
         vcpu: number;
     }
@@ -99,10 +98,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -237,7 +236,7 @@ export class ApiDeskaas extends OvhWrapper {
    * List the deskaas.Task objects
    * Tasks associated with this Desktop As A Service
    */
-  public get(path: '/deskaas/{serviceName}/task', params: {serviceName: string, state?: OVH.deskaas.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/deskaas/{serviceName}/task', params: {serviceName: string, state?: deskaas.TaskStateEnum}): Promise<number[]>;
   /**
    * Operation on a Desktop As A Service component
    * Get this object properties
@@ -252,7 +251,7 @@ export class ApiDeskaas extends OvhWrapper {
    * List the deskaas.Task objects
    * Tasks associated with this User
    */
-  public get(path: '/deskaas/{serviceName}/user/task', params: {serviceName: string, state?: OVH.deskaas.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/deskaas/{serviceName}/user/task', params: {serviceName: string, state?: deskaas.TaskStateEnum}): Promise<number[]>;
   /**
    * Operation on a Desktop As A Service component
    * Get this object properties
@@ -265,7 +264,7 @@ export class ApiDeskaas extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/deskaas/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/deskaas/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsDeskaasPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -283,7 +282,7 @@ export class ApiDeskaas extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/deskaas/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/deskaas/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * console operations
    * New console access
@@ -322,5 +321,4 @@ export class ApiDeskaas extends OvhWrapper {
   public post(path: PathsDeskaasPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

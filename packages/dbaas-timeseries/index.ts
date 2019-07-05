@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
@@ -15,7 +14,7 @@ export namespace order {
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode: OVH.order.CurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -27,33 +26,33 @@ export namespace paas {
         export interface Consumption {
             from: string;
             generated: string;
-            items: OVH.paas.timeseries.ConsumptionItem[];
+            items: paas.timeseries.ConsumptionItem[];
             to: string;
-            total: OVH.order.Price;
+            total: order.Price;
         }
         //paas.timeseries.ConsumptionItem
         // fullName: paas.timeseries.ConsumptionItem.ConsumptionItem
         export interface ConsumptionItem {
-            metricName: OVH.tsaas.MetricNameEnum;
-            price: OVH.order.Price;
-            quantity: OVH.complexType.UnitAndValue<number>;
-            unitPrice: OVH.order.Price;
+            metricName: tsaas.MetricNameEnum;
+            price: order.Price;
+            quantity: complexType.UnitAndValue<number>;
+            unitPrice: order.Price;
         }
         //paas.timeseries.Key
         // fullName: paas.timeseries.Key.Key
         export interface Key {
             description: string;
             id: string;
-            permissions: OVH.tsaas.PermissionEnum[];
+            permissions: tsaas.PermissionEnum[];
             secret: string;
-            tags: OVH.paas.timeseries.Tag[];
+            tags: paas.timeseries.Tag[];
         }
         //paas.timeseries.Project
         // fullName: paas.timeseries.Project.Project
         export interface Project {
             description?: string;
             displayName: string;
-            region: OVH.paas.timeseries.Region;
+            region: paas.timeseries.Region;
             serviceName: string;
         }
         //paas.timeseries.Quota
@@ -61,7 +60,7 @@ export namespace paas {
         export interface Quota {
             current: number;
             max: number;
-            type: OVH.tsaas.QuotaTypeEnum;
+            type: tsaas.QuotaTypeEnum;
         }
         //paas.timeseries.Region
         // fullName: paas.timeseries.Region.Region
@@ -106,10 +105,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace timeseries {
@@ -121,7 +120,7 @@ export namespace timeseries {
         offerId?: string;
         regionId?: string;
         serviceName: string;
-        status?: OVH.timeseries.StatusTypeEnum;
+        status?: timeseries.StatusTypeEnum;
     }
     //timeseries.StatusTypeEnum
     export type StatusTypeEnum = "ACTIVE" | "CREATION" | "DELETED" | "UNCONFIGURED"
@@ -137,7 +136,7 @@ export namespace tsaas {
         permission: string;
         protocol: string;
         secret: string;
-        tags: OVH.paas.timeseries.Tag[];
+        tags: paas.timeseries.Tag[];
     }
     //tsaas.PermissionEnum
     export type PermissionEnum = "READ" | "WRITE"
@@ -311,17 +310,17 @@ export class ApiDbaasTimeseries extends OvhWrapper {
    * Timeseries project
    * Alter this object properties
    */
-  public put(path: '/dbaas/timeseries/{serviceName}', params: {serviceName: string, description?: string, displayName?: string, offerId?: string, regionId?: string, status?: OVH.timeseries.StatusTypeEnum}): Promise<void>;
+  public put(path: '/dbaas/timeseries/{serviceName}', params: {serviceName: string, description?: string, displayName?: string, offerId?: string, regionId?: string, status?: timeseries.StatusTypeEnum}): Promise<void>;
   /**
    * Key
    * Create a key
    */
-  public put(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', params: {keyId: string, serviceName: string, description?: string, permissions: OVH.tsaas.PermissionEnum[], tags: OVH.paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
+  public put(path: '/dbaas/timeseries/{serviceName}/key/{keyId}', params: {keyId: string, serviceName: string, description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/dbaas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/dbaas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsDbaasTimeseriesPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -334,7 +333,7 @@ export class ApiDbaasTimeseries extends OvhWrapper {
    * Keys
    * Create a key for a project
    */
-  public post(path: '/dbaas/timeseries/{serviceName}/key', params: {serviceName: string, description?: string, permissions: string[], tags: OVH.paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
+  public post(path: '/dbaas/timeseries/{serviceName}/key', params: {serviceName: string, description?: string, permissions: string[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
   /**
    * Setup your project on our platform
    * Setup a project
@@ -344,7 +343,7 @@ export class ApiDbaasTimeseries extends OvhWrapper {
    * OpenTSDBTokens
    * Create a OpenTSDB token
    */
-  public post(path: '/dbaas/timeseries/{serviceName}/token/opentsdb', params: {serviceName: string, description?: string, permission: string, tags: OVH.paas.timeseries.Tag[]}): Promise<tsaas.OpenTSDBToken>;
+  public post(path: '/dbaas/timeseries/{serviceName}/token/opentsdb', params: {serviceName: string, description?: string, permission: string, tags: paas.timeseries.Tag[]}): Promise<tsaas.OpenTSDBToken>;
   public post(path: PathsDbaasTimeseriesPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
@@ -361,5 +360,4 @@ export class ApiDbaasTimeseries extends OvhWrapper {
   public delete(path: PathsDbaasTimeseriesDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

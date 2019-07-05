@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace horizonView {
     //horizonView.AccessPointTypeEnum
     export type AccessPointTypeEnum = "privateAccessPoint" | "publicAccessPoint"
@@ -42,11 +41,11 @@ export namespace horizonView {
     //horizonView.DedicatedHorizon
     // fullName: horizonView.DedicatedHorizon.DedicatedHorizon
     export interface DedicatedHorizon {
-        masterZone: OVH.horizonView.Zone;
+        masterZone: horizonView.Zone;
         privateCloudName: string;
-        privateCloudZone: OVH.horizonView.Zone;
+        privateCloudZone: horizonView.Zone;
         publicUrl: string;
-        state: OVH.horizonView.StateEnum;
+        state: horizonView.StateEnum;
         storageAccelerator: boolean;
         version: string;
     }
@@ -69,9 +68,9 @@ export namespace horizonView {
         intercoNextHop?: string;
         intercoPrivateNextHop?: string;
         portGroupId: string;
-        state: OVH.horizonView.StateEnum;
+        state: horizonView.StateEnum;
         twoFA: boolean;
-        type: OVH.horizonView.PoolType;
+        type: horizonView.PoolType;
     }
     //horizonView.PoolType
     export type PoolType = "hybridPool" | "privatePool" | "publicPool"
@@ -84,7 +83,7 @@ export namespace horizonView {
         lastModificationDate?: string;
         name: string;
         progress: number;
-        state: OVH.horizonView.TaskStateEnum;
+        state: horizonView.TaskStateEnum;
         taskId: number;
     }
     //horizonView.TaskStateEnum
@@ -129,10 +128,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -400,7 +399,7 @@ export class ApiHorizonView extends OvhWrapper {
    * List the horizonView.Task objects
    * Tasks associated with this Dedicated Horizon
    */
-  public get(path: '/horizonView/{serviceName}/dedicatedHorizon/task', params: {serviceName: string, state?: OVH.horizonView.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/horizonView/{serviceName}/dedicatedHorizon/task', params: {serviceName: string, state?: horizonView.TaskStateEnum}): Promise<number[]>;
   /**
    * Operation on a Horizon View component
    * Get this object properties
@@ -433,7 +432,7 @@ export class ApiHorizonView extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/horizonView/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/horizonView/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsHorizonViewPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -441,12 +440,12 @@ export class ApiHorizonView extends OvhWrapper {
    * List the horizonView.Pool objects
    * Add new access point to create a new network
    */
-  public post(path: '/horizonView/{serviceName}/accessPoint', params: {serviceName: string, poolType: OVH.horizonView.PoolType, privateBlock?: string, privateVlan?: number, vrouterPoolPublicIp?: string}): Promise<horizonView.Task[]>;
+  public post(path: '/horizonView/{serviceName}/accessPoint', params: {serviceName: string, poolType: horizonView.PoolType, privateBlock?: string, privateVlan?: number, vrouterPoolPublicIp?: string}): Promise<horizonView.Task[]>;
   /**
    * changeSessionTimeout operations
    * Manage your session Timeout on Unified Access Gateway
    */
-  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout', params: {accessPointId: number, serviceName: string, expiration: number, onSingleAP?: OVH.horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
+  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout', params: {accessPointId: number, serviceName: string, expiration: number, onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
   /**
    * List the horizonView.CustomerNetworkPool objects
    * Add a new network 
@@ -461,22 +460,22 @@ export class ApiHorizonView extends OvhWrapper {
    * disableWindowsUsernameOption operations
    * Disable windows Username option on Unified Access Gateway
    */
-  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption', params: {accessPointId: number, serviceName: string, onSingleAP?: OVH.horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
+  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption', params: {accessPointId: number, serviceName: string, onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
   /**
    * enableTwoFA operations
    * Enable two factor authentication on your pool
    */
-  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA', params: {accessPointId: number, serviceName: string, onSingleAP?: OVH.horizonView.AccessPointTypeEnum, radiusIp: string, secret: string}): Promise<horizonView.Task>;
+  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA', params: {accessPointId: number, serviceName: string, onSingleAP?: horizonView.AccessPointTypeEnum, radiusIp: string, secret: string}): Promise<horizonView.Task>;
   /**
    * enableWindowsUsernameOption operations
    * Enable windows Username option on Unified Access Gateway
    */
-  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption', params: {accessPointId: number, serviceName: string, onSingleAP?: OVH.horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
+  public post(path: '/horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption', params: {accessPointId: number, serviceName: string, onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
   /**
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/horizonView/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/horizonView/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * List the horizonView.CustomerNetwork objects
    * Add a new network 
@@ -568,5 +567,4 @@ export class ApiHorizonView extends OvhWrapper {
   public delete(path: PathsHorizonViewDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

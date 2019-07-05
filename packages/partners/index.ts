@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace Partner {
     //Partner.Application
     // fullName: Partner.Application.Application
@@ -10,33 +9,33 @@ export namespace Partner {
     //Partner.Company
     // fullName: Partner.Company.Company
     export interface Company {
-        OVHCertifications: OVH.Partner.OVHCertifications;
+        OVHCertifications: Partner.OVHCertifications;
         OVHCustomersAdvised: string;
         OVHKnowledgeResources: string;
-        OVHProductsUsed: OVH.Partner.OVHProductsUsed;
+        OVHProductsUsed: Partner.OVHProductsUsed;
         OVHTechnicalAdvancedResources: string;
         OVHTechnicalExpertResources: string;
-        activitySectors: OVH.Partner.activitySectors;
+        activitySectors: Partner.activitySectors;
         address: string;
         city: string;
-        clientKinds: OVH.Partner.clientKinds;
+        clientKinds: Partner.clientKinds;
         commercialName: string;
         country: string;
         description: string;
         email: string;
         employeesNumber: string;
-        expertises: OVH.Partner.expertisesChoices;
-        externalCertifications: OVH.Partner.externalCertifications;
+        expertises: Partner.expertisesChoices;
+        externalCertifications: Partner.externalCertifications;
         facebook: string;
         linkedin: string;
         logo: string;
         name: string;
-        partnerKnowledges: OVH.Partner.partnerKnowledges;
+        partnerKnowledges: Partner.partnerKnowledges;
         phone: string;
-        productCountries: OVH.Partner.productCountries;
+        productCountries: Partner.productCountries;
         registrationNumber: string;
         revenue: string;
-        status: OVH.Partner.companyStatusEnum;
+        status: Partner.companyStatusEnum;
         twitter: string;
         website: string;
         zipCode: string;
@@ -72,10 +71,10 @@ export namespace Partner {
     //Partner.OVHProductsUsed
     // fullName: Partner.OVHProductsUsed.OVHProductsUsed
     export interface OVHProductsUsed {
-        cloud: OVH.Partner.OVHProductsUsedCloud;
-        mobileHosting: OVH.Partner.OVHProductsUsedMobileHosting;
-        telecom: OVH.Partner.OVHProductsUsedTelecom;
-        web: OVH.Partner.OVHProductsUsedWeb;
+        cloud: Partner.OVHProductsUsedCloud;
+        mobileHosting: Partner.OVHProductsUsedMobileHosting;
+        telecom: Partner.OVHProductsUsedTelecom;
+        web: Partner.OVHProductsUsedWeb;
     }
     //Partner.OVHProductsUsedCloud
     // fullName: Partner.OVHProductsUsedCloud.OVHProductsUsedCloud
@@ -151,10 +150,10 @@ export namespace Partner {
     //Partner.expertisesChoices
     // fullName: Partner.expertisesChoices.expertisesChoices
     export interface expertisesChoices {
-        consulting: OVH.Partner.expertisesChoicesConsulting;
-        installationAndIntegration: OVH.Partner.expertisesChoicesInstallationAndIntegration;
-        outsourcingAndMaintenance: OVH.Partner.expertisesChoicesOutsourcingAndMaintenance;
-        softwareAndDevelopment: OVH.Partner.expertisesChoicesSoftwareAndDevelopment;
+        consulting: Partner.expertisesChoicesConsulting;
+        installationAndIntegration: Partner.expertisesChoicesInstallationAndIntegration;
+        outsourcingAndMaintenance: Partner.expertisesChoicesOutsourcingAndMaintenance;
+        softwareAndDevelopment: Partner.expertisesChoicesSoftwareAndDevelopment;
     }
     //Partner.expertisesChoicesConsulting
     // fullName: Partner.expertisesChoicesConsulting.expertisesChoicesConsulting
@@ -339,12 +338,12 @@ export class ApiPartners extends OvhWrapper {
    * Company.get
    * Update some fields on a created company
    */
-  public put(path: '/partners/register/company/{companyId}', params: {companyId: string, activitySectors?: OVH.Partner.activitySectors, address?: string, city?: string, clientKinds?: OVH.Partner.clientKinds, commercialName?: string, country?: OVH.nichandle.CountryEnum, description?: string, effective?: OVH.Partner.employeesNumberEnum, email?: string, expertises?: OVH.Partner.expertisesChoices, externalCertifications?: OVH.Partner.externalCertifications, facebook?: string, linkedin?: string, logo?: string, name?: string, OVHCertifications?: OVH.Partner.OVHCertifications, OVHCustomersAdvised?: OVH.Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources?: OVH.Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: OVH.Partner.OVHProductsUsed, OVHTechnicalAdvancedResources?: OVH.Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources?: OVH.Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: OVH.Partner.partnerKnowledges, phone?: string, productCountries?: OVH.Partner.productCountries, registrationNumber?: string, revenue?: OVH.Partner.revenueRangeEnum, twitter?: string, website?: string, zipCode?: string}): Promise<Partner.Company>;
+  public put(path: '/partners/register/company/{companyId}', params: {companyId: string, activitySectors?: Partner.activitySectors, address?: string, city?: string, clientKinds?: Partner.clientKinds, commercialName?: string, country?: nichandle.CountryEnum, description?: string, effective?: Partner.employeesNumberEnum, email?: string, expertises?: Partner.expertisesChoices, externalCertifications?: Partner.externalCertifications, facebook?: string, linkedin?: string, logo?: string, name?: string, OVHCertifications?: Partner.OVHCertifications, OVHCustomersAdvised?: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources?: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: Partner.OVHProductsUsed, OVHTechnicalAdvancedResources?: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources?: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: Partner.partnerKnowledges, phone?: string, productCountries?: Partner.productCountries, registrationNumber?: string, revenue?: Partner.revenueRangeEnum, twitter?: string, website?: string, zipCode?: string}): Promise<Partner.Company>;
   /**
    * Contact.get
    * Update some fields on a created contact
    */
-  public put(path: '/partners/register/company/{companyId}/contact/{contactId}', params: {companyId: string, contactId: string, email?: string, facebook?: string, firstName?: string, lastName?: string, linkedin?: string, newsletter?: boolean, otherNics?: OVH.Partner.Nic[], phone?: string, role?: string, twitter?: string}): Promise<Partner.Contact>;
+  public put(path: '/partners/register/company/{companyId}/contact/{contactId}', params: {companyId: string, contactId: string, email?: string, facebook?: string, firstName?: string, lastName?: string, linkedin?: string, newsletter?: boolean, otherNics?: Partner.Nic[], phone?: string, role?: string, twitter?: string}): Promise<Partner.Contact>;
   public put(path: PathsPartnersPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -352,7 +351,7 @@ export class ApiPartners extends OvhWrapper {
    * Company.list
    * Created a new company for the inscription
    */
-  public post(path: '/partners/register/company', params: {activitySectors?: OVH.Partner.activitySectors, address: string, city: string, clientKinds?: OVH.Partner.clientKinds, commercialName: string, country: OVH.nichandle.CountryEnum, description: string, email: string, employeesNumber: OVH.Partner.employeesNumberEnum, expertises?: OVH.Partner.expertisesChoices, externalCertifications?: OVH.Partner.externalCertifications, facebook?: string, linkedin?: string, logo: string, name: string, OVHCertifications?: OVH.Partner.OVHCertifications, OVHCustomersAdvised: OVH.Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources: OVH.Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: OVH.Partner.OVHProductsUsed, OVHTechnicalAdvancedResources: OVH.Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources: OVH.Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: OVH.Partner.partnerKnowledges, phone: string, productCountries?: OVH.Partner.productCountries, registrationNumber?: string, revenue: OVH.Partner.revenueRangeEnum, twitter?: string, website: string, zipCode: string}): Promise<Partner.Company>;
+  public post(path: '/partners/register/company', params: {activitySectors?: Partner.activitySectors, address: string, city: string, clientKinds?: Partner.clientKinds, commercialName: string, country: nichandle.CountryEnum, description: string, email: string, employeesNumber: Partner.employeesNumberEnum, expertises?: Partner.expertisesChoices, externalCertifications?: Partner.externalCertifications, facebook?: string, linkedin?: string, logo: string, name: string, OVHCertifications?: Partner.OVHCertifications, OVHCustomersAdvised: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: Partner.OVHProductsUsed, OVHTechnicalAdvancedResources: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: Partner.partnerKnowledges, phone: string, productCountries?: Partner.productCountries, registrationNumber?: string, revenue: Partner.revenueRangeEnum, twitter?: string, website: string, zipCode: string}): Promise<Partner.Company>;
   /**
    * Application.create
    * Submit application information for validation
@@ -362,7 +361,7 @@ export class ApiPartners extends OvhWrapper {
    * Contact.list
    * Created a new contact for the inscription
    */
-  public post(path: '/partners/register/company/{companyId}/contact', params: {companyId: string, email: string, facebook?: string, firstName: string, lastName: string, linkedin?: string, newsletter?: boolean, otherNics?: OVH.Partner.Nic[], phone: string, role: string, twitter?: string}): Promise<Partner.Contact>;
+  public post(path: '/partners/register/company/{companyId}/contact', params: {companyId: string, email: string, facebook?: string, firstName: string, lastName: string, linkedin?: string, newsletter?: boolean, otherNics?: Partner.Nic[], phone: string, role: string, twitter?: string}): Promise<Partner.Contact>;
   public post(path: PathsPartnersPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
@@ -379,5 +378,4 @@ export class ApiPartners extends OvhWrapper {
   public delete(path: PathsPartnersDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

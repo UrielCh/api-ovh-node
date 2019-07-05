@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
@@ -20,7 +19,7 @@ export namespace dedicatedCloud {
         description?: string;
         network: string;
         networkAccessId: number;
-        state: OVH.dedicatedCloud.AllowedNetworkStateEnum;
+        state: dedicatedCloud.AllowedNetworkStateEnum;
     }
     //dedicatedCloud.AllowedNetworkStateEnum
     export type AllowedNetworkStateEnum = "allowed" | "toDelete" | "toUpdate"
@@ -28,7 +27,7 @@ export namespace dedicatedCloud {
     // fullName: dedicatedCloud.Backup.Backup
     export interface Backup {
         backupDurationInReport?: boolean;
-        backupOffer?: OVH.dedicatedCloud.backup.OfferTypeEnum;
+        backupOffer?: dedicatedCloud.backup.OfferTypeEnum;
         backupSizeInReport?: boolean;
         diskSizeInReport?: boolean;
         encryption?: boolean;
@@ -37,18 +36,18 @@ export namespace dedicatedCloud {
         mailAddress?: string;
         restorePointInReport?: boolean;
         scheduleHour?: string;
-        state: OVH.dedicatedCloud.BackupStateEnum;
+        state: dedicatedCloud.BackupStateEnum;
         vmwareVmId?: string;
     }
     //dedicatedCloud.BackupJob
     // fullName: dedicatedCloud.BackupJob.BackupJob
     export interface BackupJob {
         allocatedDisk?: number;
-        backupDays?: OVH.dedicatedCloud.backup.BackupDaysEnum[];
+        backupDays?: dedicatedCloud.backup.BackupDaysEnum[];
         encryption?: boolean;
-        offerType?: OVH.dedicatedCloud.backup.OfferTypeEnum;
+        offerType?: dedicatedCloud.backup.OfferTypeEnum;
         retentionTime?: number;
-        state: OVH.dedicatedCloud.backup.StateEnum;
+        state: dedicatedCloud.backup.StateEnum;
         vmName?: string;
     }
     //dedicatedCloud.BackupStateEnum
@@ -60,21 +59,21 @@ export namespace dedicatedCloud {
     //dedicatedCloud.Capabilities
     // fullName: dedicatedCloud.Capabilities.Capabilities
     export interface Capabilities {
-        addRessourceRightStatus: OVH.dedicatedCloud.capabilities.FeatureStatusEnum;
-        backupStatus: OVH.dedicatedCloud.capabilities.FeatureStatusEnum;
+        addRessourceRightStatus: dedicatedCloud.capabilities.FeatureStatusEnum;
+        backupStatus: dedicatedCloud.capabilities.FeatureStatusEnum;
         canAddUser: boolean;
-        fullAdminRoUserStatus: OVH.dedicatedCloud.capabilities.FeatureStatusEnum;
-        nexus1000vStatus: OVH.dedicatedCloud.capabilities.FeatureStatusEnum;
+        fullAdminRoUserStatus: dedicatedCloud.capabilities.FeatureStatusEnum;
+        nexus1000vStatus: dedicatedCloud.capabilities.FeatureStatusEnum;
         upgradable: boolean;
-        userAccessPolicyStatus: OVH.dedicatedCloud.capabilities.FeatureStatusEnum;
+        userAccessPolicyStatus: dedicatedCloud.capabilities.FeatureStatusEnum;
     }
     //dedicatedCloud.CommercialNameEnum
     export type CommercialNameEnum = "DC" | "DC-ANCIENT" | "DC-ANCIENT-HDS" | "DC-ANCIENT-HIPAA" | "DC-ANCIENT-NSX" | "DC-ANCIENT-NSX-VROPS" | "DC-ANCIENT-PCIDSS" | "DC-ANCIENT-UNKNOWN" | "DC-ANCIENT-VROPS" | "DC-HDS" | "DC-HIPAA" | "DC-LEGACY" | "DC-LEGACY-HDS" | "DC-LEGACY-HIPAA" | "DC-LEGACY-NSX" | "DC-LEGACY-NSX-VROPS" | "DC-LEGACY-PCIDSS" | "DC-LEGACY-UNKNOWN" | "DC-LEGACY-VROPS" | "DC-NSX" | "DC-NSX-VROPS" | "DC-PCIDSS" | "DC-UNKNOWN" | "DC-VROPS" | "SDDC" | "SDDC-HDS" | "SDDC-HIPAA" | "SDDC-LEGACY" | "SDDC-LEGACY-HDS" | "SDDC-LEGACY-HIPAA" | "SDDC-LEGACY-PCIDSS" | "SDDC-LEGACY-UNKNOWN" | "SDDC-LEGACY-VROPS" | "SDDC-LEGACY-VROPS-WITHOUT-NSX" | "SDDC-LEGACY-WITHOUT-NSX" | "SDDC-PCIDSS" | "SDDC-UNKNOWN" | "SDDC-VROPS" | "SDDC-VROPS-WITHOUT-NSX" | "SDDC-WITHOUT-NSX" | "UNKNOWN" | "UNKNOWN-HDS" | "UNKNOWN-HIPAA" | "UNKNOWN-NSX" | "UNKNOWN-NSX-VROPS" | "UNKNOWN-PCIDSS" | "UNKNOWN-UNKNOWN" | "UNKNOWN-VROPS"
     //dedicatedCloud.CommercialRange
     // fullName: dedicatedCloud.CommercialRange.CommercialRange
     export interface CommercialRange {
-        allowedHypervisorVersions: OVH.dedicatedCloud.HypervisorVersionEnum[];
-        allowedNetworkRoles: OVH.dedicatedCloud.right.NetworkRoleEnum[];
+        allowedHypervisorVersions: dedicatedCloud.HypervisorVersionEnum[];
+        allowedNetworkRoles: dedicatedCloud.right.NetworkRoleEnum[];
         commercialRangeName: string;
         dedicatedCloudVersion: string;
         range?: string;
@@ -82,7 +81,7 @@ export namespace dedicatedCloud {
     //dedicatedCloud.Datacenter
     // fullName: dedicatedCloud.Datacenter.Datacenter
     export interface Datacenter {
-        commercialName: OVH.dedicatedCloud.CommercialNameEnum;
+        commercialName: dedicatedCloud.CommercialNameEnum;
         commercialRangeName: string;
         datacenterId: number;
         description: string;
@@ -94,7 +93,7 @@ export namespace dedicatedCloud {
     //dedicatedCloud.Federation
     // fullName: dedicatedCloud.Federation.Federation
     export interface Federation {
-        state: OVH.dedicatedCloud.option.StateEnum;
+        state: dedicatedCloud.option.StateEnum;
     }
     //dedicatedCloud.FederationAccessNetwork
     // fullName: dedicatedCloud.FederationAccessNetwork.FederationAccessNetwork
@@ -108,22 +107,22 @@ export namespace dedicatedCloud {
         ip: string;
         ldapTcpPort: number;
         sslThumbprint?: string;
-        state: OVH.dedicatedCloud.optionAccessNetwork.StateEnum;
+        state: dedicatedCloud.optionAccessNetwork.StateEnum;
         username: string;
     }
     //dedicatedCloud.Filer
     // fullName: dedicatedCloud.Filer.Filer
     export interface Filer {
-        billingType: OVH.dedicatedCloud.ressources.BillingTypeEnum;
+        billingType: dedicatedCloud.ressources.BillingTypeEnum;
         filerId: number;
         fullProfile: string;
         name: string;
         profile: string;
-        size: OVH.complexType.UnitAndValue<number>;
+        size: complexType.UnitAndValue<number>;
         spaceFree?: number;
         spaceProvisionned?: number;
         spaceUsed?: number;
-        state: OVH.dedicatedCloud.filer.StateEnum;
+        state: dedicatedCloud.filer.StateEnum;
         vmTotal?: number;
     }
     //dedicatedCloud.GenerationEnum
@@ -132,26 +131,26 @@ export namespace dedicatedCloud {
     // fullName: dedicatedCloud.Hcx.Hcx
     export interface Hcx {
         build?: string;
-        state: OVH.dedicatedCloud.option.StateEnum;
+        state: dedicatedCloud.option.StateEnum;
         version?: string;
     }
     //dedicatedCloud.Hds
     // fullName: dedicatedCloud.Hds.Hds
     export interface Hds {
-        state: OVH.dedicatedCloud.option.StateEnum;
+        state: dedicatedCloud.option.StateEnum;
     }
     //dedicatedCloud.Hipaa
     // fullName: dedicatedCloud.Hipaa.Hipaa
     export interface Hipaa {
-        state: OVH.dedicatedCloud.option.StateEnum;
+        state: dedicatedCloud.option.StateEnum;
     }
     //dedicatedCloud.Host
     // fullName: dedicatedCloud.Host.Host
     export interface Host {
-        billingType: OVH.dedicatedCloud.ressources.BillingTypeEnum;
+        billingType: dedicatedCloud.ressources.BillingTypeEnum;
         clusterName?: string;
-        connectionState?: OVH.dedicatedCloud.hostSystemConnectionState;
-        cpu: OVH.complexType.UnitAndValue<number>;
+        connectionState?: dedicatedCloud.hostSystemConnectionState;
+        cpu: complexType.UnitAndValue<number>;
         cpuMax?: number;
         cpuMaxCore?: number;
         cpuNum?: number;
@@ -164,8 +163,8 @@ export namespace dedicatedCloud {
         profile: string;
         profileCode: string;
         rack: string;
-        ram: OVH.complexType.UnitAndValue<number>;
-        state: OVH.dedicatedCloud.host.StateEnum;
+        ram: complexType.UnitAndValue<number>;
+        state: dedicatedCloud.host.StateEnum;
         uptime?: number;
         vmTotal?: number;
         vmVcpuTotal?: number;
@@ -186,7 +185,7 @@ export namespace dedicatedCloud {
     // fullName: dedicatedCloud.HostStockProcGen.HostStockProcGen
     export interface HostStockProcGen {
         cpuGeneration: string;
-        value: OVH.dedicatedCloud.HostStockHypervisor[];
+        value: dedicatedCloud.HostStockHypervisor[];
     }
     //dedicatedCloud.HostStockProfile
     // fullName: dedicatedCloud.HostStockProfile.HostStockProfile
@@ -194,7 +193,7 @@ export namespace dedicatedCloud {
         id: number;
         name: string;
         ref: string;
-        value: OVH.dedicatedCloud.HostStockProcGen[];
+        value: dedicatedCloud.HostStockProcGen[];
     }
     //dedicatedCloud.HypervisorVersionEnum
     export type HypervisorVersionEnum = "4.1" | "5.0" | "5.1" | "5.5" | "6.0" | "6.5" | "hv3.1" | "hvdc3.1" | "nc1.0"
@@ -205,7 +204,7 @@ export namespace dedicatedCloud {
         description: string;
         network: string;
         networkName: string;
-        register: OVH.dedicatedCloud.BlockRegisterEnum;
+        register: dedicatedCloud.BlockRegisterEnum;
         vlanNumber: number;
     }
     //dedicatedCloud.IpCountriesEnum
@@ -215,7 +214,7 @@ export namespace dedicatedCloud {
     export interface IpDetails {
         ip: string;
         reverse?: string;
-        usage: OVH.dedicatedCloud.ipUsageEnum;
+        usage: dedicatedCloud.ipUsageEnum;
         usageDetails?: string;
     }
     //dedicatedCloud.ManagementInterfaceEnum
@@ -223,7 +222,7 @@ export namespace dedicatedCloud {
     //dedicatedCloud.Nsx
     // fullName: dedicatedCloud.Nsx.Nsx
     export interface Nsx {
-        state: OVH.dedicatedCloud.option.StateEnum;
+        state: dedicatedCloud.option.StateEnum;
         url?: string;
     }
     //dedicatedCloud.ObjectRight
@@ -232,8 +231,8 @@ export namespace dedicatedCloud {
         name: string;
         objectRightId: number;
         propagate: boolean;
-        right: OVH.dedicatedCloud.right.RightEnum;
-        type: OVH.dedicatedCloud.right.UserObjectRightTypeEnum;
+        right: dedicatedCloud.right.RightEnum;
+        type: dedicatedCloud.right.UserObjectRightTypeEnum;
         vmwareObjectId: string;
     }
     //dedicatedCloud.Os
@@ -259,7 +258,7 @@ export namespace dedicatedCloud {
     //dedicatedCloud.PciDss
     // fullName: dedicatedCloud.PciDss.PciDss
     export interface PciDss {
-        state: OVH.dedicatedCloud.option.StateEnum;
+        state: dedicatedCloud.option.StateEnum;
     }
     //dedicatedCloud.RestorePoint
     // fullName: dedicatedCloud.RestorePoint.RestorePoint
@@ -267,18 +266,18 @@ export namespace dedicatedCloud {
         creationTime?: string;
         isCorrupted: boolean;
         restorePointId: number;
-        restorePointSize: OVH.complexType.UnitAndValue<number>;
-        type?: OVH.dedicatedCloud.backup.BackupTypeEnum;
+        restorePointSize: complexType.UnitAndValue<number>;
+        type?: dedicatedCloud.backup.BackupTypeEnum;
     }
     //dedicatedCloud.Right
     // fullName: dedicatedCloud.Right.Right
     export interface Right {
         canAddRessource: boolean;
         datacenterId: number;
-        networkRole: OVH.dedicatedCloud.right.NetworkRoleEnum;
-        right: OVH.dedicatedCloud.right.RightEnum;
+        networkRole: dedicatedCloud.right.NetworkRoleEnum;
+        right: dedicatedCloud.right.RightEnum;
         rightId: number;
-        vmNetworkRole: OVH.dedicatedCloud.right.VmNetworkRoleEnum;
+        vmNetworkRole: dedicatedCloud.right.VmNetworkRoleEnum;
     }
     //dedicatedCloud.Robot
     // fullName: dedicatedCloud.Robot.Robot
@@ -317,7 +316,7 @@ export namespace dedicatedCloud {
         orderId?: number;
         parentTaskId?: number;
         progress: number;
-        state: OVH.dedicatedCloud.TaskStateEnum;
+        state: dedicatedCloud.TaskStateEnum;
         taskId: number;
         type: string;
         userId?: number;
@@ -330,7 +329,7 @@ export namespace dedicatedCloud {
     //dedicatedCloud.User
     // fullName: dedicatedCloud.User.User
     export interface User {
-        activationState?: OVH.dedicatedCloud.user.ActivationStateEnum;
+        activationState?: dedicatedCloud.user.ActivationStateEnum;
         canManageIpFailOvers: boolean;
         canManageNetwork: boolean;
         canManageRights: boolean;
@@ -345,7 +344,7 @@ export namespace dedicatedCloud {
         nsxRight: boolean;
         phoneNumber?: string;
         receiveAlerts: boolean;
-        state: OVH.dedicatedCloud.user.StateEnum;
+        state: dedicatedCloud.user.StateEnum;
         userId: number;
     }
     //dedicatedCloud.UserAccessPolicyEnum
@@ -355,7 +354,7 @@ export namespace dedicatedCloud {
     //dedicatedCloud.VMEncryption
     // fullName: dedicatedCloud.VMEncryption.VMEncryption
     export interface VMEncryption {
-        state: OVH.dedicatedCloud.option.StateEnum;
+        state: dedicatedCloud.option.StateEnum;
     }
     //dedicatedCloud.VMEncryptionAccessNetwork
     // fullName: dedicatedCloud.VMEncryptionAccessNetwork.VMEncryptionAccessNetwork
@@ -365,7 +364,7 @@ export namespace dedicatedCloud {
         kmsId: number;
         kmsTcpPort: number;
         sslThumbprint: string;
-        state: OVH.dedicatedCloud.optionAccessNetwork.StateEnum;
+        state: dedicatedCloud.optionAccessNetwork.StateEnum;
     }
     //dedicatedCloud.Vendor
     // fullName: dedicatedCloud.Vendor.Vendor
@@ -386,23 +385,23 @@ export namespace dedicatedCloud {
     export interface Vlan {
         name: string;
         routingRateLimit: string;
-        state: OVH.dedicatedCloud.vlan.StateEnum;
-        type: OVH.dedicatedCloud.vlan.TypeEnum;
+        state: dedicatedCloud.vlan.StateEnum;
+        type: dedicatedCloud.vlan.TypeEnum;
         vlanId: number;
         vlanNumber: number;
     }
     //dedicatedCloud.Vm
     // fullName: dedicatedCloud.Vm.Vm
     export interface Vm {
-        backup?: OVH.dedicatedCloud.backup.Backup;
-        cdroms?: OVH.dedicatedCloud.virtualMachineCdrom[];
+        backup?: dedicatedCloud.backup.Backup;
+        cdroms?: dedicatedCloud.virtualMachineCdrom[];
         clusterName?: string;
         cpuMax?: number;
         cpuNum?: number;
         cpuReady?: number;
         cpuReadyPercent?: number;
         cpuUsed?: number;
-        filers?: OVH.dedicatedCloud.vmFiler[];
+        filers?: dedicatedCloud.vmFiler[];
         folderName?: string;
         hostName?: string;
         memoryMax?: number;
@@ -414,14 +413,14 @@ export namespace dedicatedCloud {
         netPacketTx?: number;
         netRx?: number;
         netTx?: number;
-        networks?: OVH.dedicatedCloud.vmNetwork[];
-        powerState: OVH.dedicatedCloud.virtualMachinePowerState;
+        networks?: dedicatedCloud.vmNetwork[];
+        powerState: dedicatedCloud.virtualMachinePowerState;
         readLatency?: number;
         readPerSecond?: number;
         readRate?: number;
         roleFt?: string;
         snapshotNum?: number;
-        stateFt?: OVH.dedicatedCloud.virtualMachineFaultToleranceState;
+        stateFt?: dedicatedCloud.virtualMachineFaultToleranceState;
         vmId: number;
         vmwareTools?: string;
         vmwareToolsVersion?: string;
@@ -432,7 +431,7 @@ export namespace dedicatedCloud {
     //dedicatedCloud.Vrops
     // fullName: dedicatedCloud.Vrops.Vrops
     export interface Vrops {
-        state: OVH.dedicatedCloud.option.StateEnum;
+        state: dedicatedCloud.option.StateEnum;
         url?: string;
     }
     //dedicatedCloud.ZpoolStockProfile
@@ -447,17 +446,17 @@ export namespace dedicatedCloud {
         // fullName: dedicatedCloud.backup.Backup.Backup
         export interface Backup {
             allocatedDisk?: number;
-            backupDays?: OVH.dedicatedCloud.backup.BackupDaysEnum[];
+            backupDays?: dedicatedCloud.backup.BackupDaysEnum[];
             encryption?: boolean;
             lastCreationTime?: string;
-            lastDuration?: OVH.complexType.UnitAndValue<number>;
-            lastResult?: OVH.dedicatedCloud.backup.JobStateEnum;
+            lastDuration?: complexType.UnitAndValue<number>;
+            lastResult?: dedicatedCloud.backup.JobStateEnum;
             lastSuccessfulCreationTime?: string;
-            lastSuccessfulDuration?: OVH.complexType.UnitAndValue<number>;
-            offerType?: OVH.dedicatedCloud.backup.OfferTypeEnum;
-            restorePoints?: OVH.dedicatedCloud.backup.RestorePoint[];
+            lastSuccessfulDuration?: complexType.UnitAndValue<number>;
+            offerType?: dedicatedCloud.backup.OfferTypeEnum;
+            restorePoints?: dedicatedCloud.backup.RestorePoint[];
             retentionTime?: number;
-            state?: OVH.dedicatedCloud.backup.StateEnum;
+            state?: dedicatedCloud.backup.StateEnum;
         }
         //dedicatedCloud.backup.BackupDaysEnum
         export type BackupDaysEnum = "Friday" | "Monday" | "Saturday" | "Sunday" | "Thursday" | "Tuesday" | "Wednesday"
@@ -473,8 +472,8 @@ export namespace dedicatedCloud {
             creationTime?: string;
             isCorrupted?: boolean;
             restorePointId: number;
-            size?: OVH.complexType.UnitAndValue<number>;
-            type?: OVH.dedicatedCloud.backup.BackupTypeEnum;
+            size?: complexType.UnitAndValue<number>;
+            type?: dedicatedCloud.backup.BackupTypeEnum;
         }
         //dedicatedCloud.backup.StateEnum
         export type StateEnum = "deleting" | "delivered" | "disabled" | "disabling" | "enabling" | "error" | "migrating" | "pending" | "removed" | "stopping" | "toCreate" | "toDelete" | "toDisable" | "toEnable" | "toStop" | "unknown"
@@ -488,24 +487,24 @@ export namespace dedicatedCloud {
     export interface dedicatedCloud {
         advancedSecurity: boolean;
         bandwidth: string;
-        billingType: OVH.dedicatedCloud.BillingTypeEnum;
+        billingType: dedicatedCloud.BillingTypeEnum;
         certifiedInterfaceUrl: string;
         commercialRange: string;
         description: string;
-        generation: OVH.dedicatedCloud.GenerationEnum;
+        generation: dedicatedCloud.GenerationEnum;
         location: string;
-        managementInterface: OVH.dedicatedCloud.ManagementInterfaceEnum;
+        managementInterface: dedicatedCloud.ManagementInterfaceEnum;
         serviceName: string;
         servicePackName?: string;
         spla: boolean;
         sslV3?: boolean;
-        state: OVH.dedicatedCloud.StateEnum;
-        userAccessPolicy: OVH.dedicatedCloud.UserAccessPolicyEnum;
+        state: dedicatedCloud.StateEnum;
+        userAccessPolicy: dedicatedCloud.UserAccessPolicyEnum;
         userLimitConcurrentSession: number;
-        userLogoutPolicy: OVH.dedicatedCloud.UserLogoutPolicyEnum;
+        userLogoutPolicy: dedicatedCloud.UserLogoutPolicyEnum;
         userSessionTimeout: number;
         vScopeUrl: string;
-        version: OVH.dedicatedCloud.Version;
+        version: dedicatedCloud.Version;
         webInterfaceUrl: string;
     }
     export namespace disasterRecovery {
@@ -514,18 +513,18 @@ export namespace dedicatedCloud {
         //dedicatedCloud.disasterRecovery.LocalSiteDetails
         // fullName: dedicatedCloud.disasterRecovery.LocalSiteDetails.LocalSiteDetails
         export interface LocalSiteDetails {
-            role: OVH.dedicatedCloud.disasterRecovery.SiteRoleEnum;
-            type: OVH.dedicatedCloud.disasterRecovery.SiteTypeEnum;
+            role: dedicatedCloud.disasterRecovery.SiteRoleEnum;
+            type: dedicatedCloud.disasterRecovery.SiteTypeEnum;
             zertoVersion: string;
             zvmIp?: string;
         }
         //dedicatedCloud.disasterRecovery.Profile
         // fullName: dedicatedCloud.disasterRecovery.Profile.Profile
         export interface Profile {
-            drpType?: OVH.dedicatedCloud.disasterRecovery.DrpTypeEnum;
-            localSiteInformation?: OVH.dedicatedCloud.disasterRecovery.LocalSiteDetails;
-            remoteSiteInformation?: OVH.dedicatedCloud.disasterRecovery.RemoteSiteDetails;
-            state: OVH.dedicatedCloud.StateEnum;
+            drpType?: dedicatedCloud.disasterRecovery.DrpTypeEnum;
+            localSiteInformation?: dedicatedCloud.disasterRecovery.LocalSiteDetails;
+            remoteSiteInformation?: dedicatedCloud.disasterRecovery.RemoteSiteDetails;
+            state: dedicatedCloud.StateEnum;
             systemVersion: string;
         }
         //dedicatedCloud.disasterRecovery.RemoteSiteDetails
@@ -533,10 +532,10 @@ export namespace dedicatedCloud {
         export interface RemoteSiteDetails {
             datacenterId?: number;
             datacenterName?: string;
-            role?: OVH.dedicatedCloud.disasterRecovery.SiteRoleEnum;
+            role?: dedicatedCloud.disasterRecovery.SiteRoleEnum;
             serviceName?: string;
-            state?: OVH.dedicatedCloud.StateEnum;
-            type: OVH.dedicatedCloud.disasterRecovery.SiteTypeEnum;
+            state?: dedicatedCloud.StateEnum;
+            type: dedicatedCloud.disasterRecovery.SiteTypeEnum;
             zertoVersion?: string;
         }
         //dedicatedCloud.disasterRecovery.SiteRoleEnum
@@ -548,7 +547,7 @@ export namespace dedicatedCloud {
         //dedicatedCloud.filer.HourlyConsumption
         // fullName: dedicatedCloud.filer.HourlyConsumption.HourlyConsumption
         export interface HourlyConsumption {
-            consumption: OVH.complexType.UnitAndValue<number>;
+            consumption: complexType.UnitAndValue<number>;
             lastUpdate: string;
         }
         //dedicatedCloud.filer.Profile
@@ -556,7 +555,7 @@ export namespace dedicatedCloud {
         export interface Profile {
             fullName: string;
             name: string;
-            size: OVH.complexType.UnitAndValue<number>;
+            size: complexType.UnitAndValue<number>;
         }
         //dedicatedCloud.filer.StateEnum
         export type StateEnum = "adding" | "delivered" | "error" | "removing" | "unknown"
@@ -565,16 +564,16 @@ export namespace dedicatedCloud {
         //dedicatedCloud.host.HourlyConsumption
         // fullName: dedicatedCloud.host.HourlyConsumption.HourlyConsumption
         export interface HourlyConsumption {
-            consumption: OVH.complexType.UnitAndValue<number>;
+            consumption: complexType.UnitAndValue<number>;
             lastUpdate: string;
         }
         //dedicatedCloud.host.Profile
         // fullName: dedicatedCloud.host.Profile.Profile
         export interface Profile {
             core: string;
-            cpu: OVH.complexType.UnitAndValue<number>;
+            cpu: complexType.UnitAndValue<number>;
             name: string;
-            ram: OVH.complexType.UnitAndValue<number>;
+            ram: complexType.UnitAndValue<number>;
         }
         //dedicatedCloud.host.StateEnum
         export type StateEnum = "adding" | "delivered" | "error" | "removing" | "unknown"
@@ -614,17 +613,17 @@ export namespace dedicatedCloud {
     //dedicatedCloud.resourceNewPrices
     // fullName: dedicatedCloud.resourceNewPrices.resourceNewPrices
     export interface resourceNewPrices {
-        resources?: OVH.dedicatedCloud.resourceNewPricesEntry[];
+        resources?: dedicatedCloud.resourceNewPricesEntry[];
     }
     //dedicatedCloud.resourceNewPricesEntry
     // fullName: dedicatedCloud.resourceNewPricesEntry.resourceNewPricesEntry
     export interface resourceNewPricesEntry {
-        billingType: OVH.dedicatedCloud.ressources.BillingTypeEnum;
+        billingType: dedicatedCloud.ressources.BillingTypeEnum;
         changed: boolean;
         name: string;
-        newPrice: OVH.order.Price;
-        oldPrice: OVH.order.Price;
-        resourceType: OVH.dedicatedCloud.ressources.ResourceTypeEnum;
+        newPrice: order.Price;
+        oldPrice: order.Price;
+        resourceType: dedicatedCloud.ressources.ResourceTypeEnum;
     }
     export namespace ressources {
         //dedicatedCloud.ressources.BillingTypeEnum
@@ -645,8 +644,8 @@ export namespace dedicatedCloud {
     //dedicatedCloud.servicePack
     // fullName: dedicatedCloud.servicePack.servicePack
     export interface servicePack {
-        name: OVH.dedicatedCloud.servicePackEnum;
-        state: OVH.dedicatedCloud.servicePackStateEnum;
+        name: dedicatedCloud.servicePackEnum;
+        state: dedicatedCloud.servicePackStateEnum;
     }
     //dedicatedCloud.servicePackEnum
     export type servicePackEnum = "default" | "hds" | "hipaa" | "legacy" | "nsx" | "nsx-and-vrops" | "pcidss" | "vrops"
@@ -658,7 +657,7 @@ export namespace dedicatedCloud {
         description: string;
         id: number;
         ip: string;
-        state: OVH.dedicatedCloud.TwoFAWhitelistStateEnum;
+        state: dedicatedCloud.TwoFAWhitelistStateEnum;
     }
     export namespace user {
         //dedicatedCloud.user.ActivationStateEnum
@@ -698,7 +697,7 @@ export namespace dedicatedCloud {
     // fullName: dedicatedCloud.vmFiler.vmFiler
     export interface vmFiler {
         committed: number;
-        disks: OVH.dedicatedCloud.vmFilerDisk[];
+        disks: dedicatedCloud.vmFilerDisk[];
         name: string;
     }
     //dedicatedCloud.vmFilerDisk
@@ -711,13 +710,13 @@ export namespace dedicatedCloud {
     // fullName: dedicatedCloud.vmNetwork.vmNetwork
     export interface vmNetwork {
         allowGuestControl: boolean;
-        backing: OVH.dedicatedCloud.vmNetworkBacking;
+        backing: dedicatedCloud.vmNetworkBacking;
         connected: boolean;
         controler: string;
         label: string;
         macAddress: string;
         startConnected: boolean;
-        status: OVH.dedicatedCloud.virtualDeviceConnectInfoStatus;
+        status: dedicatedCloud.virtualDeviceConnectInfoStatus;
     }
     //dedicatedCloud.vmNetworkBacking
     // fullName: dedicatedCloud.vmNetworkBacking.vmNetworkBacking
@@ -726,7 +725,7 @@ export namespace dedicatedCloud {
         portGroupKey?: string;
         portKey?: string;
         switchUuid?: string;
-        type: OVH.dedicatedCloud.vmNetworkBackingTypeEnum;
+        type: dedicatedCloud.vmNetworkBackingTypeEnum;
         useAutoDetect?: boolean;
         valueMoref?: string;
     }
@@ -739,7 +738,7 @@ export namespace order {
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
-        currencyCode: OVH.order.CurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -776,10 +775,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace vrack {
@@ -791,7 +790,7 @@ export namespace vrack {
         lastUpdate?: string;
         orderId?: number;
         serviceName?: string;
-        status: OVH.vrack.TaskStatusEnum;
+        status: vrack.TaskStatusEnum;
         targetDomain?: string;
         todoDate?: string;
     }
@@ -1773,7 +1772,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * List the dedicatedCloud.Task objects
    * Tasks associated with this allowed network
    */
-  public get(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task', params: {networkAccessId: number, serviceName: string, name?: string, state?: OVH.dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task', params: {networkAccessId: number, serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -1833,7 +1832,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * List the dedicatedCloud.Task objects
    * Tasks associated with this Filer
    */
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task', params: {datacenterId: number, filerId: number, serviceName: string, name?: string, state?: OVH.dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task', params: {datacenterId: number, filerId: number, serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -1858,7 +1857,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * List the dedicatedCloud.Task objects
    * Tasks associated with this Host
    */
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task', params: {datacenterId: number, hostId: number, serviceName: string, name?: string, state?: OVH.dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task', params: {datacenterId: number, hostId: number, serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -1878,7 +1877,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * List the dedicatedCloud.Task objects
    * Tasks associated with this Datacenter
    */
-  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task', params: {datacenterId: number, serviceName: string, name?: string, state?: OVH.dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task', params: {datacenterId: number, serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -1943,7 +1942,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * List the dedicatedCloud.Task objects
    * Tasks associated with this Filer
    */
-  public get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task', params: {filerId: number, serviceName: string, name?: string, state?: OVH.dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task', params: {filerId: number, serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -1953,7 +1952,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * globalTasks operations
    * Get filtered tasks associated with this Private Cloud
    */
-  public get(path: '/dedicatedCloud/{serviceName}/globalTasks', params: {serviceName: string, datacenterId?: number, endDate_from?: string, endDate_to?: string, executionDate_from?: string, executionDate_to?: string, filerId?: number, hostId?: number, lastModificationDate_from?: string, lastModificationDate_to?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: OVH.dedicatedCloud.TaskStateEnum[], userId?: number, vlanId?: number}): Promise<number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/globalTasks', params: {serviceName: string, datacenterId?: number, endDate_from?: string, endDate_to?: string, executionDate_from?: string, executionDate_to?: string, filerId?: number, hostId?: number, lastModificationDate_from?: string, lastModificationDate_to?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: dedicatedCloud.TaskStateEnum[], userId?: number, vlanId?: number}): Promise<number[]>;
   /**
    * Private Cloud VMware Hybrid Cloud Extension option
    * Get this object properties
@@ -2018,7 +2017,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * List the dedicatedCloud.Task objects
    * Tasks associated with this IP Block
    */
-  public get(path: '/dedicatedCloud/{serviceName}/ip/{network}/task', params: {network: string, serviceName: string, name?: string, state?: OVH.dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/ip/{network}/task', params: {network: string, serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -2103,7 +2102,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * List the dedicatedCloud.Task objects
    * Tasks associated with this Private Cloud
    */
-  public get(path: '/dedicatedCloud/{serviceName}/task', params: {serviceName: string, name?: string, state?: OVH.dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/task', params: {serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -2153,7 +2152,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * List the dedicatedCloud.Task objects
    * Tasks associated with this User
    */
-  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/task', params: {serviceName: string, userId: number, name?: string, state?: OVH.dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/dedicatedCloud/{serviceName}/user/{userId}/task', params: {serviceName: string, userId: number, name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -2276,27 +2275,27 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * Private Cloud
    * Alter this object properties
    */
-  public put(path: '/dedicatedCloud/{serviceName}', params: {serviceName: string, advancedSecurity?: boolean, bandwidth?: string, billingType?: OVH.dedicatedCloud.BillingTypeEnum, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: OVH.dedicatedCloud.GenerationEnum, location?: string, managementInterface?: OVH.dedicatedCloud.ManagementInterfaceEnum, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: OVH.dedicatedCloud.StateEnum, userAccessPolicy?: OVH.dedicatedCloud.UserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: OVH.dedicatedCloud.UserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: OVH.dedicatedCloud.Version, webInterfaceUrl?: string}): Promise<dedicatedCloud.Task>;
+  public put(path: '/dedicatedCloud/{serviceName}', params: {serviceName: string, advancedSecurity?: boolean, bandwidth?: string, billingType?: dedicatedCloud.BillingTypeEnum, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: dedicatedCloud.GenerationEnum, location?: string, managementInterface?: dedicatedCloud.ManagementInterfaceEnum, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: dedicatedCloud.StateEnum, userAccessPolicy?: dedicatedCloud.UserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloud.UserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: dedicatedCloud.Version, webInterfaceUrl?: string}): Promise<dedicatedCloud.Task>;
   /**
    * Network allowed to connect to the Private Cloud management interface
    * Alter this object properties
    */
-  public put(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', params: {networkAccessId: number, serviceName: string, description?: string, network?: string, state?: OVH.dedicatedCloud.AllowedNetworkStateEnum}): Promise<dedicatedCloud.Task>;
+  public put(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}', params: {networkAccessId: number, serviceName: string, description?: string, network?: string, state?: dedicatedCloud.AllowedNetworkStateEnum}): Promise<dedicatedCloud.Task>;
   /**
    * Private Cloud Datacenter
    * Alter this object properties
    */
-  public put(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', params: {datacenterId: number, serviceName: string, commercialName?: OVH.dedicatedCloud.CommercialNameEnum, commercialRangeName?: string, description?: string, horizonViewName?: string, isRemovable?: boolean, name?: string, version?: string}): Promise<dedicatedCloud.Task>;
+  public put(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}', params: {datacenterId: number, serviceName: string, commercialName?: dedicatedCloud.CommercialNameEnum, commercialRangeName?: string, description?: string, horizonViewName?: string, isRemovable?: boolean, name?: string, version?: string}): Promise<dedicatedCloud.Task>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/dedicatedCloud/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/dedicatedCloud/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Private Cloud User right
    * Alter this object properties
    */
-  public put(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}', params: {rightId: number, serviceName: string, userId: number, canAddRessource?: boolean, datacenterId?: number, networkRole?: OVH.dedicatedCloud.right.NetworkRoleEnum, right?: OVH.dedicatedCloud.right.RightEnum, vmNetworkRole?: OVH.dedicatedCloud.right.VmNetworkRoleEnum}): Promise<dedicatedCloud.Task>;
+  public put(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}', params: {rightId: number, serviceName: string, userId: number, canAddRessource?: boolean, datacenterId?: number, networkRole?: dedicatedCloud.right.NetworkRoleEnum, right?: dedicatedCloud.right.RightEnum, vmNetworkRole?: dedicatedCloud.right.VmNetworkRoleEnum}): Promise<dedicatedCloud.Task>;
   public put(path: PathsDedicatedCloudPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -2324,12 +2323,12 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * changeProperties operations
    * Update this Private Cloud properties.
    */
-  public post(path: '/dedicatedCloud/{serviceName}/changeProperties', params: {serviceName: string, description?: string, sslV3?: boolean, userAccessPolicy?: OVH.dedicatedCloud.UserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: OVH.dedicatedCloud.UserLogoutPolicyEnum, userSessionTimeout?: number}): Promise<dedicatedCloud.Task>;
+  public post(path: '/dedicatedCloud/{serviceName}/changeProperties', params: {serviceName: string, description?: string, sslV3?: boolean, userAccessPolicy?: dedicatedCloud.UserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloud.UserLogoutPolicyEnum, userSessionTimeout?: number}): Promise<dedicatedCloud.Task>;
   /**
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/dedicatedCloud/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/dedicatedCloud/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * List the dedicatedCloud.Datacenter objects
    * Add a new Datacenter in your Private Cloud
@@ -2339,7 +2338,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * changeProperties operations
    * Edit the backup on a Private Cloud
    */
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties', params: {datacenterId: number, serviceName: string, backupDurationInReport: boolean, backupOffer: OVH.dedicatedCloud.backup.OfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string}): Promise<dedicatedCloud.Task>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties', params: {datacenterId: number, serviceName: string, backupDurationInReport: boolean, backupOffer: dedicatedCloud.backup.OfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string}): Promise<dedicatedCloud.Task>;
   /**
    * disable operations
    * Disable backup solution on a Private Cloud
@@ -2349,7 +2348,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * enable operations
    * Enable backup solution on a Private Cloud
    */
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable', params: {datacenterId: number, serviceName: string, backupOffer?: OVH.dedicatedCloud.backup.OfferTypeEnum}): Promise<dedicatedCloud.Task>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable', params: {datacenterId: number, serviceName: string, backupOffer?: dedicatedCloud.backup.OfferTypeEnum}): Promise<dedicatedCloud.Task>;
   /**
    * disable operations
    * Disable Zerto
@@ -2444,7 +2443,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * Private Cloud Backup Job
    * Edit a backup job
    */
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob', params: {datacenterId: number, serviceName: string, vmId: number, backupDays: OVH.dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob', params: {datacenterId: number, serviceName: string, vmId: number, backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
   /**
    * disable operations
    * Disable backup solution on this virtual Machine
@@ -2454,7 +2453,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * enable operations
    * Enable backup solution on this virtual Machine
    */
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable', params: {datacenterId: number, serviceName: string, vmId: number, backupDays: OVH.dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable', params: {datacenterId: number, serviceName: string, vmId: number, backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
   /**
    * restore operations
    * Restore this restore point
@@ -2469,12 +2468,12 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * editBackup operations
    * Edit backup on this virtual Machine
    */
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup', params: {datacenterId: number, serviceName: string, vmId: number, backupDays: OVH.dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup', params: {datacenterId: number, serviceName: string, vmId: number, backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
   /**
    * enableBackup operations
    * Enable backup on this virtual Machine
    */
-  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup', params: {datacenterId: number, serviceName: string, vmId: number, backupDays: OVH.dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
+  public post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup', params: {datacenterId: number, serviceName: string, vmId: number, backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
   /**
    * restoreBackup operations
    * Restore this restore point
@@ -2614,7 +2613,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * List the dedicatedCloud.User objects
    * Create a new User in your Private Cloud
    */
-  public post(path: '/dedicatedCloud/{serviceName}/user', params: {serviceName: string, canAddRessource?: boolean, canManageRights?: boolean, email?: string, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: OVH.dedicatedCloud.right.NetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: OVH.dedicatedCloud.right.RightEnum, tokenValidator?: boolean, vmNetworkRole?: OVH.dedicatedCloud.right.VmNetworkRoleEnum}): Promise<dedicatedCloud.Task>;
+  public post(path: '/dedicatedCloud/{serviceName}/user', params: {serviceName: string, canAddRessource?: boolean, canManageRights?: boolean, email?: string, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: dedicatedCloud.right.NetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: dedicatedCloud.right.RightEnum, tokenValidator?: boolean, vmNetworkRole?: dedicatedCloud.right.VmNetworkRoleEnum}): Promise<dedicatedCloud.Task>;
   /**
    * changePassword operations
    * Change Private Cloud user password
@@ -2639,7 +2638,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * List the dedicatedCloud.ObjectRight objects
    * Add a new object right to user in datacenter on Private Cloud
    */
-  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight', params: {serviceName: string, userId: number, propagate?: boolean, right: OVH.dedicatedCloud.right.RightEnum, type: OVH.dedicatedCloud.right.UserObjectRightTypeEnum, vmwareObjectId: string}): Promise<dedicatedCloud.Task>;
+  public post(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight', params: {serviceName: string, userId: number, propagate?: boolean, right: dedicatedCloud.right.RightEnum, type: dedicatedCloud.right.UserObjectRightTypeEnum, vmwareObjectId: string}): Promise<dedicatedCloud.Task>;
   /**
    * changeMaintenanceExecutionDate operations
    * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
@@ -2659,7 +2658,7 @@ export class ApiDedicatedCloud extends OvhWrapper {
    * ovhId operations
    * Get ovh id from object type
    */
-  public post(path: '/dedicatedCloud/{serviceName}/vendor/ovhId', params: {serviceName: string, objectType: OVH.dedicatedCloud.VendorObjectTypeEnum, vendorId: string}): Promise<dedicatedCloud.vendor.OvhId>;
+  public post(path: '/dedicatedCloud/{serviceName}/vendor/ovhId', params: {serviceName: string, objectType: dedicatedCloud.VendorObjectTypeEnum, vendorId: string}): Promise<dedicatedCloud.vendor.OvhId>;
   /**
    * List the dedicatedCloud.VMEncryptionAccessNetwork objects
    * Add a new option user access
@@ -2726,5 +2725,4 @@ export class ApiDedicatedCloud extends OvhWrapper {
   public delete(path: PathsDedicatedCloudDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

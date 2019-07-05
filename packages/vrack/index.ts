@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
@@ -17,7 +16,7 @@ export namespace dedicated {
         // fullName: dedicated.server.MrtgTimestampValue.MrtgTimestampValue
         export interface MrtgTimestampValue {
             timestamp: number;
-            value?: OVH.complexType.UnitAndValue<number>;
+            value?: complexType.UnitAndValue<number>;
         }
         //dedicated.server.MrtgTypeEnum
         export type MrtgTypeEnum = "errors:download" | "errors:upload" | "packets:download" | "packets:upload" | "traffic:download" | "traffic:upload"
@@ -37,7 +36,7 @@ export namespace services {
         creation: string;
         domain: string;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace vrack {
@@ -56,7 +55,7 @@ export namespace vrack {
         dedicatedCloudDatacenter?: string[];
         dedicatedConnect?: string[];
         dedicatedServer?: string[];
-        dedicatedServerInterface?: OVH.vrack.AllowedDedicatedServerInterfaces[];
+        dedicatedServerInterface?: vrack.AllowedDedicatedServerInterfaces[];
         ip?: string[];
         ipLoadbalancing?: string[];
         legacyVrack?: string[];
@@ -69,7 +68,7 @@ export namespace vrack {
         lastUpdate?: string;
         orderId?: number;
         serviceName?: string;
-        status: OVH.vrack.TaskStatusEnum;
+        status: vrack.TaskStatusEnum;
         targetDomain?: string;
         todoDate?: string;
     }
@@ -112,7 +111,7 @@ export namespace vrack {
     export interface ip {
         gateway?: string;
         ip: string;
-        zone?: OVH.vrack.VrackZoneEnum;
+        zone?: vrack.VrackZoneEnum;
     }
     //vrack.iplb
     // fullName: vrack.iplb.iplb
@@ -434,7 +433,7 @@ export class ApiVrack extends OvhWrapper {
    * mrtg operations
    * Retrieve vrack traffic graph values
    */
-  public get(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg', params: {dedicatedServer: string, serviceName: string, period: OVH.dedicated.server.MrtgPeriodEnum, type: OVH.dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
+  public get(path: '/vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg', params: {dedicatedServer: string, serviceName: string, period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
   /**
    * List the vrack.dedicatedServerInterface objects
    * vrack for dedicated server interface
@@ -550,7 +549,7 @@ export class ApiVrack extends OvhWrapper {
    * announceInZone operations
    * Announce IP to zone for vrack
    */
-  public post(path: '/vrack/{serviceName}/ip/{ip}/announceInZone', params: {ip: string, serviceName: string, zone: OVH.vrack.VrackZoneEnum}): Promise<vrack.Task>;
+  public post(path: '/vrack/{serviceName}/ip/{ip}/announceInZone', params: {ip: string, serviceName: string, zone: vrack.VrackZoneEnum}): Promise<vrack.Task>;
   /**
    * List the vrack.iplb objects
    * add an ipLoadbalancing to this vrack
@@ -602,5 +601,4 @@ export class ApiVrack extends OvhWrapper {
   public delete(path: PathsVrackDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

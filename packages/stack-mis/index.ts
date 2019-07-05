@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
@@ -29,10 +28,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace stack {
@@ -43,7 +42,7 @@ export namespace stack {
         // fullName: stack.mis.product.product
         export interface product {
             domain: string;
-            type: OVH.stack.StackTypeEnum;
+            type: stack.StackTypeEnum;
         }
     }
 }
@@ -98,9 +97,8 @@ export class ApiStackMis extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/stack/mis/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/stack/mis/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsStackMisPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
-}
 }

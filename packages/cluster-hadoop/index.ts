@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace cluster {
     export namespace hadoop {
         //cluster.hadoop.BillingNameEnum
@@ -8,7 +7,7 @@ export namespace cluster {
         //cluster.hadoop.ClusterConsumption
         // fullName: cluster.hadoop.ClusterConsumption.ClusterConsumption
         export interface ClusterConsumption {
-            quantity: OVH.complexType.UnitAndValue<number>;
+            quantity: complexType.UnitAndValue<number>;
         }
         //cluster.hadoop.ClusterServiceNameEnum
         export type ClusterServiceNameEnum = "HBase" | "HDFS" | "HUE" | "Hive" | "Oozie" | "Solr" | "Spark" | "Sqoop" | "YARN" | "ZooKeeper"
@@ -19,37 +18,37 @@ export namespace cluster {
         export interface NetworkAcl {
             block: string;
             description?: string;
-            state: OVH.cluster.hadoop.NetworkAclStateEnum;
+            state: cluster.hadoop.NetworkAclStateEnum;
         }
         //cluster.hadoop.NetworkAclStateEnum
         export type NetworkAclStateEnum = "disabled" | "enabled" | "pending"
         //cluster.hadoop.Node
         // fullName: cluster.hadoop.Node.Node
         export interface Node {
-            billingProfileName: OVH.cluster.hadoop.BillingNameEnum;
+            billingProfileName: cluster.hadoop.BillingNameEnum;
             hostname: string;
             ip: string;
             isRemovable: boolean;
-            softwareProfile: OVH.cluster.hadoop.NodeProfileEnum;
-            state: OVH.cluster.hadoop.NodeStateEnum;
+            softwareProfile: cluster.hadoop.NodeProfileEnum;
+            state: cluster.hadoop.NodeStateEnum;
         }
         //cluster.hadoop.NodeBillingProfile
         // fullName: cluster.hadoop.NodeBillingProfile.NodeBillingProfile
         export interface NodeBillingProfile {
-            CPUFrequency: OVH.complexType.UnitAndValue<number>;
-            diskCapacity: OVH.complexType.UnitAndValue<number>;
+            CPUFrequency: complexType.UnitAndValue<number>;
+            diskCapacity: complexType.UnitAndValue<number>;
             nbCPUCores: number;
             nbCPUThreads: number;
-            networkBandwidth: OVH.complexType.UnitAndValue<number>;
+            networkBandwidth: complexType.UnitAndValue<number>;
             nodeProfile: string;
-            ramQuantity: OVH.complexType.UnitAndValue<number>;
+            ramQuantity: complexType.UnitAndValue<number>;
         }
         //cluster.hadoop.NodeConsumption
         // fullName: cluster.hadoop.NodeConsumption.NodeConsumption
         export interface NodeConsumption {
             hostname: string;
-            nodeProfile: OVH.cluster.hadoop.BillingNameEnum;
-            quantity: OVH.complexType.UnitAndValue<number>;
+            nodeProfile: cluster.hadoop.BillingNameEnum;
+            quantity: complexType.UnitAndValue<number>;
         }
         //cluster.hadoop.NodeProfileEnum
         export type NodeProfileEnum = "ApplicationServer" | "BasicNode" | "ClouderaManager" | "MasterServer" | "SecondaryServer"
@@ -67,7 +66,7 @@ export namespace cluster {
         // fullName: cluster.hadoop.Role.Role
         export interface Role {
             id: number;
-            type: OVH.cluster.hadoop.RoleTypeEnum;
+            type: cluster.hadoop.RoleTypeEnum;
         }
         //cluster.hadoop.RoleTypeEnum
         export type RoleTypeEnum = "cloudera_manager" | "data_node" | "elasticsearch_server" | "hbase_master" | "hbase_region_server" | "hive_server2" | "hue" | "impala_daemon" | "impala_server" | "map_reduce_history_server" | "name_node" | "oozie_server" | "open_tsdb" | "secondary_name_node" | "solr_server" | "spark_master" | "spark_worker" | "sqoop_server" | "yarn_node_manager" | "yarn_resource_manager" | "zoo_keeper"
@@ -75,7 +74,7 @@ export namespace cluster {
         // fullName: cluster.hadoop.Task.Task
         export interface Task {
             name: string;
-            status: OVH.cluster.hadoop.OperationStateEnum;
+            status: cluster.hadoop.OperationStateEnum;
             taskId: number;
         }
         //cluster.hadoop.User
@@ -92,7 +91,7 @@ export namespace cluster {
             clouderaVersion: string;
             maxOrderableNodes: number;
             name: string;
-            state: OVH.cluster.hadoop.ClusterStateEnum;
+            state: cluster.hadoop.ClusterStateEnum;
         }
     }
 }
@@ -132,10 +131,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -377,7 +376,7 @@ export class ApiClusterHadoop extends OvhWrapper {
    * List the cluster.hadoop.Node objects
    * Nodes of the Cluster
    */
-  public get(path: '/cluster/hadoop/{serviceName}/node', params: {serviceName: string, softwareProfile?: OVH.cluster.hadoop.NodeProfileEnum}): Promise<string[]>;
+  public get(path: '/cluster/hadoop/{serviceName}/node', params: {serviceName: string, softwareProfile?: cluster.hadoop.NodeProfileEnum}): Promise<string[]>;
   /**
    * Physical or Virtual Node
    * Get this object properties
@@ -392,7 +391,7 @@ export class ApiClusterHadoop extends OvhWrapper {
    * Role (ie set of Hadoop services) of the Node
    * Get this object properties
    */
-  public get(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}', params: {hostname: string, serviceName: string, type: OVH.cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Role>;
+  public get(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}', params: {hostname: string, serviceName: string, type: cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Role>;
   /**
    * nodeBillingProfiles operations
    * Detailed description for each Node profile
@@ -417,7 +416,7 @@ export class ApiClusterHadoop extends OvhWrapper {
    * List the cluster.hadoop.Task objects
    * Tasks associated with this Hadoop Cluster
    */
-  public get(path: '/cluster/hadoop/{serviceName}/task', params: {serviceName: string, status?: OVH.cluster.hadoop.OperationStateEnum}): Promise<number[]>;
+  public get(path: '/cluster/hadoop/{serviceName}/task', params: {serviceName: string, status?: cluster.hadoop.OperationStateEnum}): Promise<number[]>;
   /**
    * Operation on a Hadoop Cluster component
    * Get this object properties
@@ -450,12 +449,12 @@ export class ApiClusterHadoop extends OvhWrapper {
    * ACL for allowing ip blocks to access to your cluster
    * Alter this object properties
    */
-  public put(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {block: string, serviceName: string, description?: string, state?: OVH.cluster.hadoop.NetworkAclStateEnum}): Promise<void>;
+  public put(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}', params: {block: string, serviceName: string, description?: string, state?: cluster.hadoop.NetworkAclStateEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/cluster/hadoop/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/cluster/hadoop/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * User allowed to access interfaces on your cluster
    * Alter this object properties
@@ -483,22 +482,22 @@ export class ApiClusterHadoop extends OvhWrapper {
    * List the cluster.hadoop.Role objects
    * Add the Role to the Node
    */
-  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role', params: {hostname: string, serviceName: string, type: OVH.cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
+  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role', params: {hostname: string, serviceName: string, type: cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
   /**
    * restart operations
    * Restart the role on the node (THIS ACTION WILL RESTART OTHER DEPENDANT ROLES)
    */
-  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart', params: {hostname: string, serviceName: string, type: OVH.cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
+  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart', params: {hostname: string, serviceName: string, type: cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
   /**
    * start operations
    * Start the role on the node
    */
-  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start', params: {hostname: string, serviceName: string, type: OVH.cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
+  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start', params: {hostname: string, serviceName: string, type: cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
   /**
    * stop operations
    * Stop the role on the node (THIS ACTION WILL STOP OTHER DEPENDANT ROLES)
    */
-  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop', params: {hostname: string, serviceName: string, type: OVH.cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
+  public post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop', params: {hostname: string, serviceName: string, type: cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
   /**
    * orderNewNodeHourly operations
    * Order a new node in the cluster
@@ -513,17 +512,17 @@ export class ApiClusterHadoop extends OvhWrapper {
    * restart operations
    * Restart a Cloudera Manager service (THIS ACTION WILL RESTART OTHER DEPENDANT SERVICES)
    */
-  public post(path: '/cluster/hadoop/{serviceName}/service/restart', params: {serviceName: string, service: OVH.cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
+  public post(path: '/cluster/hadoop/{serviceName}/service/restart', params: {serviceName: string, service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
   /**
    * start operations
    * Start a Cloudera Manager service
    */
-  public post(path: '/cluster/hadoop/{serviceName}/service/start', params: {serviceName: string, service: OVH.cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
+  public post(path: '/cluster/hadoop/{serviceName}/service/start', params: {serviceName: string, service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
   /**
    * stop operations
    * Stop a Cloudera Manager service (THIS ACTION WILL STOP OTHER DEPENDANT SERVICES)
    */
-  public post(path: '/cluster/hadoop/{serviceName}/service/stop', params: {serviceName: string, service: OVH.cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
+  public post(path: '/cluster/hadoop/{serviceName}/service/stop', params: {serviceName: string, service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
   /**
    * start operations
    * Start the Cloudera Manager Hadoop Cluster
@@ -566,7 +565,7 @@ export class ApiClusterHadoop extends OvhWrapper {
    * Role (ie set of Hadoop services) of the Node
    * Remove this Role from the Node
    */
-  public delete(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}', params: {hostname: string, serviceName: string, type: OVH.cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
+  public delete(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}', params: {hostname: string, serviceName: string, type: cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
   /**
    * User allowed to access interfaces on your cluster
    * Remove this User
@@ -575,5 +574,4 @@ export class ApiClusterHadoop extends OvhWrapper {
   public delete(path: PathsClusterHadoopDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace license {
     //license.ActionType
     export type ActionType = "addWindowFromExistingSerial" | "changeIp" | "changeOs" | "installLicense" | "optionUpgrade" | "releaseOption" | "versionUpgrade"
@@ -9,14 +8,14 @@ export namespace license {
     //license.ChangeIpStatus
     // fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message: OVH.license.ChangeIpMessageEnum;
+        message: license.ChangeIpMessageEnum;
         success: boolean;
     }
     //license.DirectAdminOrderConfiguration
     // fullName: license.DirectAdminOrderConfiguration.DirectAdminOrderConfiguration
     export interface DirectAdminOrderConfiguration {
-        orderableVersions: OVH.license.OrderableDirectAdminCompatibilityInfos[];
-        serviceType: OVH.license.LicenseTypeEnum;
+        orderableVersions: license.OrderableDirectAdminCompatibilityInfos[];
+        serviceType: license.LicenseTypeEnum;
     }
     //license.DirectAdminOsEnum
     export type DirectAdminOsEnum = "CentOs_5.0_32" | "CentOs_5.0_64" | "CentOs_6_32" | "CentOs_6_64" | "CentOs_7_64" | "Debian_5.0_32" | "Debian_5.0_64" | "Debian_6.0_32" | "Debian_6.0_64" | "Debian_7.0_32" | "Debian_7.0_64" | "Debian_8.0_64" | "FreeBSD_7.x_32" | "FreeBSD_7.x_64" | "FreeBSD_8.x_64" | "FreeBSD_9.x_64"
@@ -27,7 +26,7 @@ export namespace license {
     //license.OrderableDirectAdminCompatibilityInfos
     // fullName: license.OrderableDirectAdminCompatibilityInfos.OrderableDirectAdminCompatibilityInfos
     export interface OrderableDirectAdminCompatibilityInfos {
-        version: OVH.license.OrderableDirectAdminVersionEnum;
+        version: license.OrderableDirectAdminVersionEnum;
     }
     //license.OrderableDirectAdminVersionEnum
     export type OrderableDirectAdminVersionEnum = "DIRECTADMIN_1" | "directadmin-license"
@@ -36,11 +35,11 @@ export namespace license {
     //license.Task
     // fullName: license.Task.Task
     export interface Task {
-        action: OVH.license.ActionType;
+        action: license.ActionType;
         doneDate?: string;
         lastUpdate: string;
         name: string;
-        status: OVH.license.TaskStateEnum;
+        status: license.TaskStateEnum;
         taskId: number;
         todoDate: string;
     }
@@ -56,9 +55,9 @@ export namespace license {
             domain: string;
             ip: string;
             licenseId: string;
-            os: OVH.license.DirectAdminOsEnum;
-            status: OVH.license.StateEnum;
-            version: OVH.license.DirectAdminVersionEnum;
+            os: license.DirectAdminOsEnum;
+            status: license.StateEnum;
+            version: license.DirectAdminVersionEnum;
         }
     }
 }
@@ -94,10 +93,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -207,7 +206,7 @@ export class ApiLicenseDirectadmin extends OvhWrapper {
    * List the license.Task objects
    * tasks linked to this license
    */
-  public get(path: '/license/directadmin/{serviceName}/tasks', params: {serviceName: string, action?: OVH.license.ActionType, status?: OVH.license.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/license/directadmin/{serviceName}/tasks', params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
   /**
    * licenses Todos
    * Get this object properties
@@ -225,12 +224,12 @@ export class ApiLicenseDirectadmin extends OvhWrapper {
    * Your DirectAdmin license
    * Alter this object properties
    */
-  public put(path: '/license/directadmin/{serviceName}', params: {serviceName: string, clientId?: number, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, os?: OVH.license.DirectAdminOsEnum, status?: OVH.license.StateEnum, version?: OVH.license.DirectAdminVersionEnum}): Promise<void>;
+  public put(path: '/license/directadmin/{serviceName}', params: {serviceName: string, clientId?: number, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, os?: license.DirectAdminOsEnum, status?: license.StateEnum, version?: license.DirectAdminVersionEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/license/directadmin/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/license/directadmin/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsLicenseDirectadminPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -243,12 +242,12 @@ export class ApiLicenseDirectadmin extends OvhWrapper {
    * changeOs operations
    * Change the Operating System for a license
    */
-  public post(path: '/license/directadmin/{serviceName}/changeOs', params: {serviceName: string, os: OVH.license.DirectAdminOsEnum}): Promise<license.Task>;
+  public post(path: '/license/directadmin/{serviceName}/changeOs', params: {serviceName: string, os: license.DirectAdminOsEnum}): Promise<license.Task>;
   /**
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/license/directadmin/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/license/directadmin/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * Terminate your service
    * Terminate your service
@@ -257,5 +256,4 @@ export class ApiLicenseDirectadmin extends OvhWrapper {
   public post(path: PathsLicenseDirectadminPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

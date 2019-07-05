@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace email {
     export namespace mxplan {
         //email.mxplan.Account
@@ -24,15 +23,15 @@ export namespace email {
             lastName?: string;
             lastUpdateDate?: string;
             login: string;
-            mailingFilter?: OVH.email.pro.MailingFilterEnum[];
+            mailingFilter?: email.pro.MailingFilterEnum[];
             passwordLastUpdate?: string;
             primaryEmailAddress: string;
             quota: number;
-            renewPeriod?: OVH.email.pro.renewPeriodEnum;
-            spamAndVirusConfiguration: OVH.email.pro.spamAndVirusConfiguration;
+            renewPeriod?: email.pro.renewPeriodEnum;
+            spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration;
             spamDetected: boolean;
             spamTicketNumber?: number;
-            state: OVH.email.pro.ObjectStateEnum;
+            state: email.pro.ObjectStateEnum;
             taskPendingId: number;
         }
         //email.mxplan.AccountAlias
@@ -89,9 +88,9 @@ export namespace email {
             name: string;
             srvIsValid: boolean;
             srvRecord: string[];
-            state: OVH.email.pro.ObjectStateEnum;
+            state: email.pro.ObjectStateEnum;
             taskPendingId: number;
-            type: OVH.email.pro.DomainTypeEnum;
+            type: email.pro.DomainTypeEnum;
         }
         //email.mxplan.ExternalContact
         // fullName: email.mxplan.ExternalContact.ExternalContact
@@ -104,7 +103,7 @@ export namespace email {
             id: number;
             initials?: string;
             lastName?: string;
-            state: OVH.email.pro.ObjectStateEnum;
+            state: email.pro.ObjectStateEnum;
             taskPendingId: number;
         }
         //email.mxplan.Server
@@ -118,7 +117,7 @@ export namespace email {
             isAaaaValid: boolean;
             isPtrV6Valid: boolean;
             isPtrValid: boolean;
-            state: OVH.email.pro.ServerStateEnum;
+            state: email.pro.ServerStateEnum;
             taskPendingId: number;
             version?: number;
         }
@@ -138,9 +137,9 @@ export namespace email {
             maxSendSize: number;
             minPasswordAge?: number;
             minPasswordLength?: number;
-            offer: OVH.email.mxplan.ServiceOfferEnum;
-            spamAndVirusConfiguration: OVH.email.pro.spamAndVirusConfiguration;
-            state: OVH.email.pro.ServiceStateEnum;
+            offer: email.mxplan.ServiceOfferEnum;
+            spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration;
+            state: email.pro.ServiceStateEnum;
             taskPendingId: number;
             webUrl?: string;
         }
@@ -169,9 +168,9 @@ export namespace email {
         // fullName: email.pro.Task.Task
         export interface Task {
             finishDate?: string;
-            function: OVH.email.pro.TaskFunctionEnum;
+            function: email.pro.TaskFunctionEnum;
             id: number;
-            status: OVH.email.pro.TaskStatusEnum;
+            status: email.pro.TaskStatusEnum;
             todoDate: string;
         }
         //email.pro.TaskFunctionEnum
@@ -491,7 +490,7 @@ export class ApiEmailMxplan extends OvhWrapper {
    * List the email.mxplan.Domain objects
    * Domains associated to this service
    */
-  public get(path: '/email/mxplan/{service}/domain', params: {service: string, state?: OVH.email.pro.ObjectStateEnum}): Promise<string[]>;
+  public get(path: '/email/mxplan/{service}/domain', params: {service: string, state?: email.pro.ObjectStateEnum}): Promise<string[]>;
   /**
    * Domain
    * Get this object properties
@@ -539,17 +538,17 @@ export class ApiEmailMxplan extends OvhWrapper {
    * MXPlan service
    * Alter this object properties
    */
-  public put(path: '/email/mxplan/{service}', params: {service: string, complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: OVH.email.mxplan.ServiceOfferEnum, spamAndVirusConfiguration?: OVH.email.pro.spamAndVirusConfiguration, state?: OVH.email.pro.ServiceStateEnum, taskPendingId?: number, webUrl?: string}): Promise<void>;
+  public put(path: '/email/mxplan/{service}', params: {service: string, complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.mxplan.ServiceOfferEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, state?: email.pro.ServiceStateEnum, taskPendingId?: number, webUrl?: string}): Promise<void>;
   /**
    * Mailbox
    * Alter this object properties
    */
-  public put(path: '/email/mxplan/{service}/account/{email}', params: {email: string, service: string, SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: OVH.email.pro.MailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: OVH.email.pro.renewPeriodEnum, spamAndVirusConfiguration?: OVH.email.pro.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: OVH.email.pro.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/email/mxplan/{service}/account/{email}', params: {email: string, service: string, SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: email.pro.MailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: email.pro.renewPeriodEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.pro.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Domain
    * Alter this object properties
    */
-  public put(path: '/email/mxplan/{service}/domain/{domainName}', params: {domainName: string, service: string, cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: OVH.email.pro.ObjectStateEnum, taskPendingId?: number, type?: OVH.email.pro.DomainTypeEnum}): Promise<void>;
+  public put(path: '/email/mxplan/{service}/domain/{domainName}', params: {domainName: string, service: string, cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.pro.ObjectStateEnum, taskPendingId?: number, type?: email.pro.DomainTypeEnum}): Promise<void>;
   /**
    * disclaimer
    * Alter this object properties
@@ -559,7 +558,7 @@ export class ApiEmailMxplan extends OvhWrapper {
    * External contact for this mxplan service
    * Alter this object properties
    */
-  public put(path: '/email/mxplan/{service}/externalContact/{externalEmailAddress}', params: {externalEmailAddress: string, service: string, creationDate?: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: OVH.email.pro.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/email/mxplan/{service}/externalContact/{externalEmailAddress}', params: {externalEmailAddress: string, service: string, creationDate?: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: email.pro.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
   public put(path: PathsEmailMxplanPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -649,5 +648,4 @@ export class ApiEmailMxplan extends OvhWrapper {
   public delete(path: PathsEmailMxplanDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

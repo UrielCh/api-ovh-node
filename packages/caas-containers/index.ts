@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace docker {
     export namespace framework {
         //docker.framework.password
@@ -15,11 +14,11 @@ export namespace docker {
         createdAt: string;
         flavorId: string;
         id: string;
-        metrics: OVH.docker.slave.metrics;
+        metrics: docker.slave.metrics;
         name: string;
         region: string;
         stack: string;
-        state: OVH.docker.slave.status;
+        state: docker.slave.status;
         updatedAt: string;
     }
     export namespace slave {
@@ -39,14 +38,14 @@ export namespace docker {
             // fullName: docker.slave.framework.app.app
             export interface app {
                 cpu?: number;
-                env: OVH.docker.slave.framework.app.environment[];
+                env: docker.slave.framework.app.environment[];
                 id?: string;
                 image?: string;
                 instances?: number;
                 mem?: number;
-                ports: OVH.docker.slave.framework.app.port[];
+                ports: docker.slave.framework.app.port[];
                 status?: string;
-                volumes: OVH.docker.slave.framework.app.volume[];
+                volumes: docker.slave.framework.app.volume[];
             }
             export namespace app {
                 //docker.slave.framework.app.environment
@@ -74,8 +73,8 @@ export namespace docker {
         //docker.slave.metrics
         // fullName: docker.slave.metrics.metrics
         export interface metrics {
-            resources: OVH.docker.slave.metrics.resources;
-            usedResources: OVH.docker.slave.metrics.usedResources;
+            resources: docker.slave.metrics.resources;
+            usedResources: docker.slave.metrics.usedResources;
         }
         export namespace metrics {
             //docker.slave.metrics.resources
@@ -100,7 +99,7 @@ export namespace docker {
         cluster?: string;
         createdAt: string;
         loadBalancer: string;
-        metrics: OVH.docker.slave.metrics;
+        metrics: docker.slave.metrics;
         name: string;
         slaves: string[];
         updatedAt: string;
@@ -162,10 +161,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace stack {
@@ -182,7 +181,7 @@ export namespace stack {
         //stack.framework.application
         // fullName: stack.framework.application.application
         export interface application {
-            apps: OVH.docker.slave.framework.app[];
+            apps: docker.slave.framework.app[];
         }
     }
 }
@@ -388,7 +387,7 @@ export class ApiCaasContainers extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/caas/containers/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/caas/containers/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Missing description
    * Update the custom SSL certificate and private
@@ -423,5 +422,4 @@ export class ApiCaasContainers extends OvhWrapper {
   public delete(path: PathsCaasContainersDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

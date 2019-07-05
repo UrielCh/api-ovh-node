@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
@@ -13,14 +12,14 @@ export namespace dedicated {
     //dedicated.NasHAAvailabilities
     // fullName: dedicated.NasHAAvailabilities.NasHAAvailabilities
     export interface NasHAAvailabilities {
-        datacenters: OVH.dedicated.NasHAAvailabilityDatacenter[];
-        offer: OVH.dedicated.NasHAOfferEnum;
+        datacenters: dedicated.NasHAAvailabilityDatacenter[];
+        offer: dedicated.NasHAOfferEnum;
     }
     //dedicated.NasHAAvailabilityDatacenter
     // fullName: dedicated.NasHAAvailabilityDatacenter.NasHAAvailabilityDatacenter
     export interface NasHAAvailabilityDatacenter {
-        availability: OVH.dedicated.NasHAAvailabilityEnum;
-        datacenter: OVH.dedicated.NasHAZoneEnum;
+        availability: dedicated.NasHAAvailabilityEnum;
+        datacenter: dedicated.NasHAZoneEnum;
     }
     //dedicated.NasHAAvailabilityEnum
     export type NasHAAvailabilityEnum = "1H" | "240H" | "24H" | "72H" | "unknown"
@@ -37,9 +36,9 @@ export namespace dedicated {
             details?: string;
             doneDate?: string;
             lastUpdate?: string;
-            operation: OVH.dedicated.storage.TaskFunctionEnum;
+            operation: dedicated.storage.TaskFunctionEnum;
             partitionName?: string;
-            status: OVH.dedicated.TaskStatusEnum;
+            status: dedicated.TaskStatusEnum;
             storageName?: string;
             taskId: number;
             todoDate?: string;
@@ -51,14 +50,14 @@ export namespace dedicated {
         export interface Access {
             accessId: number;
             ip: string;
-            type: OVH.dedicated.storage.AclTypeEnum;
+            type: dedicated.storage.AclTypeEnum;
         }
         //dedicated.nasha.Partition
         // fullName: dedicated.nasha.Partition.Partition
         export interface Partition {
             partitionCapacity?: number;
             partitionName: string;
-            protocol: OVH.dedicated.storage.ProtocolEnum;
+            protocol: dedicated.storage.ProtocolEnum;
             size: number;
             usedBySnapshots?: number;
         }
@@ -71,7 +70,7 @@ export namespace dedicated {
         //dedicated.nasha.Snapshot
         // fullName: dedicated.nasha.Snapshot.Snapshot
         export interface Snapshot {
-            snapshotType: OVH.dedicated.storage.SnapshotEnum;
+            snapshotType: dedicated.storage.SnapshotEnum;
         }
         //dedicated.nasha.Storage
         // fullName: dedicated.nasha.Storage.Storage
@@ -161,10 +160,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -421,12 +420,12 @@ export class ApiDedicatedNasha extends OvhWrapper {
    * Partition Snapshot
    * Get this object properties
    */
-  public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}', params: {partitionName: string, serviceName: string, snapshotType: OVH.dedicated.storage.SnapshotEnum}): Promise<dedicated.nasha.Snapshot>;
+  public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}', params: {partitionName: string, serviceName: string, snapshotType: dedicated.storage.SnapshotEnum}): Promise<dedicated.nasha.Snapshot>;
   /**
    * use operations
    * Return statistics about the partition
    */
-  public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/use', params: {partitionName: string, serviceName: string, type: OVH.dedicated.storage.PartitionUsageTypeEnum}): Promise<complexType.UnitAndValue<number>>;
+  public get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/use', params: {partitionName: string, serviceName: string, type: dedicated.storage.PartitionUsageTypeEnum}): Promise<complexType.UnitAndValue<number>>;
   /**
    * Details about a Service
    * Get this object properties
@@ -436,7 +435,7 @@ export class ApiDedicatedNasha extends OvhWrapper {
    * List the dedicated.nasTask.Task objects
    * View task list
    */
-  public get(path: '/dedicated/nasha/{serviceName}/task', params: {serviceName: string, operation?: OVH.dedicated.storage.TaskFunctionEnum, status?: OVH.dedicated.TaskStatusEnum}): Promise<number[]>;
+  public get(path: '/dedicated/nasha/{serviceName}/task', params: {serviceName: string, operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
   /**
    * Storage task
    * Get this object properties
@@ -446,7 +445,7 @@ export class ApiDedicatedNasha extends OvhWrapper {
    * use operations
    * Return statistics about the nas
    */
-  public get(path: '/dedicated/nasha/{serviceName}/use', params: {serviceName: string, type: OVH.dedicated.storage.NasUsageTypeEnum}): Promise<complexType.UnitAndValue<number>>;
+  public get(path: '/dedicated/nasha/{serviceName}/use', params: {serviceName: string, type: dedicated.storage.NasUsageTypeEnum}): Promise<complexType.UnitAndValue<number>>;
   /**
    * Get availabilities of nasha offer
    * Get availabilities of nasha offer
@@ -464,12 +463,12 @@ export class ApiDedicatedNasha extends OvhWrapper {
    * Storage zpool partition
    * Alter this object properties
    */
-  public put(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}', params: {partitionName: string, serviceName: string, partitionCapacity?: number, protocol?: OVH.dedicated.storage.ProtocolEnum, size?: number, usedBySnapshots?: number}): Promise<void>;
+  public put(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}', params: {partitionName: string, serviceName: string, partitionCapacity?: number, protocol?: dedicated.storage.ProtocolEnum, size?: number, usedBySnapshots?: number}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/dedicated/nasha/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/dedicated/nasha/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsDedicatedNashaPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -482,17 +481,17 @@ export class ApiDedicatedNasha extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/dedicated/nasha/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/dedicated/nasha/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * List the dedicated.nasha.Partition objects
    * Create a new partition
    */
-  public post(path: '/dedicated/nasha/{serviceName}/partition', params: {serviceName: string, partitionName: string, protocol: OVH.dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
+  public post(path: '/dedicated/nasha/{serviceName}/partition', params: {serviceName: string, partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
   /**
    * List the dedicated.nasha.Access objects
    * Add a new ACL entry
    */
-  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/access', params: {partitionName: string, serviceName: string, ip: string, type?: OVH.dedicated.storage.AclTypeEnum}): Promise<dedicated.nasTask.Task>;
+  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/access', params: {partitionName: string, serviceName: string, ip: string, type?: dedicated.storage.AclTypeEnum}): Promise<dedicated.nasTask.Task>;
   /**
    * List the dedicated.nasha.customSnap objects
    * Create a new snapshot
@@ -502,7 +501,7 @@ export class ApiDedicatedNasha extends OvhWrapper {
    * Partition options
    * Setup options
    */
-  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/options', params: {partitionName: string, serviceName: string, atime?: OVH.dedicated.storage.AtimeEnum, recordsize?: OVH.dedicated.storage.RecordSizeEnum, sync?: OVH.dedicated.storage.SyncEnum}): Promise<dedicated.nasTask.Task>;
+  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/options', params: {partitionName: string, serviceName: string, atime?: dedicated.storage.AtimeEnum, recordsize?: dedicated.storage.RecordSizeEnum, sync?: dedicated.storage.SyncEnum}): Promise<dedicated.nasTask.Task>;
   /**
    * List the dedicated.nasha.Quota objects
    * Set a new quota
@@ -512,7 +511,7 @@ export class ApiDedicatedNasha extends OvhWrapper {
    * List the dedicated.nasha.Snapshot objects
    * Schedule a new snapshot type
    */
-  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot', params: {partitionName: string, serviceName: string, snapshotType: OVH.dedicated.storage.SnapshotEnum}): Promise<dedicated.nasTask.Task>;
+  public post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot', params: {partitionName: string, serviceName: string, snapshotType: dedicated.storage.SnapshotEnum}): Promise<dedicated.nasTask.Task>;
   /**
    * Terminate your service
    * Terminate your service
@@ -545,7 +544,7 @@ export class ApiDedicatedNasha extends OvhWrapper {
    * Partition Snapshot
    * Delete a given snapshot
    */
-  public delete(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}', params: {partitionName: string, serviceName: string, snapshotType: OVH.dedicated.storage.SnapshotEnum}): Promise<dedicated.nasTask.Task>;
+  public delete(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}', params: {partitionName: string, serviceName: string, snapshotType: dedicated.storage.SnapshotEnum}): Promise<dedicated.nasTask.Task>;
   /**
    * Partition Vrack
    * Delete the vrack container
@@ -554,5 +553,4 @@ export class ApiDedicatedNasha extends OvhWrapper {
   public delete(path: PathsDedicatedNashaDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

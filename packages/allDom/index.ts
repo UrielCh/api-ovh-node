@@ -1,13 +1,12 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace allDom {
     //allDom.AllDom
     // fullName: allDom.AllDom.AllDom
     export interface AllDom {
         name: string;
-        offer: OVH.domain.OfferEnum;
-        type: OVH.allDom.TypeEnum;
+        offer: domain.OfferEnum;
+        type: allDom.TypeEnum;
     }
     //allDom.AllDomDomain
     // fullName: allDom.AllDomDomain.AllDomDomain
@@ -49,10 +48,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -124,9 +123,8 @@ export class ApiAllDom extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/allDom/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/allDom/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsAllDomPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
-}
 }

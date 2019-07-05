@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace ovhstatus {
     export namespace task {
         //ovhstatus.task.TaskImpactEnum
@@ -26,16 +25,16 @@ export namespace status {
         export interface Task {
             category: string;
             endDate?: string;
-            impact: OVH.ovhstatus.task.TaskImpactEnum;
+            impact: ovhstatus.task.TaskImpactEnum;
             impactedService: string;
             progress: number;
             project: string;
             reference: string;
-            replies: OVH.status.Reply.Reply[];
+            replies: status.Reply.Reply[];
             startDate?: string;
-            status: OVH.ovhstatus.task.TaskStatusEnum;
+            status: ovhstatus.task.TaskStatusEnum;
             title: string;
-            type: OVH.ovhstatus.task.TaskTypeEnum;
+            type: ovhstatus.task.TaskTypeEnum;
             uuid: string;
         }
     }
@@ -59,9 +58,8 @@ export class ApiStatus extends OvhWrapper {
    * API to get incidents or maintenances linked to nichandle services
    * Find all the incidents or maintenances linked to your services
    */
-  public get(path: '/status/task', params: {impact?: OVH.ovhstatus.task.TaskImpactEnum, status?: OVH.ovhstatus.task.TaskStatusEnum, type?: OVH.ovhstatus.task.TaskTypeEnum}): Promise<status.Task.Task[]>;
+  public get(path: '/status/task', params: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}): Promise<status.Task.Task[]>;
   public get(path: PathsStatusGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
-}
 }

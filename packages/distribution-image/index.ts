@@ -1,14 +1,13 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace distribution {
     //distribution.image
     // fullName: distribution.image.image
     export interface image {
         name: string;
-        packages: OVH.distribution.image.pakage[];
-        properties: OVH.distribution.image.properties;
-        service: OVH.distribution.image.service;
+        packages: distribution.image.pakage[];
+        properties: distribution.image.properties;
+        service: distribution.image.service;
     }
     export namespace image {
         //distribution.image.package
@@ -21,7 +20,7 @@ export namespace distribution {
         //distribution.image.properties
         // fullName: distribution.image.properties.properties
         export interface properties {
-            category: OVH.distribution.image.properties.category;
+            category: distribution.image.properties.category;
         }
         export namespace properties {
             //distribution.image.properties.category
@@ -57,14 +56,13 @@ export class ApiDistributionImage extends OvhWrapper {
    * Missing description
    * List images for a service
    */
-  public get(path: '/distribution/image/{serviceType}', params: {serviceType: OVH.distribution.image.service}): Promise<string[]>;
+  public get(path: '/distribution/image/{serviceType}', params: {serviceType: distribution.image.service}): Promise<string[]>;
   /**
    * Missing description
    * Show image details
    */
-  public get(path: '/distribution/image/{serviceType}/{imageName}', params: {imageName: string, serviceType: OVH.distribution.image.service}): Promise<distribution.image>;
+  public get(path: '/distribution/image/{serviceType}/{imageName}', params: {imageName: string, serviceType: distribution.image.service}): Promise<distribution.image>;
   public get(path: PathsDistributionImageGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
-}
 }

@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace service {
     //service.RenewType
     // fullName: service.RenewType.RenewType
@@ -33,10 +32,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace sslGateway {
@@ -45,7 +44,7 @@ export namespace sslGateway {
     export interface Domain {
         domain: string;
         id: number;
-        state: OVH.sslGateway.DomainStateEnum;
+        state: sslGateway.DomainStateEnum;
     }
     //sslGateway.DomainStateEnum
     export type DomainStateEnum = "creating" | "deleted" | "deleting" | "http-only" | "internal" | "ok"
@@ -71,7 +70,7 @@ export namespace sslGateway {
         address: string;
         id: number;
         port: number;
-        state: OVH.sslGateway.ServerStateEnum;
+        state: sslGateway.ServerStateEnum;
     }
     //sslGateway.ServerStateEnum
     export type ServerStateEnum = "creating" | "deleted" | "deleting" | "internal" | "ok" | "updating"
@@ -87,12 +86,12 @@ export namespace sslGateway {
         ipv4: string;
         ipv6?: string;
         metricsToken?: string;
-        offer: OVH.sslGateway.OfferEnum;
+        offer: sslGateway.OfferEnum;
         reverse?: string;
         serverHttps: boolean;
         serviceName: string;
-        sslConfiguration?: OVH.sslGateway.SslConfigurationEnum;
-        state: OVH.sslGateway.StateEnum;
+        sslConfiguration?: sslGateway.SslConfigurationEnum;
+        state: sslGateway.StateEnum;
         zones: string[];
     }
     //sslGateway.StateEnum
@@ -100,11 +99,11 @@ export namespace sslGateway {
     //sslGateway.Task
     // fullName: sslGateway.Task.Task
     export interface Task {
-        action: OVH.sslGateway.TaskActionEnum;
+        action: sslGateway.TaskActionEnum;
         creationDate: string;
         id: number;
         progress: number;
-        status: OVH.sslGateway.TaskStatusEnum;
+        status: sslGateway.TaskStatusEnum;
     }
     //sslGateway.TaskActionEnum
     export type TaskActionEnum = "addDomain" | "addPaidCertificate" | "addServer" | "createService" | "deleteDomain" | "deleteServer" | "deleteService" | "internalTask" | "updateServer" | "updateService" | "upgrade"
@@ -290,17 +289,17 @@ export class ApiSslGateway extends OvhWrapper {
    * Your SSL Gateway
    * Alter this object properties
    */
-  public put(path: '/sslGateway/{serviceName}', params: {serviceName: string, allowedSource?: string[], displayName?: string, hsts?: boolean, httpsRedirect?: boolean, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: OVH.sslGateway.OfferEnum, reverse?: string, serverHttps?: boolean, sslConfiguration?: OVH.sslGateway.SslConfigurationEnum, state?: OVH.sslGateway.StateEnum, zones?: string[]}): Promise<void>;
+  public put(path: '/sslGateway/{serviceName}', params: {serviceName: string, allowedSource?: string[], displayName?: string, hsts?: boolean, httpsRedirect?: boolean, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: sslGateway.OfferEnum, reverse?: string, serverHttps?: boolean, sslConfiguration?: sslGateway.SslConfigurationEnum, state?: sslGateway.StateEnum, zones?: string[]}): Promise<void>;
   /**
    * Server attached to an SSL Gateway
    * Alter this object properties
    */
-  public put(path: '/sslGateway/{serviceName}/server/{id}', params: {id: number, serviceName: string, address?: string, port?: number, state?: OVH.sslGateway.ServerStateEnum}): Promise<void>;
+  public put(path: '/sslGateway/{serviceName}/server/{id}', params: {id: number, serviceName: string, address?: string, port?: number, state?: sslGateway.ServerStateEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/sslGateway/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/sslGateway/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsSslGatewayPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -313,7 +312,7 @@ export class ApiSslGateway extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/sslGateway/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/sslGateway/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * List the sslGateway.Domain objects
    * Attach a new domain to your SSL Gateway
@@ -350,5 +349,4 @@ export class ApiSslGateway extends OvhWrapper {
   public delete(path: PathsSslGatewayDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

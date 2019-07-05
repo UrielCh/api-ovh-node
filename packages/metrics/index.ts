@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace metrics {
     export namespace api {
         //metrics.api.Consumption
@@ -38,11 +37,11 @@ export namespace metrics {
             description: string;
             name: string;
             offer: string;
-            quota: OVH.metrics.api.Option;
-            region: OVH.metrics.api.Region;
+            quota: metrics.api.Option;
+            region: metrics.api.Region;
             shouldUpgrade: boolean;
-            status: OVH.metrics.api.ServiceStatusEnum;
-            type: OVH.metrics.api.OfferTypeEnum;
+            status: metrics.api.ServiceStatusEnum;
+            type: metrics.api.OfferTypeEnum;
         }
         //metrics.api.ServiceStatusEnum
         export type ServiceStatusEnum = "new" | "alive" | "disabled" | "dead"
@@ -55,8 +54,8 @@ export namespace metrics {
             expiredAt: string;
             id: string;
             isRevoked: boolean;
-            labels: OVH.metrics.api.Label[];
-            type: OVH.metrics.api.PermissionEnum;
+            labels: metrics.api.Label[];
+            type: metrics.api.PermissionEnum;
         }
     }
 }
@@ -92,10 +91,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -228,7 +227,7 @@ export class ApiMetrics extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/metrics/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/metrics/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Missing description
    * Modify a token
@@ -246,7 +245,7 @@ export class ApiMetrics extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/metrics/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/metrics/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * Missing description
    * Find TokenID for a specific token
@@ -261,7 +260,7 @@ export class ApiMetrics extends OvhWrapper {
    * Missing description
    * Create a token
    */
-  public post(path: '/metrics/{serviceName}/token', params: {serviceName: string, description?: string, labels?: OVH.metrics.api.Label[], permission: OVH.metrics.api.PermissionEnum}): Promise<metrics.api.Token>;
+  public post(path: '/metrics/{serviceName}/token', params: {serviceName: string, description?: string, labels?: metrics.api.Label[], permission: metrics.api.PermissionEnum}): Promise<metrics.api.Token>;
   public post(path: PathsMetricsPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
@@ -273,5 +272,4 @@ export class ApiMetrics extends OvhWrapper {
   public delete(path: PathsMetricsDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

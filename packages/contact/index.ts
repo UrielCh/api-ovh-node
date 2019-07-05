@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.SafeKeyValue
     // fullName: complexType.SafeKeyValue.SafeKeyValue
@@ -13,7 +12,7 @@ export namespace contact {
     //contact.FormCharacteristic
     // fullName: contact.FormCharacteristic.FormCharacteristic
     export interface FormCharacteristic {
-        keys: OVH.contact.KeyFormCharacteristic[];
+        keys: contact.KeyFormCharacteristic[];
         type: string;
     }
     //contact.KeyFormCharacteristic
@@ -56,9 +55,8 @@ export class ApiContact extends OvhWrapper {
    * Send form following characteristics of /contact/form
    * Send form following characteristics of /contact/form
    */
-  public post(path: '/contact/form/send', params: {form: OVH.complexType.SafeKeyValue<string>[], type: string}): Promise<void>;
+  public post(path: '/contact/form/send', params: {form: complexType.SafeKeyValue<string>[], type: string}): Promise<void>;
   public post(path: PathsContactPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

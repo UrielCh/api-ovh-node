@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
@@ -37,17 +36,17 @@ export namespace dedicated {
         //dedicated.installationTemplate.Templates
         // fullName: dedicated.installationTemplate.Templates.Templates
         export interface Templates {
-            availableLanguages: OVH.dedicated.TemplateOsLanguageEnum[];
+            availableLanguages: dedicated.TemplateOsLanguageEnum[];
             beta?: boolean;
-            bitFormat: OVH.dedicated.server.BitFormatEnum;
-            category: OVH.dedicated.TemplateOsUsageEnum;
-            customization?: OVH.dedicated.TemplateOsProperties;
-            defaultLanguage: OVH.dedicated.TemplateOsLanguageEnum;
+            bitFormat: dedicated.server.BitFormatEnum;
+            category: dedicated.TemplateOsUsageEnum;
+            customization?: dedicated.TemplateOsProperties;
+            defaultLanguage: dedicated.TemplateOsLanguageEnum;
             deprecated?: boolean;
             description: string;
             distribution: string;
-            family: OVH.dedicated.TemplateOsTypeEnum;
-            filesystems: OVH.dedicated.TemplateOsFileSystemEnum[];
+            family: dedicated.TemplateOsTypeEnum;
+            filesystems: dedicated.TemplateOsFileSystemEnum[];
             hardRaidConfiguration?: boolean;
             lastModification?: string;
             lvmReady?: boolean;
@@ -55,14 +54,14 @@ export namespace dedicated {
             supportsGptLabel?: boolean;
             supportsRTM: boolean;
             supportsSqlServer?: boolean;
-            supportsUEFI?: OVH.dedicated.server.SupportsUEFIEnum;
+            supportsUEFI?: dedicated.server.SupportsUEFIEnum;
             templateName: string;
         }
         //dedicated.installationTemplate.hardwareRaid
         // fullName: dedicated.installationTemplate.hardwareRaid.hardwareRaid
         export interface hardwareRaid {
             disks: string[];
-            mode: OVH.dedicated.TemplateOsHardwareRaidEnum;
+            mode: dedicated.TemplateOsHardwareRaidEnum;
             name: string;
             step: number;
         }
@@ -75,12 +74,12 @@ export namespace dedicated {
         //dedicated.installationTemplate.templatePartitions
         // fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
         export interface templatePartitions {
-            filesystem: OVH.dedicated.TemplateOsFileSystemEnum;
+            filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
             order: number;
-            raid?: OVH.dedicated.server.PartitionRaidEnum;
-            size: OVH.complexType.UnitAndValue<number>;
-            type: OVH.dedicated.TemplatePartitionTypeEnum;
+            raid?: dedicated.server.PartitionRaidEnum;
+            size: complexType.UnitAndValue<number>;
+            type: dedicated.TemplatePartitionTypeEnum;
             volumeName?: string;
         }
     }
@@ -186,5 +185,4 @@ export class ApiDedicatedInstallationTemplate extends OvhWrapper {
   public get(path: PathsDedicatedInstallationTemplateGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
-}
 }

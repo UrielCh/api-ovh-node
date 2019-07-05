@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace license {
     //license.ActionType
     export type ActionType = "addWindowFromExistingSerial" | "changeIp" | "changeOs" | "installLicense" | "optionUpgrade" | "releaseOption" | "versionUpgrade"
@@ -9,7 +8,7 @@ export namespace license {
     //license.ChangeIpStatus
     // fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message: OVH.license.ChangeIpMessageEnum;
+        message: license.ChangeIpMessageEnum;
         success: boolean;
     }
     //license.LicenseTypeEnum
@@ -20,7 +19,7 @@ export namespace license {
         amount?: string;
         canBeDeleted: boolean;
         expirationDate: string;
-        label: OVH.license.OptionLabel;
+        label: license.OptionLabel;
         version?: string;
     }
     //license.OptionLabel
@@ -28,9 +27,9 @@ export namespace license {
     //license.OrderableVirtuozzoCompatibilityInfos
     // fullName: license.OrderableVirtuozzoCompatibilityInfos.OrderableVirtuozzoCompatibilityInfos
     export interface OrderableVirtuozzoCompatibilityInfos {
-        compliantContainers: OVH.license.OrderableVirtuozzoContainerNumberEnum[];
-        potentialProblems: OVH.license.PotentialProblemVirtuozzoEnum[];
-        version: OVH.license.OrderableVirtuozzoVersionEnum;
+        compliantContainers: license.OrderableVirtuozzoContainerNumberEnum[];
+        potentialProblems: license.PotentialProblemVirtuozzoEnum[];
+        version: license.OrderableVirtuozzoVersionEnum;
     }
     //license.OrderableVirtuozzoContainerNumberEnum
     export type OrderableVirtuozzoContainerNumberEnum = "2_CPU_001_CONTAINER" | "2_CPU_003_CONTAINER" | "2_CPU_010_CONTAINER" | "2_CPU_030_CONTAINER" | "2_CPU_060_CONTAINER" | "2_CPU_100_CONTAINER"
@@ -43,11 +42,11 @@ export namespace license {
     //license.Task
     // fullName: license.Task.Task
     export interface Task {
-        action: OVH.license.ActionType;
+        action: license.ActionType;
         doneDate?: string;
         lastUpdate: string;
         name: string;
-        status: OVH.license.TaskStateEnum;
+        status: license.TaskStateEnum;
         taskId: number;
         todoDate: string;
     }
@@ -58,8 +57,8 @@ export namespace license {
     //license.VirtuozzoOrderConfiguration
     // fullName: license.VirtuozzoOrderConfiguration.VirtuozzoOrderConfiguration
     export interface VirtuozzoOrderConfiguration {
-        orderableVersions: OVH.license.OrderableVirtuozzoCompatibilityInfos[];
-        serviceType: OVH.license.LicenseTypeEnum;
+        orderableVersions: license.OrderableVirtuozzoCompatibilityInfos[];
+        serviceType: license.LicenseTypeEnum;
     }
     //license.VirtuozzoVersionEnum
     export type VirtuozzoVersionEnum = "VIRTUOZZO_CONTAINERS_4_FOR_LINUX" | "VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS"
@@ -67,7 +66,7 @@ export namespace license {
         //license.virtuozzo.Virtuozzo
         // fullName: license.virtuozzo.Virtuozzo.Virtuozzo
         export interface Virtuozzo {
-            containerNumber: OVH.license.VirtuozzoContainerNumberEnum;
+            containerNumber: license.VirtuozzoContainerNumberEnum;
             creation: string;
             deleteAtExpiration: boolean;
             domain: string;
@@ -75,8 +74,8 @@ export namespace license {
             ip: string;
             licenseId: string;
             productKey?: string;
-            status: OVH.license.StateEnum;
-            version: OVH.license.VirtuozzoVersionEnum;
+            status: license.StateEnum;
+            version: license.VirtuozzoVersionEnum;
         }
     }
 }
@@ -112,10 +111,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -229,12 +228,12 @@ export class ApiLicenseVirtuozzo extends OvhWrapper {
    * List the license.Option objects
    * Options linked to this license
    */
-  public get(path: '/license/virtuozzo/{serviceName}/option', params: {serviceName: string, label?: OVH.license.OptionLabel}): Promise<license.OptionLabel[]>;
+  public get(path: '/license/virtuozzo/{serviceName}/option', params: {serviceName: string, label?: license.OptionLabel}): Promise<license.OptionLabel[]>;
   /**
    * Your License options
    * Get this object properties
    */
-  public get(path: '/license/virtuozzo/{serviceName}/option/{label}', params: {label: OVH.license.OptionLabel, serviceName: string}): Promise<license.Option>;
+  public get(path: '/license/virtuozzo/{serviceName}/option/{label}', params: {label: license.OptionLabel, serviceName: string}): Promise<license.Option>;
   /**
    * Details about a Service
    * Get this object properties
@@ -244,7 +243,7 @@ export class ApiLicenseVirtuozzo extends OvhWrapper {
    * List the license.Task objects
    * tasks linked to this license
    */
-  public get(path: '/license/virtuozzo/{serviceName}/tasks', params: {serviceName: string, action?: OVH.license.ActionType, status?: OVH.license.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/license/virtuozzo/{serviceName}/tasks', params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
   /**
    * licenses Todos
    * Get this object properties
@@ -262,12 +261,12 @@ export class ApiLicenseVirtuozzo extends OvhWrapper {
    * Your Virtuozzo license
    * Alter this object properties
    */
-  public put(path: '/license/virtuozzo/{serviceName}', params: {serviceName: string, containerNumber?: OVH.license.VirtuozzoContainerNumberEnum, creation?: string, deleteAtExpiration?: boolean, domain?: string, informationKey?: string, ip?: string, licenseId?: string, productKey?: string, status?: OVH.license.StateEnum, version?: OVH.license.VirtuozzoVersionEnum}): Promise<void>;
+  public put(path: '/license/virtuozzo/{serviceName}', params: {serviceName: string, containerNumber?: license.VirtuozzoContainerNumberEnum, creation?: string, deleteAtExpiration?: boolean, domain?: string, informationKey?: string, ip?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.VirtuozzoVersionEnum}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/license/virtuozzo/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/license/virtuozzo/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsLicenseVirtuozzoPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -280,7 +279,7 @@ export class ApiLicenseVirtuozzo extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/license/virtuozzo/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/license/virtuozzo/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * Terminate your service
    * Terminate your service
@@ -293,9 +292,8 @@ export class ApiLicenseVirtuozzo extends OvhWrapper {
    * Your License options
    * release this Option
    */
-  public delete(path: '/license/virtuozzo/{serviceName}/option/{label}', params: {label: OVH.license.OptionLabel, serviceName: string}): Promise<license.Task>;
+  public delete(path: '/license/virtuozzo/{serviceName}/option/{label}', params: {label: license.OptionLabel, serviceName: string}): Promise<license.Task>;
   public delete(path: PathsLicenseVirtuozzoDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

@@ -1,14 +1,13 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace license {
     //license.ActionType
     export type ActionType = "addWindowFromExistingSerial" | "changeIp" | "changeOs" | "installLicense" | "optionUpgrade" | "releaseOption" | "versionUpgrade"
     //license.CloudLinuxOrderConfiguration
     // fullName: license.CloudLinuxOrderConfiguration.CloudLinuxOrderConfiguration
     export interface CloudLinuxOrderConfiguration {
-        orderableVersions: OVH.license.OrderableCloudLinuxCompatibilityInfos[];
-        serviceType: OVH.license.LicenseTypeEnum;
+        orderableVersions: license.OrderableCloudLinuxCompatibilityInfos[];
+        serviceType: license.LicenseTypeEnum;
     }
     //license.CloudLinuxVersionEnum
     export type CloudLinuxVersionEnum = "SINGLE" | "WITH_CPANEL" | "WITH_PLESK12" | "cloudlinux-license"
@@ -17,18 +16,18 @@ export namespace license {
     //license.OrderableCloudLinuxCompatibilityInfos
     // fullName: license.OrderableCloudLinuxCompatibilityInfos.OrderableCloudLinuxCompatibilityInfos
     export interface OrderableCloudLinuxCompatibilityInfos {
-        version: OVH.license.CloudLinuxVersionEnum;
+        version: license.CloudLinuxVersionEnum;
     }
     //license.StateEnum
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
     //license.Task
     // fullName: license.Task.Task
     export interface Task {
-        action: OVH.license.ActionType;
+        action: license.ActionType;
         doneDate?: string;
         lastUpdate: string;
         name: string;
-        status: OVH.license.TaskStateEnum;
+        status: license.TaskStateEnum;
         taskId: number;
         todoDate: string;
     }
@@ -42,8 +41,8 @@ export namespace license {
             domain: string;
             ip: string;
             licenseId: string;
-            status: OVH.license.StateEnum;
-            version: OVH.license.CloudLinuxVersionEnum;
+            status: license.StateEnum;
+            version: license.CloudLinuxVersionEnum;
         }
     }
 }
@@ -79,10 +78,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -159,7 +158,7 @@ export class ApiLicenseCloudLinux extends OvhWrapper {
    * List the license.Task objects
    * Tasks linked to this license
    */
-  public get(path: '/license/cloudLinux/{serviceName}/tasks', params: {serviceName: string, action?: OVH.license.ActionType, status?: OVH.license.TaskStateEnum}): Promise<number[]>;
+  public get(path: '/license/cloudLinux/{serviceName}/tasks', params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
   /**
    * licenses Todos
    * Get this object properties
@@ -177,7 +176,7 @@ export class ApiLicenseCloudLinux extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/license/cloudLinux/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/license/cloudLinux/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsLicenseCloudLinuxPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -185,7 +184,7 @@ export class ApiLicenseCloudLinux extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/license/cloudLinux/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/license/cloudLinux/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * Terminate your service
    * Terminate your service
@@ -194,5 +193,4 @@ export class ApiLicenseCloudLinux extends OvhWrapper {
   public post(path: PathsLicenseCloudLinuxPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

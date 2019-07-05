@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.UnitAndValue
     // fullName: complexType.UnitAndValue.UnitAndValue
@@ -42,10 +41,10 @@ export namespace dedicated {
         export interface Task {
             comment?: string;
             doneDate?: string;
-            function: OVH.dedicated.TaskFunctionEnum;
+            function: dedicated.TaskFunctionEnum;
             lastUpdate?: string;
             startDate: string;
-            status: OVH.dedicated.TaskStatusEnum;
+            status: dedicated.TaskStatusEnum;
             taskId: number;
         }
     }
@@ -103,10 +102,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace vps {
@@ -114,16 +113,16 @@ export namespace vps {
     // fullName: vps.AutomatedBackup.AutomatedBackup
     export interface AutomatedBackup {
         schedule?: string;
-        state: OVH.vps.BackupStateEnum;
+        state: vps.BackupStateEnum;
     }
     //vps.BackupFtp
     // fullName: vps.BackupFtp.BackupFtp
     export interface BackupFtp {
         ftpBackupName: string;
-        quota?: OVH.complexType.UnitAndValue<number>;
+        quota?: complexType.UnitAndValue<number>;
         readOnlyDate?: string;
         type: string;
-        usage?: OVH.complexType.UnitAndValue<number>;
+        usage?: complexType.UnitAndValue<number>;
     }
     //vps.BackupStateEnum
     export type BackupStateEnum = "disabled" | "enabled"
@@ -141,8 +140,8 @@ export namespace vps {
         lowFreeSpaceThreshold?: number;
         monitoring?: boolean;
         size: number;
-        state: OVH.vps.disk.StateEnum;
-        type: OVH.vps.disk.TypeEnum;
+        state: vps.disk.StateEnum;
+        type: vps.disk.TypeEnum;
     }
     //vps.Image
     // fullName: vps.Image.Image
@@ -154,17 +153,17 @@ export namespace vps {
     // fullName: vps.Ip.Ip
     export interface Ip {
         gateway?: string;
-        geolocation: OVH.vps.ip.GeolocationEnum;
+        geolocation: vps.ip.GeolocationEnum;
         ipAddress: string;
         macAddress?: string;
         reverse?: string;
-        type: OVH.vps.ip.TypeEnum;
-        version: OVH.coreTypes.IpVersionEnum;
+        type: vps.ip.TypeEnum;
+        version: coreTypes.IpVersionEnum;
     }
     //vps.Model
     // fullName: vps.Model.Model
     export interface Model {
-        availableOptions: OVH.vps.VpsOptionEnum[];
+        availableOptions: vps.VpsOptionEnum[];
         datacenter: string[];
         disk: number;
         maximumAdditionnalIp: number;
@@ -172,13 +171,13 @@ export namespace vps {
         name: string;
         offer: string;
         vcore: number;
-        version: OVH.vps.VpsVersionEnum;
+        version: vps.VpsVersionEnum;
     }
     //vps.Option
     // fullName: vps.Option.Option
     export interface Option {
-        option: OVH.vps.VpsOptionEnum;
-        state: OVH.vps.VpsOptionStateEnum;
+        option: vps.VpsOptionEnum;
+        state: vps.VpsOptionStateEnum;
     }
     //vps.RestoreStateEnum
     export type RestoreStateEnum = "available" | "restored" | "restoring"
@@ -195,8 +194,8 @@ export namespace vps {
     export interface Software {
         id: number;
         name: string;
-        status: OVH.vps.SoftwareStatusEnum;
-        type: OVH.vps.SoftwareTypeEnum;
+        status: vps.SoftwareStatusEnum;
+        type: vps.SoftwareTypeEnum;
     }
     //vps.SoftwareStatusEnum
     export type SoftwareStatusEnum = "deprecated" | "stable" | "testing"
@@ -207,8 +206,8 @@ export namespace vps {
     export interface Task {
         id: number;
         progress: number;
-        state: OVH.vps.TaskStateEnum;
-        type: OVH.vps.TaskTypeEnum;
+        state: vps.TaskStateEnum;
+        type: vps.TaskTypeEnum;
     }
     //vps.TaskStateEnum
     export type TaskStateEnum = "blocked" | "cancelled" | "doing" | "done" | "error" | "paused" | "todo" | "waitingAck"
@@ -218,7 +217,7 @@ export namespace vps {
     // fullName: vps.Template.Template
     export interface Template {
         availableLanguage: string[];
-        bitFormat: OVH.vps.TemplateBitFormatEnum;
+        bitFormat: vps.TemplateBitFormatEnum;
         distribution: string;
         id: number;
         locale: string;
@@ -231,15 +230,15 @@ export namespace vps {
     export interface VPS {
         cluster: string;
         displayName?: string;
-        keymap?: OVH.vps.VpsKeymapEnum;
+        keymap?: vps.VpsKeymapEnum;
         memoryLimit: number;
-        model: OVH.vps.Model;
+        model: vps.Model;
         monitoringIpBlocks: string[];
         name: string;
-        netbootMode: OVH.vps.VpsNetbootEnum;
-        offerType: OVH.vps.VpsOfferEnum;
+        netbootMode: vps.VpsNetbootEnum;
+        offerType: vps.VpsOfferEnum;
         slaMonitoring?: boolean;
-        state: OVH.vps.VpsStateEnum;
+        state: vps.VpsStateEnum;
         vcore: number;
         zone: string;
     }
@@ -290,7 +289,7 @@ export namespace vps {
         //vps.automatedBackup.Attached
         // fullName: vps.automatedBackup.Attached.Attached
         export interface Attached {
-            access: OVH.vps.automatedBackup.attached.Infos;
+            access: vps.automatedBackup.attached.Infos;
             restorePoint: string;
         }
         export namespace attached {
@@ -317,19 +316,19 @@ export namespace vps {
         //vps.ip.ServiceStatus
         // fullName: vps.ip.ServiceStatus.ServiceStatus
         export interface ServiceStatus {
-            dns: OVH.vps.ip.ServiceStatusService;
-            http: OVH.vps.ip.ServiceStatusService;
-            https: OVH.vps.ip.ServiceStatusService;
-            ping: OVH.vps.ip.ServiceStatusStateEnum;
-            smtp: OVH.vps.ip.ServiceStatusService;
-            ssh: OVH.vps.ip.ServiceStatusService;
-            tools?: OVH.vps.ip.ServiceStatusStateEnum;
+            dns: vps.ip.ServiceStatusService;
+            http: vps.ip.ServiceStatusService;
+            https: vps.ip.ServiceStatusService;
+            ping: vps.ip.ServiceStatusStateEnum;
+            smtp: vps.ip.ServiceStatusService;
+            ssh: vps.ip.ServiceStatusService;
+            tools?: vps.ip.ServiceStatusStateEnum;
         }
         //vps.ip.ServiceStatusService
         // fullName: vps.ip.ServiceStatusService.ServiceStatusService
         export interface ServiceStatusService {
             port: number;
-            state: OVH.vps.ip.ServiceStatusStateEnum;
+            state: vps.ip.ServiceStatusStateEnum;
         }
         //vps.ip.ServiceStatusStateEnum
         export type ServiceStatusStateEnum = "down" | "up"
@@ -362,9 +361,9 @@ export namespace vps {
         //vps.veeam.RestoredBackup
         // fullName: vps.veeam.RestoredBackup.RestoredBackup
         export interface RestoredBackup {
-            accessInfos: OVH.vps.veeam.Infos;
+            accessInfos: vps.veeam.Infos;
             restorePointId: number;
-            state: OVH.vps.veeam.StateEnum;
+            state: vps.veeam.StateEnum;
         }
         //vps.veeam.StateEnum
         export type StateEnum = "mounted" | "restoring" | "unmounted" | "unmounting"
@@ -760,7 +759,7 @@ export class ApiVps extends OvhWrapper {
    * restorePoints operations
    * Get available Restore Points
    */
-  public get(path: '/vps/{serviceName}/automatedBackup/restorePoints', params: {serviceName: string, state: OVH.vps.RestoreStateEnum}): Promise<string[]>;
+  public get(path: '/vps/{serviceName}/automatedBackup/restorePoints', params: {serviceName: string, state: vps.RestoreStateEnum}): Promise<string[]>;
   /**
    * availableUpgrade operations
    * Return all models the virtual server can be upgraded to
@@ -805,12 +804,12 @@ export class ApiVps extends OvhWrapper {
    * monitoring operations
    * Return many statistics about the disk for a given period
    */
-  public get(path: '/vps/{serviceName}/disks/{id}/monitoring', params: {id: number, serviceName: string, period: OVH.vps.VpsMonitoringPeriodEnum, type: OVH.vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+  public get(path: '/vps/{serviceName}/disks/{id}/monitoring', params: {id: number, serviceName: string, period: vps.VpsMonitoringPeriodEnum, type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
   /**
    * use operations
    * Return many statistics about the disk at that time
    */
-  public get(path: '/vps/{serviceName}/disks/{id}/use', params: {id: number, serviceName: string, type: OVH.vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
+  public get(path: '/vps/{serviceName}/disks/{id}/use', params: {id: number, serviceName: string, type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
   /**
    * Installation template for a VPS Virtual Machine
    * Get this object properties
@@ -850,7 +849,7 @@ export class ApiVps extends OvhWrapper {
    * monitoring operations
    * Return many statistics about the virtual machine for a given period
    */
-  public get(path: '/vps/{serviceName}/monitoring', params: {serviceName: string, period: OVH.vps.VpsMonitoringPeriodEnum, type: OVH.vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+  public get(path: '/vps/{serviceName}/monitoring', params: {serviceName: string, period: vps.VpsMonitoringPeriodEnum, type: vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
   /**
    * List the vps.Option objects
    * List of VPS options
@@ -860,7 +859,7 @@ export class ApiVps extends OvhWrapper {
    * Information about the options of a VPS Virtual Machine
    * Get this object properties
    */
-  public get(path: '/vps/{serviceName}/option/{option}', params: {option: OVH.vps.VpsOptionEnum, serviceName: string}): Promise<vps.Option>;
+  public get(path: '/vps/{serviceName}/option/{option}', params: {option: vps.VpsOptionEnum, serviceName: string}): Promise<vps.Option>;
   /**
    * List the secondaryDns.SecondaryDNS objects
    * List of secondary dns domain name
@@ -900,7 +899,7 @@ export class ApiVps extends OvhWrapper {
    * List the vps.Task objects
    * Tasks associated to this virtual server
    */
-  public get(path: '/vps/{serviceName}/tasks', params: {serviceName: string, state?: OVH.vps.TaskStateEnum, type?: OVH.vps.TaskTypeEnum}): Promise<number[]>;
+  public get(path: '/vps/{serviceName}/tasks', params: {serviceName: string, state?: vps.TaskStateEnum, type?: vps.TaskTypeEnum}): Promise<number[]>;
   /**
    * Operation on a VPS Virtual Machine
    * Get this object properties
@@ -930,7 +929,7 @@ export class ApiVps extends OvhWrapper {
    * use operations
    * Return many statistics about the virtual machine at that time
    */
-  public get(path: '/vps/{serviceName}/use', params: {serviceName: string, type: OVH.vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
+  public get(path: '/vps/{serviceName}/use', params: {serviceName: string, type: vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
   /**
    * Informations about a VPS Veeam backups
    * Get this object properties
@@ -955,7 +954,7 @@ export class ApiVps extends OvhWrapper {
    * Missing description
    * List all the datacenters for a specific country
    */
-  public get(path: '/vps/datacenter', params: {country: OVH.nichandle.CountryEnum}): Promise<string[]>;
+  public get(path: '/vps/datacenter', params: {country: nichandle.CountryEnum}): Promise<string[]>;
   public get(path: PathsVpsGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
@@ -963,7 +962,7 @@ export class ApiVps extends OvhWrapper {
    * VPS Virtual Machine
    * Alter this object properties
    */
-  public put(path: '/vps/{serviceName}', params: {serviceName: string, cluster?: string, displayName?: string, keymap?: OVH.vps.VpsKeymapEnum, memoryLimit?: number, model?: OVH.vps.Model, monitoringIpBlocks?: string[], name?: string, netbootMode?: OVH.vps.VpsNetbootEnum, offerType?: OVH.vps.VpsOfferEnum, slaMonitoring?: boolean, state?: OVH.vps.VpsStateEnum, vcore?: number, zone?: string}): Promise<void>;
+  public put(path: '/vps/{serviceName}', params: {serviceName: string, cluster?: string, displayName?: string, keymap?: vps.VpsKeymapEnum, memoryLimit?: number, model?: vps.Model, monitoringIpBlocks?: string[], name?: string, netbootMode?: vps.VpsNetbootEnum, offerType?: vps.VpsOfferEnum, slaMonitoring?: boolean, state?: vps.VpsStateEnum, vcore?: number, zone?: string}): Promise<void>;
   /**
    * Backup Ftp ACL for this server and Backup Ftp
    * Alter this object properties
@@ -973,12 +972,12 @@ export class ApiVps extends OvhWrapper {
    * Information about a disk of a VPS Virtual Machine
    * Alter this object properties
    */
-  public put(path: '/vps/{serviceName}/disks/{id}', params: {id: number, serviceName: string, bandwidthLimit?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: OVH.vps.disk.StateEnum, type?: OVH.vps.disk.TypeEnum}): Promise<void>;
+  public put(path: '/vps/{serviceName}/disks/{id}', params: {id: number, serviceName: string, bandwidthLimit?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: vps.disk.StateEnum, type?: vps.disk.TypeEnum}): Promise<void>;
   /**
    * Information about an IP address for a VPS Virtual Machine
    * Alter this object properties
    */
-  public put(path: '/vps/{serviceName}/ips/{ipAddress}', params: {ipAddress: string, serviceName: string, gateway?: string, geolocation?: OVH.vps.ip.GeolocationEnum, macAddress?: string, reverse?: string, type?: OVH.vps.ip.TypeEnum, version?: OVH.coreTypes.IpVersionEnum}): Promise<void>;
+  public put(path: '/vps/{serviceName}/ips/{ipAddress}', params: {ipAddress: string, serviceName: string, gateway?: string, geolocation?: vps.ip.GeolocationEnum, macAddress?: string, reverse?: string, type?: vps.ip.TypeEnum, version?: coreTypes.IpVersionEnum}): Promise<void>;
   /**
    * Secondary dns infos
    * Alter this object properties
@@ -988,7 +987,7 @@ export class ApiVps extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/vps/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/vps/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Information about the snapshot of a VPS Virtual Machine
    * Alter this object properties
@@ -1006,7 +1005,7 @@ export class ApiVps extends OvhWrapper {
    * restore operations
    * Creates a VPS.Task that will restore the given restorePoint
    */
-  public post(path: '/vps/{serviceName}/automatedBackup/restore', params: {serviceName: string, changePassword?: boolean, restorePoint: string, type: OVH.vps.RestoreTypeEnum}): Promise<vps.Task>;
+  public post(path: '/vps/{serviceName}/automatedBackup/restore', params: {serviceName: string, changePassword?: boolean, restorePoint: string, type: vps.RestoreTypeEnum}): Promise<vps.Task>;
   /**
    * List the dedicated.server.BackupFtpAcl objects
    * Create a new Backup FTP ACL
@@ -1026,7 +1025,7 @@ export class ApiVps extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/vps/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/vps/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * createSnapshot operations
    * Create a snapshot of the Virtual Server if the snapshot option is enabled and if there is no existing snapshot
@@ -1041,7 +1040,7 @@ export class ApiVps extends OvhWrapper {
    * openConsoleAccess operations
    * Return the necessary informations to open a VNC connection to your VPS
    */
-  public post(path: '/vps/{serviceName}/openConsoleAccess', params: {serviceName: string, protocol?: OVH.vps.VncProtocolEnum}): Promise<vps.Vnc>;
+  public post(path: '/vps/{serviceName}/openConsoleAccess', params: {serviceName: string, protocol?: vps.VncProtocolEnum}): Promise<vps.Vnc>;
   /**
    * reboot operations
    * Request a reboot of the machine
@@ -1086,7 +1085,7 @@ export class ApiVps extends OvhWrapper {
    * restore operations
    * Creates a VPS.Task that will restore the given restorePoint
    */
-  public post(path: '/vps/{serviceName}/veeam/restorePoints/{id}/restore', params: {id: number, serviceName: string, changePassword?: boolean, export?: OVH.vps.veeam.ExportTypeEnum, full: boolean}): Promise<vps.Task>;
+  public post(path: '/vps/{serviceName}/veeam/restorePoints/{id}/restore', params: {id: number, serviceName: string, changePassword?: boolean, export?: vps.veeam.ExportTypeEnum, full: boolean}): Promise<vps.Task>;
   public post(path: PathsVpsPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
@@ -1104,7 +1103,7 @@ export class ApiVps extends OvhWrapper {
    * Information about the options of a VPS Virtual Machine
    * Release a given option
    */
-  public delete(path: '/vps/{serviceName}/option/{option}', params: {option: OVH.vps.VpsOptionEnum, serviceName: string}): Promise<void>;
+  public delete(path: '/vps/{serviceName}/option/{option}', params: {option: vps.VpsOptionEnum, serviceName: string}): Promise<void>;
   /**
    * Secondary dns infos
    * remove this domain
@@ -1123,5 +1122,4 @@ export class ApiVps extends OvhWrapper {
   public delete(path: PathsVpsDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

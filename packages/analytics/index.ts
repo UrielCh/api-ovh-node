@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace analytics {
     //analytics.Cluster
     // fullName: analytics.Cluster.Cluster
@@ -11,11 +10,11 @@ export namespace analytics {
         deploymentEndDate?: string;
         deploymentStartDate?: string;
         domain?: string;
-        nodes?: OVH.analytics.cluster.Node[];
+        nodes?: analytics.cluster.Node[];
         osProjectId?: string;
         osRegion?: string;
         serviceName: string;
-        status: OVH.analytics.Status;
+        status: analytics.Status;
     }
     //analytics.Component
     // fullName: analytics.Component.Component
@@ -30,7 +29,7 @@ export namespace analytics {
         // fullName: analytics.cluster.Activity.Activity
         export interface Activity {
             description: string;
-            status: OVH.analytics.Status;
+            status: analytics.Status;
             timestamp: string;
             user?: string;
         }
@@ -44,7 +43,7 @@ export namespace analytics {
             hdfsReplicationFactor: number;
             masterNodeStorage: number;
             masterPassword: string;
-            nodes: OVH.analytics.node.Deploy[];
+            nodes: analytics.node.Deploy[];
             osProjectId: string;
             osProjectName: string;
             osRegion: string;
@@ -60,9 +59,9 @@ export namespace analytics {
             hostname?: string;
             ip?: string;
             nodeId: string;
-            nodeType: OVH.analytics.node.Type;
+            nodeType: analytics.node.Type;
             osRegion?: string;
-            status: OVH.analytics.Status;
+            status: analytics.Status;
             storage?: number;
         }
         export namespace deploy {
@@ -70,7 +69,7 @@ export namespace analytics {
             // fullName: analytics.cluster.deploy.Status.Status
             export interface Status {
                 percentage: number;
-                status: OVH.analytics.Status;
+                status: analytics.Status;
                 task: string;
             }
         }
@@ -89,7 +88,7 @@ export namespace analytics {
         // fullName: analytics.node.Deploy.Deploy
         export interface Deploy {
             nodeFlavor: string;
-            nodeType: OVH.analytics.node.Type;
+            nodeType: analytics.node.Type;
         }
         //analytics.node.Type
         export type Type = "MASTER" | "SLAVE" | "EDGE" | "UTILITY"
@@ -99,16 +98,16 @@ export namespace analytics {
         // fullName: analytics.platform.Capability.Capability
         export interface Capability {
             availableRegion: string[];
-            bastionNode: OVH.analytics.node.Capability;
-            components: OVH.analytics.Component[];
-            edgeNode: OVH.analytics.node.Capability;
+            bastionNode: analytics.node.Capability;
+            components: analytics.Component[];
+            edgeNode: analytics.node.Capability;
             hdfsReplicationFactor: number;
-            masterNode: OVH.analytics.node.Capability;
-            requirements?: OVH.analytics.platform.Capability.Requirement[];
-            utilityNode: OVH.analytics.node.Capability;
+            masterNode: analytics.node.Capability;
+            requirements?: analytics.platform.Capability.Requirement[];
+            utilityNode: analytics.node.Capability;
             version: string;
             versionDescription: string;
-            workerNode: OVH.analytics.node.Capability;
+            workerNode: analytics.node.Capability;
         }
         export namespace Capability {
             //analytics.platform.Capability.Requirement
@@ -152,10 +151,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -282,7 +281,7 @@ export class ApiAnalytics extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/analytics/platforms/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/analytics/platforms/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsAnalyticsPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -295,12 +294,12 @@ export class ApiAnalytics extends OvhWrapper {
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/analytics/platforms/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/analytics/platforms/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * 
    * Deploy an Analytics Data Platform
    */
-  public post(path: '/analytics/platforms/{serviceName}/deploy', params: {serviceName: string, clusterName: string, clusterType: string, edgeNodeStorage: number, hdfsEffectiveStorage: number, hdfsReplicationFactor: number, masterNodeStorage: number, masterPassword: string, nodes: OVH.analytics.node.Deploy[], osProjectId: string, osProjectName: string, osRegion: string, osToken: string, sshPublicKey: string}): Promise<analytics.cluster.Deploy>;
+  public post(path: '/analytics/platforms/{serviceName}/deploy', params: {serviceName: string, clusterName: string, clusterType: string, edgeNodeStorage: number, hdfsEffectiveStorage: number, hdfsReplicationFactor: number, masterNodeStorage: number, masterPassword: string, nodes: analytics.node.Deploy[], osProjectId: string, osProjectName: string, osRegion: string, osToken: string, sshPublicKey: string}): Promise<analytics.cluster.Deploy>;
   /**
    * Terminate your service
    * Terminate your service
@@ -309,5 +308,4 @@ export class ApiAnalytics extends OvhWrapper {
   public post(path: PathsAnalyticsPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

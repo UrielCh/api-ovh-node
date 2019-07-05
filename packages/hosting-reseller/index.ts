@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace hosting {
     export namespace reseller {
         //hosting.reseller.metaType
@@ -14,11 +13,11 @@ export namespace hosting {
         export interface product {
             action?: string;
             ip?: string;
-            meta: OVH.hosting.reseller.metaType;
+            meta: hosting.reseller.metaType;
             progress?: number;
             status: string;
-            type: OVH.hosting.reseller.resellerTypeEnum;
-            typeDetail: OVH.hosting.reseller.productType;
+            type: hosting.reseller.resellerTypeEnum;
+            typeDetail: hosting.reseller.productType;
             url?: string;
         }
         //hosting.reseller.productType
@@ -47,7 +46,7 @@ export namespace reseller {
         creationDate: string;
         id: string;
         snashotName: string;
-        type: OVH.reseller.snapshotTypeEnum;
+        type: reseller.snapshotTypeEnum;
     }
     //reseller.snapshotTypeEnum
     export type snapshotTypeEnum = "automatic" | "manual"
@@ -61,7 +60,7 @@ export namespace reseller {
         productDomain: string;
         progress: number;
         taskName: string;
-        taskStatus: OVH.reseller.taskTypeEnum;
+        taskStatus: reseller.taskTypeEnum;
     }
     //reseller.taskTypeEnum
     export type taskTypeEnum = "done" | "error" | "doing" | "todo" | "unknown"
@@ -94,10 +93,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -240,7 +239,7 @@ export class ApiHostingReseller extends OvhWrapper {
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/hosting/reseller/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/hosting/reseller/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   public put(path: PathsHostingResellerPUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -258,7 +257,7 @@ export class ApiHostingReseller extends OvhWrapper {
    * Reseller.change_language
    * Change language of the Plesk instance
    */
-  public post(path: '/hosting/reseller/{serviceName}/language', params: {serviceName: string, language: OVH.reseller.pleskLanguageTypeEnum}): Promise<string>;
+  public post(path: '/hosting/reseller/{serviceName}/language', params: {serviceName: string, language: reseller.pleskLanguageTypeEnum}): Promise<string>;
   /**
    * Reseller.reboot
    * Restart instance
@@ -287,5 +286,4 @@ export class ApiHostingReseller extends OvhWrapper {
   public post(path: PathsHostingResellerPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

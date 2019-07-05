@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace license {
     export namespace office {
         //license.office.DomainStateEnum
@@ -11,7 +10,7 @@ export namespace license {
         // fullName: license.office.OfficeDomain.OfficeDomain
         export interface OfficeDomain {
             domainName: string;
-            status: OVH.license.office.DomainStateEnum;
+            status: license.office.DomainStateEnum;
             txtEntry: string;
         }
         //license.office.OfficeSubscription
@@ -31,7 +30,7 @@ export namespace license {
             finishDate?: string;
             function: string;
             id: number;
-            status: OVH.license.office.TaskStatusEnum;
+            status: license.office.TaskStatusEnum;
             todoDate: string;
         }
         //license.office.OfficeTenant
@@ -44,8 +43,8 @@ export namespace license {
             firstName: string;
             lastName: string;
             phone: string;
-            serviceType: OVH.license.office.ServiceTypeEnum;
-            status: OVH.license.office.ServiceStateEnum;
+            serviceType: license.office.ServiceTypeEnum;
+            status: license.office.ServiceStateEnum;
             zipCode: string;
         }
         //license.office.OfficeUser
@@ -56,8 +55,8 @@ export namespace license {
             firstName: string;
             isVirtual: boolean;
             lastName: string;
-            licences: OVH.license.office.LicenceEnum[];
-            status: OVH.license.office.UserStateEnum;
+            licences: license.office.LicenceEnum[];
+            status: license.office.UserStateEnum;
             taskPendingId: number;
         }
         //license.office.ServiceStateEnum
@@ -75,13 +74,13 @@ export namespace license {
         // fullName: license.office.Statistics.Statistics
         export interface Statistics {
             date: string;
-            lines: OVH.license.office.StatisticsLine[];
+            lines: license.office.StatisticsLine[];
         }
         //license.office.StatisticsLine
         // fullName: license.office.StatisticsLine.StatisticsLine
         export interface StatisticsLine {
             endOfDayCount: number;
-            licenceType: OVH.license.office.LicenceEnum;
+            licenceType: license.office.LicenceEnum;
             peakCount: number;
         }
         //license.office.TaskStatusEnum
@@ -118,10 +117,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -251,7 +250,7 @@ export class ApiLicenseOffice extends OvhWrapper {
    * List the license.office.OfficeUser objects
    * Accounts associated to this office tenant
    */
-  public get(path: '/license/office/{serviceName}/user', params: {serviceName: string, activationEmail?: string, firstName?: string, lastName?: string, licences?: OVH.license.office.LicenceEnum[]}): Promise<string[]>;
+  public get(path: '/license/office/{serviceName}/user', params: {serviceName: string, activationEmail?: string, firstName?: string, lastName?: string, licences?: license.office.LicenceEnum[]}): Promise<string[]>;
   /**
    * Office user
    * Get this object properties
@@ -264,17 +263,17 @@ export class ApiLicenseOffice extends OvhWrapper {
    * Office tenant
    * Alter this object properties
    */
-  public put(path: '/license/office/{serviceName}', params: {serviceName: string, address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: OVH.license.office.ServiceTypeEnum, status?: OVH.license.office.ServiceStateEnum, zipCode?: string}): Promise<void>;
+  public put(path: '/license/office/{serviceName}', params: {serviceName: string, address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: license.office.ServiceTypeEnum, status?: license.office.ServiceStateEnum, zipCode?: string}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/license/office/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/license/office/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Office user
    * Alter this object properties
    */
-  public put(path: '/license/office/{serviceName}/user/{activationEmail}', params: {activationEmail: string, serviceName: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: OVH.license.office.LicenceEnum[], status?: OVH.license.office.UserStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/license/office/{serviceName}/user/{activationEmail}', params: {activationEmail: string, serviceName: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: license.office.LicenceEnum[], status?: license.office.UserStateEnum, taskPendingId?: number}): Promise<void>;
   public put(path: PathsLicenseOfficePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -282,7 +281,7 @@ export class ApiLicenseOffice extends OvhWrapper {
    * List the license.office.OfficeUser objects
    * Create new office user
    */
-  public post(path: '/license/office/{serviceName}/user', params: {serviceName: string, domain: string, firstName?: string, lastName?: string, licence: OVH.license.office.LicenceEnum, login: string}): Promise<license.office.OfficeTask>;
+  public post(path: '/license/office/{serviceName}/user', params: {serviceName: string, domain: string, firstName?: string, lastName?: string, licence: license.office.LicenceEnum, login: string}): Promise<license.office.OfficeTask>;
   /**
    * changePassword operations
    * Change or reset  user's password
@@ -299,5 +298,4 @@ export class ApiLicenseOffice extends OvhWrapper {
   public delete(path: PathsLicenseOfficeDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

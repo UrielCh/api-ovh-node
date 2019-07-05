@@ -1,6 +1,5 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace complexType {
     //complexType.SafeKeyValue
     // fullName: complexType.SafeKeyValue.SafeKeyValue
@@ -20,10 +19,10 @@ export namespace hosting {
         //hosting.PrivateDatabase.AvailableOrderCapacities
         // fullName: hosting.PrivateDatabase.AvailableOrderCapacities.AvailableOrderCapacities
         export interface AvailableOrderCapacities {
-            datacenter: OVH.hosting.PrivateDatabase.DatacenterEnum[];
-            offer: OVH.hosting.PrivateDatabase.OfferEnum;
-            ram: OVH.hosting.PrivateDatabase.AvailableRamSizeEnum[];
-            version: OVH.hosting.PrivateDatabase.AvailableVersionEnum[];
+            datacenter: hosting.PrivateDatabase.DatacenterEnum[];
+            offer: hosting.PrivateDatabase.OfferEnum;
+            ram: hosting.PrivateDatabase.AvailableRamSizeEnum[];
+            version: hosting.PrivateDatabase.AvailableVersionEnum[];
         }
         //hosting.PrivateDatabase.AvailableRamSizeEnum
         export type AvailableRamSizeEnum = "1024" | "2048" | "4096" | "512"
@@ -46,7 +45,7 @@ export namespace hosting {
                 description: string;
                 key: string;
                 lastUpdate: string;
-                type: OVH.hosting.PrivateDatabase.Configuration.DetailType;
+                type: hosting.PrivateDatabase.Configuration.DetailType;
                 unit?: string;
                 value: string;
             }
@@ -64,7 +63,7 @@ export namespace hosting {
             // fullName: hosting.PrivateDatabase.Database.User.User
             export interface User {
                 grantId: number;
-                grantType: OVH.hosting.PrivateDatabase.grant.GrantEnum;
+                grantType: hosting.PrivateDatabase.grant.GrantEnum;
                 userName: string;
             }
         }
@@ -101,7 +100,7 @@ export namespace hosting {
             export interface Database {
                 databaseName: string;
                 grantId: number;
-                grantType: OVH.hosting.PrivateDatabase.grant.GrantEnum;
+                grantType: hosting.PrivateDatabase.grant.GrantEnum;
             }
         }
         export namespace Whitelist {
@@ -123,37 +122,37 @@ export namespace hosting {
         //hosting.privateDatabase.Configuration
         // fullName: hosting.privateDatabase.Configuration.Configuration
         export interface Configuration {
-            details: OVH.hosting.PrivateDatabase.Configuration.Detail[];
+            details: hosting.PrivateDatabase.Configuration.Detail[];
             lastUpdate: string;
-            status: OVH.hosting.PrivateDatabase.Configuration.Status;
+            status: hosting.PrivateDatabase.Configuration.Status;
             taskId?: string;
         }
         //hosting.privateDatabase.Service
         // fullName: hosting.privateDatabase.Service.Service
         export interface Service {
-            capabilities: OVH.hosting.PrivateDatabase.Capability[];
+            capabilities: hosting.PrivateDatabase.Capability[];
             cpu: number;
-            datacenter: OVH.hosting.PrivateDatabase.DatacenterEnum;
+            datacenter: hosting.PrivateDatabase.DatacenterEnum;
             displayName?: string;
-            graphEndpoint?: OVH.hosting.PrivateDatabase.GraphEndpoint;
+            graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint;
             guiURL?: string;
             hostname?: string;
             hostnameFtp?: string;
             infrastructure: string;
             ip?: string;
             lastCheck: string;
-            offer: OVH.hosting.PrivateDatabase.OfferEnum;
+            offer: hosting.PrivateDatabase.OfferEnum;
             port: number;
             portFtp?: number;
-            quotaSize: OVH.complexType.UnitAndValue<number>;
-            quotaUsed: OVH.complexType.UnitAndValue<number>;
-            ram: OVH.complexType.UnitAndValue<number>;
+            quotaSize: complexType.UnitAndValue<number>;
+            quotaUsed: complexType.UnitAndValue<number>;
+            ram: complexType.UnitAndValue<number>;
             server?: string;
             serviceName: string;
-            state: OVH.hosting.PrivateDatabase.StateEnum;
+            state: hosting.PrivateDatabase.StateEnum;
             tlsCa?: string;
-            type: OVH.hosting.PrivateDatabase.TypeEnum;
-            version: OVH.hosting.PrivateDatabase.AvailableVersionEnum;
+            type: hosting.PrivateDatabase.TypeEnum;
+            version: hosting.PrivateDatabase.AvailableVersionEnum;
             versionNumber: number;
         }
         //hosting.privateDatabase.database
@@ -162,8 +161,8 @@ export namespace hosting {
             backupTime?: string;
             creationDate: string;
             databaseName: string;
-            quotaUsed: OVH.complexType.UnitAndValue<number>;
-            users: OVH.hosting.PrivateDatabase.Database.User[];
+            quotaUsed: complexType.UnitAndValue<number>;
+            users: hosting.PrivateDatabase.Database.User[];
         }
         //hosting.privateDatabase.database_dump
         // fullName: hosting.privateDatabase.database_dump.database_dump
@@ -180,7 +179,7 @@ export namespace hosting {
             description: string;
             extensionName: string;
             requiredExtensions: string[];
-            status: OVH.hosting.PrivateDatabase.Database.Extension.Status;
+            status: hosting.PrivateDatabase.Database.Extension.Status;
         }
         //hosting.privateDatabase.dump
         // fullName: hosting.privateDatabase.dump.dump
@@ -197,7 +196,7 @@ export namespace hosting {
         export interface grant {
             creationDate: string;
             databaseName: string;
-            grant: OVH.hosting.PrivateDatabase.grant.GrantEnum;
+            grant: hosting.PrivateDatabase.grant.GrantEnum;
         }
         //hosting.privateDatabase.task
         // fullName: hosting.privateDatabase.task.task
@@ -205,18 +204,18 @@ export namespace hosting {
             databaseName?: string;
             doneDate?: string;
             dumpId?: number;
-            function: OVH.hosting.PrivateDatabase.task.FunctionEnum;
+            function: hosting.PrivateDatabase.task.FunctionEnum;
             id: number;
             lastUpdate?: string;
             startDate: string;
-            status: OVH.hosting.PrivateDatabase.task.StatusEnum;
+            status: hosting.PrivateDatabase.task.StatusEnum;
             userName?: string;
         }
         //hosting.privateDatabase.user
         // fullName: hosting.privateDatabase.user.user
         export interface user {
             creationDate: string;
-            databases: OVH.hosting.PrivateDatabase.User.Database[];
+            databases: hosting.PrivateDatabase.User.Database[];
             userName: string;
         }
         //hosting.privateDatabase.whitelist
@@ -228,7 +227,7 @@ export namespace hosting {
             name?: string;
             service: boolean;
             sftp: boolean;
-            status: OVH.hosting.PrivateDatabase.Whitelist.Status;
+            status: hosting.PrivateDatabase.Whitelist.Status;
             taskId?: string;
         }
     }
@@ -265,10 +264,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -585,7 +584,7 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * List the hosting.privateDatabase.database.extension objects
    * Extensions linked to your database
    */
-  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension', params: {databaseName: string, serviceName: string, extensionName?: string, status?: OVH.hosting.PrivateDatabase.Database.Extension.Status}): Promise<string[]>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension', params: {databaseName: string, serviceName: string, extensionName?: string, status?: hosting.PrivateDatabase.Database.Extension.Status}): Promise<string[]>;
   /**
    * Databases extension
    * Get this object properties
@@ -615,7 +614,7 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * List the hosting.privateDatabase.task objects
    * Tasks attached to your private database service
    */
-  public get(path: '/hosting/privateDatabase/{serviceName}/tasks', params: {serviceName: string, function_?: OVH.hosting.PrivateDatabase.task.FunctionEnum, status?: OVH.hosting.PrivateDatabase.task.StatusEnum}): Promise<number[]>;
+  public get(path: '/hosting/privateDatabase/{serviceName}/tasks', params: {serviceName: string, function_?: hosting.PrivateDatabase.task.FunctionEnum, status?: hosting.PrivateDatabase.task.StatusEnum}): Promise<number[]>;
   /**
    * Tasks
    * Get this object properties
@@ -660,7 +659,7 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * Get available order capacitie
    * Get available order capacitie
    */
-  public get(path: '/hosting/privateDatabase/availableOrderCapacities', params: {offer: OVH.hosting.PrivateDatabase.OfferEnum}): Promise<hosting.PrivateDatabase.AvailableOrderCapacities>;
+  public get(path: '/hosting/privateDatabase/availableOrderCapacities', params: {offer: hosting.PrivateDatabase.OfferEnum}): Promise<hosting.PrivateDatabase.AvailableOrderCapacities>;
   public get(path: PathsHostingPrivateDatabaseGET, params?: OvhParamType): Promise<any> {
     return super.get(path, params);
   }
@@ -668,17 +667,17 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * Private database
    * Alter this object properties
    */
-  public put(path: '/hosting/privateDatabase/{serviceName}', params: {serviceName: string, capabilities?: OVH.hosting.PrivateDatabase.Capability[], cpu?: number, datacenter?: OVH.hosting.PrivateDatabase.DatacenterEnum, displayName?: string, graphEndpoint?: OVH.hosting.PrivateDatabase.GraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: OVH.hosting.PrivateDatabase.OfferEnum, port?: number, portFtp?: number, quotaSize?: OVH.complexType.UnitAndValue<number>, quotaUsed?: OVH.complexType.UnitAndValue<number>, ram?: OVH.complexType.UnitAndValue<number>, server?: string, state?: OVH.hosting.PrivateDatabase.StateEnum, tlsCa?: string, type?: OVH.hosting.PrivateDatabase.TypeEnum, version?: OVH.hosting.PrivateDatabase.AvailableVersionEnum, versionNumber?: number}): Promise<void>;
+  public put(path: '/hosting/privateDatabase/{serviceName}', params: {serviceName: string, capabilities?: hosting.PrivateDatabase.Capability[], cpu?: number, datacenter?: hosting.PrivateDatabase.DatacenterEnum, displayName?: string, graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: hosting.PrivateDatabase.OfferEnum, port?: number, portFtp?: number, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, ram?: complexType.UnitAndValue<number>, server?: string, state?: hosting.PrivateDatabase.StateEnum, tlsCa?: string, type?: hosting.PrivateDatabase.TypeEnum, version?: hosting.PrivateDatabase.AvailableVersionEnum, versionNumber?: number}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/hosting/privateDatabase/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/hosting/privateDatabase/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * IP whitelisting for your instance
    * Alter this object properties
    */
-  public put(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {ip: string, serviceName: string, creationDate?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: OVH.hosting.PrivateDatabase.Whitelist.Status, taskId?: string}): Promise<void>;
+  public put(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}', params: {ip: string, serviceName: string, creationDate?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: hosting.PrivateDatabase.Whitelist.Status, taskId?: string}): Promise<void>;
   public put(path: PathsHostingPrivateDatabasePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -696,17 +695,17 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * changeVersion operations
    * Change the private database engine version
    */
-  public post(path: '/hosting/privateDatabase/{serviceName}/changeVersion', params: {serviceName: string, version: OVH.hosting.PrivateDatabase.AvailableVersionEnum}): Promise<hosting.privateDatabase.task>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/changeVersion', params: {serviceName: string, version: hosting.PrivateDatabase.AvailableVersionEnum}): Promise<hosting.privateDatabase.task>;
   /**
    * update operations
    * Update the configuration
    */
-  public post(path: '/hosting/privateDatabase/{serviceName}/config/update', params: {serviceName: string, parameters: OVH.complexType.SafeKeyValue<string>[]}): Promise<hosting.privateDatabase.Configuration>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/config/update', params: {serviceName: string, parameters: complexType.SafeKeyValue<string>[]}): Promise<hosting.privateDatabase.Configuration>;
   /**
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/hosting/privateDatabase/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: OVH.service.TerminationFutureUseEnum, reason?: OVH.service.TerminationReasonEnum, token: string}): Promise<string>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
   /**
    * List the hosting.privateDatabase.database objects
    * Create a new database on your private database service
@@ -741,7 +740,7 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * databaseWizard operations
    * Create a new database/user and grant it
    */
-  public post(path: '/hosting/privateDatabase/{serviceName}/databaseWizard', params: {serviceName: string, databaseName: string, grant: OVH.hosting.PrivateDatabase.grant.GrantEnum, password: string, userName: string}): Promise<hosting.privateDatabase.task>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/databaseWizard', params: {serviceName: string, databaseName: string, grant: hosting.PrivateDatabase.grant.GrantEnum, password: string, userName: string}): Promise<hosting.privateDatabase.task>;
   /**
    * restore operations
    * Request the restore from this dump
@@ -791,12 +790,12 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
    * List the hosting.privateDatabase.grant objects
    * Add grant on a database
    */
-  public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant', params: {serviceName: string, userName: string, databaseName: string, grant: OVH.hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant', params: {serviceName: string, userName: string, databaseName: string, grant: hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
   /**
    * update operations
    * Update user grant
    */
-  public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update', params: {databaseName: string, serviceName: string, userName: string, grant: OVH.hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
+  public post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update', params: {databaseName: string, serviceName: string, userName: string, grant: hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
   /**
    * List the hosting.privateDatabase.whitelist objects
    * Create a new IP whitelist
@@ -838,5 +837,4 @@ export class ApiHostingPrivateDatabase extends OvhWrapper {
   public delete(path: PathsHostingPrivateDatabaseDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }

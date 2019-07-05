@@ -1,13 +1,12 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace support {
     //support.Message
     // fullName: support.Message.Message
     export interface Message {
         body: string;
         creationDate: string;
-        from: OVH.support.MessageSenderEnum;
+        from: support.MessageSenderEnum;
         messageId: number;
         ticketId: number;
         updateDate: string;
@@ -26,17 +25,17 @@ export namespace support {
     export interface Ticket {
         accountId: string;
         canBeClosed: boolean;
-        category?: OVH.support.TicketCategoryEnum;
+        category?: support.TicketCategoryEnum;
         creationDate: string;
-        lastMessageFrom: OVH.support.MessageSenderEnum;
-        product?: OVH.support.TicketProductEnum;
+        lastMessageFrom: support.MessageSenderEnum;
+        product?: support.TicketProductEnum;
         score: string;
         serviceName?: string;
-        state: OVH.support.TicketStatusEnum;
+        state: support.TicketStatusEnum;
         subject: string;
         ticketId: number;
         ticketNumber: number;
-        type: OVH.support.TicketTypeEnum;
+        type: support.TicketTypeEnum;
         updateDate: string;
     }
     //support.TicketCategoryEnum
@@ -110,7 +109,7 @@ export class ApiSupport extends OvhWrapper {
    * List support tickets identifiers for this service
    * List support tickets identifiers for this service
    */
-  public get(path: '/support/tickets', params: {archived?: boolean, category?: OVH.support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: OVH.support.TicketProductEnum, serviceName?: string, status?: OVH.support.TicketStatusEnum, subject?: string, ticketNumber?: string}): Promise<number[]>;
+  public get(path: '/support/tickets', params: {archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string}): Promise<number[]>;
   /**
    * Get ticket
    * Get ticket
@@ -153,9 +152,8 @@ export class ApiSupport extends OvhWrapper {
    * Create a new ticket
    * Create a new ticket
    */
-  public post(path: '/support/tickets/create', params: {body: string, category?: OVH.support.TicketCategoryEnum, product?: OVH.support.TicketProductEnum, serviceName?: string, subcategory?: OVH.support.TicketSubCategoryEnum, subject: string, type: OVH.support.TicketTypeEnum}): Promise<support.NewMessageInfo>;
+  public post(path: '/support/tickets/create', params: {body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum}): Promise<support.NewMessageInfo>;
   public post(path: PathsSupportPOST, params?: OvhParamType): Promise<any> {
     return super.post(path, params);
   }
-}
 }

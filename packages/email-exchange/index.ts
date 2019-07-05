@@ -1,13 +1,12 @@
 import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
 
-export namespace OVH {
 export namespace email {
     export namespace exchange {
         //email.exchange.Account
         // fullName: email.exchange.Account.Account
         export interface Account {
             SAMAccountName?: string;
-            accountLicense: OVH.email.exchange.OvhLicenceEnum;
+            accountLicense: email.exchange.OvhLicenceEnum;
             company?: string;
             configured: boolean;
             creationDate?: string;
@@ -31,24 +30,24 @@ export namespace email {
             litigation: boolean;
             litigationPeriod?: number;
             login: string;
-            mailingFilter?: OVH.email.exchange.MailingFilterEnum[];
+            mailingFilter?: email.exchange.MailingFilterEnum[];
             outlookLicense: boolean;
             owaLimited: boolean;
             passwordLastUpdate?: string;
             primaryEmailAddress: string;
             quota: number;
-            renewOutlookPeriod?: OVH.email.exchange.renewPeriodEnum;
-            renewPeriod?: OVH.email.exchange.renewPeriodEnum;
-            spamAndVirusConfiguration: OVH.email.exchange.spamAndVirusConfiguration;
+            renewOutlookPeriod?: email.exchange.renewPeriodEnum;
+            renewPeriod?: email.exchange.renewPeriodEnum;
+            spamAndVirusConfiguration: email.exchange.spamAndVirusConfiguration;
             spamDetected: boolean;
             spamTicketNumber?: number;
-            state: OVH.email.exchange.ObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
         //email.exchange.AccountLicense
         // fullName: email.exchange.AccountLicense.AccountLicense
         export interface AccountLicense {
-            license: OVH.email.exchange.OvhLicenceEnum;
+            license: email.exchange.OvhLicenceEnum;
             licenseQuantity: number;
         }
         //email.exchange.ActiveSyncPolicyEnum
@@ -56,7 +55,7 @@ export namespace email {
         //email.exchange.DailyLicense
         // fullName: email.exchange.DailyLicense.DailyLicense
         export interface DailyLicense {
-            accountLicense: OVH.email.exchange.AccountLicense[];
+            accountLicense: email.exchange.AccountLicense[];
             date: string;
             outlookQuantity: number;
         }
@@ -79,9 +78,9 @@ export namespace email {
             organization2010?: string;
             srvIsValid: boolean;
             srvRecord?: string[];
-            state: OVH.email.exchange.ObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
-            type: OVH.email.exchange.DomainTypeEnum;
+            type: email.exchange.DomainTypeEnum;
         }
         //email.exchange.DomainTypeEnum
         export type DomainTypeEnum = "authoritative" | "nonAuthoritative"
@@ -101,11 +100,11 @@ export namespace email {
             maxSendSize: number;
             minPasswordAge?: number;
             minPasswordLength?: number;
-            offer: OVH.email.exchange.ServiceOfferEnum;
+            offer: email.exchange.ServiceOfferEnum;
             passwordHistoryCount?: number;
-            spamAndVirusConfiguration: OVH.email.exchange.spamAndVirusConfiguration;
+            spamAndVirusConfiguration: email.exchange.spamAndVirusConfiguration;
             sslExpirationDate?: string;
-            state: OVH.email.exchange.ServiceStateEnum;
+            state: email.exchange.ServiceStateEnum;
             taskPendingId: number;
             webUrl?: string;
         }
@@ -144,8 +143,8 @@ export namespace email {
         //email.exchange.OutlookVersions
         // fullName: email.exchange.OutlookVersions.OutlookVersions
         export interface OutlookVersions {
-            outlookLanguage: OVH.email.exchange.LanguageEnum;
-            outlookVersion: OVH.email.exchange.OutlookVersionEnum;
+            outlookLanguage: email.exchange.LanguageEnum;
+            outlookVersion: email.exchange.OutlookVersionEnum;
             status: boolean;
         }
         //email.exchange.OvhLicenceEnum
@@ -166,7 +165,7 @@ export namespace email {
         //email.exchange.Server
         // fullName: email.exchange.Server.Server
         export interface Server {
-            commercialVersion: OVH.email.exchange.exchangeCommercialVersionEnum;
+            commercialVersion: email.exchange.exchangeCommercialVersionEnum;
             currentDiskUsage?: number;
             diskSize?: number;
             individual2010: boolean;
@@ -177,7 +176,7 @@ export namespace email {
             isPtrV6Valid: boolean;
             isPtrValid: boolean;
             owaMfa: boolean;
-            state: OVH.email.exchange.ServerStateEnum;
+            state: email.exchange.ServerStateEnum;
             taskPendingId: number;
             version?: number;
         }
@@ -200,9 +199,9 @@ export namespace email {
         // fullName: email.exchange.Task.Task
         export interface Task {
             finishDate?: string;
-            function: OVH.email.exchange.TaskFunctionEnum;
+            function: email.exchange.TaskFunctionEnum;
             id: number;
-            status: OVH.email.exchange.TaskStatusEnum;
+            status: email.exchange.TaskStatusEnum;
             todoDate: string;
         }
         //email.exchange.TaskFunctionEnum
@@ -236,7 +235,7 @@ export namespace email {
             currentUsage?: number;
             guid?: string;
             quota: number;
-            state: OVH.email.exchange.ObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId?: number;
         }
         //email.exchange.exchangeAccountDiagnosis
@@ -329,7 +328,7 @@ export namespace email {
             initials?: string;
             lastName?: string;
             organization2010?: string;
-            state: OVH.email.exchange.ObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
         //email.exchange.exchangeMailingListAlias
@@ -342,10 +341,10 @@ export namespace email {
         //email.exchange.exchangePublicFolderPermission
         // fullName: email.exchange.exchangePublicFolderPermission.exchangePublicFolderPermission
         export interface exchangePublicFolderPermission {
-            accessRights: OVH.email.exchange.PublicFolderRightTypeEnum;
+            accessRights: email.exchange.PublicFolderRightTypeEnum;
             allowedAccountId: number;
             creationDate: string;
-            state: OVH.email.exchange.ObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
         //email.exchange.exchangeResourceAccountDelegate
@@ -362,14 +361,14 @@ export namespace email {
             creationDate: string;
             notifiedAccountId: number;
             primaryEmailAddress: string;
-            state: OVH.email.exchange.activeSyncNotificationStateEnum;
+            state: email.exchange.activeSyncNotificationStateEnum;
         }
         //email.exchange.exchangeServiceAuthorizedIp
         // fullName: email.exchange.exchangeServiceAuthorizedIp.exchangeServiceAuthorizedIp
         export interface exchangeServiceAuthorizedIp {
             creationDate: string;
             ip: string;
-            status: OVH.email.exchange.authorizedIpStatusEnum;
+            status: email.exchange.authorizedIpStatusEnum;
         }
         //email.exchange.exchangeServiceDevice
         // fullName: email.exchange.exchangeServiceDevice.exchangeServiceDevice
@@ -378,7 +377,7 @@ export namespace email {
             creationDate: string;
             deviceId: string;
             deviceModel: string;
-            deviceState: OVH.email.exchange.DeviceActiveSyncStateEnum;
+            deviceState: email.exchange.DeviceActiveSyncStateEnum;
             guid: string;
             identity: string;
             lastUpdate?: string;
@@ -390,7 +389,7 @@ export namespace email {
             IMAP: boolean;
             POP: boolean;
             activeSync: boolean;
-            activeSyncPolicy: OVH.email.exchange.ActiveSyncPolicyEnum;
+            activeSyncPolicy: email.exchange.ActiveSyncPolicyEnum;
             creationDate: string;
             lastUpdate?: string;
             taskPendingId: number;
@@ -421,10 +420,10 @@ export namespace email {
         // fullName: email.exchange.mailingList.mailingList
         export interface mailingList {
             creationDate: string;
-            departRestriction: OVH.email.exchange.MailingListDepartRestrictionEnum;
+            departRestriction: email.exchange.MailingListDepartRestrictionEnum;
             displayName?: string;
             hiddenFromGAL: boolean;
-            joinRestriction: OVH.email.exchange.MailingListJoinRestrictionEnum;
+            joinRestriction: email.exchange.MailingListJoinRestrictionEnum;
             lastUpdateDate?: string;
             mailingListAddress: string;
             maxReceiveSize?: number;
@@ -432,15 +431,15 @@ export namespace email {
             senderAuthentification: boolean;
             spamDetected: boolean;
             spamTicketNumber?: number;
-            state: OVH.email.exchange.ObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
         //email.exchange.publicFolder
         // fullName: email.exchange.publicFolder.publicFolder
         export interface publicFolder {
-            anonymousPermission: OVH.email.exchange.PublicFolderRightTypeEnum;
+            anonymousPermission: email.exchange.PublicFolderRightTypeEnum;
             creationDate?: string;
-            defaultPermission: OVH.email.exchange.PublicFolderRightTypeEnum;
+            defaultPermission: email.exchange.PublicFolderRightTypeEnum;
             hasSubFolders?: boolean;
             itemCount?: number;
             lastAccessTime?: string;
@@ -449,10 +448,10 @@ export namespace email {
             lastUserModificationTime?: string;
             path: string;
             quota: number;
-            state: OVH.email.exchange.ObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
             totalItemSize?: number;
-            type: OVH.email.exchange.PublicFolderTypeEnum;
+            type: email.exchange.PublicFolderTypeEnum;
         }
         //email.exchange.renewPeriodEnum
         export type renewPeriodEnum = "monthly" | "yearly"
@@ -470,10 +469,10 @@ export namespace email {
             location: string;
             maximumDuration: number;
             resourceEmailAddress: string;
-            showMeetingDetails: OVH.email.exchange.ShowMeetingDetailsEnum;
-            state: OVH.email.exchange.ObjectStateEnum;
+            showMeetingDetails: email.exchange.ShowMeetingDetailsEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
-            type: OVH.email.exchange.ResourceTypeEnum;
+            type: email.exchange.ResourceTypeEnum;
         }
         //email.exchange.sharedAccount
         // fullName: email.exchange.sharedAccount.sharedAccount
@@ -488,12 +487,12 @@ export namespace email {
             lastLogoffDate?: string;
             lastLogonDate?: string;
             lastName?: string;
-            mailingFilter?: OVH.email.exchange.MailingFilterEnum[];
+            mailingFilter?: email.exchange.MailingFilterEnum[];
             quota: number;
             sharedEmailAddress: string;
             spamDetected: boolean;
             spamTicketNumber?: number;
-            state: OVH.email.exchange.ObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
         //email.exchange.spamAndVirusConfiguration
@@ -537,10 +536,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: OVH.service.RenewType;
-        renewalType: OVH.service.RenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: OVH.service.StateEnum;
+        status: service.StateEnum;
     }
 }
 // Apis harmony
@@ -1199,7 +1198,7 @@ export class ApiEmailExchange extends OvhWrapper {
    * List the email.exchange.Account objects
    * Accounts associated to this exchange service
    */
-  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/account', params: {exchangeService: string, organizationName: string, accountLicense?: OVH.email.exchange.OvhLicenceEnum, id?: number, primaryEmailAddress?: string}): Promise<string[]>;
+  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/account', params: {exchangeService: string, organizationName: string, accountLicense?: email.exchange.OvhLicenceEnum, id?: number, primaryEmailAddress?: string}): Promise<string[]>;
   /**
    * Exchange mailbox
    * Get this object properties
@@ -1294,7 +1293,7 @@ export class ApiEmailExchange extends OvhWrapper {
    * List the email.exchange.exchangeServiceDevice objects
    * List of your ActiveSync devices registered on this Exchange service
    */
-  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/device', params: {exchangeService: string, organizationName: string, deviceState?: OVH.email.exchange.DeviceActiveSyncStateEnum, identity?: string, IMEI?: string}): Promise<string[]>;
+  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/device', params: {exchangeService: string, organizationName: string, deviceState?: email.exchange.DeviceActiveSyncStateEnum, identity?: string, IMEI?: string}): Promise<string[]>;
   /**
    * Get the list of your ActiveSync devices registered on this Exchange service
    * Get this object properties
@@ -1304,7 +1303,7 @@ export class ApiEmailExchange extends OvhWrapper {
    * List the email.exchange.Domain objects
    * Domains associated to this service
    */
-  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain', params: {exchangeService: string, organizationName: string, main?: boolean, state?: OVH.email.exchange.ObjectStateEnum}): Promise<string[]>;
+  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain', params: {exchangeService: string, organizationName: string, main?: boolean, state?: email.exchange.ObjectStateEnum}): Promise<string[]>;
   /**
    * Exchange domain
    * Get this object properties
@@ -1334,7 +1333,7 @@ export class ApiEmailExchange extends OvhWrapper {
    * license operations
    * Get active licenses for specific period of time
    */
-  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/license', params: {exchangeService: string, organizationName: string, fromDate?: string, license?: OVH.email.exchange.OvhLicenceEnum, toDate?: string}): Promise<email.exchange.DailyLicense[]>;
+  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/license', params: {exchangeService: string, organizationName: string, fromDate?: string, license?: email.exchange.OvhLicenceEnum, toDate?: string}): Promise<email.exchange.DailyLicense[]>;
   /**
    * List the email.exchange.mailingList objects
    * Mailing list for this service
@@ -1409,7 +1408,7 @@ export class ApiEmailExchange extends OvhWrapper {
    * outlookAvailability operations
    * Show available outlooks
    */
-  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability', params: {exchangeService: string, organizationName: string, outlookLanguage?: OVH.email.exchange.LanguageEnum, outlookVersion?: OVH.email.exchange.OutlookVersionEnum}): Promise<email.exchange.OutlookVersions[]>;
+  public get(path: '/email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability', params: {exchangeService: string, organizationName: string, outlookLanguage?: email.exchange.LanguageEnum, outlookVersion?: email.exchange.OutlookVersionEnum}): Promise<email.exchange.OutlookVersions[]>;
   /**
    * Protocol access policy for this Exchange service
    * Get this object properties
@@ -1552,17 +1551,17 @@ export class ApiEmailExchange extends OvhWrapper {
    * Exchange service
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}', params: {exchangeService: string, organizationName: string, complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: OVH.email.exchange.ServiceOfferEnum, passwordHistoryCount?: number, spamAndVirusConfiguration?: OVH.email.exchange.spamAndVirusConfiguration, sslExpirationDate?: string, state?: OVH.email.exchange.ServiceStateEnum, taskPendingId?: number, webUrl?: string}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}', params: {exchangeService: string, organizationName: string, complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.exchange.ServiceOfferEnum, passwordHistoryCount?: number, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, sslExpirationDate?: string, state?: email.exchange.ServiceStateEnum, taskPendingId?: number, webUrl?: string}): Promise<void>;
   /**
    * Exchange mailbox
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}', params: {exchangeService: string, organizationName: string, primaryEmailAddress: string, SAMAccountName?: string, accountLicense?: OVH.email.exchange.OvhLicenceEnum, company?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: OVH.email.exchange.MailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, quota?: number, renewOutlookPeriod?: OVH.email.exchange.renewPeriodEnum, renewPeriod?: OVH.email.exchange.renewPeriodEnum, spamAndVirusConfiguration?: OVH.email.exchange.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: OVH.email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}', params: {exchangeService: string, organizationName: string, primaryEmailAddress: string, SAMAccountName?: string, accountLicense?: email.exchange.OvhLicenceEnum, company?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: email.exchange.MailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, quota?: number, renewOutlookPeriod?: email.exchange.renewPeriodEnum, renewPeriod?: email.exchange.renewPeriodEnum, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Exchange Account Archive
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive', params: {exchangeService: string, organizationName: string, primaryEmailAddress: string, creationDate?: string, currentUsage?: number, guid?: string, quota?: number, state?: OVH.email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive', params: {exchangeService: string, organizationName: string, primaryEmailAddress: string, creationDate?: string, currentUsage?: number, guid?: string, quota?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Get protocol status on that mailbox
    * Alter this object properties
@@ -1572,12 +1571,12 @@ export class ApiEmailExchange extends OvhWrapper {
    * Get the list of your ActiveSync devices registered on this Exchange service
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}', params: {exchangeService: string, identity: string, organizationName: string, IMEI?: string, creationDate?: string, deviceId?: string, deviceModel?: string, deviceState?: OVH.email.exchange.DeviceActiveSyncStateEnum, guid?: string, lastUpdate?: string, taskPendingId?: number}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}', params: {exchangeService: string, identity: string, organizationName: string, IMEI?: string, creationDate?: string, deviceId?: string, deviceModel?: string, deviceState?: email.exchange.DeviceActiveSyncStateEnum, guid?: string, lastUpdate?: string, taskPendingId?: number}): Promise<void>;
   /**
    * Exchange domain
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}', params: {domainName: string, exchangeService: string, organizationName: string, cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, srvIsValid?: boolean, srvRecord?: string[], state?: OVH.email.exchange.ObjectStateEnum, taskPendingId?: number, type?: OVH.email.exchange.DomainTypeEnum}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}', params: {domainName: string, exchangeService: string, organizationName: string, cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.DomainTypeEnum}): Promise<void>;
   /**
    * Exchange organization disclaimer
    * Alter this object properties
@@ -1587,47 +1586,47 @@ export class ApiEmailExchange extends OvhWrapper {
    * External contact for this exchange service
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}', params: {exchangeService: string, externalEmailAddress: string, organizationName: string, creationDate?: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, organization2010?: string, state?: OVH.email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}', params: {exchangeService: string, externalEmailAddress: string, organizationName: string, creationDate?: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, organization2010?: string, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Mailing list
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}', params: {exchangeService: string, mailingListAddress: string, organizationName: string, creationDate?: string, departRestriction?: OVH.email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction?: OVH.email.exchange.MailingListJoinRestrictionEnum, lastUpdateDate?: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean, spamDetected?: boolean, spamTicketNumber?: number, state?: OVH.email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}', params: {exchangeService: string, mailingListAddress: string, organizationName: string, creationDate?: string, departRestriction?: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction?: email.exchange.MailingListJoinRestrictionEnum, lastUpdateDate?: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Protocol access policy for this Exchange service
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/protocol', params: {exchangeService: string, organizationName: string, IMAP?: boolean, POP?: boolean, activeSync?: boolean, activeSyncPolicy?: OVH.email.exchange.ActiveSyncPolicyEnum, creationDate?: string, lastUpdate?: string, taskPendingId?: number, webMail?: boolean}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/protocol', params: {exchangeService: string, organizationName: string, IMAP?: boolean, POP?: boolean, activeSync?: boolean, activeSyncPolicy?: email.exchange.ActiveSyncPolicyEnum, creationDate?: string, lastUpdate?: string, taskPendingId?: number, webMail?: boolean}): Promise<void>;
   /**
    * Exchange organization public folder
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}', params: {exchangeService: string, organizationName: string, path: string, anonymousPermission?: OVH.email.exchange.PublicFolderRightTypeEnum, creationDate?: string, defaultPermission?: OVH.email.exchange.PublicFolderRightTypeEnum, hasSubFolders?: boolean, itemCount?: number, lastAccessTime?: string, lastModificationTime?: string, lastUserAccessTime?: string, lastUserModificationTime?: string, quota?: number, state?: OVH.email.exchange.ObjectStateEnum, taskPendingId?: number, totalItemSize?: number, type?: OVH.email.exchange.PublicFolderTypeEnum}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}', params: {exchangeService: string, organizationName: string, path: string, anonymousPermission?: email.exchange.PublicFolderRightTypeEnum, creationDate?: string, defaultPermission?: email.exchange.PublicFolderRightTypeEnum, hasSubFolders?: boolean, itemCount?: number, lastAccessTime?: string, lastModificationTime?: string, lastUserAccessTime?: string, lastUserModificationTime?: string, quota?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number, totalItemSize?: number, type?: email.exchange.PublicFolderTypeEnum}): Promise<void>;
   /**
    * Exchange organization public folder permission
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}', params: {allowedAccountId: number, exchangeService: string, organizationName: string, path: string, accessRights?: OVH.email.exchange.PublicFolderRightTypeEnum, creationDate?: string, state?: OVH.email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}', params: {allowedAccountId: number, exchangeService: string, organizationName: string, path: string, accessRights?: email.exchange.PublicFolderRightTypeEnum, creationDate?: string, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
   /**
    * Exchange resource account
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}', params: {exchangeService: string, organizationName: string, resourceEmailAddress: string, addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity?: number, creationDate?: string, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, showMeetingDetails?: OVH.email.exchange.ShowMeetingDetailsEnum, state?: OVH.email.exchange.ObjectStateEnum, taskPendingId?: number, type?: OVH.email.exchange.ResourceTypeEnum}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}', params: {exchangeService: string, organizationName: string, resourceEmailAddress: string, addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity?: number, creationDate?: string, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.ResourceTypeEnum}): Promise<void>;
   /**
    * Exchange server
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/server', params: {exchangeService: string, organizationName: string, commercialVersion?: OVH.email.exchange.exchangeCommercialVersionEnum, currentDiskUsage?: number, diskSize?: number, individual2010?: boolean, ip?: string, ipV6?: string, isAValid?: boolean, isAaaaValid?: boolean, isPtrV6Valid?: boolean, isPtrValid?: boolean, owaMfa?: boolean, state?: OVH.email.exchange.ServerStateEnum, taskPendingId?: number, version?: number}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/server', params: {exchangeService: string, organizationName: string, commercialVersion?: email.exchange.exchangeCommercialVersionEnum, currentDiskUsage?: number, diskSize?: number, individual2010?: boolean, ip?: string, ipV6?: string, isAValid?: boolean, isAaaaValid?: boolean, isPtrV6Valid?: boolean, isPtrValid?: boolean, owaMfa?: boolean, state?: email.exchange.ServerStateEnum, taskPendingId?: number, version?: number}): Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos', params: {exchangeService: string, organizationName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: OVH.service.RenewType, renewalType?: OVH.service.RenewalTypeEnum, serviceId?: number, status?: OVH.service.StateEnum}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos', params: {exchangeService: string, organizationName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
   /**
    * Exchange shared mailbox
    * Alter this object properties
    */
-  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}', params: {exchangeService: string, organizationName: string, sharedEmailAddress: string, creationDate?: string, currentUsage?: number, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, mailingFilter?: OVH.email.exchange.MailingFilterEnum[], quota?: number, spamDetected?: boolean, spamTicketNumber?: number, state?: OVH.email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+  public put(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}', params: {exchangeService: string, organizationName: string, sharedEmailAddress: string, creationDate?: string, currentUsage?: number, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, mailingFilter?: email.exchange.MailingFilterEnum[], quota?: number, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
   public put(path: PathsEmailExchangePUT, params?: OvhParamType): Promise<any> {
     return super.put(path, params);
   }
@@ -1635,7 +1634,7 @@ export class ApiEmailExchange extends OvhWrapper {
    * List the email.exchange.Account objects
    * Create new mailbox in exchange server
    */
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account', params: {exchangeService: string, organizationName: string, company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: OVH.email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: OVH.email.exchange.MailingFilterEnum[], outlookLicense?: boolean, password: string, SAMAccountName?: string, spamAndVirusConfiguration?: OVH.email.exchange.spamAndVirusConfiguration}): Promise<email.exchange.Task>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account', params: {exchangeService: string, organizationName: string, company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], outlookLicense?: boolean, password: string, SAMAccountName?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration}): Promise<email.exchange.Task>;
   /**
    * List the email.exchange.exchangeAccountAlias objects
    * Create new alias
@@ -1675,7 +1674,7 @@ export class ApiEmailExchange extends OvhWrapper {
    * Outlook url
    * Generate outlook url
    */
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL', params: {exchangeService: string, organizationName: string, primaryEmailAddress: string, language: OVH.email.exchange.LanguageEnum, version: OVH.email.exchange.OutlookVersionEnum}): Promise<email.exchange.Task>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL', params: {exchangeService: string, organizationName: string, primaryEmailAddress: string, language: email.exchange.LanguageEnum, version: email.exchange.OutlookVersionEnum}): Promise<email.exchange.Task>;
   /**
    * List the email.exchange.exchangeAccountSendAs objects
    * Allow another user to send mails from this mailbox
@@ -1710,7 +1709,7 @@ export class ApiEmailExchange extends OvhWrapper {
    * List the email.exchange.Domain objects
    * Create new domain in exchange services
    */
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain', params: {exchangeService: string, organizationName: string, configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, type: OVH.email.exchange.DomainTypeEnum}): Promise<email.exchange.Task>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain', params: {exchangeService: string, organizationName: string, configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, type: email.exchange.DomainTypeEnum}): Promise<email.exchange.Task>;
   /**
    * Exchange organization disclaimer
    * Create organization disclaimer of each email
@@ -1725,7 +1724,7 @@ export class ApiEmailExchange extends OvhWrapper {
    * List the email.exchange.mailingList objects
    * Add mailing list
    */
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList', params: {exchangeService: string, organizationName: string, departRestriction: OVH.email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction: OVH.email.exchange.MailingListJoinRestrictionEnum, mailingListAddress: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean}): Promise<email.exchange.Task>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList', params: {exchangeService: string, organizationName: string, departRestriction: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction: email.exchange.MailingListJoinRestrictionEnum, mailingListAddress: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean}): Promise<email.exchange.Task>;
   /**
    * List the email.exchange.exchangeMailingListAlias objects
    * Create new alias
@@ -1765,12 +1764,12 @@ export class ApiEmailExchange extends OvhWrapper {
    * List the email.exchange.publicFolder objects
    * Create organization public folder
    */
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder', params: {exchangeService: string, organizationName: string, anonymousPermission?: OVH.email.exchange.PublicFolderRightTypeEnum, defaultPermission?: OVH.email.exchange.PublicFolderRightTypeEnum, path: string, quota: number, type: OVH.email.exchange.PublicFolderTypeEnum}): Promise<email.exchange.Task>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder', params: {exchangeService: string, organizationName: string, anonymousPermission?: email.exchange.PublicFolderRightTypeEnum, defaultPermission?: email.exchange.PublicFolderRightTypeEnum, path: string, quota: number, type: email.exchange.PublicFolderTypeEnum}): Promise<email.exchange.Task>;
   /**
    * List the email.exchange.exchangePublicFolderPermission objects
    * Create public folder permission
    */
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission', params: {exchangeService: string, organizationName: string, path: string, accessRights: OVH.email.exchange.PublicFolderRightTypeEnum, allowedAccountId: number}): Promise<email.exchange.Task>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission', params: {exchangeService: string, organizationName: string, path: string, accessRights: email.exchange.PublicFolderRightTypeEnum, allowedAccountId: number}): Promise<email.exchange.Task>;
   /**
    * renewSSL operations
    * Renew SSL if it will expire in next 30 days
@@ -1780,7 +1779,7 @@ export class ApiEmailExchange extends OvhWrapper {
    * List the email.exchange.resourceAccount objects
    * create new resource account in exchange server
    */
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount', params: {exchangeService: string, organizationName: string, addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity: number, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress: string, showMeetingDetails?: OVH.email.exchange.ShowMeetingDetailsEnum, type: OVH.email.exchange.ResourceTypeEnum}): Promise<email.exchange.Task>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount', params: {exchangeService: string, organizationName: string, addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity: number, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress: string, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, type: email.exchange.ResourceTypeEnum}): Promise<email.exchange.Task>;
   /**
    * List the email.exchange.exchangeResourceAccountDelegate objects
    * add new resource account delegate in exchange server
@@ -1790,7 +1789,7 @@ export class ApiEmailExchange extends OvhWrapper {
    * List the email.exchange.sharedAccount objects
    * Create new shared mailbox in exchange server
    */
-  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount', params: {exchangeService: string, organizationName: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, mailingFilter?: OVH.email.exchange.MailingFilterEnum[], quota: number, sharedEmailAddress: string}): Promise<email.exchange.Task>;
+  public post(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount', params: {exchangeService: string, organizationName: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, mailingFilter?: email.exchange.MailingFilterEnum[], quota: number, sharedEmailAddress: string}): Promise<email.exchange.Task>;
   /**
    * List the email.exchange.exchangeSharedAccountFullAccess objects
    * Allow full access to a user
@@ -1952,5 +1951,4 @@ export class ApiEmailExchange extends OvhWrapper {
   public delete(path: PathsEmailExchangeDELETE, params?: OvhParamType): Promise<any> {
     return super.delete(path, params);
   }
-}
 }
