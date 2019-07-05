@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.UnitAndValue
@@ -92,12 +92,15 @@ export namespace veeamCloudConnect {
         wanAccelerator: boolean;
     }
 }
+export function proxyVeeamCloudConnect(ovhEngine: OvhRequestable): VeeamCloudConnect {
+    return buildOvhProxy(ovhEngine, '/veeamCloudConnect');
+}
 // Apis harmony
 // path /veeamCloudConnect
 export interface VeeamCloudConnect{
     // GET /veeamCloudConnect
     $get(): Promise<string[]>;
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /veeamCloudConnect/{serviceName}
         $get(): Promise<veeamCloudConnect.Account>;
         backupRepository: {
@@ -105,7 +108,7 @@ export interface VeeamCloudConnect{
             $get(): Promise<string[]>;
             // POST /veeamCloudConnect/{serviceName}/backupRepository
             $post(): Promise<veeamCloudConnect.Task[]>;
-            [keys: string]:{
+            $(inventoryName: string): {
                 // DELETE /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}
                 $delete(): Promise<veeamCloudConnect.Task[]>;
                 // GET /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}
@@ -114,7 +117,7 @@ export interface VeeamCloudConnect{
                     // POST /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota
                     $post(body?: {newQuota: number}): Promise<veeamCloudConnect.Task[]>;
                 }
-            } | any
+            };
         }
         capabilities: {
             // GET /veeamCloudConnect/{serviceName}/capabilities
@@ -137,12 +140,12 @@ export interface VeeamCloudConnect{
         task: {
             // GET /veeamCloudConnect/{serviceName}/task
             $get(param?: {name?: string, state?: veeamCloudConnect.TaskStateEnum}): Promise<number[]>;
-            [keys: string]:{
+            $(taskId: number): {
                 // GET /veeamCloudConnect/{serviceName}/task/{taskId}
                 $get(): Promise<veeamCloudConnect.Task>;
-            } | any
+            };
         }
-    } | any
+    };
 }
 // Api
 type PathsVeeamCloudConnectGET = '/veeamCloudConnect' |

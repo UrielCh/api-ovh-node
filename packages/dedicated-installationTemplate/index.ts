@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.UnitAndValue
@@ -92,40 +92,43 @@ export namespace dedicated {
         export type SupportsUEFIEnum = "no" | "only" | "yes"
     }
 }
+export function proxyDedicatedInstallationTemplate(ovhEngine: OvhRequestable): Dedicated {
+    return buildOvhProxy(ovhEngine, '/dedicated/installationTemplate');
+}
 // Apis harmony
 // path /dedicated
 export interface Dedicated{
     installationTemplate: {
         // GET /dedicated/installationTemplate
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(templateName: string): {
             // GET /dedicated/installationTemplate/{templateName}
             $get(): Promise<dedicated.installationTemplate.Templates>;
             partitionScheme: {
                 // GET /dedicated/installationTemplate/{templateName}/partitionScheme
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(schemeName: string): {
                     // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}
                     $get(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
                     hardwareRaid: {
                         // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
                         $get(): Promise<string[]>;
-                        [keys: string]:{
+                        $(name: string): {
                             // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
                             $get(): Promise<dedicated.installationTemplate.hardwareRaid>;
-                        } | any
+                        };
                     }
                     partition: {
                         // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                         $get(): Promise<string[]>;
-                        [keys: string]:{
+                        $(mountpoint: string): {
                             // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                             $get(): Promise<dedicated.installationTemplate.templatePartitions>;
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
-        } | any
+        };
     }
 }
 // Api

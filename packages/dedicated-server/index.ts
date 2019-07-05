@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.ChartReturn
@@ -947,6 +947,9 @@ export namespace zone {
     //zone.NamedResolutionFieldTypeEnum
     export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
 }
+export function proxyDedicatedServer(ovhEngine: OvhRequestable): Dedicated {
+    return buildOvhProxy(ovhEngine, '/dedicated/server');
+}
 // Apis harmony
 // path /dedicated
 export interface Dedicated{
@@ -972,12 +975,12 @@ export interface Dedicated{
             $get(param?: {hardware: string}): Promise<dedicated.OsAvailabilitiesEnum[]>;
         }
         virtualNetworkInterface: {
-            [keys: string]:{
+            $(uuid: string): {
                 // GET /dedicated/server/virtualNetworkInterface/{uuid}
                 $get(): Promise<dedicated.virtualNetworkInterface.VirtualNetworkInterface>;
-            } | any
+            };
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /dedicated/server/{serviceName}
             $get(): Promise<dedicated.server.Dedicated>;
             // PUT /dedicated/server/{serviceName}
@@ -993,18 +996,18 @@ export interface Dedicated{
             boot: {
                 // GET /dedicated/server/{serviceName}/boot
                 $get(param?: {bootType?: dedicated.server.BootTypeEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(bootId: number): {
                     // GET /dedicated/server/{serviceName}/boot/{bootId}
                     $get(): Promise<dedicated.server.Netboot>;
                     option: {
                         // GET /dedicated/server/{serviceName}/boot/{bootId}/option
                         $get(): Promise<dedicated.server.BootOptionEnum[]>;
-                        [keys: string]:{
+                        $(option: dedicated.server.BootOptionEnum): {
                             // GET /dedicated/server/{serviceName}/boot/{bootId}/option/{option}
                             $get(): Promise<dedicated.server.netbootOption>;
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
             burst: {
                 // GET /dedicated/server/{serviceName}/burst
@@ -1045,14 +1048,14 @@ export interface Dedicated{
                         $get(): Promise<string[]>;
                         // POST /dedicated/server/{serviceName}/features/backupFTP/access
                         $post(body?: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
-                        [keys: string]:{
+                        $(ipBlock: string): {
                             // DELETE /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
                             $delete(): Promise<dedicated.server.Task>;
                             // GET /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
                             $get(): Promise<dedicated.server.BackupFtpAcl>;
                             // PUT /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
                             $put(body?: {body: dedicated.server.BackupFtpAcl}): Promise<void>;
-                        } | any
+                        };
                     }
                     authorizableBlocks: {
                         // GET /dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks
@@ -1143,10 +1146,10 @@ export interface Dedicated{
             intervention: {
                 // GET /dedicated/server/{serviceName}/intervention
                 $get(): Promise<number[]>;
-                [keys: string]:{
+                $(interventionId: number): {
                     // GET /dedicated/server/{serviceName}/intervention/{interventionId}
                     $get(): Promise<dedicated.server.Intervention>;
-                } | any
+                };
             }
             ipBlockMerge: {
                 // POST /dedicated/server/{serviceName}/ipBlockMerge
@@ -1189,24 +1192,24 @@ export interface Dedicated{
             networkInterfaceController: {
                 // GET /dedicated/server/{serviceName}/networkInterfaceController
                 $get(param?: {linkType?: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum}): Promise<string[]>;
-                [keys: string]:{
+                $(mac: string): {
                     // GET /dedicated/server/{serviceName}/networkInterfaceController/{mac}
                     $get(): Promise<dedicated.networkInterfaceController.NetworkInterfaceController>;
                     mrtg: {
                         // GET /dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg
                         $get(param?: {period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
                     }
-                } | any
+                };
             }
             option: {
                 // GET /dedicated/server/{serviceName}/option
                 $get(): Promise<dedicated.server.OptionEnum[]>;
-                [keys: string]:{
+                $(option: dedicated.server.OptionEnum): {
                     // DELETE /dedicated/server/{serviceName}/option/{option}
                     $delete(): Promise<void>;
                     // GET /dedicated/server/{serviceName}/option/{option}
                     $get(): Promise<dedicated.server.Option>;
-                } | any
+                };
             }
             orderable: {
                 backupStorage: {
@@ -1259,7 +1262,7 @@ export interface Dedicated{
                 $get(): Promise<string[]>;
                 // POST /dedicated/server/{serviceName}/secondaryDnsDomains
                 $post(body?: {domain: string, ip?: string}): Promise<void>;
-                [keys: string]:{
+                $(domain: string): {
                     // DELETE /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
                     $delete(): Promise<void>;
                     // GET /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
@@ -1270,7 +1273,7 @@ export interface Dedicated{
                         // GET /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer
                         $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
                     }
-                } | any
+                };
             }
             secondaryDnsNameDomainToken: {
                 // GET /dedicated/server/{serviceName}/secondaryDnsNameDomainToken
@@ -1291,7 +1294,7 @@ export interface Dedicated{
                 $get(): Promise<number[]>;
                 // POST /dedicated/server/{serviceName}/serviceMonitoring
                 $post(body?: {challengeText?: string, enabled: boolean, interval: dedicated.server.MonitoringIntervalEnum, ip: string, port: number, protocol: dedicated.server.MonitoringProtocolEnum, url?: string}): Promise<dedicated.server.serviceMonitoring>;
-                [keys: string]:{
+                $(monitoringId: number): {
                     // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
                     $delete(): Promise<void>;
                     // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
@@ -1304,31 +1307,31 @@ export interface Dedicated{
                             $get(): Promise<number[]>;
                             // POST /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email
                             $post(body?: {email: string, language: dedicated.server.AlertLanguageEnum}): Promise<dedicated.server.emailAlert>;
-                            [keys: string]:{
+                            $(alertId: number): {
                                 // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
                                 $delete(): Promise<void>;
                                 // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
                                 $get(): Promise<dedicated.server.emailAlert>;
                                 // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
                                 $put(body?: {body: dedicated.server.emailAlert}): Promise<void>;
-                            } | any
+                            };
                         }
                         sms: {
                             // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
                             $get(): Promise<number[]>;
                             // POST /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
                             $post(body?: {fromHour?: number, language: dedicated.server.AlertLanguageEnum, phoneNumberTo: string, smsAccount: string, toHour?: number}): Promise<dedicated.server.smsAlert>;
-                            [keys: string]:{
+                            $(alertId: number): {
                                 // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
                                 $delete(): Promise<void>;
                                 // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
                                 $get(): Promise<dedicated.server.smsAlert>;
                                 // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
                                 $put(body?: {body: dedicated.server.smsAlert}): Promise<void>;
-                            } | any
+                            };
                         }
                     }
-                } | any
+                };
             }
             specifications: {
                 hardware: {
@@ -1349,7 +1352,7 @@ export interface Dedicated{
                 $get(param?: {status?: dedicated.server.SplaStatusEnum, type?: dedicated.server.SplaTypeEnum}): Promise<number[]>;
                 // POST /dedicated/server/{serviceName}/spla
                 $post(body?: {serialNumber: string, type: dedicated.server.SplaTypeEnum}): Promise<number>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /dedicated/server/{serviceName}/spla/{id}
                     $get(): Promise<dedicated.server.spla>;
                     // PUT /dedicated/server/{serviceName}/spla/{id}
@@ -1358,7 +1361,7 @@ export interface Dedicated{
                         // POST /dedicated/server/{serviceName}/spla/{id}/revoke
                         $post(): Promise<void>;
                     }
-                } | any
+                };
             }
             statistics: {
                 // GET /dedicated/server/{serviceName}/statistics
@@ -1378,14 +1381,14 @@ export interface Dedicated{
                 disk: {
                     // GET /dedicated/server/{serviceName}/statistics/disk
                     $get(): Promise<string[]>;
-                    [keys: string]:{
+                    $(disk: string): {
                         // GET /dedicated/server/{serviceName}/statistics/disk/{disk}
                         $get(): Promise<dedicated.server.RtmDisk>;
                         smart: {
                             // GET /dedicated/server/{serviceName}/statistics/disk/{disk}/smart
                             $get(): Promise<dedicated.server.RtmDiskSmart>;
                         }
-                    } | any
+                    };
                 }
                 load: {
                     // GET /dedicated/server/{serviceName}/statistics/load
@@ -1406,14 +1409,14 @@ export interface Dedicated{
                 partition: {
                     // GET /dedicated/server/{serviceName}/statistics/partition
                     $get(): Promise<string[]>;
-                    [keys: string]:{
+                    $(partition: string): {
                         // GET /dedicated/server/{serviceName}/statistics/partition/{partition}
                         $get(): Promise<dedicated.server.RtmPartition>;
                         chart: {
                             // GET /dedicated/server/{serviceName}/statistics/partition/{partition}/chart
                             $get(param?: {period: dedicated.server.RtmChartPeriodEnum}): Promise<complexType.ChartReturn>;
                         }
-                    } | any
+                    };
                 }
                 pci: {
                     // GET /dedicated/server/{serviceName}/statistics/pci
@@ -1426,26 +1429,26 @@ export interface Dedicated{
                 raid: {
                     // GET /dedicated/server/{serviceName}/statistics/raid
                     $get(): Promise<string[]>;
-                    [keys: string]:{
+                    $(unit: string): {
                         // GET /dedicated/server/{serviceName}/statistics/raid/{unit}
                         $get(): Promise<dedicated.server.RtmRaid>;
                         volume: {
                             // GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume
                             $get(): Promise<string[]>;
-                            [keys: string]:{
+                            $(volume: string): {
                                 // GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}
                                 $get(): Promise<dedicated.server.RtmRaidVolume>;
                                 port: {
                                     // GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port
                                     $get(): Promise<string[]>;
-                                    [keys: string]:{
+                                    $(port: string): {
                                         // GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}
                                         $get(): Promise<dedicated.server.RtmRaidVolumePort>;
-                                    } | any
+                                    };
                                 }
-                            } | any
+                            };
                         }
-                    } | any
+                    };
                 }
             }
             support: {
@@ -1459,14 +1462,14 @@ export interface Dedicated{
             task: {
                 // GET /dedicated/server/{serviceName}/task
                 $get(param?: {function_?: dedicated.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /dedicated/server/{serviceName}/task/{taskId}
                     $get(): Promise<dedicated.server.Task>;
                     cancel: {
                         // POST /dedicated/server/{serviceName}/task/{taskId}/cancel
                         $post(): Promise<void>;
                     }
-                } | any
+                };
             }
             terminate: {
                 // POST /dedicated/server/{serviceName}/terminate
@@ -1477,7 +1480,7 @@ export interface Dedicated{
                 $get(): Promise<string[]>;
                 // POST /dedicated/server/{serviceName}/virtualMac
                 $post(body?: {ipAddress: string, type: dedicated.server.VmacTypeEnum, virtualMachineName: string}): Promise<dedicated.server.Task>;
-                [keys: string]:{
+                $(macAddress: string): {
                     // GET /dedicated/server/{serviceName}/virtualMac/{macAddress}
                     $get(): Promise<dedicated.server.VirtualMac>;
                     virtualAddress: {
@@ -1485,27 +1488,27 @@ export interface Dedicated{
                         $get(): Promise<string[]>;
                         // POST /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress
                         $post(body?: {ipAddress: string, virtualMachineName: string}): Promise<dedicated.server.Task>;
-                        [keys: string]:{
+                        $(ipAddress: string): {
                             // DELETE /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}
                             $delete(): Promise<dedicated.server.Task>;
                             // GET /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}
                             $get(): Promise<dedicated.server.VirtualMacManagement>;
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
             virtualNetworkInterface: {
                 // GET /dedicated/server/{serviceName}/virtualNetworkInterface
                 $get(param?: {mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, vrack?: string}): Promise<string[]>;
-                [keys: string]:{
+                $(uuid: string): {
                     // GET /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}
                     $get(): Promise<dedicated.virtualNetworkInterface.VirtualNetworkInterface>;
-                } | any
+                };
             }
             vrack: {
                 // GET /dedicated/server/{serviceName}/vrack
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(vrack: string): {
                     // DELETE /dedicated/server/{serviceName}/vrack/{vrack}
                     $delete(): Promise<vrack.Task>;
                     // GET /dedicated/server/{serviceName}/vrack/{vrack}
@@ -1514,9 +1517,9 @@ export interface Dedicated{
                         // GET /dedicated/server/{serviceName}/vrack/{vrack}/mrtg
                         $get(param?: {period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
                     }
-                } | any
+                };
             }
-        } | any
+        };
     }
 }
 // Api

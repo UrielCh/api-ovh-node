@@ -72,7 +72,7 @@ async function main() {
                 "license": "MIT",
                 "author": "Uriel Chemouni <uchemouni@gmail.com>",
                 "dependencies": {
-                    "@ovh-api/common": "^1.2.2"
+                    "@ovh-api/common": "^1.2.4"
                 },
                 "publishConfig": {
                     "access": "public"

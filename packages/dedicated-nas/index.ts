@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace dedicated {
     //dedicated.TaskStatusEnum
@@ -91,13 +91,16 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyDedicatedNas(ovhEngine: OvhRequestable): Dedicated {
+    return buildOvhProxy(ovhEngine, '/dedicated/nas');
+}
 // Apis harmony
 // path /dedicated
 export interface Dedicated{
     nas: {
         // GET /dedicated/nas
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /dedicated/nas/{serviceName}
             $get(): Promise<dedicated.nas.Nas>;
             // PUT /dedicated/nas/{serviceName}
@@ -107,7 +110,7 @@ export interface Dedicated{
                 $get(): Promise<string[]>;
                 // POST /dedicated/nas/{serviceName}/partition
                 $post(body?: {partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
-                [keys: string]:{
+                $(partitionName: string): {
                     // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}
                     $delete(): Promise<dedicated.nasTask.Task>;
                     // GET /dedicated/nas/{serviceName}/partition/{partitionName}
@@ -119,12 +122,12 @@ export interface Dedicated{
                         $get(): Promise<string[]>;
                         // POST /dedicated/nas/{serviceName}/partition/{partitionName}/access
                         $post(body?: {ip: string}): Promise<dedicated.nasTask.Task>;
-                        [keys: string]:{
+                        $(ip: string): {
                             // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}
                             $delete(): Promise<dedicated.nasTask.Task>;
                             // GET /dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}
                             $get(): Promise<dedicated.nas.Access>;
-                        } | any
+                        };
                     }
                     authorizableIps: {
                         // GET /dedicated/nas/{serviceName}/partition/{partitionName}/authorizableIps
@@ -135,14 +138,14 @@ export interface Dedicated{
                         $get(): Promise<number[]>;
                         // POST /dedicated/nas/{serviceName}/partition/{partitionName}/quota
                         $post(body?: {size: number, uid: number}): Promise<dedicated.nasTask.Task>;
-                        [keys: string]:{
+                        $(uid: number): {
                             // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}
                             $delete(): Promise<dedicated.nasTask.Task>;
                             // GET /dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}
                             $get(): Promise<dedicated.nas.Quota>;
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
             serviceInfos: {
                 // GET /dedicated/nas/{serviceName}/serviceInfos
@@ -153,12 +156,12 @@ export interface Dedicated{
             task: {
                 // GET /dedicated/nas/{serviceName}/task
                 $get(param?: {operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /dedicated/nas/{serviceName}/task/{taskId}
                     $get(): Promise<dedicated.nasTask.Task>;
-                } | any
+                };
             }
-        } | any
+        };
     }
 }
 // Api

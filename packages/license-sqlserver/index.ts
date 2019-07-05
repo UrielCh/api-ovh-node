@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace license {
     //license.ActionType
@@ -84,6 +84,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyLicenseSqlserver(ovhEngine: OvhRequestable): License {
+    return buildOvhProxy(ovhEngine, '/license/sqlserver');
+}
 // Apis harmony
 // path /license
 export interface License{
@@ -94,7 +97,7 @@ export interface License{
             // GET /license/sqlserver/orderableVersions
             $get(param?: {ip: string}): Promise<license.SqlServerOrderConfiguration[]>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /license/sqlserver/{serviceName}
             $get(): Promise<license.sqlserver.SqlServer>;
             confirmTermination: {
@@ -110,16 +113,16 @@ export interface License{
             tasks: {
                 // GET /license/sqlserver/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /license/sqlserver/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
-                } | any
+                };
             }
             terminate: {
                 // POST /license/sqlserver/{serviceName}/terminate
                 $post(): Promise<string>;
             }
-        } | any
+        };
     }
 }
 // Api

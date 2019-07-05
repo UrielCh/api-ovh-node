@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace allDom {
     //allDom.AllDom
@@ -54,21 +54,24 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyAllDom(ovhEngine: OvhRequestable): AllDom {
+    return buildOvhProxy(ovhEngine, '/allDom');
+}
 // Apis harmony
 // path /allDom
 export interface AllDom{
     // GET /allDom
     $get(): Promise<string[]>;
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /allDom/{serviceName}
         $get(): Promise<allDom.AllDom>;
         domain: {
             // GET /allDom/{serviceName}/domain
             $get(param?: {domain?: string}): Promise<string[]>;
-            [keys: string]:{
+            $(domain: string): {
                 // GET /allDom/{serviceName}/domain/{domain}
                 $get(): Promise<allDom.AllDomDomain>;
-            } | any
+            };
         }
         serviceInfos: {
             // GET /allDom/{serviceName}/serviceInfos
@@ -76,7 +79,7 @@ export interface AllDom{
             // PUT /allDom/{serviceName}/serviceInfos
             $put(body?: {body: services.Service}): Promise<void>;
         }
-    } | any
+    };
 }
 // Api
 type PathsAllDomGET = '/allDom' |

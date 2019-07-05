@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace license {
     //license.ActionType
@@ -93,6 +93,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyLicenseWorklight(ovhEngine: OvhRequestable): License {
+    return buildOvhProxy(ovhEngine, '/license/worklight');
+}
 // Apis harmony
 // path /license
 export interface License{
@@ -103,7 +106,7 @@ export interface License{
             // GET /license/worklight/orderableVersions
             $get(param?: {ip: string}): Promise<license.WorkLightOrderConfiguration[]>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /license/worklight/{serviceName}
             $get(): Promise<license.worklight.WorkLight>;
             // PUT /license/worklight/{serviceName}
@@ -133,16 +136,16 @@ export interface License{
             tasks: {
                 // GET /license/worklight/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /license/worklight/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
-                } | any
+                };
             }
             terminate: {
                 // POST /license/worklight/{serviceName}/terminate
                 $post(): Promise<string>;
             }
-        } | any
+        };
     }
 }
 // Api

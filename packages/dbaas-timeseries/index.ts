@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.UnitAndValue
@@ -157,6 +157,9 @@ export namespace tsaas {
         secret: string;
     }
 }
+export function proxyDbaasTimeseries(ovhEngine: OvhRequestable): Dbaas {
+    return buildOvhProxy(ovhEngine, '/dbaas/timeseries');
+}
 // Apis harmony
 // path /dbaas
 export interface Dbaas{
@@ -167,7 +170,7 @@ export interface Dbaas{
             // GET /dbaas/timeseries/region
             $get(): Promise<paas.timeseries.Region[]>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /dbaas/timeseries/{serviceName}
             $get(): Promise<timeseries.Project>;
             // PUT /dbaas/timeseries/{serviceName}
@@ -185,14 +188,14 @@ export interface Dbaas{
                 $get(): Promise<paas.timeseries.Key[]>;
                 // POST /dbaas/timeseries/{serviceName}/key
                 $post(body?: {description?: string, permissions: string[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
-                [keys: string]:{
+                $(keyId: string): {
                     // DELETE /dbaas/timeseries/{serviceName}/key/{keyId}
                     $delete(): Promise<boolean>;
                     // GET /dbaas/timeseries/{serviceName}/key/{keyId}
                     $get(): Promise<paas.timeseries.Key>;
                     // PUT /dbaas/timeseries/{serviceName}/key/{keyId}
                     $put(body?: {description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
-                } | any
+                };
             }
             quota: {
                 // GET /dbaas/timeseries/{serviceName}/quota
@@ -214,15 +217,15 @@ export interface Dbaas{
                     $get(): Promise<tsaas.OpenTSDBToken[]>;
                     // POST /dbaas/timeseries/{serviceName}/token/opentsdb
                     $post(body?: {description?: string, permission: string, tags: paas.timeseries.Tag[]}): Promise<tsaas.OpenTSDBToken>;
-                    [keys: string]:{
+                    $(tokenId: string): {
                         // DELETE /dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}
                         $delete(): Promise<boolean>;
                         // GET /dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}
                         $get(): Promise<tsaas.OpenTSDBToken>;
-                    } | any
+                    };
                 }
             }
-        } | any
+        };
     }
 }
 // Api

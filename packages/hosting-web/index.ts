@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.ChartSerie
@@ -797,6 +797,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyHostingWeb(ovhEngine: OvhRequestable): Hosting {
+    return buildOvhProxy(ovhEngine, '/hosting/web');
+}
 // Apis harmony
 // path /hosting
 export interface Hosting{
@@ -836,16 +839,16 @@ export interface Hosting{
         moduleList: {
             // GET /hosting/web/moduleList
             $get(param?: {active?: boolean, branch?: hosting.web.module.BranchEnum, latest?: boolean}): Promise<number[]>;
-            [keys: string]:{
+            $(id: number): {
                 // GET /hosting/web/moduleList/{id}
                 $get(): Promise<hosting.web.ModuleList>;
-            } | any
+            };
         }
         offerCapabilities: {
             // GET /hosting/web/offerCapabilities
             $get(param?: {offer: hosting.web.OfferCapabilitiesEnum}): Promise<hosting.web.Capabilities>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /hosting/web/{serviceName}
             $get(): Promise<hosting.web.Service>;
             // PUT /hosting/web/{serviceName}
@@ -859,7 +862,7 @@ export interface Hosting{
                 $get(param?: {domain?: string, path?: string}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/attachedDomain
                 $post(body?: {cdn?: hosting.web.attachedDomain.CdnEnum, domain: string, firewall?: hosting.web.attachedDomain.FirewallEnum, ownLog?: string, path: string, runtimeId?: number, ssl?: boolean}): Promise<hosting.web.task>;
-                [keys: string]:{
+                $(domain: string): {
                     // DELETE /hosting/web/{serviceName}/attachedDomain/{domain}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/attachedDomain/{domain}
@@ -874,15 +877,15 @@ export interface Hosting{
                         // POST /hosting/web/{serviceName}/attachedDomain/{domain}/restart
                         $post(): Promise<hosting.web.task>;
                     }
-                } | any
+                };
             }
             boostHistory: {
                 // GET /hosting/web/{serviceName}/boostHistory
                 $get(param?: {date?: string}): Promise<string[]>;
-                [keys: string]:{
+                $(date: string): {
                     // GET /hosting/web/{serviceName}/boostHistory/{date}
                     $get(): Promise<hosting.web.boostHistory>;
-                } | any
+                };
             }
             cdn: {
                 // GET /hosting/web/{serviceName}/cdn
@@ -913,14 +916,14 @@ export interface Hosting{
                 $get(param?: {command?: string, description?: string, email?: string, language?: hosting.web.cron.LanguageEnum}): Promise<number[]>;
                 // POST /hosting/web/{serviceName}/cron
                 $post(body?: {command: string, description?: string, email?: string, frequency: string, language: hosting.web.cron.LanguageEnum, status?: hosting.web.cron.StatusEnum}): Promise<string>;
-                [keys: string]:{
+                $(id: number): {
                     // DELETE /hosting/web/{serviceName}/cron/{id}
                     $delete(): Promise<string>;
                     // GET /hosting/web/{serviceName}/cron/{id}
                     $get(): Promise<hosting.web.cron>;
                     // PUT /hosting/web/{serviceName}/cron/{id}
                     $put(body?: {body: hosting.web.cron}): Promise<void>;
-                } | any
+                };
             }
             cronAvailableLanguage: {
                 // GET /hosting/web/{serviceName}/cronAvailableLanguage
@@ -931,7 +934,7 @@ export interface Hosting{
                 $get(param?: {mode?: hosting.web.database.ModeEnum, name?: string, server?: string, type?: hosting.web.database.DatabaseTypeEnum, user?: string}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/database
                 $post(body?: {capabilitie: hosting.web.database.DatabaseCapabilitiesTypeEnum, password?: string, quota?: hosting.web.database.ExtraSqlQuotaEnum, type: hosting.web.database.DatabaseTypeEnum, user: string, version?: hosting.web.database.VersionEnum}): Promise<hosting.web.task>;
-                [keys: string]:{
+                $(name: string): {
                     // DELETE /hosting/web/{serviceName}/database/{name}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/database/{name}
@@ -949,7 +952,7 @@ export interface Hosting{
                         $get(param?: {creationDate?: string, deletionDate?: string, type?: hosting.web.database.dump.DateEnum}): Promise<number[]>;
                         // POST /hosting/web/{serviceName}/database/{name}/dump
                         $post(body?: {date: hosting.web.database.dump.DateEnum, sendEmail?: boolean}): Promise<hosting.web.task>;
-                        [keys: string]:{
+                        $(id: number): {
                             // DELETE /hosting/web/{serviceName}/database/{name}/dump/{id}
                             $delete(): Promise<hosting.web.task>;
                             // GET /hosting/web/{serviceName}/database/{name}/dump/{id}
@@ -958,7 +961,7 @@ export interface Hosting{
                                 // POST /hosting/web/{serviceName}/database/{name}/dump/{id}/restore
                                 $post(): Promise<hosting.web.task>;
                             }
-                        } | any
+                        };
                     }
                     import: {
                         // POST /hosting/web/{serviceName}/database/{name}/import
@@ -976,7 +979,7 @@ export interface Hosting{
                         // GET /hosting/web/{serviceName}/database/{name}/statistics
                         $get(param?: {period: hosting.web.StatisticsPeriodEnum, type: hosting.web.database.StatisticsTypeEnum}): Promise<complexType.ChartSerie<complexType.ChartTimestampValue>[]>;
                     }
-                } | any
+                };
             }
             databaseAvailableType: {
                 // GET /hosting/web/{serviceName}/databaseAvailableType
@@ -993,12 +996,12 @@ export interface Hosting{
             dump: {
                 // GET /hosting/web/{serviceName}/dump
                 $get(param?: {creationDate?: string, databaseName?: string, deletionDate?: string, orphan?: boolean}): Promise<number[]>;
-                [keys: string]:{
+                $(id: number): {
                     // DELETE /hosting/web/{serviceName}/dump/{id}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/dump/{id}
                     $get(): Promise<hosting.web.dump>;
-                } | any
+                };
             }
             email: {
                 // GET /hosting/web/{serviceName}/email
@@ -1023,19 +1026,19 @@ export interface Hosting{
                 $get(param?: {type?: hosting.web.envVar.TypeEnum}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/envVar
                 $post(body?: {key: string, type: hosting.web.envVar.TypeEnum, value: string}): Promise<hosting.web.task>;
-                [keys: string]:{
+                $(key: string): {
                     // DELETE /hosting/web/{serviceName}/envVar/{key}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/envVar/{key}
                     $get(): Promise<hosting.web.envVar>;
                     // PUT /hosting/web/{serviceName}/envVar/{key}
                     $put(body?: {body: hosting.web.envVar}): Promise<void>;
-                } | any
+                };
             }
             extraSqlPerso: {
                 // GET /hosting/web/{serviceName}/extraSqlPerso
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(name: string): {
                     // GET /hosting/web/{serviceName}/extraSqlPerso/{name}
                     $get(): Promise<hosting.web.extrasqlperso>;
                     databases: {
@@ -1054,38 +1057,38 @@ export interface Hosting{
                         // POST /hosting/web/{serviceName}/extraSqlPerso/{name}/terminate
                         $post(): Promise<string>;
                     }
-                } | any
+                };
             }
             freedom: {
                 // GET /hosting/web/{serviceName}/freedom
                 $get(param?: {status?: hosting.web.freedom.StatusEnum}): Promise<string[]>;
-                [keys: string]:{
+                $(domain: string): {
                     // DELETE /hosting/web/{serviceName}/freedom/{domain}
                     $delete(): Promise<void>;
                     // GET /hosting/web/{serviceName}/freedom/{domain}
                     $get(): Promise<hosting.web.freedom>;
-                } | any
+                };
             }
             indy: {
                 // GET /hosting/web/{serviceName}/indy
                 $get(param?: {login?: string}): Promise<string[]>;
-                [keys: string]:{
+                $(login: string): {
                     // GET /hosting/web/{serviceName}/indy/{login}
                     $get(): Promise<hosting.web.indy>;
-                } | any
+                };
             }
             localSeo: {
                 account: {
                     // GET /hosting/web/{serviceName}/localSeo/account
                     $get(param?: {email?: string}): Promise<number[]>;
-                    [keys: string]:{
+                    $(id: number): {
                         // GET /hosting/web/{serviceName}/localSeo/account/{id}
                         $get(): Promise<hosting.web.localSeo_account>;
                         login: {
                             // POST /hosting/web/{serviceName}/localSeo/account/{id}/login
                             $post(): Promise<string>;
                         }
-                    } | any
+                    };
                 }
                 emailAvailability: {
                     // GET /hosting/web/{serviceName}/localSeo/emailAvailability
@@ -1094,7 +1097,7 @@ export interface Hosting{
                 location: {
                     // GET /hosting/web/{serviceName}/localSeo/location
                     $get(): Promise<number[]>;
-                    [keys: string]:{
+                    $(id: number): {
                         // GET /hosting/web/{serviceName}/localSeo/location/{id}
                         $get(): Promise<hosting.web.localSeo_location>;
                         serviceInfos: {
@@ -1109,7 +1112,7 @@ export interface Hosting{
                             // POST /hosting/web/{serviceName}/localSeo/location/{id}/terminate
                             $post(): Promise<string>;
                         }
-                    } | any
+                    };
                 }
             }
             module: {
@@ -1117,7 +1120,7 @@ export interface Hosting{
                 $get(): Promise<number[]>;
                 // POST /hosting/web/{serviceName}/module
                 $post(body?: {adminName?: string, adminPassword?: string, dependencies?: hosting.web.module.DependencyType[], domain?: string, language?: hosting.web.module.LanguageEnum, moduleId: number, path?: string}): Promise<hosting.web.task>;
-                [keys: string]:{
+                $(id: number): {
                     // DELETE /hosting/web/{serviceName}/module/{id}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/module/{id}
@@ -1126,12 +1129,12 @@ export interface Hosting{
                         // POST /hosting/web/{serviceName}/module/{id}/changePassword
                         $post(): Promise<hosting.web.task>;
                     }
-                } | any
+                };
             }
             ovhConfig: {
                 // GET /hosting/web/{serviceName}/ovhConfig
                 $get(param?: {historical?: boolean, path?: string}): Promise<number[]>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /hosting/web/{serviceName}/ovhConfig/{id}
                     $get(): Promise<hosting.web.ovhConfig>;
                     changeConfiguration: {
@@ -1142,7 +1145,7 @@ export interface Hosting{
                         // POST /hosting/web/{serviceName}/ovhConfig/{id}/rollback
                         $post(body?: {rollbackId: number}): Promise<hosting.web.task>;
                     }
-                } | any
+                };
             }
             ovhConfigRefresh: {
                 // POST /hosting/web/{serviceName}/ovhConfigRefresh
@@ -1151,7 +1154,7 @@ export interface Hosting{
             ownLogs: {
                 // GET /hosting/web/{serviceName}/ownLogs
                 $get(): Promise<number[]>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /hosting/web/{serviceName}/ownLogs/{id}
                     $get(): Promise<hosting.web.ownLogs>;
                     userLogs: {
@@ -1159,7 +1162,7 @@ export interface Hosting{
                         $get(param?: {login?: string}): Promise<string[]>;
                         // POST /hosting/web/{serviceName}/ownLogs/{id}/userLogs
                         $post(body?: {description: string, login: string, ownLogsId?: number, password: string}): Promise<string>;
-                        [keys: string]:{
+                        $(login: string): {
                             // DELETE /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
                             $delete(): Promise<string>;
                             // GET /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
@@ -1170,9 +1173,9 @@ export interface Hosting{
                                 // POST /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword
                                 $post(body?: {password: string}): Promise<string>;
                             }
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
             privateDatabaseCreationCapabilities: {
                 // GET /hosting/web/{serviceName}/privateDatabaseCreationCapabilities
@@ -1199,7 +1202,7 @@ export interface Hosting{
                 $get(param?: {name?: string, type?: hosting.web.runtime.TypeEnum}): Promise<number[]>;
                 // POST /hosting/web/{serviceName}/runtime
                 $post(body?: {appBootstrap?: string, appEnv?: hosting.web.runtime.EnvEnum, attachedDomains?: string[], isDefault?: boolean, name?: string, publicDir?: string, type?: hosting.web.runtime.TypeEnum}): Promise<hosting.web.task>;
-                [keys: string]:{
+                $(id: number): {
                     // DELETE /hosting/web/{serviceName}/runtime/{id}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/runtime/{id}
@@ -1210,7 +1213,7 @@ export interface Hosting{
                         // GET /hosting/web/{serviceName}/runtime/{id}/attachedDomains
                         $get(): Promise<string[]>;
                     }
-                } | any
+                };
             }
             runtimeAvailableTypes: {
                 // GET /hosting/web/{serviceName}/runtimeAvailableTypes
@@ -1249,10 +1252,10 @@ export interface Hosting{
             tasks: {
                 // GET /hosting/web/{serviceName}/tasks
                 $get(param?: {function_?: string, status?: hosting.web.task.StatusEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /hosting/web/{serviceName}/tasks/{id}
                     $get(): Promise<hosting.web.task>;
-                } | any
+                };
             }
             terminate: {
                 // POST /hosting/web/{serviceName}/terminate
@@ -1267,7 +1270,7 @@ export interface Hosting{
                 $get(param?: {home?: string, login?: string}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/user
                 $post(body?: {home: string, login: string, password: string, sshState?: hosting.web.user.SshStateEnum}): Promise<hosting.web.task>;
-                [keys: string]:{
+                $(login: string): {
                     // DELETE /hosting/web/{serviceName}/user/{login}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/user/{login}
@@ -1278,14 +1281,14 @@ export interface Hosting{
                         // POST /hosting/web/{serviceName}/user/{login}/changePassword
                         $post(body?: {password: string}): Promise<hosting.web.task>;
                     }
-                } | any
+                };
             }
             userLogs: {
                 // GET /hosting/web/{serviceName}/userLogs
                 $get(param?: {login?: string}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/userLogs
                 $post(body?: {description: string, login: string, ownLogsId?: number, password: string}): Promise<string>;
-                [keys: string]:{
+                $(login: string): {
                     // DELETE /hosting/web/{serviceName}/userLogs/{login}
                     $delete(): Promise<string>;
                     // GET /hosting/web/{serviceName}/userLogs/{login}
@@ -1296,13 +1299,13 @@ export interface Hosting{
                         // POST /hosting/web/{serviceName}/userLogs/{login}/changePassword
                         $post(body?: {password: string}): Promise<string>;
                     }
-                } | any
+                };
             }
             userLogsToken: {
                 // GET /hosting/web/{serviceName}/userLogsToken
                 $get(param?: {attachedDomain?: string, remoteCheck?: boolean, ttl?: number}): Promise<string>;
             }
-        } | any
+        };
     }
 }
 // Api

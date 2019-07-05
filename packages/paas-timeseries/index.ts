@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.UnitAndValue
@@ -133,6 +133,9 @@ export namespace tsaas {
     //tsaas.QuotaTypeEnum
     export type QuotaTypeEnum = "ddp" | "mads"
 }
+export function proxyPaasTimeseries(ovhEngine: OvhRequestable): Paas {
+    return buildOvhProxy(ovhEngine, '/paas/timeseries');
+}
 // Apis harmony
 // path /paas
 export interface Paas{
@@ -143,7 +146,7 @@ export interface Paas{
             // GET /paas/timeseries/region
             $get(): Promise<paas.timeseries.Region[]>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /paas/timeseries/{serviceName}
             $get(): Promise<timeseries.Project>;
             // PUT /paas/timeseries/{serviceName}
@@ -161,14 +164,14 @@ export interface Paas{
                 $get(): Promise<paas.timeseries.Key[]>;
                 // POST /paas/timeseries/{serviceName}/key
                 $post(body?: {description?: string, permissions: string[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
-                [keys: string]:{
+                $(keyId: string): {
                     // DELETE /paas/timeseries/{serviceName}/key/{keyId}
                     $delete(): Promise<boolean>;
                     // GET /paas/timeseries/{serviceName}/key/{keyId}
                     $get(): Promise<paas.timeseries.Key>;
                     // PUT /paas/timeseries/{serviceName}/key/{keyId}
                     $put(body?: {description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
-                } | any
+                };
             }
             quota: {
                 // GET /paas/timeseries/{serviceName}/quota
@@ -184,7 +187,7 @@ export interface Paas{
                 // POST /paas/timeseries/{serviceName}/setup
                 $post(body?: {description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string}): Promise<paas.timeseries.Project>;
             }
-        } | any
+        };
     }
 }
 // Api

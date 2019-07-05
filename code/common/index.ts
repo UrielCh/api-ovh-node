@@ -59,6 +59,12 @@ const handler = <ProxyHandler<OvhProxyApi>>{
         if (key == 'toString' || key == 'valueOf' || typeof p == 'symbol')
             return (<any>target)[p];
         if (key.startsWith('$')) {
+            if (key == '$') {
+                return (id:any) => {
+                    let child = new OvhProxyApi(target._ovhEngine, target._path + '/' + String(id));
+                    return new Proxy(child, handler);
+                }
+            }
             let fnc = (params: any) => {
                 let mtd = key.substring(1);
                 return target._ovhEngine.requestPromised(mtd, target._path, params);

@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.SafeKeyValue
@@ -146,12 +146,15 @@ export namespace services {
         }
     }
 }
+export function proxyServices(ovhEngine: OvhRequestable): Services {
+    return buildOvhProxy(ovhEngine, '/services');
+}
 // Apis harmony
 // path /services
 export interface Services{
     // GET /services
     $get(param?: {orderBy?: string, routes?: string, sort?: string}): Promise<number[]>;
-    [keys: string]:{
+    $(serviceId: number): {
         // GET /services/{serviceId}
         $get(): Promise<services.expanded.Service>;
         billing: {
@@ -160,7 +163,7 @@ export interface Services{
                 $get(): Promise<services.billing.engagement.Engagement>;
             }
         }
-    } | any
+    };
 }
 // Api
 type PathsServicesGET = '/services' |

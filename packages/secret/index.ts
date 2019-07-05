@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace secret {
     //secret.Secret
@@ -7,6 +7,9 @@ export namespace secret {
         expiration: string;
         secret: string;
     }
+}
+export function proxySecret(ovhEngine: OvhRequestable): Secret {
+    return buildOvhProxy(ovhEngine, '/secret');
 }
 // Apis harmony
 // path /secret

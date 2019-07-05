@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace dbaas {
     export namespace queue {
@@ -115,13 +115,16 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyDbaasQueue(ovhEngine: OvhRequestable): Dbaas {
+    return buildOvhProxy(ovhEngine, '/dbaas/queue');
+}
 // Apis harmony
 // path /dbaas
 export interface Dbaas{
     queue: {
         // GET /dbaas/queue
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /dbaas/queue/{serviceName}
             $get(): Promise<dbaas.queue.App>;
             // PUT /dbaas/queue/{serviceName}
@@ -129,10 +132,10 @@ export interface Dbaas{
             key: {
                 // GET /dbaas/queue/{serviceName}/key
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(keyId: string): {
                     // GET /dbaas/queue/{serviceName}/key/{keyId}
                     $get(): Promise<dbaas.queue.Key>;
-                } | any
+                };
             }
             metrics: {
                 account: {
@@ -143,18 +146,18 @@ export interface Dbaas{
             region: {
                 // GET /dbaas/queue/{serviceName}/region
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(regionId: string): {
                     // GET /dbaas/queue/{serviceName}/region/{regionId}
                     $get(): Promise<dbaas.queue.Region>;
-                } | any
+                };
             }
             role: {
                 // GET /dbaas/queue/{serviceName}/role
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(roleName: string): {
                     // GET /dbaas/queue/{serviceName}/role/{roleName}
                     $get(): Promise<dbaas.queue.Role>;
-                } | any
+                };
             }
             serviceInfos: {
                 // GET /dbaas/queue/{serviceName}/serviceInfos
@@ -165,17 +168,17 @@ export interface Dbaas{
             topic: {
                 // GET /dbaas/queue/{serviceName}/topic
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(topicId: string): {
                     // DELETE /dbaas/queue/{serviceName}/topic/{topicId}
                     $delete(): Promise<void>;
                     // GET /dbaas/queue/{serviceName}/topic/{topicId}
                     $get(): Promise<dbaas.queue.Topic>;
-                } | any
+                };
             }
             user: {
                 // GET /dbaas/queue/{serviceName}/user
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(userId: string): {
                     // GET /dbaas/queue/{serviceName}/user/{userId}
                     $get(): Promise<dbaas.queue.User>;
                     changePassword: {
@@ -186,9 +189,9 @@ export interface Dbaas{
                         // GET /dbaas/queue/{serviceName}/user/{userId}/roles
                         $get(): Promise<string[]>;
                     }
-                } | any
+                };
             }
-        } | any
+        };
     }
 }
 // Api

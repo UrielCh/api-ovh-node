@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace pack {
     export namespace siptrunk {
@@ -43,13 +43,16 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyPackSiptrunk(ovhEngine: OvhRequestable): Pack {
+    return buildOvhProxy(ovhEngine, '/pack/siptrunk');
+}
 // Apis harmony
 // path /pack
 export interface Pack{
     siptrunk: {
         // GET /pack/siptrunk
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(packName: string): {
             // GET /pack/siptrunk/{packName}
             $get(): Promise<pack.siptrunk.PackSipTrunk>;
             changeContact: {
@@ -62,7 +65,7 @@ export interface Pack{
                 // PUT /pack/siptrunk/{packName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-        } | any
+        };
     }
 }
 // Api

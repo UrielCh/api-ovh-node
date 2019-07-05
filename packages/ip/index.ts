@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.Range
@@ -394,6 +394,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyIp(ovhEngine: OvhRequestable): Ip {
+    return buildOvhProxy(ovhEngine, '/ip');
+}
 // Apis harmony
 // path /ip
 export interface Ip{
@@ -402,7 +405,7 @@ export interface Ip{
     loadBalancing: {
         // GET /ip/loadBalancing
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /ip/loadBalancing/{serviceName}
             $get(): Promise<ip.LoadBalancingIp>;
             allowedBackends: {
@@ -414,7 +417,7 @@ export interface Ip{
                 $get(): Promise<string[]>;
                 // POST /ip/loadBalancing/{serviceName}/backend
                 $post(body?: {ipBackend: string, probe: ip.LoadBalancingBackendProbeEnum, weight?: number}): Promise<ip.LoadBalancingTask>;
-                [keys: string]:{
+                $(backend: string): {
                     // DELETE /ip/loadBalancing/{serviceName}/backend/{backend}
                     $delete(): Promise<ip.LoadBalancingTask>;
                     // GET /ip/loadBalancing/{serviceName}/backend/{backend}
@@ -429,7 +432,7 @@ export interface Ip{
                         // POST /ip/loadBalancing/{serviceName}/backend/{backend}/setWeight
                         $post(body?: {weight: number}): Promise<ip.LoadBalancingTask>;
                     }
-                } | any
+                };
             }
             importCustomSsl: {
                 // POST /ip/loadBalancing/{serviceName}/importCustomSsl
@@ -444,12 +447,12 @@ export interface Ip{
                 $get(): Promise<ip.LoadBalancingAdditionalPortEnum[]>;
                 // POST /ip/loadBalancing/{serviceName}/portsRedirection
                 $post(body?: {body: ip.LoadBalancingIp.LoadBalancingPort}): Promise<ip.LoadBalancingTask>;
-                [keys: string]:{
+                $(srcPort: ip.LoadBalancingAdditionalPortEnum): {
                     // DELETE /ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}
                     $delete(): Promise<ip.LoadBalancingTask>;
                     // GET /ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}
                     $get(): Promise<ip.LoadBalancingIp.LoadBalancingPort>;
-                } | any
+                };
             }
             probeIp: {
                 // GET /ip/loadBalancing/{serviceName}/probeIp
@@ -476,17 +479,17 @@ export interface Ip{
             task: {
                 // GET /ip/loadBalancing/{serviceName}/task
                 $get(): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /ip/loadBalancing/{serviceName}/task/{taskId}
                     $get(): Promise<ip.LoadBalancingTask>;
-                } | any
+                };
             }
-        } | any
+        };
     }
     service: {
         // GET /ip/service
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /ip/service/{serviceName}
             $get(): Promise<ip.ServiceIp>;
             // PUT /ip/service/{serviceName}
@@ -507,9 +510,9 @@ export interface Ip{
                 // POST /ip/service/{serviceName}/terminate
                 $post(): Promise<string>;
             }
-        } | any
+        };
     }
-    [keys: string]:{
+    $(ip: string): {
         // GET /ip/{ip}
         $get(): Promise<ip.Ip>;
         // PUT /ip/{ip}
@@ -517,26 +520,26 @@ export interface Ip{
         antihack: {
             // GET /ip/{ip}/antihack
             $get(param?: {state?: ip.BlockedIpStateEnum}): Promise<string[]>;
-            [keys: string]:{
+            $(ipBlocked: string): {
                 // GET /ip/{ip}/antihack/{ipBlocked}
                 $get(): Promise<ip.BlockedIp>;
                 unblock: {
                     // POST /ip/{ip}/antihack/{ipBlocked}/unblock
                     $post(): Promise<void>;
                 }
-            } | any
+            };
         }
         arp: {
             // GET /ip/{ip}/arp
             $get(param?: {state?: ip.ArpStateEnum}): Promise<string[]>;
-            [keys: string]:{
+            $(ipBlocked: string): {
                 // GET /ip/{ip}/arp/{ipBlocked}
                 $get(): Promise<ip.ArpBlockedIp>;
                 unblock: {
                     // POST /ip/{ip}/arp/{ipBlocked}/unblock
                     $post(): Promise<void>;
                 }
-            } | any
+            };
         }
         changeOrg: {
             // POST /ip/{ip}/changeOrg
@@ -547,19 +550,19 @@ export interface Ip{
             $get(): Promise<string[]>;
             // POST /ip/{ip}/delegation
             $post(body?: {target: string}): Promise<ip.ReverseDelegation>;
-            [keys: string]:{
+            $(target: string): {
                 // DELETE /ip/{ip}/delegation/{target}
                 $delete(): Promise<void>;
                 // GET /ip/{ip}/delegation/{target}
                 $get(): Promise<ip.ReverseDelegation>;
-            } | any
+            };
         }
         firewall: {
             // GET /ip/{ip}/firewall
             $get(param?: {enabled?: boolean, state?: ip.FirewallStateEnum}): Promise<string[]>;
             // POST /ip/{ip}/firewall
             $post(body?: {ipOnFirewall: string}): Promise<ip.FirewallIp>;
-            [keys: string]:{
+            $(ipOnFirewall: string): {
                 // DELETE /ip/{ip}/firewall/{ipOnFirewall}
                 $delete(): Promise<string>;
                 // GET /ip/{ip}/firewall/{ipOnFirewall}
@@ -571,19 +574,19 @@ export interface Ip{
                     $get(param?: {state?: ip.FirewallRuleStateEnum}): Promise<number[]>;
                     // POST /ip/{ip}/firewall/{ipOnFirewall}/rule
                     $post(body?: {action: ip.FirewallActionEnum, destinationPort?: number, protocol: ip.FirewallProtocolEnum, sequence: ip.FirewallSequenceRangeEnum, source?: string, sourcePort?: number, tcpOption?: ip.FirewallOptionTCP}): Promise<ip.FirewallNetworkRule>;
-                    [keys: string]:{
+                    $(sequence: number): {
                         // DELETE /ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}
                         $delete(): Promise<ip.FirewallNetworkRule>;
                         // GET /ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}
                         $get(): Promise<ip.FirewallNetworkRule>;
-                    } | any
+                    };
                 }
-            } | any
+            };
         }
         game: {
             // GET /ip/{ip}/game
             $get(): Promise<string[]>;
-            [keys: string]:{
+            $(ipOnGame: string): {
                 // GET /ip/{ip}/game/{ipOnGame}
                 $get(): Promise<ip.GameMitigation>;
                 // PUT /ip/{ip}/game/{ipOnGame}
@@ -593,14 +596,14 @@ export interface Ip{
                     $get(): Promise<number[]>;
                     // POST /ip/{ip}/game/{ipOnGame}/rule
                     $post(body?: {ports: complexType.Range<number>, protocol: ip.GameMitigationRuleProtocolEnum}): Promise<ip.GameMitigationRule>;
-                    [keys: string]:{
+                    $(id: number): {
                         // DELETE /ip/{ip}/game/{ipOnGame}/rule/{id}
                         $delete(): Promise<ip.GameMitigationRule>;
                         // GET /ip/{ip}/game/{ipOnGame}/rule/{id}
                         $get(): Promise<ip.GameMitigationRule>;
-                    } | any
+                    };
                 }
-            } | any
+            };
         }
         license: {
             cloudLinux: {
@@ -647,7 +650,7 @@ export interface Ip{
             $get(param?: {auto?: boolean, state?: ip.MitigationStateEnum}): Promise<string[]>;
             // POST /ip/{ip}/mitigation
             $post(body?: {ipOnMitigation: string}): Promise<ip.MitigationIp>;
-            [keys: string]:{
+            $(ipOnMitigation: string): {
                 // DELETE /ip/{ip}/mitigation/{ipOnMitigation}
                 $delete(): Promise<ip.MitigationIp>;
                 // GET /ip/{ip}/mitigation/{ipOnMitigation}
@@ -662,21 +665,21 @@ export interface Ip{
                     // GET /ip/{ip}/mitigation/{ipOnMitigation}/topStream
                     $get(param?: {date: string, scale: ip.MitigationStatsScaleEnum}): Promise<ip.MitigationDetailedStats[]>;
                 }
-            } | any
+            };
         }
         mitigationProfiles: {
             // GET /ip/{ip}/mitigationProfiles
             $get(): Promise<string[]>;
             // POST /ip/{ip}/mitigationProfiles
             $post(body?: {autoMitigationTimeOut: ip.MitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile: string}): Promise<ip.MitigationProfile>;
-            [keys: string]:{
+            $(ipMitigationProfile: string): {
                 // DELETE /ip/{ip}/mitigationProfiles/{ipMitigationProfile}
                 $delete(): Promise<void>;
                 // GET /ip/{ip}/mitigationProfiles/{ipMitigationProfile}
                 $get(): Promise<ip.MitigationProfile>;
                 // PUT /ip/{ip}/mitigationProfiles/{ipMitigationProfile}
                 $put(body?: {body: ip.MitigationProfile}): Promise<void>;
-            } | any
+            };
         }
         move: {
             // GET /ip/{ip}/move
@@ -691,22 +694,22 @@ export interface Ip{
         phishing: {
             // GET /ip/{ip}/phishing
             $get(param?: {ipOnAntiphishing?: string, state?: ip.AntiphishingStateEnum}): Promise<number[]>;
-            [keys: string]:{
+            $(id: number): {
                 // GET /ip/{ip}/phishing/{id}
                 $get(): Promise<ip.Antiphishing>;
-            } | any
+            };
         }
         reverse: {
             // GET /ip/{ip}/reverse
             $get(): Promise<string[]>;
             // POST /ip/{ip}/reverse
             $post(body?: {ipReverse: string, reverse: string}): Promise<ip.ReverseIp>;
-            [keys: string]:{
+            $(ipReverse: string): {
                 // DELETE /ip/{ip}/reverse/{ipReverse}
                 $delete(): Promise<void>;
                 // GET /ip/{ip}/reverse/{ipReverse}
                 $get(): Promise<ip.ReverseIp>;
-            } | any
+            };
         }
         ripe: {
             // GET /ip/{ip}/ripe
@@ -717,7 +720,7 @@ export interface Ip{
         spam: {
             // GET /ip/{ip}/spam
             $get(param?: {state?: ip.SpamStateEnum}): Promise<string[]>;
-            [keys: string]:{
+            $(ipSpamming: string): {
                 // GET /ip/{ip}/spam/{ipSpamming}
                 $get(): Promise<ip.SpamIp>;
                 stats: {
@@ -728,21 +731,21 @@ export interface Ip{
                     // POST /ip/{ip}/spam/{ipSpamming}/unblock
                     $post(): Promise<ip.SpamIp>;
                 }
-            } | any
+            };
         }
         task: {
             // GET /ip/{ip}/task
             $get(param?: {function_?: ip.TaskFunctionEnum, status?: ip.TaskStatusEnum}): Promise<number[]>;
-            [keys: string]:{
+            $(taskId: number): {
                 // GET /ip/{ip}/task/{taskId}
                 $get(): Promise<ip.IpTask>;
-            } | any
+            };
         }
         terminate: {
             // POST /ip/{ip}/terminate
             $post(): Promise<ip.IpTask>;
         }
-    } | any
+    };
 }
 // Api
 type PathsIpGET = '/ip' |

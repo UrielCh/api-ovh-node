@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace order {
     //order.CurrencyCodeEnum
@@ -186,6 +186,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyOverTheBox(ovhEngine: OvhRequestable): OverTheBox {
+    return buildOvhProxy(ovhEngine, '/overTheBox');
+}
 // Apis harmony
 // path /overTheBox
 export interface OverTheBox{
@@ -199,7 +202,7 @@ export interface OverTheBox{
         // POST /overTheBox/devices
         $post(): Promise<overTheBox.DeviceForRegistration[]>;
     }
-    [keys: string]:{
+    $(serviceName: string): {
         // DELETE /overTheBox/{serviceName}
         $delete(): Promise<void>;
         // GET /overTheBox/{serviceName}
@@ -213,10 +216,10 @@ export interface OverTheBox{
         backups: {
             // GET /overTheBox/{serviceName}/backups
             $get(): Promise<string[]>;
-            [keys: string]:{
+            $(backupId: string): {
                 // GET /overTheBox/{serviceName}/backups/{backupId}
                 $get(): Promise<overTheBox.Backup>;
-            } | any
+            };
         }
         cancelResiliation: {
             // POST /overTheBox/{serviceName}/cancelResiliation
@@ -236,10 +239,10 @@ export interface OverTheBox{
                 $get(param?: {name?: string, status?: overTheBox.ActionStatusEnum}): Promise<string[]>;
                 // POST /overTheBox/{serviceName}/device/actions
                 $post(body?: {name: string}): Promise<overTheBox.DeviceAction>;
-                [keys: string]:{
+                $(actionId: string): {
                     // GET /overTheBox/{serviceName}/device/actions/{actionId}
                     $get(): Promise<overTheBox.DeviceAction>;
-                } | any
+                };
             }
             availableActions: {
                 // GET /overTheBox/{serviceName}/device/availableActions
@@ -273,7 +276,7 @@ export interface OverTheBox{
             $get(): Promise<string[]>;
             // POST /overTheBox/{serviceName}/remoteAccesses
             $post(body?: {allowedIp?: string, expirationDate?: string, exposedPort: number, publicKey?: string}): Promise<overTheBox.RemoteAccess>;
-            [keys: string]:{
+            $(remoteAccessId: string): {
                 // DELETE /overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}
                 $delete(): Promise<void>;
                 // GET /overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}
@@ -282,7 +285,7 @@ export interface OverTheBox{
                     // POST /overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize
                     $post(): Promise<void>;
                 }
-            } | any
+            };
         }
         serviceInfos: {
             // GET /overTheBox/{serviceName}/serviceInfos
@@ -293,12 +296,12 @@ export interface OverTheBox{
         tasks: {
             // GET /overTheBox/{serviceName}/tasks
             $get(param?: {name?: string, status?: overTheBox.TaskStatusEnum}): Promise<string[]>;
-            [keys: string]:{
+            $(taskId: string): {
                 // GET /overTheBox/{serviceName}/tasks/{taskId}
                 $get(): Promise<overTheBox.Task>;
-            } | any
+            };
         }
-    } | any
+    };
 }
 // Api
 type PathsOverTheBoxGET = '/overTheBox' |

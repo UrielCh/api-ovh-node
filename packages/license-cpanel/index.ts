@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace license {
     //license.ActionType
@@ -95,6 +95,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyLicenseCpanel(ovhEngine: OvhRequestable): License {
+    return buildOvhProxy(ovhEngine, '/license/cpanel');
+}
 // Apis harmony
 // path /license
 export interface License{
@@ -105,7 +108,7 @@ export interface License{
             // GET /license/cpanel/orderableVersions
             $get(param?: {ip: string}): Promise<license.CpanelOrderConfiguration[]>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /license/cpanel/{serviceName}
             $get(): Promise<license.cpanel.Cpanel>;
             // PUT /license/cpanel/{serviceName}
@@ -135,16 +138,16 @@ export interface License{
             tasks: {
                 // GET /license/cpanel/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /license/cpanel/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
-                } | any
+                };
             }
             terminate: {
                 // POST /license/cpanel/{serviceName}/terminate
                 $post(): Promise<string>;
             }
-        } | any
+        };
     }
 }
 // Api

@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace cdnanycast {
     //cdnanycast.Anycast
@@ -136,6 +136,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyCdnDedicated(ovhEngine: OvhRequestable): Cdn {
+    return buildOvhProxy(ovhEngine, '/cdn/dedicated');
+}
 // Apis harmony
 // path /cdn
 export interface Cdn{
@@ -145,12 +148,12 @@ export interface Cdn{
         pops: {
             // GET /cdn/dedicated/pops
             $get(): Promise<string[]>;
-            [keys: string]:{
+            $(name: string): {
                 // GET /cdn/dedicated/pops/{name}
                 $get(): Promise<cdnanycast.Pop>;
-            } | any
+            };
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /cdn/dedicated/{serviceName}
             $get(): Promise<cdnanycast.Anycast>;
             changeContact: {
@@ -162,7 +165,7 @@ export interface Cdn{
                 $get(): Promise<string[]>;
                 // POST /cdn/dedicated/{serviceName}/domains
                 $post(body?: {domain: string}): Promise<cdnanycast.Domain>;
-                [keys: string]:{
+                $(domain: string): {
                     // DELETE /cdn/dedicated/{serviceName}/domains/{domain}
                     $delete(): Promise<cdnanycast.Task>;
                     // GET /cdn/dedicated/{serviceName}/domains/{domain}
@@ -174,19 +177,19 @@ export interface Cdn{
                         $get(): Promise<string[]>;
                         // POST /cdn/dedicated/{serviceName}/domains/{domain}/backends
                         $post(body?: {ip: string}): Promise<cdnanycast.Backend>;
-                        [keys: string]:{
+                        $(ip: string): {
                             // DELETE /cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}
                             $delete(): Promise<string>;
                             // GET /cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}
                             $get(): Promise<cdnanycast.Backend>;
-                        } | any
+                        };
                     }
                     cacheRules: {
                         // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
                         $get(param?: {fileMatch?: string}): Promise<number[]>;
                         // POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
                         $post(body?: {cacheType: cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: cdnanycast.CacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
-                        [keys: string]:{
+                        $(cacheRuleId: number): {
                             // DELETE /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
                             $delete(): Promise<cdnanycast.Task>;
                             // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
@@ -200,12 +203,12 @@ export interface Cdn{
                             tasks: {
                                 // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks
                                 $get(): Promise<number[]>;
-                                [keys: string]:{
+                                $(taskId: number): {
                                     // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/tasks/{taskId}
                                     $get(): Promise<cdnanycast.Task>;
-                                } | any
+                                };
                             }
-                        } | any
+                        };
                     }
                     flush: {
                         // POST /cdn/dedicated/{serviceName}/domains/{domain}/flush
@@ -222,12 +225,12 @@ export interface Cdn{
                     tasks: {
                         // GET /cdn/dedicated/{serviceName}/domains/{domain}/tasks
                         $get(): Promise<number[]>;
-                        [keys: string]:{
+                        $(taskId: number): {
                             // GET /cdn/dedicated/{serviceName}/domains/{domain}/tasks/{taskId}
                             $get(): Promise<cdnanycast.Task>;
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
             logs: {
                 // POST /cdn/dedicated/{serviceName}/logs
@@ -253,17 +256,17 @@ export interface Cdn{
                 tasks: {
                     // GET /cdn/dedicated/{serviceName}/ssl/tasks
                     $get(param?: {function_?: cdnanycast.TaskFunctionEnum, status?: cdnanycast.TaskStateEnum}): Promise<number[]>;
-                    [keys: string]:{
+                    $(taskId: number): {
                         // GET /cdn/dedicated/{serviceName}/ssl/tasks/{taskId}
                         $get(): Promise<cdnanycast.Task>;
-                    } | any
+                    };
                 }
                 update: {
                     // POST /cdn/dedicated/{serviceName}/ssl/update
                     $post(body?: {certificate: string, chain?: string, key: string}): Promise<cdnanycast.Task>;
                 }
             }
-        } | any
+        };
     }
 }
 // Api

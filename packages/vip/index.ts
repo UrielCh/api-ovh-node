@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace service {
     //service.RenewType
@@ -44,12 +44,15 @@ export namespace vip {
     //vip.UniverseEnum
     export type UniverseEnum = "cloud" | "dedicated" | "telecom" | "web"
 }
+export function proxyVip(ovhEngine: OvhRequestable): Vip {
+    return buildOvhProxy(ovhEngine, '/vip');
+}
 // Apis harmony
 // path /vip
 export interface Vip{
     // GET /vip
     $get(): Promise<string[]>;
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /vip/{serviceName}
         $get(): Promise<vip.SupportVip>;
         serviceInfos: {
@@ -58,7 +61,7 @@ export interface Vip{
             // PUT /vip/{serviceName}/serviceInfos
             $put(body?: {body: services.Service}): Promise<void>;
         }
-    } | any
+    };
 }
 // Api
 type PathsVipGET = '/vip' |

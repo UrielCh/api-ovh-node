@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace connectivity {
     //connectivity.OperatorEnum
@@ -218,6 +218,9 @@ export namespace xdsl {
     }
     //xdsl.AsyncTaskStatusEnum
     export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
+}
+export function proxyConnectivity(ovhEngine: OvhRequestable): Connectivity {
+    return buildOvhProxy(ovhEngine, '/connectivity');
 }
 // Apis harmony
 // path /connectivity

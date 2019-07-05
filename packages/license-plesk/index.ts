@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace license {
     //license.ActionType
@@ -128,6 +128,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyLicensePlesk(ovhEngine: OvhRequestable): License {
+    return buildOvhProxy(ovhEngine, '/license/plesk');
+}
 // Apis harmony
 // path /license
 export interface License{
@@ -138,7 +141,7 @@ export interface License{
             // GET /license/plesk/orderableVersions
             $get(param?: {ip: string}): Promise<license.PleskOrderConfiguration[]>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /license/plesk/{serviceName}
             $get(): Promise<license.plesk.Plesk>;
             // PUT /license/plesk/{serviceName}
@@ -162,12 +165,12 @@ export interface License{
             option: {
                 // GET /license/plesk/{serviceName}/option
                 $get(): Promise<license.OptionLabel[]>;
-                [keys: string]:{
+                $(label: license.OptionLabel): {
                     // DELETE /license/plesk/{serviceName}/option/{label}
                     $delete(): Promise<license.Task>;
                     // GET /license/plesk/{serviceName}/option/{label}
                     $get(): Promise<license.Option>;
-                } | any
+                };
             }
             serviceInfos: {
                 // GET /license/plesk/{serviceName}/serviceInfos
@@ -178,16 +181,16 @@ export interface License{
             tasks: {
                 // GET /license/plesk/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /license/plesk/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
-                } | any
+                };
             }
             terminate: {
                 // POST /license/plesk/{serviceName}/terminate
                 $post(): Promise<string>;
             }
-        } | any
+        };
     }
 }
 // Api

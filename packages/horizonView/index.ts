@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace horizonView {
     //horizonView.AccessPointTypeEnum
@@ -134,12 +134,15 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyHorizonView(ovhEngine: OvhRequestable): HorizonView {
+    return buildOvhProxy(ovhEngine, '/horizonView');
+}
 // Apis harmony
 // path /horizonView
 export interface HorizonView{
     // GET /horizonView
     $get(): Promise<string[]>;
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /horizonView/{serviceName}
         $get(): Promise<horizonView.Datacenter>;
         accessPoint: {
@@ -147,7 +150,7 @@ export interface HorizonView{
             $get(): Promise<number[]>;
             // POST /horizonView/{serviceName}/accessPoint
             $post(body?: {poolType: horizonView.PoolType, privateBlock?: string, privateVlan?: number, vrouterPoolPublicIp?: string}): Promise<horizonView.Task[]>;
-            [keys: string]:{
+            $(accessPointId: number): {
                 // DELETE /horizonView/{serviceName}/accessPoint/{accessPointId}
                 $delete(): Promise<horizonView.Task[]>;
                 // GET /horizonView/{serviceName}/accessPoint/{accessPointId}
@@ -161,12 +164,12 @@ export interface HorizonView{
                     $get(): Promise<number[]>;
                     // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork
                     $post(body?: {network: string}): Promise<horizonView.Task[]>;
-                    [keys: string]:{
+                    $(customerNetworkId: number): {
                         // DELETE /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}
                         $delete(): Promise<horizonView.Task[]>;
                         // GET /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}
                         $get(): Promise<horizonView.CustomerNetworkPool>;
-                    } | any
+                    };
                 }
                 disableTwoFA: {
                     // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA
@@ -184,7 +187,7 @@ export interface HorizonView{
                     // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption
                     $post(body?: {onSingleAP?: horizonView.AccessPointTypeEnum}): Promise<horizonView.Task>;
                 }
-            } | any
+            };
         }
         confirmTermination: {
             // POST /horizonView/{serviceName}/confirmTermination
@@ -195,12 +198,12 @@ export interface HorizonView{
             $get(): Promise<number[]>;
             // POST /horizonView/{serviceName}/customerNetwork
             $post(body?: {name: string, network: string}): Promise<horizonView.Task[]>;
-            [keys: string]:{
+            $(customerNetworkId: number): {
                 // DELETE /horizonView/{serviceName}/customerNetwork/{customerNetworkId}
                 $delete(): Promise<horizonView.Task[]>;
                 // GET /horizonView/{serviceName}/customerNetwork/{customerNetworkId}
                 $get(): Promise<horizonView.CustomerNetwork>;
-            } | any
+            };
         }
         dedicatedHorizon: {
             // GET /horizonView/{serviceName}/dedicatedHorizon
@@ -210,7 +213,7 @@ export interface HorizonView{
                 $get(): Promise<string[]>;
                 // POST /horizonView/{serviceName}/dedicatedHorizon/customerUser
                 $post(body?: {email?: string, password?: string, username: string}): Promise<horizonView.Task[]>;
-                [keys: string]:{
+                $(username: string): {
                     // DELETE /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
                     $delete(): Promise<horizonView.Task[]>;
                     // GET /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
@@ -219,7 +222,7 @@ export interface HorizonView{
                         // POST /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword
                         $post(body?: {password?: string}): Promise<horizonView.Task>;
                     }
-                } | any
+                };
             }
             disableStorageAccelerator: {
                 // POST /horizonView/{serviceName}/dedicatedHorizon/disableStorageAccelerator
@@ -232,10 +235,10 @@ export interface HorizonView{
             task: {
                 // GET /horizonView/{serviceName}/dedicatedHorizon/task
                 $get(param?: {state?: horizonView.TaskStateEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /horizonView/{serviceName}/dedicatedHorizon/task/{taskId}
                     $get(): Promise<horizonView.Task>;
-                } | any
+                };
             }
             user: {
                 // GET /horizonView/{serviceName}/dedicatedHorizon/user
@@ -255,7 +258,7 @@ export interface HorizonView{
             $get(): Promise<number[]>;
             // POST /horizonView/{serviceName}/domainTrust
             $post(body?: {activeDirectoryIP: string, dns1?: string, dns2?: string, domain: string}): Promise<horizonView.Task[]>;
-            [keys: string]:{
+            $(domainTrustId: number): {
                 // GET /horizonView/{serviceName}/domainTrust/{domainTrustId}
                 $get(): Promise<horizonView.DomainTrust>;
                 addChildDomain: {
@@ -274,7 +277,7 @@ export interface HorizonView{
                     // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust
                     $post(body?: {passphrase: string, serviceAccountPassword: string}): Promise<horizonView.Task>;
                 }
-            } | any
+            };
         }
         serviceInfos: {
             // GET /horizonView/{serviceName}/serviceInfos
@@ -286,7 +289,7 @@ export interface HorizonView{
             // POST /horizonView/{serviceName}/terminate
             $post(): Promise<string>;
         }
-    } | any
+    };
 }
 // Api
 type PathsHorizonViewGET = '/horizonView' |

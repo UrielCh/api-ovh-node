@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace service {
     //service.RenewType
@@ -71,12 +71,15 @@ export namespace ssl {
     //ssl.OperationStatusEnum
     export type OperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
 }
+export function proxySsl(ovhEngine: OvhRequestable): Ssl {
+    return buildOvhProxy(ovhEngine, '/ssl');
+}
 // Apis harmony
 // path /ssl
 export interface Ssl{
     // GET /ssl
     $get(): Promise<string[]>;
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /ssl/{serviceName}
         $get(): Promise<ssl.Certificate>;
         serviceInfos: {
@@ -88,12 +91,12 @@ export interface Ssl{
         tasks: {
             // GET /ssl/{serviceName}/tasks
             $get(): Promise<number[]>;
-            [keys: string]:{
+            $(taskId: number): {
                 // GET /ssl/{serviceName}/tasks/{taskId}
                 $get(): Promise<ssl.Operation>;
-            } | any
+            };
         }
-    } | any
+    };
 }
 // Api
 type PathsSslGET = '/ssl' |

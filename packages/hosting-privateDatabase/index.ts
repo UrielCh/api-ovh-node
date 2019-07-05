@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.SafeKeyValue
@@ -270,6 +270,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyHostingPrivateDatabase(ovhEngine: OvhRequestable): Hosting {
+    return buildOvhProxy(ovhEngine, '/hosting/privateDatabase');
+}
 // Apis harmony
 // path /hosting
 export interface Hosting{
@@ -280,7 +283,7 @@ export interface Hosting{
             // GET /hosting/privateDatabase/availableOrderCapacities
             $get(param?: {offer: hosting.PrivateDatabase.OfferEnum}): Promise<hosting.PrivateDatabase.AvailableOrderCapacities>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /hosting/privateDatabase/{serviceName}
             $get(): Promise<hosting.privateDatabase.Service>;
             // PUT /hosting/privateDatabase/{serviceName}
@@ -318,7 +321,7 @@ export interface Hosting{
                 $get(): Promise<string[]>;
                 // POST /hosting/privateDatabase/{serviceName}/database
                 $post(body?: {databaseName: string}): Promise<hosting.privateDatabase.task>;
-                [keys: string]:{
+                $(databaseName: string): {
                     // DELETE /hosting/privateDatabase/{serviceName}/database/{databaseName}
                     $delete(): Promise<hosting.privateDatabase.task>;
                     // GET /hosting/privateDatabase/{serviceName}/database/{databaseName}
@@ -328,7 +331,7 @@ export interface Hosting{
                         $get(param?: {creationDate?: string, deletionDate?: string}): Promise<number[]>;
                         // POST /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump
                         $post(body?: {sendEmail?: boolean}): Promise<hosting.privateDatabase.task>;
-                        [keys: string]:{
+                        $(id: number): {
                             // DELETE /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}
                             $delete(): Promise<hosting.privateDatabase.task>;
                             // GET /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}
@@ -337,12 +340,12 @@ export interface Hosting{
                                 // POST /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore
                                 $post(): Promise<hosting.privateDatabase.task>;
                             }
-                        } | any
+                        };
                     }
                     extension: {
                         // GET /hosting/privateDatabase/{serviceName}/database/{databaseName}/extension
                         $get(param?: {extensionName?: string, status?: hosting.PrivateDatabase.Database.Extension.Status}): Promise<string[]>;
-                        [keys: string]:{
+                        $(extensionName: string): {
                             // GET /hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}
                             $get(): Promise<hosting.privateDatabase.database_extension>;
                             disable: {
@@ -353,13 +356,13 @@ export interface Hosting{
                                 // POST /hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/enable
                                 $post(): Promise<hosting.privateDatabase.task>;
                             }
-                        } | any
+                        };
                     }
                     import: {
                         // POST /hosting/privateDatabase/{serviceName}/database/{databaseName}/import
                         $post(body?: {documentId: string, flushDatabase?: boolean, sendEmail?: boolean}): Promise<hosting.privateDatabase.task>;
                     }
-                } | any
+                };
             }
             databaseWizard: {
                 // POST /hosting/privateDatabase/{serviceName}/databaseWizard
@@ -368,7 +371,7 @@ export interface Hosting{
             dump: {
                 // GET /hosting/privateDatabase/{serviceName}/dump
                 $get(param?: {databaseName?: string, orphan?: boolean}): Promise<number[]>;
-                [keys: string]:{
+                $(dumpId: number): {
                     // DELETE /hosting/privateDatabase/{serviceName}/dump/{dumpId}
                     $delete(): Promise<hosting.privateDatabase.task>;
                     // GET /hosting/privateDatabase/{serviceName}/dump/{dumpId}
@@ -377,7 +380,7 @@ export interface Hosting{
                         // POST /hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore
                         $post(body?: {databaseName: string}): Promise<hosting.privateDatabase.task>;
                     }
-                } | any
+                };
             }
             generateTemporaryLogsLink: {
                 // POST /hosting/privateDatabase/{serviceName}/generateTemporaryLogsLink
@@ -412,10 +415,10 @@ export interface Hosting{
             tasks: {
                 // GET /hosting/privateDatabase/{serviceName}/tasks
                 $get(param?: {function_?: hosting.PrivateDatabase.task.FunctionEnum, status?: hosting.PrivateDatabase.task.StatusEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /hosting/privateDatabase/{serviceName}/tasks/{id}
                     $get(): Promise<hosting.privateDatabase.task>;
-                } | any
+                };
             }
             terminate: {
                 // POST /hosting/privateDatabase/{serviceName}/terminate
@@ -426,7 +429,7 @@ export interface Hosting{
                 $get(): Promise<string[]>;
                 // POST /hosting/privateDatabase/{serviceName}/user
                 $post(body?: {password: string, userName: string}): Promise<hosting.privateDatabase.task>;
-                [keys: string]:{
+                $(userName: string): {
                     // DELETE /hosting/privateDatabase/{serviceName}/user/{userName}
                     $delete(): Promise<hosting.privateDatabase.task>;
                     // GET /hosting/privateDatabase/{serviceName}/user/{userName}
@@ -440,7 +443,7 @@ export interface Hosting{
                         $get(): Promise<string[]>;
                         // POST /hosting/privateDatabase/{serviceName}/user/{userName}/grant
                         $post(body?: {databaseName: string, grant: hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
-                        [keys: string]:{
+                        $(databaseName: string): {
                             // DELETE /hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}
                             $delete(): Promise<hosting.privateDatabase.task>;
                             // GET /hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}
@@ -449,9 +452,9 @@ export interface Hosting{
                                 // POST /hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update
                                 $post(body?: {grant: hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
                             }
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
             webs: {
                 // GET /hosting/privateDatabase/{serviceName}/webs
@@ -462,16 +465,16 @@ export interface Hosting{
                 $get(param?: {ip?: string, service?: boolean, sftp?: boolean}): Promise<string[]>;
                 // POST /hosting/privateDatabase/{serviceName}/whitelist
                 $post(body?: {ip: string, name?: string, service?: boolean, sftp?: boolean}): Promise<hosting.privateDatabase.task>;
-                [keys: string]:{
+                $(ip: string): {
                     // DELETE /hosting/privateDatabase/{serviceName}/whitelist/{ip}
                     $delete(): Promise<hosting.privateDatabase.task>;
                     // GET /hosting/privateDatabase/{serviceName}/whitelist/{ip}
                     $get(): Promise<hosting.privateDatabase.whitelist>;
                     // PUT /hosting/privateDatabase/{serviceName}/whitelist/{ip}
                     $put(body?: {body: hosting.privateDatabase.whitelist}): Promise<void>;
-                } | any
+                };
             }
-        } | any
+        };
     }
 }
 // Api

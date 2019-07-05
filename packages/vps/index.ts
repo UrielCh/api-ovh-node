@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.UnitAndValue
@@ -369,6 +369,9 @@ export namespace vps {
         export type StateEnum = "mounted" | "restoring" | "unmounted" | "unmounting"
     }
 }
+export function proxyVps(ovhEngine: OvhRequestable): Vps {
+    return buildOvhProxy(ovhEngine, '/vps');
+}
 // Apis harmony
 // path /vps
 export interface Vps{
@@ -378,7 +381,7 @@ export interface Vps{
         // GET /vps/datacenter
         $get(param?: {country: nichandle.CountryEnum}): Promise<string[]>;
     }
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /vps/{serviceName}
         $get(): Promise<vps.VPS>;
         // PUT /vps/{serviceName}
@@ -419,14 +422,14 @@ export interface Vps{
                 $get(): Promise<string[]>;
                 // POST /vps/{serviceName}/backupftp/access
                 $post(body?: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
-                [keys: string]:{
+                $(ipBlock: string): {
                     // DELETE /vps/{serviceName}/backupftp/access/{ipBlock}
                     $delete(): Promise<dedicated.server.Task>;
                     // GET /vps/{serviceName}/backupftp/access/{ipBlock}
                     $get(): Promise<dedicated.server.BackupFtpAcl>;
                     // PUT /vps/{serviceName}/backupftp/access/{ipBlock}
                     $put(body?: {body: dedicated.server.BackupFtpAcl}): Promise<void>;
-                } | any
+                };
             }
             authorizableBlocks: {
                 // GET /vps/{serviceName}/backupftp/authorizableBlocks
@@ -456,7 +459,7 @@ export interface Vps{
         disks: {
             // GET /vps/{serviceName}/disks
             $get(): Promise<number[]>;
-            [keys: string]:{
+            $(id: number): {
                 // GET /vps/{serviceName}/disks/{id}
                 $get(): Promise<vps.Disk>;
                 // PUT /vps/{serviceName}/disks/{id}
@@ -469,7 +472,7 @@ export interface Vps{
                     // GET /vps/{serviceName}/disks/{id}/use
                     $get(param?: {type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
                 }
-            } | any
+            };
         }
         distribution: {
             // GET /vps/{serviceName}/distribution
@@ -477,10 +480,10 @@ export interface Vps{
             software: {
                 // GET /vps/{serviceName}/distribution/software
                 $get(): Promise<number[]>;
-                [keys: string]:{
+                $(softwareId: number): {
                     // GET /vps/{serviceName}/distribution/software/{softwareId}
                     $get(): Promise<vps.Software>;
-                } | any
+                };
             }
         }
         getConsoleUrl: {
@@ -494,14 +497,14 @@ export interface Vps{
         ips: {
             // GET /vps/{serviceName}/ips
             $get(): Promise<string[]>;
-            [keys: string]:{
+            $(ipAddress: string): {
                 // DELETE /vps/{serviceName}/ips/{ipAddress}
                 $delete(): Promise<void>;
                 // GET /vps/{serviceName}/ips/{ipAddress}
                 $get(): Promise<vps.Ip>;
                 // PUT /vps/{serviceName}/ips/{ipAddress}
                 $put(body?: {body: vps.Ip}): Promise<void>;
-            } | any
+            };
         }
         models: {
             // GET /vps/{serviceName}/models
@@ -518,12 +521,12 @@ export interface Vps{
         option: {
             // GET /vps/{serviceName}/option
             $get(): Promise<vps.VpsOptionEnum[]>;
-            [keys: string]:{
+            $(option: vps.VpsOptionEnum): {
                 // DELETE /vps/{serviceName}/option/{option}
                 $delete(): Promise<void>;
                 // GET /vps/{serviceName}/option/{option}
                 $get(): Promise<vps.Option>;
-            } | any
+            };
         }
         reboot: {
             // POST /vps/{serviceName}/reboot
@@ -538,7 +541,7 @@ export interface Vps{
             $get(): Promise<string[]>;
             // POST /vps/{serviceName}/secondaryDnsDomains
             $post(body?: {domain: string, ip?: string}): Promise<void>;
-            [keys: string]:{
+            $(domain: string): {
                 // DELETE /vps/{serviceName}/secondaryDnsDomains/{domain}
                 $delete(): Promise<void>;
                 // GET /vps/{serviceName}/secondaryDnsDomains/{domain}
@@ -549,7 +552,7 @@ export interface Vps{
                     // GET /vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer
                     $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
                 }
-            } | any
+            };
         }
         secondaryDnsNameServerAvailable: {
             // GET /vps/{serviceName}/secondaryDnsNameServerAvailable
@@ -592,26 +595,26 @@ export interface Vps{
         tasks: {
             // GET /vps/{serviceName}/tasks
             $get(param?: {state?: vps.TaskStateEnum, type?: vps.TaskTypeEnum}): Promise<number[]>;
-            [keys: string]:{
+            $(id: number): {
                 // GET /vps/{serviceName}/tasks/{id}
                 $get(): Promise<vps.Task>;
-            } | any
+            };
         }
         templates: {
             // GET /vps/{serviceName}/templates
             $get(): Promise<number[]>;
-            [keys: string]:{
+            $(id: number): {
                 // GET /vps/{serviceName}/templates/{id}
                 $get(): Promise<vps.Template>;
                 software: {
                     // GET /vps/{serviceName}/templates/{id}/software
                     $get(): Promise<number[]>;
-                    [keys: string]:{
+                    $(softwareId: number): {
                         // GET /vps/{serviceName}/templates/{id}/software/{softwareId}
                         $get(): Promise<vps.Software>;
-                    } | any
+                    };
                 }
-            } | any
+            };
         }
         terminate: {
             // POST /vps/{serviceName}/terminate
@@ -627,14 +630,14 @@ export interface Vps{
             restorePoints: {
                 // GET /vps/{serviceName}/veeam/restorePoints
                 $get(param?: {creationTime?: string}): Promise<number[]>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /vps/{serviceName}/veeam/restorePoints/{id}
                     $get(): Promise<vps.veeam.RestorePoint>;
                     restore: {
                         // POST /vps/{serviceName}/veeam/restorePoints/{id}/restore
                         $post(body?: {changePassword?: boolean, export?: vps.veeam.ExportTypeEnum, full: boolean}): Promise<vps.Task>;
                     }
-                } | any
+                };
             }
             restoredBackup: {
                 // DELETE /vps/{serviceName}/veeam/restoredBackup
@@ -643,7 +646,7 @@ export interface Vps{
                 $get(): Promise<vps.veeam.RestoredBackup>;
             }
         }
-    } | any
+    };
 }
 // Api
 type PathsVpsGET = '/vps' |

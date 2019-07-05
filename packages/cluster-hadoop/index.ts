@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace cluster {
     export namespace hadoop {
@@ -137,6 +137,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyClusterHadoop(ovhEngine: OvhRequestable): Cluster {
+    return buildOvhProxy(ovhEngine, '/cluster/hadoop');
+}
 // Apis harmony
 // path /cluster
 export interface Cluster{
@@ -151,7 +154,7 @@ export interface Cluster{
             // GET /cluster/hadoop/orderableNodeProfiles
             $get(): Promise<cluster.hadoop.NodeBillingProfile[]>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /cluster/hadoop/{serviceName}
             $get(): Promise<cluster.hadoop.hadoop>;
             consumptions: {
@@ -163,19 +166,19 @@ export interface Cluster{
                 $get(): Promise<string[]>;
                 // POST /cluster/hadoop/{serviceName}/networkAcl
                 $post(body?: {block?: string, description?: string}): Promise<cluster.hadoop.Task>;
-                [keys: string]:{
+                $(block: string): {
                     // DELETE /cluster/hadoop/{serviceName}/networkAcl/{block}
                     $delete(): Promise<cluster.hadoop.Task>;
                     // GET /cluster/hadoop/{serviceName}/networkAcl/{block}
                     $get(): Promise<cluster.hadoop.NetworkAcl>;
                     // PUT /cluster/hadoop/{serviceName}/networkAcl/{block}
                     $put(body?: {body: cluster.hadoop.NetworkAcl}): Promise<void>;
-                } | any
+                };
             }
             node: {
                 // GET /cluster/hadoop/{serviceName}/node
                 $get(param?: {softwareProfile?: cluster.hadoop.NodeProfileEnum}): Promise<string[]>;
-                [keys: string]:{
+                $(hostname: string): {
                     // DELETE /cluster/hadoop/{serviceName}/node/{hostname}
                     $delete(): Promise<cluster.hadoop.Task>;
                     // GET /cluster/hadoop/{serviceName}/node/{hostname}
@@ -193,7 +196,7 @@ export interface Cluster{
                         $get(): Promise<cluster.hadoop.RoleTypeEnum[]>;
                         // POST /cluster/hadoop/{serviceName}/node/{hostname}/role
                         $post(body?: {type: cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
-                        [keys: string]:{
+                        $(type: cluster.hadoop.RoleTypeEnum): {
                             // DELETE /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
                             $delete(): Promise<cluster.hadoop.Task>;
                             // GET /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
@@ -210,9 +213,9 @@ export interface Cluster{
                                 // POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop
                                 $post(): Promise<cluster.hadoop.Task>;
                             }
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
             nodeBillingProfiles: {
                 // GET /cluster/hadoop/{serviceName}/nodeBillingProfiles
@@ -265,10 +268,10 @@ export interface Cluster{
             task: {
                 // GET /cluster/hadoop/{serviceName}/task
                 $get(param?: {status?: cluster.hadoop.OperationStateEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /cluster/hadoop/{serviceName}/task/{taskId}
                     $get(): Promise<cluster.hadoop.Task>;
-                } | any
+                };
             }
             terminate: {
                 // POST /cluster/hadoop/{serviceName}/terminate
@@ -279,7 +282,7 @@ export interface Cluster{
                 $get(): Promise<string[]>;
                 // POST /cluster/hadoop/{serviceName}/user
                 $post(body?: {clouderaManager: boolean, httpFrontend: boolean, hue: boolean, password: string, username: string}): Promise<cluster.hadoop.Task>;
-                [keys: string]:{
+                $(username: string): {
                     // DELETE /cluster/hadoop/{serviceName}/user/{username}
                     $delete(): Promise<cluster.hadoop.Task>;
                     // GET /cluster/hadoop/{serviceName}/user/{username}
@@ -290,9 +293,9 @@ export interface Cluster{
                         // POST /cluster/hadoop/{serviceName}/user/{username}/resetPassword
                         $post(body?: {password: string}): Promise<cluster.hadoop.Task>;
                     }
-                } | any
+                };
             }
-        } | any
+        };
     }
 }
 // Api

@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace router {
     //router.Dnat
@@ -134,12 +134,15 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyRouter(ovhEngine: OvhRequestable): Router {
+    return buildOvhProxy(ovhEngine, '/router');
+}
 // Apis harmony
 // path /router
 export interface Router{
     // GET /router
     $get(): Promise<string[]>;
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /router/{serviceName}
         $get(): Promise<router.Router>;
         confirmTermination: {
@@ -151,21 +154,21 @@ export interface Router{
             $get(): Promise<string[]>;
             // POST /router/{serviceName}/network
             $post(body?: {description: string, ipNet: string, vlanTag?: number}): Promise<router.Task>;
-            [keys: string]:{
+            $(ipNet: string): {
                 // DELETE /router/{serviceName}/network/{ipNet}
                 $delete(): Promise<router.Task>;
                 // GET /router/{serviceName}/network/{ipNet}
                 $get(): Promise<router.Network>;
                 // PUT /router/{serviceName}/network/{ipNet}
                 $put(body?: {body: router.Network}): Promise<void>;
-            } | any
+            };
         }
         privateLink: {
             // GET /router/{serviceName}/privateLink
             $get(): Promise<string[]>;
             // POST /router/{serviceName}/privateLink
             $post(body?: {name: string, peerServiceName: string}): Promise<string>;
-            [keys: string]:{
+            $(peerServiceName: string): {
                 // DELETE /router/{serviceName}/privateLink/{peerServiceName}
                 $delete(): Promise<router.Task>;
                 // GET /router/{serviceName}/privateLink/{peerServiceName}
@@ -185,14 +188,14 @@ export interface Router{
                     $get(): Promise<string[]>;
                     // POST /router/{serviceName}/privateLink/{peerServiceName}/route
                     $post(body?: {network: string}): Promise<router.Task>;
-                    [keys: string]:{
+                    $(network: string): {
                         // DELETE /router/{serviceName}/privateLink/{peerServiceName}/route/{network}
                         $delete(): Promise<router.Task>;
                         // GET /router/{serviceName}/privateLink/{peerServiceName}/route/{network}
                         $get(): Promise<router.PrivateLinkRoute>;
-                    } | any
+                    };
                 }
-            } | any
+            };
         }
         serviceInfos: {
             // GET /router/{serviceName}/serviceInfos
@@ -203,10 +206,10 @@ export interface Router{
         task: {
             // GET /router/{serviceName}/task
             $get(param?: {function_?: router.TaskFunctionEnum, status?: router.TaskStatusEnum}): Promise<number[]>;
-            [keys: string]:{
+            $(id: number): {
                 // GET /router/{serviceName}/task/{id}
                 $get(): Promise<router.Task>;
-            } | any
+            };
         }
         terminate: {
             // POST /router/{serviceName}/terminate
@@ -217,7 +220,7 @@ export interface Router{
             $get(): Promise<number[]>;
             // POST /router/{serviceName}/vpn
             $post(body?: {clientIp?: string, clientPrivNet: string, psk: string, serverPrivNet: string}): Promise<router.Vpn>;
-            [keys: string]:{
+            $(id: number): {
                 // DELETE /router/{serviceName}/vpn/{id}
                 $delete(): Promise<router.Task>;
                 // GET /router/{serviceName}/vpn/{id}
@@ -228,9 +231,9 @@ export interface Router{
                     // POST /router/{serviceName}/vpn/{id}/setPsk
                     $post(body?: {psk: string}): Promise<router.Task>;
                 }
-            } | any
+            };
         }
-    } | any
+    };
 }
 // Api
 type PathsRouterGET = '/router' |

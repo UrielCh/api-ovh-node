@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace connectivity {
     export namespace eligibility {
@@ -447,13 +447,16 @@ export namespace xdsl {
         }
     }
 }
+export function proxyPackXdsl(ovhEngine: OvhRequestable): Pack {
+    return buildOvhProxy(ovhEngine, '/pack/xdsl');
+}
 // Apis harmony
 // path /pack
 export interface Pack{
     xdsl: {
         // GET /pack/xdsl
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(packName: string): {
             // GET /pack/xdsl/{packName}
             $get(): Promise<pack.xdsl.PackAdsl>;
             // PUT /pack/xdsl/{packName}
@@ -516,10 +519,10 @@ export interface Pack{
                 services: {
                     // GET /pack/xdsl/{packName}/exchangeAccount/services
                     $get(): Promise<string[]>;
-                    [keys: string]:{
+                    $(domain: string): {
                         // GET /pack/xdsl/{packName}/exchangeAccount/services/{domain}
                         $get(): Promise<pack.xdsl.ExchangeAccountService>;
-                    } | any
+                    };
                 }
             }
             exchangeIndividual: {
@@ -552,10 +555,10 @@ export interface Pack{
                     $get(): Promise<string[]>;
                     // POST /pack/xdsl/{packName}/exchangeLite/services
                     $post(body?: {antispam?: boolean, displayName?: string, email: string, firstName?: string, initials?: string, lastName?: string, password: string}): Promise<pack.xdsl.Task>;
-                    [keys: string]:{
+                    $(domain: string): {
                         // GET /pack/xdsl/{packName}/exchangeLite/services/{domain}
                         $get(): Promise<pack.xdsl.ExchangeLiteService>;
-                    } | any
+                    };
                 }
             }
             exchangeOrganization: {
@@ -582,14 +585,14 @@ export interface Pack{
                 services: {
                     // GET /pack/xdsl/{packName}/hubic/services
                     $get(): Promise<string[]>;
-                    [keys: string]:{
+                    $(domain: string): {
                         // GET /pack/xdsl/{packName}/hubic/services/{domain}
                         $get(): Promise<pack.xdsl.Hubic>;
                         details: {
                             // GET /pack/xdsl/{packName}/hubic/services/{domain}/details
                             $get(): Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
                         }
-                    } | any
+                    };
                 }
             }
             migration: {
@@ -681,22 +684,22 @@ export interface Pack{
             subServices: {
                 // GET /pack/xdsl/{packName}/subServices
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(domain: string): {
                     // GET /pack/xdsl/{packName}/subServices/{domain}
                     $get(): Promise<pack.xdsl.Service>;
                     keepServiceTerms: {
                         // GET /pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms
                         $get(): Promise<pack.xdsl.UnpackTerms>;
                     }
-                } | any
+                };
             }
             tasks: {
                 // GET /pack/xdsl/{packName}/tasks
                 $get(param?: {function_?: string, status?: pack.xdsl.TaskStatusEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /pack/xdsl/{packName}/tasks/{id}
                     $get(): Promise<pack.xdsl.Task>;
-                } | any
+                };
             }
             voipBillingAccount: {
                 services: {
@@ -732,10 +735,10 @@ export interface Pack{
                     $get(): Promise<string[]>;
                     // POST /pack/xdsl/{packName}/voipLine/services
                     $post(body?: {hardwareNames: string[], mondialRelayId?: string, shippingId?: string}): Promise<pack.xdsl.VoIPLineOrder>;
-                    [keys: string]:{
+                    $(domain: string): {
                         // GET /pack/xdsl/{packName}/voipLine/services/{domain}
                         $get(): Promise<pack.xdsl.VoipLineService>;
-                    } | any
+                    };
                 }
             }
             xdslAccess: {
@@ -744,7 +747,7 @@ export interface Pack{
                     $get(): Promise<string[]>;
                 }
             }
-        } | any
+        };
     }
 }
 // Api

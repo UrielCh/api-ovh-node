@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace license {
     //license.ActionType
@@ -99,6 +99,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyLicenseWindows(ovhEngine: OvhRequestable): License {
+    return buildOvhProxy(ovhEngine, '/license/windows');
+}
 // Apis harmony
 // path /license
 export interface License{
@@ -109,7 +112,7 @@ export interface License{
             // GET /license/windows/orderableVersions
             $get(param?: {ip: string}): Promise<license.WindowsOrderConfiguration[]>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /license/windows/{serviceName}
             $get(): Promise<license.windows.Windows>;
             // PUT /license/windows/{serviceName}
@@ -121,12 +124,12 @@ export interface License{
             option: {
                 // GET /license/windows/{serviceName}/option
                 $get(): Promise<license.OptionLabel[]>;
-                [keys: string]:{
+                $(label: license.OptionLabel): {
                     // DELETE /license/windows/{serviceName}/option/{label}
                     $delete(): Promise<license.Task>;
                     // GET /license/windows/{serviceName}/option/{label}
                     $get(): Promise<license.Option>;
-                } | any
+                };
             }
             serviceInfos: {
                 // GET /license/windows/{serviceName}/serviceInfos
@@ -141,16 +144,16 @@ export interface License{
             tasks: {
                 // GET /license/windows/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /license/windows/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
-                } | any
+                };
             }
             terminate: {
                 // POST /license/windows/{serviceName}/terminate
                 $post(): Promise<string>;
             }
-        } | any
+        };
     }
 }
 // Api

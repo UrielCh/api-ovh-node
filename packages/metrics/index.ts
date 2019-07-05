@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace metrics {
     export namespace api {
@@ -97,12 +97,15 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyMetrics(ovhEngine: OvhRequestable): Metrics {
+    return buildOvhProxy(ovhEngine, '/metrics');
+}
 // Apis harmony
 // path /metrics
 export interface Metrics{
     // GET /metrics
     $get(): Promise<string[]>;
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /metrics/{serviceName}
         $get(): Promise<metrics.api.Service>;
         // PUT /metrics/{serviceName}
@@ -144,16 +147,16 @@ export interface Metrics{
             $get(): Promise<string[]>;
             // POST /metrics/{serviceName}/token
             $post(body?: {description?: string, labels?: metrics.api.Label[], permission: metrics.api.PermissionEnum}): Promise<metrics.api.Token>;
-            [keys: string]:{
+            $(tokenId: string): {
                 // DELETE /metrics/{serviceName}/token/{tokenId}
                 $delete(): Promise<void>;
                 // GET /metrics/{serviceName}/token/{tokenId}
                 $get(): Promise<metrics.api.Token>;
                 // PUT /metrics/{serviceName}/token/{tokenId}
                 $put(body?: {description?: string}): Promise<metrics.api.Token>;
-            } | any
+            };
         }
-    } | any
+    };
 }
 // Api
 type PathsMetricsGET = '/metrics' |

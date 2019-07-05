@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace MarketPlace {
     //MarketPlace.Document
@@ -68,6 +68,9 @@ export namespace complexType {
         value: T;
     }
 }
+export function proxyStore(ovhEngine: OvhRequestable): Store {
+    return buildOvhProxy(ovhEngine, '/store');
+}
 // Apis harmony
 // path /store
 export interface Store{
@@ -76,7 +79,7 @@ export interface Store{
         $get(): Promise<MarketPlaceContact.Contact[]>;
         // POST /store/contact
         $post(body?: {city?: string, country?: string, email: string, firstname: string, lastname: string, phone?: string, province?: string, street?: string, title: string, zip?: string}): Promise<MarketPlaceContact.Contact>;
-        [keys: string]:{
+        $(contactId: string): {
             // DELETE /store/contact/{contactId}
             $delete(): Promise<string>;
             // GET /store/contact/{contactId}
@@ -88,12 +91,12 @@ export interface Store{
                 $get(): Promise<string[]>;
                 // POST /store/contact/{contactId}/document
                 $post(body?: {documentId: string}): Promise<string[]>;
-                [keys: string]:{
+                $(documentId: string): {
                     // DELETE /store/contact/{contactId}/document/{documentId}
                     $delete(): Promise<string[]>;
-                } | any
+                };
             }
-        } | any
+        };
     }
     document: {
         // GET /store/document
@@ -104,19 +107,19 @@ export interface Store{
             // POST /store/document/cors
             $post(body?: {origin: string}): Promise<void>;
         }
-        [keys: string]:{
+        $(documentId: string): {
             // DELETE /store/document/{documentId}
             $delete(): Promise<string>;
             // GET /store/document/{documentId}
             $get(): Promise<MarketPlace.Document>;
-        } | any
+        };
     }
     partner: {
         // GET /store/partner
         $get(): Promise<MarketPlace.Partner[]>;
         // POST /store/partner
         $post(body?: {category?: string, city: string, companyNationalIdentificationNumber?: string, contact?: string, country: string, description?: string, language?: string, legalForm: string, organisationDisplayName?: string, organisationName: string, otherDetails?: string, province: string, street: string, url?: string, vat?: string, zip: string}): Promise<MarketPlace.Partner>;
-        [keys: string]:{
+        $(partnerId: string): {
             // DELETE /store/partner/{partnerId}
             $delete(): Promise<string>;
             // GET /store/partner/{partnerId}
@@ -128,17 +131,17 @@ export interface Store{
                 $get(): Promise<string[]>;
                 // POST /store/partner/{partnerId}/document
                 $post(body?: {documentId: string}): Promise<string[]>;
-                [keys: string]:{
+                $(documentId: string): {
                     // DELETE /store/partner/{partnerId}/document/{documentId}
                     $delete(): Promise<string[]>;
-                } | any
+                };
             }
             product: {
                 // GET /store/partner/{partnerId}/product
                 $get(): Promise<MarketPlacePartnerProduct.edit_response[]>;
                 // POST /store/partner/{partnerId}/product
                 $post(body?: {category: string, description: string, name: string, otherDetails?: string}): Promise<MarketPlacePartnerProduct.edit_response>;
-                [keys: string]:{
+                $(productId: string): {
                     // DELETE /store/partner/{partnerId}/product/{productId}
                     $delete(): Promise<string>;
                     // GET /store/partner/{partnerId}/product/{productId}
@@ -150,14 +153,14 @@ export interface Store{
                         $get(): Promise<string[]>;
                         // POST /store/partner/{partnerId}/product/{productId}/document
                         $post(body?: {documentId: string}): Promise<string[]>;
-                        [keys: string]:{
+                        $(documentId: string): {
                             // DELETE /store/partner/{partnerId}/product/{productId}/document/{documentId}
                             $delete(): Promise<string[]>;
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
-        } | any
+        };
     }
 }
 // Api

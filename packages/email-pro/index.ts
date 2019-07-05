@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace email {
     export namespace pro {
@@ -228,13 +228,16 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyEmailPro(ovhEngine: OvhRequestable): Email {
+    return buildOvhProxy(ovhEngine, '/email/pro');
+}
 // Apis harmony
 // path /email
 export interface Email{
     pro: {
         // GET /email/pro
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(service: string): {
             // GET /email/pro/{service}
             $get(): Promise<email.pro.Service>;
             // PUT /email/pro/{service}
@@ -242,7 +245,7 @@ export interface Email{
             account: {
                 // GET /email/pro/{service}/account
                 $get(param?: {id?: number, primaryEmailAddress?: string}): Promise<string[]>;
-                [keys: string]:{
+                $(email: string): {
                     // DELETE /email/pro/{service}/account/{email}
                     $delete(): Promise<email.pro.Task>;
                     // GET /email/pro/{service}/account/{email}
@@ -254,12 +257,12 @@ export interface Email{
                         $get(): Promise<string[]>;
                         // POST /email/pro/{service}/account/{email}/alias
                         $post(body?: {alias: string}): Promise<email.pro.Task>;
-                        [keys: string]:{
+                        $(alias: string): {
                             // DELETE /email/pro/{service}/account/{email}/alias/{alias}
                             $delete(): Promise<email.pro.Task>;
                             // GET /email/pro/{service}/account/{email}/alias/{alias}
                             $get(): Promise<email.pro.AccountAlias>;
-                        } | any
+                        };
                     }
                     changePassword: {
                         // POST /email/pro/{service}/account/{email}/changePassword
@@ -276,50 +279,50 @@ export interface Email{
                         $get(): Promise<number[]>;
                         // POST /email/pro/{service}/account/{email}/fullAccess
                         $post(body?: {allowedAccountId: number}): Promise<email.pro.Task>;
-                        [keys: string]:{
+                        $(allowedAccountId: number): {
                             // DELETE /email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}
                             $delete(): Promise<email.pro.Task>;
                             // GET /email/pro/{service}/account/{email}/fullAccess/{allowedAccountId}
                             $get(): Promise<email.pro.AccountFullAccess>;
-                        } | any
+                        };
                     }
                     sendAs: {
                         // GET /email/pro/{service}/account/{email}/sendAs
                         $get(): Promise<number[]>;
                         // POST /email/pro/{service}/account/{email}/sendAs
                         $post(body?: {allowAccountId: number}): Promise<email.pro.Task>;
-                        [keys: string]:{
+                        $(allowedAccountId: number): {
                             // DELETE /email/pro/{service}/account/{email}/sendAs/{allowedAccountId}
                             $delete(): Promise<email.pro.Task>;
                             // GET /email/pro/{service}/account/{email}/sendAs/{allowedAccountId}
                             $get(): Promise<email.pro.AccountSendAs>;
-                        } | any
+                        };
                     }
                     sendOnBehalfTo: {
                         // GET /email/pro/{service}/account/{email}/sendOnBehalfTo
                         $get(): Promise<number[]>;
                         // POST /email/pro/{service}/account/{email}/sendOnBehalfTo
                         $post(body?: {allowAccountId: number}): Promise<email.pro.Task>;
-                        [keys: string]:{
+                        $(allowedAccountId: number): {
                             // DELETE /email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}
                             $delete(): Promise<email.pro.Task>;
                             // GET /email/pro/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}
                             $get(): Promise<email.pro.AccountSendOnBehalfTo>;
-                        } | any
+                        };
                     }
                     tasks: {
                         // GET /email/pro/{service}/account/{email}/tasks
                         $get(): Promise<number[]>;
-                        [keys: string]:{
+                        $(id: number): {
                             // GET /email/pro/{service}/account/{email}/tasks/{id}
                             $get(): Promise<email.pro.Task>;
-                        } | any
+                        };
                     }
                     terminate: {
                         // POST /email/pro/{service}/account/{email}/terminate
                         $post(): Promise<string>;
                     }
-                } | any
+                };
             }
             billingMigrated: {
                 // GET /email/pro/{service}/billingMigrated
@@ -334,7 +337,7 @@ export interface Email{
                 $get(param?: {state?: email.pro.ObjectStateEnum}): Promise<string[]>;
                 // POST /email/pro/{service}/domain
                 $post(body?: {configureAutodiscover?: boolean, configureMx?: boolean, mxRelay?: string, name: string, type: email.pro.DomainTypeEnum}): Promise<email.pro.Task>;
-                [keys: string]:{
+                $(domainName: string): {
                     // DELETE /email/pro/{service}/domain/{domainName}
                     $delete(): Promise<email.pro.Task>;
                     // GET /email/pro/{service}/domain/{domainName}
@@ -355,21 +358,21 @@ export interface Email{
                         // GET /email/pro/{service}/domain/{domainName}/disclaimerAttribute
                         $get(): Promise<email.pro.DisclaimerAttributeEnum[]>;
                     }
-                } | any
+                };
             }
             externalContact: {
                 // GET /email/pro/{service}/externalContact
                 $get(param?: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: number, lastName?: string}): Promise<string[]>;
                 // POST /email/pro/{service}/externalContact
                 $post(body?: {displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string}): Promise<email.pro.Task>;
-                [keys: string]:{
+                $(externalEmailAddress: string): {
                     // DELETE /email/pro/{service}/externalContact/{externalEmailAddress}
                     $delete(): Promise<email.pro.Task>;
                     // GET /email/pro/{service}/externalContact/{externalEmailAddress}
                     $get(): Promise<email.pro.ExternalContact>;
                     // PUT /email/pro/{service}/externalContact/{externalEmailAddress}
                     $put(body?: {body: email.pro.ExternalContact}): Promise<void>;
-                } | any
+                };
             }
             server: {
                 // GET /email/pro/{service}/server
@@ -384,16 +387,16 @@ export interface Email{
             task: {
                 // GET /email/pro/{service}/task
                 $get(): Promise<number[]>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /email/pro/{service}/task/{id}
                     $get(): Promise<email.pro.Task>;
-                } | any
+                };
             }
             updateFlagsOnAllAccounts: {
                 // POST /email/pro/{service}/updateFlagsOnAllAccounts
                 $post(): Promise<void>;
             }
-        } | any
+        };
     }
 }
 // Api

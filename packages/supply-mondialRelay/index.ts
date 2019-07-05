@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace coreTypes {
     //coreTypes.CountryEnum
@@ -60,6 +60,9 @@ export namespace supply {
     }
     //supply.Status
     export type Status = "error" | "ok" | "pending"
+}
+export function proxySupplyMondialRelay(ovhEngine: OvhRequestable): Supply {
+    return buildOvhProxy(ovhEngine, '/supply/mondialRelay');
 }
 // Apis harmony
 // path /supply

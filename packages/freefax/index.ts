@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace freefax {
     //freefax.BalanceInformations
@@ -98,6 +98,9 @@ export namespace telephony {
         unreadMessages: number;
     }
 }
+export function proxyFreefax(ovhEngine: OvhRequestable): Freefax {
+    return buildOvhProxy(ovhEngine, '/freefax');
+}
 // Apis harmony
 // path /freefax
 export interface Freefax{
@@ -107,7 +110,7 @@ export interface Freefax{
         // GET /freefax/credits
         $get(): Promise<freefax.BalanceInformations>;
     }
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /freefax/{serviceName}
         $get(): Promise<freefax.FreefaxProperties>;
         // PUT /freefax/{serviceName}
@@ -148,7 +151,7 @@ export interface Freefax{
                 $get(): Promise<telephony.VoicemailNumbers>;
             }
         }
-    } | any
+    };
 }
 // Api
 type PathsFreefaxGET = '/freefax' |

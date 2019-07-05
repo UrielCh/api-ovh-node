@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.UnitAndValue
@@ -166,6 +166,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyDedicatedNasha(ovhEngine: OvhRequestable): Dedicated {
+    return buildOvhProxy(ovhEngine, '/dedicated/nasha');
+}
 // Apis harmony
 // path /dedicated
 export interface Dedicated{
@@ -176,7 +179,7 @@ export interface Dedicated{
             // GET /dedicated/nasha/availabilities
             $get(): Promise<dedicated.NasHAAvailabilities[]>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /dedicated/nasha/{serviceName}
             $get(): Promise<dedicated.nasha.Storage>;
             // PUT /dedicated/nasha/{serviceName}
@@ -194,7 +197,7 @@ export interface Dedicated{
                 $get(): Promise<string[]>;
                 // POST /dedicated/nasha/{serviceName}/partition
                 $post(body?: {partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
-                [keys: string]:{
+                $(partitionName: string): {
                     // DELETE /dedicated/nasha/{serviceName}/partition/{partitionName}
                     $delete(): Promise<dedicated.nasTask.Task>;
                     // GET /dedicated/nasha/{serviceName}/partition/{partitionName}
@@ -206,12 +209,12 @@ export interface Dedicated{
                         $get(): Promise<string[]>;
                         // POST /dedicated/nasha/{serviceName}/partition/{partitionName}/access
                         $post(body?: {ip: string, type?: dedicated.storage.AclTypeEnum}): Promise<dedicated.nasTask.Task>;
-                        [keys: string]:{
+                        $(ip: string): {
                             // DELETE /dedicated/nasha/{serviceName}/partition/{partitionName}/access/{ip}
                             $delete(): Promise<dedicated.nasTask.Task>;
                             // GET /dedicated/nasha/{serviceName}/partition/{partitionName}/access/{ip}
                             $get(): Promise<dedicated.nasha.Access>;
-                        } | any
+                        };
                     }
                     authorizableBlocks: {
                         // GET /dedicated/nasha/{serviceName}/partition/{partitionName}/authorizableBlocks
@@ -226,12 +229,12 @@ export interface Dedicated{
                         $get(): Promise<string[]>;
                         // POST /dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot
                         $post(body?: {expiration?: string, name: string}): Promise<dedicated.nasTask.Task>;
-                        [keys: string]:{
+                        $(name: string): {
                             // DELETE /dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot/{name}
                             $delete(): Promise<dedicated.nasTask.Task>;
                             // GET /dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot/{name}
                             $get(): Promise<dedicated.nasha.customSnap>;
-                        } | any
+                        };
                     }
                     options: {
                         // GET /dedicated/nasha/{serviceName}/partition/{partitionName}/options
@@ -244,30 +247,30 @@ export interface Dedicated{
                         $get(): Promise<number[]>;
                         // POST /dedicated/nasha/{serviceName}/partition/{partitionName}/quota
                         $post(body?: {size: number, uid: number}): Promise<dedicated.nasTask.Task>;
-                        [keys: string]:{
+                        $(uid: number): {
                             // DELETE /dedicated/nasha/{serviceName}/partition/{partitionName}/quota/{uid}
                             $delete(): Promise<dedicated.nasTask.Task>;
                             // GET /dedicated/nasha/{serviceName}/partition/{partitionName}/quota/{uid}
                             $get(): Promise<dedicated.nasha.Quota>;
-                        } | any
+                        };
                     }
                     snapshot: {
                         // GET /dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot
                         $get(): Promise<dedicated.storage.SnapshotEnum[]>;
                         // POST /dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot
                         $post(body?: {snapshotType: dedicated.storage.SnapshotEnum}): Promise<dedicated.nasTask.Task>;
-                        [keys: string]:{
+                        $(snapshotType: dedicated.storage.SnapshotEnum): {
                             // DELETE /dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}
                             $delete(): Promise<dedicated.nasTask.Task>;
                             // GET /dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}
                             $get(): Promise<dedicated.nasha.Snapshot>;
-                        } | any
+                        };
                     }
                     use: {
                         // GET /dedicated/nasha/{serviceName}/partition/{partitionName}/use
                         $get(param?: {type: dedicated.storage.PartitionUsageTypeEnum}): Promise<complexType.UnitAndValue<number>>;
                     }
-                } | any
+                };
             }
             serviceInfos: {
                 // GET /dedicated/nasha/{serviceName}/serviceInfos
@@ -278,10 +281,10 @@ export interface Dedicated{
             task: {
                 // GET /dedicated/nasha/{serviceName}/task
                 $get(param?: {operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /dedicated/nasha/{serviceName}/task/{taskId}
                     $get(): Promise<dedicated.nasTask.Task>;
-                } | any
+                };
             }
             terminate: {
                 // POST /dedicated/nasha/{serviceName}/terminate
@@ -295,7 +298,7 @@ export interface Dedicated{
                 // DELETE /dedicated/nasha/{serviceName}/vrack
                 $delete(): Promise<dedicated.nasTask.Task>;
             }
-        } | any
+        };
     }
 }
 // Api

@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.UnitAndValue
@@ -66,21 +66,24 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyHpcspot(ovhEngine: OvhRequestable): Hpcspot {
+    return buildOvhProxy(ovhEngine, '/hpcspot');
+}
 // Apis harmony
 // path /hpcspot
 export interface Hpcspot{
     // GET /hpcspot
     $get(): Promise<string[]>;
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /hpcspot/{serviceName}
         $get(): Promise<hpcspot.Account>;
         consumption: {
             // GET /hpcspot/{serviceName}/consumption
             $get(param?: {hpcspotItemEndDate_from?: string, hpcspotItemEndDate_to?: string, hpcspotItemId?: number, orderId?: number, type?: hpcspot.ConsumptionTypeEnum}): Promise<number[]>;
-            [keys: string]:{
+            $(id: number): {
                 // GET /hpcspot/{serviceName}/consumption/{id}
                 $get(): Promise<hpcspot.Consumption>;
-            } | any
+            };
         }
         serviceInfos: {
             // GET /hpcspot/{serviceName}/serviceInfos
@@ -88,7 +91,7 @@ export interface Hpcspot{
             // PUT /hpcspot/{serviceName}/serviceInfos
             $put(body?: {body: services.Service}): Promise<void>;
         }
-    } | any
+    };
 }
 // Api
 type PathsHpcspotGET = '/hpcspot' |

@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace service {
     //service.RenewType
@@ -110,6 +110,9 @@ export namespace sslGateway {
     //sslGateway.TaskStatusEnum
     export type TaskStatusEnum = "blocked" | "cancelled" | "doing" | "done" | "error" | "paused" | "todo"
 }
+export function proxySslGateway(ovhEngine: OvhRequestable): SslGateway {
+    return buildOvhProxy(ovhEngine, '/sslGateway');
+}
 // Apis harmony
 // path /sslGateway
 export interface SslGateway{
@@ -123,7 +126,7 @@ export interface SslGateway{
         // GET /sslGateway/eligibility
         $get(param?: {domain: string}): Promise<sslGateway.EligibilityStatus>;
     }
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /sslGateway/{serviceName}
         $get(): Promise<sslGateway.SslGateway>;
         // PUT /sslGateway/{serviceName}
@@ -141,12 +144,12 @@ export interface SslGateway{
             $get(): Promise<number[]>;
             // POST /sslGateway/{serviceName}/domain
             $post(body?: {domain: string}): Promise<sslGateway.Domain>;
-            [keys: string]:{
+            $(id: number): {
                 // DELETE /sslGateway/{serviceName}/domain/{id}
                 $delete(): Promise<void>;
                 // GET /sslGateway/{serviceName}/domain/{id}
                 $get(): Promise<sslGateway.Domain>;
-            } | any
+            };
         }
         natIp: {
             // GET /sslGateway/{serviceName}/natIp
@@ -161,14 +164,14 @@ export interface SslGateway{
             $get(): Promise<number[]>;
             // POST /sslGateway/{serviceName}/server
             $post(body?: {address: string, port: number}): Promise<sslGateway.Server>;
-            [keys: string]:{
+            $(id: number): {
                 // DELETE /sslGateway/{serviceName}/server/{id}
                 $delete(): Promise<void>;
                 // GET /sslGateway/{serviceName}/server/{id}
                 $get(): Promise<sslGateway.Server>;
                 // PUT /sslGateway/{serviceName}/server/{id}
                 $put(body?: {body: sslGateway.Server}): Promise<void>;
-            } | any
+            };
         }
         serviceInfos: {
             // GET /sslGateway/{serviceName}/serviceInfos
@@ -179,16 +182,16 @@ export interface SslGateway{
         task: {
             // GET /sslGateway/{serviceName}/task
             $get(): Promise<number[]>;
-            [keys: string]:{
+            $(id: number): {
                 // GET /sslGateway/{serviceName}/task/{id}
                 $get(): Promise<sslGateway.Task>;
-            } | any
+            };
         }
         terminate: {
             // POST /sslGateway/{serviceName}/terminate
             $post(): Promise<string>;
         }
-    } | any
+    };
 }
 // Api
 type PathsSslGatewayGET = '/sslGateway' |

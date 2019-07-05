@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace dedicated {
     export namespace ceph {
@@ -53,10 +53,12 @@ export namespace dedicated {
         //dedicated.ceph.response
         // fullName: dedicated.ceph.response.response
         export interface response {
-            family: dedicated.ceph.aclList.response.familyEnum;
-            id: number;
-            netmask: string;
-            network: string;
+            key: string;
+            mdsCaps: string;
+            monCaps: string;
+            name: string;
+            osdCaps: string;
+            serviceName: string;
         }
         export namespace taskGet {
             export namespace response {
@@ -104,13 +106,16 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyDedicatedCeph(ovhEngine: OvhRequestable): Dedicated {
+    return buildOvhProxy(ovhEngine, '/dedicated/ceph');
+}
 // Apis harmony
 // path /dedicated
 export interface Dedicated{
     ceph: {
         // GET /dedicated/ceph
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /dedicated/ceph/{serviceName}
             $get(): Promise<dedicated.ceph.response>;
             // PUT /dedicated/ceph/{serviceName}
@@ -120,12 +125,12 @@ export interface Dedicated{
                 $get(): Promise<dedicated.ceph.response[]>;
                 // POST /dedicated/ceph/{serviceName}/acl
                 $post(body?: {aclList: string[]}): Promise<string>;
-                [keys: string]:{
+                $(aclId: string): {
                     // DELETE /dedicated/ceph/{serviceName}/acl/{aclId}
                     $delete(): Promise<string>;
                     // GET /dedicated/ceph/{serviceName}/acl/{aclId}
                     $get(): Promise<dedicated.ceph.response>;
-                } | any
+                };
             }
             changeContact: {
                 // POST /dedicated/ceph/{serviceName}/changeContact
@@ -144,12 +149,12 @@ export interface Dedicated{
                 $get(): Promise<dedicated.ceph.response[]>;
                 // POST /dedicated/ceph/{serviceName}/pool
                 $post(body?: {poolName: string}): Promise<string>;
-                [keys: string]:{
+                $(poolName: string): {
                     // DELETE /dedicated/ceph/{serviceName}/pool/{poolName}
                     $delete(): Promise<string>;
                     // GET /dedicated/ceph/{serviceName}/pool/{poolName}
                     $get(): Promise<dedicated.ceph.response>;
-                } | any
+                };
             }
             serviceInfos: {
                 // GET /dedicated/ceph/{serviceName}/serviceInfos
@@ -160,10 +165,10 @@ export interface Dedicated{
             task: {
                 // GET /dedicated/ceph/{serviceName}/task
                 $get(): Promise<dedicated.ceph.response[]>;
-                [keys: string]:{
+                $(taskId: string): {
                     // GET /dedicated/ceph/{serviceName}/task/{taskId}
                     $get(): Promise<dedicated.ceph.response[]>;
-                } | any
+                };
             }
             terminate: {
                 // POST /dedicated/ceph/{serviceName}/terminate
@@ -174,7 +179,7 @@ export interface Dedicated{
                 $get(): Promise<dedicated.ceph.response[]>;
                 // POST /dedicated/ceph/{serviceName}/user
                 $post(body?: {userName: string}): Promise<string>;
-                [keys: string]:{
+                $(userName: string): {
                     // DELETE /dedicated/ceph/{serviceName}/user/{userName}
                     $delete(): Promise<string>;
                     // GET /dedicated/ceph/{serviceName}/user/{userName}
@@ -186,14 +191,14 @@ export interface Dedicated{
                         $post(body?: {permissions?: dedicated.ceph.permissions[]}): Promise<string>;
                         // PUT /dedicated/ceph/{serviceName}/user/{userName}/pool
                         $put(body?: {classRead: boolean, classWrite: boolean, execute: boolean, poolName: string, read: boolean, write: boolean}): Promise<string>;
-                        [keys: string]:{
+                        $(poolName: string): {
                             // DELETE /dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}
                             $delete(): Promise<string>;
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
-        } | any
+        };
     }
 }
 // Api

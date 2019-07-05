@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace nichandle {
     //nichandle.CountryEnum
@@ -70,6 +70,9 @@ export namespace order {
         name: string;
         url: string;
     }
+}
+export function proxyNewAccount(ovhEngine: OvhRequestable): NewAccount {
+    return buildOvhProxy(ovhEngine, '/newAccount');
 }
 // Apis harmony
 // path /newAccount

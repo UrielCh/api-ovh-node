@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace hosting {
     export namespace reseller {
@@ -99,13 +99,16 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyHostingReseller(ovhEngine: OvhRequestable): Hosting {
+    return buildOvhProxy(ovhEngine, '/hosting/reseller');
+}
 // Apis harmony
 // path /hosting
 export interface Hosting{
     reseller: {
         // GET /hosting/reseller
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /hosting/reseller/{serviceName}
             $get(): Promise<hosting.reseller.product>;
             changeContact: {
@@ -147,24 +150,24 @@ export interface Hosting{
                 $get(): Promise<reseller.snapshot[]>;
                 // POST /hosting/reseller/{serviceName}/snapshot
                 $post(): Promise<string>;
-                [keys: string]:{
+                $(snapshotId: string): {
                     // GET /hosting/reseller/{serviceName}/snapshot/{snapshotId}
                     $get(): Promise<reseller.snapshot>;
                     restore: {
                         // POST /hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore
                         $post(): Promise<string>;
                     }
-                } | any
+                };
             }
             task: {
                 // GET /hosting/reseller/{serviceName}/task
                 $get(): Promise<reseller.task[]>;
-                [keys: string]:{
+                $(taskId: string): {
                     // GET /hosting/reseller/{serviceName}/task/{taskId}
                     $get(): Promise<reseller.task>;
-                } | any
+                };
             }
-        } | any
+        };
     }
 }
 // Api

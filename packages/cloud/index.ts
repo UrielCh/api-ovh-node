@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace cloud {
     //cloud.AccessTypeEnum
@@ -695,6 +695,18 @@ export namespace cloud {
         }
         //cloud.kube.ClusterStatus
         export type ClusterStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
+        //cloud.kube.Flavor
+        // fullName: cloud.kube.Flavor.Flavor
+        export interface Flavor {
+            category: cloud.kube.FlavorCategory;
+            id: string;
+            name: string;
+            state: cloud.kube.FlavorState;
+        }
+        //cloud.kube.FlavorCategory
+        export type FlavorCategory = "c" | "g" | "t" | "b"
+        //cloud.kube.FlavorState
+        export type FlavorState = "available" | "unavailable"
         //cloud.kube.Kubeconfig
         // fullName: cloud.kube.Kubeconfig.Kubeconfig
         export interface Kubeconfig {
@@ -1417,6 +1429,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyCloud(ovhEngine: OvhRequestable): Cloud {
+    return buildOvhProxy(ovhEngine, '/cloud');
+}
 // Apis harmony
 // path /cloud
 export interface Cloud{
@@ -1445,7 +1460,7 @@ export interface Cloud{
     project: {
         // GET /cloud/project
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /cloud/project/{serviceName}
             $get(): Promise<cloud.Project>;
             // PUT /cloud/project/{serviceName}
@@ -1455,19 +1470,19 @@ export interface Cloud{
                 $get(param?: {type?: cloud.AclTypeEnum}): Promise<string[]>;
                 // POST /cloud/project/{serviceName}/acl
                 $post(body?: {accountId: string, type: cloud.AclTypeEnum}): Promise<cloud.Acl>;
-                [keys: string]:{
+                $(accountId: string): {
                     // DELETE /cloud/project/{serviceName}/acl/{accountId}
                     $delete(): Promise<void>;
                     // GET /cloud/project/{serviceName}/acl/{accountId}
                     $get(): Promise<cloud.Acl>;
-                } | any
+                };
             }
             alerting: {
                 // GET /cloud/project/{serviceName}/alerting
                 $get(): Promise<string[]>;
                 // POST /cloud/project/{serviceName}/alerting
                 $post(body?: {delay: cloud.AlertingDelayEnum, email: string, monthlyThreshold: number}): Promise<cloud.Alerting>;
-                [keys: string]:{
+                $(id: string): {
                     // DELETE /cloud/project/{serviceName}/alerting/{id}
                     $delete(): Promise<void>;
                     // GET /cloud/project/{serviceName}/alerting/{id}
@@ -1477,12 +1492,12 @@ export interface Cloud{
                     alert: {
                         // GET /cloud/project/{serviceName}/alerting/{id}/alert
                         $get(): Promise<number[]>;
-                        [keys: string]:{
+                        $(alertId: number): {
                             // GET /cloud/project/{serviceName}/alerting/{id}/alert/{alertId}
                             $get(): Promise<cloud.AlertingAlert>;
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
             bill: {
                 // GET /cloud/project/{serviceName}/bill
@@ -1509,7 +1524,7 @@ export interface Cloud{
                 $get(): Promise<cloud.containerRegistry.registry.Registry[]>;
                 // POST /cloud/project/{serviceName}/containerRegistry
                 $post(body?: {name: string, region: cloud.containerRegistry.registry.RegionEnum}): Promise<cloud.containerRegistry.registry.Registry>;
-                [keys: string]:{
+                $(registryID: string): {
                     // DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}
                     $delete(): Promise<void>;
                     // GET /cloud/project/{serviceName}/containerRegistry/{registryID}
@@ -1521,30 +1536,30 @@ export interface Cloud{
                         $get(): Promise<cloud.containerRegistry.user.User[]>;
                         // POST /cloud/project/{serviceName}/containerRegistry/{registryID}/users
                         $post(body?: {email?: string, login?: string}): Promise<cloud.containerRegistry.user.User>;
-                        [keys: string]:{
+                        $(userID: string): {
                             // DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}
                             $delete(): Promise<void>;
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
             credit: {
                 // GET /cloud/project/{serviceName}/credit
                 $get(): Promise<number[]>;
                 // POST /cloud/project/{serviceName}/credit
                 $post(body?: {code: string}): Promise<void>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /cloud/project/{serviceName}/credit/{id}
                     $get(): Promise<cloud.Credit>;
-                } | any
+                };
             }
             flavor: {
                 // GET /cloud/project/{serviceName}/flavor
                 $get(param?: {region?: string}): Promise<cloud.flavor.Flavor[]>;
-                [keys: string]:{
+                $(flavorId: string): {
                     // GET /cloud/project/{serviceName}/flavor/{flavorId}
                     $get(): Promise<cloud.flavor.Flavor>;
-                } | any
+                };
             }
             forecast: {
                 // GET /cloud/project/{serviceName}/forecast
@@ -1553,10 +1568,10 @@ export interface Cloud{
             image: {
                 // GET /cloud/project/{serviceName}/image
                 $get(param?: {flavorType?: string, osType?: cloud.image.OSTypeEnum, region?: string}): Promise<cloud.image.Image[]>;
-                [keys: string]:{
+                $(imageId: string): {
                     // GET /cloud/project/{serviceName}/image/{imageId}
                     $get(): Promise<cloud.image.Image>;
-                } | any
+                };
             }
             instance: {
                 // GET /cloud/project/{serviceName}/instance
@@ -1572,14 +1587,14 @@ export interface Cloud{
                     $get(param?: {region?: string}): Promise<cloud.instancegroup.InstanceGroup[]>;
                     // POST /cloud/project/{serviceName}/instance/group
                     $post(body?: {name: string, region: string, type: cloud.instancegroup.InstanceGroupTypeEnum}): Promise<cloud.instancegroup.InstanceGroup>;
-                    [keys: string]:{
+                    $(groupId: string): {
                         // DELETE /cloud/project/{serviceName}/instance/group/{groupId}
                         $delete(): Promise<void>;
                         // GET /cloud/project/{serviceName}/instance/group/{groupId}
                         $get(param?: {region?: string}): Promise<cloud.instancegroup.InstanceGroup>;
-                    } | any
+                    };
                 }
-                [keys: string]:{
+                $(instanceId: string): {
                     // DELETE /cloud/project/{serviceName}/instance/{instanceId}
                     $delete(): Promise<void>;
                     // GET /cloud/project/{serviceName}/instance/{instanceId}
@@ -1599,12 +1614,12 @@ export interface Cloud{
                         $get(): Promise<cloud.instanceInterface.Interface[]>;
                         // POST /cloud/project/{serviceName}/instance/{instanceId}/interface
                         $post(body?: {ip?: string, networkId: string}): Promise<cloud.instanceInterface.Interface>;
-                        [keys: string]:{
+                        $(interfaceId: string): {
                             // DELETE /cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}
                             $delete(): Promise<void>;
                             // GET /cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}
                             $get(): Promise<cloud.instanceInterface.Interface>;
-                        } | any
+                        };
                     }
                     monitoring: {
                         // GET /cloud/project/{serviceName}/instance/{instanceId}/monitoring
@@ -1646,7 +1661,7 @@ export interface Cloud{
                         // POST /cloud/project/{serviceName}/instance/{instanceId}/vnc
                         $post(): Promise<cloud.instance.InstanceVnc>;
                     }
-                } | any
+                };
             }
             ip: {
                 // GET /cloud/project/{serviceName}/ip
@@ -1654,14 +1669,14 @@ export interface Cloud{
                 failover: {
                     // GET /cloud/project/{serviceName}/ip/failover
                     $get(): Promise<cloud.ip.FailoverIp[]>;
-                    [keys: string]:{
+                    $(id: string): {
                         // GET /cloud/project/{serviceName}/ip/failover/{id}
                         $get(): Promise<cloud.ip.FailoverIp>;
                         attach: {
                             // POST /cloud/project/{serviceName}/ip/failover/{id}/attach
                             $post(body?: {instanceId: string}): Promise<cloud.ip.FailoverIp>;
                         }
-                    } | any
+                    };
                 }
             }
             kube: {
@@ -1673,13 +1688,17 @@ export interface Cloud{
                     // GET /cloud/project/{serviceName}/kube/regions
                     $get(): Promise<cloud.kube.Region[]>;
                 }
-                [keys: string]:{
+                $(kubeId: string): {
                     // DELETE /cloud/project/{serviceName}/kube/{kubeId}
                     $delete(): Promise<void>;
                     // GET /cloud/project/{serviceName}/kube/{kubeId}
                     $get(): Promise<cloud.kube.Cluster>;
                     // PUT /cloud/project/{serviceName}/kube/{kubeId}
                     $put(body?: {name: string}): Promise<void>;
+                    flavors: {
+                        // GET /cloud/project/{serviceName}/kube/{kubeId}/flavors
+                        $get(): Promise<cloud.kube.Flavor[]>;
+                    }
                     kubeconfig: {
                         // POST /cloud/project/{serviceName}/kube/{kubeId}/kubeconfig
                         $post(): Promise<cloud.kube.Kubeconfig>;
@@ -1689,12 +1708,12 @@ export interface Cloud{
                         $get(): Promise<cloud.kube.Node[]>;
                         // POST /cloud/project/{serviceName}/kube/{kubeId}/node
                         $post(body?: {flavorName: string, name?: string}): Promise<cloud.kube.Node>;
-                        [keys: string]:{
+                        $(nodeId: string): {
                             // DELETE /cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}
                             $delete(): Promise<void>;
                             // GET /cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}
                             $get(): Promise<cloud.kube.Node>;
-                        } | any
+                        };
                     }
                     reset: {
                         // POST /cloud/project/{serviceName}/kube/{kubeId}/reset
@@ -1708,17 +1727,17 @@ export interface Cloud{
                         // PUT /cloud/project/{serviceName}/kube/{kubeId}/updatePolicy
                         $put(body?: {updatePolicy: cloud.kube.UpdatePolicy}): Promise<void>;
                     }
-                } | any
+                };
             }
             migration: {
                 // GET /cloud/project/{serviceName}/migration
                 $get(): Promise<cloud.migration.Migration[]>;
-                [keys: string]:{
+                $(migrationId: string): {
                     // GET /cloud/project/{serviceName}/migration/{migrationId}
                     $get(): Promise<cloud.migration.Migration>;
                     // PUT /cloud/project/{serviceName}/migration/{migrationId}
                     $put(body?: {date: string}): Promise<cloud.migration.Migration>;
-                } | any
+                };
             }
             network: {
                 private: {
@@ -1726,7 +1745,7 @@ export interface Cloud{
                     $get(): Promise<cloud.network.Network[]>;
                     // POST /cloud/project/{serviceName}/network/private
                     $post(body?: {name: string, regions?: string[], vlanId?: number}): Promise<cloud.network.Network>;
-                    [keys: string]:{
+                    $(networkId: string): {
                         // DELETE /cloud/project/{serviceName}/network/private/{networkId}
                         $delete(): Promise<void>;
                         // GET /cloud/project/{serviceName}/network/private/{networkId}
@@ -1742,12 +1761,12 @@ export interface Cloud{
                             $get(): Promise<cloud.network.Subnet[]>;
                             // POST /cloud/project/{serviceName}/network/private/{networkId}/subnet
                             $post(body?: {dhcp: boolean, end: string, network: string, noGateway: boolean, region: string, start: string}): Promise<cloud.network.Subnet>;
-                            [keys: string]:{
+                            $(subnetId: string): {
                                 // DELETE /cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}
                                 $delete(): Promise<void>;
-                            } | any
+                            };
                         }
-                    } | any
+                    };
                 }
                 public: {
                     // GET /cloud/project/{serviceName}/network/public
@@ -1761,10 +1780,10 @@ export interface Cloud{
             operation: {
                 // GET /cloud/project/{serviceName}/operation
                 $get(): Promise<cloud.Operation[]>;
-                [keys: string]:{
+                $(operationId: string): {
                     // GET /cloud/project/{serviceName}/operation/{operationId}
                     $get(): Promise<cloud.Operation>;
-                } | any
+                };
             }
             quota: {
                 // GET /cloud/project/{serviceName}/quota
@@ -1775,7 +1794,7 @@ export interface Cloud{
                 $get(): Promise<string[]>;
                 // POST /cloud/project/{serviceName}/region
                 $post(body?: {region: string}): Promise<cloud.Region>;
-                [keys: string]:{
+                $(regionName: string): {
                     // GET /cloud/project/{serviceName}/region/{regionName}
                     $get(): Promise<cloud.Region>;
                     workflow: {
@@ -1784,15 +1803,15 @@ export interface Cloud{
                             $get(): Promise<cloud.Backup[]>;
                             // POST /cloud/project/{serviceName}/region/{regionName}/workflow/backup
                             $post(body?: {cron: string, instanceId: string, maxExecutionCount?: number, name: string, rotation: number}): Promise<cloud.Backup>;
-                            [keys: string]:{
+                            $(backupWorkflowId: string): {
                                 // DELETE /cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}
                                 $delete(): Promise<void>;
                                 // GET /cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}
                                 $get(): Promise<cloud.Backup>;
-                            } | any
+                            };
                         }
                     }
-                } | any
+                };
             }
             regionAvailable: {
                 // GET /cloud/project/{serviceName}/regionAvailable
@@ -1811,36 +1830,36 @@ export interface Cloud{
             snapshot: {
                 // GET /cloud/project/{serviceName}/snapshot
                 $get(param?: {flavorType?: string, region?: string}): Promise<cloud.image.Image[]>;
-                [keys: string]:{
+                $(snapshotId: string): {
                     // DELETE /cloud/project/{serviceName}/snapshot/{snapshotId}
                     $delete(): Promise<cloud.image.Image>;
                     // GET /cloud/project/{serviceName}/snapshot/{snapshotId}
                     $get(): Promise<cloud.image.Image>;
-                } | any
+                };
             }
             sshkey: {
                 // GET /cloud/project/{serviceName}/sshkey
                 $get(param?: {region?: string}): Promise<cloud.sshkey.SshKey[]>;
                 // POST /cloud/project/{serviceName}/sshkey
                 $post(body?: {name: string, publicKey: string, region?: string}): Promise<cloud.sshkey.SshKeyDetail>;
-                [keys: string]:{
+                $(keyId: string): {
                     // DELETE /cloud/project/{serviceName}/sshkey/{keyId}
                     $delete(): Promise<void>;
                     // GET /cloud/project/{serviceName}/sshkey/{keyId}
                     $get(): Promise<cloud.sshkey.SshKeyDetail>;
-                } | any
+                };
             }
             stack: {
                 // GET /cloud/project/{serviceName}/stack
                 $get(): Promise<cloud.stack.Stack[]>;
-                [keys: string]:{
+                $(stackId: string): {
                     // GET /cloud/project/{serviceName}/stack/{stackId}
                     $get(): Promise<cloud.stack.Stack>;
                     client: {
                         // POST /cloud/project/{serviceName}/stack/{stackId}/client
                         $post(): Promise<cloud.openstackClient.Session>;
                     }
-                } | any
+                };
             }
             storage: {
                 // GET /cloud/project/{serviceName}/storage
@@ -1853,7 +1872,7 @@ export interface Cloud{
                     // POST /cloud/project/{serviceName}/storage/access
                     $post(): Promise<cloud.storage.ContainerAccess>;
                 }
-                [keys: string]:{
+                $(containerId: string): {
                     // DELETE /cloud/project/{serviceName}/storage/{containerId}
                     $delete(): Promise<void>;
                     // GET /cloud/project/{serviceName}/storage/{containerId}
@@ -1878,7 +1897,7 @@ export interface Cloud{
                         // POST /cloud/project/{serviceName}/storage/{containerId}/user
                         $post(body?: {description?: string, right: cloud.storage.RightEnum}): Promise<cloud.user.UserDetail>;
                     }
-                } | any
+                };
             }
             terminate: {
                 // POST /cloud/project/{serviceName}/terminate
@@ -1900,10 +1919,10 @@ export interface Cloud{
                 history: {
                     // GET /cloud/project/{serviceName}/usage/history
                     $get(param?: {from?: string, to?: string}): Promise<cloud.usage.UsageHistory[]>;
-                    [keys: string]:{
+                    $(usageId: string): {
                         // GET /cloud/project/{serviceName}/usage/history/{usageId}
                         $get(): Promise<cloud.usage.UsageHistoryDetail>;
-                    } | any
+                    };
                 }
             }
             user: {
@@ -1911,7 +1930,7 @@ export interface Cloud{
                 $get(): Promise<cloud.user.User[]>;
                 // POST /cloud/project/{serviceName}/user
                 $post(body?: {description?: string, role?: cloud.user.RoleEnum}): Promise<cloud.user.UserDetail>;
-                [keys: string]:{
+                $(userId: number): {
                     // DELETE /cloud/project/{serviceName}/user/{userId}
                     $delete(): Promise<void>;
                     // GET /cloud/project/{serviceName}/user/{userId}
@@ -1932,7 +1951,7 @@ export interface Cloud{
                         // POST /cloud/project/{serviceName}/user/{userId}/token
                         $post(body?: {password: string}): Promise<cloud.authentication.Token>;
                     }
-                } | any
+                };
             }
             volume: {
                 // GET /cloud/project/{serviceName}/volume
@@ -1942,14 +1961,14 @@ export interface Cloud{
                 snapshot: {
                     // GET /cloud/project/{serviceName}/volume/snapshot
                     $get(param?: {region?: string}): Promise<cloud.volume.Snapshot[]>;
-                    [keys: string]:{
+                    $(snapshotId: string): {
                         // DELETE /cloud/project/{serviceName}/volume/snapshot/{snapshotId}
                         $delete(): Promise<void>;
                         // GET /cloud/project/{serviceName}/volume/snapshot/{snapshotId}
                         $get(): Promise<cloud.volume.Snapshot>;
-                    } | any
+                    };
                 }
-                [keys: string]:{
+                $(volumeId: string): {
                     // DELETE /cloud/project/{serviceName}/volume/{volumeId}
                     $delete(): Promise<void>;
                     // GET /cloud/project/{serviceName}/volume/{volumeId}
@@ -1972,7 +1991,7 @@ export interface Cloud{
                         // POST /cloud/project/{serviceName}/volume/{volumeId}/upsize
                         $post(body?: {size: number}): Promise<cloud.volume.Volume>;
                     }
-                } | any
+                };
             }
             vrack: {
                 // GET /cloud/project/{serviceName}/vrack
@@ -1980,17 +1999,17 @@ export interface Cloud{
                 // POST /cloud/project/{serviceName}/vrack
                 $post(): Promise<cloud.Operation>;
             }
-        } | any
+        };
     }
     subsidiaryPrice: {
         // GET /cloud/subsidiaryPrice
         $get(param?: {flavorId?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, region?: string}): Promise<cloud.Price>;
     }
-    [keys: string]:{
+    $(serviceName: string | number): {
         pca: {
             // GET /cloud/{serviceName}/pca
             $get(): Promise<string[]>;
-            [keys: string]:{
+            $(pcaServiceName: string): {
                 // GET /cloud/{serviceName}/pca/{pcaServiceName}
                 $get(): Promise<pca.Account>;
                 // PUT /cloud/{serviceName}/pca/{pcaServiceName}
@@ -1998,10 +2017,10 @@ export interface Cloud{
                 billing: {
                     // GET /cloud/{serviceName}/pca/{pcaServiceName}/billing
                     $get(param?: {billed?: boolean, date_from?: string, date_to?: string}): Promise<number[]>;
-                    [keys: string]:{
+                    $(billingId: number): {
                         // GET /cloud/{serviceName}/pca/{pcaServiceName}/billing/{billingId}
                         $get(): Promise<pca.Billing>;
-                    } | any
+                    };
                 }
                 serviceInfos: {
                     // GET /cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos
@@ -2012,7 +2031,7 @@ export interface Cloud{
                 sessions: {
                     // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions
                     $get(param?: {name?: string}): Promise<string[]>;
-                    [keys: string]:{
+                    $(sessionId: string): {
                         // DELETE /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
                         $delete(): Promise<pca.Task>;
                         // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
@@ -2022,34 +2041,34 @@ export interface Cloud{
                         files: {
                             // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files
                             $get(param?: {name?: string}): Promise<string[]>;
-                            [keys: string]:{
+                            $(fileId: string): {
                                 // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files/{fileId}
                                 $get(): Promise<pca.File>;
-                            } | any
+                            };
                         }
                         restore: {
                             // POST /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/restore
                             $post(): Promise<pca.Task>;
                         }
-                    } | any
+                    };
                 }
                 tasks: {
                     // GET /cloud/{serviceName}/pca/{pcaServiceName}/tasks
                     $get(param?: {function_?: cloud.pca.FunctionTypeEnum, status?: cloud.pca.TaskStateEnum, todoDate_from?: string, todoDate_to?: string}): Promise<string[]>;
                     // POST /cloud/{serviceName}/pca/{pcaServiceName}/tasks
                     $post(body?: {fileIds: string[], sessionId: string, taskFunction: cloud.pca.TaskTypeEnum}): Promise<pca.Task>;
-                    [keys: string]:{
+                    $(taskId: string): {
                         // GET /cloud/{serviceName}/pca/{pcaServiceName}/tasks/{taskId}
                         $get(): Promise<pca.Task>;
-                    } | any
+                    };
                 }
                 usage: {
                     // GET /cloud/{serviceName}/pca/{pcaServiceName}/usage
                     $get(): Promise<number>;
                 }
-            } | any
+            };
         }
-    } | any
+    };
 }
 // Api
 type PathsCloudGET = '/cloud' |
@@ -2090,6 +2109,7 @@ type PathsCloudGET = '/cloud' |
   '/cloud/project/{serviceName}/kube' |
   '/cloud/project/{serviceName}/kube/regions' |
   '/cloud/project/{serviceName}/kube/{kubeId}' |
+  '/cloud/project/{serviceName}/kube/{kubeId}/flavors' |
   '/cloud/project/{serviceName}/kube/{kubeId}/node' |
   '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}' |
   '/cloud/project/{serviceName}/migration' |
@@ -2487,6 +2507,11 @@ export class ApiCloud extends OvhWrapper {
    * Get information about your managed Kubernetes cluster
    */
   public get(path: '/cloud/project/{serviceName}/kube/{kubeId}', params: {kubeId: string, serviceName: string}): Promise<cloud.kube.Cluster>;
+  /**
+   * List all flavors available
+   * List all flavors available
+   */
+  public get(path: '/cloud/project/{serviceName}/kube/{kubeId}/flavors', params: {kubeId: string, serviceName: string}): Promise<cloud.kube.Flavor[]>;
   /**
    * Manage your nodes
    * List your nodes

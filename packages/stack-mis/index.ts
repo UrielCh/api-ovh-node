@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace service {
     //service.RenewType
@@ -46,13 +46,16 @@ export namespace stack {
         }
     }
 }
+export function proxyStackMis(ovhEngine: OvhRequestable): Stack {
+    return buildOvhProxy(ovhEngine, '/stack/mis');
+}
 // Apis harmony
 // path /stack
 export interface Stack{
     mis: {
         // GET /stack/mis
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /stack/mis/{serviceName}
             $get(): Promise<stack.mis.product>;
             serviceInfos: {
@@ -61,7 +64,7 @@ export interface Stack{
                 // PUT /stack/mis/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-        } | any
+        };
     }
 }
 // Api

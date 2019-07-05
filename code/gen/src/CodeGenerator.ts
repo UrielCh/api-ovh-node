@@ -1,6 +1,6 @@
 import GenApiTypes, { CacheApi, CacheModel, filterReservedKw } from './GenApiTypes';
 import { indentGen, protectModelField, className, protectJsonKey, rawRemapNode, formatUpperCamlCase, protectHarmonyField } from './utils';
-import { Parameter, Schema, FieldProp } from './schema';
+import { Parameter, Schema, FieldProp, API } from './schema';
 
 
 let commonNSColision: { [key: string]: string } = {
@@ -32,17 +32,11 @@ let commonNSColision: { [key: string]: string } = {
 export class CodeGenerator {
     api: string;
     gen: GenApiTypes;
-    extraNS: string;
     NSCollision = new Set<string>();
 
     constructor(api: string) {
         this.api = api;
         this.gen = new GenApiTypes();
-        //if (this.api == '/cloud' || this.api == '/domain' || this.api == '/email/domain' || this.api == '/me'
-        // || this.api == '/pack/xdsl' || this.api == '/veeam/veeamEnterprise' || this.api == '/telephony' || this.api == '/xdsl')
-        //    this.extraNS = `OVH.`;
-        //else
-        this.extraNS = '';
     }
 
     async generate(): Promise<string> {
@@ -50,17 +44,19 @@ export class CodeGenerator {
         let schema = await this.gen.loadSchema(`${this.api}.json`)
         // start generation
         // Add extra ROOT NameSpace
-        let code = `import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';\n\n`;
-
-        if (this.extraNS)
-            code += `export namespace ${this.extraNS.replace('.', '')} {\n`;
-
+        let code = `import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';\n\n`;
         code = this.dumpModel(0, this.gen.models, code, '');
+
+        let proxyCall = 'proxy' + formatUpperCamlCase(this.api.replace(/\//g, '_'));
+
+        let c1 = this.api.split('/')[1];
+        let mainClass = className(c1)// formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'));
+        // let mainClass = className(this.api._);
+        code += `export function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass} {
+    return buildOvhProxy(ovhEngine, '${this.api}');
+}\n`
         code += this.dumpApiHarmony(0, this.gen.apis, '// Apis harmony\n');
         code += this.dumpApi(0, schema, this.gen.apis, '// Api\n');
-
-        if (this.extraNS)
-            code += '}\n';
 
         for (let type of this.NSCollision) {
             code += `type ${commonNSColision[type]} = ${type};\n`
@@ -73,8 +69,6 @@ export class CodeGenerator {
         let type = p.fullType || (<any>p).type;
         if (type.endsWith(':string'))
             type = 'string'
-        if (~type.indexOf('.'))
-            type = this.extraNS + type;
 
         type = this.aliasFilter(type);
 
@@ -166,7 +160,7 @@ export class CodeGenerator {
         return code;
     }
 
-    aliasFilter(type: string) {
+    aliasFilter(type: string) : string{
         let rawType: string = type;
         let isArray: boolean = false;
         let generic: string = '';
@@ -266,8 +260,8 @@ export class CodeGenerator {
                                     params.push(param)
                                 }
                             } else {
-                                console.log('ERORROOROR');
-                                params.push('body: any')
+                                console.log('ERORROOROR L 270');
+                                //params.push('body: any')
                             }
                         } else {
                             body.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
@@ -317,9 +311,21 @@ export class CodeGenerator {
             let last = api._path.split('/').pop();
             if (last && depth > 1) {
                 if (last.startsWith('{')) {
-                    //code += `${ident0}/** ${last} */ \n`;
-                    code += `${ident0}[keys: string]:`;
-                    EOB = `${ident0}} | any\n`
+                    let m = last.match(/\{([^}]+)\}/);
+                    let name = m? m[1] : 'id';
+                    let pType = 'string | number';
+                    try{
+                        let _api = (<API>api._api);
+                        let _op = _api.operations[0];
+                        let _params = _op.parameters;
+                        let _param = _params.filter(p => p.name==name)[0];
+                        pType = _param.dataType;
+                        pType = this.aliasFilter(pType);
+                    } catch {
+                    }
+                    //code += `${ident0}[keys: string]:`;
+                     code += `${ident0}$(${name}: ${pType}): `;
+                    EOB = `${ident0}};\n` //  | any
                 } else {
                     code += `${ident0}${protectHarmonyField(last)}: `; //  /* 260 */
                 }

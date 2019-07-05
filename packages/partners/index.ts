@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace Partner {
     //Partner.Application
@@ -245,6 +245,9 @@ export namespace nichandle {
     //nichandle.CountryEnum
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
 }
+export function proxyPartners(ovhEngine: OvhRequestable): Partners {
+    return buildOvhProxy(ovhEngine, '/partners');
+}
 // Apis harmony
 // path /partners
 export interface Partners{
@@ -254,7 +257,7 @@ export interface Partners{
             $get(): Promise<string[]>;
             // POST /partners/register/company
             $post(body?: {activitySectors?: Partner.activitySectors, address: string, city: string, clientKinds?: Partner.clientKinds, commercialName: string, country: nichandle.CountryEnum, description: string, email: string, employeesNumber: Partner.employeesNumberEnum, expertises?: Partner.expertisesChoices, externalCertifications?: Partner.externalCertifications, facebook?: string, linkedin?: string, logo: string, name: string, OVHCertifications?: Partner.OVHCertifications, OVHCustomersAdvised: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: Partner.OVHProductsUsed, OVHTechnicalAdvancedResources: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: Partner.partnerKnowledges, phone: string, productCountries?: Partner.productCountries, registrationNumber?: string, revenue: Partner.revenueRangeEnum, twitter?: string, website: string, zipCode: string}): Promise<Partner.Company>;
-            [keys: string]:{
+            $(companyId: string): {
                 // DELETE /partners/register/company/{companyId}
                 $delete(): Promise<string>;
                 // GET /partners/register/company/{companyId}
@@ -272,16 +275,16 @@ export interface Partners{
                     $get(): Promise<string[]>;
                     // POST /partners/register/company/{companyId}/contact
                     $post(body?: {email: string, facebook?: string, firstName: string, lastName: string, linkedin?: string, newsletter?: boolean, otherNics?: Partner.Nic[], phone: string, role: string, twitter?: string}): Promise<Partner.Contact>;
-                    [keys: string]:{
+                    $(contactId: string): {
                         // DELETE /partners/register/company/{companyId}/contact/{contactId}
                         $delete(): Promise<string>;
                         // GET /partners/register/company/{companyId}/contact/{contactId}
                         $get(): Promise<Partner.Contact>;
                         // PUT /partners/register/company/{companyId}/contact/{contactId}
                         $put(body?: {email?: string, facebook?: string, firstName?: string, lastName?: string, linkedin?: string, newsletter?: boolean, otherNics?: Partner.Nic[], phone?: string, role?: string, twitter?: string}): Promise<Partner.Contact>;
-                    } | any
+                    };
                 }
-            } | any
+            };
         }
     }
 }

@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.UnitAndValue
@@ -104,12 +104,15 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyDeskaas(ovhEngine: OvhRequestable): Deskaas {
+    return buildOvhProxy(ovhEngine, '/deskaas');
+}
 // Apis harmony
 // path /deskaas
 export interface Deskaas{
     // GET /deskaas
     $get(): Promise<string[]>;
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /deskaas/{serviceName}
         $get(): Promise<deskaas.deskaas>;
         changeAlias: {
@@ -149,10 +152,10 @@ export interface Deskaas{
         task: {
             // GET /deskaas/{serviceName}/task
             $get(param?: {state?: deskaas.TaskStateEnum}): Promise<number[]>;
-            [keys: string]:{
+            $(taskId: number): {
                 // GET /deskaas/{serviceName}/task/{taskId}
                 $get(): Promise<deskaas.Task>;
-            } | any
+            };
         }
         terminate: {
             // POST /deskaas/{serviceName}/terminate
@@ -176,13 +179,13 @@ export interface Deskaas{
             task: {
                 // GET /deskaas/{serviceName}/user/task
                 $get(param?: {state?: deskaas.TaskStateEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /deskaas/{serviceName}/user/task/{taskId}
                     $get(): Promise<deskaas.Task>;
-                } | any
+                };
             }
         }
-    } | any
+    };
 }
 // Api
 type PathsDeskaasGET = '/deskaas' |

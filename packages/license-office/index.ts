@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace license {
     export namespace office {
@@ -123,13 +123,16 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyLicenseOffice(ovhEngine: OvhRequestable): License {
+    return buildOvhProxy(ovhEngine, '/license/office');
+}
 // Apis harmony
 // path /license
 export interface License{
     office: {
         // GET /license/office
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /license/office/{serviceName}
             $get(): Promise<license.office.OfficeTenant>;
             // PUT /license/office/{serviceName}
@@ -137,18 +140,18 @@ export interface License{
             domain: {
                 // GET /license/office/{serviceName}/domain
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(domainName: string): {
                     // GET /license/office/{serviceName}/domain/{domainName}
                     $get(): Promise<license.office.OfficeDomain>;
-                } | any
+                };
             }
             pendingTask: {
                 // GET /license/office/{serviceName}/pendingTask
                 $get(): Promise<number[]>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /license/office/{serviceName}/pendingTask/{id}
                     $get(): Promise<license.office.OfficeTask>;
-                } | any
+                };
             }
             serviceInfos: {
                 // GET /license/office/{serviceName}/serviceInfos
@@ -165,7 +168,7 @@ export interface License{
                 $get(param?: {activationEmail?: string, firstName?: string, lastName?: string, licences?: license.office.LicenceEnum[]}): Promise<string[]>;
                 // POST /license/office/{serviceName}/user
                 $post(body?: {domain: string, firstName?: string, lastName?: string, licence: license.office.LicenceEnum, login: string}): Promise<license.office.OfficeTask>;
-                [keys: string]:{
+                $(activationEmail: string): {
                     // DELETE /license/office/{serviceName}/user/{activationEmail}
                     $delete(): Promise<license.office.OfficeTask>;
                     // GET /license/office/{serviceName}/user/{activationEmail}
@@ -176,9 +179,9 @@ export interface License{
                         // POST /license/office/{serviceName}/user/{activationEmail}/changePassword
                         $post(body?: {notifyEmail?: string, password?: string, shouldSendMail: boolean}): Promise<license.office.OfficeTask>;
                     }
-                } | any
+                };
             }
-        } | any
+        };
     }
 }
 // Api

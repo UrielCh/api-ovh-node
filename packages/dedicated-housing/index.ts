@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.UnitAndValue
@@ -150,13 +150,16 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyDedicatedHousing(ovhEngine: OvhRequestable): Dedicated {
+    return buildOvhProxy(ovhEngine, '/dedicated/housing');
+}
 // Apis harmony
 // path /dedicated
 export interface Dedicated{
     housing: {
         // GET /dedicated/housing
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /dedicated/housing/{serviceName}
             $get(): Promise<dedicated.housing.Housing>;
             features: {
@@ -172,14 +175,14 @@ export interface Dedicated{
                         $get(): Promise<string[]>;
                         // POST /dedicated/housing/{serviceName}/features/backupFTP/access
                         $post(body?: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
-                        [keys: string]:{
+                        $(ipBlock: string): {
                             // DELETE /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
                             $delete(): Promise<dedicated.server.Task>;
                             // GET /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
                             $get(): Promise<dedicated.server.BackupFtpAcl>;
                             // PUT /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
                             $put(body?: {body: dedicated.server.BackupFtpAcl}): Promise<void>;
-                        } | any
+                        };
                     }
                     authorizableBlocks: {
                         // GET /dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks
@@ -206,16 +209,16 @@ export interface Dedicated{
             task: {
                 // GET /dedicated/housing/{serviceName}/task
                 $get(param?: {function_?: dedicated.housing.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /dedicated/housing/{serviceName}/task/{taskId}
                     $get(): Promise<dedicated.housing.Task>;
                     cancel: {
                         // POST /dedicated/housing/{serviceName}/task/{taskId}/cancel
                         $post(): Promise<void>;
                     }
-                } | any
+                };
             }
-        } | any
+        };
     }
 }
 // Api

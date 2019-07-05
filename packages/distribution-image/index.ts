@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace distribution {
     //distribution.image
@@ -30,18 +30,21 @@ export namespace distribution {
         export type service = "vps" | "dedicated" | "cloud" | "dedicatedCloud"
     }
 }
+export function proxyDistributionImage(ovhEngine: OvhRequestable): Distribution {
+    return buildOvhProxy(ovhEngine, '/distribution/image');
+}
 // Apis harmony
 // path /distribution
 export interface Distribution{
     image: {
-        [keys: string]:{
+        $(serviceType: distribution.image.service): {
             // GET /distribution/image/{serviceType}
             $get(): Promise<string[]>;
-            [keys: string]:{
+            $(imageName: string): {
                 // GET /distribution/image/{serviceType}/{imageName}
                 $get(): Promise<distribution.image>;
-            } | any
-        } | any
+            };
+        };
     }
 }
 // Api

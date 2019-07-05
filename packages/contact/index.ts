@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace complexType {
     //complexType.SafeKeyValue
@@ -21,6 +21,9 @@ export namespace contact {
         key: string;
         required: boolean;
     }
+}
+export function proxyContact(ovhEngine: OvhRequestable): Contact {
+    return buildOvhProxy(ovhEngine, '/contact');
 }
 // Apis harmony
 // path /contact

@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace api {
     //api.Credential
@@ -32,6 +32,9 @@ export namespace auth {
     export type CredentialStateEnum = "expired" | "pendingValidation" | "refused" | "validated"
     //auth.MethodEnum
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
+}
+export function proxyAuth(ovhEngine: OvhRequestable): Auth {
+    return buildOvhProxy(ovhEngine, '/auth');
 }
 // Apis harmony
 // path /auth

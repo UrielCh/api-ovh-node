@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace kube {
     //kube.Cluster
@@ -90,12 +90,15 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyKube(ovhEngine: OvhRequestable): Kube {
+    return buildOvhProxy(ovhEngine, '/kube');
+}
 // Apis harmony
 // path /kube
 export interface Kube{
     // GET /kube
     $get(): Promise<string[]>;
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /kube/{serviceName}
         $get(): Promise<kube.Cluster>;
         // PUT /kube/{serviceName}
@@ -118,12 +121,12 @@ export interface Kube{
                 $get(): Promise<kube.Node[]>;
                 // POST /kube/{serviceName}/publiccloud/node
                 $post(body?: {flavorName: string, name?: string}): Promise<kube.Node>;
-                [keys: string]:{
+                $(nodeId: string): {
                     // DELETE /kube/{serviceName}/publiccloud/node/{nodeId}
                     $delete(): Promise<void>;
                     // GET /kube/{serviceName}/publiccloud/node/{nodeId}
                     $get(): Promise<kube.Node>;
-                } | any
+                };
             }
             project: {
                 // GET /kube/{serviceName}/publiccloud/project
@@ -152,7 +155,7 @@ export interface Kube{
             // PUT /kube/{serviceName}/updatePolicy
             $put(body?: {updatePolicy: kube.UpdatePolicy}): Promise<void>;
         }
-    } | any
+    };
 }
 // Api
 type PathsKubeGET = '/kube' |

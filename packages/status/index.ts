@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace ovhstatus {
     export namespace task {
@@ -38,6 +38,9 @@ export namespace status {
             uuid: string;
         }
     }
+}
+export function proxyStatus(ovhEngine: OvhRequestable): Status {
+    return buildOvhProxy(ovhEngine, '/status');
 }
 // Apis harmony
 // path /status

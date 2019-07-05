@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace cdn {
     export namespace website {
@@ -93,13 +93,16 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyCdnWebsite(ovhEngine: OvhRequestable): Cdn {
+    return buildOvhProxy(ovhEngine, '/cdn/website');
+}
 // Apis harmony
 // path /cdn
 export interface Cdn{
     website: {
         // GET /cdn/website
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /cdn/website/{serviceName}
             $get(): Promise<cdn.website.Website>;
             serviceInfos: {
@@ -120,7 +123,7 @@ export interface Cdn{
                     $get(): Promise<string[]>;
                     // POST /cdn/website/{serviceName}/zone/backends
                     $post(body?: {ipv4: string}): Promise<cdn.website.Task>;
-                    [keys: string]:{
+                    $(ipv4: string): {
                         // DELETE /cdn/website/{serviceName}/zone/backends/{ipv4}
                         $delete(): Promise<cdn.website.Task>;
                         // GET /cdn/website/{serviceName}/zone/backends/{ipv4}
@@ -128,19 +131,19 @@ export interface Cdn{
                         tasks: {
                             // GET /cdn/website/{serviceName}/zone/backends/{ipv4}/tasks
                             $get(): Promise<number[]>;
-                            [keys: string]:{
+                            $(taskId: number): {
                                 // GET /cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}
                                 $get(): Promise<cdn.website.Task>;
-                            } | any
+                            };
                         }
-                    } | any
+                    };
                 }
                 domains: {
                     // GET /cdn/website/{serviceName}/zone/domains
                     $get(): Promise<string[]>;
                     // POST /cdn/website/{serviceName}/zone/domains
                     $post(body?: {domain: string}): Promise<cdn.website.Domain>;
-                    [keys: string]:{
+                    $(domain: string): {
                         // DELETE /cdn/website/{serviceName}/zone/domains/{domain}
                         $delete(): Promise<cdn.website.Task>;
                         // GET /cdn/website/{serviceName}/zone/domains/{domain}
@@ -156,23 +159,23 @@ export interface Cdn{
                         tasks: {
                             // GET /cdn/website/{serviceName}/zone/domains/{domain}/tasks
                             $get(): Promise<number[]>;
-                            [keys: string]:{
+                            $(taskId: number): {
                                 // GET /cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}
                                 $get(): Promise<cdn.website.Task>;
-                            } | any
+                            };
                         }
-                    } | any
+                    };
                 }
                 tasks: {
                     // GET /cdn/website/{serviceName}/zone/tasks
                     $get(): Promise<number[]>;
-                    [keys: string]:{
+                    $(taskId: number): {
                         // GET /cdn/website/{serviceName}/zone/tasks/{taskId}
                         $get(): Promise<cdn.website.Task>;
-                    } | any
+                    };
                 }
             }
-        } | any
+        };
     }
 }
 // Api

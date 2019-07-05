@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace dbaas {
     export namespace logs {
@@ -662,6 +662,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyDbaasLogs(ovhEngine: OvhRequestable): Dbaas {
+    return buildOvhProxy(ovhEngine, '/dbaas/logs');
+}
 // Apis harmony
 // path /dbaas
 export interface Dbaas{
@@ -672,19 +675,19 @@ export interface Dbaas{
             engine: {
                 // GET /dbaas/logs/input/engine
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(engineId: string): {
                     // GET /dbaas/logs/input/engine/{engineId}
                     $get(): Promise<dbaas.logs.Engine>;
-                } | any
+                };
             }
         }
         offer: {
-            [keys: string]:{
+            $(reference: string): {
                 // GET /dbaas/logs/offer/{reference}
                 $get(): Promise<dbaas.logs.PublicOffer>;
-            } | any
+            };
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /dbaas/logs/{serviceName}
             $get(): Promise<dbaas.logs.Service>;
             // PUT /dbaas/logs/{serviceName}
@@ -696,7 +699,7 @@ export interface Dbaas{
             cluster: {
                 // GET /dbaas/logs/{serviceName}/cluster
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(clusterId: string): {
                     // GET /dbaas/logs/{serviceName}/cluster/{clusterId}
                     $get(): Promise<dbaas.logs.Cluster>;
                     allowedNetwork: {
@@ -704,21 +707,21 @@ export interface Dbaas{
                         $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork
                         $post(body?: {body: dbaas.logs.ClusterAllowedNetworkCreation}): Promise<dbaas.logs.Operation>;
-                        [keys: string]:{
+                        $(allowedNetworkId: string): {
                             // DELETE /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}
                             $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}
                             $get(): Promise<dbaas.logs.ClusterAllowedNetwork>;
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
             input: {
                 // GET /dbaas/logs/{serviceName}/input
                 $get(): Promise<string[]>;
                 // POST /dbaas/logs/{serviceName}/input
                 $post(body?: {body: dbaas.logs.InputCreation}): Promise<dbaas.logs.Operation>;
-                [keys: string]:{
+                $(inputId: string): {
                     // DELETE /dbaas/logs/{serviceName}/input/{inputId}
                     $delete(): Promise<dbaas.logs.Operation>;
                     // GET /dbaas/logs/{serviceName}/input/{inputId}
@@ -734,12 +737,12 @@ export interface Dbaas{
                         $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork
                         $post(body?: {body: dbaas.logs.InputAllowedNetworkCreation}): Promise<dbaas.logs.Operation>;
-                        [keys: string]:{
+                        $(allowedNetworkId: string): {
                             // DELETE /dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}
                             $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/input/{inputId}/allowedNetwork/{allowedNetworkId}
                             $get(): Promise<dbaas.logs.AllowedNetwork>;
-                        } | any
+                        };
                     }
                     configtest: {
                         // POST /dbaas/logs/{serviceName}/input/{inputId}/configtest
@@ -785,7 +788,7 @@ export interface Dbaas{
                         // GET /dbaas/logs/{serviceName}/input/{inputId}/url
                         $get(): Promise<dbaas.logs.Url[]>;
                     }
-                } | any
+                };
             }
             metrics: {
                 // GET /dbaas/logs/{serviceName}/metrics
@@ -798,22 +801,22 @@ export interface Dbaas{
             operation: {
                 // GET /dbaas/logs/{serviceName}/operation
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(operationId: string): {
                     // GET /dbaas/logs/{serviceName}/operation/{operationId}
                     $get(): Promise<dbaas.logs.Operation>;
-                } | any
+                };
             }
             option: {
                 // GET /dbaas/logs/{serviceName}/option
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(optionId: string): {
                     // GET /dbaas/logs/{serviceName}/option/{optionId}
                     $get(): Promise<dbaas.logs.Option>;
                     terminate: {
                         // POST /dbaas/logs/{serviceName}/option/{optionId}/terminate
                         $post(): Promise<dbaas.logs.Operation>;
                     }
-                } | any
+                };
             }
             output: {
                 elasticsearch: {
@@ -822,7 +825,7 @@ export interface Dbaas{
                         $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/output/elasticsearch/alias
                         $post(body?: {body: dbaas.logs.OutputElasticsearchAliasCreation}): Promise<dbaas.logs.Operation>;
-                        [keys: string]:{
+                        $(aliasId: string): {
                             // DELETE /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}
                             $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}
@@ -834,33 +837,33 @@ export interface Dbaas{
                                 $get(): Promise<string[]>;
                                 // POST /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index
                                 $post(body?: {body: dbaas.logs.OutputElasticsearchAliasIndexCreation}): Promise<dbaas.logs.Operation>;
-                                [keys: string]:{
+                                $(indexId: string): {
                                     // DELETE /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/index/{indexId}
                                     $delete(): Promise<dbaas.logs.Operation>;
-                                } | any
+                                };
                             }
                             stream: {
                                 // GET /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream
                                 $get(): Promise<string[]>;
                                 // POST /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream
                                 $post(body?: {body: dbaas.logs.OutputElasticsearchAliasStreamCreation}): Promise<dbaas.logs.Operation>;
-                                [keys: string]:{
+                                $(streamId: string): {
                                     // DELETE /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/stream/{streamId}
                                     $delete(): Promise<dbaas.logs.Operation>;
-                                } | any
+                                };
                             }
                             url: {
                                 // GET /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/url
                                 $get(): Promise<dbaas.logs.Url[]>;
                             }
-                        } | any
+                        };
                     }
                     index: {
                         // GET /dbaas/logs/{serviceName}/output/elasticsearch/index
                         $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/output/elasticsearch/index
                         $post(body?: {body: dbaas.logs.OutputElasticsearchIndexCreation}): Promise<dbaas.logs.Operation>;
-                        [keys: string]:{
+                        $(indexId: string): {
                             // DELETE /dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}
                             $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}
@@ -871,7 +874,7 @@ export interface Dbaas{
                                 // GET /dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url
                                 $get(): Promise<dbaas.logs.Url[]>;
                             }
-                        } | any
+                        };
                     }
                 }
                 graylog: {
@@ -880,7 +883,7 @@ export interface Dbaas{
                         $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/output/graylog/dashboard
                         $post(body?: {body: dbaas.logs.OutputGraylogDashboardCreation}): Promise<dbaas.logs.Operation>;
-                        [keys: string]:{
+                        $(dashboardId: string): {
                             // DELETE /dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}
                             $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}
@@ -895,14 +898,14 @@ export interface Dbaas{
                                 // GET /dbaas/logs/{serviceName}/output/graylog/dashboard/{dashboardId}/url
                                 $get(): Promise<dbaas.logs.Url[]>;
                             }
-                        } | any
+                        };
                     }
                     stream: {
                         // GET /dbaas/logs/{serviceName}/output/graylog/stream
                         $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/output/graylog/stream
                         $post(body?: {body: dbaas.logs.OutputGraylogStreamCreation}): Promise<dbaas.logs.Operation>;
-                        [keys: string]:{
+                        $(streamId: string): {
                             // DELETE /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}
                             $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}
@@ -914,44 +917,44 @@ export interface Dbaas{
                                 $get(): Promise<string[]>;
                                 // POST /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert
                                 $post(body?: {body: dbaas.logs.OutputGraylogStreamAlertCreation}): Promise<dbaas.logs.Operation>;
-                                [keys: string]:{
+                                $(alertId: string): {
                                     // DELETE /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}
                                     $delete(): Promise<dbaas.logs.Operation>;
                                     // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}
                                     $get(): Promise<dbaas.logs.StreamAlertCondition>;
                                     // PUT /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}
                                     $put(body?: {body: dbaas.logs.OutputGraylogStreamAlertUpdate}): Promise<dbaas.logs.Operation>;
-                                } | any
+                                };
                             }
                             archive: {
                                 // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive
                                 $get(): Promise<string[]>;
-                                [keys: string]:{
+                                $(archiveId: string): {
                                     // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}
                                     $get(): Promise<dbaas.logs.Archive>;
                                     url: {
                                         // POST /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/url
                                         $post(): Promise<dbaas.logs.ArchiveUrl>;
                                     }
-                                } | any
+                                };
                             }
                             rule: {
                                 // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule
                                 $get(): Promise<string[]>;
                                 // POST /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule
                                 $post(body?: {body: dbaas.logs.OutputGraylogStreamRuleCreation}): Promise<dbaas.logs.Operation>;
-                                [keys: string]:{
+                                $(ruleId: string): {
                                     // DELETE /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}
                                     $delete(): Promise<dbaas.logs.Operation>;
                                     // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}
                                     $get(): Promise<dbaas.logs.StreamRule[]>;
-                                } | any
+                                };
                             }
                             url: {
                                 // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/url
                                 $get(): Promise<dbaas.logs.Url[]>;
                             }
-                        } | any
+                        };
                     }
                 }
             }
@@ -964,7 +967,7 @@ export interface Dbaas{
                 $get(): Promise<string[]>;
                 // POST /dbaas/logs/{serviceName}/role
                 $post(body?: {body: dbaas.logs.RoleCreation}): Promise<dbaas.logs.Operation>;
-                [keys: string]:{
+                $(roleId: string): {
                     // DELETE /dbaas/logs/{serviceName}/role/{roleId}
                     $delete(): Promise<dbaas.logs.Operation>;
                     // GET /dbaas/logs/{serviceName}/role/{roleId}
@@ -976,14 +979,14 @@ export interface Dbaas{
                         $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/role/{roleId}/member
                         $post(body?: {body: dbaas.logs.RoleMemberCreation}): Promise<dbaas.logs.Operation>;
-                        [keys: string]:{
+                        $(username: string): {
                             // DELETE /dbaas/logs/{serviceName}/role/{roleId}/member/{username}
                             $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/role/{roleId}/member/{username}
                             $get(): Promise<dbaas.logs.Member>;
                             // PUT /dbaas/logs/{serviceName}/role/{roleId}/member/{username}
                             $put(body?: {body: dbaas.logs.RoleMemberUpdate}): Promise<dbaas.logs.Operation>;
-                        } | any
+                        };
                     }
                     permission: {
                         // GET /dbaas/logs/{serviceName}/role/{roleId}/permission
@@ -1004,14 +1007,14 @@ export interface Dbaas{
                             // POST /dbaas/logs/{serviceName}/role/{roleId}/permission/stream
                             $post(body?: {body: dbaas.logs.RolePermissionStreamCreation}): Promise<dbaas.logs.Operation>;
                         }
-                        [keys: string]:{
+                        $(permissionId: string): {
                             // DELETE /dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}
                             $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}
                             $get(): Promise<dbaas.logs.Permission[]>;
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
             serviceInfos: {
                 // GET /dbaas/logs/{serviceName}/serviceInfos
@@ -1024,12 +1027,12 @@ export interface Dbaas{
                 $get(): Promise<string[]>;
                 // POST /dbaas/logs/{serviceName}/token
                 $post(body?: {body: dbaas.logs.TokenCreation}): Promise<dbaas.logs.Operation>;
-                [keys: string]:{
+                $(tokenId: string): {
                     // DELETE /dbaas/logs/{serviceName}/token/{tokenId}
                     $delete(): Promise<dbaas.logs.Operation>;
                     // GET /dbaas/logs/{serviceName}/token/{tokenId}
                     $get(): Promise<dbaas.logs.Token>;
-                } | any
+                };
             }
             url: {
                 // GET /dbaas/logs/{serviceName}/url
@@ -1041,7 +1044,7 @@ export interface Dbaas{
                     $post(body?: {body: dbaas.logs.UserChangePasswordCreation}): Promise<dbaas.logs.Operation>;
                 }
             }
-        } | any
+        };
     }
 }
 // Api

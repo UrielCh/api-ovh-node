@@ -1,41 +1,41 @@
 import Ovh from '@ovh-api/api';
-import ApiWeb, { HostingWebService } from '@ovh-api/hosting-web'
-import ApiDom from '@ovh-api/domain'
-import ApiMe, { ApiApplication, ApiCredential } from '@ovh-api/me'
+import ApiWeb, { proxyHostingWeb, hosting } from '@ovh-api/hosting-web'
+import ApiDom, { proxyDomain }from '@ovh-api/domain'
+import ApiMe, { proxyMe, api } from '@ovh-api/me'
 import Promise from 'bluebird'
 import dns from 'dns';
 
 const ovh = new Ovh({ accessRules: 'GET /hosting/web, GET /hosting/web/*, GET /domain, POST /hosting/web/*/terminate, GET /me/api*, DELETE /me/api*' });
-const apiWeb = new ApiWeb(ovh);
-const apiDom = new ApiDom(ovh);
-const apiMe = new ApiMe(ovh);
+const apiWeb = proxyHostingWeb(ovh);
+const apiDom = proxyDomain(ovh);
+const apiMe = proxyMe(ovh);
 
 let resolve4 = Promise.promisify(dns.resolve4);
 
 async function cleanApiCert() {
-    let credencials: ApiCredential[] = [];
-    let applicationMap = new Map<Number, ApiApplication>();
+    let credencials: api.Credential[] = []; 
+    let applicationMap = new Map<Number, api.Application>();
     try {
         let cnt = 0;
-        let certIds = await apiMe.get('/me/api/credential') // , {status: 'validated'}
+        let certIds = await apiMe.api.credential.$get() // , {status: 'validated'}
         let total = certIds.length;
         let now = new Date().getTime();
         console.log(`Found ${total} credentials\n`)
         await Promise.map(certIds, async (credentialId) => {
-            let credencial = await apiMe.get('/me/api/credential/{credentialId}', { credentialId });
+            let credencial = await apiMe.api.credential.$(credentialId).$get();
             let {expiration} = credencial;
 
             if (expiration && new Date(expiration).getTime() < now) {
                 console.log(new Date(expiration).getTime() < now);
                 console.log(`${++cnt}/${total} delete Old Cert ${credentialId} expired since ${credencial.expiration}`);
-                await apiMe.delete('/me/api/credential/{credentialId}', { credentialId });
+                await apiMe.api.credential.$(credentialId).$delete();// ('/me/api/credential/{credentialId}', { credentialId });
             }
 
             total--
             let { applicationId } = credencial;
             if (!applicationMap.has(applicationId)) {
                 try {
-                    const app = await apiMe.get('/me/api/application/{applicationId}', { applicationId })
+                    const app = await apiMe.api.application.$(applicationId).$get();
                     applicationMap.set(applicationId, app);
                 } catch (err) {
                     if (String(err).indexOf('does not exist')) {
@@ -74,14 +74,14 @@ async function cleanDomain() {
         let cnt = 0;
         let doms = await apiDom.get('/domain')
         console.log(`${doms.length} Domaines`)
-        let hostings = await apiWeb.get('/hosting/web')
+        let hostings = await apiWeb.web.$get()
         console.log(`${hostings.length} hostings`)
         let hdoms = new Set(doms);
         let total = hostings.length;
         hostings = hostings.filter(h => !hdoms.has(h));
         console.log(`${hostings.length}/${total} dosting have no matching domaines`);
-        await Promise.map(hostings, async serviceName => {
-            let hosting: HostingWebService = await apiWeb.get("/hosting/web/{serviceName}", { serviceName })
+        await Promise.map(hostings, async (serviceName: string) => {
+            let hosting: hosting.web.Service = await apiWeb.web.$(serviceName).$get();
             let resolved;
             if (hosting.offer != 'start10m')
                 return;
@@ -90,7 +90,7 @@ async function cleanDomain() {
                 console.log(++cnt + ') KEEP ' + serviceName + ' resolved:' + resolved);
             } catch (e) {
                 try {
-                    await apiWeb.post("/hosting/web/{serviceName}/terminate", { serviceName })
+                    await apiWeb.web.$(serviceName).terminate.$post();
                     console.log(++cnt + ') DROP ' + serviceName + " success");
                 } catch (e1) {
                     console.log(++cnt + ') DROP ' + serviceName + " FAILED " + e1);

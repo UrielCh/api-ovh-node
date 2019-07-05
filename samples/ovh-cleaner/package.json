@@ -10,16 +10,16 @@
     "build:watch": "tsc --watch"
   },
   "dependencies": {
-    "@ovh-api/api": "^1.2.4",
-    "@ovh-api/domain": "^1.2.4",
-    "@ovh-api/hosting-web": "^1.2.4",
-    "@ovh-api/me": "^1.2.4",
+    "@ovh-api/api": "file:../../code/api",
+    "@ovh-api/domain": "file:../../packages/domain",
+    "@ovh-api/hosting-web": "file:../../packages/hosting-web",
+    "@ovh-api/me": "file:../../packages/me",
     "bluebird": "^3.5.5"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.27",
     "@types/node": "^12.0.10",
-    "ts-node": "^8.1.0",
+    "ts-node": "^8.3.0",
     "typescript": "^3.4.5"
   }
 }

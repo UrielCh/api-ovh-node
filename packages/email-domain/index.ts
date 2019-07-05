@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace domain {
     //domain.DomainFilterActionEnum
@@ -319,6 +319,9 @@ export namespace zone {
     //zone.NamedResolutionFieldTypeEnum
     export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
 }
+export function proxyEmailDomain(ovhEngine: OvhRequestable): Email {
+    return buildOvhProxy(ovhEngine, '/email/domain');
+}
 // Apis harmony
 // path /email
 export interface Email{
@@ -328,7 +331,7 @@ export interface Email{
         delegatedAccount: {
             // GET /email/domain/delegatedAccount
             $get(param?: {accountName?: string, domain?: string}): Promise<string[]>;
-            [keys: string]:{
+            $(email: string): {
                 // GET /email/domain/delegatedAccount/{email}
                 $get(): Promise<email.domain.AccountDelegated>;
                 // PUT /email/domain/delegatedAccount/{email}
@@ -342,7 +345,7 @@ export interface Email{
                     $get(): Promise<string[]>;
                     // POST /email/domain/delegatedAccount/{email}/filter
                     $post(body?: {action: domain.DomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domain.DomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
-                    [keys: string]:{
+                    $(name: string): {
                         // DELETE /email/domain/delegatedAccount/{email}/filter/{name}
                         $delete(): Promise<email.domain.TaskFilter[]>;
                         // GET /email/domain/delegatedAccount/{email}/filter/{name}
@@ -360,14 +363,14 @@ export interface Email{
                             $get(): Promise<number[]>;
                             // POST /email/domain/delegatedAccount/{email}/filter/{name}/rule
                             $post(body?: {header: string, operand: domain.DomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
-                            [keys: string]:{
+                            $(id: number): {
                                 // DELETE /email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}
                                 $delete(): Promise<email.domain.TaskFilter[]>;
                                 // GET /email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}
                                 $get(): Promise<email.domain.Rule>;
-                            } | any
+                            };
                         }
-                    } | any
+                    };
                 }
                 responder: {
                     // DELETE /email/domain/delegatedAccount/{email}/responder
@@ -387,13 +390,13 @@ export interface Email{
                     // POST /email/domain/delegatedAccount/{email}/usage
                     $post(): Promise<domain.DomainUsageAccountStruct>;
                 }
-            } | any
+            };
         }
         mailingListLimits: {
             // GET /email/domain/mailingListLimits
             $get(param?: {moderatorMessage: boolean}): Promise<domain.DomainMlLimits>;
         }
-        [keys: string]:{
+        $(domain: string): {
             // GET /email/domain/{domain}
             $get(): Promise<email.domain.DomainService>;
             account: {
@@ -401,7 +404,7 @@ export interface Email{
                 $get(param?: {accountName?: string, description?: string}): Promise<string[]>;
                 // POST /email/domain/{domain}/account
                 $post(body?: {accountName: string, description?: string, password: string, size?: number}): Promise<email.domain.TaskPop>;
-                [keys: string]:{
+                $(accountName: string): {
                     // DELETE /email/domain/{domain}/account/{accountName}
                     $delete(): Promise<email.domain.TaskPop>;
                     // GET /email/domain/{domain}/account/{accountName}
@@ -417,19 +420,19 @@ export interface Email{
                         $get(): Promise<string[]>;
                         // POST /email/domain/{domain}/account/{accountName}/delegation
                         $post(body?: {accountId: string}): Promise<string>;
-                        [keys: string]:{
+                        $(accountId: string): {
                             // DELETE /email/domain/{domain}/account/{accountName}/delegation/{accountId}
                             $delete(): Promise<string>;
                             // GET /email/domain/{domain}/account/{accountName}/delegation/{accountId}
                             $get(): Promise<email.domain.Delegation>;
-                        } | any
+                        };
                     }
                     filter: {
                         // GET /email/domain/{domain}/account/{accountName}/filter
                         $get(): Promise<string[]>;
                         // POST /email/domain/{domain}/account/{accountName}/filter
                         $post(body?: {action: domain.DomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domain.DomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
-                        [keys: string]:{
+                        $(name: string): {
                             // DELETE /email/domain/{domain}/account/{accountName}/filter/{name}
                             $delete(): Promise<email.domain.TaskFilter[]>;
                             // GET /email/domain/{domain}/account/{accountName}/filter/{name}
@@ -447,25 +450,25 @@ export interface Email{
                                 $get(): Promise<number[]>;
                                 // POST /email/domain/{domain}/account/{accountName}/filter/{name}/rule
                                 $post(body?: {header: string, operand: domain.DomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
-                                [keys: string]:{
+                                $(id: number): {
                                     // DELETE /email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}
                                     $delete(): Promise<email.domain.TaskFilter[]>;
                                     // GET /email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}
                                     $get(): Promise<email.domain.Rule>;
-                                } | any
+                                };
                             }
-                        } | any
+                        };
                     }
                     migrate: {
                         // GET /email/domain/{domain}/account/{accountName}/migrate
                         $get(param?: {type?: email.domain.MigrationServiceType}): Promise<string[]>;
-                        [keys: string]:{
+                        $(destinationServiceName: string): {
                             // GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}
                             $get(): Promise<email.domain.MigrationService>;
                             destinationEmailAddress: {
                                 // GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress
                                 $get(param?: {quota?: number}): Promise<string[]>;
-                                [keys: string]:{
+                                $(destinationEmailAddress: string): {
                                     // GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}
                                     $get(): Promise<email.domain.MigrationAccount>;
                                     checkMigrate: {
@@ -476,9 +479,9 @@ export interface Email{
                                         // POST /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate
                                         $post(body?: {password: string}): Promise<email.domain.TaskPop>;
                                     }
-                                } | any
+                                };
                             }
-                        } | any
+                        };
                     }
                     updateUsage: {
                         // POST /email/domain/{domain}/account/{accountName}/updateUsage
@@ -488,19 +491,19 @@ export interface Email{
                         // GET /email/domain/{domain}/account/{accountName}/usage
                         $get(): Promise<domain.DomainUsageAccountStruct>;
                     }
-                } | any
+                };
             }
             acl: {
                 // GET /email/domain/{domain}/acl
                 $get(): Promise<string[]>;
                 // POST /email/domain/{domain}/acl
                 $post(body?: {accountId: string}): Promise<email.domain.Acl>;
-                [keys: string]:{
+                $(accountId: string): {
                     // DELETE /email/domain/{domain}/acl/{accountId}
                     $delete(): Promise<void>;
                     // GET /email/domain/{domain}/acl/{accountId}
                     $get(): Promise<email.domain.Acl>;
-                } | any
+                };
             }
             changeContact: {
                 // POST /email/domain/{domain}/changeContact
@@ -527,7 +530,7 @@ export interface Email{
                 $get(param?: {name?: string}): Promise<string[]>;
                 // POST /email/domain/{domain}/mailingList
                 $post(body?: {language: domain.DomainMlLanguageEnum, name: string, options: domain.DomainMlOptionsStruct, ownerEmail: string, replyTo?: string}): Promise<email.domain.TaskMl>;
-                [keys: string]:{
+                $(name: string): {
                     // DELETE /email/domain/{domain}/mailingList/{name}
                     $delete(): Promise<email.domain.TaskMl>;
                     // GET /email/domain/{domain}/mailingList/{name}
@@ -543,12 +546,12 @@ export interface Email{
                         $get(param?: {email?: string}): Promise<string[]>;
                         // POST /email/domain/{domain}/mailingList/{name}/moderator
                         $post(body?: {email: string}): Promise<email.domain.TaskMl>;
-                        [keys: string]:{
+                        $(email: string): {
                             // DELETE /email/domain/{domain}/mailingList/{name}/moderator/{email}
                             $delete(): Promise<email.domain.TaskMl>;
                             // GET /email/domain/{domain}/mailingList/{name}/moderator/{email}
                             $get(): Promise<email.domain.Moderator>;
-                        } | any
+                        };
                     }
                     sendListByEmail: {
                         // POST /email/domain/{domain}/mailingList/{name}/sendListByEmail
@@ -559,14 +562,14 @@ export interface Email{
                         $get(param?: {email?: string}): Promise<string[]>;
                         // POST /email/domain/{domain}/mailingList/{name}/subscriber
                         $post(body?: {email: string}): Promise<email.domain.TaskMl>;
-                        [keys: string]:{
+                        $(email: string): {
                             // DELETE /email/domain/{domain}/mailingList/{name}/subscriber/{email}
                             $delete(): Promise<email.domain.TaskMl>;
                             // GET /email/domain/{domain}/mailingList/{name}/subscriber/{email}
                             $get(): Promise<email.domain.Subscriber>;
-                        } | any
+                        };
                     }
-                } | any
+                };
             }
             migrateDelegationV3toV6: {
                 // POST /email/domain/{domain}/migrateDelegationV3toV6
@@ -585,7 +588,7 @@ export interface Email{
                 $get(param?: {from?: string, to?: string}): Promise<string[]>;
                 // POST /email/domain/{domain}/redirection
                 $post(body?: {from: string, localCopy: boolean, to: string}): Promise<email.domain.TaskSpecialAccount>;
-                [keys: string]:{
+                $(id: string): {
                     // DELETE /email/domain/{domain}/redirection/{id}
                     $delete(): Promise<email.domain.TaskSpecialAccount>;
                     // GET /email/domain/{domain}/redirection/{id}
@@ -594,21 +597,21 @@ export interface Email{
                         // POST /email/domain/{domain}/redirection/{id}/changeRedirection
                         $post(body?: {to: string}): Promise<email.domain.TaskSpecialAccount>;
                     }
-                } | any
+                };
             }
             responder: {
                 // GET /email/domain/{domain}/responder
                 $get(param?: {account?: string}): Promise<string[]>;
                 // POST /email/domain/{domain}/responder
                 $post(body?: {account: string, content: string, copy: boolean, copyTo?: string, from?: string, to?: string}): Promise<email.domain.TaskSpecialAccount>;
-                [keys: string]:{
+                $(account: string): {
                     // DELETE /email/domain/{domain}/responder/{account}
                     $delete(): Promise<email.domain.TaskSpecialAccount>;
                     // GET /email/domain/{domain}/responder/{account}
                     $get(): Promise<email.domain.Responder>;
                     // PUT /email/domain/{domain}/responder/{account}
                     $put(body?: {body: email.domain.Responder}): Promise<void>;
-                } | any
+                };
             }
             serviceInfos: {
                 // GET /email/domain/{domain}/serviceInfos
@@ -624,49 +627,49 @@ export interface Email{
                 account: {
                     // GET /email/domain/{domain}/task/account
                     $get(param?: {name?: string}): Promise<number[]>;
-                    [keys: string]:{
+                    $(id: number): {
                         // GET /email/domain/{domain}/task/account/{id}
                         $get(): Promise<email.domain.TaskPop>;
-                    } | any
+                    };
                 }
                 filter: {
                     // GET /email/domain/{domain}/task/filter
                     $get(param?: {account?: string}): Promise<number[]>;
-                    [keys: string]:{
+                    $(id: number): {
                         // GET /email/domain/{domain}/task/filter/{id}
                         $get(): Promise<email.domain.TaskFilter>;
-                    } | any
+                    };
                 }
                 mailinglist: {
                     // GET /email/domain/{domain}/task/mailinglist
                     $get(param?: {account?: string}): Promise<number[]>;
-                    [keys: string]:{
+                    $(id: number): {
                         // GET /email/domain/{domain}/task/mailinglist/{id}
                         $get(): Promise<email.domain.TaskMl>;
-                    } | any
+                    };
                 }
                 redirection: {
                     // GET /email/domain/{domain}/task/redirection
                     $get(param?: {account?: string}): Promise<number[]>;
-                    [keys: string]:{
+                    $(id: number): {
                         // GET /email/domain/{domain}/task/redirection/{id}
                         $get(): Promise<email.domain.TaskSpecialAccount>;
-                    } | any
+                    };
                 }
                 responder: {
                     // GET /email/domain/{domain}/task/responder
                     $get(param?: {account?: string}): Promise<number[]>;
-                    [keys: string]:{
+                    $(id: number): {
                         // GET /email/domain/{domain}/task/responder/{id}
                         $get(): Promise<email.domain.TaskSpecialAccount>;
-                    } | any
+                    };
                 }
             }
             terminate: {
                 // POST /email/domain/{domain}/terminate
                 $post(): Promise<string>;
             }
-        } | any
+        };
     }
 }
 // Api

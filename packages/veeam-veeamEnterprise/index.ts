@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace service {
     //service.RenewType
@@ -64,13 +64,16 @@ export namespace veeamEnterprise {
     //veeamEnterprise.TaskStateEnum
     export type TaskStateEnum = "canceled" | "doing" | "done" | "error" | "toCreate" | "todo" | "unfixed" | "waiting" | "waitingForChilds"
 }
+export function proxyVeeamVeeamEnterprise(ovhEngine: OvhRequestable): Veeam {
+    return buildOvhProxy(ovhEngine, '/veeam/veeamEnterprise');
+}
 // Apis harmony
 // path /veeam
 export interface Veeam{
     veeamEnterprise: {
         // GET /veeam/veeamEnterprise
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /veeam/veeamEnterprise/{serviceName}
             $get(): Promise<veeam.veeamEnterprise.Account>;
             confirmTermination: {
@@ -90,10 +93,10 @@ export interface Veeam{
             task: {
                 // GET /veeam/veeamEnterprise/{serviceName}/task
                 $get(param?: {name?: string, state?: veeamEnterprise.TaskStateEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /veeam/veeamEnterprise/{serviceName}/task/{taskId}
                     $get(): Promise<veeam.veeamEnterprise.Task>;
-                } | any
+                };
             }
             terminate: {
                 // POST /veeam/veeamEnterprise/{serviceName}/terminate
@@ -103,7 +106,7 @@ export interface Veeam{
                 // POST /veeam/veeamEnterprise/{serviceName}/update
                 $post(body?: {ip: string, password: string, port: number, username: string}): Promise<veeam.veeamEnterprise.Task[]>;
             }
-        } | any
+        };
     }
 }
 // Api

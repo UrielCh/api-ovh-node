@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace license {
     //license.ActionType
@@ -117,6 +117,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyLicenseVirtuozzo(ovhEngine: OvhRequestable): License {
+    return buildOvhProxy(ovhEngine, '/license/virtuozzo');
+}
 // Apis harmony
 // path /license
 export interface License{
@@ -127,7 +130,7 @@ export interface License{
             // GET /license/virtuozzo/orderableVersions
             $get(param?: {ip: string}): Promise<license.VirtuozzoOrderConfiguration[]>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /license/virtuozzo/{serviceName}
             $get(): Promise<license.virtuozzo.Virtuozzo>;
             // PUT /license/virtuozzo/{serviceName}
@@ -151,12 +154,12 @@ export interface License{
             option: {
                 // GET /license/virtuozzo/{serviceName}/option
                 $get(param?: {label?: license.OptionLabel}): Promise<license.OptionLabel[]>;
-                [keys: string]:{
+                $(label: license.OptionLabel): {
                     // DELETE /license/virtuozzo/{serviceName}/option/{label}
                     $delete(): Promise<license.Task>;
                     // GET /license/virtuozzo/{serviceName}/option/{label}
                     $get(): Promise<license.Option>;
-                } | any
+                };
             }
             serviceInfos: {
                 // GET /license/virtuozzo/{serviceName}/serviceInfos
@@ -167,16 +170,16 @@ export interface License{
             tasks: {
                 // GET /license/virtuozzo/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /license/virtuozzo/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
-                } | any
+                };
             }
             terminate: {
                 // POST /license/virtuozzo/{serviceName}/terminate
                 $post(): Promise<string>;
             }
-        } | any
+        };
     }
 }
 // Api

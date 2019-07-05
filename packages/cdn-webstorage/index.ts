@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace cdn {
     export namespace webstorage {
@@ -64,13 +64,16 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyCdnWebstorage(ovhEngine: OvhRequestable): Cdn {
+    return buildOvhProxy(ovhEngine, '/cdn/webstorage');
+}
 // Apis harmony
 // path /cdn
 export interface Cdn{
     webstorage: {
         // GET /cdn/webstorage
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /cdn/webstorage/{serviceName}
             $get(): Promise<cdn.webstorage.Account>;
             credentials: {
@@ -87,7 +90,7 @@ export interface Cdn{
                 // GET /cdn/webstorage/{serviceName}/statistics
                 $get(param?: {period: cdn.webstorage.StatsPeriodEnum, type: cdn.webstorage.StatsTypeEnum}): Promise<cdn.webstorage.StatsDataType[]>;
             }
-        } | any
+        };
     }
 }
 // Api

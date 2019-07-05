@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace analytics {
     //analytics.Cluster
@@ -157,6 +157,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyAnalytics(ovhEngine: OvhRequestable): Analytics {
+    return buildOvhProxy(ovhEngine, '/analytics');
+}
 // Apis harmony
 // path /analytics
 export interface Analytics{
@@ -169,7 +172,7 @@ export interface Analytics{
     platforms: {
         // GET /analytics/platforms
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /analytics/platforms/{serviceName}
             $get(): Promise<analytics.Cluster>;
             activity: {
@@ -191,10 +194,10 @@ export interface Analytics{
             nodes: {
                 // GET /analytics/platforms/{serviceName}/nodes
                 $get(): Promise<string[]>;
-                [keys: string]:{
+                $(nodeId: string): {
                     // GET /analytics/platforms/{serviceName}/nodes/{nodeId}
                     $get(): Promise<analytics.cluster.Node>;
-                } | any
+                };
             }
             serviceInfos: {
                 // GET /analytics/platforms/{serviceName}/serviceInfos
@@ -210,7 +213,7 @@ export interface Analytics{
                 // POST /analytics/platforms/{serviceName}/terminate
                 $post(): Promise<string>;
             }
-        } | any
+        };
     }
 }
 // Api

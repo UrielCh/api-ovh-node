@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace msServices {
     //msServices.Account
@@ -272,6 +272,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyMsServices(ovhEngine: OvhRequestable): MsServices {
+    return buildOvhProxy(ovhEngine, '/msServices');
+}
 // Apis harmony
 // path /msServices
 export interface MsServices{
@@ -280,7 +283,7 @@ export interface MsServices{
     sharepoint: {
         // GET /msServices/sharepoint
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(domain: string): {
             // GET /msServices/sharepoint/{domain}
             $get(): Promise<msServices.SharepointServiceInfo>;
             serviceInfos: {
@@ -289,9 +292,9 @@ export interface MsServices{
                 // PUT /msServices/sharepoint/{domain}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-        } | any
+        };
     }
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /msServices/{serviceName}
         $get(): Promise<msServices.ActiveDirectoryOrganizationalUnit>;
         // PUT /msServices/{serviceName}
@@ -299,7 +302,7 @@ export interface MsServices{
         account: {
             // GET /msServices/{serviceName}/account
             $get(param?: {id?: number, userPrincipalName?: string}): Promise<string[]>;
-            [keys: string]:{
+            $(userPrincipalName: string): {
                 // GET /msServices/{serviceName}/account/{userPrincipalName}
                 $get(): Promise<msServices.Account>;
                 // PUT /msServices/{serviceName}/account/{userPrincipalName}
@@ -364,7 +367,7 @@ export interface MsServices{
                         $post(): Promise<msServices.Task>;
                     }
                 }
-            } | any
+            };
         }
         exchange: {
             // GET /msServices/{serviceName}/exchange
@@ -378,10 +381,10 @@ export interface MsServices{
             task: {
                 // GET /msServices/{serviceName}/exchange/task
                 $get(): Promise<number[]>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /msServices/{serviceName}/exchange/task/{id}
                     $get(): Promise<msServices.exchangeTask>;
-                } | any
+                };
             }
         }
         sharepoint: {
@@ -404,10 +407,10 @@ export interface MsServices{
             task: {
                 // GET /msServices/{serviceName}/sharepoint/task
                 $get(param?: {function_?: string, status?: msServices.TaskStatusEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /msServices/{serviceName}/sharepoint/task/{id}
                     $get(): Promise<msServices.sharepointTask>;
-                } | any
+                };
             }
         }
         sync: {
@@ -433,24 +436,24 @@ export interface MsServices{
         task: {
             // GET /msServices/{serviceName}/task
             $get(param?: {function_?: msServices.TaskFunctionEnum, status?: msServices.TaskStatusEnum}): Promise<number[]>;
-            [keys: string]:{
+            $(id: number): {
                 // GET /msServices/{serviceName}/task/{id}
                 $get(): Promise<msServices.Task>;
-            } | any
+            };
         }
         upnSuffix: {
             // GET /msServices/{serviceName}/upnSuffix
             $get(): Promise<string[]>;
             // POST /msServices/{serviceName}/upnSuffix
             $post(body?: {suffix: string}): Promise<msServices.Task>;
-            [keys: string]:{
+            $(suffix: string): {
                 // DELETE /msServices/{serviceName}/upnSuffix/{suffix}
                 $delete(): Promise<msServices.Task>;
                 // GET /msServices/{serviceName}/upnSuffix/{suffix}
                 $get(): Promise<msServices.upnSuffix>;
-            } | any
+            };
         }
-    } | any
+    };
 }
 // Api
 type PathsMsServicesGET = '/msServices' |

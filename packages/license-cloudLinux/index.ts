@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace license {
     //license.ActionType
@@ -84,6 +84,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyLicenseCloudLinux(ovhEngine: OvhRequestable): License {
+    return buildOvhProxy(ovhEngine, '/license/cloudLinux');
+}
 // Apis harmony
 // path /license
 export interface License{
@@ -94,7 +97,7 @@ export interface License{
             // GET /license/cloudLinux/orderableVersions
             $get(param?: {ip: string}): Promise<license.CloudLinuxOrderConfiguration[]>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /license/cloudLinux/{serviceName}
             $get(): Promise<license.cloudLinux.CloudLinux>;
             confirmTermination: {
@@ -110,16 +113,16 @@ export interface License{
             tasks: {
                 // GET /license/cloudLinux/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /license/cloudLinux/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
-                } | any
+                };
             }
             terminate: {
                 // POST /license/cloudLinux/{serviceName}/terminate
                 $post(): Promise<string>;
             }
-        } | any
+        };
     }
 }
 // Api

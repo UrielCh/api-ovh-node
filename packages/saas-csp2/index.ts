@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace msServices {
     //msServices.LicensePeriodEnum
@@ -121,13 +121,16 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxySaasCsp2(ovhEngine: OvhRequestable): Saas {
+    return buildOvhProxy(ovhEngine, '/saas/csp2');
+}
 // Apis harmony
 // path /saas
 export interface Saas{
     csp2: {
         // GET /saas/csp2
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /saas/csp2/{serviceName}
             $get(): Promise<saas.csp2.OfficeTenant>;
             // PUT /saas/csp2/{serviceName}
@@ -147,10 +150,10 @@ export interface Saas{
             orderableLicenses: {
                 // GET /saas/csp2/{serviceName}/orderableLicenses
                 $get(): Promise<number[]>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /saas/csp2/{serviceName}/orderableLicenses/{id}
                     $get(): Promise<saas.csp2.OfficeLicence>;
-                } | any
+                };
             }
             serviceInfos: {
                 // GET /saas/csp2/{serviceName}/serviceInfos
@@ -163,7 +166,7 @@ export interface Saas{
                 $get(): Promise<number[]>;
                 // POST /saas/csp2/{serviceName}/subscription
                 $post(body?: {licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
-                [keys: string]:{
+                $(id: number): {
                     // DELETE /saas/csp2/{serviceName}/subscription/{id}
                     $delete(): Promise<saas.csp2.OfficeTask>;
                     // GET /saas/csp2/{serviceName}/subscription/{id}
@@ -184,21 +187,21 @@ export interface Saas{
                         // POST /saas/csp2/{serviceName}/subscription/{id}/orderAddon
                         $post(body?: {licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
                     }
-                } | any
+                };
             }
             task: {
                 // GET /saas/csp2/{serviceName}/task
                 $get(): Promise<number[]>;
-                [keys: string]:{
+                $(id: number): {
                     // GET /saas/csp2/{serviceName}/task/{id}
                     $get(): Promise<saas.csp2.OfficeTask>;
-                } | any
+                };
             }
             usageStatistics: {
                 // GET /saas/csp2/{serviceName}/usageStatistics
                 $get(param?: {timePeriod: msServices.LicensePeriodEnum}): Promise<saas.csp2.Statistics[]>;
             }
-        } | any
+        };
     }
 }
 // Api

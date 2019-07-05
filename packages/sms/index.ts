@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace reference {
     //reference.CountryEnum
@@ -391,6 +391,9 @@ export namespace telephony {
     //telephony.TaskStatusEnum
     export type TaskStatusEnum = "doing" | "done" | "error" | "pause" | "todo"
 }
+export function proxySms(ovhEngine: OvhRequestable): Sms {
+    return buildOvhProxy(ovhEngine, '/sms');
+}
 // Apis harmony
 // path /sms
 export interface Sms{
@@ -403,7 +406,7 @@ export interface Sms{
     virtualNumbers: {
         // GET /sms/virtualNumbers
         $get(): Promise<string[]>;
-        [keys: string]:{
+        $(number: string): {
             // GET /sms/virtualNumbers/{number}
             $get(): Promise<sms.VirtualNumberGenericService>;
             serviceInfos: {
@@ -412,9 +415,9 @@ export interface Sms{
                 // PUT /sms/virtualNumbers/{number}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-        } | any
+        };
     }
-    [keys: string]:{
+    $(serviceName: string): {
         // GET /sms/{serviceName}
         $get(): Promise<sms.Account>;
         // PUT /sms/{serviceName}
@@ -422,12 +425,12 @@ export interface Sms{
         blacklists: {
             // GET /sms/{serviceName}/blacklists
             $get(): Promise<string[]>;
-            [keys: string]:{
+            $(number: string): {
                 // DELETE /sms/{serviceName}/blacklists/{number}
                 $delete(): Promise<void>;
                 // GET /sms/{serviceName}/blacklists/{number}
                 $get(): Promise<sms.Blacklist>;
-            } | any
+            };
         }
         document: {
             // GET /sms/{serviceName}/document
@@ -442,41 +445,41 @@ export interface Sms{
             $get(): Promise<number[]>;
             // POST /sms/{serviceName}/hlr
             $post(body?: {receivers?: string[], receiversDocumentUrl?: string}): Promise<sms.SmsSendingReport>;
-            [keys: string]:{
+            $(id: number): {
                 // GET /sms/{serviceName}/hlr/{id}
                 $get(): Promise<sms.HlrLookupNumber>;
                 operator: {
                     // GET /sms/{serviceName}/hlr/{id}/operator
                     $get(): Promise<sms.Hlr>;
                 }
-            } | any
+            };
         }
         incoming: {
             // GET /sms/{serviceName}/incoming
             $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, sender?: string, tag?: string}): Promise<number[]>;
-            [keys: string]:{
+            $(id: number): {
                 // DELETE /sms/{serviceName}/incoming/{id}
                 $delete(): Promise<void>;
                 // GET /sms/{serviceName}/incoming/{id}
                 $get(): Promise<sms.Incoming>;
-            } | any
+            };
         }
         jobs: {
             // GET /sms/{serviceName}/jobs
             $get(): Promise<number[]>;
             // POST /sms/{serviceName}/jobs
             $post(body?: {charset?: sms.CharsetEnum, class?: sms.ClassEnum, coding?: sms.CodingEnum, differedPeriod?: number, message: string, noStopClause?: boolean, priority?: sms.PriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, sender?: string, senderForResponse?: boolean, tag?: string, validityPeriod?: number}): Promise<sms.SmsSendingReport>;
-            [keys: string]:{
+            $(id: number): {
                 // DELETE /sms/{serviceName}/jobs/{id}
                 $delete(): Promise<void>;
                 // GET /sms/{serviceName}/jobs/{id}
                 $get(): Promise<sms.Job>;
-            } | any
+            };
         }
         outgoing: {
             // GET /sms/{serviceName}/outgoing
             $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string}): Promise<number[]>;
-            [keys: string]:{
+            $(id: number): {
                 // DELETE /sms/{serviceName}/outgoing/{id}
                 $delete(): Promise<void>;
                 // GET /sms/{serviceName}/outgoing/{id}
@@ -485,14 +488,14 @@ export interface Sms{
                     // GET /sms/{serviceName}/outgoing/{id}/hlr
                     $get(): Promise<sms.Hlr>;
                 }
-            } | any
+            };
         }
         phonebooks: {
             // GET /sms/{serviceName}/phonebooks
             $get(): Promise<string[]>;
             // POST /sms/{serviceName}/phonebooks
             $post(body?: {name: string}): Promise<string>;
-            [keys: string]:{
+            $(bookKey: string): {
                 // DELETE /sms/{serviceName}/phonebooks/{bookKey}
                 $delete(): Promise<void>;
                 // GET /sms/{serviceName}/phonebooks/{bookKey}
@@ -512,23 +515,23 @@ export interface Sms{
                     $get(): Promise<number[]>;
                     // POST /sms/{serviceName}/phonebooks/{bookKey}/phonebookContact
                     $post(body?: {group: string, homeMobile?: string, homePhone?: string, name: string, surname: string, workMobile?: string, workPhone?: string}): Promise<number>;
-                    [keys: string]:{
+                    $(id: number): {
                         // DELETE /sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}
                         $delete(): Promise<void>;
                         // GET /sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}
                         $get(): Promise<sms.PhonebookContact>;
                         // PUT /sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}
                         $put(body?: {body: sms.PhonebookContact}): Promise<void>;
-                    } | any
+                    };
                 }
-            } | any
+            };
         }
         receivers: {
             // GET /sms/{serviceName}/receivers
             $get(): Promise<number[]>;
             // POST /sms/{serviceName}/receivers
             $post(body?: {autoUpdate: boolean, csvUrl?: string, description: string, documentId?: string, slotId: number}): Promise<sms.Receiver>;
-            [keys: string]:{
+            $(slotId: number): {
                 // DELETE /sms/{serviceName}/receivers/{slotId}
                 $delete(): Promise<void>;
                 // GET /sms/{serviceName}/receivers/{slotId}
@@ -543,7 +546,7 @@ export interface Sms{
                     // GET /sms/{serviceName}/receivers/{slotId}/csv
                     $get(): Promise<string>;
                 }
-            } | any
+            };
         }
         seeOffers: {
             // GET /sms/{serviceName}/seeOffers
@@ -554,7 +557,7 @@ export interface Sms{
             $get(): Promise<string[]>;
             // POST /sms/{serviceName}/senders
             $post(body?: {description?: string, reason?: string, sender: string}): Promise<string>;
-            [keys: string]:{
+            $(sender: string): {
                 // DELETE /sms/{serviceName}/senders/{sender}
                 $delete(): Promise<void>;
                 // GET /sms/{serviceName}/senders/{sender}
@@ -565,7 +568,7 @@ export interface Sms{
                     // POST /sms/{serviceName}/senders/{sender}/validate
                     $post(body?: {code: string}): Promise<void>;
                 }
-            } | any
+            };
         }
         sendersAvailableForValidation: {
             // GET /sms/{serviceName}/sendersAvailableForValidation
@@ -580,17 +583,17 @@ export interface Sms{
         task: {
             // GET /sms/{serviceName}/task
             $get(param?: {status?: telephony.TaskStatusEnum}): Promise<number[]>;
-            [keys: string]:{
+            $(taskId: number): {
                 // GET /sms/{serviceName}/task/{taskId}
                 $get(): Promise<sms.Task>;
-            } | any
+            };
         }
         templatesControl: {
             // GET /sms/{serviceName}/templatesControl
             $get(): Promise<string[]>;
             // POST /sms/{serviceName}/templatesControl
             $post(body?: {activity: sms.TypeTemplateEnum, description?: string, message: string, name: string, reason?: string}): Promise<void>;
-            [keys: string]:{
+            $(name: string): {
                 // DELETE /sms/{serviceName}/templatesControl/{name}
                 $delete(): Promise<void>;
                 // GET /sms/{serviceName}/templatesControl/{name}
@@ -601,7 +604,7 @@ export interface Sms{
                     // POST /sms/{serviceName}/templatesControl/{name}/relaunchValidation
                     $post(body?: {description: string, message: string}): Promise<void>;
                 }
-            } | any
+            };
         }
         transferCredits: {
             // POST /sms/{serviceName}/transferCredits
@@ -612,7 +615,7 @@ export interface Sms{
             $get(): Promise<string[]>;
             // POST /sms/{serviceName}/users
             $post(body?: {login: string, password: string}): Promise<void>;
-            [keys: string]:{
+            $(login: string): {
                 // DELETE /sms/{serviceName}/users/{login}
                 $delete(): Promise<void>;
                 // GET /sms/{serviceName}/users/{login}
@@ -626,29 +629,29 @@ export interface Sms{
                 incoming: {
                     // GET /sms/{serviceName}/users/{login}/incoming
                     $get(param?: {sender?: string, tag?: string}): Promise<number[]>;
-                    [keys: string]:{
+                    $(id: number): {
                         // DELETE /sms/{serviceName}/users/{login}/incoming/{id}
                         $delete(): Promise<void>;
                         // GET /sms/{serviceName}/users/{login}/incoming/{id}
                         $get(): Promise<sms.Incoming>;
-                    } | any
+                    };
                 }
                 jobs: {
                     // GET /sms/{serviceName}/users/{login}/jobs
                     $get(): Promise<number[]>;
                     // POST /sms/{serviceName}/users/{login}/jobs
                     $post(body?: {charset?: sms.CharsetEnum, class?: sms.ClassEnum, coding?: sms.CodingEnum, differedPeriod?: number, message: string, noStopClause?: boolean, priority?: sms.PriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, sender?: string, senderForResponse?: boolean, tag?: string, validityPeriod?: number}): Promise<sms.SmsSendingReport>;
-                    [keys: string]:{
+                    $(id: number): {
                         // DELETE /sms/{serviceName}/users/{login}/jobs/{id}
                         $delete(): Promise<void>;
                         // GET /sms/{serviceName}/users/{login}/jobs/{id}
                         $get(): Promise<sms.Job>;
-                    } | any
+                    };
                 }
                 outgoing: {
                     // GET /sms/{serviceName}/users/{login}/outgoing
                     $get(param?: {deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string}): Promise<number[]>;
-                    [keys: string]:{
+                    $(id: number): {
                         // DELETE /sms/{serviceName}/users/{login}/outgoing/{id}
                         $delete(): Promise<void>;
                         // GET /sms/{serviceName}/users/{login}/outgoing/{id}
@@ -657,14 +660,14 @@ export interface Sms{
                             // GET /sms/{serviceName}/users/{login}/outgoing/{id}/hlr
                             $get(): Promise<sms.Hlr>;
                         }
-                    } | any
+                    };
                 }
                 receivers: {
                     // GET /sms/{serviceName}/users/{login}/receivers
                     $get(): Promise<number[]>;
                     // POST /sms/{serviceName}/users/{login}/receivers
                     $post(body?: {autoUpdate: boolean, csvUrl?: string, description: string, documentId?: string, slotId: number}): Promise<sms.Receiver>;
-                    [keys: string]:{
+                    $(slotId: number): {
                         // DELETE /sms/{serviceName}/users/{login}/receivers/{slotId}
                         $delete(): Promise<void>;
                         // GET /sms/{serviceName}/users/{login}/receivers/{slotId}
@@ -679,14 +682,14 @@ export interface Sms{
                             // GET /sms/{serviceName}/users/{login}/receivers/{slotId}/csv
                             $get(): Promise<string>;
                         }
-                    } | any
+                    };
                 }
-            } | any
+            };
         }
         virtualNumbers: {
             // GET /sms/{serviceName}/virtualNumbers
             $get(): Promise<string[]>;
-            [keys: string]:{
+            $(number: string): {
                 // GET /sms/{serviceName}/virtualNumbers/{number}
                 $get(): Promise<sms.VirtualNumber>;
                 chatAccess: {
@@ -700,29 +703,29 @@ export interface Sms{
                 incoming: {
                     // GET /sms/{serviceName}/virtualNumbers/{number}/incoming
                     $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, sender?: string, tag?: string}): Promise<number[]>;
-                    [keys: string]:{
+                    $(id: number): {
                         // DELETE /sms/{serviceName}/virtualNumbers/{number}/incoming/{id}
                         $delete(): Promise<void>;
                         // GET /sms/{serviceName}/virtualNumbers/{number}/incoming/{id}
                         $get(): Promise<sms.Incoming>;
-                    } | any
+                    };
                 }
                 jobs: {
                     // GET /sms/{serviceName}/virtualNumbers/{number}/jobs
                     $get(): Promise<number[]>;
                     // POST /sms/{serviceName}/virtualNumbers/{number}/jobs
                     $post(body?: {charset?: sms.CharsetEnum, class?: sms.ClassEnum, coding?: sms.CodingEnum, differedPeriod?: number, message: string, priority?: sms.PriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, tag?: string, validityPeriod?: number}): Promise<sms.SmsSendingReport>;
-                    [keys: string]:{
+                    $(id: number): {
                         // DELETE /sms/{serviceName}/virtualNumbers/{number}/jobs/{id}
                         $delete(): Promise<void>;
                         // GET /sms/{serviceName}/virtualNumbers/{number}/jobs/{id}
                         $get(): Promise<sms.VirtualNumberJob>;
-                    } | any
+                    };
                 }
                 outgoing: {
                     // GET /sms/{serviceName}/virtualNumbers/{number}/outgoing
                     $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, deliveryReceipt?: number, differedDelivery?: number, ptt?: number, receiver?: string, sender?: string, tag?: string}): Promise<number[]>;
-                    [keys: string]:{
+                    $(id: number): {
                         // DELETE /sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}
                         $delete(): Promise<void>;
                         // GET /sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}
@@ -731,11 +734,11 @@ export interface Sms{
                             // GET /sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}/hlr
                             $get(): Promise<sms.Hlr>;
                         }
-                    } | any
+                    };
                 }
-            } | any
+            };
         }
-    } | any
+    };
 }
 // Api
 type PathsSmsGET = '/sms' |

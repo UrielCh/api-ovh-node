@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace support {
     //support.Message
@@ -49,6 +49,9 @@ export namespace support {
     //support.TicketTypeEnum
     export type TicketTypeEnum = "criticalIntervention" | "genericRequest"
 }
+export function proxySupport(ovhEngine: OvhRequestable): Support {
+    return buildOvhProxy(ovhEngine, '/support');
+}
 // Apis harmony
 // path /support
 export interface Support{
@@ -59,7 +62,7 @@ export interface Support{
             // POST /support/tickets/create
             $post(body?: {body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum}): Promise<support.NewMessageInfo>;
         }
-        [keys: string]:{
+        $(ticketId: number): {
             // GET /support/tickets/{ticketId}
             $get(): Promise<support.Ticket>;
             canBeScored: {
@@ -86,7 +89,7 @@ export interface Support{
                 // POST /support/tickets/{ticketId}/score
                 $post(body?: {score: string, scoreComment?: string}): Promise<void>;
             }
-        } | any
+        };
     }
 }
 // Api

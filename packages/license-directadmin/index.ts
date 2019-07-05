@@ -1,4 +1,4 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';
 
 export namespace license {
     //license.ActionType
@@ -99,6 +99,9 @@ export namespace services {
         status: service.StateEnum;
     }
 }
+export function proxyLicenseDirectadmin(ovhEngine: OvhRequestable): License {
+    return buildOvhProxy(ovhEngine, '/license/directadmin');
+}
 // Apis harmony
 // path /license
 export interface License{
@@ -109,7 +112,7 @@ export interface License{
             // GET /license/directadmin/orderableVersions
             $get(param?: {ip: string}): Promise<license.DirectAdminOrderConfiguration[]>;
         }
-        [keys: string]:{
+        $(serviceName: string): {
             // GET /license/directadmin/{serviceName}
             $get(): Promise<license.directadmin.DirectAdmin>;
             // PUT /license/directadmin/{serviceName}
@@ -143,16 +146,16 @@ export interface License{
             tasks: {
                 // GET /license/directadmin/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]:{
+                $(taskId: number): {
                     // GET /license/directadmin/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
-                } | any
+                };
             }
             terminate: {
                 // POST /license/directadmin/{serviceName}/terminate
                 $post(): Promise<string>;
             }
-        } | any
+        };
     }
 }
 // Api
